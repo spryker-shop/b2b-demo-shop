@@ -8,12 +8,12 @@
 namespace Pyz\Yves\Cart;
 
 use Pyz\Yves\Checkout\Plugin\CheckoutBreadcrumbPlugin;
-use Pyz\Yves\Product\Plugin\StorageProductMapperPlugin;
 use Spryker\Yves\CartVariant\Dependency\Plugin\CartVariantAttributeMapperPlugin;
 use Spryker\Yves\DiscountPromotion\Plugin\ProductPromotionMapperPlugin;
 use Spryker\Yves\Kernel\AbstractBundleDependencyProvider;
 use Spryker\Yves\Kernel\Container;
 use Spryker\Yves\Kernel\Plugin\Pimple;
+use Spryker\Yves\PyzProduct\Plugin\StorageProductMapperPlugin;
 
 class CartDependencyProvider extends AbstractBundleDependencyProvider
 {

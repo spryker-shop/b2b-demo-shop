@@ -7,9 +7,9 @@
 
 namespace Pyz\Yves\CmsContentWidgetProductSetConnector;
 
-use Pyz\Yves\Product\Plugin\StorageProductMapperPlugin;
 use Spryker\Yves\CmsContentWidgetProductSetConnector\CmsContentWidgetProductSetConnectorDependencyProvider as SprykerCmsContentWidgetProductSetConnectorDependencyProvider;
 use Spryker\Yves\Kernel\Container;
+use Spryker\Yves\PyzProduct\Plugin\StorageProductMapperPlugin;
 
 class CmsContentWidgetProductSetConnectorDependencyProvider extends SprykerCmsContentWidgetProductSetConnectorDependencyProvider
 {

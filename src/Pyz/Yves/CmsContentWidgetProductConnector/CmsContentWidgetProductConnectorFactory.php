@@ -13,7 +13,7 @@ class CmsContentWidgetProductConnectorFactory extends SprykerCmsContentWidgetPro
 {
 
     /**
-     * @return \Pyz\Yves\Product\Dependency\Plugin\StorageProductMapperPluginInterface;
+     * @return \Spryker\Yves\PyzProduct\Dependency\Plugin\StorageProductMapperPluginInterface;
      */
     public function getStorageProductMapperPlugin()
     {

@@ -7,7 +7,6 @@
 
 namespace Pyz\Yves\ProductSet;
 
-use Pyz\Yves\Product\Plugin\StorageProductMapperPlugin;
 use Spryker\Yves\Kernel\AbstractBundleDependencyProvider;
 use Spryker\Yves\Kernel\Container;
 
@@ -80,7 +79,7 @@ class ProductSetDependencyProvider extends AbstractBundleDependencyProvider
     protected function provideStorageProductMapperPlugin(Container $container)
     {
         $container[self::PLUGIN_STORAGE_PRODUCT_MAPPER] = function (Container $container) {
-            return new StorageProductMapperPlugin();
+//            return new StorageProductMapperPlugin();
         };
     }
 

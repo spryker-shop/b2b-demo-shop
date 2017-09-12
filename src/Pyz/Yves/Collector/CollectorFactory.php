@@ -24,7 +24,7 @@ class CollectorFactory extends AbstractFactory
             $this->getCategoryResourceCreator(),
             $this->getRedirectResourceCreator(),
             $this->getPageResourceCreator(),
-            $this->getProductSetResourceCreator(),
+//            $this->getProductSetResourceCreator(),
         ];
     }
 
@@ -61,7 +61,7 @@ class CollectorFactory extends AbstractFactory
     }
 
     /**
-     * @return \Pyz\Yves\Product\Plugin\ProductResourceCreator
+     * @return \Spryker\Yves\PyzProduct\Plugin\ProductResourceCreator
      */
     protected function getProductResourceCreator()
     {

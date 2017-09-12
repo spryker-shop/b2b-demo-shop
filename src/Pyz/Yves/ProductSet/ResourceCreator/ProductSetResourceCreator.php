@@ -9,13 +9,13 @@ namespace Pyz\Yves\ProductSet\ResourceCreator;
 
 use Generated\Shared\Transfer\ProductSetStorageTransfer;
 use Pyz\Yves\Collector\Creator\AbstractResourceCreator;
-use Pyz\Yves\Product\Dependency\Plugin\StorageProductMapperPluginInterface;
 use Pyz\Yves\ProductSet\Controller\DetailController;
 use Silex\Application;
 use Spryker\Client\Product\ProductClientInterface;
 use Spryker\Client\ProductSet\ProductSetClientInterface;
 use Spryker\Yves\Kernel\BundleControllerAction;
 use Spryker\Yves\Kernel\Controller\BundleControllerActionRouteNameResolver;
+use Spryker\Yves\PyzProduct\Dependency\Plugin\StorageProductMapperPluginInterface;
 
 class ProductSetResourceCreator extends AbstractResourceCreator
 {
@@ -31,14 +31,14 @@ class ProductSetResourceCreator extends AbstractResourceCreator
     protected $productClient;
 
     /**
-     * @var \Pyz\Yves\Product\Dependency\Plugin\StorageProductMapperPluginInterface
+     * @var \Spryker\Yves\PyzProduct\Dependency\Plugin\StorageProductMapperPluginInterface
      */
     protected $storageProductMapperPlugin;
 
     /**
      * @param \Spryker\Client\ProductSet\ProductSetClientInterface $productSetClient
      * @param \Spryker\Client\Product\ProductClientInterface $productClient
-     * @param \Pyz\Yves\Product\Dependency\Plugin\StorageProductMapperPluginInterface $storageProductMapperPlugin
+     * @param \Spryker\Yves\PyzProduct\Dependency\Plugin\StorageProductMapperPluginInterface $storageProductMapperPlugin
      */
     public function __construct(
         ProductSetClientInterface $productSetClient,
