@@ -61,7 +61,7 @@ class CollectorFactory extends AbstractFactory
     }
 
     /**
-     * @return \Spryker\Yves\PyzProduct\Plugin\ProductResourceCreator
+     * @return \SprykerShop\Yves\ProductDetailPage\Plugin\ProductResourceCreator
      */
     protected function getProductResourceCreator()
     {

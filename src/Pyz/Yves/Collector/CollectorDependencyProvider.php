@@ -14,7 +14,7 @@ use Pyz\Yves\Redirect\Plugin\RedirectResourceCreator;
 use Spryker\Yves\Kernel\AbstractBundleDependencyProvider;
 use Spryker\Yves\Kernel\Container;
 use Spryker\Yves\Kernel\Plugin\Pimple;
-use Spryker\Yves\PyzProduct\Plugin\ProductResourceCreator;
+use SprykerShop\Yves\ProductDetailPage\Plugin\ProductResourceCreator;
 
 class CollectorDependencyProvider extends AbstractBundleDependencyProvider
 {

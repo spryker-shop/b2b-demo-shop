@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "a8a02f147ee7223e56512e39acaed1ea",
+    "content-hash": "7d2b088d39554773d054ccc98bbdcf64",
     "packages": [
         {
             "name": "braintree/braintree_php",
@@ -1813,6 +1813,32 @@
             ],
             "description": "Spryker Framework",
             "time": "2017-09-13T08:25:33+00:00"
+        },
+        {
+            "name": "spryker/spryker-shop",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:spryker/spryker-shop.git",
+                "reference": "da34f8f7b6eb3878c5c378f00154da4b9920e323"
+            },
+            "require": {
+                "spryker/spryker": "*"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "autoload.php"
+                ]
+            },
+            "license": [
+                "proprietary"
+            ],
+            "description": "Spryker Shop page and widget modules",
+            "time": "2017-09-13T13:59:20+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -7312,6 +7338,7 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "spryker/spryker": 20,
+        "spryker/spryker-shop": 20,
         "spryker/rabbit-mq": 20,
         "spryker/architecture-sniffer": 20,
         "spryker/code-generator": 20,

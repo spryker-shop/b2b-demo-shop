@@ -15,7 +15,7 @@ use Spryker\Client\Product\ProductClientInterface;
 use Spryker\Client\ProductSet\ProductSetClientInterface;
 use Spryker\Yves\Kernel\BundleControllerAction;
 use Spryker\Yves\Kernel\Controller\BundleControllerActionRouteNameResolver;
-use Spryker\Yves\PyzProduct\Dependency\Plugin\StorageProductMapperPluginInterface;
+use SprykerShop\Yves\ProductDetailPage\Dependency\Plugin\StorageProductMapperPluginInterface;
 
 class ProductSetResourceCreator extends AbstractResourceCreator
 {
@@ -31,14 +31,14 @@ class ProductSetResourceCreator extends AbstractResourceCreator
     protected $productClient;
 
     /**
-     * @var \Spryker\Yves\PyzProduct\Dependency\Plugin\StorageProductMapperPluginInterface
+     * @var \SprykerShop\Yves\ProductDetailPage\Dependency\Plugin\StorageProductMapperPluginInterface
      */
     protected $storageProductMapperPlugin;
 
     /**
      * @param \Spryker\Client\ProductSet\ProductSetClientInterface $productSetClient
      * @param \Spryker\Client\Product\ProductClientInterface $productClient
-     * @param \Spryker\Yves\PyzProduct\Dependency\Plugin\StorageProductMapperPluginInterface $storageProductMapperPlugin
+     * @param \SprykerShop\Yves\ProductDetailPage\Dependency\Plugin\StorageProductMapperPluginInterface $storageProductMapperPlugin
      */
     public function __construct(
         ProductSetClientInterface $productSetClient,

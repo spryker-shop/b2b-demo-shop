@@ -50,7 +50,7 @@ class ProductSetFactory extends AbstractFactory
     }
 
     /**
-     * @return \Spryker\Yves\PyzProduct\Dependency\Plugin\StorageProductMapperPluginInterface
+     * @return \SprykerShop\Yves\ProductDetailPage\Dependency\Plugin\StorageProductMapperPluginInterface
      */
     public function getStorageProductMapperPlugin()
     {

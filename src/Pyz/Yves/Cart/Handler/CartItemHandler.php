@@ -13,7 +13,7 @@ use Spryker\Client\Cart\CartClientInterface;
 use Spryker\Client\Product\ProductClientInterface;
 use Spryker\Shared\CartVariant\CartVariantConstants;
 use Spryker\Yves\Messenger\FlashMessenger\FlashMessengerInterface;
-use Spryker\Yves\PyzProduct\Dependency\Plugin\StorageProductMapperPluginInterface;
+use SprykerShop\Yves\ProductDetailPage\Dependency\Plugin\StorageProductMapperPluginInterface;
 
 class CartItemHandler extends BaseHandler implements CartItemHandlerInterface
 {
@@ -34,7 +34,7 @@ class CartItemHandler extends BaseHandler implements CartItemHandlerInterface
     protected $productClient;
 
     /**
-     * @var \Spryker\Yves\PyzProduct\Dependency\Plugin\StorageProductMapperPluginInterface
+     * @var \SprykerShop\Yves\ProductDetailPage\Dependency\Plugin\StorageProductMapperPluginInterface
      */
     protected $storageProductMapperPlugin;
 
@@ -42,7 +42,7 @@ class CartItemHandler extends BaseHandler implements CartItemHandlerInterface
      * @param \Pyz\Yves\Cart\Handler\CartOperationInterface $cartOperationHandler
      * @param \Spryker\Client\Cart\CartClientInterface $cartClient
      * @param \Spryker\Client\Product\ProductClientInterface $productClient
-     * @param \Spryker\Yves\PyzProduct\Dependency\Plugin\StorageProductMapperPluginInterface $storageProductMapperPlugin
+     * @param \SprykerShop\Yves\ProductDetailPage\Dependency\Plugin\StorageProductMapperPluginInterface $storageProductMapperPlugin
      * @param \Spryker\Yves\Messenger\FlashMessenger\FlashMessengerInterface $flashMessenger
      */
     public function __construct(

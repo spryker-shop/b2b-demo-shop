@@ -16,7 +16,7 @@ use Pyz\Yves\Discount\Handler\VoucherHandler;
 use Spryker\Shared\Application\ApplicationConstants;
 use Spryker\Yves\Kernel\AbstractFactory;
 use Spryker\Yves\ProductBundle\Grouper\ProductBundleGrouper;
-use Spryker\Yves\PyzProduct\Mapper\AttributeVariantMapper;
+use SprykerShop\Yves\ProductDetailPage\Mapper\AttributeVariantMapper;
 
 class CartFactory extends AbstractFactory
 {
@@ -158,7 +158,7 @@ class CartFactory extends AbstractFactory
     }
 
     /**
-     * @return \Spryker\Yves\PyzProduct\Mapper\AttributeVariantMapperInterface
+     * @return \SprykerShop\Yves\ProductDetailPage\Mapper\AttributeVariantMapperInterface
      */
     protected function createAttributeVariantMapper()
     {
@@ -166,7 +166,7 @@ class CartFactory extends AbstractFactory
     }
 
     /**
-     * @return \Spryker\Yves\PyzProduct\Dependency\Plugin\StorageProductMapperPluginInterface
+     * @return \SprykerShop\Yves\ProductDetailPage\Dependency\Plugin\StorageProductMapperPluginInterface
      */
     protected function getStorageProductMapperPlugin()
     {

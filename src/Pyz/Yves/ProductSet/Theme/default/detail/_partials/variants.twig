@@ -1,7 +1,7 @@
 {% if product.superAttributes|length > 0 %}
     <p>
         {% for attributeName,attributes in product.superAttributes %}
-            {% include '@PyzProduct/product/partials/variant.twig' with {
+            {% include '@ProductDetailPage/product/partials/variant.twig' with {
                 attributeFieldName: 'attributes[' ~ product.idProductAbstract ~ '][' ~ attributeName ~ ']'
             } %}
         {% endfor %}
