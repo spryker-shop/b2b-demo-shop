@@ -7,13 +7,13 @@
 
 namespace Pyz\Yves\Collector;
 
-use Pyz\Yves\Category\Plugin\CategoryResourceCreator;
 use Pyz\Yves\Cms\Plugin\PageResourceCreator;
 use Pyz\Yves\ProductSet\Plugin\ProductSetResourceCreatorPlugin;
 use Pyz\Yves\Redirect\Plugin\RedirectResourceCreator;
 use Spryker\Yves\Kernel\AbstractBundleDependencyProvider;
 use Spryker\Yves\Kernel\Container;
 use Spryker\Yves\Kernel\Plugin\Pimple;
+use SprykerShop\Yves\CatalogPage\Plugin\CategoryResourceCreator;
 use SprykerShop\Yves\ProductDetailPage\Plugin\ProductResourceCreator;
 
 class CollectorDependencyProvider extends AbstractBundleDependencyProvider

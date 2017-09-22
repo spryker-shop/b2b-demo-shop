@@ -12,6 +12,8 @@ use Silex\Application;
 use Spryker\Shared\Application\ApplicationConstants;
 use Spryker\Shared\Config\Config;
 use Spryker\Yves\Kernel\AbstractPlugin;
+use Spryker\Yves\Kernel\Plugin\Pimple;
+use Twig_Environment;
 use Twig_SimpleFunction;
 
 /**
@@ -37,6 +39,12 @@ class TwigAsset extends AbstractPlugin implements TwigFunctionPluginInterface
             new Twig_SimpleFunction('media', function ($value) use ($mediaUrlBuilder) {
                 return $mediaUrlBuilder->buildUrl($value);
             }),
+            // TODO: move this to its own service provider
+            new Twig_SimpleFunction('widget', [$this, 'widget'], [
+                'needs_context' => true,
+                'is_safe' => ['html'],
+                'needs_environment' => true,
+            ]),
         ];
     }
 
@@ -96,6 +104,58 @@ class TwigAsset extends AbstractPlugin implements TwigFunctionPluginInterface
         }
 
         return $this->getFactory()->createAssetUrlBuilder($host);
+    }
+
+    /**
+     * @param \Twig_Environment $twig
+     * @param array $context
+     * @param string $name
+     * @param string|null $block
+     *
+     * @return string
+     */
+    public function widget(Twig_Environment $twig, array $context, $name, $block = null)
+    {
+        // TODO: widget in widget has different context (i.e. PDP -> similar products -> catalog product) where neither _widget or _view are available
+        // TODO: find other solution to replace widgets with something else (maybe macro, or simple include...)
+        $view = $this->getViewFromContext($context);
+
+        if (!$view->hasWidget($name)) {
+            return '';
+        }
+
+        $widget = $view->getWidget($name);
+
+        // TODO: decide if we use the context like this or like below if needed at all
+        $context['_widget'] = $widget;
+//        $params = [
+//            '_widget' => $widget,
+//        ];
+
+        $template = $twig->load($widget->getTemplate());
+
+        if ($block !== null) {
+            return $template->renderBlock($block, $context);
+        }
+
+        return $template->render($context);
+    }
+
+    /**
+     * @param array $context
+     *
+     * @return \Spryker\Yves\Kernel\Controller\View
+     */
+    protected function getViewFromContext(array $context)
+    {
+        // TODO: cleanup; use constant instead of string
+        return (new Pimple())->getApplication()['twig._view'];
+
+        if (isset($context['_widget'])) {
+            return $context['_widget']->getView();
+        }
+
+        return $context['_view'];
     }
 
 }

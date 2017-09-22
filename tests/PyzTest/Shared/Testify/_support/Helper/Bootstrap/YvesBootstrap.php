@@ -14,7 +14,6 @@ use Pyz\Yves\Application\Plugin\Provider\LanguageServiceProvider;
 use Pyz\Yves\Application\Plugin\Provider\YvesSecurityServiceProvider;
 use Pyz\Yves\Application\YvesBootstrap as ApplicationYvesBootstrap;
 use Pyz\Yves\Cart\Plugin\Provider\CartServiceProvider;
-use Pyz\Yves\Category\Plugin\Provider\CategoryServiceProvider;
 use Pyz\Yves\Customer\Plugin\Provider\CustomerSecurityServiceProvider;
 use Pyz\Yves\Glossary\Plugin\Provider\TranslationServiceProvider;
 use Pyz\Yves\Twig\Plugin\Provider\TwigServiceProvider;
@@ -44,6 +43,7 @@ use Spryker\Yves\ProductReview\Plugin\Provider\ProductAbstractReviewTwigServiceP
 use Spryker\Yves\Session\Plugin\ServiceProvider\SessionServiceProvider as SprykerSessionServiceProvider;
 use Spryker\Yves\Storage\Plugin\Provider\StorageCacheServiceProvider;
 use Spryker\Yves\Twig\Plugin\ServiceProvider\TwigServiceProvider as SprykerTwigServiceProvider;
+use SprykerShop\Yves\CategoryWidget\Plugin\Provider\CategoryServiceProvider;
 
 /**
  * This class can be removed when EventJournal Service Provider is removed from the extended one.

@@ -8,12 +8,20 @@
 namespace Pyz\Yves\ProductDetailPage;
 
 use Spryker\Yves\Kernel\Container;
+use SprykerShop\Yves\AvailabilityWidget\Plugin\ProductDetailPage\AvailabilityWidgetBuilderPlugin;
 use SprykerShop\Yves\AvailabilityWidget\Plugin\StorageProductAvailabilityExpanderPlugin;
-use SprykerShop\Yves\ProductCategoryWidget\Plugin\ProductCategoryWidgetControllerResponseExtenderPlugin;
+use SprykerShop\Yves\ProductCategoryWidget\Plugin\ProductDetailPage\ProductCategoryWidgetBuilderPlugin;
 use SprykerShop\Yves\ProductCategoryWidget\Plugin\StorageProductCategoryExpanderPlugin;
+use SprykerShop\Yves\ProductCmsBlockWidget\Plugin\ProductDetailPage\ProductCmsBlockWidgetBuilderPlugin;
 use SprykerShop\Yves\ProductDetailPage\ProductDetailPageDependencyProvider as SprykerShopProductDetailPageDependencyProvider;
+use SprykerShop\Yves\ProductGroupWidget\Plugin\ProductDetailPage\ProductGroupWidgetBuilderPlugin;
+use SprykerShop\Yves\ProductImageWidget\Plugin\ProductDetailPage\ProductImageWidgetBuilderPlugin;
 use SprykerShop\Yves\ProductImageWidget\Plugin\StorageProductImageExpanderPlugin;
-use SprykerShop\Yves\ProductOptionWidget\Plugin\ProductOptionWidgetControllerResponseExtenderPlugin;
+use SprykerShop\Yves\ProductLabelWidget\Plugin\ProductDetailPage\ProductLabelWidgetBuilderPlugin;
+use SprykerShop\Yves\ProductOptionWidget\Plugin\ProductDetailPage\ProductOptionWidgetBuilderPlugin;
+use SprykerShop\Yves\ProductRelationWidget\Plugin\ProductDetailPage\ProductRelationWidgetBuilderPlugin;
+use SprykerShop\Yves\ProductReviewWidget\Plugin\ProductDetailPage\ProductReviewWidgetBuilderPlugin;
+use SprykerShop\Yves\WishlistWidget\Plugin\ProductDetailPage\WishlistWidgetBuilderPlugin;
 
 class ProductDetailPageDependencyProvider extends SprykerShopProductDetailPageDependencyProvider
 {
@@ -21,13 +29,21 @@ class ProductDetailPageDependencyProvider extends SprykerShopProductDetailPageDe
     /**
      * @param \Spryker\Yves\Kernel\Container $container
      *
-     * @return \Spryker\Yves\Kernel\Dependency\Plugin\ControllerResponseExpanderPluginInterface[]
+     * @return \Spryker\Yves\Kernel\Dependency\Plugin\WidgetBuilderPluginInterface[]
      */
-    protected function getControllerResponseExpanderPlugins(Container $container)
+    protected function getProductDetailPageWidgetBuilderPlugins(Container $container)
     {
         return [
-            new ProductOptionWidgetControllerResponseExtenderPlugin(),
-            new ProductCategoryWidgetControllerResponseExtenderPlugin(),
+            new ProductOptionWidgetBuilderPlugin(),
+            new ProductCategoryWidgetBuilderPlugin(),
+            new ProductImageWidgetBuilderPlugin(),
+            new AvailabilityWidgetBuilderPlugin(),
+            new ProductLabelWidgetBuilderPlugin(),
+            new ProductGroupWidgetBuilderPlugin(),
+            new WishlistWidgetBuilderPlugin(),
+            new ProductReviewWidgetBuilderPlugin(),
+            new ProductRelationWidgetBuilderPlugin(),
+            new ProductCmsBlockWidgetBuilderPlugin(),
         ];
     }
 

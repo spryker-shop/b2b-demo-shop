@@ -7,9 +7,9 @@
 
 namespace Pyz\Yves\ProductNew;
 
-use Pyz\Yves\Category\Plugin\CategoryReaderPlugin;
 use Spryker\Yves\Kernel\AbstractBundleDependencyProvider;
 use Spryker\Yves\Kernel\Container;
+use SprykerShop\Yves\CategoryWidget\Plugin\CategoryReaderPlugin;
 
 class ProductNewDependencyProvider extends AbstractBundleDependencyProvider
 {

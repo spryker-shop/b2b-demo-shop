@@ -17,8 +17,6 @@ use Pyz\Yves\Application\Plugin\Provider\YvesSecurityServiceProvider;
 use Pyz\Yves\Calculation\Plugin\Provider\CalculationControllerProvider;
 use Pyz\Yves\Cart\Plugin\Provider\CartControllerProvider;
 use Pyz\Yves\Cart\Plugin\Provider\CartServiceProvider;
-use Pyz\Yves\Catalog\Plugin\Provider\CatalogControllerProvider;
-use Pyz\Yves\Category\Plugin\Provider\CategoryServiceProvider;
 use Pyz\Yves\Checkout\Plugin\Provider\CheckoutControllerProvider;
 use Pyz\Yves\Collector\Plugin\Router\StorageRouter;
 use Pyz\Yves\Customer\Plugin\Provider\CustomerControllerProvider;
@@ -62,6 +60,9 @@ use Spryker\Yves\ProductReview\Plugin\Provider\ProductAbstractReviewTwigServiceP
 use Spryker\Yves\Session\Plugin\ServiceProvider\SessionServiceProvider as SprykerSessionServiceProvider;
 use Spryker\Yves\Storage\Plugin\Provider\StorageCacheServiceProvider;
 use Spryker\Yves\Twig\Plugin\ServiceProvider\TwigServiceProvider as SprykerTwigServiceProvider;
+use SprykerShop\Yves\CatalogPage\Plugin\Provider\CatalogPageControllerProvider;
+use SprykerShop\Yves\CatalogPage\Plugin\Provider\CatalogPageTwigServiceProvider;
+use SprykerShop\Yves\CategoryWidget\Plugin\Provider\CategoryServiceProvider;
 
 class YvesBootstrap
 {
@@ -132,6 +133,7 @@ class YvesBootstrap
         $this->application->register(new ProductLabelTwigServiceProvider());
         $this->application->register(new CmsContentWidgetServiceProvider());
         $this->application->register(new ProductAbstractReviewTwigServiceProvider());
+        $this->application->register(new CatalogPageTwigServiceProvider());
     }
 
     /**
@@ -172,7 +174,7 @@ class YvesBootstrap
             new WishlistControllerProvider($isSsl),
             new HeartbeatControllerProvider($isSsl),
             new NewsletterControllerProvider($isSsl),
-            new CatalogControllerProvider($isSsl),
+            new CatalogPageControllerProvider($isSsl),
             new CalculationControllerProvider($isSsl),
             new ProductSetControllerProvider($isSsl),
             new ProductSaleControllerProvider($isSsl),

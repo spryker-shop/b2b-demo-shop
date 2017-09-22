@@ -21,7 +21,7 @@ class ProductNewFactory extends AbstractFactory
     }
 
     /**
-     * @return \Pyz\Yves\Category\Plugin\CategoryReaderPlugin
+     * @return \SprykerShop\Yves\CategoryWidget\Plugin\CategoryReaderPlugin
      */
     public function getCategoryReaderPlugin()
     {

@@ -12,7 +12,7 @@ use Silex\Provider\TwigServiceProvider as SilexTwigServiceProvider;
 use Spryker\Shared\Config\Config;
 use Spryker\Shared\Twig\TwigConstants;
 use Spryker\Yves\Application\Routing\Helper;
-use Symfony\Component\HttpFoundation\Response;
+use Spryker\Yves\Kernel\Controller\View;
 use Symfony\Component\HttpKernel\Event\GetResponseForControllerResultEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 use Twig_Loader_Chain;
@@ -64,13 +64,31 @@ class TwigServiceProvider extends SilexTwigServiceProvider
      */
     public function onKernelView(GetResponseForControllerResultEvent $event)
     {
-        $response = $event->getControllerResult();
+        $result = $event->getControllerResult();
 
-        if (empty($response) || is_array($response)) {
-            $response = $this->render((array)$response);
-            if ($response instanceof Response) {
+        if ($result instanceof View) {
+            $params = [
+                '_view' => $result,
+            ];
+            $this->app['twig._view'] = $this->app->share(function () use ($result) {
+                return $result;
+            });
+
+            if ($result->getTemplate()) {
+                $response = $this->app->render($result->getTemplate(), $params);
                 $event->setResponse($response);
+                return;
             }
+
+            $response = $this->render($params);
+            $event->setResponse($response);
+            return;
+        }
+
+        if (empty($result) || is_array($result)) {
+            $response = $this->render((array)$result);
+            $event->setResponse($response);
+            return;
         }
     }
 
