@@ -8,20 +8,20 @@
 namespace Pyz\Yves\ProductDetailPage;
 
 use Spryker\Yves\Kernel\Container;
-use SprykerShop\Yves\AvailabilityWidget\Plugin\ProductDetailPage\AvailabilityWidgetBuilderPlugin;
+use SprykerShop\Yves\AvailabilityWidget\Plugin\ProductDetailPage\AvailabilityWidgetPlugin;
 use SprykerShop\Yves\AvailabilityWidget\Plugin\StorageProductAvailabilityExpanderPlugin;
-use SprykerShop\Yves\ProductCategoryWidget\Plugin\ProductDetailPage\ProductCategoryWidgetBuilderPlugin;
+use SprykerShop\Yves\ProductCategoryWidget\Plugin\ProductDetailPage\ProductCategoryWidgetPlugin;
 use SprykerShop\Yves\ProductCategoryWidget\Plugin\StorageProductCategoryExpanderPlugin;
-use SprykerShop\Yves\ProductCmsBlockWidget\Plugin\ProductDetailPage\ProductCmsBlockWidgetBuilderPlugin;
+use SprykerShop\Yves\ProductCmsBlockWidget\Plugin\ProductDetailPage\ProductCmsBlockWidgetPlugin;
 use SprykerShop\Yves\ProductDetailPage\ProductDetailPageDependencyProvider as SprykerShopProductDetailPageDependencyProvider;
-use SprykerShop\Yves\ProductGroupWidget\Plugin\ProductDetailPage\ProductGroupWidgetBuilderPlugin;
-use SprykerShop\Yves\ProductImageWidget\Plugin\ProductDetailPage\ProductImageWidgetBuilderPlugin;
+use SprykerShop\Yves\ProductGroupWidget\Plugin\ProductDetailPage\ProductGroupWidgetPlugin;
+use SprykerShop\Yves\ProductImageWidget\Plugin\ProductDetailPage\ProductImageWidgetPlugin;
 use SprykerShop\Yves\ProductImageWidget\Plugin\StorageProductImageExpanderPlugin;
-use SprykerShop\Yves\ProductLabelWidget\Plugin\ProductDetailPage\ProductLabelWidgetBuilderPlugin;
-use SprykerShop\Yves\ProductOptionWidget\Plugin\ProductDetailPage\ProductOptionWidgetBuilderPlugin;
-use SprykerShop\Yves\ProductRelationWidget\Plugin\ProductDetailPage\ProductRelationWidgetBuilderPlugin;
-use SprykerShop\Yves\ProductReviewWidget\Plugin\ProductDetailPage\ProductReviewWidgetBuilderPlugin;
-use SprykerShop\Yves\WishlistWidget\Plugin\ProductDetailPage\WishlistWidgetBuilderPlugin;
+use SprykerShop\Yves\ProductLabelWidget\Plugin\ProductDetailPage\ProductAbstractLabelWidgetPlugin;
+use SprykerShop\Yves\ProductOptionWidget\Plugin\ProductDetailPage\ProductOptionWidgetPlugin;
+use SprykerShop\Yves\ProductRelationWidget\Plugin\ProductRelationWidgetPlugin;
+use SprykerShop\Yves\ProductReviewWidget\Plugin\ProductDetailPage\ProductReviewWidgetPlugin;
+use SprykerShop\Yves\WishlistWidget\Plugin\ProductDetailPage\WishlistWidgetPlugin;
 
 class ProductDetailPageDependencyProvider extends SprykerShopProductDetailPageDependencyProvider
 {
@@ -29,35 +29,35 @@ class ProductDetailPageDependencyProvider extends SprykerShopProductDetailPageDe
     /**
      * @param \Spryker\Yves\Kernel\Container $container
      *
-     * @return \Spryker\Yves\Kernel\Dependency\Plugin\WidgetBuilderPluginInterface[]
+     * @return \SprykerShop\Yves\ProductDetailPage\Dependency\Plugin\StorageProductExpanderPluginInterface[]
      */
-    protected function getProductDetailPageWidgetBuilderPlugins(Container $container)
+    protected function getStorageProductExpanderPlugins(Container $container): array
     {
         return [
-            new ProductOptionWidgetBuilderPlugin(),
-            new ProductCategoryWidgetBuilderPlugin(),
-            new ProductImageWidgetBuilderPlugin(),
-            new AvailabilityWidgetBuilderPlugin(),
-            new ProductLabelWidgetBuilderPlugin(),
-            new ProductGroupWidgetBuilderPlugin(),
-            new WishlistWidgetBuilderPlugin(),
-            new ProductReviewWidgetBuilderPlugin(),
-            new ProductRelationWidgetBuilderPlugin(),
-            new ProductCmsBlockWidgetBuilderPlugin(),
+            new StorageProductCategoryExpanderPlugin(),
+            new StorageProductImageExpanderPlugin(),
+            new StorageProductAvailabilityExpanderPlugin(),
         ];
     }
 
     /**
      * @param \Spryker\Yves\Kernel\Container $container
      *
-     * @return \SprykerShop\Yves\ProductDetailPage\Dependency\Plugin\StorageProductExpanderPluginInterface[]
+     * @return \Spryker\Yves\Kernel\Dependency\Plugin\WidgetPluginInterface[]
      */
-    protected function getStorageProductExpanderPlugins(Container $container)
+    protected function getProductDetailPageWidgetPlugins(Container $container): array
     {
         return [
-            new StorageProductCategoryExpanderPlugin(),
-            new StorageProductImageExpanderPlugin(),
-            new StorageProductAvailabilityExpanderPlugin(),
+            ProductCategoryWidgetPlugin::class,
+            ProductImageWidgetPlugin::class,
+            ProductOptionWidgetPlugin::class,
+            AvailabilityWidgetPlugin::class,
+            WishlistWidgetPlugin::class,
+            ProductReviewWidgetPlugin::class,
+            ProductCmsBlockWidgetPlugin::class,
+            ProductAbstractLabelWidgetPlugin::class,
+            ProductRelationWidgetPlugin::class,
+            ProductGroupWidgetPlugin::class,
         ];
     }
 
