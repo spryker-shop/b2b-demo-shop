@@ -12,7 +12,7 @@ use SprykerShop\Yves\AvailabilityWidget\Plugin\ProductDetailPage\AvailabilityWid
 use SprykerShop\Yves\AvailabilityWidget\Plugin\StorageProductAvailabilityExpanderPlugin;
 use SprykerShop\Yves\ProductCategoryWidget\Plugin\ProductDetailPage\ProductCategoryWidgetPlugin;
 use SprykerShop\Yves\ProductCategoryWidget\Plugin\StorageProductCategoryExpanderPlugin;
-use SprykerShop\Yves\ProductCmsBlockWidget\Plugin\ProductDetailPage\ProductCmsBlockWidgetPlugin;
+use SprykerShop\Yves\CmsBlockWidget\Plugin\ProductDetailPage\ProductCmsBlockWidgetPlugin;
 use SprykerShop\Yves\ProductDetailPage\ProductDetailPageDependencyProvider as SprykerShopProductDetailPageDependencyProvider;
 use SprykerShop\Yves\ProductGroupWidget\Plugin\ProductDetailPage\ProductGroupWidgetPlugin;
 use SprykerShop\Yves\ProductImageWidget\Plugin\ProductDetailPage\ProductImageWidgetPlugin;
