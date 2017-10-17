@@ -20,11 +20,11 @@ class CollectorFactory extends AbstractFactory
     public function getResourceCreators()
     {
         return [
-            $this->getProductResourceCreator(),
-            $this->getCategoryResourceCreator(),
+            $this->getProductDetailPageResourceCreator(),
+            $this->getCatalogPageResourceCreator(),
             $this->getRedirectResourceCreator(),
             $this->getPageResourceCreator(),
-//            $this->getProductSetResourceCreator(),
+            $this->getProductSetDetailPageResourceCreator(),
         ];
     }
 
@@ -61,19 +61,19 @@ class CollectorFactory extends AbstractFactory
     }
 
     /**
-     * @return \SprykerShop\Yves\ProductDetailPage\Plugin\ProductResourceCreator
+     * @return \SprykerShop\Yves\ProductDetailPage\Plugin\ProductDetailPageResourceCreator
      */
-    protected function getProductResourceCreator()
+    protected function getProductDetailPageResourceCreator()
     {
-        return $this->getProvidedDependency(CollectorDependencyProvider::PLUGIN_PRODUCT_RESOURCE_CREATOR);
+        return $this->getProvidedDependency(CollectorDependencyProvider::PLUGIN_PRODUCT_DETAIL_PAGE_RESOURCE_CREATOR);
     }
 
     /**
-     * @return \Pyz\Yves\Category\Plugin\CategoryResourceCreator
+     * @return \SprykerShop\Yves\CatalogPage\Plugin\CatalogPageResourceCreator
      */
-    protected function getCategoryResourceCreator()
+    protected function getCatalogPageResourceCreator()
     {
-        return $this->getProvidedDependency(CollectorDependencyProvider::PLUGIN_CATEGORY_RESOURCE_CREATOR);
+        return $this->getProvidedDependency(CollectorDependencyProvider::PLUGIN_CATALOG_PAGE_RESOURCE_CREATOR);
     }
 
     /**
@@ -93,9 +93,9 @@ class CollectorFactory extends AbstractFactory
     }
 
     /**
-     * @return \Pyz\Yves\ProductSet\ResourceCreator\ProductSetResourceCreator
+     * @return \SprykerShop\Yves\ProductSetDetailPage\ResourceCreator\ProductSetDetailPageResourceCreator
      */
-    protected function getProductSetResourceCreator()
+    protected function getProductSetDetailPageResourceCreator()
     {
         return $this->getProvidedDependency(CollectorDependencyProvider::PLUGIN_PRODUCT_SET_RESOURCE_CREATOR);
     }

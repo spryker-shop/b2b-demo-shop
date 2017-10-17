@@ -8,13 +8,13 @@
 namespace Pyz\Yves\Collector;
 
 use Pyz\Yves\Cms\Plugin\PageResourceCreator;
-use Pyz\Yves\ProductSet\Plugin\ProductSetResourceCreatorPlugin;
 use Pyz\Yves\Redirect\Plugin\RedirectResourceCreator;
 use Spryker\Yves\Kernel\AbstractBundleDependencyProvider;
 use Spryker\Yves\Kernel\Container;
 use Spryker\Yves\Kernel\Plugin\Pimple;
-use SprykerShop\Yves\CatalogPage\Plugin\CategoryResourceCreator;
-use SprykerShop\Yves\ProductDetailPage\Plugin\ProductResourceCreator;
+use SprykerShop\Yves\CatalogPage\Plugin\CatalogPageResourceCreator;
+use SprykerShop\Yves\ProductDetailPage\Plugin\ProductDetailPageResourceCreator;
+use SprykerShop\Yves\ProductSetDetailPage\Plugin\ProductSetDetailPageResourceCreatorPlugin;
 
 class CollectorDependencyProvider extends AbstractBundleDependencyProvider
 {
@@ -30,9 +30,9 @@ class CollectorDependencyProvider extends AbstractBundleDependencyProvider
     const CLIENT_COLLECTOR = 'collector client';
     const CLIENT_CATALOG = 'client client';
     const PLUGIN_APPLICATION = 'application plugin';
-    const PLUGIN_CATEGORY_RESOURCE_CREATOR = 'category resource plugin';
+    const PLUGIN_CATALOG_PAGE_RESOURCE_CREATOR = 'PLUGIN_CATALOG_PAGE_RESOURCE_CREATOR';
     const PLUGIN_PAGE_RESOURCE_CREATOR = 'page resource creator plugin';
-    const PLUGIN_PRODUCT_RESOURCE_CREATOR = 'page product creator plugin';
+    const PLUGIN_PRODUCT_DETAIL_PAGE_RESOURCE_CREATOR = 'PLUGIN_PRODUCT_DETAIL_PAGE_RESOURCE_CREATOR';
     const PLUGIN_REDIRECT_RESOURCE_CREATOR = 'redirect resource creator plugin';
     const PLUGIN_PRODUCT_SET_RESOURCE_CREATOR = 'PLUGIN_PRODUCT_SET_RESOURCE_CREATOR';
 
@@ -80,10 +80,10 @@ class CollectorDependencyProvider extends AbstractBundleDependencyProvider
             return $pimplePlugin->getApplication();
         };
 
-        $container[self::PLUGIN_CATEGORY_RESOURCE_CREATOR] = function () {
-            $categoryResourceCreatorPlugin = new CategoryResourceCreator();
+        $container[self::PLUGIN_CATALOG_PAGE_RESOURCE_CREATOR] = function () {
+            $catalogPageResourceCreatorPlugin = new CatalogPageResourceCreator();
 
-            return $categoryResourceCreatorPlugin->createCategoryResourceCreator();
+            return $catalogPageResourceCreatorPlugin->createCategoryResourceCreator();
         };
 
         $container[self::PLUGIN_REDIRECT_RESOURCE_CREATOR] = function () {
@@ -98,16 +98,16 @@ class CollectorDependencyProvider extends AbstractBundleDependencyProvider
             return $pageResourceCreatorPlugin->createPageResourceCreator();
         };
 
-        $container[self::PLUGIN_PRODUCT_RESOURCE_CREATOR] = function () {
-            $productResourceCreatorPlugin = new ProductResourceCreator();
+        $container[self::PLUGIN_PRODUCT_DETAIL_PAGE_RESOURCE_CREATOR] = function () {
+            $productResourceCreatorPlugin = new ProductDetailPageResourceCreator();
 
             return $productResourceCreatorPlugin->createProductResourceCreator();
         };
 
         $container[self::PLUGIN_PRODUCT_SET_RESOURCE_CREATOR] = function () {
-            $productResourceCreatorPlugin = new ProductSetResourceCreatorPlugin();
+            $productSetDetailPageResourceCreatorPlugin = new ProductSetDetailPageResourceCreatorPlugin();
 
-            return $productResourceCreatorPlugin->createProductSetResourceCreator();
+            return $productSetDetailPageResourceCreatorPlugin->createProductSetDetailPageResourceCreator();
         };
 
         return $container;

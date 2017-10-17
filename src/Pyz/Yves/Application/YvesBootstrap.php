@@ -28,7 +28,6 @@ use Pyz\Yves\Newsletter\Plugin\Provider\NewsletterControllerProvider;
 use Pyz\Yves\ProductNew\Plugin\Provider\ProductNewControllerProvider;
 use Pyz\Yves\ProductReview\Plugin\Provider\ProductReviewControllerProvider;
 use Pyz\Yves\ProductSale\Plugin\Provider\ProductSaleControllerProvider;
-use Pyz\Yves\ProductSet\Plugin\Provider\ProductSetControllerProvider;
 use Pyz\Yves\Twig\Plugin\Provider\TwigServiceProvider;
 use Pyz\Yves\Wishlist\Plugin\Provider\WishlistControllerProvider;
 use Silex\Provider\FormServiceProvider;
@@ -63,6 +62,7 @@ use Spryker\Yves\Twig\Plugin\ServiceProvider\TwigServiceProvider as SprykerTwigS
 use SprykerShop\Yves\CatalogPage\Plugin\Provider\CatalogPageControllerProvider;
 use SprykerShop\Yves\CatalogPage\Plugin\Provider\CatalogPageTwigServiceProvider;
 use SprykerShop\Yves\CategoryWidget\Plugin\Provider\CategoryServiceProvider;
+use SprykerShop\Yves\ProductSetListPage\Plugin\Provider\ProductSetListPageControllerProvider;
 
 class YvesBootstrap
 {
@@ -176,7 +176,7 @@ class YvesBootstrap
             new NewsletterControllerProvider($isSsl),
             new CatalogPageControllerProvider($isSsl),
             new CalculationControllerProvider($isSsl),
-            new ProductSetControllerProvider($isSsl),
+            new ProductSetListPageControllerProvider($isSsl),
             new ProductSaleControllerProvider($isSsl),
             new ProductNewControllerProvider($isSsl),
             new ProductReviewControllerProvider($isSsl),
