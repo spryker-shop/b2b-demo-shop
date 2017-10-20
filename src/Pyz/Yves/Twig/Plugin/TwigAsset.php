@@ -13,8 +13,9 @@ use Silex\Application;
 use Spryker\Shared\Application\ApplicationConstants;
 use Spryker\Shared\Config\Config;
 use Spryker\Yves\Kernel\AbstractPlugin;
-use Spryker\Yves\Kernel\Widget\WidgetFactory;
 use Spryker\Yves\Kernel\Widget\WidgetContainerInterface;
+use Spryker\Yves\Kernel\Widget\WidgetContainerRegistry;
+use Spryker\Yves\Kernel\Widget\WidgetFactory;
 use Throwable;
 use Twig_Environment;
 use Twig_SimpleFunction;
@@ -131,7 +132,7 @@ class TwigAsset extends AbstractPlugin implements TwigFunctionPluginInterface
     {
         // TODO: refactor
         try {
-            $widgetContainer = $this->getWidgetContainer($context);
+            $widgetContainer = $this->getWidgetContainer();
 
             if (!$widgetContainer->hasWidget($name)) {
                 return '';
@@ -143,10 +144,15 @@ class TwigAsset extends AbstractPlugin implements TwigFunctionPluginInterface
 
             $twig->addGlobal('_widget', $widget);
 
-            $template = $twig->load($widget::getTemplate());
+            $widgetContainerRegistry = new WidgetContainerRegistry($this->getApplication());
+            $widgetContainerRegistry->add($widget);
 
-            // TODO: red border / mouse hover on blocks to be able to easily identify them
-            return $template->render();
+            $template = $twig->load($widget::getTemplate());
+            $result = $template->render();
+
+            $widgetContainerRegistry->removeLastAdded();
+
+            return $result;
         } catch (Throwable $e) {
             // TODO: use custom exception
             throw new Exception(sprintf(
@@ -172,7 +178,7 @@ class TwigAsset extends AbstractPlugin implements TwigFunctionPluginInterface
     {
         // TODO: refactor
         try {
-            $view = $this->getWidgetContainer($context);
+            $view = $this->getWidgetContainer();
 
             if (!$view->hasWidget($name)) {
                 return '';
@@ -182,13 +188,17 @@ class TwigAsset extends AbstractPlugin implements TwigFunctionPluginInterface
             $widgetFactory = new WidgetFactory();
             $widget = $widgetFactory->build($widgetClass, $arguments);
 
-            // TODO: check if there's any side effect of this global variable (nested widgets might be a problem). Check what happens when calling multiple sub-widgets from a widget.
             $twig->addGlobal('_widget', $widget);
 
-            $template = $twig->load($widget::getTemplate());
+            $widgetContainerRegistry = new WidgetContainerRegistry($this->getApplication());
+            $widgetContainerRegistry->add($widget);
 
-            // TODO: red border / mouse hover on blocks to be able to easily identify them
-            return $template->renderBlock($block);
+            $template = $twig->load($widget::getTemplate());
+            $result = $template->renderBlock($block);
+
+            $widgetContainerRegistry->removeLastAdded();
+
+            return $result;
         } catch (Throwable $e) {
             // TODO: use custom exception
             throw new Exception(sprintf(
@@ -200,34 +210,33 @@ class TwigAsset extends AbstractPlugin implements TwigFunctionPluginInterface
     }
 
     /**
-     * @param array $context
      * @param string $name
      *
      * @return bool
      */
-    public function widgetExists(array $context, $name)
+    public function widgetExists($name)
     {
-        return $this->getWidgetContainer($context)->hasWidget($name);
+        return $this->getWidgetContainer()->hasWidget($name);
     }
 
     /**
-     * @param array $context
+     * @throws \Exception
      *
      * @return \Spryker\Yves\Kernel\Widget\WidgetContainerInterface
      */
-    protected function getWidgetContainer(array $context): WidgetContainerInterface
+    protected function getWidgetContainer(): WidgetContainerInterface
     {
-        // TODO: consider merging these together to avoid cross referencing and confusion
-        if (isset($context['_widget'])) {
-            return $context['_widget'];
+        // TODO: move to factory
+        $widgetRegistry = new WidgetContainerRegistry($this->getApplication());
+
+        $widgetContainer = $widgetRegistry->getLastAdded();
+
+        if (!$widgetContainer) {
+            // TODO: use custom exception
+            throw new Exception('You have tried to access a widget but %s is empty. To fix this you need to register your widget or view in the registry.');
         }
 
-        if (isset($context['_view'])) {
-            return $context['_view'];
-        }
-
-        // TODO: use custom exception
-        throw new \Exception('Missing widget container from the context of the rendered template. To fix this you need to provide the widget container in "_widget" variable.');
+         return $widgetContainer;
     }
 
 }

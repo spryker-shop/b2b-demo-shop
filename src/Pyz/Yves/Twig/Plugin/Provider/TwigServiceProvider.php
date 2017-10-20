@@ -13,6 +13,7 @@ use Spryker\Shared\Config\Config;
 use Spryker\Shared\Twig\TwigConstants;
 use Spryker\Yves\Application\Routing\Helper;
 use Spryker\Yves\Kernel\View\ViewInterface;
+use Spryker\Yves\Kernel\Widget\WidgetContainerRegistry;
 use Symfony\Component\HttpKernel\Event\GetResponseForControllerResultEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 use Twig_Loader_Chain;
@@ -71,6 +72,10 @@ class TwigServiceProvider extends SilexTwigServiceProvider
             $twig = $this->app['twig'];
             $twig->addGlobal('_view', $result);
 
+            // TODO: clean up
+            $widgetContainerRegistry = new WidgetContainerRegistry($this->app);
+            $widgetContainerRegistry->add($result);
+
             if ($result->getTemplate()) {
                 $response = $this->app->render($result->getTemplate());
                 $event->setResponse($response);
@@ -79,6 +84,9 @@ class TwigServiceProvider extends SilexTwigServiceProvider
 
             $response = $this->render();
             $event->setResponse($response);
+
+            $widgetContainerRegistry->removeLastAdded();
+
             return;
         }
 
