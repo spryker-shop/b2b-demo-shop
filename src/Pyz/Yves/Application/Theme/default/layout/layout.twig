@@ -4,16 +4,16 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-    <meta name="description" content="{{ page_description | default('') | trans }}" />
-    <meta name="keywords" content="{{ page_keywords | default('') | trans }}" />
+    <meta name="description" content="{% block pageDescription %}{{ pageDescription | default('') | trans }}{% endblock %}" />
+    <meta name="keywords" content="{% block pageKeywords %}{{ pageKeywords | default('') | trans }}{% endblock %}" />
     <meta name="generator" content="spryker" />
-    {% block page_meta %}{% endblock %}
+    {% block pageMeta %}{% endblock %}
 
     <link rel="stylesheet" href="/assets/default/css/vendor.css" />
     <link rel="stylesheet" href="/assets/default/css/app.css" />
     {% block stylesheets %}{% endblock %}
 
-    <title>{% block page_title %}{{ page_title | default('global.spryker.shop') | trans }}{% endblock %}</title>
+    <title>{% block pageTitle %}{{ pageTitle | default('global.spryker.shop') | trans }}{% endblock %}</title>
 </head>
 
 <body data-component="main">

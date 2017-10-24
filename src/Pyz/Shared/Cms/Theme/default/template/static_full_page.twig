@@ -1,4 +1,14 @@
-{% extends '@Cms/layout/full.twig' %}
+{% extends '@CmsPage/layout/full.twig' %}
+
+{% block pageTitle -%}
+    {{ _view.pageTitle | default(parent()) }}
+{%- endblock %}
+{% block pageKeywords -%}
+    {{ _view.pageKeywords | default('') }}
+{%- endblock %}
+{% block pageDescription -%}
+    {{ _view.pageDescription | default('') }}
+{%- endblock %}
 
 {% block breadcrumb %}{% endblock %}
 

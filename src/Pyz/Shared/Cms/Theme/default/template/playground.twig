@@ -1,18 +1,28 @@
-{% extends '@Cms/layout/full.twig' %}
+{% extends '@CmsPage/layout/full.twig' %}
+
+{% block pageTitle -%}
+    {{ _view.pageTitle | default(null) }}
+{%- endblock %}
+{% block pageKeywords -%}
+    {{ _view.pageKeywords | default(null) }}
+{%- endblock %}
+{% block pageDescription -%}
+    {{ _view.pageDescription | default(null) }}
+{%- endblock %}
 
 {% block content %}
     <!-- CMS_PLACEHOLDER : "Placeholder1" -->
     <!-- CMS_PLACEHOLDER : "Placeholder2" -->
-        <div class="row">
-            <div class="small-12 columns">
-                <div class="callout">
-                    <div class="row">
-                        <div class="small-12 xlarge-9 xxlarge-8 columns">
-                            {{ spyCms('Placeholder1') | raw }}
-                            {{ spyCms('Placeholder2') | raw }}
-                        </div>
+    <div class="row">
+        <div class="small-12 columns">
+            <div class="callout">
+                <div class="row">
+                    <div class="small-12 xlarge-9 xxlarge-8 columns">
+                        {{ spyCms('Placeholder1') | raw }}
+                        {{ spyCms('Placeholder2') | raw }}
                     </div>
                 </div>
             </div>
         </div>
-    {% endblock %}
+    </div>
+{% endblock %}

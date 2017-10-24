@@ -7,12 +7,12 @@
 
 namespace Pyz\Yves\Collector;
 
-use Pyz\Yves\Cms\Plugin\PageResourceCreator;
 use Pyz\Yves\Redirect\Plugin\RedirectResourceCreator;
 use Spryker\Yves\Kernel\AbstractBundleDependencyProvider;
 use Spryker\Yves\Kernel\Container;
 use Spryker\Yves\Kernel\Plugin\Pimple;
 use SprykerShop\Yves\CatalogPage\Plugin\CatalogPageResourceCreator;
+use SprykerShop\Yves\CmsPage\Plugin\PageResourceCreator;
 use SprykerShop\Yves\ProductDetailPage\Plugin\ProductDetailPageResourceCreator;
 use SprykerShop\Yves\ProductSetDetailPage\Plugin\ProductSetDetailPageResourceCreatorPlugin;
 

@@ -46,16 +46,16 @@ class TwigAsset extends AbstractPlugin implements TwigFunctionPluginInterface
             // TODO: move this to its own service provider
             new Twig_SimpleFunction('widget', [$this, 'widget'], [
                 'needs_environment' => true,
-                'needs_context' => true,
+                'needs_context' => false,
                 'is_safe' => ['html'],
             ]),
             new Twig_SimpleFunction('widgetBlock', [$this, 'widgetBlock'], [
                 'needs_environment' => true,
-                'needs_context' => true,
+                'needs_context' => false,
                 'is_safe' => ['html'],
             ]),
             new Twig_SimpleFunction('widgetExists', [$this, 'widgetExists'], [
-                'needs_context' => true,
+                'needs_context' => false,
             ]),
         ];
     }
@@ -120,7 +120,6 @@ class TwigAsset extends AbstractPlugin implements TwigFunctionPluginInterface
 
     /**
      * @param \Twig_Environment $twig
-     * @param array $context
      * @param string $name
      * @param array $arguments
      *
@@ -128,7 +127,7 @@ class TwigAsset extends AbstractPlugin implements TwigFunctionPluginInterface
      *
      * @return string
      */
-    public function widget(Twig_Environment $twig, array $context, $name, ...$arguments)
+    public function widget(Twig_Environment $twig, $name, ...$arguments)
     {
         // TODO: refactor
         try {
@@ -165,7 +164,6 @@ class TwigAsset extends AbstractPlugin implements TwigFunctionPluginInterface
 
     /**
      * @param \Twig_Environment $twig
-     * @param array $context
      * @param string $name
      * @param string $block
      * @param array $arguments
@@ -174,7 +172,7 @@ class TwigAsset extends AbstractPlugin implements TwigFunctionPluginInterface
      *
      * @return string
      */
-    public function widgetBlock(Twig_Environment $twig, array $context, $name, $block, ...$arguments)
+    public function widgetBlock(Twig_Environment $twig,  $name, $block, ...$arguments)
     {
         // TODO: refactor
         try {
