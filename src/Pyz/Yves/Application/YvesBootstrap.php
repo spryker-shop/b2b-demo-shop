@@ -62,6 +62,7 @@ use Spryker\Yves\Twig\Plugin\ServiceProvider\TwigServiceProvider as SprykerTwigS
 use SprykerShop\Yves\CatalogPage\Plugin\Provider\CatalogPageControllerProvider;
 use SprykerShop\Yves\CatalogPage\Plugin\Provider\CatalogPageTwigServiceProvider;
 use SprykerShop\Yves\CategoryWidget\Plugin\Provider\CategoryServiceProvider;
+use SprykerShop\Yves\HomePage\Plugin\Provider\HomePageControllerProvider;
 use SprykerShop\Yves\ProductSetListPage\Plugin\Provider\ProductSetListPageControllerProvider;
 
 class YvesBootstrap
@@ -168,6 +169,7 @@ class YvesBootstrap
     {
         return [
             new ApplicationControllerProvider($isSsl),
+            new HomePageControllerProvider($isSsl),
             new CheckoutControllerProvider($isSsl),
             new CustomerControllerProvider($isSsl),
             new CartControllerProvider($isSsl),

@@ -233,7 +233,10 @@ class TwigAsset extends AbstractPlugin implements TwigFunctionPluginInterface
 
         if (!$widgetContainer) {
             // TODO: use custom exception
-            throw new Exception('You have tried to access a widget but %s is empty. To fix this you need to register your widget or view in the registry.');
+            throw new Exception(sprintf(
+                'You have tried to access a widget but %s is empty. To fix this you need to register your widget or view in the registry.',
+                get_class($widgetRegistry)
+            ));
         }
 
          return $widgetContainer;
