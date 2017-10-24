@@ -25,7 +25,6 @@ use Pyz\Yves\EventJournal\Plugin\Provider\EventJournalServiceProvider;
 use Pyz\Yves\Glossary\Plugin\Provider\TranslationServiceProvider;
 use Pyz\Yves\Heartbeat\Plugin\Provider\HeartbeatControllerProvider;
 use Pyz\Yves\Newsletter\Plugin\Provider\NewsletterControllerProvider;
-use Pyz\Yves\ProductNew\Plugin\Provider\ProductNewControllerProvider;
 use Pyz\Yves\ProductReview\Plugin\Provider\ProductReviewControllerProvider;
 use Pyz\Yves\ProductSale\Plugin\Provider\ProductSaleControllerProvider;
 use Pyz\Yves\Twig\Plugin\Provider\TwigServiceProvider;
@@ -63,6 +62,7 @@ use SprykerShop\Yves\CatalogPage\Plugin\Provider\CatalogPageControllerProvider;
 use SprykerShop\Yves\CatalogPage\Plugin\Provider\CatalogPageTwigServiceProvider;
 use SprykerShop\Yves\CategoryWidget\Plugin\Provider\CategoryServiceProvider;
 use SprykerShop\Yves\HomePage\Plugin\Provider\HomePageControllerProvider;
+use SprykerShop\Yves\ProductNewPage\Plugin\Provider\ProductNewPageControllerProvider;
 use SprykerShop\Yves\ProductSetListPage\Plugin\Provider\ProductSetListPageControllerProvider;
 
 class YvesBootstrap
@@ -180,7 +180,7 @@ class YvesBootstrap
             new CalculationControllerProvider($isSsl),
             new ProductSetListPageControllerProvider($isSsl),
             new ProductSaleControllerProvider($isSsl),
-            new ProductNewControllerProvider($isSsl),
+            new ProductNewPageControllerProvider($isSsl),
             new ProductReviewControllerProvider($isSsl),
         ];
     }
