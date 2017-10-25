@@ -17,7 +17,6 @@ use Pyz\Yves\Calculation\Plugin\Provider\CalculationControllerProvider;
 use Pyz\Yves\Cart\Plugin\Provider\CartControllerProvider;
 use Pyz\Yves\Cart\Plugin\Provider\CartServiceProvider;
 use Pyz\Yves\Checkout\Plugin\Provider\CheckoutControllerProvider;
-use Pyz\Yves\Cms\Plugin\Provider\PreviewControllerProvider;
 use Pyz\Yves\Collector\Plugin\Router\StorageRouter;
 use Pyz\Yves\Currency\Plugin\CurrencyControllerProvider;
 use Pyz\Yves\Customer\Plugin\Provider\CustomerControllerProvider;
@@ -65,12 +64,14 @@ use Spryker\Yves\ZedRequest\Plugin\ServiceProvider\ZedRequestLogServiceProvider;
 use SprykerShop\Yves\CatalogPage\Plugin\Provider\CatalogPageControllerProvider;
 use SprykerShop\Yves\CatalogPage\Plugin\Provider\CatalogPageTwigServiceProvider;
 use SprykerShop\Yves\CategoryWidget\Plugin\Provider\CategoryServiceProvider;
+use SprykerShop\Yves\CmsPage\Plugin\Provider\PreviewControllerProvider;
 use SprykerShop\Yves\HomePage\Plugin\Provider\HomePageControllerProvider;
 use SprykerShop\Yves\ProductNewPage\Plugin\Provider\ProductNewPageControllerProvider;
 use SprykerShop\Yves\ProductSetListPage\Plugin\Provider\ProductSetListPageControllerProvider;
 
 class YvesBootstrap
 {
+
     /**
      * @var \Spryker\Yves\Kernel\Application
      */
@@ -198,4 +199,5 @@ class YvesBootstrap
             new ProductReviewControllerProvider($isSsl),
         ];
     }
+
 }
