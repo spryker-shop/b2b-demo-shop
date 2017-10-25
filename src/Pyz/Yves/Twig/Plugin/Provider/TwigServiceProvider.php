@@ -21,7 +21,6 @@ use Twig_Loader_Filesystem;
 
 class TwigServiceProvider extends SilexTwigServiceProvider
 {
-
     /**
      * @var \Spryker\Yves\Kernel\Application
      */
@@ -203,5 +202,4 @@ class TwigServiceProvider extends SilexTwigServiceProvider
             )
         );
     }
-
 }

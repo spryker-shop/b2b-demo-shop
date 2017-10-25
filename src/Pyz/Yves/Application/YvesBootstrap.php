@@ -8,7 +8,6 @@
 namespace Pyz\Yves\Application;
 
 use Pyz\Shared\Application\Business\Routing\SilexRouter;
-use Pyz\Shared\Application\Plugin\Provider\WebProfilerServiceProvider;
 use Pyz\Yves\Application\Plugin\Provider\ApplicationControllerProvider;
 use Pyz\Yves\Application\Plugin\Provider\ApplicationServiceProvider;
 use Pyz\Yves\Application\Plugin\Provider\AutoloaderCacheServiceProvider;
@@ -18,16 +17,18 @@ use Pyz\Yves\Calculation\Plugin\Provider\CalculationControllerProvider;
 use Pyz\Yves\Cart\Plugin\Provider\CartControllerProvider;
 use Pyz\Yves\Cart\Plugin\Provider\CartServiceProvider;
 use Pyz\Yves\Checkout\Plugin\Provider\CheckoutControllerProvider;
+use Pyz\Yves\Cms\Plugin\Provider\PreviewControllerProvider;
 use Pyz\Yves\Collector\Plugin\Router\StorageRouter;
+use Pyz\Yves\Currency\Plugin\CurrencyControllerProvider;
 use Pyz\Yves\Customer\Plugin\Provider\CustomerControllerProvider;
 use Pyz\Yves\Customer\Plugin\Provider\CustomerSecurityServiceProvider;
-use Pyz\Yves\EventJournal\Plugin\Provider\EventJournalServiceProvider;
 use Pyz\Yves\Glossary\Plugin\Provider\TranslationServiceProvider;
 use Pyz\Yves\Heartbeat\Plugin\Provider\HeartbeatControllerProvider;
 use Pyz\Yves\Newsletter\Plugin\Provider\NewsletterControllerProvider;
 use Pyz\Yves\ProductReview\Plugin\Provider\ProductReviewControllerProvider;
 use Pyz\Yves\ProductSale\Plugin\Provider\ProductSaleControllerProvider;
 use Pyz\Yves\Twig\Plugin\Provider\TwigServiceProvider;
+use Pyz\Yves\WebProfiler\Plugin\ServiceProvider\WebProfilerServiceProvider;
 use Pyz\Yves\Wishlist\Plugin\Provider\WishlistControllerProvider;
 use Silex\Provider\FormServiceProvider;
 use Silex\Provider\HttpFragmentServiceProvider;
@@ -36,16 +37,17 @@ use Silex\Provider\SecurityServiceProvider;
 use Silex\Provider\ServiceControllerServiceProvider;
 use Silex\Provider\SessionServiceProvider;
 use Silex\Provider\ValidatorServiceProvider;
-use Spryker\Shared\Application\ApplicationConstants;
 use Spryker\Shared\Application\ServiceProvider\FormFactoryServiceProvider;
 use Spryker\Shared\Application\ServiceProvider\HeadersSecurityServiceProvider;
 use Spryker\Shared\Application\ServiceProvider\RoutingServiceProvider;
 use Spryker\Shared\Application\ServiceProvider\UrlGeneratorServiceProvider;
-use Spryker\Shared\Config\Config;
 use Spryker\Yves\Application\Plugin\Provider\CookieServiceProvider;
 use Spryker\Yves\Application\Plugin\Provider\ExceptionServiceProvider;
 use Spryker\Yves\Application\Plugin\Provider\YvesHstsServiceProvider;
+use Spryker\Yves\Application\Plugin\ServiceProvider\KernelLogServiceProvider;
+use Spryker\Yves\Application\Plugin\ServiceProvider\SslServiceProvider;
 use Spryker\Yves\CmsContentWidget\Plugin\CmsContentWidgetServiceProvider;
+use Spryker\Yves\Currency\Plugin\CurrencySwitcherServiceProvider;
 use Spryker\Yves\Kernel\Application;
 use Spryker\Yves\Messenger\Plugin\Provider\FlashMessengerServiceProvider;
 use Spryker\Yves\Money\Plugin\ServiceProvider\TwigMoneyServiceProvider;
@@ -58,6 +60,8 @@ use Spryker\Yves\ProductReview\Plugin\Provider\ProductAbstractReviewTwigServiceP
 use Spryker\Yves\Session\Plugin\ServiceProvider\SessionServiceProvider as SprykerSessionServiceProvider;
 use Spryker\Yves\Storage\Plugin\Provider\StorageCacheServiceProvider;
 use Spryker\Yves\Twig\Plugin\ServiceProvider\TwigServiceProvider as SprykerTwigServiceProvider;
+use Spryker\Yves\ZedRequest\Plugin\ServiceProvider\ZedRequestHeaderServiceProvider;
+use Spryker\Yves\ZedRequest\Plugin\ServiceProvider\ZedRequestLogServiceProvider;
 use SprykerShop\Yves\CatalogPage\Plugin\Provider\CatalogPageControllerProvider;
 use SprykerShop\Yves\CatalogPage\Plugin\Provider\CatalogPageTwigServiceProvider;
 use SprykerShop\Yves\CategoryWidget\Plugin\Provider\CategoryServiceProvider;
@@ -67,15 +71,20 @@ use SprykerShop\Yves\ProductSetListPage\Plugin\Provider\ProductSetListPageContro
 
 class YvesBootstrap
 {
-
     /**
      * @var \Spryker\Yves\Kernel\Application
      */
     protected $application;
 
+    /**
+     * @var \Pyz\Yves\Application\ApplicationConfig
+     */
+    protected $config;
+
     public function __construct()
     {
         $this->application = new Application();
+        $this->config = new ApplicationConfig();
     }
 
     /**
@@ -84,9 +93,7 @@ class YvesBootstrap
     public function boot()
     {
         $this->registerServiceProviders();
-
         $this->registerRouters();
-
         $this->registerControllerProviders();
 
         return $this->application;
@@ -97,8 +104,13 @@ class YvesBootstrap
      */
     protected function registerServiceProviders()
     {
+        $this->application->register(new SslServiceProvider());
         $this->application->register(new StorageCacheServiceProvider());
         $this->application->register(new SprykerTwigServiceProvider());
+        $this->application->register(new KernelLogServiceProvider());
+        $this->application->register(new ZedRequestHeaderServiceProvider());
+        $this->application->register(new ZedRequestLogServiceProvider());
+
         $this->application->register(new TwigServiceProvider());
         $this->application->register(new ApplicationServiceProvider());
         $this->application->register(new SessionServiceProvider());
@@ -108,7 +120,6 @@ class YvesBootstrap
         $this->application->register(new YvesSecurityServiceProvider());
         $this->application->register(new ExceptionServiceProvider());
         $this->application->register(new NewRelicRequestTransactionServiceProvider());
-        $this->application->register(new EventJournalServiceProvider());
         $this->application->register(new CookieServiceProvider());
         $this->application->register(new UrlGeneratorServiceProvider());
         $this->application->register(new ServiceControllerServiceProvider());
@@ -133,6 +144,7 @@ class YvesBootstrap
         $this->application->register(new ProductGroupTwigServiceProvider());
         $this->application->register(new ProductLabelTwigServiceProvider());
         $this->application->register(new CmsContentWidgetServiceProvider());
+        $this->application->register(new CurrencySwitcherServiceProvider());
         $this->application->register(new ProductAbstractReviewTwigServiceProvider());
         $this->application->register(new CatalogPageTwigServiceProvider());
     }
@@ -151,7 +163,7 @@ class YvesBootstrap
      */
     protected function registerControllerProviders()
     {
-        $isSsl = Config::get(ApplicationConstants::YVES_SSL_ENABLED);
+        $isSsl = $this->config->isSslEnabled();
 
         $controllerProviders = $this->getControllerProviderStack($isSsl);
 
@@ -180,9 +192,10 @@ class YvesBootstrap
             new CalculationControllerProvider($isSsl),
             new ProductSetListPageControllerProvider($isSsl),
             new ProductSaleControllerProvider($isSsl),
+            new PreviewControllerProvider($isSsl),
+            new CurrencyControllerProvider($isSsl),
             new ProductNewPageControllerProvider($isSsl),
             new ProductReviewControllerProvider($isSsl),
         ];
     }
-
 }

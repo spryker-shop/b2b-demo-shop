@@ -16,7 +16,6 @@ use SprykerShop\Yves\CmsContentWidgetProductSetConnector\Plugin\CmsProductSetCon
 
 class CmsContentWidgetDependencyProvider extends SprykerCmsContentWidgetDependencyProvider
 {
-
     /**
      * {@inheritdoc}
      *
@@ -36,5 +35,4 @@ class CmsContentWidgetDependencyProvider extends SprykerCmsContentWidgetDependen
             ),
         ];
     }
-
 }

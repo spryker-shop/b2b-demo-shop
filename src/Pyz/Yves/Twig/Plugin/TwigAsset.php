@@ -25,7 +25,6 @@ use Twig_SimpleFunction;
  */
 class TwigAsset extends AbstractPlugin implements TwigFunctionPluginInterface
 {
-
     /**
      * @param \Silex\Application $application
      *
@@ -239,5 +238,4 @@ class TwigAsset extends AbstractPlugin implements TwigFunctionPluginInterface
 
          return $widgetContainer;
     }
-
 }

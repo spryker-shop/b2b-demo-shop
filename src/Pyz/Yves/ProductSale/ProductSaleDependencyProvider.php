@@ -13,7 +13,6 @@ use SprykerShop\Yves\CategoryWidget\Plugin\CategoryReaderPlugin;
 
 class ProductSaleDependencyProvider extends AbstractBundleDependencyProvider
 {
-
     const CLIENT_SEARCH = 'CLIENT_SEARCH';
     const PLUGIN_CATEGORY_READER = 'PLUGIN_CATEGORY_READER';
 
@@ -57,5 +56,4 @@ class ProductSaleDependencyProvider extends AbstractBundleDependencyProvider
 
         return $container;
     }
-
 }

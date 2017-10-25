@@ -16,7 +16,6 @@ use SprykerShop\Yves\CmsPage\Plugin\TwigCms;
 
 class TwigSettings
 {
-
     /**
      * @return \Pyz\Yves\Twig\Dependency\Plugin\TwigFilterPluginInterface[]
      */
@@ -40,5 +39,4 @@ class TwigSettings
             new TwigAsset(),
         ];
     }
-
 }
