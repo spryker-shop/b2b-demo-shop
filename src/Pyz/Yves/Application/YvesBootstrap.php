@@ -25,7 +25,6 @@ use Pyz\Yves\Glossary\Plugin\Provider\TranslationServiceProvider;
 use Pyz\Yves\Heartbeat\Plugin\Provider\HeartbeatControllerProvider;
 use Pyz\Yves\Newsletter\Plugin\Provider\NewsletterControllerProvider;
 use Pyz\Yves\ProductReview\Plugin\Provider\ProductReviewControllerProvider;
-use Pyz\Yves\ProductSale\Plugin\Provider\ProductSaleControllerProvider;
 use Pyz\Yves\Twig\Plugin\Provider\TwigServiceProvider;
 use Pyz\Yves\WebProfiler\Plugin\ServiceProvider\WebProfilerServiceProvider;
 use Pyz\Yves\Wishlist\Plugin\Provider\WishlistControllerProvider;
@@ -67,6 +66,7 @@ use SprykerShop\Yves\CategoryWidget\Plugin\Provider\CategoryServiceProvider;
 use SprykerShop\Yves\CmsPage\Plugin\Provider\PreviewControllerProvider;
 use SprykerShop\Yves\HomePage\Plugin\Provider\HomePageControllerProvider;
 use SprykerShop\Yves\ProductNewPage\Plugin\Provider\ProductNewPageControllerProvider;
+use SprykerShop\Yves\ProductSalePage\Plugin\Provider\ProductSaleControllerProvider;
 use SprykerShop\Yves\ProductSetListPage\Plugin\Provider\ProductSetListPageControllerProvider;
 
 class YvesBootstrap
