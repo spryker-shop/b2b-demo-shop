@@ -7,7 +7,6 @@
 
 namespace Pyz\Yves\Checkout\Process;
 
-use Pyz\Yves\Application\Plugin\Provider\ApplicationControllerProvider;
 use Pyz\Yves\Checkout\CheckoutDependencyProvider;
 use Pyz\Yves\Checkout\Plugin\Provider\CheckoutControllerProvider;
 use Pyz\Yves\Checkout\Process\Steps\AddressStep;
@@ -25,6 +24,7 @@ use Spryker\Yves\StepEngine\Process\StepBreadcrumbGenerator;
 use Spryker\Yves\StepEngine\Process\StepCollection;
 use Spryker\Yves\StepEngine\Process\StepCollectionInterface;
 use Spryker\Yves\StepEngine\Process\StepEngine;
+use SprykerShop\Yves\HomePage\Plugin\Provider\HomePageControllerProvider;
 
 class StepFactory extends SprykerStepFactory
 {
@@ -68,7 +68,7 @@ class StepFactory extends SprykerStepFactory
     {
         return new EntryStep(
             CheckoutControllerProvider::CHECKOUT_INDEX,
-            ApplicationControllerProvider::ROUTE_HOME
+            HomePageControllerProvider::ROUTE_HOME
         );
     }
 
@@ -81,7 +81,7 @@ class StepFactory extends SprykerStepFactory
             $this->getProvidedDependency(CheckoutDependencyProvider::CLIENT_CUSTOMER),
             $this->getCustomerStepHandler(),
             CheckoutControllerProvider::CHECKOUT_CUSTOMER,
-            ApplicationControllerProvider::ROUTE_HOME,
+            HomePageControllerProvider::ROUTE_HOME,
             $this->getApplication()->path(CustomerControllerProvider::ROUTE_LOGOUT)
         );
     }
@@ -95,7 +95,7 @@ class StepFactory extends SprykerStepFactory
             $this->getProvidedDependency(CheckoutDependencyProvider::CLIENT_CUSTOMER),
             $this->getProvidedDependency(CheckoutDependencyProvider::CLIENT_CALCULATION),
             CheckoutControllerProvider::CHECKOUT_ADDRESS,
-            ApplicationControllerProvider::ROUTE_HOME
+            HomePageControllerProvider::ROUTE_HOME
         );
     }
 
@@ -108,7 +108,7 @@ class StepFactory extends SprykerStepFactory
             $this->getCalculationClient(),
             $this->getShipmentPlugins(),
             CheckoutControllerProvider::CHECKOUT_SHIPMENT,
-            ApplicationControllerProvider::ROUTE_HOME
+            HomePageControllerProvider::ROUTE_HOME
         );
     }
 
@@ -136,7 +136,7 @@ class StepFactory extends SprykerStepFactory
         return new PaymentStep(
             $this->createPaymentMethodHandler(),
             CheckoutControllerProvider::CHECKOUT_PAYMENT,
-            ApplicationControllerProvider::ROUTE_HOME,
+            HomePageControllerProvider::ROUTE_HOME,
             $this->getFlashMessenger()
         );
     }
@@ -150,7 +150,7 @@ class StepFactory extends SprykerStepFactory
             $this->createProductBundleGrouper(),
             $this->getCartClient(),
             CheckoutControllerProvider::CHECKOUT_SUMMARY,
-            ApplicationControllerProvider::ROUTE_HOME
+            HomePageControllerProvider::ROUTE_HOME
         );
     }
 
@@ -163,7 +163,7 @@ class StepFactory extends SprykerStepFactory
             $this->getCheckoutClient(),
             $this->getFlashMessenger(),
             CheckoutControllerProvider::CHECKOUT_PLACE_ORDER,
-            ApplicationControllerProvider::ROUTE_HOME,
+            HomePageControllerProvider::ROUTE_HOME,
             [
                 'payment failed' => CheckoutControllerProvider::CHECKOUT_PAYMENT,
             ]
@@ -179,7 +179,7 @@ class StepFactory extends SprykerStepFactory
             $this->getProvidedDependency(CheckoutDependencyProvider::CLIENT_CUSTOMER),
             $this->getCartClient(),
             CheckoutControllerProvider::CHECKOUT_SUCCESS,
-            ApplicationControllerProvider::ROUTE_HOME
+            HomePageControllerProvider::ROUTE_HOME
         );
     }
 
