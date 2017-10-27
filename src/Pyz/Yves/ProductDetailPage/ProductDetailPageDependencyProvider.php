@@ -19,7 +19,7 @@ use SprykerShop\Yves\ProductImageWidget\Plugin\ProductDetailPage\ProductImageWid
 use SprykerShop\Yves\ProductImageWidget\Plugin\StorageProductImageExpanderPlugin;
 use SprykerShop\Yves\ProductLabelWidget\Plugin\ProductDetailPage\ProductAbstractLabelWidgetPlugin;
 use SprykerShop\Yves\ProductOptionWidget\Plugin\ProductDetailPage\ProductOptionWidgetPlugin;
-use SprykerShop\Yves\ProductRelationWidget\Plugin\ProductRelationWidgetPlugin;
+use SprykerShop\Yves\ProductRelationWidget\Plugin\ProductDetailPage\SimilarProductsWidgetPlugin;
 use SprykerShop\Yves\ProductReviewWidget\Plugin\ProductDetailPage\ProductReviewWidgetPlugin;
 use SprykerShop\Yves\WishlistWidget\Plugin\ProductDetailPage\WishlistWidgetPlugin;
 
@@ -56,7 +56,7 @@ class ProductDetailPageDependencyProvider extends SprykerShopProductDetailPageDe
             ProductReviewWidgetPlugin::class,
             ProductCmsBlockWidgetPlugin::class,
             ProductAbstractLabelWidgetPlugin::class,
-            ProductRelationWidgetPlugin::class,
+            SimilarProductsWidgetPlugin::class,
             ProductGroupWidgetPlugin::class,
         ];
     }
