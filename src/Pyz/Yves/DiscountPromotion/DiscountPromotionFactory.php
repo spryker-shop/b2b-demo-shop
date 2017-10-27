@@ -7,13 +7,13 @@
 
 namespace Pyz\Yves\DiscountPromotion;
 
-use Pyz\Yves\Product\Plugin\StorageProductMapperPlugin;
 use Spryker\Yves\DiscountPromotion\DiscountPromotionFactory as SprykerDiscountPromotionFactory;
+use SprykerShop\Yves\ProductDetailPage\Plugin\StorageProductMapperPlugin;
 
 class DiscountPromotionFactory extends SprykerDiscountPromotionFactory
 {
     /**
-     * @return \Pyz\Yves\Product\Dependency\Plugin\StorageProductMapperPluginInterface
+     * @return \SprykerShop\Yves\ProductDetailPage\Plugin\StorageProductMapperPlugin
      */
     public function createStorageProductMapperPlugin()
     {
