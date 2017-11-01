@@ -7,7 +7,6 @@
 
 namespace Pyz\Yves\Collector;
 
-use Pyz\Yves\Redirect\Plugin\RedirectResourceCreator;
 use Spryker\Yves\Kernel\AbstractBundleDependencyProvider;
 use Spryker\Yves\Kernel\Container;
 use Spryker\Yves\Kernel\Plugin\Pimple;
@@ -15,6 +14,7 @@ use SprykerShop\Yves\CatalogPage\Plugin\CatalogPageResourceCreator;
 use SprykerShop\Yves\CmsPage\Plugin\PageResourceCreator;
 use SprykerShop\Yves\ProductDetailPage\Plugin\ProductDetailPageResourceCreator;
 use SprykerShop\Yves\ProductSetDetailPage\Plugin\ProductSetDetailPageResourceCreatorPlugin;
+use SprykerShop\Yves\RedirectPage\Plugin\RedirectResourceCreator;
 
 class CollectorDependencyProvider extends AbstractBundleDependencyProvider
 {
@@ -30,9 +30,9 @@ class CollectorDependencyProvider extends AbstractBundleDependencyProvider
     const CLIENT_CATALOG = 'client client';
     const PLUGIN_APPLICATION = 'application plugin';
     const PLUGIN_CATALOG_PAGE_RESOURCE_CREATOR = 'PLUGIN_CATALOG_PAGE_RESOURCE_CREATOR';
-    const PLUGIN_PAGE_RESOURCE_CREATOR = 'page resource creator plugin';
+    const PLUGIN_PAGE_RESOURCE_CREATOR = 'PLUGIN_PAGE_RESOURCE_CREATOR';
     const PLUGIN_PRODUCT_DETAIL_PAGE_RESOURCE_CREATOR = 'PLUGIN_PRODUCT_DETAIL_PAGE_RESOURCE_CREATOR';
-    const PLUGIN_REDIRECT_RESOURCE_CREATOR = 'redirect resource creator plugin';
+    const PLUGIN_REDIRECT_RESOURCE_CREATOR = 'PLUGIN_REDIRECT_RESOURCE_CREATOR';
     const PLUGIN_PRODUCT_SET_RESOURCE_CREATOR = 'PLUGIN_PRODUCT_SET_RESOURCE_CREATOR';
 
     /**

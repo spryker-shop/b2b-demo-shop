@@ -76,7 +76,7 @@ class CollectorFactory extends AbstractFactory
     }
 
     /**
-     * @return \Pyz\Yves\Redirect\Plugin\RedirectResourceCreator
+     * @return \SprykerShop\Yves\RedirectPage\Plugin\RedirectResourceCreator
      */
     protected function getRedirectResourceCreator()
     {
@@ -84,7 +84,7 @@ class CollectorFactory extends AbstractFactory
     }
 
     /**
-     * @return \Pyz\Yves\Cms\Plugin\PageResourceCreator
+     * @return \SprykerShop\Yves\CmsPage\Plugin\PageResourceCreator
      */
     protected function getPageResourceCreator()
     {

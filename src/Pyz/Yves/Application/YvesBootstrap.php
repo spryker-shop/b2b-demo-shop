@@ -13,14 +13,12 @@ use Pyz\Yves\Application\Plugin\Provider\ApplicationServiceProvider;
 use Pyz\Yves\Application\Plugin\Provider\AutoloaderCacheServiceProvider;
 use Pyz\Yves\Application\Plugin\Provider\LanguageServiceProvider;
 use Pyz\Yves\Application\Plugin\Provider\YvesSecurityServiceProvider;
-use Pyz\Yves\Calculation\Plugin\Provider\CalculationControllerProvider;
 use Pyz\Yves\Checkout\Plugin\Provider\CheckoutControllerProvider;
 use Pyz\Yves\Collector\Plugin\Router\StorageRouter;
 use Pyz\Yves\Currency\Plugin\CurrencyControllerProvider;
 use Pyz\Yves\Customer\Plugin\Provider\CustomerControllerProvider;
 use Pyz\Yves\Customer\Plugin\Provider\CustomerSecurityServiceProvider;
 use Pyz\Yves\Glossary\Plugin\Provider\TranslationServiceProvider;
-use Pyz\Yves\Heartbeat\Plugin\Provider\HeartbeatControllerProvider;
 use Pyz\Yves\Newsletter\Plugin\Provider\NewsletterControllerProvider;
 use Pyz\Yves\ProductReview\Plugin\Provider\ProductReviewControllerProvider;
 use Pyz\Yves\Twig\Plugin\Provider\TwigServiceProvider;
@@ -58,6 +56,7 @@ use Spryker\Yves\Storage\Plugin\Provider\StorageCacheServiceProvider;
 use Spryker\Yves\Twig\Plugin\ServiceProvider\TwigServiceProvider as SprykerTwigServiceProvider;
 use Spryker\Yves\ZedRequest\Plugin\ServiceProvider\ZedRequestHeaderServiceProvider;
 use Spryker\Yves\ZedRequest\Plugin\ServiceProvider\ZedRequestLogServiceProvider;
+use SprykerShop\Yves\CalculationPage\Plugin\Provider\CalculationPageControllerProvider;
 use SprykerShop\Yves\CartPage\Plugin\Provider\CartControllerProvider;
 use SprykerShop\Yves\CartPage\Plugin\Provider\CartServiceProvider;
 use SprykerShop\Yves\CatalogPage\Plugin\Provider\CatalogPageControllerProvider;
@@ -65,6 +64,7 @@ use SprykerShop\Yves\CatalogPage\Plugin\Provider\CatalogPageTwigServiceProvider;
 use SprykerShop\Yves\CategoryWidget\Plugin\Provider\CategoryServiceProvider;
 use SprykerShop\Yves\CmsPage\Plugin\Provider\PreviewControllerProvider;
 use SprykerShop\Yves\DiscountWidget\Plugin\Provider\DiscountWidgetControllerProvider;
+use SprykerShop\Yves\HeartbeatPage\Plugin\Provider\HeartbeatPageControllerProvider;
 use SprykerShop\Yves\HomePage\Plugin\Provider\HomePageControllerProvider;
 use SprykerShop\Yves\ProductNewPage\Plugin\Provider\ProductNewPageControllerProvider;
 use SprykerShop\Yves\ProductSalePage\Plugin\Provider\ProductSaleControllerProvider;
@@ -72,7 +72,6 @@ use SprykerShop\Yves\ProductSetListPage\Plugin\Provider\ProductSetListPageContro
 
 class YvesBootstrap
 {
-
     /**
      * @var \Spryker\Yves\Kernel\Application
      */
@@ -188,18 +187,17 @@ class YvesBootstrap
             new CustomerControllerProvider($isSsl),
             new CartControllerProvider($isSsl),
             new WishlistControllerProvider($isSsl),
-            new HeartbeatControllerProvider($isSsl),
+            new HeartbeatPageControllerProvider($isSsl),
             new NewsletterControllerProvider($isSsl),
             new CatalogPageControllerProvider($isSsl),
-            new CalculationControllerProvider($isSsl),
+            new CalculationPageControllerProvider($isSsl),
             new ProductSetListPageControllerProvider($isSsl),
             new ProductSaleControllerProvider($isSsl),
             new PreviewControllerProvider($isSsl),
             new CurrencyControllerProvider($isSsl),
             new ProductNewPageControllerProvider($isSsl),
             new ProductReviewControllerProvider($isSsl),
-            new DiscountWidgetControllerProvider($isSsl)
+            new DiscountWidgetControllerProvider($isSsl),
         ];
     }
-
 }
