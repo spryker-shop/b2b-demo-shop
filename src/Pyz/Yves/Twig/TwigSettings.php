@@ -7,13 +7,14 @@
 
 namespace Pyz\Yves\Twig;
 
-use Pyz\Yves\Customer\Plugin\TwigCustomer;
 use Pyz\Yves\Twig\Plugin\TwigAsset;
 use Pyz\Yves\Twig\Plugin\TwigNative;
 use Spryker\Yves\CmsBlock\Twig\Plugin\TwigCmsBlock;
 use Spryker\Yves\CmsBlock\Twig\Plugin\TwigCmsBlockPlaceholder;
 use SprykerShop\Yves\CmsPage\Plugin\TwigCms;
+use SprykerShop\Yves\CustomerPage\Plugin\TwigCustomer;
 
+// TODO: replace with service providers?
 class TwigSettings
 {
     /**

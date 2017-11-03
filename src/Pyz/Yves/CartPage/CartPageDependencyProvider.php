@@ -13,6 +13,7 @@ use SprykerShop\Yves\CheckoutPage\Plugin\CartPage\CheckoutBreadcrumbWidgetPlugin
 use SprykerShop\Yves\DiscountPromotionWidget\Plugin\CartPage\DiscountPromotionItemListWidgetPlugin;
 use SprykerShop\Yves\DiscountWidget\Plugin\CartPage\DiscountSummaryWidgetPlugin;
 use SprykerShop\Yves\DiscountWidget\Plugin\CartPage\DiscountVoucherFormWidgetPlugin;
+use SprykerShop\Yves\ProductBundleWidget\Plugin\CartPage\ProductBundleItemsWidgetPlugin;
 use SprykerShop\Yves\ProductOptionWidget\Plugin\CartPage\CartItemProductOptionWidgetPlugin;
 use SprykerShop\Yves\ProductRelationWidget\Plugin\CartPage\UpSellingProductsWidgetPlugin;
 
@@ -27,11 +28,12 @@ class CartPageDependencyProvider extends SprykerCartPageDependencyProvider
     {
         return [
             CartItemProductOptionWidgetPlugin::class,
-            CheckoutBreadcrumbWidgetPlugin::class,
+//            CheckoutBreadcrumbWidgetPlugin::class,
             DiscountVoucherFormWidgetPlugin::class,
             DiscountSummaryWidgetPlugin::class,
             DiscountPromotionItemListWidgetPlugin::class,
             UpSellingProductsWidgetPlugin::class,
+            ProductBundleItemsWidgetPlugin::class,
         ];
     }
 }
