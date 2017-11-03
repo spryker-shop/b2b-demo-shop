@@ -28,7 +28,7 @@ class CartPageDependencyProvider extends SprykerCartPageDependencyProvider
     {
         return [
             CartItemProductOptionWidgetPlugin::class,
-//            CheckoutBreadcrumbWidgetPlugin::class,
+            CheckoutBreadcrumbWidgetPlugin::class,
             DiscountVoucherFormWidgetPlugin::class,
             DiscountSummaryWidgetPlugin::class,
             DiscountPromotionItemListWidgetPlugin::class,
