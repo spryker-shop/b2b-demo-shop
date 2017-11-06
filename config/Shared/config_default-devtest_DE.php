@@ -4,9 +4,9 @@
  * This is the global runtime configuration for Yves and Generated_Yves_Zed in a devtest environment.
  */
 
-use Pyz\Shared\Newsletter\NewsletterConstants;
 use Spryker\Shared\Application\ApplicationConstants;
 use Spryker\Shared\Customer\CustomerConstants;
+use Spryker\Shared\Newsletter\NewsletterConstants;
 use Spryker\Shared\Payolution\PayolutionConstants;
 use Spryker\Shared\ProductManagement\ProductManagementConstants;
 use Spryker\Shared\Propel\PropelConstants;

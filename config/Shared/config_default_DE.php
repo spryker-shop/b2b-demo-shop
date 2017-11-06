@@ -1,9 +1,9 @@
 <?php
 
-use Pyz\Shared\Newsletter\NewsletterConstants;
 use Spryker\Shared\Application\ApplicationConstants;
 use Spryker\Shared\Customer\CustomerConstants;
 use Spryker\Shared\Event\EventConstants;
+use Spryker\Shared\Newsletter\NewsletterConstants;
 use Spryker\Shared\Payolution\PayolutionConstants;
 use Spryker\Shared\ProductManagement\ProductManagementConstants;
 use Spryker\Shared\Session\SessionConstants;

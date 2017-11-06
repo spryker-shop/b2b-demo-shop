@@ -7,8 +7,8 @@
 
 namespace Pyz\Zed\Newsletter;
 
-use Pyz\Shared\Newsletter\NewsletterConstants;
 use Spryker\Zed\Newsletter\NewsletterConfig as SprykerNewsletterConfig;
+use SprykerShop\Shared\NewsletterPage\NewsletterPageConstants;
 
 class NewsletterConfig extends SprykerNewsletterConfig
 {
@@ -18,7 +18,7 @@ class NewsletterConfig extends SprykerNewsletterConfig
     public function getNewsletterTypes()
     {
         return [
-            NewsletterConstants::EDITORIAL_NEWSLETTER,
+            NewsletterPageConstants::EDITORIAL_NEWSLETTER,
         ];
     }
 }

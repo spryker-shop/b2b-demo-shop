@@ -16,11 +16,9 @@ use Pyz\Yves\Application\Plugin\Provider\YvesSecurityServiceProvider;
 use Pyz\Yves\Collector\Plugin\Router\StorageRouter;
 use Pyz\Yves\Currency\Plugin\CurrencyControllerProvider;
 use Pyz\Yves\Glossary\Plugin\Provider\TranslationServiceProvider;
-use Pyz\Yves\Newsletter\Plugin\Provider\NewsletterControllerProvider;
 use Pyz\Yves\ProductReview\Plugin\Provider\ProductReviewControllerProvider;
 use Pyz\Yves\Twig\Plugin\Provider\TwigServiceProvider;
 use Pyz\Yves\WebProfiler\Plugin\ServiceProvider\WebProfilerServiceProvider;
-use Pyz\Yves\Wishlist\Plugin\Provider\WishlistControllerProvider;
 use Silex\Provider\FormServiceProvider;
 use Silex\Provider\HttpFragmentServiceProvider;
 use Silex\Provider\RememberMeServiceProvider;
@@ -66,9 +64,11 @@ use SprykerShop\Yves\CustomerPage\Plugin\Provider\CustomerSecurityServiceProvide
 use SprykerShop\Yves\DiscountWidget\Plugin\Provider\DiscountWidgetControllerProvider;
 use SprykerShop\Yves\HeartbeatPage\Plugin\Provider\HeartbeatPageControllerProvider;
 use SprykerShop\Yves\HomePage\Plugin\Provider\HomePageControllerProvider;
+use SprykerShop\Yves\NewsletterPage\Plugin\Provider\NewsletterPageControllerProvider;
 use SprykerShop\Yves\ProductNewPage\Plugin\Provider\ProductNewPageControllerProvider;
 use SprykerShop\Yves\ProductSalePage\Plugin\Provider\ProductSaleControllerProvider;
 use SprykerShop\Yves\ProductSetListPage\Plugin\Provider\ProductSetListPageControllerProvider;
+use SprykerShop\Yves\WishlistPage\Plugin\Provider\WishlistPageControllerProvider;
 
 class YvesBootstrap
 {
@@ -186,9 +186,9 @@ class YvesBootstrap
             new CheckoutPageControllerProvider($isSsl),
             new CustomerPageControllerProvider($isSsl),
             new CartControllerProvider($isSsl),
-            new WishlistControllerProvider($isSsl),
+            new WishlistPageControllerProvider($isSsl),
             new HeartbeatPageControllerProvider($isSsl),
-            new NewsletterControllerProvider($isSsl),
+            new NewsletterPageControllerProvider($isSsl),
             new CatalogPageControllerProvider($isSsl),
             new CalculationPageControllerProvider($isSsl),
             new ProductSetListPageControllerProvider($isSsl),

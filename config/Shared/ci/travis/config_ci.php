@@ -2,7 +2,6 @@
 
 use Monolog\Logger;
 use Pyz\Shared\Log\LogConstants;
-use Pyz\Shared\Newsletter\NewsletterConstants;
 use Pyz\Shared\WebProfiler\WebProfilerConstants;
 use Pyz\Yves\Application\YvesBootstrap;
 use Pyz\Zed\Application\Communication\ZedBootstrap;
@@ -14,6 +13,7 @@ use Spryker\Shared\EventBehavior\EventBehaviorConstants;
 use Spryker\Shared\Kernel\KernelConstants;
 use Spryker\Shared\Kernel\Store;
 use Spryker\Shared\Mail\MailConstants;
+use Spryker\Shared\Newsletter\NewsletterConstants;
 use Spryker\Shared\Payolution\PayolutionConstants;
 use Spryker\Shared\ProductManagement\ProductManagementConstants;
 use Spryker\Shared\Propel\PropelConstants;
