@@ -16,7 +16,6 @@ use Pyz\Yves\Application\Plugin\Provider\YvesSecurityServiceProvider;
 use Pyz\Yves\Collector\Plugin\Router\StorageRouter;
 use Pyz\Yves\Currency\Plugin\CurrencyControllerProvider;
 use Pyz\Yves\Glossary\Plugin\Provider\TranslationServiceProvider;
-use Pyz\Yves\ProductReview\Plugin\Provider\ProductReviewControllerProvider;
 use Pyz\Yves\Twig\Plugin\Provider\TwigServiceProvider;
 use Pyz\Yves\WebProfiler\Plugin\ServiceProvider\WebProfilerServiceProvider;
 use Silex\Provider\FormServiceProvider;
@@ -66,6 +65,7 @@ use SprykerShop\Yves\HeartbeatPage\Plugin\Provider\HeartbeatPageControllerProvid
 use SprykerShop\Yves\HomePage\Plugin\Provider\HomePageControllerProvider;
 use SprykerShop\Yves\NewsletterPage\Plugin\Provider\NewsletterPageControllerProvider;
 use SprykerShop\Yves\ProductNewPage\Plugin\Provider\ProductNewPageControllerProvider;
+use SprykerShop\Yves\ProductReviewWidget\Plugin\Provider\ProductReviewControllerProvider;
 use SprykerShop\Yves\ProductSalePage\Plugin\Provider\ProductSaleControllerProvider;
 use SprykerShop\Yves\ProductSetListPage\Plugin\Provider\ProductSetListPageControllerProvider;
 use SprykerShop\Yves\WishlistPage\Plugin\Provider\WishlistPageControllerProvider;
