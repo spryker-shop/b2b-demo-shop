@@ -330,7 +330,7 @@ $config[KernelConstants::AUTO_LOADER_UNRESOLVABLE_CACHE_PROVIDER] = File::class;
 
 // ---------- Dependency injector
 $config[KernelConstants::DEPENDENCY_INJECTOR_YVES] = [
-    'Checkout' => [
+    'CheckoutPage' => [
         'DummyPayment',
     ],
 ];

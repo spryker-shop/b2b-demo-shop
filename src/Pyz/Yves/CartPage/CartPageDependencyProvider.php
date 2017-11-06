@@ -9,7 +9,7 @@ namespace Pyz\Yves\CartPage;
 
 use Spryker\Yves\Kernel\Container;
 use SprykerShop\Yves\CartPage\CartPageDependencyProvider as SprykerCartPageDependencyProvider;
-use SprykerShop\Yves\CheckoutPage\Plugin\CartPage\CheckoutBreadcrumbWidgetPlugin;
+use SprykerShop\Yves\CheckoutWidget\Plugin\CartPage\CheckoutBreadcrumbWidgetPlugin;
 use SprykerShop\Yves\DiscountPromotionWidget\Plugin\CartPage\DiscountPromotionItemListWidgetPlugin;
 use SprykerShop\Yves\DiscountWidget\Plugin\CartPage\DiscountSummaryWidgetPlugin;
 use SprykerShop\Yves\DiscountWidget\Plugin\CartPage\DiscountVoucherFormWidgetPlugin;

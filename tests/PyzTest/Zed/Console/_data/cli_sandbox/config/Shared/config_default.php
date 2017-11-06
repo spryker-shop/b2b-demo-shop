@@ -377,7 +377,7 @@ $config[PropelConstants::SCHEMA_FILE_PATH_PATTERN] = APPLICATION_VENDOR_DIR . '/
 $config[PropelConstants::USE_SUDO_TO_MANAGE_DATABASE] = true;
 
 $config[KernelConstants::DEPENDENCY_INJECTOR_YVES] = [
-    'Checkout' => [
+    'CheckoutPage' => [
         'DummyPayment',
     ],
 ];
