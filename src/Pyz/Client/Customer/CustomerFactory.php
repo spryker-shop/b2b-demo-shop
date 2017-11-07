@@ -13,16 +13,6 @@ use Spryker\Client\Customer\CustomerFactory as SprykerCustomerFactory;
 class CustomerFactory extends SprykerCustomerFactory
 {
     /**
-     * @return \Pyz\Client\Customer\Zed\CustomerStubInterface
-     */
-    public function createZedCustomerStub()
-    {
-        return new CustomerStub(
-            $this->getProvidedDependency(CustomerDependencyProvider::SERVICE_ZED)
-        );
-    }
-
-    /**
      * @return \Spryker\Client\Cart\CartClientInterface
      */
     public function getCartClient()

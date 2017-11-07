@@ -8,7 +8,6 @@
 namespace Pyz\Client\Customer;
 
 use Generated\Shared\Transfer\AddressTransfer;
-use Generated\Shared\Transfer\CustomerOverviewRequestTransfer;
 use Generated\Shared\Transfer\CustomerTransfer;
 use Spryker\Client\Customer\CustomerClient as SprykerCustomerClient;
 
@@ -17,22 +16,6 @@ use Spryker\Client\Customer\CustomerClient as SprykerCustomerClient;
  */
 class CustomerClient extends SprykerCustomerClient implements CustomerClientInterface
 {
-    /**
-     * {@inheritdoc}
-     *
-     * @api
-     *
-     * @param \Generated\Shared\Transfer\CustomerOverviewRequestTransfer $overviewRequest
-     *
-     * @return \Generated\Shared\Transfer\CustomerOverviewResponseTransfer
-     */
-    public function getCustomerOverview(CustomerOverviewRequestTransfer $overviewRequest)
-    {
-        return $this->getFactory()
-            ->createZedCustomerStub()
-            ->getCustomerOverview($overviewRequest);
-    }
-
     /**
      * {@inheritdoc}
      *

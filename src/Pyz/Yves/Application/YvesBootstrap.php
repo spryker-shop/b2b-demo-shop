@@ -63,7 +63,7 @@ use SprykerShop\Yves\CustomerPage\Plugin\Provider\CustomerSecurityServiceProvide
 use SprykerShop\Yves\DiscountWidget\Plugin\Provider\DiscountWidgetControllerProvider;
 use SprykerShop\Yves\HeartbeatPage\Plugin\Provider\HeartbeatPageControllerProvider;
 use SprykerShop\Yves\HomePage\Plugin\Provider\HomePageControllerProvider;
-use SprykerShop\Yves\NewsletterPage\Plugin\Provider\NewsletterPageControllerProvider;
+use SprykerShop\Yves\NewsletterWidget\Plugin\Provider\NewsletterWidgetControllerProvider;
 use SprykerShop\Yves\ProductNewPage\Plugin\Provider\ProductNewPageControllerProvider;
 use SprykerShop\Yves\ProductReviewWidget\Plugin\Provider\ProductReviewControllerProvider;
 use SprykerShop\Yves\ProductSalePage\Plugin\Provider\ProductSaleControllerProvider;
@@ -188,7 +188,7 @@ class YvesBootstrap
             new CartControllerProvider($isSsl),
             new WishlistPageControllerProvider($isSsl),
             new HeartbeatPageControllerProvider($isSsl),
-            new NewsletterPageControllerProvider($isSsl),
+            new NewsletterWidgetControllerProvider($isSsl),
             new CatalogPageControllerProvider($isSsl),
             new CalculationPageControllerProvider($isSsl),
             new ProductSetListPageControllerProvider($isSsl),
