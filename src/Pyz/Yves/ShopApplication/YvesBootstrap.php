@@ -70,6 +70,7 @@ use SprykerShop\Yves\ShopLayout\Plugin\Provider\LanguageServiceProvider;
 use SprykerShop\Yves\ShopRouter\Plugin\Router\SilexRouter;
 use SprykerShop\Yves\ShopRouter\Plugin\Router\StorageRouter;
 use SprykerShop\Yves\WishlistPage\Plugin\Provider\WishlistPageControllerProvider;
+use SprykerShop\Yves\UI\Plugin\Provider\UITwigServiceProvider;
 
 class YvesBootstrap
 {
@@ -149,6 +150,7 @@ class YvesBootstrap
         $this->application->register(new CurrencySwitcherServiceProvider());
         $this->application->register(new ProductAbstractReviewTwigServiceProvider());
         $this->application->register(new CatalogPageTwigServiceProvider());
+        $this->application->register(new UITwigServiceProvider());
     }
 
     /**
