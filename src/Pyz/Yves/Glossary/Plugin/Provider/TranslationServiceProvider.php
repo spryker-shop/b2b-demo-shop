@@ -7,7 +7,7 @@
 
 namespace Pyz\Yves\Glossary\Plugin\Provider;
 
-use Pyz\Yves\Application\Plugin\Provider\AbstractServiceProvider;
+use SprykerShop\Yves\ShopApplication\Plugin\Provider\AbstractServiceProvider;
 use Silex\Application;
 
 /**

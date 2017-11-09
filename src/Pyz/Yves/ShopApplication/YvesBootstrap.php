@@ -5,14 +5,8 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Pyz\Yves\Application;
+namespace Pyz\Yves\ShopApplication;
 
-use Pyz\Shared\Application\Business\Routing\SilexRouter;
-use Pyz\Yves\Application\Plugin\Provider\ApplicationServiceProvider;
-use Pyz\Yves\Application\Plugin\Provider\AutoloaderCacheServiceProvider;
-use Pyz\Yves\Application\Plugin\Provider\LanguageServiceProvider;
-use Pyz\Yves\Application\Plugin\Provider\YvesSecurityServiceProvider;
-use Pyz\Yves\Collector\Plugin\Router\StorageRouter;
 use Pyz\Yves\Currency\Plugin\CurrencyControllerProvider;
 use Pyz\Yves\Glossary\Plugin\Provider\TranslationServiceProvider;
 use Pyz\Yves\Twig\Plugin\Provider\TwigServiceProvider;
@@ -28,6 +22,7 @@ use Spryker\Shared\Application\ServiceProvider\FormFactoryServiceProvider;
 use Spryker\Shared\Application\ServiceProvider\HeadersSecurityServiceProvider;
 use Spryker\Shared\Application\ServiceProvider\RoutingServiceProvider;
 use Spryker\Shared\Application\ServiceProvider\UrlGeneratorServiceProvider;
+use Spryker\Yves\Application\ApplicationConfig;
 use Spryker\Yves\Application\Plugin\Provider\CookieServiceProvider;
 use Spryker\Yves\Application\Plugin\Provider\ExceptionServiceProvider;
 use Spryker\Yves\Application\Plugin\Provider\YvesHstsServiceProvider;
@@ -68,6 +63,12 @@ use SprykerShop\Yves\ProductNewPage\Plugin\Provider\ProductNewPageControllerProv
 use SprykerShop\Yves\ProductReviewWidget\Plugin\Provider\ProductReviewControllerProvider;
 use SprykerShop\Yves\ProductSalePage\Plugin\Provider\ProductSaleControllerProvider;
 use SprykerShop\Yves\ProductSetListPage\Plugin\Provider\ProductSetListPageControllerProvider;
+use SprykerShop\Yves\ShopApplication\Plugin\Provider\AutoloaderCacheServiceProvider;
+use SprykerShop\Yves\ShopApplication\Plugin\Provider\ShopApplicationServiceProvider;
+use SprykerShop\Yves\ShopApplication\Plugin\Provider\YvesSecurityServiceProvider;
+use SprykerShop\Yves\ShopLayout\Plugin\Provider\LanguageServiceProvider;
+use SprykerShop\Yves\ShopRouter\Plugin\Router\SilexRouter;
+use SprykerShop\Yves\ShopRouter\Plugin\Router\StorageRouter;
 use SprykerShop\Yves\WishlistPage\Plugin\Provider\WishlistPageControllerProvider;
 
 class YvesBootstrap
@@ -78,7 +79,7 @@ class YvesBootstrap
     protected $application;
 
     /**
-     * @var \Pyz\Yves\Application\ApplicationConfig
+     * @var \Spryker\Yves\Application\ApplicationConfig
      */
     protected $config;
 
@@ -113,7 +114,7 @@ class YvesBootstrap
         $this->application->register(new ZedRequestLogServiceProvider());
 
         $this->application->register(new TwigServiceProvider());
-        $this->application->register(new ApplicationServiceProvider());
+        $this->application->register(new ShopApplicationServiceProvider());
         $this->application->register(new SessionServiceProvider());
         $this->application->register(new SprykerSessionServiceProvider());
         $this->application->register(new SecurityServiceProvider());
@@ -156,7 +157,7 @@ class YvesBootstrap
     protected function registerRouters()
     {
         $this->application->addRouter((new StorageRouter())->setSsl(false));
-        $this->application->addRouter(new SilexRouter($this->application));
+        $this->application->addRouter(new SilexRouter());
     }
 
     /**
@@ -176,7 +177,7 @@ class YvesBootstrap
     /**
      * @param bool|null $isSsl
      *
-     * @return \Pyz\Yves\Application\Plugin\Provider\AbstractYvesControllerProvider[]
+     * @return \SprykerShop\Yves\ShopApplication\Plugin\Provider\AbstractYvesControllerProvider[]
      */
     protected function getControllerProviderStack($isSsl)
     {

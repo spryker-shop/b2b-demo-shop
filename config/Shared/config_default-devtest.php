@@ -6,7 +6,7 @@
 
 use Monolog\Logger;
 use Pyz\Shared\WebProfiler\WebProfilerConstants;
-use Pyz\Yves\Application\YvesBootstrap;
+use Pyz\Yves\ShopApplication\YvesBootstrap;
 use Pyz\Zed\Application\Communication\ZedBootstrap;
 use Spryker\Shared\Application\Log\Config\SprykerLoggerConfig;
 use Spryker\Shared\Config\ConfigConstants;
