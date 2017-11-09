@@ -7,8 +7,8 @@
 
 namespace Pyz\Yves\Currency\Plugin;
 
-use Pyz\Yves\Application\Plugin\Provider\AbstractYvesControllerProvider;
 use Silex\Application;
+use SprykerShop\Yves\ShopApplication\Plugin\Provider\AbstractYvesControllerProvider;
 
 class CurrencyControllerProvider extends AbstractYvesControllerProvider
 {

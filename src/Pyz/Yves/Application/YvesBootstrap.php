@@ -8,7 +8,6 @@
 namespace Pyz\Yves\Application;
 
 use Pyz\Shared\Application\Business\Routing\SilexRouter;
-use Pyz\Yves\Application\Plugin\Provider\ApplicationControllerProvider;
 use Pyz\Yves\Application\Plugin\Provider\ApplicationServiceProvider;
 use Pyz\Yves\Application\Plugin\Provider\AutoloaderCacheServiceProvider;
 use Pyz\Yves\Application\Plugin\Provider\LanguageServiceProvider;
@@ -61,6 +60,7 @@ use SprykerShop\Yves\CmsPage\Plugin\Provider\PreviewControllerProvider;
 use SprykerShop\Yves\CustomerPage\Plugin\Provider\CustomerPageControllerProvider;
 use SprykerShop\Yves\CustomerPage\Plugin\Provider\CustomerSecurityServiceProvider;
 use SprykerShop\Yves\DiscountWidget\Plugin\Provider\DiscountWidgetControllerProvider;
+use SprykerShop\Yves\ErrorPage\Plugin\Provider\ErrorPageControllerProvider;
 use SprykerShop\Yves\HeartbeatPage\Plugin\Provider\HeartbeatPageControllerProvider;
 use SprykerShop\Yves\HomePage\Plugin\Provider\HomePageControllerProvider;
 use SprykerShop\Yves\NewsletterWidget\Plugin\Provider\NewsletterWidgetControllerProvider;
@@ -181,7 +181,7 @@ class YvesBootstrap
     protected function getControllerProviderStack($isSsl)
     {
         return [
-            new ApplicationControllerProvider($isSsl),
+            new ErrorPageControllerProvider($isSsl),
             new HomePageControllerProvider($isSsl),
             new CheckoutPageControllerProvider($isSsl),
             new CustomerPageControllerProvider($isSsl),
