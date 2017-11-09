@@ -14,7 +14,7 @@ class TransferConfig extends SprykerTransferConfig
     /**
      * @project Only needed in Project, not in demoshop
      *
-     * @return string
+     * @return string[]
      */
     protected function getCoreSourceDirectoryGlobPatterns()
     {
@@ -30,7 +30,7 @@ class TransferConfig extends SprykerTransferConfig
     /**
      * @project Only needed in Project, not in demoshop
      *
-     * @return array
+     * @return string[]
      */
     public function getDataBuilderSourceDirectories()
     {

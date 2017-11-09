@@ -22,7 +22,7 @@ use Twig_Loader_Filesystem;
 class TwigServiceProvider extends SilexTwigServiceProvider
 {
     /**
-     * @var \Spryker\Yves\Kernel\Application
+     * @var \Silex\Application|\Spryker\Yves\Kernel\Application
      */
     private $app;
 
