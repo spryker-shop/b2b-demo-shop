@@ -7,9 +7,9 @@
 
 namespace Pyz\Yves\DiscountPromotion;
 
-use Pyz\Yves\DiscountPromotion\Plugin\StorageProductMapperPlugin;
 use Spryker\Yves\DiscountPromotion\DiscountPromotionDependencyProvider as SprykerDiscountPromotionDependencyProvider;
 use Spryker\Yves\Kernel\Container;
+use SprykerShop\Yves\DiscountPromotionWidget\Plugin\StorageProductMapperPlugin;
 
 class DiscountPromotionDependencyProvider extends SprykerDiscountPromotionDependencyProvider
 {
