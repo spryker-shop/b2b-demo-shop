@@ -7,7 +7,6 @@
 
 namespace Pyz\Yves\ShopApplication;
 
-use Pyz\Yves\Currency\Plugin\CurrencyControllerProvider;
 use Pyz\Yves\Twig\Plugin\Provider\TwigServiceProvider;
 use Pyz\Yves\WebProfiler\Plugin\ServiceProvider\WebProfilerServiceProvider;
 use Silex\Provider\FormServiceProvider;
@@ -28,10 +27,9 @@ use Spryker\Yves\Application\Plugin\Provider\YvesHstsServiceProvider;
 use Spryker\Yves\Application\Plugin\ServiceProvider\KernelLogServiceProvider;
 use Spryker\Yves\Application\Plugin\ServiceProvider\SslServiceProvider;
 use Spryker\Yves\CmsContentWidget\Plugin\CmsContentWidgetServiceProvider;
-use Spryker\Yves\Currency\Plugin\CurrencySwitcherServiceProvider;
 use Spryker\Yves\Kernel\Application;
 use Spryker\Yves\Messenger\Plugin\Provider\FlashMessengerServiceProvider;
-use Spryker\Yves\Money\Plugin\ServiceProvider\TwigMoneyServiceProvider;
+use SprykerShop\Yves\MoneyWidget\Plugin\ServiceProvider\TwigMoneyServiceProvider;
 use Spryker\Yves\Navigation\Plugin\Provider\NavigationTwigServiceProvider;
 use Spryker\Yves\NewRelic\Plugin\ServiceProvider\NewRelicRequestTransactionServiceProvider;
 use Spryker\Yves\ProductGroup\Plugin\Provider\ProductGroupTwigServiceProvider;
@@ -51,6 +49,8 @@ use SprykerShop\Yves\CatalogPage\Plugin\Provider\CatalogPageTwigServiceProvider;
 use SprykerShop\Yves\CategoryWidget\Plugin\Provider\CategoryServiceProvider;
 use SprykerShop\Yves\CheckoutPage\Plugin\Provider\CheckoutPageControllerProvider;
 use SprykerShop\Yves\CmsPage\Plugin\Provider\PreviewControllerProvider;
+use SprykerShop\Yves\CurrencyWidget\Plugin\CurrencySwitcherServiceProvider;
+use SprykerShop\Yves\CurrencyWidget\Plugin\CurrencyWidgetControllerProvider;
 use SprykerShop\Yves\CustomerPage\Plugin\Provider\CustomerPageControllerProvider;
 use SprykerShop\Yves\CustomerPage\Plugin\Provider\CustomerSecurityServiceProvider;
 use SprykerShop\Yves\DiscountWidget\Plugin\Provider\DiscountWidgetControllerProvider;
@@ -195,7 +195,7 @@ class YvesBootstrap
             new ProductSetListPageControllerProvider($isSsl),
             new ProductSaleControllerProvider($isSsl),
             new PreviewControllerProvider($isSsl),
-            new CurrencyControllerProvider($isSsl),
+            new CurrencyWidgetControllerProvider($isSsl),
             new ProductNewPageControllerProvider($isSsl),
             new ProductReviewControllerProvider($isSsl),
             new DiscountWidgetControllerProvider($isSsl),
