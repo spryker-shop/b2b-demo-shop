@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "c2e5400e2bf246985226c4ff63085a2e",
+    "content-hash": "3250bc0a05528d21a4af19221dbcda7a",
     "packages": [
         {
             "name": "braintree/braintree_php",
@@ -1817,11 +1817,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-feature/core-1313-b2b-demoshop",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "d99b9d86ed675c51089f2501bc8e86a8444b35f3"
+                "reference": "bac09c564b95344aa15ed0e1ab942a23a70f45c8"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.0",
@@ -2021,7 +2021,33 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2017-11-13T15:33:34+00:00"
+            "time": "2017-11-16T09:53:22+00:00"
+        },
+        {
+            "name": "spryker/spryker-shop",
+            "version": "dev-feature/core-1313-b2b-demoshop",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:spryker/spryker-shop.git",
+                "reference": "3315425574f8bbd34445096c20004cc27fd31986"
+            },
+            "require": {
+                "spryker/spryker": "*"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "autoload.php"
+                ]
+            },
+            "license": [
+                "proprietary"
+            ],
+            "description": "Spryker Shop page and widget modules",
+            "time": "2017-11-16T12:08:41+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -6752,7 +6778,7 @@
             ],
             "authors": [
                 {
-                    "name": "Sullivan Senechal",
+                    "name": "Sullivan SENECHAL",
                     "email": "soullivaneuh@gmail.com"
                 }
             ],
@@ -7557,6 +7583,7 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "spryker/spryker": 20,
+        "spryker/spryker-shop": 20,
         "spryker-eco/loggly": 20,
         "spryker/rabbit-mq": 20,
         "spryker/architecture-sniffer": 20,
