@@ -14,10 +14,9 @@
     "yves:prod": "node ./assets/Yves/default/build --prod",
     "zed": "node ./node_modules/@spryker/oryx-for-zed/build",
     "zed:dev": "node ./node_modules/@spryker/oryx-for-zed/build --dev",
-    "zed:prod": "node ./node_modules/@spryker/oryx-for-zed/build --prod"
-  },
-  "engines": {
-    "node": "^6.0.0"
+    "zed:prod": "node ./node_modules/@spryker/oryx-for-zed/build --prod",
+    "build": "node ./vendor/spryker/spryker-shop/Bundles/ShopUI/src/SprykerShop/Yves/ShopUI/Theme/default/build",
+    "watch": "node ./vendor/spryker/spryker-shop/Bundles/ShopUI/src/SprykerShop/Yves/ShopUI/Theme/default/build --watch"
   },
   "dependencies": {
     "es6-promise": "~4.1.0",
