@@ -7,8 +7,8 @@
 
 namespace Pyz\Zed\WebProfiler;
 
-use Pyz\Shared\WebProfiler\WebProfilerConstants;
 use Spryker\Zed\Kernel\AbstractBundleConfig;
+use SprykerShop\Shared\WebProfilerWidget\WebProfilerWidgetConstants;
 
 class WebProfilerConfig extends AbstractBundleConfig
 {
@@ -17,6 +17,6 @@ class WebProfilerConfig extends AbstractBundleConfig
      */
     public function isWebProfilerEnabled()
     {
-        return $this->get(WebProfilerConstants::ENABLE_WEB_PROFILER, false);
+        return $this->get(WebProfilerWidgetConstants::ENABLE_WEB_PROFILER, false);
     }
 }

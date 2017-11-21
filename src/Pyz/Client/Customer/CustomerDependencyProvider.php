@@ -7,26 +7,43 @@
 
 namespace Pyz\Client\Customer;
 
+use Spryker\Client\CartCustomerConnector\Plugin\CustomerChangeCartUpdatePlugin;
+use Spryker\Client\Customer\Plugin\CustomerAddressSessionUpdatePlugin;
 use Spryker\Client\Customer\CustomerDependencyProvider as SprykerCustomerDependencyProvider;
-use Spryker\Client\Kernel\Container;
+use Spryker\Client\Customer\Dependency\Plugin\CustomerSessionGetPluginInterface;
+use Spryker\Client\Customer\Dependency\Plugin\CustomerSessionSetPluginInterface;
+use Spryker\Client\Customer\Dependency\Plugin\DefaultAddressChangePluginInterface;
+use Spryker\Client\Customer\Plugin\CustomerTransferRefreshPlugin;
 
 class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
 {
-    const CART_CLIENT = 'cart client';
+    /**
+     * @return CustomerSessionGetPluginInterface[]
+     */
+    protected function getCustomerSessionGetPlugins()
+    {
+        return [
+            new CustomerTransferRefreshPlugin(),
+        ];
+    }
 
     /**
-     * @param \Spryker\Client\Kernel\Container $container
-     *
-     * @return \Spryker\Client\Kernel\Container
+     * @return CustomerSessionSetPluginInterface[]
      */
-    public function provideServiceLayerDependencies(Container $container)
+    protected function getCustomerSessionSetPlugins()
     {
-        $container = parent::provideServiceLayerDependencies($container);
+        return [
+            new CustomerChangeCartUpdatePlugin(),
+        ];
+    }
 
-        $container[self::CART_CLIENT] = function (Container $container) {
-            return $container->getLocator()->cart()->client();
-        };
-
-        return $container;
+    /**
+     * @return DefaultAddressChangePluginInterface[]
+     */
+    protected function getDefaultAddressChangePlugins()
+    {
+        return [
+            new CustomerAddressSessionUpdatePlugin(),
+        ];
     }
 }

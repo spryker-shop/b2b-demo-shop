@@ -7,10 +7,10 @@
 
 namespace Pyz\Zed\WebProfiler;
 
-use Pyz\Shared\WebProfiler\Plugin\ServiceProvider\WebProfilerServiceProvider;
 use Spryker\Zed\Config\Communication\Plugin\ServiceProvider\ConfigProfilerServiceProvider;
 use Spryker\Zed\Kernel\AbstractBundleDependencyProvider;
 use Spryker\Zed\Kernel\Container;
+use SprykerShop\Shared\WebProfilerWidget\Plugin\ServiceProvider\WebProfilerWidgetServiceProvider;
 
 class WebProfilerDependencyProvider extends AbstractBundleDependencyProvider
 {
@@ -25,7 +25,7 @@ class WebProfilerDependencyProvider extends AbstractBundleDependencyProvider
     {
         $container[static::PLUGINS_WEB_PROFILER] = function () {
             return [
-                new WebProfilerServiceProvider(),
+                new WebProfilerWidgetServiceProvider(),
                 new ConfigProfilerServiceProvider(),
             ];
         };
