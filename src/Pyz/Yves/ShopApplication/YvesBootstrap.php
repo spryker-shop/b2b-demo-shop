@@ -7,10 +7,7 @@
 
 namespace Pyz\Yves\ShopApplication;
 
-use Pyz\Yves\Currency\Plugin\CurrencyControllerProvider;
-use Pyz\Yves\Glossary\Plugin\Provider\TranslationServiceProvider;
 use Pyz\Yves\Twig\Plugin\Provider\TwigServiceProvider;
-use Pyz\Yves\WebProfiler\Plugin\ServiceProvider\WebProfilerServiceProvider;
 use Silex\Provider\FormServiceProvider;
 use Silex\Provider\HttpFragmentServiceProvider;
 use Silex\Provider\RememberMeServiceProvider;
@@ -29,10 +26,12 @@ use Spryker\Yves\Application\Plugin\Provider\YvesHstsServiceProvider;
 use Spryker\Yves\Application\Plugin\ServiceProvider\KernelLogServiceProvider;
 use Spryker\Yves\Application\Plugin\ServiceProvider\SslServiceProvider;
 use Spryker\Yves\CmsContentWidget\Plugin\CmsContentWidgetServiceProvider;
-use Spryker\Yves\Currency\Plugin\CurrencySwitcherServiceProvider;
 use Spryker\Yves\Kernel\Application;
 use Spryker\Yves\Messenger\Plugin\Provider\FlashMessengerServiceProvider;
-use Spryker\Yves\Money\Plugin\ServiceProvider\TwigMoneyServiceProvider;
+use SprykerShop\Yves\CmsBlockWidget\Plugin\Provider\CmsBlockTwigFunctionServiceProvider;
+use SprykerShop\Yves\CmsPage\Plugin\Provider\CmsTwigFunctionServiceProvider;
+use SprykerShop\Yves\CustomerPage\Plugin\Provider\CustomerTwigFunctionServiceProvider;
+use SprykerShop\Yves\MoneyWidget\Plugin\ServiceProvider\TwigMoneyServiceProvider;
 use Spryker\Yves\Navigation\Plugin\Provider\NavigationTwigServiceProvider;
 use Spryker\Yves\NewRelic\Plugin\ServiceProvider\NewRelicRequestTransactionServiceProvider;
 use Spryker\Yves\ProductGroup\Plugin\Provider\ProductGroupTwigServiceProvider;
@@ -52,6 +51,8 @@ use SprykerShop\Yves\CatalogPage\Plugin\Provider\CatalogPageTwigServiceProvider;
 use SprykerShop\Yves\CategoryWidget\Plugin\Provider\CategoryServiceProvider;
 use SprykerShop\Yves\CheckoutPage\Plugin\Provider\CheckoutPageControllerProvider;
 use SprykerShop\Yves\CmsPage\Plugin\Provider\PreviewControllerProvider;
+use SprykerShop\Yves\CurrencyWidget\Plugin\CurrencySwitcherServiceProvider;
+use SprykerShop\Yves\CurrencyWidget\Plugin\CurrencyWidgetControllerProvider;
 use SprykerShop\Yves\CustomerPage\Plugin\Provider\CustomerPageControllerProvider;
 use SprykerShop\Yves\CustomerPage\Plugin\Provider\CustomerSecurityServiceProvider;
 use SprykerShop\Yves\DiscountWidget\Plugin\Provider\DiscountWidgetControllerProvider;
@@ -67,10 +68,14 @@ use SprykerShop\Yves\ShopApplication\Plugin\Provider\AutoloaderCacheServiceProvi
 use SprykerShop\Yves\ShopApplication\Plugin\Provider\ShopApplicationServiceProvider;
 use SprykerShop\Yves\ShopApplication\Plugin\Provider\YvesSecurityServiceProvider;
 use SprykerShop\Yves\ShopLayout\Plugin\Provider\LanguageServiceProvider;
+use SprykerShop\Yves\ShopLayout\Plugin\Provider\ShopLayoutTwigExtensionServiceProvider;
+use SprykerShop\Yves\ShopLayout\Plugin\Provider\ShopLayoutTwigServiceProvider;
 use SprykerShop\Yves\ShopRouter\Plugin\Router\SilexRouter;
 use SprykerShop\Yves\ShopRouter\Plugin\Router\StorageRouter;
 use SprykerShop\Yves\ShopUI\Plugin\Provider\ShopUITwigServiceProvider;
 use SprykerShop\Yves\ShopTemplateUI\Plugin\Provider\ShopTemplateUITwigServiceProvider;
+use SprykerShop\Yves\ShopTranslator\Plugin\Provider\TranslationServiceProvider;
+use SprykerShop\Yves\WebProfilerWidget\Plugin\ServiceProvider\WebProfilerWidgetServiceProvider;
 use SprykerShop\Yves\WishlistPage\Plugin\Provider\WishlistPageControllerProvider;
 
 class YvesBootstrap
@@ -115,12 +120,14 @@ class YvesBootstrap
         $this->application->register(new ZedRequestHeaderServiceProvider());
         $this->application->register(new ZedRequestLogServiceProvider());
 
-        $this->application->register(new TwigServiceProvider());
+        $this->application->register(new ShopLayoutTwigServiceProvider());
+        $this->application->register(new ShopLayoutTwigExtensionServiceProvider());
         $this->application->register(new ShopApplicationServiceProvider());
         $this->application->register(new SessionServiceProvider());
         $this->application->register(new SprykerSessionServiceProvider());
         $this->application->register(new SecurityServiceProvider());
         $this->application->register(new CustomerSecurityServiceProvider());
+        $this->application->register(new CustomerTwigFunctionServiceProvider());
         $this->application->register(new YvesSecurityServiceProvider());
         $this->application->register(new ExceptionServiceProvider());
         $this->application->register(new NewRelicRequestTransactionServiceProvider());
@@ -136,7 +143,7 @@ class YvesBootstrap
         $this->application->register(new CategoryServiceProvider());
         $this->application->register(new FlashMessengerServiceProvider());
         $this->application->register(new HeadersSecurityServiceProvider());
-        $this->application->register(new WebProfilerServiceProvider());
+        $this->application->register(new WebProfilerWidgetServiceProvider());
         $this->application->register(new AutoloaderCacheServiceProvider());
         $this->application->register(new YvesHstsServiceProvider());
         $this->application->register(new CartServiceProvider());
@@ -148,6 +155,8 @@ class YvesBootstrap
         $this->application->register(new ProductGroupTwigServiceProvider());
         $this->application->register(new ProductLabelTwigServiceProvider());
         $this->application->register(new CmsContentWidgetServiceProvider());
+        $this->application->register(new CmsTwigFunctionServiceProvider());
+        $this->application->register(new CmsBlockTwigFunctionServiceProvider());
         $this->application->register(new CurrencySwitcherServiceProvider());
         $this->application->register(new ProductAbstractReviewTwigServiceProvider());
         $this->application->register(new CatalogPageTwigServiceProvider());
@@ -199,7 +208,7 @@ class YvesBootstrap
             new ProductSetListPageControllerProvider($isSsl),
             new ProductSaleControllerProvider($isSsl),
             new PreviewControllerProvider($isSsl),
-            new CurrencyControllerProvider($isSsl),
+            new CurrencyWidgetControllerProvider($isSsl),
             new ProductNewPageControllerProvider($isSsl),
             new ProductReviewControllerProvider($isSsl),
             new DiscountWidgetControllerProvider($isSsl),

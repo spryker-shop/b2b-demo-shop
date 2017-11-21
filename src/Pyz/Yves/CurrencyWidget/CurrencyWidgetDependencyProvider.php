@@ -5,12 +5,12 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Pyz\Yves\Currency;
+namespace Pyz\Yves\CurrencyWidget;
 
-use Spryker\Yves\CartCurrencyConnector\CurrencyChange\RebuildCartOnCurrencyChangePlugin;
-use Spryker\Yves\Currency\CurrencyDependencyProvider as SprykerCurrencyDependencyProvider;
+use SprykerShop\Yves\CurrencyWidget\CurrencyWidgetDependencyProvider as SprykerCurrencyWidgetDependencyProvider;
+use SprykerShop\Yves\CurrencyWidget\Plugin\CurrencyChangeRebuildCartPlugin;
 
-class CurrencyDependencyProvider extends SprykerCurrencyDependencyProvider
+class CurrencyWidgetDependencyProvider extends SprykerCurrencyWidgetDependencyProvider
 {
     /**
      * @return \Spryker\Yves\Currency\Dependency\CurrencyPostChangePluginInterface[]
@@ -18,7 +18,7 @@ class CurrencyDependencyProvider extends SprykerCurrencyDependencyProvider
     protected function getCurrencyPostChangePlugins()
     {
         return [
-            new RebuildCartOnCurrencyChangePlugin(),
+            new CurrencyChangeRebuildCartPlugin(),
         ];
     }
 }
