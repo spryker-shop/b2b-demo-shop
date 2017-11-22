@@ -7,7 +7,7 @@
 
 namespace Pyz\Client\Customer;
 
-use Spryker\Client\CartCustomerConnector\Plugin\CustomerChangeCartUpdatePlugin;
+use Spryker\Client\Cart\Plugin\CustomerChangeCartUpdatePlugin;
 use Spryker\Client\Customer\Plugin\CustomerAddressSessionUpdatePlugin;
 use Spryker\Client\Customer\CustomerDependencyProvider as SprykerCustomerDependencyProvider;
 use Spryker\Client\Customer\Dependency\Plugin\CustomerSessionGetPluginInterface;
