@@ -15,6 +15,7 @@ use Generated\Shared\Search\PageIndexMap;
 use Pyz\Shared\ProductSearch\ProductSearchConfig;
 use Spryker\Client\Catalog\Plugin\Elasticsearch\Query\CatalogSearchQueryPlugin as SprykerCatalogSearchQueryPlugin;
 
+//TODO move to core and rename as new plugin
 class CatalogSearchQueryPlugin extends SprykerCatalogSearchQueryPlugin
 {
     /**

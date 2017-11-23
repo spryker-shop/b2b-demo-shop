@@ -12,7 +12,7 @@ use Spryker\Zed\CustomerGroup\Communication\Plugin\CustomerAnonymizer\RemoveCust
 use Spryker\Zed\CustomerUserConnector\Communication\Plugin\CustomerTransferUsernameExpanderPlugin;
 use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\Newsletter\Communication\Plugin\CustomerAnonymizer\CustomerUnsubscribePlugin;
-use SprykerShop\Shared\NewsletterWidget\NewsletterWidgetConstants;
+use Spryker\Shared\Newsletter\NewsletterConstants;
 
 class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
 {
@@ -46,7 +46,7 @@ class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
     {
         return [
             new CustomerUnsubscribePlugin([
-                NewsletterWidgetConstants::DEFAULT_NEWSLETTER,
+                NewsletterConstants::DEFAULT_NEWSLETTER,
             ]),
             new RemoveCustomerFromGroupPlugin(),
         ];

@@ -9,6 +9,7 @@ namespace Pyz\Client\ProductReview\Plugin;
 
 use Spryker\Client\Search\Dependency\Plugin\FacetSearchResultValueTransformerPluginInterface;
 
+//TODO Same as ConfigBuilder facets plugins
 class ProductRatingValueTransformer implements FacetSearchResultValueTransformerPluginInterface
 {
     const CONVERSION_PRECISION = 100;
