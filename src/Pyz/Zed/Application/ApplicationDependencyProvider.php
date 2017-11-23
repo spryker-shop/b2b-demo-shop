@@ -7,7 +7,7 @@
 
 namespace Pyz\Zed\Application;
 
-use Pyz\Zed\WebProfiler\Communication\Plugin\ServiceProvider\WebProfilerServiceProvider;
+use Spryker\Zed\WebProfiler\Communication\Plugin\ServiceProvider\WebProfilerServiceProvider;
 use Silex\Provider\HttpFragmentServiceProvider;
 use Silex\Provider\ServiceControllerServiceProvider;
 use Silex\Provider\SessionServiceProvider;

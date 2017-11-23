@@ -8,28 +8,19 @@
 namespace Pyz\Zed\WebProfiler;
 
 use Spryker\Zed\Config\Communication\Plugin\ServiceProvider\ConfigProfilerServiceProvider;
-use Spryker\Zed\Kernel\AbstractBundleDependencyProvider;
-use Spryker\Zed\Kernel\Container;
-use SprykerShop\Shared\WebProfilerWidget\Plugin\ServiceProvider\WebProfilerWidgetServiceProvider;
+use Spryker\Zed\WebProfiler\WebProfilerDependencyProvider as SprykerWebProfilerDependencyProvider;
+use SprykerShop\Yves\WebProfilerWidget\Plugin\ServiceProvider\WebProfilerWidgetServiceProvider;
 
-class WebProfilerDependencyProvider extends AbstractBundleDependencyProvider
+class WebProfilerDependencyProvider extends SprykerWebProfilerDependencyProvider
 {
-    const PLUGINS_WEB_PROFILER = 'PLUGINS_WEB_PROFILER';
-
     /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
+     * @return array
      */
-    public function provideCommunicationLayerDependencies(Container $container)
+    public function getWebProfilerPlugins()
     {
-        $container[static::PLUGINS_WEB_PROFILER] = function () {
-            return [
-                new WebProfilerWidgetServiceProvider(),
-                new ConfigProfilerServiceProvider(),
-            ];
-        };
-
-        return $container;
+        return [
+            new WebProfilerWidgetServiceProvider(),
+            new ConfigProfilerServiceProvider(),
+        ];
     }
 }
