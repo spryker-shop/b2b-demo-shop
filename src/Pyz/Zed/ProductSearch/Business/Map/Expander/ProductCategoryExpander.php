@@ -11,9 +11,9 @@ use Generated\Shared\Transfer\LocaleTransfer;
 use Generated\Shared\Transfer\PageMapTransfer;
 use Propel\Runtime\Collection\ObjectCollection;
 use Pyz\Zed\Category\Persistence\CategoryQueryContainerInterface;
-use Pyz\Zed\ProductCategory\Persistence\ProductCategoryQueryContainer;
-use Pyz\Zed\ProductCategory\Persistence\ProductCategoryQueryContainerInterface;
 use Spryker\Client\Search\Plugin\Elasticsearch\QueryExpander\SortedCategoryQueryExpanderPlugin;
+use Spryker\Zed\ProductCategory\Persistence\ProductCategoryQueryContainer;
+use Spryker\Zed\ProductCategory\Persistence\ProductCategoryQueryContainerInterface;
 use Spryker\Zed\Search\Business\Model\Elasticsearch\DataMapper\PageMapBuilderInterface;
 
 class ProductCategoryExpander implements ProductPageMapExpanderInterface
@@ -42,7 +42,7 @@ class ProductCategoryExpander implements ProductPageMapExpanderInterface
 
     /**
      * @param \Pyz\Zed\Category\Persistence\CategoryQueryContainerInterface $categoryQueryContainer
-     * @param \Pyz\Zed\ProductCategory\Persistence\ProductCategoryQueryContainerInterface $productCategoryQueryContainer
+     * @param \Spryker\Zed\ProductCategory\Persistence\ProductCategoryQueryContainerInterface $productCategoryQueryContainer
      */
     public function __construct(
         CategoryQueryContainerInterface $categoryQueryContainer,
