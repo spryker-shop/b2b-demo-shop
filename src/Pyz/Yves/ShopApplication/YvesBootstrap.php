@@ -73,7 +73,6 @@ use SprykerShop\Yves\ShopLayout\Plugin\Provider\ShopLayoutTwigServiceProvider;
 use SprykerShop\Yves\ShopRouter\Plugin\Router\SilexRouter;
 use SprykerShop\Yves\ShopRouter\Plugin\Router\StorageRouter;
 use SprykerShop\Yves\ShopUI\Plugin\Provider\ShopUITwigServiceProvider;
-use SprykerShop\Yves\ShopTemplateUI\Plugin\Provider\ShopTemplateUITwigServiceProvider;
 use SprykerShop\Yves\ShopTranslator\Plugin\Provider\TranslationServiceProvider;
 use SprykerShop\Yves\WebProfilerWidget\Plugin\ServiceProvider\WebProfilerWidgetServiceProvider;
 use SprykerShop\Yves\WishlistPage\Plugin\Provider\WishlistPageControllerProvider;
@@ -161,7 +160,6 @@ class YvesBootstrap
         $this->application->register(new ProductAbstractReviewTwigServiceProvider());
         $this->application->register(new CatalogPageTwigServiceProvider());
         $this->application->register(new ShopUITwigServiceProvider());
-        $this->application->register(new ShopTemplateUITwigServiceProvider());
     }
 
     /**
