@@ -66,7 +66,6 @@ class ProductDataPageMapBuilder
             ->setStore(Store::getInstance()->getStoreName())
             ->setLocale($localeTransfer->getLocaleName())
             ->setType(ProductSearchConfig::PRODUCT_ABSTRACT_PAGE_SEARCH_TYPE)
-            ->setIsFeatured(filter_var($productData['is_featured'], FILTER_VALIDATE_BOOLEAN))
             ->setIsActive(!empty($productData['concrete_skus']));
 
         $attributes = $this->getProductAttributes($productData);
