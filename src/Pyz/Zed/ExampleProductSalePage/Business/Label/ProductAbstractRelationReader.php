@@ -5,31 +5,31 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Pyz\Zed\ProductSale\Business\Label;
+namespace Pyz\Zed\ExampleProductSalePage\Business\Label;
 
 use Generated\Shared\Transfer\ProductLabelProductAbstractRelationsTransfer;
 use Orm\Zed\ProductLabel\Persistence\SpyProductLabel;
-use Pyz\Zed\ProductSale\Business\Exception\ProductLabelSaleNotFoundException;
-use Pyz\Zed\ProductSale\Persistence\ProductSaleQueryContainerInterface;
-use Pyz\Zed\ProductSale\ProductSaleConfig;
+use Pyz\Zed\ExampleProductSalePage\Business\Exception\ProductLabelSaleNotFoundException;
+use Pyz\Zed\ExampleProductSalePage\Persistence\ExampleProductSalePageQueryContainerInterface;
+use Pyz\Zed\ExampleProductSalePage\ExampleProductSalePageConfig;
 
 class ProductAbstractRelationReader implements ProductAbstractRelationReaderInterface
 {
     /**
-     * @var \Pyz\Zed\ProductSale\Persistence\ProductSaleQueryContainerInterface
+     * @var \Pyz\Zed\ExampleProductSalePage\Persistence\ExampleProductSalePageQueryContainerInterface
      */
     protected $productSaleQueryContainer;
 
     /**
-     * @var \Pyz\Zed\ProductSale\ProductSaleConfig
+     * @var \Pyz\Zed\ExampleProductSalePage\ExampleProductSalePageConfig
      */
     protected $productSaleConfig;
 
     /**
-     * @param \Pyz\Zed\ProductSale\Persistence\ProductSaleQueryContainerInterface $productSaleQueryContainer
-     * @param \Pyz\Zed\ProductSale\ProductSaleConfig $productSaleConfig
+     * @param \Pyz\Zed\ExampleProductSalePage\Persistence\ExampleProductSalePageQueryContainerInterface $productSaleQueryContainer
+     * @param \Pyz\Zed\ExampleProductSalePage\ExampleProductSalePageConfig $productSaleConfig
      */
-    public function __construct(ProductSaleQueryContainerInterface $productSaleQueryContainer, ProductSaleConfig $productSaleConfig)
+    public function __construct(ExampleProductSalePageQueryContainerInterface $productSaleQueryContainer, ExampleProductSalePageConfig $productSaleConfig)
     {
         $this->productSaleQueryContainer = $productSaleQueryContainer;
         $this->productSaleConfig = $productSaleConfig;
@@ -60,7 +60,7 @@ class ProductAbstractRelationReader implements ProductAbstractRelationReaderInte
     }
 
     /**
-     * @throws \Pyz\Zed\ProductSale\Business\Exception\ProductLabelSaleNotFoundException
+     * @throws \Pyz\Zed\ExampleProductSalePage\Business\Exception\ProductLabelSaleNotFoundException
      *
      * @return \Orm\Zed\ProductLabel\Persistence\SpyProductLabel
      */

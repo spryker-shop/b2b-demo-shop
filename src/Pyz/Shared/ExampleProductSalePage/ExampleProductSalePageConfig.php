@@ -5,10 +5,10 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Pyz\Zed\ProductSale\Business\Exception;
+namespace Pyz\Shared\ExampleProductSalePage;
 
-use Exception;
-
-class ProductLabelSaleNotFoundException extends Exception
+interface ExampleProductSalePageConfig
 {
+    const PRICE_TYPE_ORIGINAL = 'ORIGINAL';
+    const DEFAULT_LABEL_NAME = 'SALE';
 }

@@ -5,14 +5,14 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Pyz\Zed\ProductSale\Business;
+namespace Pyz\Zed\ExampleProductSalePage\Business;
 
 use Spryker\Zed\Product\Business\ProductFacade as SprykerProductFacade;
 
 /**
- * @method \Pyz\Zed\ProductSale\Business\ProductSaleBusinessFactory getFactory()
+ * @method \Pyz\Zed\ExampleProductSalePage\Business\ExampleProductSalePageBusinessFactory getFactory()
  */
-class ProductSaleFacade extends SprykerProductFacade implements ProductSaleFacadeInterface
+class ExampleProductSalePageFacade extends SprykerProductFacade implements ExampleProductSalePageFacadeInterface
 {
     /**
      * @return \Generated\Shared\Transfer\ProductLabelProductAbstractRelationsTransfer[]

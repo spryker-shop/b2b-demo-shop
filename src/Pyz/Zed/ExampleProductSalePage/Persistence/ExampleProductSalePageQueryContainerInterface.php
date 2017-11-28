@@ -5,12 +5,12 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Pyz\Zed\ProductSale\Persistence;
+namespace Pyz\Zed\ExampleProductSalePage\Persistence;
 
 /**
- * @method \Pyz\Zed\ProductSale\Persistence\ProductSalePersistenceFactory getFactory()
+ * @method \Pyz\Zed\ExampleProductSalePage\Persistence\ExampleProductSalePagePersistenceFactory getFactory()
  */
-interface ProductSaleQueryContainerInterface
+interface ExampleProductSalePageQueryContainerInterface
 {
     /**
      * @api

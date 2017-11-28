@@ -5,18 +5,18 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Pyz\Zed\ProductSale;
+namespace Pyz\Zed\ExampleProductSalePage;
 
-use Pyz\Shared\ProductSale\ProductSaleConfig as SharedProductSaleConfig;
+use Pyz\Shared\ExampleProductSalePage\ExampleProductSalePageConfig as SharedExampleProductSalePageConfig;
 use Spryker\Zed\Kernel\AbstractBundleConfig;
 
-class ProductSaleConfig extends AbstractBundleConfig
+class ExampleProductSalePageConfig extends AbstractBundleConfig
 {
     /**
      * @return string
      */
     public function getLabelSaleName()
     {
-        return SharedProductSaleConfig::DEFAULT_LABEL_NAME;
+        return SharedExampleProductSalePageConfig::DEFAULT_LABEL_NAME;
     }
 }
