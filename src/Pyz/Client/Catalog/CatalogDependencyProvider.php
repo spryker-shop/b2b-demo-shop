@@ -7,11 +7,18 @@
 
 namespace Pyz\Client\Catalog;
 
-use Pyz\Client\Catalog\Plugin\Config\CatalogSearchConfigBuilder;
-use Pyz\Client\Catalog\Plugin\Elasticsearch\Query\CatalogSearchQueryPlugin;
 use Spryker\Client\Catalog\CatalogDependencyProvider as SprykerCatalogDependencyProvider;
+use Spryker\Client\Catalog\Plugin\ConfigTransferBuilder\AscendingNameSortConfigTransferBuilderPlugin;
+use Spryker\Client\Catalog\Plugin\ConfigTransferBuilder\AscendingPriceSortConfigTransferBuilderPlugin;
+use Spryker\Client\Catalog\Plugin\ConfigTransferBuilder\CategoryFacetConfigTransferBuilderPlugin;
+use Spryker\Client\Catalog\Plugin\ConfigTransferBuilder\DescendingNameSortConfigTransferBuilderPlugin;
+use Spryker\Client\Catalog\Plugin\ConfigTransferBuilder\DescendingPriceSortConfigTransferBuilderPlugin;
+use Spryker\Client\Catalog\Plugin\ConfigTransferBuilder\PriceFacetConfigTransferBuilderPlugin;
+use Spryker\Client\Catalog\Plugin\Elasticsearch\Query\ProductCatalogSearchQueryPlugin;
 use Spryker\Client\Catalog\Plugin\Elasticsearch\ResultFormatter\RawCatalogSearchResultFormatterPlugin;
-use Spryker\Client\Kernel\Container;
+use Spryker\Client\ProductLabel\Plugin\ProductLabelFacetConfigTransferBuilderPlugin;
+use Spryker\Client\ProductReview\Plugin\RatingFacetConfigTransferBuilderPlugin;
+use Spryker\Client\ProductReview\Plugin\RatingSortConfigTransferBuilderPlugin;
 use Spryker\Client\Search\Plugin\Elasticsearch\QueryExpander\CompletionQueryExpanderPlugin;
 use Spryker\Client\Search\Plugin\Elasticsearch\QueryExpander\FacetQueryExpanderPlugin;
 use Spryker\Client\Search\Plugin\Elasticsearch\QueryExpander\IsActiveInDateRangeQueryExpanderPlugin;
@@ -32,22 +39,31 @@ use Spryker\Client\Search\Plugin\Elasticsearch\ResultFormatter\SuggestionByTypeR
 
 class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
 {
-    const FEATURED_PRODUCTS_RESULT_FORMATTER_PLUGINS = 'FEATURED_PRODUCTS_RESULT_FORMATTER_PLUGINS';
-    const FEATURED_PRODUCTS_QUERY_EXPANDER_PLUGINS = 'FEATURED_PRODUCTS_QUERY_EXPANDER_PLUGINS';
+    /**
+     * @return \Spryker\Client\Catalog\Dependency\Plugin\FacetConfigTransferBuilderPluginInterface[]
+     */
+    protected function getFacetConfigTransferBuilderPlugins()
+    {
+        return [
+            new CategoryFacetConfigTransferBuilderPlugin(),
+            new PriceFacetConfigTransferBuilderPlugin(),
+            new RatingFacetConfigTransferBuilderPlugin(),
+            new ProductLabelFacetConfigTransferBuilderPlugin(),
+        ];
+    }
 
     /**
-     * @param \Spryker\Client\Kernel\Container $container
-     *
-     * @return \Spryker\Client\Kernel\Container
+     * @return \Spryker\Client\Catalog\Dependency\Plugin\SortConfigTransferBuilderPluginInterface[]
      */
-    public function provideServiceLayerDependencies(Container $container)
+    protected function getSortConfigTransferBuilderPlugins()
     {
-        $container = parent::provideServiceLayerDependencies($container);
-
-        $container = $this->provideFeatureProductsResultFormatterPlugins($container);
-        $container = $this->provideFeatureProductsQueryExpanderPlugins($container);
-
-        return $container;
+        return [
+            new RatingSortConfigTransferBuilderPlugin(),
+            new AscendingNameSortConfigTransferBuilderPlugin(),
+            new DescendingNameSortConfigTransferBuilderPlugin(),
+            new AscendingPriceSortConfigTransferBuilderPlugin(),
+            new DescendingPriceSortConfigTransferBuilderPlugin(),
+        ];
     }
 
     /**
@@ -55,7 +71,7 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
      */
     protected function createCatalogSearchQueryPlugin()
     {
-        return new CatalogSearchQueryPlugin();
+        return new ProductCatalogSearchQueryPlugin();
     }
 
     /**
@@ -68,7 +84,7 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
             new LocalizedQueryExpanderPlugin(),
             new FacetQueryExpanderPlugin(),
             new SortedQueryExpanderPlugin(),
-            new SortedCategoryQueryExpanderPlugin(CatalogSearchConfigBuilder::CATEGORY_FACET_PARAM_NAME),
+            new SortedCategoryQueryExpanderPlugin(CategoryFacetConfigTransferBuilderPlugin::PARAMETER_NAME),
             new PaginatedQueryExpanderPlugin(),
             new SpellingSuggestionQueryExpanderPlugin(),
             new IsActiveQueryExpanderPlugin(),
@@ -114,38 +130,5 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
             new CompletionResultFormatterPlugin(),
             new SuggestionByTypeResultFormatterPlugin(),
         ];
-    }
-
-    /**
-     * @param \Spryker\Client\Kernel\Container $container
-     *
-     * @return \Spryker\Client\Kernel\Container
-     */
-    protected function provideFeatureProductsResultFormatterPlugins(Container$container)
-    {
-        $container[self::FEATURED_PRODUCTS_RESULT_FORMATTER_PLUGINS] = function () {
-            return [
-                new RawCatalogSearchResultFormatterPlugin(),
-            ];
-        };
-
-        return $container;
-    }
-
-    /**
-     * @param \Spryker\Client\Kernel\Container $container
-     *
-     * @return \Spryker\Client\Kernel\Container
-     */
-    protected function provideFeatureProductsQueryExpanderPlugins(Container $container)
-    {
-        $container[self::FEATURED_PRODUCTS_QUERY_EXPANDER_PLUGINS] = function () {
-            return [
-                new StoreQueryExpanderPlugin(),
-                new LocalizedQueryExpanderPlugin(),
-            ];
-        };
-
-        return $container;
     }
 }
