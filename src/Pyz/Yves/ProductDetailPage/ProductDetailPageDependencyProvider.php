@@ -7,6 +7,7 @@
 
 namespace Pyz\Yves\ProductDetailPage;
 
+use Pyz\Yves\ExampleProductColorGroupWidget\Plugin\ProductDetailPage\ExampleProductColorGroupWidgetPlugin;
 use Spryker\Yves\Kernel\Container;
 use SprykerShop\Yves\AvailabilityWidget\Plugin\ProductDetailPage\AvailabilityWidgetPlugin;
 use SprykerShop\Yves\AvailabilityWidget\Plugin\StorageProductAvailabilityExpanderPlugin;
@@ -14,7 +15,6 @@ use SprykerShop\Yves\ProductCategoryWidget\Plugin\ProductDetailPage\ProductCateg
 use SprykerShop\Yves\ProductCategoryWidget\Plugin\StorageProductCategoryExpanderPlugin;
 use SprykerShop\Yves\CmsBlockWidget\Plugin\ProductDetailPage\ProductCmsBlockWidgetPlugin;
 use SprykerShop\Yves\ProductDetailPage\ProductDetailPageDependencyProvider as SprykerShopProductDetailPageDependencyProvider;
-use SprykerShop\Yves\ProductGroupWidget\Plugin\ProductDetailPage\ProductGroupWidgetPlugin;
 use SprykerShop\Yves\ProductImageWidget\Plugin\ProductDetailPage\ProductImageWidgetPlugin;
 use SprykerShop\Yves\ProductImageWidget\Plugin\StorageProductImageExpanderPlugin;
 use SprykerShop\Yves\ProductLabelWidget\Plugin\ProductDetailPage\ProductAbstractLabelWidgetPlugin;
@@ -57,7 +57,7 @@ class ProductDetailPageDependencyProvider extends SprykerShopProductDetailPageDe
             ProductCmsBlockWidgetPlugin::class,
             ProductAbstractLabelWidgetPlugin::class,
             SimilarProductsWidgetPlugin::class,
-            ProductGroupWidgetPlugin::class,
+            ExampleProductColorGroupWidgetPlugin::class,
         ];
     }
 
