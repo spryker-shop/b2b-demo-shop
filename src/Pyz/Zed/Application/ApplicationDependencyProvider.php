@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\Application;
 
+use Spryker\Zed\EventBehavior\Communication\Plugin\ServiceProvider\EventBehaviorServiceProvider;
 use Spryker\Zed\WebProfiler\Communication\Plugin\ServiceProvider\WebProfilerServiceProvider;
 use Silex\Provider\HttpFragmentServiceProvider;
 use Silex\Provider\ServiceControllerServiceProvider;
@@ -116,6 +117,7 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
             new RedirectAfterLoginProvider(),
             new PropelServiceProvider(),
             new GuiTwigExtensionServiceProvider(),
+            new EventBehaviorServiceProvider(),
         ];
 
         $providers = array_merge($providers, $coreProviders);
@@ -139,6 +141,7 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
             new ApiServiceProviderPlugin,
             new ApiRoutingServiceProvider(),
             new PropelServiceProvider(),
+            new EventBehaviorServiceProvider(),
         ];
 
         if (Environment::isDevelopment()) {
@@ -170,6 +173,7 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
             new SubRequestServiceProvider(),
             new TwigServiceProvider(),
             new SprykerTwigServiceProvider(),
+            new EventBehaviorServiceProvider(),
         ];
     }
 
@@ -199,6 +203,7 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
             new SubRequestServiceProvider(),
             new TwigServiceProvider(),
             new SprykerTwigServiceProvider(),
+            new EventBehaviorServiceProvider(),
         ];
     }
 }

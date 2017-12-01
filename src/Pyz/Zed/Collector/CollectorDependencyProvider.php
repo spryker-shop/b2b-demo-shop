@@ -147,7 +147,7 @@ class CollectorDependencyProvider extends SprykerCollectorDependencyProvider
                 CategoryConfig::RESOURCE_TYPE_CATEGORY_NODE => new CategoryNodeCollectorStoragePlugin(),
                 CategoryConfig::RESOURCE_TYPE_NAVIGATION => new NavigationCollectorStoragePlugin(),
                 NavigationConfig::RESOURCE_TYPE_NAVIGATION_MENU => new NavigationMenuCollectorStoragePlugin(),
-                TranslationManager::TOUCH_TRANSLATION => new TranslationCollectorStoragePlugin(),
+//                TranslationManager::TOUCH_TRANSLATION => new TranslationCollectorStoragePlugin(),
                 CmsConstants::RESOURCE_TYPE_PAGE => new CmsVersionPageCollectorStoragePlugin(),
                 CmsBlockConfig::RESOURCE_TYPE_CMS_BLOCK => new CmsBlockCollectorStoragePlugin(),
                 CmsBlockCategoryConnectorConfig::RESOURCE_TYPE_CMS_BLOCK_CATEGORY_CONNECTOR => new CmsBlockCategoryConnectorCollectorPlugin(),

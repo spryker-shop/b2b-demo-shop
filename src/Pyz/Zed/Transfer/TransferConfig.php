@@ -39,4 +39,14 @@ class TransferConfig extends SprykerTransferConfig
 
         return $globPatterns;
     }
+
+    /**
+     * @return array
+     */
+    public function getEntitiesSourceDirectories()
+    {
+        return [
+            APPLICATION_SOURCE_DIR . '/Orm/Propel/*/Schema/'
+        ];
+    }
 }

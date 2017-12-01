@@ -388,7 +388,7 @@ $config[QueueConstants::QUEUE_ADAPTER_CONFIGURATION] = [
 $config[EventConstants::LOGGER_ACTIVE] = false;
 
 // ---------- EventBehavior
-$config[EventBehaviorConstants::EVENT_BEHAVIOR_TRIGGERING_ACTIVE] = false;
+$config[EventBehaviorConstants::EVENT_BEHAVIOR_TRIGGERING_ACTIVE] = true;
 
 // ---------- Customer
 $config[CustomerConstants::CUSTOMER_SECURED_PATTERN] = '(^/login_check$|^(/en|/de)?/customer|^(/en|/de)?/wishlist)';
