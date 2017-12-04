@@ -22,11 +22,9 @@ use SprykerShop\Yves\ProductRelationWidget\Plugin\CartPage\UpSellingProductsWidg
 class CartPageDependencyProvider extends SprykerCartPageDependencyProvider
 {
     /**
-     * @param \Spryker\Yves\Kernel\Container $container
-     *
      * @return array
      */
-    protected function getCartPageWidgetPlugins(Container $container): array
+    protected function getCartPageWidgetPlugins(): array
     {
         return [
             CartItemProductOptionWidgetPlugin::class,
@@ -40,11 +38,9 @@ class CartPageDependencyProvider extends SprykerCartPageDependencyProvider
     }
 
     /**
-     * @param Container $container
-     *
      * @return CartItemTransformerPluginInterface[]
      */
-    protected function getCartItemTransformerPlugins(Container $container)
+    protected function getCartItemTransformerPlugins(): array
     {
         return [
             new ProductBundleCartItemTransformerPlugin()

@@ -14,11 +14,9 @@ use SprykerShop\Yves\ProductSetWidget\Plugin\ProductSetDetailPage\ProductSetWidg
 class ProductSetDetailPageDependencyProvider extends SprykerShopProductSetDetailPageDependencyProvider
 {
     /**
-     * @param \Spryker\Yves\Kernel\Container $container
-     *
      * @return string[]
      */
-    protected function getProductSetDetailPageWidgetPlugins(Container $container): array
+    protected function getProductSetDetailPageWidgetPlugins(): array
     {
         return [
             ProductSetWidgetPlugin::class,
