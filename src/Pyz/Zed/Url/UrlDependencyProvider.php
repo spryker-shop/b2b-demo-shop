@@ -32,18 +32,4 @@ class UrlDependencyProvider extends SprykerUrlDependencyProvider
             new DetachNavigationUrlAfterUrlDeletePlugin(),
         ];
     }
-
-    /**
-     * @return \Spryker\Client\UrlStorage\Dependency\Plugin\UrlStorageResourceMapperPluginInterface[]
-     */
-//    protected function getUrlStorageResourceMapperPlugins()
-//    {
-//        return [
-//            new UrlStorageCmsPageMapperPlugin(),
-//            new UrlStorageCategoryNodeMapperPlugin(),
-//            new UrlStorageProductAbstractMapperPlugin(),
-//            new UrlStorageProductSetMapperPlugin(),
-//            new UrlStorageRedirectMapperPlugin(),
-//        ];
-//    }
 }

@@ -7,8 +7,10 @@
 
 namespace Pyz\Zed\Event;
 
+use Spryker\Zed\AvailabilityStorage\Communication\Plugin\Event\Subscriber\AvailabilityStorageEventSubscriber;
 use Spryker\Zed\Event\EventDependencyProvider as SprykerEventDependencyProvider;
 use Spryker\Zed\GlossaryStorage\Communication\Plugin\Event\Subscriber\GlossaryStorageEventSubscriber;
+use Spryker\Zed\UrlStorage\Communication\Plugin\Event\Subscriber\UrlStorageEventSubscriber;
 
 class EventDependencyProvider extends SprykerEventDependencyProvider
 {
@@ -28,6 +30,8 @@ class EventDependencyProvider extends SprykerEventDependencyProvider
         $eventSubscriberCollection = parent::getEventSubscriberCollection();
 
         $eventSubscriberCollection->add(new GlossaryStorageEventSubscriber());
+        $eventSubscriberCollection->add(new UrlStorageEventSubscriber());
+        $eventSubscriberCollection->add(new AvailabilityStorageEventSubscriber());
 
         return $eventSubscriberCollection;
     }
