@@ -58,6 +58,7 @@ use SprykerShop\Yves\ErrorPage\Plugin\Provider\ErrorPageControllerProvider;
 use SprykerShop\Yves\HeartbeatPage\Plugin\Provider\HeartbeatPageControllerProvider;
 use SprykerShop\Yves\HomePage\Plugin\Provider\HomePageControllerProvider;
 use SprykerShop\Yves\MoneyWidget\Plugin\ServiceProvider\TwigMoneyServiceProvider;
+use SprykerShop\Yves\NewsletterPage\Plugin\Provider\NewsletterPageControllerProvider;
 use SprykerShop\Yves\NewsletterWidget\Plugin\Provider\NewsletterWidgetControllerProvider;
 use SprykerShop\Yves\ProductNewPage\Plugin\Provider\ProductNewPageControllerProvider;
 use SprykerShop\Yves\ProductReviewWidget\Plugin\Provider\ProductReviewControllerProvider;
@@ -192,6 +193,7 @@ class YvesBootstrap
             new HomePageControllerProvider($isSsl),
             new CheckoutPageControllerProvider($isSsl),
             new CustomerPageControllerProvider($isSsl),
+            new NewsletterPageControllerProvider($isSsl),
             new CartControllerProvider($isSsl),
             new WishlistPageControllerProvider($isSsl),
             new HeartbeatPageControllerProvider($isSsl),

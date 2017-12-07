@@ -7,6 +7,7 @@
 
 namespace Pyz\Yves\ExampleProductSalePage;
 
+use Spryker\Client\Collector\CollectorClient;
 use Spryker\Yves\Kernel\AbstractFactory;
 use SprykerShop\Yves\ProductWidget\Plugin\CatalogPage\ProductWidgetPlugin;
 
@@ -33,10 +34,18 @@ class ExampleProductSalePageFactory extends AbstractFactory
     }
 
     /**
-     * @return \SprykerShop\Yves\CategoryWidget\Plugin\CategoryReaderPlugin
+     * @return \Spryker\Client\Collector\CollectorClientInterface
      */
-    public function getCategoryReaderPlugin()
+    public function getCollectorClient()
     {
-        return $this->getProvidedDependency(ExampleProductSalePageDependencyProvider::PLUGIN_CATEGORY_READER);
+        return new CollectorClient(); // TODO: get from dependency provider
+    }
+
+    /**
+     * @return \Spryker\Shared\Kernel\Store
+     */
+    public function getStore()
+    {
+        return $this->getProvidedDependency(ExampleProductSalePageDependencyProvider::STORE);
     }
 }

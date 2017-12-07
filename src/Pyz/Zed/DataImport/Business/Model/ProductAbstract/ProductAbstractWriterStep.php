@@ -13,7 +13,7 @@ use Orm\Zed\Product\Persistence\SpyProductAbstractQuery;
 use Orm\Zed\ProductCategory\Persistence\SpyProductCategoryQuery;
 use Orm\Zed\Url\Persistence\SpyUrlQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
-use Pyz\Shared\Product\ProductConfig;
+use Spryker\Shared\Product\ProductConfig;
 use Pyz\Zed\DataImport\Business\Model\Product\ProductLocalizedAttributesExtractorStep;
 use Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepository;
 use Spryker\Zed\DataImport\Business\Exception\DataKeyNotFoundInDataSetException;

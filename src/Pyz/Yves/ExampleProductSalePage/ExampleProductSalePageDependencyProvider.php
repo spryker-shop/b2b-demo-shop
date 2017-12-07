@@ -7,6 +7,7 @@
 
 namespace Pyz\Yves\ExampleProductSalePage;
 
+use Spryker\Shared\Kernel\Store;
 use Spryker\Yves\Kernel\AbstractBundleDependencyProvider;
 use Spryker\Yves\Kernel\Container;
 use SprykerShop\Yves\CategoryWidget\Plugin\CategoryReaderPlugin;
@@ -15,6 +16,7 @@ class ExampleProductSalePageDependencyProvider extends AbstractBundleDependencyP
 {
     const CLIENT_SEARCH = 'CLIENT_SEARCH';
     const PLUGIN_CATEGORY_READER = 'PLUGIN_CATEGORY_READER';
+    const STORE = 'STORE';
 
     /**
      * @param \Spryker\Yves\Kernel\Container $container
@@ -25,6 +27,7 @@ class ExampleProductSalePageDependencyProvider extends AbstractBundleDependencyP
     {
         $container = $this->addSearchClient($container);
         $container = $this->addCategoryReaderPlugin($container);
+        $container = $this->addStore($container);
 
         return $container;
     }
@@ -52,6 +55,20 @@ class ExampleProductSalePageDependencyProvider extends AbstractBundleDependencyP
     {
         $container[self::PLUGIN_CATEGORY_READER] = function (Container $container) {
             return new CategoryReaderPlugin();
+        };
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Yves\Kernel\Container $container
+     *
+     * @return \Spryker\Yves\Kernel\Container
+     */
+    protected function addStore($container)
+    {
+        $container[self::STORE] = function (Container $container) {
+            return Store::getInstance();
         };
 
         return $container;

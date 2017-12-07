@@ -12,7 +12,7 @@ use Orm\Zed\Product\Persistence\SpyProductLocalizedAttributesQuery;
 use Orm\Zed\Product\Persistence\SpyProductQuery;
 use Orm\Zed\ProductBundle\Persistence\SpyProductBundleQuery;
 use Orm\Zed\ProductSearch\Persistence\SpyProductSearchQuery;
-use Pyz\Shared\Product\ProductConfig;
+use Spryker\Shared\Product\ProductConfig;
 use Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepository;
 use Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface;
 use Spryker\Zed\DataImport\Business\Model\DataImportStep\TouchAwareStep;
