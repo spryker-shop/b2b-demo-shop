@@ -8,6 +8,7 @@
 namespace Pyz\Zed\Queue;
 
 use Spryker\Shared\AvailabilityStorage\AvailabilityStorageConstants;
+use Spryker\Shared\CategoryStorage\CategoryStorageConstants;
 use Spryker\Shared\Config\Config;
 use Spryker\Shared\Event\EventConstants;
 use Spryker\Shared\GlossaryStorage\GlossaryStorageConstants;
@@ -40,7 +41,7 @@ class QueueDependencyProvider extends SprykerDependencyProvider
 //            ProductStorageConstants::PRODUCT_SYNC_STORAGE_QUEUE => new SynchronizationStorageQueueMessageProcessorPlugin(),
 //            ProductPageSearchConstants::PRODUCT_SYNC_SEARCH_QUEUE => new SynchronizationSearchQueueMessageProcessorPlugin(),
 //            PriceStorageConstants::PRICE_SYNC_STORAGE_QUEUE => new SynchronizationStorageQueueMessageProcessorPlugin(),
-//            CategoryStorageConstants::CATEGORY_SYNC_STORAGE_QUEUE => new SynchronizationStorageQueueMessageProcessorPlugin(),
+            CategoryStorageConstants::CATEGORY_SYNC_STORAGE_QUEUE => new SynchronizationStorageQueueMessageProcessorPlugin(),
 //            CategoryPageSearchConstants::CATEGORY_SYNC_SEARCH_QUEUE => new SynchronizationSearchQueueMessageProcessorPlugin();
         ];
     }
