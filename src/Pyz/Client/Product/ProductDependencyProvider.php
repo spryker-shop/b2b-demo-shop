@@ -7,7 +7,7 @@
 
 namespace Pyz\Client\Product;
 
-use Spryker\Client\Availability\Plugin\StorageProductAvailabilityExpanderPlugin;
+use Spryker\Client\AvailabilityStorage\Plugin\StorageProductAvailabilityStorageExpanderPlugin;
 use Spryker\Client\Product\ProductDependencyProvider as SprykerProductDependencyProvider;
 use Spryker\Client\ProductCategory\Plugin\StorageProductCategoryExpanderPlugin;
 use Spryker\Client\ProductImage\Plugin\StorageProductImageExpanderPlugin;
@@ -22,7 +22,7 @@ class ProductDependencyProvider extends SprykerProductDependencyProvider
         return [
             new StorageProductCategoryExpanderPlugin(),
             new StorageProductImageExpanderPlugin(),
-            new StorageProductAvailabilityExpanderPlugin(),
+            new StorageProductAvailabilityStorageExpanderPlugin(),
         ];
     }
 }
