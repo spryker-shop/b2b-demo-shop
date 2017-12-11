@@ -1,13 +1,13 @@
 <?php
+
 /**
- * Copyright © 2017-present Spryker Systems GmbH. All rights reserved.
- * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
+ * This file is part of the Spryker Demoshop.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
 namespace Pyz\Yves\ProductWidget;
 
 use Pyz\Yves\ExampleProductColorGroupWidget\Plugin\ProductWidget\ExampleProductColorGroupWidgetPlugin;
-use Spryker\Yves\Kernel\Container;
 use SprykerShop\Yves\ProductLabelWidget\Plugin\ProductWidget\ProductAbstractLabelWidgetPlugin;
 use SprykerShop\Yves\ProductLabelWidget\Plugin\ProductWidget\ProductLabelWidgetPlugin;
 use SprykerShop\Yves\ProductReviewWidget\Plugin\ProductWidget\ProductAbstractReviewWidgetPlugin;
@@ -19,11 +19,9 @@ class ProductWidgetDependencyProvider extends SprykerProductWidgetDependencyProv
     /**
      * Returns a list of widget plugin class names that implement \Spryker\Yves\Kernel\Dependency\Plugin\WidgetPluginInterface.
      *
-     * @param \Spryker\Yves\Kernel\Container $container
-     *
      * @return string[]
      */
-    protected function getProductRelationWidgetSubWidgetPlugins(Container $container): array
+    protected function getProductRelationWidgetSubWidgetPlugins(): array
     {
         return [
             ProductAbstractLabelWidgetPlugin::class,
@@ -35,11 +33,9 @@ class ProductWidgetDependencyProvider extends SprykerProductWidgetDependencyProv
     /**
      * Returns a list of widget plugin class names that implement \Spryker\Yves\Kernel\Dependency\Plugin\WidgetPluginInterface.
      *
-     * @param \Spryker\Yves\Kernel\Container $container
-     *
      * @return string[]
      */
-    protected function getCatalogPageSubWidgetPlugins(Container $container): array
+    protected function getCatalogPageSubWidgetPlugins(): array
     {
         return [
             ProductLabelWidgetPlugin::class,
@@ -51,11 +47,9 @@ class ProductWidgetDependencyProvider extends SprykerProductWidgetDependencyProv
     /**
      * Returns a list of widget plugin class names that implement \Spryker\Yves\Kernel\Dependency\Plugin\WidgetPluginInterface.
      *
-     * @param \Spryker\Yves\Kernel\Container $container
-     *
      * @return string[]
      */
-    protected function getCmsContentWidgetProductSubWidgetPlugins(Container $container): array
+    protected function getCmsContentWidgetProductSubWidgetPlugins(): array
     {
         return [
             ProductAbstractLabelWidgetPlugin::class,
@@ -66,11 +60,9 @@ class ProductWidgetDependencyProvider extends SprykerProductWidgetDependencyProv
     /**
      * Returns a list of widget plugin class names that implement \Spryker\Yves\Kernel\Dependency\Plugin\WidgetPluginInterface.
      *
-     * @param \Spryker\Yves\Kernel\Container $container
-     *
      * @return string[]
      */
-    protected function getCmsContentWidgetProductGroupSubWidgetPlugins(Container $container): array
+    protected function getCmsContentWidgetProductGroupSubWidgetPlugins(): array
     {
         return [
             ProductAbstractLabelWidgetPlugin::class,
@@ -82,11 +74,9 @@ class ProductWidgetDependencyProvider extends SprykerProductWidgetDependencyProv
     /**
      * Returns a list of widget plugin class names that implement \Spryker\Yves\Kernel\Dependency\Plugin\WidgetPluginInterface.
      *
-     * @param \Spryker\Yves\Kernel\Container $container
-     *
      * @return string[]
      */
-    protected function getHomePageSubWidgetPlugins(Container $container): array
+    protected function getHomePageSubWidgetPlugins(): array
     {
         return [
             ProductLabelWidgetPlugin::class,
