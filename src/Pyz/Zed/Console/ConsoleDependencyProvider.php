@@ -109,7 +109,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
      *
      * @return \Symfony\Component\Console\Command\Command[]
      */
-    public function getConsoleCommands(Container $container)
+    protected function getConsoleCommands(Container $container)
     {
         $commands = [
             new CacheWarmerConsole(),
@@ -286,11 +286,12 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
      *
      * @return \Silex\ServiceProviderInterface[]
      */
-    protected function getServiceProviders(Container $container)
+    public function getServiceProviders(Container $container)
     {
-        return [
-            new PropelServiceProvider(),
-        ];
+        $serviceProviders = parent::getServiceProviders($container);
+        $serviceProviders[] = new PropelServiceProvider();
+
+        return $serviceProviders;
     }
 
 }
