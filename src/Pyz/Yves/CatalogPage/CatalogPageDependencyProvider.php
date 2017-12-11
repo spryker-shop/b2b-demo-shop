@@ -15,9 +15,9 @@ class CatalogPageDependencyProvider extends SprykerCatalogPageDependencyProvider
 {
 
     /**
-     * @return \Spryker\Yves\Kernel\Dependency\Plugin\WidgetPluginInterface[]
+     * @return string[]
      */
-    protected function getCatalogPageWidgetPlugins()
+    protected function getCatalogPageWidgetPlugins(): array
     {
         return [
             ProductWidgetPlugin::class,
