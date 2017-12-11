@@ -1,8 +1,8 @@
 <?php
 
-namespace Spryker\Zed\UrlStorage\Persistence\Propel;
+namespace Orm\Zed\UrlStorage\Persistence;
 
-use Orm\Zed\UrlStorage\Persistence\AbstractSpyUrlRedirectStorage;
+use Spryker\Zed\UrlStorage\Persistence\Propel\AbstractSpyUrlRedirectStorage;
 
 /**
  * Skeleton subclass for representing a row from the 'spy_url_redirect_storage' table.

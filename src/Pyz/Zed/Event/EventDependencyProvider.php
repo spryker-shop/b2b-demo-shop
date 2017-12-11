@@ -8,6 +8,7 @@
 namespace Pyz\Zed\Event;
 
 use Spryker\Zed\AvailabilityStorage\Communication\Plugin\Event\Subscriber\AvailabilityStorageEventSubscriber;
+use Spryker\Zed\CategoryStorage\Communication\Plugin\Event\Subscriber\CategoryStorageEventSubscriber;
 use Spryker\Zed\Event\EventDependencyProvider as SprykerEventDependencyProvider;
 use Spryker\Zed\GlossaryStorage\Communication\Plugin\Event\Subscriber\GlossaryStorageEventSubscriber;
 use Spryker\Zed\NavigationStorage\Communication\Plugin\Event\Subscriber\NavigationStorageEventSubscriber;
@@ -33,6 +34,7 @@ class EventDependencyProvider extends SprykerEventDependencyProvider
         $eventSubscriberCollection->add(new GlossaryStorageEventSubscriber());
         $eventSubscriberCollection->add(new UrlStorageEventSubscriber());
         $eventSubscriberCollection->add(new AvailabilityStorageEventSubscriber());
+        $eventSubscriberCollection->add(new CategoryStorageEventSubscriber());
         $eventSubscriberCollection->add(new NavigationStorageEventSubscriber());
 
         return $eventSubscriberCollection;

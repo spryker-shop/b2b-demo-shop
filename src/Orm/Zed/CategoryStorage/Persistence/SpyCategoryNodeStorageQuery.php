@@ -2,7 +2,7 @@
 
 namespace Orm\Zed\CategoryStorage\Persistence;
 
-use Orm\Zed\CategoryStorage\Persistence\Base\SpyCategoryNodeStorageQuery as BaseSpyCategoryNodeStorageQuery;
+use Spryker\Zed\CategoryStorage\Persistence\Propel\AbstractSpyCategoryNodeStorageQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'spy_category_node_storage' table.
@@ -14,7 +14,7 @@ use Orm\Zed\CategoryStorage\Persistence\Base\SpyCategoryNodeStorageQuery as Base
  * long as it does not already exist in the output directory.
  *
  */
-class SpyCategoryNodeStorageQuery extends BaseSpyCategoryNodeStorageQuery
+class SpyCategoryNodeStorageQuery extends AbstractSpyCategoryNodeStorageQuery
 {
 
 }

@@ -9,21 +9,16 @@ namespace Pyz\Zed\Collector;
 
 use Pyz\Zed\Category\Communication\Plugin\CategoryNodeDataPageMapPlugin;
 use Pyz\Zed\Collector\Communication\Plugin\AttributeMapCollectorStoragePlugin;
-use Pyz\Zed\Collector\Communication\Plugin\AvailabilityCollectorStoragePlugin;
 use Pyz\Zed\Collector\Communication\Plugin\CategoryNodeCollectorSearchPlugin;
-use Pyz\Zed\Collector\Communication\Plugin\CategoryNodeCollectorStoragePlugin;
-use Pyz\Zed\Collector\Communication\Plugin\NavigationCollectorStoragePlugin;
 use Pyz\Zed\Collector\Communication\Plugin\ProductAbstractCollectorStoragePlugin;
 use Pyz\Zed\Collector\Communication\Plugin\ProductCollectorSearchPlugin;
 use Pyz\Zed\Collector\Communication\Plugin\ProductConcreteCollectorPlugin;
 use Pyz\Zed\Collector\Communication\Plugin\ProductOptionCollectorStoragePlugin;
 use Pyz\Zed\ProductSearch\Communication\Plugin\ProductDataPageMapPlugin;
-use Spryker\Shared\Availability\AvailabilityConfig;
 use Spryker\Shared\Cms\CmsConstants;
 use Spryker\Shared\CmsBlock\CmsBlockConfig;
 use Spryker\Shared\CmsBlockCategoryConnector\CmsBlockCategoryConnectorConfig;
 use Spryker\Shared\CmsBlockProductConnector\CmsBlockProductConnectorConstants;
-use Spryker\Shared\Navigation\NavigationConfig;
 use Spryker\Shared\Product\ProductConfig;
 use Spryker\Shared\ProductGroup\ProductGroupConfig;
 use Spryker\Shared\ProductLabel\ProductLabelConstants;
@@ -39,7 +34,6 @@ use Spryker\Zed\CmsCollector\Communication\Plugin\CmsVersionPageCollectorSearchP
 use Spryker\Zed\CmsCollector\Communication\Plugin\CmsVersionPageCollectorStoragePlugin;
 use Spryker\Zed\Collector\CollectorDependencyProvider as SprykerCollectorDependencyProvider;
 use Spryker\Zed\Kernel\Container;
-use Spryker\Zed\NavigationCollector\Communication\Plugin\NavigationMenuCollectorStoragePlugin;
 use Spryker\Zed\ProductGroupCollector\Communication\Plugin\ProductAbstractGroupsCollectorStoragePlugin;
 use Spryker\Zed\ProductGroupCollector\Communication\Plugin\ProductGroupCollectorStoragePlugin;
 use Spryker\Zed\ProductLabelCollector\Communication\Plugin\ProductLabelDictionaryCollectorStoragePlugin;
@@ -138,8 +132,6 @@ class CollectorDependencyProvider extends SprykerCollectorDependencyProvider
                 ProductConfig::RESOURCE_TYPE_PRODUCT_ABSTRACT => new ProductAbstractCollectorStoragePlugin(),
                 ProductConfig::RESOURCE_TYPE_PRODUCT_CONCRETE => new ProductConcreteCollectorPlugin(),
                 ProductConfig::RESOURCE_TYPE_ATTRIBUTE_MAP => new AttributeMapCollectorStoragePlugin(),
-                CategoryConfig::RESOURCE_TYPE_CATEGORY_NODE => new CategoryNodeCollectorStoragePlugin(),
-                CategoryConfig::RESOURCE_TYPE_NAVIGATION => new NavigationCollectorStoragePlugin(),
                 CmsConstants::RESOURCE_TYPE_PAGE => new CmsVersionPageCollectorStoragePlugin(),
                 CmsBlockConfig::RESOURCE_TYPE_CMS_BLOCK => new CmsBlockCollectorStoragePlugin(),
                 CmsBlockCategoryConnectorConfig::RESOURCE_TYPE_CMS_BLOCK_CATEGORY_CONNECTOR => new CmsBlockCategoryConnectorCollectorPlugin(),
