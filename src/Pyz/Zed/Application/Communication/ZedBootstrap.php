@@ -7,7 +7,6 @@
 
 namespace Pyz\Zed\Application\Communication;
 
-use Pyz\Zed\Application\ApplicationDependencyProvider;
 use Spryker\Shared\Auth\AuthConstants;
 use Spryker\Shared\Config\Config;
 use Spryker\Zed\Api\ApiConfig;
@@ -29,49 +28,6 @@ class ZedBootstrap extends SprykerZedBootstrap
 
         parent::setUp();
     }
-
-    /**
-     * @return void
-     */
-    protected function registerApiServiceProvider()
-    {
-        foreach ($this->getApiServiceProvider() as $provider) {
-            $this->application->register($provider);
-        }
-    }
-
-    /**
-     * @return \Silex\ServiceProviderInterface[]
-     */
-    protected function getServiceProvider()
-    {
-        return $this->getProvidedDependency(ApplicationDependencyProvider::SERVICE_PROVIDER);
-    }
-
-    /**
-     * @return \Silex\ServiceProviderInterface[]
-     */
-    protected function getApiServiceProvider()
-    {
-        return $this->getProvidedDependency(ApplicationDependencyProvider::SERVICE_PROVIDER_API);
-    }
-
-    /**
-     * @return \Silex\ServiceProviderInterface[]
-     */
-    protected function getInternalCallServiceProvider()
-    {
-        return $this->getProvidedDependency(ApplicationDependencyProvider::INTERNAL_CALL_SERVICE_PROVIDER);
-    }
-
-    /**
-     * @return \Silex\ServiceProviderInterface[]
-     */
-    protected function getInternalCallServiceProviderWithAuthentication()
-    {
-        return $this->getProvidedDependency(ApplicationDependencyProvider::INTERNAL_CALL_SERVICE_PROVIDER_WITH_AUTHENTICATION);
-    }
-
     /**
      * @return bool
      */

@@ -13,7 +13,7 @@ use Orm\Zed\Product\Persistence\SpyProductAbstractQuery;
 use Orm\Zed\ProductCategory\Persistence\SpyProductCategoryQuery;
 use Orm\Zed\Url\Persistence\SpyUrlQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
-use Pyz\Shared\Product\ProductConfig;
+use Spryker\Shared\Product\ProductConfig;
 use Pyz\Zed\DataImport\Business\Model\Product\ProductLocalizedAttributesExtractorStep;
 use Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepository;
 use Spryker\Zed\DataImport\Business\Exception\DataKeyNotFoundInDataSetException;
@@ -30,7 +30,6 @@ class ProductAbstractWriterStep extends TouchAwareStep implements DataImportStep
     const BULK_SIZE = 100;
 
     const KEY_ABSTRACT_SKU = 'abstract_sku';
-    const KEY_IS_FEATURED = 'is_featured';
     const KEY_COLOR_CODE = 'color_code';
     const KEY_ID_TAX_SET = 'idTaxSet';
     const KEY_ATTRIBUTES = 'attributes';
@@ -96,7 +95,6 @@ class ProductAbstractWriterStep extends TouchAwareStep implements DataImportStep
             ->findOneOrCreate();
 
         $productAbstractEntity
-            ->setIsFeatured($dataSet[static::KEY_IS_FEATURED])
             ->setColorCode($dataSet[static::KEY_COLOR_CODE])
             ->setFkTaxSet($dataSet[static::KEY_ID_TAX_SET])
             ->setAttributes(json_encode($dataSet[static::KEY_ATTRIBUTES]))

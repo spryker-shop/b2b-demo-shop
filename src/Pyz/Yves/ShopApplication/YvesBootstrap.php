@@ -7,7 +7,7 @@
 
 namespace Pyz\Yves\ShopApplication;
 
-use Pyz\Yves\Twig\Plugin\Provider\TwigServiceProvider;
+use Pyz\Yves\ExampleProductSalePage\Plugin\Provider\ExampleProductSaleControllerProvider;
 use Silex\Provider\FormServiceProvider;
 use Silex\Provider\HttpFragmentServiceProvider;
 use Silex\Provider\RememberMeServiceProvider;
@@ -15,6 +15,7 @@ use Silex\Provider\SecurityServiceProvider;
 use Silex\Provider\ServiceControllerServiceProvider;
 use Silex\Provider\SessionServiceProvider;
 use Silex\Provider\ValidatorServiceProvider;
+use Spryker\Service\UtilDateTime\ServiceProvider\DateTimeFormatterServiceProvider;
 use Spryker\Shared\Application\ServiceProvider\FormFactoryServiceProvider;
 use Spryker\Shared\Application\ServiceProvider\HeadersSecurityServiceProvider;
 use Spryker\Shared\Application\ServiceProvider\RoutingServiceProvider;
@@ -28,11 +29,6 @@ use Spryker\Yves\Application\Plugin\ServiceProvider\SslServiceProvider;
 use Spryker\Yves\CmsContentWidget\Plugin\CmsContentWidgetServiceProvider;
 use Spryker\Yves\Kernel\Application;
 use Spryker\Yves\Messenger\Plugin\Provider\FlashMessengerServiceProvider;
-use SprykerShop\Yves\CmsBlockWidget\Plugin\Provider\CmsBlockTwigFunctionServiceProvider;
-use SprykerShop\Yves\CmsPage\Plugin\Provider\CmsTwigFunctionServiceProvider;
-use SprykerShop\Yves\CustomerPage\Plugin\Provider\CustomerTwigFunctionServiceProvider;
-use SprykerShop\Yves\MoneyWidget\Plugin\ServiceProvider\TwigMoneyServiceProvider;
-use Spryker\Yves\Navigation\Plugin\Provider\NavigationTwigServiceProvider;
 use Spryker\Yves\NewRelic\Plugin\ServiceProvider\NewRelicRequestTransactionServiceProvider;
 use Spryker\Yves\ProductGroup\Plugin\Provider\ProductGroupTwigServiceProvider;
 use Spryker\Yves\ProductLabel\Plugin\Provider\ProductLabelTwigServiceProvider;
@@ -50,26 +46,29 @@ use SprykerShop\Yves\CatalogPage\Plugin\Provider\CatalogPageControllerProvider;
 use SprykerShop\Yves\CatalogPage\Plugin\Provider\CatalogPageTwigServiceProvider;
 use SprykerShop\Yves\CategoryWidget\Plugin\Provider\CategoryServiceProvider;
 use SprykerShop\Yves\CheckoutPage\Plugin\Provider\CheckoutPageControllerProvider;
+use SprykerShop\Yves\CmsBlockWidget\Plugin\Provider\CmsBlockTwigFunctionServiceProvider;
+use SprykerShop\Yves\CmsPage\Plugin\Provider\CmsTwigFunctionServiceProvider;
 use SprykerShop\Yves\CmsPage\Plugin\Provider\PreviewControllerProvider;
-use SprykerShop\Yves\CurrencyWidget\Plugin\CurrencySwitcherServiceProvider;
-use SprykerShop\Yves\CurrencyWidget\Plugin\CurrencyWidgetControllerProvider;
+use SprykerShop\Yves\CurrencyWidget\Plugin\Provider\CurrencyWidgetControllerProvider;
 use SprykerShop\Yves\CustomerPage\Plugin\Provider\CustomerPageControllerProvider;
 use SprykerShop\Yves\CustomerPage\Plugin\Provider\CustomerSecurityServiceProvider;
+use SprykerShop\Yves\CustomerPage\Plugin\Provider\CustomerTwigFunctionServiceProvider;
 use SprykerShop\Yves\DiscountWidget\Plugin\Provider\DiscountWidgetControllerProvider;
 use SprykerShop\Yves\ErrorPage\Plugin\Provider\ErrorPageControllerProvider;
 use SprykerShop\Yves\HeartbeatPage\Plugin\Provider\HeartbeatPageControllerProvider;
 use SprykerShop\Yves\HomePage\Plugin\Provider\HomePageControllerProvider;
+use SprykerShop\Yves\MoneyWidget\Plugin\ServiceProvider\TwigMoneyServiceProvider;
+use SprykerShop\Yves\NewsletterPage\Plugin\Provider\NewsletterPageControllerProvider;
 use SprykerShop\Yves\NewsletterWidget\Plugin\Provider\NewsletterWidgetControllerProvider;
 use SprykerShop\Yves\ProductNewPage\Plugin\Provider\ProductNewPageControllerProvider;
 use SprykerShop\Yves\ProductReviewWidget\Plugin\Provider\ProductReviewControllerProvider;
-use SprykerShop\Yves\ProductSalePage\Plugin\Provider\ProductSaleControllerProvider;
 use SprykerShop\Yves\ProductSetListPage\Plugin\Provider\ProductSetListPageControllerProvider;
 use SprykerShop\Yves\ShopApplication\Plugin\Provider\AutoloaderCacheServiceProvider;
 use SprykerShop\Yves\ShopApplication\Plugin\Provider\ShopApplicationServiceProvider;
+use SprykerShop\Yves\ShopApplication\Plugin\Provider\ShopTwigServiceProvider;
+use SprykerShop\Yves\ShopApplication\Plugin\Provider\WidgetServiceProvider;
 use SprykerShop\Yves\ShopApplication\Plugin\Provider\YvesSecurityServiceProvider;
 use SprykerShop\Yves\ShopLayout\Plugin\Provider\LanguageServiceProvider;
-use SprykerShop\Yves\ShopLayout\Plugin\Provider\ShopLayoutTwigExtensionServiceProvider;
-use SprykerShop\Yves\ShopLayout\Plugin\Provider\ShopLayoutTwigServiceProvider;
 use SprykerShop\Yves\ShopRouter\Plugin\Router\SilexRouter;
 use SprykerShop\Yves\ShopRouter\Plugin\Router\StorageRouter;
 use SprykerShop\Yves\ShopUI\Plugin\Provider\ShopUITwigServiceProvider;
@@ -119,9 +118,10 @@ class YvesBootstrap
         $this->application->register(new ZedRequestHeaderServiceProvider());
         $this->application->register(new ZedRequestLogServiceProvider());
 
-        $this->application->register(new ShopLayoutTwigServiceProvider());
-        $this->application->register(new ShopLayoutTwigExtensionServiceProvider());
+        $this->application->register(new ShopTwigServiceProvider());
+        $this->application->register(new WidgetServiceProvider());
         $this->application->register(new ShopApplicationServiceProvider());
+        $this->application->register(new DateTimeFormatterServiceProvider());
         $this->application->register(new SessionServiceProvider());
         $this->application->register(new SprykerSessionServiceProvider());
         $this->application->register(new SecurityServiceProvider());
@@ -150,13 +150,11 @@ class YvesBootstrap
         $this->application->register(new LanguageServiceProvider());
         $this->application->register(new TwigMoneyServiceProvider());
         $this->application->register(new ProductRelationTwigServiceProvider());
-        $this->application->register(new NavigationTwigServiceProvider());
         $this->application->register(new ProductGroupTwigServiceProvider());
         $this->application->register(new ProductLabelTwigServiceProvider());
         $this->application->register(new CmsContentWidgetServiceProvider());
         $this->application->register(new CmsTwigFunctionServiceProvider());
         $this->application->register(new CmsBlockTwigFunctionServiceProvider());
-        $this->application->register(new CurrencySwitcherServiceProvider());
         $this->application->register(new ProductAbstractReviewTwigServiceProvider());
         $this->application->register(new CatalogPageTwigServiceProvider());
         $this->application->register(new ShopUITwigServiceProvider());
@@ -197,6 +195,7 @@ class YvesBootstrap
             new HomePageControllerProvider($isSsl),
             new CheckoutPageControllerProvider($isSsl),
             new CustomerPageControllerProvider($isSsl),
+            new NewsletterPageControllerProvider($isSsl),
             new CartControllerProvider($isSsl),
             new WishlistPageControllerProvider($isSsl),
             new HeartbeatPageControllerProvider($isSsl),
@@ -204,7 +203,7 @@ class YvesBootstrap
             new CatalogPageControllerProvider($isSsl),
             new CalculationPageControllerProvider($isSsl),
             new ProductSetListPageControllerProvider($isSsl),
-            new ProductSaleControllerProvider($isSsl),
+            new ExampleProductSaleControllerProvider($isSsl),
             new PreviewControllerProvider($isSsl),
             new CurrencyWidgetControllerProvider($isSsl),
             new ProductNewPageControllerProvider($isSsl),

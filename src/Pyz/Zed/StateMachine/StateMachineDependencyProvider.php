@@ -7,7 +7,7 @@
 
 namespace Pyz\Zed\StateMachine;
 
-use Pyz\Zed\StateMachineExample\Communication\Plugin\TestStateMachineHandlerPlugin;
+use Pyz\Zed\ExampleStateMachine\Communication\Plugin\TestStateMachineHandlerPlugin;
 use Spryker\Zed\StateMachine\StateMachineDependencyProvider as SprykerStateMachineDependencyProvider;
 
 class StateMachineDependencyProvider extends SprykerStateMachineDependencyProvider

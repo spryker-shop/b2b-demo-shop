@@ -10,9 +10,9 @@ namespace Pyz\Zed\ProductSearch\Business\Map;
 use Generated\Shared\Transfer\LocaleTransfer;
 use Generated\Shared\Transfer\PageMapTransfer;
 use Generated\Shared\Transfer\RawProductAttributesTransfer;
-use Pyz\Shared\ProductSearch\ProductSearchConfig;
 use Pyz\Zed\ProductSearch\Dependency\ProductSearchToProductInterface;
 use Spryker\Shared\Kernel\Store;
+use Spryker\Shared\ProductSearch\ProductSearchConfig;
 use Spryker\Zed\ProductSearch\Business\ProductSearchFacadeInterface;
 use Spryker\Zed\Search\Business\Model\Elasticsearch\DataMapper\PageMapBuilderInterface;
 
@@ -66,7 +66,6 @@ class ProductDataPageMapBuilder
             ->setStore(Store::getInstance()->getStoreName())
             ->setLocale($localeTransfer->getLocaleName())
             ->setType(ProductSearchConfig::PRODUCT_ABSTRACT_PAGE_SEARCH_TYPE)
-            ->setIsFeatured(filter_var($productData['is_featured'], FILTER_VALIDATE_BOOLEAN))
             ->setIsActive(!empty($productData['concrete_skus']));
 
         $attributes = $this->getProductAttributes($productData);

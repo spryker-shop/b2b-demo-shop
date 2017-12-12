@@ -35,7 +35,6 @@ class ProductCollectorQuery extends AbstractPdoCollectorQuery
                 GROUP_CONCAT(DISTINCT spy_product.sku)                                                        AS concrete_skus,
                 GROUP_CONCAT(DISTINCT spy_product_category.fk_category)         AS category_ids,
                 GROUP_CONCAT(DISTINCT spy_category_node.id_category_node)       AS category_node_ids,
-                GROUP_CONCAT(DISTINCT spy_product_abstract.is_featured)         AS is_featured,
                 MIN(spy_product_image_set.id_product_image_set)                 AS id_image_set,
                 GROUP_CONCAT(DISTINCT CONCAT(spy_product.sku, ' . static::CONCAT_DELIMITER . ', cast(spy_product.is_active as TEXT))) AS product_status_aggregation,
                 GROUP_CONCAT(DISTINCT CONCAT(spy_product.sku, ' . static::CONCAT_DELIMITER . ', cast(spy_product_search.is_searchable as TEXT))) AS product_searchable_status_aggregation,

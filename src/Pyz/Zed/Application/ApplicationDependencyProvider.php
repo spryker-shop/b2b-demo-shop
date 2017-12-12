@@ -7,7 +7,8 @@
 
 namespace Pyz\Zed\Application;
 
-use Pyz\Zed\WebProfiler\Communication\Plugin\ServiceProvider\WebProfilerServiceProvider;
+use Spryker\Zed\EventBehavior\Communication\Plugin\ServiceProvider\EventBehaviorServiceProvider;
+use Spryker\Zed\WebProfiler\Communication\Plugin\ServiceProvider\WebProfilerServiceProvider;
 use Silex\Provider\HttpFragmentServiceProvider;
 use Silex\Provider\ServiceControllerServiceProvider;
 use Silex\Provider\SessionServiceProvider;
@@ -17,7 +18,6 @@ use Spryker\Shared\Application\ServiceProvider\FormFactoryServiceProvider;
 use Spryker\Shared\Config\Environment;
 use Spryker\Shared\ErrorHandler\Plugin\ServiceProvider\WhoopsErrorHandlerServiceProvider;
 use Spryker\Zed\Acl\Communication\Plugin\Bootstrap\AclBootstrapProvider;
-use Spryker\Zed\Api\Communication\Plugin\ApiControllerListenerPlugin;
 use Spryker\Zed\Api\Communication\Plugin\ApiServiceProviderPlugin;
 use Spryker\Zed\Api\Communication\Plugin\ServiceProvider\ApiRoutingServiceProvider;
 use Spryker\Zed\Application\ApplicationDependencyProvider as SprykerApplicationDependencyProvider;
@@ -45,7 +45,6 @@ use Spryker\Zed\Session\Communication\Plugin\ServiceProvider\SessionServiceProvi
 use Spryker\Zed\Twig\Communication\Plugin\ServiceProvider\TwigServiceProvider as SprykerTwigServiceProvider;
 use Spryker\Zed\User\Communication\Plugin\ServiceProvider\UserServiceProvider;
 use Spryker\Zed\ZedNavigation\Communication\Plugin\ServiceProvider\ZedNavigationServiceProvider;
-use Spryker\Zed\ZedRequest\Communication\Plugin\GatewayControllerListenerPlugin;
 use Spryker\Zed\ZedRequest\Communication\Plugin\GatewayServiceProviderPlugin;
 
 class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
@@ -54,11 +53,6 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
     const SERVICE_NETWORK = 'util network service';
     const SERVICE_UTIL_IO = 'util io service';
     const SERVICE_DATA = 'util data service';
-
-    const SERVICE_PROVIDER = 'SERVICE_PROVIDER';
-    const SERVICE_PROVIDER_API = 'SERVICE_PROVIDER_API';
-    const INTERNAL_CALL_SERVICE_PROVIDER = 'INTERNAL_CALL_SERVICE_PROVIDER';
-    const INTERNAL_CALL_SERVICE_PROVIDER_WITH_AUTHENTICATION = 'INTERNAL_CALL_SERVICE_PROVIDER_WITH_AUTHENTICATION';
 
     /**
      * @param \Spryker\Zed\Kernel\Container $container
@@ -98,16 +92,16 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
         $providers = [
             new KernelLogServiceProvider(),
             new SessionServiceProvider(),
-            $this->getSessionServiceProvider($container),
+            new SprykerSessionServiceProvider(),
             new SslServiceProvider(),
             new AuthBootstrapProvider(),
             new AclBootstrapProvider(),
             new TwigServiceProvider(),
             new SprykerTwigServiceProvider(),
             new EnvironmentInformationServiceProvider(),
-            $this->getGatewayServiceProvider(),
+            new GatewayServiceProviderPlugin(),
             new AssertionServiceProvider(),
-            new UserServiceProvider($container),
+            new UserServiceProvider(),
             new TwigMoneyServiceProvider(),
             new SubRequestServiceProvider(),
             new WebProfilerServiceProvider(),
@@ -123,6 +117,7 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
             new RedirectAfterLoginProvider(),
             new PropelServiceProvider(),
             new GuiTwigExtensionServiceProvider(),
+            new EventBehaviorServiceProvider(),
         ];
 
         $providers = array_merge($providers, $coreProviders);
@@ -143,9 +138,10 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
             new SslServiceProvider(),
             new ServiceControllerServiceProvider(),
             new RoutingServiceProvider(),
-            $this->getApiServiceProvider(),
+            new ApiServiceProviderPlugin,
             new ApiRoutingServiceProvider(),
             new PropelServiceProvider(),
+            new EventBehaviorServiceProvider(),
         ];
 
         if (Environment::isDevelopment()) {
@@ -171,12 +167,13 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
             new RoutingServiceProvider(),
             new MvcRoutingServiceProvider(),
             new SilexRoutingServiceProvider(),
-            $this->getGatewayServiceProvider(),
+            new GatewayServiceProviderPlugin(),
             new NewRelicRequestTransactionServiceProvider(),
             new HttpFragmentServiceProvider(),
             new SubRequestServiceProvider(),
             new TwigServiceProvider(),
             new SprykerTwigServiceProvider(),
+            new EventBehaviorServiceProvider(),
         ];
     }
 
@@ -192,7 +189,7 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
             new PropelServiceProvider(),
             new RequestServiceProvider(),
             new SessionServiceProvider(),
-            $this->getSessionServiceProvider($container),
+            new SprykerSessionServiceProvider(),
             new SslServiceProvider(),
             new AuthBootstrapProvider(),
             new AclBootstrapProvider(),
@@ -200,51 +197,13 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
             new RoutingServiceProvider(),
             new MvcRoutingServiceProvider(),
             new SilexRoutingServiceProvider(),
-            $this->getGatewayServiceProvider(),
+            new GatewayServiceProviderPlugin(),
             new NewRelicRequestTransactionServiceProvider(),
             new HttpFragmentServiceProvider(),
             new SubRequestServiceProvider(),
             new TwigServiceProvider(),
             new SprykerTwigServiceProvider(),
+            new EventBehaviorServiceProvider(),
         ];
-    }
-
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Session\Communication\Plugin\ServiceProvider\SessionServiceProvider
-     */
-    protected function getSessionServiceProvider(Container $container)
-    {
-        $sessionServiceProvider = new SprykerSessionServiceProvider();
-        $sessionServiceProvider->setClient(
-            $container->getLocator()->session()->client()
-        );
-
-        return $sessionServiceProvider;
-    }
-
-    /**
-     * @return \Spryker\Zed\ZedRequest\Communication\Plugin\GatewayServiceProviderPlugin
-     */
-    protected function getGatewayServiceProvider()
-    {
-        $controllerListener = new GatewayControllerListenerPlugin();
-        $serviceProvider = new GatewayServiceProviderPlugin();
-        $serviceProvider->setControllerListener($controllerListener);
-
-        return $serviceProvider;
-    }
-
-    /**
-     * @return \Spryker\Zed\Api\Communication\Plugin\ApiServiceProviderPlugin
-     */
-    protected function getApiServiceProvider()
-    {
-        $controllerListener = new ApiControllerListenerPlugin();
-        $serviceProvider = new ApiServiceProviderPlugin();
-        $serviceProvider->setControllerListener($controllerListener);
-
-        return $serviceProvider;
     }
 }

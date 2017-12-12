@@ -7,7 +7,7 @@
 
 namespace Pyz\Client\Search;
 
-use Pyz\Client\Catalog\Plugin\Config\CatalogSearchConfigBuilder;
+use Spryker\Client\Catalog\Plugin\Config\CatalogSearchConfigBuilder;
 use Spryker\Client\Kernel\Container;
 use Spryker\Client\ProductSearch\Plugin\Config\ProductSearchConfigExpanderPlugin;
 use Spryker\Client\Search\SearchDependencyProvider as SprykerSearchDependencyProvider;

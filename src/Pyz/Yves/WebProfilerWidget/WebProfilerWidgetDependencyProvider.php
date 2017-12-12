@@ -7,7 +7,7 @@
 
 namespace Pyz\Yves\WebProfilerWidget;
 
-use SprykerShop\Shared\WebProfilerWidget\Plugin\ServiceProvider\WebProfilerWidgetServiceProvider;
+use Spryker\Shared\WebProfiler\Plugin\ServiceProvider\WebProfilerServiceProvider;
 use Spryker\Yves\Config\Plugin\ServiceProvider\ConfigProfilerServiceProvider;
 use SprykerShop\Yves\WebProfilerWidget\WebProfilerWidgetDependencyProvider as SprykerWebProfilerDependencyProvider ;
 
@@ -20,7 +20,7 @@ class WebProfilerWidgetDependencyProvider extends SprykerWebProfilerDependencyPr
     protected function getWebProfilerPlugins()
     {
         return [
-            new WebProfilerWidgetServiceProvider(),
+            new WebProfilerServiceProvider(),
             new ConfigProfilerServiceProvider(),
         ];
     }

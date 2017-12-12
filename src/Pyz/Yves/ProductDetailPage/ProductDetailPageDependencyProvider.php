@@ -7,16 +7,12 @@
 
 namespace Pyz\Yves\ProductDetailPage;
 
-use Spryker\Yves\Kernel\Container;
+use Pyz\Yves\ExampleProductColorGroupWidget\Plugin\ProductDetailPage\ExampleProductColorGroupWidgetPlugin;
 use SprykerShop\Yves\AvailabilityWidget\Plugin\ProductDetailPage\AvailabilityWidgetPlugin;
-use SprykerShop\Yves\AvailabilityWidget\Plugin\StorageProductAvailabilityExpanderPlugin;
-use SprykerShop\Yves\ProductCategoryWidget\Plugin\ProductDetailPage\ProductCategoryWidgetPlugin;
-use SprykerShop\Yves\ProductCategoryWidget\Plugin\StorageProductCategoryExpanderPlugin;
 use SprykerShop\Yves\CmsBlockWidget\Plugin\ProductDetailPage\ProductCmsBlockWidgetPlugin;
+use SprykerShop\Yves\ProductCategoryWidget\Plugin\ProductDetailPage\ProductCategoryWidgetPlugin;
 use SprykerShop\Yves\ProductDetailPage\ProductDetailPageDependencyProvider as SprykerShopProductDetailPageDependencyProvider;
-use SprykerShop\Yves\ProductGroupWidget\Plugin\ProductDetailPage\ProductGroupWidgetPlugin;
 use SprykerShop\Yves\ProductImageWidget\Plugin\ProductDetailPage\ProductImageWidgetPlugin;
-use SprykerShop\Yves\ProductImageWidget\Plugin\StorageProductImageExpanderPlugin;
 use SprykerShop\Yves\ProductLabelWidget\Plugin\ProductDetailPage\ProductAbstractLabelWidgetPlugin;
 use SprykerShop\Yves\ProductOptionWidget\Plugin\ProductDetailPage\ProductOptionWidgetPlugin;
 use SprykerShop\Yves\ProductRelationWidget\Plugin\ProductDetailPage\SimilarProductsWidgetPlugin;
@@ -25,27 +21,10 @@ use SprykerShop\Yves\WishlistWidget\Plugin\ProductDetailPage\WishlistWidgetPlugi
 
 class ProductDetailPageDependencyProvider extends SprykerShopProductDetailPageDependencyProvider
 {
-
     /**
-     * @param \Spryker\Yves\Kernel\Container $container
-     *
-     * @return \SprykerShop\Yves\ProductDetailPage\Dependency\Plugin\StorageProductExpanderPluginInterface[]
-     */
-    protected function getStorageProductExpanderPlugins(Container $container): array
-    {
-        return [
-            new StorageProductCategoryExpanderPlugin(),
-            new StorageProductImageExpanderPlugin(),
-            new StorageProductAvailabilityExpanderPlugin(),
-        ];
-    }
-
-    /**
-     * @param \Spryker\Yves\Kernel\Container $container
-     *
      * @return \Spryker\Yves\Kernel\Dependency\Plugin\WidgetPluginInterface[]
      */
-    protected function getProductDetailPageWidgetPlugins(Container $container): array
+    protected function getProductDetailPageWidgetPlugins(): array
     {
         return [
             ProductCategoryWidgetPlugin::class,
@@ -57,8 +36,7 @@ class ProductDetailPageDependencyProvider extends SprykerShopProductDetailPageDe
             ProductCmsBlockWidgetPlugin::class,
             ProductAbstractLabelWidgetPlugin::class,
             SimilarProductsWidgetPlugin::class,
-            ProductGroupWidgetPlugin::class,
+            ExampleProductColorGroupWidgetPlugin::class,
         ];
     }
-
 }

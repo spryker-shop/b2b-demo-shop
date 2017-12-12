@@ -5,7 +5,7 @@
  */
 
 use Monolog\Logger;
-use SprykerShop\Shared\WebProfilerWidget\WebProfilerWidgetConstants;
+use Spryker\Shared\WebProfiler\WebProfilerConstants;
 use Spryker\Shared\Acl\AclConstants;
 use Spryker\Shared\Application\ApplicationConstants;
 use Spryker\Shared\Config\ConfigConstants;
@@ -31,7 +31,7 @@ $CURRENT_STORE = Store::getInstance()->getStoreName();
 $config[KernelConstants::SPRYKER_ROOT] = APPLICATION_ROOT_DIR . '/vendor/spryker/spryker/Bundles';
 $config[KernelConstants::STORE_PREFIX] = 'DEV';
 $config[ApplicationConstants::ENABLE_APPLICATION_DEBUG] = true;
-$config[WebProfilerWidgetConstants::ENABLE_WEB_PROFILER]
+$config[WebProfilerConstants::ENABLE_WEB_PROFILER]
     = $config[ConfigConstants::ENABLE_WEB_PROFILER]
     = true;
 
@@ -59,6 +59,11 @@ $config[StorageConstants::STORAGE_REDIS_DATABASE] = 0;
 $config[RabbitMqConstants::RABBITMQ_HOST] = 'localhost';
 $config[RabbitMqConstants::RABBITMQ_PORT] = '5672';
 $config[RabbitMqConstants::RABBITMQ_PASSWORD] = 'mate20mg';
+
+$config[RabbitMqConstants::RABBITMQ_API_HOST] = 'localhost';
+$config[RabbitMqConstants::RABBITMQ_API_PORT] = '15672';
+$config[RabbitMqConstants::RABBITMQ_API_USERNAME] = 'admin';
+$config[RabbitMqConstants::RABBITMQ_API_PASSWORD] = 'mate20mg';
 
 // ---------- Session
 $config[SessionConstants::YVES_SESSION_COOKIE_SECURE] = false;
@@ -104,12 +109,11 @@ $config[KernelConstants::AUTO_LOADER_UNRESOLVABLE_CACHE_ENABLED] = false;
 
 // ---------- Logging
 $config[LogConstants::LOG_LEVEL] = Logger::INFO;
-$config[LogConstants::EXCEPTION_LOG_FILE_PATH] = sprintf(
-    '%s/data/%s/logs/%s/exception.log',
-    APPLICATION_ROOT_DIR,
-    $CURRENT_STORE,
-    APPLICATION
-);
+
+$baseLogFilePath = sprintf('%s/data/%s/logs', APPLICATION_ROOT_DIR, $CURRENT_STORE);
+
+$config[LogConstants::EXCEPTION_LOG_FILE_PATH_YVES] = $baseLogFilePath . '/YVES/exception.log';
+$config[LogConstants::EXCEPTION_LOG_FILE_PATH_ZED] = $baseLogFilePath . '/ZED/exception.log';
 
 // ---------- Events
 $config[EventConstants::LOGGER_ACTIVE] = true;

@@ -5,11 +5,11 @@
  *
  * - jobs[]['name'] must not contains spaces or any other characters, that have to be urlencode()'d
  * - jobs[]['role'] default value is 'admin'
- *
- * @TODO Use values from config/stores.php
  */
 
-$allStores = ['DE'];
+$stores = require(APPLICATION_ROOT_DIR . '/config/Shared/stores.php');
+
+$allStores = array_keys($stores);
 
 /* -- MAIL QUEUE -- */
 $jobs[] = [
@@ -90,8 +90,8 @@ $jobs[] = [
     'name' => 'queue-worker-start',
     'command' => '$PHP_BIN vendor/bin/console queue:worker:start -vvv',
     'schedule' => '* * * * *',
-    'enable' => false,
-    'run_on_non_production' => false,
+    'enable' => true,
+    'run_on_non_production' => true,
     'stores' => $allStores,
 ];
 
@@ -103,6 +103,16 @@ $jobs[] = [
     'run_on_non_production' => true,
     'stores' => $allStores,
 ];
+
+$jobs[] = [
+  'name' => 'event-trigger-timeout',
+  'command' => '$PHP_BIN vendor/bin/console event:trigger:timeout -vvv',
+  'schedule' => '5 * * * *',
+  'enable' => true,
+  'run_on_non_production' => true,
+'stores' => $allStores,
+];
+
 
 /* StateMachine */
 /*

@@ -5,7 +5,6 @@
  */
 
 use Monolog\Logger;
-use Pyz\Shared\WebProfiler\WebProfilerConstants;
 use Pyz\Yves\ShopApplication\YvesBootstrap;
 use Pyz\Zed\Application\Communication\ZedBootstrap;
 use Spryker\Shared\Application\Log\Config\SprykerLoggerConfig;
@@ -22,6 +21,7 @@ use Spryker\Shared\Setup\SetupConstants;
 use Spryker\Shared\Storage\StorageConstants;
 use Spryker\Shared\Testify\TestifyConstants;
 use Spryker\Shared\Twig\TwigConstants;
+use Spryker\Shared\WebProfiler\WebProfilerConstants;
 
 // ---------- General
 $config[KernelConstants::SPRYKER_ROOT] = APPLICATION_ROOT_DIR . '/vendor/spryker/spryker/Bundles';
@@ -71,6 +71,9 @@ $config[TwigConstants::ZED_TWIG_OPTIONS] = [
 $config[TwigConstants::YVES_TWIG_OPTIONS] = [
     'cache' => false,
 ];
+
+// ---------- Logging
+$config[LogConstants::LOG_FILE_PATH] = APPLICATION_ROOT_DIR . '/data/logs';
 
 // ---------- Jenkins
 $config[SetupConstants::JENKINS_BASE_URL] = 'http://localhost:10007/';

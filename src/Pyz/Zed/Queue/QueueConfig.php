@@ -13,6 +13,7 @@ use Spryker\Shared\Event\EventConstants;
 use Spryker\Shared\Queue\QueueConstants;
 use Spryker\Zed\Queue\QueueConfig as SprykerQueueConfig;
 use SprykerEco\Shared\Loggly\LogglyConstants;
+use SprykerEco\Zed\Loggly\LogglyConfig;
 
 class QueueConfig extends SprykerQueueConfig
 {
@@ -30,7 +31,7 @@ class QueueConfig extends SprykerQueueConfig
             EventConstants::EVENT_QUEUE => [
                 static::RABBITMQ => $this->getRabbitMqQueueConsumerOptions(),
             ],
-            Config::get(LogglyConstants::QUEUE_NAME) => [
+            Config::get(LogglyConstants::QUEUE_NAME, LogglyConfig::DEFAULT_QUEUE_NAME) => [
                 static::RABBITMQ => $this->getRabbitMqQueueConsumerOptions(),
             ],
         ];

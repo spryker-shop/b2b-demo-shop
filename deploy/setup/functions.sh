@@ -155,7 +155,7 @@ function installZed {
     writeErrorMessage "Updating product label relations failed"
 
     labelText "Purge All Queues"
-    purgeAllQueues
+    # purgeAllQueues
 
     labelText "Setting up data stores"
 
