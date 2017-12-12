@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "1ee2e5ac050dbd8ca47ad3e4f9125846",
+    "content-hash": "f2d0fa417fc5fe3ea1080587687a25a5",
     "packages": [
         {
             "name": "braintree/braintree_php",
@@ -1730,6 +1730,82 @@
             "time": "2017-10-24T10:37:10+00:00"
         },
         {
+            "name": "spryker/event-behavior",
+            "version": "0.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/EventBehavior.git",
+                "reference": "34e23022fd48e753a9a964320b77bc572171d734",
+                "mirrors": [
+                    {
+                        "url": "https://code.spryker.com:/repo/private/mirrors/%package%/%normalizedUrl%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/EventBehavior/zipball/34e23022fd48e753a9a964320b77bc572171d734",
+                "reference": "34e23022fd48e753a9a964320b77bc572171d734",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://code.spryker.com/repo/private/dists/%package%/%version%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "spryker/error-handler": "^2.1.2",
+                "spryker/event": "^2.0.0",
+                "spryker/kernel": "^3.12.0",
+                "spryker/propel-orm": "^1.0.0",
+                "spryker/symfony": "^3.1.0",
+                "spryker/util-encoding": "^2.0.0",
+                "spryker/zend": "^2.1.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/config": "^3.1.0",
+                "spryker/console": "^3.1.0 || ^4.0.0",
+                "spryker/propel": "^3.0.0",
+                "spryker/silex": "^2.0.0",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/console": "*",
+                "spryker/silex": "^2.0.0",
+                "spryker/symfony": "^3.0.0"
+            },
+            "type": "propel-behavior",
+            "extra": {
+                "name": "event",
+                "class": "\\Spryker\\Zed\\EventBehavior\\Persistence\\Propel\\Behavior\\EventBehavior",
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "SprykerTest\\": "tests/SprykerTest/"
+                }
+            },
+            "notification-url": "https://code.spryker.com/repo/private/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "EventBehavior module",
+            "support": {
+                "source": "https://github.com/spryker/EventBehavior/tree/master"
+            },
+            "time": "2017-11-23T15:41:34+00:00"
+        },
+        {
             "name": "spryker/install",
             "version": "dev-master",
             "source": {
@@ -1859,11 +1935,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-feature/core-1313-b2b-demoshop",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "9a9d599bbd483a504a73b93eae0dac19bc2245b8"
+                "reference": "97c75477dad13b0147d8817427f247ff90a486f2"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.0",
@@ -1927,7 +2003,6 @@
                 "spryker/elastica": "*",
                 "spryker/error-handler": "*",
                 "spryker/event": "*",
-                "spryker/event-behavior": "*",
                 "spryker/event-journal": "*",
                 "spryker/file-system": "*",
                 "spryker/flysystem": "*",
@@ -2020,7 +2095,6 @@
                 "spryker/store": "*",
                 "spryker/symfony": "*",
                 "spryker/synchronization": "*",
-                "spryker/synchronization-behavior": "*",
                 "spryker/tax": "*",
                 "spryker/tax-product-connector": "*",
                 "spryker/testify": "*",
@@ -2063,7 +2137,90 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2017-12-12T15:35:22+00:00"
+            "time": "2017-12-12T16:01:54+00:00"
+        },
+        {
+            "name": "spryker/spryker-shop",
+            "version": "dev-feature/core-1313-b2b-demoshop",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:spryker/spryker-shop.git",
+                "reference": "9bec3cb94c952efb4a575ca006b3959899fa9d3b"
+            },
+            "require": {
+                "spryker/spryker": "*"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "autoload.php"
+                ]
+            },
+            "license": [
+                "proprietary"
+            ],
+            "description": "Spryker Shop page and widget modules",
+            "time": "2017-12-12T15:41:30+00:00"
+        },
+        {
+            "name": "spryker/synchronization-behavior",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/SynchronizationBehavior.git",
+                "reference": "5cfc5ddd48ff307ac71a33e25a2244c03eb8df84",
+                "mirrors": [
+                    {
+                        "url": "https://code.spryker.com:/repo/private/mirrors/%package%/%normalizedUrl%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/SynchronizationBehavior/zipball/5cfc5ddd48ff307ac71a33e25a2244c03eb8df84",
+                "reference": "5cfc5ddd48ff307ac71a33e25a2244c03eb8df84",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://code.spryker.com/repo/private/dists/%package%/%version%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "spryker/kernel": "^3.4.0",
+                "spryker/propel-orm": "^1.0.0",
+                "spryker/zend": "^2.1.0"
+            },
+            "suggest": {
+                "spryker/synchronizationBehavior": "^0.1.0"
+            },
+            "type": "propel-behavior",
+            "extra": {
+                "name": "synchronization",
+                "class": "\\Spryker\\Zed\\SynchronizationBehavior\\Persistence\\Propel\\Behavior\\SynchronizationBehavior",
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://code.spryker.com/repo/private/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "SynchronizationBehavior module",
+            "support": {
+                "source": "https://github.com/spryker/SynchronizationBehavior/tree/master"
+            },
+            "time": "2017-10-17T08:36:02+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -6772,7 +6929,7 @@
             ],
             "authors": [
                 {
-                    "name": "Sullivan Senechal",
+                    "name": "Sullivan SENECHAL",
                     "email": "soullivaneuh@gmail.com"
                 }
             ],
@@ -7652,6 +7809,7 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "spryker/spryker": 20,
+        "spryker/spryker-shop": 20,
         "spryker-eco/loggly": 20,
         "spryker/rabbit-mq": 20,
         "spryker/install": 20,
