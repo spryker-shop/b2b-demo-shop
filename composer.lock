@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "fe4bd589d2d0ed1113a983c823bc7235",
+    "content-hash": "2f1e9ff7702e11e9abafa88a0f256285",
     "packages": [
         {
             "name": "braintree/braintree_php",
@@ -1730,48 +1730,6 @@
             "time": "2017-10-24T10:37:10+00:00"
         },
         {
-            "name": "spryker/deploy",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "git@github.com:spryker/deploy.git",
-                "reference": "64d2bef207a5835a625c1051647b66e5c47dd17c"
-            },
-            "require": {
-                "monolog/monolog": "^1.23",
-                "php": ">=7.0",
-                "symfony/console": "^3.0.0",
-                "symfony/process": "^3.0.0",
-                "symfony/yaml": "^3.0.0"
-            },
-            "require-dev": {
-                "codeception/codeception": "^2.2.10",
-                "php-coveralls/php-coveralls": "^1.0",
-                "phpstan/phpstan": "^0.8.5",
-                "spryker/code-sniffer": "dev-master as 1.0.0",
-                "symfony/var-dumper": "^3.0.0"
-            },
-            "bin": [
-                "bin/deploy"
-            ],
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Spryker\\": "src/Spryker/"
-                }
-            },
-            "autoload-dev": {
-                "psr-4": {
-                    "SprykerTest\\": "tests/SprykerTest/"
-                }
-            },
-            "license": [
-                "MIT"
-            ],
-            "description": "Project",
-            "time": "2017-11-28T10:24:17+00:00"
-        },
-        {
             "name": "spryker/event-behavior",
             "version": "0.1.1",
             "source": {
@@ -1846,6 +1804,50 @@
                 "source": "https://github.com/spryker/EventBehavior/tree/master"
             },
             "time": "2017-11-23T15:41:34+00:00"
+        },
+        {
+            "name": "spryker/install",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/install.git",
+                "reference": "4977af4332edce1e7607cd2fe436565dfb9ea484"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/install/zipball/4977af4332edce1e7607cd2fe436565dfb9ea484",
+                "reference": "4977af4332edce1e7607cd2fe436565dfb9ea484",
+                "shasum": ""
+            },
+            "require": {
+                "monolog/monolog": "^1.23",
+                "php": ">=7.1",
+                "symfony/console": "^3.0.0",
+                "symfony/process": "^3.0.0",
+                "symfony/yaml": "^3.0.0"
+            },
+            "require-dev": {
+                "codeception/codeception": "*",
+                "php-coveralls/php-coveralls": "^1.0",
+                "phpstan/phpstan": "^0.8.5",
+                "spryker/code-sniffer": "dev-master as 1.0.0",
+                "symfony/var-dumper": "^3.0.0"
+            },
+            "bin": [
+                "bin/install"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Project",
+            "time": "2017-12-08T15:52:16+00:00"
         },
         {
             "name": "spryker/rabbit-mq",
@@ -1939,7 +1941,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "6b64ad116969bf56ed9042b2bf4c3180690a6a7b"
+                "reference": "04477ff6eaa2dea3c4854b751feac91a8602baee"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.0",
@@ -2137,7 +2139,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2017-12-11T11:39:42+00:00"
+            "time": "2017-12-12T14:35:33+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -7142,6 +7144,48 @@
             "time": "2017-11-30T15:55:47+00:00"
         },
         {
+            "name": "spryker/deploy",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:spryker/deploy.git",
+                "reference": "64d2bef207a5835a625c1051647b66e5c47dd17c"
+            },
+            "require": {
+                "monolog/monolog": "^1.23",
+                "php": ">=7.0",
+                "symfony/console": "^3.0.0",
+                "symfony/process": "^3.0.0",
+                "symfony/yaml": "^3.0.0"
+            },
+            "require-dev": {
+                "codeception/codeception": "^2.2.10",
+                "php-coveralls/php-coveralls": "^1.0",
+                "phpstan/phpstan": "^0.8.5",
+                "spryker/code-sniffer": "dev-master as 1.0.0",
+                "symfony/var-dumper": "^3.0.0"
+            },
+            "bin": [
+                "bin/deploy"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "SprykerTest\\": "tests/SprykerTest/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "Project",
+            "time": "2017-11-28T10:24:17+00:00"
+        },
+        {
             "name": "spryker/git-hook",
             "version": "dev-master",
             "source": {
@@ -7820,7 +7864,7 @@
             "alias": "1.0.0",
             "alias_normalized": "1.0.0.0",
             "version": "9999999-dev",
-            "package": "spryker/deploy"
+            "package": "spryker/install"
         }
     ],
     "minimum-stability": "dev",
@@ -7829,7 +7873,7 @@
         "spryker/spryker-shop": 20,
         "spryker-eco/loggly": 20,
         "spryker/rabbit-mq": 20,
-        "spryker/deploy": 20,
+        "spryker/install": 20,
         "spryker/architecture-sniffer": 20,
         "spryker/code-generator": 20,
         "spryker/code-sniffer": 20,
