@@ -32,7 +32,7 @@ class ProductDetailPageDependencyProvider extends SprykerShopProductDetailPageDe
             ProductCategoryWidgetPlugin::class,
             ProductImageWidgetPlugin::class,
             AvailabilityWidgetPlugin::class,
-//            ProductOptionWidgetPlugin::class,
+            ProductOptionWidgetPlugin::class,
 //            WishlistWidgetPlugin::class,
 //            ProductReviewWidgetPlugin::class,
 //            ProductCmsBlockWidgetPlugin::class,
