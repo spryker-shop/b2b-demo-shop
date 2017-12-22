@@ -6,9 +6,9 @@
 
 namespace Pyz\Yves\CmsBlockWidget;
 
-use Spryker\Yves\CmsBlock\Twig\Plugin\TwigCmsBlock;
 use Spryker\Yves\CmsBlock\Twig\Plugin\TwigCmsBlockPlaceholder;
 use SprykerShop\Yves\CmsBlockWidget\CmsBlockWidgetDependencyProvider as SprykerCmsBlockWidgetDependencyProvider;
+use SprykerShop\Yves\CmsBlockWidget\Plugin\Twig\TwigCmsBlock;
 
 class CmsBlockWidgetDependencyProvider extends SprykerCmsBlockWidgetDependencyProvider
 {
