@@ -10,6 +10,7 @@ namespace Pyz\Yves\ProductDetailPage;
 use Pyz\Yves\ExampleProductColorGroupWidget\Plugin\ProductDetailPage\ExampleProductColorGroupWidgetPlugin;
 use SprykerShop\Yves\AvailabilityWidget\Plugin\ProductDetailPage\AvailabilityWidgetPlugin;
 use SprykerShop\Yves\CmsBlockWidget\Plugin\ProductDetailPage\ProductCmsBlockWidgetPlugin;
+use SprykerShop\Yves\PriceWidget\Plugin\ProductDetailPage\PriceWidgetPlugin;
 use SprykerShop\Yves\ProductCategoryWidget\Plugin\ProductDetailPage\ProductCategoryWidgetPlugin;
 use SprykerShop\Yves\ProductDetailPage\ProductDetailPageDependencyProvider as SprykerShopProductDetailPageDependencyProvider;
 use SprykerShop\Yves\ProductImageWidget\Plugin\ProductDetailPage\ProductImageWidgetPlugin;
@@ -27,16 +28,17 @@ class ProductDetailPageDependencyProvider extends SprykerShopProductDetailPageDe
     protected function getProductDetailPageWidgetPlugins(): array
     {
         return [
+            PriceWidgetPlugin::class,
             ProductCategoryWidgetPlugin::class,
             ProductImageWidgetPlugin::class,
-            ProductOptionWidgetPlugin::class,
             AvailabilityWidgetPlugin::class,
-            WishlistWidgetPlugin::class,
-            ProductReviewWidgetPlugin::class,
-            ProductCmsBlockWidgetPlugin::class,
+            ProductOptionWidgetPlugin::class,
             ProductAbstractLabelWidgetPlugin::class,
+            WishlistWidgetPlugin::class,
             SimilarProductsWidgetPlugin::class,
-            ExampleProductColorGroupWidgetPlugin::class,
+//            ProductReviewWidgetPlugin::class,
+//            ProductCmsBlockWidgetPlugin::class,
+//            ExampleProductColorGroupWidgetPlugin::class,
         ];
     }
 }

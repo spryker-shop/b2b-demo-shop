@@ -88,7 +88,7 @@ $jobs[] = [
 
 $jobs[] = [
     'name' => 'queue-worker-start',
-    'command' => '$PHP_BIN vendor/bin/console queue:worker:start -vvv',
+    'command' => '$PHP_BIN vendor/bin/console queue:worker:start',
     'schedule' => '* * * * *',
     'enable' => true,
     'run_on_non_production' => true,
