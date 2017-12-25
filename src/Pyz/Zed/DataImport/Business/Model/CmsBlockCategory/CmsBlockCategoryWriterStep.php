@@ -12,12 +12,12 @@ use Orm\Zed\Category\Persistence\SpyCategoryTemplateQuery;
 use Orm\Zed\CmsBlock\Persistence\SpyCmsBlockQuery;
 use Orm\Zed\CmsBlockCategoryConnector\Persistence\SpyCmsBlockCategoryConnectorQuery;
 use Orm\Zed\CmsBlockCategoryConnector\Persistence\SpyCmsBlockCategoryPositionQuery;
-use Spryker\Shared\CmsBlockCategoryConnector\CmsBlockCategoryConnectorConfig;
+use Pyz\Zed\DataImport\Business\Model\DataImportStep\PublishAwareStep;
+use Spryker\Zed\CmsBlockCategoryConnector\Dependency\CmsBlockCategoryConnectorEvents;
 use Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface;
-use Spryker\Zed\DataImport\Business\Model\DataImportStep\TouchAwareStep;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 
-class CmsBlockCategoryWriterStep extends TouchAwareStep implements DataImportStepInterface
+class CmsBlockCategoryWriterStep extends PublishAwareStep implements DataImportStepInterface
 {
     const KEY_BLOCK_NAME = 'block_name';
     const KEY_CATEGORY_KEY = 'category_key';
@@ -46,10 +46,7 @@ class CmsBlockCategoryWriterStep extends TouchAwareStep implements DataImportSte
         if ($cmsBlockCategoryConnectorEntity->isNew() || $cmsBlockCategoryConnectorEntity->isModified()) {
             $cmsBlockCategoryConnectorEntity->save();
 
-            $this->addMainTouchable(
-                CmsBlockCategoryConnectorConfig::RESOURCE_TYPE_CMS_BLOCK_CATEGORY_CONNECTOR,
-                $cmsBlockCategoryConnectorEntity->getFkCategory()
-            );
+            $this->addPublishEvents(CmsBlockCategoryConnectorEvents::CMS_BLOCK_CATEGORY_CONNECTOR_PUBLISH, $cmsBlockCategoryConnectorEntity->getFkCategory());
         }
     }
 }

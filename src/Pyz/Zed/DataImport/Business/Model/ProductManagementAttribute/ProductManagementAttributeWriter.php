@@ -13,13 +13,13 @@ use Orm\Zed\ProductAttribute\Persistence\SpyProductManagementAttributeQuery;
 use Orm\Zed\ProductAttribute\Persistence\SpyProductManagementAttributeValueQuery;
 use Orm\Zed\ProductAttribute\Persistence\SpyProductManagementAttributeValueTranslation;
 use Pyz\Zed\DataImport\Business\Model\ProductAttributeKey\AddProductAttributeKeysStep;
-use Pyz\Zed\Glossary\GlossaryConfig;
 use Spryker\Shared\ProductAttribute\ProductAttributeConfig;
 use Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface;
-use Spryker\Zed\DataImport\Business\Model\DataImportStep\TouchAwareStep;
+use Pyz\Zed\DataImport\Business\Model\DataImportStep\PublishAwareStep;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
+use Spryker\Zed\Glossary\Dependency\GlossaryEvents;
 
-class ProductManagementAttributeWriter extends TouchAwareStep implements DataImportStepInterface
+class ProductManagementAttributeWriter extends PublishAwareStep implements DataImportStepInterface
 {
     const BULK_SIZE = 100;
 
@@ -68,7 +68,7 @@ class ProductManagementAttributeWriter extends TouchAwareStep implements DataImp
                 ->setValue($attributes['key_translation'])
                 ->save();
 
-            $this->addMainTouchable(GlossaryConfig::RESOURCE_TYPE_TRANSLATION, $glossaryTranslationEntity->getIdGlossaryTranslation());
+            $this->addPublishEvents(GlossaryEvents::GLOSSARY_KEY_PUBLISH, $glossaryTranslationEntity->getFkGlossaryKey());
 
             if (!empty($attributes['value_translations'])) {
                 foreach ($attributes['value_translations'] as $value => $translation) {

@@ -9,12 +9,12 @@ namespace Pyz\Zed\DataImport\Business\Model\Navigation;
 
 use Orm\Zed\Navigation\Persistence\SpyNavigation;
 use Orm\Zed\Navigation\Persistence\SpyNavigationQuery;
-use Spryker\Shared\Navigation\NavigationConfig;
 use Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface;
-use Spryker\Zed\DataImport\Business\Model\DataImportStep\TouchAwareStep;
+use Pyz\Zed\DataImport\Business\Model\DataImportStep\PublishAwareStep;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
+use Spryker\Zed\Navigation\Dependency\NavigationEvents;
 
-class NavigationWriterStep extends TouchAwareStep implements DataImportStepInterface
+class NavigationWriterStep extends PublishAwareStep implements DataImportStepInterface
 {
     const BULK_SIZE = 100;
 
@@ -36,7 +36,7 @@ class NavigationWriterStep extends TouchAwareStep implements DataImportStepInter
             ->setName($this->getName($navigationEntity, $dataSet))
             ->save();
 
-        $this->addMainTouchable(NavigationConfig::RESOURCE_TYPE_NAVIGATION_MENU, $navigationEntity->getIdNavigation());
+        $this->addPublishEvents(NavigationEvents::NAVIGATION_KEY_PUBLISH, $navigationEntity->getIdNavigation());
     }
 
     /**

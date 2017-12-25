@@ -18,6 +18,7 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
     const FACADE_PRODUCT_BUNDLE = 'product bundle facade';
     const FACADE_PRODUCT_RELATION = 'product relation facade';
     const FACADE_PRODUCT_SEARCH = 'product search facade';
+    const FACADE_EVENT = 'FACADE_EVENT';
     const STORE = 'store';
 
     /**
@@ -34,6 +35,7 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
         $this->addProductBundleFacade($container);
         $this->addProductRelationFacade($container);
         $this->addProductSearchFacade($container);
+        $this->addEventFacade($container);
         $this->addStore($container);
 
         return $container;
@@ -108,6 +110,18 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
     {
         $container[static::STORE] = function (Container $container) {
             return Store::getInstance();
+        };
+    }
+
+    /**
+     * @param $container
+     *
+     * @return void
+     */
+    protected function addEventFacade($container)
+    {
+        $container[static::FACADE_EVENT] = function (Container $container) {
+            return $container->getLocator()->event()->facade();
         };
     }
 }

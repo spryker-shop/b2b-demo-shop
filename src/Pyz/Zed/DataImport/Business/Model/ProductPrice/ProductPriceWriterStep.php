@@ -12,12 +12,15 @@ use Orm\Zed\Price\Persistence\SpyPriceTypeQuery;
 use Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepository;
 use Spryker\Zed\DataImport\Business\Exception\DataKeyNotFoundInDataSetException;
 use Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface;
+use Pyz\Zed\DataImport\Business\Model\DataImportStep\PublishAwareStep;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
+use Spryker\Zed\Price\Dependency\PriceEvents;
+use Spryker\Zed\Product\Dependency\ProductEvents;
 
 /**
  * @SuppressWarnings(PHPMD.ElseExpression)
  */
-class ProductPriceWriterStep implements DataImportStepInterface
+class ProductPriceWriterStep extends PublishAwareStep implements DataImportStepInterface
 {
     const BULK_SIZE = 100;
 
@@ -71,8 +74,11 @@ class ProductPriceWriterStep implements DataImportStepInterface
         if (!empty($dataSet[static::KEY_ABSTRACT_SKU])) {
             $idProductAbstract = $this->productRepository->getIdProductAbstractByAbstractSku($dataSet[static::KEY_ABSTRACT_SKU]);
             $query->filterByFkProductAbstract($idProductAbstract);
+            $this->addPublishEvents(PriceEvents::PRICE_ABSTRACT_PUBLISH, $idProductAbstract);
+            $this->addPublishEvents(ProductEvents::PRODUCT_ABSTRACT_PUBLISH, $idProductAbstract);
         } else {
             $idProduct = $this->productRepository->getIdProductByConcreteSku($dataSet[static::KEY_CONCRETE_SKU]);
+            $this->addPublishEvents(PriceEvents::PRICE_CONCRETE_PUBLISH, $idProduct);
             $query->filterByFkProduct($idProduct);
         }
 

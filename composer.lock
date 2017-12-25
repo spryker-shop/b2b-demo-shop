@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "21dc3d120d13aa553544527fdb16bfee",
+    "content-hash": "f5bab24d07e44d2a746d1868c0cf6e94",
     "packages": [
         {
             "name": "braintree/braintree_php",
@@ -1734,14 +1734,8 @@
             "version": "dev-feature/core-1313-b2b-demoshop",
             "source": {
                 "type": "git",
-                "url": "https://github.com/spryker/EventBehavior.git",
-                "reference": "a75dfe483f2a845a99eedc47731c488e3bb665a6"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker/EventBehavior/zipball/a75dfe483f2a845a99eedc47731c488e3bb665a6",
-                "reference": "a75dfe483f2a845a99eedc47731c488e3bb665a6",
-                "shasum": ""
+                "url": "git@github.com:spryker/event-behavior.git",
+                "reference": "325b14f04e76e245b736dde89dba694def4f579b"
             },
             "require": {
                 "spryker/error-handler": "^2.1.2",
@@ -1778,12 +1772,16 @@
                     "Spryker\\": "src/Spryker/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "SprykerTest\\": "tests/SprykerTest/"
+                }
+            },
             "license": [
                 "proprietary"
             ],
             "description": "EventBehavior module",
-            "time": "2017-12-13T14:05:05+00:00"
+            "time": "2017-12-25T19:17:24+00:00"
         },
         {
             "name": "spryker/install",
@@ -1919,7 +1917,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "6398dd897f4e1c1a98c56852facc8239fc5d110a"
+                "reference": "c09fa4bc61ac765400469c5dfe5e48afade8e83a"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.0",
@@ -2117,7 +2115,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2017-12-22T15:57:03+00:00"
+            "time": "2017-12-25T19:22:14+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -2150,26 +2148,14 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/spryker/synchronization-behavior.git",
-                "reference": "841ef11cab52a331e26638d68e6acd80f1168046",
-                "mirrors": [
-                    {
-                        "url": "https://code.spryker.com:/repo/private/mirrors/%package%/%normalizedUrl%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "url": "git@github.com:spryker/synchronization-behavior.git",
+                "reference": "841ef11cab52a331e26638d68e6acd80f1168046"
             },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/spryker/synchronization-behavior/zipball/841ef11cab52a331e26638d68e6acd80f1168046",
                 "reference": "841ef11cab52a331e26638d68e6acd80f1168046",
-                "shasum": "",
-                "mirrors": [
-                    {
-                        "url": "https://code.spryker.com/repo/private/dists/%package%/%version%/%reference%.%type%",
-                        "preferred": true
-                    }
-                ]
+                "shasum": ""
             },
             "require": {
                 "spryker/kernel": "^3.4.0",

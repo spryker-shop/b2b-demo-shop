@@ -10,11 +10,11 @@ namespace Pyz\Zed\DataImport\Business\Model\Glossary;
 use Orm\Zed\Glossary\Persistence\SpyGlossaryKeyQuery;
 use Orm\Zed\Glossary\Persistence\SpyGlossaryTranslationQuery;
 use Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface;
-use Spryker\Zed\DataImport\Business\Model\DataImportStep\TouchAwareStep;
+use Pyz\Zed\DataImport\Business\Model\DataImportStep\PublishAwareStep;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
-use Spryker\Zed\Glossary\GlossaryConfig;
+use Spryker\Zed\Glossary\Dependency\GlossaryEvents;
 
-class GlossaryWriterStep extends TouchAwareStep implements DataImportStepInterface
+class GlossaryWriterStep extends PublishAwareStep implements DataImportStepInterface
 {
     const BULK_SIZE = 100;
 
@@ -45,6 +45,6 @@ class GlossaryWriterStep extends TouchAwareStep implements DataImportStepInterfa
             ->setValue($dataSet[static::KEY_TRANSLATION])
             ->save();
 
-        $this->addMainTouchable(GlossaryConfig::RESOURCE_TYPE_TRANSLATION, $glossaryTranslationEntity->getIdGlossaryTranslation());
+        $this->addPublishEvents(GlossaryEvents::GLOSSARY_KEY_PUBLISH, $glossaryTranslationEntity->getFkGlossaryKey());
     }
 }

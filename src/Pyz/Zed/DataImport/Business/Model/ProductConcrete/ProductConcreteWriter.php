@@ -15,11 +15,12 @@ use Orm\Zed\ProductSearch\Persistence\SpyProductSearchQuery;
 use Spryker\Shared\Product\ProductConfig;
 use Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepository;
 use Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface;
-use Spryker\Zed\DataImport\Business\Model\DataImportStep\TouchAwareStep;
+use Pyz\Zed\DataImport\Business\Model\DataImportStep\PublishAwareStep;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 use Spryker\Zed\DataImport\Dependency\Facade\DataImportToTouchInterface;
+use Spryker\Zed\Product\Dependency\ProductEvents;
 
-class ProductConcreteWriter extends TouchAwareStep implements DataImportStepInterface
+class ProductConcreteWriter extends PublishAwareStep implements DataImportStepInterface
 {
     const BULK_SIZE = 100;
 
@@ -47,8 +48,6 @@ class ProductConcreteWriter extends TouchAwareStep implements DataImportStepInte
      */
     public function __construct(ProductRepository $productRepository, DataImportToTouchInterface $touchFacade, $bulkSize = null)
     {
-        parent::__construct($touchFacade, $bulkSize);
-
         $this->productRepository = $productRepository;
     }
 
@@ -66,7 +65,7 @@ class ProductConcreteWriter extends TouchAwareStep implements DataImportStepInte
         $this->importProductLocalizedAttributes($dataSet, $productEntity);
         $this->importBundles($dataSet, $productEntity);
 
-        $this->addMainTouchable(ProductConfig::RESOURCE_TYPE_PRODUCT_CONCRETE, $productEntity->getIdProduct());
+        $this->addPublishEvents(ProductEvents::PRODUCT_CONCRETE_PUBLISH, $productEntity->getIdProduct());
     }
 
     /**
@@ -110,8 +109,9 @@ class ProductConcreteWriter extends TouchAwareStep implements DataImportStepInte
                 ->setName($localizedAttributes[static::KEY_NAME])
                 ->setDescription($localizedAttributes[static::KEY_DESCRIPTION])
                 ->setIsComplete(isset($localizedAttributes[static::KEY_IS_COMPLETE]) ? $localizedAttributes[static::KEY_IS_COMPLETE] : true)
-                ->setAttributes(json_encode($localizedAttributes[static::KEY_ATTRIBUTES]))
-                ->save();
+                ->setAttributes(json_encode($localizedAttributes[static::KEY_ATTRIBUTES]));
+
+            $productLocalizedAttributesEntity->save();
 
             $productSearchEntity = SpyProductSearchQuery::create()
                 ->filterByFkProduct($productEntity->getIdProduct())
