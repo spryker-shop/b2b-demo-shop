@@ -7,7 +7,6 @@
 
 namespace Pyz\Yves\CartPage;
 
-use Spryker\Yves\Kernel\Container;
 use SprykerShop\Yves\CartPage\CartPageDependencyProvider as SprykerCartPageDependencyProvider;
 use SprykerShop\Yves\CartPage\Dependency\Plugin\CartItemTransformerPluginInterface;
 use SprykerShop\Yves\CheckoutWidget\Plugin\CartPage\CheckoutBreadcrumbWidgetPlugin;
