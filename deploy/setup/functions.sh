@@ -157,12 +157,6 @@ function installZed {
     labelText "Purge All Queues"
     # purgeAllQueues
 
-    labelText "Setting up data stores"
-
-    $CONSOLE collector:search:export $VERBOSITY
-    $CONSOLE collector:storage:export $VERBOSITY
-    writeErrorMessage "DataStore setup failed"
-
     labelText "Setting up cronjobs"
     $CONSOLE setup:jenkins:enable $VERBOSITY
     $CONSOLE setup:jenkins:generate $VERBOSITY
