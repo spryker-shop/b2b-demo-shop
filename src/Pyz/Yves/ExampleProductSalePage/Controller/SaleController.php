@@ -63,7 +63,7 @@ class SaleController extends AbstractController
         $categoryPath = $categoryPathPrefix . '/' . ltrim($categoryPath, '/');
 
         $categoryNode = $this->getFactory()
-            ->getCollectorClient()
+            ->getUrlStorageClient()
             ->matchUrl($categoryPath, $this->getLocale());
 
         return $categoryNode ? $categoryNode['data'] : [];

@@ -7,9 +7,8 @@
 
 namespace Pyz\Yves\ExampleProductSalePage;
 
-use Spryker\Client\Collector\CollectorClient;
+use Spryker\Client\UrlStorage\UrlStorageClientInterface;
 use Spryker\Yves\Kernel\AbstractFactory;
-use SprykerShop\Yves\ProductWidget\Plugin\CatalogPage\ProductWidgetPlugin;
 
 class ExampleProductSalePageFactory extends AbstractFactory
 {
@@ -18,11 +17,7 @@ class ExampleProductSalePageFactory extends AbstractFactory
      */
     public function getExampleProductSalePageWidgetPlugins(): array
     {
-        // TODO: move to dependency provider
-        return [
-            // TODO: get from project level
-            ProductWidgetPlugin::class,
-        ];
+        return $this->getProvidedDependency(ExampleProductSalePageDependencyProvider::PLUGIN_PRODUCT_SALE_PAGE_WIDGETS);
     }
 
     /**
@@ -34,11 +29,11 @@ class ExampleProductSalePageFactory extends AbstractFactory
     }
 
     /**
-     * @return \Spryker\Client\Collector\CollectorClientInterface
+     * @return UrlStorageClientInterface
      */
-    public function getCollectorClient()
+    public function getUrlStorageClient()
     {
-        return new CollectorClient(); // TODO: get from dependency provider
+        return $this->getProvidedDependency(ExampleProductSalePageDependencyProvider::CLIENT_URL_STORAGE);
     }
 
     /**

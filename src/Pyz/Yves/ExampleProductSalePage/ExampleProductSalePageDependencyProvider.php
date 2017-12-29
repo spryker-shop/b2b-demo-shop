@@ -10,13 +10,15 @@ namespace Pyz\Yves\ExampleProductSalePage;
 use Spryker\Shared\Kernel\Store;
 use Spryker\Yves\Kernel\AbstractBundleDependencyProvider;
 use Spryker\Yves\Kernel\Container;
-use SprykerShop\Yves\CategoryWidget\Plugin\CategoryReaderPlugin;
+use SprykerShop\Yves\ProductReviewWidget\Plugin\CatalogPage\ProductRatingFilterWidgetPlugin;
+use SprykerShop\Yves\ProductWidget\Plugin\CatalogPage\ProductWidgetPlugin;
 
 class ExampleProductSalePageDependencyProvider extends AbstractBundleDependencyProvider
 {
     const CLIENT_SEARCH = 'CLIENT_SEARCH';
-    const PLUGIN_CATEGORY_READER = 'PLUGIN_CATEGORY_READER';
+    const CLIENT_URL_STORAGE = 'CLIENT_URL_STORAGE';
     const STORE = 'STORE';
+    const PLUGIN_PRODUCT_SALE_PAGE_WIDGETS = 'PLUGIN_PRODUCT_SALE_PAGE_WIDGETS';
 
     /**
      * @param \Spryker\Yves\Kernel\Container $container
@@ -26,8 +28,9 @@ class ExampleProductSalePageDependencyProvider extends AbstractBundleDependencyP
     public function provideDependencies(Container $container)
     {
         $container = $this->addSearchClient($container);
-        $container = $this->addCategoryReaderPlugin($container);
+        $container = $this->addUrlStorageClient($container);
         $container = $this->addStore($container);
+        $container = $this->addProductSalePageWidgetPlugins($container);
 
         return $container;
     }
@@ -51,10 +54,10 @@ class ExampleProductSalePageDependencyProvider extends AbstractBundleDependencyP
      *
      * @return \Spryker\Yves\Kernel\Container
      */
-    protected function addCategoryReaderPlugin(Container $container)
+    protected function addUrlStorageClient(Container $container)
     {
-        $container[self::PLUGIN_CATEGORY_READER] = function (Container $container) {
-            return new CategoryReaderPlugin();
+        $container[self::CLIENT_URL_STORAGE] = function (Container $container) {
+            return $container->getLocator()->urlStorage()->client();
         };
 
         return $container;
@@ -67,10 +70,35 @@ class ExampleProductSalePageDependencyProvider extends AbstractBundleDependencyP
      */
     protected function addStore($container)
     {
-        $container[self::STORE] = function (Container $container) {
+        $container[self::STORE] = function () {
             return Store::getInstance();
         };
 
         return $container;
+    }
+
+    /**
+     * @param \Spryker\Yves\Kernel\Container $container
+     *
+     * @return \Spryker\Yves\Kernel\Container
+     */
+    protected function addProductSalePageWidgetPlugins($container)
+    {
+        $container[self::PLUGIN_PRODUCT_SALE_PAGE_WIDGETS] = function () {
+            return $this->getProductSalePageWidgetPlugins();
+        };
+
+        return $container;
+    }
+
+    /**
+     * @return string[]
+     */
+    protected function getProductSalePageWidgetPlugins(): array
+    {
+        return [
+            ProductWidgetPlugin::class,
+            ProductRatingFilterWidgetPlugin::class,
+        ];
     }
 }

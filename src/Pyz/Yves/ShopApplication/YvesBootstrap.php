@@ -30,10 +30,6 @@ use Spryker\Yves\CmsContentWidget\Plugin\CmsContentWidgetServiceProvider;
 use Spryker\Yves\Kernel\Application;
 use Spryker\Yves\Messenger\Plugin\Provider\FlashMessengerServiceProvider;
 use Spryker\Yves\NewRelic\Plugin\ServiceProvider\NewRelicRequestTransactionServiceProvider;
-use Spryker\Yves\ProductGroup\Plugin\Provider\ProductGroupTwigServiceProvider;
-use Spryker\Yves\ProductLabel\Plugin\Provider\ProductLabelTwigServiceProvider;
-use Spryker\Yves\ProductRelation\Plugin\ProductRelationTwigServiceProvider;
-use Spryker\Yves\ProductReview\Plugin\Provider\ProductAbstractReviewTwigServiceProvider;
 use Spryker\Yves\Session\Plugin\ServiceProvider\SessionServiceProvider as SprykerSessionServiceProvider;
 use Spryker\Yves\Storage\Plugin\Provider\StorageCacheServiceProvider;
 use Spryker\Yves\Twig\Plugin\ServiceProvider\TwigServiceProvider as SprykerTwigServiceProvider;
@@ -148,13 +144,9 @@ class YvesBootstrap
         $this->application->register(new FormFactoryServiceProvider());
         $this->application->register(new LanguageServiceProvider());
         $this->application->register(new TwigMoneyServiceProvider());
-        $this->application->register(new ProductRelationTwigServiceProvider());
-        $this->application->register(new ProductGroupTwigServiceProvider());
-        $this->application->register(new ProductLabelTwigServiceProvider());
         $this->application->register(new CmsContentWidgetServiceProvider());
         $this->application->register(new CmsTwigFunctionServiceProvider());
         $this->application->register(new CmsBlockTwigFunctionServiceProvider());
-        $this->application->register(new ProductAbstractReviewTwigServiceProvider());
         $this->application->register(new CatalogPageTwigServiceProvider());
     }
 
