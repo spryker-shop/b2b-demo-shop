@@ -9,6 +9,7 @@ namespace Pyz\Yves\ShopApplication;
 
 use SprykerShop\Yves\CurrencyWidget\Plugin\ShopLayout\CurrencyWidgetPlugin;
 use SprykerShop\Yves\NavigationWidget\Plugin\ShopLayout\NavigationWidgetPlugin;
+use SprykerShop\Yves\ProductGroupWidget\Plugin\ShopLayout\ProductGroupWidgetPlugin;
 use SprykerShop\Yves\ShopApplication\ShopApplicationDependencyProvider as SprykerShopApplicationDependencyProvider;
 
 class ShopApplicationDependencyProvider extends SprykerShopApplicationDependencyProvider
@@ -21,6 +22,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
         return [
             CurrencyWidgetPlugin::class,
             NavigationWidgetPlugin::class,
+            ProductGroupWidgetPlugin::class,
         ];
     }
 }

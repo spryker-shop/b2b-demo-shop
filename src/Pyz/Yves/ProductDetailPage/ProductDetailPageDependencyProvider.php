@@ -38,7 +38,7 @@ class ProductDetailPageDependencyProvider extends SprykerShopProductDetailPageDe
             SimilarProductsWidgetPlugin::class,
             ProductCmsBlockWidgetPlugin::class,
 //            ProductReviewWidgetPlugin::class,
-//            ExampleProductColorGroupWidgetPlugin::class,
+            ExampleProductColorGroupWidgetPlugin::class,
         ];
     }
 }

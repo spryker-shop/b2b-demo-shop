@@ -1,11 +1,11 @@
 {% block content %}
-    {% if productGroupItems|length %}
+    {% if _widget.productGroupItems|length %}
         <div data-component="product-group">
             <ul class="product-group">
-                {% for productGroupItem in productGroupItems %}
-                    {% set imageUrl = productGroupItem.imageSets.default is defined ? productGroupItem.imageSets.default|first : null %}
+                {% for productGroupItem in _widget.productGroupItems %}
+                    {% set image = productGroupItem.images is defined ? productGroupItem.images|first : null %}
 
-                    <li data-product-group-item-preview="{{ imageUrl ? imageUrl.externalUrlSmall : '' }}">
+                    <li data-product-group-item-preview="{{ image ? image.externalUrlSmall : '' }}">
                         <a href="{{ productGroupItem.url }}" {% if productGroupItem.colorCode %}style="background-color: {{ productGroupItem.colorCode }};"{% endif %}></a>
                     </li>
                 {% endfor %}

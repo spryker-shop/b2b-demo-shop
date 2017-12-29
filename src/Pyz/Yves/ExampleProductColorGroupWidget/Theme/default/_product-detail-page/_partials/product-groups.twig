@@ -1,7 +1,7 @@
 {% extends '@ExampleProductColorGroupWidget/_partials/product-group-items.twig' %}
 
 {% block content %}
-    {% if productGroupItems|length %}
+    {% if _widget.productGroupItems|length %}
         <div class="callout">
             <h5>{{ 'product.groups' | trans }}</h5>
             {{ parent() }}
