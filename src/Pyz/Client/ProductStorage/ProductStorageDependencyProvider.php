@@ -8,7 +8,7 @@
 namespace Pyz\Client\ProductStorage;
 
 use Spryker\Client\AvailabilityStorage\Plugin\ProductViewAvailabilityStorageExpanderPlugin;
-use Spryker\Client\PriceStorage\Plugin\ProductViewPriceExpanderPlugin;
+use Spryker\Client\PriceProductStorage\Plugin\ProductViewPriceExpanderPlugin;
 use Spryker\Client\ProductImageStorage\Plugin\ProductViewImageExpanderPlugin;
 use Spryker\Client\ProductStorage\Plugin\ProductViewVariantExpanderPlugin;
 use Spryker\Client\ProductStorage\ProductStorageDependencyProvider as SprykerProductStorageDependencyProvider;

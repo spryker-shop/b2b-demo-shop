@@ -10,6 +10,7 @@ namespace Pyz\Zed\Queue;
 use Generated\Shared\Transfer\RabbitMqConsumerOptionTransfer;
 use Spryker\Shared\Config\Config;
 use Spryker\Shared\Event\EventConstants;
+use Spryker\Shared\Log\LogConstants;
 use Spryker\Shared\Queue\QueueConstants;
 use Spryker\Zed\Queue\QueueConfig as SprykerQueueConfig;
 use SprykerEco\Shared\Loggly\LogglyConstants;
@@ -31,7 +32,7 @@ class QueueConfig extends SprykerQueueConfig
             EventConstants::EVENT_QUEUE => [
                 static::RABBITMQ => $this->getRabbitMqQueueConsumerOptions(),
             ],
-            Config::get(LogglyConstants::LOG_QUEUE_NAME, LogglyConfig::DEFAULT_QUEUE_NAME) => [
+            Config::get(LogConstants::LOG_QUEUE_NAME) => [
                 static::RABBITMQ => $this->getRabbitMqQueueConsumerOptions(),
             ],
         ];

@@ -39,25 +39,6 @@ $jobs[] = [
     'stores' => $allStores,
 ];
 
-/* Collectors */
-$jobs[] = [
-    'name' => 'export-kv',
-    'command' => '$PHP_BIN vendor/bin/console collector:storage:export',
-    'schedule' => '* * * * *',
-    'enable' => true,
-    'run_on_non_production' => true,
-    'stores' => $allStores,
-];
-
-$jobs[] = [
-    'name' => 'export-search',
-    'command' => '$PHP_BIN vendor/bin/console collector:search:export',
-    'schedule' => '* * * * *',
-    'enable' => true,
-    'run_on_non_production' => true,
-    'stores' => $allStores,
-];
-
 /* Oms */
 $jobs[] = [
     'name' => 'check-oms-conditions',

@@ -7,7 +7,7 @@
 
 namespace Pyz\Client\ProductRelationStorage;
 
-use Spryker\Client\PriceStorage\Plugin\ProductViewPriceExpanderPlugin;
+use Spryker\Client\PriceProductStorage\Plugin\ProductViewPriceExpanderPlugin;
 use Spryker\Client\ProductImageStorage\Plugin\ProductViewImageExpanderPlugin;
 use Spryker\Client\ProductRelationStorage\ProductRelationStorageDependencyProvider as SprykerProductRelationStorageDependencyProvider;
 use Spryker\Client\ProductStorage\Dependency\Plugin\ProductViewExpanderPluginInterface;
