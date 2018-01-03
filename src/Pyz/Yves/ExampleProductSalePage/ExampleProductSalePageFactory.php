@@ -7,6 +7,7 @@
 
 namespace Pyz\Yves\ExampleProductSalePage;
 
+use Spryker\Client\Catalog\CatalogClientInterface;
 use Spryker\Client\UrlStorage\UrlStorageClientInterface;
 use Spryker\Yves\Kernel\AbstractFactory;
 
@@ -42,5 +43,13 @@ class ExampleProductSalePageFactory extends AbstractFactory
     public function getStore()
     {
         return $this->getProvidedDependency(ExampleProductSalePageDependencyProvider::STORE);
+    }
+
+    /**
+     * @return CatalogClientInterface
+     */
+    public function getCatalogClient()
+    {
+        return $this->getProvidedDependency(ExampleProductSalePageDependencyProvider::CLIENT_CATALOG);
     }
 }

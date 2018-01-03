@@ -39,7 +39,7 @@ class QueueDependencyProvider extends SprykerDependencyProvider
     {
         return [
             EventConstants::EVENT_QUEUE => new EventQueueMessageProcessorPlugin(),
-            Config::get(LogglyConstants::QUEUE_NAME,LogglyConfig::DEFAULT_QUEUE_NAME ) => new LogglyLoggerQueueMessageProcessorPlugin(),
+            Config::get(LogglyConstants::QUEUE_NAME, LogglyConfig::DEFAULT_QUEUE_NAME) => new LogglyLoggerQueueMessageProcessorPlugin(),
             CmsStorageConstants::CMS_SYNC_STORAGE_QUEUE => new SynchronizationStorageQueueMessageProcessorPlugin(),
             AvailabilityStorageConstants::AVAILABILITY_SYNC_STORAGE_QUEUE => new SynchronizationStorageQueueMessageProcessorPlugin(),
             GlossaryStorageConstants::SYNC_STORAGE_QUEUE => new SynchronizationStorageQueueMessageProcessorPlugin(),

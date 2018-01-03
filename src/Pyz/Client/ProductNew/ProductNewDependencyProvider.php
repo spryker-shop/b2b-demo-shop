@@ -8,6 +8,8 @@
 namespace Pyz\Client\ProductNew;
 
 use Spryker\Client\Catalog\Plugin\Elasticsearch\ResultFormatter\RawCatalogSearchResultFormatterPlugin;
+use Spryker\Client\CatalogPriceProductConnector\Plugin\CurrencyAwareCatalogSearchResultFormatterPlugin;
+use Spryker\Client\CatalogPriceProductConnector\Plugin\ProductPriceQueryExpanderPlugin;
 use Spryker\Client\ProductNew\ProductNewDependencyProvider as SprykerProductNewDependencyProvider;
 use Spryker\Client\Search\Plugin\Elasticsearch\QueryExpander\FacetQueryExpanderPlugin;
 use Spryker\Client\Search\Plugin\Elasticsearch\QueryExpander\LocalizedQueryExpanderPlugin;
@@ -31,6 +33,7 @@ class ProductNewDependencyProvider extends SprykerProductNewDependencyProvider
             new FacetQueryExpanderPlugin(),
             new SortedQueryExpanderPlugin(),
             new PaginatedQueryExpanderPlugin(),
+            new ProductPriceQueryExpanderPlugin(),
         ];
     }
 
@@ -43,7 +46,9 @@ class ProductNewDependencyProvider extends SprykerProductNewDependencyProvider
             new FacetResultFormatterPlugin(),
             new SortedResultFormatterPlugin(),
             new PaginatedResultFormatterPlugin(),
-            new RawCatalogSearchResultFormatterPlugin(),
+            new CurrencyAwareCatalogSearchResultFormatterPlugin(
+                new RawCatalogSearchResultFormatterPlugin()
+            ),
         ];
     }
 }

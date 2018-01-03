@@ -56,6 +56,7 @@ use SprykerShop\Yves\HomePage\Plugin\Provider\HomePageControllerProvider;
 use SprykerShop\Yves\MoneyWidget\Plugin\ServiceProvider\TwigMoneyServiceProvider;
 use SprykerShop\Yves\NewsletterPage\Plugin\Provider\NewsletterPageControllerProvider;
 use SprykerShop\Yves\NewsletterWidget\Plugin\Provider\NewsletterWidgetControllerProvider;
+use SprykerShop\Yves\PriceWidget\Plugin\Provider\PriceControllerProvider;
 use SprykerShop\Yves\ProductNewPage\Plugin\Provider\ProductNewPageControllerProvider;
 use SprykerShop\Yves\ProductReviewWidget\Plugin\Provider\ProductReviewControllerProvider;
 use SprykerShop\Yves\ProductSetListPage\Plugin\Provider\ProductSetListPageControllerProvider;
@@ -199,6 +200,7 @@ class YvesBootstrap
             new ProductNewPageControllerProvider($isSsl),
             new ProductReviewControllerProvider($isSsl),
             new DiscountWidgetControllerProvider($isSsl),
+            new PriceControllerProvider($isSsl),
         ];
     }
 }

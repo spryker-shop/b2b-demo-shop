@@ -31,7 +31,7 @@ class QueueConfig extends SprykerQueueConfig
             EventConstants::EVENT_QUEUE => [
                 static::RABBITMQ => $this->getRabbitMqQueueConsumerOptions(),
             ],
-            Config::get(LogglyConstants::QUEUE_NAME, LogglyConfig::DEFAULT_QUEUE_NAME) => [
+            Config::get(LogglyConstants::LOG_QUEUE_NAME, LogglyConfig::DEFAULT_QUEUE_NAME) => [
                 static::RABBITMQ => $this->getRabbitMqQueueConsumerOptions(),
             ],
         ];

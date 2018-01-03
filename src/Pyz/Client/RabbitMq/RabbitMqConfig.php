@@ -22,8 +22,7 @@ use Spryker\Shared\PriceStorage\PriceStorageConstants;
 use Spryker\Shared\ProductPageSearch\ProductPageSearchConstants;
 use Spryker\Shared\ProductStorage\ProductStorageConstants;
 use Spryker\Shared\UrlStorage\UrlStorageConstants;
-use SprykerEco\Shared\Loggly\LogglyConstants;
-use SprykerEco\Zed\Loggly\LogglyConfig;
+use Spryker\Shared\Log\LogConstants;
 
 class RabbitMqConfig extends SprykerRabbitMqConfig
 {
@@ -46,8 +45,8 @@ class RabbitMqConfig extends SprykerRabbitMqConfig
         $queueOptionCollection->append($this->createQueueOption(ProductPageSearchConstants::PRODUCT_SYNC_SEARCH_QUEUE, ProductPageSearchConstants::PRODUCT_SYNC_SEARCH_ERROR_QUEUE));
         $queueOptionCollection->append(
             $this->createQueueOption(
-                $this->get(LogglyConstants::QUEUE_NAME, LogglyConfig::DEFAULT_QUEUE_NAME),
-                $this->get(LogglyConstants::ERROR_QUEUE_NAME, LogglyConfig::DEFAULT_ERROR_QUEUE_NAME)
+                $this->get(LogConstants::LOG_QUEUE_NAME),
+                $this->get(LogConstants::LOG_ERROR_QUEUE_NAME)
             )
         );
 

@@ -19,6 +19,7 @@ class ExampleProductSalePageDependencyProvider extends AbstractBundleDependencyP
     const CLIENT_URL_STORAGE = 'CLIENT_URL_STORAGE';
     const STORE = 'STORE';
     const PLUGIN_PRODUCT_SALE_PAGE_WIDGETS = 'PLUGIN_PRODUCT_SALE_PAGE_WIDGETS';
+    const CLIENT_CATALOG = 'CLIENT_CATALOG';
 
     /**
      * @param \Spryker\Yves\Kernel\Container $container
@@ -31,6 +32,7 @@ class ExampleProductSalePageDependencyProvider extends AbstractBundleDependencyP
         $container = $this->addUrlStorageClient($container);
         $container = $this->addStore($container);
         $container = $this->addProductSalePageWidgetPlugins($container);
+        $container = $this->addCatalogClient($container);
 
         return $container;
     }
@@ -72,6 +74,20 @@ class ExampleProductSalePageDependencyProvider extends AbstractBundleDependencyP
     {
         $container[self::STORE] = function () {
             return Store::getInstance();
+        };
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Yves\Kernel\Container $container
+     *
+     * @return \Spryker\Yves\Kernel\Container
+     */
+    protected function addCatalogClient(Container $container)
+    {
+        $container[self::CLIENT_CATALOG] = function (Container $container) {
+            return $container->getLocator()->catalog()->client();
         };
 
         return $container;
