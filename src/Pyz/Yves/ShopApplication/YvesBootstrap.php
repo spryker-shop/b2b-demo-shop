@@ -22,7 +22,6 @@ use Spryker\Shared\Application\ServiceProvider\RoutingServiceProvider;
 use Spryker\Shared\Application\ServiceProvider\UrlGeneratorServiceProvider;
 use Spryker\Yves\Application\ApplicationConfig;
 use Spryker\Yves\Application\Plugin\Provider\CookieServiceProvider;
-use Spryker\Yves\Application\Plugin\Provider\ExceptionServiceProvider;
 use Spryker\Yves\Application\Plugin\Provider\YvesHstsServiceProvider;
 use Spryker\Yves\Application\Plugin\ServiceProvider\KernelLogServiceProvider;
 use Spryker\Yves\Application\Plugin\ServiceProvider\SslServiceProvider;
@@ -51,6 +50,7 @@ use SprykerShop\Yves\CustomerPage\Plugin\Provider\CustomerSecurityServiceProvide
 use SprykerShop\Yves\CustomerPage\Plugin\Provider\CustomerTwigFunctionServiceProvider;
 use SprykerShop\Yves\DiscountWidget\Plugin\Provider\DiscountWidgetControllerProvider;
 use SprykerShop\Yves\ErrorPage\Plugin\Provider\ErrorPageControllerProvider;
+use SprykerShop\Yves\ErrorPage\Plugin\Provider\ErrorPageServiceProvider;
 use SprykerShop\Yves\HeartbeatPage\Plugin\Provider\HeartbeatPageControllerProvider;
 use SprykerShop\Yves\HomePage\Plugin\Provider\HomePageControllerProvider;
 use SprykerShop\Yves\MoneyWidget\Plugin\ServiceProvider\TwigMoneyServiceProvider;
@@ -64,6 +64,7 @@ use SprykerShop\Yves\ShopApplication\Plugin\Provider\AutoloaderCacheServiceProvi
 use SprykerShop\Yves\ShopApplication\Plugin\Provider\ShopApplicationServiceProvider;
 use SprykerShop\Yves\ShopApplication\Plugin\Provider\ShopTwigServiceProvider;
 use SprykerShop\Yves\ShopApplication\Plugin\Provider\WidgetServiceProvider;
+use SprykerShop\Yves\ShopApplication\Plugin\Provider\YvesExceptionServiceProvider;
 use SprykerShop\Yves\ShopApplication\Plugin\Provider\YvesSecurityServiceProvider;
 use SprykerShop\Yves\ShopLayout\Plugin\Provider\LanguageServiceProvider;
 use SprykerShop\Yves\ShopRouter\Plugin\Router\SilexRouter;
@@ -124,7 +125,8 @@ class YvesBootstrap
         $this->application->register(new CustomerSecurityServiceProvider());
         $this->application->register(new CustomerTwigFunctionServiceProvider());
         $this->application->register(new YvesSecurityServiceProvider());
-        $this->application->register(new ExceptionServiceProvider());
+        $this->application->register(new YvesExceptionServiceProvider());
+        $this->application->register(new ErrorPageServiceProvider());
         $this->application->register(new NewRelicRequestTransactionServiceProvider());
         $this->application->register(new CookieServiceProvider());
         $this->application->register(new UrlGeneratorServiceProvider());
