@@ -81,7 +81,7 @@ class SaleSearchQueryPlugin extends AbstractPlugin implements QueryInterface
             ->getLabelSaleName();
 
         $storageProductLabelTransfer = $this->getFactory()
-            ->getProductLabelClient()
+            ->getProductLabelStorageClient()
             ->findLabelByName($labelName, $localeName);
 
         $stringFacetFieldFilter = $this->createStringFacetFieldFilter(ProductLabelFacetConfigTransferBuilderPlugin::NAME);

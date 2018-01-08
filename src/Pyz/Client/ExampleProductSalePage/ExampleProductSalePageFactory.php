@@ -28,11 +28,11 @@ class ExampleProductSalePageFactory extends AbstractFactory
     }
 
     /**
-     * @return \Spryker\Client\ProductLabel\ProductLabelClientInterface
+     * @return \Spryker\Client\ProductLabelStorage\ProductLabelStorageClientInterface
      */
-    public function getProductLabelClient()
+    public function getProductLabelStorageClient()
     {
-        return $this->getProvidedDependency(ExampleProductSalePageDependencyProvider::CLIENT_PRODUCT_LABEL);
+        return $this->getProvidedDependency(ExampleProductSalePageDependencyProvider::CLIENT_PRODUCT_LABEL_STORAGE);
     }
 
     /**

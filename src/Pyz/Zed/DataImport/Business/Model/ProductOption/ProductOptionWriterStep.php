@@ -19,15 +19,15 @@ use Propel\Runtime\ActiveQuery\Criteria;
 use Pyz\Zed\DataImport\Business\Model\Product\ProductLocalizedAttributesExtractorStep;
 use Pyz\Zed\DataImport\Business\Model\Tax\TaxSetNameToIdTaxSetStep;
 use Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface;
-use Spryker\Zed\DataImport\Business\Model\DataImportStep\TouchAwareStep;
+use Pyz\Zed\DataImport\Business\Model\DataImportStep\PublishAwareStep;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
-use Spryker\Zed\Glossary\GlossaryConfig;
-use Spryker\Zed\ProductOption\ProductOptionConfig;
+use Spryker\Zed\Glossary\Dependency\GlossaryEvents;
+use Spryker\Zed\ProductOption\Dependency\ProductOptionEvents;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
-class ProductOptionWriterStep extends TouchAwareStep implements DataImportStepInterface
+class ProductOptionWriterStep extends PublishAwareStep implements DataImportStepInterface
 {
     const BULK_SIZE = 100;
 
@@ -36,7 +36,6 @@ class ProductOptionWriterStep extends TouchAwareStep implements DataImportStepIn
     const KEY_IS_ACTIVE = 'is_active';
     const KEY_SKU = 'sku';
     const KEY_OPTION_NAME_TRANSLATION_KEY = 'option_name_translation_key';
-    const KEY_PRICE = 'price';
     const KEY_OPTION_NAME = 'option_name';
     const KEY_GROUP_NAME = 'group_name';
     const KEY_TAX_SET_NAME = 'tax_set_name';
@@ -64,7 +63,6 @@ class ProductOptionWriterStep extends TouchAwareStep implements DataImportStepIn
 
         $productOptionValueEntity
             ->setValue($dataSet[self::KEY_OPTION_NAME_TRANSLATION_KEY])
-            ->setPrice((int)$dataSet[self::KEY_PRICE])
             ->save();
 
         if (!empty($dataSet[static::KEY_ABSTRACT_PRODUCT_SKUS])) {
@@ -82,7 +80,7 @@ class ProductOptionWriterStep extends TouchAwareStep implements DataImportStepIn
                     ->findOneOrCreate()
                     ->save();
 
-                $this->addSubTouchable(ProductOptionConfig::RESOURCE_TYPE_PRODUCT_OPTION, $idProductAbstract);
+                $this->addPublishEvents(ProductOptionEvents::PRODUCT_ABSTRACT_PRODUCT_OPTION_PUBLISH, $idProductAbstract);
             }
         }
 
@@ -131,6 +129,6 @@ class ProductOptionWriterStep extends TouchAwareStep implements DataImportStepIn
             ->setValue($translation)
             ->save();
 
-        $this->addMainTouchable(GlossaryConfig::RESOURCE_TYPE_TRANSLATION, $glossaryTranslationEntity->getIdGlossaryTranslation());
+        $this->addPublishEvents(GlossaryEvents::GLOSSARY_KEY_PUBLISH, $glossaryTranslationEntity->getFkGlossaryKey());
     }
 }

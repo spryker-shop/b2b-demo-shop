@@ -6,9 +6,13 @@
 
 namespace Pyz\Zed\ProductPageSearch;
 
+use Spryker\Shared\ProductLabelPageSearch\ProductLabelPageSearchConfig;
+use Spryker\Shared\ProductReviewSearch\ProductReviewSearchConfig;
 use Spryker\Zed\ProductLabelPageSearch\Communication\Plugin\PageDataExpander\ProductLabelPageDataExpanderPlugin;
 use Spryker\Zed\ProductLabelPageSearch\Communication\Plugin\PageMapExpander\ProductLabelPageMapExpanderPlugin;
 use Spryker\Zed\ProductPageSearch\ProductPageSearchDependencyProvider as SprykerProductPageSearchDependencyProvider;
+use Spryker\Zed\ProductReviewSearch\Communication\Plugin\PageDataExpander\ProductReviewDataExpanderPlugin;
+use Spryker\Zed\ProductReviewSearch\Communication\Plugin\PageMapExpander\ProductReviewMapExpanderPlugin;
 
 class ProductPageSearchDependencyProvider extends SprykerProductPageSearchDependencyProvider
 {
@@ -21,7 +25,8 @@ class ProductPageSearchDependencyProvider extends SprykerProductPageSearchDepend
     protected function getDataExpanderPlugins()
     {
         $dataExpanderPlugins = parent::getDataExpanderPlugins();
-        $dataExpanderPlugins['PLUGIN_PRODUCT_LABEL_PAGE_DATA'] = new ProductLabelPageDataExpanderPlugin();
+        $dataExpanderPlugins[ProductLabelPageSearchConfig::PLUGIN_PRODUCT_LABEL_PAGE_DATA] = new ProductLabelPageDataExpanderPlugin();
+        $dataExpanderPlugins[ProductReviewSearchConfig::PLUGIN_PRODUCT_PAGE_RATING_DATA] = new ProductReviewDataExpanderPlugin();
 
         return $dataExpanderPlugins;
     }
@@ -33,6 +38,7 @@ class ProductPageSearchDependencyProvider extends SprykerProductPageSearchDepend
     {
         $mapExpanderPlugins = parent::getMapExpanderPlugins();
         $mapExpanderPlugins[] = new  ProductLabelPageMapExpanderPlugin();
+        $mapExpanderPlugins[] = new  ProductReviewMapExpanderPlugin();
 
         return $mapExpanderPlugins;
     }

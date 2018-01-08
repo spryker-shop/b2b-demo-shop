@@ -15,12 +15,12 @@ use Orm\Zed\Url\Persistence\SpyUrlQuery;
 use Pyz\Zed\DataImport\Business\Exception\NavigationNodeByKeyNotFoundException;
 use Pyz\Zed\DataImport\Business\Model\Navigation\NavigationKeyToIdNavigationStep;
 use Pyz\Zed\DataImport\Business\Model\Product\ProductLocalizedAttributesExtractorStep;
-use Spryker\Shared\Navigation\NavigationConfig;
 use Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface;
-use Spryker\Zed\DataImport\Business\Model\DataImportStep\TouchAwareStep;
+use Pyz\Zed\DataImport\Business\Model\DataImportStep\PublishAwareStep;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
+use Spryker\Zed\Navigation\Dependency\NavigationEvents;
 
-class NavigationNodeWriterStep extends TouchAwareStep implements DataImportStepInterface
+class NavigationNodeWriterStep extends PublishAwareStep implements DataImportStepInterface
 {
     const BULK_SIZE = 100;
 
@@ -101,7 +101,7 @@ class NavigationNodeWriterStep extends TouchAwareStep implements DataImportStepI
 
         $navigationNodeEntity->save();
 
-        $this->addMainTouchable(NavigationConfig::RESOURCE_TYPE_NAVIGATION_MENU, $navigationNodeEntity->getFkNavigation());
+        $this->addPublishEvents(NavigationEvents::NAVIGATION_KEY_PUBLISH, $navigationNodeEntity->getFkNavigation());
     }
 
     /**

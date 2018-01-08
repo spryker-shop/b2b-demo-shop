@@ -14,12 +14,13 @@ use Orm\Zed\ProductLabel\Persistence\SpyProductLabelProductAbstractQuery;
 use Orm\Zed\ProductLabel\Persistence\SpyProductLabelQuery;
 use Pyz\Zed\DataImport\Business\Model\DataImportStep\LocalizedAttributesExtractorStep;
 use Pyz\Zed\DataImport\Business\Model\ProductAbstract\AddProductAbstractSkusStep;
-use Spryker\Shared\ProductLabel\ProductLabelConstants;
 use Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface;
-use Spryker\Zed\DataImport\Business\Model\DataImportStep\TouchAwareStep;
+use Pyz\Zed\DataImport\Business\Model\DataImportStep\PublishAwareStep;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
+use Spryker\Zed\Product\Dependency\ProductEvents;
+use Spryker\Zed\ProductLabel\Dependency\ProductLabelEvents;
 
-class ProductLabelWriterStep extends TouchAwareStep implements DataImportStepInterface
+class ProductLabelWriterStep extends PublishAwareStep implements DataImportStepInterface
 {
     const BULK_SIZE = 100;
 
@@ -150,10 +151,8 @@ class ProductLabelWriterStep extends TouchAwareStep implements DataImportStepInt
             if ($productLabelAbstractProductEntity->isNew() || $productLabelAbstractProductEntity->isModified()) {
                 $productLabelAbstractProductEntity->save();
 
-                $this->addMainTouchable(
-                    ProductLabelConstants::RESOURCE_TYPE_PRODUCT_ABSTRACT_PRODUCT_LABEL_RELATIONS,
-                    $idProductAbstract
-                );
+                $this->addPublishEvents(ProductLabelEvents::PRODUCT_LABEL_PRODUCT_ABSTRACT_PUBLISH, $idProductAbstract);
+                $this->addPublishEvents(ProductEvents::PRODUCT_ABSTRACT_PUBLISH, $idProductAbstract);
             }
         }
     }

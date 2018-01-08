@@ -18,14 +18,16 @@ use Pyz\Zed\DataImport\Business\Model\Product\ProductLocalizedAttributesExtracto
 use Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepository;
 use Spryker\Zed\DataImport\Business\Exception\DataKeyNotFoundInDataSetException;
 use Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface;
-use Spryker\Zed\DataImport\Business\Model\DataImportStep\TouchAwareStep;
+use Pyz\Zed\DataImport\Business\Model\DataImportStep\PublishAwareStep;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 use Spryker\Zed\DataImport\Dependency\Facade\DataImportToTouchInterface;
-use Spryker\Zed\Url\UrlConfig;
+use Spryker\Zed\Product\Dependency\ProductEvents;
+use Spryker\Zed\ProductCategory\Dependency\ProductCategoryEvents;
+use Spryker\Zed\Url\Dependency\UrlEvents;
 
 /**
  */
-class ProductAbstractWriterStep extends TouchAwareStep implements DataImportStepInterface
+class ProductAbstractWriterStep extends PublishAwareStep implements DataImportStepInterface
 {
     const BULK_SIZE = 100;
 
@@ -59,8 +61,6 @@ class ProductAbstractWriterStep extends TouchAwareStep implements DataImportStep
      */
     public function __construct(ProductRepository $productRepository, DataImportToTouchInterface $touchFacade, $bulkSize = null)
     {
-        parent::__construct($touchFacade, $bulkSize);
-
         $this->productRepository = $productRepository;
     }
 
@@ -79,8 +79,7 @@ class ProductAbstractWriterStep extends TouchAwareStep implements DataImportStep
         $this->importProductCategories($dataSet, $productAbstractEntity);
         $this->importProductUrls($dataSet, $productAbstractEntity);
 
-        $this->addMainTouchable(ProductConfig::RESOURCE_TYPE_PRODUCT_ABSTRACT, $productAbstractEntity->getIdProductAbstract());
-        $this->addSubTouchable(ProductConfig::RESOURCE_TYPE_ATTRIBUTE_MAP, $productAbstractEntity->getIdProductAbstract());
+        $this->addPublishEvents(ProductEvents::PRODUCT_ABSTRACT_PUBLISH, $productAbstractEntity->getIdProductAbstract());
     }
 
     /**
@@ -172,6 +171,9 @@ class ProductAbstractWriterStep extends TouchAwareStep implements DataImportStep
 
             if ($productCategoryEntity->isNew() || $productCategoryEntity->isModified()) {
                 $productCategoryEntity->save();
+
+                $this->addPublishEvents(ProductCategoryEvents::PRODUCT_CATEGORY_PUBLISH, $productAbstractEntity->getIdProductAbstract());
+                $this->addPublishEvents(ProductEvents::PRODUCT_ABSTRACT_PUBLISH, $productAbstractEntity->getIdProductAbstract());
             }
         }
     }
@@ -222,7 +224,8 @@ class ProductAbstractWriterStep extends TouchAwareStep implements DataImportStep
 
             if ($urlEntity->isNew() || $urlEntity->isModified()) {
                 $urlEntity->save();
-                $this->addSubTouchable(UrlConfig::RESOURCE_TYPE_URL, $urlEntity->getIdUrl());
+
+                $this->addPublishEvents(UrlEvents::URL_PUBLISH, $urlEntity->getIdUrl());
             }
         }
     }

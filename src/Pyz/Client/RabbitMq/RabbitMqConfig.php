@@ -18,12 +18,11 @@ use Spryker\Shared\CmsPageSearch\CmsPageSearchConstants;
 use Spryker\Shared\CmsStorage\CmsStorageConstants;
 use Spryker\Shared\Event\EventConstants;
 use Spryker\Shared\GlossaryStorage\GlossaryStorageConstants;
-use Spryker\Shared\PriceStorage\PriceStorageConstants;
+use Spryker\Shared\PriceProductStorage\PriceProductStorageConstants;
 use Spryker\Shared\ProductPageSearch\ProductPageSearchConstants;
 use Spryker\Shared\ProductStorage\ProductStorageConstants;
 use Spryker\Shared\UrlStorage\UrlStorageConstants;
-use SprykerEco\Shared\Loggly\LogglyConstants;
-use SprykerEco\Zed\Loggly\LogglyConfig;
+use Spryker\Shared\Log\LogConstants;
 
 class RabbitMqConfig extends SprykerRabbitMqConfig
 {
@@ -39,15 +38,15 @@ class RabbitMqConfig extends SprykerRabbitMqConfig
         $queueOptionCollection->append($this->createQueueOption(AvailabilityStorageConstants::AVAILABILITY_SYNC_STORAGE_QUEUE, AvailabilityStorageConstants::AVAILABILITY_SYNC_STORAGE_ERROR_QUEUE));
         $queueOptionCollection->append($this->createQueueOption(CategoryStorageConstants::CATEGORY_SYNC_STORAGE_QUEUE, CategoryStorageConstants::CATEGORY_SYNC_STORAGE_ERROR_QUEUE));
         $queueOptionCollection->append($this->createQueueOption(ProductStorageConstants::PRODUCT_SYNC_STORAGE_QUEUE, ProductStorageConstants::PRODUCT_SYNC_STORAGE_ERROR_QUEUE));
-        $queueOptionCollection->append($this->createQueueOption(PriceStorageConstants::PRICE_SYNC_STORAGE_QUEUE, PriceStorageConstants::PRICE_SYNC_STORAGE_ERROR_QUEUE));
+        $queueOptionCollection->append($this->createQueueOption(PriceProductStorageConstants::PRICE_SYNC_STORAGE_QUEUE, PriceProductStorageConstants::PRICE_SYNC_STORAGE_ERROR_QUEUE));
         $queueOptionCollection->append($this->createQueueOption(CmsStorageConstants::CMS_SYNC_STORAGE_QUEUE, CmsStorageConstants::CMS_SYNC_STORAGE_ERROR_QUEUE));
         $queueOptionCollection->append($this->createQueueOption(CategoryPageSearchConstants::CATEGORY_SYNC_SEARCH_QUEUE, CategoryPageSearchConstants::CATEGORY_SYNC_SEARCH_ERROR_QUEUE));
         $queueOptionCollection->append($this->createQueueOption(CmsPageSearchConstants::CMS_SYNC_SEARCH_QUEUE, CmsPageSearchConstants::CMS_SYNC_SEARCH_ERROR_QUEUE));
         $queueOptionCollection->append($this->createQueueOption(ProductPageSearchConstants::PRODUCT_SYNC_SEARCH_QUEUE, ProductPageSearchConstants::PRODUCT_SYNC_SEARCH_ERROR_QUEUE));
         $queueOptionCollection->append(
             $this->createQueueOption(
-                $this->get(LogglyConstants::QUEUE_NAME, LogglyConfig::DEFAULT_QUEUE_NAME),
-                $this->get(LogglyConstants::ERROR_QUEUE_NAME, LogglyConfig::DEFAULT_ERROR_QUEUE_NAME)
+                $this->get(LogConstants::LOG_QUEUE_NAME),
+                $this->get(LogConstants::LOG_ERROR_QUEUE_NAME)
             )
         );
 

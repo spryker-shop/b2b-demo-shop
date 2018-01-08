@@ -14,11 +14,9 @@ use SprykerShop\Yves\NewsletterWidget\Plugin\CustomerPage\NewsletterSubscription
 class CustomerPageDependencyProvider extends SprykerShopCustomerPageDependencyProvider
 {
     /**
-     * @param \Spryker\Yves\Kernel\Container $container
-     *
      * @return string[]
      */
-    protected function getCustomerOverviewWidgetPlugins(Container $container): array
+    protected function getCustomerOverviewWidgetPlugins(): array
     {
         return [
             NewsletterSubscriptionSummaryWidgetPlugin::class,

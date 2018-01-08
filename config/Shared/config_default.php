@@ -22,8 +22,6 @@ use Spryker\Shared\Kernel\Store;
 use Spryker\Shared\Log\LogConstants;
 use Spryker\Shared\NewRelic\NewRelicConstants;
 use Spryker\Shared\Oms\OmsConstants;
-use Spryker\Shared\Price\PriceConstants;
-use Spryker\Shared\PriceCartConnector\PriceCartConnectorConstants;
 use Spryker\Shared\Propel\PropelConstants;
 use Spryker\Shared\Queue\QueueConfig;
 use Spryker\Shared\Queue\QueueConstants;
@@ -42,6 +40,7 @@ use Spryker\Zed\DummyPayment\DummyPaymentConfig;
 use Spryker\Zed\Log\Communication\Plugin\ZedLoggerConfigPlugin;
 use Spryker\Zed\Oms\OmsConfig;
 use Spryker\Zed\Propel\PropelConfig;
+use SprykerEco\Shared\Loggly\LogglyConstants;
 
 $CURRENT_STORE = Store::getInstance()->getStoreName();
 
@@ -311,9 +310,16 @@ $baseLogFilePath = sprintf('%s/data/%s/logs', APPLICATION_ROOT_DIR, $CURRENT_STO
 $config[LogConstants::LOG_FILE_PATH_YVES] = $baseLogFilePath . '/YVES/application.log';
 $config[LogConstants::LOG_FILE_PATH_ZED] = $baseLogFilePath . '/ZED/application.log';
 
+$config[LogConstants::EXCEPTION_LOG_FILE_PATH_YVES] = $baseLogFilePath . '/YVES/exception.log';
+$config[LogConstants::EXCEPTION_LOG_FILE_PATH_ZED] = $baseLogFilePath . '/ZED/exception.log';
+
 $config[LogConstants::LOG_SANITIZE_FIELDS] = [
     'password',
 ];
+
+$config[LogConstants::LOG_QUEUE_NAME] = 'log-queue';
+$config[LogConstants::LOG_ERROR_QUEUE_NAME] = 'error-log-queue';
+
 /**
  * As long EventJournal is in ZedRequest bundle this needs to be disabled by hand
  */
@@ -358,6 +364,7 @@ $config[NewRelicConstants::NEWRELIC_API_KEY] = null;
 // ---------- Queue
 $config[QueueConstants::QUEUE_SERVER_ID] = (gethostname()) ?: php_uname('n');
 $config[QueueConstants::QUEUE_WORKER_INTERVAL_MILLISECONDS] = 1000;
+$config[QueueConstants::QUEUE_PROCESS_TRIGGER_INTERVAL_MICROSECONDS] = 1001;
 $config[QueueConstants::QUEUE_WORKER_MAX_THRESHOLD_SECONDS] = 59;
 $config[QueueConstants::QUEUE_WORKER_LOG_ACTIVE] = false;
 
@@ -384,6 +391,9 @@ $config[QueueConstants::QUEUE_ADAPTER_CONFIGURATION] = [
     ],
 ];
 
+$config[LogglyConstants::QUEUE_NAME] = 'loggly-log-queue';
+$config[LogglyConstants::ERROR_QUEUE_NAME] = 'loggly-log-queue.error';
+
 // ---------- Events
 $config[EventConstants::LOGGER_ACTIVE] = false;
 
@@ -394,14 +404,12 @@ $config[EventBehaviorConstants::EVENT_BEHAVIOR_TRIGGERING_ACTIVE] = true;
 $config[CustomerConstants::CUSTOMER_SECURED_PATTERN] = '(^/login_check$|^(/en|/de)?/customer|^(/en|/de)?/wishlist)';
 $config[CustomerConstants::CUSTOMER_ANONYMOUS_PATTERN] = '^/.*';
 
-// ---------- Price
-$DEFAULT_PRICE_TYPE = 'DEFAULT';
-$config[PriceConstants::DEFAULT_PRICE_TYPE] = $DEFAULT_PRICE_TYPE;
-$config[PriceCartConnectorConstants::DEFAULT_PRICE_TYPE] = $DEFAULT_PRICE_TYPE;
-
 // ---------- Taxes
 $config[TaxConstants::DEFAULT_TAX_RATE] = 19;
 
 $config[FileSystemConstants::FILESYSTEM_SERVICE] = [];
 $config[FlysystemConstants::FILESYSTEM_SERVICE] = $config[FileSystemConstants::FILESYSTEM_SERVICE];
 $config[CmsGuiConstants::CMS_PAGE_PREVIEW_URI] = '/en/cms/preview/%d';
+
+// ---------- Loggly
+$config[LogglyConstants::TOKEN] = 'loggly-token:sample:123456';

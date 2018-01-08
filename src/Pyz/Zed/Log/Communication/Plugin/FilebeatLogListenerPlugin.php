@@ -12,7 +12,7 @@ use Spryker\Zed\Log\Business\Model\LogListener\LogListenerInterface;
 use Symfony\Component\Process\Process;
 
 /**
- * @method \Pyz\Zed\Log\Communication\LogCommunicationFactory getFactory()
+ * @method \Spryker\Zed\Log\Communication\LogCommunicationFactory getFactory()
  */
 class FilebeatLogListenerPlugin extends AbstractPlugin implements LogListenerInterface
 {

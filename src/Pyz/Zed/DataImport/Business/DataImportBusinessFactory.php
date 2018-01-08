@@ -20,6 +20,9 @@ use Pyz\Zed\DataImport\Business\Model\CmsTemplate\CmsTemplateWriterStep;
 use Pyz\Zed\DataImport\Business\Model\Country\Repository\CountryRepository;
 use Pyz\Zed\DataImport\Business\Model\Currency\CurrencyWriterStep;
 use Pyz\Zed\DataImport\Business\Model\Customer\CustomerWriterStep;
+use Pyz\Zed\DataImport\Business\Model\DataImporterCollection;
+use Pyz\Zed\DataImport\Business\Model\DataImporterPublisher;
+use Pyz\Zed\DataImport\Business\Model\DataImporterPublisherInterface;
 use Pyz\Zed\DataImport\Business\Model\DataImportStep\LocalizedAttributesExtractorStep;
 use Pyz\Zed\DataImport\Business\Model\Discount\DiscountWriterStep;
 use Pyz\Zed\DataImport\Business\Model\DiscountAmount\DiscountAmountWriterStep;
@@ -42,11 +45,12 @@ use Pyz\Zed\DataImport\Business\Model\ProductAttributeKey\ProductAttributeKeyWri
 use Pyz\Zed\DataImport\Business\Model\ProductConcrete\ProductConcreteWriter;
 use Pyz\Zed\DataImport\Business\Model\ProductGroup\ProductGroupWriter;
 use Pyz\Zed\DataImport\Business\Model\ProductImage\ProductImageWriterStep;
-use Pyz\Zed\DataImport\Business\Model\ProductLabel\Hook\ProductLabelAfterImportTouchHook;
+use Pyz\Zed\DataImport\Business\Model\ProductLabel\Hook\ProductLabelAfterImportPublishHook;
 use Pyz\Zed\DataImport\Business\Model\ProductLabel\ProductLabelWriterStep;
 use Pyz\Zed\DataImport\Business\Model\ProductManagementAttribute\ProductManagementAttributeWriter;
 use Pyz\Zed\DataImport\Business\Model\ProductManagementAttribute\ProductManagementLocalizedAttributesExtractorStep;
 use Pyz\Zed\DataImport\Business\Model\ProductOption\ProductOptionWriterStep;
+use Pyz\Zed\DataImport\Business\Model\ProductOptionPrice\ProductOptionPriceWriterStep;
 use Pyz\Zed\DataImport\Business\Model\ProductPrice\ProductPriceWriterStep;
 use Pyz\Zed\DataImport\Business\Model\ProductRelation\Hook\ProductRelationAfterImportHook;
 use Pyz\Zed\DataImport\Business\Model\ProductRelation\ProductRelationWriter;
@@ -56,6 +60,7 @@ use Pyz\Zed\DataImport\Business\Model\ProductSearchAttribute\ProductSearchAttrib
 use Pyz\Zed\DataImport\Business\Model\ProductSearchAttributeMap\ProductSearchAttributeMapWriter;
 use Pyz\Zed\DataImport\Business\Model\ProductSet\ProductSetImageExtractorStep;
 use Pyz\Zed\DataImport\Business\Model\ProductSet\ProductSetWriterStep;
+use Pyz\Zed\DataImport\Business\Model\ProductStock\Hook\ProductStockAfterImportPublishHook;
 use Pyz\Zed\DataImport\Business\Model\ProductStock\ProductStockWriterStep;
 use Pyz\Zed\DataImport\Business\Model\Shipment\ShipmentWriterStep;
 use Pyz\Zed\DataImport\Business\Model\ShipmentPrice\ShipmentPriceWriterStep;
@@ -73,6 +78,7 @@ use Spryker\Zed\Discount\DiscountConfig;
 /**
  * @method \Pyz\Zed\DataImport\DataImportConfig getConfig()
  * @SuppressWarnings(PHPMD.ExcessiveClassComplexity)
+ * @SuppressWarnings(PHPMD.ExcessiveClassLength)
  */
 class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
 {
@@ -102,6 +108,7 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
             ->addDataImporter($this->createProductImageImporter())
             ->addDataImporter($this->createProductStockImporter())
             ->addDataImporter($this->createProductOptionImporter())
+            ->addDataImporter($this->createProductOptionPriceImporter())
             ->addDataImporter($this->createProductGroupImporter())
             ->addDataImporter($this->createProductPriceImporter())
             ->addDataImporter($this->createProductRelationImporter())
@@ -120,6 +127,24 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
             ->addDataImporter($this->createDiscountAmountImporter());
 
         return $dataImporterCollection;
+    }
+
+    /**
+     * @return \Spryker\Zed\DataImport\Business\Model\DataImporterCollectionInterface|\Spryker\Zed\DataImport\Business\Model\DataImporterInterface
+     */
+    public function createDataImporterCollection()
+    {
+        $dataImporterCollection = new DataImporterCollection($this->createDataImporterPublisher());
+
+        return $dataImporterCollection;
+    }
+
+    /**
+     * @return DataImporterPublisherInterface
+     */
+    public function createDataImporterPublisher()
+    {
+        return new DataImporterPublisher($this->getEventFacade());
     }
 
     /**
@@ -169,7 +194,7 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
         $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker(GlossaryWriterStep::BULK_SIZE);
         $dataSetStepBroker
             ->addStep($this->createLocaleNameToIdStep(GlossaryWriterStep::KEY_LOCALE))
-            ->addStep(new GlossaryWriterStep($this->getTouchFacade(), GlossaryWriterStep::BULK_SIZE));
+            ->addStep(new GlossaryWriterStep());
 
         $dataImporter->addDataSetStepBroker($dataSetStepBroker);
 
@@ -346,9 +371,7 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
 
         $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker();
         $dataSetStepBroker
-            ->addStep(new CmsBlockCategoryWriterStep(
-                $this->getTouchFacade()
-            ));
+            ->addStep(new CmsBlockCategoryWriterStep());
 
         $dataImporter->addDataSetStepBroker($dataSetStepBroker);
 
@@ -452,12 +475,29 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
                 ProductOptionWriterStep::KEY_GROUP_NAME,
                 ProductOptionWriterStep::KEY_OPTION_NAME,
             ]))
-            ->addStep(new ProductOptionWriterStep($this->getTouchFacade(), ProductOptionWriterStep::BULK_SIZE));
+            ->addStep(new ProductOptionWriterStep());
 
         $dataImporter->addDataSetStepBroker($dataSetStepBroker);
 
         return $dataImporter;
     }
+
+    /**
+     * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface|\Spryker\Zed\DataImport\Business\Model\DataSet\DataSetStepBrokerAwareInterface
+     */
+    protected function createProductOptionPriceImporter()
+    {
+        $dataImporter = $this->getCsvDataImporterFromConfig($this->getConfig()->getProductOptionPriceDataImporterConfiguration());
+
+        $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker();
+        $dataSetStepBroker
+            ->addStep(new ProductOptionPriceWriterStep());
+
+        $dataImporter->addDataSetStepBroker($dataSetStepBroker);
+
+        return $dataImporter;
+    }
+
 
     /**
      * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface|\Spryker\Zed\DataImport\Business\Model\DataSet\DataSetStepBrokerAwareInterface
@@ -476,9 +516,18 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
                 ProductStockWriterStep::BULK_SIZE
             ));
 
-        $dataImporter->addDataSetStepBroker($dataSetStepBroker);
+        $dataImporter->addDataSetStepBroker($dataSetStepBroker)
+            ->addAfterImportHook($this->createProductStockAfterImportPublishHook());
 
         return $dataImporter;
+    }
+
+    /**
+     * @return ProductStockAfterImportPublishHook
+     */
+    protected function createProductStockAfterImportPublishHook()
+    {
+        return new ProductStockAfterImportPublishHook();
     }
 
     /**
@@ -606,7 +655,7 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
 
         $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker(NavigationWriterStep::BULK_SIZE);
         $dataSetStepBroker
-            ->addStep(new NavigationWriterStep($this->getTouchFacade(), NavigationWriterStep::BULK_SIZE));
+            ->addStep(new NavigationWriterStep());
 
         $dataImporter->addDataSetStepBroker($dataSetStepBroker);
 
@@ -630,7 +679,7 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
                 NavigationNodeWriterStep::KEY_CSS_CLASS,
             ]))
             ->addStep($this->createNavigationNodeValidityDatesStep(NavigationNodeWriterStep::KEY_VALID_FROM, NavigationNodeWriterStep::KEY_VALID_TO))
-            ->addStep(new NavigationNodeWriterStep($this->getTouchFacade(), NavigationNodeWriterStep::BULK_SIZE));
+            ->addStep(new NavigationNodeWriterStep());
 
         $dataImporter->addDataSetStepBroker($dataSetStepBroker);
 
@@ -754,7 +803,7 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
             ->addStep($this->createAddLocalesStep())
             ->addStep($this->createAddProductAttributeKeysStep())
             ->addStep($this->createProductManagementLocalizedAttributesExtractorStep())
-            ->addStep(new ProductManagementAttributeWriter($this->getTouchFacade(), ProductManagementAttributeWriter::BULK_SIZE));
+            ->addStep(new ProductManagementAttributeWriter());
 
         $dataImporter->addDataSetStepBroker($dataSetStepBroker);
 
@@ -838,26 +887,21 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
             ->addStep($this->createAddProductAbstractSkusStep())
             ->addStep($this->createAddLocalesStep())
             ->addStep($this->createLocalizedAttributesExtractorStep(['name']))
-            ->addStep(new ProductLabelWriterStep(
-                $this->getTouchFacade(),
-                ProductLabelWriterStep::BULK_SIZE
-            ));
+            ->addStep(new ProductLabelWriterStep());
 
         $dataImporter
             ->addDataSetStepBroker($dataSetStepBroker)
-            ->addAfterImportHook($this->createProductLabelAfterImportTouchHook());
+            ->addAfterImportHook($this->createProductLabelAfterImportPublishHook());
 
         return $dataImporter;
     }
 
     /**
-     * @return \Pyz\Zed\DataImport\Business\Model\ProductLabel\Hook\ProductLabelAfterImportTouchHook
+     * @return \Pyz\Zed\DataImport\Business\Model\ProductLabel\Hook\ProductLabelAfterImportPublishHook
      */
-    protected function createProductLabelAfterImportTouchHook()
+    protected function createProductLabelAfterImportPublishHook()
     {
-        return new ProductLabelAfterImportTouchHook(
-            $this->getTouchFacade()
-        );
+        return new ProductLabelAfterImportPublishHook();
     }
 
     /**
@@ -963,7 +1007,7 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
      */
     protected function createProductSearchAfterImportHook()
     {
-        return new ProductSearchAfterImportHook($this->getProvidedDependency(DataImportDependencyProvider::FACADE_PRODUCT_SEARCH));
+        return new ProductSearchAfterImportHook();
     }
 
     /**
@@ -1062,5 +1106,13 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     protected function createAddProductAttributeKeysStep()
     {
         return new AddProductAttributeKeysStep();
+    }
+
+    /**
+     * @return mixed
+     */
+    protected function getEventFacade()
+    {
+        return $this->getProvidedDependency(DataImportDependencyProvider::FACADE_EVENT);
     }
 }

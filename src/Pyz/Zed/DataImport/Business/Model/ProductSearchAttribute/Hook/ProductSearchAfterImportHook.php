@@ -7,30 +7,24 @@
 
 namespace Pyz\Zed\DataImport\Business\Model\ProductSearchAttribute\Hook;
 
-use Pyz\Zed\ProductSearch\Business\ProductSearchFacadeInterface;
+use Pyz\Zed\DataImport\Business\Model\DataImporterPublisher;
 use Spryker\Zed\DataImport\Business\Model\DataImporterAfterImportInterface;
+use Spryker\Zed\ProductSearch\Dependency\ProductSearchEvents;
 
 class ProductSearchAfterImportHook implements DataImporterAfterImportInterface
 {
-    /**
-     * @var \Pyz\Zed\ProductSearch\Business\ProductSearchFacadeInterface
-     */
-    protected $productSearchFacade;
 
-    /**
-     * @param \Pyz\Zed\ProductSearch\Business\ProductSearchFacadeInterface $productSearchFacade
-     */
-    public function __construct(ProductSearchFacadeInterface $productSearchFacade)
-    {
-        $this->productSearchFacade = $productSearchFacade;
-    }
+    const ID_DEFAULT = 0;
 
     /**
      * @return void
      */
     public function afterImport()
     {
-        $this->productSearchFacade->touchProductAbstractByAsynchronousAttributes();
-        $this->productSearchFacade->touchProductSearchConfigExtension();
+        DataImporterPublisher::addImportedEntityEvents([
+            ProductSearchEvents::PRODUCT_SEARCH_CONFIG_PUBLISH => [
+                static::ID_DEFAULT
+            ]
+        ]);
     }
 }

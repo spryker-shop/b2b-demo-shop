@@ -9,9 +9,10 @@ namespace Pyz\Client\ExampleProductSalePage;
 
 use Pyz\Client\ExampleProductSalePage\Plugin\Elasticsearch\Query\SaleSearchQueryPlugin;
 use Spryker\Client\Catalog\Plugin\Elasticsearch\ResultFormatter\RawCatalogSearchResultFormatterPlugin;
+use Spryker\Client\CatalogPriceProductConnector\Plugin\CurrencyAwareCatalogSearchResultFormatterPlugin;
+use Spryker\Client\CatalogPriceProductConnector\Plugin\ProductPriceQueryExpanderPlugin;
 use Spryker\Client\Kernel\AbstractDependencyProvider;
 use Spryker\Client\Kernel\Container;
-use Spryker\Client\ProductLabel\ProductLabelClient;
 use Spryker\Client\Search\Plugin\Elasticsearch\QueryExpander\FacetQueryExpanderPlugin;
 use Spryker\Client\Search\Plugin\Elasticsearch\QueryExpander\LocalizedQueryExpanderPlugin;
 use Spryker\Client\Search\Plugin\Elasticsearch\QueryExpander\PaginatedQueryExpanderPlugin;
@@ -26,7 +27,7 @@ use Spryker\Shared\Kernel\Store;
 class ExampleProductSalePageDependencyProvider extends AbstractDependencyProvider
 {
     const CLIENT_SEARCH = 'CLIENT_SEARCH';
-    const CLIENT_PRODUCT_LABEL = 'CLIENT_PRODUCT_LABEL';
+    const CLIENT_PRODUCT_LABEL_STORAGE = 'CLIENT_PRODUCT_LABEL';
     const SALE_SEARCH_QUERY_PLUGIN = 'SALE_SEARCH_QUERY_PLUGIN';
     const SALE_SEARCH_QUERY_EXPANDER_PLUGINS = 'SALE_SEARCH_QUERY_EXPANDER_PLUGINS';
     const SALE_SEARCH_RESULT_FORMATTER_PLUGINS = 'SALE_SEARCH_RESULT_FORMATTER_PLUGINS';
@@ -70,8 +71,8 @@ class ExampleProductSalePageDependencyProvider extends AbstractDependencyProvide
      */
     protected function addProductLabelClient(Container $container)
     {
-        $container[self::CLIENT_PRODUCT_LABEL] = function () {
-            return new ProductLabelClient();
+        $container[self::CLIENT_PRODUCT_LABEL_STORAGE] = function (Container $container) {
+            return $container->getLocator()->productLabelStorage()->client();
         };
 
         return $container;
@@ -105,6 +106,7 @@ class ExampleProductSalePageDependencyProvider extends AbstractDependencyProvide
                 new FacetQueryExpanderPlugin(),
                 new SortedQueryExpanderPlugin(),
                 new PaginatedQueryExpanderPlugin(),
+                new ProductPriceQueryExpanderPlugin(),
             ];
         };
 
@@ -123,7 +125,9 @@ class ExampleProductSalePageDependencyProvider extends AbstractDependencyProvide
                 new FacetResultFormatterPlugin(),
                 new SortedResultFormatterPlugin(),
                 new PaginatedResultFormatterPlugin(),
-                new RawCatalogSearchResultFormatterPlugin(),
+                new CurrencyAwareCatalogSearchResultFormatterPlugin(
+                    new RawCatalogSearchResultFormatterPlugin()
+                ),
             ];
         };
 

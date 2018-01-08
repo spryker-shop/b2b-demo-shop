@@ -48,6 +48,9 @@ class SaleController extends AbstractController
 
         $searchResults['category'] = $categoryNode;
         $searchResults['filterPath'] = ExampleProductSaleControllerProvider::ROUTE_SALE;
+        $searchResults['viewMode'] = $this->getFactory()
+            ->getCatalogClient()
+            ->getCatalogViewMode($request);
 
         return $this->view($searchResults, $this->getFactory()->getExampleProductSalePageWidgetPlugins());
     }
@@ -63,7 +66,7 @@ class SaleController extends AbstractController
         $categoryPath = $categoryPathPrefix . '/' . ltrim($categoryPath, '/');
 
         $categoryNode = $this->getFactory()
-            ->getCollectorClient()
+            ->getUrlStorageClient()
             ->matchUrl($categoryPath, $this->getLocale());
 
         return $categoryNode ? $categoryNode['data'] : [];

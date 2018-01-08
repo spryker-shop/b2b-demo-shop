@@ -9,16 +9,16 @@ namespace Pyz\Zed\DataImport\Business\Model\ProductStock;
 
 use Orm\Zed\Stock\Persistence\SpyStockProductQuery;
 use Orm\Zed\Stock\Persistence\SpyStockQuery;
+use Pyz\Zed\DataImport\Business\Model\DataImportStep\PublishAwareStep;
 use Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepository;
 use Spryker\Zed\Availability\Business\AvailabilityFacadeInterface;
 use Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface;
-use Spryker\Zed\DataImport\Business\Model\DataImportStep\TouchAwareStep;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 use Spryker\Zed\DataImport\Dependency\Facade\DataImportToTouchInterface;
 use Spryker\Zed\ProductBundle\Business\ProductBundleFacadeInterface;
 use Spryker\Zed\Stock\StockConfig;
 
-class ProductStockWriterStep extends TouchAwareStep implements DataImportStepInterface
+class ProductStockWriterStep extends PublishAwareStep implements DataImportStepInterface
 {
     const BULK_SIZE = 100;
     const KEY_NAME = 'name';
@@ -51,8 +51,6 @@ class ProductStockWriterStep extends TouchAwareStep implements DataImportStepInt
      */
     public function __construct(ProductRepository $productRepository, AvailabilityFacadeInterface $availabilityFacade, ProductBundleFacadeInterface $productBundleFacade, DataImportToTouchInterface $touchFacade, $bulkSize = null)
     {
-        parent::__construct($touchFacade, $bulkSize);
-
         $this->productRepository = $productRepository;
         $this->availabilityFacade = $availabilityFacade;
         $this->productBundleFacade = $productBundleFacade;
@@ -71,8 +69,6 @@ class ProductStockWriterStep extends TouchAwareStep implements DataImportStepInt
 
         $stockEntity->save();
 
-        $this->addSubTouchable(StockConfig::TOUCH_STOCK_TYPE, $stockEntity->getIdStock());
-
         $idProduct = $this->productRepository->getIdProductByConcreteSku($dataSet[static::KEY_CONCRETE_SKU]);
 
         $stockProductEntity = SpyStockProductQuery::create()
@@ -85,8 +81,6 @@ class ProductStockWriterStep extends TouchAwareStep implements DataImportStepInt
             ->setIsNeverOutOfStock($dataSet[static::KEY_IS_NEVER_OUT_OF_STOCK]);
 
         $stockProductEntity->save();
-
-        $this->addMainTouchable(StockConfig::TOUCH_STOCK_PRODUCT, $stockProductEntity->getIdStockProduct());
 
         $this->availabilityFacade->updateAvailability($dataSet[static::KEY_CONCRETE_SKU]);
 

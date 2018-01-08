@@ -19,17 +19,17 @@ use Orm\Zed\Url\Persistence\SpyUrlQuery;
 use Pyz\Zed\DataImport\Business\Model\Category\Repository\CategoryRepositoryInterface;
 use Pyz\Zed\DataImport\Business\Model\Locale\AddLocalesStep;
 use Pyz\Zed\DataImport\Business\Model\Product\ProductLocalizedAttributesExtractorStep;
-use Spryker\Zed\Category\CategoryConfig;
+use Spryker\Zed\Category\Dependency\CategoryEvents;
 use Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface;
-use Spryker\Zed\DataImport\Business\Model\DataImportStep\TouchAwareStep;
+use Pyz\Zed\DataImport\Business\Model\DataImportStep\PublishAwareStep;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 use Spryker\Zed\DataImport\Dependency\Facade\DataImportToTouchInterface;
-use Spryker\Zed\Url\UrlConfig;
+use Spryker\Zed\Url\Dependency\UrlEvents;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
-class CategoryWriterStep extends TouchAwareStep implements DataImportStepInterface
+class CategoryWriterStep extends PublishAwareStep implements DataImportStepInterface
 {
     const BULK_SIZE = 100;
 
@@ -52,8 +52,6 @@ class CategoryWriterStep extends TouchAwareStep implements DataImportStepInterfa
      */
     public function __construct(CategoryRepositoryInterface $categoryRepository, DataImportToTouchInterface $touchFacade)
     {
-        parent::__construct($touchFacade, static::BULK_SIZE);
-
         $this->categoryRepository = $categoryRepository;
     }
 
@@ -143,12 +141,7 @@ class CategoryWriterStep extends TouchAwareStep implements DataImportStepInterfa
         }
 
         $this->addToClosureTable($categoryNodeEntity);
-
-        $this->addMainTouchable(CategoryConfig::RESOURCE_TYPE_CATEGORY_NODE, $categoryNodeEntity->getIdCategoryNode());
-
-        if ($categoryNodeEntity->getIsRoot()) {
-            $this->addSubTouchable(CategoryConfig::RESOURCE_TYPE_NAVIGATION, $categoryNodeEntity->getIdCategoryNode());
-        }
+        $this->addPublishEvents(CategoryEvents::CATEGORY_NODE_PUBLISH, $categoryNodeEntity->getIdCategoryNode());
 
         foreach ($categoryEntity->getAttributes() as $categoryAttributesEntity) {
             $idLocale = $categoryAttributesEntity->getFkLocale();
@@ -162,6 +155,10 @@ class CategoryWriterStep extends TouchAwareStep implements DataImportStepInterfa
 
                 $urlPathParts = explode('/', ltrim($parentUrl, '/'));
                 $urlPathParts[] = $categoryAttributesEntity->getName();
+            }
+
+            if ($categoryNodeEntity->getIsRoot()) {
+                $this->addPublishEvents(CategoryEvents::CATEGORY_TREE_PUBLISH, $categoryNodeEntity->getIdCategoryNode());
             }
 
             $convertCallback = function ($value) {
@@ -180,7 +177,7 @@ class CategoryWriterStep extends TouchAwareStep implements DataImportStepInterfa
 
             if ($urlEntity->isNew() || $urlEntity->isModified()) {
                 $urlEntity->save();
-                $this->addSubTouchable(UrlConfig::RESOURCE_TYPE_URL, $urlEntity->getIdUrl());
+                $this->addPublishEvents(UrlEvents::URL_PUBLISH, $urlEntity->getIdUrl());
             }
         }
 
