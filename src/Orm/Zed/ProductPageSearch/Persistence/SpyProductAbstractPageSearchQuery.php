@@ -2,7 +2,7 @@
 
 namespace Orm\Zed\ProductPageSearch\Persistence;
 
-use Orm\Zed\ProductPageSearch\Persistence\Base\SpyProductAbstractPageSearchQuery as BaseSpyProductAbstractPageSearchQuery;
+use Spryker\Zed\ProductPageSearch\Persistence\Propel\AbstractSpyProductAbstractPageSearchQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'spy_product_abstract_page_search' table.
@@ -14,7 +14,7 @@ use Orm\Zed\ProductPageSearch\Persistence\Base\SpyProductAbstractPageSearchQuery
  * long as it does not already exist in the output directory.
  *
  */
-class SpyProductAbstractPageSearchQuery extends BaseSpyProductAbstractPageSearchQuery
+class SpyProductAbstractPageSearchQuery extends AbstractSpyProductAbstractPageSearchQuery
 {
 
 }

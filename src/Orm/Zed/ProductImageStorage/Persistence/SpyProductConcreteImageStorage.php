@@ -2,7 +2,7 @@
 
 namespace Orm\Zed\ProductImageStorage\Persistence;
 
-use Orm\Zed\ProductImageStorage\Persistence\Base\SpyProductConcreteImageStorage as BaseSpyProductConcreteImageStorage;
+use Spryker\Zed\ProductImageStorage\Persistence\Propel\AbstractSpyProductConcreteImageStorage;
 
 /**
  * Skeleton subclass for representing a row from the 'spy_product_concrete_image_storage' table.
@@ -14,7 +14,7 @@ use Orm\Zed\ProductImageStorage\Persistence\Base\SpyProductConcreteImageStorage 
  * long as it does not already exist in the output directory.
  *
  */
-class SpyProductConcreteImageStorage extends BaseSpyProductConcreteImageStorage
+class SpyProductConcreteImageStorage extends AbstractSpyProductConcreteImageStorage
 {
 
 }

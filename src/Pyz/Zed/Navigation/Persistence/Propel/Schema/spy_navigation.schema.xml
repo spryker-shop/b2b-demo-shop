@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<database xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="zed" xsi:noNamespaceSchemaLocation="http://static.spryker.com/schema-01.xsd" namespace="Orm\Zed\Navigation\Persistence" package="src.Orm.Zed.Navigation.Persistence">
+
+    <table name="spy_navigation">
+        <behavior name="event">
+            <parameter name="spy_navigation-all" column="*"/>
+        </behavior>
+    </table>
+
+    <table name="spy_navigation_node">
+        <behavior name="event">
+            <parameter name="spy_navigation_node-all" column="*"/>
+        </behavior>
+    </table>
+
+    <table name="spy_navigation_node_localized_attributes">
+        <behavior name="event">
+            <parameter name="spy_navigation_node_localized_attributes-all" column="*"/>
+        </behavior>
+    </table>
+
+</database>

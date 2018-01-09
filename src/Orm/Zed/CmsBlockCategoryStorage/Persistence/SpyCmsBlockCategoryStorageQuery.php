@@ -2,7 +2,7 @@
 
 namespace Orm\Zed\CmsBlockCategoryStorage\Persistence;
 
-use Orm\Zed\CmsBlockCategoryStorage\Persistence\Base\SpyCmsBlockCategoryStorageQuery as BaseSpyCmsBlockCategoryStorageQuery;
+use Spryker\Zed\CmsBlockCategoryStorage\Persistence\Propel\AbstractSpyCmsBlockCategoryStorageQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'spy_cms_block_category_storage' table.
@@ -14,7 +14,7 @@ use Orm\Zed\CmsBlockCategoryStorage\Persistence\Base\SpyCmsBlockCategoryStorageQ
  * long as it does not already exist in the output directory.
  *
  */
-class SpyCmsBlockCategoryStorageQuery extends BaseSpyCmsBlockCategoryStorageQuery
+class SpyCmsBlockCategoryStorageQuery extends AbstractSpyCmsBlockCategoryStorageQuery
 {
 
 }

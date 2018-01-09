@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<database xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="zed" xsi:noNamespaceSchemaLocation="http://static.spryker.com/schema-01.xsd" namespace="Orm\Zed\Url\Persistence" package="src.Orm.Zed.Url.Persistence">
+
+    <table name="spy_url">
+        <behavior name="event">
+            <parameter name="spy_url_all" column="*"/>
+        </behavior>
+    </table>
+
+    <table name="spy_url_redirect">
+        <behavior name="event">
+            <parameter name="spy_url_redirect_event_all" column="*"/>
+        </behavior>
+    </table>
+</database>

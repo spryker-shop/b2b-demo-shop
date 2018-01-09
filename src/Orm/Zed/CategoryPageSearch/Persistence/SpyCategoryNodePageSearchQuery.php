@@ -2,7 +2,7 @@
 
 namespace Orm\Zed\CategoryPageSearch\Persistence;
 
-use Orm\Zed\CategoryPageSearch\Persistence\Base\SpyCategoryNodePageSearchQuery as BaseSpyCategoryNodePageSearchQuery;
+use Spryker\Zed\CategoryPageSearch\Persistence\Propel\AbstractSpyCategoryNodePageSearchQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'spy_category_node_page_search' table.
@@ -14,7 +14,6 @@ use Orm\Zed\CategoryPageSearch\Persistence\Base\SpyCategoryNodePageSearchQuery a
  * long as it does not already exist in the output directory.
  *
  */
-class SpyCategoryNodePageSearchQuery extends BaseSpyCategoryNodePageSearchQuery
+class SpyCategoryNodePageSearchQuery extends AbstractSpyCategoryNodePageSearchQuery
 {
-
 }

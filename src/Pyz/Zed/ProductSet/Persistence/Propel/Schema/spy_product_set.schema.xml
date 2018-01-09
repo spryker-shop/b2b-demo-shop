@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<database xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://static.spryker.com/schema-01.xsd" name="zed" namespace="Orm\Zed\ProductSet\Persistence" package="src.Orm.Zed.ProductSet.Persistence">
+
+    <table name="spy_product_set">
+        <behavior name="event">
+            <parameter name="spy_product_set_all" column="*"/>
+        </behavior>
+    </table>
+
+    <table name="spy_product_abstract_set">
+        <behavior name="event">
+            <parameter name="spy_product_abstract_set_all" column="*"/>
+        </behavior>
+    </table>
+
+    <table name="spy_product_set_data">
+        <behavior name="event">
+            <parameter name="spy_product_set_data_all" column="*"/>
+        </behavior>
+    </table>
+
+</database>
