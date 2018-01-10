@@ -103,10 +103,10 @@ class ExampleProductSalePageDependencyProvider extends AbstractDependencyProvide
             return [
                 new StoreQueryExpanderPlugin(),
                 new LocalizedQueryExpanderPlugin(),
+                new ProductPriceQueryExpanderPlugin(),
                 new FacetQueryExpanderPlugin(),
                 new SortedQueryExpanderPlugin(),
                 new PaginatedQueryExpanderPlugin(),
-                new ProductPriceQueryExpanderPlugin(),
             ];
         };
 
