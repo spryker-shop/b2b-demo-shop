@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "95e40db4c2324422c8ee0f4ece201df6",
+    "content-hash": "d10ccf53664fef4a1a4cf5358503e9a4",
     "packages": [
         {
             "name": "braintree/braintree_php",
@@ -1734,14 +1734,8 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/spryker/EventBehavior.git",
-                "reference": "34e23022fd48e753a9a964320b77bc572171d734"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker/EventBehavior/zipball/34e23022fd48e753a9a964320b77bc572171d734",
-                "reference": "34e23022fd48e753a9a964320b77bc572171d734",
-                "shasum": ""
+                "url": "git@github.com:spryker/event-behavior.git",
+                "reference": "6adb7b3fe4620fde88dd73729eddf986994e8664"
             },
             "require": {
                 "spryker/error-handler": "^2.1.2",
@@ -1778,12 +1772,16 @@
                     "Spryker\\": "src/Spryker/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "SprykerTest\\": "tests/SprykerTest/"
+                }
+            },
             "license": [
                 "proprietary"
             ],
             "description": "EventBehavior module",
-            "time": "2017-11-23T15:41:34+00:00"
+            "time": "2018-01-10T11:57:45+00:00"
         },
         {
             "name": "spryker/install",
@@ -2223,7 +2221,7 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/spryker/SynchronizationBehavior.git",
+                "url": "git@github.com:spryker/synchronization-behavior.git",
                 "reference": "841ef11cab52a331e26638d68e6acd80f1168046"
             },
             "dist": {
