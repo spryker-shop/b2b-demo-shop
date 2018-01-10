@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "ac86b348866807ac795907a89b66449b",
+    "content-hash": "b172e2bdf4e1cbcaa2132545aadd141f",
     "packages": [
         {
             "name": "braintree/braintree_php",
@@ -1731,17 +1731,11 @@
         },
         {
             "name": "spryker/event-behavior",
-            "version": "dev-master",
+            "version": "dev-feature/core-1313-b2b-demoshop",
             "source": {
                 "type": "git",
-                "url": "https://github.com/spryker/EventBehavior.git",
-                "reference": "34e23022fd48e753a9a964320b77bc572171d734"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker/EventBehavior/zipball/34e23022fd48e753a9a964320b77bc572171d734",
-                "reference": "34e23022fd48e753a9a964320b77bc572171d734",
-                "shasum": ""
+                "url": "git@github.com:spryker/event-behavior.git",
+                "reference": "9643ba4ba552f513aa9d94007f29caa36bb19af1"
             },
             "require": {
                 "spryker/error-handler": "^2.1.2",
@@ -1783,15 +1777,11 @@
                     "SprykerTest\\": "tests/SprykerTest/"
                 }
             },
-            "notification-url": "https://code.spryker.com/repo/private/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "EventBehavior module",
-            "support": {
-                "source": "https://github.com/spryker/EventBehavior/tree/master"
-            },
-            "time": "2017-11-23T15:41:34+00:00"
+            "time": "2017-12-27T10:36:43+00:00"
         },
         {
             "name": "spryker/install",
@@ -1917,7 +1907,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "0b1dc481c92be2c5c1b7104ee4fcb7755d3d84de"
+                "reference": "80a4051cb7cb36b3841cceaf4bec6739e719cf2d"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.0",
@@ -1935,6 +1925,7 @@
                 "spryker/availability": "*",
                 "spryker/availability-cart-connector": "*",
                 "spryker/availability-gui": "*",
+                "spryker/availability-storage": "*",
                 "spryker/braintree": "*",
                 "spryker/cache": "*",
                 "spryker/calculation": "*",
@@ -1945,19 +1936,26 @@
                 "spryker/catalog-price-product-connector": "*",
                 "spryker/category": "*",
                 "spryker/category-exporter": "*",
+                "spryker/category-page-search": "*",
+                "spryker/category-storage": "*",
                 "spryker/checkout": "*",
                 "spryker/cms": "*",
                 "spryker/cms-block": "*",
                 "spryker/cms-block-category-connector": "*",
+                "spryker/cms-block-category-storage": "*",
                 "spryker/cms-block-collector": "*",
                 "spryker/cms-block-gui": "*",
                 "spryker/cms-block-product-connector": "*",
+                "spryker/cms-block-product-storage": "*",
+                "spryker/cms-block-storage": "*",
                 "spryker/cms-collector": "*",
                 "spryker/cms-content-widget": "*",
                 "spryker/cms-content-widget-product-connector": "*",
                 "spryker/cms-content-widget-product-group-connector": "*",
                 "spryker/cms-content-widget-product-set-connector": "*",
                 "spryker/cms-gui": "*",
+                "spryker/cms-page-search": "*",
+                "spryker/cms-storage": "*",
                 "spryker/cms-user-connector": "*",
                 "spryker/collector": "*",
                 "spryker/collector-search-connector": "*",
@@ -1989,6 +1987,7 @@
                 "spryker/flysystem-ftp-filesystem": "*",
                 "spryker/flysystem-local-filesystem": "*",
                 "spryker/glossary": "*",
+                "spryker/glossary-storage": "*",
                 "spryker/graph": "*",
                 "spryker/graphviz": "*",
                 "spryker/gui": "*",
@@ -2007,6 +2006,10 @@
                 "spryker/messenger": "*",
                 "spryker/money": "*",
                 "spryker/monolog": "*",
+                "spryker/navigation": "*",
+                "spryker/navigation-collector": "*",
+                "spryker/navigation-gui": "*",
+                "spryker/navigation-storage": "*",
                 "spryker/new-relic": "*",
                 "spryker/new-relic-api": "*",
                 "spryker/newsletter": "*",
@@ -2020,35 +2023,54 @@
                 "spryker/price": "*",
                 "spryker/price-cart-connector": "*",
                 "spryker/price-product": "*",
+                "spryker/price-product-storage": "*",
                 "spryker/product": "*",
                 "spryker/product-attribute": "*",
                 "spryker/product-attribute-gui": "*",
                 "spryker/product-bundle": "*",
                 "spryker/product-cart-connector": "*",
                 "spryker/product-category": "*",
+                "spryker/product-category-filter": "*",
+                "spryker/product-category-filter-collector": "*",
+                "spryker/product-category-filter-gui": "*",
+                "spryker/product-category-filter-storage": "*",
+                "spryker/product-category-storage": "*",
                 "spryker/product-discount-connector": "*",
                 "spryker/product-group": "*",
                 "spryker/product-group-collector": "*",
+                "spryker/product-group-storage": "*",
                 "spryker/product-image": "*",
                 "spryker/product-image-cart-connector": "*",
+                "spryker/product-image-storage": "*",
                 "spryker/product-label": "*",
                 "spryker/product-label-collector": "*",
                 "spryker/product-label-discount-connector": "*",
                 "spryker/product-label-gui": "*",
+                "spryker/product-label-search": "*",
+                "spryker/product-label-storage": "*",
                 "spryker/product-management": "*",
                 "spryker/product-new": "*",
                 "spryker/product-option": "*",
                 "spryker/product-option-cart-connector": "*",
                 "spryker/product-option-discount-connector": "*",
+                "spryker/product-option-storage": "*",
+                "spryker/product-page-search": "*",
                 "spryker/product-relation": "*",
                 "spryker/product-relation-collector": "*",
+                "spryker/product-relation-storage": "*",
                 "spryker/product-review": "*",
                 "spryker/product-review-collector": "*",
                 "spryker/product-review-gui": "*",
+                "spryker/product-review-search": "*",
+                "spryker/product-review-storage": "*",
                 "spryker/product-search": "*",
+                "spryker/product-search-config-storage": "*",
                 "spryker/product-set": "*",
                 "spryker/product-set-collector": "*",
                 "spryker/product-set-gui": "*",
+                "spryker/product-set-page-search": "*",
+                "spryker/product-set-storage": "*",
+                "spryker/product-storage": "*",
                 "spryker/propel": "*",
                 "spryker/propel-orm": "*",
                 "spryker/queue": "*",
@@ -2083,6 +2105,7 @@
                 "spryker/transfer": "*",
                 "spryker/twig": "*",
                 "spryker/url": "*",
+                "spryker/url-storage": "*",
                 "spryker/user": "*",
                 "spryker/util-data-reader": "*",
                 "spryker/util-date-time": "*",
@@ -2118,7 +2141,33 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2018-01-10T13:15:10+00:00"
+            "time": "2018-01-10T16:17:44+00:00"
+        },
+        {
+            "name": "spryker/spryker-shop",
+            "version": "dev-feature/core-1313-b2b-demoshop",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:spryker/spryker-shop.git",
+                "reference": "909f761100551daf833817c19c23451f10610531"
+            },
+            "require": {
+                "spryker/spryker": "*"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "autoload.php"
+                ]
+            },
+            "license": [
+                "proprietary"
+            ],
+            "description": "Spryker Shop page and widget modules",
+            "time": "2018-01-08T08:11:31+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -5300,12 +5349,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/pdepend/pdepend.git",
-                "reference": "9daf26d0368d4a12bed1cacae1a9f3a6f0adf239"
+                "reference": "4388d7ba40ffc371520a7e2d754c55a66bcdb8dc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pdepend/pdepend/zipball/9daf26d0368d4a12bed1cacae1a9f3a6f0adf239",
-                "reference": "9daf26d0368d4a12bed1cacae1a9f3a6f0adf239",
+                "url": "https://api.github.com/repos/pdepend/pdepend/zipball/4388d7ba40ffc371520a7e2d754c55a66bcdb8dc",
+                "reference": "4388d7ba40ffc371520a7e2d754c55a66bcdb8dc",
                 "shasum": ""
             },
             "require": {
@@ -7022,7 +7071,7 @@
             ],
             "authors": [
                 {
-                    "name": "Sullivan Senechal",
+                    "name": "Sullivan SENECHAL",
                     "email": "soullivaneuh@gmail.com"
                 }
             ],
@@ -7041,12 +7090,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/architecture-sniffer.git",
-                "reference": "44ca169341da400d3552ba7c18eb842ed9616339"
+                "reference": "0479d9e92130d60aa117e7b7600d7e1ed1806c78"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/architecture-sniffer/zipball/44ca169341da400d3552ba7c18eb842ed9616339",
-                "reference": "44ca169341da400d3552ba7c18eb842ed9616339",
+                "url": "https://api.github.com/repos/spryker/architecture-sniffer/zipball/0479d9e92130d60aa117e7b7600d7e1ed1806c78",
+                "reference": "0479d9e92130d60aa117e7b7600d7e1ed1806c78",
                 "shasum": ""
             },
             "require": {
@@ -7063,23 +7112,10 @@
                     "ArchitectureSniffer\\": "src/"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "ArchitectureSniffer\\Test\\": "tests/"
-                }
-            },
-            "notification-url": "https://code.spryker.com/repo/private/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "include-path": [
                 "src/"
             ],
-            "scripts": {
-                "cs-check": [
-                    "vendor/bin/phpcs --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml -v --ignore=/architecture-sniffer/vendor/ ./"
-                ],
-                "cs-fix": [
-                    "vendor/bin/phpcbf --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml -v --ignore=/architecture-sniffer/vendor/ ./"
-                ]
-            },
             "license": [
                 "MIT"
             ],
@@ -7097,11 +7133,7 @@
                 "sniffer",
                 "standards"
             ],
-            "support": {
-                "source": "https://github.com/spryker/architecture-sniffer",
-                "issues": "https://github.com/spryker/architecture-sniffer/issues"
-            },
-            "time": "2017-12-07T14:54:26+00:00"
+            "time": "2018-01-10T11:56:59+00:00"
         },
         {
             "name": "spryker/code-generator",
@@ -7109,12 +7141,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/code-generator.git",
-                "reference": "53a061b20ea355ea49b77cb44fd66ab0531d8af9"
+                "reference": "c2aa1853c2038addfcf5c9541e50eaeb389ec26a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/code-generator/zipball/53a061b20ea355ea49b77cb44fd66ab0531d8af9",
-                "reference": "53a061b20ea355ea49b77cb44fd66ab0531d8af9",
+                "url": "https://api.github.com/repos/spryker/code-generator/zipball/c2aa1853c2038addfcf5c9541e50eaeb389ec26a",
+                "reference": "c2aa1853c2038addfcf5c9541e50eaeb389ec26a",
                 "shasum": ""
             },
             "require": {
@@ -7137,29 +7169,12 @@
                     "Spryker\\": "src/Spryker/"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "SprykerTest\\": "tests/SprykerTest/"
-                }
-            },
-            "notification-url": "https://code.spryker.com/repo/private/downloads/",
-            "scripts": {
-                "cs-check": [
-                    "phpcs --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml -v --ignore=/code-generator/vendor/,/templates/ ./"
-                ],
-                "cs-fix": [
-                    "phpcbf --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml -v --ignore=/code-generator/vendor/,/templates/ ./"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
             "description": "CodeGenerator module",
-            "support": {
-                "source": "https://github.com/spryker/code-generator/tree/master",
-                "issues": "https://github.com/spryker/code-generator/issues"
-            },
-            "time": "2017-12-01T13:53:50+00:00"
+            "time": "2018-01-10T11:55:09+00:00"
         },
         {
             "name": "spryker/code-sniffer",
@@ -7914,11 +7929,12 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "spryker/spryker": 20,
+        "spryker/spryker-shop": 20,
         "spryker-eco/loggly": 20,
         "spryker/rabbit-mq": 20,
+        "spryker/install": 20,
         "spryker/event-behavior": 20,
         "spryker/synchronization-behavior": 20,
-        "spryker/install": 20,
         "spryker/architecture-sniffer": 20,
         "spryker/code-generator": 20,
         "spryker/code-sniffer": 20,

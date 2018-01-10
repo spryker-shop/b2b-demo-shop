@@ -271,14 +271,14 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
     }
 
     /**
-     * @param Container $container
+     * @param \Spryker\Zed\Kernel\Container $container
      *
      * @return array
      */
     public function getConsolePostRunHookPlugins(Container $container)
     {
         return [
-            new EventBehaviorPostHookPlugin()
+            new EventBehaviorPostHookPlugin(),
         ];
     }
 
@@ -294,5 +294,4 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
 
         return $serviceProviders;
     }
-
 }
