@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "b172e2bdf4e1cbcaa2132545aadd141f",
+    "content-hash": "95e40db4c2324422c8ee0f4ece201df6",
     "packages": [
         {
             "name": "braintree/braintree_php",
@@ -1731,11 +1731,17 @@
         },
         {
             "name": "spryker/event-behavior",
-            "version": "dev-feature/core-1313-b2b-demoshop",
+            "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "git@github.com:spryker/event-behavior.git",
-                "reference": "9643ba4ba552f513aa9d94007f29caa36bb19af1"
+                "url": "https://github.com/spryker/EventBehavior.git",
+                "reference": "34e23022fd48e753a9a964320b77bc572171d734"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/EventBehavior/zipball/34e23022fd48e753a9a964320b77bc572171d734",
+                "reference": "34e23022fd48e753a9a964320b77bc572171d734",
+                "shasum": ""
             },
             "require": {
                 "spryker/error-handler": "^2.1.2",
@@ -1772,16 +1778,12 @@
                     "Spryker\\": "src/Spryker/"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "SprykerTest\\": "tests/SprykerTest/"
-                }
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "EventBehavior module",
-            "time": "2017-12-27T10:36:43+00:00"
+            "time": "2017-11-23T15:41:34+00:00"
         },
         {
             "name": "spryker/install",
@@ -2145,14 +2147,61 @@
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-feature/core-1313-b2b-demoshop",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "909f761100551daf833817c19c23451f10610531"
+                "reference": "714dd3894d4e0115e683c387a6bd2ad128c5ac4a"
             },
             "require": {
                 "spryker/spryker": "*"
+            },
+            "replace": {
+                "spryker-shop/availability-widget": "*",
+                "spryker-shop/calculation-page": "*",
+                "spryker-shop/cart-page": "*",
+                "spryker-shop/catalog-page": "*",
+                "spryker-shop/category-widget": "*",
+                "spryker-shop/checkout-page": "*",
+                "spryker-shop/checkout-widget": "*",
+                "spryker-shop/cms-block-widget": "*",
+                "spryker-shop/cms-content-widget-product-connector": "*",
+                "spryker-shop/cms-content-widget-product-set-connector": "*",
+                "spryker-shop/cms-page": "*",
+                "spryker-shop/currency-widget": "*",
+                "spryker-shop/customer-page": "*",
+                "spryker-shop/discount-promotion-widget": "*",
+                "spryker-shop/discount-widget": "*",
+                "spryker-shop/error-page": "*",
+                "spryker-shop/heartbeat-page": "*",
+                "spryker-shop/home-page": "*",
+                "spryker-shop/money-widget": "*",
+                "spryker-shop/navigation-widget": "*",
+                "spryker-shop/newsletter-page": "*",
+                "spryker-shop/newsletter-widget": "*",
+                "spryker-shop/price-widget": "*",
+                "spryker-shop/product-bundle-widget": "*",
+                "spryker-shop/product-category-widget": "*",
+                "spryker-shop/product-detail-page": "*",
+                "spryker-shop/product-group-widget": "*",
+                "spryker-shop/product-image-widget": "*",
+                "spryker-shop/product-label-widget": "*",
+                "spryker-shop/product-new-page": "*",
+                "spryker-shop/product-option-widget": "*",
+                "spryker-shop/product-relation-widget": "*",
+                "spryker-shop/product-review-widget": "*",
+                "spryker-shop/product-set-detail-page": "*",
+                "spryker-shop/product-set-list-page": "*",
+                "spryker-shop/product-set-widget": "*",
+                "spryker-shop/product-widget": "*",
+                "spryker-shop/redirect-page": "*",
+                "spryker-shop/shop-application": "*",
+                "spryker-shop/shop-layout": "*",
+                "spryker-shop/shop-router": "*",
+                "spryker-shop/shop-translator": "*",
+                "spryker-shop/web-profiler-widget": "*",
+                "spryker-shop/wishlist-page": "*",
+                "spryker-shop/wishlist-widget": "*"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*"
@@ -2167,7 +2216,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2018-01-08T08:11:31+00:00"
+            "time": "2018-01-10T17:08:44+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
