@@ -12,16 +12,6 @@ use Spryker\Zed\Propel\PropelConfig as SprykerPropelConfig;
 class PropelConfig extends SprykerPropelConfig
 {
     /**
-     * @project Only needed in Project, not in demoshop
-     *
-     * @return array
-     */
-    public function getCorePropelSchemaPathPatterns()
-    {
-        return [APPLICATION_VENDOR_DIR . '/spryker/spryker/Bundles/*/src/*/Zed/*/Persistence/Propel/Schema/'];
-    }
-
-    /**
      * @return array
      */
     public function getProjectPropelSchemaPathPatterns()

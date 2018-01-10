@@ -12,35 +12,6 @@ use Spryker\Zed\Transfer\TransferConfig as SprykerTransferConfig;
 class TransferConfig extends SprykerTransferConfig
 {
     /**
-     * @project Only needed in Project, not in demoshop
-     *
-     * @return string[]
-     */
-    protected function getCoreSourceDirectoryGlobPatterns()
-    {
-        $directoryGlobPatterns = parent::getCoreSourceDirectoryGlobPatterns();
-        $directoryGlobPatterns[] = APPLICATION_VENDOR_DIR . '/spryker/spryker/Bundles/*/src/Spryker/Shared/*/Transfer/';
-        $directoryGlobPatterns[] = APPLICATION_VENDOR_DIR . '/spryker/spryker-shop/Bundles/*/src/SprykerShop/Shared/*/Transfer/';
-        $directoryGlobPatterns[] = APPLICATION_VENDOR_DIR . '/spryker/rabbit-mq/src/*/Shared/*/Transfer/';
-        $directoryGlobPatterns[] = APPLICATION_VENDOR_DIR . '/spryker-eco/*/src/*/Shared/*/Transfer/';
-
-        return $directoryGlobPatterns;
-    }
-
-    /**
-     * @project Only needed in Project, not in demoshop
-     *
-     * @return string[]
-     */
-    public function getDataBuilderSourceDirectories()
-    {
-        $globPatterns = parent::getDataBuilderSourceDirectories();
-        $globPatterns[] = APPLICATION_VENDOR_DIR . '/spryker/spryker/Bundles/*/tests/_data/';
-
-        return $globPatterns;
-    }
-
-    /**
      * @return array
      */
     public function getEntitiesSourceDirectories()
