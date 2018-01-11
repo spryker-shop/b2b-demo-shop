@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<database xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="zed" xsi:noNamespaceSchemaLocation="http://static.spryker.com/schema-01.xsd"
+          namespace="Orm\Zed\Glossary\Persistence"
+          package="src.Orm.Zed.Glossary.Persistence">
+
+    <table name="spy_glossary_key">
+        <behavior name="event">
+            <parameter name="spy_glossary_key-key" column="key"/>
+            <parameter name="spy_glossary_key-is_active" column="is_active"/>
+        </behavior>
+    </table>
+
+    <table name="spy_glossary_translation">
+        <behavior name="event">
+            <parameter name="spy_glossary_translation-value" column="value"/>
+        </behavior>
+    </table>
+
+</database>

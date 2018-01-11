@@ -2,7 +2,7 @@
 
 namespace Orm\Zed\ProductLabelStorage\Persistence;
 
-use Orm\Zed\ProductLabelStorage\Persistence\Base\SpyProductAbstractLabelStorageQuery as BaseSpyProductAbstractLabelStorageQuery;
+use Spryker\Zed\ProductLabelStorage\Persistence\Propel\AbstractSpyProductAbstractLabelStorageQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'spy_product_abstract_label_storage' table.
@@ -14,7 +14,7 @@ use Orm\Zed\ProductLabelStorage\Persistence\Base\SpyProductAbstractLabelStorageQ
  * long as it does not already exist in the output directory.
  *
  */
-class SpyProductAbstractLabelStorageQuery extends BaseSpyProductAbstractLabelStorageQuery
+class SpyProductAbstractLabelStorageQuery extends AbstractSpyProductAbstractLabelStorageQuery
 {
 
 }

@@ -18,7 +18,7 @@ class NewsletterConfig extends SprykerNewsletterConfig
     public function getNewsletterTypes()
     {
         return [
-            NewsletterConstants::DEFAULT_NEWSLETTER,
+            NewsletterConstants::DEFAULT_NEWSLETTER_TYPE,
         ];
     }
 }

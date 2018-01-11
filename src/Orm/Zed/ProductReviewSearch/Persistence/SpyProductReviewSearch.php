@@ -2,7 +2,7 @@
 
 namespace Orm\Zed\ProductReviewSearch\Persistence;
 
-use Orm\Zed\ProductReviewSearch\Persistence\Base\SpyProductReviewSearch as BaseSpyProductReviewSearch;
+use Spryker\Zed\ProductReviewSearch\Persistence\Propel\AbstractSpyProductReviewSearch;
 
 /**
  * Skeleton subclass for representing a row from the 'spy_product_review_search' table.
@@ -14,7 +14,7 @@ use Orm\Zed\ProductReviewSearch\Persistence\Base\SpyProductReviewSearch as BaseS
  * long as it does not already exist in the output directory.
  *
  */
-class SpyProductReviewSearch extends BaseSpyProductReviewSearch
+class SpyProductReviewSearch extends AbstractSpyProductReviewSearch
 {
 
 }

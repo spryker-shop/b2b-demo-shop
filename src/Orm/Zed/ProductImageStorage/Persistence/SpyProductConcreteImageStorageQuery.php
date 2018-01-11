@@ -2,7 +2,7 @@
 
 namespace Orm\Zed\ProductImageStorage\Persistence;
 
-use Orm\Zed\ProductImageStorage\Persistence\Base\SpyProductConcreteImageStorageQuery as BaseSpyProductConcreteImageStorageQuery;
+use Spryker\Zed\ProductImageStorage\Persistence\Propel\AbstractSpyProductConcreteImageStorageQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'spy_product_concrete_image_storage' table.
@@ -14,7 +14,7 @@ use Orm\Zed\ProductImageStorage\Persistence\Base\SpyProductConcreteImageStorageQ
  * long as it does not already exist in the output directory.
  *
  */
-class SpyProductConcreteImageStorageQuery extends BaseSpyProductConcreteImageStorageQuery
+class SpyProductConcreteImageStorageQuery extends AbstractSpyProductConcreteImageStorageQuery
 {
 
 }

@@ -2,7 +2,7 @@
 
 namespace Orm\Zed\ProductSetStorage\Persistence;
 
-use Orm\Zed\ProductSetStorage\Persistence\Base\SpyProductSetStorageQuery as BaseSpyProductSetStorageQuery;
+use Spryker\Zed\ProductSetStorage\Persistence\Propel\AbstractSpyProductSetStorageQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'spy_product_set_storage' table.
@@ -14,7 +14,7 @@ use Orm\Zed\ProductSetStorage\Persistence\Base\SpyProductSetStorageQuery as Base
  * long as it does not already exist in the output directory.
  *
  */
-class SpyProductSetStorageQuery extends BaseSpyProductSetStorageQuery
+class SpyProductSetStorageQuery extends AbstractSpyProductSetStorageQuery
 {
 
 }

@@ -23,7 +23,7 @@ use Spryker\Zed\ProductCategoryFilterStorage\Communication\Plugin\Event\Subscrib
 use Spryker\Zed\ProductCategoryStorage\Communication\Plugin\Event\Subscriber\ProductCategoryStorageEventSubscriber;
 use Spryker\Zed\ProductGroupStorage\Communication\Plugin\Event\Subscriber\ProductGroupStorageEventSubscriber;
 use Spryker\Zed\ProductImageStorage\Communication\Plugin\Event\Subscriber\ProductImageStorageEventSubscriber;
-use Spryker\Zed\ProductLabelPageSearch\Communication\Plugin\Event\Subscriber\ProductLabelPageSearchEventSubscriber;
+use Spryker\Zed\ProductLabelSearch\Communication\Plugin\Event\Subscriber\ProductLabelSearchEventSubscriber;
 use Spryker\Zed\ProductLabelStorage\Communication\Plugin\Event\Subscriber\ProductLabelStorageEventSubscriber;
 use Spryker\Zed\ProductOptionStorage\Communication\Plugin\Event\Subscriber\ProductOptionStorageEventSubscriber;
 use Spryker\Zed\ProductPageSearch\Communication\Plugin\Event\Subscriber\ProductPageSearchEventSubscriber;
@@ -86,7 +86,7 @@ class EventDependencyProvider extends SprykerEventDependencyProvider
         $eventSubscriberCollection->add(new ProductReviewSearchEventSubscriber());
         $eventSubscriberCollection->add(new ProductSetPageSearchEventSubscriber());
         $eventSubscriberCollection->add(new ProductPageSearchEventSubscriber());
-        $eventSubscriberCollection->add(new ProductLabelPageSearchEventSubscriber());
+        $eventSubscriberCollection->add(new ProductLabelSearchEventSubscriber());
 
         return $eventSubscriberCollection;
     }

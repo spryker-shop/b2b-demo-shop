@@ -2,7 +2,7 @@
 
 namespace Orm\Zed\ProductImageStorage\Persistence;
 
-use Orm\Zed\ProductImageStorage\Persistence\Base\SpyProductAbstractImageStorageQuery as BaseSpyProductAbstractImageStorageQuery;
+use Spryker\Zed\ProductImageStorage\Persistence\Propel\AbstractSpyProductAbstractImageStorageQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'spy_product_abstract_image_storage' table.
@@ -14,7 +14,7 @@ use Orm\Zed\ProductImageStorage\Persistence\Base\SpyProductAbstractImageStorageQ
  * long as it does not already exist in the output directory.
  *
  */
-class SpyProductAbstractImageStorageQuery extends BaseSpyProductAbstractImageStorageQuery
+class SpyProductAbstractImageStorageQuery extends AbstractSpyProductAbstractImageStorageQuery
 {
 
 }

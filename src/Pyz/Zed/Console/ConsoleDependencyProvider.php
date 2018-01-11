@@ -19,10 +19,9 @@ use Spryker\Zed\CodeGenerator\Communication\Console\BundleZedCodeGeneratorConsol
 use Spryker\Zed\Console\Communication\Plugin\ConsoleLogPlugin;
 use Spryker\Zed\Console\ConsoleDependencyProvider as SprykerConsoleDependencyProvider;
 use Spryker\Zed\DataImport\Communication\Console\DataImportConsole;
-use Spryker\Zed\Development\Communication\Console\BundleCreateConsole;
 use Spryker\Zed\Development\Communication\Console\CodeArchitectureSnifferConsole;
-use Spryker\Zed\Development\Communication\Console\CodeCreateConsole;
 use Spryker\Zed\Development\Communication\Console\CodePhpMessDetectorConsole;
+use Spryker\Zed\Development\Communication\Console\CodePhpstanConsole;
 use Spryker\Zed\Development\Communication\Console\CodeStyleSnifferConsole;
 use Spryker\Zed\Development\Communication\Console\CodeTestConsole;
 use Spryker\Zed\Development\Communication\Console\ComposerJsonUpdaterConsole;
@@ -33,6 +32,8 @@ use Spryker\Zed\Development\Communication\Console\GenerateIdeAutoCompletionConso
 use Spryker\Zed\Development\Communication\Console\GenerateServiceIdeAutoCompletionConsole;
 use Spryker\Zed\Development\Communication\Console\GenerateYvesIdeAutoCompletionConsole;
 use Spryker\Zed\Development\Communication\Console\GenerateZedIdeAutoCompletionConsole;
+use Spryker\Zed\Development\Communication\Console\ModuleBridgeCreateConsole;
+use Spryker\Zed\Development\Communication\Console\ModuleCreateConsole;
 use Spryker\Zed\EventBehavior\Communication\Console\EventBehaviorTriggerTimeoutConsole;
 use Spryker\Zed\EventBehavior\Communication\Plugin\Console\EventBehaviorPostHookPlugin;
 use Spryker\Zed\Installer\Communication\Console\InitializeDatabaseConsole;
@@ -223,8 +224,9 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             $commands[] = new CodeTestConsole();
             $commands[] = new CodeStyleSnifferConsole();
             $commands[] = new CodeArchitectureSnifferConsole();
-            $commands[] = new CodeCreateConsole();
-            $commands[] = new BundleCreateConsole();
+            $commands[] = new CodePhpstanConsole();
+            $commands[] = new ModuleBridgeCreateConsole();
+            $commands[] = new ModuleCreateConsole();
             $commands[] = new CodePhpMessDetectorConsole();
             $commands[] = new DependencyTreeBuilderConsole();
             $commands[] = new DependencyTreeDependencyViolationConsole();
@@ -269,14 +271,14 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
     }
 
     /**
-     * @param Container $container
+     * @param \Spryker\Zed\Kernel\Container $container
      *
      * @return array
      */
     public function getConsolePostRunHookPlugins(Container $container)
     {
         return [
-            new EventBehaviorPostHookPlugin()
+            new EventBehaviorPostHookPlugin(),
         ];
     }
 
@@ -292,5 +294,4 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
 
         return $serviceProviders;
     }
-
 }

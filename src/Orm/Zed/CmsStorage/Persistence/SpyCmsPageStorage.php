@@ -2,7 +2,7 @@
 
 namespace Orm\Zed\CmsStorage\Persistence;
 
-use Orm\Zed\CmsStorage\Persistence\Base\SpyCmsPageStorage as BaseSpyCmsPageStorage;
+use Spryker\Zed\CmsStorage\Persistence\Propel\AbstractSpyCmsPageStorage;
 
 /**
  * Skeleton subclass for representing a row from the 'spy_cms_page_storage' table.
@@ -14,7 +14,7 @@ use Orm\Zed\CmsStorage\Persistence\Base\SpyCmsPageStorage as BaseSpyCmsPageStora
  * long as it does not already exist in the output directory.
  *
  */
-class SpyCmsPageStorage extends BaseSpyCmsPageStorage
+class SpyCmsPageStorage extends AbstractSpyCmsPageStorage
 {
 
 }

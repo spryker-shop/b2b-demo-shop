@@ -1,14 +1,14 @@
 {
-  "name": "spryker/project",
+  "name": "spryker/shop-suite",
   "description": "Project",
   "license": "MIT",
   "require": {
-    "spryker/spryker": "dev-feature/CORE-2260-b2b-demoshop-frontend",
-    "spryker/spryker-shop": "dev-feature/CORE-2260-b2b-demoshop-frontend",
+    "spryker/spryker": "dev-master",
+    "spryker/spryker-shop": "dev-master",
     "spryker-eco/loggly": "dev-master",
     "spryker/rabbit-mq": "dev-master",
     "spryker/install": "dev-master",
-    "spryker/event-behavior": "dev-feature/core-1313-b2b-demoshop",
+    "spryker/event-behavior": "dev-master",
     "spryker/synchronization-behavior": "dev-master",
 
     "php": ">=7.1",
@@ -69,7 +69,6 @@
     "spryker/git-hook": "dev-master",
 
     "codeception/codeception": "^2.3.5",
-    "phpunit/phpunit": "^5.0",
     "pdepend/pdepend": "^2.2.2",
     "phploc/phploc": "^3.0.1",
     "phpmd/phpmd": "^2.4",
@@ -85,7 +84,6 @@
     "stecman/symfony-console-completion": "^0.7.0",
     "fzaninotto/faker": "^1.6",
     "nette/php-generator": "^2.6.1",
-    "phpunit/php-token-stream": "^1.4.11",
     "phpdocumentor/reflection-docblock": "^2.0",
     "squizlabs/php_codesniffer": "^3.0"
   },
@@ -125,23 +123,11 @@
     },
     {
       "type": "git",
-      "url": "git@github.com:spryker/git-hook.git"
-    },
-    {
-      "type": "git",
-      "url": "git@github.com:spryker/install.git"
-    },
-    {
-      "type": "git",
       "url": "git@github.com:spryker/event-behavior.git"
     },
     {
       "type": "git",
       "url": "git@github.com:spryker/synchronization-behavior.git"
-    },
-    {
-      "type": "composer",
-      "url": "https://code.spryker.com/repo/private"
     }
   ],
   "scripts": {

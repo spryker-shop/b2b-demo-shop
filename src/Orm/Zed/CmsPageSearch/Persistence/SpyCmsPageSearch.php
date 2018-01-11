@@ -2,7 +2,7 @@
 
 namespace Orm\Zed\CmsPageSearch\Persistence;
 
-use Orm\Zed\CmsPageSearch\Persistence\Base\SpyCmsPageSearch as BaseSpyCmsPageSearch;
+use Spryker\Zed\CmsPageSearch\Persistence\Propel\AbstractSpyCmsPageSearch;
 
 /**
  * Skeleton subclass for representing a row from the 'spy_cms_page_search' table.
@@ -14,7 +14,7 @@ use Orm\Zed\CmsPageSearch\Persistence\Base\SpyCmsPageSearch as BaseSpyCmsPageSea
  * long as it does not already exist in the output directory.
  *
  */
-class SpyCmsPageSearch extends BaseSpyCmsPageSearch
+class SpyCmsPageSearch extends AbstractSpyCmsPageSearch
 {
 
 }

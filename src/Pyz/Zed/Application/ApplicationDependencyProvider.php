@@ -49,37 +49,6 @@ use Spryker\Zed\ZedRequest\Communication\Plugin\GatewayServiceProviderPlugin;
 
 class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
 {
-    const SERVICE_UTIL_DATE_TIME = 'util date time service';
-    const SERVICE_NETWORK = 'util network service';
-    const SERVICE_UTIL_IO = 'util io service';
-    const SERVICE_DATA = 'util data service';
-
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
-    public function provideCommunicationLayerDependencies(Container $container)
-    {
-        $container[self::SERVICE_PROVIDER] = function (Container $container) {
-            return $this->getServiceProviders($container);
-        };
-
-        $container[self::SERVICE_PROVIDER_API] = function (Container $container) {
-            return $this->getApiServiceProviders($container);
-        };
-
-        $container[self::INTERNAL_CALL_SERVICE_PROVIDER] = function (Container $container) {
-            return $this->getInternalCallServiceProviders($container);
-        };
-
-        $container[self::INTERNAL_CALL_SERVICE_PROVIDER_WITH_AUTHENTICATION] = function (Container $container) {
-            return $this->getInternalCallServiceProvidersWithAuthentication($container);
-        };
-
-        return $container;
-    }
-
     /**
      * @param \Spryker\Zed\Kernel\Container $container
      *

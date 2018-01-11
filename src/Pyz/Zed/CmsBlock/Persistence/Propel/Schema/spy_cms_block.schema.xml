@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<database xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="zed" xsi:noNamespaceSchemaLocation="http://static.spryker.com/schema-01.xsd" namespace="Orm\Zed\CmsBlock\Persistence" package="src.Orm.Zed.CmsBlock.Persistence">
+
+    <table name="spy_cms_block_glossary_key_mapping">
+        <behavior name="event">
+            <parameter name="spy_cms_block_glossary_key_mapping_all" column="*"/>
+        </behavior>
+    </table>
+
+    <table name="spy_cms_block" phpName="SpyCmsBlock">
+        <behavior name="event">
+            <parameter name="spy_cms_block_all" column="*"/>
+        </behavior>
+    </table>
+</database>

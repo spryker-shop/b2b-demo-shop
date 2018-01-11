@@ -2,7 +2,7 @@
 
 namespace Orm\Zed\ProductLabelStorage\Persistence;
 
-use Orm\Zed\ProductLabelStorage\Persistence\Base\SpyProductAbstractLabelStorage as BaseSpyProductAbstractLabelStorage;
+use Spryker\Zed\ProductLabelStorage\Persistence\Propel\AbstractSpyProductAbstractLabelStorage;
 
 /**
  * Skeleton subclass for representing a row from the 'spy_product_abstract_label_storage' table.
@@ -14,7 +14,7 @@ use Orm\Zed\ProductLabelStorage\Persistence\Base\SpyProductAbstractLabelStorage 
  * long as it does not already exist in the output directory.
  *
  */
-class SpyProductAbstractLabelStorage extends BaseSpyProductAbstractLabelStorage
+class SpyProductAbstractLabelStorage extends AbstractSpyProductAbstractLabelStorage
 {
 
 }

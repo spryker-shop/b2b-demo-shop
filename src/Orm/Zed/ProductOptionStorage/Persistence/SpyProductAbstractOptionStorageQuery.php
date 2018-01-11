@@ -2,7 +2,7 @@
 
 namespace Orm\Zed\ProductOptionStorage\Persistence;
 
-use Orm\Zed\ProductOptionStorage\Persistence\Base\SpyProductAbstractOptionStorageQuery as BaseSpyProductAbstractOptionStorageQuery;
+use Spryker\Zed\ProductOptionStorage\Persistence\Propel\AbstractSpyProductAbstractOptionStorageQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'spy_product_abstract_option_storage' table.
@@ -14,7 +14,7 @@ use Orm\Zed\ProductOptionStorage\Persistence\Base\SpyProductAbstractOptionStorag
  * long as it does not already exist in the output directory.
  *
  */
-class SpyProductAbstractOptionStorageQuery extends BaseSpyProductAbstractOptionStorageQuery
+class SpyProductAbstractOptionStorageQuery extends AbstractSpyProductAbstractOptionStorageQuery
 {
 
 }

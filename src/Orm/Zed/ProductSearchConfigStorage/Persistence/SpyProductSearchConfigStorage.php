@@ -2,7 +2,7 @@
 
 namespace Orm\Zed\ProductSearchConfigStorage\Persistence;
 
-use Orm\Zed\ProductSearchConfigStorage\Persistence\Base\SpyProductSearchConfigStorage as BaseSpyProductSearchConfigStorage;
+use Spryker\Zed\ProductSearchConfigStorage\Persistence\Propel\AbstractSpyProductSearchConfigStorage;
 
 /**
  * Skeleton subclass for representing a row from the 'spy_product_search_config_storage' table.
@@ -14,7 +14,7 @@ use Orm\Zed\ProductSearchConfigStorage\Persistence\Base\SpyProductSearchConfigSt
  * long as it does not already exist in the output directory.
  *
  */
-class SpyProductSearchConfigStorage extends BaseSpyProductSearchConfigStorage
+class SpyProductSearchConfigStorage extends AbstractSpyProductSearchConfigStorage
 {
 
 }
