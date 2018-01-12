@@ -47,6 +47,6 @@ class ProductRelationWriter extends PublishAwareStep implements DataImportStepIn
             ->setIsRebuildScheduled((isset($dataSet[static::KEY_IS_REBUILD_SCHEDULED])) ? $dataSet[static::KEY_IS_REBUILD_SCHEDULED] : true);
         $productRelationEntity->save();
 
-        $this->addPublishEvents(ProductRelationEvents::PRODUCT_ABSTRACT_RELATION_PUBLISH,$productRelationEntity->getFkProductAbstract());
+        $this->addPublishEvents(ProductRelationEvents::PRODUCT_ABSTRACT_RELATION_PUBLISH, $productRelationEntity->getFkProductAbstract());
     }
 }

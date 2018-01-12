@@ -67,7 +67,7 @@ class ProductOptionPriceWriterStep extends PublishAwareStep implements DataImpor
             ->setNetPrice($this->formatPrice($dataSet[static::KEY_NET_AMOUNT]))
             ->save();
 
-        $this->touchRelatedProductAbstracts($priceEntity->getFkProductOptionValue());
+        $this->publishRelatedProductAbstracts($priceEntity->getFkProductOptionValue());
     }
 
     /**
@@ -75,7 +75,7 @@ class ProductOptionPriceWriterStep extends PublishAwareStep implements DataImpor
      *
      * @return void
      */
-    protected function touchRelatedProductAbstracts($idProductOptionValue)
+    protected function publishRelatedProductAbstracts($idProductOptionValue)
     {
         $productAbstractCollection = SpyProductAbstractQuery::create()
             ->joinSpyProductAbstractProductOptionGroup()

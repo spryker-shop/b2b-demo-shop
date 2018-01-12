@@ -12,11 +12,8 @@ use Orm\Zed\ProductReview\Persistence\SpyProductReviewQuery;
 use Pyz\Zed\DataImport\Business\Model\DataImportStep\PublishAwareStep;
 use Pyz\Zed\DataImport\Business\Model\Locale\Repository\LocaleRepositoryInterface;
 use Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepositoryInterface;
-use Spryker\Shared\Product\ProductConfig;
-use Spryker\Shared\ProductReview\ProductReviewConfig;
 use Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
-use Spryker\Zed\DataImport\Dependency\Facade\DataImportToTouchInterface;
 use Spryker\Zed\ProductReview\Dependency\ProductReviewEvents;
 
 class ProductReviewWriterStep extends PublishAwareStep implements DataImportStepInterface
@@ -34,10 +31,8 @@ class ProductReviewWriterStep extends PublishAwareStep implements DataImportStep
     /**
      * @param \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepositoryInterface $productRepository
      * @param \Pyz\Zed\DataImport\Business\Model\Locale\Repository\LocaleRepositoryInterface $localeRepository
-     * @param \Spryker\Zed\DataImport\Dependency\Facade\DataImportToTouchInterface $touchFacade
-     * @param int|null $bulkSize
      */
-    public function __construct(ProductRepositoryInterface $productRepository, LocaleRepositoryInterface $localeRepository, DataImportToTouchInterface $touchFacade, $bulkSize = null)
+    public function __construct(ProductRepositoryInterface $productRepository, LocaleRepositoryInterface $localeRepository)
     {
         $this->productRepository = $productRepository;
         $this->localeRepository = $localeRepository;

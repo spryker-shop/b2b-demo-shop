@@ -7,8 +7,6 @@
 
 namespace Pyz\Yves\ExampleProductSalePage;
 
-use Spryker\Client\Catalog\CatalogClientInterface;
-use Spryker\Client\UrlStorage\UrlStorageClientInterface;
 use Spryker\Yves\Kernel\AbstractFactory;
 
 class ExampleProductSalePageFactory extends AbstractFactory
@@ -30,7 +28,7 @@ class ExampleProductSalePageFactory extends AbstractFactory
     }
 
     /**
-     * @return UrlStorageClientInterface
+     * @return \Spryker\Client\UrlStorage\UrlStorageClientInterface
      */
     public function getUrlStorageClient()
     {
@@ -46,7 +44,7 @@ class ExampleProductSalePageFactory extends AbstractFactory
     }
 
     /**
-     * @return CatalogClientInterface
+     * @return \Spryker\Client\Catalog\CatalogClientInterface
      */
     public function getCatalogClient()
     {

@@ -9,11 +9,10 @@ namespace Pyz\Zed\DataImport\Business\Model\ProductGroup;
 
 use Orm\Zed\ProductGroup\Persistence\SpyProductAbstractGroupQuery;
 use Orm\Zed\ProductGroup\Persistence\SpyProductGroupQuery;
+use Pyz\Zed\DataImport\Business\Model\DataImportStep\PublishAwareStep;
 use Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepository;
 use Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface;
-use Pyz\Zed\DataImport\Business\Model\DataImportStep\PublishAwareStep;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
-use Spryker\Zed\DataImport\Dependency\Facade\DataImportToTouchInterface;
 use Spryker\Zed\ProductGroup\Dependency\ProductGroupEvents;
 
 class ProductGroupWriter extends PublishAwareStep implements DataImportStepInterface
@@ -31,10 +30,8 @@ class ProductGroupWriter extends PublishAwareStep implements DataImportStepInter
 
     /**
      * @param \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepository $productRepository
-     * @param \Spryker\Zed\DataImport\Dependency\Facade\DataImportToTouchInterface $touchFacade
-     * @param int|null $bulkSize
      */
-    public function __construct(ProductRepository $productRepository, DataImportToTouchInterface $touchFacade, $bulkSize = null)
+    public function __construct(ProductRepository $productRepository)
     {
         $this->productRepository = $productRepository;
     }

@@ -7,7 +7,6 @@
 
 namespace Pyz\Yves\ProductSetDetailPage;
 
-use Spryker\Yves\Kernel\Container;
 use SprykerShop\Yves\ProductSetDetailPage\ProductSetDetailPageDependencyProvider as SprykerShopProductSetDetailPageDependencyProvider;
 use SprykerShop\Yves\ProductSetWidget\Plugin\ProductSetDetailPage\ProductSetWidgetPlugin;
 

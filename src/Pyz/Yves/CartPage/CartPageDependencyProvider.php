@@ -8,7 +8,6 @@
 namespace Pyz\Yves\CartPage;
 
 use SprykerShop\Yves\CartPage\CartPageDependencyProvider as SprykerCartPageDependencyProvider;
-use SprykerShop\Yves\CartPage\Dependency\Plugin\CartItemTransformerPluginInterface;
 use SprykerShop\Yves\CheckoutWidget\Plugin\CartPage\CheckoutBreadcrumbWidgetPlugin;
 use SprykerShop\Yves\DiscountPromotionWidget\Plugin\CartPage\DiscountPromotionItemListWidgetPlugin;
 use SprykerShop\Yves\DiscountWidget\Plugin\CartPage\DiscountSummaryWidgetPlugin;
@@ -37,12 +36,12 @@ class CartPageDependencyProvider extends SprykerCartPageDependencyProvider
     }
 
     /**
-     * @return CartItemTransformerPluginInterface[]
+     * @return \SprykerShop\Yves\CartPage\Dependency\Plugin\CartItemTransformerPluginInterface[]
      */
     protected function getCartItemTransformerPlugins(): array
     {
         return [
-            new ProductBundleCartItemTransformerPlugin()
+            new ProductBundleCartItemTransformerPlugin(),
         ];
     }
 }

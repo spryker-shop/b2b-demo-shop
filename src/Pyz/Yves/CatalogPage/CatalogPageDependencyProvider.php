@@ -14,7 +14,6 @@ use SprykerShop\Yves\ProductWidget\Plugin\CatalogPage\ProductWidgetPlugin;
 
 class CatalogPageDependencyProvider extends SprykerCatalogPageDependencyProvider
 {
-
     /**
      * @return string[]
      */
@@ -26,5 +25,4 @@ class CatalogPageDependencyProvider extends SprykerCatalogPageDependencyProvider
             ProductRatingFilterWidgetPlugin::class,
         ];
     }
-
 }

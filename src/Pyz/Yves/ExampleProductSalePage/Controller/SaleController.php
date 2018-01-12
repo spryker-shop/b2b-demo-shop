@@ -22,6 +22,8 @@ class SaleController extends AbstractController
      * @param string $categoryPath
      * @param \Symfony\Component\HttpFoundation\Request $request
      *
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
+     *
      * @return array
      */
     public function indexAction($categoryPath, Request $request)
