@@ -1,7 +1,8 @@
 <?php
+
 /**
- * Copyright © 2017-present Spryker Systems GmbH. All rights reserved.
- * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
+ * This file is part of the Spryker Demoshop.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
 namespace Pyz\Zed\DataImport\Business\Model;
@@ -11,9 +12,8 @@ use Spryker\Zed\Event\Business\EventFacadeInterface;
 
 class DataImporterPublisher implements DataImporterPublisherInterface
 {
-
     /**
-     * @var EventFacadeInterface
+     * @var \Spryker\Zed\Event\Business\EventFacadeInterface
      */
     protected $eventFacade;
 
@@ -23,11 +23,9 @@ class DataImporterPublisher implements DataImporterPublisherInterface
     protected static $importedEntityEvents = [];
 
     /**
-     * DataImporterPublisher constructor.
-     *
-     * @param $eventFacade
+     * @param \Spryker\Zed\Event\Business\EventFacadeInterface $eventFacade
      */
-    public function __construct($eventFacade)
+    public function __construct(EventFacadeInterface $eventFacade)
     {
         $this->eventFacade = $eventFacade;
     }
@@ -42,6 +40,8 @@ class DataImporterPublisher implements DataImporterPublisherInterface
 
     /**
      * @param mixed $importedEntityEvents
+     *
+     * @return void
      */
     public static function setImportedEntityEvents(array $importedEntityEvents)
     {
@@ -60,9 +60,8 @@ class DataImporterPublisher implements DataImporterPublisherInterface
         self::$importedEntityEvents = static::getUniqueArray($mergedArray);
     }
 
-
     /**
-     * void
+     * @return void
      */
     public function triggerEvents()
     {
