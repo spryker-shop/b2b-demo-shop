@@ -7,7 +7,7 @@
 
 namespace Orm\Zed\PriceProduct\Persistence;
 
-use Spryker\Zed\PriceProduct\Persistence\Propel\AbstractSpyPriceProductStore as BaseSpyPriceProductStore;
+use Spryker\Zed\PriceProduct\Persistence\Propel\AbstractSpyPriceProductStore;
 
 /**
  * Skeleton subclass for representing a row from the 'spy_price_product_store' table.
@@ -19,6 +19,6 @@ use Spryker\Zed\PriceProduct\Persistence\Propel\AbstractSpyPriceProductStore as 
  * long as it does not already exist in the output directory.
  *
  */
-class SpyPriceProductStore extends BaseSpyPriceProductStore
+class SpyPriceProductStore extends AbstractSpyPriceProductStore
 {
 }

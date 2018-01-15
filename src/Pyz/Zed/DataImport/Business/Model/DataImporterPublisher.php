@@ -8,7 +8,6 @@
 namespace Pyz\Zed\DataImport\Business\Model;
 
 use Generated\Shared\Transfer\EventEntityTransfer;
-use Spryker\Zed\Event\Business\EventFacadeInterface;
 
 class DataImporterPublisher implements DataImporterPublisherInterface
 {
