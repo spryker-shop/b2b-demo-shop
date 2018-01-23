@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "507034afd949fe59971a66b753a7ebc7",
+    "content-hash": "e34b0ed1728cc340f57815a44e25fb4a",
     "packages": [
         {
             "name": "braintree/braintree_php",
@@ -1829,16 +1829,16 @@
         },
         {
             "name": "spryker/rabbit-mq",
-            "version": "dev-master",
+            "version": "dev-feature/core-2461-tuning-up-tests",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/rabbit-mq.git",
-                "reference": "168a944bd9a42e7224a581e88dca4c75b36f17ae"
+                "reference": "af7316d8b12ab44fef35800b9b80110aea5bc493"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/rabbit-mq/zipball/168a944bd9a42e7224a581e88dca4c75b36f17ae",
-                "reference": "168a944bd9a42e7224a581e88dca4c75b36f17ae",
+                "url": "https://api.github.com/repos/spryker/rabbit-mq/zipball/af7316d8b12ab44fef35800b9b80110aea5bc493",
+                "reference": "af7316d8b12ab44fef35800b9b80110aea5bc493",
                 "shasum": ""
             },
             "require": {
@@ -1862,23 +1862,10 @@
                     "Spryker\\": "src/Spryker/"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "Spryker\\Test\\": "tests"
-                }
-            },
-            "notification-url": "https://code.spryker.com/repo/private/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "include-path": [
                 "src/"
             ],
-            "scripts": {
-                "cs-check": [
-                    "phpcs --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml -v --ignore=/vendor/,/templates/ ./"
-                ],
-                "cs-fix": [
-                    "phpcbf --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml -v --ignore=/vendor/,/templates/ ./"
-                ]
-            },
             "license": [
                 "MIT"
             ],
@@ -1896,18 +1883,15 @@
                 "rabbit-mq",
                 "standards"
             ],
-            "support": {
-                "source": "https://github.com/spryker/rabbit-mq"
-            },
-            "time": "2017-11-28T10:26:10+00:00"
+            "time": "2018-01-23T11:45:26+00:00"
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-feature/core-2461-tuning-up-tests",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "aa35fe63da34fddc090c92e253b168b636359c0f"
+                "reference": "6bf11ac9a3156929af490205b6a11434575adc9a"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.0",
@@ -2141,18 +2125,18 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2018-01-23T10:54:34+00:00"
+            "time": "2018-01-23T10:36:26+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-master",
+            "version": "dev-feature/core-2461-tuning-up-tests",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "47c4048b7681b435cccaacd430d704462bc6275f"
+                "reference": "e669cc30656513bdb21862fbc8625f9b7c6f7437"
             },
             "require": {
-                "php": ">=7.1"
+                "spryker/spryker": "*"
             },
             "replace": {
                 "spryker-shop/availability-widget": "*",
@@ -2214,7 +2198,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2018-01-23T11:28:47+00:00"
+            "time": "2018-01-23T10:41:27+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",

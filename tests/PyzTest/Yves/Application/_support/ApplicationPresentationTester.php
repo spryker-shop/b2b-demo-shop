@@ -5,7 +5,7 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace PyzTest\Yves\Assets;
+namespace PyzTest\Yves\Application;
 
 use Codeception\Actor;
 
@@ -24,9 +24,9 @@ use Codeception\Actor;
  *
  * @SuppressWarnings(PHPMD)
  */
-class AssetsCommunicationTester extends Actor
+class ApplicationPresentationTester extends Actor
 {
-    use _generated\AssetsCommunicationTesterActions;
+    use _generated\ApplicationPresentationTesterActions;
 
    /**
     * Define custom actions here

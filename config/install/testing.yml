@@ -3,6 +3,25 @@ env:
 
 sections:
 
+    cache:
+        twig-cache-warmup:
+            command: "vendor/bin/console twig:cache:warmer"
+
+        navigation-cache-warmup:
+            command: "vendor/bin/console navigation:build-cache"
+
+
+    queue-flush:
+        purge-all-queues:
+            command: "vendor/bin/console queue:queue:purge-all"
+            stores: true
+
+        delete-all-queues:
+            command: "vendor/bin/console queue:queue:delete-all"
+
+        delete-all-exchanges:
+            command: "vendor/bin/console queue:exchanges:delete-all"
+
     generate:
         generate-transfers:
             command: "vendor/bin/console transfer:generate"
@@ -12,13 +31,6 @@ sections:
 
         codeception-build:
             command: "vendor/bin/codecept build"
-
-    cache:
-        twig-cache-warmup:
-            command: "vendor/bin/console twig:cache:warmer"
-
-        navigation-cache-warmup:
-            command: "vendor/bin/console navigation:build-cache"
 
 
     database-flush:
@@ -67,15 +79,13 @@ sections:
         update-product-labels:
             command: "vendor/bin/console product-label:relations:update"
 
-        search-collector:
-            command: "vendor/bin/console collector:search:export"
-
-        storage-collector:
-            command: "vendor/bin/console collector:storage:export"
-
     backup:
         backup-database:
             command: "vendor/bin/console propel:database:export data/db.backup"
+
+    queue:
+        run-worker:
+            command: "vendor/bin/console queue:worker:start"
 
 
     restore:
@@ -88,15 +98,6 @@ sections:
 
         restore-database:
             command: "vendor/bin/console propel:database:import data/db.backup"
-
-
-    collectors:
-        excluded: true
-        search-collector:
-            command: "vendor/bin/console collector:search:export"
-
-        storage-collector:
-            command: "vendor/bin/console collector:storage:export"
 
 
     frontend:

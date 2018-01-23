@@ -4,6 +4,7 @@ actor: Tester
 include:
     - tests/PyzTest/*/*
     - vendor/spryker/spryker/Bundles/*/*
+    - vendor/spryker/spryker-shop/Bundles/*/*
     - vendor/spryker/rabbit-mq
 
 paths:
@@ -23,7 +24,7 @@ settings:
 coverage:
     enabled: true
     remote: true
-    c3_url: 'http://zed.de.project.local'
+    c3_url: 'http://zed.de.shop-suite.local'
     whitelist: { include: ['src/Pyz/*.php'] }
 
 extensions:

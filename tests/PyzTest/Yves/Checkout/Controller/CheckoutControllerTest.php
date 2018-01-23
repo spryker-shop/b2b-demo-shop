@@ -16,11 +16,6 @@ use Generated\Shared\Transfer\PaymentTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Generated\Shared\Transfer\ShipmentTransfer;
 use Generated\Shared\Transfer\TotalsTransfer;
-use Pyz\Yves\Checkout\Controller\CheckoutController;
-use Pyz\Yves\Checkout\Form\Steps\PaymentForm;
-use Pyz\Yves\Checkout\Plugin\Provider\CheckoutControllerProvider;
-use Pyz\Yves\Customer\Form\AddressForm;
-use Pyz\Yves\Customer\Form\GuestForm;
 use ReflectionProperty;
 use Spryker\Client\Cart\CartClient;
 use Spryker\Client\Session\SessionClient;
@@ -29,6 +24,11 @@ use Spryker\Shared\DummyPayment\DummyPaymentConfig;
 use Spryker\Shared\Price\PriceConfig;
 use Spryker\Shared\Shipment\ShipmentConstants;
 use Spryker\Yves\DummyPayment\Form\AbstractSubForm;
+use SprykerShop\Yves\CheckoutPage\Controller\CheckoutController;
+use SprykerShop\Yves\CheckoutPage\Form\Steps\PaymentForm;
+use SprykerShop\Yves\CheckoutPage\Plugin\Provider\CheckoutPageControllerProvider;
+use SprykerShop\Yves\CustomerPage\Form\AddressForm;
+use SprykerShop\Yves\CustomerPage\Form\GuestForm;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -78,7 +78,7 @@ class CheckoutControllerTest extends Unit
     const SUCCESS_URL = '/checkout/success';
 
     /**
-     * @var \Pyz\Yves\Checkout\Controller\CheckoutController
+     * @var \SprykerShop\Yves\CheckoutPage\Controller\CheckoutController
      */
     private $controller;
 
@@ -115,7 +115,7 @@ class CheckoutControllerTest extends Unit
         $this->setQuoteForCustomer();
 
         $request = new Request();
-        $request->request->set('_route', CheckoutControllerProvider::CHECKOUT_INDEX);
+        $request->request->set('_route', CheckoutPageControllerProvider::CHECKOUT_INDEX);
         $response = $checkoutController->indexAction($request);
 
         $this->assertInstanceOf(RedirectResponse::class, $response);
@@ -129,7 +129,7 @@ class CheckoutControllerTest extends Unit
     {
         $this->markTestSkipped('Move this to function controller tests');
         $request = Request::createFromGlobals();
-        $request->attributes->set('_route', CheckoutControllerProvider::CHECKOUT_CUSTOMER);
+        $request->attributes->set('_route', CheckoutPageControllerProvider::CHECKOUT_CUSTOMER);
 
         $response = $this->controller->customerAction($request);
 
@@ -175,7 +175,7 @@ class CheckoutControllerTest extends Unit
         $this->setQuoteForAddress();
 
         $request = Request::createFromGlobals();
-        $request->attributes->set('_route', CheckoutControllerProvider::CHECKOUT_ADDRESS);
+        $request->attributes->set('_route', CheckoutPageControllerProvider::CHECKOUT_ADDRESS);
 
         $response = $this->controller->addressAction($request);
 
@@ -226,7 +226,7 @@ class CheckoutControllerTest extends Unit
         $this->setQuoteForShipment();
 
         $request = Request::createFromGlobals();
-        $request->attributes->set('_route', CheckoutControllerProvider::CHECKOUT_SHIPMENT);
+        $request->attributes->set('_route', CheckoutPageControllerProvider::CHECKOUT_SHIPMENT);
 
         $response = $this->controller->shipmentAction($request);
 
@@ -268,7 +268,7 @@ class CheckoutControllerTest extends Unit
         $this->setQuoteForPayment();
 
         $request = Request::createFromGlobals();
-        $request->attributes->set('_route', CheckoutControllerProvider::CHECKOUT_PAYMENT);
+        $request->attributes->set('_route', CheckoutPageControllerProvider::CHECKOUT_PAYMENT);
 
         $response = $this->controller->paymentAction($request);
 
@@ -317,7 +317,7 @@ class CheckoutControllerTest extends Unit
         $this->setQuoteForSummary();
 
         $request = Request::createFromGlobals();
-        $request->attributes->set('_route', CheckoutControllerProvider::CHECKOUT_SUMMARY);
+        $request->attributes->set('_route', CheckoutPageControllerProvider::CHECKOUT_SUMMARY);
 
         $response = $this->controller->summaryAction($request);
 
