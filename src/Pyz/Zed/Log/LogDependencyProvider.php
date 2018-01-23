@@ -9,6 +9,7 @@ namespace Pyz\Zed\Log;
 
 use Pyz\Zed\Log\Communication\Plugin\FilebeatLogListenerPlugin;
 use Spryker\Zed\Log\Communication\Plugin\Handler\ExceptionStreamHandlerPlugin;
+use Spryker\Zed\Log\Communication\Plugin\Handler\QueueHandlerPlugin;
 use Spryker\Zed\Log\Communication\Plugin\Handler\StreamHandlerPlugin;
 use Spryker\Zed\Log\Communication\Plugin\Processor\EnvironmentProcessorPlugin;
 use Spryker\Zed\Log\Communication\Plugin\Processor\GuzzleBodyProcessorPlugin;
@@ -39,7 +40,7 @@ class LogDependencyProvider extends SprykerLogDependencyProvider
         return [
             new StreamHandlerPlugin(),
             new ExceptionStreamHandlerPlugin(),
-//            new QueueHandlerPlugin(), TODO: this should work for test installer
+            new QueueHandlerPlugin(),
         ];
     }
 

@@ -60,7 +60,7 @@ use Spryker\Zed\Queue\Communication\Console\QueueWorkerConsole;
 use Spryker\Zed\RabbitMq\Communication\Console\DeleteAllExchangesConsole;
 use Spryker\Zed\RabbitMq\Communication\Console\DeleteAllQueuesConsole;
 use Spryker\Zed\RabbitMq\Communication\Console\PurgeAllQueuesConsole;
-use Spryker\Zed\RabbitMq\Communication\Console\SetVirtualHostPermissionsConsole;
+use Spryker\Zed\RabbitMq\Communication\Console\SetUserPermissionsConsole;
 use Spryker\Zed\Search\Communication\Console\GenerateIndexMapConsole;
 use Spryker\Zed\Search\Communication\Console\SearchCloseIndexConsole;
 use Spryker\Zed\Search\Communication\Console\SearchConsole;
@@ -210,7 +210,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new DeleteAllQueuesConsole(),
             new PurgeAllQueuesConsole(),
             new DeleteAllExchangesConsole(),
-            new SetVirtualHostPermissionsConsole(),
+            new SetUserPermissionsConsole(),
 
             new MaintenanceEnableConsole(),
             new MaintenanceDisableConsole(),
