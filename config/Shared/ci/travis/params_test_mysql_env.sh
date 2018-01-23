@@ -14,4 +14,3 @@ DATABASE_BACKUP_PATH='data/test.backup'
 
 echo "MYSQL VERSION:"
 mysql -V
-. deploy/setup/frontend/params_test_env.sh
