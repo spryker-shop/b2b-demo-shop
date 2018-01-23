@@ -12,15 +12,21 @@ sections:
 
 
     queue-flush:
+        set-permissions:
+            command: "vendor/bin/console queue:vhost:set-permissions"
+            stores: true
+
         purge-all-queues:
             command: "vendor/bin/console queue:queue:purge-all"
             stores: true
 
         delete-all-queues:
             command: "vendor/bin/console queue:queue:delete-all"
+            stores: true
 
         delete-all-exchanges:
             command: "vendor/bin/console queue:exchanges:delete-all"
+            stores: true
 
     generate:
         generate-transfers:
