@@ -3,6 +3,14 @@ env:
 
 sections:
 
+    generate:
+        generate-transfers:
+            command: "vendor/bin/console transfer:generate"
+
+        generate-ide-auto-completion:
+            command: "vendor/bin/console dev:ide:generate-auto-completion"
+
+
     cache:
         twig-cache-warmup:
             command: "vendor/bin/console twig:cache:warmer"
@@ -27,16 +35,6 @@ sections:
         delete-all-exchanges:
             command: "vendor/bin/console queue:exchanges:delete-all"
             stores: true
-
-    generate:
-        generate-transfers:
-            command: "vendor/bin/console transfer:generate"
-
-        generate-databuilder:
-            command: "vendor/bin/console transfer:databuilder:generate"
-
-        codeception-build:
-            command: "vendor/bin/codecept build"
 
 
     database-flush:
@@ -76,6 +74,11 @@ sections:
     generate-entity-transfer:
         generate-transfers:
             command: "vendor/bin/console transfer:generate"
+
+
+    setup-test:
+        codeception-build:
+            command: "vendor/bin/codecept build"
 
 
     demodata:
