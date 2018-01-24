@@ -8,17 +8,14 @@
 namespace Pyz\Client\Customer;
 
 use Spryker\Client\Cart\Plugin\CustomerChangeCartUpdatePlugin;
-use Spryker\Client\Customer\Plugin\CustomerAddressSessionUpdatePlugin;
 use Spryker\Client\Customer\CustomerDependencyProvider as SprykerCustomerDependencyProvider;
-use Spryker\Client\Customer\Dependency\Plugin\CustomerSessionGetPluginInterface;
-use Spryker\Client\Customer\Dependency\Plugin\CustomerSessionSetPluginInterface;
-use Spryker\Client\Customer\Dependency\Plugin\DefaultAddressChangePluginInterface;
+use Spryker\Client\Customer\Plugin\CustomerAddressSessionUpdatePlugin;
 use Spryker\Client\Customer\Plugin\CustomerTransferRefreshPlugin;
 
 class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
 {
     /**
-     * @return CustomerSessionGetPluginInterface[]
+     * @return \Spryker\Client\Customer\Dependency\Plugin\CustomerSessionGetPluginInterface[]
      */
     protected function getCustomerSessionGetPlugins()
     {
@@ -28,7 +25,7 @@ class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
     }
 
     /**
-     * @return CustomerSessionSetPluginInterface[]
+     * @return \Spryker\Client\Customer\Dependency\Plugin\CustomerSessionSetPluginInterface[]
      */
     protected function getCustomerSessionSetPlugins()
     {
@@ -38,7 +35,7 @@ class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
     }
 
     /**
-     * @return DefaultAddressChangePluginInterface[]
+     * @return \Spryker\Client\Customer\Dependency\Plugin\DefaultAddressChangePluginInterface[]
      */
     protected function getDefaultAddressChangePlugins()
     {

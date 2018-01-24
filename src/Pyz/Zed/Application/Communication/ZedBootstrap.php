@@ -28,6 +28,7 @@ class ZedBootstrap extends SprykerZedBootstrap
 
         parent::setUp();
     }
+
     /**
      * @return bool
      */

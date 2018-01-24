@@ -21,5 +21,4 @@ use Spryker\Zed\EventBehavior\Persistence\Propel\AbstractSpyEventBehaviorEntityC
  */
 class SpyEventBehaviorEntityChange extends AbstractSpyEventBehaviorEntityChange
 {
-
 }

@@ -7,16 +7,7 @@
 
 namespace PyzTest\Shared\Testify\Helper\Bootstrap;
 
-use Pyz\Yves\Application\Plugin\Provider\ApplicationServiceProvider;
-use Pyz\Yves\Application\Plugin\Provider\AutoloaderCacheServiceProvider;
-use Pyz\Yves\Application\Plugin\Provider\LanguageServiceProvider;
-use Pyz\Yves\Application\Plugin\Provider\YvesSecurityServiceProvider;
 use Pyz\Yves\ShopApplication\YvesBootstrap as ApplicationYvesBootstrap;
-use Pyz\Yves\Cart\Plugin\Provider\CartServiceProvider;
-use Pyz\Yves\Customer\Plugin\Provider\CustomerSecurityServiceProvider;
-use Pyz\Yves\Glossary\Plugin\Provider\TranslationServiceProvider;
-use Pyz\Yves\Twig\Plugin\Provider\TwigServiceProvider;
-use Pyz\Yves\WebProfiler\Plugin\ServiceProvider\WebProfilerServiceProvider;
 use Silex\Provider\FormServiceProvider;
 use Silex\Provider\HttpFragmentServiceProvider;
 use Silex\Provider\RememberMeServiceProvider;
@@ -45,7 +36,16 @@ use Spryker\Yves\ProductReview\Plugin\Provider\ProductAbstractReviewTwigServiceP
 use Spryker\Yves\Session\Plugin\ServiceProvider\SessionServiceProvider as SprykerSessionServiceProvider;
 use Spryker\Yves\Storage\Plugin\Provider\StorageCacheServiceProvider;
 use Spryker\Yves\Twig\Plugin\ServiceProvider\TwigServiceProvider as SprykerTwigServiceProvider;
+use SprykerShop\Yves\CartPage\Plugin\Provider\CartServiceProvider;
 use SprykerShop\Yves\CategoryWidget\Plugin\Provider\CategoryServiceProvider;
+use SprykerShop\Yves\CustomerPage\Plugin\Provider\CustomerSecurityServiceProvider;
+use SprykerShop\Yves\ShopApplication\Plugin\Provider\AutoloaderCacheServiceProvider;
+use SprykerShop\Yves\ShopApplication\Plugin\Provider\ShopApplicationServiceProvider;
+use SprykerShop\Yves\ShopApplication\Plugin\Provider\ShopTwigServiceProvider;
+use SprykerShop\Yves\ShopApplication\Plugin\Provider\YvesSecurityServiceProvider;
+use SprykerShop\Yves\ShopLayout\Plugin\Provider\LanguageServiceProvider;
+use SprykerShop\Yves\ShopTranslator\Plugin\Provider\TranslationServiceProvider;
+use SprykerShop\Yves\WebProfilerWidget\Plugin\ServiceProvider\WebProfilerWidgetServiceProvider;
 
 /**
  * This class can be removed when EventJournal Service Provider is removed from the extended one.
@@ -59,8 +59,8 @@ class YvesBootstrap extends ApplicationYvesBootstrap
     {
         $this->application->register(new StorageCacheServiceProvider());
         $this->application->register(new SprykerTwigServiceProvider());
-        $this->application->register(new TwigServiceProvider());
-        $this->application->register(new ApplicationServiceProvider());
+        $this->application->register(new ShopTwigServiceProvider());
+        $this->application->register(new ShopApplicationServiceProvider());
         $this->application->register(new SessionServiceProvider());
         $this->application->register(new SprykerSessionServiceProvider());
         $this->application->register(new SecurityServiceProvider());
@@ -80,7 +80,7 @@ class YvesBootstrap extends ApplicationYvesBootstrap
         $this->application->register(new CategoryServiceProvider());
         $this->application->register(new FlashMessengerServiceProvider());
         $this->application->register(new HeadersSecurityServiceProvider());
-        $this->application->register(new WebProfilerServiceProvider());
+        $this->application->register(new WebProfilerWidgetServiceProvider());
         $this->application->register(new AutoloaderCacheServiceProvider());
         $this->application->register(new YvesHstsServiceProvider());
         $this->application->register(new CartServiceProvider());
