@@ -6,4 +6,10 @@
             <parameter name="spy_availability_storage_quantity" column="quantity" value="0" operator="==="/>
         </behavior>
     </table>
+
+    <table name="spy_availability">
+        <behavior name="event">
+            <parameter name="spy_availability_is_never_out_of_stock" column="is_never_out_of_stock" />
+        </behavior>
+    </table>
 </database>

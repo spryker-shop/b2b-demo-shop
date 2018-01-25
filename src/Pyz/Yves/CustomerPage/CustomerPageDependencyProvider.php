@@ -7,7 +7,6 @@
 
 namespace Pyz\Yves\CustomerPage;
 
-use Spryker\Yves\Kernel\Container;
 use SprykerShop\Yves\CustomerPage\CustomerPageDependencyProvider as SprykerShopCustomerPageDependencyProvider;
 use SprykerShop\Yves\NewsletterWidget\Plugin\CustomerPage\NewsletterSubscriptionSummaryWidgetPlugin;
 

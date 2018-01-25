@@ -5,7 +5,6 @@
  */
 
 use Monolog\Logger;
-use Spryker\Shared\WebProfiler\WebProfilerConstants;
 use Spryker\Shared\Acl\AclConstants;
 use Spryker\Shared\Application\ApplicationConstants;
 use Spryker\Shared\Config\ConfigConstants;
@@ -22,6 +21,7 @@ use Spryker\Shared\RabbitMq\RabbitMqConstants;
 use Spryker\Shared\Session\SessionConstants;
 use Spryker\Shared\Setup\SetupConstants;
 use Spryker\Shared\Storage\StorageConstants;
+use Spryker\Shared\WebProfiler\WebProfilerConstants;
 use Spryker\Shared\ZedNavigation\ZedNavigationConstants;
 use Spryker\Shared\ZedRequest\ZedRequestConstants;
 

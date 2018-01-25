@@ -17,7 +17,7 @@ class TransferConfig extends SprykerTransferConfig
     public function getEntitiesSourceDirectories()
     {
         return [
-            APPLICATION_SOURCE_DIR . '/Orm/Propel/*/Schema/'
+            APPLICATION_SOURCE_DIR . '/Orm/Propel/*/Schema/',
         ];
     }
 }

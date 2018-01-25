@@ -1,7 +1,8 @@
 <?php
+
 /**
- * Copyright © 2017-present Spryker Systems GmbH. All rights reserved.
- * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
+ * This file is part of the Spryker Demoshop.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
 namespace Pyz\Yves\CmsBlockWidget;
@@ -12,7 +13,6 @@ use SprykerShop\Yves\CmsBlockWidget\Plugin\Twig\TwigCmsBlock;
 
 class CmsBlockWidgetDependencyProvider extends SprykerCmsBlockWidgetDependencyProvider
 {
-
     /**
      * @return \Spryker\Yves\Twig\Plugin\TwigFunctionPluginInterface[]
      */
@@ -20,8 +20,7 @@ class CmsBlockWidgetDependencyProvider extends SprykerCmsBlockWidgetDependencyPr
     {
         return [
             new TwigCmsBlock(),
-            new TwigCmsBlockPlaceholder()
+            new TwigCmsBlockPlaceholder(),
         ];
     }
-
 }

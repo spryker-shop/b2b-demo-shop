@@ -8,7 +8,6 @@ namespace Pyz\Zed\Category;
 
 use Spryker\Zed\Category\CategoryDependencyProvider as SprykerDependencyProvider;
 use Spryker\Zed\Category\Communication\Plugin\CategoryUrlPathPrefixUpdaterPlugin;
-use Spryker\Zed\Category\Dependency\Plugin\CategoryUrlPathPluginInterface;
 use Spryker\Zed\CmsBlockCategoryConnector\Communication\Plugin\CategoryFormPlugin;
 use Spryker\Zed\CmsBlockCategoryConnector\Communication\Plugin\ReadCmsBlockCategoryRelationsPlugin;
 use Spryker\Zed\ProductCategory\Communication\Plugin\ReadProductCategoryRelationPlugin;
@@ -73,7 +72,7 @@ class CategoryDependencyProvider extends SprykerDependencyProvider
     }
 
     /**
-     * @return CategoryUrlPathPluginInterface[]
+     * @return \Spryker\Zed\Category\Dependency\Plugin\CategoryUrlPathPluginInterface[]
      */
     protected function getCategoryUrlPathPlugins()
     {
@@ -81,5 +80,4 @@ class CategoryDependencyProvider extends SprykerDependencyProvider
             new CategoryUrlPathPrefixUpdaterPlugin(),
         ];
     }
-
 }

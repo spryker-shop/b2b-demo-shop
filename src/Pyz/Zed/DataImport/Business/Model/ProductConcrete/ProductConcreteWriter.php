@@ -12,12 +12,10 @@ use Orm\Zed\Product\Persistence\SpyProductLocalizedAttributesQuery;
 use Orm\Zed\Product\Persistence\SpyProductQuery;
 use Orm\Zed\ProductBundle\Persistence\SpyProductBundleQuery;
 use Orm\Zed\ProductSearch\Persistence\SpyProductSearchQuery;
-use Spryker\Shared\Product\ProductConfig;
+use Pyz\Zed\DataImport\Business\Model\DataImportStep\PublishAwareStep;
 use Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepository;
 use Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface;
-use Pyz\Zed\DataImport\Business\Model\DataImportStep\PublishAwareStep;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
-use Spryker\Zed\DataImport\Dependency\Facade\DataImportToTouchInterface;
 use Spryker\Zed\Product\Dependency\ProductEvents;
 
 class ProductConcreteWriter extends PublishAwareStep implements DataImportStepInterface
@@ -43,10 +41,8 @@ class ProductConcreteWriter extends PublishAwareStep implements DataImportStepIn
 
     /**
      * @param \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepository $productRepository
-     * @param \Spryker\Zed\DataImport\Dependency\Facade\DataImportToTouchInterface $touchFacade
-     * @param int|null $bulkSize
      */
-    public function __construct(ProductRepository $productRepository, DataImportToTouchInterface $touchFacade, $bulkSize = null)
+    public function __construct(ProductRepository $productRepository)
     {
         $this->productRepository = $productRepository;
     }
