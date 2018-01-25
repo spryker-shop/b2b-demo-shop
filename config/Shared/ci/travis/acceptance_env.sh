@@ -19,6 +19,8 @@ FE_ZED_BUNDLE_PKGJSON_PATTERN=".+/assets/Zed/package.json$"
 
 sudo apt-get install apache2 libapache2-mod-fastcgi
 
+sudo chmod -R 755 $(pwd)
+
 # enable php-fpm
 
 if [[ ${TRAVIS_PHP_VERSION:0:1} = "7" ]]; then sudo cp config/Shared/ci/travis/www.conf.php7 ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.d/www.conf; fi
