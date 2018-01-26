@@ -1833,16 +1833,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/rabbit-mq.git",
-                "reference": "168a944bd9a42e7224a581e88dca4c75b36f17ae"
+                "reference": "3c84d57b244f9a36ada13a0b1f21ff7162d82c6f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/rabbit-mq/zipball/168a944bd9a42e7224a581e88dca4c75b36f17ae",
-                "reference": "168a944bd9a42e7224a581e88dca4c75b36f17ae",
+                "url": "https://api.github.com/repos/spryker/rabbit-mq/zipball/3c84d57b244f9a36ada13a0b1f21ff7162d82c6f",
+                "reference": "3c84d57b244f9a36ada13a0b1f21ff7162d82c6f",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.4.16",
+                "php": ">=7.1",
                 "php-amqplib/php-amqplib": "^2.6",
                 "spryker/kernel": "^3.0.0",
                 "spryker/queue": "^1.0.0",
@@ -1862,30 +1862,17 @@
                     "Spryker\\": "src/Spryker/"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "Spryker\\Test\\": "tests"
-                }
-            },
-            "notification-url": "https://code.spryker.com/repo/private/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "include-path": [
                 "src/"
             ],
-            "scripts": {
-                "cs-check": [
-                    "phpcs --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml -v --ignore=/vendor/,/templates/ ./"
-                ],
-                "cs-fix": [
-                    "phpcbf --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml -v --ignore=/vendor/,/templates/ ./"
-                ]
-            },
             "license": [
                 "MIT"
             ],
             "authors": [
                 {
                     "name": "Spryker",
-                    "homepage": "http://spryker.com"
+                    "homepage": "https://spryker.com"
                 }
             ],
             "description": "Spryker RabbitMq adapter",
@@ -1896,10 +1883,7 @@
                 "rabbit-mq",
                 "standards"
             ],
-            "support": {
-                "source": "https://github.com/spryker/rabbit-mq"
-            },
-            "time": "2017-11-28T10:26:10+00:00"
+            "time": "2018-01-26T13:26:48+00:00"
         },
         {
             "name": "spryker/spryker",
@@ -1907,13 +1891,14 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "aa35fe63da34fddc090c92e253b168b636359c0f"
+                "reference": "7f2a4496603c978da1e064c3e3fdebb8c6542ed5"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.0",
                 "fzaninotto/faker": "^1.6",
                 "moneyphp/money": "^3.0.0",
                 "paragonie/random_compat": "^2.0.10",
+                "php": ">=7.1",
                 "phpdocumentor/graphviz": "^1.0.4"
             },
             "replace": {
@@ -2141,7 +2126,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2018-01-23T10:54:34+00:00"
+            "time": "2018-01-26T14:28:54+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -2149,7 +2134,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "47c4048b7681b435cccaacd430d704462bc6275f"
+                "reference": "0cb3858d6557664d732198b5eeed151619cb9c16"
             },
             "require": {
                 "php": ">=7.1"
@@ -2202,7 +2187,7 @@
                 "spryker-shop/wishlist-widget": "*"
             },
             "require-dev": {
-                "spryker/code-sniffer": "*"
+                "spryker/code-sniffer": "dev-master"
             },
             "type": "library",
             "autoload": {
@@ -2210,11 +2195,16 @@
                     "autoload.php"
                 ]
             },
+            "scripts": {
+                "cs-check": [
+                    "vendor/bin/phpcs Bundles --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml -p"
+                ]
+            },
             "license": [
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2018-01-23T11:28:47+00:00"
+            "time": "2018-01-26T14:33:04+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -7188,16 +7178,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/code-generator.git",
-                "reference": "c2aa1853c2038addfcf5c9541e50eaeb389ec26a"
+                "reference": "d26bbf237d629fdbefd5a337b75cdefe8c816e98"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/code-generator/zipball/c2aa1853c2038addfcf5c9541e50eaeb389ec26a",
-                "reference": "c2aa1853c2038addfcf5c9541e50eaeb389ec26a",
+                "url": "https://api.github.com/repos/spryker/code-generator/zipball/d26bbf237d629fdbefd5a337b75cdefe8c816e98",
+                "reference": "d26bbf237d629fdbefd5a337b75cdefe8c816e98",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.6.0",
+                "php": ">=7.1",
                 "spryker/kernel": "^3.0.0",
                 "zendframework/zend-filter": "*"
             },
@@ -7221,7 +7211,7 @@
                 "MIT"
             ],
             "description": "CodeGenerator module",
-            "time": "2018-01-10T11:55:09+00:00"
+            "time": "2018-01-24T15:10:19+00:00"
         },
         {
             "name": "spryker/code-sniffer",

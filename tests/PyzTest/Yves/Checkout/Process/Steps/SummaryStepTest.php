@@ -12,10 +12,9 @@ use Generated\Shared\Transfer\AddressTransfer;
 use Generated\Shared\Transfer\PaymentTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Generated\Shared\Transfer\ShipmentTransfer;
-use Pyz\Yves\Checkout\Process\Steps\SummaryStep;
-use Spryker\Client\Cart\CartClientInterface;
-use Spryker\Yves\ProductBundle\Grouper\ProductBundleGrouperInterface;
 use Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginInterface;
+use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToProductBundleClientInterface;
+use SprykerShop\Yves\CheckoutPage\Process\Steps\SummaryStep;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -60,35 +59,25 @@ class SummaryStepTest extends Unit
     }
 
     /**
-     * @return \Pyz\Yves\Checkout\Process\Steps\SummaryStep
+     * @return \SprykerShop\Yves\CheckoutPage\Process\Steps\SummaryStep
      */
     protected function createSummaryStep()
     {
-        $productBundleGroupeMock = $this->createProductBundleGrouperMock();
-        $cartClientMock = $this->createCartClientMock();
+        $productBundleClient = $this->createProductBundleClient();
 
         return new SummaryStep(
-            $productBundleGroupeMock,
-            $cartClientMock,
+            $productBundleClient,
             'shipment',
             'escape_route'
         );
     }
 
     /**
-     * @return \PHPUnit_Framework_MockObject_MockObject|\Spryker\Yves\ProductBundle\Grouper\ProductBundleGrouperInterface
+     * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToProductBundleClientInterface
      */
-    protected function createProductBundleGrouperMock()
+    protected function createProductBundleClient()
     {
-        return $this->getMockBuilder(ProductBundleGrouperInterface::class)->getMock();
-    }
-
-    /**
-     * @return \PHPUnit_Framework_MockObject_MockObject|\Spryker\Client\Cart\CartClientInterface
-     */
-    protected function createCartClientMock()
-    {
-        return $this->getMockBuilder(CartClientInterface::class)->getMock();
+        return $this->getMockBuilder(CheckoutPageToProductBundleClientInterface::class)->getMock();
     }
 
     /**

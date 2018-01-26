@@ -1,6 +1,6 @@
 {
   "name": "spryker/shop-suite",
-  "description": "Project",
+  "description": "Spryker Shop Suite (private)",
   "license": "MIT",
   "require": {
     "spryker/spryker": "dev-master",
@@ -132,9 +132,7 @@
   ],
   "scripts": {
     "compile": [
-      "mkdir -p ./data/DE/logs/ZED",
-      "echo '<?php return \"development-heroku\";' > config/Shared/console_env_local.php",
-      "./deploy/heroku/run.sh"
+      "mkdir -p ./data/DE/logs/ZED"
     ],
     "post-install-cmd": [
       "PhantomInstaller\\Installer::installPhantomJS",
