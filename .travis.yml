@@ -5,8 +5,6 @@ env:
     - APPLICATION_ENV=devtest
     - APPLICATION_STORE=DE
 
-dist: precise
-
 matrix:
   fast_finish: true
   include:
@@ -14,20 +12,21 @@ matrix:
        env:
           - TEST_GROUP=without-acceptance
           - PHPSTAN=1
-     - php: "7.1"
-       env:
-          - TEST_GROUP=without-acceptance
-          - DB=mysql
-     - php: "7.1"
-       env:
-          - TEST_GROUP=acceptance
+     #- php: "7.1"
+     #  env:
+     #     - TEST_GROUP=without-acceptance
+     #     - DB=mysql
      - php: "7.1"
        env:
           - TEST_GROUP=acceptance
-          - DB=mysql
+          - ON_EVENTS=push,cron
+     #- php: "7.1"
+     #  env:
+     #     - TEST_GROUP=acceptance
+     #     - DB=mysql
 
 addons:
-  postgresql: 9.4
+  postgresql: 9.6
   mysql: 5.7
 
   apt:
@@ -58,7 +57,6 @@ before_install:
 
 install:
   - chmod -R a+x config/Shared/ci/travis/
-  - composer self-update && composer --version
   - composer install --optimize-autoloader --no-interaction
   - config/Shared/ci/travis/install_elasticsearch.sh
 
@@ -81,10 +79,13 @@ before_script:
   - if [[ $DB == 'mysql' ]]; then sudo service mysql restart ; fi
 
   - if [[ $TEST_GROUP == 'acceptance' ]]; then config/Shared/ci/travis/acceptance_env.sh ; fi
-  - if [[ $TEST_GROUP == 'acceptance' ]]; then vendor/bin/install DE -r testing; fi
-  - if [[ $TEST_GROUP == 'without-acceptance' ]]; then vendor/bin/install DE -r testing -x frontend; fi
+  - if [[ $TEST_GROUP == 'acceptance' ]]; then vendor/bin/install DE -r testing -v; fi
+  - if [[ $TEST_GROUP == 'without-acceptance' ]]; then vendor/bin/install DE -r testing -x frontend -v; fi
 
 script:
+  - if [[ $PHPSTAN == 1 ]] ; then composer phpstan-setup ; fi
+  - if [[ $PHPSTAN == 1 ]] ; then composer phpstan ; fi
+
   - vendor/bin/phantomjs --webdriver=4444 &
   - if [[ $TEST_GROUP == 'without-acceptance' ]]; then vendor/bin/codecept run -x Presentation ; fi
   - if [[ $TEST_GROUP == 'acceptance' ]]; then vendor/bin/codecept run -g Presentation ; fi
@@ -93,9 +94,6 @@ script:
   - if [[ $PHPSTAN != 1 && $TEST_GROUP == 'without-acceptance' ]] ; then vendor/bin/console transfer:validate ; fi
   - if [[ $PHPSTAN != 1 && $TEST_GROUP == 'without-acceptance' ]] ; then vendor/bin/console code:sniff:style ; fi
   - if [[ $PHPSTAN != 1 && $TEST_GROUP == 'without-acceptance' ]] ; then vendor/bin/phpmd src/ text vendor/spryker/architecture-sniffer/src/ruleset.xml --minimumpriority 2 ; fi
-
-  - if [[ $PHPSTAN == 1 ]] ; then composer phpstan-setup ; fi
-  - if [[ $PHPSTAN == 1 ]] ; then composer phpstan ; fi
 
 notifications:
   email: false

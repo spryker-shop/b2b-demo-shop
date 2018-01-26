@@ -8,7 +8,7 @@
 namespace PyzTest\Zed\Product\Business;
 
 use ArrayObject;
-use Codeception\TestCase\Test;
+use Codeception\Test\Unit;
 use Generated\Shared\Transfer\LocaleTransfer;
 use Generated\Shared\Transfer\LocalizedAttributesTransfer;
 use Generated\Shared\Transfer\MoneyValueTransfer;
@@ -19,11 +19,11 @@ use Generated\Shared\Transfer\ProductConcreteTransfer;
 use Generated\Shared\Transfer\ProductImageSetTransfer;
 use Generated\Shared\Transfer\ProductImageTransfer;
 use Generated\Shared\Transfer\StockProductTransfer;
+use Generated\Shared\Transfer\StoreRelationTransfer;
 use Orm\Zed\Stock\Persistence\SpyStock;
 use Orm\Zed\Tax\Persistence\SpyTaxRate;
 use Orm\Zed\Tax\Persistence\SpyTaxSet;
 use Orm\Zed\Tax\Persistence\SpyTaxSetTax;
-use Pyz\Zed\Product\Business\ProductBusinessFactory;
 use Spryker\Service\UtilEncoding\UtilEncodingService;
 use Spryker\Service\UtilText\UtilTextService;
 use Spryker\Zed\Currency\Business\CurrencyFacade;
@@ -32,6 +32,7 @@ use Spryker\Zed\PriceProduct\Business\PriceProductFacade;
 use Spryker\Zed\PriceProduct\Persistence\PriceProductQueryContainer;
 use Spryker\Zed\Product\Business\Product\ProductManager;
 use Spryker\Zed\Product\Business\Product\Url\ProductUrlManager;
+use Spryker\Zed\Product\Business\ProductBusinessFactory;
 use Spryker\Zed\Product\Business\ProductFacade;
 use Spryker\Zed\Product\Dependency\Facade\ProductToLocaleBridge;
 use Spryker\Zed\Product\Dependency\Facade\ProductToTouchBridge;
@@ -44,7 +45,7 @@ use Spryker\Zed\Touch\Business\TouchFacade;
 use Spryker\Zed\Touch\Persistence\TouchQueryContainer;
 use Spryker\Zed\Url\Business\UrlFacade;
 
-abstract class ProductTestAbstract extends Test
+abstract class ProductTestAbstract extends Unit
 {
     const PRODUCT_ABSTRACT_NAME = [
         'en_US' => 'Product name en_US',
@@ -264,6 +265,8 @@ abstract class ProductTestAbstract extends Test
         $localizedAttribute->setName(self::PRODUCT_ABSTRACT_NAME['en_US'])->setLocale($this->locales['en_US']);
 
         $this->productAbstractTransfer->addLocalizedAttributes($localizedAttribute);
+
+        $this->productAbstractTransfer->setStoreRelation((new StoreRelationTransfer())->setIdStores([]));
     }
 
     /**

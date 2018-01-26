@@ -12,10 +12,10 @@ use Generated\Shared\Transfer\CheckoutErrorTransfer;
 use Generated\Shared\Transfer\CheckoutResponseTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Generated\Shared\Transfer\SaveOrderTransfer;
-use Pyz\Yves\Checkout\Process\Steps\PlaceOrderStep;
-use Spryker\Client\Checkout\CheckoutClientInterface;
 use Spryker\Yves\Messenger\FlashMessenger\FlashMessengerInterface;
 use Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginInterface;
+use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCheckoutClientInterface;
+use SprykerShop\Yves\CheckoutPage\Process\Steps\PlaceOrderStep;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -124,12 +124,12 @@ class PlaceOrderStepTest extends Unit
     }
 
     /**
-     * @param \Spryker\Client\Checkout\CheckoutClientInterface $checkoutClientMock
-     * @param \PHPUnit_Framework_MockObject_MockObject|\Spryker\Yves\Messenger\FlashMessenger\FlashMessengerInterface|null $flashMessengerMock
+     * @param \SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCheckoutClientInterface|\PHPUnit_Framework_MockObject_MockObject $checkoutClientMock
+     * @param \Spryker\Yves\Messenger\FlashMessenger\FlashMessengerInterface|\PHPUnit_Framework_MockObject_MockObject|null $flashMessengerMock
      *
-     * @return \Pyz\Yves\Checkout\Process\Steps\PlaceOrderStep
+     * @return \SprykerShop\Yves\CheckoutPage\Process\Steps\PlaceOrderStep
      */
-    protected function createPlaceOrderStep(CheckoutClientInterface $checkoutClientMock, $flashMessengerMock = null)
+    protected function createPlaceOrderStep(CheckoutPageToCheckoutClientInterface $checkoutClientMock, $flashMessengerMock = null)
     {
         if ($flashMessengerMock === null) {
             $flashMessengerMock = $this->createFlashMessengerMock();
@@ -160,11 +160,11 @@ class PlaceOrderStepTest extends Unit
     }
 
     /**
-     * @return \PHPUnit_Framework_MockObject_MockObject|\Spryker\Client\Checkout\CheckoutClientInterface
+     * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCheckoutClientInterface
      */
     protected function createCheckoutClientMock()
     {
-        return $this->getMockBuilder(CheckoutClientInterface::class)->getMock();
+        return $this->getMockBuilder(CheckoutPageToCheckoutClientInterface::class)->getMock();
     }
 
     /**

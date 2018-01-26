@@ -10,10 +10,10 @@ namespace PyzTest\Yves\Checkout\Process\Steps;
 use Codeception\Test\Unit;
 use Generated\Shared\Transfer\PaymentTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
-use Pyz\Yves\Checkout\Process\Steps\PaymentStep;
 use Spryker\Yves\Messenger\FlashMessenger\FlashMessengerInterface;
 use Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginCollection;
 use Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginInterface;
+use SprykerShop\Yves\CheckoutPage\Process\Steps\PaymentStep;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -76,7 +76,7 @@ class PaymentStepTest extends Unit
     /**
      * @param \Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginCollection $paymentPlugins
      *
-     * @return \Pyz\Yves\Checkout\Process\Steps\PaymentStep
+     * @return \SprykerShop\Yves\CheckoutPage\Process\Steps\PaymentStep
      */
     protected function createPaymentStep(StepHandlerPluginCollection $paymentPlugins)
     {

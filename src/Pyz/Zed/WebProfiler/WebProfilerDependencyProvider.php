@@ -7,9 +7,9 @@
 
 namespace Pyz\Zed\WebProfiler;
 
+use Spryker\Shared\WebProfiler\Plugin\ServiceProvider\WebProfilerServiceProvider;
 use Spryker\Zed\Config\Communication\Plugin\ServiceProvider\ConfigProfilerServiceProvider;
 use Spryker\Zed\WebProfiler\WebProfilerDependencyProvider as SprykerWebProfilerDependencyProvider;
-use SprykerShop\Yves\WebProfilerWidget\Plugin\ServiceProvider\WebProfilerWidgetServiceProvider;
 
 class WebProfilerDependencyProvider extends SprykerWebProfilerDependencyProvider
 {
@@ -19,7 +19,7 @@ class WebProfilerDependencyProvider extends SprykerWebProfilerDependencyProvider
     public function getWebProfilerPlugins()
     {
         return [
-            new WebProfilerWidgetServiceProvider(),
+            new WebProfilerServiceProvider(),
             new ConfigProfilerServiceProvider(),
         ];
     }
