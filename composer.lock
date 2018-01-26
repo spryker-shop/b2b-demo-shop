@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "e34b0ed1728cc340f57815a44e25fb4a",
+    "content-hash": "507034afd949fe59971a66b753a7ebc7",
     "packages": [
         {
             "name": "braintree/braintree_php",
@@ -1829,20 +1829,20 @@
         },
         {
             "name": "spryker/rabbit-mq",
-            "version": "dev-feature/core-2461-tuning-up-tests",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/rabbit-mq.git",
-                "reference": "c2e01cd9edd19ac028987a3d76d91482182183a4"
+                "reference": "3c84d57b244f9a36ada13a0b1f21ff7162d82c6f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/rabbit-mq/zipball/c2e01cd9edd19ac028987a3d76d91482182183a4",
-                "reference": "c2e01cd9edd19ac028987a3d76d91482182183a4",
+                "url": "https://api.github.com/repos/spryker/rabbit-mq/zipball/3c84d57b244f9a36ada13a0b1f21ff7162d82c6f",
+                "reference": "3c84d57b244f9a36ada13a0b1f21ff7162d82c6f",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.4.16",
+                "php": ">=7.1",
                 "php-amqplib/php-amqplib": "^2.6",
                 "spryker/kernel": "^3.0.0",
                 "spryker/queue": "^1.0.0",
@@ -1872,7 +1872,7 @@
             "authors": [
                 {
                     "name": "Spryker",
-                    "homepage": "http://spryker.com"
+                    "homepage": "https://spryker.com"
                 }
             ],
             "description": "Spryker RabbitMq adapter",
@@ -1883,15 +1883,15 @@
                 "rabbit-mq",
                 "standards"
             ],
-            "time": "2018-01-26T11:31:41+00:00"
+            "time": "2018-01-26T13:26:48+00:00"
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-feature/core-2461-tuning-up-tests",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "6e7b215db1f4d9673d95186c27a2aca3c25a9f4a"
+                "reference": "7f2a4496603c978da1e064c3e3fdebb8c6542ed5"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.0",
@@ -2126,18 +2126,18 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2018-01-26T12:18:40+00:00"
+            "time": "2018-01-26T14:28:54+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-feature/core-2461-tuning-up-tests",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "090df509dee22e2970525c4984a3110bf91090d9"
+                "reference": "0cb3858d6557664d732198b5eeed151619cb9c16"
             },
             "require": {
-                "spryker/spryker": "*"
+                "php": ">=7.1"
             },
             "replace": {
                 "spryker-shop/availability-widget": "*",
@@ -2187,7 +2187,7 @@
                 "spryker-shop/wishlist-widget": "*"
             },
             "require-dev": {
-                "spryker/code-sniffer": "*"
+                "spryker/code-sniffer": "dev-master"
             },
             "type": "library",
             "autoload": {
@@ -2195,11 +2195,16 @@
                     "autoload.php"
                 ]
             },
+            "scripts": {
+                "cs-check": [
+                    "vendor/bin/phpcs Bundles --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml -p"
+                ]
+            },
             "license": [
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2018-01-25T17:25:38+00:00"
+            "time": "2018-01-26T14:33:04+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
