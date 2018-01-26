@@ -7,11 +7,9 @@ sections:
         generate-transfers:
             command: "vendor/bin/console transfer:generate"
 
-        generate-databuilder:
-            command: "vendor/bin/console transfer:databuilder:generate"
+        generate-ide-auto-completion:
+            command: "vendor/bin/console dev:ide:generate-auto-completion"
 
-        codeception-build:
-            command: "vendor/bin/codecept build"
 
     cache:
         twig-cache-warmup:
@@ -19,6 +17,24 @@ sections:
 
         navigation-cache-warmup:
             command: "vendor/bin/console navigation:build-cache"
+
+
+    queue-flush:
+        set-permissions:
+            command: "vendor/bin/console queue:permission:set"
+            stores: true
+
+        purge-all-queues:
+            command: "vendor/bin/console queue:queue:purge-all"
+            stores: true
+
+        delete-all-queues:
+            command: "vendor/bin/console queue:queue:delete-all"
+            stores: true
+
+        delete-all-exchanges:
+            command: "vendor/bin/console queue:exchanges:delete-all"
+            stores: true
 
 
     database-flush:
@@ -60,6 +76,13 @@ sections:
             command: "vendor/bin/console transfer:generate"
 
 
+    setup-test:
+        codeception-build:
+            command: "vendor/bin/codecept build"
+        databuilder-generate:
+            command: "vendor/bin/console transfer:databuilder:generate"
+
+
     demodata:
         import:
             command: "vendor/bin/console data:import"
@@ -67,15 +90,13 @@ sections:
         update-product-labels:
             command: "vendor/bin/console product-label:relations:update"
 
-        search-collector:
-            command: "vendor/bin/console collector:search:export"
-
-        storage-collector:
-            command: "vendor/bin/console collector:storage:export"
-
     backup:
         backup-database:
             command: "vendor/bin/console propel:database:export data/db.backup"
+
+    queue:
+        run-worker:
+            command: "vendor/bin/console queue:worker:start"
 
 
     restore:
@@ -88,15 +109,6 @@ sections:
 
         restore-database:
             command: "vendor/bin/console propel:database:import data/db.backup"
-
-
-    collectors:
-        excluded: true
-        search-collector:
-            command: "vendor/bin/console collector:search:export"
-
-        storage-collector:
-            command: "vendor/bin/console collector:storage:export"
 
 
     frontend:

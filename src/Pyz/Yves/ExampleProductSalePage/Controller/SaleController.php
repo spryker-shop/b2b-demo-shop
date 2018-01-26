@@ -24,7 +24,7 @@ class SaleController extends AbstractController
      *
      * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      *
-     * @return array
+     * @return \Spryker\Yves\Kernel\View\View
      */
     public function indexAction($categoryPath, Request $request)
     {

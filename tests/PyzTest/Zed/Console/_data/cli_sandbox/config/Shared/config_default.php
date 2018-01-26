@@ -1,7 +1,6 @@
 <?php
 
 use Monolog\Logger;
-use Pyz\Shared\Newsletter\NewsletterConstants;
 use Spryker\Shared\Acl\AclConstants;
 use Spryker\Shared\Application\ApplicationConstants;
 use Spryker\Shared\Auth\AuthConstants;
@@ -16,6 +15,7 @@ use Spryker\Shared\Kernel\KernelConstants;
 use Spryker\Shared\Kernel\Store;
 use Spryker\Shared\Log\LogConstants;
 use Spryker\Shared\NewRelic\NewRelicConstants;
+use Spryker\Shared\Newsletter\NewsletterConstants;
 use Spryker\Shared\Oms\OmsConstants;
 use Spryker\Shared\Payolution\PayolutionConstants;
 use Spryker\Shared\Propel\PropelConstants;
@@ -38,6 +38,7 @@ $config[KernelConstants::PROJECT_NAMESPACES] = [
 ];
 
 $config[KernelConstants::CORE_NAMESPACES] = [
+    'SprykerShop',
     'SprykerEco',
     'Spryker',
 ];

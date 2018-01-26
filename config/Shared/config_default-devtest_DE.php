@@ -71,8 +71,8 @@ $config[SearchConstants::ELASTICA_PARAMETER__INDEX_NAME]
     = 'de_search_devtest';
 
 // ---------- RabbitMq
-$config[RabbitMqConstants::RABBITMQ_USERNAME] = 'DE_development';
-$config[RabbitMqConstants::RABBITMQ_VIRTUAL_HOST] = '/DE_development_zed';
+$config[RabbitMqConstants::RABBITMQ_USERNAME] = 'DE_devtest';
+$config[RabbitMqConstants::RABBITMQ_VIRTUAL_HOST] = '/DE_devtest_zed';
 
 // ---------- Session
 $config[SessionConstants::YVES_SESSION_COOKIE_DOMAIN] = $config[ApplicationConstants::HOST_YVES];
