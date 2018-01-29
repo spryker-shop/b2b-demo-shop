@@ -29,7 +29,7 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
     }
 
     /**
-     * @return \Symfony\Component\Form\FormTypeInterface[]
+     * @return string[]
      */
     protected function getCustomerStepSubForms()
     {
