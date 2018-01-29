@@ -10,7 +10,6 @@ namespace Pyz\Yves\CheckoutPage;
 use Spryker\Yves\Kernel\Container;
 use SprykerShop\Yves\CheckoutPage\CheckoutPageDependencyProvider as SprykerShopCheckoutPageDependencyProvider;
 use SprykerShop\Yves\CustomerPage\Form\CheckoutAddressCollectionForm;
-use SprykerShop\Yves\CustomerPage\Form\CustomerCheckoutForm;
 use SprykerShop\Yves\CustomerPage\Form\DataProvider\CheckoutAddressFormDataProvider;
 use SprykerShop\Yves\CustomerPage\Form\GuestForm;
 use SprykerShop\Yves\CustomerPage\Form\LoginForm;
@@ -35,19 +34,20 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
     protected function getCustomerStepSubForms()
     {
         return [
-            new LoginForm(),
-            new CustomerCheckoutForm(new RegisterForm()),
-            new CustomerCheckoutForm(new GuestForm()),
+            LoginForm::class,
+            RegisterForm::class,
+            GuestForm::class,
+            // new CustomerCheckoutForm(new GuestForm()), <- this is how it was used before
         ];
     }
 
     /**
-     * @return \Symfony\Component\Form\FormTypeInterface[]
+     * @return string[]
      */
     protected function getAddressStepSubForms()
     {
         return [
-            new CheckoutAddressCollectionForm(),
+            CheckoutAddressCollectionForm::class,
         ];
     }
 
