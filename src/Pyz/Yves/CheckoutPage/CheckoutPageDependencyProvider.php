@@ -8,8 +8,10 @@
 namespace Pyz\Yves\CheckoutPage;
 
 use Spryker\Yves\Kernel\Container;
+use Spryker\Yves\Kernel\Plugin\Pimple;
 use SprykerShop\Yves\CheckoutPage\CheckoutPageDependencyProvider as SprykerShopCheckoutPageDependencyProvider;
 use SprykerShop\Yves\CustomerPage\Form\CheckoutAddressCollectionForm;
+use SprykerShop\Yves\CustomerPage\Form\CustomerCheckoutForm;
 use SprykerShop\Yves\CustomerPage\Form\DataProvider\CheckoutAddressFormDataProvider;
 use SprykerShop\Yves\CustomerPage\Form\GuestForm;
 use SprykerShop\Yves\CustomerPage\Form\LoginForm;
@@ -35,10 +37,46 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
     {
         return [
             LoginForm::class,
-            RegisterForm::class,
-            GuestForm::class,
+            $this->getCustomerCheckoutForm(RegisterForm::class, RegisterForm::BLOCK_PREFIX),
+            $this->getCustomerCheckoutForm(GuestForm::class, GuestForm::BLOCK_PREFIX),
             // new CustomerCheckoutForm(new GuestForm()), <- this is how it was used before
         ];
+    }
+
+    /**
+     * @return \Symfony\Component\Form\FormTypeInterface[]
+     */
+    protected function getCustomerFormTypes()
+    {
+        return [
+            LoginForm::class,
+            $this->getCustomerCheckoutForm(RegisterForm::class, RegisterForm::BLOCK_PREFIX),
+            $this->getCustomerCheckoutForm(GuestForm::class, GuestForm::BLOCK_PREFIX),
+        ];
+    }
+
+    /**
+     * @param string $subForm
+     * @param string $blockPrefix
+     *
+     * @return \SprykerShop\Yves\CustomerPage\Form\CustomerCheckoutForm|\Symfony\Component\Form\FormInterface
+     */
+    protected function getCustomerCheckoutForm($subForm, $blockPrefix)
+    {
+        return $this->getFormFactory()->createNamed(
+            $blockPrefix,
+            CustomerCheckoutForm::class,
+            null,
+            [CustomerCheckoutForm::SUB_FORM_CUSTOMER => $subForm]
+        );
+    }
+
+    /**
+     * @return \Symfony\Component\Form\FormFactory
+     */
+    private function getFormFactory()
+    {
+        return (new Pimple())->getApplication()['form.factory'];
     }
 
     /**
