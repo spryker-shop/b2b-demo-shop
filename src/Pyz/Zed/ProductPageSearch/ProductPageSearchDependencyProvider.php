@@ -1,7 +1,8 @@
 <?php
+
 /**
- * Copyright © 2017-present Spryker Systems GmbH. All rights reserved.
- * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
+ * This file is part of the Spryker Demoshop.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
 namespace Pyz\Zed\ProductPageSearch;
@@ -16,7 +17,6 @@ use Spryker\Zed\ProductReviewSearch\Communication\Plugin\PageMapExpander\Product
 
 class ProductPageSearchDependencyProvider extends SprykerProductPageSearchDependencyProvider
 {
-
     const PLUGIN_PRODUCT_LABEL_DATA = 'PLUGIN_PRODUCT_LABEL_DATA';
 
     /**
@@ -32,15 +32,14 @@ class ProductPageSearchDependencyProvider extends SprykerProductPageSearchDepend
     }
 
     /**
-     * @return array|\Spryker\Zed\ProductPageSearch\Dependency\Plugin\ProductPageMapExpanderInterface[]
+     * @return \Spryker\Zed\ProductPageSearch\Dependency\Plugin\ProductPageMapExpanderInterface[]
      */
     protected function getMapExpanderPlugins()
     {
         $mapExpanderPlugins = parent::getMapExpanderPlugins();
-        $mapExpanderPlugins[] = new  ProductLabelMapExpanderPlugin();
-        $mapExpanderPlugins[] = new  ProductReviewMapExpanderPlugin();
+        $mapExpanderPlugins[] = new ProductLabelMapExpanderPlugin();
+        $mapExpanderPlugins[] = new ProductReviewMapExpanderPlugin();
 
         return $mapExpanderPlugins;
     }
-
 }

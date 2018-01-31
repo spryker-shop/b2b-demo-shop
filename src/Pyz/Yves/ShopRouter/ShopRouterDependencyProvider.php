@@ -1,7 +1,8 @@
 <?php
+
 /**
- * Copyright © 2017-present Spryker Systems GmbH. All rights reserved.
- * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
+ * This file is part of the Spryker Demoshop.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
 namespace Pyz\Yves\ShopRouter;
@@ -11,14 +12,12 @@ use SprykerShop\Yves\CmsPage\Plugin\PageResourceCreatorPlugin;
 use SprykerShop\Yves\ProductDetailPage\Plugin\ProductDetailPageResourceCreatorPlugin;
 use SprykerShop\Yves\ProductSetDetailPage\Plugin\ProductSetDetailPageResourceCreatorPlugin;
 use SprykerShop\Yves\RedirectPage\Plugin\RedirectResourceCreatorPlugin;
-use SprykerShop\Yves\ShopRouter\Dependency\Plugin\ResourceCreatorPluginInterface;
 use SprykerShop\Yves\ShopRouter\ShopRouterDependencyProvider as SprykerShopRouterDependencyProvider;
 
 class ShopRouterDependencyProvider extends SprykerShopRouterDependencyProvider
 {
-
     /**
-     * @return ResourceCreatorPluginInterface[]
+     * @return \SprykerShop\Yves\ShopRouter\Dependency\Plugin\ResourceCreatorPluginInterface[]
      */
     protected function getResourceCreatorPlugins()
     {
@@ -30,5 +29,4 @@ class ShopRouterDependencyProvider extends SprykerShopRouterDependencyProvider
             new RedirectResourceCreatorPlugin(),
         ];
     }
-
 }

@@ -18,11 +18,11 @@ use Spryker\Shared\CmsPageSearch\CmsPageSearchConstants;
 use Spryker\Shared\CmsStorage\CmsStorageConstants;
 use Spryker\Shared\Event\EventConstants;
 use Spryker\Shared\GlossaryStorage\GlossaryStorageConstants;
+use Spryker\Shared\Log\LogConstants;
 use Spryker\Shared\PriceProductStorage\PriceProductStorageConstants;
 use Spryker\Shared\ProductPageSearch\ProductPageSearchConstants;
 use Spryker\Shared\ProductStorage\ProductStorageConstants;
 use Spryker\Shared\UrlStorage\UrlStorageConstants;
-use Spryker\Shared\Log\LogConstants;
 
 class RabbitMqConfig extends SprykerRabbitMqConfig
 {

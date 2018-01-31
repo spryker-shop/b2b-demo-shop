@@ -95,7 +95,6 @@ class ProductPriceWriterStep extends PublishAwareStep implements DataImportStepI
             $query->filterByFkProductAbstract($idProductAbstract);
             $this->addPublishEvents(PriceProductEvents::PRICE_ABSTRACT_PUBLISH, $idProductAbstract);
             $this->addPublishEvents(ProductEvents::PRODUCT_ABSTRACT_PUBLISH, $idProductAbstract);
-
         } else {
             $idProduct = $this->productRepository->getIdProductByConcreteSku($dataSet[static::KEY_CONCRETE_SKU]);
             $this->addPublishEvents(PriceProductEvents::PRICE_CONCRETE_PUBLISH, $idProduct);

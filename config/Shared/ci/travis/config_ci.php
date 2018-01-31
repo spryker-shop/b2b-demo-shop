@@ -1,11 +1,9 @@
 <?php
 
 use Monolog\Logger;
-use Pyz\Shared\WebProfiler\WebProfilerConstants;
 use Pyz\Yves\ShopApplication\YvesBootstrap;
 use Pyz\Zed\Application\Communication\ZedBootstrap;
 use Spryker\Shared\Application\ApplicationConstants;
-use Spryker\Shared\Application\Log\Config\SprykerLoggerConfig;
 use Spryker\Shared\Collector\CollectorConstants;
 use Spryker\Shared\Config\ConfigConstants;
 use Spryker\Shared\Customer\CustomerConstants;
@@ -26,6 +24,7 @@ use Spryker\Shared\Setup\SetupConstants;
 use Spryker\Shared\Storage\StorageConstants;
 use Spryker\Shared\Testify\TestifyConstants;
 use Spryker\Shared\Twig\TwigConstants;
+use Spryker\Shared\WebProfiler\WebProfilerConstants;
 use Spryker\Shared\ZedRequest\ZedRequestConstants;
 
 $CURRENT_STORE = Store::getInstance()->getStoreName();

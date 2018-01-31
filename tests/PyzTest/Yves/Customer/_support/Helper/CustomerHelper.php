@@ -18,10 +18,11 @@ use Orm\Zed\Country\Persistence\SpyCountryQuery;
 use Orm\Zed\Customer\Persistence\SpyCustomer;
 use Orm\Zed\Customer\Persistence\SpyCustomerAddress;
 use Orm\Zed\Customer\Persistence\SpyCustomerQuery;
-use Pyz\Shared\Newsletter\NewsletterConstants;
 use PyzTest\Yves\Customer\PageObject\Customer;
+use PyzTest\Yves\Customer\PageObject\CustomerAddressesPage;
 use PyzTest\Yves\Customer\PageObject\CustomerLoginPage;
 use Spryker\Client\Session\SessionClient;
+use Spryker\Shared\Newsletter\NewsletterConstants;
 use Spryker\Zed\Customer\CustomerDependencyProvider;
 use Spryker\Zed\Customer\Dependency\Facade\CustomerToMailBridge;
 use Spryker\Zed\Mail\Business\MailFacadeInterface;
@@ -195,7 +196,7 @@ class CustomerHelper extends Module
      *
      * @return void
      */
-    public function addNewsletterSubscription($email, $type = NewsletterConstants::EDITORIAL_NEWSLETTER)
+    public function addNewsletterSubscription($email, $type = NewsletterConstants::DEFAULT_NEWSLETTER_TYPE)
     {
         $customerEntity = $this->loadCustomerByEmail($email);
         $newsletterSubscriberTransfer = new NewsletterSubscriberTransfer();

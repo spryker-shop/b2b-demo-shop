@@ -1,13 +1,13 @@
 <?php
 
 use Monolog\Logger;
-use Pyz\Shared\Newsletter\NewsletterConstants;
 use Spryker\Shared\Acl\AclConstants;
 use Spryker\Shared\Application\ApplicationConstants;
 use Spryker\Shared\Auth\AuthConstants;
 use Spryker\Shared\Cms\CmsConstants;
 use Spryker\Shared\Collector\CollectorConstants;
 use Spryker\Shared\Customer\CustomerConstants;
+use Spryker\Shared\DummyPayment\DummyPaymentConfig;
 use Spryker\Shared\ErrorHandler\ErrorHandlerConstants;
 use Spryker\Shared\ErrorHandler\ErrorRenderer\WebHtmlErrorRenderer;
 use Spryker\Shared\EventJournal\EventJournalConstants;
@@ -15,6 +15,7 @@ use Spryker\Shared\Kernel\KernelConstants;
 use Spryker\Shared\Kernel\Store;
 use Spryker\Shared\Log\LogConstants;
 use Spryker\Shared\NewRelic\NewRelicConstants;
+use Spryker\Shared\Newsletter\NewsletterConstants;
 use Spryker\Shared\Oms\OmsConstants;
 use Spryker\Shared\Payolution\PayolutionConstants;
 use Spryker\Shared\Propel\PropelConstants;
@@ -29,7 +30,6 @@ use Spryker\Shared\Twig\TwigConstants;
 use Spryker\Shared\User\UserConstants;
 use Spryker\Shared\ZedNavigation\ZedNavigationConstants;
 use Spryker\Shared\ZedRequest\ZedRequestConstants;
-use Spryker\Zed\DummyPayment\DummyPaymentConfig;
 use Spryker\Zed\Oms\OmsConfig;
 use Spryker\Zed\Propel\PropelConfig;
 
@@ -38,6 +38,7 @@ $config[KernelConstants::PROJECT_NAMESPACES] = [
 ];
 
 $config[KernelConstants::CORE_NAMESPACES] = [
+    'SprykerShop',
     'SprykerEco',
     'Spryker',
 ];
