@@ -39,12 +39,11 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
             LoginForm::class,
             $this->getCustomerCheckoutForm(RegisterForm::class, RegisterForm::BLOCK_PREFIX),
             $this->getCustomerCheckoutForm(GuestForm::class, GuestForm::BLOCK_PREFIX),
-            // new CustomerCheckoutForm(new GuestForm()), <- this is how it was used before
         ];
     }
 
     /**
-     * @return \Symfony\Component\Form\FormTypeInterface[]
+     * @return mixed[]
      */
     protected function getCustomerFormTypes()
     {
