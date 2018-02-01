@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "507034afd949fe59971a66b753a7ebc7",
+    "content-hash": "fbade73e216b9dc54cc2535ec6e588bc",
     "packages": [
         {
             "name": "braintree/braintree_php",
@@ -1887,11 +1887,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-feature/CORE-2297-Language-switcher",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "7f2a4496603c978da1e064c3e3fdebb8c6542ed5"
+                "reference": "3f43125edf4c93f866e2fc837cfe9261f5494abf"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.0",
@@ -2126,18 +2126,18 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2018-01-26T14:28:54+00:00"
+            "time": "2018-02-01T16:44:26+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-master",
+            "version": "dev-feature/CORE-2297-Language-switcher",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "0cb3858d6557664d732198b5eeed151619cb9c16"
+                "reference": "2a434f4f4ddd12261ab93f4859ef984318c25856"
             },
             "require": {
-                "php": ">=7.1"
+                "spryker/spryker": "*"
             },
             "replace": {
                 "spryker-shop/availability-widget": "*",
@@ -2187,7 +2187,7 @@
                 "spryker-shop/wishlist-widget": "*"
             },
             "require-dev": {
-                "spryker/code-sniffer": "dev-master"
+                "spryker/code-sniffer": "*"
             },
             "type": "library",
             "autoload": {
@@ -2195,16 +2195,11 @@
                     "autoload.php"
                 ]
             },
-            "scripts": {
-                "cs-check": [
-                    "vendor/bin/phpcs Bundles --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml -p"
-                ]
-            },
             "license": [
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2018-01-26T14:33:04+00:00"
+            "time": "2018-02-01T09:30:00+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
