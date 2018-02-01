@@ -1,8 +1,8 @@
-# Spryker Project
+# Spryker Shop Suite
 [![Build Status](https://api.travis-ci.org/spryker/demoshop.svg?branch=master)](https://travis-ci.org/spryker/demoshop)
 [![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%207.1-8892BF.svg)](https://php.net/)
 
-Project (internal)
+Shop Suite (internal)
 [![Build Status](https://travis-ci.com/spryker/project.svg?token=7jVDNZFJxpvBrFetYhbF&branch=master)](https://travis-ci.com/spryker/project)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/spryker/project/badges/quality-score.png?b=master&s=7f0c1247303c81b5047867595714ff5d7db02a5a)](https://scrutinizer-ci.com/g/spryker/project/?branch=master)
 

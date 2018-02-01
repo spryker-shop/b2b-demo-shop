@@ -146,7 +146,7 @@ class CmsGuiPresentationTester extends Actor
             '
         );
 
-        $this->wait(1);
+        $this->wait(3);
 
         return $this;
     }
