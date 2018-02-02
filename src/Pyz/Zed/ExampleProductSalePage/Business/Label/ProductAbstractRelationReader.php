@@ -10,8 +10,8 @@ namespace Pyz\Zed\ExampleProductSalePage\Business\Label;
 use Generated\Shared\Transfer\ProductLabelProductAbstractRelationsTransfer;
 use Orm\Zed\ProductLabel\Persistence\SpyProductLabel;
 use Pyz\Zed\ExampleProductSalePage\Business\Exception\ProductLabelSaleNotFoundException;
-use Pyz\Zed\ExampleProductSalePage\Persistence\ExampleProductSalePageQueryContainerInterface;
 use Pyz\Zed\ExampleProductSalePage\ExampleProductSalePageConfig;
+use Pyz\Zed\ExampleProductSalePage\Persistence\ExampleProductSalePageQueryContainerInterface;
 
 class ProductAbstractRelationReader implements ProductAbstractRelationReaderInterface
 {

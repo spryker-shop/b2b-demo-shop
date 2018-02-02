@@ -94,7 +94,6 @@ $jobs[] = [
 'stores' => $allStores,
 ];
 
-
 /* StateMachine */
 /*
 $jobs[] = [

@@ -1,25 +1,25 @@
 <?php
 
 /**
- * Copyright © 2016-present Spryker Systems GmbH. All rights reserved.
- * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
+ * This file is part of the Spryker Demoshop.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
 namespace Pyz\Zed\DataImport\Business\Model;
 
 use Generated\Shared\Transfer\DataImporterConfigurationTransfer;
+use Spryker\Zed\DataImport\Business\Model\DataImporterCollection as SprykerDataImporterCollection;
 use Spryker\Zed\EventBehavior\EventBehaviorConfig;
 
-class DataImporterCollection extends \Spryker\Zed\DataImport\Business\Model\DataImporterCollection
+class DataImporterCollection extends SprykerDataImporterCollection
 {
-
     /**
-     * @var DataImporterPublisherInterface
+     * @var \Pyz\Zed\DataImport\Business\Model\DataImporterPublisherInterface
      */
     protected $dataImporterPublisher;
 
     /**
-     * @param DataImporterPublisherInterface $dataImporterPublisher
+     * @param \Pyz\Zed\DataImport\Business\Model\DataImporterPublisherInterface $dataImporterPublisher
      */
     public function __construct(DataImporterPublisherInterface $dataImporterPublisher)
     {

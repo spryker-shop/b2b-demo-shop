@@ -10,13 +10,12 @@ namespace Pyz\Zed\DataImport\Business\Model\ProductSearchAttribute;
 use Orm\Zed\Glossary\Persistence\SpyGlossaryKeyQuery;
 use Orm\Zed\Glossary\Persistence\SpyGlossaryTranslationQuery;
 use Orm\Zed\ProductSearch\Persistence\SpyProductSearchAttributeQuery;
+use Pyz\Zed\DataImport\Business\Model\DataImportStep\PublishAwareStep;
 use Pyz\Zed\DataImport\Business\Model\Product\ProductLocalizedAttributesExtractorStep;
 use Pyz\Zed\DataImport\Business\Model\ProductAttributeKey\AddProductAttributeKeysStep;
 use Spryker\Shared\ProductSearch\Code\KeyBuilder\GlossaryKeyBuilderInterface;
 use Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface;
-use Pyz\Zed\DataImport\Business\Model\DataImportStep\PublishAwareStep;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
-use Spryker\Zed\DataImport\Dependency\Facade\DataImportToTouchInterface;
 use Spryker\Zed\Glossary\Dependency\GlossaryEvents;
 
 class ProductSearchAttributeWriter extends PublishAwareStep implements DataImportStepInterface
@@ -32,10 +31,8 @@ class ProductSearchAttributeWriter extends PublishAwareStep implements DataImpor
 
     /**
      * @param \Spryker\Shared\ProductSearch\Code\KeyBuilder\GlossaryKeyBuilderInterface $glossaryKeyBuilder
-     * @param \Spryker\Zed\DataImport\Dependency\Facade\DataImportToTouchInterface $touchFacade
-     * @param int|null $bulkSize
      */
-    public function __construct(GlossaryKeyBuilderInterface $glossaryKeyBuilder, DataImportToTouchInterface $touchFacade, $bulkSize = null)
+    public function __construct(GlossaryKeyBuilderInterface $glossaryKeyBuilder)
     {
         $this->glossaryKeyBuilder = $glossaryKeyBuilder;
     }

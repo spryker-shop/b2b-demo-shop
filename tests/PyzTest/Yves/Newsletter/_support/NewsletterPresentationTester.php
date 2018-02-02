@@ -12,6 +12,7 @@ use Codeception\Scenario;
 use Orm\Zed\Newsletter\Persistence\SpyNewsletterSubscriber;
 use Orm\Zed\Newsletter\Persistence\SpyNewsletterSubscription;
 use Orm\Zed\Newsletter\Persistence\SpyNewsletterTypeQuery;
+use Spryker\Shared\Newsletter\NewsletterConstants;
 
 /**
  * Inherited Methods
@@ -55,7 +56,7 @@ class NewsletterPresentationTester extends Actor
             ->save();
 
         $newsletterTypeEntity = SpyNewsletterTypeQuery::create()
-            ->findOneByName('EDITORIAL_NEWSLETTER');
+            ->findOneByName(NewsletterConstants::DEFAULT_NEWSLETTER_TYPE);
 
         $newsletterSubscriptionEntity = new SpyNewsletterSubscription();
         $newsletterSubscriptionEntity

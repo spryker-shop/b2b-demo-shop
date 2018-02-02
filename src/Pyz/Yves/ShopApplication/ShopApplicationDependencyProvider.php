@@ -24,7 +24,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             CurrencyWidgetPlugin::class,
             NavigationWidgetPlugin::class,
             ProductGroupWidgetPlugin::class,
-            PriceModeSwitcherWidgetPlugin::class
+            PriceModeSwitcherWidgetPlugin::class,
         ];
     }
 }

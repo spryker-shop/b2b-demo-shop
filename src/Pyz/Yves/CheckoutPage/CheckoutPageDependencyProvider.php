@@ -8,7 +8,6 @@
 namespace Pyz\Yves\CheckoutPage;
 
 use Spryker\Yves\Kernel\Container;
-use Spryker\Yves\StepEngine\Dependency\Form\StepEngineFormDataProviderInterface;
 use SprykerShop\Yves\CheckoutPage\CheckoutPageDependencyProvider as SprykerShopCheckoutPageDependencyProvider;
 use SprykerShop\Yves\CustomerPage\Form\CheckoutAddressCollectionForm;
 use SprykerShop\Yves\CustomerPage\Form\CustomerCheckoutForm;
@@ -17,7 +16,6 @@ use SprykerShop\Yves\CustomerPage\Form\GuestForm;
 use SprykerShop\Yves\CustomerPage\Form\LoginForm;
 use SprykerShop\Yves\CustomerPage\Form\RegisterForm;
 use SprykerShop\Yves\DiscountWidget\Plugin\CheckoutPage\CheckoutVoucherFormWidgetPlugin;
-use Symfony\Component\Form\FormTypeInterface;
 
 class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyProvider
 {
@@ -32,7 +30,7 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
     }
 
     /**
-     * @return FormTypeInterface[]
+     * @return \Symfony\Component\Form\FormTypeInterface[]
      */
     protected function getCustomerStepSubForms()
     {
@@ -44,7 +42,7 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
     }
 
     /**
-     * @return FormTypeInterface[]
+     * @return \Symfony\Component\Form\FormTypeInterface[]
      */
     protected function getAddressStepSubForms()
     {
@@ -54,9 +52,9 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
     }
 
     /**
-     * @param Container $container
+     * @param \Spryker\Yves\Kernel\Container $container
      *
-     * @return StepEngineFormDataProviderInterface|null
+     * @return \Spryker\Yves\StepEngine\Dependency\Form\StepEngineFormDataProviderInterface|null
      */
     protected function getAddressStepFormDataProvider(Container $container)
     {

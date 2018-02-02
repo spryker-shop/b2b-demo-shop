@@ -13,8 +13,6 @@ use Spryker\Shared\Event\EventConstants;
 use Spryker\Shared\Log\LogConstants;
 use Spryker\Shared\Queue\QueueConstants;
 use Spryker\Zed\Queue\QueueConfig as SprykerQueueConfig;
-use SprykerEco\Shared\Loggly\LogglyConstants;
-use SprykerEco\Zed\Loggly\LogglyConfig;
 
 class QueueConfig extends SprykerQueueConfig
 {

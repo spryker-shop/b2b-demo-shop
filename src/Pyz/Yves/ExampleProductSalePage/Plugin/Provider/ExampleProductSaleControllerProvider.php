@@ -7,8 +7,8 @@
 
 namespace Pyz\Yves\ExampleProductSalePage\Plugin\Provider;
 
-use SprykerShop\Yves\ShopApplication\Plugin\Provider\AbstractYvesControllerProvider;
 use Silex\Application;
+use SprykerShop\Yves\ShopApplication\Plugin\Provider\AbstractYvesControllerProvider;
 
 class ExampleProductSaleControllerProvider extends AbstractYvesControllerProvider
 {
