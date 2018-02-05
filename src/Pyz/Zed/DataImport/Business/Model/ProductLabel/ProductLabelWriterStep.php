@@ -137,7 +137,7 @@ class ProductLabelWriterStep extends PublishAwareStep implements DataImportStepI
 
         $productAbstractSkus = explode(',', $dataSet[static::KEY_PRODUCT_ABSTRACT_SKUS]);
 
-        if (!count($productAbstractSkus)) {
+        if (!$productAbstractSkus) {
             return;
         }
 
