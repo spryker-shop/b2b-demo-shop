@@ -31,7 +31,7 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
     }
 
     /**
-     * @return string[]
+     * @return mixed[]
      */
     protected function getCustomerStepSubForms()
     {
