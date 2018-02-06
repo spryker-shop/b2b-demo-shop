@@ -8,6 +8,7 @@
 namespace Pyz\Yves\CheckoutPage;
 
 use Spryker\Yves\Kernel\Container;
+use Spryker\Yves\Kernel\Plugin\Pimple;
 use SprykerShop\Yves\CheckoutPage\CheckoutPageDependencyProvider as SprykerShopCheckoutPageDependencyProvider;
 use SprykerShop\Yves\CustomerPage\Form\CheckoutAddressCollectionForm;
 use SprykerShop\Yves\CustomerPage\Form\CustomerCheckoutForm;
@@ -30,24 +31,60 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
     }
 
     /**
-     * @return \Symfony\Component\Form\FormTypeInterface[]
+     * @return mixed[]
      */
     protected function getCustomerStepSubForms()
     {
         return [
-            new LoginForm(),
-            new CustomerCheckoutForm(new RegisterForm()),
-            new CustomerCheckoutForm(new GuestForm()),
+            LoginForm::class,
+            $this->getCustomerCheckoutForm(RegisterForm::class, RegisterForm::BLOCK_PREFIX),
+            $this->getCustomerCheckoutForm(GuestForm::class, GuestForm::BLOCK_PREFIX),
         ];
     }
 
     /**
-     * @return \Symfony\Component\Form\FormTypeInterface[]
+     * @return mixed[]
+     */
+    protected function getCustomerFormTypes()
+    {
+        return [
+            LoginForm::class,
+            $this->getCustomerCheckoutForm(RegisterForm::class, RegisterForm::BLOCK_PREFIX),
+            $this->getCustomerCheckoutForm(GuestForm::class, GuestForm::BLOCK_PREFIX),
+        ];
+    }
+
+    /**
+     * @param string $subForm
+     * @param string $blockPrefix
+     *
+     * @return \SprykerShop\Yves\CustomerPage\Form\CustomerCheckoutForm|\Symfony\Component\Form\FormInterface
+     */
+    protected function getCustomerCheckoutForm($subForm, $blockPrefix)
+    {
+        return $this->getFormFactory()->createNamed(
+            $blockPrefix,
+            CustomerCheckoutForm::class,
+            null,
+            [CustomerCheckoutForm::SUB_FORM_CUSTOMER => $subForm]
+        );
+    }
+
+    /**
+     * @return \Symfony\Component\Form\FormFactory
+     */
+    private function getFormFactory()
+    {
+        return (new Pimple())->getApplication()['form.factory'];
+    }
+
+    /**
+     * @return string[]
      */
     protected function getAddressStepSubForms()
     {
         return [
-            new CheckoutAddressCollectionForm(),
+            CheckoutAddressCollectionForm::class,
         ];
     }
 
