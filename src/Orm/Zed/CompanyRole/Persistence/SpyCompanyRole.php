@@ -7,7 +7,7 @@
 
 namespace Orm\Zed\CompanyRole\Persistence;
 
-use Orm\Zed\CompanyRole\Persistence\Base\SpyCompanyRole as BaseSpyCompanyRole;
+use Spryker\Zed\CompanyRole\Persistence\Propel\AbstractSpyCompanyRole as BaseSpyCompanyRole;
 
 /**
  * Skeleton subclass for representing a row from the 'spy_company_role' table.
