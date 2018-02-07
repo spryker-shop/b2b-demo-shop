@@ -2134,10 +2134,10 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "398fce96d23960ead45b6485f2713217939bb147"
+                "reference": "b186e4e5f64d0b9b15a7c6fabd19439e6f2446bc"
             },
             "require": {
-                "spryker/spryker": "*"
+                "php": ">=7.1"
             },
             "replace": {
                 "spryker-shop/availability-widget": "*",
@@ -2187,7 +2187,7 @@
                 "spryker-shop/wishlist-widget": "*"
             },
             "require-dev": {
-                "spryker/code-sniffer": "*"
+                "spryker/code-sniffer": "dev-master"
             },
             "type": "library",
             "autoload": {
@@ -2195,11 +2195,16 @@
                     "autoload.php"
                 ]
             },
+            "scripts": {
+                "cs-check": [
+                    "vendor/bin/phpcs Bundles --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml -p"
+                ]
+            },
             "license": [
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2018-02-06T14:24:47+00:00"
+            "time": "2018-02-07T09:33:35+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -7265,16 +7270,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/git-hook.git",
-                "reference": "7e9daf8a0af18a923bf84f331de49228fd4ec164"
+                "reference": "ff15891fbf603f30b5be575ac42b3caefcdd9a60"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/git-hook/zipball/7e9daf8a0af18a923bf84f331de49228fd4ec164",
-                "reference": "7e9daf8a0af18a923bf84f331de49228fd4ec164",
+                "url": "https://api.github.com/repos/spryker/git-hook/zipball/ff15891fbf603f30b5be575ac42b3caefcdd9a60",
+                "reference": "ff15891fbf603f30b5be575ac42b3caefcdd9a60",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.4.16",
+                "php": ">=7.1",
                 "phpmd/phpmd": "^2.6",
                 "phpstan/phpstan": "^0.8",
                 "symfony/yaml": "^2.8|^3"
@@ -7309,7 +7314,7 @@
                 "sniffer",
                 "standards"
             ],
-            "time": "2017-11-13T13:27:04+00:00"
+            "time": "2018-01-26T16:00:16+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
