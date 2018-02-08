@@ -20,6 +20,7 @@ class CustomerPageDependencyProvider extends SprykerShopCustomerPageDependencyPr
     {
         return [
             NewsletterSubscriptionSummaryWidgetPlugin::class,
+            CustomerReorderWidgetPlugin::class,
         ];
     }
 
