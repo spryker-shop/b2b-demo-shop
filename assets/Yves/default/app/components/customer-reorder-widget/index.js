@@ -11,14 +11,14 @@ module.exports = {
         init: function($root) {
             this.$root = $root;
             this.$button = $('input.reorder.partial');
-            this.checkboxes = $('input.reorder.order-item');
+            this.$checkboxes = $('input.reorder.order-item');
 
             this.onClick();
-            this.checkboxes.on('click', this.onClick.bind(this));
+            this.$checkboxes.on('click', this.onClick.bind(this));
         },
 
         onClick: function() {
-            var isNoneChecked = this.checkboxes.filter(':checkbox:checked').length === 0;
+            let isNoneChecked = !this.$checkboxes.filter(':checkbox:checked').length;
 
             this.$button.prop('disabled', isNoneChecked);
         }
