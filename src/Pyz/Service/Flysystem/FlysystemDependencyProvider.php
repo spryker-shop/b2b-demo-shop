@@ -5,7 +5,7 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Pyz\Zed\Flysystem;
+namespace Pyz\Service\Flysystem;
 
 use Spryker\Service\Flysystem\FlysystemDependencyProvider as SprykerFlysystemDependencyProvider;
 use Spryker\Service\FlysystemFtpFileSystem\Plugin\Flysystem\FtpFilesystemBuilderPlugin;
@@ -21,7 +21,7 @@ class FlysystemDependencyProvider extends SprykerFlysystemDependencyProvider
      */
     protected function addFilesystemBuilderPluginCollection($container)
     {
-        $container[self::PLUGIN_COLLECTION_FILESYSTEM_BUILDER] = function (Container $container) {
+        $container[self::PLUGIN_COLLECTION_FILESYSTEM_BUILDER] = function ($container) {
             return [
                 new FtpFilesystemBuilderPlugin(),
                 new LocalFilesystemBuilderPlugin(),
