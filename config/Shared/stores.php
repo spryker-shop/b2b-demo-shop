@@ -37,9 +37,30 @@ $stores['DE'] = [
     // internal and shop
     'currencyIsoCode' => 'EUR',
     'currencyIsoCodes' => ['EUR', 'CHF'],
+    'queuePools' => [
+        'exclusivePool' => [
+            'DE-connection',
+        ],
+        'sharedPool' => [
+            'AT-connection',
+            'DE-connection',
+        ],
+    ],
 ];
 
-$stores['AT'] = $stores['DE'];
-$stores['US'] = $stores['DE'];
+$stores['AT'] =
+    [
+        'queuePools' => [
+            'exclusivePool' => [
+                'DE-connection',
+            ],
+            'sharedPool' => [
+                'AT-connection',
+                'DE-connection',
+            ],
+        ],
+    ] + $stores['DE'];
+
+$stores['US'] = ['queuePools' => []] + $stores['DE'];
 
 return $stores;

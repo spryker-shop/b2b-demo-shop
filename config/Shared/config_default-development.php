@@ -56,10 +56,6 @@ $config[StorageConstants::STORAGE_REDIS_PASSWORD] = false;
 $config[StorageConstants::STORAGE_REDIS_DATABASE] = 0;
 
 // ---------- RabbitMQ
-$config[RabbitMqConstants::RABBITMQ_HOST] = 'localhost';
-$config[RabbitMqConstants::RABBITMQ_PORT] = '5672';
-$config[RabbitMqConstants::RABBITMQ_PASSWORD] = 'mate20mg';
-
 $config[RabbitMqConstants::RABBITMQ_API_HOST] = 'localhost';
 $config[RabbitMqConstants::RABBITMQ_API_PORT] = '15672';
 $config[RabbitMqConstants::RABBITMQ_API_USERNAME] = 'admin';

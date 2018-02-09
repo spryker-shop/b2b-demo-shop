@@ -25,5 +25,22 @@ $config[QueueConstants::QUEUE_WORKER_LOG_ACTIVE] = false;
 $config[QueueConstants::QUEUE_WORKER_OUTPUT_FILE_NAME] = 'data/DE/logs/ZED/queue.out';
 
 // ---------- RabbitMQ
-$config[RabbitMqConstants::RABBITMQ_USERNAME] = 'DE_development';
-$config[RabbitMqConstants::RABBITMQ_VIRTUAL_HOST] = '/DE_development_zed';
+$config[RabbitMqConstants::RABBITMQ_CONNECTIONS] = [
+    [
+        RabbitMqConstants::RABBITMQ_DEFAULT_CONNECTION => true,
+        RabbitMqConstants::RABBITMQ_CONNECTION_NAME => 'DE-connection',
+        RabbitMqConstants::RABBITMQ_HOST => 'localhost',
+        RabbitMqConstants::RABBITMQ_PORT => '5672',
+        RabbitMqConstants::RABBITMQ_PASSWORD => 'mate20mg',
+        RabbitMqConstants::RABBITMQ_USERNAME => 'DE_development',
+        RabbitMqConstants::RABBITMQ_VIRTUAL_HOST => '/DE_development_zed',
+    ],
+    [
+        RabbitMqConstants::RABBITMQ_CONNECTION_NAME => 'AT-connection',
+        RabbitMqConstants::RABBITMQ_HOST => 'localhost',
+        RabbitMqConstants::RABBITMQ_PORT => '5672',
+        RabbitMqConstants::RABBITMQ_PASSWORD => 'mate20mg',
+        RabbitMqConstants::RABBITMQ_USERNAME => 'AT_development',
+        RabbitMqConstants::RABBITMQ_VIRTUAL_HOST => '/AT_development_zed',
+    ],
+];
