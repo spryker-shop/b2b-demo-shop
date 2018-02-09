@@ -5,12 +5,12 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Orm\Zed\CompanyRole\Persistence;
+namespace Orm\Zed\ProductValidity\Persistence;
 
-use Spryker\Zed\CompanyRole\Persistence\Propel\AbstractSpyCompanyRole as BaseSpyCompanyRole;
+use Spryker\Zed\ProductValidity\Persistence\Propel\AbstractSpyProductValidity;
 
 /**
- * Skeleton subclass for representing a row from the 'spy_company_role' table.
+ * Skeleton subclass for representing a row from the 'spy_product_validity' table.
  *
  *
  *
@@ -19,6 +19,6 @@ use Spryker\Zed\CompanyRole\Persistence\Propel\AbstractSpyCompanyRole as BaseSpy
  * long as it does not already exist in the output directory.
  *
  */
-class SpyCompanyRole extends BaseSpyCompanyRole
+class SpyProductValidity extends AbstractSpyProductValidity
 {
 }

@@ -33,6 +33,7 @@ use Symfony\Component\Form\FormView;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\HttpFoundation\Session\Storage\MockArraySessionStorage;
 
 /**
  * Auto-generated group annotations
@@ -91,7 +92,7 @@ class CheckoutControllerTest extends Unit
         $this->controller = new CheckoutController();
 
         $sessionClient = new SessionClient();
-        $sessionClient->setContainer(new Session());
+        $sessionClient->setContainer(new Session(new MockArraySessionStorage()));
     }
 
     /**
