@@ -30,6 +30,7 @@ use Spryker\Zed\Newsletter\Business\NewsletterFacade;
 use SprykerTest\Shared\Testify\Helper\DependencyHelperTrait;
 use SprykerTest\Shared\Testify\Helper\LocatorHelperTrait;
 use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\HttpFoundation\Session\Storage\MockArraySessionStorage;
 
 class CustomerHelper extends Module
 {
@@ -248,7 +249,7 @@ class CustomerHelper extends Module
      */
     protected function setupSession()
     {
-        $sessionContainer = new Session();
+        $sessionContainer = new Session(new MockArraySessionStorage());
         $sessionClient = new SessionClient();
         $sessionClient->setContainer($sessionContainer);
     }
