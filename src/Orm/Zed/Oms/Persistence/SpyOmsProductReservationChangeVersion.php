@@ -7,7 +7,7 @@
 
 namespace Orm\Zed\Oms\Persistence;
 
-use Spryker\Zed\Oms\Persistence\Propel\AbstractSpyOmsProductReservation as BaseSpyOmsProductReservationChangeVersion;
+use Spryker\Zed\Oms\Persistence\Propel\AbstractSpyOmsProductReservationChangeVersion as BaseSpyOmsProductReservationChangeVersion;
 
 /**
  * Skeleton subclass for representing a row from the 'spy_oms_product_reservation_change_version' table.
