@@ -11,7 +11,7 @@ use Spryker\Shared\Newsletter\NewsletterConstants;
 use Spryker\Shared\Payolution\PayolutionConstants;
 use Spryker\Shared\ProductManagement\ProductManagementConstants;
 use Spryker\Shared\Propel\PropelConstants;
-use Spryker\Shared\RabbitMq\RabbitMqConstants;
+use Spryker\Shared\RabbitMq\RabbitMqEnv;
 use Spryker\Shared\Search\SearchConstants;
 use Spryker\Shared\Session\SessionConstants;
 use Spryker\Shared\ZedRequest\ZedRequestConstants;
@@ -71,8 +71,8 @@ $config[SearchConstants::ELASTICA_PARAMETER__INDEX_NAME]
     = 'de_search_devtest';
 
 // ---------- RabbitMq
-$config[RabbitMqConstants::RABBITMQ_USERNAME] = 'DE_devtest';
-$config[RabbitMqConstants::RABBITMQ_VIRTUAL_HOST] = '/DE_devtest_zed';
+$config[RabbitMqEnv::RABBITMQ_USERNAME] = 'DE_devtest';
+$config[RabbitMqEnv::RABBITMQ_VIRTUAL_HOST] = '/DE_devtest_zed';
 
 // ---------- Session
 $config[SessionConstants::YVES_SESSION_COOKIE_DOMAIN] = $config[ApplicationConstants::HOST_YVES];

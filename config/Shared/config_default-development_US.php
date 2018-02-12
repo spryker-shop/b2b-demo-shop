@@ -5,7 +5,7 @@ use Spryker\Shared\Collector\CollectorConstants;
 use Spryker\Shared\Mail\MailConstants;
 use Spryker\Shared\Propel\PropelConstants;
 use Spryker\Shared\Queue\QueueConstants;
-use Spryker\Shared\RabbitMq\RabbitMqConstants;
+use Spryker\Shared\RabbitMq\RabbitMqEnv;
 use Spryker\Shared\Search\SearchConstants;
 
 // ---------- Propel
@@ -25,15 +25,15 @@ $config[QueueConstants::QUEUE_WORKER_LOG_ACTIVE] = false;
 $config[QueueConstants::QUEUE_WORKER_OUTPUT_FILE_NAME] = 'data/US/logs/ZED/queue.out';
 
 // ---------- RabbitMQ
-$config[RabbitMqConstants::RABBITMQ_CONNECTIONS] = [
+$config[RabbitMqEnv::RABBITMQ_CONNECTIONS] = [
     [
-        RabbitMqConstants::RABBITMQ_DEFAULT_CONNECTION => true,
-        RabbitMqConstants::RABBITMQ_CONNECTION_NAME => 'US-connection',
-        RabbitMqConstants::RABBITMQ_HOST => 'localhost',
-        RabbitMqConstants::RABBITMQ_PORT => '5672',
-        RabbitMqConstants::RABBITMQ_PASSWORD => 'mate20mg',
-        RabbitMqConstants::RABBITMQ_USERNAME => 'US_development',
-        RabbitMqConstants::RABBITMQ_VIRTUAL_HOST => '/US_development_zed',
+        RabbitMqEnv::RABBITMQ_DEFAULT_CONNECTION => true,
+        RabbitMqEnv::RABBITMQ_CONNECTION_NAME => 'US-connection',
+        RabbitMqEnv::RABBITMQ_HOST => 'localhost',
+        RabbitMqEnv::RABBITMQ_PORT => '5672',
+        RabbitMqEnv::RABBITMQ_PASSWORD => 'mate20mg',
+        RabbitMqEnv::RABBITMQ_USERNAME => 'US_development',
+        RabbitMqEnv::RABBITMQ_VIRTUAL_HOST => '/US_development_zed',
     ],
 ];
 
