@@ -1,6 +1,6 @@
 {
-  "name": "spryker/shop-suite",
-  "description": "Spryker Shop Suite (private)",
+  "name": "spryker/suite-nonsplit",
+  "description": "Spryker Suite (internal)",
   "license": "MIT",
   "require": {
     "spryker/spryker": "dev-feature/core-2300-product-availability-per-store",
@@ -85,7 +85,8 @@
     "nette/php-generator": "^2.6.1",
     "phpdocumentor/reflection-docblock": "^2.0",
     "squizlabs/php_codesniffer": "~3.1.0",
-    "ajgl/breakpoint-twig-extension": "^0.3.1"
+    "ajgl/breakpoint-twig-extension": "^0.3.1",
+    "phpstan/phpstan": "^0.9.2"
   },
   "autoload": {
     "psr-4": {
@@ -141,6 +142,9 @@
     ],
     "phpstan-core": [
       "php -d memory_limit=2048M vendor/bin/phpstan analyze -c vendor/spryker/spryker/phpstan.neon vendor/spryker/spryker/Bundles/ -l 1"
+    ],
+    "phpstan-shop": [
+      "php -d memory_limit=2048M vendor/bin/phpstan analyze -c vendor/spryker/spryker-shop/phpstan.neon vendor/spryker/spryker-shop/Bundles/ -l 1"
     ],
     "phpstan-setup": "vendor/bin/console dev:ide:generate-auto-completion"
   }
