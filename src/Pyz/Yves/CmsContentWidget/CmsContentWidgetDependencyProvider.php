@@ -7,6 +7,8 @@
 
 namespace Pyz\Yves\CmsContentWidget;
 
+use Pyz\Yves\CmsContentWidgetChartConnector\Plugin\CmsChartContentWidgetPlugin;
+use Spryker\Shared\CmsContentWidgetChartConnector\ContentWidgetConfigurationProvider\CmsChartContentWidgetConfigurationProvider;
 use Spryker\Yves\CmsContentWidget\CmsContentWidgetDependencyProvider as SprykerCmsContentWidgetDependencyProvider;
 use SprykerShop\Shared\CmsContentWidgetProductConnector\ContentWidgetConfigurationProvider\CmsProductContentWidgetConfigurationProvider;
 use SprykerShop\Shared\CmsContentWidgetProductConnector\ContentWidgetConfigurationProvider\CmsProductGroupContentWidgetConfigurationProvider;
@@ -24,6 +26,9 @@ class CmsContentWidgetDependencyProvider extends SprykerCmsContentWidgetDependen
     public function getCmsContentWidgetPlugins()
     {
         return [
+            CmsChartContentWidgetConfigurationProvider::FUNCTION_NAME => new CmsChartContentWidgetPlugin(
+                new CmsChartContentWidgetConfigurationProvider()
+            ),
             CmsProductContentWidgetConfigurationProvider::FUNCTION_NAME => new CmsProductContentWidgetPlugin(
                 new CmsProductContentWidgetConfigurationProvider()
             ),

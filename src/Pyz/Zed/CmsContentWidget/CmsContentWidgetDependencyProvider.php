@@ -7,10 +7,12 @@
 
 namespace Pyz\Zed\CmsContentWidget;
 
+use Spryker\Shared\CmsContentWidgetChartConnector\ContentWidgetConfigurationProvider\CmsChartContentWidgetConfigurationProvider;
 use Spryker\Shared\CmsContentWidgetProductConnector\ContentWidgetConfigurationProvider\CmsProductContentWidgetConfigurationProvider;
 use Spryker\Shared\CmsContentWidgetProductGroupConnector\ContentWidgetConfigurationProvider\CmsProductGroupContentWidgetConfigurationProvider;
 use Spryker\Shared\CmsContentWidgetProductSetConnector\ContentWidgetConfigurationProvider\CmsProductSetContentWidgetConfigurationProvider;
 use Spryker\Zed\CmsContentWidget\CmsContentWidgetDependencyProvider as SprykerCmsContentWidgetDependencyProvider;
+use Spryker\Zed\CmsContentWidgetChartConnector\Communication\Plugin\Cms\CmsChartKeyMapperPlugin;
 use Spryker\Zed\CmsContentWidgetProductConnector\Communication\Plugin\Cms\CmsProductSkuMapperPlugin;
 use Spryker\Zed\CmsContentWidgetProductSetConnector\Communication\Plugin\Cms\CmsProductSetKeyMapperPlugin;
 use Spryker\Zed\Kernel\Container;
@@ -27,6 +29,7 @@ class CmsContentWidgetDependencyProvider extends SprykerCmsContentWidgetDependen
     protected function getCmsContentWidgetParameterMapperPlugins(Container $container)
     {
         return [
+            CmsChartContentWidgetConfigurationProvider::FUNCTION_NAME => new CmsChartKeyMapperPlugin(),
             CmsProductContentWidgetConfigurationProvider::FUNCTION_NAME => new CmsProductSkuMapperPlugin(),
             CmsProductSetContentWidgetConfigurationProvider::FUNCTION_NAME => new CmsProductSetKeyMapperPlugin(),
             CmsProductGroupContentWidgetConfigurationProvider::FUNCTION_NAME => new CmsProductSkuMapperPlugin(),
