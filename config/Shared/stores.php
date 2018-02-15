@@ -37,11 +37,11 @@ $stores['DE'] = [
     // internal and shop
     'currencyIsoCode' => 'EUR',
     'currencyIsoCodes' => ['EUR', 'CHF'],
-    'sharedPersistenceWithStores' => ['AT'],
+    'storesWithSharedPersistence' => ['AT'],
 ];
 
 $stores['AT'] = [
-        'sharedPersistenceWithStores' => ['DE'],
+        'storesWithSharedPersistence' => ['DE'],
     ] + $stores['DE'];
 
 $stores['US'] = $stores['DE'];
