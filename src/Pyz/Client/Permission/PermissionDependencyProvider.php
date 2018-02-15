@@ -7,8 +7,17 @@
 
 namespace Pyz\Client\Permission;
 
+use Spryker\Client\CompanyRole\Plugin\PermissionStoragePlugin;
+use Spryker\Client\Permission\Dependency\Plugin\PermissionStoragePluginInterface;
 use Spryker\Client\Permission\PermissionDependencyProvider as SprykerPermissionDependencyProvider;
 
 class PermissionDependencyProvider extends SprykerPermissionDependencyProvider
 {
+    /**
+     * @return PermissionStoragePluginInterface
+     */
+    protected function getPermissionStoragePlugin(): PermissionStoragePluginInterface
+    {
+        return new PermissionStoragePlugin();
+    }
 }
