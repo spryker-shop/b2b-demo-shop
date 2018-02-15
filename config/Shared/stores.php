@@ -38,9 +38,7 @@ $stores['DE'] = [
     'currencyIsoCode' => 'EUR',
     'currencyIsoCodes' => ['EUR', 'CHF'],
     'queuePools' => [
-        'exclusivePool' => [
-            'DE-connection',
-        ],
+        // TODO: rename sharedPool to euSharedPublishPool
         'sharedPool' => [
             'AT-connection',
             'DE-connection',
@@ -48,19 +46,7 @@ $stores['DE'] = [
     ],
 ];
 
-$stores['AT'] =
-    [
-        'queuePools' => [
-            'exclusivePool' => [
-                'DE-connection',
-            ],
-            'sharedPool' => [
-                'AT-connection',
-                'DE-connection',
-            ],
-        ],
-    ] + $stores['DE'];
-
+$stores['AT'] = $stores['DE'];
 $stores['US'] = ['queuePools' => []] + $stores['DE'];
 
 return $stores;

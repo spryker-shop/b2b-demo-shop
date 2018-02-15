@@ -169,9 +169,16 @@ $config[RatepayConstants::API_URL] = 'https://gateway-int.ratepay.com/api/xml/1_
 $config[PropelConstants::ZED_DB_DATABASE] = 'DE_test_zed';
 
 // ---------- RabbitMq
-$config[RabbitMqEnv::RABBITMQ_USERNAME] = 'guest';
-$config[RabbitMqEnv::RABBITMQ_PASSWORD] = 'guest';
-$config[RabbitMqEnv::RABBITMQ_VIRTUAL_HOST] = '/';
+$config[RabbitMqEnv::RABBITMQ_CONNECTIONS] = [
+    [
+        RabbitMqEnv::RABBITMQ_CONNECTION_NAME => 'DE-connection',
+        RabbitMqEnv::RABBITMQ_PASSWORD => 'guest',
+        RabbitMqEnv::RABBITMQ_USERNAME => 'guest',
+        RabbitMqEnv::RABBITMQ_VIRTUAL_HOST => '/',
+        RabbitMqEnv::RABBITMQ_STORE_NAMES => ['DE'],
+        RabbitMqEnv::RABBITMQ_DEFAULT_CONNECTION => true,
+    ],
+];
 
 // ---------- Logging
 $config[LogConstants::LOG_LEVEL] = Logger::CRITICAL;
