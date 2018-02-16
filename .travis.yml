@@ -86,8 +86,8 @@ before_script:
   - if [[ $DB == 'mysql' ]]; then sudo service mysql restart ; fi
 
   - if [[ $TEST_GROUP == 'acceptance' ]]; then config/Shared/ci/travis/acceptance_env.sh ; fi
-  - if [[ $TEST_GROUP == 'acceptance' ]]; then vendor/bin/install DE -r testing -v; fi
-  - if [[ $TEST_GROUP == 'without-acceptance' ]]; then vendor/bin/install DE -r testing -x frontend -v; fi
+  - if [[ $TEST_GROUP == 'acceptance' ]]; then vendor/bin/install DE -r testing -v ; fi
+  - if [[ $TEST_GROUP == 'without-acceptance' ]]; then vendor/bin/install DE -r testing -x frontend -v ; fi
 
 script:
   - if [[ $PHPSTAN == 1 ]] ; then composer phpstan-setup ; fi
@@ -107,6 +107,8 @@ script:
   - if [[ $TRAVIS_PHP_VERSION == 7.2 && $TEST_GROUP == 'without-acceptance' && $PHPSTAN != 1 ]] ; then vendor/bin/console dev:dependency:update-composer-files -d -v ; fi
   - if [[ $TRAVIS_PHP_VERSION == 7.2 && $TEST_GROUP == 'without-acceptance' && $PHPSTAN != 1 ]] ; then vendor/bin/phpmd src/ text vendor/spryker/spryker/Bundles/Development/src/Spryker/Zed/Development/Business/PhpMd/ruleset.xml ; fi
   - if [[ $TRAVIS_PHP_VERSION == 7.2 && $TEST_GROUP == 'without-acceptance' && $PHPSTAN != 1 ]] ; then vendor/bin/phpmd src/ text vendor/spryker/architecture-sniffer/src/ruleset.xml --minimumpriority 2 ; fi
+
+  - if [[ $TEST_GROUP == 'without-acceptance' ]]; then ./tests/travis_check_untracked.sh ; fi
 
 notifications:
   email: false
