@@ -38,8 +38,7 @@ $stores['DE'] = [
     'currencyIsoCode' => 'EUR',
     'currencyIsoCodes' => ['EUR', 'CHF'],
     'queuePools' => [
-        // TODO: rename sharedPool to euSharedPublishPool
-        'sharedPool' => [
+        'synchronizationPool' => [
             'AT-connection',
             'DE-connection',
         ],
