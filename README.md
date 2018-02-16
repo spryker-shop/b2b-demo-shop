@@ -4,14 +4,14 @@
 
 Suite (internal)
 [![Build Status](https://travis-ci.com/spryker/suite-nonsplit.svg?token=7jVDNZFJxpvBrFetYhbF&branch=master)](https://travis-ci.com/spryker/suite-nonsplit)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/spryker/suite-nonsplit/badges/quality-score.png?b=master&s=7f0c1247303c81b5047867595714ff5d7db02a5a)](https://scrutinizer-ci.com/g/spryker/suite-nonsplit/?branch=master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/spryker/suite-nonsplit/badges/quality-score.png?b=master&s=bd1f64c27e30a53590063d808335d7957af612d0)](https://scrutinizer-ci.com/g/spryker/suite-nonsplit/?branch=master)
 
 Core (internal)
 [![Build Status](https://travis-ci.com/spryker/spryker.svg?token=7jVDNZFJxpvBrFetYhbF&branch=master)](https://travis-ci.com/spryker/spryker)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/spryker/spryker/badges/quality-score.png?b=master&s=25d80f2c1a93b3ae4d907ea8e75800a87469f088)](https://scrutinizer-ci.com/g/spryker/spryker/?branch=master)
 Shop (internal)
 [![Build Status](https://travis-ci.com/spryker/spryker-shop.svg?token=7jVDNZFJxpvBrFetYhbF&branch=master)](https://travis-ci.com/spryker/spryker-shop)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/spryker/spryker-shop/badges/quality-score.png?b=master&s=25d80f2c1a93b3ae4d907ea8e75800a87469f088)](https://scrutinizer-ci.com/g/spryker/spryker-shop/?branch=master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/spryker/spryker-shop/badges/quality-score.png?b=master&s=714e779da63d6a6fc0c8844cbfb252c66e286b96)](https://scrutinizer-ci.com/g/spryker/spryker-shop/?branch=master)
 
 License: [MIT](LICENSE)
 
