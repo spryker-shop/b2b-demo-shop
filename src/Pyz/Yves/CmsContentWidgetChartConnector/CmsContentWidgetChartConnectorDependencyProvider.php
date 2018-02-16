@@ -8,19 +8,17 @@
 namespace Pyz\Yves\CmsContentWidgetChartConnector;
 
 use Spryker\Yves\CmsContentWidgetChartConnector\CmsContentWidgetChartConnectorDependencyProvider as SprykerCmsContentWidgetChartConnectorDependencyProvider;
-use Spryker\Yves\Kernel\Container;
+use SprykerShop\Yves\ChartWidget\Plugin\CmsContentWidget\ChartWidgetPlugin;
 
 class CmsContentWidgetChartConnectorDependencyProvider extends SprykerCmsContentWidgetChartConnectorDependencyProvider
 {
     /**
-     * @param \Spryker\Yves\Kernel\Container $container
-     *
-     * @return \Spryker\Yves\Kernel\Container
+     * @return string[]
      */
-    public function provideDependencies(Container $container)
+    protected function getCmsChartContentWidgetPlugins()
     {
-        $container = parent::provideDependencies($container);
-
-        return $container;
+        return [
+            ChartWidgetPlugin::class,
+        ];
     }
 }
