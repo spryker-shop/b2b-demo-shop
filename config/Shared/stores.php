@@ -46,6 +46,12 @@ $stores['DE'] = [
 ];
 
 $stores['AT'] = $stores['DE'];
-$stores['US'] = ['queuePools' => []] + $stores['DE'];
+$stores['US'] = [
+    'queuePools' => [
+        'synchronizationPool' => [
+            'US-connection',
+        ],
+    ],
+] + $stores['DE'];
 
 return $stores;
