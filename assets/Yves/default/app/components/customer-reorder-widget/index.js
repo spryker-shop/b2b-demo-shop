@@ -18,7 +18,7 @@ module.exports = {
         },
 
         onClick: function() {
-            let isNoneChecked = !this.$checkboxes.filter(':checkbox:checked').length;
+            var isNoneChecked = !this.$checkboxes.filter(':checkbox:checked').length;
 
             this.$button.prop('disabled', isNoneChecked);
         }
