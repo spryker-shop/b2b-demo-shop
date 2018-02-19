@@ -33,7 +33,7 @@ $(function(){
         require('./components/catalog-rating-filter'),
         require('./components/product-review/editable-rating'),
         require('./components/product-review/read-only-rating'),
-        require('./components/product-review/summary'),
-        require('./components/customer-reorder-widget')
+        require('./components/product-review/summary')
+        // require('./components/customer-reorder-widget')
     ]);
 });
