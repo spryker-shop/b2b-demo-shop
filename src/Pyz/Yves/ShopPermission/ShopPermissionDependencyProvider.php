@@ -1,16 +1,16 @@
 <?php
 
 /**
- * This file is part of the Spryker Suite.
+ * This file is part of the Spryker Demoshop.
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
 namespace Pyz\Yves\ShopPermission;
 
 use SprykerShop\Yves\ShopPermission\Plugin\Twig\PermissionTwigFunctionPlugin;
-use SprykerShop\Yves\ShopPermission\ShopPermissionDependencyProvider as SprykerShopPermissionDependencyProvider;
+use SprykerShop\Yves\ShopPermission\ShopPermissionDependencyProvider as SprykerShopShopPermissionDependencyProvider;
 
-class ShopPermissionDependencyProvider extends SprykerShopPermissionDependencyProvider
+class ShopPermissionDependencyProvider extends SprykerShopShopPermissionDependencyProvider
 {
     /**
      * @return \Spryker\Yves\Twig\Plugin\TwigFunctionPluginInterface[]
@@ -18,7 +18,7 @@ class ShopPermissionDependencyProvider extends SprykerShopPermissionDependencyPr
     protected function getPermissionTwigFunctionPlugins()
     {
         return [
-            new PermissionTwigFunctionPlugin(),
+            new PermissionTwigFunctionPlugin()
         ];
     }
 }
