@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Spryker Demoshop.
+ * This file is part of the Spryker Suite.
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
@@ -50,7 +50,7 @@ abstract class AbstractSprykerDynamicTypeExtension implements DynamicMethodRetur
         $docComment = $scope->getClassReflection()->getNativeReflection()->getDocComment();
 
         if (!$docComment) {
-            throw new Exception('Please add PHPDoc block');
+            throw new Exception('Please add PHPDoc block with @method annotation for "getFactory(), getQueryContainer() and/or getFacade()" if one  is used.');
         }
 
         preg_match_all('#@method\s+(?:(?P<IsStatic>static)\s+)?(?:(?P<Type>[^\(\*]+?)(?<!\|)\s+)?(?P<MethodName>[a-zA-Z0-9_]+)(?P<Parameters>(?:\([^\)]*\))?)#', $docComment, $matches, PREG_SET_ORDER);
@@ -61,6 +61,6 @@ abstract class AbstractSprykerDynamicTypeExtension implements DynamicMethodRetur
             }
         }
 
-        throw new Exception('Invalid PHPDoc block line for method ' . $methodCall->name);
+        throw new Exception(sprintf('Missing @method annotation for "%s()"', $methodCall->name));
     }
 }
