@@ -143,6 +143,9 @@
     "phpstan-core": [
       "php -d memory_limit=2048M vendor/bin/phpstan analyze -c vendor/spryker/spryker/phpstan.neon vendor/spryker/spryker/Bundles/ -l 1"
     ],
+    "phpstan-shop": [
+      "php -d memory_limit=2048M vendor/bin/phpstan analyze -c vendor/spryker/spryker-shop/phpstan.neon vendor/spryker/spryker-shop/Bundles/ -l 1"
+    ],
     "phpstan-setup": "vendor/bin/console dev:ide:generate-auto-completion"
   }
 }
