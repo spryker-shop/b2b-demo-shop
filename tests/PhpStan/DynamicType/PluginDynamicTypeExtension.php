@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Spryker Demoshop.
+ * This file is part of the Spryker Suite.
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
@@ -25,7 +25,7 @@ class PluginDynamicTypeExtension extends AbstractSprykerDynamicTypeExtension imp
     /**
      * @return string
      */
-    public static function getClass(): string
+    public function getClass(): string
     {
         return AbstractPlugin::class;
     }
