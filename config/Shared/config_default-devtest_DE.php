@@ -72,6 +72,7 @@ $config[SearchConstants::ELASTICA_PARAMETER__INDEX_NAME]
 
 // ---------- RabbitMq
 $config[RabbitMqEnv::RABBITMQ_CONNECTIONS]['DE'][RabbitMqEnv::RABBITMQ_DEFAULT_CONNECTION] = true;
+$config[RabbitMqEnv::RABBITMQ_API_VIRTUAL_HOST] = '/DE_devtest_zed';
 
 // ---------- Session
 $config[SessionConstants::YVES_SESSION_COOKIE_DOMAIN] = $config[ApplicationConstants::HOST_YVES];
