@@ -26,7 +26,7 @@ $config[QueueConstants::QUEUE_WORKER_OUTPUT_FILE_NAME] = 'data/AT/logs/ZED/queue
 
 // ---------- RabbitMQ
 $config[RabbitMqEnv::RABBITMQ_CONNECTIONS]['AT'][RabbitMqEnv::RABBITMQ_DEFAULT_CONNECTION] = true;
-$config[RabbitMqEnv::RABBITMQ_VIRTUAL_HOST] = '/AT_development_zed';
+$config[RabbitMqEnv::RABBITMQ_API_VIRTUAL_HOST] = '/AT_development_zed';
 
 // ---------- MailCatcher
 $config[MailConstants::MAILCATCHER_GUI] = sprintf('http://%s:1080', $config[ApplicationConstants::HOST_ZED]);

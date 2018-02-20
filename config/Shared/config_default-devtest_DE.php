@@ -71,8 +71,6 @@ $config[SearchConstants::ELASTICA_PARAMETER__INDEX_NAME]
     = 'de_search_devtest';
 
 // ---------- RabbitMq
-$config[RabbitMqEnv::RABBITMQ_CONNECTIONS]['DE'][RabbitMqEnv::RABBITMQ_USERNAME] = 'DE_devtest';
-$config[RabbitMqEnv::RABBITMQ_CONNECTIONS]['DE'][RabbitMqEnv::RABBITMQ_VIRTUAL_HOST] = '/DE_devtest_zed';
 $config[RabbitMqEnv::RABBITMQ_CONNECTIONS]['DE'][RabbitMqEnv::RABBITMQ_DEFAULT_CONNECTION] = true;
 
 // ---------- Session

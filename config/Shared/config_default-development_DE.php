@@ -26,4 +26,4 @@ $config[QueueConstants::QUEUE_WORKER_OUTPUT_FILE_NAME] = 'data/DE/logs/ZED/queue
 
 // ---------- RabbitMQ
 $config[RabbitMqEnv::RABBITMQ_CONNECTIONS]['DE'][RabbitMqEnv::RABBITMQ_DEFAULT_CONNECTION] = true;
-$config[RabbitMqEnv::RABBITMQ_VIRTUAL_HOST] = '/DE_development_zed';
+$config[RabbitMqEnv::RABBITMQ_API_VIRTUAL_HOST] = '/DE_development_zed';
