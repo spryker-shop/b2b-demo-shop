@@ -31,7 +31,6 @@ let config = {
     context: settings.paths.rootDir,
     stats: settings.options.isVerbose ? 'normal' : 'errors-only',
     devtool: settings.options.isProduction ? false : 'inline-source-map',
-    // devtool: settings.options.isProduction ? false : 'cheap-module-eval-source-map',
 
     watch: settings.options.isWatching,
     watchOptions: {
