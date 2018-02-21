@@ -7,7 +7,7 @@
 
 namespace Orm\Zed\GiftCardBalance\Persistence;
 
-use Spryker\Zed\GiftCardBalance\Persistence\Propel\AbstractSpyGiftCardBalanceLogQuery;
+use Orm\Zed\GiftCardBalance\Persistence\Base\SpyGiftCardBalanceLogQuery as BaseSpyGiftCardBalanceLogQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'spy_gift_card_balance_log' table.
@@ -19,6 +19,6 @@ use Spryker\Zed\GiftCardBalance\Persistence\Propel\AbstractSpyGiftCardBalanceLog
  * long as it does not already exist in the output directory.
  *
  */
-class SpyGiftCardBalanceLogQuery extends AbstractSpyGiftCardBalanceLogQuery
+class SpyGiftCardBalanceLogQuery extends BaseSpyGiftCardBalanceLogQuery
 {
 }

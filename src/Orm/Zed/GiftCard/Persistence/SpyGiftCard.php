@@ -7,7 +7,7 @@
 
 namespace Orm\Zed\GiftCard\Persistence;
 
-use Spryker\Zed\GiftCard\Persistence\Propel\AbstractSpyGiftCard;
+use Spryker\Zed\GiftCard\Persistence\Propel\AbstractSpyGiftCard as BaseSpyGiftCard;
 
 /**
  * Skeleton subclass for representing a row from the 'spy_gift_card' table.
@@ -19,6 +19,6 @@ use Spryker\Zed\GiftCard\Persistence\Propel\AbstractSpyGiftCard;
  * long as it does not already exist in the output directory.
  *
  */
-class SpyGiftCard extends AbstractSpyGiftCard
+class SpyGiftCard extends BaseSpyGiftCard
 {
 }

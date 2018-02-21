@@ -7,7 +7,7 @@
 
 namespace Orm\Zed\GiftCard\Persistence;
 
-use Spryker\Zed\GiftCard\Persistence\Propel\AbstractSpyGiftCardProductConfigurationLinkQuery;
+use Spryker\Zed\GiftCard\Persistence\Propel\AbstractSpyGiftCardProductConfigurationLinkQuery as BaseSpyGiftCardProductConfigurationLinkQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'spy_gift_card_product_configuration_link' table.
@@ -19,6 +19,6 @@ use Spryker\Zed\GiftCard\Persistence\Propel\AbstractSpyGiftCardProductConfigurat
  * long as it does not already exist in the output directory.
  *
  */
-class SpyGiftCardProductConfigurationLinkQuery extends AbstractSpyGiftCardProductConfigurationLinkQuery
+class SpyGiftCardProductConfigurationLinkQuery extends BaseSpyGiftCardProductConfigurationLinkQuery
 {
 }
