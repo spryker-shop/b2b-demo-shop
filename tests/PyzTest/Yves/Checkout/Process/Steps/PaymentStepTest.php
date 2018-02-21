@@ -13,7 +13,6 @@ use Generated\Shared\Transfer\QuoteTransfer;
 use Spryker\Yves\Messenger\FlashMessenger\FlashMessengerInterface;
 use Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginCollection;
 use Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginInterface;
-use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCalculationClientBridge;
 use SprykerShop\Yves\CheckoutPage\Process\Steps\PaymentStep;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -85,8 +84,7 @@ class PaymentStepTest extends Unit
             $paymentPlugins,
             'payment',
             'escape_route',
-            $this->getFlashMessengerMock(),
-            $this->getCalculationClientMock()
+            $this->getFlashMessengerMock()
         );
     }
 
@@ -104,14 +102,6 @@ class PaymentStepTest extends Unit
     protected function createPaymentPluginMock()
     {
         return $this->getMockBuilder(StepHandlerPluginInterface::class)->getMock();
-    }
-
-    /**
-     * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCalculationClientInterface
-     */
-    protected function getCalculationClientMock()
-    {
-        return $this->getMockBuilder(CheckoutPageToCalculationClientBridge::class)->disableOriginalConstructor()->getMock();
     }
 
     /**
