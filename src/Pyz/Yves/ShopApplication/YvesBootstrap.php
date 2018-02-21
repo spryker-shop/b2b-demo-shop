@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Spryker Demoshop.
+ * This file is part of the Spryker Suite.
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
@@ -110,12 +110,12 @@ class YvesBootstrap
     {
         $this->application->register(new SslServiceProvider());
         $this->application->register(new StorageCacheServiceProvider());
-        $this->application->register(new SprykerTwigServiceProvider());
         $this->application->register(new KernelLogServiceProvider());
         $this->application->register(new ZedRequestHeaderServiceProvider());
         $this->application->register(new ZedRequestLogServiceProvider());
 
         $this->application->register(new ShopTwigServiceProvider());
+        $this->application->register(new SprykerTwigServiceProvider());
         $this->application->register(new WidgetServiceProvider());
         $this->application->register(new ShopApplicationServiceProvider());
         $this->application->register(new DateTimeFormatterServiceProvider());
