@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "7045dca1db8760e0317e271e9877a28c",
+    "content-hash": "f1c25924d20b4c57253f985fa19efd7d",
     "packages": [
         {
             "name": "braintree/braintree_php",
@@ -1849,11 +1849,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-feature/core-2347-cart-notes",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "4460720aa221708808be13274d8b96002f9514e3"
+                "reference": "c5974fff879dd59aa129c398e9e2ab07a7fcae67"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.0",
@@ -1933,6 +1933,7 @@
                 "spryker/flysystem-aws3v3-filesystem": "*",
                 "spryker/flysystem-ftp-filesystem": "*",
                 "spryker/flysystem-local-filesystem": "*",
+                "spryker/gift-card": "*",
                 "spryker/glossary": "*",
                 "spryker/glossary-storage": "*",
                 "spryker/graph": "*",
@@ -2090,15 +2091,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2018-02-15T17:43:53+00:00"
+            "time": "2018-02-21T13:13:50+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-master",
+            "version": "dev-feature/core-2347-cart-notes",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "8ab34be8d5d5139eac90f23c6828bfa6cce7c076"
+                "reference": "54b47ccadbd2f5c4a7fca1fb03e46d12acd0d137"
             },
             "require": {
                 "php": ">=7.1"
@@ -2151,7 +2152,8 @@
                 "spryker-shop/wishlist-widget": "*"
             },
             "require-dev": {
-                "spryker/code-sniffer": "dev-master"
+                "spryker/code-sniffer": "dev-master",
+                "spryker/spryker": "dev-master"
             },
             "type": "library",
             "autoload": {
@@ -2168,7 +2170,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2018-02-15T11:41:56+00:00"
+            "time": "2018-02-21T09:56:33+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -2205,11 +2207,14 @@
                     "Spryker\\": "src/Spryker/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "https://code.spryker.com/repo/private/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "SynchronizationBehavior module",
+            "support": {
+                "source": "https://github.com/spryker/SynchronizationBehavior/tree/master"
+            },
             "time": "2017-11-13T10:53:51+00:00"
         },
         {
@@ -5387,7 +5392,7 @@
                 "BSD-3-Clause"
             ],
             "description": "Official version of pdepend to be handled with Composer",
-            "time": "2017-12-13T13:21:38+00:00"
+            "time": "2017-12-12T17:28:44+00:00"
         },
         {
             "name": "phar-io/manifest",

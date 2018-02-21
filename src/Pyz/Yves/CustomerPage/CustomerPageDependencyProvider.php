@@ -7,6 +7,8 @@
 
 namespace Pyz\Yves\CustomerPage;
 
+use SprykerShop\Yves\CartNotesWidget\Plugin\CustomerPage\CartNotesOrderItemNoteWidgetPlugin;
+use SprykerShop\Yves\CartNotesWidget\Plugin\CustomerPage\CartNotesOrderNoteWidgetPlugin;
 use SprykerShop\Yves\CustomerPage\CustomerPageDependencyProvider as SprykerShopCustomerPageDependencyProvider;
 use SprykerShop\Yves\NewsletterWidget\Plugin\CustomerPage\NewsletterSubscriptionSummaryWidgetPlugin;
 
@@ -19,6 +21,17 @@ class CustomerPageDependencyProvider extends SprykerShopCustomerPageDependencyPr
     {
         return [
             NewsletterSubscriptionSummaryWidgetPlugin::class,
+        ];
+    }
+
+    /**
+     * @return string[]
+     */
+    protected function getCustomerOrderDetailsWidgetPlugins(): array
+    {
+        return [
+            CartNotesOrderItemNoteWidgetPlugin::class,
+            CartNotesOrderNoteWidgetPlugin::class,
         ];
     }
 }

@@ -8,6 +8,7 @@
 namespace Pyz\Zed\Checkout;
 
 use Spryker\Zed\Availability\Communication\Plugin\ProductsAvailableCheckoutPreConditionPlugin;
+use Spryker\Zed\CartNotes\Communication\Plugin\Checkout\CartNotesSaverPlugin;
 use Spryker\Zed\Checkout\CheckoutDependencyProvider as SprykerCheckoutDependencyProvider;
 use Spryker\Zed\Customer\Communication\Plugin\Checkout\CustomerOrderSavePlugin;
 use Spryker\Zed\Customer\Communication\Plugin\CustomerPreConditionCheckerPlugin;
@@ -57,6 +58,7 @@ class CheckoutDependencyProvider extends SprykerCheckoutDependencyProvider
             new DiscountOrderSavePlugin(),
             new ProductBundleOrderSaverPlugin(),
             new PaymentOrderSaverPlugin(),
+            new CartNotesSaverPlugin(),
         ];
     }
 
