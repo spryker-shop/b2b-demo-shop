@@ -172,6 +172,8 @@ $config[PropelConstants::ZED_DB_DATABASE] = 'DE_test_zed';
 $config[RabbitMqEnv::RABBITMQ_CONNECTIONS] = [
     [
         RabbitMqEnv::RABBITMQ_CONNECTION_NAME => 'DE-connection',
+        RabbitMqEnv::RABBITMQ_HOST => 'localhost',
+        RabbitMqEnv::RABBITMQ_PORT => '5672',
         RabbitMqEnv::RABBITMQ_PASSWORD => 'guest',
         RabbitMqEnv::RABBITMQ_USERNAME => 'guest',
         RabbitMqEnv::RABBITMQ_VIRTUAL_HOST => '/',
