@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Spryker Demoshop.
+ * This file is part of the Spryker Suite.
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
@@ -10,6 +10,9 @@ namespace Pyz\Zed\DataImport\Business\Model\DataImportStep;
 use Pyz\Zed\DataImport\Business\Model\DataImporterPublisher;
 use Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepAfterExecuteInterface;
 
+/**
+ * @SuppressWarnings(PHPMD.NumberOfChildren)
+ */
 class PublishAwareStep implements DataImportStepAfterExecuteInterface
 {
     /**
@@ -27,12 +30,12 @@ class PublishAwareStep implements DataImportStepAfterExecuteInterface
 
     /**
      * @param string $eventName
-     * @param int $id
+     * @param int $entityId
      *
      * @return void
      */
-    public function addPublishEvents($eventName, $id)
+    public function addPublishEvents($eventName, $entityId)
     {
-        $this->entityEvents[$eventName][] = $id;
+        $this->entityEvents[$eventName][] = $entityId;
     }
 }
