@@ -30,8 +30,8 @@ class CustomerPageDependencyProvider extends SprykerShopCustomerPageDependencyPr
     protected function getCustomerOrderDetailsWidgetPlugins(): array
     {
         return [
-            CartNoteOrderItemNoteWidgetPlugin::class, #CartNotesFeature
-            CartNoteOrderNoteWidgetPlugin::class, #CartNotesFeature
+            CartNoteOrderItemNoteWidgetPlugin::class, #CartNoteFeature
+            CartNoteOrderNoteWidgetPlugin::class, #CartNoteFeature
         ];
     }
 }
