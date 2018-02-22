@@ -8,6 +8,7 @@
 namespace Pyz\Yves\ShopApplication;
 
 use Pyz\Yves\ExampleProductSalePage\Plugin\Provider\ExampleProductSaleControllerProvider;
+use RuntimeException;
 use Silex\Provider\FormServiceProvider;
 use Silex\Provider\HttpFragmentServiceProvider;
 use Silex\Provider\RememberMeServiceProvider;
@@ -16,10 +17,13 @@ use Silex\Provider\ServiceControllerServiceProvider;
 use Silex\Provider\SessionServiceProvider;
 use Silex\Provider\ValidatorServiceProvider;
 use Spryker\Service\UtilDateTime\ServiceProvider\DateTimeFormatterServiceProvider;
+use Spryker\Shared\Application\ApplicationConstants;
 use Spryker\Shared\Application\ServiceProvider\FormFactoryServiceProvider;
 use Spryker\Shared\Application\ServiceProvider\HeadersSecurityServiceProvider;
 use Spryker\Shared\Application\ServiceProvider\RoutingServiceProvider;
 use Spryker\Shared\Application\ServiceProvider\UrlGeneratorServiceProvider;
+use Spryker\Shared\Config\Config;
+use Spryker\Shared\Config\Environment;
 use Spryker\Yves\Application\ApplicationConfig;
 use Spryker\Yves\Application\Plugin\Provider\CookieServiceProvider;
 use Spryker\Yves\Application\Plugin\Provider\YvesHstsServiceProvider;
@@ -98,6 +102,8 @@ class YvesBootstrap
      */
     public function boot()
     {
+        $this->assertMatchingHostName();
+
         $this->registerServiceProviders();
         $this->registerRouters();
         $this->registerControllerProviders();
@@ -208,5 +214,27 @@ class YvesBootstrap
             new PriceControllerProvider($isSsl),
             new CompanyPageControllerProvider($isSsl),
         ];
+    }
+
+    /**
+     * @return void
+     */
+    protected function assertMatchingHostName()
+    {
+        if (empty($_SERVER['HTTP_HOST']) || Environment::isProduction()) {
+            return;
+        }
+
+        $configuredHostName = Config::get(ApplicationConstants::HOST_YVES);
+        $actualHostName = $_SERVER['HTTP_HOST'];
+        if ($actualHostName === $configuredHostName) {
+            return;
+        }
+
+        throw new RuntimeException(sprintf(
+            'Incorrect HOST_YVES config, expected `%s`, got `%s`. Set the URLs in your Shared/config_default_xx.php files.',
+            $actualHostName,
+            $configuredHostName
+        ));
     }
 }
