@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "1365f8ddda78b90a515c4137b62ae8ba",
+    "content-hash": "6ae416393453313dd06785d712f11f48",
     "packages": [
         {
             "name": "braintree/braintree_php",
@@ -1834,23 +1834,24 @@
         },
         {
             "name": "spryker/rabbit-mq",
-            "version": "dev-master",
+            "version": "dev-feature/core-2977-adapt-multi-store-to-publish-synchronize",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/rabbit-mq.git",
-                "reference": "3c84d57b244f9a36ada13a0b1f21ff7162d82c6f"
+                "reference": "ca0e75c349044357859d8802d004437f38a99fe8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/rabbit-mq/zipball/3c84d57b244f9a36ada13a0b1f21ff7162d82c6f",
-                "reference": "3c84d57b244f9a36ada13a0b1f21ff7162d82c6f",
+                "url": "https://api.github.com/repos/spryker/rabbit-mq/zipball/ca0e75c349044357859d8802d004437f38a99fe8",
+                "reference": "ca0e75c349044357859d8802d004437f38a99fe8",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
                 "php-amqplib/php-amqplib": "^2.6",
                 "spryker/kernel": "^3.0.0",
-                "spryker/queue": "^1.0.0",
+                "spryker/queue": "^1.2.0",
+                "spryker/store": "^1.4.0",
                 "spryker/transfer": "^3.3.4"
             },
             "require-dev": {
@@ -1888,15 +1889,15 @@
                 "rabbit-mq",
                 "standards"
             ],
-            "time": "2018-01-26T13:26:48+00:00"
+            "time": "2018-02-20T14:03:49+00:00"
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-feature/core-2977-adapt-multi-store-to-publish-synchronize",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "680bcd1e3ae9fc9d08f26d34cc35818c2d5d921a"
+                "reference": "0e377f19040755c88745022a8bed791cb9085b3d"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.0",
@@ -2134,15 +2135,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2018-02-23T14:32:52+00:00"
+            "time": "2018-02-27T13:50:08+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-master",
+            "version": "dev-feature/core-2977-adapt-multi-store-to-publish-synchronize",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "3a2cdd5039399e26c7ba4d7a51c02b92c3b55ca0"
+                "reference": "8383a1681765599d87a5271ad543fa9f5fa9d7f0"
             },
             "require": {
                 "php": ">=7.1"
@@ -2213,20 +2214,20 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2018-02-26T15:53:11+00:00"
+            "time": "2018-02-26T14:56:18+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
-            "version": "dev-master",
+            "version": "dev-feature/core-2977-adapt-multi-store-to-publish-synchronize",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/synchronization-behavior.git",
-                "reference": "4729e470bd1c1c4b8aed3a94b0a44003485684d7"
+                "reference": "a5cf1566b7480803a33cf36146af308dbac3f378"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/synchronization-behavior/zipball/4729e470bd1c1c4b8aed3a94b0a44003485684d7",
-                "reference": "4729e470bd1c1c4b8aed3a94b0a44003485684d7",
+                "url": "https://api.github.com/repos/spryker/synchronization-behavior/zipball/a5cf1566b7480803a33cf36146af308dbac3f378",
+                "reference": "a5cf1566b7480803a33cf36146af308dbac3f378",
                 "shasum": ""
             },
             "require": {
@@ -2235,10 +2236,12 @@
                 "spryker/zend": "^2.1.0"
             },
             "require-dev": {
+                "spryker/queue": "^1.2.0",
                 "spryker/synchronization": "^0.1.0 || ^0.2.0"
             },
             "suggest": {
-                "spryker/synchronization": "*"
+                "spryker/queue": "Generated classes are using spryker/queue module.",
+                "spryker/synchronization": "Generated classes are using spryker/synchronization module."
             },
             "type": "propel-behavior",
             "extra": {
@@ -2258,7 +2261,7 @@
                 "proprietary"
             ],
             "description": "SynchronizationBehavior module",
-            "time": "2018-02-26T14:04:23+00:00"
+            "time": "2018-02-26T14:55:44+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -5522,12 +5525,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/pdepend/pdepend.git",
-                "reference": "4388d7ba40ffc371520a7e2d754c55a66bcdb8dc"
+                "reference": "9daf26d0368d4a12bed1cacae1a9f3a6f0adf239"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pdepend/pdepend/zipball/4388d7ba40ffc371520a7e2d754c55a66bcdb8dc",
-                "reference": "4388d7ba40ffc371520a7e2d754c55a66bcdb8dc",
+                "url": "https://api.github.com/repos/pdepend/pdepend/zipball/9daf26d0368d4a12bed1cacae1a9f3a6f0adf239",
+                "reference": "9daf26d0368d4a12bed1cacae1a9f3a6f0adf239",
                 "shasum": ""
             },
             "require": {
