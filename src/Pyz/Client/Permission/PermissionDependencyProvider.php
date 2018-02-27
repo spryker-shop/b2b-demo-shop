@@ -7,6 +7,9 @@
 
 namespace Pyz\Client\Permission;
 
+use SprykerShop\Shared\CartPage\Plugin\AddCartItemPermissionPlugin;
+use SprykerShop\Shared\CartPage\Plugin\ChangeCartItemPermissionPlugin;
+use SprykerShop\Shared\CartPage\Plugin\RemoveCartItemPermissionPlugin;
 use Spryker\Client\CompanyRole\Plugin\PermissionStoragePlugin;
 use Spryker\Client\CompanyUser\Plugin\AddCompanyUserPermissionPlugin;
 use Spryker\Client\Permission\Dependency\Plugin\PermissionStoragePluginInterface;
@@ -29,7 +32,10 @@ class PermissionDependencyProvider extends SprykerPermissionDependencyProvider
     protected function getPermissionPlugins(): array
     {
         return [
-            new AddCompanyUserPermissionPlugin()
+            new AddCompanyUserPermissionPlugin(),
+            new AddCartItemPermissionPlugin(),
+            new RemoveCartItemPermissionPlugin(),
+            new ChangeCartItemPermissionPlugin()
         ];
     }
 }
