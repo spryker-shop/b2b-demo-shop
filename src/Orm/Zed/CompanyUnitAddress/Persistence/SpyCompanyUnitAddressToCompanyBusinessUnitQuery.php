@@ -7,7 +7,7 @@
 
 namespace Orm\Zed\CompanyUnitAddress\Persistence;
 
-use Orm\Zed\CompanyUnitAddress\Persistence\Base\SpyCompanyUnitAddressToCompanyBusinessUnitQuery as BaseSpyCompanyUnitAddressToCompanyBusinessUnitQuery;
+use Spryker\Zed\CompanyUnitAddress\Persistence\Propel\AbstractSpyCompanyUnitAddressToCompanyBusinessUnitQuery as BaseSpyCompanyUnitAddressToCompanyBusinessUnitQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'spy_company_unit_address_to_company_business_unit' table.
