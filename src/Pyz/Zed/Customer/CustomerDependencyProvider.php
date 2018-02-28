@@ -62,7 +62,7 @@ class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
         return [
             new CustomerTransferUsernameExpanderPlugin(),
             new CustomerTransferCompanyUserExpanderPlugin(),
-            new PermissionCustomerExpanderPlugin()
+            new PermissionCustomerExpanderPlugin(),
         ];
     }
 }
