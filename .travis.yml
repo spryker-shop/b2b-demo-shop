@@ -59,8 +59,8 @@ before_install:
 
 install:
   - chmod -R a+x config/Shared/ci/travis/
-  - if [[ -d 'vendor/spryker/spryker' ]] ; then cd vendor/spryker/spryker && git clean -f -d && cd - ; fi
-  - if [[ -d 'vendor/spryker/spryker-shop' ]] ; then cd vendor/spryker/spryker-shop && git clean -f -d && cd - ; fi
+  - if [[ -d 'vendor/spryker/spryker' ]] ; then cd vendor/spryker/spryker && git reset --hard && git clean -f -d && cd - ; fi
+  - if [[ -d 'vendor/spryker/spryker-shop' ]] ; then cd vendor/spryker/spryker-shop && git reset --hard && git clean -f -d && cd - ; fi
   - if [[ -d 'vendor/spryker/synchronization-behavior' ]] ; then cd vendor/spryker/synchronization-behavior && git clean -f -d && cd - ; fi
   - composer remove --dev spryker/git-hook
   - composer install --optimize-autoloader --no-interaction
