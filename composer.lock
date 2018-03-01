@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "6ae416393453313dd06785d712f11f48",
+    "content-hash": "284b4db78b5986b9c13b85ef3d771108",
     "packages": [
         {
             "name": "braintree/braintree_php",
@@ -758,16 +758,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "1.0.42",
+            "version": "1.0.43",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "09eabc54e199950041aef258a85847676496fe8e"
+                "reference": "1ce7cc142d906ba58dc54c82915d355a9191c8a8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/09eabc54e199950041aef258a85847676496fe8e",
-                "reference": "09eabc54e199950041aef258a85847676496fe8e",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/1ce7cc142d906ba58dc54c82915d355a9191c8a8",
+                "reference": "1ce7cc142d906ba58dc54c82915d355a9191c8a8",
                 "shasum": ""
             },
             "require": {
@@ -838,7 +838,7 @@
                 "sftp",
                 "storage"
             ],
-            "time": "2018-01-27T16:03:56+00:00"
+            "time": "2018-03-01T10:27:04+00:00"
         },
         {
             "name": "mandrill/mandrill",
@@ -1345,16 +1345,16 @@
         },
         {
             "name": "propel/propel",
-            "version": "dev-master",
+            "version": "2.0.0-alpha8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/propelorm/Propel2.git",
-                "reference": "1f6557d1a6f436b6bb08099238878246362028ca"
+                "reference": "4c309e3e5adaba077f54c0fab93c34995d7c9b3d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/propelorm/Propel2/zipball/1f6557d1a6f436b6bb08099238878246362028ca",
-                "reference": "1f6557d1a6f436b6bb08099238878246362028ca",
+                "url": "https://api.github.com/repos/propelorm/Propel2/zipball/4c309e3e5adaba077f54c0fab93c34995d7c9b3d",
+                "reference": "4c309e3e5adaba077f54c0fab93c34995d7c9b3d",
                 "shasum": ""
             },
             "require": {
@@ -1405,7 +1405,7 @@
                 "orm",
                 "persistence"
             ],
-            "time": "2018-01-27T02:17:16+00:00"
+            "time": "2018-02-19T12:58:55+00:00"
         },
         {
             "name": "psr/container",
@@ -1834,24 +1834,18 @@
         },
         {
             "name": "spryker/rabbit-mq",
-            "version": "dev-feature/core-2977-adapt-multi-store-to-publish-synchronize",
+            "version": "dev-merge/core-2793-2977-pub-and-syn-multi-store",
             "source": {
                 "type": "git",
-                "url": "https://github.com/spryker/rabbit-mq.git",
-                "reference": "de4db346c8273103890562bd618ead1fa9e1dcca"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker/rabbit-mq/zipball/de4db346c8273103890562bd618ead1fa9e1dcca",
-                "reference": "de4db346c8273103890562bd618ead1fa9e1dcca",
-                "shasum": ""
+                "url": "git@github.com:spryker/rabbit-mq.git",
+                "reference": "ca0e75c349044357859d8802d004437f38a99fe8"
             },
             "require": {
                 "php": ">=7.1",
                 "php-amqplib/php-amqplib": "^2.6",
                 "spryker/kernel": "^3.0.0",
                 "spryker/queue": "^1.2.0",
-                "spryker/store": "^1.6.0",
+                "spryker/store": "^1.4.0",
                 "spryker/transfer": "^3.3.4"
             },
             "require-dev": {
@@ -1868,10 +1862,22 @@
                     "Spryker\\": "src/Spryker/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "SprykerTest\\": "tests/SprykerTest/"
+                }
+            },
             "include-path": [
                 "src/"
             ],
+            "scripts": {
+                "cs-check": [
+                    "phpcs --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml -v --ignore=/rabbit-mq/vendor/,/templates/ ./"
+                ],
+                "cs-fix": [
+                    "phpcbf --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml -v --ignore=/rabbit-mq/vendor/,/templates/ ./"
+                ]
+            },
             "license": [
                 "MIT"
             ],
@@ -1889,15 +1895,18 @@
                 "rabbit-mq",
                 "standards"
             ],
-            "time": "2018-02-27T16:51:45+00:00"
+            "support": {
+                "source": "https://github.com/spryker/rabbit-mq"
+            },
+            "time": "2018-02-20T14:03:49+00:00"
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-feature/core-2977-adapt-multi-store-to-publish-synchronize",
+            "version": "dev-merge/core-2793-2977-pub-and-syn-multi-store",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "1c815754e258c2fadb78d94565f1c97354a0c885"
+                "reference": "3e66d2af69d49ae50ec50f6337d67babf4f27b89"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.0",
@@ -2135,15 +2144,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2018-02-28T15:06:10+00:00"
+            "time": "2018-03-01T16:03:33+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-feature/core-2977-adapt-multi-store-to-publish-synchronize",
+            "version": "dev-merge/core-2793-2977-pub-and-syn-multi-store",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "0f0e3fa6c925de45d571a6e619c3d605de6a682f"
+                "reference": "059cada29cab0c0fec9953965c020313e81dfd08"
             },
             "require": {
                 "php": ">=7.1"
@@ -2214,34 +2223,24 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2018-02-27T15:35:30+00:00"
+            "time": "2018-03-01T16:10:17+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
-            "version": "dev-feature/core-2977-adapt-multi-store-to-publish-synchronize",
+            "version": "dev-merge/core-2793-2977-pub-and-syn-multi-store",
             "source": {
                 "type": "git",
-                "url": "https://github.com/spryker/synchronization-behavior.git",
-                "reference": "a5cf1566b7480803a33cf36146af308dbac3f378"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker/synchronization-behavior/zipball/a5cf1566b7480803a33cf36146af308dbac3f378",
-                "reference": "a5cf1566b7480803a33cf36146af308dbac3f378",
-                "shasum": ""
+                "url": "git@github.com:spryker/synchronization-behavior.git",
+                "reference": "d0774b9fcbc6c7227f3bddcb5559d53266e48229"
             },
             "require": {
                 "spryker/kernel": "^3.4.0",
                 "spryker/propel-orm": "^1.0.0",
                 "spryker/zend": "^2.1.0"
             },
-            "require-dev": {
-                "spryker/queue": "^1.2.0",
-                "spryker/synchronization": "^0.1.0 || ^0.2.0"
-            },
             "suggest": {
-                "spryker/queue": "Generated classes are using spryker/queue module.",
-                "spryker/synchronization": "Generated classes are using spryker/synchronization module."
+                "spryker/queue": "^1.2.0",
+                "spryker/synchronizationBehavior": "^0.1.0"
             },
             "type": "propel-behavior",
             "extra": {
@@ -2256,12 +2255,11 @@
                     "Spryker\\": "src/Spryker/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "SynchronizationBehavior module",
-            "time": "2018-02-26T14:55:44+00:00"
+            "time": "2018-03-01T16:09:21+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -5421,16 +5419,16 @@
         },
         {
             "name": "nikic/php-parser",
-            "version": "v3.1.4",
+            "version": "v3.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "e57b3a09784f846411aa7ed664eedb73e3399078"
+                "reference": "bb87e28e7d7b8d9a7fda231d37457c9210faf6ce"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/e57b3a09784f846411aa7ed664eedb73e3399078",
-                "reference": "e57b3a09784f846411aa7ed664eedb73e3399078",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/bb87e28e7d7b8d9a7fda231d37457c9210faf6ce",
+                "reference": "bb87e28e7d7b8d9a7fda231d37457c9210faf6ce",
                 "shasum": ""
             },
             "require": {
@@ -5468,7 +5466,7 @@
                 "parser",
                 "php"
             ],
-            "time": "2018-01-25T21:31:33+00:00"
+            "time": "2018-02-28T20:30:58+00:00"
         },
         {
             "name": "ocramius/package-versions",
@@ -5709,59 +5707,6 @@
                 }
             ],
             "time": "2016-01-25T08:17:30+00:00"
-        },
-        {
-            "name": "phploc/phploc",
-            "version": "3.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/sebastianbergmann/phploc.git",
-                "reference": "74f917e6f80f291856989960d31afa44a4196859"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phploc/zipball/74f917e6f80f291856989960d31afa44a4196859",
-                "reference": "74f917e6f80f291856989960d31afa44a4196859",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.6",
-                "sebastian/finder-facade": "~1.1",
-                "sebastian/git": "~2.1",
-                "sebastian/version": "~1.0.3|~2.0",
-                "symfony/console": "~2.5|~3.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~5"
-            },
-            "bin": [
-                "phploc"
-            ],
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.0-dev"
-                }
-            },
-            "autoload": {
-                "classmap": [
-                    "src/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de",
-                    "role": "lead"
-                }
-            ],
-            "description": "A tool for quickly measuring the size of a PHP project.",
-            "homepage": "https://github.com/sebastianbergmann/phploc",
-            "time": "2016-04-25T08:11:21+00:00"
         },
         {
             "name": "phpmd/phpmd",
@@ -6710,52 +6655,6 @@
             "time": "2017-11-18T17:31:49+00:00"
         },
         {
-            "name": "sebastian/git",
-            "version": "2.1.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/sebastianbergmann/git.git",
-                "reference": "815bbbc963cf35e5413df195aa29df58243ecd24"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/git/zipball/815bbbc963cf35e5413df195aa29df58243ecd24",
-                "reference": "815bbbc963cf35e5413df195aa29df58243ecd24",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.3"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.1-dev"
-                }
-            },
-            "autoload": {
-                "classmap": [
-                    "src/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Sebastian Bergmann",
-                    "email": "sebastian@phpunit.de"
-                }
-            ],
-            "description": "Simple wrapper for Git",
-            "homepage": "http://www.github.com/sebastianbergmann/git",
-            "keywords": [
-                "git"
-            ],
-            "abandoned": true,
-            "time": "2017-01-23T20:57:12+00:00"
-        },
-        {
             "name": "sebastian/global-state",
             "version": "2.0.0",
             "source": {
@@ -7225,16 +7124,16 @@
         },
         {
             "name": "slevomat/coding-standard",
-            "version": "4.4.7",
+            "version": "4.4.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/slevomat/coding-standard.git",
-                "reference": "43a8563b0191d8710cc225ed56ccfb4a37fac55e"
+                "reference": "8107d1790f98ae67b768bed3728d3d05c0f9fb80"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/slevomat/coding-standard/zipball/43a8563b0191d8710cc225ed56ccfb4a37fac55e",
-                "reference": "43a8563b0191d8710cc225ed56ccfb4a37fac55e",
+                "url": "https://api.github.com/repos/slevomat/coding-standard/zipball/8107d1790f98ae67b768bed3728d3d05c0f9fb80",
+                "reference": "8107d1790f98ae67b768bed3728d3d05c0f9fb80",
                 "shasum": ""
             },
             "require": {
@@ -7261,7 +7160,7 @@
                 "MIT"
             ],
             "description": "Slevomat Coding Standard for PHP_CodeSniffer complements Consistence Coding Standard by providing sniffs with additional checks.",
-            "time": "2018-02-27T22:46:58+00:00"
+            "time": "2018-02-28T23:33:43+00:00"
         },
         {
             "name": "sllh/composer-versions-check",
@@ -8167,7 +8066,6 @@
         "spryker/install": 20,
         "spryker/event-behavior": 20,
         "spryker/synchronization-behavior": 20,
-        "propel/propel": 20,
         "spryker/architecture-sniffer": 20,
         "spryker/code-generator": 20,
         "spryker/code-sniffer": 20,
