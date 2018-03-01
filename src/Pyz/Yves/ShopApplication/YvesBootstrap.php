@@ -70,8 +70,8 @@ use SprykerShop\Yves\ShopLayout\Plugin\Provider\LanguageServiceProvider;
 use SprykerShop\Yves\ShopPermission\Plugin\Provider\ShopPermissionServiceProvider;
 use SprykerShop\Yves\ShopRouter\Plugin\Router\SilexRouter;
 use SprykerShop\Yves\ShopRouter\Plugin\Router\StorageRouter;
-use SprykerShop\Yves\ShopUi\Plugin\Provider\ShopUiTwigServiceProvider;
 use SprykerShop\Yves\ShopTranslator\Plugin\Provider\TranslationServiceProvider;
+use SprykerShop\Yves\ShopUi\Plugin\Provider\ShopUiTwigServiceProvider;
 use SprykerShop\Yves\WebProfilerWidget\Plugin\ServiceProvider\WebProfilerWidgetServiceProvider;
 use SprykerShop\Yves\WishlistPage\Plugin\Provider\WishlistPageControllerProvider;
 

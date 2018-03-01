@@ -9,13 +9,22 @@
     "url": "http://spryker.com/"
   },
   "scripts": {
-    "yves": "node ./vendor/spryker/spryker-shop/Bundles/ShopUi/src/SprykerShop/Yves/ShopUi/Theme/default/build",
-    "yves:watch": "node ./vendor/spryker/spryker-shop/Bundles/ShopUi/src/SprykerShop/Yves/ShopUi/Theme/default/build --watch",
+    "yves": "node ./node_modules/@spryker/shop-ui-builder/tasks/build",
+    "yves:watch": "node ./node_modules/@spryker/shop-ui-builder/tasks/watch",
     "zed": "node ./node_modules/@spryker/oryx-for-zed/build",
     "zed:watch": "node ./node_modules/@spryker/oryx-for-zed/build --dev"
   },
   "dependencies": {
     "@spryker/oryx": "^1.1.0",
-    "@spryker/oryx-for-zed": "^1.1.1"
+    "@spryker/oryx-for-zed": "^1.1.1",
+    "@spryker/shop-ui-builder": "file:vendor/spryker/spryker-shop/Bundles/ShopUi/src/SprykerShop/Yves/ShopUi/Theme/default/builder"
+  },
+  "config": {
+    "shopUi": {
+      "name": "yves_default",
+      "theme": "default",
+      "publicPath": "./public/Yves/assets",
+      "modulePath": "./vendor/spryker/spryker-shop/Bundles/ShopUi"
+    }
   }
 }
