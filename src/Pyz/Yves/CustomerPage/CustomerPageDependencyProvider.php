@@ -27,7 +27,7 @@ class CustomerPageDependencyProvider extends SprykerShopCustomerPageDependencyPr
     /**
      * @return string[]
      */
-    protected function getCustomerOrderWidgetPlugins(): array
+    protected function getCustomerOrderListWidgetPlugins(): array
     {
         return [
             CustomerReorderWidgetPlugin::class,
