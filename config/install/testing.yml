@@ -38,6 +38,9 @@ sections:
 
 
     database-flush:
+        drop-database:
+            command: "vendor/bin/console propel:database:drop"
+
         delete-migration-files:
             command: "vendor/bin/console propel:migration:delete"
 
