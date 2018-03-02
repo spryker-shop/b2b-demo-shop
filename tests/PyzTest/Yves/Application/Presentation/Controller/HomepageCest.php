@@ -31,6 +31,6 @@ class HomepageCest
     {
         $i->wantTo('See that i can open the homepage');
         $i->amOnPage(Homepage::URL);
-        $i->canSeeElement(['data-qa' => 'page']);
+        $i->canSeeElement('[data-qa="page"]');
     }
 }

@@ -53,7 +53,7 @@ class CheckoutAvailabilityCest
         $i->amZed();
         $i->amLoggedInUser();
 
-        $idProductFujitsu = 118;
+        $idProductFujitsu = 301;
 
         $i->amOnPage(sprintf(AvailabilityViewPage::VIEW_PRODUCT_AVAILABILITY_URL, $idProductFujitsu));
 
