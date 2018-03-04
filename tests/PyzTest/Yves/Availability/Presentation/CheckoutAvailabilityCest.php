@@ -34,7 +34,7 @@ class CheckoutAvailabilityCest
      */
     public function testCheckoutItemWithAvailability(AvailabilityPresentationTester $i, Scenario $scenario)
     {
-        if (version_compare(PHP_VERSION, '7.2', '>=')) {
+        if (version_compare(PHP_VERSION, '7.2', '<')) {
             $scenario->skip('Re-enable the test when VM with PHP 7.2 is available.');
         }
 
