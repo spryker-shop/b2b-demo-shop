@@ -30,7 +30,7 @@ class CustomerRegistrationCest
     public function testICanOpenRegistrationPage(CustomerPresentationTester $i)
     {
         $i->amOnPage(CustomerRegistrationPage::URL);
-        $i->see(CustomerRegistrationPage::TITLE_CREATE_ACCOUNT, 'h4');
+        $i->see(CustomerRegistrationPage::TITLE_CREATE_ACCOUNT);
     }
 
     /**
@@ -44,6 +44,6 @@ class CustomerRegistrationCest
         $i->fillOutRegistrationForm();
         $i->click(CustomerRegistrationPage::BUTTON_REGISTER);
         $i->seeCurrentUrlEquals(CustomerOverviewPage::URL);
-        $i->see(CustomerRegistrationPage::SUCCESS_MESSAGE);
+        $i->seeInSource(CustomerRegistrationPage::SUCCESS_MESSAGE);
     }
 }

@@ -32,7 +32,7 @@ class CheckoutHelper extends Module
         $tester->fillField('//*[@id="registerForm_customer_email"]', 'email-test@domain-' . rand(100, 999) . '.tld');
         $tester->fillField('//*[@id="registerForm_customer_password_pass"]', 'as');
         $tester->fillField('//*[@id="registerForm_customer_password_confirm"]', 'as');
-        $tester->click('[data-qa="registerForm_customer_accept_terms"]');
+        $tester->click('[data-qa*="registerForm_customer_accept_terms"] [data-qa="label"]');
 
         return $this;
     }
@@ -43,7 +43,7 @@ class CheckoutHelper extends Module
     public function clickRegisterButton()
     {
         $tester = $this->getWebDriver();
-        $tester->click('[data-qa="register-form-submit-button"]');
+        $tester->click('[data-qa*="register-form"] [data-qa="submit-button"]');
 
         return $this;
     }
@@ -77,7 +77,7 @@ class CheckoutHelper extends Module
         $tester = $this->getWebDriver();
         $tester->see('Shipment');
 
-        $tester->click('[data-qa="shipmentForm_idShipmentMethod_1"]');
+        $tester->click('[data-qa*="shipmentForm_idShipmentMethod_1"] [data-qa="label"]');
 
         return $this;
     }
@@ -112,7 +112,7 @@ class CheckoutHelper extends Module
         $tester = $this->getWebDriver();
         $tester->see('Payment');
 
-        $tester->click('[data-qa="paymentForm_paymentSelection_1-label"]');
+        $tester->click('[data-qa*="paymentForm_paymentSelection_1"] [data-qa="label"]');
         $tester->executeJS('document.querySelector(".js-payment-method-2").classList.remove("is-hidden")');
         $tester->fillField('//*[@id="paymentForm_dummyPaymentInvoice_date_of_birth"]', '01.07.1985');
 
