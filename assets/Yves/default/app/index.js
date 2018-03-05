@@ -33,6 +33,7 @@ $(function(){
         require('./components/catalog-rating-filter'),
         require('./components/product-review/editable-rating'),
         require('./components/product-review/read-only-rating'),
-        require('./components/product-review/summary')
+        require('./components/product-review/summary'),
+        require('./components/quick-order-page')
     ]);
 });
