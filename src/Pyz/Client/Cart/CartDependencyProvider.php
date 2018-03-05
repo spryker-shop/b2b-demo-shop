@@ -9,6 +9,7 @@ namespace Pyz\Client\Cart;
 
 use Spryker\Client\Cart\CartDependencyProvider as SprykerCartDependencyProvider;
 use Spryker\Client\Kernel\Container;
+use Spryker\Client\PersistentCart\Plugin\DatabaseQuoteStorageStrategy;
 use Spryker\Client\ProductBundle\Plugin\Cart\ItemCountPlugin;
 
 class CartDependencyProvider extends SprykerCartDependencyProvider
@@ -25,5 +26,16 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
         };
 
         return $container;
+    }
+
+    /**
+     * @return \Spryker\Client\Cart\Dependency\Plugin\QuoteStorageStrategyPluginInterface[]
+     */
+    protected function getQuoteStorageStrategyPlugins()
+    {
+        $quoteStorageStrategyPlugins = parent::getQuoteStorageStrategyPlugins();
+        $quoteStorageStrategyPlugins[] = new DatabaseQuoteStorageStrategy();
+
+        return $quoteStorageStrategyPlugins;
     }
 }
