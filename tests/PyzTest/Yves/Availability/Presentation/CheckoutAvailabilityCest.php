@@ -34,9 +34,7 @@ class CheckoutAvailabilityCest
      */
     public function testCheckoutItemWithAvailability(AvailabilityPresentationTester $i, Scenario $scenario)
     {
-        if (version_compare(PHP_VERSION, '7.2', '>=')) {
-            $scenario->skip('Re-enable the test when VM with PHP 7.2 is available.');
-        }
+        $scenario->skip('Re-enable the test when VM with PHP 7.2 is available.');
 
         $i->wantTo('Checkout item with stock');
         $i->expectTo('Availability changed during SM processing.');
@@ -53,7 +51,7 @@ class CheckoutAvailabilityCest
         $i->amZed();
         $i->amLoggedInUser();
 
-        $idProductFujitsu = 118;
+        $idProductFujitsu = 301;
 
         $i->amOnPage(sprintf(AvailabilityViewPage::VIEW_PRODUCT_AVAILABILITY_URL, $idProductFujitsu));
 
