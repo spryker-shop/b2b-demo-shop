@@ -17,14 +17,15 @@
   "dependencies": {
     "@spryker/oryx": "^1.1.0",
     "@spryker/oryx-for-zed": "^1.1.1",
-    "@spryker/shop-ui-builder": "file:vendor/spryker-shop/ShopUi/src/SprykerShop/Yves/ShopUi/Theme/default/builder"
+    "@spryker/shop-ui-builder": "file:vendor/spryker-shop/shop-ui/src/SprykerShop/Yves/ShopUi/Theme/default/builder",
+    "css-loader": "^0.28.10"
   },
   "config": {
     "shopUi": {
       "name": "yves_default",
       "theme": "default",
       "publicPath": "./public/Yves/assets",
-      "modulePath": "./vendor/spryker-shop/ShopUi"
+      "modulePath": "./vendor/spryker-shop/shop-ui"
     }
   }
 }
