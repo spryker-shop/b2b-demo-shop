@@ -30,7 +30,7 @@ class AvailabilityPresentationTester extends Actor
     use _generated\AvailabilityPresentationTesterActions;
 
     const FUJITSU_PRODUCT_PAGE = '/en/fujitsu-esprimo-e420-118';
-    const FUJITSU2_PRODUCT_PAGE = 'en/fujitsu-esprimo-e920-119';
+    const FUJITSU2_PRODUCT_PAGE = '/en/fujitsu-esprimo-e920-119';
 
     const CART_PRE_CHECK_AVAILABILITY_ERROR_MESSAGE = 'The availability of product 119_29804808 is 10 at the moment.';
 

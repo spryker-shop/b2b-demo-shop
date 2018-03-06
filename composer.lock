@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "284b4db78b5986b9c13b85ef3d771108",
+    "content-hash": "63c4103f2c95eac18d55e98fd5e02282",
     "packages": [
         {
             "name": "braintree/braintree_php",
@@ -1834,18 +1834,23 @@
         },
         {
             "name": "spryker/rabbit-mq",
-            "version": "dev-merge/core-2793-2977-pub-and-syn-multi-store",
+            "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "git@github.com:spryker/rabbit-mq.git",
-                "reference": "186eada7744da79852573085c35e453be676cb06"
+                "url": "https://github.com/spryker/rabbit-mq.git",
+                "reference": "3c84d57b244f9a36ada13a0b1f21ff7162d82c6f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/rabbit-mq/zipball/3c84d57b244f9a36ada13a0b1f21ff7162d82c6f",
+                "reference": "3c84d57b244f9a36ada13a0b1f21ff7162d82c6f",
+                "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
                 "php-amqplib/php-amqplib": "^2.6",
                 "spryker/kernel": "^3.0.0",
-                "spryker/queue": "^1.2.0",
-                "spryker/store": "^1.6.0",
+                "spryker/queue": "^1.0.0",
                 "spryker/transfer": "^3.3.4"
             },
             "require-dev": {
@@ -1862,22 +1867,10 @@
                     "Spryker\\": "src/Spryker/"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "SprykerTest\\": "tests/SprykerTest/"
-                }
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "include-path": [
                 "src/"
             ],
-            "scripts": {
-                "cs-check": [
-                    "phpcs --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml -v --ignore=/rabbit-mq/vendor/,/templates/ ./"
-                ],
-                "cs-fix": [
-                    "phpcbf --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml -v --ignore=/rabbit-mq/vendor/,/templates/ ./"
-                ]
-            },
             "license": [
                 "MIT"
             ],
@@ -1895,18 +1888,15 @@
                 "rabbit-mq",
                 "standards"
             ],
-            "support": {
-                "source": "https://github.com/spryker/rabbit-mq"
-            },
-            "time": "2018-03-06T10:17:47+00:00"
+            "time": "2018-01-26T13:26:48+00:00"
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-merge/core-2793-2977-pub-and-syn-multi-store",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "9f35257927f9ccff68e04a7b92934456ea05c60a"
+                "reference": "136a9a03253320e31612342bbe3453af814f349f"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.0",
@@ -2144,15 +2134,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2018-03-05T16:22:10+00:00"
+            "time": "2018-03-05T15:42:02+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-merge/core-2793-2977-pub-and-syn-multi-store",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "39ba1c31e42ecef15056806ec0d6335f26752e19"
+                "reference": "bf1087b935aa541950108034429a27a68e8a1816"
             },
             "require": {
                 "php": ">=7.1"
@@ -2224,15 +2214,21 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2018-03-05T16:25:56+00:00"
+            "time": "2018-03-06T13:05:57+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
-            "version": "dev-merge/core-2793-2977-pub-and-syn-multi-store",
+            "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "git@github.com:spryker/synchronization-behavior.git",
-                "reference": "c91cca3b2f846959ed5c4090891b4e9e9dceec7d"
+                "url": "https://github.com/spryker/synchronization-behavior.git",
+                "reference": "4729e470bd1c1c4b8aed3a94b0a44003485684d7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/synchronization-behavior/zipball/4729e470bd1c1c4b8aed3a94b0a44003485684d7",
+                "reference": "4729e470bd1c1c4b8aed3a94b0a44003485684d7",
+                "shasum": ""
             },
             "require": {
                 "spryker/kernel": "^3.4.0",
@@ -2240,12 +2236,10 @@
                 "spryker/zend": "^2.1.0"
             },
             "require-dev": {
-                "spryker/queue": "^1.2.0",
                 "spryker/synchronization": "^0.1.0 || ^0.2.0"
             },
             "suggest": {
-                "spryker/queue": "Generated classes are using spryker/queue module.",
-                "spryker/synchronization": "Generated classes are using spryker/synchronization module."
+                "spryker/synchronization": "*"
             },
             "type": "propel-behavior",
             "extra": {
@@ -2260,11 +2254,12 @@
                     "Spryker\\": "src/Spryker/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "proprietary"
             ],
             "description": "SynchronizationBehavior module",
-            "time": "2018-03-06T10:11:17+00:00"
+            "time": "2018-02-26T14:04:23+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
