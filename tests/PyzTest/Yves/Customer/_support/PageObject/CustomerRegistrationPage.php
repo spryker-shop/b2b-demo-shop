@@ -21,7 +21,7 @@ class CustomerRegistrationPage extends Customer
     const FORM_FIELD_SELECTOR_EMAIL = 'registerForm[email]';
     const FORM_FIELD_SELECTOR_PASSWORD = 'registerForm[password][pass]';
     const FORM_FIELD_SELECTOR_PASSWORD_CONFIRM = 'registerForm[password][confirm]';
-    const FORM_FIELD_SELECTOR_ACCEPT_TERMS = '#registerForm_accept_terms';
+    const FORM_FIELD_SELECTOR_ACCEPT_TERMS = '[data-qa*="registerForm_accept_terms"] label';
 
     const SUCCESS_MESSAGE = 'Registration Successful';
 }
