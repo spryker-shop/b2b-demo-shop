@@ -7,7 +7,7 @@
 
 namespace Pyz\Zed\CompanyUser;
 
-use Spryker\Zed\CompanyBusinessUnit\Communication\Plugin\CompanyBusinessUnitHydratePlugin;
+use Spryker\Zed\CompanyBusinessUnit\Communication\Plugin\CompanyUser\CompanyBusinessUnitHydratePlugin;
 use Spryker\Zed\CompanyUser\CompanyUserDependencyProvider as SprykerCompanyUserDependencyProvider;
 
 class CompanyUserDependencyProvider extends SprykerCompanyUserDependencyProvider

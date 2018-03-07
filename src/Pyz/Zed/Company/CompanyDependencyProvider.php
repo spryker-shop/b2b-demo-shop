@@ -8,21 +8,21 @@
 namespace Pyz\Zed\Company;
 
 use Spryker\Zed\Company\CompanyDependencyProvider as SprykerCompanyDependencyProvider;
-use Spryker\Zed\CompanyBusinessUnit\Communication\Plugin\CompanyBusinessUnitCreatePlugin;
+use Spryker\Zed\CompanyBusinessUnit\Communication\Plugin\Company\CompanyBusinessUnitCreatePlugin;
 use Spryker\Zed\CompanyRole\Communication\Plugin\CompanyRoleCreatePlugin;
-use Spryker\Zed\CompanyUser\Communication\Plugin\CompanyUserCreatePlugin;
+use Spryker\Zed\CompanyUser\Communication\Plugin\Company\CompanyUserCreatePlugin;
 
 class CompanyDependencyProvider extends SprykerCompanyDependencyProvider
 {
     /**
-     * @return \Spryker\Zed\Company\Dependency\Plugin\CompanyPostCreatePluginInterface[]
+     * @return \Spryker\Zed\CompanyExtension\Dependency\Plugin\CompanyPostCreatePluginInterface[]
      */
     protected function getCompanyPostCreatePlugins(): array
     {
         return [
-            new CompanyUserCreatePlugin(),
             new CompanyBusinessUnitCreatePlugin(),
             new CompanyRoleCreatePlugin(),
+            new CompanyUserCreatePlugin(),
         ];
     }
 }
