@@ -10,6 +10,7 @@ namespace Pyz\Client\Permission;
 use Spryker\Client\CompanyRole\Plugin\PermissionStoragePlugin;
 use Spryker\Client\Permission\Dependency\Plugin\PermissionStoragePluginInterface;
 use Spryker\Client\Permission\PermissionDependencyProvider as SprykerPermissionDependencyProvider;
+use SprykerShop\Client\CheckoutPage\Plugin\PlaceOrderWithAmountUpToPermissionPlugin;
 
 class PermissionDependencyProvider extends SprykerPermissionDependencyProvider
 {
@@ -26,6 +27,8 @@ class PermissionDependencyProvider extends SprykerPermissionDependencyProvider
      */
     protected function getPermissionPlugins(): array
     {
-        return [];
+        return [
+            new PlaceOrderWithAmountUpToPermissionPlugin()
+        ];
     }
 }
