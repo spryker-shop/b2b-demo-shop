@@ -10,6 +10,7 @@ require('devbridge-autocomplete');
 
 var AUTOCOMPLETE_INPUT = '.js-autocomplete-input-field',
     QTY_INPUT = '.js-qty-input-field',
+    SKU_INPUT = '.js-sku-input-field',
     ITEMS_CONTAINER = '.items-container',
     PRODUCT_ITEM_ROW = '.product-item-row',
     ADD_MORE_ROWS_BUTTON = '.js-add-more-rows-button',
@@ -29,7 +30,8 @@ module.exports = {
             $root
                 .on('change', QTY_INPUT, this.qtyInputHandler)
                 .on('keyup',  QTY_INPUT, this.qtyInputHandler)
-                .on('click', DELETE_ROW_BUTTON, this.removeItem);
+                .on('click', DELETE_ROW_BUTTON, this.removeItem)
+                .on('submit', this.checkItemsCount);
 
             $(QTY_INPUT + '[value!=""]', $root).trigger('change');
 
@@ -43,6 +45,15 @@ module.exports = {
             this.initAutocomplete();
 
             return false;
+        },
+
+        checkItemsCount: function () {
+            var products = $(PRODUCT_ITEM_ROW, this)
+                .filter(function() {
+                    return $(SKU_INPUT, this).val() && $(QTY_INPUT, this).val();
+                });
+
+            return products.length > 0;
         },
 
         removeItem: function (e) {
@@ -89,7 +100,6 @@ module.exports = {
                         $skuInput.val(suggestion.data.sku);
                         if (suggestion.data.available) {
                             $qtyInput.val(1);
-                            $qtyInput.attr('disabled', false);
                             $priceInput.val(suggestion.data.price);
                             $qtyInput.trigger('change');
                             $qtyInput.focus();
@@ -106,7 +116,6 @@ module.exports = {
                         $qtyInput.val('');
                         $priceInput.val('');
                         $qtyInput.trigger('change');
-                        $qtyInput.attr('disabled', true);
                     }
                 });
             });
@@ -115,8 +124,8 @@ module.exports = {
          qtyInputHandler: function (e) {
             var $qtyInput = $(e.target),
                 idQtyInput = $qtyInput.attr('id'),
-                qty = $qtyInput.val(),
-                qtyIntValue = qty.replace(/[^0-9]/g, ''),
+                qtyIntValue = $qtyInput.val().replace(/[^0-9]/g, ''),
+                qty = qtyIntValue,
                 price = $('#' + idQtyInput.replace('_qty', '_price')).val(),
                 $pricePanelInput = $('#' + idQtyInput.replace('_qty', '_pricePanel'));
 
