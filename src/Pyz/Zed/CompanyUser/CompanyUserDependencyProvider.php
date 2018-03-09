@@ -13,7 +13,7 @@ use Spryker\Zed\CompanyUser\CompanyUserDependencyProvider as SprykerCompanyUserD
 class CompanyUserDependencyProvider extends SprykerCompanyUserDependencyProvider
 {
     /**
-     * @return \Spryker\Zed\CompanyUser\Dependency\Plugin\CompanyUserHydrationPluginInterface[]
+     * @return \Spryker\Zed\CompanyUserExtension\Dependency\Plugin\CompanyUserHydrationPluginInterface[]
      */
     protected function getCompanyUserHydrationPlugins(): array
     {
