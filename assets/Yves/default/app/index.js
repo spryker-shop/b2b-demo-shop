@@ -34,6 +34,7 @@ $(function(){
         require('./components/product-review/editable-rating'),
         require('./components/product-review/read-only-rating'),
         require('./components/product-review/summary'),
+        // @TODO: new FE. next line is change
         require('./components/customer-reorder-widget')
     ]);
 });

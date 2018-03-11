@@ -31,7 +31,7 @@ class CustomerLoginCest
     public function testICanOpenLoginPage(CustomerPresentationTester $i)
     {
         $i->amOnPage(CustomerLoginPage::URL);
-        $i->see(CustomerLoginPage::TITLE_LOGIN, 'h4');
+        $i->see(CustomerLoginPage::TITLE_LOGIN);
     }
 
     /**
