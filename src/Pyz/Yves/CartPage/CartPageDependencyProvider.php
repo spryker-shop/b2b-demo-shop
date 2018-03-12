@@ -7,6 +7,8 @@
 
 namespace Pyz\Yves\CartPage;
 
+use SprykerShop\Yves\CartNoteWidget\Plugin\CartPage\CartNoteQuoteItemWidgetPlugin;
+use SprykerShop\Yves\CartNoteWidget\Plugin\CartPage\CartNoteQuoteWidgetPlugin;
 use SprykerShop\Yves\CartPage\CartPageDependencyProvider as SprykerCartPageDependencyProvider;
 use SprykerShop\Yves\CheckoutWidget\Plugin\CartPage\CheckoutBreadcrumbWidgetPlugin;
 use SprykerShop\Yves\DiscountPromotionWidget\Plugin\CartPage\DiscountPromotionItemListWidgetPlugin;
@@ -32,6 +34,8 @@ class CartPageDependencyProvider extends SprykerCartPageDependencyProvider
             DiscountPromotionItemListWidgetPlugin::class,
             UpSellingProductsWidgetPlugin::class,
             ProductBundleItemsWidgetPlugin::class,
+            CartNoteQuoteWidgetPlugin::class, #CartNoteFeature
+            CartNoteQuoteItemWidgetPlugin::class, #CartNoteFeature
         ];
     }
 
