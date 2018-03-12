@@ -47,6 +47,6 @@ class CustomerAddressCest
         $i->selectOption(CustomerAddressPage::FORM_FIELD_SELECTOR_COUNTRY, $addressTransfer->getIso2Code());
 
         $i->click(CustomerAddressPage::BUTTON_SUBMIT);
-        $i->waitForText(CustomerAddressPage::SUCCESS_MESSAGE);
+        $i->seeInSource(CustomerAddressPage::SUCCESS_MESSAGE);
     }
 }

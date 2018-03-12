@@ -35,6 +35,7 @@ use Spryker\Yves\Twig\Plugin\ServiceProvider\TwigServiceProvider as SprykerTwigS
 use Spryker\Yves\ZedRequest\Plugin\ServiceProvider\ZedRequestHeaderServiceProvider;
 use Spryker\Yves\ZedRequest\Plugin\ServiceProvider\ZedRequestLogServiceProvider;
 use SprykerShop\Yves\CalculationPage\Plugin\Provider\CalculationPageControllerProvider;
+use SprykerShop\Yves\CartNoteWidget\Plugin\Provider\CartNoteWidgetControllerProvider;
 use SprykerShop\Yves\CartPage\Plugin\Provider\CartControllerProvider;
 use SprykerShop\Yves\CartPage\Plugin\Provider\CartServiceProvider;
 use SprykerShop\Yves\CatalogPage\Plugin\Provider\CatalogPageControllerProvider;
@@ -44,6 +45,7 @@ use SprykerShop\Yves\CheckoutPage\Plugin\Provider\CheckoutPageControllerProvider
 use SprykerShop\Yves\CmsBlockWidget\Plugin\Provider\CmsBlockTwigFunctionServiceProvider;
 use SprykerShop\Yves\CmsPage\Plugin\Provider\CmsTwigFunctionServiceProvider;
 use SprykerShop\Yves\CmsPage\Plugin\Provider\PreviewControllerProvider;
+use SprykerShop\Yves\CompanyPage\Plugin\Provider\CompanyPageControllerProvider;
 use SprykerShop\Yves\CurrencyWidget\Plugin\Provider\CurrencyWidgetControllerProvider;
 use SprykerShop\Yves\CustomerPage\Plugin\Provider\CustomerPageControllerProvider;
 use SprykerShop\Yves\CustomerPage\Plugin\Provider\CustomerSecurityServiceProvider;
@@ -66,11 +68,11 @@ use SprykerShop\Yves\ShopApplication\Plugin\Provider\ShopTwigServiceProvider;
 use SprykerShop\Yves\ShopApplication\Plugin\Provider\WidgetServiceProvider;
 use SprykerShop\Yves\ShopApplication\Plugin\Provider\YvesExceptionServiceProvider;
 use SprykerShop\Yves\ShopApplication\Plugin\Provider\YvesSecurityServiceProvider;
-use SprykerShop\Yves\ShopLayout\Plugin\Provider\LanguageServiceProvider;
 use SprykerShop\Yves\ShopPermission\Plugin\Provider\ShopPermissionServiceProvider;
 use SprykerShop\Yves\ShopRouter\Plugin\Router\SilexRouter;
 use SprykerShop\Yves\ShopRouter\Plugin\Router\StorageRouter;
 use SprykerShop\Yves\ShopTranslator\Plugin\Provider\TranslationServiceProvider;
+use SprykerShop\Yves\ShopUi\Plugin\Provider\ShopUiTwigServiceProvider;
 use SprykerShop\Yves\WebProfilerWidget\Plugin\ServiceProvider\WebProfilerWidgetServiceProvider;
 use SprykerShop\Yves\WishlistPage\Plugin\Provider\WishlistPageControllerProvider;
 
@@ -146,12 +148,12 @@ class YvesBootstrap
         $this->application->register(new YvesHstsServiceProvider());
         $this->application->register(new CartServiceProvider());
         $this->application->register(new FormFactoryServiceProvider());
-        $this->application->register(new LanguageServiceProvider());
         $this->application->register(new TwigMoneyServiceProvider());
         $this->application->register(new CmsContentWidgetServiceProvider());
         $this->application->register(new CmsTwigFunctionServiceProvider());
         $this->application->register(new CmsBlockTwigFunctionServiceProvider());
         $this->application->register(new CatalogPageTwigServiceProvider());
+        $this->application->register(new ShopUiTwigServiceProvider());
         $this->application->register(new ShopPermissionServiceProvider());
     }
 
@@ -205,6 +207,8 @@ class YvesBootstrap
             new ProductReviewControllerProvider($isSsl),
             new DiscountWidgetControllerProvider($isSsl),
             new PriceControllerProvider($isSsl),
+            new CartNoteWidgetControllerProvider($isSsl), #CartNoteFeature
+            new CompanyPageControllerProvider($isSsl),
         ];
     }
 }
