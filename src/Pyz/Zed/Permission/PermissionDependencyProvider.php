@@ -16,11 +16,13 @@ use Spryker\Zed\Permission\PermissionDependencyProvider as SprykerPermissionDepe
 class PermissionDependencyProvider extends SprykerPermissionDependencyProvider
 {
     /**
-     * @return \Spryker\Zed\PermissionExtension\Dependency\Plugin\PermissionStoragePluginInterface
+     * @return \Spryker\Zed\PermissionExtension\Dependency\Plugin\PermissionStoragePluginInterface[]
      */
-    protected function getPermissionStoragePlugin(): PermissionStoragePluginInterface
+    protected function getPermissionStoragePlugins(): array
     {
-        return new PermissionStoragePlugin();
+        return [
+            new PermissionStoragePlugin()
+        ];
     }
 
     /**

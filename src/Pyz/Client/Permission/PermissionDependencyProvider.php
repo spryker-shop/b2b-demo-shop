@@ -15,11 +15,13 @@ use SprykerShop\Client\CheckoutPage\Plugin\PlaceOrderWithAmountUpToPermissionPlu
 class PermissionDependencyProvider extends SprykerPermissionDependencyProvider
 {
     /**
-     * @return \Spryker\Client\PermissionExtension\Dependency\Plugin\PermissionStoragePluginInterface
+     * @return \Spryker\Client\PermissionExtension\Dependency\Plugin\PermissionStoragePluginInterface[]
      */
-    protected function getPermissionStoragePlugin(): PermissionStoragePluginInterface
+    protected function getPermissionStoragePlugins(): array
     {
-        return new PermissionStoragePlugin();
+        return [
+            new PermissionStoragePlugin()
+        ];
     }
 
     /**
