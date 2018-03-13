@@ -16,10 +16,10 @@ class CustomerConfig extends SprykerCustomerConfig
      *
      * @return array
      */
-    public function getCustomerViewExternalBlockUrls()
+    public function getCustomerDetailExternalBlocksUrls()
     {
         return array_merge(
-            parent::getCustomerViewExternalBlockUrls(),
+            parent::getCustomerDetailExternalBlocksUrls(),
             [
                 'notes' => '/customer-note-gui/index/index',
             ]
