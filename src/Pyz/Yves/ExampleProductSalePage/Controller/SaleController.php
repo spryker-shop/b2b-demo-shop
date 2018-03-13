@@ -22,8 +22,6 @@ class SaleController extends AbstractController
      * @param string $categoryPath
      * @param \Symfony\Component\HttpFoundation\Request $request
      *
-     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
-     *
      * @return \Spryker\Yves\Kernel\View\View
      */
     public function indexAction($categoryPath, Request $request)
@@ -32,14 +30,7 @@ class SaleController extends AbstractController
 
         $categoryNode = [];
         if ($categoryPath) {
-            $categoryNode = $this->findCategoryNode($categoryPath);
-
-            if (!$categoryNode) {
-                throw new NotFoundHttpException(sprintf(
-                    'Category not found by path %s',
-                    $categoryPath
-                ));
-            }
+            $categoryNode = $this->getCategoryNode($categoryPath);
 
             $parameters['category'] = $categoryNode['node_id'];
         }
@@ -60,17 +51,27 @@ class SaleController extends AbstractController
     /**
      * @param string $categoryPath
      *
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
+     *
      * @return array
      */
-    protected function findCategoryNode($categoryPath): ?array
+    protected function getCategoryNode($categoryPath): array
     {
         $categoryPathPrefix = '/' . $this->getFactory()->getStore()->getCurrentLanguage();
-        $categoryPath = $categoryPathPrefix . '/' . ltrim($categoryPath, '/');
+        $fullCategoryPath = $categoryPathPrefix . '/' . ltrim($categoryPath, '/');
 
         $categoryNode = $this->getFactory()
             ->getUrlStorageClient()
-            ->matchUrl($categoryPath, $this->getLocale());
+            ->matchUrl($fullCategoryPath, $this->getLocale());
 
-        return $categoryNode ? $categoryNode['data'] : [];
+        if (!$categoryNode || empty($categoryNode['data'])) {
+            throw new NotFoundHttpException(sprintf(
+                'Category not found by path %s (full path %s)',
+                $categoryPath,
+                $fullCategoryPath
+            ));
+        }
+
+        return $categoryNode;
     }
 }

@@ -21,6 +21,7 @@ class CustomerConfig extends SprykerCustomerConfig
         return array_merge(
             parent::getCustomerDetailExternalBlocksUrls(),
             [
+                'sales' => '/sales/customer/customer-orders',
                 'notes' => '/customer-note-gui/index/index',
             ]
         );
