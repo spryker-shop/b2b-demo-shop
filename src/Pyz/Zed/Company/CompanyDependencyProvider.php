@@ -27,10 +27,13 @@ class CompanyDependencyProvider extends SprykerCompanyDependencyProvider
         ];
     }
 
+    /**
+     * @return \Spryker\Zed\CompanyExtension\Dependency\Plugin\CompanyPostSavePluginInterface[]
+     */
     protected function getCompanyPostSavePlugins(): array
     {
         return [
-            new SendCompanyStatusChangePlugin()
+            new SendCompanyStatusChangePlugin(),
         ];
     }
 }

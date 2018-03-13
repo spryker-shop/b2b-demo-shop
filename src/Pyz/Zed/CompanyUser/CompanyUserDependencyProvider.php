@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\CompanyUser;
 
+use Spryker\Zed\CompanyBusinessUnit\Communication\Plugin\CompanyUser\AssignDefaultBusinessUnitToCompanyUserPlugin;
 use Spryker\Zed\CompanyBusinessUnit\Communication\Plugin\CompanyUser\CompanyBusinessUnitHydratePlugin;
 use Spryker\Zed\CompanyRole\Communication\Plugin\CompanyUser\AssignDefaultCompanyUserRolePlugin;
 use Spryker\Zed\CompanyUser\CompanyUserDependencyProvider as SprykerCompanyUserDependencyProvider;
@@ -30,6 +31,16 @@ class CompanyUserDependencyProvider extends SprykerCompanyUserDependencyProvider
     {
         return [
             new AssignDefaultCompanyUserRolePlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\CompanyUserExtension\Dependency\Plugin\CompanyUserPreSavePluginInterface[]
+     */
+    protected function getCompanyUserPreSavePlugins(): array
+    {
+        return [
+            new AssignDefaultBusinessUnitToCompanyUserPlugin(),
         ];
     }
 }
