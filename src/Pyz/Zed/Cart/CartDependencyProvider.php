@@ -8,9 +8,7 @@
 namespace Pyz\Zed\Cart;
 
 use Spryker\Zed\Cart\CartDependencyProvider as SprykerCartDependencyProvider;
-use Spryker\Zed\CartPermissionConnector\Communication\Plugin\AlterCartUpToAmountPermissionPlugin;
 use Spryker\Zed\Cart\Communication\Plugin\SkuGroupKeyPlugin;
-use Spryker\Zed\CartExtension\Dependency\Plugin\CartTerminationPluginInterface;
 use Spryker\Zed\DiscountPromotion\Communication\Plugin\Cart\CartGroupPromotionItems;
 use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\PaymentCartConnector\Communication\Plugin\Cart\RemovePaymentCartPostSavePlugin;
@@ -99,14 +97,12 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
     }
 
     /**
-     * @param Container $container
+     * @param \Spryker\Zed\Kernel\Container $container
      *
-     * @return CartTerminationPluginInterface[]
+     * @return \Spryker\Zed\CartExtension\Dependency\Plugin\CartTerminationPluginInterface[]
      */
     protected function getTerminationPlugins(Container $container)
     {
-        return [
-            new AlterCartUpToAmountPermissionPlugin()
-        ];
+        return [];
     }
 }

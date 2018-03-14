@@ -7,10 +7,7 @@
 
 namespace Pyz\Zed\Permission;
 
-use Spryker\Zed\CartPermissionConnector\Communication\Plugin\AlterCartUpToAmountPermissionPlugin;
 use Spryker\Zed\CompanyRole\Communication\Plugin\PermissionStoragePlugin;
-use Spryker\Shared\PermissionExtension\Dependency\Plugin\PermissionPluginInterface;
-use Spryker\Zed\PermissionExtension\Dependency\Plugin\PermissionStoragePluginInterface;
 use Spryker\Zed\Permission\PermissionDependencyProvider as SprykerPermissionDependencyProvider;
 
 class PermissionDependencyProvider extends SprykerPermissionDependencyProvider
@@ -21,17 +18,15 @@ class PermissionDependencyProvider extends SprykerPermissionDependencyProvider
     protected function getPermissionStoragePlugins(): array
     {
         return [
-            new PermissionStoragePlugin()
+            new PermissionStoragePlugin(),
         ];
     }
 
     /**
-     * @return PermissionPluginInterface[]
+     * @return \Spryker\Shared\PermissionExtension\Dependency\Plugin\PermissionPluginInterface[]
      */
     protected function getPermissionPlugins()
     {
-        return [
-            new AlterCartUpToAmountPermissionPlugin()
-        ];
+        return [];
     }
 }
