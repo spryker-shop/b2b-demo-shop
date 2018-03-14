@@ -210,7 +210,7 @@ class YvesBootstrap
             new PriceControllerProvider($isSsl),
             new CartNoteWidgetControllerProvider($isSsl), #CartNoteFeature
             new CompanyPageControllerProvider($isSsl),
-            new MultiCartPageControllerProvider($isSsl),
+            new MultiCartPageControllerProvider($isSsl), #MultiCartFeature
         ];
     }
 }
