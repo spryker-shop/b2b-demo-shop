@@ -12,7 +12,7 @@ use Spryker\Client\Permission\PermissionClient as SprykerPermissionClient;
 /**
  * @project Only needed in non-split, not in a split
  */
-class PermissionClient extends SprykerPermissionClient
+class PermissionClient extends SprykerPermissionClient implements PermissionClientInterface
 {
     /**
      * @param string $permissionKey
