@@ -21,7 +21,7 @@ class PermissionDependencyProvider extends SprykerPermissionDependencyProvider
     protected function getPermissionStoragePlugins(): array
     {
         return [
-            new PermissionStoragePlugin()
+            new PermissionStoragePlugin(),
         ];
     }
 }
