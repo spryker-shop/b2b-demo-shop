@@ -14,6 +14,13 @@ use Spryker\Zed\Permission\Business\PermissionFacade as SprykerPermissionFacade;
  */
 class PermissionFacade extends SprykerPermissionFacade
 {
+    /**
+     * @param string $permissionKey
+     * @param int|string $identifier
+     * @param null $context
+     *
+     * @return bool
+     */
     public function can($permissionKey, $identifier, $context = null): bool
     {
         return true;
