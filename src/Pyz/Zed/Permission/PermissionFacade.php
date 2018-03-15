@@ -17,7 +17,7 @@ class PermissionFacade extends SprykerPermissionFacade
     /**
      * @param string $permissionKey
      * @param int|string $identifier
-     * @param null $context
+     * @param int|string|array|null $context
      *
      * @return bool
      */

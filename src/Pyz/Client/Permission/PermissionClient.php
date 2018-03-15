@@ -16,7 +16,7 @@ class PermissionClient extends SprykerPermissionClient
 {
     /**
      * @param string $permissionKey
-     * @param null $context
+     * @param string|int|array|null $context
      *
      * @return bool
      */
