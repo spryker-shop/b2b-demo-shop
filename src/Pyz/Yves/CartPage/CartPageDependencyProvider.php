@@ -14,6 +14,8 @@ use SprykerShop\Yves\CheckoutWidget\Plugin\CartPage\CheckoutBreadcrumbWidgetPlug
 use SprykerShop\Yves\DiscountPromotionWidget\Plugin\CartPage\DiscountPromotionItemListWidgetPlugin;
 use SprykerShop\Yves\DiscountWidget\Plugin\CartPage\DiscountSummaryWidgetPlugin;
 use SprykerShop\Yves\DiscountWidget\Plugin\CartPage\DiscountVoucherFormWidgetPlugin;
+use SprykerShop\Yves\MultiCartWidget\Plugin\CartPage\CartOperationsWidgetPlugin;
+use SprykerShop\Yves\MultiCartWidget\Plugin\CartPage\CustomerCartListWidgetPlugin;
 use SprykerShop\Yves\ProductBundleWidget\Plugin\CartPage\ProductBundleCartItemTransformerPlugin;
 use SprykerShop\Yves\ProductBundleWidget\Plugin\CartPage\ProductBundleItemsWidgetPlugin;
 use SprykerShop\Yves\ProductOptionWidget\Plugin\CartPage\CartItemProductOptionWidgetPlugin;
@@ -36,6 +38,8 @@ class CartPageDependencyProvider extends SprykerCartPageDependencyProvider
             ProductBundleItemsWidgetPlugin::class,
             CartNoteQuoteWidgetPlugin::class, #CartNoteFeature
             CartNoteQuoteItemWidgetPlugin::class, #CartNoteFeature
+            CustomerCartListWidgetPlugin::class, #MultiCartFeature
+            CartOperationsWidgetPlugin::class, #MultiCartFeature
         ];
     }
 

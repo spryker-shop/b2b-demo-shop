@@ -7,6 +7,7 @@
 
 namespace Pyz\Client\PersistentCart;
 
+use Spryker\Client\MultiCart\Plugin\QuoteInActiveChangeRequestExtendPlugin;
 use Spryker\Client\MultiCart\Plugin\SaveCustomerQuotesQuoteUpdatePlugin;
 use Spryker\Client\PersistentCart\PersistentCartDependencyProvider as SprykerPersistentCartDependencyProvider;
 
@@ -18,7 +19,17 @@ class PersistentCartDependencyProvider extends SprykerPersistentCartDependencyPr
     protected function getQuoteUpdatePlugins()
     {
         return [
-            new SaveCustomerQuotesQuoteUpdatePlugin(),
+            new SaveCustomerQuotesQuoteUpdatePlugin(), #MultiCartFeature
+        ];
+    }
+
+    /**
+     * @return \Spryker\Client\PersistentCart\Dependency\Plugin\ChangeRequestExtendPluginInterface[]
+     */
+    protected function getChangeRequestExtendPlugins()
+    {
+        return [
+            new QuoteInActiveChangeRequestExtendPlugin(), #MultiCartFeature
         ];
     }
 }
