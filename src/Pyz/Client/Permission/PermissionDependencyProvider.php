@@ -9,6 +9,8 @@ namespace Pyz\Client\Permission;
 
 use Spryker\Client\CompanyRole\Plugin\PermissionStoragePlugin;
 use Spryker\Client\Permission\PermissionDependencyProvider as SprykerPermissionDependencyProvider;
+use Spryker\Client\SharedCart\Plugin\ReadCartPermissionPlugin;
+use Spryker\Client\SharedCart\Plugin\WriteCartPermissionPlugin;
 
 class PermissionDependencyProvider extends SprykerPermissionDependencyProvider
 {
@@ -27,6 +29,9 @@ class PermissionDependencyProvider extends SprykerPermissionDependencyProvider
      */
     protected function getPermissionPlugins(): array
     {
-        return [];
+        return [
+            new ReadCartPermissionPlugin(),
+            new WriteCartPermissionPlugin(),
+        ];
     }
 }

@@ -9,6 +9,9 @@ namespace Pyz\Zed\Permission;
 
 use Spryker\Zed\CompanyRole\Communication\Plugin\PermissionStoragePlugin;
 use Spryker\Zed\Permission\PermissionDependencyProvider as SprykerPermissionDependencyProvider;
+use Spryker\Zed\SharedCart\Communication\Plugin\QuotePermissionStoragePlugin;
+use Spryker\Zed\SharedCart\Communication\Plugin\ReadCartPermissionPlugin;
+use Spryker\Zed\SharedCart\Communication\Plugin\WriteCartPermissionPlugin;
 
 class PermissionDependencyProvider extends SprykerPermissionDependencyProvider
 {
@@ -19,6 +22,7 @@ class PermissionDependencyProvider extends SprykerPermissionDependencyProvider
     {
         return [
             new PermissionStoragePlugin(),
+            new QuotePermissionStoragePlugin(),
         ];
     }
 
@@ -27,6 +31,9 @@ class PermissionDependencyProvider extends SprykerPermissionDependencyProvider
      */
     protected function getPermissionPlugins()
     {
-        return [];
+        return [
+            new ReadCartPermissionPlugin(),
+            new WriteCartPermissionPlugin(),
+        ];
     }
 }
