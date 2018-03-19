@@ -7,10 +7,10 @@
 
 namespace Orm\Zed\SharedCart\Persistence;
 
-use Spryker\Zed\SharedCart\Persistence\Propel\AbstractSpyQuoteRole as BaseSpyQuoteRole;
+use Spryker\Zed\SharedCart\Persistence\Propel\AbstractSpyQuotePermissionGroupQuery as BaseSpyQuoteRoleQuery;
 
 /**
- * Skeleton subclass for representing a row from the 'spy_quote_role' table.
+ * Skeleton subclass for performing query and update operations on the 'spy_quote_role' table.
  *
  *
  *
@@ -19,6 +19,6 @@ use Spryker\Zed\SharedCart\Persistence\Propel\AbstractSpyQuoteRole as BaseSpyQuo
  * long as it does not already exist in the output directory.
  *
  */
-class SpyQuoteRole extends BaseSpyQuoteRole
+class SpyQuotePermissionGroupQuery extends BaseSpyQuoteRoleQuery
 {
 }
