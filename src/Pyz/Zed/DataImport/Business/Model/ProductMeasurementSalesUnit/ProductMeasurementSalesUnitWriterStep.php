@@ -63,8 +63,8 @@ class ProductMeasurementSalesUnitWriterStep extends PublishAwareStep implements 
             )
             ->setFkProduct($productConcreteEntity->getIdProduct())
             ->setFkProductMeasurementUnit($this->getProductMeasurementUnitIdByCode($dataSet[static::KEY_CODE]))
-            ->setFactor($dataSet[static::KEY_FACTOR])
-            ->setPrecision($dataSet[static::KEY_PRECISION])
+            ->setFactor($dataSet[static::KEY_FACTOR] === "" ? null: $dataSet[static::KEY_FACTOR])
+            ->setPrecision($dataSet[static::KEY_PRECISION] === "" ? null : $dataSet[static::KEY_PRECISION])
             ->setIsDefault($dataSet[static::KEY_IS_DEFAULT])
             ->setIsDisplay($dataSet[static::KEY_IS_DISPLAY])
             ->save();
