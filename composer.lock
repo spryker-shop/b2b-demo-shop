@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "2bcc9e43fdcf39e0d5895b076156e06c",
+    "content-hash": "d74c42a898d765032b05b97d39abf280",
     "packages": [
         {
             "name": "braintree/braintree_php",
@@ -2057,7 +2057,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "66c95b7470c77a5249f53834eb5f9af6b4d02c9d"
+                "reference": "672607312bb81fdf670f9d9729652f841d70c63f"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.0",
@@ -2297,15 +2297,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2018-03-13T13:38:35+00:00"
+            "time": "2018-03-19T10:19:27+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-master",
+            "version": "dev-bugfix/CORE-3762-fix-npm-installation",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "670960f4f97960dd774eff11c22dd1abcf91b22e"
+                "reference": "a833717d5b714c681d1ff2d671ab234adb0ba1c6"
             },
             "require": {
                 "php": ">=7.1"
@@ -2377,7 +2377,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2018-03-09T09:49:52+00:00"
+            "time": "2018-03-16T17:32:31+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -4809,40 +4809,34 @@
         },
         {
             "name": "facebook/webdriver",
-            "version": "1.5.0",
+            "version": "1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/facebook/php-webdriver.git",
-                "reference": "86b5ca2f67173c9d34340845dd690149c886a605"
+                "reference": "77300c4ab2025d4316635f592ec849ca7323bd8c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/facebook/php-webdriver/zipball/86b5ca2f67173c9d34340845dd690149c886a605",
-                "reference": "86b5ca2f67173c9d34340845dd690149c886a605",
+                "url": "https://api.github.com/repos/facebook/php-webdriver/zipball/77300c4ab2025d4316635f592ec849ca7323bd8c",
+                "reference": "77300c4ab2025d4316635f592ec849ca7323bd8c",
                 "shasum": ""
             },
             "require": {
                 "ext-curl": "*",
-                "ext-zip": "*",
-                "php": "^5.6 || ~7.0",
-                "symfony/process": "^2.8 || ^3.1 || ^4.0"
+                "php": "^5.5 || ~7.0",
+                "symfony/process": "^2.8 || ^3.1"
             },
             "require-dev": {
-                "friendsofphp/php-cs-fixer": "^2.0",
-                "guzzle/guzzle": "^3.4.1",
-                "php-coveralls/php-coveralls": "^1.0.2",
+                "friendsofphp/php-cs-fixer": "^1.11",
                 "php-mock/php-mock-phpunit": "^1.1",
-                "phpunit/phpunit": "^5.7",
-                "sebastian/environment": "^1.3.4 || ^2.0 || ^3.0",
-                "squizlabs/php_codesniffer": "^2.6",
-                "symfony/var-dumper": "^3.3 || ^4.0"
+                "phpunit/phpunit": "4.6.* || ~5.0",
+                "satooshi/php-coveralls": "^1.0",
+                "squizlabs/php_codesniffer": "^2.6"
+            },
+            "suggest": {
+                "phpdocumentor/phpdocumentor": "2.*"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-community": "1.5-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "Facebook\\WebDriver\\": "lib/"
@@ -4852,7 +4846,7 @@
             "license": [
                 "Apache-2.0"
             ],
-            "description": "A PHP client for Selenium WebDriver",
+            "description": "A PHP client for WebDriver",
             "homepage": "https://github.com/facebook/php-webdriver",
             "keywords": [
                 "facebook",
@@ -4860,7 +4854,7 @@
                 "selenium",
                 "webdriver"
             ],
-            "time": "2017-11-15T11:08:09+00:00"
+            "time": "2017-01-13T15:48:08+00:00"
         },
         {
             "name": "jakoch/phantomjs-installer",
@@ -5604,7 +5598,7 @@
                 "BSD-3-Clause"
             ],
             "description": "Official version of pdepend to be handled with Composer",
-            "time": "2017-12-12T17:28:44+00:00"
+            "time": "2017-12-13T13:21:38+00:00"
         },
         {
             "name": "phar-io/manifest",
@@ -7363,12 +7357,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/code-sniffer.git",
-                "reference": "e867eda87411d4cb61128fab6d2c506c37b60126"
+                "reference": "e86269956d93c52d767e3d2a52e4cb1b5ddc3ea4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/e867eda87411d4cb61128fab6d2c506c37b60126",
-                "reference": "e867eda87411d4cb61128fab6d2c506c37b60126",
+                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/e86269956d93c52d767e3d2a52e4cb1b5ddc3ea4",
+                "reference": "e86269956d93c52d767e3d2a52e4cb1b5ddc3ea4",
                 "shasum": ""
             },
             "require": {
@@ -7406,7 +7400,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2018-02-21T20:15:59+00:00"
+            "time": "2018-03-15T15:46:38+00:00"
         },
         {
             "name": "spryker/git-hook",
