@@ -12,29 +12,6 @@ use Spryker\Zed\Development\DevelopmentConfig as SprykerDevelopmentConfig;
 class DevelopmentConfig extends SprykerDevelopmentConfig
 {
     /**
-     * @project Only needed in Project, not in demoshop
-     *
-     * @return array
-     */
-    public function getIdeAutoCompletionSourceDirectoryGlobPatterns()
-    {
-        $globPatterns = parent::getIdeAutoCompletionSourceDirectoryGlobPatterns();
-        $globPatterns[APPLICATION_VENDOR_DIR . '/spryker/spryker/Bundles/*/src/'] = 'Spryker/*/';
-
-        return $globPatterns;
-    }
-
-    /**
-     * @project Only needed in Project, not in demoshop
-     *
-     * @return string
-     */
-    public function getPathToShop()
-    {
-        return $this->getPathToRoot() . 'vendor/spryker/spryker-shop/Bundles/';
-    }
-
-    /**
      * @return string
      */
     public function getCodingStandard()
