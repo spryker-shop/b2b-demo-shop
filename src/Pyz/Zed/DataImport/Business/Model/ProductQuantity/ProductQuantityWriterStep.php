@@ -23,6 +23,10 @@ class ProductQuantityWriterStep extends PublishAwareStep implements DataImportSt
     const KEY_QUANTITY_MAX = 'quantity_max';
     const KEY_QUANTITY_INTERVAL = 'quantity_interval';
 
+    const DEFAULT_MIN = 1;
+    const DEFAULT_MAX = null;
+    const DEFAULT_INTERVAL = 1;
+
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
      *
@@ -39,9 +43,9 @@ class ProductQuantityWriterStep extends PublishAwareStep implements DataImportSt
             ->findOneOrCreate();
 
         $productQuantityEntity
-            ->setQuantityMin($dataSet[static::KEY_QUANTITY_MIN])
-            ->setQuantityMax($dataSet[static::KEY_QUANTITY_MAX] === "" ? null : $dataSet[static::KEY_QUANTITY_MAX])
-            ->setQuantityInterval($dataSet[static::KEY_QUANTITY_INTERVAL])
+            ->setQuantityMin($dataSet[static::KEY_QUANTITY_MIN] === "" ? static::DEFAULT_MIN : $dataSet[static::KEY_QUANTITY_MIN])
+            ->setQuantityMax($dataSet[static::KEY_QUANTITY_MAX] === "" ? static::DEFAULT_MAX : $dataSet[static::KEY_QUANTITY_MAX])
+            ->setQuantityInterval($dataSet[static::KEY_QUANTITY_INTERVAL] === "" ? static::DEFAULT_INTERVAL : $dataSet[static::KEY_QUANTITY_INTERVAL])
             ->save();
 
         $this->addPublishEvents(ProductQuantityEvents::PRODUCT_QUANTITY_PUBLISH, $productQuantityEntity->getFkProduct());
