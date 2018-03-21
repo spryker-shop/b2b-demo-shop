@@ -16,7 +16,7 @@ use Orm\Zed\CmsBlockCategoryConnector\Persistence\SpyCmsBlockCategoryConnectorQu
 use Orm\Zed\CmsBlockProductConnector\Persistence\SpyCmsBlockProductConnectorQuery;
 use Orm\Zed\Glossary\Persistence\SpyGlossaryKeyQuery;
 use Orm\Zed\Glossary\Persistence\SpyGlossaryTranslationQuery;
-use Pyz\Zed\DataImport\Business\Model\Category\Repository\CategoryRepositoryInterface;
+use Pyz\Zed\DataImport\Business\Model\CmsBlock\Category\Repository\CategoryRepositoryInterface;
 use Pyz\Zed\DataImport\Business\Model\DataImportStep\LocalizedAttributesExtractorStep;
 use Pyz\Zed\DataImport\Business\Model\DataImportStep\PublishAwareStep;
 use Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepositoryInterface;
@@ -47,7 +47,7 @@ class CmsBlockWriterStep extends PublishAwareStep implements DataImportStepInter
     const KEY_PLACEHOLDER_DESCRIPTION = 'placeholder.description';
 
     /**
-     * @var \Pyz\Zed\DataImport\Business\Model\Category\Repository\CategoryRepositoryInterface
+     * @var \Pyz\Zed\DataImport\Business\Model\CmsBlock\Category\Repository\CategoryRepositoryInterface
      */
     protected $categoryRepository;
 
@@ -57,7 +57,7 @@ class CmsBlockWriterStep extends PublishAwareStep implements DataImportStepInter
     protected $productRepository;
 
     /**
-     * @param \Pyz\Zed\DataImport\Business\Model\Category\Repository\CategoryRepositoryInterface $categoryRepository
+     * @param \Pyz\Zed\DataImport\Business\Model\CmsBlock\Category\Repository\CategoryRepositoryInterface $categoryRepository
      * @param \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepositoryInterface $productRepository
      */
     public function __construct(CategoryRepositoryInterface $categoryRepository, ProductRepositoryInterface $productRepository)
