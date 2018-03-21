@@ -95,4 +95,14 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
            new CartBundleItemsPreReloadPlugin(),
         ];
     }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\CartExtension\Dependency\Plugin\CartTerminationPluginInterface[]
+     */
+    protected function getTerminationPlugins(Container $container)
+    {
+        return [];
+    }
 }

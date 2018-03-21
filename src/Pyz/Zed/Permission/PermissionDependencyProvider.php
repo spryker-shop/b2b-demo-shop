@@ -7,7 +7,6 @@
 
 namespace Pyz\Zed\Permission;
 
-use Spryker\Zed\CompanyRole\Communication\Plugin\PermissionStoragePlugin;
 use Spryker\Zed\Permission\PermissionDependencyProvider as SprykerPermissionDependencyProvider;
 
 /**
@@ -20,8 +19,14 @@ class PermissionDependencyProvider extends SprykerPermissionDependencyProvider
      */
     protected function getPermissionStoragePlugins(): array
     {
-        return [
-            new PermissionStoragePlugin(),
-        ];
+        return [];
+    }
+
+    /**
+     * @return \Spryker\Shared\PermissionExtension\Dependency\Plugin\PermissionPluginInterface[]
+     */
+    protected function getPermissionPlugins()
+    {
+        return [];
     }
 }
