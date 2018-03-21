@@ -9,6 +9,8 @@ namespace Pyz\Zed\DataImport;
 
 use Spryker\Shared\Kernel\Store;
 use Spryker\Zed\CategoryDataImport\Communication\Plugin\CategoryDataImportPlugin;
+use Spryker\Zed\CompanyBusinessUnitDataImport\Communication\Plugin\CompanyBusinessUnitDataImportPlugin;
+use Spryker\Zed\CompanyDataImport\Communication\Plugin\CompanyDataImportPlugin;
 use Spryker\Zed\DataImport\DataImportDependencyProvider as SprykerDataImportDependencyProvider;
 use Spryker\Zed\Kernel\Container;
 
@@ -147,6 +149,8 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
     {
         return [
             new CategoryDataImportPlugin(),
+            new CompanyDataImportPlugin(),
+            new CompanyBusinessUnitDataImportPlugin(),
         ];
     }
 }
