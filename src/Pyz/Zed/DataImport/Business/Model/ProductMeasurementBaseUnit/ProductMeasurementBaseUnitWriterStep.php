@@ -18,7 +18,6 @@ class ProductMeasurementBaseUnitWriterStep implements DataImportStepInterface
     const BULK_SIZE = 100;
 
     const KEY_CODE = 'code';
-    const KEY_IS_SALES_UNIT = 'is_sales_unit';
     const KEY_ABSTRACT_SKU = 'abstract_sku';
 
     /**
@@ -42,7 +41,6 @@ class ProductMeasurementBaseUnitWriterStep implements DataImportStepInterface
 
         $productMeasurementBaseUnitEntity
             ->setFkProductMeasurementUnit($this->getProductMeasurementUnitIdByCode($dataSet[static::KEY_CODE]))
-            ->setIsSalesUnit((bool)$dataSet[static::KEY_IS_SALES_UNIT])
             ->save();
 
         $productAbstractEntity
