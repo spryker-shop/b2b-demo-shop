@@ -7,7 +7,6 @@
 
 namespace Pyz\Client\Permission;
 
-use Spryker\Client\CompanyRole\Plugin\PermissionStoragePlugin;
 use Spryker\Client\Permission\PermissionDependencyProvider as SprykerPermissionDependencyProvider;
 
 /**
