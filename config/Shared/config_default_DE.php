@@ -12,7 +12,7 @@ use Spryker\Shared\ZedRequest\ZedRequestConstants;
 $domain = getenv('VM_PROJECT') ?: 'suite-nonsplit';
 
 // ---------- Yves host
-$config[ApplicationConstants::HOST_YVES] = 'www.de.' . $domain . '.local';
+$config[ApplicationConstants::HOST_YVES] = sprintf('www.de.%s.local', $domain);
 $config[ApplicationConstants::PORT_YVES] = '';
 $config[ApplicationConstants::PORT_SSL_YVES] = '';
 $config[ApplicationConstants::BASE_URL_YVES] = sprintf(
@@ -31,7 +31,7 @@ $config[NewsletterConstants::BASE_URL_YVES] = $config[ApplicationConstants::BASE
 $config[CustomerConstants::BASE_URL_YVES] = $config[ApplicationConstants::BASE_URL_YVES];
 
 // ---------- Zed host
-$config[ApplicationConstants::HOST_ZED] = 'zed.de.' . $domain . '.local';
+$config[ApplicationConstants::HOST_ZED] = sprintf('zed.de.%s.local', $domain);
 $config[ApplicationConstants::PORT_ZED] = '';
 $config[ApplicationConstants::PORT_SSL_ZED] = '';
 $config[ApplicationConstants::BASE_URL_ZED] = sprintf(
