@@ -6,18 +6,32 @@
   "author": {
     "name": "Spryker",
     "email": "info@spryker.com",
-    "url": "http://spryker.com/"
+    "url": "https://spryker.com/"
   },
   "scripts": {
-    "yves": "node ./node_modules/@spryker/shop-ui-builder/tasks/build",
-    "yves:watch": "node ./node_modules/@spryker/shop-ui-builder/tasks/watch",
+    "yves": "node $npm_package_config_shopUi_modulePath/src/SprykerShop/Yves/ShopUi/Theme/default/builder/tasks/build",
+    "yves:watch": "node $npm_package_config_shopUi_modulePath/src/SprykerShop/Yves/ShopUi/Theme/default/builder/tasks/watch",
     "zed": "node ./node_modules/@spryker/oryx-for-zed/build",
     "zed:watch": "node ./node_modules/@spryker/oryx-for-zed/build --dev"
   },
+  "engines": {
+    "node": ">=8.9.0",
+    "npm": ">=5.6.0"
+  },
   "dependencies": {
+    "@webcomponents/webcomponentsjs": "~1.1.0"
+  },
+  "devDependencies": {
     "@spryker/oryx": "^1.1.0",
     "@spryker/oryx-for-zed": "^1.1.1",
-    "@spryker/shop-ui-builder": "file:vendor/spryker-shop/shop-ui/src/SprykerShop/Yves/ShopUi/Theme/default/builder"
+    "css-loader": "~0.28.10",
+    "extract-text-webpack-plugin": "~3.0.2",
+    "fast-glob": "~2.1.0",
+    "node-sass": "~4.7.2",
+    "sass-loader": "~6.0.6",
+    "ts-loader": "~3.5.0",
+    "typescript": "~2.7.2",
+    "webpack": "~3.11.0"
   },
   "config": {
     "shopUi": {
