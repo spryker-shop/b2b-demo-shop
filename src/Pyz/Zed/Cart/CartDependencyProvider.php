@@ -23,6 +23,9 @@ use Spryker\Zed\ProductBundle\Communication\Plugin\Cart\ExpandBundleItemsWithIma
 use Spryker\Zed\ProductCartConnector\Communication\Plugin\ProductCartPlugin;
 use Spryker\Zed\ProductCartConnector\Communication\Plugin\ProductExistsCartPreCheckPlugin;
 use Spryker\Zed\ProductImageCartConnector\Communication\Plugin\ProductImageCartPlugin;
+use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\ProductMeasurementSalesUnitCartPreCheckPlugin;
+use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\ProductMeasurementUnitItemExpanderPlugin;
+use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\SkuSalesUnitGroupKeyPlugin;
 use Spryker\Zed\ProductOptionCartConnector\Communication\Plugin\CartItemGroupKeyOptionPlugin;
 use Spryker\Zed\ProductOptionCartConnector\Communication\Plugin\CartItemProductOptionPlugin;
 use Spryker\Zed\ProductOptionCartConnector\Communication\Plugin\ChangeProductOptionQuantityPlugin;
@@ -46,11 +49,13 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new ExpandBundleItemsPlugin(),
             new ExpandBundleItemsWithImagesPlugin(),
             new SkuGroupKeyPlugin(),
+            new SkuSalesUnitGroupKeyPlugin(),
             new CartItemGroupKeyOptionPlugin(),
             new CartItemWithBundleGroupKeyExpanderPlugin(),
             new ProductImageCartPlugin(),
             new CartGroupPromotionItems(),
             new CartShipmentExpanderPlugin(),
+            new ProductMeasurementUnitItemExpanderPlugin(),
         ];
     }
 
@@ -67,6 +72,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new ProductOptionValuePriceExistsCartPreCheckPlugin(),
             new CartBundleAvailabilityPreCheckPlugin(),
             new CartShipmentPreCheckPlugin(),
+            new ProductMeasurementSalesUnitCartPreCheckPlugin(),
         ];
     }
 

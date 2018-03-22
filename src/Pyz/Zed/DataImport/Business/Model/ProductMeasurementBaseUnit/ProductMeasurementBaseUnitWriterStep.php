@@ -8,7 +8,7 @@
 namespace Pyz\Zed\DataImport\Business\Model\ProductMeasurementBaseUnit;
 
 use Orm\Zed\Product\Persistence\SpyProductAbstractQuery;
-use Orm\Zed\ProductMeasurementUnit\Persistence\SpyProductMeasurementBaseUnit;
+use Orm\Zed\ProductMeasurementUnit\Persistence\SpyProductMeasurementBaseUnitQuery;
 use Orm\Zed\ProductMeasurementUnit\Persistence\SpyProductMeasurementUnitQuery;
 use Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
@@ -34,17 +34,12 @@ class ProductMeasurementBaseUnitWriterStep implements DataImportStepInterface
     {
         $productAbstractEntity = $this->getProductAbstractEntityBySku($dataSet[static::KEY_ABSTRACT_SKU]);
 
-        $productMeasurementBaseUnitEntity = $productAbstractEntity->getProductMeasurementBaseUnit();
-        if ($productMeasurementBaseUnitEntity === null) {
-            $productMeasurementBaseUnitEntity = new SpyProductMeasurementBaseUnit();
-        }
+        $baseUnitEntity = SpyProductMeasurementBaseUnitQuery::create()
+            ->filterByFkProductAbstract($productAbstractEntity->getIdProductAbstract())
+            ->findOneOrCreate();
 
-        $productMeasurementBaseUnitEntity
+        $baseUnitEntity
             ->setFkProductMeasurementUnit($this->getProductMeasurementUnitIdByCode($dataSet[static::KEY_CODE]))
-            ->save();
-
-        $productAbstractEntity
-            ->setFkProductMeasurementBaseUnit($productMeasurementBaseUnitEntity->getIdProductMeasurementBaseUnit())
             ->save();
     }
 
@@ -55,10 +50,7 @@ class ProductMeasurementBaseUnitWriterStep implements DataImportStepInterface
      */
     protected function getProductAbstractEntityBySku($productAbstractSku)
     {
-        return SpyProductAbstractQuery::create()
-            ->leftJoinWithProductMeasurementBaseUnit()
-            ->findBySku($productAbstractSku)
-            ->getFirst();
+        return SpyProductAbstractQuery::create()->findOneBySku($productAbstractSku);
     }
 
     /**

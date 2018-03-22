@@ -8,6 +8,7 @@
 namespace Pyz\Zed\DataImport\Business\Model\ProductMeasurementSalesUnit;
 
 use Orm\Zed\Product\Persistence\SpyProductQuery;
+use Orm\Zed\ProductMeasurementUnit\Persistence\SpyProductMeasurementBaseUnitQuery;
 use Orm\Zed\ProductMeasurementUnit\Persistence\SpyProductMeasurementSalesUnitQuery;
 use Orm\Zed\ProductMeasurementUnit\Persistence\SpyProductMeasurementUnitQuery;
 use Pyz\Zed\DataImport\Business\Model\DataImportStep\PublishAwareStep;
@@ -23,7 +24,7 @@ class ProductMeasurementSalesUnitWriterStep extends PublishAwareStep implements 
     const KEY_ABSTRACT_SKU = 'abstract_sku';
     const KEY_CONCRETE_SKU = 'concrete_sku';
     const KEY_CODE = 'code';
-    const KEY_FACTOR = 'factor';
+    const KEY_CONVERSION = 'conversion';
     const KEY_PRECISION = 'precision';
     const KEY_IS_DISPLAY = 'is_display';
     const KEY_IS_DEFAULT = 'is_default';
@@ -44,26 +45,24 @@ class ProductMeasurementSalesUnitWriterStep extends PublishAwareStep implements 
             ->filterByKey($dataSet[static::KEY_SALES_UNIT_KEY])
             ->findOneOrCreate();
 
+        /** @var \Orm\Zed\Product\Persistence\SpyProduct $productConcreteEntity */
         $productConcreteEntity = (new SpyProductQuery())
             ->filterBySku($dataSet[static::KEY_CONCRETE_SKU])
             ->joinWithSpyProductAbstract()
             ->useSpyProductAbstractQuery()
-                ->joinProductMeasurementBaseUnit()
                 ->filterBySku($dataSet[static::KEY_ABSTRACT_SKU])
             ->endUse()
             ->find()
             ->getFirst();
 
+        $productMeasurementBaseUnitEntity = SpyProductMeasurementBaseUnitQuery::create()
+            ->findOneByFkProductAbstract($productConcreteEntity->getSpyProductAbstract()->getIdProductAbstract());
+
         $productMeasurementSalesUnitEntity
-            ->setFkProductMeasurementBaseUnit(
-                $productConcreteEntity
-                    ->getSpyProductAbstract()
-                    ->getProductMeasurementBaseUnit()
-                    ->getIdProductMeasurementBaseUnit()
-            )
+            ->setFkProductMeasurementBaseUnit($productMeasurementBaseUnitEntity->getIdProductMeasurementBaseUnit())
             ->setFkProduct($productConcreteEntity->getIdProduct())
             ->setFkProductMeasurementUnit($this->getProductMeasurementUnitIdByCode($dataSet[static::KEY_CODE]))
-            ->setFactor($dataSet[static::KEY_FACTOR] === "" ? null: $dataSet[static::KEY_FACTOR])
+            ->setConversion($dataSet[static::KEY_CONVERSION] === "" ? null: $dataSet[static::KEY_CONVERSION])
             ->setPrecision($dataSet[static::KEY_PRECISION] === "" ? null : $dataSet[static::KEY_PRECISION])
             ->setIsDefault($dataSet[static::KEY_IS_DEFAULT])
             ->setIsDisplay($dataSet[static::KEY_IS_DISPLAY])
