@@ -125,16 +125,17 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
             ->addDataImporter($this->createNavigationNodeImporter())
             ->addDataImporter($this->createDiscountAmountImporter());
 
+        $dataImporterCollection->addDataImporterPlugins($this->getDataImporterPlugins());
+
         return $dataImporterCollection;
     }
 
     /**
-     * @return \Spryker\Zed\DataImport\Business\Model\DataImporterCollectionInterface|\Spryker\Zed\DataImport\Business\Model\DataImporterInterface
+     * @return \Spryker\Zed\DataImport\Business\Model\DataImporterCollectionInterface|\Spryker\Zed\DataImport\Business\Model\DataImporterPluginCollectionInterface|\Spryker\Zed\DataImport\Business\Model\DataImporterInterface
      */
     public function createDataImporterCollection()
     {
         $dataImporterCollection = new DataImporterCollection($this->createDataImporterPublisher());
-        $dataImporterCollection->addDataImporterPlugins($this->getDataImporterPlugins());
 
         return $dataImporterCollection;
     }
