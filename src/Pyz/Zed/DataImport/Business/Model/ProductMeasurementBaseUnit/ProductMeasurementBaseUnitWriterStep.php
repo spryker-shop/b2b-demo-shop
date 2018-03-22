@@ -10,6 +10,7 @@ namespace Pyz\Zed\DataImport\Business\Model\ProductMeasurementBaseUnit;
 use Orm\Zed\Product\Persistence\SpyProductAbstractQuery;
 use Orm\Zed\ProductMeasurementUnit\Persistence\SpyProductMeasurementBaseUnitQuery;
 use Orm\Zed\ProductMeasurementUnit\Persistence\SpyProductMeasurementUnitQuery;
+use Pyz\Zed\DataImport\Business\Exception\EntityNotFoundException;
 use Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 
@@ -32,10 +33,8 @@ class ProductMeasurementBaseUnitWriterStep implements DataImportStepInterface
      */
     public function execute(DataSetInterface $dataSet)
     {
-        $productAbstractEntity = $this->getProductAbstractEntityBySku($dataSet[static::KEY_ABSTRACT_SKU]);
-
         $baseUnitEntity = SpyProductMeasurementBaseUnitQuery::create()
-            ->filterByFkProductAbstract($productAbstractEntity->getIdProductAbstract())
+            ->filterByFkProductAbstract($this->getIdProductAbstractBySku($dataSet[static::KEY_ABSTRACT_SKU]))
             ->findOneOrCreate();
 
         $baseUnitEntity
@@ -46,11 +45,21 @@ class ProductMeasurementBaseUnitWriterStep implements DataImportStepInterface
     /**
      * @param string $productAbstractSku
      *
-     * @return \Orm\Zed\Product\Persistence\SpyProductAbstract
+     * @throws \Pyz\Zed\DataImport\Business\Exception\EntityNotFoundException
+     *
+     * @return int
      */
-    protected function getProductAbstractEntityBySku($productAbstractSku)
+    protected function getIdProductAbstractBySku($productAbstractSku)
     {
-        return SpyProductAbstractQuery::create()->findOneBySku($productAbstractSku);
+        $productAbstractEntity = SpyProductAbstractQuery::create()->findOneBySku($productAbstractSku);
+
+        if (!$productAbstractEntity) {
+            throw new EntityNotFoundException(
+                sprintf('Product abstract with SKU "%s" was not found during import.', $productAbstractSku)
+            );
+        }
+
+        return $productAbstractEntity->getIdProductAbstract();
     }
 
     /**

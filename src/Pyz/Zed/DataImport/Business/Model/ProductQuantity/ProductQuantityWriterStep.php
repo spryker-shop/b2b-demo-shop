@@ -9,6 +9,7 @@ namespace Pyz\Zed\DataImport\Business\Model\ProductQuantity;
 
 use Orm\Zed\Product\Persistence\SpyProductQuery;
 use Orm\Zed\ProductQuantity\Persistence\SpyProductQuantityQuery;
+use Pyz\Zed\DataImport\Business\Exception\EntityNotFoundException;
 use Pyz\Zed\DataImport\Business\Model\DataImportStep\PublishAwareStep;
 use Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
@@ -34,20 +35,62 @@ class ProductQuantityWriterStep extends PublishAwareStep implements DataImportSt
      */
     public function execute(DataSetInterface $dataSet)
     {
-        $idProductConcrete = SpyProductQuery::create()
-            ->findOneBySku($dataSet[static::KEY_CONCRETE_SKU])
-            ->getIdProduct();
+        $dataSet = $this->filterDataSet($dataSet);
+
+        $idProduct = $this->getIdProductBySku($dataSet[static::KEY_CONCRETE_SKU]);
 
         $productQuantityEntity = (new SpyProductQuantityQuery())
-            ->filterByFkProduct($idProductConcrete)
+            ->filterByFkProduct($idProduct)
             ->findOneOrCreate();
 
         $productQuantityEntity
-            ->setQuantityMin($dataSet[static::KEY_QUANTITY_MIN] === "" ? static::DEFAULT_MIN : $dataSet[static::KEY_QUANTITY_MIN])
-            ->setQuantityMax($dataSet[static::KEY_QUANTITY_MAX] === "" ? static::DEFAULT_MAX : $dataSet[static::KEY_QUANTITY_MAX])
-            ->setQuantityInterval($dataSet[static::KEY_QUANTITY_INTERVAL] === "" ? static::DEFAULT_INTERVAL : $dataSet[static::KEY_QUANTITY_INTERVAL])
+            ->setQuantityMin($dataSet[static::KEY_QUANTITY_MIN])
+            ->setQuantityMax($dataSet[static::KEY_QUANTITY_MAX])
+            ->setQuantityInterval($dataSet[static::KEY_QUANTITY_INTERVAL])
             ->save();
 
         $this->addPublishEvents(ProductQuantityEvents::PRODUCT_QUANTITY_PUBLISH, $productQuantityEntity->getFkProduct());
+    }
+
+    /**
+     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
+     *
+     * @return \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface
+     */
+    protected function filterDataSet(DataSetInterface $dataSet)
+    {
+        if ($dataSet[static::KEY_QUANTITY_MIN] === "") {
+            $dataSet[static::KEY_QUANTITY_MIN] = static::DEFAULT_MIN;
+        }
+
+        if ($dataSet[static::KEY_QUANTITY_MAX] === "") {
+            $dataSet[static::KEY_QUANTITY_MAX] = static::DEFAULT_MAX;
+        }
+
+        if ($dataSet[static::KEY_QUANTITY_INTERVAL] === "") {
+            $dataSet[static::KEY_QUANTITY_INTERVAL] = static::DEFAULT_INTERVAL;
+        }
+
+        return $dataSet;
+    }
+
+    /**
+     * @param string $productConcreteSku
+     *
+     * @throws \Pyz\Zed\DataImport\Business\Exception\EntityNotFoundException
+     *
+     * @return int
+     */
+    protected function getIdProductBySku($productConcreteSku)
+    {
+        $productEntity = SpyProductQuery::create()->findOneBySku($productConcreteSku);
+
+        if (!$productEntity) {
+            throw new EntityNotFoundException(
+                sprintf('Product concrete with "%s" SKU was not found during data import', $productConcreteSku)
+            );
+        }
+
+        return $productEntity->getIdProduct();
     }
 }

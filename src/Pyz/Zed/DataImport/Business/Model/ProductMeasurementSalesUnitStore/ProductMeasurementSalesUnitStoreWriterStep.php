@@ -10,6 +10,7 @@ namespace Pyz\Zed\DataImport\Business\Model\ProductMeasurementSalesUnitStore;
 use Orm\Zed\ProductMeasurementUnit\Persistence\SpyProductMeasurementSalesUnitQuery;
 use Orm\Zed\ProductMeasurementUnit\Persistence\SpyProductMeasurementSalesUnitStoreQuery;
 use Orm\Zed\Store\Persistence\SpyStoreQuery;
+use Pyz\Zed\DataImport\Business\Exception\EntityNotFoundException;
 use Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 
@@ -19,11 +20,6 @@ class ProductMeasurementSalesUnitStoreWriterStep implements DataImportStepInterf
 
     const KEY_SALES_UNIT_KEY = 'sales_unit_key';
     const KEY_STORE_NAME = 'store_name';
-
-    /**
-     * @var int[] Keys are sales unit keys, values are sales unit ids.
-     */
-    protected static $idSalesUnitBuffer;
 
     /**
      * @var int[] Keys are store names, values are store ids.
@@ -45,18 +41,24 @@ class ProductMeasurementSalesUnitStoreWriterStep implements DataImportStepInterf
     }
 
     /**
-     * @param string $salesUnitKey
+     * @param string $productMeasurementSalesUnitKey
+     *
+     * @throws \Pyz\Zed\DataImport\Business\Exception\EntityNotFoundException
      *
      * @return int
      */
-    protected function getIdProductMeasurementSalesUnitByKey($salesUnitKey)
+    protected function getIdProductMeasurementSalesUnitByKey($productMeasurementSalesUnitKey)
     {
-        if (!isset(static::$idSalesUnitBuffer[$salesUnitKey])) {
-            static::$idSalesUnitBuffer[$salesUnitKey] =
-                SpyProductMeasurementSalesUnitQuery::create()->findOneByKey($salesUnitKey)->getIdProductMeasurementSalesUnit();
+        $productMeasurementSalesUnitEntity = SpyProductMeasurementSalesUnitQuery::create()
+            ->findOneByKey($productMeasurementSalesUnitKey);
+
+        if (!$productMeasurementSalesUnitEntity) {
+            throw new EntityNotFoundException(
+                sprintf('Product measurement sales unit with key "%s" was not found during import.', $productMeasurementSalesUnitKey)
+            );
         }
 
-        return static::$idSalesUnitBuffer[$salesUnitKey];
+        return $productMeasurementSalesUnitEntity->getIdProductMeasurementSalesUnit();
     }
 
     /**
@@ -66,11 +68,20 @@ class ProductMeasurementSalesUnitStoreWriterStep implements DataImportStepInterf
      */
     protected function getIdStoreByName($storeName)
     {
-        if (!isset(static::$idStoreBuffer[$storeName])) {
-            static::$idStoreBuffer[$storeName] =
-                SpyStoreQuery::create()->findOneByName($storeName)->getIdStore();
+        if (!static::$idStoreBuffer) {
+            $this->loadStoreIds();
         }
 
         return static::$idStoreBuffer[$storeName];
+    }
+
+    /**
+     * @return void
+     */
+    protected function loadStoreIds()
+    {
+        static::$idStoreBuffer = SpyStoreQuery::create()
+            ->find()
+            ->toKeyValue('name', 'idStore');
     }
 }

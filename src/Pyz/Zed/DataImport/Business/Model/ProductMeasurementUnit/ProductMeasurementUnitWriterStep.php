@@ -34,9 +34,23 @@ class ProductMeasurementUnitWriterStep extends PublishAwareStep implements DataI
 
         $productMeasurementUnitEntity
             ->setName($dataSet[static::KEY_NAME])
-            ->setDefaultPrecision((int)$dataSet[static::KEY_DEFAULT_PRECISION])
+            ->setDefaultPrecision($this->filterDefaultPrecision($dataSet[static::KEY_DEFAULT_PRECISION]))
             ->save();
 
         $this->addPublishEvents(ProductMeasurementUnitEvents::PRODUCT_MEASUREMENT_UNIT_PUBLISH, $productMeasurementUnitEntity->getIdProductMeasurementUnit());
+    }
+
+    /**
+     * @param int|float|string $defaultPrecision
+     *
+     * @return int
+     */
+    protected function filterDefaultPrecision($defaultPrecision)
+    {
+        if ($defaultPrecision === "") {
+            return 1;
+        }
+
+        return (int)$defaultPrecision;
     }
 }
