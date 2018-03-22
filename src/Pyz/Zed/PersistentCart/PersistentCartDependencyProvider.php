@@ -11,6 +11,8 @@ use Spryker\Zed\MultiCart\Communication\Plugin\CustomerCartQuoteResponseExpander
 use Spryker\Zed\PersistentCart\PersistentCartDependencyProvider as SprykerPersistentCartDependencyProvider;
 use Spryker\Zed\ProductBundle\Communication\Plugin\PersistentCart\BundleProductQuoteItemFinderPlugin;
 use Spryker\Zed\ProductBundle\Communication\Plugin\PersistentCart\RemoveBundleChangeRequestExpanderPlugin;
+use Spryker\Zed\SharedCart\Communication\Plugin\CustomerQuoteResponseExpanderPlugin;
+use Spryker\Zed\SharedCart\Communication\Plugin\SharedCartQuoteResponseExpanderPlugin;
 
 class PersistentCartDependencyProvider extends SprykerPersistentCartDependencyProvider
 {
@@ -21,6 +23,8 @@ class PersistentCartDependencyProvider extends SprykerPersistentCartDependencyPr
     {
         return [
             new CustomerCartQuoteResponseExpanderPlugin(),
+            new SharedCartQuoteResponseExpanderPlugin(), #SharedCartFeature
+            new CustomerQuoteResponseExpanderPlugin(), #SharedCartFeature
         ];
     }
     
@@ -29,7 +33,7 @@ class PersistentCartDependencyProvider extends SprykerPersistentCartDependencyPr
      */
     protected function getQuoteItemFinderPlugin()
     {
-        return new BundleProductQuoteItemFinderPlugin();
+        return new BundleProductQuoteItemFinderPlugin(); #ProductBundleFeature
     }
 
     /**
@@ -38,7 +42,7 @@ class PersistentCartDependencyProvider extends SprykerPersistentCartDependencyPr
     protected function getRemoveItemsRequestExpanderPlugins()
     {
         return [
-            new RemoveBundleChangeRequestExpanderPlugin(),
+            new RemoveBundleChangeRequestExpanderPlugin(), #ProductBundleFeature
         ];
     }
 }
