@@ -24,6 +24,7 @@ use Spryker\Zed\ProductCartConnector\Communication\Plugin\ProductCartPlugin;
 use Spryker\Zed\ProductCartConnector\Communication\Plugin\ProductExistsCartPreCheckPlugin;
 use Spryker\Zed\ProductImageCartConnector\Communication\Plugin\ProductImageCartPlugin;
 use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\ProductMeasurementSalesUnitCartPreCheckPlugin;
+use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\ProductMeasurementSalesUnitValuePostSavePlugin;
 use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\ProductMeasurementUnitItemExpanderPlugin;
 use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\SkuSalesUnitGroupKeyPlugin;
 use Spryker\Zed\ProductOptionCartConnector\Communication\Plugin\CartItemGroupKeyOptionPlugin;
@@ -87,6 +88,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new ChangeProductOptionQuantityPlugin(),
             new CartPostSaveUpdateBundlesPlugin(),
             new RemovePaymentCartPostSavePlugin(),
+            new ProductMeasurementSalesUnitValuePostSavePlugin(),
         ];
     }
 
