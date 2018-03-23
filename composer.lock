@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "92a5fb4b51e2184b5baaec85baf734a7",
+    "content-hash": "dc6cd84d98d80113e13ebaac80005df3",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.52.29",
+            "version": "3.52.31",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "51efd3a7cda92f245ccf39fea03227e0eb473c93"
+                "reference": "8a886aeb1475825b324ebeefce2fb0730be649a5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/51efd3a7cda92f245ccf39fea03227e0eb473c93",
-                "reference": "51efd3a7cda92f245ccf39fea03227e0eb473c93",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/8a886aeb1475825b324ebeefce2fb0730be649a5",
+                "reference": "8a886aeb1475825b324ebeefce2fb0730be649a5",
                 "shasum": ""
             },
             "require": {
@@ -84,7 +84,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2018-03-20T21:15:39+00:00"
+            "time": "2018-03-22T22:05:02+00:00"
         },
         {
             "name": "braintree/braintree_php",
@@ -600,7 +600,7 @@
             ],
             "authors": [
                 {
-                    "name": "Francois Zaninotto"
+                    "name": "François Zaninotto"
                 }
             ],
             "description": "Faker is a PHP library that generates fake data for you.",
@@ -1587,7 +1587,7 @@
             ],
             "authors": [
                 {
-                    "name": "William Durand",
+                    "name": "William DURAND",
                     "email": "william.durand1@gmail.com"
                 }
             ],
@@ -4143,16 +4143,16 @@
         },
         {
             "name": "spryker-shop/shop-ui",
-            "version": "0.2.0",
+            "version": "0.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/shop-ui.git",
-                "reference": "a89ded7a073e52a09247177c81ba44ca16959cfa"
+                "reference": "0bbb34970dea1ae32feed9150dd5aa833660ea92"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/shop-ui/zipball/a89ded7a073e52a09247177c81ba44ca16959cfa",
-                "reference": "a89ded7a073e52a09247177c81ba44ca16959cfa",
+                "url": "https://api.github.com/repos/spryker-shop/shop-ui/zipball/0bbb34970dea1ae32feed9150dd5aa833660ea92",
+                "reference": "0bbb34970dea1ae32feed9150dd5aa833660ea92",
                 "shasum": ""
             },
             "require": {
@@ -4182,7 +4182,7 @@
                 "proprietary"
             ],
             "description": "ShopUi module",
-            "time": "2018-03-19T13:21:47+00:00"
+            "time": "2018-03-20T17:35:12+00:00"
         },
         {
             "name": "spryker-shop/web-profiler-widget",
@@ -7057,16 +7057,16 @@
         },
         {
             "name": "spryker/company-unit-address",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/company-unit-address.git",
-                "reference": "f35da2019aa151359cd69b326aea7f431412c038"
+                "reference": "7cac7517bcbfd7a7f70d6a613f1bf92f577745bb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/company-unit-address/zipball/f35da2019aa151359cd69b326aea7f431412c038",
-                "reference": "f35da2019aa151359cd69b326aea7f431412c038",
+                "url": "https://api.github.com/repos/spryker/company-unit-address/zipball/7cac7517bcbfd7a7f70d6a613f1bf92f577745bb",
+                "reference": "7cac7517bcbfd7a7f70d6a613f1bf92f577745bb",
                 "shasum": ""
             },
             "require": {
@@ -7099,7 +7099,184 @@
                 "proprietary"
             ],
             "description": "CompanyUnitAddress module",
-            "time": "2018-03-14T10:13:27+00:00"
+            "time": "2018-03-20T13:36:49+00:00"
+        },
+        {
+            "name": "spryker/company-unit-address-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/company-unit-address-extension.git",
+                "reference": "391ebf532c3189d179f17a66ebe3820d49f8160b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/company-unit-address-extension/zipball/391ebf532c3189d179f17a66ebe3820d49f8160b",
+                "reference": "391ebf532c3189d179f17a66ebe3820d49f8160b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/symfony": "^3.0.0",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/symfony": "If you want to provide plugins to CompanyUnitAddress module"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CompanyUnitAddressExtension module",
+            "time": "2018-03-22T07:48:15+00:00"
+        },
+        {
+            "name": "spryker/company-unit-address-gui",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/company-unit-address-gui.git",
+                "reference": "a716a1ab60ba55cff366d44f393d1b5f59ed211d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/company-unit-address-gui/zipball/a716a1ab60ba55cff366d44f393d1b5f59ed211d",
+                "reference": "a716a1ab60ba55cff366d44f393d1b5f59ed211d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/company-unit-address": "^1.1.0",
+                "spryker/gui": "^3.0.0",
+                "spryker/kernel": "^3.0.0",
+                "spryker/symfony": "^3.0.0",
+                "spryker/util-text": "^1.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CompanyUnitAddressGui module",
+            "time": "2018-03-22T17:33:42+00:00"
+        },
+        {
+            "name": "spryker/company-unit-address-gui-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/company-unit-address-gui-extension.git",
+                "reference": "f3584eab5349264d43799d1177f14cad64911c2d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/company-unit-address-gui-extension/zipball/f3584eab5349264d43799d1177f14cad64911c2d",
+                "reference": "f3584eab5349264d43799d1177f14cad64911c2d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/symfony": "^3.0.0",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/symfony": "If you want to provide plugins to CompanyUnitAddressGui module"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CompanyUnitAddressGuiExtension module",
+            "time": "2018-03-22T07:48:15+00:00"
+        },
+        {
+            "name": "spryker/company-unit-address-label",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/company-unit-address-label.git",
+                "reference": "5e32869f14a5d9a75d4ac1161f52000038702e5c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/company-unit-address-label/zipball/5e32869f14a5d9a75d4ac1161f52000038702e5c",
+                "reference": "5e32869f14a5d9a75d4ac1161f52000038702e5c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/company-unit-address": "^1.1.0",
+                "spryker/company-unit-address-extension": "^1.0.0",
+                "spryker/company-unit-address-gui-extension": "^1.0.0",
+                "spryker/gui": "^3.0.0",
+                "spryker/kernel": "^3.0.0",
+                "spryker/propel-orm": "^1.0.0",
+                "spryker/symfony": "^3.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/",
+                    "SprykerTest\\Zed\\CompanyUnitAddressLabel\\Helper\\": "tests/SprykerTest/Zed/CompanyUnitAddressLabel/_support/Helper/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CompanyUnitAddressLabel module",
+            "time": "2018-03-22T18:51:18+00:00"
         },
         {
             "name": "spryker/company-user",
@@ -10434,16 +10611,16 @@
         },
         {
             "name": "spryker/product",
-            "version": "6.0.0",
+            "version": "6.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product.git",
-                "reference": "aa8bc1dbb14382d064fb2ef74e76067a571f48dd"
+                "reference": "fc443ec76a12a3c4eab654aace56503db0ec9efc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product/zipball/aa8bc1dbb14382d064fb2ef74e76067a571f48dd",
-                "reference": "aa8bc1dbb14382d064fb2ef74e76067a571f48dd",
+                "url": "https://api.github.com/repos/spryker/product/zipball/fc443ec76a12a3c4eab654aace56503db0ec9efc",
+                "reference": "fc443ec76a12a3c4eab654aace56503db0ec9efc",
                 "shasum": ""
             },
             "require": {
@@ -10484,7 +10661,7 @@
                 "proprietary"
             ],
             "description": "Product module",
-            "time": "2018-01-24T11:43:27+00:00"
+            "time": "2018-03-22T15:10:02+00:00"
         },
         {
             "name": "spryker/product-abstract-data-feed",
@@ -11734,16 +11911,16 @@
         },
         {
             "name": "spryker/product-management",
-            "version": "0.13.1",
+            "version": "0.13.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product-management.git",
-                "reference": "fd2869daf9a5c203c699e91f04675b86ff4e0cdd"
+                "reference": "54c34cfd2f2b858ca8385754004719d48fede8eb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-management/zipball/fd2869daf9a5c203c699e91f04675b86ff4e0cdd",
-                "reference": "fd2869daf9a5c203c699e91f04675b86ff4e0cdd",
+                "url": "https://api.github.com/repos/spryker/product-management/zipball/54c34cfd2f2b858ca8385754004719d48fede8eb",
+                "reference": "54c34cfd2f2b858ca8385754004719d48fede8eb",
                 "shasum": ""
             },
             "require": {
@@ -11792,7 +11969,7 @@
                 "proprietary"
             ],
             "description": "ProductManagement module",
-            "time": "2018-02-28T17:28:20+00:00"
+            "time": "2018-03-22T11:08:42+00:00"
         },
         {
             "name": "spryker/product-new",
@@ -13314,16 +13491,16 @@
         },
         {
             "name": "spryker/sales",
-            "version": "8.7.0",
+            "version": "8.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/sales.git",
-                "reference": "0b3e5a19d686508cb04b53afee69e12f2e0ee6cc"
+                "reference": "55d4a1c8455d1bb6ca78e99c53ce90e40ede8845"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/sales/zipball/0b3e5a19d686508cb04b53afee69e12f2e0ee6cc",
-                "reference": "0b3e5a19d686508cb04b53afee69e12f2e0ee6cc",
+                "url": "https://api.github.com/repos/spryker/sales/zipball/55d4a1c8455d1bb6ca78e99c53ce90e40ede8845",
+                "reference": "55d4a1c8455d1bb6ca78e99c53ce90e40ede8845",
                 "shasum": ""
             },
             "require": {
@@ -13376,7 +13553,7 @@
                 "proprietary"
             ],
             "description": "Sales module",
-            "time": "2018-03-05T11:45:57+00:00"
+            "time": "2018-03-22T12:54:05+00:00"
         },
         {
             "name": "spryker/sales-product-connector",
@@ -16888,33 +17065,29 @@
         },
         {
             "name": "symfony/twig-bridge",
-            "version": "v3.3.16",
+            "version": "v3.0.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/twig-bridge.git",
-                "reference": "c4f577a8043b175353e19ce003b637aff2130c57"
+                "reference": "34ddcc46f09f6564f03cb61134ee51f3b309aa58"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/twig-bridge/zipball/c4f577a8043b175353e19ce003b637aff2130c57",
-                "reference": "c4f577a8043b175353e19ce003b637aff2130c57",
+                "url": "https://api.github.com/repos/symfony/twig-bridge/zipball/34ddcc46f09f6564f03cb61134ee51f3b309aa58",
+                "reference": "34ddcc46f09f6564f03cb61134ee51f3b309aa58",
                 "shasum": ""
             },
             "require": {
-                "php": "^5.5.9|>=7.0.8",
-                "twig/twig": "~1.34|~2.4"
-            },
-            "conflict": {
-                "symfony/form": "<3.2.10|~3.3,<3.3.3"
+                "php": ">=5.5.9",
+                "twig/twig": "~1.23|~2.0"
             },
             "require-dev": {
                 "symfony/asset": "~2.8|~3.0",
                 "symfony/console": "~2.8|~3.0",
                 "symfony/expression-language": "~2.8|~3.0",
                 "symfony/finder": "~2.8|~3.0",
-                "symfony/form": "^3.2.10|^3.3.3",
-                "symfony/http-foundation": "^3.3.11",
-                "symfony/http-kernel": "~3.2",
+                "symfony/form": "~3.0.4",
+                "symfony/http-kernel": "~2.8|~3.0",
                 "symfony/polyfill-intl-icu": "~1.0",
                 "symfony/routing": "~2.8|~3.0",
                 "symfony/security": "~2.8|~3.0",
@@ -16922,9 +17095,7 @@
                 "symfony/stopwatch": "~2.8|~3.0",
                 "symfony/templating": "~2.8|~3.0",
                 "symfony/translation": "~2.8|~3.0",
-                "symfony/var-dumper": "~2.8.10|~3.1.4|~3.2",
-                "symfony/web-link": "~3.3",
-                "symfony/workflow": "~3.3",
+                "symfony/var-dumper": "~2.8.9|~3.0.9|~3.1.3|~3.2",
                 "symfony/yaml": "~2.8|~3.0"
             },
             "suggest": {
@@ -16939,13 +17110,12 @@
                 "symfony/templating": "For using the TwigEngine",
                 "symfony/translation": "For using the TranslationExtension",
                 "symfony/var-dumper": "For using the DumpExtension",
-                "symfony/web-link": "For using the WebLinkExtension",
                 "symfony/yaml": "For using the YamlExtension"
             },
             "type": "symfony-bridge",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.3-dev"
+                    "dev-master": "3.0-dev"
                 }
             },
             "autoload": {
@@ -16972,7 +17142,7 @@
             ],
             "description": "Symfony Twig Bridge",
             "homepage": "https://symfony.com",
-            "time": "2018-01-03T17:13:53+00:00"
+            "time": "2016-07-28T11:13:34+00:00"
         },
         {
             "name": "symfony/validator",
@@ -19981,23 +20151,23 @@
         },
         {
             "name": "silex/web-profiler",
-            "version": "1.0.x-dev",
+            "version": "v1.0.8",
             "target-dir": "Silex/Provider",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silexphp/Silex-WebProfiler.git",
-                "reference": "2c5df830c864bec709307e706176771b57440be5"
+                "reference": "3b767e6c9006a542cac737474f02671bdf2909cb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silexphp/Silex-WebProfiler/zipball/2c5df830c864bec709307e706176771b57440be5",
-                "reference": "2c5df830c864bec709307e706176771b57440be5",
+                "url": "https://api.github.com/repos/silexphp/Silex-WebProfiler/zipball/3b767e6c9006a542cac737474f02671bdf2909cb",
+                "reference": "3b767e6c9006a542cac737474f02671bdf2909cb",
                 "shasum": ""
             },
             "require": {
                 "silex/silex": "~1.1",
-                "symfony/stopwatch": "~2.2|3.0.*",
-                "symfony/web-profiler-bundle": "~2.4|3.0.*"
+                "symfony/stopwatch": "~2.2",
+                "symfony/web-profiler-bundle": "~2.4"
             },
             "type": "library",
             "extra": {
@@ -20022,7 +20192,7 @@
             ],
             "description": "A WebProfiler for Silex",
             "homepage": "http://silex.sensiolabs.org/",
-            "time": "2016-05-04T16:32:42+00:00"
+            "time": "2016-01-10T11:39:13+00:00"
         },
         {
             "name": "site5/phantoman",
@@ -20792,25 +20962,25 @@
         },
         {
             "name": "symfony/stopwatch",
-            "version": "v3.0.9",
+            "version": "v2.8.36",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/stopwatch.git",
-                "reference": "49c0ea2f3d3a779df4780927671332edc406ea84"
+                "reference": "57021208ad9830f8f8390c1a9d7bb390f32be89e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/stopwatch/zipball/49c0ea2f3d3a779df4780927671332edc406ea84",
-                "reference": "49c0ea2f3d3a779df4780927671332edc406ea84",
+                "url": "https://api.github.com/repos/symfony/stopwatch/zipball/57021208ad9830f8f8390c1a9d7bb390f32be89e",
+                "reference": "57021208ad9830f8f8390c1a9d7bb390f32be89e",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.5.9"
+                "php": ">=5.3.9"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.0-dev"
+                    "dev-master": "2.8-dev"
                 }
             },
             "autoload": {
@@ -20837,7 +21007,7 @@
             ],
             "description": "Symfony Stopwatch Component",
             "homepage": "https://symfony.com",
-            "time": "2016-06-29T05:40:00+00:00"
+            "time": "2018-01-03T07:36:31+00:00"
         },
         {
             "name": "symfony/var-dumper",
@@ -20910,34 +21080,35 @@
         },
         {
             "name": "symfony/web-profiler-bundle",
-            "version": "v3.0.9",
+            "version": "v2.8.36",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/web-profiler-bundle.git",
-                "reference": "27f53ac86d85d6eeb3fbe08be026d7b447ad86d7"
+                "reference": "fdcf74741982a20379824014a7567a37ede086f1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/web-profiler-bundle/zipball/27f53ac86d85d6eeb3fbe08be026d7b447ad86d7",
-                "reference": "27f53ac86d85d6eeb3fbe08be026d7b447ad86d7",
+                "url": "https://api.github.com/repos/symfony/web-profiler-bundle/zipball/fdcf74741982a20379824014a7567a37ede086f1",
+                "reference": "fdcf74741982a20379824014a7567a37ede086f1",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.5.9",
-                "symfony/http-kernel": "~2.8|~3.0",
-                "symfony/routing": "~2.8|~3.0",
-                "symfony/twig-bridge": "~2.8|~3.0"
+                "php": ">=5.3.9",
+                "symfony/http-kernel": "~2.4|~3.0.0",
+                "symfony/routing": "~2.2|~3.0.0",
+                "symfony/twig-bridge": "~2.7|~3.0.0",
+                "twig/twig": "~1.34|~2.4"
             },
             "require-dev": {
-                "symfony/config": "~2.8|~3.0",
-                "symfony/console": "~2.8|~3.0",
-                "symfony/dependency-injection": "~2.8|~3.0",
-                "symfony/stopwatch": "~2.8|~3.0"
+                "symfony/config": "~2.2|~3.0.0",
+                "symfony/console": "~2.3|~3.0.0",
+                "symfony/dependency-injection": "~2.2|~3.0.0",
+                "symfony/stopwatch": "~2.2|~3.0.0"
             },
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.0-dev"
+                    "dev-master": "2.8-dev"
                 }
             },
             "autoload": {
@@ -20964,7 +21135,7 @@
             ],
             "description": "Symfony WebProfilerBundle",
             "homepage": "https://symfony.com",
-            "time": "2016-07-26T08:03:56+00:00"
+            "time": "2018-03-02T15:25:13+00:00"
         },
         {
             "name": "theseer/fdomdocument",
