@@ -9,9 +9,6 @@ namespace Pyz\Zed\Permission;
 
 use Spryker\Zed\Permission\PermissionDependencyProvider as SprykerPermissionDependencyProvider;
 
-/**
- * @project Only needed in non-split, not in a split
- */
 class PermissionDependencyProvider extends SprykerPermissionDependencyProvider
 {
     /**
