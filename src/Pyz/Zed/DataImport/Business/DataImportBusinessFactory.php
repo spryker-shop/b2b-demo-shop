@@ -18,14 +18,10 @@ use Pyz\Zed\DataImport\Business\Model\CmsTemplate\CmsTemplateWriterStep;
 use Pyz\Zed\DataImport\Business\Model\Country\Repository\CountryRepository;
 use Pyz\Zed\DataImport\Business\Model\Currency\CurrencyWriterStep;
 use Pyz\Zed\DataImport\Business\Model\Customer\CustomerWriterStep;
-use Pyz\Zed\DataImport\Business\Model\DataImporterCollection;
-use Pyz\Zed\DataImport\Business\Model\DataImporterPublisher;
-use Pyz\Zed\DataImport\Business\Model\DataImportStep\LocalizedAttributesExtractorStep;
 use Pyz\Zed\DataImport\Business\Model\Discount\DiscountWriterStep;
 use Pyz\Zed\DataImport\Business\Model\DiscountAmount\DiscountAmountWriterStep;
 use Pyz\Zed\DataImport\Business\Model\DiscountVoucher\DiscountVoucherWriterStep;
 use Pyz\Zed\DataImport\Business\Model\Glossary\GlossaryWriterStep;
-use Pyz\Zed\DataImport\Business\Model\Locale\AddLocalesStep;
 use Pyz\Zed\DataImport\Business\Model\Locale\LocaleNameToIdLocaleStep;
 use Pyz\Zed\DataImport\Business\Model\Locale\Repository\LocaleRepository;
 use Pyz\Zed\DataImport\Business\Model\Navigation\NavigationKeyToIdNavigationStep;
@@ -128,24 +124,6 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
         $dataImporterCollection->addDataImporterPlugins($this->getDataImporterPlugins());
 
         return $dataImporterCollection;
-    }
-
-    /**
-     * @return \Spryker\Zed\DataImport\Business\Model\DataImporterCollectionInterface|\Spryker\Zed\DataImport\Business\Model\DataImporterPluginCollectionInterface|\Spryker\Zed\DataImport\Business\Model\DataImporterInterface
-     */
-    public function createDataImporterCollection()
-    {
-        $dataImporterCollection = new DataImporterCollection($this->createDataImporterPublisher());
-
-        return $dataImporterCollection;
-    }
-
-    /**
-     * @return \Pyz\Zed\DataImport\Business\Model\DataImporterPublisherInterface
-     */
-    public function createDataImporterPublisher()
-    {
-        return new DataImporterPublisher($this->getEventFacade());
     }
 
     /**
@@ -984,22 +962,6 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     }
 
     /**
-     * @return \Pyz\Zed\DataImport\Business\Model\Locale\AddLocalesStep
-     */
-    protected function createAddLocalesStep()
-    {
-        return new AddLocalesStep($this->getStore());
-    }
-
-    /**
-     * @return \Spryker\Shared\Kernel\Store
-     */
-    protected function getStore()
-    {
-        return $this->getProvidedDependency(DataImportDependencyProvider::STORE);
-    }
-
-    /**
      * @return \Pyz\Zed\DataImport\Business\Model\ProductAbstract\AddCategoryKeysStep
      */
     protected function createAddCategoryKeysStep()
@@ -1013,16 +975,6 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     protected function createAttributesExtractorStep()
     {
         return new AttributesExtractorStep();
-    }
-
-    /**
-     * @param array $defaultAttributes
-     *
-     * @return \Pyz\Zed\DataImport\Business\Model\DataImportStep\LocalizedAttributesExtractorStep
-     */
-    protected function createLocalizedAttributesExtractorStep(array $defaultAttributes = [])
-    {
-        return new LocalizedAttributesExtractorStep($defaultAttributes);
     }
 
     /**
