@@ -9,26 +9,19 @@ namespace Pyz\Client\Cart;
 
 use Spryker\Client\Cart\CartDependencyProvider as SprykerCartDependencyProvider;
 use Spryker\Client\DiscountPromotion\Plugin\AddDiscountPromotionCartRequestExpandPlugin;
-use Spryker\Client\Kernel\Container;
 use Spryker\Client\PersistentCart\Plugin\DatabaseQuoteStorageStrategy;
 use Spryker\Client\ProductBundle\Plugin\Cart\BundleProductQuoteItemFinderPlugin;
-use Spryker\Client\ProductBundle\Plugin\Cart\ItemCountPlugin;
+use Spryker\Client\ProductBundle\Plugin\Cart\BundledItemCounterPlugin;
 use Spryker\Client\ProductBundle\Plugin\Cart\RemoveBundleChangeRequestExpanderPlugin;
 
 class CartDependencyProvider extends SprykerCartDependencyProvider
 {
     /**
-     * @param \Spryker\Client\Kernel\Container $container
-     *
-     * @return \Spryker\Client\Kernel\Container
+     * @return \Spryker\Client\Cart\Dependency\Plugin\ItemCounterPluginInterface
      */
-    protected function addItemCountPlugin(Container $container)
+    protected function getItemCountPlugin()
     {
-        $container[static::PLUGIN_ITEM_COUNT] = function (Container $container) {
-            return new ItemCountPlugin();
-        };
-
-        return $container;
+        return new BundledItemCounterPlugin();
     }
 
     /**
@@ -43,7 +36,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
     }
 
     /**
-     * @return \Spryker\Client\ProductBundle\Plugin\Cart\BundleProductQuoteItemFinderPlugin
+     * @return \Spryker\Client\Cart\Dependency\Plugin\QuoteItemFinderPluginInterface
      */
     protected function getQuoteItemFinderPlugin()
     {
