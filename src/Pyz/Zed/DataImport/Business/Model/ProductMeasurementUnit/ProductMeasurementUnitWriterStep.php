@@ -28,16 +28,16 @@ class ProductMeasurementUnitWriterStep extends PublishAwareStep implements DataI
      */
     public function execute(DataSetInterface $dataSet)
     {
-        $productMeasurementUnitEntity = (new SpyProductMeasurementUnitQuery())
+        $spyProductMeasurementUnitEntity = SpyProductMeasurementUnitQuery::create()
             ->filterByCode($dataSet[static::KEY_CODE])
             ->findOneOrCreate();
 
-        $productMeasurementUnitEntity
+        $spyProductMeasurementUnitEntity
             ->setName($dataSet[static::KEY_NAME])
             ->setDefaultPrecision($this->filterDefaultPrecision($dataSet[static::KEY_DEFAULT_PRECISION]))
             ->save();
 
-        $this->addPublishEvents(ProductMeasurementUnitEvents::PRODUCT_MEASUREMENT_UNIT_PUBLISH, $productMeasurementUnitEntity->getIdProductMeasurementUnit());
+        $this->addPublishEvents(ProductMeasurementUnitEvents::PRODUCT_MEASUREMENT_UNIT_PUBLISH, $spyProductMeasurementUnitEntity->getIdProductMeasurementUnit());
     }
 
     /**

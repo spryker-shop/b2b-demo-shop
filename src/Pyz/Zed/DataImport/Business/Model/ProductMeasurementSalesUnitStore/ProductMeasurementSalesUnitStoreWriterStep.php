@@ -33,7 +33,7 @@ class ProductMeasurementSalesUnitStoreWriterStep implements DataImportStepInterf
      */
     public function execute(DataSetInterface $dataSet)
     {
-        (new SpyProductMeasurementSalesUnitStoreQuery())
+        SpyProductMeasurementSalesUnitStoreQuery::create()
             ->filterByFkProductMeasurementSalesUnit($this->getIdProductMeasurementSalesUnitByKey($dataSet[static::KEY_SALES_UNIT_KEY]))
             ->filterByFkStore($this->getIdStoreByName($dataSet[static::KEY_STORE_NAME]))
             ->findOneOrCreate()
@@ -49,16 +49,16 @@ class ProductMeasurementSalesUnitStoreWriterStep implements DataImportStepInterf
      */
     protected function getIdProductMeasurementSalesUnitByKey($productMeasurementSalesUnitKey)
     {
-        $productMeasurementSalesUnitEntity = SpyProductMeasurementSalesUnitQuery::create()
+        $spyProductMeasurementSalesUnitEntity = SpyProductMeasurementSalesUnitQuery::create()
             ->findOneByKey($productMeasurementSalesUnitKey);
 
-        if (!$productMeasurementSalesUnitEntity) {
+        if (!$spyProductMeasurementSalesUnitEntity) {
             throw new EntityNotFoundException(
                 sprintf('Product measurement sales unit with key "%s" was not found during import.', $productMeasurementSalesUnitKey)
             );
         }
 
-        return $productMeasurementSalesUnitEntity->getIdProductMeasurementSalesUnit();
+        return $spyProductMeasurementSalesUnitEntity->getIdProductMeasurementSalesUnit();
     }
 
     /**

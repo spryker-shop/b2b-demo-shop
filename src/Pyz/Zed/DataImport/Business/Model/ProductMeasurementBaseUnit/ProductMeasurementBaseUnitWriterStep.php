@@ -33,11 +33,11 @@ class ProductMeasurementBaseUnitWriterStep implements DataImportStepInterface
      */
     public function execute(DataSetInterface $dataSet)
     {
-        $baseUnitEntity = SpyProductMeasurementBaseUnitQuery::create()
+        $spyBaseUnitEntity = SpyProductMeasurementBaseUnitQuery::create()
             ->filterByFkProductAbstract($this->getIdProductAbstractBySku($dataSet[static::KEY_ABSTRACT_SKU]))
             ->findOneOrCreate();
 
-        $baseUnitEntity
+        $spyBaseUnitEntity
             ->setFkProductMeasurementUnit($this->getProductMeasurementUnitIdByCode($dataSet[static::KEY_CODE]))
             ->save();
     }
@@ -51,15 +51,15 @@ class ProductMeasurementBaseUnitWriterStep implements DataImportStepInterface
      */
     protected function getIdProductAbstractBySku($productAbstractSku)
     {
-        $productAbstractEntity = SpyProductAbstractQuery::create()->findOneBySku($productAbstractSku);
+        $spyProductAbstractEntity = SpyProductAbstractQuery::create()->findOneBySku($productAbstractSku);
 
-        if (!$productAbstractEntity) {
+        if (!$spyProductAbstractEntity) {
             throw new EntityNotFoundException(
                 sprintf('Product abstract with SKU "%s" was not found during import.', $productAbstractSku)
             );
         }
 
-        return $productAbstractEntity->getIdProductAbstract();
+        return $spyProductAbstractEntity->getIdProductAbstract();
     }
 
     /**

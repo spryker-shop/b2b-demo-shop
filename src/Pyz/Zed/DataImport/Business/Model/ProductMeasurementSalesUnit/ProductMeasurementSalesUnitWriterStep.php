@@ -43,16 +43,16 @@ class ProductMeasurementSalesUnitWriterStep extends PublishAwareStep implements 
     {
         $dataSet = $this->filterDataSet($dataSet);
 
-        $productEntity = $this->getProductBySku($dataSet[static::KEY_CONCRETE_SKU]);
-        $productMeasurementBaseUnitEntity = $this->getProductMeasurementBaseUnit($productEntity->getFkProductAbstract());
+        $spyProductEntity = $this->getProductBySku($dataSet[static::KEY_CONCRETE_SKU]);
+        $spyProductMeasurementBaseUnitEntity = $this->getProductMeasurementBaseUnit($spyProductEntity->getFkProductAbstract());
 
-        $productMeasurementSalesUnitEntity = (new SpyProductMeasurementSalesUnitQuery())
+        $spyProductMeasurementSalesUnitEntity = SpyProductMeasurementSalesUnitQuery::create()
             ->filterByKey($dataSet[static::KEY_SALES_UNIT_KEY])
             ->findOneOrCreate();
 
-        $productMeasurementSalesUnitEntity
-            ->setFkProductMeasurementBaseUnit($productMeasurementBaseUnitEntity->getIdProductMeasurementBaseUnit())
-            ->setFkProduct($productEntity->getIdProduct())
+        $spyProductMeasurementSalesUnitEntity
+            ->setFkProductMeasurementBaseUnit($spyProductMeasurementBaseUnitEntity->getIdProductMeasurementBaseUnit())
+            ->setFkProduct($spyProductEntity->getIdProduct())
             ->setFkProductMeasurementUnit($this->getProductMeasurementUnitIdByCode($dataSet[static::KEY_CODE]))
             ->setConversion($dataSet[static::KEY_CONVERSION])
             ->setPrecision($dataSet[static::KEY_PRECISION])
@@ -62,7 +62,7 @@ class ProductMeasurementSalesUnitWriterStep extends PublishAwareStep implements 
 
         $this->addPublishEvents(
             ProductMeasurementUnitEvents::PRODUCT_CONCRETE_MEASUREMENT_UNIT_PUBLISH,
-            $productMeasurementSalesUnitEntity->getFkProduct()
+            $spyProductMeasurementSalesUnitEntity->getFkProduct()
         );
     }
 
@@ -75,16 +75,16 @@ class ProductMeasurementSalesUnitWriterStep extends PublishAwareStep implements 
      */
     protected function getProductBySku($productConcreteSku)
     {
-        $productEntity = SpyProductQuery::create()
+        $spyProductEntity = SpyProductQuery::create()
             ->findOneBySku($productConcreteSku);
 
-        if (!$productEntity) {
+        if (!$spyProductEntity) {
             throw new EntityNotFoundException(
                 sprintf('Product concrete with SKU "%s" was not found during import.', $productConcreteSku)
             );
         }
 
-        return $productEntity;
+        return $spyProductEntity;
     }
 
     /**
@@ -96,16 +96,16 @@ class ProductMeasurementSalesUnitWriterStep extends PublishAwareStep implements 
      */
     protected function getProductMeasurementBaseUnit($idProductAbstract)
     {
-        $productMeasurementBaseUnitEntity = SpyProductMeasurementBaseUnitQuery::create()
+        $spyProductMeasurementBaseUnitEntity = SpyProductMeasurementBaseUnitQuery::create()
             ->findOneByFkProductAbstract($idProductAbstract);
 
-        if (!$productMeasurementBaseUnitEntity) {
+        if (!$spyProductMeasurementBaseUnitEntity) {
             throw new EntityNotFoundException(
                 sprintf('Product measurement base unit was not found for product abstract id "%d" during data import.', $idProductAbstract)
             );
         }
 
-        return $productMeasurementBaseUnitEntity;
+        return $spyProductMeasurementBaseUnitEntity;
     }
 
     /**

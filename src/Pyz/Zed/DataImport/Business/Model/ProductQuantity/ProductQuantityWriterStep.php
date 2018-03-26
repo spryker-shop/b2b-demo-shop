@@ -39,17 +39,17 @@ class ProductQuantityWriterStep extends PublishAwareStep implements DataImportSt
 
         $idProduct = $this->getIdProductBySku($dataSet[static::KEY_CONCRETE_SKU]);
 
-        $productQuantityEntity = (new SpyProductQuantityQuery())
+        $spyProductQuantityEntity = SpyProductQuantityQuery::create()
             ->filterByFkProduct($idProduct)
             ->findOneOrCreate();
 
-        $productQuantityEntity
+        $spyProductQuantityEntity
             ->setQuantityMin($dataSet[static::KEY_QUANTITY_MIN])
             ->setQuantityMax($dataSet[static::KEY_QUANTITY_MAX])
             ->setQuantityInterval($dataSet[static::KEY_QUANTITY_INTERVAL])
             ->save();
 
-        $this->addPublishEvents(ProductQuantityEvents::PRODUCT_QUANTITY_PUBLISH, $productQuantityEntity->getFkProduct());
+        $this->addPublishEvents(ProductQuantityEvents::PRODUCT_QUANTITY_PUBLISH, $spyProductQuantityEntity->getFkProduct());
     }
 
     /**
@@ -83,14 +83,14 @@ class ProductQuantityWriterStep extends PublishAwareStep implements DataImportSt
      */
     protected function getIdProductBySku($productConcreteSku)
     {
-        $productEntity = SpyProductQuery::create()->findOneBySku($productConcreteSku);
+        $spyProductEntity = SpyProductQuery::create()->findOneBySku($productConcreteSku);
 
-        if (!$productEntity) {
+        if (!$spyProductEntity) {
             throw new EntityNotFoundException(
                 sprintf('Product concrete with "%s" SKU was not found during data import', $productConcreteSku)
             );
         }
 
-        return $productEntity->getIdProduct();
+        return $spyProductEntity->getIdProduct();
     }
 }
