@@ -1,10 +1,10 @@
-# Spryker B2B Suite
-[![Build Status](https://api.travis-ci.org/spryker-shop/suite-b2b.svg?branch=master)](https://travis-ci.org/spryker-shop/suite-b2b)
+# Spryker Suite
+[![Build Status](https://api.travis-ci.org/spryker-shop/suite.svg?branch=master)](https://travis-ci.org/spryker-shop/suite)
 [![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%207.1-8892BF.svg)](https://php.net/)
 
-B2B Suite (internal)
-[![Build Status](https://travis-ci.com/spryker/suite-b2b-nonsplit.svg?token=7jVDNZFJxpvBrFetYhbF&branch=master)](https://travis-ci.com/spryker/suite-b2b-nonsplit)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/spryker/suite-b2b-nonsplit/badges/quality-score.png?b=master&s=bd1f64c27e30a53590063d808335d7957af612d0)](https://scrutinizer-ci.com/g/spryker/suite-b2b-nonsplit/?branch=master)
+Suite (internal)
+[![Build Status](https://travis-ci.com/spryker/suite-nonsplit.svg?token=7jVDNZFJxpvBrFetYhbF&branch=master)](https://travis-ci.com/spryker/suite-nonsplit)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/spryker/suite-nonsplit/badges/quality-score.png?b=master&s=bd1f64c27e30a53590063d808335d7957af612d0)](https://scrutinizer-ci.com/g/spryker/suite-nonsplit/?branch=master)
 
 Core (internal)
 [![Build Status](https://travis-ci.com/spryker/spryker.svg?token=7jVDNZFJxpvBrFetYhbF&branch=master)](https://travis-ci.com/spryker/spryker)
