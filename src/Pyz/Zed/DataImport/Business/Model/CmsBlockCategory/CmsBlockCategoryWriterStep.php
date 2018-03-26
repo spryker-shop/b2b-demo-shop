@@ -13,6 +13,7 @@ use Orm\Zed\CmsBlock\Persistence\SpyCmsBlockQuery;
 use Orm\Zed\CmsBlockCategoryConnector\Persistence\SpyCmsBlockCategoryConnectorQuery;
 use Orm\Zed\CmsBlockCategoryConnector\Persistence\SpyCmsBlockCategoryPositionQuery;
 use Spryker\Zed\CmsBlockCategoryConnector\Dependency\CmsBlockCategoryConnectorEvents;
+use Spryker\Zed\DataImport\Business\Exception\EntityNotFoundException;
 use Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface;
 use Spryker\Zed\DataImport\Business\Model\DataImportStep\PublishAwareStep;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
@@ -27,14 +28,31 @@ class CmsBlockCategoryWriterStep extends PublishAwareStep implements DataImportS
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
      *
+     * @throws \Spryker\Zed\DataImport\Business\Exception\EntityNotFoundException
+     *
      * @return void
      */
     public function execute(DataSetInterface $dataSet)
     {
         $cmsBlockEntity = SpyCmsBlockQuery::create()->findOneByName($dataSet[static::KEY_BLOCK_NAME]);
+        if (!$cmsBlockEntity) {
+              throw new EntityNotFoundException(sprintf('CmsBlock not found by block name "%s"', $dataSet[static::KEY_BLOCK_NAME]));
+        }
+
         $categoryEntity = SpyCategoryQuery::create()->findOneByCategoryKey($dataSet[static::KEY_CATEGORY_KEY]);
+        if (!$categoryEntity) {
+            throw new EntityNotFoundException(sprintf('Category not found by category key "%s"', $dataSet[static::KEY_CATEGORY_KEY]));
+        }
+
         $categoryTemplateEntity = SpyCategoryTemplateQuery::create()->findOneByName($dataSet[static::KEY_CATEGORY_TEMPLATE_NAME]);
+        if (!$categoryTemplateEntity) {
+            throw new EntityNotFoundException(sprintf('CategoryTemplate not found by name "%s"', $dataSet[static::KEY_CATEGORY_TEMPLATE_NAME]));
+        }
+
         $cmsBlockCategoryPositionEntity = SpyCmsBlockCategoryPositionQuery::create()->findOneByName($dataSet[static::KEY_CMS_BLOCK_CATEGORY_POSITION_NAME]);
+        if (!$cmsBlockCategoryPositionEntity) {
+            throw new EntityNotFoundException(sprintf('CmsBlockCategoryPosition not found by name "%s"', $dataSet[static::KEY_CMS_BLOCK_CATEGORY_POSITION_NAME]));
+        }
 
         $cmsBlockCategoryConnectorEntity = SpyCmsBlockCategoryConnectorQuery::create()
             ->filterByFkCmsBlock($cmsBlockEntity->getIdCmsBlock())
