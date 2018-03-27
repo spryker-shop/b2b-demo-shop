@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\Quote;
 
+use Generated\Shared\Transfer\QuoteTransfer;
 use Spryker\Zed\Quote\QuoteConfig as SprykerQuoteConfig;
 
 class QuoteConfig extends SprykerQuoteConfig
@@ -17,12 +18,12 @@ class QuoteConfig extends SprykerQuoteConfig
     public function getQuoteFieldsAllowedForSaving()
     {
         return [
-            'items',
-            'totals',
-            'currency',
-            'price_mode',
-            'store',
-            'bundle_items',
+            QuoteTransfer::ITEMS,
+            QuoteTransfer::TOTALS,
+            QuoteTransfer::CURRENCY,
+            QuoteTransfer::PRICE_MODE,
+            QuoteTransfer::BUNDLE_ITEMS,
+            QuoteTransfer::CART_NOTE,
         ];
     }
 }

@@ -171,6 +171,9 @@ sections:
             command: "vendor/bin/console maintenance:disable"
             stores: true
 
+        generate-entity-transfer:
+            command: "vendor/bin/console transfer:generate"
+
         init-database:
             command: "vendor/bin/console setup:init-db"
             stores: true
@@ -180,12 +183,6 @@ sections:
             stores: true
             groups:
                 - elastic
-
-
-    generate-entity-transfer:
-        generate-transfers:
-            command: "vendor/bin/console transfer:generate"
-
 
     demodata:
         import:

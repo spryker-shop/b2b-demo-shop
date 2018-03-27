@@ -12,6 +12,8 @@ use Spryker\Client\MultiCart\Plugin\QuoteSelectorPersistentCartChangeExpanderPlu
 use Spryker\Client\MultiCart\Plugin\SaveCustomerQuotesQuoteUpdatePlugin;
 use Spryker\Client\PersistentCart\PersistentCartDependencyProvider as SprykerPersistentCartDependencyProvider;
 use Spryker\Client\SharedCart\Plugin\PermissionUpdateQuoteUpdatePlugin;
+use Spryker\Client\SharedCart\Plugin\ProductSeparatePersistentCartChangeExpanderPlugin;
+use Spryker\Client\SharedCart\Plugin\SharedCartsUpdateQuoteUpdatePlugin;
 
 class PersistentCartDependencyProvider extends SprykerPersistentCartDependencyProvider
 {
@@ -24,6 +26,7 @@ class PersistentCartDependencyProvider extends SprykerPersistentCartDependencyPr
             new SaveCustomerQuotesQuoteUpdatePlugin(), #MultiCartFeature
             new DefaultQuoteUpdatePlugin(), #MultiCartFeature
             new PermissionUpdateQuoteUpdatePlugin(), #SharedCartFeature
+            new SharedCartsUpdateQuoteUpdatePlugin(), #SharedCartFeature
         ];
     }
 
@@ -34,6 +37,7 @@ class PersistentCartDependencyProvider extends SprykerPersistentCartDependencyPr
     {
         return [
             new QuoteSelectorPersistentCartChangeExpanderPlugin(), #MultiCartFeature
+            new ProductSeparatePersistentCartChangeExpanderPlugin(), #SharedCartFeature
         ];
     }
 }
