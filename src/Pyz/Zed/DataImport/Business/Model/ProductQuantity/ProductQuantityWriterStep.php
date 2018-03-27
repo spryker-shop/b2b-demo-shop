@@ -24,7 +24,6 @@ class ProductQuantityWriterStep extends PublishAwareStep implements DataImportSt
     const KEY_QUANTITY_MAX = 'quantity_max';
     const KEY_QUANTITY_INTERVAL = 'quantity_interval';
 
-    const DEFAULT_MIN = 1;
     const DEFAULT_MAX = null;
     const DEFAULT_INTERVAL = 1;
 
@@ -59,16 +58,16 @@ class ProductQuantityWriterStep extends PublishAwareStep implements DataImportSt
      */
     protected function filterDataSet(DataSetInterface $dataSet)
     {
+        if ($dataSet[static::KEY_QUANTITY_INTERVAL] === "") {
+            $dataSet[static::KEY_QUANTITY_INTERVAL] = static::DEFAULT_INTERVAL;
+        }
+
         if ($dataSet[static::KEY_QUANTITY_MIN] === "") {
-            $dataSet[static::KEY_QUANTITY_MIN] = static::DEFAULT_MIN;
+            $dataSet[static::KEY_QUANTITY_MIN] = $dataSet[static::KEY_QUANTITY_INTERVAL];
         }
 
         if ($dataSet[static::KEY_QUANTITY_MAX] === "") {
             $dataSet[static::KEY_QUANTITY_MAX] = static::DEFAULT_MAX;
-        }
-
-        if ($dataSet[static::KEY_QUANTITY_INTERVAL] === "") {
-            $dataSet[static::KEY_QUANTITY_INTERVAL] = static::DEFAULT_INTERVAL;
         }
 
         return $dataSet;
