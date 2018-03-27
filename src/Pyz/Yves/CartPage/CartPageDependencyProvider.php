@@ -14,6 +14,8 @@ use SprykerShop\Yves\DiscountWidget\Plugin\CartPage\DiscountSummaryWidgetPlugin;
 use SprykerShop\Yves\DiscountWidget\Plugin\CartPage\DiscountVoucherFormWidgetPlugin;
 use SprykerShop\Yves\ProductBundleWidget\Plugin\CartPage\ProductBundleCartItemTransformerPlugin;
 use SprykerShop\Yves\ProductBundleWidget\Plugin\CartPage\ProductBundleItemsWidgetPlugin;
+use SprykerShop\Yves\ProductMeasurementUnitWidget\Plugin\CartPage\ExpandCartItemWithMeasurementUnitPlugin;
+use SprykerShop\Yves\ProductMeasurementUnitWidget\Plugin\CartPage\ProductMeasurementUnitQuantityWidgetPlugin;
 use SprykerShop\Yves\ProductOptionWidget\Plugin\CartPage\CartItemProductOptionWidgetPlugin;
 use SprykerShop\Yves\ProductRelationWidget\Plugin\CartPage\UpSellingProductsWidgetPlugin;
 
@@ -32,6 +34,8 @@ class CartPageDependencyProvider extends SprykerCartPageDependencyProvider
             DiscountPromotionItemListWidgetPlugin::class,
             UpSellingProductsWidgetPlugin::class,
             ProductBundleItemsWidgetPlugin::class,
+            // TODO: CORE-2345 Remove before release
+            ProductMeasurementUnitQuantityWidgetPlugin::class,
         ];
     }
 
@@ -42,6 +46,17 @@ class CartPageDependencyProvider extends SprykerCartPageDependencyProvider
     {
         return [
             new ProductBundleCartItemTransformerPlugin(),
+        ];
+    }
+
+    /**
+     * @return \SprykerShop\Yves\CartPage\Dependency\Plugin\CartItemBeforeAddPluginInterface[]
+     */
+    protected function getCartItemBeforeAddPlugins(): array
+    {
+        return [
+            // TODO: CORE-2345 Remove before release
+            new ExpandCartItemWithMeasurementUnitPlugin(),
         ];
     }
 }
