@@ -19,6 +19,7 @@ use Spryker\Zed\Acl\Communication\Plugin\Bootstrap\AclBootstrapProvider;
 use Spryker\Zed\Api\Communication\Plugin\ApiServiceProviderPlugin;
 use Spryker\Zed\Api\Communication\Plugin\ServiceProvider\ApiRoutingServiceProvider;
 use Spryker\Zed\Application\ApplicationDependencyProvider as SprykerApplicationDependencyProvider;
+use Spryker\Zed\Application\Communication\Plugin\ServiceProvider\AssertUrlConfigurationServiceProvider;
 use Spryker\Zed\Application\Communication\Plugin\ServiceProvider\EnvironmentInformationServiceProvider;
 use Spryker\Zed\Application\Communication\Plugin\ServiceProvider\KernelLogServiceProvider;
 use Spryker\Zed\Application\Communication\Plugin\ServiceProvider\MvcRoutingServiceProvider;
@@ -88,6 +89,10 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
             new GuiTwigExtensionServiceProvider(),
             new EventBehaviorServiceProvider(),
         ];
+
+        if (Environment::isDevelopment()) {
+            array_unshift($providers, new AssertUrlConfigurationServiceProvider());
+        }
 
         $providers = array_merge($providers, $coreProviders);
 
