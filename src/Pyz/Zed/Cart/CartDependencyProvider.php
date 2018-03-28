@@ -26,6 +26,7 @@ use Spryker\Zed\ProductImageCartConnector\Communication\Plugin\ProductImageCartP
 use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\ProductMeasurementSalesUnitGroupKeyItemExpanderPlugin;
 use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\ProductMeasurementUnitItemExpanderPlugin;
 use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\QuantityProductMeasurementSalesUnitValueCartPreCheckPlugin;
+use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\QuantityProductMeasurementSalesUnitValueCartRemovalPreCheckPlugin;
 use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\QuantityProductMeasurementSalesUnitValuePostSavePlugin;
 use Spryker\Zed\ProductOptionCartConnector\Communication\Plugin\CartItemGroupKeyOptionPlugin;
 use Spryker\Zed\ProductOptionCartConnector\Communication\Plugin\CartItemProductOptionPlugin;
@@ -103,6 +104,18 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
     {
         return [
            new CartBundleItemsPreReloadPlugin(),
+        ];
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\CartExtension\Dependency\Plugin\CartRemovalPreCheckPluginInterface[]
+     */
+    protected function getCartRemovalPreCheckPlugins(Container $container)
+    {
+        return [
+            new QuantityProductMeasurementSalesUnitValueCartRemovalPreCheckPlugin(),
         ];
     }
 }
