@@ -26,7 +26,7 @@ class ProductMeasurementSalesUnitWriterStep extends PublishAwareStep implements 
     const KEY_CODE = 'code';
     const KEY_CONVERSION = 'conversion';
     const KEY_PRECISION = 'precision';
-    const KEY_IS_DISPLAY = 'is_display';
+    const KEY_IS_DISPLAYED = 'is_displayed';
     const KEY_IS_DEFAULT = 'is_default';
 
     /**
@@ -57,7 +57,7 @@ class ProductMeasurementSalesUnitWriterStep extends PublishAwareStep implements 
             ->setConversion($dataSet[static::KEY_CONVERSION])
             ->setPrecision($dataSet[static::KEY_PRECISION])
             ->setIsDefault($dataSet[static::KEY_IS_DEFAULT])
-            ->setIsDisplay($dataSet[static::KEY_IS_DISPLAY])
+            ->setIsDisplayed($dataSet[static::KEY_IS_DISPLAYED])
             ->save();
 
         $this->addPublishEvents(

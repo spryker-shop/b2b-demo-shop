@@ -34,6 +34,7 @@ class CartPageDependencyProvider extends SprykerCartPageDependencyProvider
             DiscountPromotionItemListWidgetPlugin::class,
             UpSellingProductsWidgetPlugin::class,
             ProductBundleItemsWidgetPlugin::class,
+            // TODO: CORE-2345 Remove before release
             QuantitySalesUnitWidgetPlugin::class,
         ];
     }
@@ -54,6 +55,7 @@ class CartPageDependencyProvider extends SprykerCartPageDependencyProvider
     protected function getCartItemBeforeAddPlugins(): array
     {
         return [
+            // TODO: CORE-2345 Remove before release
             new ExpandCartItemWithMeasurementUnitPlugin(),
         ];
     }
