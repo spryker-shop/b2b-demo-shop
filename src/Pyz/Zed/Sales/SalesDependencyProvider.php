@@ -46,7 +46,7 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
     /**
      * @return \Spryker\Zed\SalesExtension\Dependency\Plugin\SalesTablePluginInterface[]
      */
-    protected function getUISalesTablePlugins()
+    protected function getSalesTablePlugins()
     {
         return [
             new SalesTablePlugin(),
