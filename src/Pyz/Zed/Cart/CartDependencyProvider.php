@@ -33,6 +33,7 @@ use Spryker\Zed\ProductOptionCartConnector\Communication\Plugin\CartItemProductO
 use Spryker\Zed\ProductOptionCartConnector\Communication\Plugin\ChangeProductOptionQuantityPlugin;
 use Spryker\Zed\ProductOptionCartConnector\Communication\Plugin\ProductOptionValuePriceExistsCartPreCheckPlugin;
 use Spryker\Zed\ProductQuantity\Communication\Plugin\ProductQuantityRestrictionCartPreCheckPlugin;
+use Spryker\Zed\ProductQuantity\Communication\Plugin\ProductQuantityRestrictionCartRemovalPreCheckPlugin;
 use Spryker\Zed\ShipmentCartConnector\Communication\Plugin\Cart\CartShipmentExpanderPlugin;
 use Spryker\Zed\ShipmentCartConnector\Communication\Plugin\Cart\CartShipmentPreCheckPlugin;
 
@@ -116,6 +117,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
     {
         return [
             new QuantityProductMeasurementSalesUnitValueCartRemovalPreCheckPlugin(),
+            new ProductQuantityRestrictionCartRemovalPreCheckPlugin(),
         ];
     }
 }
