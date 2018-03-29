@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "8c7a8e2c985cec92583b1af07d009939",
+    "content-hash": "4ce0e30011f2c36f73c95c70ca125402",
     "packages": [
         {
             "name": "braintree/braintree_php",
@@ -533,16 +533,16 @@
         },
         {
             "name": "guzzlehttp/guzzle",
-            "version": "6.3.0",
+            "version": "6.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "f4db5a78a5ea468d4831de7f0bf9d9415e348699"
+                "reference": "49e42e6539f775e80c74086a710a882e1d5a8111"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/f4db5a78a5ea468d4831de7f0bf9d9415e348699",
-                "reference": "f4db5a78a5ea468d4831de7f0bf9d9415e348699",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/49e42e6539f775e80c74086a710a882e1d5a8111",
+                "reference": "49e42e6539f775e80c74086a710a882e1d5a8111",
                 "shasum": ""
             },
             "require": {
@@ -552,7 +552,7 @@
             },
             "require-dev": {
                 "ext-curl": "*",
-                "phpunit/phpunit": "^4.0 || ^5.0",
+                "phpunit/phpunit": "^4.8.35 || ^5.7 || ^6.4",
                 "psr/log": "^1.0"
             },
             "suggest": {
@@ -561,7 +561,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "6.2-dev"
+                    "dev-master": "6.3-dev"
                 }
             },
             "autoload": {
@@ -594,7 +594,7 @@
                 "rest",
                 "web service"
             ],
-            "time": "2017-06-22T18:50:49+00:00"
+            "time": "2018-03-26T12:06:26+00:00"
         },
         {
             "name": "guzzlehttp/promises",
@@ -1508,7 +1508,7 @@
             ],
             "authors": [
                 {
-                    "name": "William DURAND",
+                    "name": "William Durand",
                     "email": "william.durand1@gmail.com"
                 }
             ],
@@ -2053,11 +2053,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-feature/core-3338-reclamation",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "e2bd3ab3893e36a0ff046949dcd86ecaa4892c6e"
+                "reference": "b187fccb8999286d6c9563bff04b6fbbc39d2726"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.0",
@@ -2111,6 +2111,11 @@
                 "spryker/collector": "*",
                 "spryker/collector-search-connector": "*",
                 "spryker/collector-storage-connector": "*",
+                "spryker/company-unit-address": "*",
+                "spryker/company-unit-address-extension": "*",
+                "spryker/company-unit-address-gui": "*",
+                "spryker/company-unit-address-gui-extension": "*",
+                "spryker/company-unit-address-label": "*",
                 "spryker/config": "*",
                 "spryker/console": "*",
                 "spryker/country": "*",
@@ -2244,6 +2249,7 @@
                 "spryker/setup": "*",
                 "spryker/shipment": "*",
                 "spryker/shipment-cart-connector": "*",
+                "spryker/shipment-checkout-connector": "*",
                 "spryker/silex": "*",
                 "spryker/sql-criteria-builder": "*",
                 "spryker/state-machine": "*",
@@ -2297,7 +2303,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2018-03-21T12:01:52+00:00"
+            "time": "2018-03-28T15:14:27+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -2305,7 +2311,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "638e0e8041051ce50415acd5982ee8b871cb3381"
+                "reference": "519e1f552330a33348269081fdb541c91a6f0604"
             },
             "require": {
                 "php": ">=7.1"
@@ -2349,6 +2355,7 @@
                 "spryker-shop/product-set-list-page": "*",
                 "spryker-shop/product-set-widget": "*",
                 "spryker-shop/product-widget": "*",
+                "spryker-shop/quick-order-page": "*",
                 "spryker-shop/redirect-page": "*",
                 "spryker-shop/shop-application": "*",
                 "spryker-shop/shop-layout": "*",
@@ -2377,7 +2384,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2018-03-20T11:17:27+00:00"
+            "time": "2018-03-28T15:15:02+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -4809,40 +4816,34 @@
         },
         {
             "name": "facebook/webdriver",
-            "version": "1.5.0",
+            "version": "1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/facebook/php-webdriver.git",
-                "reference": "86b5ca2f67173c9d34340845dd690149c886a605"
+                "reference": "77300c4ab2025d4316635f592ec849ca7323bd8c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/facebook/php-webdriver/zipball/86b5ca2f67173c9d34340845dd690149c886a605",
-                "reference": "86b5ca2f67173c9d34340845dd690149c886a605",
+                "url": "https://api.github.com/repos/facebook/php-webdriver/zipball/77300c4ab2025d4316635f592ec849ca7323bd8c",
+                "reference": "77300c4ab2025d4316635f592ec849ca7323bd8c",
                 "shasum": ""
             },
             "require": {
                 "ext-curl": "*",
-                "ext-zip": "*",
-                "php": "^5.6 || ~7.0",
-                "symfony/process": "^2.8 || ^3.1 || ^4.0"
+                "php": "^5.5 || ~7.0",
+                "symfony/process": "^2.8 || ^3.1"
             },
             "require-dev": {
-                "friendsofphp/php-cs-fixer": "^2.0",
-                "guzzle/guzzle": "^3.4.1",
-                "php-coveralls/php-coveralls": "^1.0.2",
+                "friendsofphp/php-cs-fixer": "^1.11",
                 "php-mock/php-mock-phpunit": "^1.1",
-                "phpunit/phpunit": "^5.7",
-                "sebastian/environment": "^1.3.4 || ^2.0 || ^3.0",
-                "squizlabs/php_codesniffer": "^2.6",
-                "symfony/var-dumper": "^3.3 || ^4.0"
+                "phpunit/phpunit": "4.6.* || ~5.0",
+                "satooshi/php-coveralls": "^1.0",
+                "squizlabs/php_codesniffer": "^2.6"
+            },
+            "suggest": {
+                "phpdocumentor/phpdocumentor": "2.*"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-community": "1.5-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "Facebook\\WebDriver\\": "lib/"
@@ -4852,7 +4853,7 @@
             "license": [
                 "Apache-2.0"
             ],
-            "description": "A PHP client for Selenium WebDriver",
+            "description": "A PHP client for WebDriver",
             "homepage": "https://github.com/facebook/php-webdriver",
             "keywords": [
                 "facebook",
@@ -4860,7 +4861,7 @@
                 "selenium",
                 "webdriver"
             ],
-            "time": "2017-11-15T11:08:09+00:00"
+            "time": "2017-01-13T15:48:08+00:00"
         },
         {
             "name": "jakoch/phantomjs-installer",
@@ -5604,7 +5605,7 @@
                 "BSD-3-Clause"
             ],
             "description": "Official version of pdepend to be handled with Composer",
-            "time": "2017-12-13T13:21:38+00:00"
+            "time": "2017-12-12T17:28:44+00:00"
         },
         {
             "name": "phar-io/manifest",
@@ -7363,12 +7364,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/code-sniffer.git",
-                "reference": "e86269956d93c52d767e3d2a52e4cb1b5ddc3ea4"
+                "reference": "c8a5ba43935743869a54bfd19cedfc9dbd6006f6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/e86269956d93c52d767e3d2a52e4cb1b5ddc3ea4",
-                "reference": "e86269956d93c52d767e3d2a52e4cb1b5ddc3ea4",
+                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/c8a5ba43935743869a54bfd19cedfc9dbd6006f6",
+                "reference": "c8a5ba43935743869a54bfd19cedfc9dbd6006f6",
                 "shasum": ""
             },
             "require": {
@@ -7406,7 +7407,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2018-03-15T15:46:38+00:00"
+            "time": "2018-03-27T14:18:35+00:00"
         },
         {
             "name": "spryker/git-hook",
