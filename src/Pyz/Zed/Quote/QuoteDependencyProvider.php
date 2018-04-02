@@ -37,7 +37,6 @@ class QuoteDependencyProvider extends SprykerQuoteDependencyProvider
             new ResolveQuoteNameBeforeQuoteCreatePlugin(), #MultiCartFeature
             new DeactivateQuotesBeforeQuoteSavePlugin(), #MultiCartFeature
             new DeactivateSharedQuotesBeforeQuoteSavePlugin(), #SharedCartFeature
-            new SharedQuoteSetDefaultBeforeQuoteSavePlugin(), #SharedCartFeature
         ];
     }
 
