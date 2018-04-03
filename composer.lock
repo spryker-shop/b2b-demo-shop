@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "48197799f6081a7e2222e80d27a555d9",
+    "content-hash": "c2396796ddd3db480feb458b42dbbfcb",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -9629,16 +9629,16 @@
         },
         {
             "name": "spryker/manual-order-entry-gui",
-            "version": "0.1.0",
+            "version": "0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/manual-order-entry-gui.git",
-                "reference": "6cb8b52aec478eeaf9d013943f138308a3b8718b"
+                "reference": "8fd590ae2cde4dab30f2a5e80fd0de7c8d1bde1f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/manual-order-entry-gui/zipball/6cb8b52aec478eeaf9d013943f138308a3b8718b",
-                "reference": "6cb8b52aec478eeaf9d013943f138308a3b8718b",
+                "url": "https://api.github.com/repos/spryker/manual-order-entry-gui/zipball/8fd590ae2cde4dab30f2a5e80fd0de7c8d1bde1f",
+                "reference": "8fd590ae2cde4dab30f2a5e80fd0de7c8d1bde1f",
                 "shasum": ""
             },
             "require": {
@@ -9681,7 +9681,7 @@
                 "proprietary"
             ],
             "description": "ManualOrderEntryGui module",
-            "time": "2018-03-28T15:51:24+00:00"
+            "time": "2018-03-29T14:45:47+00:00"
         },
         {
             "name": "spryker/manual-order-entry-gui-extension",
@@ -13793,6 +13793,45 @@
             "time": "2018-03-27T12:42:13+00:00"
         },
         {
+            "name": "spryker/sales-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/sales-extension.git",
+                "reference": "77a395d3a1d252ee34376522b5ce6aa9829fe6e4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/sales-extension/zipball/77a395d3a1d252ee34376522b5ce6aa9829fe6e4",
+                "reference": "77a395d3a1d252ee34376522b5ce6aa9829fe6e4",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "SalesExtension module",
+            "time": "2018-03-29T17:20:54+00:00"
+        },
+        {
             "name": "spryker/sales-product-connector",
             "version": "1.1.1",
             "source": {
@@ -13840,6 +13879,57 @@
             ],
             "description": "SalesProductConnector module",
             "time": "2018-01-24T11:43:27+00:00"
+        },
+        {
+            "name": "spryker/sales-reclamation",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/sales-reclamation.git",
+                "reference": "625c94ea5692a08435bdee5879c1cdb2cca93f90"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/sales-reclamation/zipball/625c94ea5692a08435bdee5879c1cdb2cca93f90",
+                "reference": "625c94ea5692a08435bdee5879c1cdb2cca93f90",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/gui": "^3.7.0",
+                "spryker/kernel": "^3.0.0",
+                "spryker/manual-order-entry-gui": "*",
+                "spryker/sales": "^7.0.0 || ^8.0.0",
+                "spryker/sales-extension": "^1.0.0",
+                "spryker/symfony": "^3.0.0",
+                "spryker/util-date-time": "^1.0.0",
+                "spryker/util-text": "^1.1.0"
+            },
+            "require-dev": {
+                "spryker/checkout": "^3.0.0 || ^4.0.0",
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/checkout": "Used interfase for SaveOrder plugin. Version from 3.0.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "SalesReclamation module",
+            "time": "2018-03-29T17:20:54+00:00"
         },
         {
             "name": "spryker/sales-split",
