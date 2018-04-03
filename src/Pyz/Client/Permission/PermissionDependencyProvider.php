@@ -11,4 +11,19 @@ use Spryker\Client\Permission\PermissionDependencyProvider as SprykerPermissionD
 
 class PermissionDependencyProvider extends SprykerPermissionDependencyProvider
 {
+    /**
+     * @return \Spryker\Client\PermissionExtension\Dependency\Plugin\PermissionStoragePluginInterface[]
+     */
+    protected function getPermissionStoragePlugins(): array
+    {
+        return [];
+    }
+
+    /**
+     * @return \Spryker\Shared\PermissionExtension\Dependency\Plugin\PermissionPluginInterface[]
+     */
+    protected function getPermissionPlugins(): array
+    {
+        return [];
+    }
 }
