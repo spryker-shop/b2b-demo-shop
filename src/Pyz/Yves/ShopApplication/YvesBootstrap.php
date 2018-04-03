@@ -72,6 +72,7 @@ use SprykerShop\Yves\ShopApplication\Plugin\Provider\YvesExceptionServiceProvide
 use SprykerShop\Yves\ShopApplication\Plugin\Provider\YvesSecurityServiceProvider;
 use SprykerShop\Yves\ShopApplication\YvesBootstrap as SprykerYvesBootstrap;
 use SprykerShop\Yves\ShopPermission\Plugin\Provider\ShopPermissionServiceProvider;
+use SprykerShop\Yves\ShoppingListPage\Plugin\Provider\ShoppingListPageControllerProvider;
 use SprykerShop\Yves\ShopRouter\Plugin\Router\SilexRouter;
 use SprykerShop\Yves\ShopRouter\Plugin\Router\StorageRouter;
 use SprykerShop\Yves\ShopTranslator\Plugin\Provider\TranslationServiceProvider;
@@ -190,6 +191,7 @@ class YvesBootstrap extends SprykerYvesBootstrap
             new CompanyPageControllerProvider($isSsl),
             new MultiCartPageControllerProvider($isSsl), #MultiCartFeature
             new SharedCartPageControllerProvider($isSsl), #SharedCartFeature
+            new ShoppingListPageControllerProvider($isSsl),
         ];
     }
 }
