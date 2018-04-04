@@ -8,8 +8,8 @@
 namespace Pyz\Zed\DataImport\Business\Model\ProductMeasurementUnit;
 
 use Orm\Zed\ProductMeasurementUnit\Persistence\SpyProductMeasurementUnitQuery;
-use Pyz\Zed\DataImport\Business\Model\DataImportStep\PublishAwareStep;
 use Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface;
+use Spryker\Zed\DataImport\Business\Model\DataImportStep\PublishAwareStep;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 use Spryker\Zed\ProductMeasurementUnit\Dependency\ProductMeasurementUnitEvents;
 

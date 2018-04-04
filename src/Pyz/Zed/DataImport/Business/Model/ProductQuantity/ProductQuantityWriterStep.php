@@ -10,8 +10,8 @@ namespace Pyz\Zed\DataImport\Business\Model\ProductQuantity;
 use Orm\Zed\Product\Persistence\SpyProductQuery;
 use Orm\Zed\ProductQuantity\Persistence\SpyProductQuantityQuery;
 use Pyz\Zed\DataImport\Business\Exception\EntityNotFoundException;
-use Pyz\Zed\DataImport\Business\Model\DataImportStep\PublishAwareStep;
 use Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface;
+use Spryker\Zed\DataImport\Business\Model\DataImportStep\PublishAwareStep;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 use Spryker\Zed\ProductQuantity\Dependency\ProductQuantityEvents;
 
