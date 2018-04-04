@@ -5,7 +5,7 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Pyz\Zed\DataImport\Business\Model\Category;
+namespace Pyz\Zed\DataImport\Business\Model\ProductAbstract;
 
 use Orm\Zed\Category\Persistence\SpyCategoryQuery;
 use Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface;
