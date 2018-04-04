@@ -40,7 +40,6 @@ class ProductDetailPageDependencyProvider extends SprykerShopProductDetailPageDe
             ProductCmsBlockWidgetPlugin::class,
             ProductReviewWidgetPlugin::class,
             ExampleProductColorGroupWidgetPlugin::class,
-            // TODO: CORE-2345 Remove before release
             ProductMeasurementUnitWidgetPlugin::class,
         ];
     }

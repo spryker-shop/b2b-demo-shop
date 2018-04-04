@@ -33,7 +33,6 @@ class CartPageDependencyProvider extends SprykerCartPageDependencyProvider
             DiscountPromotionItemListWidgetPlugin::class,
             UpSellingProductsWidgetPlugin::class,
             ProductBundleItemsWidgetPlugin::class,
-            // TODO: CORE-2345 Remove before release
             QuantitySalesUnitWidgetPlugin::class,
         ];
     }
