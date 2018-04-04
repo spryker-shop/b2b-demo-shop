@@ -9,6 +9,7 @@ namespace Pyz\Zed\Cart;
 
 use Spryker\Zed\Cart\CartDependencyProvider as SprykerCartDependencyProvider;
 use Spryker\Zed\Cart\Communication\Plugin\SkuGroupKeyPlugin;
+use Spryker\Zed\DiscountCartConnector\Communication\Plugin\DiscountChangesQuoteChangeObserverPlugin;
 use Spryker\Zed\DiscountPromotion\Communication\Plugin\Cart\CartGroupPromotionItems;
 use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\PaymentCartConnector\Communication\Plugin\Cart\RemovePaymentCartPostSavePlugin;
@@ -106,5 +107,17 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
     protected function getTerminationPlugins(Container $container)
     {
         return [];
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\CartExtension\Dependency\Plugin\QuoteChangeObserverPluginInterface[]
+     */
+    protected function getQuoteChangeObserverPlugins(Container $container): array
+    {
+        return [
+            new DiscountChangesQuoteChangeObserverPlugin(),
+        ];
     }
 }
