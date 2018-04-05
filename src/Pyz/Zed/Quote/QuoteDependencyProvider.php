@@ -28,7 +28,7 @@ class QuoteDependencyProvider extends SprykerQuoteDependencyProvider
     {
         return [
             new UpdateShareDetailsQuoteAfterSavePlugin(), #SharedCartFeature
-            new AddSuccessMessageAfterQuoteCreatedPlugin(), #SharedCartFeature
+            new AddSuccessMessageAfterQuoteCreatedPlugin(), #MultiCartFeature
         ];
     }
 
