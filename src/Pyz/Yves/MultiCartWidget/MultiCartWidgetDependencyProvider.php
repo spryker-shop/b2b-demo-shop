@@ -8,6 +8,9 @@
 namespace Pyz\Yves\MultiCartWidget;
 
 use SprykerShop\Yves\MultiCartWidget\MultiCartWidgetDependencyProvider as SprykerMultiCartWidgetDependencyProvider;
+use SprykerShop\Yves\ProductBundleWidget\Plugin\MultiCartWidget\ProductBundleCartItemsWidgetPlugin;
+use SprykerShop\Yves\ProductBundleWidget\Plugin\MultiCartWidget\ProductBundleItemCounterWidgetPlugin;
+use SprykerShop\Yves\ProductBundleWidget\Plugin\MultiCartWidget\ProductBundleItemsWidgetPlugin;
 use SprykerShop\Yves\SharedCartWidget\Plugin\MultiCartWidget\SharedCartAddSeparateProductWidgetPlugin;
 use SprykerShop\Yves\SharedCartWidget\Plugin\MultiCartWidget\SharedCartDetailsWidgetPlugin;
 use SprykerShop\Yves\SharedCartWidget\Plugin\MultiCartWidget\SharedCartMultiCartAddWidgetPlugin;
@@ -22,6 +25,9 @@ class MultiCartWidgetDependencyProvider extends SprykerMultiCartWidgetDependency
     protected function getViewExtendWidgetPlugins(): array
     {
         return [
+            ProductBundleItemCounterWidgetPlugin::class, #ProductBundleFeature
+            ProductBundleItemsWidgetPlugin::class, #ProductBundleFeature
+            ProductBundleCartItemsWidgetPlugin::class, #ProductBundleFeature
             SharedCartDetailsWidgetPlugin::class, #SharedCartFeature
             SharedCartOperationsWidgetPlugin::class, #SharedCartFeature
             SharedCartShareWidgetPlugin::class, #SharedCartFeature
