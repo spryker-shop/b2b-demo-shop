@@ -37,7 +37,7 @@ class CartPageDependencyProvider extends SprykerCartPageDependencyProvider
             DiscountPromotionItemListWidgetPlugin::class,
             UpSellingProductsWidgetPlugin::class,
             ProductBundleItemsWidgetPlugin::class,
-            QuantitySalesUnitWidgetPlugin::class,
+//            QuantitySalesUnitWidgetPlugin::class,
             CartNoteQuoteWidgetPlugin::class, #CartNoteFeature
             CartNoteQuoteItemWidgetPlugin::class, #CartNoteFeature
             MultiCartListWidgetPlugin::class, #MultiCartFeature
