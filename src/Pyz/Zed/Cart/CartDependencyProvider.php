@@ -9,7 +9,7 @@ namespace Pyz\Zed\Cart;
 
 use Spryker\Zed\Cart\CartDependencyProvider as SprykerCartDependencyProvider;
 use Spryker\Zed\Cart\Communication\Plugin\SkuGroupKeyPlugin;
-use Spryker\Zed\DiscountCartConnector\Communication\Plugin\DiscountChangesQuoteChangeObserverPlugin;
+use Spryker\Zed\Discount\Communication\Plugin\Cart\DiscountChangesQuoteChangeObserverPlugin;
 use Spryker\Zed\DiscountPromotion\Communication\Plugin\Cart\CartGroupPromotionItems;
 use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\PaymentCartConnector\Communication\Plugin\Cart\RemovePaymentCartPostSavePlugin;
