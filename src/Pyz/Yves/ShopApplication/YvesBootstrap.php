@@ -50,6 +50,7 @@ use SprykerShop\Yves\CurrencyWidget\Plugin\Provider\CurrencyWidgetControllerProv
 use SprykerShop\Yves\CustomerPage\Plugin\Provider\CustomerPageControllerProvider;
 use SprykerShop\Yves\CustomerPage\Plugin\Provider\CustomerSecurityServiceProvider;
 use SprykerShop\Yves\CustomerPage\Plugin\Provider\CustomerTwigFunctionServiceProvider;
+use SprykerShop\Yves\CustomerReorderWidget\Plugin\Provider\CustomerReorderControllerProvider;
 use SprykerShop\Yves\DiscountWidget\Plugin\Provider\DiscountWidgetControllerProvider;
 use SprykerShop\Yves\ErrorPage\Plugin\Provider\ErrorPageControllerProvider;
 use SprykerShop\Yves\ErrorPage\Plugin\Provider\ErrorPageServiceProvider;
@@ -172,6 +173,7 @@ class YvesBootstrap extends SprykerYvesBootstrap
             new HomePageControllerProvider($isSsl),
             new CheckoutPageControllerProvider($isSsl),
             new CustomerPageControllerProvider($isSsl),
+            new CustomerReorderControllerProvider($isSsl),
             new NewsletterPageControllerProvider($isSsl),
             new CartControllerProvider($isSsl),
             new WishlistPageControllerProvider($isSsl),
