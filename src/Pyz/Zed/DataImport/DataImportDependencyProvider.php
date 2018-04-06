@@ -11,6 +11,7 @@ use Spryker\Zed\CategoryDataImport\Communication\Plugin\CategoryDataImportPlugin
 use Spryker\Zed\CompanyBusinessUnitDataImport\Communication\Plugin\CompanyBusinessUnitDataImportPlugin;
 use Spryker\Zed\CompanyDataImport\Communication\Plugin\CompanyDataImportPlugin;
 use Spryker\Zed\CompanySupplierDataImport\Communication\Plugin\CompanySupplierDataImportPlugin;
+use Spryker\Zed\CompanySupplierDataImport\Communication\Plugin\CompanySupplierProductPriceDataImportPlugin;
 use Spryker\Zed\CompanySupplierDataImport\Communication\Plugin\CompanyTypeDataImportPlugin;
 use Spryker\Zed\CompanyUnitAddressDataImport\Communication\Plugin\CompanyUnitAddressDataImportPlugin;
 use Spryker\Zed\CompanyUnitAddressLabelDataImport\Communication\Plugin\CompanyUnitAddressLabelDataImportPlugin;
@@ -130,6 +131,7 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
             new CompanyUnitAddressLabelRelationDataImportPlugin(),
             new CompanyTypeDataImportPlugin(),
             new CompanySupplierDataImportPlugin(),
+            new CompanySupplierProductPriceDataImportPlugin(),
         ];
     }
 
