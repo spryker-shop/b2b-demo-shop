@@ -22,7 +22,7 @@ class PersistentCartDependencyProvider extends SprykerPersistentCartDependencyPr
     protected function getQuoteResponseExpanderPlugins(): array
     {
         return [
-            new CustomerCartQuoteResponseExpanderPlugin(),
+            new CustomerCartQuoteResponseExpanderPlugin(), #MultiCartFeature
             new SharedCartQuoteResponseExpanderPlugin(), #SharedCartFeature
         ];
     }
