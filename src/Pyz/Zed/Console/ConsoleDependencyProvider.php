@@ -183,6 +183,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             //core importer plugins
             new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . CompanyDataImportConfig::IMPORT_TYPE_COMPANY),
             new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . CompanySupplierDataImportConfig::IMPORT_TYPE_COMPANY_TYPE),
+            new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . CompanySupplierDataImportConfig::IMPORT_TYPE_COMPANY_SUPPLIER),
 
             new EventBehaviorTriggerTimeoutConsole(),
 
