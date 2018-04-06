@@ -17,6 +17,8 @@ use Spryker\Zed\CodeGenerator\Communication\Console\BundleServiceCodeGeneratorCo
 use Spryker\Zed\CodeGenerator\Communication\Console\BundleSharedCodeGeneratorConsole;
 use Spryker\Zed\CodeGenerator\Communication\Console\BundleYvesCodeGeneratorConsole;
 use Spryker\Zed\CodeGenerator\Communication\Console\BundleZedCodeGeneratorConsole;
+use Spryker\Zed\CompanyDataImport\CompanyDataImportConfig;
+use Spryker\Zed\CompanySupplierDataImport\CompanySupplierDataImportConfig;
 use Spryker\Zed\Console\Communication\Plugin\ConsoleLogPlugin;
 use Spryker\Zed\Console\ConsoleDependencyProvider as SprykerConsoleDependencyProvider;
 use Spryker\Zed\DataImport\Communication\Console\DataImportConsole;
@@ -178,6 +180,10 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . DataImportConfig::IMPORT_TYPE_STOCK),
             new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . DataImportConfig::IMPORT_TYPE_TAX),
             new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . DataImportConfig::IMPORT_TYPE_DISCOUNT_AMOUNT),
+            //core importer plugins
+            new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . CompanyDataImportConfig::IMPORT_TYPE_COMPANY),
+            new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . CompanySupplierDataImportConfig::IMPORT_TYPE_COMPANY_TYPE),
+
             new EventBehaviorTriggerTimeoutConsole(),
 
             // Setup commands

@@ -10,6 +10,7 @@ namespace Pyz\Zed\DataImport;
 use Spryker\Zed\CategoryDataImport\Communication\Plugin\CategoryDataImportPlugin;
 use Spryker\Zed\CompanyBusinessUnitDataImport\Communication\Plugin\CompanyBusinessUnitDataImportPlugin;
 use Spryker\Zed\CompanyDataImport\Communication\Plugin\CompanyDataImportPlugin;
+use Spryker\Zed\CompanySupplierDataImport\Communication\Plugin\CompanyTypeDataImportPlugin;
 use Spryker\Zed\CompanyUnitAddressDataImport\Communication\Plugin\CompanyUnitAddressDataImportPlugin;
 use Spryker\Zed\CompanyUnitAddressLabelDataImport\Communication\Plugin\CompanyUnitAddressLabelDataImportPlugin;
 use Spryker\Zed\CompanyUnitAddressLabelDataImport\Communication\Plugin\CompanyUnitAddressLabelRelationDataImportPlugin;
@@ -126,6 +127,7 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
             new CompanyUnitAddressDataImportPlugin(),
             new CompanyUnitAddressLabelDataImportPlugin(),
             new CompanyUnitAddressLabelRelationDataImportPlugin(),
+            new CompanyTypeDataImportPlugin(),
         ];
     }
 
