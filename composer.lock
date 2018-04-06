@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "bfae2b4988dd9692cd68d2188272be23",
+    "content-hash": "531812024ed61196f6433e22f4f9d084",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -2622,16 +2622,16 @@
         },
         {
             "name": "spryker-shop/customer-page",
-            "version": "0.2.1",
+            "version": "0.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/customer-page.git",
-                "reference": "6a37ea49c2a40059623edd2526bcf6b2c4e16f30"
+                "reference": "51cb452a1d2edbf4c3ddccf267a1b0d9ab32788d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/customer-page/zipball/6a37ea49c2a40059623edd2526bcf6b2c4e16f30",
-                "reference": "6a37ea49c2a40059623edd2526bcf6b2c4e16f30",
+                "url": "https://api.github.com/repos/spryker-shop/customer-page/zipball/51cb452a1d2edbf4c3ddccf267a1b0d9ab32788d",
+                "reference": "51cb452a1d2edbf4c3ddccf267a1b0d9ab32788d",
                 "shasum": ""
             },
             "require": {
@@ -2677,7 +2677,62 @@
                 "proprietary"
             ],
             "description": "CustomerPage module",
-            "time": "2018-03-14T14:07:43+00:00"
+            "time": "2018-04-05T13:06:25+00:00"
+        },
+        {
+            "name": "spryker-shop/customer-reorder-widget",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/customer-reorder-widget.git",
+                "reference": "fbcc20d1716cc4b6dc78ea39feb36a63bb556349"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/customer-reorder-widget/zipball/fbcc20d1716cc4b6dc78ea39feb36a63bb556349",
+                "reference": "fbcc20d1716cc4b6dc78ea39feb36a63bb556349",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker-shop/shop-application": "^0.3.0",
+                "spryker/availability-storage": "^0.2.0",
+                "spryker/cart": "^4.6.0",
+                "spryker/customer": "^7.4.0",
+                "spryker/kernel": "^3.16.0",
+                "spryker/product-bundle": "^4.1.0",
+                "spryker/sales": "^8.5.0",
+                "spryker/symfony": "^3.1.0",
+                "spryker/zed-request": "^3.4.0"
+            },
+            "require-dev": {
+                "spryker-shop/customer-page": "^0.3.0",
+                "spryker/code-sniffer": "*",
+                "spryker/silex": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker-shop/cart-page": "The default widget redirect is heading to a cart controller. Please redefine the redirect URL if you would like to use a custom behavior.",
+                "spryker-shop/customer-page": "Module with interface to implement (^0.2.0), to use the reorder widget on a customer page",
+                "spryker/silex": "If you want use the widget's router provider"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CustomerReorderWidget module",
+            "time": "2018-04-05T15:09:18+00:00"
         },
         {
             "name": "spryker-shop/discount-promotion-widget",
