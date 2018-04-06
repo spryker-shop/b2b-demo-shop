@@ -66,16 +66,15 @@ sections:
         propel-migrate:
             command: "vendor/bin/console propel:migrate"
 
+        generate-entity-transfer:
+            command: "vendor/bin/console transfer:generate"
+
+
         init-database:
             command: "vendor/bin/console setup:init-db"
 
         setup-search:
             command: "vendor/bin/console setup:search"
-
-
-    generate-entity-transfer:
-        generate-transfers:
-            command: "vendor/bin/console transfer:generate"
 
 
     setup-test:
