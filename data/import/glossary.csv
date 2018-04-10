@@ -449,6 +449,12 @@ customer.order.total,Total,en_US
 customer.order.total,Summe,de_DE
 customer.order.view_order,View Order,en_US
 customer.order.view_order,Bestellung ansehen,de_DE
+customer.order.reorder,Reorder,en_US
+customer.order.reorder,Nachbestellen,de_DE
+customer.order.reorder_all,Reorder all,en_US
+customer.order.reorder_all,Alle Artikel Nachbestellen,de_DE
+customer.order.reorder_selected,Reorder selected items,en_US
+customer.order.reorder_selected,Ausgewählte Artikel Nachbestellen,de_DE
 customer.order.date,Order Date,en_US
 customer.order.date,Datum,de_DE
 customer.order.item_sku,SKU,de_DE
@@ -707,6 +713,8 @@ product.attribute.license,License,en_US
 product.attribute.license,Lizenz,de_DE
 product.product_options,Product Options,en_US
 product.product_options,Produktoptionen,de_DE
+product.product_options_select,Select an option,en_US
+product.product_options_select,Wähle eine Option,de_DE
 product.sets,Product Sets,en_US
 product.sets,Produktsets,de_DE
 product.sets.no-results,No results.,en_US
@@ -829,14 +837,14 @@ product.attribute.themes,Themes,en_US
 product.attribute.themes,Themen,de_DE
 product.attribute.usb_port,USB port,en_US
 product.attribute.usb_port,USB-Port,de_DE
-cart.pre.check.availability.failed,Item sku only has availability of stock.,en_US
-cart.pre.check.availability.failed,Artikel sku hat nur Verfügbarkeit von stock.,de_DE
 product.detail.out_of_stock,This product is currently not available.,en_US
 product.detail.out_of_stock,Das Produkt ist zur Zeit nicht verfügbar.,de_DE
 product.groups,Product Groups,en_US
 product.groups,Produktgruppen,de_DE
-cart.pre.check.availability.failed.empty,"Item sku no longer available.",en_US
-cart.pre.check.availability.failed.empty,"Der Artikel sku ist nicht mehr verfügbar.",de_DE
+cart.pre.check.availability.failed,Item %sku% only has availability of %stock%.,en_US
+cart.pre.check.availability.failed,Zurzeit haben wir von %sku% nur %stock% Stück auf Lager.,de_DE
+cart.pre.check.availability.failed.empty,Item %sku% no longer available.,en_US
+cart.pre.check.availability.failed.empty,Das Produkt mit sku '%sku%' ist zurzeit nicht verfügbar.,de_DE
 mail.sender.name,Spryker demoshop,en_US
 mail.sender.name,Spryker demoshop,de_DE
 mail.sender.email,demoshop@spryker.com,en_US
@@ -1057,8 +1065,8 @@ price.mode.gross_mode,Gross prices,en_US
 price.mode.gross_mode,Bruttopreise,de_DE
 price.mode.net_mode,Net prices,en_US
 price.mode.net_mode,Nettopreise,de_DE
-cart.pre.check.price.failed,"Price not found for added to cart product with sku '%sku%'. Please remove the product from cart to change the currency.",en_US
-cart.pre.check.price.failed,"Preis nicht gefunden für Produkt mit sku '%sku%' im Warenkorb. Bitte entfernen Sie das Produkt aus dem Warenkorb, um die Währung zu ändern.",de_DE
+cart.pre.check.price.failed,"Price in selected currency not found for product with sku '%sku%'. Please change the currency or remove product from order.",en_US
+cart.pre.check.price.failed,"Der Preis in der ausgewählten Währung wurde für das Produkt mit sku '%sku%' nicht gefunden. Bitte ändern Sie die Währung oder entfernen Sie das Produkt aus der Bestellung.",de_DE
 price.mode.switch.error,"Can't switch price mode when there are items in the cart.",en_US
 price.mode.switch.error,"Preismodus kann nicht geändert werden, wenn sich Artikel im Warenkorb befinden.",de_DE
 cart.pre.check.shipment.failed,"Can't apply these changes. The shipment method not found. Please select another shipment method.",en_US
@@ -1247,6 +1255,24 @@ quick-order.paste-order.errors.parser.separator-not-detected,"Separator is not d
 quick-order.paste-order.errors.parser.separator-not-detected,"Trennzeichen nicht definiert.",de_DE
 checkout.pre.check.shipment.failed,Invalid shipping method.,en_US
 checkout.pre.check.shipment.failed,Ungültige Versandmethode,de_DE
+measurement_units.item.name,Item,en_US
+measurement_units.item.name,Stück,de_DE
+measurement_units.standard.weight.kilo.name,Kilo,en_US
+measurement_units.standard.weight.kilo.name,Kilo,de_DE
+measurement_units.standard.weight.gram.name,Gram,en_US
+measurement_units.standard.weight.gram.name,Gramm,de_DE
+measurement_units.standard.length.metre.name,Meter,en_US
+measurement_units.standard.length.metre.name,Meter,de_DE
+measurement_units.standard.length.centimetre.name,Zentimeter,de_DE
+measurement_units.standard.length.centimetre.name,Centimeter,en_US
+measurement_units.standard.length.feet.name,Fuß,de_DE
+measurement_units.standard.length.feet.name,Feet,en_US
+cart.pre.check.quantity.min.failed,Die Mindestanzahl für Produkt SKU '%sku%' ist nicht erreicht.,de_DE
+cart.pre.check.quantity.min.failed,Minimum quantity requirements for product SKU '%sku%' are not fulfilled.,en_US
+cart.pre.check.quantity.max.failed,Die Maximalanzahl für Produkt SKU '%sku%' ist überschritten.,de_DE
+cart.pre.check.quantity.max.failed,Maximum quantity for product SKU '%sku%' is exceeded.,en_US
+cart.pre.check.quantity.interval.failed,Die Anzahl für Produkt SKU '%sku%' liegt nicht innerhalb des vorgegebenen Intervals.,de_DE
+cart.pre.check.quantity.interval.failed,Quantity interval requirements for product SKU '%sku%' are not fulfilled.,en_US
 company.account.company_user.edit_information,Benutzerinfomation bearbeiten,de_DE
 persistent_cart.error.quote.not_available,Cart does not exists,en_US
 persistent_cart.error.quote.not_available,Einkaufswagen existiert nicht,de_DE
@@ -1286,6 +1312,8 @@ multi_cart.form.edit_cart_information,"Edit Cart information",en_US
 multi_cart.form.edit_cart_information,"Einkaufswageninformationen bearbeiten",de_DE
 multi_cart.cart.set_default.success,"Cart '%quote%' has successfully been set to your active cart.",en_US
 multi_cart.cart.set_default.success,"Warenkorb '%quote%' wurde erfolgreich aktiviert.",de_DE
+multi_cart_page.cart_clear.success,"Cart was successfully cleared",en_US
+multi_cart_page.cart_clear.success,"Einkaufswagen wurde erfolgreich gelöscht",de_DE
 multi_cart_widget.cart.cart_name,"Cart Name",en_US
 multi_cart_widget.cart.cart_name,"Name des Einkaufswagens",de_DE
 multi_cart_widget.cart.add,"Create New Cart",en_US
