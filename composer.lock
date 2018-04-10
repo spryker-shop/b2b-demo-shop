@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "44ac06af8999f505c61de3dc5f24184f",
+    "content-hash": "559657b6ad7e038d8f62d4666c076029",
     "packages": [
         {
             "name": "braintree/braintree_php",
@@ -2053,11 +2053,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-feature/core-2347-shared-cart",
+            "version": "dev-feature/core-2347-shopping-list",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "660dbea5dbf506b73af13997698ce4882d7c07ff"
+                "reference": "1ef52c3d3ed265ddfd7f2506d7c87b27c321bcba"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.0",
@@ -2111,11 +2111,14 @@
                 "spryker/collector": "*",
                 "spryker/collector-search-connector": "*",
                 "spryker/collector-storage-connector": "*",
+                "spryker/company-supplier": "*",
+                "spryker/company-supplier-gui": "*",
                 "spryker/company-unit-address": "*",
                 "spryker/company-unit-address-extension": "*",
                 "spryker/company-unit-address-gui": "*",
                 "spryker/company-unit-address-gui-extension": "*",
                 "spryker/company-unit-address-label": "*",
+                "spryker/company-unit-address-label-gui": "*",
                 "spryker/config": "*",
                 "spryker/console": "*",
                 "spryker/country": "*",
@@ -2210,12 +2213,17 @@
                 "spryker/product-label-search": "*",
                 "spryker/product-label-storage": "*",
                 "spryker/product-management": "*",
+                "spryker/product-measurement-unit": "*",
+                "spryker/product-measurement-unit-gui": "*",
+                "spryker/product-measurement-unit-storage": "*",
                 "spryker/product-new": "*",
                 "spryker/product-option": "*",
                 "spryker/product-option-cart-connector": "*",
                 "spryker/product-option-discount-connector": "*",
                 "spryker/product-option-storage": "*",
                 "spryker/product-page-search": "*",
+                "spryker/product-quantity": "*",
+                "spryker/product-quantity-storage": "*",
                 "spryker/product-relation": "*",
                 "spryker/product-relation-collector": "*",
                 "spryker/product-relation-storage": "*",
@@ -2272,6 +2280,7 @@
                 "spryker/util-data-reader": "*",
                 "spryker/util-date-time": "*",
                 "spryker/util-encoding": "*",
+                "spryker/util-measurement-unit-conversion": "*",
                 "spryker/util-network": "*",
                 "spryker/util-sanitize": "*",
                 "spryker/util-text": "*",
@@ -2303,15 +2312,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2018-04-05T10:08:59+00:00"
+            "time": "2018-04-10T09:37:20+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-feature/core-2347-shared-cart",
+            "version": "dev-feature/core-2347-shopping-list",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "27ef489faa975736e627da6bd1d2e98cb4a7945c"
+                "reference": "0ae539f3d614ee05874d84d3fadb111edd883e25"
             },
             "require": {
                 "php": ">=7.1"
@@ -2384,7 +2393,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2018-04-05T09:53:02+00:00"
+            "time": "2018-04-10T09:42:30+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",

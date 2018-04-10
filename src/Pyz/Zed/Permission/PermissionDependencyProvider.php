@@ -12,6 +12,7 @@ use Spryker\Zed\Permission\PermissionDependencyProvider as SprykerPermissionDepe
 use Spryker\Zed\SharedCart\Communication\Plugin\QuotePermissionStoragePlugin;
 use Spryker\Zed\SharedCart\Communication\Plugin\ReadSharedCartPermissionPlugin;
 use Spryker\Zed\SharedCart\Communication\Plugin\WriteSharedCartPermissionPlugin;
+use Spryker\Zed\ShoppingList\Communication\Plugin\ShoppingListPermissionStoragePlugin;
 use Spryker\Zed\ShoppingList\Communication\Plugin\WriteShoppingListPermissionPlugin;
 
 class PermissionDependencyProvider extends SprykerPermissionDependencyProvider
@@ -23,6 +24,7 @@ class PermissionDependencyProvider extends SprykerPermissionDependencyProvider
     {
         return [
             new QuotePermissionStoragePlugin(),
+            new ShoppingListPermissionStoragePlugin(),
         ];
     }
 
