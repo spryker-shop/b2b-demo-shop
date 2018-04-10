@@ -26,7 +26,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
     }
 
     /**
-     * @return \Spryker\Client\Cart\Dependency\Plugin\QuoteStorageStrategyPluginInterface[]
+     * @return \Spryker\Client\CartExtension\Dependency\Plugin\QuoteStorageStrategyPluginInterface[]
      */
     protected function getQuoteStorageStrategyPlugins()
     {
@@ -37,7 +37,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
     }
 
     /**
-     * @return \Spryker\Client\Cart\Dependency\Plugin\QuoteItemFinderPluginInterface
+     * @return \Spryker\Client\CartExtension\Dependency\Plugin\QuoteItemFinderPluginInterface
      */
     protected function getQuoteItemFinderPlugin()
     {
