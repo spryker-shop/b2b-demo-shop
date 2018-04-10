@@ -33,7 +33,7 @@ class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
     {
         return [
             new GuestCartSaveCustomerSessionSetPlugin(), #MultiCartFeature
-            new GuestCartUpdateCustomerSessionSetPlugin(),
+            new GuestCartUpdateCustomerSessionSetPlugin(), #PersistentCartFeature
             new CustomerChangeCartUpdatePlugin(),
         ];
     }

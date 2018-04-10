@@ -23,7 +23,7 @@ class QuoteDependencyProvider extends BaseQuoteDependencyProvider
     protected function getQuoteTransferExpanderPlugins(Container $container)
     {
         return [
-            new NameQuoteTransferExpanderPlugin(),
+            new NameQuoteTransferExpanderPlugin(), #MultiCartFeature
             new StoreQuoteTransferExpanderPlugin(),
             new PriceModeQuoteTransferExpanderPlugin(),
         ];

@@ -18,6 +18,6 @@ class CartNoteDependencyProvider extends SprykerCartNoteDependencyProvider
      */
     protected function getQuoteItemsFinderPlugin(): QuoteItemFinderPluginInterface
     {
-        return new BundleProductQuoteItemFinderPlugin();
+        return new BundleProductQuoteItemFinderPlugin(); #CartNoteFeature
     }
 }
