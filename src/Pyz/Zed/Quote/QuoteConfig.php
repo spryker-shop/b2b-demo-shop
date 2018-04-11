@@ -17,13 +17,9 @@ class QuoteConfig extends SprykerQuoteConfig
      */
     public function getQuoteFieldsAllowedForSaving()
     {
-        return [
-            QuoteTransfer::ITEMS,
-            QuoteTransfer::TOTALS,
-            QuoteTransfer::CURRENCY,
-            QuoteTransfer::PRICE_MODE,
+        return array_merge(parent::getQuoteFieldsAllowedForSaving(), [
             QuoteTransfer::BUNDLE_ITEMS,
-            QuoteTransfer::CART_NOTE,
-        ];
+            QuoteTransfer::CART_NOTE, #CartNoteFeature
+        ]);
     }
 }
