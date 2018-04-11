@@ -15,6 +15,7 @@ use Spryker\Zed\CustomerGroup\Communication\Plugin\CustomerAnonymizer\RemoveCust
 use Spryker\Zed\CustomerUserConnector\Communication\Plugin\CustomerTransferUsernameExpanderPlugin;
 use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\Newsletter\Communication\Plugin\CustomerAnonymizer\CustomerUnsubscribePlugin;
+use Spryker\Zed\SharedCart\Communication\Plugin\QuotePermissionCustomerExpanderPlugin;
 
 class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
 {
@@ -63,6 +64,7 @@ class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
             new CustomerTransferUsernameExpanderPlugin(),
             new CustomerTransferCompanyUserExpanderPlugin(),
             new PermissionCustomerExpanderPlugin(),
+            new QuotePermissionCustomerExpanderPlugin(), #SharedCartFeature
         ];
     }
 }
