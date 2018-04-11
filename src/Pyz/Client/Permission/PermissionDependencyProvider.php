@@ -32,7 +32,7 @@ class PermissionDependencyProvider extends SprykerPermissionDependencyProvider
     protected function getPermissionPlugins(): array
     {
         return [
-            new ReadSharedCartPermissionPlugin(),#SharedCartFeature
+            new ReadSharedCartPermissionPlugin(), #SharedCartFeature
             new WriteSharedCartPermissionPlugin(), #SharedCartFeature
             new ReadShoppingListPermissionPlugin(), #ShoppingListFeature
             new WriteShoppingListPermissionPlugin(), #ShoppingListFeature
