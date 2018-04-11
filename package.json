@@ -9,8 +9,9 @@
     "url": "https://spryker.com/"
   },
   "scripts": {
-    "yves": "node $npm_package_config_shopUi_modulePath/src/SprykerShop/Yves/ShopUi/Theme/default/builder/tasks/build",
-    "yves:watch": "node $npm_package_config_shopUi_modulePath/src/SprykerShop/Yves/ShopUi/Theme/default/builder/tasks/watch",
+    "yves": "node $npm_package_config_shopUi_modulePath/src/SprykerShop/Yves/ShopUi/Theme/default/builder/build",
+    "yves:watch": "node $npm_package_config_shopUi_modulePath/src/SprykerShop/Yves/ShopUi/Theme/default/builder/watch",
+    "yves:production": "node $npm_package_config_shopUi_modulePath/src/SprykerShop/Yves/ShopUi/Theme/default/builder/build.prod",
     "zed": "node ./node_modules/@spryker/oryx-for-zed/build",
     "zed:watch": "node ./node_modules/@spryker/oryx-for-zed/build --dev"
   },
@@ -29,6 +30,8 @@
     "fast-glob": "~2.1.0",
     "node-sass": "~4.7.2",
     "sass-loader": "~6.0.6",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.2",
     "ts-loader": "~3.5.0",
     "typescript": "~2.7.2",
     "webpack": "~3.11.0"
