@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "154986ce4a7d03648aa962e98a42041c",
+    "content-hash": "e5e2d412dd7994d0ee05dc737b1a32d9",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -220,16 +220,16 @@
         },
         {
             "name": "egulias/email-validator",
-            "version": "2.1.3",
+            "version": "2.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/egulias/EmailValidator.git",
-                "reference": "1bec00a10039b823cc94eef4eddd47dcd3b2ca04"
+                "reference": "8790f594151ca6a2010c6218e09d96df67173ad3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/1bec00a10039b823cc94eef4eddd47dcd3b2ca04",
-                "reference": "1bec00a10039b823cc94eef4eddd47dcd3b2ca04",
+                "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/8790f594151ca6a2010c6218e09d96df67173ad3",
+                "reference": "8790f594151ca6a2010c6218e09d96df67173ad3",
                 "shasum": ""
             },
             "require": {
@@ -238,7 +238,7 @@
             },
             "require-dev": {
                 "dominicsayers/isemail": "dev-master",
-                "phpunit/phpunit": "^4.8.35",
+                "phpunit/phpunit": "^4.8.35||^5.7||^6.0",
                 "satooshi/php-coveralls": "^1.0.1"
             },
             "suggest": {
@@ -273,7 +273,7 @@
                 "validation",
                 "validator"
             ],
-            "time": "2017-11-15T23:40:40+00:00"
+            "time": "2018-04-10T10:11:19+00:00"
         },
         {
             "name": "elasticsearch/elasticsearch",
@@ -2120,16 +2120,16 @@
         },
         {
             "name": "spryker-shop/cart-page",
-            "version": "0.6.0",
+            "version": "0.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/cart-page.git",
-                "reference": "4b58a968bc420a27f91ed0329d2c3a9cada297c6"
+                "reference": "99921820959b68393f724627d5b4d68d3984da95"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/cart-page/zipball/4b58a968bc420a27f91ed0329d2c3a9cada297c6",
-                "reference": "4b58a968bc420a27f91ed0329d2c3a9cada297c6",
+                "url": "https://api.github.com/repos/spryker-shop/cart-page/zipball/99921820959b68393f724627d5b4d68d3984da95",
+                "reference": "99921820959b68393f724627d5b4d68d3984da95",
                 "shasum": ""
             },
             "require": {
@@ -2170,7 +2170,56 @@
                 "proprietary"
             ],
             "description": "CartPage module",
-            "time": "2018-04-10T13:53:02+00:00"
+            "time": "2018-04-11T13:36:57+00:00"
+        },
+        {
+            "name": "spryker-shop/cart-to-shopping-list-widget",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/cart-to-shopping-list-widget.git",
+                "reference": "21ea382082ed67d56a404e0a6faceed4c933777a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/cart-to-shopping-list-widget/zipball/21ea382082ed67d56a404e0a6faceed4c933777a",
+                "reference": "21ea382082ed67d56a404e0a6faceed4c933777a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker-shop/shop-application": "^0.3.0",
+                "spryker/application": "^3.8.0",
+                "spryker/customer": "^7.4.0",
+                "spryker/kernel": "^3.16.0",
+                "spryker/shopping-list": "^0.1.0",
+                "spryker/symfony": "^3.1.0"
+            },
+            "require-dev": {
+                "spryker-shop/cart-page": "*",
+                "spryker/silex": "*"
+            },
+            "suggest": {
+                "spryker-shop/cart-page": "If CartToShoppingListWidgetPlugin is to be used, minimum version is 0.5.2",
+                "spryker/silex": "TODO: add suggestion description"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CartToShoppingListWidget module",
+            "time": "2018-04-11T13:46:07+00:00"
         },
         {
             "name": "spryker-shop/catalog-page",
@@ -2680,16 +2729,16 @@
         },
         {
             "name": "spryker-shop/customer-page",
-            "version": "0.3.1",
+            "version": "0.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/customer-page.git",
-                "reference": "86a53acf6c99d7fa4720ac81fdc02e514d8abfb7"
+                "reference": "c761115a26010aa15ef9dfc44550bd9d03ab98c0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/customer-page/zipball/86a53acf6c99d7fa4720ac81fdc02e514d8abfb7",
-                "reference": "86a53acf6c99d7fa4720ac81fdc02e514d8abfb7",
+                "url": "https://api.github.com/repos/spryker-shop/customer-page/zipball/c761115a26010aa15ef9dfc44550bd9d03ab98c0",
+                "reference": "c761115a26010aa15ef9dfc44550bd9d03ab98c0",
                 "shasum": ""
             },
             "require": {
@@ -2735,7 +2784,7 @@
                 "proprietary"
             ],
             "description": "CustomerPage module",
-            "time": "2018-04-06T07:35:06+00:00"
+            "time": "2018-04-10T15:58:37+00:00"
         },
         {
             "name": "spryker-shop/customer-reorder-widget",
@@ -3494,16 +3543,16 @@
         },
         {
             "name": "spryker-shop/product-detail-page",
-            "version": "0.4.1",
+            "version": "0.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/product-detail-page.git",
-                "reference": "969de59a696e4426c24c422da628698b656311f9"
+                "reference": "fba9d68572a9243990f7bdc779d32605eecd408d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/product-detail-page/zipball/969de59a696e4426c24c422da628698b656311f9",
-                "reference": "969de59a696e4426c24c422da628698b656311f9",
+                "url": "https://api.github.com/repos/spryker-shop/product-detail-page/zipball/fba9d68572a9243990f7bdc779d32605eecd408d",
+                "reference": "fba9d68572a9243990f7bdc779d32605eecd408d",
                 "shasum": ""
             },
             "require": {
@@ -3536,7 +3585,7 @@
                 "proprietary"
             ],
             "description": "ProductDetailPage module",
-            "time": "2018-04-06T07:10:57+00:00"
+            "time": "2018-04-10T15:58:37+00:00"
         },
         {
             "name": "spryker-shop/product-group-widget",
@@ -3671,16 +3720,16 @@
         },
         {
             "name": "spryker-shop/product-measurement-unit-widget",
-            "version": "0.1.2",
+            "version": "0.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/product-measurement-unit-widget.git",
-                "reference": "df991b6c5d5f5811d922f9f0a0f976839616f507"
+                "reference": "f4d8d068172fb01c9c1fbf5a4bcd34fcf1e2d148"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/product-measurement-unit-widget/zipball/df991b6c5d5f5811d922f9f0a0f976839616f507",
-                "reference": "df991b6c5d5f5811d922f9f0a0f976839616f507",
+                "url": "https://api.github.com/repos/spryker-shop/product-measurement-unit-widget/zipball/f4d8d068172fb01c9c1fbf5a4bcd34fcf1e2d148",
+                "reference": "f4d8d068172fb01c9c1fbf5a4bcd34fcf1e2d148",
                 "shasum": ""
             },
             "require": {
@@ -3690,8 +3739,8 @@
                 "spryker/product-quantity-storage": "^0.1.0"
             },
             "require-dev": {
-                "spryker-shop/cart-page": "^0.5.0",
-                "spryker-shop/product-detail-page": "^0.4.0"
+                "spryker-shop/cart-page": "*",
+                "spryker-shop/product-detail-page": "*"
             },
             "suggest": {
                 "spryker-shop/cart-page": "If you want to use QuantitySalesUnitWidgetPlugin: ^0.5.0",
@@ -3713,7 +3762,7 @@
                 "proprietary"
             ],
             "description": "ProductMeasurementUnitWidget module",
-            "time": "2018-04-06T12:52:25+00:00"
+            "time": "2018-04-11T13:36:57+00:00"
         },
         {
             "name": "spryker-shop/product-new-page",
@@ -4558,16 +4607,16 @@
         },
         {
             "name": "spryker-shop/shop-ui",
-            "version": "0.4.2",
+            "version": "0.4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/shop-ui.git",
-                "reference": "f2679d3ccf0126bd3067c501440592484aaae5fb"
+                "reference": "926ebf33072eece30b107d5aca12b90c37c24890"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/shop-ui/zipball/f2679d3ccf0126bd3067c501440592484aaae5fb",
-                "reference": "f2679d3ccf0126bd3067c501440592484aaae5fb",
+                "url": "https://api.github.com/repos/spryker-shop/shop-ui/zipball/926ebf33072eece30b107d5aca12b90c37c24890",
+                "reference": "926ebf33072eece30b107d5aca12b90c37c24890",
                 "shasum": ""
             },
             "require": {
@@ -4597,7 +4646,105 @@
                 "proprietary"
             ],
             "description": "ShopUi module",
-            "time": "2018-04-10T13:18:07+00:00"
+            "time": "2018-04-11T07:31:34+00:00"
+        },
+        {
+            "name": "spryker-shop/shopping-list-page",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/shopping-list-page.git",
+                "reference": "57f39dcf7d040a17b395ffe270a6766ac0e42413"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/shopping-list-page/zipball/57f39dcf7d040a17b395ffe270a6766ac0e42413",
+                "reference": "57f39dcf7d040a17b395ffe270a6766ac0e42413",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker-shop/shop-application": "^0.3.0",
+                "spryker/application": "^3.8.0",
+                "spryker/company-business-unit": "^1.0.0",
+                "spryker/company-user": "^1.0.0",
+                "spryker/customer": "^7.4.0",
+                "spryker/kernel": "^3.16.0",
+                "spryker/product-storage": "^0.1.0 || ^0.2.0",
+                "spryker/shopping-list": "^0.1.0",
+                "spryker/symfony": "^3.1.0"
+            },
+            "require-dev": {
+                "spryker/silex": "*"
+            },
+            "suggest": {
+                "spryker/silex": "TODO: add suggestion description"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ShoppingListPage module",
+            "time": "2018-04-11T13:46:07+00:00"
+        },
+        {
+            "name": "spryker-shop/shopping-list-widget",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/shopping-list-widget.git",
+                "reference": "dd6435a110bf840ab6b7a5bbfc89b9fce396551e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/shopping-list-widget/zipball/dd6435a110bf840ab6b7a5bbfc89b9fce396551e",
+                "reference": "dd6435a110bf840ab6b7a5bbfc89b9fce396551e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker-shop/shop-application": "^0.3.0",
+                "spryker/customer": "^7.4.0",
+                "spryker/kernel": "^3.16.0",
+                "spryker/shopping-list": "^0.1.0",
+                "spryker/symfony": "^3.1.0"
+            },
+            "require-dev": {
+                "spryker/product-detail-page": "*",
+                "spryker/silex": "*"
+            },
+            "suggest": {
+                "spryker/product-detail-page": "To use ShoppingListWidget plugin, ShoppingListWidgetPluginInterface from product-detail-page v0.2.2 is needed",
+                "spryker/silex": "TODO: add suggestion description"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ShoppingListWidget module",
+            "time": "2018-04-11T13:46:07+00:00"
         },
         {
             "name": "spryker-shop/web-profiler-widget",
@@ -7671,6 +7818,53 @@
             "time": "2018-04-03T21:13:45+00:00"
         },
         {
+            "name": "spryker/company-business-unit-gui-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/company-business-unit-gui-extension.git",
+                "reference": "1829b8b89db8fe329521f98a138af01822092c05"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/company-business-unit-gui-extension/zipball/1829b8b89db8fe329521f98a138af01822092c05",
+                "reference": "1829b8b89db8fe329521f98a138af01822092c05",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/company-business-unit": "^1.1.0",
+                "spryker/gui": "^3.13.0",
+                "spryker/symfony": "^3.0.0",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/company-business-unit": "To get full functionality of the current module",
+                "spryker/gui": "If you need gui",
+                "spryker/symfony": "If you want to provide plugins to CompanyBusinessUnitGui module"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CompanyBusinessUnitGuiExtension module",
+            "time": "2018-03-30T15:22:15+00:00"
+        },
+        {
             "name": "spryker/company-data-import",
             "version": "0.1.1",
             "source": {
@@ -8026,21 +8220,24 @@
         },
         {
             "name": "spryker/company-unit-address-gui",
-            "version": "0.1.0",
+            "version": "0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/company-unit-address-gui.git",
-                "reference": "a716a1ab60ba55cff366d44f393d1b5f59ed211d"
+                "reference": "266864eef34630f5d980724cb14f477d1acb15bb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/company-unit-address-gui/zipball/a716a1ab60ba55cff366d44f393d1b5f59ed211d",
-                "reference": "a716a1ab60ba55cff366d44f393d1b5f59ed211d",
+                "url": "https://api.github.com/repos/spryker/company-unit-address-gui/zipball/266864eef34630f5d980724cb14f477d1acb15bb",
+                "reference": "266864eef34630f5d980724cb14f477d1acb15bb",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
+                "spryker/company": "^1.0.0",
+                "spryker/company-business-unit-gui-extension": "^1.0.0",
                 "spryker/company-unit-address": "^1.1.0",
+                "spryker/country": "^3.0.0",
                 "spryker/gui": "^3.0.0",
                 "spryker/kernel": "^3.0.0",
                 "spryker/symfony": "^3.0.0",
@@ -8066,7 +8263,7 @@
                 "proprietary"
             ],
             "description": "CompanyUnitAddressGui module",
-            "time": "2018-03-22T17:33:42+00:00"
+            "time": "2018-04-04T09:44:31+00:00"
         },
         {
             "name": "spryker/company-unit-address-gui-extension",
@@ -8208,16 +8405,16 @@
         },
         {
             "name": "spryker/company-user",
-            "version": "1.1.0",
+            "version": "1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/company-user.git",
-                "reference": "b9f44075633f56055b886db3bdb5a7badadbf065"
+                "reference": "0f4779b90d3683fa936d2a82c8f4d65edcb49257"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/company-user/zipball/b9f44075633f56055b886db3bdb5a7badadbf065",
-                "reference": "b9f44075633f56055b886db3bdb5a7badadbf065",
+                "url": "https://api.github.com/repos/spryker/company-user/zipball/0f4779b90d3683fa936d2a82c8f4d65edcb49257",
+                "reference": "0f4779b90d3683fa936d2a82c8f4d65edcb49257",
                 "shasum": ""
             },
             "require": {
@@ -8256,7 +8453,7 @@
                 "proprietary"
             ],
             "description": "CompanyUser module",
-            "time": "2018-04-06T13:22:44+00:00"
+            "time": "2018-04-10T09:37:20+00:00"
         },
         {
             "name": "spryker/company-user-extension",
@@ -11405,16 +11602,16 @@
         },
         {
             "name": "spryker/permission",
-            "version": "1.0.2",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/permission.git",
-                "reference": "28f4caacb3b35cbb291733004ba5768e886ec1cc"
+                "reference": "f85a9913dba3468c85eb76da2eeb69fe1ad28507"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/permission/zipball/28f4caacb3b35cbb291733004ba5768e886ec1cc",
-                "reference": "28f4caacb3b35cbb291733004ba5768e886ec1cc",
+                "url": "https://api.github.com/repos/spryker/permission/zipball/f85a9913dba3468c85eb76da2eeb69fe1ad28507",
+                "reference": "f85a9913dba3468c85eb76da2eeb69fe1ad28507",
                 "shasum": ""
             },
             "require": {
@@ -11443,7 +11640,7 @@
                 "proprietary"
             ],
             "description": "Permission module",
-            "time": "2018-04-09T14:13:29+00:00"
+            "time": "2018-04-10T09:37:20+00:00"
         },
         {
             "name": "spryker/permission-extension",
@@ -15763,6 +15960,61 @@
             "time": "2018-01-26T13:20:18+00:00"
         },
         {
+            "name": "spryker/shopping-list",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/shopping-list.git",
+                "reference": "ae4de899cb610174ccb81e6b3cc78512526dc046"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/shopping-list/zipball/ae4de899cb610174ccb81e6b3cc78512526dc046",
+                "reference": "ae4de899cb610174ccb81e6b3cc78512526dc046",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/cart": "^5.0.0",
+                "spryker/company-business-unit": "^1.0.0",
+                "spryker/company-user": "^1.0.0",
+                "spryker/customer": "^7.0.0",
+                "spryker/kernel": "^3.0.0",
+                "spryker/permission": "^1.1.0",
+                "spryker/permission-extension": "^1.0.0",
+                "spryker/persistent-cart": "^0.1.0",
+                "spryker/price-product": "^1.0.0",
+                "spryker/product": "^6.0.0",
+                "spryker/propel-orm": "^1.0.0",
+                "spryker/zed-request": "^3.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/installer": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/installer": "If ShoppingListPermissionsInstallerPlugin is to be used, minimum version is 4.0.04"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ShoppingList module",
+            "time": "2018-04-11T13:39:07+00:00"
+        },
+        {
             "name": "spryker/silex",
             "version": "2.0.1",
             "source": {
@@ -19181,29 +19433,32 @@
         },
         {
             "name": "zendframework/zend-filter",
-            "version": "2.7.2",
+            "version": "2.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zendframework/zend-filter.git",
-                "reference": "b8d0ff872f126631bf63a932e33aa2d22d467175"
+                "reference": "7b997dbe79459f1652deccc8786d7407fb66caa9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zendframework/zend-filter/zipball/b8d0ff872f126631bf63a932e33aa2d22d467175",
-                "reference": "b8d0ff872f126631bf63a932e33aa2d22d467175",
+                "url": "https://api.github.com/repos/zendframework/zend-filter/zipball/7b997dbe79459f1652deccc8786d7407fb66caa9",
+                "reference": "7b997dbe79459f1652deccc8786d7407fb66caa9",
                 "shasum": ""
             },
             "require": {
-                "php": "^5.5 || ^7.0",
-                "zendframework/zend-stdlib": "^2.7 || ^3.0"
+                "php": "^5.6 || ^7.0",
+                "zendframework/zend-stdlib": "^2.7.7 || ^3.1"
+            },
+            "conflict": {
+                "zendframework/zend-validator": "<2.10.1"
             },
             "require-dev": {
-                "pear/archive_tar": "^1.4",
-                "phpunit/phpunit": "^6.0.10 || ^5.7.17",
+                "pear/archive_tar": "^1.4.3",
+                "phpunit/phpunit": "^5.7.23 || ^6.4.3",
                 "zendframework/zend-coding-standard": "~1.0.0",
-                "zendframework/zend-crypt": "^2.6 || ^3.0",
-                "zendframework/zend-servicemanager": "^2.7.5 || ^3.0.3",
-                "zendframework/zend-uri": "^2.5"
+                "zendframework/zend-crypt": "^3.2.1",
+                "zendframework/zend-servicemanager": "^2.7.8 || ^3.3",
+                "zendframework/zend-uri": "^2.6"
             },
             "suggest": {
                 "zendframework/zend-crypt": "Zend\\Crypt component, for encryption filters",
@@ -19214,8 +19469,8 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.7-dev",
-                    "dev-develop": "2.8-dev"
+                    "dev-master": "2.8.x-dev",
+                    "dev-develop": "2.9.x-dev"
                 },
                 "zf": {
                     "component": "Zend\\Filter",
@@ -19232,12 +19487,12 @@
                 "BSD-3-Clause"
             ],
             "description": "provides a set of commonly needed data filters",
-            "homepage": "https://github.com/zendframework/zend-filter",
             "keywords": [
+                "ZendFramework",
                 "filter",
-                "zf2"
+                "zf"
             ],
-            "time": "2017-05-17T20:56:17+00:00"
+            "time": "2018-04-11T16:20:04+00:00"
         },
         {
             "name": "zendframework/zend-servicemanager",
@@ -22253,16 +22508,16 @@
         },
         {
             "name": "spryker/development",
-            "version": "3.7.1",
+            "version": "3.7.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/development.git",
-                "reference": "2d486b0e03d0d2098b8ae16ec9fed213a4847faa"
+                "reference": "f573387e7021c2e504e2cf54856ff477606bbb2b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/development/zipball/2d486b0e03d0d2098b8ae16ec9fed213a4847faa",
-                "reference": "2d486b0e03d0d2098b8ae16ec9fed213a4847faa",
+                "url": "https://api.github.com/repos/spryker/development/zipball/f573387e7021c2e504e2cf54856ff477606bbb2b",
+                "reference": "f573387e7021c2e504e2cf54856ff477606bbb2b",
                 "shasum": ""
             },
             "require": {
@@ -22295,7 +22550,7 @@
                 "proprietary"
             ],
             "description": "Development module",
-            "time": "2018-04-04T09:10:55+00:00"
+            "time": "2018-04-10T09:37:20+00:00"
         },
         {
             "name": "spryker/testify",
