@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "e5e2d412dd7994d0ee05dc737b1a32d9",
+    "content-hash": "d2951be6fefbb5de861cb753e81b47ac",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -6421,16 +6421,16 @@
         },
         {
             "name": "spryker/checkout",
-            "version": "4.1.3",
+            "version": "4.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/checkout.git",
-                "reference": "ae3451bb00ffa9a818e5cad892fc1e07b5a630c6"
+                "reference": "2060aa5f10b86a2c1418cb3be25d142847621176"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/checkout/zipball/ae3451bb00ffa9a818e5cad892fc1e07b5a630c6",
-                "reference": "ae3451bb00ffa9a818e5cad892fc1e07b5a630c6",
+                "url": "https://api.github.com/repos/spryker/checkout/zipball/2060aa5f10b86a2c1418cb3be25d142847621176",
+                "reference": "2060aa5f10b86a2c1418cb3be25d142847621176",
                 "shasum": ""
             },
             "require": {
@@ -6474,7 +6474,7 @@
                 "proprietary"
             ],
             "description": "Checkout module",
-            "time": "2018-04-10T10:41:59+00:00"
+            "time": "2018-04-12T13:37:08+00:00"
         },
         {
             "name": "spryker/checkout-permission-connector",
@@ -10682,17 +10682,62 @@
             "time": "2016-04-01T13:06:05+00:00"
         },
         {
-            "name": "spryker/manual-order-entry-gui",
-            "version": "0.2.1",
+            "name": "spryker/manual-order-entry",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/spryker/manual-order-entry-gui.git",
-                "reference": "3c5a8c2d885cee8a24e60b59a5488abcae1d7282"
+                "url": "https://github.com/spryker/manual-order-entry.git",
+                "reference": "9bfa10a2986613f034ea45cf55781483668750e1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/manual-order-entry-gui/zipball/3c5a8c2d885cee8a24e60b59a5488abcae1d7282",
-                "reference": "3c5a8c2d885cee8a24e60b59a5488abcae1d7282",
+                "url": "https://api.github.com/repos/spryker/manual-order-entry/zipball/9bfa10a2986613f034ea45cf55781483668750e1",
+                "reference": "9bfa10a2986613f034ea45cf55781483668750e1",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/kernel": "^3.18.0",
+                "spryker/symfony": "^3.1.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/sales": "^8.8.3",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/sales": "If you want to use PreSaveOrderHydratePluginInterface"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ManualOrderEntry module",
+            "time": "2018-04-10T09:04:22+00:00"
+        },
+        {
+            "name": "spryker/manual-order-entry-gui",
+            "version": "0.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/manual-order-entry-gui.git",
+                "reference": "568997492cb921acd2345e29009270ccf7052151"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/manual-order-entry-gui/zipball/568997492cb921acd2345e29009270ccf7052151",
+                "reference": "568997492cb921acd2345e29009270ccf7052151",
                 "shasum": ""
             },
             "require": {
@@ -10705,6 +10750,7 @@
                 "spryker/discount": "^6.1.0",
                 "spryker/gui": "^3.1.0",
                 "spryker/kernel": "^3.18.0",
+                "spryker/manual-order-entry": "^1.0.0",
                 "spryker/manual-order-entry-gui-extension": "^1.0.0",
                 "spryker/messenger": "^3.1.0",
                 "spryker/money": "^2.1.0",
@@ -10735,7 +10781,7 @@
                 "proprietary"
             ],
             "description": "ManualOrderEntryGui module",
-            "time": "2018-04-10T10:41:59+00:00"
+            "time": "2018-04-12T13:37:08+00:00"
         },
         {
             "name": "spryker/manual-order-entry-gui-extension",
@@ -15226,16 +15272,16 @@
         },
         {
             "name": "spryker/sales",
-            "version": "8.9.1",
+            "version": "8.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/sales.git",
-                "reference": "383495ccf83213c2e5c8701c1d7c4af08d16f0bd"
+                "reference": "0e6a9edeeb87bc651048abee07c23c7863f328c4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/sales/zipball/383495ccf83213c2e5c8701c1d7c4af08d16f0bd",
-                "reference": "383495ccf83213c2e5c8701c1d7c4af08d16f0bd",
+                "url": "https://api.github.com/repos/spryker/sales/zipball/0e6a9edeeb87bc651048abee07c23c7863f328c4",
+                "reference": "0e6a9edeeb87bc651048abee07c23c7863f328c4",
                 "shasum": ""
             },
             "require": {
@@ -15289,7 +15335,7 @@
                 "proprietary"
             ],
             "description": "Sales module",
-            "time": "2018-04-05T15:15:54+00:00"
+            "time": "2018-04-10T09:04:22+00:00"
         },
         {
             "name": "spryker/sales-extension",
@@ -15381,16 +15427,16 @@
         },
         {
             "name": "spryker/sales-reclamation",
-            "version": "0.1.0",
+            "version": "0.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/sales-reclamation.git",
-                "reference": "625c94ea5692a08435bdee5879c1cdb2cca93f90"
+                "reference": "699522c8c1a32d502dcd0e90da7df9c0c2d3a8b8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/sales-reclamation/zipball/625c94ea5692a08435bdee5879c1cdb2cca93f90",
-                "reference": "625c94ea5692a08435bdee5879c1cdb2cca93f90",
+                "url": "https://api.github.com/repos/spryker/sales-reclamation/zipball/699522c8c1a32d502dcd0e90da7df9c0c2d3a8b8",
+                "reference": "699522c8c1a32d502dcd0e90da7df9c0c2d3a8b8",
                 "shasum": ""
             },
             "require": {
@@ -15428,7 +15474,7 @@
                 "proprietary"
             ],
             "description": "SalesReclamation module",
-            "time": "2018-03-29T17:20:54+00:00"
+            "time": "2018-04-06T06:41:34+00:00"
         },
         {
             "name": "spryker/sales-split",
@@ -16053,44 +16099,46 @@
         },
         {
             "name": "spryker/sql-criteria-builder",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/spryker/SqlCriteriaBuilder.git",
-                "reference": "eb13a52833f2badaaa2847446fb4a4e15464f743"
+                "url": "https://github.com/spryker/sql-criteria-builder.git",
+                "reference": "790478d256cc3e687bd67b8dcdd41c1ab97ae57e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/SqlCriteriaBuilder/zipball/eb13a52833f2badaaa2847446fb4a4e15464f743",
-                "reference": "eb13a52833f2badaaa2847446fb4a4e15464f743",
+                "url": "https://api.github.com/repos/spryker/sql-criteria-builder/zipball/790478d256cc3e687bd67b8dcdd41c1ab97ae57e",
+                "reference": "790478d256cc3e687bd67b8dcdd41c1ab97ae57e",
                 "shasum": ""
             },
             "require": {
                 "everon/collection": "~1.0.3",
                 "everon/criteria-builder": "~1.1.5",
                 "everon/factory": "~1.1.4",
-                "everon/utils": "~1.0.4"
+                "everon/utils": "~1.0.4",
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.0.x-dev"
+                    "dev-master": "1.0.x-dev"
                 }
             },
             "autoload": {
-                "psr-0": {
-                    "Spryker": "src/"
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
                 }
             },
-            "notification-url": "https://code.foo.com/repo/private/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "proprietary"
             ],
-            "description": "sql criteria builder bundle",
-            "support": {
-                "source": "https://github.com/spryker/SqlCriteriaBuilder/tree/1.0.0"
-            },
-            "time": "2016-04-01T13:06:05+00:00"
+            "description": "SqlCriteriaBuilder module",
+            "time": "2018-01-24T11:43:27+00:00"
         },
         {
             "name": "spryker/state-machine",
