@@ -1,47 +1,44 @@
 {
   "private": true,
-  "name": "spryker-demoshop",
+  "name": "spryker-suite",
   "version": "1.0.0",
-  "description": "Spryker Demoshop project",
+  "description": "Spryker Suite project",
   "author": {
     "name": "Spryker",
     "email": "info@spryker.com",
-    "url": "http://spryker.com/"
+    "url": "https://spryker.com/"
   },
   "scripts": {
-    "yves": "node ./assets/Yves/default/build",
-    "yves:dev": "node ./assets/Yves/default/build --dev",
-    "yves:prod": "node ./assets/Yves/default/build --prod",
+    "yves": "node $npm_package_config_shopUi_modulePath/src/SprykerShop/Yves/ShopUi/Theme/default/builder/tasks/build",
+    "yves:watch": "node $npm_package_config_shopUi_modulePath/src/SprykerShop/Yves/ShopUi/Theme/default/builder/tasks/watch",
     "zed": "node ./node_modules/@spryker/oryx-for-zed/build",
-    "zed:dev": "node ./node_modules/@spryker/oryx-for-zed/build --dev",
-    "zed:prod": "node ./node_modules/@spryker/oryx-for-zed/build --prod"
+    "zed:watch": "node ./node_modules/@spryker/oryx-for-zed/build --dev"
   },
   "engines": {
-    "node": "^6.0.0"
+    "node": ">=8.9.0",
+    "npm": ">=5.6.0"
   },
   "dependencies": {
-    "es6-promise": "~4.1.0",
-    "font-awesome": "~4.7.0",
-    "foundation-sites": "~6.3.1",
-    "jquery": "~3.2.0",
-    "slick-carousel": "~1.6.0",
-    "lodash": "~4.17.2",
-    "motion-ui": "~1.2.2",
-    "jquery-bar-rating": "^1.2.2"
+    "@webcomponents/webcomponentsjs": "~1.1.0"
   },
   "devDependencies": {
-    "@spryker/oryx": "^1.0.0",
-    "@spryker/oryx-for-zed": "^1.0.0",
-    "autoprefixer": "~6.7.6",
-    "copy-webpack-plugin": "~4.0.1",
-    "css-loader": "~0.27.1",
-    "extract-text-webpack-plugin": "~2.1.0",
-    "file-loader": "~0.10.1",
-    "node-sass": "~4.5.0",
-    "postcss-loader": "~1.3.3",
-    "sass-loader": "~6.0.3",
-    "style-loader": "~0.13.1",
-    "webpack": "~2.3.0",
-    "yargs": "~7.0.2"
+    "@spryker/oryx": "^1.1.0",
+    "@spryker/oryx-for-zed": "^1.1.1",
+    "css-loader": "~0.28.10",
+    "extract-text-webpack-plugin": "~3.0.2",
+    "fast-glob": "~2.1.0",
+    "node-sass": "~4.7.2",
+    "sass-loader": "~6.0.6",
+    "ts-loader": "~3.5.0",
+    "typescript": "~2.7.2",
+    "webpack": "~3.11.0"
+  },
+  "config": {
+    "shopUi": {
+      "name": "yves_default",
+      "theme": "default",
+      "publicPath": "./public/Yves/assets",
+      "modulePath": "./vendor/spryker/spryker-shop/Bundles/ShopUi"
+    }
   }
 }

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Spryker Demoshop.
+ * This file is part of the Spryker Suite.
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
@@ -68,11 +68,25 @@ class CustomerStepTest extends Unit
     /**
      * @return void
      */
-    public function testPostConditionWhenCustomerSetShouldReturnTrue()
+    public function testPostConditionWhenInvalidCustomerSetShouldReturnFalse()
     {
         $customerStep = $this->createCustomerStep();
         $quoteTransfer = new QuoteTransfer();
         $quoteTransfer->setCustomer(new CustomerTransfer());
+
+        $this->assertFalse($customerStep->postCondition($quoteTransfer));
+    }
+
+    /**
+     * @return void
+     */
+    public function testPostConditionWhenGuestCustomerSetShouldReturnTrue()
+    {
+        $customerStep = $this->createCustomerStep();
+        $quoteTransfer = new QuoteTransfer();
+        $customerTransfer = new CustomerTransfer();
+        $customerTransfer->setIsGuest(true);
+        $quoteTransfer->setCustomer($customerTransfer);
 
         $this->assertTrue($customerStep->postCondition($quoteTransfer));
     }

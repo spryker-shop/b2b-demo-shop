@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Spryker Demoshop.
+ * This file is part of the Spryker Suite.
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
@@ -13,7 +13,7 @@ class CustomerAddressesPage extends Customer
 {
     const URL = '/customer/address';
 
-    const ADD_ADDRESS_LINK = '//a[@data-id="customer-add-new-address"]';
+    const ADD_ADDRESS_LINK = '[data-qa="customer-add-new-address"]';
 
     const ADDRESS_A = 'address a';
     const ADDRESS_B = 'address b';

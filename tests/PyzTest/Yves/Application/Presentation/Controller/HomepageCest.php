@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Spryker Demoshop.
+ * This file is part of the Spryker Suite.
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
@@ -31,6 +31,6 @@ class HomepageCest
     {
         $i->wantTo('See that i can open the homepage');
         $i->amOnPage(Homepage::URL);
-        $i->canSeeElement(['class' => '__page']);
+        $i->canSeeElement('[data-qa="page"]');
     }
 }

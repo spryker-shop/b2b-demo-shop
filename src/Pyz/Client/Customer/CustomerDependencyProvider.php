@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Spryker Demoshop.
+ * This file is part of the Spryker Suite.
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
@@ -11,6 +11,8 @@ use Spryker\Client\Cart\Plugin\CustomerChangeCartUpdatePlugin;
 use Spryker\Client\Customer\CustomerDependencyProvider as SprykerCustomerDependencyProvider;
 use Spryker\Client\Customer\Plugin\CustomerAddressSessionUpdatePlugin;
 use Spryker\Client\Customer\Plugin\CustomerTransferRefreshPlugin;
+use Spryker\Client\MultiCart\Plugin\GuestCartSaveCustomerSessionSetPlugin;
+use Spryker\Client\PersistentCart\Plugin\GuestCartUpdateCustomerSessionSetPlugin;
 
 class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
 {
@@ -30,6 +32,8 @@ class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
     protected function getCustomerSessionSetPlugins()
     {
         return [
+            new GuestCartSaveCustomerSessionSetPlugin(), #MultiCartFeature
+            new GuestCartUpdateCustomerSessionSetPlugin(), #PersistentCartFeature
             new CustomerChangeCartUpdatePlugin(),
         ];
     }
