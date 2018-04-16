@@ -19,7 +19,6 @@ use Spryker\Zed\CodeGenerator\Communication\Console\BundleYvesCodeGeneratorConso
 use Spryker\Zed\CodeGenerator\Communication\Console\BundleZedCodeGeneratorConsole;
 use Spryker\Zed\CompanyBusinessUnitDataImport\CompanyBusinessUnitDataImportConfig;
 use Spryker\Zed\CompanyDataImport\CompanyDataImportConfig;
-use Spryker\Zed\CompanySupplierDataImport\CompanySupplierDataImportConfig;
 use Spryker\Zed\CompanyUnitAddressDataImport\CompanyUnitAddressDataImportConfig;
 use Spryker\Zed\CompanyUnitAddressLabelDataImport\CompanyUnitAddressLabelDataImportConfig;
 use Spryker\Zed\Console\Communication\Plugin\ConsoleLogPlugin;
@@ -185,9 +184,6 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . DataImportConfig::IMPORT_TYPE_DISCOUNT_AMOUNT),
             //core data importers
             new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . CompanyDataImportConfig::IMPORT_TYPE_COMPANY),
-            new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . CompanySupplierDataImportConfig::IMPORT_TYPE_COMPANY_TYPE),
-            new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . CompanySupplierDataImportConfig::IMPORT_TYPE_COMPANY_SUPPLIER),
-            new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . CompanySupplierDataImportConfig::IMPORT_TYPE_PRODUCT_PRICE),
             new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . CompanyBusinessUnitDataImportConfig::IMPORT_TYPE_COMPANY_BUSINESS_UNIT),
             new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . CompanyUnitAddressDataImportConfig::IMPORT_TYPE_COMPANY_UNIT_ADDRESS),
             new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . CompanyUnitAddressLabelDataImportConfig::IMPORT_TYPE_COMPANY_UNIT_ADDRESS_LABEL),
