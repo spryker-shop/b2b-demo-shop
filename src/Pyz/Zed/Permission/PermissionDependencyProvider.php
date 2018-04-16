@@ -7,7 +7,13 @@
 
 namespace Pyz\Zed\Permission;
 
+use Spryker\Client\ShoppingList\Plugin\ReadShoppingListPermissionPlugin;
 use Spryker\Zed\Permission\PermissionDependencyProvider as SprykerPermissionDependencyProvider;
+use Spryker\Zed\SharedCart\Communication\Plugin\QuotePermissionStoragePlugin;
+use Spryker\Zed\SharedCart\Communication\Plugin\ReadSharedCartPermissionPlugin;
+use Spryker\Zed\SharedCart\Communication\Plugin\WriteSharedCartPermissionPlugin;
+use Spryker\Zed\ShoppingList\Communication\Plugin\ShoppingListPermissionStoragePlugin;
+use Spryker\Zed\ShoppingList\Communication\Plugin\WriteShoppingListPermissionPlugin;
 
 class PermissionDependencyProvider extends SprykerPermissionDependencyProvider
 {
@@ -16,7 +22,10 @@ class PermissionDependencyProvider extends SprykerPermissionDependencyProvider
      */
     protected function getPermissionStoragePlugins(): array
     {
-        return [];
+        return [
+            new QuotePermissionStoragePlugin(), #SharedCartFeature
+            new ShoppingListPermissionStoragePlugin(), #ShoppingListFeature
+        ];
     }
 
     /**
@@ -24,6 +33,11 @@ class PermissionDependencyProvider extends SprykerPermissionDependencyProvider
      */
     protected function getPermissionPlugins()
     {
-        return [];
+        return [
+            new ReadSharedCartPermissionPlugin(), #SharedCartFeature
+            new WriteSharedCartPermissionPlugin(), #SharedCartFeature
+            new ReadShoppingListPermissionPlugin(), #ShoppingListFeature
+            new WriteShoppingListPermissionPlugin(), #ShoppingListFeature
+        ];
     }
 }
