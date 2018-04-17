@@ -8,6 +8,7 @@
 namespace Pyz\Zed\Installer;
 
 use Spryker\Zed\Acl\Communication\Plugin\AclInstallerPlugin;
+use Spryker\Zed\CompanyUserInvitation\Communication\Plugin\CompanyUserInvitationStatusInstallerPlugin;
 use Spryker\Zed\Country\Communication\Plugin\CountryInstallerPlugin;
 use Spryker\Zed\Glossary\Communication\Plugin\GlossaryInstallerPlugin;
 use Spryker\Zed\Installer\InstallerDependencyProvider as SprykerInstallerDependencyProvider;
@@ -35,7 +36,8 @@ class InstallerDependencyProvider extends SprykerInstallerDependencyProvider
             new GlossaryInstallerPlugin(),
             new SharedCartPermissionInstallerPlugin(),
             new ShoppingListPermissionsInstallerPlugin(),
-            new SharedCartPermissionInstallerPlugin(), #SharedCartFeature
+            new SharedCartPermissionInstallerPlugin(),
+            new CompanyUserInvitationStatusInstallerPlugin(),
         ];
     }
 }
