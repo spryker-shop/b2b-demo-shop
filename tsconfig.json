@@ -6,11 +6,18 @@
             "*": [
                 "*"
             ],
-            "shop-ui/*": [
+            "ui-shop/*": [
                 "./vendor/spryker/spryker-shop/Bundles/ShopUi/src/SprykerShop/Yves/ShopUi/Theme/default/*"
+            ],
+            "ui-project/*": [
+                "./src/Pyz/Yves/ShopUi/Theme/default/*"
             ]
         }
     },
+    "files": [
+        "./src/Pyz/Yves/ShopUi/Theme/default/app.ts",
+        "./src/Pyz/Yves/ShopUi/Theme/default/vendor.ts"
+    ],
     "include": [
         "./vendor/spryker/spryker-shop/**/*",
         "./src/Pyz/Yves/**/*"
