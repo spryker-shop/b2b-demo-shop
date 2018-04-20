@@ -7,7 +7,6 @@
 
 namespace Pyz\Zed\Permission;
 
-use Spryker\Client\CompanyUserInvitation\Plugin\ManageCompanyUserInvitationPermissionPlugin;
 use Spryker\Client\ShoppingList\Plugin\ReadShoppingListPermissionPlugin;
 use Spryker\Zed\CompanyRole\Communication\Plugin\PermissionStoragePlugin;
 use Spryker\Zed\Permission\PermissionDependencyProvider as SprykerPermissionDependencyProvider;
@@ -41,7 +40,6 @@ class PermissionDependencyProvider extends SprykerPermissionDependencyProvider
             new WriteSharedCartPermissionPlugin(), #SharedCartFeature
             new ReadShoppingListPermissionPlugin(), #SharedCartFeature
             new WriteShoppingListPermissionPlugin(), #SharedCartFeature
-            new ManageCompanyUserInvitationPermissionPlugin(), #BulkImportCompanyUserInvitationsFeature
         ];
     }
 }
