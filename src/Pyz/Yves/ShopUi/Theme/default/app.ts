@@ -1,4 +1,4 @@
-import bootstrap from 'ui-shop/app/bootstrap';
-import config from 'ui-shop/app/config';
+import bootstrap from 'ShopUi/app/bootstrap';
+import config from 'ShopUi/app/config';
 
 bootstrap(config);

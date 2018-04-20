@@ -2,8 +2,6 @@ const path = require('path');
 
 const name = 'yves_default';
 const theme = 'default';
-const mode = process.argv.length > 2 ? process.argv[2] : 'development';
-const watch = process.argv.length > 3 ? !!process.argv[3] : false;
 const context = process.cwd();
 
 const paths = {
@@ -18,8 +16,6 @@ const paths = {
 module.exports = {
     name,
     theme,
-    mode,
-    watch,
     paths,
 
     dirs: {
@@ -33,7 +29,7 @@ module.exports = {
     },
 
     find: {
-        components: {
+        componentEntryPoints: {
             dirs: [
                 path.join(context, paths.shop)
             ],
@@ -49,7 +45,39 @@ module.exports = {
                 '!node_modules',
                 '!public',
                 '!test'
-            ]
+            ],
+            globSettings: {
+                followSymlinkedDirectories: false,
+                absolute: true,
+                onlyFiles: true,
+                onlyDirectories: false
+            }
+        },
+
+        componentStyles: {
+            dirs: [
+                path.join(context, paths.shop)
+            ],
+            patterns: [
+                `**/Theme/${theme}/components/atoms/*/*.scss`,
+                `**/Theme/${theme}/components/molecules/*/*.scss`,
+                `**/Theme/${theme}/components/organisms/*/*.scss`,
+                `**/Theme/${theme}/templates/*/*.scss`,
+                `**/Theme/${theme}/views/*/*.scss`,
+                `!**/Theme/${theme}/**/style.scss`,
+                '!config',
+                '!data',
+                '!deploy',
+                '!node_modules',
+                '!public',
+                '!test'
+            ],
+            globSettings: {
+                followSymlinkedDirectories: false,
+                absolute: true,
+                onlyFiles: true,
+                onlyDirectories: false
+            }
         }
     }
 }
