@@ -7,7 +7,7 @@
 
 namespace Orm\Zed\Offer\Persistence;
 
-use Orm\Zed\Offer\Persistence\Base\SpyOffer as BaseSpyOffer;
+use Spryker\Zed\Offer\Persistence\Propel\AbstractSpyOffer as BaseSpyOffer;
 
 /**
  * Skeleton subclass for representing a row from the 'spy_offer' table.
