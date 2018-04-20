@@ -10,6 +10,7 @@ namespace Pyz\Zed\Customer;
 use Spryker\Shared\Newsletter\NewsletterConstants;
 use Spryker\Zed\CompanyRole\Communication\Plugin\PermissionCustomerExpanderPlugin;
 use Spryker\Zed\CompanyUser\Communication\Plugin\Customer\CustomerTransferCompanyUserExpanderPlugin;
+use Spryker\Zed\CompanyUserInvitation\Communication\Plugin\CompanyUserInvitationPostCustomerRegistrationPlugin;
 use Spryker\Zed\Customer\CustomerDependencyProvider as SprykerCustomerDependencyProvider;
 use Spryker\Zed\CustomerGroup\Communication\Plugin\CustomerAnonymizer\RemoveCustomerFromGroupPlugin;
 use Spryker\Zed\CustomerUserConnector\Communication\Plugin\CustomerTransferUsernameExpanderPlugin;
@@ -67,6 +68,16 @@ class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
             new PermissionCustomerExpanderPlugin(),
             new QuotePermissionCustomerExpanderPlugin(), #SharedCartFeature
             new ShoppingListPermissionCustomerExpanderPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\Customer\Dependency\Plugin\PostCustomerRegistrationPluginInterface[]
+     */
+    protected function getPostCustomerRegistrationPlugins(): array
+    {
+        return [
+            new CompanyUserInvitationPostCustomerRegistrationPlugin(),
         ];
     }
 }

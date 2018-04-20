@@ -25,8 +25,8 @@ class PermissionDependencyProvider extends SprykerPermissionDependencyProvider
     protected function getPermissionStoragePlugins(): array
     {
         return [
-            new QuotePermissionStoragePlugin(),
-            new ShoppingListPermissionStoragePlugin(),
+            new QuotePermissionStoragePlugin(), #SharedCartFeature
+            new ShoppingListPermissionStoragePlugin(), #ShoppingListFeature
             new PermissionStoragePlugin(),
         ];
     }
@@ -37,11 +37,11 @@ class PermissionDependencyProvider extends SprykerPermissionDependencyProvider
     protected function getPermissionPlugins()
     {
         return [
-            new ReadSharedCartPermissionPlugin(),
-            new WriteSharedCartPermissionPlugin(),
-            new ReadShoppingListPermissionPlugin(),
-            new WriteShoppingListPermissionPlugin(),
-            new ManageCompanyUserInvitationPermissionPlugin(),
+            new ReadSharedCartPermissionPlugin(), #SharedCartFeature
+            new WriteSharedCartPermissionPlugin(), #SharedCartFeature
+            new ReadShoppingListPermissionPlugin(), #SharedCartFeature
+            new WriteShoppingListPermissionPlugin(), #SharedCartFeature
+            new ManageCompanyUserInvitationPermissionPlugin(), #BulkImportCompanyUserInvitationsFeature
         ];
     }
 }

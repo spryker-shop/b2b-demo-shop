@@ -9,7 +9,7 @@ namespace Pyz\Yves\CustomerPage;
 
 use SprykerShop\Yves\CartNoteWidget\Plugin\CustomerPage\CartNoteOrderItemNoteWidgetPlugin;
 use SprykerShop\Yves\CartNoteWidget\Plugin\CustomerPage\CartNoteOrderNoteWidgetPlugin;
-use SprykerShop\Yves\CompanyUserInvitationPage\Plugin\CompanyUserInvitationPostCustomerRegistrationPlugin;
+use SprykerShop\Yves\CompanyUserInvitationPage\Plugin\CompanyUserInvitationPreRegistrationCustomerTransferExpanderPlugin;
 use SprykerShop\Yves\CustomerPage\CustomerPageDependencyProvider as SprykerShopCustomerPageDependencyProvider;
 use SprykerShop\Yves\CustomerReorderWidget\Plugin\CustomerPage\CustomerReorderWidgetPlugin;
 use SprykerShop\Yves\NewsletterWidget\Plugin\CustomerPage\NewsletterSubscriptionSummaryWidgetPlugin;
@@ -44,18 +44,18 @@ class CustomerPageDependencyProvider extends SprykerShopCustomerPageDependencyPr
     {
         return [
             CustomerReorderWidgetPlugin::class,
-            CartNoteOrderItemNoteWidgetPlugin::class,
-            CartNoteOrderNoteWidgetPlugin::class,
+            CartNoteOrderItemNoteWidgetPlugin::class, #CartNoteFeature
+            CartNoteOrderNoteWidgetPlugin::class, #CartNoteFeature
         ];
     }
 
     /**
-     * @return \SprykerShop\Yves\CustomerPage\Dependency\Plugin\PostCustomerRegistrationPluginInterface[]
+     * @return \SprykerShop\Yves\CustomerPage\Dependency\Plugin\PreRegistrationCustomerTransferExpanderPluginInterface[]
      */
-    protected function getPostCustomerRegistrationPlugins(): array
+    protected function getPreRegistrationCustomerTransferExpanderPlugins(): array
     {
         return [
-            new CompanyUserInvitationPostCustomerRegistrationPlugin(),
+            new CompanyUserInvitationPreRegistrationCustomerTransferExpanderPlugin(), #BulkImportCompanyUserInvitationsFeature
         ];
     }
 }

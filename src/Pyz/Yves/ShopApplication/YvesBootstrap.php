@@ -193,15 +193,15 @@ class YvesBootstrap extends SprykerYvesBootstrap
             new ProductReviewControllerProvider($isSsl),
             new DiscountWidgetControllerProvider($isSsl),
             new PriceControllerProvider($isSsl),
-            new CartNoteWidgetControllerProvider($isSsl),
+            new CartNoteWidgetControllerProvider($isSsl), #CartNoteFeature
             new QuickOrderPageControllerProvider($isSsl),
             new CompanyPageControllerProvider($isSsl),
-            new MultiCartPageControllerProvider($isSsl),
-            new SharedCartPageControllerProvider($isSsl),
-            new ShoppingListPageControllerProvider($isSsl),
-            new CartToShoppingListWidgetControllerProvider($isSsl),
-            new ShoppingListWidgetControllerProvider($isSsl),
-            new CompanyUserInvitationPageControllerProvider($isSsl),
+            new MultiCartPageControllerProvider($isSsl), #MultiCartFeature
+            new SharedCartPageControllerProvider($isSsl), #SharedCartFeature
+            new ShoppingListPageControllerProvider($isSsl), #ShoppingListFeature
+            new CartToShoppingListWidgetControllerProvider($isSsl), #ShoppingListFeature
+            new ShoppingListWidgetControllerProvider($isSsl), #ShoppingListFeature
+            new CompanyUserInvitationPageControllerProvider($isSsl), #BulkImportCompanyUserInvitationsFeature
         ];
     }
 }
