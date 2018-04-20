@@ -250,6 +250,7 @@ class DataImportConfig extends SprykerDataImportConfig
      */
     public function getProductMeasurementUnitDataImporterConfiguration()
     {
+        //@todo @artem
         return $this->buildImporterConfiguration('product_measurement_unit.csv', static::IMPORT_TYPE_PRODUCT_MEASUREMENT_UNIT);
     }
 

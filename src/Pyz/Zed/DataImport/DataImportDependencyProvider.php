@@ -17,6 +17,7 @@ use Spryker\Zed\DataImport\Communication\Plugin\DataImportEventBehaviorPlugin;
 use Spryker\Zed\DataImport\Communication\Plugin\DataImportPublisherPlugin;
 use Spryker\Zed\DataImport\DataImportDependencyProvider as SprykerDataImportDependencyProvider;
 use Spryker\Zed\Kernel\Container;
+use Spryker\Zed\ProductMeasurementUnitDataImport\Communication\Plugin\ProductMeasurementUnitDataImportPlugin;
 
 class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
 {
@@ -126,6 +127,7 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
             new CompanyUnitAddressDataImportPlugin(),
             new CompanyUnitAddressLabelDataImportPlugin(),
             new CompanyUnitAddressLabelRelationDataImportPlugin(),
+            new ProductMeasurementUnitDataImportPlugin(),
         ];
     }
 

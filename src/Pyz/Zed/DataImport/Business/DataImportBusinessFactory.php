@@ -117,7 +117,8 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
             ->addDataImporter($this->createProductSetImporter())
             ->addDataImporter($this->createProductSearchAttributeMapImporter())
             ->addDataImporter($this->createProductSearchAttributeImporter())
-            ->addDataImporter($this->createProductMeasurementUnitImporter())
+            //@todo @artem
+//            ->addDataImporter($this->createProductMeasurementUnitImporter())
             ->addDataImporter($this->createProductMeasurementBaseUnitImporter())
             ->addDataImporter($this->createProductMeasurementSalesUnitImporter())
             ->addDataImporter($this->createProductMeasurementSalesUnitStoreImporter())
@@ -960,6 +961,7 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
      */
     protected function createProductMeasurementUnitImporter()
     {
+        //@todo @artem
         $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker();
         $dataSetStepBroker->addStep(new ProductMeasurementUnitWriterStep());
 
