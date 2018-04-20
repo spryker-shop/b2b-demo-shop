@@ -7,7 +7,7 @@
 
 namespace Orm\Zed\SalesReclamation\Persistence;
 
-use Orm\Zed\SalesReclamation\Persistence\Base\SpySalesReclamationItemQuery as BaseSpySalesReclamationItemQuery;
+use Spryker\Zed\SalesReclamation\Persistence\Propel\AbstractSpySalesReclamationItemQuery as BaseSpySalesReclamationItemQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'spy_sales_reclamation_item' table.

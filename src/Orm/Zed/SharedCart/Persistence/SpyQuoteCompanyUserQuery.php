@@ -7,7 +7,7 @@
 
 namespace Orm\Zed\SharedCart\Persistence;
 
-use Orm\Zed\SharedCart\Persistence\Base\SpyQuoteCompanyUserQuery as BaseSpyQuoteCompanyUserQuery;
+use Spryker\Zed\SharedCart\Persistence\Propel\AbstractSpyQuoteCompanyUserQuery as BaseSpyQuoteCompanyUserQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'spy_quote_company_user' table.

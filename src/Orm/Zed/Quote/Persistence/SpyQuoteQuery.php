@@ -7,7 +7,7 @@
 
 namespace Orm\Zed\Quote\Persistence;
 
-use Orm\Zed\Quote\Persistence\Base\SpyQuoteQuery as BaseSpyQuoteQuery;
+use Spryker\Zed\Quote\Persistence\Propel\AbstractSpyQuoteQuery as BaseSpyQuoteQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'spy_quote' table.

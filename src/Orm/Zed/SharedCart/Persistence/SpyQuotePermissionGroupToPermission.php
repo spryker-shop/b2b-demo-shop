@@ -7,10 +7,10 @@
 
 namespace Orm\Zed\SharedCart\Persistence;
 
-use Orm\Zed\SharedCart\Persistence\Base\SpyQuotePermissionGroupToPermission as BaseSpyQuotePermissionGroupToPermission;
+use Spryker\Zed\SharedCart\Persistence\Propel\AbstractSpyQuotePermissionGroupToPermission as BaseSpyQuotePermissionGroupToPermission;
 
 /**
- * Skeleton subclass for representing a row from the 'spy_quote_permission_group_to_permission' table.
+ * Skeleton subclass for representing a row from the 'spy_quote_role_to_permission' table.
  *
  *
  *

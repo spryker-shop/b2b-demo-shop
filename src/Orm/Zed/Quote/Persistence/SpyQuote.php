@@ -7,7 +7,7 @@
 
 namespace Orm\Zed\Quote\Persistence;
 
-use Orm\Zed\Quote\Persistence\Base\SpyQuote as BaseSpyQuote;
+use Spryker\Zed\Quote\Persistence\Propel\AbstractSpyQuote as BaseSpyQuote;
 
 /**
  * Skeleton subclass for representing a row from the 'spy_quote' table.
