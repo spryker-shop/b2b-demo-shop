@@ -7,7 +7,7 @@
 
 namespace Orm\Zed\CompanyUserInvitation\Persistence;
 
-use Orm\Zed\CompanyUserInvitation\Persistence\Base\SpyCompanyUserInvitationStatusQuery as BaseSpyCompanyUserInvitationStatusQuery;
+use Spryker\Zed\CompanyUserInvitation\Persistence\Propel\AbstractSpyCompanyUserInvitationStatusQuery as BaseSpyCompanyUserInvitationStatusQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'spy_company_user_invitation_status' table.

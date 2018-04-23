@@ -7,7 +7,7 @@
 
 namespace Orm\Zed\CompanyUserInvitation\Persistence;
 
-use Orm\Zed\CompanyUserInvitation\Persistence\Base\SpyCompanyUserInvitation as BaseSpyCompanyUserInvitation;
+use Spryker\Zed\CompanyUserInvitation\Persistence\Propel\AbstractSpyCompanyUserInvitation as BaseSpyCompanyUserInvitation;
 
 /**
  * Skeleton subclass for representing a row from the 'spy_company_user_invitation' table.
