@@ -72,7 +72,7 @@ class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
     }
 
     /**
-     * @return \Spryker\Zed\Customer\Dependency\Plugin\PostCustomerRegistrationPluginInterface[]
+     * @return \Spryker\Zed\CustomerExtension\Dependency\Plugin\PostCustomerRegistrationPluginInterface[]
      */
     protected function getPostCustomerRegistrationPlugins(): array
     {
