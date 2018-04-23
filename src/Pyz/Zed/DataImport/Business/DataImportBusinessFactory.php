@@ -120,7 +120,6 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
             ->addDataImporter($this->createProductMeasurementBaseUnitImporter())
             ->addDataImporter($this->createProductMeasurementSalesUnitImporter())
             ->addDataImporter($this->createProductMeasurementSalesUnitStoreImporter())
-            ->addDataImporter($this->createProductQuantityImporter())
             ->addDataImporter($this->createCmsTemplateImporter())
             ->addDataImporter($this->createCmsPageImporter())
             ->addDataImporter($this->createCmsBlockImporter())
@@ -991,20 +990,6 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
         $dataSetStepBroker->addStep(new ProductMeasurementSalesUnitStoreWriterStep());
 
         $dataImporter = $this->getCsvDataImporterFromConfig($this->getConfig()->getProductMeasurementSalesUnitStoreDataImporterConfiguration());
-        $dataImporter->addDataSetStepBroker($dataSetStepBroker);
-
-        return $dataImporter;
-    }
-
-    /**
-     * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface|\Spryker\Zed\DataImport\Business\Model\DataSet\DataSetStepBrokerAwareInterface
-     */
-    protected function createProductQuantityImporter()
-    {
-        $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker();
-        $dataSetStepBroker->addStep(new ProductQuantityWriterStep());
-
-        $dataImporter = $this->getCsvDataImporterFromConfig($this->getConfig()->getProductQuantityDataImporterConfiguration());
         $dataImporter->addDataSetStepBroker($dataSetStepBroker);
 
         return $dataImporter;
