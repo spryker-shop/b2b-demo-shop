@@ -8,9 +8,9 @@
     "url": "https://spryker.com/"
   },
   "scripts": {
-    "yves": "node ./suite-frontend-builder/tasks/build",
-    "yves:watch": "node ./suite-frontend-builder/tasks/watch",
-    "yves:production": "node ./suite-frontend-builder/tasks/build.prod",
+    "yves": "node ./frontend/build/development",
+    "yves:watch": "node ./frontend/build/development-watch",
+    "yves:production": "node ./frontend/build/production",
     "zed": "node ./node_modules/@spryker/oryx-for-zed/build",
     "zed:watch": "node ./node_modules/@spryker/oryx-for-zed/build --dev",
     "zed:production": "node ./node_modules/@spryker/oryx-for-zed/build --prod"
