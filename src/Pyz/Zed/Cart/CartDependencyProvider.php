@@ -9,11 +9,13 @@ namespace Pyz\Zed\Cart;
 
 use Spryker\Zed\Cart\CartDependencyProvider as SprykerCartDependencyProvider;
 use Spryker\Zed\Cart\Communication\Plugin\SkuGroupKeyPlugin;
+use Spryker\Zed\Discount\Communication\Plugin\Cart\DiscountQuoteChangeObserverPlugin;
 use Spryker\Zed\DiscountPromotion\Communication\Plugin\Cart\CartGroupPromotionItems;
 use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\PaymentCartConnector\Communication\Plugin\Cart\RemovePaymentCartPostSavePlugin;
 use Spryker\Zed\PriceCartConnector\Communication\Plugin\CartItemPricePlugin;
 use Spryker\Zed\PriceCartConnector\Communication\Plugin\CartItemPricePreCheckPlugin;
+use Spryker\Zed\ProductBundle\Communication\Plugin\Cart\BundleItemPriceQuoteChangeObserverPlugin;
 use Spryker\Zed\ProductBundle\Communication\Plugin\Cart\CartBundleAvailabilityPreCheckPlugin;
 use Spryker\Zed\ProductBundle\Communication\Plugin\Cart\CartBundleItemsPreReloadPlugin;
 use Spryker\Zed\ProductBundle\Communication\Plugin\Cart\CartItemWithBundleGroupKeyExpanderPlugin;
@@ -32,6 +34,7 @@ use Spryker\Zed\ProductOptionCartConnector\Communication\Plugin\ChangeProductOpt
 use Spryker\Zed\ProductOptionCartConnector\Communication\Plugin\ProductOptionValuePriceExistsCartPreCheckPlugin;
 use Spryker\Zed\ProductQuantity\Communication\Plugin\Cart\ProductQuantityRestrictionCartPreCheckPlugin;
 use Spryker\Zed\ProductQuantity\Communication\Plugin\CartExtension\ProductQuantityRestrictionCartRemovalPreCheckPlugin;
+use Spryker\Zed\SharedCart\Communication\Plugin\QuoteItemGroupKeySeparatorPlugin;
 use Spryker\Zed\ShipmentCartConnector\Communication\Plugin\Cart\CartShipmentExpanderPlugin;
 use Spryker\Zed\ShipmentCartConnector\Communication\Plugin\Cart\CartShipmentPreCheckPlugin;
 
@@ -52,6 +55,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new ExpandBundleItemsWithImagesPlugin(),
             new SkuGroupKeyPlugin(),
             new ProductMeasurementSalesUnitGroupKeyItemExpanderPlugin(),
+            new QuoteItemGroupKeySeparatorPlugin(), #SharedCartFeature
             new CartItemGroupKeyOptionPlugin(),
             new CartItemWithBundleGroupKeyExpanderPlugin(),
             new ProductImageCartPlugin(),
@@ -124,6 +128,19 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
     {
         return [
             new ProductQuantityRestrictionCartRemovalPreCheckPlugin(),
+        ];
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\CartExtension\Dependency\Plugin\QuoteChangeObserverPluginInterface[]
+     */
+    protected function getQuoteChangeObserverPlugins(Container $container): array
+    {
+        return [
+            new DiscountQuoteChangeObserverPlugin(),
+            new BundleItemPriceQuoteChangeObserverPlugin(),
         ];
     }
 }
