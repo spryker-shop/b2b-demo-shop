@@ -45,13 +45,7 @@ module.exports = {
                 '!node_modules',
                 '!public',
                 '!test'
-            ],
-            globSettings: {
-                followSymlinkedDirectories: false,
-                absolute: true,
-                onlyFiles: true,
-                onlyDirectories: false
-            }
+            ]
         },
 
         componentStyles: {
@@ -71,13 +65,7 @@ module.exports = {
                 '!node_modules',
                 '!public',
                 '!test'
-            ],
-            globSettings: {
-                followSymlinkedDirectories: false,
-                absolute: true,
-                onlyFiles: true,
-                onlyDirectories: false
-            }
+            ]
         }
     }
 }
