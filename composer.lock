@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "2ceb20f01135b167782bc8a47c73cab1",
+    "content-hash": "b5f3e12edca4d3ea0fa7fd8f04a7f999",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -7749,16 +7749,16 @@
         },
         {
             "name": "spryker/company-business-unit-data-import",
-            "version": "0.1.0",
+            "version": "0.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/company-business-unit-data-import.git",
-                "reference": "7533e1729c59e9d10840b9c2c57677619f7d8a5a"
+                "reference": "5441b9285f67cbf220f2fd0e34ff917022a3611d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/company-business-unit-data-import/zipball/7533e1729c59e9d10840b9c2c57677619f7d8a5a",
-                "reference": "7533e1729c59e9d10840b9c2c57677619f7d8a5a",
+                "url": "https://api.github.com/repos/spryker/company-business-unit-data-import/zipball/5441b9285f67cbf220f2fd0e34ff917022a3611d",
+                "reference": "5441b9285f67cbf220f2fd0e34ff917022a3611d",
                 "shasum": ""
             },
             "require": {
@@ -7789,7 +7789,7 @@
                 "proprietary"
             ],
             "description": "CompanyBusinessUnitDataImport module",
-            "time": "2018-03-29T08:28:47+00:00"
+            "time": "2018-04-25T12:52:23+00:00"
         },
         {
             "name": "spryker/company-business-unit-extension",
@@ -8094,6 +8094,97 @@
             ],
             "description": "CompanyRole module",
             "time": "2018-04-06T09:05:36+00:00"
+        },
+        {
+            "name": "spryker/company-supplier",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/company-supplier.git",
+                "reference": "5324a20ee775fa353ecbf7dd1bdc86d9776d16f3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/company-supplier/zipball/5324a20ee775fa353ecbf7dd1bdc86d9776d16f3",
+                "reference": "5324a20ee775fa353ecbf7dd1bdc86d9776d16f3",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/company": "^1.0.0",
+                "spryker/kernel": "^3.0.0",
+                "spryker/product": "^6.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/",
+                    "SprykerTest\\Zed\\CompanySupplier\\Helper\\": "tests/SprykerTest/Zed/CompanySupplier/_support/Helper/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CompanySupplier module",
+            "time": "2018-04-04T19:04:19+00:00"
+        },
+        {
+            "name": "spryker/company-supplier-data-import",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/company-supplier-data-import.git",
+                "reference": "a2c8605331d4b3d55ed5092661b494ac56212c08"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/company-supplier-data-import/zipball/a2c8605331d4b3d55ed5092661b494ac56212c08",
+                "reference": "a2c8605331d4b3d55ed5092661b494ac56212c08",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/company": "^1.0.0",
+                "spryker/company-supplier": "^1.0.0",
+                "spryker/currency": "^3.0.0",
+                "spryker/data-import": "^1.2.0",
+                "spryker/kernel": "^3.0.0",
+                "spryker/price-product": "^1.0.0",
+                "spryker/product": "^5.0.0 || ^6.0.0",
+                "spryker/store": "^1.5.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/",
+                    "SprykerTest\\Zed\\CompanySupplierDataImport\\Helper\\": "tests/SprykerTest/Zed/CompanySupplierDataImport/_support/Helper/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CompanySupplierDataImport module",
+            "time": "2018-04-25T09:00:46+00:00"
         },
         {
             "name": "spryker/company-unit-address",
