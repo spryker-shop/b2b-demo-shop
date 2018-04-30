@@ -1,44 +1,29 @@
 {
   "private": true,
   "name": "spryker-suite",
-  "version": "1.0.0",
   "description": "Spryker Suite project",
   "author": {
-    "name": "Spryker",
+    "name": "Spryker Systems GmbH",
     "email": "info@spryker.com",
     "url": "https://spryker.com/"
   },
   "scripts": {
-    "yves": "node $npm_package_config_shopUi_modulePath/src/SprykerShop/Yves/ShopUi/Theme/default/builder/tasks/build",
-    "yves:watch": "node $npm_package_config_shopUi_modulePath/src/SprykerShop/Yves/ShopUi/Theme/default/builder/tasks/watch",
+    "yves": "node ./frontend/build/development",
+    "yves:watch": "node ./frontend/build/development-watch",
+    "yves:production": "node ./frontend/build/production",
     "zed": "node ./node_modules/@spryker/oryx-for-zed/build",
-    "zed:watch": "node ./node_modules/@spryker/oryx-for-zed/build --dev"
+    "zed:watch": "node ./node_modules/@spryker/oryx-for-zed/build --dev",
+    "zed:production": "node ./node_modules/@spryker/oryx-for-zed/build --prod"
   },
   "engines": {
     "node": ">=8.9.0",
     "npm": ">=5.6.0"
   },
   "dependencies": {
-    "@webcomponents/webcomponentsjs": "~1.1.0"
+    "@webcomponents/webcomponentsjs": "~1.2.0"
   },
   "devDependencies": {
-    "@spryker/oryx": "^1.1.0",
-    "@spryker/oryx-for-zed": "^1.1.1",
-    "css-loader": "~0.28.10",
-    "extract-text-webpack-plugin": "~3.0.2",
-    "fast-glob": "~2.1.0",
-    "node-sass": "~4.7.2",
-    "sass-loader": "~6.0.6",
-    "ts-loader": "~3.5.0",
-    "typescript": "~2.7.2",
-    "webpack": "~3.11.0"
-  },
-  "config": {
-    "shopUi": {
-      "name": "yves_default",
-      "theme": "default",
-      "publicPath": "./public/Yves/assets",
-      "modulePath": "./vendor/spryker/spryker-shop/Bundles/ShopUi"
-    }
+    "@spryker/suite-frontend-builder": "^0.1.0",
+    "@spryker/oryx-for-zed": "^2.1.0"
   }
 }
