@@ -89,7 +89,7 @@ before_script:
 
   - if [[ $TEST_GROUP == 'acceptance' ]] ; then config/Shared/ci/travis/acceptance_env.sh ; fi
   - if [[ $TEST_GROUP == 'acceptance' ]] ; then vendor/bin/install DE -r testing -v ; fi
-  - if [[ $TEST_GROUP == 'without-acceptance' ]] ; then vendor/bin/install DE -r testing -x frontend -v ; fi
+  - if [[ $TEST_GROUP == 'without-acceptance' || $VALIDATION == 1 ]] ; then vendor/bin/install DE -r testing -x frontend -v ; fi
 
 script:
   - if [[ $VALIDATION != 1 ]] ; then vendor/bin/phantomjs --webdriver=4444 & ; fi
