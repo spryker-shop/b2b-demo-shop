@@ -241,6 +241,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
         $commands = array_merge($commands, $propelCommands);
 
         if (Environment::isDevelopment() || Environment::isTesting()) {
+            $commands[] = new AdjustPhpstanConsole();
             $commands[] = new CodeTestConsole();
             $commands[] = new CodeStyleSnifferConsole();
             $commands[] = new CodeArchitectureSnifferConsole();

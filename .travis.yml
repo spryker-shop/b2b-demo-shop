@@ -10,24 +10,25 @@ env:
 matrix:
   fast_finish: true
   include:
-     - php: "7.1"
-       env:
-          - TEST_GROUP=without-acceptance
-          - ON_EVENTS=cron,push
-          - PHPSTAN=1
-     - php: "7.2"
-       env:
-          - TEST_GROUP=without-acceptance
-          - ON_EVENTS=cron,push
-     - php: "7.1"
-       env:
-          - TEST_GROUP=acceptance
-          - ON_EVENTS=push,cron
-     - php: "7.2"
-       env:
-          - TEST_GROUP=acceptance
-          - ON_EVENTS=push,cron
-
+    - php: "7.1"
+      env:
+        - TEST_GROUP=without-acceptance
+        - ON_EVENTS=cron,push
+    - php: "7.2"
+      env:
+        - TEST_GROUP=without-acceptance
+        - ON_EVENTS=cron,push
+    - php: "7.1"
+      env:
+        - TEST_GROUP=acceptance
+        - ON_EVENTS=push,cron
+    - php: "7.2"
+      env:
+        - TEST_GROUP=acceptance
+        - ON_EVENTS=push,cron
+    - php: "7.2"
+      env:
+        - VALIDATION=1
 addons:
   postgresql: 9.6
   mysql: 5.7
@@ -77,38 +78,39 @@ before_script:
   - mkdir -p data/DE/logs -m 0777
   - chmod -R 777 data/
 
-  - if [[ -z $DB ]]; then cat config/Shared/ci/travis/postgresql_ci.config >> config/Shared/ci/travis/config_ci.php ; fi
-  - if [[ $DB == 'mysql' ]]; then cat config/Shared/ci/travis/mysql_ci.config >> config/Shared/ci/travis/config_ci.php ; fi
+  - if [[ -z $DB ]] ; then cat config/Shared/ci/travis/postgresql_ci.config >> config/Shared/ci/travis/config_ci.php ; fi
+  - if [[ $DB == 'mysql' ]] ; then cat config/Shared/ci/travis/mysql_ci.config >> config/Shared/ci/travis/config_ci.php ; fi
 
   - cp config/Shared/ci/travis/config_ci.php config/Shared/config_local.php
 
-  - if [[ $DB == 'mysql' ]]; then sudo cp config/Shared/ci/travis/mysql/my.cnf /etc/ ; fi
-  - if [[ $DB == 'mysql' ]]; then sudo service mysql restart ; fi
+  - if [[ $DB == 'mysql' ]] ; then sudo cp config/Shared/ci/travis/mysql/my.cnf /etc/ ; fi
+  - if [[ $DB == 'mysql' ]] ; then sudo service mysql restart ; fi
 
-  - if [[ $TEST_GROUP == 'acceptance' ]]; then config/Shared/ci/travis/acceptance_env.sh ; fi
-  - if [[ $TEST_GROUP == 'acceptance' ]]; then vendor/bin/install DE -r testing -v ; fi
-  - if [[ $TEST_GROUP == 'without-acceptance' ]]; then vendor/bin/install DE -r testing -x frontend -v ; fi
+  - if [[ $TEST_GROUP == 'acceptance' ]] ; then config/Shared/ci/travis/acceptance_env.sh ; fi
+  - if [[ $TEST_GROUP == 'acceptance' ]] ; then vendor/bin/install DE -r testing -v ; fi
+  - if [[ $TEST_GROUP == 'without-acceptance' ]] ; then vendor/bin/install DE -r testing -x frontend -v ; fi
 
 script:
-  - if [[ $PHPSTAN == 1 ]] ; then composer phpstan-setup ; fi
-  - if [[ $PHPSTAN == 1 ]] ; then composer phpstan ; fi
-  - if [[ $PHPSTAN == 1 ]] ; then composer phpstan-shop ; fi
-  - if [[ $PHPSTAN == 1 ]] ; then composer phpstan-core ; fi
+  - if [[ $VALIDATION != 1 ]] ; then vendor/bin/phantomjs --webdriver=4444 & ; fi
 
-  - vendor/bin/phantomjs --webdriver=4444 &
-  - if [[ $TEST_GROUP == 'without-acceptance' ]]; then vendor/bin/codecept run -x Presentation ; fi
-  - if [[ $TEST_GROUP == 'acceptance' ]]; then vendor/bin/codecept run -g Presentation ; fi
+  - if [[ $TEST_GROUP == 'without-acceptance' ]] ; then vendor/bin/codecept run -x Presentation ; fi
+  - if [[ $TEST_GROUP == 'acceptance' ]] ; then vendor/bin/codecept run -g Presentation ; fi
 
-  - if [[ $TRAVIS_PHP_VERSION == 7.2 && $TEST_GROUP == 'without-acceptance' && $PHPSTAN != 1 ]] ; then vendor/bin/console propel:schema:validate ; fi
-  - if [[ $TRAVIS_PHP_VERSION == 7.2 && $TEST_GROUP == 'without-acceptance' && $PHPSTAN != 1 ]] ; then vendor/bin/console transfer:validate ; fi
-  - if [[ $TRAVIS_PHP_VERSION == 7.2 && $TEST_GROUP == 'without-acceptance' && $PHPSTAN != 1 ]] ; then vendor/bin/console code:sniff:style ; fi
-  - if [[ $TRAVIS_PHP_VERSION == 7.2 && $TEST_GROUP == 'without-acceptance' && $PHPSTAN != 1 ]] ; then vendor/bin/console dev:dependency:find-violations ; fi
-  - if [[ $TRAVIS_PHP_VERSION == 7.2 && $TEST_GROUP == 'without-acceptance' && $PHPSTAN != 1 ]] ; then vendor/bin/console dev:dependency:build-tree ; fi
-  - if [[ $TRAVIS_PHP_VERSION == 7.2 && $TEST_GROUP == 'without-acceptance' && $PHPSTAN != 1 ]] ; then vendor/bin/console dev:dependency:update-composer-files -d -v ; fi
-  - if [[ $TRAVIS_PHP_VERSION == 7.2 && $TEST_GROUP == 'without-acceptance' && $PHPSTAN != 1 ]] ; then vendor/bin/phpmd src/ text vendor/spryker/spryker/Bundles/Development/src/Spryker/Zed/Development/Business/PhpMd/ruleset.xml ; fi
-  - if [[ $TRAVIS_PHP_VERSION == 7.2 && $TEST_GROUP == 'without-acceptance' && $PHPSTAN != 1 ]] ; then vendor/bin/phpmd src/ text vendor/spryker/architecture-sniffer/src/ruleset.xml --minimumpriority 2 ; fi
+  - if [[ $VALIDATION == 1 ]] ; then composer phpstan-setup ; fi
+  - if [[ $VALIDATION == 1 ]] ; then composer phpstan ; fi
+  - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console code:phpstan -m Spryker.all ; fi
+  - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console code:phpstan -m SprykerShop.all ; fi
 
-  - if [[ $TEST_GROUP == 'without-acceptance' ]]; then ./tests/travis_check_untracked.sh ; fi
+  - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console propel:schema:validate ; fi
+  - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console transfer:validate ; fi
+  - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console code:sniff:style ; fi
+  - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console dev:dependency:find-violations ; fi
+  - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console dev:dependency:build-tree ; fi
+  - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console dev:dependency:update-composer-files -d -v ; fi
+  - if [[ $VALIDATION == 1 ]] ; then vendor/bin/phpmd src/ text vendor/spryker/spryker/Bundles/Development/src/Spryker/Zed/Development/Business/PhpMd/ruleset.xml ; fi
+  - if [[ $VALIDATION == 1 ]] ; then vendor/bin/phpmd src/ text vendor/spryker/architecture-sniffer/src/ruleset.xml --minimumpriority 2 ; fi
+
+  - if [[ $VALIDATION == 1 ]] ; then ./tests/travis_check_untracked.sh ; fi
 
 notifications:
   email: false

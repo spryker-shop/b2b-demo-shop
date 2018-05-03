@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "3263af725d978a0e8b47584585632a13",
+    "content-hash": "117fe1ef8d812d12a57aca7e83fa9410",
     "packages": [
         {
             "name": "braintree/braintree_php",
@@ -2057,7 +2057,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "9bd99424e374469df239d6965a4aba6efd3787f8"
+                "reference": "865dec0b3edce73d70a683dc10c1da6ba1125405"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.0",
@@ -2314,15 +2314,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2018-05-02T13:14:19+00:00"
+            "time": "2018-05-03T13:13:54+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-master",
+            "version": "dev-bugfix/phpstan",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "6dc6d3580b1eba1d050378bf3722f5f4e92815ae"
+                "reference": "387b908a464607274dc10fbd7cc9a793a860a037"
             },
             "require": {
                 "php": ">=7.1"
@@ -2395,7 +2395,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2018-04-25T16:40:00+00:00"
+            "time": "2018-05-03T13:13:53+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -5338,7 +5338,7 @@
                 "php",
                 "scaffolding"
             ],
-            "time": "2018-04-26T16:47:39+00:00"
+            "time": "2018-04-26T09:21:21+00:00"
         },
         {
             "name": "nette/robot-loader",
@@ -5625,7 +5625,7 @@
                 "BSD-3-Clause"
             ],
             "description": "Official version of pdepend to be handled with Composer",
-            "time": "2017-12-13T13:21:38+00:00"
+            "time": "2017-12-12T17:28:44+00:00"
         },
         {
             "name": "phar-io/manifest",
@@ -7384,12 +7384,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/code-sniffer.git",
-                "reference": "e91ea8020533ff6388981921151aa792a9dfc3ce"
+                "reference": "b67dfa098fb428c25b4262f88b02ce47f457b9f3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/e91ea8020533ff6388981921151aa792a9dfc3ce",
-                "reference": "e91ea8020533ff6388981921151aa792a9dfc3ce",
+                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/b67dfa098fb428c25b4262f88b02ce47f457b9f3",
+                "reference": "b67dfa098fb428c25b4262f88b02ce47f457b9f3",
                 "shasum": ""
             },
             "require": {
@@ -7427,7 +7427,52 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2018-04-25T17:47:23+00:00"
+            "time": "2018-05-03T09:50:00+00:00"
+        },
+        {
+            "name": "spryker/development-core",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:spryker/development-core.git",
+                "reference": "f58bb6ed22e318dfde93111ba629d0fae11ea62c"
+            },
+            "require": {
+                "spryker/development": "@stable"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/development": "dev-master"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "SprykerTest\\": "tests/SprykerTest/"
+                }
+            },
+            "scripts": {
+                "cs-check": [
+                    "phpcs --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml -v src/"
+                ],
+                "cs-fix": [
+                    "phpcbf --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml -v src/"
+                ]
+            },
+            "license": [
+                "proprietary"
+            ],
+            "description": "DevelopmentCore module",
+            "time": "2018-05-03T13:29:00+00:00"
         },
         {
             "name": "spryker/git-hook",
@@ -8139,7 +8184,8 @@
         "spryker/architecture-sniffer": 20,
         "spryker/code-generator": 20,
         "spryker/code-sniffer": 20,
-        "spryker/git-hook": 20
+        "spryker/git-hook": 20,
+        "spryker/development-core": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
