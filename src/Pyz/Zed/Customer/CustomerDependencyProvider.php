@@ -66,7 +66,7 @@ class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
             new CustomerTransferCompanyUserExpanderPlugin(),
             new PermissionCustomerExpanderPlugin(),
             new QuotePermissionCustomerExpanderPlugin(), #SharedCartFeature
-            new ShoppingListPermissionCustomerExpanderPlugin(),
+            new ShoppingListPermissionCustomerExpanderPlugin(), #ShoppingListFeature
         ];
     }
 }

@@ -34,7 +34,7 @@ class InstallerDependencyProvider extends SprykerInstallerDependencyProvider
             new NewsletterInstallerPlugin(),
             new GlossaryInstallerPlugin(),
             new SharedCartPermissionInstallerPlugin(),
-            new ShoppingListPermissionsInstallerPlugin(),
+            new ShoppingListPermissionsInstallerPlugin(), #ShoppingListFeature
             new SharedCartPermissionInstallerPlugin(), #SharedCartFeature
         ];
     }
