@@ -1,18 +1,19 @@
 {
-    "extends": "./vendor/spryker/spryker-shop/Bundles/ShopUi/src/SprykerShop/Yves/ShopUi/Theme/default/builder/tsconfig",
+    "extends": "./node_modules/@spryker/suite-frontend-builder/tsconfig.suite",
     "compilerOptions": {
         "baseUrl": ".",
         "paths": {
             "*": [
                 "*"
             ],
-            "shop-ui/*": [
+            "ShopUi/*": [
                 "./vendor/spryker/spryker-shop/Bundles/ShopUi/src/SprykerShop/Yves/ShopUi/Theme/default/*"
             ]
         }
     },
     "files": [
-        "./vendor/spryker/spryker-shop/Bundles/ShopUi/src/SprykerShop/Yves/ShopUi/Theme/default/main.ts"
+        "./src/Pyz/Yves/ShopUi/Theme/default/app.ts",
+        "./src/Pyz/Yves/ShopUi/Theme/default/vendor.ts"
     ],
     "include": [
         "./vendor/spryker/spryker-shop/**/*",
