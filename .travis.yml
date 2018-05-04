@@ -86,7 +86,13 @@ before_script:
 
   - if [[ $TEST_GROUP == 'acceptance' ]] ; then config/Shared/ci/travis/acceptance_env.sh ; fi
   - if [[ $TEST_GROUP == 'acceptance' ]] ; then vendor/bin/install DE -r testing -v ; fi
-  - if [[ $TEST_GROUP == 'without-acceptance' || $VALIDATION == 1 ]] ; then vendor/bin/install DE -r testing -x frontend -v ; fi
+  - if [[ $TEST_GROUP == 'without-acceptance' ]] ; then vendor/bin/install DE -r testing -x frontend -v ; fi
+
+  - if [[ $VALIDATION == 1 ]] ; vendor/bin/console propel:install ; fi
+  - if [[ $VALIDATION == 1 ]] ; vendor/bin/console transfer:generate ; fi
+  - if [[ $VALIDATION == 1 ]] ; vendor/bin/console dev:ide:generate-auto-completion ; fi
+  - if [[ $VALIDATION == 1 ]] ; vendor/bin/codecept build --ansi ; fi
+  - if [[ $VALIDATION == 1 ]] ; vendor/bin/console transfer:databuilder:generate ; fi
 
 script:
   - if [[ $VALIDATION == 1 ]] ; then composer phpstan ; fi
