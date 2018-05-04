@@ -90,8 +90,6 @@ script:
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console code:sniff:style ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/phpmd src/ text vendor/spryker/architecture-sniffer/src/ruleset.xml --minimumpriority 2 ; fi
 
-  - if [[ $VALIDATION == 1 ]] ; then exit ; fi
-
   - vendor/bin/phantomjs --webdriver=4444 &
 
   - if [[ $TEST_GROUP == 'without-acceptance' ]] ; then vendor/bin/codecept run -x Presentation ; fi
