@@ -88,6 +88,7 @@ before_script:
   - if [[ $TEST_GROUP == 'acceptance' ]] ; then vendor/bin/install DE -r testing -v ; fi
   - if [[ $TEST_GROUP == 'without-acceptance' ]] ; then vendor/bin/install DE -r testing -x frontend -v ; fi
 
+  - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console transfer:generate ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console propel:install ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console transfer:generate ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console dev:ide:generate-auto-completion ; fi
