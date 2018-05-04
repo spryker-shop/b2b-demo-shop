@@ -8,6 +8,7 @@
 namespace Pyz\Zed\Barcode;
 
 use Spryker\Service\Barcode\BarcodeDependencyProvider as SprykerDependencyProvider;
+use Spryker\Service\CodeItNow\Plugin\EANBarcodeGenerator;
 
 class BarcodeDependencyProvider extends SprykerDependencyProvider
 {
@@ -16,6 +17,8 @@ class BarcodeDependencyProvider extends SprykerDependencyProvider
      */
     protected function getBarcodePlugins(): array
     {
-        return [];
+        return [
+            new EANBarcodeGenerator(),
+        ];
     }
 }
