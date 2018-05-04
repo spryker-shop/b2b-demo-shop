@@ -11,7 +11,7 @@ use Spryker\Client\DiscountPromotion\Plugin\AddDiscountPromotionPersistentCartRe
 use Spryker\Client\MultiCart\Plugin\DefaultQuoteUpdatePlugin;
 use Spryker\Client\MultiCart\Plugin\QuickOrderQuoteNameExpanderPlugin;
 use Spryker\Client\MultiCart\Plugin\QuoteSelectorPersistentCartChangeExpanderPlugin;
-use Spryker\Client\MultiCart\Plugin\ReorderQuoteNameExpanderPlugin;
+use Spryker\Client\MultiCart\Plugin\ReorderPersistentCartChangeExpanderPlugin;
 use Spryker\Client\MultiCart\Plugin\SaveCustomerQuotesQuoteUpdatePlugin;
 use Spryker\Client\PersistentCart\PersistentCartDependencyProvider as SprykerPersistentCartDependencyProvider;
 use Spryker\Client\ProductMeasurementUnit\Plugin\PersistentCart\SingleItemQuantitySalesUnitPersistentCartChangeExpanderPlugin;
@@ -43,7 +43,7 @@ class PersistentCartDependencyProvider extends SprykerPersistentCartDependencyPr
             new AddDiscountPromotionPersistentCartRequestExpanderPlugin(),
             new QuoteSelectorPersistentCartChangeExpanderPlugin(), #MultiCartFeature
             new QuickOrderQuoteNameExpanderPlugin(), #MultiCartFeature
-            new ReorderQuoteNameExpanderPlugin(), #MultiCartFeature
+            new ReorderPersistentCartChangeExpanderPlugin(), #MultiCartFeature
             new ProductSeparatePersistentCartChangeExpanderPlugin(), #SharedCartFeature
             new SingleItemQuantitySalesUnitPersistentCartChangeExpanderPlugin(),
         ];
