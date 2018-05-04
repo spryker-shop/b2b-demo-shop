@@ -13,9 +13,6 @@ use SprykerShop\Yves\QuickOrderPage\QuickOrderPageDependencyProvider as SprykerQ
 class QuickOrderPageDependencyProvider extends SprykerQuickOrderPageDependencyProvider
 {
     /**
-     * Returns a list of widget plugin class names that implement
-     * \Spryker\Yves\Kernel\Dependency\Plugin\WidgetPluginInterface.
-     *
      * @return string[]
      */
     protected function getQuickOrderPageWidgetPlugins(): array
