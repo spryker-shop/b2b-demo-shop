@@ -407,7 +407,7 @@
     "use-include-path": true,
     "sort-packages": true,
     "github-protocols": ["https"],
-    "process-timeout": 600
+    "process-timeout": 900
   },
   "scripts": {
     "compile": [
@@ -422,7 +422,7 @@
       "PhantomInstaller\\Installer::installPhantomJS",
       "Install\\ComposerAdjuster::assertDemoshopGitUrls"
     ],
-    "phpstan": "php -d memory_limit=1024M vendor/bin/phpstan analyze -c phpstan.neon src/ -l 1",
+    "phpstan": "php -d memory_limit=1024M vendor/bin/phpstan analyze -c phpstan.neon src/ -l 2",
     "phpstan-setup": "vendor/bin/console dev:ide:generate-auto-completion"
   }
 }
