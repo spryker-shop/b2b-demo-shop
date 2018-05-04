@@ -97,7 +97,7 @@ before_script:
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console setup:search ; fi
 
 script:
-  - if [[ $VALIDATION == 1 ]] ; then composer phpstan ; fi
+  - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console code:phpstan ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console code:phpstan -m Spryker.all ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console code:phpstan -m SprykerShop.all ; fi
 
