@@ -94,6 +94,7 @@ before_script:
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console dev:ide:generate-auto-completion ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/codecept build --ansi ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console transfer:databuilder:generate ; fi
+  - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console setup:search ; fi
 
 script:
   - if [[ $VALIDATION == 1 ]] ; then composer phpstan ; fi
