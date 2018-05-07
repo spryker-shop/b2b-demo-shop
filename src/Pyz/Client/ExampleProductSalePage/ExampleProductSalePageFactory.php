@@ -44,7 +44,7 @@ class ExampleProductSalePageFactory extends AbstractFactory
     }
 
     /**
-     * @return \Spryker\Client\Kernel\AbstractBundleConfig|\Pyz\Client\ExampleProductSalePage\ExampleProductSalePageConfig
+     * @return \Pyz\Client\ExampleProductSalePage\ExampleProductSalePageConfig
      */
     public function getConfig()
     {
