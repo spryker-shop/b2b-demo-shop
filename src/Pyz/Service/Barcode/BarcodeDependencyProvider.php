@@ -5,9 +5,10 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Pyz\Zed\Barcode;
+namespace Pyz\Service\Barcode;
 
 use Spryker\Service\Barcode\BarcodeDependencyProvider as SprykerDependencyProvider;
+use Spryker\Service\CodeItNow\Plugin\Code128BarcodeGeneratorPlugin;
 
 class BarcodeDependencyProvider extends SprykerDependencyProvider
 {
@@ -16,6 +17,8 @@ class BarcodeDependencyProvider extends SprykerDependencyProvider
      */
     protected function getBarcodePlugins(): array
     {
-        return [];
+        return [
+            new Code128BarcodeGeneratorPlugin(),
+        ];
     }
 }
