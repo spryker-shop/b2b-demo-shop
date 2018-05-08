@@ -331,9 +331,9 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     }
 
     /**
-     * @param array|null $defaultPlaceholder
+     * @param array $defaultPlaceholder
      *
-     * @return \Pyz\Zed\DataImport\Business\Model\CmsPage\PlaceholderExtractorStep
+     * @return \Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface
      */
     protected function createPlaceholderExtractorStep(array $defaultPlaceholder = [])
     {
