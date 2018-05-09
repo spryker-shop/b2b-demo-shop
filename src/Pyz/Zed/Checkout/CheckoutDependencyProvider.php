@@ -8,6 +8,7 @@
 namespace Pyz\Zed\Checkout;
 
 use Spryker\Zed\Availability\Communication\Plugin\ProductsAvailableCheckoutPreConditionPlugin;
+use Spryker\Zed\CartNote\Communication\Plugin\Checkout\CartNoteSaverPlugin;
 use Spryker\Zed\Checkout\CheckoutDependencyProvider as SprykerCheckoutDependencyProvider;
 use Spryker\Zed\Customer\Communication\Plugin\Checkout\CustomerOrderSavePlugin;
 use Spryker\Zed\Customer\Communication\Plugin\CustomerPreConditionCheckerPlugin;
@@ -22,7 +23,9 @@ use Spryker\Zed\ProductOption\Communication\Plugin\Checkout\ProductOptionOrderSa
 use Spryker\Zed\Sales\Communication\Plugin\Checkout\SalesOrderSaverPlugin;
 use Spryker\Zed\Sales\Communication\Plugin\SalesOrderExpanderPlugin;
 use Spryker\Zed\SalesProductConnector\Communication\Plugin\Checkout\ItemMetadataSaverPlugin;
+use Spryker\Zed\SalesReclamation\Communication\Plugin\ReclamationOrderSaverPlugin;
 use Spryker\Zed\Shipment\Communication\Plugin\Checkout\OrderShipmentSavePlugin;
+use Spryker\Zed\ShipmentCheckoutConnector\Communication\Plugin\Checkout\ShipmentCheckoutPreCheckPlugin;
 
 class CheckoutDependencyProvider extends SprykerCheckoutDependencyProvider
 {
@@ -38,6 +41,7 @@ class CheckoutDependencyProvider extends SprykerCheckoutDependencyProvider
             new ProductBundleAvailabilityCheckoutPreConditionPlugin(),
             new ProductsAvailableCheckoutPreConditionPlugin(),
             new PaymentPreCheckPlugin(),
+            new ShipmentCheckoutPreCheckPlugin(),
         ];
     }
 
@@ -51,12 +55,14 @@ class CheckoutDependencyProvider extends SprykerCheckoutDependencyProvider
         return [
             new CustomerOrderSavePlugin(),
             new SalesOrderSaverPlugin(),
+            new CartNoteSaverPlugin(), #CartNoteFeature
             new ProductOptionOrderSaverPlugin(),
             new ItemMetadataSaverPlugin(),
             new OrderShipmentSavePlugin(),
             new DiscountOrderSavePlugin(),
             new ProductBundleOrderSaverPlugin(),
             new PaymentOrderSaverPlugin(),
+            new ReclamationOrderSaverPlugin(),
         ];
     }
 

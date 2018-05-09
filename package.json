@@ -1,30 +1,29 @@
 {
   "private": true,
   "name": "spryker-suite",
-  "version": "1.0.0",
   "description": "Spryker Suite project",
   "author": {
-    "name": "Spryker",
+    "name": "Spryker Systems GmbH",
     "email": "info@spryker.com",
-    "url": "http://spryker.com/"
+    "url": "https://spryker.com/"
   },
   "scripts": {
-    "yves": "node ./node_modules/@spryker/shop-ui-builder/tasks/build",
-    "yves:watch": "node ./node_modules/@spryker/shop-ui-builder/tasks/watch",
+    "yves": "node ./frontend/build/development",
+    "yves:watch": "node ./frontend/build/development-watch",
+    "yves:production": "node ./frontend/build/production",
     "zed": "node ./node_modules/@spryker/oryx-for-zed/build",
-    "zed:watch": "node ./node_modules/@spryker/oryx-for-zed/build --dev"
+    "zed:watch": "node ./node_modules/@spryker/oryx-for-zed/build --dev",
+    "zed:production": "node ./node_modules/@spryker/oryx-for-zed/build --prod"
+  },
+  "engines": {
+    "node": ">=8.9.0",
+    "npm": ">=5.6.0"
   },
   "dependencies": {
-    "@spryker/oryx": "^1.1.0",
-    "@spryker/oryx-for-zed": "^1.1.1",
-    "@spryker/shop-ui-builder": "file:vendor/spryker/spryker-shop/Bundles/ShopUi/src/SprykerShop/Yves/ShopUi/Theme/default/builder"
+    "@webcomponents/webcomponentsjs": "~1.2.0"
   },
-  "config": {
-    "shopUi": {
-      "name": "yves_default",
-      "theme": "default",
-      "publicPath": "./public/Yves/assets",
-      "modulePath": "./vendor/spryker/spryker-shop/Bundles/ShopUi"
-    }
+  "devDependencies": {
+    "@spryker/suite-frontend-builder": "^0.1.0",
+    "@spryker/oryx-for-zed": "^2.1.0"
   }
 }
