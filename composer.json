@@ -3,7 +3,7 @@
   "description": "Spryker Suite (internal)",
   "license": "MIT",
   "require": {
-    "spryker/spryker": "dev-master",
+    "spryker/spryker": "dev-feature/4817-spryk-gui",
     "spryker/spryker-shop": "dev-master",
     "spryker-eco/loggly": "dev-master",
     "spryker/rabbit-mq": "dev-master",
@@ -70,6 +70,7 @@
     "spryker/code-sniffer": "dev-master",
     "spryker/git-hook": "dev-master",
     "spryker/development-core": "dev-master",
+    "spryker/spryk": "dev-master",
 
     "codeception/codeception": "~2.3.8",
     "facebook/webdriver": "~1.3.0",
@@ -87,7 +88,7 @@
     "stecman/symfony-console-completion": "^0.7.0",
     "fzaninotto/faker": "^1.6",
     "nette/php-generator": "^2.6.1",
-    "phpdocumentor/reflection-docblock": "^2.0",
+    "squizlabs/php_codesniffer": "~3.1.0",
     "ajgl/breakpoint-twig-extension": "^0.3.1",
     "phpstan/phpstan": "^0.9.2",
     "phpunit/phpunit": "<7.0.0"
@@ -105,7 +106,8 @@
   "autoload-dev": {
     "psr-4": {
       "PyzTest\\": "tests/PyzTest/",
-      "PhpStan\\": "tests/PhpStan/"
+      "PhpStan\\": "tests/PhpStan/",
+      "Spryker\\Spryk\\": "vendor/spryker/spryk/src/Spryker/Spryk/"
     },
     "files": [
       "test-autoload.php"
@@ -132,6 +134,10 @@
     {
       "type": "git",
       "url": "git@github.com:spryker/development-core.git"
+    },
+    {
+      "type": "git",
+      "url": "git@github.com:spryker/spryk.git"
     }
   ],
   "scripts": {
