@@ -15,7 +15,7 @@ class BarcodeDependencyProvider extends SprykerDependencyProvider
     /**
      * @return array
      */
-    protected function getBarcodePlugins(): array
+    protected function getBarcodeGeneratorPlugins(): array
     {
         return [
             new Code128BarcodeGeneratorPlugin(),
