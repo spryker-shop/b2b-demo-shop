@@ -28,9 +28,9 @@ class PersistentCartDependencyProvider extends SprykerPersistentCartDependencyPr
     {
         return [
             new SaveCustomerQuotesQuoteUpdatePlugin(), #MultiCartFeature
+            new SharedCartsUpdateQuoteUpdatePlugin(), #SharedCartFeature
             new DefaultQuoteUpdatePlugin(), #MultiCartFeature
             new PermissionUpdateQuoteUpdatePlugin(), #SharedCartFeature
-            new SharedCartsUpdateQuoteUpdatePlugin(), #SharedCartFeature
         ];
     }
 
