@@ -42,7 +42,7 @@ class CartPageDependencyProvider extends SprykerCartPageDependencyProvider
             CartNoteQuoteItemWidgetPlugin::class, #CartNoteFeature
             MultiCartListWidgetPlugin::class, #MultiCartFeature
             CartOperationsWidgetPlugin::class, #MultiCartFeature
-            CartToShoppingListWidgetPlugin::class,
+            CartToShoppingListWidgetPlugin::class, #ShoppingListFeature
         ];
     }
 
