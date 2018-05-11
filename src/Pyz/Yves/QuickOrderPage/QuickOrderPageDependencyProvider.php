@@ -18,7 +18,7 @@ class QuickOrderPageDependencyProvider extends SprykerQuickOrderPageDependencyPr
     protected function getQuickOrderPageWidgetPlugins(): array
     {
         return [
-            MultiCartListWidgetPlugin::class,
+            MultiCartListWidgetPlugin::class, #MultiCartFeature
         ];
     }
 }
