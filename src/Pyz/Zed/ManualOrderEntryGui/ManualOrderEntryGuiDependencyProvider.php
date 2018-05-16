@@ -11,6 +11,7 @@ use Spryker\Zed\DummyPayment\Communication\Plugin\ManualOrderEntry\DummyPaymentI
 use Spryker\Zed\ManualOrderEntryGui\Communication\Plugin\AddressManualOrderEntryFormPlugin;
 use Spryker\Zed\ManualOrderEntryGui\Communication\Plugin\CustomersListManualOrderEntryFormPlugin;
 use Spryker\Zed\ManualOrderEntryGui\Communication\Plugin\ItemManualOrderEntryFormPlugin;
+use Spryker\Zed\ManualOrderEntryGui\Communication\Plugin\OrderSourceListFormPlugin;
 use Spryker\Zed\ManualOrderEntryGui\Communication\Plugin\PaymentManualOrderEntryFormPlugin;
 use Spryker\Zed\ManualOrderEntryGui\Communication\Plugin\ProductManualOrderEntryFormPlugin;
 use Spryker\Zed\ManualOrderEntryGui\Communication\Plugin\ShipmentManualOrderEntryFormPlugin;
@@ -26,7 +27,7 @@ class ManualOrderEntryGuiDependencyProvider extends SprykerManualOrderEntryGuiDe
     /**
      * @return \Spryker\Zed\ManualOrderEntryGuiExtension\Dependency\Plugin\PaymentSubFormPluginInterface[]
      */
-    protected function getPaymentSubFormPlugins()
+    protected function getPaymentSubFormPlugins(): array
     {
         return [
             new DummyPaymentInvoicePaymentSubFormPlugin(),
@@ -36,7 +37,7 @@ class ManualOrderEntryGuiDependencyProvider extends SprykerManualOrderEntryGuiDe
     /**
      * @return array
      */
-    protected function getQuoteExpanderPlugins()
+    protected function getQuoteExpanderPlugins(): array
     {
         return [
             new OfferQuoteExpanderPlugin(),
@@ -46,11 +47,12 @@ class ManualOrderEntryGuiDependencyProvider extends SprykerManualOrderEntryGuiDe
     /**
      * @return \Spryker\Zed\ManualOrderEntryGui\Communication\Plugin\ManualOrderEntryFormPluginInterface[]
      */
-    protected function getManualOrderEntryFormPlugins()
+    protected function getManualOrderEntryFormPlugins(): array
     {
         return [
             new ReclamationOrderEntryFormPlugin(),
             new CustomersListManualOrderEntryFormPlugin(),
+            new OrderSourceListFormPlugin(),
             new StoreManualOrderEntryFormPlugin(),
             new ProductManualOrderEntryFormPlugin(),
             new ItemManualOrderEntryFormPlugin(),
