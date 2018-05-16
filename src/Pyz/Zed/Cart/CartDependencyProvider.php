@@ -25,9 +25,9 @@ use Spryker\Zed\ProductBundle\Communication\Plugin\Cart\ExpandBundleItemsWithIma
 use Spryker\Zed\ProductCartConnector\Communication\Plugin\ProductCartPlugin;
 use Spryker\Zed\ProductCartConnector\Communication\Plugin\ProductExistsCartPreCheckPlugin;
 use Spryker\Zed\ProductImageCartConnector\Communication\Plugin\ProductImageCartPlugin;
-use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\Cart\ProductMeasurementSalesUnitGroupKeyItemExpanderPlugin;
 use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\Cart\ProductMeasurementUnitItemExpanderPlugin;
-use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\Cart\QuantityProductMeasurementSalesUnitValuePostSavePlugin;
+use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\Cart\QuantitySalesUnitGroupKeyItemExpanderPlugin;
+use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\Cart\QuantitySalesUnitValuePostSavePlugin;
 use Spryker\Zed\ProductOptionCartConnector\Communication\Plugin\CartItemGroupKeyOptionPlugin;
 use Spryker\Zed\ProductOptionCartConnector\Communication\Plugin\CartItemProductOptionPlugin;
 use Spryker\Zed\ProductOptionCartConnector\Communication\Plugin\ChangeProductOptionQuantityPlugin;
@@ -54,7 +54,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new ExpandBundleItemsPlugin(),
             new ExpandBundleItemsWithImagesPlugin(),
             new SkuGroupKeyPlugin(),
-            new ProductMeasurementSalesUnitGroupKeyItemExpanderPlugin(),
+            new QuantitySalesUnitGroupKeyItemExpanderPlugin(),
             new QuoteItemGroupKeySeparatorPlugin(), #SharedCartFeature
             new CartItemGroupKeyOptionPlugin(),
             new CartItemWithBundleGroupKeyExpanderPlugin(),
@@ -93,7 +93,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new ChangeProductOptionQuantityPlugin(),
             new CartPostSaveUpdateBundlesPlugin(),
             new RemovePaymentCartPostSavePlugin(),
-            new QuantityProductMeasurementSalesUnitValuePostSavePlugin(),
+            new QuantitySalesUnitValuePostSavePlugin(),
         ];
     }
 
