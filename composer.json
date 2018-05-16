@@ -10,7 +10,6 @@
     "ext-gmp": "*",
     "ext-intl": "*",
     "ext-json": "*",
-    "ext-mcrypt": "*",
     "ext-pdo_pgsql": "*",
     "ext-pgsql": "*",
     "ext-readline": "*",
@@ -142,6 +141,7 @@
     "spryker/company-gui": "^1.0.0",
     "spryker/company-mail-connector": "^1.0.0",
     "spryker/company-role": "^1.0.0",
+    "spryker/company-supplier-data-import": "^0.1.0",
     "spryker/company-unit-address": "^1.0.0",
     "spryker/company-unit-address-data-import": "^0.1.0",
     "spryker/company-unit-address-extension": "^1.0.0",
@@ -220,7 +220,6 @@
     "spryker/oms-discount-connector": "^3.0.0",
     "spryker/payment": "^4.0.0",
     "spryker/payment-cart-connector": "^1.0.0",
-    "spryker/payolution": "^4.0.0",
     "spryker/permission": "^1.0.0",
     "spryker/permission-extension": "^1.0.0",
     "spryker/persistent-cart": "^0.1.0",
@@ -406,7 +405,7 @@
     "use-include-path": true,
     "sort-packages": true,
     "github-protocols": ["https"],
-    "process-timeout": 600
+    "process-timeout": 900
   },
   "scripts": {
     "compile": [
@@ -421,7 +420,6 @@
       "PhantomInstaller\\Installer::installPhantomJS",
       "Install\\ComposerAdjuster::assertDemoshopGitUrls"
     ],
-    "phpstan": "php -d memory_limit=1024M vendor/bin/phpstan analyze -c phpstan.neon src/ -l 1",
     "phpstan-setup": "vendor/bin/console dev:ide:generate-auto-completion"
   }
 }
