@@ -7,6 +7,7 @@
 
 namespace Pyz\Yves\ShopApplication;
 
+use SprykerShop\Yves\BusinessOnBehalfWidget\Plugin\CustomerPage\MenuItemBusinessOnBehalfWidgetPlugin;
 use SprykerShop\Yves\BusinessOnBehalfWidget\Plugin\ShopLayout\DisplayOnBehalfBusinessWidgetPlugin;
 use SprykerShop\Yves\CurrencyWidget\Plugin\ShopLayout\CurrencyWidgetPlugin;
 use SprykerShop\Yves\LanguageSwitcherWidget\Plugin\ShopLayout\LanguageSwitcherWidgetPlugin;
@@ -31,6 +32,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             PriceModeSwitcherWidgetPlugin::class,
             MiniCartWidgetPlugin::class, #MultiCartFeature
             DisplayOnBehalfBusinessWidgetPlugin::class,
+            MenuItemBusinessOnBehalfWidgetPlugin::class,
         ];
     }
 }
