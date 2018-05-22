@@ -9,8 +9,8 @@ namespace Pyz\Zed\DataImport\Business\Model\ProductRelation;
 
 use Orm\Zed\ProductRelation\Persistence\SpyProductRelationQuery;
 use Orm\Zed\ProductRelation\Persistence\SpyProductRelationTypeQuery;
-use Pyz\Zed\DataImport\Business\Model\DataImportStep\PublishAwareStep;
 use Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface;
+use Spryker\Zed\DataImport\Business\Model\DataImportStep\PublishAwareStep;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 use Spryker\Zed\ProductRelation\Dependency\ProductRelationEvents;
 

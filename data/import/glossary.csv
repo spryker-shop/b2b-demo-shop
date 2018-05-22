@@ -449,6 +449,12 @@ customer.order.total,Total,en_US
 customer.order.total,Summe,de_DE
 customer.order.view_order,View Order,en_US
 customer.order.view_order,Bestellung ansehen,de_DE
+customer.order.reorder,Reorder,en_US
+customer.order.reorder,Nachbestellen,de_DE
+customer.order.reorder_all,Reorder all,en_US
+customer.order.reorder_all,Alle Artikel Nachbestellen,de_DE
+customer.order.reorder_selected,Reorder selected items,en_US
+customer.order.reorder_selected,Ausgewählte Artikel Nachbestellen,de_DE
 customer.order.date,Order Date,en_US
 customer.order.date,Datum,de_DE
 customer.order.item_sku,SKU,de_DE
@@ -643,6 +649,10 @@ validator.constraints.password.do_not_match,Passwords don't match,en_US
 validator.constraints.password.do_not_match,Passwörter stimmen nicht überein,de_DE
 discount.successfully.applied,"The discount ""display_name"" has been successfully applied",en_US
 discount.successfully.applied,"Der Rabatt ""display_name"" wurde erfolgreich angewendet",de_DE
+discount.quote_change.discount.not_available,"The discounts you have chosen for the following items skus is no longer available",en_US
+discount.quote_change.discount.not_available,"The discounts you have chosen for the following items skus is no longer available",de_DE
+discount.quote_change.discount.amount_changed,"The discounts you selected for the following items skus have changed",en_US
+discount.quote_change.discount.amount_changed,"The discounts you selected for the following items skus have changed",de_DE
 product.unavailable,Product is out of stock,en_US
 product.unavailable,Keine Produkte mehr auf Lager,de_DE
 product.attribute.slug,slug,en_US
@@ -703,6 +713,8 @@ product.attribute.license,License,en_US
 product.attribute.license,Lizenz,de_DE
 product.product_options,Product Options,en_US
 product.product_options,Produktoptionen,de_DE
+product.product_options_select,Select an option,en_US
+product.product_options_select,Wähle eine Option,de_DE
 product.sets,Product Sets,en_US
 product.sets,Produktsets,de_DE
 product.sets.no-results,No results.,en_US
@@ -825,14 +837,14 @@ product.attribute.themes,Themes,en_US
 product.attribute.themes,Themen,de_DE
 product.attribute.usb_port,USB port,en_US
 product.attribute.usb_port,USB-Port,de_DE
-cart.pre.check.availability.failed,The availability of product sku is stock at the moment.,en_US
-cart.pre.check.availability.failed,Zurzeit haben wir von sku nur stock Stück auf Lager.,de_DE
 product.detail.out_of_stock,This product is currently not available.,en_US
 product.detail.out_of_stock,Das Produkt ist zur Zeit nicht verfügbar.,de_DE
 product.groups,Product Groups,en_US
 product.groups,Produktgruppen,de_DE
-cart.pre.check.availability.failed.empty,Currently this product is not available.,en_US
-cart.pre.check.availability.failed.empty,Das Produkt ist zurzeit nicht verfügbar.,de_DE
+cart.pre.check.availability.failed,Item %sku% only has availability of %stock%.,en_US
+cart.pre.check.availability.failed,Zurzeit haben wir von %sku% nur %stock% Stück auf Lager.,de_DE
+cart.pre.check.availability.failed.empty,Item %sku% no longer available.,en_US
+cart.pre.check.availability.failed.empty,Das Produkt mit sku '%sku%' ist zurzeit nicht verfügbar.,de_DE
 mail.sender.name,Spryker demoshop,en_US
 mail.sender.name,Spryker demoshop,de_DE
 mail.sender.email,demoshop@spryker.com,en_US
@@ -911,6 +923,8 @@ mail.order.shipped.footer.text_line_1,Viele Grüße,de_DE
 mail.order.shipped.footer.text_line_1,Have a great day!,en_US
 mail.order.shipped.footer.text_line_2,Dein Spryker Shop,de_DE
 mail.order.shipped.footer.text_line_2,Your Spryker Shop,en_US
+cart.item.remove.confirm,Are you sure that you want to remove this item?,en_US
+cart.item.remove.confirm,"Sind Sie sicher, dass Sie diesen Artikel entfernen möchten?",de_DE
 cart.voucher.remove,Remove,en_US
 cart.voucher.remove,Entfernen,de_DE
 cart.vouchers.clear-all,Clear all,en_US
@@ -1051,8 +1065,8 @@ price.mode.gross_mode,Gross prices,en_US
 price.mode.gross_mode,Bruttopreise,de_DE
 price.mode.net_mode,Net prices,en_US
 price.mode.net_mode,Nettopreise,de_DE
-cart.pre.check.price.failed,"Price not found for added to cart product with sku '%sku%'. Please remove the product from cart to change the currency.",en_US
-cart.pre.check.price.failed,"Preis nicht gefunden für Produkt mit sku '%sku%' im Warenkorb. Bitte entfernen Sie das Produkt aus dem Warenkorb, um die Währung zu ändern.",de_DE
+cart.pre.check.price.failed,"Price in selected currency not found for product with sku '%sku%'. Please change the currency or remove product from order.",en_US
+cart.pre.check.price.failed,"Der Preis in der ausgewählten Währung wurde für das Produkt mit sku '%sku%' nicht gefunden. Bitte ändern Sie die Währung oder entfernen Sie das Produkt aus der Bestellung.",de_DE
 price.mode.switch.error,"Can't switch price mode when there are items in the cart.",en_US
 price.mode.switch.error,"Preismodus kann nicht geändert werden, wenn sich Artikel im Warenkorb befinden.",de_DE
 cart.pre.check.shipment.failed,"Can't apply these changes. The shipment method not found. Please select another shipment method.",en_US
@@ -1241,3 +1255,252 @@ quick-order.paste-order.errors.parser.separator-not-detected,"Separator is not d
 quick-order.paste-order.errors.parser.separator-not-detected,"Trennzeichen nicht definiert.",de_DE
 checkout.pre.check.shipment.failed,Invalid shipping method.,en_US
 checkout.pre.check.shipment.failed,Ungültige Versandmethode,de_DE
+measurement_units.item.name,Item,en_US
+measurement_units.item.name,Stück,de_DE
+measurement_units.standard.weight.kilo.name,Kilo,en_US
+measurement_units.standard.weight.kilo.name,Kilo,de_DE
+measurement_units.standard.weight.gram.name,Gram,en_US
+measurement_units.standard.weight.gram.name,Gramm,de_DE
+measurement_units.standard.length.metre.name,Meter,en_US
+measurement_units.standard.length.metre.name,Meter,de_DE
+measurement_units.standard.length.centimetre.name,Zentimeter,de_DE
+measurement_units.standard.length.centimetre.name,Centimeter,en_US
+measurement_units.standard.length.feet.name,Fuß,de_DE
+measurement_units.standard.length.feet.name,Feet,en_US
+measurement_units.recommendation.between-units-info,The quantity you have chosen is in between 2 base units,en_US
+measurement_units.recommendation.between-units-info,Ihre gewählte Anzahl liegt zwischen 2 basis Einheiten,de_DE
+measurement_units.recommendation.min-violation,Minimum quantity requirements for product are not fulfilled,en_US
+measurement_units.recommendation.min-violation,Minimale Mengenanforderungen für das Produkt sind nicht erfüllt,de_DE
+measurement_units.recommendation.max-violation,Maximum quantity requirements for product are not fulfilled,en_US
+measurement_units.recommendation.max-violation,Maximale Mengenanforderungen für das Produkt sind nicht erfüllt,de_DE
+measurement_units.recommendation.suggestion,Would you like to add,en_US
+measurement_units.recommendation.suggestion,Was würden Sie gerne hinzufügen? ,de_DE
+cart.pre.check.quantity.min.failed,Die minimale Mengenanforderung für Produkt SKU '%sku%' ist nicht erreicht.,de_DE
+cart.pre.check.quantity.min.failed,Minimum quantity requirements for product SKU '%sku%' are not fulfilled.,en_US
+cart.pre.check.quantity.max.failed,Die maximale Mengenanforderung für Produkt SKU '%sku%' ist überschritten.,de_DE
+cart.pre.check.quantity.max.failed,Maximum quantity for product SKU '%sku%' is exceeded.,en_US
+cart.pre.check.quantity.interval.failed,Die Anzahl für Produkt SKU '%sku%' liegt nicht innerhalb des vorgegebenen Intervals.,de_DE
+cart.pre.check.quantity.interval.failed,Quantity interval requirements for product SKU '%sku%' are not fulfilled.,en_US
+company.account.company_user.edit_information,Benutzerinfomation bearbeiten,de_DE
+persistent_cart.error.quote.not_available,Cart does not exists,en_US
+persistent_cart.error.quote.not_available,Einkaufswagen existiert nicht,de_DE
+persistent_cart.quote.remove.success,Cart deleted successfully,en_US
+persistent_cart.quote.remove.success,Einkaufswagen wurde erfolgreich gelöscht,de_DE
+persistent_cart.quote.remove.can_not_remove_last_cart,Customer should have at least one cart,en_US
+persistent_cart.quote.remove.can_not_remove_last_cart,Der Kunde sollte mindestens einen Warenkorb haben,de_DE
+cart_note.cart_page.item.note_added,"Note has been successfully added to item '%sku%'",en_US
+cart_note.cart_page.item.note_added,"Hinweis wurde erfolgreich zu Element '%sku%' hinzugefügt",de_DE
+cart_note.cart_page.cart.note_added,Note has been successfully added to Cart,en_US
+cart_note.cart_page.cart.note_added,Hinweis wurde erfolgreich zum Warenkorb hinzugefügt,de_DE
+cart_note.quote_form.enter_note,Add a Note to the Cart,en_US
+cart_note.quote_form.enter_note,Fügen Sie dem Einkaufswagen eine Notiz hinzu,de_DE
+cart_note.quote_form.placeholder,Enter your note,en_US
+cart_note.quote_form.placeholder,Geben Sie Ihre Notiz ein,de_DE
+cart_note.item_form.enter_note,Add a Note to the Item,en_US
+cart_note.item_form.enter_note,Fügen Sie dem Artikel eine Notiz hinzu,de_DE
+cart_note.item_form.placeholder,Enter your note,en_US
+cart_note.item_form.placeholder,Geben Sie Ihre Notiz ein,de_DE
+cart_note.form.save,Save,en_US
+cart_note.form.save,Sparen,de_DE
+cart_note.checkout_page.item_note,Note,en_US
+cart_note.checkout_page.item_note,Notiz,de_DE
+cart_note.checkout_page.quote_note,Cart Note,en_US
+cart_note.checkout_page.quote_note,Einkaufswagen Notiz,de_DE
+cart_note.customer_page.item_note,Order item Note,en_US
+cart_note.customer_page.item_note,Bestellposition Notiz,de_DE
+cart_note.customer_page.order_note,Order Note,en_US
+cart_note.customer_page.order_note,Bestellhinweis,de_DE
+cart.validate.items.price.changed,"Prices have been changed for products with SKU '%sku%'.",en_US
+cart.validate.items.price.changed,"Preis wurde für Produkte mit SKU geändert '%sku%'.",de_DE
+multi_cart.form.create_cart,"Add new cart",en_US
+multi_cart.form.create_cart,"Füge einen neuen Warenkorb hinzu",de_DE
+multi_cart.form.quote.name,"Cart Name",en_US
+multi_cart.form.quote.name,"Name des Einkaufswagens",de_DE
+multi_cart.form.edit_cart,"Change Name",en_US
+multi_cart.form.edit_cart,"Namen ändern",de_DE
+multi_cart.form.edit_cart_information,"Edit Cart information",en_US
+multi_cart.form.edit_cart_information,"Einkaufswageninformationen bearbeiten",de_DE
+multi_cart.cart.set_default.success,"Cart '%quote%' has successfully been set to your active cart.",en_US
+multi_cart.cart.set_default.success,"Warenkorb '%quote%' wurde erfolgreich aktiviert.",de_DE
+multi_cart_page.cart_clear.success,"Cart was successfully cleared",en_US
+multi_cart_page.cart_clear.success,"Einkaufswagen wurde erfolgreich gelöscht",de_DE
+multi_cart_widget.cart.cart_name,"Cart Name",en_US
+multi_cart_widget.cart.cart_name,"Name des Einkaufswagens",de_DE
+multi_cart_widget.cart.add,"Create New Cart",en_US
+multi_cart_widget.cart.add,"Neuen Warenkorb erstellen",de_DE
+multi_cart_widget.cart.action.change_name,"Change Name",en_US
+multi_cart_widget.cart.action.change_name,"Namen ändern",de_DE
+multi_cart_widget.cart.action.duplicate,"Duplicate",en_US
+multi_cart_widget.cart.action.duplicate,"Duplikat",de_DE
+multi_cart_widget.cart.action.clear,"Clear cart",en_US
+multi_cart_widget.cart.action.clear,"Leerer Warenkorb",de_DE
+multi_cart_widget.cart.action.delete,"Delete cart",en_US
+multi_cart_widget.cart.action.delete,"Warenkorb löschen",de_DE
+multi_cart_widget.cart.action.view,"View details",en_US
+multi_cart_widget.cart.action.view,"Warenkorb ansehen",de_DE
+multi_cart_widget.cart.action.set_default,"Set active",en_US
+multi_cart_widget.cart.action.set_default,"Aktiv setzen",de_DE
+multi_cart_widget.cart.default,"Active",en_US
+multi_cart_widget.cart.default,"Aktiv",de_DE
+multi_cart_widget.cart.item,"Item",en_US
+multi_cart_widget.cart.item,"Artikel",de_DE
+multi_cart_widget.cart.items,"Items",en_US
+multi_cart_widget.cart.items,"Artikel",de_DE
+multi_cart_widget.cart.cart,"Cart",en_US
+multi_cart_widget.cart.cart,"Warenkorb",de_DE
+multi_cart_widget.cart.carts,"Carts",en_US
+multi_cart_widget.cart.carts,"Warenkorb",de_DE
+multi_cart_widget.cart.list,"Cart List",en_US
+multi_cart_widget.cart.list,"Warenkorb-Liste",de_DE
+multi_cart_widget.cart.status,"Status",en_US
+multi_cart_widget.cart.status,"Status",de_DE
+multi_cart_widget.cart.sub_total,"Sub Total",en_US
+multi_cart_widget.cart.sub_total,"Zwischensumme",de_DE
+multi_cart_widget.cart.actions,"Actions",en_US
+multi_cart_widget.cart.actions,"Aktionen",de_DE
+multi_cart_widget.cart.created.success,"Cart '%quoteName%' was created successfully",en_US
+multi_cart_widget.cart.created.success,"Warenkorb '%quoteName%' wurde erfolgreich erstellt",de_DE
+multi_cart_widget.cart.updated.success,"Cart updated successfully",en_US
+multi_cart_widget.cart.updated.success,"Einkaufswagen wurde erfolgreich aktualisiert",de_DE
+multi_cart_widget.cart.remove.confirm,Are you sure that you want to remove this cart?,en_US
+multi_cart_widget.cart.remove.confirm,"Sind Sie sicher, dass Sie diesen Warenkorb entfernen möchten?",de_DE
+shared_cart_widget.add_product.separate,"Add as separate item",en_US
+shared_cart_widget.add_product.separate,"Als separaten Artikel hinzufügen",de_DE
+shared_cart_widget.cart.share,"Share cart",en_US
+shared_cart_widget.cart.share,"Warenkorb teilen",de_DE
+shared_cart_widget.cart.unshare,"Unshare cart",en_US
+shared_cart_widget.cart.unshare,"Freigabewagen wird aufgehoben",de_DE
+shared_cart_widget.share_list.shared_with,Cart shared with,en_US
+shared_cart_widget.share_list.shared_with,Warenkorb geteilt mit,de_DE
+shared_cart_widget.share_list.customer_name,Customer name,en_US
+shared_cart_widget.share_list.customer_name,Kundenname,de_DE
+shared_cart_widget.share_list.permission,Access level,en_US
+shared_cart_widget.share_list.permission,Zugriffsebene,de_DE
+shared_cart_widget.share_list.actions,Actions,en_US
+shared_cart_widget.share_list.actions,Aktionen,de_DE
+shared_cart_widget.share_list.action.unshare,Unshare cart,en_US
+shared_cart_widget.share_list.action.unshare,Freigabe des Einkaufswagens,de_DE
+shared_cart.share_list.permissions.READ_ONLY,Read-only,en_US
+shared_cart.share_list.permissions.READ_ONLY,Schreibgeschützt,de_DE
+shared_cart.share_list.permissions.FULL_ACCESS,Full access,en_US
+shared_cart.share_list.permissions.FULL_ACCESS,Voller Zugriff,de_DE
+shared_cart.form.share_cart,"Share cart",en_US
+shared_cart.form.share_cart,"Warenkorb teilen",de_DE
+shared_cart.form.customer,"Customer name",en_US
+shared_cart.form.customer,Kundenname,de_DE
+shared_cart.form.select_customer,Select customer,en_US
+shared_cart.form.select_customer,"Wählen Sie den Kunden aus",de_DE
+shared_cart.form.select_permissions,Select access level,en_US
+shared_cart.form.select_permissions,"Wählen Sie Zugriffsebene",de_DE
+shared_cart.form.share_button,Share,en_US
+shared_cart.form.share_button,Aktie,de_DE
+shared_cart.share.error.already_exist,Cart was already shared with this customer,en_US
+shared_cart.share.error.already_exist,Der Warenkorb wurde bereits mit diesem Kunden geteilt,de_DE
+shared_cart_page.share.success,Cart was successfully shared,en_US
+shared_cart_page.share.success,Einkaufswagen wurde erfolgreich geteilt,de_DE
+shared_cart_page.unshare.success,Cart was successfully unshared,en_US
+shared_cart_page.unshare.success,Einkaufswagen wurde erfolgreich freigegeben,de_DE
+shopping_list.shopping_list,Shopping list,en_US
+shopping_list.shopping_list,Einkaufsliste,de_DE
+shopping_list.item_quantity,Anzahl,de_DE
+shopping_list.item_quantity,Quantity,en_US
+customer.account.shopping_list,Shopping lists,en_US
+customer.account.shopping_list,Einkaufslisten,de_DE
+customer.account.shopping_list.create.success,Shopping list created successfully.,en_US
+customer.account.shopping_list.create.success,Einkaufsliste erfolgreich angelegt.,de_DE
+customer.account.shopping_list.create.failed,Shopping list creation failed.,en_US
+customer.account.shopping_list.create.failed,Erstellen der Einkaufsliste ist fehlgeschlagen,de_DE
+customer.account.shopping_list.overview.title,Manage Shopping Lists,en_US
+customer.account.shopping_list.overview.title,Einkaufslisten verwalten,de_DE
+customer.account.shopping_list.overview.enter_name,Enter name here,en_US
+customer.account.shopping_list.overview.enter_name,Name hier eingeben,de_DE
+customer.account.shopping_list.overview.add_new,Add new shopping list,en_US
+customer.account.shopping_list.overview.add_new,Neue Einkaufsliste hinzufügen,de_DE
+customer.account.shopping_list.overview.name,Name,en_US
+customer.account.shopping_list.overview.name,Name,de_DE
+customer.account.shopping_list.overview.item_count,# of items in the list,en_US
+customer.account.shopping_list.overview.item_count,# Produkte in der Liste,de_DE
+customer.account.shopping_list.overview.modified_date,Date of last update,en_US
+customer.account.shopping_list.overview.modified_date,Datum der letzten Aktualisierung,de_DE
+customer.account.shopping_list.overview.actions,Actions,en_US
+customer.account.shopping_list.overview.actions,Aktion,de_DE
+customer.account.shopping_list.overview.edit,Edit,en_US
+customer.account.shopping_list.overview.edit,Bearbeiten,de_DE
+customer.account.shopping_list.overview.delete,Delete,en_US
+customer.account.shopping_list.overview.delete,Löschen,de_DE
+customer.account.shopping_list.overview.empty,You do not have any shopping lists yet.,en_US
+customer.account.shopping_list.overview.empty,Du hast noch keine Einkaufslisten.,de_DE
+customer.account.shopping_list.overview.share,Share,en_US
+customer.account.shopping_list.overview.share,Teilen,de_DE
+customer.account.shopping_list.product,Product,en_US
+customer.account.shopping_list.product,Produkt,de_DE
+customer.account.shopping_list.price,Price,en_US
+customer.account.shopping_list.price,Preis,de_DE
+customer.account.shopping_list.overview.variant,Variant,en_US
+customer.account.shopping_list.overview.variant,Produktvariante,de_DE
+customer.account.shopping_list.availability,Availability,en_US
+customer.account.shopping_list.availability,Verfügbarkeit,de_DE
+customer.account.shopping_list.available,Available,en_US
+customer.account.shopping_list.available,Verfügbar,de_DE
+customer.account.shopping_list.not_available,Currently not available,en_US
+customer.account.shopping_list.not_available,Nicht verfügbar,de_DE
+customer.account.shopping_list.add-to-cart,Add to Cart,en_US
+customer.account.shopping_list.add-to-cart,In den Warenkorb,de_DE
+customer.account.shopping_list.empty,Currently there are no items in your shopping list.,en_US
+customer.account.shopping_list.empty,Zurzeit ist kein Produkt auf deiner Einkaufsliste.,de_DE
+customer.account.shopping_list.add_all_available_to_cart,Add all available products to cart,en_US
+customer.account.shopping_list.add_all_available_to_cart,Alle Produkte zum Warenkorb hinzufügen,de_DE
+customer.account.shopping_list.item.not_added,Failed to add product to shopping list.,en_US
+customer.account.shopping_list.item.not_added,Hinzufügen zur Einkaufsliste fehlgeschlagen.,de_DE
+customer.account.shopping_list.item.remove.success,Product removed successfully.,en_US
+customer.account.shopping_list.item.remove.success,Produkt erfolgreich entfernt.,de_DE
+customer.account.shopping_list.item.remove.failed,Product was not removed from shopping list.,en_US
+customer.account.shopping_list.item.remove.failed,Artikel wurde nicht von der Einkaufsliste entfernt,de_DE
+customer.account.shopping_list.updated,Shopping list updated successfully,en_US
+customer.account.shopping_list.updated,Einkaufsliste erfolgreich aktualisiert.,de_DE
+customer.account.shopping_list.delete.success,Shopping list deleted successfully.,en_US
+customer.account.shopping_list.delete.success,Einkaufsliste erfolgreich gelöscht.,de_DE
+customer.account.shopping_list.delete.failed,Shopping list was not deleted.,en_US
+customer.account.shopping_list.delete.failed,Einkaufsliste konnte nicht gelöscht.,de_DE
+customer.account.shopping_list.quantity,Quantity,en_US
+customer.account.shopping_list.quantity,Anzahl,de_DE
+customer.account.shopping_list.remove,Remove,en_US
+customer.account.shopping_list.remove,Löschen,de_DE
+customer.account.shopping_list.item.added_to_cart.failed,Item was not added to cart.,en_US
+customer.account.shopping_list.item.added_to_cart.failed,Produkt konnte nicht in den Warenkorb gelegt werden.,de_DE
+customer.account.shopping_list.item.added_to_cart,Item added to cart successfully.,en_US
+customer.account.shopping_list.item.added_to_cart,Produkt erfolgreich in den Warenkorb gelegt.,de_DE
+customer.account.shopping_list.item.added_all_available_to_cart,Available items added to cart successfully.,en_US
+customer.account.shopping_list.item.added_all_available_to_cart,Verfügbare Produkte wurden erfolgreich in den Warenkorb gelegt.,de_DE
+customer.account.shopping_list.item.added_all_available_to_cart.failed,Not all items are added to cart successfully,en_US
+customer.account.shopping_list.item.added_all_available_to_cart.failed,Nicht alle Artikel konnten erfolgreich in den Warenkorb gelegt werden.,de_DE
+page.detail.add-to-shopping-list,Add to Shopping list,en_US
+page.detail.add-to-shopping-list,In die Einkaufsliste,de_DE
+cart.add-to-shopping-list,Add to Shopping list,en_US
+cart.detail.add-to-shopping-list,In die Einkaufsliste,de_DE
+customer.account.shopping_list.overview.add_shopping_list_to_cart,Add selected shopping lists to cart,en_US
+customer.account.shopping_list.overview.add_shopping_list_to_cart,german words,de_DE
+customer.account.shopping_list.items.added_to_cart.failed,Items were not added to cart.,en_US
+customer.account.shopping_list.items.added_to_cart.failed,Produkte konnten nicht in den Warenkorb gelegt werden.,de_DE
+customer.account.shopping_list.items.added_to_cart,Items added to cart successfully.,en_US
+customer.account.shopping_list.items.added_to_cart,Produkte erfolgreich in den Warenkorb gelegen.,de_DE
+customer.account.shopping_list.add_selected_items_to_cart,Add selected items to cart,en_US
+customer.account.shopping_list.add_selected_items_to_cart,Ausgewählte Artikel in den Warenkorb legen,de_DE
+customer.account.shopping_list.share.select_company_user,Select customer,en_US
+customer.account.shopping_list.share.select_company_user,Wählen Sie den Kunden aus,de_DE
+customer.account.shopping_list.share.select_company_business_unit,Select business unit,en_US
+customer.account.shopping_list.share.select_company_business_unit,Wählen Sie die Geschäftseinheit aus,de_DE
+customer.account.shopping_list.share.select_permission,Select access level,en_US
+customer.account.shopping_list.share.select_permission,Wählen Sie die Zugriffsebene aus,de_DE
+customer.account.shopping_list.share.error.one_id_required,Please choose either customer or business unit to share the shopping list with,en_US
+customer.account.shopping_list.share.error.one_id_required,"Bitte wählen Sie entweder einen Kunden oder eine Geschäftseinheit aus, mit welchem Sie die Einkaufsliste teilen möchten.",de_DE
+customer.account.shopping_list.share.share_shopping_list_successful,Sharing shopping list was successful,en_US
+customer.account.shopping_list.share.share_shopping_list_successful,Einkaufsliste wurde erfolgreich geteilt,de_DE
+customer.account.shopping_list.share.share_shopping_list_fail,This shopping list has been shared before with this entity,en_US
+customer.account.shopping_list.share.share_shopping_list_fail,Diese Einkaufsliste wurde bereits mit dieser Entität geteilt,de_DE
+customer.account.shopping_list.overview.owner,Owner,en_US
+customer.account.shopping_list.overview.owner,Inhaber,de_DE
+customer.account.shopping_list.error.duplicate_name,A shopping list with the same name already exists.,en_US
+customer.account.shopping_list.error.duplicate_name,Eine Einkaufsliste mit dem selben Namen existiert bereits.,de_DE
+customer.account.shopping_list.error.cannot_update,Cannot update shopping list.,en_US
+customer.account.shopping_list.error.cannot_update,Die Liste konnte nicht aktualisiert werden.,de_DE
