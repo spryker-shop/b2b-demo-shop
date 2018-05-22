@@ -26,6 +26,7 @@ use Pyz\Zed\DataImport\Business\Model\DataImportStep\LocalizedAttributesExtracto
 use Pyz\Zed\DataImport\Business\Model\Discount\DiscountWriterStep;
 use Pyz\Zed\DataImport\Business\Model\DiscountAmount\DiscountAmountWriterStep;
 use Pyz\Zed\DataImport\Business\Model\DiscountVoucher\DiscountVoucherWriterStep;
+use Pyz\Zed\DataImport\Business\Model\FileType\FileTypeWriter;
 use Pyz\Zed\DataImport\Business\Model\Glossary\GlossaryWriterStep;
 use Pyz\Zed\DataImport\Business\Model\Locale\AddLocalesStep;
 use Pyz\Zed\DataImport\Business\Model\Locale\LocaleNameToIdLocaleStep;
@@ -125,7 +126,8 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
             ->addDataImporter($this->createCmsBlockCategoryImporter())
             ->addDataImporter($this->createNavigationImporter())
             ->addDataImporter($this->createNavigationNodeImporter())
-            ->addDataImporter($this->createDiscountAmountImporter());
+            ->addDataImporter($this->createDiscountAmountImporter())
+            ->addDataImporter($this->createFileTypeImporter());
 
         return $dataImporterCollection;
     }
@@ -732,7 +734,7 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
 
         $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker(ProductAbstractStoreWriterStep::BULK_SIZE);
         $dataSetStepBroker->addStep(new ProductAbstractStoreWriterStep());
-        
+
         $dataImporter->addDataSetStepBroker($dataSetStepBroker);
 
         return $dataImporter;
@@ -987,6 +989,21 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
 
         $dataImporter->addDataSetStepBroker($dataSetStepBroker);
         $dataImporter->addAfterImportHook($this->createProductSearchAfterImportHook());
+
+        return $dataImporter;
+    }
+
+    /**
+     * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface|\Spryker\Zed\DataImport\Business\Model\DataSet\DataSetStepBrokerAwareInterface
+     */
+    protected function createFileTypeImporter()
+    {
+        $dataImporter = $this->getCsvDataImporterFromConfig($this->getConfig()->getFileTypeDataImporterConfiguration());
+
+        $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker(FileTypeWriter::BULK_SIZE);
+        $dataSetStepBroker->addStep(new FileTypeWriter());
+
+        $dataImporter->addDataSetStepBroker($dataSetStepBroker);
 
         return $dataImporter;
     }
