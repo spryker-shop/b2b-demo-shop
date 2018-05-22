@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Spryker Demoshop.
+ * This file is part of the Spryker Suite.
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
@@ -10,6 +10,7 @@ namespace PyzTest\Yves\Checkout\Process\Steps;
 use Codeception\Test\Unit;
 use Generated\Shared\Transfer\ItemTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
+use SprykerShop\Yves\CheckoutPage\CheckoutPageConfig;
 use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCartClientInterface;
 use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCustomerClientInterface;
 use SprykerShop\Yves\CheckoutPage\Process\Steps\SuccessStep;
@@ -82,10 +83,12 @@ class SuccessStepTest extends Unit
         }
 
         $cartClientMock = $this->createCartClientMock();
+        $checkoutPageConfigMock = $this->createCheckoutPageConfigMock();
 
         return new SuccessStep(
             $customerClientMock,
             $cartClientMock,
+            $checkoutPageConfigMock,
             'success_route',
             'escape_route'
         );
@@ -113,5 +116,15 @@ class SuccessStepTest extends Unit
     protected function createCustomerClientMock()
     {
         return $this->getMockBuilder(CheckoutPageToCustomerClientInterface::class)->getMock();
+    }
+
+    /**
+     * @return \PHPUnit\Framework\MockObject\MockObject|\SprykerShop\Yves\CheckoutPage\CheckoutPageConfig
+     */
+    protected function createCheckoutPageConfigMock()
+    {
+        $checkoutPageConfigMock = $this->getMockBuilder(CheckoutPageConfig::class)->setMethods(['cleanCartAfterOrderCreation'])->getMock();
+        $checkoutPageConfigMock->method('cleanCartAfterOrderCreation')->willReturn(true);
+        return $checkoutPageConfigMock;
     }
 }

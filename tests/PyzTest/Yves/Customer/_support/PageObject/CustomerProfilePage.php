@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Spryker Demoshop.
+ * This file is part of the Spryker Suite.
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
@@ -29,7 +29,7 @@ class CustomerProfilePage extends Customer
     const FORM_FIELD_CHANGE_PASSWORD_SELECTOR_NEW_PASSWORD = 'passwordForm[new_password][password]';
 
     const FORM_FIELD_CHANGE_PASSWORD_SELECTOR_NEW_PASSWORD_CONFIRM = 'passwordForm[new_password][confirm]';
-    const BUTTON_PROFILE_FORM_CHANGE_PASSWORD_SUBMIT_SELECTOR = ['name' => 'passwordForm'];
+    const BUTTON_PROFILE_FORM_CHANGE_PASSWORD_SUBMIT_SELECTOR = '[name=passwordForm] [data-qa="submit-button"]';
 
     const BUTTON_PROFILE_FORM_CHANGE_PASSWORD_SUBMIT_TEXT = 'Submit';
 

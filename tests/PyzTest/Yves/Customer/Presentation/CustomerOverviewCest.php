@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Spryker Demoshop.
+ * This file is part of the Spryker Suite.
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
@@ -38,8 +38,6 @@ class CustomerOverviewCest
         $i->see(CustomerOverviewPage::BOX_HEADLINE_ORDERS, 'h5');
         $i->see(CustomerOverviewPage::BOX_HEADLINE_PROFILE, 'h5');
         $i->see(CustomerOverviewPage::BOX_HEADLINE_NEWSLETTER, 'h5');
-        $i->see(CustomerOverviewPage::BOX_HEADLINE_SHIPPING_ADDRESS, 'h5');
-        $i->see(CustomerOverviewPage::BOX_HEADLINE_BILLING_ADDRESS, 'h5');
     }
 
     /**
@@ -52,8 +50,8 @@ class CustomerOverviewCest
         $i->amLoggedInCustomer();
         $i->amOnPage(CustomerOverviewPage::URL);
 
-        $i->see(CustomerOverviewPage::INFO_TEXT_ADD_SHIPPING_ADDRESS);
-        $i->see(CustomerOverviewPage::INFO_TEXT_ADD_BILLING_ADDRESS);
+        // $i->see(CustomerOverviewPage::INFO_TEXT_ADD_SHIPPING_ADDRESS);
+        // $i->see(CustomerOverviewPage::INFO_TEXT_ADD_BILLING_ADDRESS);
     }
 
     /**

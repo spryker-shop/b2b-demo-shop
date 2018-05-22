@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Spryker Demoshop.
+ * This file is part of the Spryker Suite.
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
@@ -22,6 +22,16 @@ class DevelopmentConfig extends SprykerDevelopmentConfig
         $globPatterns[APPLICATION_VENDOR_DIR . '/spryker/spryker/Bundles/*/src/'] = 'Spryker/*/';
 
         return $globPatterns;
+    }
+
+    /**
+     * @project Only needed in Project, not in demoshop
+     *
+     * @return string
+     */
+    public function getPathToCore()
+    {
+        return $this->getPathToRoot() . 'vendor/spryker/spryker/Bundles/';
     }
 
     /**

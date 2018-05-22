@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Spryker Demoshop.
+ * This file is part of the Spryker Suite.
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
@@ -11,7 +11,8 @@ class CustomerNewsletterPage extends Customer
 {
     const URL = '/customer/newsletter';
 
-    const FORM_FIELD_SELECTOR_NEWSLETTER_SUBSCRIPTION = 'newsletterSubscriptionForm[subscribe]';
+    const FORM_FIELD_SELECTOR_NEWSLETTER_SUBSCRIPTION = '[data-qa*="newsletterSubscriptionForm_subscribe"] label';
+    const FORM_FIELD_SELECTOR_NEWSLETTER_SUBSCRIPTION_INPUT = '[data-qa*="newsletterSubscriptionForm_subscribe"] input';
 
     const BUTTON_SUBMIT = 'Submit';
 

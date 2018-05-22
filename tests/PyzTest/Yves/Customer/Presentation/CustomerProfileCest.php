@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Spryker Demoshop.
+ * This file is part of the Spryker Suite.
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
@@ -38,7 +38,7 @@ class CustomerProfileCest
         $i->fillField(CustomerProfilePage::FORM_FIELD_SELECTOR_LAST_NAME, $customerTransfer->getLastName());
         $i->click('Submit', ['name' => 'profileForm']);
 
-        $i->waitForText(CustomerProfilePage::SUCCESS_MESSAGE);
+        $i->seeInSource(CustomerProfilePage::SUCCESS_MESSAGE);
     }
 
     /**
@@ -54,7 +54,7 @@ class CustomerProfileCest
         $i->fillField(CustomerProfilePage::FORM_FIELD_SELECTOR_EMAIL, CustomerProfilePage::REGISTERED_CUSTOMER_EMAIL);
         $i->click(CustomerProfilePage::BUTTON_PROFILE_FORM_SUBMIT_TEXT, CustomerProfilePage::BUTTON_PROFILE_FORM_SUBMIT_SELECTOR);
 
-        $i->waitForText(CustomerProfilePage::SUCCESS_MESSAGE);
+        $i->seeInSource(CustomerProfilePage::SUCCESS_MESSAGE);
     }
 
     /**
@@ -71,7 +71,7 @@ class CustomerProfileCest
         $i->fillField(CustomerProfilePage::FORM_FIELD_SELECTOR_EMAIL, CustomerProfilePage::REGISTERED_CUSTOMER_EMAIL);
         $i->click(CustomerProfilePage::BUTTON_PROFILE_FORM_SUBMIT_TEXT, CustomerProfilePage::BUTTON_PROFILE_FORM_SUBMIT_SELECTOR);
 
-        $i->waitForText(CustomerProfilePage::ERROR_MESSAGE_EMAIL);
+        $i->seeInSource(CustomerProfilePage::ERROR_MESSAGE_EMAIL);
     }
 
     /**
@@ -90,12 +90,9 @@ class CustomerProfileCest
         $i->fillField(CustomerProfilePage::FORM_FIELD_CHANGE_PASSWORD_SELECTOR_PASSWORD, $oldPassword);
         $i->fillField(CustomerProfilePage::FORM_FIELD_CHANGE_PASSWORD_SELECTOR_NEW_PASSWORD, $newPassword);
         $i->fillField(CustomerProfilePage::FORM_FIELD_CHANGE_PASSWORD_SELECTOR_NEW_PASSWORD_CONFIRM, $newPassword);
-        $i->click(
-            CustomerProfilePage::BUTTON_PROFILE_FORM_CHANGE_PASSWORD_SUBMIT_TEXT,
-            CustomerProfilePage::BUTTON_PROFILE_FORM_CHANGE_PASSWORD_SUBMIT_SELECTOR
-        );
+        $i->click(CustomerProfilePage::BUTTON_PROFILE_FORM_CHANGE_PASSWORD_SUBMIT_SELECTOR);
 
-        $i->waitForText(CustomerProfilePage::SUCCESS_MESSAGE_CHANGE_PASSWORD);
+        $i->seeInSource(CustomerProfilePage::SUCCESS_MESSAGE_CHANGE_PASSWORD);
     }
 
     /**
@@ -115,11 +112,8 @@ class CustomerProfileCest
         $i->fillField(CustomerProfilePage::FORM_FIELD_CHANGE_PASSWORD_SELECTOR_PASSWORD, $oldPassword);
         $i->fillField(CustomerProfilePage::FORM_FIELD_CHANGE_PASSWORD_SELECTOR_NEW_PASSWORD, $newPassword);
         $i->fillField(CustomerProfilePage::FORM_FIELD_CHANGE_PASSWORD_SELECTOR_NEW_PASSWORD_CONFIRM, 'not matching password');
-        $i->click(
-            CustomerProfilePage::BUTTON_PROFILE_FORM_CHANGE_PASSWORD_SUBMIT_TEXT,
-            CustomerProfilePage::BUTTON_PROFILE_FORM_CHANGE_PASSWORD_SUBMIT_SELECTOR
-        );
+        $i->click(CustomerProfilePage::BUTTON_PROFILE_FORM_CHANGE_PASSWORD_SUBMIT_SELECTOR);
 
-        $i->waitForText(CustomerProfilePage::ERROR_MESSAGE_CHANGE_PASSWORD);
+        $i->seeInSource(CustomerProfilePage::ERROR_MESSAGE_CHANGE_PASSWORD);
     }
 }
