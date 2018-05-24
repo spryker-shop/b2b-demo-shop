@@ -33,8 +33,7 @@ class InstallerDependencyProvider extends SprykerInstallerDependencyProvider
             new AclInstallerPlugin(),
             new NewsletterInstallerPlugin(),
             new GlossaryInstallerPlugin(),
-            new SharedCartPermissionInstallerPlugin(),
-            new ShoppingListPermissionsInstallerPlugin(), #ShoppingListFeature
+            new ShoppingListPermissionsInstallerPlugin(),
             new SharedCartPermissionInstallerPlugin(), #SharedCartFeature
         ];
     }
