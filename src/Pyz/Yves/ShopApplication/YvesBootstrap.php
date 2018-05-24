@@ -24,7 +24,6 @@ use Spryker\Shared\Config\Environment;
 use Spryker\Yves\Application\Plugin\Provider\CookieServiceProvider;
 use Spryker\Yves\Application\Plugin\Provider\YvesHstsServiceProvider;
 use Spryker\Yves\Application\Plugin\ServiceProvider\AssertUrlConfigurationServiceProvider;
-use Spryker\Yves\Application\Plugin\ServiceProvider\KernelLogServiceProvider;
 use Spryker\Yves\Application\Plugin\ServiceProvider\SslServiceProvider;
 use Spryker\Yves\CmsContentWidget\Plugin\CmsContentWidgetServiceProvider;
 use Spryker\Yves\Messenger\Plugin\Provider\FlashMessengerServiceProvider;
@@ -99,7 +98,6 @@ class YvesBootstrap extends SprykerYvesBootstrap
 
         $this->application->register(new SslServiceProvider());
         $this->application->register(new StorageCacheServiceProvider());
-        $this->application->register(new KernelLogServiceProvider());
         $this->application->register(new ZedRequestHeaderServiceProvider());
 
         $this->application->register(new ShopControllerEventServiceProvider());
