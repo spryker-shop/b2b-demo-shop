@@ -33,7 +33,6 @@ use Spryker\Yves\Session\Plugin\ServiceProvider\SessionServiceProvider as Spryke
 use Spryker\Yves\Storage\Plugin\Provider\StorageCacheServiceProvider;
 use Spryker\Yves\Twig\Plugin\ServiceProvider\TwigServiceProvider as SprykerTwigServiceProvider;
 use Spryker\Yves\ZedRequest\Plugin\ServiceProvider\ZedRequestHeaderServiceProvider;
-use Spryker\Yves\ZedRequest\Plugin\ServiceProvider\ZedRequestLogServiceProvider;
 use SprykerShop\Yves\CalculationPage\Plugin\Provider\CalculationPageControllerProvider;
 use SprykerShop\Yves\CartNoteWidget\Plugin\Provider\CartNoteWidgetControllerProvider;
 use SprykerShop\Yves\CartPage\Plugin\Provider\CartControllerProvider;
@@ -102,7 +101,6 @@ class YvesBootstrap extends SprykerYvesBootstrap
         $this->application->register(new StorageCacheServiceProvider());
         $this->application->register(new KernelLogServiceProvider());
         $this->application->register(new ZedRequestHeaderServiceProvider());
-        $this->application->register(new ZedRequestLogServiceProvider());
 
         $this->application->register(new ShopControllerEventServiceProvider());
         $this->application->register(new ShopTwigServiceProvider());
