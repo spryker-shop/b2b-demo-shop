@@ -15,7 +15,7 @@ class CmsContentWidgetChartConnectorDependencyProvider extends SprykerCmsContent
     /**
      * @return string[]
      */
-    protected function getCmsChartContentWidgetPlugins()
+    protected function getCmsChartContentWidgetPlugins(): array
     {
         return [
             ChartWidgetPlugin::class,
