@@ -38,8 +38,8 @@ class PermissionDependencyProvider extends SprykerPermissionDependencyProvider
         return [
             new ReadSharedCartPermissionPlugin(), #SharedCartFeature
             new WriteSharedCartPermissionPlugin(), #SharedCartFeature
-            new ReadShoppingListPermissionPlugin(), #SharedCartFeature
-            new WriteShoppingListPermissionPlugin(), #SharedCartFeature
+            new ReadShoppingListPermissionPlugin(), #ShoppingListFeature
+            new WriteShoppingListPermissionPlugin(), #ShoppingListFeature
         ];
     }
 }
