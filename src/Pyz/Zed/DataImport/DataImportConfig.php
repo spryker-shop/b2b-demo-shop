@@ -50,7 +50,7 @@ class DataImportConfig extends SprykerDataImportConfig
     const IMPORT_TYPE_TAX = 'tax';
     const IMPORT_TYPE_CURRENCY = 'currency';
     const IMPORT_TYPE_STORE = 'store';
-    const IMPORT_TYPE_FILE_TYPE = 'file-type';
+    const IMPORT_TYPE_MIME_TYPE = 'mime-type';
 
     /**
      * @return \Generated\Shared\Transfer\DataImporterConfigurationTransfer
@@ -353,7 +353,7 @@ class DataImportConfig extends SprykerDataImportConfig
      */
     public function getFileTypeDataImporterConfiguration()
     {
-        return $this->buildImporterConfiguration('file_type.csv', static::IMPORT_TYPE_FILE_TYPE);
+        return $this->buildImporterConfiguration('mime_type.csv', static::IMPORT_TYPE_MIME_TYPE);
     }
 
     /**
