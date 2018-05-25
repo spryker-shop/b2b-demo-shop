@@ -39,7 +39,7 @@ class MimeTypeWriter extends PublishAwareStep implements DataImportStepInterface
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
      *
-     * @return \Orm\Zed\FileManager\Persistence\SpyFileType
+     * @return \Orm\Zed\FileManager\Persistence\SpyMimeType
      */
     protected function createMimeTypeEntityFromDataset(DataSetInterface $dataSet)
     {

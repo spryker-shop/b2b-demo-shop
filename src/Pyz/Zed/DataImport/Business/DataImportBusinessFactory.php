@@ -998,7 +998,7 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
      */
     protected function createMimeTypeImporter()
     {
-        $dataImporter = $this->getCsvDataImporterFromConfig($this->getConfig()->getFileTypeDataImporterConfiguration());
+        $dataImporter = $this->getCsvDataImporterFromConfig($this->getConfig()->getMimeTypeDataImporterConfiguration());
 
         $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker(MimeTypeWriter::BULK_SIZE);
         $dataSetStepBroker->addStep(new MimeTypeWriter());

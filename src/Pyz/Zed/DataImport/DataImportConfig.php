@@ -351,7 +351,7 @@ class DataImportConfig extends SprykerDataImportConfig
     /**
      * @return \Generated\Shared\Transfer\DataImporterConfigurationTransfer
      */
-    public function getFileTypeDataImporterConfiguration()
+    public function getMimeTypeDataImporterConfiguration()
     {
         return $this->buildImporterConfiguration('mime_type.csv', static::IMPORT_TYPE_MIME_TYPE);
     }
