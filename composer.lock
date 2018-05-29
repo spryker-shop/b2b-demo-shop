@@ -1947,12 +1947,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/event-behavior.git",
-                "reference": "61d35622c02f620325bf340932e8a24c9d5836e5"
+                "reference": "86e2dcca24a80a9de3a6420cbc392e4752c9b777"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/event-behavior/zipball/61d35622c02f620325bf340932e8a24c9d5836e5",
-                "reference": "61d35622c02f620325bf340932e8a24c9d5836e5",
+                "url": "https://api.github.com/repos/spryker/event-behavior/zipball/86e2dcca24a80a9de3a6420cbc392e4752c9b777",
+                "reference": "86e2dcca24a80a9de3a6420cbc392e4752c9b777",
                 "shasum": ""
             },
             "require": {
@@ -1991,11 +1991,14 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
+            "include-path": [
+                "src/"
+            ],
             "license": [
                 "proprietary"
             ],
             "description": "EventBehavior module",
-            "time": "2018-05-16T14:52:37+00:00"
+            "time": "2018-05-29T09:48:56+00:00"
         },
         {
             "name": "spryker/install",
@@ -2047,19 +2050,19 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/rabbit-mq.git",
-                "reference": "186eada7744da79852573085c35e453be676cb06"
+                "reference": "4087ea26bbec57d2bf8b42911dfd8c1d805c9577"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/rabbit-mq/zipball/186eada7744da79852573085c35e453be676cb06",
-                "reference": "186eada7744da79852573085c35e453be676cb06",
+                "url": "https://api.github.com/repos/spryker/rabbit-mq/zipball/4087ea26bbec57d2bf8b42911dfd8c1d805c9577",
+                "reference": "4087ea26bbec57d2bf8b42911dfd8c1d805c9577",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
                 "php-amqplib/php-amqplib": "^2.6",
                 "spryker/kernel": "^3.0.0",
-                "spryker/queue": "^1.2.0",
+                "spryker/queue": "^1.1.0",
                 "spryker/store": "^1.6.0",
                 "spryker/transfer": "^3.3.4"
             },
@@ -2098,7 +2101,7 @@
                 "rabbit-mq",
                 "standards"
             ],
-            "time": "2018-03-06T10:17:47+00:00"
+            "time": "2018-05-29T08:51:13+00:00"
         },
         {
             "name": "spryker/spryker",
@@ -2106,7 +2109,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "59477d22e983539d0da777401bfde5e63a646592"
+                "reference": "c753f194ee94996d4a12c00b85c872bb93b595ca"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.0",
@@ -2365,7 +2368,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2018-05-29T08:15:53+00:00"
+            "time": "2018-05-29T09:01:16+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -2454,12 +2457,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/synchronization-behavior.git",
-                "reference": "c91cca3b2f846959ed5c4090891b4e9e9dceec7d"
+                "reference": "d0f0e9c16f5258a5f2ef6ed37401f9e217b638b0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/synchronization-behavior/zipball/c91cca3b2f846959ed5c4090891b4e9e9dceec7d",
-                "reference": "c91cca3b2f846959ed5c4090891b4e9e9dceec7d",
+                "url": "https://api.github.com/repos/spryker/synchronization-behavior/zipball/d0f0e9c16f5258a5f2ef6ed37401f9e217b638b0",
+                "reference": "d0f0e9c16f5258a5f2ef6ed37401f9e217b638b0",
                 "shasum": ""
             },
             "require": {
@@ -2468,7 +2471,8 @@
                 "spryker/zend": "^2.1.0"
             },
             "require-dev": {
-                "spryker/queue": "^1.2.0",
+                "spryker/code-sniffer": "*",
+                "spryker/queue": "^1.1.0",
                 "spryker/synchronization": "^0.1.0 || ^0.2.0"
             },
             "suggest": {
@@ -2489,11 +2493,14 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
+            "include-path": [
+                "src/"
+            ],
             "license": [
                 "proprietary"
             ],
             "description": "SynchronizationBehavior module",
-            "time": "2018-03-06T10:11:17+00:00"
+            "time": "2018-05-29T09:44:09+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
