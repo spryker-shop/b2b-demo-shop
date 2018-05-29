@@ -47,6 +47,7 @@ use SprykerShop\Yves\CmsBlockWidget\Plugin\Provider\CmsBlockTwigFunctionServiceP
 use SprykerShop\Yves\CmsPage\Plugin\Provider\CmsTwigFunctionServiceProvider;
 use SprykerShop\Yves\CmsPage\Plugin\Provider\PreviewControllerProvider;
 use SprykerShop\Yves\CompanyPage\Plugin\Provider\CompanyPageControllerProvider;
+use SprykerShop\Yves\CompanyUserInvitationPage\Plugin\Provider\CompanyUserInvitationPageControllerProvider;
 use SprykerShop\Yves\CurrencyWidget\Plugin\Provider\CurrencyWidgetControllerProvider;
 use SprykerShop\Yves\CustomerPage\Plugin\Provider\CustomerPageControllerProvider;
 use SprykerShop\Yves\CustomerPage\Plugin\Provider\CustomerSecurityServiceProvider;
@@ -200,6 +201,7 @@ class YvesBootstrap extends SprykerYvesBootstrap
             new ShoppingListPageControllerProvider($isSsl), #ShoppingListFeature
             new CartToShoppingListWidgetControllerProvider($isSsl), #ShoppingListFeature
             new ShoppingListWidgetControllerProvider($isSsl), #ShoppingListFeature
+            new CompanyUserInvitationPageControllerProvider($isSsl), #BulkImportCompanyUserInvitationsFeature
         ];
     }
 }
