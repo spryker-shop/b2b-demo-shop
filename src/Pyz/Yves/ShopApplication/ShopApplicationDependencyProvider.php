@@ -8,12 +8,8 @@
 namespace Pyz\Yves\ShopApplication;
 
 use SprykerShop\Yves\CurrencyWidget\Plugin\ShopLayout\CurrencyWidgetPlugin;
-<<<<<<< HEAD
 use SprykerShop\Yves\CustomerPage\Plugin\ShopUi\CustomerNavigationWidgetPlugin;
 use SprykerShop\Yves\LanguageSwitcherWidget\Plugin\ShopLayout\LanguageSwitcherWidgetPlugin;
-=======
-use SprykerShop\Yves\LanguageSwitcherWidget\Plugin\ShopUi\LanguageSwitcherWidgetPlugin;
->>>>>>> origin/master
 use SprykerShop\Yves\MultiCartWidget\Plugin\ShopUi\MiniCartWidgetPlugin;
 use SprykerShop\Yves\NavigationWidget\Plugin\ShopLayout\NavigationWidgetPlugin;
 use SprykerShop\Yves\PriceWidget\Plugin\ShopLayout\PriceModeSwitcherWidgetPlugin;

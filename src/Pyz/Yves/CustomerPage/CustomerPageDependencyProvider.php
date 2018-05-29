@@ -52,7 +52,6 @@ class CustomerPageDependencyProvider extends SprykerShopCustomerPageDependencyPr
     }
 
     /**
-<<<<<<< HEAD
      * @return string[]
      */
     protected function getCustomerMenuItemWidgetPlugins(): array
@@ -60,14 +59,16 @@ class CustomerPageDependencyProvider extends SprykerShopCustomerPageDependencyPr
         return [
             WishlistMenuItemWidgetPlugin::class,
             ShoppingListMenuItemWidgetPlugin::class, #ShoppingListFeature
-=======
+        ];
+    }
+
+    /**
      * @return \SprykerShop\Yves\CustomerPageExtension\Dependency\Plugin\PreRegistrationCustomerTransferExpanderPluginInterface[]
      */
     protected function getPreRegistrationCustomerTransferExpanderPlugins(): array
     {
         return [
             new CompanyUserInvitationPreRegistrationCustomerTransferExpanderPlugin(), #BulkImportCompanyUserInvitationsFeature
->>>>>>> origin/master
         ];
     }
 }
