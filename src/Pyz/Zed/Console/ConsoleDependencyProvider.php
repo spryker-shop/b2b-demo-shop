@@ -53,6 +53,7 @@ use Spryker\Zed\Log\Communication\Console\DeleteLogFilesConsole;
 use Spryker\Zed\Maintenance\Communication\Console\MaintenanceDisableConsole;
 use Spryker\Zed\Maintenance\Communication\Console\MaintenanceEnableConsole;
 use Spryker\Zed\Money\Communication\Plugin\ServiceProvider\TwigMoneyServiceProvider;
+use Spryker\Zed\Monitoring\Communication\Plugin\MonitoringConsolePlugin;
 use Spryker\Zed\NewRelic\Communication\Console\RecordDeploymentConsole;
 use Spryker\Zed\NewRelic\Communication\Plugin\NewRelicConsolePlugin;
 use Spryker\Zed\Oms\Communication\Console\CheckConditionConsole as OmsCheckConditionConsole;
@@ -310,6 +311,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
 
         if (!Environment::isDevelopment()) {
             $eventSubscriber[] = new NewRelicConsolePlugin();
+            $eventSubscriber[] = new MonitoringConsolePlugin();
         }
 
         return $eventSubscriber;

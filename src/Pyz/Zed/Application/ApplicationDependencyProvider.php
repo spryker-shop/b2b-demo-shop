@@ -39,6 +39,7 @@ use Spryker\Zed\Gui\Communication\Plugin\ServiceProvider\GuiTwigExtensionService
 use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\Messenger\Communication\Plugin\ServiceProvider\MessengerServiceProvider;
 use Spryker\Zed\Money\Communication\Plugin\ServiceProvider\TwigMoneyServiceProvider;
+use Spryker\Zed\Monitoring\Communication\Plugin\ServiceProvider\MonitoringRequestTransactionServiceProvider;
 use Spryker\Zed\NewRelic\Communication\Plugin\ServiceProvider\NewRelicRequestTransactionServiceProvider;
 use Spryker\Zed\Propel\Communication\Plugin\ServiceProvider\PropelServiceProvider;
 use Spryker\Zed\Session\Communication\Plugin\ServiceProvider\SessionServiceProvider as SprykerSessionServiceProvider;
@@ -80,6 +81,7 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
             new MessengerServiceProvider(),
             new ZedNavigationServiceProvider(),
             new NewRelicRequestTransactionServiceProvider(),
+            new MonitoringRequestTransactionServiceProvider(),
             new TranslationServiceProvider(),
             new DateTimeFormatterServiceProvider(),
             new GuiTwigExtensionServiceProvider(),
@@ -142,6 +144,7 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
             new SilexRoutingServiceProvider(),
             new GatewayServiceProviderPlugin(),
             new NewRelicRequestTransactionServiceProvider(),
+            new MonitoringRequestTransactionServiceProvider(),
             new HttpFragmentServiceProvider(),
             new SubRequestServiceProvider(),
             new TwigServiceProvider(),
@@ -171,6 +174,7 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
             new SilexRoutingServiceProvider(),
             new GatewayServiceProviderPlugin(),
             new NewRelicRequestTransactionServiceProvider(),
+            new MonitoringRequestTransactionServiceProvider(),
             new HttpFragmentServiceProvider(),
             new SubRequestServiceProvider(),
             new TwigServiceProvider(),
