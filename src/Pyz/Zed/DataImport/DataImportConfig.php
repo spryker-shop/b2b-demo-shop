@@ -36,11 +36,6 @@ class DataImportConfig extends SprykerDataImportConfig
     const IMPORT_TYPE_PRODUCT_IMAGE = 'product-image';
     const IMPORT_TYPE_PRODUCT_SEARCH_ATTRIBUTE_MAP = 'product-search-attribute-map';
     const IMPORT_TYPE_PRODUCT_SEARCH_ATTRIBUTE = 'product-search-attribute';
-    const IMPORT_TYPE_PRODUCT_MEASUREMENT_UNIT = 'product-measurement-unit';
-    const IMPORT_TYPE_PRODUCT_MEASUREMENT_BASE_UNIT = 'product-measurement-base-unit';
-    const IMPORT_TYPE_PRODUCT_MEASUREMENT_SALES_UNIT = 'product-measurement-sales-unit';
-    const IMPORT_TYPE_PRODUCT_MEASUREMENT_SALES_UNIT_STORE = 'product-measurement-sales-unit-store';
-    const IMPORT_TYPE_PRODUCT_QUANTITY = 'product-quantity';
     const IMPORT_TYPE_CMS_TEMPLATE = 'cms-template';
     const IMPORT_TYPE_CMS_PAGE = 'cms-page';
     const IMPORT_TYPE_CMS_BLOCK = 'cms-block';
@@ -255,46 +250,6 @@ class DataImportConfig extends SprykerDataImportConfig
     public function getProductSearchAttributeDataImporterConfiguration()
     {
         return $this->buildImporterConfiguration('product_search_attribute.csv', static::IMPORT_TYPE_PRODUCT_SEARCH_ATTRIBUTE);
-    }
-
-    /**
-     * @return \Generated\Shared\Transfer\DataImporterConfigurationTransfer
-     */
-    public function getProductMeasurementUnitDataImporterConfiguration()
-    {
-        return $this->buildImporterConfiguration('product_measurement_unit.csv', static::IMPORT_TYPE_PRODUCT_MEASUREMENT_UNIT);
-    }
-
-    /**
-     * @return \Generated\Shared\Transfer\DataImporterConfigurationTransfer
-     */
-    public function getProductMeasurementBaseUnitDataImporterConfiguration()
-    {
-        return $this->buildImporterConfiguration('product_measurement_base_unit.csv', static::IMPORT_TYPE_PRODUCT_MEASUREMENT_BASE_UNIT);
-    }
-
-    /**
-     * @return \Generated\Shared\Transfer\DataImporterConfigurationTransfer
-     */
-    public function getProductMeasurementSalesUnitDataImporterConfiguration()
-    {
-        return $this->buildImporterConfiguration('product_measurement_sales_unit.csv', static::IMPORT_TYPE_PRODUCT_MEASUREMENT_SALES_UNIT);
-    }
-
-    /**
-     * @return \Generated\Shared\Transfer\DataImporterConfigurationTransfer
-     */
-    public function getProductMeasurementSalesUnitStoreDataImporterConfiguration()
-    {
-        return $this->buildImporterConfiguration('product_measurement_sales_unit_store.csv', static::IMPORT_TYPE_PRODUCT_MEASUREMENT_SALES_UNIT_STORE);
-    }
-
-    /**
-     * @return \Generated\Shared\Transfer\DataImporterConfigurationTransfer
-     */
-    public function getProductQuantityDataImporterConfiguration()
-    {
-        return $this->buildImporterConfiguration('product_quantity.csv', static::IMPORT_TYPE_PRODUCT_QUANTITY);
     }
 
     /**
