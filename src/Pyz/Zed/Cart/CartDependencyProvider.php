@@ -25,7 +25,7 @@ use Spryker\Zed\ProductBundle\Communication\Plugin\Cart\ExpandBundleItemsWithIma
 use Spryker\Zed\ProductCartConnector\Communication\Plugin\ProductCartPlugin;
 use Spryker\Zed\ProductCartConnector\Communication\Plugin\ProductExistsCartPreCheckPlugin;
 use Spryker\Zed\ProductImageCartConnector\Communication\Plugin\ProductImageCartPlugin;
-use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\Cart\ProductMeasurementUnitItemExpanderPlugin;
+use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\Cart\QuantitySalesUnitItemExpanderPlugin;
 use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\Cart\QuantitySalesUnitGroupKeyItemExpanderPlugin;
 use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\Cart\QuantitySalesUnitValuePostSavePlugin;
 use Spryker\Zed\ProductOptionCartConnector\Communication\Plugin\CartItemGroupKeyOptionPlugin;
@@ -61,7 +61,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new ProductImageCartPlugin(),
             new CartGroupPromotionItems(),
             new CartShipmentExpanderPlugin(),
-            new ProductMeasurementUnitItemExpanderPlugin(),
+            new QuantitySalesUnitItemExpanderPlugin(),
         ];
     }
 
