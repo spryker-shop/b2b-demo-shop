@@ -11,6 +11,7 @@ use Spryker\Zed\CmsBlockProductConnector\Communication\Plugin\CmsBlockProductAbs
 use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\Money\Communication\Plugin\Form\MoneyFormTypePlugin;
 use Spryker\Zed\ProductAlternativeGui\Communication\Plugin\ProductConcreteEditFormExpanderPlugin;
+use Spryker\Zed\ProductAlternativeGui\Communication\Plugin\ProductConcreteFormEditDataProviderExpanderPlugin;
 use Spryker\Zed\ProductManagement\ProductManagementDependencyProvider as SprykerProductManagementDependencyProvider;
 use Spryker\Zed\Store\Communication\Plugin\Form\StoreRelationToggleFormTypePlugin;
 
@@ -51,6 +52,16 @@ class ProductManagementDependencyProvider extends SprykerProductManagementDepend
     {
         return [
             new ProductConcreteEditFormExpanderPlugin(),
+        ];
+    }
+
+    /**
+     * @return array
+     */
+    protected function getProductConcreteFormEditDataProviderExpanderPlugins(): array
+    {
+        return [
+            new ProductConcreteFormEditDataProviderExpanderPlugin(),
         ];
     }
 }
