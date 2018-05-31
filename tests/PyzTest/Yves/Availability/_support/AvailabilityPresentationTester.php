@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Spryker Demoshop.
+ * This file is part of the Spryker Suite.
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
@@ -30,9 +30,9 @@ class AvailabilityPresentationTester extends Actor
     use _generated\AvailabilityPresentationTesterActions;
 
     const FUJITSU_PRODUCT_PAGE = '/en/fujitsu-esprimo-e420-118';
-    const FUJITSU2_PRODUCT_PAGE = 'en/fujitsu-esprimo-e920-119';
+    const FUJITSU2_PRODUCT_PAGE = '/en/fujitsu-esprimo-e920-119';
 
-    const CART_PRE_CHECK_AVAILABILITY_ERROR_MESSAGE = 'The availability of product 119_29804808 is 10 at the moment.';
+    const CART_PRE_CHECK_AVAILABILITY_ERROR_MESSAGE = 'Item 119_29804808 only has availability of 10.';
 
     /**
      * @param \Codeception\Scenario $scenario

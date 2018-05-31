@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Spryker Demoshop.
+ * This file is part of the Spryker Suite.
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
@@ -47,6 +47,6 @@ class CustomerAddressCest
         $i->selectOption(CustomerAddressPage::FORM_FIELD_SELECTOR_COUNTRY, $addressTransfer->getIso2Code());
 
         $i->click(CustomerAddressPage::BUTTON_SUBMIT);
-        $i->waitForText(CustomerAddressPage::SUCCESS_MESSAGE);
+        $i->seeInSource(CustomerAddressPage::SUCCESS_MESSAGE);
     }
 }

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Spryker Demoshop.
+ * This file is part of the Spryker Suite.
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
@@ -31,7 +31,7 @@ class CustomerLoginCest
     public function testICanOpenLoginPage(CustomerPresentationTester $i)
     {
         $i->amOnPage(CustomerLoginPage::URL);
-        $i->see(CustomerLoginPage::TITLE_LOGIN, 'h4');
+        $i->see(CustomerLoginPage::TITLE_LOGIN);
     }
 
     /**

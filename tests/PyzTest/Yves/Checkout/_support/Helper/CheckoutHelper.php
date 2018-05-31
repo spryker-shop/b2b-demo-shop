@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Spryker Demoshop.
+ * This file is part of the Spryker Suite.
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
@@ -32,7 +32,7 @@ class CheckoutHelper extends Module
         $tester->fillField('//*[@id="registerForm_customer_email"]', 'email-test@domain-' . rand(100, 999) . '.tld');
         $tester->fillField('//*[@id="registerForm_customer_password_pass"]', 'as');
         $tester->fillField('//*[@id="registerForm_customer_password_confirm"]', 'as');
-        $tester->click('//*[@id="registerForm_customer_accept_terms"]');
+        $tester->click('[data-qa*="registerForm_customer_accept_terms"] [data-qa="label"]');
 
         return $this;
     }
@@ -43,7 +43,7 @@ class CheckoutHelper extends Module
     public function clickRegisterButton()
     {
         $tester = $this->getWebDriver();
-        $tester->click('/html/body/div[2]/main/div/div[1]/div[3]/form/div/div/button');
+        $tester->click('[data-qa*="register-form"] [data-qa="submit-button"]');
 
         return $this;
     }
@@ -54,7 +54,7 @@ class CheckoutHelper extends Module
     public function processAddressStep()
     {
         $tester = $this->getWebDriver();
-        $tester->see('Shipping Address');
+        $tester->see('Delivery Address');
 
         $tester->fillField('//*[@id="addressesForm_shippingAddress_first_name"]', 'first-name-test' . rand(100, 999));
         $tester->fillField('//*[@id="addressesForm_shippingAddress_last_name"]', 'last-name-test' . rand(100, 999));
@@ -77,7 +77,7 @@ class CheckoutHelper extends Module
         $tester = $this->getWebDriver();
         $tester->see('Shipment');
 
-        $tester->click('//*[@id="shipmentForm_idShipmentMethod_1"]');
+        $tester->click('[data-qa*="shipmentForm_idShipmentMethod_1"] [data-qa="label"]');
 
         return $this;
     }
@@ -88,7 +88,7 @@ class CheckoutHelper extends Module
     public function processOverviewStep()
     {
         $tester = $this->getWebDriver();
-        $tester->see('Overview');
+        $tester->see('Summary');
 
         return $this;
     }
@@ -112,7 +112,8 @@ class CheckoutHelper extends Module
         $tester = $this->getWebDriver();
         $tester->see('Payment');
 
-        $tester->click('//*[@id="paymentForm_paymentSelection_1"]');
+        $tester->click('[data-qa*="paymentForm_paymentSelection_1"] [data-qa="label"]');
+        $tester->executeJS('document.querySelector(".js-payment-method-2").classList.remove("is-hidden")');
         $tester->fillField('//*[@id="paymentForm_dummyPaymentInvoice_date_of_birth"]', '01.07.1985');
 
         return $this;
@@ -124,7 +125,7 @@ class CheckoutHelper extends Module
     public function nextStep()
     {
         $tester = $this->getWebDriver();
-        $tester->click('//*[contains(@class, "success")]');
+        $tester->click('//*[contains(@class, "button--success")]');
 
         return $this;
     }

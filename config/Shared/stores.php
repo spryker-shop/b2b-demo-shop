@@ -37,9 +37,28 @@ $stores['DE'] = [
     // internal and shop
     'currencyIsoCode' => 'EUR',
     'currencyIsoCodes' => ['EUR', 'CHF'],
+    'queuePools' => [
+        'synchronizationPool' => [
+            'AT-connection',
+            'DE-connection',
+        ],
+    ],
+    'storesWithSharedPersistence' => ['AT'],
 ];
 
-$stores['AT'] = $stores['DE'];
-$stores['US'] = $stores['DE'];
+$stores['AT'] = [
+        'storesWithSharedPersistence' => ['DE'],
+    ] + $stores['DE'];
+
+$stores['US'] = [
+        'queuePools' => [
+            'synchronizationPool' => [
+                'US-connection',
+            ],
+        ],
+        'storesWithSharedPersistence' => [],
+    ] + $stores['DE'];
+
+// @hook travis-ci
 
 return $stores;

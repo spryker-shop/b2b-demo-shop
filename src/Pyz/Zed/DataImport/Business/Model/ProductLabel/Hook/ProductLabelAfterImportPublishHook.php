@@ -1,14 +1,14 @@
 <?php
 
 /**
- * This file is part of the Spryker Demoshop.
+ * This file is part of the Spryker Suite.
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
 namespace Pyz\Zed\DataImport\Business\Model\ProductLabel\Hook;
 
-use Pyz\Zed\DataImport\Business\Model\DataImporterPublisher;
 use Spryker\Zed\DataImport\Business\Model\DataImporterAfterImportInterface;
+use Spryker\Zed\DataImport\Business\Model\Publisher\DataImporterPublisher;
 use Spryker\Zed\ProductLabel\Dependency\ProductLabelEvents;
 
 class ProductLabelAfterImportPublishHook implements DataImporterAfterImportInterface

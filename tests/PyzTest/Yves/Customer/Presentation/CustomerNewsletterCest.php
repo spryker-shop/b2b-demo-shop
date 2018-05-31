@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Spryker Demoshop.
+ * This file is part of the Spryker Suite.
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
@@ -36,9 +36,9 @@ class CustomerNewsletterCest
 
         $i->setDependency(NewsletterDependencyProvider::FACADE_MAIL, Stub::makeEmpty(NewsletterToMailInterface::class));
 
-        $i->click(['name' => CustomerNewsletterPage::FORM_FIELD_SELECTOR_NEWSLETTER_SUBSCRIPTION]);
+        $i->click(CustomerNewsletterPage::FORM_FIELD_SELECTOR_NEWSLETTER_SUBSCRIPTION);
         $i->click(CustomerNewsletterPage::BUTTON_SUBMIT);
-        $i->waitForText(CustomerNewsletterPage::SUCCESS_MESSAGE_SUBSCRIBED);
+        $i->seeInSource(CustomerNewsletterPage::SUCCESS_MESSAGE_SUBSCRIBED);
     }
 
     /**
@@ -54,8 +54,8 @@ class CustomerNewsletterCest
 
         $i->addNewsletterSubscription($customerTransfer->getEmail());
         $i->amOnPage(CustomerNewsletterPage::URL);
-        $i->click(['name' => CustomerNewsletterPage::FORM_FIELD_SELECTOR_NEWSLETTER_SUBSCRIPTION]);
+        $i->click(CustomerNewsletterPage::FORM_FIELD_SELECTOR_NEWSLETTER_SUBSCRIPTION);
         $i->click(CustomerNewsletterPage::BUTTON_SUBMIT);
-        $i->waitForText(CustomerNewsletterPage::SUCCESS_MESSAGE_UN_SUBSCRIBED);
+        $i->seeInSource(CustomerNewsletterPage::SUCCESS_MESSAGE_UN_SUBSCRIBED);
     }
 }

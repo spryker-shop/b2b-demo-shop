@@ -1,6 +1,6 @@
 {
-  "name": "spryker/shop-suite",
-  "description": "Spryker Shop Suite (private)",
+  "name": "spryker/suite-nonsplit",
+  "description": "Spryker Suite (internal)",
   "license": "MIT",
   "require": {
     "spryker/spryker": "dev-feature/core-2414-upload-files",
@@ -13,7 +13,8 @@
 
     "php": ">=7.1",
     "braintree/braintree_php": "~3.15.0",
-    "guzzlehttp/guzzle": "^6.2.1",
+    "codeitnowin/barcode": "^3.0.0",
+    "guzzlehttp/guzzle": "~6.3.0",
     "league/csv": "^8.1.0",
     "filp/whoops": "^2.1",
     "mandrill/mandrill": "~1.0.55",
@@ -21,9 +22,9 @@
     "nesbot/carbon": "~1.13.0",
     "pimple/pimple": "~1.1.1",
     "predis/predis": "^1.1.1",
-    "propel/propel": "dev-master#1f6557d1a6f436b6bb08099238878246362028ca",
+    "propel/propel": "2.0.0-alpha8",
     "psr/log": "^1.0.0",
-    "ruflin/elastica": "^3.2.0",
+    "ruflin/elastica": "~5.3.0",
     "silex/silex": "^1.3.5",
     "symfony-cmf/routing": "^1.3.0",
     "symfony/console": "^3.0.0",
@@ -66,10 +67,11 @@
     "spryker/code-generator": "dev-master",
     "spryker/code-sniffer": "dev-master",
     "spryker/git-hook": "dev-master",
+    "spryker/development-core": "dev-master",
 
-    "codeception/codeception": "^2.3.5",
+    "codeception/codeception": "~2.3.8",
+    "facebook/webdriver": "~1.3.0",
     "pdepend/pdepend": "^2.2.2",
-    "phploc/phploc": "^3.0.1",
     "phpmd/phpmd": "^2.4",
     "sebastian/phpcpd": "^2.0.2",
     "sensiolabs/security-checker": "^3.0.2",
@@ -85,7 +87,9 @@
     "nette/php-generator": "^2.6.1",
     "phpdocumentor/reflection-docblock": "^2.0",
     "squizlabs/php_codesniffer": "~3.1.0",
-    "ajgl/breakpoint-twig-extension": "^0.3.1"
+    "ajgl/breakpoint-twig-extension": "^0.3.1",
+    "phpstan/phpstan": "^0.9.2",
+    "phpunit/phpunit": "<7.0.0"
   },
   "autoload": {
     "psr-4": {
@@ -109,8 +113,11 @@
   "minimum-stability": "dev",
   "prefer-stable": true,
   "config": {
+    "platform": {
+      "php": "7.1.11"
+    },
     "use-include-path": true,
-    "process-timeout": 600
+    "process-timeout": 900
   },
   "repositories": [
     {
@@ -120,6 +127,10 @@
     {
       "type": "git",
       "url": "git@github.com:spryker/spryker-shop.git"
+    },
+    {
+      "type": "git",
+      "url": "git@github.com:spryker/development-core.git"
     }
   ],
   "scripts": {
@@ -137,10 +148,7 @@
       "GitHook\\Composer\\Scripts\\HookInstaller::installProjectHooks"
     ],
     "phpstan": [
-      "php -d memory_limit=1024M vendor/bin/phpstan analyze -c phpstan.neon src/ -l 1"
-    ],
-    "phpstan-core": [
-      "php -d memory_limit=2048M vendor/bin/phpstan analyze -c vendor/spryker/spryker/phpstan.neon vendor/spryker/spryker/Bundles/ -l 1"
+      "php -d memory_limit=1024M vendor/bin/phpstan analyze -c phpstan.neon src/ -l 2"
     ],
     "phpstan-setup": "vendor/bin/console dev:ide:generate-auto-completion"
   }

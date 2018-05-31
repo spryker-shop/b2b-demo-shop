@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Spryker Demoshop.
+ * This file is part of the Spryker Suite.
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
@@ -70,6 +70,6 @@ class CustomerPresentationTester extends Actor
         $i->fillField(CustomerRegistrationPage::FORM_FIELD_SELECTOR_EMAIL, $customerTransfer->getEmail());
         $i->fillField(CustomerRegistrationPage::FORM_FIELD_SELECTOR_PASSWORD, $customerTransfer->getPassword());
         $i->fillField(CustomerRegistrationPage::FORM_FIELD_SELECTOR_PASSWORD_CONFIRM, $customerTransfer->getPassword());
-        $i->checkOption(CustomerRegistrationPage::FORM_FIELD_SELECTOR_ACCEPT_TERMS);
+        $i->click(CustomerRegistrationPage::FORM_FIELD_SELECTOR_ACCEPT_TERMS);
     }
 }
