@@ -40,7 +40,6 @@ use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\Messenger\Communication\Plugin\ServiceProvider\MessengerServiceProvider;
 use Spryker\Zed\Money\Communication\Plugin\ServiceProvider\TwigMoneyServiceProvider;
 use Spryker\Zed\Monitoring\Communication\Plugin\ServiceProvider\MonitoringRequestTransactionServiceProvider;
-use Spryker\Zed\NewRelic\Communication\Plugin\ServiceProvider\NewRelicRequestTransactionServiceProvider;
 use Spryker\Zed\Propel\Communication\Plugin\ServiceProvider\PropelServiceProvider;
 use Spryker\Zed\Session\Communication\Plugin\ServiceProvider\SessionServiceProvider as SprykerSessionServiceProvider;
 use Spryker\Zed\Twig\Communication\Plugin\ServiceProvider\TwigServiceProvider as SprykerTwigServiceProvider;
@@ -80,7 +79,6 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
             new TwigCurrencyServiceProvider(),
             new MessengerServiceProvider(),
             new ZedNavigationServiceProvider(),
-            new NewRelicRequestTransactionServiceProvider(),
             new MonitoringRequestTransactionServiceProvider(),
             new TranslationServiceProvider(),
             new DateTimeFormatterServiceProvider(),
@@ -143,7 +141,6 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
             new MvcRoutingServiceProvider(),
             new SilexRoutingServiceProvider(),
             new GatewayServiceProviderPlugin(),
-            new NewRelicRequestTransactionServiceProvider(),
             new MonitoringRequestTransactionServiceProvider(),
             new HttpFragmentServiceProvider(),
             new SubRequestServiceProvider(),
@@ -173,7 +170,6 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
             new MvcRoutingServiceProvider(),
             new SilexRoutingServiceProvider(),
             new GatewayServiceProviderPlugin(),
-            new NewRelicRequestTransactionServiceProvider(),
             new MonitoringRequestTransactionServiceProvider(),
             new HttpFragmentServiceProvider(),
             new SubRequestServiceProvider(),
