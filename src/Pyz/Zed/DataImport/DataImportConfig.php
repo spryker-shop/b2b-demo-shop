@@ -7,6 +7,8 @@
 
 namespace Pyz\Zed\DataImport;
 
+use Generated\Shared\Transfer\DataImporterConfigurationTransfer;
+use Generated\Shared\Transfer\DataImporterReaderConfigurationTransfer;
 use Spryker\Zed\DataImport\DataImportConfig as SprykerDataImportConfig;
 
 class DataImportConfig extends SprykerDataImportConfig
