@@ -42,4 +42,20 @@ class ProductManagementDependencyProvider extends SprykerProductManagementDepend
     {
         return new MoneyFormTypePlugin();
     }
+
+    /**
+     * @return \Spryker\Zed\ProductManagementExtension\Dependency\Plugin\ProductConcreteFormEditTabsExpanderPluginInterface[]
+     */
+    protected function getProductConcreteFormEditTabsExpanderPlugins(): array
+    {
+        return [];
+    }
+
+    /**
+     * @return \Spryker\Zed\ProductManagementExtension\Dependency\Plugin\ProductConcreteFormEditDataProviderExpanderPluginInterface[]
+     */
+    protected function getProductConcreteFormEditDataProviderExpanderPlugins(): array
+    {
+        return [];
+    }
 }
