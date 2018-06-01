@@ -47,6 +47,22 @@ class ProductManagementDependencyProvider extends SprykerProductManagementDepend
     }
 
     /**
+     * @return \Spryker\Zed\ProductManagementExtension\Dependency\Plugin\ProductConcreteFormEditTabsExpanderPluginInterface[]
+     */
+    protected function getProductConcreteFormEditTabsExpanderPlugins(): array
+    {
+        return [];
+    }
+
+    /**
+     * @return \Spryker\Zed\ProductManagementExtension\Dependency\Plugin\ProductConcreteFormEditDataProviderExpanderPluginInterface[]
+     */
+    protected function getProductConcreteFormEditDataProviderExpanderPlugins(): array
+    {
+        return [];
+    }
+
+    /**
      * @return array
      */
     protected function getProductConcreteEditFormExpanderPlugins(): array
