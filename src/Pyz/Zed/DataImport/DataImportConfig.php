@@ -7,8 +7,6 @@
 
 namespace Pyz\Zed\DataImport;
 
-use Generated\Shared\Transfer\DataImporterConfigurationTransfer;
-use Generated\Shared\Transfer\DataImporterReaderConfigurationTransfer;
 use Spryker\Zed\DataImport\DataImportConfig as SprykerDataImportConfig;
 
 class DataImportConfig extends SprykerDataImportConfig
@@ -363,24 +361,5 @@ class DataImportConfig extends SprykerDataImportConfig
     public function getMimeTypeDataImporterConfiguration()
     {
         return $this->buildImporterConfiguration('mime_type.csv', static::IMPORT_TYPE_MIME_TYPE);
-    }
-
-    /**
-     * @param string $file
-     * @param string $importType
-     *
-     * @return \Generated\Shared\Transfer\DataImporterConfigurationTransfer
-     */
-    protected function buildImporterConfiguration($file, $importType)
-    {
-        $dataImportReaderConfigurationTransfer = new DataImporterReaderConfigurationTransfer();
-        $dataImportReaderConfigurationTransfer->setFileName($this->getDataImportRootPath() . $file);
-
-        $dataImporterConfigurationTransfer = new DataImporterConfigurationTransfer();
-        $dataImporterConfigurationTransfer
-            ->setImportType($importType)
-            ->setReaderConfiguration($dataImportReaderConfigurationTransfer);
-
-        return $dataImporterConfigurationTransfer;
     }
 }

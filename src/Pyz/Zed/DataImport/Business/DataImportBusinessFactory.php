@@ -309,28 +309,6 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     }
 
     /**
-     * @return \Pyz\Zed\DataImport\Business\Model\CmsBlock\Category\Repository\CategoryRepositoryInterface
-     */
-    protected function createCategoryRepository()
-    {
-        return new CategoryRepository();
-    }
-
-    /**
-     * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface|\Spryker\Zed\DataImport\Business\Model\DataSet\DataSetStepBrokerAwareInterface
-     */
-    protected function createCmsBlockStoreImporter()
-    {
-        $dataImporter = $this->getCsvDataImporterFromConfig($this->getConfig()->getCmsBlockStoreDataImporterConfiguration());
-
-        $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker(CmsBlockStoreWriterStep::BULK_SIZE);
-        $dataSetStepBroker->addStep(new CmsBlockStoreWriterStep());
-        $dataImporter->addDataSetStepBroker($dataSetStepBroker);
-
-        return $dataImporter;
-    }
-
-    /**
      * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface|\Spryker\Zed\DataImport\Business\Model\DataSet\DataSetStepBrokerAwareInterface
      */
     protected function createCmsBlockCategoryPositionImporter()
