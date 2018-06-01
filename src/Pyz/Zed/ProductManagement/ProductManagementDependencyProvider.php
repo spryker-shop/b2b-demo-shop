@@ -10,8 +10,9 @@ namespace Pyz\Zed\ProductManagement;
 use Spryker\Zed\CmsBlockProductConnector\Communication\Plugin\CmsBlockProductAbstractBlockListViewPlugin;
 use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\Money\Communication\Plugin\Form\MoneyFormTypePlugin;
-use Spryker\Zed\ProductAlternativeGui\Communication\Plugin\ProductConcreteEditFormExpanderPlugin;
-use Spryker\Zed\ProductAlternativeGui\Communication\Plugin\ProductConcreteFormEditDataProviderExpanderPlugin;
+use Spryker\Zed\ProductAlternativeGui\Communication\Plugin\ProductManagement\ProductConcreteEditFormExpanderPlugin;
+use Spryker\Zed\ProductAlternativeGui\Communication\Plugin\ProductManagement\ProductConcreteFormEditDataProviderExpanderPlugin;
+use Spryker\Zed\ProductAlternativeGui\Communication\Plugin\ProductManagement\ProductFormTransferMapperExpanderPlugin;
 use Spryker\Zed\ProductManagement\ProductManagementDependencyProvider as SprykerProductManagementDependencyProvider;
 use Spryker\Zed\Store\Communication\Plugin\Form\StoreRelationToggleFormTypePlugin;
 
@@ -62,6 +63,16 @@ class ProductManagementDependencyProvider extends SprykerProductManagementDepend
     {
         return [
             new ProductConcreteFormEditDataProviderExpanderPlugin(),
+        ];
+    }
+
+    /**
+     * @return array
+     */
+    protected function getProductFormTransferMapperExpanderPlugins(): array
+    {
+        return [
+            new ProductFormTransferMapperExpanderPlugin(),
         ];
     }
 }
