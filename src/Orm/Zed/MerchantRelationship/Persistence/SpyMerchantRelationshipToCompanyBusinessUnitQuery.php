@@ -2,7 +2,7 @@
 
 namespace Orm\Zed\MerchantRelationship\Persistence;
 
-use Orm\Zed\MerchantRelationship\Persistence\Base\SpyMerchantRelationshipToCompanyBusinessUnitQuery as BaseSpyMerchantRelationshipToCompanyBusinessUnitQuery;
+use Spryker\Zed\MerchantRelationship\Persistence\Propel\AbstractSpyMerchantRelationshipToCompanyBusinessUnitQuery as BaseSpyMerchantRelationshipToCompanyBusinessUnitQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'spy_merchant_relationship_to_company_business_unit' table.
