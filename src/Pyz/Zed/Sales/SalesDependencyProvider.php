@@ -12,7 +12,7 @@ use Spryker\Zed\Discount\Communication\Plugin\Sales\DiscountOrderHydratePlugin;
 use Spryker\Zed\Payment\Communication\Plugin\Sales\PaymentOrderHydratePlugin;
 use Spryker\Zed\ProductBundle\Communication\Plugin\Sales\ProductBundleIdHydratorPlugin;
 use Spryker\Zed\ProductBundle\Communication\Plugin\Sales\ProductBundleOrderHydratePlugin;
-use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\SalesExtension\ProductMeasurementSalesUnitOrderItemExpanderPreSavePlugin;
+use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\SalesExtension\QuantitySalesUnitOrderItemExpanderPreSavePlugin;
 use Spryker\Zed\ProductOption\Communication\Plugin\Sales\ProductOptionGroupIdHydratorPlugin;
 use Spryker\Zed\ProductOption\Communication\Plugin\Sales\ProductOptionOrderHydratePlugin;
 use Spryker\Zed\ProductOption\Communication\Plugin\Sales\ProductOptionSortHydratePlugin;
@@ -50,7 +50,7 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
     protected function getOrderItemExpanderPreSavePlugins()
     {
         return [
-            new ProductMeasurementSalesUnitOrderItemExpanderPreSavePlugin(),
+            new QuantitySalesUnitOrderItemExpanderPreSavePlugin(),
         ];
     }
 
