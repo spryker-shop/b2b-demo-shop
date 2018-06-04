@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "f5cb557882de4d97fd230c16caeb601a",
+    "content-hash": "b30b1cefcfe883d36c0c39652f44347c",
     "packages": [
         {
             "name": "braintree/braintree_php",
@@ -1947,19 +1947,19 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/event-behavior.git",
-                "reference": "fe7334cd79641006ca45fa360f7d1f0564321345"
+                "reference": "9de73f7ebce77354f86b26ec1e2c5530b7120d7f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/event-behavior/zipball/fe7334cd79641006ca45fa360f7d1f0564321345",
-                "reference": "fe7334cd79641006ca45fa360f7d1f0564321345",
+                "url": "https://api.github.com/repos/spryker/event-behavior/zipball/9de73f7ebce77354f86b26ec1e2c5530b7120d7f",
+                "reference": "9de73f7ebce77354f86b26ec1e2c5530b7120d7f",
                 "shasum": ""
             },
             "require": {
                 "spryker/error-handler": "^2.1.2",
-                "spryker/event": "^2.0.0",
-                "spryker/kernel": "^3.12.0",
-                "spryker/propel-orm": "^1.0.0",
+                "spryker/event": "^2.1.0",
+                "spryker/kernel": "^3.20.0",
+                "spryker/propel-orm": "^1.6.0",
                 "spryker/symfony": "^3.1.0",
                 "spryker/util-encoding": "^2.0.0",
                 "spryker/zend": "^2.1.0"
@@ -1991,11 +1991,14 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
+            "include-path": [
+                "src/"
+            ],
             "license": [
                 "proprietary"
             ],
             "description": "EventBehavior module",
-            "time": "2018-04-24T10:56:37+00:00"
+            "time": "2018-05-30T09:20:04+00:00"
         },
         {
             "name": "spryker/install",
@@ -2047,20 +2050,21 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/rabbit-mq.git",
-                "reference": "3c84d57b244f9a36ada13a0b1f21ff7162d82c6f"
+                "reference": "0516e7c7d9be5eb11e6e9999a367f32670eecf90"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/rabbit-mq/zipball/3c84d57b244f9a36ada13a0b1f21ff7162d82c6f",
-                "reference": "3c84d57b244f9a36ada13a0b1f21ff7162d82c6f",
+                "url": "https://api.github.com/repos/spryker/rabbit-mq/zipball/0516e7c7d9be5eb11e6e9999a367f32670eecf90",
+                "reference": "0516e7c7d9be5eb11e6e9999a367f32670eecf90",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
                 "php-amqplib/php-amqplib": "^2.6",
-                "spryker/kernel": "^3.0.0",
-                "spryker/queue": "^1.0.0",
-                "spryker/transfer": "^3.3.4"
+                "spryker/kernel": "^3.20.0",
+                "spryker/queue": "^1.1.0",
+                "spryker/store": "^1.6.0",
+                "spryker/transfer": "^3.6.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*"
@@ -2097,15 +2101,15 @@
                 "rabbit-mq",
                 "standards"
             ],
-            "time": "2018-01-26T13:26:48+00:00"
+            "time": "2018-05-30T09:19:47+00:00"
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-feature/ps-808-business-on-behalf",
+            "version": "dev-feature/ps-808/dev-business-on-behalf",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "3e09332f51b6a1c6bdb3ca5d2bc35e17845289fb"
+                "reference": "3e51c4f81abbdb3551918076dc3e6e605565e380"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.0",
@@ -2263,6 +2267,7 @@
                 "spryker/product-label-storage": "*",
                 "spryker/product-management": "*",
                 "spryker/product-measurement-unit": "*",
+                "spryker/product-measurement-unit-data-import": "*",
                 "spryker/product-measurement-unit-gui": "*",
                 "spryker/product-measurement-unit-storage": "*",
                 "spryker/product-new": "*",
@@ -2272,6 +2277,7 @@
                 "spryker/product-option-storage": "*",
                 "spryker/product-page-search": "*",
                 "spryker/product-quantity": "*",
+                "spryker/product-quantity-data-import": "*",
                 "spryker/product-quantity-storage": "*",
                 "spryker/product-relation": "*",
                 "spryker/product-relation-collector": "*",
@@ -2362,15 +2368,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2018-05-31T16:42:26+00:00"
+            "time": "2018-06-04T14:45:02+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-feature/ps-808-business-on-behalf",
+            "version": "dev-feature/ps-808/dev-business-on-behalf",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "aab59b5bd972d35ddf8ede4a58138577aecc8847"
+                "reference": "25182b5bf4558d8089a8425af529911a61146c3e"
             },
             "require": {
                 "php": ">=7.1"
@@ -2443,7 +2449,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2018-06-02T19:12:56+00:00"
+            "time": "2018-06-04T14:44:31+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -2451,24 +2457,27 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/synchronization-behavior.git",
-                "reference": "4729e470bd1c1c4b8aed3a94b0a44003485684d7"
+                "reference": "164e3761cba658720e1101d47815aa0ac6084e63"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/synchronization-behavior/zipball/4729e470bd1c1c4b8aed3a94b0a44003485684d7",
-                "reference": "4729e470bd1c1c4b8aed3a94b0a44003485684d7",
+                "url": "https://api.github.com/repos/spryker/synchronization-behavior/zipball/164e3761cba658720e1101d47815aa0ac6084e63",
+                "reference": "164e3761cba658720e1101d47815aa0ac6084e63",
                 "shasum": ""
             },
             "require": {
-                "spryker/kernel": "^3.4.0",
-                "spryker/propel-orm": "^1.0.0",
+                "spryker/kernel": "^3.20.0",
+                "spryker/propel-orm": "^1.6.0",
                 "spryker/zend": "^2.1.0"
             },
             "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/queue": "^1.1.0",
                 "spryker/synchronization": "^0.1.0 || ^0.2.0"
             },
             "suggest": {
-                "spryker/synchronization": "*"
+                "spryker/queue": "Generated classes are using spryker/queue module.",
+                "spryker/synchronization": "Generated classes are using spryker/synchronization module."
             },
             "type": "propel-behavior",
             "extra": {
@@ -2484,11 +2493,14 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
+            "include-path": [
+                "src/"
+            ],
             "license": [
                 "proprietary"
             ],
             "description": "SynchronizationBehavior module",
-            "time": "2018-02-26T14:04:23+00:00"
+            "time": "2018-05-30T09:19:55+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -5078,12 +5090,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/bootstrap.git",
-                "reference": "a64071253a70fb31ca31762763f993859ff0b691"
+                "reference": "268816e3f1bb7426c3a4ceec2bd38a036b532543"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/bootstrap/zipball/a64071253a70fb31ca31762763f993859ff0b691",
-                "reference": "a64071253a70fb31ca31762763f993859ff0b691",
+                "url": "https://api.github.com/repos/nette/bootstrap/zipball/268816e3f1bb7426c3a4ceec2bd38a036b532543",
+                "reference": "268816e3f1bb7426c3a4ceec2bd38a036b532543",
                 "shasum": ""
             },
             "require": {
@@ -5146,7 +5158,7 @@
                 "configurator",
                 "nette"
             ],
-            "time": "2018-05-16T11:51:51+00:00"
+            "time": "2018-05-17T12:52:20+00:00"
         },
         {
             "name": "nette/di",
@@ -5387,7 +5399,7 @@
                 "php",
                 "scaffolding"
             ],
-            "time": "2018-04-26T09:21:21+00:00"
+            "time": "2018-04-26T16:47:39+00:00"
         },
         {
             "name": "nette/robot-loader",
@@ -7433,12 +7445,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/code-sniffer.git",
-                "reference": "eafa06cfc30dce9855b10aad947a5e7ff60a2ff6"
+                "reference": "e2eca7ee6188b0c354ff96d01d389fe8cd13b09a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/eafa06cfc30dce9855b10aad947a5e7ff60a2ff6",
-                "reference": "eafa06cfc30dce9855b10aad947a5e7ff60a2ff6",
+                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/e2eca7ee6188b0c354ff96d01d389fe8cd13b09a",
+                "reference": "e2eca7ee6188b0c354ff96d01d389fe8cd13b09a",
                 "shasum": ""
             },
             "require": {
@@ -7476,7 +7488,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2018-05-08T15:23:12+00:00"
+            "time": "2018-05-31T15:56:27+00:00"
         },
         {
             "name": "spryker/development-core",

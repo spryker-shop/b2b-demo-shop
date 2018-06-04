@@ -12,6 +12,7 @@ use Spryker\Zed\BusinessOnBehalf\Communication\Plugin\CustomerDefaultCompanyUser
 use Spryker\Zed\BusinessOnBehalf\Communication\Plugin\IsOnBehalfCustomerTransferExpanderPlugin;
 use Spryker\Zed\CompanyRole\Communication\Plugin\PermissionCustomerExpanderPlugin;
 use Spryker\Zed\CompanyUser\Communication\Plugin\Customer\CustomerTransferCompanyUserExpanderPlugin;
+use Spryker\Zed\CompanyUserInvitation\Communication\Plugin\CompanyUserInvitationPostCustomerRegistrationPlugin;
 use Spryker\Zed\Customer\CustomerDependencyProvider as SprykerCustomerDependencyProvider;
 use Spryker\Zed\CustomerGroup\Communication\Plugin\CustomerAnonymizer\RemoveCustomerFromGroupPlugin;
 use Spryker\Zed\CustomerUserConnector\Communication\Plugin\CustomerTransferUsernameExpanderPlugin;
@@ -71,6 +72,16 @@ class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
             new ShoppingListPermissionCustomerExpanderPlugin(),
             new IsOnBehalfCustomerTransferExpanderPlugin(), #BusinessOnBefalfFeature
             new CustomerDefaultCompanyUserExpanderPlugin(), #BusinessOnBefalfFeature
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\CustomerExtension\Dependency\Plugin\PostCustomerRegistrationPluginInterface[]
+     */
+    protected function getPostCustomerRegistrationPlugins(): array
+    {
+        return [
+            new CompanyUserInvitationPostCustomerRegistrationPlugin(),
         ];
     }
 }
