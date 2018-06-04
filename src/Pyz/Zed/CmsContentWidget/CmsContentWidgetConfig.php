@@ -11,6 +11,7 @@ use Spryker\Shared\CmsContentWidgetProductConnector\ContentWidgetConfigurationPr
 use Spryker\Shared\CmsContentWidgetProductGroupConnector\ContentWidgetConfigurationProvider\CmsProductGroupContentWidgetConfigurationProvider;
 use Spryker\Shared\CmsContentWidgetProductSetConnector\ContentWidgetConfigurationProvider\CmsProductSetContentWidgetConfigurationProvider;
 use Spryker\Zed\CmsContentWidget\CmsContentWidgetConfig as SprykerCmsContentConfig;
+use SprykerShop\Shared\FileWidget\ContentWidgetConfigurationProvider\FileWidgetConfigurationProvider;
 
 class CmsContentWidgetConfig extends SprykerCmsContentConfig
 {
@@ -25,6 +26,7 @@ class CmsContentWidgetConfig extends SprykerCmsContentConfig
             CmsProductContentWidgetConfigurationProvider::FUNCTION_NAME => new CmsProductContentWidgetConfigurationProvider(),
             CmsProductSetContentWidgetConfigurationProvider::FUNCTION_NAME => new CmsProductSetContentWidgetConfigurationProvider(),
             CmsProductGroupContentWidgetConfigurationProvider::FUNCTION_NAME => new CmsProductGroupContentWidgetConfigurationProvider(),
+            FileWidgetConfigurationProvider::FUNCTION_NAME => new FileWidgetConfigurationProvider(),
         ];
     }
 }

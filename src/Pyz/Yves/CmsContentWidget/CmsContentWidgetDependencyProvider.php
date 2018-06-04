@@ -11,15 +11,17 @@ use Spryker\Yves\CmsContentWidget\CmsContentWidgetDependencyProvider as SprykerC
 use SprykerShop\Shared\CmsContentWidgetProductConnector\ContentWidgetConfigurationProvider\CmsProductContentWidgetConfigurationProvider;
 use SprykerShop\Shared\CmsContentWidgetProductConnector\ContentWidgetConfigurationProvider\CmsProductGroupContentWidgetConfigurationProvider;
 use SprykerShop\Shared\CmsContentWidgetProductSetConnector\ContentWidgetConfigurationProvider\CmsProductSetContentWidgetConfigurationProvider;
+use SprykerShop\Shared\FileWidget\ContentWidgetConfigurationProvider\FileWidgetConfigurationProvider;
 use SprykerShop\Yves\CmsContentWidgetProductConnector\Plugin\CmsProductContentWidgetPlugin;
 use SprykerShop\Yves\CmsContentWidgetProductSetConnector\Plugin\CmsProductSetContentWidgetPlugin;
+use SprykerShop\Yves\FileWidget\Plugin\FileWidgetPlugin;
 
 class CmsContentWidgetDependencyProvider extends SprykerCmsContentWidgetDependencyProvider
 {
     /**
      * {@inheritdoc}
      *
-     * @return \Spryker\Yves\CmsContentWidget\Dependency\CmsContentWidgetPluginInterface[]
+     * @return \Spryker\Yves\CmsContentWidget\Dependency\CmsContentWidgetPluginInterface[]CmsFileWidget/Theme/default/_file/cms-file-content-widget.twig
      */
     public function getCmsContentWidgetPlugins()
     {
@@ -32,6 +34,9 @@ class CmsContentWidgetDependencyProvider extends SprykerCmsContentWidgetDependen
             ),
             CmsProductSetContentWidgetConfigurationProvider::FUNCTION_NAME => new CmsProductSetContentWidgetPlugin(
                 new CmsProductSetContentWidgetConfigurationProvider()
+            ),
+            FileWidgetConfigurationProvider::FUNCTION_NAME => new FileWidgetPlugin(
+                new FileWidgetConfigurationProvider()
             ),
         ];
     }
