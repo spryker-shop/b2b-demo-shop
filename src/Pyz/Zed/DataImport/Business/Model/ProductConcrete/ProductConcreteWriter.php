@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\DataImport\Business\Model\ProductConcrete;
 
+use Orm\Zed\Product\Persistence\Map\SpyProductTableMap;
 use Orm\Zed\Product\Persistence\SpyProduct;
 use Orm\Zed\Product\Persistence\SpyProductLocalizedAttributesQuery;
 use Orm\Zed\Product\Persistence\SpyProductQuery;
@@ -33,6 +34,7 @@ class ProductConcreteWriter extends PublishAwareStep implements DataImportStepIn
     const KEY_IS_COMPLETE = 'is_complete';
     const KEY_IS_SEARCHABLE = 'is_searchable';
     const KEY_BUNDLES = 'bundled';
+    const KEY_IS_QUANTITY_SPLITTABLE = 'is_quantity_splittable';
 
     /**
      * @var \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepository
@@ -81,6 +83,10 @@ class ProductConcreteWriter extends PublishAwareStep implements DataImportStepIn
             ->setIsActive(isset($dataSet[static::KEY_IS_ACTIVE]) ? $dataSet[static::KEY_IS_ACTIVE] : true)
             ->setFkProductAbstract($idAbstract)
             ->setAttributes(json_encode($dataSet[static::KEY_ATTRIBUTES]));
+
+        if(SpyProductTableMap::getTableMap()->hasColumn(static::KEY_IS_QUANTITY_SPLITTABLE)) {
+            $productEntity->setIsQuantitySplittable(empty($dataSet[static::KEY_IS_QUANTITY_SPLITTABLE]) ?? true);
+        }
 
         $productEntity->save();
 
