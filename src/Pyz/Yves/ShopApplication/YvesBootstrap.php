@@ -203,7 +203,6 @@ class YvesBootstrap extends SprykerYvesBootstrap
             new CartToShoppingListWidgetControllerProvider($isSsl), #ShoppingListFeature
             new ShoppingListWidgetControllerProvider($isSsl), #ShoppingListFeature
             new CompanyUserInvitationPageControllerProvider($isSsl), #BulkImportCompanyUserInvitationsFeature
-            new FileManagerControllerProvider($isSsl),
         ];
     }
 }
