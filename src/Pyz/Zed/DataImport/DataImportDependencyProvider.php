@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\DataImport;
 
+use Spryker\Zed\BusinessOnBehalfDataImport\Communication\Plugin\BusinessOnBehalfDataImportPlugin;
 use Spryker\Zed\CategoryDataImport\Communication\Plugin\CategoryDataImportPlugin;
 use Spryker\Zed\CompanyBusinessUnitDataImport\Communication\Plugin\CompanyBusinessUnitDataImportPlugin;
 use Spryker\Zed\CompanyDataImport\Communication\Plugin\CompanyDataImportPlugin;
@@ -136,6 +137,7 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
             new ProductMeasurementSalesUnitDataImportPlugin(),
             new ProductMeasurementSalesUnitStoreDataImportPlugin(),
             new ProductQuantityDataImportPlugin(),
+            new BusinessOnBehalfDataImportPlugin(),
         ];
     }
 
