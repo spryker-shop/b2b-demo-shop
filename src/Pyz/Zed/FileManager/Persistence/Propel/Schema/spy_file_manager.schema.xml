@@ -3,6 +3,12 @@
           xsi:noNamespaceSchemaLocation="http://static.spryker.com/schema-01.xsd"
           namespace="Orm\Zed\FileManager\Persistence" package="src.Orm.Zed.FileManager.Persistence">
 
+    <table name="spy_file" phpName="SpyFile">
+        <behavior name="event">
+            <parameter name="spy_file_all" column="*"/>
+        </behavior>
+    </table>
+
     <table name="spy_file_info" phpName="SpyFileInfo">
         <behavior name="timestampable"/>
 
