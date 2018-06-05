@@ -5,12 +5,12 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Orm\Zed\GiftCardBalance\Persistence;
+namespace Orm\Zed\MerchantRelationship\Persistence;
 
-use Orm\Zed\GiftCardBalance\Persistence\Base\SpyGiftCardBalanceLogQuery as BaseSpyGiftCardBalanceLogQuery;
+use Spryker\Zed\MerchantRelationship\Persistence\Propel\AbstractSpyMerchantRelationshipQuery as BaseSpyMerchantRelationshipQuery;
 
 /**
- * Skeleton subclass for performing query and update operations on the 'spy_gift_card_balance_log' table.
+ * Skeleton subclass for performing query and update operations on the 'spy_merchant_relationship' table.
  *
  *
  *
@@ -19,6 +19,6 @@ use Orm\Zed\GiftCardBalance\Persistence\Base\SpyGiftCardBalanceLogQuery as BaseS
  * long as it does not already exist in the output directory.
  *
  */
-class SpyGiftCardBalanceLogQuery extends BaseSpyGiftCardBalanceLogQuery
+class SpyMerchantRelationshipQuery extends BaseSpyMerchantRelationshipQuery
 {
 }

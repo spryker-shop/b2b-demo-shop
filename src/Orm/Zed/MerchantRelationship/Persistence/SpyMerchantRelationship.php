@@ -5,12 +5,12 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Orm\Zed\CompanyRole\Persistence;
+namespace Orm\Zed\MerchantRelationship\Persistence;
 
-use Spryker\Zed\CompanyRole\Persistence\Propel\AbstractSpyCompanyRoleToCompanyUserQuery as BaseSpyCompanyRoleToCompanyUserQuery;
+use Spryker\Zed\MerchantRelationship\Persistence\Propel\AbstractSpyMerchantRelationship as BaseSpyMerchantRelationship;
 
 /**
- * Skeleton subclass for performing query and update operations on the 'spy_company_role_to_company_user' table.
+ * Skeleton subclass for representing a row from the 'spy_merchant_relationship' table.
  *
  *
  *
@@ -19,6 +19,6 @@ use Spryker\Zed\CompanyRole\Persistence\Propel\AbstractSpyCompanyRoleToCompanyUs
  * long as it does not already exist in the output directory.
  *
  */
-class SpyCompanyRoleToCompanyUserQuery extends BaseSpyCompanyRoleToCompanyUserQuery
+class SpyMerchantRelationship extends BaseSpyMerchantRelationship
 {
 }
