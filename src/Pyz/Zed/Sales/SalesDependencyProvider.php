@@ -16,9 +16,11 @@ use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\SalesExtension\Quant
 use Spryker\Zed\ProductOption\Communication\Plugin\Sales\ProductOptionGroupIdHydratorPlugin;
 use Spryker\Zed\ProductOption\Communication\Plugin\Sales\ProductOptionOrderHydratePlugin;
 use Spryker\Zed\ProductOption\Communication\Plugin\Sales\ProductOptionSortHydratePlugin;
+use Spryker\Zed\Sales\Communication\Plugin\Checkout\SalesOrderItemExpanderPlugin;
 use Spryker\Zed\Sales\SalesDependencyProvider as SprykerSalesDependencyProvider;
 use Spryker\Zed\SalesProductConnector\Communication\Plugin\Sales\ItemMetadataHydratorPlugin;
 use Spryker\Zed\SalesProductConnector\Communication\Plugin\Sales\ProductIdHydratorPlugin;
+use Spryker\Zed\SalesQuantity\Communication\Plugin\Checkout\SalesQuantityOrderItemExpanderPlugin;
 use Spryker\Zed\SalesReclamation\Communication\Plugin\SalesTablePlugin;
 use Spryker\Zed\Shipment\Communication\Plugin\ShipmentOrderHydratePlugin;
 
@@ -51,6 +53,17 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
     {
         return [
             new QuantitySalesUnitOrderItemExpanderPreSavePlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\SalesExtension\Dependency\Plugin\SalesOrderItemExpanderPluginInterface[]
+     */
+    protected function getSalesOrderItemExpanderPlugins()
+    {
+        return [
+            new SalesQuantityOrderItemExpanderPlugin(),
+            new SalesOrderItemExpanderPlugin(),
         ];
     }
 
