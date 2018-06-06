@@ -59,7 +59,7 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
     /**
      * @return \Spryker\Zed\SalesExtension\Dependency\Plugin\SalesOrderItemExpanderPluginInterface[]
      */
-    protected function getSalesOrderItemExpanderPlugins()
+    public function getSalesOrderItemExpanderPlugins(): array
     {
         return [
             new SalesQuantityOrderItemExpanderPlugin(),
