@@ -12,6 +12,9 @@ use Spryker\Zed\Synchronization\SynchronizationDependencyProvider as SprykerSync
 
 class SynchronizationDependencyProvider extends SprykerSynchronizationDependencyProvider
 {
+    /**
+     * @return array
+     */
     protected function getSynchronizationDataPlugins()
     {
         return [
