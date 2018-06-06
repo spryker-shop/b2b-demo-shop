@@ -99,6 +99,7 @@ use Spryker\Zed\StateMachine\Communication\Console\ClearLocksConsole as StateMac
 use Spryker\Zed\Storage\Communication\Console\StorageDeleteAllConsole;
 use Spryker\Zed\Storage\Communication\Console\StorageExportRdbConsole;
 use Spryker\Zed\Storage\Communication\Console\StorageImportRdbConsole;
+use Spryker\Zed\Synchronization\Communication\Console\ExportSynchronizedDataConsole;
 use Spryker\Zed\Transfer\Communication\Console\DataBuilderGeneratorConsole;
 use Spryker\Zed\Transfer\Communication\Console\GeneratorConsole;
 use Spryker\Zed\Transfer\Communication\Console\ValidatorConsole;
@@ -187,6 +188,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . CompanyUnitAddressLabelDataImportConfig::IMPORT_TYPE_COMPANY_UNIT_ADDRESS_LABEL_RELATION),
 
             new EventBehaviorTriggerTimeoutConsole(),
+            new ExportSynchronizedDataConsole(),
 
             // Setup commands
             new RunnerConsole(),
