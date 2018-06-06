@@ -96,7 +96,7 @@ $jobs[] = [
 
 $jobs[] = [
     'name' => 'deactivate-discontinued-products',
-    'command' => '$PHP_BIN vendor/bin/console deactivate-discontinued-products -vvv',
+    'command' => '$PHP_BIN vendor/bin/console deactivate-discontinued-products',
     'schedule' => '0 0 * * *',
     'enable' => true,
     'run_on_non_production' => true,
