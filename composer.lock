@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "a825bbaa839d9553ca713985a047aa37",
+    "content-hash": "788df378a86fe98d1560474ca2157191",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -15078,6 +15078,98 @@
             ],
             "description": "ProductOptionStorage module",
             "time": "2018-05-29T11:08:35+00:00"
+        },
+        {
+            "name": "spryker/product-packaging-unit",
+            "version": "0.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/product-packaging-unit.git",
+                "reference": "995c711600761aea85b8e42a71462c9b85bba783"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/product-packaging-unit/zipball/995c711600761aea85b8e42a71462c9b85bba783",
+                "reference": "995c711600761aea85b8e42a71462c9b85bba783",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/kernel": "^3.0.0",
+                "spryker/product": "^6.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/installer": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/installer": "If you want to use Installer plugins: ^4.0.0."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/",
+                    "SprykerTest\\Zed\\ProductPackagingUnit\\Helper\\": "tests/SprykerTest/Zed/ProductPackagingUnit/_support/Helper/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ProductPackagingUnit module",
+            "time": "2018-06-05T18:55:29+00:00"
+        },
+        {
+            "name": "spryker/product-packaging-unit-data-import",
+            "version": "0.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/product-packaging-unit-data-import.git",
+                "reference": "e2c49db7933f86acb89fddeeaf8644dbd2384305"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/product-packaging-unit-data-import/zipball/e2c49db7933f86acb89fddeeaf8644dbd2384305",
+                "reference": "e2c49db7933f86acb89fddeeaf8644dbd2384305",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/data-import": "^1.3.0",
+                "spryker/kernel": "^3.0.0",
+                "spryker/product": "^6.0.0",
+                "spryker/product-packaging-unit": "^0.0.1",
+                "spryker/propel-orm": "^1.1.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/installer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/",
+                    "SprykerTest\\Zed\\ProductPackagingUnitDataImport\\Helper\\": "tests/SprykerTest/Zed/ProductPackagingUnitDataImport/_support/Helper/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ProductPackagingUnitDataImport module",
+            "time": "2018-06-05T18:55:29+00:00"
         },
         {
             "name": "spryker/product-page-search",
