@@ -10,6 +10,7 @@ namespace Pyz\Zed\Dashboard;
 use Spryker\Zed\Dashboard\DashboardDependencyProvider as SprykerDashboardDependencyProvider;
 use Spryker\Zed\SalesStatistics\Communication\Plugin\CountOrderPluginChart;
 use Spryker\Zed\SalesStatistics\Communication\Plugin\StatusOrderPluginChart;
+use Spryker\Zed\SalesStatistics\Communication\Plugin\TopOrdersPluginChart;
 
 class DashboardDependencyProvider extends SprykerDashboardDependencyProvider
 {
@@ -21,6 +22,7 @@ class DashboardDependencyProvider extends SprykerDashboardDependencyProvider
         return [
             new CountOrderPluginChart(),
             new StatusOrderPluginChart(),
+            new TopOrdersPluginChart(),
         ];
     }
 }
