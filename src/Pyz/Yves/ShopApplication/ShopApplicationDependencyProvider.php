@@ -7,6 +7,7 @@
 
 namespace Pyz\Yves\ShopApplication;
 
+use SprykerShop\Yves\CompanyPage\Plugin\CompanyPageFilterCompanyUserRestrictionHandlerPlugin;
 use SprykerShop\Yves\CompanyPage\Plugin\CompanyPageFilterControllerEventHandlerPlugin;
 use SprykerShop\Yves\BusinessOnBehalfWidget\Plugin\CustomerPage\MenuItemBusinessOnBehalfWidgetPlugin;
 use SprykerShop\Yves\BusinessOnBehalfWidget\Plugin\ShopLayout\DisplayOnBehalfBusinessWidgetPlugin;
@@ -43,7 +44,8 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
     protected function getFilterControllerEventSubscriberPlugins(): array
     {
         return [
-            new CompanyPageFilterControllerEventHandlerPlugin(),
+            new CompanyPageFilterCompanyUserRestrictionHandlerPlugin(), #BusinessOnBehalfFeature
+            new CompanyPageFilterControllerEventHandlerPlugin(), #BusinessOnBehalfFeature
         ];
     }
 }
