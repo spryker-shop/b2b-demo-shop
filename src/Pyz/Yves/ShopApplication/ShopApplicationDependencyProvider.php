@@ -7,10 +7,10 @@
 
 namespace Pyz\Yves\ShopApplication;
 
-use SprykerShop\Yves\CompanyPage\Plugin\CompanyPageFilterCompanyUserRestrictionHandlerPlugin;
-use SprykerShop\Yves\CompanyPage\Plugin\CompanyPageFilterControllerEventHandlerPlugin;
 use SprykerShop\Yves\BusinessOnBehalfWidget\Plugin\CustomerPage\MenuItemBusinessOnBehalfWidgetPlugin;
 use SprykerShop\Yves\BusinessOnBehalfWidget\Plugin\ShopLayout\DisplayOnBehalfBusinessWidgetPlugin;
+use SprykerShop\Yves\CompanyPage\Plugin\CompanyPageFilterCompanyUserRestrictionHandlerPlugin;
+use SprykerShop\Yves\CompanyPage\Plugin\CompanyPageFilterControllerEventHandlerPlugin;
 use SprykerShop\Yves\CurrencyWidget\Plugin\ShopLayout\CurrencyWidgetPlugin;
 use SprykerShop\Yves\LanguageSwitcherWidget\Plugin\ShopUi\LanguageSwitcherWidgetPlugin;
 use SprykerShop\Yves\MultiCartWidget\Plugin\ShopUi\MiniCartWidgetPlugin;
