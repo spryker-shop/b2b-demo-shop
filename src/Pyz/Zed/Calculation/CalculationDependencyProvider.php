@@ -228,7 +228,7 @@ class CalculationDependencyProvider extends SprykerCalculationDependencyProvider
     {
         return [
 
-            new PriceCalculatorPlugin(),
+//            new PriceCalculatorPlugin(),
             new ItemProductOptionPriceAggregatorPlugin(),
             new ItemSubtotalAggregatorPlugin(),
 
