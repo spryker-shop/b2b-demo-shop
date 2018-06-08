@@ -56,7 +56,6 @@ use SprykerShop\Yves\CustomerReorderWidget\Plugin\Provider\CustomerReorderContro
 use SprykerShop\Yves\DiscountWidget\Plugin\Provider\DiscountWidgetControllerProvider;
 use SprykerShop\Yves\ErrorPage\Plugin\Provider\ErrorPageControllerProvider;
 use SprykerShop\Yves\ErrorPage\Plugin\Provider\ErrorPageServiceProvider;
-use SprykerShop\Yves\FileManager\Plugin\Provider\FileManagerControllerProvider;
 use SprykerShop\Yves\HeartbeatPage\Plugin\Provider\HeartbeatPageControllerProvider;
 use SprykerShop\Yves\HomePage\Plugin\Provider\HomePageControllerProvider;
 use SprykerShop\Yves\MoneyWidget\Plugin\ServiceProvider\TwigMoneyServiceProvider;
@@ -193,7 +192,6 @@ class YvesBootstrap extends SprykerYvesBootstrap
             new ProductNewPageControllerProvider($isSsl),
             new ProductReviewControllerProvider($isSsl),
             new DiscountWidgetControllerProvider($isSsl),
-            new FileManagerControllerProvider($isSsl),
             new PriceControllerProvider($isSsl),
             new CartNoteWidgetControllerProvider($isSsl), #CartNoteFeature
             new QuickOrderPageControllerProvider($isSsl),
