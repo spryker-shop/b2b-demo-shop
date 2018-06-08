@@ -1,0 +1,26 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'color-selector',
+    tage: 'color-selector'
+} %}
+
+{% define data = {
+    items: required
+} %}
+
+{% block component %}
+    {% if data.items is not empty %}
+        {{parent()}}
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+    {% for item in data.items %}
+        {% set image = item.images is defined ? item.images | first : null %}
+
+        <a test="{{ image ? image.externalUrlSmall : '' }}">
+            <a href="{{ item.url }}" {% if item.colorCode %}style="background-color: {{ item.colorCode }};"{% endif %}>xxx</a>
+        </a>
+    {% endfor %}
+{% endblock %}
