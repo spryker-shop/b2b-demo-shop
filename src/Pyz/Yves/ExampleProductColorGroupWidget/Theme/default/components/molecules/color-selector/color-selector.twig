@@ -2,11 +2,15 @@
 
 {% define config = {
     name: 'color-selector',
-    tage: 'color-selector'
+    tag: 'color-selector'
 } %}
 
 {% define data = {
     items: required
+} %}
+
+{% define attributes = {
+    'target-image-selector': required
 } %}
 
 {% block component %}
@@ -18,9 +22,11 @@
 {% block body %}
     {% for item in data.items %}
         {% set image = item.images is defined ? item.images | first : null %}
-
-        <a test="{{ image ? image.externalUrlSmall : '' }}">
-            <a href="{{ item.url }}" {% if item.colorCode %}style="background-color: {{ item.colorCode }};"{% endif %}>xxx</a>
+        <a
+            class="{{config.name}}__color {% if loop.first %}{{config.name}}__color--active{% endif %} {{config.selector}}__color"
+            href="{{ item.url }}"
+            data-image-src="{{ image ? image.externalUrlSmall : '' }}"
+            {% if item.colorCode %}style="background-color:{{ item.colorCode }};"{% endif %}>
         </a>
     {% endfor %}
 {% endblock %}
