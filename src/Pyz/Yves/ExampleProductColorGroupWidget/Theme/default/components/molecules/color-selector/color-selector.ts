@@ -19,10 +19,18 @@ export default class ColorSelector extends Component {
 
     onColorSelection(event: Event) {
         event.preventDefault();
-
         const color = <HTMLAnchorElement>event.currentTarget;
         const imageSrc = color.getAttribute('data-image-src');
+        this.changeActiveColor(color);
         this.changeImage(imageSrc);
+    }
+
+    changeActiveColor(newColor: HTMLAnchorElement) {
+        this.colors.forEach((color: HTMLAnchorElement) => {
+            color.classList.remove(`${this.componentName}__color--active`);
+        });
+
+        newColor.classList.add(`${this.componentName}__color--active`);
     }
 
     changeImage(newImageSrc: string) {

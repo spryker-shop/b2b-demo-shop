@@ -17,7 +17,7 @@
         {% block slide %}
             <div class="text-center">
                 {% include atom('thumbnail') with {
-                    class: loop.first ? 'js-pdp-color-group__image-' ~ embed.idProductAbstract : '',
+                    class: 'js-pdp-color-group__image-' ~ embed.idProductAbstract,
                     modifiers: ['bigger'],
                     attributes: {
                         itemprop: 'image',
