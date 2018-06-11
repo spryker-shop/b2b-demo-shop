@@ -23,7 +23,7 @@
     {% for item in data.items %}
         {% set image = item.images is defined ? item.images | first : null %}
         <a
-            class="{{config.name}}__color {% if loop.first %}{{config.name}}__color--active{% endif %} {{config.selector}}__color"
+            class="{{config.name}}__color {% if loop.first %}{{config.name}}__color--active{% endif %} {{config.jsName}}__color"
             href="{{ item.url }}"
             data-image-src="{{ image ? image.externalUrlSmall : '' }}"
             {% if item.colorCode %}style="background-color:{{ item.colorCode }};"{% endif %}>

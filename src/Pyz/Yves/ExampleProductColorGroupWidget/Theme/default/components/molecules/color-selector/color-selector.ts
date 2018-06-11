@@ -5,7 +5,7 @@ export default class ColorSelector extends Component {
     images: HTMLImageElement[]
 
     readyCallback() {
-        this.colors = <HTMLAnchorElement[]>Array.from(this.getElementsByClassName(`${this.componentSelector}__color`));
+        this.colors = <HTMLAnchorElement[]>Array.from(this.getElementsByClassName(`${this.jsName}__color`));
         this.images = <HTMLImageElement[]>Array.from(document.querySelectorAll(this.targetImageSelector));
         this.mapEvents();
     }
@@ -13,7 +13,6 @@ export default class ColorSelector extends Component {
     mapEvents() {
         this.colors.forEach((color: HTMLAnchorElement) => {
             color.addEventListener('mouseenter', (event: Event) => this.onColorSelection(event));
-            color.addEventListener('click', (event: Event) => this.onColorSelection(event));
         });
     }
 
@@ -27,10 +26,10 @@ export default class ColorSelector extends Component {
 
     changeActiveColor(newColor: HTMLAnchorElement) {
         this.colors.forEach((color: HTMLAnchorElement) => {
-            color.classList.remove(`${this.componentName}__color--active`);
+            color.classList.remove(`${this.name}__color--active`);
         });
 
-        newColor.classList.add(`${this.componentName}__color--active`);
+        newColor.classList.add(`${this.name}__color--active`);
     }
 
     changeImage(newImageSrc: string) {
