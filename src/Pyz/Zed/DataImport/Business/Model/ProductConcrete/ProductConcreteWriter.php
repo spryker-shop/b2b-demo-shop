@@ -85,7 +85,7 @@ class ProductConcreteWriter extends PublishAwareStep implements DataImportStepIn
             ->setAttributes(json_encode($dataSet[static::KEY_ATTRIBUTES]));
 
         if (SpyProductTableMap::getTableMap()->hasColumn(static::KEY_IS_QUANTITY_SPLITTABLE)) {
-            $productEntity->setIsQuantitySplittable(isset($dataSet[static::KEY_IS_QUANTITY_SPLITTABLE]) ? $dataSet[static::KEY_IS_QUANTITY_SPLITTABLE] : true);
+            $productEntity->setIsQuantitySplittable($dataSet[static::KEY_IS_QUANTITY_SPLITTABLE] != "" ? $dataSet[static::KEY_IS_QUANTITY_SPLITTABLE] : true);
         }
 
         $productEntity->save();
