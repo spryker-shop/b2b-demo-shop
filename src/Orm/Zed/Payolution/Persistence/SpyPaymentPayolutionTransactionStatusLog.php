@@ -5,12 +5,12 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Orm\Zed\CompanyBusinessUnit\Persistence;
+namespace Orm\Zed\Payolution\Persistence;
 
-use Spryker\Zed\CompanyBusinessUnit\Persistence\Propel\AbstractSpyCompanyBusinessUnitQuery;
+use Orm\Zed\Payolution\Persistence\Base\SpyPaymentPayolutionTransactionStatusLog as BaseSpyPaymentPayolutionTransactionStatusLog;
 
 /**
- * Skeleton subclass for performing query and update operations on the 'spy_company_business_unit' table.
+ * Skeleton subclass for representing a row from the 'spy_payment_payolution_transaction_status_log' table.
  *
  *
  *
@@ -19,6 +19,6 @@ use Spryker\Zed\CompanyBusinessUnit\Persistence\Propel\AbstractSpyCompanyBusines
  * long as it does not already exist in the output directory.
  *
  */
-class SpyCompanyBusinessUnitQuery extends AbstractSpyCompanyBusinessUnitQuery
+class SpyPaymentPayolutionTransactionStatusLog extends BaseSpyPaymentPayolutionTransactionStatusLog
 {
 }
