@@ -8,6 +8,7 @@
 namespace Pyz\Zed\Synchronization;
 
 use Spryker\Zed\AvailabilityStorage\Communication\Plugin\Synchronization\AvailabilitySynchronizationDataPlugin;
+use Spryker\Zed\CategoryStorage\Communication\Plugin\Synchronization\CategoryTreeSynchronizationDataPlugin;
 use Spryker\Zed\Synchronization\SynchronizationDependencyProvider as SprykerSynchronizationDependencyProvider;
 
 class SynchronizationDependencyProvider extends SprykerSynchronizationDependencyProvider
@@ -19,6 +20,7 @@ class SynchronizationDependencyProvider extends SprykerSynchronizationDependency
     {
         return [
             new AvailabilitySynchronizationDataPlugin(),
+            new CategoryTreeSynchronizationDataPlugin(),
         ];
     }
 }
