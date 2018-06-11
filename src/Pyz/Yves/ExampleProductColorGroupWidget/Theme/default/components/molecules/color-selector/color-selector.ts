@@ -4,19 +4,19 @@ export default class ColorSelector extends Component {
     colors: HTMLAnchorElement[]
     images: HTMLImageElement[]
 
-    readyCallback() {
+    protected readyCallback(): void {
         this.colors = <HTMLAnchorElement[]>Array.from(this.getElementsByClassName(`${this.jsName}__color`));
         this.images = <HTMLImageElement[]>Array.from(document.querySelectorAll(this.targetImageSelector));
         this.mapEvents();
     }
 
-    mapEvents() {
+    protected mapEvents(): void {
         this.colors.forEach((color: HTMLAnchorElement) => {
             color.addEventListener('mouseenter', (event: Event) => this.onColorSelection(event));
         });
     }
 
-    onColorSelection(event: Event) {
+    protected onColorSelection(event: Event): void {
         event.preventDefault();
         const color = <HTMLAnchorElement>event.currentTarget;
         const imageSrc = color.getAttribute('data-image-src');
@@ -24,7 +24,7 @@ export default class ColorSelector extends Component {
         this.changeImage(imageSrc);
     }
 
-    changeActiveColor(newColor: HTMLAnchorElement) {
+    changeActiveColor(newColor: HTMLAnchorElement): void {
         this.colors.forEach((color: HTMLAnchorElement) => {
             color.classList.remove(`${this.name}__color--active`);
         });
@@ -32,7 +32,7 @@ export default class ColorSelector extends Component {
         newColor.classList.add(`${this.name}__color--active`);
     }
 
-    changeImage(newImageSrc: string) {
+    changeImage(newImageSrc: string): void {
         this.images.forEach((image: HTMLImageElement) => {
             if (image.src !== newImageSrc) {
                 image.src = newImageSrc;
