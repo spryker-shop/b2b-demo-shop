@@ -1,2 +1,2 @@
 import { bootstrap } from 'ShopUi/app';
-bootstrap();
+document.addEventListener('DOMContentLoaded', () => bootstrap());
