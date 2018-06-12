@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "51c279e9a85e5b403c9a60f29cbc3633",
+    "content-hash": "a6b89c8a33bcce152bbf8f90dd15267f",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -1387,24 +1387,23 @@
         },
         {
             "name": "paragonie/random_compat",
-            "version": "v2.99.99",
+            "version": "v2.0.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/paragonie/random_compat.git",
-                "reference": "35469243ebbb9be5086cff57538cac6da2c36852"
+                "reference": "10bcb46e8f3d365170f6de9d05245aa066b81f09"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/35469243ebbb9be5086cff57538cac6da2c36852",
-                "reference": "35469243ebbb9be5086cff57538cac6da2c36852",
+                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/10bcb46e8f3d365170f6de9d05245aa066b81f09",
+                "reference": "10bcb46e8f3d365170f6de9d05245aa066b81f09",
                 "shasum": ""
             },
             "require": {
-                "php": "^7"
+                "php": ">=5.2.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "4.*|5.*",
-                "vimeo/psalm": "^1"
+                "phpunit/phpunit": "4.*|5.*"
             },
             "suggest": {
                 "ext-libsodium": "Provides a modern crypto API that can be used to generate random bytes."
@@ -1433,7 +1432,7 @@
                 "pseudorandom",
                 "random"
             ],
-            "time": "2018-06-06T05:12:00+00:00"
+            "time": "2018-06-08T15:26:40+00:00"
         },
         {
             "name": "php-amqplib/php-amqplib",
@@ -1694,7 +1693,7 @@
             ],
             "authors": [
                 {
-                    "name": "William DURAND",
+                    "name": "William Durand",
                     "email": "william.durand1@gmail.com"
                 }
             ],
@@ -2120,6 +2119,54 @@
             ],
             "description": "AvailabilityWidget module",
             "time": "2018-03-02T09:56:26+00:00"
+        },
+        {
+            "name": "spryker-shop/business-on-behalf-widget",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/business-on-behalf-widget.git",
+                "reference": "73fe2f8732ea268f78eedec492262da4288cd9ab"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/business-on-behalf-widget/zipball/73fe2f8732ea268f78eedec492262da4288cd9ab",
+                "reference": "73fe2f8732ea268f78eedec492262da4288cd9ab",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/business-on-behalf": "^1.0.0",
+                "spryker/customer": "^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0",
+                "spryker/kernel": "^3.0.0"
+            },
+            "require-dev": {
+                "spryker-shop/customer-page": "*",
+                "spryker-shop/shop-ui": "*",
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker-shop/customer-page": "To add menu item to customer page menu: ^0.4.1.",
+                "spryker-shop/shop-ui": "In order to display top navigation menu item: ^0.6.1."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "BusinessOnBehalfWidget module",
+            "time": "2018-06-12T13:59:27+00:00"
         },
         {
             "name": "spryker-shop/calculation-page",
@@ -2732,22 +2779,24 @@
         },
         {
             "name": "spryker-shop/company-page",
-            "version": "0.1.3",
+            "version": "0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/company-page.git",
-                "reference": "477b6659fff750a16b30de879f295bb9beeec4e6"
+                "reference": "d142ca9fcff0c3f524d89e23657f647bd8e3f07d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/company-page/zipball/477b6659fff750a16b30de879f295bb9beeec4e6",
-                "reference": "477b6659fff750a16b30de879f295bb9beeec4e6",
+                "url": "https://api.github.com/repos/spryker-shop/company-page/zipball/d142ca9fcff0c3f524d89e23657f647bd8e3f07d",
+                "reference": "d142ca9fcff0c3f524d89e23657f647bd8e3f07d",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
                 "spryker-shop/shop-application": "^0.2.0 || ^0.3.0 || ^0.4.0",
+                "spryker-shop/shop-application-extension": "^0.1.0",
                 "spryker/application": "^3.8.0",
+                "spryker/business-on-behalf": "^1.0.0",
                 "spryker/company": "^1.0.0",
                 "spryker/company-business-unit": "^1.0.0 || ^2.0.0",
                 "spryker/company-role": "^1.0.0",
@@ -2755,6 +2804,7 @@
                 "spryker/company-user": "^1.0.0",
                 "spryker/customer": "^7.4.0",
                 "spryker/kernel": "^3.16.0",
+                "spryker/messenger": "^3.1.0",
                 "spryker/permission": "^1.0.0",
                 "spryker/permission-extension": "^1.0.0",
                 "spryker/symfony": "^3.1.0"
@@ -2783,7 +2833,7 @@
                 "proprietary"
             ],
             "description": "CompanyPage module",
-            "time": "2018-06-11T14:41:18+00:00"
+            "time": "2018-06-12T15:23:16+00:00"
         },
         {
             "name": "spryker-shop/company-user-invitation-page",
@@ -2887,16 +2937,16 @@
         },
         {
             "name": "spryker-shop/customer-page",
-            "version": "0.4.0",
+            "version": "0.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/customer-page.git",
-                "reference": "c75edb474ad2304d29c435739fb85cb94fabe2f2"
+                "reference": "b7af0b5c2e7e463b66c710ac34214afa7487725a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/customer-page/zipball/c75edb474ad2304d29c435739fb85cb94fabe2f2",
-                "reference": "c75edb474ad2304d29c435739fb85cb94fabe2f2",
+                "url": "https://api.github.com/repos/spryker-shop/customer-page/zipball/b7af0b5c2e7e463b66c710ac34214afa7487725a",
+                "reference": "b7af0b5c2e7e463b66c710ac34214afa7487725a",
                 "shasum": ""
             },
             "require": {
@@ -2943,7 +2993,7 @@
                 "proprietary"
             ],
             "description": "CustomerPage module",
-            "time": "2018-06-05T18:58:10+00:00"
+            "time": "2018-06-11T11:31:09+00:00"
         },
         {
             "name": "spryker-shop/customer-page-extension",
@@ -4589,20 +4639,21 @@
         },
         {
             "name": "spryker-shop/shop-application",
-            "version": "0.4.0",
+            "version": "0.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/shop-application.git",
-                "reference": "ed540f50537156591f5daf53bdaf99b1f1ddd9a6"
+                "reference": "d17d289158901000e564dcfcdd210ec6c170ffed"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/shop-application/zipball/ed540f50537156591f5daf53bdaf99b1f1ddd9a6",
-                "reference": "ed540f50537156591f5daf53bdaf99b1f1ddd9a6",
+                "url": "https://api.github.com/repos/spryker-shop/shop-application/zipball/d17d289158901000e564dcfcdd210ec6c170ffed",
+                "reference": "d17d289158901000e564dcfcdd210ec6c170ffed",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
+                "spryker-shop/shop-application-extension": "^0.1.0",
                 "spryker/application": "^3.8.0",
                 "spryker/kernel": "^3.16.0",
                 "spryker/silex": "^2.0.0",
@@ -4637,7 +4688,50 @@
                 "proprietary"
             ],
             "description": "ShopApplication module",
-            "time": "2018-05-16T15:36:18+00:00"
+            "time": "2018-06-12T12:51:23+00:00"
+        },
+        {
+            "name": "spryker-shop/shop-application-extension",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/shop-application-extension.git",
+                "reference": "0f8a0eab82d9c0619d47f0395c0e483349fce494"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/shop-application-extension/zipball/0f8a0eab82d9c0619d47f0395c0e483349fce494",
+                "reference": "0f8a0eab82d9c0619d47f0395c0e483349fce494",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "spryker/silex": "*",
+                "spryker/symfony": "*"
+            },
+            "suggest": {
+                "spryker/silex": "",
+                "spryker/symfony": "3.0.0 for using LanguageSwitcherPluginInterface"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ShopApplicationExtension module",
+            "time": "2018-06-12T14:17:19+00:00"
         },
         {
             "name": "spryker-shop/shop-layout",
@@ -4858,16 +4952,16 @@
         },
         {
             "name": "spryker-shop/shop-ui",
-            "version": "0.6.0",
+            "version": "0.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/shop-ui.git",
-                "reference": "d32b00018f343bfe58326921cf5950fae3a09af4"
+                "reference": "a0887155bb15dd17aa0b83ca5c5070cdf630b8d5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/shop-ui/zipball/d32b00018f343bfe58326921cf5950fae3a09af4",
-                "reference": "d32b00018f343bfe58326921cf5950fae3a09af4",
+                "url": "https://api.github.com/repos/spryker-shop/shop-ui/zipball/a0887155bb15dd17aa0b83ca5c5070cdf630b8d5",
+                "reference": "a0887155bb15dd17aa0b83ca5c5070cdf630b8d5",
                 "shasum": ""
             },
             "require": {
@@ -4898,7 +4992,7 @@
                 "proprietary"
             ],
             "description": "ShopUi module",
-            "time": "2018-06-05T15:19:35+00:00"
+            "time": "2018-06-11T10:13:22+00:00"
         },
         {
             "name": "spryker-shop/shop-ui-extension",
@@ -5941,6 +6035,102 @@
             ],
             "description": "Braintree module",
             "time": "2018-02-19T12:41:14+00:00"
+        },
+        {
+            "name": "spryker/business-on-behalf",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/business-on-behalf.git",
+                "reference": "449163f04e99e899af5e669ba785b3d24d505057"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/business-on-behalf/zipball/449163f04e99e899af5e669ba785b3d24d505057",
+                "reference": "449163f04e99e899af5e669ba785b3d24d505057",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/company-user": "^1.2.0",
+                "spryker/kernel": "^3.0.0",
+                "spryker/zed-request": "^3.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/customer": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/customer": "If you want to hydrate customer with isOnBehalf property and default company user: ^7.10.0."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/",
+                    "SprykerTest\\Zed\\BusinessOnBehalf\\Helper\\": "tests/SprykerTest/Zed/BusinessOnBehalf/_support/Helper/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "BusinessOnBehalf module",
+            "time": "2018-06-12T12:29:55+00:00"
+        },
+        {
+            "name": "spryker/business-on-behalf-data-import",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/business-on-behalf-data-import.git",
+                "reference": "f1f71c7ca21ebe4ec379c76c9b9fd5c4fc909b67"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/business-on-behalf-data-import/zipball/f1f71c7ca21ebe4ec379c76c9b9fd5c4fc909b67",
+                "reference": "f1f71c7ca21ebe4ec379c76c9b9fd5c4fc909b67",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/company": "^1.0.0",
+                "spryker/company-business-unit": "^1.0.0 || ^2.0.0",
+                "spryker/company-user": "^1.0.0",
+                "spryker/customer": "^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0",
+                "spryker/data-import": "^1.2.0",
+                "spryker/kernel": "^3.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/business-on-behalf": "Business on behalf introduces is default column in company user table: ^1.0.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/",
+                    "SprykerTest\\Zed\\BusinessOnBehalfDataImport\\Helper\\": "tests/SprykerTest/Zed/BusinessOnBehalfDataImport/_support/Helper/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "BusinessOnBehalfDataImport module",
+            "time": "2018-06-12T15:23:53+00:00"
         },
         {
             "name": "spryker/cache",
@@ -8067,16 +8257,16 @@
         },
         {
             "name": "spryker/company",
-            "version": "1.1.1",
+            "version": "1.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/company.git",
-                "reference": "ad4442af7f1a4afba87262d8cf39178e3d527f3f"
+                "reference": "bb64b3eb7f7fa2757cf6d30af792b99905310eed"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/company/zipball/ad4442af7f1a4afba87262d8cf39178e3d527f3f",
-                "reference": "ad4442af7f1a4afba87262d8cf39178e3d527f3f",
+                "url": "https://api.github.com/repos/spryker/company/zipball/bb64b3eb7f7fa2757cf6d30af792b99905310eed",
+                "reference": "bb64b3eb7f7fa2757cf6d30af792b99905310eed",
                 "shasum": ""
             },
             "require": {
@@ -8111,7 +8301,7 @@
                 "proprietary"
             ],
             "description": "Company module",
-            "time": "2018-05-15T10:04:06+00:00"
+            "time": "2018-06-08T14:08:21+00:00"
         },
         {
             "name": "spryker/company-business-unit",
@@ -8165,16 +8355,16 @@
         },
         {
             "name": "spryker/company-business-unit-data-import",
-            "version": "0.3.0",
+            "version": "0.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/company-business-unit-data-import.git",
-                "reference": "e7d5bb004b0df5cbffe66a610ac6212dff6173cb"
+                "reference": "978526e56790d5421f12d9d6bd8fba4641a4662f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/company-business-unit-data-import/zipball/e7d5bb004b0df5cbffe66a610ac6212dff6173cb",
-                "reference": "e7d5bb004b0df5cbffe66a610ac6212dff6173cb",
+                "url": "https://api.github.com/repos/spryker/company-business-unit-data-import/zipball/978526e56790d5421f12d9d6bd8fba4641a4662f",
+                "reference": "978526e56790d5421f12d9d6bd8fba4641a4662f",
                 "shasum": ""
             },
             "require": {
@@ -8205,7 +8395,7 @@
                 "MIT"
             ],
             "description": "CompanyBusinessUnitDataImport module",
-            "time": "2018-06-11T09:22:02+00:00"
+            "time": "2018-06-12T12:15:40+00:00"
         },
         {
             "name": "spryker/company-business-unit-extension",
@@ -8340,16 +8530,16 @@
         },
         {
             "name": "spryker/company-data-import",
-            "version": "0.1.3",
+            "version": "0.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/company-data-import.git",
-                "reference": "b1fa9b47dcf45655dfe06829c1bf3e013b93c821"
+                "reference": "7f34896160158112a9aaf764cbc865a1075cf394"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/company-data-import/zipball/b1fa9b47dcf45655dfe06829c1bf3e013b93c821",
-                "reference": "b1fa9b47dcf45655dfe06829c1bf3e013b93c821",
+                "url": "https://api.github.com/repos/spryker/company-data-import/zipball/7f34896160158112a9aaf764cbc865a1075cf394",
+                "reference": "7f34896160158112a9aaf764cbc865a1075cf394",
                 "shasum": ""
             },
             "require": {
@@ -8379,7 +8569,7 @@
                 "MIT"
             ],
             "description": "CompanyDataImport module",
-            "time": "2018-06-12T08:41:21+00:00"
+            "time": "2018-06-12T12:29:55+00:00"
         },
         {
             "name": "spryker/company-extension",
@@ -9017,16 +9207,16 @@
         },
         {
             "name": "spryker/company-user",
-            "version": "1.1.1",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/company-user.git",
-                "reference": "0f4779b90d3683fa936d2a82c8f4d65edcb49257"
+                "reference": "a81458fc5ab6148459c57c8b2c83829ad5e2fea3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/company-user/zipball/0f4779b90d3683fa936d2a82c8f4d65edcb49257",
-                "reference": "0f4779b90d3683fa936d2a82c8f4d65edcb49257",
+                "url": "https://api.github.com/repos/spryker/company-user/zipball/a81458fc5ab6148459c57c8b2c83829ad5e2fea3",
+                "reference": "a81458fc5ab6148459c57c8b2c83829ad5e2fea3",
                 "shasum": ""
             },
             "require": {
@@ -9065,7 +9255,7 @@
                 "proprietary"
             ],
             "description": "CompanyUser module",
-            "time": "2018-04-10T09:37:20+00:00"
+            "time": "2018-06-11T17:17:18+00:00"
         },
         {
             "name": "spryker/company-user-extension",
@@ -9449,16 +9639,16 @@
         },
         {
             "name": "spryker/customer",
-            "version": "7.9.0",
+            "version": "7.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/customer.git",
-                "reference": "2b108c58723702ec03541c3395707bb91190e1f5"
+                "reference": "0fc92b0cc05044883d53c0a15bd9f2bb597e4f9e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/customer/zipball/2b108c58723702ec03541c3395707bb91190e1f5",
-                "reference": "2b108c58723702ec03541c3395707bb91190e1f5",
+                "url": "https://api.github.com/repos/spryker/customer/zipball/0fc92b0cc05044883d53c0a15bd9f2bb597e4f9e",
+                "reference": "0fc92b0cc05044883d53c0a15bd9f2bb597e4f9e",
                 "shasum": ""
             },
             "require": {
@@ -9513,7 +9703,7 @@
                 "proprietary"
             ],
             "description": "Customer module",
-            "time": "2018-05-25T15:24:28+00:00"
+            "time": "2018-06-08T14:08:21+00:00"
         },
         {
             "name": "spryker/customer-api",
@@ -23881,7 +24071,7 @@
             ],
             "authors": [
                 {
-                    "name": "Sullivan Sénéchal",
+                    "name": "Sullivan SENECHAL",
                     "email": "soullivaneuh@gmail.com"
                 }
             ],
