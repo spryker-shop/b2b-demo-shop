@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "13f81059de4a7b69bdfcd874cb032339",
+    "content-hash": "51c279e9a85e5b403c9a60f29cbc3633",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -3655,6 +3655,51 @@
             "time": "2018-05-16T15:25:22+00:00"
         },
         {
+            "name": "spryker-shop/product-barcode-widget",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/product-barcode-widget.git",
+                "reference": "8a7456c10e7595c8470f408cc69984ceda143759"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/product-barcode-widget/zipball/8a7456c10e7595c8470f408cc69984ceda143759",
+                "reference": "8a7456c10e7595c8470f408cc69984ceda143759",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/kernel": "^3.16.0",
+                "spryker/product-barcode": "^1.0.0"
+            },
+            "require-dev": {
+                "spryker-shop/shopping-list-page": "*",
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker-shop/shopping-list-page": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ProductBarcodeWidget module",
+            "time": "2018-06-08T06:51:03+00:00"
+        },
+        {
             "name": "spryker-shop/product-bundle-widget",
             "version": "0.2.0",
             "source": {
@@ -4895,16 +4940,16 @@
         },
         {
             "name": "spryker-shop/shopping-list-page",
-            "version": "0.1.2",
+            "version": "0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/shopping-list-page.git",
-                "reference": "e25e3c61d994329fac6c76610ccdeec868c471d9"
+                "reference": "8a26cea21a2cf785f441e7306398e6cae2c2a318"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/shopping-list-page/zipball/e25e3c61d994329fac6c76610ccdeec868c471d9",
-                "reference": "e25e3c61d994329fac6c76610ccdeec868c471d9",
+                "url": "https://api.github.com/repos/spryker-shop/shopping-list-page/zipball/8a26cea21a2cf785f441e7306398e6cae2c2a318",
+                "reference": "8a26cea21a2cf785f441e7306398e6cae2c2a318",
                 "shasum": ""
             },
             "require": {
@@ -4941,7 +4986,7 @@
                 "proprietary"
             ],
             "description": "ShoppingListPage module",
-            "time": "2018-06-11T14:41:18+00:00"
+            "time": "2018-06-12T11:01:41+00:00"
         },
         {
             "name": "spryker-shop/shopping-list-widget",
@@ -13479,16 +13524,16 @@
         },
         {
             "name": "spryker/product-barcode",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product-barcode.git",
-                "reference": "e80aa9774223ca28a322fed93bf6473477f6fcc4"
+                "reference": "9ad32e1752ba7970a479b5386fe3b0235be63b52"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-barcode/zipball/e80aa9774223ca28a322fed93bf6473477f6fcc4",
-                "reference": "e80aa9774223ca28a322fed93bf6473477f6fcc4",
+                "url": "https://api.github.com/repos/spryker/product-barcode/zipball/9ad32e1752ba7970a479b5386fe3b0235be63b52",
+                "reference": "9ad32e1752ba7970a479b5386fe3b0235be63b52",
                 "shasum": ""
             },
             "require": {
@@ -13518,7 +13563,7 @@
                 "proprietary"
             ],
             "description": "ProductBarcode module",
-            "time": "2018-05-16T13:57:10+00:00"
+            "time": "2018-06-08T06:44:22+00:00"
         },
         {
             "name": "spryker/product-barcode-gui",
