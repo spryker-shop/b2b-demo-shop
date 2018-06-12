@@ -17,9 +17,11 @@ use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\SalesExtension\Quant
 use Spryker\Zed\ProductOption\Communication\Plugin\Sales\ProductOptionGroupIdHydratorPlugin;
 use Spryker\Zed\ProductOption\Communication\Plugin\Sales\ProductOptionOrderHydratePlugin;
 use Spryker\Zed\ProductOption\Communication\Plugin\Sales\ProductOptionSortHydratePlugin;
+use Spryker\Zed\Sales\Communication\Plugin\SalesExtension\SingleQuantityBasedItemTransformerStrategyPlugin;
 use Spryker\Zed\Sales\SalesDependencyProvider as SprykerSalesDependencyProvider;
 use Spryker\Zed\SalesProductConnector\Communication\Plugin\Sales\ItemMetadataHydratorPlugin;
 use Spryker\Zed\SalesProductConnector\Communication\Plugin\Sales\ProductIdHydratorPlugin;
+use Spryker\Zed\SalesQuantity\Communication\Plugin\SalesExtension\NonSplittableItemTransformerStrategyPlugin;
 use Spryker\Zed\SalesReclamation\Communication\Plugin\SalesTablePlugin;
 use Spryker\Zed\Shipment\Communication\Plugin\ShipmentOrderHydratePlugin;
 
@@ -62,6 +64,17 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
     {
         return [
             new QuantitySalesUnitOrderItemExpanderPreSavePlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\SalesExtension\Dependency\Plugin\SalesItemTransformerStrategyPluginInterface[]
+     */
+    public function getSalesOrderItemTransformerStrategyPlugins(): array
+    {
+        return [
+            new NonSplittableItemTransformerStrategyPlugin(),
+            new SingleQuantityBasedItemTransformerStrategyPlugin(),
         ];
     }
 
