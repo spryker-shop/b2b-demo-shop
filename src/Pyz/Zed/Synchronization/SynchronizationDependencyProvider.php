@@ -21,6 +21,7 @@ class SynchronizationDependencyProvider extends SprykerSynchronizationDependency
         return [
             new AvailabilitySynchronizationDataPlugin(),
             new CategoryTreeSynchronizationDataPlugin(),
+            // ... Add more plugins
         ];
     }
 }
