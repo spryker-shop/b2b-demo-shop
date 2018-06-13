@@ -22,3 +22,29 @@
         showAlwaysFirstAndLast: true
     }
 } %}
+
+{% block filterBar %}
+    {{parent()}}
+
+    {% if data.categoryId %}
+        <div class="box">
+            {{ widgetBlock('CatalogCmsBlockWidgetPlugin', 'middle', data.categoryId) }}
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    {% if data.categoryId %}
+        <div class="box">
+            {{ widgetBlock('CatalogCmsBlockWidgetPlugin', 'top', data.categoryId) }}
+        </div>
+    {% endif %}
+
+    {{parent()}}
+
+    {% if data.categoryId %}
+        <div class="box">
+            {{ widgetBlock('CatalogCmsBlockWidgetPlugin', 'bottom', data.categoryId) }}
+        </div>
+    {% endif %}
+{% endblock %}
