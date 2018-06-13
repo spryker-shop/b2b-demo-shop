@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "7e9f30680fd7e03c1ad637a6ed066ccc",
+    "content-hash": "5d0679d472c70227d305f85f880f908e",
     "packages": [
         {
             "name": "braintree/braintree_php",
@@ -1251,24 +1251,23 @@
         },
         {
             "name": "paragonie/random_compat",
-            "version": "v2.99.99",
+            "version": "v2.0.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/paragonie/random_compat.git",
-                "reference": "35469243ebbb9be5086cff57538cac6da2c36852"
+                "reference": "10bcb46e8f3d365170f6de9d05245aa066b81f09"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/35469243ebbb9be5086cff57538cac6da2c36852",
-                "reference": "35469243ebbb9be5086cff57538cac6da2c36852",
+                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/10bcb46e8f3d365170f6de9d05245aa066b81f09",
+                "reference": "10bcb46e8f3d365170f6de9d05245aa066b81f09",
                 "shasum": ""
             },
             "require": {
-                "php": "^7"
+                "php": ">=5.2.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "4.*|5.*",
-                "vimeo/psalm": "^1"
+                "phpunit/phpunit": "4.*|5.*"
             },
             "suggest": {
                 "ext-libsodium": "Provides a modern crypto API that can be used to generate random bytes."
@@ -1297,7 +1296,7 @@
                 "pseudorandom",
                 "random"
             ],
-            "time": "2018-06-06T05:12:00+00:00"
+            "time": "2018-06-08T15:26:40+00:00"
         },
         {
             "name": "php-amqplib/php-amqplib",
@@ -1558,7 +1557,7 @@
             ],
             "authors": [
                 {
-                    "name": "William DURAND",
+                    "name": "William Durand",
                     "email": "william.durand1@gmail.com"
                 }
             ],
@@ -2107,11 +2106,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-feature/core-2413-chart",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "be2cbd09528e50aa8ab2bc6b9095cc3c039ba6d4"
+                "reference": "2a0cddc8abf199b176ac669e22d64f3828091c22"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.0",
@@ -2132,6 +2131,8 @@
                 "spryker/availability-gui": "*",
                 "spryker/availability-storage": "*",
                 "spryker/braintree": "*",
+                "spryker/business-on-behalf": "*",
+                "spryker/business-on-behalf-data-import": "*",
                 "spryker/cache": "*",
                 "spryker/calculation": "*",
                 "spryker/cart": "*",
@@ -2370,15 +2371,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2018-06-12T14:31:11+00:00"
+            "time": "2018-06-12T21:21:23+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-feature/core-2413-chart",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "722853554c85aff71a30e2b1d850e43386e68d1c"
+                "reference": "89e174604ccb061c13c6973d1db90685b011bfde"
             },
             "require": {
                 "php": ">=7.1"
@@ -2425,12 +2426,14 @@
                 "spryker-shop/quick-order-page": "*",
                 "spryker-shop/redirect-page": "*",
                 "spryker-shop/shop-application": "*",
+                "spryker-shop/shop-application-extension": "*",
                 "spryker-shop/shop-layout": "*",
                 "spryker-shop/shop-router": "*",
                 "spryker-shop/shop-translator": "*",
                 "spryker-shop/web-profiler-widget": "*",
                 "spryker-shop/wishlist-page": "*",
-                "spryker-shop/wishlist-widget": "*"
+                "spryker-shop/wishlist-widget": "*",
+                "spryker/business-on-behalf-widget": "*"
             },
             "require-dev": {
                 "spryker/code-sniffer": "dev-master",
@@ -2451,7 +2454,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2018-06-12T14:32:44+00:00"
+            "time": "2018-06-12T15:26:57+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -5223,7 +5226,7 @@
                 "configurator",
                 "nette"
             ],
-            "time": "2018-05-16T11:51:51+00:00"
+            "time": "2018-05-17T12:52:20+00:00"
         },
         {
             "name": "nette/di",
@@ -5464,7 +5467,7 @@
                 "php",
                 "scaffolding"
             ],
-            "time": "2018-04-26T16:47:39+00:00"
+            "time": "2018-04-26T09:21:21+00:00"
         },
         {
             "name": "nette/robot-loader",
@@ -7509,12 +7512,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/code-sniffer.git",
-                "reference": "ea667f75a9ef907cea1356742403f357ad53f075"
+                "reference": "74772135db70662d45836f61b72570a9f2ee3383"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/ea667f75a9ef907cea1356742403f357ad53f075",
-                "reference": "ea667f75a9ef907cea1356742403f357ad53f075",
+                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/74772135db70662d45836f61b72570a9f2ee3383",
+                "reference": "74772135db70662d45836f61b72570a9f2ee3383",
                 "shasum": ""
             },
             "require": {
@@ -7553,7 +7556,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2018-06-08T08:21:01+00:00"
+            "time": "2018-06-12T21:23:05+00:00"
         },
         {
             "name": "spryker/development-core",
