@@ -7,6 +7,10 @@
 
 namespace Pyz\Yves\ShopApplication;
 
+use SprykerShop\Yves\BusinessOnBehalfWidget\Plugin\CustomerPage\MenuItemBusinessOnBehalfWidgetPlugin;
+use SprykerShop\Yves\BusinessOnBehalfWidget\Plugin\ShopUi\DisplayOnBehalfBusinessWidgetPlugin;
+use SprykerShop\Yves\CompanyPage\Plugin\ShopApplication\CheckBusinessOnBehalfCompanyUserHandlerPlugin;
+use SprykerShop\Yves\CompanyPage\Plugin\ShopApplication\CompanyUserRestrictionHandlerPlugin;
 use SprykerShop\Yves\CurrencyWidget\Plugin\ShopLayout\CurrencyWidgetPlugin;
 use SprykerShop\Yves\CustomerPage\Plugin\ShopUi\CustomerNavigationWidgetPlugin;
 use SprykerShop\Yves\LanguageSwitcherWidget\Plugin\ShopUi\LanguageSwitcherWidgetPlugin;
@@ -31,6 +35,19 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             PriceModeSwitcherWidgetPlugin::class,
             MiniCartWidgetPlugin::class, #MultiCartFeature
             CustomerNavigationWidgetPlugin::class,
+            DisplayOnBehalfBusinessWidgetPlugin::class,
+            MenuItemBusinessOnBehalfWidgetPlugin::class,
+        ];
+    }
+
+    /**
+     * @return \SprykerShop\Yves\ShopApplicationExtension\Dependency\Plugin\FilterControllerEventHandlerPluginInterface[]
+     */
+    protected function getFilterControllerEventSubscriberPlugins(): array
+    {
+        return [
+            new CompanyUserRestrictionHandlerPlugin(),
+            new CheckBusinessOnBehalfCompanyUserHandlerPlugin(), #BusinessOnBehalfFeature
         ];
     }
 }
