@@ -14,6 +14,8 @@ use Spryker\Zed\ProductAlternativeGui\Communication\Plugin\ProductManagement\Pro
 use Spryker\Zed\ProductAlternativeGui\Communication\Plugin\ProductManagement\ProductConcreteFormEditDataProviderExpanderPlugin;
 use Spryker\Zed\ProductAlternativeGui\Communication\Plugin\ProductManagement\ProductConcreteFormEditTabsExpanderPlugin;
 use Spryker\Zed\ProductAlternativeGui\Communication\Plugin\ProductManagement\ProductFormTransferMapperExpanderPlugin;
+use Spryker\Zed\ProductDiscontinuedGui\Communication\Plugin\DiscontinueProductConcreteFormEditDataProviderExpanderPlugin;
+use Spryker\Zed\ProductDiscontinuedGui\Communication\Plugin\DiscontinueProductConcreteFormEditTabsExpanderPlugin;
 use Spryker\Zed\ProductManagement\ProductManagementDependencyProvider as SprykerProductManagementDependencyProvider;
 use Spryker\Zed\Store\Communication\Plugin\Form\StoreRelationToggleFormTypePlugin;
 
@@ -53,6 +55,7 @@ class ProductManagementDependencyProvider extends SprykerProductManagementDepend
     protected function getProductConcreteFormEditTabsExpanderPlugins(): array
     {
         return [
+            new DiscontinueProductConcreteFormEditTabsExpanderPlugin(),
             new ProductConcreteFormEditTabsExpanderPlugin(),
         ];
     }
@@ -73,6 +76,7 @@ class ProductManagementDependencyProvider extends SprykerProductManagementDepend
     protected function getProductConcreteFormEditDataProviderExpanderPlugins(): array
     {
         return [
+            new DiscontinueProductConcreteFormEditDataProviderExpanderPlugin(),
             new ProductConcreteFormEditDataProviderExpanderPlugin(),
         ];
     }
