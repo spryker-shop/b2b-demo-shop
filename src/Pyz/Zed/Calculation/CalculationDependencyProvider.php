@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\Calculation;
 
+use Spryker\Zed\Calculation\Business\Model\Calculator\RemoveCanceledAmountCalculatorPlugin;
 use Spryker\Zed\Calculation\CalculationDependencyProvider as SprykerCalculationDependencyProvider;
 use Spryker\Zed\Calculation\Communication\Plugin\Calculator\CanceledTotalCalculationPlugin;
 use Spryker\Zed\Calculation\Communication\Plugin\Calculator\DiscountAmountAggregatorForGenericAmountPlugin;
@@ -53,6 +54,8 @@ class CalculationDependencyProvider extends SprykerCalculationDependencyProvider
      *   - Item.calculatedDiscounts
      *   - Item.productOption.calculatedDiscounts
      *   - Expense.calculatedDiscounts
+     *
+     * RemoveCanceledAmountCalculatorPlugin - Reset canceled amount
      *
      * PriceCalculatorPlugin - Calculates price based on tax mode, tax mode is set in this calculator based on CalculationConstants::TAX_MODE configuration key.
      *    - Item.unitPrice
@@ -179,6 +182,7 @@ class CalculationDependencyProvider extends SprykerCalculationDependencyProvider
             new RemoveTotalsCalculatorPlugin(),
             new RemoveAllCalculatedDiscountsCalculatorPlugin(),
             new RemovePromotionItemsCalculatorPlugin(),
+            new RemoveCanceledAmountCalculatorPlugin(),
 
             new PriceCalculatorPlugin(),
             new ItemProductOptionPriceAggregatorPlugin(),
@@ -228,7 +232,7 @@ class CalculationDependencyProvider extends SprykerCalculationDependencyProvider
     {
         return [
 
-//            new PriceCalculatorPlugin(),
+            new PriceCalculatorPlugin(),
             new ItemProductOptionPriceAggregatorPlugin(),
             new ItemSubtotalAggregatorPlugin(),
 
