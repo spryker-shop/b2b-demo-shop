@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "a716f2ee6c88cee26ce4816c914ef8c2",
+    "content-hash": "e474089bce3edf9543002d4954951f7f",
     "packages": [
         {
             "name": "braintree/braintree_php",
@@ -2399,11 +2399,15 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-feature/te-8-add-method-to-business-model",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
+<<<<<<< HEAD
                 "reference": "a6f92eb10387581239e823303f792f6aaee4cf57"
+=======
+                "reference": "8fd3e8a3821191d4e653d906c9968e961cd83015"
+>>>>>>> tn-8 updated composer.lock
             },
             "require": {
                 "everon/criteria-builder": "^1.1.5",
@@ -2666,15 +2670,23 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
+<<<<<<< HEAD
             "time": "2018-07-26T09:40:59+00:00"
+=======
+            "time": "2018-07-25T12:35:32+00:00"
+>>>>>>> tn-8 updated composer.lock
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-master",
+            "version": "dev-bugfix/fix-autoloader",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
+<<<<<<< HEAD
                 "reference": "a558e4a7119d451649020ac2f724e86772498a29"
+=======
+                "reference": "02318fad78e6fd8439bb48a38c5504cdccf92361"
+>>>>>>> tn-8 updated composer.lock
             },
             "require": {
                 "php": ">=7.1"
@@ -2749,7 +2761,11 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
+<<<<<<< HEAD
             "time": "2018-07-26T09:41:04+00:00"
+=======
+            "time": "2018-07-25T12:36:33+00:00"
+>>>>>>> tn-8 updated composer.lock
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -8335,26 +8351,31 @@
         },
         {
             "name": "spryker/spryk",
-            "version": "dev-master",
+            "version": "dev-feature/te-8-add-method-to-business-model",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryk.git",
-                "reference": "d0e2db1145317c616f1a53835e00347adc7a61e0"
+                "reference": "9f120a15bfde2d10efe63221a6cecd23eddb90cf"
             },
             "require": {
                 "php": ">=7.1",
-                "roave/better-reflection": "^2.0",
+                "roave/better-reflection": "^2.0 || ^3.0",
+                "spryker/kernel": "^3.17.0",
+                "symfony/finder": "^3.4.0 || ^4.0.0",
                 "symfony/yaml": "^3.4.9",
-                "twig/twig": "^1.22",
+                "twig/twig": "^1.34",
                 "zendframework/zend-filter": "^2.8"
             },
             "require-dev": {
-                "codeception/codeception": "*",
+                "codeception/codeception": "^2.4.0",
+                "nette/finder": "^2.4.0",
+                "nette/utils": "^2.5.0",
                 "php-coveralls/php-coveralls": "^1.0",
-                "phpstan/phpstan": "^0.8.5",
+                "phpstan/phpstan": "^0.9.0 || ^0.10.0",
+                "phpstan/phpstan-phpunit": "^0.9.0 || ^0.10.0",
+                "phpstan/phpstan-strict-rules": "^0.9.0 || ^0.10.0",
                 "spryker/code-sniffer": "dev-master as 1.0.0",
                 "spryker/git-hook": "dev-bugfix/core-4886-githook-broken",
-                "spryker/kernel": "^3.0.0",
                 "symfony/var-dumper": "^4.0.9"
             },
             "type": "library",
@@ -8390,7 +8411,7 @@
                 "MIT"
             ],
             "description": "Spryker Spryk build tool",
-            "time": "2018-07-23T07:24:17+00:00"
+            "time": "2018-07-26T09:42:36+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
