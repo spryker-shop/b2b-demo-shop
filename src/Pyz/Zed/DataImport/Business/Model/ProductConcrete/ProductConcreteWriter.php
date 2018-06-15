@@ -42,6 +42,11 @@ class ProductConcreteWriter extends PublishAwareStep implements DataImportStepIn
     protected $productRepository;
 
     /**
+     * @var array[]
+     */
+    protected static $columnsCache = [];
+
+    /**
      * @param \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepository $productRepository
      */
     public function __construct(ProductRepository $productRepository)
@@ -84,13 +89,31 @@ class ProductConcreteWriter extends PublishAwareStep implements DataImportStepIn
             ->setFkProductAbstract($idAbstract)
             ->setAttributes(json_encode($dataSet[static::KEY_ATTRIBUTES]));
 
-        if (SpyProductTableMap::getTableMap()->hasColumn(static::KEY_IS_QUANTITY_SPLITTABLE)) {
-            $productEntity->setIsQuantitySplittable($dataSet[static::KEY_IS_QUANTITY_SPLITTABLE] != "" ? $dataSet[static::KEY_IS_QUANTITY_SPLITTABLE] : true);
+        if ($this->isColumnExists(static::KEY_IS_QUANTITY_SPLITTABLE)) {
+            $isQuantitySplittable = $dataSet[static::KEY_IS_QUANTITY_SPLITTABLE] === "" ? true : $dataSet[static::KEY_IS_QUANTITY_SPLITTABLE];
+            $productEntity->setIsQuantitySplittable($isQuantitySplittable);
         }
 
         $productEntity->save();
 
         return $productEntity;
+    }
+
+    /**
+     * @param string $columnName
+     *
+     * @return bool
+     */
+    protected function isColumnExists(string $columnName): bool
+    {
+        if (isset(static::$columnsCache[$columnName])) {
+            return static::$columnsCache[$columnName];
+        }
+
+        $isColumnExists = SpyProductTableMap::getTableMap()->hasColumn($columnName);
+        static::$columnsCache[$columnName] = $isColumnExists;
+
+        return $isColumnExists;
     }
 
     /**
