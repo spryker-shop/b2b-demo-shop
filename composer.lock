@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "225d137e0bdf0c22a6bcb4ccf1930050",
+    "content-hash": "303c03a9bc18487fe9b69728c69c82ce",
     "packages": [
         {
             "name": "braintree/braintree_php",
@@ -1718,16 +1718,16 @@
         },
         {
             "name": "react/promise",
-            "version": "v2.7.0",
+            "version": "v2.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/promise.git",
-                "reference": "f4edc2581617431aea50430749db55cc3fc031b3"
+                "reference": "5e60e5596a5422287f9d2205f405bef2ae0cef4b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/promise/zipball/f4edc2581617431aea50430749db55cc3fc031b3",
-                "reference": "f4edc2581617431aea50430749db55cc3fc031b3",
+                "url": "https://api.github.com/repos/reactphp/promise/zipball/5e60e5596a5422287f9d2205f405bef2ae0cef4b",
+                "reference": "5e60e5596a5422287f9d2205f405bef2ae0cef4b",
                 "shasum": ""
             },
             "require": {
@@ -1760,7 +1760,7 @@
                 "promise",
                 "promises"
             ],
-            "time": "2018-06-13T15:59:06+00:00"
+            "time": "2018-06-11T11:05:43+00:00"
         },
         {
             "name": "ruflin/elastica",
@@ -2106,11 +2106,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-feature/ps-955/dev-splittable-order-items",
+            "version": "dev-feature/ps-955/master-splittable-order-items",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "669a44a83ba4874a94412beaa2c4de4580a99edf"
+                "reference": "95bf4b274d43452e10cb711a5839277d04ef9c7d"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.0",
@@ -2131,6 +2131,8 @@
                 "spryker/availability-gui": "*",
                 "spryker/availability-storage": "*",
                 "spryker/braintree": "*",
+                "spryker/business-on-behalf": "*",
+                "spryker/business-on-behalf-data-import": "*",
                 "spryker/cache": "*",
                 "spryker/calculation": "*",
                 "spryker/cart": "*",
@@ -2369,15 +2371,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2018-06-15T09:56:31+00:00"
+            "time": "2018-06-15T10:51:19+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-feature/ps-955/dev-splittable-order-items",
+            "version": "dev-feature/ps-955/master-splittable-order-items",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "e2dc5cae99790789f036c921a776b785f37711f9"
+                "reference": "0de5fc27d720cac352471a28909d25c73be52d96"
             },
             "require": {
                 "php": ">=7.1"
@@ -2424,12 +2426,14 @@
                 "spryker-shop/quick-order-page": "*",
                 "spryker-shop/redirect-page": "*",
                 "spryker-shop/shop-application": "*",
+                "spryker-shop/shop-application-extension": "*",
                 "spryker-shop/shop-layout": "*",
                 "spryker-shop/shop-router": "*",
                 "spryker-shop/shop-translator": "*",
                 "spryker-shop/web-profiler-widget": "*",
                 "spryker-shop/wishlist-page": "*",
-                "spryker-shop/wishlist-widget": "*"
+                "spryker-shop/wishlist-widget": "*",
+                "spryker/business-on-behalf-widget": "*"
             },
             "require-dev": {
                 "spryker/code-sniffer": "dev-master",
@@ -2450,7 +2454,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2018-06-15T09:57:28+00:00"
+            "time": "2018-06-15T10:00:16+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -5051,16 +5055,16 @@
         },
         {
             "name": "jean85/pretty-package-versions",
-            "version": "1.2",
+            "version": "1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Jean85/pretty-package-versions.git",
-                "reference": "75c7effcf3f77501d0e0caa75111aff4daa0dd48"
+                "reference": "d457344b6a035ef99236bdda4729ad7eeb233f54"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Jean85/pretty-package-versions/zipball/75c7effcf3f77501d0e0caa75111aff4daa0dd48",
-                "reference": "75c7effcf3f77501d0e0caa75111aff4daa0dd48",
+                "url": "https://api.github.com/repos/Jean85/pretty-package-versions/zipball/d457344b6a035ef99236bdda4729ad7eeb233f54",
+                "reference": "d457344b6a035ef99236bdda4729ad7eeb233f54",
                 "shasum": ""
             },
             "require": {
@@ -5091,14 +5095,14 @@
                     "email": "alessandro.lai85@gmail.com"
                 }
             ],
-            "description": "A wrapper for ocramius/package-versions to get pretty versions strings",
+            "description": "A wrapper for ocramius/pretty-package-versions to get pretty versions strings",
             "keywords": [
                 "composer",
                 "package",
                 "release",
                 "versions"
             ],
-            "time": "2018-06-13T13:22:40+00:00"
+            "time": "2018-01-21T13:54:22+00:00"
         },
         {
             "name": "myclabs/deep-copy",
@@ -7319,16 +7323,16 @@
         },
         {
             "name": "slevomat/coding-standard",
-            "version": "4.6.2",
+            "version": "4.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/slevomat/coding-standard.git",
-                "reference": "d43b9a627cdcb7ce837a1d85a79b52645cdf44bc"
+                "reference": "de4a6fecdd6d00218e9c7d019a4ff47e123692cf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/slevomat/coding-standard/zipball/d43b9a627cdcb7ce837a1d85a79b52645cdf44bc",
-                "reference": "d43b9a627cdcb7ce837a1d85a79b52645cdf44bc",
+                "url": "https://api.github.com/repos/slevomat/coding-standard/zipball/de4a6fecdd6d00218e9c7d019a4ff47e123692cf",
+                "reference": "de4a6fecdd6d00218e9c7d019a4ff47e123692cf",
                 "shasum": ""
             },
             "require": {
@@ -7354,7 +7358,7 @@
                 "MIT"
             ],
             "description": "Slevomat Coding Standard for PHP_CodeSniffer complements Consistence Coding Standard by providing sniffs with additional checks.",
-            "time": "2018-06-12T21:23:15+00:00"
+            "time": "2018-06-11T19:10:45+00:00"
         },
         {
             "name": "sllh/composer-versions-check",
