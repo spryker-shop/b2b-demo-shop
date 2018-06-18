@@ -17,6 +17,12 @@ use Spryker\Zed\DataImport\Communication\Plugin\DataImportEventBehaviorPlugin;
 use Spryker\Zed\DataImport\Communication\Plugin\DataImportPublisherPlugin;
 use Spryker\Zed\DataImport\DataImportDependencyProvider as SprykerDataImportDependencyProvider;
 use Spryker\Zed\Kernel\Container;
+use Spryker\Zed\MerchantDataImport\Communication\Plugin\MerchantDataImportPlugin;
+use Spryker\Zed\MerchantRelationshipDataImport\Communication\Plugin\MerchantRelationshipDataImportPlugin;
+use Spryker\Zed\MerchantRelationshipProductListDataImport\Communication\Plugin\MerchantRelationshipProductListDataImportPlugin;
+use Spryker\Zed\ProductListDataImport\Communication\Plugin\ProductListCategoryDataImportPlugin;
+use Spryker\Zed\ProductListDataImport\Communication\Plugin\ProductListDataImportPlugin;
+use Spryker\Zed\ProductListDataImport\Communication\Plugin\ProductListProductConcreteDataImportPlugin;
 use Spryker\Zed\ProductMeasurementUnitDataImport\Communication\Plugin\ProductMeasurementBaseUnitDataImportPlugin;
 use Spryker\Zed\ProductMeasurementUnitDataImport\Communication\Plugin\ProductMeasurementSalesUnitDataImportPlugin;
 use Spryker\Zed\ProductMeasurementUnitDataImport\Communication\Plugin\ProductMeasurementSalesUnitStoreDataImportPlugin;
@@ -136,6 +142,12 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
             new ProductMeasurementSalesUnitDataImportPlugin(),
             new ProductMeasurementSalesUnitStoreDataImportPlugin(),
             new ProductQuantityDataImportPlugin(),
+            new MerchantDataImportPlugin(),
+            new MerchantRelationshipDataImportPlugin(),
+            new ProductListDataImportPlugin(),
+            new ProductListCategoryDataImportPlugin(),
+            new ProductListProductConcreteDataImportPlugin(),
+            new MerchantRelationshipProductListDataImportPlugin(),
         ];
     }
 
