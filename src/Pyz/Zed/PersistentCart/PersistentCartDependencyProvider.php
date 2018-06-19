@@ -26,7 +26,7 @@ class PersistentCartDependencyProvider extends SprykerPersistentCartDependencyPr
             new SharedCartQuoteResponseExpanderPlugin(), #SharedCartFeature
         ];
     }
-    
+
     /**
      * @return \Spryker\Zed\PersistentCartExtension\Dependency\Plugin\QuoteItemFinderPluginInterface
      */
