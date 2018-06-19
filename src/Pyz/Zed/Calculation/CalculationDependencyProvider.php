@@ -25,8 +25,8 @@ use Spryker\Zed\Calculation\Communication\Plugin\Calculator\PriceToPayAggregator
 use Spryker\Zed\Calculation\Communication\Plugin\Calculator\RefundableAmountCalculatorPlugin;
 use Spryker\Zed\Calculation\Communication\Plugin\Calculator\RefundTotalCalculatorPlugin;
 use Spryker\Zed\Calculation\Communication\Plugin\Calculator\RemoveAllCalculatedDiscountsCalculatorPlugin;
-use Spryker\Zed\Calculation\Communication\Plugin\Calculator\RemoveTotalsCalculatorPlugin;
 use Spryker\Zed\Calculation\Communication\Plugin\Calculator\RemoveCanceledAmountCalculatorPlugin;
+use Spryker\Zed\Calculation\Communication\Plugin\Calculator\RemoveTotalsCalculatorPlugin;
 use Spryker\Zed\Calculation\Communication\Plugin\Calculator\SubtotalCalculatorPlugin;
 use Spryker\Zed\Calculation\Communication\Plugin\Calculator\TaxTotalCalculatorPlugin;
 use Spryker\Zed\DiscountCalculationConnector\Communication\Plugin\DiscountCalculatorPlugin;
