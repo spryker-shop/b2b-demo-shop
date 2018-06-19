@@ -1,5 +1,7 @@
 const webpack = require('webpack');
 
+// execute webpack compiler
+// and nicely handle the console output
 function compile(config) {
     console.log(`Building for ${config.mode}...`);
 

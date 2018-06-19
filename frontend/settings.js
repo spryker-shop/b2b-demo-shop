@@ -12,6 +12,9 @@ const context = process.cwd();
 
 // define project relative paths to context
 const paths = {
+    // locate the typescript configuration json file
+    tsConfig: './tsconfig.json',
+
     // public folder
     public: './public/Yves/assets',
 
@@ -32,10 +35,7 @@ const paths = {
         modules: './src/Pyz/Yves',
         // ShopUi source folder
         shopUiModule: `./src/Pyz/Yves/ShopUi/Theme/${theme}`
-    },
-
-    // locate the typescript configuration json file
-    tsConfig: './tsconfig.json'
+    }
 };
 
 // export settings

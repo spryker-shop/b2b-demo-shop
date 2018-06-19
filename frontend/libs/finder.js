@@ -2,6 +2,7 @@ const path = require('path');
 const glob = require('fast-glob');
 const appSettings = require('../settings');
 
+// define the default glob settings for fast-glob
 const defaultGlobSettings = {
     followSymlinkedDirectories: false,
     absolute: true,
@@ -9,6 +10,9 @@ const defaultGlobSettings = {
     onlyDirectories: false
 }
 
+// perform a search in a list of directories
+// matching provided patterns
+// using provided glob settings
 function find(globDirs, globPatterns, globSettings = {}) {
     return globDirs.reduce((results, dir) => [
         ...results,
@@ -20,6 +24,7 @@ function find(globDirs, globPatterns, globSettings = {}) {
     ], []);
 }
 
+// find components according to `appSettings.find.componentEntryPoints`
 function findComponentEntryPoints() {
     process.stdout.write('Scanning for component entry points...');
     const settings = appSettings.find.componentEntryPoints;
@@ -37,6 +42,7 @@ function findComponentEntryPoints() {
     return entryPoints;
 }
 
+// find styles according to `appSettings.find.componentStyles`
 function findComponentStyles() {
     process.stdout.write('Scanning for component styles... ');
     const settings = appSettings.find.componentStyles;
