@@ -15,11 +15,11 @@ const paths = {
     // locate the typescript configuration json file
     tsConfig: './tsconfig.json',
 
-    // public folder
-    public: './public/Yves/assets',
-
     // assets folder
     assets: './frontend/assets',
+
+    // public folder
+    public: './public/Yves/assets',
 
     // core folders
     core: {
@@ -38,12 +38,19 @@ const paths = {
     }
 };
 
+// define relative urls to site host (/)
+const urls = {
+    // assets base url
+    assets: '/assets'
+};
+
 // export settings
 module.exports = {
     name,
     theme,
     context,
     paths,
+    urls,
 
     // define settings for suite-frontend-builder finder
     find: {

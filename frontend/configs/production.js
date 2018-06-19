@@ -27,6 +27,7 @@ module.exports = {
 
             new OptimizeCSSAssetsPlugin({
                 cssProcessorOptions: {
+                    discardEmpty: true,
                     discardComments: {
                         removeAll: true
                     }

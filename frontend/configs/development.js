@@ -35,8 +35,8 @@ module.exports = {
 
     output: {
         path: path.join(appSettings.context, appSettings.paths.public),
+        publicPath: `${appSettings.urls.assets}/`,
         filename: `./js/${appSettings.name}.[name].js`,
-        publicPath: '/assets/',
         jsonpFunction: `webpackJsonp_${appSettings.name}`
     },
 
