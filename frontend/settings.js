@@ -15,6 +15,9 @@ const paths = {
     // public folder
     public: './public/Yves/assets',
 
+    // assets folder
+    assets: './frontend/assets',
+
     // core folders
     core: {
         // all modules
@@ -29,7 +32,10 @@ const paths = {
         modules: './src/Pyz/Yves',
         // ShopUi source folder
         shopUiModule: `./src/Pyz/Yves/ShopUi/Theme/${theme}`
-    }
+    },
+
+    // locate the typescript configuration json file
+    tsConfig: './tsconfig.json'
 };
 
 // export settings
