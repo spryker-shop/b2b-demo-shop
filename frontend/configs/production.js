@@ -1,17 +1,18 @@
 const webpack = require('webpack');
+const merge = require('webpack-merge');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const config = require('./development');
 
-module.exports = {
-    ...config,
+const mergeWithStrategy = merge.smartStrategy({
+    plugins: 'prepend'
+});
 
+module.exports = mergeWithStrategy(config, {
     mode: 'production',
     devtool: false,
 
     optimization: {
-        ...config.optimization,
-
         minimizer: [
             new UglifyJsPlugin({
                 cache: true,
@@ -37,10 +38,8 @@ module.exports = {
     },
 
     plugins: [
-        ...config.plugins,
-
         new webpack.DefinePlugin({
             __PRODUCTION__: true
-        }),
+        })
     ]
-}
+})

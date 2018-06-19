@@ -1,7 +1,6 @@
+const merge = require('webpack-merge');
 const config = require('./development');
 
-module.exports = {
-    ...config,
-
+module.exports = merge(config, {
     watch: true
-}
+})
