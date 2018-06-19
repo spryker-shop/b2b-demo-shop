@@ -68,9 +68,9 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
     }
 
     /**
-     * @return \Spryker\Zed\SalesExtension\Dependency\Plugin\SalesItemTransformerStrategyPluginInterface[]
+     * @return \Spryker\Zed\SalesExtension\Dependency\Plugin\ItemTransformerStrategyPluginInterface[]
      */
-    public function getSalesOrderItemTransformerStrategyPlugins(): array
+    public function getItemTransformerStrategyPlugins(): array
     {
         return [
             new NonSplittableItemTransformerStrategyPlugin(),
