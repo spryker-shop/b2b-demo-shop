@@ -15,7 +15,7 @@ class ProductDiscontinuedDependencyProvider extends SprykerProductDiscontinuedDe
     /**
      * @return \Spryker\Zed\ProductDiscontinuedExtension\Dependency\Plugin\PostProductDiscontinuePluginInterface[]
      */
-    protected function getPostCreateProductDiscontinuePlugins(): array
+    protected function getPostProductDiscontinuePlugins(): array
     {
         return [
             new DiscontinueBundlePostProductDiscontinuePlugin(),
