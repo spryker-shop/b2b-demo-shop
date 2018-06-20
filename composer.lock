@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "7483b7b6cc5f102ee314748349fb401b",
+    "content-hash": "3aec8f9ba39c0df56a4d2c20753f8a2c",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.61.8",
+            "version": "3.61.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "7df3b62d06da6512c752b2fd224a65fc0d8c0cbe"
+                "reference": "57041356c1bb7fdcaba2e181feec56f854b52e38"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/7df3b62d06da6512c752b2fd224a65fc0d8c0cbe",
-                "reference": "7df3b62d06da6512c752b2fd224a65fc0d8c0cbe",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/57041356c1bb7fdcaba2e181feec56f854b52e38",
+                "reference": "57041356c1bb7fdcaba2e181feec56f854b52e38",
                 "shasum": ""
             },
             "require": {
@@ -84,7 +84,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2018-06-15T21:48:00+00:00"
+            "time": "2018-06-19T20:26:38+00:00"
         },
         {
             "name": "braintree/braintree_php",
@@ -943,36 +943,46 @@
         },
         {
             "name": "league/csv",
-            "version": "8.2.3",
+            "version": "9.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/csv.git",
-                "reference": "d2aab1e7bde802582c3879acf03d92716577c76d"
+                "reference": "9c8ad06fb5d747c149875beb6133566c00eaa481"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/csv/zipball/d2aab1e7bde802582c3879acf03d92716577c76d",
-                "reference": "d2aab1e7bde802582c3879acf03d92716577c76d",
+                "url": "https://api.github.com/repos/thephpleague/csv/zipball/9c8ad06fb5d747c149875beb6133566c00eaa481",
+                "reference": "9c8ad06fb5d747c149875beb6133566c00eaa481",
                 "shasum": ""
             },
             "require": {
                 "ext-mbstring": "*",
-                "php": ">=5.5.0"
+                "php": ">=7.0.10"
             },
             "require-dev": {
-                "friendsofphp/php-cs-fixer": "^1.9",
-                "phpunit/phpunit": "^4.0"
+                "ext-curl": "*",
+                "friendsofphp/php-cs-fixer": "^2.0",
+                "phpstan/phpstan": "^0.9.2",
+                "phpstan/phpstan-phpunit": "^0.9.4",
+                "phpstan/phpstan-strict-rules": "^0.9.0",
+                "phpunit/phpunit": "^6.0"
+            },
+            "suggest": {
+                "ext-iconv": "Needed to ease transcoding CSV using iconv stream filters"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "8.2-dev"
+                    "dev-master": "9.x-dev"
                 }
             },
             "autoload": {
                 "psr-4": {
                     "League\\Csv\\": "src"
-                }
+                },
+                "files": [
+                    "src/functions_include.php"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -996,7 +1006,7 @@
                 "read",
                 "write"
             ],
-            "time": "2018-02-06T08:27:03+00:00"
+            "time": "2018-05-01T18:32:48+00:00"
         },
         {
             "name": "league/flysystem",
@@ -1693,7 +1703,7 @@
             ],
             "authors": [
                 {
-                    "name": "William DURAND",
+                    "name": "William Durand",
                     "email": "william.durand1@gmail.com"
                 }
             ],
@@ -2847,16 +2857,16 @@
         },
         {
             "name": "spryker-shop/company-user-invitation-page",
-            "version": "1.0.0",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/company-user-invitation-page.git",
-                "reference": "37eba8639c22cf5273767890a0bc7ee305750fc3"
+                "reference": "6bed0e137a8f5eb89a6326d5e1d04f3578916153"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/company-user-invitation-page/zipball/37eba8639c22cf5273767890a0bc7ee305750fc3",
-                "reference": "37eba8639c22cf5273767890a0bc7ee305750fc3",
+                "url": "https://api.github.com/repos/spryker-shop/company-user-invitation-page/zipball/6bed0e137a8f5eb89a6326d5e1d04f3578916153",
+                "reference": "6bed0e137a8f5eb89a6326d5e1d04f3578916153",
                 "shasum": ""
             },
             "require": {
@@ -2866,7 +2876,7 @@
                 "spryker-shop/shop-ui": "^1.0.0",
                 "spryker/application": "^3.8.0",
                 "spryker/company-user-invitation": "^1.0.0",
-                "spryker/csv": "^2.0.1",
+                "spryker/csv": "^3.0.0",
                 "spryker/customer": "^7.7.1",
                 "spryker/kernel": "^3.19.0",
                 "spryker/session": "^3.2.4",
@@ -2896,7 +2906,7 @@
                 "proprietary"
             ],
             "description": "CompanyUserInvitationPage module",
-            "time": "2018-06-15T09:21:34+00:00"
+            "time": "2018-06-19T09:02:18+00:00"
         },
         {
             "name": "spryker-shop/currency-widget",
@@ -9289,20 +9299,19 @@
         },
         {
             "name": "spryker/company-user-invitation",
-            "version": "1.0.1",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/company-user-invitation.git",
-                "reference": "cfc39a3c3d987a507a73b96784edfc596e906932"
+                "reference": "b596848d06b88de1878695ef76c9d31f8a9f73db"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/company-user-invitation/zipball/cfc39a3c3d987a507a73b96784edfc596e906932",
-                "reference": "cfc39a3c3d987a507a73b96784edfc596e906932",
+                "url": "https://api.github.com/repos/spryker/company-user-invitation/zipball/b596848d06b88de1878695ef76c9d31f8a9f73db",
+                "reference": "b596848d06b88de1878695ef76c9d31f8a9f73db",
                 "shasum": ""
             },
             "require": {
-                "league/csv": "^8.1.0",
                 "php": ">=7.1",
                 "spryker/application": "^3.9.0",
                 "spryker/company-business-unit": "^1.1.0 || ^2.0.0",
@@ -9346,7 +9355,7 @@
                 "proprietary"
             ],
             "description": "CompanyUserInvitation module",
-            "time": "2018-06-11T09:24:51+00:00"
+            "time": "2018-06-20T16:54:05+00:00"
         },
         {
             "name": "spryker/config",
@@ -9499,20 +9508,21 @@
         },
         {
             "name": "spryker/csv",
-            "version": "2.0.1",
+            "version": "3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/csv.git",
-                "reference": "1afdab6557f98949cae0a06b87b01cc3e0fa18a1"
+                "reference": "d91fcc6cdcb3b727e17f0ce85e67610db6e57351"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/csv/zipball/1afdab6557f98949cae0a06b87b01cc3e0fa18a1",
-                "reference": "1afdab6557f98949cae0a06b87b01cc3e0fa18a1",
+                "url": "https://api.github.com/repos/spryker/csv/zipball/d91fcc6cdcb3b727e17f0ce85e67610db6e57351",
+                "reference": "d91fcc6cdcb3b727e17f0ce85e67610db6e57351",
                 "shasum": ""
             },
             "require": {
-                "league/csv": "^8.1.0"
+                "league/csv": "^9.1",
+                "php": ">=7.1"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
@@ -9521,15 +9531,15 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.0.x-dev"
+                    "dev-master": "3.0.x-dev"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "proprietary"
             ],
-            "description": "Csv bundle",
-            "time": "2017-04-19T13:55:42+00:00"
+            "description": "Csv module",
+            "time": "2018-06-20T12:42:41+00:00"
         },
         {
             "name": "spryker/currency",
@@ -10163,6 +10173,52 @@
             ],
             "description": "DataImport module",
             "time": "2018-04-03T13:52:19+00:00"
+        },
+        {
+            "name": "spryker/dataset",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/dataset.git",
+                "reference": "90ef8c1119cd89ec2dbb4ade5445111024114dc2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/dataset/zipball/90ef8c1119cd89ec2dbb4ade5445111024114dc2",
+                "reference": "90ef8c1119cd89ec2dbb4ade5445111024114dc2",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/csv": "^3.0.0",
+                "spryker/gui": "^3.13.0",
+                "spryker/kernel": "^3.16.0",
+                "spryker/locale": "^3.1.0",
+                "spryker/propel-orm": "^1.5.0",
+                "spryker/symfony": "^3.1.2",
+                "spryker/util-text": "^1.2.1"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "Dataset module",
+            "time": "2018-06-20T13:55:30+00:00"
         },
         {
             "name": "spryker/discount",
