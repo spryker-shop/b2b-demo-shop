@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "7583cdeb65ff5954699996bf033b8c02",
+    "content-hash": "7483b7b6cc5f102ee314748349fb401b",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -9147,6 +9147,54 @@
             ],
             "description": "CompanyUnitAddressLabelDataImport module",
             "time": "2018-03-29T05:15:24+00:00"
+        },
+        {
+            "name": "spryker/company-unit-address-label-gui",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/company-unit-address-label-gui.git",
+                "reference": "829d049e09b7517f296652ee8a895bfe00c41a6e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/company-unit-address-label-gui/zipball/829d049e09b7517f296652ee8a895bfe00c41a6e",
+                "reference": "829d049e09b7517f296652ee8a895bfe00c41a6e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/company-unit-address-gui-extension": "^1.0.0",
+                "spryker/company-unit-address-label": "^1.1.0",
+                "spryker/kernel": "^3.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/company-unit-address": "*",
+                "spryker/gui": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/company-unit-address": "If you want to use CompanyUnitAddressTableExpanderPlugin which used CompanyUnitAddress module entity map.",
+                "spryker/gui": "If you want to use CompanyUnitAddressTableExpanderPlugin which used Gui transfer object."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CompanyUnitAddressLabelGui module",
+            "time": "2018-04-04T10:42:53+00:00"
         },
         {
             "name": "spryker/company-user",
