@@ -10,6 +10,7 @@ namespace PyzTest\Yves\Checkout\Process\Steps;
 use Codeception\Test\Unit;
 use Generated\Shared\Transfer\CheckoutErrorTransfer;
 use Generated\Shared\Transfer\CheckoutResponseTransfer;
+use Generated\Shared\Transfer\MessageTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Generated\Shared\Transfer\SaveOrderTransfer;
 use Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginInterface;
@@ -85,10 +86,12 @@ class PlaceOrderStepTest extends Unit
 
         $checkoutClientMock->expects($this->once())->method('placeOrder')->willReturn($checkoutResponseTransfer);
 
-        $checkoutClientMock = $this->createCheckoutClientMock();
         $checkoutClientMock->expects($this->exactly(2))->method('addCheckoutErrorMessage');
 
-        $placeOrderStep = $this->createPlaceOrderStep($checkoutClientMock, $checkoutClientMock);
+        $checkoutClientMock->addCheckoutErrorMessage(new MessageTransfer());
+        $checkoutClientMock->addCheckoutErrorMessage(new MessageTransfer());
+
+        $placeOrderStep = $this->createPlaceOrderStep($checkoutClientMock);
 
         $quoteTransfer = $this->createQuoteTransfer();
         $placeOrderStep->execute($this->createRequest(), $quoteTransfer);
@@ -129,7 +132,7 @@ class PlaceOrderStepTest extends Unit
      *
      * @return \SprykerShop\Yves\CheckoutPage\Process\Steps\PlaceOrderStep
      */
-    protected function createPlaceOrderStep(CheckoutPageToCheckoutClientInterface $checkoutClientMock, $zedRequestClientMock = null)
+    protected function createPlaceOrderStep(CheckoutPageToCheckoutClientInterface $checkoutClientMock, ?CheckoutPageToZedRequestClientInterface $zedRequestClientMock = null): PlaceOrderStep
     {
         if ($zedRequestClientMock === null) {
             $zedRequestClientMock = $this->createZedRequestClientMock();
