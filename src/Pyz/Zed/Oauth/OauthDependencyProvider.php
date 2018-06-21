@@ -7,8 +7,6 @@
 namespace Pyz\Zed\Oauth;
 
 use Spryker\Zed\Oauth\OauthDependencyProvider as SprykerOauthDependencyProvider;
-use Spryker\Zed\OauthCustomerConnector\Communication\Plugin\Oauth\CustomerScopeProviderPlugin;
-use Spryker\Zed\OauthCustomerConnector\Communication\Plugin\Oauth\CustomerUserProviderPlugin;
 
 class OauthDependencyProvider extends SprykerOauthDependencyProvider
 {
@@ -17,9 +15,7 @@ class OauthDependencyProvider extends SprykerOauthDependencyProvider
      */
     protected function getUserProviderPlugins(): array
     {
-        return [
-            new CustomerUserProviderPlugin(),
-        ];
+        return [];
     }
 
     /**
@@ -27,8 +23,6 @@ class OauthDependencyProvider extends SprykerOauthDependencyProvider
      */
     protected function getScopeProviderPlugins(): array
     {
-        return [
-            new CustomerScopeProviderPlugin(),
-        ];
+        return [];
     }
 }
