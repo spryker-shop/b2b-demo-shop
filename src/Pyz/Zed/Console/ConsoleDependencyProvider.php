@@ -56,7 +56,7 @@ use Spryker\Zed\Oms\Communication\Console\CheckConditionConsole as OmsCheckCondi
 use Spryker\Zed\Oms\Communication\Console\CheckTimeoutConsole as OmsCheckTimeoutConsole;
 use Spryker\Zed\Oms\Communication\Console\ClearLocksConsole as OmsClearLocksConsole;
 use Spryker\Zed\PriceProduct\Communication\Console\PriceProductStoreOptimizeConsole;
-use Spryker\Zed\PriceProductMerchantRelationship\Communication\Console\PriceProductMerchantRelationshipCleanConsole;
+use Spryker\Zed\PriceProductMerchantRelationship\Communication\Console\PriceProductMerchantRelationshipDeleteConsole;
 use Spryker\Zed\ProductLabel\Communication\Console\ProductLabelRelationUpdaterConsole;
 use Spryker\Zed\ProductLabel\Communication\Console\ProductLabelValidityConsole;
 use Spryker\Zed\ProductRelation\Communication\Console\ProductRelationUpdaterConsole;
@@ -239,7 +239,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new MaintenanceDisableConsole(),
 
             new PriceProductStoreOptimizeConsole(),
-            new PriceProductMerchantRelationshipCleanConsole(),
+            new PriceProductMerchantRelationshipDeleteConsole(),
         ];
 
         $propelCommands = $container->getLocator()->propel()->facade()->getConsoleCommands();
