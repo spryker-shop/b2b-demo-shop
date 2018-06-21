@@ -1,7 +1,18 @@
 {
-    "extends": "./node_modules/@spryker/suite-frontend-builder/tsconfig.suite",
     "compilerOptions": {
         "baseUrl": ".",
+        "sourceMap": true,
+        "noImplicitAny": false,
+        "module": "esnext",
+        "moduleResolution": "node",
+        "removeComments": true,
+        "target": "es5",
+        "lib": [
+            "dom",
+            "es5",
+            "es6",
+            "es7"
+        ],
         "paths": {
             "*": [
                 "*"
