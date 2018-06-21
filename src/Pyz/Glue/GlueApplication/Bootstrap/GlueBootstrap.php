@@ -1,8 +1,8 @@
 <?php
 
 /**
- * Copyright © 2017-present Spryker Systems GmbH. All rights reserved.
- * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
+ * This file is part of the Spryker Suite.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
 namespace Pyz\Glue\GlueApplication\Bootstrap;
@@ -12,8 +12,8 @@ use Silex\Provider\SessionServiceProvider;
 use Spryker\Glue\GlueApplication\Bootstrap\AbstractGlueBootstrap;
 use Spryker\Glue\GlueApplication\Plugin\Rest\GlueServiceProviderPlugin;
 use Spryker\Glue\GlueApplication\Plugin\Rest\ServiceProvider\GlueApplicationServiceProvider;
-use Spryker\Glue\GlueApplication\Plugin\Rest\ServiceProvider\GlueRoutingServiceProvider;
 use Spryker\Glue\GlueApplication\Plugin\Rest\ServiceProvider\GlueResourceBuilderService;
+use Spryker\Glue\GlueApplication\Plugin\Rest\ServiceProvider\GlueRoutingServiceProvider;
 
 class GlueBootstrap extends AbstractGlueBootstrap
 {

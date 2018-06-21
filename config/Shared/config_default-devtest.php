@@ -123,7 +123,6 @@ $config[WebProfilerConstants::ENABLE_WEB_PROFILER]
     = $config[ConfigConstants::ENABLE_WEB_PROFILER]
     = false;
 
-
 $config[GlueApplicationConstants::GLUE_APPLICATION_REST_DEBUG] = true;
 
 // ----------- OAUTH
