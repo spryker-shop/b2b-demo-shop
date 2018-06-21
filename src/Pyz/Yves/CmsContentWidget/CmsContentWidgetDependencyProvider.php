@@ -14,7 +14,7 @@ use SprykerShop\Shared\CmsContentWidgetProductSetConnector\ContentWidgetConfigur
 use SprykerShop\Shared\FileManagerWidget\CmsContentWidgetConfigurationProvider\FileManagerWidgetConfigurationProvider;
 use SprykerShop\Yves\CmsContentWidgetProductConnector\Plugin\CmsProductContentWidgetPlugin;
 use SprykerShop\Yves\CmsContentWidgetProductSetConnector\Plugin\CmsProductSetContentWidgetPlugin;
-use SprykerShop\Yves\FileManagerWidget\Plugin\FileManagerWidgetPlugin;
+use SprykerShop\Yves\FileManagerWidget\Plugin\CmsContentWidget\FileManagerWidgetPlugin;
 
 class CmsContentWidgetDependencyProvider extends SprykerCmsContentWidgetDependencyProvider
 {
