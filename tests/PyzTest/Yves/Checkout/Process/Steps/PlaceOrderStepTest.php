@@ -16,6 +16,7 @@ use Generated\Shared\Transfer\SaveOrderTransfer;
 use Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginInterface;
 use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCheckoutClientInterface;
 use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToZedRequestClientInterface;
+use SprykerShop\Yves\CheckoutPage\Handler\CheckoutErrorMessageHandlerInterface;
 use SprykerShop\Yves\CheckoutPage\Process\Steps\PlaceOrderStep;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -138,9 +139,12 @@ class PlaceOrderStepTest extends Unit
             $zedRequestClientMock = $this->createZedRequestClientMock();
         }
 
+        $checkoutErrorMessageHandler = $this->createCheckoutErrorMessageHandlerMock();
+
         return new PlaceOrderStep(
             $checkoutClientMock,
             $zedRequestClientMock,
+            $checkoutErrorMessageHandler,
             'place_order',
             'escape_route'
         );
@@ -168,6 +172,14 @@ class PlaceOrderStepTest extends Unit
     protected function createCheckoutClientMock()
     {
         return $this->getMockBuilder(CheckoutPageToCheckoutClientInterface::class)->getMock();
+    }
+
+    /**
+     * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerShop\Yves\CheckoutPage\Handler\CheckoutErrorMessageHandlerInterface
+     */
+    protected function createCheckoutErrorMessageHandlerMock(): CheckoutErrorMessageHandlerInterface
+    {
+        return $this->getMockBuilder(CheckoutErrorMessageHandlerInterface::class)->getMock();
     }
 
     /**
