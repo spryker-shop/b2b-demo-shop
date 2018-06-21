@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "7e9f30680fd7e03c1ad637a6ed066ccc",
+    "content-hash": "b711b1abbf76b4283778653d00995ad7",
     "packages": [
         {
             "name": "braintree/braintree_php",
@@ -863,36 +863,46 @@
         },
         {
             "name": "league/csv",
-            "version": "8.2.3",
+            "version": "9.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/csv.git",
-                "reference": "d2aab1e7bde802582c3879acf03d92716577c76d"
+                "reference": "9c8ad06fb5d747c149875beb6133566c00eaa481"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/csv/zipball/d2aab1e7bde802582c3879acf03d92716577c76d",
-                "reference": "d2aab1e7bde802582c3879acf03d92716577c76d",
+                "url": "https://api.github.com/repos/thephpleague/csv/zipball/9c8ad06fb5d747c149875beb6133566c00eaa481",
+                "reference": "9c8ad06fb5d747c149875beb6133566c00eaa481",
                 "shasum": ""
             },
             "require": {
                 "ext-mbstring": "*",
-                "php": ">=5.5.0"
+                "php": ">=7.0.10"
             },
             "require-dev": {
-                "friendsofphp/php-cs-fixer": "^1.9",
-                "phpunit/phpunit": "^4.0"
+                "ext-curl": "*",
+                "friendsofphp/php-cs-fixer": "^2.0",
+                "phpstan/phpstan": "^0.9.2",
+                "phpstan/phpstan-phpunit": "^0.9.4",
+                "phpstan/phpstan-strict-rules": "^0.9.0",
+                "phpunit/phpunit": "^6.0"
+            },
+            "suggest": {
+                "ext-iconv": "Needed to ease transcoding CSV using iconv stream filters"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "8.2-dev"
+                    "dev-master": "9.x-dev"
                 }
             },
             "autoload": {
                 "psr-4": {
                     "League\\Csv\\": "src"
-                }
+                },
+                "files": [
+                    "src/functions_include.php"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -916,7 +926,7 @@
                 "read",
                 "write"
             ],
-            "time": "2018-02-06T08:27:03+00:00"
+            "time": "2018-05-01T18:32:48+00:00"
         },
         {
             "name": "league/flysystem",
@@ -1251,23 +1261,24 @@
         },
         {
             "name": "paragonie/random_compat",
-            "version": "v2.0.15",
+            "version": "v2.99.99",
             "source": {
                 "type": "git",
                 "url": "https://github.com/paragonie/random_compat.git",
-                "reference": "10bcb46e8f3d365170f6de9d05245aa066b81f09"
+                "reference": "35469243ebbb9be5086cff57538cac6da2c36852"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/10bcb46e8f3d365170f6de9d05245aa066b81f09",
-                "reference": "10bcb46e8f3d365170f6de9d05245aa066b81f09",
+                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/35469243ebbb9be5086cff57538cac6da2c36852",
+                "reference": "35469243ebbb9be5086cff57538cac6da2c36852",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.2.0"
+                "php": "^7"
             },
             "require-dev": {
-                "phpunit/phpunit": "4.*|5.*"
+                "phpunit/phpunit": "4.*|5.*",
+                "vimeo/psalm": "^1"
             },
             "suggest": {
                 "ext-libsodium": "Provides a modern crypto API that can be used to generate random bytes."
@@ -1296,7 +1307,7 @@
                 "pseudorandom",
                 "random"
             ],
-            "time": "2018-06-08T15:26:40+00:00"
+            "time": "2018-06-06T05:12:00+00:00"
         },
         {
             "name": "php-amqplib/php-amqplib",
@@ -2106,11 +2117,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-feature/core-2413-chart",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "cefd19e76ed13bafcfd7a21c3020d1e0d968f0a2"
+                "reference": "5d64368ccd68a691d7ff9b27ec192238f1e1fbc2"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.0",
@@ -2371,15 +2382,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2018-06-19T09:20:28+00:00"
+            "time": "2018-06-20T16:56:39+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-feature/core-2413-chart",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "728477dd99a24c41c02ee0bcdf7ccaa386291e06"
+                "reference": "843207717bda3a6fdc5ff5207b1262891b3ae506"
             },
             "require": {
                 "php": ">=7.1"
@@ -2454,7 +2465,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2018-06-19T09:17:35+00:00"
+            "time": "2018-06-20T16:52:47+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -7420,12 +7431,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/architecture-sniffer.git",
-                "reference": "6725dfab52743f5704549b4758fd2df3478b69ec"
+                "reference": "4499601b98ca7a927b7c3d1ead766cf326031df2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/architecture-sniffer/zipball/6725dfab52743f5704549b4758fd2df3478b69ec",
-                "reference": "6725dfab52743f5704549b4758fd2df3478b69ec",
+                "url": "https://api.github.com/repos/spryker/architecture-sniffer/zipball/4499601b98ca7a927b7c3d1ead766cf326031df2",
+                "reference": "4499601b98ca7a927b7c3d1ead766cf326031df2",
                 "shasum": ""
             },
             "require": {
@@ -7463,7 +7474,7 @@
                 "sniffer",
                 "standards"
             ],
-            "time": "2018-04-26T09:44:47+00:00"
+            "time": "2018-06-19T11:58:57+00:00"
         },
         {
             "name": "spryker/code-generator",
