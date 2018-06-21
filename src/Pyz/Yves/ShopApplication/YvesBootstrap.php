@@ -26,6 +26,7 @@ use Spryker\Yves\Application\Plugin\Provider\YvesHstsServiceProvider;
 use Spryker\Yves\Application\Plugin\ServiceProvider\AssertUrlConfigurationServiceProvider;
 use Spryker\Yves\Application\Plugin\ServiceProvider\KernelLogServiceProvider;
 use Spryker\Yves\Application\Plugin\ServiceProvider\SslServiceProvider;
+use Spryker\Yves\Chart\Plugin\Provider\TwigChartFunctionServiceProvider;
 use Spryker\Yves\CmsContentWidget\Plugin\CmsContentWidgetServiceProvider;
 use Spryker\Yves\Messenger\Plugin\Provider\FlashMessengerServiceProvider;
 use Spryker\Yves\NewRelic\Plugin\ServiceProvider\NewRelicRequestTransactionServiceProvider;
@@ -142,6 +143,7 @@ class YvesBootstrap extends SprykerYvesBootstrap
         $this->application->register(new CatalogPageTwigServiceProvider());
         $this->application->register(new ShopUiTwigServiceProvider());
         $this->application->register(new ShopPermissionServiceProvider());
+        $this->application->register(new TwigChartFunctionServiceProvider());
     }
 
     /**

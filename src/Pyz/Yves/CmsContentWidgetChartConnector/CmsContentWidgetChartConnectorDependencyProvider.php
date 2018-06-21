@@ -7,7 +7,7 @@
 
 namespace Pyz\Yves\CmsContentWidgetChartConnector;
 
-use SprykerShop\Yves\ChartWidget\Plugin\CmsContentWidget\ChartWidgetPlugin;
+use SprykerShop\Yves\ChartWidget\Plugin\CmsContentWidgetChartConnector\ChartWidgetPlugin;
 use SprykerShop\Yves\CmsContentWidgetChartConnector\CmsContentWidgetChartConnectorDependencyProvider as SprykerCmsContentWidgetChartConnectorDependencyProvider;
 
 class CmsContentWidgetChartConnectorDependencyProvider extends SprykerCmsContentWidgetChartConnectorDependencyProvider
