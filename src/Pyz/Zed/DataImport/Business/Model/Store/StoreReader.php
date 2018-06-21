@@ -42,7 +42,7 @@ class StoreReader implements DataReaderInterface
      *
      * @since 5.0.0
      *
-     * @return void Any returned value is ignored.
+     * @return void
      */
     public function next()
     {
@@ -85,7 +85,7 @@ class StoreReader implements DataReaderInterface
      *
      * @since 5.0.0
      *
-     * @return void Any returned value is ignored.
+     * @return void
      */
     public function rewind()
     {
