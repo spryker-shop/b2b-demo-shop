@@ -44,8 +44,7 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
      */
     protected function getValidateRestRequestPlugins(): array
     {
-        return [
-        ];
+        return [];
     }
 
     /**
