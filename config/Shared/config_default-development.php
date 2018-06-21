@@ -14,6 +14,8 @@ use Spryker\Shared\Event\EventConstants;
 use Spryker\Shared\Kernel\KernelConstants;
 use Spryker\Shared\Kernel\Store;
 use Spryker\Shared\Log\LogConstants;
+use Spryker\Shared\Oauth\OauthConstants;
+use Spryker\Shared\OauthCustomerConnector\OauthCustomerConnectorConstants;
 use Spryker\Shared\Propel\PropelConstants;
 use Spryker\Shared\PropelOrm\PropelOrmConstants;
 use Spryker\Shared\PropelQueryBuilder\PropelQueryBuilderConstants;
@@ -24,6 +26,7 @@ use Spryker\Shared\Storage\StorageConstants;
 use Spryker\Shared\WebProfiler\WebProfilerConstants;
 use Spryker\Shared\ZedNavigation\ZedNavigationConstants;
 use Spryker\Shared\ZedRequest\ZedRequestConstants;
+use Spryker\Shared\GlueApplication\GlueApplicationConstants;
 
 $CURRENT_STORE = Store::getInstance()->getStoreName();
 
@@ -142,3 +145,16 @@ $config[LogConstants::EXCEPTION_LOG_FILE_PATH_ZED] = $baseLogFilePath . '/ZED/ex
 
 // ---------- Events
 $config[EventConstants::LOGGER_ACTIVE] = true;
+
+// ----------- Glue Application
+$config[GlueApplicationConstants::GLUE_APPLICATION_DOMAIN] = 'http://glue.de.shop-suite.local';
+$config[GlueApplicationConstants::GLUE_APPLICATION_REST_DEBUG] = true;
+
+// ----------- OAUTH
+$config[OauthConstants::PRIVATE_KEY_PATH] = 'file://' . APPLICATION_ROOT_DIR . '/config/Zed/dev_only_private.key';
+$config[OauthConstants::PUBLIC_KEY_PATH] = 'file://' . APPLICATION_ROOT_DIR . '/config/Zed/dev_only_public.key';
+$config[OauthConstants::ENCRYPTION_KEY] = 'lxZFUEsBCJ2Yb14IF2ygAHI5N4+ZAUXXaSeeJm6+twsUmIen';
+
+// ----------- AuthRestApi
+$config[OauthCustomerConnectorConstants::OAUTH_CLIENT_IDENTIFIER] = 'frontend';
+$config[OauthCustomerConnectorConstants::OAUTH_CLIENT_SECRET] = 'abc123';

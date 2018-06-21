@@ -20,6 +20,7 @@ use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Installer\ProductPacka
 use Spryker\Zed\SharedCart\Communication\Plugin\SharedCartPermissionInstallerPlugin;
 use Spryker\Zed\ShoppingList\Communication\Plugin\ShoppingListPermissionsInstallerPlugin;
 use Spryker\Zed\User\Communication\Plugin\UserInstallerPlugin;
+use Spryker\Zed\OauthCustomerConnector\Communication\Plugin\Installer\OauthCustomerInstallerPlugin;
 
 class InstallerDependencyProvider extends SprykerInstallerDependencyProvider
 {
@@ -38,6 +39,7 @@ class InstallerDependencyProvider extends SprykerInstallerDependencyProvider
             new GlossaryInstallerPlugin(),
             new ShoppingListPermissionsInstallerPlugin(),
             new SharedCartPermissionInstallerPlugin(), #SharedCartFeature
+            new OauthCustomerInstallerPlugin(),
             new ProductMeasurementUnitInstallerPlugin(),
             new CompanyUserInvitationStatusInstallerPlugin(), #BulkImportCompanyUserInvitationsFeature
             new ProductPackagingUnitTypeInstallerPlugin(),

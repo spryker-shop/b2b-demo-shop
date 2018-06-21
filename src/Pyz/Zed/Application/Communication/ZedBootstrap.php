@@ -21,12 +21,25 @@ class ZedBootstrap extends SprykerZedBootstrap
      */
     protected function setUp()
     {
-        if (!empty($_SERVER['REQUEST_URI']) && strpos($_SERVER['REQUEST_URI'], ApiConfig::ROUTE_PREFIX_API_REST) === 0) {
+        if (!empty($_SERVER['REQUEST_URI']) && $this->isApiRequest()) {
             $this->registerApiServiceProvider();
             return;
         }
 
         parent::setUp();
+    }
+
+    /**
+     * @return bool
+     */
+    protected function isApiRequest(): bool
+    {
+        if (strpos($_SERVER['REQUEST_URI'], ApiConfig::ROUTE_PREFIX_API_REST) === 0 ||
+            strpos($_SERVER['REQUEST_URI'], '/rest/') === 0) {
+            return true;
+        }
+
+        return false;
     }
 
     /**
