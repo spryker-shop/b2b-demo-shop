@@ -84,21 +84,12 @@ class ProductManagementDependencyProvider extends SprykerProductManagementDepend
     }
 
     /**
-     * @return array
-     */
-    protected function getProductFormTransferMapperExpanderPlugins(): array
-    {
-        return [
-            new ProductFormTransferMapperExpanderPlugin(),
-        ];
-    }
-
-    /**
      * @return \Spryker\Zed\ProductManagementExtension\Dependency\Plugin\ProductConcreteFormEditDataProviderExpanderPluginInterface[]
      */
     protected function getProductFormTransferMapperExpanderPlugins(): array
     {
         return [
+            new ProductFormTransferMapperExpanderPlugin(),
             new DiscontinuedNotesProductFormTransferMapperExpanderPlugin(),
         ];
     }
