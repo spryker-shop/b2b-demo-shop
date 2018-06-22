@@ -68,6 +68,7 @@ class ProductManagementDependencyProvider extends SprykerProductManagementDepend
     protected function getProductConcreteEditFormExpanderPlugins(): array
     {
         return [
+            new DiscontinuedProductConcreteEditFormExpanderPlugin(),
             new ProductConcreteEditFormExpanderPlugin(),
         ];
     }
@@ -91,16 +92,6 @@ class ProductManagementDependencyProvider extends SprykerProductManagementDepend
         return [
             new ProductFormTransferMapperExpanderPlugin(),
             new DiscontinuedNotesProductFormTransferMapperExpanderPlugin(),
-        ];
-    }
-
-    /**
-     * @return \Spryker\Zed\ProductManagementExtension\Dependency\Plugin\ProductConcreteEditFormExpanderPluginInterface[]
-     */
-    protected function getProductConcreteEditFormExpanderPlugins(): array
-    {
-        return [
-            new DiscontinuedProductConcreteEditFormExpanderPlugin(),
         ];
     }
 }
