@@ -10,6 +10,10 @@ namespace Pyz\Zed\ProductManagement;
 use Spryker\Zed\CmsBlockProductConnector\Communication\Plugin\CmsBlockProductAbstractBlockListViewPlugin;
 use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\Money\Communication\Plugin\Form\MoneyFormTypePlugin;
+use Spryker\Zed\ProductAlternativeGui\Communication\Plugin\ProductManagement\ProductConcreteEditFormExpanderPlugin;
+use Spryker\Zed\ProductAlternativeGui\Communication\Plugin\ProductManagement\ProductConcreteFormEditDataProviderExpanderPlugin;
+use Spryker\Zed\ProductAlternativeGui\Communication\Plugin\ProductManagement\ProductConcreteFormEditTabsExpanderPlugin;
+use Spryker\Zed\ProductAlternativeGui\Communication\Plugin\ProductManagement\ProductFormTransferMapperExpanderPlugin;
 use Spryker\Zed\ProductDiscontinuedGui\Communication\Plugin\DiscontinuedNotesProductFormTransferMapperExpanderPlugin;
 use Spryker\Zed\ProductDiscontinuedGui\Communication\Plugin\DiscontinuedProductConcreteEditFormExpanderPlugin;
 use Spryker\Zed\ProductDiscontinuedGui\Communication\Plugin\DiscontinueProductConcreteFormEditDataProviderExpanderPlugin;
@@ -54,16 +58,38 @@ class ProductManagementDependencyProvider extends SprykerProductManagementDepend
     {
         return [
             new DiscontinueProductConcreteFormEditTabsExpanderPlugin(),
+            new ProductConcreteFormEditTabsExpanderPlugin(),
         ];
     }
 
     /**
-     * @return \Spryker\Zed\ProductManagementExtension\Dependency\Plugin\ProductConcreteFormEditDataProviderExpanderPluginInterface[]
+     * @return array
+     */
+    protected function getProductConcreteEditFormExpanderPlugins(): array
+    {
+        return [
+            new ProductConcreteEditFormExpanderPlugin(),
+        ];
+    }
+
+    /**
+     * @return array
      */
     protected function getProductConcreteFormEditDataProviderExpanderPlugins(): array
     {
         return [
             new DiscontinueProductConcreteFormEditDataProviderExpanderPlugin(),
+            new ProductConcreteFormEditDataProviderExpanderPlugin(),
+        ];
+    }
+
+    /**
+     * @return array
+     */
+    protected function getProductFormTransferMapperExpanderPlugins(): array
+    {
+        return [
+            new ProductFormTransferMapperExpanderPlugin(),
         ];
     }
 
