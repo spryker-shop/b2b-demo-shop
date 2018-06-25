@@ -10,13 +10,11 @@ namespace PyzTest\Yves\Checkout\Process\Steps;
 use Codeception\Test\Unit;
 use Generated\Shared\Transfer\CheckoutErrorTransfer;
 use Generated\Shared\Transfer\CheckoutResponseTransfer;
-use Generated\Shared\Transfer\MessageTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Generated\Shared\Transfer\SaveOrderTransfer;
+use Spryker\Yves\Messenger\FlashMessenger\FlashMessengerInterface;
 use Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginInterface;
 use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCheckoutClientInterface;
-use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToZedRequestClientInterface;
-use SprykerShop\Yves\CheckoutPage\Handler\CheckoutErrorMessageHandlerInterface;
 use SprykerShop\Yves\CheckoutPage\Process\Steps\PlaceOrderStep;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -77,7 +75,7 @@ class PlaceOrderStepTest extends Unit
     /**
      * @return void
      */
-    public function testPlaceOrderExecuteWhenOrderHaveErrorsShouldReportThemToCheckoutClient()
+    public function testPlaceOrderExecuteWhenOrderHaveErrorsShouldLogToFlashMessenger()
     {
         $checkoutClientMock = $this->createCheckoutClientMock();
 
@@ -87,12 +85,10 @@ class PlaceOrderStepTest extends Unit
 
         $checkoutClientMock->expects($this->once())->method('placeOrder')->willReturn($checkoutResponseTransfer);
 
-        $checkoutClientMock->expects($this->exactly(2))->method('addCheckoutErrorMessage');
+        $flashMessengerMock = $this->createFlashMessengerMock();
+        $flashMessengerMock->expects($this->exactly(2))->method('addErrorMessage');
 
-        $checkoutClientMock->addCheckoutErrorMessage(new MessageTransfer());
-        $checkoutClientMock->addCheckoutErrorMessage(new MessageTransfer());
-
-        $placeOrderStep = $this->createPlaceOrderStep($checkoutClientMock);
+        $placeOrderStep = $this->createPlaceOrderStep($checkoutClientMock, $flashMessengerMock);
 
         $quoteTransfer = $this->createQuoteTransfer();
         $placeOrderStep->execute($this->createRequest(), $quoteTransfer);
@@ -129,22 +125,19 @@ class PlaceOrderStepTest extends Unit
 
     /**
      * @param \SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCheckoutClientInterface|\PHPUnit_Framework_MockObject_MockObject $checkoutClientMock
-     * @param \SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToZedRequestClientInterface|\PHPUnit_Framework_MockObject_MockObject|null $zedRequestClientMock
+     * @param \Spryker\Yves\Messenger\FlashMessenger\FlashMessengerInterface|\PHPUnit_Framework_MockObject_MockObject|null $flashMessengerMock
      *
      * @return \SprykerShop\Yves\CheckoutPage\Process\Steps\PlaceOrderStep
      */
-    protected function createPlaceOrderStep(CheckoutPageToCheckoutClientInterface $checkoutClientMock, ?CheckoutPageToZedRequestClientInterface $zedRequestClientMock = null): PlaceOrderStep
+    protected function createPlaceOrderStep(CheckoutPageToCheckoutClientInterface $checkoutClientMock, $flashMessengerMock = null)
     {
-        if ($zedRequestClientMock === null) {
-            $zedRequestClientMock = $this->createZedRequestClientMock();
+        if ($flashMessengerMock === null) {
+            $flashMessengerMock = $this->createFlashMessengerMock();
         }
-
-        $checkoutErrorMessageHandler = $this->createCheckoutErrorMessageHandlerMock();
 
         return new PlaceOrderStep(
             $checkoutClientMock,
-            $zedRequestClientMock,
-            $checkoutErrorMessageHandler,
+            $flashMessengerMock,
             'place_order',
             'escape_route'
         );
@@ -159,11 +152,11 @@ class PlaceOrderStepTest extends Unit
     }
 
     /**
-     * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToZedRequestClientInterface
+     * @return \PHPUnit_Framework_MockObject_MockObject|\Spryker\Yves\Messenger\FlashMessenger\FlashMessengerInterface
      */
-    protected function createZedRequestClientMock()
+    protected function createFlashMessengerMock()
     {
-        return $this->getMockBuilder(CheckoutPageToZedRequestClientInterface::class)->getMock();
+        return $this->getMockBuilder(FlashMessengerInterface::class)->getMock();
     }
 
     /**
@@ -172,14 +165,6 @@ class PlaceOrderStepTest extends Unit
     protected function createCheckoutClientMock()
     {
         return $this->getMockBuilder(CheckoutPageToCheckoutClientInterface::class)->getMock();
-    }
-
-    /**
-     * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerShop\Yves\CheckoutPage\Handler\CheckoutErrorMessageHandlerInterface
-     */
-    protected function createCheckoutErrorMessageHandlerMock(): CheckoutErrorMessageHandlerInterface
-    {
-        return $this->getMockBuilder(CheckoutErrorMessageHandlerInterface::class)->getMock();
     }
 
     /**
