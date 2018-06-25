@@ -12,6 +12,7 @@ use SprykerShop\Yves\AvailabilityWidget\Plugin\ProductDetailPage\AvailabilityWid
 use SprykerShop\Yves\CmsBlockWidget\Plugin\ProductDetailPage\ProductCmsBlockWidgetPlugin;
 use SprykerShop\Yves\MultiCartWidget\Plugin\ProductDetailPage\MultiCartWidgetPlugin;
 use SprykerShop\Yves\PriceWidget\Plugin\ProductDetailPage\PriceWidgetPlugin;
+use SprykerShop\Yves\ProductAlternativeWidget\Plugin\ProductDetailPage\ProductAlternativeWidgetPlugin;
 use SprykerShop\Yves\ProductCategoryWidget\Plugin\ProductDetailPage\ProductCategoryWidgetPlugin;
 use SprykerShop\Yves\ProductDetailPage\ProductDetailPageDependencyProvider as SprykerShopProductDetailPageDependencyProvider;
 use SprykerShop\Yves\ProductDiscontinuedWidget\Plugin\ProductDetailPage\ProductDiscontinuedWidgetPlugin;
@@ -49,6 +50,7 @@ class ProductDetailPageDependencyProvider extends SprykerShopProductDetailPageDe
             ShoppingListWidgetPlugin::class, #ShoppingListFeature
             ProductDiscontinuedWidgetPlugin::class,
             ProductReplacementForWidgetPlugin::class,
+            ProductAlternativeWidgetPlugin::class,
         ];
     }
 }
