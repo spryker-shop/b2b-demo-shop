@@ -48,7 +48,7 @@ class CustomerPageDependencyProvider extends SprykerShopCustomerPageDependencyPr
         return [
             CustomerReorderWidgetPlugin::class,
             CartNoteOrderItemNoteWidgetPlugin::class, #CartNoteFeature
-            CartNoteOrderNoteWidgetPlugin::class, #CartNoteFeature,
+            CartNoteOrderNoteWidgetPlugin::class, #CartNoteFeature
             OrderDetailProductPackagingUnitWidgetPlugin::class, #ProductPackagingUnit
         ];
     }
