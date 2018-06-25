@@ -8,19 +8,19 @@
 namespace Pyz\Service\PriceProduct;
 
 use Spryker\Service\PriceProduct\PriceProductDependencyProvider as SprykerPriceProductDependencyProvider;
-use Spryker\Service\PriceProductMerchantRelationship\Plugin\MerchantRelationshipPriceDecisionPlugin;
+use Spryker\Service\PriceProductMerchantRelationship\Plugin\PriceProductExtension\MerchantRelationshipPriceProductDecisionPlugin;
 
 class PriceProductDependencyProvider extends SprykerPriceProductDependencyProvider
 {
     /**
      * {@inheritdoc}
      *
-     * @return \Spryker\Service\PriceProduct\Dependency\Plugin\PriceProductDecisionPluginInterface[]
+     * @return \Spryker\Service\PriceProductExtension\Dependency\Plugin\PriceProductDecisionPluginInterface[]
      */
     protected function getPriceProductDecisionPlugins(): array
     {
         return array_merge([
-           new MerchantRelationshipPriceDecisionPlugin(),
+           new MerchantRelationshipPriceProductDecisionPlugin(),
         ], parent::getPriceProductDecisionPlugins());
     }
 }
