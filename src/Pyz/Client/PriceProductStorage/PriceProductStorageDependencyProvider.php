@@ -7,7 +7,7 @@
 
 namespace Pyz\Client\PriceProductStorage;
 
-use Spryker\Client\PriceProductMerchantRelationshipStorage\Plugin\PriceProductMerchantRelationshipStorageDimensionPlugin;
+use Spryker\Client\PriceProductMerchantRelationshipStorage\Plugin\PriceProductStorageExtension\PriceProductMerchantRelationshipStorageDimensionPlugin;
 use Spryker\Client\PriceProductStorage\PriceProductStorageDependencyProvider as SprykerPriceProductStorageDependencyProvider;
 
 class PriceProductStorageDependencyProvider extends SprykerPriceProductStorageDependencyProvider
@@ -15,7 +15,7 @@ class PriceProductStorageDependencyProvider extends SprykerPriceProductStorageDe
     /**
      * The plugins are executed during reading prices from Storage
      *
-     * @return \Spryker\Client\PriceProductStorage\Dependency\Plugin\PriceProductStoragePriceDimensionPluginInterface[]
+     * @return \Spryker\Client\PriceProductStorageExtension\Dependency\Plugin\PriceProductStoragePriceDimensionPluginInterface[]
      */
     public function getPriceDimensionPlugins(): array
     {
