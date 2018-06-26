@@ -9,7 +9,8 @@ namespace Pyz\Zed\Cart;
 
 use Spryker\Zed\Cart\CartDependencyProvider as SprykerCartDependencyProvider;
 use Spryker\Zed\Cart\Communication\Plugin\SkuGroupKeyPlugin;
-use Spryker\Zed\CartProductListConnector\Communication\Plugin\RemoveInaccessibleItemsPreReloadPlugin;
+use Spryker\Zed\CartProductListConnector\Communication\Plugin\Cart\ProductListRestrictedItemsPreCheckPlugin;
+use Spryker\Zed\CartProductListConnector\Communication\Plugin\Cart\RemoveRestrictedItemsPreReloadPlugin;
 use Spryker\Zed\Discount\Communication\Plugin\Cart\DiscountQuoteChangeObserverPlugin;
 use Spryker\Zed\DiscountPromotion\Communication\Plugin\Cart\CartGroupPromotionItems;
 use Spryker\Zed\Kernel\Container;
@@ -79,6 +80,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new CartBundleAvailabilityPreCheckPlugin(),
             new CartShipmentPreCheckPlugin(),
             new ProductQuantityRestrictionCartPreCheckPlugin(),
+            new ProductListRestrictedItemsPreCheckPlugin(),
         ];
     }
 
@@ -107,7 +109,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
         return [
             new CartBundleItemsPreReloadPlugin(),
             new RemoveInactiveItemsPreReloadPlugin(),
-            new RemoveInaccessibleItemsPreReloadPlugin(),
+            new RemoveRestrictedItemsPreReloadPlugin(),
         ];
     }
 

@@ -10,6 +10,8 @@ namespace Pyz\Client\ProductStorage;
 use Spryker\Client\AvailabilityStorage\Plugin\ProductViewAvailabilityStorageExpanderPlugin;
 use Spryker\Client\PriceProductStorage\Plugin\ProductViewPriceExpanderPlugin;
 use Spryker\Client\ProductImageStorage\Plugin\ProductViewImageExpanderPlugin;
+use Spryker\Client\ProductListStorage\Plugin\ProductAbstractRestrictionPlugin;
+use Spryker\Client\ProductListStorage\Plugin\ProductConcreteRestrictionPlugin;
 use Spryker\Client\ProductStorage\Plugin\ProductViewVariantExpanderPlugin;
 use Spryker\Client\ProductStorage\ProductStorageDependencyProvider as SprykerProductStorageDependencyProvider;
 
@@ -25,6 +27,26 @@ class ProductStorageDependencyProvider extends SprykerProductStorageDependencyPr
             new ProductViewPriceExpanderPlugin(),
             new ProductViewAvailabilityStorageExpanderPlugin(),
             new ProductViewImageExpanderPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Client\ProductStorage\Dependency\Plugin\ProductAbstractRestrictionPluginInterface[]
+     */
+    protected function getProductAbstractRestrictionPlugins(): array
+    {
+        return [
+            new ProductAbstractRestrictionPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Client\ProductStorage\Dependency\Plugin\ProductConcreteRestrictionPluginInterface[]
+     */
+    protected function getProductConcreteRestrictionPlugins(): array
+    {
+        return [
+            new ProductConcreteRestrictionPlugin(),
         ];
     }
 }
