@@ -7,10 +7,10 @@
 
 namespace Orm\Zed\ProductAlternativeStorage\Persistence;
 
-use Spryker\Zed\ProductAlternativeStorage\Persistence\Propel\AbstractSpyProductReplacementStorageQuery as BaseSpyProductReplacementStorageQuery;
+use Spryker\Zed\ProductAlternativeStorage\Persistence\Propel\AbstractSpyProductReplacementForStorage as BaseSpyProductReplacementStorage;
 
 /**
- * Skeleton subclass for performing query and update operations on the 'spy_product_replacement_storage' table.
+ * Skeleton subclass for representing a row from the 'spy_product_replacement_storage' table.
  *
  *
  *
@@ -19,6 +19,6 @@ use Spryker\Zed\ProductAlternativeStorage\Persistence\Propel\AbstractSpyProductR
  * long as it does not already exist in the output directory.
  *
  */
-class SpyProductReplacementStorageQuery extends BaseSpyProductReplacementStorageQuery
+class SpyProductReplacementForStorage extends BaseSpyProductReplacementStorage
 {
 }

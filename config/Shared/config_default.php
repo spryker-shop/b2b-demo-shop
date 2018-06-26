@@ -39,7 +39,6 @@ use Spryker\Shared\ZedRequest\ZedRequestConstants;
 use Spryker\Yves\Log\Plugin\YvesLoggerConfigPlugin;
 use Spryker\Zed\Log\Communication\Plugin\ZedLoggerConfigPlugin;
 use Spryker\Zed\Oms\OmsConfig;
-use Spryker\Zed\Product\ProductConfig;
 use Spryker\Zed\Propel\PropelConfig;
 use SprykerEco\Shared\Loggly\LogglyConstants;
 
@@ -414,6 +413,3 @@ $config[CmsGuiConstants::CMS_PAGE_PREVIEW_URI] = '/en/cms/preview/%d';
 
 // ---------- Loggly
 $config[LogglyConstants::TOKEN] = 'loggly-token:sample:123456';
-
-// ---------- ProductAlternative
-$config[ProductConfig::FILTERED_PRODUCTS_LIMIT_DEFAULT] = 10;
