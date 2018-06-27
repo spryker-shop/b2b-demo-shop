@@ -426,4 +426,5 @@ $config[FileSystemConstants::FILESYSTEM_SERVICE] = [
 ];
 $config[FlysystemConstants::FILESYSTEM_SERVICE] = $config[FileSystemConstants::FILESYSTEM_SERVICE];
 $config[FileManagerConstants::STORAGE_NAME] = 'files';
+$config[FileManagerConstants::FILE_NAME_VERSION_DELIMITER] = '-';
 $config[FileManagerGuiConstants::DEFAULT_FILE_MAX_SIZE] = '10M';
