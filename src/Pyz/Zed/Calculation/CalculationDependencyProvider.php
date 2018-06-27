@@ -25,6 +25,7 @@ use Spryker\Zed\Calculation\Communication\Plugin\Calculator\PriceToPayAggregator
 use Spryker\Zed\Calculation\Communication\Plugin\Calculator\RefundableAmountCalculatorPlugin;
 use Spryker\Zed\Calculation\Communication\Plugin\Calculator\RefundTotalCalculatorPlugin;
 use Spryker\Zed\Calculation\Communication\Plugin\Calculator\RemoveAllCalculatedDiscountsCalculatorPlugin;
+use Spryker\Zed\Calculation\Communication\Plugin\Calculator\RemoveCanceledAmountCalculatorPlugin;
 use Spryker\Zed\Calculation\Communication\Plugin\Calculator\RemoveTotalsCalculatorPlugin;
 use Spryker\Zed\Calculation\Communication\Plugin\Calculator\SubtotalCalculatorPlugin;
 use Spryker\Zed\Calculation\Communication\Plugin\Calculator\TaxTotalCalculatorPlugin;
@@ -53,6 +54,8 @@ class CalculationDependencyProvider extends SprykerCalculationDependencyProvider
      *   - Item.calculatedDiscounts
      *   - Item.productOption.calculatedDiscounts
      *   - Expense.calculatedDiscounts
+     *
+     * RemoveCanceledAmountCalculatorPlugin - Reset canceled amount
      *
      * PriceCalculatorPlugin - Calculates price based on tax mode, tax mode is set in this calculator based on CalculationConstants::TAX_MODE configuration key.
      *    - Item.unitPrice
@@ -179,6 +182,7 @@ class CalculationDependencyProvider extends SprykerCalculationDependencyProvider
             new RemoveTotalsCalculatorPlugin(),
             new RemoveAllCalculatedDiscountsCalculatorPlugin(),
             new RemovePromotionItemsCalculatorPlugin(),
+            new RemoveCanceledAmountCalculatorPlugin(),
 
             new PriceCalculatorPlugin(),
             new ItemProductOptionPriceAggregatorPlugin(),
