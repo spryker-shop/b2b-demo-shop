@@ -11,6 +11,7 @@ use Spryker\Zed\PriceProduct\PriceProductDependencyProvider as SprykerPriceProdu
 use Spryker\Zed\PriceProductMerchantRelationship\Communication\Plugin\PriceProduct\MerchantRelationshipPriceDimensionAbstractWriterPlugin;
 use Spryker\Zed\PriceProductMerchantRelationship\Communication\Plugin\PriceProduct\MerchantRelationshipPriceDimensionConcreteWriterPlugin;
 use Spryker\Zed\PriceProductMerchantRelationship\Communication\Plugin\PriceProduct\MerchantRelationshipPriceQueryCriteriaPlugin;
+use Spryker\Zed\PriceProductMerchantRelationship\Communication\Plugin\PriceProductExtension\MerchantRelationshipPriceProductDimensionExpanderStrategyPlugin;
 
 /**
  * Copyright © 2017-present Spryker Systems GmbH. All rights reserved.
@@ -51,6 +52,16 @@ class PriceProductDependencyProvider extends SprykerPriceProductDependencyProvid
     {
         return [
             new MerchantRelationshipPriceDimensionConcreteWriterPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Service\PriceProductExtension\Dependency\Plugin\PriceProductDimensionExpanderStrategyPluginInterface[]
+     */
+    protected function getPriceProductDimensionExpanderStrategyPlugins(): array
+    {
+        return [
+            new MerchantRelationshipPriceProductDimensionExpanderStrategyPlugin(),
         ];
     }
 }
