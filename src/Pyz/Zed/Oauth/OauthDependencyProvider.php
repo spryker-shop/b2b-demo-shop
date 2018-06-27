@@ -14,7 +14,7 @@ use Spryker\Zed\OauthCustomerConnector\Communication\Plugin\Oauth\CustomerUserPr
 class OauthDependencyProvider extends SprykerOauthDependencyProvider
 {
     /**
-     * @return \Spryker\Zed\OauthExtension\Dependency\Plugin\UserProviderPluginInterface[]
+     * @return \Spryker\Zed\OauthExtension\Dependency\Plugin\OauthUserProviderPluginInterface[]
      */
     protected function getUserProviderPlugins(): array
     {
@@ -24,7 +24,7 @@ class OauthDependencyProvider extends SprykerOauthDependencyProvider
     }
 
     /**
-     * @return \Spryker\Zed\OauthExtension\Dependency\Plugin\ScopeProviderPluginInterface[]
+     * @return \Spryker\Zed\OauthExtension\Dependency\Plugin\OauthScopeProviderPluginInterface[]
      */
     protected function getScopeProviderPlugins(): array
     {
