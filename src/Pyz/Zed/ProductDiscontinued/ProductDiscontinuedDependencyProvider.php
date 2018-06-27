@@ -9,6 +9,8 @@ namespace Pyz\Zed\ProductDiscontinued;
 
 use Spryker\Zed\ProductDiscontinued\ProductDiscontinuedDependencyProvider as SprykerProductDiscontinuedDependencyProvider;
 use Spryker\Zed\ProductDiscontinuedProductBundleConnector\Communication\Plugin\DiscontinueBundlePostProductDiscontinuePlugin;
+use Spryker\Zed\ProductDiscontinuedProductLabelConnector\Communication\Plugin\PostDeleteProductDiscontinuedPlugin;
+use Spryker\Zed\ProductDiscontinuedProductLabelConnector\Communication\Plugin\PostProductDiscontinuedPlugin;
 
 class ProductDiscontinuedDependencyProvider extends SprykerProductDiscontinuedDependencyProvider
 {
@@ -19,6 +21,17 @@ class ProductDiscontinuedDependencyProvider extends SprykerProductDiscontinuedDe
     {
         return [
             new DiscontinueBundlePostProductDiscontinuePlugin(),
+            new PostProductDiscontinuedPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\ProductDiscontinuedExtension\Dependency\Plugin\PostDeleteProductDiscontinuedPluginInterface[]
+     */
+    protected function getPostDeleteProductDiscontinuedPlugins(): array
+    {
+        return [
+            new PostDeleteProductDiscontinuedPlugin(),
         ];
     }
 }
