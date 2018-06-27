@@ -55,7 +55,8 @@ class CalculationDependencyProvider extends SprykerCalculationDependencyProvider
      *   - Item.productOption.calculatedDiscounts
      *   - Expense.calculatedDiscounts
      *
-     * RemoveCanceledAmountCalculatorPlugin - Reset canceled amount
+     * RemoveCanceledAmountCalculatorPlugin - Reset item canceled amount for:
+     *   - Item.canceledAmount
      *
      * PriceCalculatorPlugin - Calculates price based on tax mode, tax mode is set in this calculator based on CalculationConstants::TAX_MODE configuration key.
      *    - Item.unitPrice
