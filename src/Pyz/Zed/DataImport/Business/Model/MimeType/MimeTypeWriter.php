@@ -9,10 +9,9 @@ namespace Pyz\Zed\DataImport\Business\Model\MimeType;
 
 use Orm\Zed\FileManager\Persistence\SpyMimeTypeQuery;
 use Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface;
-use Spryker\Zed\DataImport\Business\Model\DataImportStep\PublishAwareStep;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 
-class MimeTypeWriter extends PublishAwareStep implements DataImportStepInterface
+class MimeTypeWriter implements DataImportStepInterface
 {
     public const BULK_SIZE = 100;
 

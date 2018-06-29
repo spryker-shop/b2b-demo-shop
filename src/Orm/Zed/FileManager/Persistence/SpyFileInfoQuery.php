@@ -7,7 +7,7 @@
 
 namespace Orm\Zed\FileManager\Persistence;
 
-use Orm\Zed\FileManager\Persistence\Base\SpyFileInfoQuery as BaseSpyFileInfoQuery;
+use Spryker\Zed\FileManager\Persistence\Propel\AbstractSpyFileInfoQuery as BaseSpyFileInfoQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'spy_file_info' table.
