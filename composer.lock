@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "7c5eb77334368ede16a1b44ba4409778",
+    "content-hash": "b711b1abbf76b4283778653d00995ad7",
     "packages": [
         {
             "name": "braintree/braintree_php",
@@ -1567,7 +1567,7 @@
             ],
             "authors": [
                 {
-                    "name": "William DURAND",
+                    "name": "William Durand",
                     "email": "william.durand1@gmail.com"
                 }
             ],
@@ -2120,7 +2120,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "482538f9472419fe0f9d576d2b2aa0c139dea1fc"
+                "reference": "a1ee283f807ba1262cadbfca7fd57f6fe4e5a85b"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.0",
@@ -2381,7 +2381,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2018-06-29T09:30:20+00:00"
+            "time": "2018-06-28T14:17:04+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -2389,13 +2389,14 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "c75f44f6efdc2656589733c518c306905d186f77"
+                "reference": "5756053fa9123d692e82fbef55e4e837742e2bae"
             },
             "require": {
                 "php": ">=7.1"
             },
             "replace": {
                 "spryker-shop/availability-widget": "*",
+                "spryker-shop/business-on-behalf-widget": "*",
                 "spryker-shop/calculation-page": "*",
                 "spryker-shop/cart-page": "*",
                 "spryker-shop/catalog-page": "*",
@@ -2442,12 +2443,11 @@
                 "spryker-shop/shop-translator": "*",
                 "spryker-shop/web-profiler-widget": "*",
                 "spryker-shop/wishlist-page": "*",
-                "spryker-shop/wishlist-widget": "*",
-                "spryker/business-on-behalf-widget": "*"
+                "spryker-shop/wishlist-widget": "*"
             },
             "require-dev": {
                 "spryker/code-sniffer": "dev-master",
-                "spryker/spryker": "dev-master"
+                "spryker/spryker": "dev-feature/core-2414-upload-files"
             },
             "type": "library",
             "autoload": {
@@ -2464,7 +2464,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2018-06-29T09:37:49+00:00"
+            "time": "2018-06-27T12:23:53+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
