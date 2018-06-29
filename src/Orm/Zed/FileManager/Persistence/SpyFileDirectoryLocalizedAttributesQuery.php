@@ -7,7 +7,7 @@
 
 namespace Orm\Zed\FileManager\Persistence;
 
-use Orm\Zed\FileManager\Persistence\Base\SpyFileDirectoryLocalizedAttributesQuery as BaseSpyFileDirectoryLocalizedAttributesQuery;
+use Spryker\Zed\FileManager\Persistence\Propel\AbstractSpyFileDirectoryLocalizedAttributesQuery as BaseSpyFileDirectoryLocalizedAttributesQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'spy_file_directory_localized_attributes' table.

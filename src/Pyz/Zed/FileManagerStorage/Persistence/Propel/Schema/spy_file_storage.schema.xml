@@ -5,13 +5,9 @@
           namespace="Orm\Zed\FileManagerStorage\Persistence"
           package="src.Orm.Zed.FileManagerStorage.Persistence">
 
-    <table name="spy_file_storage" phpName="SpyFileStorage">
+    <table name="spy_file_storage">
         <behavior name="synchronization">
-            <parameter name="resource" value="file"/>
-            <parameter name="store" required="true"/>
-            <parameter name="locale" required="true"/>
-            <parameter name="queue_group" value="sync.storage.file"/>
-            <parameter name="key_suffix_column" value="fk_file"/>
+            <parameter name="queue_pool" value="synchronizationPool" />
         </behavior>
     </table>
 </database>

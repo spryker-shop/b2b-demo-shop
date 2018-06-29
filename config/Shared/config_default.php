@@ -10,13 +10,14 @@ use Spryker\Shared\Cms\CmsConstants;
 use Spryker\Shared\CmsGui\CmsGuiConstants;
 use Spryker\Shared\Collector\CollectorConstants;
 use Spryker\Shared\Customer\CustomerConstants;
-//use Spryker\Shared\DummyPayment\DummyPaymentConfig;
+use Spryker\Shared\DummyPayment\DummyPaymentConfig;
 use Spryker\Shared\ErrorHandler\ErrorHandlerConstants;
 use Spryker\Shared\ErrorHandler\ErrorRenderer\WebHtmlErrorRenderer;
 use Spryker\Shared\Event\EventConstants;
 use Spryker\Shared\EventBehavior\EventBehaviorConstants;
 use Spryker\Shared\EventJournal\EventJournalConstants;
 use Spryker\Shared\FileManager\FileManagerConstants;
+use Spryker\Shared\FileManagerGui\FileManagerGuiConstants;
 use Spryker\Shared\FileSystem\FileSystemConstants;
 use Spryker\Shared\Flysystem\FlysystemConstants;
 use Spryker\Shared\Kernel\ClassResolver\Cache\Provider\File;
@@ -356,8 +357,8 @@ $config[OmsConstants::ACTIVE_PROCESSES] = [
     'DummyPayment01',
 ];
 $config[SalesConstants::PAYMENT_METHOD_STATEMACHINE_MAPPING] = [
-//    DummyPaymentConfig::PAYMENT_METHOD_INVOICE => 'DummyPayment01',
-//    DummyPaymentConfig::PAYMENT_METHOD_CREDIT_CARD => 'DummyPayment01',
+    DummyPaymentConfig::PAYMENT_METHOD_INVOICE => 'DummyPayment01',
+    DummyPaymentConfig::PAYMENT_METHOD_CREDIT_CARD => 'DummyPayment01',
 ];
 
 // ---------- NewRelic
@@ -412,6 +413,7 @@ $config[TaxConstants::DEFAULT_TAX_RATE] = 19;
 $config[FileSystemConstants::FILESYSTEM_SERVICE] = [];
 $config[FlysystemConstants::FILESYSTEM_SERVICE] = $config[FileSystemConstants::FILESYSTEM_SERVICE];
 $config[CmsGuiConstants::CMS_PAGE_PREVIEW_URI] = '/en/cms/preview/%d';
+
 // ---------- Loggly
 $config[LogglyConstants::TOKEN] = 'loggly-token:sample:123456';
 
@@ -424,3 +426,5 @@ $config[FileSystemConstants::FILESYSTEM_SERVICE] = [
 ];
 $config[FlysystemConstants::FILESYSTEM_SERVICE] = $config[FileSystemConstants::FILESYSTEM_SERVICE];
 $config[FileManagerConstants::STORAGE_NAME] = 'files';
+$config[FileManagerConstants::FILE_NAME_VERSION_DELIMITER] = '-';
+$config[FileManagerGuiConstants::DEFAULT_FILE_MAX_SIZE] = '10M';

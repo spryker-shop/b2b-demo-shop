@@ -21,7 +21,7 @@ class CmsContentWidgetDependencyProvider extends SprykerCmsContentWidgetDependen
     /**
      * {@inheritdoc}
      *
-     * @return \Spryker\Yves\CmsContentWidget\Dependency\CmsContentWidgetPluginInterface[]CmsFileWidget/Theme/default/_file/cms-file-content-widget.twig
+     * @return \Spryker\Yves\CmsContentWidget\Dependency\CmsContentWidgetPluginInterface[]
      */
     public function getCmsContentWidgetPlugins()
     {
@@ -37,7 +37,7 @@ class CmsContentWidgetDependencyProvider extends SprykerCmsContentWidgetDependen
             ),
             FileManagerWidgetConfigurationProvider::FUNCTION_NAME => new FileManagerWidgetPlugin(
                 new FileManagerWidgetConfigurationProvider()
-            )
+            ),
         ];
     }
 }

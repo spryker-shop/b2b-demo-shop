@@ -3,33 +3,27 @@
           xsi:noNamespaceSchemaLocation="http://static.spryker.com/schema-01.xsd"
           namespace="Orm\Zed\FileManager\Persistence" package="src.Orm.Zed.FileManager.Persistence">
 
-    <table name="spy_file" phpName="SpyFile">
+    <table name="spy_file">
         <behavior name="event">
             <parameter name="spy_file_all" column="*"/>
         </behavior>
     </table>
 
-    <table name="spy_file_info" phpName="SpyFileInfo">
-        <behavior name="timestampable"/>
-
+    <table name="spy_file_info">
         <behavior name="event">
             <parameter name="spy_file_info_all" column="*"/>
         </behavior>
     </table>
 
-    <table name="spy_file_localized_attributes" idMethod="native" allowPkInsert="true"
-           phpName="SpyFileLocalizedAttributes">
+    <table name="spy_file_localized_attributes">
         <behavior name="event">
             <parameter name="spy_file_localized_attributes_all" column="*"/>
         </behavior>
     </table>
 
-    <table name="spy_file_directory_localized_attributes" idMethod="native">
-        <behavior name="timestampable"/>
-
+    <table name="spy_file_directory_localized_attributes">
         <behavior name="event">
             <parameter name="spy_file_directory_localized_attributes_all" column="*"/>
         </behavior>
     </table>
-
 </database>
