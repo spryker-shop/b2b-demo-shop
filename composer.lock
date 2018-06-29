@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b711b1abbf76b4283778653d00995ad7",
+    "content-hash": "7b3a40ea1e76c4ea16d1cefae31198dc",
     "packages": [
         {
             "name": "braintree/braintree_php",
@@ -1261,24 +1261,23 @@
         },
         {
             "name": "paragonie/random_compat",
-            "version": "v2.99.99",
+            "version": "v2.0.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/paragonie/random_compat.git",
-                "reference": "35469243ebbb9be5086cff57538cac6da2c36852"
+                "reference": "10bcb46e8f3d365170f6de9d05245aa066b81f09"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/35469243ebbb9be5086cff57538cac6da2c36852",
-                "reference": "35469243ebbb9be5086cff57538cac6da2c36852",
+                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/10bcb46e8f3d365170f6de9d05245aa066b81f09",
+                "reference": "10bcb46e8f3d365170f6de9d05245aa066b81f09",
                 "shasum": ""
             },
             "require": {
-                "php": "^7"
+                "php": ">=5.2.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "4.*|5.*",
-                "vimeo/psalm": "^1"
+                "phpunit/phpunit": "4.*|5.*"
             },
             "suggest": {
                 "ext-libsodium": "Provides a modern crypto API that can be used to generate random bytes."
@@ -1307,7 +1306,7 @@
                 "pseudorandom",
                 "random"
             ],
-            "time": "2018-06-06T05:12:00+00:00"
+            "time": "2018-06-08T15:26:40+00:00"
         },
         {
             "name": "php-amqplib/php-amqplib",
@@ -1568,7 +1567,7 @@
             ],
             "authors": [
                 {
-                    "name": "William Durand",
+                    "name": "William DURAND",
                     "email": "william.durand1@gmail.com"
                 }
             ],
@@ -2117,11 +2116,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-feature/ps-1284-elasticsearch-open-index-and-put-settings",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "b2114720d4bc0b95df700be2d49f475869b60ca3"
+                "reference": "a307c95326dbb7e8a06aa193281c27bbf2dc2bd7"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.0",
@@ -2382,7 +2381,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2018-06-27T11:21:26+00:00"
+            "time": "2018-06-29T15:50:44+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -2390,13 +2389,14 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "843207717bda3a6fdc5ff5207b1262891b3ae506"
+                "reference": "bf2da4c53f8f71a037f58489feb06b5f53600243"
             },
             "require": {
                 "php": ">=7.1"
             },
             "replace": {
                 "spryker-shop/availability-widget": "*",
+                "spryker-shop/business-on-behalf-widget": "*",
                 "spryker-shop/calculation-page": "*",
                 "spryker-shop/cart-page": "*",
                 "spryker-shop/catalog-page": "*",
@@ -2443,8 +2443,7 @@
                 "spryker-shop/shop-translator": "*",
                 "spryker-shop/web-profiler-widget": "*",
                 "spryker-shop/wishlist-page": "*",
-                "spryker-shop/wishlist-widget": "*",
-                "spryker/business-on-behalf-widget": "*"
+                "spryker-shop/wishlist-widget": "*"
             },
             "require-dev": {
                 "spryker/code-sniffer": "dev-master",
@@ -2465,7 +2464,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2018-06-20T16:52:47+00:00"
+            "time": "2018-06-27T12:23:53+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -5241,16 +5240,16 @@
         },
         {
             "name": "nette/di",
-            "version": "v2.4.12",
+            "version": "v2.4.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/di.git",
-                "reference": "8e717aed2d182a26763be58c220eebaaa32917df"
+                "reference": "3f8f212b02d5c17feb97a7e0a39ab306f40c06ca"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/di/zipball/8e717aed2d182a26763be58c220eebaaa32917df",
-                "reference": "8e717aed2d182a26763be58c220eebaaa32917df",
+                "url": "https://api.github.com/repos/nette/di/zipball/3f8f212b02d5c17feb97a7e0a39ab306f40c06ca",
+                "reference": "3f8f212b02d5c17feb97a7e0a39ab306f40c06ca",
                 "shasum": ""
             },
             "require": {
@@ -5306,31 +5305,31 @@
                 "nette",
                 "static"
             ],
-            "time": "2018-04-26T09:18:42+00:00"
+            "time": "2018-06-11T08:46:01+00:00"
         },
         {
             "name": "nette/finder",
-            "version": "v2.4.1",
+            "version": "v2.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/finder.git",
-                "reference": "4d43a66d072c57d585bf08a3ef68d3587f7e9547"
+                "reference": "ee951a656cb8ac622e5dd33474a01fd2470505a0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/finder/zipball/4d43a66d072c57d585bf08a3ef68d3587f7e9547",
-                "reference": "4d43a66d072c57d585bf08a3ef68d3587f7e9547",
+                "url": "https://api.github.com/repos/nette/finder/zipball/ee951a656cb8ac622e5dd33474a01fd2470505a0",
+                "reference": "ee951a656cb8ac622e5dd33474a01fd2470505a0",
                 "shasum": ""
             },
             "require": {
-                "nette/utils": "^2.4 || ~3.0.0",
+                "nette/utils": "~2.4",
                 "php": ">=5.6.0"
             },
             "conflict": {
                 "nette/nette": "<2.2"
             },
             "require-dev": {
-                "nette/tester": "^2.0",
+                "nette/tester": "~2.0",
                 "tracy/tracy": "^2.3"
             },
             "type": "library",
@@ -5360,22 +5359,28 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "Nette Finder: Files Searching",
+            "description": "🔍 Nette Finder: find files and directories with an intuitive API.",
             "homepage": "https://nette.org",
-            "time": "2017-07-10T23:47:08+00:00"
+            "keywords": [
+                "filesystem",
+                "glob",
+                "iterator",
+                "nette"
+            ],
+            "time": "2018-06-28T11:49:23+00:00"
         },
         {
             "name": "nette/neon",
-            "version": "v2.4.2",
+            "version": "v2.4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/neon.git",
-                "reference": "9eacd50553b26b53a3977bfb2fea2166d4331622"
+                "reference": "5e72b1dd3e2d34f0863c5561139a19df6a1ef398"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/neon/zipball/9eacd50553b26b53a3977bfb2fea2166d4331622",
-                "reference": "9eacd50553b26b53a3977bfb2fea2166d4331622",
+                "url": "https://api.github.com/repos/nette/neon/zipball/5e72b1dd3e2d34f0863c5561139a19df6a1ef398",
+                "reference": "5e72b1dd3e2d34f0863c5561139a19df6a1ef398",
                 "shasum": ""
             },
             "require": {
@@ -5414,9 +5419,16 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "Nette NEON: parser & generator for Nette Object Notation",
+            "description": "🍸 Nette NEON: encodes and decodes NEON file format.",
             "homepage": "http://ne-on.org",
-            "time": "2017-07-11T18:29:08+00:00"
+            "keywords": [
+                "export",
+                "import",
+                "neon",
+                "nette",
+                "yaml"
+            ],
+            "time": "2018-03-21T12:12:21+00:00"
         },
         {
             "name": "nette/php-generator",
@@ -5482,16 +5494,16 @@
         },
         {
             "name": "nette/robot-loader",
-            "version": "v3.0.3",
+            "version": "v3.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/robot-loader.git",
-                "reference": "92d4b40b49d5e2d9e37fc736bbcebe6da55fa44a"
+                "reference": "3cf88781a05e0bf4618ae605361afcbaa4d5b392"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/robot-loader/zipball/92d4b40b49d5e2d9e37fc736bbcebe6da55fa44a",
-                "reference": "92d4b40b49d5e2d9e37fc736bbcebe6da55fa44a",
+                "url": "https://api.github.com/repos/nette/robot-loader/zipball/3cf88781a05e0bf4618ae605361afcbaa4d5b392",
+                "reference": "3cf88781a05e0bf4618ae605361afcbaa4d5b392",
                 "shasum": ""
             },
             "require": {
@@ -5543,7 +5555,7 @@
                 "nette",
                 "trait"
             ],
-            "time": "2017-09-26T13:42:21+00:00"
+            "time": "2018-06-22T09:34:04+00:00"
         },
         {
             "name": "nette/utils",
@@ -7523,12 +7535,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/code-sniffer.git",
-                "reference": "e0feaf347ec5f477a1685af2d9e676888d5be2e1"
+                "reference": "eb919dc2d4993f81c1ea076854ab177b0a3137c3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/e0feaf347ec5f477a1685af2d9e676888d5be2e1",
-                "reference": "e0feaf347ec5f477a1685af2d9e676888d5be2e1",
+                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/eb919dc2d4993f81c1ea076854ab177b0a3137c3",
+                "reference": "eb919dc2d4993f81c1ea076854ab177b0a3137c3",
                 "shasum": ""
             },
             "require": {
@@ -7567,7 +7579,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2018-06-26T09:32:12+00:00"
+            "time": "2018-06-28T09:27:27+00:00"
         },
         {
             "name": "spryker/development-core",
@@ -7620,12 +7632,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/git-hook.git",
-                "reference": "48a4d31b795dac1fc5798c4c912db0b437d16dcf"
+                "reference": "e486c4200d3dbcc47ae7941304f9e28d15955267"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/git-hook/zipball/48a4d31b795dac1fc5798c4c912db0b437d16dcf",
-                "reference": "48a4d31b795dac1fc5798c4c912db0b437d16dcf",
+                "url": "https://api.github.com/repos/spryker/git-hook/zipball/e486c4200d3dbcc47ae7941304f9e28d15955267",
+                "reference": "e486c4200d3dbcc47ae7941304f9e28d15955267",
                 "shasum": ""
             },
             "require": {
@@ -7664,7 +7676,7 @@
                 "sniffer",
                 "standards"
             ],
-            "time": "2018-02-14T09:40:33+00:00"
+            "time": "2018-06-28T10:22:00+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
