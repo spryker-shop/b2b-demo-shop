@@ -5,12 +5,12 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Orm\Zed\FileManager\Persistence;
+namespace Orm\Zed\Payolution\Persistence;
 
-use Spryker\Zed\FileManager\Persistence\Propel\AbstractSpyFileDirectoryQuery as BaseSpyFileDirectoryQuery;
+use Orm\Zed\Payolution\Persistence\Base\SpyPaymentPayolutionOrderItemQuery as BaseSpyPaymentPayolutionOrderItemQuery;
 
 /**
- * Skeleton subclass for performing query and update operations on the 'spy_file_directory' table.
+ * Skeleton subclass for performing query and update operations on the 'spy_payment_payolution_order_item' table.
  *
  *
  *
@@ -19,6 +19,6 @@ use Spryker\Zed\FileManager\Persistence\Propel\AbstractSpyFileDirectoryQuery as 
  * long as it does not already exist in the output directory.
  *
  */
-class SpyFileDirectoryQuery extends BaseSpyFileDirectoryQuery
+class SpyPaymentPayolutionOrderItemQuery extends BaseSpyPaymentPayolutionOrderItemQuery
 {
 }

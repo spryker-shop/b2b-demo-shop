@@ -417,6 +417,7 @@ $config[CmsGuiConstants::CMS_PAGE_PREVIEW_URI] = '/en/cms/preview/%d';
 // ---------- Loggly
 $config[LogglyConstants::TOKEN] = 'loggly-token:sample:123456';
 
+// ---------- FileSystem
 $config[FileSystemConstants::FILESYSTEM_SERVICE] = [
     'files' => [
         'sprykerAdapterClass' => LocalFilesystemBuilderPlugin::class,
@@ -424,7 +425,8 @@ $config[FileSystemConstants::FILESYSTEM_SERVICE] = [
         'path' => 'files/',
     ],
 ];
-$config[FlysystemConstants::FILESYSTEM_SERVICE] = $config[FileSystemConstants::FILESYSTEM_SERVICE];
+
+// ---------- FileManager
 $config[FileManagerConstants::STORAGE_NAME] = 'files';
 $config[FileManagerConstants::FILE_NAME_VERSION_DELIMITER] = '-';
 $config[FileManagerGuiConstants::DEFAULT_FILE_MAX_SIZE] = '10M';
