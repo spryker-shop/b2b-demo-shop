@@ -57,13 +57,13 @@ class EventBehaviorDependencyProvider extends SprykerEventBehaviorDependencyProv
             new CategoryPageEventResourcePlugin,
             new ProductPageEventResourcePlugin(),
             new ProductSetPageSearchEventResourcePlugin(),
-            new ProductReviewSearchEventResourcePlugin(), //TODO check listener, it`s update abstract products
-            //Storage
+            new ProductReviewSearchEventResourcePlugin(),
+//            //Storage
             new AvailabilityEventResourcePlugin(),
             new CategoryTreeEventResourcePlugin(),
             new CategoryNodeEventResourcePlugin(),
-            new CmsBlockCategoryEventResourcePlugin(), //ask
-            new CmsBlockProductEventResourcePlugin(), //ask
+            new CmsBlockCategoryEventResourcePlugin(),
+            new CmsBlockProductEventResourcePlugin(),
             new CmsBlockEventResourcePlugin(),
             new CmsEventResourcePlugin(),
             new GlossaryEventResourcePlugin(),
