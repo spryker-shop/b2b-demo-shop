@@ -8,7 +8,7 @@
 namespace Pyz\Zed\Discount;
 
 use Spryker\Zed\CustomerGroupDiscountConnector\Communication\Plugin\DecisionRule\CustomerGroupDecisionRulePlugin;
-use Spryker\Zed\Discount\Communication\Plugin\DiscountExtension\SingleQuantityBasedDiscountableItemTransformerStrategyPlugin;
+use Spryker\Zed\Discount\Communication\Plugin\DiscountExtension\SplittableDiscountableItemTransformerStrategyPlugin;
 use Spryker\Zed\Discount\DiscountDependencyProvider as SprykerDiscountDependencyProvider;
 use Spryker\Zed\DiscountPromotion\Communication\Plugin\Discount\DiscountPromotionCalculationFormDataExpanderPlugin;
 use Spryker\Zed\DiscountPromotion\Communication\Plugin\Discount\DiscountPromotionCalculationFormExpanderPlugin;
@@ -80,7 +80,7 @@ class DiscountDependencyProvider extends SprykerDiscountDependencyProvider
     {
         return [
             new NonSplittableDiscountableItemTransformerStrategyPlugin(),
-            new SingleQuantityBasedDiscountableItemTransformerStrategyPlugin(),
+            new SplittableDiscountableItemTransformerStrategyPlugin(),
         ];
     }
 
