@@ -13,11 +13,9 @@ use Spryker\Client\PriceProductStorage\PriceProductStorageDependencyProvider as 
 class PriceProductStorageDependencyProvider extends SprykerPriceProductStorageDependencyProvider
 {
     /**
-     * The plugins are executed during reading prices from Storage
-     *
      * @return \Spryker\Client\PriceProductStorageExtension\Dependency\Plugin\PriceProductStoragePriceDimensionPluginInterface[]
      */
-    public function getPriceDimensionPlugins(): array
+    public function getPriceDimensionStorageReaderPlugins(): array
     {
         return [
             new PriceProductMerchantRelationshipStorageDimensionPlugin(),
