@@ -28,7 +28,7 @@ class ShoppingListPageDependencyProvider extends SprykerShoppingListPageDependen
     }
 
     /**
-     * @return array
+     * @return string[]
      */
     protected function getShoppingListWidgetPlugins(): array
     {
