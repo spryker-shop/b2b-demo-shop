@@ -8,7 +8,7 @@
 namespace Pyz\Zed\ProductAlternative;
 
 use Spryker\Zed\ProductAlternative\ProductAlternativeDependencyProvider as SprykerProductAlternativeDependencyProvider;
-use Spryker\Zed\ProductAlternativeProductLabelConnector\Communication\Plugin\PostDeleteProductUpdateAlternativesPlugin;
+use Spryker\Zed\ProductAlternativeProductLabelConnector\Communication\Plugin\DeleteProductAlternativesPlugin;
 use Spryker\Zed\ProductAlternativeProductLabelConnector\Communication\Plugin\PostProductUpdateAlternativesPlugin;
 
 class ProductAlternativeDependencyProvider extends SprykerProductAlternativeDependencyProvider
@@ -24,12 +24,12 @@ class ProductAlternativeDependencyProvider extends SprykerProductAlternativeDepe
     }
 
     /**
-     * @return \Spryker\Zed\ProductAlternativeExtension\Dependency\Plugin\PostDeleteProductAlternativePluginInterface[]
+     * @return \Spryker\Zed\ProductAlternativeExtension\Dependency\Plugin\DeleteProductAlternativePluginInterface[]
      */
-    protected function getPostDeleteProductAlternativePlugins(): array
+    protected function getDeleteProductAlternativePlugins(): array
     {
         return [
-            new PostDeleteProductUpdateAlternativesPlugin(),
+            new DeleteProductAlternativesPlugin(),
         ];
     }
 }
