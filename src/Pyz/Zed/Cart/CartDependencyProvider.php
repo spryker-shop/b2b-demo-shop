@@ -33,6 +33,9 @@ use Spryker\Zed\ProductOptionCartConnector\Communication\Plugin\CartItemGroupKey
 use Spryker\Zed\ProductOptionCartConnector\Communication\Plugin\CartItemProductOptionPlugin;
 use Spryker\Zed\ProductOptionCartConnector\Communication\Plugin\ChangeProductOptionQuantityPlugin;
 use Spryker\Zed\ProductOptionCartConnector\Communication\Plugin\ProductOptionValuePriceExistsCartPreCheckPlugin;
+use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Cart\AmountGroupKeyItemExpanderPlugin;
+use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Cart\AmountRestrictionCartPreCheckPlugin;
+use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Cart\AmountSalesUnitValuePostSavePlugin;
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Cart\PackagingUnitItemExpanderPlugin;
 use Spryker\Zed\ProductQuantity\Communication\Plugin\Cart\ProductQuantityRestrictionCartPreCheckPlugin;
 use Spryker\Zed\ProductQuantity\Communication\Plugin\CartExtension\ProductQuantityRestrictionCartRemovalPreCheckPlugin;
@@ -62,7 +65,8 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new CartGroupPromotionItems(),
             new CartShipmentExpanderPlugin(),
             new QuantitySalesUnitItemExpanderPlugin(),
-            new PackagingUnitItemExpanderPlugin(),
+            new AmountGroupKeyItemExpanderPlugin(), #PackagingUnits
+            new PackagingUnitItemExpanderPlugin(), #PackagingUnits
         ];
     }
 
@@ -80,6 +84,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new CartBundleAvailabilityPreCheckPlugin(),
             new CartShipmentPreCheckPlugin(),
             new ProductQuantityRestrictionCartPreCheckPlugin(),
+            new AmountRestrictionCartPreCheckPlugin(), #PackagingUnits
         ];
     }
 
@@ -95,6 +100,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new CartPostSaveUpdateBundlesPlugin(),
             new RemovePaymentCartPostSavePlugin(),
             new QuantitySalesUnitValuePostSavePlugin(),
+            new AmountSalesUnitValuePostSavePlugin(), #PackagingUnits
         ];
     }
 
