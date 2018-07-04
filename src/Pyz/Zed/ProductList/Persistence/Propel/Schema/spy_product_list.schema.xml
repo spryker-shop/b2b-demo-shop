@@ -5,6 +5,12 @@
         namespace="Orm\Zed\ProductList\Persistence"
         package="src.Orm.Zed.ProductList.Persistence">
 
+    <table name="spy_product_list" identifierQuoting="true">
+        <behavior name="event">
+            <parameter name="spy_product_list_all" column="*"/>
+        </behavior>
+    </table>
+
     <table name="spy_product_list_product_concrete" isCrossRef="true">
         <behavior name="event">
             <parameter name="spy_product_list_product_concrete_all" column="*"/>
