@@ -22,7 +22,7 @@ class PriceProductDependencyProvider extends SprykerPriceProductDependencyProvid
     /**
      * {@inheritdoc}
      *
-     * @return \Spryker\Zed\PriceProduct\Dependency\Plugin\PriceDimensionQueryCriteriaPluginInterface[]
+     * @return \Spryker\Zed\PriceProductExtension\Dependency\Plugin\PriceDimensionQueryCriteriaPluginInterface[]
      */
     protected function getPriceDimensionQueryCriteriaPlugins(): array
     {
@@ -34,7 +34,7 @@ class PriceProductDependencyProvider extends SprykerPriceProductDependencyProvid
     /**
      * {@inheritdoc}
      *
-     * @return \Spryker\Zed\PriceProduct\Dependency\Plugin\PriceDimensionAbstractSaverPluginInterface[]
+     * @return \Spryker\Zed\PriceProductExtension\Dependency\Plugin\PriceDimensionAbstractSaverPluginInterface[]
      */
     protected function getPriceDimensionAbstractSaverPlugins(): array
     {
@@ -46,7 +46,7 @@ class PriceProductDependencyProvider extends SprykerPriceProductDependencyProvid
     /**
      * {@inheritdoc}
      *
-     * @return \Spryker\Zed\PriceProduct\Dependency\Plugin\PriceDimensionConcreteSaverPluginInterface[]
+     * @return \Spryker\Zed\PriceProductExtension\Dependency\Plugin\PriceDimensionConcreteSaverPluginInterface[]
      */
     protected function getPriceDimensionConcreteSaverPlugins(): array
     {
