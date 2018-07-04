@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\ProductReviewStorage;
 
+use Pyz\Zed\Synchronization\SynchronizationConfig;
 use Spryker\Zed\ProductReviewStorage\ProductReviewStorageConfig as AbstractProductReviewStorageConfig;
 
 class ProductReviewStorageConfig extends AbstractProductReviewStorageConfig
@@ -14,8 +15,8 @@ class ProductReviewStorageConfig extends AbstractProductReviewStorageConfig
     /**
      * @return null|string
      */
-    public function getProductAbstractReviewSynchronizationPoolName()
+    public function getProductAbstractReviewSynchronizationPoolName(): ?string
     {
-        return 'synchronizationPool';
+        return SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME;
     }
 }

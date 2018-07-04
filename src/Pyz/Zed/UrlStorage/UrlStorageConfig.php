@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\UrlStorage;
 
+use Pyz\Zed\Synchronization\SynchronizationConfig;
 use Spryker\Zed\UrlStorage\UrlStorageConfig as AbstractUrlStorageConfig;
 
 class UrlStorageConfig extends AbstractUrlStorageConfig
@@ -14,16 +15,16 @@ class UrlStorageConfig extends AbstractUrlStorageConfig
     /**
      * @return null|string
      */
-    public function getUrlSynchronizationPoolName()
+    public function getUrlSynchronizationPoolName(): ?string
     {
-        return 'synchronizationPool';
+        return SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME;
     }
 
     /**
      * @return null|string
      */
-    public function getUrlRedirectSynchronizationPoolName()
+    public function getUrlRedirectSynchronizationPoolName(): ?string
     {
-        return 'synchronizationPool';
+        return SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME;
     }
 }

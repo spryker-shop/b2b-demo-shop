@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\CmsBlockProductStorage;
 
+use Pyz\Zed\Synchronization\SynchronizationConfig;
 use Spryker\Zed\CmsBlockProductStorage\CmsBlockProductStorageConfig as AbstractCmsBlockProductStorageConfig;
 
 class CmsBlockProductStorageConfig extends AbstractCmsBlockProductStorageConfig
@@ -14,7 +15,7 @@ class CmsBlockProductStorageConfig extends AbstractCmsBlockProductStorageConfig
     /**
      * @return bool
      */
-    public function isSendingToQueue()
+    public function isSendingToQueue(): bool
     {
         return true;
     }
@@ -22,8 +23,8 @@ class CmsBlockProductStorageConfig extends AbstractCmsBlockProductStorageConfig
     /**
      * @return string|null
      */
-    public function getCmsBlockProductSynchronizationPoolName()
+    public function getCmsBlockProductSynchronizationPoolName(): ?string
     {
-        return 'synchronizationPool';
+        return SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME;
     }
 }

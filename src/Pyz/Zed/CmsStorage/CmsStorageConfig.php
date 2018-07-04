@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\CmsStorage;
 
+use Pyz\Zed\Synchronization\SynchronizationConfig;
 use Spryker\Zed\CmsStorage\CmsStorageConfig as AbstractCmsStorageConfig;
 
 class CmsStorageConfig extends AbstractCmsStorageConfig
@@ -14,7 +15,7 @@ class CmsStorageConfig extends AbstractCmsStorageConfig
     /**
      * @return bool
      */
-    public function isSendingToQueue()
+    public function isSendingToQueue(): bool
     {
         return true;
     }
@@ -22,8 +23,8 @@ class CmsStorageConfig extends AbstractCmsStorageConfig
     /**
      * @return string|null
      */
-    public function getCmsPageSynchronizationPoolName()
+    public function getCmsPageSynchronizationPoolName(): ?string
     {
-        return 'synchronizationPool';
+        return SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME;
     }
 }

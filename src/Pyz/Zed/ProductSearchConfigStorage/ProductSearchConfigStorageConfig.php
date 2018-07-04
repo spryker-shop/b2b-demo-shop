@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\ProductSearchConfigStorage;
 
+use Pyz\Zed\Synchronization\SynchronizationConfig;
 use Spryker\Zed\ProductSearchConfigStorage\ProductSearchConfigStorageConfig as AbstractProductSearchConfigStorageConfig;
 
 class ProductSearchConfigStorageConfig extends AbstractProductSearchConfigStorageConfig
@@ -14,8 +15,8 @@ class ProductSearchConfigStorageConfig extends AbstractProductSearchConfigStorag
     /**
      * @return null|string
      */
-    public function getProductSearchConfigSynchronizationPoolName()
+    public function getProductSearchConfigSynchronizationPoolName(): ?string
     {
-        return 'synchronizationPool';
+        return SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME;
     }
 }

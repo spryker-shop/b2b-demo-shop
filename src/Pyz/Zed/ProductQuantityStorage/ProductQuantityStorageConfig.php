@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\ProductQuantityStorage;
 
+use Pyz\Zed\Synchronization\SynchronizationConfig;
 use Spryker\Zed\ProductQuantityStorage\ProductQuantityStorageConfig as AbstractProductQuantityStorageConfig;
 
 class ProductQuantityStorageConfig extends AbstractProductQuantityStorageConfig
@@ -14,8 +15,8 @@ class ProductQuantityStorageConfig extends AbstractProductQuantityStorageConfig
     /**
      * @return null|string
      */
-    public function getProductQuantitySynchronizationPoolName()
+    public function getProductQuantitySynchronizationPoolName(): ?string
     {
-        return 'synchronizationPool';
+        return SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME;
     }
 }

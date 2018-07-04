@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\ProductLabelStorage;
 
+use Pyz\Zed\Synchronization\SynchronizationConfig;
 use Spryker\Zed\ProductLabelStorage\ProductLabelStorageConfig as AbstractProductLabelStorageConfig;
 
 class ProductLabelStorageConfig extends AbstractProductLabelStorageConfig
@@ -14,7 +15,7 @@ class ProductLabelStorageConfig extends AbstractProductLabelStorageConfig
     /**
      * @return bool
      */
-    public function isSendingToQueue()
+    public function isSendingToQueue(): bool
     {
         return true;
     }
@@ -22,16 +23,16 @@ class ProductLabelStorageConfig extends AbstractProductLabelStorageConfig
     /**
      * @return null|string
      */
-    public function getProductAbstractLabelSynchronizationPoolName()
+    public function getProductAbstractLabelSynchronizationPoolName(): ?string
     {
-        return 'synchronizationPool';
+        return SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME;
     }
 
     /**
      * @return null|string
      */
-    public function getProductLabelDictionarySynchronizationPoolName()
+    public function getProductLabelDictionarySynchronizationPoolName(): ?string
     {
-        return 'synchronizationPool';
+        return SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME;
     }
 }

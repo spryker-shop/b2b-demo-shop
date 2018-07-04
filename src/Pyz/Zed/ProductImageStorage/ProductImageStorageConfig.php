@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\ProductImageStorage;
 
+use Pyz\Zed\Synchronization\SynchronizationConfig;
 use Spryker\Zed\ProductImageStorage\ProductImageStorageConfig as AbstractProductImageStorageConfig;
 
 class ProductImageStorageConfig extends AbstractProductImageStorageConfig
@@ -14,7 +15,7 @@ class ProductImageStorageConfig extends AbstractProductImageStorageConfig
     /**
      * @return bool
      */
-    public function isSendingToQueue()
+    public function isSendingToQueue(): bool
     {
         return true;
     }
@@ -22,8 +23,8 @@ class ProductImageStorageConfig extends AbstractProductImageStorageConfig
     /**
      * @return string|null
      */
-    public function getProductImageSynchronizationPoolName()
+    public function getProductImageSynchronizationPoolName(): ?string
     {
-        return 'synchronizationPool';
+        return SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME;
     }
 }

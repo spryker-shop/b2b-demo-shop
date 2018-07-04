@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\CmsBlockCategoryStorage;
 
+use Pyz\Zed\Synchronization\SynchronizationConfig;
 use Spryker\Zed\CmsBlockCategoryStorage\CmsBlockCategoryStorageConfig as AbstractCmsBlockCategoryStorageConfig;
 
 class CmsBlockCategoryStorageConfig extends AbstractCmsBlockCategoryStorageConfig
@@ -14,7 +15,7 @@ class CmsBlockCategoryStorageConfig extends AbstractCmsBlockCategoryStorageConfi
     /**
      * @return bool
      */
-    public function isSendingToQueue()
+    public function isSendingToQueue(): bool
     {
         return true;
     }
@@ -22,8 +23,8 @@ class CmsBlockCategoryStorageConfig extends AbstractCmsBlockCategoryStorageConfi
     /**
      * @return string|null
      */
-    public function getCmsBlockCategorySynchronizationPoolName()
+    public function getCmsBlockCategorySynchronizationPoolName(): ?string
     {
-        return 'synchronizationPool';
+        return SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME;
     }
 }

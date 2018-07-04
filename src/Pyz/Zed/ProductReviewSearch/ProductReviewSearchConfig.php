@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\ProductReviewSearch;
 
+use Pyz\Zed\Synchronization\SynchronizationConfig;
 use Spryker\Zed\ProductReviewSearch\ProductReviewSearchConfig as AbstractProductReviewSearchConfig;
 
 class ProductReviewSearchConfig extends AbstractProductReviewSearchConfig
@@ -14,8 +15,8 @@ class ProductReviewSearchConfig extends AbstractProductReviewSearchConfig
     /**
      * @return null|string
      */
-    public function getProductReviewSynchronizationPoolName()
+    public function getProductReviewSynchronizationPoolName(): ?string
     {
-        return 'synchronizationPool';
+        return SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME;
     }
 }

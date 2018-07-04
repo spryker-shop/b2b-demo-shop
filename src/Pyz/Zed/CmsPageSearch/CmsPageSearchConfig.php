@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\CmsPageSearch;
 
+use Pyz\Zed\Synchronization\SynchronizationConfig;
 use Spryker\Zed\CmsPageSearch\CmsPageSearchConfig as AbstractCmsPageSearchConfig;
 
 class CmsPageSearchConfig extends AbstractCmsPageSearchConfig
@@ -16,6 +17,6 @@ class CmsPageSearchConfig extends AbstractCmsPageSearchConfig
      */
     public function getCmsPageSynchronizationPoolName()
     {
-        return 'synchronizationPool';
+        return SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME;
     }
 }

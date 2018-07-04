@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\ProductGroupStorage;
 
+use Pyz\Zed\Synchronization\SynchronizationConfig;
 use Spryker\Zed\ProductGroupStorage\ProductGroupStorageConfig as AbstractProductGroupStorageConfig;
 
 class ProductGroupStorageConfig extends AbstractProductGroupStorageConfig
@@ -14,7 +15,7 @@ class ProductGroupStorageConfig extends AbstractProductGroupStorageConfig
     /**
      * @return bool
      */
-    public function isSendingToQueue()
+    public function isSendingToQueue(): bool
     {
         return true;
     }
@@ -22,8 +23,8 @@ class ProductGroupStorageConfig extends AbstractProductGroupStorageConfig
     /**
      * @return string|null
      */
-    public function getProductGroupSynchronizationPoolName()
+    public function getProductGroupSynchronizationPoolName(): ?string
     {
-        return 'synchronizationPool';
+        return SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME;
     }
 }

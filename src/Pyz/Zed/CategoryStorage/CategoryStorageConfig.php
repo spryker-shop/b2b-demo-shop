@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\CategoryStorage;
 
+use Pyz\Zed\Synchronization\SynchronizationConfig;
 use Spryker\Zed\CategoryStorage\CategoryStorageConfig as AbstractCategoryStorageConfig;
 
 class CategoryStorageConfig extends AbstractCategoryStorageConfig
@@ -14,7 +15,7 @@ class CategoryStorageConfig extends AbstractCategoryStorageConfig
     /**
      * @return bool
      */
-    public function isSendingToQueue()
+    public function isSendingToQueue(): bool
     {
         return true;
     }
@@ -22,16 +23,16 @@ class CategoryStorageConfig extends AbstractCategoryStorageConfig
     /**
      * @return string|null
      */
-    public function getCategoryTreeSynchronizationPoolName()
+    public function getCategoryTreeSynchronizationPoolName(): ?string
     {
-        return 'synchronizationPool';
+        return SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME;
     }
 
     /**
      * @return string|null
      */
-    public function getCategoryNodeSynchronizationPoolName()
+    public function getCategoryNodeSynchronizationPoolName(): ?string
     {
-        return 'synchronizationPool';
+        return SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME;
     }
 }
