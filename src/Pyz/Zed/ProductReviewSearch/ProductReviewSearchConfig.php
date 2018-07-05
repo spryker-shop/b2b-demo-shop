@@ -15,7 +15,7 @@ class ProductReviewSearchConfig extends AbstractProductReviewSearchConfig
     /**
      * @return null|string
      */
-    public function getProductReviewSynchronizationPoolName(): string
+    public function getProductReviewSynchronizationPoolName(): ?string
     {
         return SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME;
     }

@@ -21,9 +21,9 @@ class NavigationStorageConfig extends AbstractNavigationStorageConfig
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getNavigationSynchronizationPoolName(): string
+    public function getNavigationSynchronizationPoolName(): ?string
     {
         return SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME;
     }

@@ -15,7 +15,7 @@ class UrlStorageConfig extends AbstractUrlStorageConfig
     /**
      * @return null|string
      */
-    public function getUrlSynchronizationPoolName(): string
+    public function getUrlSynchronizationPoolName(): ?string
     {
         return SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME;
     }
@@ -23,7 +23,7 @@ class UrlStorageConfig extends AbstractUrlStorageConfig
     /**
      * @return null|string
      */
-    public function getUrlRedirectSynchronizationPoolName(): string
+    public function getUrlRedirectSynchronizationPoolName(): ?string
     {
         return SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME;
     }

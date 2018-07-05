@@ -15,7 +15,7 @@ class ProductRelationStorageConfig extends AbstractProductRelationStorageConfig
     /**
      * @return null|string
      */
-    public function getProductAbstractRelationSynchronizationPoolName(): string
+    public function getProductAbstractRelationSynchronizationPoolName(): ?string
     {
         return SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME;
     }

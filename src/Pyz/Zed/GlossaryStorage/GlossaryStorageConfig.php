@@ -21,9 +21,9 @@ class GlossaryStorageConfig extends AbstractGlossaryStorageConfig
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getGlossarySynchronizationPoolName(): string
+    public function getGlossarySynchronizationPoolName(): ?string
     {
         return SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME;
     }

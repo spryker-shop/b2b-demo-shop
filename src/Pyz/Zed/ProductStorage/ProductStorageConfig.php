@@ -15,7 +15,7 @@ class ProductStorageConfig extends AbstractProductStorageConfig
     /**
      * @return null|string
      */
-    public function getProductConcreteSynchronizationPoolName(): string
+    public function getProductConcreteSynchronizationPoolName(): ?string
     {
         return SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME;
     }
@@ -23,7 +23,7 @@ class ProductStorageConfig extends AbstractProductStorageConfig
     /**
      * @return null|string
      */
-    public function getProductAbstractSynchronizationPoolName(): string
+    public function getProductAbstractSynchronizationPoolName(): ?string
     {
         return SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME;
     }

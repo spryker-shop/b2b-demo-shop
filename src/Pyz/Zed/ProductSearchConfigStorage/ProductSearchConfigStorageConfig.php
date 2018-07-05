@@ -15,7 +15,7 @@ class ProductSearchConfigStorageConfig extends AbstractProductSearchConfigStorag
     /**
      * @return null|string
      */
-    public function getProductSearchConfigSynchronizationPoolName(): string
+    public function getProductSearchConfigSynchronizationPoolName(): ?string
     {
         return SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME;
     }

@@ -21,9 +21,9 @@ class ProductCategoryStorageConfig extends AbstractProductCategoryStorageConfig
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getProductCategorySynchronizationPoolName(): string
+    public function getProductCategorySynchronizationPoolName(): ?string
     {
         return SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME;
     }

@@ -21,17 +21,17 @@ class CategoryStorageConfig extends AbstractCategoryStorageConfig
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getCategoryTreeSynchronizationPoolName(): string
+    public function getCategoryTreeSynchronizationPoolName(): ?string
     {
         return SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME;
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getCategoryNodeSynchronizationPoolName(): string
+    public function getCategoryNodeSynchronizationPoolName(): ?string
     {
         return SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME;
     }

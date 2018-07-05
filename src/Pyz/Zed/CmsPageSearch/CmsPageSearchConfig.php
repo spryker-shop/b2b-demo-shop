@@ -13,7 +13,7 @@ use Spryker\Zed\CmsPageSearch\CmsPageSearchConfig as AbstractCmsPageSearchConfig
 class CmsPageSearchConfig extends AbstractCmsPageSearchConfig
 {
     /**
-     * @return string
+     * @return string|null
      */
     public function getCmsPageSynchronizationPoolName()
     {
