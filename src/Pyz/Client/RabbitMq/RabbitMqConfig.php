@@ -20,6 +20,7 @@ use Spryker\Shared\Event\EventConstants;
 use Spryker\Shared\GlossaryStorage\GlossaryStorageConstants;
 use Spryker\Shared\Log\LogConstants;
 use Spryker\Shared\PriceProductStorage\PriceProductStorageConstants;
+use Spryker\Shared\ProductPackagingUnitStorage\ProductPackagingUnitStorageConstants;
 use Spryker\Shared\ProductPageSearch\ProductPageSearchConstants;
 use Spryker\Shared\ProductStorage\ProductStorageConstants;
 use Spryker\Shared\UrlStorage\UrlStorageConstants;
@@ -39,6 +40,7 @@ class RabbitMqConfig extends SprykerRabbitMqConfig
         $queueOptionCollection->append($this->createQueueOption(CategoryStorageConstants::CATEGORY_SYNC_STORAGE_QUEUE, CategoryStorageConstants::CATEGORY_SYNC_STORAGE_ERROR_QUEUE));
         $queueOptionCollection->append($this->createQueueOption(ProductStorageConstants::PRODUCT_SYNC_STORAGE_QUEUE, ProductStorageConstants::PRODUCT_SYNC_STORAGE_ERROR_QUEUE));
         $queueOptionCollection->append($this->createQueueOption(PriceProductStorageConstants::PRICE_SYNC_STORAGE_QUEUE, PriceProductStorageConstants::PRICE_SYNC_STORAGE_ERROR_QUEUE));
+        $queueOptionCollection->append($this->createQueueOption(ProductPackagingUnitStorageConstants::PRODUCT_PACKAGING_UNIT_SYNC_STORAGE_QUEUE, ProductPackagingUnitStorageConstants::PRODUCT_PACKAGING_UNIT_SYNC_STORAGE_ERROR_QUEUE));
         $queueOptionCollection->append($this->createQueueOption(CmsStorageConstants::CMS_SYNC_STORAGE_QUEUE, CmsStorageConstants::CMS_SYNC_STORAGE_ERROR_QUEUE));
         $queueOptionCollection->append($this->createQueueOption(CategoryPageSearchConstants::CATEGORY_SYNC_SEARCH_QUEUE, CategoryPageSearchConstants::CATEGORY_SYNC_SEARCH_ERROR_QUEUE));
         $queueOptionCollection->append($this->createQueueOption(CmsPageSearchConstants::CMS_SYNC_SEARCH_QUEUE, CmsPageSearchConstants::CMS_SYNC_SEARCH_ERROR_QUEUE));
