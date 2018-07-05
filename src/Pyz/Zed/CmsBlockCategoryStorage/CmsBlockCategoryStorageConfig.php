@@ -21,9 +21,9 @@ class CmsBlockCategoryStorageConfig extends AbstractCmsBlockCategoryStorageConfi
     }
 
     /**
-     * @return string|null
+     * @return string
      */
-    public function getCmsBlockCategorySynchronizationPoolName(): ?string
+    public function getCmsBlockCategorySynchronizationPoolName(): string
     {
         return SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME;
     }

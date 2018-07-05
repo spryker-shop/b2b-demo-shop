@@ -13,9 +13,9 @@ use Spryker\Zed\CategoryPageSearch\CategoryPageSearchConfig as AbstractCategoryP
 class CategoryPageSearchConfig extends AbstractCategoryPageSearchConfig
 {
     /**
-     * @return string|null
+     * @return string
      */
-    public function getCategoryPageSynchronizationPoolName(): ?string
+    public function getCategoryPageSynchronizationPoolName(): string
     {
         return SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME;
     }

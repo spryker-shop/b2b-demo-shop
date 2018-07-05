@@ -15,7 +15,7 @@ class ProductQuantityStorageConfig extends AbstractProductQuantityStorageConfig
     /**
      * @return null|string
      */
-    public function getProductQuantitySynchronizationPoolName(): ?string
+    public function getProductQuantitySynchronizationPoolName(): string
     {
         return SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME;
     }

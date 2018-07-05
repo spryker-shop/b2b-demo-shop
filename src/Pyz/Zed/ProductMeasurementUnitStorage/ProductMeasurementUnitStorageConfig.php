@@ -23,7 +23,7 @@ class ProductMeasurementUnitStorageConfig extends AbstractProductMeasurementUnit
     /**
      * @return null|string
      */
-    public function getProductMeasurementUnitSynchronizationPoolName(): ?string
+    public function getProductMeasurementUnitSynchronizationPoolName(): string
     {
         return SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME;
     }

@@ -21,9 +21,9 @@ class ProductCategoryFilterStorageConfig extends AbstractProductCategoryFilterSt
     }
 
     /**
-     * @return string|null
+     * @return string
      */
-    public function getProductCategoryFilterSynchronizationPoolName(): ?string
+    public function getProductCategoryFilterSynchronizationPoolName(): string
     {
         return SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME;
     }

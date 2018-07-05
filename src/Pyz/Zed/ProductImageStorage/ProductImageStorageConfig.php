@@ -21,9 +21,9 @@ class ProductImageStorageConfig extends AbstractProductImageStorageConfig
     }
 
     /**
-     * @return string|null
+     * @return string
      */
-    public function getProductImageSynchronizationPoolName(): ?string
+    public function getProductImageSynchronizationPoolName(): string
     {
         return SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME;
     }

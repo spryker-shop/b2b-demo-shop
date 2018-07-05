@@ -15,7 +15,7 @@ class ProductSetPageSearchConfig extends AbstractProductSetPageSearchConfig
     /**
      * @return null|string
      */
-    public function getProductSetSynchronizationPoolName(): ?string
+    public function getProductSetSynchronizationPoolName(): string
     {
         return SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME;
     }

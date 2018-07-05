@@ -21,9 +21,9 @@ class CmsBlockProductStorageConfig extends AbstractCmsBlockProductStorageConfig
     }
 
     /**
-     * @return string|null
+     * @return string
      */
-    public function getCmsBlockProductSynchronizationPoolName(): ?string
+    public function getCmsBlockProductSynchronizationPoolName(): string
     {
         return SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME;
     }

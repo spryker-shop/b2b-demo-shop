@@ -23,7 +23,7 @@ class ProductLabelStorageConfig extends AbstractProductLabelStorageConfig
     /**
      * @return null|string
      */
-    public function getProductAbstractLabelSynchronizationPoolName(): ?string
+    public function getProductAbstractLabelSynchronizationPoolName(): string
     {
         return SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME;
     }
@@ -31,7 +31,7 @@ class ProductLabelStorageConfig extends AbstractProductLabelStorageConfig
     /**
      * @return null|string
      */
-    public function getProductLabelDictionarySynchronizationPoolName(): ?string
+    public function getProductLabelDictionarySynchronizationPoolName(): string
     {
         return SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME;
     }

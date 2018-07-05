@@ -21,9 +21,9 @@ class CmsStorageConfig extends AbstractCmsStorageConfig
     }
 
     /**
-     * @return string|null
+     * @return string
      */
-    public function getCmsPageSynchronizationPoolName(): ?string
+    public function getCmsPageSynchronizationPoolName(): string
     {
         return SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME;
     }
