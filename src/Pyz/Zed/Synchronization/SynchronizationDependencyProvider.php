@@ -41,24 +41,23 @@ use Spryker\Zed\ProductSetStorage\Communication\Plugin\Synchronization\ProductSe
 use Spryker\Zed\ProductStorage\Communication\Plugin\Synchronization\ProductAbstractSynchronizationDataPlugin;
 use Spryker\Zed\ProductStorage\Communication\Plugin\Synchronization\ProductConcreteSynchronizationDataPlugin;
 use Spryker\Zed\Synchronization\SynchronizationDependencyProvider as SprykerSynchronizationDependencyProvider;
+use Spryker\Zed\SynchronizationExtension\Dependency\Plugin\SynchronizationDataPluginInterface;
 use Spryker\Zed\UrlStorage\Communication\Plugin\Synchronization\UrlRedirectSynchronizationDataPlugin;
 use Spryker\Zed\UrlStorage\Communication\Plugin\Synchronization\UrlSynchronizationDataPlugin;
 
 class SynchronizationDependencyProvider extends SprykerSynchronizationDependencyProvider
 {
     /**
-     * @return array
+     * @return \Spryker\Zed\SynchronizationExtension\Dependency\Plugin\SynchronizationDataPluginInterface[]
      */
-    protected function getSynchronizationDataPlugins()
+    protected function getSynchronizationDataPlugins(): array
     {
         return [
-            //Search plugins
             new CategoryPageSynchronizationDataPlugin(),
             new CmsPageSynchronizationDataPlugin(),
             new ProductPageSynchronizationDataPlugin(),
             new ProductReviewSearchSynchronizationDataPlugin(),
             new ProductSetSearchSynchronizationDataPlugin(),
-            //Storage plugins
             new AvailabilitySynchronizationDataPlugin(),
             new CategoryTreeSynchronizationDataPlugin(),
             new CategoryNodeSynchronizationDataPlugin(),
