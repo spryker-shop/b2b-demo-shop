@@ -52,13 +52,11 @@ class EventBehaviorDependencyProvider extends SprykerEventBehaviorDependencyProv
     protected function getEventTriggerResourcePlugins()
     {
         return [
-            //Search
             new CmsPageEventResourcePlugin(),
             new CategoryPageEventResourcePlugin,
             new ProductPageEventResourcePlugin(),
             new ProductSetPageSearchEventResourcePlugin(),
             new ProductReviewSearchEventResourcePlugin(),
-//            //Storage
             new AvailabilityEventResourcePlugin(),
             new CategoryTreeEventResourcePlugin(),
             new CategoryNodeEventResourcePlugin(),
