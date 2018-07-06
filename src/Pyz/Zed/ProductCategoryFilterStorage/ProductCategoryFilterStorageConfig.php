@@ -7,14 +7,14 @@
 
 namespace Pyz\Zed\ProductCategoryFilterStorage;
 
-use Spryker\Zed\ProductCategoryFilterStorage\ProductCategoryFilterStorageConfig as AbstractProductCategoryFilterStorageConfig;
+use Spryker\Zed\ProductCategoryFilterStorage\ProductCategoryFilterStorageConfig as SprykerProductCategoryFilterStorageConfig;
 
-class ProductCategoryFilterStorageConfig extends AbstractProductCategoryFilterStorageConfig
+class ProductCategoryFilterStorageConfig extends SprykerProductCategoryFilterStorageConfig
 {
     /**
      * @uses \Pyz\Zed\Synchronization\SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME
      */
-    public const DEFAULT_SYNCHRONIZATION_POOL_NAME = 'synchronizationPool';
+    protected const DEFAULT_SYNCHRONIZATION_POOL_NAME = 'synchronizationPool';
 
     /**
      * @return bool

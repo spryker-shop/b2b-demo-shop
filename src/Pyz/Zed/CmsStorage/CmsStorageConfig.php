@@ -7,14 +7,14 @@
 
 namespace Pyz\Zed\CmsStorage;
 
-use Spryker\Zed\CmsStorage\CmsStorageConfig as AbstractCmsStorageConfig;
+use Spryker\Zed\CmsStorage\CmsStorageConfig as SprykerCmsStorageConfig;
 
-class CmsStorageConfig extends AbstractCmsStorageConfig
+class CmsStorageConfig extends SprykerCmsStorageConfig
 {
     /**
      * @uses \Pyz\Zed\Synchronization\SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME
      */
-    public const DEFAULT_SYNCHRONIZATION_POOL_NAME = 'synchronizationPool';
+    protected const DEFAULT_SYNCHRONIZATION_POOL_NAME = 'synchronizationPool';
 
     /**
      * @return bool

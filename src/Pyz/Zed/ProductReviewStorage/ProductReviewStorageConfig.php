@@ -7,14 +7,14 @@
 
 namespace Pyz\Zed\ProductReviewStorage;
 
-use Spryker\Zed\ProductReviewStorage\ProductReviewStorageConfig as AbstractProductReviewStorageConfig;
+use Spryker\Zed\ProductReviewStorage\ProductReviewStorageConfig as SprykerProductReviewStorageConfig;
 
-class ProductReviewStorageConfig extends AbstractProductReviewStorageConfig
+class ProductReviewStorageConfig extends SprykerProductReviewStorageConfig
 {
     /**
      * @uses \Pyz\Zed\Synchronization\SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME
      */
-    public const DEFAULT_SYNCHRONIZATION_POOL_NAME = 'synchronizationPool';
+    protected const DEFAULT_SYNCHRONIZATION_POOL_NAME = 'synchronizationPool';
 
     /**
      * @return null|string

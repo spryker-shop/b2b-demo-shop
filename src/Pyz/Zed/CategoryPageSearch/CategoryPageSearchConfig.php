@@ -7,14 +7,14 @@
 
 namespace Pyz\Zed\CategoryPageSearch;
 
-use Spryker\Zed\CategoryPageSearch\CategoryPageSearchConfig as AbstractCategoryPageSearchConfig;
+use Spryker\Zed\CategoryPageSearch\CategoryPageSearchConfig as SprykerCategoryPageSearchConfig;
 
-class CategoryPageSearchConfig extends AbstractCategoryPageSearchConfig
+class CategoryPageSearchConfig extends SprykerCategoryPageSearchConfig
 {
     /**
      * @uses \Pyz\Zed\Synchronization\SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME
      */
-    public const DEFAULT_SYNCHRONIZATION_POOL_NAME = 'synchronizationPool';
+    protected const DEFAULT_SYNCHRONIZATION_POOL_NAME = 'synchronizationPool';
 
     /**
      * @return string

@@ -7,14 +7,14 @@
 
 namespace Pyz\Zed\ProductSearchConfigStorage;
 
-use Spryker\Zed\ProductSearchConfigStorage\ProductSearchConfigStorageConfig as AbstractProductSearchConfigStorageConfig;
+use Spryker\Zed\ProductSearchConfigStorage\ProductSearchConfigStorageConfig as SprykerProductSearchConfigStorageConfig;
 
-class ProductSearchConfigStorageConfig extends AbstractProductSearchConfigStorageConfig
+class ProductSearchConfigStorageConfig extends SprykerProductSearchConfigStorageConfig
 {
     /**
      * @uses \Pyz\Zed\Synchronization\SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME
      */
-    public const DEFAULT_SYNCHRONIZATION_POOL_NAME = 'synchronizationPool';
+    protected const DEFAULT_SYNCHRONIZATION_POOL_NAME = 'synchronizationPool';
 
     /**
      * @return null|string

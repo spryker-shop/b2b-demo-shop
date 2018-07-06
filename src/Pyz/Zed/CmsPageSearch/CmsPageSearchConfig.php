@@ -7,14 +7,14 @@
 
 namespace Pyz\Zed\CmsPageSearch;
 
-use Spryker\Zed\CmsPageSearch\CmsPageSearchConfig as AbstractCmsPageSearchConfig;
+use Spryker\Zed\CmsPageSearch\CmsPageSearchConfig as SprykerCmsPageSearchConfig;
 
-class CmsPageSearchConfig extends AbstractCmsPageSearchConfig
+class CmsPageSearchConfig extends SprykerCmsPageSearchConfig
 {
     /**
      * @uses \Pyz\Zed\Synchronization\SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME
      */
-    public const DEFAULT_SYNCHRONIZATION_POOL_NAME = 'synchronizationPool';
+    protected const DEFAULT_SYNCHRONIZATION_POOL_NAME = 'synchronizationPool';
 
     /**
      * @return string|null
