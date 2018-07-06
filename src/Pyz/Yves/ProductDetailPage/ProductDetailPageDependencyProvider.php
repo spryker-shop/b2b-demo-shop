@@ -18,6 +18,7 @@ use SprykerShop\Yves\ProductImageWidget\Plugin\ProductDetailPage\ProductImageWid
 use SprykerShop\Yves\ProductLabelWidget\Plugin\ProductDetailPage\ProductAbstractLabelWidgetPlugin;
 use SprykerShop\Yves\ProductMeasurementUnitWidget\Plugin\ProductDetailPage\ProductMeasurementUnitWidgetPlugin;
 use SprykerShop\Yves\ProductOptionWidget\Plugin\ProductDetailPage\ProductOptionWidgetPlugin;
+use SprykerShop\Yves\ProductPackagingUnitWidget\Plugin\ProductDetailPage\ProductPackagingUnitWidgetPlugin;
 use SprykerShop\Yves\ProductRelationWidget\Plugin\ProductDetailPage\SimilarProductsWidgetPlugin;
 use SprykerShop\Yves\ProductReviewWidget\Plugin\ProductDetailPage\ProductReviewWidgetPlugin;
 use SprykerShop\Yves\ShoppingListWidget\Plugin\ProductDetailPage\ShoppingListWidgetPlugin;
@@ -45,6 +46,7 @@ class ProductDetailPageDependencyProvider extends SprykerShopProductDetailPageDe
             ProductMeasurementUnitWidgetPlugin::class,
             MultiCartWidgetPlugin::class, #MultiCartFeature
             ShoppingListWidgetPlugin::class, #ShoppingListFeature
+            ProductPackagingUnitWidgetPlugin::class, #ProductPackagingUnitFeature
         ];
     }
 }
