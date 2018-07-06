@@ -7,11 +7,15 @@
 
 namespace Pyz\Zed\GlossaryStorage;
 
-use Pyz\Zed\Synchronization\SynchronizationConfig;
 use Spryker\Zed\GlossaryStorage\GlossaryStorageConfig as AbstractGlossaryStorageConfig;
 
 class GlossaryStorageConfig extends AbstractGlossaryStorageConfig
 {
+    /**
+     * @uses \Pyz\Zed\Synchronization\SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME
+     */
+    public const DEFAULT_SYNCHRONIZATION_POOL_NAME = 'synchronizationPool';
+
     /**
      * @return bool
      */
@@ -25,6 +29,6 @@ class GlossaryStorageConfig extends AbstractGlossaryStorageConfig
      */
     public function getGlossarySynchronizationPoolName(): ?string
     {
-        return SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME;
+        return static::DEFAULT_SYNCHRONIZATION_POOL_NAME;
     }
 }

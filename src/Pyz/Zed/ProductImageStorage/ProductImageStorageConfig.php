@@ -7,11 +7,15 @@
 
 namespace Pyz\Zed\ProductImageStorage;
 
-use Pyz\Zed\Synchronization\SynchronizationConfig;
 use Spryker\Zed\ProductImageStorage\ProductImageStorageConfig as AbstractProductImageStorageConfig;
 
 class ProductImageStorageConfig extends AbstractProductImageStorageConfig
 {
+    /**
+     * @uses \Pyz\Zed\Synchronization\SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME
+     */
+    public const DEFAULT_SYNCHRONIZATION_POOL_NAME = 'synchronizationPool';
+
     /**
      * @return bool
      */
@@ -25,6 +29,6 @@ class ProductImageStorageConfig extends AbstractProductImageStorageConfig
      */
     public function getProductImageSynchronizationPoolName(): ?string
     {
-        return SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME;
+        return static::DEFAULT_SYNCHRONIZATION_POOL_NAME;
     }
 }

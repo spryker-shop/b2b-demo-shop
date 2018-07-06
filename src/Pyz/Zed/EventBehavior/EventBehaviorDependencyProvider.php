@@ -21,7 +21,6 @@ class EventBehaviorDependencyProvider extends SprykerEventBehaviorDependencyProv
         return [
             new AvailabilityEventResourcePlugin(),
             new CategoryTreeEventResourcePlugin(),
-            // ... Add more plugins
         ];
     }
 }

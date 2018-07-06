@@ -7,11 +7,15 @@
 
 namespace Pyz\Zed\ProductCategoryStorage;
 
-use Pyz\Zed\Synchronization\SynchronizationConfig;
 use Spryker\Zed\ProductCategoryStorage\ProductCategoryStorageConfig as AbstractProductCategoryStorageConfig;
 
 class ProductCategoryStorageConfig extends AbstractProductCategoryStorageConfig
 {
+    /**
+     * @uses \Pyz\Zed\Synchronization\SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME
+     */
+    public const DEFAULT_SYNCHRONIZATION_POOL_NAME = 'synchronizationPool';
+
     /**
      * @return bool
      */
@@ -25,6 +29,6 @@ class ProductCategoryStorageConfig extends AbstractProductCategoryStorageConfig
      */
     public function getProductCategorySynchronizationPoolName(): ?string
     {
-        return SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME;
+        return static::DEFAULT_SYNCHRONIZATION_POOL_NAME;
     }
 }

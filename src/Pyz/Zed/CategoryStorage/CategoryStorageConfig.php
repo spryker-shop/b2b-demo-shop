@@ -7,11 +7,15 @@
 
 namespace Pyz\Zed\CategoryStorage;
 
-use Pyz\Zed\Synchronization\SynchronizationConfig;
 use Spryker\Zed\CategoryStorage\CategoryStorageConfig as AbstractCategoryStorageConfig;
 
 class CategoryStorageConfig extends AbstractCategoryStorageConfig
 {
+    /**
+     * @uses \Pyz\Zed\Synchronization\SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME
+     */
+    public const DEFAULT_SYNCHRONIZATION_POOL_NAME = 'synchronizationPool';
+
     /**
      * @return bool
      */
@@ -25,7 +29,7 @@ class CategoryStorageConfig extends AbstractCategoryStorageConfig
      */
     public function getCategoryTreeSynchronizationPoolName(): ?string
     {
-        return SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME;
+        return static::DEFAULT_SYNCHRONIZATION_POOL_NAME;
     }
 
     /**
@@ -33,6 +37,6 @@ class CategoryStorageConfig extends AbstractCategoryStorageConfig
      */
     public function getCategoryNodeSynchronizationPoolName(): ?string
     {
-        return SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME;
+        return static::DEFAULT_SYNCHRONIZATION_POOL_NAME;
     }
 }

@@ -7,17 +7,21 @@
 
 namespace Pyz\Zed\ProductStorage;
 
-use Pyz\Zed\Synchronization\SynchronizationConfig;
 use Spryker\Zed\ProductStorage\ProductStorageConfig as AbstractProductStorageConfig;
 
 class ProductStorageConfig extends AbstractProductStorageConfig
 {
     /**
+     * @uses \Pyz\Zed\Synchronization\SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME
+     */
+    public const DEFAULT_SYNCHRONIZATION_POOL_NAME = 'synchronizationPool';
+
+    /**
      * @return null|string
      */
     public function getProductConcreteSynchronizationPoolName(): ?string
     {
-        return SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME;
+        return static::DEFAULT_SYNCHRONIZATION_POOL_NAME;
     }
 
     /**
@@ -25,6 +29,6 @@ class ProductStorageConfig extends AbstractProductStorageConfig
      */
     public function getProductAbstractSynchronizationPoolName(): ?string
     {
-        return SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME;
+        return static::DEFAULT_SYNCHRONIZATION_POOL_NAME;
     }
 }

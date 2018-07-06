@@ -7,11 +7,15 @@
 
 namespace Pyz\Zed\NavigationStorage;
 
-use Pyz\Zed\Synchronization\SynchronizationConfig;
 use Spryker\Zed\NavigationStorage\NavigationStorageConfig as AbstractNavigationStorageConfig;
 
 class NavigationStorageConfig extends AbstractNavigationStorageConfig
 {
+    /**
+     * @uses \Pyz\Zed\Synchronization\SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME
+     */
+    public const DEFAULT_SYNCHRONIZATION_POOL_NAME = 'synchronizationPool';
+
     /**
      * @return bool
      */
@@ -25,6 +29,6 @@ class NavigationStorageConfig extends AbstractNavigationStorageConfig
      */
     public function getNavigationSynchronizationPoolName(): ?string
     {
-        return SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME;
+        return static::DEFAULT_SYNCHRONIZATION_POOL_NAME;
     }
 }

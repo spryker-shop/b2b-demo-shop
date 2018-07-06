@@ -190,7 +190,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
 
             // Publish and Synchronization
             new EventBehaviorTriggerTimeoutConsole(),
-//            new EventTriggerConsole(),
+            new EventTriggerConsole(),
             new ExportSynchronizedDataConsole(),
 
             // Setup commands

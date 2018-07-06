@@ -7,11 +7,15 @@
 
 namespace Pyz\Zed\CmsBlockProductStorage;
 
-use Pyz\Zed\Synchronization\SynchronizationConfig;
 use Spryker\Zed\CmsBlockProductStorage\CmsBlockProductStorageConfig as AbstractCmsBlockProductStorageConfig;
 
 class CmsBlockProductStorageConfig extends AbstractCmsBlockProductStorageConfig
 {
+    /**
+     * @uses \Pyz\Zed\Synchronization\SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME
+     */
+    public const DEFAULT_SYNCHRONIZATION_POOL_NAME = 'synchronizationPool';
+
     /**
      * @return bool
      */
@@ -25,6 +29,6 @@ class CmsBlockProductStorageConfig extends AbstractCmsBlockProductStorageConfig
      */
     public function getCmsBlockProductSynchronizationPoolName(): ?string
     {
-        return SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME;
+        return static::DEFAULT_SYNCHRONIZATION_POOL_NAME;
     }
 }
