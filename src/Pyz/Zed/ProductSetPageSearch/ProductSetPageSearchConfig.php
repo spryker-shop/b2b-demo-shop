@@ -7,9 +7,9 @@
 
 namespace Pyz\Zed\ProductSetPageSearch;
 
-use Spryker\Zed\ProductSetPageSearch\ProductSetPageSearchConfig as AbstractProductSetPageSearchConfig;
+use Spryker\Zed\ProductSetPageSearch\ProductSetPageSearchConfig as SprykerProductSetPageSearchConfig;
 
-class ProductSetPageSearchConfig extends AbstractProductSetPageSearchConfig
+class ProductSetPageSearchConfig extends SprykerProductSetPageSearchConfig
 {
     /**
      * @uses \Pyz\Zed\Synchronization\SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME
