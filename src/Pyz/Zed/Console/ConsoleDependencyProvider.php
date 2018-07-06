@@ -55,6 +55,8 @@ use Spryker\Zed\NewRelic\Communication\Plugin\NewRelicConsolePlugin;
 use Spryker\Zed\Oms\Communication\Console\CheckConditionConsole as OmsCheckConditionConsole;
 use Spryker\Zed\Oms\Communication\Console\CheckTimeoutConsole as OmsCheckTimeoutConsole;
 use Spryker\Zed\Oms\Communication\Console\ClearLocksConsole as OmsClearLocksConsole;
+use Spryker\Zed\PriceProduct\Communication\Console\PriceProductStoreOptimizeConsole;
+use Spryker\Zed\PriceProductMerchantRelationship\Communication\Console\PriceProductMerchantRelationshipDeleteConsole;
 use Spryker\Zed\ProductAlternativeDataImport\ProductAlternativeDataImportConfig;
 use Spryker\Zed\ProductDiscontinued\Communication\Console\DeactivateDiscontinuedProductsConsole;
 use Spryker\Zed\ProductDiscontinuedDataImport\ProductDiscontinuedDataImportConfig;
@@ -242,6 +244,9 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new MaintenanceDisableConsole(),
 
             new DeactivateDiscontinuedProductsConsole(),
+
+            new PriceProductStoreOptimizeConsole(),
+            new PriceProductMerchantRelationshipDeleteConsole(),
         ];
 
         $propelCommands = $container->getLocator()->propel()->facade()->getConsoleCommands();
