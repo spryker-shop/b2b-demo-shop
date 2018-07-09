@@ -63,7 +63,7 @@ class ProductManagementDependencyProvider extends SprykerProductManagementDepend
     }
 
     /**
-     * @return array
+     * @return \Spryker\Zed\ProductManagementExtension\Dependency\Plugin\ProductConcreteEditFormExpanderPluginInterface[]
      */
     protected function getProductConcreteEditFormExpanderPlugins(): array
     {
@@ -74,7 +74,7 @@ class ProductManagementDependencyProvider extends SprykerProductManagementDepend
     }
 
     /**
-     * @return array
+     * @return \Spryker\Zed\ProductManagementExtension\Dependency\Plugin\ProductConcreteFormEditDataProviderExpanderPluginInterface[]
      */
     protected function getProductConcreteFormEditDataProviderExpanderPlugins(): array
     {
