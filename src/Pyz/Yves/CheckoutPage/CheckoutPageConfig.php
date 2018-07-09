@@ -16,6 +16,6 @@ class CheckoutPageConfig extends SprykerCheckoutPageConfig
      */
     public function cleanCartAfterOrderCreation()
     {
-        return false;
+        return true;
     }
 }
