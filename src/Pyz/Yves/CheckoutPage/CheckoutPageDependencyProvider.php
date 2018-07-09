@@ -19,6 +19,7 @@ use SprykerShop\Yves\CustomerPage\Form\GuestForm;
 use SprykerShop\Yves\CustomerPage\Form\LoginForm;
 use SprykerShop\Yves\CustomerPage\Form\RegisterForm;
 use SprykerShop\Yves\DiscountWidget\Plugin\CheckoutPage\CheckoutVoucherFormWidgetPlugin;
+use SprykerShop\Yves\ProductPackagingUnitWidget\Plugin\SummaryPage\SummaryProductPackagingUnitWidgetPlugin;
 
 class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyProvider
 {
@@ -30,7 +31,8 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
         return [
             CheckoutVoucherFormWidgetPlugin::class,
             CartNoteQuoteItemNoteWidgetPlugin::class, #CartNoteFeature
-            CartNoteQuoteNoteWidgetPlugin::class, #CartNoteFeature
+            CartNoteQuoteNoteWidgetPlugin::class, #CartNoteFeature,
+            SummaryProductPackagingUnitWidgetPlugin::class, #ProductPackagingUnit
         ];
     }
 

@@ -13,13 +13,14 @@ use Spryker\Zed\ManualOrderEntry\Communication\Plugin\Sales\OrderSourceExpanderP
 use Spryker\Zed\Payment\Communication\Plugin\Sales\PaymentOrderHydratePlugin;
 use Spryker\Zed\ProductBundle\Communication\Plugin\Sales\ProductBundleIdHydratorPlugin;
 use Spryker\Zed\ProductBundle\Communication\Plugin\Sales\ProductBundleOrderHydratePlugin;
+use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\Sales\ProductMeasurementUnitHydrateOrderPlugin;
 use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\SalesExtension\QuantitySalesUnitOrderItemExpanderPreSavePlugin;
-use Spryker\Zed\ProductMeasurementUnitGui\Communication\Plugin\Sales\ProductMeasurementUnitHydratorPlugin;
 use Spryker\Zed\ProductOption\Communication\Plugin\Sales\ProductOptionGroupIdHydratorPlugin;
 use Spryker\Zed\ProductOption\Communication\Plugin\Sales\ProductOptionOrderHydratePlugin;
 use Spryker\Zed\ProductOption\Communication\Plugin\Sales\ProductOptionSortHydratePlugin;
+use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Sales\ProductPackagingUnitHydrateOrderPlugin;
+use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\SalesExtension\AmountSalesUnitOrderItemExpanderPreSavePlugin;
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\SalesExtension\PackagingUnitOrderItemExpanderPreSavePlugin;
-use Spryker\Zed\ProductPackagingUnitGui\Communication\Plugin\Sales\ProductPackagingUnitHydratorPlugin;
 use Spryker\Zed\Sales\SalesDependencyProvider as SprykerSalesDependencyProvider;
 use Spryker\Zed\SalesProductConnector\Communication\Plugin\Sales\ItemMetadataHydratorPlugin;
 use Spryker\Zed\SalesProductConnector\Communication\Plugin\Sales\ProductIdHydratorPlugin;
@@ -55,8 +56,8 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
             new ItemMetadataHydratorPlugin(),
             new ProductBundleIdHydratorPlugin(),
             new ProductOptionGroupIdHydratorPlugin(),
-            new ProductMeasurementUnitHydratorPlugin(),
-            new ProductPackagingUnitHydratorPlugin(),
+            new ProductMeasurementUnitHydrateOrderPlugin(),
+            new ProductPackagingUnitHydrateOrderPlugin(),
         ];
     }
 
@@ -68,6 +69,7 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
         return [
             new QuantitySalesUnitOrderItemExpanderPreSavePlugin(),
             new PackagingUnitOrderItemExpanderPreSavePlugin(),
+            new AmountSalesUnitOrderItemExpanderPreSavePlugin(),
         ];
     }
 
