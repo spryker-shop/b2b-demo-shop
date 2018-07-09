@@ -45,7 +45,7 @@ class ProductDetailPageDependencyProvider extends SprykerShopProductDetailPageDe
             ExampleProductColorGroupWidgetPlugin::class,
             ProductMeasurementUnitWidgetPlugin::class,
             MultiCartWidgetPlugin::class, #MultiCartFeature
-            ShoppingListWidgetPlugin::class, #ShoppingListFeature,
+            ShoppingListWidgetPlugin::class, #ShoppingListFeature
             ProductPackagingUnitWidgetPlugin::class, #ProductPackagingUnitFeature
         ];
     }
