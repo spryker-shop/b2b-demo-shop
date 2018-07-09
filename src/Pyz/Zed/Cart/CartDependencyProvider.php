@@ -68,7 +68,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new QuantitySalesUnitItemExpanderPlugin(),
             new AmountGroupKeyItemExpanderPlugin(), #PackagingUnits
             new PackagingUnitItemExpanderPlugin(), #PackagingUnits
-            new CustomAmountPriceItemExpanderPlugin(),
+            new CustomAmountPriceItemExpanderPlugin(), #PackagingUnits
         ];
     }
 
