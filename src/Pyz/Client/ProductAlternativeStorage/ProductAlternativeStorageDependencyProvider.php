@@ -7,20 +7,20 @@
 
 namespace Pyz\Client\ProductAlternativeStorage;
 
-use Spryker\Client\AvailabilityStorage\Plugin\ProductAlternativeStorage\AvailabilityAlternativeProductApplicableCheckPlugin;
+use Spryker\Client\AvailabilityStorage\Plugin\ProductAlternativeStorage\AvailabilityCheckAlternativeProductApplicablePlugin;
 use Spryker\Client\ProductAlternativeStorage\ProductAlternativeStorageDependencyProvider as SprykerProductAlternativeStorageDependencyProvider;
-use Spryker\Client\ProductDiscontinuedStorage\Plugin\ProductAlternativeStorage\DiscontinuedAlternativeProductApplicableCheckPlugin;
+use Spryker\Client\ProductDiscontinuedStorage\Plugin\ProductAlternativeStorage\DiscontinuedCheckAlternativeProductApplicablePlugin;
 
 class ProductAlternativeStorageDependencyProvider extends SprykerProductAlternativeStorageDependencyProvider
 {
     /**
-     * @return \Spryker\Client\ProductAlternativeStorageExtension\Dependency\Plugin\AlternativeProductApplicableCheckPluginInterface[]
+     * @return \Spryker\Client\ProductAlternativeStorageExtension\Dependency\Plugin\AlternativeProductApplicablePluginInterface[]
      */
     protected function getAlternativeProductApplicableCheckPlugins(): array
     {
         return [
-            new DiscontinuedAlternativeProductApplicableCheckPlugin(),
-            new AvailabilityAlternativeProductApplicableCheckPlugin(),
+            new DiscontinuedCheckAlternativeProductApplicablePlugin(),
+            new AvailabilityCheckAlternativeProductApplicablePlugin(),
         ];
     }
 }

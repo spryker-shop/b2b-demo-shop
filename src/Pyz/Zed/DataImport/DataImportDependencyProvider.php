@@ -18,6 +18,10 @@ use Spryker\Zed\DataImport\Communication\Plugin\DataImportEventBehaviorPlugin;
 use Spryker\Zed\DataImport\Communication\Plugin\DataImportPublisherPlugin;
 use Spryker\Zed\DataImport\DataImportDependencyProvider as SprykerDataImportDependencyProvider;
 use Spryker\Zed\Kernel\Container;
+use Spryker\Zed\MerchantDataImport\Communication\Plugin\MerchantDataImportPlugin;
+use Spryker\Zed\MerchantRelationshipDataImport\Communication\Plugin\MerchantRelationshipDataImportPlugin;
+use Spryker\Zed\PriceProductDataImport\Communication\Plugin\PriceProductDataImportPlugin;
+use Spryker\Zed\PriceProductMerchantRelationshipDataImport\Communication\Plugin\PriceProductMerchantRelationshipDataImportPlugin;
 use Spryker\Zed\ProductAlternativeDataImport\Communication\Plugin\ProductAlternativeDataImportPlugin;
 use Spryker\Zed\ProductDiscontinuedDataImport\Communication\Plugin\ProductDiscontinuedDataImportPlugin;
 use Spryker\Zed\ProductMeasurementUnitDataImport\Communication\Plugin\ProductMeasurementBaseUnitDataImportPlugin;
@@ -146,6 +150,10 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
             new ProductPackagingUnitTypeDataImportPlugin(),
             new ProductPackagingUnitDataImportPlugin(),
             new BusinessOnBehalfCompanyUserDataImportPlugin(),
+            new PriceProductDataImportPlugin(),
+            new MerchantDataImportPlugin(),
+            new MerchantRelationshipDataImportPlugin(),
+            new PriceProductMerchantRelationshipDataImportPlugin(),
         ];
     }
 
