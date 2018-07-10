@@ -26,6 +26,8 @@ use Spryker\Zed\ProductCartConnector\Communication\Plugin\ProductCartPlugin;
 use Spryker\Zed\ProductCartConnector\Communication\Plugin\ProductExistsCartPreCheckPlugin;
 use Spryker\Zed\ProductCartConnector\Communication\Plugin\RemoveInactiveItemsPreReloadPlugin;
 use Spryker\Zed\ProductImageCartConnector\Communication\Plugin\ProductImageCartPlugin;
+use Spryker\Zed\ProductList\Communication\Plugin\Cart\ProductListRestrictedItemsPreCheckPlugin;
+use Spryker\Zed\ProductList\Communication\Plugin\Cart\RemoveRestrictedItemsPreReloadPlugin;
 use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\Cart\QuantitySalesUnitGroupKeyItemExpanderPlugin;
 use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\Cart\QuantitySalesUnitItemExpanderPlugin;
 use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\Cart\QuantitySalesUnitValuePostSavePlugin;
@@ -78,6 +80,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new CartBundleAvailabilityPreCheckPlugin(),
             new CartShipmentPreCheckPlugin(),
             new ProductQuantityRestrictionCartPreCheckPlugin(),
+            new ProductListRestrictedItemsPreCheckPlugin(),
         ];
     }
 
@@ -104,8 +107,9 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
     protected function getPreReloadPlugins(Container $container)
     {
         return [
-           new CartBundleItemsPreReloadPlugin(),
-           new RemoveInactiveItemsPreReloadPlugin(),
+            new CartBundleItemsPreReloadPlugin(),
+            new RemoveInactiveItemsPreReloadPlugin(),
+            new RemoveRestrictedItemsPreReloadPlugin(),
         ];
     }
 
