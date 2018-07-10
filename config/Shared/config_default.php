@@ -413,3 +413,6 @@ $config[CmsGuiConstants::CMS_PAGE_PREVIEW_URI] = '/en/cms/preview/%d';
 
 // ---------- Loggly
 $config[LogglyConstants::TOKEN] = 'loggly-token:sample:123456';
+
+// ---------- CMS
+$config[CmsGuiConstants::CMS_FOLDER_PATH] = '@Cms/templates/';
