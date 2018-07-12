@@ -14,7 +14,9 @@ use Generated\Shared\Transfer\QuoteTransfer;
 use Generated\Shared\Transfer\SaveOrderTransfer;
 use Spryker\Yves\Messenger\FlashMessenger\FlashMessengerInterface;
 use Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginInterface;
+use Spryker\Zed\Locale\Business\LocaleFacadeInterface;
 use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCheckoutClientInterface;
+use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToGlossaryStorageClientInterface;
 use SprykerShop\Yves\CheckoutPage\Process\Steps\PlaceOrderStep;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -30,6 +32,11 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class PlaceOrderStepTest extends Unit
 {
+    /**
+     * @var \SprykerTest\Zed\Checkout\CheckoutBusinessTester
+     */
+    protected $tester;
+
     /**
      * @return void
      */
@@ -138,9 +145,35 @@ class PlaceOrderStepTest extends Unit
         return new PlaceOrderStep(
             $checkoutClientMock,
             $flashMessengerMock,
+            $this->getCurrentLocaleName(),
+            $this->createGlossaryStorageClientMock(),
             'place_order',
             'escape_route'
         );
+    }
+
+    /**
+     * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToGlossaryStorageClientInterface
+     */
+    protected function createGlossaryStorageClientMock(): CheckoutPageToGlossaryStorageClientInterface
+    {
+        return $this->getMockBuilder(CheckoutPageToGlossaryStorageClientInterface::class)->getMock();
+    }
+
+    /**
+     * @return string
+     */
+    protected function getCurrentLocaleName(): string
+    {
+        return $this->getLocaleFacade()->getCurrentLocaleName();
+    }
+
+    /**
+     * @return \Spryker\Zed\Locale\Business\LocaleFacadeInterface
+     */
+    protected function getLocaleFacade(): LocaleFacadeInterface
+    {
+        return $this->tester->getLocator()->locale()->facade();
     }
 
     /**
