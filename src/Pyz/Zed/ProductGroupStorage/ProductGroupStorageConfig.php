@@ -7,20 +7,16 @@
 
 namespace Pyz\Zed\ProductGroupStorage;
 
+use Pyz\Zed\Synchronization\SynchronizationConfig;
 use Spryker\Zed\ProductGroupStorage\ProductGroupStorageConfig as SprykerProductGroupStorageConfig;
 
 class ProductGroupStorageConfig extends SprykerProductGroupStorageConfig
 {
     /**
-     * @uses \Pyz\Zed\Synchronization\SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME
-     */
-    protected const DEFAULT_SYNCHRONIZATION_POOL_NAME = 'synchronizationPool';
-
-    /**
      * @return string|null
      */
     public function getProductGroupSynchronizationPoolName(): ?string
     {
-        return static::DEFAULT_SYNCHRONIZATION_POOL_NAME;
+        return SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME;
     }
 }

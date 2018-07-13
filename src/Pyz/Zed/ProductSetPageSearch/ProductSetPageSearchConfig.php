@@ -7,20 +7,16 @@
 
 namespace Pyz\Zed\ProductSetPageSearch;
 
+use Pyz\Zed\Synchronization\SynchronizationConfig;
 use Spryker\Zed\ProductSetPageSearch\ProductSetPageSearchConfig as SprykerProductSetPageSearchConfig;
 
 class ProductSetPageSearchConfig extends SprykerProductSetPageSearchConfig
 {
     /**
-     * @uses \Pyz\Zed\Synchronization\SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME
-     */
-    protected const DEFAULT_SYNCHRONIZATION_POOL_NAME = 'synchronizationPool';
-
-    /**
      * @return null|string
      */
     public function getProductSetSynchronizationPoolName(): ?string
     {
-        return static::DEFAULT_SYNCHRONIZATION_POOL_NAME;
+        return SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME;
     }
 }

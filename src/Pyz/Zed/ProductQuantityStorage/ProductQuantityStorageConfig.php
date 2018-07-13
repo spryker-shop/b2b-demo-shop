@@ -7,20 +7,16 @@
 
 namespace Pyz\Zed\ProductQuantityStorage;
 
+use Pyz\Zed\Synchronization\SynchronizationConfig;
 use Spryker\Zed\ProductQuantityStorage\ProductQuantityStorageConfig as SprykerProductQuantityStorageConfig;
 
 class ProductQuantityStorageConfig extends SprykerProductQuantityStorageConfig
 {
     /**
-     * @uses \Pyz\Zed\Synchronization\SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME
-     */
-    protected const DEFAULT_SYNCHRONIZATION_POOL_NAME = 'synchronizationPool';
-
-    /**
      * @return null|string
      */
     public function getProductQuantitySynchronizationPoolName(): ?string
     {
-        return static::DEFAULT_SYNCHRONIZATION_POOL_NAME;
+        return SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME;
     }
 }

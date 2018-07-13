@@ -7,20 +7,16 @@
 
 namespace Pyz\Zed\ProductMeasurementUnitStorage;
 
+use Pyz\Zed\Synchronization\SynchronizationConfig;
 use Spryker\Zed\ProductMeasurementUnitStorage\ProductMeasurementUnitStorageConfig as SprykerProductMeasurementUnitStorageConfig;
 
 class ProductMeasurementUnitStorageConfig extends SprykerProductMeasurementUnitStorageConfig
 {
     /**
-     * @uses \Pyz\Zed\Synchronization\SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME
-     */
-    protected const DEFAULT_SYNCHRONIZATION_POOL_NAME = 'synchronizationPool';
-
-    /**
      * @return null|string
      */
     public function getProductMeasurementUnitSynchronizationPoolName(): ?string
     {
-        return static::DEFAULT_SYNCHRONIZATION_POOL_NAME;
+        return SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME;
     }
 }
