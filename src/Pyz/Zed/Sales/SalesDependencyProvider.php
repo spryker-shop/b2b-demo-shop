@@ -20,7 +20,7 @@ use Spryker\Zed\ProductOption\Communication\Plugin\Sales\ProductOptionOrderHydra
 use Spryker\Zed\ProductOption\Communication\Plugin\Sales\ProductOptionSortHydratePlugin;
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Sales\ProductPackagingUnitHydrateOrderPlugin;
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\SalesExtension\AmountSalesUnitOrderItemExpanderPreSavePlugin;
-use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\SalesExtension\PackagingUnitOrderItemExpanderPreSavePlugin;
+use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\SalesExtension\ProductPackagingUnitOrderItemExpanderPreSavePlugin;
 use Spryker\Zed\Sales\SalesDependencyProvider as SprykerSalesDependencyProvider;
 use Spryker\Zed\SalesProductConnector\Communication\Plugin\Sales\ItemMetadataHydratorPlugin;
 use Spryker\Zed\SalesProductConnector\Communication\Plugin\Sales\ProductIdHydratorPlugin;
@@ -68,7 +68,7 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
     {
         return [
             new QuantitySalesUnitOrderItemExpanderPreSavePlugin(),
-            new PackagingUnitOrderItemExpanderPreSavePlugin(),
+            new ProductPackagingUnitOrderItemExpanderPreSavePlugin(),
             new AmountSalesUnitOrderItemExpanderPreSavePlugin(),
         ];
     }
