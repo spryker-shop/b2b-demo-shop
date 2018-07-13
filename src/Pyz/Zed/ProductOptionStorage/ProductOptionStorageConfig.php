@@ -7,15 +7,11 @@
 
 namespace Pyz\Zed\ProductOptionStorage;
 
+use Pyz\Zed\Synchronization\SynchronizationConfig;
 use Spryker\Zed\ProductOptionStorage\ProductOptionStorageConfig as SprykerProductOptionStorageConfig;
 
 class ProductOptionStorageConfig extends SprykerProductOptionStorageConfig
 {
-    /**
-     * @uses \Pyz\Zed\Synchronization\SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME
-     */
-    
-
     /**
      * @return null|string
      */
