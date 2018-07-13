@@ -17,14 +17,6 @@ class ProductImageStorageConfig extends SprykerProductImageStorageConfig
     protected const DEFAULT_SYNCHRONIZATION_POOL_NAME = 'synchronizationPool';
 
     /**
-     * @return bool
-     */
-    public function isSendingToQueue(): bool
-    {
-        return true;
-    }
-
-    /**
      * @return string|null
      */
     public function getProductImageSynchronizationPoolName(): ?string

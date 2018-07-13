@@ -17,14 +17,6 @@ class ProductMeasurementUnitStorageConfig extends SprykerProductMeasurementUnitS
     protected const DEFAULT_SYNCHRONIZATION_POOL_NAME = 'synchronizationPool';
 
     /**
-     * @return bool
-     */
-    public function isSendingToQueue(): bool
-    {
-        return true;
-    }
-
-    /**
      * @return null|string
      */
     public function getProductMeasurementUnitSynchronizationPoolName(): ?string
