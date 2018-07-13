@@ -21,7 +21,7 @@ use SprykerShop\Yves\ProductOptionWidget\Plugin\ProductDetailPage\ProductOptionW
 use SprykerShop\Yves\ProductRelationWidget\Plugin\ProductDetailPage\SimilarProductsWidgetPlugin;
 use SprykerShop\Yves\ProductReviewWidget\Plugin\ProductDetailPage\ProductReviewWidgetPlugin;
 use SprykerShop\Yves\ShoppingListWidget\Plugin\ProductDetailPage\ShoppingListWidgetPlugin;
-use SprykerShop\Yves\VolumePriceProductWidget\Plugin\ProductDetailPage\VolumePriceProductWidgetPlugin;
+use SprykerShop\Yves\PriceProductVolumeWidget\Plugin\ProductDetailPage\PriceProductVolumeWidgetPlugin;
 use SprykerShop\Yves\WishlistWidget\Plugin\ProductDetailPage\WishlistWidgetPlugin;
 
 class ProductDetailPageDependencyProvider extends SprykerShopProductDetailPageDependencyProvider
@@ -46,7 +46,7 @@ class ProductDetailPageDependencyProvider extends SprykerShopProductDetailPageDe
             ProductMeasurementUnitWidgetPlugin::class,
             MultiCartWidgetPlugin::class, #MultiCartFeature
             ShoppingListWidgetPlugin::class, #ShoppingListFeature
-            VolumePriceProductWidgetPlugin::class, #VolumePriceProductFeature
+            PriceProductVolumeWidgetPlugin::class, #PriceProductVolumeFeature
         ];
     }
 }
