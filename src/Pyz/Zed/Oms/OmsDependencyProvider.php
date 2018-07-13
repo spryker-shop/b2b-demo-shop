@@ -14,7 +14,7 @@ use Spryker\Zed\Oms\Communication\Plugin\Oms\Command\SendOrderShippedPlugin;
 use Spryker\Zed\Oms\Dependency\Plugin\Command\CommandCollectionInterface;
 use Spryker\Zed\Oms\OmsDependencyProvider as SprykerOmsDependencyProvider;
 use Spryker\Zed\ProductBundle\Communication\Plugin\Oms\ProductBundleAvailabilityHandlerPlugin;
-use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Oms\ProductPackagingUnitReservationHandlerPlugin;
+use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Reservation\ProductPackagingUnitReservationHandlerPlugin;
 
 class OmsDependencyProvider extends SprykerOmsDependencyProvider
 {
