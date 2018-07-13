@@ -15,6 +15,8 @@ use Spryker\Zed\Installer\InstallerDependencyProvider as SprykerInstallerDepende
 use Spryker\Zed\Locale\Communication\Plugin\LocaleInstallerPlugin;
 use Spryker\Zed\Newsletter\Communication\Plugin\NewsletterInstallerPlugin;
 use Spryker\Zed\PriceProduct\Communication\Plugin\PriceInstallerPlugin;
+use Spryker\Zed\ProductAlternativeProductLabelConnector\Communication\Plugin\Installer\ProductAlternativeProductLabelConnectorInstallerPlugin;
+use Spryker\Zed\ProductDiscontinuedProductLabelConnector\Communication\Plugin\Installer\ProductDiscontinuedProductLabelConnectorInstallerPlugin;
 use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\Installer\ProductMeasurementUnitInstallerPlugin;
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Installer\ProductPackagingUnitTypeInstallerPlugin;
 use Spryker\Zed\SharedCart\Communication\Plugin\SharedCartPermissionInstallerPlugin;
@@ -39,6 +41,8 @@ class InstallerDependencyProvider extends SprykerInstallerDependencyProvider
             new ShoppingListPermissionsInstallerPlugin(),
             new SharedCartPermissionInstallerPlugin(), #SharedCartFeature
             new ProductMeasurementUnitInstallerPlugin(),
+            new ProductAlternativeProductLabelConnectorInstallerPlugin(),
+            new ProductDiscontinuedProductLabelConnectorInstallerPlugin(),
             new CompanyUserInvitationStatusInstallerPlugin(), #BulkImportCompanyUserInvitationsFeature
             new ProductPackagingUnitTypeInstallerPlugin(),
         ];
