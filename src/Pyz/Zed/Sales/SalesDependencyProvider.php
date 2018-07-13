@@ -18,7 +18,8 @@ use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\SalesExtension\Quant
 use Spryker\Zed\ProductOption\Communication\Plugin\Sales\ProductOptionGroupIdHydratorPlugin;
 use Spryker\Zed\ProductOption\Communication\Plugin\Sales\ProductOptionOrderHydratePlugin;
 use Spryker\Zed\ProductOption\Communication\Plugin\Sales\ProductOptionSortHydratePlugin;
-use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Sales\ProductPackagingUnitHydrateOrderPlugin;
+use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Sales\AmountLeadProductHydrateOrderPlugin;
+use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Sales\AmountSalesUnitHydrateOrderPlugin;
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\SalesExtension\AmountSalesUnitOrderItemExpanderPreSavePlugin;
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\SalesExtension\ProductPackagingUnitOrderItemExpanderPreSavePlugin;
 use Spryker\Zed\Sales\SalesDependencyProvider as SprykerSalesDependencyProvider;
@@ -57,7 +58,8 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
             new ProductBundleIdHydratorPlugin(),
             new ProductOptionGroupIdHydratorPlugin(),
             new QuantitySalesUnitHydrateOrderPlugin(),
-            new ProductPackagingUnitHydrateOrderPlugin(),
+            new AmountLeadProductHydrateOrderPlugin(),
+            new AmountSalesUnitHydrateOrderPlugin(),
         ];
     }
 
