@@ -36,7 +36,7 @@ use Spryker\Zed\ProductOptionCartConnector\Communication\Plugin\ProductOptionVal
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Cart\AmountGroupKeyItemExpanderPlugin;
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Cart\AmountRestrictionCartPreCheckPlugin;
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Cart\AmountSalesUnitValuePostSavePlugin;
-use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Cart\CartPackagingUnitAvailabilityPreCheckPlugin;
+use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Cart\AmountAvailabilityCartPreCheckPlugin;
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Cart\CustomAmountPriceItemExpanderPlugin;
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Cart\PackagingUnitItemExpanderPlugin;
 use Spryker\Zed\ProductQuantity\Communication\Plugin\Cart\ProductQuantityRestrictionCartPreCheckPlugin;
@@ -87,7 +87,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new CartBundleAvailabilityPreCheckPlugin(),
             new CartShipmentPreCheckPlugin(),
             new ProductQuantityRestrictionCartPreCheckPlugin(),
-            new CartPackagingUnitAvailabilityPreCheckPlugin(),
+            new AmountAvailabilityCartPreCheckPlugin(),
             new AmountRestrictionCartPreCheckPlugin(), #PackagingUnits
         ];
     }
