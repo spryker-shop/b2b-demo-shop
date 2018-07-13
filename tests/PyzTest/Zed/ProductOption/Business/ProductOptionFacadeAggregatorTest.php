@@ -212,7 +212,7 @@ class ProductOptionFacadeAggregatorTest extends Test
         $itemTransfer->setIdSalesOrderItem($salesOrderItemEntity->getIdSalesOrderItem());
 
         $productOptionTransfer = new ProductOptionTransfer();
-        $productOptionTransfer->setUnitGrossPrice(200);
+        $productOptionTransfer->setSumGrossPrice(200);
         $productOptionTransfer->setValue('value');
         $productOptionTransfer->setGroupName('group name');
         $productOptionTransfer->setTaxRate(19);
