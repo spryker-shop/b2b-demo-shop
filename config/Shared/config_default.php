@@ -27,7 +27,6 @@ use Spryker\Shared\Propel\PropelConstants;
 use Spryker\Shared\Queue\QueueConfig;
 use Spryker\Shared\Queue\QueueConstants;
 use Spryker\Shared\Sales\SalesConstants;
-use Spryker\Shared\SalesQuantity\SalesQuantityConstants;
 use Spryker\Shared\Search\SearchConstants;
 use Spryker\Shared\SequenceNumber\SequenceNumberConstants;
 use Spryker\Shared\Session\SessionConstants;
@@ -417,6 +416,3 @@ $config[LogglyConstants::TOKEN] = 'loggly-token:sample:123456';
 
 // ---------- CMS
 $config[CmsGuiConstants::CMS_FOLDER_PATH] = '@Cms/templates/';
-
-// ---------- SalesQuantity
-$config[SalesQuantityConstants::ITEM_NONSPLIT_QUANTITY_THRESHOLD] = 10;
