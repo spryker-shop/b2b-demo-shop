@@ -110,7 +110,7 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
             ->addDataImporter($this->createProductOptionImporter())
             ->addDataImporter($this->createProductOptionPriceImporter())
             ->addDataImporter($this->createProductGroupImporter())
-//            ->addDataImporter($this->createProductPriceImporter())
+            ->addDataImporter($this->createProductPriceImporter())
             ->addDataImporter($this->createProductRelationImporter())
             ->addDataImporter($this->createProductReviewImporter())
             ->addDataImporter($this->createProductLabelImporter())
