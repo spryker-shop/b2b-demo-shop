@@ -67,9 +67,9 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new CartGroupPromotionItems(),
             new CartShipmentExpanderPlugin(),
             new QuantitySalesUnitItemExpanderPlugin(),
-            new AmountGroupKeyItemExpanderPlugin(), #PackagingUnits
-            new PackagingUnitItemExpanderPlugin(), #PackagingUnits
-            new CustomAmountPriceItemExpanderPlugin(), #PackagingUnits
+            new AmountGroupKeyItemExpanderPlugin(), #ProductPackagingUnit
+            new PackagingUnitItemExpanderPlugin(), #ProductPackagingUnit
+            new CustomAmountPriceItemExpanderPlugin(), #ProductPackagingUnit
         ];
     }
 
@@ -87,8 +87,8 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new CartBundleAvailabilityPreCheckPlugin(),
             new CartShipmentPreCheckPlugin(),
             new ProductQuantityRestrictionCartPreCheckPlugin(),
-            new AmountAvailabilityCartPreCheckPlugin(),
-            new AmountRestrictionCartPreCheckPlugin(), #PackagingUnits
+            new AmountAvailabilityCartPreCheckPlugin(), #ProductPackagingUnit
+            new AmountRestrictionCartPreCheckPlugin(), #ProductPackagingUnit
         ];
     }
 
@@ -104,7 +104,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new CartPostSaveUpdateBundlesPlugin(),
             new RemovePaymentCartPostSavePlugin(),
             new QuantitySalesUnitValuePostSavePlugin(),
-            new AmountSalesUnitValuePostSavePlugin(), #PackagingUnits
+            new AmountSalesUnitValuePostSavePlugin(), #ProductPackagingUnit
         ];
     }
 

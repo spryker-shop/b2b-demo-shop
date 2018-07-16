@@ -53,7 +53,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
         return [
             new AddDiscountPromotionCartRequestExpandPlugin(),
             new SingleItemQuantitySalesUnitCartChangeRequestExpanderPlugin(),
-            new ProductPackagingUnitAmountCartChangeRequestExpanderPlugin(),
+            new ProductPackagingUnitAmountCartChangeRequestExpanderPlugin(), #ProductPackagingUnit
         ];
     }
 

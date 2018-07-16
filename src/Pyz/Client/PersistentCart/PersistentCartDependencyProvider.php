@@ -47,7 +47,7 @@ class PersistentCartDependencyProvider extends SprykerPersistentCartDependencyPr
             new ReorderPersistentCartChangeExpanderPlugin(), #MultiCartFeature
             new ProductSeparatePersistentCartChangeExpanderPlugin(), #SharedCartFeature
             new SingleItemQuantitySalesUnitPersistentCartChangeExpanderPlugin(),
-            new ProductPackagingUnitAmountPersistentCartChangeExpanderPlugin(), #PackagingUnit
+            new ProductPackagingUnitAmountPersistentCartChangeExpanderPlugin(), #ProductPackagingUnit
         ];
     }
 }
