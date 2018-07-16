@@ -419,4 +419,4 @@ $config[LogglyConstants::TOKEN] = 'loggly-token:sample:123456';
 $config[CmsGuiConstants::CMS_FOLDER_PATH] = '@Cms/templates/';
 
 // ---------- SalesQuantity
-$config[SalesQuantityConstants::ITEM_NONSPLIT_QUANTITY_THRESHOLD] = 6;
+$config[SalesQuantityConstants::ITEM_NONSPLIT_QUANTITY_THRESHOLD] = 10;
