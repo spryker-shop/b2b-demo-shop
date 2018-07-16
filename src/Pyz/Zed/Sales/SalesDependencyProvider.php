@@ -20,6 +20,7 @@ use Spryker\Zed\ProductOption\Communication\Plugin\Sales\ProductOptionSortHydrat
 use Spryker\Zed\Sales\SalesDependencyProvider as SprykerSalesDependencyProvider;
 use Spryker\Zed\SalesProductConnector\Communication\Plugin\Sales\ItemMetadataHydratorPlugin;
 use Spryker\Zed\SalesProductConnector\Communication\Plugin\Sales\ProductIdHydratorPlugin;
+use Spryker\Zed\SalesQuantity\Communication\Plugin\SalesExtension\IsQuantitySplittableOrderItemExpanderPreSavePlugin;
 use Spryker\Zed\SalesQuantity\Communication\Plugin\SalesExtension\NonSplittableItemTransformerStrategyPlugin;
 use Spryker\Zed\SalesReclamation\Communication\Plugin\SalesTablePlugin;
 use Spryker\Zed\Shipment\Communication\Plugin\ShipmentOrderHydratePlugin;
@@ -63,6 +64,7 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
     {
         return [
             new QuantitySalesUnitOrderItemExpanderPreSavePlugin(),
+            new IsQuantitySplittableOrderItemExpanderPreSavePlugin(),
         ];
     }
 
