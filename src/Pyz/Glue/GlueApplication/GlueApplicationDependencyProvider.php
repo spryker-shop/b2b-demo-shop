@@ -9,7 +9,9 @@ namespace Pyz\Glue\GlueApplication;
 
 use Spryker\Glue\GlueApplication\GlueApplicationDependencyProvider as SprykerGlueApplicationDependencyProvider;
 use Spryker\Glue\GlueApplication\Plugin\Rest\SetStoreCurrentLocaleBeforeActionPlugin;
+use Spryker\Glue\SearchRestApi\Plugin\CurrencyValidatorPlugin;
 use Spryker\Glue\SearchRestApi\Plugin\SearchResourceRoutePlugin;
+use Spryker\Glue\SearchRestApi\Plugin\SetStoreCurrentCurrencyBeforeActionPlugin;
 use Spryker\Glue\SearchRestApi\Plugin\SuggestionsResourceRoutePlugin;
 
 class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependencyProvider
@@ -23,6 +25,7 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
     {
         return [
            new SetStoreCurrentLocaleBeforeActionPlugin(),
+           new SetStoreCurrentCurrencyBeforeActionPlugin(),
         ];
     }
 
@@ -36,6 +39,18 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
         return [
             new SearchResourceRoutePlugin(),
             new SuggestionsResourceRoutePlugin(),
+        ];
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @return \Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ValidateRestRequestPluginInterface[]
+     */
+    protected function getValidateRestRequestPlugins(): array
+    {
+        return [
+            new CurrencyValidatorPlugin(),
         ];
     }
 }
