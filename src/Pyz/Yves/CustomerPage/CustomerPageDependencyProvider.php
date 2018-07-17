@@ -74,9 +74,9 @@ class CustomerPageDependencyProvider extends SprykerShopCustomerPageDependencyPr
     }
 
     /**
-     * @return \SprykerShop\Yves\CustomerPageExtension\Dependency\Plugin\CustomerRedirectAfterLoginStrategyPluginInterface[]
+     * @return \SprykerShop\Yves\CustomerPageExtension\Dependency\Plugin\CustomerRedirectStrategyPluginInterface[]
      */
-    protected function getCustomerRedirectAfterLoginPlugins(): array
+    protected function getAfterLoginCustomerRedirectPlugins(): array
     {
         return [
             new BusinessOnBehalfCompanyUserRedirectAfterLoginStrategyPlugin(), #BusinessOnBehalfCompanyUserFeature
