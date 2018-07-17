@@ -3,13 +3,14 @@
   "description": "Spryker Suite (internal)",
   "license": "MIT",
   "require": {
-    "spryker/spryker": "dev-feature/glue-165/dev-key-issue-for-all-apis",
+    "spryker/spryker": "dev-feature/glue-165/glue-239-api-key-generator",
     "spryker/spryker-shop": "dev-master",
     "spryker-eco/loggly": "dev-master",
     "spryker/rabbit-mq": "dev-master",
     "spryker/install": "dev-master",
     "spryker/event-behavior": "dev-master",
     "spryker/synchronization-behavior": "dev-master",
+    "spryker/uuid-behavior": "dev-feature/glue-165/glue-239-api-key-generator",
 
     "php": ">=7.1",
     "braintree/braintree_php": "~3.15.0",
@@ -62,7 +63,8 @@
     "league/flysystem": "^1.0",
     "egulias/email-validator": "^2.1.2",
     "league/oauth2-server": "^7.1",
-    "willdurand/negotiation": "^2.3"
+    "willdurand/negotiation": "^2.3",
+    "ramsey/uuid": "^3.7"
   },
   "require-dev": {
     "spryker/architecture-sniffer": "dev-master",
@@ -132,6 +134,10 @@
     {
       "type": "git",
       "url": "git@github.com:spryker/development-core.git"
+    },
+    {
+      "type": "path",
+      "url": "vendor/spryker/spryker/Bundles/KeyGenerationBehavior"
     }
   ],
   "scripts": {
