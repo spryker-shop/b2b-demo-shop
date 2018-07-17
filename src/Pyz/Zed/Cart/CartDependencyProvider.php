@@ -36,9 +36,10 @@ use Spryker\Zed\ProductOptionCartConnector\Communication\Plugin\ProductOptionVal
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Cart\AmountAvailabilityCartPreCheckPlugin;
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Cart\AmountGroupKeyItemExpanderPlugin;
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Cart\AmountRestrictionCartPreCheckPlugin;
+use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Cart\AmountSalesUnitItemExpanderPlugin;
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Cart\AmountSalesUnitValuePostSavePlugin;
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Cart\CustomAmountPriceItemExpanderPlugin;
-use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Cart\PackagingUnitItemExpanderPlugin;
+use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Cart\ProductPackagingUnitItemExpanderPlugin;
 use Spryker\Zed\ProductQuantity\Communication\Plugin\Cart\ProductQuantityRestrictionCartPreCheckPlugin;
 use Spryker\Zed\ProductQuantity\Communication\Plugin\CartExtension\ProductQuantityRestrictionCartRemovalPreCheckPlugin;
 use Spryker\Zed\SalesQuantity\Communication\Plugin\Cart\IsQuantitySplittableItemExpanderPlugin;
@@ -70,7 +71,8 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new CartShipmentExpanderPlugin(),
             new QuantitySalesUnitItemExpanderPlugin(),
             new AmountGroupKeyItemExpanderPlugin(), #ProductPackagingUnit
-            new PackagingUnitItemExpanderPlugin(), #ProductPackagingUnit
+            new AmountSalesUnitItemExpanderPlugin(), #ProductPackagingUnit
+            new ProductPackagingUnitItemExpanderPlugin(), #ProductPackagingUnit
             new CustomAmountPriceItemExpanderPlugin(), #ProductPackagingUnit
         ];
     }
