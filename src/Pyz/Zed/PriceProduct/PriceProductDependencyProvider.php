@@ -67,7 +67,7 @@ class PriceProductDependencyProvider extends SprykerPriceProductDependencyProvid
     }
 
     /**
-     * @return \Spryker\Zed\PriceProductExtension\Dependency\Plugin\PriceProductMapperPricesExtractorPluginInterface[]
+     * @return \Spryker\Zed\PriceProductExtension\Dependency\Plugin\PriceProductReaderPricesExtractorPluginInterface[]
      */
     protected function getPriceProductPricesExtractorPlugins(): array
     {

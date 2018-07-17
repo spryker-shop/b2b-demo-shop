@@ -24,7 +24,7 @@ class PriceProductStorageDependencyProvider extends SprykerPriceProductStorageDe
     }
 
     /**
-     * @return \Spryker\Client\PriceProductStorageExtension\Dependency\Plugin\PriceProductMapperPricesExtractorPluginInterface[]
+     * @return \Spryker\Client\PriceProductStorageExtension\Dependency\Plugin\PriceProductStoragePricesExtractorPluginInterface[]
      */
     protected function getPriceProductPricesExtractorPlugins(): array
     {
