@@ -10,8 +10,9 @@ namespace Pyz\Client\ProductStorage;
 use Spryker\Client\AvailabilityStorage\Plugin\ProductViewAvailabilityStorageExpanderPlugin;
 use Spryker\Client\PriceProductStorage\Plugin\ProductViewPriceExpanderPlugin;
 use Spryker\Client\ProductImageStorage\Plugin\ProductViewImageExpanderPlugin;
-use Spryker\Client\ProductListStorage\Plugin\ProductAbstractRestrictionPlugin;
-use Spryker\Client\ProductListStorage\Plugin\ProductConcreteRestrictionPlugin;
+use Spryker\Client\ProductListStorage\Plugin\ProductStorage\ProductAbstractRestrictionPlugin;
+use Spryker\Client\ProductListStorage\Plugin\ProductStorage\ProductConcreteRestrictionPlugin;
+use Spryker\Client\ProductListStorage\Plugin\ProductStorage\ProductViewVariantRestrictionPlugin;
 use Spryker\Client\ProductStorage\Plugin\ProductViewVariantExpanderPlugin;
 use Spryker\Client\ProductStorage\ProductStorageDependencyProvider as SprykerProductStorageDependencyProvider;
 
@@ -24,6 +25,7 @@ class ProductStorageDependencyProvider extends SprykerProductStorageDependencyPr
     {
         return [
             new ProductViewVariantExpanderPlugin(),
+            new ProductViewVariantRestrictionPlugin(), # Should be included after ProductViewVariantExpanderPlugin
             new ProductViewPriceExpanderPlugin(),
             new ProductViewAvailabilityStorageExpanderPlugin(),
             new ProductViewImageExpanderPlugin(),
