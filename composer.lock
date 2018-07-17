@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a19369641729443da69ce07b0d49d69c",
+    "content-hash": "794e6d029121c0249ebbb23997862a59",
     "packages": [
         {
             "name": "braintree/braintree_php",
@@ -1502,23 +1502,24 @@
         },
         {
             "name": "paragonie/random_compat",
-            "version": "v2.0.17",
+            "version": "v2.99.99",
             "source": {
                 "type": "git",
                 "url": "https://github.com/paragonie/random_compat.git",
-                "reference": "29af24f25bab834fcbb38ad2a69fa93b867e070d"
+                "reference": "35469243ebbb9be5086cff57538cac6da2c36852"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/29af24f25bab834fcbb38ad2a69fa93b867e070d",
-                "reference": "29af24f25bab834fcbb38ad2a69fa93b867e070d",
+                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/35469243ebbb9be5086cff57538cac6da2c36852",
+                "reference": "35469243ebbb9be5086cff57538cac6da2c36852",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.2.0"
+                "php": "^7"
             },
             "require-dev": {
-                "phpunit/phpunit": "4.*|5.*"
+                "phpunit/phpunit": "4.*|5.*",
+                "vimeo/psalm": "^1"
             },
             "suggest": {
                 "ext-libsodium": "Provides a modern crypto API that can be used to generate random bytes."
@@ -1547,7 +1548,7 @@
                 "pseudorandom",
                 "random"
             ],
-            "time": "2018-07-04T16:31:37+00:00"
+            "time": "2018-06-06T05:12:00+00:00"
         },
         {
             "name": "php-amqplib/php-amqplib",
@@ -2302,12 +2303,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/rabbit-mq.git",
-                "reference": "6633ae4800ba557506cf2c34d8a2e7a3191d1ef4"
+                "reference": "0516e7c7d9be5eb11e6e9999a367f32670eecf90"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/rabbit-mq/zipball/6633ae4800ba557506cf2c34d8a2e7a3191d1ef4",
-                "reference": "6633ae4800ba557506cf2c34d8a2e7a3191d1ef4",
+                "url": "https://api.github.com/repos/spryker/rabbit-mq/zipball/0516e7c7d9be5eb11e6e9999a367f32670eecf90",
+                "reference": "0516e7c7d9be5eb11e6e9999a367f32670eecf90",
                 "shasum": ""
             },
             "require": {
@@ -2353,15 +2354,15 @@
                 "rabbit-mq",
                 "standards"
             ],
-            "time": "2018-07-16T10:17:48+00:00"
+            "time": "2018-05-30T09:19:47+00:00"
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-master",
+            "version": "dev-bugfix/ps-2522-table-error-by-sorting-in-bundle-product",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "d6a9d7cd90000d4d04fcf741586f74fa4dd1a659"
+                "reference": "d270e88c340175248c8f0473bfb1db661d73f214"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.5",
@@ -2622,7 +2623,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2018-07-17T09:07:37+00:00"
+            "time": "2018-07-16T16:22:19+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -2630,7 +2631,7 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "3ac437ef57d607e0023eefaefa295e2841952474"
+                "reference": "05fe7b072757270ff0eefb634c5c981cb24f14b3"
             },
             "require": {
                 "php": ">=7.1"
@@ -2705,7 +2706,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2018-07-16T18:49:38+00:00"
+            "time": "2018-07-04T08:59:39+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -7829,12 +7830,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/code-sniffer.git",
-                "reference": "20811933e2e880f3e59541a111f3099b08b20fca"
+                "reference": "eb919dc2d4993f81c1ea076854ab177b0a3137c3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/20811933e2e880f3e59541a111f3099b08b20fca",
-                "reference": "20811933e2e880f3e59541a111f3099b08b20fca",
+                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/eb919dc2d4993f81c1ea076854ab177b0a3137c3",
+                "reference": "eb919dc2d4993f81c1ea076854ab177b0a3137c3",
                 "shasum": ""
             },
             "require": {
@@ -7873,7 +7874,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2018-07-16T10:45:40+00:00"
+            "time": "2018-06-28T09:27:27+00:00"
         },
         {
             "name": "spryker/development-core",
