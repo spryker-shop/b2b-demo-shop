@@ -41,6 +41,7 @@ use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Cart\CustomAmountPrice
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Cart\PackagingUnitItemExpanderPlugin;
 use Spryker\Zed\ProductQuantity\Communication\Plugin\Cart\ProductQuantityRestrictionCartPreCheckPlugin;
 use Spryker\Zed\ProductQuantity\Communication\Plugin\CartExtension\ProductQuantityRestrictionCartRemovalPreCheckPlugin;
+use Spryker\Zed\SalesQuantity\Communication\Plugin\Cart\IsQuantitySplittableItemExpanderPlugin;
 use Spryker\Zed\ShipmentCartConnector\Communication\Plugin\Cart\CartShipmentExpanderPlugin;
 use Spryker\Zed\ShipmentCartConnector\Communication\Plugin\Cart\CartShipmentPreCheckPlugin;
 
@@ -55,6 +56,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
     {
         return [
             new ProductCartPlugin(),
+            new IsQuantitySplittableItemExpanderPlugin(),
             new CartItemPricePlugin(),
             new CartItemProductOptionPlugin(),
             new ExpandBundleItemsPlugin(),
