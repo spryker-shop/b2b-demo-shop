@@ -62,7 +62,4 @@ $config[SessionConstants::ZED_SESSION_COOKIE_NAME] = $config[ApplicationConstant
 $config[EventConstants::LOG_FILE_PATH] = APPLICATION_ROOT_DIR . '/data/US/logs/application_events.log';
 
 // ----------- Glue Application
-$config[GlueApplicationConstants::GLUE_APPLICATION_DOMAIN] = sprintf('glue.us.%s.local', $domain);
-
-// ---------- Glue host
 $config[GlueApplicationConstants::GLUE_APPLICATION_DOMAIN] = sprintf('http://glue.us.%s.local', $domain);
