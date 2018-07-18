@@ -8,12 +8,12 @@
 namespace Pyz\Zed\ProductAlternativeProductLabelConnector;
 
 use Spryker\Zed\ProductAlternativeProductLabelConnector\ProductAlternativeProductLabelConnectorDependencyProvider as SprykerProductAlternativeProductLabelConnectorDependencyProvider;
-use Spryker\Zed\ProductDiscontinued\Communication\Plugin\ProductAlternativeProductLabelConnector\ProductConcreteDiscontinuedCheckPlugin;
+use Spryker\Zed\ProductDiscontinued\Communication\Plugin\ProductAlternative\ProductConcreteDiscontinuedCheckPlugin;
 
 class ProductAlternativeProductLabelConnectorDependencyProvider extends SprykerProductAlternativeProductLabelConnectorDependencyProvider
 {
     /**
-     * @return \Spryker\Zed\ProductAlternativeProductLabelConnector\Dependency\Plugin\ProductConcreteDiscontinuedCheckPluginInterface[]
+     * @return \Spryker\Zed\ProductAlternativeExtension\Dependency\Plugin\ProductConcreteDiscontinuedCheckPluginInterface[]
      */
     protected function getProductConcreteDiscontinuedCheckPlugins()
     {
