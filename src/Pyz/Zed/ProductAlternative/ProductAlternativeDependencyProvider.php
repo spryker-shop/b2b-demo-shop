@@ -38,7 +38,7 @@ class ProductAlternativeDependencyProvider extends SprykerProductAlternativeDepe
     /**
      * @return \Spryker\Zed\ProductAlternativeExtension\Dependency\Plugin\AlternativeProductApplicablePluginInterface[]
      */
-    protected function getProductApplicableLabelAlternativePlugins(): array
+    protected function getAlternativeProductApplicablePlugins(): array
     {
         return [
             new DiscontinuedCheckAlternativeProductApplicablePlugin(),
