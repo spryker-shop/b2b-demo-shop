@@ -7,9 +7,11 @@
 
 namespace Pyz\Zed\ProductAlternative;
 
+use Spryker\Zed\Availability\Communication\Plugin\ProductAlternative\AvailabilityCheckAlternativeProductApplicablePlugin;
 use Spryker\Zed\ProductAlternative\ProductAlternativeDependencyProvider as SprykerProductAlternativeDependencyProvider;
 use Spryker\Zed\ProductAlternativeProductLabelConnector\Communication\Plugin\PostProductAlternativeCreatePlugin;
 use Spryker\Zed\ProductAlternativeProductLabelConnector\Communication\Plugin\PostProductAlternativeDeletePlugin;
+use Spryker\Zed\ProductDiscontinued\Communication\Plugin\ProductAlternative\DiscontinuedCheckAlternativeProductApplicablePlugin;
 
 class ProductAlternativeDependencyProvider extends SprykerProductAlternativeDependencyProvider
 {
@@ -30,6 +32,17 @@ class ProductAlternativeDependencyProvider extends SprykerProductAlternativeDepe
     {
         return [
             new PostProductAlternativeDeletePlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\ProductAlternativeExtension\Dependency\Plugin\AlternativeProductApplicablePluginInterface[]
+     */
+    protected function getAlternativeProductApplicablePlugins(): array
+    {
+        return [
+            new DiscontinuedCheckAlternativeProductApplicablePlugin(),
+            new AvailabilityCheckAlternativeProductApplicablePlugin(),
         ];
     }
 }
