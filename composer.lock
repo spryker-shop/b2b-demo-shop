@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "715797a1fc8d7618d33285deb8023384",
+    "content-hash": "afa577cbe90cd79347cdca9fe55057ae",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.63.2",
+            "version": "3.63.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "ee02c24ba420d971c6e3c204e8fec5c9e3c9bd8d"
+                "reference": "255574137faa6cb4204b6c58df329dafd297df0a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/ee02c24ba420d971c6e3c204e8fec5c9e3c9bd8d",
-                "reference": "ee02c24ba420d971c6e3c204e8fec5c9e3c9bd8d",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/255574137faa6cb4204b6c58df329dafd297df0a",
+                "reference": "255574137faa6cb4204b6c58df329dafd297df0a",
                 "shasum": ""
             },
             "require": {
@@ -84,7 +84,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2018-07-17T15:31:13+00:00"
+            "time": "2018-07-19T19:09:51+00:00"
         },
         {
             "name": "braintree/braintree_php",
@@ -5907,6 +5907,50 @@
             "time": "2017-02-22T12:08:46+00:00"
         },
         {
+            "name": "spryker/auth-rest-api",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/auth-rest-api.git",
+                "reference": "eece5a8ddf39d64204a643f10b5222ac93dc8b63"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/auth-rest-api/zipball/eece5a8ddf39d64204a643f10b5222ac93dc8b63",
+                "reference": "eece5a8ddf39d64204a643f10b5222ac93dc8b63",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/glue-application": "^1.0.0",
+                "spryker/glue-application-extension": "^1.0.0",
+                "spryker/kernel": "^3.0.0",
+                "spryker/oauth": "^1.0.0",
+                "spryker/symfony": "^3.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "AuthRestApi module",
+            "time": "2018-07-18T14:04:54+00:00"
+        },
+        {
             "name": "spryker/availability",
             "version": "6.0.0",
             "source": {
@@ -10543,6 +10587,53 @@
             "time": "2018-01-25T09:08:12+00:00"
         },
         {
+            "name": "spryker/customers-rest-api",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/customers-rest-api.git",
+                "reference": "b6d48e55185b4b5da8a7246a623f1e79c2d7f9cc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/customers-rest-api/zipball/b6d48e55185b4b5da8a7246a623f1e79c2d7f9cc",
+                "reference": "b6d48e55185b4b5da8a7246a623f1e79c2d7f9cc",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/customer": "^7.0.0",
+                "spryker/glue-application-extension": "^1.0.0",
+                "spryker/kernel": "^3.0.0",
+                "spryker/session": "^3.2.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/glue-application": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/glue-application": "If you want to use Glue infrastructure."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CustomersRestApi module",
+            "time": "2018-07-18T11:12:13+00:00"
+        },
+        {
             "name": "spryker/data-import",
             "version": "1.3.2",
             "source": {
@@ -13403,6 +13494,54 @@
             ],
             "description": "Oauth module",
             "time": "2018-06-28T08:24:10+00:00"
+        },
+        {
+            "name": "spryker/oauth-customer-connector",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/oauth-customer-connector.git",
+                "reference": "bc8bd684c0939e80180e459408e556a2b747e59f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/oauth-customer-connector/zipball/bc8bd684c0939e80180e459408e556a2b747e59f",
+                "reference": "bc8bd684c0939e80180e459408e556a2b747e59f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/customer": "^7.0.0",
+                "spryker/kernel": "^3.0.0",
+                "spryker/oauth": "^1.0.0",
+                "spryker/oauth-extension": "^1.0.0",
+                "spryker/util-encoding": "^2.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/installer": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/installer": "If you want to use Installer plugins."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "OauthCustomerConnector module",
+            "time": "2018-07-18T12:37:26+00:00"
         },
         {
             "name": "spryker/oauth-extension",
@@ -25549,16 +25688,16 @@
         },
         {
             "name": "spryker/code-sniffer",
-            "version": "0.11.4",
+            "version": "0.12.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/code-sniffer.git",
-                "reference": "873f191feae7115e0fd6476a3f757fe2bbd04986"
+                "reference": "20811933e2e880f3e59541a111f3099b08b20fca"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/873f191feae7115e0fd6476a3f757fe2bbd04986",
-                "reference": "873f191feae7115e0fd6476a3f757fe2bbd04986",
+                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/20811933e2e880f3e59541a111f3099b08b20fca",
+                "reference": "20811933e2e880f3e59541a111f3099b08b20fca",
                 "shasum": ""
             },
             "require": {
@@ -25567,6 +25706,7 @@
                 "squizlabs/php_codesniffer": "^3.0"
             },
             "require-dev": {
+                "phpstan/phpstan-shim": "^0.9.2",
                 "phpunit/phpunit": "<5.0"
             },
             "bin": [
@@ -25596,7 +25736,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2018-04-25T08:23:54+00:00"
+            "time": "2018-07-16T10:45:40+00:00"
         },
         {
             "name": "spryker/development",
