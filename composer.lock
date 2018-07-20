@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-  "content-hash": "262a5ba5094b9aa32a9fd270fc5cffb0",
+    "content-hash": "a716f2ee6c88cee26ce4816c914ef8c2",
     "packages": [
         {
             "name": "braintree/braintree_php",
@@ -1502,23 +1502,23 @@
         },
         {
             "name": "paragonie/random_compat",
-          "version": "v2.0.17",
+            "version": "v2.0.17",
             "source": {
                 "type": "git",
                 "url": "https://github.com/paragonie/random_compat.git",
-              "reference": "29af24f25bab834fcbb38ad2a69fa93b867e070d"
+                "reference": "29af24f25bab834fcbb38ad2a69fa93b867e070d"
             },
             "dist": {
                 "type": "zip",
-              "url": "https://api.github.com/repos/paragonie/random_compat/zipball/29af24f25bab834fcbb38ad2a69fa93b867e070d",
-              "reference": "29af24f25bab834fcbb38ad2a69fa93b867e070d",
+                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/29af24f25bab834fcbb38ad2a69fa93b867e070d",
+                "reference": "29af24f25bab834fcbb38ad2a69fa93b867e070d",
                 "shasum": ""
             },
             "require": {
-              "php": ">=5.2.0"
+                "php": ">=5.2.0"
             },
             "require-dev": {
-              "phpunit/phpunit": "4.*|5.*"
+                "phpunit/phpunit": "4.*|5.*"
             },
             "suggest": {
                 "ext-libsodium": "Provides a modern crypto API that can be used to generate random bytes."
@@ -1547,7 +1547,7 @@
                 "pseudorandom",
                 "random"
             ],
-          "time": "2018-07-04T16:31:37+00:00"
+            "time": "2018-07-04T16:31:37+00:00"
         },
         {
             "name": "php-amqplib/php-amqplib",
@@ -1808,7 +1808,7 @@
             ],
             "authors": [
                 {
-                  "name": "William Durand",
+                    "name": "William Durand",
                     "email": "william.durand1@gmail.com"
                 }
             ],
@@ -2357,11 +2357,11 @@
         },
         {
             "name": "spryker/spryker",
-          "version": "dev-bugfix/ps-2045-more-specific-availability-message-in-cart",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-              "reference": "c1b1556e96c68442b6eca54f65ab3a7e269db577"
+                "reference": "dc579382d50ff579b9b79e168dc7491e93882797"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.5",
@@ -2622,15 +2622,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-          "time": "2018-07-18T16:59:46+00:00"
+            "time": "2018-07-20T09:50:18+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-          "version": "dev-bugfix/ps-2045-more-specific-availability-message-in-cart",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-              "reference": "88a55503512e68ab4617c0446b26a23214a9902f"
+                "reference": "919a304a738d0f3156e71be937096f2815dd5c06"
             },
             "require": {
                 "php": ">=7.1"
@@ -2705,7 +2705,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-          "time": "2018-07-17T16:07:19+00:00"
+            "time": "2018-07-20T08:09:43+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -5784,7 +5784,7 @@
                 "php",
                 "scaffolding"
             ],
-          "time": "2018-04-26T16:47:39+00:00"
+            "time": "2018-04-26T09:21:21+00:00"
         },
         {
             "name": "nette/robot-loader",
@@ -6176,141 +6176,93 @@
             "time": "2017-03-05T17:38:23+00:00"
         },
         {
-          "name": "phpdocumentor/reflection-common",
-          "version": "1.0.1",
-          "source": {
-            "type": "git",
-            "url": "https://github.com/phpDocumentor/ReflectionCommon.git",
-            "reference": "21bdeb5f65d7ebf9f43b1b25d404f87deab5bfb6"
-          },
-          "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/phpDocumentor/ReflectionCommon/zipball/21bdeb5f65d7ebf9f43b1b25d404f87deab5bfb6",
-            "reference": "21bdeb5f65d7ebf9f43b1b25d404f87deab5bfb6",
-            "shasum": ""
-          },
-          "require": {
-            "php": ">=5.5"
-          },
-          "require-dev": {
-            "phpunit/phpunit": "^4.6"
-          },
-          "type": "library",
-          "extra": {
-            "branch-alias": {
-              "dev-master": "1.0.x-dev"
-            }
-          },
-          "autoload": {
-            "psr-4": {
-              "phpDocumentor\\Reflection\\": [
-                "src"
-              ]
-            }
-          },
-          "notification-url": "https://packagist.org/downloads/",
-          "license": [
-            "MIT"
-          ],
-          "authors": [
-            {
-              "name": "Jaap van Otterdijk",
-              "email": "opensource@ijaap.nl"
-            }
-          ],
-          "description": "Common reflection classes used by phpdocumentor to reflect the code structure",
-          "homepage": "http://www.phpdoc.org",
-          "keywords": [
-            "FQSEN",
-            "phpDocumentor",
-            "phpdoc",
-            "reflection",
-            "static analysis"
-          ],
-          "time": "2017-09-11T18:02:19+00:00"
-        },
-      {
-            "name": "phpdocumentor/reflection-docblock",
-        "version": "4.3.0",
+            "name": "phpdocumentor/reflection-common",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/phpDocumentor/ReflectionDocBlock.git",
-              "reference": "94fd0001232e47129dd3504189fa1c7225010d08"
+                "url": "https://github.com/phpDocumentor/ReflectionCommon.git",
+                "reference": "21bdeb5f65d7ebf9f43b1b25d404f87deab5bfb6"
             },
             "dist": {
                 "type": "zip",
-              "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/94fd0001232e47129dd3504189fa1c7225010d08",
-              "reference": "94fd0001232e47129dd3504189fa1c7225010d08",
+                "url": "https://api.github.com/repos/phpDocumentor/ReflectionCommon/zipball/21bdeb5f65d7ebf9f43b1b25d404f87deab5bfb6",
+                "reference": "21bdeb5f65d7ebf9f43b1b25d404f87deab5bfb6",
                 "shasum": ""
             },
             "require": {
-              "php": "^7.0",
-              "phpdocumentor/reflection-common": "^1.0.0",
-              "phpdocumentor/type-resolver": "^0.4.0",
-              "webmozart/assert": "^1.0"
-            },
-        "require-dev": {
-          "doctrine/instantiator": "~1.0.5",
-          "mockery/mockery": "^1.0",
-          "phpunit/phpunit": "^6.4"
-        },
-        "type": "library",
-        "extra": {
-          "branch-alias": {
-            "dev-master": "4.x-dev"
-          }
-        },
-        "autoload": {
-          "psr-4": {
-            "phpDocumentor\\Reflection\\": [
-              "src/"
-            ]
-          }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-          "MIT"
-        ],
-        "authors": [
-          {
-            "name": "Mike van Riel",
-            "email": "me@mikevanriel.com"
-          }
-        ],
-        "description": "With this component, a library can provide support for annotations via DocBlocks or otherwise retrieve information that is embedded in a DocBlock.",
-        "time": "2017-11-30T07:14:17+00:00"
-      },
-      {
-        "name": "phpdocumentor/type-resolver",
-        "version": "0.4.0",
-        "source": {
-          "type": "git",
-          "url": "https://github.com/phpDocumentor/TypeResolver.git",
-          "reference": "9c977708995954784726e25d0cd1dddf4e65b0f7"
-        },
-        "dist": {
-          "type": "zip",
-          "url": "https://api.github.com/repos/phpDocumentor/TypeResolver/zipball/9c977708995954784726e25d0cd1dddf4e65b0f7",
-          "reference": "9c977708995954784726e25d0cd1dddf4e65b0f7",
-          "shasum": ""
-        },
-        "require": {
-          "php": "^5.5 || ^7.0",
-          "phpdocumentor/reflection-common": "^1.0"
+                "php": ">=5.5"
             },
             "require-dev": {
-              "mockery/mockery": "^0.9.4",
-              "phpunit/phpunit": "^5.2||^4.8.24"
+                "phpunit/phpunit": "^4.6"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                  "dev-master": "1.0.x-dev"
+                    "dev-master": "1.0.x-dev"
                 }
             },
             "autoload": {
-              "psr-4": {
-                "phpDocumentor\\Reflection\\": [
+                "psr-4": {
+                    "phpDocumentor\\Reflection\\": [
+                        "src"
+                    ]
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jaap van Otterdijk",
+                    "email": "opensource@ijaap.nl"
+                }
+            ],
+            "description": "Common reflection classes used by phpdocumentor to reflect the code structure",
+            "homepage": "http://www.phpdoc.org",
+            "keywords": [
+                "FQSEN",
+                "phpDocumentor",
+                "phpdoc",
+                "reflection",
+                "static analysis"
+            ],
+            "time": "2017-09-11T18:02:19+00:00"
+        },
+        {
+            "name": "phpdocumentor/reflection-docblock",
+            "version": "4.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phpDocumentor/ReflectionDocBlock.git",
+                "reference": "94fd0001232e47129dd3504189fa1c7225010d08"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/94fd0001232e47129dd3504189fa1c7225010d08",
+                "reference": "94fd0001232e47129dd3504189fa1c7225010d08",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.0",
+                "phpdocumentor/reflection-common": "^1.0.0",
+                "phpdocumentor/type-resolver": "^0.4.0",
+                "webmozart/assert": "^1.0"
+            },
+            "require-dev": {
+                "doctrine/instantiator": "~1.0.5",
+                "mockery/mockery": "^1.0",
+                "phpunit/phpunit": "^6.4"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "4.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "phpDocumentor\\Reflection\\": [
                         "src/"
                     ]
                 }
@@ -6322,10 +6274,58 @@
             "authors": [
                 {
                     "name": "Mike van Riel",
-                  "email": "me@mikevanriel.com"
+                    "email": "me@mikevanriel.com"
                 }
             ],
-        "time": "2017-07-14T14:27:02+00:00"
+            "description": "With this component, a library can provide support for annotations via DocBlocks or otherwise retrieve information that is embedded in a DocBlock.",
+            "time": "2017-11-30T07:14:17+00:00"
+        },
+        {
+            "name": "phpdocumentor/type-resolver",
+            "version": "0.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phpDocumentor/TypeResolver.git",
+                "reference": "9c977708995954784726e25d0cd1dddf4e65b0f7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phpDocumentor/TypeResolver/zipball/9c977708995954784726e25d0cd1dddf4e65b0f7",
+                "reference": "9c977708995954784726e25d0cd1dddf4e65b0f7",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.5 || ^7.0",
+                "phpdocumentor/reflection-common": "^1.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^0.9.4",
+                "phpunit/phpunit": "^5.2||^4.8.24"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "phpDocumentor\\Reflection\\": [
+                        "src/"
+                    ]
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mike van Riel",
+                    "email": "me@mikevanriel.com"
+                }
+            ],
+            "time": "2017-07-14T14:27:02+00:00"
         },
         {
             "name": "phpmd/phpmd",
@@ -6957,101 +6957,101 @@
             "time": "2018-07-13T03:27:23+00:00"
         },
         {
-          "name": "roave/better-reflection",
-          "version": "2.0.2",
-          "source": {
-            "type": "git",
-            "url": "https://github.com/Roave/BetterReflection.git",
-            "reference": "efc45b50cb52d5eeaacab15741376e981e28738b"
-          },
-          "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/Roave/BetterReflection/zipball/efc45b50cb52d5eeaacab15741376e981e28738b",
-            "reference": "efc45b50cb52d5eeaacab15741376e981e28738b",
-            "shasum": ""
-          },
-          "require": {
-            "nikic/php-parser": "^3.1.1",
-            "php": ">=7.1.0,<7.3.0",
-            "phpdocumentor/reflection-docblock": "^4.1.1",
-            "phpdocumentor/type-resolver": "^0.4.0",
-            "roave/signature": "^1.0"
-          },
-          "require-dev": {
-            "phpunit/phpunit": "^6.3.0"
-          },
-          "suggest": {
-            "composer/composer": "Required to use the ComposerSourceLocator"
-          },
-          "type": "library",
-          "autoload": {
-            "psr-4": {
-              "Roave\\BetterReflection\\": "src"
-            }
-          },
-          "notification-url": "https://packagist.org/downloads/",
-          "license": [
-            "MIT"
-          ],
-          "authors": [
-            {
-              "name": "Marco Pivetta",
-              "email": "ocramius@gmail.com",
-              "homepage": "http://ocramius.github.io/"
+            "name": "roave/better-reflection",
+            "version": "2.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Roave/BetterReflection.git",
+                "reference": "efc45b50cb52d5eeaacab15741376e981e28738b"
             },
-            {
-              "name": "James Titcumb",
-              "email": "james@asgrim.com",
-              "homepage": "https://github.com/asgrim"
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Roave/BetterReflection/zipball/efc45b50cb52d5eeaacab15741376e981e28738b",
+                "reference": "efc45b50cb52d5eeaacab15741376e981e28738b",
+                "shasum": ""
             },
-            {
-              "name": "Gary Hockin",
-              "email": "gary@roave.com",
-              "homepage": "https://github.com/geeh"
+            "require": {
+                "nikic/php-parser": "^3.1.1",
+                "php": ">=7.1.0,<7.3.0",
+                "phpdocumentor/reflection-docblock": "^4.1.1",
+                "phpdocumentor/type-resolver": "^0.4.0",
+                "roave/signature": "^1.0"
             },
-            {
-              "name": "Jaroslav Hanslík",
-              "email": "kukulich@kukulich.cz",
-              "homepage": "https://github.com/kukulich"
-            }
-          ],
-          "description": "Better Reflection - an improved code reflection API",
-          "time": "2018-02-05T08:08:57+00:00"
+            "require-dev": {
+                "phpunit/phpunit": "^6.3.0"
+            },
+            "suggest": {
+                "composer/composer": "Required to use the ComposerSourceLocator"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Roave\\BetterReflection\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Marco Pivetta",
+                    "email": "ocramius@gmail.com",
+                    "homepage": "http://ocramius.github.io/"
+                },
+                {
+                    "name": "James Titcumb",
+                    "email": "james@asgrim.com",
+                    "homepage": "https://github.com/asgrim"
+                },
+                {
+                    "name": "Gary Hockin",
+                    "email": "gary@roave.com",
+                    "homepage": "https://github.com/geeh"
+                },
+                {
+                    "name": "Jaroslav Hanslík",
+                    "email": "kukulich@kukulich.cz",
+                    "homepage": "https://github.com/kukulich"
+                }
+            ],
+            "description": "Better Reflection - an improved code reflection API",
+            "time": "2018-02-05T08:08:57+00:00"
         },
-      {
-        "name": "roave/signature",
-        "version": "1.0.0",
-        "source": {
-          "type": "git",
-          "url": "https://github.com/Roave/Signature.git",
-          "reference": "bed4ecbdd7f312ab6bb39561ac191f520bcee386"
+        {
+            "name": "roave/signature",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Roave/Signature.git",
+                "reference": "bed4ecbdd7f312ab6bb39561ac191f520bcee386"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Roave/Signature/zipball/bed4ecbdd7f312ab6bb39561ac191f520bcee386",
+                "reference": "bed4ecbdd7f312ab6bb39561ac191f520bcee386",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.0|^7.1"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5.6"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Roave\\Signature\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Sign and verify stuff",
+            "time": "2017-02-17T13:53:21+00:00"
         },
-        "dist": {
-          "type": "zip",
-          "url": "https://api.github.com/repos/Roave/Signature/zipball/bed4ecbdd7f312ab6bb39561ac191f520bcee386",
-          "reference": "bed4ecbdd7f312ab6bb39561ac191f520bcee386",
-          "shasum": ""
-        },
-        "require": {
-          "php": "^7.0|^7.1"
-        },
-        "require-dev": {
-          "phpunit/phpunit": "^5.6"
-        },
-        "type": "library",
-        "autoload": {
-          "psr-4": {
-            "Roave\\Signature\\": "src"
-          }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-          "MIT"
-        ],
-        "description": "Sign and verify stuff",
-        "time": "2017-02-17T13:53:21+00:00"
-      },
-      {
+        {
             "name": "sebastian/code-unit-reverse-lookup",
             "version": "1.0.1",
             "source": {
@@ -7935,12 +7935,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/architecture-sniffer.git",
-                "reference": "4cd822668147ceb139f7050b17ee37e5a94af245"
+                "reference": "2f359eeb7a6d5673a369f6587666b6cf1d73ec95"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/architecture-sniffer/zipball/4cd822668147ceb139f7050b17ee37e5a94af245",
-                "reference": "4cd822668147ceb139f7050b17ee37e5a94af245",
+                "url": "https://api.github.com/repos/spryker/architecture-sniffer/zipball/2f359eeb7a6d5673a369f6587666b6cf1d73ec95",
+                "reference": "2f359eeb7a6d5673a369f6587666b6cf1d73ec95",
                 "shasum": ""
             },
             "require": {
@@ -7981,7 +7981,7 @@
                 "sniffer",
                 "standards"
             ],
-            "time": "2018-07-17T14:18:58+00:00"
+            "time": "2018-07-19T08:12:18+00:00"
         },
         {
             "name": "spryker/code-generator",
@@ -8030,12 +8030,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/code-sniffer.git",
-              "reference": "171edba2b7726e78783b5d23261a65d4846732ed"
+                "reference": "171edba2b7726e78783b5d23261a65d4846732ed"
             },
             "dist": {
                 "type": "zip",
-              "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/171edba2b7726e78783b5d23261a65d4846732ed",
-              "reference": "171edba2b7726e78783b5d23261a65d4846732ed",
+                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/171edba2b7726e78783b5d23261a65d4846732ed",
+                "reference": "171edba2b7726e78783b5d23261a65d4846732ed",
                 "shasum": ""
             },
             "require": {
@@ -8074,7 +8074,7 @@
                 "phpcs",
                 "standards"
             ],
-          "time": "2018-07-18T13:54:50+00:00"
+            "time": "2018-07-18T13:54:50+00:00"
         },
         {
             "name": "spryker/development-core",
@@ -8127,12 +8127,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/git-hook.git",
-              "reference": "9aee9476fe7b2ddc9631e7d9a71dce779bd5a424"
+                "reference": "9842d3b64448548ae0a78b90e7d26f6bf3bf7378"
             },
             "dist": {
                 "type": "zip",
-              "url": "https://api.github.com/repos/spryker/git-hook/zipball/9aee9476fe7b2ddc9631e7d9a71dce779bd5a424",
-              "reference": "9aee9476fe7b2ddc9631e7d9a71dce779bd5a424",
+                "url": "https://api.github.com/repos/spryker/git-hook/zipball/9842d3b64448548ae0a78b90e7d26f6bf3bf7378",
+                "reference": "9842d3b64448548ae0a78b90e7d26f6bf3bf7378",
                 "shasum": ""
             },
             "require": {
@@ -8171,68 +8171,68 @@
                 "sniffer",
                 "standards"
             ],
-          "time": "2018-07-17T18:23:07+00:00"
+            "time": "2018-07-19T16:43:08+00:00"
         },
         {
-          "name": "spryker/spryk",
-          "version": "dev-master",
-          "source": {
-            "type": "git",
-            "url": "git@github.com:spryker/spryk.git",
-            "reference": "d5c32da3002bc5fd8467a99089e260659b3719c1"
-          },
-          "require": {
-            "php": ">=7.1",
-            "roave/better-reflection": "^2.0",
-            "symfony/yaml": "^3.4.9",
-            "twig/twig": "^1.22",
-            "zendframework/zend-filter": "^2.8"
-          },
-          "require-dev": {
-            "codeception/codeception": "*",
-            "php-coveralls/php-coveralls": "^1.0",
-            "phpstan/phpstan": "^0.8.5",
-            "spryker/code-sniffer": "dev-master as 1.0.0",
-            "spryker/git-hook": "dev-bugfix/core-4886-githook-broken",
-            "spryker/kernel": "^3.0.0",
-            "symfony/var-dumper": "^4.0.9"
-          },
-          "type": "library",
-          "autoload": {
-            "psr-4": {
-              "Spryker\\Spryk\\": "src/Spryker/Spryk/"
-            }
-          },
-          "autoload-dev": {
-            "psr-4": {
-              "SprykerTest\\": "tests/SprykerTest/",
-              "SprykerTest\\Module\\": "tests/_support/Module/",
-              "Spryker\\Yves\\Kernel\\": "vendor/spryker/kernel/src/Spryker/Yves/Kernel/",
-              "Spryker\\Zed\\Kernel\\": "vendor/spryker/kernel/src/Spryker/Zed/Kernel/",
-              "Spryker\\Shared\\Kernel\\": "vendor/spryker/kernel/src/Spryker/Shared/Kernel/",
-              "Spryker\\Client\\Kernel\\": "vendor/spryker/kernel/src/Spryker/Client/Kernel/",
-              "Spryker\\Client\\FooBar\\": "tests/_data/vendor/spryker/spryker/Bundles/FooBar/src/Spryker/Client/FooBar/",
-              "Spryker\\Shared\\FooBar\\": "tests/_data/vendor/spryker/spryker/Bundles/FooBar/src/Spryker/Shared/FooBar/",
-              "Spryker\\Yves\\FooBar\\": "tests/_data/vendor/spryker/spryker/Bundles/FooBar/src/Spryker/Yves/FooBar/",
-              "Spryker\\Zed\\FooBar\\": "tests/_data/vendor/spryker/spryker/Bundles/FooBar/src/Spryker/Zed/FooBar/",
-              "SprykerTest\\Zed\\FooBar\\": "tests/_data/vendor/spryker/spryker/Bundles/FooBar/tests/SprykerTest/Zed/FooBar/"
-            }
-          },
-          "scripts": {
-            "post-install-cmd": [
-              "GitHook\\Composer\\Scripts\\HookInstaller::installGitHook"
+            "name": "spryker/spryk",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:spryker/spryk.git",
+                "reference": "d5c32da3002bc5fd8467a99089e260659b3719c1"
+            },
+            "require": {
+                "php": ">=7.1",
+                "roave/better-reflection": "^2.0",
+                "symfony/yaml": "^3.4.9",
+                "twig/twig": "^1.22",
+                "zendframework/zend-filter": "^2.8"
+            },
+            "require-dev": {
+                "codeception/codeception": "*",
+                "php-coveralls/php-coveralls": "^1.0",
+                "phpstan/phpstan": "^0.8.5",
+                "spryker/code-sniffer": "dev-master as 1.0.0",
+                "spryker/git-hook": "dev-bugfix/core-4886-githook-broken",
+                "spryker/kernel": "^3.0.0",
+                "symfony/var-dumper": "^4.0.9"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\Spryk\\": "src/Spryker/Spryk/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "SprykerTest\\": "tests/SprykerTest/",
+                    "SprykerTest\\Module\\": "tests/_support/Module/",
+                    "Spryker\\Yves\\Kernel\\": "vendor/spryker/kernel/src/Spryker/Yves/Kernel/",
+                    "Spryker\\Zed\\Kernel\\": "vendor/spryker/kernel/src/Spryker/Zed/Kernel/",
+                    "Spryker\\Shared\\Kernel\\": "vendor/spryker/kernel/src/Spryker/Shared/Kernel/",
+                    "Spryker\\Client\\Kernel\\": "vendor/spryker/kernel/src/Spryker/Client/Kernel/",
+                    "Spryker\\Client\\FooBar\\": "tests/_data/vendor/spryker/spryker/Bundles/FooBar/src/Spryker/Client/FooBar/",
+                    "Spryker\\Shared\\FooBar\\": "tests/_data/vendor/spryker/spryker/Bundles/FooBar/src/Spryker/Shared/FooBar/",
+                    "Spryker\\Yves\\FooBar\\": "tests/_data/vendor/spryker/spryker/Bundles/FooBar/src/Spryker/Yves/FooBar/",
+                    "Spryker\\Zed\\FooBar\\": "tests/_data/vendor/spryker/spryker/Bundles/FooBar/src/Spryker/Zed/FooBar/",
+                    "SprykerTest\\Zed\\FooBar\\": "tests/_data/vendor/spryker/spryker/Bundles/FooBar/tests/SprykerTest/Zed/FooBar/"
+                }
+            },
+            "scripts": {
+                "post-install-cmd": [
+                    "GitHook\\Composer\\Scripts\\HookInstaller::installGitHook"
+                ],
+                "post-update-cmd": [
+                    "GitHook\\Composer\\Scripts\\HookInstaller::installGitHook"
+                ]
+            },
+            "license": [
+                "MIT"
             ],
-            "post-update-cmd": [
-              "GitHook\\Composer\\Scripts\\HookInstaller::installGitHook"
-            ]
-          },
-          "license": [
-            "MIT"
-          ],
-          "description": "Spryker Spryk build tool",
-          "time": "2018-06-14T05:29:10+00:00"
+            "description": "Spryker Spryk build tool",
+            "time": "2018-06-14T05:29:10+00:00"
         },
-      {
+        {
             "name": "squizlabs/php_codesniffer",
             "version": "3.3.0",
             "source": {
@@ -8883,55 +8883,55 @@
             "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",
             "time": "2017-04-07T12:08:54+00:00"
         },
-      {
-        "name": "webmozart/assert",
-        "version": "1.3.0",
-        "source": {
-          "type": "git",
-          "url": "https://github.com/webmozart/assert.git",
-          "reference": "0df1908962e7a3071564e857d86874dad1ef204a"
-        },
-        "dist": {
-          "type": "zip",
-          "url": "https://api.github.com/repos/webmozart/assert/zipball/0df1908962e7a3071564e857d86874dad1ef204a",
-          "reference": "0df1908962e7a3071564e857d86874dad1ef204a",
-          "shasum": ""
-        },
-        "require": {
-          "php": "^5.3.3 || ^7.0"
-        },
-        "require-dev": {
-          "phpunit/phpunit": "^4.6",
-          "sebastian/version": "^1.0.1"
-        },
-        "type": "library",
-        "extra": {
-          "branch-alias": {
-            "dev-master": "1.3-dev"
-          }
-        },
-        "autoload": {
-          "psr-4": {
-            "Webmozart\\Assert\\": "src/"
-          }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-          "MIT"
-        ],
-        "authors": [
-          {
-            "name": "Bernhard Schussek",
-            "email": "bschussek@gmail.com"
-          }
-        ],
-        "description": "Assertions to validate method input/output with nice error messages.",
-        "keywords": [
-          "assert",
-          "check",
-          "validate"
-        ],
-        "time": "2018-01-29T19:49:41+00:00"
+        {
+            "name": "webmozart/assert",
+            "version": "1.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/webmozart/assert.git",
+                "reference": "0df1908962e7a3071564e857d86874dad1ef204a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/webmozart/assert/zipball/0df1908962e7a3071564e857d86874dad1ef204a",
+                "reference": "0df1908962e7a3071564e857d86874dad1ef204a",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.3.3 || ^7.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.6",
+                "sebastian/version": "^1.0.1"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Webmozart\\Assert\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Bernhard Schussek",
+                    "email": "bschussek@gmail.com"
+                }
+            ],
+            "description": "Assertions to validate method input/output with nice error messages.",
+            "keywords": [
+                "assert",
+                "check",
+                "validate"
+            ],
+            "time": "2018-01-29T19:49:41+00:00"
         }
     ],
     "aliases": [],
@@ -8948,8 +8948,8 @@
         "spryker/code-generator": 20,
         "spryker/code-sniffer": 20,
         "spryker/git-hook": 20,
-      "spryker/development-core": 20,
-      "spryker/spryk": 20
+        "spryker/development-core": 20,
+        "spryker/spryk": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
