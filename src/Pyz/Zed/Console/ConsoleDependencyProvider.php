@@ -10,6 +10,8 @@ namespace Pyz\Zed\Console;
 use Pyz\Zed\DataImport\DataImportConfig;
 use Silex\Provider\TwigServiceProvider as SilexTwigServiceProvider;
 use Spryker\Shared\Config\Environment;
+use Spryker\Spryk\Console\SprykDumpConsole;
+use Spryker\Spryk\Console\SprykRunConsole;
 use Spryker\Zed\BusinessOnBehalfDataImport\BusinessOnBehalfDataImportConfig;
 use Spryker\Zed\Cache\Communication\Console\EmptyAllCachesConsole;
 use Spryker\Zed\CodeGenerator\Communication\Console\BundleClientCodeGeneratorConsole;
@@ -254,8 +256,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
         $commands = array_merge($commands, $propelCommands);
 
         if (Environment::isDevelopment() || Environment::isTesting()) {
-            /** @project Only available in internal nonsplit project, not in public split project */
-            $commands[] = new AdjustPhpstanConsole();
+            $commands = $this->addProjectNonsplitOnlyCommands($commands);
 
             $commands[] = new CodeTestConsole();
             $commands[] = new CodeStyleSnifferConsole();
@@ -333,5 +334,21 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
         $serviceProviders[] = new TwigMoneyServiceProvider();
 
         return $serviceProviders;
+    }
+
+    /**
+     * @project Only available in internal nonsplit project, not in public split project.
+     *
+     * @param array $commands
+     *
+     * @return array
+     */
+    protected function addProjectNonsplitOnlyCommands(array $commands): array
+    {
+        $commands[] = new AdjustPhpstanConsole();
+        $commands[] = new SprykRunConsole();
+        $commands[] = new SprykDumpConsole();
+
+        return $commands;
     }
 }

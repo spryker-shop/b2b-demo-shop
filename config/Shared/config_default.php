@@ -24,6 +24,7 @@ use Spryker\Shared\Kernel\Store;
 use Spryker\Shared\Log\LogConstants;
 use Spryker\Shared\NewRelic\NewRelicConstants;
 use Spryker\Shared\Oauth\OauthConstants;
+use Spryker\Shared\OauthCustomerConnector\OauthCustomerConnectorConstants;
 use Spryker\Shared\Oms\OmsConstants;
 use Spryker\Shared\Propel\PropelConstants;
 use Spryker\Shared\Queue\QueueConfig;
@@ -428,3 +429,7 @@ $config[GlueApplicationConstants::GLUE_APPLICATION_REST_DEBUG] = false;
 $config[OauthConstants::PRIVATE_KEY_PATH] = 'file://';
 $config[OauthConstants::PUBLIC_KEY_PATH] = 'file://';
 $config[OauthConstants::ENCRYPTION_KEY] = '';
+
+// ----------- AuthRestApi
+$config[OauthCustomerConnectorConstants::OAUTH_CLIENT_IDENTIFIER] = '';
+$config[OauthCustomerConnectorConstants::OAUTH_CLIENT_SECRET] = '';
