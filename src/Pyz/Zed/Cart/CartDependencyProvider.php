@@ -41,6 +41,7 @@ use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Cart\AmountSalesUnitIt
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Cart\AmountSalesUnitValuePostSavePlugin;
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Cart\CustomAmountPriceItemExpanderPlugin;
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Cart\ProductPackagingUnitItemExpanderPlugin;
+use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Item\AmountSalesUnitTranslationItemExpanderPlugin;
 use Spryker\Zed\ProductQuantity\Communication\Plugin\Cart\ProductQuantityRestrictionCartPreCheckPlugin;
 use Spryker\Zed\ProductQuantity\Communication\Plugin\CartExtension\ProductQuantityRestrictionCartRemovalPreCheckPlugin;
 use Spryker\Zed\SalesQuantity\Communication\Plugin\Cart\IsQuantitySplittableItemExpanderPlugin;
@@ -76,6 +77,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new ProductPackagingUnitItemExpanderPlugin(), #ProductPackagingUnit
             new CustomAmountPriceItemExpanderPlugin(), #ProductPackagingUnit
             new QuantitySalesUnitTranslationItemExpanderPlugin(), #ProductMeasurementUnit
+            new AmountSalesUnitTranslationItemExpanderPlugin(), #ProductPackagingUnit
         ];
     }
 
