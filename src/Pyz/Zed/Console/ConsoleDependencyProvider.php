@@ -46,6 +46,7 @@ use Spryker\Zed\Development\Communication\Console\ModuleBridgeCreateConsole;
 use Spryker\Zed\Development\Communication\Console\ModuleCreateConsole;
 use Spryker\Zed\DevelopmentCore\Communication\Console\AdjustPhpstanConsole;
 use Spryker\Zed\EventBehavior\Communication\Console\EventBehaviorTriggerTimeoutConsole;
+use Spryker\Zed\EventBehavior\Communication\Console\EventTriggerConsole;
 use Spryker\Zed\EventBehavior\Communication\Plugin\Console\EventBehaviorPostHookPlugin;
 use Spryker\Zed\Installer\Communication\Console\InitializeDatabaseConsole;
 use Spryker\Zed\Kernel\Container;
@@ -105,6 +106,7 @@ use Spryker\Zed\StateMachine\Communication\Console\ClearLocksConsole as StateMac
 use Spryker\Zed\Storage\Communication\Console\StorageDeleteAllConsole;
 use Spryker\Zed\Storage\Communication\Console\StorageExportRdbConsole;
 use Spryker\Zed\Storage\Communication\Console\StorageImportRdbConsole;
+use Spryker\Zed\Synchronization\Communication\Console\ExportSynchronizedDataConsole;
 use Spryker\Zed\Transfer\Communication\Console\DataBuilderGeneratorConsole;
 use Spryker\Zed\Transfer\Communication\Console\GeneratorConsole;
 use Spryker\Zed\Transfer\Communication\Console\ValidatorConsole;
@@ -194,7 +196,10 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . CompanyUnitAddressLabelDataImportConfig::IMPORT_TYPE_COMPANY_UNIT_ADDRESS_LABEL_RELATION),
             new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . BusinessOnBehalfDataImportConfig::IMPORT_TYPE_COMPANY_USER),
 
+            // Publish and Synchronization
             new EventBehaviorTriggerTimeoutConsole(),
+            new EventTriggerConsole(),
+            new ExportSynchronizedDataConsole(),
 
             // Setup commands
             new RunnerConsole(),
