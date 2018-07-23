@@ -7,7 +7,7 @@
 
 namespace Orm\Zed\ShoppingList\Persistence;
 
-use Spryker\Zed\ShoppingList\Persistence\Propel\AbstractShoppingListPermissionGroup as BaseSpyShoppingListPermissionGroup;
+use Orm\Zed\ShoppingList\Persistence\Base\SpyShoppingListPermissionGroup as BaseSpyShoppingListPermissionGroup;
 
 /**
  * Skeleton subclass for representing a row from the 'spy_shopping_list_permission_group' table.
