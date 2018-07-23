@@ -48,8 +48,8 @@ class ShoppingListPageDependencyProvider extends SprykerShoppingListPageDependen
     protected function getShoppingListViewWidgetPlugins(): array
     {
         return [
-            ProductAlternativeWidgetPlugin::class,
-            ProductDiscontinuedWidgetPlugin::class,
+            ProductAlternativeWidgetPlugin::class, #ProductAlternativeFeature
+            ProductDiscontinuedWidgetPlugin::class, #ProductDiscontinuedFeature
         ];
     }
 }

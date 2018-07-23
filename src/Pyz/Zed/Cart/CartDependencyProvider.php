@@ -81,7 +81,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new CartBundleAvailabilityPreCheckPlugin(),
             new CartShipmentPreCheckPlugin(),
             new ProductQuantityRestrictionCartPreCheckPlugin(),
-            new ProductDiscontinuedCartPreCheckPlugin(),
+            new ProductDiscontinuedCartPreCheckPlugin(), #ProductDiscontinuedFeature
         ];
     }
 

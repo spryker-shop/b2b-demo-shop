@@ -19,7 +19,7 @@ class ShoppingListDependencyProvider extends SprykerShoppingListDependencyProvid
     protected function getAddItemPreCheckPlugins(): array
     {
         return [
-            new ProductDiscontinuedAddItemPreCheckPlugin(),
+            new ProductDiscontinuedAddItemPreCheckPlugin(), #ProductDiscontinuedFeature
         ];
     }
 

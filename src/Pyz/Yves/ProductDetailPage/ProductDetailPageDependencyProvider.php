@@ -48,9 +48,9 @@ class ProductDetailPageDependencyProvider extends SprykerShopProductDetailPageDe
             ProductMeasurementUnitWidgetPlugin::class,
             MultiCartWidgetPlugin::class, #MultiCartFeature
             ShoppingListWidgetPlugin::class, #ShoppingListFeature
-            ProductDiscontinuedWidgetPlugin::class,
-            ProductReplacementForWidgetPlugin::class,
-            ProductAlternativeWidgetPlugin::class,
+            ProductDiscontinuedWidgetPlugin::class, #ProductDiscontinuedFeature
+            ProductReplacementForWidgetPlugin::class, #ProductAlternativeFeature
+            ProductAlternativeWidgetPlugin::class, #ProductAlternativeFeature
         ];
     }
 }

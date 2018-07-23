@@ -140,7 +140,7 @@ class ProductDependencyProvider extends SprykerProductDependencyProvider
     protected function getProductConcreteBeforeUpdatePlugins(Container $container)
     {
         return [
-            new ProductAlternativeGuiProductConcretePluginUpdate(),
+            new ProductAlternativeGuiProductConcretePluginUpdate(), #ProductAlternativeFeature
         ];
     }
 

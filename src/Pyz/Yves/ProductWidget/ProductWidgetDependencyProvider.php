@@ -93,9 +93,9 @@ class ProductWidgetDependencyProvider extends SprykerProductWidgetDependencyProv
     protected function getProductReplacementForWidgetPlugins(): array
     {
         return [
-            ProductAbstractLabelWidgetPlugin::class,
-            ExampleProductColorGroupWidgetPlugin::class,
-            ProductAbstractReviewWidgetPlugin::class,
+            ProductAbstractLabelWidgetPlugin::class, #ProductAlternativeFeature
+            ExampleProductColorGroupWidgetPlugin::class, #ProductAlternativeFeature
+            ProductAbstractReviewWidgetPlugin::class, #ProductAlternativeFeature
         ];
     }
 
@@ -107,9 +107,9 @@ class ProductWidgetDependencyProvider extends SprykerProductWidgetDependencyProv
     protected function getProductAlternativeWidgetPlugins(): array
     {
         return [
-            ProductAbstractLabelWidgetPlugin::class,
-            ExampleProductColorGroupWidgetPlugin::class,
-            ProductAbstractReviewWidgetPlugin::class,
+            ProductAbstractLabelWidgetPlugin::class, #ProductAlternativeFeature
+            ExampleProductColorGroupWidgetPlugin::class, #ProductAlternativeFeature
+            ProductAbstractReviewWidgetPlugin::class, #ProductAlternativeFeature
         ];
     }
 }

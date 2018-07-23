@@ -42,8 +42,8 @@ class InstallerDependencyProvider extends SprykerInstallerDependencyProvider
             new ShoppingListPermissionsInstallerPlugin(),
             new SharedCartPermissionInstallerPlugin(), #SharedCartFeature
             new ProductMeasurementUnitInstallerPlugin(),
-            new ProductAlternativeProductLabelConnectorInstallerPlugin(),
-            new ProductDiscontinuedProductLabelConnectorInstallerPlugin(),
+            new ProductAlternativeProductLabelConnectorInstallerPlugin(), #ProductAlternativeFeature
+            new ProductDiscontinuedProductLabelConnectorInstallerPlugin(), #ProductDiscontinuedFeature
             new CompanyUserInvitationStatusInstallerPlugin(), #BulkImportCompanyUserInvitationsFeature
             new ProductPackagingUnitTypeInstallerPlugin(),
             new OauthCustomerInstallerPlugin(),

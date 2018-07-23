@@ -41,7 +41,7 @@ class ProductAlternativeDependencyProvider extends SprykerProductAlternativeDepe
     protected function getAlternativeProductApplicablePlugins(): array
     {
         return [
-            new DiscontinuedCheckAlternativeProductApplicablePlugin(),
+            new DiscontinuedCheckAlternativeProductApplicablePlugin(), #ProductDiscontinuedFeature
             new AvailabilityCheckAlternativeProductApplicablePlugin(),
         ];
     }

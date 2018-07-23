@@ -37,8 +37,8 @@ class WishlistPageDependencyProvider extends SprykerWishlistPageDependencyProvid
     protected function getWishlistViewWidgetPlugins(): array
     {
         return [
-            ProductAlternativeWidgetPlugin::class,
-            ProductDiscontinuedWidgetPlugin::class,
+            ProductAlternativeWidgetPlugin::class, #ProductAlternativeFeature
+            ProductDiscontinuedWidgetPlugin::class, #ProductDiscontinuedFeature
         ];
     }
 }
