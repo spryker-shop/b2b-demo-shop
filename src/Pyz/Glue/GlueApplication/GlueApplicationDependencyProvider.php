@@ -29,6 +29,8 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
         return [
             new AccessTokensResourceRoutePlugin(),
             new RefreshTokensResourceRoutePlugin(),
+            new SearchResourceRoutePlugin(),
+            new SuggestionsResourceRoutePlugin(),
         ];
     }
 
@@ -66,19 +68,6 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
         return [
             new SetStoreCurrentLocaleBeforeActionPlugin(),
             new SetCustomerBeforeActionPlugin(),
-        ];
-    }
-
-    /**
-     * {@inheritdoc}
-     *
-     * @return \Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResourceRoutePluginInterface[]
-     */
-    protected function getResourceRoutePlugins(): array
-    {
-        return [
-            new SearchResourceRoutePlugin(),
-            new SuggestionsResourceRoutePlugin(),
         ];
     }
 }
