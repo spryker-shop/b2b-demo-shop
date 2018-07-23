@@ -18,7 +18,7 @@ use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\SalesExtension\Quant
 use Spryker\Zed\ProductOption\Communication\Plugin\Sales\ProductOptionGroupIdHydratorPlugin;
 use Spryker\Zed\ProductOption\Communication\Plugin\Sales\ProductOptionOrderHydratePlugin;
 use Spryker\Zed\ProductOption\Communication\Plugin\Sales\ProductOptionSortHydratePlugin;
-use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Checkout\PackagingUnitSalesOrderItemSplittingStrategyPlugin;
+use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Checkout\PackagingUnitSplittableItemTransformerStrategyPlugin;
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Sales\AmountLeadProductHydrateOrderPlugin;
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Sales\AmountSalesUnitHydrateOrderPlugin;
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\SalesExtension\AmountSalesUnitOrderItemExpanderPreSavePlugin;
@@ -85,7 +85,7 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
     public function getItemTransformerStrategyPlugins(): array
     {
         return [
-            new PackagingUnitSalesOrderItemSplittingStrategyPlugin(), #ProductPackagingUnit
+            new PackagingUnitSplittableItemTransformerStrategyPlugin(), #ProductPackagingUnit
             new NonSplittableItemTransformerStrategyPlugin(),
         ];
     }
