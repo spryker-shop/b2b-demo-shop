@@ -14,8 +14,8 @@ use Spryker\Glue\AuthRestApi\Plugin\RefreshTokensResourceRoutePlugin;
 use Spryker\Glue\CustomersRestApi\Plugin\SetCustomerBeforeActionPlugin;
 use Spryker\Glue\GlueApplication\GlueApplicationDependencyProvider as SprykerGlueApplicationDependencyProvider;
 use Spryker\Glue\GlueApplication\Plugin\Rest\SetStoreCurrentLocaleBeforeActionPlugin;
-use Spryker\Glue\SearchRestApi\Plugin\SearchResourceRoutePlugin;
-use Spryker\Glue\SearchRestApi\Plugin\SuggestionsResourceRoutePlugin;
+use Spryker\Glue\CatalogSearchRestApi\Plugin\CatalogSearchResourceRoutePlugin;
+use Spryker\Glue\CatalogSearchRestApi\Plugin\CatalogSearchSuggestionsResourceRoutePlugin;
 
 class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependencyProvider
 {
@@ -29,8 +29,8 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
         return [
             new AccessTokensResourceRoutePlugin(),
             new RefreshTokensResourceRoutePlugin(),
-            new SearchResourceRoutePlugin(),
-            new SuggestionsResourceRoutePlugin(),
+            new CatalogSearchResourceRoutePlugin(),
+            new CatalogSearchSuggestionsResourceRoutePlugin(),
         ];
     }
 
