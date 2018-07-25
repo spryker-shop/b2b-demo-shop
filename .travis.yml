@@ -10,25 +10,25 @@ env:
 matrix:
   fast_finish: true
   include:
-    - php: "7.1"
-      env:
-        - TEST_GROUP=without-acceptance
-        - ON_EVENTS=cron,push
-    - php: "7.2"
-      env:
-        - TEST_GROUP=without-acceptance
-        - ON_EVENTS=cron,push
-    - php: "7.1"
-      env:
-        - TEST_GROUP=acceptance
-        - ON_EVENTS=push,cron
-    - php: "7.2"
-      env:
-        - TEST_GROUP=acceptance
-        - ON_EVENTS=push,cron
     - php: "7.2"
       env:
         - VALIDATION=1
+    - php: "7.1"
+      env:
+        - TEST_GROUP=without-acceptance
+        - ON_EVENTS=cron,push
+    - php: "7.2"
+      env:
+        - TEST_GROUP=without-acceptance
+        - ON_EVENTS=cron,push
+    - php: "7.1"
+      env:
+        - TEST_GROUP=acceptance
+        - ON_EVENTS=push,cron
+    - php: "7.2"
+      env:
+        - TEST_GROUP=acceptance
+        - ON_EVENTS=push,cron
 addons:
   postgresql: 9.6
   mysql: 5.7
