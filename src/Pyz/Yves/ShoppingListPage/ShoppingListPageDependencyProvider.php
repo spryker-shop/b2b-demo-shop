@@ -10,7 +10,9 @@ namespace Pyz\Yves\ShoppingListPage;
 use Spryker\Client\AvailabilityStorage\Plugin\ProductViewAvailabilityStorageExpanderPlugin;
 use Spryker\Client\PriceProductStorage\Plugin\ProductViewPriceExpanderPlugin;
 use Spryker\Client\ProductImageStorage\Plugin\ProductViewImageExpanderPlugin;
+use SprykerShop\Yves\ProductAlternativeWidget\Plugin\ShoppingListPage\ProductAlternativeWidgetPlugin;
 use SprykerShop\Yves\ProductBarcodeWidget\Plugin\ShoppingList\ProductBarcodeWidgetPlugin;
+use SprykerShop\Yves\ProductDiscontinuedWidget\Plugin\ShoppingListPage\ProductDiscontinuedWidgetPlugin;
 use SprykerShop\Yves\ShoppingListPage\ShoppingListPageDependencyProvider as SprykerShoppingListPageDependencyProvider;
 
 class ShoppingListPageDependencyProvider extends SprykerShoppingListPageDependencyProvider
@@ -28,12 +30,26 @@ class ShoppingListPageDependencyProvider extends SprykerShoppingListPageDependen
     }
 
     /**
-     * @return array
+     * @return string[]
      */
     protected function getShoppingListWidgetPlugins(): array
     {
         return [
             ProductBarcodeWidgetPlugin::class,
+        ];
+    }
+
+    /**
+     * Returns a list of widget plugin class names that implement
+     * \Spryker\Yves\Kernel\Dependency\Plugin\WidgetPluginInterface.
+     *
+     * @return string[]
+     */
+    protected function getShoppingListViewWidgetPlugins(): array
+    {
+        return [
+            ProductAlternativeWidgetPlugin::class, #ProductAlternativeFeature
+            ProductDiscontinuedWidgetPlugin::class, #ProductDiscontinuedFeature
         ];
     }
 }
