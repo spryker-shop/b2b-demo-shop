@@ -10,25 +10,25 @@ env:
 matrix:
   fast_finish: true
   include:
-    - php: "7.1"
-      env:
-        - TEST_GROUP=without-acceptance
-        - ON_EVENTS=cron,push
-    - php: "7.2"
-      env:
-        - TEST_GROUP=without-acceptance
-        - ON_EVENTS=cron,push
-    - php: "7.1"
-      env:
-        - TEST_GROUP=acceptance
-        - ON_EVENTS=push,cron
-    - php: "7.2"
-      env:
-        - TEST_GROUP=acceptance
-        - ON_EVENTS=push,cron
     - php: "7.2"
       env:
         - VALIDATION=1
+    - php: "7.1"
+      env:
+        - TEST_GROUP=without-acceptance
+        - ON_EVENTS=cron,push
+    - php: "7.2"
+      env:
+        - TEST_GROUP=without-acceptance
+        - ON_EVENTS=cron,push
+    - php: "7.1"
+      env:
+        - TEST_GROUP=acceptance
+        - ON_EVENTS=push,cron
+    - php: "7.2"
+      env:
+        - TEST_GROUP=acceptance
+        - ON_EVENTS=push,cron
 addons:
   postgresql: 9.6
   mysql: 5.7
@@ -54,8 +54,6 @@ services:
 sudo: required
 
 before_install:
-  - if [[ $VALIDATION != 1 && $ON_EVENTS != *$TRAVIS_EVENT_TYPE* ]] ; then exit ; fi
-
   - echo "extension = redis.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
   - if [[ $DB == 'mysql' ]] ; then chmod +x ./config/Shared/ci/travis/mysql/* ; fi
   - if [[ $DB == 'mysql' ]] ; then ./config/Shared/ci/travis/mysql/travis_mysql_5.7.sh ; fi

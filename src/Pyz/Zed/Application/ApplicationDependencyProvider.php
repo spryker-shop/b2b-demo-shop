@@ -21,7 +21,6 @@ use Spryker\Zed\Api\Communication\Plugin\ServiceProvider\ApiRoutingServiceProvid
 use Spryker\Zed\Application\ApplicationDependencyProvider as SprykerApplicationDependencyProvider;
 use Spryker\Zed\Application\Communication\Plugin\ServiceProvider\AssertUrlConfigurationServiceProvider;
 use Spryker\Zed\Application\Communication\Plugin\ServiceProvider\EnvironmentInformationServiceProvider;
-use Spryker\Zed\Application\Communication\Plugin\ServiceProvider\KernelLogServiceProvider;
 use Spryker\Zed\Application\Communication\Plugin\ServiceProvider\MvcRoutingServiceProvider;
 use Spryker\Zed\Application\Communication\Plugin\ServiceProvider\RequestServiceProvider;
 use Spryker\Zed\Application\Communication\Plugin\ServiceProvider\RoutingServiceProvider;
@@ -61,7 +60,6 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
         $coreProviders = parent::getServiceProviders($container);
 
         $providers = [
-            new KernelLogServiceProvider(),
             new SessionServiceProvider(),
             new SprykerSessionServiceProvider(),
             new SslServiceProvider(),
@@ -135,7 +133,6 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
     protected function getInternalCallServiceProviders(Container $container)
     {
         return [
-            new KernelLogServiceProvider(),
             new PropelServiceProvider(),
             new RequestServiceProvider(),
             new SslServiceProvider(),
@@ -161,7 +158,6 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
     protected function getInternalCallServiceProvidersWithAuthentication(Container $container)
     {
         return [
-            new KernelLogServiceProvider(),
             new PropelServiceProvider(),
             new RequestServiceProvider(),
             new SessionServiceProvider(),
