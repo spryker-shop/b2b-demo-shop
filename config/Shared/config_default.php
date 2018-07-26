@@ -397,9 +397,6 @@ $config[QueueConstants::QUEUE_ADAPTER_CONFIGURATION] = [
 $config[LogglyConstants::QUEUE_NAME] = 'loggly-log-queue';
 $config[LogglyConstants::ERROR_QUEUE_NAME] = 'loggly-log-queue.error';
 
-// ---------- Events
-$config[EventConstants::LOGGER_ACTIVE] = false;
-
 // ---------- EventBehavior
 $config[EventBehaviorConstants::EVENT_BEHAVIOR_TRIGGERING_ACTIVE] = true;
 
