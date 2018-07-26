@@ -19,6 +19,7 @@ use Spryker\Zed\Payment\Communication\Plugin\Checkout\PaymentPostCheckPlugin;
 use Spryker\Zed\Payment\Communication\Plugin\Checkout\PaymentPreCheckPlugin;
 use Spryker\Zed\ProductBundle\Communication\Plugin\Checkout\ProductBundleAvailabilityCheckoutPreConditionPlugin;
 use Spryker\Zed\ProductBundle\Communication\Plugin\Checkout\ProductBundleOrderSaverPlugin;
+use Spryker\Zed\ProductDiscontinued\Communication\Plugin\Checkout\ProductDiscontinuedCheckoutPreConditionPlugin;
 use Spryker\Zed\ProductOption\Communication\Plugin\Checkout\ProductOptionOrderSaverPlugin;
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Checkout\AmountAvailabilityCheckoutPreConditionPlugin;
 use Spryker\Zed\Sales\Communication\Plugin\Checkout\SalesOrderSaverPlugin;
@@ -39,10 +40,11 @@ class CheckoutDependencyProvider extends SprykerCheckoutDependencyProvider
     {
         return [
             new CustomerPreConditionCheckerPlugin(),
-            new ProductBundleAvailabilityCheckoutPreConditionPlugin(),
             new ProductsAvailableCheckoutPreConditionPlugin(),
+            new ProductBundleAvailabilityCheckoutPreConditionPlugin(),
             new PaymentPreCheckPlugin(),
             new ShipmentCheckoutPreCheckPlugin(),
+            new ProductDiscontinuedCheckoutPreConditionPlugin(), #ProductDiscontinuedFeature
             new AmountAvailabilityCheckoutPreConditionPlugin(),
         ];
     }
