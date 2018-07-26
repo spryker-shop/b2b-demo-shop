@@ -22,7 +22,6 @@ use Spryker\Zed\CompanyBusinessUnitDataImport\CompanyBusinessUnitDataImportConfi
 use Spryker\Zed\CompanyDataImport\CompanyDataImportConfig;
 use Spryker\Zed\CompanyUnitAddressDataImport\CompanyUnitAddressDataImportConfig;
 use Spryker\Zed\CompanyUnitAddressLabelDataImport\CompanyUnitAddressLabelDataImportConfig;
-use Spryker\Zed\Console\Communication\Plugin\ConsoleLogPlugin;
 use Spryker\Zed\Console\ConsoleDependencyProvider as SprykerConsoleDependencyProvider;
 use Spryker\Zed\DataImport\Communication\Console\DataImportConsole;
 use Spryker\Zed\DataImport\Communication\Console\DataImportDumpConsole;
@@ -291,7 +290,6 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
         $eventSubscriber = parent::getEventSubscriber($container);
 
         if (!Environment::isDevelopment()) {
-            $eventSubscriber[] = new ConsoleLogPlugin();
             $eventSubscriber[] = new NewRelicConsolePlugin();
         }
 

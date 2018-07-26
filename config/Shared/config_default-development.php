@@ -10,7 +10,6 @@ use Spryker\Shared\Application\ApplicationConstants;
 use Spryker\Shared\Config\ConfigConstants;
 use Spryker\Shared\ErrorHandler\ErrorHandlerConstants;
 use Spryker\Shared\ErrorHandler\ErrorRenderer\WebExceptionErrorRenderer;
-use Spryker\Shared\Event\EventConstants;
 use Spryker\Shared\GlueApplication\GlueApplicationConstants;
 use Spryker\Shared\Kernel\KernelConstants;
 use Spryker\Shared\Kernel\Store;
@@ -42,7 +41,7 @@ $config[ApplicationConstants::ZED_SSL_ENABLED] = false;
 $config[ApplicationConstants::YVES_SSL_ENABLED] = false;
 
 // ---------- Propel
-$config[PropelConstants::PROPEL_DEBUG] = true;
+$config[PropelConstants::PROPEL_DEBUG] = false;
 $config[PropelOrmConstants::PROPEL_SHOW_EXTENDED_EXCEPTION] = true;
 $config[PropelConstants::ZED_DB_USERNAME] = 'development';
 $config[PropelConstants::ZED_DB_PASSWORD] = 'mate20mg';
@@ -142,9 +141,6 @@ $baseLogFilePath = sprintf('%s/data/%s/logs', APPLICATION_ROOT_DIR, $CURRENT_STO
 
 $config[LogConstants::EXCEPTION_LOG_FILE_PATH_YVES] = $baseLogFilePath . '/YVES/exception.log';
 $config[LogConstants::EXCEPTION_LOG_FILE_PATH_ZED] = $baseLogFilePath . '/ZED/exception.log';
-
-// ---------- Events
-$config[EventConstants::LOGGER_ACTIVE] = true;
 
 // ----------- Glue Application
 $config[GlueApplicationConstants::GLUE_APPLICATION_REST_DEBUG] = true;
