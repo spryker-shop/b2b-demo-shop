@@ -29,7 +29,6 @@ use Spryker\Zed\ProductImageCartConnector\Communication\Plugin\ProductImageCartP
 use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\Cart\QuantitySalesUnitGroupKeyItemExpanderPlugin;
 use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\Cart\QuantitySalesUnitItemExpanderPlugin;
 use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\Cart\QuantitySalesUnitValuePostSavePlugin;
-use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\Item\QuantitySalesUnitTranslationItemExpanderPlugin;
 use Spryker\Zed\ProductOptionCartConnector\Communication\Plugin\CartItemGroupKeyOptionPlugin;
 use Spryker\Zed\ProductOptionCartConnector\Communication\Plugin\CartItemProductOptionPlugin;
 use Spryker\Zed\ProductOptionCartConnector\Communication\Plugin\ChangeProductOptionQuantityPlugin;
@@ -43,7 +42,6 @@ use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Cart\CustomAmountPrice
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Cart\ProductPackagingUnitCartAddItemStrategyPlugin;
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Cart\ProductPackagingUnitCartRemoveItemStrategyPlugin;
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Cart\ProductPackagingUnitItemExpanderPlugin;
-use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Item\AmountSalesUnitTranslationItemExpanderPlugin;
 use Spryker\Zed\ProductQuantity\Communication\Plugin\Cart\ProductQuantityRestrictionCartPreCheckPlugin;
 use Spryker\Zed\ProductQuantity\Communication\Plugin\CartExtension\ProductQuantityRestrictionCartRemovalPreCheckPlugin;
 use Spryker\Zed\SalesQuantity\Communication\Plugin\Cart\IsQuantitySplittableItemExpanderPlugin;
@@ -78,8 +76,6 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new AmountSalesUnitItemExpanderPlugin(), #ProductPackagingUnit
             new ProductPackagingUnitItemExpanderPlugin(), #ProductPackagingUnit
             new CustomAmountPriceItemExpanderPlugin(), #ProductPackagingUnit
-            new QuantitySalesUnitTranslationItemExpanderPlugin(), #ProductMeasurementUnit
-            new AmountSalesUnitTranslationItemExpanderPlugin(), #ProductPackagingUnit
         ];
     }
 
