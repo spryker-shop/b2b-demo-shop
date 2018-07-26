@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\DataImport\Business\Model\ProductConcrete;
 
+use Orm\Zed\Product\Persistence\Map\SpyProductTableMap;
 use Orm\Zed\Product\Persistence\SpyProduct;
 use Orm\Zed\Product\Persistence\SpyProductLocalizedAttributesQuery;
 use Orm\Zed\Product\Persistence\SpyProductQuery;
@@ -33,11 +34,17 @@ class ProductConcreteWriter extends PublishAwareStep implements DataImportStepIn
     const KEY_IS_COMPLETE = 'is_complete';
     const KEY_IS_SEARCHABLE = 'is_searchable';
     const KEY_BUNDLES = 'bundled';
+    const KEY_IS_QUANTITY_SPLITTABLE = 'is_quantity_splittable';
 
     /**
      * @var \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepository
      */
     protected $productRepository;
+
+    /**
+     * @var bool[] Keys are product column names
+     */
+    protected static $isProductColumnBuffer = [];
 
     /**
      * @param \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepository $productRepository
@@ -82,9 +89,31 @@ class ProductConcreteWriter extends PublishAwareStep implements DataImportStepIn
             ->setFkProductAbstract($idAbstract)
             ->setAttributes(json_encode($dataSet[static::KEY_ATTRIBUTES]));
 
+        if ($this->isProductColumn(static::KEY_IS_QUANTITY_SPLITTABLE)) {
+            $isQuantitySplittable = $dataSet[static::KEY_IS_QUANTITY_SPLITTABLE] === "" ? true : $dataSet[static::KEY_IS_QUANTITY_SPLITTABLE];
+            $productEntity->setIsQuantitySplittable($isQuantitySplittable);
+        }
+
         $productEntity->save();
 
         return $productEntity;
+    }
+
+    /**
+     * @param string $columnName
+     *
+     * @return bool
+     */
+    protected function isProductColumn(string $columnName): bool
+    {
+        if (isset(static::$isProductColumnBuffer[$columnName])) {
+            return static::$isProductColumnBuffer[$columnName];
+        }
+
+        $isColumnExists = SpyProductTableMap::getTableMap()->hasColumn($columnName);
+        static::$isProductColumnBuffer[$columnName] = $isColumnExists;
+
+        return $isColumnExists;
     }
 
     /**
