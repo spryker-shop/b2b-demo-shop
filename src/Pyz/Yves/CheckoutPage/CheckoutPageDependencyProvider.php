@@ -19,7 +19,7 @@ use SprykerShop\Yves\CustomerPage\Form\GuestForm;
 use SprykerShop\Yves\CustomerPage\Form\LoginForm;
 use SprykerShop\Yves\CustomerPage\Form\RegisterForm;
 use SprykerShop\Yves\DiscountWidget\Plugin\CheckoutPage\CheckoutVoucherFormWidgetPlugin;
-use SprykerShop\Yves\ProductPackagingUnitWidget\Plugin\SummaryPage\SummaryProductPackagingUnitWidgetPlugin;
+use SprykerShop\Yves\ProductPackagingUnitWidget\Plugin\CheckoutPage\SummaryProductPackagingUnitWidgetPlugin;
 
 class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyProvider
 {
