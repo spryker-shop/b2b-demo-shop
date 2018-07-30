@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bfc24d8085d73e9bfcedbe1954b054d8",
+    "content-hash": "4bd01d2699b395cb321241e137378fe6",
     "packages": [
         {
             "name": "braintree/braintree_php",
@@ -926,16 +926,16 @@
         },
         {
             "name": "lcobucci/jwt",
-            "version": "3.2.2",
+            "version": "3.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/lcobucci/jwt.git",
-                "reference": "0b5930be73582369e10c4d4bb7a12bac927a203c"
+                "reference": "01da822b3c2982ca9f2a1234f802a3ec001527ec"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lcobucci/jwt/zipball/0b5930be73582369e10c4d4bb7a12bac927a203c",
-                "reference": "0b5930be73582369e10c4d4bb7a12bac927a203c",
+                "url": "https://api.github.com/repos/lcobucci/jwt/zipball/01da822b3c2982ca9f2a1234f802a3ec001527ec",
+                "reference": "01da822b3c2982ca9f2a1234f802a3ec001527ec",
                 "shasum": ""
             },
             "require": {
@@ -980,7 +980,7 @@
                 "JWS",
                 "jwt"
             ],
-            "time": "2017-09-01T08:23:26+00:00"
+            "time": "2018-07-29T14:38:43+00:00"
         },
         {
             "name": "league/csv",
@@ -1968,6 +1968,88 @@
             "time": "2016-10-10T12:19:37+00:00"
         },
         {
+            "name": "ramsey/uuid",
+            "version": "3.8.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ramsey/uuid.git",
+                "reference": "d09ea80159c1929d75b3f9c60504d613aeb4a1e3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ramsey/uuid/zipball/d09ea80159c1929d75b3f9c60504d613aeb4a1e3",
+                "reference": "d09ea80159c1929d75b3f9c60504d613aeb4a1e3",
+                "shasum": ""
+            },
+            "require": {
+                "paragonie/random_compat": "^1.0|^2.0|9.99.99",
+                "php": "^5.4 || ^7.0",
+                "symfony/polyfill-ctype": "^1.8"
+            },
+            "replace": {
+                "rhumsaa/uuid": "self.version"
+            },
+            "require-dev": {
+                "codeception/aspect-mock": "^1.0 | ~2.0.0",
+                "doctrine/annotations": "~1.2.0",
+                "goaop/framework": "1.0.0-alpha.2 | ^1.0 | ~2.1.0",
+                "ircmaxell/random-lib": "^1.1",
+                "jakub-onderka/php-parallel-lint": "^0.9.0",
+                "mockery/mockery": "^0.9.9",
+                "moontoast/math": "^1.1",
+                "php-mock/php-mock-phpunit": "^0.3|^1.1",
+                "phpunit/phpunit": "^4.7|^5.0|^6.5",
+                "squizlabs/php_codesniffer": "^2.3"
+            },
+            "suggest": {
+                "ext-ctype": "Provides support for PHP Ctype functions",
+                "ext-libsodium": "Provides the PECL libsodium extension for use with the SodiumRandomGenerator",
+                "ext-uuid": "Provides the PECL UUID extension for use with the PeclUuidTimeGenerator and PeclUuidRandomGenerator",
+                "ircmaxell/random-lib": "Provides RandomLib for use with the RandomLibAdapter",
+                "moontoast/math": "Provides support for converting UUID to 128-bit integer (in string form).",
+                "ramsey/uuid-console": "A console application for generating UUIDs with ramsey/uuid",
+                "ramsey/uuid-doctrine": "Allows the use of Ramsey\\Uuid\\Uuid as Doctrine field type."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Ramsey\\Uuid\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Marijn Huizendveld",
+                    "email": "marijn.huizendveld@gmail.com"
+                },
+                {
+                    "name": "Thibaud Fabre",
+                    "email": "thibaud@aztech.io"
+                },
+                {
+                    "name": "Ben Ramsey",
+                    "email": "ben@benramsey.com",
+                    "homepage": "https://benramsey.com"
+                }
+            ],
+            "description": "Formerly rhumsaa/uuid. A PHP 5.4+ library for generating RFC 4122 version 1, 3, 4, and 5 universally unique identifiers (UUID).",
+            "homepage": "https://github.com/ramsey/uuid",
+            "keywords": [
+                "guid",
+                "identifier",
+                "uuid"
+            ],
+            "time": "2018-07-19T23:38:55+00:00"
+        },
+        {
             "name": "react/promise",
             "version": "v2.7.0",
             "source": {
@@ -2357,11 +2439,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-bugfix/phpstan-0-10",
+            "version": "dev-feature/glue-165/master-key-issue-for-all-apis",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "bab1d15c0833f07934691905f4f29ce8fec0549a"
+                "reference": "f13f5220f7790179b8e35e1481eac53f8147a993"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.5",
@@ -2555,6 +2637,7 @@
                 "spryker/propel-orm": "*",
                 "spryker/queue": "*",
                 "spryker/quote": "*",
+                "spryker/ramsey-uuid": "*",
                 "spryker/ratepay": "*",
                 "spryker/redis": "*",
                 "spryker/refund": "*",
@@ -2595,6 +2678,7 @@
                 "spryker/util-network": "*",
                 "spryker/util-sanitize": "*",
                 "spryker/util-text": "*",
+                "spryker/util-uuid-generator": "*",
                 "spryker/util-validate": "*",
                 "spryker/wishlist": "*",
                 "spryker/zed-navigation": "*",
@@ -2624,15 +2708,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2018-07-28T10:04:44+00:00"
+            "time": "2018-07-30T09:51:14+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-bugfix/phpstan-0-10",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "b13cb3de1dcd2948ae88ebc1f225ac9e0597768e"
+                "reference": "818a1472ac23c9388631c93cd974b1c19896665f"
             },
             "require": {
                 "php": ">=7.1"
@@ -2707,7 +2791,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2018-07-28T10:58:12+00:00"
+            "time": "2018-07-30T08:33:52+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -5830,7 +5914,7 @@
                 "php",
                 "scaffolding"
             ],
-            "time": "2018-04-26T09:21:21+00:00"
+            "time": "2018-04-26T16:47:39+00:00"
         },
         {
             "name": "nette/robot-loader",
@@ -8185,12 +8269,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/git-hook.git",
-                "reference": "9842d3b64448548ae0a78b90e7d26f6bf3bf7378"
+                "reference": "bc83bcec548316c5e10c3faecca825aa8be40ac6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/git-hook/zipball/9842d3b64448548ae0a78b90e7d26f6bf3bf7378",
-                "reference": "9842d3b64448548ae0a78b90e7d26f6bf3bf7378",
+                "url": "https://api.github.com/repos/spryker/git-hook/zipball/bc83bcec548316c5e10c3faecca825aa8be40ac6",
+                "reference": "bc83bcec548316c5e10c3faecca825aa8be40ac6",
                 "shasum": ""
             },
             "require": {
@@ -8229,7 +8313,7 @@
                 "sniffer",
                 "standards"
             ],
-            "time": "2018-07-19T16:43:08+00:00"
+            "time": "2018-07-30T09:51:34+00:00"
         },
         {
             "name": "spryker/spryk",
