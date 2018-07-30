@@ -80,10 +80,11 @@ use Spryker\Zed\Discount\DiscountConfig;
 class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
 {
     /**
-     * @return \Spryker\Zed\DataImport\Business\Model\DataImporterCollectionInterface
+     * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface
      */
     public function getImporter()
     {
+        /** @var \Spryker\Zed\DataImport\Business\Model\DataImporterPluginCollectionInterface|\Spryker\Zed\DataImport\Business\Model\DataImporterCollectionInterface $dataImporterCollection */
         $dataImporterCollection = $this->createDataImporterCollection();
         $dataImporterCollection
             ->addDataImporter($this->createStoreImporter())
@@ -165,6 +166,7 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
      */
     protected function createStoreImporter()
     {
+        /** @var \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetStepBrokerAwareInterface|\Spryker\Zed\DataImport\Business\Model\DataImporterInterface $dataImporter */
         $dataImporter = $this->createDataImporter(
             $this->getConfig()->getStoreDataImporterConfiguration()->getImportType(),
             new StoreReader(
