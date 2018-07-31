@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<database xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="zed" xsi:noNamespaceSchemaLocation="http://static.spryker.com/schema-01.xsd" namespace="Orm\Zed\ProductPackagingUnit\Persistence" package="src.Orm.Zed.ProductPackagingUnit.Persistence">
+
+    <table name="spy_product_packaging_unit" phpName="SpyProductPackagingUnit">
+        <behavior name="event">
+            <parameter name="spy_product_packaging_unit_all" column="*"/>
+        </behavior>
+    </table>
+
+    <table name="spy_product_packaging_unit_type" phpName="SpyProductPackagingUnitType">
+        <behavior name="event">
+            <parameter name="spy_product_packaging_unit_type_all" column="*"/>
+        </behavior>
+    </table>
+
+    <table name="spy_product_packaging_unit_amount" phpName="SpyProductPackagingUnitAmount">
+        <behavior name="event">
+            <parameter name="spy_product_packaging_unit_amount_all" column="*"/>
+        </behavior>
+    </table>
+
+    <table name="spy_product_packaging_lead_product" phpName="SpyProductPackagingLeadProduct">
+        <behavior name="event">
+            <parameter name="spy_product_packaging_lead_product_all" column="*"/>
+        </behavior>
+    </table>
+</database>
