@@ -21,6 +21,7 @@ use Spryker\Zed\ProductBundle\Communication\Plugin\Checkout\ProductBundleAvailab
 use Spryker\Zed\ProductBundle\Communication\Plugin\Checkout\ProductBundleOrderSaverPlugin;
 use Spryker\Zed\ProductDiscontinued\Communication\Plugin\Checkout\ProductDiscontinuedCheckoutPreConditionPlugin;
 use Spryker\Zed\ProductOption\Communication\Plugin\Checkout\ProductOptionOrderSaverPlugin;
+use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Checkout\AmountAvailabilityCheckoutPreConditionPlugin;
 use Spryker\Zed\Sales\Communication\Plugin\Checkout\SalesOrderSaverPlugin;
 use Spryker\Zed\Sales\Communication\Plugin\SalesOrderExpanderPlugin;
 use Spryker\Zed\SalesProductConnector\Communication\Plugin\Checkout\ItemMetadataSaverPlugin;
@@ -44,6 +45,7 @@ class CheckoutDependencyProvider extends SprykerCheckoutDependencyProvider
             new PaymentPreCheckPlugin(),
             new ShipmentCheckoutPreCheckPlugin(),
             new ProductDiscontinuedCheckoutPreConditionPlugin(), #ProductDiscontinuedFeature
+            new AmountAvailabilityCheckoutPreConditionPlugin(),
         ];
     }
 
