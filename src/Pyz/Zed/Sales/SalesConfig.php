@@ -47,10 +47,13 @@ class SalesConfig extends SprykerSalesConfig
     public function getSalesDetailExternalBlocksUrls()
     {
         $projectExternalBlocks = [
+            'cart_note' => '/cart-note/sales/list', #CartNoteFeature
+            'cart_note_bundle_items' => '/cart-note-product-bundle-connector/sales/list', #CartNoteFeature
             'payments' => '/payment/sales/list',
             'shipment' => '/shipment/sales/list',
             'discount' => '/discount/sales/list',
             'refund' => '/refund/sales/list',
+            'source' => '/manual-order-entry/sales/list',
         ];
 
         $externalBlocks = parent::getSalesDetailExternalBlocksUrls();
