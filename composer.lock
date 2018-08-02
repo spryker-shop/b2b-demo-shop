@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "7b0a28596e69279e08b625d4bbb464cd",
+    "content-hash": "27dd2da043b664f03ee404fe87997cbe",
     "packages": [
         {
             "name": "braintree/braintree_php",
@@ -2439,11 +2439,11 @@
         },
         {
             "name": "spryker/spryker",
-            "version": "dev-feature/ps-1161/master-product-restrictions",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "a26a10d48ce588e76d6560aaf5815b2f286efd93"
+                "reference": "5e83b3edfd6703ae34f8955018fee6b3a329d1cd"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.5",
@@ -2708,15 +2708,15 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2018-08-02T11:47:33+00:00"
+            "time": "2018-08-02T15:56:34+00:00"
         },
         {
             "name": "spryker/spryker-shop",
-            "version": "dev-feature/ps-1161/master-product-restrictions",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker-shop.git",
-                "reference": "aa7cb53c12fdcd5a35b57a1e5a7824ab712602b4"
+                "reference": "05f7679fb1d9e1215c68cef273ea59813ceeebca"
             },
             "require": {
                 "php": ">=7.1"
@@ -2791,7 +2791,7 @@
                 "proprietary"
             ],
             "description": "Spryker Shop page and widget modules",
-            "time": "2018-08-02T06:30:34+00:00"
+            "time": "2018-08-02T15:56:37+00:00"
         },
         {
             "name": "spryker/synchronization-behavior",
@@ -2843,6 +2843,51 @@
             ],
             "description": "SynchronizationBehavior module",
             "time": "2018-08-02T10:10:13+00:00"
+        },
+        {
+            "name": "spryker/uuid-behavior",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/uuid-behavior.git",
+                "reference": "1416c5c522d6cee15f7c613f29511b6b759f6745"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/uuid-behavior/zipball/1416c5c522d6cee15f7c613f29511b6b759f6745",
+                "reference": "1416c5c522d6cee15f7c613f29511b6b759f6745",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/kernel": "^3.0.0",
+                "spryker/propel-orm": "^1.6.0",
+                "spryker/util-uuid-generator": "^1.0.0",
+                "spryker/zend": "^2.1.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "propel-behavior",
+            "extra": {
+                "name": "uuid",
+                "class": "\\Spryker\\Zed\\UuidBehavior\\Persistence\\Propel\\Behavior\\UuidBehavior",
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "UuidBehavior module",
+            "time": "2018-08-02T10:25:32+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -5914,7 +5959,7 @@
                 "php",
                 "scaffolding"
             ],
-            "time": "2018-04-26T16:47:39+00:00"
+            "time": "2018-04-26T09:21:21+00:00"
         },
         {
             "name": "nette/robot-loader",
