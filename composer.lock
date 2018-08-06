@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "b59424f88893361f16d15c9e7be356dc",
+    "content-hash": "27dd2da043b664f03ee404fe87997cbe",
     "packages": [
         {
             "name": "braintree/braintree_php",
@@ -2434,47 +2434,12 @@
             "time": "2018-07-23T08:12:41+00:00"
         },
         {
-            "name": "spryker/ramsey-uuid",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker/ramsey-uuid.git",
-                "reference": "622d58c423fcae4facf128eb09401a9dc0142578"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker/ramsey-uuid/zipball/622d58c423fcae4facf128eb09401a9dc0142578",
-                "reference": "622d58c423fcae4facf128eb09401a9dc0142578",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.1",
-                "ramsey/uuid": "^3.8.0"
-            },
-            "require-dev": {
-                "spryker/code-sniffer": "*",
-                "spryker/testify": "*"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "RamseyUuid module",
-            "time": "2018-07-25T11:16:07+00:00"
-        },
-        {
             "name": "spryker/spryker",
-            "version": "dev-feature/ps-1284-elasticsearch-open-index-and-put-settings",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spryker/spryker.git",
-                "reference": "acadb52a8b52831afb2a52167be8b85638f63b1d"
+                "reference": "95d00d06accbb0a0f787c4a7708f4f4f3fd20fc9"
             },
             "require": {
                 "everon/criteria-builder": "^1.1.5",
@@ -2586,6 +2551,8 @@
                 "spryker/mandrill": "*",
                 "spryker/messenger": "*",
                 "spryker/money": "*",
+                "spryker/monitoring": "*",
+                "spryker/monitoring-extension": "*",
                 "spryker/monolog": "*",
                 "spryker/navigation": "*",
                 "spryker/navigation-collector": "*",
@@ -2666,6 +2633,7 @@
                 "spryker/propel-orm": "*",
                 "spryker/queue": "*",
                 "spryker/quote": "*",
+                "spryker/ramsey-uuid": "*",
                 "spryker/ratepay": "*",
                 "spryker/redis": "*",
                 "spryker/refund": "*",
@@ -2706,6 +2674,7 @@
                 "spryker/util-network": "*",
                 "spryker/util-sanitize": "*",
                 "spryker/util-text": "*",
+                "spryker/util-uuid-generator": "*",
                 "spryker/util-validate": "*",
                 "spryker/wishlist": "*",
                 "spryker/zed-navigation": "*",
@@ -2735,7 +2704,7 @@
                 "proprietary"
             ],
             "description": "Spryker Framework",
-            "time": "2018-08-02T14:28:18+00:00"
+            "time": "2018-08-06T12:15:51+00:00"
         },
         {
             "name": "spryker/spryker-shop",
@@ -2870,47 +2839,6 @@
             ],
             "description": "SynchronizationBehavior module",
             "time": "2018-08-02T10:10:13+00:00"
-        },
-        {
-            "name": "spryker/util-uuid-generator",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker/util-uuid-generator.git",
-                "reference": "060829b2e2449be8247b0b2ffe116d406dc518fe"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker/util-uuid-generator/zipball/060829b2e2449be8247b0b2ffe116d406dc518fe",
-                "reference": "060829b2e2449be8247b0b2ffe116d406dc518fe",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.1",
-                "spryker/kernel": "^3.0.0",
-                "spryker/ramsey-uuid": "^1.0.0"
-            },
-            "require-dev": {
-                "spryker/code-sniffer": "*",
-                "spryker/testify": "*"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Spryker\\": "src/Spryker/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "UtilUuidGenerator module",
-            "time": "2018-07-26T08:59:06+00:00"
         },
         {
             "name": "spryker/uuid-behavior",
@@ -5773,7 +5701,7 @@
                 "configurator",
                 "nette"
             ],
-            "time": "2018-05-16T11:51:51+00:00"
+            "time": "2018-05-17T12:52:20+00:00"
         },
         {
             "name": "nette/di",
