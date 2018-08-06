@@ -108,6 +108,7 @@ script:
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console code:phpstan -m Spryker.all ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console code:phpstan -m SprykerShop.all ; fi
 
+  - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console code:propel:validate-abstract ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console propel:schema:validate ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console transfer:validate ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console code:sniff:style ; fi
