@@ -26,7 +26,6 @@ use SprykerShop\Yves\ProductRelationWidget\Plugin\ProductDetailPage\SimilarProdu
 use SprykerShop\Yves\ProductReplacementForWidget\Plugin\ProductDetailPage\ProductReplacementForWidgetPlugin;
 use SprykerShop\Yves\ProductReviewWidget\Plugin\ProductDetailPage\ProductReviewWidgetPlugin;
 use SprykerShop\Yves\ShoppingListWidget\Plugin\ProductDetailPage\ShoppingListWidgetPlugin;
-use SprykerShop\Yves\WishlistWidget\Plugin\ProductDetailPage\WishlistWidgetPlugin;
 
 class ProductDetailPageDependencyProvider extends SprykerShopProductDetailPageDependencyProvider
 {
@@ -42,7 +41,6 @@ class ProductDetailPageDependencyProvider extends SprykerShopProductDetailPageDe
             AvailabilityWidgetPlugin::class,
             ProductOptionWidgetPlugin::class,
             ProductAbstractLabelWidgetPlugin::class,
-            WishlistWidgetPlugin::class,
             SimilarProductsWidgetPlugin::class,
             ProductCmsBlockWidgetPlugin::class,
             ProductReviewWidgetPlugin::class,
