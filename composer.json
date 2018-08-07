@@ -92,7 +92,7 @@
     "phpstan/phpstan": "^0.10.2",
     "phpunit/phpunit": "<7.0.0"
   },
-  "autoload": {
+  "autoload": {addParameter('accessType', 'owned')
     "psr-4": {
       "Generated\\": "src/Generated/",
       "Orm\\": "src/Orm/",
