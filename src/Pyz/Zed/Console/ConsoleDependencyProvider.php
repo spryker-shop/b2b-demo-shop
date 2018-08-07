@@ -78,6 +78,7 @@ use Spryker\Zed\Search\Communication\Console\SearchCopyIndexConsole;
 use Spryker\Zed\Search\Communication\Console\SearchCreateSnapshotConsole;
 use Spryker\Zed\Search\Communication\Console\SearchDeleteIndexConsole;
 use Spryker\Zed\Search\Communication\Console\SearchDeleteSnapshotConsole;
+use Spryker\Zed\Search\Communication\Console\SearchOpenIndexConsole;
 use Spryker\Zed\Search\Communication\Console\SearchRegisterSnapshotRepositoryConsole;
 use Spryker\Zed\Search\Communication\Console\SearchRestoreSnapshotConsole;
 use Spryker\Zed\Session\Communication\Console\SessionRemoveLockConsole;
@@ -219,6 +220,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new StorageDeleteAllConsole(),
             new SearchDeleteIndexConsole(),
             new SearchCloseIndexConsole(),
+            new SearchOpenIndexConsole(),
             new SearchRegisterSnapshotRepositoryConsole(),
             new SearchDeleteSnapshotConsole(),
             new SearchCreateSnapshotConsole(),
