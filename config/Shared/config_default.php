@@ -451,4 +451,5 @@ $config[FileManagerGuiConstants::DEFAULT_FILE_MAX_SIZE] = '10M';
 // ---------- Monitoring
 $config[MonitoringConstants::IGNORABLE_TRANSACTIONS] = [
     '_profiler',
+    '_wdt',
 ];
