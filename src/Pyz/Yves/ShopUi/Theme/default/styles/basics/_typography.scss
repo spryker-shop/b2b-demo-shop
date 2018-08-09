@@ -1,0 +1,87 @@
+@mixin basic-typography() {
+    @font-face {
+        font-family: 'Circular';
+        src: url('//s3.eu-central-1.amazonaws.com/spryker/fonts/circular-pro/lineto-circular-pro-book.woff2') format('woff2'),
+        url('//s3.eu-central-1.amazonaws.com/spryker/fonts/circular-pro/lineto-circular-pro-book.woff') format('woff');
+        font-weight: 400;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: 'Circular';
+        src: url('//s3.eu-central-1.amazonaws.com/spryker/fonts/circular-pro/lineto-circular-pro-medium.woff2') format('woff2'),
+        url('//s3.eu-central-1.amazonaws.com/spryker/fonts/circular-pro/lineto-circular-pro-medium.woff') format('woff');
+        font-weight: 500;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: 'Circular';
+        src: url('//s3.eu-central-1.amazonaws.com/spryker/fonts/circular-pro/lineto-circular-pro-bold.woff2') format('woff2'),
+        url('//s3.eu-central-1.amazonaws.com/spryker/fonts/circular-pro/lineto-circular-pro-bold.woff') format('woff');
+        font-weight: 700;
+        font-style: normal;
+    }
+
+    html {
+        font-size: $setting-font-size-base;
+    }
+
+    body {
+        @include helper-font-size(default);
+        @include helper-font-weight(regular);
+        @include helper-font-line-height(default);
+        position: relative;
+        background-color: $setting-color-white;
+        color: $setting-color-gray-4;
+        font-family: $setting-font-family;
+    }
+
+    @each $i in (1, 2, 3, 4, 5, 6) {
+        h#{$i} {
+            @include helper-font-size($i);
+            @include helper-font-line-height($i);
+            display: block;
+        }
+    }
+
+    a {
+        color: $setting-color-alt;
+        text-decoration: none;
+
+        &:hover {
+            color: $setting-color-main;
+        }
+    }
+
+    b,
+    strong {
+        @include helper-font-weight(bold);
+    }
+
+    i,
+    em,
+    cite {
+        font-style: italic;
+    }
+
+    hr {
+        @include helper-ui-clearfix;
+        border-bottom: 1px solid $setting-color-gray-3;
+        margin: 0.5rem 0;
+    }
+
+    small {
+        @include helper-font-size(small);
+    }
+
+    big {
+        @include helper-font-size(big);
+    }
+
+    p,
+    blockquote,
+    iframe {
+        margin: helper-rem(8) 0;
+    }
+}
