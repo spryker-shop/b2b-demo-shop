@@ -25,6 +25,7 @@ use Spryker\Shared\Kernel\ClassResolver\Cache\Provider\File;
 use Spryker\Shared\Kernel\KernelConstants;
 use Spryker\Shared\Kernel\Store;
 use Spryker\Shared\Log\LogConstants;
+use Spryker\Shared\Monitoring\MonitoringConstants;
 use Spryker\Shared\NewRelic\NewRelicConstants;
 use Spryker\Shared\Oauth\OauthConstants;
 use Spryker\Shared\OauthCustomerConnector\OauthCustomerConnectorConstants;
@@ -446,3 +447,9 @@ $config[FileSystemConstants::FILESYSTEM_SERVICE] = [
 // ---------- FileManager
 $config[FileManagerConstants::STORAGE_NAME] = 'files';
 $config[FileManagerGuiConstants::DEFAULT_FILE_MAX_SIZE] = '10M';
+
+// ---------- Monitoring
+$config[MonitoringConstants::IGNORABLE_TRANSACTIONS] = [
+    '_profiler',
+    '_wdt',
+];
