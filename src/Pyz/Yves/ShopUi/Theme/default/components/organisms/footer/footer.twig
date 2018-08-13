@@ -8,7 +8,7 @@
 {% block body %}
 
     {% block subscribe %}
-        <div class="container">
+        <div class="container {{ config.name }}__subscribe">
             {{ render(path('newsletter/subscribe')) }}
         </div>
     {% endblock %}
