@@ -83,7 +83,8 @@ module.exports = {
         componentStyles: {
             // absolute dirs in which look for
             dirs: [
-                path.join(context, paths.core.modules)
+                path.join(context, paths.core.modules),
+                path.join(context, paths.project.modules)
             ],
             // files/dirs patterns
             patterns: [

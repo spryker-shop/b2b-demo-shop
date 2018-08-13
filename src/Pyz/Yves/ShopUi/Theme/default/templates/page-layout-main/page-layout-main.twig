@@ -1,0 +1,72 @@
+{% extends template('page-blank') %}
+
+{%- block class -%}js-page-layout-main__side-drawer-container{%- endblock -%}
+
+{% block body %}
+    {% block notifications %}
+        {% include organism('notification-area') only %}
+    {% endblock %}
+
+    {% block sidebar %}
+        {% include organism('side-drawer') with {
+            class: 'is-hidden-lg-xl',
+            attributes: {
+                'container-selector': 'js-page-layout-main__side-drawer-container',
+                'trigger-selector': 'js-page-layout-main__side-drawer-trigger'
+            }
+        } only %}
+    {% endblock %}
+
+    {% block outside %}{% endblock %}
+
+    {% block header %}
+        {% embed organism('header') only %}
+            {% block mobile %}
+                <a href="#" class="link link--alt js-page-layout-main__side-drawer-trigger">
+                    {% include atom('icon') with {
+                        modifiers: ['big'],
+                        data: {
+                            name: 'bars'
+                        }
+                    } only %}
+                </a>
+            {% endblock %}
+        {% endembed %}
+    {% endblock %}
+
+    <div class="content-wrap">
+
+        {% block pageInfo %}
+            <div class="container">
+                {% block breadcrumbs %}
+                    {% include molecule('breadcrumb') only %}
+                {% endblock %}
+
+                <hr />
+
+                {% block title %}
+                    <h3>{{data.title}}</h3>
+                {% endblock %}
+            </div>
+        {% endblock %}
+
+        <main>
+
+            {% block contentTop %}{% endblock %}
+
+            <div class="container">
+                {% block content %}{% endblock %}
+            </div>
+
+            {% block contentBottom %}{% endblock %}
+        </main>
+    </div>
+
+    {% block footer %}
+        {% include organism('footer') only %}
+    {% endblock %}
+
+    {% block icons %}
+        {% include atom('icon-sprite') only %}
+    {% endblock %}
+{% endblock %}

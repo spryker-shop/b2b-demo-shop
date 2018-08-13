@@ -1,0 +1,89 @@
+@mixin shop-ui-footer($name: '.footer') {
+    #{$name} {
+        background-color: $setting-color-gray-7;
+
+        &__title {
+            font: fw(bold) rem(16)/rem(34) $setting-font-family;
+            margin-bottom: rem(10);
+        }
+
+        &__navigation {
+            padding-top: rem(54);
+        }
+
+        &__navigation-item {
+            @include helper-breakpoint-media-min($md-min) {
+                margin-bottom: 0;
+            }
+            margin-bottom: 1.5rem;
+
+            a {
+                @include helper-effect-transition(color);
+                color: $setting-color-gray-3;
+                line-height: rem(30);
+
+                &:hover,
+                &:focus {
+                    color: $setting-color-gray-4;
+                }
+            }
+        }
+
+        &__contact-info-item {
+            @include helper-effect-transition(color);
+            font-size: rem(18);
+            line-height: rem(23);
+        }
+
+        &__phone {
+            display: block;
+            font-weight: fw(medium);
+            margin-bottom: 1rem;
+            color: $setting-color-gray-4;
+
+            &:hover,
+            &:focus {
+                color: $setting-color-gray-3;
+            }
+        }
+
+        &__social-buttons {
+            @include helper-breakpoint-media-min($md-min) {
+                margin-top: rem(42);
+                margin-bottom: rem(47);
+            }
+            margin-top: rem(18);
+            margin-bottom: rem(18);
+
+            .link {
+                color: $setting-color-gray-3;
+
+                &:hover,
+                &:focus {
+                    color: $setting-color-gray-4;
+                }
+            }
+        }
+
+        &__hint {
+            font-size: rem(13);
+            line-height: 1rem;
+            color: $setting-color-gray-2;
+            letter-spacing: rem(0.54);
+        }
+
+        &__copyright {
+            background-color: $setting-color-blue-1;
+            text-align: center;
+            color: $setting-color-white;
+        }
+        &__copyright-build-with {
+            font: fw(bold) rem(12)/rem(15) $setting-font-family;
+            letter-spacing: rem(0.67);
+            text-transform: uppercase;
+            padding-top: rem(19);
+            padding-bottom: rem(21);
+        }
+    }
+}
+
