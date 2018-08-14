@@ -1,0 +1,40 @@
+{% extends template('widget') %}
+
+{% define data = {
+    form: _view.newsletterSubscriptionForm,
+    text: 'newsletter.form.subscribe.text' | trans,
+
+    events: {
+        success: _view.success,
+        error: _view.error
+    }
+} %}
+
+{% block body %}
+    <div class="grid grid--middle grid--justify">
+        <div class="col col--sm-12 col--lg-5">
+            <h5 class="subscribe-title">{{ 'global.subscribe.title' | trans }}</h5>
+            <p class="subscribe-text">{{data.text | raw}}</p>
+        </div>
+
+        {% include molecule('form') with {
+            class: 'col col--sm-12 col--lg-5',
+            modifiers: ['inline'],
+            data: {
+                form: data.form,
+                submit: {
+                    enable: true,
+                    text: '',
+                    icon: 'chevron-right',
+                    class: 'button button--hollow-icon'
+                }
+            }
+        } only %}
+    </div>
+
+    {% if data.events.success is not empty %}
+        <p class="text-big text-center text-success">{{data.events.success | trans}}</p>
+    {% elseif data.events.error is not empty %}
+        <p class="text-big text-center text-alert">{{data.events.error | trans}}</p>
+    {% endif %}
+{% endblock %}

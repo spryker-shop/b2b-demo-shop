@@ -1,0 +1,9 @@
+@mixin shop-ui-navigation-icon-list($name: '.navigation-icon-list') {
+    #{$name} {
+        &__icon {
+            color: $setting-color-dark;
+        }
+
+        @content;
+    }
+}
