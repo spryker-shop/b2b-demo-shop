@@ -46,7 +46,7 @@
             .input {
                 border: none;
                 border-bottom: 2px solid $setting-color-gray-4;
-                background-color: transparent;
+                background-color: $setting-color-transparent;
                 font: fw(regular) rem(18)/rem(23) $setting-font-family;
                 letter-spacing: rem(0.27);
                 color: $setting-color-gray-4;
@@ -60,8 +60,9 @@
             .button {
                 border: none;
                 color: $setting-color-gray-4;
-                min-height: rem(52);
+                min-height: rem(54);
                 padding-right: rem(22);
+                padding-bottom: rem(10);
 
                 &:hover,
                 &:focus {
@@ -75,12 +76,67 @@
             }
         }
 
+        &__logos {
+            @include helper-breakpoint-media-min($lg-min) {
+                padding-bottom: rem(26);
+            }
+            background-color: $setting-color-bg;
+            padding: rem(26) 0 rem(10);
+            box-shadow: 0 3px 3px 0 $setting-color-shadow-1, 0 18px 18px 0 $setting-color-shadow-1;
+
+            .menu {
+                @include helper-breakpoint-media-min($lg-min) {
+                    flex-wrap: nowrap;
+                }
+                display: flex;
+                justify-content: space-between;
+                flex-wrap: wrap;
+
+                .menu__item {
+                    @include helper-breakpoint-media-min($lg-min) {
+                        margin-bottom: 0;
+
+                        &:first-child {
+                            margin-left: 0;
+                        }
+
+                        &:last-child {
+                            margin-right: 0;
+                        }
+                    }
+
+                    margin: 0 0.5rem 1rem;
+                }
+            }
+
+            .icon {
+                height: rem(28);
+                width: rem(93);
+            }
+
+            .invoice-logo__icon {
+                width: rem(73);
+            }
+
+            .pay-pal-logo__icon {
+                width: rem(64);
+            }
+
+            .klarna-logo__icon {
+                width: rem(68);
+            }
+
+            .dhl-logo__icon {
+                width: rem(76);
+            }
+        }
+
         &__navigation {
             padding-top: rem(54);
         }
 
         &__navigation-item {
-            @include helper-breakpoint-media-min($md-min) {
+            @include helper-breakpoint-media-min($lg-min) {
                 margin-bottom: 0;
             }
             margin-bottom: 1.5rem;
