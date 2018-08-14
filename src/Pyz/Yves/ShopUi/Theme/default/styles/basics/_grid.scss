@@ -4,7 +4,7 @@
         width: 100%;
         max-width: $setting-grid-max-width;
         margin: auto;
-        padding: 0 15px;
+        padding: 0 $setting-grid-space;
     }
 
     .grid {
@@ -70,12 +70,12 @@
         }
 
         &--gap {
-            margin-left: -15px;
-            margin-right: -15px;
+            margin-left: -$setting-grid-space;
+            margin-right: -$setting-grid-space;
 
             & .col {
-                padding-left: 15px;
-                padding-right: 15px;
+                padding-left: $setting-grid-space;
+                padding-right: $setting-grid-space;
             }
         }
 
