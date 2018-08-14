@@ -1,8 +1,7 @@
 {% block content %}
     <!-- CMS_BLOCK_PLACEHOLDER : "title" -->
     <!-- CMS_BLOCK_PLACEHOLDER : "description" -->
-    <h1>{{ spyCmsBlockPlaceholder('title') | raw }}</h1>
+    {{ spyCmsBlockPlaceholder('title') | raw }}
     <hr/>
     {{ spyCmsBlockPlaceholder('description') | raw }}
 {% endblock %}
-

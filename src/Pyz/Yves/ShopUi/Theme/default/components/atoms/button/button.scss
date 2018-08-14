@@ -1,0 +1,19 @@
+@include shop-ui-button {
+    border-radius: $setting-border-radius-base;
+
+    &--big {
+        font-size: rem(18);
+        line-height: rem(22);
+        padding: rem(14) rem(28);
+    }
+
+    &--alt {
+        background-color: $setting-color-alt;
+
+        &:hover,
+        &:focus {
+            color: $setting-color-white;
+            background-color: helper-color-dark($setting-color-alt);
+        }
+    }
+}

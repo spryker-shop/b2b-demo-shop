@@ -11,6 +11,7 @@
             justify-content: center;
             align-items: center;
             margin-top: rem(24);
+
             li {
                 display: block;
                 margin: .3rem .5rem;
@@ -18,9 +19,11 @@
                 height: 5px;
                 background: $setting-color-light;
                 border-radius: 50%;
+
                 &:hover {
                     cursor: pointer;
                 }
+
                 &.slick-active {
                     width: 10px;
                     height: 10px;
@@ -33,11 +36,5 @@
                 }
             }
         }
-        .slick-initialized {
-            .jumbotron-slider-item__container {
-                display: flex !important;
-            }
-        }
-
     }
 }

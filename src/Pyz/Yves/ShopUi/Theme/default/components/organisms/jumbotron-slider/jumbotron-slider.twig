@@ -17,19 +17,22 @@
     {% embed molecule('slick-carousel') with {
         data: {
             slides: [{
-                imageUrl: '/assets/images/section-slider-item-image-10@2x.png',
+                imageUrl: '/assets/images/section-slider-item-image-10@2x.jpg',
                 link: 'jumbotron.smart_watches.link',
-                cmsBlockName: 'Jumbotron slide-1'
+                cmsBlockName: 'Main slide-1',
+                btnTitle: 'mainSlider.btn.title'
             },
                 {
-                    imageUrl: '/assets/images/section-slider-item-image-6@2x.png',
+                    imageUrl: '/assets/images/section-slider-item-image-6@2x.jpg',
                     link: 'jumbotron.smartphones.link',
-                    cmsBlockName: 'Jumbotron slide-2'
+                    cmsBlockName: 'Main slide-2',
+                    btnTitle: 'mainSlider.btn.title'
                 },
                 {
-                    imageUrl: '/assets/images/section-slider-item-image-7@2x.png',
+                    imageUrl: '/assets/images/section-slider-item-image-7@2x.jpg',
                     link: 'jumbotron.tablets.link',
-                    cmsBlockName: 'Jumbotron slide-3'
+                    cmsBlockName: 'Main slide-3',
+                    btnTitle: 'mainSlider.btn.title'
                 }
             ]
         },
@@ -37,7 +40,7 @@
             'data-json': '{
                             "slidesToShow": 1,
                             "dots": true,
-                            "autoplay": true,
+                            "autoplay": false,
                             "nextArrow": false,
                             "prevArrow": false,
                             "autoplaySpeed": 4000,
@@ -72,7 +75,8 @@
                     data: {
                         imageUrl: slide.imageUrl,
                         link: slide.link,
-                        cmsBlockName: slide.cmsBlockName
+                        cmsBlockName: slide.cmsBlockName,
+                        btnTitle: slide.btnTitle
                     }
                 } only %}
             {% endfor %}
