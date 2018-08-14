@@ -32,7 +32,7 @@ class MultiCartWidgetDependencyProvider extends SprykerMultiCartWidgetDependency
             SharedCartOperationsWidgetPlugin::class, #SharedCartFeature
             SharedCartShareWidgetPlugin::class, #SharedCartFeature
             SharedCartAddSeparateProductWidgetPlugin::class, #SharedCartFeature
-            SharedCartPermissionGroupWidgetPlugin::class,  #SharedCartFeature
+            SharedCartPermissionGroupWidgetPlugin::class, #SharedCartFeature
         ];
     }
 }
