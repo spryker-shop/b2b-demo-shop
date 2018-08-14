@@ -63,10 +63,10 @@
     {% block copyright %}
         <div class="{{ config.name }}__copyright">
             <div class="container {{ config.name }}__copyright-build-with">
-                <span class="{{ config.name }}__copyright-build-with__text">{{ 'global.build_with' | trans }}</span>
-                <a class="{{ config.name }}__copyright-build-with__link" href="{{ 'global.build_with.link' | trans }}">
+                <span class="{{ config.name }}__copyright-build-with-text">{{ 'global.build_with' | trans }}</span>
+                <a class="{{ config.name }}__copyright-build-with-link" href="{{ 'global.build_with.link' | trans }}">
                     {% include atom('icon') with {
-                        class: config.name ~ '__copyright-build-with__logo',
+                        class: config.name ~ '__copyright-build-with-logo',
                         data: {
                             name: 'build-with-logo'
                         }

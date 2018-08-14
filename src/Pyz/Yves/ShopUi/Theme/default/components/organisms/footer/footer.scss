@@ -21,7 +21,8 @@
                 position: relative;
             }
 
-            .form__fields {
+            .form__fields,
+            .form__action {
                 margin: 0;
             }
 
@@ -33,10 +34,6 @@
                 position: absolute;
                 right: 0;
                 bottom: 0;
-            }
-
-            .form__action {
-                margin: 0;
             }
 
             .label {
@@ -225,12 +222,12 @@
             justify-content: center;
         }
 
-        &__copyright-build-with__text {
+        &__copyright-build-with-text {
             margin-right: rem(18);
             padding-top: rem(12);
         }
 
-        &__copyright-build-with__link {
+        &__copyright-build-with-link {
             color: $setting-color-white;
 
             &:hover,
@@ -239,7 +236,7 @@
             }
         }
 
-        &__copyright-build-with__logo {
+        &__copyright-build-with-logo {
             width: rem(106);
             height: rem(48);
         }
