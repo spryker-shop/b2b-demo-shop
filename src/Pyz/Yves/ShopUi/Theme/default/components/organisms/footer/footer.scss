@@ -220,6 +220,28 @@
             text-transform: uppercase;
             padding-top: rem(19);
             padding-bottom: rem(21);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        &__copyright-build-with__text {
+            margin-right: rem(18);
+            padding-top: rem(12);
+        }
+
+        &__copyright-build-with__link {
+            color: $setting-color-white;
+
+            &:hover,
+            &:focus {
+                color: $setting-color-white;
+            }
+        }
+
+        &__copyright-build-with__logo {
+            width: rem(106);
+            height: rem(48);
         }
 
         .subscribe-title {
