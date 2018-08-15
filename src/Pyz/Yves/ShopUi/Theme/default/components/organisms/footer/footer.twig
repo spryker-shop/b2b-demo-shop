@@ -1,0 +1,78 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'footer',
+    tag: 'footer'
+} %}
+
+{% block body %}
+
+    {% block subscribe %}
+        <div class="container {{ config.name }}__subscribe">
+            {{ render(path('newsletter/subscribe')) }}
+        </div>
+    {% endblock %}
+
+    {% block logos %}
+        <div class="{{ config.name }}__logos">
+            <div class="container">
+                {{ widgetGlobal('NavigationWidgetPlugin', 'PAYMENT_PROVIDERS', 'navigation-providers-payment') }}
+            </div>
+        </div>
+    {% endblock %}
+
+    {% block navigation %}
+        <div class="container">
+            <div class="grid grid--gap {{ config.name }}__navigation">
+                <div class="col col--sm-12 col--lg-9">
+                    <div class="grid grid--gap">
+                        <div class="col col--sm-6 col--md-4 {{ config.name }}__navigation-item">
+                            <h5 class="{{ config.name }}__title">{{ 'global.top_categories' | trans }}</h5>
+                            {{ widgetGlobal('NavigationWidgetPlugin', 'FOOTER_NAVIGATION_TOP_CATEGORIES', 'navigation-footer') }}
+                        </div>
+                        <div class="col col--sm-6 col--md-4 {{ config.name }}__navigation-item">
+                            <h5 class="{{ config.name }}__title">{{ 'global.popular_brands' | trans }}</h5>
+                            {{ widgetGlobal('NavigationWidgetPlugin', 'FOOTER_NAVIGATION_POPULAR_BRANDS', 'navigation-footer') }}
+                        </div>
+                        <div class="col col--sm-6 col--md-4 {{ config.name }}__navigation-item">
+                            <h5 class="{{ config.name }}__title">Legal links</h5>
+                            {{ widgetGlobal('NavigationWidgetPlugin', 'FOOTER_NAVIGATION', 'navigation-footer') }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col col--sm-12 col--lg-3 {{ config.name }}__contact-info">
+                    <h5 class="{{ config.name }}__title">{{ 'global.contact_us' | trans }}</h5>
+                    <a class="{{ config.name }}__contact-info-item {{ config.name }}__phone" href="tel:+49 (0) 30 208 498 350">+49 (0) 30 208 498 350</a>
+                    <a class="{{ config.name }}__contact-info-item" href="mailto:info@spryker.com">info@spryker.com</a>
+                </div>
+            </div>
+
+            {% block social %}
+                <div class="grid grid--gap grid--middle {{ config.name }}__social-buttons">
+                    <div class="col col--sm-12 col--md-6 col--lg-9 {{ config.name }}__hint">* {{ 'global.hint' | trans }}
+                    </div>
+                    <div class="col col--sm-12 col--md-6 col--lg-3">
+                        {{ widgetGlobal('NavigationWidgetPlugin', 'SOCIAL_LINKS', 'navigation-social') }}
+                    </div>
+                </div>
+            {% endblock %}
+        </div>
+    {% endblock %}
+
+    {% block copyright %}
+        <div class="{{ config.name }}__copyright">
+            <div class="container {{ config.name }}__copyright-build-with">
+                <span class="{{ config.name }}__copyright-build-with-text">{{ 'global.build_with' | trans }}</span>
+                <a class="{{ config.name }}__copyright-build-with-link" href="{{ 'global.build_with.link' | trans }}">
+                    {% include atom('icon') with {
+                        class: config.name ~ '__copyright-build-with-logo',
+                        data: {
+                            name: 'build-with-logo'
+                        }
+                    } only %}
+                </a>
+            </div>
+        </div>
+    {% endblock %}
+{% endblock %}
