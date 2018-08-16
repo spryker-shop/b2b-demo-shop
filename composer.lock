@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "c8ff91a0f2cb43cdef4f532fd177fbf0",
+    "content-hash": "ef658b8a6eb1a75f7490d6dd23a5a3df",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -1940,7 +1940,7 @@
             ],
             "authors": [
                 {
-                    "name": "William DURAND",
+                    "name": "William Durand",
                     "email": "william.durand1@gmail.com"
                 }
             ],
@@ -19069,6 +19069,53 @@
             "time": "2018-08-06T10:28:55+00:00"
         },
         {
+            "name": "spryker/product-resource-alias-storage",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/product-resource-alias-storage.git",
+                "reference": "dba65e0079847aa6144993ba7c7dc6911ffa23c0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/product-resource-alias-storage/zipball/dba65e0079847aa6144993ba7c7dc6911ffa23c0",
+                "reference": "dba65e0079847aa6144993ba7c7dc6911ffa23c0",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/event-behavior": "^1.0.0",
+                "spryker/kernel": "^3.21.0",
+                "spryker/product": "^6.0.0",
+                "spryker/product-storage": "^1.0.0",
+                "spryker/storage": "^3.4.0",
+                "spryker/synchronization": "^1.0.0"
+            },
+            "require-dev": {
+                "spryker/event": "*"
+            },
+            "suggest": {
+                "spryker/event": "If you want to use Event plugins, minimum required version: 2.0.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ProductResourceAliasStorage module",
+            "time": "2018-08-16T12:19:57+00:00"
+        },
+        {
             "name": "spryker/product-review",
             "version": "2.0.0",
             "source": {
@@ -19832,6 +19879,50 @@
             ],
             "description": "ProductValidity module",
             "time": "2018-02-01T18:50:14+00:00"
+        },
+        {
+            "name": "spryker/products-rest-api",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/products-rest-api.git",
+                "reference": "27bd8c67b76788b43437eb38a90bd9783878b2e3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/products-rest-api/zipball/27bd8c67b76788b43437eb38a90bd9783878b2e3",
+                "reference": "27bd8c67b76788b43437eb38a90bd9783878b2e3",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/glue-application": "^1.0.0",
+                "spryker/glue-application-extension": "^1.0.0",
+                "spryker/kernel": "^3.22.0",
+                "spryker/product-resource-alias-storage": "^1.0.0",
+                "spryker/symfony": "^3.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ProductsRestApi module",
+            "time": "2018-08-15T12:41:50+00:00"
         },
         {
             "name": "spryker/propel",
