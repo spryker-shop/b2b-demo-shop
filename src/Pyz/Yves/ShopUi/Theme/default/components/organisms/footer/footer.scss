@@ -1,262 +1,259 @@
-@mixin shop-ui-footer($name: '.footer') {
-    #{$name} {
-        background-color: $setting-color-gray-7;
+.footer {
+    background-color: $setting-color-gray-7;
 
-        &__title {
-            font: fw(bold) rem(16)/rem(34) $setting-font-family;
-            margin-bottom: rem(10);
-        }
+    &__title {
+        font: fw(bold) rem(16)/rem(34) $setting-font-family;
+        margin-bottom: rem(10);
+    }
 
-        &__subscribe {
-            padding-top: rem(77);
-            margin-bottom: rem(77);
+    &__subscribe {
+        padding-top: rem(77);
+        margin-bottom: rem(77);
 
-            .form {
-                @include helper-breakpoint-media-min($lg-min) {
-                    padding-left: 15px;
-                }
-            }
-
-            .form__container {
-                position: relative;
-            }
-
-            .form__fields,
-            .form__action {
-                margin: 0;
-            }
-
-            .form__field {
-                padding: 0;
-            }
-
-            .form__actions {
-                position: absolute;
-                right: 0;
-                bottom: 0;
-            }
-
-            .label {
-                display: none;
-            }
-
-            .input {
-                border: none;
-                border-bottom: 2px solid $setting-color-gray-4;
-                background-color: $setting-color-transparent;
-                font: fw(regular) rem(18)/rem(23) $setting-font-family;
-                letter-spacing: rem(0.27);
-                color: $setting-color-gray-4;
-                padding: rem(13) rem(46) rem(16) 0;
-
-                &::placeholder {
-                    color: $setting-color-gray-4;
-                }
-            }
-
-            .button {
-                border: none;
-                color: $setting-color-gray-4;
-                min-height: rem(54);
-                padding-right: rem(22);
-                padding-bottom: rem(10);
-
-                &:hover,
-                &:focus {
-                    color: $setting-color-gray-3;
-                }
-            }
-
-            .icon {
-                width: 1rem;
-                height: 1rem;
-            }
-        }
-
-        &__logos {
+        .form {
             @include helper-breakpoint-media-min($lg-min) {
-                padding-bottom: rem(26);
+                padding-left: 15px;
             }
-            background-color: $setting-color-bg;
-            padding: rem(26) 0 rem(10);
-            box-shadow: 0 3px 3px 0 $setting-color-shadow-1, 0 18px 18px 0 $setting-color-shadow-1;
+        }
 
-            .menu {
+        .form__container {
+            position: relative;
+        }
+
+        .form__fields,
+        .form__action {
+            margin: 0;
+        }
+
+        .form__field {
+            padding: 0;
+        }
+
+        .form__actions {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+        }
+
+        .label {
+            display: none;
+        }
+
+        .input {
+            border: none;
+            border-bottom: 2px solid $setting-color-gray-4;
+            background-color: $setting-color-transparent;
+            font: fw(regular) rem(18)/rem(23) $setting-font-family;
+            letter-spacing: rem(0.27);
+            color: $setting-color-gray-4;
+            padding: rem(13) rem(46) rem(16) 0;
+
+            &::placeholder {
+                color: $setting-color-gray-4;
+            }
+        }
+
+        .button {
+            border: none;
+            color: $setting-color-gray-4;
+            min-height: rem(54);
+            padding-right: rem(22);
+            padding-bottom: rem(10);
+
+            &:hover,
+            &:focus {
+                color: $setting-color-gray-3;
+            }
+        }
+
+        .icon {
+            width: 1rem;
+            height: 1rem;
+        }
+    }
+
+    &__logos {
+        @include helper-breakpoint-media-min($lg-min) {
+            padding-bottom: rem(26);
+        }
+        background-color: $setting-color-bg;
+        padding: rem(26) 0 rem(10);
+        box-shadow: 0 3px 3px 0 $setting-color-shadow-1, 0 18px 18px 0 $setting-color-shadow-1;
+
+        .menu {
+            @include helper-breakpoint-media-min($lg-min) {
+                flex-wrap: nowrap;
+            }
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+
+            .menu__item {
                 @include helper-breakpoint-media-min($lg-min) {
-                    flex-wrap: nowrap;
-                }
-                display: flex;
-                justify-content: space-between;
-                flex-wrap: wrap;
+                    margin-bottom: 0;
 
-                .menu__item {
-                    @include helper-breakpoint-media-min($lg-min) {
-                        margin-bottom: 0;
-
-                        &:first-child {
-                            margin-left: 0;
-                        }
-
-                        &:last-child {
-                            margin-right: 0;
-                        }
+                    &:first-child {
+                        margin-left: 0;
                     }
 
-                    margin: 0 0.5rem 1rem;
+                    &:last-child {
+                        margin-right: 0;
+                    }
                 }
-            }
 
-            .icon {
-                height: rem(28);
-                width: rem(93);
-            }
-
-            .invoice-logo__icon {
-                width: rem(73);
-            }
-
-            .pay-pal-logo__icon {
-                width: rem(64);
-            }
-
-            .klarna-logo__icon {
-                width: rem(68);
-            }
-
-            .dhl-logo__icon {
-                width: rem(76);
+                margin: 0 0.5rem 1rem;
             }
         }
 
-        &__navigation {
-            padding-top: rem(54);
+        .icon {
+            height: rem(28);
+            width: rem(93);
         }
 
-        &__navigation-item {
-            @include helper-breakpoint-media-min($lg-min) {
-                margin-bottom: 0;
-            }
-            margin-bottom: 1.5rem;
-
-            a {
-                @include helper-effect-transition(color);
-                color: $setting-color-gray-3;
-                line-height: rem(30);
-
-                &:hover,
-                &:focus {
-                    color: $setting-color-gray-4;
-                }
-            }
+        .invoice-logo__icon {
+            width: rem(73);
         }
 
-        &__contact-info-item {
+        .pay-pal-logo__icon {
+            width: rem(64);
+        }
+
+        .klarna-logo__icon {
+            width: rem(68);
+        }
+
+        .dhl-logo__icon {
+            width: rem(76);
+        }
+    }
+
+    &__navigation {
+        padding-top: rem(54);
+    }
+
+    &__navigation-item {
+        @include helper-breakpoint-media-min($lg-min) {
+            margin-bottom: 0;
+        }
+        margin-bottom: 1.5rem;
+
+        a {
             @include helper-effect-transition(color);
-            font-size: rem(18);
-            line-height: rem(23);
-        }
-
-        &__phone {
-            display: block;
-            font-weight: fw(medium);
-            margin-bottom: 1rem;
-            color: $setting-color-gray-4;
-
-            &:hover,
-            &:focus {
-                color: $setting-color-gray-3;
-            }
-        }
-
-        &__social-buttons {
-            @include helper-breakpoint-media-max($sm-max) {
-                flex-direction: column-reverse;
-            }
-            @include helper-breakpoint-media-min($md-min) {
-                margin-top: rem(42);
-                margin-bottom: rem(47);
-            }
-            margin-top: rem(18);
-            margin-bottom: rem(18);
-
-            .navigation-icon-list {
-                @include helper-breakpoint-media-max($sm-max) {
-                    margin-bottom: 1rem;
-                }
-                @include helper-breakpoint-media-max($md-max) {
-                    text-align: center;
-                }
-            }
-
-            .link {
-                color: $setting-color-gray-3;
-
-                &:hover,
-                &:focus {
-                    color: $setting-color-gray-4;
-                }
-            }
-        }
-
-        &__hint {
-            font-size: rem(13);
-            line-height: 1rem;
-            color: $setting-color-gray-2;
-            letter-spacing: rem(0.54);
-        }
-
-        &__copyright {
-            background-color: $setting-color-blue-1;
-            text-align: center;
-            color: $setting-color-white;
-        }
-
-        &__copyright-build-with {
-            font: fw(bold) rem(12)/rem(15) $setting-font-family;
-            letter-spacing: rem(0.67);
-            text-transform: uppercase;
-            padding-top: rem(19);
-            padding-bottom: rem(21);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        &__copyright-build-with-text {
-            margin-right: rem(18);
-            padding-top: rem(12);
-        }
-
-        &__copyright-build-with-link {
-            color: $setting-color-white;
-
-            &:hover,
-            &:focus {
-                color: $setting-color-white;
-            }
-        }
-
-        &__copyright-build-with-logo {
-            width: rem(106);
-            height: rem(48);
-        }
-
-        .subscribe-title {
-            font: fw(medium) rem(34)/rem(43) $setting-font-family;
-            letter-spacing: rem(0.23);
-            margin-bottom: rem(17);
-        }
-
-        .subscribe-text {
-            font-size: rem(18);
-            line-height: rem(23);
             color: $setting-color-gray-3;
-            max-width: 382px;
+            line-height: rem(30);
 
-            b {
+            &:hover,
+            &:focus {
                 color: $setting-color-gray-4;
             }
         }
     }
-}
 
+    &__contact-info-item {
+        @include helper-effect-transition(color);
+        font-size: rem(18);
+        line-height: rem(23);
+    }
+
+    &__phone {
+        display: block;
+        font-weight: fw(medium);
+        margin-bottom: 1rem;
+        color: $setting-color-gray-4;
+
+        &:hover,
+        &:focus {
+            color: $setting-color-gray-3;
+        }
+    }
+
+    &__social-buttons {
+        @include helper-breakpoint-media-max($sm-max) {
+            flex-direction: column-reverse;
+        }
+        @include helper-breakpoint-media-min($md-min) {
+            margin-top: rem(42);
+            margin-bottom: rem(47);
+        }
+        margin-top: rem(18);
+        margin-bottom: rem(18);
+
+        .navigation-icon-list {
+            @include helper-breakpoint-media-max($sm-max) {
+                margin-bottom: 1rem;
+            }
+            @include helper-breakpoint-media-max($md-max) {
+                text-align: center;
+            }
+        }
+
+        .link {
+            color: $setting-color-gray-3;
+
+            &:hover,
+            &:focus {
+                color: $setting-color-gray-4;
+            }
+        }
+    }
+
+    &__hint {
+        font-size: rem(13);
+        line-height: 1rem;
+        color: $setting-color-gray-2;
+        letter-spacing: rem(0.54);
+    }
+
+    &__copyright {
+        background-color: $setting-color-blue-1;
+        text-align: center;
+        color: $setting-color-white;
+    }
+
+    &__copyright-build-with {
+        font: fw(bold) rem(12)/rem(15) $setting-font-family;
+        letter-spacing: rem(0.67);
+        text-transform: uppercase;
+        padding-top: rem(19);
+        padding-bottom: rem(21);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__copyright-build-with-text {
+        margin-right: rem(18);
+        padding-top: rem(12);
+    }
+
+    &__copyright-build-with-link {
+        color: $setting-color-white;
+
+        &:hover,
+        &:focus {
+            color: $setting-color-white;
+        }
+    }
+
+    &__copyright-build-with-logo {
+        width: rem(106);
+        height: rem(48);
+    }
+
+    .subscribe-title {
+        font: fw(medium) rem(34)/rem(43) $setting-font-family;
+        letter-spacing: rem(0.23);
+        margin-bottom: rem(17);
+    }
+
+    .subscribe-text {
+        font-size: rem(18);
+        line-height: rem(23);
+        color: $setting-color-gray-3;
+        max-width: 382px;
+
+        b {
+            color: $setting-color-gray-4;
+        }
+    }
+}

@@ -27,23 +27,17 @@
     {{parent()}}
 
     {% if data.categoryId %}
-        <div class="box">
+        <div class="catalog-cms-block">
             {{ widgetBlock('CatalogCmsBlockWidgetPlugin', 'middle', data.categoryId) }}
         </div>
     {% endif %}
 {% endblock %}
 
 {% block content %}
-    {% if data.categoryId %}
-        <div class="box">
-            {{ widgetBlock('CatalogCmsBlockWidgetPlugin', 'top', data.categoryId) }}
-        </div>
-    {% endif %}
-
     {{parent()}}
 
     {% if data.categoryId %}
-        <div class="box">
+        <div class="catalog-cms-block">
             {{ widgetBlock('CatalogCmsBlockWidgetPlugin', 'bottom', data.categoryId) }}
         </div>
     {% endif %}
