@@ -56,7 +56,7 @@
 {% block contentClass %}page-layout-main page-layout-main--catalog-page{% endblock %}
 
 {% block content %}
-    <form method="GET" class="grid grid--gap js-form-input-default-value-disabler__catalog-form">
+    <form method="GET" class="grid grid--gap js-form-input-default-value-disabler__catalog-form page-layout-main--catalog-page-content">
         {% block form %}
             {% include molecule('form-input-default-value-disabler') with {
                 attributes: {
