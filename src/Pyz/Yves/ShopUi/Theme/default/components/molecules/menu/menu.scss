@@ -1,0 +1,83 @@
+@mixin shop-ui-menu($name: '.menu') {
+    #{$name} {
+
+        display: flex;
+
+        &__item {
+            &:not(:last-child) {
+                margin-right: rem(60);
+            }
+
+            &--has-children-list {
+                margin-bottom: 1rem;
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+
+                & #{$name}__item {
+                    @include helper-font-size(small);
+                    margin: 0.5rem;
+                }
+            }
+
+            &--has-children-dropdown {
+                position: relative;
+                z-index: $setting-zi-element + 1;
+
+                & > #{$name} {
+                    @include helper-ui-shadow;
+                    @include helper-visibility-invisible;
+                    @include helper-effect-transition;
+                    position: absolute;
+                    left: 0;
+                    width: 15rem;
+                    margin-left: - 0.5rem;
+                    border: 1px solid $setting-color-light;
+                    background-color: $setting-color-white;
+                }
+
+                &:hover > #{$name} {
+                    @include helper-visibility-visible;
+                }
+
+                & > #{$name} > #{$name}__item {
+                    margin-left: 0.5rem;
+                    margin-right: 0.5rem;
+                }
+            }
+        }
+
+        &__link,
+        &__text {
+            display: block;
+            position: relative;
+            font-size: rem(17);
+            font-weight: fw(regular);
+            line-height: rem(68);
+            color: $setting-color-gray-3;
+            @include helper-effect-transition(color);
+            &:hover {
+                color: $setting-color-gray-4;
+                &:after {
+                    content: '';
+                    position: absolute;
+                    left: 50%;
+                    bottom: 0;
+                    transform: translateX(-50%);
+                    width: 30px;
+                    height: 2px;
+                    background: $setting-color-gray-4;
+                }
+            }
+        }
+
+        &__text {
+            cursor: default;
+        }
+
+        @content;
+    }
+}
+
+@include shop-ui-menu();
