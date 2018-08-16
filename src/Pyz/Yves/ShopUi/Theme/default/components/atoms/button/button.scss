@@ -30,6 +30,19 @@
             &:focus {
                 background-color: helper-color-light($setting-color-main, 10);
             }
+
+            &-icon {
+                padding: 0.25rem 0.5rem;
+                background-color: $setting-color-transparent;
+                border: 1px solid $setting-color-main;
+                color: $setting-color-main;
+
+                &:hover,
+                &:focus {
+                    background-color: $setting-color-transparent;
+                    color: helper-color-light($setting-color-main);
+                }
+            }
         }
 
         &--red {
