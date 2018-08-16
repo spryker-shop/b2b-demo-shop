@@ -1,0 +1,99 @@
+@mixin shop-ui-header($name: '.header') {
+    #{$name} {
+        position: relative;
+        z-index: 11;
+
+        &__top {
+            background: $setting-color-gray-8;
+        }
+
+        &__main {
+            background: #e7eaee;
+            padding-top: 30px;
+            min-height: 114px;
+        }
+
+        &__search {
+            max-width: 485px;
+        }
+
+        .user-nav {
+            display: flex;
+            &__item {
+                max-width: 100px;
+                position: relative;
+                padding-bottom: 10px;
+                &:not(:first-child) {
+                    margin-left: 30px;
+                }
+                &:hover .user-sub-nav {
+                    display: block;
+                }
+            }
+            &__link,
+            &__user-name {
+                display: block;
+                color: $setting-color-gray-4;
+                font-size: rem(10);
+                font-weight: fw(bold);
+                line-height: 1;
+                letter-spacing: rem(0.6);
+                text-transform: uppercase;
+                text-align: center;
+                cursor: pointer;
+                @include helper-effect-transition(color);
+                &:hover {
+                    color: helper-color-light($setting-color-gray-4, 25);
+                }
+            }
+            &__icon {
+                display: flex;
+                justify-content: center;
+                height: 38px;
+            }
+            &__arrow {
+                margin: 15px 0 0 5px;
+                width: 7px;
+                height: 4px;
+            }
+        }
+
+        .user-sub-nav {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: $setting-color-white;
+            border-radius: $setting-border-radius;
+            box-shadow: 0 18px 18px 0 $setting-color-shadow-1, 0 3px 3px 0 $setting-color-shadow-1;
+            padding: 21px 38px 21px 29px;
+            white-space: nowrap;
+            font-size: rem(15);
+            font-weight: fw(regular);
+            line-height: 1.93;
+            letter-spacing: 0.2px;
+            &:before {
+                content: "";
+                background: $setting-color-white;
+                position: absolute;
+                top: -5px;
+                left: 50%;
+                width: 10px;
+                height: 10px;
+                transform: translateX(-50%) rotate(45deg);
+            }
+            &__link {
+                color: $setting-color-gray-3;
+                @include helper-effect-transition(color);
+                &:hover {
+                    color: $setting-color-gray-4;
+                }
+            }
+        }
+
+        @content;
+    }
+}
+
+@include shop-ui-header();
