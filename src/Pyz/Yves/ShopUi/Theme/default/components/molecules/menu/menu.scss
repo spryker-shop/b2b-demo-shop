@@ -26,24 +26,28 @@
                 z-index: $setting-zi-element + 1;
 
                 & > #{$name} {
+                    display: block;
                     @include helper-ui-shadow;
-                    @include helper-visibility-invisible;
+                    //@include helper-visibility-invisible;
                     @include helper-effect-transition;
+                    padding: rem(43) rem(39);
                     position: absolute;
-                    left: 0;
-                    width: 15rem;
-                    margin-left: - 0.5rem;
-                    border: 1px solid $setting-color-light;
+                    left: 50%;
+                    transform: translateX(-50%);
                     background-color: $setting-color-white;
+                    box-shadow: 0 18px 18px 0 $setting-color-shadow-1, 0 3px 3px 0 $setting-color-shadow-1;
+                    & > #{$name}__item &__link,
+                    & > #{$name}__item &__text {
+                        font-size: rem(17);
+                        font-weight: fw(regular);
+                        line-height: rem(68);
+                        color: $setting-color-gray-3;
+                        @include helper-effect-transition(color);
+                    }
                 }
 
                 &:hover > #{$name} {
                     @include helper-visibility-visible;
-                }
-
-                & > #{$name} > #{$name}__item {
-                    margin-left: 0.5rem;
-                    margin-right: 0.5rem;
                 }
             }
         }
