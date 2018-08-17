@@ -2,7 +2,8 @@
 
 {% define data = {
     priceModes: _widget.priceModes | default([]),
-    currentPriceMode: _widget.currentPriceMode | default
+    currentPriceMode: _widget.currentPriceMode | default,
+    requestUri: app.request.requestUri
 } %}
 
 {% block template %}
@@ -31,6 +32,6 @@
             {% endblock %}
         {% endembed %}
 
-        <input type="hidden" name="referrer-url" value="{{ app.request.requestUri }}" />
+        <input type="hidden" name="referrer-url" value="{{ data.requestUri }}" />
     </form>
 {% endblock %}
