@@ -14,7 +14,7 @@
 {% block body %}
     <form method="GET" action="{{ path('price-mode-switch') }}">
         {% embed atom('custom-select') with {
-            modifiers: ['header'],
+            modifiers: ['alternative'],
             attributes: {
                 name: 'price-mode',
                 onchange: 'this.form.submit()'
