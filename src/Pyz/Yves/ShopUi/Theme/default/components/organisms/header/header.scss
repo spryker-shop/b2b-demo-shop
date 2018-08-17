@@ -1,14 +1,14 @@
 @mixin shop-ui-header($name: '.header') {
     #{$name} {
         position: relative;
-        z-index: 11;
+        z-index: $setting-zi-header;
 
         &__top {
             background: $setting-color-gray-8;
         }
 
         &__main {
-            background: #e7eaee;
+            background: $setting-color-gray-7;
             padding-top: 30px;
             min-height: 114px;
         }
@@ -72,7 +72,7 @@
             font-size: rem(15);
             font-weight: fw(regular);
             line-height: 1.93;
-            letter-spacing: 0.2px;
+            letter-spacing: rem(0.2);
             &:before {
                 content: "";
                 background: $setting-color-white;

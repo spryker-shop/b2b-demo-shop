@@ -14,7 +14,7 @@
 {% block body %}
     <form method="GET" action="{{ path('currency-switch') }}">
         {% embed atom('custom-select') with {
-            modifiers: ['header'],
+            modifiers: ['alternative'],
             attributes: {
                 name: 'currency-iso-code',
                 onchange: 'this.form.submit()'
