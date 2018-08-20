@@ -118,8 +118,10 @@
     </div>
 
     {% if data.showNavigation %}
-        <div class="container {{config.name}}__navigation">
-            {{ widgetGlobal('NavigationWidgetPlugin', 'MAIN_NAVIGATION', 'navigation-main') }}
+        <div class="{{config.name}}__navigation">
+            <div class="container">
+                {{ widgetGlobal('NavigationWidgetPlugin', 'MAIN_NAVIGATION', 'navigation-main') }}
+            </div>
         </div>
     {% endif %}
 

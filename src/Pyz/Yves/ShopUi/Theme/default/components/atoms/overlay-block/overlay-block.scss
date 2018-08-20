@@ -1,0 +1,15 @@
+.overlay-block {
+    background: $setting-color-overlay;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    @include helper-visibility-invisible;
+    @include helper-effect-transition;
+    &--no-header.showed {
+        z-index: $setting-zi-header - 1;
+        @include helper-visibility-visible;
+    }
+}
+

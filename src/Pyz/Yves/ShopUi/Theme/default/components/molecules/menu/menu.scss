@@ -1,61 +1,69 @@
 @mixin shop-ui-menu($name: '.menu') {
     #{$name} {
 
-        display: flex;
+        &__link,
+        &__text {
+            letter-spacing: rem(0.2);
+            @include helper-effect-transition(color);
+        }
 
-        &__item {
+        &__text {
+            cursor: default;
+        }
+
+        // Level 0
+
+        &--lvl-0 {
+            display: flex;
+        }
+
+        &__item--lvl-0 {
+            position: relative;
+            z-index: $setting-zi-element + 1;
+            &.showed #{$name}-wrapper--lvl-1 {
+                opacity: 1;
+                transform: scale(1);
+            }
             &:not(:last-child) {
                 margin-right: rem(60);
             }
-
-            &--has-children-list {
-                margin-bottom: 1rem;
-
-                &:last-child {
-                    margin-bottom: 0;
-                }
-
-                & #{$name}__item {
-                    @include helper-font-size(small);
-                    margin: 0.5rem;
-                }
+            &::before {
+                content: '';
+                display: none;
+                position: absolute;
+                left: 50%;
+                bottom: 0;
+                transform: translateX(-50%);
+                width: 30px;
+                height: 2px;
+                background: $setting-color-gray-4;
             }
-
-            &--has-children-dropdown {
-                position: relative;
-                z-index: $setting-zi-element + 1;
-
-                & > #{$name} {
+            &#{$name}__item--has-children-dropdown::after {
+                content: '';
+                position: absolute;
+                left: 50%;
+                bottom: -25px;
+                transform: rotate(45deg) translateX(-50%);
+                width: 10px;
+                height: 10px;
+                border-radius: $setting-border-radius;
+                background: $setting-color-white;
+                transition: opacity 100ms ease-in-out 100ms;
+                opacity: 0;
+            }
+            &:hover {
+                &::before {
                     display: block;
-                    @include helper-ui-shadow;
-                    //@include helper-visibility-invisible;
-                    @include helper-effect-transition;
-                    padding: rem(43) rem(39);
-                    position: absolute;
-                    left: 50%;
-                    transform: translateX(-50%);
-                    background-color: $setting-color-white;
-                    box-shadow: 0 18px 18px 0 $setting-color-shadow-1, 0 3px 3px 0 $setting-color-shadow-1;
-                    & > #{$name}__item &__link,
-                    & > #{$name}__item &__text {
-                        font-size: rem(17);
-                        font-weight: fw(regular);
-                        line-height: rem(68);
-                        color: $setting-color-gray-3;
-                        @include helper-effect-transition(color);
-                    }
                 }
-
-                &:hover > #{$name} {
-                    @include helper-visibility-visible;
+                &::after {
+                    opacity: 1;
                 }
             }
         }
 
-        &__link,
-        &__text {
+        &__link--lvl-0,
+        &__text--lvl-0 {
             display: block;
-            position: relative;
             font-size: rem(17);
             font-weight: fw(regular);
             line-height: rem(68);
@@ -63,21 +71,63 @@
             @include helper-effect-transition(color);
             &:hover {
                 color: $setting-color-gray-4;
-                &:after {
-                    content: '';
-                    position: absolute;
-                    left: 50%;
-                    bottom: 0;
-                    transform: translateX(-50%);
-                    width: 30px;
-                    height: 2px;
-                    background: $setting-color-gray-4;
-                }
             }
         }
 
-        &__text {
-            cursor: default;
+        // Level 1
+
+        &-wrapper--lvl-1 {
+            padding-top: rem(15);
+            position: absolute;
+            top: 100%;
+            left: rem(-28);
+            @include helper-effect-transition(transform);
+            transform-origin: top left;
+            transform: scale(0);
+        }
+        &--lvl-1 {
+            display: flex;
+            padding: rem(38) rem(39) rem(43);
+            background-color: $setting-color-white;
+            border-radius: $setting-border-radius;
+            box-shadow: 0 18px 18px 0 $setting-color-shadow-1, 0 3px 3px 0 $setting-color-shadow-1;
+        }
+
+        &__item--lvl-1 {
+            &:not(:last-child) {
+                margin-right: 70px;
+            }
+        }
+
+        &__link--lvl-1,
+        &__text--lvl-1 {
+            font-size: rem(17);
+            font-weight: fw(bold);
+            line-height: normal;
+            color: $setting-color-gray-4;
+        }
+        &__link--lvl-1:hover {
+            color: $setting-color-gray-3;
+        }
+
+        // Level 2
+
+        &--lvl-2 {
+            margin-top: 19px;
+        }
+
+        &__item--lvl-2 {
+            padding: rem(3) 0;
+        }
+
+        &__link--lvl-2,
+        &__text--lvl-2 {
+            font-size: rem(15);
+            font-weight: fw(regular);
+            color: $setting-color-gray-3;
+        }
+        &__link--lvl-2:hover {
+            color: $setting-color-gray-4;
         }
 
         @content;
