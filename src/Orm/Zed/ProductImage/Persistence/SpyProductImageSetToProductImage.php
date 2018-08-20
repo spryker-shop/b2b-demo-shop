@@ -7,7 +7,7 @@
 
 namespace Orm\Zed\ProductImage\Persistence;
 
-use Orm\Zed\ProductImage\Persistence\Base\SpyProductImageSetToProductImage as BaseSpyProductImageSetToProductImage;
+use Spryker\Zed\ProductImage\Persistence\Propel\AbstractSpyProductImageSetToProductImage as BaseSpyProductImageSetToProductImage;
 
 /**
  * Skeleton subclass for representing a row from the 'spy_product_image_set_to_product_image' table.

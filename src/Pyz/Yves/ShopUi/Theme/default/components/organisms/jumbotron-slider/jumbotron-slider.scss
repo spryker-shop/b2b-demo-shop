@@ -1,0 +1,43 @@
+@mixin shop-ui-jumbotron-slider($name: '.jumbotron-slider') {
+    #{$name} {
+        min-height: 450px;
+
+        .slick-slide {
+            margin: 0 rem(5);
+        }
+
+        .slick-dots {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: rem(24);
+            li {
+                display: block;
+                margin: .3rem .5rem;
+                width: 5px;
+                height: 5px;
+                background: $setting-color-light;
+                border-radius: 50%;
+                &:hover {
+                    cursor: pointer;
+                }
+                &.slick-active {
+                    width: 10px;
+                    height: 10px;
+                    background: transparent;
+                    border: 2px solid $setting-color-gray-4;
+                }
+
+                button {
+                    font-size: 0;
+                }
+            }
+        }
+        .slick-initialized {
+            .jumbotron-slider-item__container {
+                display: flex !important;
+            }
+        }
+
+    }
+}

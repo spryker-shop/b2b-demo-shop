@@ -1,0 +1,32 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'logo',
+    tag: 'div'
+} %}
+
+{% define data = {
+    url: '/'
+} %}
+
+{% define attributes = {
+    src: null,
+    alt: 'Logo'
+} %}
+
+{% block attributes %}{% endblock %}
+
+{% block body %}
+    <a href="{{data.url}}" class="logo__link">
+        {% if attributes.src is empty %}
+            {% include atom('icon') with {
+                modifiers: ['logo'],
+                data: {
+                    name: 'logo'
+                }
+            } only %}
+        {% else %}
+            <img {{component.renderAttributes(attributes)}} />
+        {% endif %}
+    </a>
+{% endblock %}

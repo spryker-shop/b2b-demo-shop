@@ -1,0 +1,126 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'header',
+    tag: 'header'
+} %}
+
+{% define data = {
+    showSearchForm: true,
+    showNavigation: true,
+    cartQuantity: app['cart.quantity'] | default,
+    showUserMenu: not (hideUserMenu | default(false))
+} %}
+
+{% set cartQuantity = data.cartQuantity > 0 ? data.cartQuantity ~ ' ' : '' %}
+
+{% block body %}
+
+    <div class="{{config.name}}__top">
+        {% include organism('navigation-top') with {
+            class: 'grid grid--justify grid--stretch container'
+        } only %}
+    </div>
+
+    <div class="{{config.name}}__main">
+        <div class="grid container">
+            {% include molecule('logo') with {
+                class: 'col'
+            } only %}
+
+            <div class="col col--expand {{ config.name }}__search">
+                {% if data.showSearchForm %}
+                    {% include molecule('search-form') with {
+                        class: config.name ~ '__search-form'
+                    } only %}
+                {% endif %}
+            </div>
+
+            <div class="col col--right">
+                {% if data.showUserMenu %}
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+
+                        <ul class="user-nav">
+                            <li class="user-nav__item">
+                                <div class="user-nav__user-name">
+                                    <span class="user-nav__icon">
+                                        {% include atom('icon') with {
+                                            modifiers: ['user'],
+                                            data: {
+                                                name: 'user'
+                                            }
+                                        } only %}
+                                        {% include atom('icon') with {
+                                            class: 'user-nav__arrow',
+                                            data: {
+                                                name: 'caret-down'
+                                            }
+                                        } only %}
+                                    </span>
+                                    Maximilian Mustermann
+                                </div>
+                                <ul class="user-sub-nav">
+                                    <li><a class="user-sub-nav__link" href="{{ url('customer/overview') }}">{{ 'customer.account.overview'|trans }}</a></li>
+                                    <li><a class="user-sub-nav__link" href="{{ url('customer/profile') }}">{{ 'customer.account.profile_data'|trans }}</a></li>
+                                    <li><a class="user-sub-nav__link" href="{{ url('customer/address') }}">{{ 'customer.account.address'|trans }}</a></li>
+                                    <li><a class="user-sub-nav__link" href="{{ url('customer/order') }}">{{ 'customer.account.order_history'|trans }}</a></li>
+                                    <li><a class="user-sub-nav__link" href="{{ url('logout') }}">{{ 'customer.logout'|trans }}</a></li>
+                                </ul>
+                            </li>
+                            <li class="user-nav__item">
+                                <a class="user-nav__link" href="{{ url('quick-order') }}">
+                                    <span class="user-nav__icon">
+                                        {% include atom('icon') with {
+                                            modifiers: ['quick-order'],
+                                            data: {
+                                                name: 'quick-order'
+                                            }
+                                        } only %}
+                                    </span>
+                                    {{ 'quick-order.page-title'|trans }}
+                                </a>
+                            </li>
+                            <li class="user-nav__item">
+                                <a class="user-nav__link" href="{{ url('shopping-list') }}">
+                                    <span class="user-nav__icon">
+                                        {% include atom('icon') with {
+                                            modifiers: ['shopping-list'],
+                                            data: {
+                                                name: 'shopping-list'
+                                            }
+                                        } only %}
+                                    </span>
+                                    {{ 'customer.account.shopping_list'|trans }}
+                                </a>
+                            </li>
+                            <li class="user-nav__item">
+                                {#{% if widgetGlobalExists('MiniCartWidgetPlugin') %}#}
+                                    {#{{ widgetGlobal('MiniCartWidgetPlugin', cartQuantity) }}#}
+                                {#{% else %}#}
+                                    {% include molecule('cart-items-counter') with {
+                                        class: 'user-nav__link',
+                                        data: {
+                                            quantity: data.cartQuantity
+                                        }
+                                    } only %}
+                                {#{% endif %}#}
+                            </li>
+                        </ul>
+
+                    {% else %}
+
+                        <a href="{{ url('login') }}" class="button button--big">{{ 'customer.please_login'|trans }}</a>
+
+                    {% endif %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    {% if data.showNavigation %}
+        <div class="container {{config.name}}__navigation">
+            {{ widgetGlobal('NavigationWidgetPlugin', 'MAIN_NAVIGATION', 'navigation-main') }}
+        </div>
+    {% endif %}
+
+{% endblock %}
