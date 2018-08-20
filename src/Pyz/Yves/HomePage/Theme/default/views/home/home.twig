@@ -1,0 +1,18 @@
+{% extends template('page-layout-home', 'HomePage') %}
+
+{% block pageInfo %}{% endblock %}
+
+{% block content %}    
+    {#{% include molecule('jumbotron') with {#}
+        {#class: 'box'#}
+    {#} only %}#}
+
+    {{ spyCmsBlock({
+        name: 'Home Page'
+    }) }}
+
+    {{ spyCmsBlock({
+        name: 'Teaser for home page'
+    }) }}
+
+{% endblock %}

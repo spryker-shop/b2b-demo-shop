@@ -1,0 +1,79 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'navigation-top',
+    tag: 'div'
+} %}
+
+{% block body %}
+    <div class="col {{ config.name }}__benefit">
+        {% include atom('icon') with {
+            modifiers: ['header-check'],
+            data: {
+                name: 'check'
+            }
+        } only %}
+        {{ 'global.benefit.free_returns' | trans }}
+    </div>
+
+    <div class="col {{ config.name }}__benefit">
+        {% include atom('icon') with {
+            modifiers: ['header-check'],
+            data: {
+                name: 'check'
+            }
+        } only %}
+        {{ 'global.benefit.warranty' | trans }}
+    </div>
+
+    {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
+        <div class="col {{ config.name }}__benefit">
+            {% include atom('icon') with {
+                modifiers: ['header-check'],
+                data: {
+                    name: 'check'
+                }
+            } only %}
+            {{ 'global.benefit.competitive_prices' | trans }}
+        </div>
+    {% endif %}
+
+
+    <div class="col">
+        <ul class="grid grid--stretch navigation-top__actions">
+            <li class="col {{ config.name }}__action-item {{ config.name }}__tel">
+                {% include atom('icon') with {
+                    modifiers: ['phone'],
+                    data: {
+                        name: 'phone'
+                    }
+                } only %}
+                +49 (0) 30 208 498 350
+            </li>
+
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                <li class="col {{ config.name }}__action-item">
+                    {{ widgetGlobal('PriceModeSwitcherWidgetPlugin') }}
+                </li>
+                <li class="col {{ config.name }}__action-item">
+                    {{ widgetGlobal('CurrencyWidgetPlugin') }}
+                </li>
+            {% endif %}
+
+            <li class="col {{ config.name }}__action-item">
+                {{ widgetGlobal(
+                    'LanguageSwitcherWidgetPlugin',
+                    app.request.pathInfo,
+                    app.request.queryString,
+                    app.request.requestUri
+                ) }}
+            </li>
+
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                <li class="col {{ config.name }}__action-item">
+                    <a href="#" class="{{ config.name }}__company">My Company</a>
+                </li>
+            {% endif %}
+        </ul>
+    </div>
+{% endblock %}
