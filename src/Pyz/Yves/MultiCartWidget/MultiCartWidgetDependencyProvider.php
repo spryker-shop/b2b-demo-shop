@@ -14,6 +14,7 @@ use SprykerShop\Yves\ProductBundleWidget\Plugin\MultiCartWidget\ProductBundleIte
 use SprykerShop\Yves\SharedCartWidget\Plugin\MultiCartWidget\SharedCartAddSeparateProductWidgetPlugin;
 use SprykerShop\Yves\SharedCartWidget\Plugin\MultiCartWidget\SharedCartDetailsWidgetPlugin;
 use SprykerShop\Yves\SharedCartWidget\Plugin\MultiCartWidget\SharedCartOperationsWidgetPlugin;
+use SprykerShop\Yves\SharedCartWidget\Plugin\MultiCartWidget\SharedCartPermissionGroupWidgetPlugin;
 use SprykerShop\Yves\SharedCartWidget\Plugin\MultiCartWidget\SharedCartShareWidgetPlugin;
 
 class MultiCartWidgetDependencyProvider extends SprykerMultiCartWidgetDependencyProvider
@@ -31,6 +32,7 @@ class MultiCartWidgetDependencyProvider extends SprykerMultiCartWidgetDependency
             SharedCartOperationsWidgetPlugin::class, #SharedCartFeature
             SharedCartShareWidgetPlugin::class, #SharedCartFeature
             SharedCartAddSeparateProductWidgetPlugin::class, #SharedCartFeature
+            SharedCartPermissionGroupWidgetPlugin::class, #SharedCartFeature
         ];
     }
 }

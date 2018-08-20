@@ -11,6 +11,7 @@ use SprykerShop\Yves\BusinessOnBehalfWidget\Plugin\CustomerPage\MenuItemBusiness
 use SprykerShop\Yves\BusinessOnBehalfWidget\Plugin\ShopUi\DisplayOnBehalfBusinessWidgetPlugin;
 use SprykerShop\Yves\CompanyPage\Plugin\ShopApplication\CheckBusinessOnBehalfCompanyUserHandlerPlugin;
 use SprykerShop\Yves\CompanyPage\Plugin\ShopApplication\CompanyUserRestrictionHandlerPlugin;
+use SprykerShop\Yves\CompanyWidget\Plugin\ShopUi\MenuItemCompanyWidgetPlugin;
 use SprykerShop\Yves\CurrencyWidget\Plugin\ShopUi\CurrencyWidgetPlugin;
 use SprykerShop\Yves\CustomerPage\Plugin\CustomerPage\CustomerNavigationWidgetPlugin;
 use SprykerShop\Yves\LanguageSwitcherWidget\Plugin\ShopUi\LanguageSwitcherWidgetPlugin;
@@ -37,6 +38,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             CustomerNavigationWidgetPlugin::class,
             DisplayOnBehalfBusinessWidgetPlugin::class,
             MenuItemBusinessOnBehalfWidgetPlugin::class,
+            MenuItemCompanyWidgetPlugin::class,
         ];
     }
 
