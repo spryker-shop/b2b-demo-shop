@@ -1,0 +1,42 @@
+@mixin shop-ui-navigation-top($name: '.navigation-top') {
+    #{$name} {
+
+        &__benefit {
+            font-size: rem(11);
+            font-weight: fw(medium);
+            line-height: rem(40);
+            opacity: 0.5;
+            text-transform: uppercase;
+        }
+
+        &__action-item {
+            border-right: solid 1px $setting-color-gray-2;
+        }
+
+        &__tel {
+            font-size: rem(12);
+            font-weight: fw(bold);
+            line-height: rem(40);
+            padding-right: rem(31);
+        }
+
+        &__company {
+            font-size: rem(11);
+            font-weight: fw(bold);
+            letter-spacing: rem(0.6);
+            line-height: rem(40);
+            color: $setting-color-gray-4;
+            padding: 0 18px;
+            height: 100%;
+            text-transform: uppercase;
+            @include helper-effect-transition(color);
+            &:hover {
+                color: helper-color-light($setting-color-gray-4, 25);
+            }
+        }
+
+        @content;
+    }
+}
+
+@include shop-ui-navigation-top();

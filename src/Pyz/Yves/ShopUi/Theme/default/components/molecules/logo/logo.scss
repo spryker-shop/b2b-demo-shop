@@ -1,0 +1,11 @@
+@mixin shop-ui-logo($name: '.logo') {
+    #{$name} {
+
+        padding-right: 58px;
+        margin-top: -17px;
+
+        @content;
+    }
+}
+
+@include shop-ui-logo();
