@@ -44,7 +44,7 @@
 
     {% embed molecule('breadcrumb') with {
         embed: {
-            breadcrumbs: self.renderBreadcrumbSteps(data.category, true, data.filterPath)
+            breadcrumbs: self.renderBreadcrumbSteps(data.category, false, data.filterPath)
         }
     } only %}
         {% block breadcrumbs %}

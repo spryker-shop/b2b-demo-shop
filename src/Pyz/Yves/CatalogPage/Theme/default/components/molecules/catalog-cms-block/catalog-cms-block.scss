@@ -1,0 +1,50 @@
+.catalog-cms-block {
+
+    & > * {
+        font: fw(medium) rem(18)/rem(23) $setting-font-family;
+    }
+
+    p {
+        font-size: rem(15);
+        line-height: rem(22);
+        color: $setting-color-gray-2;
+        margin-top: rem(10);
+    }
+
+    hr {
+        display: none;
+    }
+
+    &--sidebar {
+        margin-top: rem(48);
+
+        p {
+            text-shadow: 0 rem(2) rem(4) $setting-color-shadow-1;
+        }
+    }
+
+    &--bottom {
+        text-align: center;
+
+        & > * {
+            font-size: rem(32);
+            line-height: rem(41);
+
+            &:first-child {
+                margin-top: 0;
+            }
+        }
+
+        p {
+            color: $setting-color-gray-2;
+            font-size: rem(18);
+            line-height: rem(29);
+            margin-top: rem(24);
+        }
+    }
+
+    &-wrap {
+        background-color: $setting-color-gray-13;
+        padding: rem(50) 0 rem(38);
+    }
+}

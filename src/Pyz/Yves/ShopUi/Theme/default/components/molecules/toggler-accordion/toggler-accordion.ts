@@ -20,9 +20,14 @@ export default class TogglerAccordion extends Component {
 
     protected onTriggerClick(event: Event): void {
         this.triggers.forEach((trigger: HTMLElement) => {
-            if (event.target === trigger) {
-                event.preventDefault();
-                this.toggle(trigger);
+            let target = <any> event.target;
+            while (target != this.wrap) {
+                if (target === trigger) {
+                    event.preventDefault();
+                    this.toggle(trigger);
+                    return;
+                }
+                target = target.parentNode;
             }
         });
     }

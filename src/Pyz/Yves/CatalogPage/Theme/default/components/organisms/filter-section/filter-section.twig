@@ -33,7 +33,7 @@
                             }
                         } only %}
                     </h6>
-                    {% set toglerClass = config.name ~ '__item-content js-' ~  filter.name ~ ' -is-hidden' %}
+                    {% set toglerClass = config.name ~ '__item-content js-' ~  filter.name ~ ' is-hidden' %}
                 {% endif %}
 
                 {% include [
@@ -64,7 +64,7 @@
         }
     } only %}
 
-    <button type="submit" class="button button--expand button--small">
+    <button type="submit" class="button button--expand button--small {{ config.name ~ '__button' }}">
         {{ 'catalog.filter.button' | trans }}
         {% include atom('icon') with {
             data: {
