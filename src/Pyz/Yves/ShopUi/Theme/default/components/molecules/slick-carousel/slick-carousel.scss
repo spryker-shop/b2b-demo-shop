@@ -9,8 +9,8 @@
         background: url("/assets/images/right-chevron.svg") center center no-repeat;
         background-size: 15px;
         border-radius: 50%;
-        z-index: 100;
-        opacity: .5;
+        z-index: $setting-zi-element-floating;
+        opacity: 0.5;
         transform: translateY(-50%);
 
         &:hover {
@@ -20,11 +20,12 @@
     }
 
     .slick-prev {
-        left: 20px;
+        left: -30px;
         transform: rotate(180deg);
     }
 
     .slick-next {
-        right: 20px;
+        right: -30px;
+        margin-top: rem(15);
     }
 }

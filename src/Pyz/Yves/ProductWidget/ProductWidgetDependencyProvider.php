@@ -53,6 +53,7 @@ class ProductWidgetDependencyProvider extends SprykerProductWidgetDependencyProv
     {
         return [
             ProductAbstractLabelWidgetPlugin::class,
+            ExampleProductColorGroupWidgetPlugin::class,
             ProductAbstractReviewWidgetPlugin::class,
         ];
     }

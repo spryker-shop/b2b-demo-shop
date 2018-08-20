@@ -1,0 +1,34 @@
+{% extends template('widget') %}
+
+{% define data = {
+    product: product | default,
+    products: products | default([])
+} %}
+
+{% block body %}
+
+    <div>
+        {% embed molecule('slick-carousel') with {
+            data: {
+                slides: data.products,
+                containerClass: 'product-set-slider product-set-slider--set-images'
+            },
+            attributes: {
+                'data-json': '{
+                    "slidesToShow": 3,
+                    "dots": false,
+                    "arrows": true
+                }'
+            }
+        } only %}
+
+            {% block slides %}
+                {% for availableProduct in data.slides if availableProduct.available %}
+                    {{ widget('ProductWidgetPlugin', availableProduct) }}
+                {% endfor %}
+            {% endblock %}
+
+        {% endembed %}
+    </div>
+
+{% endblock %}

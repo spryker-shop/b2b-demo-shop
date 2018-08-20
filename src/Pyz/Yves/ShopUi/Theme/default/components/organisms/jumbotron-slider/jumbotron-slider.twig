@@ -16,56 +16,10 @@
 
     {% embed molecule('slick-carousel') with {
         data: {
-            slides: [{
-                imageUrl: '/assets/images/section-slider-item-image-10@2x.jpg',
-                link: 'jumbotron.smart_watches.link',
-                cmsBlockName: 'Main slide-1',
-                btnTitle: 'mainSlider.btn.title'
-            },
-                {
-                    imageUrl: '/assets/images/section-slider-item-image-6@2x.jpg',
-                    link: 'jumbotron.smartphones.link',
-                    cmsBlockName: 'Main slide-2',
-                    btnTitle: 'mainSlider.btn.title'
-                },
-                {
-                    imageUrl: '/assets/images/section-slider-item-image-7@2x.jpg',
-                    link: 'jumbotron.tablets.link',
-                    cmsBlockName: 'Main slide-3',
-                    btnTitle: 'mainSlider.btn.title'
-                }
-            ]
+            slides: data.slides
         },
         attributes: {
-            'data-json': '{
-                            "slidesToShow": 1,
-                            "dots": true,
-                            "autoplay": true,
-                            "nextArrow": false,
-                            "prevArrow": false,
-                            "autoplaySpeed": 4000,
-                            "centerMode": true,
-                            "centerPadding": "240px",
-                            "responsive": [{
-                                "breakpoint": 1600,
-                                "settings": {
-                                    "centerPadding": "130px"
-                                }
-                            },
-                            {
-                                "breakpoint": 1200,
-                                "settings": {
-                                    "centerPadding": "40px"
-                                }
-                            },
-                            {
-                                "breakpoint": 770,
-                                "settings": {
-                                    "centerPadding": "12px",
-                                    "autoplay": false
-                                }
-                            }
-            ]}'
+            'data-json': attributes['data-json']
         }
     } only %}
 

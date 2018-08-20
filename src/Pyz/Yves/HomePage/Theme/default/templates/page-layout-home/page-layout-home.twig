@@ -34,10 +34,64 @@
         {% endembed %}
     {% endblock %}
 
-    {% include organism('jumbotron-slider') %}
+    {% include organism('jumbotron-slider') with {
+        class: 'spacing-bottom--big',
+        data: {
+            slides: [{
+                imageUrl: '/assets/images/section-slider-item-image-10@2x.jpg',
+                link: 'jumbotron.smart_watches.link',
+                cmsBlockName: 'Main slide-1',
+                btnTitle: 'main_slider.btn.title'
+            },
+                {
+                    imageUrl: '/assets/images/section-slider-item-image-6@2x.jpg',
+                    link: 'jumbotron.smartphones.link',
+                    cmsBlockName: 'Main slide-2',
+                    btnTitle: 'main_slider.btn.title'
+                },
+                {
+                    imageUrl: '/assets/images/section-slider-item-image-7@2x.jpg',
+                    link: 'jumbotron.tablets.link',
+                    cmsBlockName: 'Main slide-3',
+                    btnTitle: 'main_slider.btn.title'
+                }
+            ]
+        },
+        attributes: {
+            'data-json': '{
+                            "slidesToShow": 1,
+                            "dots": true,
+                            "autoplay": true,
+                            "nextArrow": false,
+                            "prevArrow": false,
+                            "autoplaySpeed": 4000,
+                            "centerMode": true,
+                            "centerPadding": "240px",
+                            "responsive": [{
+                                "breakpoint": 1600,
+                                "settings": {
+                                    "centerPadding": "130px"
+                                }
+                            },
+                            {
+                                "breakpoint": 1200,
+                                "settings": {
+                                    "centerPadding": "40px"
+                                }
+                            },
+                            {
+                                "breakpoint": 770,
+                                "settings": {
+                                    "centerPadding": "12px",
+                                    "autoplay": false
+                                }
+                            }
+            ]}'
+        }
+    } only %}
 
-    <div class="container">
-        {% block pageInfo %}
+    {% block pageInfo %}
+        <div class="container">
             <div class="box">
                 {% block breadcrumbs %}
                     {% include molecule('breadcrumb') only %}
@@ -49,13 +103,12 @@
                     <h3>{{data.title}}</h3>
                 {% endblock %}
             </div>
-        {% endblock %}
+        </div>
+    {% endblock %}
 
-        <main>
-            {% block content %}{% endblock %}
-        </main>
-
-    </div>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
 
     {% block footer %}
         {% include organism('footer') only %}

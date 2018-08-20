@@ -1,5 +1,5 @@
 @include shop-ui-button {
-    border-radius: $setting-border-radius-base;
+    border-radius: $setting-border-radius;
 
     &--big {
         font-size: rem(18);
@@ -14,6 +14,27 @@
         &:focus {
             color: $setting-color-white;
             background-color: helper-color-dark($setting-color-alt);
+        }
+    }
+
+    &--transparent {
+        background-color: $setting-color-transparent;
+        transition: color $setting-effect-default-duration, border-color $setting-effect-default-duration;
+
+        &:hover,
+        &:focus {
+            color: helper-color-dark($setting-color-white);
+            background-color: $setting-color-transparent;
+        }
+    }
+
+    &--bordered {
+        border: 1px solid $setting-color-white;
+
+        &:hover,
+        &:focus {
+            color: helper-color-dark($setting-color-white);
+            border-color: helper-color-dark($setting-color-white);
         }
     }
 }

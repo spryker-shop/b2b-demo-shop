@@ -1,0 +1,29 @@
+$product-review-rating-selector-icon-size: 14px;
+
+@include product-review-rating-selector {
+    padding-left: $product-review-rating-selector-icon-size / 2;
+
+    &__step:hover > &__star,
+    &__step:hover ~ &__step > &__star {
+        color: $setting-color-yellow-1;
+    }
+
+    &__step > &__star {
+        width: $product-review-rating-selector-icon-size;
+        color: $setting-color-gray-12;
+    }
+
+    &__step--half:nth-child(even) {
+        margin-left: -$product-review-rating-selector-icon-size / 2;
+    }
+
+    &__step--active > &__star {
+        color:map_get($setting-color-actions, warning);
+    }
+    .product-review-count {
+        font-size: rem(13);
+        line-height: rem(16);
+        font-family: $setting-font-family;
+        color: $setting-color-gray-3;
+    }
+}

@@ -2,14 +2,38 @@
 
 {% block pageInfo %}{% endblock %}
 
-{% block content %}    
+{% block content %}
 
-    {{ spyCmsBlock({
-        name: 'Home Page'
-    }) }}
+    <section class="common-section spacing-top--inner spacing-top--big">
+        <div class="container">
+            {{ spyCmsBlock({
+                name: 'Featured Products'
+            }) }}
+        </div>
+    </section>
 
-    {{ spyCmsBlock({
-        name: 'Teaser for home page'
-    }) }}
+    <section class="common-section spacing-top--inner spacing-top--big">
+        <div class="container">
+            {{ spyCmsBlock({
+                name: 'Featured Categories'
+            }) }}
+        </div>
+    </section>
+
+    <section class="common-section common-section--bg-dark">
+        <div class="container">
+            {{ spyCmsBlock({
+                name: 'Top Seller'
+            }) }}
+        </div>
+    </section>
+
+    <section class="common-section">
+        <div class="container">
+            {{ spyCmsBlock({
+                name: 'Teaser for home page'
+            }) }}
+        </div>
+    </section>
 
 {% endblock %}

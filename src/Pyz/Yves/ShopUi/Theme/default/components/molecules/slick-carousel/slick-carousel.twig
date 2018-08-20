@@ -10,12 +10,7 @@
     containerClass: ''
 } %}
 
-{% define attributes = {
-    'data-json': ''
-} %}
-
 {% block body %}
-
     <div class="{{config.name}}__container {{ data.containerClass }} is-hidden">
         {% block slides %}
             {% for slide in data.slides %}
