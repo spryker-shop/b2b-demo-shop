@@ -1,40 +1,137 @@
-@include shop-ui-button {
-    border-radius: $setting-border-radius;
-
-    &--big {
-        font-size: rem(18);
-        line-height: rem(22);
-        padding: rem(14) rem(28);
-    }
-
-    &--alt {
-        background-color: $setting-color-alt;
+@mixin shop-ui-button($name: '.button') {
+    #{$name} {
+        @include helper-effect-transition(background-color border-color);
+        background-color: $setting-color-main;
+        border: solid 1px $setting-color-main;
+        border-radius: $setting-border-radius;
+        color: $setting-color-white;
+        font-size: rem(14);
+        font-weight: fw(medium);
+        line-height: rem(18);
+        display: inline-block;
+        padding: rem(10) rem(30);
+        text-align: center;
+        cursor: pointer;
 
         &:hover,
         &:focus {
+            background-color: helper-color-dark($setting-color-main);
+            border-color: helper-color-dark($setting-color-main);
             color: $setting-color-white;
-            background-color: helper-color-dark($setting-color-alt);
+            text-decoration: none;
         }
-    }
 
-    &--transparent {
-        background-color: $setting-color-transparent;
-        transition: color $setting-effect-default-duration, border-color $setting-effect-default-duration;
-
-        &:hover,
-        &:focus {
-            color: helper-color-dark($setting-color-white);
+        &--hollow {
             background-color: $setting-color-transparent;
-        }
-    }
+            border: 1px solid $setting-color-main;
+            color: $setting-color-main;
 
-    &--bordered {
-        border: 1px solid $setting-color-white;
+            &:hover,
+            &:focus {
+                background-color: helper-color-light($setting-color-main, 10);
+            }
+
+            &-icon {
+                padding: 0.25rem 0.5rem;
+                background-color: $setting-color-transparent;
+                border: 1px solid $setting-color-main;
+                color: $setting-color-main;
+
+                &:hover,
+                &:focus {
+                    background-color: $setting-color-transparent;
+                    color: helper-color-light($setting-color-main);
+                }
+            }
+        }
+
+        &--red,
+        &--alt {
+            background-color: $setting-color-alt;
+            border-color: $setting-color-alt;
+            color: $setting-color-white;
+
+            &:hover,
+            &:focus {
+                background-color: helper-color-dark($setting-color-alt);
+                border-color: helper-color-dark($setting-color-alt);
+            }
+        }
+
+        &--big {
+            font-size: rem(16);
+            line-height: rem(20);
+            padding: rem(15) rem(27);
+        }
+
+        &--transparent {
+            background-color: $setting-color-transparent;
+            transition: color $setting-effect-default-duration, border-color $setting-effect-default-duration;
+
+            &:hover,
+            &:focus {
+                color: helper-color-dark($setting-color-white);
+                background-color: $setting-color-transparent;
+            }
+        }
+
+        &--bordered {
+            border: 1px solid $setting-color-white;
+
+            &:hover,
+            &:focus {
+                color: helper-color-dark($setting-color-white);
+                border-color: helper-color-dark($setting-color-white);
+            }
+        }
+
+        &--expand {
+            width: 100%;
+        }
+
+        &[disabled],
+        &--disabled {
+            background-color: $setting-color-gray-3;
+            border-color: $setting-color-gray-3;
+            cursor: not-allowed;
+
+            &:hover,
+            &:focus {
+                background-color: $setting-color-gray-3;
+                border-color: $setting-color-gray-3;
+            }
+        }
+
+        @each $action, $setting-color-action in $setting-color-actions {
+            @include shop-ui-button-action($action, $setting-color-action);
+        }
+
+        @content;
+    }
+}
+
+@include shop-ui-button;
+
+@mixin shop-ui-button-action($action, $setting-color-action) {
+    &--#{$action} {
+        background-color: $setting-color-action;
 
         &:hover,
         &:focus {
-            color: helper-color-dark($setting-color-white);
-            border-color: helper-color-dark($setting-color-white);
+            background-color: helper-color-dark($setting-color-action);
         }
     }
+
+    &--#{$action}#{&}--hollow {
+        background-color: $setting-color-white;
+        border-color: $setting-color-action;
+        color: $setting-color-action;
+
+        &:hover,
+        &:focus {
+            background-color: helper-color-light($setting-color-action);
+        }
+    }
+
+    @content;
 }
