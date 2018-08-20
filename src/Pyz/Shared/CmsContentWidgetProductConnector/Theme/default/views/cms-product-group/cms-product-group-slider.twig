@@ -9,9 +9,9 @@
 
     <div>
         {% embed molecule('slick-carousel') with {
+            modifiers: ['full-width'],
             data: {
-                slides: data.products,
-                containerClass: 'product-set-slider product-set-slider--set-images'
+                slides: data.products
             },
             attributes: {
                 'data-json': '{

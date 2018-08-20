@@ -98,7 +98,7 @@
         {% endspaceless %}
     </span>
 
-    <span class="product-review-count">{{ data.reviewCount }}</span>
+    <span class="{{config.name}}__count">{{ data.reviewCount }}</span>
 
     {% if not attributes.readonly %}
         {% block input %}

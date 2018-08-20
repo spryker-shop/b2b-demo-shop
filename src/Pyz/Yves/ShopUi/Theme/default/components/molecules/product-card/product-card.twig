@@ -15,6 +15,7 @@
 } %}
 
 {% block image %}
+
     {% include atom('thumbnail') with {
         modifiers: ['big'],
         class: 'js-product-color-group__image-' ~ data.abstractId,
@@ -46,14 +47,16 @@
     {% endblock %}
 
     {% block price %}
-        <p>
-            {% include molecule('price') with {
-                data: {
-                    amount: data.price | money,
-                    originalAmount: data.originalPrice is empty ? null : (data.originalPrice | money)
-                }
-            } only %}
-        </p>
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            <p>
+                {% include molecule('price') with {
+                    data: {
+                        amount: data.price | money,
+                        originalAmount: data.originalPrice is empty ? null : (data.originalPrice | money)
+                    }
+                } only %}
+            </p>
+        {% endif %}
     {% endblock %}
 {% endblock %}
 
