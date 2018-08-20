@@ -7,7 +7,7 @@
 
 namespace Orm\Zed\Category\Persistence;
 
-use Orm\Zed\Category\Persistence\Base\SpyCategoryTemplate as BaseSpyCategoryTemplate;
+use Spryker\Zed\Category\Persistence\Propel\AbstractSpyCategoryTemplate as BaseSpyCategoryTemplate;
 
 /**
  * Skeleton subclass for representing a row from the 'spy_category_template' table.

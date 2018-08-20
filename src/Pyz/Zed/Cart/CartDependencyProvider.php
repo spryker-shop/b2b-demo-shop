@@ -27,6 +27,8 @@ use Spryker\Zed\ProductCartConnector\Communication\Plugin\ProductExistsCartPreCh
 use Spryker\Zed\ProductCartConnector\Communication\Plugin\RemoveInactiveItemsPreReloadPlugin;
 use Spryker\Zed\ProductDiscontinued\Communication\Plugin\Cart\ProductDiscontinuedCartPreCheckPlugin;
 use Spryker\Zed\ProductImageCartConnector\Communication\Plugin\ProductImageCartPlugin;
+use Spryker\Zed\ProductList\Communication\Plugin\CartExtension\ProductListRestrictedItemsPreCheckPlugin;
+use Spryker\Zed\ProductList\Communication\Plugin\CartExtension\RemoveRestrictedItemsPreReloadPlugin;
 use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\Cart\QuantitySalesUnitGroupKeyItemExpanderPlugin;
 use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\Cart\QuantitySalesUnitItemExpanderPlugin;
 use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\Cart\QuantitySalesUnitValuePostSavePlugin;
@@ -83,7 +85,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
     /**
      * @param \Spryker\Zed\Kernel\Container $container
      *
-     * @return \Spryker\Zed\Cart\Dependency\CartPreCheckPluginInterface[]
+     * @return \Spryker\Zed\CartExtension\Dependency\Plugin\CartPreCheckPluginInterface[]
      */
     protected function getCartPreCheckPlugins(Container $container)
     {
@@ -94,6 +96,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new CartBundleAvailabilityPreCheckPlugin(),
             new CartShipmentPreCheckPlugin(),
             new ProductQuantityRestrictionCartPreCheckPlugin(),
+            new ProductListRestrictedItemsPreCheckPlugin(),
             new ProductDiscontinuedCartPreCheckPlugin(), #ProductDiscontinuedFeature
             new AmountAvailabilityCartPreCheckPlugin(), #ProductPackagingUnit
             new AmountRestrictionCartPreCheckPlugin(), #ProductPackagingUnit
@@ -119,13 +122,14 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
     /**
      * @param \Spryker\Zed\Kernel\Container $container
      *
-     * @return \Spryker\Zed\Cart\Dependency\PreReloadItemsPluginInterface[]
+     * @return \Spryker\Zed\CartExtension\Dependency\Plugin\PreReloadItemsPluginInterface[]
      */
     protected function getPreReloadPlugins(Container $container)
     {
         return [
-           new CartBundleItemsPreReloadPlugin(),
-           new RemoveInactiveItemsPreReloadPlugin(),
+            new CartBundleItemsPreReloadPlugin(),
+            new RemoveInactiveItemsPreReloadPlugin(),
+            new RemoveRestrictedItemsPreReloadPlugin(),
         ];
     }
 
