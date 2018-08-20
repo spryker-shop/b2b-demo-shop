@@ -17,11 +17,14 @@ use Spryker\Shared\EventBehavior\EventBehaviorConstants;
 use Spryker\Shared\EventJournal\EventJournalConstants;
 use Spryker\Shared\FileSystem\FileSystemConstants;
 use Spryker\Shared\Flysystem\FlysystemConstants;
+use Spryker\Shared\GlueApplication\GlueApplicationConstants;
 use Spryker\Shared\Kernel\ClassResolver\Cache\Provider\File;
 use Spryker\Shared\Kernel\KernelConstants;
 use Spryker\Shared\Kernel\Store;
 use Spryker\Shared\Log\LogConstants;
 use Spryker\Shared\NewRelic\NewRelicConstants;
+use Spryker\Shared\Oauth\OauthConstants;
+use Spryker\Shared\OauthCustomerConnector\OauthCustomerConnectorConstants;
 use Spryker\Shared\Oms\OmsConstants;
 use Spryker\Shared\Propel\PropelConstants;
 use Spryker\Shared\Queue\QueueConfig;
@@ -312,6 +315,7 @@ $config[LogConstants::LOG_FILE_PATH_ZED] = $baseLogFilePath . '/ZED/application.
 
 $config[LogConstants::EXCEPTION_LOG_FILE_PATH_YVES] = $baseLogFilePath . '/YVES/exception.log';
 $config[LogConstants::EXCEPTION_LOG_FILE_PATH_ZED] = $baseLogFilePath . '/ZED/exception.log';
+$config[LogConstants::LOG_FOLDER_PATH_INSTALLATION] = sprintf('%s/data/install/logs', APPLICATION_ROOT_DIR);
 
 $config[LogConstants::LOG_SANITIZE_FIELDS] = [
     'password',
@@ -394,14 +398,11 @@ $config[QueueConstants::QUEUE_ADAPTER_CONFIGURATION] = [
 $config[LogglyConstants::QUEUE_NAME] = 'loggly-log-queue';
 $config[LogglyConstants::ERROR_QUEUE_NAME] = 'loggly-log-queue.error';
 
-// ---------- Events
-$config[EventConstants::LOGGER_ACTIVE] = false;
-
 // ---------- EventBehavior
 $config[EventBehaviorConstants::EVENT_BEHAVIOR_TRIGGERING_ACTIVE] = true;
 
 // ---------- Customer
-$config[CustomerConstants::CUSTOMER_SECURED_PATTERN] = '(^/login_check$|^(/en|/de)?/customer|^(/en|/de)?/wishlist|^(/en|/de)?/company(?!/register))';
+$config[CustomerConstants::CUSTOMER_SECURED_PATTERN] = '(^/login_check$|^(/en|/de)?/customer|^(/en|/de)?/wishlist|^(/en|/de)?/shopping-list|^(/en|/de)?/company(?!/register)|^(/en|/de)?/multi-cart|^(/en|/de)?/shared-cart)';
 $config[CustomerConstants::CUSTOMER_ANONYMOUS_PATTERN] = '^/.*';
 
 // ---------- Taxes
@@ -413,3 +414,20 @@ $config[CmsGuiConstants::CMS_PAGE_PREVIEW_URI] = '/en/cms/preview/%d';
 
 // ---------- Loggly
 $config[LogglyConstants::TOKEN] = 'loggly-token:sample:123456';
+
+// ---------- CMS
+$config[CmsGuiConstants::CMS_FOLDER_PATH] = '@Cms/templates/';
+
+// ----------- Glue Application
+$config[GlueApplicationConstants::GLUE_APPLICATION_DOMAIN] = '';
+$config[GlueApplicationConstants::GLUE_APPLICATION_REST_DEBUG] = false;
+
+// ----------- OAUTH
+//Check how to generate https://oauth2.thephpleague.com/installation/
+$config[OauthConstants::PRIVATE_KEY_PATH] = 'file://';
+$config[OauthConstants::PUBLIC_KEY_PATH] = 'file://';
+$config[OauthConstants::ENCRYPTION_KEY] = '';
+
+// ----------- AuthRestApi
+$config[OauthCustomerConnectorConstants::OAUTH_CLIENT_IDENTIFIER] = '';
+$config[OauthCustomerConnectorConstants::OAUTH_CLIENT_SECRET] = '';
