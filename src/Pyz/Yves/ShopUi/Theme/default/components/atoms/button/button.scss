@@ -45,8 +45,7 @@
             }
         }
 
-        &--red,
-        &--alt {
+        &--red {
             background-color: $setting-color-alt;
             border-color: $setting-color-alt;
             color: $setting-color-white;
@@ -62,27 +61,6 @@
             font-size: rem(16);
             line-height: rem(20);
             padding: rem(15) rem(27);
-        }
-
-        &--transparent {
-            background-color: $setting-color-transparent;
-            transition: color $setting-effect-default-duration, border-color $setting-effect-default-duration;
-
-            &:hover,
-            &:focus {
-                color: helper-color-dark($setting-color-white);
-                background-color: $setting-color-transparent;
-            }
-        }
-
-        &--bordered {
-            border: 1px solid $setting-color-white;
-
-            &:hover,
-            &:focus {
-                color: helper-color-dark($setting-color-white);
-                border-color: helper-color-dark($setting-color-white);
-            }
         }
 
         &--expand {
