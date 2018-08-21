@@ -1,1 +1,0 @@
-import './rating-selector';
