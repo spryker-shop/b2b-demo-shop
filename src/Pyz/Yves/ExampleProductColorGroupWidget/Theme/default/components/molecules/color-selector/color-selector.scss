@@ -23,12 +23,12 @@ $color-selector-size: 16px;
             transform: translate(-50%, -50%);
             width: 18px;
             height: 18px;
-            border: solid 4px #fff;
+            border: solid 4px $setting-color-white;
             border-radius: 100%;
         }
 
         &:not(:last-child) {
-            margin-right: 4px;
+            margin-right: rem(4);
         }
 
         .color-tooltip {
@@ -38,19 +38,19 @@ $color-selector-size: 16px;
             position: absolute;
             top: -43px;
             left: -15px;
-            background: #111;
-            color: #fff;
-            font: 300 16px $setting-font-family;
-            padding: 5px 11px 7px 10px;
+            background: $setting-color-black;
+            color: $setting-color-white;
+            font: 400 rem(16) $setting-font-family;
+            padding: rem(5) rem(11) rem(7) rem(10);
             white-space: nowrap;
             border-radius: 2px;
             &:before {
                 content: "";
                 position: absolute;
-                left: 17px;
+                left: rem(17);
                 bottom: -4px;
                 border-radius: 2px;
-                background: #111111;
+                background: $setting-color-black;
                 width: 10px;
                 height: 10px;
                 transform: rotate(45deg);
