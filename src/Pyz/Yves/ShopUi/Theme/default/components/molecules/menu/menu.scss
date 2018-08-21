@@ -12,6 +12,26 @@
             cursor: default;
         }
 
+        .sale-color {
+            #{$name}__link,
+            #{$name}__text {
+                color: $setting-color-alt;
+                &:hover {
+                    color: helper-color-dark($setting-color-alt, 20);
+                }
+            }
+        }
+
+        .new-color {
+            #{$name}__link,
+            #{$name}__text {
+                color: $setting-color-main;
+                &:hover {
+                    color: helper-color-dark($setting-color-main, 20);
+                }
+            }
+        }
+
         // Level 0
 
         &--lvl-0 {

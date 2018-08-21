@@ -9,6 +9,12 @@
     levelMenu: 1
 } %}
 
+{% set cssClass = data.node.cssClass is empty ? '' : ' ' ~ data.node.cssClass %}
+
+{% block class %}
+    {{ parent() }}{{ cssClass }}
+{% endblock %}
+
 {% block body %}
     {{ parent() }}
 
