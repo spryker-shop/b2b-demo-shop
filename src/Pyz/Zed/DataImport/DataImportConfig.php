@@ -171,7 +171,7 @@ class DataImportConfig extends SprykerDataImportConfig
      */
     public function getProductAbstractDataImporterConfiguration()
     {
-        return $this->buildImporterConfiguration('icecat_biz_data' . DIRECTORY_SEPARATOR . 'product_abstract.csv', static::IMPORT_TYPE_PRODUCT_ABSTRACT);
+        return $this->buildImporterConfiguration('product_abstract.csv', static::IMPORT_TYPE_PRODUCT_ABSTRACT);
     }
 
     /**
@@ -179,7 +179,7 @@ class DataImportConfig extends SprykerDataImportConfig
      */
     public function getProductAbstractStoreDataImporterConfiguration()
     {
-        return $this->buildImporterConfiguration('icecat_biz_data' . DIRECTORY_SEPARATOR . 'product_abstract_store.csv', static::IMPORT_TYPE_PRODUCT_ABSTRACT_STORE);
+        return $this->buildImporterConfiguration('product_abstract_store.csv', static::IMPORT_TYPE_PRODUCT_ABSTRACT_STORE);
     }
 
     /**
@@ -187,7 +187,7 @@ class DataImportConfig extends SprykerDataImportConfig
      */
     public function getProductConcreteDataImporterConfiguration()
     {
-        return $this->buildImporterConfiguration('icecat_biz_data' . DIRECTORY_SEPARATOR . 'product_concrete.csv', static::IMPORT_TYPE_PRODUCT_CONCRETE);
+        return $this->buildImporterConfiguration('product_concrete.csv', static::IMPORT_TYPE_PRODUCT_CONCRETE);
     }
 
     /**
@@ -235,7 +235,7 @@ class DataImportConfig extends SprykerDataImportConfig
      */
     public function getProductSetDataImporterConfiguration()
     {
-        return $this->buildImporterConfiguration('icecat_biz_data' . DIRECTORY_SEPARATOR . 'product_set.csv', static::IMPORT_TYPE_PRODUCT_SET);
+        return $this->buildImporterConfiguration('product_set.csv', static::IMPORT_TYPE_PRODUCT_SET);
     }
 
     /**
@@ -283,7 +283,7 @@ class DataImportConfig extends SprykerDataImportConfig
      */
     public function getProductImageDataImporterConfiguration()
     {
-        return $this->buildImporterConfiguration('icecat_biz_data' . DIRECTORY_SEPARATOR . 'product_image.csv', static::IMPORT_TYPE_PRODUCT_IMAGE);
+        return $this->buildImporterConfiguration('product_image.csv', static::IMPORT_TYPE_PRODUCT_IMAGE);
     }
 
     /**
