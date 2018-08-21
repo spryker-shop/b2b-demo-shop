@@ -73,24 +73,12 @@ export default class SuggestSearch extends Component {
         var keyCode = event.keyCode;
 
         switch (this.keyboardCodes[keyCode]) {
-            case 'enter':
-                this.onEnter(event);
-                break;
-            case 'tab':
-                this.onTab(event);
-                break;
-            case 'arrowUp':
-                this.onArrowUp(event);
-                break;
-            case 'arrowDown':
-                this.onArrowDown(event);
-                break;
-            case 'arrowLeft':
-                this.onArrowLeft(event);
-                break;
-            case 'arrowRight':
-                this.onArrowRight(event);
-                break;
+            case 'enter': this.onEnter(event); break;
+            case 'tab': this.onTab(event); break;
+            case 'arrowUp': this.onArrowUp(event); break;
+            case 'arrowDown': this.onArrowDown(event); break;
+            case 'arrowLeft': this.onArrowLeft(event); break;
+            case 'arrowRight': this.onArrowRight(event); break;
         }
     }
 
