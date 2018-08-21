@@ -1,0 +1,64 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'filter-range'
+} %}
+
+{% define data = {
+    parameter: required,
+    min: required,
+    activeMin: required,
+    max: required,
+    activeMax: required
+} %}
+
+{% block body %}
+    <div class="{{ 'range-slider js-' ~ config.name ~ '__range-slider' }}"></div>
+
+    <div class="grid grid--justify grid--middle filter-range__inputs">
+
+        <div class="col col--sm-5 filter-range__input-wrap">
+            <input class="input input--expand input--small filter-range__input js-form-input-default-value-disabler__catalog-input js-range-slider-target-min"
+                   type="number"
+                   name="{{ data.parameter }}[min]"
+                   value="{{ data.activeMin }}"
+                   required="required"
+                   min="{{ data.min }}"
+                   max="{{ data.max }}"
+                   data-default-value="{{ data.min }}"
+            />
+            <span class="filter-range__currency">
+                {{ 0 | money | replace({'0.00':'', '0,00':''}) }}
+            </span>
+        </div>
+
+        <div class="col col--sm-1 text-center">-</div>
+
+        <div class="col col--sm-5 filter-range__input-wrap">
+            <input class="input input--expand input--small filter-range__input js-form-input-default-value-disabler__catalog-input js-range-slider-target-max"
+                   type="number"
+                   name="{{ data.parameter }}[max]"
+                   value="{{ data.activeMax }}"
+                   required="required"
+                   min="{{ data.min }}"
+                   max="{{ data.max }}"
+                   data-default-value="{{ data.max }}"
+            />
+            <span class="filter-range__currency">
+                {{ 0 | money | replace({'0.00':'', '0,00':''}) }}
+            </span>
+        </div>
+    </div>
+
+    {% include molecule('range-slider') with {
+        attributes: {
+            'wrap-selector': '.js-' ~ config.name ~ '__range-slider',
+            'value-min': data.min,
+            'value-max': data.max,
+            'active-min': data.activeMin,
+            'active-max': data.activeMax,
+            'target-selector': '[".js-range-slider-target-min", ".js-range-slider-target-max"]',
+        }
+
+    } only %}
+{% endblock %}

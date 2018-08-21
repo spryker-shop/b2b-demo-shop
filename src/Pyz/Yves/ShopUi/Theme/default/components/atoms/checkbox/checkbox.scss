@@ -1,0 +1,101 @@
+@mixin shop-ui-checkbox($name: '.checkbox') {
+    #{$name} {
+        position: relative;
+        display: inline-block;
+
+        &__container {
+            display: block;
+            cursor: pointer;
+
+            &--filter {
+                display: flex;
+                align-items: start;
+            }
+        }
+
+        &__box {
+            @include helper-effect-transition(border-color background-color);
+            display: inline-block;
+            width: 1.25rem;
+            height: 1.25rem;
+            border: 1px solid $setting-color-input-border;
+            background-color: $setting-color-white;
+            margin-right: 0.865rem;
+            text-align: center;
+            vertical-align: top;
+            border-radius: $setting-border-radius;
+
+            &--filter {
+                width: 1.125rem;
+                height: 1.125rem;
+            }
+        }
+
+        &__input {
+            @include helper-visibility-invisible;
+            position: absolute;
+        }
+
+        &__check {
+            @include helper-visibility-invisible;
+            @include helper-effect-transition;
+            position: absolute;
+            top: 0.25rem;
+            left: 0.25rem;
+            color: $setting-color-white;
+
+            &--filter {
+                top: rem(3);
+                left: rem(3);
+            }
+        }
+
+        &__input:checked ~ {
+
+            #{$name}__box {
+                background-color: $setting-color-main;
+                border-color: $setting-color-main;
+            }
+
+            #{$name}__check {
+                @include helper-visibility-visible;
+            }
+
+            #{$name}__label {
+                font-weight: fw(bold);
+            }
+        }
+
+        &__label {
+
+            &--filter {
+                flex-grow: 1;
+                display: flex;
+                justify-content: space-between;
+            }
+        }
+
+        &--expand {
+            display: block;
+        }
+
+        &--error &__box {
+            border-color: map-get($setting-color-actions, alert);
+        }
+
+        &[disabled] &__box,
+        &--disabled &__box {
+            background-color: $setting-color-lighter;
+            cursor: not-allowed;
+        }
+
+        &:hover {
+            #{$name}__box {
+                border-color: $setting-color-main;
+            }
+        }
+
+        @content;
+    }
+}
+@include shop-ui-checkbox;
