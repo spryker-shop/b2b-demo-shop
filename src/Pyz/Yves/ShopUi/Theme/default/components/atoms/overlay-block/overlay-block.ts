@@ -5,11 +5,15 @@ export default class OverlayBlock extends Component {
     protected readyCallback(): void {}
 
     showOverlay():void {
-        this.classList.add('showed');
+        this.classList.add(this.classToShow);
     }
 
     hideOverlay():void {
-        this.classList.remove('showed');
+        this.classList.remove(this.classToShow);
+    }
+
+    get classToShow(): string {
+        return 'is-shown';
     }
 
 }
