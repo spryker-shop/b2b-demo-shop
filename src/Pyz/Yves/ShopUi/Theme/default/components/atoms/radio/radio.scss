@@ -1,0 +1,23 @@
+@import "../checkbox/checkbox";
+@mixin shop-ui-radio($name: '.radio') {
+    @include shop-ui-checkbox($name) {
+
+        &__box {
+            border-radius: 100%;
+        }
+
+        &__check {
+            display: none;
+        }
+
+        &__input:checked ~ {
+
+            #{$name}__box {
+                background-color: $setting-color-main;
+                border-color: $setting-color-main;
+                box-shadow: inset 0 0 0 rem(2) $setting-color-bg;
+            }
+        }
+    }
+}
+@include shop-ui-radio;

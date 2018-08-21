@@ -1,0 +1,11 @@
+{% extends model('component') %}
+ {% define config = {
+     name: 'toggler-accordion',
+     tag: 'toggler-accordion'
+ } %}
+ {% define attributes = {
+     'wrap-selector': required,
+     'trigger-selector': required,
+     'class-to-toggle': required,
+     'active-class': 'active'
+ } %}

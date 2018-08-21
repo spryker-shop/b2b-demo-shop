@@ -1,0 +1,75 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'filter-section',
+    tag: 'section'
+} %}
+
+{% define data = {
+    facets: [],
+    filterPath: null,
+    categories: []
+} %}
+
+{% block class %}
+    {{  parent() }}
+    {{ config.jsName }}
+{% endblock %}
+
+{% block body %}
+    {% for filter in data.facets %}
+        {% set filterHasValues = filter.values is not defined or filter.values | length > 0 %}
+        {% set toglerClass = '' %}
+
+        {% if filterHasValues %}
+            <div class="{{ config.name ~ '__item' }} {% if filter.name == 'category' %}{{ config.name ~ '__item--hollow' }}{% endif %}">
+                {% if filter.name != 'category' %}
+                    <h6 class="{{ config.name ~ '__item-title toggler-accordion__item js-' ~ config.name ~ '__trigger'}}" {{ 'data-toggle-target=.js-' ~ filter.name ~ '' }}>
+                        {{ ('product.filter.' ~ filter.name | lower) | trans }}
+                        {% include atom('icon') with {
+                            class: 'toggler-accordion__icon',
+                            data: {
+                                name: 'caret-down'
+                            }
+                        } only %}
+                    </h6>
+                    {% set toglerClass = config.name ~ '__item-content js-' ~  filter.name ~ ' is-hidden' %}
+                {% endif %}
+
+                {% include [
+                    molecule('filter-' ~ filter.config.name, 'CatalogPage'),
+                    molecule('filter-' ~ filter.config.type, 'CatalogPage')
+                ] ignore missing with {
+                    data: {
+                        filterPath: data.filterPath,
+                        categories: data.categories,
+                        filter: filter,
+                        parameter: filter.config.parameterName | default(''),
+                        min: filter.min | default(0),
+                        max: filter.max | default(0),
+                        activeMin: filter.activeMin | default(0),
+                        activeMax: filter.activeMax | default(0)
+                    },
+                    class: toglerClass
+                } only %}
+            </div>
+        {% endif %}
+    {% endfor %}
+
+    {% include molecule('toggler-accordion') with {
+        attributes: {
+            'wrap-selector': '.' ~ config.jsName,
+            'trigger-selector': '.js-' ~ config.name ~ '__trigger',
+            'class-to-toggle': 'is-hidden'
+        }
+    } only %}
+
+    <button type="submit" class="button button--expand button--big {{ config.name ~ '__button' }}">
+        {{ 'catalog.filter.button' | trans }}
+        {% include atom('icon') with {
+            data: {
+                name: 'filter'
+            }
+        } only %}
+    </button>
+{% endblock %}

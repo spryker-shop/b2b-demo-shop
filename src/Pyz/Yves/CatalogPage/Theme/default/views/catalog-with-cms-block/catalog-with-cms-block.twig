@@ -28,24 +28,18 @@
     {{parent()}}
 
     {% if data.categoryId %}
-        <div class="box">
+        <div class="catalog-cms-block catalog-cms-block--sidebar">
             {{ widgetBlock('CatalogCmsBlockWidgetPlugin', 'middle', data.categoryId) }}
         </div>
     {% endif %}
 {% endblock %}
 
-{% block content %}
+{% block contentBottom %}
     {% if data.categoryId %}
-        <div class="box">
-            {{ widgetBlock('CatalogCmsBlockWidgetPlugin', 'top', data.categoryId) }}
-        </div>
-    {% endif %}
-
-    {{parent()}}
-
-    {% if data.categoryId %}
-        <div class="box">
-            {{ widgetBlock('CatalogCmsBlockWidgetPlugin', 'bottom', data.categoryId) }}
+        <div class="catalog-cms-block-wrap">
+            <div class="container catalog-cms-block catalog-cms-block--bottom">
+                {{ widgetBlock('CatalogCmsBlockWidgetPlugin', 'bottom', data.categoryId) }}
+            </div>
         </div>
     {% endif %}
 {% endblock %}
