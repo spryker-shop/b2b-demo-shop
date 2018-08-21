@@ -14,13 +14,10 @@ class ProductMeasurementUnitDataImportConfig extends SprykerProductMeasurementUn
     /**
      * @return string
      */
-    protected function getModuleDataImportDirectory(): string
+    protected function getModuleRoot(): string
     {
-        $moduleDataImportDirectory = APPLICATION_ROOT_DIR . DIRECTORY_SEPARATOR
-            . 'data' . DIRECTORY_SEPARATOR
-            . 'import' . DIRECTORY_SEPARATOR
-            . 'certeo' . DIRECTORY_SEPARATOR;
+        $moduleRoot = realpath(APPLICATION_ROOT_DIR);
 
-        return $moduleDataImportDirectory;
+        return $moduleRoot . DIRECTORY_SEPARATOR;
     }
 }
