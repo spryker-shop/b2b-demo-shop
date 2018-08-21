@@ -31,7 +31,10 @@
             <div class="col col--expand {{ config.name }}__search">
                 {% if data.showSearchForm %}
                     {% include molecule('search-form') with {
-                        class: config.name ~ '__search-form'
+                        class: config.name ~ '__search-form is-hidden-sm-md',
+                        attributes: {
+                            'data-search-id': 'desktop'
+                        }
                     } only %}
                 {% endif %}
             </div>
@@ -122,5 +125,4 @@
             {{ widgetGlobal('NavigationWidgetPlugin', 'MAIN_NAVIGATION', 'navigation-main') }}
         </div>
     {% endif %}
-
 {% endblock %}
