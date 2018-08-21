@@ -18,7 +18,7 @@
 {% endblock %}
 
 {% block body %}
-    <ul class="{{ config.name }}-menu">
+    <ul class="{{ config.name }}__menu">
         {% for categoryNode in data.categories %}
             {% set quantity = 0 %}
             {% set hasChildren = categoryNode.children is defined and categoryNode.children is not empty %}
@@ -33,9 +33,9 @@
                 {% set categoryUrl = categoryNode.url | replace({"'": "\\'", '"':'\\"'}) %}
             {% endif %}
 
-            <li class="{{ config.name }}-menu__item{% if hasChildren %} {{ config.name }}-menu__item--has-children-list{% endif %}{% if config.requestUrl == categoryUrl %} active{% endif %}">
-                <button class="link {{ config.name }}-menu__link" onclick="this.form.action='{{ categoryUrl }}'" {% if quantity == 0 %}disabled="disabled"{% endif %}>
-                    <span class="{{ config.name }}-menu__link-text">{{ categoryNode.name }}</span> <span>{{ quantity }}</span>
+            <li class="{{ config.name }}__menu-item{% if hasChildren %} {{ config.name }}__menu-item--has-children-list{% endif %}{% if config.requestUrl == categoryUrl %} {{ config.name }}__menu-item--active{% endif %}">
+                <button class="link {{ config.name }}__menu-link" onclick="this.form.action='{{ categoryUrl }}'" {% if quantity == 0 %}disabled="disabled"{% endif %}>
+                    <span class="{{ config.name }}__menu-link-text">{{ categoryNode.name }}</span> <span>{{ quantity }}</span>
                 </button>
 
                 {% if hasChildren %}
