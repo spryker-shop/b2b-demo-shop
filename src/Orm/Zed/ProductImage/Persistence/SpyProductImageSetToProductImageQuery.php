@@ -7,7 +7,7 @@
 
 namespace Orm\Zed\ProductImage\Persistence;
 
-use Orm\Zed\ProductImage\Persistence\Base\SpyProductImageSetToProductImageQuery as BaseSpyProductImageSetToProductImageQuery;
+use Spryker\Zed\ProductImage\Persistence\Propel\AbstractSpyProductImageSetToProductImageQuery as BaseSpyProductImageSetToProductImageQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'spy_product_image_set_to_product_image' table.
