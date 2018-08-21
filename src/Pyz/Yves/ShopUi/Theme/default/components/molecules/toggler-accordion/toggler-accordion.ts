@@ -32,21 +32,14 @@ export default class TogglerAccordion extends Component {
         });
     }
 
-    toggle(activeTrigger: HTMLElement): void {
-        if (activeTrigger.classList.contains(this.triggerActiveClass)) {
-            activeTrigger.classList.remove(this.triggerActiveClass);
-            this.targetToggle(activeTrigger, false);
-        } else {
-            activeTrigger.classList.add(this.triggerActiveClass);
-            this.targetToggle(activeTrigger, true);
-        }
+    protected toggle(activeTrigger: HTMLElement): void {
+        const isTriggerActive = activeTrigger.classList.contains(this.triggerActiveClass);
+        activeTrigger.classList.toggle(this.triggerActiveClass, !isTriggerActive);
+        this.targetToggle(activeTrigger, isTriggerActive);
     }
 
-    targetToggle(target: HTMLElement, active: Boolean): void {
-        active ?
-            document.querySelector(target.dataset.toggleTarget).classList.remove(this.classToToggle)
-            :
-            document.querySelector(target.dataset.toggleTarget).classList.add(this.classToToggle);
+    protected targetToggle(target: HTMLElement, active: boolean): void {
+        document.querySelector(target.dataset.toggleTarget).classList.toggle(this.classToToggle, active)
     }
 
     get wrapSelector(): string {
