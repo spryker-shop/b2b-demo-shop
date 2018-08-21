@@ -1,0 +1,40 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'checkbox',
+    tag: 'span'
+} %}
+
+{% define data = {
+    label: ''
+} %}
+
+{% define attributes = {
+    type: 'checkbox',
+    required: false
+} %}
+
+{% set disabled = attributes['disabled'] | default(false) %}
+
+{% block attributes %}
+    {%- if disabled %}disabled{% endif -%}
+{% endblock %}
+
+{% block body %}
+    <label class="{{ component.renderClass(config.name ~ '__container', modifiers) }}" {{qa('label')}}>
+        <input class="{{component.renderClass(config.name ~ '__input', modifiers)}} {% block inputClass %}{% endblock %}" {{component.renderAttributes(attributes)}}/>
+        <span class="{{component.renderClass(config.name ~ '__box', modifiers)}}"></span>
+        {% include atom('icon') with {
+            class: component.renderClass(config.name ~ '__check', modifiers),
+            modifiers: ['small'],
+            data: {
+                name: 'check'
+            }
+        } only %}
+        {%- block labelContainer -%}
+            <span class="{{component.renderClass(config.name ~ '__label', modifiers)}} label {% if attributes.required %}label--required{% endif %}">
+                {%- block label -%}{{data.label | raw}}{%- endblock -%}
+            </span>
+        {%- endblock -%}
+    </label>
+{% endblock %}

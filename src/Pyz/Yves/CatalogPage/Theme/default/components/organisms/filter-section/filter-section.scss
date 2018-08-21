@@ -1,0 +1,28 @@
+.filter-section {
+    margin-top: rem(35);
+
+    &__item:not(&__item--hollow) {
+        border: 1px solid $setting-color-gray-1;
+        padding: rem(18) 20px;
+
+        & + #{&} {
+            border-top: none;
+        }
+    }
+
+    &__item-title {
+        color: $setting-color-gray-6;
+        font: fw(bold) rem(12)/rem(15) $setting-font-family;
+        text-transform: uppercase;
+        letter-spacing: rem(0.37);
+    }
+
+    &__item--hollow {
+        margin-bottom: rem(40);
+    }
+
+    &__item-content,
+    &__button {
+        margin-top: rem(20);
+    }
+}
