@@ -1,30 +1,23 @@
 <?php
 
 /**
- * MIT License
- * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
+ * This file is part of the Spryker Suite.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
 namespace Pyz\Zed\ProductDiscontinuedDataImport;
 
-use Generated\Shared\Transfer\DataImporterConfigurationTransfer;
 use Spryker\Zed\ProductDiscontinuedDataImport\ProductDiscontinuedDataImportConfig as SprykerProductDiscontinuedDataImportConfig;
 
 class ProductDiscontinuedDataImportConfig extends SprykerProductDiscontinuedDataImportConfig
 {
     /**
-     * @return \Generated\Shared\Transfer\DataImporterConfigurationTransfer
+     * @return string
      */
-    public function getProductDiscontinuedDataImporterConfiguration(): DataImporterConfigurationTransfer
+    protected function getModuleRoot(): string
     {
-        $moduleDataImportDirectory = APPLICATION_ROOT_DIR . DIRECTORY_SEPARATOR
-            . 'data' . DIRECTORY_SEPARATOR
-            . 'import' . DIRECTORY_SEPARATOR
-            . 'certeo' . DIRECTORY_SEPARATOR;
+        $moduleRoot = realpath(APPLICATION_ROOT_DIR);
 
-        return $this->buildImporterConfiguration(
-            $moduleDataImportDirectory . 'product_discontinued.csv',
-            static::IMPORT_TYPE_PRODUCT_DISCONTINUED
-        );
+        return $moduleRoot . DIRECTORY_SEPARATOR;
     }
 }

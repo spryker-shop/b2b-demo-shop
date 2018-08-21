@@ -59,7 +59,7 @@ class DataImportConfig extends SprykerDataImportConfig
      */
     public function getCurrencyDataImporterConfiguration()
     {
-        return $this->buildImporterConfiguration('certeo' . DIRECTORY_SEPARATOR . 'currency.csv', static::IMPORT_TYPE_CURRENCY);
+        return $this->buildImporterConfiguration('currency.csv', static::IMPORT_TYPE_CURRENCY);
     }
 
     /**
@@ -67,7 +67,7 @@ class DataImportConfig extends SprykerDataImportConfig
      */
     public function getOrderSourceDataImporterConfiguration()
     {
-        return $this->buildImporterConfiguration('certeo' . DIRECTORY_SEPARATOR . 'order_source.csv', static::IMPORT_TYPE_ORDER_SOURCE);
+        return $this->buildImporterConfiguration('order_source.csv', static::IMPORT_TYPE_ORDER_SOURCE);
     }
 
     /**
@@ -75,7 +75,7 @@ class DataImportConfig extends SprykerDataImportConfig
      */
     public function getStoreDataImporterConfiguration()
     {
-        return $this->buildImporterConfiguration('certeo' . DIRECTORY_SEPARATOR . '', static::IMPORT_TYPE_STORE);
+        return $this->buildImporterConfiguration('', static::IMPORT_TYPE_STORE);
     }
 
     /**
@@ -83,7 +83,7 @@ class DataImportConfig extends SprykerDataImportConfig
      */
     public function getGlossaryDataImporterConfiguration()
     {
-        return $this->buildImporterConfiguration('certeo' . DIRECTORY_SEPARATOR . 'glossary.csv', static::IMPORT_TYPE_GLOSSARY);
+        return $this->buildImporterConfiguration('glossary.csv', static::IMPORT_TYPE_GLOSSARY);
     }
 
     /**
@@ -91,7 +91,7 @@ class DataImportConfig extends SprykerDataImportConfig
      */
     public function getCustomerDataImporterConfiguration()
     {
-        return $this->buildImporterConfiguration('certeo' . DIRECTORY_SEPARATOR . 'customer.csv', static::IMPORT_TYPE_CUSTOMER);
+        return $this->buildImporterConfiguration('customer.csv', static::IMPORT_TYPE_CUSTOMER);
     }
 
     /**
@@ -99,7 +99,7 @@ class DataImportConfig extends SprykerDataImportConfig
      */
     public function getCategoryTemplateDataImporterConfiguration()
     {
-        return $this->buildImporterConfiguration('certeo' . DIRECTORY_SEPARATOR . 'category_template.csv', static::IMPORT_TYPE_CATEGORY_TEMPLATE);
+        return $this->buildImporterConfiguration('category_template.csv', static::IMPORT_TYPE_CATEGORY_TEMPLATE);
     }
 
     /**
@@ -107,7 +107,7 @@ class DataImportConfig extends SprykerDataImportConfig
      */
     public function getTaxDataImporterConfiguration()
     {
-        return $this->buildImporterConfiguration('certeo' . DIRECTORY_SEPARATOR . 'tax.csv', static::IMPORT_TYPE_TAX);
+        return $this->buildImporterConfiguration('tax.csv', static::IMPORT_TYPE_TAX);
     }
 
     /**
@@ -115,7 +115,7 @@ class DataImportConfig extends SprykerDataImportConfig
      */
     public function getProductPriceDataImporterConfiguration()
     {
-        return $this->buildImporterConfiguration('certeo' . DIRECTORY_SEPARATOR . 'product_price.csv', static::IMPORT_TYPE_PRODUCT_PRICE);
+        return $this->buildImporterConfiguration('product_price.csv', static::IMPORT_TYPE_PRODUCT_PRICE);
     }
 
     /**
@@ -123,7 +123,7 @@ class DataImportConfig extends SprykerDataImportConfig
      */
     public function getProductStockDataImporterConfiguration()
     {
-        return $this->buildImporterConfiguration('certeo' . DIRECTORY_SEPARATOR . 'product_stock.csv', static::IMPORT_TYPE_PRODUCT_STOCK);
+        return $this->buildImporterConfiguration('product_stock.csv', static::IMPORT_TYPE_PRODUCT_STOCK);
     }
 
     /**
@@ -131,7 +131,7 @@ class DataImportConfig extends SprykerDataImportConfig
      */
     public function getStockDataImporterConfiguration()
     {
-        return $this->buildImporterConfiguration('certeo' . DIRECTORY_SEPARATOR . 'stock.csv', static::IMPORT_TYPE_STOCK);
+        return $this->buildImporterConfiguration('stock.csv', static::IMPORT_TYPE_STOCK);
     }
 
     /**
@@ -139,7 +139,7 @@ class DataImportConfig extends SprykerDataImportConfig
      */
     public function getShipmentDataImporterConfiguration()
     {
-        return $this->buildImporterConfiguration('certeo' . DIRECTORY_SEPARATOR . 'shipment.csv', static::IMPORT_TYPE_SHIPMENT);
+        return $this->buildImporterConfiguration('shipment.csv', static::IMPORT_TYPE_SHIPMENT);
     }
 
     /**
@@ -147,7 +147,7 @@ class DataImportConfig extends SprykerDataImportConfig
      */
     public function getShipmentPriceDataImporterConfiguration()
     {
-        return $this->buildImporterConfiguration('certeo' . DIRECTORY_SEPARATOR . 'shipment_price.csv', static::IMPORT_TYPE_SHIPMENT_PRICE);
+        return $this->buildImporterConfiguration('shipment_price.csv', static::IMPORT_TYPE_SHIPMENT_PRICE);
     }
 
     /**
@@ -155,7 +155,7 @@ class DataImportConfig extends SprykerDataImportConfig
      */
     public function getNavigationDataImporterConfiguration()
     {
-        return $this->buildImporterConfiguration('certeo' . DIRECTORY_SEPARATOR . 'navigation.csv', static::IMPORT_TYPE_NAVIGATION);
+        return $this->buildImporterConfiguration('navigation.csv', static::IMPORT_TYPE_NAVIGATION);
     }
 
     /**
@@ -163,7 +163,7 @@ class DataImportConfig extends SprykerDataImportConfig
      */
     public function getNavigationNodeDataImporterConfiguration()
     {
-        return $this->buildImporterConfiguration('certeo' . DIRECTORY_SEPARATOR . 'navigation_node.csv', static::IMPORT_TYPE_NAVIGATION_NODE);
+        return $this->buildImporterConfiguration('navigation_node.csv', static::IMPORT_TYPE_NAVIGATION_NODE);
     }
 
     /**
@@ -171,7 +171,7 @@ class DataImportConfig extends SprykerDataImportConfig
      */
     public function getProductAbstractDataImporterConfiguration()
     {
-        return $this->buildImporterConfiguration('certeo' . DIRECTORY_SEPARATOR . 'product_abstract.csv', static::IMPORT_TYPE_PRODUCT_ABSTRACT);
+        return $this->buildImporterConfiguration('product_abstract.csv', static::IMPORT_TYPE_PRODUCT_ABSTRACT);
     }
 
     /**
@@ -179,7 +179,7 @@ class DataImportConfig extends SprykerDataImportConfig
      */
     public function getProductAbstractStoreDataImporterConfiguration()
     {
-        return $this->buildImporterConfiguration('certeo' . DIRECTORY_SEPARATOR . 'product_abstract_store.csv', static::IMPORT_TYPE_PRODUCT_ABSTRACT_STORE);
+        return $this->buildImporterConfiguration('product_abstract_store.csv', static::IMPORT_TYPE_PRODUCT_ABSTRACT_STORE);
     }
 
     /**
@@ -187,7 +187,7 @@ class DataImportConfig extends SprykerDataImportConfig
      */
     public function getProductConcreteDataImporterConfiguration()
     {
-        return $this->buildImporterConfiguration('certeo' . DIRECTORY_SEPARATOR . 'product_concrete.csv', static::IMPORT_TYPE_PRODUCT_CONCRETE);
+        return $this->buildImporterConfiguration('product_concrete.csv', static::IMPORT_TYPE_PRODUCT_CONCRETE);
     }
 
     /**
@@ -195,7 +195,7 @@ class DataImportConfig extends SprykerDataImportConfig
      */
     public function getProductAttributeKeyDataImporterConfiguration()
     {
-        return $this->buildImporterConfiguration('certeo' . DIRECTORY_SEPARATOR . 'product_attribute_key.csv', static::IMPORT_TYPE_PRODUCT_ATTRIBUTE_KEY);
+        return $this->buildImporterConfiguration('product_attribute_key.csv', static::IMPORT_TYPE_PRODUCT_ATTRIBUTE_KEY);
     }
 
     /**
@@ -203,7 +203,7 @@ class DataImportConfig extends SprykerDataImportConfig
      */
     public function getProductManagementAttributeDataImporterConfiguration()
     {
-        return $this->buildImporterConfiguration('certeo' . DIRECTORY_SEPARATOR . 'product_management_attribute.csv', static::IMPORT_TYPE_PRODUCT_MANAGEMENT_ATTRIBUTE);
+        return $this->buildImporterConfiguration('product_management_attribute.csv', static::IMPORT_TYPE_PRODUCT_MANAGEMENT_ATTRIBUTE);
     }
 
     /**
@@ -211,7 +211,7 @@ class DataImportConfig extends SprykerDataImportConfig
      */
     public function getProductRelationDataImporterConfiguration()
     {
-        return $this->buildImporterConfiguration('certeo' . DIRECTORY_SEPARATOR . 'product_relation.csv', static::IMPORT_TYPE_PRODUCT_RELATION);
+        return $this->buildImporterConfiguration('product_relation.csv', static::IMPORT_TYPE_PRODUCT_RELATION);
     }
 
     /**
@@ -219,7 +219,7 @@ class DataImportConfig extends SprykerDataImportConfig
      */
     public function getProductReviewDataImporterConfiguration()
     {
-        return $this->buildImporterConfiguration('certeo' . DIRECTORY_SEPARATOR . 'product_review.csv', static::IMPORT_TYPE_PRODUCT_REVIEW);
+        return $this->buildImporterConfiguration('product_review.csv', static::IMPORT_TYPE_PRODUCT_REVIEW);
     }
 
     /**
@@ -227,7 +227,7 @@ class DataImportConfig extends SprykerDataImportConfig
      */
     public function getProductLabelDataImporterConfiguration()
     {
-        return $this->buildImporterConfiguration('certeo' . DIRECTORY_SEPARATOR . 'product_label.csv', static::IMPORT_TYPE_PRODUCT_LABEL);
+        return $this->buildImporterConfiguration('product_label.csv', static::IMPORT_TYPE_PRODUCT_LABEL);
     }
 
     /**
@@ -235,7 +235,7 @@ class DataImportConfig extends SprykerDataImportConfig
      */
     public function getProductSetDataImporterConfiguration()
     {
-        return $this->buildImporterConfiguration('certeo' . DIRECTORY_SEPARATOR . 'product_set.csv', static::IMPORT_TYPE_PRODUCT_SET);
+        return $this->buildImporterConfiguration('product_set.csv', static::IMPORT_TYPE_PRODUCT_SET);
     }
 
     /**
@@ -243,7 +243,7 @@ class DataImportConfig extends SprykerDataImportConfig
      */
     public function getProductSearchAttributeMapDataImporterConfiguration()
     {
-        return $this->buildImporterConfiguration('certeo' . DIRECTORY_SEPARATOR . 'product_search_attribute_map.csv', static::IMPORT_TYPE_PRODUCT_SEARCH_ATTRIBUTE_MAP);
+        return $this->buildImporterConfiguration('product_search_attribute_map.csv', static::IMPORT_TYPE_PRODUCT_SEARCH_ATTRIBUTE_MAP);
     }
 
     /**
@@ -251,7 +251,7 @@ class DataImportConfig extends SprykerDataImportConfig
      */
     public function getProductSearchAttributeDataImporterConfiguration()
     {
-        return $this->buildImporterConfiguration('certeo' . DIRECTORY_SEPARATOR . 'product_search_attribute.csv', static::IMPORT_TYPE_PRODUCT_SEARCH_ATTRIBUTE);
+        return $this->buildImporterConfiguration('product_search_attribute.csv', static::IMPORT_TYPE_PRODUCT_SEARCH_ATTRIBUTE);
     }
 
     /**
@@ -259,7 +259,7 @@ class DataImportConfig extends SprykerDataImportConfig
      */
     public function getProductGroupDataImporterConfiguration()
     {
-        return $this->buildImporterConfiguration('certeo' . DIRECTORY_SEPARATOR . 'product_group.csv', static::IMPORT_TYPE_PRODUCT_GROUP);
+        return $this->buildImporterConfiguration('product_group.csv', static::IMPORT_TYPE_PRODUCT_GROUP);
     }
 
     /**
@@ -267,7 +267,7 @@ class DataImportConfig extends SprykerDataImportConfig
      */
     public function getProductOptionDataImporterConfiguration()
     {
-        return $this->buildImporterConfiguration('certeo' . DIRECTORY_SEPARATOR . 'product_option.csv', static::IMPORT_TYPE_PRODUCT_OPTION);
+        return $this->buildImporterConfiguration('product_option.csv', static::IMPORT_TYPE_PRODUCT_OPTION);
     }
 
     /**
@@ -275,7 +275,7 @@ class DataImportConfig extends SprykerDataImportConfig
      */
     public function getProductOptionPriceDataImporterConfiguration()
     {
-        return $this->buildImporterConfiguration('certeo' . DIRECTORY_SEPARATOR . 'product_option_price.csv', static::IMPORT_TYPE_PRODUCT_OPTION_PRICE);
+        return $this->buildImporterConfiguration('product_option_price.csv', static::IMPORT_TYPE_PRODUCT_OPTION_PRICE);
     }
 
     /**
@@ -283,7 +283,7 @@ class DataImportConfig extends SprykerDataImportConfig
      */
     public function getProductImageDataImporterConfiguration()
     {
-        return $this->buildImporterConfiguration('certeo' . DIRECTORY_SEPARATOR . 'product_image.csv', static::IMPORT_TYPE_PRODUCT_IMAGE);
+        return $this->buildImporterConfiguration('product_image.csv', static::IMPORT_TYPE_PRODUCT_IMAGE);
     }
 
     /**
@@ -291,7 +291,7 @@ class DataImportConfig extends SprykerDataImportConfig
      */
     public function getCmsTemplateDataImporterConfiguration()
     {
-        return $this->buildImporterConfiguration('certeo' . DIRECTORY_SEPARATOR . 'cms_template.csv', static::IMPORT_TYPE_CMS_TEMPLATE);
+        return $this->buildImporterConfiguration('cms_template.csv', static::IMPORT_TYPE_CMS_TEMPLATE);
     }
 
     /**
@@ -299,7 +299,7 @@ class DataImportConfig extends SprykerDataImportConfig
      */
     public function getCmsPageDataImporterConfiguration()
     {
-        return $this->buildImporterConfiguration('certeo' . DIRECTORY_SEPARATOR . 'cms_page.csv', static::IMPORT_TYPE_CMS_PAGE);
+        return $this->buildImporterConfiguration('cms_page.csv', static::IMPORT_TYPE_CMS_PAGE);
     }
 
     /**
@@ -307,7 +307,7 @@ class DataImportConfig extends SprykerDataImportConfig
      */
     public function getCmsBlockDataImporterConfiguration()
     {
-        return $this->buildImporterConfiguration('certeo' . DIRECTORY_SEPARATOR . 'cms_block.csv', static::IMPORT_TYPE_CMS_BLOCK);
+        return $this->buildImporterConfiguration('cms_block.csv', static::IMPORT_TYPE_CMS_BLOCK);
     }
 
     /**
@@ -315,7 +315,7 @@ class DataImportConfig extends SprykerDataImportConfig
      */
     public function getCmsBlockStoreDataImporterConfiguration()
     {
-        return $this->buildImporterConfiguration('certeo' . DIRECTORY_SEPARATOR . 'cms_block_store.csv', static::IMPORT_TYPE_CMS_BLOCK_STORE);
+        return $this->buildImporterConfiguration('cms_block_store.csv', static::IMPORT_TYPE_CMS_BLOCK_STORE);
     }
 
     /**
@@ -323,7 +323,7 @@ class DataImportConfig extends SprykerDataImportConfig
      */
     public function getCmsBlockCategoryPositionDataImporterConfiguration()
     {
-        return $this->buildImporterConfiguration('certeo' . DIRECTORY_SEPARATOR . 'cms_block_category_position.csv', static::IMPORT_TYPE_CMS_BLOCK_CATEGORY_POSITION);
+        return $this->buildImporterConfiguration('cms_block_category_position.csv', static::IMPORT_TYPE_CMS_BLOCK_CATEGORY_POSITION);
     }
 
     /**
@@ -331,7 +331,7 @@ class DataImportConfig extends SprykerDataImportConfig
      */
     public function getCmsBlockCategoryDataImporterConfiguration()
     {
-        return $this->buildImporterConfiguration('certeo' . DIRECTORY_SEPARATOR . 'cms_block_category.csv', static::IMPORT_TYPE_CMS_BLOCK_CATEGORY);
+        return $this->buildImporterConfiguration('cms_block_category.csv', static::IMPORT_TYPE_CMS_BLOCK_CATEGORY);
     }
 
     /**
@@ -339,7 +339,7 @@ class DataImportConfig extends SprykerDataImportConfig
      */
     public function getDiscountDataImporterConfiguration()
     {
-        return $this->buildImporterConfiguration('certeo' . DIRECTORY_SEPARATOR . 'discount.csv', static::IMPORT_TYPE_DISCOUNT);
+        return $this->buildImporterConfiguration('discount.csv', static::IMPORT_TYPE_DISCOUNT);
     }
 
     /**
@@ -347,7 +347,7 @@ class DataImportConfig extends SprykerDataImportConfig
      */
     public function getDiscountStoreDataImporterConfiguration()
     {
-        return $this->buildImporterConfiguration('certeo' . DIRECTORY_SEPARATOR . 'discount_store.csv', static::IMPORT_TYPE_DISCOUNT_STORE);
+        return $this->buildImporterConfiguration('discount_store.csv', static::IMPORT_TYPE_DISCOUNT_STORE);
     }
 
     /**
@@ -355,7 +355,7 @@ class DataImportConfig extends SprykerDataImportConfig
      */
     public function getDiscountAmountDataImporterConfiguration()
     {
-        return $this->buildImporterConfiguration('certeo' . DIRECTORY_SEPARATOR . 'discount_amount.csv', static::IMPORT_TYPE_DISCOUNT_AMOUNT);
+        return $this->buildImporterConfiguration('discount_amount.csv', static::IMPORT_TYPE_DISCOUNT_AMOUNT);
     }
 
     /**
@@ -363,6 +363,6 @@ class DataImportConfig extends SprykerDataImportConfig
      */
     public function getDiscountVoucherDataImporterConfiguration()
     {
-        return $this->buildImporterConfiguration('certeo' . DIRECTORY_SEPARATOR . 'discount_voucher.csv', static::IMPORT_TYPE_DISCOUNT_VOUCHER);
+        return $this->buildImporterConfiguration('discount_voucher.csv', static::IMPORT_TYPE_DISCOUNT_VOUCHER);
     }
 }
