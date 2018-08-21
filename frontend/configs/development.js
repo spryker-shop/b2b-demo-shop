@@ -125,11 +125,11 @@ module.exports = {
 
         new CopyWebpackPlugin([
             {
-                from: `${appSettings.assets}/images/*`,
+                from: `${appSettings.paths.assets}/images/*`,
                 to: './images/[name].[ext]',
                 ignore: ['*.gitkeep']
             }, {
-                from: `${appSettings.assets}/fonts/*`,
+                from: `${appSettings.paths.assets}/fonts/*`,
                 to: './fonts/[name].[ext]',
                 ignore: ['*.gitkeep']
             }
