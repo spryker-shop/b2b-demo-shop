@@ -1,0 +1,49 @@
+{% extends atom('node') %}
+
+{% define config = {
+    name: 'navigation-multilevel-node',
+    tag: 'li'
+} %}
+
+{% define data = {
+    levelMenu: 1
+} %}
+
+{% block body %}
+    {{ parent() }}
+
+    {% if(data.node.children | length > 0) %}
+        <div class="menu-wrapper menu-wrapper--lvl-{{ data.levelMenu }}">
+            <ul class="menu menu--lvl-{{ data.levelMenu }}">
+                {% for childNode in data.node.children %}
+                    {% set hasChildren = childNode.children | length > 0 %}
+
+                    {% include molecule('navigation-multilevel-node') with {
+                        class: 'menu__item menu__item--lvl-' ~ data.levelMenu ~ (hasChildren ? ' menu__item--has-children-list' : ''),
+                        data: {
+                            node: childNode,
+                            levelMenu: data.levelMenu + 1
+                        }
+                    } only %}
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block url %}
+    <a class="menu__link menu__link--lvl-{{ data.levelMenu - 1 }}" href="{{ data.node.url }}">{{ data.node.title }}</a>
+{% endblock %}
+
+{% block link %}
+    <a class="menu__link menu__link--lvl-{{ data.levelMenu - 1 }}" href="{{ data.node.url }}">{{ data.node.title }}</a>
+{% endblock %}
+
+{% block externalUrl %}
+    <a class="menu__link menu__link--lvl-{{ data.levelMenu - 1 }}" href="{{ data.node.url }}" target="_blank">{{ data.node.title }}</a>
+{% endblock %}
+
+{% block other %}
+    <span class="menu__text menu__text--lvl-{{ data.levelMenu - 1 }}">{{ data.node.title }}</span>
+{% endblock %}
+
