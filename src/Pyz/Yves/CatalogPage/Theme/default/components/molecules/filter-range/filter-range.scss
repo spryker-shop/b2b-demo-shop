@@ -1,0 +1,33 @@
+.filter-range {
+
+    &__inputs {
+        margin-top: rem(20);
+        font-weight: fw(medium);
+        color: $setting-color-gray-4;
+    }
+
+    &__input {
+        font-weight: fw(medium);
+        color: $setting-color-gray-4;
+        padding-right: rem(18);
+    }
+
+    &__input-wrap {
+        position: relative;
+    }
+
+    &__currency {
+        position: absolute;
+        right: 1px;
+        top: 1px;
+        bottom: 1px;
+        border-radius: 0 $setting-border-radius $setting-border-radius 0;
+        width: rem(30);
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: $setting-color-bg;
+        font-size: rem(12);
+    }
+}

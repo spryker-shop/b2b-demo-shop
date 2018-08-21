@@ -2,7 +2,7 @@
 
 {% define config = {
     name: 'product-card',
-    tag: 'article'
+    tag: 'product-card'
 } %}
 
 {% define data = {
@@ -15,16 +15,17 @@
 } %}
 
 {% block image %}
-    <a href="{{data.url}}">
-        {% include atom('thumbnail') with {
-            class: 'js-product-color-group__image-' ~ data.abstractId,
-            attributes: {
-                alt: data.name,
-                src: data.imageUrl,
-                title: data.name
-            }
-        } only %}
-    </a>
+
+    {% include atom('thumbnail') with {
+        modifiers: ['big'],
+        class: 'js-product-color-group__image-' ~ data.abstractId,
+        attributes: {
+            alt: data.name,
+            src: data.imageUrl,
+            title: data.name
+        }
+    } only %}
+    <a class="{{config.name}}__overlay" href="{{data.url}}"></a>
 {% endblock %}
 
 {% block content %}
@@ -37,7 +38,8 @@
     {% endblock %}
 
     {% block name %}
-        <strong>{{data.name}}</strong>
+        <strong class="{{config.name}}__title">{{data.name}}</strong>
+        <span class="{{config.name}}__category">Office Furniture</span>
     {% endblock %}
 
     {% block rating %}
@@ -45,13 +47,17 @@
     {% endblock %}
 
     {% block price %}
-        <p>
-            {% include molecule('price') with {
-                data: {
-                    amount: data.price | money,
-                    originalAmount: data.originalPrice is empty ? null : (data.originalPrice | money)
-                }
-            } only %}
-        </p>
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            <p>
+                {% include molecule('price') with {
+                    data: {
+                        amount: data.price | money,
+                        originalAmount: data.originalPrice is empty ? null : (data.originalPrice | money)
+                    }
+                } only %}
+            </p>
+        {% endif %}
     {% endblock %}
 {% endblock %}
+
+{% block actionsContainer %}{% endblock %}

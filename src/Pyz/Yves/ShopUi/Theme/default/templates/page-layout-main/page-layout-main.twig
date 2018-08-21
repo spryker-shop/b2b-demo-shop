@@ -27,20 +27,20 @@
     <div class="content-wrap">
 
         {% block pageInfo %}
-            <div class="container">
-                {% block breadcrumbs %}
-                    {% include molecule('breadcrumb') only %}
-                {% endblock %}
+            <div class="page-info">
+                <div class="container">
+                    {% block breadcrumbs %}
+                        {% include molecule('breadcrumb') only %}
+                    {% endblock %}
 
-                <hr />
-
-                {% block title %}
-                    <h3>{{data.title}}</h3>
-                {% endblock %}
+                    {% block title %}
+                        <h3 class="page-info__title">{{data.title}}</h3>
+                    {% endblock %}
+                </div>
             </div>
         {% endblock %}
 
-        <main>
+        <main class="{% block contentClass %}{% endblock %}">
 
             {% block contentTop %}{% endblock %}
 

@@ -1,0 +1,17 @@
+@include product-label-widget-flag {
+    padding: rem(5) rem(10);
+
+    &__text {
+        font-size: rem(10);
+        line-height: map_get($setting-font-line-height, 2);
+        font-weight: fw(bold);
+        letter-spacing: rem(0.4);
+
+    }
+
+    &--highlight,
+    &--highlight &__icon {
+        color: $setting-color-white;
+        background-color: $setting-color-alt;
+    }
+}
