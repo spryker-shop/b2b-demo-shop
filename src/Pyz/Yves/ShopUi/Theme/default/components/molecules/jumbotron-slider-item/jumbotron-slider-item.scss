@@ -1,0 +1,70 @@
+@mixin shop-ui-jumbotron-slider-item($name: '.jumbotron-slider-item') {
+    #{$name} {
+        overflow: hidden;
+
+        &__container {
+            height: 445px;
+            background-color: $setting-color-main;
+            background-position: center center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            text-align: left;
+            position: relative;
+            padding: 0 rem(88);
+        }
+
+        &__link {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            top: 0;
+            z-index: 15;
+        }
+
+        &__title,
+        &__text {
+            & > * {
+                color: $setting-color-white;
+            }
+        }
+
+        &__title {
+            & > * {
+                line-height: rem(48);
+                font-weight: fw(medium);
+                margin-bottom: rem(27);
+                text-shadow: 0 10px 30px $setting-color-shadow, 0 2px 4px $setting-color-shadow;
+            }
+        }
+
+        &__text {
+            & > * {
+                font-size: rem(22);
+                line-height: rem(28);
+                font-weight: fw(regular);
+                letter-spacing: rem(0.41);
+                text-shadow: 0 2px 4px $setting-color-shadow;
+                margin-bottom: rem(48);
+            }
+        }
+
+        &__button {
+            font-size: rem(18);
+            line-height: rem(23);
+            font-weight: fw(bold);
+            background-color: $setting-color-alt;
+            padding: rem(14) rem(28);
+            border-radius: 2px;
+            z-index: 20;
+            &:hover,
+            &:focus {
+                color: $setting-color-white;
+                background-color: helper-color-dark($setting-color-alt);
+            }
+        }
+
+        @content
+    }
+}
+

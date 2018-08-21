@@ -7,7 +7,7 @@
 
 namespace Orm\Zed\ManualOrderEntry\Persistence;
 
-use Orm\Zed\ManualOrderEntry\Persistence\Base\SpyOrderSourceQuery as BaseSpyOrderSourceQuery;
+use Spryker\Zed\ManualOrderEntry\Persistence\Propel\AbstractSpyOrderSourceQuery as BaseSpyOrderSourceQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'spy_order_source' table.

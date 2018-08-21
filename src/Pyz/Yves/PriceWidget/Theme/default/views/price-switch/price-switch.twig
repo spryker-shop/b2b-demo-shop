@@ -1,0 +1,37 @@
+{% extends template('widget') %}
+
+{% define data = {
+    priceModes: _widget.priceModes | default([]),
+    currentPriceMode: _widget.currentPriceMode | default,
+    requestUri: app.request.requestUri
+} %}
+
+{% block template %}
+    {% if data.priceModes is not empty %}
+        {{parent()}}
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+    <form method="GET" action="{{ path('price-mode-switch') }}">
+        {% embed atom('custom-select') with {
+            modifiers: ['alternative'],
+            attributes: {
+                name: 'price-mode',
+                onchange: 'this.form.submit()'
+            },
+            embed: {
+                priceModes: data.priceModes,
+                currentPriceMode: data.currentPriceMode
+            }
+        } only %}
+            {% block options %}
+                {% for priceMode in embed.priceModes %}
+                    <option value="{{ priceMode }}" {{ (priceMode == embed.currentPriceMode) ? 'selected' : ''}}>{{ ('price.mode.' ~ priceMode | lower) | trans }}</option>
+                {% endfor %}
+            {% endblock %}
+        {% endembed %}
+
+        <input type="hidden" name="referrer-url" value="{{ data.requestUri }}" />
+    </form>
+{% endblock %}
