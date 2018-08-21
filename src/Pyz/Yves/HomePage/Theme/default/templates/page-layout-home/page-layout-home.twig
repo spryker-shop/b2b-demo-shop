@@ -59,6 +59,10 @@
         {#</p>#}
     {#{% endblock %}#}
 
+    {% include atom('overlay-block') with {
+        modifiers: ['no-header']
+    } only %}
+
     {% block icons %}
         {% include atom('icon-sprite') only %}
     {% endblock %}

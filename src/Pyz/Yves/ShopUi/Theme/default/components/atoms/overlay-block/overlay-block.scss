@@ -7,9 +7,11 @@
     height: 100%;
     @include helper-visibility-invisible;
     @include helper-effect-transition;
-    &--no-header.is-shown {
-        z-index: $setting-zi-header - 1;
+    &--is-shown {
         @include helper-visibility-visible;
+        &.overlay-block--no-header {
+            z-index: $setting-zi-header - 1;
+        }
     }
 }
 

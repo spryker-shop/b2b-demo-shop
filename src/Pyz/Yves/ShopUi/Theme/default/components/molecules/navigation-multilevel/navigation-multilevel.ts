@@ -8,8 +8,8 @@ export default class NavigationMultilevel extends Component {
 
     constructor() {
         super();
-        this.overlay = <OverlayBlock>document.querySelector('.js-overlay-block');
-        this.triggers = <HTMLElement[]>Array.from(this.querySelectorAll('.js-menu-trigger'));
+        this.overlay = <OverlayBlock>document.querySelector(this.overlaySelector);
+        this.triggers = <HTMLElement[]>Array.from(this.querySelectorAll(this.trigerSelector));
         this.targets = <HTMLElement[]>Array.from(document.querySelectorAll(this.targetSelector));
     }
 
@@ -26,6 +26,10 @@ export default class NavigationMultilevel extends Component {
         const trigger = <HTMLElement>event.currentTarget;
         event.preventDefault();
         this.overlay.showOverlay();
+        this.addClass(trigger);
+    }
+
+    protected addClass(trigger: HTMLElement): void {
         trigger.classList.add(this.classToToggle);
     }
 
@@ -33,6 +37,10 @@ export default class NavigationMultilevel extends Component {
         const trigger = <HTMLElement>event.currentTarget;
         event.preventDefault();
         this.overlay.hideOverlay();
+        this.removeClass(trigger);
+    }
+
+    protected removeClass(trigger: HTMLElement): void {
         trigger.classList.remove(this.classToToggle);
     }
 
@@ -43,4 +51,13 @@ export default class NavigationMultilevel extends Component {
     get classToToggle(): string {
         return this.getAttribute('class-to-toggle');
     }
+
+    get overlaySelector(): string {
+        return '.js-overlay-block';
+    }
+
+    get trigerSelector(): string {
+        return '.js-menu-trigger';
+    }
+
 }
