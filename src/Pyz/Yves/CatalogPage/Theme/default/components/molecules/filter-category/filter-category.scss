@@ -20,24 +20,24 @@
         }
     }
 
-    &-menu__item {
+    &__menu-item {
         font: fw(medium) rem(18)/rem(23) $setting-font-family;
 
         &--has-children-list {
 
-            .filter-category-menu__item {
+            .filter-category__menu-item {
                 font-weight: fw(regular);
                 font-size: rem(16);
             }
         }
 
-        &.active {
+        &--active {
 
-            & > .filter-category-menu__link {
+            & > .filter-category__menu-link {
                 font-weight: fw(bold);
                 color: $setting-color-gray-6 !important;
 
-                .filter-category-menu__link-text {
+                .filter-category__menu-link-text {
                     text-decoration: underline;
                 }
             }
@@ -45,7 +45,7 @@
         }
     }
 
-    &-menu__link {
+    &__menu-link {
         @include helper-effect-transition(color);
         display: flex;
         justify-content: space-between;
