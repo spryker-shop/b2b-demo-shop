@@ -1,0 +1,42 @@
+@mixin shop-ui-breadcrumb-step($name: '.breadcrumb-step') {
+    #{$name} {
+        display: inline-block;
+        font: fw(500) rem(13)/rem(16) $setting-font-family;
+
+        &:last-child {
+
+            #{$name}__separator {
+                display: none;
+            }
+
+            #{$name}__link {
+                color: $setting-color-gray-4;
+            }
+        }
+
+        &__separator {
+            margin-left: 0.25rem;
+            margin-right: 0.25rem;
+            color: $setting-color-gray-15;
+        }
+
+        &--active {
+            color: $setting-color-gray-4;
+        }
+
+        &__link,
+        &--disabled:not(&--active) {
+            @include helper-effect-transition(color);
+            color: $setting-color-gray-15;
+
+            &:hover,
+            &:focus {
+                color: $setting-color-gray-4;
+            }
+        }
+
+        @content;
+    }
+}
+
+@include shop-ui-breadcrumb-step();

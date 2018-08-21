@@ -7,7 +7,7 @@
 
 namespace Orm\Zed\ProductAttribute\Persistence;
 
-use Spryker\Zed\ProductAttribute\Persistence\Propel\AbstractSpyProductAttributeQuery as BaseSpyProductManagementAttributeQuery;
+use Spryker\Zed\ProductAttribute\Persistence\Propel\AbstractSpyProductManagementAttributeQuery as BaseSpyProductManagementAttributeQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'spy_product_management_attribute' table.
