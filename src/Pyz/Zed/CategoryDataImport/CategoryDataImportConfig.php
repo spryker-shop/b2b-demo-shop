@@ -1,8 +1,8 @@
 <?php
 
 /**
- * This file is part of the Spryker Suite.
- * For full license information, please view the LICENSE file that was distributed with this source code.
+ * MIT License
+ * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
 namespace Pyz\Zed\CategoryDataImport;
@@ -11,18 +11,13 @@ use Spryker\Zed\CategoryDataImport\CategoryDataImportConfig as SprykerCategoryDa
 
 class CategoryDataImportConfig extends SprykerCategoryDataImportConfig
 {
-    const IMPORT_TYPE_CATEGORY = 'category';
-
     /**
-     * @return \Generated\Shared\Transfer\DataImporterConfigurationTransfer
+     * @return string
      */
-    public function getCategoryDataImporterConfiguration()
+    protected function getModuleRoot(): string
     {
-        $moduleDataImportDirectory = APPLICATION_ROOT_DIR . DIRECTORY_SEPARATOR
-            . 'data' . DIRECTORY_SEPARATOR
-            . 'import' . DIRECTORY_SEPARATOR
-            . 'certeo' . DIRECTORY_SEPARATOR;
+        $moduleRoot = realpath(APPLICATION_ROOT_DIR);
 
-        return $this->buildImporterConfiguration($moduleDataImportDirectory . 'category.csv', static::IMPORT_TYPE_CATEGORY);
+        return $moduleRoot . DIRECTORY_SEPARATOR;
     }
 }

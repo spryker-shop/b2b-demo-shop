@@ -1,0 +1,45 @@
+@mixin shop-ui-banner($name: '.banner') {
+    #{$name} {
+        overflow: hidden;
+        height: rem(450);
+        margin-bottom: rem(30);
+
+        &--small {
+            height: rem(340);
+        }
+
+        &__container {
+            min-height: 100%;
+            background-color: $setting-color-main;
+            background-position: center center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            text-align: left;
+            position: relative;
+            padding: 0 rem(30);
+            margin: 0 rem(15);
+        }
+
+        &__title,
+        &__text {
+            color: $setting-color-white;
+        }
+
+        &__title {
+            font-size: rem(30);
+            line-height: rem(30);
+            font-weight: fw(medium);
+            margin-bottom: rem(13);
+        }
+
+        &__text {
+            font-size: rem(18);
+            line-height: normal;
+            font-weight: fw(regular);
+            margin-bottom: rem(35);
+        }
+
+        @content;
+    }
+}
+

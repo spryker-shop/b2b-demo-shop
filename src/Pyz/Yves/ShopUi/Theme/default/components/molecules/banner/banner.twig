@@ -1,0 +1,24 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'banner',
+    tag: 'article'
+} %}
+
+{% define data = {
+    imageUrl: required,
+    link: required,
+    cmsBlockName: required,
+    btnTitle: required
+} %}
+
+{% set backgroundImage = data.imageUrl is empty ?: 'background-image: url(' ~ data.imageUrl ~ '); ' %}
+
+{% block body %}
+    <div class="{{config.name}}__container grid grid--left grid--middle" style="{{backgroundImage}}">
+        <div class="col col--sm-12">
+            {{ spyCmsBlock({name: data.cmsBlockName}) }}
+            <a href="{{ data.link | trans }}" class="button button--big button--hollow button--hollow-white">{{ data.btnTitle | trans }}</a>
+        </div>
+    </div>
+{% endblock %}

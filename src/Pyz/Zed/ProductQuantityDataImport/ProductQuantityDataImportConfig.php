@@ -7,21 +7,17 @@
 
 namespace Pyz\Zed\ProductQuantityDataImport;
 
-use Generated\Shared\Transfer\DataImporterConfigurationTransfer;
-use Spryker\Zed\ProductQuantityDataImport\ProductQuantityDataImportConfig as SprykerProductQuantityDataImportConfig;
+use Spryker\Zed\ProductQuantityDataImport\ProductQuantityDataImportConfig as SrykerProductQuantityDataImportConfig;
 
-class ProductQuantityDataImportConfig extends SprykerProductQuantityDataImportConfig
+class ProductQuantityDataImportConfig extends SrykerProductQuantityDataImportConfig
 {
     /**
-     * @return \Generated\Shared\Transfer\DataImporterConfigurationTransfer
+     * @return string
      */
-    public function getProductQuantityDataImportConfiguration(): DataImporterConfigurationTransfer
+    protected function getModuleRoot(): string
     {
-        $moduleDataImportDirectory = APPLICATION_ROOT_DIR . DIRECTORY_SEPARATOR
-            . 'data' . DIRECTORY_SEPARATOR
-            . 'import' . DIRECTORY_SEPARATOR
-            . 'certeo' . DIRECTORY_SEPARATOR;
+        $moduleRoot = realpath(APPLICATION_ROOT_DIR);
 
-        return $this->buildImporterConfiguration($moduleDataImportDirectory . 'product_quantity.csv', static::IMPORT_TYPE_PRODUCT_QUANTITY);
+        return $moduleRoot . DIRECTORY_SEPARATOR;
     }
 }

@@ -43,6 +43,18 @@
                     color: helper-color-light($setting-color-main);
                 }
             }
+
+            &-white {
+                color: $setting-color-white;
+                border-color: $setting-color-white;
+
+                &:hover,
+                &:focus {
+                    color: helper-color-dark($setting-color-white);
+                    background-color: $setting-color-transparent;
+                    border-color: helper-color-dark($setting-color-white);
+                }
+            }
         }
 
         &--red {
