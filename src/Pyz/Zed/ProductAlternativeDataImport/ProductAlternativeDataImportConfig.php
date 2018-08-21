@@ -7,23 +7,17 @@
 
 namespace Pyz\Zed\ProductAlternativeDataImport;
 
-use Generated\Shared\Transfer\DataImporterConfigurationTransfer;
 use Spryker\Zed\ProductAlternativeDataImport\ProductAlternativeDataImportConfig as SprykerProductAlternativeDataImportConfig;
 
 class ProductAlternativeDataImportConfig extends SprykerProductAlternativeDataImportConfig
 {
-    const IMPORT_TYPE_PRODUCT_ALTERNATIVE = 'product-alternative';
-
     /**
-     * @return \Generated\Shared\Transfer\DataImporterConfigurationTransfer
+     * @return string
      */
-    public function getProductAlternativeDataImporterConfiguration(): DataImporterConfigurationTransfer
+    protected function getModuleRoot(): string
     {
-        $moduleDataImportDirectory = APPLICATION_ROOT_DIR . DIRECTORY_SEPARATOR
-            . 'data' . DIRECTORY_SEPARATOR
-            . 'import' . DIRECTORY_SEPARATOR
-            . 'certeo' . DIRECTORY_SEPARATOR;
+        $moduleRoot = realpath(APPLICATION_ROOT_DIR);
 
-        return $this->buildImporterConfiguration($moduleDataImportDirectory . 'product_alternative.csv', static::IMPORT_TYPE_PRODUCT_ALTERNATIVE);
+        return $moduleRoot . DIRECTORY_SEPARATOR;
     }
 }

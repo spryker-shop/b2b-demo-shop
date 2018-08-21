@@ -7,23 +7,17 @@
 
 namespace Pyz\Zed\PriceProductMerchantRelationshipDataImport;
 
-use Generated\Shared\Transfer\DataImporterConfigurationTransfer;
 use Spryker\Zed\PriceProductMerchantRelationshipDataImport\PriceProductMerchantRelationshipDataImportConfig as SprykerPriceProductMerchantRelationshipDataImportConfig;
 
 class PriceProductMerchantRelationshipDataImportConfig extends SprykerPriceProductMerchantRelationshipDataImportConfig
 {
-    public const IMPORT_TYPE_PRICE_PRODUCT_MERCHANT_RELATIONSHIP = 'product-price-merchant-relationship';
-
     /**
-     * @return \Generated\Shared\Transfer\DataImporterConfigurationTransfer
+     * @return string
      */
-    public function getPriceProductMerchantRelationshipDataImporterConfiguration(): DataImporterConfigurationTransfer
+    protected function getModuleRoot(): string
     {
-        $moduleDataImportDirectory = APPLICATION_ROOT_DIR . DIRECTORY_SEPARATOR
-            . 'data' . DIRECTORY_SEPARATOR
-            . 'import' . DIRECTORY_SEPARATOR
-            . 'certeo' . DIRECTORY_SEPARATOR;
+        $moduleRoot = realpath(APPLICATION_ROOT_DIR);
 
-        return $this->buildImporterConfiguration($moduleDataImportDirectory . 'price_product_merchant_relationship.csv', static::IMPORT_TYPE_PRICE_PRODUCT_MERCHANT_RELATIONSHIP);
+        return $moduleRoot . DIRECTORY_SEPARATOR;
     }
 }
