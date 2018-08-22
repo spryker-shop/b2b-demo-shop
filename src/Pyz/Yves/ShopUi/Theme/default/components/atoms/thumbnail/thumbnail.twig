@@ -1,0 +1,9 @@
+{% extends model('component') %}
+ {% define config = {
+     name: 'thumbnail',
+     tag: 'span'
+ } %}
+ {% block attributes %}{% endblock %}
+ {% block body %}
+     <img class="{{config.name}}__image" {{component.renderAttributes(attributes)}} />
+ {% endblock %}
