@@ -1,0 +1,48 @@
+.common-section {
+    padding: rem(70) 0 rem(16);
+
+    &--bg-dark {
+        padding: rem(50) 0 rem(80);
+        background-color: $setting-color-gray-13;
+
+        .product-card__container {
+            background-color: $setting-color-bg;
+        }
+    }
+
+    &--full-width {
+        margin-left: -$setting-grid-space;
+        margin-right: -$setting-grid-space;
+    }
+
+    &__title {
+        color: $setting-color-gray-4;
+        text-align: center;
+        margin-bottom: rem(24);
+    }
+
+    &__sub-title {
+        font-size: map_get($setting-font-size, big);
+        line-height: normal;
+        color: $setting-color-gray-2;
+        text-align: center;
+        margin-bottom: rem(40);
+    }
+
+    &__text {
+        text-align: center;
+        font-size: map_get($setting-font-size, big);
+        color: $setting-color-gray-2;
+        line-height: 1.61;
+        max-width: rem(970);
+        margin: 0 auto rem(40);
+    }
+
+    &__link {
+        color: $setting-color-gray-3;
+
+        &:hover {
+            color: helper-color-dark($setting-color-gray-3);
+        }
+    }
+}
