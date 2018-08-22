@@ -2,10 +2,10 @@ $color-selector-size: 16px;
 
 .color-selector,
 .color-selector-pdp {
+    @include helper-effect-transition(opacity);
     cursor: default;
     padding: rem(13) 0;
     opacity: 1;
-    transition: opacity $setting-effect-default-duration;
 
     &__color {
         display: inline-block;

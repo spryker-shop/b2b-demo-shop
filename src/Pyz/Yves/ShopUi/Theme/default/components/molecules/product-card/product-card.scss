@@ -1,12 +1,15 @@
 @include shop-ui-product-card {
     height: 100%;
 
+    &:hover .color-selector {
+        opacity: 1;
+    }
+
     &__container {
         @include helper-effect-transition(background-color box-shadow);
         background-color: $setting-color-gray-13;
         padding: rem(8) rem(28) rem(36);
         margin: 0 15px 30px;
-
 
         &:hover {
             background-color: $setting-color-bg;
