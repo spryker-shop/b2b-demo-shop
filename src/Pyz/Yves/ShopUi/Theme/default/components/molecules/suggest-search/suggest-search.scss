@@ -2,16 +2,31 @@
     #{$name} {
         &__container {
             position: absolute;
+            top: 100%;
+            left: 0;
             margin: 0;
-            padding: map-get($setting-spacing, 'big');
+            padding: rem(27) rem(19) rem(29) rem(21);
+            background: $setting-color-white;
             width: 100%;
             max-height: 30rem;
-            overflow-x: scroll;
+            overflow-x: hidden;
+            z-index: $setting-zi-search-suggestions + 3;
         }
 
         &__input {
+            padding: rem(15) rem(15) rem(15) rem(56);
+            border: none;
+            font-size: rem(15);
+            font-weight: fw(regular);
+            border-radius: $setting-border-radius;
+            box-shadow: 0 18px 18px 0 $setting-color-shadow-1, 0 3px 3px 0 $setting-color-shadow-1;
             position: relative;
             z-index: $setting-zi-search-suggestions + 2;
+
+            &--active {
+                background-color: $setting-color-gray-11;
+                border-radius: $setting-border-radius $setting-border-radius 0 0;
+            }
 
             &--transparent {
                 background-color: $setting-color-transparent;
@@ -25,11 +40,14 @@
         }
 
         &__hint {
+            padding: rem(15) rem(15) rem(15) rem(56);
+            border: none;
+            font-size: rem(15);
+            font-weight: fw(regular);
             position: absolute;
+            color: $setting-color-gray-12;
             top: 0;
-            border-color: $setting-color-transparent;
             z-index: $setting-zi-search-suggestions + 1;
-            color: $setting-color-light;
         }
 
         @content;

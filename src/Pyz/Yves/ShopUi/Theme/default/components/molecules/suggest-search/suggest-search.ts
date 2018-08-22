@@ -215,10 +215,12 @@ export default class SuggestSearch extends Component {
 
     showSugestions(): void {
         this.suggestionsContainer.classList.remove('is-hidden');
+        this.searchInput.classList.add(`${this.name}__input--active`);
     }
 
     hideSugestions(): void {
         this.suggestionsContainer.classList.add('is-hidden');
+        this.searchInput.classList.remove(`${this.name}__input--active`);
     }
 
     protected createHintInput(): void {
