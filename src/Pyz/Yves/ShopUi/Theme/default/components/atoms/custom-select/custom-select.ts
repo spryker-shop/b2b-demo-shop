@@ -14,17 +14,20 @@ export default class CustomSelect extends Component {
     protected readyCallback(): void {
         const select2 = select;
         const targetSelect = this.$customSelect.find(`.js-${this.name}`);
+        const self = this;
+
+        console.log(this.selectWidth);
 
         targetSelect.select2({
             minimumResultsForSearch: Infinity,
             dropdownParent: this.$customSelect,
-            width: '100%'
+            width: this.selectWidth,
         });
 
         this.removeTitle();
 
         targetSelect.on('select2:select', function() {
-            this.removeTitle();
+            self.removeTitle();
         });
     }
 
@@ -32,4 +35,7 @@ export default class CustomSelect extends Component {
         this.$customSelect.find('.select2-selection__rendered').removeAttr('title');
     }
 
+    get selectWidth(): string {
+        return this.$customSelect.find('select').attr('selectWidth');
+    }
 }
