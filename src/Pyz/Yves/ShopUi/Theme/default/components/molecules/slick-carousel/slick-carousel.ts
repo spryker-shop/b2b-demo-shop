@@ -8,7 +8,7 @@ export default class SlickCarousel extends Component {
 
         const $container = $(this).find(`.${this.name}__container`);
         const sliderConfig = $(this).data('json');
-        
+
         $container.slick(
             sliderConfig
         );
