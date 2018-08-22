@@ -9,10 +9,6 @@ export default class SlickCarousel extends Component {
         const $container = $(this).find(`.${this.name}__container`);
         const sliderConfig = $(this).data('json');
 
-        $container.on('init', function (event, slick) {
-            $(this).fadeIn('fast', () => $(this).removeClass('is-hidden'));
-        });
-
         $container.slick(
             sliderConfig
         );

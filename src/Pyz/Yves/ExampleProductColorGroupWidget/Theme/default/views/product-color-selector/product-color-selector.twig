@@ -7,7 +7,7 @@
 
 {% block body %}
     {% embed molecule('color-selector', 'ExampleProductColorGroupWidget') with {
-        class: 'text-left is-invisible',
+        class: 'text-center',
         data: {
             items: data.items
         },
@@ -16,7 +16,7 @@
         }
     } only %}
         {% block body %}
-            {{parent()}}
+            <hr />{{parent()}}<hr />
         {% endblock %}
     {% endembed %}
 {% endblock %}
