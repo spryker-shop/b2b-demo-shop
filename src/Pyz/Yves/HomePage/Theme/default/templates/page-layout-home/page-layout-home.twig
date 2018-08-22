@@ -24,37 +24,40 @@
         {% endembed %}
     {% endblock %}
 
-    <div class="content-wrap">
+    {% include organism('jumbotron-slider')%}
 
+    <div class="container">
         {% block pageInfo %}
-            <div class="page-info">
-                <div class="container">
-                    {% block breadcrumbs %}
-                        {% include molecule('breadcrumb') only %}
-                    {% endblock %}
+            <div class="box">
+                {% block breadcrumbs %}
+                    {% include molecule('breadcrumb') only %}
+                {% endblock %}
 
-                    {% block title %}
-                        <h3 class="page-info__title">{{data.title}}</h3>
-                    {% endblock %}
-                </div>
+                <hr />
+
+                {% block title %}
+                    <h3>{{data.title}}</h3>
+                {% endblock %}
             </div>
         {% endblock %}
 
-        <main class="{% block contentClass %}{% endblock %}">
-
-            {% block contentTop %}{% endblock %}
-
-            <div class="container">
-                {% block content %}{% endblock %}
-            </div>
-
-            {% block contentBottom %}{% endblock %}
+        <main>
+            {% block content %}{% endblock %}
         </main>
+
     </div>
 
     {% block footer %}
         {% include organism('footer') only %}
     {% endblock %}
+
+    {#{% block copyright %}#}
+        {#<p class="text-center text-small text-secondary">#}
+            {#Lorem ipsum dolor sit amet, consectetuer adipiscing elit.#}
+            {#<br>Aenean commodo ligula eget dolor. Aenean massa.#}
+            {#<br>&copy; ACME Company#}
+        {#</p>#}
+    {#{% endblock %}#}
 
     {% include atom('overlay-block') with {
         modifiers: ['no-header']

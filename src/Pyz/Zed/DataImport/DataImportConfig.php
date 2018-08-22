@@ -83,7 +83,7 @@ class DataImportConfig extends SprykerDataImportConfig
      */
     public function getGlossaryDataImporterConfiguration()
     {
-        return $this->buildImporterConfiguration('glossary.csv', static::IMPORT_TYPE_GLOSSARY);
+        return $this->buildImporterConfiguration('certeo' . DIRECTORY_SEPARATOR . 'glossary.csv', static::IMPORT_TYPE_GLOSSARY);
     }
 
     /**
@@ -99,7 +99,7 @@ class DataImportConfig extends SprykerDataImportConfig
      */
     public function getCategoryTemplateDataImporterConfiguration()
     {
-        return $this->buildImporterConfiguration('category_template.csv', static::IMPORT_TYPE_CATEGORY_TEMPLATE);
+        return $this->buildImporterConfiguration('certeo' . DIRECTORY_SEPARATOR . 'category_template.csv', static::IMPORT_TYPE_CATEGORY_TEMPLATE);
     }
 
     /**
