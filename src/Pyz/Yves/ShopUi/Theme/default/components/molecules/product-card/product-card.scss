@@ -1,0 +1,47 @@
+@include shop-ui-product-card {
+    height: 100%;
+
+    &:hover .color-selector {
+        opacity: 1;
+    }
+
+    &__container {
+        @include helper-effect-transition(background-color box-shadow);
+        background-color: $setting-color-gray-13;
+        padding: rem(8) rem(28) rem(36);
+        margin: 0 15px 30px;
+
+        &:hover {
+            background-color: $setting-color-bg;
+            box-shadow: 0 18px 18px 0 $setting-color-shadow-1, 0 3px 3px 0 $setting-color-shadow-1;
+        }
+
+        &--color-revert {
+            background-color: $setting-color-bg;
+        }
+    }
+
+    &__overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+
+    &__title {
+        color: $setting-color-gray-5;
+        font-size: rem(20);
+        font-weight: fw(medium);
+        line-height: map_get($setting-font-line-height, 2);
+        letter-spacing: rem(0.2);
+    }
+
+    &__category {
+        display: block;
+        line-height: map_get($setting-font-line-height, 2);
+        letter-spacing: rem(0.2);
+        font-weight: fw(regular);
+        color: $setting-color-gray-3;
+    }
+}
