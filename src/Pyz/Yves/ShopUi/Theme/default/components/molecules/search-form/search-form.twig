@@ -16,8 +16,9 @@
 {% block body %}
     <form action="{{data.searchUrl}}">
         <input name="q" type="text" class="input input--expand suggest-search__input {{ config.jsName }}__input" placeholder="{{ 'global.search' | trans }}" value="{{data.searchValue}}" autocomplete="off">
-        <button type="submit" class="{{config.name}}__submit button button--expand">
+        <button type="submit" class=" button button--expand {{config.name}}__submit">
             {% include atom('icon') with {
+                modifiers: ['search'],
                 data: {
                     name: 'search'
                 }

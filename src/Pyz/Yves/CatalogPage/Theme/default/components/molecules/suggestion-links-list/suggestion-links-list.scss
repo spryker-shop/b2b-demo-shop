@@ -1,0 +1,33 @@
+@mixin catalog-page-suggestion-links-list($name: '.suggestion-links-list') {
+    #{$name} {
+
+        font-size: rem(15);
+        font-weight: fw(regular);
+        line-height: rem(22);
+        letter-spacing: rem(0.1);
+
+
+        &__title {
+            font-size: rem(17);
+            font-weight: fw(regular);
+            line-height: normal;
+            letter-spacing: rem(0.2);
+            padding-bottom: rem(16);
+            padding-top: rem(26);
+            color: $setting-color-gray-4;
+        }
+
+        &__item {
+            padding: 5px 0;
+        }
+
+        &__link {
+            color: $setting-color-gray-3;
+            &:hover {
+                color: $setting-color-gray-4;
+            }
+        }
+
+        @content;
+    }
+}

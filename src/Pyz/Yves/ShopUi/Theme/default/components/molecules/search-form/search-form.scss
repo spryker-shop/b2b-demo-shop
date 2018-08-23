@@ -8,8 +8,18 @@
             left: 0;
             width: rem(56);
             height: 100%;
+            padding: 0;
             border: none;
             background: $setting-color-transparent;
+            color: $setting-color-gray-4;
+            z-index: $setting-zi-search-suggestions + 3;
+
+            &:hover {
+                background: $setting-color-transparent;
+                .icon {
+                    color: $setting-color-gray-3;
+                }
+            }
         }
 
         @content;

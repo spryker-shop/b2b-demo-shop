@@ -5,16 +5,18 @@
             top: 100%;
             left: 0;
             margin: 0;
-            padding: rem(27) rem(19) rem(29) rem(21);
+            padding: rem(1) rem(19) rem(29) rem(21);
+            border-radius: 0 0 $setting-border-radius $setting-border-radius;
             background: $setting-color-white;
             width: 100%;
             max-height: 30rem;
             overflow-x: hidden;
             z-index: $setting-zi-search-suggestions + 3;
+            display: block !important;
         }
 
         &__input {
-            padding: rem(15) rem(15) rem(15) rem(56);
+            padding: rem(15) rem(10) rem(15) rem(56);
             border: none;
             font-size: rem(15);
             font-weight: fw(regular);
@@ -24,7 +26,6 @@
             z-index: $setting-zi-search-suggestions + 2;
 
             &--active {
-                background-color: $setting-color-gray-11;
                 border-radius: $setting-border-radius $setting-border-radius 0 0;
             }
 
@@ -33,10 +34,12 @@
             }
         }
 
-        &__item {
-            &--active {
-                text-decoration: underline;
-            }
+        &__product {
+            padding-left: rem(37);
+        }
+
+        &__product-action {
+            padding-top: rem(23);
         }
 
         &__hint {
@@ -48,6 +51,11 @@
             color: $setting-color-gray-12;
             top: 0;
             z-index: $setting-zi-search-suggestions + 1;
+
+            &--active {
+                background-color: $setting-color-gray-11;
+                border-radius: $setting-border-radius $setting-border-radius 0 0;
+            }
         }
 
         @content;

@@ -15,22 +15,20 @@
 } %}
 
 {% block body %}
-    <a class="grid js-suggest-search__item--navigable js-suggest-search__product-item--navigable {{ config.name }}__link" href="{{ data.url }}">
-        <span class="col col--sm-3">
-            {% if data.image %}
-                {% include atom('thumbnail') with {
-                    modifiers: ['smaller', 'has-border'],
-                    attributes: {
-                        alt: data.alt,
-                        src: data.image.external_url_small,
-                        title: data.title
-                    },
-                    class: config.name ~ '__thumbnail'
-                } only %}
-            {% endif %}
-        </span>
+    <a class="js-suggest-search__item--navigable js-suggest-search__product-item--navigable {{ config.name }}__link" href="{{ data.url }}">
+        {% if data.image %}
+            {% include atom('thumbnail') with {
+                modifiers: ['smaller'],
+                attributes: {
+                    alt: data.alt,
+                    src: data.image.external_url_small,
+                    title: data.title
+                },
+                class: config.name ~ '__thumbnail'
+            } only %}
+        {% endif %}
 
-        <span class="col col--sm-9 spacing spacing--inner">
+        <span class="{{ config.name }}__name">
             {{ data.title }}
 
             {% include molecule('price') with {
