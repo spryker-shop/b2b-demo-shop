@@ -1,1 +1,1 @@
-import './style'
+import './suggestion-links-list.scss'
