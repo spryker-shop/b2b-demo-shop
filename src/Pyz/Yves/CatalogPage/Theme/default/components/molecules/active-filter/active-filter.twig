@@ -20,10 +20,6 @@
     {% endif %}
 {% endblock %}
 
-{% block class %}
-    {{parent()}}
-{% endblock %}
-
 {% block body %}
     <strong class="{{ config.name ~ '__name' }}">{{ ('product.filter.' ~ data.filter.name) | trans }}:&nbsp;</strong>
     {{data.value}}

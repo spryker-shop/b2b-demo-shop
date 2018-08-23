@@ -16,8 +16,6 @@ export default class CustomSelect extends Component {
         const targetSelect = this.$customSelect.find(`.js-${this.name}`);
         const self = this;
 
-        console.log(this.selectWidth);
-
         targetSelect.select2({
             minimumResultsForSearch: Infinity,
             dropdownParent: this.$customSelect,
