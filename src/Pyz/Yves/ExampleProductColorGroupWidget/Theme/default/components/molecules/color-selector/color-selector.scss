@@ -2,10 +2,10 @@ $color-selector-size: 16px;
 
 .color-selector,
 .color-selector-pdp {
+    @include helper-effect-transition(opacity);
     cursor: default;
     padding: rem(13) 0;
     opacity: 1;
-    transition: opacity $setting-effect-default-duration;
 
     &__color {
         display: inline-block;
@@ -43,13 +43,13 @@ $color-selector-size: 16px;
             font: 400 rem(16) $setting-font-family;
             padding: rem(5) rem(11) rem(7) rem(10);
             white-space: nowrap;
-            border-radius: 2px;
+            border-radius: $setting-border-radius;
             &:before {
                 content: "";
                 position: absolute;
                 left: rem(17);
                 bottom: -4px;
-                border-radius: 2px;
+                border-radius: $setting-border-radius;
                 background: $setting-color-black;
                 width: 10px;
                 height: 10px;

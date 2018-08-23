@@ -1,9 +1,8 @@
-$product-review-rating-selector-icon-size: 14px;
+$product-review-rating-selector-icon-size: 16px;
 
 @mixin product-review-rating-selector($name: '.rating-selector') {
     #{$name} {
         display: inline-block;
-        padding-left: $product-review-rating-selector-icon-size / 2;
 
         &__steps {
             display: inline-block;
@@ -32,16 +31,15 @@ $product-review-rating-selector-icon-size: 14px;
 
                 &:nth-child(even) {
                     width: $product-review-rating-selector-icon-size / 2;
-                    margin-left: -$product-review-rating-selector-icon-size / 2;
                 }
             }
-
         }
 
         &__star {
             @include helper-effect-transition(color, 100ms);
             position: relative;
             min-width: $product-review-rating-selector-icon-size;
+            width: $product-review-rating-selector-icon-size;
             min-height: $product-review-rating-selector-icon-size;
             height: $product-review-rating-selector-icon-size;
             color: $setting-color-gray-12;
@@ -56,10 +54,6 @@ $product-review-rating-selector-icon-size: 14px;
             }
         }
 
-        &__step > &__star {
-            width: $product-review-rating-selector-icon-size;
-        }
-
         &__step:hover > &__star,
         &__step:hover ~ &__step > &__star {
             color: $setting-color-yellow-1;
@@ -67,7 +61,6 @@ $product-review-rating-selector-icon-size: 14px;
 
         &__step--active > &__star {
             color: $setting-color-yellow-1;
-            width: $product-review-rating-selector-icon-size;
         }
 
         &--readonly {
@@ -76,13 +69,6 @@ $product-review-rating-selector-icon-size: 14px;
 
         &--expand {
             display: block;
-        }
-
-        &__count {
-            font-size: rem(13);
-            line-height: rem(16);
-            font-family: $setting-font-family;
-            color: $setting-color-gray-3;
         }
     }
 }

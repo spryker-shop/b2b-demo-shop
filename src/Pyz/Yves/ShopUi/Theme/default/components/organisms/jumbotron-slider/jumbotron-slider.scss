@@ -1,6 +1,6 @@
 @mixin shop-ui-jumbotron-slider($name: '.jumbotron-slider') {
     #{$name} {
-        min-height: 450px;
+        min-height: rem(455);
 
         .slick-slide {
             margin: 0 rem(5);
@@ -34,12 +34,6 @@
                 button {
                     font-size: 0;
                 }
-            }
-        }
-
-        .slick-initialized {
-            .jumbotron-slider-item__container {
-                display: flex !important;
             }
         }
     }

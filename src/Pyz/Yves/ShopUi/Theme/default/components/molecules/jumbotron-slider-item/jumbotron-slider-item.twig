@@ -9,7 +9,7 @@
     imageUrl: required,
     link: required,
     cmsBlockName: required,
-    btnTitle: required
+    btnTitle: ''
 } %}
 
 {% set backgroundImage = data.imageUrl is empty ?: 'background-image: url(' ~ data.imageUrl ~ '); ' %}

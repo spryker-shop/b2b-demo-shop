@@ -13,7 +13,7 @@ export default class OverlayBlock extends Component {
     }
 
     get classToShow(): string {
-        return this.name + '--is-shown';
+        return `${this.name}--is-shown`;
     }
 
 }

@@ -17,7 +17,6 @@
 {% block image %}
 
     {% include atom('thumbnail') with {
-        modifiers: ['big'],
         class: 'js-product-color-group__image-' ~ data.abstractId,
         attributes: {
             alt: data.name,
