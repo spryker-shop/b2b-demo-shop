@@ -220,14 +220,14 @@ export default class SuggestSearch extends Component {
         this.suggestionsContainer.classList.remove('is-hidden');
         this.searchInput.classList.add(`${this.name}__input--active`);
         this.hintInput.classList.add(`${this.name}__hint--active`);
-        this.overlay.showOverlay('no-search', 'no-search');
+        this.overlay.toggleOverlay('no-search', 'no-search');
     }
 
     hideSugestions(): void {
         this.suggestionsContainer.classList.add('is-hidden');
         this.searchInput.classList.remove(`${this.name}__input--active`);
         this.hintInput.classList.remove(`${this.name}__hint--active`);
-        this.overlay.hideOverlay('no-search', 'no-search');
+        this.overlay.toggleOverlay('no-search', 'no-search');
     }
 
     protected createHintInput(): void {
