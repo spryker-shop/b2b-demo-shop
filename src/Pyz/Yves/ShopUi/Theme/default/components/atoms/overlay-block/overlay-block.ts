@@ -12,8 +12,8 @@ export default class OverlayBlock extends Component {
 
     protected toggleCondition(isOpen): boolean {
         if (isOpen !== undefined) {
-            const isShown = this.classList.contains(this.classToShow);
-            return (isOpen && !isShown) || (!isOpen && isShown);
+            const hasActiveClass = this.classList.contains(this.classToShow);
+            return hasActiveClass ? !isOpen : isOpen;
         }
         return true;
     }
