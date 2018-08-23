@@ -1,0 +1,54 @@
+{% block content %}
+    <!-- CMS_BLOCK_PLACEHOLDER : "title" -->
+    <!-- CMS_BLOCK_PLACEHOLDER : "description" -->
+
+    {{ spyCmsBlockPlaceholder('title') | raw }}
+
+    <div class="grid grid--left grid--middle">
+        <div class="col col--sm-12">
+            {% include molecule('banner') with {
+                data: {
+                    imageUrl: '/assets/images/category-banner-image-1@2x.jpg',
+                    link: 'category_banner_1.url',
+                    cmsBlockName: 'Category Banner-1',
+                    btnTitle: 'show_more.btn.title'
+                }
+            } only %}
+        </div>
+        <div class="col col--sm-12 col--lg-4">
+            {% include molecule('banner') with {
+                modifiers: ['small'],
+                data: {
+                    imageUrl: '/assets/images/category-banner-image-2@2x.jpg',
+                    link: 'category_banner_2.url',
+                    cmsBlockName: 'Category Banner-2',
+                    btnTitle: 'show_more.btn.title'
+                }
+            } only %}
+        </div>
+        <div class="col col--sm-12 col--lg-4">
+            {% include molecule('banner') with {
+                modifiers: ['small'],
+                data: {
+                    imageUrl: '/assets/images/category-banner-image-3@2x.jpg',
+                    link: 'category_banner_3.url',
+                    cmsBlockName: 'Category Banner-3',
+                    btnTitle: 'show_more.btn.title'
+                }
+            } only %}
+        </div>
+        <div class="col col--sm-12 col--lg-4">
+            {% include molecule('banner') with {
+                modifiers: ['small'],
+                data: {
+                    imageUrl: '/assets/images/category-banner-image-4@2x.jpg',
+                    link: 'category_banner_4.url',
+                    cmsBlockName: 'Category Banner-4',
+                    btnTitle: 'show_more.btn.title'
+                }
+            } only %}
+        </div>
+    </div>
+
+{% endblock %}
+

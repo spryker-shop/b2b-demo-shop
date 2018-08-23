@@ -1,27 +1,73 @@
-$color-selector-size: 1.5rem;
+$color-selector-size: 16px;
 
-.color-selector {
+.color-selector,
+.color-selector-pdp {
+    @include helper-effect-transition(opacity);
     cursor: default;
+    padding: rem(13) 0;
+    opacity: 1;
 
     &__color {
-        @include helper-effect-transition(border-color opacity);
-
         display: inline-block;
         width: $color-selector-size;
         height: $color-selector-size;
-        border: 2px solid $setting-color-dark;
         border-radius: 100%;
         vertical-align: middle;
-        opacity: 0.5;
+        position: relative;
+
+        &:before {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 18px;
+            height: 18px;
+            border: solid 4px $setting-color-white;
+            border-radius: 100%;
+        }
 
         &:not(:last-child) {
-            margin-right: 0.5rem;
+            margin-right: rem(4);
+        }
+
+        .color-tooltip {
+            @include helper-effect-transition(all);
+            transform: scale(0);
+            transform-origin: bottom;
+            position: absolute;
+            top: -43px;
+            left: -15px;
+            background: $setting-color-black;
+            color: $setting-color-white;
+            font: 400 rem(16) $setting-font-family;
+            padding: rem(5) rem(11) rem(7) rem(10);
+            white-space: nowrap;
+            border-radius: $setting-border-radius;
+            &:before {
+                content: "";
+                position: absolute;
+                left: rem(17);
+                bottom: -4px;
+                border-radius: $setting-border-radius;
+                background: $setting-color-black;
+                width: 10px;
+                height: 10px;
+                transform: rotate(45deg);
+            }
         }
 
         &:hover,
         &--active {
-            border-color: $setting-color-main;
-            opacity: 1;
+            &:before {
+                width: 14px;
+                height: 14px;
+                border-width: 2px;
+            }
+        }
+
+        &:hover .color-tooltip {
+            transform: scale(1);
         }
     }
 }

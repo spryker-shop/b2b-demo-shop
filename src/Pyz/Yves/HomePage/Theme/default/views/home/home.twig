@@ -1,18 +1,96 @@
-{% extends template('page-layout-home', 'HomePage') %}
+{% extends template('page-layout-main') %}
 
 {% block pageInfo %}{% endblock %}
 
+{% block contentTop %}
+    {% include organism('jumbotron-slider') with {
+        class: 'spacing-bottom spacing-bottom--big',
+        data: {
+            slides: [{
+                imageUrl: '/assets/images/section-slider-item-image-10@2x.jpg',
+                link: 'main_slider_1.url',
+                cmsBlockName: 'Main slide-1',
+                btnTitle: 'main_slider.btn.title'
+            },
+                {
+                    imageUrl: '/assets/images/section-slider-item-image-6@2x.jpg',
+                    link: 'main_slider_2.url',
+                    cmsBlockName: 'Main slide-2',
+                    btnTitle: 'main_slider.btn.title'
+                },
+                {
+                    imageUrl: '/assets/images/section-slider-item-image-7@2x.jpg',
+                    link: 'main_slider_3.url',
+                    cmsBlockName: 'Main slide-3',
+                    btnTitle: 'main_slider.btn.title'
+                }
+            ]
+        },
+        attributes: {
+            'data-json': '{
+                            "slidesToShow": 1,
+                            "dots": true,
+                            "autoplay": true,
+                            "nextArrow": false,
+                            "prevArrow": false,
+                            "autoplaySpeed": 4000,
+                            "centerMode": true,
+                            "centerPadding": "240px",
+                            "responsive": [{
+                                "breakpoint": 1600,
+                                "settings": {
+                                    "centerPadding": "130px"
+                                }
+                            },
+                            {
+                                "breakpoint": 1200,
+                                "settings": {
+                                    "centerPadding": "40px"
+                                }
+                            },
+                            {
+                                "breakpoint": 770,
+                                "settings": {
+                                    "centerPadding": "12px",
+                                    "autoplay": false
+                                }
+                            }
+            ]}'
+        }
+    } only %}
+{% endblock %}
+
 {% block content %}
-    {#{% include molecule('jumbotron') with {#}
-        {#class: 'box'#}
-    {#} only %}#}
 
-    {{ spyCmsBlock({
-        name: 'Home Page'
-    }) }}
+    <section class="common-section spacing-top spacing-top--inner spacing-top--big ">
+        {{ spyCmsBlock({
+            name: 'Featured Products'
+        }) }}
+    </section>
 
-    {{ spyCmsBlock({
-        name: 'Teaser for home page'
-    }) }}
+    <section class="common-section common-section--full-width spacing-top spacing-top--inner spacing-top--big">
+        {{ spyCmsBlock({
+            name: 'Featured Categories'
+        }) }}
+    </section>
+
+{% endblock %}
+
+{% block contentBottom %}
+    <section class="common-section common-section--bg-dark">
+        <div class="container">
+            {{ spyCmsBlock({
+                name: 'Top Sellers'
+            }) }}
+        </div>
+    </section>
+
+    <section class="common-section">
+        <div class="container">
+            {{ spyCmsBlock({
+                name: 'Teaser for home page'
+            }) }}
+        </div>
+    </section>
 
 {% endblock %}

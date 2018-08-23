@@ -16,53 +16,10 @@
 
     {% embed molecule('slick-carousel') with {
         data: {
-            slides: [{
-                imageUrl: '/assets/images/section-slider-item-image-10@2x.png',
-                link: 'jumbotron.smart_watches.link',
-                cmsBlockName: 'Jumbotron slide-1'
-            },
-                {
-                    imageUrl: '/assets/images/section-slider-item-image-6@2x.png',
-                    link: 'jumbotron.smartphones.link',
-                    cmsBlockName: 'Jumbotron slide-2'
-                },
-                {
-                    imageUrl: '/assets/images/section-slider-item-image-7@2x.png',
-                    link: 'jumbotron.tablets.link',
-                    cmsBlockName: 'Jumbotron slide-3'
-                }
-            ]
+            slides: data.slides
         },
         attributes: {
-            'data-json': '{
-                            "slidesToShow": 1,
-                            "dots": true,
-                            "autoplay": true,
-                            "nextArrow": false,
-                            "prevArrow": false,
-                            "autoplaySpeed": 4000,
-                            "centerMode": true,
-                            "centerPadding": "240px",
-                            "responsive": [{
-                                "breakpoint": 1600,
-                                "settings": {
-                                    "centerPadding": "130px"
-                                }
-                            },
-                            {
-                                "breakpoint": 1200,
-                                "settings": {
-                                    "centerPadding": "40px"
-                                }
-                            },
-                            {
-                                "breakpoint": 770,
-                                "settings": {
-                                    "centerPadding": "12px",
-                                    "autoplay": false
-                                }
-                            }
-            ]}'
+            'data-json': attributes['data-json']
         }
     } only %}
 
@@ -72,7 +29,8 @@
                     data: {
                         imageUrl: slide.imageUrl,
                         link: slide.link,
-                        cmsBlockName: slide.cmsBlockName
+                        cmsBlockName: slide.cmsBlockName,
+                        btnTitle: slide.btnTitle
                     }
                 } only %}
             {% endfor %}
