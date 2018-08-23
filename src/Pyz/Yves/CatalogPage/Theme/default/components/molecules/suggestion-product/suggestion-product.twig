@@ -31,13 +31,15 @@
         <span class="{{ config.name }}__name">
             {{ data.title }}
 
-            {% include molecule('price') with {
-                class: config.name ~ '__price',
-                data: {
-                    amount: data.price | money,
-                    originalAmount: data.originalPrice is empty ? null : (data.originalPrice | money)
-                }
-            } only %}
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                {% include molecule('price') with {
+                    class: config.name ~ '__price',
+                    data: {
+                        amount: data.price | money,
+                        originalAmount: data.originalPrice is empty ? null : (data.originalPrice | money)
+                    }
+                } only %}
+            {% endif %}
         </span>
     </a>
 {% endblock %}
