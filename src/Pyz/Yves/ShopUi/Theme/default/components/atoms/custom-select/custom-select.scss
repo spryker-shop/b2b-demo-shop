@@ -112,5 +112,33 @@
         }
     }
 
+    &--flexible-width {
+        display: inline-block;
+
+        .select2 {
+            padding: 0 rem(22);
+            box-sizing: content-box;
+            border-radius: $setting-border-radius;
+            border: 1px solid $setting-color-input-border;
+        }
+
+        .select2-selection--single .select2-selection__rendered {
+            padding-right: 2rem;
+        }
+
+        .select2-selection {
+            border: none;
+            margin: 0 rem(-22);
+        }
+
+        .select2-dropdown {
+            padding-right: 1rem;
+        }
+
+        .select2-results__option {
+            white-space: normal;
+        }
+    }
+
 }
 
