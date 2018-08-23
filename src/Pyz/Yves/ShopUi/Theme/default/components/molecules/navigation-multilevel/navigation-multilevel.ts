@@ -25,7 +25,7 @@ export default class NavigationMultilevel extends Component {
     protected onTriggerOver(event: Event): void {
         const trigger = <HTMLElement>event.currentTarget;
         event.preventDefault();
-        this.overlay.showOverlay();
+        this.overlay.showOverlay('no-header');
         this.addClass(trigger);
     }
 
@@ -36,7 +36,7 @@ export default class NavigationMultilevel extends Component {
     protected onTriggerOut(event: Event): void {
         const trigger = <HTMLElement>event.currentTarget;
         event.preventDefault();
-        this.overlay.hideOverlay();
+        this.overlay.hideOverlay('no-header');
         this.removeClass(trigger);
     }
 

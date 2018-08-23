@@ -1,12 +1,6 @@
 @mixin catalog-page-suggestion-links-list($name: '.suggestion-links-list') {
     #{$name} {
 
-        font-size: rem(15);
-        font-weight: fw(regular);
-        line-height: rem(22);
-        letter-spacing: rem(0.1);
-
-
         &__title {
             font-size: rem(17);
             font-weight: fw(regular);
@@ -18,7 +12,11 @@
         }
 
         &__item {
-            padding: 5px 0;
+            font-size: rem(15);
+            font-weight: fw(regular);
+            line-height: rem(18);
+            letter-spacing: rem(0.1);
+            padding: 7px 0;
         }
 
         &__link {

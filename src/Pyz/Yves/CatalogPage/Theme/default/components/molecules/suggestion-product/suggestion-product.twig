@@ -32,8 +32,9 @@
             {{ data.title }}
 
             {% include molecule('price') with {
+                class: config.name ~ '__price',
                 data: {
-                amount: data.price | money,
+                    amount: data.price | money,
                     originalAmount: data.originalPrice is empty ? null : (data.originalPrice | money)
                 }
             } only %}
