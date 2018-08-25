@@ -1,0 +1,58 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'mini-cart-detail',
+    tag: 'div',
+} %}
+
+{% define data = {
+    cart: required,
+    total: data.cart.totals.grandTotal | default(0),
+} %}
+
+{% set itemCount = data.cart.items | length %}
+
+{% block body %}
+    <div class="grid grid--middle text-left">
+        <div class="col col--sm-9">
+            {% include molecule('mini-cart-radio', 'MultiCartWidget') with {
+                data: {
+                    idCart: data.cart.idQuote,
+                    isDefault: data.cart.isDefault,
+                }
+            } only %}
+            <a class="{{ config.name }}__overlay" href="{{ path('multi-cart/set-default', {idQuote: data.cart.idQuote}) }}"></a>
+            <span class="{{ config.name }}__title">
+                <strong class="{{ config.name }}__name">{{ data.cart.name }}</strong>
+                <span class="{{ config.name }}__marker">
+                    {% if data.cart.isDefault %}
+                        ({{ 'multi_cart_widget.cart.default' | trans }})
+                    {% endif %}
+                </span>
+            </span>
+            <div class="{{ config.name }}__info">
+                {% if widgetExists('ProductBundleItemCounterWidgetPlugin') %}
+                    {{ widget('ProductBundleItemCounterWidgetPlugin', data.cart) }}
+                {% else %}
+                    {% set label = (itemCount == 1)
+                        ? 'multi_cart_widget.cart.item'
+                        : 'multi_cart_widget.cart.items'
+                    %}
+
+                    <span class="cart-items-quantity">
+                      {{ itemCount }} {{ label | trans }}
+                    </span>
+                {% endif %}
+
+                {{ widget('SharedCartPermissionGroupWidgetPlugin', data.cart) }}
+            </div>
+        </div>
+
+        <div class="col col--sm-3 text-right">
+            <span class="{{ config.name }}__price">
+               {{ data.total | money(true, data.cart.currency.code) }}<br>
+            </span>
+        </div>
+
+    </div>
+{% endblock %}

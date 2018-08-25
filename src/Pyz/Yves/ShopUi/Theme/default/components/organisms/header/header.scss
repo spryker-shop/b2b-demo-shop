@@ -93,6 +93,8 @@
             font-weight: fw(regular);
             line-height: 1.93;
             letter-spacing: rem(0.2);
+            z-index: $setting-zi-element-floating;
+
             &:before {
                 content: "";
                 background: $setting-color-white;
@@ -103,13 +105,24 @@
                 height: 10px;
                 transform: translateX(-50%) rotate(45deg);
             }
+
             &__link {
                 color: $setting-color-gray-3;
                 @include helper-effect-transition(color);
+
                 &:hover {
                     color: $setting-color-gray-4;
                 }
             }
+
+            &--pull-left {
+                transform: translateX(-90%);
+
+                &::before {
+                    left: 90%;
+                }
+            }
+
         }
 
         &__navigation {

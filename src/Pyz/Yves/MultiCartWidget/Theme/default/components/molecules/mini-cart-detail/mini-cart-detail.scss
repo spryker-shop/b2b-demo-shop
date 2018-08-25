@@ -1,0 +1,78 @@
+@mixin shop-ui-mini-cart-detail ($name: '.mini-cart-detail') {
+    #{$name} {
+        position: relative;
+        padding: rem(13) rem(29) rem(15) rem(22);
+        min-width: rem(560);
+
+        &:hover {
+            background-color: $setting-color-gray-11;
+
+            #{$name}__name {
+                text-decoration: underline;
+            }
+        }
+
+        &__overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        &__title {
+            font-size: $setting-font-size-base;
+            color: $setting-color-gray-4;
+            line-height: rem(29);
+            letter-spacing: rem(0.2);
+        }
+
+        &__marker {
+            color: $setting-color-gray-2;
+            text-transform: lowercase;
+        }
+
+        &__price {
+            font-size: $setting-font-size-base;
+            font-weight: fw(medium);
+            line-height: normal;
+            color: $setting-color-gray-4;
+        }
+
+        .cart-items-quantity {
+            display: inline-block;
+            font-size: rem(11);
+            line-height: rem(22);
+            font-weight: fw(bold);
+            letter-spacing: rem(0.4);
+            color: $setting-color-white;
+            background-color: $setting-color-yellow-2;
+            padding: 0 rem(9);
+            margin-right: rem(9);
+            border-radius: $setting-border-radius;
+            vertical-align: middle;
+        }
+
+        .cart-permission {
+            font-size: rem(11);
+            line-height: rem(29);
+            letter-spacing: rem(0.1);
+            color: $setting-color-gray-3;
+            font-weight: fw(bold);
+            text-transform: uppercase;
+
+            &--main {
+                color: $setting-color-main
+            }
+        }
+
+        .mini-cart-radio {
+            display: inline-block;
+            vertical-align: text-top;
+        }
+
+        @content;
+    }
+}
+
+@include shop-ui-mini-cart-detail;
