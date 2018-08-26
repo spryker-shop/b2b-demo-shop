@@ -2,30 +2,28 @@
     #{$name} {
         position: relative;
 
+        &__submit {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: rem(56);
+            height: 100%;
+            padding: 0;
+            border: none;
+            background: $setting-color-transparent;
+            color: $setting-color-gray-4;
+            z-index: $setting-zi-search-suggestions + 3;
+
+            &:hover {
+                background: $setting-color-transparent;
+                .icon {
+                    color: $setting-color-gray-3;
+                }
+            }
+        }
+
         @content;
     }
 }
 
 @include shop-ui-search-form;
-
-.search-form {
-    position: relative;
-
-    &__submit {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 56px;
-        height: 100%;
-        background: $setting-color-transparent;
-    }
-
-    &__input {
-        padding: rem(15) rem(15) rem(15) rem(56);
-        border: none;
-        font-size: rem(15);
-        font-weight: fw(regular);
-        border-radius: $setting-border-radius;
-        box-shadow: 0 18px 18px 0 $setting-color-shadow-1, 0 3px 3px 0 $setting-color-shadow-1;
-    }
-}

@@ -10,7 +10,7 @@
 } %}
 
 {%- block class -%}
-    {{parent()}} box
+    {{parent()}} grid grid--middle
 {%- endblock -%}
 
 {% block component %}
@@ -23,7 +23,7 @@
                 molecule('active-filter-' ~ filter.config.type, 'CatalogPage')
             ],
             {
-                class: config.name ~ '__item',
+                class: config.name ~ '__item col',
                 data: {
                     filter: filter,
                     min: filter.min | default(0),
@@ -47,14 +47,16 @@
 {% endblock %}
 
 {% block body %}
-    <small>{{ 'catalog.filter.activeFilters' | trans }}:</small>
+    <span class="col {{config.name}}__item">{{ 'catalog.filter.activeFilters' | trans }}:</span>
     {{ activeFilters | join | raw }}
-
-    <hr/>
-
-    <div class="text-right">
-        <a class="link link--small" href="{{ generateUrlWithoutAllActiveSearchFilters(data.facets) }}">
-            {{ 'catalog.filter.resetAllFilters' | trans }} &times;
-        </a>
-    </div>
+    <a class="col {{config.name}}__item {{config.name}}__reset" href="{{ generateUrlWithoutAllActiveSearchFilters(data.facets) }}">
+        {% include atom('icon') with {
+            class: config.name ~ '__reset-icon',
+            modifiers: ['cross'],
+            data: {
+                name: 'cross'
+            }
+        } only %}
+        {{ 'catalog.filter.resetAllFilters' | trans }}
+    </a>
 {% endblock %}

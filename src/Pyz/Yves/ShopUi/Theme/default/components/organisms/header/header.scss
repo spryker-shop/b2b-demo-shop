@@ -4,6 +4,10 @@
         background-color: helper-color-light($setting-color-main);
         z-index: $setting-zi-header;
 
+        .body-overlay--no-search & {
+            position: static;
+        }
+
         &__row {
             padding: 0.5rem;
         }
@@ -15,7 +19,7 @@
 
         &__search-form {
             position: relative;
-            z-index: $setting-zi-header + 2;
+            z-index: $setting-zi-search-suggestions;
         }
 
         &__navigation-main {
@@ -43,11 +47,13 @@
                 max-width: 100px;
                 position: relative;
                 padding-bottom: 10px;
+                z-index: $setting-zi-element + 2;
                 &:not(:first-child) {
                     margin-left: 30px;
                 }
                 &:hover .user-sub-nav {
-                    display: block;
+                    transform: translateX(-50%) scale(1);
+                    opacity: 1;
                 }
             }
             &__link,
@@ -79,11 +85,11 @@
         }
 
         .user-sub-nav {
-            display: none;
             position: absolute;
             top: 100%;
             left: 50%;
-            transform: translateX(-50%);
+            transform: translateX(-50%) scale(0);
+            transform-origin: top center;
             background: $setting-color-white;
             border-radius: $setting-border-radius;
             box-shadow: 0 18px 18px 0 $setting-color-shadow-1, 0 3px 3px 0 $setting-color-shadow-1;
@@ -94,6 +100,8 @@
             line-height: 1.93;
             letter-spacing: rem(0.2);
             z-index: $setting-zi-element-floating;
+            @include helper-effect-transition(opacity transform);
+            opacity: 0;
 
             &:before {
                 content: "";

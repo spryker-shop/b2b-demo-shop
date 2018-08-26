@@ -1,11 +1,75 @@
 @mixin catalog-page-suggestion-product($name: '.suggestion-product') {
     #{$name} {
+        padding-bottom: rem(10);
+
+        &__title {
+            font-size: rem(17);
+            font-weight: fw(regular);
+            line-height: normal;
+            letter-spacing: rem(0.2);
+            padding-bottom: rem(16);
+            padding-top: rem(26);
+            color: $setting-color-gray-4;
+        }
+
         &__link {
-            color: $setting-color-black;
+            display: flex;
+            color: $setting-color-gray-5;
+            @include helper-effect-transition(color);
+
+            &:hover {
+                color: $setting-color-gray-3;
+            }
         }
 
         &__thumbnail {
-            margin: 0;
+            min-width: rem(42);
+            width: rem(42);
+            margin: 0 rem(10) 0 0;
+            overflow: hidden;
+            &:before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: $setting-color-alpha-2;
+            }
+
+            .thumbnail__image {
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                bottom: auto;
+                right: auto;
+            }
+        }
+
+        &__name {
+            flex-grow: 1;
+            font-size: rem(12);
+            font-weight: fw(medium);
+            line-height: rem(14);
+            letter-spacing: rem(0.1);
+        }
+
+        &__price {
+            display: block;
+            padding-top: 3px;
+            .price__amount {
+                color: $setting-color-gray-3;
+                font-size: rem(13);
+                font-weight: fw(bold);
+                &--alt {
+                    color: $setting-color-alt;
+                }
+                &--original {
+                    font-size: rem(13);
+                    font-weight: fw(regular);
+                    text-decoration: line-through;
+                }
+            }
         }
 
         @content;

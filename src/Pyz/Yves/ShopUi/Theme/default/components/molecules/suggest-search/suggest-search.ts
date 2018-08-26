@@ -2,6 +2,7 @@ import Component from 'ShopUi/models/component';
 import AjaxProvider from 'ShopUi/components/molecules/ajax-provider/ajax-provider';
 import debounce from 'lodash-es/debounce'
 import throttle from 'lodash-es/throttle'
+import OverlayBlock from '../../atoms/overlay-block/overlay-block';
 
 interface keyCodes {
     [keyCode: number]: string;
@@ -9,6 +10,7 @@ interface keyCodes {
 
 export default class SuggestSearch extends Component {
     readonly keyboardCodes: keyCodes
+    readonly overlay: OverlayBlock
 
     searchInput: HTMLInputElement
     hintInput: HTMLInputElement
@@ -33,6 +35,7 @@ export default class SuggestSearch extends Component {
             40: 'arrowDown'
         };
         this.activeItemIndex = 0;
+        this.overlay = <OverlayBlock>document.querySelector(this.overlaySelector);
     }
 
     protected readyCallback(): void {
@@ -215,10 +218,16 @@ export default class SuggestSearch extends Component {
 
     showSugestions(): void {
         this.suggestionsContainer.classList.remove('is-hidden');
+        this.searchInput.classList.add(`${this.name}__input--active`);
+        this.hintInput.classList.add(`${this.name}__hint--active`);
+        this.overlay.toggleOverlay('no-search', 'no-search', true);
     }
 
     hideSugestions(): void {
         this.suggestionsContainer.classList.add('is-hidden');
+        this.searchInput.classList.remove(`${this.name}__input--active`);
+        this.hintInput.classList.remove(`${this.name}__hint--active`);
+        this.overlay.toggleOverlay('no-search', 'no-search', false);
     }
 
     protected createHintInput(): void {
@@ -260,6 +269,10 @@ export default class SuggestSearch extends Component {
 
     get searchInputSelector(): string {
         return <string> this.getAttribute('input-selector');
+    }
+
+    get overlaySelector(): string {
+        return '.js-overlay-block';
     }
 
 }
