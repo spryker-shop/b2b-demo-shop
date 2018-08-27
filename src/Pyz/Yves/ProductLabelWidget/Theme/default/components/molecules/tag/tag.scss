@@ -1,0 +1,19 @@
+@mixin product-label-widget-tag($name: '.tag') {
+    #{$name} {
+        display: flex;
+        margin: 0 0 10px;
+
+        &__text {
+            font-size: rem(10);
+            line-height: rem(24);
+            background-color: $setting-color-alt;
+            color: $setting-color-white;
+            padding: 0 rem(10);
+        }
+
+        @content;
+    }
+}
+
+
+@include product-label-widget-tag;

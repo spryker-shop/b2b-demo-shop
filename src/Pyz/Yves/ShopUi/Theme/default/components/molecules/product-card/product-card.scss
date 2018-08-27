@@ -1,32 +1,29 @@
-@include shop-ui-product-card {
-    height: 100%;
+@include shop-ui-product-card ($name: '.product-card') {
+    height: auto;
+    padding: 0 0 30px;
 
-    &:hover .color-selector {
-        opacity: 1;
+    &--equal-height {
+        height: 100%;
     }
 
     &__container {
-        @include helper-effect-transition(background-color box-shadow);
-        background-color: $setting-color-gray-13;
         padding: rem(8) rem(28) rem(36);
-        margin: 0 15px 30px;
-
-        &:hover {
-            background-color: $setting-color-bg;
-            box-shadow: 0 18px 18px 0 $setting-color-shadow-1, 0 3px 3px 0 $setting-color-shadow-1;
-        }
-
-        &--color-revert {
-            background-color: $setting-color-bg;
-        }
+        height: 100%;
     }
 
     &__overlay {
+        @include helper-effect-transition(background-color box-shadow);
         position: absolute;
         top: 0;
         left: 0;
         right: 0;
         bottom: 0;
+        background-color: $setting-color-alpha-2;
+
+        &:hover {
+            box-shadow: 0 18px 18px 0 $setting-color-shadow-1, 0 3px 3px 0 $setting-color-shadow-1;
+            background-color: $setting-color-alpha-4;
+        }
     }
 
     &__title {
@@ -43,5 +40,9 @@
         letter-spacing: rem(0.2);
         font-weight: fw(regular);
         color: $setting-color-gray-3;
+    }
+
+    &:hover .color-selector {
+        opacity: 1;
     }
 }
