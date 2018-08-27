@@ -1,0 +1,51 @@
+{% extends template('page-layout-main') %}
+
+{% block pageInfo %}
+    <div class="page-info">
+        <div class="container">
+            {% block breadcrumbs %}
+                {% include molecule('breadcrumb') with {
+                    data: {
+                        steps: [{
+                            label: 'customer.login' | trans
+                        }]
+                    }
+                } only %}
+            {% endblock %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    {% embed organism('section') with {
+        title: 'customer.login.title' | trans,
+        modifiers: ['center', 'last'],
+        innerClass: 'col col--sm-12 col--md-9 col--lg-6'
+    } only %}
+        {% block content %}
+            {% include molecule('form') with {
+                class: 'box box--panel',
+                data: {
+                    form: _view.loginForm,
+                    layout: {
+                        email: 'col col--sm-12',
+                        password: 'col col--sm-12'
+                    },
+                    submit: {
+                        enable: true,
+                        class: 'button button--success button--big',
+                        text: 'forms.submit.login' | trans
+                    },
+                    cancel: {
+                        enable: true,
+                        url: url('password/forgotten'),
+                        text: 'forms.forgot-password' | trans,
+                        icon: null,
+                        class: 'link link--secondary',
+                        qa: 'customer-forgot-password-link'
+                    }
+                }
+            } only %}
+        {% endblock %}
+    {% endembed %}
+{% endblock %}

@@ -1,0 +1,23 @@
+@include shop-ui-form();
+
+.form {
+  &__field + &__field {
+    margin-top: 0.5rem;
+  }
+
+  &__actions {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    margin-top: 1rem;
+  }
+
+  &__action {
+    flex: none;
+    margin: 0 1rem 0 0;
+
+    &[type="submit"] {
+      order: -1;
+    }
+  }
+}
