@@ -10,10 +10,22 @@ export default class OverlayBlock extends Component {
         }
     }
 
-    toggleOverlay(modifire?: string, bodyModifire?: string): void {
-        this.toggleModifire(modifire, this, this.name);
-        this.toggleModifire(bodyModifire, document.body,'body-overlay');
-        this.classList.toggle(this.classToShow);
+    protected toggleCondition(isOpen): boolean {
+        if (isOpen !== undefined) {
+            const hasActiveClass = this.classList.contains(this.classToShow);
+            return hasActiveClass ? !isOpen : isOpen;
+        }
+        return true;
+    }
+
+    toggleOverlay(modifire?: string, bodyModifire?: string, isOpen?: boolean): void {
+
+        if(this.toggleCondition(isOpen)) {
+            this.toggleModifire(modifire, this, this.name);
+            this.toggleModifire(bodyModifire, document.body,'body-overlay');
+            this.classList.toggle(this.classToShow);
+        }
+
     }
 
     get classToShow(): string {
