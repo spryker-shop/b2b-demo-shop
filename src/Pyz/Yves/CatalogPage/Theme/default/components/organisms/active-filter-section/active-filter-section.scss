@@ -1,0 +1,35 @@
+.active-filter-section {
+    margin-top: rem(20);
+    font-size: rem(14);
+
+    &__item,
+    .active-filter {
+        margin-bottom: rem(10);
+
+        &:not(:last-child) {
+            margin-right: rem(10);
+        }
+    }
+    &__reset {
+        @include helper-effect-transition(color);
+        display: flex;
+        align-items: center;
+        font-weight: fw(bold);
+        color: $setting-color-gray-4;
+
+        &-icon {
+            @include helper-effect-transition(color);
+            margin-right: rem(8);
+            color: $setting-color-gray-6;
+        }
+
+        &:hover,
+        &:focus {
+
+            &,
+            .active-filter-section__reset-icon {
+                color: $setting-color-gray-3;
+            }
+        }
+    }
+}

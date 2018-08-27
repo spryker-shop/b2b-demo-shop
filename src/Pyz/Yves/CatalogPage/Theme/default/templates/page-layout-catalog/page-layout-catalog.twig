@@ -1,0 +1,124 @@
+{% extends template('page-layout-main') %}
+
+{% define data = {
+    products: required,
+    facets: required,
+    category: null,
+    categories: [],
+    categoryId: null,
+    filterPath: null,
+    viewMode: null,
+
+    pagination: {
+        currentPage: required,
+        maxPage: required,
+        parameters: app.request.query.all(),
+        paginationPath: app.request.getPathInfo(),
+        showAlwaysFirstAndLast: true
+    }
+} %}
+
+{% macro renderBreadcrumbSteps(categoryNode, isLastLeaf, filterPath) %}
+    {% import _self as self %}
+    {% set categoryUrl = categoryNode.url | default %}
+    {% set categoryUrl = filterPath is not empty ? url(filterPath, {categoryPath: categoryUrl}) : categoryUrl %}
+    {% set categoryLabel = categoryNode.name | default %}
+    {% set categoryPatrentNodes = categoryNode.parents | default %}
+
+    {% if categoryPatrentNodes is not empty %}
+        {{ self.renderBreadcrumbSteps(categoryPatrentNodes | first, false, filterPath) }}
+
+        {% if not isLastLeaf %}
+            {% include molecule('breadcrumb-step') with {
+                data: {
+                    url: categoryUrl,
+                    label: categoryLabel
+                }
+            } only %}
+        {% endif %}
+    {% endif %}
+{% endmacro %}
+
+{% block breadcrumbs %}
+    {% import _self as self %}
+
+    {% embed molecule('breadcrumb') with {
+        embed: {
+            breadcrumbs: self.renderBreadcrumbSteps(data.category, false, data.filterPath)
+        }
+    } only %}
+        {% block breadcrumbs %}
+            {{ embed.breadcrumbs }}
+        {% endblock %}
+    {% endembed %}
+{% endblock %}
+
+{% block contentClass %}page-layout-main page-layout-main--catalog-page{% endblock %}
+
+{% block content %}
+    <form method="GET" class="grid grid--gap js-form-input-default-value-disabler__catalog-form page-layout-main--catalog-page-content">
+        {% block form %}
+            {% include molecule('form-input-default-value-disabler') with {
+                attributes: {
+                    'form-selector': '.js-form-input-default-value-disabler__catalog-form',
+                    'input-selector': '.js-form-input-default-value-disabler__catalog-input'
+                }
+            } only %}
+
+            <div class="col col--sm-12 col--lg-4 col--xl-3">
+                {% block filterBar %}
+                    {% include molecule('view-mode-switch', 'CatalogPage') with {
+                        data: {
+                            viewMode: data.viewMode
+                        }
+                    } only %}
+
+                    {% include molecule('toggler-checkbox') with {
+                        modifiers: ['expand'],
+                        class: 'is-hidden-lg-xl',
+                        data: {
+                            label: 'Show/Hide filters'
+                        },
+                        attributes: {
+                            'target-selector': '.js-catalog__filters-toggle',
+                            'class-to-toggle': 'is-hidden-sm-md',
+                            checked: true
+                        }
+                    } only %}
+
+                    {% include organism('filter-section', 'CatalogPage') with {
+                        class: 'js-catalog__filters-toggle',
+                        data: {
+                            facets: data.facets,
+                            filterPath: data.filterPath,
+                            categories: data.categories
+                        }
+                    } only %}
+                {% endblock %}
+            </div>
+
+            <div class="col col--sm-12 col--lg-8 col--xl-9">
+                {% include molecule('sort', 'CatalogPage') with {
+                    class: ''
+                } only %}
+
+                {% include organism('active-filter-section', 'CatalogPage') with {
+                    data: {
+                        facets: data.facets
+                    }
+                } only %}
+
+                <div class="grid grid--stretch grid--gap">
+                    {% for product in data.products %}
+                        {{ widget('ProductWidgetPlugin', product, data.viewMode) }}
+                    {% endfor %}
+                </div>
+
+                {% include molecule('pagination') with {
+                    class: '',
+                    data: data.pagination
+                } only %}
+            </div>
+        {% endblock %}
+    </form>
+{% endblock %}

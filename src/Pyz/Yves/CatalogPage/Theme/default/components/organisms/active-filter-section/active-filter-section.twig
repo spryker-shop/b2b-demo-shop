@@ -1,0 +1,62 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'active-filter-section',
+    tag: 'section'
+} %}
+
+{% define data = {
+    facets: []
+} %}
+
+{%- block class -%}
+    {{parent()}} grid grid--middle
+{%- endblock -%}
+
+{% block component %}
+    {% set activeFilters = [] %}
+
+    {% for filter in data.facets %}
+        {% set activeFilter = include(
+            [
+                molecule('active-filter-' ~ filter.config.name, 'CatalogPage'),
+                molecule('active-filter-' ~ filter.config.type, 'CatalogPage')
+            ],
+            {
+                class: config.name ~ '__item col',
+                data: {
+                    filter: filter,
+                    min: filter.min | default(0),
+                    max: filter.max | default(0),
+                    activeMin: filter.activeMin | default(0),
+                    activeMax: filter.activeMax | default(0)
+                }
+            },
+            with_context = false,
+            ignore_missing = true
+        ) %}
+
+        {% if activeFilter | trim is not empty %}
+            {% set activeFilters = activeFilters | merge([activeFilter]) %}
+        {% endif %}
+    {% endfor %}
+
+    {% if activeFilters is not empty %}
+        {{parent()}}
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+    <span class="col {{config.name}}__item">{{ 'catalog.filter.activeFilters' | trans }}:</span>
+    {{ activeFilters | join | raw }}
+    <a class="col {{config.name}}__item {{config.name}}__reset" href="{{ generateUrlWithoutAllActiveSearchFilters(data.facets) }}">
+        {% include atom('icon') with {
+            class: config.name ~ '__reset-icon',
+            modifiers: ['cross'],
+            data: {
+                name: 'cross'
+            }
+        } only %}
+        {{ 'catalog.filter.resetAllFilters' | trans }}
+    </a>
+{% endblock %}

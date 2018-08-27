@@ -1,0 +1,33 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'active-filter',
+    tag: 'a'
+} %}
+
+{% define data = {
+    filter: required,
+    value: null
+} %}
+
+{% define attributes = {
+    href: (data.value is not empty) ? generateUrlWithoutActiveSearchFilter(data.filter, data.value) : null
+} %}
+
+{% block component %}
+    {% if data.value is not empty %}
+        {{parent()}}
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+    <strong class="{{ config.name ~ '__name' }}">{{ ('product.filter.' ~ data.filter.name) | trans }}:&nbsp;</strong>
+    {{data.value}}
+    {% include atom('icon') with {
+        class: config.name ~ '__icon',
+        modifiers: ['cross'],
+        data: {
+            name: 'cross'
+        }
+    } only %}
+{% endblock %}

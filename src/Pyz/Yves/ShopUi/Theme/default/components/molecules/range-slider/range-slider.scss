@@ -1,0 +1,64 @@
+$line-width: 2px;
+$height-handle: 14px;
+$width-handle: 14px;
+
+.range-slider {
+    display: flex;
+    flex-direction: column-reverse;
+    border: none;
+    background: none;
+    height: auto;
+    box-shadow: none;
+    margin: 0 $width-handle/2;
+
+    &.noUi-horizontal {
+
+        .noUi-handle {
+            top: 0;
+
+            html:not([dir=rtl]) & {
+                right: 0;
+                margin-right: -$width-handle/2;
+            }
+        }
+    }
+
+    .noUi-base {
+        position: relative;
+        z-index: 2;
+        padding: ($height-handle - $line-width)/2 0;
+        box-sizing: border-box;
+        cursor: pointer;
+    }
+
+    .noUi-connects {
+        background-color: $setting-color-gray-14;
+        height: $line-width;
+        margin: 0 (-$width-handle/2);
+        width: calc(100% + #{$width-handle});
+    }
+
+    .noUi-connect {
+        background-color: $setting-color-main;
+    }
+
+    .noUi-handle {
+        @include helper-effect-transition(transform);
+        width: $width-handle;
+        height: $height-handle;
+        border-radius: $height-handle/2;
+        box-shadow: none;
+        border: none;
+        background-color: $setting-color-main;
+
+        &::before,
+        &::after {
+            display: none;
+        }
+
+        &:hover {
+            cursor: pointer;
+            transform: scale(1.3);
+        }
+    }
+}

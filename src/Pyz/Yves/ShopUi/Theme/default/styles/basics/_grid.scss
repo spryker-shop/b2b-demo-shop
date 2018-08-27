@@ -42,7 +42,7 @@
         &--justify {
             justify-content: space-between;
 
-            & .col {
+            & > .col {
                 margin-left: auto;
                 margin-right: auto;
 
@@ -63,7 +63,7 @@
         &--stretch {
             align-items: stretch;
 
-            & .col {
+            & > .col {
                 margin-top: 0;
                 margin-bottom: 0;
             }
@@ -73,7 +73,7 @@
             margin-left: -$setting-grid-space;
             margin-right: -$setting-grid-space;
 
-            & .col {
+            & > .col {
                 padding-left: $setting-grid-space;
                 padding-right: $setting-grid-space;
             }
