@@ -1,0 +1,49 @@
+{% extends template('widget') %}
+
+{% define data = {
+    voucherDiscounts: _widget.cart.voucherDiscounts,
+    ruleDiscounts: _widget.cart.cartRuleDiscounts,
+    discountTotal: _widget.cart.totals.discounttotal
+} %}
+
+{% block body %}
+    {% if data.discountTotal %}
+        {% if data.voucherDiscounts is not empty %}
+            <li class="cart-discount-summary">
+                <a class="float-right text-small" href="{{ url('discount/voucher/clear') }}">
+                    {{ 'cart.vouchers.clear-all' | trans }}
+                </a>
+                <span>{{ 'cart.vouchers' | trans }}</span>
+
+                <ul class="cart-discount-summary__content">
+                    {% for voucherDiscount in data.voucherDiscounts %}
+                        <li class="grid grid--justify">
+                            <span class="col col--sm-8">
+                                {{ voucherDiscount.displayName }}
+                                <br/>
+                                <a class="text-small" href="{{ url('discount/voucher/remove', {'code': voucherDiscount.voucherCode}) }}">
+                                    {{ 'cart.voucher.remove' | trans }}
+                                </a>
+                            </span>
+                            <strong class="col col--expand text-right text-alt">- {{ voucherDiscount.amount | money }}</strong>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% endif %}
+
+        {% if data.ruleDiscounts is not empty %}
+            <li class="cart-discount-summary">
+                <span>{{ 'cart.discounts' | trans }}</span>
+                <ul class="cart-discount-summary__content">
+                    {% for ruleDiscount in data.ruleDiscounts %}
+                        <li class="grid grid--justify">
+                            <span class="cart-discount-summary__text col col--sm-8 text-secondary">{{ ruleDiscount.displayName }}</span>
+                            <strong class="col col--expand text-right text-alt">- {{ ruleDiscount.amount | money }}</strong>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% endif %}
+    {% endif %}
+{% endblock %}

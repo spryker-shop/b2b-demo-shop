@@ -1,0 +1,58 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'cart-summary',
+    tag: 'div'
+} %}
+
+{% define data = {
+    cart: required,
+    isQuoteValid: required
+} %}
+
+{% set canProceedToCheckout = data.cart.items is not empty
+    and data.isQuoteValid
+    and (not is_granted('IS_AUTHENTICATED_FULLY') or can('WriteSharedCartPermissionPlugin', data.cart.idQuote))
+%}
+
+{% block body %}
+    <div class="cart-sidebar__item cart-sidebar__item--end">
+        <ul class="list">
+            {% if widgetExists('DiscountSummaryWidgetPlugin') %}
+                <li class="list__item">
+                    {{ widget('DiscountSummaryWidgetPlugin', data.cart) }}
+                </li>
+            {% endif %}
+
+            {% if data.cart.shipment is not empty and data.cart.shipment.method is not empty %}
+                <li class="list__item">
+                    <span>{{ 'cart.shipping' | trans }}</span>
+                    <br />
+                    {{ data.cart.shipment.method.name }}
+                    <span class="float-right">{{ data.cart.shipment.method.storeCurrencyPrice | money }}</span>
+                    <hr />
+                </li>
+            {% endif %}
+
+            <li class="list__item {{ config.name }}__item">
+                {{ 'cart.price.subtotal' | trans }}
+                <span class="float-right">{{ data.cart.totals.subtotal | money }}</span>
+            </li>
+
+            <li class="list__item {{ config.name }}__item">
+                {{ 'cart.total.tax_total' | trans }}
+                <span class="float-right">{{ data.cart.totals.taxTotal.amount | money }}</span>
+            </li>
+            <li class="list__item {{ config.name }}__item {{ config.name }}__total">
+                <strong>{{ 'cart.price.grand.total' | trans }}</strong>
+                <strong class="float-right">{{ data.cart.totals.grandTotal | money }}</strong>
+            </li>
+        </ul>
+    </div>
+
+    {% if canProceedToCheckout %}
+        <a class="{{ config.name }}__button button button--expand button--big button--success" href="{{ url('checkout-index') }}" {{qa('cart-go-to-checkout')}}>
+            {{ 'cart.checkout' | trans }}
+        </a>
+    {% endif %}
+{% endblock %}

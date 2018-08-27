@@ -1,0 +1,33 @@
+.cart-discount-voucher-form {
+
+    .form__container {
+        position: relative;
+
+        .input {
+            padding-left: rem(12);
+            padding-right: rem(100);
+        }
+    }
+
+    .form__actions {
+        position: absolute;
+        top: 0.5rem;
+        bottom: 0.5rem;
+        right: 0;
+    }
+
+    .form__action {
+        @include helper-effect-transition(color);
+        margin: 0;
+        display: flex;
+        height: 100%;
+        font-size: rem(12);
+        font-weight: fw(bold);
+        color: $setting-color-gray-6;
+
+        &:hover,
+        &:focus {
+            color: $setting-color-gray-3;
+        }
+    }
+}
