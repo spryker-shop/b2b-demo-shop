@@ -15,7 +15,6 @@
 } %}
 
 {% block image %}
-
     {% include atom('thumbnail') with {
         class: 'js-product-color-group__image-' ~ data.abstractId,
         attributes: {
@@ -24,7 +23,6 @@
             title: data.name
         }
     } only %}
-    <a class="{{config.name}}__overlay" href="{{data.url}}"></a>
 {% endblock %}
 
 {% block content %}
@@ -37,7 +35,7 @@
     {% endblock %}
 
     {% block name %}
-        <strong class="{{config.name}}__title">{{data.name}}</strong>
+        <a class="{{config.name}}__overlay" href="{{data.url}}">{{data.name}}</a>
         <span class="{{config.name}}__category">Office Furniture</span>
     {% endblock %}
 
