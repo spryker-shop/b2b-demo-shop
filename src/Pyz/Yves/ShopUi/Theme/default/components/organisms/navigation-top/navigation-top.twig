@@ -70,9 +70,9 @@
             </li>
 
             {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                <li class="col {{ config.name }}__action-item">
-                    <a href="#" class="{{ config.name }}__company">My Company</a>
-                </li>
+                {% if widgetGlobalExists('MenuItemCompanyWidgetPlugin') %}
+                    <li class="col {{ config.name }}__action-item">{% spaceless %}{{ widgetGlobal('MenuItemCompanyWidgetPlugin') }}{% endspaceless %}</li>
+                {% endif %}
             {% endif %}
         </ul>
     </div>
