@@ -1,27 +1,27 @@
 @mixin shop-ui-section($name: '.section') {
-  #{$name} {
-    padding: rem(24) 0;
+    #{$name} {
+        padding: rem(24) 0;
 
-    &__title {
-      font-weight: map-get($setting-font-weight, medium);
-      margin-bottom: rem(24);
-    }
+        &__title {
+            font-weight: map-get($setting-font-weight, medium);
+            margin-bottom: rem(24);
+        }
 
-    &#{&}--center {
-      display: flex;
-      width: 100%;
-      flex-flow: row nowrap;
-      justify-content: center;
-    }
+        &#{&}--center {
+            display: flex;
+            width: 100%;
+            flex-flow: row nowrap;
+            justify-content: center;
+        }
 
-    &#{&}--center &__inner {
-      flex: none;
-    }
+        &#{&}--center &__inner {
+            flex: none;
+        }
 
-    &--last {
-      padding-bottom: rem(96);
+        &--last {
+            padding-bottom: rem(96);
+        }
     }
-  }
 }
 
 @include shop-ui-section();
