@@ -1,10 +1,15 @@
-@include shop-ui-box();
+@mixin b2b-shop-ui-box($name: '.box') {
+  @include shop-ui-box($name);
 
-.box {
+
+  #{$name} {
     &#{&}--panel {
-        background-color: $setting-color-gray-13;
-        border: 0 none;
-        padding: rem(32);
-        margin: 0;
+      background-color: $setting-color-gray-13;
+      border: 0 none;
+      padding: rem(32);
+      margin: 0;
     }
+  }
 }
+
+@include b2b-shop-ui-box();
