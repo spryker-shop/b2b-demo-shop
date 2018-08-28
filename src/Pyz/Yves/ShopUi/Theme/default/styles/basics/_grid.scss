@@ -79,6 +79,27 @@
             }
         }
 
+        &--column {
+            flex-direction: column;
+        }
+
+        &--justify-column {
+            justify-content: space-between;
+
+            & > .col {
+                margin-top: auto;
+                margin-bottom: auto;
+
+                &:first-child {
+                    margin-top: 0;
+                }
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+        }
+
         &.container {
             max-width: $setting-grid-max-width;
         }

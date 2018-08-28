@@ -1,0 +1,52 @@
+{% extends template('widget') %}
+
+{% if _widget is defined %}
+    {% set viewForm = _widget.form %}
+{% else %}
+    {% set viewForm = _view.form %}
+{% endif %}
+
+{% define data = {
+    form: viewForm,
+    formOptions: {
+        action: url('shopping-list/create-from-cart'),
+        attr: {
+            novalidate: 'novalidate'
+        }
+    },
+    labels: {
+        formLabel: 'cart.add-to-shopping-list.form' | trans,
+        submitLabel: 'cart.add-to-shopping-list' | trans
+    }
+} %}
+
+{% block body %}
+    {{ form_start(data.form, data.formOptions) }}
+
+        <div class="form__fields grid grid--bottom">
+            <div class="form__field col col--sm-12">
+                {% include molecule('toggle-select-form', 'CartToShoppingListWidget') with {
+                    data: {
+                        attribute: attribute(data.form.children, 'shoppingListName'),
+                        selectAttributes: {
+                            'target': 'js-add-new-shopping-list',
+                            'class-to-toggle': 'is-hidden'
+                        }
+                    }
+                } only %}
+            </div>
+            <div class="form__field col col--sm-12 js-add-new-shopping-list">
+                {{ form_row(attribute(data.form.children, 'newShoppingListName')) }}
+            </div>
+        </div>
+
+        <div class="form__actions grid grid--middle">
+            <button type="submit" class="form__action button button--success col" data-qa="submit-button">
+                {{ 'cart_note.form.save' | trans }}
+            </button>
+        </div>
+
+        {{ form_errors(data.form) }}
+    {{ form_end(data.form) }}
+
+{% endblock %}

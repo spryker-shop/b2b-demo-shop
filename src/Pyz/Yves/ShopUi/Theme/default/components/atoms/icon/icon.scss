@@ -59,4 +59,38 @@ $shop-ui-icon-size-big: 1.25rem;
     &--reverse {
         transform: rotate(180deg);
     }
+
+    &--toggler-cross {
+        width: rem(10);
+        height: rem(10);
+
+        &::before,
+        &::after {
+            content: '';
+            position: absolute;
+            background-color: $setting-color-gray-6;
+        }
+
+        &::before {
+            height: rem(3);
+            width: 100%;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+        }
+
+        &::after {
+            height: 100%;
+            width: rem(3);
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .active & {
+            &::after {
+                display: none;
+            }
+        }
+    }
 }
