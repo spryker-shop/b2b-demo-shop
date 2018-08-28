@@ -1,0 +1,19 @@
+{% extends template('widget') %}
+
+{% define data = {
+    form: _widget.voucherForm
+} %}
+
+{% block body %}
+    {% include molecule('form') with {
+        class: 'cart-discount-voucher-form',
+        data: {
+            form: data.form,
+            submit: {
+                enable: true,
+                text: 'cart.voucher.redeem' | trans,
+                class: 'button button--hollow-icon'
+            }
+        }
+    } only %}
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends template('page-layout-main') %}
+
+{% define data = {
+    cart: _view.cart,
+    form: _view.quoteForm,
+    formAction: url('multi-cart/update', {idQuote: _view.cart.idQuote}),
+    title: 'multi_cart.form.edit_cart' | trans,
+} %}
+
+{% block breadcrumbs %}
+    {% include molecule('breadcrumb') with {
+        data: {
+            steps: [{
+                label: 'cart.cart' | trans
+            }]
+        }
+    } only %}
+{% endblock %}
+
+{% block content %}
+    <div class="spacing-y--big">
+        {% include molecule('form') with {
+            data: {
+                title: 'multi_cart.form.edit_cart_information' | trans,
+                form: data.form,
+                options: {
+                    action: data.formAction
+                },
+                submit: {
+                    enable: true
+                },
+                cancel: {
+                    enable: true,
+                    url: url('cart'),
+                    icon: null,
+                    text: 'general.back.button' | trans
+                }
+            }
+        } only %}
+    </div>
+{% endblock %}

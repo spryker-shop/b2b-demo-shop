@@ -1,0 +1,12 @@
+{% extends template('widget') %}
+
+{% define data = {
+    companyName: _widget.companyName,
+    isVisible: _widget.isVisible
+} %}
+
+{% block template %}
+    {% if data.isVisible %}
+        <a href="{{ path('company/overview') }}" class="col navigation-top__company" title="{{ data.companyName }}">{{ 'company.account.page-title' | trans }}</a>
+    {% endif %}
+{% endblock %}

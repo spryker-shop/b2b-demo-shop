@@ -1,0 +1,22 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'label-group',
+    tag: 'div'
+} %}
+
+{% define data = {
+    labels: []
+}  %}
+
+{% block body %}
+
+    {% for label in data.labels %}
+        {% include molecule('tag', 'ProductLabelWidget') with {
+            data: {
+                text: label.text
+            }
+        } %}
+    {% endfor %}
+
+{% endblock %}

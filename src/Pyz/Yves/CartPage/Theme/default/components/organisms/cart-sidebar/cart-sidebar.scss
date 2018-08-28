@@ -1,0 +1,100 @@
+.cart-sidebar {
+
+    &__item {
+        background-color: $setting-color-gray-13;
+        margin-top: rem(10);
+        padding: rem(17) rem(20);
+        font-size: rem(14);
+        font-weight: fw(medium);
+        border-radius: $setting-border-radius;
+
+        &--summary {
+            margin-top: rem(20);
+            border-radius: 0;
+            padding: 0;
+            background: none;
+        }
+
+        &--start {
+            border-radius: $setting-border-radius $setting-border-radius 0 0;
+            border-bottom: 1px solid $setting-color-gray-1;
+        }
+
+        &--end {
+            border-radius: 0 0 $setting-border-radius $setting-border-radius;
+            padding-top: 0;
+        }
+
+        &:first-child {
+            margin-top: 0;
+        }
+
+        .label {
+            display: none;
+        }
+
+        .input,
+        .textarea {
+            font-size: rem(13);
+            font-weight: fw(regular);
+            line-height: rem(15);
+            color: $setting-color-gray-3;
+            padding: rem(15) rem(20);
+            border-radius: $setting-border-radius;
+            border: none;
+            box-shadow: 0 10px 10px 0 $setting-color-shadow-1, 0 3px 3px 0 $setting-color-shadow-1;
+        }
+
+        .textarea {
+            min-height: rem(86);
+            line-height: rem(18);
+            max-width: 100%;
+        }
+
+        .select2-container--default .select2-selection--single {
+            border-radius: $setting-border-radius;
+            border: none;
+            box-shadow: 0 10px 10px 0 $setting-color-shadow-1, 0 3px 3px 0 $setting-color-shadow-1;
+
+            .select2-selection__rendered {
+                line-height: rem(45);
+            }
+        }
+    }
+
+    &__title {
+        font-size: rem(14);
+        font-weight: fw(medium);
+        line-height: rem(18);
+    }
+
+    &__content {
+        margin-top: rem(18);
+
+        .form__field {
+            padding-top: 0;
+        }
+
+        .form__actions {
+            text-align: left;
+        }
+
+        .form__action {
+            margin-top: rem(12);
+            margin-left: 0;
+        }
+    }
+
+    &__order {
+        margin-bottom: rem(6);
+    }
+    
+    &__quantity {
+        background-color: $setting-color-alpha-3;
+        border-radius: $setting-border-radius;
+        font-size: rem(11);
+        line-height: normal;
+        color: $setting-color-gray-3;
+        padding: rem(5) rem(8);
+    }
+}
