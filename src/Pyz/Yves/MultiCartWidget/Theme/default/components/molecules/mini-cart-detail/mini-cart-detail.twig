@@ -21,15 +21,14 @@
                     isDefault: data.cart.isDefault,
                 }
             } only %}
-            <a class="{{ config.name }}__overlay" href="{{ path('multi-cart/set-default', {idQuote: data.cart.idQuote}) }}"></a>
-            <span class="{{ config.name }}__title">
+            <a class="{{ config.name }}__title" href="{{ path('multi-cart/set-default', {idQuote: data.cart.idQuote}) }}">
                 <strong class="{{ config.name }}__name">{{ data.cart.name }}</strong>
                 <span class="{{ config.name }}__marker">
                     {% if data.cart.isDefault %}
                         ({{ 'multi_cart_widget.cart.default' | trans }})
                     {% endif %}
                 </span>
-            </span>
+            </a>
             <div class="{{ config.name }}__info">
                 {% if widgetExists('ProductBundleItemCounterWidgetPlugin') %}
                     {{ widget('ProductBundleItemCounterWidgetPlugin', data.cart) }}

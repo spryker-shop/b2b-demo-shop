@@ -54,6 +54,10 @@
                 &:hover .user-sub-nav {
                     transform: translateX(-50%) scale(1);
                     opacity: 1;
+
+                    &--pull-left {
+                        transform: translateX(-90%);
+                    }
                 }
             }
             &__link,
@@ -99,7 +103,6 @@
             font-weight: fw(regular);
             line-height: 1.93;
             letter-spacing: rem(0.2);
-            z-index: $setting-zi-element-floating;
             @include helper-effect-transition(opacity transform);
             opacity: 0;
 
@@ -123,12 +126,8 @@
                 }
             }
 
-            &--pull-left {
-                transform: translateX(-90%);
-
-                &::before {
-                    left: 90%;
-                }
+            &--pull-left::before {
+                left: 90%;
             }
 
         }
