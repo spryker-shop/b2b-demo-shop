@@ -22,7 +22,7 @@
         modifiers: ['center', 'last'],
         innerClass: 'col col--sm-12 col--md-9 col--lg-6'
     } only %}
-        {% block content %}
+        {% block inner %}
             {% include molecule('form') with {
                 class: 'box box--panel',
                 data: {
@@ -33,7 +33,7 @@
                     },
                     submit: {
                         enable: true,
-                        class: 'button button--success button--big',
+                        class: 'button button--big form__action--primary',
                         text: 'forms.submit.login' | trans
                     },
                     cancel: {
