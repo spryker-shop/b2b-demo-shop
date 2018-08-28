@@ -8,10 +8,9 @@
 {% block body %}
 
     {% embed molecule('slick-carousel') with {
-        modifiers: ['full-width'],
+        modifiers: ['full-width', 'equal-height'],
         data: {
-            slides: data.products,
-            containerClass: 'test'
+            slides: data.products
         },
         attributes: {
             'data-json': '{
