@@ -45,7 +45,20 @@
             color: $setting-color-gray-4;
         }
 
-        .cart-items-quantity {
+        &__info {
+            font-size: rem(11);
+            line-height: rem(29);
+            letter-spacing: rem(0.1);
+            color: $setting-color-gray-3;
+            font-weight: fw(bold);
+            text-transform: uppercase;
+
+            &--main {
+                color: $setting-color-main
+            }
+        }
+
+        &__quantity {
             display: inline-block;
             font-size: rem(11);
             line-height: rem(22);
@@ -59,20 +72,7 @@
             vertical-align: middle;
         }
 
-        .cart-permission {
-            font-size: rem(11);
-            line-height: rem(29);
-            letter-spacing: rem(0.1);
-            color: $setting-color-gray-3;
-            font-weight: fw(bold);
-            text-transform: uppercase;
-
-            &--main {
-                color: $setting-color-main
-            }
-        }
-
-        .mini-cart-radio {
+        &__radio {
             display: inline-block;
             vertical-align: text-top;
         }
