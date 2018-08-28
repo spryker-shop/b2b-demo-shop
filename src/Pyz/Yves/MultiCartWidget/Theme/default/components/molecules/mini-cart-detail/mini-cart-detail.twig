@@ -1,0 +1,59 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'mini-cart-detail',
+    tag: 'div',
+} %}
+
+{% define data = {
+    cart: required,
+    total: data.cart.totals.grandTotal | default(0),
+} %}
+
+{% set itemCount = data.cart.items | length %}
+
+{% block body %}
+    <div class="grid grid--middle text-left">
+        <div class="col col--sm-9">
+            {% include molecule('mini-cart-radio', 'MultiCartWidget') with {
+                class: config.name ~ '__radio',
+                data: {
+                    idCart: data.cart.idQuote,
+                    isDefault: data.cart.isDefault,
+                }
+            } only %}
+            <a class="{{ config.name }}__title" href="{{ path('multi-cart/set-default', {idQuote: data.cart.idQuote}) }}">
+                <strong class="{{ config.name }}__name">{{ data.cart.name }}</strong>
+                {% if data.cart.isDefault %}
+                    <span class="{{ config.name }}__marker">
+                        ({{ 'multi_cart_widget.cart.default' | trans }})
+                    </span>
+                {% endif %}
+            </a>
+            <div class="{{ config.name }}__info">
+                {% if widgetExists('ProductBundleItemCounterWidgetPlugin') %}
+                    <span class="{{ config.name }}__quantity">
+                        {{ widget('ProductBundleItemCounterWidgetPlugin', data.cart, config.name) }}
+                    </span>
+                {% else %}
+                    {% set label = (itemCount == 1)
+                        ? 'multi_cart_widget.cart.item'
+                        : 'multi_cart_widget.cart.items'
+                    %}
+                    <span class="{{ config.name }}__quantity">
+                      {{ itemCount }} {{ label | trans }}
+                    </span>
+                {% endif %}
+
+                {{ widget('SharedCartPermissionGroupWidgetPlugin', data.cart) }}
+            </div>
+        </div>
+
+        <div class="col col--sm-3 text-right">
+            <span class="{{ config.name }}__price">
+               {{ data.total | money(true, data.cart.currency.code) }}<br>
+            </span>
+        </div>
+
+    </div>
+{% endblock %}

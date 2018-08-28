@@ -97,16 +97,17 @@
                                 </a>
                             </li>
                             <li class="user-nav__item">
-                                {#{% if widgetGlobalExists('MiniCartWidgetPlugin') %}#}
-                                    {#{{ widgetGlobal('MiniCartWidgetPlugin', cartQuantity) }}#}
-                                {#{% else %}#}
-                                    {% include molecule('cart-items-counter') with {
-                                        class: 'user-nav__link',
-                                        data: {
-                                            quantity: data.cartQuantity
-                                        }
-                                    } only %}
-                                {#{% endif %}#}
+                                {% include molecule('cart-items-counter') with {
+                                    class: 'user-nav__link',
+                                    data: {
+                                        quantity: data.cartQuantity
+                                    }
+                                } only %}
+                                <div class="user-sub-nav user-sub-nav--pull-left spacing spacing--inner spacing--reset">
+                                    {% if widgetGlobalExists('MiniCartWidgetPlugin') %}
+                                        {{ widgetGlobal('MiniCartWidgetPlugin', cartQuantity) }}
+                                    {% endif %}
+                                </div>
                             </li>
                         </ul>
 
