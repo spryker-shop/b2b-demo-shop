@@ -50,6 +50,16 @@
             line-height: rem(18);
             max-width: 100%;
         }
+
+        .select2-container--default .select2-selection--single {
+            border-radius: $setting-border-radius;
+            border: none;
+            box-shadow: 0 10px 10px 0 $setting-color-shadow-1, 0 3px 3px 0 $setting-color-shadow-1;
+
+            .select2-selection__rendered {
+                line-height: rem(45);
+            }
+        }
     }
 
     &__title {

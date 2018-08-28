@@ -27,6 +27,19 @@
                 min-width: 56%;
             }
         }
+
+        &--total {
+            @include helper-breakpoint-media-min($lg-min) {
+                text-align: right;
+            }
+        }
+    }
+
+    &__inner {
+
+        &--total {
+            height: 100%;
+        }
     }
 
     &__title {
@@ -39,6 +52,7 @@
     .cart-item__col--total {
         @include helper-breakpoint-media-min($lg-min) {
             padding-left: 0;
+            padding-right: calc(#{rem(30)} + #{$setting-grid-space});
         }
     }
 }

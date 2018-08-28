@@ -27,10 +27,8 @@
             {% if data.cart.shipment is not empty and data.cart.shipment.method is not empty %}
                 <li class="list__item">
                     <span>{{ 'cart.shipping' | trans }}</span>
-                    <br />
-                    {{ data.cart.shipment.method.name }}
+                    <div>{{ data.cart.shipment.method.name }}</div>
                     <span class="float-right">{{ data.cart.shipment.method.storeCurrencyPrice | money }}</span>
-                    <hr />
                 </li>
             {% endif %}
 

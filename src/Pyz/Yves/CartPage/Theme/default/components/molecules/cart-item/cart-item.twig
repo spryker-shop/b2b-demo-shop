@@ -49,33 +49,39 @@
         </div>
 
         <div class="{{ config.name }}__col {{ config.name }}__col--total col col--sm-12 col--lg-3">
+            <div class="{{ config.name }}__inner--total grid grid--column grid--justify-column">
+                <div class="col">
 
-            {{ cartItemSubTotal | money }}
+                    {{ cartItemSubTotal | money }}
 
-            {{ widget('CartProductPackagingUnitWidgetPlugin', data.cartItem) }}
+                    {{ widget('CartProductPackagingUnitWidgetPlugin', data.cartItem) }}
 
-            {% if data.cartItem.amountSalesUnit is empty %}
-                {% if canEditCart %}
-                    {% if widgetExists('QuantitySalesUnitWidgetPlugin') %}
-                        {{ widget('QuantitySalesUnitWidgetPlugin', data.cartItem) }}
-                    {% else %}
-                        {% include molecule('cart-quantity-input', 'CartPage') with {
-                            data: {
-                                cartItem: data.cartItem
-                            }
-                        } only %}
+                    {% if data.cartItem.amountSalesUnit is empty %}
+                        {% if canEditCart %}
+                            {% if widgetExists('QuantitySalesUnitWidgetPlugin') %}
+                                {{ widget('QuantitySalesUnitWidgetPlugin', data.cartItem) }}
+                            {% else %}
+                                {% include molecule('cart-quantity-input', 'CartPage') with {
+                                    data: {
+                                        cartItem: data.cartItem
+                                    }
+                                } only %}
+                            {% endif %}
+                        {% else %}
+                            {{ 'cart.item_quantity' | trans }}
+                            <strong>{{ cartItem.quantity }}</strong>
+                        {% endif %}
                     {% endif %}
-                {% else %}
-                    {{ 'cart.item_quantity' | trans }}
-                    <strong>{{ cartItem.quantity }}</strong>
-                {% endif %}
-            {% endif %}
+                </div>
 
-            {% if canEditCart %}
-                <a class="float-right" href="{{ path('cart/remove', {'sku': data.cartItem.sku, 'groupKey': data.cartItem.groupKey }) }}">
-                    &times; {{ 'remove' | trans }}
-                </a>
-            {% endif %}
+                {% if canEditCart %}
+                    <div class="col">
+                        <a class="float-right" href="{{ path('cart/remove', {'sku': data.cartItem.sku, 'groupKey': data.cartItem.groupKey }) }}">
+                            &times; {{ 'remove' | trans }}
+                        </a>
+                    </div>
+                {% endif %}
+            </div>
         </div>
     </div>
 {% endblock %}
