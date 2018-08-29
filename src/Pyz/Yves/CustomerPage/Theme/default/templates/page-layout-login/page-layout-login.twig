@@ -18,9 +18,11 @@
 
 {% block content %}
     {% embed organism('section') with {
-        title: 'customer.login.title' | trans,
-        modifiers: ['center', 'last'],
-        innerClass: 'col col--sm-12 col--md-9 col--lg-6'
+        data: {
+            title: 'customer.login.title' | trans,
+            innerClass: 'col col--sm-12 col--md-9 col--lg-6'
+        },
+        modifiers: ['center', 'last']
     } only %}
         {% block inner %}
             {% include molecule('form') with {
