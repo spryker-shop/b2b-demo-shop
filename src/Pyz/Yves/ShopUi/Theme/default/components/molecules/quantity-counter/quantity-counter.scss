@@ -1,0 +1,69 @@
+@mixin shop-ui-quantity-counter($name: '.quantity-counter') {
+    #{$name} {
+        padding: 8px 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: $setting-color-gray-13;
+
+        &__input {
+            margin: 0;
+            padding: 0;
+            display: block;
+            font: 300 13px $setting-font-family;
+            line-height: 2.08;
+            width: 46px;
+            text-align: center;
+            border: none;
+            background: none;
+            &::-webkit-inner-spin-button {
+                appearance: none;
+            }
+        }
+
+        &__button {
+            width: 28px;
+            height: 28px;
+            border-radius: $setting-border-radius;
+            background-color: $setting-color-white;
+            box-shadow: 0 10px 10px 0 $setting-color-shadow, 0 3px 3px 0 $setting-color-shadow;
+            cursor: pointer;
+            position: relative;
+            @include helper-effect-transition(background);
+
+            &--decrement:before,
+            &--increment:before,
+            &--increment:after {
+                content: "";
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                width: 9px;
+                height: 2px;
+                background: $setting-color-gray-3;
+                @include helper-effect-transition(background);
+            }
+            &--increment:after {
+                width: 2px;
+                height: 9px;
+            }
+
+            &:hover {
+                background: $setting-color-main;
+                &:before,
+                &:after {
+                    background: $setting-color-white;
+                }
+            }
+        }
+
+        &--right-space {
+            margin-right: 10px;
+        }
+    }
+}
+
+@include shop-ui-quantity-counter();
+
+
