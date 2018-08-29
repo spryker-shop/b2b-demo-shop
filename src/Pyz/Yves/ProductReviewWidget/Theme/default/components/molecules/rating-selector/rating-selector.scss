@@ -1,9 +1,11 @@
 $product-review-rating-selector-icon-size: 14px;
+$product-review-rating-selector-icon-size-pdp: 16px;
 
 @mixin product-review-rating-selector($name: '.rating-selector') {
     #{$name} {
         display: inline-block;
-        padding-left: $product-review-rating-selector-icon-size / 2;
+        line-height: 16px;
+        font-size: rem(16);
 
         &__steps {
             display: inline-block;
@@ -21,53 +23,44 @@ $product-review-rating-selector-icon-size: 14px;
 
             &--full {
                 &:not(:first-child) {
-                    padding-right: 1px;
+                    margin-right: 1px;
                 }
             }
 
             &--half {
-                &:first-child {
-                    margin-right: - $product-review-rating-selector-icon-size / 2;
+                &:nth-child(odd):not(:first-child) {
+                    margin-right: 1px;
+                }
+                width: $product-review-rating-selector-icon-size / 2;
+            }
+
+            #{$name}__star {
+                @include helper-effect-transition(color, 100ms);
+                position: relative;
+                min-width: $product-review-rating-selector-icon-size;
+                min-height: $product-review-rating-selector-icon-size;
+                color: $setting-color-gray-12;
+                width: $product-review-rating-selector-icon-size;
+
+                &--half-left {
+                    left: $product-review-rating-selector-icon-size / 2;
                 }
 
-                &:nth-child(even) {
-                    width: $product-review-rating-selector-icon-size / 2;
-                    margin-left: -$product-review-rating-selector-icon-size / 2;
+                &--half-right {
+                    right: 0;
                 }
             }
 
-        }
-
-        &__star {
-            @include helper-effect-transition(color, 100ms);
-            position: relative;
-            min-width: $product-review-rating-selector-icon-size;
-            min-height: $product-review-rating-selector-icon-size;
-            height: $product-review-rating-selector-icon-size;
-            color: $setting-color-gray-12;
-
-            &--half-left {
-                left: $product-review-rating-selector-icon-size / 2;
+            &:hover > #{$name}__star,
+            &:hover ~ #{$name}__step > #{$name}__star {
+                color: $setting-color-yellow-1;
             }
 
-            &--half-right {
-                left: - $product-review-rating-selector-icon-size / 2;
-                transform: rotateY(-180deg);
+            &--active > #{$name}__star {
+                color: $setting-color-yellow-1;
+                width: $product-review-rating-selector-icon-size;
             }
-        }
 
-        &__step > &__star {
-            width: $product-review-rating-selector-icon-size;
-        }
-
-        &__step:hover > &__star,
-        &__step:hover ~ &__step > &__star {
-            color: $setting-color-yellow-1;
-        }
-
-        &__step--active > &__star {
-            color: $setting-color-yellow-1;
-            width: $product-review-rating-selector-icon-size;
         }
 
         &--readonly {
@@ -76,6 +69,39 @@ $product-review-rating-selector-icon-size: 14px;
 
         &--expand {
             display: block;
+        }
+
+        &--pdp {
+            padding-top: rem(7);
+            padding-bottom: rem(16);
+
+            #{$name}__star {
+                min-width: $product-review-rating-selector-icon-size-pdp;
+                min-height: $product-review-rating-selector-icon-size-pdp;
+                height: $product-review-rating-selector-icon-size-pdp;
+                &--half-left {
+                    left: $product-review-rating-selector-icon-size-pdp / 2;
+                }
+            }
+
+            #{$name}__step {
+
+                &--half {
+                    width: $product-review-rating-selector-icon-size-pdp / 2;
+                }
+
+                > #{name}__star {
+                    width: $product-review-rating-selector-icon-size-pdp;
+                }
+
+                &--active > #{$name}__star {
+                    width: $product-review-rating-selector-icon-size-pdp;
+                }
+            }
+        }
+
+        &--space {
+            padding-bottom: 7px;
         }
 
         &__count {

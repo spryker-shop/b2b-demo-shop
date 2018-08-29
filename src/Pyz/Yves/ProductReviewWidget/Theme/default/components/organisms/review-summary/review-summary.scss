@@ -1,0 +1,28 @@
+@mixin product-review-review-summary($name: '.review-summary') {
+    #{$name} {
+        margin-bottom: rem(90);
+
+        &__title {
+            margin-bottom: rem(24);
+            font-weight: fw(medium);
+            line-height: normal;
+            color: $setting-color-gray-6;
+        }
+
+        &__sub-title {
+            margin-bottom: rem(20);
+            font-size: rem(24);
+            font-weight: fw(medium);
+            line-height: normal;
+            color: $setting-color-gray-6;
+        }
+
+        &__rating-box {
+            border-radius: $setting-border-radius;
+            background-color: $setting-color-gray-13;
+            padding: rem(37) rem(49) rem(37) rem(43);
+        }
+    }
+}
+
+@include product-review-review-summary;

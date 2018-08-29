@@ -1,0 +1,30 @@
+@mixin product-detail-page-product-configurator($name: '.product-configurator') {
+    #{$name} {
+        padding-top: 22px;
+
+        &__brand-name {
+            font-size: rem(18);
+            font-weight: fw(medium);
+            line-height: rem(23);
+            color: $setting-color-gray-6;
+            margin-bottom: rem(3);
+        }
+
+        &__sku {
+            font-size: rem(14);
+            font-weight: fw(regular);
+            line-height: normal;
+            color: $setting-color-gray-3;
+            margin-bottom: rem(28);
+        }
+
+        .add-to-cart {
+            padding-top: rem(21);
+            padding-bottom: rem(10);
+        }
+
+        @content;
+    }
+}
+
+@include product-detail-page-product-configurator;

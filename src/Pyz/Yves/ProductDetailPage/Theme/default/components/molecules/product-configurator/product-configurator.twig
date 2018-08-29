@@ -1,0 +1,123 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'product-configurator',
+    tag: 'section'
+} %}
+
+{% define data = {
+    product: required,
+    maxQuantity: 10
+} %}
+
+{% set options = [] %}
+{% set brand = data.product.attributes.brand | default %}
+{% set sku = data.product.sku %}
+{% set availabilityWidget = '' %}
+{% set isDisabled = data.product.idProductConcrete is empty or data.product.price is empty %}
+{% set isProductAvailable = true %}
+
+{% for index in 1..data.maxQuantity %}
+    {% set options = options | merge([{
+        label: index,
+        value: index
+    }]) %}
+{% endfor %}
+
+{% if widgetExists('AvailabilityWidgetPlugin') %}
+    {% set isAvailable = widgetBlock('AvailabilityWidgetPlugin', 'isAvailable', data.product) %}
+    {% set isDisabled = not isAvailable or isDisabled %}
+{% endif %}
+
+{% if widgetExists('ProductDiscontinuedWidgetPlugin') %}
+    {% set isDiscontinued = widgetBlock('ProductDiscontinuedWidgetPlugin', 'isDiscontinued', sku) %}
+    {% set isDisabled = isDiscontinued or isDisabled %}
+    {% set isProductAvailable = not isDiscontinued %}
+{% endif %}
+
+{% block body %}
+    <div class="grid grid--justify">
+        <div class="col">
+            {{ widgetBlock('ProductReviewWidgetPlugin', 'rating', data.product.idProductAbstract) }}
+        </div>
+        <div class="col">
+            <img src="/assets/images/vitra.png" alt="{{brand}}">
+        </div>
+    </div>
+
+    {% if brand is not empty %}
+        <div class="{{ config.name }}__brand-name">{{'page.product.by' | trans}} {{brand}}</div>
+    {% endif %}
+
+    <div class="{{ config.name }}__sku">{{ 'product.attribute.sku' | trans }}: {{sku}}</div>
+
+    {% if widgetExists('PriceProductVolumeWidgetPlugin') %}
+        {{ widget('PriceProductVolumeWidgetPlugin', data.product) }}
+    {% else %}
+        {{ widget('PriceWidgetPlugin', data.product) }}
+    {% endif %}
+
+
+    {{ widget('ProductGroupWidgetPlugin', data.product.idProductAbstract) }}
+
+    {% include molecule('variant-configurator', 'ProductDetailPage') with {
+        data: {
+            superAttributes: data.product.attributeMap.superAttributes,
+            selectedAttributes: data.product.selectedAttributes,
+            availableAttributes: data.product.availableAttributes
+        }
+    } only %}
+
+    <form method="POST" action="/cart/add/{{sku}}">
+        {{ widget('ProductOptionWidgetPlugin', data.product) }}
+
+        {% if widgetExists('ProductPackagingUnitWidgetPlugin') %}
+            {{ widget('ProductPackagingUnitWidgetPlugin', data.product, isDisabled, options) }}
+        {% elseif widgetExists('ProductMeasurementUnitWidgetPlugin') %}
+            {{ widget('ProductMeasurementUnitWidgetPlugin', data.product, isDisabled, options) }}
+        {% else %}
+            <div class="grid grid--stretch grid--justify add-to-cart">
+                {% include molecule('quantity-counter') with {
+                    modifiers: ['right-space']
+                } only %}
+                {#{% include atom('select') with {#}
+                    {#modifiers: ['expand'],#}
+                    {#data: {#}
+                        {#options: options#}
+                    {#},#}
+                    {#attributes: {#}
+                        {#name: 'quantity',#}
+                        {#disabled: isDisabled#}
+                    {#}#}
+                {#} only %}#}
+
+                <div class="col">
+                    <button type="submit" class="button button--success button--expand" {{ isDisabled ? 'disabled' : '' }} onclick="this.form.submit(); this.disabled='disabled'; return false;" {{qa('add-to-cart-button')}}>
+                        {% include atom('icon') with {
+                            data: {
+                                name: 'cart-plus'
+                            }
+                        } only %}
+                        {{ 'page.detail.add-to-cart' | trans }}
+                    </button>
+                </div>
+            </div>
+        {% endif %}
+
+        {{ widget('MultiCartWidgetPlugin', data.product, isDisabled) }}
+        {{ widget('AvailabilityWidgetPlugin', data.product) }}
+    </form>
+
+    {% if widgetExists('ShoppingListWidgetPlugin') and isProductAvailable %}
+        {{ widget('ShoppingListWidgetPlugin', sku, isDisabled) }}
+    {% endif %}
+
+    {% if widgetExists('WishlistWidgetPlugin') and isProductAvailable %}
+        {{ widget('WishlistWidgetPlugin', data.product) }}
+    {% endif %}
+
+    {% if widgetExists('ProductDiscontinuedWidgetPlugin') %}
+        {{ widget('ProductDiscontinuedWidgetPlugin', sku) }}
+    {% endif %}
+
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'review-summary',
+    tag: 'section'
+} %}
+
+{% define data = {
+    reviews: required,
+    summary: required,
+    ratingMaxValue: required,
+    hasCustomer: required,
+
+    pagination: {
+        parameters: required,
+        currentPage: required,
+        paginationPath: required,
+        maxPage: required,
+        showAlwaysFirstAndLast: true,
+        anchor: 'product-reviews'
+    }
+} %}
+
+{% block body %}
+    <h2>Ratings & Reviews</h2>
+
+    <div class="box">
+        <h3>{{ 'product_review.product_ratings' | trans }}</h3>
+        {% include molecule('review-average-display', 'ProductReviewWidget') with {
+            data: {
+                summary: data.summary,
+                ratingMaxValue: data.ratingMaxValue
+            }
+        } only %}
+
+        {% include molecule('review-distribution-display', 'ProductReviewWidget') with {
+            data: {
+                summary: data.summary
+            }
+        } only %}
+    </div>
+
+    {% if data.summary.totalReview > 0 %}
+        <div class="box">
+            <h3>{{ 'product_review.product_reviews' | trans }}</h3>
+
+            {% if data.reviews is empty %}
+                <p>{{ 'product_review.no_reviews' | trans }}</p>
+            {% else %}
+                {% for review in data.reviews %}
+                    {% embed molecule('review', 'ProductReviewWidget') with {
+                        data: {
+                            summary: review.summary,
+                            ratingValue: review.rating,
+                            ratingMaxValue: data.ratingMaxValue,
+                            nickname: review.nickname,
+                            createdAt: review.createdAt | formatDateTime,
+                            description: review.description
+                        }
+                    } only %}
+                        {% block body %}{{parent()}}<hr />{% endblock %}
+                    {% endembed %}
+                {% endfor %}
+
+                {% include molecule('pagination') with {
+                    data: data.pagination
+                } only %}
+            {% endif %}
+        </div>
+    {% endif %}
+{% endblock %}

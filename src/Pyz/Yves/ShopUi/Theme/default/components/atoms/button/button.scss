@@ -28,7 +28,8 @@
 
             &:hover,
             &:focus {
-                background-color: helper-color-light($setting-color-main, 10);
+                border-color: $setting-color-main;
+                background-color: $setting-color-main;
             }
 
             &-icon {
@@ -67,6 +68,11 @@
                 background-color: helper-color-dark($setting-color-alt);
                 border-color: helper-color-dark($setting-color-alt);
             }
+        }
+
+        &--bigger {
+            padding-top: rem(12);
+            padding-bottom: rem(12);
         }
 
         &--big {

@@ -11,7 +11,7 @@
 } %}
 
 {% block body %}
-    <span class="{{config.name}}__amount {% if data.originalAmount is not empty -%} {{config.name}}__amount--alt {%- endif -%}">
+    <span class="{{config.name}}__amount {%- if data.originalAmount is not empty -%} {{config.name}}__amount--alt {%- endif -%}">
         {{data.amount}}
     </span>
 
