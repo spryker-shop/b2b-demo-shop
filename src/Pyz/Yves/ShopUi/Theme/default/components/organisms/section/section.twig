@@ -9,12 +9,12 @@
     title: false,
     modifiers: [],
     innerClass: ''
-} | merge(data | default({})) %}
+} %}
 
 {% block body %}
-    <div class="{{ config.name }}__inner {{ innerClass }}">
-        {% if title %}
-            <h2 class="{{ config.name }}__title">{{ title }}</h2>
+    <div class="{{ config.name }}__inner {{ data.innerClass }}">
+        {% if data.title %}
+            <h2 class="{{ config.name }}__title">{{ data.title }}</h2>
         {% endif %}
 
         {% block inner %}{% endblock %}
