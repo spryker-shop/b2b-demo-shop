@@ -55,7 +55,7 @@ $shop-ui-icon-size-big: 1.25rem;
         width: rem(10);
         height: rem(10);
     }
-    
+
     &--reverse {
         transform: rotate(180deg);
     }
@@ -92,5 +92,11 @@ $shop-ui-icon-size-big: 1.25rem;
                 display: none;
             }
         }
+    }
+    
+    &--link {
+        @include helper-effect-transition(color);
+        color: $setting-color-gray-2;
+        margin-right: rem(6);
     }
 }

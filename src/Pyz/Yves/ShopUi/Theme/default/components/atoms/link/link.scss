@@ -1,0 +1,23 @@
+@include shop-ui-link {
+
+    &--icon {
+        @include helper-effect-transition(color);
+        display: flex;
+        align-items: center;
+        color: $setting-color-gray-3;
+        font-size: rem(13);
+        font-weight: fw(medium);
+        line-height: 1rem;
+
+        &:hover,
+        &:focus {
+            text-decoration: none;
+            color: $setting-color-gray-4;
+
+            .icon {
+                color: $setting-color-gray-4;
+            }
+        }
+
+    }
+}

@@ -1,0 +1,79 @@
+.cart-item-note {
+    margin-top: rem(16);
+    margin-bottom: rem(16);
+
+    &__container {
+        background-color: $setting-color-gray-13;
+        padding: rem(17) rem(20);
+    }
+
+    &__title {
+        font-size: rem(14);
+        font-weight: fw(medium);
+        line-height: normal;
+        color: $setting-color-gray-6;
+        margin-bottom: rem(7);
+    }
+
+    &__label {
+        font-size: rem(14);
+        line-height: rem(18);
+        color: $setting-color-gray-3;
+
+        .icon {
+
+            &::before,
+            &::after {
+                background-color: $setting-color-gray-3;
+            }
+        }
+    }
+
+    &__content {
+        margin-top: rem(17);
+    }
+
+    &__text {
+        color: $setting-color-gray-3;
+        font-size: rem(13);
+        line-height: 2.23;
+    }
+
+    &__action {
+        margin-top: rem(15);
+
+        &-item {
+            margin-right: rem(27);
+        }
+    }
+
+    .form__field {
+        padding-top: 0;
+    }
+
+    .form__actions {
+        text-align: left;
+    }
+
+    .form__action {
+        margin-top: rem(12);
+        margin-left: 0;
+    }
+
+    .label {
+        display: none;
+    }
+
+    .textarea {
+        font-size: rem(13);
+        font-weight: fw(regular);
+        line-height: rem(18);
+        color: $setting-color-gray-3;
+        padding: rem(15) rem(20);
+        border-radius: $setting-border-radius;
+        border: none;
+        box-shadow: 0 10px 10px 0 $setting-color-shadow-1, 0 3px 3px 0 $setting-color-shadow-1;
+        min-height: rem(86);
+        max-width: 100%;
+    }
+}

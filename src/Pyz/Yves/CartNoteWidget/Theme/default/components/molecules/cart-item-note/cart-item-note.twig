@@ -1,0 +1,97 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'cart-item-note',
+    tag: 'cart-item-note'
+} %}
+
+{% define data = {
+    form: required,
+    canWrite: required,
+} %}
+
+{% define attributes = {
+    'edit-button-selector': '.js-' ~ config.name ~ '__edit',
+    'remove-button-selector': '.js-' ~ config.name ~ '__remove',
+    'read-section-selector': '.js-' ~ config.name ~ '__text-wrap',
+    'form-selector': '.js-' ~ config.name ~ '__form',
+    'change-class': 'is-hidden'
+} %}
+
+{% block body %}
+
+    {% set isNoteNotEmpty = data.form.vars.value.cartNote is not null and data.form.vars.value.cartNote is not empty %}
+
+    {% if data.canWrite or isNoteNotEmpty %}
+
+        {% if isNoteNotEmpty %}
+            <h6 class="{{ config.name }}__title">{{ 'cart_note.form.comment' | trans }}:</h6>
+        {% endif %}
+
+        <div class="{{ config.name }}__container">
+
+            {% if isNoteNotEmpty %}
+
+                <div class="{{ config.name }}__text-wrap js-{{ config.name }}__text-wrap">
+                    <div class="{{ config.name }}__text">{{ data.form.vars.value.cartNote }}</div>
+
+                    {% if data.canWrite %}
+                        <div class="grid {{ config.name }}__action">
+                            <button class="{{ config.name }}__action-item link link--icon js-{{ config.name }}__edit">
+                                {% include atom('icon') with {
+                                    modifiers: ['link'],
+                                    data: {
+                                        name: 'edit'
+                                    }
+                                } only %}
+                                {{ 'cart_note.form.edit_comment' | trans }}
+                            </button>
+                            <button class="{{ config.name }}__action-item link link--icon js-{{ config.name }}__remove">
+                                {% include atom('icon') with {
+                                    modifiers: ['link'],
+                                    data: {
+                                        name: 'delete'
+                                    }
+                                } only %}
+                                {{ 'cart_note.form.remove_comment' | trans }}
+                            </button>
+                        </div>
+                    {% endif %}
+                </div>
+            {% endif %}
+
+            {% if data.canWrite %}
+                {% set pefixForJs = data.form.vars.value.groupKey | replace({"." : ""}) %}
+
+                <div class="{{ config.name }}__form js-{{ config.name }}__form js-{{ config.name }}__form--{{ pefixForJs }} {% if isNoteNotEmpty %}is-hidden{% endif %}">
+                    <h6 class="{{ config.name }}__label toggler-accordion__item js-{{ config.name }}__trigger {% if isNoteNotEmpty %}active{% endif %}" data-toggle-target='.js-{{ config.name }}__content--{{ pefixForJs }}'>
+                        {{ 'cart_note.form.add_comment' | trans }}
+                        <span class="icon icon--toggler-cross toggler-accordion__icon"></span>
+                    </h6>
+                    <div class="{{ config.name }}__content js-{{ config.name }}__content js-{{ config.name }}__content--{{ pefixForJs }} {% if not isNoteNotEmpty %}is-hidden{% endif %}">
+                        {% include molecule('form') with {
+                            data: {
+                                form: data.form,
+                                options: {
+                                    action: url('cart-note/item')
+                                },
+                                submit: {
+                                    enable: true,
+                                    text: 'cart_note.form.save' | trans
+                                }
+                            }
+                        } only %}
+                    </div>
+                </div>
+
+                {% include molecule('toggler-accordion') with {
+                    attributes: {
+                        'wrap-selector': '.js-' ~ config.name ~ '__form--' ~ pefixForJs,
+                        'trigger-selector': '.js-' ~ config.name ~ '__trigger',
+                        'class-to-toggle': 'is-hidden'
+                    }
+                } only %}
+            {% endif %}
+        </div>
+    {% endif %}
+{% endblock %}

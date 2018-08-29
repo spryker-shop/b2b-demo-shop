@@ -2,8 +2,22 @@
     display: flex;
     align-items: center;
     height: 100%;
+    position: relative;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: $setting-color-alpha-2;
+        border-radius: $setting-border-radius 0 0 $setting-border-radius;
+        z-index: $setting-zi-element;
+    }
 
     &__item {
         width: 100%;
+        overflow: hidden;
     }
 }
