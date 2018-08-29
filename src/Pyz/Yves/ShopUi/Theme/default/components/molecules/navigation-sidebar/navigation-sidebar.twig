@@ -1,0 +1,34 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'navigation-sidebar',
+    tag: 'nav'
+} %}
+
+{% define data = {
+    activePage: required,
+    items: []
+} %}
+
+{% block body %}
+    <ul class="navigation-sidebar__list">
+        {% for item in data.items %}
+            <li class="navigation-sidebar__item{% if item.name == data.activePage %} navigation-sidebar__item--active{% endif %}">
+                <a class="navigation-sidebar__link" href="{{ item.url }}">
+                    {% spaceless %}
+                        {% if item.icon | default(false) %}
+                            {% include atom('icon') with {
+                                data: {
+                                    name: item.icon
+                                },
+                                class: 'navigation-sidebar__icon'
+                            } only %}
+                        {% endif %}
+
+                        <span class="navigation-sidebar__label">{{ item.label }}</span>
+                    {% endspaceless %}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
