@@ -54,6 +54,10 @@
                 &:hover .user-sub-nav {
                     transform: translateX(-50%) scale(1);
                     opacity: 1;
+
+                    &--pull-left {
+                        transform: translateX(-90%);
+                    }
                 }
             }
             &__link,
@@ -112,13 +116,20 @@
                 height: 10px;
                 transform: translateX(-50%) rotate(45deg);
             }
+
             &__link {
                 color: $setting-color-gray-3;
                 @include helper-effect-transition(color);
+
                 &:hover {
                     color: $setting-color-gray-4;
                 }
             }
+
+            &--pull-left::before {
+                left: 90%;
+            }
+
         }
 
         &__navigation {

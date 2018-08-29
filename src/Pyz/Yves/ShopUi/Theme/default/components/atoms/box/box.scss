@@ -1,0 +1,10 @@
+@mixin shop-ui-box($name: '.box') {
+    #{$name} {
+        background-color: $setting-color-gray-13;
+        border: 0 none;
+        padding: rem(32);
+        margin: 0;
+    }
+}
+
+@include shop-ui-box();

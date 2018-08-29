@@ -1,0 +1,21 @@
+@mixin shop-ui-label($name: '.label') {
+    #{$name} {
+        display: block;
+        font-size: rem(12);
+        font-weight: map-get($setting-font-weight, bold);
+        margin-bottom: 0.4rem;
+        text-transform: uppercase;
+
+        &--required {
+            &::after {
+                content: '*';
+                margin-left: 0.2rem;
+                color: $setting-color-main;
+            }
+        }
+
+        @content;
+    }
+}
+
+@include shop-ui-label();

@@ -9,6 +9,7 @@
     showSearchForm: true,
     showNavigation: true,
     cartQuantity: app['cart.quantity'] | default,
+    user: app['user'],
     showUserMenu: not (hideUserMenu | default(false))
 } %}
 
@@ -60,7 +61,7 @@
                                             }
                                         } only %}
                                     </span>
-                                    Maximilian Mustermann
+                                        {{ data.user.customerTransfer.firstName }} {{ data.user.customerTransfer.lastName }}
                                 </div>
                                 <ul class="user-sub-nav">
                                     <li><a class="user-sub-nav__link" href="{{ url('customer/overview') }}">{{ 'customer.account.overview'|trans }}</a></li>
@@ -97,16 +98,17 @@
                                 </a>
                             </li>
                             <li class="user-nav__item">
-                                {#{% if widgetGlobalExists('MiniCartWidgetPlugin') %}#}
-                                    {#{{ widgetGlobal('MiniCartWidgetPlugin', cartQuantity) }}#}
-                                {#{% else %}#}
-                                    {% include molecule('cart-items-counter') with {
-                                        class: 'user-nav__link',
-                                        data: {
-                                            quantity: data.cartQuantity
-                                        }
-                                    } only %}
-                                {#{% endif %}#}
+                                {% include molecule('cart-items-counter') with {
+                                    class: 'user-nav__link',
+                                    data: {
+                                        quantity: data.cartQuantity
+                                    }
+                                } only %}
+                                <div class="user-sub-nav user-sub-nav--pull-left spacing spacing--inner spacing--reset">
+                                    {% if widgetGlobalExists('MiniCartWidgetPlugin') %}
+                                        {{ widgetGlobal('MiniCartWidgetPlugin', cartQuantity) }}
+                                    {% endif %}
+                                </div>
                             </li>
                         </ul>
 
