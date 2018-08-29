@@ -9,6 +9,7 @@
     showSearchForm: true,
     showNavigation: true,
     cartQuantity: app['cart.quantity'] | default,
+    user: app['user'],
     showUserMenu: not (hideUserMenu | default(false))
 } %}
 
@@ -60,7 +61,7 @@
                                             }
                                         } only %}
                                     </span>
-                                    Maximilian Mustermann
+                                        {{ data.user.customerTransfer.firstName }} {{ data.user.customerTransfer.lastName }}
                                 </div>
                                 <ul class="user-sub-nav">
                                     <li><a class="user-sub-nav__link" href="{{ url('customer/overview') }}">{{ 'customer.account.overview'|trans }}</a></li>
