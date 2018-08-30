@@ -1,7 +1,6 @@
 @mixin shop-ui-navigation-sidebar($name: '.navigation-sidebar') {
     #{$name} {
         border: 1px solid $setting-color-gray-1;
-        // margin-right: rem(32);
 
         &__list {
             list-style: none;
@@ -39,6 +38,10 @@
 
         &__item--active &__label {
             color: $setting-color-gray-6;
+        }
+
+        @include helper-breakpoint-media-min($md-min) {
+            margin-right: rem(32);
         }
     }
 }

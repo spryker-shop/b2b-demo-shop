@@ -1,0 +1,26 @@
+{% extends template('page-layout-company', 'CompanyPage') %}
+
+
+{% define data = {
+    title: null,
+    company: _view.company
+} %}
+
+{% block companyContent %}
+    {% include molecule('tile', 'ShopUi') with {
+        data: {
+            icon: 'office',
+            title: 'company.account.name' | trans,
+            text: data.company.name
+        }
+    } only %}
+
+    {# TODO mocked address! #}
+    {% include molecule('tile', 'ShopUi') with {
+        data: {
+            icon: 'marker',
+            title: 'company.account.address' | trans,
+            text: '- Beispielstraße 30, 10625 Berlin, Germany'
+        }
+    } only %}
+{% endblock %}

@@ -11,21 +11,21 @@
 } %}
 
 {% block body %}
-    <ul class="navigation-sidebar__list">
+    <ul class="{{ config.name }}__list">
         {% for item in data.items %}
-            <li class="navigation-sidebar__item{% if item.name == data.activePage %} navigation-sidebar__item--active{% endif %}">
-                <a class="navigation-sidebar__link" href="{{ item.url }}">
+            <li class="{{ config.name }}__item{% if item.name == data.activePage %} {{ config.name }}__item--active{% endif %}">
+                <a class="{{ config.name }}__link" href="{{ item.url }}">
                     {% spaceless %}
                         {% if item.icon | default(false) %}
                             {% include atom('icon') with {
                                 data: {
                                     name: item.icon
                                 },
-                                class: 'navigation-sidebar__icon'
+                                class: config.name ~ '__icon'
                             } only %}
                         {% endif %}
 
-                        <span class="navigation-sidebar__label">{{ item.label }}</span>
+                        <span class="{{ config.name }}__label">{{ item.label }}</span>
                     {% endspaceless %}
                 </a>
             </li>
