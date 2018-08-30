@@ -1,35 +1,51 @@
+/*
+  TODO tables are often ignored when applying BEM
+  because they contain so many repetitive elements.
+  Find consensus on how to deal with this and either leave
+  as-is, or create BEM selectors for every element.
+*/
+
 @mixin shop-ui-table($name: '.table') {
     #{$name} {
-        thead,
-        &__head {
-            @include helper-font-weight(bold);
+        thead {
+            background-color: $setting-color-gray-11;
+            text-transform: uppercase;
+            font-size: map_get($setting-font-size, tiny);
+            font-weight: map-get($setting-font-weight, bold);
         }
 
         th, td {
-            padding: rem(18) rem(10);
-        }
-
-        th {
-            color: $setting-color-gray-6;
-            font-size: rem(12);
-            font-weight: fw(bold);
-            text-transform: uppercase;
-            background: $setting-color-gray-11;
+            padding: rem(16) rem(32);
             text-align: left;
         }
 
-        td {
-            border-bottom: solid 1px $setting-color-gray-7;
-            font-size: rem(14);
-            font-weight: fw(regular);
+        tbody {
+            font-size: map_get($setting-font-size, small);
+
+            tr {
+                border-bottom: 1px solid $setting-color-gray-7;
+            }
+
+            th {
+                font-weight: map_get($setting-font-weight, medium);
+            }
         }
 
         &--expand {
             width: 100%;
         }
 
+        &__actions {
+            width: 0;
+            white-space: nowrap;
+        }
+
+        &__action {
+            color: $setting-color-gray-2;
+        }
+
         @content;
     }
 }
 
-@include shop-ui-table;
+@include shop-ui-table();

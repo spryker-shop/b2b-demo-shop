@@ -1,0 +1,69 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'user-table',
+    tag: 'div'
+} %}
+
+{% define data = {
+    users: required,
+    actions: {
+        update: false,
+        delete: false
+    }
+} %}
+
+{% set showActions = data.actions.update or data.actions.delete %}
+
+{% block body %}
+    <table class="table table--expand">
+        <thead>
+            <tr>
+                <th>{{ 'company.account.company_user.name' | trans }}</th>
+                <th>{{ 'company.account.company_user.business_unit' | trans }}</th>
+                {% if showActions %}
+                    <th></th>
+                {% endif %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in data.users %}
+                {% set companyBusinessUnitName = user.companyBusinessUnit.name | default('') %}
+                <tr>
+                    {% if user.customer.firstName != null and user.customer.lastName != null %}
+                        <th>{{ user.customer.firstName }} {{ user.customer.lastName }}</th>
+                        <td>{{ companyBusinessUnitName }}</td>
+                        {% if showActions %}
+                            <td class="table__actions">
+                                <ul class="menu menu--inline">
+                                    {% if data.actions.update %}
+                                        <li class="menu__item">
+                                            <a class="table__action" href="{{ url('company/user/update', {'id': user.idCompanyUser}) }}" title="{{ "company.account.company_user.edit" | trans }}">
+                                                {% include atom('icon') with {
+                                                    data: {
+                                                        name: 'edit'
+                                                    }
+                                                } only %}
+                                            </a>
+                                        </li>
+                                    {% endif %}
+                                    {% if data.actions.delete %}
+                                        <li class="menu__item">
+                                            <a class="table__action" href="{{ url('company/user/delete', {'id': user.idCompanyUser }) }}" title="{{ "company.account.company_user.delete" | trans }}">
+                                                {% include atom('icon') with {
+                                                    data: {
+                                                        name: 'delete'
+                                                    }
+                                                } only %}
+                                            </a>
+                                        </li>
+                                    {% endif %}
+                                </ul>
+                            </td>
+                        {% endif %}
+                    {% endif %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

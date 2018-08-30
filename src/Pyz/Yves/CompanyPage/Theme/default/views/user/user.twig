@@ -1,0 +1,63 @@
+{% extends template('page-layout-company', 'CompanyPage') %}
+
+{% define data = {
+    users: _view.companyUserCollection,
+
+    pagination: {
+        parameters: {},
+        currentPage: _view.pagination.page,
+        paginationPath: 'company/user',
+        maxPage: _view.pagination.lastPage,
+        showAlwaysFirstAndLast: true
+    },
+
+    title: null,
+    activePage: 'users'
+} %}
+
+{% block breadcrumbs %}
+    {% include molecule('breadcrumb') with {
+        data: {
+            steps: [
+                {
+                    label: 'company.account.page-title' | trans,
+                    url: url('company/overview')
+                }, {
+                    label: 'company.account.company_user' | trans
+                }
+            ]
+        }
+    } only %}
+{% endblock %}
+
+{% block companyContent %}
+    {% include molecule('action-bar', 'ShopUi') with {
+        data: {
+            title: 'company.account.company_user' | trans,
+            actions: [
+                {
+                    title: 'company.account.company_user.add' | trans,
+                    url: url('company/user/create'),
+                    primary: true,
+                    icon: 'plus'
+                }
+            ]
+        }
+    } only %}
+
+    {% if data.users is not empty %}
+        {% include molecule('user-table', 'CompanyPage') with {
+            data: {
+                users: data.users,
+                actions: {
+                    update: true,
+                    delete: true
+                }
+            }
+        } only %}
+
+        {% include molecule('pagination') with {
+            data: data.pagination
+        } only %}
+    {% endif %}
+{% endblock %}

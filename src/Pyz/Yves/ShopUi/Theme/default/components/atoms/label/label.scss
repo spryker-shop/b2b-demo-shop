@@ -1,8 +1,8 @@
 @mixin shop-ui-label($name: '.label') {
     #{$name} {
         display: block;
-        font-size: rem(12);
-        font-weight: map-get($setting-font-weight, bold);
+        font-size: map_get($setting-font-size, tiny);
+        font-weight: map_get($setting-font-weight, bold);
         margin-bottom: 0.4rem;
         text-transform: uppercase;
 
