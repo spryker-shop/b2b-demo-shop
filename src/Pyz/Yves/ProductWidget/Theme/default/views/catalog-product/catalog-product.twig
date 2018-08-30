@@ -7,7 +7,7 @@
 
 {% block body %}
     {% set productTemplate = molecule('product-card') %}
-    {% set class = 'col col--sm-12 col--md-6 col--lg-6 col--xl-4 test' %}
+    {% set class = 'col col--sm-12 col--md-6 col--lg-6 col--xl-4' %}
 
     {% if data.viewMode == 'list' %}
         {% set productTemplate = molecule('product-list-item') %}
