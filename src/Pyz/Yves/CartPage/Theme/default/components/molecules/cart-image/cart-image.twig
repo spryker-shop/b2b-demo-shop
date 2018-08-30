@@ -14,7 +14,6 @@
     {% if data.image is not empty %}
         {% include atom('thumbnail') with {
             class: 'col ' ~ config.name ~ '__item',
-            modifiers: ['small'],
             attributes: {
                 alt: data.name,
                 src: data.image.externalUrlLarge

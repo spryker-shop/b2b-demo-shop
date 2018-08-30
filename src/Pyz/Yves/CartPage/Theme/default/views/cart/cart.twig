@@ -64,20 +64,25 @@
             <h6>{{ 'cart.empty' | trans }}</h6>
         </div>
     {% else %}
+
+        {% set canEditCart = (not is_granted('IS_AUTHENTICATED_FULLY') or can('WriteSharedCartPermissionPlugin', data.cart.idQuote)) %}
+
         <div class="grid grid--gap">
             <div class="col col--sm-12 col--xl-9">
                 <div class="grid grid--justify grid--middle cart-title">
                     <div class="col col--sm-8">
                         <h3 class="grid grid--middle cart-title__text">
                             {{ data.cart.name }}
-                            <a href="{{ path('multi-cart/update', {idQuote: data.cart.idQuote}) }}" class="col button button--hollow-icon button--edit cart-title__link" title="{{ "multi_cart_widget.cart.action.change_name" | trans }}">
-                                {% include atom('icon') with {
-                                    modifiers: ['big'],
-                                    data: {
-                                        name: 'edit'
-                                    }
-                                } only %}
-                            </a>
+                            {% if canEditCart %}
+                                <a href="{{ path('multi-cart/update', {idQuote: data.cart.idQuote}) }}" class="col button button--hollow-icon button--edit cart-title__link" title="{{ "multi_cart_widget.cart.action.change_name" | trans }}">
+                                    {% include atom('icon') with {
+                                        modifiers: ['big'],
+                                        data: {
+                                            name: 'edit'
+                                        }
+                                    } only %}
+                                </a>
+                            {% endif %}
                         </h3>
                     </div>
                     <div class="col col--sm-2 text-right cart-title__quantity">{{ app['cart.quantity'] }} {{ 'checkout.step.summary.items' | trans }}</div>
@@ -86,7 +91,6 @@
             <div class="col col--sm-12 col--xl-9">
                 {% for cartItem in data.cartItems %}
                     {% include molecule('cart-item', 'CartPage') with {
-                        class: '',
                         data: {
                             cart: data.cart,
                             cartItem: cartItem,
@@ -95,9 +99,19 @@
                     } only %}
                 {% endfor %}
 
-                <a href="{{ path('multi-cart/clear', {idQuote: data.cart.idQuote}) }}" class="button clear">
-                    {{ "multi_cart_widget.cart.action.clear" | trans }}
-                </a>
+                {% if canEditCart %}
+                    <div class="grid grid--right cart-bottom">
+                        <a href="{{ path('multi-cart/clear', {idQuote: data.cart.idQuote}) }}" class="link link--icon">
+                            {% include atom('icon') with {
+                                modifiers: ['link'],
+                                data: {
+                                    name: 'delete'
+                                }
+                            } only %}
+                            {{ "multi_cart_widget.cart.action.clear" | trans }}
+                        </a>
+                    </div>
+                {% endif %}
 
                 {{ widget('DiscountPromotionItemListWidgetPlugin', data.cart, data.request) }}
             </div>
@@ -105,7 +119,7 @@
             <div class="col col--sm-12 col--xl-3 cart-sidebar js-cart-sidebar">
                 {% if widgetExists('CartNoteQuoteWidgetPlugin') %}
                     <div class="cart-sidebar__item cart-sidebar__item--note">
-                        <h5 class="cart-sidebar__title toggler-accordion__item js-cart-sidebar__trigger" {{ 'data-toggle-target=.js-cart-sidebar__content-note' }}>
+                        <h5 class="cart-sidebar__title toggler-accordion__item js-cart-sidebar__trigger" data-toggle-target='.js-cart-sidebar__content-note'>
                             {{ 'cart_note.quote_form.enter_note' | trans }}
                             <span class="icon icon--toggler-cross toggler-accordion__icon"></span>
                         </h5>
@@ -117,7 +131,7 @@
 
                 {% if widgetExists('CartToShoppingListWidgetPlugin') and data.cart.idQuote is not empty and data.cart.items is not empty %}
                     <div class="cart-sidebar__item">
-                        <h5 class="cart-sidebar__title toggler-accordion__item js-cart-sidebar__trigger" {{ 'data-toggle-target=.js-cart-sidebar__content-shopping-list' }}>
+                        <h5 class="cart-sidebar__title toggler-accordion__item js-cart-sidebar__trigger" data-toggle-target='.js-cart-sidebar__content-shopping-list'>
                             {{ 'cart.add-to-shopping-list' | trans }}
                             <span class="icon icon--toggler-cross toggler-accordion__icon"></span>
                         </h5>
@@ -146,7 +160,6 @@
                         }
                     } only %}
                 </div>
-
 
                 {% include molecule('toggler-accordion') with {
                     attributes: {

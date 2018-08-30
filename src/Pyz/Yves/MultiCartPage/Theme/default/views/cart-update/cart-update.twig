@@ -4,38 +4,48 @@
     cart: _view.cart,
     form: _view.quoteForm,
     formAction: url('multi-cart/update', {idQuote: _view.cart.idQuote}),
-    title: 'multi_cart.form.edit_cart' | trans,
+    title: 'multi_cart.form.quote.name' | trans,
 } %}
 
 {% block breadcrumbs %}
     {% include molecule('breadcrumb') with {
         data: {
             steps: [{
-                label: 'cart.cart' | trans
+                label: 'cart.cart' | trans,
+                url: url('cart'),
+                isActive: false
+            }, {
+                label: data.title,
+                isActive: true
             }]
         }
     } only %}
 {% endblock %}
 
+{% block title %}{% endblock %}
+
 {% block content %}
-    <div class="spacing-y--big">
-        {% include molecule('form') with {
-            data: {
-                title: 'multi_cart.form.edit_cart_information' | trans,
-                form: data.form,
-                options: {
-                    action: data.formAction
-                },
-                submit: {
-                    enable: true
-                },
-                cancel: {
-                    enable: true,
-                    url: url('cart'),
-                    icon: null,
-                    text: 'general.back.button' | trans
+    <div class="grid cart-update">
+        <div class="col col--md-6">
+            <h2 class="cart-update__title">{{ 'multi_cart.form.edit' | trans }} «{{ data.form.vars.value.name }}»</h2>
+            {% include molecule('form') with {
+                data: {
+                    form: data.form,
+                    options: {
+                        action: data.formAction
+                    },
+                    submit: {
+                        enable: true,
+                        text: 'cart_note.form.save' | trans
+                    },
+                    cancel: {
+                        enable: true,
+                        url: url('cart'),
+                        icon: null,
+                        text: 'general.back.button' | trans
+                    }
                 }
-            }
-        } only %}
+            } only %}
+        </div>
     </div>
 {% endblock %}
