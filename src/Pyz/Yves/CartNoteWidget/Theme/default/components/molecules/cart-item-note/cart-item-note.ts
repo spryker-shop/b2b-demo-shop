@@ -27,8 +27,8 @@ export default class CartItemNote extends Component {
         while (target != this) {
             if (target === this.editButton) {
                 event.preventDefault();
-                this.toggle(this.formTarget);
-                this.toggle(this.textTarget);
+                this.classToggle(this.formTarget);
+                this.classToggle(this.textTarget);
                 return;
             }
             if (target === this.removeButton) {
@@ -43,7 +43,7 @@ export default class CartItemNote extends Component {
         }
     }
 
-    protected toggle(activeTrigger: HTMLElement): void {
+    protected classToggle(activeTrigger: HTMLElement): void {
         const isTriggerActive = activeTrigger.classList.contains(this.classToToggle);
         activeTrigger.classList.toggle(this.classToToggle, !isTriggerActive);
     }

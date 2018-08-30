@@ -93,6 +93,14 @@ $shop-ui-icon-size-big: 1.25rem;
             }
         }
     }
+
+    &--toggler-cross-link {
+
+        &::before,
+        &::after {
+            background-color: $setting-color-gray-3;
+        }
+    }
     
     &--link {
         @include helper-effect-transition(color);
