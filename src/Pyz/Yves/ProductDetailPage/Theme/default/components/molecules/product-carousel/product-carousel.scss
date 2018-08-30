@@ -24,7 +24,7 @@
                 position: absolute;
                 left: 0;
                 top: 0;
-                padding: 37px 37px 37px 110px;
+                padding: 37px;
                 width: 100%;
                 height: 570px;
                 display: flex;
@@ -127,6 +127,10 @@
 
             .slick-current .pdp-img::before {
                 background: transparent;
+            }
+
+            ~ .pdp-carousel__container .pdp-img {
+                padding-left: 110px;
             }
         }
 

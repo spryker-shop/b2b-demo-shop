@@ -29,10 +29,14 @@
                 right: 18px;
             }
 
-            &.active:after {
+            &:after {
                 width: 2px;
                 height: 10px;
                 right: 22px;
+            }
+
+            &.active:after {
+                display: none;
             }
         }
     }
