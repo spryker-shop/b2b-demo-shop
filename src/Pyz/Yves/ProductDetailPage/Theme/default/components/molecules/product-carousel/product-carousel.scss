@@ -1,0 +1,137 @@
+@mixin product-detail-page-product-carousel($name: '.product-carousel') {
+    #{$name} {
+        position: relative;
+
+        .simple-carousel__container {
+            padding: 0;
+        }
+
+        .product-image {
+            position: relative;
+            padding: 8px 0;
+        }
+
+        .pdp-carousel__container {
+            height: 570px;
+            position: relative;
+            background: rgba(0, 0, 0, 0.05);
+
+            & > .pdp-img:not(:first-child) {
+                opacity: 0;
+            }
+
+            .pdp-img {
+                position: absolute;
+                left: 0;
+                top: 0;
+                padding: 37px 37px 37px 110px;
+                width: 100%;
+                height: 570px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: #fff;
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    background: rgba(0, 0, 0, 0.05);
+                    z-index: 110;
+                }
+
+                img {
+                    max-width: 100%;
+                    max-height: 100%;
+                }
+            }
+
+            .pdp-img-color-active {
+                z-index: 100;
+                opacity: 1 !important;
+            }
+        }
+
+        .pdp-carousel__thumbnail {
+            position: absolute;
+            top: 20px;
+            left: 30px;
+            z-index: 200;
+            width: 70px;
+            max-height: 424px;
+            overflow: hidden;
+
+            .thumb-prev,
+            .thumb-next {
+                padding: 5px 0 0;
+                text-align: center;
+                cursor: pointer;
+                display: block !important;
+                z-index: 350;
+
+                svg {
+                    display: block;
+                    width: 100%;
+                    height: 7px;
+                    color: $setting-color-gray-2;
+                }
+
+                &[aria-disabled="true"] {
+                    cursor: default;
+                    pointer-events: none;
+
+                    svg {
+                        color: transparent;
+                    }
+                }
+            }
+
+            .thumb-prev {
+                padding: 0 0 5px;
+
+                svg {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .slick-slide {
+                border: none;
+            }
+
+            .pdp-img {
+                display: flex !important;
+                align-items: center;
+                justify-content: center;
+                width: 70px;
+                height: 70px;
+                padding: 5px;
+                background: #fff;
+                position: relative;
+                margin: 15px 0;
+                cursor: pointer;
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    background: $setting-color-alpha-3;
+                    z-index: 350;
+                }
+            }
+
+            .slick-current .pdp-img::before {
+                background: transparent;
+            }
+        }
+
+        @content;
+    }
+}
+
+@include product-detail-page-product-carousel;
