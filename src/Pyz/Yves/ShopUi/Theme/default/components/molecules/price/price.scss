@@ -5,6 +5,9 @@
         line-height: map_get($setting-font-line-height, 2);
         color: $setting-color-gray-4;
 
+        &--catalog {
+            color: $setting-color-gray-6;
+        }
 
         &--original {
             @include helper-font-size(big);
@@ -16,10 +19,6 @@
 
         &--alt {
             color: $setting-color-alt;
-        }
-
-        &--catalog {
-            color: $setting-color-gray-6;
         }
     }
 }
