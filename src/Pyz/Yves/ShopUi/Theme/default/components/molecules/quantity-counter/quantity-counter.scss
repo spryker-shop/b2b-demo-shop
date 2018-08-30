@@ -56,6 +56,26 @@
                     background: $setting-color-white;
                 }
             }
+
+            &--disabled {
+                background: $setting-color-white;
+                cursor: not-allowed;
+                box-shadow: 0 3px 3px 0 $setting-color-shadow;
+
+                &:before,
+                &:after {
+                    background: $setting-color-gray-7;
+                }
+
+                &:hover,
+                &:focus {
+                    background: $setting-color-white;
+                    &:before,
+                    &:after {
+                        background: $setting-color-gray-7;
+                    }
+                }
+            }
         }
 
         &--right-space {

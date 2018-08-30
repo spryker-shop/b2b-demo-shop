@@ -16,20 +16,26 @@
 {% set maxQuantity = data.maxQuantity < 0 or data.maxQuantity < data.minQuantity ? null : data.maxQuantity %}
 
 {% block body %}
-    <div class="{{ config.name }}__button {{ config.name }}__button--decrement js-quantity-decrement"></div>
+    <div class="{{ config.name }}__button {{ config.name }}__button--decrement {% if data.readOnly %}{{ config.name }}__button--disabled{% endif %} {% if not data.readOnly %}js-quantity-decrement{% endif %}"></div>
 
-    <input
-        class="{{ config.name }}__input"
-        data-max-quantity="{{ maxQuantity }}"
-        type="number"
-        value="{{data.value}}"
-        name="quantity"
-        min="{{data.minQuantity}}"
-        {{qa('quantity-input')}}
-        {% if maxQuantity is not empty %}max="{{maxQuantity}}"{% endif %}
-        {% if data.readOnly %}disabled{% endif %}
-        {% if data.autoUpdate %}data-auto-update="true"{% endif %} />
+    {% if data.readOnly %}
 
-    <div class="{{ config.name }}__button {{ config.name }}__button--increment js-quantity-increment"></div>
+        <div class="{{ config.name }}__input">{{data.value}}</div>
+
+    {% else %}
+
+        <input
+            class="{{ config.name }}__input"
+            data-max-quantity="{{ maxQuantity }}"
+            type="number"
+            value="{{data.value}}"
+            name="quantity"
+            min="{{data.minQuantity}}"
+            {{qa('quantity-input')}}
+            {% if maxQuantity is not empty %}max="{{maxQuantity}}"{% endif %}
+            {% if data.autoUpdate %}data-auto-update="true"{% endif %} />
+    {% endif %}
+
+    <div class="{{ config.name }}__button {{ config.name }}__button--increment {% if data.readOnly %}{{ config.name }}__button--disabled{% endif %} {% if not data.readOnly %}js-quantity-increment{% endif %}"></div>
 {% endblock %}
 
