@@ -1,73 +1,103 @@
-$color-selector-size: 16px;
+$color-selector-size: 18px;
+$color-selector-size-big: 24px;
 
-.color-selector,
-.color-selector-pdp {
-    @include helper-effect-transition(opacity);
-    cursor: default;
-    padding: rem(13) 0;
-    opacity: 1;
+@mixin product-color-group-color-selector($name: '.color-selector') {
+    #{$name},
+    #{$name}-pdp {
+        cursor: default;
+        display: flex;
 
-    &__color {
-        display: inline-block;
-        width: $color-selector-size;
-        height: $color-selector-size;
-        border-radius: 100%;
-        vertical-align: middle;
-        position: relative;
-
-        &:before {
-            content: "";
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            width: 18px;
-            height: 18px;
-            border: solid 4px $setting-color-white;
+        &__color {
             border-radius: 100%;
-        }
+            vertical-align: middle;
+            position: relative;
 
-        &:not(:last-child) {
-            margin-right: rem(4);
-        }
+            &:not(:last-child) {
+                margin-right: 4px;
+            }
 
-        .color-tooltip {
-            @include helper-effect-transition(all);
-            transform: scale(0);
-            transform-origin: bottom;
-            position: absolute;
-            top: -43px;
-            left: -15px;
-            background: $setting-color-black;
-            color: $setting-color-white;
-            font: 400 rem(16) $setting-font-family;
-            padding: rem(5) rem(11) rem(7) rem(10);
-            white-space: nowrap;
-            border-radius: $setting-border-radius;
-            &:before {
-                content: "";
-                position: absolute;
-                left: rem(17);
-                bottom: -4px;
-                border-radius: $setting-border-radius;
-                background: $setting-color-black;
+            &-inner {
+                display: block;
                 width: 10px;
                 height: 10px;
-                transform: rotate(45deg);
+                border-radius: 100%;
+                pointer-events: none;
+            }
+
+            .color-tooltip {
+                @include helper-effect-transition(all);
+                transform: scale(0);
+                transform-origin: bottom;
+                position: absolute;
+                top: -43px;
+                left: -15px;
+                background: #111;
+                color: #fff;
+                font: 300 16px $setting-font-family;
+                padding: 5px 11px 7px 10px;
+                white-space: nowrap;
+                border-radius: 2px;
+                &:before {
+                    content: "";
+                    position: absolute;
+                    left: 17px;
+                    bottom: -4px;
+                    border-radius: 2px;
+                    background: #111111;
+                    width: 10px;
+                    height: 10px;
+                    transform: rotate(45deg);
+                }
+            }
+
+            &:hover .color-tooltip {
+                transform: scale(1);
             }
         }
+    }
 
-        &:hover,
-        &--active {
-            &:before {
-                width: 14px;
-                height: 14px;
-                border-width: 2px;
+    #{$name} {
+        width: $color-selector-size;
+        height: $color-selector-size;
+        border: solid 1px transparent;
+        padding: 3px;
+
+        &__color {
+
+            &:not(#{$name}__color--active) {
+                border-color: transparent !important;
             }
         }
+    }
 
-        &:hover .color-tooltip {
-            transform: scale(1);
+    #{$name}-pdp {
+
+        &__color {
+            width: $color-selector-size-big;
+            height: $color-selector-size-big;
+            border: solid 10px transparent;
+
+            &:not(:last-child) {
+                margin-right: 10px;
+            }
+
+            &-inner {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+
+            .color-tooltip {
+                top: -52px;
+                left: -20px;
+            }
+
+            &--active #{$name}-pdp__color-inner {
+                background: $setting-color-white !important;
+            }
         }
     }
 }
+
+@include product-color-group-color-selector;

@@ -22,6 +22,16 @@
 
 {% block body %}
 
+    {% if (sliderLength > 1) %}
+        <div class="{{config.name}}__thumbnail {{ data.thumbnailClass }}">
+            {% for slide in data.slides %}
+                <div class="pdp-img">
+                    <img src="{{ slide.externalUrlLarge }}" alt="" >
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
     <div class="{{config.name}}__container {{ data.containerClass }}">
         {% for slide in data.slides %}
             <div class="pdp-img">
@@ -32,15 +42,5 @@
             <img src="{{ firstSlide.externalUrlLarge }}" alt="" >
         </div>
     </div>
-
-    {% if (sliderLength > 1) %}
-        <div class="{{config.name}}__thumbnail {{ data.thumbnailClass }}">
-            {% for slide in data.slides %}
-                <div class="pdp-img">
-                    <img src="{{ slide.externalUrlLarge }}" alt="" >
-                </div>
-            {% endfor %}
-        </div>
-    {% endif %}
 
 {% endblock %}

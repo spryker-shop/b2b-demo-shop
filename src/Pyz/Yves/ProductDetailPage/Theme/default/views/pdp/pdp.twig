@@ -15,8 +15,10 @@
 {% endblock %}
 
 {% block title %}
-    {{ widget('ProductAbstractLabelWidgetPlugin', data.product) }}
-    <h3 itemprop="name">{{ data.product.name }}</h3>
+    <h3 itemprop="name" class="pdp-title">
+        {{ widget('ProductAbstractLabelWidgetPlugin', data.product) }}
+        {{ data.product.name }}
+    </h3>
     <link itemprop="url" href="{{ data.productUrl }}" />
 {% endblock %}
 
@@ -54,5 +56,5 @@
 
     {{ widget('ProductReviewWidgetPlugin', data.product.idProductAbstract) }}
     {{ widget('SimilarProductsWidgetPlugin', data.product) }}
-    {{ widget('ProductCmsBlockWidgetPlugin', data.product) }}
+    {#{{ widget('ProductCmsBlockWidgetPlugin', data.product) }}#}
 {% endblock %}
