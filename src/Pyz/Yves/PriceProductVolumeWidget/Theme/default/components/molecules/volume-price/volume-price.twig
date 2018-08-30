@@ -1,0 +1,30 @@
+{% extends molecule('price') %}
+
+{% define config = {
+    name: 'volume-price',
+    tag: 'volume-price'
+} %}
+
+{% define data = {
+    amount: required,
+    originalAmount: null
+} %}
+
+{% block body %}
+    {% if data.originalAmount is not empty -%}
+        <span class="{{config.name}}__amount {{config.name}}__amount--original">{{ data.originalAmount | money }}</span>
+    {%- endif -%}
+
+    <span class="{{ config.name }}__amount">
+
+        {% include atom('icon') with {
+            class: config.name ~ '__tag',
+            data: {
+                name: 'tag'
+            }
+        } only %}
+        <span class="{{ config.jsName }}__price {{ config.name }}__price">
+            {{ data.amount }}
+        </span>
+    </span>
+{% endblock %}
