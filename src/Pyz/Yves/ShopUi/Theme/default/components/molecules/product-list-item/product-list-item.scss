@@ -1,0 +1,29 @@
+@include shop-ui-product-list-item() {
+
+    &__container {
+        @include helper-effect-transition(background-color box-shadow);
+        margin-bottom: rem(20);
+        background-color: $setting-color-alpha-2;
+
+        &:hover {
+            box-shadow: 0 3px 3px 0 $setting-color-shadow-1, 0 18px 18px 0 $setting-color-shadow-1;
+            background-color: $setting-color-transparent;
+        }
+    }
+
+    &__col {
+
+        &--image {
+            padding: 0.5rem rem(26);
+        }
+
+        &--content {
+            padding: rem(37) rem(30) rem(35) rem(20);
+        }
+
+        &--total {
+            text-align: right;
+            padding: rem(35) rem(30) rem(35) rem(18);
+        }
+    }
+}
