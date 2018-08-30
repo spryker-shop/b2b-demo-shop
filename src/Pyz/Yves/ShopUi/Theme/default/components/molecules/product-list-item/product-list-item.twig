@@ -12,7 +12,7 @@
 
         <div class="grid grid--stretch">
             {% block imageContainer %}
-                <div class="col col--sm-3 col--md-2 {{config.name}}__col {{config.name}}__col--image">
+                <div class="col col--sm-3 col--md-2 {{config.name}}__col {{config.name}}__image">
                     {% block image %}
                         <a class="{{config.name}}__overlay" href="{{ data.url }}">
                             {% include atom('thumbnail') with {
@@ -27,7 +27,7 @@
                 </div>
             {% endblock %}
 
-            <div class="col col--sm-6 col--md-7 col--xl-8 {{config.name}}__col {{config.name}}__col--content">
+            <div class="col col--sm-6 col--md-7 col--xl-8 {{config.name}}__col {{config.name}}__content">
                 {% block groups %}
                     {{ widget('ProductGroupWidgetPlugin', data.abstractId) }}
                 {% endblock %}
@@ -44,7 +44,7 @@
             </div>
             
             {% block actionsContainer %}
-                <div class="col col--sm-3 col--xl-2 {{config.name}}__col {{config.name}}__col--total">
+                <div class="col col--sm-3 col--xl-2 {{config.name}}__col {{config.name}}__total">
                     <div class="{{ config.name }}__inner--total grid grid--column grid--justify-column grid--bottom">
                         <div class="col">
                             {% if is_granted('IS_AUTHENTICATED_FULLY') %}
