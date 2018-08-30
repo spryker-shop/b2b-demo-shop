@@ -11,7 +11,7 @@
 } %}
 
 {% block body %}
-    <span class="{{ component.renderClass(config.name ~ '__amount', modifiers) }} {% if data.originalAmount is not empty -%} {{config.name}}__amount--alt {%- endif -%}">
+    <span class="{{ component.renderClass(config.name ~ '__amount', modifiers) }} {% if data.originalAmount is not empty -%} {{ config.name}}__amount--alt {%- endif -%}">
         {{data.amount}}
     </span>
 

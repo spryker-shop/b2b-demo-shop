@@ -8,18 +8,11 @@
 {% set canWrite = (not is_granted('IS_AUTHENTICATED_FULLY') or can('WriteSharedCartPermissionPlugin', data.idQuote)) %}
 
 {% block body %}
-    {% if canWrite %}
-        {% include molecule('form') with {
-            data: {
-                form: data.form,
-                options: {
-                    action: url('cart-note/item')
-                },
-                submit: {
-                    enable: true,
-                    text: 'cart_note.form.save' | trans
-                }
-            }
-        } only %}
-    {% endif %}
+
+    {% include molecule('cart-item-note', 'CartNoteWidget') with {
+        data: {
+            form: data.form,
+            canWrite: canWrite
+        }
+    } only %}
 {% endblock %}

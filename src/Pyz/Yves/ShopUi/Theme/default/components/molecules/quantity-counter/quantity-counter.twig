@@ -10,9 +10,7 @@
     minQuantity: 1,
     value: 1,
     readOnly: false,
-    attributes: {
-
-    }
+    autoUpdate: false
 } %}
 
 {% set maxQuantity = data.maxQuantity < 0 or data.maxQuantity < data.minQuantity ? null : data.maxQuantity %}
@@ -29,7 +27,8 @@
         min="{{data.minQuantity}}"
         {{qa('quantity-input')}}
         {% if maxQuantity is not empty %}max="{{maxQuantity}}"{% endif %}
-        {% if data.readOnly %}disabled{% endif %} />
+        {% if data.readOnly %}disabled{% endif %}
+        {% if data.autoUpdate %}data-auto-update="true"{% endif %} />
 
     <div class="{{ config.name }}__button {{ config.name }}__button--increment js-quantity-increment"></div>
 {% endblock %}
