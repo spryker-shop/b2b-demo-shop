@@ -1,11 +1,20 @@
 @include shop-ui-price {
     $name: &;
 
+    &--cart {
+        margin-bottom: $setting-grid-space;
+    }
+
     &__amount {
         font-weight: fw(medium);
         line-height: map_get($setting-font-line-height, 2);
         color: $setting-color-gray-4;
 
+        &--cart {
+            font-weight: fw(bold);
+            line-height: normal;
+            color: $setting-color-gray-6;
+        }
 
         &--original {
             @include helper-font-size(big);

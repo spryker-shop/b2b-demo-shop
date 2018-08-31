@@ -55,7 +55,7 @@ $shop-ui-icon-size-big: 1.25rem;
         width: rem(10);
         height: rem(10);
     }
-    
+
     &--reverse {
         transform: rotate(180deg);
     }
@@ -99,5 +99,19 @@ $shop-ui-icon-size-big: 1.25rem;
         width: 26px;
         height: 23px;
         margin: -6px 12px -2px 0
+    }
+
+    &--toggler-cross-link {
+
+        &::before,
+        &::after {
+            background-color: $setting-color-gray-3;
+        }
+    }
+
+    &--link {
+        @include helper-effect-transition(color);
+        color: $setting-color-gray-2;
+        margin-right: rem(6);
     }
 }

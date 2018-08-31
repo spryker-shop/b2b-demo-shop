@@ -32,6 +32,13 @@
             @include helper-breakpoint-media-min($lg-min) {
                 text-align: right;
             }
+
+            .cart-item & {
+                @include helper-breakpoint-media-min($lg-min) {
+                    padding-left: 0;
+                    padding-right: calc(#{$setting-grid-space*2} + #{$setting-grid-space});
+                }
+            }
         }
     }
 
@@ -47,12 +54,6 @@
         font-weight: fw(medium);
         line-height: normal;
         color: $setting-color-gray-6;
-    }
-
-    .cart-item__col--total {
-        @include helper-breakpoint-media-min($lg-min) {
-            padding-left: 0;
-            padding-right: calc(#{rem(30)} + #{$setting-grid-space});
-        }
+        margin-bottom: rem(8);
     }
 }

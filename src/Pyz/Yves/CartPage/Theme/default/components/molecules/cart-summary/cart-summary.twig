@@ -25,9 +25,8 @@
             {% endif %}
 
             {% if data.cart.shipment is not empty and data.cart.shipment.method is not empty %}
-                <li class="list__item">
-                    <span>{{ 'cart.shipping' | trans }}</span>
-                    <div>{{ data.cart.shipment.method.name }}</div>
+                <li class="list__item {{ config.name }}__item">
+                    <span>{{ 'cart.shipping' | trans }} {{ data.cart.shipment.method.name }}</span>
                     <span class="float-right">{{ data.cart.shipment.method.storeCurrencyPrice | money }}</span>
                 </li>
             {% endif %}
