@@ -11,18 +11,23 @@
     url: required,
     imageUrl: required,
     price: required,
-    originalPrice: null
+    originalPrice: null,
+    hideCategory: null
+
 } %}
 
 {% block image %}
-    {% include atom('thumbnail') with {
-        class: 'js-product-color-group__image-' ~ data.abstractId,
-        attributes: {
-            alt: data.name,
-            src: data.imageUrl,
-            title: data.name
-        }
-    } only %}
+    <div class="{{ component.renderClass(config.name ~ '__image-wrap', modifiers) }}">
+        {% include atom('thumbnail') with {
+            class: 'js-product-color-group__image-' ~ data.abstractId,
+            modifiers: ['catalog'],
+            attributes: {
+                alt: data.name,
+                src: data.imageUrl,
+                title: data.name
+            }
+        } only %}
+    </div>
 {% endblock %}
 
 {% block content %}
@@ -35,8 +40,11 @@
     {% endblock %}
 
     {% block name %}
-        <a class="{{config.name}}__overlay" href="{{data.url}}">{{data.name}}</a>
-        <span class="{{config.name}}__category">Office Furniture</span>
+        <a class="{{ component.renderClass(config.name ~ '__overlay', modifiers) }}" href="{{data.url}}">{{data.name}}</a>
+
+        {% if data.hideCategory is null %}
+            <span class="{{ component.renderClass(config.name ~ '__category', modifiers) }}">Office Furniture</span>
+        {% endif %}
     {% endblock %}
 
     {% block rating %}
@@ -45,14 +53,15 @@
 
     {% block price %}
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-            <p>
+            <div class="{{ component.renderClass(config.name ~ '__price', modifiers) }}">
                 {% include molecule('price') with {
+                    modifiers: ['catalog'],
                     data: {
                         amount: data.price | money,
                         originalAmount: data.originalPrice is empty ? null : (data.originalPrice | money)
                     }
                 } only %}
-            </p>
+            </div>
         {% endif %}
     {% endblock %}
 {% endblock %}
