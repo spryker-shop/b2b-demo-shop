@@ -3,6 +3,7 @@
     @include shop-ui-checkbox($name) {
 
         &__box {
+            @include helper-effect-transition(border-color);
             border-radius: 100%;
         }
 

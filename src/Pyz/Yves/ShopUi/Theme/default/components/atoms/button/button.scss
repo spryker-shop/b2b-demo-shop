@@ -29,6 +29,7 @@
             &:hover,
             &:focus {
                 border-color: $setting-color-main;
+                color: $setting-color-white;
                 background-color: $setting-color-main;
             }
 
@@ -70,11 +71,6 @@
             }
         }
 
-        &--bigger {
-            padding-top: rem(12);
-            padding-bottom: rem(12);
-        }
-
         &--big {
             font-size: rem(16);
             line-height: rem(20);
@@ -97,14 +93,14 @@
 
         &[disabled],
         &--disabled {
-            background-color: $setting-color-gray-2;
-            border-color: $setting-color-gray-2;
+            background-color: $setting-color-gray-3;
+            border-color: $setting-color-gray-3;
             cursor: not-allowed;
 
             &:hover,
             &:focus {
-                background-color: $setting-color-gray-2;
-                border-color: $setting-color-gray-2;
+                background-color: $setting-color-gray-3;
+                border-color: $setting-color-gray-3;
             }
         }
 
