@@ -36,14 +36,7 @@
 {% endif %}
 
 {% block body %}
-    <div class="grid grid--justify">
-        <div class="col">
-            {{ widgetBlock('ProductReviewWidgetPlugin', 'rating', data.product.idProductAbstract) }}
-        </div>
-        {#<div class="col">#}
-            {#<img src="/assets/images/vitra.png" alt="{{brand}}">#}
-        {#</div>#}
-    </div>
+    {{ widgetBlock('ProductReviewWidgetPlugin', 'rating', data.product.idProductAbstract) }}
 
     {% if brand is not empty %}
         <div class="{{ config.name }}__brand-name">{{brand}}</div>
@@ -73,39 +66,35 @@
         {{ widget('ProductOptionWidgetPlugin', data.product) }}
 
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-            {% if widgetExists('ProductPackagingUnitWidgetPlugin') %}
-                {{ widget('ProductPackagingUnitWidgetPlugin', data.product, isDisabled, options) }}
-            {% elseif widgetExists('ProductMeasurementUnitWidgetPlugin') %}
-                {{ widget('ProductMeasurementUnitWidgetPlugin', data.product, isDisabled, options) }}
-            {% else %}
-                <div class="grid grid--stretch grid--justify add-to-cart">
-                    {% include molecule('quantity-counter') with {
-                        modifiers: ['right-space']
-                    } only %}
-                    {#{% include atom('select') with {#}
-                        {#modifiers: ['expand'],#}
-                        {#data: {#}
-                            {#options: options#}
-                        {#},#}
-                        {#attributes: {#}
-                            {#name: 'quantity',#}
-                            {#disabled: isDisabled#}
-                        {#}#}
-                    {#} only %}#}
+            <div class="{{ config.name }}__add-to-cart">
+                {% if widgetExists('ProductPackagingUnitWidgetPlugin') %}
+                    {{ widget('ProductPackagingUnitWidgetPlugin', data.product, isDisabled, options) }}
+                {% elseif widgetExists('ProductMeasurementUnitWidgetPlugin') %}
+                    {{ widget('ProductMeasurementUnitWidgetPlugin', data.product, isDisabled, options) }}
+                {% else %}
+                    <div class="grid grid--stretch grid--justify">
+                        {% include molecule('quantity-counter') with {
+                            modifiers: ['right-space'],
+                            attributes: {
+                                name: 'quantity',
+                                disabled: isDisabled
+                            }
+                        } only %}
 
-                    <div class="col">
-                        <button type="submit" class="button button--red button--big button--expand" {{ isDisabled ? 'disabled' : '' }} onclick="this.form.submit(); this.disabled='disabled'; return false;" {{qa('add-to-cart-button')}}>
-                            {% include atom('icon') with {
-                                modifiers: ['cart-plus'],
-                                data: {
-                                    name: 'cart-plus'
-                                }
-                            } only %}
-                            {{ 'page.detail.add-to-cart' | trans }}
-                        </button>
+                        <div class="col">
+                            <button type="submit" class="button button--red button--big button--expand" {{ isDisabled ? 'disabled' : '' }} onclick="this.form.submit(); this.disabled='disabled'; return false;" {{qa('add-to-cart-button')}}>
+                                {% include atom('icon') with {
+                                    modifiers: ['cart-plus'],
+                                    data: {
+                                        name: 'cart-plus'
+                                    }
+                                } only %}
+                                {{ 'page.detail.add-to-cart' | trans }}
+                            </button>
+                        </div>
                     </div>
-                </div>
-            {% endif %}
+                {% endif %}
+            </div>
 
             {{ widget('MultiCartWidgetPlugin', data.product, isDisabled) }}
             {{ widget('AvailabilityWidgetPlugin', data.product) }}

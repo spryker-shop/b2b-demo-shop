@@ -14,7 +14,7 @@
         .pdp-carousel__container {
             height: 570px;
             position: relative;
-            background: rgba(0, 0, 0, 0.05);
+            background: $setting-color-alpha-2;
 
             & > .pdp-img:not(:first-child) {
                 opacity: 0;
@@ -30,8 +30,8 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                background: #fff;
-                z-index: 1;
+                background: $setting-color-white;
+                z-index: $setting-zi-carousel - 1;
 
                 &::before {
                     content: '';
@@ -40,8 +40,8 @@
                     left: 0;
                     right: 0;
                     bottom: 0;
-                    background: rgba(0, 0, 0, 0.05);
-                    z-index: 110;
+                    background: $setting-color-alpha-2;
+                    z-index: $setting-zi-carousel + 1;
                 }
 
                 img {
@@ -50,7 +50,7 @@
                 }
 
                 &--color-active {
-                    z-index: 100;
+                    z-index: $setting-zi-carousel;
                     opacity: 1 !important;
                 }
             }
@@ -60,7 +60,7 @@
             position: absolute;
             top: 20px;
             left: 30px;
-            z-index: 200;
+            z-index: $setting-zi-carousel + 2;
             width: 70px;
             max-height: 424px;
             overflow: hidden;
@@ -71,7 +71,7 @@
                 text-align: center;
                 cursor: pointer;
                 display: block !important;
-                z-index: 350;
+                z-index: $setting-zi-carousel + 3;
 
                 svg {
                     display: block;
@@ -109,7 +109,7 @@
                 width: 70px;
                 height: 70px;
                 padding: 5px;
-                background: #fff;
+                background: $setting-color-white;
                 position: relative;
                 margin: 15px 0;
                 cursor: pointer;

@@ -4,7 +4,7 @@ $product-review-rating-selector-icon-size-pdp: 16px;
 @mixin product-review-rating-selector($name: '.rating-selector') {
     #{$name} {
         display: inline-block;
-        line-height: 16px;
+        line-height: rem(16);
         font-size: rem(16);
 
         &__steps {
@@ -35,7 +35,7 @@ $product-review-rating-selector-icon-size-pdp: 16px;
             }
 
             #{$name}__star {
-                @include helper-effect-transition(color, 100ms);
+                @include helper-effect-transition(color);
                 position: relative;
                 min-width: $product-review-rating-selector-icon-size;
                 min-height: $product-review-rating-selector-icon-size;

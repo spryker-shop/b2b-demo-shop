@@ -31,19 +31,20 @@ $color-selector-size-big: 24px;
                 position: absolute;
                 top: -43px;
                 left: -15px;
-                background: #111;
-                color: #fff;
-                font: 300 16px $setting-font-family;
-                padding: 5px 11px 7px 10px;
+                background: $setting-color-gray-6;
+                color: $setting-color-white;
+                font-size: rem(16);
+                padding: rem(5) rem(11) rem(7) rem(10);
                 white-space: nowrap;
-                border-radius: 2px;
-                &:before {
+                border-radius: $setting-border-radius;
+
+                &::before {
                     content: "";
                     position: absolute;
                     left: 17px;
                     bottom: -4px;
                     border-radius: 2px;
-                    background: #111111;
+                    background: $setting-color-gray-6;
                     width: 10px;
                     height: 10px;
                     transform: rotate(45deg);

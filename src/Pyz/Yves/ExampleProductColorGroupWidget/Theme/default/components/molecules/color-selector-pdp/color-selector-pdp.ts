@@ -47,16 +47,8 @@ export default class ColorSelectorPdp extends Component {
 
     protected onColorUnselection(event: Event): void {
         event.preventDefault();
-        this.removeActiveColor();
+        this.setActiveColor(this.colors[0]);
         this.removeImage();
-    }
-
-    removeActiveColor(): void {
-        this.colors.forEach((color: HTMLAnchorElement) => {
-            color.classList.remove(`${this.name}__color--active`);
-        });
-
-        this.colors[0].classList.add(`${this.name}__color--active`);
     }
 
     removeImage(): void {

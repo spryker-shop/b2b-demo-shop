@@ -23,12 +23,12 @@ export default class ColorSelector extends Component {
         const color = <HTMLAnchorElement>event.currentTarget;
         const imageSrc = color.getAttribute('data-image-src');
         const productUrl = color.getAttribute('href');
-        this.changeActiveColor(color);
-        this.changeImage(imageSrc);
-        this.changeProductUrl(productUrl);
+        this.setActiveColor(color);
+        this.setImage(imageSrc);
+        this.setProductUrl(productUrl);
     }
 
-    changeActiveColor(newColor: HTMLAnchorElement): void {
+    setActiveColor(newColor: HTMLAnchorElement): void {
         this.colors.forEach((color: HTMLAnchorElement) => {
             color.classList.remove(`${this.name}__color--active`);
         });
@@ -36,16 +36,15 @@ export default class ColorSelector extends Component {
         newColor.classList.add(`${this.name}__color--active`);
     }
 
-    changeImage(newImageSrc: string): void {
+    setImage(newImageSrc: string): void {
         this.images.forEach((image: HTMLImageElement) => {
-            console.log(newImageSrc);
             if (image.src !== newImageSrc) {
                 image.src = newImageSrc;
             }
         });
     }
 
-    changeProductUrl(url: string): void {
+    setProductUrl(url: string): void {
         this.links.forEach((link: HTMLElement) => {
             if (link.getAttribute('href') !== url) {
                 link.setAttribute('href', url);
