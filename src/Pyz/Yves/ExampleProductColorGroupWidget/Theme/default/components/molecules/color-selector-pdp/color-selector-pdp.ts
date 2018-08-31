@@ -23,24 +23,24 @@ export default class ColorSelectorPdp extends Component {
         event.preventDefault();
         const color = <HTMLAnchorElement>event.target;
         const imageSrc = color.getAttribute('data-image-src');
-        this.changeActiveColor(color);
-        this.changeImage(imageSrc);
+        this.setActiveColor(color);
+        this.setActiveImage(imageSrc);
     }
 
-    changeActiveColor(newColor: HTMLAnchorElement): void {
+    setActiveColor(changedColor: HTMLAnchorElement): void {
         this.colors.forEach((color: HTMLAnchorElement) => {
             color.classList.remove(`${this.name}__color--active`);
         });
 
-        newColor.classList.add(`${this.name}__color--active`);
+        changedColor.classList.add(`${this.name}__color--active`);
     }
 
-    changeImage(newImageSrc: string): void {
+    setActiveImage(newImageSrc: string): void {
         this.images.forEach((image: HTMLImageElement) => {
-            const imgWrapper = <HTMLElement>image.parentNode;
+            const imgageWrapper = <HTMLElement>image.parentNode;
             if (image.src !== newImageSrc) {
                 image.src = newImageSrc;
-                imgWrapper.classList.add('pdp-img-color-active');
+                imgageWrapper.classList.add('pdp-img--color-active');
             }
         });
     }
@@ -61,8 +61,8 @@ export default class ColorSelectorPdp extends Component {
 
     removeImage(): void {
         this.images.forEach((image: HTMLImageElement) => {
-            const imgWrapper = <HTMLElement>image.parentNode;
-            imgWrapper.classList.remove('pdp-img-color-active');
+            const imgageWrapper = <HTMLElement>image.parentNode;
+            imgageWrapper.classList.remove('pdp-img--color-active');
         });
     }
 

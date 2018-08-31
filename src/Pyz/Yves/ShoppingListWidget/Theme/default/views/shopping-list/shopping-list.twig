@@ -10,15 +10,6 @@
     }
 } %}
 
-{% set quantities = [] %}
-
-{% for index in 1..data.maxQuantity %}
-    {% set quantities = quantities | merge([{
-        label: index,
-        value: index
-    }]) %}
-{% endfor %}
-
 {% set shoppingListOptions = [] %}
 
 {% if data.shoppingListCollection.shoppingLists|length %}
@@ -33,16 +24,6 @@
         {% include molecule('quantity-counter') with {
             modifiers: ['right-space']
         } only %}
-
-        {#{% include atom('select') with {#}
-            {#modifiers: ['expand'],#}
-            {#attributes: {#}
-                {#name: 'quantity'#}
-            {#},#}
-            {#data: {#}
-                {#options: quantities#}
-            {#}#}
-        {#} only %}#}
 
         <div class="col col--expand">
             <input type="hidden" name="sku" value="{{ data.sku }}" />
