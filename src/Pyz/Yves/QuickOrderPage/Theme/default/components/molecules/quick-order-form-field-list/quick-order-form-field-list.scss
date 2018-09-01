@@ -1,0 +1,33 @@
+@mixin quick-order-page-quick-order-form-field-list($name: '.quick-order-form-field-list') {
+    #{$name} {
+        width: 100%;
+        margin: 0 rem(8) rem(30);
+
+        th {
+            padding-left: rem(40);
+            padding-right: rem(20);
+        }
+
+        td {
+            padding: rem(10) rem(20);
+            &:last-child {
+                text-align: right;
+                width: rem(60);
+            }
+        }
+
+        .label {
+            display: none;
+        }
+
+        .input {
+            font-size: rem(14);
+            padding-top: rem(10);
+            padding-bottom: rem(9);
+        }
+
+        @content;
+    }
+}
+
+@include quick-order-page-quick-order-form-field-list;

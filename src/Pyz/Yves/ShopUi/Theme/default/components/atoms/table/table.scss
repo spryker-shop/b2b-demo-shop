@@ -1,0 +1,35 @@
+@mixin shop-ui-table($name: '.table') {
+    #{$name} {
+        thead,
+        &__head {
+            @include helper-font-weight(bold);
+        }
+
+        th, td {
+            padding: rem(18) rem(10);
+        }
+
+        th {
+            color: $setting-color-gray-6;
+            font-size: rem(12);
+            font-weight: fw(bold);
+            text-transform: uppercase;
+            background: $setting-color-gray-11;
+            text-align: left;
+        }
+
+        td {
+            border-bottom: solid 1px $setting-color-gray-7;
+            font-size: rem(14);
+            font-weight: fw(regular);
+        }
+
+        &--expand {
+            width: 100%;
+        }
+
+        @content;
+    }
+}
+
+@include shop-ui-table;

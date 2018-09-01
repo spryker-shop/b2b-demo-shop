@@ -1,0 +1,47 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'quick-order-form-field-list',
+    tag: 'table'
+} %}
+
+{% block class %}
+    {{ parent() }} table
+{% endblock %}
+
+{% block body %}
+    <thead>
+        <tr>
+            <th>SKU</th>
+            <th colspan="2">Quantity</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in data.items %}
+            <tr>
+                <td>
+                    {{ form_row(item.sku, {
+                        required: loop.first
+                    }) }}
+                </td>
+                <td>
+                    {{ form_row(item.qty, {
+                        required: loop.first
+                    }) }}
+                </td>
+                <td>
+                    {% if not loop.first %}
+                        <a href="#remove" class="link {% block removeActionClass %}{% endblock %}" data-row-index="{{loop.index0}}">
+                            {% include atom('icon') with {
+                                modifiers: ['link'],
+                                data: {
+                                    name: 'delete'
+                                }
+                            } only %}
+                        </a>
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+{% endblock %}
