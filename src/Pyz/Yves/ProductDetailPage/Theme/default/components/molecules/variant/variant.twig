@@ -1,0 +1,47 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'variant',
+    tag: 'div'
+} %}
+
+{% define data = {
+    name: required,
+    formName: required,
+    values: required,
+    selectedValue: null,
+    label: '',
+    isAvailable: true
+} %}
+
+{% block body %}
+    <div class="{{ config.name }}__title {{ config.jsName }}__title">{{data.label}}</div>
+    {% if data.selectedValue is null %}
+        {% if data.isAvailable %}
+            {% embed atom('custom-select') with {
+                modifiers: ['pdp-option'],
+                attributes: {
+                    name: data.formName,
+                    onchange: 'this.form.submit()'
+                },
+                embed: {
+                    values: data.values
+                }
+            } only %}
+                {% block options %}
+                    <option>{{ 'product.attribute._none' | trans }}</option>
+                    {% for value in embed.values %}
+                        <option value="{{value}}">{{value}}</option>
+                    {% endfor %}
+                {% endblock %}
+            {% endembed %}
+        {% else %}
+            {{ 'product.attribute.not_available' | trans }}
+        {% endif %}
+    {% else %}
+        <div class="{{ config.name }}__selected-value">
+            {{data.selectedValue}} <a href="?">{{ 'Reset' | trans }}</a>
+            <input type="hidden" name="{{data.formName}}" value="{{data.selectedValue}}" />
+        </div>
+    {% endif %}
+{% endblock %}

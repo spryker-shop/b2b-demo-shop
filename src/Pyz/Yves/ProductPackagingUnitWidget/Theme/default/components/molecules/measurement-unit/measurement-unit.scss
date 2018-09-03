@@ -1,0 +1,51 @@
+@mixin product-packaging-unit-measurement-unit($name: '.measurement-unit') {
+    #{$name} {
+        display: flex;
+        align-items: center;
+        margin-bottom: rem(17);
+
+        &__label {
+            min-width: rem(75);
+            padding-right: rem(15);
+            font-size: rem(14);
+            font-weight: fw(regular);
+            line-height: normal;
+            color: $setting-color-gray-4;
+        }
+
+        &-choice {
+            border-radius: $setting-border-radius;
+            background-color: $setting-color-white;
+            padding: rem(17) rem(16) rem(21);
+            margin-bottom: rem(17);
+            box-shadow: 0 18px 18px 0 $setting-color-alpha-2, 0 3px 3px 0 $setting-color-alpha-2;
+            font-size: rem(15);
+            font-weight: fw(regular);
+            line-height: 1.47;
+            color: $setting-color-gray-3;
+
+            &__list {
+                display: flex;
+                flex-wrap: wrap;
+                margin-top: rem(14);
+                .link {
+                    border-radius: $setting-border-radius;
+                    background: $setting-color-alpha-5;
+                    color: $setting-color-alt;
+                    padding: rem(3) rem(13);
+                    margin-right: rem(10);
+                    display: inline-block;
+                    &:hover {
+                        background: $setting-color-alt;
+                        color: $setting-color-white;
+                        text-decoration: none;
+                    }
+                }
+            }
+        }
+
+        @content;
+    }
+}
+
+@include product-packaging-unit-measurement-unit;

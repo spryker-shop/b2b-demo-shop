@@ -16,8 +16,7 @@
 
 {% block title %}
     <h3 itemprop="name" class="pdp-title">
-        {{ widget('ProductAbstractLabelWidgetPlugin', data.product) }}
-        {{ data.product.name }}
+        {{ widget('ProductAbstractLabelWidgetPlugin', data.product) }}{{ data.product.name }}
     </h3>
     <link itemprop="url" href="{{ data.productUrl }}" />
 {% endblock %}
