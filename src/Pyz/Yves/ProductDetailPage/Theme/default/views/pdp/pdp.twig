@@ -53,7 +53,11 @@
     } only %}
 
     {{ widget('ProductReplacementForWidgetPlugin', data.product.sku) }}
-
     {{ widget('ProductReviewWidgetPlugin', data.product.idProductAbstract) }}
+
+    {% if data.product.productSetIds is not empty %}
+        {{ widget('ProductSetIdsWidgetPlugin', data.product.productSetIds) }}
+    {% endif %}
+
     {{ widget('SimilarProductsWidgetPlugin', data.product) }}
 {% endblock %}
