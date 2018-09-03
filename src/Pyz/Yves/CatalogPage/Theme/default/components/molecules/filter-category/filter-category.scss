@@ -1,61 +1,24 @@
 .filter-category {
 
-    & & & {
-        margin-left: 10px;
-
-        .filter-category-menu__link {
-            color: $setting-color-gray-3;
-
-            &[disabled] {
-                &:hover,
-                &:focus {
-                    color: $setting-color-gray-3;
-                }
-            }
-
-            &:hover,
-            &:focus {
-                color: $setting-color-gray-6;
-            }
-        }
-    }
-
-    &__menu-item {
-        font: fw(medium) rem(18)/rem(23) $setting-font-family;
-
-        &--has-children-list {
-
-            .filter-category__menu-item {
-                font-weight: fw(regular);
-                font-size: rem(16);
-            }
-        }
-
-        &--active {
-
-            & > .filter-category__menu-link {
-                font-weight: fw(bold);
-                color: $setting-color-gray-6 !important;
-
-                .filter-category__menu-link-text {
-                    text-decoration: underline;
-                }
-            }
-
-        }
-    }
-
     &__menu-link {
         @include helper-effect-transition(color);
         display: flex;
         justify-content: space-between;
         width: 100%;
         margin-bottom: rem(11);
-        color: $setting-color-gray-2;
+        color: $setting-color-gray-3;
         cursor: pointer;
         background-color: $setting-color-transparent;
+        font: fw(regular) rem(15)/rem(23) $setting-font-family;
 
-        &[disabled] {
+        &--lvl-1 {
+            font-size: rem(18);
+            font-weight: fw(medium);
+            color: $setting-color-gray-2;
+        }
+
+        &--lvl-2 {
+            font-size: rem(16);
             color: $setting-color-gray-2;
         }
 
@@ -67,6 +30,28 @@
         
         &-text {
             text-align: left;
+
+            &--active {
+                text-decoration: underline;
+            }
         }
+
+        &[disabled] {
+            &,
+            &:hover,
+            &:focus {
+                color: $setting-color-gray-2;
+            }
+        }
+
+        &--active {
+            font-weight: fw(bold);
+            color: $setting-color-gray-6;
+        }
+    }
+
+    &__menu--lvl-3 {
+        margin-left: 10px;
+        font-size: rem(15);
     }
 }
