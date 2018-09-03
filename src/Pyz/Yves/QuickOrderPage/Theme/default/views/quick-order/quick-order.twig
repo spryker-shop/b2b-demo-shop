@@ -1,0 +1,42 @@
+{% extends template('page-layout-main') %}
+
+{% define data = {
+    forms: {
+        items: _view.itemsForm,
+        textOrder: _view.textOrderForm
+    },
+
+    title: 'quick-order.page-title' | trans
+} %}
+
+{% block contentClass %}page-layout-main page-layout-main--quick-order-page{% endblock %}
+
+{% block content %}
+    <div class="grid grid--gap grid--justify">
+        <div class="col col--sm-12 col--xl-8">
+            {% include molecule('quick-order-form', 'QuickOrderPage') with {
+                data: {
+                    form: data.forms.items
+                }
+            } only %}
+        </div>
+        <div class="col col--sm-12 col--xl-4 cart-sidebar">
+            <div class="cart-sidebar__item">
+                <h5 class="cart-sidebar__title">{{ 'quick-order.paste-order.title' | trans }}</h5>
+                <div class="cart-sidebar__text">
+                    {{ 'quick-order.paste-order.description' | trans }}
+                </div>
+                {% include molecule('form') with {
+                    class: 'cart-sidebar__content',
+                    data: {
+                        form: data.forms.textOrder,
+                        submit: {
+                            enable: true,
+                            text: 'quick-order.paste-order.button.verify' | trans
+                        }
+                    }
+                } only %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
