@@ -11,7 +11,7 @@
 } %}
 
 {% block body %}
-    <form method="POST" {% if not data.readOnly %} action="{{ path('cart/change/quantity', {'sku': data.cartItem.sku }) }}" {% endif %}>
+    <form method="POST" action="{{ path('cart/change/quantity', {'sku': data.cartItem.sku }) }}">
         {% include molecule('quantity-counter') with {
             data: {
                 maxQuantity: data.cartItem.maxQuantity,
