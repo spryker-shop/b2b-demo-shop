@@ -1,0 +1,27 @@
+@mixin product-review-average-review($name: '.review-average-display') {
+    #{$name} {
+        max-width: 140px;
+
+        &__average-rating {
+            text-align: center;
+            font-size: rem(42);
+            font-weight: fw(bold);
+            color: $setting-color-gray-6;
+        }
+
+        &__rating-selector {
+            display: flex;
+            justify-content: center;
+        }
+
+        &__total-review {
+            text-align: center;
+            font-size: rem(13);
+            font-weight: fw(regular);
+            line-height: 1.1;
+            color: $setting-color-gray-3;
+        }
+    }
+}
+
+@include product-review-average-review;

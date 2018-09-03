@@ -15,24 +15,27 @@
 {% endblock %}
 
 {% block title %}
-    <h3 itemprop="name">{{ data.product.name }}</h3>
+    <h3 itemprop="name" class="pdp-title">
+        {{ widget('ProductAbstractLabelWidgetPlugin', data.product) }}
+        {{ data.product.name }}
+    </h3>
     <link itemprop="url" href="{{ data.productUrl }}" />
 {% endblock %}
 
+{% block contentClass %}page-layout-main page-layout-main--pdp{% endblock %}
+
 {% block content %}
-    <div class="grid">
-        <div class="col col--sm-12 col--lg-7 col--xl-8">
+    <div class="grid grid--gap grid--justify">
+        <div class="col gallery-side">
             {% include molecule('product-carousel', 'ProductDetailPage') with {
-                class: 'box',
                 data: {
                     product: data.product
                 }
             } only %}
         </div>
 
-        <div class="col col--sm-12 col--lg-5 col--xl-4">
+        <div class="col col--sm-5">
             {% include molecule('product-configurator', 'ProductDetailPage') with {
-                class: 'box',
                 data: {
                     product: data.product
                 }
@@ -43,7 +46,6 @@
     {{ widget('ProductAlternativeWidgetPlugin', data.product) }}
 
     {% include molecule('product-detail', 'ProductDetailPage') with {
-        class: 'box',
         data: {
             description: data.product.description,
             attributes: data.product.attributes
@@ -51,7 +53,6 @@
     } only %}
 
     {{ widget('ProductReplacementForWidgetPlugin', data.product.sku) }}
-
     {{ widget('ProductReviewWidgetPlugin', data.product.idProductAbstract) }}
 
     {% if data.product.productSetIds is not empty %}
@@ -59,5 +60,4 @@
     {% endif %}
 
     {{ widget('SimilarProductsWidgetPlugin', data.product) }}
-    {{ widget('ProductCmsBlockWidgetPlugin', data.product) }}
 {% endblock %}

@@ -1,0 +1,34 @@
+{% extends template('widget') %}
+
+{% define data = {
+    products: []
+} %}
+
+{% block body %}
+    {% if data.products is not empty %}
+
+        {% embed molecule('slick-carousel') with {
+            modifiers: ['full-width', 'equal-height', 'products'],
+            data: {
+                slides: data.products
+            },
+            attributes: {
+                'data-json': '{
+                    "slidesToShow": 4,
+                    "dots": false,
+                    "arrows": true,
+                    "adaptiveHeight": true
+                }'
+            }
+        } only %}
+
+            {% block slides %}
+                {% for slide in data.slides %}
+                    {{ widget('ProductWidgetPlugin', slide) }}
+                {% endfor %}
+            {% endblock %}
+
+        {% endembed %}
+
+    {% endif %}
+{% endblock %}

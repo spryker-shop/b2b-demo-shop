@@ -1,0 +1,79 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'review-summary',
+    tag: 'section'
+} %}
+
+{% define data = {
+    reviews: required,
+    summary: required,
+    ratingMaxValue: required,
+    hasCustomer: required,
+
+    pagination: {
+        parameters: required,
+        currentPage: required,
+        paginationPath: required,
+        maxPage: required,
+        showAlwaysFirstAndLast: true,
+        anchor: 'product-reviews'
+    }
+} %}
+
+{% block body %}
+    <h2 class="review-summary__title">Ratings & Reviews</h2>
+
+    <div class="grid grid--justify grid--gap">
+        <div class="col col--sm-5">
+            <h3 class="review-summary__sub-title">{{ 'product_review.product_ratings' | trans }}</h3>
+
+            <div class="review-summary__rating-box grid grid--middle grid--justify">
+                <div class="col">
+                    {% include molecule('review-average-display', 'ProductReviewWidget') with {
+                        data: {
+                            summary: data.summary,
+                            ratingMaxValue: data.ratingMaxValue
+                        }
+                    } only %}
+                </div>
+
+                <div class="col">
+                    {% include molecule('review-distribution-display', 'ProductReviewWidget') with {
+                        data: {
+                            summary: data.summary
+                        }
+                    } only %}
+                </div>
+            </div>
+        </div>
+
+        <div class="col col--sm-6">
+            <h3 class="review-summary__sub-title">{{ 'product_review.product_reviews' | trans }}</h3>
+
+            {% if data.reviews is empty %}
+                <p>{{ 'product_review.no_reviews' | trans }}</p>
+            {% else %}
+                {% if data.summary.totalReview > 0 %}
+                    {% for review in data.reviews %}
+                        {% include molecule('review', 'ProductReviewWidget') with {
+                            data: {
+                                summary: review.summary,
+                                ratingValue: review.rating,
+                                ratingMaxValue: data.ratingMaxValue,
+                                nickname: review.nickname,
+                                createdAt: review.createdAt | formatDateTime,
+                                description: review.description
+                            }
+                        } only %}
+                    {% endfor %}
+
+                    {% include molecule('pagination') with {
+                        data: data.pagination
+                    } only %}
+                {% endif %}
+            {% endif %}
+        </div>
+
+    </div>
+{% endblock %}

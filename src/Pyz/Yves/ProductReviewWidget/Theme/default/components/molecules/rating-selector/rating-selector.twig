@@ -50,6 +50,7 @@
                             {% if not attributes.readonly %}{{config.jsName}}__step{% endif %}">
 
                         {% include atom('icon') with {
+                            modifiers: ['star'],
                             class: config.name ~ '__star ' ~ config.name ~ '__star--half-right',
                             data: {
                                 name: 'star-half'
@@ -71,6 +72,7 @@
                             {% if not attributes.readonly %}{{config.jsName}}__step{% endif %}">
 
                         {% include atom('icon') with {
+                            modifiers: ['star'],
                             class: config.name ~ '__star ' ~ config.name ~ '__star--half-left',
                             data: {
                                 name: 'star-half'
@@ -87,6 +89,7 @@
                             {% if not attributes.readonly %}{{config.jsName}}__step{% endif %}">
 
                         {% include atom('icon') with {
+                            modifiers: ['star'],
                             class: config.name ~ '__star',
                             data: {
                                 name: 'star'

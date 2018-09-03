@@ -1,4 +1,5 @@
 @include shop-ui-price {
+    $name: &;
 
     &--cart {
         margin-bottom: $setting-grid-space;
@@ -29,6 +30,16 @@
 
         &--alt {
             color: $setting-color-alt;
+        }
+    }
+
+    &--pdp {
+        margin-bottom: 23px;
+
+        #{$name}__amount {
+            font-size: rem(26);
+            font-weight: rem(bold);
+            line-height: normal;
         }
     }
 }

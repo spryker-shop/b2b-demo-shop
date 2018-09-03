@@ -1,0 +1,22 @@
+@mixin product-detail-pdp-title($name: '.pdp-title') {
+    #{$name} {
+
+        .label-group {
+            position: static;
+            padding: 0;
+            display: inline-block;
+            font-size: 0;
+            line-height: 0;
+            vertical-align: middle;
+
+            &__text {
+                padding: 0 14px;
+                margin: -5px 5px 0 0;
+            }
+        }
+
+        @content;
+    }
+}
+
+@include product-detail-pdp-title;

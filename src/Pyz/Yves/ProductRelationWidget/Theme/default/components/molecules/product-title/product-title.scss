@@ -1,0 +1,14 @@
+@mixin product-relation-widget-product-title($name: '.product-title') {
+    #{$name} {
+        font-size: rem(32);
+        font-weight: fw(medium);
+        line-height: normal;
+        text-align: center;
+        color: $setting-color-gray-6;
+        margin-bottom: 33px;
+
+        @content;
+    }
+}
+
+@include product-relation-widget-product-title;
