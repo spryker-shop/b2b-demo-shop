@@ -1,0 +1,56 @@
+{% extends template('page-layout-company', 'CompanyPage') %}
+
+{% define data = {
+    permissions: _view.permissions,
+    idCompanyRole: _view.idCompanyRole,
+
+    title: null,
+    activePage: 'role'
+} %}
+
+{% block breadcrumbs %}
+    {% include molecule('breadcrumb') with {
+        data: {
+            steps: [
+                {
+                    label: 'company.account.page-title' | trans,
+                    url: url('company/overview')
+                }, {
+                    label: 'company.account.company_role' | trans,
+                    url: url('company/company-role')
+                }, {
+                    label: 'company.account.company_role.details' | trans,
+                    url: path('company/company-role/details', {'id': data.idCompanyRole})
+                }, {
+                    label: 'company.account.company_role.permissions' | trans
+                }
+            ]
+        }
+    } only %}
+{% endblock %}
+
+{% block companyContent %}
+    {% include molecule('action-bar', 'ShopUi') with {
+        data: {
+            title: 'company.account.company_role.permissions' | trans,
+            actions: [
+                {
+                    title: 'general.back.button' | trans,
+                    url: path('company/company-role/details', {'id': data.idCompanyRole}),
+                    primary: false
+                }
+            ]
+        }
+    } only %}
+
+    {% include molecule('permission-table', 'CompanyPage') with {
+        data: {
+            permissions: data.permissions,
+            idCompanyRole: data.idCompanyRole,
+            actions: {
+                configure: false,
+                switch: true
+            }
+        }
+    } only %}
+{% endblock %}
