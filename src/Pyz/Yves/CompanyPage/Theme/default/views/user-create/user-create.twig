@@ -1,0 +1,59 @@
+{% extends template('page-layout-company', 'CompanyPage') %}
+
+{% define data = {
+    form: _view.companyUserForm,
+
+    title: null,
+    activePage: 'users'
+} %}
+
+{% block breadcrumbs %}
+    {% include molecule('breadcrumb') with {
+        data: {
+            steps: [
+                {
+                    label: 'company.account.page-title' | trans,
+                    url: url('company/overview')
+                }, {
+                    label: 'company.account.company_user' | trans,
+                    url: url('company/user')
+                }, {
+                    label: 'company.account.company_user.add' | trans
+                }
+            ]
+        }
+    } only %}
+{% endblock %}
+
+{% block companyContent %}
+    {% include molecule('action-bar', 'ShopUi') with {
+        data: {
+            title: 'company.account.company_user.add' | trans
+        }
+    } only %}
+
+    {% include molecule('form') with {
+        data: {
+            form: data.form,
+            options: {
+                action: url('company/user/create')
+            },
+            layout: {
+                salutation: 'col col--sm-12 col--lg-2',
+                first_name: 'col col--sm-12 col--lg-5',
+                last_name: 'col col--sm-12 col--lg-5'
+            },
+            submit: {
+                enable: true,
+                class: 'button form__action--primary'
+            },
+            cancel: {
+                enable: true,
+                url: url('company/user'),
+                text: 'general.back.button' | trans,
+                class: 'button button--hollow',
+                icon: null
+            }
+        }
+    } only %}
+{% endblock %}
