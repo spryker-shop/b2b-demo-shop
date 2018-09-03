@@ -1,0 +1,101 @@
+{% extends template('page-layout-company', 'CompanyPage') %}
+
+{% define data = {
+    role: _view.companyRole,
+    users: _view.companyUserCollection,
+    permissions: _view.permissions,
+
+    title: null,
+    activePage: 'role'
+} %}
+
+{% block breadcrumbs %}
+    {% include molecule('breadcrumb') with {
+        data: {
+            steps: [
+                {
+                    label: 'company.account.page-title' | trans,
+                    url: url('company/overview')
+                }, {
+                    label: 'company.account.company_role' | trans,
+                    url: url('company/company-role')
+                }, {
+                    label: 'company.account.company_role.details' | trans
+                }
+            ]
+        }
+    } only %}
+{% endblock %}
+
+{% block companyContent %}
+    {% include molecule('action-bar', 'ShopUi') with {
+        data: {
+            actions: [
+                {
+                    title: 'general.back.button' | trans,
+                    url: url('company/company-role'),
+                    primary: false
+                }
+            ]
+        }
+    } only %}
+
+    {% include molecule('role-table', 'CompanyPage') with {
+            data: {
+                roles: [data.role],
+                actions: {
+                    view: false,
+                    update: true,
+                    delete: true
+                }
+            }
+    } only %}
+
+    {% include molecule('action-bar', 'ShopUi') with {
+        data: {
+            title: 'company.account.company_role.users' | trans,
+            actions: [
+                {
+                    title: 'company.account.company_role.user.manage' | trans,
+                    url: url('company/company-role/user/manage', {'id': data.role.idCompanyRole}),
+                    primary: false
+                }
+            ]
+        }
+    } only %}
+
+    {% if data.users is not empty %}
+        {% include molecule('user-table', 'CompanyPage') with {
+            data: {
+                users: data.users,
+                actions: {
+                    update: false,
+                    delete: false
+                }
+            }
+        } only %}
+    {% endif %}
+
+    {% include molecule('action-bar', 'ShopUi') with {
+        data: {
+            title: 'company.account.company_role.permissions' | trans,
+            actions: [
+                {
+                    title: 'company.account.company_role.permission.manage' | trans,
+                    url: url('company/company-role-permission/manage', {'id': data.role.idCompanyRole}),
+                    primary: false
+                }
+            ]
+        }
+    } only %}
+
+    {% if data.permissions is not empty %}
+        {% include molecule('permission-table', 'CompanyPage') with {
+            data: {
+                permissions: data.permissions,
+                idCompanyRole: data.role.idCompanyRole,
+                showActions: false
+            }
+        } only %}
+    {% endif %}
+{% endblock %}

@@ -16,7 +16,7 @@
         {% block actions %}
             {% for action in data.actions %}
                 <a class="button{% if not action.primary | default(false) %} button--hollow{% endif %}" href="{{ action.url }}">
-                    {% if action.icon %}
+                    {% if action.icon | default(false) %}
                         {% include atom('icon') with {
                             class: config.name ~ '__icon',
                             data: {

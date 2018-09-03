@@ -3,6 +3,10 @@
         display: flex;
         flex-flow: row nowrap;
 
+        &:not(:first-child) {
+            margin-top: rem(48);
+        }
+
         &:not(:last-child) {
             margin-bottom: rem(16);
         }
@@ -18,6 +22,7 @@
             flex: 1;
             font-size: map_get($setting-font-size, 4);
             font-weight: map_get($setting-font-weight, medium);
+            line-height: rem(40);
         }
 
         &__actions {
