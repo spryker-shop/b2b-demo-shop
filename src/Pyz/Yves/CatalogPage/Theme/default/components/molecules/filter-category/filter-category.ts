@@ -1,23 +1,23 @@
 import Component from 'ShopUi/models/component';
 
 export default class FilterCategory extends Component {
-    readonly item: HTMLElement;
-    items: HTMLElement[];
+    readonly activeCategory: HTMLElement;
+    categoriesToShow: HTMLElement[];
 
     constructor() {
         super();
-        this.item = <HTMLElement>document.querySelector(this.listSelector);
-        this.items = <HTMLElement[]>Array.from(this.item.querySelectorAll(this.itemSelector));
+        this.activeCategory = <HTMLElement>document.querySelector(this.listSelector);
+        this.categoriesToShow = <HTMLElement[]>Array.from(this.activeCategory.querySelectorAll(this.categoriesToShowSelector));
     }
 
     protected readyCallback(): void {
-        if (this.item.classList.contains(this.parentSelector)) {
-            this.searchElements(this.items);
+        if (this.activeCategory.classList.contains(this.parentSelector)) {
+            this.removeClass(this.categoriesToShow);
         } else {
-            let target = <HTMLElement> this.item;
+            let target = <HTMLElement> this.activeCategory;
             while (!target.classList.contains(this.wrapSelector)) {
                 if (target.classList.contains(this.parentSelector)) {
-                    this.searchElements(<HTMLElement[]>Array.from(target.querySelectorAll(this.itemSelector)));
+                    this.removeClass(<HTMLElement[]>Array.from(target.querySelectorAll(this.categoriesToShowSelector)));
                     return;
                 }
                 target = <HTMLElement> target.parentNode;
@@ -25,14 +25,10 @@ export default class FilterCategory extends Component {
         }
     }
 
-    protected searchElements(items): void {
-        for (let i = 0; i <= items.length - 1; i++) {
-            this.classRemove(items[i]);
+    protected removeClass(categoriesToShow): void {
+        for (let i = 0; i <= categoriesToShow.length - 1; i++) {
+            categoriesToShow[i].classList.remove(this.classToRemove);
         }
-    }
-
-    protected classRemove(activeTrigger: HTMLElement): void {
-        activeTrigger.classList.remove(this.classToRemove);
     }
 
     get wrapSelector(): string {
@@ -47,8 +43,8 @@ export default class FilterCategory extends Component {
         return this.getAttribute('list-selector');
     }
 
-    get itemSelector(): string {
-        return this.getAttribute('item-selector');
+    get categoriesToShowSelector(): string {
+        return this.getAttribute('category-selector');
     }
 
     get classToRemove(): string {
