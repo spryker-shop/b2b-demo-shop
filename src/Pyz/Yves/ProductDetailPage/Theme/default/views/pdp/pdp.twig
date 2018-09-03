@@ -1,0 +1,63 @@
+{% extends template('page-layout-main') %}
+
+{% define data = {
+    product: _view.product,
+    productUrl: _view.productUrl,
+
+    title: product.metaTitle | default(_view.product.name),
+    metaTitle: product.metaTitle | default(_view.product.name),
+    metaDescription: _view.product.metaDescription | default,
+    metaKeywords: _view.product.metaKeywords | default
+} %}
+
+{% block breadcrumbs %}
+    {{ widget('ProductCategoryWidgetPlugin', data.product, app.locale) }}
+{% endblock %}
+
+{% block title %}
+    <h3 itemprop="name">{{ data.product.name }}</h3>
+    <link itemprop="url" href="{{ data.productUrl }}" />
+{% endblock %}
+
+{% block content %}
+    <div class="grid">
+        <div class="col col--sm-12 col--lg-7 col--xl-8">
+            {% include molecule('product-carousel', 'ProductDetailPage') with {
+                class: 'box',
+                data: {
+                    product: data.product
+                }
+            } only %}
+        </div>
+
+        <div class="col col--sm-12 col--lg-5 col--xl-4">
+            {% include molecule('product-configurator', 'ProductDetailPage') with {
+                class: 'box',
+                data: {
+                    product: data.product
+                }
+            } only %}
+        </div>
+    </div>
+
+    {{ widget('ProductAlternativeWidgetPlugin', data.product) }}
+
+    {% include molecule('product-detail', 'ProductDetailPage') with {
+        class: 'box',
+        data: {
+            description: data.product.description,
+            attributes: data.product.attributes
+        }
+    } only %}
+
+    {{ widget('ProductReplacementForWidgetPlugin', data.product.sku) }}
+
+    {{ widget('ProductReviewWidgetPlugin', data.product.idProductAbstract) }}
+
+    {% if data.product.productSetIds is not empty %}
+        {{ widget('ProductSetIdsWidgetPlugin', data.product.productSetIds) }}
+    {% endif %}
+
+    {{ widget('SimilarProductsWidgetPlugin', data.product) }}
+    {{ widget('ProductCmsBlockWidgetPlugin', data.product) }}
+{% endblock %}
