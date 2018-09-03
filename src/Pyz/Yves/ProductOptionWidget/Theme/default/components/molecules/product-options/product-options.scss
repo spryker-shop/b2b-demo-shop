@@ -1,0 +1,45 @@
+@mixin product-options-product-options($name: '.product-options') {
+    #{$name} {
+        border-bottom: solid 1px $setting-color-gray-7;
+        margin-top: 31px;
+
+        &__item {
+            border-top: solid 1px $setting-color-gray-7;
+        }
+
+        &__title {
+            font-size: rem(16);
+            font-weight: fw(medium);
+            line-height: rem(54);
+            color: $setting-color-gray-6;
+            position: relative;
+
+            &:before,
+            &:after {
+                content: "";
+                background: $setting-color-gray-6;
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+
+            &:before {
+                width: 10px;
+                height: 2px;
+                right: 18px;
+            }
+
+            &:after {
+                width: 2px;
+                height: 10px;
+                right: 22px;
+            }
+
+            &.active:after {
+                display: none;
+            }
+        }
+    }
+}
+
+@include product-options-product-options;

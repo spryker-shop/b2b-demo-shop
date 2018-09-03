@@ -1,0 +1,11 @@
+{% extends template('similar-products', 'ProductRelationWidget') %}
+
+{% define data = {
+    products: _widget.productCollection | default([])
+} %}
+
+{% block body %}
+    <h2 class="product-title">Similar products</h2>
+
+    {{ parent() }}
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends template('widget') %}
+
+{% define data = {
+    optionGroups: _widget.productOptionGroups
+} %}
+
+{% block template %}
+    {% if data.optionGroups is not empty %}{{parent()}}{% endif %}
+{% endblock %}
+
+{% block body %}
+    <div class="product-options js-product-options">
+        {% for optionGroup in data.optionGroups %}
+            <div class="product-options__item">
+                <div class="product-options__title js-product-options__title" data-toggle-target="[data-product-option='{{optionGroup.name}}']">{{optionGroup.name | trans}}</div>
+                <div data-product-option="{{ optionGroup.name }}" class="is-hidden">
+                    {% embed atom('custom-select') with {
+                        modifiers: ['pdp-option'],
+                        attributes: {
+                            name: 'product-option[' ~ optionGroup.name ~ ']'
+                        },
+                        embed: {
+                            options: optionGroup.productOptionValues
+                        }
+                    } only %}
+                        {% block options %}
+                            <option value="0">{{ 'product.product_options_select' | trans }}</option>
+                            {% for option in embed.options %}
+                                <option value="{{option.idProductOptionValue}}">{{ option.value | trans }} {{ option.price | money }}</option>
+                            {% endfor %}
+                        {% endblock %}
+                    {% endembed %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    {% include molecule('toggler-accordion') with {
+        attributes: {
+            'wrap-selector': '.js-product-options',
+            'trigger-selector': '.js-product-options__title',
+            'class-to-toggle': 'is-hidden'
+        }
+    } only %}
+{% endblock %}

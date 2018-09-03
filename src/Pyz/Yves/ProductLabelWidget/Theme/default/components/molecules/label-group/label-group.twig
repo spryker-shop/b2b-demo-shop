@@ -12,11 +12,7 @@
 {% block body %}
 
     {% for label in data.labels %}
-        {% include molecule('tag', 'ProductLabelWidget') with {
-            data: {
-                text: label.text
-            }
-        } %}
+        <span class="{{ config.name }}__text {{ config.name }}__text--{{ label.type }}">{{ label.text }}</span>
     {% endfor %}
 
 {% endblock %}

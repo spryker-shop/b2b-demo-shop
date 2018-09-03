@@ -1,0 +1,55 @@
+@include shop-ui-product-list-item() {
+
+    &__container {
+        @include helper-effect-transition(background-color box-shadow);
+        margin-bottom: rem(20);
+        background-color: $setting-color-alpha-2;
+        border-radius: $setting-border-radius;
+
+        &:hover {
+            box-shadow: 0 3px 3px 0 $setting-color-shadow-1, 0 18px 18px 0 $setting-color-shadow-1;
+            background-color: $setting-color-transparent;
+        }
+    }
+
+    &__image {
+        padding: 0.5rem rem(16);
+        position: relative;
+        background-color: $setting-color-bg;
+    }
+
+    &__content {
+        padding: rem(37) rem(30) rem(35) rem(20);
+    }
+
+    &__total {
+        text-align: right;
+        padding: rem(35) rem(30) rem(35) rem(18);
+    }
+
+    &__overlay {
+        &::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            background-color: $setting-color-alpha-2;
+            z-index: $setting-zi-element;
+        }
+    }
+
+    &__inner {
+        &--total {
+            height: 100%;
+        }
+    }
+
+    &__name {
+        font-weight: fw(medium);
+        line-height: normal;
+        color: $setting-color-gray-17;
+        letter-spacing: rem(0.1);
+    }
+}

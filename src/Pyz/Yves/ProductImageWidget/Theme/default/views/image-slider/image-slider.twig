@@ -2,29 +2,33 @@
 
 {% define data = {
     idProductAbstract: _widget.product.idProductAbstract | default,
-    images: _widget.product.images | default([])
+    images: _widget.product.images | default([]),
+    amountSlides: 4
 } %}
 
 {% block body %}
-    {% embed molecule('simple-carousel') with {
+
+    {% set sliderLength = data.images | length %}
+    {% set amountThumb = (sliderLength > data.amountSlides) ? data.amountSlides : sliderLength %}
+
+    {% include molecule('pdp-carousel', 'ProductImageWidget') with {
+        class: 'pdp-slider',
         data: {
-            slides: data.images
+            idProductAbstract: data.idProductAbstract,
+            slides: data.images,
+            containerClass: sliderLength > 1 ? 'js-product-slider' : '',
+            thumbnailClass: sliderLength > 1 ? 'js-product-slider-thumbnails' : ''
         },
-        embed: {
-            idProductAbstract: data.idProductAbstract
+        attributes: {
+            'data-thumbnail-config': '{
+                "slidesToShow": ' ~ amountThumb ~ ',
+                "slidesToScroll": 1,
+                "infinite": false,
+                "vertical": true,
+                "prevArrow": "<dev class=\'thumb-prev\'><svg class=\'icon\'><use href=\'#:caret-down\'></use></svg></div>",
+                "nextArrow": "<dev class=\'thumb-next\'><svg class=\'icon\'><use href=\'#:caret-down\'></use></svg></div>"
+            }'
         }
     } only %}
-        {% block slide %}
-            <div class="text-center">
-                {% include atom('thumbnail') with {
-                    class: 'js-pdp-color-group__image-' ~ embed.idProductAbstract,
-                    modifiers: ['bigger'],
-                    attributes: {
-                        itemprop: 'image',
-                        src: slide.externalUrlLarge
-                    }
-                } only %}
-            </div>
-        {% endblock %}
-    {% endembed %}
+
 {% endblock %}
