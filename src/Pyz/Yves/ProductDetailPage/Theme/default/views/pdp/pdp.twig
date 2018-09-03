@@ -3,6 +3,8 @@
 {% define data = {
     product: _view.product,
     productUrl: _view.productUrl,
+    isBundle: _view.product.attributes.bundled_product | default(null),
+    bundleItems: _view.bundledProducts,
 
     title: product.metaTitle | default(_view.product.name),
     metaTitle: product.metaTitle | default(_view.product.name),
