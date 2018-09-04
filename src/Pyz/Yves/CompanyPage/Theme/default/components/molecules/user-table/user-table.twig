@@ -9,7 +9,8 @@
     users: required,
     actions: {
         update: false,
-        delete: false
+        delete: false,
+        switch: false
     }
 } %}
 
@@ -21,6 +22,10 @@
             <tr>
                 <th>{{ 'company.account.company_user.name' | trans }}</th>
                 <th>{{ 'company.account.company_user.business_unit' | trans }}</th>
+                <th>{{ 'company.account.company_user.role' | trans }}</th>
+                {% if showActions and data.actions.switch %}
+                    <th>{{ 'company.account.company_user.enable' | trans }}</th>
+                {% endif %}
                 {% if showActions %}
                     <th></th>
                 {% endif %}
@@ -33,6 +38,32 @@
                     {% if user.customer.firstName != null and user.customer.lastName != null %}
                         <th>{{ user.customer.firstName }} {{ user.customer.lastName }}</th>
                         <td>{{ companyBusinessUnitName }}</td>
+                        <td>
+                            {% if user.companyRoleCollection is not empty %}
+                                {% for companyUserRole in user.companyRoleCollection.roles %}
+                                    {{ companyUserRole.name }}
+                                {% endfor %}
+                            {% endif %}
+                        </td>
+                        {% if showActions and data.actions.switch %}
+                            <td>
+                                {% if data.currentCompanyUserId != user.idCompanyUser and can('CompanyUserStatusChangePermissionPlugin') %}
+                                    {% if user.isActive %}
+                                        <li class="menu__item">
+                                            <a href="{{ url('company/company-user-status/disable', {'id': user.idCompanyUser}) }}">
+                                                {{ "company.account.company_user.disable" | trans }}
+                                            </a>
+                                        </li>
+                                    {% else %}
+                                        <li class="menu__item">
+                                            <a href="{{ url('company/company-user-status/enable', {'id': user.idCompanyUser}) }}">
+                                                {{ "company.account.company_user.enable" | trans }}
+                                            </a>
+                                        </li>
+                                    {% endif %}
+                                {% endif %}
+                            </td>
+                        {% endif %}
                         {% if showActions %}
                             <td class="table__actions">
                                 <ul class="menu menu--inline">
@@ -47,16 +78,19 @@
                                             </a>
                                         </li>
                                     {% endif %}
-                                    {% if data.actions.delete %}
-                                        <li class="menu__item">
-                                            <a class="table__action" href="{{ url('company/user/delete', {'id': user.idCompanyUser }) }}" title="{{ "company.account.company_user.delete" | trans }}">
-                                                {% include atom('icon') with {
-                                                    data: {
-                                                        name: 'delete'
-                                                    }
-                                                } only %}
-                                            </a>
-                                        </li>
+
+                                    {% if data.currentCompanyUserId != user.idCompanyUser %}
+                                        {% if data.actions.delete %}
+                                            <li class="menu__item">
+                                                <a class="table__action" href="{{ url('company/user/delete', {'id': user.idCompanyUser }) }}" title="{{ "company.account.company_user.delete" | trans }}">
+                                                    {% include atom('icon') with {
+                                                        data: {
+                                                            name: 'delete'
+                                                        }
+                                                    } only %}
+                                                </a>
+                                            </li>
+                                        {% endif %}
                                     {% endif %}
                                 </ul>
                             </td>

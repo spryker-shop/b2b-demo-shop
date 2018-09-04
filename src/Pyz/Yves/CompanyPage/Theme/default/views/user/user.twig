@@ -2,6 +2,7 @@
 
 {% define data = {
     users: _view.companyUserCollection,
+    currentCompanyUserId: _view.currentCompanyUser.idCompanyUser,
 
     pagination: {
         parameters: {},
@@ -34,14 +35,20 @@
     {% include molecule('action-bar', 'ShopUi') with {
         data: {
             title: 'company.account.company_user' | trans,
-            actions: [
+            actions: (can('ManageCompanyUserInvitationPermissionPlugin') ? [
+                {
+                    title: 'company.user.invitation.invite_users' | trans,
+                    url: url('company/user-invitation'),
+                    primary: false
+                }
+            ] : []) | merge ([
                 {
                     title: 'company.account.company_user.add' | trans,
                     url: url('company/user/create'),
                     primary: true,
                     icon: 'plus'
                 }
-            ]
+            ])
         }
     } only %}
 
@@ -49,9 +56,11 @@
         {% include molecule('user-table', 'CompanyPage') with {
             data: {
                 users: data.users,
+                currentCompanyUserId: data.currentCompanyUserId,
                 actions: {
                     update: true,
-                    delete: true
+                    delete: true,
+                    switch: true
                 }
             }
         } only %}
