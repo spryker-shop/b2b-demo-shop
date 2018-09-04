@@ -1,0 +1,28 @@
+@mixin product-detail-page-variant-configurator($name: '.variant') {
+    #{$name} {
+        border-top: solid 1px $setting-color-gray-7;
+
+        &:last-child {
+            border-bottom: solid 1px $setting-color-gray-7;
+            margin-bottom: -1px;
+        }
+
+        &__title {
+            font-size: rem(16);
+            font-weight: fw(medium);
+            line-height: rem(54);
+            color: $setting-color-gray-6;
+            position: relative;
+        }
+
+        &__selected-value {
+            font-size: rem(14);
+            font-weight: fw(regular);
+            line-height: normal;
+            color: $setting-color-gray-3;
+            margin: -5px 0 15px;
+        }
+    }
+}
+
+@include product-detail-page-variant-configurator;

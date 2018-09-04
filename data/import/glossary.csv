@@ -194,7 +194,7 @@ catalog.sort.price_asc,Sort by price ascending,en_US
 catalog.sort.price_desc,Nach Preis absteigend sortieren,de_DE
 catalog.sort.price_desc,Sort by price descending,en_US
 catalog.sort.rating,Sort by product ratings,en_US
-catalog.sort.rating,Nach Produktbewertungen sortieren,de_DE
+caralog.sort.rating,Nach Produktbewertungen sortieren,de_DE
 catalog.filter.activeFilters,Aktive Filter,de_DE
 catalog.filter.activeFilters,Active filters,en_US
 catalog.filter.resetAllFilters,Alle Filter zurücksetzen,de_DE
@@ -307,6 +307,10 @@ global.spryker.shop,Spryker Shop,de_DE
 global.spryker.shop,Spryker Shop,en_US
 global.spryker.motto,Qualitäts-Technologie,de_DE
 global.spryker.motto,technology with quality,en_US
+global.payment_providers,Zahlungsanbieter,de_DE
+global.payment_providers,Payment providers,en_US
+global.shipment_providers,Lieferanbieter,de_DE
+global.shipment_providers,Shipment providers,en_US
 global.get_in_touch,Jetzt Kontakt aufnehmen,de_DE
 global.get_in_touch,Get in touch,en_US
 global.social,Netzwerke,de_DE
@@ -757,6 +761,8 @@ product.set.detail.set-contents,Products in this set,en_US
 product.set.detail.set-contents,Produkte in diesem Set,de_DE
 product.view,View,en_US
 product.view,Ansehen,de_DE
+product.relation.similar-products,Similar products,en_US
+product.relation.similar-products,Ähnliche Artikel,de_DE
 wishlist.title,Wishlist,en_US
 wishlist.title,Wunschliste,de_DE
 wishlist.wishlist,Wishlist,en_US
@@ -1129,6 +1135,8 @@ company.account.page-title,My Company,en_US
 company.account.page-title,Meine Firma,de_DE
 company.account.name,Company Name,en_US
 company.account.name,Name der Firma,de_DE
+company.account,Company Account,en_US
+company.account,Firmenkonto,de_DE
 company.account.address.edit,Edit,en_US
 company.account.address.edit,Adresse bearbeiten,de_DE
 company.account.address.delete,Delete,en_US
@@ -1179,6 +1187,8 @@ company.account.overview,Overview,en_US
 company.account.overview,Overview,de_DE
 company.user.invitation.title.plural,Invitations,en_US
 company.user.invitation.title.plural,Einladungen,de_DE
+company.user.invitation.invite_users,Invite users,en_US
+company.user.invitation.invite_users,Benutzer einladen,de_DE
 company.user.invitation.imported.title.plural,Imported invitations,en_US
 company.user.invitation.imported.title.plural,Importierte Einladungen,de_DE
 company.user.invitation.import.title,Import new invitations,en_US
@@ -1264,6 +1274,8 @@ company.account.table.actions,Actions,en_US
 company.account.table.actions,Aktion,de_DE
 company.account.business_unit.view,View,en_US
 company.account.business_unit.view,Ansehen,de_DE
+company.account.business_unit.create,Create,en_US
+company.account.business_unit.create,Erstellen,de_DE
 company.account.business_unit.edit,Edit,en_US
 company.account.business_unit.edit,Ändern,de_DE
 company.account.business_unit.delete,Delete,en_US
@@ -1344,6 +1356,8 @@ company.account.company_user,Users,en_US
 company.account.company_user,Benutzer,de_DE
 company.account.company_user.name,Name,en_US
 company.account.company_user.name,Name,de_DE
+company.account.company_user.role,Role,en_US
+company.account.company_user.role,Rolle,de_DE
 company.account.company_user.add,Create user,en_US
 company.account.company_user.add,Benutzer hinzufügen,de_DE
 company.account.company_user.business_unit,Business unit,en_US
@@ -1352,14 +1366,44 @@ company.account.company_user.edit,Edit,en_US
 company.account.company_user.edit,Bearbeiten,de_DE
 company.account.company_user.delete.successful,The user has been deleted,en_US
 company.account.company_user.delete.successful,Der Benutzer wurde gelöscht,de_DE
+company.account.company_user.delete.error,Company user cannot be removed,en_US
+company.account.company_user.delete.error,Der Firmenbenutzer konnte nicht enfernt werden,de_DE
+company.account.company_user.delete.error.delete_yourself,You are not allowed to delete yourself,en_US
+company.account.company_user.delete.error.delete_yourself,Sie können sich selber nicht löschen,de_DE
+company.account.company_user.delete.confirmation.warning,Warning,en_US
+company.account.company_user.delete.confirmation.warning,Warnung,de_DE
+company.account.company_user.delete.confirmation.trying_to_delete,You are trying to delete user,en_US
+company.account.company_user.delete.confirmation.trying_to_delete,Sie versuchen den Firmenbenutzer zu entfernen,de_DE
+company.account.company_user.delete.confirmation.deleted_from_everywhere,It will be deleted from everywhere,en_US
+company.account.company_user.delete.confirmation.deleted_from_everywhere,Es wird überall entfernt werden,de_DE
 company.account.company_user.delete,Delete,en_US
 company.account.company_user.delete,Löschen,de_DE
 company.account.company_user.edit_information,Edit user information,en_US
 company.account.company_user.edit_information,Benutzerinfomation bearbeiten,de_DE
+company.account.company_user.delete.back,Back,en_US
+company.account.company_user.delete.back,Zurück,de_DE
+company.account.company_user.edit_information,Edit user '%first_name% %last_name%',en_US
+company.account.company_user.edit_information,Benutzer '%first_name% %last_name%' bearbeiten,de_DE
+company.account.company_user.enable,Enable,en_US
+company.account.company_user.enable,Aktivieren,de_DE
+company.account.company_user.disable,Disable,en_US
+company.account.company_user.disable,Deaktivieren,de_DE
+company.account.company_user.status.enable.success,Company user successfully enabled,en_US
+company.account.company_user.status.enable.success,Der Firmenbenutzer wurde erfolgreich aktiviert,de_DE
+company.account.company_user.status.enable.error,Company user cannot be enabled,en_US
+company.account.company_user.status.enable.error,Der Firmenbenutzer konnte nicht aktiviert werden,de_DE
+company.account.company_user.status.enable.error.cannot_enable_yourself,You are not allowed to enable yourself,en_US
+company.account.company_user.status.enable.error.cannot_enable_yourself,Sie können sich selber nicht aktivieren,de_DE
+company.account.company_user.status.disable.success,Company user successfully disabled,en_US
+company.account.company_user.status.disable.success,Der Firmenbenutzer wurde erfolgreich deaktiviert,de_DE
+company.account.company_user.status.disable.error,Company user cannot be disabled,en_US
+company.account.company_user.status.disable.error,Der Firmenbenutzer konnte nicht deaktiviert werden,de_DE
+company.account.company_user.status.disable.error.cannot_disable_yourself,You are not allowed to disable yourself,en_US
+company.account.company_user.status.disable.error.cannot_disable_yourself,Sie können sich selber nicht deaktivieren,de_DE
 quick-order.page-title,Quick Order,en_US
 quick-order.page-title,Schnellbestellung,de_DE
-quick-order.input-label.qty,"# Qty",en_US
-quick-order.input-label.qty,"# Anzahl",de_DE
+quick-order.input-label.qty,"Quantity",en_US
+quick-order.input-label.qty,"Anzahl",de_DE
 quick-order.input-label.sku,SKU,en_US
 quick-order.input-label.sku,Artikelnummer,de_DE
 quick-order.button.add-more-rows,Add More Rows,en_US
@@ -1635,12 +1679,22 @@ shopping_list.shopping_list,Shopping list,en_US
 shopping_list.shopping_list,Einkaufsliste,de_DE
 shopping_list.item_quantity,Anzahl,de_DE
 shopping_list.item_quantity,Quantity,en_US
+shopping_list.remove_all_items,Remove all,en_US
+shopping_list.remove_all_items,Alles entfernen,de_DE
 customer.account.shopping_list,Shopping lists,en_US
 customer.account.shopping_list,Einkaufslisten,de_DE
+customer.account.shopping_list.access,Access,en_US
+customer.account.shopping_list.access,Zugriff,de_DE
+customer.account.shopping_list.access.full_access,Full Access,en_US
+customer.account.shopping_list.access.full_access,Voller Zugriff,de_DE
+customer.account.shopping_list.access.read_only,Read Only,en_US
+customer.account.shopping_list.access.read_only,Schreibgeschützt,de_DE
 customer.account.shopping_list.create.success,"List '%name%' was created successfully.",en_US
 customer.account.shopping_list.create.success,"Einkaufsliste '%name%' wurde erfolgreich erstellt.",de_DE
 customer.account.shopping_list.create.failed,Shopping list creation failed.,en_US
 customer.account.shopping_list.create.failed,Erstellen der Einkaufsliste ist fehlgeschlagen,de_DE
+customer.account.shopping_list.overview.shared_with,Shared with,en_US
+customer.account.shopping_list.overview.shared_with,Geteilt mit,de_DE
 customer.account.shopping_list.overview.title,Manage Shopping Lists,en_US
 customer.account.shopping_list.overview.title,Einkaufslisten verwalten,de_DE
 customer.account.shopping_list.overview.enter_name,Enter name here,en_US
@@ -1659,6 +1713,8 @@ customer.account.shopping_list.overview.actions,Actions,en_US
 customer.account.shopping_list.overview.actions,Aktion,de_DE
 customer.account.shopping_list.overview.edit,Rename,en_US
 customer.account.shopping_list.overview.edit,Umbenennen,de_DE
+customer.account.shopping_list.overview.warning,Warning,en_US
+customer.account.shopping_list.overview.warning,Warnung,de_DE
 customer.account.shopping_list.overview.view,View,en_US
 customer.account.shopping_list.overview.view,Ansehen,de_DE
 customer.account.shopping_list.overview.form.new,Create new shopping list,en_US
@@ -1715,10 +1771,26 @@ customer.account.shopping_list.delete.success,Shopping list deleted successfully
 customer.account.shopping_list.delete.success,Einkaufsliste erfolgreich gelöscht.,de_DE
 customer.account.shopping_list.delete.failed,Shopping list was not deleted.,en_US
 customer.account.shopping_list.delete.failed,Einkaufsliste konnte nicht gelöscht.,de_DE
+customer.account.shopping_list.delete.you_are_trying_to_delete_shopping_list,"You are trying to delete shopping list <a href=""%link%"">%name%</a>",en_US
+customer.account.shopping_list.delete.you_are_trying_to_delete_shopping_list,"Sie versuchen die Einkaufsliste <a href=""%link%"">%name%</a> zu löschen",de_DE
+customer.account.shopping_list.delete.warning,Warning,en_US
+customer.account.shopping_list.delete.warning,Warnung,de_DE
+customer.account.shopping_list.delete.it_belongs_to_follow,It belongs to following,en_US
+customer.account.shopping_list.delete.it_belongs_to_follow,Es gehört zu folgenden,de_DE
+customer.account.shopping_list.delete.it_wll_be_deleted_from_all_of_them,It will be deleted from all of them,en_US
+customer.account.shopping_list.delete.it_wll_be_deleted_from_all_of_them,Es wird von allen gelöscht,de_DE
 customer.account.shopping_list.quantity,Quantity,en_US
 customer.account.shopping_list.quantity,Anzahl,de_DE
 customer.account.shopping_list.remove,Remove,en_US
 customer.account.shopping_list.remove,Löschen,de_DE
+customer.account.shopping_list.access,Access,en_US
+customer.account.shopping_list.access,Zugriff,de_DE
+customer.account.shopping_list.permissions.NO_ACCESS,No access,en_US
+customer.account.shopping_list.permissions.NO_ACCESS,Kein Zugriff,de_DE
+customer.account.shopping_list.permissions.READ_ONLY,Read only,en_US
+customer.account.shopping_list.permissions.READ_ONLY,Schreibgeschützt,de_DE
+customer.account.shopping_list.permissions.FULL_ACCESS,Full access,en_US
+customer.account.shopping_list.permissions.FULL_ACCESS,Voller Zugriff,de_DE
 customer.account.shopping_list.item.added_to_cart.failed,Item was not added to cart.,en_US
 customer.account.shopping_list.item.added_to_cart.failed,Produkt konnte nicht in den Warenkorb gelegt werden.,de_DE
 customer.account.shopping_list.items.added_to_cart.not_found,There are no products available for adding to cart.,en_US
@@ -1743,6 +1815,8 @@ cart.add-to-shopping-list.form.placeholder,Enter name of a new shopping list,en_
 cart.add-to-shopping-list.form.placeholder,Geben Sie den Namen einer neuen Einkaufsliste ein,de_DE
 cart.add-to-shopping-list.form.add_new,Add new shopping list,en_US
 cart.add-to-shopping-list.form.add_new,Neue Einkaufsliste hinzufügen,de_DE
+cart.add-to-shopping-list.form.create,Create shopping list,en_US
+cart.add-to-shopping-list.form.create,Neue Einkaufsliste hinzufügen,de_DE
 cart.add-to-shopping-list.form.error.empty_name,"Please, enter shopping list name",en_US
 cart.add-to-shopping-list.form.error.empty_name,Bitte geben Sie den Namen der Einkaufsliste ein,de_DE
 customer.account.shopping_list.overview.add_shopping_list_to_cart,Add selected shopping lists to cart,en_US
@@ -1811,6 +1885,60 @@ customer.account.print_shopping_list.title.shopping_list_id,Shopping List ID,en_
 customer.account.print_shopping_list.title.shopping_list_id,Einkaufslisten-ID,de_DE
 customer.account.print_shopping_list.title.shopping_list_name,Shopping List Name,en_US
 customer.account.print_shopping_list.title.shopping_list_name,Name der Einkaufsliste,de_DE
+company.account.address.delete_confimation_page,Business Units,en_US
+company.account.address.delete_confimation_page,Geschäftseinheit,de_DE
+company_page.address_delete_confirmation.title,You are trying to delete address,en_US
+company_page.address_delete_confirmation.title,Sie versuchen die Adresse zu löschen,de_DE
+company_page.address_delete_confirmation.notification,It belongs to follow business units,en_US
+company_page.address_delete_confirmation.notification,Es gehört zu den Business Units,de_DE
+company_page.address_delete_confirmation.delete_notification,It will be deleted from all of them.,en_US
+company_page.address_delete_confirmation.delete_notification,Es wird von allen gelöscht.,de_DE
+label.button.submit,OK,en_US
+label.button.submit,OK,de_DE
+label.button.cancel,Cancel,en_US
+label.button.cancel,Stornieren,de_DE
+company.account.create_address_information,Create Address Information,en_US
+company.account.create_address_information,Adressinformationen erstellen,de_DE
+company.account.address,Company Address,en_US
+company.account.address,Firmenanschrift,de_DE
+company.account.is_default,Root,en_US
+company.account.is_default,Wurzel,de_DE
+message.business_unit_address.create,Business unit address '%address%' was created successfully.,en_US
+message.business_unit_address.create,Geschäftseinheit adresse '%address%' wurde erfolgreich erstellt.,de_DE
+message.business_unit_address.update,Business unit address '%address%' was updated successfully.,en_US
+message.business_unit_address.update,Geschäftseinheit adresse '%address%' wurde erfolgreich aktualisiert.,de_DE
+message.business_unit_address.delete,Business unit address was deleted successfully.,en_US
+message.business_unit_address.delete,Geschäftseinheit adresse wurde erfolgreich gelöscht.,de_DE
+message.business_unit.create,Business unit '%unit%' was created successfully.,en_US
+message.business_unit.create,Geschäftseinheit '%unit%' wurde erfolgreich erstellt.,de_DE
+message.business_unit.update,Business unit '%unit%' was updated successfully.,en_US
+message.business_unit.update,Geschäftseinheit '%unit%' wurde erfolgreich aktualisiert.,de_DE
+message.business_unit.delete,Business unit '%unit%' was deleted successfully.,en_US
+message.business_unit.delete,Geschäftseinheit wurde '%unit%' erfolgreich gelöscht.,de_DE
+company.account.choose_parent_company_business_unit,Choose parent Business Unit,en_US
+company.account.choose_parent_company_business_unit,Wählen Sie eine übergeordnete Geschäftseinheit,de_DE
+company.account.choose_parent_company_business_unit_placeholder,Parent BU name,en_US
+company.account.choose_parent_company_business_unit_placeholder,Name der übergeordneten Geschäftseinheit,de_DE
+company.account,Company Account,en_US
+company.account,Firmenkonto,de_DE
+company.account.form.fk_parent_company_bu.placeholder,Parent BU name,en_US
+company.account.form.fk_parent_company_bu.placeholder,Name der übergeordneten Geschäftseinheit,de_DE
+company.account.address.delete.message.title,Warning,en_US
+company.account.address.delete.message.title,Warnung,de_DE
+company.account.address.delete.message.description,You are trying to delete address,en_US
+company.account.address.delete.message.description,Sie versuchen die Adresse zu löschen,de_DE
+company.account.address.delete.message.belongs,It belongs to follow business units,en_US
+company.account.address.delete.message.belongs,Es gehört zu den Business Units,de_DE
+company.account.address.delete.message.all,It will be deleted from all of them,en_US
+company.account.address.delete.message.all,Es wird von allen gelöscht,de_DE
+company.account.address.assigned,Assign Addresses,en_US
+company.account.address.assigned,Adressen zuweisen,de_DE
+company.account.address.unassigned,Unassigned Addresses,en_US
+company.account.address.unassigned,Nicht zugewiesene Adressen,de_DE
+company.account.address.assigned.empty,No assigned addresses,en_US
+company.account.address.assigned.empty,Keine zugewiesenen Adressen,de_DE
+company.account.address.unassigned.empty,No unassigned addresses,en_US
+company.account.address.unassigned.empty,Keine nicht zugewiesenen Adressen,de_DE
 product_discontinued_widget.note,Note,en_US
 product_discontinued_widget.note,Notiz,de_DE
 product_discontinued.super_attribute_discontinued,Discontinued,en_US
@@ -1833,6 +1961,8 @@ product_alternative_widget.product_status.discontinued,Discontinued,en_US
 product_alternative_widget.product_status.discontinued,Abgesetzt,de_DE
 product_alternative_widget.show_all,Show all,en_US
 product_alternative_widget.show_all,Zeige alles,de_DE
+product_alternative_widget.not_applicable,N/A,en_US
+product_alternative_widget.not_applicable,N/A,de_DE
 place_order.pre_check.product_discontinued,"Product is discontinued, please choose an alternative one",en_US
 place_order.pre_check.product_discontinued,"Produkt ist abgekündigt, bitte wählen Sie eine Alternative",de_DE
 page.detail.volume_price.quantity,Quantity,en_US
@@ -1857,6 +1987,12 @@ packaging_units.cart.amount,Amount,en_US
 packaging_units.cart.amount,Betrag,de_DE
 packaging_units.cart.item,Items,en_US
 packaging_units.cart.item,Artikel,de_DE
+packaging_units.pdp.quantity,Quantity,en_US
+packaging_units.pdp.quantity,Anzahl,de_DE
+packaging_units.pdp.amount,Amount,en_US
+packaging_units.pdp.amount,Menge,de_DE
+packaging_units.pdp.sales-units,Sales Units,en_US
+packaging_units.pdp.sales-units,Maßeinheit,de_DE
 cart.pre.check.amount.min.failed,Die minimale Mengenanforderung für Produkt SKU '%sku%' ist nicht erreicht.,de_DE
 cart.pre.check.amount.min.failed,Minimum amount requirements for product SKU '%sku%' are not fulfilled.,en_US
 cart.pre.check.amount.max.failed,Die maximale Mengenanforderung für Produkt SKU '%sku%' ist überschritten.,de_DE
@@ -1883,3 +2019,57 @@ category_banner_3.url,/en/stationery/paper/sticky-notes,en_US
 category_banner_3.url,/de/bürobedarf/papier/haftnotizen,de_DE
 category_banner_4.url,/en/office-furniture/chairs/office-chairs,en_US
 category_banner_4.url,/de/büromöbel/stühle/bürostühle,de_DE
+company.account.company_role.delete.confirmation.warning,Warning,en_US
+company.account.company_role.delete.confirmation.warning,Warnung,de_DE
+company.account.company_role.delete.confirmation.trying_to_delete,You are trying to delete company role,en_US
+company.account.company_role.delete.confirmation.trying_to_delete,Sie versuchen eine Firmennutzer Rolle zu entfernen,de_DE
+company.account.company_role.delete.confirmation.deletion_warning,It will be permanently deleted from your company,en_US
+company.account.company_role.delete.confirmation.deletion_warning,Diese wird permanent aus Ihrer Firma entfernt,de_DE
+company.account.company_role.delete.back,Back,en_US
+company.account.company_role.delete.back,Zurück,de_DE
+company.account.company_role.delete,Delete,en_US
+company.account.company_role.delete,Löschen,de_DE
+company.account.company_role.delete.successful,Company role has been successfully removed,en_US
+company.account.company_role.delete.successful,Die Firmennutzer Rolle wurde erfolgreich entfernt,de_DE
+company.account.company_role.delete.confirmation.assigned_users,Users assigned to this role,en_US
+company.account.company_role.delete.confirmation.assigned_users,Firmennutzer welche dieser Rolle zugeordnet sind,de_DE
+company.account.company_role.delete.confirmation.assigned_users_message,You cannot delete company role until it has assigned company users,en_US
+company.account.company_role.delete.confirmation.assigned_users_message,Sie können diese Firmennutzer Rollen nicht entfernen bevor sie keine Firmennutzer mehr enthält,de_DE
+permission.name.AddCompanyUserPermissionPlugin,Add company users,en_US
+permission.name.AddCompanyUserPermissionPlugin,Firmennutzer hinzufügen,de_DE
+permission.name.ManageCompanyUserInvitationPermissionPlugin,Invite users,en_US
+permission.name.ManageCompanyUserInvitationPermissionPlugin,Nutzer einladen,de_DE
+permission.name.AddCartItemPermissionPlugin,Add item to cart,en_US
+permission.name.AddCartItemPermissionPlugin,Artikel dem Warenkorb hinzufügen,de_DE
+permission.name.ChangeCartItemPermissionPlugin,Change item in cart,en_US
+permission.name.ChangeCartItemPermissionPlugin,Artikel im Warenkorb ändern,de_DE
+permission.name.RemoveCartItemPermissionPlugin,Remove item from cart,en_US
+permission.name.RemoveCartItemPermissionPlugin,Artikel aus dem Warenkorb entfernen,de_DE
+permission.name.PlaceOrderWithAmountUpToPermissionPlugin,Place Order,en_US
+permission.name.PlaceOrderWithAmountUpToPermissionPlugin,Bestellung aufgeben,de_DE
+permission.name.ReadSharedCartPermissionPlugin,View shared cart,en_US
+permission.name.ReadSharedCartPermissionPlugin,Geteilten Warenkorb ansehen,de_DE
+permission.name.WriteSharedCartPermissionPlugin,Edit shared cart,en_US
+permission.name.WriteSharedCartPermissionPlugin,Geteilten Warenkorb editieren,de_DE
+permission.name.ReadShoppingListPermissionPlugin,View shopping list,en_US
+permission.name.ReadShoppingListPermissionPlugin,Einkaufsliste ansehen,de_DE
+permission.name.WriteShoppingListPermissionPlugin,Edit shopping list,en_US
+permission.name.WriteShoppingListPermissionPlugin,Einkaufsliste editieren,de_DE
+company.account.company_user.assign_roles.empty_roles.error,At least one role must be assigned to a user,en_US
+company.account.company_user.assign_roles.empty_roles.error,Mindestens eine Rolle muss einem Benutzer zugewiesen sein,de_DE
+company.account.company_role.delete.error.default_role,"You can not delete a default role, please set another default role before delete action",en_US
+company.account.company_role.delete.error.default_role,"Eine Standardrolle kann nicht gelöscht werden, legen Sie bitte eine andere Standardrolle vor dem Löschen an",de_DE
+permission.name.CompanyUserStatusChangePermissionPlugin,Enable / Disable company users,en_US
+permission.name.CompanyUserStatusChangePermissionPlugin,Firmennutzer Aktivieren / Deaktivieren,de_DE
+company.account.company_role.create,Create role,en_US
+company.account.company_role.create,Rolle erstellen,de_DE
+company.account.company_user.form.select_roles,Select roles,en_US
+company.account.company_user.form.select_roles,Rollen auswählen,de_DE
+company.account.company_user.form.select_business_unit,Select business unit,en_US
+company.account.company_user.form.select_business_unit,Wählen Sie die Geschäftseinheit aus,de_DE
+message.business_unit.create.error,An error occurred while trying to create business unit '%unit%'.,en_US
+message.business_unit.create.error,"Beim Versuch, die Geschäftseinheit '%unit%' zu erstellen, ist ein Fehler aufgetreten.",de_DE
+message.business_unit.update.error,An error occurred while trying to update business unit '%unit%'.,en_US
+message.business_unit.update.error,"Beim Versuch, die Geschäftseinheit '%unit%' zu aktualisieren, ist ein Fehler aufgetreten.",de_DE
+message.business_unit.delete.error,An error occurred while trying to delete business unit '%unit%'.,en_US
+message.business_unit.delete.error,"Beim Versuch, die Geschäftseinheit '%unit%' zu löschen, ist ein Fehler aufgetreten.",de_DE

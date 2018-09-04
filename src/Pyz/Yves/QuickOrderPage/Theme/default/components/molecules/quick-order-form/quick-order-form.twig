@@ -1,0 +1,88 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'quick-order-form',
+    tag: 'quick-order-form'
+} %}
+
+{% define data = {
+    form: required
+} %}
+
+{% block body %}
+    {% include molecule('ajax-provider') with {
+        class: config.jsName ~ '__provider ' ~ config.jsName ~ '__add-row-provider',
+        attributes: {
+            method: 'post',
+            url: url('quick-order/add-rows')
+        }
+    } only %}
+
+    {% include molecule('ajax-provider') with {
+        class: config.jsName ~ '__provider ' ~ config.jsName ~ '__remove-row-provider',
+        attributes: {
+            method: 'post',
+            url: url('quick-order/delete-row')
+        }
+    } only %}
+
+    {% include molecule('ajax-loader') with {
+        modifiers: ['big'],
+        attributes: {
+            'provider-selector': '.' ~ config.jsName ~ '__provider'
+        }
+    } only %}
+
+    {% embed molecule('form') with {
+        data: {
+            form: data.form,
+            options: {
+                attr: {
+                    class: config.jsName ~ '__form'
+                }
+            }
+        },
+        embed: {
+            name: config.name,
+            selector: config.jsName
+        }
+    } only %}
+        {% block fields %}
+            {% embed molecule('quick-order-form-field-list', 'QuickOrderPage') with {
+                class: embed.selector ~ '__list',
+                data: {
+                    items: data.form.items
+                },
+                embed: embed
+            } only %}
+                {% block removeActionClass %}{{embed.selector}}__remove-row-trigger{% endblock %}
+            {% endembed %}
+        {% endblock %}
+
+        {% block actions %}
+            <div class="grid grid--wide grid--justify">
+                <div class="col">
+                    <a href="#add-more" class="{{embed.selector}}__add-row-trigger button button--hollow button--expand">
+                        {{ 'quick-order.button.add-more-rows' | trans }}
+                    </a>
+                </div>
+
+                <div class="col is-hidden">
+                    {{ widget('MultiCartListWidgetPlugin') }}
+                </div>
+
+                <div class="col">
+                    <button type="submit" name="addToCart" class="button button--expand button--big {{ embed.name }}__button js-add-to-cart-button">
+                        {% include atom('icon') with {
+                            modifiers: ['cart-plus'],
+                            data: {
+                                name: 'cart-plus'
+                            }
+                        } only %}
+                        {{ 'page.detail.add-to-cart' | trans }}
+                    </button>
+                </div>
+            </div>
+        {% endblock %}
+    {% endembed %}
+{% endblock %}

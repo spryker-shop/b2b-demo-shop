@@ -16,8 +16,7 @@
 
 {% block title %}
     <h3 itemprop="name" class="pdp-title">
-        {{ widget('ProductAbstractLabelWidgetPlugin', data.product) }}
-        {{ data.product.name }}
+        {{ widget('ProductAbstractLabelWidgetPlugin', data.product) }}{{ data.product.name }}
     </h3>
     <link itemprop="url" href="{{ data.productUrl }}" />
 {% endblock %}
@@ -53,7 +52,11 @@
     } only %}
 
     {{ widget('ProductReplacementForWidgetPlugin', data.product.sku) }}
-
     {{ widget('ProductReviewWidgetPlugin', data.product.idProductAbstract) }}
+
+    {% if data.product.productSetIds is not empty %}
+        {{ widget('ProductSetIdsWidgetPlugin', data.product.productSetIds) }}
+    {% endif %}
+
     {{ widget('SimilarProductsWidgetPlugin', data.product) }}
 {% endblock %}
