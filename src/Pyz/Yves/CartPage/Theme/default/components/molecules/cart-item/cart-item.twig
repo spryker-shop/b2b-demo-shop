@@ -46,6 +46,14 @@
 
             {{ widget('CartNoteQuoteItemWidgetPlugin', data.cartItem, data.cart) }}
 
+            {% include molecule('cart-item-summary', 'CartPage') with {
+                data: {
+                    unitPrice: data.cartItem.unitPrice | money,
+                    subtotalPrice: data.cartItem.sumSubtotalAggregation | money,
+                    cartItem: data.cartItem
+                }
+            } only %}
+
         </div>
 
         <div class="{{ config.name }}__col {{ config.name }}__col--total col col--sm-12 col--lg-3">
@@ -54,7 +62,7 @@
 
                     {% include molecule('price') with {
                         data: {
-                            amount: cartItemSubTotal | money,
+                            amount: data.cartItem.sumSubtotalAggregation | money,
                         },
                         modifiers: ['cart'],
                     } only %}
