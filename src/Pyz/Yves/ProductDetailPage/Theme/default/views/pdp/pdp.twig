@@ -61,4 +61,13 @@
     {% endif %}
 
     {{ widget('SimilarProductsWidgetPlugin', data.product) }}
+
+    {{ widget('ProductCmsBlockWidgetPlugin', data.product) }}
+{% endblock %}
+
+{% block contentBottom %}
+    {{ spyCmsBlock({
+        name: 'Product CMS Block'
+    }) }}
+    {{ widget('ProductCmsBlockWidgetPlugin', data.product) }}
 {% endblock %}

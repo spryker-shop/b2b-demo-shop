@@ -20,8 +20,10 @@ use Spryker\Zed\CodeGenerator\Communication\Console\BundleYvesCodeGeneratorConso
 use Spryker\Zed\CodeGenerator\Communication\Console\BundleZedCodeGeneratorConsole;
 use Spryker\Zed\CompanyBusinessUnitDataImport\CompanyBusinessUnitDataImportConfig;
 use Spryker\Zed\CompanyDataImport\CompanyDataImportConfig;
+use Spryker\Zed\CompanyRoleDataImport\CompanyRoleDataImportConfig;
 use Spryker\Zed\CompanyUnitAddressDataImport\CompanyUnitAddressDataImportConfig;
 use Spryker\Zed\CompanyUnitAddressLabelDataImport\CompanyUnitAddressLabelDataImportConfig;
+use Spryker\Zed\CompanyUserDataImport\CompanyUserDataImportConfig;
 use Spryker\Zed\Console\ConsoleDependencyProvider as SprykerConsoleDependencyProvider;
 use Spryker\Zed\DataImport\Communication\Console\DataImportConsole;
 use Spryker\Zed\DataImport\Communication\Console\DataImportDumpConsole;
@@ -191,6 +193,12 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . ProductAlternativeDataImportConfig::IMPORT_TYPE_PRODUCT_ALTERNATIVE), #ProductAlternativeFeature
             new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . BusinessOnBehalfDataImportConfig::IMPORT_TYPE_COMPANY_USER),
             new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . ProductDiscontinuedDataImportConfig::IMPORT_TYPE_PRODUCT_DISCONTINUED), #ProductDiscontinuedFeature
+
+            new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . CompanyUserDataImportConfig::IMPORT_TYPE_COMPANY_USER),
+            new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . CompanyRoleDataImportConfig::IMPORT_TYPE_COMPANY_ROLE),
+            new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . CompanyRoleDataImportConfig::IMPORT_TYPE_COMPANY_ROLE_PERMISSION),
+            new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . CompanyRoleDataImportConfig::IMPORT_TYPE_COMPANY_USER_ROLE),
+            new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . CompanyBusinessUnitDataImportConfig::IMPORT_TYPE_COMPANY_BUSINESS_UNIT_USER),
 
             // Publish and Synchronization
             new EventBehaviorTriggerTimeoutConsole(),
