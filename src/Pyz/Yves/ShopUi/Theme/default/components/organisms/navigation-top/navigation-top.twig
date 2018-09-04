@@ -75,10 +75,10 @@
                         {% spaceless %}{{ widgetGlobal('MenuItemCompanyWidgetPlugin') }}{% endspaceless %}
                         {% if can('SeeCompanyMenuPermissionPlugin') %}
                             <ul class="{{ config.name }}__sub-nav">
-                                <li><a class="{{ config.name }}__sub-nav-link" href="">{{ 'company.account.overview' | trans }}</a></li>
-                                <li><a class="{{ config.name }}__sub-nav-link" href="">{{ 'company.account.company_role.users' | trans }}</a></li>
-                                <li><a class="{{ config.name }}__sub-nav-link" href="">{{ 'company.account.business_unit' | trans }}</a></li>
-                                <li><a class="{{ config.name }}__sub-nav-link" href="">{{ 'company.account.company_user.role' | trans }}</a></li>
+                                <li><a class="{{ config.name }}__sub-nav-link" href="/company/overview">{{ 'company.account.overview' | trans }}</a></li>
+                                <li><a class="{{ config.name }}__sub-nav-link" href="/company/user">{{ 'company.account.company_role.users' | trans }}</a></li>
+                                <li><a class="{{ config.name }}__sub-nav-link" href="/company/business-unit">{{ 'company.account.business_unit' | trans }}</a></li>
+                                <li><a class="{{ config.name }}__sub-nav-link" href="/company/company-role">{{ 'company.account.company_user.role' | trans }}</a></li>
                             </ul>
                         {%  endif %}
                     </li>
