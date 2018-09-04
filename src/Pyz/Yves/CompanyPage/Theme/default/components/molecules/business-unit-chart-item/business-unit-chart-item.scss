@@ -1,0 +1,63 @@
+$setting-color-business-chart-item-level: (
+    1: $setting-color-blue-1,
+    2: $setting-color-main,
+    3: $setting-color-yellow-1,
+    4: $setting-color-alt
+);
+
+@mixin business-unit-chart-item($name: '.business-unit-chart-item') {
+    #{$name} {
+        & & {
+            padding-left: rem(30);
+        }
+
+        &__link {
+            display: flex;
+            flex-flow: row nowrap;
+            align-items: center;
+            padding: rem(20) rem(34);
+            margin-bottom: map-get($setting-spacing, default);
+            background-color: $setting-color-gray-13;
+            color: $setting-color-gray-6;
+            font-size: map-get($setting-font-size, default);
+            font-weight: map-get($setting-font-weight, medium);
+            border-left: rem(5) solid $setting-color-gray-2;
+            border-radius: $setting-border-radius;
+            box-shadow: rem(3) rem(8) rem(16) rem(3) transparent;
+            transition: 0.3s box-shadow, 0.3s background-color;
+
+            @each $level, $setting-color-level in $setting-color-business-chart-item-level {
+                &#{&}--level-#{$level} {
+                    border-left-color: $setting-color-level;
+                }
+            }
+
+            &:hover {
+                background-color: $setting-color-white;
+                box-shadow: rem(3) rem(8) rem(16) rem(3) $setting-color-shadow-1;
+                color: $setting-color-gray-6;
+            }
+        }
+
+        &__name {
+            flex: 1;
+        }
+
+        &__icon {
+            flex: none;
+            color: $setting-color-gray-2;
+            transition: 0.3s color;
+
+            &#{&} {
+                width: rem(10);
+                height: rem(10);
+            }
+        }
+
+        &__link:hover &__icon {
+            color: inherit;
+        }
+    }
+}
+
+@include business-unit-chart-item();
