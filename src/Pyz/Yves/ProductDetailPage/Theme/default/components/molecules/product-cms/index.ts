@@ -1,1 +1,1 @@
-import './pdp-cms.scss';
+import './product-cms.scss';
