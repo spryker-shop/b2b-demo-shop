@@ -1,0 +1,1 @@
+import './pdp-cms.scss';
