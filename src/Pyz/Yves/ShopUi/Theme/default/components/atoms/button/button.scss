@@ -77,6 +77,11 @@
             padding: rem(15) rem(27);
         }
 
+        &--bigger {
+            padding-top: rem(12);
+            padding-bottom: rem(12);
+        }
+
         &--expand {
             width: 100%;
         }
@@ -93,14 +98,15 @@
 
         &[disabled],
         &--disabled {
-            background-color: $setting-color-gray-3;
-            border-color: $setting-color-gray-3;
+            background-color: $setting-color-gray-2;
+            border-color: $setting-color-gray-2;
+            color: $setting-color-white;
             cursor: not-allowed;
 
             &:hover,
             &:focus {
-                background-color: $setting-color-gray-3;
-                border-color: $setting-color-gray-3;
+                background-color: $setting-color-gray-2;
+                border-color: $setting-color-gray-2;
             }
         }
 

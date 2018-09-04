@@ -25,7 +25,7 @@
                         checked: (filterValue.value in activeValues)
                     },
                     data: {
-                        label: filterValue.value ~ ' <span class="filter-enumeration__quantity">' ~ filterValue.docCount ~ '</span>'
+                        label: '<span class="filter-enumeration__text">' ~filterValue.value ~ '</span> <span class="filter-enumeration__quantity">' ~ filterValue.docCount ~ '</span>'
                     },
                     class: config.name ~ '__item'
                 } only %}
