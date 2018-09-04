@@ -1,0 +1,44 @@
+@mixin shop-ui-switch($name: '.switch') {
+    #{$name} {
+        display: block;
+        position: relative;
+        width: rem(34);
+        height: rem(14);
+        background-color: transparentize($setting-color-gray-1, 0.4);
+        border-radius: rem(7);
+        overflow: visible;
+        margin-left: rem(10);
+        transition: 0.3s background-color, 0.3s margin-left;
+
+        &#{&}--active {
+            background-color: transparentize($setting-color-main, 0.5);
+            margin-left: 0;
+        }
+
+        &[disabled] {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        &__handle {
+            display: block;
+            position: absolute;
+            width: rem(20);
+            height: rem(20);
+            margin: rem(-3) 0 0 rem(-10);
+            border-radius: 50%;
+            background-color: $setting-color-white;
+            box-shadow: 0 rem(2) rem(4) $setting-color-shadow-2;
+            left: 0;
+            top: 0;
+            transition: 0.3s left, 0.3s background-color;
+        }
+
+        &#{&}--active &__handle {
+            left: 100%;
+            background-color: $setting-color-main;
+        }
+    }
+}
+
+@include shop-ui-switch();

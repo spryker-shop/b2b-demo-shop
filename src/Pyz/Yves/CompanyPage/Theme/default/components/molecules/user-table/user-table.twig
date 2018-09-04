@@ -47,21 +47,17 @@
                         </td>
                         {% if showActions and data.actions.switch %}
                             <td>
-                                {% if data.currentCompanyUserId != user.idCompanyUser and can('CompanyUserStatusChangePermissionPlugin') %}
-                                    {% if user.isActive %}
-                                        <li class="menu__item">
-                                            <a href="{{ url('company/company-user-status/disable', {'id': user.idCompanyUser}) }}">
-                                                {{ "company.account.company_user.disable" | trans }}
-                                            </a>
-                                        </li>
-                                    {% else %}
-                                        <li class="menu__item">
-                                            <a href="{{ url('company/company-user-status/enable', {'id': user.idCompanyUser}) }}">
-                                                {{ "company.account.company_user.enable" | trans }}
-                                            </a>
-                                        </li>
-                                    {% endif %}
-                                {% endif %}
+                                {% set isAllowed = data.currentCompanyUserId != user.idCompanyUser and can('CompanyUserStatusChangePermissionPlugin') %}
+                                {% set href = isAllowed ? url('company/company-user-status/' ~ (user.isActive ? 'disable' : 'enable'), {'id': user.idCompanyUser}) : 'javascript:void(0)' %}
+                                {% set title = ('company.account.company_user.' ~ (user.isActive ? 'disable' : 'enable')) | trans %}
+                                {% include atom('switch') with {
+                                    modifiers: user.isActive ? ['active'] : [],
+                                    attributes: {
+                                        href: href,
+                                        title: title,
+                                        disabled: not isAllowed
+                                    }
+                                } only %}
                             </td>
                         {% endif %}
                         {% if showActions %}
