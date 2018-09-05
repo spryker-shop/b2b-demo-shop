@@ -11,6 +11,12 @@
 
         &__action-item {
             border-right: solid 1px $setting-color-gray-2;
+            position: relative;
+            z-index: $setting-zi-element + 4;
+
+            &:hover #{$name}__sub-nav {
+                transform: scale(1);
+            }
         }
 
         &__tel {
@@ -33,6 +39,29 @@
             &:hover {
                 color: helper-color-light($setting-color-gray-4, 25);
             }
+        }
+
+        &__sub-nav {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            font-size: rem(15);
+            font-weight: fw(regular);
+            line-height: 1.93;
+            letter-spacing: rem(0.2);
+            border-radius: 0 0 $setting-border-radius $setting-border-radius;
+            background-color: $setting-color-white;
+            box-shadow: 0 18px 18px 0 $setting-color-alpha-2, 0 3px 3px 0 $setting-color-alpha-2;
+            padding: rem(21) rem(38) rem(21) rem(29);
+            transform-origin: top left;
+            transform: scale(0);
+            @include helper-effect-transition(transform);
+        }
+
+        &__sub-nav-link {
+            color: $setting-color-gray-3;
+            white-space: nowrap;
+            @include helper-effect-transition(color);
         }
 
         @content;
