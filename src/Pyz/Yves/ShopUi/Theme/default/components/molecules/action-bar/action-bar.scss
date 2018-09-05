@@ -11,13 +11,6 @@
             margin-bottom: rem(16);
         }
 
-        &__icon {
-            display: inline-block;
-            width: rem(10);
-            height: rem(10);
-            margin-right: rem(10);
-        }
-
         &__title {
             flex: 1;
             font-size: map_get($setting-font-size, 4);
@@ -25,7 +18,23 @@
             line-height: rem(40);
         }
 
-        &__actions {
+        &__actions,
+        &__action {
+            flex: none;
+            display: flex;
+            flex-flow: row nowrap;
+            align-items: center;
+        }
+
+        &__action {
+            margin-left: rem(8);
+        }
+
+        &__icon {
+            display: block;
+            width: rem(13);
+            height: rem(13);
+            margin-right: rem(10);
             flex: none;
         }
     }

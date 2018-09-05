@@ -1,0 +1,60 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'business-unit-address-table'
+} %}
+
+{% define data = {
+    idCompanyBusinessUnit: required,
+    addresses: required,
+    headline: null
+} %}
+
+{% block body %}
+    <table class="table table--expand">
+        {% if data.headline %}
+            <thead>
+            <tr>
+                <th>{{ data.headline }}</th>
+                <th></th>
+            </tr>
+            </thead>
+        {% endif %}
+        <tbody>
+        {% for address in data.addresses %}
+            <tr>
+                <td>
+                    {{ form_widget(address, {
+                            'attr': {
+                                'label': address.vars.label
+                            }
+                        })
+                    }}
+                </td>
+                <td class="table__actions">
+                    <ul class="menu menu--inline">
+                        <li class="menu__item">
+                            <a class="table__action" href="{{ url('company/address/update', {'id': address.vars.value, 'idCompanyBusinessUnit': data.idCompanyBusinessUnit }) }}" title="{{ 'company.account.address.edit' | trans }}">
+                                {% include atom('icon') with {
+                                    data: {
+                                        name: 'edit'
+                                    }
+                                } only %}
+                            </a>
+                        </li>
+                        <li class="menu__item">
+                            <a class="table__action" href="{{ url('company/address/delete-confirmation', {'id': address.vars.value, 'idCompanyBusinessUnit': data.idCompanyBusinessUnit }) }}" title="{{ 'company.account.address.delete' | trans }}">
+                                {% include atom('icon') with {
+                                    data: {
+                                        name: 'delete'
+                                    }
+                                } only %}
+                            </a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
