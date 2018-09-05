@@ -1,0 +1,38 @@
+@mixin product-detail-product-cms($name: '.product-cms') {
+    #{$name} {
+        background: $setting-color-gray-13;
+        text-align: center;
+        padding: rem(50) 0 rem(20);
+
+        &__title {
+            max-width: 970px;
+            margin: 0 auto rem(24);
+            color: $setting-color-gray-6;
+        }
+
+        &__text {
+            max-width: 970px;
+            margin: 0 auto;
+            font-size: rem(18);
+            line-height: rem(29);
+            color: $setting-color-gray-2;
+
+            p {
+                margin: 0 0 rem(29);
+            }
+
+            a {
+                color: $setting-color-gray-3;
+                font-weight: fw(bold);
+
+                &:hover {
+                    color: $setting-color-alt;
+                }
+            }
+        }
+
+        @content;
+    }
+}
+
+@include product-detail-product-cms;

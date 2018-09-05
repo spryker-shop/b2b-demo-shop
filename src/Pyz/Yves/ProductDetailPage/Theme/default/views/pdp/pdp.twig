@@ -3,6 +3,8 @@
 {% define data = {
     product: _view.product,
     productUrl: _view.productUrl,
+    isBundle: _view.product.attributes.bundled_product | default(null),
+    bundleItems: _view.bundledProducts,
 
     title: product.metaTitle | default(_view.product.name),
     metaTitle: product.metaTitle | default(_view.product.name),
@@ -16,8 +18,7 @@
 
 {% block title %}
     <h3 itemprop="name" class="pdp-title">
-        {{ widget('ProductAbstractLabelWidgetPlugin', data.product) }}
-        {{ data.product.name }}
+        {{ widget('ProductAbstractLabelWidgetPlugin', data.product) }}{{ data.product.name }}
     </h3>
     <link itemprop="url" href="{{ data.productUrl }}" />
 {% endblock %}
@@ -60,4 +61,13 @@
     {% endif %}
 
     {{ widget('SimilarProductsWidgetPlugin', data.product) }}
+
+    {{ widget('ProductCmsBlockWidgetPlugin', data.product) }}
+{% endblock %}
+
+{% block contentBottom %}
+    {{ spyCmsBlock({
+        name: 'Product CMS Block'
+    }) }}
+    {{ widget('ProductCmsBlockWidgetPlugin', data.product) }}
 {% endblock %}

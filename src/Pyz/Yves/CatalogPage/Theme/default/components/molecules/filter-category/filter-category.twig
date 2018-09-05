@@ -2,13 +2,23 @@
 
 {% define config = {
     name: 'filter-category',
+    tag: 'filter-category',
     requestUrl: app.request.attributes.get('categoryNode').url | replace({"'": "\\'", '"':'\\"'})
 } %}
 
 {% define data = {
     filter: null,
     filterPath: null,
-    categories: []
+    categories: [],
+    levelMenu: 1
+} %}
+
+{% define attributes = {
+    'wrap-selector': config.name ~ '__menu--lvl-1',
+    'parent-selector': config.name ~ '__menu-item--lvl-1',
+    'list-selector': '.js-' ~ config.name ~ '__menu-item',
+    'category-selector': '.' ~ config.name ~ '__menu-item',
+    'change-class': 'is-hidden'
 } %}
 
 {% block component %}
@@ -18,7 +28,7 @@
 {% endblock %}
 
 {% block body %}
-    <ul class="{{ config.name }}__menu">
+    <ul class="{{ config.name }}__menu {{ config.name }}__menu--lvl-{{ data.levelMenu }}">
         {% for categoryNode in data.categories %}
             {% set quantity = 0 %}
             {% set hasChildren = categoryNode.children is defined and categoryNode.children is not empty %}
@@ -33,9 +43,13 @@
                 {% set categoryUrl = categoryNode.url | replace({"'": "\\'", '"':'\\"'}) %}
             {% endif %}
 
-            <li class="{{ config.name }}__menu-item{% if hasChildren %} {{ config.name }}__menu-item--has-children-list{% endif %}{% if config.requestUrl == categoryUrl %} {{ config.name }}__menu-item--active{% endif %}">
-                <button class="link {{ config.name }}__menu-link" onclick="this.form.action='{{ categoryUrl }}'" {% if quantity == 0 %}disabled="disabled"{% endif %}>
-                    <span class="{{ config.name }}__menu-link-text">{{ categoryNode.name }}</span> <span>{{ quantity }}</span>
+            {% set isActive = (config.requestUrl == categoryUrl) %}
+
+            {% set isHidden = (data.levelMenu != 1) %}
+
+            <li class="{{ config.name }}__menu-item {{ config.name }}__menu-item--lvl-{{ data.levelMenu }} {% if isActive %} {{ config.name }}__menu-item--active js-{{ config.name }}__menu-item{% endif %} {% if isHidden and not isActive %}is-hidden{% endif %}">
+                <button class="link {{ config.name }}__menu-link {{ config.name }}__menu-link--lvl-{{ data.levelMenu }} {% if isActive %} {{ config.name }}__menu-link--active{% endif %}" onclick="this.form.action='{{ categoryUrl }}'" {% if quantity == 0 %}disabled="disabled"{% endif %}>
+                    <span class="{{ config.name }}__menu-link-text {% if isActive %}{{ config.name }}__menu-link-text--active{% endif %}">{{ categoryNode.name }}</span> <span>{{ quantity }}</span>
                 </button>
 
                 {% if hasChildren %}
@@ -43,7 +57,8 @@
                         data: {
                             filter: data.filter,
                             filterPath: data.filterPath,
-                            categories: categoryNode.children
+                            categories: categoryNode.children,
+                            levelMenu: data.levelMenu + 1
                         }
                     } only %}
                 {% endif %}
