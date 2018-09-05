@@ -1,0 +1,61 @@
+{% extends template('page-layout-checkout', 'CheckoutPage') %}
+
+{% define data = {
+    backUrl: _view.previousStepUrl,
+    forms: {
+        shipment: _view.shipmentForm
+    },
+
+    title: 'checkout.step.shipment.title' | trans,
+    stepNumder: 2
+} %}
+
+{% block content %}
+    {% embed molecule('form') with {
+        class: 'checkout-form',
+        data: {
+            form: data.forms.shipment,
+            options: {
+                attr: {
+                    id: 'payment-form'
+                }
+            },
+            submit: {
+                enable: true,
+                text: 'checkout.step.payment' | trans,
+                class: 'button button--big'
+            },
+            cancel: {
+                enable: true,
+                url: data.backUrl,
+                text: 'general.back.button' | trans,
+                icon: '',
+                class: 'button button--big button--hollow-icon button--back'
+            }
+        }
+    } only %}
+        {% block fields %}
+            {% for name, choices in data.form.idShipmentMethod.vars.choices %}
+                <div class="form__field col col--sm-12 shipment-item">
+                    <h5 class="grid grid--justify grid--middle checkout-title checkout-title--second">
+                        <span class="col">{{name}}</span>
+                        {% include atom('icon') with {
+                            class: 'col',
+                            modifiers: ['shipment', name | lower ~ '-logo'],
+                            data: {
+                                name: name | lower ~ '-logo'
+                            }
+                        } only %}
+                    </h5>
+
+                    {% include molecule('shipment-list', 'CheckoutPage') with {
+                        data: {
+                            form: data.form.idShipmentMethod,
+                            choices: choices
+                        }
+                    } only %}
+                </div>
+            {% endfor %}
+        {% endblock %}
+    {% endembed %}
+{% endblock %}

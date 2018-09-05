@@ -1,0 +1,25 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'shipment-list'
+} %}
+
+{% define data = {
+    choices: required,
+    form: required,
+} %}
+
+{% block body %}
+
+    <ul class="{{ config.name }}">
+        {% for key, choice in data.choices %}
+            <li class="{{ config.name }}__item">
+                {{ form_row(data.form[key], {
+                    label: '<span class="col">' ~ data.form[key].vars.label ~ '</span> <span class="col">price</span>',
+                    required: false
+                }) }}
+            </li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}

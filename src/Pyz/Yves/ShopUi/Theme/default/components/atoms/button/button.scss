@@ -90,7 +90,8 @@
             min-width: rem(200);
         }
 
-        &--edit {
+        &--edit,
+        &--back {
             @include helper-effect-transition(color);
             color: $setting-color-gray-2;
 
@@ -98,6 +99,10 @@
             &:focus {
                 color: $setting-color-gray-6;
             }
+        }
+
+        &--back {
+            font-weight: fw(regular);
         }
 
         &--gray {

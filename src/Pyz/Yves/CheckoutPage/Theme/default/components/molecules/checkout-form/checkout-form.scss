@@ -23,6 +23,15 @@
         padding-right: rem(10);
     }
 
+    .form__actions {
+        flex-direction: row-reverse;
+        justify-content: flex-end;
+    }
+
+    .form__action {
+        margin: 0 1rem 0 0;
+    }
+
     .label:not(span) {
         color: $setting-color-gray-6;
     }
@@ -39,8 +48,8 @@
             box-shadow: 0 0 0 1px $setting-color-main;
         }
     }
-    .select2-container {
 
+    .select2-container {
         &.select2-container--focus {
             .select2-selection--single {
                 border-color: $setting-color-main;
@@ -59,4 +68,25 @@
             }
         }
     }
+
+    .radio {
+
+        &__label {
+            color: $setting-color-gray-2;
+        }
+
+        &__input:checked ~ {
+
+            .radio__box {
+                background-color: $setting-color-bg;
+                box-shadow: inset 0 0 0 0.25rem $setting-color-main;
+            }
+
+            .radio__label {
+                color: $setting-color-gray-6;
+                font-weight: fw(medium);
+            }
+        }
+    }
+
 }
