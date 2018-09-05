@@ -29,7 +29,10 @@
 {% block companyContent %}
     {% include molecule('action-bar', 'ShopUi') with {
         data: {
-            title: 'company.account.company_user.edit_information' | trans
+            title: 'company.account.company_user.edit_information' | trans({
+                '%first_name%' : data.form.vars.value.first_name,
+                '%last_name%' : data.form.vars.value.last_name,
+            })
         }
     } only %}
 
