@@ -22,12 +22,21 @@
         tbody {
             font-size: map_get($setting-font-size, small);
 
-            tr {
-                border-bottom: 1px solid $setting-color-gray-7;
+            tr + tr {
+                border-top: 1px solid $setting-color-gray-7;
             }
 
             th {
                 font-weight: map_get($setting-font-weight, medium);
+            }
+
+            td {
+                color: $setting-color-gray-3;
+
+                strong {
+                    color: $setting-color-gray-6;
+                    font-weight: map_get($setting-font-weight, medium);
+                }
             }
         }
 
@@ -42,7 +51,7 @@
         }
 
         &__actions {
-            width: 0;
+            width: 1px;
             white-space: nowrap;
         }
 

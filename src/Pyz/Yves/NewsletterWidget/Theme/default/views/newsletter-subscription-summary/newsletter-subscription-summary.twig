@@ -1,0 +1,13 @@
+{% extends template('widget') %}
+
+{% define data = {
+    isSubscribed: _widget.isSubscribed
+} %}
+
+{% block body %}
+    {% if data.isSubscribed %}
+        {{ 'customer.newsletter.subscribed' | trans }}
+    {% else %}
+        {{ 'customer.newsletter.not_subscribed' | trans }}
+    {% endif %}
+{% endblock %}

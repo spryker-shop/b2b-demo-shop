@@ -1,0 +1,118 @@
+{% extends template('page-layout-customer', 'CustomerPage') %}
+
+{% define data = {
+    orders: _view.orderList,
+    customer: _view.customer,
+    billingAddress: _view.addresses.billing | default,
+    shippingAddress: _view.addresses.shipping | default,
+    billingAddressId: _view.addresses.billing.idCustomerAddress | default(''),
+    shippingAddressId: _view.addresses.shipping.idCustomerAddress | default('')
+} %}
+
+{% macro profile(data) %}
+    {% embed molecule('action-card') with {
+        data: {
+            title: 'customer.account.profile_data' | trans,
+            customer: data.customer,
+            actions: [
+                {
+                    icon: 'edit',
+                    url: url('customer/profile'),
+                    title: 'general.edit.button' | trans
+                }
+            ]
+        }
+    } only %}
+        {% block content %}
+            <ul>
+                <li>{{ data.customer.firstName }} {{ data.customer.lastName }}</li>
+                <li><a href="mailto:{{ data.customer.email }}">{{ data.customer.email }}</a></li>
+            </ul>
+        {% endblock %}
+    {% endembed %}
+{% endmacro %}
+
+{% macro newsletter(data) %}
+    {% embed molecule('action-card') with {
+        data: {
+            title: 'customer.account.newsletter' | trans,
+            customer: data.customer,
+            actions: [
+                {
+                    icon: 'edit',
+                    url: url('customer/newsletter'),
+                    title: 'general.edit.button' | trans
+                }
+            ]
+        }
+    } only %}
+        {% block content %}
+            {{ widget('NewsletterSubscriptionSummaryWidgetPlugin', data.customer) }}
+        {% endblock %}
+    {% endembed %}
+{% endmacro %}
+
+{% macro address(label, address, addressId) %}
+    {% if address is not empty %}
+        {% embed molecule('action-card') with {
+            data: {
+                title: ('customer.account.default_' ~ label) | trans,
+                address: address,
+                actions: [
+                    {
+                        icon: 'edit',
+                        url: url('customer/address/update', { id: addressId }),
+                        title: 'general.edit.button' | trans
+                    }
+                ]
+            }
+        } only %}
+            {% block content %}
+                {% include molecule('display-address') with {
+                    data: {
+                        address: data.address
+                    }
+                } only %}
+            {% endblock %}
+        {% endembed %}
+    {% endif %}
+{% endmacro %}
+
+
+{% block customerContent %}
+
+    <h3>
+        {{- 'customer.account.overview' | trans -}}
+    </h3>
+
+    {% include molecule('action-bar', 'ShopUi') with {
+        data: {
+            title: 'customer.account.last_orders' | trans,
+            actions: data.orders is not empty ? [
+                {
+                    title: 'customer.order.view_all' | trans,
+                    url: url('customer/order'),
+                    modifiers: ['hollow']
+                }
+            ] : []
+        }
+    } only %}
+
+    {% include molecule('order-table', 'CustomerPage') with {
+        data: {
+            orders: data.orders
+        }
+    } only %}
+
+    {% include molecule('action-card-grid') with {
+        data: {
+            cards: [
+                { content: _self.profile(data) },
+                { content: _self.newsletter(data) },
+                { content: _self.address('shipping_address', data.shippingAddress, data.shippingAddressId) },
+                { content: _self.address('billing_address', data.billingAddress, data.billingAddressId) }
+            ]
+        }
+    } only %}
+
+{% endblock %}
