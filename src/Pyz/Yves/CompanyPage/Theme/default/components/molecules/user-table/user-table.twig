@@ -34,7 +34,7 @@
         <tbody>
             {% for user in data.users %}
                 {% set companyBusinessUnitName = user.companyBusinessUnit.name | default('') %}
-                <tr>
+                <tr class="table__row{% if not user.isActive %} table__row--inactive{% endif %}">
                     {% if user.customer.firstName != null and user.customer.lastName != null %}
                         <th>{{ user.customer.firstName }} {{ user.customer.lastName }}</th>
                         <td>{{ companyBusinessUnitName }}</td>
