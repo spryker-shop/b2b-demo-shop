@@ -12,8 +12,7 @@
     <ul class="option-display">
          {% for option in data.options %}
             <li class="option-display__item">
-                {{ option.value | trans }}
-                - <span>{{ option.unitPrice | money }}</span>
+                {{ option.value | trans }} - {{ option.unitPrice | money }}
             </li>
         {% endfor %}
     </ul>
