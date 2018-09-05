@@ -10,25 +10,21 @@
     items: []
 } %}
 
+
 {% block body %}
     <ul class="{{ config.name }}__list">
         {% for item in data.items %}
-            <li class="{{ config.name }}__item{% if item.name == data.activePage %} {{ config.name }}__item--active{% endif %}">
-                <a class="{{ config.name }}__link" href="{{ item.url }}">
-                    {% spaceless %}
-                        {% if item.icon | default(false) %}
-                            {% include atom('icon') with {
-                                data: {
-                                    name: item.icon
-                                },
-                                class: config.name ~ '__icon'
-                            } only %}
-                        {% endif %}
-
-                        <span class="{{ config.name }}__label">{{ item.label }}</span>
-                    {% endspaceless %}
-                </a>
-            </li>
+            {% include molecule('navigation-sidebar-item') with {
+                data: {
+                    url: item.url,
+                    icon: item.icon,
+                    label: item.label,
+                    name: item.name
+                },
+                modifiers: item.name == data.activePage ? ['active'] : []
+            } only %}
         {% endfor %}
+
+        {% block postContent %}{% endblock %}
     </ul>
 {% endblock %}

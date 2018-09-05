@@ -1,0 +1,35 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'navigation-sidebar-item',
+    tag: 'li'
+} %}
+
+{% define data = {
+    url: required,
+    icon: required,
+    label: required,
+    name: required
+} %}
+
+
+{%- block body -%}
+    <a class="{{ config.name }}__link" href="{{ data.url }}">
+        {% spaceless %}
+            {% if data.icon | default(false) %}
+                <div class="{{ config.name }}__icon-wrapper">
+                    {% include atom('icon') with {
+                        data: {
+                            name: data.icon
+                        },
+                        class: config.name ~ '__icon'
+                    } only %}
+                </div>
+            {% endif %}
+
+            <div class="{{ config.name }}__label">
+                {{ data.label }}
+            </div>
+        {% endspaceless %}
+    </a>
+{%- endblock -%}

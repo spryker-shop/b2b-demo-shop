@@ -1,0 +1,43 @@
+{% extends template('page-layout-main') %}
+
+{% define data = {
+    activePage: 'overview'
+} %}
+
+{% block breadcrumbs %}
+    {% include molecule('breadcrumb') with {
+        data: {
+            steps: [{
+                label: 'customer.account' | trans
+            }]
+        }
+    } only %}
+{% endblock %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+    {% set customerContent %}
+        {% block customerContent %}{% endblock %}
+    {% endset %}
+
+    {% embed organism('section') with {
+        modifiers: ['last']
+    } %}
+        {% block inner %}
+            <div class="grid">
+                <div class="col col--sm-12 col--md-6 col-lg-4 col--xl-3">
+                    {% block customerNavigation %}
+                        {{ widgetGlobal('CustomerNavigationWidgetPlugin', data.activePage) }}
+                    {% endblock %}
+                </div>
+
+                <div class="col col--sm-12 col--md-6 col-lg-8 col--xl-9">
+                    {{ customerContent }}
+                </div>
+            </div>
+        {% endblock %}
+    {% endembed %}
+{% endblock %}
+
+{% block footer %}{% endblock %}

@@ -1,0 +1,43 @@
+@mixin shop-ui-navigation-sidebar-item($name: '.navigation-sidebar-item') {
+    #{$name} {
+        overflow: hidden;
+
+        &--active {
+            background-color: $setting-color-gray-11;
+
+            #{$name}__link {
+                cursor: default;
+            }
+
+            #{$name}__icon {
+                color: $setting-color-alt;
+            }
+
+            #{$name}__label {
+                color: $setting-color-gray-6;
+            }
+        }
+
+        &__link {
+            display: flex;
+            align-items: center;
+            padding: rem(11) rem(13);
+            line-height: 1.3em;
+            font-size: map_get($setting-font-size, 6);
+            color: $setting-color-gray-2;
+        }
+
+        &__icon-wrapper {
+            height: 1em;
+            margin-right: rem(24);
+        }
+
+        &__icon {
+            display: block;
+            height: 1em;
+            width: 1.5em;
+        }
+    }
+}
+
+@include shop-ui-navigation-sidebar-item();
