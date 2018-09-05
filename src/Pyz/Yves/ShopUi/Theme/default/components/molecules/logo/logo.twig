@@ -17,10 +17,11 @@
 {% block attributes %}{% endblock %}
 
 {% block body %}
-    <a href="{{data.url}}" class="logo__link">
+    <a href="{{data.url}}" class="{{ component.renderClass(config.name ~ '__link', modifiers) }}">
         {% if attributes.src is empty %}
+            {% set modifiersForIcon = modifiers | merge(['logo']) %}
             {% include atom('icon') with {
-                modifiers: ['logo'],
+                modifiers: modifiersForIcon,
                 data: {
                     name: 'logo'
                 }
