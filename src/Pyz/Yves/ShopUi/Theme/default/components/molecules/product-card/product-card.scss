@@ -5,7 +5,7 @@ $catalog-space-x: rem(14);
     padding: 0 0 30px;
 
     &--equal-height {
-        height: 100%;
+        height: auto;
     }
 
     &__container {
@@ -21,9 +21,18 @@ $catalog-space-x: rem(14);
                 }
             }
         }
+
+        &--stretch {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: baseline;
+        }
     }
 
     &__image-wrap {
+        flex-basis: 100%;
+
         &--catalog {
             position: relative;
             margin: 0 (-$catalog-space-x) rem(15);
