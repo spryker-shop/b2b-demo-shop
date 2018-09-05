@@ -2,8 +2,7 @@
 
 {% define config = {
     name: 'filter-category',
-    tag: 'filter-category',
-    requestUrl: app.request.attributes.get('categoryNode').url | replace({"'": "\\'", '"':'\\"'})
+    tag: 'filter-category'
 } %}
 
 {% define data = {
@@ -39,30 +38,34 @@
 
             {% if data.filterPath is not empty %}
                 {% set categoryUrl = url(data.filterPath, {categoryPath: (categoryNode.url)}) %}
+                {% set currentUrl = url(data.filterPath, {categoryPath: (app.request.attributes.get('categoryPath'))}) %}
             {% else %}
                 {% set categoryUrl = categoryNode.url | replace({"'": "\\'", '"':'\\"'}) %}
+                {% set currentUrl = app.request.attributes.get('categoryPath') %}
             {% endif %}
 
-            {% set isActive = (config.requestUrl == categoryUrl) %}
+            {% set isActive = (currentUrl == categoryUrl) %}
 
             {% set isHidden = (data.levelMenu != 1) %}
 
-            <li class="{{ config.name }}__menu-item {{ config.name }}__menu-item--lvl-{{ data.levelMenu }} {% if isActive %} {{ config.name }}__menu-item--active js-{{ config.name }}__menu-item{% endif %} {% if isHidden and not isActive %}is-hidden{% endif %}">
-                <button class="link {{ config.name }}__menu-link {{ config.name }}__menu-link--lvl-{{ data.levelMenu }} {% if isActive %} {{ config.name }}__menu-link--active{% endif %}" onclick="this.form.action='{{ categoryUrl }}'" {% if quantity == 0 %}disabled="disabled"{% endif %}>
-                    <span class="{{ config.name }}__menu-link-text {% if isActive %}{{ config.name }}__menu-link-text--active{% endif %}">{{ categoryNode.name }}</span> <span>{{ quantity }}</span>
-                </button>
+            {% if quantity %}
+                <li class="{{ config.name }}__menu-item {{ config.name }}__menu-item--lvl-{{ data.levelMenu }} {% if isActive %} {{ config.name }}__menu-item--active js-{{ config.name }}__menu-item{% endif %} {% if isHidden and not isActive %}is-hidden{% endif %}">
+                    <button class="link {{ config.name }}__menu-link {{ config.name }}__menu-link--lvl-{{ data.levelMenu }} {% if isActive %} {{ config.name }}__menu-link--active{% endif %}" onclick="this.form.action='{{ categoryUrl }}'" {% if quantity == 0 %}disabled="disabled"{% endif %}>
+                        <span class="{{ config.name }}__menu-link-text {% if isActive %}{{ config.name }}__menu-link-text--active{% endif %}">{{ categoryNode.name }}</span> <span>{{ quantity }}</span>
+                    </button>
 
-                {% if hasChildren %}
-                    {% include molecule('filter-category', 'CatalogPage') with {
-                        data: {
-                            filter: data.filter,
-                            filterPath: data.filterPath,
-                            categories: categoryNode.children,
-                            levelMenu: data.levelMenu + 1
-                        }
-                    } only %}
-                {% endif %}
-            </li>
+                    {% if hasChildren %}
+                        {% include molecule('filter-category', 'CatalogPage') with {
+                            data: {
+                                filter: data.filter,
+                                filterPath: data.filterPath,
+                                categories: categoryNode.children,
+                                levelMenu: data.levelMenu + 1
+                            }
+                        } only %}
+                    {% endif %}
+                </li>
+            {% endif %}
         {% endfor %}
     </ul>
 {% endblock %}
