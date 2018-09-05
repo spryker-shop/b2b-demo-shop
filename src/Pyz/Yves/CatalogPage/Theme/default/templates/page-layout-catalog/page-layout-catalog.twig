@@ -98,9 +98,7 @@
             </div>
 
             <div class="col col--sm-12 col--lg-8 col--xl-9">
-                {% include molecule('sort', 'CatalogPage') with {
-                    class: ''
-                } only %}
+                {% include molecule('sort', 'CatalogPage') only %}
 
                 {% include organism('active-filter-section', 'CatalogPage') with {
                     data: {

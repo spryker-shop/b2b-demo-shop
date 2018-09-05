@@ -8,6 +8,7 @@
 namespace Pyz\Zed\ProductStorage\Business;
 
 use Pyz\Zed\ProductStorage\Business\Storage\ProductAbstractStorageWriter;
+use Pyz\Zed\ProductStorage\Business\Storage\ProductConcreteStorageWriter;
 use Spryker\Zed\ProductStorage\Business\Attribute\AttributeMap;
 use Spryker\Zed\ProductStorage\Business\ProductStorageBusinessFactory as SprykerProductStorageBusinessFactory;
 use Spryker\Zed\ProductStorage\ProductStorageDependencyProvider;
@@ -48,5 +49,17 @@ class ProductStorageBusinessFactory extends SprykerProductStorageBusinessFactory
     protected function getProductFacade()
     {
         return $this->getProvidedDependency(ProductStorageDependencyProvider::FACADE_PRODUCT);
+    }
+
+    /**
+     * @return \Pyz\Zed\ProductStorage\Business\Storage\ProductConcreteStorageWriter
+     */
+    public function createProductConcreteStorageWriter()
+    {
+        return new ProductConcreteStorageWriter(
+            $this->getProductFacade(),
+            $this->getQueryContainer(),
+            $this->getConfig()->isSendingToQueue()
+        );
     }
 }
