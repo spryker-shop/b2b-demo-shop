@@ -49,7 +49,7 @@
                         <div class="col">
                             {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                                 {% include molecule('price') with {
-                                    modifiers: ['catalog'],
+                                    modifiers: ['catalog', 'catalog-list'],
                                     data: {
                                         amount: data.price | money,
                                         originalAmount: data.originalPrice is empty ? null : (data.originalPrice | money)

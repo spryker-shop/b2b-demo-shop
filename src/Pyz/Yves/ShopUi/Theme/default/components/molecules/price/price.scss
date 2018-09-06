@@ -1,6 +1,10 @@
 @include shop-ui-price {
     $name: &;
 
+    &--pdp {
+        margin-bottom: 23px;
+    }
+
     &--cart {
         margin-bottom: $setting-grid-space;
     }
@@ -9,6 +13,12 @@
         font-weight: fw(medium);
         line-height: map_get($setting-font-line-height, 2);
         color: $setting-color-gray-4;
+
+        &--pdp {
+            font-size: rem(26);
+            font-weight: rem(bold);
+            line-height: normal;
+        }
 
         &--cart {
             font-weight: fw(bold);
@@ -33,13 +43,21 @@
         }
     }
 
-    &--pdp {
-        margin-bottom: 23px;
+    &__mode {
+        color: $setting-color-gray-2;
+        font-size: rem(12);
+        font-weight: fw(regular);
+        line-height: rem(15);
+        margin-left: 5px;
 
-        #{$name}__amount {
-            font-size: rem(26);
-            font-weight: rem(bold);
+        &--pdp {
+            font-size: rem(13);
             line-height: normal;
+        }
+
+        &--cart,
+        &--catalog-list {
+            display: block;
         }
     }
 }
