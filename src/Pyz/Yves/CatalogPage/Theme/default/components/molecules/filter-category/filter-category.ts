@@ -7,8 +7,11 @@ export default class FilterCategory extends Component {
     constructor() {
         super();
         this.activeCategory = <HTMLElement>document.querySelector(this.listSelector);
+
         if (this.activeCategory) {
             this.categoriesToShow = <HTMLElement[]>Array.from(this.activeCategory.querySelectorAll(this.categoriesToShowSelector));
+        } else {
+            this.categoriesToShow = <HTMLElement[]>Array.from(this.querySelectorAll(this.categoriesToShowSelector));
         }
     }
 
@@ -28,7 +31,7 @@ export default class FilterCategory extends Component {
                 }
             }
         } else {
-            this.removeClass(this.querySelectorAll(this.categoriesToShowSelector));
+            this.removeClass(this.categoriesToShow);
         }
     }
 
