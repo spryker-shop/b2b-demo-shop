@@ -86,6 +86,10 @@
             width: 100%;
         }
 
+        &--checkout {
+            min-width: rem(200);
+        }
+
         &--edit {
             @include helper-effect-transition(color);
             color: $setting-color-gray-2;
@@ -93,6 +97,19 @@
             &:hover,
             &:focus {
                 color: $setting-color-gray-6;
+            }
+        }
+
+        &--gray {
+            @include helper-effect-transition(color border-color);
+            color: $setting-color-gray-3;
+            border-color: $setting-color-gray-2;
+
+            &:hover,
+            &:focus {
+                background-color: $setting-color-transparent;
+                border-color: $setting-color-main;
+                color: $setting-color-main;
             }
         }
 

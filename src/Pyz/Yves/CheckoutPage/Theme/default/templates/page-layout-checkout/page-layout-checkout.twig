@@ -1,0 +1,69 @@
+{% extends template('page-layout-main') %}
+
+{% define data = {
+    breadcrumbs: _view.stepBreadcrumbs.breadcrumbs | default([])
+} %}
+
+{% block sidebar %}{% endblock %}
+
+{% block header %}
+    {% embed organism('header') with {
+        modifiers: ['checkout'],
+        data: {
+            showSearchForm: false,
+            showNavigation: false
+        }
+    } only %}
+        {% block headerMainContent %}
+
+            <div class="grid grid--justify grid--middle container">
+                <div class="col">
+                    <a href="{{ url('cart') }}" class="button button--hollow button--gray">{{ 'checkout.back_button' | trans }}</a>
+                </div>
+
+                {% include molecule('logo') with {
+                    modifiers: ['checkout'],
+                    class: 'col'
+                } only %}
+
+                <div class="col col--right checkout-secure">
+                    {% include atom('icon') with {
+                        modifiers: ['lock'],
+                        data: {
+                            name: 'lock'
+                        }
+                    } only %}
+                    {{ 'checkout.secure' | trans }}
+                </div>
+            </div>
+        {% endblock %}
+    {% endembed %}
+{% endblock %}
+    
+{% block breadcrumbs %}
+    {% include view('cart-checkout-breadcrumb', 'CheckoutWidget') with {
+        data: {
+            isCartPage: false,
+            checkoutBreadcrumbs: data.breadcrumbs
+        }
+    } only %}
+{% endblock %}
+
+{% block title %}{% endblock %}
+
+{% block contentClass %}page-layout-main--checkout-page{% endblock %}
+
+{% block contentWrap %}
+    <div class="container container--checkout">
+        {% if data.title is not empty %}
+            <h1 class="checkout-title">
+                {% if data.stepNumder is defined %}
+                    <span class="checkout-title__index">{{data.stepNumder}}</span>
+                {% endif %}
+                {{data.title}}
+            </h1>
+        {% endif %}
+
+        {% block content %}{% endblock %}
+    </div>
+{% endblock %}

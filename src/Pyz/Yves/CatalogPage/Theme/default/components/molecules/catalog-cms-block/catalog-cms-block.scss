@@ -7,8 +7,18 @@
     p {
         font-size: rem(15);
         line-height: rem(22);
+        font-weight: fw(regular);
         color: $setting-color-gray-2;
         margin-top: rem(10);
+    }
+
+    a {
+        color: $setting-color-gray-3;
+
+        &:hover,
+        &:focus {
+            color: $setting-color-main;
+        }
     }
 
     hr {
