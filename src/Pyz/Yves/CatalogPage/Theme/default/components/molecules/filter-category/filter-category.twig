@@ -2,8 +2,7 @@
 
 {% define config = {
     name: 'filter-category',
-    tag: 'filter-category',
-    requestUrl: app.request.attributes.get('categoryNode').url | replace({"'": "\\'", '"':'\\"'})
+    tag: 'filter-category'
 } %}
 
 {% define data = {
@@ -39,11 +38,13 @@
 
             {% if data.filterPath is not empty %}
                 {% set categoryUrl = url(data.filterPath, {categoryPath: (categoryNode.url)}) %}
+                {% set currentUrl = url(data.filterPath, {categoryPath: (app.request.attributes.get('categoryPath'))}) %}
             {% else %}
                 {% set categoryUrl = categoryNode.url | replace({"'": "\\'", '"':'\\"'}) %}
+                {% set currentUrl = app.request.attributes.get('categoryPath') %}
             {% endif %}
 
-            {% set isActive = (config.requestUrl == categoryUrl) %}
+            {% set isActive = (currentUrl == categoryUrl) %}
 
             {% set isHidden = (data.levelMenu != 1) %}
 
@@ -63,6 +64,7 @@
                     } only %}
                 {% endif %}
             </li>
+
         {% endfor %}
     </ul>
 {% endblock %}

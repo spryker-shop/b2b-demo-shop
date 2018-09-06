@@ -1,0 +1,18 @@
+@mixin shop-ui-product-set ($name: '.product-set') {
+    #{$name} {
+        &__banner {
+            color: $setting-color-white;
+            font-size: rem(38);
+            line-height: rem(52);
+        }
+
+        &__add-to-cart {
+            position: relative;
+            z-index: $setting-zi-element + 1;
+        }
+
+        @content;
+    }
+}
+
+@include shop-ui-product-set;
