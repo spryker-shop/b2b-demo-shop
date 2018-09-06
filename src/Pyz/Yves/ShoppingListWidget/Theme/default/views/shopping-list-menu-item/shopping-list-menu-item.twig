@@ -1,0 +1,17 @@
+{% extends template('widget') %}
+
+{% define data = {
+    isActivePage: _widget.isActivePage
+} %}
+
+{% block body %}
+    {% include molecule('navigation-sidebar-item') with {
+        data: {
+            url: path('shopping-list'),
+            icon: 'shopping-list',
+            label: 'shopping_list.shopping_list' | trans,
+            name: 'shopping-list'
+        },
+        modifiers: data.isActivePage ? ['active'] : []
+    } only %}
+{% endblock %}

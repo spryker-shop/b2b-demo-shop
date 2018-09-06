@@ -5,43 +5,7 @@
         &__list {
             list-style: none;
             padding: rem(16) 0 rem(16) rem(16);
-        }
-
-        &__item {
-            white-space: nowrap;
-            overflow: hidden;
-
-            &--active {
-                background-color: $setting-color-gray-11;
-            }
-        }
-
-        &__link {
-            display: block;
-            padding: rem(13);
-            line-height: 1em;
-            font-size: map_get($setting-font-size, 6);
-            color: $setting-color-gray-2;
-        }
-
-        &__icon {
-            display: inline-block;
-            height: 1em;
-            width: 1.5em;
-            margin-right: rem(24);
-            vertical-align: middle;
-        }
-
-        &__item--active &__link {
-            cursor: default;
-        }
-
-        &__item--active &__icon {
-            color: $setting-color-alt;
-        }
-
-        &__item--active &__label {
-            color: $setting-color-gray-6;
+            border-radius: 2px;
         }
 
         @include helper-breakpoint-media-min($md-min) {

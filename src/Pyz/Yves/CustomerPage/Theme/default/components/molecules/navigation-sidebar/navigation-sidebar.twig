@@ -1,0 +1,52 @@
+{% extends molecule('navigation-sidebar', 'ShopUi') %}
+
+{% define config = {
+    name: 'navigation-sidebar',
+    tag: 'nav'
+} %}
+
+{% define data = {
+    activePage: required,
+    items: [
+        {
+            name: 'overview',
+            url: path('customer/overview'),
+            label: 'customer.account.overview' | trans,
+            icon: 'page'
+        },
+        {
+            name: 'profile',
+            url: path('customer/profile'),
+            label: 'customer.account.profile_data' | trans,
+            icon: 'user'
+        },
+        {
+            name: 'address',
+            url: path('customer/address'),
+            label: 'customer.account.address' | trans,
+            icon: 'marker'
+        },
+        {
+            name: 'order',
+            url: path('customer/order'),
+            label: 'customer.account.order_history' | trans,
+            icon: 'history'
+        },
+        {
+            name: 'newsletter',
+            url: path('customer/newsletter'),
+            label: 'customer.account.newsletter' | trans,
+            icon: 'envelopes'
+        }
+    ]
+} %}
+
+{% block postContent %}
+    <ul class="menu">
+        {{ widget('ShoppingListMenuItemWidgetPlugin', data.activePage, data.activeEntityId) }}
+
+        {% if widgetGlobalExists('MenuItemBusinessOnBehalfWidgetPlugin') %}
+            {{ widgetGlobal('MenuItemBusinessOnBehalfWidgetPlugin', data.activePage, data.activeEntityId) }}
+        {% endif %}
+    </ul>
+{% endblock %}

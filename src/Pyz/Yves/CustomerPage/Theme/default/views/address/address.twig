@@ -1,0 +1,63 @@
+{% extends template('page-layout-customer', 'CustomerPage') %}
+
+{% define data = {
+    addresses: _view.addresses,
+    activePage: 'address'
+} %}
+
+{% macro address(label, address, addressId) %}
+    {% if address is not empty %}
+        {% embed molecule('action-card') with {
+            data: {
+                address: address,
+                actions: [
+                    {
+                        icon: 'edit',
+                        url: url('customer/address/update', { id: addressId }),
+                        title: 'customer.profile.address.edit' | trans
+                    },
+                    {
+                        icon: 'delete',
+                        url: url('customer/address/delete', { id: addressId }),
+                        title: 'customer.profile.address.delete' | trans
+                    }
+                ]
+            }
+        } only %}
+            {% block content %}
+                {% include molecule('display-address') with {
+                    data: {
+                        address: data.address
+                    }
+                } only %}
+            {% endblock %}
+        {% endembed %}
+    {% endif %}
+{% endmacro %}
+
+{% block customerContent %}
+    {% include molecule('action-bar', 'ShopUi') with {
+        data: {
+            title: 'customer.account.address' | trans,
+            actions: [
+                {
+                    title: 'customer.account.add_new_address' | trans,
+                    url: url('customer/address/new'),
+                    modifiers: ['hollow']
+                }
+            ]
+        }
+    } only %}
+
+    {% set cards = [] %}
+
+    {% for address in data.addresses %}
+        {% set cards = cards | merge([{ content: _self.address('', address, address.idCustomerAddress) }]) %}
+    {% endfor %}
+
+    {% include molecule('action-card-grid') with {
+        data: {
+            cards: cards
+        }
+    } only %}
+{% endblock %}

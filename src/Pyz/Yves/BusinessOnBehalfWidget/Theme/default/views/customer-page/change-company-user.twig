@@ -1,0 +1,26 @@
+{% extends template('widget') %}
+
+{% define data = {
+    isVisible: _widget.isVisible,
+    isActivePage: false
+} %}
+
+{% block template %}
+    {% if data.isVisible %}
+        {{parent()}}
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+    {% if data.isVisible %}
+        {% include molecule('navigation-sidebar-item') with {
+            data: {
+                url: path('company/user/select'),
+                icon: 'office',
+                label: 'business_on_behalf_widget.change_company_user' | trans,
+                name: 'change-company-user'
+            },
+            modifiers: data.isActivePage ? ['active'] : []
+        } only %}
+    {% endif %}
+{% endblock %}

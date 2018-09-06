@@ -1,0 +1,15 @@
+{% extends template('widget') %}
+
+{% define data = {
+    activePage: _widget.activePage,
+    activeEntityId: _widget.activeEntityId
+} %}
+
+{% block body %}
+    {% include molecule('navigation-sidebar', 'CustomerPage') with {
+        data: {
+            activePage: data.activePage,
+            activeEntityId: data.activeEntityId
+        }
+    } only %}
+{% endblock %}

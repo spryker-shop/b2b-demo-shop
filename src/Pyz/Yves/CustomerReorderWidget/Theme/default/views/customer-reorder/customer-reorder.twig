@@ -1,0 +1,56 @@
+{% extends template('widget') %}
+
+{% block reorderAction %}
+    <a class="table__action"
+       href="{{ path('customer/order/reorder', {'idOrder': _widget.order.idSalesOrder}) }}"
+       title="{{ 'customer.order.reorder' | trans }}"
+    >
+        {% include atom('icon') with {
+            data: {
+                name: 'cart'
+            }
+        } only %}
+    </a>
+{% endblock %}
+
+{% block formStart %}
+    <customer-reorder class="custom-component customer-reorder">
+        <form action="{{ path('customer/order/reorder-items') }}" method="post">
+            <input type="hidden" name="id" value="{{ _widget.order.idSalesOrder }}" />
+{% endblock %}
+
+{% block formCheckbox %}
+    {% embed atom('checkbox') with {
+        attributes: {
+            name: 'items[]',
+            disabled: not _widget.availability,
+            value: _widget.item.idSalesOrderItem
+        }
+    } only %}
+        {%- block inputClass -%}
+            js-customer-reorder__selection
+        {%- endblock -%}
+    {% endembed %}
+{% endblock %}
+
+{% block formActions %}
+    <div class="box">
+        <div class="grid grid--middle grid--right">
+            <div class="form-field col col--sm-5 col--lg-3">
+                <button class="button button--expand js-customer-reorder__trigger" {% if not _widget.availability %}disabled{% endif %}>
+                    {{'customer.order.reorder_selected' | trans}}
+                </button>
+            </div>
+            <div class="form-field col col--sm-5 col--lg-3">
+                <a href="{{ path('customer/order/reorder', {'idOrder': _widget.order.idSalesOrder}) }}" class="button button--expand">
+                    {{ 'customer.order.reorder_all' | trans }}
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block formEnd %}
+        </form>
+    </customer-reorder>
+{% endblock %}

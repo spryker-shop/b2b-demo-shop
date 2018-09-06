@@ -1,0 +1,34 @@
+{% extends template('page-layout-customer', 'CustomerPage') %}
+
+{% define data = {
+    orders: _view.orderList,
+
+    pagination: {
+        parameters: {},
+        currentPage: _view.pagination.page,
+        paginationPath: 'customer/order',
+        maxPage: _view.pagination.lastPage,
+        showAlwaysFirstAndLast: true
+    },
+
+    activePage: 'order'
+} %}
+
+{% block customerContent %}
+    {% include molecule('action-bar', 'ShopUi') with {
+        data: {
+            title: 'customer.account.order_history' | trans,
+            actions: []
+        }
+    } only %}
+
+    {% include molecule('order-table', 'CustomerPage') with {
+        data: {
+            orders: data.orders
+        }
+    } only %}
+
+    {% include molecule('pagination') with {
+        data: data.pagination
+    } only %}
+{% endblock %}

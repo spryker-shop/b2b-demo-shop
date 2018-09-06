@@ -1,0 +1,21 @@
+{% extends template('page-layout-customer', 'CustomerPage') %}
+
+{% define data = {
+    title: 'customer.account.shopping_list' | trans,
+    activePage: 'shoppingList'
+} %}
+
+{% block title %}{% endblock %}
+
+{% block breadcrumbs %}
+    {% include molecule('breadcrumb') with {
+        data: {
+            steps: [{
+                label: 'customer.account' | trans,
+            },
+            {
+                label: 'customer.account.shopping_list' | trans,
+            }]
+        }
+    } only %}
+{% endblock %}
