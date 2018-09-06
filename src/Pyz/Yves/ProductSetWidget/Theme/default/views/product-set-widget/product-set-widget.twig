@@ -1,0 +1,90 @@
+{% extends template('product-set', 'ProductSetWidget') %}
+
+{% define data = {
+    products: _widget.productViews,
+    name: _widget.productSet.name,
+    description: _widget.productSet.description,
+    images: _widget.productSet.imageSets.0.images | default([]),
+    sliderConfig: '{
+        "slidesToShow": 2.3,
+        "slidesToScroll": 1,
+        "dots": false,
+        "infinite": false,
+        "loop": true
+    }'
+} %}
+
+{% block body %}
+
+    {% block header %}{% endblock %}
+
+    <div class="product-set--widget">
+        <div class="common-section__text">
+            {% block title %}
+                <h2 class="common-section__title">{{data.name}}</h2>
+            {% endblock %}
+            {% block description %}
+                {% if data.description is not empty %}
+                    {{ data.description }}
+                {% endif %}
+            {% endblock %}
+        </div>
+        <div class="grid grid--gap grid--center">
+            <div class="col col--xs-12 col--md-6 col--lg-5 spacing-right spacing-right--inner spacing-right--bigger">
+                {% block carousel %}
+                    {% embed molecule('banner') with {
+                        class: 'spacing-bottom spacing-bottom--reset',
+                        modifiers: ['medium'],
+                        data: {
+                            imageUrl: '/assets/images/product-set-1.jpg'
+                        }
+                    } only %}
+                        {% block body %}
+                            <div class="{{config.name}}__container spacing-x spacing-x--reset" style="{{backgroundImage}}"></div>
+                        {% endblock %}
+                    {% endembed %}
+                {% endblock %}
+            </div>
+            <div class="col col--xs-12 col--md-6 col--lg-7">
+                {% block productSet %}
+                    <form method="GET">
+                        {% embed molecule('slick-carousel') with {
+                            modifiers: ['equal-height', 'product-set'],
+                            data: {
+                                slides: data.products
+                            },
+                            attributes: {
+                                'data-json': data.sliderConfig
+                            }
+                        } only %}
+
+                            {% block slides %}
+                                {% for product in data.slides %}
+                                    {% embed molecule('product-card') with {
+                                        class: 'spacing-bottom spacing-bottom--inner spacing-bottom--reset',
+                                        modifiers: ['stretch', 'product-set'],
+                                        data: {
+                                            name: product.name,
+                                            abstractId: product.idProductAbstract,
+                                            url: product.url,
+                                            imageUrl: product.images.0.externalUrlSmall | default,
+                                            price: product.price,
+                                            originalPrice: product.prices['ORIGINAL'] | default
+                                        }
+                                    } only %}
+                                        {% block content %}
+                                            <div class="col col--bottom">
+                                                {{parent()}}
+                                            </div>
+                                        {% endblock %}
+                                    {% endembed %}
+                                {% endfor %}
+                            {% endblock %}
+                        {% endembed %}
+                    </form>
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
