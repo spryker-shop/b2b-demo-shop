@@ -19,6 +19,7 @@
             {% if data.icon | default(false) %}
                 <div class="{{ config.name }}__icon-wrapper">
                     {% include atom('icon') with {
+                        modifiers: ['big'],
                         data: {
                             name: data.icon
                         },

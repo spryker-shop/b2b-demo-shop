@@ -26,6 +26,7 @@
                     >
                         {% if action.icon | default(false) %}
                             {% include atom('icon') with {
+                                modifiers: ['big'],
                                 class: config.name ~ '__icon',
                                 data: {
                                     name: action.icon
