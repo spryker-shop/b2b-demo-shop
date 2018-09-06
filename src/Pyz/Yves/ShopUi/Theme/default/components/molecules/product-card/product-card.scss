@@ -12,16 +12,24 @@ $catalog-space-x: rem(14);
         padding: rem(8) rem(28) rem(36);
         height: 100%;
 
-        &--catalog {
-            padding: 0 $catalog-space-x rem(26);
+        &:hover {
+            .product-card__image-wrap--catalog::before {
+                background-color: $setting-color-transparent;
+            }
+            .product-card__overlay {
+                color: $setting-color-gray-5;
 
-            &:hover {
-                .product-card__image-wrap--catalog::before {
+                &::before {
+                    box-shadow: 0 18px 18px 0 $setting-color-shadow-1, 0 3px 3px 0 $setting-color-shadow-1;
                     background-color: $setting-color-transparent;
                 }
             }
         }
 
+        &--catalog {
+            padding: 0 $catalog-space-x rem(26);
+        }
+      
         &--product-set {
             padding: 0 $catalog-space-x rem(26);
         }
@@ -35,6 +43,9 @@ $catalog-space-x: rem(14);
     }
 
     &__image-wrap {
+        position: relative;
+        margin: 0 (-$catalog-space-x) rem(15);
+        padding: rem(8) $catalog-space-x;
         flex-basis: 100%;
 
         &--product-set {
@@ -42,9 +53,6 @@ $catalog-space-x: rem(14);
         }
 
         &--catalog {
-            position: relative;
-            margin: 0 (-$catalog-space-x) rem(15);
-            padding: rem(8) $catalog-space-x;
 
             &::before {
                 @include helper-effect-transition(background-color box-shadow);
