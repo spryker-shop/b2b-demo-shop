@@ -4,11 +4,13 @@ export default class ColorSelector extends Component {
     colors: HTMLAnchorElement[]
     images: HTMLImageElement[]
     links: HTMLElement[]
+    detailsLink: HTMLAnchorElement[]
 
     protected readyCallback(): void {
         this.colors = <HTMLAnchorElement[]>Array.from(this.getElementsByClassName(`${this.jsName}__color`));
         this.links = <HTMLElement[]>Array.from(document.querySelectorAll(this.targetLinkSelector));
-        this.images = <HTMLImageElement[]>Array.from(document.querySelectorAll(`${this.targetLinkSelector} img`));
+        this.detailsLink = <HTMLAnchorElement[]>Array.from(document.querySelectorAll(this.targetDetailsLink));
+        this.images = <HTMLImageElement[]>Array.from(document.querySelectorAll(`${this.targetLinkSelector}`));
         this.mapEvents();
     }
 
@@ -26,6 +28,7 @@ export default class ColorSelector extends Component {
         this.setActiveColor(color);
         this.setImage(imageSrc);
         this.setProductUrl(productUrl);
+        this.setProductDetailsUrl(productUrl);
     }
 
     setActiveColor(newColor: HTMLAnchorElement): void {
@@ -46,6 +49,15 @@ export default class ColorSelector extends Component {
 
     setProductUrl(url: string): void {
         this.links.forEach((link: HTMLElement) => {
+            console.log(link);
+            if (link.getAttribute('href') !== url) {
+                link.setAttribute('href', url);
+            }
+        });
+    }
+
+    setProductDetailsUrl(url: string): void {
+        this.detailsLink.forEach((link: HTMLElement) => {
             if (link.getAttribute('href') !== url) {
                 link.setAttribute('href', url);
             }
@@ -54,5 +66,9 @@ export default class ColorSelector extends Component {
 
     get targetLinkSelector(): string {
         return this.getAttribute('target-image-selector');
+    }
+
+    get targetDetailsLink(): string {
+        return this.getAttribute('target-url-selector');
     }
 }
