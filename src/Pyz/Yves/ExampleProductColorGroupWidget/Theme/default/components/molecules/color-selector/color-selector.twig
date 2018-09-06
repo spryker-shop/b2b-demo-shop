@@ -24,13 +24,11 @@
         <span class="{{ config.name }}__colors-title">{{ 'product.color-selector' | trans }}:</span>
         {% for item in data.items %}
             {% set image = item.images is defined ? item.images | first : null %}
-            <a
-                    class="{{ config.name }}__color {% if loop.first %}{{ config.name }}__color--active{% endif %} {{ config.jsName }}__color"
+            <a class="{{ config.name }}__color {% if loop.first %}{{ config.name }}__color--active{% endif %} {{ config.jsName }}__color"
                     href="{{ item.url }}"
                     data-image-src="{{ image ? image.externalUrlSmall : '' }}"
                     {% if item.colorCode %}style="border-color:{{ item.colorCode }};"{% endif %}>
-                <span class="{{ config.name }}__color-inner"
-                      {% if item.colorCode %}style="background-color:{{ item.colorCode }};"{% endif %}></span>
+                <span class="{{ config.name }}__color-inner" {% if item.colorCode %}style="background-color:{{ item.colorCode }};"{% endif %}></span>
                 <span class="color-tooltip">{{ item.attributes.farbe }}</span>
             </a>
         {% endfor %}
