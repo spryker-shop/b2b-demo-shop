@@ -8,11 +8,8 @@ export default class FilterCategory extends Component {
         super();
         this.activeCategory = <HTMLElement>document.querySelector(this.listSelector);
 
-        if (this.activeCategory) {
-            this.categoriesToShow = <HTMLElement[]>Array.from(this.activeCategory.querySelectorAll(this.categoriesToShowSelector));
-        } else {
-            this.categoriesToShow = <HTMLElement[]>Array.from(this.querySelectorAll(this.categoriesToShowSelector));
-        }
+        const parent = this.activeCategory ? this.activeCategory : this;
+        this.categoriesToShow = <HTMLElement[]>Array.from(parent.querySelectorAll(this.categoriesToShowSelector));
     }
 
     protected readyCallback(): void {
