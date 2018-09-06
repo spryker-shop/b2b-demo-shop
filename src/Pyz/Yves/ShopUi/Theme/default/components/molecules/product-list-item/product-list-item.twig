@@ -28,16 +28,16 @@
             {% endblock %}
 
             <div class="col col--sm-6 col--md-7 col--xl-8 {{config.name}}__col {{config.name}}__content">
-                {% block groups %}
-                    {{ widget('ProductGroupWidgetPlugin', data.abstractId) }}
-                {% endblock %}
-
                 {% block name %}
                     <div class="{{config.name}}__name">{{ data.name }}</div>
                 {% endblock %}
 
                 {% block rating %}
                     {{ widget('ProductAbstractReviewWidgetPlugin', data.abstractId) }}
+                {% endblock %}
+
+                {% block groups %}
+                    {{ widget('ProductGroupWidgetPlugin', data.abstractId) }}
                 {% endblock %}
 
                 {% block price %}{% endblock %}
