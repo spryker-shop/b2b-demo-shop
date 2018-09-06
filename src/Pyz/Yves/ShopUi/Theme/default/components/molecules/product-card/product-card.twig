@@ -13,7 +13,6 @@
     price: required,
     originalPrice: null,
     hideCategory: null
-
 } %}
 
 {% block image %}
@@ -27,6 +26,10 @@
                 title: data.name
             }
         } only %}
+
+        {% block groups %}
+            {{ widget('ProductGroupWidgetPlugin', data.abstractId) }}
+        {% endblock %}
     </div>
 {% endblock %}
 
@@ -35,12 +38,8 @@
         {{ widget('ProductAbstractLabelWidgetPlugin', data.abstractId) }}
     {% endblock %}
 
-    {% block groups %}
-        {{ widget('ProductGroupWidgetPlugin', data.abstractId) }}
-    {% endblock %}
-
     {% block name %}
-        <a class="{{ component.renderClass(config.name ~ '__overlay', modifiers) }}" href="{{data.url}}">{{data.name}}</a>
+        <a class="{{ component.renderClass(config.name ~ '__overlay', modifiers, 'js-product-color-group__image-' ~ data.abstractId) }}" href="{{data.url}}">{{data.name}}</a>
 
         {% if data.hideCategory is null %}
             <span class="{{ component.renderClass(config.name ~ '__category', modifiers) }}">Office Furniture</span>
