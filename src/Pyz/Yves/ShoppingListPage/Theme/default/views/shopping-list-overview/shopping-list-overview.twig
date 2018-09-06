@@ -1,0 +1,55 @@
+{% extends template('page-layout-shopping-list', 'ShoppingListPage') %}
+
+{% define data = {
+    shoppingListCollection: _view.shoppingListCollection,
+    shoppingListForm: _view.shoppingListForm,
+    shoppingListResponse: _view.shoppingListResponse,
+    labels: {
+        overviewTitle: 'customer.account.shopping_list.overview.title' | trans,
+        newFormTitle: 'customer.account.shopping_list.overview.form.new' | trans
+    }
+} %}
+
+{% block customerContent %}
+    <div class="box">
+        <h4>{{ data.labels.overviewTitle }}</h4>
+        <hr/>
+        {% include molecule('form') with {
+            data: {
+                title: data.labels.newFormTitle,
+                form: data.shoppingListForm,
+                submit: {
+                    enable: true,
+                    text: 'customer.account.shopping_list.overview.add_new' | trans
+                }
+            }
+        } only %}
+
+        <div class="spacing-y">
+            <hr/>
+        </div>
+    </div>
+
+    {% if data.shoppingListCollection.shoppingLists | length %}
+        <form method="POST" action="{{ path('shopping-list/add-shopping-list-to-cart') }}">
+            {% include molecule('shopping-list-overview-table', 'ShoppingListPage') with {
+                data: {
+                    shoppingLists: data.shoppingListCollection.shoppingLists,
+                    enableTableForm: true,
+                    shoppingListResponse: data.shoppingListResponse
+                }
+            } only %}
+
+            <button type="submit" class="button button--success" {{qa('submit-button')}}>
+                {{ 'customer.account.shopping_list.overview.add_shopping_list_to_cart' | trans }}
+                {% include atom('icon') with {
+                    data: {
+                        name: 'shopping-cart'
+                    }
+                } only %}
+            </button>
+        </form>
+    {% else %}
+        {{ 'customer.account.shopping_list.overview.empty' | trans }}
+    {% endif %}
+{% endblock %}
