@@ -7,7 +7,9 @@
 
 {% define data = {
     product: required,
-    maxQuantity: 10
+    maxQuantity: 10,
+    isBundle: null,
+    bundleItems: []
 } %}
 
 {% set options = [] %}
@@ -50,6 +52,34 @@
         {% else %}
             {{ widget('PriceWidgetPlugin', data.product) }}
         {% endif %}
+    {% endif %}
+
+    {% if data.isBundle != null %}
+        <div class="product-options__item js-product-options-bundle">
+            <div class="product-options__title js-product-options-bundle__title" data-toggle-target=".js-product-options-bundle__target">{{ 'bundle.title' | trans }}</div>
+            <div class="js-product-options-bundle__target is-hidden">
+                <ul class="product-bundle product-bundle--configurator">
+                    {% for item in data.bundleItems %}
+                        <li class="product-bundle__item product-bundle__item--configurator">
+                            <div class="product-bundle__img-block product-bundle__img-block--configurator">
+                                <img src="{{ item.image }}" class="product-bundle__img">
+                            </div>
+                            <div class="product-bundle__info product-bundle__info--configurator">
+                                <h4 class="product-bundle__name">{{ item.name }}</h4>
+                                <span class="product-bundle__quantity">x {{ item.quantity }}</span>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        {% include molecule('toggler-accordion') with {
+            attributes: {
+                'wrap-selector': '.js-product-options-bundle',
+                'trigger-selector': '.js-product-options-bundle__title',
+                'class-to-toggle': 'is-hidden'
+            }
+        } only %}
     {% endif %}
 
     {{ widget('ProductGroupWidgetPlugin', data.product.idProductAbstract) }}

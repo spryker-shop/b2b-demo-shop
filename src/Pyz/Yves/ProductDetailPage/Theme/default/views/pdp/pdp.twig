@@ -38,7 +38,9 @@
         <div class="col col--sm-5">
             {% include molecule('product-configurator', 'ProductDetailPage') with {
                 data: {
-                    product: data.product
+                    product: data.product,
+                    isBundle: data.isBundle,
+                    bundleItems: data.bundleItems
                 }
             } only %}
         </div>
@@ -58,6 +60,14 @@
 
     {% if data.product.productSetIds is not empty %}
         {{ widget('ProductSetIdsWidgetPlugin', data.product.productSetIds) }}
+    {% endif %}
+
+    {% if data.isBundle != null %}
+        {% include molecule('product-bundle', 'ProductDetailPage') with {
+            data: {
+                bundleItems: data.bundleItems
+            }
+        } only %}
     {% endif %}
 
     {{ widget('SimilarProductsWidgetPlugin', data.product) }}
