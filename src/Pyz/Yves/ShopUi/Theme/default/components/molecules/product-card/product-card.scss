@@ -22,6 +22,10 @@ $catalog-space-x: rem(14);
             }
         }
 
+        &--product-set {
+            padding: 0 $catalog-space-x rem(26);
+        }
+
         &--stretch {
             display: flex;
             flex-wrap: wrap;
@@ -32,6 +36,10 @@ $catalog-space-x: rem(14);
 
     &__image-wrap {
         flex-basis: 100%;
+
+        &--product-set {
+            max-height: rem(243);
+        }
 
         &--catalog {
             position: relative;
@@ -80,6 +88,12 @@ $catalog-space-x: rem(14);
             &::before {
                 background-color: $setting-color-transparent;
             }
+        }
+
+        &--product-set{
+            font-size: rem(16);
+            line-height: normal;
+            letter-spacing: rem(0.1);
         }
 
         &:hover {
