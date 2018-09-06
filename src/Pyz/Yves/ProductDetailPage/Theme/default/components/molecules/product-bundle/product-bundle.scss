@@ -81,6 +81,36 @@
             flex-direction: column;
             justify-content: center;
         }
+
+        &--cart {
+            max-width: none;
+            margin: 0;
+        }
+
+        &__title--cart {
+            font-size: rem(14);
+            font-weight: fw(medium);
+            color: $setting-color-gray-6;
+            text-align: left;
+            margin: 10px 0 3px;
+        }
+
+        &__list--cart {
+            padding: 0 0 0 rem(20);
+            font-size: rem(13);
+            font-weight: fw(regular);
+            color: $setting-color-gray-6;
+        }
+
+        &__item--cart {
+            padding: 3px 0;
+        }
+
+        &__quantity--cart {
+            font-size: rem(13);
+            line-height: normal;
+            color: $setting-color-gray-3;
+        }
     }
 }
 
