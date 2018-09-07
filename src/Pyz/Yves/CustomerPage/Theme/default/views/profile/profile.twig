@@ -1,0 +1,64 @@
+{% extends template('page-layout-customer', 'CustomerPage') %}
+
+{% define data = {
+    forms: {
+        profile: _view.profileForm,
+        password: _view.passwordForm
+    },
+
+    activePage: 'profile'
+} %}
+
+{% macro profileForm(title, content) %}
+    {% embed molecule('action-card') with {
+        data: {
+            title: title,
+            content: content
+        }
+    } only %}
+        {% block content %}
+            {% include molecule('form') with {
+                data: data.content
+            } only %}
+        {% endblock %}
+    {% endembed %}
+{% endmacro %}
+
+{% block customerContent %}
+    {% include molecule('action-bar', 'ShopUi') with {
+        modifiers: ['first'],
+        data: {
+            title: 'customer.account.profile_data' | trans,
+        }
+    } only %}
+
+    {% include molecule('action-card-grid') with {
+        data: {
+            cards: [
+                {
+                    content: _self.profileForm('customer.profile.update' | trans, {
+                        form: data.forms.profile,
+                        layout: {
+                            salutation: 'col col--sm-12 col--lg-4',
+                            first_name: 'col col--sm-12 col--lg-4',
+                            last_name: 'col col--sm-12 col--lg-4'
+                        },
+                        submit: {
+                            enable: true
+                        }
+                    })
+                },
+                {
+                    content: _self.profileForm('customer.password.update' | trans, {
+                        form: data.forms.password,
+                        submit: {
+                            enable: true
+                        }
+                    })
+                }
+            ]
+        }
+    } only %}
+
+    {% include molecule('delete-account', 'CustomerPage') only %}
+{% endblock %}
