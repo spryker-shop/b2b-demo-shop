@@ -20,6 +20,7 @@ use SprykerShop\Yves\NavigationWidget\Plugin\ShopUi\NavigationWidgetPlugin;
 use SprykerShop\Yves\PriceWidget\Plugin\ShopUi\PriceModeSwitcherWidgetPlugin;
 use SprykerShop\Yves\ProductGroupWidget\Plugin\ShopUi\ProductGroupWidgetPlugin;
 use SprykerShop\Yves\ShopApplication\ShopApplicationDependencyProvider as SprykerShopApplicationDependencyProvider;
+use SprykerShop\Yves\ShoppingListWidget\Plugin\ShopUi\ShoppingListWidgetPlugin;
 
 class ShopApplicationDependencyProvider extends SprykerShopApplicationDependencyProvider
 {
@@ -39,6 +40,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             DisplayOnBehalfBusinessWidgetPlugin::class,
             MenuItemBusinessOnBehalfWidgetPlugin::class,
             MenuItemCompanyWidgetPlugin::class,
+            ShoppingListWidgetPlugin::class, #ShoppingListFeature
         ];
     }
 
