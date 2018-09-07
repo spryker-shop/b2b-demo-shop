@@ -35,18 +35,16 @@
 {% endblock %}
 
 {% block formActions %}
-    <div class="box">
-        <div class="grid grid--middle grid--right">
-            <div class="form-field col col--sm-5 col--lg-3">
-                <button class="button button--expand js-customer-reorder__trigger" {% if not _widget.availability %}disabled{% endif %}>
-                    {{'customer.order.reorder_selected' | trans}}
-                </button>
-            </div>
-            <div class="form-field col col--sm-5 col--lg-3">
-                <a href="{{ path('customer/order/reorder', {'idOrder': _widget.order.idSalesOrder}) }}" class="button button--expand">
-                    {{ 'customer.order.reorder_all' | trans }}
-                </a>
-            </div>
+    <div class="grid grid--middle grid--right spacing-top spacing-top--bigger">
+        <div class="form-field col col--sm-5 col--lg-3 spacing-x">
+            <button class="button button--expand button--hollow js-customer-reorder__trigger" {% if not _widget.availability %}disabled{% endif %}>
+                {{'customer.order.reorder_selected' | trans}}
+            </button>
+        </div>
+        <div class="form-field col col--sm-5 col--lg-3">
+            <a href="{{ path('customer/order/reorder', {'idOrder': _widget.order.idSalesOrder}) }}" class="button button--expand">
+                {{ 'customer.order.reorder_all' | trans }}
+            </a>
         </div>
     </div>
 {% endblock %}
