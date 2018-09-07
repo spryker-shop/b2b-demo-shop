@@ -110,38 +110,42 @@
                         {% block content %}
                             <div class="spacing-bottom spacing-bottom--bigger">
                                 {{parent()}}
+
+                                {% set isNotAvailable = embed.product.idProductConcrete and not embed.product.available %}
+
+                                {% embed molecule('variant-configurator', 'ProductDetailPage') with {
+                                    class: 'product-set__variant-configurator',
+                                    data: {
+                                        superAttributes: embed.product.attributeMap.superAttributes,
+                                        selectedAttributes: embed.product.selectedAttributes,
+                                        availableAttributes: embed.product.availableAttributes,
+                                        useExternalForm: true
+                                    },
+                                    embed: embed
+                                } only %}
+                                    {% block variant %}
+                                        {% include molecule('variant', 'ProductDetailPage') with {
+                                            class: 'product-set__variant',
+                                            data: {
+                                                name: name,
+                                                formName: 'attributes[' ~ embed.product.idProductAbstract ~ '][' ~ name ~ ']',
+                                                values: values,
+                                                selectedValue: selectedValue,
+                                                label: ('product.attribute.' ~ name) | trans,
+                                                isAvailable: isAvailable
+                                            }
+                                        } only %}
+                                    {% endblock %}
+                                {% endembed %}
+
+                                {% if isNotAvailable %}
+                                    <p>
+                                        <strong>{{ "product.detail.out_of_stock" | trans }}</strong>
+                                    </p>
+                                {% endif %}
+                                {% set isDisabled = not embed.product.idProductConcrete or not embed.product.available %}
+
                             </div>
-                            {% set isNotAvailable = embed.product.idProductConcrete and not embed.product.available %}
-
-                            {% embed molecule('variant-configurator', 'ProductDetailPage') with {
-                                data: {
-                                    superAttributes: embed.product.attributeMap.superAttributes,
-                                    selectedAttributes: embed.product.selectedAttributes,
-                                    availableAttributes: embed.product.availableAttributes,
-                                    useExternalForm: true
-                                },
-                                embed: embed
-                            } only %}
-                                {% block variant %}
-                                    {% include molecule('variant', 'ProductDetailPage') with {
-                                        data: {
-                                            name: name,
-                                            formName: 'attributes[' ~ embed.product.idProductAbstract ~ '][' ~ name ~ ']',
-                                            values: values,
-                                            selectedValue: selectedValue,
-                                            label: ('product.attribute.' ~ name) | trans,
-                                            isAvailable: isAvailable
-                                        }
-                                    } only %}
-                                {% endblock %}
-                            {% endembed %}
-
-                            {% if isNotAvailable %}
-                                <p>
-                                    <strong>{{ "product.detail.out_of_stock" | trans }}</strong>
-                                </p>
-                            {% endif %}
-                            {% set isDisabled = not embed.product.idProductConcrete or not embed.product.available %}
 
                             <a href="{{ isDisabled ? 'javascript:void(0)' : path('cart/add', {sku: embed.product.sku}) }}" class="product-set__add-to-cart button button--expand col col--bottom" {% if isDisabled %}disabled{% endif %}>
                                 {{ 'page.detail.add-to-cart' | trans }}

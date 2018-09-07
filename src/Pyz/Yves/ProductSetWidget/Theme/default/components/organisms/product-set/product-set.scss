@@ -11,6 +11,24 @@
             z-index: $setting-zi-element + 1;
         }
 
+        &__variant-configurator {
+            position: relative;
+            z-index: $setting-zi-element + 2;
+        }
+
+        &__variant,
+        &__variant:first-child {
+            border: none;
+
+            .custom-select--pdp-option {
+                margin-bottom: 0;
+            }
+        }
+
+        &--widget {
+            padding-bottom: rem(80);
+        }
+
         @content;
     }
 }

@@ -2,8 +2,15 @@
     @include shop-ui-form($name);
 
     #{$name} {
-        &__field + &__field {
-            margin-top: 0.5rem;
+        &__field {
+            + #{&} {
+                margin-top: 0.5rem;
+            }
+
+            &#{&}--section {
+                margin-top: rem(48);
+                width: 100%;
+            }
         }
 
         &__actions {

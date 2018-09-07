@@ -1,4 +1,13 @@
-@include shop-ui-badge {
+@include shop-ui-badge('.badge') {
+    & {
+        border-radius: $setting-border-radius;
+    }
+
+    &--gray {
+        color: $setting-color-white;
+        background: $setting-color-gray-2;
+    }
+
     &--summary {
         background-color: $setting-color-gray-2;
         color: $setting-color-white;
@@ -8,6 +17,5 @@
         line-height: normal;
         letter-spacing: rem(0.2);
         padding: rem(5) rem(8);
-        border-radius: $setting-border-radius;
     }
 }
