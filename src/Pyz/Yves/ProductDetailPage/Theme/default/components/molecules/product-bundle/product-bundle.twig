@@ -1,0 +1,36 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'product-bundle',
+    tag: 'div'
+} %}
+
+{% define data = {
+    bundleItems: required,
+} %}
+
+
+{% block body %}
+    <h4 class="product-bundle__title">{{ 'bundle.title' | trans }}</h4>
+
+    <div class="grid grid--gap">
+        {% for item in data.bundleItems %}
+            <div class="col col--sm-4 {{ config.name }}__item">
+                <a href="{{ item.url }}" class="{{ config.name }}__img-block">
+                    <img class="{{ config.name }}__img" src="{{ item.image }}" alt="">
+                </a>
+                <div class="{{ config.name }}__info">
+                    <div class="{{ config.name }}__name">{{ item.name }}</div>
+                    <div class="{{ config.name }}__quantity">x {{ item.quantity }}</div>
+                </div>
+                {% include molecule('product-bundle-detail', 'ProductDetailPage') with {
+                    data: {
+                        description: item.description,
+                        attributes: item.attributes,
+                        index: loop.index
+                    }
+                } only %}
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

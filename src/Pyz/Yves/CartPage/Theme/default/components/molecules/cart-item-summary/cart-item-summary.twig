@@ -1,0 +1,21 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'cart-item-summary',
+    tag: 'ul'
+} %}
+
+{% define data = {
+    unitPrice: required,
+    subtotalPrice: required,
+    cartItem: required
+} %}
+
+{% block body %}
+
+    {% if data.cartItem.productOptions | length > 0 %}
+        <li class="{{ component.renderClass(config.name ~ '__item', modifiers) }}">
+            {{ widget('CartItemProductOptionWidgetPlugin', data.cartItem) }}
+        </li>
+    {% endif %}
+{% endblock %}

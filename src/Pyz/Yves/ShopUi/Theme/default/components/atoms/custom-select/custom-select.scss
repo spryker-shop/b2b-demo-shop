@@ -21,6 +21,11 @@
         height: 5px;
         transform: translateY(-3px);
         pointer-events: none;
+
+        .custom-select--with-bg & {
+            width: 12px;
+            height: 7px;
+        }
     }
 
     .select2-selection--single {
@@ -177,5 +182,23 @@
         margin-top: rem(12);
     }
 
+    &--with-bg {
+        .select2 {
+            border-color: $setting-color-gray-1;
+        }
+
+        .select2-selection--single {
+            background-color: $setting-color-gray-13;
+            border-radius: $setting-border-radius;
+            height: rem(46);
+
+            .select2-selection__rendered {
+                color: $setting-color-gray-3;
+                font-weight: fw(regular);
+                line-height: rem(46);
+                padding-right: rem(38);
+            }
+        }
+    }
 }
 
