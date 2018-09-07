@@ -27,7 +27,7 @@ use SprykerShop\Yves\ProductReplacementForWidget\Plugin\ProductDetailPage\Produc
 use SprykerShop\Yves\ProductReviewWidget\Plugin\ProductDetailPage\ProductReviewWidgetPlugin;
 use SprykerShop\Yves\ShoppingListWidget\Plugin\ProductDetailPage\ShoppingListWidgetPlugin;
 use Spryker\Yves\Kernel\Container;
-
+use SprykerShop\Yves\PriceProductVolumeWidget\Plugin\ProductDetailPage\PriceProductVolumeWidgetPlugin;
 class ProductDetailPageDependencyProvider extends SprykerShopProductDetailPageDependencyProvider
 {
     const CLIENT_PRODUCT_STORAGE_PYZ = 'CLIENT_PRODUCT_STORAGE_PYZ';
@@ -54,7 +54,7 @@ class ProductDetailPageDependencyProvider extends SprykerShopProductDetailPageDe
             ProductDiscontinuedWidgetPlugin::class, #ProductDiscontinuedFeature
             ProductReplacementForWidgetPlugin::class, #ProductAlternativeFeature
             ProductAlternativeWidgetPlugin::class, #ProductAlternativeFeature
-//            PriceProductVolumeWidgetPlugin::class, #PriceProductVolumeFeature
+            PriceProductVolumeWidgetPlugin::class, #PriceProductVolumeFeature
             ProductPackagingUnitWidgetPlugin::class, #ProductPackagingUnit
             ProductSetIdsWidgetPlugin::class,
         ];
