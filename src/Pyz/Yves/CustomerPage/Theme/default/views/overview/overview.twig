@@ -86,6 +86,7 @@
     </h3>
 
     {% include molecule('action-bar', 'ShopUi') with {
+        modifiers: ['small'],
         data: {
             title: 'customer.account.last_orders' | trans,
             actions: data.orders is not empty ? [
