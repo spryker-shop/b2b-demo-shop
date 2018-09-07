@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "574275ccd9609d4c938a45976c7da7d1",
+    "content-hash": "59bcc20ec84f5ddef78e3f87d3e0b409",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -14070,6 +14070,50 @@
             "time": "2018-09-04T16:43:05+00:00"
         },
         {
+            "name": "spryker/multi-cart-data-import",
+            "version": "dev-beta/dmexco",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/multi-cart-data-import.git",
+                "reference": "abeae475e1a494729689ca4377b63b30becb2c30"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/multi-cart-data-import/zipball/abeae475e1a494729689ca4377b63b30becb2c30",
+                "reference": "abeae475e1a494729689ca4377b63b30becb2c30",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/customer": "^7.0.0",
+                "spryker/data-import": "^1.3.0",
+                "spryker/kernel": "^3.20.0",
+                "spryker/quote": "^2.0.0",
+                "spryker/store": "^1.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "MultiCartDataImport module",
+            "time": "2018-09-06T12:22:26+00:00"
+        },
+        {
             "name": "spryker/navigation",
             "version": "2.3.0",
             "source": {
@@ -21136,6 +21180,50 @@
             "time": "2018-09-05T14:13:20+00:00"
         },
         {
+            "name": "spryker/shared-cart-data-import",
+            "version": "dev-beta/dmexco",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/shared-cart-data-import.git",
+                "reference": "a8e6b4c38ee6f868821210fbe6d4d8191ad19eb1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/shared-cart-data-import/zipball/a8e6b4c38ee6f868821210fbe6d4d8191ad19eb1",
+                "reference": "a8e6b4c38ee6f868821210fbe6d4d8191ad19eb1",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/company-user": "^1.0.0",
+                "spryker/data-import": "^1.3.0",
+                "spryker/kernel": "^3.20.0",
+                "spryker/quote": "^2.0.0",
+                "spryker/shared-cart": "^1.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "SharedCartDataImport module",
+            "time": "2018-09-06T12:22:26+00:00"
+        },
+        {
             "name": "spryker/shipment",
             "version": "6.5.0",
             "source": {
@@ -21393,6 +21481,52 @@
             ],
             "description": "ShoppingList module",
             "time": "2018-09-06T13:37:06+00:00"
+        },
+        {
+            "name": "spryker/shopping-list-data-import",
+            "version": "dev-beta/dmexco",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/shopping-list-data-import.git",
+                "reference": "4a2709502d4562735bd4ff5c3dc26aa9cc8d1962"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/shopping-list-data-import/zipball/4a2709502d4562735bd4ff5c3dc26aa9cc8d1962",
+                "reference": "4a2709502d4562735bd4ff5c3dc26aa9cc8d1962",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/company": "*",
+                "spryker/company-user": "*",
+                "spryker/customer": "*",
+                "spryker/data-import": "*",
+                "spryker/kernel": "*",
+                "spryker/product": "*",
+                "spryker/shopping-list": "*"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ShoppingListDataImport module",
+            "time": "2018-09-06T10:23:49+00:00"
         },
         {
             "name": "spryker/shopping-list-extension",
@@ -29511,6 +29645,7 @@
         "spryker/company-user-data-import": 20,
         "spryker/customer": 20,
         "spryker/multi-cart": 20,
+        "spryker/multi-cart-data-import": 20,
         "spryker/permission": 20,
         "spryker/permission-extension": 20,
         "spryker/persistent-cart": 20,
@@ -29520,7 +29655,9 @@
         "spryker/quote": 20,
         "spryker/quote-extension": 20,
         "spryker/shared-cart": 20,
+        "spryker/shared-cart-data-import": 20,
         "spryker/shopping-list": 20,
+        "spryker/shopping-list-data-import": 20,
         "spryker/shopping-list-session": 20,
         "spryker/shopping-list-session-extension": 20,
         "spryker/shopping-list-storage": 20
