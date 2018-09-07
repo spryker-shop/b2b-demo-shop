@@ -1,0 +1,22 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'order-info',
+    tag: 'div'
+} %}
+
+{% define data = {
+    id: required,
+    date: required
+} %}
+
+{% block body %}
+    <div>
+        {{ 'customer.order.order_id' | trans }}:
+        <strong>{{ data.id }}</strong>
+    </div>
+    <div>
+        {{ 'customer.order.date' | trans }}:
+        <strong>{{ data.date }}</strong>
+    </div>
+{% endblock %}
