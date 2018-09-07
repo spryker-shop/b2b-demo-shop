@@ -57,7 +57,7 @@ class ProductDetailPageDependencyProvider extends SprykerShopProductDetailPageDe
             ProductDiscontinuedWidgetPlugin::class, #ProductDiscontinuedFeature
             ProductReplacementForWidgetPlugin::class, #ProductAlternativeFeature
             ProductAlternativeWidgetPlugin::class, #ProductAlternativeFeature
-//            PriceProductVolumeWidgetPlugin::class, #PriceProductVolumeFeature
+            PriceProductVolumeWidgetPlugin::class, #PriceProductVolumeFeature
             ProductPackagingUnitWidgetPlugin::class, #ProductPackagingUnit
             ProductSetIdsWidgetPlugin::class,
         ];
