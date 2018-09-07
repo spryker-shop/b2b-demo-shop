@@ -54,7 +54,7 @@
 {% block contentClass %}page-layout-main--checkout-page{% endblock %}
 
 {% block contentWrap %}
-    <div class="container container--checkout">
+    <div class="container {% block containerClass %}container--checkout{% endblock %}">
         {% if data.title is not empty %}
             <h1 class="checkout-title">
                 {% if data.stepNumder is defined %}

@@ -15,9 +15,10 @@
     {% for key, choice in data.choices %}
         <li class="{{ config.name }}__item">
             {% block contentItem %}
+                {% set parts = data.form[key].vars.label | split(':') %}
                 {% if key == 0 %}
                     {{ form_row(data.form[key], {
-                        label: '<span class="col">' ~ data.form[key].vars.label ~ '</span> <span class="col">price</span>',
+                        label: '<span class="col">' ~ parts[0] ~ '</span> <span class="col">' ~ parts[1] ~ '</span>',
                         required: false,
                         attributes: {
                             'checked': 'checked'
@@ -25,7 +26,7 @@
                     }) }}
                 {% else %}
                     {{ form_row(data.form[key], {
-                        label: '<span class="col">' ~ data.form[key].vars.label ~ '</span> <span class="col">price</span>',
+                        label: '<span class="col">' ~ parts[0] ~ '</span> <span class="col">' ~ parts[1] ~ '</span>',
                         required: false
                     }) }}
                 {% endif %}
