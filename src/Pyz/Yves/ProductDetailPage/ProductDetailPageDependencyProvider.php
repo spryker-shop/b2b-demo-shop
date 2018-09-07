@@ -26,6 +26,7 @@ use SprykerShop\Yves\ProductRelationWidget\Plugin\ProductDetailPage\SimilarProdu
 use SprykerShop\Yves\ProductReplacementForWidget\Plugin\ProductDetailPage\ProductReplacementForWidgetPlugin;
 use SprykerShop\Yves\ProductReviewWidget\Plugin\ProductDetailPage\ProductReviewWidgetPlugin;
 use SprykerShop\Yves\ShoppingListWidget\Plugin\ProductDetailPage\ShoppingListWidgetPlugin;
+use SprykerShop\Yves\PriceProductVolumeWidget\Plugin\ProductDetailPage\PriceProductVolumeWidgetPlugin;
 use Spryker\Yves\Kernel\Container;
 
 class ProductDetailPageDependencyProvider extends SprykerShopProductDetailPageDependencyProvider
@@ -54,7 +55,7 @@ class ProductDetailPageDependencyProvider extends SprykerShopProductDetailPageDe
             ProductDiscontinuedWidgetPlugin::class, #ProductDiscontinuedFeature
             ProductReplacementForWidgetPlugin::class, #ProductAlternativeFeature
             ProductAlternativeWidgetPlugin::class, #ProductAlternativeFeature
-//            PriceProductVolumeWidgetPlugin::class, #PriceProductVolumeFeature
+            PriceProductVolumeWidgetPlugin::class, #PriceProductVolumeFeature
             ProductPackagingUnitWidgetPlugin::class, #ProductPackagingUnit
             ProductSetIdsWidgetPlugin::class,
         ];
