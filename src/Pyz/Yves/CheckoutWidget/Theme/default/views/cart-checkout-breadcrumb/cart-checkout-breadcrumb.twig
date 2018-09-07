@@ -32,9 +32,6 @@
         }
     } only %}
         {% block breadcrumbs %}
-
-
-
             {% for key, step in data.steps | slice(1) %}
                 {% set modifiers = step.isActive ? ['active'] : [] %}
                 {% set modifiers = step.isEnabled ? modifiers : modifiers | merge(['disabled']) %}
