@@ -56,8 +56,8 @@
 
     {% if data.isBundle != null %}
         <div class="product-options__item js-product-options-bundle">
-            <div class="product-options__title js-product-options-bundle__title" data-toggle-target=".js-product-options-bundle__target">{{ 'bundle.title' | trans }}</div>
-            <div class="js-product-options-bundle__target is-hidden">
+            <div class="product-options__title js-product-options-bundle__title active" data-toggle-target=".js-product-options-bundle__target">{{ 'bundle.title' | trans }}</div>
+            <div class="js-product-options-bundle__target">
                 <ul class="product-bundle product-bundle--configurator">
                     {% for item in data.bundleItems %}
                         <li class="product-bundle__item product-bundle__item--configurator">
