@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e99adf1877d129069c6f3179242c7d87",
+    "content-hash": "e41ff2f392d20efe39703445b5ad934c",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -9317,12 +9317,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/company-business-unit-data-import.git",
-                "reference": "1bb7f136b8c58e2e12d36ff146cdebb552f5756f"
+                "reference": "99c1409fa06a0a619d767af53fb1a824f623e146"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/company-business-unit-data-import/zipball/1bb7f136b8c58e2e12d36ff146cdebb552f5756f",
-                "reference": "1bb7f136b8c58e2e12d36ff146cdebb552f5756f",
+                "url": "https://api.github.com/repos/spryker/company-business-unit-data-import/zipball/99c1409fa06a0a619d767af53fb1a824f623e146",
+                "reference": "99c1409fa06a0a619d767af53fb1a824f623e146",
                 "shasum": ""
             },
             "require": {
@@ -9356,7 +9356,7 @@
                 "MIT"
             ],
             "description": "CompanyBusinessUnitDataImport module",
-            "time": "2018-09-05T14:27:18+00:00"
+            "time": "2018-09-07T12:46:09+00:00"
         },
         {
             "name": "spryker/company-business-unit-extension",
@@ -9492,12 +9492,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/company-data-import.git",
-                "reference": "57d9a26124bf9d9874da56eed78964166277177f"
+                "reference": "d847d4d507ff5aa86b0169a258118ea0db22be99"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/company-data-import/zipball/57d9a26124bf9d9874da56eed78964166277177f",
-                "reference": "57d9a26124bf9d9874da56eed78964166277177f",
+                "url": "https://api.github.com/repos/spryker/company-data-import/zipball/d847d4d507ff5aa86b0169a258118ea0db22be99",
+                "reference": "d847d4d507ff5aa86b0169a258118ea0db22be99",
                 "shasum": ""
             },
             "require": {
@@ -9530,7 +9530,7 @@
                 "MIT"
             ],
             "description": "CompanyDataImport module",
-            "time": "2018-09-05T14:27:18+00:00"
+            "time": "2018-09-07T12:46:09+00:00"
         },
         {
             "name": "spryker/company-extension",
@@ -21587,6 +21587,52 @@
             "time": "2018-09-06T13:37:06+00:00"
         },
         {
+            "name": "spryker/shopping-list-data-import",
+            "version": "dev-beta/dmexco",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/shopping-list-data-import.git",
+                "reference": "4a2709502d4562735bd4ff5c3dc26aa9cc8d1962"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/shopping-list-data-import/zipball/4a2709502d4562735bd4ff5c3dc26aa9cc8d1962",
+                "reference": "4a2709502d4562735bd4ff5c3dc26aa9cc8d1962",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/company": "*",
+                "spryker/company-user": "*",
+                "spryker/customer": "*",
+                "spryker/data-import": "*",
+                "spryker/kernel": "*",
+                "spryker/product": "*",
+                "spryker/shopping-list": "*"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ShoppingListDataImport module",
+            "time": "2018-09-06T10:23:49+00:00"
+        },
+        {
             "name": "spryker/shopping-list-extension",
             "version": "dev-beta/dmexco",
             "source": {
@@ -29775,7 +29821,8 @@
         "spryker/shopping-list-extension": 20,
         "spryker/shopping-list-session": 20,
         "spryker/shopping-list-session-extension": 20,
-        "spryker/shopping-list-storage": 20
+        "spryker/shopping-list-storage": 20,
+        "spryker/shopping-list-data-import": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
