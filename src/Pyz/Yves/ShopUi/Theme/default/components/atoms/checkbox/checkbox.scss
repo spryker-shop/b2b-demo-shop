@@ -2,18 +2,6 @@
     #{$name} {
         display: inline-block;
 
-        &#{&}--expand {
-            display: block;
-        }
-
-        + label {
-            display: none;
-
-            + #{$name} {
-                margin-top: rem(4);
-            }
-        }
-
         &__container {
             cursor: pointer;
             display: flex;

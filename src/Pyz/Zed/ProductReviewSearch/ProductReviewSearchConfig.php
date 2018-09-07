@@ -13,7 +13,7 @@ use Spryker\Zed\ProductReviewSearch\ProductReviewSearchConfig as SprykerProductR
 class ProductReviewSearchConfig extends SprykerProductReviewSearchConfig
 {
     /**
-     * @return null|string
+     * @return string|null
      */
     public function getProductReviewSynchronizationPoolName(): ?string
     {

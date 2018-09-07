@@ -13,7 +13,7 @@ use Spryker\Zed\ProductQuantityStorage\ProductQuantityStorageConfig as SprykerPr
 class ProductQuantityStorageConfig extends SprykerProductQuantityStorageConfig
 {
     /**
-     * @return null|string
+     * @return string|null
      */
     public function getProductQuantitySynchronizationPoolName(): ?string
     {
