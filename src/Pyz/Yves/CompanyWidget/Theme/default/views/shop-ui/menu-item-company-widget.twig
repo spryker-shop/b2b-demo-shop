@@ -7,6 +7,18 @@
 
 {% block template %}
     {% if data.isVisible %}
+        <a href="{{ path('company/overview') }}" class="col navigation-top__company" title="{{ data.companyName }}">
+            {{ data.companyName }}
+            {% if can('SeeCompanyMenuPermissionPlugin') %}
+                {% include atom('icon') with {
+                    class: 'navigation-top__company-icon',
+                    data: {
+                        name: 'caret-down'
+                    }
+                } only %}
+            {% endif %}
+        </a>
+    {% else %}
         <a href="{{ path('company/overview') }}" class="col navigation-top__company" title="{{ data.companyName }}">{{ 'company.account.page-title' | trans }}</a>
     {% endif %}
 {% endblock %}
