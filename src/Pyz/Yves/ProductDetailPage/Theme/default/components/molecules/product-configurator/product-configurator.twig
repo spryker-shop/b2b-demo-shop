@@ -95,7 +95,7 @@
     <form method="POST" action="/cart/add/{{sku}}">
         {{ widget('ProductOptionWidgetPlugin', data.product) }}
 
-        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        {% if is_granted('IS_AUTHENTICATED_FULLY') and isProductAvailable %}
             <div class="{{ config.name }}__add-to-cart">
                 {% if widgetExists('ProductPackagingUnitWidgetPlugin') %}
                     {{ widget('ProductPackagingUnitWidgetPlugin', data.product, isDisabled, options) }}

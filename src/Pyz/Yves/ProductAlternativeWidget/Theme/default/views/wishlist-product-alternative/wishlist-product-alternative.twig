@@ -1,0 +1,80 @@
+{% extends template('widget') %}
+
+{% define data = {
+    item: _widget.item,
+    wishlistName: _widget.wishlistName,
+    products: _widget.products
+} %}
+
+{% set wishlistItemSku = data.item.sku %}
+
+{% block body %}
+    {% if data.products is not empty %}
+        <tr>
+            <td></td>
+            <td colspan="4">
+                <table class="table table--expand">
+                {% for item in data.products %}
+                    {% if loop.index == 4 %}
+                        <tr class="js-product-alternative-{{- wishlistItemSku -}}__show-all-target">
+                            <td class="text-center" colspan="5">
+                                <div class="text-center">
+                                    <span class="js-product-alternative-{{- wishlistItemSku -}}__show-all-trigger">{{ 'product_alternative_widget.show_all' | trans }}</span>
+                                </div>
+                            </td>
+                        </tr>
+                        {% include molecule('toggler-click') with {
+                            attributes: {
+                                'trigger-selector': '.js-product-alternative-' ~ wishlistItemSku ~ '__show-all-trigger',
+                                'target-selector': '.js-product-alternative-' ~ wishlistItemSku ~ '__show-all-target',
+                                'class-to-toggle': 'is-hidden'
+                            }
+                        } only %}
+                    {% endif %}
+                    <tr class="{{ loop.index > 3 ? 'js-product-alternative-' ~ wishlistItemSku ~ '__show-all-target is-hidden' : '' }}">
+                        <td class="text-center">
+                            {% if item.images is defined and item.images is not empty %}
+                                {% include atom('thumbnail') with {
+                                    modifiers: ['small', 'min-size'],
+                                    attributes: {
+                                        alt: item.name,
+                                        src: item.images.0.externalUrlSmall,
+                                        title: item.name
+                                    }
+                                } only %}
+                            {% endif %}
+                        </td>
+                        <td class="text-center">
+                            <a href="{{ item.url }}">{{ item.name }}</a>
+                            <div><small>{{ item.sku }}</small></div>
+                            {% for attribute in item.superAttributesDefinition %}
+                                {% if item.attributes[attribute] is defined %}
+                                    {{ ('product.attribute.'~attribute) | trans }}: {{ item.attributes[attribute] }} <br/>
+                                {% endif %}
+                            {% endfor %}
+                            <span class="text-alert">{{ 'product_alternative_widget.alternative_for' | trans({name: data.item.name}) }}</span>
+                        </td>
+                        <td class="text-center">
+                            {% if item.price is not null %}
+                                {% include molecule('price') with {
+                                    data: {
+                                        amount: item.price | money,
+                                        originalAmount: item.prices.ORIGINAL is not defined or item.prices.ORIGINAL is empty ? null : (item.prices.ORIGINAL | money)
+                                    }
+                                } only %}
+                            {% else %}
+                                N/A
+                            {% endif %}
+                        </td>
+                        <td>
+                            <a class="button button--success" href="{{ url('wishlist/add-item', {sku: item.sku, 'product-id': item.idProductConcrete, 'wishlist-name': data.wishlistName}) }}">
+                                {{ 'product_alternative_widget.add_to_wishlist' | trans}}
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </table>
+            </td>
+        </tr>
+    {% endif %}
+{% endblock %}
