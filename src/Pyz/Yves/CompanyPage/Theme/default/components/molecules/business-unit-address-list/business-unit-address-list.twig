@@ -1,0 +1,62 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'business-unit-address-list'
+} %}
+
+{% define data = {
+    field: required,
+    idCompanyBusinessUnit: required
+} %}
+
+{% block body %}
+    {% include molecule('action-bar', 'ShopUi') with {
+        data: {
+            title: 'company.account.address.assign' | trans,
+            actions: data.idCompanyBusinessUnit is not empty ? [
+                {
+                    title: 'company.account.add_new_address' | trans,
+                    url: url('company/business-unit/address/create', { 'id': data.idCompanyBusinessUnit }),
+                    primary: true
+                }
+            ] : []
+        }
+    } only %}
+
+    {% set assignedAddresses = [] %}
+    {% set unassignedAddresses = [] %}
+
+    {% for key, item in data.field.children %}
+        {% if item.vars.checked %}
+            {% set assignedAddresses = assignedAddresses | merge([item]) %}
+        {% else %}
+            {% set unassignedAddresses = unassignedAddresses | merge([item]) %}
+        {% endif %}
+    {% endfor %}
+
+    <div class="spacing-bottom--inner">
+        {% if assignedAddresses is not empty %}
+            {% include molecule('business-unit-address-table', 'CompanyPage') with {
+                data: {
+                    idCompanyBusinessUnit: data.idCompanyBusinessUnit,
+                    addresses: assignedAddresses,
+                    headline: 'company.account.address.assigned' | trans
+                }
+            } %}
+        {% else %}
+            <div class="box box--small"><i>{{ 'company.account.address.assigned.empty' | trans }}</i></div>
+        {% endif %}
+    </div>
+
+    {% if unassignedAddresses is not empty %}
+        {% include molecule('business-unit-address-table', 'CompanyPage') with {
+            data: {
+                idCompanyBusinessUnit: data.idCompanyBusinessUnit,
+                addresses: unassignedAddresses,
+                headline: 'company.account.address.unassigned' | trans
+            }
+        } %}
+    {% else %}
+        <div class="box box--small"><i>{{ 'company.account.address.unassigned.empty' | trans }}</i></div>
+    {% endif %}
+{% endblock %}
