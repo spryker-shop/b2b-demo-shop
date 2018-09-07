@@ -1,0 +1,105 @@
+{% extends template('page-layout-checkout', 'CheckoutPage') %}
+
+{% define data = {
+    backUrl: _view.previousStepUrl,
+    transfer: _view.quoteTransfer,
+    cartItems: _view.cartItems,
+    shippingAddress: _view.quoteTransfer.shippingAddress,
+    billingAddress: _view.quoteTransfer.billingAddress,
+    shipmentMethod: _view.quoteTransfer.shipment.method.name,
+    paymentMethod: _view.quoteTransfer.payment.paymentMethod,
+
+    forms: {
+        summary: _view.summaryForm
+    },
+
+    overview: {
+        shipmentMethod: _view.quoteTransfer.shipment.method.name,
+        voucherDiscounts: _view.quoteTransfer.voucherDiscounts,
+        cartRuleDiscounts: _view.quoteTransfer.cartRuleDiscounts,
+
+        prices: {
+            subTotal: _view.quoteTransfer.totals.subtotal,
+            storeCurrency: _view.quoteTransfer.shipment.method.storeCurrencyPrice,
+            grandTotal: _view.quoteTransfer.totals.grandtotal,
+            tax: _view.quoteTransfer.totals.taxtotal.amount,
+            discountTotal: _view.quoteTransfer.totals.discounttotal | default
+        }
+    },
+
+    title: 'checkout.step.summary.title' | trans,
+    stepNumder: 4
+} %}
+
+{% block containerClass %}{% endblock %}
+
+{% block content %}
+    <div class="grid grid--gap">
+        <div class="col col--sm-12 col--lg-4">
+            {% include molecule('summary-sidebar-item', 'CheckoutPage') with {
+                data: {
+                    title: 'checkout.step.summary.payment' | trans,
+                    method: data.paymentMethod,
+                    address: data.billingAddress,
+                    iconName: 'dummyPaymentInvoice.icon' | trans,
+                    iconModifiers: 'invoice-logo-small'
+                }
+            } only %}
+
+            {% set shippingLogo = 'Air' in data.shipmentMethod ? 'hermes-logo' : 'dhl-logo' %}
+
+            {% include molecule('summary-sidebar-item', 'CheckoutPage') with {
+                data: {
+                    title: 'checkout.step.summary.shipping' | trans,
+                    method: data.shipmentMethod,
+                    address: data.shippingAddress,
+                    iconName: shippingLogo,
+                    iconModifiers: 'summary-shipping'
+                }
+            } only %}
+        </div>
+
+        <div class="col col--sm-12 col--lg-8">
+            {% for item in data.cartItems %}
+                {% set item = item.bundleProduct is defined ? item.bundleProduct : item %}
+                {% set firstImage = item.images | first %}
+                {% include molecule('summary-item', 'CheckoutPage') with {
+                    class: 'summary-product-list__item',
+                    data: {
+                        cartItem: item,
+                        image: firstImage.externalUrlSmall,
+                        quantity: item.quantity,
+                        options: item.productOptions | default({})
+                    }
+                } only %}
+            {% endfor %}
+
+            {{ widget('CartNoteQuoteNoteWidgetPlugin', data.transfer) }}
+
+            <div class="">
+                {{ widget('CheckoutVoucherFormWidgetPlugin', data.transfer) }}
+            </div>
+
+            {% embed molecule('form') with {
+                class: '',
+                data: {
+                    form: data.forms.summary,
+                    submit: {
+                        enable: true,
+                        text: 'checkout.step.place.order' | trans
+                    }
+                },
+                embed: {
+                    overview: data.overview
+                }
+            } only %}
+                {% block body %}
+                    {% include molecule('summary-overview', 'CheckoutPage') with {
+                        data: embed.overview
+                    } only %}
+                    {{parent()}}
+                {% endblock %}
+            {% endembed %}
+        </div>
+    </div>
+{% endblock %}

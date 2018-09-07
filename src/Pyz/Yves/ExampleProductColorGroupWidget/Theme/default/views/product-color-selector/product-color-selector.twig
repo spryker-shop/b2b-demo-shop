@@ -6,17 +6,14 @@
 } %}
 
 {% block body %}
-    {% embed molecule('color-selector', 'ExampleProductColorGroupWidget') with {
-        class: 'text-left is-invisible',
+    {% include molecule('color-selector', 'ExampleProductColorGroupWidget') with {
+        class: 'text-left',
         data: {
             items: data.items
         },
         attributes: {
-            'target-image-selector': '.js-product-color-group__image-' ~ data.idProductAbstract ~ ' > img'
+            'target-image-selector': '.js-product-color-group__image-' ~ data.idProductAbstract ~ ' > img',
+            'target-url-selector': '.js-product-color-group__image-' ~ data.idProductAbstract,
         }
     } only %}
-        {% block body %}
-            {{parent()}}
-        {% endblock %}
-    {% endembed %}
 {% endblock %}

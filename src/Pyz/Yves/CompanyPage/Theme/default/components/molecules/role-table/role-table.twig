@@ -1,0 +1,85 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'role-table',
+    tag: 'div'
+} %}
+
+{% define data = {
+    roles: required,
+    actions: {
+        view: true,
+        update: false,
+        delete: false
+    }
+} %}
+
+{% set showActions = data.actions.view or data.actions.update or data.actions.delete %}
+
+{% block body %}
+    <table class="table table--expand">
+        <thead>
+            <tr>
+                <th>{{ 'company.account.company_role.name' | trans }}</th>
+                <th>{{ 'company.account.company_role.is_default' | trans }}</th>
+                {% if showActions %}
+                    <th></th>
+                {% endif %}
+            </tr>
+        </thead>
+        <tbody>
+        {% for role in data.roles %}
+            <tr>
+                <td>{{ role.name }}</td>
+                <td>
+                    {% include atom('icon') with {
+                        class: 'table__icon',
+                        data: {
+                            name: role.isDefault ? 'check' : 'cross'
+                        }
+                    } only %}
+                </td>
+                {% if showActions %}
+                    <td class="table__actions">
+                        <ul class="menu menu--inline">
+                            {% if data.actions.view %}
+                                <li class="menu__item">
+                                    <a class="table__action" href="{{ path('company/company-role/details', {'id': role.idCompanyRole}) }}" title="{{ 'company.account.company_role.view' | trans }}">
+                                        {% include atom('icon') with {
+                                            data: {
+                                                name: 'edit'
+                                            }
+                                        } only %}
+                                    </a>
+                                </li>
+                            {% endif %}
+                            {% if data.actions.update %}
+                                <li class="menu__item">
+                                    <a class="table__action" href="{{ url('company/company-role/update', {'id': role.idCompanyRole}) }}" title="{{ "company.account.business_unit.edit" | trans }}">
+                                        {% include atom('icon') with {
+                                            data: {
+                                                name: 'edit'
+                                            }
+                                        } only %}
+                                    </a>
+                                </li>
+                            {% endif %}
+                            {% if data.actions.delete %}
+                                <li class="menu__item">
+                                    <a class="table__action" href="{{ url('company/company-role/delete', {'id': role.idCompanyRole }) }}" title="{{ "company.account.business_unit.delete" | trans }}">
+                                        {% include atom('icon') with {
+                                            data: {
+                                                name: 'delete'
+                                            }
+                                        } only %}
+                                    </a>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </td>
+                {% endif %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
