@@ -27,6 +27,7 @@ use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\MerchantDataImport\Communication\Plugin\MerchantDataImportPlugin;
 use Spryker\Zed\MerchantRelationshipDataImport\Communication\Plugin\MerchantRelationshipDataImportPlugin;
 use Spryker\Zed\MerchantRelationshipProductListDataImport\Communication\Plugin\MerchantRelationshipProductListDataImportPlugin;
+use Spryker\Zed\MultiCartDataImport\Communication\Plugin\MultiCartDataImportPlugin;
 use Spryker\Zed\PriceProductDataImport\Communication\Plugin\PriceProductDataImportPlugin;
 use Spryker\Zed\PriceProductMerchantRelationshipDataImport\Communication\Plugin\PriceProductMerchantRelationshipDataImportPlugin;
 use Spryker\Zed\ProductAlternativeDataImport\Communication\Plugin\ProductAlternativeDataImportPlugin;
@@ -41,6 +42,10 @@ use Spryker\Zed\ProductMeasurementUnitDataImport\Communication\Plugin\ProductMea
 use Spryker\Zed\ProductPackagingUnitDataImport\Communication\Plugin\DataImport\ProductPackagingUnitDataImportPlugin;
 use Spryker\Zed\ProductPackagingUnitDataImport\Communication\Plugin\DataImport\ProductPackagingUnitTypeDataImportPlugin;
 use Spryker\Zed\ProductQuantityDataImport\Communication\Plugin\ProductQuantityDataImportPlugin;
+use Spryker\Zed\ShoppingListDataImport\Communication\Plugin\ShoppingListDataImportPlugin;
+use Spryker\Zed\ShoppingListDataImport\Communication\Plugin\ShoppingListItemDataImportPlugin;
+use Spryker\Zed\ShoppingListDataImport\Communication\Plugin\ShoppingListPermissionDataImportPlugin;
+use Spryker\Zed\SharedCartDataImport\Communication\Plugin\SharedCartDataImportPlugin;
 
 class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
 {
@@ -174,7 +179,12 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
             new CompanyRoleDataImportPlugin(),
             new CompanyRolePermissionDataImportPlugin(),
             new CompanyUserRoleDataImportPlugin(),
-            new CompanyBusinessUnitUserDataImportPlugin()
+            new CompanyBusinessUnitUserDataImportPlugin(),
+            new MultiCartDataImportPlugin(),
+            new SharedCartDataImportPlugin(),
+            new ShoppingListDataImportPlugin(),
+            new ShoppingListItemDataImportPlugin(),
+            new ShoppingListPermissionDataImportPlugin(),
         ];
     }
 

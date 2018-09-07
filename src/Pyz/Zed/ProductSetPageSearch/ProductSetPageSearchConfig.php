@@ -13,7 +13,7 @@ use Spryker\Zed\ProductSetPageSearch\ProductSetPageSearchConfig as SprykerProduc
 class ProductSetPageSearchConfig extends SprykerProductSetPageSearchConfig
 {
     /**
-     * @return null|string
+     * @return string|null
      */
     public function getProductSetSynchronizationPoolName(): ?string
     {

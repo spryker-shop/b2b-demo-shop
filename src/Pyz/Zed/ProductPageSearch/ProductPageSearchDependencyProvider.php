@@ -23,7 +23,7 @@ class ProductPageSearchDependencyProvider extends SprykerProductPageSearchDepend
     const PLUGIN_PRODUCT_LABEL_DATA = 'PLUGIN_PRODUCT_LABEL_DATA';
 
     /**
-     * @return \Spryker\Zed\ProductPageSearch\Dependency\Plugin\ProductPageMapExpanderInterface[]
+     * @return \Spryker\Zed\ProductPageSearch\Dependency\Plugin\ProductPageDataExpanderInterface[]
      */
     protected function getDataExpanderPlugins()
     {

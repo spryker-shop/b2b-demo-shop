@@ -1,0 +1,71 @@
+{% extends template('page-layout-main') %}
+
+{% define data = {
+    activePage: 'overview'
+} %}
+
+{% block breadcrumbs %}
+    {% include molecule('breadcrumb') with {
+        data: {
+            steps: [{
+                label: 'company.account.page-title' | trans
+            }]
+        }
+    } only %}
+{% endblock %}
+
+{% block content %}
+    {% set companyContent %}
+        {% block companyContent %}{% endblock %}
+    {% endset %}
+
+    {% embed organism('section') with {
+        modifiers: ['last']
+    } %}
+        {% block inner %}
+            <div class="grid">
+                <div class="col col--sm-12 col--md-6 col-lg-4 col--xl-3">
+                    {% block companyNavigation %}
+                        {% include molecule('navigation-sidebar', 'ShopUi') with {
+                            data: {
+                                items: [
+                                    {
+                                        name: 'overview',
+                                        url: path('company/overview'),
+                                        label: 'company.account.overview' | trans,
+                                        icon: 'shopping-list'
+                                    },
+                                    {
+                                        name: 'users',
+                                        url: path('company/user'),
+                                        label: 'company.account.company_user' | trans,
+                                        icon: 'users'
+                                    },
+                                    {
+                                        name: 'business-unit',
+                                        url: path('company/business-unit'),
+                                        label: 'company.account.business_unit' | trans,
+                                        icon: 'office'
+                                    },
+                                    {
+                                        name: 'role',
+                                        url: path('company/company-role'),
+                                        label: 'company.account.company_role' | trans,
+                                        icon: 'user'
+                                    }
+                                ],
+                                activePage: data.activePage
+                            }
+                        } only %}
+                    {% endblock %}
+                </div>
+
+                <div class="col col--sm-12 col--md-6 col-lg-8 col--xl-9">
+                    {{ companyContent }}
+                </div>
+            </div>
+        {% endblock %}
+    {% endembed %}
+{% endblock %}
+
+{% block footer %}{% endblock %}

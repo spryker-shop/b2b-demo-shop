@@ -9,9 +9,11 @@ namespace Pyz\Yves\ProductDetailPage;
 
 use Pyz\Yves\ExampleProductColorGroupWidget\Plugin\ProductDetailPage\ExampleProductColorGroupWidgetPlugin;
 use Pyz\Yves\ProductSetWidget\Plugin\ProductSetIdsWidgetPlugin;
+use Spryker\Yves\Kernel\Container;
 use SprykerShop\Yves\AvailabilityWidget\Plugin\ProductDetailPage\AvailabilityWidgetPlugin;
 use SprykerShop\Yves\CmsBlockWidget\Plugin\ProductDetailPage\ProductCmsBlockWidgetPlugin;
 use SprykerShop\Yves\MultiCartWidget\Plugin\ProductDetailPage\MultiCartWidgetPlugin;
+use SprykerShop\Yves\PriceProductVolumeWidget\Plugin\ProductDetailPage\PriceProductVolumeWidgetPlugin;
 use SprykerShop\Yves\PriceWidget\Plugin\ProductDetailPage\PriceWidgetPlugin;
 use SprykerShop\Yves\ProductAlternativeWidget\Plugin\ProductDetailPage\ProductAlternativeWidgetPlugin;
 use SprykerShop\Yves\ProductCategoryWidget\Plugin\ProductDetailPage\ProductCategoryWidgetPlugin;
@@ -26,8 +28,7 @@ use SprykerShop\Yves\ProductRelationWidget\Plugin\ProductDetailPage\SimilarProdu
 use SprykerShop\Yves\ProductReplacementForWidget\Plugin\ProductDetailPage\ProductReplacementForWidgetPlugin;
 use SprykerShop\Yves\ProductReviewWidget\Plugin\ProductDetailPage\ProductReviewWidgetPlugin;
 use SprykerShop\Yves\ShoppingListWidget\Plugin\ProductDetailPage\ShoppingListWidgetPlugin;
-use SprykerShop\Yves\PriceProductVolumeWidget\Plugin\ProductDetailPage\PriceProductVolumeWidgetPlugin;
-use Spryker\Yves\Kernel\Container;
+use SprykerShop\Yves\WishlistWidget\Plugin\ProductDetailPage\WishlistWidgetPlugin;
 
 class ProductDetailPageDependencyProvider extends SprykerShopProductDetailPageDependencyProvider
 {
@@ -45,6 +46,7 @@ class ProductDetailPageDependencyProvider extends SprykerShopProductDetailPageDe
             AvailabilityWidgetPlugin::class,
             ProductOptionWidgetPlugin::class,
             ProductAbstractLabelWidgetPlugin::class,
+            WishlistWidgetPlugin::class,
             SimilarProductsWidgetPlugin::class,
             ProductCmsBlockWidgetPlugin::class,
             ProductReviewWidgetPlugin::class,
@@ -55,7 +57,7 @@ class ProductDetailPageDependencyProvider extends SprykerShopProductDetailPageDe
             ProductDiscontinuedWidgetPlugin::class, #ProductDiscontinuedFeature
             ProductReplacementForWidgetPlugin::class, #ProductAlternativeFeature
             ProductAlternativeWidgetPlugin::class, #ProductAlternativeFeature
-            PriceProductVolumeWidgetPlugin::class, #PriceProductVolumeFeature
+//            PriceProductVolumeWidgetPlugin::class, #PriceProductVolumeFeature
             ProductPackagingUnitWidgetPlugin::class, #ProductPackagingUnit
             ProductSetIdsWidgetPlugin::class,
         ];

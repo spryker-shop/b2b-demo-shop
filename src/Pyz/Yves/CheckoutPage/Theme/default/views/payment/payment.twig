@@ -1,0 +1,112 @@
+{% extends template('page-layout-checkout', 'CheckoutPage') %}
+
+{% define data = {
+    backUrl: _view.previousStepUrl,
+    forms: {
+        payment: _view.paymentForm
+    },
+
+    title: 'checkout.step.payment.title' | trans,
+    stepNumder: 3
+} %}
+
+{% block content %}
+    <h5 class="checkout-title checkout-title--second">{{ 'page.checkout.payment.title' | trans }}</h5>
+
+    {% embed molecule('form') with {
+        class: 'checkout-form',
+        data: {
+            form: data.forms.payment,
+            options: {
+                attr: {
+                    id: 'payment-form'
+                }
+            },
+            submit: {
+                enable: true,
+                text: 'checkout.step.summary' | trans,
+                class: 'button button--big'
+            },
+            cancel: {
+                enable: true,
+                url: data.backUrl,
+                text: 'general.back.button' | trans,
+                icon: '',
+                class: 'button button--big button--hollow-icon button--back'
+            }
+        }
+    } only %}
+        {% block fieldset %}
+            {% for choices in data.form.paymentSelection.vars.choices %}
+                {% embed molecule('checkout-list', 'CheckoutPage') with {
+                    modifiers: ['bottom-margin'],
+                    data: {
+                        form: null,
+                        choices: choices
+                    },
+                    embed: {
+                        form: data.form
+                    }
+                } only %}
+                    {% block contentItem %}
+                        {% if embed.form.paymentSelection[key].vars.value == 'dummyPaymentInvoice' %}
+                            {% include atom('icon') with {
+                                modifiers: ['invoice-logo', 'payment-logo'],
+                                data: {
+                                    name: 'dummyPaymentInvoice.icon' | trans
+                                }
+                            } only %}
+                        {% endif %}
+
+                        {% embed molecule('form') with {
+                            class: 'checkout-form--hidden-actions',
+                            data: {
+                                form: embed.form[embed.form.paymentSelection[key].vars.value],
+                                enableStart: false,
+                                enableEnd: false,
+                                layout: {
+                                    'card_expires_month': 'col col--sm-4',
+                                    'card_expires_year': 'col col--sm-8'
+                                }
+                            },
+                            embed: {
+                                index: loop.index,
+                                toggler: embed.form.paymentSelection[key]
+                            }
+                        } only %}
+                            {% block fieldset %}
+
+                                {% if embed.index == 1 %}
+                                    {{ form_row(embed.toggler, {
+                                        required: false,
+                                        component: molecule('toggler-radio'),
+                                        attributes: {
+                                            'target-selector': '.js-payment-method-' ~ embed.index,
+                                            'class-to-toggle': 'is-hidden',
+                                            'checked': 'checked'
+                                        }
+                                    }) }}
+                                {% else %}
+                                    {{ form_row(embed.toggler, {
+                                        required: false,
+                                        component: molecule('toggler-radio'),
+                                        attributes: {
+                                            'target-selector': '.js-payment-method-' ~ embed.index,
+                                            'class-to-toggle': 'is-hidden'
+                                        }
+                                    }) }}
+                                {% endif %}
+
+                                <div class="checkout-list__content grid is-hidden js-payment-method-{{embed.index}}">
+                                    <div class="col col--sm-12 col--md-7">
+                                        {{parent()}}
+                                    </div>
+                                </div>
+                            {% endblock %}
+                        {% endembed %}
+                    {% endblock %}
+                {% endembed %}
+            {% endfor %}
+        {% endblock %}
+    {% endembed %}
+{% endblock %}
