@@ -1,0 +1,35 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'tile',
+    tag: 'div'
+} %}
+
+{% define data = {
+    title: null,
+    icon: null,
+    text: null,
+} %}
+
+{% block body %}
+    {% if data.icon %}
+        {% include atom('icon') with {
+            data: {
+                name: data.icon
+            },
+            class: config.name ~ '__icon'
+        } only %}
+    {% endif %}
+
+    {% if data.title or data.text %}
+        <div class="{{ config.name }}__main">
+            {% if data.title %}
+                <h4 class="{{ config.name }}__title">{{ data.title }}</h4>
+            {% endif %}
+
+            {% if data.text %}
+                <p class="{{ config.name }}__text">{{ data.text }}</p>
+            {% endif %}
+        </div>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,97 @@
+{% extends template('page-layout-company', 'CompanyPage') %}
+
+{% define data = {
+    form: _view.form,
+    importedWithErrors: _view.importedWithErrors,
+    invitations: _view.invitations,
+    title: null,
+    formAction: url('company/user-invitation'),
+    activePage: 'users',
+    pagination: {
+        parameters: {},
+        currentPage: _view.pagination.page,
+        paginationPath: 'company/user-invitation',
+        maxPage: _view.pagination.lastPage,
+        showAlwaysFirstAndLast: true
+    }
+} %}
+
+{% block breadcrumbs %}
+    {% include molecule('breadcrumb') with {
+        data: {
+            steps: [
+                {
+                    label: 'company.account.page-title' | trans,
+                    url: url('company/overview')
+                }, {
+                    label: 'company.account.company_user' | trans,
+                    url: url('company/user')
+                }, {
+                    label: 'company.user.invitation.title.plural' | trans
+                }
+            ]
+        }
+    } only %}
+{% endblock %}
+
+{% block companyContent %}
+    {# include molecule('action-bar', 'ShopUi') with {
+        data: {
+            title: 'company.user.invitation.import.title' | trans,
+            actions: [
+                {
+                    title: 'general.back.button' | trans,
+                    url: url('company/user'),
+                    primary: false
+                }
+            ]
+        }
+    } only #}
+
+    {% include molecule('form') with {
+        data: {
+            title: 'company.user.invitation.import.title' | trans,
+            form: data.form,
+            options: {
+                action: data.formAction
+            },
+            layout: {
+                invitations_list: 'col col--sm-12 col--lg-6',
+            },
+            submit: {
+                enable: true
+            }
+        }
+    } only %}
+
+    {% if data.importedWithErrors %}
+        <div class="box">
+            {{ 'company.user.invitation.import.download.errors.file' | trans({
+                "%link%": url('company/user-invitation/get-import-errors')}) | raw
+            }}
+        </div>
+    {%  endif %}
+
+    {% if data.invitations is not empty %}
+        <div class="box">
+            <h5 class="float-left">{{ 'company.user.invitation.imported.title.plural' | trans }}</h5>
+            <div class="float-right">
+                <a href="{{ path('company/user-invitation/send-all') }}" class="button float-right">
+                    {{ 'company.user.invitation.send.all.button' | trans }}
+                </a>
+            </div>
+        </div>
+        <div class="box">
+            {% include molecule('invitation-table', 'CompanyUserInvitationPage') with {
+                data: {
+                    invitations: data.invitations,
+                }
+            } only %}
+            <hr/>
+            {% include molecule('pagination') with {
+                data: data.pagination
+            } only %}
+        </div>
+    {% endif %}
+
+{% endblock %}

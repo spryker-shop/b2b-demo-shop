@@ -1,0 +1,99 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'user-table',
+    tag: 'div'
+} %}
+
+{% define data = {
+    users: required,
+    actions: {
+        update: false,
+        delete: false,
+        switch: false
+    }
+} %}
+
+{% set showActions = data.actions.update or data.actions.delete %}
+
+{% block body %}
+    <table class="table table--expand">
+        <thead>
+            <tr>
+                <th>{{ 'company.account.company_user.name' | trans }}</th>
+                <th>{{ 'company.account.company_user.business_unit' | trans }}</th>
+                <th>{{ 'company.account.company_user.role' | trans }}</th>
+                {% if showActions and data.actions.switch %}
+                    <th>{{ 'company.account.company_user.enable' | trans }}</th>
+                {% endif %}
+                {% if showActions %}
+                    <th></th>
+                {% endif %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in data.users %}
+                {% set companyBusinessUnitName = user.companyBusinessUnit.name | default('') %}
+                <tr class="table__row{% if not user.isActive %} table__row--inactive{% endif %}">
+                    {% if user.customer.firstName != null and user.customer.lastName != null %}
+                        <th>{{ user.customer.firstName }} {{ user.customer.lastName }}</th>
+                        <td>{{ companyBusinessUnitName }}</td>
+                        <td>
+                            {% if user.companyRoleCollection is not empty %}
+                                {% for companyUserRole in user.companyRoleCollection.roles %}
+                                    {{ companyUserRole.name }}
+                                {% endfor %}
+                            {% endif %}
+                        </td>
+                        {% if showActions and data.actions.switch %}
+                            <td>
+                                {% set isAllowed = data.currentCompanyUserId != user.idCompanyUser and can('CompanyUserStatusChangePermissionPlugin') %}
+                                {% set href = isAllowed ? url('company/company-user-status/' ~ (user.isActive ? 'disable' : 'enable'), {'id': user.idCompanyUser}) : 'javascript:void(0)' %}
+                                {% set title = ('company.account.company_user.' ~ (user.isActive ? 'disable' : 'enable')) | trans %}
+                                {% include atom('switch') with {
+                                    modifiers: user.isActive ? ['active'] : [],
+                                    attributes: {
+                                        href: href,
+                                        title: title,
+                                        disabled: not isAllowed
+                                    }
+                                } only %}
+                            </td>
+                        {% endif %}
+                        {% if showActions %}
+                            <td class="table__actions">
+                                <ul class="menu menu--inline">
+                                    {% if data.actions.update %}
+                                        <li class="menu__item">
+                                            <a class="table__action" href="{{ url('company/user/update', {'id': user.idCompanyUser}) }}" title="{{ "company.account.company_user.edit" | trans }}">
+                                                {% include atom('icon') with {
+                                                    data: {
+                                                        name: 'edit'
+                                                    }
+                                                } only %}
+                                            </a>
+                                        </li>
+                                    {% endif %}
+
+                                    {% if data.currentCompanyUserId != user.idCompanyUser %}
+                                        {% if data.actions.delete %}
+                                            <li class="menu__item">
+                                                <a class="table__action" href="{{ url('company/user/delete', {'id': user.idCompanyUser }) }}" title="{{ "company.account.company_user.delete" | trans }}">
+                                                    {% include atom('icon') with {
+                                                        data: {
+                                                            name: 'delete'
+                                                        }
+                                                    } only %}
+                                                </a>
+                                            </li>
+                                        {% endif %}
+                                    {% endif %}
+                                </ul>
+                            </td>
+                        {% endif %}
+                    {% endif %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

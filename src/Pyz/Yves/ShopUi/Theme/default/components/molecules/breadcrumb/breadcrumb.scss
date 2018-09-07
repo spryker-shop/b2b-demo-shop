@@ -1,0 +1,23 @@
+@mixin shop-ui-breadcrumb($name: '.breadcrumb') {
+    #{$name} {
+        &--progress-step,
+        &--progress-complete {
+            font-size: rem(18);
+            line-height: normal;
+            margin: 0 rem(29);
+        }
+
+        &--progress-complete {
+            color: $setting-color-main;
+
+            .breadcrumb-step__link {
+                color: inherit;
+                margin-left: rem(4);
+            }
+        }
+
+        @content;
+    }
+}
+
+@include shop-ui-breadcrumb;

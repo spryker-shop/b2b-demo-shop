@@ -13,7 +13,7 @@ use Spryker\Zed\ProductMeasurementUnitStorage\ProductMeasurementUnitStorageConfi
 class ProductMeasurementUnitStorageConfig extends SprykerProductMeasurementUnitStorageConfig
 {
     /**
-     * @return null|string
+     * @return string|null
      */
     public function getProductMeasurementUnitSynchronizationPoolName(): ?string
     {

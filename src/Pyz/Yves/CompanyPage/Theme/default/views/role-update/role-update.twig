@@ -1,0 +1,75 @@
+{% extends template('page-layout-company', 'CompanyPage') %}
+
+{% define data = {
+    form: _view.companyRoleForm,
+    permissions: _view.permissions,
+    idCompanyRole: _view.idCompanyRole,
+
+    title: null,
+    activePage: 'role'
+} %}
+
+{% block breadcrumbs %}
+    {% include molecule('breadcrumb') with {
+        data: {
+            steps: [
+                {
+                    label: 'company.account.page-title' | trans,
+                    url: url('company/overview')
+                }, {
+                    label: 'company.account.company_role' | trans,
+                    url: url('company/company-role')
+                }, {
+                    label: 'company.account.company_role.edit_information' | trans({
+                        '%role_name%' : data.form.vars.value.name,
+                    })
+                }
+            ]
+        }
+    } only %}
+{% endblock %}
+
+{% block companyContent %}
+    {% include molecule('action-bar', 'ShopUi') with {
+        data: {
+            title: 'company.account.company_role.edit_information' | trans({
+                '%role_name%' : data.form.vars.value.name,
+            }),
+            actions: [
+                {
+                    title: 'general.back.button' | trans,
+                    url: url('company/company-role')
+                }
+            ]
+        }
+    } only %}
+
+    {% include molecule('form') with {
+        class: 'spacing-bottom--bigger',
+        data: {
+            form: data.form,
+            submit: {
+                enable: true,
+                class: 'button form__action--primary'
+            },
+            cancel: {
+                enable: true,
+                url: url('company/company-role'),
+                text: 'general.back.button' | trans,
+                icon: null,
+                class: 'button button--hollow'
+            }
+        }
+    } only %}
+
+    {% include molecule('permission-table', 'CompanyPage') with {
+        data: {
+            permissions: data.permissions,
+            idCompanyRole: data.idCompanyRole,
+            actions: {
+                configure: true,
+                switch: true
+            }
+        }
+    } only %}
+{% endblock %}

@@ -13,7 +13,7 @@ use Spryker\Zed\UrlStorage\UrlStorageConfig as SprykerUrlStorageConfig;
 class UrlStorageConfig extends SprykerUrlStorageConfig
 {
     /**
-     * @return null|string
+     * @return string|null
      */
     public function getUrlSynchronizationPoolName(): ?string
     {
@@ -21,7 +21,7 @@ class UrlStorageConfig extends SprykerUrlStorageConfig
     }
 
     /**
-     * @return null|string
+     * @return string|null
      */
     public function getUrlRedirectSynchronizationPoolName(): ?string
     {
