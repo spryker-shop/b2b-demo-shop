@@ -1,0 +1,57 @@
+{% extends template('page-layout-company', 'CompanyPage') %}
+
+{% define data = {
+    form: _view.companyRoleForm,
+
+    title: null,
+    activePage: 'role'
+} %}
+
+{% block breadcrumbs %}
+    {% include molecule('breadcrumb') with {
+        data: {
+            steps: [
+                {
+                    label: 'company.account.page-title' | trans,
+                    url: url('company/overview')
+                }, {
+                    label: 'company.account.company_role' | trans,
+                    url: url('company/company-role')
+                }, {
+                    label: 'company.account.company_role.create' | trans
+                }
+            ]
+        }
+    } only %}
+{% endblock %}
+
+{% block companyContent %}
+    {% include molecule('action-bar', 'ShopUi') with {
+        data: {
+            title: 'company.account.company_role.create' | trans,
+            actions: [
+                {
+                    title: 'general.back.button' | trans,
+                    url: url('company/company-role')
+                }
+            ]
+        }
+    } only %}
+
+    {% include molecule('form') with {
+        data: {
+            form: data.form,
+            submit: {
+                enable: true,
+                class: 'button form__action--primary'
+            },
+            cancel: {
+                enable: true,
+                url: url('company/company-role'),
+                text: 'general.back.button' | trans,
+                icon: null,
+                class: 'button button--hollow'
+            }
+        }
+    } only %}
+{% endblock %}
