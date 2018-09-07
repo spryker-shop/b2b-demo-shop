@@ -1,0 +1,19 @@
+{% extends template('widget') %}
+
+{% define data = {
+    options: _widget.cartItem.productOptions
+} %}
+
+{% block template %}
+    {% if data.options is not empty %}{{parent()}}{% endif %}
+{% endblock %}
+
+{% block body %}
+    <ul class="option-display">
+         {% for option in data.options %}
+            <li class="option-display__item">
+                {{ option.value | trans }} - {{ option.unitPrice | money }}
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
