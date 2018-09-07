@@ -1,0 +1,33 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'volume-price-table',
+    tag: 'div'
+} %}
+
+{% define data = {
+    volumePrices: required
+} %}
+
+{% block body %}
+    <table class="table {{config.name}}__table">
+        <tr>
+            <th class="{{config.name}}__title">
+                {{ 'page.detail.volume_price.quantity'|trans }}
+            </th>
+            <th class="{{config.name}}__title">
+                {{ 'page.detail.volume_price.price'|trans }}
+            </th>
+        </tr>
+        {% for volumePrice in data.volumePrices %}
+            <tr>
+                <td class="{{config.name}}__cell">
+                    {{ volumePrice.quantity }}
+                </td>
+                <td class="{{config.name}}__cell">
+                    {{ volumePrice.price|money }}
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
