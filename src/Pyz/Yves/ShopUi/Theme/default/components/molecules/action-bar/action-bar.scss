@@ -11,11 +11,20 @@
             margin-bottom: rem(16);
         }
 
+        &--small {
+            margin-top: rem(16) !important;
+            margin-bottom: rem(8) !important;
+        }
+
         &__title {
             flex: 1;
-            font-size: map_get($setting-font-size, 4);
             font-weight: map_get($setting-font-weight, medium);
             line-height: rem(40);
+
+            &--small {
+                @include helper-font-size(5);
+                @include helper-font-line-height(5);
+            }
         }
 
         &__actions,
