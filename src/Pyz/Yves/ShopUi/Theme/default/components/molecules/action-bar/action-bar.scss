@@ -2,24 +2,20 @@
     #{$name} {
         display: flex;
         flex-flow: row nowrap;
+        margin-top: rem(48);
+        margin-bottom: rem(16);
 
-        &:not(:first-child) {
-            margin-top: rem(48);
-        }
-
-        &:not(:last-child) {
-            margin-bottom: rem(16);
+        &--first {
+            margin-top: 0;
         }
 
         &--small {
-            margin-top: rem(16) !important;
-            margin-bottom: rem(8) !important;
+            margin-top: rem(16);
+            margin-bottom: rem(8);
         }
 
         &__title {
             flex: 1;
-            font-weight: map_get($setting-font-weight, medium);
-            line-height: rem(40);
 
             &--small {
                 @include helper-font-size(5);

@@ -16,6 +16,7 @@
 
 {% block customerContent %}
     {% include molecule('action-bar', 'ShopUi') with {
+        modifiers: ['first'],
         data: {
             title: 'customer.account.order_history' | trans,
             actions: []

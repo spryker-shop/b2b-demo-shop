@@ -37,6 +37,7 @@
 
 {% block customerContent %}
     {% include molecule('action-bar', 'ShopUi') with {
+        modifiers: ['first'],
         data: {
             title: 'customer.account.address' | trans,
             actions: [
