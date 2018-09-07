@@ -44,9 +44,11 @@
 
             {% block contentTop %}{% endblock %}
 
-            <div class="container">
-                {% block content %}{% endblock %}
-            </div>
+            {% block contentWrap %}
+                <div class="container">
+                    {% block content %}{% endblock %}
+                </div>
+            {% endblock %}
 
             {% block contentBottom %}{% endblock %}
         </main>
