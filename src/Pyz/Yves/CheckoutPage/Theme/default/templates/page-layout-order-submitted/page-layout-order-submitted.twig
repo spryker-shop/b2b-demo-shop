@@ -1,0 +1,68 @@
+{% extends template('page-layout-checkout', 'CheckoutPage') %}
+
+{% define data = {
+    title: required,
+    message: required
+} %}
+
+{% block header %}
+    {% embed organism('header') only %}
+        {% block mobile %}
+            <a href="#" class="link link--alt js-page-layout-main__side-drawer-trigger">
+                {% include atom('icon') with {
+                    modifiers: ['big'],
+                    data: {
+                        name: 'bars'
+                    }
+                } only %}
+            </a>
+        {% endblock %}
+    {% endembed %}
+{% endblock %}
+
+{% block pageInfo %}{% endblock %}
+
+{% block contentClass %}page-layout-main--checkout-success{% endblock %}
+
+{% block contentWrap %}
+    <div class="container container--checkout-success container--expand spacing-x spacing-x--inner spacing-x--reset">
+        {% block content %}
+            <div class="spacing-bottom spacing-bottom--bigger">
+                {% embed molecule('banner') with {
+                    class: 'spacing spacing--reset',
+                    mofifiers: ['color-white'],
+                    data: {
+                        imageUrl: '/assets/images/img-success.jpg',
+                        title: data.title,
+                        message: data.message
+                    }
+                } only %}
+                    {% block body %}
+                        <div class="{{config.name}}__container grid grid--middle grid--center spacing spacing--inner spacing--reset" style="{{backgroundImage}}">
+                            <div class="{{ config.name }}--font-white container grid grid--center text-center">
+                                <div class="col col--md-6 col--lg-8">
+                                    {% if data.title is not empty %}
+                                        <h1 class="{{ config.name }}--success__title">{{ data.title }}</h1>
+                                    {% endif %}
+                                    {% if data.message is not empty %}
+                                        <p class="{{ config.name }}--success__text">{{ data.message }}</p>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    {% endblock %}
+                {% endembed %}
+            </div>
+        {% endblock %}
+        {% block actions %}
+            <div class="container container--checkout text-center spacing-y spacing-y--inner">
+                <a href="{{ 'checkout.success.to_orders.url' | trans }}" class="button button--big spacing-x spacing-x--big">{{ 'checkout.success.to_orders.title' | trans }}</a>
+                <a href="/" class="button button--big button--hollow button--gray spacing-x spacing-x--big">{{ 'checkout.success.back_to_home.title' | trans }}</a>
+            </div>
+        {% endblock %}
+    </div>
+{% endblock %}
+
+{% block footer %}
+    {% include organism('footer') only %}
+{% endblock %}
