@@ -59,6 +59,7 @@ use Spryker\Zed\ProductDiscontinued\Communication\Console\DeactivateDiscontinued
 use Spryker\Zed\ProductDiscontinuedDataImport\ProductDiscontinuedDataImportConfig;
 use Spryker\Zed\ProductLabel\Communication\Console\ProductLabelRelationUpdaterConsole;
 use Spryker\Zed\ProductLabel\Communication\Console\ProductLabelValidityConsole;
+use Spryker\Zed\ProductListDataImport\ProductListDataImportConfig;
 use Spryker\Zed\ProductRelation\Communication\Console\ProductRelationUpdaterConsole;
 use Spryker\Zed\Propel\Communication\Console\DatabaseDropConsole;
 use Spryker\Zed\Propel\Communication\Console\DatabaseExportConsole;
@@ -201,6 +202,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . CompanyRoleDataImportConfig::IMPORT_TYPE_COMPANY_ROLE_PERMISSION),
             new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . CompanyRoleDataImportConfig::IMPORT_TYPE_COMPANY_USER_ROLE),
             new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . CompanyBusinessUnitDataImportConfig::IMPORT_TYPE_COMPANY_BUSINESS_UNIT_USER),
+            new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . ProductListDataImportConfig::IMPORT_TYPE_PRODUCT_LIST_PRODUCT_CONCRETE),
             new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . MultiCartDataImportConfig::IMPORT_TYPE_MULTI_CART),
             new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . SharedCartDataImportConfig::IMPORT_TYPE_SHARED_CART),
 

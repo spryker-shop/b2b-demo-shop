@@ -26,7 +26,9 @@
         <div class="{{config.name}}__thumbnail {{ data.thumbnailClass }}">
             {% for slide in data.slides %}
                 <div class="pdp-img">
-                    <img src="{{ slide.externalUrlLarge }}" alt="" >
+                    {% if slide.externalUrlLarge is not empty %}
+                        <img src="{{ slide.externalUrlLarge }}" alt="" >
+                    {% endif %}
                 </div>
             {% endfor %}
         </div>
@@ -35,11 +37,15 @@
     <div class="{{config.name}}__container {{ data.containerClass }}">
         {% for slide in data.slides %}
             <div class="pdp-img">
-                <img src="{{ slide.externalUrlLarge }}" alt="" >
+                {% if slide.externalUrlLarge is not empty %}
+                    <img src="{{ slide.externalUrlLarge }}" alt="" >
+                {% endif %}
             </div>
         {% endfor %}
         <div class="pdp-img js-pdp-color-group__image-{{ data.idProductAbstract }}">
-            <img src="{{ firstSlide.externalUrlLarge }}" alt="" >
+            {% if firstSlide.externalUrlLarge is not empty %}
+                <img src="{{ firstSlide.externalUrlLarge }}" alt="" >
+            {% endif %}
         </div>
     </div>
 
