@@ -4,9 +4,9 @@
     discontinuedProduct: _widget.discontinuedProduct
 } %}
 
-{%- block isDiscontinued -%}
-    {{- _widget.discontinuedProduct is not empty -}}
-{%- endblock -%}
+{% block isDiscontinued %}
+    {{ _widget.discontinuedProduct is not empty }}
+{% endblock %}
 
 {% block body %}
     {% if data.discontinuedProduct.note is defined and data.discontinuedProduct.note is not empty %}

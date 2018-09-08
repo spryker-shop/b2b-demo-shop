@@ -1,8 +1,7 @@
 {% extends model('component') %}
 
 {% define config = {
-    name: 'product-alternative-slider',
-    tag: 'div'
+    name: 'product-alternative-slider'
 } %}
 
 {% define data = {
@@ -15,7 +14,7 @@
     </h4>
 
     {% embed molecule('slick-carousel') with {
-        modifiers: ['full-width', 'equal-height', 'products'],
+        modifiers: ['full-width', 'equal-height', 'products', 'full-height'],
         data: {
             slides: data.products
         },
