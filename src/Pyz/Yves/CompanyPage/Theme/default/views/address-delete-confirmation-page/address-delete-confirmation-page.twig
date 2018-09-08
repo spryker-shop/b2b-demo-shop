@@ -1,0 +1,19 @@
+{% extends template('page-layout-company', 'CompanyPage') %}
+
+{% define data = {
+    title: 'company.account.address.delete_confimation_page' | trans,
+    activePage: 'business-unit',
+    companyUnitAddress: _view.companyUnitAddress,
+    companyBusinessUnits: _view.companyUnitAddress.companyBusinessUnitCollection.companyBusinessUnits|default([]),
+    idCompanyBusinessUnit: _view.idCompanyBusinessUnit,
+} %}
+
+{% block companyContent %}
+    {% include molecule('address-delete-message', 'CompanyPage') with {
+        data: {
+            companyUnitAddress: data.companyUnitAddress,
+            companyBusinessUnits: data.companyBusinessUnits,
+            idCompanyBusinessUnit: data.idCompanyBusinessUnit
+        }
+    } only %}
+{% endblock %}
