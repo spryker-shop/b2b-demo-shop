@@ -41,6 +41,7 @@
                 <div class="measurement-unit__value">
                     <input id="sales-unit-quantity" class="input input--small input--measurement-unit" type="number" value="{{ data.minQuantityInSalesUnits }}" name="sales-unit-quantity"/>
                     <input id="base-unit-quantity" type="hidden" value="{{ data.minQuantityInBaseUnit }}" name="quantity"/>
+
                 </div>
             </div>
             <div class="col measurement-unit">
@@ -71,10 +72,25 @@
         </div>
     {% else %}
         <div class="grid grid--stretch grid--justify">
-            {% include molecule('quantity-counter') with {
+            {% embed molecule('quantity-counter') with {
                 modifiers: ['right-space'],
                 readOnly: true
             } only %}
+                {% block inputClass %}js-volume-price__quantity{% endblock %}
+            {% endembed %}
+
+
+            {#{% embed atom('select') with {#}
+                {#modifiers: ['expand'],#}
+                {#data: {#}
+                    {#options: data.quantityOptions#}
+                {#},#}
+                {#attributes: {#}
+                    {#name: 'quantity'#}
+                {#}#}
+            {#} only %}#}
+                {#{% block selectClass %}js-volume-price__quantity{% endblock %}#}
+            {#{% endembed %}#}
             <div class="col col--expand">
                 <button type="submit" id="add-to-cart-button" class="button button--red button--big button--expand" {{ data.isAddToCartDisabled ? 'disabled' : '' }} onclick="this.form.submit(); this.disabled='disabled'; return false;" {{ qa('add-to-cart-button') }}>
                     {% include atom('icon') with {
