@@ -1,0 +1,131 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'quote-table',
+    tag: 'div'
+} %}
+
+{% define data = {
+    quotes: required,
+    actions: {
+        update: false,
+        delete: false,
+        duplicate: false,
+        toShoppingList: false,
+        share: false,
+    }
+} %}
+
+{% set showActions = data.actions.update or data.actions.delete or data.actions.duplicate %}
+
+{% block body %}
+    <table class="table table--grid table--expand">
+        <thead>
+            <tr class="active">
+                <th>{{ 'page.multi_cart.shopping_cart.list.label.name' | trans }}</th>
+                {% if widgetExists('CartListPermissionGroupWidgetPlugin') %}
+                    <th>{{ 'page.multi_cart.shopping_cart.list.label.access' | trans }}</th>
+                {% endif %}
+                <th>{{ 'page.multi_cart.shopping_cart.list.label.num_of_products' | trans }}</th>
+                <th>{{ 'page.multi_cart.shopping_cart.list.label.total' | trans }}</th>
+                {% if showActions %}
+                    <th></th>
+                {% endif %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for quote in data.quotes %}
+                {% set totals = quote.items | length %}
+                <tr>
+                    <td>
+                        <a href="{{ url('multi-cart/set-default', {idQuote: quote.idQuote}) }}"
+                            class="cart-name{% if quote.isDefault %} cart-name--active{% endif %}">
+                            {{ quote.name }}
+                        </a>
+                    </td>
+                    {% if widgetExists('CartListPermissionGroupWidgetPlugin') %}
+                        <td>
+                            {{ widget('CartListPermissionGroupWidgetPlugin', quote) }}
+                        </td>
+                    {% endif %}
+                    <td>
+                        {% if widgetExists('ProductBundleItemCounterWidgetPlugin') %}
+                            <span class="badge badge--yellow">{{ widget('ProductBundleItemCounterWidgetPlugin', quote) }}</span>
+                        {% else %}
+                            {% set label = (totals == 1)
+                                ? 'page.multi_cart.shopping_cart.list.label.item'
+                                : 'page.multi_cart.shopping_cart.list.label.items'
+                            %}
+
+                            <span class="badge cart-items-quantity">{{ totals }} {{ label | trans }}</span>
+                        {% endif %}
+                    </td>
+                    <td>{{ quote.totals.subtotal | default(0) | money }}</td>
+                    {% if showActions %}
+                        <td>
+                            <ul class="action-icons">
+                                {% if data.actions.update and can('WriteSharedCartPermissionPlugin', quote.idQuote) %}
+                                    <li class="menu__item">
+                                        <a href="{{ url('multi-cart/update', {idQuote: quote.idQuote}) }}">
+                                            {% include atom('icon') with {
+                                                data: {
+                                                    name: 'edit'
+                                                },
+                                                attributes: {
+                                                    title: 'page.multi_cart.shopping_cart.list.link.edit_name' | trans
+                                                }
+                                            } only %}
+                                        </a>
+                                    </li>
+                                {% endif %}
+                                {% if data.actions.share %}
+                                    {% if widgetExists('CartListPermissionGroupWidgetPlugin') %}
+                                        <li class="menu__item">
+                                            {{ widgetBlock('CartListPermissionGroupWidgetPlugin', 'actions', quote) }}
+                                        </li>
+                                    {% endif %}
+                                {% endif %}
+                                {% if data.actions.duplicate %}
+                                    <li class="menu__item">
+                                        <a href="{{ url('multi-cart/duplicate', {idQuote: quote.idQuote}) }}">
+                                            {% include atom('icon') with {
+                                                modifiers: ['duplicate'],
+                                                data: {
+                                                    name: 'duplicate'
+                                                },
+                                                attributes: {
+                                                    title: 'page.multi_cart.shopping_cart.list.link.duplicate' | trans
+                                                }
+                                            } only %}
+                                        </a>
+                                    </li>
+                                {% endif %}
+                                {% if data.actions.toShoppingList %}
+                                    {% if widgetExists('CartToShoppingListWidgetPlugin') %}
+                                        <li class="menu__item">
+                                            {{ widget('CartToShoppingListWidgetPlugin', quote) }}
+                                        </li>
+                                    {% endif %}
+                                {% endif %}
+                                {% if data.actions.delete and can('WriteSharedCartPermissionPlugin', quote.idQuote) %}
+                                    <li class="menu__item">
+                                        <a href="{{ url('multi-cart/confirm-delete', {idQuote: quote.idQuote}) }}">
+                                            {% include atom('icon') with {
+                                                data: {
+                                                    name: 'delete'
+                                                },
+                                                attributes: {
+                                                    title: 'page.multi_cart.shopping_cart.list.link.delete' | trans
+                                                }
+                                            } only %}
+                                        </a>
+                                    </li>
+                                {% endif %}
+                            </ul>
+                        </td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
