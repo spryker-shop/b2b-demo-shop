@@ -17,7 +17,6 @@ use SprykerShop\Yves\MultiCartWidget\Plugin\CustomerPage\MultiCartMenuItemWidget
 use SprykerShop\Yves\NewsletterWidget\Plugin\CustomerPage\NewsletterSubscriptionSummaryWidgetPlugin;
 use SprykerShop\Yves\ProductPackagingUnitWidget\Plugin\CustomerPage\OrderDetailProductPackagingUnitWidgetPlugin;
 use SprykerShop\Yves\ShoppingListWidget\Plugin\CustomerPage\ShoppingListMenuItemWidgetPlugin;
-use SprykerShop\Yves\WishlistWidget\Plugin\CustomerPage\WishlistMenuItemWidgetPlugin;
 
 class CustomerPageDependencyProvider extends SprykerShopCustomerPageDependencyProvider
 {
@@ -61,7 +60,6 @@ class CustomerPageDependencyProvider extends SprykerShopCustomerPageDependencyPr
     protected function getCustomerMenuItemWidgetPlugins(): array
     {
         return [
-            WishlistMenuItemWidgetPlugin::class,
             ShoppingListMenuItemWidgetPlugin::class, #ShoppingListFeature
             MultiCartMenuItemWidgetPlugin::class, #MultiCartFeature
         ];
