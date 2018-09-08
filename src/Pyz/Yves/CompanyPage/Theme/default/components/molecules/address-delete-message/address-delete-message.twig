@@ -1,0 +1,61 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'address-delete-message',
+    tag: 'div'
+} %}
+
+{% define data = {
+    companyUnitAddress: required,
+    companyBusinessUnits: null,
+    idCompanyBusinessUnit: null
+} %}
+
+{% block body %}
+    <h5 class="{{ config.name }}__delete-message">
+        {% include atom('icon') with {
+            modifiers: ['big'],
+            data: {
+                name: 'action-warning'
+            }
+        } only %}
+        {{ "company.account.address.delete.message.title" | trans }}
+    </h5>
+
+    <div class="spacing-y spacing-y--big">
+        {{ "company.account.address.delete.message.description" | trans }}
+
+        <address class="{{ config.name }}__address">{{ data.companyUnitAddress.address1 }} {{ data.companyUnitAddress.address2 }}</address>
+        <address class="{{ config.name }}__address">{{ data.companyUnitAddress.zipCode }} {{ data.companyUnitAddress.city }}, {{ ('countries.iso.' ~ data.companyUnitAddress.iso2code) | trans }}</address>
+
+        {% if data.companyBusinessUnits is not empty %}
+            {{ "company.account.address.delete.message.belongs" | trans }}:
+
+            <ul class="list list--bullet">
+                {% for companyBusinessUnit in data.companyBusinessUnits %}
+                    <li class="list__item list__item--bullet">{{ companyBusinessUnit.name }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+
+    {% if data.companyBusinessUnits is not empty %}
+        <p class="{{ config.name }}__delete-message">
+            {{ "company.account.address.delete.message.all" | trans }}.
+        </p>
+    {% endif %}
+
+    {% if data.idCompanyBusinessUnit is not empty %}
+        <a class="button button--hollow {{ config.name }}__action" href="{{ url('company/business-unit/update', {'id': data.idCompanyBusinessUnit }) }}">
+            {{ "label.button.cancel" | trans }}
+        </a>
+    {% else %}
+        <a class="button button--hollow {{ config.name }}__action" href="{{ url('company/business-unit') }}">
+            {{ "label.button.cancel" | trans }}
+        </a>
+    {% endif %}
+
+    <a class="button" href="{{ url('company/address/delete', {'id': data.companyUnitAddress.idCompanyUnitAddress, 'idCompanyBusinessUnit': data.idCompanyBusinessUnit }) }}">
+        {{ "label.button.submit" | trans }}
+    </a>
+{% endblock %}

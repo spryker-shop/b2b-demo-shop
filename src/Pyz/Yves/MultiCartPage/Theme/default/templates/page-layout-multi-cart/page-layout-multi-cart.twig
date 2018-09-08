@@ -1,0 +1,17 @@
+{% extends template('page-layout-customer', 'CustomerPage') %}
+
+{% define data = {
+    title: 'page.multi_cart.shopping_cart.list.title' | trans,
+    activePage: 'multiCart'
+} %}
+
+{% block breadcrumbs %}
+    {% include molecule('breadcrumb') with {
+        data: {
+            steps: [{
+                label: 'customer.account' | trans,
+                url: url('customer/overview'),
+            }]
+        }
+    } only %}
+{% endblock %}

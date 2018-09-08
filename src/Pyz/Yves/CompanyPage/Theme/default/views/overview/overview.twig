@@ -3,24 +3,27 @@
 
 {% define data = {
     title: null,
-    company: _view.company
+    company: _view.company | default(false),
+    defaultBillingAddress: _view.defaultBillingAddress | default(false)
 } %}
 
 {% block companyContent %}
-    {% include molecule('tile', 'ShopUi') with {
-        data: {
-            icon: 'office',
-            title: 'company.account.name' | trans,
-            text: data.company.name
-        }
-    } only %}
+    {% if data.company is not empty %}
+        {% include molecule('tile', 'ShopUi') with {
+            data: {
+                icon: 'office',
+                title: 'company.account.name' | trans,
+                text: data.company.name
+            }
+        } only %}
+    {% endif %}
 
-    {# TODO mocked address! #}
+    {# TODO: show actual deafult company address #}
     {% include molecule('tile', 'ShopUi') with {
         data: {
             icon: 'marker',
             title: 'company.account.address' | trans,
-            text: '- Beispielstraße 30, 10625 Berlin, Germany'
+            text: 'Julie-Wolfthorn-Straße 1, 10115 Berlin, Germany'
         }
     } only %}
 {% endblock %}

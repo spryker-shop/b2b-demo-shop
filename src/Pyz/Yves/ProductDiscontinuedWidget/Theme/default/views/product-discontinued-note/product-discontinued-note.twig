@@ -1,0 +1,19 @@
+{% extends template('widget') %}
+
+{% define data = {
+    discontinuedProduct: _widget.discontinuedProduct
+} %}
+
+{% block isDiscontinued %}
+    {{ _widget.discontinuedProduct is not empty }}
+{% endblock %}
+
+{% block body %}
+    {% if data.discontinuedProduct.note is defined and data.discontinuedProduct.note is not empty %}
+        {% include atom('product-discontinued-note', 'ProductDiscontinuedWidget') with {
+            data: {
+                note: data.discontinuedProduct.note
+            }
+        } only %}
+    {% endif %}
+{% endblock %}
