@@ -10,21 +10,31 @@
     originalAmount: null
 } %}
 
+{% block class %}
+    {{ parent() }} price--pdp
+{% endblock %}
+
 {% block body %}
     {% if data.originalAmount is not empty -%}
-        <span class="{{config.name}}__amount {{config.name}}__amount--original">{{ data.originalAmount | money }}</span>
+        <span class="price__amount price__amount--pdp {{config.name}}__amount {{config.name}}__amount--original">{{ data.originalAmount | money }}</span>
     {%- endif -%}
 
-    <span class="{{ config.name }}__amount">
-
-        {% include atom('icon') with {
-            class: config.name ~ '__tag',
-            data: {
-                name: 'tag'
-            }
-        } only %}
+    <span class="price__amount price__amount--pdp {{ config.name }}__amount">
         <span class="{{ config.jsName }}__price {{ config.name }}__price">
             {{ data.amount }}
         </span>
     </span>
+
+    <span class="price__mode price__mode--pdp">
+
+        {% if data.priceMode == 'GROSS_MODE' %}
+            {{ 'price.mode.incl_vat' | trans }}
+        {% endif %}
+
+        {% if data.priceMode == 'NET_MODE' %}
+            {{ 'price.mode.excl_vat' | trans }}
+        {% endif %}
+
+    </span>
+
 {% endblock %}

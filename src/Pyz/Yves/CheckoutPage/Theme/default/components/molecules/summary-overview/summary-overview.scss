@@ -1,0 +1,56 @@
+.summary-overview {
+    margin-top: rem(36);
+    margin-bottom: rem(30);
+
+    &__top {
+        margin-bottom: rem(15);
+        font-size: rem(14);
+        font-weight: fw(medium);
+        color: $setting-color-gray-6;
+    }
+
+    &__title {
+        font-weight: fw(medium);
+        color: $setting-color-gray-6;
+
+        &--total {
+            font-size: rem(20);
+            font-weight: fw(bold);
+            line-height: 1.2;
+        }
+    }
+
+    &__list {
+        background-color: $setting-color-gray-13;
+        border-radius: $setting-border-radius;
+    }
+
+    &__item {
+        padding: rem(18) rem(30) rem(14);
+        font-weight: fw(medium);
+        line-height: normal;
+        color: $setting-color-gray-6;
+
+        &:not(:first-child) {
+            border-top: 2px solid $setting-color-gray-1;
+        }
+
+        &--total {
+            padding: rem(28) rem(30);
+        }
+    }
+
+    &__text-wrap {
+        margin-top: rem(11);
+    }
+
+    &__text {
+        font-size: rem(15);
+        font-weight: fw(regular);
+        line-height: 0.87;
+    }
+
+    &__inner-row {
+        margin-top: rem(4);
+    }
+}

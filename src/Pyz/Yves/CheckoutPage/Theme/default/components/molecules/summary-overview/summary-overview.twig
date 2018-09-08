@@ -1,0 +1,73 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'summary-overview'
+} %}
+
+{% define data = {
+    shipmentMethod: required,
+    voucherDiscounts: [],
+    cartRuleDiscounts: [],
+
+    prices: {
+        subTotal: required,
+        storeCurrency: required,
+        tax: required,
+        grandTotal: required,
+        discountTotal: null
+    }
+} %}
+
+{% block body %}
+    <div class="grid grid--justify grid--middle {{ config.name }}__top">
+        <div class="col col--sm-8">
+            <h6 class="{{ config.name }}__title">{{ 'checkout.step.summary.overview' | trans }}</h6>
+        </div>
+        <div class="col col--sm-2 text-right">{{ app['cart.quantity'] }} {{ 'checkout.step.summary.items' | trans }}</div>
+    </div>
+    <ul class="{{ config.name }}__list">
+        <li class="{{ config.name }}__item">
+            {{ 'checkout.step.summary.sub_total' | trans }}
+            <span class="float-right">{{ data.prices.subTotal | money }}</span>
+        </li>
+
+        {% if data.prices.discountTotal %}
+            {% if data.voucherDiscounts is not empty %}
+                <li class="{{ config.name }}__item">
+                    {{ 'cart.vouchers' | trans }}
+                    {% for voucherDiscount in data.voucherDiscounts %}
+                        <div class="grid grid--justify grid--middle {{ config.name }}__text-wrap">
+                            <span class="col col--sm-10 text-secondary {{ config.name }}__text">{{ voucherDiscount.displayName }}</span>
+                            <span class="col col--expand text-right text-alt">{{ voucherDiscount.amount | money }}</span>
+                        </div>
+                    {% endfor %}
+                </li>
+            {% endif %}
+
+            {% if data.cartRuleDiscounts|length %}
+                <li class="{{ config.name }}__item">
+                    {{ 'cart.discounts' | trans }}
+                    {% for ruleDiscount in data.cartRuleDiscounts %}
+                        <div class="grid grid--justify grid--middle {{ config.name }}__text-wrap">
+                            <span class="col col--sm-10 text-secondary {{ config.name }}__text">{{ ruleDiscount.displayName }}</span>
+                            <span class="col col--expand text-right text-alt">- {{ ruleDiscount.amount | money }}</span>
+                        </div>
+                    {% endfor %}
+                </li>
+            {% endif %}
+        {% endif %}
+
+        <li class="{{ config.name }}__item">
+            <span class="float-right">{{ data.prices.storeCurrency | money }}</span>
+            {{ 'checkout.step.summary.shipping' | trans }} ({{ data.shipmentMethod }})
+            <div class="{{ config.name }}__inner-row">
+                <span class="text-secondary">{{ 'checkout.step.summary.tax' | trans }}</span>
+                <span class="text-secondary float-right">{{ data.prices.tax | money }}</span>
+            </div>
+        </li>
+        <li class="{{ config.name }}__item {{ config.name }}__item--total">
+            <strong class="float-right {{ config.name }}__title {{ config.name }}__title--total">{{ data.prices.grandTotal | money }}</strong>
+            <h6 class="{{ config.name }}__title {{ config.name }}__title--total">{{ 'checkout.step.summary.grand_total' | trans }}</h6>
+        </li>
+    </ul>
+{% endblock %}
