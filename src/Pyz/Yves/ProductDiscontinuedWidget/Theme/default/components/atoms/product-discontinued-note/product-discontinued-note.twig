@@ -1,0 +1,19 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'product-discontinued-note'
+} %}
+
+{% define data = {
+    note: required
+} %}
+
+{% block body %}
+    <h4 class="{{ config.name }}__title">
+        {{ 'product_discontinued_widget.note' | trans }}
+    </h4>
+
+    <div class="{{ config.name }}__text">
+        {{ data.note }}
+    </div>
+{% endblock %}
