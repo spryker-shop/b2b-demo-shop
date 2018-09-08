@@ -13,7 +13,7 @@ use Spryker\Zed\ProductReviewStorage\ProductReviewStorageConfig as SprykerProduc
 class ProductReviewStorageConfig extends SprykerProductReviewStorageConfig
 {
     /**
-     * @return null|string
+     * @return string|null
      */
     public function getProductAbstractReviewSynchronizationPoolName(): ?string
     {

@@ -1,0 +1,10 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'switch',
+    tag: 'a'
+} %}
+
+{% block body %}
+    <span class="{{ config.name }}__handle"></span>
+{% endblock %}

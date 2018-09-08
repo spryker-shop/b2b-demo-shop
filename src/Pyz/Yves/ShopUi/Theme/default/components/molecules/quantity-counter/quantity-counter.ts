@@ -14,6 +14,8 @@ export default class QuantityCounter extends Component {
         const autoUpdate = input.data('auto-update');
         const form = $(this).parent('form');
 
+        const self = this;
+
         if(!maxQuantity){
             maxQuantity = Infinity;
         }
@@ -22,6 +24,8 @@ export default class QuantityCounter extends Component {
             if(value > 1){
                 input.val(value - 1);
 
+                const event = new CustomEvent('quantityChange');
+                self.querySelector(`.${self.name}__input`).dispatchEvent(event);
                 if(autoUpdate) {
                     this.timer(form);
                 }
@@ -32,6 +36,8 @@ export default class QuantityCounter extends Component {
             if(value < maxQuantity) {
                 input.val(value + 1);
 
+                const event = new CustomEvent('quantityChange');
+                self.querySelector(`.${self.name}__input`).dispatchEvent(event);
                 if(autoUpdate) {
                     this.timer(form);
                 }

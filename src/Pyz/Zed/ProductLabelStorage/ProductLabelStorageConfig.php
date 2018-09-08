@@ -13,7 +13,7 @@ use Spryker\Zed\ProductLabelStorage\ProductLabelStorageConfig as SprykerProductL
 class ProductLabelStorageConfig extends SprykerProductLabelStorageConfig
 {
     /**
-     * @return null|string
+     * @return string|null
      */
     public function getProductAbstractLabelSynchronizationPoolName(): ?string
     {
@@ -21,7 +21,7 @@ class ProductLabelStorageConfig extends SprykerProductLabelStorageConfig
     }
 
     /**
-     * @return null|string
+     * @return string|null
      */
     public function getProductLabelDictionarySynchronizationPoolName(): ?string
     {

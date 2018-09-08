@@ -90,7 +90,8 @@
             min-width: rem(200);
         }
 
-        &--edit {
+        &--edit,
+        &--back {
             @include helper-effect-transition(color);
             color: $setting-color-gray-2;
 
@@ -98,6 +99,10 @@
             &:focus {
                 color: $setting-color-gray-6;
             }
+        }
+
+        &--back {
+            font-weight: fw(regular);
         }
 
         &--gray {
@@ -135,15 +140,15 @@
     }
 }
 
-@include shop-ui-button;
-
 @mixin shop-ui-button-action($action, $setting-color-action) {
     &--#{$action} {
         background-color: $setting-color-action;
+        border-color: $setting-color-action;
 
         &:hover,
         &:focus {
             background-color: helper-color-dark($setting-color-action);
+            border-color: helper-color-dark($setting-color-action);
         }
     }
 
@@ -160,3 +165,5 @@
 
     @content;
 }
+
+@include shop-ui-button;
