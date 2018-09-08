@@ -1,0 +1,19 @@
+{% extends template('widget') %}
+
+{% define data = {
+    isActivePage: _widget.isActivePage,
+} %}
+
+{% set itemClass = data.isActivePage ? ' menu__item--active' : '' %}
+
+{% block body %}
+    {% include molecule('navigation-sidebar-item') with {
+        data: {
+            url: path('multi-cart'),
+            icon: 'cart',
+            label: 'page.multi_cart.shopping_cart.list.title' | trans,
+            name: 'shopping-cart'
+        },
+        modifiers: data.isActivePage ? ['active'] : []
+    } only %}
+{% endblock %}
