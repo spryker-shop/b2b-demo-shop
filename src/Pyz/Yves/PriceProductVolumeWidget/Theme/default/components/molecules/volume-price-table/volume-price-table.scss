@@ -1,0 +1,41 @@
+@mixin shop-ui-volume-price-table($name: '.volume-price-table') {
+    #{$name} {
+        margin-bottom: 2rem;
+
+        table {
+            text-align: center;
+            box-shadow: 0 10px 10px 0 $setting-color-alpha-1, 0 3px 3px 0 $setting-color-alpha-1;
+
+            th {
+                padding: rem(15) rem(20) rem(12);
+                font-size: rem(12);
+
+                &:first-child {
+                    text-align: center;
+                }
+
+                &:last-child {
+                    padding-right: rem(50);
+                }
+            }
+
+            td {
+                padding: rem(13) rem(20) rem(13);
+                font-size: rem(13);
+                color: $setting-color-gray-3;
+
+                &:first-child {
+                    text-align: center;
+                }
+
+                &:last-child {
+                    padding-right: rem(50);
+                }
+            }
+        }
+
+        @content;
+    }
+}
+
+@include shop-ui-volume-price-table;

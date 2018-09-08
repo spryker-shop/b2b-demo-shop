@@ -53,7 +53,7 @@ class EventBehaviorDependencyProvider extends SprykerEventBehaviorDependencyProv
     {
         return [
             new CmsPageEventResourceQueryContainerPlugin(),
-            new CategoryPageEventResourceQueryContainerPlugin,
+            new CategoryPageEventResourceQueryContainerPlugin(),
             new ProductPageEventResourceQueryContainerPlugin(),
             new ProductSetPageSearchEventResourceQueryContainerPlugin(),
             new ProductReviewSearchEventResourceQueryContainerPlugin(),

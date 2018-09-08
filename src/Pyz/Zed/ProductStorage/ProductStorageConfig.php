@@ -13,7 +13,7 @@ use Spryker\Zed\ProductStorage\ProductStorageConfig as SprykerProductStorageConf
 class ProductStorageConfig extends SprykerProductStorageConfig
 {
     /**
-     * @return null|string
+     * @return string|null
      */
     public function getProductConcreteSynchronizationPoolName(): ?string
     {
@@ -21,7 +21,7 @@ class ProductStorageConfig extends SprykerProductStorageConfig
     }
 
     /**
-     * @return null|string
+     * @return string|null
      */
     public function getProductAbstractSynchronizationPoolName(): ?string
     {

@@ -9,6 +9,7 @@
     {% if address is not empty %}
         {% embed molecule('action-card') with {
             data: {
+                title: ('customer.account.default_' ~ label) | trans,
                 address: address,
                 actions: [
                     {
@@ -36,7 +37,7 @@
 {% endmacro %}
 
 {% block customerContent %}
-    {% include molecule('action-bar', 'ShopUi') with {
+    {% include molecule('action-bar') with {
         modifiers: ['first'],
         data: {
             title: 'customer.account.address' | trans,
@@ -53,7 +54,15 @@
     {% set cards = [] %}
 
     {% for address in data.addresses %}
-        {% set cards = cards | merge([{ content: _self.address('', address, address.idCustomerAddress) }]) %}
+        {% set label = 'address' %}
+        {% if address.isDefaultShipping and address.isDefaultBilling %}
+            {% set label = 'both_addresses' %}
+        {% elseif address.isDefaultShipping %}
+            {% set label = 'shipping_address' %}
+        {% elseif address.isDefaultBilling %}
+            {% set label = 'billing_address' %}
+        {% endif %}
+        {% set cards = cards | merge([{ content: _self.address(label, address, address.idCustomerAddress) }]) %}
     {% endfor %}
 
     {% include molecule('action-card-grid') with {

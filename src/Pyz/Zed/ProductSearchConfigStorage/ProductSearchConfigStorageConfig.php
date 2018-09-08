@@ -13,7 +13,7 @@ use Spryker\Zed\ProductSearchConfigStorage\ProductSearchConfigStorageConfig as S
 class ProductSearchConfigStorageConfig extends SprykerProductSearchConfigStorageConfig
 {
     /**
-     * @return null|string
+     * @return string|null
      */
     public function getProductSearchConfigSynchronizationPoolName(): ?string
     {
