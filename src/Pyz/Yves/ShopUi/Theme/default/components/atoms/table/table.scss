@@ -63,6 +63,35 @@
             height: 1em;
         }
 
+        &--grid {
+
+            thead {
+                white-space: nowrap;
+            }
+
+            th, td {
+                padding: rem(16) rem(15);
+            }
+
+        }
+
+        .action-icons {
+            display: flex;
+            align-items: center;
+
+            li {
+                padding: 0 rem(3);
+            }
+
+            a {
+                color: $setting-color-gray-2;
+
+                &:hover {
+                    color: $setting-color-alt;
+                }
+            }
+        }
+
         @content;
     }
 }
