@@ -45,6 +45,10 @@
     <ul class="menu">
         {{ widget('ShoppingListMenuItemWidgetPlugin', data.activePage, data.activeEntityId) }}
 
+        {% if widgetExists('MultiCartMenuItemWidgetPlugin') %}
+            {{ widget('MultiCartMenuItemWidgetPlugin', data.activePage) }}
+        {% endif %}
+
         {% if widgetGlobalExists('MenuItemBusinessOnBehalfWidgetPlugin') %}
             {{ widgetGlobal('MenuItemBusinessOnBehalfWidgetPlugin', data.activePage, data.activeEntityId) }}
         {% endif %}
