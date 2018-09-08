@@ -1,6 +1,6 @@
 @mixin product-alternative-slider($name: '.product-alternative-slider') {
     #{$name} {
-        margin: rem(60) 0 rem(-80);
+        margin-top: rem(60);
 
         &__title {
             font-size: rem(32);
@@ -8,7 +8,7 @@
             line-height: normal;
             text-align: center;
             color: $setting-color-gray-6;
-            margin-bottom: 33px;
+            margin-bottom: rem(33);
         }
 
         @content;

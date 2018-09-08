@@ -127,6 +127,9 @@
             </div>
 
             {{ widget('MultiCartWidgetPlugin', data.product, isDisabled) }}
+        {% endif %}
+
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
             {{ widget('AvailabilityWidgetPlugin', data.product) }}
         {% endif %}
     </form>
