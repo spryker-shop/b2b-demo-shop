@@ -1,0 +1,11 @@
+@mixin shop-ui-shopping-list-overview-table ($name: '.shopping-list-overview-table') {
+    #{$name} {
+        &__actions {
+            width: 20%;
+        }
+
+        @content;
+    }
+}
+
+@include shop-ui-shopping-list-overview-table;
