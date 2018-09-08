@@ -1,0 +1,49 @@
+{% extends template('page-layout-customer', 'CustomerPage') %}
+
+{% define data = {
+    cart: _view.cart | default([]),
+    cartName: _view.cart.name | default,
+    cartIdQuote: _view.cart.idQuote | default,
+    cartShareDetails: _view.cart.shareDetails | default
+} %}
+
+{% block breadcrumbs %}
+    {% include molecule('breadcrumb') with {
+        data: {
+            steps: [{
+                label: 'customer.profile' | trans
+            },{
+                label: 'multi_cart_page.cart_delete_confirmation.breadcrumbs.shopping_carts' | trans
+            },{
+                label: 'multi_cart_page.cart_delete_confirmation.warning' | trans
+            }]
+        }
+    } only %}
+{% endblock %}
+
+{% block content %}
+    <div class="grid cart-update">
+        <div class="col col--md-6">
+            <h2 class="cart-update__title">{{ "multi_cart_page.cart_delete_confirmation.warning" | trans }}</h2>
+
+            {{ "multi_cart_page.cart_delete_confirmation.trying_to_delete" | trans }}: <strong>{{ data.cartName }}</strong>
+            <br/><br/>
+
+            {% if data.cartShareDetails is not empty %}
+                {{ "multi_cart_page.cart_delete_confirmation.shared_with" | trans }}:
+                {{ widget('CartDeleteCompanyUsersListWidgetPlugin', data.cart) }}
+                <span class="text-alert">{{ "multi_cart_page.cart_delete_confirmation.from_all_of_them" | trans }}</span>
+                <br/><br/>
+            {% endif %}
+
+            <div>
+                <a href="{{ url('cart') }}" class="button button--info">
+                    {{ "multi_cart_page.cart_delete_confirmation.cancel" | trans }}
+                </a>
+                <a href="{{ url('multi-cart/delete', { 'idQuote' : data.cartIdQuote }) }}" class="button button--alert">
+                    {{ "multi_cart_page.cart_delete_confirmation.delete" | trans }}
+                </a>
+            </div>
+            </div>
+    </div>
+{% endblock %}
