@@ -1,0 +1,66 @@
+{% extends template('page-layout-company', 'CompanyPage') %}
+
+{% define data = {
+    form: _view.form,
+    addresses: _view.addresses| default([]),
+    title: null,
+    activePage: 'business-unit'
+} %}
+
+{% block breadcrumbs %}
+    {% include molecule('breadcrumb') with {
+        data: {
+            steps: [{
+                    label: 'company.account' | trans,
+                },
+                {
+                    label: 'company.account.business_unit' | trans,
+                }
+            ]}
+    } only %}
+{% endblock %}
+
+{% block companyContent %}
+    {% embed molecule('form') with {
+        modifiers: ['narrow'],
+        data: {
+            title: 'company.account.business_unit.create' | trans,
+            form: data.form,
+            submit: {
+                enable: true
+            },
+            cancel: {
+                enable: true,
+                url: url('company/business-unit'),
+                text: 'general.back.button' | trans,
+                icon: null
+            }
+        },
+        embed: {
+            addresses: data.addresses
+        }
+    } only %}
+        {% block title %}
+            {% if data.title is not empty %}
+                <h4>{{data.title}}</h4>
+            {% endif %}
+            <div class="{{config.name}}__title-description">{{ 'company.account.business_unit.description' | trans }}</div>
+        {% endblock %}
+        {% block field %}
+            {% if field.vars.name == 'address_collection' %}
+                {% do field.setRendered %}
+                <div class="form__field col col--sm-12">
+                    <hr />
+                    {% include molecule('business-unit-address-list', 'CompanyPage') with {
+                        data: {
+                            field: field,
+                            idCompanyBusinessUnit: null
+                        }
+                    } only %}
+                </div>
+            {% else %}
+                {{parent()}}
+            {% endif %}
+        {% endblock %}
+    {% endembed %}
+{% endblock %}

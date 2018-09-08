@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<database xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          name="zed"
+          xsi:noNamespaceSchemaLocation="http://static.spryker.com/schema-01.xsd"
+          namespace="Orm\Zed\ShoppingList\Persistence"
+          package="src.Orm.Zed.ShoppingList.Persistence">
+
+    <table name="spy_shopping_list">
+        <behavior name="event">
+            <parameter name="spy_shopping_list_all" column="*"/>
+        </behavior>
+    </table>
+
+    <table name="spy_shopping_list_item">
+        <behavior name="event">
+            <parameter name="spy_shopping_list_item_all" column="*"/>
+        </behavior>
+    </table>
+
+    <table name="spy_shopping_list_company_user">
+        <behavior name="event">
+            <parameter name="spy_shopping_list_company_user_all" column="*"/>
+        </behavior>
+    </table>
+
+    <table name="spy_shopping_list_company_business_unit">
+        <behavior name="event">
+            <parameter name="spy_shopping_list_company_business_unit_all" column="*"/>
+        </behavior>
+    </table>
+
+</database>

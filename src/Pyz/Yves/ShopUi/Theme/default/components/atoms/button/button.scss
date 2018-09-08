@@ -86,13 +86,35 @@
             width: 100%;
         }
 
-        &--edit {
+        &--checkout {
+            min-width: rem(200);
+        }
+
+        &--edit,
+        &--back {
             @include helper-effect-transition(color);
             color: $setting-color-gray-2;
 
             &:hover,
             &:focus {
                 color: $setting-color-gray-6;
+            }
+        }
+
+        &--back {
+            font-weight: fw(regular);
+        }
+
+        &--gray {
+            @include helper-effect-transition(color border-color);
+            color: $setting-color-gray-3;
+            border-color: $setting-color-gray-2;
+
+            &:hover,
+            &:focus {
+                background-color: $setting-color-transparent;
+                border-color: $setting-color-main;
+                color: $setting-color-main;
             }
         }
 
@@ -118,15 +140,15 @@
     }
 }
 
-@include shop-ui-button;
-
 @mixin shop-ui-button-action($action, $setting-color-action) {
     &--#{$action} {
         background-color: $setting-color-action;
+        border-color: $setting-color-action;
 
         &:hover,
         &:focus {
             background-color: helper-color-dark($setting-color-action);
+            border-color: helper-color-dark($setting-color-action);
         }
     }
 
@@ -143,3 +165,5 @@
 
     @content;
 }
+
+@include shop-ui-button;

@@ -2,8 +2,15 @@
     @include shop-ui-form($name);
 
     #{$name} {
-        &__field + &__field {
-            margin-top: 0.5rem;
+        &__field {
+            + & {
+                margin-top: 0.5rem;
+            }
+
+            &--section {
+                margin-top: rem(48);
+                width: 100%;
+            }
         }
 
         &__actions {
@@ -17,8 +24,22 @@
             flex: none;
             margin: 0 1rem 0 0;
 
-            &#{&}--primary {
+            &--primary {
                 order: -1;
+            }
+        }
+
+        &__title-description {
+            color: $setting-color-gray-2;
+        }
+
+        &--narrow {
+            #{$name}__container {
+                width: 100%;
+
+                @include helper-breakpoint-media-min($xl-min) {
+                    width: 60%;
+                }
             }
         }
     }

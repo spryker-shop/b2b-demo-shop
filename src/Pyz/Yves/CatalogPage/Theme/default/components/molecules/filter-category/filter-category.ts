@@ -7,21 +7,28 @@ export default class FilterCategory extends Component {
     constructor() {
         super();
         this.activeCategory = <HTMLElement>document.querySelector(this.listSelector);
-        this.categoriesToShow = <HTMLElement[]>Array.from(this.activeCategory.querySelectorAll(this.categoriesToShowSelector));
+
+        const parent = this.activeCategory ? this.activeCategory : this;
+        this.categoriesToShow = <HTMLElement[]>Array.from(parent.querySelectorAll(this.categoriesToShowSelector));
     }
 
     protected readyCallback(): void {
-        if (this.activeCategory.classList.contains(this.parentSelector)) {
-            this.removeClass(this.categoriesToShow);
-        } else {
-            let target = <HTMLElement> this.activeCategory;
-            while (!target.classList.contains(this.wrapSelector)) {
-                if (target.classList.contains(this.parentSelector)) {
-                    this.removeClass(<HTMLElement[]>Array.from(target.querySelectorAll(this.categoriesToShowSelector)));
-                    return;
+
+        if (this.activeCategory) {
+            if (this.activeCategory.classList.contains(this.parentSelector)) {
+                this.removeClass(this.categoriesToShow);
+            } else {
+                let target = <HTMLElement> this.activeCategory;
+                while (!target.classList.contains(this.wrapSelector)) {
+                    if (target.classList.contains(this.parentSelector)) {
+                        this.removeClass(<HTMLElement[]>Array.from(target.querySelectorAll(this.categoriesToShowSelector)));
+                        return;
+                    }
+                    target = <HTMLElement> target.parentNode;
                 }
-                target = <HTMLElement> target.parentNode;
             }
+        } else {
+            this.removeClass(this.categoriesToShow);
         }
     }
 

@@ -7,10 +7,20 @@ $shop-ui-icon-size-big: 1.25rem;
         fill: $setting-color-gray-9;
     }
 
+    &--checkout {
+        width: 167px;
+        height: 60px;
+    }
+
     &--header-check {
         width: 12px;
         height: 9px;
         margin: -2px 9px 0 0;
+    }
+
+    &--progress-check {
+        width: 10px;
+        height: 8px;
     }
 
     &--phone {
@@ -113,5 +123,58 @@ $shop-ui-icon-size-big: 1.25rem;
         @include helper-effect-transition(color);
         color: $setting-color-gray-2;
         margin-right: rem(6);
+    }
+
+    &--lock {
+        margin-bottom: 5px;
+        margin-right: rem(5);
+    }
+
+    &--shipment {
+        width: rem(83);
+    }
+
+    &--dhl-logo {
+        width: rem(73);
+    }
+
+    &--invoice-logo {
+        width: rem(83);
+        height: rem(28);
+    }
+
+    &--invoice-logo-small {
+        width: rem(55);
+        height: rem(22);
+    }
+
+    &--payment-logo {
+        position: absolute;
+        top: rem(27);
+        right: rem(30);
+    }
+
+    &--summary-shipping {
+        width: rem(53);
+    }
+
+    &--overview {
+        width: 17px;
+        height: 16px;
+    }
+
+    &--users {
+        width: 29px;
+        height: 19px;
+    }
+
+    &--business-unit {
+        width: 22px;
+        height: 22px;
+    }
+
+    &--role {
+        width: 18px;
+        height: 21px;
     }
 }

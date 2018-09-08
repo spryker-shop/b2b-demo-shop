@@ -48,6 +48,7 @@ use Spryker\Zed\Log\Communication\Plugin\ZedLoggerConfigPlugin;
 use Spryker\Zed\Oms\OmsConfig;
 use Spryker\Zed\Propel\PropelConfig;
 use SprykerEco\Shared\Loggly\LogglyConstants;
+use Pyz\Shared\DataImport\DataImportConstants;
 
 $CURRENT_STORE = Store::getInstance()->getStoreName();
 
@@ -454,3 +455,5 @@ $config[MonitoringConstants::IGNORABLE_TRANSACTIONS] = [
     '_profiler',
     '_wdt',
 ];
+// -------- DataImport
+$config[DataImportConstants::IS_ENABLE_INTERNAL_IMAGE] = false;

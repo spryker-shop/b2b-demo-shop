@@ -4,28 +4,28 @@ export default class OverlayBlock extends Component {
 
     protected readyCallback(): void {}
 
-    protected toggleModifire(modifire?: string, element?: HTMLElement, cssClass?: string): void {
+    protected addModifire(modifire?: string, element?: HTMLElement, cssClass?: string): void {
         if(modifire) {
-            element.classList.toggle(`${cssClass}--${modifire}`);
+            element.classList.add(`${cssClass}--${modifire}`);
         }
     }
 
-    protected toggleCondition(isOpen): boolean {
-        if (isOpen !== undefined) {
-            const hasActiveClass = this.classList.contains(this.classToShow);
-            return hasActiveClass ? !isOpen : isOpen;
+    protected removeModifire(modifire?: string, element?: HTMLElement, cssClass?: string): void {
+        if(modifire) {
+            element.classList.remove(`${cssClass}--${modifire}`);
         }
-        return true;
     }
 
-    toggleOverlay(modifire?: string, bodyModifire?: string, isOpen?: boolean): void {
+    showOverlay(modifire?: string, bodyModifire?: string): void {
+        this.addModifire(modifire, this, this.name);
+        this.addModifire(bodyModifire, document.body,'body-overlay');
+        this.classList.add(this.classToShow);
+    }
 
-        if(this.toggleCondition(isOpen)) {
-            this.toggleModifire(modifire, this, this.name);
-            this.toggleModifire(bodyModifire, document.body,'body-overlay');
-            this.classList.toggle(this.classToShow);
-        }
-
+    hideOverlay(modifire?: string, bodyModifire?: string): void {
+        this.removeModifire(modifire, this, this.name);
+        this.removeModifire(bodyModifire, document.body,'body-overlay');
+        this.classList.remove(this.classToShow);
     }
 
     get classToShow(): string {

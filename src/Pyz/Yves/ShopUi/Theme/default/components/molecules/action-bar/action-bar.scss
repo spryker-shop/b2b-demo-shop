@@ -1,0 +1,48 @@
+@mixin shop-ui-action-bar($name: '.action-bar') {
+    #{$name} {
+        display: flex;
+        flex-flow: row nowrap;
+        margin-top: rem(16);
+        margin-bottom: rem(16);
+
+        &--first {
+            margin-top: 0;
+        }
+
+        &--small {
+            margin-top: rem(16);
+            margin-bottom: rem(8);
+        }
+
+        &__title {
+            flex: 1;
+
+            &--small {
+                @include helper-font-size(5);
+                @include helper-font-line-height(5);
+            }
+        }
+
+        &__actions,
+        &__action {
+            flex: none;
+            display: flex;
+            flex-flow: row nowrap;
+            align-items: center;
+        }
+
+        &__action {
+            margin-left: rem(8);
+        }
+
+        &__icon {
+            display: block;
+            width: rem(13);
+            height: rem(13);
+            margin-right: rem(10);
+            flex: none;
+        }
+    }
+}
+
+@include shop-ui-action-bar();

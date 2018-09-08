@@ -18,8 +18,20 @@
             }
         }
 
-        &--products {
-            margin-bottom: 110px;
+        &--stretch {
+            .slick-slide {
+                margin: 0;
+            }
+
+            .slick-list {
+                padding: 0 $setting-grid-space;
+            }
+        }
+
+        &--product-set {
+            .slick-slide {
+                min-height: rem(400);
+            }
         }
 
         .slick-arrow {

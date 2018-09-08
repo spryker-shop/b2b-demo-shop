@@ -1,0 +1,80 @@
+{% extends template('page-layout-shopping-list', 'ShoppingListPage') %}
+
+{% block breadcrumbs %}
+    {% include molecule('breadcrumb') with {
+        data: {
+            steps: [{
+                label: 'customer.account' | trans,
+            },{
+                label: 'customer.account.shopping_list' | trans,
+            }]
+        }
+    } only %}
+{% endblock %}
+
+{% define data = {
+    title: _view.shoppingListOverview.shoppingList.name,
+    shoppingList: _view.shoppingListOverview.shoppingList,
+    shoppingListCollection: _view.shoppingListOverview.shoppingLists,
+    shoppingListItems: _view.shoppingListItems
+} %}
+
+{% block customerNavigation %}
+    {{ widgetGlobal('CustomerNavigationWidgetPlugin', 'shoppingList', data.shoppingList.idShoppingList) }}
+{% endblock %}
+
+{% block customerContent %}
+    <div class="box">
+        <div class="grid grid--justify">
+            <div class="col">
+                <h4>{{ data.shoppingList.name }}</h4>
+            </div>
+            <div class="col">
+                {% if can('WriteShoppingListPermissionPlugin', data.shoppingList.idShoppingList) %}
+                    <a class="button button--success" href="{{ url('shopping-list/update', { idShoppingList: data.shoppingList.idShoppingList }) }}">{{ 'customer.account.shopping_list.overview.edit' | trans }}</a>
+                    <a class="button button--success" href="{{ url('shopping-list/share', { idShoppingList: data.shoppingList.idShoppingList }) }}">{{ 'customer.account.shopping_list.overview.share' | trans }}</a>
+                {% endif %}
+                <a class="button button--success" href="{{ path('shopping-list/print', {idShoppingList: data.shoppingList.idShoppingList}) }}" target="_blank">{{ 'customer.account.shopping_list.print_shopping_list' | trans }}</a>
+            </div>
+        </div>
+        <hr>
+
+        {% include molecule('shopping-list-info', 'ShoppingListPage') with {
+            data: {
+                shoppingList: data.shoppingList
+            }
+        } only %}
+
+        <hr/>
+        {% if data.shoppingListItems|length %}
+            <form method="POST" action="{{ path('shopping-list/add-to-cart') }}">
+                <div class="grid grid--justify spacing-y spacing-y--inner">
+                    <div class="col">
+                        <button type="submit" class="button button--success" {{qa('submit-button')}}>
+                            {{ 'customer.account.shopping_list.add_selected_items_to_cart' | trans }}
+                        </button>
+                    </div>
+                    <div class="col">
+                        <button type="submit" class="button button--success" name="add-all-available" value="1" {{qa('submit-button')}}>
+                            {{ 'customer.account.shopping_list.add_all_available_to_cart' | trans }}
+                        </button>
+                    </div>
+                </div>
+
+                <input type="hidden" value="{{ data.shoppingList.idShoppingList }}" name="idShoppingList"/>
+
+                <div class="is-scrollable-x">
+                    {% include molecule('shopping-list-table', 'ShoppingListPage') with {
+                        class: 'table table--expand',
+                        data: {
+                            shoppingList: data.shoppingList,
+                            shoppingListItems: data.shoppingListItems
+                        }
+                    } only %}
+                </div>
+            </form>
+        {% else %}
+            {{ 'customer.account.shopping_list.empty' | trans }}
+        {% endif %}
+    </div>
+{% endblock %}

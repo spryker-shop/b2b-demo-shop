@@ -1,0 +1,45 @@
+@mixin shop-ui-volume-price($name: '.volume-price') {
+    #{$name} {
+        @include helper-font-size(big);
+
+        &__amount {
+            &--original {
+                @include helper-font-size(small);
+                display: block;
+                color: $setting-color-dark;
+                text-decoration: line-through;
+            }
+        }
+
+        &__tag {
+            margin-right: 0.25rem;
+            color: $setting-color-alt;
+        }
+
+        &__price {
+            display: inline-block;
+            backface-visibility: hidden;
+            transform: translateZ(0);
+
+            &--highlighted {
+                animation: priceHighlight 0.4s linear 2;
+            }
+        }
+
+        @content;
+    }
+}
+
+@keyframes priceHighlight {
+    0 {
+        transform: scale(1);
+    }
+
+    50% {
+          transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
