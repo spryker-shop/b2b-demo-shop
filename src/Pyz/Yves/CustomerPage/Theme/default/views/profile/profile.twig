@@ -25,7 +25,7 @@
 {% endmacro %}
 
 {% block customerContent %}
-    {% include molecule('action-bar', 'ShopUi') with {
+    {% include molecule('action-bar') with {
         modifiers: ['first'],
         data: {
             title: 'customer.account.profile_data' | trans,
