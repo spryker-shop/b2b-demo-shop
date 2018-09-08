@@ -11,6 +11,7 @@ use Spryker\Zed\Currency\Communication\Plugin\SetDefaultCurrencyBeforeQuoteCreat
 use Spryker\Zed\MultiCart\Communication\Plugin\AddDefaultNameBeforeQuoteSavePlugin;
 use Spryker\Zed\MultiCart\Communication\Plugin\AddSuccessMessageAfterQuoteCreatedPlugin;
 use Spryker\Zed\MultiCart\Communication\Plugin\DeactivateQuotesBeforeQuoteSavePlugin;
+use Spryker\Zed\MultiCart\Communication\Plugin\InitDefaultQuoteCustomerQuoteDeleteAfterPlugin;
 use Spryker\Zed\MultiCart\Communication\Plugin\ResolveQuoteNameBeforeQuoteCreatePlugin;
 use Spryker\Zed\Quote\QuoteDependencyProvider as SprykerQuoteDependencyProvider;
 use Spryker\Zed\SharedCart\Communication\Plugin\CleanQuoteShareBeforeQuoteCreatePlugin;
@@ -79,6 +80,16 @@ class QuoteDependencyProvider extends SprykerQuoteDependencyProvider
     {
         return [
             new RemoveSharedQuoteBeforeQuoteDeletePlugin(), #SharedCartFeature
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\QuoteExtension\Dependency\Plugin\QuoteDeleteAfterPluginInterface[]
+     */
+    protected function getQuoteDeleteAfterPlugins(): array
+    {
+        return [
+            new InitDefaultQuoteCustomerQuoteDeleteAfterPlugin(), #MultiCartFeature
         ];
     }
 }

@@ -21,6 +21,8 @@
         }
 
         &--active {
+            font-weight: fw(medium);
+            border-bottom: 1px solid $setting-color-gray-4;
             color: $setting-color-gray-4;
         }
 
@@ -33,6 +35,16 @@
             &:focus {
                 color: $setting-color-gray-4;
             }
+        }
+
+        &__checked {
+            width: rem(18);
+            height: rem(18);
+            line-height: rem(14);
+            background-color: $setting-color-main;
+            color: $setting-color-white;
+            border-radius: 50%;
+            margin-left: rem(4)
         }
 
         @content;

@@ -1,0 +1,14 @@
+{% extends template('similar-products', 'ProductRelationWidget') %}
+
+{% define data = {
+    products: _widget.productCollection | default([])
+} %}
+
+{% block body %}
+
+    {% if data.products is not empty %}
+        <h2 class="product-title product-title--with-top-margin">{{ 'product.relation.similar-products' | trans }}</h2>
+        {{ parent() }}
+    {% endif %}
+
+{% endblock %}

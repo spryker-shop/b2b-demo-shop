@@ -112,7 +112,7 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
             new SslServiceProvider(),
             new ServiceControllerServiceProvider(),
             new RoutingServiceProvider(),
-            new ApiServiceProviderPlugin,
+            new ApiServiceProviderPlugin(),
             new ApiRoutingServiceProvider(),
             new PropelServiceProvider(),
             new EventBehaviorServiceProvider(),

@@ -23,7 +23,7 @@ class ExampleChart implements ChartPluginInterface
     }
 
     /**
-     * @param null|string $dataIdentifier
+     * @param string|null $dataIdentifier
      *
      * @return \Generated\Shared\Transfer\ChartDataTransfer
      */
