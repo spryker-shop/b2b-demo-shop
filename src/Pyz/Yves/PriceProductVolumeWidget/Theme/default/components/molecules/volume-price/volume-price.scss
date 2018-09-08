@@ -5,10 +5,10 @@
         &__amount {
             &--original {
                 @include helper-font-size(small);
-                display: block;
                 color: $setting-color-dark;
                 text-decoration: line-through;
             }
+            margin-right: rem(7);
         }
 
         &__tag {
@@ -29,6 +29,8 @@
         @content;
     }
 }
+
+@include shop-ui-volume-price();
 
 @keyframes priceHighlight {
     0 {
