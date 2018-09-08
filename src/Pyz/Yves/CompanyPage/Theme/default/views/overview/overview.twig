@@ -3,24 +3,31 @@
 
 {% define data = {
     title: null,
-    company: _view.company
+    company: _view.company | default(false),
+    defaultBillingAddress: _view.defaultBillingAddress | default(false)
 } %}
 
 {% block companyContent %}
-    {% include molecule('tile', 'ShopUi') with {
-        data: {
-            icon: 'office',
-            title: 'company.account.name' | trans,
-            text: data.company.name
-        }
-    } only %}
+    {% if data.company is not empty %}
+        {% include molecule('tile', 'ShopUi') with {
+            data: {
+                icon: 'office',
+                title: 'company.account.name' | trans,
+                text: data.company.name
+            }
+        } only %}
+    {% endif %}
 
-    {# TODO mocked address! #}
-    {% include molecule('tile', 'ShopUi') with {
-        data: {
-            icon: 'marker',
-            title: 'company.account.address' | trans,
-            text: '- Beispielstraße 30, 10625 Berlin, Germany'
-        }
-    } only %}
+    {% if data.defaultBillingAddress is not empty %}
+        {% set mainAddress = data.defaultBillingAddress %}
+        {% set fullAddress = mainAddress.address1 ~ ' ' ~ mainAddress.address2 ~ ' ' ~ mainAddress.zipCode ~ ' ' ~ mainAddress.city ~ ' ' ~ ('countries.iso.' ~ mainAddress.iso2code) | trans %}
+
+        {% include molecule('tile', 'ShopUi') with {
+            data: {
+                icon: 'marker',
+                title: 'company.account.address' | trans,
+                text: fullAddress
+            }
+        } only %}
+    {% endif %}
 {% endblock %}
