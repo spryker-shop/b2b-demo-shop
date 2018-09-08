@@ -1,29 +1,54 @@
 <?php
 
-/**
- * This file is part of the Spryker Suite.
- * For full license information, please view the LICENSE file that was distributed with this source code.
- */
-
 namespace Pyz\Zed\ShoppingListDataImport;
 
-use Spryker\Zed\ShoppingListDataImport\ShoppingListDataImportConfig as SprykerShoppingListDataImportConfig;
+use Generated\Shared\Transfer\DataImporterConfigurationTransfer;
+use Spryker\Zed\ShoppingListDataImport\ShoppingListDataImportConfig as CoreShoppingListDataImportConfig;
 
-class ShoppingListDataImportConfig extends SprykerShoppingListDataImportConfig
+class ShoppingListDataImportConfig extends CoreShoppingListDataImportConfig
 {
     /**
-     * @return string
+     * @return \Generated\Shared\Transfer\DataImporterConfigurationTransfer
      */
-    protected function getModuleRoot(): string
+    public function getShoppingListDataImporterConfiguration(): DataImporterConfigurationTransfer
     {
-        $moduleRoot = realpath(
-            __DIR__
-            . DIRECTORY_SEPARATOR . '..'
-            . DIRECTORY_SEPARATOR . '..'
-            . DIRECTORY_SEPARATOR . '..'
-            . DIRECTORY_SEPARATOR . '..'
-        );
+        $moduleDataImportDirectory = APPLICATION_ROOT_DIR . DIRECTORY_SEPARATOR
+            . 'data' . DIRECTORY_SEPARATOR
+            . 'import' . DIRECTORY_SEPARATOR;
 
-        return $moduleRoot . DIRECTORY_SEPARATOR;
+        return $this->buildImporterConfiguration(
+            $moduleDataImportDirectory . 'shopping_list.csv',
+            static::IMPORT_TYPE_SHOPPING_LIST
+        );
+    }
+
+    /**
+     * @return \Generated\Shared\Transfer\DataImporterConfigurationTransfer
+     */
+    public function getShoppingListItemDataImporterConfiguration(): DataImporterConfigurationTransfer
+    {
+        $moduleDataImportDirectory = APPLICATION_ROOT_DIR . DIRECTORY_SEPARATOR
+            . 'data' . DIRECTORY_SEPARATOR
+            . 'import' . DIRECTORY_SEPARATOR;
+
+        return $this->buildImporterConfiguration(
+            $moduleDataImportDirectory . 'shopping_list_item.csv',
+            static::IMPORT_TYPE_SHOPPING_LIST_ITEM
+        );
+    }
+
+    /**
+     * @return \Generated\Shared\Transfer\DataImporterConfigurationTransfer
+     */
+    public function getShoppingListPermissionDataImporterConfiguration(): DataImporterConfigurationTransfer
+    {
+        $moduleDataImportDirectory = APPLICATION_ROOT_DIR . DIRECTORY_SEPARATOR
+            . 'data' . DIRECTORY_SEPARATOR
+            . 'import' . DIRECTORY_SEPARATOR;
+
+        return $this->buildImporterConfiguration(
+            $moduleDataImportDirectory . 'shopping_list_permission.csv',
+            static::IMPORT_TYPE_SHOPPING_LIST
+        );
     }
 }
