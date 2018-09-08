@@ -18,16 +18,12 @@
         } only %}
     {% endif %}
 
-    {% if data.defaultBillingAddress is not empty %}
-        {% set mainAddress = data.defaultBillingAddress %}
-        {% set fullAddress = mainAddress.address1 ~ ' ' ~ mainAddress.address2 ~ ' ' ~ mainAddress.zipCode ~ ' ' ~ mainAddress.city ~ ' ' ~ ('countries.iso.' ~ mainAddress.iso2code) | trans %}
-
-        {% include molecule('tile', 'ShopUi') with {
-            data: {
-                icon: 'marker',
-                title: 'company.account.address' | trans,
-                text: fullAddress
-            }
-        } only %}
-    {% endif %}
+    {# TODO: show actual deafult company address #}
+    {% include molecule('tile', 'ShopUi') with {
+        data: {
+            icon: 'marker',
+            title: 'company.account.address' | trans,
+            text: 'Julie-Wolfthorn-Straße 1, 10115 Berlin, Germany'
+        }
+    } only %}
 {% endblock %}

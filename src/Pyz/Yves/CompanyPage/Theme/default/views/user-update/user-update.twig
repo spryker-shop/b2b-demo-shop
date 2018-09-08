@@ -27,7 +27,7 @@
 {% endblock %}
 
 {% block companyContent %}
-    {% include molecule('action-bar', 'ShopUi') with {
+    {% include molecule('action-bar') with {
         data: {
             title: 'company.account.company_user.edit_information' | trans({
                 '%first_name%' : data.form.vars.value.first_name,
@@ -37,6 +37,7 @@
     } only %}
 
     {% include molecule('form') with {
+        modifiers: ['narrow'],
         data: {
             form: data.form,
             options: {
