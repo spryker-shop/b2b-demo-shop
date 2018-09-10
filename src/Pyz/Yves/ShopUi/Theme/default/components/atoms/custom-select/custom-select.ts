@@ -13,6 +13,7 @@ export default class CustomSelect extends Component {
 
     protected readyCallback(): void {
         const select2 = select;
+        const nativeSelect = this.querySelector(`.js-${this.name}`);
         const targetSelect = this.$customSelect.find(`.js-${this.name}`);
         const self = this;
 
@@ -25,6 +26,9 @@ export default class CustomSelect extends Component {
         this.removeTitle();
 
         targetSelect.on('select2:select', function() {
+            const event = new Event('change');
+            nativeSelect.dispatchEvent(event);
+
             self.removeTitle();
         });
     }
