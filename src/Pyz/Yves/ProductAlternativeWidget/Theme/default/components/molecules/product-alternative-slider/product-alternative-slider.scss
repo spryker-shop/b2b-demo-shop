@@ -1,0 +1,18 @@
+@mixin product-alternative-slider($name: '.product-alternative-slider') {
+    #{$name} {
+        margin-top: rem(60);
+
+        &__title {
+            font-size: rem(32);
+            font-weight: fw(medium);
+            line-height: normal;
+            text-align: center;
+            color: $setting-color-gray-6;
+            margin-bottom: rem(33);
+        }
+
+        @content;
+    }
+}
+
+@include product-alternative-slider;

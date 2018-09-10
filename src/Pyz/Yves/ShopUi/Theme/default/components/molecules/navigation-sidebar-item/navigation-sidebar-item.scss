@@ -3,10 +3,6 @@
         &--active {
             background-color: $setting-color-gray-11;
 
-            #{$name}__link {
-                cursor: default;
-            }
-
             #{$name}__icon {
                 color: $setting-color-alt;
             }
@@ -26,7 +22,10 @@
         }
 
         &__icon-wrapper {
-            margin: 0 rem(22) 0 rem(11);
+            padding: 0 rem(15) 0 0;
+            min-width: rem(50);
+            display: flex;
+            justify-content: center;
         }
     }
 }

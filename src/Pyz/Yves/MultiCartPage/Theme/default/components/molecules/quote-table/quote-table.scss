@@ -1,0 +1,21 @@
+.quote-table {
+    margin-top: rem(20);
+
+    th:first-child,
+    td:first-child {
+        padding-left: rem(30);
+    }
+
+    .cart-name {
+        color: $setting-color-gray-6;
+
+        &--active {
+            color: $setting-color-main;
+            text-decoration: underline;
+        }
+
+        &:hover {
+            color: $setting-color-alt;
+        }
+    }
+}
