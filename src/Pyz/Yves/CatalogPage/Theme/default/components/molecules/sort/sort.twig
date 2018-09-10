@@ -23,7 +23,7 @@
                                 modifiers: ['flexible-width'],
                                 attributes: {
                                     name: 'ipp',
-                                    'onchange': 'this.form.submit();',
+                                    'onchange': 'this.form.querySelector("button[type=submit]").click();',
                                     'selectWidth': 'resolve',
                                 },
                                 embed: {
@@ -50,7 +50,7 @@
                                 modifiers: ['flexible-width'],
                                 attributes: {
                                     name: 'sort',
-                                    'onchange': 'this.form.submit();',
+                                    'onchange': 'this.form.querySelector("button[type=submit]").click();',
                                     'selectWidth': 'resolve',
                                 },
                                 embed: {
