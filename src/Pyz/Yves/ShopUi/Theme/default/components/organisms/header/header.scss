@@ -19,7 +19,11 @@
 
         &__search-form {
             position: relative;
-            z-index: $setting-zi-search-suggestions;
+            z-index: $setting-zi-element;
+
+            .body-overlay--no-search & {
+                z-index: $setting-zi-search-suggestions;
+            }
         }
 
         &__navigation-main {
