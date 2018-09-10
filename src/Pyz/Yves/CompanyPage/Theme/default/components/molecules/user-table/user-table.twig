@@ -11,7 +11,8 @@
         update: false,
         delete: false,
         switch: false
-    }
+    },
+    role: null
 } %}
 
 {% set showActions = data.actions.update or data.actions.delete %}
@@ -39,7 +40,9 @@
                         <th>{{ user.customer.firstName }} {{ user.customer.lastName }}</th>
                         <td>{{ companyBusinessUnitName }}</td>
                         <td>
-                            {% if user.companyRoleCollection is not empty %}
+                            {% if data.role is not empty %}
+                                {{ data.role.name }}
+                            {% elseif user.companyRoleCollection is not empty %}
                                 {% for companyUserRole in user.companyRoleCollection.roles %}
                                     {{ companyUserRole.name }}
                                 {% endfor %}

@@ -1,0 +1,47 @@
+{% extends template('page-layout-shopping-list', 'ShoppingListPage') %}
+
+{% define data = {
+    form: _view.cartToShoppingListForm,
+    cart: _view.cart,
+
+    title: 'customer.account.shopping_list.create_from_cart.title' | trans,
+    activePage: 'shoppingList'
+} %}
+
+{% block breadcrumbs %}
+    {% include molecule('breadcrumb') with {
+        data: {
+            steps: [
+                {
+                    label: 'customer.account' | trans,
+                    url: url('customer/overview'),
+                },
+                {
+                    label: 'customer.account.shopping_list.shopping_cart' | trans,
+                }
+            ]
+        }
+    } only %}
+{% endblock %}
+
+{% block customerContent %}
+    <h3>
+        {{ 'customer.account.shopping_list.create_from_cart.form_title' | trans({
+            '%cart_name%' : data.cart.name,
+            }) }}
+    </h3>
+    <br>
+    {% include molecule('form') with {
+        data: {
+            form: data.form,
+            submit: {
+                enable: true
+            },
+            cancel: {
+                enable: true,
+                url: url('shopping-list'),
+                text: 'general.back.button' | trans
+            }
+        }
+    } only %}
+{% endblock %}

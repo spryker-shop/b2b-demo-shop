@@ -1,0 +1,45 @@
+{% extends template('page-layout-main') %}
+
+{% define data = {
+    form: _view.sharedCartForm,
+    title: 'shared_cart.form.share_cart' | trans,
+} %}
+
+{% block breadcrumbs %}
+    {% include molecule('breadcrumb') with {
+        data: {
+            steps: [{
+                label: 'cart.cart' | trans,
+                url: url('cart'),
+                isActive: false
+            }, {
+                label: data.title,
+                isActive: true
+            }]
+        }
+    } only %}
+{% endblock %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+    <div class="grid cart-update">
+        <div class="col col--md-6">
+            <h2 class="cart-update__title">{{ 'shared_cart.form.share_cart' | trans }}</h2>
+            {% include molecule('form') with {
+                data: {
+                    form: data.form,
+                    submit: {
+                        enable: true,
+                        text: 'shared_cart.form.share_button' | trans
+                    },
+                    cancel: {
+                        enable: true,
+                        url: url('cart'),
+                        text: 'general.back.button' | trans
+                    }
+                }
+            } only %}
+        </div>
+    </div>
+{% endblock %}

@@ -12,7 +12,13 @@
 {% block body %}
 
     {% for label in data.labels %}
-        <span class="{{ config.name }}__text {{ config.name }}__text--{{ label.type }}">{{ label.text }}</span>
+        {% set labelType = label.type %}
+        {% if 'Alternatives' in label.text %}
+            {% set labelType = 'alternative' %}
+        {% elseif 'Discontinued' in label.text  %}
+            {% set labelType = 'discontinued' %}
+        {% endif %}
+        <span class="{{ config.name }}__text {{ config.name }}__text--{{ labelType }}">{{ label.text }}</span>
     {% endfor %}
 
 {% endblock %}
