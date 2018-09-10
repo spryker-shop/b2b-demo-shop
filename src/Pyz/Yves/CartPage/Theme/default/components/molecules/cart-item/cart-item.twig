@@ -9,10 +9,13 @@
     cart: required,
     cartItem: required,
     attributes: required,
+    isShoppingList: false
 } %}
 
-{% set canEditCart = (not is_granted('IS_AUTHENTICATED_FULLY') or can('WriteSharedCartPermissionPlugin', data.cart.idQuote)) %}
-{% set cartItemSubTotal = data.cartItem.quantity * data.cartItem.unitPrice %}
+{% if not data.isShoppingList %}
+    {% set canEditCart = (not is_granted('IS_AUTHENTICATED_FULLY') or can('WriteSharedCartPermissionPlugin', data.cart.idQuote)) %}
+    {% set cartItemSubTotal = data.cartItem.quantity * data.cartItem.unitPrice %}
+{% endif %}
 
 {% block body %}
     <div class="grid grid--stretch grid--gap">
