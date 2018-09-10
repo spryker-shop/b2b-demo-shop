@@ -14,7 +14,7 @@
             {% block imageContainer %}
                 <div class="col col--sm-3 col--md-2 {{config.name}}__col {{config.name}}__image">
                     {% block image %}
-                        <a class="{{config.name}}__overlay" href="{{ data.url }}">
+                        <a class="{{config.name}}__overlay js-product-color-group__image-{{ data.abstractId }}" href="{{ data.url }}">
                             {% include atom('thumbnail') with {
                                 attributes: {
                                     alt: data.name,
@@ -59,7 +59,7 @@
                         </div>
                         {% block actions %}
                             <div class="col">
-                                <a class="button button--expand button--hollow" href="{{ data.url }}">
+                                <a class="button button--expand button--hollow js-product-color-group__image-{{ data.abstractId }}" href="{{ data.url }}">
                                     {{ 'product.view' | trans }}
                                 </a>
                             </div>
