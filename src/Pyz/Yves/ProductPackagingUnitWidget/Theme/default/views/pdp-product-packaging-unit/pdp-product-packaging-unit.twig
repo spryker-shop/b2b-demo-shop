@@ -19,9 +19,9 @@
 
 {% block body %}
 
-    <div class="product-packaging-new-price is-hidden" id="product-packaging-new-price-block">
+    <div class="product-packaging-new-price price is-hidden" id="product-packaging-new-price-block">
         <span>{{ "measurement_units.new-price" | trans}}:</span>
-        <div id="product-packaging-new-price-value-block"></div>
+        <div class="price__amount price__amount--pdp" id="product-packaging-new-price-value-block"></div>
     </div>
     <input id="item-base-price"
            type="hidden"
@@ -50,7 +50,7 @@
                 </div>
                 <div class="measurement-unit__value">
                     {% embed atom('custom-select') with {
-                        modifiers: ['flexible-width', 'measurement-unit'],
+                        modifiers: ['flexible-width', 'small'],
                         attributes: {
                             name: 'id-product-measurement-sales-unit',
                             'selectWidth': 'resolve'
@@ -149,14 +149,14 @@
                     />
                 </div>
             </div>
-            <div class="col measurement-unit">
+            <div class="col measurement-unit is-hidden">
                 <div class="measurement-unit__label">
                     {{ 'packaging_units.pdp.sales-units' | trans }}:
                 </div>
                 <div class="measurement-unit__value">
                     {{ 'product.measurement.sales_unit' | trans }}
                     {% embed atom('custom-select') with {
-                        modifiers: ['flexible-width', 'measurement-unit'],
+                        modifiers: ['flexible-width'],
                         attributes: {
                             name: "amount-id-product-measurement-sales-unit[" ~ data.product.sku ~ "]"
                         },
@@ -204,7 +204,7 @@
 
             <div id="packaging-unit-choices">
                 <span>{{ "packaging_units.recommendation.suggestion" | trans}}</span>
-                <ul class="list"></ul>
+                <ul class="list packaging-unit-choice__list"></ul>
             </div>
         </div>
     {% endif %}
