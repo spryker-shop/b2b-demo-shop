@@ -12,22 +12,20 @@
 } %}
 
 {% block body %}
-    <table class="table table--expand">
+    <table class="table table--expand spacing-bottom spacing-bottom--bigger">
         <thead>
             <tr>
                 <th class="text-left">{{ 'customer.account.shopping_list.overview.name' | trans }}</th>
                 <th>{{ 'customer.account.shopping_list.overview.owner' | trans }}</th>
                 <th>{{ 'customer.account.shopping_list.overview.created_date' | trans }}</th>
                 <th>{{ 'customer.account.shopping_list.access' | trans }}</th>
-                <th>{{ 'customer.account.shopping_list.overview.item_count' | trans }}</th>
-                <th>{{ 'customer.account.shopping_list.overview.actions' | trans }}</th>
+                <th class="col--sm-2">{{ 'customer.account.shopping_list.overview.item_count' | trans }}</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
         {% for shoppingList in data.shoppingLists %}
-
             {% set hasWritePermission = can('WriteShoppingListPermissionPlugin', shoppingList.idShoppingList) %}
-
             <tr>
                 <td class="col--sm-3">
                     {% if data.enableTableForm %}
@@ -38,9 +36,9 @@
                             }
                         } only %}
                     {% endif %}
-                    <a class="text-center" href="{{ path('shopping-list/details', { idShoppingList: shoppingList.idShoppingList }) }}">{{ shoppingList.name }}</a>
+                    <a class="{{ config.name }}__title text-center" href="{{ path('shopping-list/details', { idShoppingList: shoppingList.idShoppingList }) }}">{{ shoppingList.name }}</a>
                 </td>
-                <td class="text-center">{{ shoppingList.owner }}</td>
+                <td class="col--sm-3 text-center">{{ shoppingList.owner }}</td>
                 <td class="text-center">{{ shoppingList.createdAt | formatDate }}</td>
                 <td class="text-center">
                     {% include molecule('shopping-list-permission', 'ShoppingListPage') with {
@@ -49,7 +47,12 @@
                         }
                     } only %}
                 </td>
-                <td class="text-center">{{ shoppingList.numberOfItems }}</td>
+                <td class="text-center col-sm-2">
+                    <span class="badge--shopping-list">
+                        {{ shoppingList.numberOfItems }}
+                        {{ 'checkout.step.summary.items' | trans }}
+                    </span>
+                </td>
                 <td class="{{ config.name }}__actions">
                     {% include molecule('shopping-list-action-navigation', 'ShoppingListPage') with {
                         class: 'grid grid--justify',
