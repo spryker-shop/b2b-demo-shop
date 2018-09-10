@@ -79,6 +79,9 @@
                                 isProductAvailable: isProductAvailable,
                                 form: data.form,
                                 key: key
+                            },
+                            embed: {
+                                idShoppingList: data.idShoppingList
                             }
                         } only %}
                             {% block body %}
@@ -160,7 +163,7 @@
                                                 </div>
                                             </div>
                                             <div class="col">
-                                                <a class="link link--icon" href="{{ path('cart/remove', {'sku': data.cartItem.sku}) }}">
+                                                <a class="link link--icon" href="{{ path('shopping-list/remove-item', {'idShoppingList': embed.idShoppingList, 'idShoppingListItem': data.cartItem.idShoppingListItem}) }}">
                                                     {% include atom('icon') with {
                                                         modifiers: ['link'],
                                                         data: {
