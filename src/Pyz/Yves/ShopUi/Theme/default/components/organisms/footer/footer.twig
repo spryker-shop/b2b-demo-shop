@@ -50,7 +50,13 @@
 
             {% block social %}
                 <div class="grid grid--gap grid--middle {{ config.name }}__social-buttons">
-                    <div class="col col--sm-12 col--md-6 col--lg-9 {{ config.name }}__hint">* {{ 'global.hint' | trans }}
+                    <div class="col col--sm-12 col--md-6 col--lg-9">
+                        <div class="{{ config.name }}__hint">
+                            * {{ 'global.hint' | trans }}
+                        </div>
+                        <div class="{{ config.name }}__thanks-certeo">
+                            {{ 'global.thank_certeo' | trans }}
+                        </div>
                     </div>
                     <div class="col col--sm-12 col--md-6 col--lg-3">
                         {{ widgetGlobal('NavigationWidgetPlugin', 'SOCIAL_LINKS', 'navigation-social') }}
@@ -63,6 +69,10 @@
     {% block copyright %}
         <div class="{{ config.name }}__copyright">
             <div class="container {{ config.name }}__copyright-build-with">
+                <ul class="{{ config.name }}__privacy-nav">
+                    <li><a href="{{ 'global.privacy_nav.imprint_url' | trans }}">{{ 'global.privacy_nav.imprint' | trans }}</a></li>
+                    <li><a href="{{ 'global.privacy_nav.data_privacy_url' | trans }}">{{ 'global.privacy_nav.data_privacy' | trans }}</a></li>
+                </ul>
                 <span class="{{ config.name }}__copyright-build-with-text">{{ 'global.build_with' | trans }}</span>
                 <a class="{{ config.name }}__copyright-build-with-link" href="{{ 'global.build_with.link' | trans }}">
                     {% include atom('icon') with {
