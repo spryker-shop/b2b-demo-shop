@@ -25,13 +25,13 @@
             {% endif %}
 
             {% if data.cart.shipment is not empty and data.cart.shipment.method is not empty %}
-                <li class="list__item {{ config.name }}__item">
+                <li class="list__item {{ config.name }}__item {{ config.name }}__item--top-space">
                     <span>{{ 'cart.shipping' | trans }} {{ data.cart.shipment.method.name }}</span>
                     <span class="float-right">{{ data.cart.shipment.method.storeCurrencyPrice | money }}</span>
                 </li>
             {% endif %}
 
-            <li class="list__item {{ config.name }}__item">
+            <li class="list__item {{ config.name }}__item {{ config.name }}__item--top-space">
                 {{ 'cart.price.subtotal' | trans }}
                 <span class="float-right">{{ data.cart.totals.subtotal | money }}</span>
             </li>
