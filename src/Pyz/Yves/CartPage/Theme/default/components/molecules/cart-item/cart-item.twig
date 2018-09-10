@@ -69,7 +69,7 @@
 
                     {% include molecule('price') with {
                         data: {
-                            amount: data.cartItem.sumSubtotalAggregation | money,
+                            amount: data.cartItem.unitPrice | money,
                         },
                         modifiers: ['cart'],
                     } only %}
