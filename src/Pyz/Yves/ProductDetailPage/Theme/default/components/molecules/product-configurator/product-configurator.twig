@@ -32,7 +32,7 @@
 {% endif %}
 
 {% if widgetExists('ProductDiscontinuedWidgetPlugin') %}
-    {% set isDiscontinued = widgetBlock('ProductDiscontinuedWidgetPlugin', 'isDiscontinued', sku) %}
+    {% set isDiscontinued = widgetBlock('ProductDiscontinuedWidgetPlugin', 'isProductDiscontinued', sku) %}
     {% set isDisabled = isDiscontinued or isDisabled %}
     {% set isProductAvailable = not isDiscontinued %}
 {% endif %}
