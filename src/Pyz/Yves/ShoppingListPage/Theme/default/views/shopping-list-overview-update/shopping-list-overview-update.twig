@@ -76,7 +76,9 @@
                                 cartItem: product,
                                 attributes: data.attributes[product.sku] | default([]),
                                 isShoppingList: true,
-                                isProductAvailable: isProductAvailable
+                                isProductAvailable: isProductAvailable,
+                                form: data.form,
+                                key: key
                             },
                             embed: {
                                 idShoppingList: data.idShoppingList
@@ -140,7 +142,6 @@
                                             {% endfor %}
                                         </div>
                                     </div>
-
                                     <div class="{{ config.name }}__col {{ config.name }}__col--total col col--sm-12 col--lg-3">
                                         <div class="{{ config.name }}__inner--total grid grid--column grid--justify-column grid--bottom">
                                             <div class="col">
@@ -157,28 +158,9 @@
                                                     {{ 'product_alternative_widget.not_applicable' | trans }}
                                                 {% endif %}
 
-                                                {% embed molecule('cart-quantity-input', 'CartPage') with {
-                                                    class: 'float-right',
-                                                    modifiers: ['fixed-width'],
-                                                    data: {
-                                                        cartItem: data.cartItem,
-                                                        readOnly: not data.isProductAvailable
-                                                    }
-                                                } only %}
-                                                    {% block body %}
-                                                        <form method="POST" action="{{ path('cart/change/quantity', {'sku': data.cartItem.sku }) }}">
-                                                            {% include molecule('quantity-counter') with {
-                                                                class: 'spacing-bottom spacing-bottom--bigger',
-                                                                data: {
-                                                                    maxQuantity: null,
-                                                                    value: data.cartItem.quantity,
-                                                                    readOnly: data.readOnly,
-                                                                    autoUpdate: 'true'
-                                                                }
-                                                            } only %}
-                                                        </form>
-                                                    {% endblock %}
-                                                {% endembed %}
+                                                <div class="{{ config.name }}--fixed-input">
+                                                    {{ form_row(data.form.items[data.key].quantity, {'attr': {'readonly': not data.isProductAvailable}, type: 'number'}) }}
+                                                </div>
                                             </div>
                                             <div class="col">
                                                 <a class="link link--icon" href="{{ path('shopping-list/remove-item', {'idShoppingList': embed.idShoppingList, 'idShoppingListItem': data.cartItem.idShoppingListItem}) }}">
