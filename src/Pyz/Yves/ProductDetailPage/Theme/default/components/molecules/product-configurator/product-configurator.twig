@@ -94,8 +94,7 @@
 
     <form method="POST" action="/cart/add/{{sku}}">
         {{ widget('ProductOptionWidgetPlugin', data.product) }}
-
-        {% if is_granted('IS_AUTHENTICATED_FULLY') and isProductAvailable %}
+        {% if is_granted('IS_AUTHENTICATED_FULLY') and not isDisabled %}
             <div class="{{ config.name }}__add-to-cart">
                 {% if widgetExists('ProductPackagingUnitWidgetPlugin') %}
                     {{ widget('ProductPackagingUnitWidgetPlugin', data.product, isDisabled, options) }}
@@ -134,13 +133,11 @@
         {% endif %}
     </form>
 
-    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-        {% if widgetExists('ShoppingListWidgetPlugin') and isProductAvailable %}
-            {{ widget('ShoppingListWidgetPlugin', sku, isDisabled) }}
-        {% endif %}
+    {% if is_granted('IS_AUTHENTICATED_FULLY') and not isDisabled and widgetExists('ShoppingListWidgetPlugin') %}
+        {{ widget('ShoppingListWidgetPlugin', sku, isDisabled) }}
     {% endif %}
 
-    {% if widgetExists('WishlistWidgetPlugin') and isProductAvailable %}
+    {% if not isProductAvailable and widgetExists('WishlistWidgetPlugin') %}
         {{ widget('WishlistWidgetPlugin', data.product) }}
     {% endif %}
 
