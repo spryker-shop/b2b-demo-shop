@@ -109,6 +109,8 @@
                     } only %}
                         {% block content %}
                             <div class="spacing-bottom spacing-bottom--bigger product-card__info">
+                                {% block category %}{% endblock %}
+
                                 {{parent()}}
 
                                 {% set isNotAvailable = embed.product.idProductConcrete and not embed.product.available %}
