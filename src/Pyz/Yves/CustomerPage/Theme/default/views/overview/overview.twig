@@ -25,7 +25,7 @@
     } only %}
         {% block content %}
             <ul>
-                <li>{{ data.customer.firstName }} {{ data.customer.lastName }}</li>
+                <li>{{ data.customer.salutation }}. <strong>{{ data.customer.firstName }} {{ data.customer.lastName }}</strong></li>
                 <li><a href="mailto:{{ data.customer.email }}">{{ data.customer.email }}</a></li>
             </ul>
         {% endblock %}
