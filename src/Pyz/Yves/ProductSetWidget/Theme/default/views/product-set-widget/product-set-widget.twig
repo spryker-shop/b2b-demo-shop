@@ -37,7 +37,7 @@
                         class: 'spacing-bottom spacing-bottom--reset',
                         modifiers: ['medium'],
                         data: {
-                            imageUrl: data.images.0.externalUrlLarge
+                            imageUrl: data.images.0.externalUrlLarge | default([])
                         }
                     } only %}
                         {% block body %}

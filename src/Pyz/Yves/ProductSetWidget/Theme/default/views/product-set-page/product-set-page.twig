@@ -19,7 +19,7 @@
     {% embed molecule('banner') with {
         class: 'spacing spacing--reset',
         data: {
-            imageUrl: data.images.0.externalUrlLarge,
+            imageUrl: data.images.0.externalUrlLarge | default(null),
             title: data.title
         }
     } only %}
