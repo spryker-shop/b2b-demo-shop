@@ -17,9 +17,9 @@
 
 {% block carousel %}
     {% embed molecule('banner') with {
-        class: 'spacing-bottom spacing-top spacing-x spacing-top--inner spacing-top--bigger spacing-x--reset',
+        class: 'spacing spacing--reset',
         data: {
-            imageUrl: '/assets/images/product-set-1.jpg',
+            imageUrl: data.images.0.externalUrlLarge | default(null),
             title: data.title
         }
     } only %}
@@ -143,7 +143,7 @@
                                         <strong>{{ "product.detail.out_of_stock" | trans }}</strong>
                                     </p>
                                 {% endif %}
-                                {% set isDisabled = not embed.product.idProductConcrete or not embed.product.available %}
+                                {% set isDisabled = not embed.product.idProductConcrete or not embed.product.available or not is_granted('IS_AUTHENTICATED_FULLY')%}
 
                             </div>
 

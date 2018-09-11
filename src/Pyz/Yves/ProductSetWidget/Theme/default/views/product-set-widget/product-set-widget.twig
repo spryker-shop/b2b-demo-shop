@@ -6,11 +6,12 @@
     description: _widget.productSet.description,
     images: _widget.productSet.imageSets.0.images | default([]),
     sliderConfig: '{
-        "slidesToShow": 2.3,
+        "slidesToShow": 2,
         "slidesToScroll": 1,
         "dots": false,
-        "infinite": false,
-        "loop": true
+        "infinite": true,
+        "loop": true,
+        "variableWidth": true
     }'
 } %}
 
@@ -36,7 +37,7 @@
                         class: 'spacing-bottom spacing-bottom--reset',
                         modifiers: ['medium'],
                         data: {
-                            imageUrl: '/assets/images/product-set-1.jpg'
+                            imageUrl: data.images.0.externalUrlLarge | default([])
                         }
                     } only %}
                         {% block body %}
