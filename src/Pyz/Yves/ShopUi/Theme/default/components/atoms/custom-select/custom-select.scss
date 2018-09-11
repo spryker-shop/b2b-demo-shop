@@ -1,5 +1,6 @@
 .custom-select {
     position: relative;
+    max-width: 100%;
 
     &__select {
         border: none;
@@ -38,6 +39,9 @@
             line-height: rem(46);
             font-weight: fw(medium);
             padding: 0 rem(45) 0 rem(20);
+            max-width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
         .select2-selection__arrow {
             display: none;
@@ -69,6 +73,9 @@
         letter-spacing: rem(0.2);
         padding: 0 0 0 19px;
         white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+
         &[aria-selected=true] {
             background: none;
             position: relative;
