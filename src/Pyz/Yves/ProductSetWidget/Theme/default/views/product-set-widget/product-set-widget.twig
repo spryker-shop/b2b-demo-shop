@@ -75,6 +75,7 @@
                                     } only %}
                                         {% block content %}
                                             <div class="col col--bottom">
+                                                {% block category %}{% endblock %}
                                                 {{parent()}}
                                             </div>
                                         {% endblock %}
