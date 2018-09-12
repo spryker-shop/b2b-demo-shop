@@ -1,5 +1,10 @@
 @mixin product-detail-page-product-configurator($name: '.product-bundle-detail') {
     #{$name} {
+        border-bottom: solid 1px $setting-color-gray-7;
+
+        &__item {
+            border-top: solid 1px $setting-color-gray-7;
+        }
 
         &__title {
             font-size: rem(14);
@@ -7,9 +12,6 @@
             line-height: normal;
             color: $setting-color-gray-6;
             padding: rem(18) rem(20);
-            margin-top: -1px;
-            border-top: solid 1px $setting-color-gray-7;
-            border-bottom: solid 1px $setting-color-gray-7;
             cursor: pointer;
             position: relative;
 
@@ -33,20 +35,27 @@
                 height: 10px;
                 right: 23px;
             }
+
+            &.active {
+                background-color: $setting-color-gray-13;
+
+                &:after {
+                    display: none;
+                }
+            }
         }
 
         &__description {
             font-size: rem(13);
             font-weight: fw(regular);
             color: $setting-color-gray-6;
-            padding: rem(18) 0 rem(26);
-            border-bottom: solid 1px $setting-color-gray-7;
+            padding: rem(18) rem(20) rem(26);
+            background-color: $setting-color-gray-13;
         }
 
         &__detail-list {
-            padding: rem(18) 0;
-            border-bottom: solid 1px $setting-color-gray-7;
-
+            background-color: $setting-color-gray-13;
+            padding: rem(18) rem(20);
 
             &-key {
                 font-size: rem(14);
