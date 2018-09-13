@@ -65,7 +65,7 @@
         </div>
     {% else %}
 
-        {% set canEditCart = (not is_granted('IS_AUTHENTICATED_FULLY') or can('WriteSharedCartPermissionPlugin', data.cart.idQuote)) %}
+        {% set canEditCart = (not is_granted('ROLE_USER') or can('WriteSharedCartPermissionPlugin', data.cart.idQuote)) %}
 
         <div class="grid grid--gap">
             <div class="col col--sm-12 col--xl-9">
@@ -148,7 +148,7 @@
                             <div class="col cart-sidebar__quantity">{{ app['cart.quantity'] }} {{ 'checkout.step.summary.items' | trans }}</div>
                         </div>
 
-                        {% if not is_granted('IS_AUTHENTICATED_FULLY') or can('WriteSharedCartPermissionPlugin', data.cart.idQuote) %}
+                        {% if not is_granted('ROLE_USER') or can('WriteSharedCartPermissionPlugin', data.cart.idQuote) %}
                             {{ widget('DiscountVoucherFormWidgetPlugin') }}
                         {% endif %}
                     </div>
