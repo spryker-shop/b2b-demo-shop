@@ -1,0 +1,17 @@
+@mixin product-packaging-unit-packaging-unit-cart($name: '.packaging-unit-cart') {
+    #{$name} {
+        margin-top: rem(13);
+        font-size: rem(14);
+        color: $setting-color-gray-4;
+
+        &__item {
+            &:not(:first-child) {
+                margin-top: rem(12);
+            }
+        }
+
+        @content;
+    }
+}
+
+@include product-packaging-unit-packaging-unit-cart;

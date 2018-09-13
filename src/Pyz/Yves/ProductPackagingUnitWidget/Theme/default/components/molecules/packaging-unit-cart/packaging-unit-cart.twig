@@ -1,0 +1,68 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'packaging-unit-cart',
+    tag: 'ul'
+} %}
+
+{% define data = {
+    amount: required,
+    quantity: required,
+    quantitySalesUnit: required,
+    quantityConversion: required,
+    quantityProductMeasurementUnit: required,
+    amountSalesUnit: required,
+    amountConversion: required,
+    amountProductMeasurementUnit: required
+} %}
+
+{% block body %}
+    {% set salesUnitName = data.quantityProductMeasurementUnit.name | default('') %}
+    {% set leadSalesUnitName = data.amountProductMeasurementUnit.name | default('') %}
+    {% set amountPerQuantity = data.amount / data.quantity %}
+
+    <li class="{{ config.name }}__item">
+        <div class="grid grid--middle grid--gap">
+            <div class="col col--sm-12 col--md-2">{{ 'packaging_units.cart.quantity' | trans }}: </div>
+            <div class="col">
+                {% include molecule('quantity-counter') with {
+                    modifiers: ['cart'],
+                    data: {
+                        value: data.quantity,
+                        readOnly: true
+                    }
+                } only %}
+            </div>
+            {% include atom('quantity-option') with {
+                class: 'col',
+                data: {
+                    value: data.quantity,
+                    precision: data.quantityConversion,
+                    optionName: salesUnitName | trans
+                }
+            } only %}
+        </div>
+    </li>
+    <li class="{{ config.name }}__item">
+        <div class="grid grid--middle grid--gap">
+            <div class="col col--sm-12 col--md-2">{{ 'packaging_units.cart.amount' | trans }}: </div>
+            <div class="col">
+                {% include molecule('quantity-counter') with {
+                    modifiers: ['cart'],
+                    data: {
+                        value: data.amount,
+                        readOnly: true
+                    }
+                } only %}
+            </div>
+            {% include atom('quantity-option') with {
+                class: 'col',
+                data: {
+                    value: amountPerQuantity,
+                    precision: data.amountConversion,
+                    optionName: leadSalesUnitName | trans
+                }
+            } only %}
+        </div>
+    </li>
+{% endblock body %}
