@@ -39,6 +39,12 @@
                         <div class="{{config.name}}__container grid grid--middle grid--center spacing spacing--inner spacing--reset" style="{{backgroundImage}}">
                             <div class="{{ config.name }}--font-white container grid grid--center text-center">
                                 <div class="col col--md-6 col--lg-8">
+                                    {% include atom('icon') with {
+                                        modifiers: ['success'],
+                                        data: {
+                                            name: 'success'
+                                        }
+                                    } only %}
                                     {% if data.title is not empty %}
                                         <h1 class="{{ config.name }}--success__title">{{ data.title }}</h1>
                                     {% endif %}
