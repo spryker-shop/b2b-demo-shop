@@ -2,7 +2,7 @@
 
 {% define data = {
     isVisible: _widget.isVisible,
-    isActivePage: false
+    isActivePage: app.request.pathInfo == path('company/user/select')
 } %}
 
 {% block template %}
