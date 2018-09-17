@@ -7,7 +7,7 @@
 
 {% define data = {
     cartItem: required,
-    readOnly: false
+    isDisabled: false
 } %}
 
 {% block body %}
@@ -15,10 +15,12 @@
         {% include molecule('quantity-counter') with {
             modifiers: ['cart'],
             data: {
-                maxQuantity: data.cartItem.maxQuantity,
-                value: data.cartItem.quantity,
-                readOnly: data.readOnly,
-                autoUpdate: 'true'
+                isDisabled: data.isDisabled,
+                autoUpdate: true
+            },
+            attributes: {
+                max: data.cartItem.maxQuantity,
+                value: data.cartItem.quantity
             }
         } only %}
 

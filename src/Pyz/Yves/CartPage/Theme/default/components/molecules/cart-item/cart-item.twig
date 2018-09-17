@@ -52,7 +52,7 @@
                             {% include molecule('cart-quantity-input', 'CartPage') with {
                                 data: {
                                     cartItem: data.cartItem,
-                                    readOnly: not canEditCart
+                                    isDisabled: not canEditCart
                                 }
                             } only %}
                         {% endif %}
@@ -101,7 +101,7 @@
                             {% include molecule('cart-quantity-input', 'CartPage') with {
                                 data: {
                                     cartItem: data.cartItem,
-                                    readOnly: not canEditCart
+                                    isDisabled: not canEditCart
                                 }
                             } only %}
                         {% endif %}
