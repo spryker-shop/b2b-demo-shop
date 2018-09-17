@@ -53,7 +53,7 @@
     {% endblock %}
 
     {% block price %}
-        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        {% if is_granted('ROLE_USER') %}
             <div class="{{ component.renderClass(config.name ~ '__price', modifiers) }}">
                 {% include molecule('price') with {
                     modifiers: ['catalog'],

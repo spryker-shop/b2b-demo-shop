@@ -31,7 +31,7 @@
         <span class="{{ config.name }}__name">
             {{ data.title }}
 
-            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            {% if is_granted('ROLE_USER') %}
                 {% include molecule('price') with {
                     class: config.name ~ '__price',
                     data: {

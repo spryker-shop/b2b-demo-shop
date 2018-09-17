@@ -12,7 +12,7 @@
 
 {% set canProceedToCheckout = data.cart.items is not empty
     and data.isQuoteValid
-    and (not is_granted('IS_AUTHENTICATED_FULLY') or can('WriteSharedCartPermissionPlugin', data.cart.idQuote))
+    and (not is_granted('ROLE_USER') or can('WriteSharedCartPermissionPlugin', data.cart.idQuote))
 %}
 
 {% block body %}
