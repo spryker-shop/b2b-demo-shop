@@ -2,60 +2,71 @@ import Component from 'ShopUi/models/component';
 
 export default class QuantityCounter extends Component {
 
-    readonly incrButton: HTMLButtonElement
-    readonly decrButton: HTMLButtonElement
+    readonly incrementButton: HTMLButtonElement
+    readonly decrementButton: HTMLButtonElement
     readonly input: HTMLInputElement
-
+    readonly value: number
     timeout: number
 
     constructor() {
         super();
-        this.incrButton = <HTMLButtonElement>this.querySelector(`.${this.jsName}__button-increment`);
-        this.decrButton = <HTMLButtonElement>this.querySelector(`.${this.jsName}__button-decrement`);
+        this.incrementButton = <HTMLButtonElement>this.querySelector(`.${this.jsName}__button-increment`);
+        this.decrementButton = <HTMLButtonElement>this.querySelector(`.${this.jsName}__button-decrement`);
         this.input = <HTMLInputElement>this.querySelector(`.${this.jsName}__input`);
+        this.value = <number>this.getValue;
         this.timeout = 0;
     }
 
     protected readyCallback(): void {
-        this.mapEvents();
+        if(this.isAvailable) {
+            this.mapEvents();
+        }
     }
 
     protected mapEvents(): void {
-        this.incrButton.addEventListener('click', (event: Event) => this.incrementValue(event));
-        this.decrButton.addEventListener('click', (event: Event) => this.decrementValue(event));
+        this.incrementButton.addEventListener('click', (event: Event) => this.incrementValue(event));
+        this.decrementButton.addEventListener('click', (event: Event) => this.decrementValue(event));
         if(this.autoUpdate) {
-            this.input.addEventListener('change', () => this.timer());
+            this.input.addEventListener('change', () => this.delayToSubmit());
         }
     }
 
     protected incrementValue(event): void {
         event.preventDefault();
-        const VALUE = +this.input.value;
+        const value = +this.input.value;
+        const potentialValue = value + this.step;
 
-        if(VALUE <= this.maxQuantity) {
-            this.input.stepUp();
+        if(value <= this.maxQuantity) {
+            this.input.value = potentialValue.toString();
             this.triggerInputEvent();
         }
     }
 
     protected decrementValue(event): void {
         event.preventDefault();
-        const VALUE = +this.input.value;
+        const value = +this.input.value;
+        const potentialValue = value - this.step;
 
-        if(VALUE - this.step >= this.minQuantity) {
-            this.input.stepDown();
+        if(potentialValue >= this.minQuantity) {
+            this.input.value = potentialValue.toString();
             this.triggerInputEvent();
         }
     }
 
     protected triggerInputEvent(): void {
-        const CHANGE_EVENT = new Event('change');
-        this.input.dispatchEvent(CHANGE_EVENT);
+        const changeEvent = new Event('change');
+        this.input.dispatchEvent(changeEvent);
     }
 
-    protected timer(): void {
+    protected delayToSubmit(): void {
         clearTimeout(this.timeout);
-        this.timeout = setTimeout(() => this.input.form.submit(), 1000);
+        this.timeout = setTimeout(() => this.onSubmit(), 1000);
+    }
+
+    protected onSubmit(): void {
+        if(this.value !== this.getValue) {
+            this.input.form.submit();
+        }
     }
 
     get minQuantity(): number {
@@ -63,16 +74,27 @@ export default class QuantityCounter extends Component {
     }
 
     get maxQuantity(): number {
-        const MAX = +this.input.getAttribute('max');
-        return MAX > 0 && MAX > this.minQuantity ? MAX : Infinity;
+        const max = +this.input.getAttribute('max');
+        return max > 0 && max > this.minQuantity ? max : Infinity;
     }
 
     get step(): number {
-        const STEP = +this.input.getAttribute('step');
-        return STEP > 0 ? STEP : 1;
+        const step = +this.input.getAttribute('step');
+        return step > 0 ? step : 1;
+    }
+
+    get getValue(): number {
+        return +this.input.value;
     }
 
     get autoUpdate(): boolean {
         return !!this.input.dataset.autoUpdate;
+    }
+
+    get isAvailable(): boolean {
+        if(!this.input.disabled && !this.input.readOnly) {
+            return true;
+        }
+        return false;
     }
 }
