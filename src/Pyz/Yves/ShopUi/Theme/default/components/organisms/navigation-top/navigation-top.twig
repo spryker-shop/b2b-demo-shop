@@ -26,7 +26,7 @@
         {{ 'global.benefit.warranty' | trans }}
     </div>
 
-    {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
+    {% if not is_granted('ROLE_USER') %}
         <div class="col {{ config.name }}__benefit">
             {% include atom('icon') with {
                 modifiers: ['header-check'],
@@ -51,7 +51,7 @@
                 +49 (0) 30 208 498 350
             </li>
 
-            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            {% if is_granted('ROLE_USER') %}
                 <li class="col {{ config.name }}__action-item">
                     {{ widgetGlobal('PriceModeSwitcherWidgetPlugin') }}
                 </li>
@@ -69,7 +69,7 @@
                 ) }}
             </li>
 
-            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            {% if is_granted('ROLE_USER') %}
                 {% if widgetGlobalExists('MenuItemCompanyWidgetPlugin') %}
                     <li class="col {{ config.name }}__action-item">
                         {% spaceless %}{{ widgetGlobal('MenuItemCompanyWidgetPlugin') }}{% endspaceless %}

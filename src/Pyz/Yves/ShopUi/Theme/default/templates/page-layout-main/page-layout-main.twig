@@ -6,7 +6,7 @@
     {% block notifications %}
         {% include organism('notification-area') only %}
     {% endblock %}
-
+    {{ widgetGlobal('AgentWidgetPlugin') }}
     {% block outside %}{% endblock %}
 
     {% block header %}
