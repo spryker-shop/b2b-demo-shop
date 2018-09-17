@@ -15,22 +15,22 @@
             cursor: pointer;
             position: relative;
 
-            &:before,
-            &:after {
-                content: "";
+            &::before,
+            &::after {
+                content: '';
                 position: absolute;
                 background: $setting-color-gray-6;
                 top: 50%;
                 transform: translateY(-50%);
             }
 
-            &:before {
+            &::before {
                 width: 10px;
                 height: 2px;
                 right: 19px;
             }
 
-            &:after {
+            &::after {
                 width: 2px;
                 height: 10px;
                 right: 23px;
@@ -39,7 +39,7 @@
             &.active {
                 background-color: $setting-color-gray-13;
 
-                &:after {
+                &::after {
                     display: none;
                 }
             }

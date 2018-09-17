@@ -1,22 +1,21 @@
 .toggler-accordion {
 
+    &__icon {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
     &__item {
         position: relative;
         cursor: pointer;
         padding-right: 1rem;
 
         &.active {
-
             .toggler-accordion__icon {
                 transform: translateY(-50%) rotate(180deg);
             }
         }
-    }
-
-    &__icon {
-        position: absolute;
-        right: 0;
-        top: 50%;
-        transform: translateY(-50%);
     }
 }
