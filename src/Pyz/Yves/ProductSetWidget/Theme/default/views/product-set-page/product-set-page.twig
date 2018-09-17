@@ -145,7 +145,7 @@
                                         <strong>{{ "product.detail.out_of_stock" | trans }}</strong>
                                     </p>
                                 {% endif %}
-                                {% set isDisabled = not embed.product.idProductConcrete or not embed.product.available or not is_granted('IS_AUTHENTICATED_FULLY')%}
+                                {% set isDisabled = not embed.product.idProductConcrete or not embed.product.available or not is_granted('ROLE_USER')%}
 
                             </div>
 

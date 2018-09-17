@@ -46,7 +46,7 @@
 
                 <div class="col col--right">
                     {% if data.showUserMenu %}
-                        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                        {% if is_granted('ROLE_USER') %}
 
                             <ul class="user-nav">
                                 <li class="user-nav__item">

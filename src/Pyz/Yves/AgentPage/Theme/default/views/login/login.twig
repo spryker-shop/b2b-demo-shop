@@ -1,0 +1,50 @@
+{% extends template('page-layout-main') %}
+
+{% define data = {
+    forms: {
+        login: _view.loginForm
+    }
+} %}
+
+{% block pageInfo %}
+    <div class="page-info">
+        <div class="container">
+            {% block breadcrumbs %}
+                {% include molecule('breadcrumb') with {
+                    data: {
+                        steps: [{
+                            label: 'agent.login' | trans
+                        }]
+                    }
+                } only %}
+            {% endblock %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    {% embed organism('section') with {
+        data: {
+            title: 'agent.login.title' | trans,
+            innerClass: 'col col--sm-12 col--md-9 col--lg-6'
+        },
+        modifiers: ['center', 'last'],
+        embed: {
+            form: data.forms.login
+        }
+    } only %}
+        {% block inner %}
+            {% include molecule('form') with {
+                class: 'box',
+                data: {
+                    form: embed.form,
+                    submit: {
+                        enable: true,
+                        class: 'button button--big form__action--primary',
+                        text: 'forms.submit.login' | trans
+                    }
+                }
+            } only %}
+        {% endblock %}
+    {% endembed %}
+{% endblock %}
