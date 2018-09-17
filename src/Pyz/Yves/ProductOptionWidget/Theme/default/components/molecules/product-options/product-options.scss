@@ -14,28 +14,28 @@
             position: relative;
             cursor: pointer;
 
-            &:before,
-            &:after {
-                content: "";
+            &::before,
+            &::after {
+                content: '';
                 background: $setting-color-gray-6;
                 position: absolute;
                 top: 50%;
                 transform: translateY(-50%);
             }
 
-            &:before {
+            &::before {
                 width: 10px;
                 height: 2px;
                 right: 18px;
             }
 
-            &:after {
+            &::after {
                 width: 2px;
                 height: 10px;
                 right: 22px;
             }
 
-            &.active:after {
+            &.active::after {
                 display: none;
             }
         }

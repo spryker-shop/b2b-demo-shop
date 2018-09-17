@@ -1,4 +1,5 @@
 @import '../checkbox/checkbox';
+
 @mixin shop-ui-radio($name: '.radio') {
     @include shop-ui-checkbox($name) {
 
@@ -24,4 +25,5 @@
         @content;
     }
 }
+
 @include shop-ui-radio;
