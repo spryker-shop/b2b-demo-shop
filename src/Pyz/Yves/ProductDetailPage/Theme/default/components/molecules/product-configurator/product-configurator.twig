@@ -46,7 +46,7 @@
 
     <div class="{{ config.name }}__sku">{{ 'product.attribute.sku' | trans }}: {{sku}}</div>
 
-    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+    {% if is_granted('ROLE_USER') %}
         {% if widgetExists('PriceProductVolumeWidgetPlugin') %}
             {{ widget('PriceProductVolumeWidgetPlugin', data.product) }}
         {% else %}
@@ -94,7 +94,7 @@
 
     <form method="POST" action="/cart/add/{{sku}}">
         {{ widget('ProductOptionWidgetPlugin', data.product) }}
-        {% if is_granted('IS_AUTHENTICATED_FULLY') and not isDisabled %}
+        {% if is_granted('ROLE_USER') and not isDisabled %}
             <div class="{{ config.name }}__add-to-cart">
                 {% if widgetExists('ProductPackagingUnitWidgetPlugin') %}
                     {{ widget('ProductPackagingUnitWidgetPlugin', data.product, isDisabled, options) }}
@@ -127,12 +127,12 @@
             {{ widget('MultiCartWidgetPlugin', data.product, isDisabled) }}
         {% endif %}
 
-        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        {% if is_granted('ROLE_USER') %}
             {{ widget('AvailabilityWidgetPlugin', data.product) }}
         {% endif %}
     </form>
 
-    {% if is_granted('IS_AUTHENTICATED_FULLY') and not isDisabled and widgetExists('ShoppingListWidgetPlugin') %}
+    {% if is_granted('ROLE_USER') and not isDisabled and widgetExists('ShoppingListWidgetPlugin') %}
         {{ widget('ShoppingListWidgetPlugin', sku, isDisabled) }}
     {% endif %}
 

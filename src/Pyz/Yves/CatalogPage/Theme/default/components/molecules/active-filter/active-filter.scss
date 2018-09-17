@@ -9,6 +9,12 @@
     display: flex;
     align-items: center;
 
+    &__icon {
+        @include helper-effect-transition(color);
+        margin-left: rem(8);
+        color: $setting-color-gray-3;
+    }
+
     &:hover,
     &:focus {
         color: $setting-color-gray-4;
@@ -19,11 +25,5 @@
         .active-filter__icon {
             color: $setting-color-gray-6;
         }
-    }
-
-    &__icon {
-        @include helper-effect-transition(color);
-        margin-left: rem(8);
-        color: $setting-color-gray-3;
     }
 }

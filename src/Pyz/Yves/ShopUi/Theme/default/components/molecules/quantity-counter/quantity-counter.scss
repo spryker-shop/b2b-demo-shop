@@ -33,10 +33,10 @@
             position: relative;
             @include helper-effect-transition(background);
 
-            &--decrement:before,
-            &--increment:before,
-            &--increment:after {
-                content: "";
+            &--decrement::before,
+            &--increment::before,
+            &--increment::after {
+                content: '';
                 position: absolute;
                 left: 50%;
                 top: 50%;
@@ -46,15 +46,15 @@
                 background: $setting-color-gray-3;
                 @include helper-effect-transition(background);
             }
-            &--increment:after {
+            &--increment::after {
                 width: 2px;
                 height: 9px;
             }
 
             &:hover {
                 background: $setting-color-main;
-                &:before,
-                &:after {
+                &::before,
+                &::after {
                     background: $setting-color-white;
                 }
             }
@@ -64,16 +64,16 @@
                 cursor: not-allowed;
                 box-shadow: 0 3px 3px 0 $setting-color-shadow;
 
-                &:before,
-                &:after {
+                &::before,
+                &::after {
                     background: $setting-color-gray-7;
                 }
 
                 &:hover,
                 &:focus {
                     background: $setting-color-white;
-                    &:before,
-                    &:after {
+                    &::before,
+                    &::after {
                         background: $setting-color-gray-7;
                     }
                 }
@@ -92,5 +92,3 @@
 }
 
 @include shop-ui-quantity-counter();
-
-
