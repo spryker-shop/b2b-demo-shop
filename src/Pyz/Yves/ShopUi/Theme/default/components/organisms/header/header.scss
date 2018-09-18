@@ -101,6 +101,7 @@
         }
 
         .user-sub-nav {
+            @include helper-effect-transition(opacity transform);
             position: absolute;
             top: 100%;
             left: 50%;
@@ -115,11 +116,10 @@
             font-weight: fw(regular);
             line-height: 1.93;
             letter-spacing: rem(0.2);
-            @include helper-effect-transition(opacity transform);
             opacity: 0;
 
-            &:before {
-                content: "";
+            &::before {
+                content: '';
                 background: $setting-color-white;
                 position: absolute;
                 top: -5px;
@@ -141,7 +141,6 @@
             &--pull-left::before {
                 left: 90%;
             }
-
         }
 
         &__navigation {

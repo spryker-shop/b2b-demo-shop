@@ -16,7 +16,7 @@
             actions: data.idCompanyBusinessUnit is not empty ? [
                 {
                     title: 'company.account.add_new_address' | trans,
-                    url: url('company/business-unit/address/create', { 'id': data.idCompanyBusinessUnit }),
+                    url: url('company/address/create', { 'idCompanyBusinessUnit': data.idCompanyBusinessUnit }),
                     primary: true
                 }
             ] : []

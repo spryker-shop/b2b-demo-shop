@@ -13,7 +13,7 @@
 } %}
 
 {% if not data.isShoppingList %}
-    {% set canEditCart = (not is_granted('IS_AUTHENTICATED_FULLY') or can('WriteSharedCartPermissionPlugin', data.cart.idQuote)) %}
+    {% set canEditCart = (not is_granted('ROLE_USER') or can('WriteSharedCartPermissionPlugin', data.cart.idQuote)) %}
     {% set cartItemSubTotal = data.cartItem.quantity * data.cartItem.unitPrice %}
 {% endif %}
 
@@ -39,6 +39,26 @@
                 {{ 'cart.item.sku' | trans }}
                 {{ data.cartItem.sku }}
             </small>
+
+            {{ widget('CartProductPackagingUnitWidgetPlugin', data.cartItem) }}
+
+            {% if data.cartItem.amountSalesUnit is empty and data.cartItem.quantitySalesUnit is not empty %}
+                <div class="{{ config.name }}__quantity grid grid--middle grid--gap">
+                    <div class="col col--sm-12 col--md-2">{{ 'packaging_units.cart.quantity' | trans }}: </div>
+                    <div class="col">
+                        {% if widgetExists('QuantitySalesUnitWidgetPlugin') and canEditCart %}
+                            {{ widget('QuantitySalesUnitWidgetPlugin', data.cartItem) }}
+                        {% else %}
+                            {% include molecule('cart-quantity-input', 'CartPage') with {
+                                data: {
+                                    cartItem: data.cartItem,
+                                    isDisabled: not canEditCart
+                                }
+                            } only %}
+                        {% endif %}
+                    </div>
+                </div>
+            {% endif %}
 
             {% if data.attributes is not empty %}
                 {% include molecule('cart-item-variant-selector', 'CartPage') with {
@@ -74,16 +94,14 @@
                         modifiers: ['cart'],
                     } only %}
 
-                    {{ widget('CartProductPackagingUnitWidgetPlugin', data.cartItem) }}
-
-                    {% if data.cartItem.amountSalesUnit is empty %}
+                    {% if data.cartItem.amountSalesUnit is empty and data.cartItem.quantitySalesUnit is empty %}
                         {% if widgetExists('QuantitySalesUnitWidgetPlugin') and canEditCart %}
                             {{ widget('QuantitySalesUnitWidgetPlugin', data.cartItem) }}
                         {% else %}
                             {% include molecule('cart-quantity-input', 'CartPage') with {
                                 data: {
                                     cartItem: data.cartItem,
-                                    readOnly: not canEditCart
+                                    isDisabled: not canEditCart
                                 }
                             } only %}
                         {% endif %}
