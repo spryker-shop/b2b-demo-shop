@@ -27,6 +27,8 @@
             border-radius: $setting-border-radius;
             background-color: $setting-color-white;
             box-shadow: 0 10px 10px 0 $setting-color-shadow, 0 3px 3px 0 $setting-color-shadow;
+            line-height: 0;
+            font-size: 0;
             cursor: pointer;
             position: relative;
             @include helper-effect-transition(background);
@@ -85,6 +87,11 @@
         &--cart {
             padding-top: rem(10);
             padding-bottom: rem(12);
+        }
+
+        &--shopping-list {
+            margin-bottom: 20px;
+            width: rem(137);
         }
     }
 }
