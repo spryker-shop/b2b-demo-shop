@@ -6,6 +6,7 @@ export default class QuantityCounter extends Component {
     readonly decrementButton: HTMLButtonElement
     readonly input: HTMLInputElement
     readonly value: number
+    readonly duration: number
     timeout: number
 
     constructor() {
@@ -13,7 +14,8 @@ export default class QuantityCounter extends Component {
         this.incrementButton = <HTMLButtonElement>this.querySelector(`.${this.jsName}__button-increment`);
         this.decrementButton = <HTMLButtonElement>this.querySelector(`.${this.jsName}__button-decrement`);
         this.input = <HTMLInputElement>this.querySelector(`.${this.jsName}__input`);
-        this.value = <number>this.getValue;
+        this.value = this.getValue;
+        this.duration = 1000;
         this.timeout = 0;
     }
 
@@ -60,7 +62,7 @@ export default class QuantityCounter extends Component {
 
     protected delayToSubmit(): void {
         clearTimeout(this.timeout);
-        this.timeout = setTimeout(() => this.onSubmit(), 1000);
+        this.timeout = setTimeout(() => this.onSubmit(), this.duration);
     }
 
     protected onSubmit(): void {
