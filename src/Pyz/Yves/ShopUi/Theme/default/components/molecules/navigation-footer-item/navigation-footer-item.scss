@@ -1,0 +1,12 @@
+@mixin shop-ui-navigation-footer-item($name: '.navigation-footer-item') {
+    #{$name} {
+        @include helper-breakpoint-media-min($lg-min) {
+            margin-bottom: 0;
+        }
+        margin-bottom: 1.5rem;
+
+        @content;
+    }
+}
+
+@include shop-ui-navigation-footer-item;

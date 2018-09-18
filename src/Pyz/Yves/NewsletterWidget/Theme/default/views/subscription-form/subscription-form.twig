@@ -12,14 +12,17 @@
 
 {% block body %}
     <div class="grid grid--middle grid--justify">
-        <div class="col col--sm-12 col--lg-5">
-            <h5 class="subscribe-title">{{ 'global.subscribe.title' | trans }}</h5>
-            <p class="subscribe-text">{{data.text | raw}}</p>
-        </div>
+        {% include molecule('subscription-info', 'NewsletterWidget') with {
+            class: 'col col--sm-12 col--lg-5',
+            data: {
+                title: 'global.subscribe.title' | trans,
+                text: data.text,
+            }
+        } only %}
 
         {% include molecule('form') with {
             class: 'col col--sm-12 col--lg-5',
-            modifiers: ['inline'],
+            modifiers: ['inline', 'subscription'],
             data: {
                 form: data.form,
                 submit: {

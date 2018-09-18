@@ -70,7 +70,6 @@
 
 {% block footer %}
     {% embed organism('footer') with {
-        modifiers: ['checkout']
     } only %}
 
         {% block subscribe %}{% endblock %}
@@ -79,16 +78,17 @@
 
             <div class="container">
                 <div class="grid grid--gap">
-                    <div class="col col--sm-12 {{ config.name }}__navigation-item text-center spacing-y spacing-y--inner spacing-y--big">
-                        {{ widgetGlobal('NavigationWidgetPlugin', 'FOOTER_NAVIGATION', 'navigation-footer') }}
-                    </div>
+                    {% include molecule('navigation-footer-item') with {
+                        class: 'col col--sm-12 text-center spacing-y spacing-y--inner spacing-y--big',
+                        data: {
+                            category: 'FOOTER_NAVIGATION',
+                            template: 'navigation-footer-checkout'
+                        }
+                    } only %}
                 </div>
                 {% block social %}{% endblock %}
             </div>
 
-        {% endblock %}
-        {% block copyright %}
-            {{ parent() }}
         {% endblock %}
 
     {% endembed %}
