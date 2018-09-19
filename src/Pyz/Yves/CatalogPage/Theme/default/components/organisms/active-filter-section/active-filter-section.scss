@@ -1,5 +1,6 @@
 .active-filter-section {
     margin-top: rem(20);
+    margin-bottom: rem(12);
     font-size: rem(14);
 
     &__item,
@@ -17,15 +18,8 @@
         font-weight: fw(bold);
         color: $setting-color-gray-4;
 
-        &-icon {
-            @include helper-effect-transition(color);
-            margin-right: rem(8);
-            color: $setting-color-gray-6;
-        }
-
         &:hover,
         &:focus {
-
             &,
             .active-filter-section__reset-icon {
                 color: $setting-color-gray-3;

@@ -1,0 +1,18 @@
+@mixin shop-ui-title($name: '.title') {
+    #{$name} {
+        &--footer {
+            font: fw(bold) rem(16)/rem(34) $setting-font-family;
+            margin-bottom: rem(10);
+        }
+
+        &--subscription-info {
+            font: fw(medium) rem(34)/rem(43) $setting-font-family;
+            letter-spacing: rem(0.3);
+            margin-bottom: rem(17);
+        }
+
+        @content;
+    }
+}
+
+@include shop-ui-title;
