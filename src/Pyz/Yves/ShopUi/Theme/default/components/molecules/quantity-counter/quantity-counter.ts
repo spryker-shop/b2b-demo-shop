@@ -1,56 +1,102 @@
 import Component from 'ShopUi/models/component';
-import $ from 'jquery/dist/jquery';
 
 export default class QuantityCounter extends Component {
 
-    timeout = null;
+    readonly incrementButton: HTMLButtonElement
+    readonly decrementButton: HTMLButtonElement
+    readonly input: HTMLInputElement
+    readonly value: number
+    readonly duration: number
+    timeout: number
+
+    constructor() {
+        super();
+        this.incrementButton = <HTMLButtonElement>this.querySelector(`.${this.jsName}__button-increment`);
+        this.decrementButton = <HTMLButtonElement>this.querySelector(`.${this.jsName}__button-decrement`);
+        this.input = <HTMLInputElement>this.querySelector(`.${this.jsName}__input`);
+        this.value = this.getValue;
+        this.duration = 1000;
+        this.timeout = 0;
+    }
 
     protected readyCallback(): void {
-
-        const input = $(this).find(`.${this.name}__input`);
-        let maxQuantity = input.data('max-quantity');
-        const decrButton = $(this).find('.js-quantity-decrement');
-        const incrButton = $(this).find('.js-quantity-increment');
-        const autoUpdate = input.data('auto-update');
-        const form = $(this).parent('form');
-
-        const self = this;
-
-        if(!maxQuantity){
-            maxQuantity = Infinity;
-        }
-        decrButton.click(() => {
-            let value = +input.val();
-            if(value > 1){
-                input.val(value - 1);
-
-                const event = new CustomEvent('quantityChange');
-                self.querySelector(`.${self.name}__input`).dispatchEvent(event);
-                if(autoUpdate) {
-                    this.timer(form);
-                }
-            }
-        });
-        incrButton.click(() => {
-            let value = +input.val();
-            if(value < maxQuantity) {
-                input.val(value + 1);
-
-                const event = new CustomEvent('quantityChange');
-                self.querySelector(`.${self.name}__input`).dispatchEvent(event);
-                if(autoUpdate) {
-                    this.timer(form);
-                }
-            }
-        });
-
-        if(autoUpdate) {
-            input.change(() => this.timer(form));
+        if(this.isAvailable) {
+            this.mapEvents();
         }
     }
 
-    protected timer(form): void {
+    protected mapEvents(): void {
+        this.incrementButton.addEventListener('click', (event: Event) => this.incrementValue(event));
+        this.decrementButton.addEventListener('click', (event: Event) => this.decrementValue(event));
+        if(this.autoUpdate) {
+            this.input.addEventListener('change', () => this.delayToSubmit());
+        }
+    }
+
+    protected incrementValue(event): void {
+        event.preventDefault();
+        const value = +this.input.value;
+        const potentialValue = value + this.step;
+
+        if(value <= this.maxQuantity) {
+            this.input.value = potentialValue.toString();
+            this.triggerInputEvent();
+        }
+    }
+
+    protected decrementValue(event): void {
+        event.preventDefault();
+        const value = +this.input.value;
+        const potentialValue = value - this.step;
+
+        if(potentialValue >= this.minQuantity) {
+            this.input.value = potentialValue.toString();
+            this.triggerInputEvent();
+        }
+    }
+
+    protected triggerInputEvent(): void {
+        const changeEvent = new Event('change');
+        this.input.dispatchEvent(changeEvent);
+    }
+
+    protected delayToSubmit(): void {
         clearTimeout(this.timeout);
-        this.timeout = setTimeout(() => form.submit(), 1000);
+        this.timeout = setTimeout(() => this.onSubmit(), this.duration);
+    }
+
+    protected onSubmit(): void {
+        if(this.value !== this.getValue) {
+            this.input.form.submit();
+        }
+    }
+
+    get minQuantity(): number {
+        return +this.input.getAttribute('min');
+    }
+
+    get maxQuantity(): number {
+        const max = +this.input.getAttribute('max');
+        return max > 0 && max > this.minQuantity ? max : Infinity;
+    }
+
+    get step(): number {
+        const step = +this.input.getAttribute('step');
+        return step > 0 ? step : 1;
+    }
+
+    get getValue(): number {
+        return +this.input.value;
+    }
+
+    get autoUpdate(): boolean {
+        return !!this.input.dataset.autoUpdate;
+    }
+
+    get isAvailable(): boolean {
+        if(!this.input.disabled && !this.input.readOnly) {
+            return true;
+        }
+        return false;
     }
 }

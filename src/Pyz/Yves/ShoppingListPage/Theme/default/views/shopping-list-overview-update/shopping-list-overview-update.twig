@@ -159,7 +159,20 @@
                                                 {% endif %}
 
                                                 <div class="{{ config.name }}--fixed-input">
-                                                    {{ form_row(data.form.items[data.key].quantity, {'attr': {'readonly': not data.isProductAvailable}, type: 'number'}) }}
+                                                    {% embed molecule('quantity-counter') with {
+                                                        modifiers: ['shopping-list'],
+                                                        data: {
+                                                            isReadOnly: not data.isProductAvailable
+                                                        },
+                                                        embed: {
+                                                            isReadOnly: not data.isProductAvailable,
+                                                            quantity: data.form.items[data.key].quantity
+                                                        }
+                                                    } only %}
+                                                        {% block quantityField %}
+                                                            {{ form_row(embed.quantity, {'attr': {'readonly': embed.isReadOnly, 'class': config.name ~ '__input ' ~ config.jsName ~ '__input', 'min': 1}, type: 'number'}) }}
+                                                        {% endblock %}
+                                                    {% endembed %}
                                                 </div>
                                             </div>
                                             <div class="col">

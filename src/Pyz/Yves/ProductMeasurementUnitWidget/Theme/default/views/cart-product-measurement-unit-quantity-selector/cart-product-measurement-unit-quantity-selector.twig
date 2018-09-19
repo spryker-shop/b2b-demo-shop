@@ -16,7 +16,7 @@
             {% include molecule('cart-quantity-input', 'CartPage') with {
                 data: {
                     cartItem: data.cartItem,
-                    readOnly: hasQuantitySalesUnit
+                    isDisabled: hasQuantitySalesUnit
                 }
             } only %}
         </div>
