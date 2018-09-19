@@ -42,6 +42,66 @@
                 }
             }
         }
+
+        &--subscription {
+            @include helper-breakpoint-media-min($lg-min) {
+                padding-left: $setting-grid-space;
+            }
+
+            .form__container {
+                position: relative;
+            }
+
+            .form__fields,
+            .form__action {
+                margin: 0;
+            }
+
+            .form__field {
+                padding: 0;
+            }
+
+            .form__actions {
+                position: absolute;
+                right: 0;
+                bottom: 0;
+            }
+
+            .label {
+                display: none;
+            }
+
+            .input {
+                border: none;
+                border-bottom: 2px solid $setting-color-gray-4;
+                background-color: $setting-color-transparent;
+                font: fw(regular) rem(18)/rem(23) $setting-font-family;
+                letter-spacing: rem(0.27);
+                color: $setting-color-gray-4;
+                padding: rem(13) rem(46) rem(16) 0;
+
+                &::placeholder {
+                    color: $setting-color-gray-4;
+                }
+            }
+
+            .button {
+                color: $setting-color-gray-4;
+                min-height: rem(54);
+                padding-right: rem(22);
+                padding-bottom: rem(10);
+
+                &:hover,
+                &:focus {
+                    color: $setting-color-gray-3;
+                }
+            }
+
+            .icon {
+                width: 1rem;
+                height: 1rem;
+            }
+        }
     }
 }
 
