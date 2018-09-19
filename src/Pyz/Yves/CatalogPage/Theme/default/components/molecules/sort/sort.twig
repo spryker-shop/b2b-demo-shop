@@ -23,13 +23,15 @@
                                 modifiers: ['flexible-width'],
                                 attributes: {
                                     name: 'ipp',
-                                    'onchange': 'this.form.querySelector("button[type=submit]").click();',
                                     'selectWidth': 'resolve',
                                 },
                                 embed: {
                                     pagination: _view.pagination
                                 }
                             } only %}
+                                {% block selectClass %}
+                                    {{ parent() }} js-ipp-select
+                                {% endblock %}
                                 {% block options %}
                                     {% for limit in embed.pagination.config.validItemsPerPageOptions %}
                                         <option value="{{ limit }}" {% if limit == embed.pagination.currentItemsPerPage %}selected{% endif %}>{{ limit }}</option>
@@ -50,13 +52,15 @@
                                 modifiers: ['flexible-width'],
                                 attributes: {
                                     name: 'sort',
-                                    'onchange': 'this.form.querySelector("button[type=submit]").click();',
                                     'selectWidth': 'resolve',
                                 },
                                 embed: {
                                     sort: _view.sort
                                 }
                             } only %}
+                                {% block selectClass %}
+                                    {{ parent() }} js-sort-select
+                                {% endblock %}
                                 {% block options %}
                                     <option value="">{{ 'catalog.sort.relevance' | trans }}</option>
                                     {% for sortParamName in embed.sort.sortParamNames %}
@@ -70,4 +74,10 @@
             </div>
         </div>
     </div>
+
+    {% include molecule('form-submitter') with {
+        attributes: {
+            'trigger-selector': '.js-ipp-select, .js-sort-select'
+        }
+    } only %}
 {% endblock %}

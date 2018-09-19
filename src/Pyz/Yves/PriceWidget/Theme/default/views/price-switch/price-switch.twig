@@ -17,20 +17,28 @@
         {% embed atom('custom-select') with {
             modifiers: ['alternative'],
             attributes: {
-                name: 'price-mode',
-                onchange: 'this.form.submit()'
+                name: 'price-mode'
             },
             embed: {
                 priceModes: data.priceModes,
                 currentPriceMode: data.currentPriceMode
             }
         } only %}
+            {% block selectClass %}
+                {{ parent() }} js-price-mode-select
+            {% endblock %}
             {% block options %}
                 {% for priceMode in embed.priceModes %}
                     <option value="{{ priceMode }}" {{ (priceMode == embed.currentPriceMode) ? 'selected' : ''}}>{{ ('price.mode.' ~ priceMode | lower) | trans }}</option>
                 {% endfor %}
             {% endblock %}
         {% endembed %}
+
+        {% include molecule('form-submitter') with {
+            attributes: {
+                'trigger-selector': '.js-price-mode-select'
+            }
+        } only %}
 
         <input type="hidden" name="referrer-url" value="{{ data.requestUri }}" />
     </form>
