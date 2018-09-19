@@ -52,7 +52,7 @@
     <a class="col {{config.name}}__item {{config.name}}__reset" href="{{ generateUrlWithoutAllActiveSearchFilters(data.facets) }}">
         {% include atom('icon') with {
             class: config.name ~ '__reset-icon',
-            modifiers: ['cross'],
+            modifiers: ['cross', 'reset'],
             data: {
                 name: 'cross'
             }
