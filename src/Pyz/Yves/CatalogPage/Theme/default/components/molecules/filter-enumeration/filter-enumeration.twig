@@ -11,13 +11,13 @@
 
 {% set isMultiSelect = data.isMultiSelect is null ? (data.filter.config.isMultiValued | default(false)) : false %}
 {% set activeValues = isMultiSelect ? data.filter.activeValue : [data.filter.activeValue] %}
-{% set inputComponent = isMultiSelect ? atom('checkbox') : atom('radio') %}
+{% set inputComponent = isMultiSelect ? 'checkbox' : 'radio' %}
 
 {% block body %}
     <ul class="menu">
         {% for filterValue in data.filter.values %}
-            <li class="menu__item {{ config.name }}__list-item">
-                {% include inputComponent with {
+            <li class="menu__item menu__item--filter-enumeration">
+                {% include atom(inputComponent) with {
                     modifiers: ['filter'],
                     attributes: {
                         name: data.filter.config.parameterName ~ (isMultiSelect ? '[]' : ''),
@@ -25,9 +25,8 @@
                         checked: (filterValue.value in activeValues)
                     },
                     data: {
-                        label: '<span class="filter-enumeration__text">' ~filterValue.value ~ '</span> <span class="filter-enumeration__quantity">' ~ filterValue.docCount ~ '</span>'
-                    },
-                    class: config.name ~ '__item'
+                        label: filterValue.value ~ ' <span class="' ~ inputComponent ~ '__counter">' ~ filterValue.docCount ~ '</span>'
+                    }
                 } only %}
             </li>
         {% endfor %}

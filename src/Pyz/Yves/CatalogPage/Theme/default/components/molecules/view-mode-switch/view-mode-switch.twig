@@ -15,19 +15,19 @@
 {% block body %}
     <a class="{{ config.name }}__link {% if data.viewMode == 'grid' %} {{ config.name }}__link--active {% endif %}" href="{{gridHref}}">
         {% include atom('icon') with {
+            modifiers: ['view-mode-switch'],
             data: {
                 name: 'th-large'
-            },
-            class: config.name ~ '__icon'
+            }
         } only %}
         {{ 'catalog.view.mode.grid' | trans }}
     </a>
     <a class="{{ config.name }}__link {% if data.viewMode != 'grid' %} {{ config.name }}__link--active {% endif %}" href="{{listHref}}">
         {% include atom('icon') with {
+            modifiers: ['view-mode-switch'],
             data: {
                 name: 'th-list'
-            },
-            class: config.name ~ '__icon'
+            }
         } only %}
         {{ 'catalog.view.mode.list' | trans }}
     </a>
