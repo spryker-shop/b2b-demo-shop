@@ -30,7 +30,7 @@
                                 }
                             } only %}
                                 {% block selectClass %}
-                                    {{ parent() }} js-ipp-select
+                                    {{ parent() }} js-items-per-page-select
                                 {% endblock %}
                                 {% block options %}
                                     {% for limit in embed.pagination.config.validItemsPerPageOptions %}
@@ -77,7 +77,7 @@
 
     {% include molecule('form-submitter') with {
         attributes: {
-            'trigger-selector': '.js-ipp-select, .js-sort-select'
+            'trigger-selector': '.js-items-per-page-select, .js-sort-select'
         }
     } only %}
 {% endblock %}

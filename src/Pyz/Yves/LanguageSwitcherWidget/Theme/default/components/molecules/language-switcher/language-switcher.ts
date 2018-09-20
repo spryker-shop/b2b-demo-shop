@@ -13,10 +13,10 @@ export default class LanguageSwitcher extends Component {
     }
 
     protected mapEvents(): void {
-        this.select.addEventListener('change', (event: Event) => this.onTriggerChange(event));
+        this.select.addEventListener('change', () => this.onTriggerChange());
     }
 
-    protected onTriggerChange(event): void {
+    protected onTriggerChange(): void {
         if(this.hasUrl) {
             window.location.assign(this.value);
         }
