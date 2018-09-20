@@ -34,6 +34,20 @@ class MultiCartController extends SprykerShopMultiCartController
             ->getMultiCartClient()
             ->setDefaultQuote($quoteTransfer);
 
-        return $this->redirectResponseInternal(CartControllerProvider::ROUTE_CART);
+        return $this->redirectResponseExternal($this->getRefererUrl($request));
+    }
+
+    /**
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     *
+     * @return string
+     */
+    protected function getRefererUrl(Request $request)
+    {
+        if ($request->headers->has(static::REQUEST_HEADER_REFERER)) {
+            return $request->headers->get(static::REQUEST_HEADER_REFERER);
+        }
+
+        return CartControllerProvider::ROUTE_CART;
     }
 }

@@ -12,6 +12,8 @@ use SprykerShop\Yves\MultiCartPage\Plugin\Provider\MultiCartPageControllerProvid
 
 class MultiCartPageControllerProvider extends SprykerShopMultiCartPageControllerProvider
 {
+    public const ROUTE_MULTI_CART_SET_DEFAULT_BACK = 'multi-cart/set-default-back';
+
     /**
      * @param \Silex\Application $app
      *
@@ -35,7 +37,7 @@ class MultiCartPageControllerProvider extends SprykerShopMultiCartPageController
      */
     protected function addMultiCartSetDefaultBackRoute(): self
     {
-        $this->createGetController('/{multiCart}/set-default-back/{idQuote}', static::ROUTE_MULTI_CART_SET_DEFAULT, 'MultiCartPage', 'MultiCart', 'setDefaultBack')
+        $this->createGetController('/{multiCart}/set-default-back/{idQuote}', static::ROUTE_MULTI_CART_SET_DEFAULT_BACK, 'MultiCartPage', 'MultiCart', 'setDefaultBack')
             ->assert('multiCart', $this->getAllowedLocalesPattern() . 'multi-cart|multi-cart')
             ->assert(self::PARAM_ID_QUOTE, '\d+')
             ->value('multiCart', 'multi-cart');
