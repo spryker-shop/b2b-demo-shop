@@ -1,17 +1,16 @@
 {% extends model('component') %}
 
 {% define config = {
-    name: 'cart-quantity-input',
-    tag: 'div'
+    name: 'product-item-quantity'
 } %}
 
 {% define data = {
-    cartItem: required,
+    productItem: required,
     isDisabled: false
 } %}
 
 {% block body %}
-    <form method="POST" action="{{ path('cart/change/quantity', {'sku': data.cartItem.sku }) }}">
+    <form method="POST" action="{{ path('cart/change/quantity', {'sku': data.productItem.sku }) }}">
         {% include molecule('quantity-counter') with {
             modifiers: ['cart'],
             data: {
@@ -19,11 +18,11 @@
                 autoUpdate: true
             },
             attributes: {
-                max: data.cartItem.maxQuantity,
-                value: data.cartItem.quantity
+                max: data.productItem.maxQuantity,
+                value: data.productItem.quantity
             }
         } only %}
 
-        <input type="hidden" value="{{ data.cartItem.groupKey }}" name="groupKey" />
+        <input type="hidden" value="{{ data.productItem.groupKey }}" name="groupKey" />
     </form>
 {% endblock %}

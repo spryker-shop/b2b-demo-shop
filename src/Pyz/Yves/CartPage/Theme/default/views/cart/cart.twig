@@ -90,11 +90,12 @@
             </div>
             <div class="col col--sm-12 col--xl-9">
                 {% for cartItem in data.cartItems %}
-                    {% include molecule('cart-item', 'CartPage') with {
+                    {% include molecule('product-item') with {
                         data: {
-                            cart: data.cart,
-                            cartItem: cartItem,
-                            attributes: data.attributes[cartItem.sku] | default([])
+                            list: data.cart,
+                            listItem: cartItem,
+                            attributes: data.attributes[cartItem.sku] | default([]),
+                            canEdit: (not is_granted('ROLE_USER') or can('WriteSharedCartPermissionPlugin', data.cart.idQuote))
                         }
                     } only %}
                 {% endfor %}

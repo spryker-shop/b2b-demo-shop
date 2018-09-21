@@ -1,0 +1,92 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'alternative-products-table'
+} %}
+
+{% define data = {
+    item: required,
+    shoppingList: required,
+    products: required,
+    maxShownItems: 3
+} %}
+
+{% set idShoppingListItem = data.item.idShoppingListItem %}
+
+{% block body %}
+    <h5 class="title title--shopping-list-alternative">{{ 'product_alternative_widget.alternative_for' | trans }}</h5>
+    <h6 class="title title--sub">{{ data.item.name }}</h6>
+    {% for item in data.products %}
+        {% embed molecule('product-item') with {
+            class: loop.index > data.maxShownItems ? 'js-product-alternative-' ~ idShoppingListItem ~ '__show-all-target is-hidden' : '',
+            modifiers: ['shopping-list', 'shopping-list-alternative'],
+            data: {
+                listItem: item,
+                imageModifiers: ['shopping-list']
+            },
+            embed: {
+                shoppingList: data.shoppingList,
+                quantity: data.item.quantity
+            }
+        } only %}
+            {% block itemAttributes %}
+                <ul class="list spacing-y spacing-y--big">
+                    {% for attribute in data.listItem.superAttributesDefinition %}
+                        {% if data.listItem.attributes[attribute] is defined %}
+                            <li class="list__item list__item--inline spacing-right--bigger">
+                                <strong>{{- ('product.attribute.' ~ attribute) | trans -}}: </strong>
+                                {% if ('product.attribute.' ~ attribute) | trans == 'Color' %}
+                                    <span class="{{ config.name}}__color text-secondary" style="background-color: {{ data.listItem.attributes[attribute] }}">
+                                        {{ data.listItem.attributes[attribute] }}
+                                    </span>
+                                {% else %}
+                                    <span class="text-secondary">
+                                        {{ data.listItem.attributes[attribute] }}
+                                    </span>
+                                {% endif %}
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            {% endblock %}
+
+            {% block quantity %}
+                {% include molecule('quantity-counter') with {
+                    modifiers: ['shopping-list'],
+                    data: {
+                        isReadOnly: true
+                    },
+                    attributes: {
+                        value: embed.quantity,
+                    }
+                } only %}
+                <a class="button button--hollow" href="{{ url('shopping-list/add-item', {quantity: embed.quantity, sku: data.listItem.sku, idShoppingList: embed.shoppingList.idShoppingList}) }}">
+                    {{ 'product_alternative_widget.add_to_shopping_list' | trans}}
+                </a>
+            {% endblock %}
+        {% endembed %}
+        {% if loop.index > data.maxShownItems and loop.last %}
+            <div class="js-product-alternative-{{- idShoppingListItem -}}__show-all-target grid grid--center spacing-y">
+                <div class="col">
+                    <button class="link link--icon js-product-alternative-{{- idShoppingListItem -}}__show-all-trigger" type="button">
+                        {{ 'product_alternative_widget.show_all' | trans }}
+                        {% include atom('icon') with {
+                            class: 'spacing-left--small',
+                            modifiers: ['smaller'],
+                            data: {
+                                name: 'caret-down'
+                            }
+                        } only %}
+                    </button>
+                </div>
+            </div>
+            {% include molecule('toggler-click') with {
+                attributes: {
+                    'trigger-selector': '.js-product-alternative-' ~ idShoppingListItem ~ '__show-all-trigger',
+                    'target-selector': '.js-product-alternative-' ~ idShoppingListItem ~ '__show-all-target',
+                    'class-to-toggle': 'is-hidden'
+                }
+            } only %}
+        {% endif %}
+    {% endfor %}
+{% endblock %}

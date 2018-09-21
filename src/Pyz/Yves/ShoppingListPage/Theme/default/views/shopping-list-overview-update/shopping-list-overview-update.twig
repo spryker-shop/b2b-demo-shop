@@ -70,131 +70,103 @@
                             {% set isProductAvailable = not isDiscontinued and isProductAvailable %}
                         {% endif %}
 
-                        {% embed molecule('cart-item', 'CartPage') with {
+                        {% embed molecule('product-item') with {
+                            modifiers: ['shopping-list'],
                             data: {
-                                cart: data.shoppingList,
-                                cartItem: product,
-                                attributes: data.attributes[product.sku] | default([]),
-                                isShoppingList: true,
-                                isProductAvailable: isProductAvailable,
-                                form: data.form,
-                                key: key
+                                listItem: product,
+                                imageModifiers: ['shopping-list']
                             },
                             embed: {
+                                isItemAvailable: isProductAvailable,
                                 idShoppingList: data.idShoppingList
                             }
                         } only %}
-                            {% block body %}
-                                <div class="grid grid--stretch grid--gap">
-                                    <div class="{{ config.name }}__col {{ config.name }}__col--image col col--sm-12 col--lg-3">
-                                        <a href="{{ data.cartItem.url }}" class="{{ config.name }}__image ">
-                                            {% include molecule('cart-image', 'CartPage') with {
-                                                data: {
-                                                    name: data.cartItem.name | default(''),
-                                                    image: data.cartItem.images is empty ? null : (data.cartItem.images | first)
-                                                }
-                                            } only %}
-                                        </a>
-                                    </div>
-                                    <div class="{{ config.name }}__col {{ config.name }}__col--content col col--sm-12 col--lg-6">
-
-                                        {% if data.isProductAvailable %}
-                                            <span class="{{ config.name }}__available">
-                                                {{ 'customer.account.shopping_list.available' | trans }}
-                                            </span>
+                            {% block title %}
+                                <span class="{{ config.name }}__available">
+                                    {% if embed.isItemAvailable %}
+                                        {{ 'customer.account.shopping_list.available' | trans }}
+                                    {% else %}
+                                        {% if widgetExists('ProductDiscontinuedWidgetPlugin') %}
+                                            {{ widget('ProductDiscontinuedWidgetPlugin', data.listItem.sku) }}
                                         {% else %}
-                                            <span class="{{ config.name }}__available">
-                                                {% if widgetExists('ProductDiscontinuedWidgetPlugin') %}
-                                                    {{ widget('ProductDiscontinuedWidgetPlugin', data.cartItem.sku) }}
+                                            {{ 'customer.account.shopping_list.not_available' | trans }}
+                                        {% endif %}
+                                    {% endif %}
+                                </span>
+                                {{ parent() }}
+                            {% endblock %}
+
+                            {% block itemAttributes %}
+                                <ul class="list spacing-y spacing-y--big">
+                                    {% for attribute in data.listItem.superAttributesDefinition %}
+                                        {% if data.listItem.attributes[attribute] is defined %}
+                                            <li class="list__item list__item--inline spacing-right--bigger">
+                                                <strong>{{- ('product.attribute.' ~ attribute) | trans -}}: </strong>
+                                                {% if ('product.attribute.' ~ attribute) | trans == 'Color' %}
+                                                    <span class="{{ config.name}}__color text-secondary" style="background-color: {{ data.listItem.attributes[attribute] }}">
+                                        {{ data.listItem.attributes[attribute] }}
+                                    </span>
                                                 {% else %}
-                                                    {{ 'customer.account.shopping_list.not_available' | trans }}
+                                                    <span class="text-secondary">
+                                        {{ data.listItem.attributes[attribute] }}
+                                    </span>
                                                 {% endif %}
-                                            </span>
+                                            </li>
                                         {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            {% endblock %}
 
-                                        {% if data.cartItem.name is not empty %}
-                                            <h6 class="{{ config.name }}__title">
-                                                <a href="{{ data.cartItem.url }}" class="{{ config.name }}__title">{{ data.cartItem.name }}</a>
-                                            </h6>
-                                        {% endif %}
+                            {% block price %}
+                                {% if data.listItem.price is not empty %}
+                                    {% include molecule('price') with {
+                                        modifiers: ['cart'],
+                                        data: {
+                                            amount: data.listItem.price | money,
+                                            originalAmount: data.listItem.prices.ORIGINAL is not defined or data.listItem.prices.ORIGINAL is empty ? null : (data.listItem.prices.ORIGINAL | money)
+                                        }
+                                    } only %}
+                                {% else %}
+                                    {{ 'product_alternative_widget.not_applicable' | trans }}
+                                {% endif %}
+                            {% endblock %}
 
-                                        {% if data.cartItem.sku is not empty %}
-                                            <small class="text-secondary grid spacing-bottom spacing-bottom--big">
-                                                {{ 'cart.item.sku' | trans }}:
-                                                {{ data.cartItem.sku }}
-                                            </small>
-                                        {% endif %}
+                            {% block quantity %}
+                                {% include molecule('quantity-counter') with {
+                                    modifiers: ['shopping-list'],
+                                    data: {
+                                        isReadOnly: not embed.isItemAvailable
+                                    },
+                                    attributes: {
+                                        name: 'shoppingListItem[quantity][' ~ data.listItem.idShoppingListItem ~ ']',
+                                        value: data.listItem.quantity
+                                    }
+                                } only %}
+                            {% endblock %}
 
-                                        <div class="spacing-bottom spacing-bottom--big">
-                                            {% for attribute in data.cartItem.superAttributesDefinition %}
-                                                {% if data.cartItem.attributes[attribute] is defined %}
-                                                    <strong>{{ ('product.attribute.'~attribute) | trans }}: </strong>
-                                                    {% if ('product.attribute.'~attribute) | trans == 'Color' %}
-                                                        <small class="{{ config.name}}__color text-secondary" style="background-color: {{ data.cartItem.attributes[attribute] }}">
-                                                            {{ data.cartItem.attributes[attribute] }} <br/>
-                                                        </small>
-                                                    {% else %}
-                                                        <small class="text-secondary">
-                                                            {{ data.cartItem.attributes[attribute] }} <br/>
-                                                        </small>
-                                                    {% endif %}
-                                                {% endif %}
-                                            {% endfor %}
-                                        </div>
-                                    </div>
-                                    <div class="{{ config.name }}__col {{ config.name }}__col--total col col--sm-12 col--lg-3">
-                                        <div class="{{ config.name }}__inner--total grid grid--column grid--justify-column grid--bottom">
-                                            <div class="col">
-                                                {% if data.cartItem.price is not null %}
-                                                    {% include molecule('price') with {
-                                                        modifiers: ['block'],
-                                                        class: 'spacing-bottom spacing-bottom--big',
-                                                        data: {
-                                                            amount: data.cartItem.price | money,
-                                                            originalAmount: data.cartItem.prices.ORIGINAL is not defined or data.cartItem.prices.ORIGINAL is empty ? null : (data.cartItem.prices.ORIGINAL | money)
-                                                        }
-                                                    } only %}
-                                                {% else %}
-                                                    {{ 'product_alternative_widget.not_applicable' | trans }}
-                                                {% endif %}
-
-                                                <div class="{{ config.name }}--fixed-input">
-                                                    {% embed molecule('quantity-counter') with {
-                                                        modifiers: ['shopping-list'],
-                                                        data: {
-                                                            isReadOnly: not data.isProductAvailable
-                                                        },
-                                                        embed: {
-                                                            isReadOnly: not data.isProductAvailable,
-                                                            quantity: data.form.items[data.key].quantity
-                                                        }
-                                                    } only %}
-                                                        {% block quantityField %}
-                                                            {{ form_row(embed.quantity, {'attr': {'readonly': embed.isReadOnly, 'class': config.name ~ '__input ' ~ config.jsName ~ '__input', 'min': 1}, type: 'number'}) }}
-                                                        {% endblock %}
-                                                    {% endembed %}
-                                                </div>
-                                            </div>
-                                            <div class="col">
-                                                <a class="link link--icon" href="{{ path('shopping-list/remove-item', {'idShoppingList': embed.idShoppingList, 'idShoppingListItem': data.cartItem.idShoppingListItem}) }}">
-                                                    {% include atom('icon') with {
-                                                        modifiers: ['link'],
-                                                        data: {
-                                                            name: 'delete'
-                                                        }
-                                                    } only %}
-                                                    {{ 'cart.delete.item' | trans }}
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
+                            {% block deleteButton %}
+                                <div class="col">
+                                    <a class="link link--icon" href="{{ path('shopping-list/remove-item', {
+                                        idShoppingList: embed.idShoppingList, idShoppingListItem: data.listItem.idShoppingListItem
+                                    }) }}">
+                                        {% include atom('icon') with {
+                                            modifiers: ['link'],
+                                            data: {
+                                                name: 'delete'
+                                            }
+                                        } only %}
+                                        {{'customer.account.shopping_list.remove' | trans}}
+                                    </a>
                                 </div>
                             {% endblock %}
                         {% endembed %}
+
+                        {% if can('WriteShoppingListPermissionPlugin', data.shoppingList.idShoppingList) and widgetExists('ProductAlternativeWidgetPlugin') %}
+                            {{ widget('ProductAlternativeWidgetPlugin', product, data.shoppingList) }}
+                        {% endif %}
                     {% endfor %}
                 {% else %}
                     <div class="col col--sm-12 text-center">
-                        <hr />
                         {{ 'customer.account.shopping_list.empty' | trans }}
                     </div>
                 {% endif %}
