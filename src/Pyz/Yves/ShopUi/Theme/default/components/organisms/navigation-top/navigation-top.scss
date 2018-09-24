@@ -1,5 +1,6 @@
 @mixin shop-ui-navigation-top($name: '.navigation-top') {
     #{$name} {
+        white-space: nowrap;
 
         &__benefit {
             font-size: rem(11);
@@ -7,6 +8,10 @@
             line-height: rem(40);
             opacity: 0.5;
             text-transform: uppercase;
+        }
+
+        &__actions {
+            max-width: calc(100% - 350px);
         }
 
         &__action-item {
@@ -32,10 +37,17 @@
             letter-spacing: rem(0.6);
             line-height: rem(40);
             color: $setting-color-gray-4;
-            padding: 0 18px;
+            padding: 0 30px 0 18px;
             height: 100%;
             text-transform: uppercase;
+            white-space: nowrap;
+            max-width: 365px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            position: relative;
+
             @include helper-effect-transition(color);
+
             &:hover {
                 color: helper-color-light($setting-color-gray-4, 25);
             }
@@ -53,6 +65,9 @@
             width: 7px;
             height: 4px;
             margin: 0 -5px 0 5px;
+            position: absolute;
+            top: calc(50% - 2px);
+            right: 17px;
         }
 
         &__sub-nav {
