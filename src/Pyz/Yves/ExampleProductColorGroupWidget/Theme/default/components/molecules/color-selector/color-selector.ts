@@ -3,12 +3,12 @@ import Component from 'ShopUi/models/component';
 export default class ColorSelector extends Component {
     colors: HTMLAnchorElement[]
     images: HTMLImageElement[]
-    links: HTMLElement[]
+    links: HTMLLinkElement[]
     detailsLinks: HTMLAnchorElement[]
 
     protected readyCallback(): void {
         this.colors = <HTMLAnchorElement[]>Array.from(this.getElementsByClassName(`${this.jsName}__color`));
-        this.links = <HTMLElement[]>Array.from(document.querySelectorAll(this.targetLinkSelector));
+        this.links = <HTMLLinkElement[]>Array.from(document.querySelectorAll(this.targetLinkSelector));
         this.detailsLinks = <HTMLAnchorElement[]>Array.from(document.querySelectorAll(this.targetDetailsLink));
         this.images = <HTMLImageElement[]>Array.from(document.querySelectorAll(`${this.targetLinkSelector}`));
         this.mapEvents();

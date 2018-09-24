@@ -29,7 +29,7 @@
                     data-image-src="{{ image ? image.externalUrlSmall : '' }}"
                     {% if item.colorCode %}style="border-color:{{ item.colorCode }};"{% endif %}>
                 <span class="{{ config.name }}__color-inner" {% if item.colorCode %}style="background-color:{{ item.colorCode }};"{% endif %}></span>
-                <span class="color-tooltip">{{ item.attributes.farbe }}</span>
+                <span class="{{ config.name }}__tooltip">{{ item.attributes.farbe }}</span>
             </a>
         {% endfor %}
     </div>

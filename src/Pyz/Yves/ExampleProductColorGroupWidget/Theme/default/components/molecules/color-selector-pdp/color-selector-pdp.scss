@@ -1,0 +1,42 @@
+$color-selector-size: 18px;
+$color-selector-size-big: 24px;
+$name: '.color-selector-pdp';
+
+@include helper-color-selector($name) {
+    margin-bottom: rem(28);
+
+    &__colors {
+        display: flex;
+    }
+
+    &__colors-title {
+        display: none;
+    }
+
+    &__color {
+        width: $color-selector-size-big;
+        height: $color-selector-size-big;
+        border: solid 10px transparent;
+        display: block;
+
+        &:not(:last-child) {
+            margin-right: 10px;
+        }
+
+        &--active #{$name}__color-inner {
+            background: $setting-color-white !important;
+        }
+    }
+
+    &__color-inner {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    &__tooltip {
+        top: -52px;
+        left: -20px;
+    }
+}

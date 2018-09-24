@@ -2,11 +2,19 @@ import Component from 'ShopUi/models/component';
 
 export default class ColorSelectorPdp extends Component {
     colors: HTMLAnchorElement[]
-    images: HTMLImageElement[]
+    container: HTMLElement
+    image: HTMLImageElement
+    imageActiveClass: string
+
+    constructor() {
+        super();
+        this.imageActiveClass = 'image-gallery__item--color-active';
+    }
 
     protected readyCallback(): void {
         this.colors = <HTMLAnchorElement[]>Array.from(this.getElementsByClassName(`${this.jsName}__color`));
-        this.images = <HTMLImageElement[]>Array.from(document.querySelectorAll(this.targetImageSelector));
+        this.container = <HTMLElement>document.querySelector(this.imageContainerSelector);
+        this.image = <HTMLImageElement>document.querySelector(this.imageSelector);
         this.mapEvents();
     }
 
@@ -36,13 +44,10 @@ export default class ColorSelectorPdp extends Component {
     }
 
     setActiveImage(newImageSrc: string): void {
-        this.images.forEach((image: HTMLImageElement) => {
-            const imgageWrapper = <HTMLElement>image.parentNode;
-            if (image.src !== newImageSrc) {
-                image.src = newImageSrc;
-                imgageWrapper.classList.add('pdp-img--color-active');
-            }
-        });
+        if (this.image.src !== newImageSrc) {
+            this.image.src = newImageSrc;
+            this.container.classList.add(this.imageActiveClass);
+        }
     }
 
     protected onColorUnselection(event: Event): void {
@@ -52,13 +57,14 @@ export default class ColorSelectorPdp extends Component {
     }
 
     removeImage(): void {
-        this.images.forEach((image: HTMLImageElement) => {
-            const imgageWrapper = <HTMLElement>image.parentNode;
-            imgageWrapper.classList.remove('pdp-img--color-active');
-        });
+        this.container.classList.remove(this.imageActiveClass);
     }
 
-    get targetImageSelector(): string {
+    get imageContainerSelector(): string {
+        return this.getAttribute('target-selector');
+    }
+
+    get imageSelector(): string {
         return this.getAttribute('target-image-selector');
     }
 }
