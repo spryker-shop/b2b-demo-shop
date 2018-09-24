@@ -135,12 +135,11 @@
                     />
                 </div>
             </div>
-            <div class="col measurement-unit is-hidden">
+            <div class="col measurement-unit">
                 <div class="measurement-unit__label">
                     {{ 'packaging_units.pdp.sales-units' | trans }}:
                 </div>
                 <div class="measurement-unit__value">
-                    {{ 'product.measurement.sales_unit' | trans }}
                     {% embed atom('custom-select') with {
                         modifiers: ['flexible-width'],
                         attributes: {
