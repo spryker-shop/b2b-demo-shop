@@ -7,13 +7,13 @@
 
 {% block body %}
     {% if data.note is not empty %}
-        <div class="cart-item-note">
-            <h6 class="cart-item-note__title">{{ data.label | trans }}:</h6>
-            <div class="cart-item-note__container">
-                <div class="cart-item-note__text-wrap">
-                    <div class="cart-item-note__text">{{ data.note | escape | nl2br }}</div>
-                </div>
-            </div>
-        </div>
+        {% include molecule('cart-item-note', 'CartNoteWidget') with {
+            data: {
+                isNoteNotEmpty: true,
+                canWrite: false,
+                label: data.label,
+                note: data.note | escape | nl2br
+            }
+        } only %}
     {% endif %}
 {% endblock %}

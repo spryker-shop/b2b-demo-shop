@@ -6,8 +6,10 @@
 } %}
 
 {% define data = {
-    form: required,
+    form: {},
     canWrite: required,
+    label: '',
+    note: ''
 } %}
 
 {% define attributes = {
@@ -20,20 +22,21 @@
 
 {% block body %}
 
-    {% set isNoteNotEmpty = data.form.vars.value.cartNote is not null and data.form.vars.value.cartNote is not empty %}
+    {% set title = data.label is not empty ? data.label : 'cart_note.form.comment' %}
+    {% set note = data.note is not empty ? data.note : data.form.vars.value.cartNote %}
+    {% set isNoteNotEmpty = data.isNoteNotEmpty is defined ? data.isNoteNotEmpty : (data.form.vars.value.cartNote is not null and data.form.vars.value.cartNote is not empty) %}
 
     {% if data.canWrite or isNoteNotEmpty %}
 
         {% if isNoteNotEmpty %}
-            <h6 class="{{ config.name }}__title">{{ 'cart_note.form.comment' | trans }}:</h6>
+            <h6 class="{{ config.name }}__title">{{ title | trans }}:</h6>
         {% endif %}
 
         <div class="{{ config.name }}__container">
 
             {% if isNoteNotEmpty %}
-
                 <div class="{{ config.name }}__text-wrap js-{{ config.name }}__text-wrap">
-                    <div class="{{ config.name }}__text">{{ data.form.vars.value.cartNote }}</div>
+                    <div class="{{ config.name }}__text">{{ note }}</div>
 
                     {% if data.canWrite %}
                         {% include molecule('cart-item-note-actions', 'CartNoteWidget') with {
