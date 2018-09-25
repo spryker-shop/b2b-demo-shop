@@ -2,49 +2,54 @@
 
 {% define config = {
     name: 'cart-item-note',
+    jsName: 'js-cart-item-note',
     tag: 'cart-item-note'
 } %}
 
 {% define data = {
-    form: required,
+    form: {},
     canWrite: required,
+    label: '',
+    note: '',
+    isNoteNotEmpty: null
 } %}
 
 {% define attributes = {
-    'edit-button-selector': '.js-' ~ config.name ~ '__edit',
-    'remove-button-selector': '.js-' ~ config.name ~ '__remove',
-    'read-section-selector': '.js-' ~ config.name ~ '__text-wrap',
-    'form-selector': '.js-' ~ config.name ~ '__form',
+    'edit-button-selector': '.' ~ config.jsName ~ '__edit',
+    'remove-button-selector': '.' ~ config.jsName ~ '__remove',
+    'read-section-selector': '.' ~ config.jsName ~ '__text-wrap',
+    'form-selector': '.' ~ config.jsName ~ '__form',
     'change-class': 'is-hidden'
 } %}
 
 {% block body %}
 
-    {% set isNoteNotEmpty = data.form.vars.value.cartNote is not null and data.form.vars.value.cartNote is not empty %}
+    {% set title = data.label is not empty ? data.label : 'cart_note.form.comment' %}
+    {% set note = data.note is not empty ? data.note : data.form.vars.value.cartNote %}
+    {% set isNoteNotEmpty = data.isNoteNotEmpty is not null ? data.isNoteNotEmpty : (data.form.vars.value.cartNote is not null and data.form.vars.value.cartNote is not empty) %}
 
     {% if data.canWrite or isNoteNotEmpty %}
 
         {% if isNoteNotEmpty %}
-            <h6 class="{{ config.name }}__title">{{ 'cart_note.form.comment' | trans }}:</h6>
+            <h6 class="{{ config.name }}__title">{{ title | trans }}:</h6>
         {% endif %}
 
         <div class="{{ config.name }}__container">
 
             {% if isNoteNotEmpty %}
-
-                <div class="{{ config.name }}__text-wrap js-{{ config.name }}__text-wrap">
-                    <div class="{{ config.name }}__text">{{ data.form.vars.value.cartNote }}</div>
+                <div class="{{ config.name }}__text-wrap {{ config.jsName }}__text-wrap">
+                    <div class="{{ config.name }}__text">{{ note }}</div>
 
                     {% if data.canWrite %}
                         {% include molecule('cart-item-note-actions', 'CartNoteWidget') with {
                             data: {
                                 buttons: [{
-                                    class: 'link link--icon js-' ~ config.name ~ '__edit',
+                                    class: 'link link--icon ' ~ config.jsName ~ '__edit',
                                     icon: 'edit',
                                     text: 'cart_note.form.edit_comment' | trans
                                 },
                                 {
-                                    class: 'link link--icon js-' ~ config.name ~ '__remove',
+                                    class: 'link link--icon ' ~ config.jsName ~ '__remove',
                                     icon: 'delete',
                                     text: 'cart_note.form.remove_comment' | trans
                                 }]
@@ -55,14 +60,14 @@
             {% endif %}
 
             {% if data.canWrite %}
-                {% set pefixForJs = data.form.vars.value.groupKey | replace({"." : ""}) %}
+                {% set jsModifier = data.form.vars.value.groupKey | replace({"." : ""}) %}
 
-                <div class="{{ config.name }}__form js-{{ config.name }}__form js-{{ config.name }}__form--{{ pefixForJs }} {% if isNoteNotEmpty %}is-hidden{% endif %}">
-                    <h6 class="{{ config.name }}__label toggler-accordion__item js-{{ config.name }}__trigger {% if isNoteNotEmpty %}active{% endif %}" data-toggle-target='.js-{{ config.name }}__content--{{ pefixForJs }}'>
+                <div class="{{ config.name }}__form {{ config.jsName }}__form {{ config.jsName }}__form--{{ jsModifier }} {% if isNoteNotEmpty %}is-hidden{% endif %}">
+                    <h6 class="{{ config.name }}__label toggler-accordion__item {{ config.jsName }}__trigger {% if isNoteNotEmpty %}active{% endif %}" data-toggle-target='.{{ config.jsName }}__content--{{ jsModifier }}'>
                         {{ 'cart_note.form.add_comment' | trans }}
                         <span class="icon icon--toggler-cross icon--toggler-cross-link toggler-accordion__icon"></span>
                     </h6>
-                    <div class="{{ config.name }}__content js-{{ config.name }}__content js-{{ config.name }}__content--{{ pefixForJs }} {% if not isNoteNotEmpty %}is-hidden{% endif %}">
+                    <div class="{{ config.name }}__content {{ config.jsName }}__content {{ config.jsName }}__content--{{ jsModifier }} {% if not isNoteNotEmpty %}is-hidden{% endif %}">
                         {% include molecule('form') with {
                             data: {
                                 form: data.form,
@@ -80,8 +85,8 @@
 
                 {% include molecule('toggler-accordion') with {
                     attributes: {
-                        'wrap-selector': '.js-' ~ config.name ~ '__form--' ~ pefixForJs,
-                        'trigger-selector': '.js-' ~ config.name ~ '__trigger',
+                        'wrap-selector': '.' ~ config.jsName ~ '__form--' ~ jsModifier,
+                        'trigger-selector': '.' ~ config.jsName ~ '__trigger',
                         'class-to-toggle': 'is-hidden'
                     }
                 } only %}
