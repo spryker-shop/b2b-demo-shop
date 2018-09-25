@@ -8,17 +8,17 @@ export default class RangeSlider extends Component {
 
     protected readyCallback(): void {
         this.sliderContainer = document.querySelector(this.wrapSelector);
+        this.rangeInputs = Array.from(document.querySelectorAll(this.targetSelector));
         this.sliderConfig = {
             start: [ this.valueCurrentMin, this.valueCurrentMax ],
             step: 1,
             connect: true,
             margin: 1,
             range: {
-                'min': +this.valueMin,
-                'max': +this.valueMax
+                'min': this.valueMin,
+                'max': this.valueMax
             }
         };
-        this.rangeInputs = Array.from(document.querySelectorAll(this.targetSelector));
 
         this.initUiSlider();
         this.mapEvents();
@@ -58,12 +58,12 @@ export default class RangeSlider extends Component {
         return this.getAttribute('target-selector');
     }
 
-    get valueMin(): string {
-        return this.getAttribute('value-min');
+    get valueMin(): number {
+        return Number(this.getAttribute('value-min'));
     }
 
-    get valueMax(): string {
-        return this.getAttribute('value-max');
+    get valueMax(): number {
+        return Number(this.getAttribute('value-max'));
     }
 
     get valueCurrentMin(): string {
