@@ -33,7 +33,7 @@
                 <ul class="list spacing-y spacing-y--big">
                     {% for attribute in data.listItem.superAttributesDefinition %}
                         {% if data.listItem.attributes[attribute] is defined %}
-                            <li class="list__item list__item--inline spacing-right--bigger">
+                            <li class="list__item list__item--inline spacing-right spacing-right--bigger">
                                 <strong>{{- ('product.attribute.' ~ attribute) | trans -}}: </strong>
                                 {% if ('product.attribute.' ~ attribute) | trans == 'Color' %}
                                     <span class="{{ config.name}}__color text-secondary" style="background-color: {{ data.listItem.attributes[attribute] }}">
@@ -71,7 +71,7 @@
                     <button class="link link--icon js-product-alternative-{{- idShoppingListItem -}}__show-all-trigger" type="button">
                         {{ 'product_alternative_widget.show_all' | trans }}
                         {% include atom('icon') with {
-                            class: 'spacing-left--small',
+                            class: 'spacing-left spacing-left--small',
                             modifiers: ['smaller'],
                             data: {
                                 name: 'caret-down'
