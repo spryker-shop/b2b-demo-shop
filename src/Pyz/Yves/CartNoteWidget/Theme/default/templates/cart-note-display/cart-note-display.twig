@@ -1,0 +1,19 @@
+{% extends template('widget') %}
+
+{% define data = {
+    label: '',
+    note: null
+} %}
+
+{% block body %}
+    {% if data.note is not empty %}
+        {% include molecule('cart-item-note', 'CartNoteWidget') with {
+            data: {
+                isNoteNotEmpty: true,
+                canWrite: false,
+                label: data.label,
+                note: data.note | escape | nl2br
+            }
+        } only %}
+    {% endif %}
+{% endblock %}

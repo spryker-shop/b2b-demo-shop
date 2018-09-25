@@ -28,7 +28,7 @@
             <div class="spacing-bottom spacing-bottom--bigger">
                 {% embed molecule('banner') with {
                     class: 'spacing spacing--reset',
-                    mofifiers: ['color-white'],
+                    modifiers: ['color-second'],
                     data: {
                         imageUrl: '/assets/images/img-success.jpg',
                         title: data.title,
@@ -37,7 +37,7 @@
                 } only %}
                     {% block body %}
                         <div class="{{config.name}}__container grid grid--middle grid--center spacing spacing--inner spacing--reset" style="{{backgroundImage}}">
-                            <div class="{{ config.name }}--font-white container grid grid--center text-center">
+                            <div class="grid grid--center text-center">
                                 <div class="col col--md-6 col--lg-8">
                                     {% include atom('icon') with {
                                         modifiers: ['success'],
@@ -46,10 +46,10 @@
                                         }
                                     } only %}
                                     {% if data.title is not empty %}
-                                        <h1 class="{{ config.name }}--success__title">{{ data.title }}</h1>
+                                        <h1 class="{{ config.name }}__success-title">{{ data.title }}</h1>
                                     {% endif %}
                                     {% if data.message is not empty %}
-                                        <p class="{{ config.name }}--success__text">{{ data.message }}</p>
+                                        <p class="{{ config.name }}__success-text">{{ data.message }}</p>
                                     {% endif %}
                                 </div>
                             </div>
@@ -61,7 +61,7 @@
         {% block actions %}
             <div class="container container--checkout text-center spacing-y spacing-y--inner">
                 <a href="{{ 'checkout.success.to_orders.url' | trans }}" class="button button--big spacing-x spacing-x--big">{{ 'checkout.success.to_orders.title' | trans }}</a>
-                <a href="/" class="button button--big button--hollow button--gray spacing-x spacing-x--big">{{ 'checkout.success.back_to_home.title' | trans }}</a>
+                <a href="{{ url('') }}" class="button button--big button--hollow button--gray spacing-x spacing-x--big">{{ 'checkout.success.back_to_home.title' | trans }}</a>
             </div>
         {% endblock %}
     </div>

@@ -1,0 +1,15 @@
+@mixin shop-ui-product-item-options($name: '.product-item-options') {
+    #{$name} {
+        margin-top: 1rem;
+
+        &__item {
+            font-size: rem(14);
+            color: $setting-color-gray-3;
+            display: block;
+        }
+
+        @content;
+    }
+}
+
+@include shop-ui-product-item-options();
