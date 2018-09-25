@@ -4,22 +4,31 @@ import 'slick-carousel';
 
 export default class SlickCarousel extends Component {
 
+    sliderContainer: $;
+
     readyCallback(): void {
+        this.sliderContainer = $(this.querySelector(`.${this.name}__container`));
 
-        const $container = $(this).find(`.${this.name}__container`);
-        const sliderConfig = $(this).data('json');
+        this.mapEvents();
+        this.sliderInit();
+    }
 
-        $container.on('init', function (event, slick) {
-            $(this).fadeIn('fast', () => $(this).removeClass('is-hidden'));
-        });
+    protected mapEvents(): void {
+        this.sliderContainer.on('init', () => this.showSlider());
+    }
 
-        $container.slick(
-            sliderConfig
+    protected showSlider(): void {
+        this.sliderContainer.removeClass('is-hidden');
+    }
+
+    protected sliderInit (): void {
+        this.sliderContainer.slick(
+            this.sliderConfig
         );
+    }
 
-        if ("ontouchstart" in document.documentElement){
-            $container.slick('slickPause');
-        }
+    get sliderConfig(): object {
+        return JSON.parse(this.getAttribute('slider-config'));
     }
 
 }

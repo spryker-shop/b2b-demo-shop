@@ -9,7 +9,7 @@
 } %}
 
 {% define attributes = {
-    'data-json': ''
+    'slider-config': 'null'
 } %}
 
 {% block body %}
@@ -19,7 +19,7 @@
             slides: data.slides
         },
         attributes: {
-            'data-json': attributes['data-json']
+            'slider-config': attributes['slider-config']
         }
     } only %}
 
