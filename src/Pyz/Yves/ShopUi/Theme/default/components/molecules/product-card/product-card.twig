@@ -39,7 +39,7 @@
     {% endblock %}
 
     {% block name %}
-        <a class="{{ component.renderClass(config.name ~ '__overlay', modifiers, 'js-product-color-group__image-' ~ data.abstractId) }}" href="{{data.url}}">{{data.name}}</a>
+        <a class="{{ component.renderClass(config.name ~ '__overlay', modifiers, 'js-product-color-group__link-' ~ data.abstractId) }}" href="{{data.url}}">{{data.name}}</a>
     {% endblock %}
 
     {% block category %}

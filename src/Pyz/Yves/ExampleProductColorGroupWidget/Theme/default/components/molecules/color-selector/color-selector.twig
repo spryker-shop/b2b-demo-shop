@@ -10,7 +10,9 @@
 } %}
 
 {% define attributes = {
-    'target-image-selector': required
+    'target-image-selector': required,
+    'target-url-selector': '',
+    'active-color-class': config.name ~ '__color--active'
 } %}
 
 {% block component %}

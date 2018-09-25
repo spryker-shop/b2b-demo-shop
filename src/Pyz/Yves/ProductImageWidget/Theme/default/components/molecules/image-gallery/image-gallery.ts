@@ -5,25 +5,14 @@ import 'slick-carousel';
 export default class ImageGallery extends Component {
     readonly galleryItems: HTMLElement[]
     readonly quantityImages: number
-    readonly activeClass: string
     readonly thumbnailSlider: $
-    readonly thumbnailSliderConfig: object
 
 
     constructor() {
         super();
         this.galleryItems = <HTMLElement[]>Array.from(this.querySelectorAll(`.${this.jsName}__item`));
         this.quantityImages = this.galleryItems.length;
-        this.activeClass = `${this.name}__item--active`;
         this.thumbnailSlider = $(`.${this.jsName}__thumbnails`);
-        this.thumbnailSliderConfig = {
-            'slidesToShow': 4,
-            'slidesToScroll': 1,
-            'infinite': false,
-            'vertical': true,
-            'prevArrow': '<dev class="thumb-prev"><svg class="icon"><use href="#:caret-down"></use></svg></div>',
-            'nextArrow': '<dev class="thumb-next"><svg class="icon"><use href="#:caret-down"></use></svg></div>'
-        }
     }
 
     readyCallback(): void {
@@ -68,5 +57,14 @@ export default class ImageGallery extends Component {
                 galleryItem.classList.add(this.activeClass);
             }
         });
+    }
+
+    get activeClass(): string {
+        return this.getAttribute('active-class');
+    }
+
+    get thumbnailSliderConfig(): object {
+        const sliderConfig: string = this.getAttribute('config-thumbnail-slider');
+        return JSON.parse(sliderConfig);
     }
 }

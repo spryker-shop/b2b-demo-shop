@@ -10,6 +10,18 @@
     images: []
 } %}
 
+{% define attributes = {
+    'active-class': config.name ~ '__item--active',
+    'config-thumbnail-slider': '{
+        "slidesToShow":4,
+        "slidesToScroll":1,
+        "infinite":false,
+        "vertical":true,
+        "prevArrow":"<div class=\'thumb-prev\'><svg class=\'icon\'><use href=\'#:caret-down\'></use></svg></div>",
+        "nextArrow":"<div class=\'thumb-next\'><svg class=\'icon\'><use href=\'#:caret-down\'></use></svg></div>"
+    }'
+} %}
+
 {% set imagesQuantity = data.images | length %}
 {% set firstImage = data.images | first %}
 

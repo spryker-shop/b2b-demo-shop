@@ -4,13 +4,11 @@ export default class ColorSelectorPdp extends Component {
     colors: HTMLAnchorElement[]
     container: HTMLElement
     image: HTMLImageElement
-    imageActiveClass: string
 
     protected readyCallback(): void {
-        this.colors = <HTMLAnchorElement[]>Array.from(this.getElementsByClassName(`${this.jsName}__color`));
+        this.colors = <HTMLAnchorElement[]>Array.from(this.querySelectorAll(`.${this.jsName}__color`));
         this.container = <HTMLElement>document.querySelector(this.imageContainerSelector);
         this.image = <HTMLImageElement>document.querySelector(this.imageSelector);
-        this.imageActiveClass = 'image-gallery__item--color-active';
         this.mapEvents();
     }
 
@@ -33,10 +31,10 @@ export default class ColorSelectorPdp extends Component {
 
     setActiveColor(changedColor: HTMLAnchorElement): void {
         this.colors.forEach((color: HTMLAnchorElement) => {
-            color.classList.remove(`${this.name}__color--active`);
+            color.classList.remove(this.colorActiveClass);
         });
 
-        changedColor.classList.add(`${this.name}__color--active`);
+        changedColor.classList.add(this.colorActiveClass);
     }
 
     setActiveImage(newImageSrc: string): void {
@@ -62,5 +60,13 @@ export default class ColorSelectorPdp extends Component {
 
     get imageSelector(): string {
         return this.getAttribute('target-image-selector');
+    }
+
+    get imageActiveClass(): string {
+        return this.getAttribute('active-image-class');
+    }
+
+    get colorActiveClass(): string {
+        return this.getAttribute('active-color-class');
     }
 }

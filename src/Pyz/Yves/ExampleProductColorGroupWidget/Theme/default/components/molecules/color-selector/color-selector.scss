@@ -15,7 +15,7 @@ $name: '.color-selector';
         bottom: 0;
         margin: rem(10) 0;
 
-        @media (min-width: 768px) {
+        @include helper-breakpoint-media-min($lg-min) {
             position: absolute;
             left: 20px;
             bottom: 45px;
@@ -23,7 +23,7 @@ $name: '.color-selector';
         }
 
         &__colors-title {
-            font-size: 13px;
+            font-size: rem(13);
             color: $setting-color-gray-3;
             margin-right: rem(9);
             display: inline;
@@ -43,13 +43,14 @@ $name: '.color-selector';
     &__color {
         width: $color-selector-size;
         height: $color-selector-size;
-        border: solid 1px transparent;
         margin-right: 2px;
-        padding: 3px;
+        padding: 4px;
         display: block;
 
-        &:not(#{$name}__color--active) {
-            border-color: transparent !important;
+        &--active {
+            padding: 3px;
+            border-width: 1px;
+            border-style: solid;
         }
     }
 }

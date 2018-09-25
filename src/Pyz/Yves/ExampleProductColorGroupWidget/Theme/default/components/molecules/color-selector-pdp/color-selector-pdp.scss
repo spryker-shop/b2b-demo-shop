@@ -16,27 +16,36 @@ $name: '.color-selector-pdp';
     &__color {
         width: $color-selector-size-big;
         height: $color-selector-size-big;
-        border: solid 10px transparent;
+        border: solid 12px transparent;
         display: block;
 
         &:not(:last-child) {
             margin-right: 10px;
         }
 
-        &--active #{$name}__color-inner {
-            background: $setting-color-white !important;
+        &:before {
+            content: "";
+            display: block;
+            width: 10px;
+            height: 10px;
+            border-radius: 100%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        &--active:before {
+            background: $setting-color-white;
         }
     }
 
     &__color-inner {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+        display: none;
     }
 
     &__tooltip {
-        top: -52px;
-        left: -20px;
+        top: -54px;
+        left: -22px;
     }
 }
