@@ -16,17 +16,18 @@
             font-weight: fw(bold);
             color: $setting-color-gray-6;
             margin-bottom: rem(25);
+        }
 
-            &-second {
-                font-size: rem(24);
-                font-weight: fw(medium);
-                margin-bottom: rem(14);
-            }
+        &--checkout-second {
+            font-size: rem(24);
+            font-weight: fw(medium);
+            color: $setting-color-gray-6;
+            margin-bottom: rem(14);
         }
 
         &__index {
             color: $setting-color-main;
-            margin-right: 0.5rem;
+            margin-right: map-get($setting-spacing, 'default');
         }
 
         @content;
