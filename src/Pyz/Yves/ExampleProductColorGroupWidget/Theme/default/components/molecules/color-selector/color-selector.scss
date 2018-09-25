@@ -9,6 +9,10 @@ $name: '.color-selector';
     z-index: $setting-zi-element + 1;
     opacity: 0;
 
+    &__colors-title {
+        display: none;
+    }
+
     .product-list-item__content & {
         opacity: 1;
         position: relative;
@@ -34,10 +38,6 @@ $name: '.color-selector';
     &__colors {
         display: flex;
         flex-wrap: wrap;
-    }
-
-    &__colors-title {
-        display: none;
     }
 
     &__color {

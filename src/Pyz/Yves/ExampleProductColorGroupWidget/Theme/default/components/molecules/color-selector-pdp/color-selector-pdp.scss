@@ -23,8 +23,8 @@ $name: '.color-selector-pdp';
             margin-right: 10px;
         }
 
-        &:before {
-            content: "";
+        &::before {
+            content: '';
             display: block;
             width: 10px;
             height: 10px;
@@ -35,7 +35,7 @@ $name: '.color-selector-pdp';
             transform: translate(-50%, -50%);
         }
 
-        &--active:before {
+        &--active::before {
             background: $setting-color-white;
         }
     }
