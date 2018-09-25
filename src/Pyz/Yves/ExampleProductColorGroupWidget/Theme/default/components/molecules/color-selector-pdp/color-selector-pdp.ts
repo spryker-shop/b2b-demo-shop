@@ -6,15 +6,11 @@ export default class ColorSelectorPdp extends Component {
     image: HTMLImageElement
     imageActiveClass: string
 
-    constructor() {
-        super();
-        this.imageActiveClass = 'image-gallery__item--color-active';
-    }
-
     protected readyCallback(): void {
         this.colors = <HTMLAnchorElement[]>Array.from(this.getElementsByClassName(`${this.jsName}__color`));
         this.container = <HTMLElement>document.querySelector(this.imageContainerSelector);
         this.image = <HTMLImageElement>document.querySelector(this.imageSelector);
+        this.imageActiveClass = 'image-gallery__item--color-active';
         this.mapEvents();
     }
 
