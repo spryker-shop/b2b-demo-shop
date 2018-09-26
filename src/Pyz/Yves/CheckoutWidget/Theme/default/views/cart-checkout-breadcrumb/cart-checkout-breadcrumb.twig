@@ -44,10 +44,13 @@
                         label: step.label,
                         url: (step.isActive or not step.isEnabled) ? '' : step.url,
                         withChevron: false
+                    },
+                    embed: {
+                        lastItem: loop.last
                     }
                 } only %}
                     {% block body %}
-                        {% if isLink %}
+                        {% if isLink and not embed.lastItem %}
                             <div class="grid grid--middle">
                                 {{ parent() }}
                                 <span class="{{ config.name }}__checked">

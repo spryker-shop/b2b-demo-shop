@@ -4,8 +4,6 @@
     breadcrumbs: _view.stepBreadcrumbs.breadcrumbs | default([])
 } %}
 
-{% block sidebar %}{% endblock %}
-
 {% block header %}
     {% embed organism('header') with {
         modifiers: ['checkout'],
@@ -15,7 +13,6 @@
         }
     } only %}
         {% block headerMainContent %}
-
             <div class="grid grid--justify grid--middle container">
                 <div class="col">
                     <a href="{{ url('cart') }}" class="button button--hollow button--gray">{{ 'checkout.back_button' | trans }}</a>
@@ -56,9 +53,9 @@
 {% block contentWrap %}
     <div class="container {% block containerClass %}container--checkout{% endblock %}">
         {% if data.title is not empty %}
-            <h1 class="checkout-title">
+            <h1 class="title title--checkout">
                 {% if data.stepNumder is defined %}
-                    <span class="checkout-title__index">{{data.stepNumder}}</span>
+                    <span class="title__index">{{data.stepNumder}}</span>
                 {% endif %}
                 {{data.title}}
             </h1>
@@ -73,8 +70,8 @@
 
         {% block subscribe %}{% endblock %}
         {% block logos %}{% endblock %}
-        {% block navigation %}
 
+        {% block navigation %}
             <div class="container">
                 <div class="grid grid--gap">
                     {% include molecule('navigation-footer-item') with {
@@ -87,8 +84,6 @@
                 </div>
                 {% block social %}{% endblock %}
             </div>
-
         {% endblock %}
-
     {% endembed %}
 {% endblock %}

@@ -12,7 +12,7 @@
 } %}
 
 {% block content %}
-    <h5 class="checkout-title checkout-title--second">{{ 'page.checkout.address.shipping-address' | trans }}</h5>
+    <h5 class="title title--checkout-second">{{ 'page.checkout.address.shipping-address' | trans }}</h5>
     {% embed molecule('form') with {
         class: 'checkout-wrap checkout-form',
         data: {
@@ -125,7 +125,7 @@
                 }
             } only %}
                 {% block title %}
-                    <h5 class="checkout-title checkout-title--second">{{ 'page.checkout.address.billing-address' | trans }}</h5>
+                    <h5 class="title title--checkout-second">{{ 'page.checkout.address.billing-address' | trans }}</h5>
                 {% endblock %}
                 {% block fields %}
                     {% set existingBillingAddresses = data.form.id_customer_address | default %}
