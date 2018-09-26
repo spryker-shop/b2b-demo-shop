@@ -1,152 +1,57 @@
 $color-selector-size: 18px;
 $color-selector-size-big: 24px;
+$name: '.color-selector';
 
-@mixin product-color-group-color-selector($name: '.color-selector') {
-    #{$name},
-    #{$name}-pdp {
-        cursor: default;
+@include helper-color-selector($name) {
+    @include helper-effect-transition(opacity);
+    position: absolute;
+    bottom: -9px;
+    z-index: $setting-zi-element + 1;
+    opacity: 0;
+
+    &__colors-title {
+        display: none;
+    }
+
+    .product-list-item__content & {
+        opacity: 1;
+        position: relative;
+        bottom: 0;
+        margin: rem(10) 0;
+
+        @include helper-breakpoint-media-min($lg-min) {
+            position: absolute;
+            left: 20px;
+            bottom: 45px;
+            margin: 0;
+        }
+
+        &__colors-title {
+            font-size: rem(13);
+            color: $setting-color-gray-3;
+            margin-right: rem(9);
+            display: inline;
+            flex-shrink: 0;
+        }
+    }
+
+    &__colors {
         display: flex;
-
-        &__color {
-            border-radius: 100%;
-            vertical-align: middle;
-            position: relative;
-
-            &:not(:last-child) {
-                margin-right: 4px;
-            }
-
-            &-inner {
-                display: block;
-                width: 10px;
-                height: 10px;
-                border-radius: 100%;
-                pointer-events: none;
-            }
-
-            .color-tooltip {
-                @include helper-effect-transition(all);
-                transform: scale(0);
-                transform-origin: bottom;
-                position: absolute;
-                top: -43px;
-                left: -15px;
-                background: $setting-color-gray-6;
-                color: $setting-color-white;
-                font-size: rem(16);
-                padding: rem(5) rem(11) rem(7) rem(10);
-                white-space: nowrap;
-                border-radius: $setting-border-radius;
-
-                &::before {
-                    content: '';
-                    position: absolute;
-                    left: 17px;
-                    bottom: -4px;
-                    border-radius: 2px;
-                    background: $setting-color-gray-6;
-                    width: 10px;
-                    height: 10px;
-                    transform: rotate(45deg);
-                }
-            }
-
-            &:hover .color-tooltip {
-                transform: scale(1);
-            }
-        }
+        flex-wrap: wrap;
     }
 
-    #{$name} {
-        @include helper-effect-transition(opacity);
-        position: absolute;
-        bottom: -9px;
-        z-index: $setting-zi-element + 1;
-        opacity: 0;
+    &__color {
+        width: $color-selector-size;
+        height: $color-selector-size;
+        margin-right: 2px;
+        padding: 4px;
+        display: block;
 
-        .product-list-item__content & {
-            opacity: 1;
-            position: relative;
-            bottom: 0;
-            margin: 10px 0;
-
-            @media (min-width: 768px) {
-                position: absolute;
-                left: 20px;
-                bottom: 45px;
-                margin: 0;
-            }
-
-            &__colors-title {
-                font-size: 13px;
-                color: $setting-color-gray-3;
-                margin-right: 9px;
-                display: inline;
-                flex-shrink: 0;
-            }
-        }
-
-        &__colors {
-            display: flex;
-            flex-wrap: wrap;
-        }
-
-        &__colors-title {
-            display: none;
-        }
-
-        &__color {
-            width: $color-selector-size;
-            height: $color-selector-size;
-            border: solid 1px transparent;
-            margin-right: 2px;
+        &--active {
             padding: 3px;
-            display: block;
-
-            &:not(#{$name}__color--active) {
-                border-color: transparent !important;
-            }
-        }
-    }
-
-    #{$name}-pdp {
-        margin-bottom: rem(28);
-
-        &__colors {
-            display: flex;
-        }
-
-        &__colors-title {
-            display: none;
-        }
-
-        &__color {
-            width: $color-selector-size-big;
-            height: $color-selector-size-big;
-            border: solid 10px transparent;
-            display: block;
-
-            &:not(:last-child) {
-                margin-right: 10px;
-            }
-
-            &-inner {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-            }
-
-            .color-tooltip {
-                top: -52px;
-                left: -20px;
-            }
-
-            &--active #{$name}-pdp__color-inner {
-                background: $setting-color-white !important;
-            }
+            border-width: 1px;
+            border-style: solid;
         }
     }
 }
 
-@include product-color-group-color-selector;

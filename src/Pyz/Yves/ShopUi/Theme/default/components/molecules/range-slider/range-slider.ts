@@ -2,47 +2,40 @@ import Component from 'ShopUi/models/component';
 import noUiSlider from 'nouislider';
 
 export default class RangeSlider extends Component {
-
-    wrap: any;
+    sliderContainer: HTMLElement;
+    rangeInputs: HTMLInputElement[];
 
     protected readyCallback(): void {
+        this.sliderContainer = document.querySelector(this.wrapSelector);
+        this.rangeInputs = Array.from(document.querySelectorAll(this.targetSelector));
 
-        this.wrap = document.querySelector(this.wrapSelector);
-        const sliderConfig = {
-            start: [ this.valueCurrentMin, this.valueCurrentMax ],
-            step: 1,
-            connect: true,
-            margin: 1,
-            range: {
-                'min': +this.valueMin,
-                'max': +this.valueMax
-            }
-        };
+        this.initUiSlider();
+        this.mapEvents();
+    }
 
-        noUiSlider.create(this.wrap, sliderConfig);
-
-        const selectorList = <string> JSON.parse(this.targetSelector);
-        const inputs = Array.from(document.querySelectorAll(selectorList));
-        this.valueUpdate(this.wrap, inputs);
-
-        inputs.forEach((input, index) => {
+    protected mapEvents(): void {
+        this.rangeInputs.forEach((input, index) => {
             input.addEventListener('change',  (event: Event) => {
-                const currentInput = <HTMLInputElement> event.currentTarget;
-                this.setInputValueToSlider(index, currentInput.value);
+                this.setInputValueToSlider(index, (<HTMLInputElement>event.currentTarget).value);
             });
         });
 
+        this.valueUpdate();
     }
 
-    protected setInputValueToSlider(i, value) {
-        const r = [null,null];
-        r[i] = value;
-        this.wrap.noUiSlider.set(r);
+    protected initUiSlider(): void {
+        noUiSlider.create(this.sliderContainer, this.sliderConfig);
     }
 
-    protected valueUpdate(wrap, target): void {
-        wrap.noUiSlider.on('update', function changeValue( values, handle ) {
-            target[handle].value = Number(values[handle]);
+    protected setInputValueToSlider(index, value) {
+        const inputsValue = [null, null];
+        inputsValue[index] = value;
+        (<noUiSlider>this.sliderContainer).noUiSlider.set(inputsValue);
+    }
+
+    protected valueUpdate(): void {
+        (<noUiSlider>this.sliderContainer).noUiSlider.on('update', ( values, handle ) => {
+            this.rangeInputs[handle].value = String(values[handle]);
         });
     }
 
@@ -50,24 +43,11 @@ export default class RangeSlider extends Component {
         return this.getAttribute('wrap-selector');
     }
 
-    get valueMin(): string {
-        return this.getAttribute('value-min');
-    }
-
-    get valueMax(): string {
-        return this.getAttribute('value-max');
-    }
-
-    get valueCurrentMin(): string {
-        return this.getAttribute('active-min');
-    }
-
     get targetSelector(): string {
         return this.getAttribute('target-selector');
     }
 
-    get valueCurrentMax(): string {
-        return this.getAttribute('active-max');
+    get sliderConfig(): object {
+        return JSON.parse(this.getAttribute('slider-config'));
     }
-
 }

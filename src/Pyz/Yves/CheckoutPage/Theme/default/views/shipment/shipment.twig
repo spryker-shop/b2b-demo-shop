@@ -37,7 +37,7 @@
         {% block fields %}
             {% for name, choices in data.form.idShipmentMethod.vars.choices %}
                 <div class="form__field col col--sm-12 shipment-item">
-                    <h5 class="grid grid--justify grid--middle checkout-title checkout-title--second">
+                    <h5 class="grid grid--justify grid--middle title title--checkout-second">
                         <span class="col">{{name}}</span>
                         {% include atom('icon') with {
                             class: 'col',

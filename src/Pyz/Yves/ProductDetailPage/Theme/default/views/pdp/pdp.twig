@@ -28,11 +28,7 @@
 {% block content %}
     <div class="grid grid--gap grid--justify">
         <div class="col gallery-side">
-            {% include molecule('product-carousel', 'ProductDetailPage') with {
-                data: {
-                    product: data.product
-                }
-            } only %}
+            {{ widget('ProductImageWidgetPlugin', data.product) }}
         </div>
 
         <div class="col col--sm-5">

@@ -17,7 +17,7 @@
             line-height: 1.25rem;
             border: 1px solid $setting-color-input-border;
             background-color: $setting-color-white;
-            margin-right: 0.865rem;
+            margin-right: rem(14);
             text-align: center;
             border-radius: $setting-border-radius;
             flex: none;
@@ -26,6 +26,10 @@
                 width: 1.125rem;
                 height: 1.125rem;
                 line-height: 1.125rem;
+            }
+
+            &--shopping-list {
+                margin-right: 0;
             }
         }
 
@@ -89,6 +93,11 @@
             width: 100%;
             font-size: rem(14);
             line-height: rem(18);
+        }
+
+        &--shopping-list {
+            display: flex;
+            height: 100%;
         }
 
         &--error &__box {

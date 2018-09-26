@@ -141,15 +141,16 @@
                 </div>
                 <div class="measurement-unit__value">
                     {% embed atom('custom-select') with {
-                        modifiers: ['flexible-width'],
+                        modifiers: ['flexible-width', 'small'],
                         attributes: {
-                            name: "amount-id-product-measurement-sales-unit[" ~ data.product.sku ~ "]"
+                            name: "amount-id-product-measurement-sales-unit[" ~ data.product.sku ~ "]",
+                            'selectWidth': 'resolve'
                         },
                         embed: {
                             salesUnits: data.leadProductSalesUnits
                         }
                     } only %}
-                        {% block selectClass %}select-lead-measurement-unit{% endblock %}
+                        {% block selectClass %}{{ parent() }} select-lead-measurement-unit{% endblock %}
                         {% block options %}
                             {% for salesUnit in embed.salesUnits %}
                                 <option value="{{ salesUnit.idProductMeasurementSalesUnit }}" {{ (salesUnit.isDefault) ? 'selected' : '' }}>{{ salesUnit.productMeasurementUnit.name | trans }}</option>

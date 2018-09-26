@@ -1,0 +1,28 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'product-item-quantity'
+} %}
+
+{% define data = {
+    productItem: required,
+    isDisabled: false
+} %}
+
+{% block body %}
+    <form method="POST" action="{{ path('cart/change/quantity', {'sku': data.productItem.sku }) }}">
+        {% include molecule('quantity-counter') with {
+            modifiers: ['cart'],
+            data: {
+                isDisabled: data.isDisabled,
+                autoUpdate: true
+            },
+            attributes: {
+                max: data.productItem.maxQuantity,
+                value: data.productItem.quantity
+            }
+        } only %}
+
+        <input type="hidden" value="{{ data.productItem.groupKey }}" name="groupKey" />
+    </form>
+{% endblock %}

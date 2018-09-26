@@ -61,17 +61,72 @@
 
         <div class="col col--sm-12 col--lg-8">
             {% for item in data.cartItems %}
+                {% set bundles = item.bundleProduct is defined ? item.bundleItems : [] %}
                 {% set item = item.bundleProduct is defined ? item.bundleProduct : item %}
-                {% set firstImage = item.images | first %}
-                {% include molecule('summary-item', 'CheckoutPage') with {
-                    class: 'summary-product-list__item',
+                {% embed molecule('product-item') with {
+                    modifiers: ['summary'],
                     data: {
-                        cartItem: item,
-                        image: firstImage.externalUrlSmall,
+                        listItem: item,
                         quantity: item.quantity,
-                        options: item.productOptions | default({})
+                        options: item.productOptions | default([]),
+                        imageModifiers: ['small', 'summary']
+                    },
+                    embed: {
+                        item: item,
+                        name: item.name,
+                        quantity: item.quantity,
+                        price: item.sumPrice | money,
+                        options: item.productOptions | default({}),
+                        bundleItems: bundles | default([]),
+                        quantitySalesUnit: item.quantitySalesUnit,
+                        amountSalesUnit: item.amountSalesUnit,
+                        amount: item.amount | default(0)
                     }
                 } only %}
+                    {% block subQuantity %}
+                        {% set salesUnitName = embed.quantitySalesUnit.productMeasurementUnit.name | default('') %}
+                        {% if salesUnitName is not empty and embed.amount == 0 %}
+                            {% include atom('quantity-option') with {
+                                class: 'col',
+                                data: {
+                                    value: embed.quantity,
+                                    precision: embed.quantitySalesUnit.conversion,
+                                    optionName: salesUnitName | trans
+                                }
+                            } only %}
+                        {% endif %}
+
+                        {% if embed.amount != 0 %}
+                            {% set amountSalesUnitName = embed.amountSalesUnit.productMeasurementUnit.name | default('') %}
+                            {% include atom('quantity-option') with {
+                                class: 'col',
+                                data: {
+                                    value: embed.amount,
+                                    precision: embed.quantity,
+                                    optionName: amountSalesUnitName | trans
+                                }
+                            } only %}
+                        {% endif %}
+                    {% endblock %}
+                    {% block bundle %}
+                        {% if embed.bundleItems is not empty %}
+                            <div class="product-bundle product-bundle--cart">
+                                <h5 class="product-bundle__title product-bundle__title--cart">{{ 'checkout.summary.item.bundle.description' | trans }}</h5>
+                                <ul class="product-bundle__list product-bundle__list--cart">
+                                    {% for bundle in embed.bundleItems %}
+                                        <li class="product-bundle__item product-bundle__item--cart">
+                                            {{ bundle.name }}
+                                            <span class="product-bundle__quantity product-bundle__quantity--cart">x {{ bundle.quantity }}</span>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        {% endif %}
+                    {% endblock %}
+                    {% block note %}
+                        {{ widget('CartNoteQuoteItemNoteWidgetPlugin', embed.item) }}
+                    {% endblock %}
+                {% endembed %}
             {% endfor %}
 
             {{ widget('CartNoteQuoteNoteWidgetPlugin', data.transfer) }}
