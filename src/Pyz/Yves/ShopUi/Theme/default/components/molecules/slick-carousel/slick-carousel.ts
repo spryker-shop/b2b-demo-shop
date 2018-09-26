@@ -10,24 +10,20 @@ export default class SlickCarousel extends Component {
     }
 
     protected mapEvents(): void {
-        this.sliderContainer.on('init', () => this.showSlider());
+        $(this).on('init', () => this.showSlider());
     }
 
     protected showSlider(): void {
-        this.sliderContainer.removeClass('is-hidden');
+        this.classList.remove('is-hidden');
     }
 
     protected sliderInit (): void {
-        this.sliderContainer.slick(
+        $(this).slick(
             this.sliderConfig
         );
     }
 
     get sliderConfig(): object {
         return JSON.parse(this.getAttribute('slider-config'));
-    }
-
-    get sliderContainer(): $ {
-        return  $(this.querySelector(`.js-${this.name}`));
     }
 }

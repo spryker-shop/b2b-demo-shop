@@ -6,22 +6,22 @@
 } %}
 
 {% define data = {
-    slides: [],
-    containerClass: ''
+    slides: []
 } %}
 
 {% define attributes = {
     'slider-config': '{}'
 } %}
 
-{% block body %}
-    <div class="{{config.name}}__container {{ data.containerClass }} js-{{ config.name }} is-hidden">
-        {% block slides %}
-            {% for slide in data.slides %}
-                {{ slide }}
-            {% endfor %}
-        {% endblock %}
-    </div>
+{% block class %}
+    {{ parent() }} is-hidden
+{% endblock %}
 
+{% block body %}
+    {% block slides %}
+        {% for slide in data.slides %}
+            {{ slide }}
+        {% endfor %}
+    {% endblock %}
 {% endblock %}
 
