@@ -2,32 +2,15 @@
 
 {% define data = {
     idProductAbstract: _widget.product.idProductAbstract | default,
-    images: _widget.product.images | default([]),
-    amountSlides: 4
+    images: _widget.product.images | default([])
 } %}
 
 {% block body %}
 
-    {% set sliderLength = data.images | length %}
-    {% set amountThumb = (sliderLength > data.amountSlides) ? data.amountSlides : sliderLength %}
-
-    {% include molecule('pdp-carousel', 'ProductImageWidget') with {
-        class: 'pdp-slider',
+    {% include molecule('image-gallery', 'ProductImageWidget') with {
         data: {
             idProductAbstract: data.idProductAbstract,
-            slides: data.images,
-            containerClass: sliderLength > 1 ? 'js-product-slider' : '',
-            thumbnailClass: sliderLength > 1 ? 'js-product-slider-thumbnails' : ''
-        },
-        attributes: {
-            'data-thumbnail-config': '{
-                "slidesToShow": ' ~ amountThumb ~ ',
-                "slidesToScroll": 1,
-                "infinite": false,
-                "vertical": true,
-                "prevArrow": "<dev class=\'thumb-prev\'><svg class=\'icon\'><use href=\'#:caret-down\'></use></svg></div>",
-                "nextArrow": "<dev class=\'thumb-next\'><svg class=\'icon\'><use href=\'#:caret-down\'></use></svg></div>"
-            }'
+            images: data.images
         }
     } only %}
 

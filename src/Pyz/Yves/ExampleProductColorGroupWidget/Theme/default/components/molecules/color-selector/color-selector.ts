@@ -2,15 +2,13 @@ import Component from 'ShopUi/models/component';
 
 export default class ColorSelector extends Component {
     colors: HTMLAnchorElement[]
-    images: HTMLImageElement[]
-    links: HTMLElement[]
-    detailsLinks: HTMLAnchorElement[]
+    image: HTMLImageElement
+    detailsLink: HTMLAnchorElement
 
     protected readyCallback(): void {
-        this.colors = <HTMLAnchorElement[]>Array.from(this.getElementsByClassName(`${this.jsName}__color`));
-        this.links = <HTMLElement[]>Array.from(document.querySelectorAll(this.targetLinkSelector));
-        this.detailsLinks = <HTMLAnchorElement[]>Array.from(document.querySelectorAll(this.targetDetailsLink));
-        this.images = <HTMLImageElement[]>Array.from(document.querySelectorAll(`${this.targetLinkSelector}`));
+        this.colors = <HTMLAnchorElement[]>Array.from(this.querySelectorAll(`.${this.jsName}__color`));
+        this.image = <HTMLImageElement>document.querySelector(this.targetImageSelector);
+        this.detailsLink = <HTMLAnchorElement>document.querySelector(this.targetDetailsLink);
         this.mapEvents();
     }
 
@@ -32,38 +30,37 @@ export default class ColorSelector extends Component {
 
     setActiveColor(newColor: HTMLAnchorElement): void {
         this.colors.forEach((color: HTMLAnchorElement) => {
-            color.classList.remove(`${this.name}__color--active`);
+            color.classList.remove(this.colorActiveClass);
         });
 
-        newColor.classList.add(`${this.name}__color--active`);
+        newColor.classList.add(this.colorActiveClass);
     }
 
     setImage(newImageSrc: string): void {
-        this.images.forEach((image: HTMLImageElement) => {
-            if (image.src !== newImageSrc) {
-                image.src = newImageSrc;
-            }
-        });
+        if (this.image.src !== newImageSrc) {
+            this.image.src = newImageSrc;
+        }
     }
 
     setProductUrl(url: string): void {
-        this.setProductHrefAttribute(this.links, url);
-        this.setProductHrefAttribute(this.detailsLinks, url);
+        this.setProductHrefAttribute(this.detailsLink, url);
     }
 
-    setProductHrefAttribute(links, url): void {
-        links.forEach((link: HTMLElement) => {
-            if (link.getAttribute('href') !== url) {
-                link.setAttribute('href', url);
-            }
-        });
+    setProductHrefAttribute(link, url): void {
+        if (link.getAttribute('href') !== url) {
+            link.setAttribute('href', url);
+        }
     }
 
-    get targetLinkSelector(): string {
+    get targetImageSelector(): string {
         return this.getAttribute('target-image-selector');
     }
 
     get targetDetailsLink(): string {
         return this.getAttribute('target-url-selector');
+    }
+
+    get colorActiveClass(): string {
+        return this.getAttribute('active-color-class');
     }
 }

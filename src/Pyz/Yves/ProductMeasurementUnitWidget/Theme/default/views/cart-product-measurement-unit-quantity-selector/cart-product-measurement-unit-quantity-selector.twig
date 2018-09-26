@@ -13,9 +13,9 @@
     {% set hasQuantitySalesUnit = data.cartItem.quantitySalesUnit is not empty %}
     <div class="grid grid--middle grid--gap">
         <div class="col">
-            {% include molecule('cart-quantity-input', 'CartPage') with {
+            {% include molecule('product-item-quantity') with {
                 data: {
-                    cartItem: data.cartItem,
+                    productItem: data.cartItem,
                     isDisabled: hasQuantitySalesUnit
                 }
             } only %}

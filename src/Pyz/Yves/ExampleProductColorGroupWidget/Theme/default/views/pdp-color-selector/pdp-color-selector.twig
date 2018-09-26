@@ -9,9 +9,6 @@
     {% include molecule('color-selector-pdp', 'ExampleProductColorGroupWidget') with {
         data: {
             items: data.items
-        },
-        attributes: {
-            'target-image-selector': '.js-pdp-color-group__image-' ~ data.idProductAbstract ~ ' > img'
         }
     } only %}
 
