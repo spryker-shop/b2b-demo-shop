@@ -1,5 +1,4 @@
 .filter-category {
-
     &__menu-link {
         @include helper-effect-transition(color);
         display: flex;
@@ -28,14 +27,6 @@
             text-decoration: none;
         }
 
-        &-text {
-            text-align: left;
-
-            &--active {
-                text-decoration: underline;
-            }
-        }
-
         &[disabled] {
             &,
             &:hover,
@@ -47,6 +38,14 @@
         &--active {
             font-weight: fw(bold);
             color: $setting-color-gray-6;
+        }
+    }
+
+    &__link-text {
+        text-align: left;
+
+        &--active {
+            text-decoration: underline;
         }
     }
 
