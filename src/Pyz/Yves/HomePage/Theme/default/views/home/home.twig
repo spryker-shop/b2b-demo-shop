@@ -58,7 +58,7 @@
     } only %}
         {% block slides %}
             {% for slide in data.slides %}
-                {% include molecule('jumbotron-slider-item') with {
+                {% include molecule('jumbotron') with {
                     data: {
                         imageUrl: slide.imageUrl,
                         link: slide.link,
