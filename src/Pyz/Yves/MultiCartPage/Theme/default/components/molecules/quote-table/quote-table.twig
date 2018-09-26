@@ -17,13 +17,14 @@
 } %}
 
 {% set showActions = data.actions.update or data.actions.delete or data.actions.duplicate %}
+{% set isQuoteDeletable = data.isQuoteDeletable %}
 
 {% block body %}
     <table class="table table--grid table--expand">
         <thead>
             <tr class="active">
                 <th>{{ 'page.multi_cart.shopping_cart.list.label.name' | trans }}</th>
-                {% if widgetExists('CartListPermissionGroupWidgetPlugin') %}
+                {% if widgetBlock('CartListPermissionGroupWidgetPlugin', 'isSharingAllowed', data.quotes|first, isQuoteDeletable) %}
                     <th>{{ 'page.multi_cart.shopping_cart.list.label.access' | trans }}</th>
                 {% endif %}
                 <th>{{ 'page.multi_cart.shopping_cart.list.label.num_of_products' | trans }}</th>
@@ -45,7 +46,7 @@
                     </td>
                     {% if widgetExists('CartListPermissionGroupWidgetPlugin') %}
                         <td>
-                            {{ widget('CartListPermissionGroupWidgetPlugin', quote) }}
+                            {{ widget('CartListPermissionGroupWidgetPlugin', quote, isQuoteDeletable) }}
                         </td>
                     {% endif %}
                     <td>
@@ -81,7 +82,7 @@
                                 {% if data.actions.share %}
                                     {% if widgetExists('CartListPermissionGroupWidgetPlugin') %}
                                         <li class="menu__item">
-                                            {{ widgetBlock('CartListPermissionGroupWidgetPlugin', 'actions', quote) }}
+                                            {{ widgetBlock('CartListPermissionGroupWidgetPlugin', 'actions', quote, isQuoteDeletable) }}
                                         </li>
                                     {% endif %}
                                 {% endif %}
@@ -100,12 +101,10 @@
                                         </a>
                                     </li>
                                 {% endif %}
-                                {% if data.actions.toShoppingList %}
-                                    {% if widgetExists('CartToShoppingListWidgetPlugin') %}
-                                        <li class="menu__item">
-                                            {{ widget('CartToShoppingListWidgetPlugin', quote) }}
-                                        </li>
-                                    {% endif %}
+                                {% if widgetExists('CartToShoppingListWidgetPlugin') %}
+                                    <li class="menu__item">
+                                        {{ widget('CartToShoppingListWidgetPlugin', quote) }}
+                                    </li>
                                 {% endif %}
                                 {% if data.actions.delete and can('WriteSharedCartPermissionPlugin', quote.idQuote) %}
                                     <li class="menu__item">
