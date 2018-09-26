@@ -3,61 +3,72 @@
 {% block pageInfo %}{% endblock %}
 
 {% block contentTop %}
-    {% include organism('jumbotron-slider') with {
+    {% embed molecule('slick-carousel') with {
         class: 'spacing-bottom spacing-bottom--big',
+        modifiers: ['jumbotron'],
         data: {
             slides: [{
                 imageUrl: '/assets/images/section-slider-item-image-10@2x.jpg',
                 link: 'main_slider_1.url',
                 cmsBlockName: 'Main slide-1',
                 btnTitle: 'main_slider.btn.title'
-            },
-                {
-                    imageUrl: '/assets/images/section-slider-item-image-6@2x.jpg',
-                    link: 'main_slider_2.url',
-                    cmsBlockName: 'Main slide-2',
-                    btnTitle: 'main_slider.btn.title'
-                },
-                {
-                    imageUrl: '/assets/images/section-slider-item-image-7@2x.jpg',
-                    link: 'main_slider_3.url',
-                    cmsBlockName: 'Main slide-3',
-                    btnTitle: 'main_slider.btn.title'
-                }
-            ]
+            },{
+                imageUrl: '/assets/images/section-slider-item-image-6@2x.jpg',
+                link: 'main_slider_2.url',
+                cmsBlockName: 'Main slide-2',
+                btnTitle: 'main_slider.btn.title'
+            },{
+                imageUrl: '/assets/images/section-slider-item-image-7@2x.jpg',
+                link: 'main_slider_3.url',
+                cmsBlockName: 'Main slide-3',
+                btnTitle: 'main_slider.btn.title'
+            }]
         },
         attributes: {
-            'data-json': '{
-                            "slidesToShow": 1,
-                            "dots": true,
-                            "autoplay": true,
-                            "nextArrow": false,
-                            "prevArrow": false,
-                            "autoplaySpeed": 4000,
-                            "centerMode": true,
-                            "centerPadding": "240px",
-                            "responsive": [{
-                                "breakpoint": 1600,
-                                "settings": {
-                                    "centerPadding": "130px"
-                                }
-                            },
-                            {
-                                "breakpoint": 1200,
-                                "settings": {
-                                    "centerPadding": "40px"
-                                }
-                            },
-                            {
-                                "breakpoint": 770,
-                                "settings": {
-                                    "centerPadding": "12px",
-                                    "autoplay": false
-                                }
-                            }
-            ]}'
+            'slider-config': '{
+                "slidesToShow": 1,
+                "dots": true,
+                "autoplay": true,
+                "nextArrow": false,
+                "prevArrow": false,
+                "autoplaySpeed": 4000,
+                "centerMode": true,
+                "centerPadding": "240px",
+                "responsive": [{
+                     "breakpoint": 1600,
+                     "settings": {
+                         "centerPadding": "130px"
+                     }
+                },
+                {
+                    "breakpoint": 1200,
+                    "settings": {
+                        "centerPadding": "40px"
+                    }
+                },
+                {
+                    "breakpoint": 770,
+                    "settings": {
+                        "centerPadding": "12px",
+                        "autoplay": false
+                    }
+                }]
+            }'
         }
     } only %}
+        {% block slides %}
+            {% for slide in data.slides %}
+                {% include molecule('jumbotron') with {
+                    data: {
+                        imageUrl: slide.imageUrl,
+                        link: slide.link,
+                        cmsBlockName: slide.cmsBlockName,
+                        btnTitle: slide.btnTitle
+                    }
+                } only %}
+            {% endfor %}
+        {% endblock %}
+    {% endembed %}
 {% endblock %}
 
 {% block content %}
