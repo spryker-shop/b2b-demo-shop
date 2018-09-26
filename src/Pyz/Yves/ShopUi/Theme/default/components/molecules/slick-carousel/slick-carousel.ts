@@ -4,11 +4,7 @@ import 'slick-carousel';
 
 export default class SlickCarousel extends Component {
 
-    sliderContainer: $;
-
     readyCallback(): void {
-        this.sliderContainer = $(this.querySelector(`.${this.name}__container`));
-
         this.mapEvents();
         this.sliderInit();
     }
@@ -31,4 +27,7 @@ export default class SlickCarousel extends Component {
         return JSON.parse(this.getAttribute('slider-config'));
     }
 
+    get sliderContainer(): $ {
+        return  $(this.querySelector(`.js-${this.name}`));
+    }
 }
