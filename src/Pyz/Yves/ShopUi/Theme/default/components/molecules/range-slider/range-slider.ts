@@ -3,22 +3,11 @@ import noUiSlider from 'nouislider';
 
 export default class RangeSlider extends Component {
     sliderContainer: HTMLElement;
-    sliderConfig: object;
     rangeInputs: HTMLInputElement[];
 
     protected readyCallback(): void {
         this.sliderContainer = document.querySelector(this.wrapSelector);
         this.rangeInputs = Array.from(document.querySelectorAll(this.targetSelector));
-        this.sliderConfig = {
-            start: [ this.valueCurrentMin, this.valueCurrentMax ],
-            step: 1,
-            connect: true,
-            margin: 1,
-            range: {
-                'min': this.valueMin,
-                'max': this.valueMax
-            }
-        };
 
         this.initUiSlider();
         this.mapEvents();
@@ -58,19 +47,7 @@ export default class RangeSlider extends Component {
         return this.getAttribute('target-selector');
     }
 
-    get valueMin(): number {
-        return Number(this.getAttribute('value-min'));
-    }
-
-    get valueMax(): number {
-        return Number(this.getAttribute('value-max'));
-    }
-
-    get valueCurrentMin(): string {
-        return this.getAttribute('active-min');
-    }
-
-    get valueCurrentMax(): string {
-        return this.getAttribute('active-max');
+    get sliderConfig(): object {
+        return JSON.parse(this.getAttribute('slider-config'));
     }
 }

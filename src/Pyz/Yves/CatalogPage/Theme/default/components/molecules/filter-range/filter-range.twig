@@ -53,11 +53,8 @@
     {% include molecule('range-slider') with {
         attributes: {
             'wrap-selector': '.js-' ~ config.name ~ '__range-slider',
-            'value-min': data.min,
-            'value-max': data.max,
-            'active-min': data.activeMin,
-            'active-max': data.activeMax,
             'target-selector': ".js-range-slider-target-min, .js-range-slider-target-max",
+            'slider-config': '{"start":[' ~ data.activeMin ~ ',' ~ data.activeMax ~ '],"step":1,"connect":true,"margin":1,"range":{"min":' ~ data.min ~ ',' ~ '"max":' ~ data.max ~ '}}'
         }
 
     } only %}
