@@ -45,7 +45,11 @@ class SaleController extends AbstractController
             ->getCatalogClient()
             ->getCatalogViewMode($request);
 
-        return $this->view($searchResults, $this->getFactory()->getExampleProductSalePageWidgetPlugins());
+        return $this->view(
+            $searchResults,
+            $this->getFactory()->getExampleProductSalePageWidgetPlugins(),
+            '@ExampleProductSalePage/views/sale-example/sale-example.twig'
+        );
     }
 
     /**

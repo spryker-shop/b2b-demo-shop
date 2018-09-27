@@ -13,7 +13,6 @@ use Spryker\Zed\Kernel\Business\AbstractBusinessFactory;
 
 /**
  * @method \Pyz\Zed\ExampleStateMachine\Persistence\ExampleStateMachineQueryContainerInterface getQueryContainer()
- * @method
  */
 class ExampleStateMachineBusinessFactory extends AbstractBusinessFactory
 {

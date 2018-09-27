@@ -7,8 +7,8 @@
 
 namespace Pyz\Zed\DataImport\Business\Model\ProductSearchAttribute\Hook;
 
-use Pyz\Zed\DataImport\Business\Model\DataImporterPublisher;
 use Spryker\Zed\DataImport\Business\Model\DataImporterAfterImportInterface;
+use Spryker\Zed\DataImport\Business\Model\Publisher\DataImporterPublisher;
 use Spryker\Zed\ProductSearch\Dependency\ProductSearchEvents;
 
 class ProductSearchAfterImportHook implements DataImporterAfterImportInterface

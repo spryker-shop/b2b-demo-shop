@@ -22,6 +22,7 @@ use Spryker\Zed\ProductDiscountConnector\Communication\Plugin\Collector\ProductA
 use Spryker\Zed\ProductDiscountConnector\Communication\Plugin\DecisionRule\ProductAttributeDecisionRulePlugin;
 use Spryker\Zed\ProductLabelDiscountConnector\Communication\Plugin\Collector\ProductLabelCollectorPlugin;
 use Spryker\Zed\ProductLabelDiscountConnector\Communication\Plugin\DecisionRule\ProductLabelDecisionRulePlugin;
+use Spryker\Zed\SalesQuantity\Communication\Plugin\DiscountExtension\NonSplittableDiscountableItemTransformerStrategyPlugin;
 use Spryker\Zed\ShipmentDiscountConnector\Communication\Plugin\DecisionRule\ShipmentCarrierDecisionRulePlugin;
 use Spryker\Zed\ShipmentDiscountConnector\Communication\Plugin\DecisionRule\ShipmentMethodDecisionRulePlugin;
 use Spryker\Zed\ShipmentDiscountConnector\Communication\Plugin\DecisionRule\ShipmentPriceDecisionRulePlugin;
@@ -68,6 +69,16 @@ class DiscountDependencyProvider extends SprykerDiscountDependencyProvider
     {
         return [
             new DiscountPromotionFilterCollectedItemsPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\DiscountExtension\Dependency\Plugin\DiscountableItemTransformerStrategyPluginInterface[]
+     */
+    protected function getDiscountableItemTransformerStrategyPlugins(): array
+    {
+        return [
+            new NonSplittableDiscountableItemTransformerStrategyPlugin(),
         ];
     }
 

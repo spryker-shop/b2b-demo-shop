@@ -19,8 +19,8 @@ use Spryker\Zed\Acl\Communication\Plugin\Bootstrap\AclBootstrapProvider;
 use Spryker\Zed\Api\Communication\Plugin\ApiServiceProviderPlugin;
 use Spryker\Zed\Api\Communication\Plugin\ServiceProvider\ApiRoutingServiceProvider;
 use Spryker\Zed\Application\ApplicationDependencyProvider as SprykerApplicationDependencyProvider;
+use Spryker\Zed\Application\Communication\Plugin\ServiceProvider\AssertUrlConfigurationServiceProvider;
 use Spryker\Zed\Application\Communication\Plugin\ServiceProvider\EnvironmentInformationServiceProvider;
-use Spryker\Zed\Application\Communication\Plugin\ServiceProvider\KernelLogServiceProvider;
 use Spryker\Zed\Application\Communication\Plugin\ServiceProvider\MvcRoutingServiceProvider;
 use Spryker\Zed\Application\Communication\Plugin\ServiceProvider\RequestServiceProvider;
 use Spryker\Zed\Application\Communication\Plugin\ServiceProvider\RoutingServiceProvider;
@@ -32,6 +32,7 @@ use Spryker\Zed\Application\Communication\Plugin\ServiceProvider\ZedHstsServiceP
 use Spryker\Zed\Assertion\Communication\Plugin\ServiceProvider\AssertionServiceProvider;
 use Spryker\Zed\Auth\Communication\Plugin\Bootstrap\AuthBootstrapProvider;
 use Spryker\Zed\Auth\Communication\Plugin\ServiceProvider\RedirectAfterLoginProvider;
+use Spryker\Zed\Chart\Communication\Plugin\ServiceProvider\TwigChartFunctionServiceProvider;
 use Spryker\Zed\Currency\Communication\Plugin\ServiceProvider\TwigCurrencyServiceProvider;
 use Spryker\Zed\EventBehavior\Communication\Plugin\ServiceProvider\EventBehaviorServiceProvider;
 use Spryker\Zed\Gui\Communication\Plugin\ServiceProvider\GuiTwigExtensionServiceProvider;
@@ -59,7 +60,6 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
         $coreProviders = parent::getServiceProviders($container);
 
         $providers = [
-            new KernelLogServiceProvider(),
             new SessionServiceProvider(),
             new SprykerSessionServiceProvider(),
             new SslServiceProvider(),
@@ -87,7 +87,12 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
             new PropelServiceProvider(),
             new GuiTwigExtensionServiceProvider(),
             new EventBehaviorServiceProvider(),
+            new TwigChartFunctionServiceProvider(),
         ];
+
+        if (Environment::isDevelopment()) {
+            array_unshift($providers, new AssertUrlConfigurationServiceProvider());
+        }
 
         $providers = array_merge($providers, $coreProviders);
 
@@ -128,7 +133,6 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
     protected function getInternalCallServiceProviders(Container $container)
     {
         return [
-            new KernelLogServiceProvider(),
             new PropelServiceProvider(),
             new RequestServiceProvider(),
             new SslServiceProvider(),
@@ -154,7 +158,6 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
     protected function getInternalCallServiceProvidersWithAuthentication(Container $container)
     {
         return [
-            new KernelLogServiceProvider(),
             new PropelServiceProvider(),
             new RequestServiceProvider(),
             new SessionServiceProvider(),

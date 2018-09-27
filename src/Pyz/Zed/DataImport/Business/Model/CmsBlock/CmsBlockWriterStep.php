@@ -16,15 +16,15 @@ use Orm\Zed\CmsBlockCategoryConnector\Persistence\SpyCmsBlockCategoryConnectorQu
 use Orm\Zed\CmsBlockProductConnector\Persistence\SpyCmsBlockProductConnectorQuery;
 use Orm\Zed\Glossary\Persistence\SpyGlossaryKeyQuery;
 use Orm\Zed\Glossary\Persistence\SpyGlossaryTranslationQuery;
-use Pyz\Zed\DataImport\Business\Model\Category\Repository\CategoryRepositoryInterface;
-use Pyz\Zed\DataImport\Business\Model\DataImportStep\LocalizedAttributesExtractorStep;
-use Pyz\Zed\DataImport\Business\Model\DataImportStep\PublishAwareStep;
+use Pyz\Zed\DataImport\Business\Model\CmsBlock\Category\Repository\CategoryRepositoryInterface;
 use Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepositoryInterface;
 use Spryker\Zed\CmsBlock\Business\Model\CmsBlockGlossaryKeyGenerator;
 use Spryker\Zed\CmsBlock\Dependency\CmsBlockEvents;
 use Spryker\Zed\CmsBlockCategoryConnector\Dependency\CmsBlockCategoryConnectorEvents;
 use Spryker\Zed\CmsBlockProductConnector\Dependency\CmsBlockProductConnectorEvents;
 use Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface;
+use Spryker\Zed\DataImport\Business\Model\DataImportStep\LocalizedAttributesExtractorStep;
+use Spryker\Zed\DataImport\Business\Model\DataImportStep\PublishAwareStep;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 use Spryker\Zed\Glossary\Dependency\GlossaryEvents;
 
@@ -47,7 +47,7 @@ class CmsBlockWriterStep extends PublishAwareStep implements DataImportStepInter
     const KEY_PLACEHOLDER_DESCRIPTION = 'placeholder.description';
 
     /**
-     * @var \Pyz\Zed\DataImport\Business\Model\Category\Repository\CategoryRepositoryInterface
+     * @var \Pyz\Zed\DataImport\Business\Model\CmsBlock\Category\Repository\CategoryRepositoryInterface
      */
     protected $categoryRepository;
 
@@ -57,7 +57,7 @@ class CmsBlockWriterStep extends PublishAwareStep implements DataImportStepInter
     protected $productRepository;
 
     /**
-     * @param \Pyz\Zed\DataImport\Business\Model\Category\Repository\CategoryRepositoryInterface $categoryRepository
+     * @param \Pyz\Zed\DataImport\Business\Model\CmsBlock\Category\Repository\CategoryRepositoryInterface $categoryRepository
      * @param \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepositoryInterface $productRepository
      */
     public function __construct(CategoryRepositoryInterface $categoryRepository, ProductRepositoryInterface $productRepository)

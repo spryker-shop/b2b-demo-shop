@@ -1,0 +1,20 @@
+{% extends template('page-layout-main') %}
+
+{% define data = {
+    title: _view.pageTitle | default('global.spryker.shop' | trans),
+    metaTitle: _view.pageTitle | default('global.spryker.shop' | trans),
+    metaDescription: _view.pageDescription | default(''),
+    metaKeywords: _view.pageKeywords | default('')
+} %}
+
+{% block title %}
+    <!-- CMS_PLACEHOLDER : "title" -->
+    <h3>{{ spyCms('title') | raw }}</h3>
+{% endblock %}
+
+{% block content %}
+    <!-- CMS_PLACEHOLDER : "content" -->
+    <div class="box">
+        {{ spyCms('content') | raw }}
+    </div>
+{% endblock %}

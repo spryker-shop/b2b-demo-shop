@@ -12,10 +12,10 @@ use Orm\Zed\Glossary\Persistence\SpyGlossaryTranslationQuery;
 use Orm\Zed\ProductAttribute\Persistence\SpyProductManagementAttributeQuery;
 use Orm\Zed\ProductAttribute\Persistence\SpyProductManagementAttributeValueQuery;
 use Orm\Zed\ProductAttribute\Persistence\SpyProductManagementAttributeValueTranslation;
-use Pyz\Zed\DataImport\Business\Model\DataImportStep\PublishAwareStep;
 use Pyz\Zed\DataImport\Business\Model\ProductAttributeKey\AddProductAttributeKeysStep;
 use Spryker\Shared\ProductAttribute\ProductAttributeConfig;
 use Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface;
+use Spryker\Zed\DataImport\Business\Model\DataImportStep\PublishAwareStep;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 use Spryker\Zed\Glossary\Dependency\GlossaryEvents;
 

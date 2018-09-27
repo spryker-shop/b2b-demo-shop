@@ -7,14 +7,14 @@
 
 namespace Pyz\Zed\DataImport;
 
-use Generated\Shared\Transfer\DataImporterConfigurationTransfer;
-use Generated\Shared\Transfer\DataImporterReaderConfigurationTransfer;
 use Spryker\Zed\DataImport\DataImportConfig as SprykerDataImportConfig;
 
+/**
+ * @SuppressWarnings(PHPMD.ExcessiveClassComplexity)
+ */
 class DataImportConfig extends SprykerDataImportConfig
 {
     const IMPORT_TYPE_CATEGORY_TEMPLATE = 'category-template';
-    const IMPORT_TYPE_CATEGORY = 'category';
     const IMPORT_TYPE_CUSTOMER = 'customer';
     const IMPORT_TYPE_GLOSSARY = 'glossary';
     const IMPORT_TYPE_NAVIGATION = 'navigation';
@@ -39,9 +39,11 @@ class DataImportConfig extends SprykerDataImportConfig
     const IMPORT_TYPE_CMS_TEMPLATE = 'cms-template';
     const IMPORT_TYPE_CMS_PAGE = 'cms-page';
     const IMPORT_TYPE_CMS_BLOCK = 'cms-block';
+    const IMPORT_TYPE_CMS_BLOCK_STORE = 'cms-block-store';
     const IMPORT_TYPE_CMS_BLOCK_CATEGORY_POSITION = 'cms-block-category-position';
     const IMPORT_TYPE_CMS_BLOCK_CATEGORY = 'cms-block-category';
     const IMPORT_TYPE_DISCOUNT = 'discount';
+    const IMPORT_TYPE_DISCOUNT_STORE = 'discount-store';
     const IMPORT_TYPE_DISCOUNT_AMOUNT = 'discount-amount';
     const IMPORT_TYPE_DISCOUNT_VOUCHER = 'discount-voucher';
     const IMPORT_TYPE_SHIPMENT = 'shipment';
@@ -50,6 +52,7 @@ class DataImportConfig extends SprykerDataImportConfig
     const IMPORT_TYPE_TAX = 'tax';
     const IMPORT_TYPE_CURRENCY = 'currency';
     const IMPORT_TYPE_STORE = 'store';
+    const IMPORT_TYPE_ORDER_SOURCE = 'order-source';
 
     /**
      * @return \Generated\Shared\Transfer\DataImporterConfigurationTransfer
@@ -57,6 +60,14 @@ class DataImportConfig extends SprykerDataImportConfig
     public function getCurrencyDataImporterConfiguration()
     {
         return $this->buildImporterConfiguration('currency.csv', static::IMPORT_TYPE_CURRENCY);
+    }
+
+    /**
+     * @return \Generated\Shared\Transfer\DataImporterConfigurationTransfer
+     */
+    public function getOrderSourceDataImporterConfiguration()
+    {
+        return $this->buildImporterConfiguration('order_source.csv', static::IMPORT_TYPE_ORDER_SOURCE);
     }
 
     /**
@@ -73,14 +84,6 @@ class DataImportConfig extends SprykerDataImportConfig
     public function getGlossaryDataImporterConfiguration()
     {
         return $this->buildImporterConfiguration('glossary.csv', static::IMPORT_TYPE_GLOSSARY);
-    }
-
-    /**
-     * @return \Generated\Shared\Transfer\DataImporterConfigurationTransfer
-     */
-    public function getCategoryDataImporterConfiguration()
-    {
-        return $this->buildImporterConfiguration('icecat_biz_data' . DIRECTORY_SEPARATOR . 'category.csv', static::IMPORT_TYPE_CATEGORY);
     }
 
     /**
@@ -310,6 +313,14 @@ class DataImportConfig extends SprykerDataImportConfig
     /**
      * @return \Generated\Shared\Transfer\DataImporterConfigurationTransfer
      */
+    public function getCmsBlockStoreDataImporterConfiguration()
+    {
+        return $this->buildImporterConfiguration('cms_block_store.csv', static::IMPORT_TYPE_CMS_BLOCK_STORE);
+    }
+
+    /**
+     * @return \Generated\Shared\Transfer\DataImporterConfigurationTransfer
+     */
     public function getCmsBlockCategoryPositionDataImporterConfiguration()
     {
         return $this->buildImporterConfiguration('cms_block_category_position.csv', static::IMPORT_TYPE_CMS_BLOCK_CATEGORY_POSITION);
@@ -334,6 +345,14 @@ class DataImportConfig extends SprykerDataImportConfig
     /**
      * @return \Generated\Shared\Transfer\DataImporterConfigurationTransfer
      */
+    public function getDiscountStoreDataImporterConfiguration()
+    {
+        return $this->buildImporterConfiguration('discount_store.csv', static::IMPORT_TYPE_DISCOUNT_STORE);
+    }
+
+    /**
+     * @return \Generated\Shared\Transfer\DataImporterConfigurationTransfer
+     */
     public function getDiscountAmountDataImporterConfiguration()
     {
         return $this->buildImporterConfiguration('discount_amount.csv', static::IMPORT_TYPE_DISCOUNT_AMOUNT);
@@ -345,24 +364,5 @@ class DataImportConfig extends SprykerDataImportConfig
     public function getDiscountVoucherDataImporterConfiguration()
     {
         return $this->buildImporterConfiguration('discount_voucher.csv', static::IMPORT_TYPE_DISCOUNT_VOUCHER);
-    }
-
-    /**
-     * @param string $file
-     * @param string $importType
-     *
-     * @return \Generated\Shared\Transfer\DataImporterConfigurationTransfer
-     */
-    protected function buildImporterConfiguration($file, $importType)
-    {
-        $dataImportReaderConfigurationTransfer = new DataImporterReaderConfigurationTransfer();
-        $dataImportReaderConfigurationTransfer->setFileName($this->getDataImportRootPath() . $file);
-
-        $dataImporterConfigurationTransfer = new DataImporterConfigurationTransfer();
-        $dataImporterConfigurationTransfer
-            ->setImportType($importType)
-            ->setReaderConfiguration($dataImportReaderConfigurationTransfer);
-
-        return $dataImporterConfigurationTransfer;
     }
 }
