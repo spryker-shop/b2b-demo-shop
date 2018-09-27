@@ -4,6 +4,7 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 namespace Pyz\Yves\ProductDetailPage\Controller;
+
 use Generated\Shared\Transfer\ItemTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use SprykerShop\Yves\ProductDetailPage\Controller\ProductController as SprykerShopProductController;
@@ -41,7 +42,7 @@ class ProductController extends SprykerShopProductController
                     'idProductAbstract' => $bundledProduct['id_product_abstract'],
                     'attributeMap' => [],
                     'sku' => $bundledProduct['sku'],
-                    'idProductConcrete' => $bundledProduct['id_product_concrete']
+                    'idProductConcrete' => $bundledProduct['id_product_concrete'],
                 ],
                 $this->getLocale()
             );

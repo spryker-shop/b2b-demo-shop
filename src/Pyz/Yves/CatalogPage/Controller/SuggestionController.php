@@ -5,11 +5,10 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-
 namespace Pyz\Yves\CatalogPage\Controller;
 
-use Symfony\Component\HttpFoundation\Request;
 use SprykerShop\Yves\CatalogPage\Controller\SuggestionController as SprykerShopSuggestionController;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * @method \SprykerShop\Yves\CatalogPage\CatalogPageFactory getFactory()

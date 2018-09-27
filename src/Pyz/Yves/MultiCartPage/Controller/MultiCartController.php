@@ -8,8 +8,8 @@
 namespace Pyz\Yves\MultiCartPage\Controller;
 
 use SprykerShop\Yves\CartPage\Plugin\Provider\CartControllerProvider;
-use Symfony\Component\HttpFoundation\Request;
 use SprykerShop\Yves\MultiCartPage\Controller\MultiCartController as SprykerShopMultiCartController;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * @method \SprykerShop\Yves\MultiCartPage\MultiCartPageFactory getFactory()
