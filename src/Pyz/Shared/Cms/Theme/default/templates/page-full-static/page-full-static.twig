@@ -9,8 +9,10 @@
 
 {% block breadcrumbs %}{% endblock %}
 {% block title %}
-    <!-- CMS_PLACEHOLDER : "title" -->
-    {{ spyCms('title') | raw }}
+    <div class="cms-page-title">
+        <!-- CMS_PLACEHOLDER : "title" -->
+        {{ spyCms('title') | raw }}
+    </div>
 {% endblock %}
 {% block contentClass %}page-layout-main page-layout-main--cms-page{% endblock %}
 {% block content %}
