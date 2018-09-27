@@ -5,11 +5,11 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Pyz\Zed\CompanyRoleDataImport;
+namespace Pyz\Zed\CompanyBusinessUnitDataImport;
 
-use Spryker\Zed\CompanyRoleDataImport\CompanyRoleDataImportConfig as SprykerCompanyRoleDataImportConfig;
+use Spryker\Zed\CompanyBusinessUnitDataImport\CompanyBusinessUnitDataImportConfig as SprykerCompanyBusinessUnitDataImportConfig;
 
-class CompanyRoleDataImportConfig extends SprykerCompanyRoleDataImportConfig
+class CompanyBusinessUnitDataImportConfig extends SprykerCompanyBusinessUnitDataImportConfig
 {
     /**
      * @return string
