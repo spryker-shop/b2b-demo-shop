@@ -19,8 +19,9 @@
         <div class="col col--sm-12 col--md-6 col--lg-4">
             <strong>{{ 'customer.account.shopping_list.access' | trans }}</strong>:
 
-            <span class="badge--shopping-list badge--access">
+            <span class="badge badge--shopping-list badge--access">
                 {% include molecule('shopping-list-permission', 'ShoppingListPage') with {
+                    modifiers: ['badge'],
                     data: {
                         hasWritePermission: hasWritePermission
                     }

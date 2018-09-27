@@ -50,7 +50,7 @@
                     {% endif %}
                     <td>
                         {% if widgetExists('ProductBundleItemCounterWidgetPlugin') %}
-                            <span class="badge badge--yellow">{{ widget('ProductBundleItemCounterWidgetPlugin', quote) }}</span>
+                            <span class="badge badge--multi-cart">{{ widget('ProductBundleItemCounterWidgetPlugin', quote) }}</span>
                         {% else %}
                             {% set label = (totals == 1)
                                 ? 'page.multi_cart.shopping_cart.list.label.item'
@@ -63,10 +63,10 @@
                     <td>{{ quote.totals.subtotal | default(0) | money }}</td>
                     {% if showActions %}
                         <td>
-                            <ul class="action-icons">
+                            <ul class="menu grid grid--middle grid--justify">
                                 {% if data.actions.update and can('WriteSharedCartPermissionPlugin', quote.idQuote) %}
                                     <li class="menu__item">
-                                        <a href="{{ url('multi-cart/update', {idQuote: quote.idQuote}) }}">
+                                        <a class="link link--alt link--action" href="{{ url('multi-cart/update', {idQuote: quote.idQuote}) }}">
                                             {% include atom('icon') with {
                                                 data: {
                                                     name: 'edit'
@@ -87,7 +87,7 @@
                                 {% endif %}
                                 {% if data.actions.duplicate %}
                                     <li class="menu__item">
-                                        <a href="{{ url('multi-cart/duplicate', {idQuote: quote.idQuote}) }}">
+                                        <a class="link link--alt link--action" href="{{ url('multi-cart/duplicate', {idQuote: quote.idQuote}) }}">
                                             {% include atom('icon') with {
                                                 modifiers: ['duplicate'],
                                                 data: {
@@ -109,7 +109,7 @@
                                 {% endif %}
                                 {% if data.actions.delete and can('WriteSharedCartPermissionPlugin', quote.idQuote) %}
                                     <li class="menu__item">
-                                        <a href="{{ url('multi-cart/confirm-delete', {idQuote: quote.idQuote}) }}">
+                                        <a class="link link--alt link--action" href="{{ url('multi-cart/confirm-delete', {idQuote: quote.idQuote}) }}">
                                             {% include atom('icon') with {
                                                 data: {
                                                     name: 'delete'

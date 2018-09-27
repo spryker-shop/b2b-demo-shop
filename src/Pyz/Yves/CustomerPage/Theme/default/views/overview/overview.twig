@@ -25,8 +25,8 @@
     } only %}
         {% block content %}
             <ul>
-                <li>{{ data.customer.salutation }}. <strong>{{ data.customer.firstName }} {{ data.customer.lastName }}</strong></li>
-                <li><a href="mailto:{{ data.customer.email }}">{{ data.customer.email }}</a></li>
+                <li>{{ data.customer.salutation }}. <strong class="{{ config.name }}__text">{{ data.customer.firstName }} {{ data.customer.lastName }}</strong></li>
+                <li><a class="link link--alt link--success" href="mailto:{{ data.customer.email }}">{{ data.customer.email }}</a></li>
             </ul>
         {% endblock %}
     {% endembed %}
