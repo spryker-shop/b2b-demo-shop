@@ -25,6 +25,7 @@ class ProductUrlCartConnectorBusinessFactory extends AbstractBusinessFactory
             $this->getLocaleFacade()
         );
     }
+
     /**
      * @return \Spryker\Zed\ProductRelation\Business\ProductRelationFacadeInterface
      */
@@ -32,6 +33,7 @@ class ProductUrlCartConnectorBusinessFactory extends AbstractBusinessFactory
     {
         return $this->getProvidedDependency(ProductUrlCartConnectorDependencyProvider::FACADE_PRODUCT);
     }
+
     /**
      * @return \Spryker\Zed\Locale\Business\LocaleFacadeInterface
      */

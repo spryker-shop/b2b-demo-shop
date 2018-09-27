@@ -7,10 +7,10 @@
 
 namespace Pyz\Yves\ShoppingListWidget\Controller;
 
+use SprykerShop\Yves\ShoppingListWidget\Controller\ShoppingListWidgetController as SprykerShopShoppingListWidgetController;
 use SprykerShop\Yves\ShoppingListWidget\ShoppingListWidgetConfig;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
-use SprykerShop\Yves\ShoppingListWidget\Controller\ShoppingListWidgetController as SprykerShopShoppingListWidgetController;
 
 /**
  * @method \SprykerShop\Yves\ShoppingListWidget\ShoppingListWidgetFactory getFactory()
@@ -48,7 +48,7 @@ class ShoppingListWidgetController extends SprykerShopShoppingListWidgetControll
     /**
      * @param \Symfony\Component\HttpFoundation\Request $request
      *
-     * @return array|null|string
+     * @return array|string|null
      */
     protected function getRefererUrl(Request $request)
     {
