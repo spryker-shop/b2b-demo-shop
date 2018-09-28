@@ -1,0 +1,22 @@
+{% extends template('cart-note-display', 'CartNoteWidget') %}
+
+{% define config = {
+    name: 'cart-item-note',
+    jsName: 'js-cart-item-note',
+    tag: 'cart-item-note'
+} %}
+
+{% define data = {
+    label: 'cart_note.form.comment',
+    note: _widget.item.cartNote
+} %}
+{% block body %}
+    {% if data.note %}
+        <h6 class="{{ config.name }}__title">{{ data.label | trans }}:</h6>
+        <div class="{{ config.name }}__container">
+                <div class="{{ config.name }}__text-wrap {{ config.jsName }}__text-wrap">
+                    <div class="{{ config.name }}__text">{{ data.note }}</div>
+                </div>
+        </div>
+    {% endif %}
+{% endblock %}
