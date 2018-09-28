@@ -42,7 +42,14 @@
                         </a>
                     </div>
                     <div class="col">
-                        <a class="button" href="{{url('multi-cart/create')}}" title="{{ 'multi_cart_widget.cart.add' | trans }}">{{ 'multi_cart_widget.cart.add' | trans }}</a>
+                        <a class="button" href="{{url('multi-cart/create')}}" title="{{ 'multi_cart_widget.cart.add' | trans }}">
+                            {% include atom('icon') with {
+                                data: {
+                                    name: 'create-new-cart'
+                                }
+                            } only %}
+                            {{ 'multi_cart_widget.cart.add' | trans }}
+                        </a>
                     </div>
                 </div>
             </li>
