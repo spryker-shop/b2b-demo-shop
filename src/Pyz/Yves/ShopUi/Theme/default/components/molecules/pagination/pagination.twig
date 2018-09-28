@@ -29,6 +29,7 @@
 } %}
 
 {% block body %}
+    {% if data.maxPage > 1 %}
     <ul>
         {% if data.currentPage > 1 %}
             <li class="{{config.name}}__item">
@@ -122,4 +123,5 @@
             </li>
         {% endif %}
     </ul>
+    {% endif %}
 {% endblock %}
