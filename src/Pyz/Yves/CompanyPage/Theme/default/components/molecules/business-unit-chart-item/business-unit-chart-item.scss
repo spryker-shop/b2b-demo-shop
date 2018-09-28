@@ -7,11 +7,14 @@ $setting-color-business-chart-item-level: (
 
 @mixin business-unit-chart-item($name: '.business-unit-chart-item') {
     #{$name} {
-        & & {
-            padding-left: rem(30);
+        &__icon {
+            @include helper-effect-transition(color);
+            flex: none;
+            color: $setting-color-gray-2;
         }
 
         &__link {
+            @include helper-effect-transition(box-shadow background-color);
             display: flex;
             flex-flow: row nowrap;
             align-items: center;
@@ -19,15 +22,12 @@ $setting-color-business-chart-item-level: (
             margin-bottom: map-get($setting-spacing, default);
             background-color: $setting-color-gray-13;
             color: $setting-color-gray-6;
-            font-size: map-get($setting-font-size, default);
-            font-weight: map-get($setting-font-weight, medium);
+            font-weight: fw(medium);
             border-left: rem(5) solid $setting-color-gray-2;
             border-radius: $setting-border-radius;
-            box-shadow: rem(3) rem(8) rem(16) rem(3) transparent;
-            transition: 0.3s box-shadow, 0.3s background-color;
 
             @each $level, $setting-color-level in $setting-color-business-chart-item-level {
-                &#{&}--level-#{$level} {
+                &--level-#{$level} {
                     border-left-color: $setting-color-level;
                 }
             }
@@ -36,6 +36,10 @@ $setting-color-business-chart-item-level: (
                 background-color: $setting-color-white;
                 box-shadow: rem(3) rem(8) rem(16) rem(3) $setting-color-shadow-1;
                 color: $setting-color-gray-6;
+
+                #{$name}__icon {
+                    color: inherit;
+                }
             }
         }
 
@@ -43,19 +47,8 @@ $setting-color-business-chart-item-level: (
             flex: 1;
         }
 
-        &__icon {
-            flex: none;
-            color: $setting-color-gray-2;
-            transition: 0.3s color;
-
-            &#{&} {
-                width: rem(10);
-                height: rem(10);
-            }
-        }
-
-        &__link:hover &__icon {
-            color: inherit;
+        #{$name} {
+            padding-left: rem(30);
         }
     }
 }
