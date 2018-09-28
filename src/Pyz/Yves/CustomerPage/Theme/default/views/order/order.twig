@@ -29,7 +29,9 @@
         }
     } only %}
 
-    {% include molecule('pagination') with {
-        data: data.pagination
-    } only %}
+    {% if data.orders is not empty %}
+        {% include molecule('pagination') with {
+            data: data.pagination
+        } only %}
+    {%  endif %}
 {% endblock %}
