@@ -1,8 +1,8 @@
 <?php
 
 /**
- * Copyright © 2016-present Spryker Systems GmbH. All rights reserved.
- * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
+ * This file is part of the Spryker Suite.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
 namespace Pyz\Yves\SharedCartPage\Controller;
@@ -20,6 +20,8 @@ class ShareController extends SprykerShareController
      * @param int $idQuote
      * @param \Symfony\Component\HttpFoundation\Request $request
      *
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
+     *
      * @return array|\Symfony\Component\HttpFoundation\RedirectResponse
      */
     protected function executeIndexAction(int $idQuote, Request $request)
@@ -31,7 +33,6 @@ class ShareController extends SprykerShareController
         if (!$quoteTransfer->getCustomer()->getCompanyUserTransfer()) {
             throw new NotFoundHttpException();
         }
-
 
         if ($quoteTransfer === null || !$this->isQuoteAccessOwner($quoteTransfer)) {
             return $this->redirectResponseInternal(static::URL_REDIRECT_MULTI_CART_PAGE);
