@@ -45,13 +45,14 @@
 
             <div class="col col--sm-12">
                 <div class="shopping-list-overview-table--update-head grid grid--left grid--middle">
-                    <div class="col grid spacing-right spacing-right--bigger">
-                        <strong>{{ 'customer.account.shopping_list.overview.owner' | trans }}:</strong>
+                    <div class="col grid grid--middle spacing-right spacing-right--bigger">
+                        <strong class="spacing-right">{{ 'customer.account.shopping_list.overview.owner' | trans }}:</strong>
                         {{ data.shoppingList.owner }}
                     </div>
                     <strong>{{ 'customer.account.shopping_list.access' | trans }}:</strong>
-                    <span class="badge--shopping-list badge--access spacing-x">
+                    <span class="badge badge--shopping-list badge--access spacing-x">
                         {% include molecule('shopping-list-permission', 'ShoppingListPage') with {
+                            modifiers: ['badge'],
                             data: {
                                 hasWritePermission: hasWritePermission
                             }

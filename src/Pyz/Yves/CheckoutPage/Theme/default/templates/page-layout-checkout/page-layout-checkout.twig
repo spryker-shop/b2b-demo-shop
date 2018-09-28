@@ -15,7 +15,7 @@
         {% block headerMainContent %}
             <div class="grid grid--justify grid--middle container">
                 <div class="col">
-                    <a href="{{ url('cart') }}" class="button button--hollow button--gray">{{ 'checkout.back_button' | trans }}</a>
+                    <a href="{{ url('cart') }}" class="button button--hollow button--second">{{ 'checkout.back_button' | trans }}</a>
                 </div>
 
                 {% include molecule('logo') with {
@@ -48,7 +48,7 @@
 
 {% block title %}{% endblock %}
 
-{% block contentClass %}page-layout-main--checkout-page{% endblock %}
+{% block contentClass %}page-layout-main page-layout-main--checkout-page{% endblock %}
 
 {% block contentWrap %}
     <div class="container {% block containerClass %}container--checkout{% endblock %}">

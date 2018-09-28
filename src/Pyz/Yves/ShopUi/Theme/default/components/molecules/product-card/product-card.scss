@@ -1,6 +1,7 @@
 $catalog-space-x: rem(14);
+$name: '.product-card';
 
-@include shop-ui-product-card ($name: '.product-card') {
+@include shop-ui-product-card ($name) {
     height: auto;
     padding: 0 0 30px;
 
@@ -17,10 +18,10 @@ $catalog-space-x: rem(14);
         height: 100%;
 
         &:hover {
-            .product-card__image-wrap--catalog::before {
+            #{$name}__image-wrap--catalog::before {
                 background-color: $setting-color-transparent;
             }
-            .product-card__overlay {
+            #{$name}__overlay {
                 color: $setting-color-gray-5;
 
                 &::before {
@@ -57,7 +58,6 @@ $catalog-space-x: rem(14);
         }
 
         &--catalog {
-
             &::before {
                 @include helper-effect-transition(background-color box-shadow);
                 content: '';

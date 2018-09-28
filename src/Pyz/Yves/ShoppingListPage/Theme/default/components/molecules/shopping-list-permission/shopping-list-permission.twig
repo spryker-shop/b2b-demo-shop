@@ -1,0 +1,26 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'shopping-list-permission',
+    tag: 'span'
+} %}
+
+{% define data = {
+    hasWritePermission: required
+} %}
+
+{%- block class -%}
+    {%- if data.hasWritePermission -%}
+        {{ parent() }} {{ config.name }}--full
+    {%- else -%}
+        {{ parent() }}
+    {%- endif -%}
+{%- endblock -%}
+
+{% block body %}
+    {%- if data.hasWritePermission -%}
+        {{ 'customer.account.shopping_list.permissions.FULL_ACCESS' | trans }}
+    {%- else -%}
+        {{ 'customer.account.shopping_list.permissions.READ_ONLY' | trans }}
+    {%- endif -%}
+{% endblock %}

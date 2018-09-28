@@ -1,16 +1,18 @@
+.page-layout {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    .content-wrap {
+        flex: 1;
+    }
+}
 .page-layout-main {
-
     &--catalog-page {
         padding-top: rem(20);
     }
 
     &--catalog-page-content {
         padding-bottom: rem(70);
-    }
-
-    &--cart-page {
-        padding-top: rem(32);
-        padding-bottom: rem(116);
     }
 
     &--pdp {
@@ -25,8 +27,14 @@
         padding: 50px 0 70px;
     }
 
-    &--checkout-page {
+    &--checkout-page,
+    &--cart-page {
         padding-top: rem(32);
         padding-bottom: rem(120);
+    }
+
+    &--cms-page {
+        padding-top: rem(32);
+        padding-bottom: rem(70);
     }
 }
