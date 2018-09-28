@@ -1,5 +1,6 @@
 $product-review-rating-selector-icon-size: 14px;
 $product-review-rating-selector-icon-size-pdp: 16px;
+$product-review-rating-selector-icon-size-big: 24px;
 
 @mixin product-review-rating-selector($name: '.rating-selector') {
     #{$name} {
@@ -41,6 +42,11 @@ $product-review-rating-selector-icon-size-pdp: 16px;
                 min-height: $product-review-rating-selector-icon-size;
                 color: $setting-color-gray-12;
                 width: $product-review-rating-selector-icon-size;
+
+                &--big {
+                    width: $product-review-rating-selector-icon-size-big;
+                    height: $product-review-rating-selector-icon-size-big;
+                }
 
                 &--half-left {
                     left: $product-review-rating-selector-icon-size / 2;

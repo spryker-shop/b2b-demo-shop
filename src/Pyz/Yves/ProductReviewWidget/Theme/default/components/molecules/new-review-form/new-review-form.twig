@@ -1,0 +1,72 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'new-review-form',
+    tag: 'div'
+} %}
+
+{% define data = {
+    form: required
+} %}
+
+{% block body %}
+    <h4 class="title--product-review">{{ 'product_review.submit.add_a_review' | trans }}</h4>
+    {% embed molecule('form') with {
+        class: 'box',
+        data: {
+            form: data.form,
+            options: {
+                action: '#review'
+            },
+            layout: {
+                'nickname': 'col col--sm-12',
+                'summary': 'col col--sm-12'
+            },
+            submit: {
+                enable: true
+            },
+            cancel: {
+                enable: true,
+                icon: '',
+                text: 'general.cancel.button' | trans,
+                class: 'button button--hollow js-review__new-review-trigger-cancel',
+            }
+        },
+        embed: {
+            name: 'new-review-form'
+        }
+    } only %}
+        {% block field %}
+            {% if fieldName == 'rating' %}
+                <div class="form__field col col--sm-12">
+                    {% do field.setRendered %}
+
+                    <label>
+                        {{form_label(field)}}
+                        {% include molecule('rating-selector', 'ProductReviewWidget') with {
+                            modifiers: ['big'],
+                            data: {
+                                maxValue: (field.vars.choices | length) - 1,
+                                inputId: 'productReviewForm_rating',
+                                inputName: 'productReviewForm[rating]'
+                            }
+                        } only %}
+                        {{form_errors(field)}}
+                    </label>
+                </div>
+            {% else %}
+                {{parent()}}
+            {% endif %}
+        {% endblock %}
+        {% block actions %}
+            <div class="{{ embed.name }}__actions">
+                <div class="{{ embed.name }}__actions-buttons">
+                    {{parent()}}
+                </div>
+                <div class="{{ embed.name }}__required-fields">
+                    {{ 'general.required_fields.text' | trans }}
+                </div>
+            </div>
+        {% endblock %}
+    {% endembed %}
+{% endblock %}

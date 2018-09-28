@@ -1,0 +1,25 @@
+@mixin product-review-new-review-form($name: '.new-review-form') {
+    #{$name} {
+
+        &__actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        &__actions-buttons {
+            display: flex;
+            flex-direction: row-reverse;
+        }
+
+        &__required-fields {
+            font-size: rem(13);
+            font-weight: fw(light);
+            color: $setting-color-gray-2;
+            flex-shrink: 0;
+        }
+    }
+}
+
+@include product-review-new-review-form;
