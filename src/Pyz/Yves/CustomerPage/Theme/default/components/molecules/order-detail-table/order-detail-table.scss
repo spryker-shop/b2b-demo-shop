@@ -10,11 +10,13 @@
         }
 
         &__row {
-            & + & {
+            &:not(:first-child) {
                 border-top: 1px solid $setting-color-gray-7;
 
-                &--detail {
-                    border-top: none;
+                &#{$name}__row {
+                    &--detail {
+                        border-top: none;
+                    }
                 }
             }
         }

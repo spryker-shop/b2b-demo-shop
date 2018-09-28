@@ -12,14 +12,14 @@
 
 {% block body %}
     {% if data.hasWritePermission %}
-        <a href="{{ url('shopping-list/update', { idShoppingList: data.idShoppingList }) }}">
+        <a class="link link--alt link--action" href="{{ url('shopping-list/update', { idShoppingList: data.idShoppingList }) }}">
             {% include atom('icon') with {
                 data: {
                     name: 'edit'
                 }
             } only %}
         </a>
-        <a class="spacing-left spacing-left--small" href="{{ url('shopping-list/share', { idShoppingList: data.idShoppingList }) }}">
+        <a class="link link--alt link--action" class="spacing-left spacing-left--small" href="{{ url('shopping-list/share', { idShoppingList: data.idShoppingList }) }}">
             {% include atom('icon') with {
                 data: {
                     name: 'share'
@@ -28,7 +28,7 @@
         </a>
     {% endif %}
 
-    <a class="spacing-left spacing-left--small" href="{{ url('shopping-list/print', { idShoppingList: data.idShoppingList }) }}" target="_blank">
+    <a class="link link--alt link--action" class="spacing-left spacing-left--small" href="{{ url('shopping-list/print', { idShoppingList: data.idShoppingList }) }}" target="_blank">
         {% include atom('icon') with {
             data: {
                 name: 'print'
@@ -37,7 +37,7 @@
     </a>
 
     {% if data.hasWritePermission %}
-        <a class="spacing-left spacing-left--small" href="{{ url('shopping-list/delete/confirm', { idShoppingList: data.idShoppingList }) }}">
+        <a class="link link--alt link--action" class="spacing-left spacing-left--small" href="{{ url('shopping-list/delete/confirm', { idShoppingList: data.idShoppingList }) }}">
             {% include atom('icon') with {
                 data: {
                     name: 'delete'
