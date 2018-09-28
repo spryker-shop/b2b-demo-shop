@@ -5,7 +5,7 @@
 } %}
 
 {% block body %}
-    <a class="link link--alt link--action" href="{{ url('shopping-list/create-from-exist-cart', {'idQuote': (data.quote.idQuote)}) }}">
+    <a class="table__action" href="{{ url('shopping-list/create-from-exist-cart', {'idQuote': (data.quote.idQuote)}) }}">
         {% include atom('icon') with {
             modifiers: ['add-to-list'],
             data: {

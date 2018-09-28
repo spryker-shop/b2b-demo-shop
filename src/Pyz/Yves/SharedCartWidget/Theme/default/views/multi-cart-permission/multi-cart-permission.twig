@@ -25,7 +25,7 @@
 
 {% block actions %}
     {% if _widget.accessType == 'OWNER_ACCESS' %}
-        <a class="link link--alt link--action" href="{{ url('shared-cart/share', {idQuote: _widget.cart.idQuote}) }}" title="{{ 'shared_cart_widget.cart.share' | trans }}">
+        <a class="table__action" href="{{ url('shared-cart/share', {idQuote: _widget.cart.idQuote}) }}" title="{{ 'shared_cart_widget.cart.share' | trans }}">
             {% include atom('icon') with {
                 modifiers: ['share'],
                 data: {

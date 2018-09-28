@@ -30,6 +30,10 @@
     {% endif %}
 {% endmacro %}
 
+{% macro note(order) %}
+    {{ widget('CartNoteOrderNoteWidgetPlugin', order) }}
+{% endmacro %}
+
 {% block customerContent %}
     {{ widgetBlock('CustomerReorderWidgetPlugin', 'formStart', data.order) }}
 
@@ -99,12 +103,14 @@
                 },
                 {
                     content: _self.address('billing_address', data.order.billingAddress)
+                },
+                {
+                    content: _self.note(data.order)
                 }
             ]
         }
     } only %}
 
-    {{ widget('CartNoteOrderNoteWidgetPlugin', data.order) }}
     {{ widgetBlock('CustomerReorderWidgetPlugin', 'formActions', data.order) }}
     {{ widgetBlock('CustomerReorderWidgetPlugin', 'formEnd', data.order) }}
 {% endblock %}
