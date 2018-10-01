@@ -72,6 +72,7 @@ class ProductDetailPageDependencyProvider extends SprykerShopProductDetailPageDe
         $container = $this->addProductStoragePyzClient($container);
         return $container;
     }
+
     /**
      * @param \Spryker\Yves\Kernel\Container $container
      *

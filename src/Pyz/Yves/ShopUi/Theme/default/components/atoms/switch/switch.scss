@@ -10,16 +10,6 @@
         margin-left: rem(10);
         transition: 0.3s background-color, 0.3s margin-left;
 
-        &#{&}--active {
-            background-color: transparentize($setting-color-main, 0.5);
-            margin-left: 0;
-        }
-
-        &[disabled] {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
         &__handle {
             display: block;
             position: absolute;
@@ -34,9 +24,19 @@
             transition: 0.3s left, 0.3s background-color;
         }
 
-        &#{&}--active &__handle {
-            left: 100%;
-            background-color: $setting-color-main;
+        &--active {
+            background-color: transparentize($setting-color-main, 0.5);
+            margin-left: 0;
+
+            #{$name}__handle {
+                left: 100%;
+                background-color: $setting-color-main;
+            }
+        }
+
+        &[disabled] {
+            opacity: 0.5;
+            cursor: not-allowed;
         }
     }
 }

@@ -6,7 +6,7 @@
     title: _widget.productSet.name,
     description: _widget.productSet.description,
     images: _widget.productSet.imageSets.0.images | default([]),
-    addAllSetButton: true,
+    addAllSetButton: is_granted("ROLE_USER") | default(false),
     sliderConfig: '{
         "slidesToShow": 4,
         "slidesToScroll": 1,
@@ -87,7 +87,7 @@
                 slides: data.products
             },
             attributes: {
-                'data-json': data.sliderConfig
+                'slider-config': data.sliderConfig
             }
         } only %}
 

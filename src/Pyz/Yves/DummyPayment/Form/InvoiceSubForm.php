@@ -1,14 +1,14 @@
 <?php
 
 /**
- * Copyright © 2016-present Spryker Systems GmbH. All rights reserved.
- * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
+ * This file is part of the Spryker Suite.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
 namespace Pyz\Yves\DummyPayment\Form;
 
-use Symfony\Component\Form\FormBuilderInterface;
 use Spryker\Yves\DummyPayment\Form\InvoiceSubForm as SprykerInvoiceSubForm;
+use Symfony\Component\Form\FormBuilderInterface;
 
 class InvoiceSubForm extends SprykerInvoiceSubForm
 {
@@ -20,6 +20,5 @@ class InvoiceSubForm extends SprykerInvoiceSubForm
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-
     }
 }

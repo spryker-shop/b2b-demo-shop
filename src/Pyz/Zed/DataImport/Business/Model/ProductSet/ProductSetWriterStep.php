@@ -124,7 +124,6 @@ class ProductSetWriterStep extends PublishAwareStep implements DataImportStepInt
             }
 
             $this->addPublishEvents(ProductEvents::PRODUCT_ABSTRACT_PUBLISH, $idProductAbstract);
-
         }
     }
 
