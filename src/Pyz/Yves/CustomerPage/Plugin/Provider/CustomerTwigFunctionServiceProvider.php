@@ -25,13 +25,12 @@ class CustomerTwigFunctionServiceProvider extends SprykerCustomerTwigFunctionSer
     protected function registerCustomerTwigFunction(Twig_Environment $twig)
     {
         $twig->addFunction(
-            'isCompanyUser',
-            new Twig_SimpleFunction('isCompanyUser', function () {
-                if (!$this->getFactory()->getCustomerClient()->isLoggedIn()) {
-                    return null;
-                }
+            'hasCompanyAccess',
+            new Twig_SimpleFunction('hasCompanyAccess', function () {
 
-                return $this->getFactory()->getCustomerClient()->getCustomer()->getCompanyUserTransfer();
+                $customerTransfer = $this->getFactory()->getCustomerClient()->getCustomer();
+
+                return (!$customerTransfer || !$customerTransfer->getCompanyUserTransfer() && !$customerTransfer->getIsOnBehalf()) ? false : true;
             })
         );
 
