@@ -1,0 +1,22 @@
+{% extends template('cart-note-display', 'CartNoteWidget') %}
+
+{% define data = {
+    label: 'cart_note.form.comment',
+    note: _widget.item.cartNote
+} %}
+
+{% block content %}
+    <tr class="order-detail-table__row order-detail-table__row--detail">
+        <td colspan="2"></td>
+        <td class="order-detail-table__cell order-detail-table__cell--detail" colspan="4">
+            {% include molecule('cart-item-note', 'CartNoteWidget') with {
+                data: {
+                    isNoteNotEmpty: true,
+                    canWrite: false,
+                    label: data.label,
+                    note: data.note | escape | nl2br
+                }
+            } only %}
+        </td>
+    </tr>
+{% endblock %}

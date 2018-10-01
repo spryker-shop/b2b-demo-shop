@@ -1,0 +1,19 @@
+{% extends template('widget') %}
+
+{% define data = {
+    label: 'cart_note.customer_page.order_note',
+    note: _widget.order.cartNote
+} %}
+
+{% block body %}
+    {% embed molecule('action-card') with {
+        data: {
+            title: data.label | trans,
+            note: data.note,
+        }
+    } only %}
+        {% block content %}
+           {{ data.note }}
+        {% endblock %}
+    {% endembed %}
+{% endblock %}
