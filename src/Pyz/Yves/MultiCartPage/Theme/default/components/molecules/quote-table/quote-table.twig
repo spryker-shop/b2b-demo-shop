@@ -104,12 +104,10 @@
                                         </a>
                                     </li>
                                 {% endif %}
-                                {% if data.actions.toShoppingList %}
-                                    {% if widgetExists('CartToShoppingListWidgetPlugin') %}
-                                        <li class="menu__item">
-                                            {{ widget('CartToShoppingListWidgetPlugin', quote) }}
-                                        </li>
-                                    {% endif %}
+                                {% if widgetExists('CartToShoppingListWidgetPlugin') %}
+                                    <li class="menu__item">
+                                        {{ widget('CartToShoppingListWidgetPlugin', quote) }}
+                                    </li>
                                 {% endif %}
                                 {% if data.actions.delete and can('WriteSharedCartPermissionPlugin', quote.idQuote) %}
                                     <li class="menu__item">
