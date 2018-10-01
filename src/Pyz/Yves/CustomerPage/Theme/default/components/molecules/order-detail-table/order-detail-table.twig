@@ -56,15 +56,15 @@
                     <tr class="{{ config.name }}__row {{ config.name }}__row--detail">
                         {% block bundleDetailRow %}
                             <td class="{{ config.name }}__cell {{ config.name }}__cell--detail" colspan="5">
-                                {{ "customer.order.bundled_items" | trans }} <br />
+                                {{ "customer.order.bundled_items" | trans }} <br>
                                 {% for bundledItem in item.bundleItems %}
-                                    - {{ bundledItem.quantity }} x {{ bundledItem.name }} <br />
+                                    - {{ bundledItem.quantity }} x {{ bundledItem.name }} <br>
                                 {% endfor %}
 
                                 {% if concreteItem.productOptions is not empty %}
-                                    {{ "customer.order.options" | trans }} <br />
+                                    {{ "customer.order.options" | trans }} <br>
                                     {% for productOption in concreteItem.productOptions %}
-                                        &nbsp; - {{ productOption.value | trans }} {{ productOption.sumPrice | money(true, data.currencyIsoCode) }}  <br />
+                                        &nbsp; - {{ productOption.value | trans }} {{ productOption.sumPrice | money(true, data.currencyIsoCode) }}  <br>
                                     {% endfor %}
                                 {% endif %}
                             </td>
