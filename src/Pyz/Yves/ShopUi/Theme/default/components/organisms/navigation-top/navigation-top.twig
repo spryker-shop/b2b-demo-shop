@@ -67,7 +67,7 @@
             ) }}
         </li>
 
-        {% if is_granted('ROLE_USER') %}
+        {% if is_granted('ROLE_USER') and isCompanyUser() %}
             {% if widgetGlobalExists('MenuItemCompanyWidgetPlugin') %}
                 <li class="col {{ config.name }}__action-item">
                     {% spaceless %}{{ widgetGlobal('MenuItemCompanyWidgetPlugin') }}{% endspaceless %}
