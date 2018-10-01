@@ -14,6 +14,7 @@ use Spryker\Client\SharedCart\Plugin\ReadSharedCartPermissionPlugin;
 use Spryker\Client\SharedCart\Plugin\WriteSharedCartPermissionPlugin;
 use Spryker\Client\ShoppingList\Plugin\WriteShoppingListPermissionPlugin;
 use Spryker\Zed\ShoppingList\Communication\Plugin\ReadShoppingListPermissionPlugin;
+use SprykerShop\Shared\CartPage\Plugin\AddCartItemPermissionPlugin;
 
 class PermissionDependencyProvider extends SprykerPermissionDependencyProvider
 {
@@ -38,6 +39,7 @@ class PermissionDependencyProvider extends SprykerPermissionDependencyProvider
             new ReadShoppingListPermissionPlugin(), #ShoppingListFeature
             new WriteShoppingListPermissionPlugin(), #ShoppingListFeature
             new SeeCompanyMenuPermissionPlugin(),
+            new AddCartItemPermissionPlugin(),
         ];
     }
 }
