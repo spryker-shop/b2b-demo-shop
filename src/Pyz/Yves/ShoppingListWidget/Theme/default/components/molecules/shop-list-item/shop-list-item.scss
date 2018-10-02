@@ -1,0 +1,60 @@
+@mixin shopping-list-widget-shop-list-item($name: '.shop-list-item') {
+    #{$name} {
+        position: relative;
+        padding: rem(13) rem(29) rem(15) rem(22);
+        min-width: rem(410);
+        border-bottom: 1px solid $setting-color-gray-6;
+
+        &:hover {
+            background-color: $setting-color-gray-7;
+
+            #{$name}__name {
+                text-decoration: underline;
+            }
+        }
+
+        &__list {
+            overflow-y: auto;
+        }
+
+        &__name {
+            color: $setting-color-black;
+            font-size: $setting-font-size-base;
+            line-height: rem(29);
+            letter-spacing: rem(0.2);
+        }
+
+        &__owner {
+            color: $setting-color-gray-2;
+            font-weight: fw(medium);
+        }
+
+        &__items-count {
+            display: inline-block;
+            font-size: rem(11);
+            line-height: rem(22);
+            font-weight: fw(bold);
+            letter-spacing: rem(0.4);
+            color: $setting-color-white;
+            background-color: $setting-color-yellow-1;
+            padding: 0 rem(9);
+            margin-right: rem(9);
+            border-radius: $setting-border-radius;
+            vertical-align: middle;
+        }
+
+        &__access {
+            color: $setting-color-gray-3;
+            text-transform: uppercase;
+            font-size: rem(11);
+
+            &--full {
+                color: map_get($setting-color-actions, 'success');
+            }
+        }
+
+        @content;
+    }
+}
+
+@include shopping-list-widget-shop-list-item();

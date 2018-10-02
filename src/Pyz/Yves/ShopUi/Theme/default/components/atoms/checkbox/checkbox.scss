@@ -31,6 +31,10 @@
             &--shopping-list {
                 margin-right: 0;
             }
+
+            &--alternative {
+                border: solid 2px $setting-color-gray-2;
+            }
         }
 
         &__input {
@@ -43,6 +47,11 @@
             @include helper-effect-transition;
             color: $setting-color-white;
             vertical-align: baseline;
+
+            &--alternative {
+                color: $setting-color-gray-2;
+                margin-bottom: rem(2);
+            }
         }
 
         &__input:checked ~ {
@@ -53,10 +62,19 @@
                 #{$name}__check {
                     @include helper-visibility-visible;
                 }
+
+                &--alternative {
+                    background-color: $setting-color-white;
+                    border-color: $setting-color-gray-2;
+                }
             }
 
             #{$name}__label {
                 font-weight: fw(bold);
+
+                &--alternative {
+                    font-weight: fw(regular);
+                }
             }
         }
 
@@ -79,6 +97,15 @@
                 text-transform: none;
                 margin-bottom: 0;
             }
+
+            &--alternative {
+                margin-bottom: 0;
+                font-size: rem(15);
+                font-weight: fw(regular);
+                line-height: rem(20);
+                color: $setting-color-gray-2;
+                text-transform: none;
+            }
         }
 
         &__counter {
@@ -93,6 +120,16 @@
             width: 100%;
             font-size: rem(14);
             line-height: rem(18);
+        }
+
+        &--alternative {
+            margin-left: 132px;
+            margin-bottom: rem(15);
+            &:hover {
+                #{$name}__box--alternative {
+                    border-color: $setting-color-gray-2;
+                }
+            }
         }
 
         &--shopping-list {
@@ -113,54 +150,6 @@
         &:hover {
             #{$name}__box {
                 border-color: $setting-color-main;
-            }
-        }
-
-        &--alternative {
-            margin-left: 132px;
-            margin-bottom: rem(15);
-            &:hover {
-                #{$name}__box--alternative {
-                    border-color: $setting-color-gray-2;
-                }
-            }
-        }
-
-        &__box--alternative {
-            border: solid 2px $setting-color-gray-2;
-        }
-
-        &__container--alternative {
-            display: flex;
-        }
-
-        &__check--alternative {
-            color: $setting-color-gray-2;
-
-            &--filter {
-                top: rem(3);
-                left: rem(3);
-            }
-        }
-
-        &__label--alternative {
-            margin-bottom: 0;
-            font-size: rem(15);
-            font-weight: fw(regular);
-            line-height: rem(20);
-            color: $setting-color-gray-2;
-            text-transform: none;
-        }
-
-        &__input--alternative:checked ~ {
-
-            #{$name}__box--alternative {
-                background-color: $setting-color-white;
-                border-color: $setting-color-gray-2;
-            }
-
-            #{$name}__label--alternative {
-                font-weight: fw(regular);
             }
         }
 

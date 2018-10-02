@@ -1,16 +1,16 @@
 @mixin product-detail-page-product-configurator($name: '.product-bundle-detail') {
     #{$name} {
-        border-bottom: solid 1px $setting-color-gray-7;
+        border-bottom: solid 1px $setting-color-gray-6;
 
         &__item {
-            border-top: solid 1px $setting-color-gray-7;
+            border-top: solid 1px $setting-color-gray-6;
         }
 
         &__title {
             font-size: rem(14);
             font-weight: fw(regular);
             line-height: normal;
-            color: $setting-color-gray-6;
+            color: $setting-color-gray-5;
             padding: rem(18) rem(20);
             cursor: pointer;
             position: relative;
@@ -19,7 +19,7 @@
             &::after {
                 content: '';
                 position: absolute;
-                background: $setting-color-gray-6;
+                background: $setting-color-gray-5;
                 top: 50%;
                 transform: translateY(-50%);
             }
@@ -37,7 +37,7 @@
             }
 
             &.active {
-                background-color: $setting-color-gray-13;
+                background-color: $setting-color-gray-7;
 
                 &::after {
                     display: none;
@@ -48,19 +48,19 @@
         &__description {
             font-size: rem(13);
             font-weight: fw(regular);
-            color: $setting-color-gray-6;
+            color: $setting-color-gray-5;
             padding: 0 rem(20) rem(26);
-            background-color: $setting-color-gray-13;
+            background-color: $setting-color-gray-7;
         }
 
         &__detail-list {
-            background-color: $setting-color-gray-13;
+            background-color: $setting-color-gray-7;
             padding: 0 rem(20) rem(18);
 
             &-key {
                 font-size: rem(14);
                 font-weight: fw(bold);
-                color: $setting-color-gray-6;
+                color: $setting-color-gray-5;
             }
 
             &-value {

@@ -1,6 +1,7 @@
 $catalog-space-x: rem(14);
+$name: '.product-card';
 
-@include shop-ui-product-card ($name: '.product-card') {
+@include shop-ui-product-card ($name) {
     height: auto;
     padding: 0 0 30px;
 
@@ -17,11 +18,11 @@ $catalog-space-x: rem(14);
         height: 100%;
 
         &:hover {
-            .product-card__image-wrap--catalog::before {
+            #{$name}__image-wrap--catalog::before {
                 background-color: $setting-color-transparent;
             }
-            .product-card__overlay {
-                color: $setting-color-gray-5;
+            #{$name}__overlay {
+                color: $setting-color-gray-4;
 
                 &::before {
                     box-shadow: 0 18px 18px 0 $setting-color-shadow-1, 0 3px 3px 0 $setting-color-shadow-1;
@@ -57,7 +58,6 @@ $catalog-space-x: rem(14);
         }
 
         &--catalog {
-
             &::before {
                 @include helper-effect-transition(background-color box-shadow);
                 content: '';
@@ -73,7 +73,7 @@ $catalog-space-x: rem(14);
     }
 
     &__overlay {
-        color: $setting-color-gray-5;
+        color: $setting-color-gray-4;
         font-size: rem(20);
         font-weight: fw(medium);
         line-height: map_get($setting-font-line-height, 2);
@@ -95,7 +95,7 @@ $catalog-space-x: rem(14);
             font-size: rem(16);
             line-height: normal;
             letter-spacing: rem(0.1);
-            color: $setting-color-gray-17;
+            color: $setting-color-gray-5;
 
             &::before {
                 background-color: $setting-color-transparent;
@@ -109,7 +109,7 @@ $catalog-space-x: rem(14);
         }
 
         &:hover {
-            color: $setting-color-gray-5;
+            color: $setting-color-gray-4;
 
             &::before {
                 box-shadow: 0 18px 18px 0 $setting-color-shadow-1, 0 3px 3px 0 $setting-color-shadow-1;

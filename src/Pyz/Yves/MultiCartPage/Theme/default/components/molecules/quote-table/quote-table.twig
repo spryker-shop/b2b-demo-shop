@@ -13,10 +13,12 @@
         duplicate: false,
         toShoppingList: false,
         share: false,
-    }
+    },
+    isQuoteDeletable: required
 } %}
 
 {% set showActions = data.actions.update or data.actions.delete or data.actions.duplicate %}
+{% set isQuoteDeletable = data.isQuoteDeletable %}
 
 {% block body %}
     <table class="table table--grid table--expand">
@@ -24,7 +26,9 @@
             <tr class="active">
                 <th>{{ 'page.multi_cart.shopping_cart.list.label.name' | trans }}</th>
                 {% if widgetExists('CartListPermissionGroupWidgetPlugin') %}
-                    <th>{{ 'page.multi_cart.shopping_cart.list.label.access' | trans }}</th>
+                    {% if widgetBlock('CartListPermissionGroupWidgetPlugin', 'isSharingAllowed', data.quotes|first, isQuoteDeletable) %}
+                        <th>{{ 'page.multi_cart.shopping_cart.list.label.access' | trans }}</th>
+                    {% endif %}
                 {% endif %}
                 <th>{{ 'page.multi_cart.shopping_cart.list.label.num_of_products' | trans }}</th>
                 <th>{{ 'page.multi_cart.shopping_cart.list.label.total' | trans }}</th>
@@ -45,12 +49,12 @@
                     </td>
                     {% if widgetExists('CartListPermissionGroupWidgetPlugin') %}
                         <td>
-                            {{ widget('CartListPermissionGroupWidgetPlugin', quote) }}
+                            {{ widget('CartListPermissionGroupWidgetPlugin', quote, isQuoteDeletable) }}
                         </td>
                     {% endif %}
                     <td>
                         {% if widgetExists('ProductBundleItemCounterWidgetPlugin') %}
-                            <span class="badge badge--yellow">{{ widget('ProductBundleItemCounterWidgetPlugin', quote) }}</span>
+                            <span class="badge badge--multi-cart">{{ widget('ProductBundleItemCounterWidgetPlugin', quote) }}</span>
                         {% else %}
                             {% set label = (totals == 1)
                                 ? 'page.multi_cart.shopping_cart.list.label.item'
@@ -63,10 +67,10 @@
                     <td>{{ quote.totals.subtotal | default(0) | money }}</td>
                     {% if showActions %}
                         <td>
-                            <ul class="action-icons">
+                            <ul class="menu grid grid--middle grid--justify">
                                 {% if data.actions.update and can('WriteSharedCartPermissionPlugin', quote.idQuote) %}
                                     <li class="menu__item">
-                                        <a href="{{ url('multi-cart/update', {idQuote: quote.idQuote}) }}">
+                                        <a class="link link--alt link--action" href="{{ url('multi-cart/update', {idQuote: quote.idQuote}) }}">
                                             {% include atom('icon') with {
                                                 data: {
                                                     name: 'edit'
@@ -78,16 +82,16 @@
                                         </a>
                                     </li>
                                 {% endif %}
-                                {% if data.actions.share %}
+                                {% if data.actions.share and quote.customer.companyUserTransfer %}
                                     {% if widgetExists('CartListPermissionGroupWidgetPlugin') %}
                                         <li class="menu__item">
-                                            {{ widgetBlock('CartListPermissionGroupWidgetPlugin', 'actions', quote) }}
+                                            {{ widgetBlock('CartListPermissionGroupWidgetPlugin', 'actions', quote, isQuoteDeletable) }}
                                         </li>
                                     {% endif %}
                                 {% endif %}
                                 {% if data.actions.duplicate %}
                                     <li class="menu__item">
-                                        <a href="{{ url('multi-cart/duplicate', {idQuote: quote.idQuote}) }}">
+                                        <a class="link link--alt link--action" href="{{ url('multi-cart/duplicate', {idQuote: quote.idQuote}) }}">
                                             {% include atom('icon') with {
                                                 modifiers: ['duplicate'],
                                                 data: {
@@ -100,16 +104,14 @@
                                         </a>
                                     </li>
                                 {% endif %}
-                                {% if data.actions.toShoppingList %}
-                                    {% if widgetExists('CartToShoppingListWidgetPlugin') %}
-                                        <li class="menu__item">
-                                            {{ widget('CartToShoppingListWidgetPlugin', quote) }}
-                                        </li>
-                                    {% endif %}
+                                {% if widgetExists('CartToShoppingListWidgetPlugin') %}
+                                    <li class="menu__item">
+                                        {{ widget('CartToShoppingListWidgetPlugin', quote) }}
+                                    </li>
                                 {% endif %}
                                 {% if data.actions.delete and can('WriteSharedCartPermissionPlugin', quote.idQuote) %}
                                     <li class="menu__item">
-                                        <a href="{{ url('multi-cart/confirm-delete', {idQuote: quote.idQuote}) }}">
+                                        <a class="link link--alt link--action" href="{{ url('multi-cart/confirm-delete', {idQuote: quote.idQuote}) }}">
                                             {% include atom('icon') with {
                                                 data: {
                                                     name: 'delete'
