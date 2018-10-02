@@ -176,10 +176,10 @@
 
         <div class="grid">
             <div class="col col--sm-6 text-left">
-                <a class="button button--alert" href="{{ path('shopping-list/delete/confirm', {idShoppingList: data.idShoppingList}) }}">{{ 'customer.account.shopping_list.overview.delete' | trans }}</a>
+                <a class="button button--alert button--hollow" href="{{ path('shopping-list/delete/confirm', {idShoppingList: data.idShoppingList}) }}">{{ 'customer.account.shopping_list.overview.delete' | trans }}</a>
             </div>
             <div class="col col--sm-6 text-right">
-                <a href="{{ path('shopping-list') }}" class="button spacing-right">
+                <a href="{{ path('shopping-list') }}" class="button button--hollow spacing-right">
                     {{ 'general.back.button' | trans }}
                 </a>
                 <button type="submit" class="button button--success">
