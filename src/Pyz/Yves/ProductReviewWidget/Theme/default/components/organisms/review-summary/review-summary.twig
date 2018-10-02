@@ -67,7 +67,7 @@
 
             {% if is_granted('ROLE_USER') %}
                 <a id="review"></a>
-                <button class="button float-right spacing-y--big js-review__new-review-trigger">
+                <button class="button float-right spacing-y spacing-y--big js-review__new-review-trigger">
                     {{ 'product_review.submit.add_a_review' | trans }}
                 </button>
 
@@ -75,7 +75,7 @@
                     {{ render(path('product-review/submit', {'idProductAbstract': data.idProductAbstract})) }}
                 </div>
             {% else %}
-                <a class="button spacing-y--big float-right" href="{{ path('login') }}">
+                <a class="button spacing-y spacing-y--big float-right" href="{{ path('login') }}">
                     {{ 'product_review.submit.add_a_review' | trans }}
                 </a>
             {% endif %}
