@@ -15,7 +15,6 @@ use SprykerShop\Shared\CartPage\Plugin\RemoveCartItemPermissionPlugin;
 use SprykerShop\Yves\CartPage\Controller\CartController as SprykerCartController;
 use SprykerShop\Yves\CartPage\Plugin\Provider\CartControllerProvider;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 class CartController extends SprykerCartController
 {
@@ -28,8 +27,6 @@ class CartController extends SprykerCartController
      * @param int $quantity
      * @param array $optionValueIds
      * @param \Symfony\Component\HttpFoundation\Request $request
-     *
-     * @throws \Spryker\Yves\Kernel\Exception\ForbiddenExternalRedirectException
      *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
