@@ -9,7 +9,7 @@
 } %}
 
 {% block body %}
-    <h4 class="title--product-review">{{ 'product_review.submit.add_a_review' | trans }}</h4>
+    <h4 class="title title--product-review">{{ 'product_review.submit.add_a_review' | trans }}</h4>
     {% embed molecule('form') with {
         class: 'box',
         data: {
@@ -28,7 +28,7 @@
                 enable: true,
                 icon: '',
                 text: 'general.cancel.button' | trans,
-                class: 'button button--hollow js-review__new-review-trigger-cancel',
+                class: 'button button--hollow js-review-summary__' ~ config.name ~ '-close',
             }
         },
         embed: {
@@ -68,8 +68,4 @@
             </div>
         {% endblock %}
     {% endembed %}
-    <div>
-        yesterday I took sick leave,
-        today i planned to fix reopen bug 2046 afternoon, because now i working on another stream
-    </div>
 {% endblock %}

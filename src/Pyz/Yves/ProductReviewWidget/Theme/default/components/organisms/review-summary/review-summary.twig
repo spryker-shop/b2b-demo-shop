@@ -23,13 +23,13 @@
 } %}
 
 {% block body %}
-    <h2 class="review-summary__title">{{ 'product_review.summary.title' | trans }}</h2>
+    <h2 class="{{ config.name }}__title">{{ 'product_review.summary.title' | trans }}</h2>
 
     <div class="grid grid--justify grid--gap">
         <div class="col col--sm-5">
-            <h3 class="review-summary__sub-title">{{ 'product_review.product_ratings' | trans }}</h3>
+            <h3 class="{{ config.name }}__sub-title">{{ 'product_review.product_ratings' | trans }}</h3>
 
-            <div class="review-summary__rating-box grid grid--middle grid--justify">
+            <div class="{{ config.name }}__rating-box grid grid--middle grid--justify">
                 <div class="col">
                     {% include molecule('review-average-display', 'ProductReviewWidget') with {
                         data: {
@@ -50,8 +50,8 @@
 
             {% include molecule('toggler-click') with {
                 attributes: {
-                    'trigger-selector': '.js-review__new-review-trigger, .js-review__new-review-trigger-cancel',
-                    'target-selector': '.js-review__new-review-form-target, .js-review__new-review-trigger',
+                    'trigger-selector': '.' ~ config.jsName ~ '__new-review-form-open, ' ~ '.' ~ config.jsName ~ '__new-review-form-close',
+                    'target-selector': '.' ~ config.jsName ~ '__new-review-form, ' ~ '.' ~ config.jsName ~ '__new-review-form-open',
                     'class-to-toggle': 'is-hidden'
                 }
             } only %}
@@ -59,7 +59,7 @@
             {% include molecule('toggler-hash') with {
                 attributes: {
                     'trigger-hash': '#review',
-                    'target-selector': '.js-review__new-review-form-target',
+                    'target-selector': '.' ~ config.jsName ~ '__new-review-form',
                     'class-to-toggle': 'is-hidden',
                     'add-class-when-hash-in-url': false
                 }
@@ -67,11 +67,12 @@
 
             {% if is_granted('ROLE_USER') %}
                 <a id="review"></a>
-                <button class="button float-right spacing-y spacing-y--big js-review__new-review-trigger">
+
+                <button class="button float-right spacing-y spacing-y--big {{ config.jsName }}__new-review-form-open">
                     {{ 'product_review.submit.add_a_review' | trans }}
                 </button>
 
-                <div class="is-hidden js-review__new-review-form-target">
+                <div class="is-hidden {{ config.jsName }}__new-review-form">
                     {{ render(path('product-review/submit', {'idProductAbstract': data.idProductAbstract})) }}
                 </div>
             {% else %}
@@ -83,7 +84,7 @@
         </div>
 
         <div class="col col--sm-6">
-            <h3 class="review-summary__sub-title">{{ 'product_review.product_reviews' | trans }}</h3>
+            <h3 class="{{ config.name }}__sub-title">{{ 'product_review.product_reviews' | trans }}</h3>
 
             {% if data.reviews is empty %}
                 <p>{{ 'product_review.no_reviews' | trans }}</p>
@@ -108,6 +109,5 @@
                 {% endif %}
             {% endif %}
         </div>
-
     </div>
 {% endblock %}
