@@ -90,9 +90,11 @@
                 {{ widget('ProductBundleItemsWidgetPlugin', data.listItem, data.list) }}
             {% endblock %}
 
-            {% block note %}
-                {{ widget('CartNoteQuoteItemWidgetPlugin', data.listItem, data.list) }}
-            {% endblock %}
+            {% if data.canEdit %}
+                {% block note %}
+                    {{ widget('CartNoteQuoteItemWidgetPlugin', data.listItem, data.list) }}
+                {% endblock %}
+            {% endif %}
 
             {% if data.listItem.productOptions is defined and data.listItem.productOptions | length > 0 %}
                 {% include molecule('product-item-options') with {
