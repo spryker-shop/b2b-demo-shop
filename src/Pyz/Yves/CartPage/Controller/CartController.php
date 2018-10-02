@@ -8,12 +8,18 @@
 namespace Pyz\Yves\CartPage\Controller;
 
 use Generated\Shared\Transfer\ItemTransfer;
+use Spryker\Yves\Kernel\PermissionAwareTrait;
+use SprykerShop\Shared\CartPage\Plugin\AddCartItemPermissionPlugin;
+use SprykerShop\Shared\CartPage\Plugin\ChangeCartItemPermissionPlugin;
+use SprykerShop\Shared\CartPage\Plugin\RemoveCartItemPermissionPlugin;
 use SprykerShop\Yves\CartPage\Controller\CartController as SprykerCartController;
 use SprykerShop\Yves\CartPage\Plugin\Provider\CartControllerProvider;
 use Symfony\Component\HttpFoundation\Request;
 
 class CartController extends SprykerCartController
 {
+    use PermissionAwareTrait;
+
     public const REQUEST_HEADER_REFERER = 'referer';
 
     /**
@@ -26,6 +32,12 @@ class CartController extends SprykerCartController
      */
     public function addAction($sku, $quantity, array $optionValueIds, Request $request)
     {
+        if (!$this->can(AddCartItemPermissionPlugin::KEY)) {
+            $this->addErrorMessage("Access Denied");
+
+            return $this->redirectResponseExternal($this->getRefererUrl($request));
+        }
+
         $itemTransfer = new ItemTransfer();
         $itemTransfer
             ->setSku($sku)
@@ -56,5 +68,40 @@ class CartController extends SprykerCartController
         }
 
         return CartControllerProvider::ROUTE_CART;
+    }
+
+    /**
+     * @param string $sku
+     * @param string|null $groupKey
+     *
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function removeAction($sku, $groupKey = null)
+    {
+        if (!$this->can(RemoveCartItemPermissionPlugin::KEY)) {
+            $this->addErrorMessage("Access Denied");
+
+            return $this->redirectResponseExternal(CartControllerProvider::ROUTE_CART);
+        }
+
+        return parent::removeAction($sku, $groupKey);
+    }
+
+    /**
+     * @param string $sku
+     * @param int $quantity
+     * @param string|null $groupKey
+     *
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function changeAction($sku, $quantity, $groupKey = null)
+    {
+        if (!$this->can(ChangeCartItemPermissionPlugin::KEY)) {
+            $this->addErrorMessage("Access Denied");
+
+            return $this->redirectResponseExternal(CartControllerProvider::ROUTE_CART);
+        }
+
+        return parent::changeAction($sku, $quantity, $groupKey);
     }
 }
