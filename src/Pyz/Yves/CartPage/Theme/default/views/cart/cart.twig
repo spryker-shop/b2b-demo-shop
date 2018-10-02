@@ -73,7 +73,7 @@
                     <div class="col col--sm-8">
                         <h3 class="grid grid--middle cart-title__text">
                             {{ data.cart.name }}
-                            {% if canEditCart %}
+                            {% if can('ChangeCartItemPermissionPlugin') %}
                                 <a href="{{ path('multi-cart/update', {idQuote: data.cart.idQuote}) }}" class="col button button--hollow-icon button--edit cart-title__link" title="{{ "multi_cart_widget.cart.action.change_name" | trans }}">
                                     {% include atom('icon') with {
                                         modifiers: ['big'],
@@ -95,12 +95,12 @@
                             list: data.cart,
                             listItem: cartItem,
                             attributes: data.attributes[cartItem.sku] | default([]),
-                            canEdit: (not is_granted('ROLE_USER') or can('WriteSharedCartPermissionPlugin', data.cart.idQuote))
+                            canEdit: ((not is_granted('ROLE_USER') or can('WriteSharedCartPermissionPlugin', data.cart.idQuote)) and can('RemoveCartItemPermissionPlugin'))
                         }
                     } only %}
                 {% endfor %}
 
-                {% if canEditCart %}
+                {% if canEditCart and can('RemoveCartItemPermissionPlugin') %}
                     <div class="grid grid--right cart-bottom">
                         <a href="{{ path('multi-cart/clear', {idQuote: data.cart.idQuote}) }}" class="link link--icon">
                             {% include atom('icon') with {
@@ -118,7 +118,7 @@
             </div>
 
             <div class="col col--sm-12 col--xl-3 cart-sidebar js-cart-sidebar">
-                {% if canEditCart %}
+                {% if canEditCart and can('ChangeCartItemPermissionPlugin') %}
                     {% if widgetExists('CartNoteQuoteWidgetPlugin') %}
                         <div class="cart-sidebar__item cart-sidebar__item--note">
                             <h5 class="cart-sidebar__title toggler-accordion__item js-cart-sidebar__trigger" data-toggle-target='.js-cart-sidebar__content-note'>
@@ -150,7 +150,7 @@
                             <div class="col cart-sidebar__quantity">{{ app['cart.quantity'] }} {{ 'checkout.step.summary.items' | trans }}</div>
                         </div>
 
-                        {% if not is_granted('ROLE_USER') or can('WriteSharedCartPermissionPlugin', data.cart.idQuote) %}
+                        {% if canEditCart and can('ChangeCartItemPermissionPlugin') %}
                             {{ widget('DiscountVoucherFormWidgetPlugin') }}
                         {% endif %}
                     </div>

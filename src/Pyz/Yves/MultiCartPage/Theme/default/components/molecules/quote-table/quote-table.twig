@@ -82,7 +82,7 @@
                                         </a>
                                     </li>
                                 {% endif %}
-                                {% if data.actions.share and quote.customer.companyUserTransfer %}
+                                {% if data.actions.share and quote.customer.companyUserTransfer is defined and quote.customer.companyUserTransfer %}
                                     {% if widgetExists('CartListPermissionGroupWidgetPlugin') %}
                                         <li class="menu__item">
                                             {{ widgetBlock('CartListPermissionGroupWidgetPlugin', 'actions', quote, isQuoteDeletable) }}
