@@ -1,8 +1,7 @@
 {% extends template('page-layout-main') %}
 
 {% define data = {
-    activePage: 'overview',
-    title: 'customer.account' | trans
+    activePage: 'overview'
 } %}
 
 {% block breadcrumbs %}
@@ -23,7 +22,7 @@
     {% endset %}
 
     {% embed organism('section') with {
-        modifiers: ['last'],
+        modifiers: ['last']
     } %}
         {% block body %}
             <div class="{{ config.name }}__inner {{ data.innerClass }}">
