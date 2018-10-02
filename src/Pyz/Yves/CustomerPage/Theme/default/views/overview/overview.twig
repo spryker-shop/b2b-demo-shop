@@ -6,7 +6,8 @@
     billingAddress: _view.addresses.billing | default,
     shippingAddress: _view.addresses.shipping | default,
     billingAddressId: _view.addresses.billing.idCustomerAddress | default(''),
-    shippingAddressId: _view.addresses.shipping.idCustomerAddress | default('')
+    shippingAddressId: _view.addresses.shipping.idCustomerAddress | default(''),
+    title: 'customer.account.overview' | trans
 } %}
 
 {% macro profile(data) %}
