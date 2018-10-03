@@ -22,8 +22,7 @@ export default class FormSubmitter extends Component {
         event.preventDefault();
         const trigger = <HTMLElement>event.target;
         const form = <HTMLFormElement>trigger.closest('form');
-        const eventSubmit = new Event('submit');
-        form.dispatchEvent(eventSubmit);
+        form.submit();
     }
 
     get triggerSelector(): string {

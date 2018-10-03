@@ -11,12 +11,12 @@
 } %}
 
 {% block body %}
-    <div class="grid grid--middle">
-        <div class="col col--sm-6 col--md-10">
+    <div class="grid grid--justify grid--middle">
+        <div class="col">
             <label class="{{ config.name }}__label">{{ data.name }}</label>
         </div>
-        <div class="col col--sm-6 col--md-2">
-            {{ form_row(data.shareForm) }}
+        <div class="col col--sm-3">
+            {{ form_widget(data.shareForm) }}
         </div>
     </div>
 {% endblock %}
