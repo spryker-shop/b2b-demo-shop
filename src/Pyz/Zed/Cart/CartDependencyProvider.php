@@ -46,7 +46,7 @@ use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Cart\CustomAmountPrice
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Cart\ProductPackagingUnitCartAddItemStrategyPlugin;
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Cart\ProductPackagingUnitCartRemoveItemStrategyPlugin;
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Cart\ProductPackagingUnitItemExpanderPlugin;
-use Spryker\Zed\ProductQuantity\Communication\Plugin\Cart\ProductQuantityRestrictionCartPreCheckPlugin;
+use Pyz\Zed\ProductQuantity\Communication\Plugin\Cart\QuantityPreCheckPlugin;
 use Spryker\Zed\ProductQuantity\Communication\Plugin\CartExtension\ProductQuantityRestrictionCartRemovalPreCheckPlugin;
 use Spryker\Zed\SalesQuantity\Communication\Plugin\Cart\IsQuantitySplittableItemExpanderPlugin;
 use Spryker\Zed\ShipmentCartConnector\Communication\Plugin\Cart\CartShipmentExpanderPlugin;
@@ -97,7 +97,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new ProductOptionValuePriceExistsCartPreCheckPlugin(),
             new CartBundleAvailabilityPreCheckPlugin(),
             new CartShipmentPreCheckPlugin(),
-            new ProductQuantityRestrictionCartPreCheckPlugin(),
+            new QuantityPreCheckPlugin(),
             new ProductListRestrictedItemsPreCheckPlugin(),
             new ProductDiscontinuedCartPreCheckPlugin(), #ProductDiscontinuedFeature
             new AmountAvailabilityCartPreCheckPlugin(), #ProductPackagingUnit

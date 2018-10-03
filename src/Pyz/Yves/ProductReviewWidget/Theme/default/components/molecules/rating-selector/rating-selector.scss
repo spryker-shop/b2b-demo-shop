@@ -1,5 +1,6 @@
 $product-review-rating-selector-icon-size: 14px;
 $product-review-rating-selector-icon-size-pdp: 16px;
+$product-review-rating-selector-icon-size-big: 24px;
 
 @mixin product-review-rating-selector($name: '.rating-selector') {
     #{$name} {
@@ -39,8 +40,13 @@ $product-review-rating-selector-icon-size-pdp: 16px;
                 position: relative;
                 min-width: $product-review-rating-selector-icon-size;
                 min-height: $product-review-rating-selector-icon-size;
-                color: $setting-color-gray-12;
+                color: $setting-color-gray-2;
                 width: $product-review-rating-selector-icon-size;
+
+                &--big {
+                    width: $product-review-rating-selector-icon-size-big;
+                    height: $product-review-rating-selector-icon-size-big;
+                }
 
                 &--half-left {
                     left: $product-review-rating-selector-icon-size / 2;
@@ -59,6 +65,10 @@ $product-review-rating-selector-icon-size-pdp: 16px;
             &--active > #{$name}__star {
                 color: $setting-color-yellow-1;
                 width: $product-review-rating-selector-icon-size;
+
+                &--big {
+                    width: $product-review-rating-selector-icon-size-big;
+                }
             }
         }
 

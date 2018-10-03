@@ -14,13 +14,19 @@
     } only %}
 {% endblock %}
 
+{% block title %}{% endblock %}
+
 {% block content %}
     {% set companyContent %}
         {% block companyContent %}{% endblock %}
     {% endset %}
 
     {% embed organism('section') with {
-        modifiers: ['last']
+        modifiers: ['last'],
+        data: {
+            title: false,
+            activePage: data.activePage
+        }
     } %}
         {% block inner %}
             <div class="grid">
@@ -67,5 +73,3 @@
         {% endblock %}
     {% endembed %}
 {% endblock %}
-
-{% block footer %}{% endblock %}

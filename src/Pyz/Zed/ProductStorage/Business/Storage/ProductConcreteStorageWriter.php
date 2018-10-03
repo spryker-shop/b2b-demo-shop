@@ -7,8 +7,9 @@ namespace Pyz\Zed\ProductStorage\Business\Storage;
 
 use Generated\Shared\Transfer\ProductConcreteStorageTransfer;
 use Spryker\Zed\ProductStorage\Business\Storage\ProductConcreteStorageWriter as SprykerProductConcreteStorageWriter;
+
 /**
- * @property \Pyz\Zed\ProductStorage\Persistence\ProductStorageQueryContainerInterface $queryContainer
+ * @property \Spryker\Zed\ProductStorage\Persistence\ProductStorageQueryContainerInterface $queryContainer
  */
 class ProductConcreteStorageWriter extends SprykerProductConcreteStorageWriter
 {
@@ -35,6 +36,7 @@ class ProductConcreteStorageWriter extends SprykerProductConcreteStorageWriter
             ->setSuperAttributesDefinition($this->getSuperAttributeKeys($attributes));
         return $productStorageTransfer;
     }
+
     /**
      * @param int $idProductConcrete
      *

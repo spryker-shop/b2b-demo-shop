@@ -51,7 +51,7 @@
 
                         {% include atom('icon') with {
                             modifiers: ['star'],
-                            class: config.name ~ '__star ' ~ config.name ~ '__star--half-right',
+                            class: component.renderClass(config.name ~ '__star', modifiers) ~ ' ' ~ config.name ~ '__star--half-right',
                             data: {
                                 name: 'star-half'
                             }
@@ -73,7 +73,7 @@
 
                         {% include atom('icon') with {
                             modifiers: ['star'],
-                            class: config.name ~ '__star ' ~ config.name ~ '__star--half-left',
+                            class: component.renderClass(config.name ~ '__star', modifiers) ~ ' ' ~ config.name ~ '__star--half-left',
                             data: {
                                 name: 'star-half'
                             }
@@ -90,7 +90,7 @@
 
                         {% include atom('icon') with {
                             modifiers: ['star'],
-                            class: config.name ~ '__star',
+                            class: component.renderClass(config.name ~ '__star', modifiers),
                             data: {
                                 name: 'star'
                             }

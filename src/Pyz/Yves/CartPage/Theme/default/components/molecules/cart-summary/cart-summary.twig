@@ -47,7 +47,7 @@
         </ul>
     </div>
 
-    {% if canProceedToCheckout %}
+    {% if canProceedToCheckout and can('PlaceOrderWithAmountUpToPermissionPlugin', 10000000000) %}
         <a class="{{ config.name }}__button button button--expand button--big button--success" href="{{ url('checkout-index') }}" {{qa('cart-go-to-checkout')}}>
             {{ 'cart.checkout' | trans }}
         </a>

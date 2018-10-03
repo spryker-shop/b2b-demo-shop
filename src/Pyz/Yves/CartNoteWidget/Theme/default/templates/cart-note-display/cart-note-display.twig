@@ -7,13 +7,15 @@
 
 {% block body %}
     {% if data.note is not empty %}
-        {% include molecule('cart-item-note', 'CartNoteWidget') with {
-            data: {
-                isNoteNotEmpty: true,
-                canWrite: false,
-                label: data.label,
-                note: data.note | escape | nl2br
-            }
-        } only %}
+        {% block content %}
+            {% include molecule('cart-item-note', 'CartNoteWidget') with {
+                data: {
+                    isNoteNotEmpty: true,
+                    canWrite: false,
+                    label: data.label,
+                    note: data.note | escape | nl2br
+                }
+            } only %}
+        {% endblock %}
     {% endif %}
 {% endblock %}

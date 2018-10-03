@@ -6,7 +6,8 @@
     billingAddress: _view.addresses.billing | default,
     shippingAddress: _view.addresses.shipping | default,
     billingAddressId: _view.addresses.billing.idCustomerAddress | default(''),
-    shippingAddressId: _view.addresses.shipping.idCustomerAddress | default('')
+    shippingAddressId: _view.addresses.shipping.idCustomerAddress | default(''),
+    title: 'customer.account.overview' | trans
 } %}
 
 {% macro profile(data) %}
@@ -25,8 +26,8 @@
     } only %}
         {% block content %}
             <ul>
-                <li>{{ data.customer.salutation }}. <strong>{{ data.customer.firstName }} {{ data.customer.lastName }}</strong></li>
-                <li><a href="mailto:{{ data.customer.email }}">{{ data.customer.email }}</a></li>
+                <li>{{ data.customer.salutation }}. <strong class="{{ config.name }}__text">{{ data.customer.firstName }} {{ data.customer.lastName }}</strong></li>
+                <li><a class="link link--alt link--success" href="mailto:{{ data.customer.email }}">{{ data.customer.email }}</a></li>
             </ul>
         {% endblock %}
     {% endembed %}

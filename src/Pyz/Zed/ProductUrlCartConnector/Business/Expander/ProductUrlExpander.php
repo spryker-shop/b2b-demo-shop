@@ -14,7 +14,7 @@ use Spryker\Zed\Product\Business\ProductFacadeInterface;
 class ProductUrlExpander implements ProductUrlExpanderInterface
 {
     /**
-     * @var ProductFacadeInterface
+     * @var \Spryker\Zed\Product\Business\ProductFacadeInterface
      */
     protected $productFacade;
 
@@ -24,8 +24,8 @@ class ProductUrlExpander implements ProductUrlExpanderInterface
     protected $localeFacade;
 
     /**
-     * @param ProductFacadeInterface $productFacade
-     * @param LocaleFacadeInterface $localeFacade
+     * @param \Spryker\Zed\Product\Business\ProductFacadeInterface $productFacade
+     * @param \Spryker\Zed\Locale\Business\LocaleFacadeInterface $localeFacade
      */
     public function __construct(
         ProductFacadeInterface $productFacade,
@@ -50,6 +50,8 @@ class ProductUrlExpander implements ProductUrlExpanderInterface
 
     /**
      * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
+     *
+     * @return void
      */
     protected function expandItemsWithUrl(ItemTransfer $itemTransfer)
     {

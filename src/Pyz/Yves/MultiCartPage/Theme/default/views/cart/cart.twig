@@ -2,7 +2,8 @@
 
 {% define data = {
     quotes: _view.quoteCollection,
-    title: null,
+    isQuoteDeletable: _view.isQuoteDeletable,
+    title: 'page.multi_cart.shopping_cart.list.title' | trans,
     activePage: 'multiCart'
 } %}
 
@@ -51,7 +52,8 @@
                     duplicate: true,
                     toShoppingList: true,
                     share: true,
-                }
+                },
+                isQuoteDeletable: data.isQuoteDeletable
             }
         } only %}
     {% endif %}

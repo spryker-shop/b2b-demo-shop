@@ -48,6 +48,14 @@ export default class RangeSlider extends Component {
     }
 
     get sliderConfig(): object {
-        return JSON.parse(this.getAttribute('slider-config'));
+        return Object.assign(JSON.parse(this.getAttribute('slider-config')), { format: {
+            to: function (value) {
+                value = (value.toFixed(2) % 1) === 0 ? Math.floor(value) : value.toFixed(2);
+                return value;
+            },
+            from: function (value) {
+                return value;
+            }
+        }});
     }
 }

@@ -1,24 +1,18 @@
 @include shop-ui-badge('.badge') {
-    & {
-        border-radius: $setting-border-radius;
-    }
-
-    &--gray {
-        color: $setting-color-white;
-        background: $setting-color-gray-2;
-    }
+    border-radius: $setting-border-radius;
+    font-size: rem(11);
+    line-height: normal;
+    font-weight: fw(bold);
+    letter-spacing: rem(0.4);
+    color: $setting-color-white;
+    background-color: $setting-color-gray-2;
 
     &--shopping-list {
         display: inline-block;
-        font-size: rem(11);
         line-height: rem(22);
-        font-weight: fw(bold);
-        letter-spacing: rem(0.4);
         color: $setting-color-gray-4;
-        background-color: $setting-color-gray-2;
         padding: 0 rem(9);
         margin-right: rem(9);
-        border-radius: $setting-border-radius;
         vertical-align: middle;
     }
 
@@ -26,31 +20,17 @@
         color: $setting-color-white;
         background-color: $setting-color-main;
         text-transform: uppercase;
-
-        .shopping-list-permission--full {
-            color: $setting-color-white;
-        }
     }
 
     &--summary {
-        background-color: $setting-color-gray-2;
-        color: $setting-color-white;
         text-transform: uppercase;
-        font-size: rem(11);
-        font-weight: fw(bold);
-        line-height: normal;
         letter-spacing: rem(0.2);
         padding: rem(5) rem(8);
     }
 
-    &--yellow {
-        color: $setting-color-white;
-        background: $setting-color-yellow-2;
+    &--multi-cart {
+        background: $setting-color-yellow-1;
         text-transform: uppercase;
-        font-size: rem(11);
-        font-weight: fw(bold);
-        line-height: normal;
-        letter-spacing: rem(0.4);
         padding: rem(4) rem(10);
     }
 }

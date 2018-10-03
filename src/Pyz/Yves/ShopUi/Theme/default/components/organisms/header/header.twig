@@ -88,19 +88,41 @@
                                         {{ 'quick-order.page-title'|trans }}
                                     </a>
                                 </li>
-                                <li class="user-nav__item">
-                                    <a class="user-nav__link" href="{{ url('shopping-list') }}">
-                                        <span class="user-nav__icon">
+                                {#<li class="user-nav__item"> #}
+                                    {#<a class="user-nav__link" href="{{ url('shopping-list') }}">#}
+                                        {#<span class="user-nav__icon">#}
+                                            {#{% include atom('icon') with {#}
+                                                {#modifiers: ['header-shopping-list'],#}
+                                                {#data: {#}
+                                                    {#name: 'shopping-list'#}
+                                                {#}#}
+                                            {#} only %}#}
+                                        {#</span>#}
+                                        {#{{ 'customer.account.shopping_list'|trans }}#}
+                                    {#</a>#}
+                                {#</li>#}
+                                {% if widgetGlobalExists('ShoppingListWidgetPlugin') %}
+                                    {#
+                                    TODO: widgetGlobal('ShoppingListWidgetPlugin') has its own markup of Menu Item and on-hover section;
+                                    TODO: All should be fine, if on project level markup of Menu Item has been removed from Widget
+                                    #}
+                                    <li class="user-nav__item">
+                                        <a class="user-nav__link" href="{{ url('shopping-list') }}">
+                                            <span class="user-nav__icon">
                                             {% include atom('icon') with {
                                                 modifiers: ['header-shopping-list'],
                                                 data: {
                                                     name: 'shopping-list'
                                                 }
                                             } only %}
-                                        </span>
-                                        {{ 'customer.account.shopping_list'|trans }}
-                                    </a>
-                                </li>
+                                            </span>
+                                            {{ 'customer.account.shopping_list'|trans }}
+                                        </a>
+                                        <ul class="user-sub-nav user-sub-nav--pull-left spacing spacing--inner spacing--reset">
+                                            {{ widgetGlobal('ShoppingListWidgetPlugin') }}
+                                        </ul>
+                                    </li>
+                                {% endif %}
                                 <li class="user-nav__item">
                                     {% include molecule('cart-items-counter') with {
                                         class: 'user-nav__link',
@@ -122,8 +144,9 @@
 
                         {% endif %}
                     {% endif %}
-                {% endblock %}</div>
-        </div>
+                </div>
+            </div>
+        {% endblock %}
     </div>
 
     {% if data.showNavigation %}

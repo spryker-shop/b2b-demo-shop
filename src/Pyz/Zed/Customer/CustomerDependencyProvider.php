@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\Customer;
 
+use Spryker\Client\Customer\Plugin\CustomerTransferRefreshPlugin;
 use Spryker\Shared\Newsletter\NewsletterConstants;
 use Spryker\Zed\BusinessOnBehalf\Communication\Plugin\Customer\DefaultCompanyUserCustomerTransferExpanderPlugin;
 use Spryker\Zed\BusinessOnBehalf\Communication\Plugin\Customer\IsOnBehalfCustomerTransferExpanderPlugin;
@@ -84,6 +85,16 @@ class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
     {
         return [
             new CompanyUserInvitationPostCustomerRegistrationPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Client\Customer\Dependency\Plugin\CustomerSessionGetPluginInterface[]
+     */
+    protected function getCustomerSessionGetPlugins()
+    {
+        return [
+            new CustomerTransferRefreshPlugin(),
         ];
     }
 }

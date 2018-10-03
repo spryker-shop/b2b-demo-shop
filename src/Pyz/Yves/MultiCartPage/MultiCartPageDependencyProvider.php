@@ -9,7 +9,7 @@ namespace Pyz\Yves\MultiCartPage;
 
 use SprykerShop\Yves\MultiCartPage\MultiCartPageDependencyProvider as SprykerShopMultiCartPageDependencyProvider;
 use SprykerShop\Yves\ProductBundleWidget\Plugin\MultiCartPage\ProductBundleItemCounterWidgetPlugin;
-use SprykerShop\Yves\SharedCartWidget\Plugin\CartDeleteCompanyUsersListWidgetPlugin;
+use SprykerShop\Yves\SharedCartWidget\Plugin\MultiCartPage\CartDeleteCompanyUsersListWidgetPlugin;
 use SprykerShop\Yves\SharedCartWidget\Plugin\MultiCartPage\CartListPermissionGroupWidgetPlugin;
 use SprykerShop\Yves\ShoppingListWidget\Plugin\MultiCartPage\CartToShoppingListWidgetPlugin;
 
