@@ -91,6 +91,10 @@
             color: $setting-color-gray-3;
             white-space: nowrap;
             @include helper-effect-transition(color);
+
+            &:hover {
+                color: $setting-color-gray-5;
+            }
         }
 
         @content;
