@@ -13,51 +13,55 @@
 {% set itemCount = data.cart.items | length %}
 
 {% block body %}
-    <div class="grid grid--middle text-left">
-        <div class="col col--sm-9">
-            {% include molecule('mini-cart-radio', 'MultiCartWidget') with {
-                class: config.name ~ '__radio',
-                data: {
-                    idCart: data.cart.idQuote,
-                    isDefault: data.cart.isDefault,
-                }
-            } only %}
-            {% if data.cart.isDefault %}
-                <a class="{{ config.name }}__title" href="{{ path('cart') }}">
-                    <strong class="{{ config.name }}__name">{{ data.cart.name }}</strong>
-                    <span class="{{ config.name }}__marker">
-                        ({{ 'multi_cart_widget.cart.default' | trans }})
-                    </span>
-                </a>
-            {% else %}
-                <a class="{{ config.name }}__title" href="{{ path('multi-cart/set-default', {idQuote: data.cart.idQuote}) }}">
-                    <strong class="{{ config.name }}__name">{{ data.cart.name }}</strong>
-                </a>
-            {% endif %}
-            <div class="{{ config.name }}__info">
-                {% if widgetExists('ProductBundleItemCounterWidgetPlugin') %}
-                    <span class="{{ config.name }}__quantity">
-                        {{ widget('ProductBundleItemCounterWidgetPlugin', data.cart, config.name) }}
-                    </span>
-                {% else %}
-                    {% set label = (itemCount == 1)
-                        ? 'multi_cart_widget.cart.item'
-                        : 'multi_cart_widget.cart.items'
-                    %}
-                    <span class="{{ config.name }}__quantity">
-                      {{ itemCount }} {{ label | trans }}
-                    </span>
-                {% endif %}
+    <div class="grid grid--middle grid--justify text-left">
+        <div class="col">
+            <div class="grid grid--middle">
+                <div class="col">
+                    {% include molecule('mini-cart-radio', 'MultiCartWidget') with {
+                        data: {
+                            idCart: data.cart.idQuote,
+                            isDefault: data.cart.isDefault,
+                        }
+                    } only %}
+                </div>
+                <div class="col">
+                    {% if data.cart.isDefault %}
+                        <a class="{{ config.name }}__title" href="{{ path('cart') }}">
+                            <strong class="{{ config.name }}__name">{{ data.cart.name }}</strong>
+                            <span class="{{ config.name }}__marker">
+                                ({{ 'multi_cart_widget.cart.default' | trans }})
+                            </span>
+                        </a>
+                    {% else %}
+                        <a class="{{ config.name }}__title" href="{{ path('multi-cart/set-default', {idQuote: data.cart.idQuote}) }}">
+                            <strong class="{{ config.name }}__name">{{ data.cart.name }}</strong>
+                        </a>
+                    {% endif %}
+                    <div class="{{ config.name }}__info">
+                        {% if widgetExists('ProductBundleItemCounterWidgetPlugin') %}
+                            <span class="{{ config.name }}__quantity">
+                                {{ widget('ProductBundleItemCounterWidgetPlugin', data.cart, config.name) }}
+                            </span>
+                        {% else %}
+                            {% set label = (itemCount == 1)
+                                ? 'multi_cart_widget.cart.item'
+                                : 'multi_cart_widget.cart.items'
+                            %}
+                            <span class="{{ config.name }}__quantity">
+                                {{ itemCount }} {{ label | trans }}
+                            </span>
+                        {% endif %}
 
-                {{ widget('SharedCartPermissionGroupWidgetPlugin', data.cart) }}
+                        {{ widget('SharedCartPermissionGroupWidgetPlugin', data.cart) }}
+                    </div>
+                </div>
             </div>
         </div>
-
-        <div class="col col--sm-3 text-right">
-            <span class="{{ config.name }}__price">
+        <div class="col text-right">
+            {% set priceActive = data.cart.isDefault ? config.name ~ '__price--active' : ''%}
+            <span class="{{ config.name }}__price {{ priceActive }}">
                {{ data.total | money(true, data.cart.currency.code) }}<br>
             </span>
         </div>
-
     </div>
 {% endblock %}

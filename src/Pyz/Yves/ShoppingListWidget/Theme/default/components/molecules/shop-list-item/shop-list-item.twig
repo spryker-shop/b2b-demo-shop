@@ -12,14 +12,14 @@
 
     {% set hasWriteAccess =  can('WriteShoppingListPermissionPlugin', data.shoppingList.idShoppingList) %}
 
-    <div class="spacing-bottom spacing-bottom--small">
-        <a href="{{ path('shopping-list/details', { idShoppingList: (data.shoppingList.idShoppingList)}) }}" class="{{ config.name }}__name">
-            <strong>{{ data.shoppingList.name }}</strong>
+    <div>
+        <a href="{{ path('shopping-list/details', { idShoppingList: (data.shoppingList.idShoppingList)}) }}">
+            <strong class="{{ config.name }}__name">{{ data.shoppingList.name }}</strong>
+            <span class="{{ config.name }}__owner">({{ data.shoppingList.owner }})</span>
         </a>
-        <span class="{{ config.name }}__owner">({{ data.shoppingList.owner }})</span>
     </div>
 
-    <div class="spacing-bottom spacing-bottom--small">
+    <div>
         <span class="{{ config.name }}__items-count">
             {{ data.shoppingList.numberOfItems }}
             {{ 'shopping_list_widget.items' | trans }}

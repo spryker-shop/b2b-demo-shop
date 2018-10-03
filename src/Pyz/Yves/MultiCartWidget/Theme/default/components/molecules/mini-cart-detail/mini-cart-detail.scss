@@ -2,7 +2,7 @@
     #{$name} {
         position: relative;
         padding: rem(13) rem(29) rem(15) rem(22);
-        min-width: rem(560);
+        min-width: rem(410);
         border-bottom: 1px solid $setting-color-gray-6;
 
         &:hover {
@@ -33,7 +33,10 @@
             font-size: $setting-font-size-base;
             font-weight: fw(medium);
             line-height: normal;
-            color: $setting-color-gray-4;
+            color: $setting-color-gray-2;
+            &--active {
+                color: $setting-color-gray-4;
+            }
         }
 
         &__info {
@@ -61,11 +64,6 @@
             margin-right: rem(9);
             border-radius: $setting-border-radius;
             vertical-align: middle;
-        }
-
-        &__radio {
-            display: inline-block;
-            vertical-align: text-top;
         }
 
         @content;
