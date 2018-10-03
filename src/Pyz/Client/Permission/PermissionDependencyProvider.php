@@ -13,12 +13,15 @@ use Spryker\Client\Permission\PermissionDependencyProvider as SprykerPermissionD
 use Spryker\Client\SharedCart\Plugin\ReadSharedCartPermissionPlugin;
 use Spryker\Client\SharedCart\Plugin\WriteSharedCartPermissionPlugin;
 use Spryker\Client\ShoppingList\Plugin\WriteShoppingListPermissionPlugin;
+use Spryker\Shared\CheckoutPermissionConnector\Plugin\Permission\PlaceOrderWithAmountUpToPermissionPlugin;
+use Spryker\Shared\CompanyUser\Plugin\AddCompanyUserPermissionPlugin;
+use Spryker\Shared\CompanyUserInvitation\Plugin\ManageCompanyUserInvitationPermissionPlugin;
 use Spryker\Zed\CartPermissionConnector\Communication\Plugin\AlterCartUpToAmountPermissionPlugin;
 use Spryker\Zed\ShoppingList\Communication\Plugin\ReadShoppingListPermissionPlugin;
-use SprykerShop\Client\CheckoutPage\Plugin\PlaceOrderWithAmountUpToPermissionPlugin;
 use SprykerShop\Shared\CartPage\Plugin\AddCartItemPermissionPlugin;
 use SprykerShop\Shared\CartPage\Plugin\ChangeCartItemPermissionPlugin;
 use SprykerShop\Shared\CartPage\Plugin\RemoveCartItemPermissionPlugin;
+use SprykerShop\Shared\CompanyPage\Plugin\CompanyUserStatusChangePermissionPlugin;
 
 class PermissionDependencyProvider extends SprykerPermissionDependencyProvider
 {
@@ -48,6 +51,9 @@ class PermissionDependencyProvider extends SprykerPermissionDependencyProvider
             new RemoveCartItemPermissionPlugin(),
             new AlterCartUpToAmountPermissionPlugin(),
             new PlaceOrderWithAmountUpToPermissionPlugin(),
+            new ManageCompanyUserInvitationPermissionPlugin(),
+            new AddCompanyUserPermissionPlugin(),
+            new CompanyUserStatusChangePermissionPlugin(),
         ];
     }
 }
