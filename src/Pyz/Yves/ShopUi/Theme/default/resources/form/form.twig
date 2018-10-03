@@ -30,14 +30,15 @@
         {% set required = false %}
     {%- endif -%}
 
-    {%- set modifiers = errors is empty ? ['expand'] : ['expand', 'error'] -%}
+    {%- set modifiers = errors is empty ? ['full-width'] : ['full-width', 'error'] -%}
 
-    {% embed atom('custom-select') with {
+    {% embed molecule('custom-select') with {
         modifiers: modifiers,
         attributes: {
             multiple: multiple,
             placeholder: placeholder,
-            required: required
+            required: required,
+            'config-width': '100%'
         },
         embed: {
             attributes: block('widget_attributes'),

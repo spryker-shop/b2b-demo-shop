@@ -1,0 +1,245 @@
+@mixin shop-ui-custom-select($name: '.custom-select') {
+    #{$name} {
+        position: relative;
+        max-width: 100%;
+        display: inline-block;
+
+        &__select {
+            border-radius: $setting-border-radius;
+            border: 1px solid $setting-color-gray-1;
+            color: $setting-color-gray-6;
+            background: $setting-color-gray-13;
+            font: fw(regular) rem(15)/rem(46) $setting-font-family;
+            padding: 0 rem(45) 0 rem(20);
+            appearance: none;
+        }
+
+        &__caret {
+            position: absolute;
+            z-index: $setting-zi-element;
+            top: 50%;
+            right: 21px;
+            width: 12px;
+            height: 7px;
+            transform: translateY(-50%);
+            pointer-events: none;
+        }
+
+        &--alternative {
+            text-transform: uppercase;
+
+            #{$name}__select {
+                text-transform: uppercase;
+                border-radius: 0;
+                background: none;
+                border: none;
+                color: $setting-color-gray-4;
+                font-size: rem(11);
+                line-height: rem(40);
+                font-weight: fw(bold);
+                letter-spacing: rem(0.6);
+                padding: 0 rem(30) 0 rem(18);
+            }
+
+            #{$name}__caret {
+                right: 13px;
+                width: 7px;
+                height: 4px;
+                transform: translateY(-2px);
+            }
+        }
+
+        &--small {
+            #{$name}__select {
+                font-size: rem(14);
+                line-height: rem(38);
+            }
+
+            #{$name}__caret {
+                width: 9px;
+                height: 5px;
+            }
+        }
+
+        &--full-width {
+            width: 100%;
+
+            #{$name}__select {
+                width: 100%;
+            }
+        }
+
+        &--margin-bottom {
+            margin-bottom: rem(21);
+        }
+
+        &--margin-top {
+            margin-top: rem(12);
+        }
+
+        &--light {
+            #{$name}__select,
+            .select2-selection__rendered {
+                background: $setting-color-white;
+            }
+        }
+
+        @content;
+    }
+}
+
+@mixin shop-ui-select2($name: '.select2') {
+    #{$name} {
+        &-selection__rendered {
+            display: block;
+            border-radius: $setting-border-radius;
+            border: 1px solid $setting-color-gray-1;
+            color: $setting-color-gray-6;
+            background: $setting-color-gray-13;
+            font: fw(regular) rem(15)/rem(46) $setting-font-family;
+            padding: 0 rem(45) 0 rem(20);
+            cursor: pointer;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        &-selection__arrow {
+            display: none;
+        }
+
+        &-hidden-accessible {
+            border: 0;
+            clip: rect(0 0 0 0);
+            clip-path: inset(50%);
+            height: 1px;
+            overflow: hidden;
+            padding: 0;
+            position: absolute;
+            width: 1px;
+            white-space: nowrap;
+        }
+
+        &-container {
+            box-sizing: border-box;
+            display: inline-block;
+            margin: 0;
+            position: relative;
+            vertical-align: middle;
+
+            &--alternative {
+
+                #{$name}-selection__rendered {
+                    border-radius: 0;
+                    border: none;
+                    color: $setting-color-gray-4;
+                    background: none;
+                    font-size: rem(11);
+                    line-height: rem(40);
+                    font-weight: fw(bold);
+                    letter-spacing: rem(0.6);
+                    padding: 0 rem(30) 0 rem(18);
+                }
+
+                #{$name}-dropdown {
+                    padding: rem(11) 0 rem(12) rem(19);
+                    border-radius: 0 0 $setting-border-radius $setting-border-radius;
+                    box-shadow: 0 18px 18px 0 $setting-color-shadow-1, 0 3px 3px 0 $setting-color-shadow-1;
+                }
+
+                #{$name}-results__option {
+                    padding: 0;
+                    font-size: rem(13);
+
+                    &[aria-selected='true'] {
+                        &::before {
+                            display: none;
+                        }
+                    }
+                }
+            }
+
+            &--small {
+
+                #{$name}-selection__rendered {
+                    font-size: rem(14);
+                    line-height: rem(38);
+                }
+
+                #{$name}-results__option {
+                    font-size: rem(14);
+                }
+            }
+        }
+
+        &-dropdown {
+            position: absolute;
+            z-index: $setting-zi-dropdown;
+            box-sizing: border-box;
+            display: block;
+            border: none;
+            margin: 0;
+            padding: rem(15) rem(20) rem(15) rem(15);
+            border-radius: $setting-border-radius;
+            background-color: $setting-color-white;
+            box-shadow: 0 18px 18px 0 $setting-color-shadow-1, 0 3px 3px 0 $setting-color-shadow-1;
+        }
+
+        &-search--dropdown.select2-search--hide {
+            display: none;
+        }
+
+        &-results {
+            display: block;
+        }
+
+        &-results__option {
+            color: $setting-color-gray-3;
+            font-size: rem(15);
+            font-weight: fw(regular);
+            line-height: 1.87;
+            letter-spacing: rem(0.2);
+            padding: 0 0 0 27px;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+
+            &[aria-selected] {
+                cursor: pointer;
+            }
+
+            &[aria-selected='true'] {
+                background: none;
+                position: relative;
+                &::before {
+                    content: '';
+                    position: absolute;
+                    border-left: 2px solid $setting-color-gray-3;
+                    border-bottom: 2px solid $setting-color-gray-3;
+                    width: 10px;
+                    height: 6px;
+                    top: rem(9);
+                    left: rem(3);
+                    transform: rotate(-45deg);
+                }
+            }
+
+            &--highlighted[aria-selected] {
+                background: none;
+                color: $setting-color-gray-3;
+                &:hover {
+                    background: none;
+                    color: $setting-color-gray-6;
+                    &::before {
+                        border-color: $setting-color-gray-6;
+                    }
+                }
+            }
+        }
+
+        @content;
+    }
+}
+
+@include shop-ui-custom-select();
+@include shop-ui-select2();
