@@ -91,6 +91,21 @@
     {% endembed %}
 {%- endblock -%}
 
+{% block choice_widget_expanded -%}
+    <ul class="list {{ '--inline' in label_attr.class|default('') ? 'list--inline' : '' }}" {{ block('widget_container_attributes') }}>
+        {% for child in form %}
+            <li class="list__item">
+                {{- form_errors(child, {
+                    parent_label_class: label_attr.class|default(''),
+                }) -}}
+                {{- form_widget(child, {
+                    parent_label_class: label_attr.class|default(''),
+                }) -}}
+            </li>
+        {% endfor %}
+    </ul>
+{%- endblock choice_widget_expanded %}
+
 {%- block checkbox_widget -%}
     {%- set type = type | default('checkbox') -%}
     {%- set component = component | default(atom(type)) -%}
