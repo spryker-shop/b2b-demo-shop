@@ -6,17 +6,15 @@
 } %}
 
 {% block body %}
-    <div>
-        {% include molecule('rating-selector', 'ProductReviewWidget') with {
-            modifiers: ['expand'],
-            data: {
-                value: data.value,
-                maxValue: data.maxValue,
-                useHalfSteps: true
-            },
-            attributes: {
-                readonly: true
-            }
-        } only %}
-    </div>
+    {% include molecule('rating-selector', 'ProductReviewWidget') with {
+        modifiers: ['expand'],
+        data: {
+            value: data.value,
+            maxValue: data.maxValue,
+            useHalfSteps: true
+        },
+        attributes: {
+            readonly: true
+        }
+    } only %}
 {% endblock %}

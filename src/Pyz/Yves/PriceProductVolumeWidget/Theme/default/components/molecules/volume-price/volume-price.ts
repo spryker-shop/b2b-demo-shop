@@ -13,7 +13,9 @@ export default class VolumePrice extends Component {
         this.quantityElement = <HTMLFormElement>document.querySelector(`.${this.jsName}__quantity`);
         this.highLightedClass = <string>`${this.name}__price--highlighted`;
 
-        this.mapEvents();
+        if(this.quantityElement) {
+            this.mapEvents();
+        }
     }
 
     private mapEvents(): void {
