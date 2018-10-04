@@ -63,6 +63,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
     {
         return [
             new ProductCartPlugin(),
+            new ProductUrlCartPlugin(),
             new IsQuantitySplittableItemExpanderPlugin(),
             new CartItemPricePlugin(),
             new CartItemProductOptionPlugin(),
@@ -80,7 +81,6 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new AmountSalesUnitItemExpanderPlugin(), #ProductPackagingUnit
             new ProductPackagingUnitItemExpanderPlugin(), #ProductPackagingUnit
             new CustomAmountPriceItemExpanderPlugin(), #ProductPackagingUnit
-            new ProductUrlCartPlugin(),
         ];
     }
 
