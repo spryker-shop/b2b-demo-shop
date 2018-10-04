@@ -2,27 +2,25 @@ import Component from 'ShopUi/models/component';
 
 export default class QuantityCounter extends Component {
 
-    readonly incrementButton: HTMLButtonElement
-    readonly decrementButton: HTMLButtonElement
-    readonly input: HTMLInputElement
-    readonly value: number
+    incrementButton: HTMLButtonElement
+    decrementButton: HTMLButtonElement
+    input: HTMLInputElement
+    value: number
     readonly duration: number
     timeout: number
 
     constructor() {
         super();
-        this.incrementButton = <HTMLButtonElement>this.querySelector(`.${this.jsName}__button-increment`);
-        this.decrementButton = <HTMLButtonElement>this.querySelector(`.${this.jsName}__button-decrement`);
-        this.input = <HTMLInputElement>this.querySelector(`.${this.jsName}__input`);
-        this.value = this.getValue;
         this.duration = 1000;
         this.timeout = 0;
     }
 
     protected readyCallback(): void {
-        if(this.isAvailable) {
-            this.mapEvents();
-        }
+        this.incrementButton = <HTMLButtonElement>this.querySelector(`.${this.jsName}__button-increment`);
+        this.decrementButton = <HTMLButtonElement>this.querySelector(`.${this.jsName}__button-decrement`);
+        this.input = <HTMLInputElement>this.querySelector(`.${this.jsName}__input`);
+        this.value = this.getValue;
+        this.mapEvents();
     }
 
     protected mapEvents(): void {
@@ -35,23 +33,25 @@ export default class QuantityCounter extends Component {
 
     protected incrementValue(event): void {
         event.preventDefault();
-        const value = +this.input.value;
-        const potentialValue = value + this.step;
-
-        if(value <= this.maxQuantity) {
-            this.input.value = potentialValue.toString();
-            this.triggerInputEvent();
+        if(this.isAvailable) {
+            const value = +this.input.value;
+            const potentialValue = value + this.step;
+            if(value <= this.maxQuantity) {
+                this.input.value = potentialValue.toString();
+                this.triggerInputEvent();
+            }
         }
     }
 
     protected decrementValue(event): void {
         event.preventDefault();
-        const value = +this.input.value;
-        const potentialValue = value - this.step;
-
-        if(potentialValue >= this.minQuantity) {
-            this.input.value = potentialValue.toString();
-            this.triggerInputEvent();
+        if(this.isAvailable) {
+            const value = +this.input.value;
+            const potentialValue = value - this.step;
+            if(potentialValue >= this.minQuantity) {
+                this.input.value = potentialValue.toString();
+                this.triggerInputEvent();
+            }
         }
     }
 

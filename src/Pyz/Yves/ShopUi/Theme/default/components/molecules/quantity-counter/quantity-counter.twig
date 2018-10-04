@@ -27,9 +27,8 @@
     <button class="{{ config.name }}__button
                    {% if data.isDisabled or data.isReadOnly %}
                         {{ config.name }}__button--disabled
-                   {% else %}
-                        {{ config.jsName }}__button-decrement
                    {% endif %}
+                   {{ config.jsName }}__button-decrement
                    {{ config.name }}__button--decrement">-</button>
 
     {% block quantityField %}
@@ -45,9 +44,8 @@
     <button class="{{ config.name }}__button
                    {% if data.isDisabled or data.isReadOnly %}
                        {{ config.name }}__button--disabled
-                   {% else %}
-                       {{ config.jsName }}__button-increment
                    {% endif %}
+                   {{ config.jsName }}__button-increment
                    {{ config.name }}__button--increment">+</button>
 {% endblock %}
 
