@@ -1,1 +1,1 @@
-import './shopping-list-permission';
+// import './shopping-list-permission';
