@@ -12,7 +12,7 @@
 
 {% block body %}
     {% include atom('radio') with {
-        class: 'js-' ~ config.name,
+        class: config.jsName,
         attributes: {
             name: 'cart-isDefault',
             checked: data.isDefault,
