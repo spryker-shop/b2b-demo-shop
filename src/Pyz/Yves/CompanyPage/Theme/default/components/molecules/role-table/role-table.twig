@@ -66,7 +66,7 @@
                             {% endif %}
                             {% if data.actions.delete %}
                                 <li class="menu__item">
-                                    <a class="table__action" href="{{ url('company/company-role/delete', {'id': role.idCompanyRole }) }}" title="{{ "company.account.business_unit.delete" | trans }}">
+                                    <a class="table__action" href="{{ url('company/company-role/confirm-delete', {'id': role.idCompanyRole }) }}" title="{{ "company.account.business_unit.delete" | trans }}">
                                         {% include atom('icon') with {
                                             data: {
                                                 name: 'delete'

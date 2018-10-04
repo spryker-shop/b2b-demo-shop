@@ -49,11 +49,11 @@
                     {{ 'packaging_units.pdp.sales-units' | trans }}:
                 </div>
                 <div class="measurement-unit__value">
-                    {% embed atom('custom-select') with {
-                        modifiers: ['flexible-width', 'small'],
+                    {% embed molecule('custom-select') with {
+                        modifiers: ['small'],
                         attributes: {
                             name: 'id-product-measurement-sales-unit',
-                            'selectWidth': 'resolve'
+                            'config-theme': 'small'
                         },
                         embed: {
                             salesUnits: data.salesUnits
@@ -140,11 +140,11 @@
                     {{ 'packaging_units.pdp.sales-units' | trans }}:
                 </div>
                 <div class="measurement-unit__value">
-                    {% embed atom('custom-select') with {
-                        modifiers: ['flexible-width', 'small'],
+                    {% embed molecule('custom-select') with {
+                        modifiers: ['small'],
                         attributes: {
                             name: "amount-id-product-measurement-sales-unit[" ~ data.product.sku ~ "]",
-                            'selectWidth': 'resolve'
+                            'config-theme': 'small'
                         },
                         embed: {
                             salesUnits: data.leadProductSalesUnits

@@ -37,8 +37,8 @@
                 <li class="list__item spacing-y">
                     <label>
                         <span class="{{ config.name }}__label">{{ ('product.attribute.' ~ attributeName) | trans }}:</span>
-                        {% include atom('custom-select') with {
-                            modifiers: ['flexible-width', 'with-bg'],
+                        {% include molecule('custom-select') with {
+                            modifiers: ['small'],
                             data: {
                                 label: ('product.attribute.' ~ attributeName) | trans,
                                 options: options
@@ -46,7 +46,7 @@
                             attributes: {
                                 name: 'preselectedAttributes[' ~ attributeName ~ ']',
                                 'onchange': 'this.form.submit();',
-                                'selectWidth': 'resolve'
+                                'config-theme': 'small'
                             }
                         } only %}
                     </label>

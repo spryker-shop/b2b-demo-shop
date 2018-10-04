@@ -19,11 +19,11 @@
                         </div>
 
                         <div class="{{config.name}}__col col">
-                            {% embed atom('custom-select') with {
-                                modifiers: ['flexible-width'],
+                            {% embed molecule('custom-select') with {
+                                modifiers: ['small', 'light'],
                                 attributes: {
                                     name: 'ipp',
-                                    'selectWidth': 'resolve',
+                                    'config-theme': 'small'
                                 },
                                 embed: {
                                     pagination: _view.pagination
@@ -48,11 +48,11 @@
                         </div>
 
                         <div class="{{config.name}}__col col">
-                            {% embed atom('custom-select') with {
-                                modifiers: ['flexible-width'],
+                            {% embed molecule('custom-select') with {
+                                modifiers: ['small', 'light'],
                                 attributes: {
                                     name: 'sort',
-                                    'selectWidth': 'resolve',
+                                    'config-theme': 'small'
                                 },
                                 embed: {
                                     sort: _view.sort

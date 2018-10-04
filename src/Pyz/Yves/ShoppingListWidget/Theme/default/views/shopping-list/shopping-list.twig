@@ -19,7 +19,7 @@
 {% endif %}
 
 {% block body %}
-    <form class="grid grid--justify" method="POST" action="{{ path('shopping-list/add-item') }}">
+    <form class="grid grid--nowrap grid--justify" method="POST" action="{{ path('shopping-list/add-item') }}">
 
         {% include molecule('quantity-counter') with {
             modifiers: ['right-space']
@@ -37,10 +37,11 @@
             </button>
 
             {% if shoppingListOptions is not empty %}
-                {% include atom('custom-select') with {
-                    modifiers: ['expand', 'gap-before'],
+                {% include molecule('custom-select') with {
+                    modifiers: ['full-width', 'margin-top'],
                     attributes: {
-                        name: 'idShoppingList'
+                        name: 'idShoppingList',
+                        'config-width': '100%'
                     },
                     data: {
                         options: shoppingListOptions

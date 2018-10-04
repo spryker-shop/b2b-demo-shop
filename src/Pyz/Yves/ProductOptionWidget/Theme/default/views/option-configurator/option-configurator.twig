@@ -14,10 +14,11 @@
             <div class="product-options__item">
                 <div class="product-options__title js-product-options__title" data-toggle-target="[data-product-option='{{optionGroup.name}}']">{{optionGroup.name | trans}}</div>
                 <div data-product-option="{{ optionGroup.name }}" class="is-hidden">
-                    {% embed atom('custom-select') with {
-                        modifiers: ['pdp-option'],
+                    {% embed molecule('custom-select') with {
+                        modifiers: ['full-width', 'margin-bottom'],
                         attributes: {
-                            name: 'product-option[' ~ optionGroup.name ~ ']'
+                            name: 'product-option[' ~ optionGroup.name ~ ']',
+                            'config-width': '100%'
                         },
                         embed: {
                             options: optionGroup.productOptionValues
