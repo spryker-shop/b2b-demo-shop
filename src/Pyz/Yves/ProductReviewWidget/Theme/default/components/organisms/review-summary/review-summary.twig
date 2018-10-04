@@ -29,23 +29,34 @@
         <div class="col col--sm-5">
             <h3 class="{{ config.name }}__sub-title">{{ 'product_review.product_ratings' | trans }}</h3>
 
-            <div class="{{ config.name }}__rating-box grid grid--middle grid--justify">
-                <div class="col">
-                    {% include molecule('review-average-display', 'ProductReviewWidget') with {
-                        data: {
-                            summary: data.summary,
-                            ratingMaxValue: data.ratingMaxValue
-                        }
-                    } only %}
-                </div>
+            <div class="{{ config.name }}__rating-box text-center">
+                <div class="grid grid--middle grid--justify">
+                    <div class="col">
+                        {% include molecule('review-average-display', 'ProductReviewWidget') with {
+                            data: {
+                                summary: data.summary,
+                                ratingMaxValue: data.ratingMaxValue
+                            }
+                        } only %}
+                    </div>
 
-                <div class="col">
-                    {% include molecule('review-distribution-display', 'ProductReviewWidget') with {
-                        data: {
-                            summary: data.summary
-                        }
-                    } only %}
+                    <div class="col">
+                        {% include molecule('review-distribution-display', 'ProductReviewWidget') with {
+                            data: {
+                                summary: data.summary
+                            }
+                        } only %}
+                    </div>
                 </div>
+                {% if is_granted('ROLE_USER') %}
+                    <button class="button button--hollow spacing-top spacing-top--big {{ config.jsName }}__new-review-form-open">
+                        {{ 'product_review.submit.add_a_review' | trans }}
+                    </button>
+                {% else %}
+                    <a class="button button--hollow spacing-top spacing-top--big" href="{{ path('login') }}">
+                        {{ 'product_review.submit.add_a_review' | trans }}
+                    </a>
+                {% endif %}
             </div>
 
             {% include molecule('toggler-click') with {
@@ -68,17 +79,9 @@
             {% if is_granted('ROLE_USER') %}
                 <a id="review"></a>
 
-                <button class="button float-right spacing-y spacing-y--big {{ config.jsName }}__new-review-form-open">
-                    {{ 'product_review.submit.add_a_review' | trans }}
-                </button>
-
                 <div class="is-hidden {{ config.jsName }}__new-review-form">
                     {{ render(path('product-review/submit', {'idProductAbstract': data.idProductAbstract})) }}
                 </div>
-            {% else %}
-                <a class="button spacing-y spacing-y--big float-right" href="{{ path('login') }}">
-                    {{ 'product_review.submit.add_a_review' | trans }}
-                </a>
             {% endif %}
 
         </div>
