@@ -24,7 +24,7 @@
             url: data.product.url,
             imageUrl: data.product.images is empty ? '' : data.product.images.0.external_url_small,
             price: data.product.prices.DEFAULT,
-            originalPrice: data.product.prices.ORIGINAL is defined ? data.product.prices.ORIGINAL : null
+            originalPrice: data.product.prices.ORIGINAL | default(null)
         }
     } only %}
         {% block labels %}
