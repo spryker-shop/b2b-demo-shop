@@ -70,7 +70,8 @@
                                             url: product.url,
                                             imageUrl: product.images.0.externalUrlSmall | default,
                                             price: product.price,
-                                            originalPrice: product.prices['ORIGINAL'] | default
+                                            originalPrice: product.prices['ORIGINAL'] | default,
+                                            category: 'Office Furniture'
                                         }
                                     } only %}
                                         {% block content %}
