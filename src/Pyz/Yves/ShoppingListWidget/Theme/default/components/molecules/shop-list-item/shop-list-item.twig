@@ -11,26 +11,21 @@
 {% block body %}
 
     {% set hasWriteAccess =  can('WriteShoppingListPermissionPlugin', data.shoppingList.idShoppingList) %}
-
-    <div>
-        <a href="{{ path('shopping-list/details', { idShoppingList: (data.shoppingList.idShoppingList)}) }}">
-            <strong class="{{ config.name }}__name">{{ data.shoppingList.name }}</strong>
-            <span class="{{ config.name }}__owner">({{ data.shoppingList.owner }})</span>
-        </a>
-    </div>
-
-    <div>
-        <span class="{{ config.name }}__items-count">
-            {{ data.shoppingList.numberOfItems }}
-            {{ 'shopping_list_widget.items' | trans }}
-        </span>
-        <span class="{{ config.name }}__access {% if hasWriteAccess %}{{ config.name }}__access--full{% endif %}" >
-            {% if hasWriteAccess %}
-                {{ 'shopping_list_widget.full_access' | trans }}
-            {% else %}
-                {{ 'shopping_list_widget.read_only' | trans }}
-            {% endif %}
-        </span>
-    </div>
+    <a href="{{ path('shopping-list/details', { idShoppingList: (data.shoppingList.idShoppingList)}) }}">
+        <strong class="{{ config.name }}__name">{{ data.shoppingList.name }}</strong>
+        <span class="{{ config.name }}__owner">({{ data.shoppingList.owner }})</span>
+    </a>
+    <br />
+    <span class="{{ config.name }}__items-count">
+        {{ data.shoppingList.numberOfItems }}
+        {{ 'shopping_list_widget.items' | trans }}
+    </span>
+    <span class="{{ config.name }}__access {% if hasWriteAccess %}{{ config.name }}__access--full{% endif %}" >
+        {% if hasWriteAccess %}
+            {{ 'shopping_list_widget.full_access' | trans }}
+        {% else %}
+            {{ 'shopping_list_widget.read_only' | trans }}
+        {% endif %}
+    </span>
 
 {% endblock %}
