@@ -41,14 +41,14 @@
                     url: url('company/user-invitation'),
                     primary: false
                 }
-            ] : []) | merge ([
+            ] : []) | merge (can('AddCompanyUserPermissionPlugin') ? [
                 {
                     title: 'company.account.company_user.add' | trans,
                     url: url('company/user/create'),
                     primary: true,
                     icon: 'plus'
                 }
-            ])
+            ] : [])
         }
     } only %}
 

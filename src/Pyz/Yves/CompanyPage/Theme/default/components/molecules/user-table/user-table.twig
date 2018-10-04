@@ -81,7 +81,7 @@
                                     {% if data.currentCompanyUserId != user.idCompanyUser %}
                                         {% if data.actions.delete %}
                                             <li class="menu__item">
-                                                <a class="table__action" href="{{ url('company/user/delete', {'id': user.idCompanyUser }) }}" title="{{ "company.account.company_user.delete" | trans }}">
+                                                <a class="table__action" href="{{ url('company/user/confirm-delete', {'id': user.idCompanyUser }) }}" title="{{ "company.account.company_user.delete" | trans }}">
                                                     {% include atom('icon') with {
                                                         data: {
                                                             name: 'delete'
