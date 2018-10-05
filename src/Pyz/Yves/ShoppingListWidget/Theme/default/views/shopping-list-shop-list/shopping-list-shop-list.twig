@@ -18,15 +18,17 @@
             {% endfor %}
         {% else %}
             <li class="menu__item">
-                <span class="no-items no-shopping-lists">
+                <div class="no-items no-shopping-lists spacing-x spacing-x--inner spacing-x--bigger spacing-top spacing-top--inner spacing-top--big">
                     {{ 'shopping_list.no_lists_created' | trans }}
-                </span>
+                </div>
             </li>
         {% endif %}
         <li class="menu__item spacing-x spacing-x--inner spacing-x--bigger spacing-y spacing-y--inner spacing-y--big">
-            <a href="{{ path('shopping-list') }}" class="button button--hollow spacing-right spacing-right--big">
-                {{ 'shopping_list.all_shopping_lists' | trans }}
-            </a>
+            {% if data.shoppingListCollection.shoppingLists | length %}
+                <a href="{{ path('shopping-list') }}" class="button button--hollow spacing-right spacing-right--big">
+                    {{ 'shopping_list.all_shopping_lists' | trans }}
+                </a>
+            {% endif %}
             <a href="{{ path('shopping-list') }}" class="button">
                 {% include atom('icon') with {
                     modifiers: ['create-list'],
