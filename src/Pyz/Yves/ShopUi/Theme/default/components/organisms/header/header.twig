@@ -13,8 +13,6 @@
     showUserMenu: not (hideUserMenu | default(false))
 } %}
 
-{% set cartQuantity = data.cartQuantity > 0 ? data.cartQuantity ~ ' ' : '' %}
-
 {% block body %}
 
     <div class="{{ component.renderClass(config.name ~ '__top', modifiers) }}">
@@ -24,11 +22,8 @@
     </div>
 
     <div class="{{ component.renderClass(config.name ~ '__main', modifiers) }}">
-
         {% block headerMainContent %}
-
             <div class="grid container">
-
                 {% include molecule('logo') with {
                     class: 'col'
                 } only %}
@@ -47,101 +42,14 @@
                 <div class="col col--right">
                     {% if data.showUserMenu %}
                         {% if is_granted('ROLE_USER') %}
-
-                            <ul class="user-nav">
-                                <li class="user-nav__item">
-                                    <div class="user-nav__user-name">
-                                        <span class="user-nav__icon">
-                                            {% include atom('icon') with {
-                                                modifiers: ['user'],
-                                                data: {
-                                                    name: 'user'
-                                                }
-                                            } only %}
-                                            {% include atom('icon') with {
-                                                class: 'user-nav__arrow',
-                                                data: {
-                                                    name: 'caret-down'
-                                                }
-                                            } only %}
-                                        </span>
-                                            {{ data.user.customerTransfer.firstName }} {{ data.user.customerTransfer.lastName }}
-                                    </div>
-                                    <ul class="user-sub-nav">
-                                        <li><a class="user-sub-nav__link" href="{{ url('customer/overview') }}">{{ 'customer.account.overview'|trans }}</a></li>
-                                        <li><a class="user-sub-nav__link" href="{{ url('customer/profile') }}">{{ 'customer.account.profile_data'|trans }}</a></li>
-                                        <li><a class="user-sub-nav__link" href="{{ url('customer/address') }}">{{ 'customer.account.address'|trans }}</a></li>
-                                        <li><a class="user-sub-nav__link" href="{{ url('customer/order') }}">{{ 'customer.account.order_history'|trans }}</a></li>
-                                        <li><a class="user-sub-nav__link" href="{{ url('logout') }}">{{ 'customer.logout'|trans }}</a></li>
-                                    </ul>
-                                </li>
-                                <li class="user-nav__item">
-                                    <a class="user-nav__link" href="{{ url('quick-order') }}">
-                                        <span class="user-nav__icon">
-                                            {% include atom('icon') with {
-                                                modifiers: ['quick-order'],
-                                                data: {
-                                                    name: 'quick-order'
-                                                }
-                                            } only %}
-                                        </span>
-                                        {{ 'quick-order.page-title'|trans }}
-                                    </a>
-                                </li>
-                                {#<li class="user-nav__item"> #}
-                                    {#<a class="user-nav__link" href="{{ url('shopping-list') }}">#}
-                                        {#<span class="user-nav__icon">#}
-                                            {#{% include atom('icon') with {#}
-                                                {#modifiers: ['header-shopping-list'],#}
-                                                {#data: {#}
-                                                    {#name: 'shopping-list'#}
-                                                {#}#}
-                                            {#} only %}#}
-                                        {#</span>#}
-                                        {#{{ 'customer.account.shopping_list'|trans }}#}
-                                    {#</a>#}
-                                {#</li>#}
-                                {% if widgetGlobalExists('ShoppingListWidgetPlugin') %}
-                                    {#
-                                    TODO: widgetGlobal('ShoppingListWidgetPlugin') has its own markup of Menu Item and on-hover section;
-                                    TODO: All should be fine, if on project level markup of Menu Item has been removed from Widget
-                                    #}
-                                    <li class="user-nav__item">
-                                        <a class="user-nav__link" href="{{ url('shopping-list') }}">
-                                            <span class="user-nav__icon">
-                                            {% include atom('icon') with {
-                                                modifiers: ['header-shopping-list'],
-                                                data: {
-                                                    name: 'shopping-list'
-                                                }
-                                            } only %}
-                                            </span>
-                                            {{ 'customer.account.shopping_list'|trans }}
-                                        </a>
-                                        <ul class="user-sub-nav user-sub-nav--pull-left spacing spacing--inner spacing--reset">
-                                            {{ widgetGlobal('ShoppingListWidgetPlugin') }}
-                                        </ul>
-                                    </li>
-                                {% endif %}
-                                <li class="user-nav__item">
-                                    {% include molecule('cart-items-counter') with {
-                                        class: 'user-nav__link',
-                                        data: {
-                                            quantity: data.cartQuantity
-                                        }
-                                    } only %}
-                                    <div class="user-sub-nav user-sub-nav--pull-left spacing spacing--inner spacing--reset">
-                                        {% if widgetGlobalExists('MiniCartWidgetPlugin') %}
-                                            {{ widgetGlobal('MiniCartWidgetPlugin', cartQuantity) }}
-                                        {% endif %}
-                                    </div>
-                                </li>
-                            </ul>
-
+                            {% include molecule('user-navigation') with {
+                                data: {
+                                    user: data.user,
+                                    cartQuantity: data.cartQuantity
+                                }
+                            } only %}
                         {% else %}
-
                             <a href="{{ url('login') }}" class="button button--big">{{ 'customer.please_login'|trans }}</a>
-
                         {% endif %}
                     {% endif %}
                 </div>
