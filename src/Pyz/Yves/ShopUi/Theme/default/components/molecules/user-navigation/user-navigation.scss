@@ -8,9 +8,11 @@
             position: relative;
             padding-bottom: 10px;
             z-index: $setting-zi-element + 2;
+
             &:not(:first-child) {
                 margin-left: 30px;
             }
+
             &:hover #{$name}__sub-nav {
                 transform: translateX(-50%) scale(1);
                 opacity: 1;
@@ -33,6 +35,7 @@
             text-align: center;
             cursor: pointer;
             @include helper-effect-transition(color);
+
             &:hover {
                 color: helper-color-light($setting-color-gray-4, 25);
             }
