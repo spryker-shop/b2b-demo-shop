@@ -48,6 +48,7 @@ use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Cart\ProductPackagingU
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Cart\ProductPackagingUnitItemExpanderPlugin;
 use Pyz\Zed\ProductQuantity\Communication\Plugin\Cart\QuantityPreCheckPlugin;
 use Spryker\Zed\ProductQuantity\Communication\Plugin\CartExtension\ProductQuantityRestrictionCartRemovalPreCheckPlugin;
+use Spryker\Zed\SalesOrderThreshold\Communication\Plugin\Cart\AddThresholdMessagesCartPreReloadItemsPlugin;
 use Spryker\Zed\SalesQuantity\Communication\Plugin\Cart\IsQuantitySplittableItemExpanderPlugin;
 use Spryker\Zed\ShipmentCartConnector\Communication\Plugin\Cart\CartShipmentExpanderPlugin;
 use Spryker\Zed\ShipmentCartConnector\Communication\Plugin\Cart\CartShipmentPreCheckPlugin;
@@ -132,6 +133,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new CartBundleItemsPreReloadPlugin(),
             new RemoveInactiveItemsPreReloadPlugin(),
             new RemoveRestrictedItemsPreReloadPlugin(),
+            new AddThresholdMessagesCartPreReloadItemsPlugin(),
         ];
     }
 
