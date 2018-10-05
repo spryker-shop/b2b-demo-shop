@@ -31,13 +31,39 @@
             </span>
             {{  data.user.customerTransfer.firstName }} {{ data.user.customerTransfer.lastName }}
         </div>
-        <ul class="{{ config.name }}__sub-nav">
-            <li><a class="{{ config.name }}__sub-nav-link" href="{{ url('customer/overview') }}">{{ 'customer.account.overview'|trans }}</a></li>
-            <li><a class="{{ config.name }}__sub-nav-link" href="{{ url('customer/profile') }}">{{ 'customer.account.profile_data'|trans }}</a></li>
-            <li><a class="{{ config.name }}__sub-nav-link" href="{{ url('customer/address') }}">{{ 'customer.account.address'|trans }}</a></li>
-            <li><a class="{{ config.name }}__sub-nav-link" href="{{ url('customer/order') }}">{{ 'customer.account.order_history'|trans }}</a></li>
-            <li><a class="{{ config.name }}__sub-nav-link" href="{{ url('logout') }}">{{ 'customer.logout'|trans }}</a></li>
-        </ul>
+        {#<ul class="{{ config.name }}__sub-nav">#}
+            {#<li><a class="{{ config.name }}__sub-nav-link" href="{{ url('customer/overview') }}">{{ 'customer.account.overview'|trans }}</a></li>#}
+            {#<li><a class="{{ config.name }}__sub-nav-link" href="{{ url('customer/profile') }}">{{ 'customer.account.profile_data'|trans }}</a></li>#}
+            {#<li><a class="{{ config.name }}__sub-nav-link" href="{{ url('customer/address') }}">{{ 'customer.account.address'|trans }}</a></li>#}
+            {#<li><a class="{{ config.name }}__sub-nav-link" href="{{ url('customer/order') }}">{{ 'customer.account.order_history'|trans }}</a></li>#}
+            {#<li><a class="{{ config.name }}__sub-nav-link" href="{{ url('logout') }}">{{ 'customer.logout'|trans }}</a></li>#}
+        {#</ul>#}
+        {% include molecule('navigation-list') with {
+            modifiers: ['user-account'],
+            class: config.name ~ '__sub-nav',
+            data: {
+                nodes: [{
+                    url: url('customer/overview'),
+                    title: 'customer.account.overview' | trans
+                },
+                {
+                    url: url('customer/profile'),
+                    title: 'customer.account.profile_data' | trans
+                },
+                {
+                    url: url('customer/address'),
+                    title: 'customer.account.address' | trans
+                },
+                {
+                    url: url('customer/order'),
+                    title: 'customer.account.order_history' | trans
+                },
+                {
+                    url: url('logout'),
+                    title: 'customer.logout' | trans
+                }
+            ]}
+        } only %}
     </li>
     <li class="{{ config.name }}__item">
         <a class="{{ config.name }}__link" href="{{ url('quick-order') }}">

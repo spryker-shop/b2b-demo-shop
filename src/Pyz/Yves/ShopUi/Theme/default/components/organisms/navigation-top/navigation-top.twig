@@ -68,32 +68,20 @@
                             modifiers: ['company-user'],
                             data: {
                                 nodes: [{
-                                    url: 'company/overview',
-                                    title: 'company.account.overview' | trans,
-                                    nodeType: 'link',
-                                    isActive: true,
-                                    validFrom: ''
+                                    url: url('company/overview'),
+                                    title: 'company.account.overview' | trans
                                 },
                                 {
-                                    url: 'company/user',
-                                    title: 'company.account.company_role.users' | trans,
-                                    nodeType: 'link',
-                                    isActive: true,
-                                    validFrom: ''
+                                    url: url('company/user'),
+                                    title: 'company.account.company_role.users' | trans
                                 },
                                 {
-                                    url: 'company/business-unit',
-                                    title: 'company.account.business_unit' | trans,
-                                    nodeType: 'link',
-                                    isActive: true,
-                                    validFrom: ''
+                                    url: url('company/business-unit'),
+                                    title: 'company.account.business_unit' | trans
                                 },
                                 {
-                                    url: 'company/company-role',
-                                    title: 'company.account.company_user.role' | trans,
-                                    nodeType: 'link',
-                                    isActive: true,
-                                    validFrom: ''
+                                    url: url('company/company-role'),
+                                    title: 'company.account.company_user.role' | trans
                                 }]
                             }
                         } only %}

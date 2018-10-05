@@ -78,4 +78,14 @@
             color: $setting-color-gray-5;
         }
     }
+
+    &--user-account {
+        color: $setting-color-gray-3;
+        @include helper-effect-transition(color);
+
+        &:hover {
+            text-decoration: none;
+            color: $setting-color-gray-4;
+        }
+    }
 }
