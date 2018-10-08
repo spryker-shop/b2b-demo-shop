@@ -1,0 +1,79 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'permission-table',
+    tag: 'div'
+} %}
+
+{% define data = {
+    permissions: required,
+    idCompanyRole: required,
+    actions: {
+        configure: false,
+        switch: false
+    }
+} %}
+
+{% set showActions = data.actions.configure or data.actions.switch %}
+
+{% block body %}
+    <table class="table table--expand">
+        <thead>
+            <tr>
+                <th>{{ 'company.account.company_role.permission.key' | trans }}</th>
+                {% if data.actions.switch %}
+                    <th>{{ 'company.account.company_role.permission.status' | trans }}</th>
+                {% endif %}
+                {% if showActions %}
+                    <th>{{ 'company.account.table.actions' | trans }}</th>
+                {% endif %}
+            </tr>
+        </thead>
+        <tbody>
+        {% for permission in data.permissions %}
+            {% set isAssigned = permission.idCompanyRole | default(false) %}
+            <tr>
+                <td>{{ permission.key | trans }}</td>
+                {% if data.actions.switch %}
+                    <td>
+                        {% if isAssigned %}
+                            {{ 'company.account.company_role.permission.assigned' | trans }}
+                        {% else %}
+                            {{ 'company.account.company_role.permission.unassigned' | trans }}
+                        {% endif %}
+                    </td>
+                {% endif %}
+                {% if showActions %}
+                    <td>
+                        <ul class="menu menu--inline">
+                            {% if data.actions.configure and permission.configurationSignature %}
+                                <li class="menu__item">
+                                    <a href="{{ path('company/company-role-permission/configure', {
+                                        'id-permission': permission.idPermission,
+                                        'id-company-role': data.idCompanyRole
+                                    }) }}">
+                                        {{ 'company.account.company_role.permission.configure' | trans }}
+                                    </a>
+                                </li>
+                            {% endif %}
+                            {% if data.actions.switch %}
+                                <li class="menu__item">
+                                    {% if isAssigned %}
+                                        <a href="{{ path('company/company-role-permission/unassign', {'id-permission': permission.idPermission, 'id-company-role': _view.idCompanyRole}) }}">
+                                            {{ 'company.account.company_role.permission.unassign' | trans }}
+                                        </a>
+                                    {% else %}
+                                        <a class="link link--alt" href="{{ path('company/company-role-permission/assign', {'id-permission': permission.idPermission, 'id-company-role': _view.idCompanyRole}) }}">
+                                            {{ 'company.account.company_role.permission.assign' | trans }}
+                                        </a>
+                                    {% endif %}
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </td>
+                {% endif %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

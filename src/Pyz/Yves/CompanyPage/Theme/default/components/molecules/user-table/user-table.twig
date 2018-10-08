@@ -44,7 +44,7 @@
                                 {{ data.role.name }}
                             {% elseif user.companyRoleCollection is not empty %}
                                 {% for companyUserRole in user.companyRoleCollection.roles %}
-                                    {{ companyUserRole.name }}
+                                    {{ not loop.last ? companyUserRole.name ~ ', ' : companyUserRole.name }}
                                 {% endfor %}
                             {% endif %}
                         </td>
@@ -68,7 +68,7 @@
                                 <ul class="menu menu--inline">
                                     {% if data.actions.update %}
                                         <li class="menu__item">
-                                            <a class="table__action" href="{{ url('company/user/update', {'id': user.idCompanyUser}) }}" title="{{ "company.account.company_user.edit" | trans }}">
+                                            <a class="link link--action" href="{{ url('company/user/update', {'id': user.idCompanyUser}) }}" title="{{ "company.account.company_user.edit" | trans }}">
                                                 {% include atom('icon') with {
                                                     data: {
                                                         name: 'edit'
@@ -81,7 +81,7 @@
                                     {% if data.currentCompanyUserId != user.idCompanyUser %}
                                         {% if data.actions.delete %}
                                             <li class="menu__item">
-                                                <a class="table__action" href="{{ url('company/user/confirm-delete', {'id': user.idCompanyUser }) }}" title="{{ "company.account.company_user.delete" | trans }}">
+                                                <a class="link link--action" href="{{ url('company/user/confirm-delete', {'id': user.idCompanyUser }) }}" title="{{ "company.account.company_user.delete" | trans }}">
                                                     {% include atom('icon') with {
                                                         data: {
                                                             name: 'delete'
