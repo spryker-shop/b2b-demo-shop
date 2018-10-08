@@ -2,17 +2,21 @@ import Component from 'ShopUi/models/component';
 
 export default class QuantityCounter extends Component {
 
-    incrementButton: HTMLButtonElement
-    decrementButton: HTMLButtonElement
-    input: HTMLInputElement
-    value: number
-    readonly duration: number
-    timeout: number
+    incrementButton: HTMLButtonElement;
+    decrementButton: HTMLButtonElement;
+    input: HTMLInputElement;
+    value: number;
+    readonly duration: number;
+    timeout: number;
+    counterChange: CustomEvent;
+    inputChange: Event
 
     constructor() {
         super();
         this.duration = 1000;
         this.timeout = 0;
+        this.inputChange = new Event('change');
+        this.counterChange = new CustomEvent('counterChange');
     }
 
     protected readyCallback(): void {
@@ -56,8 +60,8 @@ export default class QuantityCounter extends Component {
     }
 
     protected triggerInputEvent(): void {
-        const changeEvent = new Event('change');
-        this.input.dispatchEvent(changeEvent);
+        this.input.dispatchEvent(this.inputChange);
+        this.input.dispatchEvent(this.counterChange);
     }
 
     protected delayToSubmit(): void {
