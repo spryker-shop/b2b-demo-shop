@@ -2,44 +2,28 @@
 
 {% define data = {
     form: _view.form,
-    idCompanyBusinessUnit: _view.idCompanyBusinessUnit,
-    title: 'company.account.business_unit' | trans,
+    idCompanyBusinessUnit: _view.idCompanyBusinessUnit|default(''),
+    title: 'company.account.address' | trans,
     activePage: 'business-unit'
 } %}
 
 {% block breadcrumbs %}
     {% include molecule('breadcrumb') with {
         data: {
-            steps: [
-                {
-                    label: 'company.account.page-title' | trans,
-                    url: url('company/overview')
-                }, {
-                    label: 'company.account.business_unit' | trans,
-                    url: url('company/business-unit')
-                }, {
-                    label: 'company.account.create_address_information' | trans
-                }
-            ]
-        }
+            steps: [{
+                label: 'company.account' | trans,
+            }, {
+                label: 'company.account.business_unit' | trans,
+            }]}
     } only %}
 {% endblock %}
 
 {% block companyContent %}
-    {% set buIndexUrl = url('company/business-unit/update', { id: data.idCompanyBusinessUnit }) %}
-
     {% include molecule('action-bar', 'ShopUi') with {
         data: {
-            title: 'company.account.create_address_information' | trans,
-            actions: [
-                {
-                    title: 'general.back.button' | trans,
-                    url: buIndexUrl
-                }
-            ]
+            title: 'company.account.create_address_information' | trans
         }
     } only %}
-
     {% include molecule('form') with {
         modifiers: ['narrow'],
         data: {
@@ -55,12 +39,11 @@
                 iso2code: 'col col--sm-12 col--lg-4'
             },
             submit: {
-                enable: true,
-                class: 'button'
+                enable: true
             },
             cancel: {
                 enable: true,
-                url: buIndexUrl,
+                url: url('company/business-unit/update', {'id': data.idCompanyBusinessUnit}),
                 text: 'general.back.button' | trans,
                 icon: null,
                 class: 'button button--hollow'
