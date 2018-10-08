@@ -4,7 +4,7 @@
     title: _view.shoppingList.name,
     form: _view.shoppingListForm,
     shoppingList: _view.shoppingList,
-    shoppingListItemProducts: _view.shoppingListItemProducts,
+    shoppingListItemProducts: _view.productViewTransfers,
     idShoppingList: _view.shoppingList.idShoppingList | default
 } %}
 
@@ -147,7 +147,7 @@
 
                             {% block deleteButton %}
                                 <div class="col">
-                                    <a class="link link--icon" href="{{ path('shopping-list/remove-item', {
+                                    <a class="link link--icon {{ config.jsName }}-remove-button-{{ data.listItem.sku }}" href="{{ path('shopping-list/remove-item', {
                                         idShoppingList: embed.idShoppingList, idShoppingListItem: data.listItem.idShoppingListItem
                                     }) }}">
                                         {% include atom('icon') with {
@@ -159,6 +159,12 @@
                                         {{'customer.account.shopping_list.remove' | trans}}
                                     </a>
                                 </div>
+
+                                {% include molecule('action-single-click-enforcer') with {
+                                    attributes: {
+                                        'target-selector': '.' ~ config.jsName ~ '-remove-button-' ~ data.listItem.sku
+                                    }
+                                } only %}
                             {% endblock %}
                         {% endembed %}
 
@@ -176,7 +182,7 @@
 
         <div class="grid">
             <div class="col col--sm-6 text-left">
-                <a class="button button--alert button--hollow" href="{{ path('shopping-list/delete/confirm', {idShoppingList: data.idShoppingList}) }}">{{ 'customer.account.shopping_list.overview.delete' | trans }}</a>
+                <a class="button button--alert button--hollow" href="{{ path('shopping-list/delete', {idShoppingList: data.idShoppingList}) }}">{{ 'customer.account.shopping_list.overview.delete' | trans }}</a>
             </div>
             <div class="col col--sm-6 text-right">
                 <a href="{{ path('shopping-list') }}" class="button button--hollow spacing-right">
