@@ -4,20 +4,25 @@
     cart: _view.cart,
     form: _view.quoteForm,
     formAction: url('multi-cart/update', {idQuote: _view.cart.idQuote}),
-    title: 'multi_cart.form.quote.name' | trans,
 } %}
 
 {% block breadcrumbs %}
     {% include molecule('breadcrumb') with {
         data: {
-            steps: [{
-                label: 'multi_cart.carts' | trans,
-                url: url('multi-cart'),
-                isActive: false
-            }, {
-                label: data.title,
-                isActive: true
-            }]
+            steps: [
+                {
+                    label: 'customer.account' | trans,
+                    url: url('customer/overview'),
+                },
+                {
+                    label: 'page.multi_cart.shopping_cart.list.title' | trans,
+                    url: url('multi-cart'),
+                },
+                {
+                    label: data.cart.name,
+                    url: data.cart.isDefault ? url('cart') : url('multi-cart/set-default', {idQuote: data.cart.idQuote}),
+                }
+            ]
         }
     } only %}
 {% endblock %}
