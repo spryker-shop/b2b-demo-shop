@@ -159,6 +159,7 @@ export default class PackagingUnitQuantitySelector extends Component {
 
     private mapEvents() {
         this.qtyInSalesUnitInput.addEventListener('input', (event: Event) => this.qtyInputChange());
+        this.qtyInSalesUnitInput.addEventListener('change', (event: Event) => this.qtyInputChange());
         this.measurementUnitInput.addEventListener('change', (event: Event) => this.measurementUnitInputChange(event));
 
         if(this.isAmountBlockEnabled) {

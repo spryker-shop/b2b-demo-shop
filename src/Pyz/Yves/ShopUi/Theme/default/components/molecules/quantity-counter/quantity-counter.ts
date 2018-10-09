@@ -8,15 +8,13 @@ export default class QuantityCounter extends Component {
     value: number;
     readonly duration: number;
     timeout: number;
-    counterChange: CustomEvent;
-    inputChange: Event
+    inputChange: Event;
 
     constructor() {
         super();
         this.duration = 1000;
         this.timeout = 0;
         this.inputChange = new Event('change');
-        this.counterChange = new CustomEvent('counterChange');
     }
 
     protected readyCallback(): void {
@@ -61,7 +59,6 @@ export default class QuantityCounter extends Component {
 
     protected triggerInputEvent(): void {
         this.input.dispatchEvent(this.inputChange);
-        this.input.dispatchEvent(this.counterChange);
     }
 
     protected delayToSubmit(): void {
