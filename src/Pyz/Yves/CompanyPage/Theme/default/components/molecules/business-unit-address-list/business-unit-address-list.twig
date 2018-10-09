@@ -35,7 +35,7 @@
         {% endif %}
     {% endfor %}
 
-    <div class="spacing-bottom--inner">
+    <div class="spacing-bottom spacing-bottom--inner">
         {% if assignedAddresses is not empty %}
             {% include molecule('business-unit-address-table', 'CompanyPage') with {
                 data: {
