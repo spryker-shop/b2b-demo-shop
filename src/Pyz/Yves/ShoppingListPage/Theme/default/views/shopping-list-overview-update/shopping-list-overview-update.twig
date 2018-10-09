@@ -75,6 +75,7 @@
                             modifiers: ['shopping-list'],
                             data: {
                                 listItem: product,
+                                form: data.form,
                                 imageModifiers: ['shopping-list']
                             },
                             embed: {
@@ -117,6 +118,14 @@
                                         {% endif %}
                                     {% endfor %}
                                 </ul>
+
+                                {% for subForm in data.form.items[embed.key].children  %}
+                                    {% if not subForm.rendered %}
+                                        {% if subForm.vars.template_path is defined %}
+                                            {% include subForm.vars.template_path with {'form': subForm} %}
+                                        {% endif %}
+                                    {% endif %}
+                                {% endfor %}
                             {% endblock %}
 
                             {% block price %}
@@ -138,7 +147,7 @@
                                     modifiers: ['shopping-list'],
                                     attributes: {
                                         readonly: not embed.isItemAvailable,
-                                        name: _view.shoppingListForm.items[embed.key].quantity.vars.full_name,
+                                        name: data.form.items[embed.key].quantity.vars.full_name,
                                         value: data.listItem.quantity
                                     }
                                 } only %}

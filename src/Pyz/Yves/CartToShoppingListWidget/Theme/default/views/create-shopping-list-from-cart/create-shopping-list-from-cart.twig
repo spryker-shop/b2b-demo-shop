@@ -27,7 +27,7 @@
             <div class="form__field col col--sm-12">
                 {% include molecule('toggle-select-form', 'CartToShoppingListWidget') with {
                     data: {
-                        attribute: attribute(data.form.children, 'shoppingListName'),
+                        attribute: attribute(data.form.children, 'idShoppingList'),
                         selectAttributes: {
                             'target': 'js-add-new-shopping-list',
                             'class-to-toggle': 'is-hidden'

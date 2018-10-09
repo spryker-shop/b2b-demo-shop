@@ -77,6 +77,8 @@
                             </li>
                         {% endif %}
                     {% endfor %}
+
+                    {{ widget('ShoppingListItemNoteWidgetPlugin', data.listItem.shoppingListItem) }}
                 </ul>
             {% endblock %}
 
