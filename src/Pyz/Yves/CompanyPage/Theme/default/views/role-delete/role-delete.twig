@@ -32,7 +32,7 @@
             title: 'company.account.company_role.delete.confirmation.warning' | trans
         }
     } only %}
-    {{ "company.account.company_role.delete.confirmation.trying_to_delete" | trans }}: <strong>{{ data.roleName }}</strong><br/>
+    {{ "company.account.company_role.delete.confirmation.trying_to_delete" | trans }}: <strong>{{ data.roleName }}</strong><br>
 
     {% if data.assignedUsers is empty %}
         {{ "company.account.company_role.delete.confirmation.deletion_warning" | trans }}<br><br>
