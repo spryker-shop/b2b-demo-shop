@@ -240,7 +240,7 @@ export default class PackagingUnitQuantitySelector extends Component {
     private createChoiceElement(qtyInBaseUnits: number) {
         if (qtyInBaseUnits > 0) {
             let choiceElem = document.createElement('span');
-            let qtyInSalesUnits = qtyInBaseUnits / this.currentSalesUnit.conversion;
+            let qtyInSalesUnits = this.convertBaseUnitsAmountToCurrentSalesUnitsAmount(qtyInBaseUnits);
             let measurementSalesUnitName = this.getUnitName(this.currentSalesUnit.product_measurement_unit.code);
             let measurementBaseUnitName = this.getUnitName(this.baseUnit.code);
 
@@ -281,10 +281,15 @@ export default class PackagingUnitQuantitySelector extends Component {
         }
 
         if ((qtyInBaseUnits - this.getMinQuantity()) % this.getQuantityInterval() !== 0 || (this.getMaxQuantity() > 0 && qtyInBaseUnits > this.getMaxQuantity())) {
-            return this.getMinChoice((qtyInBaseUnits - 1) / this.currentSalesUnit.conversion)
+             return this.getMinChoice(this.convertBaseUnitsAmountToCurrentSalesUnitsAmount(qtyInBaseUnits - 1));
         }
 
         return qtyInBaseUnits;
+    }
+
+    private convertBaseUnitsAmountToCurrentSalesUnitsAmount(qtyInBaseUnits: number)
+    {
+        return Math.round(qtyInBaseUnits / this.currentSalesUnit.conversion * this.currentSalesUnit.precision) / this.currentSalesUnit.precision;
     }
 
     private getMaxChoice(qtyInSalesUnits: number, minChoice: number) {
@@ -301,7 +306,7 @@ export default class PackagingUnitQuantitySelector extends Component {
         }
 
         if ((qtyInBaseUnits - this.getMinQuantity()) % this.getQuantityInterval() !== 0 || qtyInBaseUnits <= minChoice) {
-            return this.getMaxChoice((qtyInBaseUnits + 1) / this.currentSalesUnit.conversion, minChoice)
+            return this.getMaxChoice(this.convertBaseUnitsAmountToCurrentSalesUnitsAmount((qtyInBaseUnits + 1) / this.currentSalesUnit.conversion), minChoice)
         }
 
         return qtyInBaseUnits;
@@ -365,8 +370,8 @@ export default class PackagingUnitQuantitySelector extends Component {
         let salesUnit = this.getSalesUnitById(salesUnitId);
         let qtyInSalesUnits = +this.qtyInSalesUnitInput.value;
         let qtyInBaseUnits = this.multiply(qtyInSalesUnits, this.currentSalesUnit.conversion);
-        qtyInSalesUnits = Math.round(qtyInBaseUnits / salesUnit.conversion * salesUnit.precision) / salesUnit.precision;
         this.currentSalesUnit = salesUnit;
+        qtyInSalesUnits = this.convertBaseUnitsAmountToCurrentSalesUnitsAmount(qtyInBaseUnits);
         this.qtyInSalesUnitInput.value = this.round(qtyInSalesUnits, 4).toString();
         this.qtyInputChange(qtyInSalesUnits);
     }
@@ -472,7 +477,7 @@ export default class PackagingUnitQuantitySelector extends Component {
     private createAmountChoiceElement(amountInBaseUnits: number) {
         if (amountInBaseUnits > 0) {
             let choiceElem = document.createElement('span');
-            let amountInSalesUnits = amountInBaseUnits / this.currentLeadSalesUnit.conversion;
+            let amountInSalesUnits = this.convertBaseUnitsAmountToCurrentSalesUnitsAmount(amountInBaseUnits);
             let measurementSalesUnitName = this.getUnitName(this.currentLeadSalesUnit.product_measurement_unit.code);
             let measurementBaseUnitName = this.getUnitName(this.baseUnit.code);
 
