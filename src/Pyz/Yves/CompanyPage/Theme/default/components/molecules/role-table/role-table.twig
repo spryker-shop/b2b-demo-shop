@@ -44,7 +44,7 @@
                         <ul class="menu menu--inline">
                             {% if data.actions.view %}
                                 <li class="menu__item">
-                                    <a class="table__action" href="{{ path('company/company-role/details', {'id': role.idCompanyRole}) }}" title="{{ 'company.account.company_role.view' | trans }}">
+                                    <a class="link link--alt link--action" href="{{ path('company/company-role/details', {'id': role.idCompanyRole}) }}" title="{{ 'company.account.company_role.view' | trans }}">
                                         {% include atom('icon') with {
                                             data: {
                                                 name: 'edit'
@@ -55,7 +55,7 @@
                             {% endif %}
                             {% if data.actions.update %}
                                 <li class="menu__item">
-                                    <a class="table__action" href="{{ url('company/company-role/update', {'id': role.idCompanyRole}) }}" title="{{ "company.account.business_unit.edit" | trans }}">
+                                    <a class="link link--alt link--action" href="{{ url('company/company-role/update', {'id': role.idCompanyRole}) }}" title="{{ "company.account.business_unit.edit" | trans }}">
                                         {% include atom('icon') with {
                                             data: {
                                                 name: 'edit'
@@ -66,7 +66,7 @@
                             {% endif %}
                             {% if data.actions.delete %}
                                 <li class="menu__item">
-                                    <a class="table__action" href="{{ url('company/company-role/confirm-delete', {'id': role.idCompanyRole }) }}" title="{{ "company.account.business_unit.delete" | trans }}">
+                                    <a class="link link--alt link--action" href="{{ url('company/company-role/confirm-delete', {'id': role.idCompanyRole }) }}" title="{{ "company.account.business_unit.delete" | trans }}">
                                         {% include atom('icon') with {
                                             data: {
                                                 name: 'delete'
