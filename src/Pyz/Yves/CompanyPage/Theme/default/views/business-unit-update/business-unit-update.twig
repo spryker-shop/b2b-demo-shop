@@ -27,17 +27,14 @@
 
 {% block companyContent %}
     {% include molecule('action-bar', 'ShopUi') with {
+        modifiers: ['narrow'],
         data: {
             title: 'company.account.business_unit.edit_information' | trans,
             actions: [
                 {
-                    title: 'general.back.button' | trans,
-                    url: url('company/business-unit')
-                },
-                {
                     title: 'company.account.business_unit.delete' | trans,
                     url: url('company/business-unit/delete', {'id': data.form.vars.value.id_company_business_unit }),
-                    modifiers: ['red'],
+                    modifiers: ['alternative', 'hollow'],
                     icon: 'delete'
                 }
             ]
@@ -52,16 +49,16 @@
                 email: 'col col--sm-12 col--lg-6',
                 phone: 'col col--sm-12 col--lg-6'
             },
-            submit: {
-                enable: true,
-                class: 'button form__action--primary'
-            },
             cancel: {
                 enable: true,
                 url: url('company/business-unit'),
                 text: 'general.back.button' | trans,
                 icon: null,
                 class: 'button button--hollow'
+            },
+            submit: {
+                enable: true,
+                class: 'button'
             },
             embed: {
                 addresses: data.addresses

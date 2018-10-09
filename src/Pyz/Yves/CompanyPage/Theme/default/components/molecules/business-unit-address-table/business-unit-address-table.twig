@@ -34,7 +34,7 @@
                 <td class="table__actions">
                     <ul class="menu menu--inline">
                         <li class="menu__item">
-                            <a class="table__action" href="{{ url('company/address/update', {'id': address.vars.value, 'idCompanyBusinessUnit': data.idCompanyBusinessUnit }) }}" title="{{ 'company.account.address.edit' | trans }}">
+                            <a class="table__action link link--alt link--action" href="{{ url('company/address/update', {'id': address.vars.value, 'idCompanyBusinessUnit': data.idCompanyBusinessUnit }) }}" title="{{ 'company.account.address.edit' | trans }}">
                                 {% include atom('icon') with {
                                     data: {
                                         name: 'edit'
@@ -43,7 +43,7 @@
                             </a>
                         </li>
                         <li class="menu__item">
-                            <a class="table__action" href="{{ url('company/address/delete-confirmation', {'id': address.vars.value, 'idCompanyBusinessUnit': data.idCompanyBusinessUnit }) }}" title="{{ 'company.account.address.delete' | trans }}">
+                            <a class="table__action link link--alt link--action" href="{{ url('company/address/delete-confirmation', {'id': address.vars.value, 'idCompanyBusinessUnit': data.idCompanyBusinessUnit }) }}" title="{{ 'company.account.address.delete' | trans }}">
                                 {% include atom('icon') with {
                                     data: {
                                         name: 'delete'
