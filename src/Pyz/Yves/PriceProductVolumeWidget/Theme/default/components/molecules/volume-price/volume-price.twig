@@ -18,7 +18,7 @@
 
     <span class="price__amount price__amount--pdp {{ config.name }}__amount {% if data.originalAmount is not empty -%} price__amount--alt {%- endif -%}">
         <span class="{{ config.jsName }}__price {{ config.name }}__price">
-            {{ data.amount }}
+            {{ data.amount | money }}
         </span>
     </span>
 
