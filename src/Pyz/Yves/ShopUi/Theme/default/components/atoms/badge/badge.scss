@@ -5,15 +5,16 @@
     font-weight: fw(bold);
     letter-spacing: rem(0.4);
     color: $setting-color-white;
-    background-color: $setting-color-gray-2;
+    background-color: $setting-color-gray-1;
 
-    &--shopping-list {
+    &--shopping-list,
+    &--multi-cart {
         display: inline-block;
-        line-height: rem(22);
         color: $setting-color-gray-4;
-        padding: 0 rem(9);
+        padding: rem(4) rem(9);
         margin-right: rem(9);
         vertical-align: middle;
+        min-width: rem(64);
     }
 
     &--access {
@@ -26,11 +27,5 @@
         text-transform: uppercase;
         letter-spacing: rem(0.2);
         padding: rem(5) rem(8);
-    }
-
-    &--multi-cart {
-        background: $setting-color-yellow-1;
-        text-transform: uppercase;
-        padding: rem(4) rem(10);
     }
 }
