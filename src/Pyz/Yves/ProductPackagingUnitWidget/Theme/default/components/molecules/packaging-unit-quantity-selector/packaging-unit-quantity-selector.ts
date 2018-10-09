@@ -159,7 +159,6 @@ export default class PackagingUnitQuantitySelector extends Component {
 
     private mapEvents() {
         this.qtyInSalesUnitInput.addEventListener('input', (event: Event) => this.qtyInputChange());
-        this.qtyInSalesUnitInput.addEventListener('counterChange', (event: Event) => this.qtyInputChange());
         this.measurementUnitInput.addEventListener('change', (event: Event) => this.measurementUnitInputChange(event));
 
         if(this.isAmountBlockEnabled) {
@@ -326,7 +325,8 @@ export default class PackagingUnitQuantitySelector extends Component {
 
     private multiply(a: number, b: number): number {
         let result = ((a * 10) * (b * 10)) / 100;
-        return Math.floor(result * 1000) / 1000;
+
+        return Math.round(result * 1000) / 1000;
     }
 
     private getMinQuantity() {
@@ -365,7 +365,7 @@ export default class PackagingUnitQuantitySelector extends Component {
         let salesUnit = this.getSalesUnitById(salesUnitId);
         let qtyInSalesUnits = +this.qtyInSalesUnitInput.value;
         let qtyInBaseUnits = this.multiply(qtyInSalesUnits, this.currentSalesUnit.conversion);
-        qtyInSalesUnits = qtyInBaseUnits / salesUnit.conversion;
+        qtyInSalesUnits = Math.round(qtyInBaseUnits / salesUnit.conversion * salesUnit.precision) / salesUnit.precision;
         this.currentSalesUnit = salesUnit;
         this.qtyInSalesUnitInput.value = this.round(qtyInSalesUnits, 4).toString();
         this.qtyInputChange(qtyInSalesUnits);
@@ -505,7 +505,6 @@ export default class PackagingUnitQuantitySelector extends Component {
         this.puChoiceElement.classList.add('is-hidden');
         this.amountInputChange();
     }
-
 
     private leadSalesUnitSelectChange(event: Event) {
         let salesUnitId = parseInt((event.srcElement as HTMLSelectElement).value);

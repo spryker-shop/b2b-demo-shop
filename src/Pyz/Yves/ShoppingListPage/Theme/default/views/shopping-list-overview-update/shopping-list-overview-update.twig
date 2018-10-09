@@ -75,9 +75,11 @@
                             modifiers: ['shopping-list'],
                             data: {
                                 listItem: product,
+                                form: data.form,
                                 imageModifiers: ['shopping-list']
                             },
                             embed: {
+                                key: key,
                                 isItemAvailable: isProductAvailable,
                                 idShoppingList: data.idShoppingList
                             }
@@ -116,6 +118,14 @@
                                         {% endif %}
                                     {% endfor %}
                                 </ul>
+
+                                {% for subForm in data.form.items[embed.key].children  %}
+                                    {% if not subForm.rendered %}
+                                        {% if subForm.vars.template_path is defined %}
+                                            {% include subForm.vars.template_path with {'form': subForm} %}
+                                        {% endif %}
+                                    {% endif %}
+                                {% endfor %}
                             {% endblock %}
 
                             {% block price %}
@@ -135,11 +145,9 @@
                             {% block quantity %}
                                 {% include molecule('quantity-counter') with {
                                     modifiers: ['shopping-list'],
-                                    data: {
-                                        isReadOnly: not embed.isItemAvailable
-                                    },
                                     attributes: {
-                                        name: 'shoppingListItem[quantity][' ~ data.listItem.idShoppingListItem ~ ']',
+                                        readonly: not embed.isItemAvailable,
+                                        name: data.form.items[embed.key].quantity.vars.full_name,
                                         value: data.listItem.quantity
                                     }
                                 } only %}
@@ -172,6 +180,12 @@
                             {{ widget('ProductAlternativeWidgetPlugin', product, data.shoppingList) }}
                         {% endif %}
                     {% endfor %}
+
+                    <div class="col col--sm-12 text-center">
+                        <a class="button button--alert" href="{{ path('shopping-list/clear', {idShoppingList: data.idShoppingList}) }}">
+                            {{ 'shopping_list.remove_all_items' | trans }}
+                        </a>
+                    </div>
                 {% else %}
                     <div class="col col--sm-12 text-center">
                         {{ 'customer.account.shopping_list.empty' | trans }}
@@ -182,7 +196,7 @@
 
         <div class="grid">
             <div class="col col--sm-6 text-left">
-                <a class="button button--alert button--hollow" href="{{ path('shopping-list/delete', {idShoppingList: data.idShoppingList}) }}">{{ 'customer.account.shopping_list.overview.delete' | trans }}</a>
+                <a class="button button--alert button--hollow" href="{{ path('shopping-list/delete/confirm', {idShoppingList: data.idShoppingList}) }}">{{ 'customer.account.shopping_list.overview.delete' | trans }}</a>
             </div>
             <div class="col col--sm-6 text-right">
                 <a href="{{ path('shopping-list') }}" class="button button--hollow spacing-right">
