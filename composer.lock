@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "ac6c5693e0376cc9c8a437f811444f48",
+    "content-hash": "73b67774559bea883c0fa1ff6272c9e0",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -5938,6 +5938,53 @@
             ],
             "description": "ShopUi module",
             "time": "2018-09-27T07:45:52+00:00"
+        },
+        {
+            "name": "spryker-shop/shopping-list-note-widget",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/shopping-list-note-widget.git",
+                "reference": "4e4861a1f342c275fd9ebc71ec3dd50491c18896"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/shopping-list-note-widget/zipball/4e4861a1f342c275fd9ebc71ec3dd50491c18896",
+                "reference": "4e4861a1f342c275fd9ebc71ec3dd50491c18896",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker-shop/shop-ui": "^1.2.0",
+                "spryker-shop/shopping-list-page-extension": "^1.0.0",
+                "spryker/kernel": "^3.23.1",
+                "spryker/symfony": "^3.1.0"
+            },
+            "require-dev": {
+                "spryker-shop/shopping-list-page": "*",
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker-shop/shopping-list-page": "Widget plugins are available for this module."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ShoppingListNoteWidget module",
+            "time": "2018-09-28T10:31:47+00:00"
         },
         {
             "name": "spryker-shop/shopping-list-page",
@@ -16155,16 +16202,16 @@
         },
         {
             "name": "spryker/product",
-            "version": "6.6.1",
+            "version": "6.6.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product.git",
-                "reference": "912134c116379f58a1556c339bd27030ce8dd2b4"
+                "reference": "13654561aa41fca63399864efe2021811704b4e0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product/zipball/912134c116379f58a1556c339bd27030ce8dd2b4",
-                "reference": "912134c116379f58a1556c339bd27030ce8dd2b4",
+                "url": "https://api.github.com/repos/spryker/product/zipball/13654561aa41fca63399864efe2021811704b4e0",
+                "reference": "13654561aa41fca63399864efe2021811704b4e0",
                 "shasum": ""
             },
             "require": {
@@ -16203,7 +16250,7 @@
                 "proprietary"
             ],
             "description": "Product module",
-            "time": "2018-10-02T06:35:14+00:00"
+            "time": "2018-10-05T17:01:48+00:00"
         },
         {
             "name": "spryker/product-abstract-data-feed",
@@ -22045,6 +22092,59 @@
             ],
             "description": "ShoppingListExtension module",
             "time": "2018-09-20T14:14:45+00:00"
+        },
+        {
+            "name": "spryker/shopping-list-note",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/shopping-list-note.git",
+                "reference": "634cdc2134dda1c9867969af044c98f771772538"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/shopping-list-note/zipball/634cdc2134dda1c9867969af044c98f771772538",
+                "reference": "634cdc2134dda1c9867969af044c98f771772538",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/cart": "^5.3.0",
+                "spryker/kernel": "^3.0.0",
+                "spryker/shopping-list": "^1.0.0",
+                "spryker/shopping-list-extension": "^1.2.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/company": "*",
+                "spryker/company-business-unit": "*",
+                "spryker/company-user": "*",
+                "spryker/customer": "*",
+                "spryker/permission": "*",
+                "spryker/product": "*",
+                "spryker/propel": "*",
+                "spryker/quote": "*",
+                "spryker/stock": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/",
+                    "SprykerTest\\Shared\\ShoppingListNote\\Helper\\": "tests/SprykerTest/Shared/ShoppingListNote/_support/Helper/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ShoppingListNote module",
+            "time": "2018-09-30T10:21:34+00:00"
         },
         {
             "name": "spryker/shopping-list-session",
