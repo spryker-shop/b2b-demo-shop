@@ -1,4 +1,4 @@
-{% extends template('page-layout-customer', 'CustomerPage') %}
+{% extends template('page-layout-multi-cart', 'MultiCartPage') %}
 
 {% define data = {
     form: _view.quoteForm,
@@ -41,8 +41,9 @@
                     },
                     cancel: {
                         enable: true,
-                        url: url('cart'),
-                        text: 'general.back.button' | trans
+                        url: data.backUrl,
+                        text: 'general.back.button' | trans,
+                        icon: null
                     }
                 }
             } only %}

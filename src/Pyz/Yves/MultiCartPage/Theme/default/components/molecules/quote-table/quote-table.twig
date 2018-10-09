@@ -1,8 +1,7 @@
 {% extends model('component') %}
 
 {% define config = {
-    name: 'quote-table',
-    tag: 'div'
+    name: 'quote-table'
 } %}
 
 {% define data = {
@@ -10,9 +9,7 @@
     actions: {
         update: false,
         delete: false,
-        duplicate: false,
-        toShoppingList: false,
-        share: false,
+        duplicate: false
     },
     isQuoteDeletable: required
 } %}
@@ -43,7 +40,7 @@
                 <tr>
                     <td>
                         <a href="{{ url('multi-cart/set-default', {idQuote: quote.idQuote}) }}"
-                            class="cart-name{% if quote.isDefault %} cart-name--active{% endif %}">
+                            class="{{ config.name }}__cart-name{% if quote.isDefault %} {{ config.name }}__cart-name--active{% endif %}">
                             {{ quote.name }}
                         </a>
                     </td>
@@ -64,7 +61,7 @@
                             <span class="badge cart-items-quantity">{{ totals }} {{ label | trans }}</span>
                         {% endif %}
                     </td>
-                    <td>{{ quote.totals.subtotal | default(0) | money }}</td>
+                    <td><strong>{{ quote.totals.subtotal | default(0) | money }}</strong></td>
                     {% if showActions %}
                         <td>
                             <ul class="menu grid grid--middle grid--justify">
@@ -81,13 +78,6 @@
                                             } only %}
                                         </a>
                                     </li>
-                                {% endif %}
-                                {% if data.actions.share and quote.customer.companyUserTransfer %}
-                                    {% if widgetExists('CartListPermissionGroupWidgetPlugin') %}
-                                        <li class="menu__item">
-                                            {{ widgetBlock('CartListPermissionGroupWidgetPlugin', 'actions', quote, isQuoteDeletable) }}
-                                        </li>
-                                    {% endif %}
                                 {% endif %}
                                 {% if data.actions.duplicate %}
                                     <li class="menu__item">
@@ -109,19 +99,24 @@
                                         {{ widget('CartToShoppingListWidgetPlugin', quote) }}
                                     </li>
                                 {% endif %}
-                                {% if data.actions.delete and can('WriteSharedCartPermissionPlugin', quote.idQuote) %}
-                                    <li class="menu__item">
-                                        <a class="link link--alt link--action" href="{{ url('multi-cart/confirm-delete', {idQuote: quote.idQuote}) }}">
-                                            {% include atom('icon') with {
-                                                data: {
-                                                    name: 'delete'
-                                                },
-                                                attributes: {
-                                                    title: 'page.multi_cart.shopping_cart.list.link.delete' | trans
-                                                }
-                                            } only %}
-                                        </a>
-                                    </li>
+
+                                {% if widgetExists('CartListPermissionGroupWidgetPlugin') %}
+                                    {{ widgetBlock('CartListPermissionGroupWidgetPlugin', 'actions', quote, isQuoteDeletable) }}
+                                {% else %}
+                                    {% if isQuoteDeletable %}
+                                        <li class="menu__item">
+                                            <a class="link link--alt link--action" href="{{ url('multi-cart/confirm-delete', {idQuote: quote.idQuote}) }}">
+                                                {% include atom('icon') with {
+                                                    data: {
+                                                        name: 'delete'
+                                                    },
+                                                    attributes: {
+                                                        title: 'page.multi_cart.shopping_cart.list.link.delete' | trans
+                                                    }
+                                                } only %}
+                                            </a>
+                                        </li>
+                                    {% endif %}
                                 {% endif %}
                             </ul>
                         </td>
