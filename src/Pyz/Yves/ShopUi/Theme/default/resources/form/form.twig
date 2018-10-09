@@ -30,14 +30,15 @@
         {% set required = false %}
     {%- endif -%}
 
-    {%- set modifiers = errors is empty ? ['expand'] : ['expand', 'error'] -%}
+    {%- set modifiers = errors is empty ? ['full-width'] : ['full-width', 'error'] -%}
 
-    {% embed atom('custom-select') with {
+    {% embed molecule('custom-select') with {
         modifiers: modifiers,
         attributes: {
             multiple: multiple,
             placeholder: placeholder,
-            required: required
+            required: required,
+            'config-width': '100%'
         },
         embed: {
             attributes: block('widget_attributes'),
@@ -90,6 +91,21 @@
         {% endblock %}
     {% endembed %}
 {%- endblock -%}
+
+{% block choice_widget_expanded -%}
+    <ul class="list {{ '--inline' in label_attr.class|default('') ? 'list--inline' : '' }}" {{ block('widget_container_attributes') }}>
+        {% for child in form %}
+            <li class="list__item">
+                {{- form_errors(child, {
+                    parent_label_class: label_attr.class|default(''),
+                }) -}}
+                {{- form_widget(child, {
+                    parent_label_class: label_attr.class|default(''),
+                }) -}}
+            </li>
+        {% endfor %}
+    </ul>
+{%- endblock choice_widget_expanded %}
 
 {%- block checkbox_widget -%}
     {%- set type = type | default('checkbox') -%}

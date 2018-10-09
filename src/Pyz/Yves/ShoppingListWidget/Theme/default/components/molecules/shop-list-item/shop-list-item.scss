@@ -18,15 +18,19 @@
         }
 
         &__name {
-            color: $setting-color-black;
+            color: $setting-color-gray-4;
             font-size: $setting-font-size-base;
             line-height: rem(29);
             letter-spacing: rem(0.2);
+
+            &:hover {
+                color: $setting-color-gray-4;
+            }
         }
 
         &__owner {
             color: $setting-color-gray-2;
-            font-weight: fw(medium);
+            font-weight: fw(regular);
         }
 
         &__items-count {
@@ -47,6 +51,7 @@
             color: $setting-color-gray-3;
             text-transform: uppercase;
             font-size: rem(11);
+            font-weight: fw(bold);
 
             &--full {
                 color: map_get($setting-color-actions, 'success');

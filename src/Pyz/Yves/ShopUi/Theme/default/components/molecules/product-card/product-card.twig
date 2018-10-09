@@ -1,8 +1,7 @@
 {% extends molecule('card') %}
 
 {% define config = {
-    name: 'product-card',
-    tag: 'product-card'
+    name: 'product-card'
 } %}
 
 {% define data = {
@@ -12,7 +11,7 @@
     imageUrl: required,
     price: required,
     originalPrice: null,
-    hideCategory: null
+    category: ''
 } %}
 
 {% block image %}
@@ -43,13 +42,15 @@
     {% endblock %}
 
     {% block category %}
-        {% if data.hideCategory is null %}
-            <span class="{{ component.renderClass(config.name ~ '__category', modifiers) }}">Office Furniture</span>
+        {% if data.category is not empty %}
+            <span class="{{ component.renderClass(config.name ~ '__category', modifiers) }}">{{ data.category }}</span>
         {% endif %}
     {% endblock %}
 
     {% block rating %}
-        {{ widget('ProductAbstractReviewWidgetPlugin', data.abstractId) }}
+        <div class="{{ config.name }}__rating">
+            {{ widget('ProductAbstractReviewWidgetPlugin', data.abstractId) }}
+        </div>
     {% endblock %}
 
     {% block price %}

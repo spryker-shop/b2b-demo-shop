@@ -18,11 +18,12 @@
     <div class="{{ config.name }}__title {{ config.jsName }}__title">{{data.label}}</div>
     {% if data.selectedValue is null %}
         {% if data.isAvailable %}
-            {% embed atom('custom-select') with {
-                modifiers: ['pdp-option'],
+            {% embed molecule('custom-select') with {
+                modifiers: ['full-width', 'margin-bottom'],
+                class: 'name',
                 attributes: {
                     name: data.formName,
-                    onchange: 'this.form.submit()'
+                    'config-width': '100%'
                 },
                 embed: {
                     values: data.values
@@ -35,6 +36,12 @@
                     {% endfor %}
                 {% endblock %}
             {% endembed %}
+
+            {% include molecule('form-submitter') with {
+                attributes: {
+                    'trigger-selector': '[name=\"' ~ data.formName ~ '\"]'
+                }
+            } only %}
         {% else %}
             {{ 'product.attribute.not_available' | trans }}
         {% endif %}

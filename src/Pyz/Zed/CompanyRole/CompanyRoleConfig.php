@@ -8,10 +8,10 @@
 namespace Pyz\Zed\CompanyRole;
 
 use Generated\Shared\Transfer\CompanyRoleTransfer;
-use Spryker\Client\CompanyUser\Plugin\AddCompanyUserPermissionPlugin;
-use Spryker\Client\CompanyUserInvitation\Plugin\ManageCompanyUserInvitationPermissionPlugin;
+use Spryker\Shared\CheckoutPermissionConnector\Plugin\Permission\PlaceOrderWithAmountUpToPermissionPlugin;
+use Spryker\Shared\CompanyUser\Plugin\AddCompanyUserPermissionPlugin;
+use Spryker\Shared\CompanyUserInvitation\Plugin\ManageCompanyUserInvitationPermissionPlugin;
 use Spryker\Zed\CompanyRole\CompanyRoleConfig as SprykerCompanyRoleConfig;
-use SprykerShop\Client\CheckoutPage\Plugin\PlaceOrderWithAmountUpToPermissionPlugin;
 use SprykerShop\Shared\CartPage\Plugin\AddCartItemPermissionPlugin;
 use SprykerShop\Shared\CartPage\Plugin\ChangeCartItemPermissionPlugin;
 use SprykerShop\Shared\CartPage\Plugin\RemoveCartItemPermissionPlugin;
@@ -49,9 +49,9 @@ class CompanyRoleConfig extends SprykerCompanyRoleConfig
     /**
      * @return \Generated\Shared\Transfer\CompanyRoleTransfer[]
      */
-    public function getCompanyRoles(): array
+    public function getPredefinedCompanyRoles(): array
     {
-        $companyRoleTransfers = parent::getCompanyRoles();
+        $companyRoleTransfers = parent::getPredefinedCompanyRoles();
         $companyRoleTransfers[] = $this->getBuyerRole();
 
         return $companyRoleTransfers;

@@ -5,7 +5,7 @@
     users: _view.companyUserCollection,
     permissions: _view.permissions,
 
-    title: null,
+    title: 'company.account.company_role' | trans,
     activePage: 'role'
 } %}
 
@@ -84,7 +84,7 @@
             actions: [
                 {
                     title: 'company.account.company_role.permission.manage' | trans,
-                    url: url('company/company-role-permission/manage', {'id': data.role.idCompanyRole}),
+                    url: url('company/company-role/update', {'id': data.role.idCompanyRole}),
                     primary: false
                 }
             ]

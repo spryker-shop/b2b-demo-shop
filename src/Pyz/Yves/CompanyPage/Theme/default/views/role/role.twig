@@ -11,7 +11,7 @@
         showAlwaysFirstAndLast: true
     },
 
-    title: null,
+    title: 'company.account.company_role' | trans,
     activePage: 'role'
 } %}
 
@@ -50,7 +50,8 @@
             data: {
                 roles: data.roles,
                 actions: {
-                    view: true,
+                    view: false,
+                    update: true,
                     delete: true
                 }
             }

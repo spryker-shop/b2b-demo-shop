@@ -37,7 +37,7 @@
     </a>
 
     {% if data.hasWritePermission %}
-        <a class="link link--alt link--action" class="spacing-left spacing-left--small" href="{{ url('shopping-list/delete/confirm', { idShoppingList: data.idShoppingList }) }}">
+        <a class="link link--alt link--action" class="spacing-left spacing-left--small" href="{{ url('shopping-list/delete', { idShoppingList: data.idShoppingList }) }}">
             {% include atom('icon') with {
                 data: {
                     name: 'delete'

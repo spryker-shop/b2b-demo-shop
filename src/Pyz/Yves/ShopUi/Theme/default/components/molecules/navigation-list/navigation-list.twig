@@ -12,30 +12,36 @@
 {% block body %}
     <ul class="{{- component.renderClass('list', modifiers) -}}">
         {% for node in data.nodes %}
-            {% embed atom('node') with {
-                class: component.renderClass('list__item', modifiers),
-                config: {
-                    tag: 'li'
-                },
-                data: {
-                    node: node
-                },
-                embed: {
-                    modifiers: modifiers | merge(['alt', 'footer']),
-                }
-            } only %}
-                {% block url %}
-                    <a class="{{ component.renderClass('link', embed.modifiers) }}" href="{{ data.node.url }}">{{ data.node.title }}</a>
-                {% endblock %}
+            {% if node.nodeType is defined %}
+                {% embed atom('node') with {
+                    modifiers: modifiers,
+                    class: 'list__item',
+                    config: {
+                        tag: 'li'
+                    },
+                    data: {
+                        node: node
+                    }
+                } only %}
+                    {% block url %}
+                        <a class="{{ component.renderClass('link', modifiers) }}" href="{{ data.node.url }}">{{ data.node.title }}</a>
+                    {% endblock %}
 
-                {% block externalUrl %}
-                    <a class="{{ component.renderClass('link', embed.modifiers) }}" href="{{ data.node.url }}" target="_blank">{{ data.node.title }}</a>
-                {% endblock %}
+                    {% block externalUrl %}
+                        <a class="{{ component.renderClass('link', modifiers) }}" href="{{ data.node.url }}" target="_blank">{{ data.node.title }}</a>
+                    {% endblock %}
 
-                {% block other %}
-                    {{ data.node.title }}
-                {% endblock %}
-            {% endembed %}
+                    {% block other %}
+                        {{ data.node.title }}
+                    {% endblock %}
+                {% endembed %}
+            {% else %}
+                {% if node.url %}
+                    <li><a class="{{ component.renderClass('link', modifiers) }}" href="{{ node.url }}">{{ node.title }}</a></li>
+                {% else %}
+                    <li><span class="{{ component.renderClass('text', modifiers) }}">{{ node.title }}</span></li>
+                {% endif %}
+            {% endif %}
         {% endfor %}
     </ul>
 {% endblock %}

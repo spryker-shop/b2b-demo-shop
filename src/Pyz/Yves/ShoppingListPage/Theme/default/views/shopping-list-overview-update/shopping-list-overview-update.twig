@@ -4,7 +4,7 @@
     title: _view.shoppingList.name,
     form: _view.shoppingListForm,
     shoppingList: _view.shoppingList,
-    shoppingListItemProducts: _view.shoppingListItemProducts,
+    shoppingListItemProducts: _view.productViewTransfers,
     idShoppingList: _view.shoppingList.idShoppingList | default
 } %}
 
@@ -78,6 +78,7 @@
                                 imageModifiers: ['shopping-list']
                             },
                             embed: {
+                                key: key,
                                 isItemAvailable: isProductAvailable,
                                 idShoppingList: data.idShoppingList
                             }
@@ -135,11 +136,9 @@
                             {% block quantity %}
                                 {% include molecule('quantity-counter') with {
                                     modifiers: ['shopping-list'],
-                                    data: {
-                                        isReadOnly: not embed.isItemAvailable
-                                    },
                                     attributes: {
-                                        name: 'shoppingListItem[quantity][' ~ data.listItem.idShoppingListItem ~ ']',
+                                        readonly: not embed.isItemAvailable,
+                                        name: _view.shoppingListForm.items[embed.key].quantity.vars.full_name,
                                         value: data.listItem.quantity
                                     }
                                 } only %}
@@ -147,7 +146,7 @@
 
                             {% block deleteButton %}
                                 <div class="col">
-                                    <a class="link link--icon" href="{{ path('shopping-list/remove-item', {
+                                    <a class="link link--icon {{ config.jsName }}-remove-button-{{ data.listItem.sku }}" href="{{ path('shopping-list/remove-item', {
                                         idShoppingList: embed.idShoppingList, idShoppingListItem: data.listItem.idShoppingListItem
                                     }) }}">
                                         {% include atom('icon') with {
@@ -159,6 +158,12 @@
                                         {{'customer.account.shopping_list.remove' | trans}}
                                     </a>
                                 </div>
+
+                                {% include molecule('action-single-click-enforcer') with {
+                                    attributes: {
+                                        'target-selector': '.' ~ config.jsName ~ '-remove-button-' ~ data.listItem.sku
+                                    }
+                                } only %}
                             {% endblock %}
                         {% endembed %}
 
@@ -166,6 +171,12 @@
                             {{ widget('ProductAlternativeWidgetPlugin', product, data.shoppingList) }}
                         {% endif %}
                     {% endfor %}
+
+                    <div class="col col--sm-12 text-center">
+                        <a class="button button--alert" href="{{ path('shopping-list/clear', {idShoppingList: data.idShoppingList}) }}">
+                            {{ 'shopping_list.remove_all_items' | trans }}
+                        </a>
+                    </div>
                 {% else %}
                     <div class="col col--sm-12 text-center">
                         {{ 'customer.account.shopping_list.empty' | trans }}

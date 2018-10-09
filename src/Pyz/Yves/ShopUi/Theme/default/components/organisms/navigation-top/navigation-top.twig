@@ -5,38 +5,30 @@
     tag: 'div'
 } %}
 
+{% set benefits = [
+    'global.benefit.free_returns',
+    'global.benefit.warranty',
+    'global.benefit.competitive_prices'
+] %}
+
+{% block benefit %}
+    {% include molecule('panel-info-item') with {
+        class: 'col',
+        data: {
+            info: text
+        }
+    } only %}
+{% endblock %}
+
 {% block body %}
-    <div class="col {{ config.name }}__benefit">
-        {% include atom('icon') with {
-            modifiers: ['header-check'],
-            data: {
-                name: 'check'
-            }
-        } only %}
-        {{ 'global.benefit.free_returns' | trans }}
-    </div>
 
-    <div class="col {{ config.name }}__benefit">
-        {% include atom('icon') with {
-            modifiers: ['header-check'],
-            data: {
-                name: 'check'
-            }
-        } only %}
-        {{ 'global.benefit.warranty' | trans }}
-    </div>
-
-    {% if not is_granted('ROLE_USER') %}
-        <div class="col {{ config.name }}__benefit">
-            {% include atom('icon') with {
-                modifiers: ['header-check'],
-                data: {
-                    name: 'check'
-                }
-            } only %}
-            {{ 'global.benefit.competitive_prices' | trans }}
-        </div>
-    {% endif %}
+    {% for text in benefits %}
+        {% if not loop.last %}
+            {{ block('benefit') }}
+        {% elseif not is_granted('ROLE_USER') %}
+            {{ block('benefit') }}
+        {% endif %}
+    {% endfor %}
 
     <ul class="col grid grid--nowrap grid--stretch navigation-top__actions">
         <li class="col {{ config.name }}__action-item {{ config.name }}__tel">
@@ -72,12 +64,27 @@
                 <li class="col {{ config.name }}__action-item">
                     {% spaceless %}{{ widgetGlobal('MenuItemCompanyWidgetPlugin') }}{% endspaceless %}
                     {% if can('SeeCompanyMenuPermissionPlugin') %}
-                        <ul class="{{ config.name }}__sub-nav">
-                            <li><a class="{{ config.name }}__sub-nav-link" href="{{ url('company/overview') }}">{{ 'company.account.overview' | trans }}</a></li>
-                            <li><a class="{{ config.name }}__sub-nav-link" href="{{ url('company/user') }}">{{ 'company.account.company_role.users' | trans }}</a></li>
-                            <li><a class="{{ config.name }}__sub-nav-link" href="{{ url('company/business-unit') }}">{{ 'company.account.business_unit' | trans }}</a></li>
-                            <li><a class="{{ config.name }}__sub-nav-link" href="{{ url('company/company-role') }}">{{ 'company.account.company_user.role' | trans }}</a></li>
-                        </ul>
+                        {% include molecule('navigation-list') with {
+                            modifiers: ['company-user'],
+                            data: {
+                                nodes: [{
+                                    url: url('company/overview'),
+                                    title: 'company.account.overview' | trans
+                                },
+                                {
+                                    url: url('company/user'),
+                                    title: 'company.account.company_role.users' | trans
+                                },
+                                {
+                                    url: url('company/business-unit'),
+                                    title: 'company.account.business_unit' | trans
+                                },
+                                {
+                                    url: url('company/company-role'),
+                                    title: 'company.account.company_user.role' | trans
+                                }]
+                            }
+                        } only %}
                     {% endif %}
                 </li>
             {% endif %}

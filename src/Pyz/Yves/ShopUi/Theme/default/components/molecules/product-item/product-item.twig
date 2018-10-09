@@ -90,9 +90,11 @@
                 {{ widget('ProductBundleItemsWidgetPlugin', data.listItem, data.list) }}
             {% endblock %}
 
-            {% block note %}
-                {{ widget('CartNoteQuoteItemWidgetPlugin', data.listItem, data.list) }}
-            {% endblock %}
+            {% if data.canEdit %}
+                {% block note %}
+                    {{ widget('CartNoteQuoteItemWidgetPlugin', data.listItem, data.list) }}
+                {% endblock %}
+            {% endif %}
 
             {% if data.listItem.productOptions is defined and data.listItem.productOptions | length > 0 %}
                 {% include molecule('product-item-options') with {
@@ -144,7 +146,7 @@
                 {% block deleteButton %}
                     {% if data.canEdit %}
                         <div class="col">
-                            <a class="link link--icon" href="{{ path('cart/remove', {'sku': data.listItem.sku, 'groupKey': data.listItem.groupKey }) }}">
+                            <a class="link link--icon {{ config.jsName }}-remove-button-{{ data.listItem.sku }}" href="{{ path('cart/remove', {'sku': data.listItem.sku, 'groupKey': data.listItem.groupKey }) }}">
                                 {% include atom('icon') with {
                                     modifiers: ['link'],
                                     data: {
@@ -154,6 +156,12 @@
                                 {{ 'cart.delete.item' | trans }}
                             </a>
                         </div>
+
+                        {% include molecule('action-single-click-enforcer') with {
+                            attributes: {
+                                'target-selector': '.' ~ config.jsName ~ '-remove-button-' ~ data.listItem.sku
+                            }
+                        } only %}
                     {% endif %}
                 {% endblock %}
             </div>
