@@ -112,14 +112,14 @@
                             } only %}
                         {% endblock %}
 
-                            {% block info %}
-                                {{ parent() }}
+                        {% block info %}
+                            {{ parent() }}
 
-                                {% if embed.product.attributes.farbe is defined %}
-                                    <br/>
-                                    <small class="text-secondary">{{ 'cart.item.color' | trans }}  {{ embed.product.attributes.farbe  }} </small>
-                                {% endif %}
-                            {% endblock %}
+                            {% if embed.product.attributes.farbe is defined %}
+                                <br/>
+                                <small class="text-secondary">{{ 'cart.item.color' | trans }}  {{ embed.product.attributes.farbe  }} </small>
+                            {% endif %}
+                        {% endblock %}
                     {% endembed %}
                 {% endfor %}
 
