@@ -53,6 +53,14 @@
                         {% endif %}
 
                         {{ widget('SharedCartPermissionGroupWidgetPlugin', data.cart) }}
+
+                        {% if data.cart.priceMode is not empty %}
+                            {% include molecule('price-mode') with {
+                                data: {
+                                    priceMode: data.cart.priceMode
+                                }
+                            } only %}
+                        {% endif %}
                     </div>
                 </div>
             </div>
