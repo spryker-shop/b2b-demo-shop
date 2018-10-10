@@ -28,13 +28,7 @@
 {% block companyContent %}
     {% include molecule('action-bar', 'ShopUi') with {
         data: {
-            title: 'company.account.company_role.create' | trans,
-            actions: [
-                {
-                    title: 'general.back.button' | trans,
-                    url: url('company/company-role')
-                }
-            ]
+            title: 'company.account.company_role.create' | trans
         }
     } only %}
 

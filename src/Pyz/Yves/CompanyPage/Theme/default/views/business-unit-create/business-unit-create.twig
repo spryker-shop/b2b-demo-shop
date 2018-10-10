@@ -33,7 +33,8 @@
                 enable: true,
                 url: url('company/business-unit'),
                 text: 'general.back.button' | trans,
-                icon: null
+                icon: null,
+                class: 'button button--hollow'
             }
         },
         embed: {
@@ -50,7 +51,6 @@
             {% if field.vars.name == 'address_collection' %}
                 {% do field.setRendered %}
                 <div class="form__field col col--sm-12">
-                    <hr />
                     {% include molecule('business-unit-address-list', 'CompanyPage') with {
                         data: {
                             field: field,

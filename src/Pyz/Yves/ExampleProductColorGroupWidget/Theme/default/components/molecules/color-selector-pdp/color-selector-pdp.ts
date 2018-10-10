@@ -1,14 +1,12 @@
-import Component from 'ShopUi/models/component';
+import ColorSelector from '../color-selector/color-selector';
 
-export default class ColorSelectorPdp extends Component {
-    colors: HTMLAnchorElement[]
+export default class ColorSelectorPdp extends ColorSelector {
     container: HTMLElement
-    image: HTMLImageElement
 
     protected readyCallback(): void {
         this.colors = <HTMLAnchorElement[]>Array.from(this.querySelectorAll(`.${this.jsName}__color`));
+        this.image = <HTMLImageElement>document.querySelector(this.targetImageSelector);
         this.container = <HTMLElement>document.querySelector(this.imageContainerSelector);
-        this.image = <HTMLImageElement>document.querySelector(this.imageSelector);
         this.mapEvents();
     }
 
@@ -29,44 +27,28 @@ export default class ColorSelectorPdp extends Component {
         this.setActiveImage(imageSrc);
     }
 
-    setActiveColor(changedColor: HTMLAnchorElement): void {
-        this.colors.forEach((color: HTMLAnchorElement) => {
-            color.classList.remove(this.colorActiveClass);
-        });
-
-        changedColor.classList.add(this.colorActiveClass);
+    protected onColorUnselection(event: Event): void {
+        event.preventDefault();
+        this.setActiveColor(this.colors[0]);
+        this.resetActiveImage();
     }
 
-    setActiveImage(newImageSrc: string): void {
+    protected setActiveImage(newImageSrc: string): void {
         if (this.image.src !== newImageSrc) {
             this.image.src = newImageSrc;
             this.container.classList.add(this.imageActiveClass);
         }
     }
 
-    protected onColorUnselection(event: Event): void {
-        event.preventDefault();
-        this.setActiveColor(this.colors[0]);
-        this.removeImage();
-    }
-
-    removeImage(): void {
+    protected resetActiveImage(): void {
         this.container.classList.remove(this.imageActiveClass);
-    }
-
-    get imageContainerSelector(): string {
-        return this.getAttribute('target-selector');
-    }
-
-    get imageSelector(): string {
-        return this.getAttribute('target-image-selector');
     }
 
     get imageActiveClass(): string {
         return this.getAttribute('active-image-class');
     }
 
-    get colorActiveClass(): string {
-        return this.getAttribute('active-color-class');
+    get imageContainerSelector(): string {
+        return this.getAttribute('target-selector');
     }
 }

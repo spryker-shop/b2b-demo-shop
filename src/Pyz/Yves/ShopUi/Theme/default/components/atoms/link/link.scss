@@ -58,7 +58,7 @@
 
         &:hover,
         &:focus {
-            color: $setting-color-alt;
+            color: $setting-color-gray-4;
         }
     }
 
@@ -66,5 +66,26 @@
         text-decoration: underline;
         font: fw(regular) rem(15)/rem(30) $setting-font-family;
         color: $setting-color-gray-2;
+    }
+
+    &--company-user {
+        color: $setting-color-gray-3;
+        white-space: nowrap;
+        @include helper-effect-transition(color);
+
+        &:hover {
+            text-decoration: none;
+            color: $setting-color-gray-5;
+        }
+    }
+
+    &--user-account {
+        color: $setting-color-gray-3;
+        @include helper-effect-transition(color);
+
+        &:hover {
+            text-decoration: none;
+            color: $setting-color-gray-4;
+        }
     }
 }
