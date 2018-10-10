@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "754a9fde0fd2d45fa450a34bb62225b0",
+    "content-hash": "71326194b3f7b43b1e18d1e572466e66",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -14286,6 +14286,159 @@
             "time": "2018-08-06T14:30:50+00:00"
         },
         {
+            "name": "spryker/merchant-relationship-sales-order-threshold",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/merchant-relationship-sales-order-threshold.git",
+                "reference": "0fd582aff22f4b84bb213923b8d91feb3ab9c719"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/merchant-relationship-sales-order-threshold/zipball/0fd582aff22f4b84bb213923b8d91feb3ab9c719",
+                "reference": "0fd582aff22f4b84bb213923b8d91feb3ab9c719",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/currency": "^3.0.0",
+                "spryker/glossary": "^3.1.0",
+                "spryker/kernel": "^3.17.0",
+                "spryker/merchant-relationship": "^1.0.0",
+                "spryker/sales-order-threshold": "^1.0.0",
+                "spryker/sales-order-threshold-extension": "^1.0.0",
+                "spryker/store": "^1.2.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/company-business-unit": "*",
+                "spryker/merchant": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/",
+                    "SprykerTest\\Zed\\MerchantRelationshipSalesOrderThreshold\\Helper\\": "tests/SprykerTest/Zed/MerchantRelationshipSalesOrderThreshold/_support/Helper/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "MerchantRelationshipSalesOrderThreshold module",
+            "time": "2018-10-04T13:35:59+00:00"
+        },
+        {
+            "name": "spryker/merchant-relationship-sales-order-threshold-data-import",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/merchant-relationship-sales-order-threshold-data-import.git",
+                "reference": "dbfff38af4eeb698555dbf8c3ceac18e81bff18e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/merchant-relationship-sales-order-threshold-data-import/zipball/dbfff38af4eeb698555dbf8c3ceac18e81bff18e",
+                "reference": "dbfff38af4eeb698555dbf8c3ceac18e81bff18e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/currency": "^3.0.0",
+                "spryker/data-import": "^1.3.0",
+                "spryker/kernel": "^3.17.0",
+                "spryker/merchant-relationship": "^1.3.0",
+                "spryker/merchant-relationship-sales-order-threshold": "^1.0.0",
+                "spryker/store": "^1.2.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/company-business-unit": "*",
+                "spryker/merchant": "*",
+                "spryker/propel": "*",
+                "spryker/sales-order-threshold": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/",
+                    "SprykerTest\\Zed\\MerchantRelationshipSalesOrderThresholdDataImport\\Helper\\": "tests/SprykerTest/Zed/MerchantRelationshipSalesOrderThresholdDataImport/_support/Helper/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "MerchantRelationshipSalesOrderThresholdDataImport module",
+            "time": "2018-10-04T13:35:59+00:00"
+        },
+        {
+            "name": "spryker/merchant-relationship-sales-order-threshold-gui",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/merchant-relationship-sales-order-threshold-gui.git",
+                "reference": "e7fbd17c813603f849aa618e2eaa4219e6be762c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/merchant-relationship-sales-order-threshold-gui/zipball/e7fbd17c813603f849aa618e2eaa4219e6be762c",
+                "reference": "e7fbd17c813603f849aa618e2eaa4219e6be762c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/company": "^1.0.0",
+                "spryker/company-business-unit": "^1.0.0 || ^2.0.0",
+                "spryker/currency": "^3.1.0",
+                "spryker/gui": "^3.1.0",
+                "spryker/kernel": "^3.18.0",
+                "spryker/locale": "^3.0.0",
+                "spryker/merchant": "^1.0.0",
+                "spryker/merchant-relationship": "^1.0.0",
+                "spryker/merchant-relationship-sales-order-threshold": "^1.0.0",
+                "spryker/money": "^2.1.0",
+                "spryker/sales-order-threshold": "^1.0.0",
+                "spryker/store": "^1.2.0",
+                "spryker/symfony": "^3.1.0",
+                "spryker/util-text": "^1.1.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "MerchantRelationshipSalesOrderThresholdGui module",
+            "time": "2018-10-04T13:35:59+00:00"
+        },
+        {
             "name": "spryker/messenger",
             "version": "3.1.1",
             "source": {
@@ -21274,6 +21427,200 @@
             ],
             "description": "SalesExtension module",
             "time": "2018-06-18T17:01:18+00:00"
+        },
+        {
+            "name": "spryker/sales-order-threshold",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/sales-order-threshold.git",
+                "reference": "9f07d37642016171cb76b9d13cbdf1174d33a6a2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/sales-order-threshold/zipball/9f07d37642016171cb76b9d13cbdf1174d33a6a2",
+                "reference": "9f07d37642016171cb76b9d13cbdf1174d33a6a2",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/calculation-extension": "^1.0.0",
+                "spryker/cart-extension": "^1.0.0 || ^2.0.0",
+                "spryker/checkout-extension": "^1.0.0",
+                "spryker/currency": "^3.0.0",
+                "spryker/glossary": "^3.1.0",
+                "spryker/kernel": "^3.17.0",
+                "spryker/messenger": "^3.1.0",
+                "spryker/money": "^2.0.0",
+                "spryker/sales": "^8.14.0",
+                "spryker/sales-order-threshold-extension": "^1.0.0",
+                "spryker/store": "^1.2.0",
+                "spryker/tax": "^5.0.0"
+            },
+            "require-dev": {
+                "spryker/checkout": "*",
+                "spryker/code-sniffer": "*",
+                "spryker/installer": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/calculation": "If you want to use Calculation plugins.",
+                "spryker/cart": "If you want to use Cart plugins: ^4.0.0.",
+                "spryker/checkout": "If you want to use Checkout plugins: ^3.0.0.",
+                "spryker/installer": "If you want to use Installer plugins: ^4.0.0."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/",
+                    "SprykerTest\\Zed\\SalesOrderThreshold\\Helper\\": "tests/SprykerTest/Zed/SalesOrderThreshold/_support/Helper/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "SalesOrderThreshold module",
+            "time": "2018-10-04T13:35:59+00:00"
+        },
+        {
+            "name": "spryker/sales-order-threshold-data-import",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/sales-order-threshold-data-import.git",
+                "reference": "7de4e5c8cfcf15ffe5f5dbbc7db09c5e9d1a33d4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/sales-order-threshold-data-import/zipball/7de4e5c8cfcf15ffe5f5dbbc7db09c5e9d1a33d4",
+                "reference": "7de4e5c8cfcf15ffe5f5dbbc7db09c5e9d1a33d4",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/currency": "^3.0.0",
+                "spryker/data-import": "^1.3.0",
+                "spryker/kernel": "^3.17.0",
+                "spryker/sales-order-threshold": "^1.0.0",
+                "spryker/store": "^1.2.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/",
+                    "SprykerTest\\Zed\\SalesOrderThresholdDataImport\\Helper\\": "tests/SprykerTest/Zed/SalesOrderThresholdDataImport/_support/Helper/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "SalesOrderThresholdDataImport module",
+            "time": "2018-10-04T13:35:59+00:00"
+        },
+        {
+            "name": "spryker/sales-order-threshold-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/sales-order-threshold-extension.git",
+                "reference": "897af49181ac74f936db1a4ee1cdee6d443f472d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/sales-order-threshold-extension/zipball/897af49181ac74f936db1a4ee1cdee6d443f472d",
+                "reference": "897af49181ac74f936db1a4ee1cdee6d443f472d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "SalesOrderThresholdExtension module",
+            "time": "2018-10-04T13:35:59+00:00"
+        },
+        {
+            "name": "spryker/sales-order-threshold-gui",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/sales-order-threshold-gui.git",
+                "reference": "93375f2cb3eed719c6affc1ebaf2c5ce6d60a661"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/sales-order-threshold-gui/zipball/93375f2cb3eed719c6affc1ebaf2c5ce6d60a661",
+                "reference": "93375f2cb3eed719c6affc1ebaf2c5ce6d60a661",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/currency": "^3.1.0",
+                "spryker/gui": "^3.1.0",
+                "spryker/kernel": "^3.18.0",
+                "spryker/locale": "^3.0.0",
+                "spryker/money": "^2.1.0",
+                "spryker/sales-order-threshold": "^1.0.0",
+                "spryker/store": "^1.2.0",
+                "spryker/symfony": "^3.1.0",
+                "spryker/tax": "^5.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "SalesOrderThresholdGui module",
+            "time": "2018-10-04T13:35:59+00:00"
         },
         {
             "name": "spryker/sales-product-connector",

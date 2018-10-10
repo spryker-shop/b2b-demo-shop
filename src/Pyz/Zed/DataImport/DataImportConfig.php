@@ -370,12 +370,10 @@ class DataImportConfig extends SprykerDataImportConfig
     }
 
     /**
-     * @param int $idCmsPage
-     *
-     * @return string
+     * @return mixed
      */
     public function isInternal()
     {
-        return ($this->getConfig()->get(DataImportConstants::IS_ENABLE_INTERNAL_IMAGE)) ? true : false;
+        return $this->getConfig()->get(DataImportConstants::IS_ENABLE_INTERNAL_IMAGE, false);
     }
 }
