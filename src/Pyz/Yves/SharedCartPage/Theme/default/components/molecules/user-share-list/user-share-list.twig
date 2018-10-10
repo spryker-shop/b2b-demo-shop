@@ -1,0 +1,32 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'user-share-list'
+} %}
+
+{% define data = {
+    shareDetailsForm: required,
+    shared: required
+} %}
+
+{% block body %}
+
+    {% if data.shared is not empty %}
+        <ul class="list spacing-bottom spacing-bottom--big">
+            {% for shareDetail in data.shared %}
+                <li class="{{ config.name }}__item">
+                    <div class="grid grid--middle">
+                        <div class="col col--sm-6 col--md-10">
+                            {{ shareDetail.vars.value.customerName }}
+                        </div>
+                        <div class="col col--sm-6 col--md-2">
+                            {{ form_widget(shareDetail.quotePermissionGroup) }}
+                            {{ form_errors(shareDetail.quotePermissionGroup) }}
+                        </div>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+{% endblock body %}

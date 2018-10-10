@@ -1,0 +1,11 @@
+@mixin share-cart-widget-cart-permission($name: '.cart-permission') {
+    #{$name} {
+        &__read {
+            color: $setting-color-gray-2;
+        }
+
+        @content;
+    }
+}
+
+@include share-cart-widget-cart-permission();

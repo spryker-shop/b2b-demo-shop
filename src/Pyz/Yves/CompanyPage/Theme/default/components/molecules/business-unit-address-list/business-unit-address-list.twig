@@ -17,7 +17,8 @@
                 {
                     title: 'company.account.add_new_address' | trans,
                     url: url('company/address/create', { 'idCompanyBusinessUnit': data.idCompanyBusinessUnit }),
-                    primary: true
+                    primary: true,
+                    modifiers: ['hollow']
                 }
             ] : []
         }
@@ -34,7 +35,7 @@
         {% endif %}
     {% endfor %}
 
-    <div class="spacing-bottom--inner">
+    <div class="spacing-bottom spacing-bottom--inner">
         {% if assignedAddresses is not empty %}
             {% include molecule('business-unit-address-table', 'CompanyPage') with {
                 data: {

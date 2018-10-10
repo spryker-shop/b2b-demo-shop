@@ -93,9 +93,9 @@
 {%- endblock -%}
 
 {% block choice_widget_expanded -%}
-    <ul class="list {{ '--inline' in label_attr.class|default('') ? 'list--inline' : '' }}" {{ block('widget_container_attributes') }}>
+    <ul class="list {{ '--inline' in label_attr.class|default('') ? 'list--inline' : 'list--checkbox' }}" {{ block('widget_container_attributes') }}>
         {% for child in form %}
-            <li class="list__item">
+            <li class="list__item list__item--checkbox">
                 {{- form_errors(child, {
                     parent_label_class: label_attr.class|default(''),
                 }) -}}
@@ -175,6 +175,8 @@
     {% if label is not same as(false) -%}
         {% if not compound -%}
             {% set label_attr = label_attr|merge({'for': id, 'class': (label_attr.class|default('') ~ ' label')|trim}) %}
+        {% else %}
+            {% set label_attr = label_attr|merge({'for': id, 'class': (label_attr.class|default('') ~ ' label label--title')|trim}) %}
         {%- endif -%}
         {% if required -%}
             {% set label_attr = label_attr|merge({'class': (label_attr.class|default('') ~ ' label--required')|trim}) %}

@@ -2,6 +2,7 @@
 
 {% define data = {
     title: 'page.multi_cart.shopping_cart.list.title' | trans,
+    backUrl: app.request.headers.get('referer') | default(url('multi-cart')),
     activePage: 'multiCart'
 } %}
 

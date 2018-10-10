@@ -32,12 +32,13 @@
         <div class="col">
             <a class="button button--hollow" href="{{ url('multi-cart/create') }}">
                 {% include atom('icon') with {
+                    class: 'spacing-right spacing-right--small',
                     modifiers: ['plus-small'],
                     data: {
                         name: 'plus'
                     }
                 } only %}
-                {{ 'page.multi_cart.shopping_cart.list.create_link' | trans }}
+                {{- 'page.multi_cart.shopping_cart.list.create_link' | trans -}}
             </a>
         </div>
     </div>
@@ -50,8 +51,6 @@
                     update: true,
                     delete: true,
                     duplicate: true,
-                    toShoppingList: true,
-                    share: true,
                 },
                 isQuoteDeletable: data.isQuoteDeletable
             }

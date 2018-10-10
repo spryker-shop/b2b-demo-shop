@@ -1,8 +1,11 @@
-{% extends template('page-layout-main') %}
+{% extends template('page-layout-multi-cart', 'MultiCartPage') %}
 
 {% define data = {
+    cart: _view.cart,
+    cartName: _view.cart.name | default,
     form: _view.sharedCartForm,
     title: 'shared_cart.form.share_cart' | trans,
+    activePage: 'multiCart'
 } %}
 
 {% block breadcrumbs %}
@@ -22,24 +25,55 @@
 
 {% block title %}{% endblock %}
 
-{% block content %}
-    <div class="grid cart-update">
-        <div class="col col--md-6">
-            <h2 class="cart-update__title">{{ 'shared_cart.form.share_cart' | trans }}</h2>
-            {% include molecule('form') with {
+{% set shared = [] %}
+{% set unShared = [] %}
+
+{% for shareDetail in data.form.shareDetails %}
+    {% if shareDetail.vars.value.quotePermissionGroup is null %}
+        {% set unShared = unShared | merge([shareDetail]) %}
+    {% else %}
+        {% set shared = shared | merge([shareDetail]) %}
+    {% endif %}
+{% endfor %}
+
+{% block customerContent %}
+    <h3 class="spacing-bottom spacing-bottom--big">{{ 'shared_cart.form.share_cart.title' | trans({cart_name: _view.cart.name | default}) }}</h3>
+    {% if data.form.vars.value.shareDetails is not empty %}
+        {{ form_start(data.form) }}
+        <div {{ qa('share-cart-table') }}>
+            <h4 class="spacing-y spacing-y--big">{{ 'shared_cart.share.form.users' | trans }}</h4>
+            {% include molecule('user-share-list', 'SharedCartPage') with {
                 data: {
-                    form: data.form,
-                    submit: {
-                        enable: true,
-                        text: 'shared_cart.form.share_button' | trans
-                    },
-                    cancel: {
-                        enable: true,
-                        url: url('cart'),
-                        text: 'general.back.button' | trans
-                    }
+                    shareDetailsForm: data.form,
+                    shared: shared
                 }
             } only %}
+
+            {% include molecule('user-share-list', 'SharedCartPage') with {
+                data: {
+                    shareDetailsForm: data.form,
+                    shared: unShared
+                }
+            } only %}
+
+            <div class="form__actions">
+                <a href="{{ data.backUrl }}" class="form__action button button--hollow">
+                    {{ "general.back.button" | trans }}
+                </a>
+                <button type="submit" class="form__action button button--success float-right">
+                    {{ 'shared_cart.form.save_button' | trans }}
+                </button>
+            </div>
         </div>
-    </div>
+        {{ form_end(data.form) }}
+    {% else %}
+        <div {{ qa('share-cart-table') }}>
+            {{ 'shared_cart.form.data_empty' | trans }}
+            <div class="form__actions">
+                <a href="{{ data.backUrl }}" class="button button--secondary button--hollow">
+                    {{ "general.back.button" | trans }}
+                </a>
+            </div>
+        </div>
+    {% endif %}
 {% endblock %}

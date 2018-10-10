@@ -31,13 +31,7 @@
 
     {% include molecule('action-bar', 'ShopUi') with {
         data: {
-            title: 'company.account.edit_address_information' | trans,
-            actions: [
-                {
-                    title: 'general.back.button' | trans,
-                    url: data.idCompanyBusinessUnit ? buIndexUrl : buListUrl
-                }
-            ]
+            title: 'company.account.edit_address_information' | trans
         }
     } only %}
 
@@ -57,7 +51,7 @@
             },
             submit: {
                 enable: true,
-                class: 'button form__action--primary'
+                class: 'button'
             },
             cancel: {
                 enable: true,

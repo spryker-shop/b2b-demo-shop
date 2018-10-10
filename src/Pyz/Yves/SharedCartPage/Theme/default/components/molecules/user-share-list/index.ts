@@ -1,0 +1,1 @@
+import './user-share-list';
