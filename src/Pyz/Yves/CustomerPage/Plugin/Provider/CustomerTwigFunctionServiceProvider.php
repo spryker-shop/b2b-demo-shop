@@ -1,8 +1,8 @@
 <?php
 
 /**
- * Copyright © 2016-present Spryker Systems GmbH. All rights reserved.
- * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
+ * This file is part of the Spryker Suite.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
 namespace Pyz\Yves\CustomerPage\Plugin\Provider;
@@ -16,7 +16,6 @@ use Twig_SimpleFunction;
  */
 class CustomerTwigFunctionServiceProvider extends SprykerCustomerTwigFunctionServiceProvider
 {
-
     /**
      * @param \Twig_Environment $twig
      *

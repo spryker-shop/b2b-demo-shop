@@ -20,6 +20,7 @@ use Spryker\Zed\ProductAlternativeProductLabelConnector\Communication\Plugin\Ins
 use Spryker\Zed\ProductDiscontinuedProductLabelConnector\Communication\Plugin\Installer\ProductDiscontinuedProductLabelConnectorInstallerPlugin;
 use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\Installer\ProductMeasurementUnitInstallerPlugin;
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Installer\ProductPackagingUnitTypeInstallerPlugin;
+use Spryker\Zed\SalesOrderThreshold\Communication\Plugin\Installer\SalesOrderThresholdTypeInstallerPlugin;
 use Spryker\Zed\SharedCart\Communication\Plugin\SharedCartPermissionInstallerPlugin;
 use Spryker\Zed\ShoppingList\Communication\Plugin\ShoppingListPermissionsInstallerPlugin;
 use Spryker\Zed\User\Communication\Plugin\UserInstallerPlugin;
@@ -47,6 +48,7 @@ class InstallerDependencyProvider extends SprykerInstallerDependencyProvider
             new CompanyUserInvitationStatusInstallerPlugin(), #BulkImportCompanyUserInvitationsFeature
             new ProductPackagingUnitTypeInstallerPlugin(),
             new OauthCustomerInstallerPlugin(),
+            new SalesOrderThresholdTypeInstallerPlugin(),
         ];
     }
 }
