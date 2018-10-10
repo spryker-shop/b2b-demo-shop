@@ -44,9 +44,6 @@
 {% endblock %}
 
 {% block title %}
-    {% if not widgetExists('CartOperationsWidgetPlugin') %}
-        {{ parent() }}
-    {% endif %}
 {% endblock %}
 
 {% block contentClass %}page-layout-main page-layout-main--cart-page{% endblock %}
@@ -82,6 +79,13 @@
                                         }
                                     } only %}
                                 </a>
+                            {% endif %}
+                            {% if data.cart.priceMode is not empty %}
+                                {% include molecule('price-mode') with {
+                                    data: {
+                                        priceMode: data.cart.priceMode
+                                    }
+                                } only %}
                             {% endif %}
                         </h3>
                     </div>
