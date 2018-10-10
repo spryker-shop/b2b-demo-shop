@@ -17,7 +17,7 @@ class MultiCartConfig extends SprykerMultiCartConfig
      */
     public function getQuoteFieldsAllowedForDuplicateQuote(): array
     {
-        return array_merge(parent::getQuoteFieldsAllowedForDuplicateQuote(), [
+        return array_merge(parent::getQuoteFieldsAllowedForQuoteDuplicate(), [
             QuoteTransfer::BUNDLE_ITEMS,
             QuoteTransfer::CART_NOTE, #CartNoteFeature
         ]);
