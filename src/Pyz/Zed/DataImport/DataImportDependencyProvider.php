@@ -9,6 +9,7 @@ namespace Pyz\Zed\DataImport;
 
 use Spryker\Zed\BusinessOnBehalfDataImport\Communication\Plugin\DataImport\BusinessOnBehalfCompanyUserDataImportPlugin;
 use Spryker\Zed\CategoryDataImport\Communication\Plugin\CategoryDataImportPlugin;
+use Spryker\Zed\CompanyBusinessUnitDataImport\Communication\Plugin\CompanyBusinessUnitAddressDataImportPlugin;
 use Spryker\Zed\CompanyBusinessUnitDataImport\Communication\Plugin\CompanyBusinessUnitDataImportPlugin;
 use Spryker\Zed\CompanyBusinessUnitDataImport\Communication\Plugin\CompanyBusinessUnitUserDataImportPlugin;
 use Spryker\Zed\CompanyDataImport\Communication\Plugin\CompanyDataImportPlugin;
@@ -154,10 +155,16 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
             [new CategoryDataImportPlugin(), DataImportConfig::IMPORT_TYPE_CATEGORY_TEMPLATE],
             new PriceProductDataImportPlugin(),
             new CompanyDataImportPlugin(),
-            new CompanyBusinessUnitDataImportPlugin(),
             new CompanyUnitAddressDataImportPlugin(),
             new CompanyUnitAddressLabelDataImportPlugin(),
             new CompanyUnitAddressLabelRelationDataImportPlugin(),
+            new CompanyUserDataImportPlugin(),
+            new CompanyRoleDataImportPlugin(),
+            new CompanyRolePermissionDataImportPlugin(),
+            new CompanyUserRoleDataImportPlugin(),
+            new CompanyBusinessUnitDataImportPlugin(),
+            new CompanyBusinessUnitUserDataImportPlugin(),
+            new CompanyBusinessUnitAddressDataImportPlugin(),
             new ProductDiscontinuedDataImportPlugin(), #ProductDiscontinuedFeature
             new ProductMeasurementUnitDataImportPlugin(),
             new ProductMeasurementBaseUnitDataImportPlugin(),
