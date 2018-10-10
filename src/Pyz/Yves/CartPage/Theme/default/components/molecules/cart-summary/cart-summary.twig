@@ -31,6 +31,12 @@
                 </li>
             {% endif %}
 
+            {% if widgetExists('SalesOrderThresholdWidgetPlugin') %}
+                <li class="list__item {{ config.name }}__item {{ config.name }}__item--top-space">
+                    {{ widget('SalesOrderThresholdWidgetPlugin', data.cart.expenses) }}
+                </li>
+            {% endif %}
+
             <li class="list__item {{ config.name }}__item {{ config.name }}__item--top-space">
                 {{ 'cart.price.subtotal' | trans }}
                 <span class="float-right">{{ data.cart.totals.subtotal | money }}</span>

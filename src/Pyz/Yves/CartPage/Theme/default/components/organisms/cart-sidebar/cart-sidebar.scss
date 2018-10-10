@@ -1,6 +1,4 @@
-/* stylelint-disable */
 .cart-sidebar {
-
     &__item {
         background-color: $setting-color-gray-7;
         margin-top: rem(10);
@@ -52,14 +50,12 @@
             max-width: 100%;
         }
 
-        .select2-container--default .select2-selection--single {
+        .select2-container--default .select2-selection__rendered {
             border-radius: $setting-border-radius;
             border: none;
             box-shadow: 0 10px 10px 0 $setting-color-shadow-1, 0 3px 3px 0 $setting-color-shadow-1;
-
-            .select2-selection__rendered {
-                line-height: rem(45);
-            }
+            line-height: rem(45);
+            background: $setting-color-white;
         }
     }
 
