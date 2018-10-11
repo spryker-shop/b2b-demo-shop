@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "514c721ba8fe220ef24211eb3d07258a",
+    "content-hash": "1479827d212ad8812afc4ab1492ae690",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -14892,28 +14892,30 @@
         },
         {
             "name": "spryker/multi-cart-data-import",
-            "version": "dev-beta/dmexco",
+            "version": "0.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/multi-cart-data-import.git",
-                "reference": "abeae475e1a494729689ca4377b63b30becb2c30"
+                "reference": "9b52d8130c8934ad282314f60bf6b323070409e6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/multi-cart-data-import/zipball/abeae475e1a494729689ca4377b63b30becb2c30",
-                "reference": "abeae475e1a494729689ca4377b63b30becb2c30",
+                "url": "https://api.github.com/repos/spryker/multi-cart-data-import/zipball/9b52d8130c8934ad282314f60bf6b323070409e6",
+                "reference": "9b52d8130c8934ad282314f60bf6b323070409e6",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
                 "spryker/customer": "^7.0.0",
-                "spryker/data-import": "^1.3.0",
-                "spryker/kernel": "^3.20.0",
+                "spryker/data-import": "^1.0.0",
+                "spryker/kernel": "^3.0.0",
                 "spryker/quote": "^2.0.0",
                 "spryker/store": "^1.0.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
+                "spryker/propel-orm": "*",
                 "spryker/testify": "*"
             },
             "type": "library",
@@ -14924,15 +14926,16 @@
             },
             "autoload": {
                 "psr-4": {
-                    "Spryker\\": "src/Spryker/"
+                    "Spryker\\": "src/Spryker/",
+                    "SprykerTest\\Zed\\MultiCartDataImport\\Helper\\": "tests/SprykerTest/Zed/MultiCartDataImport/_support/Helper/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "proprietary"
+                "MIT"
             ],
             "description": "MultiCartDataImport module",
-            "time": "2018-09-06T12:22:26+00:00"
+            "time": "2018-10-08T13:06:23+00:00"
         },
         {
             "name": "spryker/navigation",
@@ -22348,28 +22351,33 @@
         },
         {
             "name": "spryker/shared-cart-data-import",
-            "version": "dev-beta/dmexco",
+            "version": "0.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/shared-cart-data-import.git",
-                "reference": "f1a627fba28ef03b0e25719f01728191903633e4"
+                "reference": "c2bc10917ecd5c89667cc9f3e6426be5428e845a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/shared-cart-data-import/zipball/f1a627fba28ef03b0e25719f01728191903633e4",
-                "reference": "f1a627fba28ef03b0e25719f01728191903633e4",
+                "url": "https://api.github.com/repos/spryker/shared-cart-data-import/zipball/c2bc10917ecd5c89667cc9f3e6426be5428e845a",
+                "reference": "c2bc10917ecd5c89667cc9f3e6426be5428e845a",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
-                "spryker/company-user": "^2.0.0",
-                "spryker/data-import": "^1.3.0",
-                "spryker/kernel": "^3.20.0",
+                "spryker/company-user": "^1.0.0 || ^2.0.0",
+                "spryker/data-import": "^1.0.0",
+                "spryker/kernel": "^3.0.0",
                 "spryker/quote": "^2.0.0",
                 "spryker/shared-cart": "^1.0.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
+                "spryker/company": "*",
+                "spryker/company-business-unit": "*",
+                "spryker/customer": "*",
+                "spryker/permission": "*",
+                "spryker/propel": "*",
                 "spryker/testify": "*"
             },
             "type": "library",
@@ -22380,15 +22388,16 @@
             },
             "autoload": {
                 "psr-4": {
-                    "Spryker\\": "src/Spryker/"
+                    "Spryker\\": "src/Spryker/",
+                    "SprykerTest\\Zed\\SharedCartDataImport\\Helper\\": "tests/SprykerTest/Zed/SharedCartDataImport/_support/Helper/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "proprietary"
+                "MIT"
             ],
             "description": "SharedCartDataImport module",
-            "time": "2018-10-03T13:54:24+00:00"
+            "time": "2018-10-08T13:06:23+00:00"
         },
         {
             "name": "spryker/shipment",
@@ -29698,7 +29707,7 @@
             ],
             "authors": [
                 {
-                    "name": "Sullivan Sénéchal",
+                    "name": "Sullivan SENECHAL",
                     "email": "soullivaneuh@gmail.com"
                 }
             ],
@@ -30782,11 +30791,9 @@
         "spryker/company-unit-address-label-gui": 20,
         "spryker/company-user-extension": 20,
         "spryker/customer": 20,
-        "spryker/multi-cart-data-import": 20,
         "spryker/product-list-storage": 20,
         "spryker/product-packaging-unit-storage": 20,
         "spryker/quick-order-extension": 20,
-        "spryker/shared-cart-data-import": 20,
         "spryker/shopping-list-data-import": 20
     },
     "prefer-stable": true,

@@ -16,6 +16,9 @@ use SprykerShop\Yves\CartPage\Controller\CartController as SprykerCartController
 use SprykerShop\Yves\CartPage\Plugin\Provider\CartControllerProvider;
 use Symfony\Component\HttpFoundation\Request;
 
+/**
+ * @method \Pyz\Yves\CartPage\CartPageFactory getFactory()
+ */
 class CartController extends SprykerCartController
 {
     use PermissionAwareTrait;
@@ -103,5 +106,43 @@ class CartController extends SprykerCartController
         }
 
         return parent::changeAction($sku, $quantity, $groupKey);
+    }
+
+    /**
+     * @param array|null $selectedAttributes
+     *
+     * @return array
+     */
+    protected function executeIndexAction(?array $selectedAttributes): array
+    {
+        $validateQuoteResponseTransfer = $this->getFactory()
+            ->getCartClient()
+            ->validateQuote();
+
+        $this->getFactory()
+            ->getZedRequestClient()
+            ->addFlashMessagesFromLastZedRequest();
+
+        $quoteTransfer = $validateQuoteResponseTransfer->getQuoteTransfer();
+
+        $cartItems = $this->getFactory()
+            ->createCartItemReader()
+            ->getCartItems($quoteTransfer);
+
+        $itemAttributeVariantsBySku = $this->getFactory()
+            ->createCartItemsAttributeProvider()
+            ->getItemsAttributes($quoteTransfer, $this->getLocale(), $selectedAttributes);
+
+        $productBySku = $this->getFactory()
+            ->createCartItemsProductsProvider()
+            ->getItemsProducts($cartItems, $this->getLocale());
+
+        return [
+            'cart' => $quoteTransfer,
+            'cartItems' => $cartItems,
+            'products' => $productBySku,
+            'attributes' => $itemAttributeVariantsBySku,
+            'isQuoteValid' => $validateQuoteResponseTransfer->getIsSuccessful(),
+        ];
     }
 }

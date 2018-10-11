@@ -28,6 +28,7 @@
                     {% endif %}
                 {% endif %}
                 <th>{{ 'page.multi_cart.shopping_cart.list.label.num_of_products' | trans }}</th>
+                <th>{{ 'page.multi_cart.shopping_cart.list.label.prices' | trans }}</th>
                 <th>{{ 'page.multi_cart.shopping_cart.list.label.total' | trans }}</th>
                 {% if showActions %}
                     <th></th>
@@ -37,6 +38,7 @@
         <tbody>
             {% for quote in data.quotes %}
                 {% set totals = quote.items | length %}
+                {% set isQuoteEditable = can('WriteSharedCartPermissionPlugin', quote.idQuote) %}
                 <tr>
                     <td>
                         <a href="{{ url('multi-cart/set-default', {idQuote: quote.idQuote}) }}"
@@ -61,40 +63,53 @@
                             <span class="badge cart-items-quantity">{{ totals }} {{ label | trans }}</span>
                         {% endif %}
                     </td>
+                    <td>
+                        {% if quote.priceMode is not empty %}
+                            {% include molecule('price-mode') with {
+                                data: {
+                                    priceMode: quote.priceMode,
+                                    showIcon: false
+                                }
+                            } only %}
+                        {% endif %}
+                    </td>
                     <td><strong>{{ quote.totals.subtotal | default(0) | money }}</strong></td>
                     {% if showActions %}
                         <td>
                             <ul class="menu grid grid--middle grid--justify">
-                                {% if data.actions.update and can('WriteSharedCartPermissionPlugin', quote.idQuote) %}
-                                    <li class="menu__item">
-                                        <a class="link link--alt link--action" href="{{ url('multi-cart/update', {idQuote: quote.idQuote}) }}">
-                                            {% include atom('icon') with {
-                                                data: {
-                                                    name: 'edit'
-                                                },
-                                                attributes: {
-                                                    title: 'page.multi_cart.shopping_cart.list.link.edit_name' | trans
-                                                }
-                                            } only %}
-                                        </a>
-                                    </li>
+                                {% if isQuoteEditable %}
+                                    {% if data.actions.update %}
+                                        <li class="menu__item">
+                                            <a class="link link--alt link--action" href="{{ url('multi-cart/update', {idQuote: quote.idQuote}) }}">
+                                                {% include atom('icon') with {
+                                                    data: {
+                                                        name: 'edit'
+                                                    },
+                                                    attributes: {
+                                                        title: 'page.multi_cart.shopping_cart.list.link.edit_name' | trans
+                                                    }
+                                                } only %}
+                                            </a>
+                                        </li>
+                                    {% endif %}
+                                    {% if data.actions.duplicate %}
+                                        <li class="menu__item">
+                                            <a class="link link--alt link--action" href="{{ url('multi-cart/duplicate', {idQuote: quote.idQuote}) }}">
+                                                {% include atom('icon') with {
+                                                    modifiers: ['duplicate'],
+                                                    data: {
+                                                        name: 'duplicate'
+                                                    },
+                                                    attributes: {
+                                                        title: 'page.multi_cart.shopping_cart.list.link.duplicate' | trans
+                                                    }
+                                                } only %}
+                                            </a>
+                                        </li>
+                                    {% endif %}
                                 {% endif %}
-                                {% if data.actions.duplicate %}
-                                    <li class="menu__item">
-                                        <a class="link link--alt link--action" href="{{ url('multi-cart/duplicate', {idQuote: quote.idQuote}) }}">
-                                            {% include atom('icon') with {
-                                                modifiers: ['duplicate'],
-                                                data: {
-                                                    name: 'duplicate'
-                                                },
-                                                attributes: {
-                                                    title: 'page.multi_cart.shopping_cart.list.link.duplicate' | trans
-                                                }
-                                            } only %}
-                                        </a>
-                                    </li>
-                                {% endif %}
-                                {% if widgetExists('CartToShoppingListWidgetPlugin') %}
+
+                                {% if isQuoteEditable and widgetExists('CartToShoppingListWidgetPlugin') %}
                                     <li class="menu__item">
                                         {{ widget('CartToShoppingListWidgetPlugin', quote) }}
                                     </li>
@@ -103,7 +118,7 @@
                                 {% if widgetExists('CartListPermissionGroupWidgetPlugin') %}
                                     {{ widgetBlock('CartListPermissionGroupWidgetPlugin', 'actions', quote, isQuoteDeletable) }}
                                 {% else %}
-                                    {% if isQuoteDeletable %}
+                                    {% if isQuoteEditable and isQuoteDeletable %}
                                         <li class="menu__item">
                                             <a class="link link--alt link--action" href="{{ url('multi-cart/confirm-delete', {idQuote: quote.idQuote}) }}">
                                                 {% include atom('icon') with {

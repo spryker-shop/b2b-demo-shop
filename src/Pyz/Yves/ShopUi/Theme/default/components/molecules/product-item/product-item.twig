@@ -44,7 +44,9 @@
                 </h6>
             {% endblock %}
 
-            <small class="text-secondary">{{ 'cart.item.sku' | trans }} {{ data.listItem.sku }}</small>
+            {% block info %}
+                <small class="text-secondary">{{ 'cart.item.sku' | trans }} {{ data.listItem.sku }}</small>
+            {% endblock %}
 
             {% if data.quantity is not empty %}
                 <div class="grid grid--middle grid--gap {{ config.name }}__quantity">
