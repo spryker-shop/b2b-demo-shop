@@ -11,9 +11,11 @@
     {% include molecule('breadcrumb') with {
         data: {
             steps: [{
-                label: 'customer.profile' | trans
+                label: 'customer.profile' | trans,
+                url: url('customer/overview'),
             },{
                 label: 'multi_cart_page.cart_delete_confirmation.breadcrumbs.shopping_carts' | trans
+                url: url('multi-cart'),
             },{
                 label: 'multi_cart_page.cart_delete_confirmation.warning' | trans
             }]
