@@ -4,7 +4,8 @@
     cart: _view.cart | default([]),
     cartName: _view.cart.name | default,
     cartIdQuote: _view.cart.idQuote | default,
-    cartShareDetails: _view.cart.shareDetails | default
+    cartShareDetails: _view.cart.shareDetails | default,
+    backUrl: app.request.headers.get('referer') | default(url('multi-cart'))
 } %}
 
 {% block breadcrumbs %}
