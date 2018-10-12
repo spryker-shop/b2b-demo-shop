@@ -7,7 +7,8 @@
 
 {% define data = {
     idShoppingList: required,
-    hasWritePermission: required
+    hasWritePermission: required,
+    shoppingList: required
 } %}
 
 {% block body %}
@@ -35,6 +36,8 @@
             }
         } only %}
     </a>
+
+    {{ widget('ShoppingListDismissWidgetPlugin', data.shoppingList) }}
 
     {% if data.hasWritePermission %}
         <a class="link link--alt link--action" class="spacing-left spacing-left--small" href="{{ url('shopping-list/delete', { idShoppingList: data.idShoppingList }) }}">
