@@ -23,6 +23,7 @@ use SprykerShop\Yves\ProductMeasurementUnitWidget\Plugin\CartPage\QuantitySalesU
 use SprykerShop\Yves\ProductOptionWidget\Plugin\CartPage\CartItemProductOptionWidgetPlugin;
 use SprykerShop\Yves\ProductPackagingUnitWidget\Plugin\CartPage\CartProductPackagingUnitWidgetPlugin;
 use SprykerShop\Yves\ProductRelationWidget\Plugin\CartPage\UpSellingProductsWidgetPlugin;
+use SprykerShop\Yves\SalesOrderThresholdWidget\Plugin\CartPage\SalesOrderThresholdWidgetPlugin;
 
 class CartPageDependencyProvider extends SprykerCartPageDependencyProvider
 {
@@ -46,6 +47,7 @@ class CartPageDependencyProvider extends SprykerCartPageDependencyProvider
             CartOperationsWidgetPlugin::class, #MultiCartFeature
             CartToShoppingListWidgetPlugin::class, #ShoppingListFeature
             CartProductPackagingUnitWidgetPlugin::class, #ProductPackagingUnit
+            SalesOrderThresholdWidgetPlugin::class,
         ];
     }
 

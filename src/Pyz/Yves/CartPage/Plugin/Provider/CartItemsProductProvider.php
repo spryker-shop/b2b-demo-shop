@@ -17,7 +17,7 @@ class CartItemsProductProvider implements CartItemsProductProviderInterface
     protected $productStorageClient;
 
     /**
-     * @var \SprykerShop\Yves\CartPage\Dependency\Client\CartPageToProductStorageClientInterface
+     * @param \SprykerShop\Yves\CartPage\Dependency\Client\CartPageToProductStorageClientInterface $productStorageClient
      */
     public function __construct(CartPageToProductStorageClientInterface $productStorageClient)
     {
