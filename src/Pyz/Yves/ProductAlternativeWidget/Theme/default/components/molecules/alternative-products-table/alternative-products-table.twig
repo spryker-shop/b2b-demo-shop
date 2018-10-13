@@ -14,8 +14,8 @@
 {% set idShoppingListItem = data.item.idShoppingListItem %}
 
 {% block body %}
-    <h5 class="title title--shopping-list-alternative">{{ 'product_alternative_widget.alternative_for' | trans }}</h5>
-    <h6 class="title title--sub">{{ data.item.name }}</h6>
+    <h3 class="spacing-bottom spacing-bottom--reset">{{ 'product_alternative_widget.alternative_for' | trans }}</h3>
+    <h4 class="title title--sub">{{ data.item.name }}</h4>
     {% for item in data.products %}
         {% embed molecule('product-item') with {
             class: loop.index > data.maxShownItems ? 'js-product-alternative-' ~ idShoppingListItem ~ '__show-all-target is-hidden' : '',
@@ -33,7 +33,7 @@
                 <ul class="list spacing-y spacing-y--big">
                     {% for attribute in data.listItem.superAttributesDefinition %}
                         {% if data.listItem.attributes[attribute] is defined %}
-                            <li class="list__item list__item--inline spacing-right spacing-right--bigger">
+                            <li class="list__item list__item--inline spacing-right spacing-right--biggest">
                                 <strong>{{- ('product.attribute.' ~ attribute) | trans -}}: </strong>
                                 {% if ('product.attribute.' ~ attribute) | trans == 'Color' %}
                                     <span class="{{ config.name}}__color text-secondary" style="background-color: {{ data.listItem.attributes[attribute] }}">

@@ -60,6 +60,12 @@
                     min-width: 46%;
                 }
             }
+
+            &--hidden {
+                &:not(#{$name}__col--content) {
+                    opacity: 0.5;
+                }
+            }
         }
 
         &__inner {
@@ -78,6 +84,10 @@
             &--shopping-list-alternative {
                 font-size: rem(16);
                 margin-bottom: 0;
+            }
+
+            &--hidden {
+                opacity: 0.5;
             }
         }
 

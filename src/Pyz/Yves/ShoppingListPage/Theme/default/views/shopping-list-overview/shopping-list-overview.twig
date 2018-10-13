@@ -15,7 +15,7 @@
                     enable: true,
                     text: 'customer.account.shopping_list.overview.add_new' | trans,
                     icon: 'plus',
-                    class: 'button button--success button--hollow spacing-right spacing-right--reset'
+                    class: 'button button--hollow button--form spacing-right spacing-right--reset spacing-bottom'
                 }
             }
         } only %}
@@ -29,24 +29,35 @@
                         {{ parent() }}
                     {% endblock %}
 
-                    <div class="{{config.name}}__actions grid grid--justify">
-                        <div class="col">
-                            {% block title %}
-                                {% if data.title is not empty %}
-                                    <h3>{{data.title}}</h3>
-                                {% endif %}
-                            {% endblock %}
-                        </div>
-                        <div class="col">
-                            {% block actions %}
+                    {% block title %}
+                        {% if data.title is not empty %}
+                            <h3>{{data.title}}</h3>
+                        {% endif %}
+                    {% endblock %}
+
+                    <div class="grid grid--bottom grid--gap">
+                        <div class="col col--expand">
+                            {% block fieldset %}
                                 {{ parent() }}
                             {% endblock %}
                         </div>
+                        <div class="col">
+                            {% block submit %}
+                                <button type="submit" class="{{config.name}}__action {{data.submit.class}}" {{qa(data.submit.qa)}}>
+                                    {% if data.submit.icon is not empty %}
+                                        {% include atom('icon') with {
+                                            modifiers: ['plus-small'],
+                                            class: 'spacing-right spacing-right--small',
+                                            data: {
+                                                name: data.submit.icon
+                                            }
+                                        } only %}
+                                    {% endif %}
+                                    {{data.submit.text}}
+                                </button>
+                            {% endblock %}
+                        </div>
                     </div>
-
-                    {% block fieldset %}
-                        {{ parent() }}
-                    {% endblock %}
                 </div>
 
                 {% if data.enableEnd %}
@@ -67,6 +78,8 @@
                 <button type="submit" class="button button--success" {{qa('submit-button')}}>
                     {{ 'customer.account.shopping_list.overview.add_shopping_list_to_cart' | trans }}
                     {% include atom('icon') with {
+                        class: 'spacing-left spacing-left--small',
+                        modifiers: ['trolley'],
                         data: {
                             name: 'cart'
                         }

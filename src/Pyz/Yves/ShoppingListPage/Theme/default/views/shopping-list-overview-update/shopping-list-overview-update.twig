@@ -44,21 +44,13 @@
             }) }}
 
             <div class="col col--sm-12">
-                <div class="shopping-list-overview-table--update-head grid grid--left grid--middle">
-                    <div class="col grid grid--middle spacing-right spacing-right--bigger">
-                        <strong class="spacing-right">{{ 'customer.account.shopping_list.overview.owner' | trans }}:</strong>
-                        {{ data.shoppingList.owner }}
-                    </div>
-                    <strong>{{ 'customer.account.shopping_list.access' | trans }}:</strong>
-                    <span class="badge badge--shopping-list badge--access spacing-x">
-                        {% include molecule('shopping-list-permission', 'ShoppingListPage') with {
-                            modifiers: ['badge'],
-                            data: {
-                                hasWritePermission: hasWritePermission
-                            }
-                        } only %}
-                    </span>
-                </div>
+                {% embed molecule('shopping-list-info', 'ShoppingListPage') with {
+                    data: {
+                        shoppingList: data.shoppingList
+                    }
+                } only %}
+                    {% block sharedBlock %}{% endblock %}
+                {% endembed %}
             </div>
 
             <div class="col col--sm-12">
@@ -72,11 +64,12 @@
                         {% endif %}
 
                         {% embed molecule('product-item') with {
-                            modifiers: ['shopping-list'],
+                            modifiers: ['shopping-list', isProductAvailable ? '' : 'hidden'],
                             data: {
                                 listItem: product,
                                 form: data.form,
-                                imageModifiers: ['shopping-list']
+                                imageModifiers: ['shopping-list'],
+                                canEdit: true
                             },
                             embed: {
                                 key: key,
@@ -103,7 +96,7 @@
                                 <ul class="list spacing-y spacing-y--big">
                                     {% for attribute in data.listItem.superAttributesDefinition %}
                                         {% if data.listItem.attributes[attribute] is defined %}
-                                            <li class="list__item list__item--inline spacing-right spacing-right--bigger">
+                                            <li class="list__item list__item--inline spacing-right spacing-right--biggest">
                                                 <strong>{{- ('product.attribute.' ~ attribute) | trans -}}: </strong>
                                                 {% if ('product.attribute.' ~ attribute) | trans == 'Color' %}
                                                     <span class="{{ config.name}}__color text-secondary" style="background-color: {{ data.listItem.attributes[attribute] }}">
@@ -118,7 +111,9 @@
                                         {% endif %}
                                     {% endfor %}
                                 </ul>
+                            {% endblock %}
 
+                            {% block note %}
                                 {% for subForm in data.form.items[embed.key].children  %}
                                     {% if not subForm.rendered %}
                                         {% if subForm.vars.template_path is defined %}
@@ -181,8 +176,14 @@
                         {% endif %}
                     {% endfor %}
 
-                    <div class="col col--sm-12 text-center">
-                        <a class="button button--alert" href="{{ path('shopping-list/clear', {idShoppingList: data.idShoppingList}) }}">
+                    <div class="grid grid--right spacing-bottom spacing-bottom--biggest">
+                        <a class="col link link--icon spacing-right spacing-right--biggest" href="{{ path('shopping-list/clear', {idShoppingList: data.idShoppingList}) }}">
+                            {% include atom('icon') with {
+                                modifiers: ['link'],
+                                data: {
+                                    name: 'delete'
+                                }
+                            } only %}
                             {{ 'shopping_list.remove_all_items' | trans }}
                         </a>
                     </div>
@@ -199,7 +200,7 @@
                 <a class="button button--alert button--hollow" href="{{ path('shopping-list/delete/confirm', {idShoppingList: data.idShoppingList}) }}">{{ 'customer.account.shopping_list.overview.delete' | trans }}</a>
             </div>
             <div class="col col--sm-6 text-right">
-                <a href="{{ path('shopping-list') }}" class="button button--hollow spacing-right">
+                <a href="{{ data.backUrl }}" class="button button--hollow spacing-right">
                     {{ 'general.back.button' | trans }}
                 </a>
                 <button type="submit" class="button button--success">

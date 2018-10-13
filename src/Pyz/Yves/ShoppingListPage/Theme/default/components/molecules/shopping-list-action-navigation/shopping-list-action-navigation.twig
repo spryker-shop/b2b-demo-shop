@@ -2,7 +2,7 @@
 
 {% define config = {
     name: 'shopping-list-action-navigation',
-    tag: 'nav'
+    tag: 'div'
 } %}
 
 {% define data = {
@@ -12,15 +12,16 @@
 
 {% block body %}
     {% if data.hasWritePermission %}
-        <a class="link link--alt link--action" href="{{ url('shopping-list/update', { idShoppingList: data.idShoppingList }) }}">
+        <a class="col link link--alt link--action" href="{{ url('shopping-list/update', { idShoppingList: data.idShoppingList }) }}">
             {% include atom('icon') with {
                 data: {
                     name: 'edit'
                 }
             } only %}
         </a>
-        <a class="link link--alt link--action" class="spacing-left spacing-left--small" href="{{ url('shopping-list/share', { idShoppingList: data.idShoppingList }) }}">
+        <a class="col link link--alt link--action" class="spacing-left spacing-left--small" href="{{ url('shopping-list/share', { idShoppingList: data.idShoppingList }) }}">
             {% include atom('icon') with {
+                modifiers: ['share'],
                 data: {
                     name: 'share'
                 }
@@ -28,7 +29,7 @@
         </a>
     {% endif %}
 
-    <a class="link link--alt link--action" class="spacing-left spacing-left--small" href="{{ url('shopping-list/print', { idShoppingList: data.idShoppingList }) }}" target="_blank">
+    <a class="col link link--alt link--action" class="spacing-left spacing-left--small" href="{{ url('shopping-list/print', { idShoppingList: data.idShoppingList }) }}" target="_blank">
         {% include atom('icon') with {
             data: {
                 name: 'print'
@@ -37,7 +38,7 @@
     </a>
 
     {% if data.hasWritePermission %}
-        <a class="link link--alt link--action" class="spacing-left spacing-left--small" href="{{ url('shopping-list/delete', { idShoppingList: data.idShoppingList }) }}">
+        <a class="col link link--alt link--action" class="spacing-left spacing-left--small" href="{{ url('shopping-list/delete', { idShoppingList: data.idShoppingList }) }}">
             {% include atom('icon') with {
                 data: {
                     name: 'delete'
