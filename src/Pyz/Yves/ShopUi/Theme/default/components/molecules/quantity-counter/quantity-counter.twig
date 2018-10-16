@@ -8,15 +8,18 @@
 {% define data = {
     isDisabled: false,
     isReadOnly: false,
-    autoUpdate: false
+    autoUpdate: false,
+    allowKeyboardInput: true,
 } %}
+
+{% set isEditable = not data.isReadOnly and not data.isDisabled %}
 
 {% define attributes = {
     value: 1,
     type: "number",
     name: "quantity",
-    onkeypress: "return false;",
-    onkeydown:  "return false;",
+    onkeypress: data.allowKeyboardInput and isEditable ? null : "return false;",
+    onkeydown:  data.allowKeyboardInput and isEditable ? null : "return false;",
     min: 1,
     step: 1,
 } %}
