@@ -1,0 +1,19 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'shopping-list-note',
+} %}
+
+{% define data = {
+    title: 'shopping_list.item_note' | trans,
+    note: ''
+} %}
+
+{% block body %}
+    <h6 class="{{ config.name }}__title">{{ data.title }}</h6>
+    <div class="{{ config.name }}__container">
+        <div class="{{ config.name }}__text-wrap">
+            <div class="{{ config.name }}__text">{{ data.note }}</div>
+        </div>
+    </div>
+{% endblock %}
