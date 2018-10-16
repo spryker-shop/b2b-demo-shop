@@ -9,6 +9,12 @@ namespace Pyz\Client\Permission;
 
 use Pyz\Zed\CompanyUser\Communication\Plugin\Permission\SeeCompanyMenuPermissionPlugin;
 use Spryker\Client\CompanyRole\Plugin\PermissionStoragePlugin;
+use Spryker\Client\CustomerAccessPermission\Plugin\CustomerAccessPermissionStoragePlugin;
+use Spryker\Client\CustomerAccessPermission\Plugin\SeeAddToCartPermissionPlugin;
+use Spryker\Client\CustomerAccessPermission\Plugin\SeeOrderPlaceSubmitPermissionPlugin;
+use Spryker\Client\CustomerAccessPermission\Plugin\SeePricePermissionPlugin;
+use Spryker\Client\CustomerAccessPermission\Plugin\SeeShoppingListPermissionPlugin;
+use Spryker\Client\CustomerAccessPermission\Plugin\SeeWishlistPermissionPlugin;
 use Spryker\Client\Permission\PermissionDependencyProvider as SprykerPermissionDependencyProvider;
 use Spryker\Client\SharedCart\Plugin\ReadSharedCartPermissionPlugin;
 use Spryker\Client\SharedCart\Plugin\WriteSharedCartPermissionPlugin;
@@ -16,7 +22,6 @@ use Spryker\Client\ShoppingList\Plugin\WriteShoppingListPermissionPlugin;
 use Spryker\Shared\CheckoutPermissionConnector\Plugin\Permission\PlaceOrderWithAmountUpToPermissionPlugin;
 use Spryker\Shared\CompanyUser\Plugin\AddCompanyUserPermissionPlugin;
 use Spryker\Shared\CompanyUserInvitation\Plugin\ManageCompanyUserInvitationPermissionPlugin;
-use Spryker\Zed\CartPermissionConnector\Communication\Plugin\AlterCartUpToAmountPermissionPlugin;
 use Spryker\Zed\ShoppingList\Communication\Plugin\ReadShoppingListPermissionPlugin;
 use SprykerShop\Shared\CartPage\Plugin\AddCartItemPermissionPlugin;
 use SprykerShop\Shared\CartPage\Plugin\ChangeCartItemPermissionPlugin;
@@ -32,6 +37,7 @@ class PermissionDependencyProvider extends SprykerPermissionDependencyProvider
     {
         return [
             new PermissionStoragePlugin(), #SharedCartFeature #ShoppingListFeature
+            new CustomerAccessPermissionStoragePlugin(), #CustomerAccessFeature
         ];
     }
 
@@ -49,11 +55,15 @@ class PermissionDependencyProvider extends SprykerPermissionDependencyProvider
             new AddCartItemPermissionPlugin(),
             new ChangeCartItemPermissionPlugin(),
             new RemoveCartItemPermissionPlugin(),
-            new AlterCartUpToAmountPermissionPlugin(),
             new PlaceOrderWithAmountUpToPermissionPlugin(),
             new ManageCompanyUserInvitationPermissionPlugin(),
             new AddCompanyUserPermissionPlugin(),
             new CompanyUserStatusChangePermissionPlugin(),
+            new SeePricePermissionPlugin(), #CustomerAccessFeature
+            new SeeOrderPlaceSubmitPermissionPlugin(), #CustomerAccessFeature
+            new SeeAddToCartPermissionPlugin(), #CustomerAccessFeature
+            new SeeWishlistPermissionPlugin(), #CustomerAccessFeature
+            new SeeShoppingListPermissionPlugin(), #CustomerAccessFeature
         ];
     }
 }

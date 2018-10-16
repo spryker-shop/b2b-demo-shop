@@ -6,6 +6,7 @@
     isQuoteValid: _view.isQuoteValid,
     attributes: _view.attributes,
     request: app.request,
+    products: _view.products,
 
     title: 'cart.cart' | trans
 } %}
@@ -43,9 +44,6 @@
 {% endblock %}
 
 {% block title %}
-    {% if not widgetExists('CartOperationsWidgetPlugin') %}
-        {{ parent() }}
-    {% endif %}
 {% endblock %}
 
 {% block contentClass %}page-layout-main page-layout-main--cart-page{% endblock %}
@@ -82,6 +80,13 @@
                                     } only %}
                                 </a>
                             {% endif %}
+                            {% if data.cart.priceMode is not empty %}
+                                {% include molecule('price-mode') with {
+                                    data: {
+                                        priceMode: data.cart.priceMode
+                                    }
+                                } only %}
+                            {% endif %}
                         </h3>
                     </div>
                     <div class="col col--sm-2 text-right cart-title__quantity">{{ app['cart.quantity'] }} {{ 'checkout.step.summary.items' | trans }}</div>
@@ -89,14 +94,36 @@
             </div>
             <div class="col col--sm-12 col--xl-9">
                 {% for cartItem in data.cartItems %}
-                    {% include molecule('product-item') with {
+                    {% embed molecule('product-item') with {
                         data: {
                             list: data.cart,
                             listItem: cartItem,
                             attributes: data.attributes[cartItem.sku] | default([]),
                             canEdit: ((not is_granted('ROLE_USER') or can('WriteSharedCartPermissionPlugin', data.cart.idQuote)) and can('RemoveCartItemPermissionPlugin'))
+                        },
+                        embed: {
+                            product: data.products[cartItem.sku]
                         }
                     } only %}
+                        {% block price %}
+                            {% include molecule('price') with {
+                                modifiers: ['cart'],
+                                data: {
+                                    amount: price | money,
+                                    originalAmount: embed.product.prices.ORIGINAL is not defined or embed.product.prices.ORIGINAL is empty ? null : (embed.product.prices.ORIGINAL | money)
+                                },
+                            } only %}
+                        {% endblock %}
+
+                        {% block info %}
+                            {{ parent() }}
+
+                            {% if embed.product.attributes.farbe is defined %}
+                                <br/>
+                                <small class="text-secondary">{{ 'cart.item.color' | trans }}  {{ embed.product.attributes.farbe  }} </small>
+                            {% endif %}
+                        {% endblock %}
+                    {% endembed %}
                 {% endfor %}
 
                 {% if canEditCart and can('RemoveCartItemPermissionPlugin') %}

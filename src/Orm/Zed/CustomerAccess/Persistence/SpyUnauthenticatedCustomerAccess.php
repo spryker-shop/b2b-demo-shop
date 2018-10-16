@@ -5,12 +5,12 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Orm\Zed\ShoppingListNote\Persistence;
+namespace Orm\Zed\CustomerAccess\Persistence;
 
-use Spryker\Zed\ShoppingListNote\Persistence\Propel\AbstractSpyShoppingListItemNoteQuery as BaseSpyShoppingListItemNoteQuery;
+use Spryker\Zed\CustomerAccess\Persistence\Propel\AbstractSpyUnauthenticatedCustomerAccess as BaseSpyUnauthenticatedCustomerAccess;
 
 /**
- * Skeleton subclass for performing query and update operations on the 'spy_shopping_list_item_note' table.
+ * Skeleton subclass for representing a row from the 'spy_unauthenticated_customer_access' table.
  *
  *
  *
@@ -19,6 +19,6 @@ use Spryker\Zed\ShoppingListNote\Persistence\Propel\AbstractSpyShoppingListItemN
  * long as it does not already exist in the output directory.
  *
  */
-class SpyShoppingListItemNoteQuery extends BaseSpyShoppingListItemNoteQuery
+class SpyUnauthenticatedCustomerAccess extends BaseSpyUnauthenticatedCustomerAccess
 {
 }

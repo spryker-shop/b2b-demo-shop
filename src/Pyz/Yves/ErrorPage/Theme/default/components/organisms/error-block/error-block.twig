@@ -6,7 +6,7 @@
 } %}
 
 {% define data = {
-    error: ''
+    error: data.error
 } %}
 
 {% block body %}
@@ -15,6 +15,6 @@
             <div class="{{ config.name }}__code-decor-inner"></div>
         </div> 4</div>
     <div class="title title--error-page">{{ 'error_page.title' | trans }}</div>
-    <p class="{{ config.name }}__text">{{ 'error_page.text' | trans }}</p>
-    <a href="{{ url('') }}" class="link link--error-block">{{ 'error_page.home_link' | trans }}</a>
+    <p class="{{ config.name }}__text">{{ data.error ? data.error | trans : 'error_page.text' | trans }}</p>
+    <a href="{{ url('home') }}" class="link link--error-block">{{ 'error_page.home_link' | trans }}</a>
 {% endblock %}

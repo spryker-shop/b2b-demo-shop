@@ -47,6 +47,20 @@
             </a>
         </li>
     {% endif %}
+    {% if _widget.accessType != 'OWNER_ACCESS' %}
+        <li class="menu__item">
+            <a class="link link--alt link--action" href="{{ url('shared-cart/dismiss-confirm', {idQuote: _widget.cart.idQuote}) }}">
+                {% include atom('icon') with {
+                    data: {
+                        name: 'dismiss'
+                    },
+                    attributes: {
+                        title: 'shared_cart_widget.cart.dismiss' | trans
+                    }
+                } only %}
+            </a>
+        </li>
+    {% endif %}
     {% if _widget.isQuoteDeletable and can('WriteSharedCartPermissionPlugin', _widget.cart.idQuote) %}
         <li class="menu__item">
             <a class="link link--alt link--action" href="{{ url('multi-cart/confirm-delete', {idQuote: _widget.cart.idQuote}) }}">
