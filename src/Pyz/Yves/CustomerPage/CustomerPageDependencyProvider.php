@@ -7,6 +7,7 @@
 
 namespace Pyz\Yves\CustomerPage;
 
+use SprykerShop\Yves\AgentPage\Plugin\FixAgentTokenAfterCustomerAuthenticationSuccessPlugin;
 use SprykerShop\Yves\CartNoteWidget\Plugin\CustomerPage\CartNoteOrderItemNoteWidgetPlugin;
 use SprykerShop\Yves\CartNoteWidget\Plugin\CustomerPage\CartNoteOrderNoteWidgetPlugin;
 use SprykerShop\Yves\CompanyPage\Plugin\CustomerPage\BusinessOnBehalfCompanyUserRedirectAfterLoginStrategyPlugin;
@@ -82,6 +83,16 @@ class CustomerPageDependencyProvider extends SprykerShopCustomerPageDependencyPr
     {
         return [
             new BusinessOnBehalfCompanyUserRedirectAfterLoginStrategyPlugin(), #BusinessOnBehalfFeature
+        ];
+    }
+
+    /**
+     * @return \SprykerShop\Yves\AgentPage\Plugin\FixAgentTokenAfterCustomerAuthenticationSuccessPlugin[]
+     */
+    protected function getAfterCustomerAuthenticationSuccessPlugins(): array
+    {
+        return [
+            new FixAgentTokenAfterCustomerAuthenticationSuccessPlugin(),
         ];
     }
 }
