@@ -17,8 +17,7 @@
         url: url('multi-cart'),
         isActive: false
     }, {
-        label: data.cart.name,
-        url: url('cart'),
+        label: data.cart.name ? data.cart.name : 'cart.cart' | trans,
         isActive: true
     }]%}
 
