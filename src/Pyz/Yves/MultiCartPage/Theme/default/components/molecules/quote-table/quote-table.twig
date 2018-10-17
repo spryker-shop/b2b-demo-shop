@@ -66,6 +66,7 @@
                     <td>
                         {% if quote.priceMode is not empty %}
                             {% include molecule('price-mode') with {
+                                modifiers: ['secondary'],
                                 data: {
                                     priceMode: quote.priceMode,
                                     showIcon: false
@@ -79,7 +80,7 @@
                             <ul class="menu grid grid--middle grid--justify">
                                 {% if isQuoteEditable %}
                                     {% if data.actions.update %}
-                                        <li class="menu__item">
+                                        <li class="col menu__item">
                                             <a class="link link--alt link--action" href="{{ url('multi-cart/update', {idQuote: quote.idQuote}) }}">
                                                 {% include atom('icon') with {
                                                     data: {
@@ -93,10 +94,9 @@
                                         </li>
                                     {% endif %}
                                     {% if data.actions.duplicate %}
-                                        <li class="menu__item">
+                                        <li class="col menu__item">
                                             <a class="link link--alt link--action" href="{{ url('multi-cart/duplicate', {idQuote: quote.idQuote}) }}">
                                                 {% include atom('icon') with {
-                                                    modifiers: ['duplicate'],
                                                     data: {
                                                         name: 'duplicate'
                                                     },
@@ -110,7 +110,7 @@
                                 {% endif %}
 
                                 {% if isQuoteEditable and widgetExists('CartToShoppingListWidgetPlugin') %}
-                                    <li class="menu__item">
+                                    <li class="col menu__item">
                                         {{ widget('CartToShoppingListWidgetPlugin', quote) }}
                                     </li>
                                 {% endif %}
@@ -119,7 +119,7 @@
                                     {{ widgetBlock('CartListPermissionGroupWidgetPlugin', 'actions', quote, isQuoteDeletable) }}
                                 {% else %}
                                     {% if isQuoteEditable and isQuoteDeletable %}
-                                        <li class="menu__item">
+                                        <li class="col menu__item">
                                             <a class="link link--alt link--action" href="{{ url('multi-cart/confirm-delete', {idQuote: quote.idQuote}) }}">
                                                 {% include atom('icon') with {
                                                     data: {

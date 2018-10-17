@@ -1,0 +1,24 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'price-mode',
+    tag: 'span'
+} %}
+
+{% define data = {
+    priceMode: required,
+    showIcon: true
+} %}
+
+{% block body %}
+    {% if data.showIcon %}
+        {% include atom('icon') with {
+            class: component.renderClass(config.name ~ '__icon', modifiers),
+            modifiers: modifiers,
+            data: {
+                name: 'tag'
+            }
+        } only %}
+    {% endif %}
+    {{ ('price.mode.' ~ data.priceMode | lower) | trans }}
+{% endblock %}

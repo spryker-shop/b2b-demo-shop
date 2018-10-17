@@ -64,7 +64,7 @@
                 {% endblock %}
             </div>
 
-            <button type="submit" class="button spacing-bottom--bigger" {% if isDisabled %}disabled{% endif %}>
+            <button type="submit" class="button spacing-bottom--biggest" {% if isDisabled %}disabled{% endif %}>
                 {{ 'product.set.detail.add_all_to' | trans }}
                 {% include atom('icon') with {
                     class: 'spacing-y spacing-y--reset',
@@ -108,7 +108,7 @@
                         }
                     } only %}
                         {% block content %}
-                            <div class="spacing-bottom spacing-bottom--bigger product-card__info">
+                            <div class="spacing-bottom spacing-bottom--biggest product-card__info">
 
                                 {{parent()}}
 

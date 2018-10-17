@@ -25,12 +25,11 @@
 {% endblock %}
 
 {% block customerContent %}
-    <h3>
+    <h2>
         {{ 'customer.account.shopping_list.create_from_cart.form_title' | trans({
             '%cart_name%' : data.cart.name,
             }) }}
-    </h3>
-    <br>
+    </h2>
     {% include molecule('form') with {
         data: {
             form: data.form,
@@ -40,7 +39,8 @@
             cancel: {
                 enable: true,
                 url: url('shopping-list'),
-                text: 'general.back.button' | trans
+                text: 'general.back.button' | trans,
+                icon: null
             }
         }
     } only %}

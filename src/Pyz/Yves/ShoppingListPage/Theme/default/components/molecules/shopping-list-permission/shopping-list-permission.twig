@@ -9,18 +9,10 @@
     hasWritePermission: required
 } %}
 
-{%- block class -%}
-    {%- if data.hasWritePermission -%}
-        {{ parent() }} {{ config.name }}--full
-    {%- else -%}
-        {{ parent() }}
-    {%- endif -%}
-{%- endblock -%}
-
 {% block body %}
-    {%- if data.hasWritePermission -%}
-        {{ 'customer.account.shopping_list.permissions.FULL_ACCESS' | trans }}
-    {%- else -%}
-        {{ 'customer.account.shopping_list.permissions.READ_ONLY' | trans }}
-    {%- endif -%}
+    {% if data.hasWritePermission %}
+        <span class="{{ component.renderClass(config.name ~ '__full', modifiers) }}">{{ 'customer.account.shopping_list.permissions.FULL_ACCESS' | trans }}</span>
+    {% else %}
+        <span>{{ 'customer.account.shopping_list.permissions.READ_ONLY' | trans }}</span>
+    {% endif %}
 {% endblock %}

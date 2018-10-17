@@ -1,0 +1,33 @@
+@import '../shopping-list-note/shopping-list-note';
+
+@mixin shopping-list-note-widget-shopping-list-note-toggler ($name: '.shopping-list-note-toggler') {
+    @include shopping-list-note-widget-shopping-list-note($name) {
+        &__label {
+            font-size: rem(14);
+            line-height: rem(18);
+            color: $setting-color-gray-3;
+            cursor: pointer;
+        }
+
+        .label {
+            display: none;
+        }
+
+        .textarea {
+            font-size: rem(13);
+            font-weight: fw(regular);
+            line-height: rem(18);
+            color: $setting-color-gray-3;
+            padding: rem(15) rem(20);
+            border-radius: $setting-border-radius;
+            border: none;
+            box-shadow: 0 10px 10px 0 $setting-color-shadow-1, 0 3px 3px 0 $setting-color-shadow-1;
+            min-height: rem(86);
+            max-width: 100%;
+        }
+
+        @content;
+    }
+}
+
+@include shopping-list-note-widget-shopping-list-note-toggler;

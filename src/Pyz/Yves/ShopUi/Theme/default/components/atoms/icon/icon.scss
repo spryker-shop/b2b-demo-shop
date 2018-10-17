@@ -1,4 +1,5 @@
 $shop-ui-icon-size-big: 1.25rem;
+$shop-ui-icon-size-bigger: 1.5rem;
 
 @include shop-ui-icon {
     &--logo {
@@ -70,6 +71,7 @@ $shop-ui-icon-size-big: 1.25rem;
     }
 
     &--toggler-cross {
+        position: relative;
         width: rem(10);
         height: rem(10);
 
@@ -111,7 +113,6 @@ $shop-ui-icon-size-big: 1.25rem;
     }
 
     &--toggler-cross-link {
-
         &::before,
         &::after {
             background-color: $setting-color-gray-3;
@@ -186,12 +187,6 @@ $shop-ui-icon-size-big: 1.25rem;
 
     &--share {
         width: rem(20);
-        height: rem(20);
-    }
-
-    &--duplicate {
-        width: rem(18);
-        height: rem(18);
     }
 
     &--add-to-list {
@@ -258,5 +253,9 @@ $shop-ui-icon-size-big: 1.25rem;
         width: rem(24);
         height: rem(18);
         vertical-align: bottom;
+    }
+
+    &--trolley {
+        width: rem(20);
     }
 }

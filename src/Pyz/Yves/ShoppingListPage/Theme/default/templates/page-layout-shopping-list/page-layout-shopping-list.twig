@@ -2,6 +2,7 @@
 
 {% define data = {
     title: 'customer.account.shopping_list' | trans,
+    backUrl: app.request.headers.get('referer') | default(url('shopping-list')),
     activePage: 'shoppingList'
 } %}
 

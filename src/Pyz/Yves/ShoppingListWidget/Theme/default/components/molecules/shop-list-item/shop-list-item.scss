@@ -1,8 +1,9 @@
 @mixin shopping-list-widget-shop-list-item($name: '.shop-list-item') {
     #{$name} {
         position: relative;
-        padding: rem(13) rem(29) rem(15) rem(22);
-        min-width: rem(410);
+        padding: rem(13) rem(24) rem(15);
+        min-width: rem(468);
+        max-width: rem(620);
         border-bottom: 1px solid $setting-color-gray-6;
 
         &:hover {
@@ -22,6 +23,12 @@
             font-size: $setting-font-size-base;
             line-height: rem(29);
             letter-spacing: rem(0.2);
+            text-overflow: ellipsis;
+            overflow: hidden;
+            display: block;
+            max-width: rem(370);
+            white-space: nowrap;
+            margin-right: 0.25rem;
 
             &:hover {
                 color: $setting-color-gray-4;
