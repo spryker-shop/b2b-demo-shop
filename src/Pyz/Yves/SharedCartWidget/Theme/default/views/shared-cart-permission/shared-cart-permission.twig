@@ -6,9 +6,9 @@
 } %}
 
 {% block body %}
-    <span class="cart-permission">
+    <span class="cart-permission cart-permission--widget">
     {% if data.accessType == 'OWNER_ACCESS' %}
-        <span class="cart-permission__owner">
+        <span class="cart-permission__owner text-alt">
             {{ 'shared_cart.share_list.permissions.OWNER_ACCESS' | trans }}
         </span>
     {%  elseif data.accessType == 'FULL_ACCESS' %}

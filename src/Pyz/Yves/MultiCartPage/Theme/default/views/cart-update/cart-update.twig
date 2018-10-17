@@ -32,7 +32,7 @@
 {% block content %}
     <div class="grid cart-update">
         <div class="col col--md-6">
-            <h2 class="title title--second">{{ 'multi_cart.form.edit' | trans }} «{{ data.form.vars.value.name }}»</h2>
+            <h2>{{ 'multi_cart.form.edit' | trans }} «{{ data.form.vars.value.name }}»</h2>
             {% include molecule('form') with {
                 data: {
                     form: data.form,

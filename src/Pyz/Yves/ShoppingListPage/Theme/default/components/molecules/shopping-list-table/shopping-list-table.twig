@@ -17,7 +17,7 @@
             {% set isItemAvailable = not isDiscontinued and isItemAvailable %}
         {% endif %}
         {% embed molecule('product-item') with {
-            modifiers: ['shopping-list'],
+            modifiers: ['shopping-list', isItemAvailable ? '' : 'hidden'],
             data: {
                 listItem: item,
                 imageModifiers: ['shopping-list']
@@ -63,7 +63,7 @@
                 <ul class="list spacing-y spacing-y--big">
                     {% for attribute in data.listItem.superAttributesDefinition %}
                         {% if data.listItem.attributes[attribute] is defined %}
-                            <li class="list__item list__item--inline spacing-right--bigger">
+                            <li class="list__item list__item--inline spacing-right--biggest">
                                 <strong>{{- ('product.attribute.' ~ attribute) | trans -}}: </strong>
                                 {% if ('product.attribute.' ~ attribute) | trans == 'Color' %}
                                     <span class="{{ config.name}}__color text-secondary" style="background-color: {{ data.listItem.attributes[attribute] }}">

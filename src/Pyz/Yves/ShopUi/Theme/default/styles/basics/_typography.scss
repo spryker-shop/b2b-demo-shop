@@ -41,9 +41,11 @@
 
     @each $i in (1, 2, 3, 4, 5, 6) {
         h#{$i} {
+            @include helper-font-weight(medium);
             @include helper-font-size($i);
             @include helper-font-line-height($i);
             display: block;
+            color: $setting-color-gray-5;
         }
     }
 

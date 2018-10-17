@@ -2,7 +2,6 @@
 
 {% define config = {
     name: 'mini-cart-detail',
-    tag: 'div',
 } %}
 
 {% define data = {
@@ -13,11 +12,12 @@
 {% set itemCount = data.cart.items | length %}
 
 {% block body %}
-    <div class="grid grid--middle grid--justify">
+    <div class="grid grid--middle grid--justify grid--nowrap grid--gap">
         <div class="col">
-            <div class="grid grid--middle">
+            <div class="grid grid--middle grid--nowrap">
                 <div class="col">
                     {% include molecule('mini-cart-radio', 'MultiCartWidget') with {
+                        class: 'spacing-right',
                         data: {
                             idCart: data.cart.idQuote,
                             isDefault: data.cart.isDefault,
@@ -26,9 +26,9 @@
                 </div>
                 <div class="col">
                     {% if data.cart.isDefault %}
-                        <a class="{{ config.name }}__title" href="{{ path('cart') }}">
-                            <strong class="{{ config.name }}__name">{{ data.cart.name }}</strong>
-                            <span class="{{ config.name }}__marker">
+                        <a class="{{ config.name }}__title grid grid--nowrap" href="{{ path('cart') }}">
+                            <strong class="col {{ config.name }}__name">{{ data.cart.name }}</strong>
+                            <span class="col {{ config.name }}__marker">
                                 ({{ 'multi_cart_widget.cart.default' | trans }})
                             </span>
                         </a>
@@ -51,11 +51,13 @@
                                 {{ itemCount }} {{ label | trans }}
                             </span>
                         {% endif %}
-
-                        {{ widget('SharedCartPermissionGroupWidgetPlugin', data.cart) }}
+                        <span class="spacing-right spacing-right--big">
+                            {{ widget('SharedCartPermissionGroupWidgetPlugin', data.cart) }}
+                        </span>
 
                         {% if data.cart.priceMode is not empty %}
                             {% include molecule('price-mode') with {
+                                modifiers: ['small'],
                                 data: {
                                     priceMode: data.cart.priceMode
                                 }
@@ -66,9 +68,8 @@
             </div>
         </div>
         <div class="col text-right">
-            {% set priceActive = data.cart.isDefault ? config.name ~ '__price--active' : ''%}
-            <span class="{{ config.name }}__price {{ priceActive }}">
-               {{ data.total | money(true, data.cart.currency.code) }}<br>
+            <span class="{{ config.name }}__price {{ data.cart.isDefault ? config.name ~ '__price--active' : '' }}">
+               {{ data.total | money(true, data.cart.currency.code) }}
             </span>
         </div>
     </div>
