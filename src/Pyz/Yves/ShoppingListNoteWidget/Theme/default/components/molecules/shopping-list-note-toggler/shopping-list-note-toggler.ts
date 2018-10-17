@@ -28,8 +28,8 @@ export default class ShoppingListNoteToggler extends Component {
         this.focusTextarea();
     }
 
-    private toggleClass(listOfElements:Array<HTMLElement>): void {
-        listOfElements.forEach((element) => {
+    private toggleClass(elementsToToggle:Array<HTMLElement>): void {
+        elementsToToggle.forEach((element) => {
             element.classList.toggle(this.hiddenClass);
         });
     }
