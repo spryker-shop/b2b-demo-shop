@@ -58,14 +58,14 @@
             {% endif %}
         {% endif %}
 
+
+        {% if widgetExists('SalesOrderThresholdWidgetPlugin') %}
+            {{ widget('SalesOrderThresholdWidgetPlugin', data.expenses) }}
+        {% endif %}
+
         <li class="{{ config.name }}__item">
             <span class="float-right">{{ data.prices.storeCurrency | money }}</span>
             {{ 'checkout.step.summary.shipping' | trans }} ({{ data.shipmentMethod }})
-            {% if widgetExists('SalesOrderThresholdWidgetPlugin') %}
-                <div class="{{ config.name }}__inner-row">
-                    {{ widget('SalesOrderThresholdWidgetPlugin', data.expenses) }}
-                </div>
-            {% endif %}
             <div class="{{ config.name }}__inner-row">
                 <span class="text-secondary">{{ 'checkout.step.summary.tax' | trans }}</span>
                 <span class="text-secondary float-right">{{ data.prices.tax | money }}</span>
