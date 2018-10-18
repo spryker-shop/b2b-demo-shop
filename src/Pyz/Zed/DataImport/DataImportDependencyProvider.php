@@ -52,11 +52,11 @@ use Spryker\Zed\ShoppingListDataImport\Communication\Plugin\ShoppingListPermissi
 
 class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
 {
-    const FACADE_AVAILABILITY = 'availability facade';
-    const FACADE_CATEGORY = 'category facade';
-    const FACADE_PRODUCT_BUNDLE = 'product bundle facade';
-    const FACADE_PRODUCT_RELATION = 'product relation facade';
-    const FACADE_PRODUCT_SEARCH = 'product search facade';
+    public const FACADE_AVAILABILITY = 'availability facade';
+    public const FACADE_CATEGORY = 'category facade';
+    public const FACADE_PRODUCT_BUNDLE = 'product bundle facade';
+    public const FACADE_PRODUCT_RELATION = 'product relation facade';
+    public const FACADE_PRODUCT_SEARCH = 'product search facade';
 
     /**
      * @param \Spryker\Zed\Kernel\Container $container

@@ -15,11 +15,11 @@ use SprykerShop\Yves\ProductWidget\Plugin\CatalogPage\ProductWidgetPlugin;
 
 class ExampleProductSalePageDependencyProvider extends AbstractBundleDependencyProvider
 {
-    const CLIENT_SEARCH = 'CLIENT_SEARCH';
-    const CLIENT_URL_STORAGE = 'CLIENT_URL_STORAGE';
-    const STORE = 'STORE';
-    const PLUGIN_PRODUCT_SALE_PAGE_WIDGETS = 'PLUGIN_PRODUCT_SALE_PAGE_WIDGETS';
-    const CLIENT_CATALOG = 'CLIENT_CATALOG';
+    public const CLIENT_SEARCH = 'CLIENT_SEARCH';
+    public const CLIENT_URL_STORAGE = 'CLIENT_URL_STORAGE';
+    public const STORE = 'STORE';
+    public const PLUGIN_PRODUCT_SALE_PAGE_WIDGETS = 'PLUGIN_PRODUCT_SALE_PAGE_WIDGETS';
+    public const CLIENT_CATALOG = 'CLIENT_CATALOG';
 
     /**
      * @param \Spryker\Yves\Kernel\Container $container

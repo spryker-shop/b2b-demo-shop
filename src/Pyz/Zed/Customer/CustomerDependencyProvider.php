@@ -25,8 +25,8 @@ use Spryker\Zed\ShoppingList\Communication\Plugin\ShoppingListPermissionCustomer
 
 class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
 {
-    const SALES_FACADE = 'sales facade';
-    const NEWSLETTER_FACADE = 'newsletter facade';
+    public const SALES_FACADE = 'sales facade';
+    public const NEWSLETTER_FACADE = 'newsletter facade';
 
     /**
      * @param \Spryker\Zed\Kernel\Container $container

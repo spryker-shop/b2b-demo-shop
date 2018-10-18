@@ -20,7 +20,7 @@ use Spryker\Zed\ProductReviewSearch\Communication\Plugin\PageMapExpander\Product
 
 class ProductPageSearchDependencyProvider extends SprykerProductPageSearchDependencyProvider
 {
-    const PLUGIN_PRODUCT_LABEL_DATA = 'PLUGIN_PRODUCT_LABEL_DATA';
+    public const PLUGIN_PRODUCT_LABEL_DATA = 'PLUGIN_PRODUCT_LABEL_DATA';
 
     /**
      * @return \Spryker\Zed\ProductPageSearch\Dependency\Plugin\ProductPageDataExpanderInterface[]

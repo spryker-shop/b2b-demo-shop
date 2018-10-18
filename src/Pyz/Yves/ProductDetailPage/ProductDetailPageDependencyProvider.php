@@ -31,7 +31,7 @@ use SprykerShop\Yves\ShoppingListWidget\Plugin\ProductDetailPage\ShoppingListWid
 
 class ProductDetailPageDependencyProvider extends SprykerShopProductDetailPageDependencyProvider
 {
-    const CLIENT_PRODUCT_STORAGE_PYZ = 'CLIENT_PRODUCT_STORAGE_PYZ';
+    public const CLIENT_PRODUCT_STORAGE_PYZ = 'CLIENT_PRODUCT_STORAGE_PYZ';
 
     /**
      * @return \Spryker\Yves\Kernel\Dependency\Plugin\WidgetPluginInterface[]

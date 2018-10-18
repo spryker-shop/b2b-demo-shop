@@ -16,7 +16,7 @@ use SprykerShop\Yves\ProductSetWidget\Plugin\CmsContentWidgetProductSetConnector
  */
 class ProductSetIdsWidgetPlugin extends AbstractWidgetPlugin
 {
-    const NAME = 'ProductSetIdsWidgetPlugin';
+    public const NAME = 'ProductSetIdsWidgetPlugin';
 
     /**
      * @param array $productSetIds
