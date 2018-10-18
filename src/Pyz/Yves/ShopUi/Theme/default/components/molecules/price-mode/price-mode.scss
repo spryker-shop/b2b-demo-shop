@@ -1,0 +1,27 @@
+@mixin shop-ui-price-mode($name: '.price-mode') {
+    #{$name} {
+        color: $setting-color-gray-2;
+        letter-spacing: rem(0.2);
+
+        &--small {
+            font-size: rem(12);
+            letter-spacing: rem(0.1);
+        }
+
+        &--secondary {
+            color: $setting-color-gray-4;
+        }
+
+        &__icon {
+            margin-right: 0.5rem;
+
+            &--small {
+                margin-right: 0.25rem;
+            }
+        }
+
+        @content;
+    }
+}
+
+@include shop-ui-price-mode();

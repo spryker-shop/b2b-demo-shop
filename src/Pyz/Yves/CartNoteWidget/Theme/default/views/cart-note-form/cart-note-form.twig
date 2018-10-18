@@ -1,0 +1,27 @@
+{% extends template('widget') %}
+
+{% define data = {
+    idQuote: _view.cart.idQuote,
+    form: _widget.cartNoteForm
+} %}
+
+{% set canWrite = (not is_granted('ROLE_USER') or can('WriteSharedCartPermissionPlugin', data.idQuote)) %}
+
+{% block body %}
+    {% if canWrite %}
+        {% include molecule('form') with {
+            data: {
+                form: data.form,
+                options: {
+                    action: url('cart-note/quote')
+                },
+                submit: {
+                    enable: true,
+                    text: 'cart_note.form.save' | trans
+                }
+            }
+        } only %}
+    {% elseif data.form.cartNote.vars.value is not empty  %}
+        {{ 'cart_note.checkout_page.quote_note' | trans }}: {{ data.form.cartNote.vars.value }}
+    {% endif %}
+{% endblock %}

@@ -24,20 +24,26 @@
             </li>
         {% endif %}
         <li class="menu__item spacing-x spacing-x--inner spacing-x--bigger spacing-y spacing-y--inner spacing-y--big">
-            {% if data.shoppingListCollection.shoppingLists | length %}
-                <a href="{{ path('shopping-list') }}" class="button button--hollow spacing-right spacing-right--big">
-                    {{ 'shopping_list.all_shopping_lists' | trans }}
-                </a>
-            {% endif %}
-            <a href="{{ path('shopping-list') }}" class="button">
-                {% include atom('icon') with {
-                    modifiers: ['create-list'],
-                    data: {
-                        name: 'create-list'
-                    }
-                } only %}
-                {{ 'shopping_list.create_new_list' | trans }}
-            </a>
+            <div class="grid grid--justify grid--nowrap">
+                {% if data.shoppingListCollection.shoppingLists | length %}
+                    <div class="col">
+                        <a href="{{ path('shopping-list') }}" class="button button--hollow spacing-right spacing-right--big">
+                            {{ 'shopping_list.all_shopping_lists' | trans }}
+                        </a>
+                    </div>
+                {% endif %}
+                <div class="col">
+                    <a href="{{ path('shopping-list') }}" class="col button">
+                        {% include atom('icon') with {
+                            modifiers: ['create-list'],
+                            data: {
+                                name: 'create-list'
+                            }
+                        } only %}
+                        {{ 'shopping_list.create_new_list' | trans }}
+                    </a>
+                </div>
+            </div>
         </li>
     </ul>
 {% endblock %}

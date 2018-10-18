@@ -17,8 +17,7 @@
         url: url('multi-cart'),
         isActive: false
     }, {
-        label: data.cart.name,
-        url: url('cart'),
+        label: data.cart.name ? data.cart.name : 'cart.cart' | trans,
         isActive: true
     }]%}
 
@@ -67,30 +66,33 @@
 
         <div class="grid grid--gap">
             <div class="col col--sm-12 col--xl-9">
-                <div class="grid grid--justify grid--middle cart-title">
-                    <div class="col col--sm-8">
-                        <h3 class="grid grid--middle cart-title__text">
-                            {{ data.cart.name }}
-                            {% if can('ChangeCartItemPermissionPlugin') %}
-                                <a href="{{ path('multi-cart/update', {idQuote: data.cart.idQuote}) }}" class="col button button--hollow-icon button--edit cart-title__link" title="{{ "multi_cart_widget.cart.action.change_name" | trans }}">
-                                    {% include atom('icon') with {
-                                        modifiers: ['big'],
-                                        data: {
-                                            name: 'edit'
-                                        }
-                                    } only %}
-                                </a>
-                            {% endif %}
+                <div class="cart-title">
+                    <h3 class="grid grid--middle cart-title__text">
+                        {{ data.cart.name }}
+                        {% if can('ChangeCartItemPermissionPlugin') %}
+                            <a href="{{ path('multi-cart/update', {idQuote: data.cart.idQuote}) }}" class="col button button--hollow-icon button--edit cart-title__link" title="{{ "multi_cart_widget.cart.action.change_name" | trans }}">
+                                {% include atom('icon') with {
+                                    modifiers: ['big'],
+                                    data: {
+                                        name: 'edit'
+                                    }
+                                } only %}
+                            </a>
+                        {% endif %}
+                    </h3>
+                    <div class="grid grid--justify grid--middle">
+                        <div class="col col--sm-8">
                             {% if data.cart.priceMode is not empty %}
                                 {% include molecule('price-mode') with {
+                                    modifiers: ['big'],
                                     data: {
                                         priceMode: data.cart.priceMode
                                     }
                                 } only %}
                             {% endif %}
-                        </h3>
+                        </div>
+                        <div class="col col--sm-2 text-right cart-title__quantity">{{ app['cart.quantity'] }} {{ 'checkout.step.summary.items' | trans }}</div>
                     </div>
-                    <div class="col col--sm-2 text-right cart-title__quantity">{{ app['cart.quantity'] }} {{ 'checkout.step.summary.items' | trans }}</div>
                 </div>
             </div>
             <div class="col col--sm-12 col--xl-9">

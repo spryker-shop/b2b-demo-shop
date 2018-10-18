@@ -1,0 +1,15 @@
+{% extends template('widget') %}
+
+{% define data = {
+    note: _widget.note | default(null),
+} %}
+
+{% block body %}
+    {% if data.note is not null %}
+        {% include molecule('shopping-list-note', 'ShoppingListNoteWidget') with {
+            data: {
+                note: data.note
+            }
+        } only %}
+    {% endif %}
+{% endblock %}

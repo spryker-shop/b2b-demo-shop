@@ -33,7 +33,7 @@
 
 {% block actions %}
     {% if _widget.isSharingAllowed and _widget.accessType == 'OWNER_ACCESS' %}
-        <li class="menu__item">
+        <li class="col menu__item">
             <a class="link link--alt link--action" href="{{ url('shared-cart/share', {idQuote: _widget.cart.idQuote}) }}" title="{{ 'shared_cart_widget.cart.share' | trans }}">
                 {% include atom('icon') with {
                     modifiers: ['share'],
@@ -48,7 +48,7 @@
         </li>
     {% endif %}
     {% if _widget.accessType != 'OWNER_ACCESS' %}
-        <li class="menu__item">
+        <li class="col menu__item">
             <a class="link link--alt link--action" href="{{ url('shared-cart/dismiss-confirm', {idQuote: _widget.cart.idQuote}) }}">
                 {% include atom('icon') with {
                     data: {
@@ -62,7 +62,7 @@
         </li>
     {% endif %}
     {% if _widget.isQuoteDeletable and can('WriteSharedCartPermissionPlugin', _widget.cart.idQuote) %}
-        <li class="menu__item">
+        <li class="col menu__item">
             <a class="link link--alt link--action" href="{{ url('multi-cart/confirm-delete', {idQuote: _widget.cart.idQuote}) }}">
                 {% include atom('icon') with {
                     data: {

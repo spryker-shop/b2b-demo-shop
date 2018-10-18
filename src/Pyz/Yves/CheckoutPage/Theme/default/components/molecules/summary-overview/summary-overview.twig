@@ -6,6 +6,7 @@
 
 {% define data = {
     shipmentMethod: required,
+    expenses: [],
     voucherDiscounts: [],
     cartRuleDiscounts: [],
 
@@ -55,6 +56,11 @@
                     {% endfor %}
                 </li>
             {% endif %}
+        {% endif %}
+
+
+        {% if widgetExists('SalesOrderThresholdWidgetPlugin') %}
+            {{ widget('SalesOrderThresholdWidgetPlugin', data.expenses) }}
         {% endif %}
 
         <li class="{{ config.name }}__item">

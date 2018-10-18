@@ -8,7 +8,7 @@
 
 {% block content %}
     {% if data.sets is not empty %}
-        <div class="grid grid--gap spacing-y spacing-y--inner spacing-y--bigger">
+        <div class="grid grid--gap spacing-y spacing-y--inner spacing-y--biggest">
             {% for productSet in data.sets %}
                 {% set imageUrl = productSet.imageSets.0.images.0.externalUrlSmall | default('') %}
 
