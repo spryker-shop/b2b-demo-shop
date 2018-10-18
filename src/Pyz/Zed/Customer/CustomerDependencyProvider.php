@@ -100,13 +100,12 @@ class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
     }
 
     /**
-    * @return \Spryker\Zed\CustomerExtension\Dependency\Plugin\CustomerTableActionExpanderPluginInterface[]
-    */
-   protected function getCustomerTableActionExpanderPlugins(): array
-   {
-       return [
+     * @return \Spryker\Zed\CustomerExtension\Dependency\Plugin\CustomerTableActionExpanderPluginInterface[]
+     */
+    protected function getCustomerTableActionExpanderPlugins(): array
+    {
+        return [
            new CompanyUserCustomerTableActionExpanderPlugin(),
-       ];
-   }
-
+        ];
+    }
 }
