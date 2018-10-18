@@ -72,7 +72,7 @@ class CompanyUserRestrictionHandlerPlugin extends SprykerCompanyUserRestrictionH
 
     /**
      * @param \Generated\Shared\Transfer\CompanyUserTransfer $customerTransfer
-     * @param string
+     * @param string $roleKey
      *
      * @return bool
      */
