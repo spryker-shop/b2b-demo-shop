@@ -19,7 +19,7 @@
         <div class="col col--middle">
             <strong class="{{ config.name }}__title">{{ 'customer.account.shopping_list.access' | trans }}:</strong>
 
-            <span class="badge badge--shopping-list badge--access">
+            <span class="badge badge--shopping-list badge--title {% if hasWritePermission %}badge--access{% endif %}">
                 {% include molecule('shopping-list-permission', 'ShoppingListPage') with {
                     modifiers: ['badge'],
                     data: {
