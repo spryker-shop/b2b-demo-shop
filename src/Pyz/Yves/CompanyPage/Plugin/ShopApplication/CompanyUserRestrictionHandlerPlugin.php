@@ -19,7 +19,11 @@ class CompanyUserRestrictionHandlerPlugin extends SprykerCompanyUserRestrictionH
     protected const COMPANY_ROLE_ADMIN = 'Spryker_Admin';
 
     /**
-     * @throws \SprykerShop\Yves\CompanyPage\Exception\CustomerAccessDeniedException
+     * {@inheritdoc}
+     *
+     * @api
+     *
+     * @param \Symfony\Component\HttpKernel\Event\FilterControllerEvent $event
      *
      * @return void
      */
