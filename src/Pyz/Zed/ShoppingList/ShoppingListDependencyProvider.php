@@ -14,6 +14,10 @@ use Spryker\Zed\ShoppingListNote\Communication\Plugin\ItemCartNoteToShoppingList
 use Spryker\Zed\ShoppingListNote\Communication\Plugin\ShoppingListItemNoteBeforeDeletePlugin;
 use Spryker\Zed\ShoppingListNote\Communication\Plugin\ShoppingListItemNoteExpanderPlugin;
 use Spryker\Zed\ShoppingListNote\Communication\Plugin\ShoppingListItemNotePostSavePlugin;
+use Spryker\Zed\ShoppingListProductOptionConnector\Communication\Plugin\ShoppingList\CartItemProductOptionToShoppingListItemProductOptionMapperPlugin;
+use Spryker\Zed\ShoppingListProductOptionConnector\Communication\Plugin\ShoppingList\ShoppingListItemProductOptionBeforeDeletePlugin;
+use Spryker\Zed\ShoppingListProductOptionConnector\Communication\Plugin\ShoppingList\ShoppingListItemProductOptionExpanderPlugin;
+use Spryker\Zed\ShoppingListProductOptionConnector\Communication\Plugin\ShoppingList\ShoppingListItemProductOptionPostSavePlugin;
 
 class ShoppingListDependencyProvider extends SprykerShoppingListDependencyProvider
 {
@@ -44,6 +48,7 @@ class ShoppingListDependencyProvider extends SprykerShoppingListDependencyProvid
     {
         return [
             new ShoppingListItemNotePostSavePlugin(), #ShoppingListNoteFeature
+            new ShoppingListItemProductOptionPostSavePlugin(),
         ];
     }
 
@@ -54,6 +59,7 @@ class ShoppingListDependencyProvider extends SprykerShoppingListDependencyProvid
     {
         return [
             new ShoppingListItemNoteBeforeDeletePlugin(), #ShoppingListNoteFeature
+            new ShoppingListItemProductOptionBeforeDeletePlugin(),
         ];
     }
 
@@ -64,6 +70,7 @@ class ShoppingListDependencyProvider extends SprykerShoppingListDependencyProvid
     {
         return [
             new ShoppingListItemNoteExpanderPlugin(), #ShoppingListNoteFeature
+            new ShoppingListItemProductOptionExpanderPlugin(),
         ];
     }
 
@@ -74,6 +81,7 @@ class ShoppingListDependencyProvider extends SprykerShoppingListDependencyProvid
     {
         return [
             new ItemCartNoteToShoppingListItemNoteMapperPlugin(),
+            new CartItemProductOptionToShoppingListItemProductOptionMapperPlugin(),
         ];
     }
 }

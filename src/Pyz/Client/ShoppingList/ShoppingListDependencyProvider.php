@@ -9,6 +9,9 @@ namespace Pyz\Client\ShoppingList;
 
 use Spryker\Client\ShoppingList\ShoppingListDependencyProvider as SprykerShoppingListDependencyProvider;
 use Spryker\Client\ShoppingListNote\Plugin\ShoppingListItemNoteToItemCartNoteMapperPlugin;
+use Spryker\Client\ShoppingListProductOptionConnector\ShoppingList\ProductOptionQuoteItemToItemMapperPlugin;
+use Spryker\Client\ShoppingListProductOptionConnector\ShoppingList\ShoppingListItemProductOptionRequestMapperPlugin;
+use Spryker\Client\ShoppingListProductOptionConnector\ShoppingList\ShoppingListItemProductOptionToItemProductOptionMapperPlugin;
 
 class ShoppingListDependencyProvider extends SprykerShoppingListDependencyProvider
 {
@@ -19,6 +22,27 @@ class ShoppingListDependencyProvider extends SprykerShoppingListDependencyProvid
     {
         return [
             new ShoppingListItemNoteToItemCartNoteMapperPlugin(),
+            new ShoppingListItemProductOptionToItemProductOptionMapperPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Client\ShoppingListExtension\Dependency\Plugin\ShoppingListItemMapperPluginInterface[]
+     */
+    protected function getAddItemShoppingListItemMapperPlugins(): array
+    {
+        return [
+            new ShoppingListItemProductOptionRequestMapperPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Client\ShoppingListExtension\Dependency\Plugin\QuoteItemToItemMapperPluginInterface[]
+     */
+    protected function getQuoteItemToItemMapperPlugins(): array
+    {
+        return [
+            new ProductOptionQuoteItemToItemMapperPlugin(),
         ];
     }
 }
