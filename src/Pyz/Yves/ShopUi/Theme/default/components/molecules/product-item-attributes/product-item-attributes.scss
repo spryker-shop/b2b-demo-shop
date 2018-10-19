@@ -1,0 +1,17 @@
+@mixin product-item-attributes($name: '.product-item-attributes') {
+    #{$name} {
+        &__color {
+            display: inline-block;
+            width: rem(14);
+            height: rem(14);
+            border-radius: 50%;
+            margin-left: rem(4);
+            text-indent: -9999px;
+            vertical-align: middle;
+        }
+
+        @content;
+    }
+}
+
+@include product-item-attributes();
