@@ -143,7 +143,7 @@
                     </div>
                 {% endif %}
 
-                {{ widget('DiscountPromotionItemListWidgetPlugin', data.cart, data.request) }}
+                {% widget 'CartDiscountPromotionProductListWidget' args [data.cart, data.request] only %}{% endwidget %}
             </div>
 
             <div class="col col--sm-12 col--xl-3 cart-sidebar js-cart-sidebar">
@@ -155,7 +155,7 @@
                                 <span class="icon icon--toggler-cross toggler-accordion__icon"></span>
                             </h5>
                             <div class="cart-sidebar__content js-cart-sidebar__content-note is-hidden">
-                                {{ widget('CartNoteQuoteWidgetPlugin', data.cart) }}
+                                {% widget "CartNoteFormWidget" args [data.cart] only %}{% endwidget %}
                             </div>
                         </div>
                     {% endif %}
@@ -180,7 +180,7 @@
                         </div>
 
                         {% if canEditCart and can('ChangeCartItemPermissionPlugin') %}
-                            {{ widget('DiscountVoucherFormWidgetPlugin') }}
+                            {% widget 'DiscountVoucherFormWidget' %}{% endwidget %}
                         {% endif %}
                     </div>
 
@@ -201,6 +201,6 @@
                 } only %}
             </div>
         </div>
-        {{ widget('UpSellingProductsWidgetPlugin', data.cart) }}
+        {%  widget 'UpSellingProductsWidget' args [data.cart] only %}{% endwidget %}
     {% endif %}
 {% endblock %}

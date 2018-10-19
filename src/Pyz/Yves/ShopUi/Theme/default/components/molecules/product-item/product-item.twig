@@ -89,12 +89,12 @@
             {% endblock %}
 
             {% block bundle %}
-                {{ widget('ProductBundleItemsWidgetPlugin', data.listItem, data.list) }}
+                {% widget 'ProductBundleCartItemsListWidget' args [data.listItem, data.list] only %}{% endwidget %}
             {% endblock %}
 
             {% if data.canEdit %}
                 {% block note %}
-                    {{ widget('CartNoteQuoteItemWidgetPlugin', data.listItem, data.list) }}
+                    {% widget 'CartItemNoteFormWidget' args [data.listItem, data.list] only %}{% endwidget %}
                 {% endblock %}
             {% endif %}
 
