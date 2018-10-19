@@ -79,6 +79,8 @@
                     {% endfor %}
 
                     {{ widget('ShoppingListItemNoteWidgetPlugin', data.listItem.shoppingListItem) }}
+
+                    {{ widget('ShoppingListItemProductOptionWidgetPlugin', data.listItem.shoppingListItem) }}
                 </ul>
             {% endblock %}
 

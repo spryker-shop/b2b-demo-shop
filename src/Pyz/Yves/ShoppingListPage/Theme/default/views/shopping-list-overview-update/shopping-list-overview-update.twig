@@ -117,7 +117,7 @@
                                 {% for subForm in data.form.items[embed.key].children  %}
                                     {% if not subForm.rendered %}
                                         {% if subForm.vars.template_path is defined %}
-                                            {% include subForm.vars.template_path with {'form': subForm} %}
+                                            {% include subForm.vars.template_path with {'form': subForm, 'rowClass': config.name ~ '__options-row'} %}
                                         {% endif %}
                                     {% endif %}
                                 {% endfor %}

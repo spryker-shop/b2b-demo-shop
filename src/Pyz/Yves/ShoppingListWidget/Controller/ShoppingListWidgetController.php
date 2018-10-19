@@ -30,7 +30,7 @@ class ShoppingListWidgetController extends SprykerShopShoppingListWidgetControll
 
         $shoppingListItemTransfer = $this->getFactory()
             ->getShoppingListClient()
-            ->addItem($shoppingListItemTransfer);
+            ->addItem($shoppingListItemTransfer, $request->request->all());
 
         if (!$shoppingListItemTransfer->getIdShoppingListItem()) {
             $this->addErrorMessage(static::GLOSSARY_KEY_CUSTOMER_ACCOUNT_SHOPPING_LIST_ITEM_NOT_ADDED);
