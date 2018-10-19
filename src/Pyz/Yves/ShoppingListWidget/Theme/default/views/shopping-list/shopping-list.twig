@@ -19,7 +19,7 @@
 {% endif %}
 
 {% block body %}
-    <form class="grid grid--nowrap grid--justify" method="POST" action="{{ path('shopping-list/add-item') }}">
+    <form class="grid grid--nowrap grid--justify js-shopping-list__form" method="POST" action="{{ path('shopping-list/add-item') }}">
 
         {% include molecule('quantity-counter') with {
             modifiers: ['right-space']
@@ -28,9 +28,15 @@
         <div class="col col--expand">
             <input type="hidden" name="sku" value="{{ data.sku }}" />
 
+            {% include molecule('form-data-injector', 'ShoppingListWidget') with {
+                attributes: {
+                    'destination-form-selector': '.js-shopping-list__form',
+                    'fields-selector': '.js-product-configurator__form .js-custom-select:not([name="quantity"]):not([name="id_quote"])'
+                }
+            } only %}
+
             <button type="submit"
-                    class="button button--hollow button--bigger button--expand"
-                    onclick="this.form.submit(); this.disabled='disabled'; return false;"
+                    class="button button--hollow button--bigger button--expand js-add-to-shopping-list"
                     {{ qa('add-to-shopping-list-button') }}
                     {{ data.isDisabled ? 'disabled' : '' }}>
                 {{ 'page.detail.add-to-shopping-list' | trans }}
