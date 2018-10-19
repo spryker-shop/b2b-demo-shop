@@ -27,7 +27,6 @@ class CustomerPageDependencyProvider extends SprykerShopCustomerPageDependencyPr
     protected function getCustomerOverviewWidgetPlugins(): array
     {
         return [
-            NewsletterSubscriptionSummaryWidgetPlugin::class,
             CustomerReorderWidgetPlugin::class,
         ];
     }
@@ -52,17 +51,6 @@ class CustomerPageDependencyProvider extends SprykerShopCustomerPageDependencyPr
             CartNoteOrderItemNoteWidgetPlugin::class, #CartNoteFeature
             CartNoteOrderNoteWidgetPlugin::class, #CartNoteFeature
             OrderDetailProductPackagingUnitWidgetPlugin::class, #ProductPackagingUnit
-        ];
-    }
-
-    /**
-     * @return string[]
-     */
-    protected function getCustomerMenuItemWidgetPlugins(): array
-    {
-        return [
-            ShoppingListMenuItemWidgetPlugin::class, #ShoppingListFeature
-            MultiCartMenuItemWidgetPlugin::class, #MultiCartFeature
         ];
     }
 

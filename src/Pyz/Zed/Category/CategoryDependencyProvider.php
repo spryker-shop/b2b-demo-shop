@@ -69,9 +69,12 @@ class CategoryDependencyProvider extends SprykerDependencyProvider
      */
     protected function getCategoryFormPlugins()
     {
-        return array_merge(parent::getCategoryFormPlugins(), [
-            new CategoryFormPlugin(),
-        ]);
+        return array_merge(
+            [
+                new CategoryFormPlugin(),
+            ],
+            parent::getCategoryFormPlugins()
+        );
     }
 
     /**
@@ -79,8 +82,11 @@ class CategoryDependencyProvider extends SprykerDependencyProvider
      */
     protected function getCategoryUrlPathPlugins()
     {
-        return [
-            new CategoryUrlPathPrefixUpdaterPlugin(),
-        ];
+        return array_merge(
+            [
+                new CategoryUrlPathPrefixUpdaterPlugin(),
+            ],
+            parent::getCategoryFormPlugins()
+        );
     }
 }
