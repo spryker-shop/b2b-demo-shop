@@ -10,9 +10,9 @@ namespace Pyz\Yves\CompanyPage\Plugin\ShopApplication;
 use Generated\Shared\Transfer\CompanyUserTransfer;
 use Generated\Shared\Transfer\CustomerTransfer;
 use SprykerShop\Yves\CompanyPage\Controller\AbstractCompanyController;
-use SprykerShop\Yves\CompanyPage\Exception\CustomerAccessDeniedException;
 use SprykerShop\Yves\CompanyPage\Plugin\ShopApplication\CompanyUserRestrictionHandlerPlugin as SprykerCompanyUserRestrictionHandlerPlugin;
 use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class CompanyUserRestrictionHandlerPlugin extends SprykerCompanyUserRestrictionHandlerPlugin
 {
@@ -24,6 +24,8 @@ class CompanyUserRestrictionHandlerPlugin extends SprykerCompanyUserRestrictionH
      * @api
      *
      * @param \Symfony\Component\HttpKernel\Event\FilterControllerEvent $event
+     *
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      *
      * @return void
      */
@@ -47,7 +49,7 @@ class CompanyUserRestrictionHandlerPlugin extends SprykerCompanyUserRestrictionH
             return;
         }
 
-        throw new CustomerAccessDeniedException(static::GLOSSARY_KEY_COMPANY_PAGE_RESTRICTED);
+        throw new NotFoundHttpException(static::GLOSSARY_KEY_COMPANY_PAGE_RESTRICTED);
     }
 
     /**
