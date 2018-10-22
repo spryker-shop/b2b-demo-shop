@@ -9,6 +9,7 @@
     isEmptyCategoryFilterValueVisible: _view.isEmptyCategoryFilterValueVisible | default,
     filterPath: _view.filterPath | default,
     viewMode: _view.viewMode | default,
+    searchString: _view.searchString,
 
     title: _view.category.name | default,
     metaTitle: _view.pageTitle | default(_view.category.name | default),
@@ -41,5 +42,13 @@
                 {{ widgetBlock('CatalogCmsBlockWidgetPlugin', 'bottom', data.categoryId) }}
             </div>
         </div>
+    {% endif %}
+{% endblock %}
+
+{% block form %}
+    {{ parent() }}
+
+    {% if data.searchString is not empty %}
+        <input type="hidden" name="q" value="{{ data.searchString }}" />
     {% endif %}
 {% endblock %}
