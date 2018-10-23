@@ -34,7 +34,6 @@ class ProductWidgetDependencyProvider extends SprykerProductWidgetDependencyProv
     protected function getCatalogPageSubWidgetPlugins(): array
     {
         return [
-            ProductLabelWidgetPlugin::class,
             ExampleProductColorGroupWidgetPlugin::class,
             ProductReviewWidgetPlugin::class,
         ];

@@ -8,7 +8,6 @@
 namespace Pyz\Yves\ProductAlternativeWidget;
 
 use SprykerShop\Yves\ProductAlternativeWidget\ProductAlternativeWidgetDependencyProvider as SprykerProductAlternativeWidgetDependencyProvider;
-use SprykerShop\Yves\ProductWidget\Plugin\ProductAlternativeWidget\ProductWidgetPlugin;
 
 class ProductAlternativeWidgetDependencyProvider extends SprykerProductAlternativeWidgetDependencyProvider
 {
@@ -19,8 +18,6 @@ class ProductAlternativeWidgetDependencyProvider extends SprykerProductAlternati
      */
     protected function getProductDetailPageProductAlternativeWidgetPlugins(): array
     {
-        return [
-            ProductWidgetPlugin::class,
-        ];
+        return [];
     }
 }

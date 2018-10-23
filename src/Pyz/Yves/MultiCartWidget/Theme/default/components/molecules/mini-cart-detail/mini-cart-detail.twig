@@ -38,21 +38,15 @@
                         </a>
                     {% endif %}
                     <div class="{{ config.name }}__info">
-                        {% if widgetExists('ProductBundleItemCounterWidgetPlugin') %}
-                            <span class="{{ config.name }}__quantity">
-                                {{ widget('ProductBundleItemCounterWidgetPlugin', data.cart, config.name) }}
-                            </span>
-                        {% else %}
-                            {% set label = (itemCount == 1)
-                                ? 'multi_cart_widget.cart.item'
-                                : 'multi_cart_widget.cart.items'
-                            %}
-                            <span class="{{ config.name }}__quantity">
-                                {{ itemCount }} {{ label | trans }}
-                            </span>
-                        {% endif %}
+                        {% widget 'ProductBundleItemCounterWidget' args [data.cart] %}
+                            {% block body %}
+                                <span class="{{ config.name }}__quantity">
+                                    {{ parent() }}
+                                </span>
+                            {% endblock %}
+                        {% endwidget %}
                         <span class="spacing-right spacing-right--big">
-                            {{ widget('SharedCartPermissionGroupWidgetPlugin', data.cart) }}
+                            {% widget 'SharedCartPermissionGroupWidget' args [data.cart] only %}{% endwidget %}
                         </span>
 
                         {% if data.cart.priceMode is not empty %}

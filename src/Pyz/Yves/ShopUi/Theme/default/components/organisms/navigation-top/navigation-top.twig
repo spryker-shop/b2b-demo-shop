@@ -55,8 +55,8 @@
         </li>
 
         {% if is_granted('ROLE_USER') and hasCompanyAccess() %}
-            {% widget 'MenuItemCompanyWidgetPlugin' only %}
-                {% block body %}
+            {% widget 'MenuItemCompanyWidget' %}
+                {% block template %}
                     <li class="col {{ config.name }}__action-item">
                         {% spaceless %}{{ parent() }}{% endspaceless %}
                         {% if can('SeeCompanyMenuPermissionPlugin') %}
@@ -67,18 +67,18 @@
                                         url: url('company/overview'),
                                         title: 'company.account.overview' | trans
                                     },
-                                    {
-                                        url: url('company/user'),
-                                        title: 'company.account.company_role.users' | trans
-                                    },
-                                    {
-                                        url: url('company/business-unit'),
-                                        title: 'company.account.business_unit' | trans
-                                    },
-                                    {
-                                        url: url('company/company-role'),
-                                        title: 'company.account.company_user.role' | trans
-                                    }]
+                                        {
+                                            url: url('company/user'),
+                                            title: 'company.account.company_role.users' | trans
+                                        },
+                                        {
+                                            url: url('company/business-unit'),
+                                            title: 'company.account.business_unit' | trans
+                                        },
+                                        {
+                                            url: url('company/company-role'),
+                                            title: 'company.account.company_user.role' | trans
+                                        }]
                                 }
                             } only %}
                         {% endif %}
