@@ -12,7 +12,6 @@ use Spryker\Client\PriceProductStorage\Plugin\ProductViewPriceExpanderPlugin;
 use Spryker\Client\ProductImageStorage\Plugin\ProductViewImageExpanderPlugin;
 use SprykerShop\Yves\ProductAlternativeWidget\Plugin\ShoppingListPage\ProductAlternativeWidgetPlugin;
 use SprykerShop\Yves\ProductBarcodeWidget\Plugin\ShoppingList\ProductBarcodeWidgetPlugin;
-use SprykerShop\Yves\ProductDiscontinuedWidget\Plugin\ShoppingListPage\ProductDiscontinuedWidgetPlugin;
 use SprykerShop\Yves\ProductOptionWidget\Plugin\ShoppingListPage\ShoppingListItemProductOptionFormDataProviderMapperPlugin;
 use SprykerShop\Yves\ProductOptionWidget\Plugin\ShoppingListPage\ShoppingListItemProductOptionFormExpanderPlugin;
 use SprykerShop\Yves\ProductOptionWidget\Plugin\ShoppingListPage\ShoppingListItemProductOptionWidgetPlugin;
@@ -66,7 +65,6 @@ class ShoppingListPageDependencyProvider extends SprykerShoppingListPageDependen
     {
         return [
             ProductAlternativeWidgetPlugin::class, #ProductAlternativeFeature
-            ProductDiscontinuedWidgetPlugin::class, #ProductDiscontinuedFeature
             ShoppingListItemNoteWidgetPlugin::class, #ShoppingListNoteFeature
             ShoppingListItemProductOptionWidgetPlugin::class,
         ];
@@ -82,7 +80,6 @@ class ShoppingListPageDependencyProvider extends SprykerShoppingListPageDependen
     {
         return [
             ProductAlternativeWidgetPlugin::class, #ProductAlternativeFeature
-            ProductDiscontinuedWidgetPlugin::class, #ProductDiscontinuedFeature
         ];
     }
 

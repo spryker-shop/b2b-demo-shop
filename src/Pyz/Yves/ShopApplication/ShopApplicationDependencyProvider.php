@@ -9,19 +9,27 @@ namespace Pyz\Yves\ShopApplication;
 
 use Pyz\Yves\CompanyPage\Plugin\ShopApplication\CompanyUserRestrictionHandlerPlugin;
 use Pyz\Yves\CompanyWidget\Plugin\ShopUi\MenuItemCompanyWidgetPlugin;
-use SprykerShop\Yves\AgentWidget\Plugin\Widget\AgentWidgetPlugin;
+use SprykerShop\Yves\AgentWidget\Widget\AgentControlBarWidget;
 use SprykerShop\Yves\BusinessOnBehalfWidget\Plugin\CustomerPage\MenuItemBusinessOnBehalfWidgetPlugin;
 use SprykerShop\Yves\BusinessOnBehalfWidget\Plugin\ShopUi\DisplayOnBehalfBusinessWidgetPlugin;
+use SprykerShop\Yves\CartNoteWidget\Widget\CartItemNoteFormWidget;
 use SprykerShop\Yves\CompanyPage\Plugin\ShopApplication\CheckBusinessOnBehalfCompanyUserHandlerPlugin;
-use SprykerShop\Yves\CurrencyWidget\Plugin\ShopUi\CurrencyWidgetPlugin;
+use SprykerShop\Yves\CurrencyWidget\Widget\CurrencyWidget;
 use SprykerShop\Yves\CustomerPage\Plugin\CustomerPage\CustomerNavigationWidgetPlugin;
-use SprykerShop\Yves\LanguageSwitcherWidget\Plugin\ShopUi\LanguageSwitcherWidgetPlugin;
-use SprykerShop\Yves\MultiCartWidget\Plugin\ShopUi\MiniCartWidgetPlugin;
-use SprykerShop\Yves\NavigationWidget\Plugin\ShopUi\NavigationWidgetPlugin;
-use SprykerShop\Yves\PriceWidget\Plugin\ShopUi\PriceModeSwitcherWidgetPlugin;
-use SprykerShop\Yves\ProductGroupWidget\Plugin\ShopUi\ProductGroupWidgetPlugin;
+use SprykerShop\Yves\CustomerPage\Widget\CustomerNavigationWidget;
+use SprykerShop\Yves\LanguageSwitcherWidget\Widget\LanguageSwitcherWidget;
+use SprykerShop\Yves\MultiCartWidget\Widget\MiniCartWidget;
+use SprykerShop\Yves\NavigationWidget\Widget\NavigationWidget;
+use SprykerShop\Yves\PriceWidget\Widget\PriceModeSwitcherWidget;
+use SprykerShop\Yves\ProductAlternativeWidget\Widget\ShoppingListProductAlternativeWidget;
+use SprykerShop\Yves\ProductBundleWidget\Widget\ProductBundleCartItemsListWidget;
+use SprykerShop\Yves\ProductDiscontinuedWidget\Widget\ProductDiscontinuedWidget;
+use SprykerShop\Yves\ProductGroupWidget\Widget\ProductGroupWidget;
+use SprykerShop\Yves\ProductLabelWidget\Widget\ProductAbstractLabelWidget;
+use SprykerShop\Yves\ProductMeasurementUnitWidget\Widget\CartProductMeasurementUnitQuantitySelectorWidget;
+use SprykerShop\Yves\ProductReviewWidget\Widget\DisplayProductAbstractReviewWidget;
 use SprykerShop\Yves\ShopApplication\ShopApplicationDependencyProvider as SprykerShopApplicationDependencyProvider;
-use SprykerShop\Yves\ShoppingListWidget\Plugin\ShopUi\ShoppingListWidgetPlugin;
+use SprykerShop\Yves\ShoppingListWidget\Widget\ShoppingListNavigationMenuWidget;
 
 class ShopApplicationDependencyProvider extends SprykerShopApplicationDependencyProvider
 {
@@ -31,18 +39,25 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
     protected function getGlobalWidgetPlugins(): array
     {
         return [
-            CurrencyWidgetPlugin::class,
-            LanguageSwitcherWidgetPlugin::class,
-            NavigationWidgetPlugin::class,
-            ProductGroupWidgetPlugin::class,
-            PriceModeSwitcherWidgetPlugin::class,
-            MiniCartWidgetPlugin::class, #MultiCartFeature
-            CustomerNavigationWidgetPlugin::class,
             DisplayOnBehalfBusinessWidgetPlugin::class,
             MenuItemBusinessOnBehalfWidgetPlugin::class,
             MenuItemCompanyWidgetPlugin::class,
-            ShoppingListWidgetPlugin::class, #ShoppingListFeature
-            AgentWidgetPlugin::class, #AgentFeature
+            AgentControlBarWidget::class,
+            PriceModeSwitcherWidget::class,
+            CurrencyWidget::class,
+            LanguageSwitcherWidget::class,
+            NavigationWidget::class,
+            ShoppingListNavigationMenuWidget::class,
+            MiniCartWidget::class,
+            ProductAbstractLabelWidget::class,
+            DisplayProductAbstractReviewWidget::class,
+            ProductGroupWidget::class,
+            CartProductMeasurementUnitQuantitySelectorWidget::class,
+            CustomerNavigationWidget::class,
+            CartItemNoteFormWidget::class,
+            ProductDiscontinuedWidget::class,
+            ShoppingListProductAlternativeWidget::class,
+            ProductBundleCartItemsListWidget::class,
         ];
     }
 

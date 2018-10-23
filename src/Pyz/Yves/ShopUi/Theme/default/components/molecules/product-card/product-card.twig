@@ -27,14 +27,14 @@
         } only %}
 
         {% block groups %}
-            {{ widget('ProductGroupWidgetPlugin', data.abstractId) }}
+            {% widget 'ProductGroupWidget' args [data.abstractId] only %}{% endwidget %}
         {% endblock %}
     </div>
 {% endblock %}
 
 {% block content %}
     {% block labels %}
-        {{ widget('ProductAbstractLabelWidgetPlugin', data.abstractId) }}
+        {% widget 'ProductAbstractLabelWidget' args [data.abstractId] only %}{% endwidget %}
     {% endblock %}
 
     {% block name %}
@@ -49,7 +49,7 @@
 
     {% block rating %}
         <div class="{{ config.name }}__rating">
-            {{ widget('ProductAbstractReviewWidgetPlugin', data.abstractId) }}
+            {% widget 'DisplayProductAbstractReviewWidget' args [data.abstractId] only %}{% endwidget %}
         </div>
     {% endblock %}
 

@@ -57,14 +57,30 @@
                 </div>
             {% endif %}
 
-            {{ widget('CartProductPackagingUnitWidgetPlugin', data.listItem) }}
+            {% if quantitySalesUnit is not empty and amountSalesUnit is not empty %}
+                {% include molecule('packaging-unit-cart', 'ProductPackagingUnitWidget') with {
+                    data: {
+                        amount: data.listItem.amount,
+                        quantity: data.listItem.quantity,
+                        quantitySalesUnit: data.listItem.quantitySalesUnit,
+                        quantityConversion: data.listItem.quantitySalesUnit.conversion,
+                        quantityProductMeasurementUnit: data.listItem.quantitySalesUnit.productMeasurementUnit,
+                        amountSalesUnit: data.listItem.amountSalesUnit,
+                        amountConversion: data.listItem.amountSalesUnit.conversion,
+                        amountProductMeasurementUnit: data.listItem.amountSalesUnit.productMeasurementUnit,
+                        amountValue: data.listItem.amountSalesUnit.value
+                    }
+                } only %}
+            {% endif %}
 
             {% if amountSalesUnit is empty and quantitySalesUnit is not empty and data.quantity is empty %}
                 <div class="{{ config.name }}__quantity grid grid--middle grid--gap">
                     <div class="col col--sm-12 col--md-2">{{ 'packaging_units.cart.quantity' | trans }}: </div>
                     <div class="col">
-                        {% if widgetExists('QuantitySalesUnitWidgetPlugin') and data.canEdit %}
-                            {{ widget('QuantitySalesUnitWidgetPlugin', data.listItem) }}
+                        {% set cartProductMeasurementUnitQuantitySelectorWidget = findWidget('CartProductMeasurementUnitQuantitySelectorWidget', [data.listItem]) %}
+
+                        {% if cartProductMeasurementUnitQuantitySelectorWidget and data.canEdit %}
+                            {% widget cartProductMeasurementUnitQuantitySelectorWidget only %}{% endwidget %}
                         {% else %}
                             {% include molecule('product-item-quantity') with {
                                 data: {
@@ -89,12 +105,12 @@
             {% endblock %}
 
             {% block bundle %}
-                {{ widget('ProductBundleItemsWidgetPlugin', data.listItem, data.list) }}
+                {% widget 'ProductBundleItemsMultiCartItemsListWidget' args [data.listItem, data.list] only %}{% endwidget %}
             {% endblock %}
 
             {% if data.canEdit %}
                 {% block note %}
-                    {{ widget('CartNoteQuoteItemWidgetPlugin', data.listItem, data.list) }}
+                    {% widget 'CartItemNoteFormWidget' args [data.listItem, data.list] only %}{% endwidget %}
                 {% endblock %}
             {% endif %}
 
@@ -131,8 +147,10 @@
 
                     {% block quantity %}
                         {% if amountSalesUnit is empty and quantitySalesUnit is empty and data.quantity is empty %}
-                            {% if widgetExists('QuantitySalesUnitWidgetPlugin') and data.canEdit %}
-                                {{ widget('QuantitySalesUnitWidgetPlugin', data.listItem) }}
+                            {% set cartProductMeasurementUnitQuantitySelectorWidget = findWidget('CartProductMeasurementUnitQuantitySelectorWidget', [data.listItem]) %}
+
+                            {% if cartProductMeasurementUnitQuantitySelectorWidget and data.canEdit %}
+                                {% widget cartProductMeasurementUnitQuantitySelectorWidget only %}{% endwidget %}
                             {% else %}
                                 {% include molecule('product-item-quantity') with {
                                     data: {
