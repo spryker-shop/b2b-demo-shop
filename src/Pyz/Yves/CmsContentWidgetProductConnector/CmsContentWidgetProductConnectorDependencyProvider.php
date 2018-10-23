@@ -8,7 +8,6 @@
 namespace Pyz\Yves\CmsContentWidgetProductConnector;
 
 use SprykerShop\Yves\CmsContentWidgetProductConnector\CmsContentWidgetProductConnectorDependencyProvider as SprykerShopCmsContentWidgetProductConnectorDependencyProvider;
-use SprykerShop\Yves\ProductWidget\Plugin\CmsContentWidget\ProductGroupWidgetPlugin;
 use SprykerShop\Yves\ProductWidget\Plugin\CmsContentWidget\ProductWidgetPlugin;
 
 class CmsContentWidgetProductConnectorDependencyProvider extends SprykerShopCmsContentWidgetProductConnectorDependencyProvider
@@ -20,7 +19,6 @@ class CmsContentWidgetProductConnectorDependencyProvider extends SprykerShopCmsC
     {
         return [
             ProductWidgetPlugin::class,
-            ProductGroupWidgetPlugin::class,
         ];
     }
 }
