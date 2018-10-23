@@ -125,12 +125,22 @@
                         {% endif %}
                     {% endblock %}
                     {% block note %}
-                        {{ widget('CartNoteQuoteItemNoteWidgetPlugin', embed.item) }}
+                        {% include molecule('note-list', 'CartNoteWidget') ignore missing with {
+                            data: {
+                                label: 'cart_note.checkout_page.quote_note',
+                                note: data.transfer.cartNote
+                            }
+                        } only %}
                     {% endblock %}
                 {% endembed %}
             {% endfor %}
 
-            {{ widget('CartNoteQuoteNoteWidgetPlugin', data.transfer) }}
+            {% include molecule('note-list', 'CartNoteWidget') ignore missing with {
+                data: {
+                    label: 'cart_note.checkout_page.quote_note',
+                    note: data.transfer.cartNote
+                }
+            } only %}
 
             <div class="summary-toggle js-summary-toggle">
                 <div class="summary-toggle__item">
@@ -139,7 +149,7 @@
                         <span class="icon icon--toggler-cross toggler-accordion__icon"></span>
                     </h5>
                     <div class="summary-toggle__content summary-toggle__content--voucher js-summary-toggle__content--voucher is-hidden">
-                        {{ widget('CheckoutVoucherFormWidgetPlugin', data.transfer) }}
+                        {% widget 'CheckoutVoucherFormWidget' args [data.transfer] only %}{% endwidget %}
                     </div>
                 </div>
             </div>

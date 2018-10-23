@@ -30,25 +30,16 @@
 
                 <tr class="{{ config.name }}__row">
                     {% block row %}
-                        {% if widgetExists('OrderDetailProductPackagingUnitWidgetPlugin') %}
-                            {{ widget('OrderDetailProductPackagingUnitWidgetPlugin', concreteItem, data.currencyIsoCode) }}
-                        {% else %}
-                            <td class="{{ config.name }}__cell">
-                                {{ concreteItem.sku }}
-                            </td>
-                            <td class="{{ config.name }}__cell">
-                                {{ concreteItem.name }}
-                            </td>
-                            <td class="{{ config.name }}__cell">
-                                {{ concreteItem.sumPrice | money(true, data.currencyIsoCode) }}
-                            </td>
-                            <td class="{{ config.name }}__cell">
-                                {{ concreteItem.quantity }}
-                            </td>
-                            <td class="{{ config.name }}__cell">
-                                {{ concreteItem.sumPriceToPayAggregation | money(true, data.currencyIsoCode) }}
-                            </td>
-                        {% endif %}
+                        {% include [
+                            molecule('order-detail-product-packaging-unit', 'ProductPackagingUnitWidget'),
+                            molecule('order-detail-product-packaging-unit-default', 'CustomerPage'),
+                        ] ignore missing with {
+                            data: {
+                                concreteItem: item,
+                                currencyIsoCode: data.currencyIsoCode,
+                                concreteItemDefault: concreteItem
+                            }
+                        } only %}
                     {% endblock %}
                 </tr>
 
@@ -89,7 +80,12 @@
                     {% endif %}
                 {% endif %}
 
-                {{ widget('CartNoteOrderItemNoteWidgetPlugin', concreteItem) }}
+                {% include molecule('note-list', 'CartNoteWidget') ignore missing with {
+                    data: {
+                        label: 'cart_note.checkout_page.quote_note',
+                        note: item.cartNote
+                    }
+                } only %}
             {% endfor %}
         </tbody>
     </table>

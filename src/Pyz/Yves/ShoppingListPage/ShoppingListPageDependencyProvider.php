@@ -10,12 +10,10 @@ namespace Pyz\Yves\ShoppingListPage;
 use Spryker\Client\AvailabilityStorage\Plugin\ProductViewAvailabilityStorageExpanderPlugin;
 use Spryker\Client\PriceProductStorage\Plugin\ProductViewPriceExpanderPlugin;
 use Spryker\Client\ProductImageStorage\Plugin\ProductViewImageExpanderPlugin;
-use SprykerShop\Yves\ProductAlternativeWidget\Plugin\ShoppingListPage\ProductAlternativeWidgetPlugin;
 use SprykerShop\Yves\ProductBarcodeWidget\Plugin\ShoppingList\ProductBarcodeWidgetPlugin;
 use SprykerShop\Yves\ProductOptionWidget\Plugin\ShoppingListPage\ShoppingListItemProductOptionFormDataProviderMapperPlugin;
 use SprykerShop\Yves\ProductOptionWidget\Plugin\ShoppingListPage\ShoppingListItemProductOptionFormExpanderPlugin;
 use SprykerShop\Yves\ProductOptionWidget\Plugin\ShoppingListPage\ShoppingListItemProductOptionWidgetPlugin;
-use SprykerShop\Yves\ShoppingListNoteWidget\Plugin\ShoppingListItemNoteWidgetPlugin;
 use SprykerShop\Yves\ShoppingListNoteWidget\Plugin\ShoppingListPage\ShoppingListItemNoteFormExpanderPlugin;
 use SprykerShop\Yves\ShoppingListPage\ShoppingListPageDependencyProvider as SprykerShoppingListPageDependencyProvider;
 
@@ -40,7 +38,6 @@ class ShoppingListPageDependencyProvider extends SprykerShoppingListPageDependen
     {
         return [
             ProductBarcodeWidgetPlugin::class,
-            ShoppingListItemNoteWidgetPlugin::class, #ShoppingListNoteFeature
         ];
     }
 
@@ -64,8 +61,6 @@ class ShoppingListPageDependencyProvider extends SprykerShoppingListPageDependen
     protected function getShoppingListViewWidgetPlugins(): array
     {
         return [
-            ProductAlternativeWidgetPlugin::class, #ProductAlternativeFeature
-            ShoppingListItemNoteWidgetPlugin::class, #ShoppingListNoteFeature
             ShoppingListItemProductOptionWidgetPlugin::class,
         ];
     }
@@ -78,9 +73,7 @@ class ShoppingListPageDependencyProvider extends SprykerShoppingListPageDependen
      */
     protected function getShoppingListEditWidgetPlugins(): array
     {
-        return [
-            ProductAlternativeWidgetPlugin::class, #ProductAlternativeFeature
-        ];
+        return [];
     }
 
     /**

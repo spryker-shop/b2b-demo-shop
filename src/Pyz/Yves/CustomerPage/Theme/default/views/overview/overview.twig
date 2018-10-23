@@ -48,7 +48,7 @@
         }
     } only %}
         {% block content %}
-            {{ widget('NewsletterSubscriptionSummaryWidgetPlugin', data.customer) }}
+            {% widget 'NewsletterSubscriptionSummaryWidget' args [data.customer] only %}{% endwidget %}
         {% endblock %}
     {% endembed %}
 {% endmacro %}
