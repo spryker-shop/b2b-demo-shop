@@ -11,24 +11,16 @@ use SprykerShop\Shared\CmsContentWidgetProductConnector\ContentWidgetConfigurati
 
 class CmsProductGroupContentWidgetConfigurationProvider extends SprykerCmsProductGroupContentWidgetConfigurationProvider
 {
-    const SLIDER_TEMPLATE_IDENTIFIER = 'slider';
+    public const SLIDER_TEMPLATE_IDENTIFIER = 'slider';
 
     /**
      * @return array
      */
-    public function getAvailableTemplates()
+    public function getAvailableTemplates(): array
     {
         $availableTemplates = parent::getAvailableTemplates();
         $availableTemplates[self::SLIDER_TEMPLATE_IDENTIFIER] = '@CmsContentWidgetProductConnector/views/cms-product-group/cms-product-group-slider.twig';
 
         return $availableTemplates;
-    }
-
-    /**
-     * @return string
-     */
-    public function getUsageInformation()
-    {
-        return "{{ product_group(['sku1', 'sku2']) }}, to use different template {{ product_group(['sku1', 'sku2'], 'default') }}";
     }
 }
