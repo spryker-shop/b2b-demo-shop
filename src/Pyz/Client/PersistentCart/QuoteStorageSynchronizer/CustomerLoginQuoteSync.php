@@ -14,6 +14,8 @@ use Spryker\Shared\Quote\QuoteConfig;
 class CustomerLoginQuoteSync extends SprykerCustomerLoginQuoteSync
 {
     /**
+     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
+     *
      * @return void
      */
     public function syncQuoteForCustomer(CustomerTransfer $customerTransfer): void
