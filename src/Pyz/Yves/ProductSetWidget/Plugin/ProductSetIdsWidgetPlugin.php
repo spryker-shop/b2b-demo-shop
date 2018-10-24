@@ -16,7 +16,7 @@ use SprykerShop\Yves\ProductSetWidget\Plugin\CmsContentWidgetProductSetConnector
  */
 class ProductSetIdsWidgetPlugin extends AbstractWidgetPlugin
 {
-    const NAME = 'ProductSetIdsWidgetPlugin';
+    public const NAME = 'ProductSetIdsWidgetPlugin';
 
     /**
      * @param array $productSetIds
@@ -54,7 +54,7 @@ class ProductSetIdsWidgetPlugin extends AbstractWidgetPlugin
      *
      * @return array
      */
-    protected function getProductSetList(array $productSetIds)
+    protected function getProductSetList(array $productSetIds): array
     {
         $productSets = [];
         foreach ($productSetIds as $productSetId) {
@@ -72,7 +72,7 @@ class ProductSetIdsWidgetPlugin extends AbstractWidgetPlugin
      *
      * @return array
      */
-    protected function getSingleProductSet($productSetId)
+    protected function getSingleProductSet($productSetId): array
     {
         $productSet = $this->getProductSetStorageTransfer($productSetId);
         if (!$productSet || !$productSet->getIsActive()) {
@@ -89,7 +89,7 @@ class ProductSetIdsWidgetPlugin extends AbstractWidgetPlugin
      *
      * @return \Generated\Shared\Transfer\ProductSetStorageTransfer|null
      */
-    protected function getProductSetStorageTransfer($idProductSet)
+    protected function getProductSetStorageTransfer($idProductSet): ?ProductSetDataStorageTransfer
     {
         return $this->getFactory()->getProductSetStorageClient()->getProductSetByIdProductSet($idProductSet, $this->getLocale());
     }
@@ -99,7 +99,7 @@ class ProductSetIdsWidgetPlugin extends AbstractWidgetPlugin
      *
      * @return \Generated\Shared\Transfer\ProductViewTransfer[]
      */
-    protected function mapProductSetDataStorageTransfers(ProductSetDataStorageTransfer $productSetDataStorageTransfer)
+    protected function mapProductSetDataStorageTransfers(ProductSetDataStorageTransfer $productSetDataStorageTransfer): array
     {
         $productViewTransfers = [];
         foreach ($productSetDataStorageTransfer->getProductAbstractIds() as $idProductAbstract) {
