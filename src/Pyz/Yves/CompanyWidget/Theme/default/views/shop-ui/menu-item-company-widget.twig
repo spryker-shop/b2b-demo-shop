@@ -20,7 +20,26 @@
         {% else %}
             <span class="col navigation-top__company navigation-top__company--no-menu">{{ data.companyName }}</span>
         {% endif %}
-    {% else %}
-        <a href="{{ path('company/overview') }}" class="col navigation-top__company" title="{{ data.companyName }}">{{ 'company.account.page-title' | trans }}</a>
+        {% include molecule('navigation-list') with {
+            modifiers: ['company-user'],
+            data: {
+                nodes: [{
+                    url: url('company/overview'),
+                    title: 'company.account.overview' | trans
+                },
+                    {
+                        url: url('company/user'),
+                        title: 'company.account.company_role.users' | trans
+                    },
+                    {
+                        url: url('company/business-unit'),
+                        title: 'company.account.business_unit' | trans
+                    },
+                    {
+                        url: url('company/company-role'),
+                        title: 'company.account.company_user.role' | trans
+                    }]
+            }
+        } only %}
     {% endif %}
 {% endblock %}

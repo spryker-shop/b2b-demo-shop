@@ -7,7 +7,6 @@
 
 namespace Pyz\Yves\ShopApplication;
 
-use Pyz\Yves\CustomerPage\Plugin\Provider\CustomerTwigFunctionServiceProvider;
 use Pyz\Yves\ExampleProductSalePage\Plugin\Provider\ExampleProductSaleControllerProvider;
 use Pyz\Yves\MultiCartPage\Plugin\Provider\MultiCartPageControllerProvider;
 use Pyz\Yves\PriceWidget\Plugin\Provider\TwigPriceModeFunctionServiceProvider;
@@ -115,7 +114,6 @@ class YvesBootstrap extends SprykerYvesBootstrap
         $this->application->register(new SprykerSessionServiceProvider());
         $this->application->register(new SecurityServiceProvider());
         $this->application->register(new CustomerSecurityServiceProvider());
-        $this->application->register(new CustomerTwigFunctionServiceProvider());
         $this->application->register(new YvesSecurityServiceProvider());
         $this->application->register(new YvesExceptionServiceProvider());
         $this->application->register(new ErrorPageServiceProvider());
