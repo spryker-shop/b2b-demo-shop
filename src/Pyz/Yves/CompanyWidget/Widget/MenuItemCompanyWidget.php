@@ -9,6 +9,9 @@ namespace Pyz\Yves\CompanyWidget\Widget;
 
 use Spryker\Yves\Kernel\Widget\AbstractWidget;
 
+/**
+ * @method \SprykerShop\Yves\CompanyWidget\CompanyWidgetFactory getFactory()
+ */
 class MenuItemCompanyWidget extends AbstractWidget
 {
     public function __construct()
