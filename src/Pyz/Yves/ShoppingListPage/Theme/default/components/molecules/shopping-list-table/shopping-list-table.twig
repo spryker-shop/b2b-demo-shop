@@ -60,28 +60,14 @@
             {% endblock %}
 
             {% block itemAttributes %}
-                <ul class="list spacing-y spacing-y--big">
-                    {% for attribute in data.listItem.superAttributesDefinition %}
-                        {% if data.listItem.attributes[attribute] is defined %}
-                            <li class="list__item list__item--inline spacing-right--biggest">
-                                <strong>{{- ('product.attribute.' ~ attribute) | trans -}}: </strong>
-                                {% if ('product.attribute.' ~ attribute) | trans == 'Color' %}
-                                    <span class="{{ config.name}}__color text-secondary" style="background-color: {{ data.listItem.attributes[attribute] }}">
-                                        {{ data.listItem.attributes[attribute] }}
-                                    </span>
-                                {% else %}
-                                    <span class="text-secondary">
-                                        {{ data.listItem.attributes[attribute] }}
-                                    </span>
-                                {% endif %}
-                            </li>
-                        {% endif %}
-                    {% endfor %}
-
-                    {{ widget('ShoppingListItemNoteWidgetPlugin', data.listItem.shoppingListItem) }}
-
-                    {{ widget('ShoppingListItemProductOptionWidgetPlugin', data.listItem.shoppingListItem) }}
-                </ul>
+                {% include molecule('product-item-attributes') with {
+                    class: 'spacing-y spacing-y--big text-small',
+                    data: {
+                        listItem: data.listItem,
+                    }
+                } only %}
+                {{ widget('ShoppingListItemNoteWidgetPlugin', data.listItem.shoppingListItem) }}
+                {{ widget('ShoppingListItemProductOptionWidgetPlugin', data.listItem.shoppingListItem) }}
             {% endblock %}
 
             {% block price %}

@@ -125,12 +125,30 @@
                         {% endif %}
                     {% endblock %}
                     {% block note %}
-                        {{ widget('CartNoteQuoteItemNoteWidgetPlugin', embed.item) }}
+                        {% if embed.item.cartNote is not empty %}
+                            {% include molecule('cart-item-note', 'CartNoteWidget') ignore missing with {
+                                data: {
+                                    isNoteNotEmpty: true,
+                                    canWrite: false,
+                                    label: 'cart_note.checkout_page.quote_note',
+                                    note: embed.item.cartNote | escape | nl2br
+                                }
+                            } only %}
+                        {% endif %}
                     {% endblock %}
                 {% endembed %}
             {% endfor %}
 
-            {{ widget('CartNoteQuoteNoteWidgetPlugin', data.transfer) }}
+            {% if data.transfer.cartNote is not empty %}
+                {% include molecule('cart-item-note', 'CartNoteWidget') ignore missing with {
+                    data: {
+                        isNoteNotEmpty: true,
+                        canWrite: false,
+                        label: 'cart_note.checkout_page.quote_note',
+                        note: data.transfer.cartNote | escape | nl2br
+                    }
+                } only %}
+            {% endif %}
 
             <div class="summary-toggle js-summary-toggle">
                 <div class="summary-toggle__item">
@@ -139,7 +157,8 @@
                         <span class="icon icon--toggler-cross toggler-accordion__icon"></span>
                     </h5>
                     <div class="summary-toggle__content summary-toggle__content--voucher js-summary-toggle__content--voucher is-hidden">
-                        {{ widget('CheckoutVoucherFormWidgetPlugin', data.transfer) }}
+                        {% widget 'CheckoutVoucherFormWidgetPlugin' args [data.transfer] only %}
+                        {% endwidget %}
                     </div>
                 </div>
             </div>
