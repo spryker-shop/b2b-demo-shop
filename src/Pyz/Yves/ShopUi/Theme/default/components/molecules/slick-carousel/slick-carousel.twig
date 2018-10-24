@@ -14,7 +14,7 @@
 } %}
 
 {% block body %}
-    <div class="slick-carousel__container {{ config.jsName }} is-hidden">
+    <div class="slick-carousel__container {{ config.jsName }}__container is-hidden">
         {% block slides %}
             {% for slide in data.slides %}
                 {{ slide }}

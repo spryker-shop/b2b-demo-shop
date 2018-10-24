@@ -6,7 +6,7 @@ export default class SlickCarousel extends Component {
     slider: HTMLElement
 
     readyCallback(): void {
-        this.slider = this.querySelector(`.${this.jsName}`);
+        this.slider = this.querySelector(`.${this.jsName}__container`);
         this.mapEvents();
         this.sliderInit();
     }
