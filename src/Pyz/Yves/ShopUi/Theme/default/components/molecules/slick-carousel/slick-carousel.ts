@@ -3,22 +3,24 @@ import $ from 'jquery/dist/jquery';
 import 'slick-carousel';
 
 export default class SlickCarousel extends Component {
+    slider: HTMLElement
 
     readyCallback(): void {
+        this.slider = this.querySelector(`.${this.jsName}__container`);
         this.mapEvents();
         this.sliderInit();
     }
 
     protected mapEvents(): void {
-        $(this).on('init', () => this.showSlider());
+        $(this.slider).on('init', () => this.showSlider());
     }
 
     protected showSlider(): void {
-        this.classList.remove('is-hidden');
+        this.slider.classList.remove('is-hidden');
     }
 
     protected sliderInit (): void {
-        $(this).slick(
+        $(this.slider).slick(
             this.sliderConfig
         );
     }
