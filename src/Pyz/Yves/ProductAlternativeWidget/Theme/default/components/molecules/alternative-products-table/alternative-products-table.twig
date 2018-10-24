@@ -30,24 +30,12 @@
             }
         } only %}
             {% block itemAttributes %}
-                <ul class="list spacing-y spacing-y--big">
-                    {% for attribute in data.listItem.superAttributesDefinition %}
-                        {% if data.listItem.attributes[attribute] is defined %}
-                            <li class="list__item list__item--inline spacing-right spacing-right--biggest">
-                                <strong>{{- ('product.attribute.' ~ attribute) | trans -}}: </strong>
-                                {% if ('product.attribute.' ~ attribute) | trans == 'Color' %}
-                                    <span class="{{ config.name}}__color text-secondary" style="background-color: {{ data.listItem.attributes[attribute] }}">
-                                        {{ data.listItem.attributes[attribute] }}
-                                    </span>
-                                {% else %}
-                                    <span class="text-secondary">
-                                        {{ data.listItem.attributes[attribute] }}
-                                    </span>
-                                {% endif %}
-                            </li>
-                        {% endif %}
-                    {% endfor %}
-                </ul>
+                {% include molecule('product-item-attributes') with {
+                    class: 'spacing-y spacing-y--big text-small',
+                    data: {
+                        listItem: data.listItem,
+                    }
+                } only %}
             {% endblock %}
 
             {% block quantity %}

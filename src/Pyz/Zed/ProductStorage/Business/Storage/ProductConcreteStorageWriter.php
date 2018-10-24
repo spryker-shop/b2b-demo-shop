@@ -11,7 +11,7 @@ use Generated\Shared\Transfer\ProductConcreteStorageTransfer;
 use Spryker\Zed\ProductStorage\Business\Storage\ProductConcreteStorageWriter as SprykerProductConcreteStorageWriter;
 
 /**
- * @property \Spryker\Zed\ProductStorage\Persistence\ProductStorageQueryContainerInterface $queryContainer
+ * @property \Pyz\Zed\ProductStorage\Persistence\ProductStorageQueryContainer $queryContainer
  */
 class ProductConcreteStorageWriter extends SprykerProductConcreteStorageWriter
 {
@@ -26,9 +26,11 @@ class ProductConcreteStorageWriter extends SprykerProductConcreteStorageWriter
         $spyProductConcreteEntityArray = $productConcreteLocalizedEntity['SpyProduct'];
         unset($productConcreteLocalizedEntity['attributes']);
         unset($spyProductConcreteEntityArray['attributes']);
+        $bundledProductIds = $this->getBundledProductIdsByProductConcreteId($spyProductConcreteEntityArray['id_product']);
         $productStorageTransfer = (new ProductConcreteStorageTransfer())
             ->fromArray($productConcreteLocalizedEntity, true)
             ->fromArray($spyProductConcreteEntityArray, true)
+            ->setBundledProductIds($bundledProductIds)
             ->setIdProductConcrete($productConcreteLocalizedEntity[static::COL_FK_PRODUCT])
             ->setIdProductAbstract($spyProductConcreteEntityArray[static::COL_FK_PRODUCT_ABSTRACT])
             ->setDescription($this->getDescription($productConcreteLocalizedEntity))
@@ -36,5 +38,21 @@ class ProductConcreteStorageWriter extends SprykerProductConcreteStorageWriter
             ->setSuperAttributesDefinition($this->getSuperAttributeKeys($attributes));
 
         return $productStorageTransfer;
+    }
+
+    /**
+     * @param int $idProductConcrete
+     *
+     * @return array
+     */
+    protected function getBundledProductIdsByProductConcreteId($idProductConcrete)
+    {
+        $result = [];
+        $bundleProducts = $this->queryContainer->queryBundledProductIdsByProductConcreteId($idProductConcrete)->find()->toArray();
+        foreach ($bundleProducts as $bundleProduct) {
+            $result[$bundleProduct['FkBundledProduct']] = $bundleProduct['Quantity'];
+        }
+
+        return $result;
     }
 }

@@ -22,9 +22,9 @@ class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
     protected function getCustomerSessionSetPlugins(): array
     {
         return [
-            new CustomerChangeCartUpdatePlugin(),
             new GuestCartSaveCustomerSessionSetPlugin(), #MultiCartFeature
             new GuestCartUpdateCustomerSessionSetPlugin(), #PersistentCartFeature
+            new CustomerChangeCartUpdatePlugin(),
             new CustomerChangePriceUpdatePlugin(), #PricesPerBusinessUnit
         ];
     }
