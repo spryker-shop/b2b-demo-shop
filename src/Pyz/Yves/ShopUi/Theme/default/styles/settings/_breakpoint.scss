@@ -1,16 +1,12 @@
-$sm-min: 0;
-$sm-max: 549px;
-$md-min: 550px;
-$md-max: 769px;
-$lg-min: 770px;
-$lg-max: 969px;
-$xl-min: 970px;
-$xl-max: 1203px;
-$xxl-min: 1204px;
+$sm: 0;
+$md: 550px;
+$lg: 768px;
+$xl: 1024px;
+$xxl: 1200px;
 
 $setting-breakpoints: (
-    sm: ($sm-min, $sm-max),
-    md: ($md-min, $md-max),
-    lg: ($lg-min, $lg-max),
-    xl: ($xl-min)
+    sm: ($sm, $md - 1),
+    md: ($md, $lg - 1),
+    lg: ($lg, $xl - 1),
+    xl: ($xxl)
 );

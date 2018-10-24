@@ -44,14 +44,14 @@
             justify-content: space-between;
             flex-wrap: wrap;
 
-            @include helper-breakpoint-media-min($lg-min) {
+            @include helper-breakpoint-media-min($lg) {
                 flex-wrap: nowrap;
             }
 
             #{$name}__item--footer {
                 margin: 0 0.5rem 1rem;
 
-                @include helper-breakpoint-media-min($lg-min) {
+                @include helper-breakpoint-media-min($lg) {
                     margin-bottom: 0;
 
                     &:first-child {
