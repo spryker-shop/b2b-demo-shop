@@ -125,22 +125,30 @@
                         {% endif %}
                     {% endblock %}
                     {% block note %}
-                        {% include molecule('note-list', 'CartNoteWidget') ignore missing with {
-                            data: {
-                                label: 'cart_note.checkout_page.quote_note',
-                                note: data.transfer.cartNote
-                            }
-                        } only %}
+                        {% if embed.item.cartNote is not empty %}
+                            {% include molecule('cart-item-note', 'CartNoteWidget') ignore missing with {
+                                data: {
+                                    isNoteNotEmpty: true,
+                                    canWrite: false,
+                                    label: 'cart_note.checkout_page.quote_note',
+                                    note: embed.item.cartNote | escape | nl2br
+                                }
+                            } only %}
+                        {% endif %}
                     {% endblock %}
                 {% endembed %}
             {% endfor %}
 
-            {% include molecule('note-list', 'CartNoteWidget') ignore missing with {
-                data: {
-                    label: 'cart_note.checkout_page.quote_note',
-                    note: data.transfer.cartNote
-                }
-            } only %}
+            {% if data.transfer.cartNote is not empty %}
+                {% include molecule('cart-item-note', 'CartNoteWidget') ignore missing with {
+                    data: {
+                        isNoteNotEmpty: true,
+                        canWrite: false,
+                        label: 'cart_note.checkout_page.quote_note',
+                        note: data.transfer.cartNote | escape | nl2br
+                    }
+                } only %}
+            {% endif %}
 
             <div class="summary-toggle js-summary-toggle">
                 <div class="summary-toggle__item">
