@@ -11,7 +11,7 @@
 
             &--image,
             &--total {
-                @include helper-breakpoint-media-min($lg-min) {
+                @include helper-breakpoint-media-min($lg) {
                     width: 22%;
                     min-width: 22%;
                 }
@@ -24,19 +24,19 @@
             }
 
             &--content {
-                @include helper-breakpoint-media-min($lg-min) {
+                @include helper-breakpoint-media-min($lg) {
                     width: 56%;
                     min-width: 56%;
                 }
             }
 
             &--total {
-                @include helper-breakpoint-media-min($lg-min) {
+                @include helper-breakpoint-media-min($lg) {
                     text-align: right;
                 }
 
                 #{$name} & {
-                    @include helper-breakpoint-media-min($lg-min) {
+                    @include helper-breakpoint-media-min($lg) {
                         padding-left: 0;
                         padding-right: calc(#{$setting-grid-space*2} + #{$setting-grid-space});
                     }

@@ -15,14 +15,14 @@
 {% endblock %}
 
 {% block body %}
-    <div class="col col--sm-6">
+    <div class="col col--sm-12 col--lg-6">
         <h4 class="{{ config.name }}__title">{{ 'product.attribute.long_description' | trans }}</h4>
         <div class="{{ config.name }}__description">
             {{ data.description | raw }}
         </div>
     </div>
 
-    <div class="col col--sm-5">
+    <div class="col col--sm-12 col--lg-5">
         <h4 class="{{ config.name }}__title">{{ 'page.product.details' | trans }}</h4>
         <div class="grid {{ config.name }}__detail-list">
             {% for name, value in data.attributes if name %}
