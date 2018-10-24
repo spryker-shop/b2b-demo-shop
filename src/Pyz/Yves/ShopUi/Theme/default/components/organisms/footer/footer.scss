@@ -11,7 +11,7 @@
         padding: rem(26) 0 rem(10);
         box-shadow: 0 3px 3px 0 $setting-color-shadow-1, 0 18px 18px 0 $setting-color-shadow-1;
 
-        @include helper-breakpoint-media-min($lg-min) {
+        @include helper-breakpoint-media-min($lg) {
             padding-bottom: rem(26);
         }
     }
@@ -42,10 +42,10 @@
         margin-top: rem(18);
         margin-bottom: rem(18);
 
-        @include helper-breakpoint-media-max($sm-max) {
+        @include helper-breakpoint-media-max($md) {
             flex-direction: column-reverse;
         }
-        @include helper-breakpoint-media-min($md-min) {
+        @include helper-breakpoint-media-min($md) {
             margin-top: rem(42);
             margin-bottom: rem(47);
         }
