@@ -13,15 +13,13 @@
     'slider-config': '{}'
 } %}
 
-{% block class %}
-    {{ parent() }} is-hidden
-{% endblock %}
-
 {% block body %}
-    {% block slides %}
-        {% for slide in data.slides %}
-            {{ slide }}
-        {% endfor %}
-    {% endblock %}
+    <div class="slick-carousel__container {{ config.jsName }} is-hidden">
+        {% block slides %}
+            {% for slide in data.slides %}
+                {{ slide }}
+            {% endfor %}
+        {% endblock %}
+    </div>
 {% endblock %}
 

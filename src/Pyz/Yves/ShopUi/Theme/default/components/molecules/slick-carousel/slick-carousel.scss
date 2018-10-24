@@ -1,6 +1,12 @@
 @mixin shop-ui-slick-carousel ($name: '.slick-carousel') {
     #{$name} {
 
+        // fix blink on macbook screen
+        .slick-track,
+        .slick-list {
+            transition-delay: 300ms;
+        }
+
         &--full-width {
             margin-left: -$setting-grid-space;
             margin-right: -$setting-grid-space;
@@ -40,7 +46,8 @@
         }
 
         &--jumbotron {
-            min-height: rem(455);
+            display: block;
+            min-height: rem(505);
 
             .slick-slide {
                 margin: 0 rem(5);
