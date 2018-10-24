@@ -30,9 +30,7 @@ class SetupConfig extends SprykerSetupConfig
         return [
             EmptyAllCachesConsole::COMMAND_NAME,
             EmptyGeneratedDirectoryConsole::COMMAND_NAME,
-            // Important note: After first initial migration you must use
-            // PropelInstallConsole::COMMAND_NAME => ['--' . PropelInstallConsole::OPTION_NO_DIFF => true]
-            // from there on to persist migration files.
+            /** @project Project only, for Demoshop use PropelInstallConsole::COMMAND_NAME => ['--' . PropelInstallConsole::OPTION_NO_DIFF => true] */
             PropelInstallConsole::COMMAND_NAME,
             GeneratorConsole::COMMAND_NAME,
             InitializeDatabaseConsole::COMMAND_NAME,

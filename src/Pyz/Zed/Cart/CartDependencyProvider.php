@@ -140,7 +140,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new CartBundleItemsPreReloadPlugin(),
             new RemoveInactiveItemsPreReloadPlugin(),
             new RemoveRestrictedItemsPreReloadPlugin(),
-            new AddThresholdMessagesCartPreReloadItemsPlugin(),
+            new AddThresholdMessagesCartPreReloadItemsPlugin(), #SalesOrderThresholdFeature
         ];
     }
 

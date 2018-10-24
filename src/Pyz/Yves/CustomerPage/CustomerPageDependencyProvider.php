@@ -14,10 +14,8 @@ use SprykerShop\Yves\CompanyPage\Plugin\CustomerPage\BusinessOnBehalfCompanyUser
 use SprykerShop\Yves\CompanyUserInvitationPage\Plugin\CompanyUserInvitationPreRegistrationCustomerTransferExpanderPlugin;
 use SprykerShop\Yves\CustomerPage\CustomerPageDependencyProvider as SprykerShopCustomerPageDependencyProvider;
 use SprykerShop\Yves\CustomerReorderWidget\Plugin\CustomerPage\CustomerReorderWidgetPlugin;
-use SprykerShop\Yves\MultiCartWidget\Plugin\CustomerPage\MultiCartMenuItemWidgetPlugin;
-use SprykerShop\Yves\NewsletterWidget\Plugin\CustomerPage\NewsletterSubscriptionSummaryWidgetPlugin;
 use SprykerShop\Yves\ProductPackagingUnitWidget\Plugin\CustomerPage\OrderDetailProductPackagingUnitWidgetPlugin;
-use SprykerShop\Yves\ShoppingListWidget\Plugin\CustomerPage\ShoppingListMenuItemWidgetPlugin;
+
 
 class CustomerPageDependencyProvider extends SprykerShopCustomerPageDependencyProvider
 {

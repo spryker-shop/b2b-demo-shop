@@ -1,0 +1,23 @@
+{% extends template('widget') %}
+
+{% define data = {
+    options: _widget.item.productOptions | default([])
+} %}
+
+{% block template %}
+    {% if data.options is not empty %}{{parent()}}{% endif %}
+{% endblock %}
+
+{% block body %}
+    <ul class="list list--expand spacing-top spacing-top--big text-small">
+        {% for option in data.options %}
+            <li class="list__item">
+                <strong>{{ option.groupName | trans }}:</strong>
+                <span class="text-secondary">
+                    {{ option.value | trans }}
+                    <span>{{ option.unitGrossPrice | money }}</span>
+                </span>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

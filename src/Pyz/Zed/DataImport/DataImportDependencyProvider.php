@@ -46,9 +46,10 @@ use Spryker\Zed\ProductPackagingUnitDataImport\Communication\Plugin\DataImport\P
 use Spryker\Zed\ProductQuantityDataImport\Communication\Plugin\ProductQuantityDataImportPlugin;
 use Spryker\Zed\SalesOrderThresholdDataImport\Communication\Plugin\DataImport\SalesOrderThresholdDataImportPlugin;
 use Spryker\Zed\SharedCartDataImport\Communication\Plugin\SharedCartDataImportPlugin;
+use Spryker\Zed\ShoppingListDataImport\Communication\Plugin\ShoppingListCompanyBusinessUnitDataImportPlugin;
+use Spryker\Zed\ShoppingListDataImport\Communication\Plugin\ShoppingListCompanyUserDataImportPlugin;
 use Spryker\Zed\ShoppingListDataImport\Communication\Plugin\ShoppingListDataImportPlugin;
 use Spryker\Zed\ShoppingListDataImport\Communication\Plugin\ShoppingListItemDataImportPlugin;
-use Spryker\Zed\ShoppingListDataImport\Communication\Plugin\ShoppingListPermissionDataImportPlugin;
 
 class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
 {
@@ -153,18 +154,11 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
     {
         return [
             [new CategoryDataImportPlugin(), DataImportConfig::IMPORT_TYPE_CATEGORY_TEMPLATE],
-            new PriceProductDataImportPlugin(),
             new CompanyDataImportPlugin(),
+            new CompanyBusinessUnitDataImportPlugin(),
             new CompanyUnitAddressDataImportPlugin(),
             new CompanyUnitAddressLabelDataImportPlugin(),
             new CompanyUnitAddressLabelRelationDataImportPlugin(),
-            new CompanyUserDataImportPlugin(),
-            new CompanyRoleDataImportPlugin(),
-            new CompanyRolePermissionDataImportPlugin(),
-            new CompanyUserRoleDataImportPlugin(),
-            new CompanyBusinessUnitDataImportPlugin(),
-            new CompanyBusinessUnitUserDataImportPlugin(),
-            new CompanyBusinessUnitAddressDataImportPlugin(),
             new ProductDiscontinuedDataImportPlugin(), #ProductDiscontinuedFeature
             new ProductMeasurementUnitDataImportPlugin(),
             new ProductMeasurementBaseUnitDataImportPlugin(),
@@ -175,8 +169,10 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
             new ProductPackagingUnitTypeDataImportPlugin(),
             new ProductPackagingUnitDataImportPlugin(),
             new BusinessOnBehalfCompanyUserDataImportPlugin(),
+            new SalesOrderThresholdDataImportPlugin(),
             new MerchantDataImportPlugin(),
             new MerchantRelationshipDataImportPlugin(),
+            new MerchantRelationshipSalesOrderThresholdDataImportPlugin(),
             new ProductListDataImportPlugin(),
             new ProductListCategoryDataImportPlugin(),
             new ProductListProductConcreteDataImportPlugin(),
@@ -189,13 +185,13 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
             new CompanyRolePermissionDataImportPlugin(),
             new CompanyUserRoleDataImportPlugin(),
             new CompanyBusinessUnitUserDataImportPlugin(),
+            new CompanyBusinessUnitAddressDataImportPlugin(),
             new MultiCartDataImportPlugin(),
             new SharedCartDataImportPlugin(),
             new ShoppingListDataImportPlugin(),
             new ShoppingListItemDataImportPlugin(),
-            new ShoppingListPermissionDataImportPlugin(),
-            new SalesOrderThresholdDataImportPlugin(),
-            new MerchantRelationshipSalesOrderThresholdDataImportPlugin(),
+            new ShoppingListCompanyUserDataImportPlugin(),
+            new ShoppingListCompanyBusinessUnitDataImportPlugin(),
         ];
     }
 

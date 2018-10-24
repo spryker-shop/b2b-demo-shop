@@ -27,6 +27,23 @@ use SprykerShop\Yves\NewsletterWidget\Widget\NewsletterSubscriptionSummaryWidget
 use SprykerShop\Yves\PriceWidget\Plugin\ShopUi\PriceModeSwitcherWidgetPlugin;
 use SprykerShop\Yves\ProductGroupWidget\Plugin\ShopUi\ProductGroupWidgetPlugin;
 use SprykerShop\Yves\ProductRelationWidget\Widget\UpSellingProductsWidget;
+use SprykerShop\Yves\ProductReviewWidget\Widget\DisplayProductAbstractReviewWidget;
+use SprykerShop\Yves\ProductReviewWidget\Widget\ProductDetailPageReviewWidget;
+use SprykerShop\Yves\ProductReviewWidget\Widget\ProductRatingFilterWidget;
+use SprykerShop\Yves\ProductReviewWidget\Widget\ProductReviewDisplayWidget;
+use SprykerShop\Yves\ProductWidget\Widget\CatalogPageProductWidget;
+use SprykerShop\Yves\ProductWidget\Widget\CmsProductGroupWidget;
+use SprykerShop\Yves\ProductWidget\Widget\CmsProductWidget;
+use SprykerShop\Yves\ProductWidget\Widget\PdpProductRelationWidget;
+use SprykerShop\Yves\ProductWidget\Widget\PdpProductReplacementForListWidget;
+use SprykerShop\Yves\ProductWidget\Widget\ProductAlternativeWidget;
+use SprykerShop\Yves\SalesOrderThresholdWidget\Widget\SalesOrderThresholdWidget;
+use SprykerShop\Yves\SharedCartWidget\Widget\CartDeleteCompanyUsersListWidget;
+use SprykerShop\Yves\SharedCartWidget\Widget\CartListPermissionGroupWidget;
+use SprykerShop\Yves\SharedCartWidget\Widget\SharedCartDetailsWidget;
+use SprykerShop\Yves\SharedCartWidget\Widget\SharedCartOperationsWidget;
+use SprykerShop\Yves\SharedCartWidget\Widget\SharedCartPermissionGroupWidget;
+use SprykerShop\Yves\SharedCartWidget\Widget\SharedCartShareWidget;
 use SprykerShop\Yves\ShopApplication\ShopApplicationDependencyProvider as SprykerShopApplicationDependencyProvider;
 use SprykerShop\Yves\ShoppingListWidget\Plugin\ShopUi\ShoppingListWidgetPlugin;
 use SprykerShop\Yves\ShoppingListWidget\Widget\ShoppingListMenuItemWidget;
@@ -36,29 +53,85 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
     /**
      * @return string[]
      */
-    protected function getGlobalWidgetPlugins(): array
+    protected function getGlobalWidgets(): array
     {
         return [
-            CurrencyWidgetPlugin::class,
+            AddToMultiCartWidget::class,
             LanguageSwitcherWidgetPlugin::class,
             NavigationWidgetPlugin::class,
             ProductGroupWidgetPlugin::class,
             PriceModeSwitcherWidgetPlugin::class,
-            MiniCartWidgetPlugin::class, #MultiCartFeature
             CustomerNavigationWidgetPlugin::class,
             DisplayOnBehalfBusinessWidgetPlugin::class,
-            BusinessOnBehalfStatusWidget::class,
             MenuItemCompanyWidgetPlugin::class,
-            ShoppingListWidgetPlugin::class, #ShoppingListFeature
-            AgentWidgetPlugin::class, #AgentFeature
-            DiscountVoucherFormWidget::class,
+            ShoppingListWidgetPlugin::class,
+            AgentWidgetPlugin::class,
+            AddToShoppingListWidget::class,
+            AgentControlBarWidget::class,
+            MiniCartWidgetPlugin::class,
+            BusinessOnBehalfStatusWidget::class,
+            CartDeleteCompanyUsersListWidget::class,
             CartDiscountPromotionProductListWidget::class,
-            UpSellingProductsWidget::class,
-            CartNoteFormWidget::class, #CartNoteFeature
-            CartItemNoteFormWidget::class, #CartNoteFeature
+            CartItemNoteFormWidget::class,
+            CartListPermissionGroupWidget::class,
+            CartNoteFormWidget::class,
+            CartOperationsWidget::class,
+            CartProductMeasurementUnitQuantitySelectorWidget::class,
+            CatalogPageProductWidget::class,
+            CheckoutBreadcrumbWidget::class,
+            CmsProductGroupWidget::class,
+            CmsProductWidget::class,
+            CompanyMenuItemWidget::class,
+            CreateShoppingListFromCartWidget::class,
+            CurrencyWidget::class,
+            CustomerNavigationWidget::class,
+            DisplayProductAbstractReviewWidget::class,
+            ExampleProductColorSelectorWidget::class,
+            LanguageSwitcherWidget::class,
+            ManageProductMeasurementUnitWidget::class,
+            MiniCartWidget::class,
+            MultiCartListWidget::class,
             MultiCartMenuItemWidget::class,
-            ShoppingListMenuItemWidget::class,
+            NavigationWidget::class,
             NewsletterSubscriptionSummaryWidget::class,
+            PdpProductRelationWidget::class,
+            PdpProductReplacementForListWidget::class,
+            PriceModeSwitcherWidget::class,
+            ProductAbstractLabelWidget::class,
+            ProductAlternativeListWidget::class,
+            ProductAlternativeWidget::class,
+            ProductBarcodeWidget::class,
+            ProductBreadcrumbsWithCategoriesWidget::class,
+            ProductBundleCartItemsListWidget::class,
+            ProductBundleItemCounterWidget::class,
+            ProductBundleItemsMultiCartItemsListWidget::class,
+            ProductBundleMultiCartItemsListWidget::class,
+            ProductConcreteLabelWidget::class,
+            ProductDetailPageReviewWidget::class,
+            ProductDiscontinuedNoteWidget::class,
+            ProductDiscontinuedWidget::class,
+            ProductGroupWidget::class,
+            ProductOptionConfiguratorWidget::class,
+            ProductPackagingUnitWidget::class,
+            ProductPriceVolumeWidget::class,
+            ProductRatingFilterWidget::class,
+            ProductReviewDisplayWidget::class,
+            QuickOrderPageWidget::class,
+            SalesOrderThresholdWidget::class,
+            SharedCartDetailsWidget::class,
+            SharedCartOperationsWidget::class,
+            SharedCartPermissionGroupWidget::class,
+            SharedCartShareWidget::class,
+            ShoppingListItemNoteWidget::class,
+            ShoppingListMenuItemWidget::class,
+            ShoppingListNavigationMenuWidget::class,
+            ShoppingListProductAlternativeWidget::class,
+            SimilarProductsWidget::class,
+            UpSellingProductsWidget::class,
+            DiscountVoucherFormWidget::class,
+            CheckoutVoucherFormWidget::class,
+            WishlistMenuItemWidget::class,
+            WishlistProductAlternativeWidget::class,
         ];
     }
 
