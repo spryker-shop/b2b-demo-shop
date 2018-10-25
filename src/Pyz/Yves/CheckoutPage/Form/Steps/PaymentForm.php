@@ -22,7 +22,7 @@ class PaymentForm extends SprykerPaymentForm
      *
      * @return $this
      */
-    protected function addPaymentMethodSubForms(FormBuilderInterface $builder, array $paymentMethodSubForms, array $options): PaymentForm
+    protected function addPaymentMethodSubForms(FormBuilderInterface $builder, array $paymentMethodSubForms, array $options): self
     {
         foreach ($paymentMethodSubForms as $paymentMethodSubForm) {
             $builder->add(
