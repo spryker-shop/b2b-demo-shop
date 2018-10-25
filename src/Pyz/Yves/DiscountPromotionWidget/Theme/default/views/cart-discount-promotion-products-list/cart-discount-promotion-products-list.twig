@@ -6,7 +6,7 @@
 
 {% block body %}
     {% if data.promotionProducts is not empty %}
-        <h2 class="title title--product-slider title--with-top-margin-small">{{ 'cart.promotion.items' | trans }}</h2>
+        <h2 class="title title--product-slider title--top-margin-small">{{ 'cart.promotion.items' | trans }}</h2>
         <div class="grid grid--gap">
             {% for product in data.promotionProducts %}
                 <div class="col col--md-4">
@@ -61,9 +61,14 @@
                                             <input type="hidden" value="{{ embed.sku }}" name="groupKey">
                                             <input type="hidden" value="{{ embed.promotionDiscount.id }}" name="idDiscountPromotion">
 
-                                            <button type="submit" class="button button--expand" {{ disabled ? 'disabled' : '' }} onclick="this.form.submit(); this.disabled='disabled'; return false;">
+                                            <button type="submit" class="button button--expand {{ config.jsName ~ '__button-' ~ embed.sku }}" {{ disabled ? 'disabled' : '' }}>
                                                 {{ 'page.detail.add-to-cart' | trans }}
                                             </button>
+                                            {% include molecule('action-single-click-enforcer') with {
+                                                attributes: {
+                                                    'target-selector': '.' ~ config.jsName ~ '__button-' ~ embed.sku
+                                                }
+                                            } only %}
                                         </div>
                                     </form>
                                 </div>
