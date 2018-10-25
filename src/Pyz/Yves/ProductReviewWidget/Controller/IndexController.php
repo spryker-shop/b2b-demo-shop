@@ -64,7 +64,7 @@ class IndexController extends AbstractController
     /**
      * @return \Symfony\Component\HttpFoundation\Request
      */
-    protected function getParentRequest()
+    protected function getParentRequest(): Request
     {
         return $this->getApplication()['request_stack']->getParentRequest();
     }

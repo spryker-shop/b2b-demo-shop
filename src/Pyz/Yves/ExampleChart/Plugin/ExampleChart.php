@@ -14,12 +14,14 @@ use Spryker\Shared\Chart\Dependency\Plugin\ChartPluginInterface;
 
 class ExampleChart implements ChartPluginInterface
 {
+    public const NAME = 'testChart';
+
     /**
      * @return string
      */
     public function getName(): string
     {
-        return 'testChart';
+        return static::NAME;
     }
 
     /**

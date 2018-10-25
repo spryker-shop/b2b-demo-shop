@@ -7,6 +7,8 @@
 
 namespace Pyz\Yves\ProductSetWidget;
 
+use Spryker\Client\ProductSetStorage\ProductSetStorageClientInterface;
+use Spryker\Client\ProductStorage\ProductStorageClientInterface;
 use SprykerShop\Yves\ProductSetWidget\ProductSetWidgetFactory as SprykerProductSetWidgetFactory;
 
 class ProductSetWidgetFactory extends SprykerProductSetWidgetFactory
@@ -14,7 +16,7 @@ class ProductSetWidgetFactory extends SprykerProductSetWidgetFactory
     /**
      * @return \Spryker\Client\ProductStorage\ProductStorageClientInterface
      */
-    public function getProductStorageClient()
+    public function getProductStorageClient(): ProductStorageClientInterface
     {
         return $this->getProvidedDependency(ProductSetWidgetDependencyProvider::CLIENT_PRODUCT_STORAGE);
     }
@@ -22,7 +24,7 @@ class ProductSetWidgetFactory extends SprykerProductSetWidgetFactory
     /**
      * @return \Spryker\Client\ProductSetStorage\ProductSetStorageClientInterface
      */
-    public function getProductSetStorageClient()
+    public function getProductSetStorageClient(): ProductSetStorageClientInterface
     {
         return $this->getProvidedDependency(ProductSetWidgetDependencyProvider::CLIENT_PRODUCT_SET_STORAGE);
     }

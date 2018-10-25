@@ -16,7 +16,7 @@ class CmsContentWidgetProductConnectorDependencyProvider extends SprykerShopCmsC
     /**
      * @return string[]
      */
-    protected function getCmsProductContentWidgetPlugins()
+    protected function getCmsProductContentWidgetPlugins(): array
     {
         return [
             ProductWidgetPlugin::class,

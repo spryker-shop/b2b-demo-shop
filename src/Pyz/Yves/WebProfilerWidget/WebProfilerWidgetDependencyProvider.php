@@ -16,7 +16,7 @@ class WebProfilerWidgetDependencyProvider extends SprykerWebProfilerDependencyPr
     /**
      * @return array
      */
-    protected function getWebProfilerPlugins()
+    protected function getWebProfilerPlugins(): array
     {
         return [
             new WebProfilerServiceProvider(),
