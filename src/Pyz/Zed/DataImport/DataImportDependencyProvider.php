@@ -46,6 +46,8 @@ use Spryker\Zed\ProductPackagingUnitDataImport\Communication\Plugin\DataImport\P
 use Spryker\Zed\ProductQuantityDataImport\Communication\Plugin\ProductQuantityDataImportPlugin;
 use Spryker\Zed\SalesOrderThresholdDataImport\Communication\Plugin\DataImport\SalesOrderThresholdDataImportPlugin;
 use Spryker\Zed\SharedCartDataImport\Communication\Plugin\SharedCartDataImportPlugin;
+use Spryker\Zed\ShoppingListDataImport\Communication\Plugin\ShoppingListCompanyBusinessUnitDataImportPlugin;
+use Spryker\Zed\ShoppingListDataImport\Communication\Plugin\ShoppingListCompanyUserDataImportPlugin;
 use Spryker\Zed\ShoppingListDataImport\Communication\Plugin\ShoppingListDataImportPlugin;
 use Spryker\Zed\ShoppingListDataImport\Communication\Plugin\ShoppingListItemDataImportPlugin;
 use Spryker\Zed\ShoppingListDataImport\Communication\Plugin\ShoppingListPermissionDataImportPlugin;
@@ -193,7 +195,8 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
             new SharedCartDataImportPlugin(),
             new ShoppingListDataImportPlugin(),
             new ShoppingListItemDataImportPlugin(),
-            new ShoppingListPermissionDataImportPlugin(),
+            new ShoppingListCompanyUserDataImportPlugin(),
+            new ShoppingListCompanyBusinessUnitDataImportPlugin(),
             new SalesOrderThresholdDataImportPlugin(),
             new MerchantRelationshipSalesOrderThresholdDataImportPlugin(),
         ];

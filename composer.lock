@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c70e7221a28ce6d2530f06f4efa345c0",
+    "content-hash": "bd8a8a5f3cbcca5be26e95b906e9eba0",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -1985,7 +1985,7 @@
             ],
             "authors": [
                 {
-                    "name": "William DURAND",
+                    "name": "William Durand",
                     "email": "william.durand1@gmail.com"
                 }
             ],
@@ -22974,30 +22974,34 @@
         },
         {
             "name": "spryker/shopping-list-data-import",
-            "version": "dev-beta/dmexco",
+            "version": "0.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/shopping-list-data-import.git",
-                "reference": "4a2709502d4562735bd4ff5c3dc26aa9cc8d1962"
+                "reference": "94175b5e1727e317393aa04b1671dc11cd54c737"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/shopping-list-data-import/zipball/4a2709502d4562735bd4ff5c3dc26aa9cc8d1962",
-                "reference": "4a2709502d4562735bd4ff5c3dc26aa9cc8d1962",
+                "url": "https://api.github.com/repos/spryker/shopping-list-data-import/zipball/94175b5e1727e317393aa04b1671dc11cd54c737",
+                "reference": "94175b5e1727e317393aa04b1671dc11cd54c737",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
-                "spryker/company": "*",
-                "spryker/company-user": "*",
-                "spryker/customer": "*",
-                "spryker/data-import": "*",
-                "spryker/kernel": "*",
-                "spryker/product": "*",
-                "spryker/shopping-list": "*"
+                "spryker/company-business-unit": "^1.0.0 || ^2.0.0",
+                "spryker/company-user": "^1.0.0 || ^2.0.0",
+                "spryker/customer": "^7.0.0",
+                "spryker/data-import": "^1.0.0",
+                "spryker/kernel": "^3.0.0",
+                "spryker/product": "^5.0.0 || ^6.0.0",
+                "spryker/shopping-list": "^1.0.0 || ^2.0.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
+                "spryker/company": "*",
+                "spryker/permission": "*",
+                "spryker/propel": "*",
+                "spryker/propel-orm": "*",
                 "spryker/testify": "*"
             },
             "type": "library",
@@ -23008,15 +23012,16 @@
             },
             "autoload": {
                 "psr-4": {
-                    "Spryker\\": "src/Spryker/"
+                    "Spryker\\": "src/Spryker/",
+                    "SprykerTest\\Zed\\ShoppingListDataImport\\Helper\\": "tests/SprykerTest/Zed/ShoppingListDataImport/_support/Helper/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "proprietary"
+                "MIT"
             ],
             "description": "ShoppingListDataImport module",
-            "time": "2018-09-06T10:23:49+00:00"
+            "time": "2018-10-22T11:14:12+00:00"
         },
         {
             "name": "spryker/shopping-list-extension",
@@ -31253,8 +31258,7 @@
         "spryker/company-unit-address-label-gui": 20,
         "spryker/product-list-storage": 20,
         "spryker/product-packaging-unit-storage": 20,
-        "spryker/quick-order-extension": 20,
-        "spryker/shopping-list-data-import": 20
+        "spryker/quick-order-extension": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,

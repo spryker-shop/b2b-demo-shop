@@ -45,15 +45,30 @@ class ShoppingListDataImportConfig extends CoreShoppingListDataImportConfig
     /**
      * @return \Generated\Shared\Transfer\DataImporterConfigurationTransfer
      */
-    public function getShoppingListPermissionDataImporterConfiguration(): DataImporterConfigurationTransfer
+    public function getShoppingListCompanyUserDataImporterConfiguration(): DataImporterConfigurationTransfer
     {
         $moduleDataImportDirectory = APPLICATION_ROOT_DIR . DIRECTORY_SEPARATOR
             . 'data' . DIRECTORY_SEPARATOR
             . 'import' . DIRECTORY_SEPARATOR;
 
         return $this->buildImporterConfiguration(
-            $moduleDataImportDirectory . 'shopping_list_permission.csv',
-            static::IMPORT_TYPE_SHOPPING_LIST
+            $moduleDataImportDirectory . 'shopping_list_company_user.csv',
+            static::IMPORT_TYPE_SHOPPING_LIST_COMPANY_USER
+        );
+    }
+
+    /**
+     * @return \Generated\Shared\Transfer\DataImporterConfigurationTransfer
+     */
+    public function getShoppingListCompanyBusinessUnitDataImporterConfiguration(): DataImporterConfigurationTransfer
+    {
+        $moduleDataImportDirectory = APPLICATION_ROOT_DIR . DIRECTORY_SEPARATOR
+            . 'data' . DIRECTORY_SEPARATOR
+            . 'import' . DIRECTORY_SEPARATOR;
+
+        return $this->buildImporterConfiguration(
+            $moduleDataImportDirectory . 'shopping_list_company_business_unit.csv',
+            static::IMPORT_TYPE_SHOPPING_LIST_COMPANY_BUSINESS_UNIT
         );
     }
 }
