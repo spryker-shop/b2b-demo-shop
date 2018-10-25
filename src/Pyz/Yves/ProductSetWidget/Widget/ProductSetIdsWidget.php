@@ -8,7 +8,6 @@
 namespace Pyz\Yves\ProductSetWidget\Widget;
 
 use Generated\Shared\Transfer\ProductSetDataStorageTransfer;
-use Generated\Shared\Transfer\ProductSetStorageTransfer;
 use Spryker\Yves\Kernel\Widget\AbstractWidget;
 
 /**
@@ -79,9 +78,9 @@ class ProductSetIdsWidget extends AbstractWidget
     /**
      * @param int $idProductSet
      *
-     * @return \Generated\Shared\Transfer\ProductSetStorageTransfer|null
+     * @return \Generated\Shared\Transfer\ProductSetDataStorageTransfer|null
      */
-    protected function getProductSetStorageTransfer($idProductSet): ?ProductSetStorageTransfer
+    protected function getProductSetStorageTransfer($idProductSet): ?ProductSetDataStorageTransfer
     {
         return $this->getFactory()->getProductSetStorageClient()->getProductSetByIdProductSet($idProductSet, $this->getLocale());
     }

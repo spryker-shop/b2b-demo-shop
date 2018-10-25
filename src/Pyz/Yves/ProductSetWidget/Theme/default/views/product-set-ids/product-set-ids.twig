@@ -7,9 +7,12 @@
 {% block body %}
     {% if data.productSetList is defined %}
         {% for productSet in data.productSetList %}
-            {% include molecule('product-set', 'ProductSetWidget') ignore missing with {
+            {% include organism('product-set-details', 'ProductSetWidget') with {
                 data: {
-                    products: productSet.productSet
+                    products: productSet.productViews,
+                    name: productSet.productSet.name,
+                    description: productSet.productSet.description,
+                    images: productSet.productSet.imageSets.0.images | default([])
                 }
             } only %}
         {% endfor %}

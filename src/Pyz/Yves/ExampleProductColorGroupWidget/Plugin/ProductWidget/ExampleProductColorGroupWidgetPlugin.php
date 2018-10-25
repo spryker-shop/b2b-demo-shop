@@ -7,7 +7,6 @@
 
 namespace Pyz\Yves\ExampleProductColorGroupWidget\Plugin\ProductWidget;
 
-use Pyz\Yves\ExampleProductColorGroupWidget\Widget\ExampleProductColorSelectorWidget;
 use Spryker\Yves\Kernel\Widget\AbstractWidgetPlugin;
 use SprykerShop\Yves\ProductWidget\Dependency\Plugin\ProductGroupWidget\ProductGroupWidgetPluginInterface;
 
@@ -20,9 +19,7 @@ class ExampleProductColorGroupWidgetPlugin extends AbstractWidgetPlugin implemen
      */
     public function initialize(int $idProductAbstract): void
     {
-        $widget = new ExampleProductColorSelectorWidget($idProductAbstract);
-
-        $this->parameters = $widget->getParameters();
+        $this->addParameter('idProductAbstract', $idProductAbstract);
     }
 
     /**

@@ -78,7 +78,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
     /**
      * @return string[]
      */
-    protected function getGlobalWidgetPlugins(): array
+    protected function getGlobalWidgets(): array
     {
         return [
             CurrencyWidgetPlugin::class,
@@ -87,7 +87,6 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             PriceModeSwitcherWidgetPlugin::class,
             MiniCartWidgetPlugin::class, #MultiCartFeature
             DisplayOnBehalfBusinessWidgetPlugin::class,
-            MenuItemBusinessOnBehalfWidgetPlugin::class,
             MenuItemCompanyWidgetPlugin::class,
             ShoppingListWidgetPlugin::class, #ShoppingListFeature
             AgentWidgetPlugin::class, #AgentFeature
