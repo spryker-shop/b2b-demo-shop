@@ -7,7 +7,7 @@
 {% block body %}
 
     {% if data.products is not empty %}
-        <h2 class="product-title product-title--with-top-margin">{{ 'product.relation.similar-products' | trans }}</h2>
+        <h2 class="title title--product-slider title--with-top-margin">{{ 'product.relation.similar-products' | trans }}</h2>
         {{ parent() }}
     {% endif %}
 

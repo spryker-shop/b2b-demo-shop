@@ -7,6 +7,18 @@
             margin-bottom: -1px;
         }
 
+        &--promotion {
+            $test: rem(16);
+            position: relative;
+            z-index: $setting-zi-element + 1;
+            border: none;
+
+            &:last-child {
+                margin-bottom: 0;
+                border-bottom: none;
+            }
+        }
+
         &__title {
             font-size: rem(16);
             font-weight: fw(medium);
