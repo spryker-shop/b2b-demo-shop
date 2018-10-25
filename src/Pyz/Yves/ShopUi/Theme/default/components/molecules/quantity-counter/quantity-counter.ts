@@ -38,7 +38,7 @@ export default class QuantityCounter extends Component {
         if(this.isAvailable) {
             const value = +this.input.value;
             const potentialValue = value + this.step;
-            if(value <= this.maxQuantity) {
+            if(value < this.maxQuantity) {
                 this.input.value = potentialValue.toString();
                 this.triggerInputEvent();
             }
