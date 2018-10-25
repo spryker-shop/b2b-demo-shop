@@ -87,7 +87,7 @@ class ProductSetIdsWidgetPlugin extends AbstractWidgetPlugin
     /**
      * @param int $idProductSet
      *
-     * @return \Generated\Shared\Transfer\ProductSetStorageTransfer|null
+     * @return \Generated\Shared\Transfer\ProductSetDataStorageTransfer|null
      */
     protected function getProductSetStorageTransfer($idProductSet): ?ProductSetDataStorageTransfer
     {
