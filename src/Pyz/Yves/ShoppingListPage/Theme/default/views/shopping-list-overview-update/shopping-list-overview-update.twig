@@ -23,7 +23,8 @@
 {% endblock %}
 
 {% block customerNavigation %}
-    {{ widgetGlobal('CustomerNavigationWidgetPlugin', 'shoppingList', data.idShoppingList) }}
+    22222
+    {% widget 'CustomerNavigationWidget' args ['shoppingList', data.idShoppingList] only %}{% endwidget %}
 {% endblock %}
 
 {% block customerContent %}
@@ -58,10 +59,11 @@
                     {% for key, shoppingListItem in data.shoppingList.items %}
                         {% set product = data.shoppingListItemProducts[shoppingListItem.idShoppingListItem] %}
                         {% set isProductAvailable = product.available is defined and product.available and product.price is defined and product.price is not null %}
-                        {% if widgetExists('ProductDiscontinuedWidgetPlugin') %}
-                            {% set isDiscontinued = widgetBlock('ProductDiscontinuedWidgetPlugin', 'isDiscontinued', product.sku) %}
+
+                        {% widget 'ProductDiscontinuedWidget' args ['isDiscontinued', product.sku] only %}
+                            {% set isDiscontinued = parent() %}
                             {% set isProductAvailable = not isDiscontinued and isProductAvailable %}
-                        {% endif %}
+                        {% endwidget %}
 
                         {% embed molecule('product-item') with {
                             modifiers: ['shopping-list', isProductAvailable ? '' : 'hidden'],
@@ -82,11 +84,10 @@
                                     {% if embed.isItemAvailable %}
                                         {{ 'customer.account.shopping_list.available' | trans }}
                                     {% else %}
-                                        {% if widgetExists('ProductDiscontinuedWidgetPlugin') %}
-                                            {{ widget('ProductDiscontinuedWidgetPlugin', data.listItem.sku) }}
-                                        {% else %}
+                                        {% widget 'ProductDiscontinuedWidget' args [data.listItem.sku] only %}
+                                        {% nowidget %}
                                             {{ 'customer.account.shopping_list.not_available' | trans }}
-                                        {% endif %}
+                                        {% endwidget %}
                                     {% endif %}
                                 </span>
                                 {{ parent() }}
@@ -159,8 +160,9 @@
                             {% endblock %}
                         {% endembed %}
 
-                        {% if can('WriteShoppingListPermissionPlugin', data.shoppingList.idShoppingList) and widgetExists('ProductAlternativeWidgetPlugin') %}
-                            {{ widget('ProductAlternativeWidgetPlugin', product, data.shoppingList) }}
+                        {% set shoppingListProductAlternativeWidget = findWidget('ShoppingListProductAlternativeWidget', [product, data.shoppingList]) %}
+                        {% if can('WriteShoppingListPermissionPlugin', data.shoppingList.idShoppingList) and shoppingListProductAlternativeWidget %}
+                            {% widget shoppingListProductAlternativeWidget only %}{% endwidget %}
                         {% endif %}
                     {% endfor %}
 

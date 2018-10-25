@@ -18,13 +18,15 @@
 {% block body %}
     <div class="cart-sidebar__item cart-sidebar__item--end">
         <ul class="list">
-            {% if widgetExists('DiscountSummaryWidgetPlugin') %}
-                {{ widget('DiscountSummaryWidgetPlugin', data.cart) }}
-            {% endif %}
+            {% include molecule('cart-discount-summary', 'DiscountWidget') ignore missing with {
+                data: {
+                    voucherDiscounts: data.cart.voucherDiscounts,
+                    ruleDiscounts: data.cart.cartRuleDiscounts,
+                    discountTotal: data.cart.totals.discounttotal
+                }
+            } only %}
 
-            {% if widgetExists('SalesOrderThresholdWidgetPlugin') %}
-                {{ widget('SalesOrderThresholdWidgetPlugin', data.cart.expenses) }}
-            {% endif %}
+            {% widget 'SalesOrderThresholdWidget' args [data.cart.expenses] only %}{% endwidget %}
 
             <li class="list__item {{ config.name }}__item {{ config.name }}__item--top-space">
                 {{ 'cart.price.subtotal' | trans }}

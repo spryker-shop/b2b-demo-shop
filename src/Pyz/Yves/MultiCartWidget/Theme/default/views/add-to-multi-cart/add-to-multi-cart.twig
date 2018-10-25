@@ -18,7 +18,7 @@
             } only %}
         {% endif %}
 
-        {{ widget('SharedCartAddSeparateProductWidgetPlugin') }}
+        {% include molecule('shared-cart-add-product-as-separate-item', 'SharedCartWidget') ignore missing only %}
             
     {% endif %}
 {% endblock %}

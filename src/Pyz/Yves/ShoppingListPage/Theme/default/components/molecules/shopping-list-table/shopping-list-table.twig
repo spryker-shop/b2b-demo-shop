@@ -13,8 +13,8 @@
     {% for item in data.shoppingListItems %}
         {% set isItemAvailable = item.available is defined and item.available and item.price is defined and item.price is not null %}
         {% if widgetExists('ProductDiscontinuedWidgetPlugin') %}
-            {% set isDiscontinued = widgetBlock('ProductDiscontinuedWidgetPlugin', 'isDiscontinued', item.sku) %}
-            {% set isItemAvailable = not isDiscontinued and isItemAvailable %}
+            {% set productDiscontinuedNoteWidget = findWidget('ProductDiscontinuedNoteWidget', [item.sku]) %}
+            {% set isItemAvailable = not productDiscontinuedNoteWidget.isDiscontinued and isItemAvailable %}
         {% endif %}
         {% embed molecule('product-item') with {
             modifiers: ['shopping-list', isItemAvailable ? '' : 'hidden'],
@@ -66,7 +66,7 @@
                         listItem: data.listItem,
                     }
                 } only %}
-                {{ widget('ShoppingListItemNoteWidgetPlugin', data.listItem.shoppingListItem) }}
+                {% widget 'ShoppingListItemNoteWidget' args [data.listItem.shoppingListItem] only %}{% endwidget %}
                 {{ widget('ShoppingListItemProductOptionWidgetPlugin', data.listItem.shoppingListItem) }}
             {% endblock %}
 
@@ -102,8 +102,12 @@
                 {% endif %}
             {% endblock %}
         {% endembed %}
-        {% if can('WriteShoppingListPermissionPlugin', data.shoppingList.idShoppingList) and widgetExists('ProductAlternativeWidgetPlugin') %}
-            {{ widget('ProductAlternativeWidgetPlugin', item, data.shoppingList) }}
+        {% if can('WriteShoppingListPermissionPlugin', data.shoppingList.idShoppingList) %}
+            {% widget 'ShoppingListProductAlternativeWidget' args [
+                item,
+                data.shoppingList
+            ] only %}
+            {% endwidget %}
         {% endif %}
     {% endfor %}
 {% endblock %}

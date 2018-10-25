@@ -24,16 +24,18 @@
             url: data.product.url,
             imageUrl: data.product.images is empty ? '' : data.product.images.0.external_url_small,
             price: data.product.prices.DEFAULT,
-            originalPrice: data.product.prices.ORIGINAL | default(null)
+            originalPrice: data.product.prices.ORIGINAL | default(null),
+            id_product_labels: data.product.id_product_labels,
+            rating: data.product.rating | default(false)
         }
     } only %}
         {% block labels %}
-            {{ widget('ProductLabelWidgetPlugin', _widget.product.id_product_labels) }}
+            {% widget 'ProductConcreteLabelWidget' args [_widget.product.id_product_labels] only %}{% endwidget %}
         {% endblock %}
 
         {% block rating %}
             {% if _widget.product.rating is defined %}
-                {{ widget('ProductReviewWidgetPlugin', _widget.product.rating) }}
+                {% widget 'ProductReviewDisplayWidget' args [data.rating] only %}{% endwidget %}
             {% endif %}
         {% endblock %}
     {% endembed %}

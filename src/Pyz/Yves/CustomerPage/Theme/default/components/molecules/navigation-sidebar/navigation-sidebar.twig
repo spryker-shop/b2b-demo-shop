@@ -43,7 +43,11 @@
 
 {% block postContent %}
     <ul class="menu">
-        {% widget 'ShoppingListMenuItemWidget' args [data.activePage, data.activeEntityId] only %}{% endwidget %}
+        {% widget 'ShoppingListMenuItemWidget' args [
+            data.activePage,
+            data.activeEntityId
+        ] only %}
+        {% endwidget %}
 
         {% widget 'MultiCartMenuItemWidget' args [data.activePage] only %}{% endwidget %}
 

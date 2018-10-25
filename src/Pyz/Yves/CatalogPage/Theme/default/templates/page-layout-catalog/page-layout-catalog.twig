@@ -108,7 +108,11 @@
 
                 <div class="grid grid--stretch grid--gap">
                     {% for product in data.products %}
-                        {{ widget('ProductWidgetPlugin', product, data.viewMode) }}
+                        {% widget 'CatalogPageProductWidget' args [
+                            product,
+                            data.viewMode
+                        ] only %}
+                        {% endwidget %}
                     {% endfor %}
                 </div>
 

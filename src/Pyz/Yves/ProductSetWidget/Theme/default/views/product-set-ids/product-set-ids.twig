@@ -7,7 +7,11 @@
 {% block body %}
     {% if data.productSetList is defined %}
         {% for productSet in data.productSetList %}
-            {{ widget('ProductSetWidgetPlugin', productSet.productSet, productSet.productViews) }}
+            {% include molecule('product-set', 'ProductSetWidget') ignore missing with {
+                data: {
+                    products: productSet.productSet
+                }
+            } only %}
         {% endfor %}
     {% endif %}
 {% endblock %}
