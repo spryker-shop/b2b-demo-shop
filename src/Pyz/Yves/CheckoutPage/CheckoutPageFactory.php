@@ -7,8 +7,8 @@
 
 namespace Pyz\Yves\CheckoutPage;
 
-use SprykerShop\Yves\CheckoutPage\Form\FormFactory;
 use SprykerShop\Yves\CheckoutPage\CheckoutPageFactory as SprykerCheckoutPageFactory;
+use SprykerShop\Yves\CheckoutPage\Form\FormFactory;
 
 class CheckoutPageFactory extends SprykerCheckoutPageFactory
 {
