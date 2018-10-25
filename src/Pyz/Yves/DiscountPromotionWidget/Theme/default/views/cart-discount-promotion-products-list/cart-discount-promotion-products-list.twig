@@ -7,7 +7,7 @@
 {% block body %}
     {% if data.promotionProducts is not empty %}
         <h2 class="title title--product-slider title--with-top-margin-small">{{ 'cart.promotion.items' | trans }}</h2>
-        <div class="grid">
+        <div class="grid grid--gap">
             {% for product in data.promotionProducts %}
                 <div class="col col--md-4">
                     {% embed molecule('product-card') with {
