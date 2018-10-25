@@ -24,6 +24,13 @@
         showAlwaysFirstAndLast: true
     }
 } %}
+{% block contentTop %}
+    {% if data.categoryId %}
+        <div class="catalog-cms-block catalog-cms-block--sidebar">
+            {{ widgetBlock('CatalogCmsBlockWidgetPlugin', 'top', data.categoryId) }}
+        </div>
+    {% endif %}
+{% endblock %}
 
 {% block filterBar %}
     {{parent()}}
