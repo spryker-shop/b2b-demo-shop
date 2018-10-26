@@ -38,9 +38,11 @@
                         </a>
                     {% endif %}
                     <div class="{{ config.name }}__info">
-                        {% widget 'ProductBundleItemCounterWidget' args [data.cart] %}
+                        {% widget 'ProductBundleItemCounterWidget' args [data.cart] with {
+                            configName: config.name
+                        } only %}
                             {% block body %}
-                                <span class="{{ config.name }}__quantity">
+                                <span class="{{ configName }}__quantity">
                                     {{ parent() }}
                                 </span>
                             {% endblock %}

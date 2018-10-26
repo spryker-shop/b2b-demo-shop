@@ -7,13 +7,8 @@
 
 namespace Pyz\Yves\ProductDetailPage;
 
-use Pyz\Yves\ExampleProductColorGroupWidget\Plugin\ProductDetailPage\ExampleProductColorGroupWidgetPlugin;
-use Pyz\Yves\ProductSetWidget\Plugin\ProductSetIdsWidgetPlugin;
 use Spryker\Yves\Kernel\Container;
-use SprykerShop\Yves\PriceWidget\Plugin\ProductDetailPage\PriceWidgetPlugin;
 use SprykerShop\Yves\ProductDetailPage\ProductDetailPageDependencyProvider as SprykerShopProductDetailPageDependencyProvider;
-use SprykerShop\Yves\ProductImageWidget\Plugin\ProductDetailPage\ProductImageWidgetPlugin;
-use SprykerShop\Yves\ProductMeasurementUnitWidget\Plugin\ProductDetailPage\ProductMeasurementUnitWidgetPlugin;
 
 class ProductDetailPageDependencyProvider extends SprykerShopProductDetailPageDependencyProvider
 {
@@ -24,13 +19,7 @@ class ProductDetailPageDependencyProvider extends SprykerShopProductDetailPageDe
      */
     protected function getProductDetailPageWidgetPlugins(): array
     {
-        return [
-            PriceWidgetPlugin::class,
-            ProductImageWidgetPlugin::class,
-            ExampleProductColorGroupWidgetPlugin::class,
-            ProductMeasurementUnitWidgetPlugin::class,
-            ProductSetIdsWidgetPlugin::class,
-        ];
+        return [];
     }
 
     /**

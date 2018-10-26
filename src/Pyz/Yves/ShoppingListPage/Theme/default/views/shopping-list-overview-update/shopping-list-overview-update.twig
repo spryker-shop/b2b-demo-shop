@@ -58,11 +58,11 @@
                     {% for key, shoppingListItem in data.shoppingList.items %}
                         {% set product = data.shoppingListItemProducts[shoppingListItem.idShoppingListItem] %}
                         {% set isProductAvailable = product.available is defined and product.available and product.price is defined and product.price is not null %}
+                        {% set productDiscontinuedWidget = findWidget('ProductDiscontinuedWidget', [product.sku]) %}
 
-                        {% widget 'ProductDiscontinuedWidget' args ['isDiscontinued', product.sku] only %}
-                            {% set isDiscontinued = parent() %}
-                            {% set isProductAvailable = not isDiscontinued and isProductAvailable %}
-                        {% endwidget %}
+                        {% if productDiscontinuedWidget %}
+                            {% set isProductAvailable = productDiscontinuedWidget.isDiscontinued and isProductAvailable %}
+                        {% endif %}
 
                         {% embed molecule('product-item') with {
                             modifiers: ['shopping-list', isProductAvailable ? '' : 'hidden'],

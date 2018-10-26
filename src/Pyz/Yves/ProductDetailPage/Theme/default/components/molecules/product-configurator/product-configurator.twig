@@ -45,7 +45,17 @@
     <div class="{{ config.name }}__sku">{{ 'product.attribute.sku' | trans }}: {{sku}}</div>
 
     {% if is_granted('ROLE_USER') %}
-        {% widget 'ProductPriceVolumeWidget' args [data.product] only %}{% endwidget %}
+        {% widget 'ProductPriceVolumeWidget' args [data.product] only %}
+        {% nowidget %}
+            <p>
+                {% include molecule('price') with {
+                    data: {
+                        amount: data.product.price | money,
+                        originalAmount: data.product.prices.ORIGINAL | default
+                    }
+                } only %}
+            </p>
+        {% endwidget %}
     {% endif %}
 
     {% if data.isBundle != null %}
@@ -130,11 +140,7 @@
     </form>
 
     {% if is_granted('ROLE_USER') and not isDisabled %}
-        {% widget 'AddToShoppingListWidget' args [sku, isDisabled] only %}
-            {% block body %}
-                {{ parent() }}
-            {% endblock %}
-        {% endwidget %}
+        {% widget 'AddToShoppingListWidget' args [sku, isDisabled] only %}{% endwidget %}
     {% endif %}
 
     {% if not isProductAvailable and widgetExists('WishlistWidgetPlugin') %}
