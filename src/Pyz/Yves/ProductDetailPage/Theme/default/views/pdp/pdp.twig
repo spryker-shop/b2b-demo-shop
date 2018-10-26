@@ -18,7 +18,7 @@
 
 {% block title %}
     <h3 itemprop="name" class="pdp-title">
-        {% widget 'ProductAbstractLabelWidget' args [data.product.idProductAbstract] %}{% endwidget %}{{ data.product.name }}
+        {% widget 'ProductAbstractLabelWidget' args [data.product.idProductAbstract] only %}{% endwidget %}{{ data.product.name }}
     </h3>
     <link itemprop="url" href="{{ data.productUrl }}" />
 {% endblock %}
@@ -28,7 +28,12 @@
 {% block content %}
     <div class="grid grid--gap grid--justify">
         <div class="col gallery-side">
-            {{ widget('ProductImageWidgetPlugin', data.product) }}
+            {% include molecule('image-gallery', 'ProductImageWidget') ignore missing with {
+                data: {
+                    idProductAbstract: data.product.idProductAbstract,
+                    images: data.product.images
+                }
+            } only %}
         </div>
 
         <div class="col col--sm-5">
@@ -67,7 +72,7 @@
 
     {% widget 'SimilarProductsWidget' args [data.product] only %}{% endwidget %}
 
-    {% widget 'ProductDetailPageReviewWidget' args [data.product.idProductAbstract] %}{% endwidget %}
+    {% widget 'ProductDetailPageReviewWidget' args [data.product.idProductAbstract] only %}{% endwidget %}
 
     {% include molecule('product-cms-block', 'CmsBlockWidget') ignore missing with {
         data: {

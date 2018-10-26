@@ -9,7 +9,6 @@ namespace Pyz\Yves\CatalogPage;
 
 use SprykerShop\Yves\CatalogPage\CatalogPageDependencyProvider as SprykerCatalogPageDependencyProvider;
 use SprykerShop\Yves\CmsBlockWidget\Plugin\CatalogPage\CatalogCmsBlockWidgetPlugin;
-use SprykerShop\Yves\ProductReviewWidget\Plugin\CatalogPage\ProductRatingFilterWidgetPlugin;
 
 class CatalogPageDependencyProvider extends SprykerCatalogPageDependencyProvider
 {
@@ -20,7 +19,6 @@ class CatalogPageDependencyProvider extends SprykerCatalogPageDependencyProvider
     {
         return [
             CatalogCmsBlockWidgetPlugin::class,
-            ProductRatingFilterWidgetPlugin::class,
         ];
     }
 }
