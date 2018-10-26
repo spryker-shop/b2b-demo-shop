@@ -7,7 +7,6 @@
 
 namespace Pyz\Yves\ProductDetailPage;
 
-use Pyz\Yves\ExampleProductColorGroupWidget\Plugin\ProductDetailPage\ExampleProductColorGroupWidgetPlugin;
 use Spryker\Yves\Kernel\Container;
 use SprykerShop\Yves\ProductDetailPage\ProductDetailPageDependencyProvider as SprykerShopProductDetailPageDependencyProvider;
 
@@ -20,9 +19,7 @@ class ProductDetailPageDependencyProvider extends SprykerShopProductDetailPageDe
      */
     protected function getProductDetailPageWidgetPlugins(): array
     {
-        return [
-            ExampleProductColorGroupWidgetPlugin::class,
-        ];
+        return [];
     }
 
     /**
