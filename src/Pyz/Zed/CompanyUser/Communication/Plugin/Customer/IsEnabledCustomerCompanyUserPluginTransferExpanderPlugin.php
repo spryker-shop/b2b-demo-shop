@@ -28,10 +28,6 @@ class IsEnabledCustomerCompanyUserPluginTransferExpanderPlugin extends AbstractP
      */
     public function expandTransfer(CustomerTransfer $customerTransfer): CustomerTransfer
     {
-        if (!$customerTransfer->getIsEnabled()) {
-            return $customerTransfer;
-        }
-
         return $customerTransfer->setIsEnabled(
             $this->getFacade()->hasActiveCompanyUsers($customerTransfer)
         );
