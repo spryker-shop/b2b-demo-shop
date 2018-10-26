@@ -6,7 +6,7 @@
     title: _widget.productSet.name,
     description: _widget.productSet.description,
     images: _widget.productSet.imageSets.0.images | default([]),
-    addAllSetButton: is_granted("ROLE_USER") | default(false),
+    addAllSetButton: can("SeeAddToCartPermissionPlugin") | default(false),
     sliderConfig: '{
         "slidesToShow": 4,
         "slidesToScroll": 1,
@@ -144,7 +144,7 @@
                                         <strong>{{ "product.detail.out_of_stock" | trans }}</strong>
                                     </p>
                                 {% endif %}
-                                {% set isDisabled = not embed.product.idProductConcrete or not embed.product.available or not is_granted('ROLE_USER')%}
+                                {% set isDisabled = not embed.product.idProductConcrete or not embed.product.available or not can('ROLE_USER')%}
 
                             </div>
 
