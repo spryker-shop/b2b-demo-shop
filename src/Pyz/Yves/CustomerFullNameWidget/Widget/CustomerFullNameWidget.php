@@ -35,7 +35,7 @@ class CustomerFullNameWidget extends AbstractWidget
      */
     public function __construct()
     {
-        $this->addParameter('fullName', $this->getCustomerFullName());
+        $this->addParameter('customerFullName', $this->getCustomerFullName());
     }
 
     /**
