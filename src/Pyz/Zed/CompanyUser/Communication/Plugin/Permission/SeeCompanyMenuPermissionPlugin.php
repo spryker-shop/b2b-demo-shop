@@ -10,6 +10,9 @@ namespace Pyz\Zed\CompanyUser\Communication\Plugin\Permission;
 use Spryker\Client\Kernel\AbstractPlugin;
 use Spryker\Shared\PermissionExtension\Dependency\Plugin\PermissionPluginInterface;
 
+/**
+ * @method \Pyz\Zed\CompanyUser\Business\CompanyUserFacadeInterface getFacade()
+ */
 class SeeCompanyMenuPermissionPlugin extends AbstractPlugin implements PermissionPluginInterface
 {
     public const KEY = 'SeeCompanyMenuPermissionPlugin';

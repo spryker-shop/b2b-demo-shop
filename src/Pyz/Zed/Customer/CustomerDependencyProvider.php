@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\Customer;
 
+use Pyz\Zed\CompanyUser\Communication\Plugin\Customer\IsEnabledCustomerCompanyUserPluginTransferExpanderPlugin;
 use Spryker\Client\Customer\Plugin\CustomerTransferRefreshPlugin;
 use Spryker\Shared\Newsletter\NewsletterConstants;
 use Spryker\Zed\BusinessOnBehalf\Communication\Plugin\Customer\DefaultCompanyUserCustomerTransferExpanderPlugin;
@@ -76,6 +77,7 @@ class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
             new IsOnBehalfCustomerTransferExpanderPlugin(), #BusinessOnBefalfFeature
             new DefaultCompanyUserCustomerTransferExpanderPlugin(), #BusinessOnBefalfFeature
             new ProductListCustomerTransferExpanderPlugin(),
+            new IsEnabledCustomerCompanyUserPluginTransferExpanderPlugin(),
         ];
     }
 
