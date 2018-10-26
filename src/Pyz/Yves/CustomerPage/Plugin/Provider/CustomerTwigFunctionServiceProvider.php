@@ -40,14 +40,6 @@ class CustomerTwigFunctionServiceProvider extends SprykerCustomerTwigFunctionSer
             })
         );
 
-        $twig->addFunction(
-            'getCustomerFullName',
-            new Twig_SimpleFunction('getCustomerFullName', function () {
-                $customerTransfer = $this->getFactory()->getCustomerClient()->getCustomer();
-                return $customerTransfer->getFirstName() . ' ' . $customerTransfer->getLastName();
-            })
-        );
-
         return $twig;
     }
 }

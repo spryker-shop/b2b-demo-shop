@@ -9,6 +9,7 @@ namespace Pyz\Yves\ShopApplication;
 
 use Pyz\Yves\CompanyPage\Plugin\ShopApplication\CompanyUserRestrictionHandlerPlugin;
 use Pyz\Yves\CompanyWidget\Plugin\ShopUi\MenuItemCompanyWidgetPlugin;
+use Pyz\Yves\CustomerFullNameWidget\Widget\CustomerFullNameWidget;
 use SprykerShop\Yves\AgentWidget\Plugin\Widget\AgentWidgetPlugin;
 use SprykerShop\Yves\BusinessOnBehalfWidget\Plugin\CustomerPage\MenuItemBusinessOnBehalfWidgetPlugin;
 use SprykerShop\Yves\BusinessOnBehalfWidget\Plugin\ShopUi\DisplayOnBehalfBusinessWidgetPlugin;
@@ -42,7 +43,8 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             MenuItemBusinessOnBehalfWidgetPlugin::class,
             MenuItemCompanyWidgetPlugin::class,
             ShoppingListWidgetPlugin::class, #ShoppingListFeature
-            AgentWidgetPlugin::class, #AgentFeature
+            AgentWidgetPlugin::class, #AgentFeature,
+            CustomerFullNameWidget::class,
         ];
     }
 

@@ -1,0 +1,9 @@
+{% extends template('widget') %}
+
+{% define data = {
+    fullName: _widget.fullName
+} %}
+
+{% block body %}
+    {{ data.fullName }}
+{% endblock %}
