@@ -1,13 +1,16 @@
 <?php
 
+/**
+ * This file is part of the Spryker Suite.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
+ */
+
 namespace Pyz\Yves\CustomerFullNameWidget\Widget;
 
-
-use Pyz\Yves\CustomerFullNameWidget\CustomerFullNameWidgetFactory;
 use Spryker\Yves\Kernel\Widget\AbstractWidget;
 
 /**
- * @method CustomerFullNameWidgetFactory getFactory()
+ * @method \Pyz\Yves\CustomerFullNameWidget\CustomerFullNameWidgetFactory getFactory()
  */
 class CustomerFullNameWidget extends AbstractWidget
 {

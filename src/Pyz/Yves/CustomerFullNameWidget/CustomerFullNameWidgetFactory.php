@@ -1,13 +1,11 @@
 <?php
+
 /**
- * Created by PhpStorm.
- * User: kravchenko
- * Date: 10/26/18
- * Time: 5:00 PM
+ * This file is part of the Spryker Suite.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
 namespace Pyz\Yves\CustomerFullNameWidget;
-
 
 use Spryker\Client\Customer\CustomerClientInterface;
 use Spryker\Yves\Kernel\AbstractFactory;
@@ -15,7 +13,7 @@ use Spryker\Yves\Kernel\AbstractFactory;
 class CustomerFullNameWidgetFactory extends AbstractFactory
 {
     /**
-     * @return CustomerClientInterface
+     * @return \Spryker\Client\Customer\CustomerClientInterface
      */
     public function getCustomerClient(): CustomerClientInterface
     {

@@ -1,13 +1,11 @@
 <?php
+
 /**
- * Created by PhpStorm.
- * User: kravchenko
- * Date: 10/26/18
- * Time: 4:55 PM
+ * This file is part of the Spryker Suite.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
 namespace Pyz\Yves\CustomerFullNameWidget;
-
 
 use Spryker\Yves\Kernel\AbstractBundleDependencyProvider;
 use Spryker\Yves\Kernel\Container;
@@ -16,6 +14,11 @@ class CustomerFullNameWidgetDependencyProvider extends AbstractBundleDependencyP
 {
     public const CLIENT_CUSTOMER = 'CLIENT_CUSTOMER';
 
+    /**
+     * @param \Spryker\Yves\Kernel\Container $container
+     *
+     * @return \Spryker\Yves\Kernel\Container
+     */
     public function provideDependencies(Container $container)
     {
         $container = $this->addCustomerClient($container);
@@ -23,6 +26,11 @@ class CustomerFullNameWidgetDependencyProvider extends AbstractBundleDependencyP
         return $container;
     }
 
+    /**
+     * @param \Spryker\Yves\Kernel\Container $container
+     *
+     * @return \Spryker\Yves\Kernel\Container
+     */
     protected function addCustomerClient(Container $container): Container
     {
         $container[static::CLIENT_CUSTOMER] = function (Container $container) {
