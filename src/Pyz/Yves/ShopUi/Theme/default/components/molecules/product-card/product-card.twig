@@ -54,7 +54,7 @@
     {% endblock %}
 
     {% block price %}
-        {% if is_granted('ROLE_USER') %}
+        {% if can('SeePricePermissionPlugin') %}
             <div class="{{ component.renderClass(config.name ~ '__price', modifiers) }}">
                 {% include molecule('price') with {
                     modifiers: ['catalog'],
