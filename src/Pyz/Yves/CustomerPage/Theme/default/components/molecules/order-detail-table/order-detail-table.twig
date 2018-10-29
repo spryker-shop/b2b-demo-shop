@@ -79,13 +79,17 @@
                         {% endfor %}
                     {% endif %}
                 {% endif %}
-
-                {% include molecule('note-list', 'CartNoteWidget') ignore missing with {
-                    data: {
-                        label: 'cart_note.checkout_page.quote_note',
-                        note: item.cartNote
-                    }
-                } only %}
+                <tr>
+                    <td></td>
+                    <td colspan="5">
+                        {% include molecule('note-list', 'CartNoteWidget') ignore missing with {
+                            data: {
+                                label: 'cart_note.customer_page.item_note',
+                                note: concreteItem.cartNote
+                            }
+                        } only %}
+                    </td>
+                </tr>
             {% endfor %}
         </tbody>
     </table>
