@@ -61,6 +61,16 @@ $shop-ui-icon-size-bigger: 1.5rem;
         margin-top: 5px;
     }
 
+    &--contact {
+        width: 22px;
+        height: 24px;
+        margin-bottom: 8px;
+
+        @include helper-breakpoint-media-min($lg) {
+            display: none;
+        }
+    }
+
     &--cross {
         width: rem(10);
         height: rem(10);
@@ -102,6 +112,16 @@ $shop-ui-icon-size-bigger: 1.5rem;
             &::after {
                 display: none;
             }
+        }
+    }
+
+    &--toggler-cross-thin {
+        &::before {
+            height: rem(2);
+        }
+
+        &::after {
+            width: rem(2);
         }
     }
 

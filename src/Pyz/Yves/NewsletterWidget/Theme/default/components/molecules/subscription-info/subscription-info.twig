@@ -10,6 +10,9 @@
 } %}
 
 {% block body %}
-    <h5 class="title title--subscription-info">{{ data.title }}</h5>
-    <p class="{{ config.name }}__text">{{ data.text | raw }}</p>
+    <h5 class="title title--subscription js-subscription__trigger" data-toggle-target=".js-subscription__target">
+        {{ data.title }}
+        <span class="icon icon--toggler-cross icon--toggler-cross-thin toggler-accordion__icon is-hidden-md-xl"></span>
+    </h5>
+    <p class="{{ config.name }}__text js-subscription__target is-hidden-sm-only">{{ data.text | raw }}</p>
 {% endblock %}

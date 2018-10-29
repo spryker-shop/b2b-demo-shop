@@ -1,4 +1,12 @@
 @include shop-ui-list {
+    &--footer {
+        margin-bottom: 1.5rem;
+
+        @include helper-breakpoint-media-min($md) {
+            margin-bottom: 0;
+        }
+    }
+
     &--checkout {
         & > .list__item {
             margin-left: rem(10);
