@@ -9,6 +9,7 @@ use Generated\Shared\Transfer\ItemTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use SprykerShop\Yves\ProductDetailPage\Controller\ProductController as SprykerShopProductController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * @method \Spryker\Client\Product\ProductClientInterface getClient()
@@ -24,6 +25,10 @@ class ProductController extends SprykerShopProductController
      */
     protected function executeDetailAction(array $productData, Request $request): array
     {
+        if (!empty($productData['id_product_abstract']) && $this->isProductAbstractRestricted($productData['id_product_abstract'])) {
+            throw new NotFoundHttpException();
+        }
+
         $productViewTransfer = $this->getFactory()
             ->getProductStorageClient()
             ->mapProductStorageData($productData, $this->getLocale(), $this->getSelectedAttributes($request));
