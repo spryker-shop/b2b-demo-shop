@@ -17,8 +17,6 @@
                     }
                 } only %}
             </a>
-        {% else %}
-            <span class="col navigation-top__company navigation-top__company--no-menu">{{ data.companyName }}</span>
         {% endif %}
         {% include molecule('navigation-list') with {
             modifiers: ['company-user'],
