@@ -13,7 +13,7 @@ use Spryker\Zed\CompanyUser\Business\CompanyUserFacade as SprykerCompanyUserFaca
 /**
  * @method \Pyz\Zed\CompanyUser\Business\CompanyUserBusinessFactory getFactory()
  */
-class CompanyUserFacade extends SprykerCompanyUserFacade
+class CompanyUserFacade extends SprykerCompanyUserFacade implements CompanyUserFacadeInterface
 {
     /**
      * {@inheritDoc}
