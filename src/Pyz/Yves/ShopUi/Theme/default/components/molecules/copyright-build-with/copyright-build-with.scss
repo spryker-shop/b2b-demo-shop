@@ -5,10 +5,15 @@
         text-transform: uppercase;
         padding-top: rem(19);
         padding-bottom: rem(21);
+        position: relative;
         display: flex;
+        flex-wrap: wrap;
         align-items: center;
         justify-content: center;
-        position: relative;
+
+        @include helper-breakpoint-media-min($lg) {
+
+        }
 
         &__text {
             margin-right: rem(18);

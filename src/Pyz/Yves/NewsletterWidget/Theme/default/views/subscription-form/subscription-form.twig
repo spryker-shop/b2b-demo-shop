@@ -11,33 +11,41 @@
 } %}
 
 {% block body %}
-    <div class="grid grid--middle grid--justify">
+    <div class="grid grid--middle grid--justify js-subscription">
         {% include molecule('subscription-info', 'NewsletterWidget') with {
-            class: 'col col--sm-12 col--lg-5',
+            class: 'col col--sm-12 col--md-5 col--lg-6',
             data: {
                 title: 'global.subscribe.title' | trans,
                 text: data.text,
             }
         } only %}
 
-        {% include molecule('form') with {
-            class: 'col col--sm-12 col--lg-5',
-            modifiers: ['inline', 'subscription'],
-            data: {
-                form: data.form,
-                submit: {
-                    enable: true,
-                    text: '',
-                    icon: 'chevron-right',
-                    class: 'button button--hollow-icon'
+        <div class="col col--sm-12 col--md-6 col--lg-5 js-subscription__target is-hidden-sm-only">
+            {% include molecule('form') with {
+                modifiers: ['inline', 'subscription'],
+                data: {
+                    form: data.form,
+                    submit: {
+                        enable: true,
+                        text: '',
+                        icon: 'chevron-right',
+                        class: 'button button--hollow-icon'
+                    }
                 }
-            }
-        } only %}
+            } only %}
+            {% if data.events.success is not empty %}
+                <p class="text-big text-center text-success">{{data.events.success | trans}}</p>
+            {% elseif data.events.error is not empty %}
+                <p class="text-big text-center text-alert">{{data.events.error | trans}}</p>
+            {% endif %}
+        </div>
     </div>
 
-    {% if data.events.success is not empty %}
-        <p class="text-big text-center text-success">{{data.events.success | trans}}</p>
-    {% elseif data.events.error is not empty %}
-        <p class="text-big text-center text-alert">{{data.events.error | trans}}</p>
-    {% endif %}
+    {% include molecule('toggler-accordion') with {
+        attributes: {
+            'wrap-selector': '.js-subscription',
+            'trigger-selector': '.js-subscription__trigger',
+            'class-to-toggle': 'is-hidden-sm-only'
+        }
+    } only %}
 {% endblock %}

@@ -16,10 +16,20 @@
     {% block logos %}
         <div class="{{ config.name }}__logos">
             {% include molecule('navigation-footer-item') with {
+                modifiers: ['footer-logo'],
                 class: 'container',
                 data: {
+                    title: 'global.payment_shipping' | trans,
                     category: 'PAYMENT_PROVIDERS',
-                    template: 'navigation-providers-payment'
+                    template: 'navigation-providers-payment',
+                    toggleClass: 'js-toggle-PAYMENT_PROVIDERS'
+                }
+            } only %}
+            {% include molecule('toggler-accordion') with {
+                attributes: {
+                    'wrap-selector': '.js-toggle-PAYMENT_PROVIDERS',
+                    'trigger-selector': '.js-toggle-PAYMENT_PROVIDERS__trigger',
+                    'class-to-toggle': 'is-hidden-sm-only'
                 }
             } only %}
         </div>
@@ -52,14 +62,30 @@
 
                 <div class="col col--sm-12 col--lg-3 {{ config.name }}__contact-info">
                     <h5 class="title title--footer">{{ 'global.contact_us' | trans }}</h5>
-                    <a class="{{ config.name }}__contact-info-item {{ config.name }}__phone" href="tel:+49 (0) 30 208 498 350">+49 (0) 30 208 498 350</a>
-                    <a class="{{ config.name }}__contact-info-item" href="mailto:info@spryker.com">info@spryker.com</a>
+                    <a class="{{ config.name }}__contact-info-item {{ config.name }}__phone" href="tel:+49 (0) 30 208 498 350">
+                        {% include atom('icon') with {
+                            modifiers: ['contact'],
+                            data: {
+                                name: 'cell-phone'
+                            }
+                        } only %}
+                        +49 (0) 30 208 498 350
+                    </a>
+                    <a class="{{ config.name }}__contact-info-item" href="mailto:info@spryker.com">
+                        {% include atom('icon') with {
+                            modifiers: ['contact'],
+                            data: {
+                                name: 'email'
+                            }
+                        } only %}
+                        info@spryker.com
+                    </a>
                 </div>
             </div>
 
             {% block social %}
                 <div class="grid grid--gap grid--middle {{ config.name }}__social-buttons">
-                    <div class="col col--sm-12 col--md-6 col--lg-9">
+                    <div class="col col--sm-12 col--md-7 col--lg-9">
                         <div class="{{ config.name }}__hint">
                             * {{ 'global.hint' | trans }}
                         </div>
@@ -68,7 +94,8 @@
                         </div>
                     </div>
                     {% include molecule('navigation-footer-item') with {
-                        class: 'col col--sm-12 col--md-6 col--lg-3',
+                        modifiers: ['social'],
+                        class: 'col col--sm-12 col--md-5 col--lg-3',
                         data: {
                             category: 'SOCIAL_LINKS',
                             template: 'navigation-social'

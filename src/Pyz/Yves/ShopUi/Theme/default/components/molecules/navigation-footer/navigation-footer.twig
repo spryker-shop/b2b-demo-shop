@@ -11,10 +11,18 @@
 {% block body %}
     {% for item in data.items %}
         {% include molecule('navigation-footer-item') with {
-            class: 'col col--sm-6 col--md-4',
+            class: 'col col--sm-12 col--md-4',
             data: {
                 category: item.category,
-                title: item.title
+                title: item.title,
+                toggleClass: 'js-toggle-' ~ item.category
+            }
+        } only %}
+        {% include molecule('toggler-accordion') with {
+            attributes: {
+                'wrap-selector': '.js-toggle-' ~ item.category,
+                'trigger-selector': '.js-toggle-' ~ item.category ~ '__trigger',
+                'class-to-toggle': 'is-hidden-sm-only'
             }
         } only %}
     {% endfor %}
