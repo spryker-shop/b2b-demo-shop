@@ -41,6 +41,6 @@ class Customer extends SprykerCustomer implements AdvancedUserInterface
      */
     public function isEnabled(): bool
     {
-        return $this->customerTransfer->getIsEnabled();
+        return ($this->customerTransfer->getIdCustomer() && $this->customerTransfer->getIsEnabled()) ? true : false;
     }
 }
