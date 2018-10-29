@@ -7,11 +7,12 @@
 
 namespace Pyz\Yves\ProductSetWidget\Plugin;
 
-use Generated\Shared\Transfer\ProductSetDataStorageTransfer;
+use Pyz\Yves\ProductSetWidget\Widget\ProductSetIdsWidget;
 use Spryker\Yves\Kernel\Widget\AbstractWidgetPlugin;
-use SprykerShop\Yves\ProductSetWidget\Plugin\CmsContentWidgetProductSetConnector\ProductSetWidgetPlugin;
 
 /**
+ * @deprecated Use \Pyz\Yves\ProductSetWidget\Widget\ProductSetIdsWidget instead.
+ *
  * @method \Pyz\Yves\ProductSetWidget\ProductSetWidgetFactory getFactory()
  */
 class ProductSetIdsWidgetPlugin extends AbstractWidgetPlugin
@@ -25,12 +26,8 @@ class ProductSetIdsWidgetPlugin extends AbstractWidgetPlugin
      */
     public function initialize(array $productSetIds): void
     {
-        $productSetList = $this->getProductSetList($productSetIds);
-        $this->addWidgets([
-            ProductSetWidgetPlugin::class,
-        ]);
-        $this
-            ->addParameter('productSetList', $productSetList);
+        $widget = new ProductSetIdsWidget($productSetIds);
+        $this->parameters = $widget->getParameters();
     }
 
     /**
@@ -46,7 +43,7 @@ class ProductSetIdsWidgetPlugin extends AbstractWidgetPlugin
      */
     public static function getTemplate(): string
     {
-        return '@ProductSetWidget/views/product-set-ids/product-set-ids.twig';
+        return ProductSetIdsWidget::getTemplate();
     }
 
     /**

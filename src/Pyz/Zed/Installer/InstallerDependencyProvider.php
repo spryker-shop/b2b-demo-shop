@@ -41,6 +41,7 @@ class InstallerDependencyProvider extends SprykerInstallerDependencyProvider
             new AclInstallerPlugin(),
             new NewsletterInstallerPlugin(),
             new GlossaryInstallerPlugin(),
+            new CustomerAccessInstallerPlugin(),
             new ShoppingListPermissionsInstallerPlugin(),
             new SharedCartPermissionInstallerPlugin(), #SharedCartFeature
             new ProductMeasurementUnitInstallerPlugin(),
@@ -48,9 +49,8 @@ class InstallerDependencyProvider extends SprykerInstallerDependencyProvider
             new ProductDiscontinuedProductLabelConnectorInstallerPlugin(), #ProductDiscontinuedFeature
             new CompanyUserInvitationStatusInstallerPlugin(), #BulkImportCompanyUserInvitationsFeature
             new ProductPackagingUnitTypeInstallerPlugin(),
+            new SalesOrderThresholdTypeInstallerPlugin(), #SalesOrderThresholdFeature
             new OauthCustomerInstallerPlugin(),
-            new SalesOrderThresholdTypeInstallerPlugin(),
-            new CustomerAccessInstallerPlugin(), #CustomerAccessFeature
         ];
     }
 }

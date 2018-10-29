@@ -13,12 +13,12 @@
 } %}
 
 {% block breadcrumbs %}
-    {{ widget('ProductCategoryWidgetPlugin', data.product, app.locale) }}
+    {% widget 'ProductBreadcrumbsWithCategoriesWidget' args [data.product] only %}{% endwidget %}
 {% endblock %}
 
 {% block title %}
     <h3 itemprop="name" class="pdp-title">
-        {{ widget('ProductAbstractLabelWidgetPlugin', data.product) }}{{ data.product.name }}
+        {% widget 'ProductAbstractLabelWidget' args [data.product.idProductAbstract] only %}{% endwidget %}{{ data.product.name }}
     </h3>
     <link itemprop="url" href="{{ data.productUrl }}" />
 {% endblock %}
@@ -28,7 +28,12 @@
 {% block content %}
     <div class="grid grid--gap grid--justify">
         <div class="col gallery-side">
-            {{ widget('ProductImageWidgetPlugin', data.product) }}
+            {% include molecule('image-gallery', 'ProductImageWidget') ignore missing with {
+                data: {
+                    idProductAbstract: data.product.idProductAbstract,
+                    images: data.product.images
+                }
+            } only %}
         </div>
 
         <div class="col col--sm-5">
@@ -42,7 +47,7 @@
         </div>
     </div>
 
-    {{ widget('ProductAlternativeWidgetPlugin', data.product) }}
+    {% widget 'ProductAlternativeListWidget' args [data.product] only %}{% endwidget %}
 
     {% include molecule('product-detail', 'ProductDetailPage') with {
         data: {
@@ -51,10 +56,10 @@
         }
     } only %}
 
-    {{ widget('ProductReplacementForWidgetPlugin', data.product.sku) }}
+    {% widget 'ProductReplacementForListWidget' args [data.product.sku] only %}{% endwidget %}
 
     {% if data.product.productSetIds is not empty %}
-        {{ widget('ProductSetIdsWidgetPlugin', data.product.productSetIds) }}
+        {% widget 'ProductSetIdsWidget' args [data.product.productSetIds] only %}{% endwidget %}
     {% endif %}
 
     {% if data.isBundle != null %}
@@ -65,16 +70,24 @@
         } only %}
     {% endif %}
 
-    {{ widget('SimilarProductsWidgetPlugin', data.product) }}
+    {% widget 'SimilarProductsWidget' args [data.product] only %}{% endwidget %}
 
-    {{ widget('ProductReviewWidgetPlugin', data.product.idProductAbstract) }}
+    {% widget 'ProductDetailPageReviewWidget' args [data.product.idProductAbstract] only %}{% endwidget %}
 
-    {{ widget('ProductCmsBlockWidgetPlugin', data.product) }}
+    {% include molecule('product-cms-block', 'CmsBlockWidget') ignore missing with {
+        data: {
+            idProductAbstract: data.product.idProductAbstract
+        }
+    } only %}
 {% endblock %}
 
 {% block contentBottom %}
     {{ spyCmsBlock({
         name: 'Product CMS Block'
     }) }}
-    {{ widget('ProductCmsBlockWidgetPlugin', data.product) }}
+    {% include molecule('product-cms-block', 'CmsBlockWidget') ignore missing with {
+        data: {
+            idProductAbstract: data.product.idProductAbstract
+        }
+    } only %}
 {% endblock %}

@@ -77,6 +77,7 @@ use SprykerShop\Yves\ShopApplication\Plugin\Provider\ShopApplicationServiceProvi
 use SprykerShop\Yves\ShopApplication\Plugin\Provider\ShopControllerEventServiceProvider;
 use SprykerShop\Yves\ShopApplication\Plugin\Provider\ShopTwigServiceProvider;
 use SprykerShop\Yves\ShopApplication\Plugin\Provider\WidgetServiceProvider;
+use SprykerShop\Yves\ShopApplication\Plugin\Provider\WidgetTagServiceProvider;
 use SprykerShop\Yves\ShopApplication\Plugin\Provider\YvesExceptionServiceProvider;
 use SprykerShop\Yves\ShopApplication\Plugin\Provider\YvesSecurityServiceProvider;
 use SprykerShop\Yves\ShopApplication\YvesBootstrap as SprykerYvesBootstrap;
@@ -88,6 +89,7 @@ use SprykerShop\Yves\ShopRouter\Plugin\Router\StorageRouter;
 use SprykerShop\Yves\ShopTranslator\Plugin\Provider\TranslationServiceProvider;
 use SprykerShop\Yves\ShopUi\Plugin\Provider\ShopUiTwigServiceProvider;
 use SprykerShop\Yves\WebProfilerWidget\Plugin\ServiceProvider\WebProfilerWidgetServiceProvider;
+use SprykerShop\Yves\WishlistPage\Plugin\Provider\WishlistPageControllerProvider;
 
 class YvesBootstrap extends SprykerYvesBootstrap
 {
@@ -108,6 +110,7 @@ class YvesBootstrap extends SprykerYvesBootstrap
         $this->application->register(new ShopTwigServiceProvider());
         $this->application->register(new SprykerTwigServiceProvider());
         $this->application->register(new WidgetServiceProvider());
+        $this->application->register(new WidgetTagServiceProvider());
         $this->application->register(new ShopApplicationServiceProvider());
         $this->application->register(new DateTimeFormatterServiceProvider());
         $this->application->register(new SessionServiceProvider());
@@ -186,6 +189,7 @@ class YvesBootstrap extends SprykerYvesBootstrap
             new CustomerReorderControllerProvider($isSsl),
             new NewsletterPageControllerProvider($isSsl),
             new CartControllerProvider($isSsl),
+            new WishlistPageControllerProvider($isSsl),
             new HeartbeatPageControllerProvider($isSsl),
             new NewsletterWidgetControllerProvider($isSsl),
             new CatalogPageControllerProvider($isSsl),
@@ -207,9 +211,9 @@ class YvesBootstrap extends SprykerYvesBootstrap
             new CartToShoppingListWidgetControllerProvider($isSsl), #ShoppingListFeature
             new ShoppingListWidgetControllerProvider($isSsl), #ShoppingListFeature
             new CompanyUserInvitationPageControllerProvider($isSsl), #BulkImportCompanyUserInvitationsFeature
-            new FileManagerWidgetControllerProvider($isSsl),
             new AgentPageControllerProvider($isSsl), #AgentFeature
             new AgentWidgetControllerProvider($isSsl), #AgentFeature
+            new FileManagerWidgetControllerProvider($isSsl),
         ];
     }
 }

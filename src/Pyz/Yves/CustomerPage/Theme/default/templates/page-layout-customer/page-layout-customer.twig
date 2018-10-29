@@ -30,7 +30,7 @@
                     <div class="grid">
                         <div class="col col--sm-12 col--md-6 col-lg-4 col--xl-3">
                             {% block customerNavigation %}
-                                {{ widgetGlobal('CustomerNavigationWidgetPlugin', data.activePage) }}
+                                {%  widget 'CustomerNavigationWidget' args [data.activePage] only %}{% endwidget %}
                             {% endblock %}
                         </div>
 

@@ -47,7 +47,7 @@ use Spryker\Zed\UrlStorage\Communication\Plugin\Event\UrlEventResourceQueryConta
 class EventBehaviorDependencyProvider extends SprykerEventBehaviorDependencyProvider
 {
     /**
-     * @return \Spryker\Zed\EventBehavior\Dependency\Plugin\EventResourceQueryContainerPluginInterface[]
+     * @return \Spryker\Zed\EventBehavior\Dependency\Plugin\EventResourcePluginInterface[]
      */
     protected function getEventTriggerResourcePlugins()
     {

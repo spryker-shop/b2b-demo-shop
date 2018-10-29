@@ -24,7 +24,7 @@
 
             {% block slides %}
                 {% for slide in data.slides %}
-                    {{ widget('ProductWidgetPlugin', slide) }}
+                    {% widget 'PdpProductRelationWidget' args [slide] only %}{% endwidget %}
                 {% endfor %}
             {% endblock %}
 

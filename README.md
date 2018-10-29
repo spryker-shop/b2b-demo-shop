@@ -1,5 +1,5 @@
 # Spryker B2B Shop Suite
-[![Build Status](https://api.travis-ci.org/spryker-shop/suite.svg?branch=master)](https://travis-ci.org/spryker-shop/suite)
+[![Build Status](https://api.travis-ci.org/spryker/suite-b2b-internal.svg?branch=master)](https://travis-ci.org/spryker/suite-b2b-internal)
 [![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%207.1-8892BF.svg)](https://php.net/)
 
 License: [MIT](LICENSE)

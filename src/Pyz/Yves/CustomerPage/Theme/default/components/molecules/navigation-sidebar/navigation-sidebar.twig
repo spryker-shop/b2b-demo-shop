@@ -43,14 +43,14 @@
 
 {% block postContent %}
     <ul class="menu">
-        {{ widget('ShoppingListMenuItemWidgetPlugin', data.activePage, data.activeEntityId) }}
+        {% widget 'ShoppingListMenuItemWidget' args [
+            data.activePage,
+            data.activeEntityId
+        ] only %}
+        {% endwidget %}
 
-        {% if widgetExists('MultiCartMenuItemWidgetPlugin') %}
-            {{ widget('MultiCartMenuItemWidgetPlugin', data.activePage) }}
-        {% endif %}
+        {% widget 'MultiCartMenuItemWidget' args [data.activePage] only %}{% endwidget %}
 
-        {% if widgetGlobalExists('MenuItemBusinessOnBehalfWidgetPlugin') %}
-            {{ widgetGlobal('MenuItemBusinessOnBehalfWidgetPlugin') }}
-        {% endif %}
+        {% widget 'BusinessOnBehalfStatusWidget' only %}{% endwidget %}
     </ul>
 {% endblock %}

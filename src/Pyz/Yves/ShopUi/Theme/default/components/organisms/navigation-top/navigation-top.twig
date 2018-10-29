@@ -41,22 +41,17 @@
             +49 (0) 30 208 498 350
         </li>
 
-        {% if is_granted('ROLE_USER') %}
+        {% if can('SeePricePermissionPlugin') %}
             <li class="col {{ config.name }}__action-item">
-                {{ widgetGlobal('PriceModeSwitcherWidgetPlugin') }}
+                {% widget 'PriceModeSwitcherWidget' only %}{% endwidget %}
             </li>
             <li class="col {{ config.name }}__action-item">
-                {{ widgetGlobal('CurrencyWidgetPlugin') }}
+                {% widget 'CurrencyWidget' only %}{% endwidget %}
             </li>
         {% endif %}
 
         <li class="col {{ config.name }}__action-item">
-            {{ widgetGlobal(
-                'LanguageSwitcherWidgetPlugin',
-                app.request.pathInfo,
-                app.request.queryString,
-                app.request.requestUri
-            ) }}
+            {% widget 'LanguageSwitcherWidget' args [app.request.pathInfo, app.request.queryString, app.request.requestUri] only %}{% endwidget %}
         </li>
 
         <li class="col {{ config.name }}__action-item">
