@@ -7,42 +7,14 @@
 
 namespace Pyz\Zed\CompanyUser\Persistence;
 
-use Generated\Shared\Transfer\CompanyUserTransfer;
 use Orm\Zed\Company\Persistence\Map\SpyCompanyTableMap;
 use Spryker\Zed\CompanyUser\Persistence\CompanyUserRepository as SprykerCompanyUserRepository;
 
 /**
  * @method \Spryker\Zed\CompanyUser\Persistence\CompanyUserPersistenceFactory getFactory()
  */
-class CompanyUserRepository extends SprykerCompanyUserRepository
+class CompanyUserRepository extends SprykerCompanyUserRepository implements CompanyUserRepositoryInterface
 {
-    /**
-     * @param int $idCustomer
-     *
-     * @return \Generated\Shared\Transfer\CompanyUserTransfer|null
-     */
-    public function findActiveCompanyUserByCustomerId(int $idCustomer): ?CompanyUserTransfer
-    {
-        $query = $this->getFactory()
-            ->createCompanyUserQuery()
-            ->filterByIsActive(true)
-            ->filterByFkCustomer($idCustomer)
-            ->joinCompany()
-            ->useCompanyQuery()
-            ->filterByIsActive(true)
-            ->endUse();
-
-        $entityTransfer = $this->buildQueryFromCriteria($query)->findOne();
-
-        if ($entityTransfer !== null) {
-            return $this->getFactory()
-                ->createCompanyUserMapper()
-                ->mapEntityTransferToCompanyUserTransfer($entityTransfer);
-        }
-
-        return null;
-    }
-
     /**
      * @uses \Orm\Zed\Company\Persistence\SpyCompanyQuery
      *
@@ -50,7 +22,7 @@ class CompanyUserRepository extends SprykerCompanyUserRepository
      *
      * @return int
      */
-    public function countActiveCompanyUsersByIdCustomer(int $idCustomer): int
+    public function countActiveCompanyUsersWithActiveAndApprovedCompanyByIdCustomer(int $idCustomer): int
     {
         $query = $this->getFactory()
             ->createCompanyUserQuery()

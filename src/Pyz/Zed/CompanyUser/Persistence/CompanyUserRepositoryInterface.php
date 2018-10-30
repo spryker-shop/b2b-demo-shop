@@ -19,4 +19,13 @@ interface CompanyUserRepositoryInterface extends SprykerCompanyUserRepositoryInt
      * @return int
      */
     public function countCompanyUsersByIdCustomer(int $idCustomer): int;
+
+    /**
+     * @uses \Orm\Zed\Company\Persistence\SpyCompanyQuery
+     *
+     * @param int $idCustomer
+     *
+     * @return int
+     */
+    public function countActiveCompanyUsersWithActiveAndApprovedCompanyByIdCustomer(int $idCustomer): int;
 }
