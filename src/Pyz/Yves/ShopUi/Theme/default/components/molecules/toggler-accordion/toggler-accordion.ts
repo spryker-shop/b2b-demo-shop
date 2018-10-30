@@ -39,7 +39,7 @@ export default class TogglerAccordion extends Component {
     }
 
     protected targetToggle(target: HTMLElement, active: boolean): void {
-        let targets = <HTMLElement[]>Array.from(document.querySelectorAll(target.dataset.toggleTarget));
+        const targets = <HTMLElement[]>Array.from(document.querySelectorAll(target.dataset.toggleTarget));
         targets.forEach((target: HTMLElement) => {
             target.classList.toggle(this.classToToggle, active);
         })

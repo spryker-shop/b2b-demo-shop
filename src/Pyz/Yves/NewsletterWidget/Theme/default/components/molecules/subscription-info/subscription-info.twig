@@ -7,10 +7,11 @@
 {% define data = {
     title: required,
     text: required,
+    togglerClass: required,
 } %}
 
 {% block body %}
-    <h5 class="title title--subscription js-subscription__trigger" data-toggle-target=".js-subscription__target">
+    <h5 class="title title--subscription {{ data.togglerClass }}__trigger" data-toggle-target=".{{ data.togglerClass }}__target">
         {{ data.title }}
         <span class="icon icon--toggler-cross icon--toggler-cross-thin toggler-accordion__icon is-hidden-md-xl"></span>
     </h5>

@@ -15,20 +15,21 @@
 
     {% block logos %}
         <div class="{{ config.name }}__logos">
+            {% set categoryPaymentProviders = 'PAYMENT_PROVIDERS' %}
             {% include molecule('navigation-footer-item') with {
                 modifiers: ['footer-logo'],
                 class: 'container',
                 data: {
                     title: 'global.payment_shipping' | trans,
-                    category: 'PAYMENT_PROVIDERS',
+                    category: categoryPaymentProviders,
                     template: 'navigation-providers-payment',
-                    toggleClass: 'js-toggle-PAYMENT_PROVIDERS'
+                    toggleClass: 'js-toggle-' ~ categoryPaymentProviders
                 }
             } only %}
             {% include molecule('toggler-accordion') with {
                 attributes: {
-                    'wrap-selector': '.js-toggle-PAYMENT_PROVIDERS',
-                    'trigger-selector': '.js-toggle-PAYMENT_PROVIDERS__trigger',
+                    'wrap-selector': '.js-toggle-' ~ categoryPaymentProviders,
+                    'trigger-selector': '.js-toggle-' ~ categoryPaymentProviders ~ '__trigger',
                     'class-to-toggle': 'is-hidden-sm-only'
                 }
             } only %}
