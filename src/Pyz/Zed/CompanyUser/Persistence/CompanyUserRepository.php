@@ -8,6 +8,7 @@
 namespace Pyz\Zed\CompanyUser\Persistence;
 
 use Generated\Shared\Transfer\CompanyUserTransfer;
+use Orm\Zed\Company\Persistence\Map\SpyCompanyTableMap;
 use Spryker\Zed\CompanyUser\Persistence\CompanyUserRepository as SprykerCompanyUserRepository;
 
 /**
@@ -58,6 +59,7 @@ class CompanyUserRepository extends SprykerCompanyUserRepository
             ->joinCompany()
             ->useCompanyQuery()
                 ->filterByIsActive(true)
+                ->filterByStatus(SpyCompanyTableMap::COL_STATUS_APPROVED)
             ->endUse();
 
         return $query->count();
