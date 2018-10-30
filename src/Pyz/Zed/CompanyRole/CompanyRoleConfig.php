@@ -31,7 +31,7 @@ class CompanyRoleConfig extends SprykerCompanyRoleConfig
             AddCompanyUserPermissionPlugin::KEY,
             ManageCompanyUserInvitationPermissionPlugin::KEY,
             CompanyUserStatusChangePermissionPlugin::KEY,
-            SeeCompanyMenuPermissionPlugin::KEY
+            SeeCompanyMenuPermissionPlugin::KEY,
         ];
     }
 
