@@ -34,7 +34,7 @@ class CompanyUserRepository extends SprykerCompanyUserRepository implements Comp
                 ->filterByStatus(SpyCompanyTableMap::COL_STATUS_APPROVED)
             ->endUse();
 
-        return $query->count();
+        return $query->exists();
     }
 
     /**
