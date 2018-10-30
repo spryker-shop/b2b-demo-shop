@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the Spryker Suite.
  * For full license information, please view the LICENSE file that was distributed with this source code.
@@ -10,8 +11,8 @@ use Spryker\Zed\Kernel\Container;
 
 class ProductUrlCartConnectorDependencyProvider extends AbstractBundleDependencyProvider
 {
-    const FACADE_PRODUCT = 'FACADE_PRODUCT';
-    const FACADE_LOCALE = 'FACADE_LOCALE';
+    public const FACADE_PRODUCT = 'FACADE_PRODUCT';
+    public const FACADE_LOCALE = 'FACADE_LOCALE';
 
     /**
      * @param \Spryker\Zed\Kernel\Container $container
