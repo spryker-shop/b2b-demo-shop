@@ -25,7 +25,7 @@ interface CompanyUserRepositoryInterface extends SprykerCompanyUserRepositoryInt
      *
      * @param int $idCustomer
      *
-     * @return int
+     * @return bool
      */
-    public function countActiveCompanyUsersWithActiveAndApprovedCompanyByIdCustomer(int $idCustomer): int;
+    public function hasEnabledCompanyUsers(int $idCustomer): bool;
 }

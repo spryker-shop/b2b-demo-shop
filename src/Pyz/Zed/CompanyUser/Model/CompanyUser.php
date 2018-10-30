@@ -28,6 +28,6 @@ class CompanyUser extends SprykerCompanyUser
             return true;
         }
 
-        return $this->companyUserRepository->countActiveCompanyUsersWithActiveAndApprovedCompanyByIdCustomer($customerTransfer->getIdCustomer()) > 0;
+        return $this->companyUserRepository->hasEnabledCompanyUsers($customerTransfer->getIdCustomer());
     }
 }
