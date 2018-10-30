@@ -2,8 +2,6 @@
 
 {% define data = {
     form: _view.newsletterSubscriptionForm,
-    text: 'newsletter.form.subscribe.text' | trans,
-
     events: {
         success: _view.success,
         error: _view.error
@@ -11,41 +9,15 @@
 } %}
 
 {% block body %}
-    <div class="grid grid--middle grid--justify js-subscription">
-        {% include molecule('subscription-info', 'NewsletterWidget') with {
-            class: 'col col--sm-12 col--md-5 col--lg-6',
-            data: {
-                title: 'global.subscribe.title' | trans,
-                text: data.text,
+
+    {% include molecule('subscription', 'NewsletterWidget') with {
+        data: {
+            form: data.form,
+            events: {
+                success: data.events.success,
+                error: data.events.error
             }
-        } only %}
-
-        <div class="col col--sm-12 col--md-6 col--lg-5 js-subscription__target is-hidden-sm-only">
-            {% include molecule('form') with {
-                modifiers: ['inline', 'subscription'],
-                data: {
-                    form: data.form,
-                    submit: {
-                        enable: true,
-                        text: '',
-                        icon: 'chevron-right',
-                        class: 'button button--hollow-icon'
-                    }
-                }
-            } only %}
-            {% if data.events.success is not empty %}
-                <p class="text-big text-center text-success">{{data.events.success | trans}}</p>
-            {% elseif data.events.error is not empty %}
-                <p class="text-big text-center text-alert">{{data.events.error | trans}}</p>
-            {% endif %}
-        </div>
-    </div>
-
-    {% include molecule('toggler-accordion') with {
-        attributes: {
-            'wrap-selector': '.js-subscription',
-            'trigger-selector': '.js-subscription__trigger',
-            'class-to-toggle': 'is-hidden-sm-only'
         }
     } only %}
+
 {% endblock %}
