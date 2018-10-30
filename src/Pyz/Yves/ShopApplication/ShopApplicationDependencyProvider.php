@@ -17,6 +17,7 @@ use SprykerShop\Yves\CartNoteWidget\Widget\CartItemNoteFormWidget;
 use SprykerShop\Yves\CartNoteWidget\Widget\CartNoteFormWidget;
 use SprykerShop\Yves\CartToShoppingListWidget\Widget\CreateShoppingListFromCartWidget;
 use SprykerShop\Yves\CompanyPage\Plugin\ShopApplication\CheckBusinessOnBehalfCompanyUserHandlerPlugin;
+use SprykerShop\Yves\CompanyWidget\Widget\CompanyBusinessUnitAddressWidget;
 use SprykerShop\Yves\CurrencyWidget\Widget\CurrencyWidget;
 use SprykerShop\Yves\CustomerPage\Widget\CustomerNavigationWidget;
 use SprykerShop\Yves\DiscountPromotionWidget\Widget\CartDiscountPromotionProductListWidget;
@@ -128,6 +129,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             CartItemNoteFormWidget::class,
             ProductBundleCartItemsListWidget::class,
             ExampleProductColorSelectorWidget::class,
+            CompanyBusinessUnitAddressWidget::class,
         ];
     }
 
