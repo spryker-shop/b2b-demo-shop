@@ -10,7 +10,7 @@ namespace Pyz\Client\Customer;
 use Spryker\Client\Cart\Plugin\CustomerChangeCartUpdatePlugin;
 use Spryker\Client\Customer\CustomerDependencyProvider as SprykerCustomerDependencyProvider;
 use Spryker\Client\Customer\Plugin\CustomerAddressSessionUpdatePlugin;
-use Spryker\Client\Customer\Plugin\CustomerTransferRefreshPlugin;
+use Spryker\Client\Customer\Plugin\CustomerTransferSessionRefreshPlugin;
 use Spryker\Client\MultiCart\Plugin\GuestCartSaveCustomerSessionSetPlugin;
 use Spryker\Client\PersistentCart\Plugin\GuestCartUpdateCustomerSessionSetPlugin;
 use Spryker\Client\PriceProductMerchantRelationship\Plugin\CustomerChangePriceUpdatePlugin;
@@ -23,7 +23,7 @@ class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
     protected function getCustomerSessionGetPlugins()
     {
         return [
-            new CustomerTransferRefreshPlugin(),
+            new CustomerTransferSessionRefreshPlugin(),
         ];
     }
 
