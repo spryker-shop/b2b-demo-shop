@@ -17,15 +17,19 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
  */
 class ProductController extends SprykerShopProductController
 {
+    protected const KEY_ID_PRODUCT_ABSTRACT = 'id_product_abstract';
+
     /**
      * @param array $productData
      * @param \Symfony\Component\HttpFoundation\Request $request
+     *
+     * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      *
      * @return array
      */
     protected function executeDetailAction(array $productData, Request $request): array
     {
-        if (!empty($productData['id_product_abstract']) && $this->isProductAbstractRestricted($productData['id_product_abstract'])) {
+        if (!empty($productData[static::KEY_ID_PRODUCT_ABSTRACT]) && $this->isProductAbstractRestricted($productData[static::KEY_ID_PRODUCT_ABSTRACT])) {
             throw new NotFoundHttpException();
         }
 
