@@ -15,5 +15,5 @@
         {{ data.title }}
         <span class="icon icon--toggler-cross icon--toggler-cross-thin toggler-accordion__icon is-hidden-md-xl"></span>
     </h5>
-    <p class="{{ config.name }}__text js-subscription__target is-hidden-sm-only">{{ data.text | raw }}</p>
+    <p class="{{ config.name }}__text {{ data.togglerClass }}__target is-hidden-sm-only">{{ data.text | raw }}</p>
 {% endblock %}
