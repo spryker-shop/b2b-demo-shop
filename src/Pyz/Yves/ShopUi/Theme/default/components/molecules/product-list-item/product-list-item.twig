@@ -7,7 +7,7 @@
 {% block body %}
     <div class="{{config.name}}__container">
         {% block labels %}
-            {{ widget('ProductAbstractLabelWidgetPlugin', data.abstractId) }}
+            {% widget 'ProductAbstractLabelWidget' args [data.abstractId] only %}{% endwidget %}
         {% endblock %}
 
         <div class="grid grid--stretch">
@@ -33,11 +33,11 @@
                 {% endblock %}
 
                 {% block rating %}
-                    {{ widget('ProductAbstractReviewWidgetPlugin', data.abstractId) }}
+                    {% widget 'DisplayProductAbstractReviewWidget' args [data.abstractId] only %}{% endwidget %}
                 {% endblock %}
 
                 {% block groups %}
-                    {{ widget('ProductGroupWidgetPlugin', data.abstractId) }}
+                    {% widget 'ProductGroupWidget' args [data.abstractId] only %}{% endwidget %}
                 {% endblock %}
 
                 {% block price %}{% endblock %}
@@ -47,7 +47,7 @@
                 <div class="col col--sm-3 col--xl-2 {{config.name}}__col {{config.name}}__total">
                     <div class="{{ config.name }}__inner--total grid grid--column grid--justify-column grid--bottom">
                         <div class="col">
-                            {% if is_granted('ROLE_USER') %}
+                            {% if can('SeePricePermissionPlugin') %}
                                 {% include molecule('price') with {
                                     modifiers: ['catalog', 'catalog-list'],
                                     data: {

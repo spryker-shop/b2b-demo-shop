@@ -31,7 +31,12 @@
 {% endmacro %}
 
 {% macro note(order) %}
-    {{ widget('CartNoteOrderNoteWidgetPlugin', order) }}
+    {% include molecule('note-list', 'CartNoteWidget') ignore missing with {
+        data: {
+            label: 'cart_note.customer_page.order_note',
+            note: order.cartNote
+        }
+    } only %}
 {% endmacro %}
 
 {% block customerContent %}

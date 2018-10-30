@@ -7,68 +7,15 @@
 
 namespace Pyz\Zed\ShoppingListDataImport;
 
-use Generated\Shared\Transfer\DataImporterConfigurationTransfer;
 use Spryker\Zed\ShoppingListDataImport\ShoppingListDataImportConfig as CoreShoppingListDataImportConfig;
 
 class ShoppingListDataImportConfig extends CoreShoppingListDataImportConfig
 {
     /**
-     * @return \Generated\Shared\Transfer\DataImporterConfigurationTransfer
+     * @return string
      */
-    public function getShoppingListDataImporterConfiguration(): DataImporterConfigurationTransfer
+    protected function getModuleRoot(): string
     {
-        $moduleDataImportDirectory = APPLICATION_ROOT_DIR . DIRECTORY_SEPARATOR
-            . 'data' . DIRECTORY_SEPARATOR
-            . 'import' . DIRECTORY_SEPARATOR;
-
-        return $this->buildImporterConfiguration(
-            $moduleDataImportDirectory . 'shopping_list.csv',
-            static::IMPORT_TYPE_SHOPPING_LIST
-        );
-    }
-
-    /**
-     * @return \Generated\Shared\Transfer\DataImporterConfigurationTransfer
-     */
-    public function getShoppingListItemDataImporterConfiguration(): DataImporterConfigurationTransfer
-    {
-        $moduleDataImportDirectory = APPLICATION_ROOT_DIR . DIRECTORY_SEPARATOR
-            . 'data' . DIRECTORY_SEPARATOR
-            . 'import' . DIRECTORY_SEPARATOR;
-
-        return $this->buildImporterConfiguration(
-            $moduleDataImportDirectory . 'shopping_list_item.csv',
-            static::IMPORT_TYPE_SHOPPING_LIST_ITEM
-        );
-    }
-
-    /**
-     * @return \Generated\Shared\Transfer\DataImporterConfigurationTransfer
-     */
-    public function getShoppingListCompanyUserDataImporterConfiguration(): DataImporterConfigurationTransfer
-    {
-        $moduleDataImportDirectory = APPLICATION_ROOT_DIR . DIRECTORY_SEPARATOR
-            . 'data' . DIRECTORY_SEPARATOR
-            . 'import' . DIRECTORY_SEPARATOR;
-
-        return $this->buildImporterConfiguration(
-            $moduleDataImportDirectory . 'shopping_list_company_user.csv',
-            static::IMPORT_TYPE_SHOPPING_LIST_COMPANY_USER
-        );
-    }
-
-    /**
-     * @return \Generated\Shared\Transfer\DataImporterConfigurationTransfer
-     */
-    public function getShoppingListCompanyBusinessUnitDataImporterConfiguration(): DataImporterConfigurationTransfer
-    {
-        $moduleDataImportDirectory = APPLICATION_ROOT_DIR . DIRECTORY_SEPARATOR
-            . 'data' . DIRECTORY_SEPARATOR
-            . 'import' . DIRECTORY_SEPARATOR;
-
-        return $this->buildImporterConfiguration(
-            $moduleDataImportDirectory . 'shopping_list_company_business_unit.csv',
-            static::IMPORT_TYPE_SHOPPING_LIST_COMPANY_BUSINESS_UNIT
-        );
+        return APPLICATION_ROOT_DIR . DIRECTORY_SEPARATOR;
     }
 }

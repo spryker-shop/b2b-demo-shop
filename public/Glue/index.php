@@ -1,4 +1,5 @@
 <?php
+
 use Pyz\Glue\GlueApplication\Bootstrap\GlueBootstrap;
 use Spryker\Shared\Config\Application\Environment;
 use Spryker\Shared\ErrorHandler\ErrorHandlerEnvironment;

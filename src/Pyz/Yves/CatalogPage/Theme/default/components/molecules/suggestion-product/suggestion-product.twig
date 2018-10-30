@@ -31,7 +31,7 @@
         <span class="{{ config.name }}__name">
             {{ data.title }}
 
-            {% if is_granted('ROLE_USER') %}
+            {% if can('SeePricePermissionPlugin') %}
                 {% include molecule('price') with {
                     class: config.name ~ '__price',
                     data: {

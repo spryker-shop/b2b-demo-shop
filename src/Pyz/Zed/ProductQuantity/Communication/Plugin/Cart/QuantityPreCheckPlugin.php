@@ -19,7 +19,7 @@ use Spryker\Zed\Kernel\Communication\AbstractPlugin;
  */
 class QuantityPreCheckPlugin extends AbstractPlugin implements CartPreCheckPluginInterface
 {
-    const ADD_ITEMS_SUCCESS = 'cart.add.items.error.text';
+    public const ADD_ITEMS_SUCCESS = 'cart.add.items.error.text';
 
     /**
      * @api

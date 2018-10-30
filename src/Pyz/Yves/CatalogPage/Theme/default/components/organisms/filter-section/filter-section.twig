@@ -22,7 +22,7 @@
         {% set toglerClass = '' %}
 
         {% if filterHasValues %}
-            {% if filter.config.type == 'price-range' and not is_granted('ROLE_USER') %}
+            {% if filter.config.type == 'price-range' and can('SeePricePermissionPlugin') %}
 
             {% else %}
                 <div class="{{ config.name ~ '__item' }} {% if filter.name == 'category' %}{{ config.name ~ '__item--hollow' }}{% endif %}">

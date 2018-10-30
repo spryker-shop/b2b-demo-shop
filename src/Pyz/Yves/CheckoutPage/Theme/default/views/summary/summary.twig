@@ -157,8 +157,7 @@
                         <span class="icon icon--toggler-cross toggler-accordion__icon"></span>
                     </h5>
                     <div class="summary-toggle__content summary-toggle__content--voucher js-summary-toggle__content--voucher is-hidden">
-                        {% widget 'CheckoutVoucherFormWidgetPlugin' args [data.transfer] only %}
-                        {% endwidget %}
+                        {% widget 'CheckoutVoucherFormWidget' args [data.transfer] only %}{% endwidget %}
                     </div>
                 </div>
             </div>

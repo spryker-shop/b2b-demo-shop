@@ -13,7 +13,11 @@
 {% block body %}
     <li class="{{ component.renderClass(config.name ~ '__item', modifiers) }}">
         {% if data.productItem %}
-            {{ widget('CartItemProductOptionWidgetPlugin', data.productItem) }}
+            {% include molecule('product-options', 'ProductOptionWidget') ignore missing with {
+                data: {
+                    options: data.productItem.productOptions | default([])
+                }
+            } only %}
         {% else %}
             <ul class="option-display">
                 {% for option in data.options %}

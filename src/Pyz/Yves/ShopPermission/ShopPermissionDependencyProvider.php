@@ -7,18 +7,18 @@
 
 namespace Pyz\Yves\ShopPermission;
 
-use SprykerShop\Yves\ShopPermission\Plugin\Twig\PermissionTwigFunctionPlugin;
+use SprykerShop\Yves\ShopPermission\Plugin\Twig\PermissionTwigExtensionPlugin;
 use SprykerShop\Yves\ShopPermission\ShopPermissionDependencyProvider as SprykerShopPermissionDependencyProvider;
 
 class ShopPermissionDependencyProvider extends SprykerShopPermissionDependencyProvider
 {
     /**
-     * @return \Spryker\Yves\Twig\Plugin\TwigFunctionPluginInterface[]
+     * @return \SprykerShop\Yves\ShopApplication\Plugin\AbstractTwigExtensionPlugin[]
      */
-    protected function getPermissionTwigFunctionPlugins()
+    protected function getPermissionTwigExtensionPlugins()
     {
         return [
-            new PermissionTwigFunctionPlugin(),
+            new PermissionTwigExtensionPlugin(),
         ];
     }
 }
