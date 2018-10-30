@@ -1,8 +1,8 @@
 <?php
 
 /**
- * Copyright © 2016-present Spryker Systems GmbH. All rights reserved.
- * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
+ * This file is part of the Spryker Suite.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
 namespace Pyz\Yves\QuickOrderPage\Controller;
@@ -11,11 +11,12 @@ use Spryker\Yves\Kernel\PermissionAwareTrait;
 use SprykerShop\Shared\CartPage\Plugin\AddCartItemPermissionPlugin;
 use SprykerShop\Yves\CartPage\Plugin\Provider\CartControllerProvider;
 use SprykerShop\Yves\CheckoutPage\Plugin\Provider\CheckoutPageControllerProvider;
+use SprykerShop\Yves\QuickOrderPage\Controller\QuickOrderController as SprykerQuickOrderController;
 use SprykerShop\Yves\QuickOrderPage\Form\QuickOrderForm;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
-use SprykerShop\Yves\QuickOrderPage\Controller\QuickOrderController as SprykerQuickOrderController;
+
 /**
  * @method \SprykerShop\Yves\QuickOrderPage\QuickOrderPageFactory getFactory()
  */
