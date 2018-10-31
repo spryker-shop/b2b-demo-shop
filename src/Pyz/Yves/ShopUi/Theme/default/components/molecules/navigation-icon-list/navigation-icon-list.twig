@@ -10,7 +10,7 @@
 } %}
 
 {% block body %}
-    <ul class="{{ component.renderClass('menu', modifiers) }} menu--inline">
+    <ul class="{{ component.renderClass('menu', modifiers) }}">
         {% for node in data.nodes %}
             {% embed atom('node') with {
                 class: component.renderClass('menu__item', modifiers),

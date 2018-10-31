@@ -44,8 +44,10 @@
         }
 
         &--subscription {
-            @include helper-breakpoint-media-min($lg) {
-                padding-left: $setting-grid-space;
+            padding-bottom: rem(32);
+
+            @include helper-breakpoint-media-min($md) {
+                padding-bottom: 0;
             }
 
             .form__container {
@@ -53,6 +55,7 @@
             }
 
             .form__fields,
+            .form__actions,
             .form__action {
                 margin: 0;
             }
@@ -72,34 +75,54 @@
             }
 
             .input {
+                border-radius: 0;
                 border: none;
                 border-bottom: 2px solid $setting-color-gray-4;
                 background-color: $setting-color-transparent;
-                font: fw(regular) rem(18)/rem(23) $setting-font-family;
-                letter-spacing: rem(0.27);
+                font-size: rem(16);
+                line-height: rem(20);
+                letter-spacing: rem(0.2);
                 color: $setting-color-gray-4;
-                padding: rem(13) rem(46) rem(16) 0;
+                padding: rem(10) rem(36) rem(10) 0;
 
                 &::placeholder {
                     color: $setting-color-gray-4;
+                }
+
+                @include helper-breakpoint-media-min($lg) {
+                    font-size: rem(18);
+                    line-height: rem(23);
+                    letter-spacing: rem(0.27);
+                    padding: rem(13) rem(46) rem(16) 0;
                 }
             }
 
             .button {
                 color: $setting-color-gray-4;
-                min-height: rem(54);
-                padding-right: rem(22);
+                min-height: rem(42);
+                padding-right: rem(10);
                 padding-bottom: rem(10);
 
                 &:hover,
                 &:focus {
                     color: $setting-color-gray-3;
                 }
+
+                @include helper-breakpoint-media-min($lg) {
+                    min-height: rem(54);
+                    padding-right: rem(22);
+                    padding-bottom: rem(10);
+                }
             }
 
             .icon {
-                width: 1rem;
-                height: 1rem;
+                width: rem(12);
+                height: rem(12);
+
+                @include helper-breakpoint-media-min($lg) {
+                    width: 1rem;
+                    height: 1rem;
+                }
             }
         }
     }

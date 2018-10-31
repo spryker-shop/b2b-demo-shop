@@ -37,31 +37,47 @@
                 line-height: rem(18);
                 margin-bottom: rem(10);
             }
+
+            &--footer {
+                margin: 1rem 0.5rem 0;
+
+                @include helper-breakpoint-media-min($lg) {
+                    margin-top: 0;
+                }
+            }
+
+            &--social {
+                margin: 0 0.5rem;
+
+                &:first-child {
+                    margin-left: 0;
+                }
+
+                &:last-child {
+                    margin-right: 0;
+                }
+            }
         }
 
         &--footer {
             display: flex;
-            justify-content: space-between;
             flex-wrap: wrap;
+            margin: 0 -0.5rem 1.5rem;
+
+            @include helper-breakpoint-media-min($md) {
+                margin-bottom: 0;
+                flex-wrap: nowrap;
+                justify-content: space-between;
+            }
+        }
+
+        &--social {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1.5rem;
 
             @include helper-breakpoint-media-min($lg) {
-                flex-wrap: nowrap;
-            }
-
-            #{$name}__item--footer {
-                margin: 0 0.5rem 1rem;
-
-                @include helper-breakpoint-media-min($lg) {
-                    margin-bottom: 0;
-
-                    &:first-child {
-                        margin-left: 0;
-                    }
-
-                    &:last-child {
-                        margin-right: 0;
-                    }
-                }
+                justify-content: left;
             }
         }
 
@@ -74,13 +90,16 @@
         &__item--lvl-0 {
             position: relative;
             z-index: $setting-zi-element + 1;
+
             &.showed #{$name}-wrapper--lvl-1 {
                 opacity: 1;
                 transform: scale(1);
             }
+
             &:not(:last-child) {
                 margin-right: rem(60);
             }
+
             &::before {
                 content: '';
                 display: none;
@@ -92,6 +111,7 @@
                 height: 2px;
                 background: $setting-color-gray-4;
             }
+
             &#{$name}__item--has-children-dropdown::after {
                 content: '';
                 position: absolute;
@@ -102,9 +122,10 @@
                 height: 10px;
                 border-radius: $setting-border-radius;
                 background: $setting-color-white;
-                transition: opacity 100ms ease-in-out 100ms;
+                transition: helper-effect-transition(opacity, $setting-effect-fast-duration);
                 opacity: 0;
             }
+
             &:hover {
                 &::before {
                     display: block;

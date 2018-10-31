@@ -1,9 +1,24 @@
 .subscription-info {
     &__text {
-        font-size: rem(18);
-        line-height: rem(23);
+        font-size: rem(16);
+        line-height: normal;
         color: $setting-color-gray-3;
-        max-width: 382px;
+        margin: rem(7) 0 rem(17);
+
+        @include helper-breakpoint-media-min($md) {
+            margin-top: rem(16);
+        }
+
+        @include helper-breakpoint-media-min($lg) {
+            font-size: rem(18);
+            line-height: rem(23);
+            max-width: rem(382);
+            margin: rem(16) 0 0;
+        }
+
+        @include helper-breakpoint-media-min($xl) {
+            margin-top: rem(17);
+        }
 
         b {
             color: $setting-color-gray-4;
