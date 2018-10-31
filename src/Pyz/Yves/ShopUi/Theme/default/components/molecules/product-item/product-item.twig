@@ -166,7 +166,7 @@
                 {% block deleteButton %}
                     {% if data.canEdit %}
                         <div class="col">
-                            <a class="link link--icon {{ config.jsName }}-remove-button-{{ data.listItem.sku }}" href="{{ path('cart/remove', {'sku': data.listItem.sku, 'groupKey': data.listItem.groupKey }) }}">
+                            <a class="link link--icon {{ config.jsName }}-remove-button-{{ data.listItem.sku }}-group-key-{{ data.listItem.groupKey | replace('.', '') }}" href="{{ path('cart/remove', {'sku': data.listItem.sku, 'groupKey': data.listItem.groupKey }) }}">
                                 {% include atom('icon') with {
                                     modifiers: ['link'],
                                     data: {
@@ -179,7 +179,7 @@
 
                         {% include molecule('action-single-click-enforcer') with {
                             attributes: {
-                                'target-selector': '.' ~ config.jsName ~ '-remove-button-' ~ data.listItem.sku
+                                'target-selector': '.' ~ config.jsName ~ '-remove-button-' ~ data.listItem.sku ~ '-group-key-' ~ data.listItem.groupKey | replace('.', '')
                             }
                         } only %}
                     {% endif %}
