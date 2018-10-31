@@ -24,7 +24,7 @@
 
         {% block slides %}
             {% for availableProduct in data.slides if availableProduct.available %}
-                {% widget 'CmsProductWidget' args [availableProduct] only %}{% endwidget %}
+                {% widget 'CmsProductWidget' args [availableProduct] use '@ProductWidget/views/cms-product-slider/cms-product-slider.twig' only %}{% endwidget %}
             {% endfor %}
         {% endblock %}
 
