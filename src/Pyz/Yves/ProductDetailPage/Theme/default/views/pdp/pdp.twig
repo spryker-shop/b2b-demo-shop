@@ -73,7 +73,6 @@
     {% widget 'SimilarProductsWidget' args [data.product] only %}{% endwidget %}
 
     {% widget 'ProductDetailPageReviewWidget' args [data.product.idProductAbstract] only %}{% endwidget %}
-
     {% include molecule('product-cms-block', 'CmsBlockWidget') ignore missing with {
         data: {
             idProductAbstract: data.product.idProductAbstract
@@ -85,9 +84,4 @@
     {{ spyCmsBlock({
         name: 'Product CMS Block'
     }) }}
-    {% include molecule('product-cms-block', 'CmsBlockWidget') ignore missing with {
-        data: {
-            idProductAbstract: data.product.idProductAbstract
-        }
-    } only %}
 {% endblock %}
