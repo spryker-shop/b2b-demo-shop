@@ -49,6 +49,7 @@ use SprykerShop\Yves\ProductRelationWidget\Widget\SimilarProductsWidget;
 use SprykerShop\Yves\ProductRelationWidget\Widget\UpSellingProductsWidget;
 use SprykerShop\Yves\ProductReviewWidget\Widget\DisplayProductAbstractReviewWidget;
 use SprykerShop\Yves\ProductReviewWidget\Widget\ProductDetailPageReviewWidget;
+use SprykerShop\Yves\ProductReviewWidget\Widget\ProductRatingFilterWidget;
 use SprykerShop\Yves\ProductReviewWidget\Widget\ProductReviewDisplayWidget;
 use SprykerShop\Yves\ProductWidget\Widget\CatalogPageProductWidget;
 use SprykerShop\Yves\ProductWidget\Widget\CmsProductWidget;
@@ -128,6 +129,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             CartItemNoteFormWidget::class,
             ProductBundleCartItemsListWidget::class,
             ExampleProductColorSelectorWidget::class,
+            ProductRatingFilterWidget::class,
         ];
     }
 
