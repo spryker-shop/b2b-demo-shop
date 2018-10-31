@@ -34,7 +34,7 @@ class MultiCartController extends SprykerShopMultiCartController
         if (!$quoteTransfer) {
             $this->addInfoMessage(static::GLOSSARY_KEY_CART_WAS_DELETED);
 
-            return $this->redirectResponseInternal(CartControllerProvider::ROUTE_CART);
+            return $this->redirectResponseExternal($this->getRefererUrl($request));
         }
 
         $multiCartClient->setDefaultQuote($quoteTransfer);
