@@ -31,9 +31,8 @@
                 </td>
                 <td>
                     {% if not loop.first %}
-                        <a href="#remove" class="link {% block removeActionClass %}{% endblock %}" data-row-index="{{loop.index0}}">
+                        <a href="#remove" class="link link--alt link--action {% block removeActionClass %}{% endblock %}" data-row-index="{{loop.index0}}">
                             {% include atom('icon') with {
-                                modifiers: ['link'],
                                 data: {
                                     name: 'delete'
                                 }
