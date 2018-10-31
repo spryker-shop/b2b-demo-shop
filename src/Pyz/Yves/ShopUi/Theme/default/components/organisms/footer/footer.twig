@@ -23,13 +23,13 @@
                     title: 'global.payment_shipping' | trans,
                     category: categoryPaymentProviders,
                     template: 'navigation-providers-payment',
-                    toggleClass: 'js-toggle-' ~ categoryPaymentProviders
+                    toggleClass: config.jsName ~ '-' ~ categoryPaymentProviders
                 }
             } only %}
             {% include molecule('toggler-accordion') with {
                 attributes: {
-                    'wrap-selector': '.js-toggle-' ~ categoryPaymentProviders,
-                    'trigger-selector': '.js-toggle-' ~ categoryPaymentProviders ~ '__trigger',
+                    'wrap-selector': '.' ~ config.jsName ~ '-' ~ categoryPaymentProviders,
+                    'trigger-selector': '.' ~ config.jsName ~ '-' ~ categoryPaymentProviders ~ '__trigger',
                     'class-to-toggle': 'is-hidden-sm-only'
                 }
             } only %}

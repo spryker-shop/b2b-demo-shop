@@ -17,7 +17,7 @@
 
 {% block body %}
     {% set toggleClass = data.toggleClass ? data.toggleClass ~ '__trigger' : '' %}
-    {% set targetAttribute = data.toggleClass ? 'data-toggle-target=.' ~ data.toggleClass ~ '__target' %}
+    {% set targetAttribute = data.toggleClass ? 'data-toggle-target=.' ~ data.toggleClass ~ '__target' : '' %}
 
     {% if data.title is not empty %}
         <h5 class="{{ component.renderClass('title', modifiers) }} title--footer {{ toggleClass }}" {{ targetAttribute }}>
