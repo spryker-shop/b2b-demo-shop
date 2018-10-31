@@ -15,13 +15,13 @@
             data: {
                 category: item.category,
                 title: item.title,
-                toggleClass: 'js-toggle-' ~ item.category
+                toggleClass: config.jsName ~ '-' ~ item.category
             }
         } only %}
         {% include molecule('toggler-accordion') with {
             attributes: {
-                'wrap-selector': '.js-toggle-' ~ item.category,
-                'trigger-selector': '.js-toggle-' ~ item.category ~ '__trigger',
+                'wrap-selector': '.' ~ config.jsName ~ '-' ~ item.category,
+                'trigger-selector': '.' ~ config.jsName ~ '-' ~  item.category ~ '__trigger',
                 'class-to-toggle': 'is-hidden-sm-only'
             }
         } only %}
