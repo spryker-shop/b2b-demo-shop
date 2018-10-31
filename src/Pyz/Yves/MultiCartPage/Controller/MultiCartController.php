@@ -26,13 +26,20 @@ class MultiCartController extends SprykerShopMultiCartController
      */
     public function setDefaultBackAction(int $idQuote, Request $request)
     {
-        $quoteTransfer = $this->getFactory()
-            ->getMultiCartClient()
-            ->findQuoteById($idQuote);
+        $multiCartClient = $this->getFactory()
+            ->getMultiCartClient();
 
-        $this->getFactory()
-            ->getMultiCartClient()
-            ->setDefaultQuote($quoteTransfer);
+        $quoteTransfer = $multiCartClient->findQuoteById($idQuote);
+
+        if (!$quoteTransfer) {
+            $this->addInfoMessage(static::GLOSSARY_KEY_CART_WAS_DELETED);
+
+            return $this->redirectResponseInternal(CartControllerProvider::ROUTE_CART);
+        }
+
+        $multiCartClient->setDefaultQuote($quoteTransfer);
+
+        $this->getFactory()->getCartClient()->validateQuote();
 
         return $this->redirectResponseExternal($this->getRefererUrl($request));
     }
