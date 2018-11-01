@@ -42,16 +42,16 @@
                 {% set hideShippingAddressForm = false %}
             {% endif %}
 
-            <div class="js-form-handler__shippingAddress js-form-clear__shippingAddress-form">
+            <div class="grid grid--bottom js-form-handler__shippingAddress js-form-clear__shippingAddress-form">
                 {% if hasShippingAddresses %}
                     <div class="checkout-wrap__container checkout-wrap__container--top">
-                        <ul class="list spacing-y">
-                            {% if companyBusinessUnitAddressWidget and companyBusinessUnitAddressWidget.isApplicable %}
-                                {% widget companyBusinessUnitAddressWidget %}{% endwidget %}
-                                {% for address in existingShippingAddresses %}
-                                    {% do address.setRendered %}
-                                {% endfor %}
-                            {% else %}
+                        {% if companyBusinessUnitAddressWidget and companyBusinessUnitAddressWidget.isApplicable %}
+                            {% widget companyBusinessUnitAddressWidget %}{% endwidget %}
+                            {% for address in existingShippingAddresses %}
+                                {% do address.setRendered %}
+                            {% endfor %}
+                        {% else %}
+                            <ul class="list spacing-y">
                                 {% for address in existingShippingAddresses %}
                                     <li class="list__item spacing-y">
                                         {{
@@ -66,8 +66,8 @@
                                         }}
                                     </li>
                                 {% endfor %}
-                            {% endif %}
-                        </ul>
+                            </ul>
+                        {% endif %}
                     </div>
                 {% endif %}
 
@@ -174,29 +174,29 @@
 
                         {% if hasBillingAddresses %}
                             <div class="checkout-wrap__container">
-                                <ul class="list spacing-y">
-                                    {% if companyBusinessUnitAddressWidget and companyBusinessUnitAddressWidget.isApplicable %}
-                                        {% widget companyBusinessUnitAddressWidget %}{% endwidget %}
-                                        {% for address in existingBillingAddresses %}
-                                            {% do address.setRendered %}
-                                        {% endfor %}
-                                    {% else %}
+                                {% if companyBusinessUnitAddressWidget and companyBusinessUnitAddressWidget.isApplicable %}
+                                    {% widget companyBusinessUnitAddressWidget %}{% endwidget %}
                                     {% for address in existingBillingAddresses %}
-                                        <li class="list__item spacing-y">
-                                            {{
-                                                form_row(address, {
-                                                    component: molecule('toggler-radio'),
-                                                    attributes: {
-                                                        'target-selector': '.js-address__billing',
-                                                        'class-to-toggle': 'is-hidden',
-                                                        'add-class-when-checked': not loop.last
-                                                    }
-                                                })
-                                            }}
-                                        </li>
+                                        {% do address.setRendered %}
                                     {% endfor %}
-                                    {% endif %}
-                                </ul>
+                                {% else %}
+                                    <ul class="list spacing-y">
+                                        {% for address in existingBillingAddresses %}
+                                            <li class="list__item spacing-y">
+                                                {{
+                                                    form_row(address, {
+                                                        component: molecule('toggler-radio'),
+                                                        attributes: {
+                                                            'target-selector': '.js-address__billing',
+                                                            'class-to-toggle': 'is-hidden',
+                                                            'add-class-when-checked': not loop.last
+                                                        }
+                                                    })
+                                                }}
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                {% endif %}
                             </div>
                         {% endif %}
 
