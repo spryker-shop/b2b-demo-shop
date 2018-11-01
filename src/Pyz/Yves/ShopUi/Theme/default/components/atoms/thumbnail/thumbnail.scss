@@ -26,7 +26,11 @@
         }
 
         &--catalog {
-            height: 15rem;
+            height: rem(180);
+
+            @include helper-breakpoint-media-min($lg) {
+                height: 15rem;
+            }
         }
 
         &__image {
