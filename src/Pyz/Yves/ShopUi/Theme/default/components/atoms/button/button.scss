@@ -75,7 +75,11 @@
         &--big {
             font-size: rem(16);
             line-height: rem(20);
-            padding: rem(15) rem(27);
+            padding: rem(12) rem(32);
+
+            @include helper-breakpoint-media-min($lg) {
+                padding: rem(15) rem(27);
+            }
         }
 
         &--bigger {
