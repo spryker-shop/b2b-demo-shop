@@ -10,9 +10,14 @@
     }
 
     &__amount {
+        font-size: rem(16);
         font-weight: fw(medium);
         line-height: map_get($setting-font-line-height, 2);
         color: $setting-color-gray-4;
+
+        @include helper-breakpoint-media-min($lg) {
+            @include helper-font-size(big);
+        }
 
         &--pdp {
             font-size: rem(26);
@@ -31,24 +36,35 @@
         }
 
         &--original {
-            @include helper-font-size(big);
+            font-size: rem(15);
             display: inline-block;
             color: $setting-color-gray-2;
             font-weight: fw(regular);
-            margin-left: rem(4);
+
+            @include helper-breakpoint-media-min($lg) {
+                @include helper-font-size(big);
+            }
         }
 
         &--alt {
             color: $setting-color-alt;
+            margin-right: rem(4);
         }
     }
 
     &__mode {
+        display: block;
         color: $setting-color-gray-2;
-        font-size: rem(12);
+        font-size: rem(10);
         font-weight: fw(regular);
-        line-height: rem(15);
-        margin-left: 5px;
+        line-height: rem(12);
+        margin-left: 0;
+
+        @include helper-breakpoint-media-min($lg) {
+            display: inline;
+            margin-left: 5px;
+            font-size: rem(12);
+        }
 
         &--pdp {
             font-size: rem(13);
