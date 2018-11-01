@@ -29,7 +29,7 @@
     {% if data.toggleClass is not empty %}
         <div class="{{ data.toggleClass }}__target is-hidden-sm-only">
     {% endif %}
-        {{ widgetGlobal('NavigationWidgetPlugin', data.category, data.template) }}
+        {% widget 'NavigationWidget' args [data.category, data.template] only %}{% endwidget %}
     {% if data.toggleClass is not empty %}
         </div>
     {% endif %}

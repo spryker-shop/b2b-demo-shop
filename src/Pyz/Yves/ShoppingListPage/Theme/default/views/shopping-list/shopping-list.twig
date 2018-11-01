@@ -20,7 +20,7 @@
 } %}
 
 {% block customerNavigation %}
-    {{ widgetGlobal('CustomerNavigationWidgetPlugin', 'shoppingList', data.shoppingList.idShoppingList) }}
+    {% widget 'CustomerNavigationWidget' args ['shoppingList', data.shoppingList.idShoppingList] only %}{% endwidget %}
 {% endblock %}
 
 {% block customerContent %}

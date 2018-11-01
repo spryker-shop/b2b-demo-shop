@@ -68,9 +68,9 @@
                 </div>
 
                 <div class="col is-hidden">
-                    {{ widget('MultiCartListWidgetPlugin') }}
+                    {% widget 'QuickOrderPageWidget' only %}{% endwidget %}
                 </div>
-
+                {% if can("SeeAddToCartPermissionPlugin") %}
                 <div class="col">
                     <button type="submit" name="addToCart" class="button button--expand button--big {{ embed.name }}__button js-add-to-cart-button">
                         {% include atom('icon') with {
@@ -82,6 +82,7 @@
                         {{ 'page.detail.add-to-cart' | trans }}
                     </button>
                 </div>
+                {% endif %}
             </div>
         {% endblock %}
     {% endembed %}

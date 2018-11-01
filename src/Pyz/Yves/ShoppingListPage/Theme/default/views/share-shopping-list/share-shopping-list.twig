@@ -24,7 +24,7 @@
 {% endblock %}
 
 {% block customerNavigation %}
-    {{ widgetGlobal('CustomerNavigationWidgetPlugin', 'shoppingList', data.idShoppingList) }}
+    {% widget 'CustomerNavigationWidget' args ['shoppingList', data.idShoppingList] only %}{% endwidget %}
 {% endblock %}
 
 {% block customerContent %}
