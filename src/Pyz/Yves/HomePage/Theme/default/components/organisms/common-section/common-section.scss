@@ -2,15 +2,23 @@
     padding: rem(70) 0 rem(16);
 
     &--bg-dark {
-        padding: rem(50) 0 rem(80);
+        padding: rem(22) 0 rem(19);
         background-color: $setting-color-gray-7;
+
+        .product-card__image-wrap {
+            background-color: $setting-color-white;
+        }
 
         .product-card__overlay::before {
             background-color: $setting-color-transparent;
         }
 
-        .product-card__container {
-            background-color: $setting-color-white;
+        @include helper-breakpoint-media-min($lg) {
+            padding: rem(50) 0 rem(80);
+
+            .product-card__container {
+                background-color: $setting-color-white;
+            }
         }
     }
 
@@ -20,17 +28,32 @@
     }
 
     &__title {
-        color: $setting-color-gray-4;
+        color: $setting-color-gray-8;
         text-align: center;
-        margin-bottom: rem(24);
+        font-size: rem(28);
+        margin-bottom: rem(16);
+
+        @include helper-breakpoint-media-min($lg) {
+            font-size: rem(30);
+        }
+
+        @include helper-breakpoint-media-min($xl) {
+            font-size: rem(32);
+            margin-bottom: rem(24);
+        }
     }
 
     &__sub-title {
-        font-size: map_get($setting-font-size, big);
+        font-size: map_get($setting-font-size, default);
         line-height: normal;
         color: $setting-color-gray-2;
         text-align: center;
-        margin-bottom: rem(40);
+        margin-bottom: rem(26);
+
+        @include helper-breakpoint-media-min($lg) {
+            font-size: map_get($setting-font-size, big);
+            margin-bottom: rem(40);
+        }
     }
 
     &__text {

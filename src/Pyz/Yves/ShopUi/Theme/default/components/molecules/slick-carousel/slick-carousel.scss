@@ -37,6 +37,28 @@
 
                 > div {
                     max-width: 100%;
+                    width: 100%;
+                }
+            }
+        }
+
+        &--mobile-one-slide {
+            .slick-track {
+                display: flex;
+            }
+
+            .slick-slide {
+                display: flex;
+                height: auto;
+                margin: 0 rem(9);
+
+                @include helper-breakpoint-media-min($lg) {
+                    margin: 0 $setting-grid-space;
+                }
+
+                > div {
+                    max-width: 100%;
+                    width: 100%;
                 }
             }
         }
