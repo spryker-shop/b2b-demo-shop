@@ -8,10 +8,6 @@
 namespace Pyz\Yves\MultiCartPage;
 
 use SprykerShop\Yves\MultiCartPage\MultiCartPageDependencyProvider as SprykerShopMultiCartPageDependencyProvider;
-use SprykerShop\Yves\ProductBundleWidget\Plugin\MultiCartPage\ProductBundleItemCounterWidgetPlugin;
-use SprykerShop\Yves\SharedCartWidget\Plugin\MultiCartPage\CartDeleteCompanyUsersListWidgetPlugin;
-use SprykerShop\Yves\SharedCartWidget\Plugin\MultiCartPage\CartListPermissionGroupWidgetPlugin;
-use SprykerShop\Yves\ShoppingListWidget\Plugin\MultiCartPage\CartToShoppingListWidgetPlugin;
 
 class MultiCartPageDependencyProvider extends SprykerShopMultiCartPageDependencyProvider
 {
@@ -20,9 +16,7 @@ class MultiCartPageDependencyProvider extends SprykerShopMultiCartPageDependency
      */
     protected function getCartDeleteCompanyUsersListWidgetPlugins(): array
     {
-        return [
-            CartDeleteCompanyUsersListWidgetPlugin::class, #SharedCartFeature
-        ];
+        return [];
     }
 
     /**
@@ -30,10 +24,6 @@ class MultiCartPageDependencyProvider extends SprykerShopMultiCartPageDependency
      */
     protected function getMultiCartListWidgetPlugins(): array
     {
-        return [
-            ProductBundleItemCounterWidgetPlugin::class, #ProductBundleFeature
-            CartListPermissionGroupWidgetPlugin::class, #SharedCartFeature
-            CartToShoppingListWidgetPlugin::class, #ShoppingListFeature
-        ];
+        return [];
     }
 }

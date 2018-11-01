@@ -8,6 +8,8 @@
 namespace Pyz\Zed\Api;
 
 use Spryker\Zed\Api\ApiDependencyProvider as SprykerApiDependencyProvider;
+use Spryker\Zed\Api\Communication\Plugin\ApiRequestTransferFilterHeaderDataPlugin;
+use Spryker\Zed\Api\Communication\Plugin\ApiRequestTransferFilterServerDataPlugin;
 use Spryker\Zed\CustomerApi\Communication\Plugin\Api\CustomerApiResourcePlugin;
 use Spryker\Zed\CustomerApi\Communication\Plugin\Api\CustomerApiValidatorPlugin;
 use Spryker\Zed\ProductApi\Communication\Plugin\Api\ProductApiResourcePlugin;
@@ -34,6 +36,17 @@ class ApiDependencyProvider extends SprykerApiDependencyProvider
         return [
             new CustomerApiValidatorPlugin(),
             new ProductApiValidatorPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\Api\Communication\Plugin\ApiRequestTransferFilterPluginInterface[]
+     */
+    protected function getApiRequestTransferFilterPluginCollection(): array
+    {
+        return [
+            new ApiRequestTransferFilterServerDataPlugin(),
+            new ApiRequestTransferFilterHeaderDataPlugin(),
         ];
     }
 }

@@ -29,7 +29,7 @@
     } only %}
         {% block slides %}
             {% for slide in data.slides %}
-                {{ widget('ProductWidgetPlugin', slide) }}
+                {% widget 'ProductAlternativeWidget' args [slide] %}{% endwidget %}
             {% endfor %}
         {% endblock %}
     {% endembed %}

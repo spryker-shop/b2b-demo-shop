@@ -85,9 +85,13 @@ class SaleSearchQueryPlugin extends AbstractPlugin implements QueryInterface
             ->findLabelByName($labelName, $localeName);
 
         $stringFacetFieldFilter = $this->createStringFacetFieldFilter(ProductLabelFacetConfigTransferBuilderPlugin::NAME);
+        if ($storageProductLabelTransfer === null) {
+            return (new BoolQuery())->addFilter($stringFacetFieldFilter);
+        }
+
         $stringFacetValueFilter = $this->createStringFacetValueFilter($storageProductLabelTransfer->getIdProductLabel());
 
-        $newProductsBoolQuery = new BoolQuery();
+        $newProductsBoolQuery = (new BoolQuery())->addFilter($stringFacetFieldFilter);
         $newProductsBoolQuery
             ->addFilter($stringFacetFieldFilter)
             ->addFilter($stringFacetValueFilter);

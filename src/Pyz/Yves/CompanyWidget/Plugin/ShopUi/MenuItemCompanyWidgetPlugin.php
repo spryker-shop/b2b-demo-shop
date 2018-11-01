@@ -7,10 +7,13 @@
 
 namespace Pyz\Yves\CompanyWidget\Plugin\ShopUi;
 
+use Pyz\Yves\CompanyWidget\Widget\MenuItemCompanyWidget;
 use Spryker\Yves\Kernel\Widget\AbstractWidgetPlugin;
 use SprykerShop\Yves\ShopUi\Dependency\Plugin\CompanyWidget\MenuItemCompanyWidgetPluginInterface;
 
 /**
+ * @deprecated User \Pyz\Yves\CompanyWidget\Widget\MultiItemCompanyWidget instead.
+ *
  * @method \SprykerShop\Yves\CompanyWidget\CompanyWidgetFactory getFactory()
  */
 class MenuItemCompanyWidgetPlugin extends AbstractWidgetPlugin implements MenuItemCompanyWidgetPluginInterface
@@ -20,9 +23,8 @@ class MenuItemCompanyWidgetPlugin extends AbstractWidgetPlugin implements MenuIt
      */
     public function initialize(): void
     {
-        $this
-            ->addParameter('isVisible', $this->isVisible())
-            ->addParameter('companyName', $this->getCompanyName());
+        $widget = new MenuItemCompanyWidget();
+        $this->parameters = $widget->getParameters();
     }
 
     /**
@@ -46,38 +48,6 @@ class MenuItemCompanyWidgetPlugin extends AbstractWidgetPlugin implements MenuIt
      */
     public static function getTemplate(): string
     {
-        return '@CompanyWidget/views/shop-ui/menu-item-company-widget.twig';
-    }
-
-    /**
-     * @return string
-     */
-    protected function getCompanyName(): string
-    {
-        $customer = $this->getFactory()->getCustomerClient()->getCustomer();
-
-        if ($customer !== null
-            && $customer->getCompanyUserTransfer() !== null
-            && $customer->getCompanyUserTransfer()->getCompanyBusinessUnit() !== null
-            && $customer->getCompanyUserTransfer()->getCompanyBusinessUnit()->getCompany() !== null
-        ) {
-            return $customer->getCompanyUserTransfer()->getCompanyBusinessUnit()->getCompany()->getName();
-        }
-
-        return '';
-    }
-
-    /**
-     * @return bool
-     */
-    protected function isVisible(): bool
-    {
-        $customer = $this->getFactory()->getCustomerClient()->getCustomer();
-
-        if ($customer !== null && $customer->getCompanyUserTransfer() !== null) {
-            return true;
-        }
-
-        return false;
+        return MenuItemCompanyWidget::getTemplate();
     }
 }
