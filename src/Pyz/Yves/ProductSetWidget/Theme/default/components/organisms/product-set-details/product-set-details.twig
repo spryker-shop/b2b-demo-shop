@@ -1,4 +1,9 @@
-{% extends template('product-set', 'ProductSetWidget') %}
+{% extends model('component') %}
+
+{% define config = {
+    name: 'product-set-details',
+    tag: 'div'
+} %}
 
 {% define data = {
     products: required,
