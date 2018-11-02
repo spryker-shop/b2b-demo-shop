@@ -51,6 +51,6 @@
 
         {% widget 'MultiCartMenuItemWidget' args [data.activePage] only %}{% endwidget %}
 
-        {% widget 'BusinessOnBehalfStatusWidget' only %}{% endwidget %}
+        {% widget 'BusinessOnBehalfStatusWidget' args [data.activePage] only %}{% endwidget %}
     </ul>
 {% endblock %}
