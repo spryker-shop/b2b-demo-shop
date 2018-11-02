@@ -24,10 +24,6 @@ class CompanyUser extends SprykerCompanyUser
      */
     public function hasActiveCompanyUsers(CustomerTransfer $customerTransfer): bool
     {
-        if ($this->companyUserRepository->countCompanyUsersByIdCustomer($customerTransfer->getIdCustomer()) === 0) {
-            return true;
-        }
-
         return $this->companyUserRepository->hasEnabledCompanyUsers($customerTransfer->getIdCustomer());
     }
 }
