@@ -1,15 +1,24 @@
 @mixin shop-ui-banner($name: '.banner') {
     #{$name} {
         overflow: hidden;
-        height: rem(450);
-        margin-bottom: rem(30);
+        height: rem(200);
+        margin-bottom: rem(10);
+
+        @include helper-breakpoint-media-min($lg) {
+            height: rem(450);
+            margin-bottom: rem(30);
+        }
 
         &--medium {
             height: rem(400);
         }
 
         &--small {
-            height: rem(340);
+            height: rem(200);
+
+            @include helper-breakpoint-media-min($lg) {
+                height: rem(340);
+            }
         }
 
         &--color-second {
@@ -22,10 +31,18 @@
             background-position: center center;
             background-size: cover;
             background-repeat: no-repeat;
-            text-align: left;
+            text-align: center;
             position: relative;
-            padding: 0 30px;
-            margin: 0 15px;
+            padding: 0 rem(10);
+            margin: 0 rem(15);
+
+            @include helper-breakpoint-media-min($lg) {
+                text-align: left;
+            }
+
+            @include helper-breakpoint-media-min($xl) {
+                padding: 0 rem(30);
+            }
         }
 
         &__title,
@@ -34,17 +51,28 @@
         }
 
         &__title {
-            font-size: rem(30);
+            font-size: rem(26);
             line-height: rem(30);
             font-weight: fw(medium);
-            margin-bottom: rem(13);
+            margin-bottom: rem(10);
+
+            @include helper-breakpoint-media-min($lg) {
+                font-size: rem(30);
+                line-height: rem(30);
+                margin-bottom: rem(13);
+            }
         }
 
         &__text {
-            font-size: rem(18);
+            font-size: rem(16);
             line-height: normal;
             font-weight: fw(regular);
-            margin-bottom: rem(35);
+            margin-bottom: rem(26);
+
+            @include helper-breakpoint-media-min($lg) {
+                font-size: rem(18);
+                margin-bottom: rem(35);
+            }
         }
 
         &__success-title {

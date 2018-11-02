@@ -80,7 +80,7 @@
 
 {% block content %}
 
-    <section class="common-section spacing-top spacing-top--inner spacing-top--big ">
+    <section class="common-section common-section--no-mob-bottom-indent spacing-top spacing-top--inner spacing-top--big ">
         {{ spyCmsBlock({
             name: 'Featured Products'
         }) }}
@@ -104,11 +104,25 @@
     </section>
 
     <section class="common-section">
-        <div class="container">
-            {{ spyCmsBlock({
-                name: 'Teaser for home page'
-            }) }}
+        <div class="common-section__mobile-partly-hidden js-common-section-mobile-partly-hidden">
+            <div class="container">
+                {{ spyCmsBlock({
+                    name: 'Teaser for home page'
+                }) }}
+            </div>
         </div>
+
+        {% include molecule('toggler-accordion') with {
+            attributes: {
+                'wrap-selector': '.js-common-section-mobile-partly-hidden',
+                'trigger-selector': '.js-common-section-mobile-partly-hidden__trigger',
+                'class-to-toggle': 'is-full-visible-common-section'
+            }
+        } only %}
+
+        <a href="#" class="button button--medium button--hollow js-common-section-mobile-partly-hidden__trigger" data-toggle-target=".js-common-section-mobile-partly-hidden">
+            Show more
+        </a>
     </section>
 
 {% endblock %}
