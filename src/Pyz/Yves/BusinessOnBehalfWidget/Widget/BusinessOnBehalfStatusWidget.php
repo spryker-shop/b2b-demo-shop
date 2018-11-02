@@ -13,16 +13,16 @@ use SprykerShop\Yves\BusinessOnBehalfWidget\Widget\BusinessOnBehalfStatusWidget 
  */
 class BusinessOnBehalfStatusWidget extends SprykerBusinessOnBehalfStatusWidget
 {
-    protected const PAGE_KEY_ON_BEHALF = 'change-company-user';
+    protected const PAGE_KEY = 'change-company-user';
 
     /**
      * @param string|null $activePage
      */
     public function __construct(string $activePage = null)
     {
-        $this->addParameter('isActivePage', $this->isMultiCartPageActive($activePage));
-
         parent::__construct();
+
+        $this->addParameter('isActivePage', $this->isMultiCartPageActive($activePage));
     }
 
     /**
@@ -32,6 +32,6 @@ class BusinessOnBehalfStatusWidget extends SprykerBusinessOnBehalfStatusWidget
      */
     protected function isMultiCartPageActive(string $activePage): bool
     {
-        return $activePage === static::PAGE_KEY_ON_BEHALF;
+        return $activePage === static::PAGE_KEY;
     }
 }
