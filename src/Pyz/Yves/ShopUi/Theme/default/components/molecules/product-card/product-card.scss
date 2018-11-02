@@ -102,19 +102,25 @@ $name: '.product-card';
     }
 
     &__overlay {
-        display: inline-block;
+        display: -webkit-box;
         color: $setting-color-gray-9;
         font-weight: fw(medium);
         letter-spacing: rem(0.1);
         font-size: rem(14);
         line-height: rem(16);
+        height: rem(49);
+        overflow: hidden;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
 
         @include helper-breakpoint-media-min($lg) {
+            height: rem(64);
             font-size: rem(18);
             line-height: rem(21);
         }
 
         @include helper-breakpoint-media-min($xl) {
+            height: rem(76);
             font-size: rem(20);
             line-height: rem(25);
             letter-spacing: rem(0.2);

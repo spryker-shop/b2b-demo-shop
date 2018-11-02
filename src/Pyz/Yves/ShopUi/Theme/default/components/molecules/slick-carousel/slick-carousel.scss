@@ -42,27 +42,6 @@
             }
         }
 
-        &--mobile-one-slide {
-            .slick-track {
-                display: flex;
-            }
-
-            .slick-slide {
-                display: flex;
-                height: auto;
-                margin: 0 rem(9);
-
-                @include helper-breakpoint-media-min($lg) {
-                    margin: 0 $setting-grid-space;
-                }
-
-                > div {
-                    max-width: 100%;
-                    width: 100%;
-                }
-            }
-        }
-
         &--stretch {
             .slick-slide {
                 margin: 0;
@@ -137,16 +116,24 @@
 
         .slick-arrow {
             position: absolute;
-            top: 50%;
+            top: rem(100);
             font-size: 0;
-            width: 30px;
-            height: 30px;
+            width: rem(30);
+            height: rem(30);
             background: url('/assets/images/right-chevron.svg') center center no-repeat;
-            background-size: 15px;
+            background-size: rem(15);
             border-radius: 50%;
             z-index: $setting-zi-element-floating;
             opacity: 0.5;
             transform: translateY(-50%);
+
+            @include helper-breakpoint-media-min($lg) {
+                top: rem(135);
+            }
+
+            @include helper-breakpoint-media-min($xxxl) {
+                top: 50%;
+            }
 
             &:hover {
                 opacity: 1;
@@ -155,13 +142,29 @@
         }
 
         .slick-prev {
-            left: -30px;
+            left: rem(9);
             transform: rotate(180deg);
+
+            @include helper-breakpoint-media-min($lg) {
+                left: rem(15);
+            }
+
+            @include helper-breakpoint-media-min($xxxl) {
+                left: rem(-30);
+            }
         }
 
         .slick-next {
-            right: -30px;
+            right: rem(9);
             margin-top: rem(15);
+
+            @include helper-breakpoint-media-min($lg) {
+                right: rem(15);
+            }
+
+            @include helper-breakpoint-media-min($xxxl) {
+                right: rem(-30);
+            }
         }
     }
 
