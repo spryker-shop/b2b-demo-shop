@@ -7,14 +7,7 @@
 {% block body %}
     {% if data.productSetList is defined %}
         {% for productSet in data.productSetList %}
-            {% include organism('product-set-details', 'ProductSetWidget') with {
-                data: {
-                    products: productSet.productViews,
-                    name: productSet.productSet.name,
-                    description: productSet.productSet.description,
-                    images: productSet.productSet.imageSets.0.images | default([])
-                }
-            } only %}
+            {{ widget('ProductSetWidgetPlugin', productSet.productSet, productSet.productViews) }}
         {% endfor %}
     {% endif %}
 {% endblock %}
