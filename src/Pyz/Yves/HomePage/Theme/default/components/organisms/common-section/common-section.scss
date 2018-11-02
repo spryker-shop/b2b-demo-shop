@@ -1,15 +1,17 @@
 .common-section {
-    padding: rem(32) 0 rem(30);
+    $name: '.common-section';
+
+    padding: rem(32) 0 rem(16);
 
     @include helper-breakpoint-media-min($lg) {
-        padding: rem(50) 0 rem(16);
+        padding-top: rem(50);
     }
 
     @include helper-breakpoint-media-min($xl) {
         padding-top: rem(70);
     }
 
-    &--no-mob-bottom-indent {
+    &--no-mobile-bottom-indent {
         padding-bottom: 0;
 
         @include helper-breakpoint-media-min($lg) {
@@ -18,7 +20,7 @@
     }
 
     &--bg-dark {
-        padding: rem(22) 0 rem(19);
+        padding: rem(22) 0 rem(4);
         background-color: $setting-color-gray-7;
 
         .product-card__image-wrap {
@@ -43,10 +45,42 @@
         margin-right: -$setting-grid-space;
     }
 
-    &__mobile-partly-hidden {
-        max-height: rem(215);
-        margin-bottom: rem(26);
-        overflow: hidden;
+    &--mobile-partly-hidden {
+        #{$name}__text {
+            display: -webkit-box;
+            max-height: rem(168);
+            overflow: hidden;
+            -webkit-line-clamp: 7;
+            -webkit-box-orient: vertical;
+
+            @include helper-breakpoint-media-min($lg) {
+                max-height: none;
+                -webkit-line-clamp: unset;
+            }
+
+            &:not(:first-of-type) {
+                display: none;
+
+                @include helper-breakpoint-media-min($lg) {
+                    display: block;
+                }
+            }
+        }
+
+        &.is-full-visible-common-section {
+            #{$name}__text {
+                max-height: none;
+                -webkit-line-clamp: unset;
+
+                &:not(:first-of-type) {
+                    display: block;
+                }
+            }
+
+            #{$name}__trigger {
+                display: none;
+            }
+        }
     }
 
     &__title {
@@ -98,6 +132,15 @@
 
         &:hover {
             color: helper-color-dark($setting-color-gray-3);
+        }
+    }
+
+    &__trigger {
+        text-align: center;
+        padding-bottom: rem(26);
+
+        @include helper-breakpoint-media-min($lg) {
+            display: none;
         }
     }
 }

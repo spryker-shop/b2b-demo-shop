@@ -3,11 +3,7 @@ $name: '.product-card';
 
 @include shop-ui-product-card ($name) {
     height: auto;
-    padding: 0 0 rem(15);
-
-    @include helper-breakpoint-media-min($lg) {
-        padding-bottom: rem(30);
-    }
+    padding: 0 0 rem(30);
 
     &--equal-height {
         height: auto;
