@@ -72,6 +72,18 @@
             }
         }
 
+        &--medium {
+            font-size: rem(14);
+            line-height: normal;
+            padding: rem(11) rem(20);
+
+            @include helper-breakpoint-media-min($lg) {
+                font-size: rem(16);
+                line-height: rem(20);
+                padding: rem(15) rem(27);
+            }
+        }
+
         &--big {
             font-size: rem(16);
             line-height: rem(20);

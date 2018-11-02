@@ -1,5 +1,21 @@
 .common-section {
-    padding: rem(70) 0 rem(16);
+    padding: rem(32) 0 rem(30);
+
+    @include helper-breakpoint-media-min($lg) {
+        padding: rem(50) 0 rem(16);
+    }
+
+    @include helper-breakpoint-media-min($xl) {
+        padding-top: rem(70);
+    }
+
+    &--no-mob-bottom-indent {
+        padding-bottom: 0;
+
+        @include helper-breakpoint-media-min($lg) {
+            padding-bottom: rem(16);
+        }
+    }
 
     &--bg-dark {
         padding: rem(22) 0 rem(19);
@@ -25,6 +41,12 @@
     &--full-width {
         margin-left: -$setting-grid-space;
         margin-right: -$setting-grid-space;
+    }
+
+    &__mobile-partly-hidden {
+        max-height: rem(215);
+        margin-bottom: rem(26);
+        overflow: hidden;
     }
 
     &__title {
@@ -58,11 +80,17 @@
 
     &__text {
         text-align: center;
-        font-size: map_get($setting-font-size, big);
+        font-size: rem(15);
         color: $setting-color-gray-2;
         line-height: 1.61;
         max-width: rem(970);
-        margin: 0 auto rem(40);
+        margin: 0 auto rem(26);
+
+        @include helper-breakpoint-media-min($lg) {
+            font-size: map_get($setting-font-size, big);
+            line-height: 1.61;
+            margin-bottom: rem(40);
+        }
     }
 
     &__link {
