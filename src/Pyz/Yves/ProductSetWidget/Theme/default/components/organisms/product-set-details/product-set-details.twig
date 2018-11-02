@@ -98,7 +98,7 @@
                 {% block slides %}
                     {% for product in data.slides %}
                         {% embed molecule('product-card') with {
-                            modifiers: ['catalog', 'stretch'],
+                            modifiers: ['catalog', 'sets', 'stretch'],
                             data: {
                                 name: product.name,
                                 abstractId: product.idProductAbstract,
