@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "56830109ef0f131d600c492cd77db561",
+    "content-hash": "6d2c7733b749738ad33b0ad563ac8090",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -1123,7 +1123,7 @@
                 {
                     "name": "Luís Otávio Cobucci Oblonczyk",
                     "email": "lcobucci@gmail.com",
-                    "role": "developer"
+                    "role": "Developer"
                 }
             ],
             "description": "A simple library to work with JSON Web Token and JSON Web Signature",
@@ -2010,7 +2010,7 @@
             ],
             "authors": [
                 {
-                    "name": "William Durand",
+                    "name": "William DURAND",
                     "email": "william.durand1@gmail.com"
                 }
             ],
@@ -16988,16 +16988,16 @@
         },
         {
             "name": "spryker/price-product",
-            "version": "2.3.2",
+            "version": "2.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/price-product.git",
-                "reference": "7984fa5a45fb4a5234e1e2640e6a2da44b080252"
+                "reference": "a371981be80dd7a1a2133ac3ef584dff76943063"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/price-product/zipball/7984fa5a45fb4a5234e1e2640e6a2da44b080252",
-                "reference": "7984fa5a45fb4a5234e1e2640e6a2da44b080252",
+                "url": "https://api.github.com/repos/spryker/price-product/zipball/a371981be80dd7a1a2133ac3ef584dff76943063",
+                "reference": "a371981be80dd7a1a2133ac3ef584dff76943063",
                 "shasum": ""
             },
             "require": {
@@ -17011,7 +17011,8 @@
                 "spryker/quote": "^2.1.0",
                 "spryker/store": "^1.0.0",
                 "spryker/symfony": "^3.0.0",
-                "spryker/touch": "^3.0.0 || ^4.0.0"
+                "spryker/touch": "^3.0.0 || ^4.0.0",
+                "spryker/util-encoding": "^2.0.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
@@ -17038,7 +17039,7 @@
                 "proprietary"
             ],
             "description": "PriceProduct module",
-            "time": "2018-10-29T13:28:13+00:00"
+            "time": "2018-11-02T12:03:44+00:00"
         },
         {
             "name": "spryker/price-product-data-import",
@@ -17125,16 +17126,16 @@
         },
         {
             "name": "spryker/price-product-merchant-relationship",
-            "version": "1.2.1",
+            "version": "1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/price-product-merchant-relationship.git",
-                "reference": "80c8f1d11d292ab38cb156f3f795a2a9377aacf7"
+                "reference": "b69886c5d155c2c2eafcd71fbd9a3d908282561e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/price-product-merchant-relationship/zipball/80c8f1d11d292ab38cb156f3f795a2a9377aacf7",
-                "reference": "80c8f1d11d292ab38cb156f3f795a2a9377aacf7",
+                "url": "https://api.github.com/repos/spryker/price-product-merchant-relationship/zipball/b69886c5d155c2c2eafcd71fbd9a3d908282561e",
+                "reference": "b69886c5d155c2c2eafcd71fbd9a3d908282561e",
                 "shasum": ""
             },
             "require": {
@@ -17175,7 +17176,7 @@
                 "proprietary"
             ],
             "description": "PriceProductMerchantRelationship module",
-            "time": "2018-10-29T16:18:37+00:00"
+            "time": "2018-11-03T10:03:42+00:00"
         },
         {
             "name": "spryker/price-product-merchant-relationship-data-import",
@@ -17471,6 +17472,52 @@
             ],
             "description": "PriceProductVolume module",
             "time": "2018-10-05T14:06:36+00:00"
+        },
+        {
+            "name": "spryker/price-product-volume-gui",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/price-product-volume-gui.git",
+                "reference": "c7c10f8bcb4f1a0d69e48c5b8f33cd4b0d9eadc2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/price-product-volume-gui/zipball/c7c10f8bcb4f1a0d69e48c5b8f33cd4b0d9eadc2",
+                "reference": "c7c10f8bcb4f1a0d69e48c5b8f33cd4b0d9eadc2",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/currency": "^3.0.0",
+                "spryker/kernel": "^3.0.0",
+                "spryker/price-product": "^2.4.0",
+                "spryker/store": "^1.9.0",
+                "spryker/symfony": "^3.0.0",
+                "spryker/util-encoding": "^2.0.0",
+                "spryker/util-text": "^1.1.1"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "PriceProductVolumeGui module",
+            "time": "2018-11-02T13:08:40+00:00"
         },
         {
             "name": "spryker/product",
@@ -19921,16 +19968,16 @@
         },
         {
             "name": "spryker/product-management",
-            "version": "0.15.0",
+            "version": "0.15.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product-management.git",
-                "reference": "d98ad727d91ee15fe1f49ecb30b56e3eae1c6de2"
+                "reference": "e34836efb8f7d8cdd6d8ea9103d9d94826e0aa4d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-management/zipball/d98ad727d91ee15fe1f49ecb30b56e3eae1c6de2",
-                "reference": "d98ad727d91ee15fe1f49ecb30b56e3eae1c6de2",
+                "url": "https://api.github.com/repos/spryker/product-management/zipball/e34836efb8f7d8cdd6d8ea9103d9d94826e0aa4d",
+                "reference": "e34836efb8f7d8cdd6d8ea9103d9d94826e0aa4d",
                 "shasum": ""
             },
             "require": {
@@ -19985,7 +20032,7 @@
                 "proprietary"
             ],
             "description": "ProductManagement module",
-            "time": "2018-10-29T11:02:49+00:00"
+            "time": "2018-11-03T09:19:46+00:00"
         },
         {
             "name": "spryker/product-management-extension",
