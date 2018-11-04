@@ -90,7 +90,6 @@ use SprykerShop\Yves\ShopRouter\Plugin\Router\StorageRouter;
 use SprykerShop\Yves\ShopTranslator\Plugin\Provider\TranslationServiceProvider;
 use SprykerShop\Yves\ShopUi\Plugin\Provider\ShopUiTwigServiceProvider;
 use SprykerShop\Yves\WebProfilerWidget\Plugin\ServiceProvider\WebProfilerWidgetServiceProvider;
-use SprykerShop\Yves\WishlistPage\Plugin\Provider\WishlistPageControllerProvider;
 
 class YvesBootstrap extends SprykerYvesBootstrap
 {
@@ -191,7 +190,6 @@ class YvesBootstrap extends SprykerYvesBootstrap
             new CustomerReorderControllerProvider($isSsl),
             new NewsletterPageControllerProvider($isSsl),
             new CartControllerProvider($isSsl),
-            new WishlistPageControllerProvider($isSsl),
             new HeartbeatPageControllerProvider($isSsl),
             new NewsletterWidgetControllerProvider($isSsl),
             new CatalogPageControllerProvider($isSsl),

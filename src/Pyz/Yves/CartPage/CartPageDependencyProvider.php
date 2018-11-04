@@ -13,14 +13,6 @@ use SprykerShop\Yves\ProductBundleWidget\Plugin\CartPage\ProductBundleCartItemTr
 class CartPageDependencyProvider extends SprykerCartPageDependencyProvider
 {
     /**
-     * @return array
-     */
-    protected function getCartPageWidgetPlugins(): array
-    {
-        return [];
-    }
-
-    /**
      * @return \SprykerShop\Yves\CartPage\Dependency\Plugin\CartItemTransformerPluginInterface[]
      */
     protected function getCartItemTransformerPlugins(): array

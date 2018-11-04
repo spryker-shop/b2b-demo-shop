@@ -107,9 +107,9 @@ class ProductManagementDependencyProvider extends SprykerProductManagementDepend
         ];
     }
 
-     /**
-      * @return \Spryker\Zed\ProductManagementExtension\Dependency\Plugin\ProductConcreteFormExpanderPluginInterface[]
-      */
+    /**
+     * @return \Spryker\Zed\ProductManagementExtension\Dependency\Plugin\ProductConcreteFormExpanderPluginInterface[]
+     */
     protected function getProductConcreteFormExpanderPlugins(): array
     {
         return [

@@ -31,25 +31,6 @@ class ShoppingListPageDependencyProvider extends SprykerShoppingListPageDependen
     }
 
     /**
-     * @return string[]
-     */
-    protected function getShoppingListWidgetPlugins(): array
-    {
-        return [];
-    }
-
-    /**
-     * @return \SprykerShop\Yves\ShoppingListPageExtension\Dependency\Plugin\ShoppingListItemFormExpanderPluginInterface[]
-     */
-    protected function getShoppingListItemFormExpanderPlugins(): array
-    {
-        return [
-            new ShoppingListItemNoteFormExpanderPlugin(), #ShoppingListNoteFeature
-            new ShoppingListItemProductOptionFormExpanderPlugin(),
-        ];
-    }
-
-    /**
      * Returns a list of widget plugin class names that implement
      * \Spryker\Yves\Kernel\Dependency\Plugin\WidgetPluginInterface.
      *
@@ -63,14 +44,14 @@ class ShoppingListPageDependencyProvider extends SprykerShoppingListPageDependen
     }
 
     /**
-     * Returns a list of widget plugin class names that implement
-     * \Spryker\Yves\Kernel\Dependency\Plugin\WidgetPluginInterface.
-     *
-     * @return string[]
+     * @return \SprykerShop\Yves\ShoppingListPageExtension\Dependency\Plugin\ShoppingListItemFormExpanderPluginInterface[]
      */
-    protected function getShoppingListEditWidgetPlugins(): array
+    protected function getShoppingListItemFormExpanderPlugins(): array
     {
-        return [];
+        return [
+            new ShoppingListItemNoteFormExpanderPlugin(), #ShoppingListNoteFeature
+            new ShoppingListItemProductOptionFormExpanderPlugin(),
+        ];
     }
 
     /**

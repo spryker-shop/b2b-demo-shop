@@ -5,12 +5,12 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Orm\Zed\GiftCardBalance\Persistence;
+namespace Orm\Zed\ProductCustomerPermission\Persistence;
 
-use Orm\Zed\GiftCardBalance\Persistence\Base\SpyGiftCardBalanceLog as BaseSpyGiftCardBalanceLog;
+use Spryker\Zed\ProductCustomerPermission\Persistence\Propel\AbstractSpyProductCustomerPermission as BaseSpyProductCustomerPermission;
 
 /**
- * Skeleton subclass for representing a row from the 'spy_gift_card_balance_log' table.
+ * Skeleton subclass for representing a row from the 'spy_product_customer_permission' table.
  *
  *
  *
@@ -19,6 +19,6 @@ use Orm\Zed\GiftCardBalance\Persistence\Base\SpyGiftCardBalanceLog as BaseSpyGif
  * long as it does not already exist in the output directory.
  *
  */
-class SpyGiftCardBalanceLog extends BaseSpyGiftCardBalanceLog
+class SpyProductCustomerPermission extends BaseSpyProductCustomerPermission
 {
 }

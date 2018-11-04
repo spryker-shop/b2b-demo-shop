@@ -46,14 +46,6 @@ class CustomerPageDependencyProvider extends SprykerShopCustomerPageDependencyPr
     }
 
     /**
-     * @return string[]
-     */
-    protected function getCustomerMenuItemWidgetPlugins(): array
-    {
-        return [];
-    }
-
-    /**
      * @return \SprykerShop\Yves\CustomerPageExtension\Dependency\Plugin\PreRegistrationCustomerTransferExpanderPluginInterface[]
      */
     protected function getPreRegistrationCustomerTransferExpanderPlugins(): array
