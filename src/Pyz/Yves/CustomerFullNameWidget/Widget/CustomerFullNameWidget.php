@@ -30,9 +30,6 @@ class CustomerFullNameWidget extends AbstractWidget
         return '@CustomerFullNameWidget/views/customer-full-name-widget/customer-full-name-widget.twig';
     }
 
-    /**
-     * CustomerFullNameWidget constructor.
-     */
     public function __construct()
     {
         $this->addParameter('customerFullName', $this->getCustomerFullName());
