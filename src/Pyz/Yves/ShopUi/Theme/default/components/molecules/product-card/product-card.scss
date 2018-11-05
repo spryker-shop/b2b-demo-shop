@@ -3,7 +3,7 @@ $name: '.product-card';
 
 @include shop-ui-product-card ($name) {
     height: auto;
-    padding: 0 0 30px;
+    padding: 0 0 rem(30);
 
     &--equal-height {
         height: auto;
@@ -14,25 +14,35 @@ $name: '.product-card';
     }
 
     &__container {
-        padding: rem(8) rem(28) rem(40);
+        padding: 0;
         height: 100%;
 
+        @include helper-breakpoint-media-min($lg) {
+            padding: rem(8) rem(10) rem(15);
+        }
+
+        @include helper-breakpoint-media-min($xl) {
+            padding: rem(8) rem(28) rem(40);
+        }
+
         &:hover {
-            #{$name}__image-wrap--catalog::before {
-                background-color: $setting-color-transparent;
-            }
-
-            #{$name}__overlay {
-                color: $setting-color-gray-4;
-
-                &::before {
-                    box-shadow: 0 18px 18px 0 $setting-color-shadow-1, 0 3px 3px 0 $setting-color-shadow-1;
+            @include helper-breakpoint-media-min($xl) {
+                #{$name}__image-wrap--catalog::before {
                     background-color: $setting-color-transparent;
                 }
-            }
 
-            .color-selector {
-                opacity: 1;
+                #{$name}__overlay {
+                    color: $setting-color-gray-4;
+
+                    &::before {
+                        box-shadow: 0 18px 18px 0 $setting-color-shadow-1, 0 3px 3px 0 $setting-color-shadow-1;
+                        background-color: $setting-color-transparent;
+                    }
+                }
+
+                .color-selector {
+                    opacity: 1;
+                }
             }
         }
 
@@ -54,9 +64,19 @@ $name: '.product-card';
 
     &__image-wrap {
         position: relative;
-        margin: 0 (-$catalog-space-x) rem(15);
-        padding: rem(8) $catalog-space-x;
+        padding: rem(12) 0;
+        margin-bottom: rem(17);
         flex-basis: 100%;
+
+        @include helper-breakpoint-media-min($lg) {
+            padding-left: rem(10);
+            padding-right: rem(10);
+        }
+
+        @include helper-breakpoint-media-min($xl) {
+            margin: 0 (-$catalog-space-x) rem(15);
+            padding: rem(8) $catalog-space-x;
+        }
 
         &--product-set {
             max-height: rem(243);
@@ -79,10 +99,31 @@ $name: '.product-card';
 
     &__overlay {
         color: $setting-color-gray-4;
-        font-size: rem(20);
         font-weight: fw(medium);
-        line-height: rem(25);
-        letter-spacing: rem(0.2);
+        letter-spacing: rem(0.1);
+        font-size: rem(14);
+        line-height: rem(16);
+        height: rem(33);
+        overflow: hidden;
+        // Styles for multiline truncation with ellipsis Chrome only
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+
+        @include helper-breakpoint-media-min($lg) {
+            height: rem(64);
+            font-size: rem(18);
+            line-height: rem(21);
+            // Styles for multiline truncation with ellipsis Chrome only
+            -webkit-line-clamp: 3;
+        }
+
+        @include helper-breakpoint-media-min($xl) {
+            height: rem(76);
+            font-size: rem(20);
+            line-height: rem(25);
+            letter-spacing: rem(0.2);
+        }
 
         &::before {
             content: '';
@@ -91,9 +132,14 @@ $name: '.product-card';
             top: 0;
             left: 0;
             right: 0;
-            bottom: 0;
+            height: rem(220);
             background-color: $setting-color-alpha-2;
             z-index: $setting-zi-element;
+
+            @include helper-breakpoint-media-min($lg) {
+                height: auto;
+                bottom: 0;
+            }
         }
 
         &--catalog {
@@ -114,11 +160,13 @@ $name: '.product-card';
         }
 
         &:hover {
-            color: $setting-color-gray-4;
+            @include helper-breakpoint-media-min($xl) {
+                color: $setting-color-gray-4;
 
-            &::before {
-                box-shadow: 0 18px 18px 0 $setting-color-shadow-1, 0 3px 3px 0 $setting-color-shadow-1;
-                background-color: $setting-color-transparent;
+                &::before {
+                    box-shadow: 0 18px 18px 0 $setting-color-shadow-1, 0 3px 3px 0 $setting-color-shadow-1;
+                    background-color: $setting-color-transparent;
+                }
             }
         }
     }
@@ -129,19 +177,33 @@ $name: '.product-card';
 
     &__category {
         display: block;
-        line-height: rem(20);
+        font-size: rem(13);
+        line-height: rem(16);
         letter-spacing: rem(0.2);
         font-weight: fw(regular);
         color: $setting-color-gray-3;
         margin-top: rem(3);
+
+        @include helper-breakpoint-media-min($lg) {
+            font-size: rem(16);
+            line-height: rem(20);
+        }
     }
 
     &__rating {
-        margin-top: rem(11);
+        margin-top: rem(4);
+
+        @include helper-breakpoint-media-min($lg) {
+            margin-top: rem(11);
+        }
     }
 
     &__price {
-        margin: rem(25) 0 0;
+        margin-top: rem(15);
+
+        @include helper-breakpoint-media-min($lg) {
+            margin-top: rem(25);
+        }
     }
 
     &__actions {

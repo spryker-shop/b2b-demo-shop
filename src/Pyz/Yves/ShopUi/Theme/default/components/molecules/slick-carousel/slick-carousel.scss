@@ -10,6 +10,16 @@
         &--full-width {
             margin-left: -$setting-grid-space;
             margin-right: -$setting-grid-space;
+
+            &#{$name}--equal-height {
+                margin-left: rem(-9);
+                margin-right: rem(-9);
+
+                @include helper-breakpoint-media-min($lg) {
+                    margin-left: -$setting-grid-space;
+                    margin-right: -$setting-grid-space;
+                }
+            }
         }
 
         &--equal-height {
@@ -20,10 +30,15 @@
             .slick-slide {
                 display: flex;
                 height: auto;
-                margin: 0 $setting-grid-space;
+                margin: 0 rem(9);
+
+                @include helper-breakpoint-media-min($lg) {
+                    margin: 0 $setting-grid-space;
+                }
 
                 > div {
                     max-width: 100%;
+                    width: 100%;
                 }
             }
         }
@@ -47,26 +62,44 @@
 
         &--jumbotron {
             display: block;
-            min-height: rem(505);
+            min-height: rem(390);
+
+            @include helper-breakpoint-media-min($lg) {
+                min-height: rem(505);
+            }
 
             .slick-slide {
-                margin: 0 rem(5);
+                margin: 0 rem(1);
+
+                @include helper-breakpoint-media-min($lg) {
+                    margin-left: rem(5);
+                    margin-right: rem(5);
+                }
             }
 
             .slick-dots {
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                margin-top: rem(24);
+                margin-top: rem(18);
+
+                @include helper-breakpoint-media-min($lg) {
+                    margin-top: rem(24);
+                }
 
                 li {
                     display: block;
-                    margin: 0.3rem 0.5rem;
+                    margin: 0 0.5rem;
                     width: 5px;
                     height: 5px;
                     background: $setting-color-light;
                     border-radius: 50%;
                     font-size: 0;
+
+                    @include helper-breakpoint-media-min($lg) {
+                        margin-top: 0.3rem;
+                        margin-bottom: 0.3rem;
+                    }
 
                     &:hover {
                         cursor: pointer;
@@ -84,16 +117,24 @@
 
         .slick-arrow {
             position: absolute;
-            top: 50%;
+            top: rem(95);
             font-size: 0;
-            width: 30px;
-            height: 30px;
+            width: rem(30);
+            height: rem(30);
             background: url('/assets/images/right-chevron.svg') center center no-repeat;
-            background-size: 15px;
+            background-size: rem(15);
             border-radius: 50%;
             z-index: $setting-zi-element-floating;
             opacity: 0.5;
             transform: translateY(-50%);
+
+            @include helper-breakpoint-media-min($lg) {
+                top: rem(135);
+            }
+
+            @include helper-breakpoint-media-min($xxxl) {
+                top: 50%;
+            }
 
             &:hover {
                 opacity: 1;
@@ -102,13 +143,29 @@
         }
 
         .slick-prev {
-            left: -30px;
+            left: rem(9);
             transform: rotate(180deg);
+
+            @include helper-breakpoint-media-min($lg) {
+                left: rem(15);
+            }
+
+            @include helper-breakpoint-media-min($xxxl) {
+                left: rem(-30);
+            }
         }
 
         .slick-next {
-            right: -30px;
+            right: rem(9);
             margin-top: rem(15);
+
+            @include helper-breakpoint-media-min($lg) {
+                right: rem(15);
+            }
+
+            @include helper-breakpoint-media-min($xxxl) {
+                right: rem(-30);
+            }
         }
     }
 
