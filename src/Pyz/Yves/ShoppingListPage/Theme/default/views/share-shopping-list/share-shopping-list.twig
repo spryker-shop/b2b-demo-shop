@@ -35,51 +35,47 @@
 
         <div class="form__container">
             <div class="form__fields grid grid--bottom">
-                <div class="form__field col col--sm-12">
-                    <div class="grid">
-                        <div class="col col--sm-12 spacing-y grid grid--bottom grid--justify">
-                            <h4 class="share-list__title col">{{ 'customer.account.shopping_list.business_unit' | trans }}</h4>
-                            {% include atom('icon') with {
-                                modifiers: ['right-title'],
-                                class: 'col',
-                                data: {
-                                    name: 'building'
-                                }
-                            } only %}
-                        </div>
-                        <div class="col col--sm-12">
-                            {% include molecule('share-list', 'ShoppingListPage') with {
-                                data: {
-                                    shareUnits: data.sharedCompanyBusinessUnits,
-                                    shareForm: data.shareShoppingListForm.sharedCompanyBusinessUnits
-                                }
-                            } only %}
-                        </div>
-                    </div>
-                </div>
+                {% embed molecule('company-dashbord-item') with {
+                    class: 'form__field col col--sm-12',
+                    data: {
+                        title: 'customer.account.shopping_list.business_unit' | trans,
+                        icon: 'building'
+                    },
+                    embed: {
+                        shareUnits: data.sharedCompanyBusinessUnits,
+                        shareForm: data.shareShoppingListForm.sharedCompanyBusinessUnits
+                    }
+                } only %}
+                    {% block content %}
+                        {% include molecule('share-list', 'ShoppingListPage') with {
+                            data: {
+                                shareUnits: embed.shareUnits,
+                                shareForm: embed.shareForm
+                            }
+                        } only %}
+                    {% endblock %}
+                {% endembed %}
 
-                <div class="form__field col col--sm-12">
-                    <div class="grid">
-                        <div class="col col--sm-12 spacing-y grid grid--bottom grid--justify">
-                            <h4 class="share-list__title col">{{ 'customer.account.shopping_list.customer' | trans }}</h4>
-                            {% include atom('icon') with {
-                                modifiers: ['right-title'],
-                                class: 'col',
-                                data: {
-                                    name: 'users'
-                                }
-                            } only %}
-                        </div>
-                        <div class="col col--sm-12">
-                            {% include molecule('share-list', 'ShoppingListPage') with {
-                                data: {
-                                    shareUnits: data.sharedCompanyUsers,
-                                    shareForm: data.shareShoppingListForm.sharedCompanyUsers
-                                }
-                            } only %}
-                        </div>
-                    </div>
-                </div>
+                {% embed molecule('company-dashbord-item') with {
+                    class: 'form__field col col--sm-12',
+                    data: {
+                        title: 'customer.account.shopping_list.customer' | trans,
+                        icon: 'users'
+                    },
+                    embed: {
+                        shareUnits: data.sharedCompanyUsers,
+                        shareForm: data.shareShoppingListForm.sharedCompanyUsers
+                    }
+                } only %}
+                    {% block content %}
+                        {% include molecule('share-list', 'ShoppingListPage') with {
+                            data: {
+                                shareUnits: embed.shareUnits,
+                                shareForm: embed.shareForm
+                            }
+                        } only %}
+                    {% endblock %}
+                {% endembed %}
             </div>
 
             <div class="form__actions grid grid--right spacing spacing--reset">
