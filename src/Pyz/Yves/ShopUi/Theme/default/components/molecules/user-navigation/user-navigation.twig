@@ -29,7 +29,7 @@
                     }
                 } only %}
             </span>
-            {{  data.user.customerTransfer.firstName }} {{ data.user.customerTransfer.lastName }}
+            {% widget 'CustomerFullNameWidget' only %}{% endwidget %}
         </div>
         {% include molecule('navigation-list') with {
             modifiers: ['user-account'],

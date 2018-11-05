@@ -9,6 +9,7 @@ namespace Pyz\Yves\ShopApplication;
 
 use Pyz\Yves\CompanyPage\Plugin\ShopApplication\CompanyUserRestrictionHandlerPlugin;
 use Pyz\Yves\CompanyWidget\Widget\MenuItemCompanyWidget;
+use Pyz\Yves\CustomerFullNameWidget\Widget\CustomerFullNameWidget;
 use Pyz\Yves\ExampleProductColorGroupWidget\Widget\ExampleProductColorSelectorWidget;
 use Pyz\Yves\ProductSetWidget\Widget\ProductSetIdsWidget;
 use SprykerShop\Yves\AgentWidget\Widget\AgentControlBarWidget;
@@ -133,6 +134,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             ExampleProductColorSelectorWidget::class,
             CompanyBusinessUnitAddressWidget::class,
             ProductRatingFilterWidget::class,
+            CustomerFullNameWidget::class,
         ];
     }
 
