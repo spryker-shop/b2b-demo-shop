@@ -109,13 +109,15 @@
                         }
                     } only %}
                         {% block price %}
-                            {% include molecule('price') with {
-                                modifiers: ['cart'],
-                                data: {
-                                    amount: price | money,
-                                    originalAmount: embed.product.prices.ORIGINAL is not defined or embed.product.prices.ORIGINAL is empty ? null : (embed.product.prices.ORIGINAL | money)
-                                },
-                            } only %}
+                            {% if can('SeePricePermissionPlugin') %}
+                                {% include molecule('price') with {
+                                    modifiers: ['cart'],
+                                    data: {
+                                        amount: price | money,
+                                        originalAmount: embed.product.prices.ORIGINAL is not defined or embed.product.prices.ORIGINAL is empty ? null : (embed.product.prices.ORIGINAL | money)
+                                    },
+                                } only %}
+                            {% endif %}
                         {% endblock %}
 
                         {% block info %}
@@ -190,17 +192,19 @@
                             <div class="col order-sidebar__quantity">{{ app['cart.quantity'] }} {{ 'checkout.step.summary.items' | trans }}</div>
                         </div>
 
-                        {% if canEditCart and can('ChangeCartItemPermissionPlugin') %}
+                        {% if canEditCart and can('ChangeCartItemPermissionPlugin') and can('SeePricePermissionPlugin') %}
                             {% widget 'DiscountVoucherFormWidget' only %}{% endwidget %}
                         {% endif %}
                     </div>
 
-                    {% include molecule('cart-summary', 'CartPage') with {
-                        data: {
-                            cart: data.cart,
-                            isQuoteValid: data.isQuoteValid
-                        }
-                    } only %}
+                    {% if can('SeePricePermissionPlugin') %}
+                        {% include molecule('cart-summary', 'CartPage') with {
+                            data: {
+                                cart: data.cart,
+                                isQuoteValid: data.isQuoteValid
+                            }
+                        } only %}
+                    {% endif %}
                 </div>
 
                 {% include molecule('toggler-accordion') with {
