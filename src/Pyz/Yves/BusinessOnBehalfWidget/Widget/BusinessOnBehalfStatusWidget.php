@@ -22,7 +22,7 @@ class BusinessOnBehalfStatusWidget extends SprykerBusinessOnBehalfStatusWidget
     {
         parent::__construct();
 
-        $this->addParameter('isActivePage', $this->isMultiCartPageActive($activePage));
+        $this->addParameter('isActivePage', $this->isPageActive($activePage));
     }
 
     /**
@@ -30,7 +30,7 @@ class BusinessOnBehalfStatusWidget extends SprykerBusinessOnBehalfStatusWidget
      *
      * @return bool
      */
-    protected function isMultiCartPageActive(string $activePage): bool
+    protected function isPageActive(string $activePage): bool
     {
         return $activePage === static::PAGE_KEY;
     }
