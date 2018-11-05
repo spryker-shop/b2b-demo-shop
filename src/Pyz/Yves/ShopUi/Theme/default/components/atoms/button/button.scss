@@ -58,18 +58,6 @@
                     border-color: helper-color-dark($setting-color-white);
                 }
             }
-
-            &-alternative {
-                color: $setting-color-gray-3;
-                border-color: $setting-color-gray-2;
-
-                &:hover,
-                &:focus {
-                    border-color: $setting-color-gray-3;
-                    color: $setting-color-white;
-                    background-color: $setting-color-gray-3;
-                }
-            }
         }
 
         &--alternative {
@@ -84,16 +72,9 @@
             }
         }
 
-        &--medium {
-            font-size: rem(14);
-            line-height: normal;
-            padding: rem(11) rem(20);
-
-            @include helper-breakpoint-media-min($lg) {
-                font-size: rem(16);
-                line-height: rem(20);
-                padding: rem(15) rem(27);
-            }
+        &--tight {
+            padding-left: rem(20);
+            padding-right: rem(20);
         }
 
         &--big {
