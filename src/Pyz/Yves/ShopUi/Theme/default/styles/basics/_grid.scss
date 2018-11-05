@@ -118,12 +118,22 @@
         }
 
         &--gap {
-            margin-left: -$setting-grid-space;
-            margin-right: -$setting-grid-space;
+            margin-left: -$setting-grid-space-mobile;
+            margin-right: -$setting-grid-space-mobile;
+
+            @include helper-breakpoint-media-min($lg) {
+                margin-left: -$setting-grid-space;
+                margin-right: -$setting-grid-space;
+            }
 
             & > .col {
-                padding-left: $setting-grid-space;
-                padding-right: $setting-grid-space;
+                padding-left: $setting-grid-space-mobile;
+                padding-right: $setting-grid-space-mobile;
+
+                @include helper-breakpoint-media-min($lg) {
+                    padding-left: $setting-grid-space;
+                    padding-right: $setting-grid-space;
+                }
             }
         }
 
