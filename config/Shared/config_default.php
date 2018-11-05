@@ -21,7 +21,6 @@ use Spryker\Shared\FileManager\FileManagerConstants;
 use Spryker\Shared\FileManagerGui\FileManagerGuiConstants;
 use Spryker\Shared\FileSystem\FileSystemConstants;
 use Spryker\Shared\Flysystem\FlysystemConstants;
-use Spryker\Shared\GlueApplication\GlueApplicationConstants;
 use Spryker\Shared\Kernel\ClassResolver\Cache\Provider\File;
 use Spryker\Shared\Kernel\KernelConstants;
 use Spryker\Shared\Kernel\Store;
@@ -427,10 +426,6 @@ $config[LogglyConstants::TOKEN] = 'loggly-token:sample:123456';
 
 // ---------- CMS
 $config[CmsGuiConstants::CMS_FOLDER_PATH] = '@Cms/templates/';
-
-// ----------- Glue Application
-$config[GlueApplicationConstants::GLUE_APPLICATION_DOMAIN] = '';
-$config[GlueApplicationConstants::GLUE_APPLICATION_REST_DEBUG] = false;
 
 // ----------- OAUTH
 //Check how to generate https://oauth2.thephpleague.com/installation/
