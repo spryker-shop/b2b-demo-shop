@@ -8,9 +8,9 @@
 namespace Pyz\Zed\MultiCartDataImport;
 
 use Generated\Shared\Transfer\DataImporterConfigurationTransfer;
-use Spryker\Zed\MultiCartDataImport\MultiCartDataImportConfig as CoreMultiCartDataImportConfig;
+use Spryker\Zed\MultiCartDataImport\MultiCartDataImportConfig as SprykerMultiCartDataImportConfig;
 
-class MultiCartDataImportConfig extends CoreMultiCartDataImportConfig
+class MultiCartDataImportConfig extends SprykerMultiCartDataImportConfig
 {
     /**
      * @return \Generated\Shared\Transfer\DataImporterConfigurationTransfer
