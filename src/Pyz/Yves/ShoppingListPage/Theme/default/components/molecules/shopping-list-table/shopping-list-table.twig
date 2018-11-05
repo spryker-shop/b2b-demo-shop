@@ -86,6 +86,12 @@
                 {% endif %}
             {% endblock %}
 
+            {% block note %}
+                {% widget 'ShoppingListItemNoteWidget' args [data.listItem.shoppingListItem] only %}
+                {% elsewidget 'ShoppingListItemNoteWidgetPlugin' args [data.listItem.shoppingListItem] only %} {# @deprecated Use ShoppingListItemNoteWidget instead. #}
+                {% endwidget %}
+            {% endblock %}
+
             {% block quantity %}
                 {% include molecule('quantity-counter') with {
                     modifiers: ['shopping-list'],

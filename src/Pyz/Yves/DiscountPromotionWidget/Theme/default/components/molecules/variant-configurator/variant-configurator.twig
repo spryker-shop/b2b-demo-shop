@@ -5,7 +5,7 @@
 } %}
 
 {% define data = {
-    idProductAbstract: required,
+    sku: required,
     superAttributes: [],
     selectedAttributes: [],
     availableAttributes: [],
@@ -39,7 +39,7 @@
                         modifiers: ['promotion'],
                         data: {
                             name: name,
-                            formName: 'attributes[' ~ data.idProductAbstract ~ '][' ~ name ~ ']',
+                            formName: 'attributes[' ~ data.sku ~ '][' ~ name ~ ']',
                             values: values,
                             selectedValue: selectedValue,
                             label: ('product.attribute.' ~ name) | trans,
