@@ -38,6 +38,10 @@
                 } only %}
             {% endblock %}
 
+            {% block bundle %}{% endblock %}
+
+            {% block note %}{% endblock %}
+
             {% block quantity %}
                 {% include molecule('quantity-counter') with {
                     modifiers: ['shopping-list'],
