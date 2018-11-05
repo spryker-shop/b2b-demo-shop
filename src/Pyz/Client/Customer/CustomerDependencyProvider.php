@@ -19,7 +19,7 @@ class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
     /**
      * @return \Spryker\Client\Customer\Dependency\Plugin\CustomerSessionGetPluginInterface[]
      */
-    protected function getCustomerSessionGetPlugins()
+    protected function getCustomerSessionGetPlugins(): array
     {
         return [
             new CustomerTransferSessionRefreshPlugin(),
