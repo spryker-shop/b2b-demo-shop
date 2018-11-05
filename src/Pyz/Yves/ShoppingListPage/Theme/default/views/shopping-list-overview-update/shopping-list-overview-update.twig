@@ -61,7 +61,7 @@
                         {% set productDiscontinuedWidget = findWidget('ProductDiscontinuedWidget', [product.sku]) %}
 
                         {% if productDiscontinuedWidget %}
-                            {% set isProductAvailable = productDiscontinuedWidget.isDiscontinued and isProductAvailable %}
+                            {% set isProductAvailable = not productDiscontinuedWidget.isDiscontinued and isProductAvailable %}
                         {% endif %}
 
                         {% embed molecule('product-item') with {

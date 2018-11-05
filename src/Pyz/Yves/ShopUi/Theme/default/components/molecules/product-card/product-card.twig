@@ -34,7 +34,16 @@
 
 {% block content %}
     {% block labels %}
-        {% widget 'ProductAbstractLabelWidget' args [data.abstractId] only %}{% endwidget %}
+        {% widget 'ProductAbstractLabelWidget' args [data.abstractId] with {modifiers: modifiers} only %}
+            {% block body %}
+                {% include molecule('label-group', 'ProductLabelWidget') with {
+                    modifiers: isLabels ? modifiers : ['hidden'],
+                    data: {
+                        labels: labels
+                    }
+                } only %}
+            {% endblock %}
+        {% endwidget %}
     {% endblock %}
 
     {% block name %}

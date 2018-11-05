@@ -13,7 +13,6 @@ use Spryker\Client\Customer\Plugin\CustomerAddressSessionUpdatePlugin;
 use Spryker\Client\Customer\Plugin\CustomerTransferSessionRefreshPlugin;
 use Spryker\Client\MultiCart\Plugin\GuestCartSaveCustomerSessionSetPlugin;
 use Spryker\Client\PersistentCart\Plugin\GuestCartUpdateCustomerSessionSetPlugin;
-use Spryker\Client\PriceProductMerchantRelationship\Plugin\CustomerChangePriceUpdatePlugin;
 
 class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
 {
@@ -36,7 +35,6 @@ class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
             new GuestCartSaveCustomerSessionSetPlugin(), #MultiCartFeature
             new GuestCartUpdateCustomerSessionSetPlugin(), #PersistentCartFeature
             new CustomerChangeCartUpdatePlugin(),
-            new CustomerChangePriceUpdatePlugin(), #PricesPerBusinessUnit
         ];
     }
 
