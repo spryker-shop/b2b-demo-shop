@@ -73,27 +73,27 @@
                         }
                     } only %}
 
-                    {% include molecule('toggler-checkbox') with {
-                        modifiers: ['expand'],
-                        class: 'is-hidden-lg-xl',
-                        data: {
-                            label: 'Show/Hide filters'
-                        },
-                        attributes: {
-                            'target-selector': '.js-catalog__filters-toggle',
-                            'class-to-toggle': 'is-hidden-sm-md',
-                            checked: true
-                        }
-                    } only %}
+                    {#{% include molecule('toggler-checkbox') with {#}
+                        {#modifiers: ['expand'],#}
+                        {#class: 'is-hidden-lg-xl',#}
+                        {#data: {#}
+                            {#label: 'Show/Hide filters'#}
+                        {#},#}
+                        {#attributes: {#}
+                            {#'target-selector': '.js-catalog__filters-toggle',#}
+                            {#'class-to-toggle': 'is-hidden-sm-md',#}
+                            {#checked: true#}
+                        {#}#}
+                    {#} only %}#}
 
-                    {% include organism('filter-section', 'CatalogPage') with {
-                        class: 'js-catalog__filters-toggle',
-                        data: {
-                            facets: data.facets,
-                            filterPath: data.filterPath,
-                            categories: data.categories
-                        }
-                    } only %}
+                    {#{% include organism('filter-section', 'CatalogPage') with {#}
+                        {#class: 'js-catalog__filters-toggle',#}
+                        {#data: {#}
+                            {#facets: data.facets,#}
+                            {#filterPath: data.filterPath,#}
+                            {#categories: data.categories#}
+                        {#}#}
+                    {#} only %}#}
                 {% endblock %}
             </div>
 

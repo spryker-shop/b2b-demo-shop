@@ -18,7 +18,7 @@
     <div class="{{ component.renderClass(config.name ~ '__image-wrap', modifiers) }}">
         {% include atom('thumbnail') with {
             class: 'js-product-color-group__image-' ~ data.abstractId,
-            modifiers: ['catalog'],
+            modifiers: ['catalog']|merge(modifiers),
             attributes: {
                 alt: data.name,
                 src: data.imageUrl,

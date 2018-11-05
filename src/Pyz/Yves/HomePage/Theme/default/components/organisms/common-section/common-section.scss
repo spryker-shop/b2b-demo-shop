@@ -28,14 +28,18 @@
                 .product-card__container {
                     background-color: $setting-color-white;
                 }
+
+                .product-card__overlay::before {
+                    background-color: $setting-color-transparent;
+                }
             }
 
             .product-card__image-wrap {
                 background-color: $setting-color-white;
-            }
 
-            .product-card__overlay::before {
-                background-color: $setting-color-transparent;
+                &::before {
+                    background-color: $setting-color-transparent;
+                }
             }
         }
 

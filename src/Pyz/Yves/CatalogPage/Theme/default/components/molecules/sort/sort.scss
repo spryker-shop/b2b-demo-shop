@@ -1,17 +1,44 @@
 @mixin catalog-page-sort($name: '.sort') {
     #{$name} {
-        margin-bottom: rem(20);
+        margin-bottom: rem(16);
+
+        @include helper-breakpoint-media-min($lg) {
+            margin-bottom: rem(20);
+        }
 
         &__col {
             font-size: rem(14);
 
             &:not(:last-child) {
-                padding-right: 0.5rem;
+                @include helper-breakpoint-media-min($lg) {
+                    padding-right: 0.5rem;
+                }
             }
 
             &--counter {
+                padding-right: rem(70);
                 font-weight: fw(medium);
-                font-size: rem(15);
+                font-size: rem(14);
+
+                @include helper-breakpoint-media-min($md) {
+                    font-size: rem(15);
+                }
+
+                @include helper-breakpoint-media-min($lg) {
+                    padding-bottom: rem(10);
+                }
+
+                @include helper-breakpoint-media-min($xl) {
+                    padding-bottom: 0;
+                }
+            }
+
+            &--filters {
+                width: 100%;
+
+                @include helper-breakpoint-media-min($xl) {
+                    width: auto;
+                }
             }
 
             &--select {

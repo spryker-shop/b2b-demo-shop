@@ -7,7 +7,7 @@
 
 {% block body %}
     {% set productTemplate = molecule('product-card') %}
-    {% set class = 'col col--sm-6 col--xl-4' %}
+    {% set class = 'col col--sm-6 col--md-4 col--lg-6 col--xl-4' %}
 
     {% if data.viewMode == 'list' %}
         {% set productTemplate = molecule('product-list-item') %}
@@ -17,7 +17,7 @@
     {% embed productTemplate with {
         productTemplate: productTemplate,
         class: class,
-        modifiers: ['catalog'],
+        modifiers: ['catalog', 'category'],
         data: {
             name: data.product.abstract_name,
             abstractId: data.product.id_product_abstract,

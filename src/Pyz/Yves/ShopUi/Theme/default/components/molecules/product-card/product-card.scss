@@ -47,7 +47,13 @@ $name: '.product-card';
         }
 
         &--catalog {
-            padding: 0 $catalog-space-x rem(26);
+            @include helper-breakpoint-media-min($lg) {
+                padding-top: 0;
+            }
+
+            @include helper-breakpoint-media-min($xl) {
+                padding: 0 $catalog-space-x rem(26);
+            }
         }
 
         &--product-set {
@@ -71,11 +77,29 @@ $name: '.product-card';
         @include helper-breakpoint-media-min($lg) {
             padding-left: rem(10);
             padding-right: rem(10);
+            margin-left: rem(-10);
+            margin-right: rem(-10);
         }
 
         @include helper-breakpoint-media-min($xl) {
             margin: 0 (-$catalog-space-x) rem(15);
             padding: rem(8) $catalog-space-x;
+        }
+
+        &::before {
+            @include helper-effect-transition(background-color box-shadow);
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: $setting-color-alpha-2;
+            z-index: $setting-zi-element;
+
+            @include helper-breakpoint-media-min($lg) {
+                display: none;
+            }
         }
 
         &--product-set {
@@ -93,6 +117,10 @@ $name: '.product-card';
                 bottom: 0;
                 background-color: $setting-color-alpha-2;
                 z-index: $setting-zi-element;
+
+                @include helper-breakpoint-media-min($lg) {
+                    display: block;
+                }
             }
         }
     }
@@ -116,6 +144,19 @@ $name: '.product-card';
             line-height: rem(21);
             // Styles for multiline truncation with ellipsis Chrome only
             -webkit-line-clamp: 3;
+
+            &::before {
+                content: '';
+                @include helper-effect-transition(background-color box-shadow);
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                //height: rem(220);
+                background-color: $setting-color-alpha-2;
+                z-index: $setting-zi-element;
+            }
         }
 
         @include helper-breakpoint-media-min($xl) {
@@ -125,28 +166,17 @@ $name: '.product-card';
             letter-spacing: rem(0.2);
         }
 
-        &::before {
-            content: '';
-            @include helper-effect-transition(background-color box-shadow);
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: rem(220);
-            background-color: $setting-color-alpha-2;
-            z-index: $setting-zi-element;
 
-            @include helper-breakpoint-media-min($lg) {
-                height: auto;
-                bottom: 0;
-            }
-        }
 
         &--catalog {
-            font-size: rem(16);
-            line-height: normal;
-            letter-spacing: rem(0.1);
             color: $setting-color-gray-5;
+
+            @include helper-breakpoint-media-min($lg) {
+                height: rem(61);
+                font-size: rem(16);
+                line-height: normal;
+                letter-spacing: rem(0.1);
+            }
 
             &::before {
                 background-color: $setting-color-transparent;
@@ -154,9 +184,12 @@ $name: '.product-card';
         }
 
         &--product-set {
-            font-size: rem(16);
-            line-height: normal;
-            letter-spacing: rem(0.1);
+            @include helper-breakpoint-media-min($lg) {
+                height: rem(61);
+                font-size: rem(16);
+                line-height: normal;
+                letter-spacing: rem(0.1);
+            }
         }
 
         &:hover {
