@@ -38,6 +38,18 @@
 
     {% block header %}
         <form class="text-center common-section" method="POST" action="{{ path('cart/add-items') }}">
+            <div class="common-section__text">
+                {% block title %}
+                    <h2 class="common-section__title">{{ 'product.sets.widget.title' | trans }}</h2>
+                {% endblock %}
+
+                {% block description %}
+                    {% if data.description is not empty %}
+                        <p>{{ data.description }}</p>
+                    {% endif %}
+                {% endblock %}
+            </div>
+
             {% if data.addAllSetButton %}
                 {% set isDisabled = false %}
 
@@ -51,18 +63,6 @@
                         {% set isDisabled = true %}
                     {% endif %}
                 {% endfor %}
-
-                <div class="common-section__text">
-                    {% block title %}
-                        <h2 class="common-section__title">{{ 'product.sets.widget.title' | trans }}</h2>
-                    {% endblock %}
-
-                    {% block description %}
-                        {% if data.description is not empty %}
-                            <p>{{ data.description }}</p>
-                        {% endif %}
-                    {% endblock %}
-                </div>
 
                 <button type="submit" class="button spacing-bottom--biggest" {% if isDisabled %}disabled{% endif %}>
                     {{ 'product.set.detail.add_all_to' | trans }}
