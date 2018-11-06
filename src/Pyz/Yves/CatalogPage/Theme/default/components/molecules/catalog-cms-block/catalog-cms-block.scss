@@ -45,16 +45,43 @@
             }
         }
 
+        h2 {
+            color: $setting-color-gray-5;
+            font-size: rem(28);
+            line-height: 1.2;
+            margin-bottom: rem(16);
+
+            @include helper-breakpoint-media-min($lg) {
+                font-size: rem(30);
+            }
+
+            @include helper-breakpoint-media-min($xl) {
+                font-size: rem(32);
+                line-height: rem(41);
+                margin-bottom: rem(24);
+            }
+        }
+
         p {
+            font-size: rem(15);
             color: $setting-color-gray-2;
-            font-size: rem(18);
-            line-height: rem(29);
-            margin-top: rem(24);
+            line-height: 1.61;
+            max-width: rem(970);
+            margin: 0 auto rem(26);
+
+            @include helper-breakpoint-media-min($lg) {
+                font-size: map_get($setting-font-size, big);
+                margin-bottom: rem(40);
+            }
         }
     }
 
     &-wrap {
         background-color: $setting-color-gray-7;
-        padding: rem(50) 0 rem(38);
+        padding: rem(32) 0 rem(16);
+
+        @include helper-breakpoint-media-min($lg) {
+            padding: rem(50) 0 rem(38);
+        }
     }
 }

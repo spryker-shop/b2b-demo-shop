@@ -1,0 +1,61 @@
+@mixin shop-ui-cms-mobile-cutter($name: '.cms-mobile-cutter') {
+    #{$name} {
+        &--full-visible {
+            #{$name}__container {
+                max-height: none;
+                margin-bottom: 0;
+
+                &::after {
+                    display: none;
+                }
+            }
+
+            #{$name}__trigger-holder {
+                display: none;
+            }
+        }
+
+        &__container {
+            position: relative;
+            max-height: rem(220);
+            margin-bottom: rem(26);
+            overflow: hidden;
+
+            @include helper-breakpoint-media-min($lg) {
+                max-height: none;
+                margin-bottom: 0;
+            }
+
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 80px;
+                background: linear-gradient(to bottom, transparent 0%, $setting-color-white 100%);
+
+                @include helper-breakpoint-media-min($lg) {
+                    display: none;
+                }
+            }
+
+            &--bg-dark::after {
+                background: linear-gradient(to bottom, transparent 0%, $setting-color-gray-7 100%);
+            }
+        }
+
+        &__trigger-holder {
+            text-align: center;
+            padding-bottom: rem(26);
+
+            @include helper-breakpoint-media-min($lg) {
+                display: none;
+            }
+        }
+
+        @content;
+    }
+}
+
+@include shop-ui-cms-mobile-cutter();

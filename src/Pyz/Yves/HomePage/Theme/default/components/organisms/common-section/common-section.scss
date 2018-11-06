@@ -23,7 +23,7 @@
             background-color: $setting-color-gray-7;
 
             @include helper-breakpoint-media-min($lg) {
-                padding: rem(50) 0 rem(80);
+                padding: rem(50) 0 rem(50);
 
                 .product-card__container {
                     background-color: $setting-color-white;
@@ -46,47 +46,6 @@
         &--full-width {
             margin-left: -$setting-grid-space;
             margin-right: -$setting-grid-space;
-        }
-
-        &--mobile-partly-hidden {
-            #{$name}__text {
-                max-height: rem(168);
-                overflow: hidden;
-                // Styles for multiline truncation with ellipsis Chrome only
-                display: -webkit-box;
-                -webkit-line-clamp: 7;
-                -webkit-box-orient: vertical;
-
-                @include helper-breakpoint-media-min($lg) {
-                    max-height: none;
-                    // Styles for multiline truncation with ellipsis Chrome only
-                    -webkit-line-clamp: unset;
-                }
-
-                &:not(:first-of-type) {
-                    display: none;
-
-                    @include helper-breakpoint-media-min($lg) {
-                        display: block;
-                    }
-                }
-            }
-
-            &.is-full-visible-common-section {
-                #{$name}__text {
-                    max-height: none;
-                    // Styles for multiline truncation with ellipsis Chrome only
-                    -webkit-line-clamp: unset;
-
-                    &:not(:first-of-type) {
-                        display: block;
-                    }
-                }
-
-                #{$name}__trigger {
-                    display: none;
-                }
-            }
         }
 
         &__title {
@@ -128,7 +87,6 @@
 
             @include helper-breakpoint-media-min($lg) {
                 font-size: map_get($setting-font-size, big);
-                line-height: 1.61;
                 margin-bottom: rem(40);
             }
         }
@@ -138,15 +96,6 @@
 
             &:hover {
                 color: helper-color-dark($setting-color-gray-3);
-            }
-        }
-
-        &__trigger {
-            text-align: center;
-            padding-bottom: rem(26);
-
-            @include helper-breakpoint-media-min($lg) {
-                display: none;
             }
         }
     }
