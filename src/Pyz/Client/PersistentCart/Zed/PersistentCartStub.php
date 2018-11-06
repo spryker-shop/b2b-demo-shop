@@ -21,7 +21,6 @@ class PersistentCartStub extends SprykerPersistentCartStub
     public function addItem(PersistentCartChangeTransfer $persistentCartChangeTransfer): QuoteResponseTransfer
     {
         $quoteResponseTransfer = parent::addItem($persistentCartChangeTransfer);
-        $this->zedRequestClient->addFlashMessagesFromLastZedRequest();
 
         return $quoteResponseTransfer;
     }
