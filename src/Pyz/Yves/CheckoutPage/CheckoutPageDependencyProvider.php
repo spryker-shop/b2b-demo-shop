@@ -7,6 +7,7 @@
 
 namespace Pyz\Yves\CheckoutPage;
 
+use Pyz\Yves\CustomerPage\Form\RegisterForm;
 use Spryker\Yves\Kernel\Container;
 use Spryker\Yves\Kernel\Plugin\Pimple;
 use Spryker\Yves\Payment\Plugin\PaymentFormFilterPlugin;
@@ -17,7 +18,6 @@ use SprykerShop\Yves\CustomerPage\Form\CustomerCheckoutForm;
 use SprykerShop\Yves\CustomerPage\Form\DataProvider\CheckoutAddressFormDataProvider;
 use SprykerShop\Yves\CustomerPage\Form\GuestForm;
 use SprykerShop\Yves\CustomerPage\Form\LoginForm;
-use SprykerShop\Yves\CustomerPage\Form\RegisterForm;
 use SprykerShop\Yves\SalesOrderThresholdWidget\Plugin\CheckoutPage\SalesOrderThresholdWidgetPlugin;
 use Symfony\Component\Form\FormFactory;
 
