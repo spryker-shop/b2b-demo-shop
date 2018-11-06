@@ -86,6 +86,9 @@
                 {% endif %}
             {% endblock %}
 
+            {% block bundle %}
+            {% endblock %}
+
             {% block note %}
                 {% widget 'ShoppingListItemNoteWidget' args [data.listItem.shoppingListItem] only %}
                 {% elsewidget 'ShoppingListItemNoteWidgetPlugin' args [data.listItem.shoppingListItem] only %} {# @deprecated Use ShoppingListItemNoteWidget instead. #}
