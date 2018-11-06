@@ -18,14 +18,14 @@
             }
         }
 
-        &--product-set,
-        &--product-set:last-child {
+        &--product-set {
             border: none;
-            margin-bottom: 0;
-        }
+            margin-bottom: rem(8);
 
-        &--product-set:not(:first-child) {
-            margin-top: rem(8);
+            &:last-child {
+                border: none;
+                margin-bottom: 0;
+            }
         }
 
         &__title {
