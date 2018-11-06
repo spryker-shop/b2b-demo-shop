@@ -1,4 +1,4 @@
-{% extends template('product-set', 'ProductSetWidget') %}
+{% extends template('widget') %}
 
 {% define data = {
     title: _widget.productSet.name,
@@ -7,12 +7,14 @@
     images: _widget.productSet.imageSets.0.images | default([])
 } %}
 
-{% include organism('product-set-details', 'ProductSetWidget') ignore missing with {
-    data: {
-        title: data.title,
-        products: data.products,
-        description: data.description,
-        images: data.images
-    }
-} only %}
+{% block body %}
+    {% include organism('product-set-details', 'ProductSetWidget') ignore missing with {
+        data: {
+            title: data.title,
+            products: data.products,
+            description: data.description,
+            images: data.images
+        }
+    } only %}
+{% endblock %}
 
