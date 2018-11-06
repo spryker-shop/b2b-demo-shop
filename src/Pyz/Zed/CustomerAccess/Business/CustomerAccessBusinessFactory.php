@@ -9,12 +9,14 @@ namespace Pyz\Zed\CustomerAccess\Business;
 
 use Pyz\Zed\CustomerAccess\Business\CustomerAccess\CustomerAccessFilter;
 use Pyz\Zed\CustomerAccess\Business\CustomerAccess\CustomerAccessFilterInterface;
+use Pyz\Zed\CustomerAccess\Business\CustomerAccess\CustomerAccessUpdater;
+use Spryker\Zed\CustomerAccess\Business\CustomerAccess\CustomerAccessUpdaterInterface;
 use Spryker\Zed\CustomerAccess\Business\CustomerAccessBusinessFactory as SprykerCustomerAccessBusinessFactory;
 
 /**
  * @method \Pyz\Zed\CustomerAccess\CustomerAccessConfig getConfig()
  * @method \Spryker\Zed\CustomerAccess\Persistence\CustomerAccessRepositoryInterface getRepository()
- * @method \Spryker\Zed\CustomerAccess\Persistence\CustomerAccessEntityManagerInterface getEntityManager()
+ * @method \Pyz\Zed\CustomerAccess\Persistence\CustomerAccessEntityManagerInterface getEntityManager()
  */
 class CustomerAccessBusinessFactory extends SprykerCustomerAccessBusinessFactory
 {
@@ -25,6 +27,18 @@ class CustomerAccessBusinessFactory extends SprykerCustomerAccessBusinessFactory
     {
         return new CustomerAccessFilter(
             $this->getConfig()
+        );
+    }
+
+    /**
+     * @return \Spryker\Zed\CustomerAccess\Business\CustomerAccess\CustomerAccessUpdaterInterface
+     */
+    public function createCustomerAccessUpdater(): CustomerAccessUpdaterInterface
+    {
+        return new CustomerAccessUpdater(
+            $this->getEntityManager(),
+            $this->createCustomerAccessReader(),
+            $this->createCustomerAccessFilter()
         );
     }
 }

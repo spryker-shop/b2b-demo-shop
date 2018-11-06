@@ -14,7 +14,7 @@ interface CustomerAccessFacadeInterface extends SprykerCustomerAccessFacadeInter
 {
     /**
      * Specification:
-     * - Filters customer access transfer. Returns only manageable content types.
+     * - Filters only manageable content types. Manageable content type can be set up in config `getManageableContentTypes` method.
      *
      * @api
      *
