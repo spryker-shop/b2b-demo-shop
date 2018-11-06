@@ -19,8 +19,13 @@
         }
 
         &--product-set,
-        &--product-set:first-child {
+        &--product-set:last-child {
             border: none;
+            margin-bottom: 0;
+        }
+
+        &--product-set:not(:first-child) {
+            margin-top: rem(8);
         }
 
         &__title {
