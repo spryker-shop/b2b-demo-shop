@@ -9,13 +9,14 @@ namespace Pyz\Yves\CmsBlock;
 
 use Spryker\Yves\CmsBlock\CmsBlockDependencyProvider as SprykerCmsBlockDependencyProvider;
 use Spryker\Yves\CmsContentWidget\Plugin\CmsTwigContentRendererPlugin;
+use Spryker\Yves\CmsContentWidget\Plugin\CmsTwigContentRendererPluginInterface;
 
 class CmsBlockDependencyProvider extends SprykerCmsBlockDependencyProvider
 {
     /**
      * @return \Spryker\Yves\CmsContentWidget\Plugin\CmsTwigContentRendererPluginInterface
      */
-    protected function getCmsBlockTwigContentRendererPlugin()
+    protected function getCmsBlockTwigContentRendererPlugin(): CmsTwigContentRendererPluginInterface
     {
         return new CmsTwigContentRendererPlugin();
     }

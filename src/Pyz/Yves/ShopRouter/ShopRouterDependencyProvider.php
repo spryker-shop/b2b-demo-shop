@@ -19,7 +19,7 @@ class ShopRouterDependencyProvider extends SprykerShopRouterDependencyProvider
     /**
      * @return \SprykerShop\Yves\ShopRouterExtension\Dependency\Plugin\ResourceCreatorPluginInterface[]
      */
-    protected function getResourceCreatorPlugins()
+    protected function getResourceCreatorPlugins(): array
     {
         return [
             new PageResourceCreatorPlugin(),

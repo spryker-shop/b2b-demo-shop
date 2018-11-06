@@ -19,6 +19,10 @@ use Spryker\Zed\ZedNavigation\Communication\Console\BuildNavigationConsole;
 class SetupConfig extends SprykerSetupConfig
 {
     /**
+     * The following commands are a boilerplate stack. Please customize for your project.
+     *
+     * For a first initial migration you must use OPTION_NO_DIFF false.
+     *
      * @return array
      */
     public function getSetupInstallCommandNames()
@@ -26,6 +30,7 @@ class SetupConfig extends SprykerSetupConfig
         return [
             EmptyAllCachesConsole::COMMAND_NAME,
             EmptyGeneratedDirectoryConsole::COMMAND_NAME,
+            /** @project Project only, for Demoshop use PropelInstallConsole::COMMAND_NAME => ['--' . PropelInstallConsole::OPTION_NO_DIFF => true] */
             PropelInstallConsole::COMMAND_NAME,
             GeneratorConsole::COMMAND_NAME,
             InitializeDatabaseConsole::COMMAND_NAME,

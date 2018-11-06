@@ -8,6 +8,8 @@
 namespace Pyz\Zed\ProductStorage\Persistence;
 
 use Orm\Zed\Product\Persistence\Map\SpyProductAbstractLocalizedAttributesTableMap;
+use Orm\Zed\Product\Persistence\SpyProductAbstractLocalizedAttributesQuery;
+use Orm\Zed\ProductBundle\Persistence\SpyProductBundleQuery;
 use Orm\Zed\Url\Persistence\Map\SpyUrlTableMap;
 use Propel\Runtime\ActiveQuery\ModelCriteria;
 use Spryker\Zed\ProductStorage\Persistence\ProductStorageQueryContainer as SprykerProductStorageQueryContainer;
@@ -20,11 +22,11 @@ class ProductStorageQueryContainer extends SprykerProductStorageQueryContainer
     /**
      * @api
      *
-     * @param array $productAbstractIds
+     * @param int[] $productAbstractIds
      *
      * @return \Orm\Zed\Product\Persistence\SpyProductAbstractLocalizedAttributesQuery
      */
-    public function queryProductAbstractByIds(array $productAbstractIds)
+    public function queryProductAbstractByIds(array $productAbstractIds): SpyProductAbstractLocalizedAttributesQuery
     {
         $query = $this->getFactory()->getProductQueryContainer()
             ->queryAllProductAbstractLocalizedAttributes()
@@ -54,7 +56,7 @@ class ProductStorageQueryContainer extends SprykerProductStorageQueryContainer
      *
      * @return \Orm\Zed\ProductBundle\Persistence\SpyProductBundleQuery
      */
-    public function queryBundledProductIdsByProductConcreteId($idProductConcrete)
+    public function queryBundledProductIdsByProductConcreteId(int $idProductConcrete): SpyProductBundleQuery
     {
         return $this->getFactory()
             ->createProductBundleQuery()
