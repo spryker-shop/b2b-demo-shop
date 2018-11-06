@@ -54,37 +54,8 @@
             {% widget 'LanguageSwitcherWidget' args [app.request.pathInfo, app.request.queryString, app.request.requestUri] only %}{% endwidget %}
         </li>
 
-        {% if is_granted('ROLE_USER') and hasCompanyAccess() %}
-            {% widget 'MenuItemCompanyWidget' %}
-                {% block template %}
-                    <li class="col {{ config.name }}__action-item">
-                        {% spaceless %}{{ parent() }}{% endspaceless %}
-                        {% if can('SeeCompanyMenuPermissionPlugin') %}
-                            {% include molecule('navigation-list') with {
-                                modifiers: ['company-user'],
-                                data: {
-                                    nodes: [{
-                                        url: url('company/overview'),
-                                        title: 'company.account.overview' | trans
-                                    },
-                                        {
-                                            url: url('company/user'),
-                                            title: 'company.account.company_role.users' | trans
-                                        },
-                                        {
-                                            url: url('company/business-unit'),
-                                            title: 'company.account.business_unit' | trans
-                                        },
-                                        {
-                                            url: url('company/company-role'),
-                                            title: 'company.account.company_user.role' | trans
-                                        }]
-                                }
-                            } only %}
-                        {% endif %}
-                    </li>
-                {% endblock %}
-            {% endwidget %}
-        {% endif %}
+        <li class="col {{ config.name }}__action-item">
+            {{ widgetGlobal('MenuItemCompanyWidgetPlugin') }}
+        </li>
     </ul>
 {% endblock %}

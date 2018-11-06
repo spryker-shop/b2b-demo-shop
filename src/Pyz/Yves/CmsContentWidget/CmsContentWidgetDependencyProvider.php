@@ -25,7 +25,7 @@ class CmsContentWidgetDependencyProvider extends SprykerCmsContentWidgetDependen
      *
      * @return \Spryker\Yves\CmsContentWidget\Dependency\CmsContentWidgetPluginInterface[]
      */
-    public function getCmsContentWidgetPlugins()
+    public function getCmsContentWidgetPlugins(): array
     {
         return [
             CmsChartContentWidgetConfigurationProvider::FUNCTION_NAME => new CmsChartContentWidgetPlugin(

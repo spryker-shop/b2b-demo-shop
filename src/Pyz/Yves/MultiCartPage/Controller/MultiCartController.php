@@ -49,7 +49,7 @@ class MultiCartController extends SprykerShopMultiCartController
      *
      * @return string
      */
-    protected function getRefererUrl(Request $request)
+    protected function getRefererUrl(Request $request): string
     {
         if ($request->headers->has(static::REQUEST_HEADER_REFERER)) {
             return $request->headers->get(static::REQUEST_HEADER_REFERER);

@@ -19,7 +19,7 @@ class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
     /**
      * @return \Spryker\Client\Customer\Dependency\Plugin\CustomerSessionGetPluginInterface[]
      */
-    protected function getCustomerSessionGetPlugins()
+    protected function getCustomerSessionGetPlugins(): array
     {
         return [
             new CustomerTransferSessionRefreshPlugin(),
@@ -29,7 +29,7 @@ class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
     /**
      * @return \Spryker\Client\Customer\Dependency\Plugin\CustomerSessionSetPluginInterface[]
      */
-    protected function getCustomerSessionSetPlugins()
+    protected function getCustomerSessionSetPlugins(): array
     {
         return [
             new GuestCartSaveCustomerSessionSetPlugin(), #MultiCartFeature
@@ -41,7 +41,7 @@ class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
     /**
      * @return \Spryker\Client\Customer\Dependency\Plugin\DefaultAddressChangePluginInterface[]
      */
-    protected function getDefaultAddressChangePlugins()
+    protected function getDefaultAddressChangePlugins(): array
     {
         return [
             new CustomerAddressSessionUpdatePlugin(),

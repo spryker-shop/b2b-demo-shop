@@ -20,7 +20,7 @@ class CheckoutPageDependencyInjector extends SprykerCheckoutPageDependencyInject
      *
      * @return \Spryker\Shared\Kernel\ContainerInterface
      */
-    protected function injectPaymentSubForms(ContainerInterface $container)
+    protected function injectPaymentSubForms(ContainerInterface $container): ContainerInterface
     {
         $container->extend(CheckoutDependencyProvider::PAYMENT_SUB_FORMS, function (SubFormPluginCollection $paymentSubForms) {
             $paymentSubForms->add(new DummyPaymentInvoiceSubFormPlugin());
