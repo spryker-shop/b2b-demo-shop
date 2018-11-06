@@ -21,6 +21,8 @@ class CustomerAccessForm extends SprykerCustomerAccessForm
 {
     public const OPTION_CONTENT_TYPE_ACCESS_MANAGEABLE = 'OPTION_CONTENT_TYPE_ACCESS_MANAGEABLE';
     public const OPTION_CONTENT_TYPE_ACCESS_NON_MANAGEABLE = 'OPTION_CONTENT_TYPE_ACCESS_NON_MANAGEABLE';
+    public const OPTION_CONTENT_TYPE_ACCESS_NON_MANAGEABLE_DATA = 'OPTION_CONTENT_TYPE_ACCESS_NON_MANAGEABLE_DATA';
+    protected const FIELD_CONTENT_TYPE_ACCESS_NON_MANAGEABLE = 'contentTypeAccessNonManageable';
 
     /**
      * @param \Symfony\Component\OptionsResolver\OptionsResolver $resolver
@@ -30,6 +32,8 @@ class CustomerAccessForm extends SprykerCustomerAccessForm
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setRequired(static::OPTION_CONTENT_TYPE_ACCESS_MANAGEABLE);
+        $resolver->setRequired(static::OPTION_CONTENT_TYPE_ACCESS_NON_MANAGEABLE);
+        $resolver->setRequired(static::OPTION_CONTENT_TYPE_ACCESS_NON_MANAGEABLE_DATA);
     }
 
     /**
@@ -41,6 +45,7 @@ class CustomerAccessForm extends SprykerCustomerAccessForm
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $this->addContentTypeAccessManageable($builder, $options);
+        $this->addContentTypeAccessNonManageable($builder, $options);
     }
 
     /**
@@ -72,6 +77,29 @@ class CustomerAccessForm extends SprykerCustomerAccessForm
             }, function ($customerAccess): ArrayObject {
                 return new ArrayObject($customerAccess);
             }));
+
+        return $this;
+    }
+
+    /**
+     * @param \Symfony\Component\Form\FormBuilderInterface $builder
+     * @param array $options
+     *
+     * @return $this
+     */
+    protected function addContentTypeAccessNonManageable(FormBuilderInterface $builder, array $options): self
+    {
+        $builder->add(static::FIELD_CONTENT_TYPE_ACCESS_NON_MANAGEABLE, ChoiceType::class, [
+            'mapped' => false,
+            'expanded' => true,
+            'multiple' => true,
+            'required' => false,
+            'disabled' => true,
+            'choice_label' => 'contentType',
+            'choice_value' => 'contentType',
+            'data' => $options[static::OPTION_CONTENT_TYPE_ACCESS_NON_MANAGEABLE_DATA],
+            'choices' => $options[static::OPTION_CONTENT_TYPE_ACCESS_NON_MANAGEABLE],
+        ]);
 
         return $this;
     }

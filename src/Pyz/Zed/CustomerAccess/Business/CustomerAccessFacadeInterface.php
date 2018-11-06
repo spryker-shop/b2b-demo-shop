@@ -23,4 +23,16 @@ interface CustomerAccessFacadeInterface extends SprykerCustomerAccessFacadeInter
      * @return \Generated\Shared\Transfer\CustomerAccessTransfer
      */
     public function filterManageableContentTypes(CustomerAccessTransfer $customerAccessTransfer): CustomerAccessTransfer;
+
+    /**
+     * Specification:
+     * - Filters only non manageable content types. Manageable content type can be set up in config `getManageableContentTypes` method.
+     *
+     * @api
+     *
+     * @param \Generated\Shared\Transfer\CustomerAccessTransfer $customerAccessTransfer
+     *
+     * @return \Generated\Shared\Transfer\CustomerAccessTransfer
+     */
+    public function filterNonManageableContentTypes(CustomerAccessTransfer $customerAccessTransfer): CustomerAccessTransfer;
 }

@@ -31,4 +31,20 @@ class CustomerAccessFacade extends SprykerCustomerAccessFacade implements Custom
             ->createCustomerAccessFilter()
             ->filterManageableContentTypes($customerAccessTransfer);
     }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @api
+     *
+     * @param \Generated\Shared\Transfer\CustomerAccessTransfer $customerAccessTransfer
+     *
+     * @return \Generated\Shared\Transfer\CustomerAccessTransfer
+     */
+    public function filterNonManageableContentTypes(CustomerAccessTransfer $customerAccessTransfer): CustomerAccessTransfer
+    {
+        return $this->getFactory()
+            ->createCustomerAccessFilter()
+            ->filterNonManageableContentTypes($customerAccessTransfer);
+    }
 }
