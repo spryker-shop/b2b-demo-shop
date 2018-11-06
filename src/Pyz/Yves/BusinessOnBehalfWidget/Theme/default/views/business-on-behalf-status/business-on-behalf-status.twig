@@ -1,0 +1,35 @@
+{% extends template('widget') %}
+
+{% define data = {
+    isOnBehalf: _widget.isOnBehalf,
+    companyName: _widget.companyName,
+    companyBusinessUnitName: _widget.companyBusinessUnitName,
+    isVisible: _widget.isVisible,
+    isActivePage: _widget.isActivePage
+} %}
+
+{% block template %}
+    {% if data.isVisible %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+    {% set label = '' %}
+    {% if data.isOnBehalf and data.companyName is not empty and data.companyBusinessUnitName is not empty %}
+        {% set label = data.companyName ~ ' / ' ~ data.companyBusinessUnitName %}
+    {% else %}
+        {% set label = 'business_on_behalf_widget.no_selected_company' | trans %}
+    {% endif %}
+
+    {% include molecule('navigation-sidebar-item') with {
+        data: {
+            url: path('company/user/select'),
+            icon: 'building',
+            label: label,
+            name: 'no-company',
+            active: data.isActivePage
+        },
+        modifiers: data.isActivePage ? ['active'] : []
+    } only %}
+{% endblock %}

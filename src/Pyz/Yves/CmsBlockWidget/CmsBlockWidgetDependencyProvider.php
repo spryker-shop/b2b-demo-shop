@@ -16,7 +16,7 @@ class CmsBlockWidgetDependencyProvider extends SprykerCmsBlockWidgetDependencyPr
     /**
      * @return \Spryker\Yves\Twig\Plugin\TwigFunctionPluginInterface[]
      */
-    protected function getTwigFunctionPlugins()
+    protected function getTwigFunctionPlugins(): array
     {
         return [
             new TwigCmsBlock(),

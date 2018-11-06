@@ -30,16 +30,20 @@
 
                 <tr class="{{ config.name }}__row">
                     {% block row %}
-                        {% include [
-                            molecule('order-detail-product-packaging-unit', 'ProductPackagingUnitWidget'),
-                            molecule('order-detail-product-packaging-unit-default', 'CustomerPage'),
-                        ] ignore missing with {
-                            data: {
-                                concreteItem: item,
-                                currencyIsoCode: data.currencyIsoCode,
-                                concreteItemDefault: concreteItem
-                            }
-                        } only %}
+                        {% if widgetExists('OrderDetailProductPackagingUnitWidgetPlugin') %}
+                            {{ widget('OrderDetailProductPackagingUnitWidgetPlugin', item, data.currencyIsoCode) }} {# @deprecated Use molecule('order-detail-product-packaging-unit', 'ProductPackagingUnitWidget') instead. #}
+                        {% else %}
+                            {% include [
+                                molecule('order-detail-product-packaging-unit', 'ProductPackagingUnitWidget'),
+                                molecule('order-detail-product-packaging-unit-default', 'CustomerPage'),
+                                ] ignore missing with {
+                                data: {
+                                    concreteItem: concreteItem,
+                                    currencyIsoCode: data.currencyIsoCode,
+                                    concreteItemDefault: concreteItem
+                                }
+                            } only %}
+                        {% endif %}
                     {% endblock %}
                 </tr>
 

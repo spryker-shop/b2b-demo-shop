@@ -18,6 +18,8 @@ use Spryker\Zed\CmsPageSearch\Communication\Plugin\Synchronization\CmsPageSynchr
 use Spryker\Zed\CmsStorage\Communication\Plugin\Synchronization\CmsSynchronizationDataPlugin;
 use Spryker\Zed\GlossaryStorage\Communication\Plugin\Synchronization\GlossarySynchronizationDataPlugin;
 use Spryker\Zed\NavigationStorage\Communication\Plugin\Synchronization\NavigationSynchronizationDataPlugin;
+use Spryker\Zed\PriceProductMerchantRelationshipStorage\Communication\Plugin\Synchronization\PriceProductAbstractMerchantRelationSynchronizationDataPlugin;
+use Spryker\Zed\PriceProductMerchantRelationshipStorage\Communication\Plugin\Synchronization\PriceProductConcreteMerchantRelationSynchronizationDataPlugin;
 use Spryker\Zed\PriceProductStorage\Communication\Plugin\Synchronization\PriceProductAbstractSynchronizationDataPlugin;
 use Spryker\Zed\PriceProductStorage\Communication\Plugin\Synchronization\PriceProductConcreteSynchronizationDataPlugin;
 use Spryker\Zed\ProductCategoryFilterStorage\Communication\Plugin\Synchronization\ProductCategoryFilterSynchronizationDataPlugin;
@@ -95,6 +97,8 @@ class SynchronizationDependencyProvider extends SprykerSynchronizationDependency
             new ShoppingListSynchronizationDataPlugin(),
             new ProductAbstractProductListSynchronizationDataPlugin(),
             new ProductConcreteProductListSynchronizationDataPlugin(),
+            new PriceProductConcreteMerchantRelationSynchronizationDataPlugin(),
+            new PriceProductAbstractMerchantRelationSynchronizationDataPlugin(),
         ];
     }
 }

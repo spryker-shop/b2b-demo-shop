@@ -7,9 +7,9 @@
 
 namespace Pyz\Zed\ShoppingListDataImport;
 
-use Spryker\Zed\ShoppingListDataImport\ShoppingListDataImportConfig as CoreShoppingListDataImportConfig;
+use Spryker\Zed\ShoppingListDataImport\ShoppingListDataImportConfig as SprykerShoppingListDataImportConfig;
 
-class ShoppingListDataImportConfig extends CoreShoppingListDataImportConfig
+class ShoppingListDataImportConfig extends SprykerShoppingListDataImportConfig
 {
     /**
      * @return string

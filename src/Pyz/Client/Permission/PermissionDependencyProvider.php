@@ -18,11 +18,11 @@ use Spryker\Client\CustomerAccessPermission\Plugin\SeeWishlistPermissionPlugin;
 use Spryker\Client\Permission\PermissionDependencyProvider as SprykerPermissionDependencyProvider;
 use Spryker\Client\SharedCart\Plugin\ReadSharedCartPermissionPlugin;
 use Spryker\Client\SharedCart\Plugin\WriteSharedCartPermissionPlugin;
+use Spryker\Client\ShoppingList\Plugin\ReadShoppingListPermissionPlugin;
 use Spryker\Client\ShoppingList\Plugin\WriteShoppingListPermissionPlugin;
 use Spryker\Shared\CheckoutPermissionConnector\Plugin\Permission\PlaceOrderWithAmountUpToPermissionPlugin;
 use Spryker\Shared\CompanyUser\Plugin\AddCompanyUserPermissionPlugin;
 use Spryker\Shared\CompanyUserInvitation\Plugin\ManageCompanyUserInvitationPermissionPlugin;
-use Spryker\Zed\ShoppingList\Communication\Plugin\ReadShoppingListPermissionPlugin;
 use SprykerShop\Shared\CartPage\Plugin\AddCartItemPermissionPlugin;
 use SprykerShop\Shared\CartPage\Plugin\ChangeCartItemPermissionPlugin;
 use SprykerShop\Shared\CartPage\Plugin\RemoveCartItemPermissionPlugin;
@@ -64,7 +64,6 @@ class PermissionDependencyProvider extends SprykerPermissionDependencyProvider
             new SeeAddToCartPermissionPlugin(), #CustomerAccessFeature
             new SeeWishlistPermissionPlugin(), #CustomerAccessFeature
             new SeeShoppingListPermissionPlugin(), #CustomerAccessFeature
-            new SeeCompanyMenuPermissionPlugin(),
         ];
     }
 }

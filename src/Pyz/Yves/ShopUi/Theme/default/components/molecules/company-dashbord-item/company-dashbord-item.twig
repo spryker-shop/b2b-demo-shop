@@ -1,0 +1,28 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'company-dashbord-item'
+} %}
+
+{% define data = {
+    title: required,
+    icon: required
+} %}
+
+{% block body %}
+    <div class="spacing-y grid grid--bottom grid--justify">
+        {% block title %}
+            <h4 class="col">{{ data.title }}</h4>
+        {% endblock %}
+        {% block icon %}
+            {% include atom('icon') with {
+                modifiers: ['title'],
+                class: 'col',
+                data: {
+                    name: data.icon
+                }
+            } only %}
+        {% endblock %}
+    </div>
+    {% block content %}{% endblock %}
+{% endblock %}

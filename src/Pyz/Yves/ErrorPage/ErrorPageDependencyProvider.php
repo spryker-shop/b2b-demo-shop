@@ -15,7 +15,7 @@ class ErrorPageDependencyProvider extends SprykerErrorPageDependencyProvider
     /**
      * @return \SprykerShop\Yves\ErrorPage\Dependency\Plugin\ExceptionHandlerPluginInterface[]
      */
-    protected function getExceptionHandlerPlugins()
+    protected function getExceptionHandlerPlugins(): array
     {
         return [
             new SubRequestExceptionHandlerPlugin(),

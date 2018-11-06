@@ -11,7 +11,6 @@ use Spryker\Shared\Application\Log\Config\SprykerLoggerConfig;
 use Spryker\Shared\Config\ConfigConstants;
 use Spryker\Shared\ErrorHandler\ErrorHandlerConstants;
 use Spryker\Shared\ErrorHandler\ErrorRenderer\WebExceptionErrorRenderer;
-use Spryker\Shared\GlueApplication\GlueApplicationConstants;
 use Spryker\Shared\Kernel\KernelConstants;
 use Spryker\Shared\Log\LogConstants;
 use Spryker\Shared\Oauth\OauthConstants;
@@ -19,6 +18,7 @@ use Spryker\Shared\OauthCustomerConnector\OauthCustomerConnectorConstants;
 use Spryker\Shared\Propel\PropelConstants;
 use Spryker\Shared\RabbitMq\RabbitMqEnv;
 use Spryker\Shared\Search\SearchConstants;
+use Spryker\Shared\Session\SessionConfig;
 use Spryker\Shared\Session\SessionConstants;
 use Spryker\Shared\Setup\SetupConstants;
 use Spryker\Shared\Storage\StorageConstants;
@@ -47,13 +47,13 @@ $config[StorageConstants::STORAGE_REDIS_DATABASE] = 3;
 
 // ---------- Session
 $config[SessionConstants::SESSION_IS_TEST] = (bool)getenv("SESSION_IS_TEST");
-$config[SessionConstants::YVES_SESSION_SAVE_HANDLER] = SessionConstants::SESSION_HANDLER_REDIS;
+$config[SessionConstants::YVES_SESSION_SAVE_HANDLER] = SessionConfig::SESSION_HANDLER_REDIS;
 $config[SessionConstants::YVES_SESSION_REDIS_PROTOCOL] = $config[StorageConstants::STORAGE_REDIS_PROTOCOL];
 $config[SessionConstants::YVES_SESSION_REDIS_HOST] = $config[StorageConstants::STORAGE_REDIS_HOST];
 $config[SessionConstants::YVES_SESSION_REDIS_PORT] = $config[StorageConstants::STORAGE_REDIS_PORT];
 $config[SessionConstants::YVES_SESSION_REDIS_PASSWORD] = $config[StorageConstants::STORAGE_REDIS_PASSWORD];
 $config[SessionConstants::ZED_SESSION_COOKIE_SECURE] = false;
-$config[SessionConstants::ZED_SESSION_SAVE_HANDLER] = SessionConstants::SESSION_HANDLER_REDIS;
+$config[SessionConstants::ZED_SESSION_SAVE_HANDLER] = SessionConfig::SESSION_HANDLER_REDIS;
 $config[SessionConstants::ZED_SESSION_REDIS_PROTOCOL] = $config[SessionConstants::YVES_SESSION_REDIS_PROTOCOL];
 $config[SessionConstants::ZED_SESSION_REDIS_HOST] = $config[SessionConstants::YVES_SESSION_REDIS_HOST];
 $config[SessionConstants::ZED_SESSION_REDIS_PORT] = $config[SessionConstants::YVES_SESSION_REDIS_PORT];
@@ -123,8 +123,6 @@ $config[LogConstants::LOGGER_CONFIG] = SprykerLoggerConfig::class;
 $config[WebProfilerConstants::ENABLE_WEB_PROFILER]
     = $config[ConfigConstants::ENABLE_WEB_PROFILER]
     = false;
-
-$config[GlueApplicationConstants::GLUE_APPLICATION_REST_DEBUG] = true;
 
 // ----------- OAUTH
 $config[OauthConstants::PRIVATE_KEY_PATH] = 'file://' . APPLICATION_ROOT_DIR . '/config/Zed/dev_only_private.key';

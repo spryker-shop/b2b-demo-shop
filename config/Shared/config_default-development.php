@@ -10,7 +10,6 @@ use Spryker\Shared\Application\ApplicationConstants;
 use Spryker\Shared\Config\ConfigConstants;
 use Spryker\Shared\ErrorHandler\ErrorHandlerConstants;
 use Spryker\Shared\ErrorHandler\ErrorRenderer\WebExceptionErrorRenderer;
-use Spryker\Shared\GlueApplication\GlueApplicationConstants;
 use Spryker\Shared\Kernel\KernelConstants;
 use Spryker\Shared\Kernel\Store;
 use Spryker\Shared\Log\LogConstants;
@@ -20,6 +19,7 @@ use Spryker\Shared\Propel\PropelConstants;
 use Spryker\Shared\PropelOrm\PropelOrmConstants;
 use Spryker\Shared\PropelQueryBuilder\PropelQueryBuilderConstants;
 use Spryker\Shared\RabbitMq\RabbitMqEnv;
+use Spryker\Shared\Session\SessionConfig;
 use Spryker\Shared\Session\SessionConstants;
 use Spryker\Shared\Setup\SetupConstants;
 use Spryker\Shared\Storage\StorageConstants;
@@ -105,7 +105,7 @@ $config[SessionConstants::ZED_SESSION_REDIS_HOST] = $config[SessionConstants::YV
 $config[SessionConstants::ZED_SESSION_REDIS_PORT] = $config[SessionConstants::YVES_SESSION_REDIS_PORT];
 $config[SessionConstants::ZED_SESSION_REDIS_PASSWORD] = $config[SessionConstants::YVES_SESSION_REDIS_PASSWORD];
 $config[SessionConstants::ZED_SESSION_REDIS_DATABASE] = 2;
-$config[SessionConstants::ZED_SESSION_TIME_TO_LIVE] = SessionConstants::SESSION_LIFETIME_1_YEAR;
+$config[SessionConstants::ZED_SESSION_TIME_TO_LIVE] = SessionConfig::SESSION_LIFETIME_1_YEAR;
 
 // ---------- Jenkins
 $config[SetupConstants::JENKINS_BASE_URL] = 'http://localhost:10007/';
@@ -141,9 +141,6 @@ $baseLogFilePath = sprintf('%s/data/%s/logs', APPLICATION_ROOT_DIR, $CURRENT_STO
 
 $config[LogConstants::EXCEPTION_LOG_FILE_PATH_YVES] = $baseLogFilePath . '/YVES/exception.log';
 $config[LogConstants::EXCEPTION_LOG_FILE_PATH_ZED] = $baseLogFilePath . '/ZED/exception.log';
-
-// ----------- Glue Application
-$config[GlueApplicationConstants::GLUE_APPLICATION_REST_DEBUG] = true;
 
 // ----------- OAUTH
 $config[OauthConstants::PRIVATE_KEY_PATH] = 'file://' . APPLICATION_ROOT_DIR . '/config/Zed/dev_only_private.key';

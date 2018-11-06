@@ -31,7 +31,8 @@ class PersistentCartFactory extends SprykerPersistentCartFactory
         return new CustomerLoginQuoteSync(
             $this->createZedPersistentCartStub(),
             $this->getQuoteClient(),
-            $this->createQuoteUpdatePluginExecutor()
+            $this->createQuoteUpdatePluginExecutor(),
+            $this->getZedRequestClient()
         );
     }
 }

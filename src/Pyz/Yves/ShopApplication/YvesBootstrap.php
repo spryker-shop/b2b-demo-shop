@@ -7,7 +7,6 @@
 
 namespace Pyz\Yves\ShopApplication;
 
-use Pyz\Yves\CustomerPage\Plugin\Provider\CustomerTwigFunctionServiceProvider;
 use Pyz\Yves\ExampleProductSalePage\Plugin\Provider\ExampleProductSaleControllerProvider;
 use Pyz\Yves\MultiCartPage\Plugin\Provider\MultiCartPageControllerProvider;
 use Pyz\Yves\PriceWidget\Plugin\Provider\TwigPriceModeFunctionServiceProvider;
@@ -90,7 +89,6 @@ use SprykerShop\Yves\ShopRouter\Plugin\Router\StorageRouter;
 use SprykerShop\Yves\ShopTranslator\Plugin\Provider\TranslationServiceProvider;
 use SprykerShop\Yves\ShopUi\Plugin\Provider\ShopUiTwigServiceProvider;
 use SprykerShop\Yves\WebProfilerWidget\Plugin\ServiceProvider\WebProfilerWidgetServiceProvider;
-use SprykerShop\Yves\WishlistPage\Plugin\Provider\WishlistPageControllerProvider;
 
 class YvesBootstrap extends SprykerYvesBootstrap
 {
@@ -118,7 +116,6 @@ class YvesBootstrap extends SprykerYvesBootstrap
         $this->application->register(new SprykerSessionServiceProvider());
         $this->application->register(new SecurityServiceProvider());
         $this->application->register(new CustomerSecurityServiceProvider());
-        $this->application->register(new CustomerTwigFunctionServiceProvider());
         $this->application->register(new YvesSecurityServiceProvider());
         $this->application->register(new YvesExceptionServiceProvider());
         $this->application->register(new ErrorPageServiceProvider());
@@ -191,7 +188,6 @@ class YvesBootstrap extends SprykerYvesBootstrap
             new CustomerReorderControllerProvider($isSsl),
             new NewsletterPageControllerProvider($isSsl),
             new CartControllerProvider($isSsl),
-            new WishlistPageControllerProvider($isSsl),
             new HeartbeatPageControllerProvider($isSsl),
             new NewsletterWidgetControllerProvider($isSsl),
             new CatalogPageControllerProvider($isSsl),

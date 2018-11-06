@@ -24,7 +24,7 @@ class ExampleProductSalePageDependencyProvider extends AbstractBundleDependencyP
      *
      * @return \Spryker\Yves\Kernel\Container
      */
-    public function provideDependencies(Container $container)
+    public function provideDependencies(Container $container): Container
     {
         $container = $this->addSearchClient($container);
         $container = $this->addUrlStorageClient($container);
@@ -40,7 +40,7 @@ class ExampleProductSalePageDependencyProvider extends AbstractBundleDependencyP
      *
      * @return \Spryker\Yves\Kernel\Container
      */
-    protected function addSearchClient(Container $container)
+    protected function addSearchClient(Container $container): Container
     {
         $container[self::CLIENT_SEARCH] = function (Container $container) {
             return $container->getLocator()->search()->client();
@@ -54,7 +54,7 @@ class ExampleProductSalePageDependencyProvider extends AbstractBundleDependencyP
      *
      * @return \Spryker\Yves\Kernel\Container
      */
-    protected function addUrlStorageClient(Container $container)
+    protected function addUrlStorageClient(Container $container): Container
     {
         $container[self::CLIENT_URL_STORAGE] = function (Container $container) {
             return $container->getLocator()->urlStorage()->client();
@@ -68,7 +68,7 @@ class ExampleProductSalePageDependencyProvider extends AbstractBundleDependencyP
      *
      * @return \Spryker\Yves\Kernel\Container
      */
-    protected function addStore($container)
+    protected function addStore($container): Container
     {
         $container[self::STORE] = function () {
             return Store::getInstance();
@@ -82,7 +82,7 @@ class ExampleProductSalePageDependencyProvider extends AbstractBundleDependencyP
      *
      * @return \Spryker\Yves\Kernel\Container
      */
-    protected function addCatalogClient(Container $container)
+    protected function addCatalogClient(Container $container): Container
     {
         $container[self::CLIENT_CATALOG] = function (Container $container) {
             return $container->getLocator()->catalog()->client();
@@ -96,7 +96,7 @@ class ExampleProductSalePageDependencyProvider extends AbstractBundleDependencyP
      *
      * @return \Spryker\Yves\Kernel\Container
      */
-    protected function addProductSalePageWidgetPlugins($container)
+    protected function addProductSalePageWidgetPlugins($container): Container
     {
         $container[self::PLUGIN_PRODUCT_SALE_PAGE_WIDGETS] = function () {
             return $this->getProductSalePageWidgetPlugins();

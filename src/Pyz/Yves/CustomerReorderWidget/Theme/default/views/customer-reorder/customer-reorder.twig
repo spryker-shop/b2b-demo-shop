@@ -2,7 +2,7 @@
 
 {% block reorderAction %}
     <a class="link link--alt link--action"
-       href="{{ path('customer/order/reorder', {'idOrder': _widget.order.idSalesOrder}) }}"
+       href="{{ path('customer/order/reorder', {'idSalesOrder': _widget.order.idSalesOrder}) }}"
        title="{{ 'customer.order.reorder' | trans }}"
     >
         {% include atom('icon') with {
@@ -42,7 +42,7 @@
             </button>
         </div>
         <div class="form-field col col--sm-5 col--lg-3">
-            <a href="{{ path('customer/order/reorder', {'idOrder': _widget.order.idSalesOrder}) }}" class="button button--expand">
+            <a href="{{ path('customer/order/reorder', {'idSalesOrder': _widget.order.idSalesOrder}) }}" class="button button--expand">
                 {{ 'customer.order.reorder_all' | trans }}
             </a>
         </div>

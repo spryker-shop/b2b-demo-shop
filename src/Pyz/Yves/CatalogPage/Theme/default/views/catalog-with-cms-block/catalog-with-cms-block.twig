@@ -24,11 +24,18 @@
         showAlwaysFirstAndLast: true
     }
 } %}
+{% block contentTop %}
+    {% if data.categoryId is not empty %}
+        <div class="catalog-cms-block catalog-cms-block--sidebar">
+            {{ widgetBlock('CatalogCmsBlockWidgetPlugin', 'top', data.categoryId) }}
+        </div>
+    {% endif %}
+{% endblock %}
 
 {% block filterBar %}
     {{parent()}}
 
-    {% if data.categoryId %}
+    {% if data.categoryId is not empty %}
         <div class="catalog-cms-block catalog-cms-block--sidebar">
             {{ widgetBlock('CatalogCmsBlockWidgetPlugin', 'middle', data.categoryId) }}
         </div>
@@ -36,7 +43,7 @@
 {% endblock %}
 
 {% block contentBottom %}
-    {% if data.categoryId %}
+    {% if data.categoryId is not empty %}
         <div class="catalog-cms-block-wrap">
             <div class="container catalog-cms-block catalog-cms-block--bottom">
                 {{ widgetBlock('CatalogCmsBlockWidgetPlugin', 'bottom', data.categoryId) }}

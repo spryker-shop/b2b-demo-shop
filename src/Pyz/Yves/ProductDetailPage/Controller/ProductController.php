@@ -30,17 +30,21 @@ class ProductController extends SprykerShopProductController
      */
     protected function executeDetailAction(array $productData, Request $request): array
     {
-        if (!empty($productData[static::KEY_ID_PRODUCT_ABSTRACT]) && $this->isProductAbstractRestricted($productData[static::KEY_ID_PRODUCT_ABSTRACT])) {
+        if (!empty($productData[static::KEY_ID_PRODUCT_ABSTRACT]) &&
+            $this->getFactory()->getProductStorageClient()->isProductAbstractRestricted($productData[static::KEY_ID_PRODUCT_ABSTRACT])
+        ) {
             throw new NotFoundHttpException();
         }
 
         $productViewTransfer = $this->getFactory()
             ->getProductStorageClient()
             ->mapProductStorageData($productData, $this->getLocale(), $this->getSelectedAttributes($request));
+
         $quoteTransfer = new QuoteTransfer();
         $quoteTransfer->addItem(
             (new ItemTransfer())->setIdProductAbstract($productViewTransfer->getIdProductAbstract())
         );
+
         $bundledProducts = [];
         foreach ($productViewTransfer->getBundledProductIds() as $productId => $quantity) {
             $bundledProduct = $this->getFactory()->getProductStoragePyzClient()->findProductConcreteStorageData($productId, $this->getLocale());
@@ -50,7 +54,9 @@ class ProductController extends SprykerShopProductController
             $bundledProductView = $this->getFactory()->getProductStoragePyzClient()->mapProductStorageData(
                 [
                     'idProductAbstract' => $bundledProduct['id_product_abstract'],
-                    'attributeMap' => [],
+                    'attribute_map' => [
+                        'product_concrete_ids' => [],
+                        ],
                     'sku' => $bundledProduct['sku'],
                     'idProductConcrete' => $bundledProduct['id_product_concrete'],
                 ],

@@ -84,14 +84,13 @@ class SaleSearchQueryPlugin extends AbstractPlugin implements QueryInterface
             ->getProductLabelStorageClient()
             ->findLabelByName($labelName, $localeName);
 
+        $labelId = $storageProductLabelTransfer ? $storageProductLabelTransfer->getIdProductLabel() : 0;
+
+        $newProductsBoolQuery = new BoolQuery();
+
         $stringFacetFieldFilter = $this->createStringFacetFieldFilter(ProductLabelFacetConfigTransferBuilderPlugin::NAME);
-        if ($storageProductLabelTransfer === null) {
-            return (new BoolQuery())->addFilter($stringFacetFieldFilter);
-        }
+        $stringFacetValueFilter = $this->createStringFacetValueFilter($labelId);
 
-        $stringFacetValueFilter = $this->createStringFacetValueFilter($storageProductLabelTransfer->getIdProductLabel());
-
-        $newProductsBoolQuery = (new BoolQuery())->addFilter($stringFacetFieldFilter);
         $newProductsBoolQuery
             ->addFilter($stringFacetFieldFilter)
             ->addFilter($stringFacetValueFilter);
