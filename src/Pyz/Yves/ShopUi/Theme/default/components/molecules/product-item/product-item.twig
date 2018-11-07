@@ -105,7 +105,8 @@
             {% endblock %}
 
             {% block bundle %}
-                {% widget 'ProductBundleItemsMultiCartItemsListWidget' args [data.listItem, data.list] only %}{% endwidget %}
+                {% widget 'ProductBundleCartItemsListWidget' args [data.listItem, data.list] only %}
+                {% endwidget %}
             {% endblock %}
 
             {% block note %}
