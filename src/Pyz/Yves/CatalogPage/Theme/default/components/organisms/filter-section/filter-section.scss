@@ -1,12 +1,20 @@
 .filter-section {
     margin-top: rem(35);
 
-    &__item:not(&__item--hollow) {
+    &__item {
         border: 1px solid $setting-color-gray-1;
+        border-bottom: none;
         padding: rem(18) 20px;
 
-        & + #{&} {
-            border-top: none;
+        &:last-of-type {
+            border-bottom: 1px solid $setting-color-gray-1;
+        }
+
+        &--hollow {
+            @include helper-breakpoint-media-min($lg) {
+                border: none;
+                padding: 0;
+            }
         }
     }
 
@@ -15,10 +23,18 @@
         font: fw(bold) rem(12)/rem(15) $setting-font-family;
         text-transform: uppercase;
         letter-spacing: rem(0.37);
+
+        &--desktop-hidden {
+            @include helper-breakpoint-media-min($lg) {
+                display: none;
+            }
+        }
     }
 
     &__item--hollow {
-        margin-bottom: rem(40);
+        @include helper-breakpoint-media-min($lg) {
+            margin-bottom: rem(40);
+        }
     }
 
     &__item-content,

@@ -1,4 +1,10 @@
 .filter-category {
+    &.is-hidden {
+        @include helper-breakpoint-media-min($lg) {
+            display: block;
+        }
+    }
+
     &__menu-link {
         @include helper-effect-transition(color);
         display: flex;

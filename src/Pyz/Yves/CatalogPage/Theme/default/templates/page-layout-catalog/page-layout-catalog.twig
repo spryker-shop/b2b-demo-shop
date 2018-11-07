@@ -67,6 +67,7 @@
 
             <div class="col col--sm-12 col--lg-4 col--xl-3">
                 {% block filterBar %}
+
                     {% include molecule('view-mode-switch', 'CatalogPage') with {
                         data: {
                             viewMode: data.viewMode
@@ -86,14 +87,14 @@
                         {#}#}
                     {#} only %}#}
 
-                    {#{% include organism('filter-section', 'CatalogPage') with {#}
-                        {#class: 'js-catalog__filters-toggle',#}
-                        {#data: {#}
-                            {#facets: data.facets,#}
-                            {#filterPath: data.filterPath,#}
-                            {#categories: data.categories#}
-                        {#}#}
-                    {#} only %}#}
+                    {% include organism('filter-section', 'CatalogPage') with {
+                        class: 'js-catalog__filters-toggle',
+                        data: {
+                            facets: data.facets,
+                            filterPath: data.filterPath,
+                            categories: data.categories
+                        }
+                    } only %}
                 {% endblock %}
             </div>
 
