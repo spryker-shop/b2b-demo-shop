@@ -68,7 +68,6 @@
                         listItem: data.listItem,
                     }
                 } only %}
-                {% widget 'ShoppingListItemNoteWidget' args [data.listItem.shoppingListItem] only %}{% endwidget %}
                 {{ widget('ShoppingListItemProductOptionWidgetPlugin', data.listItem.shoppingListItem) }}
             {% endblock %}
 
