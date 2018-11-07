@@ -7,7 +7,6 @@
 namespace Pyz\Yves\ProductDetailPage\Controller;
 
 use Generated\Shared\Transfer\ItemTransfer;
-use Generated\Shared\Transfer\ProductViewTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use SprykerShop\Yves\ProductDetailPage\Controller\ProductController as SprykerShopProductController;
 use SprykerShop\Yves\ProductDetailPage\Exception\ProductAccessDeniedException;
@@ -38,7 +37,7 @@ class ProductController extends SprykerShopProductController
 
         try {
             $this->assertProductRestrictions($productViewTransfer);
-        }catch (ProductAccessDeniedException $productAccessDeniedException) {
+        } catch (ProductAccessDeniedException $productAccessDeniedException) {
             throw new NotFoundHttpException();
         }
 
