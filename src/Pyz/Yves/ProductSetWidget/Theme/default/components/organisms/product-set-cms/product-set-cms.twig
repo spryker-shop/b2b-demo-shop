@@ -20,16 +20,24 @@
 } %}
 
 {% block body %}
-    <div class="common-section__text">
-        {% block title %}
-            <h2 class="common-section__title">{{data.title}}</h2>
+    {% embed organism('section') with {
+        modifiers: ['secondary'],
+        class: 'spacing-bottom spacing-bottom--reset',
+        data: {
+            title: data.title
+        },
+        embed: {
+            description: data.description
+        }
+    } only %}
+        {% block inner %}
+            <div class="{{ config.name }}__text">
+                {% if embed.description is not empty %}
+                    {{ embed.description }}
+                {% endif %}
+            </div>
         {% endblock %}
-        {% block description %}
-            {% if data.description is not empty %}
-                {{ data.description }}
-            {% endif %}
-        {% endblock %}
-    </div>
+    {% endembed %}
     <div class="grid grid--gap grid--center">
         <div class="col col--xs-12 col--md-6 col--lg-5 spacing-right spacing-right--inner spacing-right--biggest">
             {% block banner %}

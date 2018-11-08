@@ -54,8 +54,17 @@
             {% widget 'LanguageSwitcherWidget' args [app.request.pathInfo, app.request.queryString, app.request.requestUri] only %}{% endwidget %}
         </li>
 
-        <li class="col {{ config.name }}__action-item">
-            {{ widgetGlobal('MenuItemCompanyWidgetPlugin') }}
-        </li>
+        {% set menuItemCompanyWidget = findWidget('MenuItemCompanyWidget') %}
+        {% set hasCompanyAccess = menuItemCompanyWidget.hasCompanyAccess %}
+
+        {% if is_granted('ROLE_USER') and hasCompanyAccess %}
+            {% widget menuItemCompanyWidget %}
+                {% block template %}
+                    <li class="col {{ config.name }}__action-item">
+                        {% spaceless %}{{ parent() }}{% endspaceless %}
+                    </li>
+                {% endblock %}
+            {% endwidget %}
+        {% endif %}
     </ul>
 {% endblock %}

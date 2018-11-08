@@ -72,36 +72,53 @@
 {% endblock %}
 
 {% block content %}
+    {% embed organism('section') with {
+        modifiers: ['secondary'],
+        class: 'spacing-top spacing-top--inner spacing-top--big'
+    } only %}
+        {% block inner %}
+            {{ spyCmsBlock({
+                name: 'Featured Products'
+            }) }}
+        {% endblock %}
+    {% endembed %}
 
-    <section class="common-section spacing-top spacing-top--inner spacing-top--big ">
-        {{ spyCmsBlock({
-            name: 'Featured Products'
-        }) }}
-    </section>
-
-    <section class="common-section common-section--full-width spacing-top spacing-top--inner spacing-top--big">
-        {{ spyCmsBlock({
-            name: 'Featured Categories'
-        }) }}
-    </section>
-
+    {% embed organism('section') with {
+        modifiers: ['secondary', 'full-width'],
+        class: 'spacing-top spacing-top--inner spacing-top--big'
+    } only %}
+        {% block inner %}
+            {{ spyCmsBlock({
+                name: 'Featured Categories'
+            }) }}
+        {% endblock %}
+    {% endembed %}
 {% endblock %}
 
 {% block contentBottom %}
-    <section class="common-section common-section--bg-dark">
-        <div class="container">
+    {% embed organism('section') with {
+        modifiers: ['secondary', 'bg-dark'],
+        data: {
+            innerClass: 'container'
+        }
+    } only %}
+        {% block inner %}
             {{ spyCmsBlock({
                 name: 'Top Sellers'
             }) }}
-        </div>
-    </section>
+        {% endblock %}
+    {% endembed %}
 
-    <section class="common-section">
-        <div class="container">
+    {% embed organism('section') with {
+        modifiers: ['secondary'],
+        data: {
+            innerClass: 'container'
+        }
+    } only %}
+        {% block inner %}
             {{ spyCmsBlock({
                 name: 'Teaser for home page'
             }) }}
-        </div>
-    </section>
-
+        {% endblock %}
+    {% endembed %}
 {% endblock %}

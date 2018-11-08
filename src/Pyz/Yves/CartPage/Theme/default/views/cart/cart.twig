@@ -110,11 +110,11 @@
                     } only %}
                         {% block price %}
                             {% if can('SeePricePermissionPlugin') %}
+                                {% set price = data.listItem.sumGrossPrice is defined ? data.listItem.sumGrossPrice : data.listItem.price %}
                                 {% include molecule('price') with {
                                     modifiers: ['cart'],
                                     data: {
-                                        amount: price | money,
-                                        originalAmount: embed.product.prices.ORIGINAL is not defined or embed.product.prices.ORIGINAL is empty ? null : (embed.product.prices.ORIGINAL | money)
+                                        amount: price | money
                                     },
                                 } only %}
                             {% endif %}

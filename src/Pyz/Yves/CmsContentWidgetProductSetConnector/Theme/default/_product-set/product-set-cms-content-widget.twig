@@ -1,0 +1,25 @@
+{% if productSetList is defined %}
+    {% for productSet in productSetList %}
+        {% if productSet.productViews is not empty %}
+            {% include organism('product-set-details', 'ProductSetWidget') ignore missing with {
+                data: {
+                    products: productSet.productViews,
+                    name: productSet.productSet.name,
+                    description: productSet.productSet.description,
+                    images: productSet.productSet.imageSets.0.images | default([])
+                }
+            } only %}
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+{% if productSet is defined and productViews is not empty %}
+    {% include organism('product-set-details', 'ProductSetWidget') ignore missing with {
+        data: {
+            products: productViews,
+            name: productSet.name,
+            description: productSet.description,
+            images: productSet.imageSets.0.images | default([])
+        }
+    } only %}
+{% endif %}

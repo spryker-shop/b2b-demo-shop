@@ -65,10 +65,6 @@ class CompanyUserRestrictionHandlerPlugin extends SprykerCompanyUserRestrictionH
 
         $companyUserTransfer = $customerTransfer->getCompanyUserTransfer();
 
-        if ($customerTransfer->getIsOnBehalf()) {
-            return true;
-        }
-
         if ($companyUserTransfer && $this->hasPermission($companyUserTransfer, static::PERMISSION_KEY)) {
             return true;
         }

@@ -1,0 +1,29 @@
+{% extends '@Gui/Layout/layout.twig' %}
+
+{% set widget_title = 'Customer Access' %}
+{% block head_title widget_title %}
+{% block section_title widget_title %}
+
+{% block content %}
+
+    {% embed '@Gui/Partials/widget.twig' with { widget_title: 'Hide the following information from not logged in users:' | trans } %}
+
+        {% block widget_content %}
+            {{ form_start(form) }}
+
+            {{ form_label(form.contentTypeAccess) }}
+            <div class="country-select-box">
+                {{ form_widget(form.contentTypeAccess) }}
+                {{ form_errors(form.contentTypeAccess) }}
+            </div>
+
+            <div>
+                {{ form_widget(form.contentTypeAccessNonManageable) }}
+            </div>
+
+            <input type="submit" class="btn btn-primary safe-submit" value="{{ 'Save' | trans }}" />
+            {{ form_end(form) }}
+        {% endblock %}
+
+    {% endembed %}
+{% endblock %}

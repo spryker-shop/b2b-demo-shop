@@ -37,45 +37,62 @@
     {% endblock %}
 
     {% block header %}
-        <form class="text-center common-section" method="POST" action="{{ path('cart/add-items') }}">
-            {% if data.addAllSetButton %}
-                {% set isDisabled = false %}
 
-                {% for product in data.products %}
-                    {% if product.idProductConcrete is not empty %}
-                        {% if product.available %}
-                            <input type="hidden" name="items[{{ loop.index }}][sku]" value="{{ product.sku }}"/>
-                            <input type="hidden" name="items[{{ loop.index }}][quantity]" value="1"/>
-                        {% endif %}
-                    {% else %}
-                        {% set isDisabled = true %}
-                    {% endif %}
-                {% endfor %}
-
-                <div class="common-section__text">
-                    {% block title %}
-                        <h2 class="common-section__title">{{ 'product.sets.widget.title' | trans }}</h2>
-                    {% endblock %}
-
+        {% embed organism('section') with {
+            config: {
+                tag: 'form'
+            },
+            attributes: {
+                'method': 'POST',
+                'action': path('cart/add-items')
+            },
+            modifiers: ['secondary'],
+            class: 'text-center',
+            data: {
+                title: 'product.sets.widget.title' | trans
+            },
+            embed: {
+                description: data.description,
+                addAllSetButton: data.addAllSetButton,
+                products: data.products
+            }
+        } only %}
+            {% block inner %}
+                <div class="{{ config.name }}__text">
                     {% block description %}
-                        {% if data.description is not empty %}
-                            <p>{{ data.description }}</p>
+                        {% if embed.description is not empty %}
+                            <p>{{ embed.description }}</p>
                         {% endif %}
                     {% endblock %}
                 </div>
 
-                <button type="submit" class="button spacing-bottom--biggest" {% if isDisabled %}disabled{% endif %}>
-                    {{ 'product.set.detail.add_all_to' | trans }}
-                    {% include atom('icon') with {
-                        class: 'spacing-y spacing-y--reset',
-                        modifiers: ['cart'],
-                        data: {
-                            name: 'cart'
-                        }
-                    } only %}
-                </button>
-            {% endif %}
-        </form>
+                {% if embed.addAllSetButton %}
+                    {% set isDisabled = false %}
+
+                    {% for product in embed.products %}
+                        {% if product.idProductConcrete is not empty %}
+                            {% if product.available %}
+                                <input type="hidden" name="items[{{ loop.index }}][sku]" value="{{ product.sku }}"/>
+                                <input type="hidden" name="items[{{ loop.index }}][quantity]" value="1"/>
+                            {% endif %}
+                        {% else %}
+                            {% set isDisabled = true %}
+                        {% endif %}
+                    {% endfor %}
+
+                    <button type="submit" class="button spacing-bottom spacing-bottom--biggest" {% if isDisabled %}disabled{% endif %}>
+                        {{ 'product.set.detail.add_all_to' | trans }}
+                        {% include atom('icon') with {
+                            class: 'spacing-y spacing-y--reset',
+                            modifiers: ['cart'],
+                            data: {
+                                name: 'cart'
+                            }
+                        } only %}
+                    </button>
+                {% endif %}
+            {% endblock %}
+        {% endembed %}
     {% endblock %}
 
 
