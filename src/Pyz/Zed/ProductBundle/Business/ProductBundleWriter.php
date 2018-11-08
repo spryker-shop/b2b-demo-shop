@@ -19,7 +19,7 @@ use Spryker\Zed\ProductBundle\Persistence\ProductBundleQueryContainerInterface;
 class ProductBundleWriter extends SprykerProductBundleWriter
 {
     /**
-     * @var \Spryker\Zed\Product\Dependency\Facade\ProductToEventInterface|null
+     * @var \Spryker\Zed\Event\Business\EventFacadeInterface
      */
     protected $eventFacade;
 
