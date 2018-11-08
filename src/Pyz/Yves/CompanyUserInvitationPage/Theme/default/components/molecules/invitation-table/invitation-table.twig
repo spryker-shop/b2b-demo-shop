@@ -34,7 +34,7 @@
                       {% if invitation.companyUserInvitationStatusKey == 'new'  %}
                           <li class="menu__item">
                               <a href="{{ path('company/user-invitation/send', {'idCompanyUserInvitation': invitation.idCompanyUserInvitation}) }}"
-                                 class="{{config.jsName}}__invitation-sender table__action link link--alt link--action">
+                                 class="{{config.jsName}}__invitation-sender link link--alt link--action">
                                   {% include atom('icon') with {
                                       data: {
                                           name: 'send'
@@ -46,7 +46,7 @@
                       {% if invitation.companyUserInvitationStatusKey == 'pending'  %}
                           <li class="menu__item">
                               <a href="{{ path('company/user-invitation/resend', {'idCompanyUserInvitation': invitation.idCompanyUserInvitation}) }}"
-                                 class="table__action link link--alt link--action">
+                                 class="link link--alt link--action">
                                   {% include atom('icon') with {
                                       data: {
                                           name: 'send'
@@ -57,7 +57,7 @@
                       {% endif %}
                       <li class="menu__item">
                           <a href="{{ path('company/user-invitation/delete', {'idCompanyUserInvitation': invitation.idCompanyUserInvitation}) }}"
-                             class="table__action link link--alt link--action">
+                             class="link link--alt link--action">
                               {% include atom('icon') with {
                                   data: {
                                       name: 'delete'
