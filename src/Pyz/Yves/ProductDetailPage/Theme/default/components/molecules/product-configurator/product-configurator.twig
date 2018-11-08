@@ -87,7 +87,6 @@
     {% endif %}
 
     {% widget 'ExampleProductColorSelectorWidget' args [data.product.idProductAbstract] use view('pdp-color-selector', 'ExampleProductColorGroupWidget') only %}
-    {% elsewidget 'ExampleProductColorGroupWidgetPlugin' args [data.product.idProductAbstract] only %} {# @deprecated Use ExampleProductColorSelectorWidget or ProductGroupWidget instead. #}
     {% endwidget %}
 
     {% include molecule('variant-configurator', 'ProductDetailPage') with {
