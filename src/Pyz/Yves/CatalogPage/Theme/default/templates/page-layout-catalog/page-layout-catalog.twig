@@ -54,6 +54,7 @@
 {% endblock %}
 
 {% block contentClass %}page-layout-main page-layout-main--catalog-page{% endblock %}
+{#{% set activeFiltersAmount = data.facets|length > 0 ? '(' ~ data.facets|length ~')' %}#}
 
 {% block content %}
     <form method="GET" class="grid grid--gap js-form-input-default-value-disabler__catalog-form page-layout-main--catalog-page-content">
@@ -67,28 +68,33 @@
 
             <div class="col col--sm-12 col--lg-4 col--xl-3">
                 {% block filterBar %}
-
                     {% include molecule('view-mode-switch', 'CatalogPage') with {
+                        class: 'is-hidden-sm-md',
                         data: {
                             viewMode: data.viewMode
                         }
                     } only %}
 
-                    {#{% include molecule('toggler-checkbox') with {#}
-                        {#modifiers: ['expand'],#}
-                        {#class: 'is-hidden-lg-xl',#}
-                        {#data: {#}
-                            {#label: 'Show/Hide filters'#}
-                        {#},#}
-                        {#attributes: {#}
-                            {#'target-selector': '.js-catalog__filters-toggle',#}
-                            {#'class-to-toggle': 'is-hidden-sm-md',#}
-                            {#checked: true#}
-                        {#}#}
-                    {#} only %}#}
+                    <a href="#" class="button button--justify button--secondary js-catalog-filters-trigger is-hidden-lg-xl spacing-bottom spacing-bottom--big">
+                        {{ 'catalog.filter.button' | trans }} / {{ 'catalog.sort' | trans }} (2)
+                        {% include atom('icon') with {
+                            modifiers: ['filter'],
+                            data: {
+                                name: 'filter'
+                            }
+                        } only %}
+                    </a>
+
+                    {% include molecule('toggler-click') with {
+                        attributes: {
+                            'trigger-selector': '.js-catalog-filters-trigger',
+                            'target-selector': '.js-filter-section',
+                            'class-to-toggle': 'is-hidden-sm-md'
+                        }
+                    } only %}
 
                     {% include organism('filter-section', 'CatalogPage') with {
-                        class: 'js-catalog__filters-toggle',
+                        class: 'is-hidden-sm-md',
                         data: {
                             facets: data.facets,
                             filterPath: data.filterPath,
@@ -99,13 +105,30 @@
             </div>
 
             <div class="col col--sm-12 col--lg-8 col--xl-9">
-                {% include molecule('sort', 'CatalogPage') only %}
-
-                {% include organism('active-filter-section', 'CatalogPage') with {
-                    data: {
-                        facets: data.facets
-                    }
-                } only %}
+                <div class="grid grid--column-mob-reverse">
+                    <div class="col col--sm-12">
+                        <div class="grid grid--justify grid--nowrap">
+                            <div class="col col--lg-12">
+                                {% include molecule('sort', 'CatalogPage') only %}
+                            </div>
+                            <div class="col">
+                                {% include molecule('view-mode-switch', 'CatalogPage') with {
+                                    class: 'is-hidden-lg-xl',
+                                    data: {
+                                        viewMode: data.viewMode
+                                    }
+                                } only %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col col--sm-12">
+                        {% include organism('active-filter-section', 'CatalogPage') with {
+                            data: {
+                                facets: data.facets
+                            }
+                        } only %}
+                    </div>
+                </div>
 
                 <div class="grid grid--stretch grid--gap">
                     {% for product in data.products %}

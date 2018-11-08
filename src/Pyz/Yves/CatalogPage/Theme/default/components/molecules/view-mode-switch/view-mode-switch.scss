@@ -1,14 +1,12 @@
 .view-mode-switch {
-    position: absolute;
-    right: rem(7);
-    top: rem(19);
     display: flex;
+    margin: rem(3) rem(-8) 0;
 
     @include helper-breakpoint-media-min($lg) {
-        position: static;
         width: 100%;
         border: 1px solid $setting-color-gray-1;
         border-radius: $setting-border-radius;
+        margin: 0;
     }
 
     &__link {

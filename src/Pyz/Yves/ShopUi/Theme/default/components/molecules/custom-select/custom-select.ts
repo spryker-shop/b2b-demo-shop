@@ -6,10 +6,13 @@ export default class CustomSelect extends Component {
 
     select: HTMLSelectElement
     $select: $
+    mobileResolution: Number
+    isInited: boolean
 
     protected readyCallback(): void {
-
         const select2 = select;
+        this.mobileResolution = 768;
+        this.isInited = false;
         this.select = <HTMLSelectElement>this.querySelector(`.${this.jsName}`);
         this.$select = $(this.select);
 
@@ -19,7 +22,10 @@ export default class CustomSelect extends Component {
     }
 
     protected mapEvents(): void {
-        this.$select.on('select2:select', () => this.onChangeSelect());
+        if (this.isInited) {
+            this.$select.on('select2:select', () => this.onChangeSelect());
+        }
+        window.addEventListener('resize', () => setTimeout(() => this.initSelect(), 300));
     }
 
     protected onChangeSelect(): void {
@@ -29,15 +35,23 @@ export default class CustomSelect extends Component {
     }
 
     protected initSelect(): void {
-        this.$select.select2({
-            minimumResultsForSearch: Infinity,
-            width: this.configWidth,
-            theme: this.configTheme
-        });
+        if (window.innerWidth >= this.mobileResolution && !this.isInited) {
+            this.isInited = true;
+            this.$select.select2({
+                minimumResultsForSearch: Infinity,
+                width: this.configWidth,
+                theme: this.configTheme
+            });
+        } else if (window.innerWidth < this.mobileResolution && this.isInited) {
+            this.isInited = false;
+            this.$select.select2('destroy');
+        }
     }
 
     protected removeAttributeTitle(): void {
-        this.querySelector('.select2-selection__rendered').removeAttribute('title');
+        if (this.isInited) {
+            this.querySelector('.select2-selection__rendered').removeAttribute('title');
+        }
     }
 
     get configWidth(): string {

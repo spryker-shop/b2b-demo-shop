@@ -1,5 +1,10 @@
 .filter-rating {
     font-size: rem(14);
+    padding-left: rem(10);
+
+    @include helper-breakpoint-media-min($lg) {
+        padding-left: 0;
+    }
 
     &__text {
         vertical-align: middle;

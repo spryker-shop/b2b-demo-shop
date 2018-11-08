@@ -16,7 +16,7 @@
             }
 
             &--counter {
-                padding-right: rem(70);
+                padding-right: rem(10);
                 font-weight: fw(medium);
                 font-size: rem(14);
 
@@ -35,6 +35,12 @@
 
             &--filters {
                 width: 100%;
+                margin: 0 rem(-5);
+
+                @include helper-breakpoint-media-min($lg) {
+
+                    margin: 0;
+                }
 
                 @include helper-breakpoint-media-min($xl) {
                     width: auto;
@@ -42,18 +48,25 @@
             }
 
             &--select {
-                margin-top: 1rem;
+                padding: 0 rem(5);
 
-                @include helper-breakpoint-media-min($md) {
-                    margin-top: 0;
+                @include helper-breakpoint-media-min($lg) {
+                    padding: 0;
                 }
 
                 &:not(:last-child) {
-                    @include helper-breakpoint-media-min($md) {
+                    @include helper-breakpoint-media-min($lg) {
                         padding-right: rem(30);
-                        width: auto;
                     }
                 }
+            }
+        }
+
+        &__filter-grid {
+            margin: 0 rem(-5);
+
+            @include helper-breakpoint-media-min($lg) {
+                margin: 0;
             }
         }
 

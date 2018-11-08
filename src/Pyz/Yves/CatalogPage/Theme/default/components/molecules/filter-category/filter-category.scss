@@ -5,26 +5,87 @@
         }
     }
 
+    &__menu {
+        &--lvl-1,
+        &--lvl-2 {
+            padding-left: rem(10);
+
+            @include helper-breakpoint-media-min($lg) {
+                padding-left: 0;
+            }
+        }
+
+        &--lvl-3 {
+            @include helper-breakpoint-media-min($lg) {
+                padding-left: 10px;
+            }
+        }
+    }
+
+    &__menu-item {
+        &--lvl-2 {
+            &:first-child {
+                padding-top: rem(5);
+
+                @include helper-breakpoint-media-min($lg) {
+                    padding-top: 0;
+                }
+            }
+
+            &:last-child {
+                padding-bottom: rem(5);
+
+                @include helper-breakpoint-media-min($lg) {
+                    padding-bottom: 0;
+                }
+            }
+        }
+    }
+
     &__menu-link {
         @include helper-effect-transition(color);
         display: flex;
         justify-content: space-between;
         width: 100%;
-        margin-bottom: rem(11);
+        margin-bottom: rem(13);
         color: $setting-color-gray-3;
         cursor: pointer;
         background-color: $setting-color-transparent;
-        font: fw(regular) rem(15)/rem(23) $setting-font-family;
+        font: fw(regular) rem(13)/rem(16) $setting-font-family;
+
+        @include helper-breakpoint-media-min($lg) {
+            margin-bottom: rem(11);
+            font-size: rem(15);
+            line-height: rem(23);
+        }
 
         &--lvl-1 {
-            font-size: rem(18);
+            font-size: rem(15);
             font-weight: fw(medium);
-            color: $setting-color-gray-2;
+            color: $setting-color-gray-5;
+
+            @include helper-breakpoint-media-min($lg) {
+                font-size: rem(18);
+                color: $setting-color-gray-2;
+            }
         }
 
         &--lvl-2 {
-            font-size: rem(16);
-            color: $setting-color-gray-2;
+            font-size: rem(15);
+            color: $setting-color-gray-5;
+
+            @include helper-breakpoint-media-min($lg) {
+                font-size: rem(16);
+                color: $setting-color-gray-2;
+            }
+        }
+
+        &--lvl-3 {
+            font-size: rem(13);
+
+            @include helper-breakpoint-media-min($lg) {
+                font-size: rem(15);
+            }
         }
 
         &:hover,
@@ -53,10 +114,5 @@
         &--active {
             text-decoration: underline;
         }
-    }
-
-    &__menu--lvl-3 {
-        margin-left: 10px;
-        font-size: rem(15);
     }
 }

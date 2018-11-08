@@ -11,16 +11,16 @@
         </div>
 
         <div class="col {{config.name}}__col {{config.name}}__col--filters is-hidden-sm-md">
-            <div class="grid grid--middle">
-                <div class="{{config.name}}__col {{config.name}}__col--select col">
+            <div class="grid grid--middle {{config.name}}__filter-grid" data-block-to=".js-filter-section__sorting" data-breackpoint="768">
+                <div class="{{config.name}}__col {{config.name}}__col--select col col--sm-6 col--lg-auto">
                     <div class="grid grid--middle">
-                        <div class="{{config.name}}__col col">
+                        <div class="{{config.name}}__col col is-hidden-sm-md">
                             {{ 'catalog.filter.per' | trans }}:
                         </div>
 
-                        <div class="{{config.name}}__col col">
+                        <div class="{{config.name}}__col col col col--sm-12 col--lg-auto">
                             {% embed molecule('custom-select') with {
-                                modifiers: ['small', 'light'],
+                                modifiers: ['small', 'light', 'mobile-expand'],
                                 attributes: {
                                     name: 'ipp',
                                     'config-theme': 'small'
@@ -37,19 +37,34 @@
                                         <option value="{{ limit }}" {% if limit == embed.pagination.currentItemsPerPage %}selected{% endif %}>{{ limit }}</option>
                                     {% endfor %}
                                 {% endblock %}
+                                {% block caret %}
+                                    {% include atom('icon') with {
+                                        class: config.name ~ '__caret is-hidden-sm-md',
+                                        data: {
+                                            name: 'caret-down'
+                                        }
+                                    } only %}
+
+                                    {% include atom('icon') with {
+                                        class: config.name ~ '__caret is-hidden-lg-xl',
+                                        data: {
+                                            name: 'double-chevrons'
+                                        }
+                                    } only %}
+                                {% endblock %}
                             {% endembed %}
                         </div>
                     </div>
                 </div>
-                <div class="{{config.name}}__col {{config.name}}__col--select col">
+                <div class="{{config.name}}__col {{config.name}}__col--select col col--sm-6 col--lg-auto">
                     <div class="grid grid--middle">
-                        <div class="{{config.name}}__col col">
+                        <div class="{{config.name}}__col col is-hidden-sm-md">
                             {{ 'catalog.filter.sort' | trans }}:
                         </div>
 
-                        <div class="{{config.name}}__col col">
+                        <div class="{{config.name}}__col col col col--sm-12 col--lg-auto">
                             {% embed molecule('custom-select') with {
-                                modifiers: ['small', 'light'],
+                                modifiers: ['small', 'light', 'mobile-expand'],
                                 attributes: {
                                     name: 'sort',
                                     'config-theme': 'small'
@@ -67,6 +82,21 @@
                                         <option value="{{ sortParamName }}" {% if sortParamName == embed.sort.currentSortParam %}selected{% endif %}>{{ ('catalog.sort.' ~ sortParamName) | trans }}</option>
                                     {% endfor %}
                                 {% endblock %}
+                                {% block caret %}
+                                    {% include atom('icon') with {
+                                        class: config.name ~ '__caret is-hidden-sm-md',
+                                        data: {
+                                            name: 'caret-down'
+                                        }
+                                    } only %}
+
+                                    {% include atom('icon') with {
+                                        class: config.name ~ '__caret is-hidden-lg-xl',
+                                        data: {
+                                            name: 'double-chevrons'
+                                        }
+                                    } only %}
+                                {% endblock %}
                             {% endembed %}
                         </div>
                     </div>
@@ -74,6 +104,12 @@
             </div>
         </div>
     </div>
+
+    {% include molecule('block-flow-fixer') with {
+        attributes: {
+            'block-selector': '.' ~ config.name ~ '__filter-grid'
+        }
+    } only %}
 
     {% include molecule('form-submitter') with {
         attributes: {

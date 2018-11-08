@@ -17,49 +17,61 @@
 {% endblock %}
 
 {% block body %}
-    {% for filter in data.facets %}
-        {% set filterHasValues = filter.values is not defined or filter.values | length > 0 %}
-        {% set toglerClass = '' %}
+    <h3 class="{{ config.name ~ '__title' }} is-hidden-lg-xl">{{ 'catalog.filter.button' | trans }} / {{ 'catalog.sort' | trans }}</h3>
+    <a href="#" class="{{ config.name ~ '__close' }} is-hidden-lg-xl js-catalog-filters-trigger">
+        {% include atom('icon') with {
+            data: {
+                name: 'cross'
+            }
+        } only %}
+    </a>
 
-        {% if filterHasValues %}
-            {% if filter.config.type == 'price-range' and can('SeePricePermissionPlugin') is empty %}
+    <div class="{{ config.name ~ '__sorting ' ~ config.jsName ~ '__sorting' }} is-hidden-lg-xl"></div>
+    <div class="{{ config.name ~ '__holder' }}">
+        {% for filter in data.facets %}
+            {% set filterHasValues = filter.values is not defined or filter.values | length > 0 %}
+            {% set toglerClass = '' %}
 
-            {% else %}
-                <div class="{{ config.name ~ '__item' }} {% if filter.name == 'category' %}{{ config.name ~ '__item--hollow' }}{% endif %}">
-                    <h6 class="{{ config.name ~ '__item-title toggler-accordion__item js-' ~ config.name ~ '__trigger'}} {% if filter.name == 'category' %}{{ config.name ~ '__item-title--desktop-hidden' }}{% endif %}" {{ 'data-toggle-target=.js-' ~ filter.name ~ '' }}>
-                        {{ ('product.filter.' ~ filter.name | lower) | trans }}
-                        {% include atom('icon') with {
-                            class: 'toggler-accordion__icon',
-                            modifiers: ['small'],
+            {% if filterHasValues %}
+                {% if filter.config.type == 'price-range' and can('SeePricePermissionPlugin') is empty %}
+
+                {% else %}
+                    <div class="{{ config.name ~ '__item' }} {% if filter.name == 'category' %}{{ config.name ~ '__item--hollow' }}{% endif %}">
+                        <h6 class="{{ config.name ~ '__item-title toggler-accordion__item js-' ~ config.name ~ '__trigger'}} {% if filter.name == 'category' %}{{ 'is-hidden-lg-xl' }}{% endif %}" {{ 'data-toggle-target=.js-' ~ filter.name ~ '' }}>
+                            {{ ('product.filter.' ~ filter.name | lower) | trans }}
+                            {% include atom('icon') with {
+                                class: 'toggler-accordion__icon',
+                                modifiers: ['small'],
+                                data: {
+                                    name: 'caret-down'
+                                }
+                            } only %}
+                        </h6>
+                        {% set contentModifier =  filter.name == 'category' ? config.name ~ '__item-content--hollow' %}
+                        {% set toglerClass = config.name ~ '__item-content js-' ~  filter.name ~ ' is-hidden ' ~ contentModifier %}
+
+
+                        {% include [
+                            molecule('filter-' ~ filter.config.name, 'CatalogPage'),
+                            molecule('filter-' ~ filter.config.type, 'CatalogPage')
+                        ] ignore missing with {
                             data: {
-                                name: 'caret-down'
-                            }
+                                filterPath: data.filterPath,
+                                categories: data.categories,
+                                filter: filter,
+                                parameter: filter.config.parameterName | default(''),
+                                min: filter.min | default(0),
+                                max: filter.max | default(0),
+                                activeMin: filter.activeMin | default(0),
+                                activeMax: filter.activeMax | default(0)
+                            },
+                            class: toglerClass
                         } only %}
-                    </h6>
-                    {% set toglerClass = config.name ~ '__item-content js-' ~  filter.name ~ ' is-hidden' %}
-
-
-                    {% include [
-                        molecule('filter-' ~ filter.config.name, 'CatalogPage'),
-                        molecule('filter-' ~ filter.config.type, 'CatalogPage')
-                    ] ignore missing with {
-                        data: {
-                            filterPath: data.filterPath,
-                            categories: data.categories,
-                            filter: filter,
-                            parameter: filter.config.parameterName | default(''),
-                            min: filter.min | default(0),
-                            max: filter.max | default(0),
-                            activeMin: filter.activeMin | default(0),
-                            activeMax: filter.activeMax | default(0)
-                        },
-                        class: toglerClass
-                    } only %}
-                </div>
+                    </div>
+                {% endif %}
             {% endif %}
-        {% endif %}
-    {% endfor %}
-
+        {% endfor %}
+    </div>
     {% include molecule('toggler-accordion') with {
         attributes: {
             'wrap-selector': '.' ~ config.jsName,
