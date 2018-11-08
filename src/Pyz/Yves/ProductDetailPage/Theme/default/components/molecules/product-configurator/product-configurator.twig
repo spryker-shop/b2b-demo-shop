@@ -144,10 +144,6 @@
         {% widget 'AddToShoppingListWidget' args [sku, isDisabled] only %}{% endwidget %}
     {% endif %}
 
-    {% if not isProductAvailable and widgetExists('WishlistWidgetPlugin') %}
-        {{ widget('WishlistWidgetPlugin', data.product) }}
-    {% endif %}
-
     {% widget 'ProductDiscontinuedNoteWidget' args [sku] only %}{% endwidget %}
 
 {% endblock %}
