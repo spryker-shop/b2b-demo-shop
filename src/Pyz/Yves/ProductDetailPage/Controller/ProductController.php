@@ -9,6 +9,7 @@ namespace Pyz\Yves\ProductDetailPage\Controller;
 use Generated\Shared\Transfer\ItemTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use SprykerShop\Yves\ProductDetailPage\Controller\ProductController as SprykerShopProductController;
+use SprykerShop\Yves\ProductDetailPage\Exception\ProductAccessDeniedException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
@@ -30,15 +31,15 @@ class ProductController extends SprykerShopProductController
      */
     protected function executeDetailAction(array $productData, Request $request): array
     {
-        if (!empty($productData[static::KEY_ID_PRODUCT_ABSTRACT]) &&
-            $this->getFactory()->getProductStorageClient()->isProductAbstractRestricted($productData[static::KEY_ID_PRODUCT_ABSTRACT])
-        ) {
-            throw new NotFoundHttpException();
-        }
-
         $productViewTransfer = $this->getFactory()
             ->getProductStorageClient()
             ->mapProductStorageData($productData, $this->getLocale(), $this->getSelectedAttributes($request));
+
+        try {
+            $this->assertProductRestrictions($productViewTransfer);
+        } catch (ProductAccessDeniedException $productAccessDeniedException) {
+            throw new NotFoundHttpException();
+        }
 
         $quoteTransfer = new QuoteTransfer();
         $quoteTransfer->addItem(

@@ -37,7 +37,8 @@
                 {% endblock %}
 
                 {% block groups %}
-                    {% widget 'ProductGroupWidget' args [data.abstractId] only %}{% endwidget %}
+                    {% widget 'ExampleProductColorSelectorWidget' args [data.abstractId] use view('product-color-selector', 'ExampleProductColorGroupWidget') only %}
+                    {% endwidget %}
                 {% endblock %}
 
                 {% block price %}{% endblock %}

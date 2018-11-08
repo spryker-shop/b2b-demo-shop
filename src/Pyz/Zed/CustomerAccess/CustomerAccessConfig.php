@@ -27,4 +27,19 @@ class CustomerAccessConfig extends SprykerCustomerAccessConfig
             SprykerSharedCustomerAccessConfig::CONTENT_TYPE_SHOPPING_LIST,
         ];
     }
+
+    /**
+     * Gets list of content types that can be managed.
+     *
+     * @return array
+     */
+    public function getManageableContentTypes(): array
+    {
+        return [
+            SprykerSharedCustomerAccessConfig::CONTENT_TYPE_PRICE,
+            SprykerSharedCustomerAccessConfig::CONTENT_TYPE_ADD_TO_CART,
+            SprykerSharedCustomerAccessConfig::CONTENT_TYPE_WISHLIST,
+            SprykerSharedCustomerAccessConfig::CONTENT_TYPE_SHOPPING_LIST,
+        ];
+    }
 }

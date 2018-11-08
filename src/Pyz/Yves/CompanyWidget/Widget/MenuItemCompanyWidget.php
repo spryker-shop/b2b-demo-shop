@@ -17,7 +17,8 @@ class MenuItemCompanyWidget extends AbstractWidget
     public function __construct()
     {
         $this->addParameter('isVisible', $this->isVisible())
-            ->addParameter('companyName', $this->getCompanyName());
+            ->addParameter('companyName', $this->getCompanyName())
+            ->addParameter('hasCompanyAccess', $this->hasCompanyAccess());
     }
 
     /**
@@ -66,5 +67,15 @@ class MenuItemCompanyWidget extends AbstractWidget
         }
 
         return false;
+    }
+
+    /**
+     * @return bool
+     */
+    protected function hasCompanyAccess(): bool
+    {
+        $customerTransfer = $this->getFactory()->getCustomerClient()->getCustomer();
+
+        return $customerTransfer && ($customerTransfer->getCompanyUserTransfer() || $customerTransfer->getIsOnBehalf());
     }
 }

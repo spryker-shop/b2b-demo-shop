@@ -34,7 +34,7 @@
         {% endblock %}
 
         {% block rating %}
-            {% if _widget.product.rating is defined %}
+            {% if data.rating is defined and data.rating is not empty %}
                 {% widget 'ProductReviewDisplayWidget' args [data.rating] only %}{% endwidget %}
             {% endif %}
         {% endblock %}
