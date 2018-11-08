@@ -1,0 +1,79 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'invitation-table',
+    tag: 'div'
+} %}
+
+{% define data = {
+    invitations: required
+} %}
+
+{% block body %}
+    <table class="table table--expand">
+        <thead>
+        <tr class="active">
+            <th>{{ 'company.user.invitation.first.name' | trans }}</th>
+            <th>{{ 'company.user.invitation.last.name' | trans }}</th>
+            <th>{{ 'company.user.invitation.mail' | trans }}</th>
+            <th>{{ 'company.user.invitation.business.unit' | trans }}</th>
+            <th>{{ 'company.user.invitation.status' | trans }}</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for invitation in data.invitations %}
+            <tr>
+              <td>{{ invitation.firstName }}</td>
+              <td>{{ invitation.lastName }}</td>
+              <td>{{ invitation.email }}</td>
+              <td>{{ invitation.companyBusinessUnitName }}</td>
+              <td>{{ ('company.user.invitation.status.'~invitation.companyUserInvitationStatusKey) | trans }}</td>
+              <td class="table__actions">
+                  <ul class="menu menu--inline">
+                      {% if invitation.companyUserInvitationStatusKey == 'new'  %}
+                          <li class="menu__item">
+                              <a href="{{ path('company/user-invitation/send', {'idCompanyUserInvitation': invitation.idCompanyUserInvitation}) }}"
+                                 class="{{config.jsName}}__invitation-sender table__action link link--alt link--action">
+                                  {% include atom('icon') with {
+                                      data: {
+                                          name: 'send'
+                                      }
+                                  } only %}
+                              </a>
+                          </li>
+                      {% endif %}
+                      {% if invitation.companyUserInvitationStatusKey == 'pending'  %}
+                          <li class="menu__item">
+                              <a href="{{ path('company/user-invitation/resend', {'idCompanyUserInvitation': invitation.idCompanyUserInvitation}) }}"
+                                 class="table__action link link--alt link--action">
+                                  {% include atom('icon') with {
+                                      data: {
+                                          name: 'send'
+                                      }
+                                  } only %}
+                              </a>
+                          </li>
+                      {% endif %}
+                      <li class="menu__item">
+                          <a href="{{ path('company/user-invitation/delete', {'idCompanyUserInvitation': invitation.idCompanyUserInvitation}) }}"
+                             class="table__action link link--alt link--action">
+                              {% include atom('icon') with {
+                                  data: {
+                                      name: 'delete'
+                                  }
+                              } only %}
+                          </a>
+                      </li>
+                  </ul>
+              </td>
+            </tr>
+        {% endfor %}
+        {% include molecule('action-single-click-enforcer') with {
+            attributes: {
+                'target-selector': '.' ~ config.jsName ~ '__invitation-sender'
+            }
+        } only %}
+        </tbody>
+    </table>
+{% endblock %}

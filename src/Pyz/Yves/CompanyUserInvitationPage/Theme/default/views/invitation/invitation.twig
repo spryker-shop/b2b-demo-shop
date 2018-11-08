@@ -35,7 +35,7 @@
 {% endblock %}
 
 {% block companyContent %}
-    {# include molecule('action-bar', 'ShopUi') with {
+     {% include molecule('action-bar', 'ShopUi') with {
         data: {
             title: 'company.user.invitation.import.title' | trans,
             actions: [
@@ -46,11 +46,11 @@
                 }
             ]
         }
-    } only #}
+    } only %}
 
     {% include molecule('form') with {
+        class: 'spacing-bottom spacing-bottom--biggest',
         data: {
-            title: 'company.user.invitation.import.title' | trans,
             form: data.form,
             options: {
                 action: data.formAction
@@ -65,33 +65,32 @@
     } only %}
 
     {% if data.importedWithErrors %}
-        <div class="box">
-            {{ 'company.user.invitation.import.download.errors.file' | trans({
-                "%link%": url('company/user-invitation/get-import-errors')}) | raw
-            }}
-        </div>
+        {{ 'company.user.invitation.import.download.errors.file' | trans({
+            "%link%": url('company/user-invitation/get-import-errors')}) | raw
+        }}
     {%  endif %}
 
     {% if data.invitations is not empty %}
-        <div class="box">
-            <h5 class="float-left">{{ 'company.user.invitation.imported.title.plural' | trans }}</h5>
-            <div class="float-right">
-                <a href="{{ path('company/user-invitation/send-all') }}" class="button float-right">
-                    {{ 'company.user.invitation.send.all.button' | trans }}
-                </a>
-            </div>
-        </div>
-        <div class="box">
-            {% include molecule('invitation-table', 'CompanyUserInvitationPage') with {
-                data: {
-                    invitations: data.invitations,
-                }
-            } only %}
-            <hr/>
-            {% include molecule('pagination') with {
-                data: data.pagination
-            } only %}
-        </div>
-    {% endif %}
+        {% include molecule('action-bar', 'ShopUi') with {
+            data: {
+                title: 'company.user.invitation.imported.title.plural' | trans,
+                actions: [
+                    {
+                        title: 'company.user.invitation.send.all.button' | trans,
+                        url: path('company/user-invitation/send-all'),
+                        primary: false
+                    }
+                ]
+            }
+        } only %}
 
+        {% include molecule('invitation-table', 'CompanyUserInvitationPage') with {
+            data: {
+                invitations: data.invitations,
+            }
+        } only %}
+        {% include molecule('pagination') with {
+            data: data.pagination
+        } only %}
+    {% endif %}
 {% endblock %}
