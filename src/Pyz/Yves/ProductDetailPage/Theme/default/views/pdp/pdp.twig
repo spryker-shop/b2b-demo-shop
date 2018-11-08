@@ -73,16 +73,12 @@
     {% if data.product.productSetIds is not empty %}
         {% widget 'ProductSetIdsWidget' args [data.product.productSetIds] only %}{% endwidget %}
     {% endif %}
+{% endblock %}
 
+{% block contentBottom %}
     {% include molecule('product-cms-block', 'CmsBlockWidget') ignore missing with {
         data: {
             idProductAbstract: data.product.idProductAbstract
         }
     } only %}
-{% endblock %}
-
-{% block contentBottom %}
-    {{ spyCmsBlock({
-        name: 'Product CMS Block'
-    }) }}
 {% endblock %}
