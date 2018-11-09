@@ -14,7 +14,7 @@ export default class QuantityCounter extends Component {
         super();
         this.duration = 1000;
         this.timeout = 0;
-        this.inputChange = new Event('input');
+        this.inputChange = new Event('change');
     }
 
     protected readyCallback(): void {
@@ -28,8 +28,9 @@ export default class QuantityCounter extends Component {
     protected mapEvents(): void {
         this.incrementButton.addEventListener('click', (event: Event) => this.incrementValue(event));
         this.decrementButton.addEventListener('click', (event: Event) => this.decrementValue(event));
+        this.input.addEventListener('input', (event: Event) => this.triggerInputEvent());
         if(this.autoUpdate) {
-            this.input.addEventListener('input', () => this.delayToSubmit());
+            this.input.addEventListener('change', () => this.delayToSubmit());
         }
     }
 
