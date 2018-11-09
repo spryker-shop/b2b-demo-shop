@@ -51,11 +51,10 @@
                     {% if embed.isItemAvailable %}
                         {{ 'customer.account.shopping_list.available' | trans }}
                     {% else %}
-                        {% if widgetExists('ProductDiscontinuedWidgetPlugin') %}
-                            {{ widget('ProductDiscontinuedWidgetPlugin', data.listItem.sku) }}
-                        {% else %}
+                        {% widget 'ProductDiscontinuedWidget' args [data.listItem.sku] only %}
+                        {% nowidget %}
                             {{ 'customer.account.shopping_list.not_available' | trans }}
-                        {% endif %}
+                        {% endwidget %}
                     {% endif %}
                 </span>
                 {{ parent() }}
@@ -90,7 +89,6 @@
 
             {% block note %}
                 {% widget 'ShoppingListItemNoteWidget' args [data.listItem.shoppingListItem] only %}
-                {% elsewidget 'ShoppingListItemNoteWidgetPlugin' args [data.listItem.shoppingListItem] only %} {# @deprecated Use ShoppingListItemNoteWidget instead. #}
                 {% endwidget %}
             {% endblock %}
 

@@ -96,6 +96,7 @@ class ShipmentPriceWriterStep implements DataImportStepInterface
     {
         if (!isset(static::$idStoreCache[$storeName])) {
             static::$idStoreCache[$storeName] = SpyStoreQuery::create()
+                ->setIgnoreCase(true)
                 ->findOneByName(strtoupper($storeName))
                 ->getIdStore();
         }

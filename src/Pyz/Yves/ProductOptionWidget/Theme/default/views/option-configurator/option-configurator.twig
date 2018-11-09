@@ -28,7 +28,7 @@
                             <option value="0">{{ 'product.product_options_select' | trans }}</option>
                             {% for option in embed.options %}
                                 <option value="{{option.idProductOptionValue}}">
-                                    {{ option.value | trans }} {% if can('SeePricePermissionPlugin') %} %}{{ option.price | money }}{% endif %}
+                                    {{ option.value | trans }} {% if can('SeePricePermissionPlugin') %}{{ option.price | money }}{% endif %}
                                 </option>
                             {% endfor %}
                         {% endblock %}
