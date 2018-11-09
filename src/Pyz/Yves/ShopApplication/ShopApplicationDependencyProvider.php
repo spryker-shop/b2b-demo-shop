@@ -36,6 +36,7 @@ use SprykerShop\Yves\PriceProductVolumeWidget\Widget\ProductPriceVolumeWidget;
 use SprykerShop\Yves\PriceWidget\Widget\PriceModeSwitcherWidget;
 use SprykerShop\Yves\ProductAlternativeWidget\Widget\ProductAlternativeListWidget;
 use SprykerShop\Yves\ProductAlternativeWidget\Widget\ShoppingListProductAlternativeWidget;
+use SprykerShop\Yves\ProductBarcodeWidget\Widget\ProductBarcodeWidget;
 use SprykerShop\Yves\ProductBundleWidget\Widget\ProductBundleCartItemsListWidget;
 use SprykerShop\Yves\ProductBundleWidget\Widget\ProductBundleItemCounterWidget;
 use SprykerShop\Yves\ProductCategoryWidget\Widget\ProductBreadcrumbsWithCategoriesWidget;
@@ -91,6 +92,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             PdpProductRelationWidget::class,
             PdpProductReplacementForListWidget::class,
             ProductAlternativeWidget::class,
+            ProductBarcodeWidget::class,
             ProductBreadcrumbsWithCategoriesWidget::class,
             SimilarProductsWidget::class,
             ProductAlternativeListWidget::class,
