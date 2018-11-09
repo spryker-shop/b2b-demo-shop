@@ -80,12 +80,5 @@
         }
     } only %}
 
-    <button type="submit" class="button button--expand button--big {{ config.name ~ '__button' }}">
-        {{ 'catalog.filter.button' | trans }}
-        {% include atom('icon') with {
-            data: {
-                name: 'filter'
-            }
-        } only %}
-    </button>
+    <button type="submit" class="button button--expand button--big {{ config.name ~ '__button' }}">{{ 'catalog.filter.button' | trans }}</button>
 {% endblock %}

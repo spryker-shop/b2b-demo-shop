@@ -54,7 +54,6 @@
 {% endblock %}
 
 {% block contentClass %}page-layout-main page-layout-main--catalog-page{% endblock %}
-{#{% set activeFiltersAmount = data.facets|length > 0 ? '(' ~ data.facets|length ~')' %}#}
 
 {% block content %}
     <form method="GET" class="grid grid--gap js-form-input-default-value-disabler__catalog-form page-layout-main--catalog-page-content">
@@ -89,7 +88,8 @@
                         attributes: {
                             'trigger-selector': '.js-catalog-filters-trigger',
                             'target-selector': '.js-filter-section',
-                            'class-to-toggle': 'is-hidden-sm-md'
+                            'class-to-toggle': 'is-hidden-sm-md',
+                            'fix-body': 'true'
                         }
                     } only %}
 

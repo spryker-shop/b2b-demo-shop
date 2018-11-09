@@ -2,8 +2,12 @@
     #{$name} {
         position: relative;
         display: block;
-        height: 10rem;
+        height: rem(313);
         margin: 0.5rem;
+
+        @include helper-breakpoint-media-min($md) {
+            height: 10rem;
+        }
 
         &--smaller {
             height: rem(42);
