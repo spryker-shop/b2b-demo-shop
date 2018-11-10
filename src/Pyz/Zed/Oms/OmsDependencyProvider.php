@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Spryker Suite.
+ * This file is part of the Spryker Commerce OS.
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
@@ -14,6 +14,7 @@ use Spryker\Zed\Oms\Communication\Plugin\Oms\Command\SendOrderShippedPlugin;
 use Spryker\Zed\Oms\Dependency\Plugin\Command\CommandCollectionInterface;
 use Spryker\Zed\Oms\OmsDependencyProvider as SprykerOmsDependencyProvider;
 use Spryker\Zed\ProductBundle\Communication\Plugin\Oms\ProductBundleAvailabilityHandlerPlugin;
+use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Reservation\LeadProductReservationHandlerPlugin;
 
 class OmsDependencyProvider extends SprykerOmsDependencyProvider
 {
@@ -45,6 +46,7 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
         return [
             new AvailabilityHandlerPlugin(),
             new ProductBundleAvailabilityHandlerPlugin(),
+            new LeadProductReservationHandlerPlugin(),
         ];
     }
 }

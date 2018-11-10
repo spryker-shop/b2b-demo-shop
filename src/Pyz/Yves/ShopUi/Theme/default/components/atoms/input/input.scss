@@ -1,0 +1,28 @@
+@include shop-ui-input {
+    border-radius: $setting-border-radius;
+    color: $setting-color-gray-5;
+    font: fw(regular) rem(15)/rem(19) $setting-font-family;
+    padding: rem(14) rem(20) rem(13);
+
+    &--small {
+        font-size: rem(14);
+        line-height: rem(18);
+        padding: rem(10) rem(16);
+    }
+
+    &--measurement-unit {
+        max-width: 90px;
+        appearance: none;
+        &::-webkit-inner-spin-button,
+        &::-webkit-outer-spin-button {
+            appearance: none;
+            margin: 0;
+        }
+    }
+
+    &--filter-range {
+        font-weight: fw(medium);
+        color: $setting-color-gray-4;
+        padding-right: rem(18);
+    }
+}

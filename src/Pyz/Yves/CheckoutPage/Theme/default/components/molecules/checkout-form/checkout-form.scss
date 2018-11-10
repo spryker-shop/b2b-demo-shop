@@ -1,0 +1,93 @@
+/* stylelint-disable */
+
+.checkout-form {
+
+    &--hidden-actions {
+        .form__actions {
+            display: none;
+        }
+    }
+
+    .form {
+        padding-left: rem(10);
+        padding-right: rem(10);
+        width: 100%;
+    }
+
+    .form__fields {
+        margin-left: rem(-10);
+        margin-right: rem(-10);
+    }
+
+    .form__field {
+        padding-top: 0;
+        padding-left: rem(10);
+        padding-right: rem(10);
+    }
+
+    .form__actions {
+        flex-direction: row-reverse;
+        justify-content: flex-end;
+    }
+
+    .form__action {
+        margin: 0 1rem 0 0;
+    }
+
+    .label:not(span) {
+        color: $setting-color-gray-5;
+    }
+
+    .input {
+        @include helper-effect-transition(box-shadow border-color);
+
+        &::placeholder {
+            color: $setting-color-gray-2;
+        }
+
+        &:focus {
+            border-color: $setting-color-main;
+            box-shadow: 0 0 0 1px $setting-color-main;
+        }
+    }
+
+    .select2-container {
+        &.select2-container--focus {
+            .select2-selection--single {
+                border-color: $setting-color-main;
+                box-shadow: 0 0 0 1px $setting-color-main;
+            }
+        }
+
+        .select2-selection--single {
+            @include helper-effect-transition(box-shadow border-color);
+            border-radius: $setting-border-radius;
+            background-color: $setting-color-gray-7;
+            color: $setting-color-gray-5;
+
+            .select2-selection__rendered {
+                line-height: rem(46);
+            }
+        }
+    }
+
+    .radio {
+
+        &__label {
+            color: $setting-color-gray-2;
+        }
+
+        &__input:checked ~ {
+
+            .radio__box {
+                background-color: $setting-color-bg;
+                box-shadow: inset 0 0 0 0.25rem $setting-color-main;
+            }
+
+            .radio__label {
+                color: $setting-color-gray-5;
+                font-weight: fw(medium);
+            }
+        }
+    }
+}

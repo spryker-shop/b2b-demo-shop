@@ -1,0 +1,29 @@
+.active-filter {
+    @include helper-effect-transition(background-color border-color box-shadow);
+    background-color: $setting-color-gray-7;
+    padding: rem(10);
+    border: 1px solid $setting-color-gray-1;
+    line-height: rem(18);
+    border-radius: $setting-border-radius;
+    color: $setting-color-gray-4;
+    display: flex;
+    align-items: center;
+
+    &__icon {
+        @include helper-effect-transition(color);
+        margin-left: rem(8);
+        color: $setting-color-gray-3;
+    }
+
+    &:hover,
+    &:focus {
+        color: $setting-color-gray-4;
+        border-color: $setting-color-white;
+        background-color: $setting-color-white;
+        box-shadow: 0 rem(18) rem(18) 0 $setting-color-shadow-1, 0 rem(3) rem(3) 0 $setting-color-shadow-1;
+
+        .active-filter__icon {
+            color: $setting-color-gray-5;
+        }
+    }
+}

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Spryker Suite.
+ * This file is part of the Spryker Commerce OS.
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
@@ -9,21 +9,21 @@ namespace Pyz\Zed\DataImport\Business\Model\ProductStock;
 
 use Orm\Zed\Stock\Persistence\SpyStockProductQuery;
 use Orm\Zed\Stock\Persistence\SpyStockQuery;
-use Pyz\Zed\DataImport\Business\Model\DataImportStep\PublishAwareStep;
 use Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepository;
 use Spryker\Zed\Availability\Business\AvailabilityFacadeInterface;
 use Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface;
+use Spryker\Zed\DataImport\Business\Model\DataImportStep\PublishAwareStep;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 use Spryker\Zed\ProductBundle\Business\ProductBundleFacadeInterface;
 
 class ProductStockWriterStep extends PublishAwareStep implements DataImportStepInterface
 {
-    const BULK_SIZE = 100;
-    const KEY_NAME = 'name';
-    const KEY_CONCRETE_SKU = 'concrete_sku';
-    const KEY_QUANTITY = 'quantity';
-    const KEY_IS_NEVER_OUT_OF_STOCK = 'is_never_out_of_stock';
-    const KEY_IS_BUNDLE = 'is_bundle';
+    public const BULK_SIZE = 100;
+    public const KEY_NAME = 'name';
+    public const KEY_CONCRETE_SKU = 'concrete_sku';
+    public const KEY_QUANTITY = 'quantity';
+    public const KEY_IS_NEVER_OUT_OF_STOCK = 'is_never_out_of_stock';
+    public const KEY_IS_BUNDLE = 'is_bundle';
 
     /**
      * @var \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepository

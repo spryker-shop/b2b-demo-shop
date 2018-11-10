@@ -1,13 +1,13 @@
 <?php
 
 /**
- * This file is part of the Spryker Suite.
+ * This file is part of the Spryker Commerce OS.
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
 namespace Orm\Zed\ProductImage\Persistence;
 
-use Orm\Zed\ProductImage\Persistence\Base\SpyProductImageSetToProductImage as BaseSpyProductImageSetToProductImage;
+use Spryker\Zed\ProductImage\Persistence\Propel\AbstractSpyProductImageSetToProductImage as BaseSpyProductImageSetToProductImage;
 
 /**
  * Skeleton subclass for representing a row from the 'spy_product_image_set_to_product_image' table.

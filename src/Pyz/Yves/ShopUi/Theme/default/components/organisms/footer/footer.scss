@@ -1,0 +1,74 @@
+.footer {
+    background-color: $setting-color-gray-6;
+
+    &__subscribe {
+        padding-top: rem(77);
+        margin-bottom: rem(77);
+    }
+
+    &__logos {
+        background-color: $setting-color-bg;
+        padding: rem(26) 0 rem(10);
+        box-shadow: 0 3px 3px 0 $setting-color-shadow-1, 0 18px 18px 0 $setting-color-shadow-1;
+
+        @include helper-breakpoint-media-min($lg-min) {
+            padding-bottom: rem(26);
+        }
+    }
+
+    &__navigation {
+        padding-top: rem(54);
+    }
+
+    &__contact-info-item {
+        @include helper-effect-transition(color);
+        font-size: rem(18);
+        line-height: rem(23);
+    }
+
+    &__phone {
+        display: block;
+        font-weight: fw(medium);
+        margin-bottom: 1rem;
+        color: $setting-color-gray-4;
+
+        &:hover,
+        &:focus {
+            color: $setting-color-gray-3;
+        }
+    }
+
+    &__social-buttons {
+        margin-top: rem(18);
+        margin-bottom: rem(18);
+
+        @include helper-breakpoint-media-max($sm-max) {
+            flex-direction: column-reverse;
+        }
+        @include helper-breakpoint-media-min($md-min) {
+            margin-top: rem(42);
+            margin-bottom: rem(47);
+        }
+    }
+
+    &__hint {
+        font-size: rem(13);
+        line-height: 1rem;
+        color: $setting-color-gray-2;
+        letter-spacing: rem(0.54);
+        padding-bottom: rem(12);
+    }
+
+    &__thanks-certeo {
+        font-size: rem(13);
+        line-height: 1rem;
+        color: $setting-color-gray-3;
+        letter-spacing: rem(0.54);
+    }
+
+    &__copyright {
+        background-color: $setting-color-blue-1;
+        text-align: center;
+        color: $setting-color-white;
+    }
+}

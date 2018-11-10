@@ -1,14 +1,17 @@
 <?php
 
 /**
- * This file is part of the Spryker Suite.
+ * This file is part of the Spryker Commerce OS.
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
 namespace Pyz\Yves\CustomerPage;
 
+use SprykerShop\Yves\AgentPage\Plugin\FixAgentTokenAfterCustomerAuthenticationSuccessPlugin;
+use SprykerShop\Yves\CompanyPage\Plugin\CustomerPage\BusinessOnBehalfCompanyUserRedirectAfterLoginStrategyPlugin;
+use SprykerShop\Yves\CompanyUserInvitationPage\Plugin\CompanyUserInvitationPreRegistrationCustomerTransferExpanderPlugin;
 use SprykerShop\Yves\CustomerPage\CustomerPageDependencyProvider as SprykerShopCustomerPageDependencyProvider;
-use SprykerShop\Yves\NewsletterWidget\Plugin\CustomerPage\NewsletterSubscriptionSummaryWidgetPlugin;
+use SprykerShop\Yves\CustomerReorderWidget\Plugin\CustomerPage\CustomerReorderWidgetPlugin;
 
 class CustomerPageDependencyProvider extends SprykerShopCustomerPageDependencyProvider
 {
@@ -18,7 +21,57 @@ class CustomerPageDependencyProvider extends SprykerShopCustomerPageDependencyPr
     protected function getCustomerOverviewWidgetPlugins(): array
     {
         return [
-            NewsletterSubscriptionSummaryWidgetPlugin::class,
+            CustomerReorderWidgetPlugin::class,
+        ];
+    }
+
+    /**
+     * @return string[]
+     */
+    protected function getCustomerOrderListWidgetPlugins(): array
+    {
+        return [
+            CustomerReorderWidgetPlugin::class,
+        ];
+    }
+
+    /**
+     * @return string[]
+     */
+    protected function getCustomerOrderViewWidgetPlugins(): array
+    {
+        return [
+            CustomerReorderWidgetPlugin::class,
+        ];
+    }
+
+    /**
+     * @return \SprykerShop\Yves\CustomerPageExtension\Dependency\Plugin\PreRegistrationCustomerTransferExpanderPluginInterface[]
+     */
+    protected function getPreRegistrationCustomerTransferExpanderPlugins(): array
+    {
+        return [
+            new CompanyUserInvitationPreRegistrationCustomerTransferExpanderPlugin(), #BulkImportCompanyUserInvitationsFeature
+        ];
+    }
+
+    /**
+     * @return \SprykerShop\Yves\CustomerPageExtension\Dependency\Plugin\CustomerRedirectStrategyPluginInterface[]
+     */
+    protected function getAfterLoginCustomerRedirectPlugins(): array
+    {
+        return [
+            new BusinessOnBehalfCompanyUserRedirectAfterLoginStrategyPlugin(), #BusinessOnBehalfFeature
+        ];
+    }
+
+    /**
+     * @return \SprykerShop\Yves\AgentPage\Plugin\FixAgentTokenAfterCustomerAuthenticationSuccessPlugin[]
+     */
+    protected function getAfterCustomerAuthenticationSuccessPlugins(): array
+    {
+        return [
+            new FixAgentTokenAfterCustomerAuthenticationSuccessPlugin(),
         ];
     }
 }

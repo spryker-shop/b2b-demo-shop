@@ -1,0 +1,91 @@
+{% extends template('page-layout-shopping-list', 'ShoppingListPage') %}
+
+{% define data = {
+    title: _view.shoppingList.name,
+    shareShoppingListForm: _view.shareShoppingListForm,
+    idShoppingList: _view.idShoppingList,
+    shoppingList: _view.shoppingList,
+    sharedCompanyUsers: _view.shoppingList.sharedCompanyUsers,
+    sharedCompanyBusinessUnits: _view.shoppingList.sharedCompanyBusinessUnits
+} %}
+
+{% block breadcrumbs %}
+    {% include molecule('breadcrumb') with {
+        data: {
+            steps: [{
+                label: 'customer.account' | trans,
+            },{
+                label: 'customer.account.shopping_list' | trans,
+            },{
+                label: 'customer.account.shopping_list.share.from.share' | trans,
+            }]
+        }
+    } only %}
+{% endblock %}
+
+{% block customerNavigation %}
+    {% widget 'CustomerNavigationWidget' args ['shoppingList', data.idShoppingList] only %}{% endwidget %}
+{% endblock %}
+
+{% block customerContent %}
+    <div class="form" data-qa="component form">
+        <h2>{{ 'customer.account.shopping_list.share.from.share_with' | trans }}</h2>
+
+        {{ form_start(data.shareShoppingListForm) }}
+
+        <div class="form__container">
+            <div class="form__fields grid grid--bottom">
+                {% embed molecule('company-dashbord-item') with {
+                    class: 'form__field col col--sm-12',
+                    data: {
+                        title: 'customer.account.shopping_list.business_unit' | trans,
+                        icon: 'building'
+                    },
+                    embed: {
+                        shareUnits: data.sharedCompanyBusinessUnits,
+                        shareForm: data.shareShoppingListForm.sharedCompanyBusinessUnits
+                    }
+                } only %}
+                    {% block content %}
+                        {% include molecule('share-list', 'ShoppingListPage') with {
+                            data: {
+                                shareUnits: embed.shareUnits,
+                                shareForm: embed.shareForm
+                            }
+                        } only %}
+                    {% endblock %}
+                {% endembed %}
+
+                {% embed molecule('company-dashbord-item') with {
+                    class: 'form__field col col--sm-12',
+                    data: {
+                        title: 'customer.account.shopping_list.customer' | trans,
+                        icon: 'users'
+                    },
+                    embed: {
+                        shareUnits: data.sharedCompanyUsers,
+                        shareForm: data.shareShoppingListForm.sharedCompanyUsers
+                    }
+                } only %}
+                    {% block content %}
+                        {% include molecule('share-list', 'ShoppingListPage') with {
+                            data: {
+                                shareUnits: embed.shareUnits,
+                                shareForm: embed.shareForm
+                            }
+                        } only %}
+                    {% endblock %}
+                {% endembed %}
+            </div>
+
+            <div class="form__actions grid grid--right spacing spacing--reset">
+                <button type="submit" class="form__action button button--success spacing spacing--reset" data-qa="submit-button">
+                    {{ 'customer.account.shopping_list.share.from.share' | trans }}
+                </button>
+            </div>
+        </div>
+
+        {{ form_end(data.shareShoppingListForm) }}
+    </div>
+
+{% endblock %}

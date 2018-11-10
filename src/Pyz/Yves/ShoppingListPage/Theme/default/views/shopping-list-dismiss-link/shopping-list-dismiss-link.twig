@@ -1,0 +1,18 @@
+{% extends template('widget') %}
+
+{% define data = {
+    idShoppingList: _widget.shoppingList.idShoppingList,
+    isOwner: _widget.isOwner
+} %}
+
+{% block body %}
+    {% if data.isOwner == false %}
+    <a class="col link link--alt link--action" href="{{ url('shopping-list/dismiss-confirm', { idShoppingList: data.idShoppingList }) }}" title="{{ 'customer.account.shopping_list.overview.dismiss' | trans }}">
+        {% include atom('icon') with {
+            data: {
+                name: 'dismiss'
+            }
+        } only %}
+    </a>
+    {% endif %}
+{% endblock %}

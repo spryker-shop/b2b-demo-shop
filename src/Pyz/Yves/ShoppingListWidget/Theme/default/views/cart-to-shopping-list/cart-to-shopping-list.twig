@@ -1,0 +1,19 @@
+{% extends template('widget') %}
+
+{% define data = {
+    quote: _widget.quote,
+} %}
+
+{% block body %}
+    <a class="link link--alt link--action" href="{{ url('shopping-list/create-from-exist-cart', {'idQuote': (data.quote.idQuote)}) }}">
+        {% include atom('icon') with {
+            modifiers: ['create-list'],
+            data: {
+                name: 'create-list'
+            },
+            attributes: {
+                title: 'widget.shopping_list.multi_cart.to_shopping_list' | trans
+            }
+        } only %}
+    </a>
+{% endblock %}

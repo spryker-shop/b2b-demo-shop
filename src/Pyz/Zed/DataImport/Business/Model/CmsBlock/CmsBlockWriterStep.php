@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Spryker Suite.
+ * This file is part of the Spryker Commerce OS.
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
@@ -16,15 +16,15 @@ use Orm\Zed\CmsBlockCategoryConnector\Persistence\SpyCmsBlockCategoryConnectorQu
 use Orm\Zed\CmsBlockProductConnector\Persistence\SpyCmsBlockProductConnectorQuery;
 use Orm\Zed\Glossary\Persistence\SpyGlossaryKeyQuery;
 use Orm\Zed\Glossary\Persistence\SpyGlossaryTranslationQuery;
-use Pyz\Zed\DataImport\Business\Model\Category\Repository\CategoryRepositoryInterface;
-use Pyz\Zed\DataImport\Business\Model\DataImportStep\LocalizedAttributesExtractorStep;
-use Pyz\Zed\DataImport\Business\Model\DataImportStep\PublishAwareStep;
+use Pyz\Zed\DataImport\Business\Model\CmsBlock\Category\Repository\CategoryRepositoryInterface;
 use Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepositoryInterface;
 use Spryker\Zed\CmsBlock\Business\Model\CmsBlockGlossaryKeyGenerator;
 use Spryker\Zed\CmsBlock\Dependency\CmsBlockEvents;
 use Spryker\Zed\CmsBlockCategoryConnector\Dependency\CmsBlockCategoryConnectorEvents;
 use Spryker\Zed\CmsBlockProductConnector\Dependency\CmsBlockProductConnectorEvents;
 use Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface;
+use Spryker\Zed\DataImport\Business\Model\DataImportStep\LocalizedAttributesExtractorStep;
+use Spryker\Zed\DataImport\Business\Model\DataImportStep\PublishAwareStep;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 use Spryker\Zed\Glossary\Dependency\GlossaryEvents;
 
@@ -33,21 +33,21 @@ use Spryker\Zed\Glossary\Dependency\GlossaryEvents;
  */
 class CmsBlockWriterStep extends PublishAwareStep implements DataImportStepInterface
 {
-    const BULK_SIZE = 100;
+    public const BULK_SIZE = 100;
 
-    const KEY_BLOCK_NAME = 'block_name';
-    const KEY_BLOCK_TYPE = 'type';
-    const KEY_BLOCK_VALUE = 'value';
-    const KEY_TEMPLATE_NAME = 'template_name';
-    const KEY_TEMPLATE_PATH = 'template_path';
-    const KEY_CATEGORIES = 'categories';
-    const KEY_PRODUCTS = 'products';
-    const KEY_ACTIVE = 'active';
-    const KEY_PLACEHOLDER_TITLE = 'placeholder.title';
-    const KEY_PLACEHOLDER_DESCRIPTION = 'placeholder.description';
+    public const KEY_BLOCK_NAME = 'block_name';
+    public const KEY_BLOCK_TYPE = 'type';
+    public const KEY_BLOCK_VALUE = 'value';
+    public const KEY_TEMPLATE_NAME = 'template_name';
+    public const KEY_TEMPLATE_PATH = 'template_path';
+    public const KEY_CATEGORIES = 'categories';
+    public const KEY_PRODUCTS = 'products';
+    public const KEY_ACTIVE = 'active';
+    public const KEY_PLACEHOLDER_TITLE = 'placeholder.title';
+    public const KEY_PLACEHOLDER_DESCRIPTION = 'placeholder.description';
 
     /**
-     * @var \Pyz\Zed\DataImport\Business\Model\Category\Repository\CategoryRepositoryInterface
+     * @var \Pyz\Zed\DataImport\Business\Model\CmsBlock\Category\Repository\CategoryRepositoryInterface
      */
     protected $categoryRepository;
 
@@ -57,7 +57,7 @@ class CmsBlockWriterStep extends PublishAwareStep implements DataImportStepInter
     protected $productRepository;
 
     /**
-     * @param \Pyz\Zed\DataImport\Business\Model\Category\Repository\CategoryRepositoryInterface $categoryRepository
+     * @param \Pyz\Zed\DataImport\Business\Model\CmsBlock\Category\Repository\CategoryRepositoryInterface $categoryRepository
      * @param \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepositoryInterface $productRepository
      */
     public function __construct(CategoryRepositoryInterface $categoryRepository, ProductRepositoryInterface $productRepository)

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Spryker Suite.
+ * This file is part of the Spryker Commerce OS.
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
@@ -12,29 +12,29 @@ use Orm\Zed\ProductLabel\Persistence\SpyProductLabel;
 use Orm\Zed\ProductLabel\Persistence\SpyProductLabelLocalizedAttributesQuery;
 use Orm\Zed\ProductLabel\Persistence\SpyProductLabelProductAbstractQuery;
 use Orm\Zed\ProductLabel\Persistence\SpyProductLabelQuery;
-use Pyz\Zed\DataImport\Business\Model\DataImportStep\LocalizedAttributesExtractorStep;
-use Pyz\Zed\DataImport\Business\Model\DataImportStep\PublishAwareStep;
 use Pyz\Zed\DataImport\Business\Model\ProductAbstract\AddProductAbstractSkusStep;
 use Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface;
+use Spryker\Zed\DataImport\Business\Model\DataImportStep\LocalizedAttributesExtractorStep;
+use Spryker\Zed\DataImport\Business\Model\DataImportStep\PublishAwareStep;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 use Spryker\Zed\Product\Dependency\ProductEvents;
 use Spryker\Zed\ProductLabel\Dependency\ProductLabelEvents;
 
 class ProductLabelWriterStep extends PublishAwareStep implements DataImportStepInterface
 {
-    const BULK_SIZE = 100;
+    public const BULK_SIZE = 100;
 
-    const KEY_NAME = 'name';
-    const KEY_IS_ACTIVE = 'is_active';
-    const KEY_IS_EXCLUSIVE = 'is_exclusive';
-    const KEY_IS_DYNAMIC = 'is_dynamic';
-    const KEY_FRONT_END_REFERENCE = 'front_end_reference';
+    public const KEY_NAME = 'name';
+    public const KEY_IS_ACTIVE = 'is_active';
+    public const KEY_IS_EXCLUSIVE = 'is_exclusive';
+    public const KEY_IS_DYNAMIC = 'is_dynamic';
+    public const KEY_FRONT_END_REFERENCE = 'front_end_reference';
 
-    const KEY_VALID_FROM = 'valid_from';
-    const KEY_VALID_TO = 'valid_to';
+    public const KEY_VALID_FROM = 'valid_from';
+    public const KEY_VALID_TO = 'valid_to';
 
-    const COL_MAX_POSITION = 'max_position';
-    const KEY_PRODUCT_ABSTRACT_SKUS = 'product_abstract_skus';
+    public const COL_MAX_POSITION = 'max_position';
+    public const KEY_PRODUCT_ABSTRACT_SKUS = 'product_abstract_skus';
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet

@@ -1,0 +1,41 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'review-average-display',
+    tag: 'section'
+} %}
+
+{% define data = {
+    summary: required,
+    ratingMaxValue: required
+} %}
+
+{% block body %}
+    <div class="review-average-display__average-rating">
+        {{ data.summary.averageRating }}
+    </div>
+
+    {% include molecule('rating-selector', 'ProductReviewWidget') with {
+        modifiers: ['pdp', 'space'],
+        class: config.name ~ '__rating-selector',
+        data: {
+            value: data.summary.averageRating,
+            maxValue: data.ratingMaxValue,
+            useHalfSteps: true
+        },
+        attributes: {
+            readonly: true
+        }
+    } only %}
+
+    <div class="review-average-display__total-review">
+        {% if data.summary.totalReview > 0 %}
+            {{- data.summary.totalReview }}
+            {% transchoice data.summary.totalReview %}
+                product_review.summary.review|product_review.summary.reviews
+            {% endtranschoice -%}
+        {% else %}
+            {{ 'product_review.no_reviews' | trans }}
+        {% endif %}
+    </div>
+{% endblock %}

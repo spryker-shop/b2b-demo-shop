@@ -1,0 +1,30 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'shop-list-item'
+} %}
+
+{% define data = {
+    shoppingList: required
+} %}
+
+{% block body %}
+
+    {% set hasWriteAccess =  can('WriteShoppingListPermissionPlugin', data.shoppingList.idShoppingList) %}
+    <a class="grid grid--nowrap" href="{{ path('shopping-list/details', { idShoppingList: (data.shoppingList.idShoppingList)}) }}">
+        <strong class="col {{ config.name }}__name">{{ data.shoppingList.name }}</strong>
+        <span class="col {{ config.name }}__owner">({{ data.shoppingList.owner }})</span>
+    </a>
+    <span class="{{ config.name }}__items-count">
+        {{ data.shoppingList.numberOfItems }}
+        {{ 'shopping_list_widget.items' | trans }}
+    </span>
+    <span class="{{ config.name }}__access {% if hasWriteAccess %}{{ config.name }}__access--full{% endif %}" >
+        {% if hasWriteAccess %}
+            {{ 'shopping_list_widget.full_access' | trans }}
+        {% else %}
+            {{ 'shopping_list_widget.read_only' | trans }}
+        {% endif %}
+    </span>
+
+{% endblock %}

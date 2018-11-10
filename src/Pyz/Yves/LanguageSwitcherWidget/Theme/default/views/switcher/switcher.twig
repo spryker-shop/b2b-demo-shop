@@ -1,0 +1,21 @@
+{% extends template('widget') %}
+
+{% define data = {
+    languages: _widget.languages,
+    currentLanguage: _widget.currentLanguage,
+    getSchemeAndHttpHost: app.request.getSchemeAndHttpHost()
+} %}
+
+{% block body %}
+    {% if data.languages is not empty %}
+        <form method="GET" action="">
+            {% include molecule('language-switcher', 'LanguageSwitcherWidget') with {
+                data: {
+                    languages: data.languages,
+                    currentLanguage: data.currentLanguage,
+                    getSchemeAndHttpHost: data.getSchemeAndHttpHost
+                }
+            } only %}
+        </form>
+    {% endif %}
+{% endblock %}

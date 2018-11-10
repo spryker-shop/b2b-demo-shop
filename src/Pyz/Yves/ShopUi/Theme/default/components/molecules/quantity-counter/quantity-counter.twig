@@ -1,0 +1,54 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'quantity-counter',
+    tag: 'quantity-counter'
+} %}
+
+{% define data = {
+    isDisabled: false,
+    isReadOnly: false,
+    autoUpdate: false,
+    allowKeyboardInput: true,
+} %}
+
+{% set isEditable = not data.isReadOnly and not data.isDisabled %}
+
+{% define attributes = {
+    value: 1,
+    type: "number",
+    name: "quantity",
+    onkeypress: data.allowKeyboardInput and isEditable ? null : "return false;",
+    onkeydown:  data.allowKeyboardInput and isEditable ? null : "return false;",
+    min: 1,
+    step: 1,
+} %}
+
+{% block attributes %}{% endblock %}
+
+{% block body %}
+    <button class="{{ config.name }}__button
+                   {% if data.isDisabled or data.isReadOnly %}
+                        {{ config.name }}__button--disabled
+                   {% endif %}
+                   {{ config.jsName }}__button-decrement
+                   {{ config.name }}__button--decrement">-</button>
+
+    {% block quantityField %}
+        <input
+            class="{{ config.name }}__input {{ config.jsName }}__input {% block inputClass %}{% endblock %}"
+            {% block quantityCounterAttributes %}{{component.renderAttributes(attributes)}}{% endblock %}
+            {% if data.autoUpdate %}data-auto-update="true"{% endif %}
+            {% if data.isDisabled %}disabled{% endif %}
+            {% if data.isReadOnly %}readonly{% endif %}
+            {{qa('quantity-input')}}>
+    {% endblock %}
+
+    <button class="{{ config.name }}__button
+                   {% if data.isDisabled or data.isReadOnly %}
+                       {{ config.name }}__button--disabled
+                   {% endif %}
+                   {{ config.jsName }}__button-increment
+                   {{ config.name }}__button--increment">+</button>
+{% endblock %}
+

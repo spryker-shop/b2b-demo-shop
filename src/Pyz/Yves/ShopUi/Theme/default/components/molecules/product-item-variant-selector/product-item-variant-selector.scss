@@ -1,0 +1,15 @@
+@mixin shop-ui-product-item-variant-selector($name: '.product-item-variant-selector') {
+    #{$name} {
+        &__label {
+            font-size: rem(14);
+            font-weight: fw(medium);
+            line-height: normal;
+            color: $setting-color-gray-5;
+            margin-right: rem(20);
+        }
+
+        @content;
+    }
+}
+
+@include shop-ui-product-item-variant-selector();

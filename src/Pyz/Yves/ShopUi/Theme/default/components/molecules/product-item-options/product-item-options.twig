@@ -1,0 +1,31 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'product-item-options',
+    tag: 'ul'
+} %}
+
+{% define data = {
+    productItem: {},
+    options: []
+} %}
+
+{% block body %}
+    <li class="{{ component.renderClass(config.name ~ '__item', modifiers) }}">
+        {% if data.productItem %}
+            {% include molecule('product-options', 'ProductOptionWidget') ignore missing with {
+                data: {
+                    options: data.productItem.productOptions | default([])
+                }
+            } only %}
+        {% else %}
+            <ul class="option-display">
+                {% for option in data.options %}
+                    <li class="option-display__item">
+                        {{ option.value | trans }} - {{ (option.sumPrice | default(0)) | money }}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </li>
+{% endblock %}

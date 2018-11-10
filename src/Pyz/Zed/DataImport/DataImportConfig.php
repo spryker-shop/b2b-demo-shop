@@ -1,55 +1,59 @@
 <?php
 
 /**
- * This file is part of the Spryker Suite.
+ * This file is part of the Spryker Commerce OS.
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
 namespace Pyz\Zed\DataImport;
 
-use Generated\Shared\Transfer\DataImporterConfigurationTransfer;
-use Generated\Shared\Transfer\DataImporterReaderConfigurationTransfer;
+use Pyz\Shared\DataImport\DataImportConstants;
 use Spryker\Zed\DataImport\DataImportConfig as SprykerDataImportConfig;
 
+/**
+ * @SuppressWarnings(PHPMD.ExcessiveClassComplexity)
+ */
 class DataImportConfig extends SprykerDataImportConfig
 {
-    const IMPORT_TYPE_CATEGORY_TEMPLATE = 'category-template';
-    const IMPORT_TYPE_CATEGORY = 'category';
-    const IMPORT_TYPE_CUSTOMER = 'customer';
-    const IMPORT_TYPE_GLOSSARY = 'glossary';
-    const IMPORT_TYPE_NAVIGATION = 'navigation';
-    const IMPORT_TYPE_NAVIGATION_NODE = 'navigation-node';
-    const IMPORT_TYPE_PRODUCT_PRICE = 'product-price';
-    const IMPORT_TYPE_PRODUCT_STOCK = 'product-stock';
-    const IMPORT_TYPE_PRODUCT_ABSTRACT = 'product-abstract';
-    const IMPORT_TYPE_PRODUCT_ABSTRACT_STORE = 'product-abstract-store';
-    const IMPORT_TYPE_PRODUCT_CONCRETE = 'product-concrete';
-    const IMPORT_TYPE_PRODUCT_ATTRIBUTE_KEY = 'product-attribute-key';
-    const IMPORT_TYPE_PRODUCT_MANAGEMENT_ATTRIBUTE = 'product-management-attribute';
-    const IMPORT_TYPE_PRODUCT_RELATION = 'product-relation';
-    const IMPORT_TYPE_PRODUCT_REVIEW = 'product-review';
-    const IMPORT_TYPE_PRODUCT_LABEL = 'product-label';
-    const IMPORT_TYPE_PRODUCT_SET = 'product-set';
-    const IMPORT_TYPE_PRODUCT_GROUP = 'product-group';
-    const IMPORT_TYPE_PRODUCT_OPTION = 'product-option';
-    const IMPORT_TYPE_PRODUCT_OPTION_PRICE = 'product-option-price';
-    const IMPORT_TYPE_PRODUCT_IMAGE = 'product-image';
-    const IMPORT_TYPE_PRODUCT_SEARCH_ATTRIBUTE_MAP = 'product-search-attribute-map';
-    const IMPORT_TYPE_PRODUCT_SEARCH_ATTRIBUTE = 'product-search-attribute';
-    const IMPORT_TYPE_CMS_TEMPLATE = 'cms-template';
-    const IMPORT_TYPE_CMS_PAGE = 'cms-page';
-    const IMPORT_TYPE_CMS_BLOCK = 'cms-block';
-    const IMPORT_TYPE_CMS_BLOCK_CATEGORY_POSITION = 'cms-block-category-position';
-    const IMPORT_TYPE_CMS_BLOCK_CATEGORY = 'cms-block-category';
-    const IMPORT_TYPE_DISCOUNT = 'discount';
-    const IMPORT_TYPE_DISCOUNT_AMOUNT = 'discount-amount';
-    const IMPORT_TYPE_DISCOUNT_VOUCHER = 'discount-voucher';
-    const IMPORT_TYPE_SHIPMENT = 'shipment';
-    const IMPORT_TYPE_SHIPMENT_PRICE = 'shipment-price';
-    const IMPORT_TYPE_STOCK = 'stock';
-    const IMPORT_TYPE_TAX = 'tax';
-    const IMPORT_TYPE_CURRENCY = 'currency';
-    const IMPORT_TYPE_STORE = 'store';
+    public const IMPORT_TYPE_CATEGORY_TEMPLATE = 'category-template';
+    public const IMPORT_TYPE_CUSTOMER = 'customer';
+    public const IMPORT_TYPE_GLOSSARY = 'glossary';
+    public const IMPORT_TYPE_NAVIGATION = 'navigation';
+    public const IMPORT_TYPE_NAVIGATION_NODE = 'navigation-node';
+    public const IMPORT_TYPE_PRODUCT_PRICE = 'product-price';
+    public const IMPORT_TYPE_PRODUCT_STOCK = 'product-stock';
+    public const IMPORT_TYPE_PRODUCT_ABSTRACT = 'product-abstract';
+    public const IMPORT_TYPE_PRODUCT_ABSTRACT_STORE = 'product-abstract-store';
+    public const IMPORT_TYPE_PRODUCT_CONCRETE = 'product-concrete';
+    public const IMPORT_TYPE_PRODUCT_ATTRIBUTE_KEY = 'product-attribute-key';
+    public const IMPORT_TYPE_PRODUCT_MANAGEMENT_ATTRIBUTE = 'product-management-attribute';
+    public const IMPORT_TYPE_PRODUCT_RELATION = 'product-relation';
+    public const IMPORT_TYPE_PRODUCT_REVIEW = 'product-review';
+    public const IMPORT_TYPE_PRODUCT_LABEL = 'product-label';
+    public const IMPORT_TYPE_PRODUCT_SET = 'product-set';
+    public const IMPORT_TYPE_PRODUCT_GROUP = 'product-group';
+    public const IMPORT_TYPE_PRODUCT_OPTION = 'product-option';
+    public const IMPORT_TYPE_PRODUCT_OPTION_PRICE = 'product-option-price';
+    public const IMPORT_TYPE_PRODUCT_IMAGE = 'product-image';
+    public const IMPORT_TYPE_PRODUCT_SEARCH_ATTRIBUTE_MAP = 'product-search-attribute-map';
+    public const IMPORT_TYPE_PRODUCT_SEARCH_ATTRIBUTE = 'product-search-attribute';
+    public const IMPORT_TYPE_CMS_TEMPLATE = 'cms-template';
+    public const IMPORT_TYPE_CMS_PAGE = 'cms-page';
+    public const IMPORT_TYPE_CMS_BLOCK = 'cms-block';
+    public const IMPORT_TYPE_CMS_BLOCK_STORE = 'cms-block-store';
+    public const IMPORT_TYPE_CMS_BLOCK_CATEGORY_POSITION = 'cms-block-category-position';
+    public const IMPORT_TYPE_CMS_BLOCK_CATEGORY = 'cms-block-category';
+    public const IMPORT_TYPE_DISCOUNT = 'discount';
+    public const IMPORT_TYPE_DISCOUNT_STORE = 'discount-store';
+    public const IMPORT_TYPE_DISCOUNT_AMOUNT = 'discount-amount';
+    public const IMPORT_TYPE_DISCOUNT_VOUCHER = 'discount-voucher';
+    public const IMPORT_TYPE_SHIPMENT = 'shipment';
+    public const IMPORT_TYPE_SHIPMENT_PRICE = 'shipment-price';
+    public const IMPORT_TYPE_STOCK = 'stock';
+    public const IMPORT_TYPE_TAX = 'tax';
+    public const IMPORT_TYPE_CURRENCY = 'currency';
+    public const IMPORT_TYPE_STORE = 'store';
+    public const IMPORT_TYPE_ORDER_SOURCE = 'order-source';
 
     /**
      * @return \Generated\Shared\Transfer\DataImporterConfigurationTransfer
@@ -57,6 +61,14 @@ class DataImportConfig extends SprykerDataImportConfig
     public function getCurrencyDataImporterConfiguration()
     {
         return $this->buildImporterConfiguration('currency.csv', static::IMPORT_TYPE_CURRENCY);
+    }
+
+    /**
+     * @return \Generated\Shared\Transfer\DataImporterConfigurationTransfer
+     */
+    public function getOrderSourceDataImporterConfiguration()
+    {
+        return $this->buildImporterConfiguration('order_source.csv', static::IMPORT_TYPE_ORDER_SOURCE);
     }
 
     /**
@@ -73,14 +85,6 @@ class DataImportConfig extends SprykerDataImportConfig
     public function getGlossaryDataImporterConfiguration()
     {
         return $this->buildImporterConfiguration('glossary.csv', static::IMPORT_TYPE_GLOSSARY);
-    }
-
-    /**
-     * @return \Generated\Shared\Transfer\DataImporterConfigurationTransfer
-     */
-    public function getCategoryDataImporterConfiguration()
-    {
-        return $this->buildImporterConfiguration('icecat_biz_data' . DIRECTORY_SEPARATOR . 'category.csv', static::IMPORT_TYPE_CATEGORY);
     }
 
     /**
@@ -168,7 +172,7 @@ class DataImportConfig extends SprykerDataImportConfig
      */
     public function getProductAbstractDataImporterConfiguration()
     {
-        return $this->buildImporterConfiguration('icecat_biz_data' . DIRECTORY_SEPARATOR . 'product_abstract.csv', static::IMPORT_TYPE_PRODUCT_ABSTRACT);
+        return $this->buildImporterConfiguration('product_abstract.csv', static::IMPORT_TYPE_PRODUCT_ABSTRACT);
     }
 
     /**
@@ -176,7 +180,7 @@ class DataImportConfig extends SprykerDataImportConfig
      */
     public function getProductAbstractStoreDataImporterConfiguration()
     {
-        return $this->buildImporterConfiguration('icecat_biz_data' . DIRECTORY_SEPARATOR . 'product_abstract_store.csv', static::IMPORT_TYPE_PRODUCT_ABSTRACT_STORE);
+        return $this->buildImporterConfiguration('product_abstract_store.csv', static::IMPORT_TYPE_PRODUCT_ABSTRACT_STORE);
     }
 
     /**
@@ -184,7 +188,7 @@ class DataImportConfig extends SprykerDataImportConfig
      */
     public function getProductConcreteDataImporterConfiguration()
     {
-        return $this->buildImporterConfiguration('icecat_biz_data' . DIRECTORY_SEPARATOR . 'product_concrete.csv', static::IMPORT_TYPE_PRODUCT_CONCRETE);
+        return $this->buildImporterConfiguration('product_concrete.csv', static::IMPORT_TYPE_PRODUCT_CONCRETE);
     }
 
     /**
@@ -232,7 +236,7 @@ class DataImportConfig extends SprykerDataImportConfig
      */
     public function getProductSetDataImporterConfiguration()
     {
-        return $this->buildImporterConfiguration('icecat_biz_data' . DIRECTORY_SEPARATOR . 'product_set.csv', static::IMPORT_TYPE_PRODUCT_SET);
+        return $this->buildImporterConfiguration('product_set.csv', static::IMPORT_TYPE_PRODUCT_SET);
     }
 
     /**
@@ -280,7 +284,9 @@ class DataImportConfig extends SprykerDataImportConfig
      */
     public function getProductImageDataImporterConfiguration()
     {
-        return $this->buildImporterConfiguration('icecat_biz_data' . DIRECTORY_SEPARATOR . 'product_image.csv', static::IMPORT_TYPE_PRODUCT_IMAGE);
+        $imageFile = ($this->isInternal()) ? 'product_image_internal.csv' : 'product_image.csv';
+
+        return $this->buildImporterConfiguration($imageFile, static::IMPORT_TYPE_PRODUCT_IMAGE);
     }
 
     /**
@@ -310,6 +316,14 @@ class DataImportConfig extends SprykerDataImportConfig
     /**
      * @return \Generated\Shared\Transfer\DataImporterConfigurationTransfer
      */
+    public function getCmsBlockStoreDataImporterConfiguration()
+    {
+        return $this->buildImporterConfiguration('cms_block_store.csv', static::IMPORT_TYPE_CMS_BLOCK_STORE);
+    }
+
+    /**
+     * @return \Generated\Shared\Transfer\DataImporterConfigurationTransfer
+     */
     public function getCmsBlockCategoryPositionDataImporterConfiguration()
     {
         return $this->buildImporterConfiguration('cms_block_category_position.csv', static::IMPORT_TYPE_CMS_BLOCK_CATEGORY_POSITION);
@@ -334,6 +348,14 @@ class DataImportConfig extends SprykerDataImportConfig
     /**
      * @return \Generated\Shared\Transfer\DataImporterConfigurationTransfer
      */
+    public function getDiscountStoreDataImporterConfiguration()
+    {
+        return $this->buildImporterConfiguration('discount_store.csv', static::IMPORT_TYPE_DISCOUNT_STORE);
+    }
+
+    /**
+     * @return \Generated\Shared\Transfer\DataImporterConfigurationTransfer
+     */
     public function getDiscountAmountDataImporterConfiguration()
     {
         return $this->buildImporterConfiguration('discount_amount.csv', static::IMPORT_TYPE_DISCOUNT_AMOUNT);
@@ -348,21 +370,10 @@ class DataImportConfig extends SprykerDataImportConfig
     }
 
     /**
-     * @param string $file
-     * @param string $importType
-     *
-     * @return \Generated\Shared\Transfer\DataImporterConfigurationTransfer
+     * @return mixed
      */
-    protected function buildImporterConfiguration($file, $importType)
+    public function isInternal()
     {
-        $dataImportReaderConfigurationTransfer = new DataImporterReaderConfigurationTransfer();
-        $dataImportReaderConfigurationTransfer->setFileName($this->getDataImportRootPath() . $file);
-
-        $dataImporterConfigurationTransfer = new DataImporterConfigurationTransfer();
-        $dataImporterConfigurationTransfer
-            ->setImportType($importType)
-            ->setReaderConfiguration($dataImportReaderConfigurationTransfer);
-
-        return $dataImporterConfigurationTransfer;
+        return $this->getConfig()->get(DataImportConstants::IS_ENABLE_INTERNAL_IMAGE, false);
     }
 }

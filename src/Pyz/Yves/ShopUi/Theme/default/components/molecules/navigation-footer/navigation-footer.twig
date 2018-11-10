@@ -1,0 +1,21 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'navigation-footer',
+} %}
+
+{% define data = {
+    items: required,
+} %}
+
+{% block body %}
+    {% for item in data.items %}
+        {% include molecule('navigation-footer-item') with {
+            class: 'col col--sm-6 col--md-4',
+            data: {
+                category: item.category,
+                title: item.title
+            }
+        } only %}
+    {% endfor %}
+{% endblock %}

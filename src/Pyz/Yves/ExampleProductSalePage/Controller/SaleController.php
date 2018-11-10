@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Spryker Suite.
+ * This file is part of the Spryker Commerce OS.
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
@@ -45,7 +45,11 @@ class SaleController extends AbstractController
             ->getCatalogClient()
             ->getCatalogViewMode($request);
 
-        return $this->view($searchResults, $this->getFactory()->getExampleProductSalePageWidgetPlugins());
+        return $this->view(
+            $searchResults,
+            $this->getFactory()->getExampleProductSalePageWidgetPlugins(),
+            '@ExampleProductSalePage/views/sale-example/sale-example.twig'
+        );
     }
 
     /**
@@ -72,6 +76,6 @@ class SaleController extends AbstractController
             ));
         }
 
-        return $categoryNode;
+        return $categoryNode['data'];
     }
 }

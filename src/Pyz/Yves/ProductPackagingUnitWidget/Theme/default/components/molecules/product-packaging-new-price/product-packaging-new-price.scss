@@ -1,0 +1,11 @@
+@mixin product-packaging-unit-product-packaging-new-price($name: '.product-packaging-new-price') {
+    #{$name} {
+        display: flex;
+        align-items: center;
+        margin-bottom: 17px;
+
+        @content;
+    }
+}
+
+@include product-packaging-unit-product-packaging-new-price;

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Spryker Suite.
+ * This file is part of the Spryker Commerce OS.
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
@@ -11,6 +11,7 @@ use Pyz\Client\ExampleProductSalePage\Plugin\Elasticsearch\Query\SaleSearchQuery
 use Spryker\Client\Catalog\Plugin\Elasticsearch\ResultFormatter\RawCatalogSearchResultFormatterPlugin;
 use Spryker\Client\CatalogPriceProductConnector\Plugin\CurrencyAwareCatalogSearchResultFormatterPlugin;
 use Spryker\Client\CatalogPriceProductConnector\Plugin\ProductPriceQueryExpanderPlugin;
+use Spryker\Client\CustomerCatalog\Plugin\Search\ProductListQueryExpanderPlugin;
 use Spryker\Client\Kernel\AbstractDependencyProvider;
 use Spryker\Client\Kernel\Container;
 use Spryker\Client\Search\Plugin\Elasticsearch\QueryExpander\FacetQueryExpanderPlugin;
@@ -26,12 +27,12 @@ use Spryker\Shared\Kernel\Store;
 
 class ExampleProductSalePageDependencyProvider extends AbstractDependencyProvider
 {
-    const CLIENT_SEARCH = 'CLIENT_SEARCH';
-    const CLIENT_PRODUCT_LABEL_STORAGE = 'CLIENT_PRODUCT_LABEL';
-    const SALE_SEARCH_QUERY_PLUGIN = 'SALE_SEARCH_QUERY_PLUGIN';
-    const SALE_SEARCH_QUERY_EXPANDER_PLUGINS = 'SALE_SEARCH_QUERY_EXPANDER_PLUGINS';
-    const SALE_SEARCH_RESULT_FORMATTER_PLUGINS = 'SALE_SEARCH_RESULT_FORMATTER_PLUGINS';
-    const STORE = 'STORE';
+    public const CLIENT_SEARCH = 'CLIENT_SEARCH';
+    public const CLIENT_PRODUCT_LABEL_STORAGE = 'CLIENT_PRODUCT_LABEL';
+    public const SALE_SEARCH_QUERY_PLUGIN = 'SALE_SEARCH_QUERY_PLUGIN';
+    public const SALE_SEARCH_QUERY_EXPANDER_PLUGINS = 'SALE_SEARCH_QUERY_EXPANDER_PLUGINS';
+    public const SALE_SEARCH_RESULT_FORMATTER_PLUGINS = 'SALE_SEARCH_RESULT_FORMATTER_PLUGINS';
+    public const STORE = 'STORE';
 
     /**
      * @param \Spryker\Client\Kernel\Container $container
@@ -104,9 +105,14 @@ class ExampleProductSalePageDependencyProvider extends AbstractDependencyProvide
                 new StoreQueryExpanderPlugin(),
                 new LocalizedQueryExpanderPlugin(),
                 new ProductPriceQueryExpanderPlugin(),
-                new FacetQueryExpanderPlugin(),
                 new SortedQueryExpanderPlugin(),
                 new PaginatedQueryExpanderPlugin(),
+                new ProductListQueryExpanderPlugin(),
+
+                /**
+                 * FacetQueryExpanderPlugin needs to be after other query expanders which filters down the results.
+                 */
+                new FacetQueryExpanderPlugin(),
             ];
         };
 

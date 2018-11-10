@@ -1,0 +1,39 @@
+{% extends template('widget') %}
+
+{% define data = {
+    cartItem: _widget.itemTransfer,
+    isBaseUnit: _widget.isBaseUnit ?? true
+} %}
+
+{%- block hasSalesUnit -%}
+    {{- _widget.itemTransfer.quantitySalesUnit.idProductMeasurementSalesUnit | default(false) -}}
+{%- endblock -%}
+
+{% block body %}
+    {% set hasQuantitySalesUnit = data.cartItem.quantitySalesUnit is not empty %}
+    <div class="grid grid--middle grid--gap">
+        <div class="col">
+            {% include molecule('product-item-quantity') with {
+                data: {
+                    productItem: data.cartItem,
+                    isDisabled: hasQuantitySalesUnit
+                }
+            } only %}
+        </div>
+        {% if hasQuantitySalesUnit %}
+            <div class="col">
+                {% set value = data.cartItem.quantitySalesUnit.value %}
+                {% set precision = data.cartItem.quantitySalesUnit.precision %}
+                {% set salesUnitName = data.cartItem.quantitySalesUnit.productMeasurementUnit.name | default('') %}
+
+                {% include atom('quantity-option') with {
+                    data: {
+                        value: value,
+                        precision: precision,
+                        optionName: salesUnitName | trans
+                    }
+                } only %}
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

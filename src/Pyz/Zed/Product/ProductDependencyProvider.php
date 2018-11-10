@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Spryker Suite.
+ * This file is part of the Spryker Commerce OS.
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
@@ -15,9 +15,11 @@ use Spryker\Zed\PriceProduct\Communication\Plugin\ProductConcrete\PriceProductCo
 use Spryker\Zed\PriceProduct\Communication\Plugin\ProductConcrete\PriceProductConcreteAfterUpdatePlugin;
 use Spryker\Zed\PriceProduct\Communication\Plugin\ProductConcrete\PriceProductConcreteReadPlugin;
 use Spryker\Zed\Product\ProductDependencyProvider as SprykerProductDependencyProvider;
+use Spryker\Zed\ProductAlternativeGui\Communication\Plugin\Product\ProductConcretePluginUpdate as ProductAlternativeGuiProductConcretePluginUpdate;
 use Spryker\Zed\ProductBundle\Communication\Plugin\Product\ProductBundleProductConcreteAfterCreatePlugin;
 use Spryker\Zed\ProductBundle\Communication\Plugin\Product\ProductBundleProductConcreteAfterUpdatePlugin;
 use Spryker\Zed\ProductBundle\Communication\Plugin\Product\ProductBundleProductConcreteReadPlugin;
+use Spryker\Zed\ProductDiscontinued\Communication\Plugin\SaveDiscontinuedNotesProductConcretePluginUpdate;
 use Spryker\Zed\ProductImage\Communication\Plugin\ProductAbstractAfterCreatePlugin as ImageSetProductAbstractAfterCreatePlugin;
 use Spryker\Zed\ProductImage\Communication\Plugin\ProductAbstractAfterUpdatePlugin as ImageSetProductAbstractAfterUpdatePlugin;
 use Spryker\Zed\ProductImage\Communication\Plugin\ProductAbstractReadPlugin as ImageSetProductAbstractReadPlugin;
@@ -27,6 +29,8 @@ use Spryker\Zed\ProductImage\Communication\Plugin\ProductConcreteReadPlugin as I
 use Spryker\Zed\ProductSearch\Communication\Plugin\ProductConcrete\ProductSearchProductConcreteAfterCreatePlugin;
 use Spryker\Zed\ProductSearch\Communication\Plugin\ProductConcrete\ProductSearchProductConcreteAfterUpdatePlugin;
 use Spryker\Zed\ProductSearch\Communication\Plugin\ProductConcrete\ProductSearchProductConcreteReadPlugin;
+use Spryker\Zed\ProductValidity\Communication\Plugin\ProductValidityReadPlugin;
+use Spryker\Zed\ProductValidity\Communication\Plugin\ProductValidityUpdatePlugin;
 use Spryker\Zed\Stock\Communication\Plugin\ProductConcreteAfterCreatePlugin as StockProductConcreteAfterCreatePlugin;
 use Spryker\Zed\Stock\Communication\Plugin\ProductConcreteAfterUpdatePlugin as StockProductConcreteAfterUpdatePlugin;
 use Spryker\Zed\Stock\Communication\Plugin\ProductConcreteReadPlugin as StockProductConcreteReadPlugin;
@@ -103,16 +107,6 @@ class ProductDependencyProvider extends SprykerProductDependencyProvider
      *
      * @return \Spryker\Zed\Product\Dependency\Plugin\ProductConcretePluginCreateInterface[]
      */
-    protected function getProductConcreteBeforeCreatePlugins(Container $container)
-    {
-        return [];
-    }
-
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Product\Dependency\Plugin\ProductConcretePluginCreateInterface[]
-     */
     protected function getProductConcreteAfterCreatePlugins(Container $container)
     {
         return [
@@ -137,6 +131,7 @@ class ProductDependencyProvider extends SprykerProductDependencyProvider
             new PriceProductConcreteReadPlugin(),
             new ProductSearchProductConcreteReadPlugin(),
             new ProductBundleProductConcreteReadPlugin(),
+            new ProductValidityReadPlugin(),
         ];
     }
 
@@ -147,7 +142,9 @@ class ProductDependencyProvider extends SprykerProductDependencyProvider
      */
     protected function getProductConcreteBeforeUpdatePlugins(Container $container)
     {
-        return [];
+        return [
+            new ProductAlternativeGuiProductConcretePluginUpdate(), #ProductAlternativeFeature
+        ];
     }
 
     /**
@@ -163,6 +160,8 @@ class ProductDependencyProvider extends SprykerProductDependencyProvider
             new PriceProductConcreteAfterUpdatePlugin(),
             new ProductSearchProductConcreteAfterUpdatePlugin(),
             new ProductBundleProductConcreteAfterUpdatePlugin(),
+            new ProductValidityUpdatePlugin(),
+            new SaveDiscontinuedNotesProductConcretePluginUpdate(),
         ];
     }
 }

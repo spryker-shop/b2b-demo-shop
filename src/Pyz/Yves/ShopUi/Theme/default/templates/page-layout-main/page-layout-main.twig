@@ -1,0 +1,69 @@
+{% extends template('page-blank') %}
+
+{%- block class -%}js-page-layout-main__side-drawer-container{%- endblock -%}
+
+{% block body %}
+    {% block notifications %}
+        {% include organism('notification-area') only %}
+    {% endblock %}
+    <div class="page-layout">
+        {% widget 'AgentControlBarWidget' only %}{% endwidget %}
+
+        {% block outside %}{% endblock %}
+
+        {% block header %}
+            {% embed organism('header') only %}
+                {% block mobile %}
+                    <a href="#" class="link link--alt js-page-layout-main__side-drawer-trigger">
+                        {% include atom('icon') with {
+                            modifiers: ['big'],
+                            data: {
+                                name: 'bars'
+                            }
+                        } only %}
+                    </a>
+                {% endblock %}
+            {% endembed %}
+        {% endblock %}
+
+        <div class="content-wrap">
+
+            {% block pageInfo %}
+                <div class="page-info">
+                    <div class="container">
+                        {% block breadcrumbs %}
+                            {% include molecule('breadcrumb') only %}
+                        {% endblock %}
+
+                        {% block title %}
+                            <h3 class="page-info__title">{{data.title}}</h3>
+                        {% endblock %}
+                    </div>
+                </div>
+            {% endblock %}
+
+            <main class="{% block contentClass %}{% endblock %}">
+
+                {% block contentTop %}{% endblock %}
+
+                {% block contentWrap %}
+                    <div class="container">
+                        {% block content %}{% endblock %}
+                    </div>
+                {% endblock %}
+
+                {% block contentBottom %}{% endblock %}
+            </main>
+        </div>
+
+        {% block footer %}
+            {% include organism('footer') only %}
+        {% endblock %}
+    </div>
+
+    {% include atom('overlay-block') only %}
+
+    {% block icons %}
+        {% include atom('icon-sprite') only %}
+    {% endblock %}
+{% endblock %}

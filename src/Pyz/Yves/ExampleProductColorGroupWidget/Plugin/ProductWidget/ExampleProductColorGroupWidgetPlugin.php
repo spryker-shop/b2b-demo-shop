@@ -1,15 +1,19 @@
 <?php
 
 /**
- * This file is part of the Spryker Suite.
+ * This file is part of the Spryker Commerce OS.
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
 namespace Pyz\Yves\ExampleProductColorGroupWidget\Plugin\ProductWidget;
 
+use Pyz\Yves\ExampleProductColorGroupWidget\Widget\ExampleProductColorSelectorWidget;
 use Spryker\Yves\Kernel\Widget\AbstractWidgetPlugin;
 use SprykerShop\Yves\ProductWidget\Dependency\Plugin\ProductGroupWidget\ProductGroupWidgetPluginInterface;
 
+/**
+ * @deprecated Use \Yves\ExampleProductColorGroupWidget\Widget\ExampleProductColorSelectorWidget instead.
+ */
 class ExampleProductColorGroupWidgetPlugin extends AbstractWidgetPlugin implements ProductGroupWidgetPluginInterface
 {
     /**
@@ -19,7 +23,9 @@ class ExampleProductColorGroupWidgetPlugin extends AbstractWidgetPlugin implemen
      */
     public function initialize(int $idProductAbstract): void
     {
-        $this->addParameter('idProductAbstract', $idProductAbstract);
+        $widget = new ExampleProductColorSelectorWidget($idProductAbstract);
+
+        $this->parameters = $widget->getParameters();
     }
 
     /**
@@ -35,6 +41,6 @@ class ExampleProductColorGroupWidgetPlugin extends AbstractWidgetPlugin implemen
      */
     public static function getTemplate(): string
     {
-        return '@ExampleProductColorGroupWidget/_product-widget/product-groups.twig';
+        return '@ExampleProductColorGroupWidget/views/product-color-selector-widget/product-color-selector-widget.twig';
     }
 }

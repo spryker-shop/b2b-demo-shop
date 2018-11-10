@@ -1,0 +1,82 @@
+@mixin shop-ui-mini-cart-detail ($name: '.mini-cart-detail') {
+    #{$name} {
+        position: relative;
+        padding: rem(13) rem(24) rem(15);
+        min-width: rem(468);
+        max-width: rem(620);
+        border-bottom: 1px solid $setting-color-gray-6;
+
+        &:hover {
+            background-color: $setting-color-gray-7;
+
+            #{$name}__name {
+                text-decoration: underline;
+            }
+        }
+
+        &__title {
+            font-size: $setting-font-size-base;
+            color: $setting-color-gray-4;
+            line-height: rem(29);
+            letter-spacing: rem(0.2);
+
+            &:hover {
+                color: $setting-color-gray-4;
+            }
+        }
+
+        &__name {
+            text-overflow: ellipsis;
+            overflow: hidden;
+            display: block;
+            max-width: rem(370);
+            white-space: nowrap;
+            margin-right: 0.25rem;
+        }
+
+        &__marker {
+            color: $setting-color-gray-2;
+            text-transform: lowercase;
+        }
+
+        &__price {
+            font-size: $setting-font-size-base;
+            font-weight: fw(medium);
+            line-height: normal;
+            color: $setting-color-gray-2;
+
+            &--active {
+                color: $setting-color-gray-4;
+            }
+        }
+
+        &__info {
+            font-size: rem(11);
+            line-height: rem(29);
+            letter-spacing: rem(0.1);
+            color: $setting-color-gray-2;
+
+            &--main {
+                color: $setting-color-main;
+            }
+        }
+
+        &__quantity {
+            display: inline-block;
+            font-size: rem(11);
+            line-height: rem(22);
+            font-weight: fw(bold);
+            letter-spacing: rem(0.4);
+            color: $setting-color-white;
+            background-color: $setting-color-yellow-1;
+            padding: 0 rem(9);
+            margin-right: rem(9);
+            border-radius: $setting-border-radius;
+            vertical-align: middle;
+        }
+
+        @content;
+    }
+}
+
+@include shop-ui-mini-cart-detail;

@@ -1,0 +1,15 @@
+{% extends template('widget') %}
+
+{% define data = {
+    idProductAbstract: _widget.idProductAbstract | default,
+    items: _widget.productGroupItems | default([])
+} %}
+
+{% block body %}
+    {% include molecule('color-selector-pdp', 'ExampleProductColorGroupWidget') with {
+        data: {
+            items: data.items
+        }
+    } only %}
+
+{% endblock %}

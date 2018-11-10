@@ -1,0 +1,29 @@
+@mixin shop-ui-search-form($name: '.search-form') {
+    #{$name} {
+        position: relative;
+
+        &__submit {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: rem(56);
+            height: 100%;
+            padding: 0;
+            border: none;
+            background: $setting-color-transparent;
+            color: $setting-color-gray-4;
+            z-index: $setting-zi-search-suggestions + 3;
+
+            &:hover {
+                background: $setting-color-transparent;
+                .icon {
+                    color: $setting-color-gray-3;
+                }
+            }
+        }
+
+        @content;
+    }
+}
+
+@include shop-ui-search-form;

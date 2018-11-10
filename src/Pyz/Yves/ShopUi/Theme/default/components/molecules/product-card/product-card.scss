@@ -1,0 +1,152 @@
+$catalog-space-x: rem(14);
+$name: '.product-card';
+
+@include shop-ui-product-card ($name) {
+    height: auto;
+    padding: 0 0 30px;
+
+    &--equal-height {
+        height: auto;
+    }
+
+    &--full-height {
+        height: 100%;
+    }
+
+    &__container {
+        padding: rem(8) rem(28) rem(40);
+        height: 100%;
+
+        &:hover {
+            #{$name}__image-wrap--catalog::before {
+                background-color: $setting-color-transparent;
+            }
+
+            #{$name}__overlay {
+                color: $setting-color-gray-4;
+
+                &::before {
+                    box-shadow: 0 18px 18px 0 $setting-color-shadow-1, 0 3px 3px 0 $setting-color-shadow-1;
+                    background-color: $setting-color-transparent;
+                }
+            }
+
+            .color-selector {
+                opacity: 1;
+            }
+        }
+
+        &--catalog {
+            padding: 0 $catalog-space-x rem(26);
+        }
+
+        &--product-set {
+            padding: 0 $catalog-space-x rem(26);
+        }
+    }
+
+    &__image-wrap {
+        position: relative;
+        margin: 0 (-$catalog-space-x) rem(15);
+        padding: rem(8) $catalog-space-x;
+
+        &--product-set {
+            max-height: rem(243);
+        }
+
+        &--catalog {
+            &::before {
+                @include helper-effect-transition(background-color box-shadow);
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: $setting-color-alpha-2;
+                z-index: $setting-zi-element;
+            }
+        }
+        &--stretch {
+            margin-left: 0;
+            margin-right: 0;
+        }
+    }
+
+    &__overlay {
+        color: $setting-color-gray-4;
+        font-size: rem(20);
+        font-weight: fw(medium);
+        line-height: rem(25);
+        letter-spacing: rem(0.2);
+
+        &::before {
+            content: '';
+            @include helper-effect-transition(background-color box-shadow);
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: $setting-color-alpha-2;
+            z-index: $setting-zi-element;
+        }
+
+        &--catalog {
+            font-size: rem(16);
+            line-height: normal;
+            letter-spacing: rem(0.1);
+            color: $setting-color-gray-5;
+
+            &::before {
+                background-color: $setting-color-transparent;
+            }
+        }
+
+        &--product-set {
+            font-size: rem(16);
+            line-height: normal;
+            letter-spacing: rem(0.1);
+        }
+
+        &:hover {
+            color: $setting-color-gray-4;
+
+            &::before {
+                box-shadow: 0 18px 18px 0 $setting-color-shadow-1, 0 3px 3px 0 $setting-color-shadow-1;
+                background-color: $setting-color-transparent;
+            }
+        }
+    }
+
+    &__info {
+        max-width: 100%;
+    }
+
+    &__variant {
+        position: relative;
+        z-index: $setting-zi-element + 2;
+    }
+
+    &__category {
+        display: block;
+        line-height: rem(20);
+        letter-spacing: rem(0.2);
+        font-weight: fw(regular);
+        color: $setting-color-gray-3;
+        margin-top: rem(3);
+    }
+
+    &__rating {
+        margin-top: rem(11);
+    }
+
+    &__price {
+        margin: rem(25) 0 0;
+    }
+
+    &__actions {
+        position: relative;
+        z-index: $setting-zi-element + 1;
+    }
+}

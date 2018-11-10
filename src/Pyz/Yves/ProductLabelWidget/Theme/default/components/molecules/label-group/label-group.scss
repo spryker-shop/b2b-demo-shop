@@ -1,0 +1,40 @@
+@include product-label-widget-label-group {
+    padding: 20px 0;
+
+    &__text {
+        display: inline-block;
+        font-size: rem(10);
+        line-height: rem(24);
+        background-color: $setting-color-alt;
+        color: $setting-color-white;
+        padding: 0 rem(10);
+
+        &--top {
+            background-color: $setting-color-blue-1;
+        }
+
+        &--new {
+            background-color: $setting-color-main;
+        }
+
+        &--sale {
+            background-color: $setting-color-alt;
+        }
+
+        &--alternative {
+            border: 1px solid $setting-color-main;
+            background-color: $setting-color-white;
+            color: $setting-color-main;
+        }
+
+        &--discontinued {
+            border: 1px solid $setting-color-alt;
+            background-color: $setting-color-white;
+            color: $setting-color-alt;
+        }
+    }
+
+    &--sets {
+        padding-left: rem(14);
+    }
+}

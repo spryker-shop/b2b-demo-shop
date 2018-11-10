@@ -1,0 +1,64 @@
+{% extends template('page-layout-company', 'CompanyPage') %}
+
+{% define data = {
+    roles: _view.companyRoleCollection,
+
+    pagination: {
+        parameters: {},
+        currentPage: _view.pagination.page,
+        paginationPath: 'company/company-role',
+        maxPage: _view.pagination.lastPage,
+        showAlwaysFirstAndLast: true
+    },
+
+    title: 'company.account.company_role' | trans,
+    activePage: 'role'
+} %}
+
+{% block breadcrumbs %}
+    {% include molecule('breadcrumb') with {
+        data: {
+            steps: [
+                {
+                    label: 'company.account.page-title' | trans,
+                    url: url('company/overview')
+                }, {
+                    label: 'company.account.company_role' | trans
+                }
+            ]
+        }
+    } only %}
+{% endblock %}
+
+{% block companyContent %}
+    {% include molecule('action-bar', 'ShopUi') with {
+        data: {
+            title: 'company.account.company_role' | trans,
+            actions: [
+                {
+                    title: 'company.account.company_role.add' | trans,
+                    url: url('company/company-role/create'),
+                    primary: true,
+                    icon: 'plus'
+                }
+            ]
+        }
+    } only %}
+
+    {% if data.roles is not empty %}
+        {% include molecule('role-table', 'CompanyPage') with {
+            data: {
+                roles: data.roles,
+                actions: {
+                    view: false,
+                    update: true,
+                    delete: true
+                }
+            }
+        } only %}
+
+        {% include molecule('pagination') with {
+            data: data.pagination
+        } only %}
+    {% endif %}
+{% endblock %}

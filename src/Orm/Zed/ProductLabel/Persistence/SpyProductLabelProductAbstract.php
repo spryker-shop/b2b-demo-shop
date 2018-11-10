@@ -1,13 +1,13 @@
 <?php
 
 /**
- * This file is part of the Spryker Suite.
+ * This file is part of the Spryker Commerce OS.
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
 namespace Orm\Zed\ProductLabel\Persistence;
 
-use Spryker\Zed\ProductLabel\Persistence\Propel\SpyProductLabelProductAbstract as BaseSpyProductLabelProductAbstract;
+use Spryker\Zed\ProductLabel\Persistence\Propel\AbstractSpyProductLabelProductAbstract as BaseSpyProductLabelProductAbstract;
 
 /**
  * Skeleton subclass for representing a row from the 'spy_product_label_product_abstract' table.

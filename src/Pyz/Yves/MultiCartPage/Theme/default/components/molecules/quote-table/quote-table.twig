@@ -1,0 +1,155 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'quote-table'
+} %}
+
+{% define data = {
+    quotes: required,
+    actions: {
+        update: false,
+        delete: false,
+        duplicate: false
+    },
+    isQuoteDeletable: required
+} %}
+
+{% set showActions = data.actions.update or data.actions.delete or data.actions.duplicate %}
+{% set isQuoteDeletable = data.isQuoteDeletable %}
+
+{% block body %}
+    <table class="table table--grid table--expand">
+        <thead>
+            <tr class="active">
+                <th>{{ 'page.multi_cart.shopping_cart.list.label.name' | trans }}</th>
+                {% set cartListPermissionGroupWidget = findWidget('CartListPermissionGroupWidget', [data.quotes|first, isQuoteDeletable]) %}
+                {% if cartListPermissionGroupWidget is defined and cartListPermissionGroupWidget.isSharingAllowed %}
+                    <th>{{ 'page.multi_cart.shopping_cart.list.label.access' | trans }}</th>
+                {% endif %}
+                <th>{{ 'page.multi_cart.shopping_cart.list.label.num_of_products' | trans }}</th>
+                <th>{{ 'page.multi_cart.shopping_cart.list.label.prices' | trans }}</th>
+                <th>{{ 'page.multi_cart.shopping_cart.list.label.total' | trans }}</th>
+                {% if showActions %}
+                    <th></th>
+                {% endif %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for quote in data.quotes %}
+                {% set totals = quote.items | length %}
+                {% set isQuoteEditable = can('WriteSharedCartPermissionPlugin', quote.idQuote) %}
+                <tr>
+                    <td>
+                        <a href="{{ url('multi-cart/set-default', {idQuote: quote.idQuote}) }}"
+                            class="{{ config.name }}__cart-name{% if quote.isDefault %} {{ config.name }}__cart-name--active{% endif %}">
+                            {{ quote.name }}
+                        </a>
+                    </td>
+                    {% widget 'CartListPermissionGroupWidget' args [quote, isQuoteDeletable] only %}
+                        {% block body %}
+                            <td>
+                                {{ parent() }}
+                            </td>
+                        {% endblock %}
+                    {% endwidget %}
+                    <td>
+                        {% widget 'ProductBundleItemCounterWidget' args [quote] only %}
+                            {% block body %}
+                                <span class="badge badge--multi-cart">
+                                    {{ parent() }}
+                                </span>
+                            {% endblock %}
+                        {% nowidget %}
+                            {% set label = (totals == 1)
+                                ? 'page.multi_cart.shopping_cart.list.label.item'
+                                : 'page.multi_cart.shopping_cart.list.label.items'
+                            %}
+
+                            <span class="badge cart-items-quantity">{{ totals }} {{ label | trans }}</span>
+                        {% endwidget %}
+                    </td>
+                    <td>
+                        {% if quote.priceMode is not empty %}
+                            {% include molecule('price-mode') with {
+                                modifiers: ['secondary'],
+                                data: {
+                                    priceMode: quote.priceMode,
+                                    showIcon: false
+                                }
+                            } only %}
+                        {% endif %}
+                    </td>
+                    <td><strong>{{ quote.totals.subtotal | default(0) | money }}</strong></td>
+                    {% if showActions %}
+                        <td>
+                            <ul class="menu grid grid--middle grid--justify">
+                                {% if isQuoteEditable %}
+                                    {% if data.actions.update %}
+                                        <li class="col menu__item">
+                                            <a class="link link--alt link--action" href="{{ url('multi-cart/update', {idQuote: quote.idQuote}) }}">
+                                                {% include atom('icon') with {
+                                                    data: {
+                                                        name: 'edit'
+                                                    },
+                                                    attributes: {
+                                                        title: 'page.multi_cart.shopping_cart.list.link.edit_name' | trans
+                                                    }
+                                                } only %}
+                                            </a>
+                                        </li>
+                                    {% endif %}
+                                    {% if data.actions.duplicate %}
+                                        <li class="col menu__item">
+                                            <a class="link link--alt link--action" href="{{ url('multi-cart/duplicate', {idQuote: quote.idQuote}) }}">
+                                                {% include atom('icon') with {
+                                                    data: {
+                                                        name: 'duplicate'
+                                                    },
+                                                    attributes: {
+                                                        title: 'page.multi_cart.shopping_cart.list.link.duplicate' | trans
+                                                    }
+                                                } only %}
+                                            </a>
+                                        </li>
+                                    {% endif %}
+                                {% endif %}
+
+                                {% if isQuoteEditable %}
+                                    <li class="col menu__item">
+                                        <a class="link link--alt link--action" href="{{ url('shopping-list/create-from-exist-cart', {idQuote: quote.idQuote}) }}">
+                                            {% include atom('icon') with {
+                                                modifiers: ['create-list'],
+                                                data: {
+                                                    name: 'create-list'
+                                                },
+                                                attributes: {
+                                                    title: 'widget.shopping_list.multi_cart.to_shopping_list' | trans
+                                                }
+                                            } only %}
+                                        </a>
+                                    </li>
+                                {% endif %}
+
+                                {% widget 'CartListPermissionGroupWidget' args [quote, isQuoteDeletable] use view('multi-cart-permission-actions', 'SharedCartWidget') only %}
+                                {% nowidget %}
+                                    <li class="col menu__item">
+                                        <a class="link link--alt link--action" href="{{ url('multi-cart/confirm-delete', {idQuote: quote.idQuote}) }}">
+                                            {% include atom('icon') with {
+                                                data: {
+                                                    name: 'delete'
+                                                },
+                                                attributes: {
+                                                    title: 'page.multi_cart.shopping_cart.list.link.delete' | trans
+                                                }
+                                            } only %}
+                                        </a>
+                                    </li>
+                                {% endwidget %}
+                            </ul>
+                        </td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

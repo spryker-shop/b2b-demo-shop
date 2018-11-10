@@ -1,0 +1,17 @@
+{% extends template('widget') %}
+
+{% define data = {
+    idProductAbstract: _widget.product.idProductAbstract | default,
+    images: _widget.product.images | default([])
+} %}
+
+{% block body %}
+
+    {% include molecule('image-gallery', 'ProductImageWidget') with {
+        data: {
+            idProductAbstract: data.idProductAbstract,
+            images: data.images
+        }
+    } only %}
+
+{% endblock %}

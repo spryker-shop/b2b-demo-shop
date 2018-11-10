@@ -1,0 +1,17 @@
+@mixin share-cart-widget-cart-permission($name: '.cart-permission') {
+    #{$name} {
+        &--widget {
+            font-size: rem(11);
+            font-weight: fw(bold);
+            text-transform: uppercase;
+        }
+
+        &__read {
+            color: $setting-color-gray-2;
+        }
+
+        @content;
+    }
+}
+
+@include share-cart-widget-cart-permission();

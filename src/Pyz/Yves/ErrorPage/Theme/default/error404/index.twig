@@ -1,0 +1,16 @@
+{% extends template('page-layout-main') %}
+
+{% define data = {
+    error: error
+} %}
+
+{% block pageInfo %}{% endblock %}
+{% block contentClass %}page-layout-main page-layout-main--error-page{% endblock %}
+{% block content %}
+        {% include organism('error-block', 'ErrorPage') with {
+            class: 'grid grid--column grid--middle',
+            data: {
+                error: data.error
+            }
+        } only %}
+{% endblock %}

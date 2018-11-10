@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Spryker Suite.
+ * This file is part of the Spryker Commerce OS.
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
@@ -30,9 +30,6 @@ class SetupConfig extends SprykerSetupConfig
         return [
             EmptyAllCachesConsole::COMMAND_NAME,
             EmptyGeneratedDirectoryConsole::COMMAND_NAME,
-            // Important note: After first initial migration you must use
-            // PropelInstallConsole::COMMAND_NAME => ['--' . PropelInstallConsole::OPTION_NO_DIFF => true]
-            // from there on to persist migration files.
             PropelInstallConsole::COMMAND_NAME,
             GeneratorConsole::COMMAND_NAME,
             InitializeDatabaseConsole::COMMAND_NAME,

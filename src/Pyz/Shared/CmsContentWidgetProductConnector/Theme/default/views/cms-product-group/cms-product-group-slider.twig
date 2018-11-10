@@ -1,0 +1,33 @@
+{% extends template('widget') %}
+
+{% define data = {
+    product: product | default,
+    products: products | default([])
+} %}
+
+{% block body %}
+
+    {% embed molecule('slick-carousel') with {
+        modifiers: ['full-width', 'equal-height'],
+        data: {
+            slides: data.products
+        },
+        attributes: {
+            'slider-config': '{
+                    "slidesToShow": 3,
+                    "dots": false,
+                    "arrows": true,
+                    "adaptiveHeight": true
+                }'
+        }
+    } only %}
+
+        {% block slides %}
+            {% for availableProduct in data.slides if availableProduct.available %}
+                {% widget 'CmsProductWidget' args [availableProduct] use '@ProductWidget/views/cms-product-slider/cms-product-slider.twig' only %}{% endwidget %}
+            {% endfor %}
+        {% endblock %}
+
+    {% endembed %}
+
+{% endblock %}

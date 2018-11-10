@@ -1,0 +1,22 @@
+{% extends template('widget') %}
+
+{% define data = {
+    amount: _widget.product.price,
+    originalAmount: _widget.product.prices.ORIGINAL | default
+} %}
+
+{% block template %}
+    {% if data.amount is not empty %}
+        {{parent()}}
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+    {% include molecule('price') with {
+        modifiers: ['pdp'],
+        data: {
+            amount: data.amount | money,
+            originalAmount: data.originalAmount is empty ? null : data.originalAmount | money
+        }
+    } only %}
+{% endblock %}

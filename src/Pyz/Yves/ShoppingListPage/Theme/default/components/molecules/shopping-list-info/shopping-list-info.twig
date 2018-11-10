@@ -1,0 +1,48 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'shopping-list-info'
+} %}
+
+{% define data = {
+    shoppingList: required
+} %}
+
+{% block body %}
+
+    {% set hasWritePermission = can('WriteShoppingListPermissionPlugin', data.shoppingList.idShoppingList) %}
+
+    <div class="grid grid--gap">
+        <div class="col col--middle">
+            <strong class="{{ config.name }}__title">{{ 'customer.account.shopping_list.overview.owner' | trans }}:</strong> {{ data.shoppingList.owner }}
+        </div>
+        <div class="col col--middle">
+            <strong class="{{ config.name }}__title">{{ 'customer.account.shopping_list.access' | trans }}:</strong>
+
+            <span class="badge badge--shopping-list badge--title {% if hasWritePermission %}badge--access{% endif %}">
+                {% include molecule('shopping-list-permission', 'ShoppingListPage') with {
+                    modifiers: ['badge'],
+                    data: {
+                        hasWritePermission: hasWritePermission
+                    }
+                } only %}
+            </span>
+        </div>
+        {% block sharedBlock %}
+            <div class="col col--middle">
+                <strong class="{{ config.name }}__title">{{ 'customer.account.shopping_list.overview.shared_with' | trans }}:</strong>
+                {% if can('WriteShoppingListPermissionPlugin', data.shoppingList.idShoppingList) %}
+                    <a href="{{ url('shopping-list/share', { idShoppingList: data.shoppingList.idShoppingList }) }}">
+                        {{ data.shoppingList.sharedCompanyUsers.count ~ ' ' ~ 'company.account.company_user' | trans }},
+                        {{ data.shoppingList.sharedCompanyBusinessUnits.count ~ ' ' ~ 'company.account.business_unit' | trans }}
+                    </a>
+                {% else %}
+                    <span>
+                        {{ data.shoppingList.sharedCompanyUsers.count ~ ' ' ~ 'company.account.company_user' | trans }},
+                        {{ data.shoppingList.sharedCompanyBusinessUnits.count ~ ' ' ~ 'company.account.business_unit' | trans }}
+                    </span>
+                {% endif %}
+            </div>
+        {% endblock %}
+    </div>
+{% endblock %}

@@ -1,0 +1,73 @@
+{% extends template('widget') %}
+
+{% define data = {
+    addCartBreadcrumb: true,
+    isCartPage: true,
+    checkoutBreadcrumbs: _widget.stepBreadcrumbs.breadcrumbs | default([])
+} %}
+
+{% set steps = data.addCartBreadcrumb ? [{
+    label: 'cart.cart' | trans,
+    url: url('cart'),
+    isActive: data.isCartPage,
+    isEnabled: not data.isCartPage
+}] : [] %}
+
+{% for checkoutBreadcrumb in data.checkoutBreadcrumbs %}
+    {% set steps = steps | merge([{
+        label: checkoutBreadcrumb.title | trans,
+        url: url(checkoutBreadcrumb.route),
+        isActive: checkoutBreadcrumb.isActive,
+        isEnabled: checkoutBreadcrumb.isEnabled
+    }]) %}
+{% endfor %}
+
+{% block body %}
+    {% embed molecule('breadcrumb') with {
+        class: 'text-center spacing-y spacing-y--inner spacing-y--big',
+        modifiers: ['progress'],
+        data: {
+            steps: steps,
+            startWithHome: false
+        }
+    } only %}
+        {% block breadcrumbs %}
+            {% for key, step in data.steps | slice(1) %}
+                {% set modifiers = step.isActive ? ['active'] : [] %}
+                {% set modifiers = step.isEnabled ? modifiers : modifiers | merge(['disabled']) %}
+
+                {% embed molecule('breadcrumb-step') with {
+                    class: (step.isActive or not step.isEnabled) ? config.name ~ '--progress-step' : config.name ~ '--progress-complete',
+                    modifiers: modifiers,
+                    data: {
+                        stepNumber: key + 1,
+                        label: step.label,
+                        url: (step.isActive or not step.isEnabled) ? '' : step.url,
+                        withChevron: false
+                    },
+                    embed: {
+                        lastItem: loop.last
+                    }
+                } only %}
+                    {% block body %}
+                        {% if isLink and not embed.lastItem %}
+                            <div class="grid grid--middle">
+                                {{ parent() }}
+                                <span class="{{ config.name }}__checked">
+                                    {% include atom('icon') with {
+                                        modifiers: ['progress-check'],
+                                        data: {
+                                            name: 'check'
+                                        }
+                                    } only %}
+                                </span>
+                            </div>
+                        {% else %}
+                            {{ parent() }}
+                        {% endif %}
+                    {% endblock %}
+                {% endembed %}
+            {% endfor %}
+        {% endblock %}
+    {% endembed %}
+{% endblock %}

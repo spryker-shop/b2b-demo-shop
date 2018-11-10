@@ -1,0 +1,19 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'copyright-build-with'
+} %}
+
+{% block body %}
+    {% include molecule('privacy-navigation') only %}
+
+    <span class="{{ config.name }}__text">{{ 'global.build_with' | trans }}</span>
+    <a class="{{ config.name }}__link" href="{{ 'global.build_with.link' | trans }}" target="_blank">
+        {% include atom('icon') with {
+            modifiers: ['copyright'],
+            data: {
+                name: 'build-with-logo'
+            }
+        } only %}
+    </a>
+{% endblock %}

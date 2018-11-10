@@ -1,0 +1,62 @@
+@mixin shop-ui-header($name: '.header') {
+    #{$name} {
+        position: relative;
+        background-color: helper-color-light($setting-color-main);
+        z-index: $setting-zi-header;
+
+        .body-overlay--no-search & {
+            z-index: auto;
+        }
+
+        &__row {
+            padding: 0.5rem;
+        }
+
+        &__navigation-top {
+            position: relative;
+            z-index: $setting-zi-header + 3;
+        }
+
+        &__search-form {
+            position: relative;
+            z-index: $setting-zi-element;
+
+            .body-overlay--no-search & {
+                z-index: $setting-zi-search-suggestions;
+            }
+        }
+
+        &__navigation-main {
+            position: relative;
+            z-index: $setting-zi-header + 1;
+        }
+
+        &__top {
+            background: $setting-color-gray-1;
+        }
+
+        &__main {
+            background: $setting-color-gray-6;
+            padding-top: 30px;
+            min-height: 114px;
+
+            &--checkout {
+                padding-top: rem(20);
+                padding-bottom: rem(20);
+                min-height: 0;
+            }
+        }
+
+        &__search {
+            max-width: 485px;
+        }
+
+        &__navigation {
+            background: $setting-color-white;
+        }
+
+        @content;
+    }
+}
+
+@include shop-ui-header();

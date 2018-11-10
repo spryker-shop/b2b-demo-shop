@@ -1,0 +1,10 @@
+@mixin shopping-list-page-share-list($name: '.share-list') {
+    #{$name} {
+        &__list {
+            max-height: 100%;
+            margin-bottom: rem(30);
+        }
+    }
+}
+
+@include shopping-list-page-share-list;

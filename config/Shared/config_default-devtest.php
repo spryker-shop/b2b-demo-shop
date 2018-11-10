@@ -13,9 +13,12 @@ use Spryker\Shared\ErrorHandler\ErrorHandlerConstants;
 use Spryker\Shared\ErrorHandler\ErrorRenderer\WebExceptionErrorRenderer;
 use Spryker\Shared\Kernel\KernelConstants;
 use Spryker\Shared\Log\LogConstants;
+use Spryker\Shared\Oauth\OauthConstants;
+use Spryker\Shared\OauthCustomerConnector\OauthCustomerConnectorConstants;
 use Spryker\Shared\Propel\PropelConstants;
-use Spryker\Shared\RabbitMq\RabbitMqConstants;
+use Spryker\Shared\RabbitMq\RabbitMqEnv;
 use Spryker\Shared\Search\SearchConstants;
+use Spryker\Shared\Session\SessionConfig;
 use Spryker\Shared\Session\SessionConstants;
 use Spryker\Shared\Setup\SetupConstants;
 use Spryker\Shared\Storage\StorageConstants;
@@ -44,13 +47,13 @@ $config[StorageConstants::STORAGE_REDIS_DATABASE] = 3;
 
 // ---------- Session
 $config[SessionConstants::SESSION_IS_TEST] = (bool)getenv("SESSION_IS_TEST");
-$config[SessionConstants::YVES_SESSION_SAVE_HANDLER] = SessionConstants::SESSION_HANDLER_REDIS;
+$config[SessionConstants::YVES_SESSION_SAVE_HANDLER] = SessionConfig::SESSION_HANDLER_REDIS;
 $config[SessionConstants::YVES_SESSION_REDIS_PROTOCOL] = $config[StorageConstants::STORAGE_REDIS_PROTOCOL];
 $config[SessionConstants::YVES_SESSION_REDIS_HOST] = $config[StorageConstants::STORAGE_REDIS_HOST];
 $config[SessionConstants::YVES_SESSION_REDIS_PORT] = $config[StorageConstants::STORAGE_REDIS_PORT];
 $config[SessionConstants::YVES_SESSION_REDIS_PASSWORD] = $config[StorageConstants::STORAGE_REDIS_PASSWORD];
 $config[SessionConstants::ZED_SESSION_COOKIE_SECURE] = false;
-$config[SessionConstants::ZED_SESSION_SAVE_HANDLER] = SessionConstants::SESSION_HANDLER_REDIS;
+$config[SessionConstants::ZED_SESSION_SAVE_HANDLER] = SessionConfig::SESSION_HANDLER_REDIS;
 $config[SessionConstants::ZED_SESSION_REDIS_PROTOCOL] = $config[SessionConstants::YVES_SESSION_REDIS_PROTOCOL];
 $config[SessionConstants::ZED_SESSION_REDIS_HOST] = $config[SessionConstants::YVES_SESSION_REDIS_HOST];
 $config[SessionConstants::ZED_SESSION_REDIS_PORT] = $config[SessionConstants::YVES_SESSION_REDIS_PORT];
@@ -60,14 +63,40 @@ $config[SessionConstants::ZED_SESSION_REDIS_PASSWORD] = $config[SessionConstants
 $config[SearchConstants::SEARCH_INDEX_NAME_SUFFIX] = '_devtest';
 
 // ---------- RabbitMq
-$config[RabbitMqConstants::RABBITMQ_HOST] = 'localhost';
-$config[RabbitMqConstants::RABBITMQ_PORT] = '5672';
-$config[RabbitMqConstants::RABBITMQ_PASSWORD] = 'mate20mg';
+$config[RabbitMqEnv::RABBITMQ_CONNECTIONS] = [
+    'DE' => [
+        RabbitMqEnv::RABBITMQ_CONNECTION_NAME => 'DE-connection',
+        RabbitMqEnv::RABBITMQ_HOST => 'localhost',
+        RabbitMqEnv::RABBITMQ_PORT => '5672',
+        RabbitMqEnv::RABBITMQ_PASSWORD => 'mate20mg',
+        RabbitMqEnv::RABBITMQ_USERNAME => 'DE_devtest',
+        RabbitMqEnv::RABBITMQ_VIRTUAL_HOST => '/DE_devtest_zed',
+        RabbitMqEnv::RABBITMQ_STORE_NAMES => ['DE'],
+    ],
+    'AT' => [
+        RabbitMqEnv::RABBITMQ_CONNECTION_NAME => 'AT-connection',
+        RabbitMqEnv::RABBITMQ_HOST => 'localhost',
+        RabbitMqEnv::RABBITMQ_PORT => '5672',
+        RabbitMqEnv::RABBITMQ_PASSWORD => 'mate20mg',
+        RabbitMqEnv::RABBITMQ_USERNAME => 'AT_devtest',
+        RabbitMqEnv::RABBITMQ_VIRTUAL_HOST => '/AT_devtest_zed',
+        RabbitMqEnv::RABBITMQ_STORE_NAMES => ['AT'],
+    ],
+    'US' => [
+        RabbitMqEnv::RABBITMQ_CONNECTION_NAME => 'US-connection',
+        RabbitMqEnv::RABBITMQ_HOST => 'localhost',
+        RabbitMqEnv::RABBITMQ_PORT => '5672',
+        RabbitMqEnv::RABBITMQ_PASSWORD => 'mate20mg',
+        RabbitMqEnv::RABBITMQ_USERNAME => 'US_devtest',
+        RabbitMqEnv::RABBITMQ_VIRTUAL_HOST => '/US_devtest_zed',
+        RabbitMqEnv::RABBITMQ_STORE_NAMES => ['US'],
+    ],
+];
 
-$config[RabbitMqConstants::RABBITMQ_API_HOST] = 'localhost';
-$config[RabbitMqConstants::RABBITMQ_API_PORT] = '15672';
-$config[RabbitMqConstants::RABBITMQ_API_USERNAME] = 'admin';
-$config[RabbitMqConstants::RABBITMQ_API_PASSWORD] = 'mate20mg';
+$config[RabbitMqEnv::RABBITMQ_API_HOST] = 'localhost';
+$config[RabbitMqEnv::RABBITMQ_API_PORT] = '15672';
+$config[RabbitMqEnv::RABBITMQ_API_USERNAME] = 'admin';
+$config[RabbitMqEnv::RABBITMQ_API_PASSWORD] = 'mate20mg';
 
 // ---------- Twig
 $config[TwigConstants::ZED_TWIG_OPTIONS] = [
@@ -94,3 +123,12 @@ $config[LogConstants::LOGGER_CONFIG] = SprykerLoggerConfig::class;
 $config[WebProfilerConstants::ENABLE_WEB_PROFILER]
     = $config[ConfigConstants::ENABLE_WEB_PROFILER]
     = false;
+
+// ----------- OAUTH
+$config[OauthConstants::PRIVATE_KEY_PATH] = 'file://' . APPLICATION_ROOT_DIR . '/config/Zed/dev_only_private.key';
+$config[OauthConstants::PUBLIC_KEY_PATH] = 'file://' . APPLICATION_ROOT_DIR . '/config/Zed/dev_only_public.key';
+$config[OauthConstants::ENCRYPTION_KEY] = 'lxZFUEsBCJ2Yb14IF2ygAHI5N4+ZAUXXaSeeJm6+twsUmIen';
+
+// ----------- AuthRestApi
+$config[OauthCustomerConnectorConstants::OAUTH_CLIENT_IDENTIFIER] = 'frontend';
+$config[OauthCustomerConnectorConstants::OAUTH_CLIENT_SECRET] = 'abc123';

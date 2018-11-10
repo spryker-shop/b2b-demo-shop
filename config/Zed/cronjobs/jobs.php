@@ -94,6 +94,15 @@ $jobs[] = [
 'stores' => $allStores,
 ];
 
+$jobs[] = [
+    'name' => 'deactivate-discontinued-products',
+    'command' => '$PHP_BIN vendor/bin/console deactivate-discontinued-products',
+    'schedule' => '0 0 * * *',
+    'enable' => true,
+    'run_on_non_production' => true,
+    'stores' => $allStores,
+];
+
 /* StateMachine */
 /*
 $jobs[] = [

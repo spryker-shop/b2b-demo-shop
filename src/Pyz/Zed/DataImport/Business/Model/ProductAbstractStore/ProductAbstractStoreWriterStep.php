@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Spryker Suite.
+ * This file is part of the Spryker Commerce OS.
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
@@ -10,27 +10,26 @@ namespace Pyz\Zed\DataImport\Business\Model\ProductAbstractStore;
 use Orm\Zed\Product\Persistence\SpyProductAbstractQuery;
 use Orm\Zed\Product\Persistence\SpyProductAbstractStoreQuery;
 use Orm\Zed\Store\Persistence\SpyStoreQuery;
+use Pyz\Zed\DataImport\Business\Exception\EntityNotFoundException;
 use Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 
-/**
- */
 class ProductAbstractStoreWriterStep implements DataImportStepInterface
 {
-    const BULK_SIZE = 100;
+    public const BULK_SIZE = 100;
 
-    const KEY_PRODUCT_ABSTRACT_SKU = 'product_abstract_sku';
-    const KEY_STORE_NAME = 'store_name';
+    public const KEY_PRODUCT_ABSTRACT_SKU = 'product_abstract_sku';
+    public const KEY_STORE_NAME = 'store_name';
 
     /**
      * @var int[] Keys are SKUs, values are product abstract ids.
      */
-    protected static $idProductAbstractBuffer;
+    protected static $idProductAbstractBuffer = [];
 
     /**
      * @var int[] Keys are store names, values are store ids.
      */
-    protected static $idStoreBuffer;
+    protected static $idStoreBuffer = [];
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
@@ -49,11 +48,18 @@ class ProductAbstractStoreWriterStep implements DataImportStepInterface
     /**
      * @param string $productAbstractSku
      *
+     * @throws \Pyz\Zed\DataImport\Business\Exception\EntityNotFoundException
+     *
      * @return int
      */
     protected function getIdProductAbstractBySku($productAbstractSku)
     {
         if (!isset(static::$idProductAbstractBuffer[$productAbstractSku])) {
+            $productAbstractEntity = SpyProductAbstractQuery::create()->findOneBySku($productAbstractSku);
+            if (!$productAbstractEntity) {
+                throw new EntityNotFoundException(sprintf('ProductAbstract with sku "%s" not found in the database!', $productAbstractSku));
+            }
+
             static::$idProductAbstractBuffer[$productAbstractSku] =
                 SpyProductAbstractQuery::create()->findOneBySku($productAbstractSku)->getIdProductAbstract();
         }

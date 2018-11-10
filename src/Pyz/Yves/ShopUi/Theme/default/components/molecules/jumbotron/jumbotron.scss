@@ -1,0 +1,42 @@
+@mixin shop-ui-jumbotron($name: '.jumbotron') {
+    #{$name} {
+        overflow: hidden;
+
+        &__container {
+            height: rem(455);
+            background-color: $setting-color-main;
+            background-position: center center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            text-align: left;
+            position: relative;
+            padding: 0 rem(88);
+        }
+
+        &__title,
+        &__text {
+            color: $setting-color-white;
+        }
+
+        &__title {
+            font-size: rem(50);
+            line-height: rem(48);
+            font-weight: fw(medium);
+            margin-bottom: rem(27);
+            text-shadow: 0 10px 30px $setting-color-shadow, 0 2px 4px $setting-color-shadow;
+        }
+
+        &__text {
+            font-size: rem(22);
+            line-height: rem(28);
+            font-weight: fw(regular);
+            letter-spacing: rem(0.41);
+            text-shadow: 0 2px 4px $setting-color-shadow;
+            margin-bottom: rem(48);
+        }
+
+        @content;
+    }
+}
+
+@include shop-ui-jumbotron();

@@ -1,0 +1,108 @@
+@mixin b2b-shop-ui-form($name: '.form') {
+    @include shop-ui-form($name);
+
+    #{$name} {
+        &__field {
+            + & {
+                margin-top: 0.5rem;
+            }
+
+            &--section {
+                margin-top: rem(48);
+                width: 100%;
+            }
+        }
+
+        &__actions {
+            display: flex;
+            flex-flow: row nowrap;
+            align-items: center;
+            margin-top: 1rem;
+        }
+
+        &__action {
+            flex: none;
+            margin: 0 1rem 0 0;
+
+            &--primary {
+                order: -1;
+            }
+        }
+
+        &__title-description {
+            color: $setting-color-gray-2;
+        }
+
+        &--narrow {
+            #{$name}__container {
+                width: 100%;
+
+                @include helper-breakpoint-media-min($xl-min) {
+                    width: 60%;
+                }
+            }
+        }
+
+        &--subscription {
+            @include helper-breakpoint-media-min($lg-min) {
+                padding-left: $setting-grid-space;
+            }
+
+            .form__container {
+                position: relative;
+            }
+
+            .form__fields,
+            .form__action {
+                margin: 0;
+            }
+
+            .form__field {
+                padding: 0;
+            }
+
+            .form__actions {
+                position: absolute;
+                right: 0;
+                bottom: 0;
+            }
+
+            .label {
+                display: none;
+            }
+
+            .input {
+                border: none;
+                border-bottom: 2px solid $setting-color-gray-4;
+                background-color: $setting-color-transparent;
+                font: fw(regular) rem(18)/rem(23) $setting-font-family;
+                letter-spacing: rem(0.27);
+                color: $setting-color-gray-4;
+                padding: rem(13) rem(46) rem(16) 0;
+
+                &::placeholder {
+                    color: $setting-color-gray-4;
+                }
+            }
+
+            .button {
+                color: $setting-color-gray-4;
+                min-height: rem(54);
+                padding-right: rem(22);
+                padding-bottom: rem(10);
+
+                &:hover,
+                &:focus {
+                    color: $setting-color-gray-3;
+                }
+            }
+
+            .icon {
+                width: 1rem;
+                height: 1rem;
+            }
+        }
+    }
+}
+
+@include b2b-shop-ui-form();

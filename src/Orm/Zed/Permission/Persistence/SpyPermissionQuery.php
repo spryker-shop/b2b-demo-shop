@@ -1,13 +1,13 @@
 <?php
 
 /**
- * This file is part of the Spryker Suite.
+ * This file is part of the Spryker Commerce OS.
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
 namespace Orm\Zed\Permission\Persistence;
 
-use Orm\Zed\Permission\Persistence\Base\SpyPermissionQuery as BaseSpyPermissionQuery;
+use Spryker\Zed\Permission\Persistence\Propel\AbstractSpyPermissionQuery as BaseSpyPermissionQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'spy_permission' table.

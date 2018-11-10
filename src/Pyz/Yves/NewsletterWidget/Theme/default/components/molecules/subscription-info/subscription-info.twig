@@ -1,0 +1,15 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'subscription-info'
+} %}
+
+{% define data = {
+    title: required,
+    text: required,
+} %}
+
+{% block body %}
+    <h5 class="title title--subscription-info">{{ data.title }}</h5>
+    <p class="{{ config.name }}__text">{{ data.text | raw }}</p>
+{% endblock %}

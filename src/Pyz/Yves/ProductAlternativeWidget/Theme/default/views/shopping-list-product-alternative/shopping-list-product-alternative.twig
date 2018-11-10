@@ -1,0 +1,22 @@
+{% extends template('widget') %}
+
+{% define data = {
+    item: _widget.item,
+    shoppingList: _widget.shoppingList,
+    products: _widget.products
+} %}
+
+{% block body %}
+    {% if data.products is not empty %}
+        <div class="grid">
+            {% include molecule('alternative-products-table', 'ProductAlternativeWidget') with {
+                class: 'col',
+                data: {
+                    item: data.item,
+                    shoppingList: data.shoppingList,
+                    products: data.products
+                }
+            } only %}
+        </div>
+    {% endif %}
+{% endblock %}

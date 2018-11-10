@@ -1,0 +1,20 @@
+@mixin shopping-list-product-option-list($name: '.shopping-list-product-option-list') {
+    #{$name} {
+        &__item:not(:first-child) {
+            margin-top: rem(8);
+        }
+
+        .label {
+            display: inline-block;
+            text-transform: none;
+            word-break: break-all;
+            padding-right: rem(18);
+
+            &::after {
+                content: ':';
+            }
+        }
+    }
+}
+
+@include shopping-list-product-option-list();

@@ -1,0 +1,24 @@
+{% extends template('widget') %}
+
+{% define data = {
+    disabled: _widget.disabled,
+    isMultiCartAllowed: _widget.isMultiCartAllowed,
+    carts: _widget.carts
+} %}
+
+{% block body %}
+    {% if data.isMultiCartAllowed %}
+        {% if data.carts %}
+            {% include molecule('add-to-cart-selector', 'MultiCartWidget') with {
+                class: 'is-hidden',
+                data: {
+                    carts: data.carts,
+                    disabled: data.disabled
+                }
+            } only %}
+        {% endif %}
+
+        {% include molecule('shared-cart-add-product-as-separate-item', 'SharedCartWidget') ignore missing only %}
+            
+    {% endif %}
+{% endblock %}

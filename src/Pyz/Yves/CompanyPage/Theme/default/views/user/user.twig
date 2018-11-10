@@ -1,0 +1,72 @@
+{% extends template('page-layout-company', 'CompanyPage') %}
+
+{% define data = {
+    users: _view.companyUserCollection,
+    currentCompanyUserId: _view.currentCompanyUser.idCompanyUser,
+
+    pagination: {
+        parameters: {},
+        currentPage: _view.pagination.page,
+        paginationPath: 'company/user',
+        maxPage: _view.pagination.lastPage,
+        showAlwaysFirstAndLast: true
+    },
+
+    title: 'company.account.company_user' | trans,
+    activePage: 'users'
+} %}
+
+{% block breadcrumbs %}
+    {% include molecule('breadcrumb') with {
+        data: {
+            steps: [
+                {
+                    label: 'company.account.page-title' | trans,
+                    url: url('company/overview')
+                }, {
+                    label: 'company.account.company_user' | trans
+                }
+            ]
+        }
+    } only %}
+{% endblock %}
+
+{% block companyContent %}
+    {% include molecule('action-bar', 'ShopUi') with {
+        data: {
+            title: 'company.account.company_user' | trans,
+            actions: (can('ManageCompanyUserInvitationPermissionPlugin') ? [
+                {
+                    title: 'company.user.invitation.invite_users' | trans,
+                    url: url('company/user-invitation'),
+                    primary: false
+                }
+            ] : []) | merge (can('AddCompanyUserPermissionPlugin') ? [
+                {
+                    title: 'company.account.company_user.add' | trans,
+                    url: url('company/user/create'),
+                    primary: true,
+                    icon: 'plus'
+                }
+            ] : [])
+        }
+    } only %}
+
+    {% if data.users is not empty %}
+        {% include molecule('user-table', 'CompanyPage') with {
+            data: {
+                users: data.users,
+                currentCompanyUserId: data.currentCompanyUserId,
+                actions: {
+                    update: true,
+                    delete: true,
+                    switch: true
+                }
+            }
+        } only %}
+
+        {% include molecule('pagination') with {
+            data: data.pagination
+        } only %}
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends template('page-layout-multi-cart', 'MultiCartPage') %}
+
+{% define data = {
+    form: _view.quoteForm,
+    formAction: url('multi-cart/create'),
+    title: 'multi_cart.form.create_cart' | trans,
+} %}
+
+{% block breadcrumbs %}
+    {% include molecule('breadcrumb') with {
+        data: {
+            steps: [
+                {
+                    label: 'customer.account' | trans,
+                    url: url('customer/overview'),
+                },
+                {
+                    label: 'page.multi_cart.shopping_cart.list.title' | trans,
+                    url: url('multi-cart'),
+                },
+                {
+                    label: 'page.multi_cart.shopping_cart.create.title' | trans,
+                }
+            ]
+        }
+    } only %}
+{% endblock %}
+
+{% block content %}
+    <div class="grid cart-update">
+        <div class="col col--md-6">
+            <h2>{{ 'page.multi_cart.shopping_cart.create.title' | trans }}</h2>
+            {% include molecule('form') with {
+                data: {
+                    form: data.form,
+                    options: {
+                        action: data.formAction
+                    },
+                    submit: {
+                        enable: true
+                    },
+                    cancel: {
+                        enable: true,
+                        url: data.backUrl,
+                        text: 'general.back.button' | trans,
+                        icon: null
+                    }
+                }
+            } only %}
+        </div>
+    </div>
+{% endblock %}

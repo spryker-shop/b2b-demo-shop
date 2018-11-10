@@ -1,0 +1,37 @@
+@mixin product-review-distribution-display($name: '.review-distribution-display') {
+    #{$name} {
+
+        &__summary-stars {
+            color: $setting-color-gray-3;
+            font-size: rem(15);
+            padding-right: 21px;
+            padding-bottom: 6px;
+        }
+
+        &__progress {
+            width: 140px;
+            height: 6px;
+            border-radius: $setting-border-radius-1;
+            background-color: $setting-color-alpha-3;
+            position: relative;
+            overflow: hidden;
+        }
+
+        &__progress-active {
+            width: 140px;
+            height: 6px;
+            border-radius: $setting-border-radius-1;
+            background-color: $setting-color-yellow-1;
+            position: absolute;
+        }
+
+        &__rating-review {
+            color: $setting-color-gray-3;
+            font-size: rem(13);
+            padding-left: 15px;
+            padding-bottom: 6px;
+        }
+    }
+}
+
+@include product-review-distribution-display;
