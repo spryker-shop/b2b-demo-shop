@@ -1,0 +1,11 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'privacy-navigation',
+    tag: 'ul'
+} %}
+
+{% block body %}
+    <li class="{{ config.name }}__item"><a class="link link--alt link--privacy" href="{{ 'global.privacy_nav.imprint_url' | trans }}">{{ 'global.privacy_nav.imprint' | trans }}</a></li>
+    <li class="{{ config.name }}__item"><a class="link link--alt link--privacy" href="{{ 'global.privacy_nav.data_privacy_url' | trans }}">{{ 'global.privacy_nav.data_privacy' | trans }}</a></li>
+{% endblock %}

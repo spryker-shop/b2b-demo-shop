@@ -1,0 +1,49 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'navigation-list',
+    tag: 'nav'
+} %}
+
+{% define data = {
+    nodes: []
+} %}
+
+{% block body %}
+    <ul class="{{- component.renderClass('list', modifiers) -}}">
+        {% for node in data.nodes %}
+            {% if node.nodeType is defined %}
+                {% embed atom('node') with {
+                    modifiers: modifiers,
+                    class: 'list__item',
+                    config: {
+                        tag: 'li'
+                    },
+                    data: {
+                        node: node
+                    }
+                } only %}
+                    {% block url %}
+                        <a class="{{ component.renderClass('link', modifiers) }}" href="{{ data.node.url }}">{{ data.node.title }}</a>
+                    {% endblock %}
+
+                    {% block externalUrl %}
+                        <a class="{{ component.renderClass('link', modifiers) }}" href="{{ data.node.url }}" target="_blank">{{ data.node.title }}</a>
+                    {% endblock %}
+
+                    {% block other %}
+                        {{ data.node.title }}
+                    {% endblock %}
+                {% endembed %}
+            {% else %}
+                {% if node.url %}
+                    <li><a class="{{ component.renderClass('link', modifiers) }}" href="{{ node.url }}">{{ node.title }}</a></li>
+                {% else %}
+                    <li><span class="{{ component.renderClass('text', modifiers) }}">{{ node.title }}</span></li>
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+    </ul>
+{% endblock %}
+
+

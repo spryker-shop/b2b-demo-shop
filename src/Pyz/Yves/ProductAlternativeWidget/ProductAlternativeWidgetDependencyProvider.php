@@ -1,14 +1,13 @@
 <?php
 
 /**
- * This file is part of the Spryker Suite.
+ * This file is part of the Spryker Commerce OS.
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
 namespace Pyz\Yves\ProductAlternativeWidget;
 
 use SprykerShop\Yves\ProductAlternativeWidget\ProductAlternativeWidgetDependencyProvider as SprykerProductAlternativeWidgetDependencyProvider;
-use SprykerShop\Yves\ProductWidget\Plugin\ProductAlternativeWidget\ProductWidgetPlugin;
 
 class ProductAlternativeWidgetDependencyProvider extends SprykerProductAlternativeWidgetDependencyProvider
 {
@@ -19,8 +18,6 @@ class ProductAlternativeWidgetDependencyProvider extends SprykerProductAlternati
      */
     protected function getProductDetailPageProductAlternativeWidgetPlugins(): array
     {
-        return [
-            ProductWidgetPlugin::class,
-        ];
+        return [];
     }
 }

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Spryker Suite.
+ * This file is part of the Spryker Commerce OS.
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
@@ -9,8 +9,8 @@ namespace Pyz\Yves\CheckoutPage;
 
 use Spryker\Yves\Kernel\Container;
 use Spryker\Yves\Kernel\Plugin\Pimple;
-use SprykerShop\Yves\CartNoteWidget\Plugin\CheckoutPage\CartNoteQuoteItemNoteWidgetPlugin;
-use SprykerShop\Yves\CartNoteWidget\Plugin\CheckoutPage\CartNoteQuoteNoteWidgetPlugin;
+use Spryker\Yves\Payment\Plugin\PaymentFormFilterPlugin;
+use Spryker\Yves\StepEngine\Dependency\Form\StepEngineFormDataProviderInterface;
 use SprykerShop\Yves\CheckoutPage\CheckoutPageDependencyProvider as SprykerShopCheckoutPageDependencyProvider;
 use SprykerShop\Yves\CustomerPage\Form\CheckoutAddressCollectionForm;
 use SprykerShop\Yves\CustomerPage\Form\CustomerCheckoutForm;
@@ -18,8 +18,8 @@ use SprykerShop\Yves\CustomerPage\Form\DataProvider\CheckoutAddressFormDataProvi
 use SprykerShop\Yves\CustomerPage\Form\GuestForm;
 use SprykerShop\Yves\CustomerPage\Form\LoginForm;
 use SprykerShop\Yves\CustomerPage\Form\RegisterForm;
-use SprykerShop\Yves\DiscountWidget\Plugin\CheckoutPage\CheckoutVoucherFormWidgetPlugin;
-use SprykerShop\Yves\ProductPackagingUnitWidget\Plugin\CheckoutPage\SummaryProductPackagingUnitWidgetPlugin;
+use SprykerShop\Yves\SalesOrderThresholdWidget\Plugin\CheckoutPage\SalesOrderThresholdWidgetPlugin;
+use Symfony\Component\Form\FormFactory;
 
 class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyProvider
 {
@@ -29,17 +29,14 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
     protected function getSummaryPageWidgetPlugins(): array
     {
         return [
-            CheckoutVoucherFormWidgetPlugin::class,
-            CartNoteQuoteItemNoteWidgetPlugin::class, #CartNoteFeature
-            CartNoteQuoteNoteWidgetPlugin::class, #CartNoteFeature
-            SummaryProductPackagingUnitWidgetPlugin::class, #ProductPackagingUnit
+            SalesOrderThresholdWidgetPlugin::class,
         ];
     }
 
     /**
      * @return mixed[]
      */
-    protected function getCustomerStepSubForms()
+    protected function getCustomerStepSubForms(): array
     {
         return [
             LoginForm::class,
@@ -51,7 +48,7 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
     /**
      * @return mixed[]
      */
-    protected function getCustomerFormTypes()
+    protected function getCustomerFormTypes(): array
     {
         return [
             LoginForm::class,
@@ -79,7 +76,7 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
     /**
      * @return \Symfony\Component\Form\FormFactory
      */
-    private function getFormFactory()
+    private function getFormFactory(): FormFactory
     {
         return (new Pimple())->getApplication()['form.factory'];
     }
@@ -87,7 +84,7 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
     /**
      * @return string[]
      */
-    protected function getAddressStepSubForms()
+    protected function getAddressStepSubForms(): array
     {
         return [
             CheckoutAddressCollectionForm::class,
@@ -97,10 +94,20 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
     /**
      * @param \Spryker\Yves\Kernel\Container $container
      *
-     * @return \Spryker\Yves\StepEngine\Dependency\Form\StepEngineFormDataProviderInterface|null
+     * @return \Spryker\Yves\StepEngine\Dependency\Form\StepEngineFormDataProviderInterface
      */
-    protected function getAddressStepFormDataProvider(Container $container)
+    protected function getAddressStepFormDataProvider(Container $container): StepEngineFormDataProviderInterface
     {
         return new CheckoutAddressFormDataProvider($this->getCustomerClient($container), $this->getStore());
+    }
+
+    /**
+     * @return \Spryker\Yves\Checkout\Dependency\Plugin\Form\SubFormFilterPluginInterface[]
+     */
+    protected function getSubFormFilterPlugins(): array
+    {
+        return [
+            new PaymentFormFilterPlugin(),
+        ];
     }
 }

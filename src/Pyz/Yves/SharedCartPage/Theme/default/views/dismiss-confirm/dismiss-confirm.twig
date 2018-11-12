@@ -1,0 +1,46 @@
+{% extends template('page-layout-multi-cart', 'MultiCartPage') %}
+
+{% define data = {
+    quote: _view.quote,
+    quoteName: _view.quote.name | default,
+    idQuote: _view.quote.idQuote | default,
+    title: 'shared_cart.dismiss.title' | trans({quote_name: _view.quote.name | default}),
+    activePage: 'multiCart'
+} %}
+
+{% block breadcrumbs %}
+    {% include molecule('breadcrumb') with {
+        data: {
+            steps: [{
+                url: url('customer/overview'),
+                label: 'customer.profile' | trans
+            },{
+                url: url('multi-cart'),
+                label: 'shared_cart.share.breadcrumbs.shopping_carts' | trans
+            },{
+                url: data.quote.isDefault ? url('cart') : url('multi-cart/set-default', {idQuote: data.idQuote}),
+                label: data.quoteName
+            },{
+                label: 'shared_cart_page.share.breadcrumbs.dismiss' | trans
+            }]
+        }
+    } only %}
+{% endblock %}
+
+{% block customerContent %}
+    <h3 class="spacing-bottom spacing-bottom--big">{{ "shared_cart_page.dismiss_confirmation.warning" | trans }}</h3>
+    <div class="box">
+        <h5>{{ data.quoteName }}</h5>
+        <p>
+            {{ "shared_cart_page.dismiss_confirmation.trying_to_dismiss" | trans }}
+        </p>
+        <div class="spacing-top spacing-top--bigger">
+            <a href="{{ data.backUrl }}" class="button button--hollow spacing-right">
+                {{ "general.back.button" | trans }}
+            </a>
+            <a href="{{ url('shared-cart/dismiss', { 'idQuote' : data.idQuote }) }}" class="button button--alert">
+                {{ "shared_cart_page.cart.dismiss" | trans }}
+            </a>
+        </div>
+    </div>
+{% endblock %}

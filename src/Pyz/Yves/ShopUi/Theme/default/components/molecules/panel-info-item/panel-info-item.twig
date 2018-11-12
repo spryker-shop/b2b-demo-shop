@@ -1,0 +1,19 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'panel-info-item'
+} %}
+
+{% define data = {
+    info: required
+} %}
+
+{% block body %}
+    {% include atom('icon') with {
+        modifiers: ['header-check'],
+        data: {
+            name: 'check'
+        }
+    } only %}
+    {{ data.info | trans }}
+{% endblock %}

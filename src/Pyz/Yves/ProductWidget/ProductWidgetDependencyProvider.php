@@ -1,16 +1,14 @@
 <?php
 
 /**
- * This file is part of the Spryker Suite.
+ * This file is part of the Spryker Commerce OS.
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
 namespace Pyz\Yves\ProductWidget;
 
 use Pyz\Yves\ExampleProductColorGroupWidget\Plugin\ProductWidget\ExampleProductColorGroupWidgetPlugin;
-use SprykerShop\Yves\ProductLabelWidget\Plugin\ProductWidget\ProductAbstractLabelWidgetPlugin;
 use SprykerShop\Yves\ProductLabelWidget\Plugin\ProductWidget\ProductLabelWidgetPlugin;
-use SprykerShop\Yves\ProductReviewWidget\Plugin\ProductWidget\ProductAbstractReviewWidgetPlugin;
 use SprykerShop\Yves\ProductReviewWidget\Plugin\ProductWidget\ProductReviewWidgetPlugin;
 use SprykerShop\Yves\ProductWidget\ProductWidgetDependencyProvider as SprykerProductWidgetDependencyProvider;
 
@@ -24,9 +22,7 @@ class ProductWidgetDependencyProvider extends SprykerProductWidgetDependencyProv
     protected function getProductRelationWidgetSubWidgetPlugins(): array
     {
         return [
-            ProductAbstractLabelWidgetPlugin::class,
             ExampleProductColorGroupWidgetPlugin::class,
-            ProductAbstractReviewWidgetPlugin::class,
         ];
     }
 
@@ -38,7 +34,6 @@ class ProductWidgetDependencyProvider extends SprykerProductWidgetDependencyProv
     protected function getCatalogPageSubWidgetPlugins(): array
     {
         return [
-            ProductLabelWidgetPlugin::class,
             ExampleProductColorGroupWidgetPlugin::class,
             ProductReviewWidgetPlugin::class,
         ];
@@ -52,8 +47,7 @@ class ProductWidgetDependencyProvider extends SprykerProductWidgetDependencyProv
     protected function getCmsContentWidgetProductSubWidgetPlugins(): array
     {
         return [
-            ProductAbstractLabelWidgetPlugin::class,
-            ProductAbstractReviewWidgetPlugin::class,
+            ExampleProductColorGroupWidgetPlugin::class,
         ];
     }
 
@@ -65,9 +59,7 @@ class ProductWidgetDependencyProvider extends SprykerProductWidgetDependencyProv
     protected function getCmsContentWidgetProductGroupSubWidgetPlugins(): array
     {
         return [
-            ProductAbstractLabelWidgetPlugin::class,
             ExampleProductColorGroupWidgetPlugin::class,
-            ProductAbstractReviewWidgetPlugin::class,
         ];
     }
 
@@ -93,9 +85,7 @@ class ProductWidgetDependencyProvider extends SprykerProductWidgetDependencyProv
     protected function getProductReplacementForWidgetPlugins(): array
     {
         return [
-            ProductAbstractLabelWidgetPlugin::class, #ProductAlternativeFeature
             ExampleProductColorGroupWidgetPlugin::class, #ProductAlternativeFeature
-            ProductAbstractReviewWidgetPlugin::class, #ProductAlternativeFeature
         ];
     }
 
@@ -107,9 +97,7 @@ class ProductWidgetDependencyProvider extends SprykerProductWidgetDependencyProv
     protected function getProductAlternativeWidgetPlugins(): array
     {
         return [
-            ProductAbstractLabelWidgetPlugin::class, #ProductAlternativeFeature
             ExampleProductColorGroupWidgetPlugin::class, #ProductAlternativeFeature
-            ProductAbstractReviewWidgetPlugin::class, #ProductAlternativeFeature
         ];
     }
 }

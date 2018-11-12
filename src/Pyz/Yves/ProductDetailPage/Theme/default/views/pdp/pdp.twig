@@ -1,0 +1,84 @@
+{% extends template('page-layout-main') %}
+
+{% define data = {
+    product: _view.product,
+    productUrl: _view.productUrl,
+    isBundle: _view.product.attributes.bundled_product | default(null),
+    bundleItems: _view.bundledProducts,
+
+    title: product.metaTitle | default(_view.product.name),
+    metaTitle: product.metaTitle | default(_view.product.name),
+    metaDescription: _view.product.metaDescription | default,
+    metaKeywords: _view.product.metaKeywords | default
+} %}
+
+{% block breadcrumbs %}
+    {% widget 'ProductBreadcrumbsWithCategoriesWidget' args [data.product] only %}{% endwidget %}
+{% endblock %}
+
+{% block title %}
+    <h3 itemprop="name" class="pdp-title">
+        {% widget 'ProductAbstractLabelWidget' args [data.product.idProductAbstract] only %}{% endwidget %}{{ data.product.name }}
+    </h3>
+    <link itemprop="url" href="{{ data.productUrl }}" />
+{% endblock %}
+
+{% block contentClass %}page-layout-main page-layout-main--pdp{% endblock %}
+
+{% block content %}
+    <div class="grid grid--gap grid--justify">
+        <div class="col gallery-side">
+            {% include molecule('image-gallery', 'ProductImageWidget') ignore missing with {
+                data: {
+                    idProductAbstract: data.product.idProductAbstract,
+                    images: data.product.images
+                }
+            } only %}
+        </div>
+
+        <div class="col col--sm-5">
+            {% include molecule('product-configurator', 'ProductDetailPage') with {
+                data: {
+                    product: data.product,
+                    isBundle: data.isBundle,
+                    bundleItems: data.bundleItems
+                }
+            } only %}
+        </div>
+    </div>
+
+    {% widget 'ProductAlternativeListWidget' args [data.product] only %}{% endwidget %}
+
+    {% include molecule('product-detail', 'ProductDetailPage') with {
+        data: {
+            description: data.product.description,
+            attributes: data.product.attributes
+        }
+    } only %}
+
+    {% widget 'ProductReplacementForListWidget' args [data.product.sku] only %}{% endwidget %}
+
+    {% if data.isBundle != null %}
+        {% include molecule('product-bundle', 'ProductDetailPage') with {
+            data: {
+                bundleItems: data.bundleItems
+            }
+        } only %}
+    {% endif %}
+
+    {% widget 'SimilarProductsWidget' args [data.product] only %}{% endwidget %}
+
+    {% widget 'ProductDetailPageReviewWidget' args [data.product.idProductAbstract] only %}{% endwidget %}
+
+    {% if data.product.productSetIds is not empty %}
+        {% widget 'ProductSetIdsWidget' args [data.product.productSetIds] only %}{% endwidget %}
+    {% endif %}
+{% endblock %}
+
+{% block contentBottom %}
+    {% include molecule('product-cms-block', 'CmsBlockWidget') ignore missing with {
+        data: {
+            idProductAbstract: data.product.idProductAbstract
+        }
+    } only %}
+{% endblock %}

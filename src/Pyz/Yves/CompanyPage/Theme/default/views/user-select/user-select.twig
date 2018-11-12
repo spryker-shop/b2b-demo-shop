@@ -1,0 +1,36 @@
+{% extends template('page-layout-customer', 'CustomerPage') %}
+
+{% define data = {
+    form: _view.form,
+    title: 'company_user.change_company_user' | trans,
+    activePage: 'change-company-user'
+} %}
+
+{% block customerContent %}
+    {% include molecule('action-bar', 'ShopUi') with {
+        data: {
+            title: 'company_user.change_company_user' | trans
+        }
+    } only %}
+
+    <div class="box">
+        {% include molecule('form') with {
+            data: {
+                form: data.form,
+                options: {
+                    action: url('company/user/select')
+                },
+                layout: {
+                    companyUserAccount: 'col col--sm-12 col--lg-8'
+                },
+                submit: {
+                    enable: true,
+                    class: 'button form__action--primary'
+                },
+                cancel: {
+                    enable: false
+                }
+            }
+        } only %}
+    </div>
+{% endblock %}

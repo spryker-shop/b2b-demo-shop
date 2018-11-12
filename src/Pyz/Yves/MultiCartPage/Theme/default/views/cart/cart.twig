@@ -1,0 +1,59 @@
+{% extends template('page-layout-customer', 'CustomerPage') %}
+
+{% define data = {
+    quotes: _view.quoteCollection,
+    isQuoteDeletable: _view.isQuoteDeletable,
+    title: 'page.multi_cart.shopping_cart.list.title' | trans,
+    activePage: 'multiCart'
+} %}
+
+{% block breadcrumbs %}
+    {% include molecule('breadcrumb') with {
+        data: {
+            steps: [
+                {
+                    label: 'customer.account' | trans,
+                    url: url('customer/overview'),
+                },
+                {
+                    label: 'page.multi_cart.shopping_cart.list.title' | trans,
+                }
+            ]
+        }
+    } only %}
+{% endblock %}
+
+{% block customerContent %}
+
+    <div class="grid grid--justify">
+        <div class="col">
+            <h3>{{ 'page.multi_cart.shopping_cart.list.title' | trans }}</h3>
+        </div>
+        <div class="col">
+            <a class="button button--hollow" href="{{ url('multi-cart/create') }}">
+                {% include atom('icon') with {
+                    class: 'spacing-right spacing-right--small',
+                    modifiers: ['plus-small'],
+                    data: {
+                        name: 'plus'
+                    }
+                } only %}
+                {{- 'page.multi_cart.shopping_cart.list.create_link' | trans -}}
+            </a>
+        </div>
+    </div>
+
+    {% if data.quotes is not empty %}
+        {% include molecule('quote-table', 'MultiCartPage') with {
+            data: {
+                quotes: data.quotes,
+                actions: {
+                    update: true,
+                    delete: true,
+                    duplicate: true,
+                },
+                isQuoteDeletable: data.isQuoteDeletable
+            }
+        } only %}
+    {% endif %}
+{% endblock %}

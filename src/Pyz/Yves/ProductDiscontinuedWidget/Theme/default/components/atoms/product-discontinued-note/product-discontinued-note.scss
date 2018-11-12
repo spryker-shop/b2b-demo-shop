@@ -1,0 +1,21 @@
+@mixin product-discontinued-note($name: '.product-discontinued-note') {
+    #{$name} {
+        &__title {
+            font-size: rem(16);
+            font-weight: fw(medium);
+            line-height: rem(54);
+            color: $setting-color-gray-5;
+        }
+
+        &__text {
+            font-size: rem(15);
+            font-weight: fw(regular);
+            line-height: normal;
+            color: $setting-color-gray-3;
+        }
+
+        @content;
+    }
+}
+
+@include product-discontinued-note();

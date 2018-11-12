@@ -1,0 +1,20 @@
+{% extends template('widget') %}
+
+{% define data = {
+    title: _widget.productSet.name,
+    products: _widget.productViews,
+    description: _widget.productSet.description,
+    images: _widget.productSet.imageSets.0.images | default([])
+} %}
+
+{% block body %}
+    {% include organism('product-set-cms', 'ProductSetWidget') ignore missing with {
+        data: {
+            title: data.title,
+            products: data.products,
+            description: data.description,
+            images: data.images
+        }
+    } only %}
+{% endblock %}
+

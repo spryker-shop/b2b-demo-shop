@@ -1,0 +1,52 @@
+{% extends template('page-layout-company', 'CompanyPage') %}
+
+{% define data = {
+    businessUnitsTree: _view.businessUnitsTree,
+    title: 'company.account.business_unit' | trans,
+    activePage: 'business-unit'
+} %}
+
+{% block breadcrumbs %}
+    {% include molecule('breadcrumb') with {
+        data: {
+            steps: [
+                {
+                    label: 'company.account.page-title' | trans,
+                    url: url('company/overview')
+                }, {
+                    label: 'company.account.business_unit' | trans
+                }
+            ]
+        }
+    } only %}
+{% endblock %}
+
+{% block companyContent %}
+    {% include molecule('action-bar', 'ShopUi') with {
+        data: {
+            title: 'company.account.business_unit' | trans,
+            actions: [
+                {
+                    title: 'company.account.business_unit.add' | trans,
+                    url: url('company/business-unit/create'),
+                    primary: true,
+                    icon: 'plus'
+                }
+            ]
+        }
+    } only %}
+
+    {% if data.businessUnitsTree is empty %}
+        <div class="box">
+            {{ 'company.account.business_unit.no_units' | trans }}
+        </div>
+    {% else %}
+        {% for node in data.businessUnitsTree %}
+            {% include molecule('business-unit-chart-item', 'CompanyPage') with {
+                data: {
+                    node: node
+                }
+            } only %}
+        {% endfor %}
+    {% endif %}
+{% endblock %}

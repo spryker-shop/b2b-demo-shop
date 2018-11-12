@@ -6,16 +6,10 @@
 } %}
 
 {% block body %}
-    {% embed molecule('color-selector', 'ExampleProductColorGroupWidget') with {
+    {% include molecule('color-selector-pdp', 'ExampleProductColorGroupWidget') with {
         data: {
             items: data.items
-        },
-        attributes: {
-            'target-image-selector': '.js-pdp-color-group__image-' ~ data.idProductAbstract ~ ' > img'
         }
     } only %}
-        {% block body %}
-            <hr />{{parent()}}
-        {% endblock %}
-    {% endembed %}
+
 {% endblock %}

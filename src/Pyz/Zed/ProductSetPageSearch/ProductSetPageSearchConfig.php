@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Spryker Suite.
+ * This file is part of the Spryker Commerce OS.
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
@@ -13,7 +13,7 @@ use Spryker\Zed\ProductSetPageSearch\ProductSetPageSearchConfig as SprykerProduc
 class ProductSetPageSearchConfig extends SprykerProductSetPageSearchConfig
 {
     /**
-     * @return null|string
+     * @return string|null
      */
     public function getProductSetSynchronizationPoolName(): ?string
     {

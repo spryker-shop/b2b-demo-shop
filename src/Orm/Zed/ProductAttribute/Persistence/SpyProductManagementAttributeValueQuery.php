@@ -1,13 +1,13 @@
 <?php
 
 /**
- * This file is part of the Spryker Suite.
+ * This file is part of the Spryker Commerce OS.
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
 namespace Orm\Zed\ProductAttribute\Persistence;
 
-use Spryker\Zed\ProductAttribute\Persistence\Propel\AbstractSpyProductAttributeValueQuery as BaseSpyProductManagementAttributeValueQuery;
+use Spryker\Zed\ProductAttribute\Persistence\Propel\AbstractSpyProductManagementAttributeValueQuery as BaseSpyProductManagementAttributeValueQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'spy_product_management_attribute_value' table.

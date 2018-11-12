@@ -1,0 +1,9 @@
+{% extends template('widget') %}
+
+{% define data = {
+    product: product | default(_widget.product.idProductAbstract)
+} %}
+
+{% block body %}
+    {{ spyCmsBlock({ product: data.product }) }}
+{% endblock %}

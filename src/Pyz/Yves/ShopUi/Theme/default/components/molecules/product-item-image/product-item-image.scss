@@ -1,0 +1,35 @@
+@mixin shop-ui-product-item-image($name: '.product-item-image') {
+    #{$name} {
+        display: flex;
+        height: 100%;
+        position: relative;
+        padding: rem(36) rem(4) rem(28);
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: $setting-color-alpha-2;
+            border-radius: $setting-border-radius 0 0 $setting-border-radius;
+            z-index: $setting-zi-element;
+        }
+
+        &__item {
+            width: 100%;
+            overflow: hidden;
+        }
+
+        &--summary,
+        &--shopping-list {
+            padding-top: rem(28);
+            padding-bottom: rem(20);
+        }
+
+        @content;
+    }
+}
+
+@include shop-ui-product-item-image();

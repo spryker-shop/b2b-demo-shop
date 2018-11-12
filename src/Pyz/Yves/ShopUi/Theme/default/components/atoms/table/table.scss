@@ -1,0 +1,77 @@
+@mixin shop-ui-table($name: '.table') {
+    #{$name} {
+        thead {
+            background-color: $setting-color-gray-7;
+            text-transform: uppercase;
+            font-size: map_get($setting-font-size, tiny);
+            font-weight: fw(bold);
+        }
+
+        th {
+            color: $setting-color-gray-5;
+            font-weight: fw(bold);
+        }
+
+        th,
+        td {
+            padding: rem(16) rem(32);
+            text-align: left;
+        }
+
+        tbody {
+            font-size: map_get($setting-font-size, small);
+
+            tr:not(:first-child) {
+                border-top: 1px solid $setting-color-gray-6;
+            }
+
+            th {
+                font-weight: fw(medium);
+            }
+
+            td {
+                color: $setting-color-gray-4;
+            }
+
+            strong {
+                color: $setting-color-gray-5;
+                font-weight: fw(medium);
+            }
+        }
+
+        &--expand {
+            width: 100%;
+        }
+
+        &__row {
+            &--inactive {
+                color: $setting-color-gray-2;
+            }
+        }
+
+        &__actions {
+            width: 1px;
+            white-space: nowrap;
+        }
+
+        &__icon {
+            height: 1em;
+        }
+
+        &--grid {
+
+            thead {
+                white-space: nowrap;
+            }
+
+            th,
+            td {
+                padding: rem(16) rem(15);
+            }
+        }
+
+        @content;
+    }
+}
+
+@include shop-ui-table();

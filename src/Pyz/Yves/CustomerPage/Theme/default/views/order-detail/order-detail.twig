@@ -1,0 +1,138 @@
+{% extends template('page-layout-customer', 'CustomerPage') %}
+
+{% define data = {
+    order: _view.order,
+    orderItems: _view.items,
+
+    title: 'customer.account.order_history' | trans,
+    activePage: 'order',
+
+    billingAddressId: _view.addresses.billing.idCustomerAddress | default(''),
+    shippingAddressId: _view.addresses.shipping.idCustomerAddress | default('')
+} %}
+
+{% macro address(label, address) %}
+    {% if address is not empty %}
+        {% embed molecule('action-card') with {
+            data: {
+                title: ('customer.account.default_' ~ label) | trans,
+                address: address,
+            }
+        } only %}
+            {% block content %}
+                {% include molecule('display-address') with {
+                    data: {
+                        address: data.address
+                    }
+                } only %}
+            {% endblock %}
+        {% endembed %}
+    {% endif %}
+{% endmacro %}
+
+{% macro note(order) %}
+    {% include molecule('note-list', 'CartNoteWidget') ignore missing with {
+        data: {
+            label: 'cart_note.customer_page.order_note',
+            note: order.cartNote
+        }
+    } only %}
+{% endmacro %}
+
+{% block customerContent %}
+    {{ widgetBlock('CustomerReorderWidgetPlugin', 'formStart', data.order) }}
+
+    {% include molecule('action-bar', 'ShopUi') with {
+        modifiers: ['first'],
+        data: {
+            title: 'customer.profile.order_details' | trans,
+            actions: [
+                {
+                    title: 'general.back.button' | trans,
+                    url: url('customer/order'),
+                    modifiers: ['hollow']
+                }
+            ]
+        }
+    } only %}
+
+    {% include molecule('order-info', 'CustomerPage') with {
+        data: {
+            id: _view.order.orderReference,
+            date: _view.order.createdAt | formatDateTime
+        }
+    } only %}
+
+    {% embed molecule('order-detail-table', 'CustomerPage') with {
+        data: {
+            items: data.orderItems,
+            currencyIsoCode: data.order.currencyIsoCode
+        },
+        embed: {
+            order: data.order
+        }
+    } only %}
+        {% block headerRow %}
+            <td></td>
+            {{parent()}}
+        {% endblock %}
+        {% block bundleDetailRow %}
+            <td></td>
+            {{parent()}}
+        {% endblock %}
+        {% block detailRow %}
+            <td></td>
+            {{parent()}}
+        {% endblock %}
+
+        {% block row %}
+            {% embed [
+                molecule('order-detail-product-packaging-unit', 'ProductPackagingUnitWidget'),
+                molecule('order-detail-product-packaging-unit-default', 'CustomerPage'),
+                ] ignore missing with {
+                class: config.name ~ '__row',
+                data: {
+                    concreteItem: concreteItem,
+                    currencyIsoCode: data.currencyIsoCode,
+                    concreteItemDefault: concreteItem
+                },
+                embed: {
+                    order: embed.order
+                }
+            } only %}
+                {% block body %}
+                    <td>
+                        {{ widgetBlock('CustomerReorderWidgetPlugin', 'formCheckbox', embed.order, data.concreteItem) }}
+                    </td>
+                    {{parent()}}
+                {% endblock %}
+            {% endembed %}
+        {% endblock %}
+    {% endembed %}
+
+    {% include molecule('order-summary', 'CustomerPage') with {
+        class: 'text-right',
+        data: {
+            order: data.order
+        }
+    } only %}
+
+    {% include molecule('action-card-grid') with {
+        data: {
+            cards: [
+                {
+                    content: _self.address('shipping_address', data.order.shippingAddress)
+                },
+                {
+                    content: _self.address('billing_address', data.order.billingAddress)
+                },
+                {
+                    content: _self.note(data.order)
+                }
+            ]
+        }
+    } only %}
+
+    {{ widgetBlock('CustomerReorderWidgetPlugin', 'formActions', data.order) }}
+    {{ widgetBlock('CustomerReorderWidgetPlugin', 'formEnd', data.order) }}
+{% endblock %}

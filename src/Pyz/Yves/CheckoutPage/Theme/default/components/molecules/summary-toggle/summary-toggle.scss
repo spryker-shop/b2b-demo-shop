@@ -1,0 +1,49 @@
+.summary-toggle {
+
+    &__item {
+        background-color: $setting-color-gray-7;
+        margin-top: rem(10);
+        padding: rem(17) rem(20);
+        font-size: rem(16);
+        font-weight: fw(medium);
+        border-radius: $setting-border-radius;
+
+        .label {
+            display: none;
+        }
+
+        .input {
+            font-size: rem(14);
+            font-weight: fw(regular);
+            line-height: rem(18);
+            color: $setting-color-gray-3;
+            padding: rem(15) rem(20);
+            border-radius: $setting-border-radius;
+            border: none;
+            box-shadow: 0 10px 10px 0 $setting-color-shadow-1, 0 3px 3px 0 $setting-color-shadow-1;
+        }
+    }
+
+    &__title {
+        font-size: rem(16);
+        font-weight: fw(medium);
+        line-height: rem(18);
+    }
+
+    &__content {
+        margin-top: rem(18);
+
+        &--voucher {
+            max-width: 550px;
+        }
+
+        .form__field {
+            padding-top: 0;
+        }
+
+        .form__actions {
+            text-align: left;
+            margin-top: 0;
+        }
+    }
+}

@@ -1,0 +1,53 @@
+{% extends template('page-layout-company', 'CompanyPage') %}
+
+{% define data = {
+    form: _view.form,
+    idCompanyBusinessUnit: _view.idCompanyBusinessUnit|default(''),
+    title: 'company.account.address' | trans,
+    activePage: 'business-unit'
+} %}
+
+{% block breadcrumbs %}
+    {% include molecule('breadcrumb') with {
+        data: {
+            steps: [{
+                label: 'company.account' | trans,
+            }, {
+                label: 'company.account.business_unit' | trans,
+            }]}
+    } only %}
+{% endblock %}
+
+{% block companyContent %}
+    {% include molecule('action-bar', 'ShopUi') with {
+        data: {
+            title: 'company.account.create_address_information' | trans
+        }
+    } only %}
+    {% include molecule('form') with {
+        modifiers: ['narrow'],
+        data: {
+            form: data.form,
+            options: {
+                action: url('company/address/create', { idCompanyBusinessUnit: data.idCompanyBusinessUnit })
+            },
+            layout: {
+                address1: 'col col--sm-12 col--lg-10',
+                address2: 'col col--sm-12 col--lg-2',
+                zip_code: 'col col--sm-12 col--lg-4',
+                city: 'col col--sm-12 col--lg-4',
+                iso2code: 'col col--sm-12 col--lg-4'
+            },
+            submit: {
+                enable: true
+            },
+            cancel: {
+                enable: true,
+                url: url('company/business-unit/update', {'id': data.idCompanyBusinessUnit}),
+                text: 'general.back.button' | trans,
+                icon: null,
+                class: 'button button--hollow'
+            }
+        }
+    } only %}
+{% endblock %}

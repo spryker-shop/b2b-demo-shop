@@ -1,0 +1,66 @@
+@mixin shop-ui-title($name: '.title') {
+    #{$name} {
+        &--footer {
+            font: fw(bold) rem(16)/rem(34) $setting-font-family;
+            margin-bottom: rem(10);
+        }
+
+        &--subscription-info {
+            font: fw(medium) rem(34)/rem(43) $setting-font-family;
+            letter-spacing: rem(0.3);
+            margin-bottom: rem(17);
+        }
+
+        &--checkout {
+            font-size: rem(28);
+            font-weight: fw(bold);
+            margin-bottom: rem(25);
+        }
+
+        &--second {
+            font-size: rem(24);
+            margin-bottom: rem(14);
+        }
+
+        &__index {
+            color: $setting-color-main;
+            margin-right: map-get($setting-spacing, 'default');
+        }
+
+        &--sub {
+            color: $setting-color-gray-3;
+            font-weight: fw(regular);
+            margin-bottom: rem(12);
+        }
+
+        &--error-page {
+            font: fw(bold) rem(32)/rem(41) $setting-font-family;
+            margin-bottom: rem(7);
+        }
+
+        &--product-review {
+            margin: rem(36) 0 rem(24);
+        }
+
+        &--product-slider {
+            text-align: center;
+            margin-bottom: rem(33);
+        }
+
+        &--top-margin {
+            margin-top: rem(110);
+        }
+
+        &--top-margin-small {
+            margin-top: rem(55);
+        }
+
+        &--light {
+            color: $setting-color-white;
+        }
+
+        @content;
+    }
+}
+
+@include shop-ui-title;

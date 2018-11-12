@@ -1,0 +1,48 @@
+.page-layout {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    .content-wrap {
+        flex: 1;
+    }
+}
+
+.page-layout-main {
+    &--catalog-page {
+        padding-top: rem(20);
+    }
+
+    &--catalog-page-content {
+        padding-bottom: rem(70);
+    }
+
+    &--pdp {
+        padding: 30px 0 0;
+
+        .gallery-side {
+            width: 660px;
+        }
+    }
+
+    &--quick-order-page {
+        padding: 50px 0 70px;
+    }
+
+    &--checkout-page,
+    &--cart-page {
+        padding-top: rem(32);
+        padding-bottom: rem(120);
+    }
+
+    &--cms-page {
+        padding-top: rem(32);
+        padding-bottom: rem(70);
+    }
+
+    &--error-page {
+        background: url('/assets/images/error-page-img.svg') center no-repeat;
+        background-size: cover;
+        min-height: rem(760);
+        padding-top: rem(35);
+    }
+}

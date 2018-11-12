@@ -1,0 +1,30 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'navigation-multilevel',
+    tag: 'navigation-multilevel'
+} %}
+
+{% define data = {
+    nodes: []
+} %}
+
+{% define attributes = {
+    'target-selector': required,
+    'class-to-toggle': required
+} %}
+
+{% block body %}
+    <ul class="menu menu--lvl-0">
+        {% for node in data.nodes %}
+            {% set hasChildren = node.children | length > 0 %}
+            
+            {% include molecule('navigation-multilevel-node') with {
+                class: 'menu__item menu__item--lvl-0 ' ~ (hasChildren ? 'menu__item--has-children-dropdown js-menu-trigger' : ''),
+                data: {
+                    node: node
+                }
+            } only %}
+        {% endfor %}
+    </ul>
+{% endblock %}

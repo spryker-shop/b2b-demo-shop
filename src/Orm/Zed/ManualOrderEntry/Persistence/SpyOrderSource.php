@@ -1,13 +1,13 @@
 <?php
 
 /**
- * This file is part of the Spryker Suite.
+ * This file is part of the Spryker Commerce OS.
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
 namespace Orm\Zed\ManualOrderEntry\Persistence;
 
-use Orm\Zed\ManualOrderEntry\Persistence\Base\SpyOrderSource as BaseSpyOrderSource;
+use Spryker\Zed\ManualOrderEntry\Persistence\Propel\AbstractSpyOrderSource as BaseSpyOrderSource;
 
 /**
  * Skeleton subclass for representing a row from the 'spy_order_source' table.

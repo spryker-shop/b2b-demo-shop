@@ -1,0 +1,56 @@
+$setting-color-business-chart-item-level: (
+    1: $setting-color-blue-1,
+    2: $setting-color-main,
+    3: $setting-color-yellow-1,
+    4: $setting-color-alt
+);
+
+@mixin business-unit-chart-item($name: '.business-unit-chart-item') {
+    #{$name} {
+        &__icon {
+            @include helper-effect-transition(color);
+            flex: none;
+            color: $setting-color-gray-2;
+        }
+
+        &__link {
+            @include helper-effect-transition(box-shadow background-color);
+            display: flex;
+            flex-flow: row nowrap;
+            align-items: center;
+            padding: rem(20) rem(34);
+            margin-bottom: map-get($setting-spacing, default);
+            background-color: $setting-color-gray-7;
+            color: $setting-color-gray-5;
+            font-weight: fw(medium);
+            border-left: rem(5) solid $setting-color-gray-2;
+            border-radius: $setting-border-radius;
+
+            @each $level, $setting-color-level in $setting-color-business-chart-item-level {
+                &--level-#{$level} {
+                    border-left-color: $setting-color-level;
+                }
+            }
+
+            &:hover {
+                background-color: $setting-color-white;
+                box-shadow: rem(3) rem(8) rem(16) rem(3) $setting-color-shadow-1;
+                color: $setting-color-gray-5;
+
+                #{$name}__icon {
+                    color: inherit;
+                }
+            }
+        }
+
+        &__name {
+            flex: 1;
+        }
+
+        #{$name} {
+            padding-left: rem(30);
+        }
+    }
+}
+
+@include business-unit-chart-item();

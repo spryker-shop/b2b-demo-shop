@@ -1,0 +1,22 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'mini-cart-radio',
+    tag: 'mini-cart-radio',
+} %}
+
+{% define data = {
+    idCart: required,
+    isDefault: required,
+} %}
+
+{% block body %}
+    {% include atom('radio') with {
+        class: config.jsName,
+        attributes: {
+            name: 'cart-isDefault',
+            checked: data.isDefault,
+            'data-href': path('multi-cart/set-default-back', {idQuote: data.idCart}),
+        }
+    } only %}
+{% endblock %}

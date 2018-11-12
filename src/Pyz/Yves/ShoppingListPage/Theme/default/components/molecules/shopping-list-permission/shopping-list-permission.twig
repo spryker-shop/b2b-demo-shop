@@ -1,0 +1,18 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'shopping-list-permission',
+    tag: 'span'
+} %}
+
+{% define data = {
+    hasWritePermission: required
+} %}
+
+{% block body %}
+    {% if data.hasWritePermission %}
+        <span class="{{ component.renderClass(config.name ~ '__full', modifiers) }}">{{ 'customer.account.shopping_list.permissions.FULL_ACCESS' | trans }}</span>
+    {% else %}
+        <span>{{ 'customer.account.shopping_list.permissions.READ_ONLY' | trans }}</span>
+    {% endif %}
+{% endblock %}

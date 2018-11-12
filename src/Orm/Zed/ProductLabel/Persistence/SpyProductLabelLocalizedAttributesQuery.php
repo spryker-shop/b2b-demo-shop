@@ -1,13 +1,13 @@
 <?php
 
 /**
- * This file is part of the Spryker Suite.
+ * This file is part of the Spryker Commerce OS.
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
 namespace Orm\Zed\ProductLabel\Persistence;
 
-use Spryker\Zed\ProductLabel\Persistence\Propel\SpyProductLabelLocalizedAttributesQuery as BaseSpyProductLabelLocalizedAttributesQuery;
+use Spryker\Zed\ProductLabel\Persistence\Propel\AbstractSpyProductLabelLocalizedAttributesQuery as BaseSpyProductLabelLocalizedAttributesQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'spy_product_label_localized_attributes' table.

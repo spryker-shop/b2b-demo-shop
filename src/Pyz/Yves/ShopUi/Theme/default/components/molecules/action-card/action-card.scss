@@ -1,0 +1,34 @@
+@mixin shop-ui-action-card($name: '.action-card') {
+    #{$name} {
+        background-color: $setting-color-gray-7;
+        padding: rem(21) rem(30);
+        height: 100%;
+        width: 100%;
+
+        &__header {
+            display: flex;
+        }
+
+        &__title {
+            flex-grow: 1;
+            margin-bottom: 20px;
+            color: $setting-color-gray-5;
+        }
+
+        &__actions {
+            flex-shrink: 0;
+        }
+
+        &__content {
+            font-size: 15px;
+            line-height: 22px;
+            color: $setting-color-gray-3;
+        }
+
+        &__text {
+            color: $setting-color-gray-5;
+        }
+    }
+}
+
+@include shop-ui-action-card();

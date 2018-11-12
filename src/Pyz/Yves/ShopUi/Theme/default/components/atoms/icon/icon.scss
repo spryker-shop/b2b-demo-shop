@@ -1,0 +1,266 @@
+$shop-ui-icon-size-big: 1.25rem;
+$shop-ui-icon-size-bigger: 1.5rem;
+
+@include shop-ui-icon {
+    &--logo {
+        width: 195px;
+        height: 70px;
+    }
+
+    &--checkout {
+        width: 167px;
+        height: 60px;
+    }
+
+    &--header-check {
+        width: 12px;
+        height: 9px;
+        margin: -2px 9px 0 0;
+    }
+
+    &--progress-check {
+        width: 10px;
+        height: 8px;
+    }
+
+    &--phone {
+        width: 15px;
+        height: 15px;
+        margin-right: 6px;
+    }
+
+    &--search {
+        width: 20px;
+        height: 20px;
+        fill: $setting-color-gray-4;
+        stroke: $setting-color-gray-4;
+        stroke-width: 0.5px;
+    }
+
+    &--user {
+        width: 18px;
+        height: 21px;
+        margin-top: 7px;
+    }
+
+    &--quick-order {
+        width: 32px;
+        height: 19px;
+        margin-top: 10px;
+    }
+
+    &--header-shopping-list {
+        width: 17px;
+        height: 16px;
+        margin-top: 10px;
+    }
+
+    &--cart {
+        width: 30px;
+        height: 26px;
+        margin-top: 5px;
+    }
+
+    &--cross {
+        width: rem(10);
+        height: rem(10);
+    }
+
+    &--reverse {
+        transform: rotate(180deg);
+    }
+
+    &--toggler-cross {
+        position: relative;
+        width: rem(10);
+        height: rem(10);
+
+        &::before,
+        &::after {
+            content: '';
+            position: absolute;
+            background-color: $setting-color-gray-5;
+        }
+
+        &::before {
+            height: rem(3);
+            width: 100%;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+        }
+
+        &::after {
+            height: 100%;
+            width: rem(3);
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .active & {
+            &::after {
+                display: none;
+            }
+        }
+    }
+
+    &--cart-plus {
+        display: inline-block;
+        width: 26px;
+        height: 23px;
+        margin: -6px 12px -2px 0;
+    }
+
+    &--toggler-cross-link {
+        &::before,
+        &::after {
+            background-color: $setting-color-gray-3;
+        }
+    }
+
+    &--link {
+        @include helper-effect-transition(color);
+        color: $setting-color-gray-2;
+        margin-right: rem(6);
+    }
+
+    &--lock {
+        margin-bottom: 5px;
+        margin-right: rem(5);
+    }
+
+    &--shipment {
+        width: rem(83);
+    }
+
+    &--dhl-logo {
+        width: rem(73);
+    }
+
+    &--invoice-logo {
+        width: rem(83);
+        height: rem(28);
+    }
+
+    &--invoice-logo-small {
+        width: rem(55);
+        height: rem(22);
+    }
+
+    &--payment-logo {
+        position: absolute;
+        top: rem(27);
+        right: rem(30);
+    }
+
+    &--summary-shipping {
+        width: rem(53);
+    }
+
+    &--overview {
+        width: 17px;
+        height: 16px;
+    }
+
+    &--users {
+        width: 29px;
+        height: 19px;
+    }
+
+    &--business-unit {
+        width: 22px;
+        height: 22px;
+    }
+
+    &--role {
+        width: 18px;
+        height: 21px;
+    }
+
+    &--plus-small {
+        width: rem(10);
+        height: rem(10);
+        position: relative;
+        top: -1px;
+    }
+
+    &--share {
+        width: rem(20);
+    }
+
+    &--add-to-list {
+        position: relative;
+        top: 1px;
+        width: rem(26);
+        height: rem(26);
+    }
+
+    &--success {
+        width: rem(120);
+        height: rem(120);
+        margin-bottom: rem(-22);
+    }
+
+    &--footer {
+        height: rem(28);
+        width: rem(93);
+    }
+
+    &--invoice-logo-footer {
+        width: rem(73);
+    }
+
+    &--pay-pal-logo-footer {
+        width: rem(64);
+    }
+
+    &--klarna-logo-footer {
+        width: rem(68);
+    }
+
+    &--dhl-logo-footer {
+        width: rem(76);
+    }
+
+    &--copyright {
+        width: rem(106);
+        height: rem(48);
+    }
+
+    &--view-mode-switch {
+        margin-right: rem(9);
+    }
+
+    &--reset {
+        @include helper-effect-transition(color);
+        margin-right: rem(8);
+        color: $setting-color-gray-5;
+    }
+
+    &--chevron {
+        width: rem(10);
+        height: rem(10);
+    }
+
+    &--create-list {
+        vertical-align: bottom;
+        height: rem(18);
+        width: rem(18);
+    }
+
+    &--create-new-cart {
+        width: rem(24);
+        height: rem(18);
+        vertical-align: bottom;
+    }
+
+    &--trolley {
+        width: rem(20);
+    }
+
+    &--title {
+        width: rem(35);
+        height: rem(26);
+    }
+}

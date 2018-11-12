@@ -1,0 +1,86 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'alternative-products-table'
+} %}
+
+{% define data = {
+    item: required,
+    shoppingList: required,
+    products: required,
+    maxShownItems: 3
+} %}
+
+{% set idShoppingListItem = data.item.idShoppingListItem %}
+
+{% block body %}
+    <h3 class="spacing-bottom spacing-bottom--reset">{{ 'product_alternative_widget.alternative_for' | trans }}</h3>
+    <h4 class="title title--sub">{{ data.item.name }}</h4>
+    {% for item in data.products %}
+        {% embed molecule('product-item') with {
+            class: loop.index > data.maxShownItems ? 'js-product-alternative-' ~ idShoppingListItem ~ '__show-all-target is-hidden' : '',
+            modifiers: ['shopping-list', 'shopping-list-alternative'],
+            data: {
+                listItem: item,
+                imageModifiers: ['shopping-list']
+            },
+            embed: {
+                shoppingList: data.shoppingList,
+                quantity: data.item.quantity
+            }
+        } only %}
+            {% block itemAttributes %}
+                {% include molecule('product-item-attributes') with {
+                    class: 'spacing-y spacing-y--big text-small',
+                    data: {
+                        listItem: data.listItem,
+                    }
+                } only %}
+            {% endblock %}
+
+            {% block bundle %}
+            {% endblock %}
+
+            {% block note %}
+            {% endblock %}
+
+            {% block quantity %}
+                {% include molecule('quantity-counter') with {
+                    modifiers: ['shopping-list'],
+                    data: {
+                        isReadOnly: true
+                    },
+                    attributes: {
+                        value: embed.quantity,
+                    }
+                } only %}
+                <a class="button button--hollow" href="{{ url('shopping-list/add-item', {quantity: embed.quantity, sku: data.listItem.sku, idShoppingList: embed.shoppingList.idShoppingList}) }}">
+                    {{ 'product_alternative_widget.add_to_shopping_list' | trans}}
+                </a>
+            {% endblock %}
+        {% endembed %}
+        {% if loop.index > data.maxShownItems and loop.last %}
+            <div class="js-product-alternative-{{- idShoppingListItem -}}__show-all-target grid grid--center spacing-y">
+                <div class="col">
+                    <button class="link link--icon js-product-alternative-{{- idShoppingListItem -}}__show-all-trigger" type="button">
+                        {{ 'product_alternative_widget.show_all' | trans }}
+                        {% include atom('icon') with {
+                            class: 'spacing-left spacing-left--small',
+                            modifiers: ['smaller'],
+                            data: {
+                                name: 'caret-down'
+                            }
+                        } only %}
+                    </button>
+                </div>
+            </div>
+            {% include molecule('toggler-click') with {
+                attributes: {
+                    'trigger-selector': '.js-product-alternative-' ~ idShoppingListItem ~ '__show-all-trigger',
+                    'target-selector': '.js-product-alternative-' ~ idShoppingListItem ~ '__show-all-target',
+                    'class-to-toggle': 'is-hidden'
+                }
+            } only %}
+        {% endif %}
+    {% endfor %}
+{% endblock %}

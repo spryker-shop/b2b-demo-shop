@@ -1,0 +1,19 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'navigation-footer-item',
+} %}
+
+{% define data = {
+    category: required,
+    template: '' | default('navigation-footer'),
+    title: '',
+} %}
+
+{% block body %}
+    {% if data.title is not empty %}
+        <h5 class="title title--footer">{{ data.title }}</h5>
+    {% endif %}
+
+    {% widget 'NavigationWidget' args [data.category, data.template] only %}{% endwidget %}
+{% endblock %}

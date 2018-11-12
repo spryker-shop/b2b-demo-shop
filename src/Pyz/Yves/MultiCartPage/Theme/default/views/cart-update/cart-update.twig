@@ -1,0 +1,56 @@
+{% extends template('page-layout-multi-cart', 'MultiCartPage') %}
+
+{% define data = {
+    cart: _view.cart,
+    form: _view.quoteForm,
+    formAction: url('multi-cart/update', {idQuote: _view.cart.idQuote}),
+} %}
+
+{% block breadcrumbs %}
+    {% include molecule('breadcrumb') with {
+        data: {
+            steps: [
+                {
+                    label: 'customer.account' | trans,
+                    url: url('customer/overview'),
+                },
+                {
+                    label: 'page.multi_cart.shopping_cart.list.title' | trans,
+                    url: url('multi-cart'),
+                },
+                {
+                    label: data.cart.name,
+                    url: data.cart.isDefault ? url('cart') : url('multi-cart/set-default', {idQuote: data.cart.idQuote}),
+                }
+            ]
+        }
+    } only %}
+{% endblock %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+    <div class="grid cart-update">
+        <div class="col col--md-6">
+            <h2>{{ 'multi_cart.form.edit' | trans }} «{{ data.form.vars.value.name }}»</h2>
+            {% include molecule('form') with {
+                data: {
+                    form: data.form,
+                    options: {
+                        action: data.formAction
+                    },
+                    submit: {
+                        enable: true,
+                        text: 'cart_note.form.save' | trans
+                    },
+                    cancel: {
+                        enable: true,
+                        url: data.backUrl,
+                        icon: null,
+                        text: 'general.back.button' | trans
+                    }
+                }
+            } only %}
+        </div>
+    </div>
+{% endblock %}

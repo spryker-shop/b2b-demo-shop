@@ -1,0 +1,9 @@
+@mixin customer-page-order-summary($name: '.order-summary') {
+    #{$name} {
+        margin-bottom: 1rem;
+        padding: 1rem 2rem;
+        background-color: $setting-color-lighter;
+    }
+}
+
+@include customer-page-order-summary();

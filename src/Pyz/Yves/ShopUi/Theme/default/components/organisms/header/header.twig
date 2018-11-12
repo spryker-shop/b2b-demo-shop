@@ -1,0 +1,67 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'header',
+    tag: 'header'
+} %}
+
+{% define data = {
+    showSearchForm: true,
+    showNavigation: true,
+    cartQuantity: app['cart.quantity'] | default,
+    user: app['user'],
+    showUserMenu: not (hideUserMenu | default(false))
+} %}
+
+{% block body %}
+
+    <div class="{{ component.renderClass(config.name ~ '__top', modifiers) }}">
+        {% include organism('navigation-top') with {
+            class: 'grid grid--justify grid--stretch container'
+        } only %}
+    </div>
+
+    <div class="{{ component.renderClass(config.name ~ '__main', modifiers) }}">
+        {% block headerMainContent %}
+            <div class="grid container">
+                {% include molecule('logo') with {
+                    class: 'col'
+                } only %}
+
+                <div class="col col--expand {{ config.name }}__search">
+                    {% if data.showSearchForm %}
+                        {% include molecule('search-form') with {
+                            class: config.name ~ '__search-form is-hidden-sm-md',
+                            attributes: {
+                                'data-search-id': 'desktop'
+                            }
+                        } only %}
+                    {% endif %}
+                </div>
+
+                <div class="col col--right">
+                    {% if data.showUserMenu %}
+                        {% if is_granted('ROLE_USER') %}
+                            {% include molecule('user-navigation') with {
+                                data: {
+                                    user: data.user,
+                                    cartQuantity: data.cartQuantity
+                                }
+                            } only %}
+                        {% else %}
+                            <a href="{{ url('login') }}" class="button button--big">{{ 'customer.please_login'|trans }}</a>
+                        {% endif %}
+                    {% endif %}
+                </div>
+            </div>
+        {% endblock %}
+    </div>
+
+    {% if data.showNavigation %}
+        <div class="{{config.name}}__navigation">
+            <div class="container">
+                {% widget 'NavigationWidget' args ['MAIN_NAVIGATION', 'navigation-main'] only %}{% endwidget %}
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

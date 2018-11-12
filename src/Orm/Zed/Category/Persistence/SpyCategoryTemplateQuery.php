@@ -1,13 +1,13 @@
 <?php
 
 /**
- * This file is part of the Spryker Suite.
+ * This file is part of the Spryker Commerce OS.
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
 namespace Orm\Zed\Category\Persistence;
 
-use Orm\Zed\Category\Persistence\Base\SpyCategoryTemplateQuery as BaseSpyCategoryTemplateQuery;
+use Spryker\Zed\Category\Persistence\Propel\AbstractSpyCategoryTemplateQuery as BaseSpyCategoryTemplateQuery;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'spy_category_template' table.

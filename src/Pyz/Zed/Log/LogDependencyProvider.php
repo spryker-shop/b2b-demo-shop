@@ -1,13 +1,12 @@
 <?php
 
 /**
- * This file is part of the Spryker Suite.
+ * This file is part of the Spryker Commerce OS.
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
 namespace Pyz\Zed\Log;
 
-use Pyz\Zed\Log\Communication\Plugin\FilebeatLogListenerPlugin;
 use Spryker\Zed\Log\Communication\Plugin\Handler\ExceptionStreamHandlerPlugin;
 use Spryker\Zed\Log\Communication\Plugin\Handler\StreamHandlerPlugin;
 use Spryker\Zed\Log\Communication\Plugin\Processor\EnvironmentProcessorPlugin;
@@ -21,16 +20,6 @@ use Spryker\Zed\Propel\Communication\Plugin\Log\EntityProcessorPlugin;
 
 class LogDependencyProvider extends SprykerLogDependencyProvider
 {
-    /**
-     * @return \Spryker\Zed\Log\Business\Model\LogListener\LogListenerInterface[]
-     */
-    protected function getLogListeners()
-    {
-        return [
-            new FilebeatLogListenerPlugin(),
-        ];
-    }
-
     /**
      * @return \Spryker\Shared\Log\Dependency\Plugin\LogHandlerPluginInterface[]
      */

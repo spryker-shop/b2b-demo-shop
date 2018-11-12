@@ -1,0 +1,35 @@
+.checkout-summary-dicount-voucher-form {
+
+    .form__container {
+        position: relative;
+
+        .input {
+            padding-left: rem(12);
+            padding-right: rem(128);
+        }
+    }
+
+    .form__actions {
+        position: absolute;
+        height: rem(48);
+        bottom: 0.5rem;
+        right: 0;
+        margin-top: 0;
+    }
+
+    .form__action {
+        @include helper-effect-transition(color);
+        margin: 0;
+        display: flex;
+        height: rem(48);
+        font-size: rem(14);
+        font-weight: fw(bold);
+        color: $setting-color-gray-5;
+        padding-right: rem(20);
+
+        &:hover,
+        &:focus {
+            color: $setting-color-gray-3;
+        }
+    }
+}

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Spryker Suite.
+ * This file is part of the Spryker Commerce OS.
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
@@ -19,7 +19,7 @@ class ShopRouterDependencyProvider extends SprykerShopRouterDependencyProvider
     /**
      * @return \SprykerShop\Yves\ShopRouterExtension\Dependency\Plugin\ResourceCreatorPluginInterface[]
      */
-    protected function getResourceCreatorPlugins()
+    protected function getResourceCreatorPlugins(): array
     {
         return [
             new PageResourceCreatorPlugin(),

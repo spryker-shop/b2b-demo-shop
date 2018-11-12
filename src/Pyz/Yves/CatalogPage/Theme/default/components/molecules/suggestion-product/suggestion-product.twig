@@ -1,0 +1,45 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'suggestion-product'
+} %}
+
+{% define data = {
+    product: required,
+    price: required,
+    url: '',
+    image: null,
+    alt: '',
+    title: '',
+    originalPrice: null
+} %}
+
+{% block body %}
+    <a class="js-suggest-search__item--navigable js-suggest-search__product-item--navigable {{ config.name }}__link" href="{{ data.url }}">
+        {% if data.image %}
+            {% include atom('thumbnail') with {
+                modifiers: ['smaller'],
+                attributes: {
+                    alt: data.alt,
+                    src: data.image.external_url_small,
+                    title: data.title
+                },
+                class: config.name ~ '__thumbnail'
+            } only %}
+        {% endif %}
+
+        <span class="{{ config.name }}__name">
+            {{ data.title }}
+
+            {% if can('SeePricePermissionPlugin') %}
+                {% include molecule('price') with {
+                    class: config.name ~ '__price',
+                    data: {
+                        amount: data.price | money,
+                        originalAmount: data.originalPrice is empty ? null : (data.originalPrice | money)
+                    }
+                } only %}
+            {% endif %}
+        </span>
+    </a>
+{% endblock %}

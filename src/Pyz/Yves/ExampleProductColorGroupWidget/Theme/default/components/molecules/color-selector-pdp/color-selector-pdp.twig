@@ -1,0 +1,12 @@
+{% extends molecule('color-selector', 'ExampleProductColorGroupWidget') %}
+
+{% define config = {
+    name: 'color-selector-pdp',
+    tag: 'color-selector-pdp'
+} %}
+
+{% define attributes = {
+    'active-image-class': 'image-gallery__item--color-active',
+    'target-selector': '.js-pdp-image-color-group',
+    'target-image-selector': '.js-pdp-image-color-group > img'
+} %}

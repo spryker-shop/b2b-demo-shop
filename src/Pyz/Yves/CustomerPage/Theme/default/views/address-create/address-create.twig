@@ -1,0 +1,41 @@
+{% extends template('page-layout-customer', 'CustomerPage') %}
+
+{% define data = {
+    form: _view.form,
+    formAction: url('customer/address/new'),
+    title: 'customer.account.address' | trans,
+    activePage: 'address'
+} %}
+
+{% block customerContent %}
+    <div class="box">
+        {% include molecule('form') with {
+            data: {
+                title: 'customer.account.edit_address_information' | trans,
+                form: data.form,
+                options: {
+                    action: data.formAction
+                },
+                layout: {
+                    salutation: 'col col--sm-12 col--lg-2',
+                    first_name: 'col col--sm-12 col--lg-5',
+                    last_name: 'col col--sm-12 col--lg-5',
+                    address1: 'col col--sm-12 col--md-8 col--lg-10',
+                    address2: 'col col--sm-12 col--md-4 col--lg-2',
+                    zip_code: 'col col--sm-6 col--lg-4',
+                    city: 'col col--sm-6 col--lg-4',
+                    iso2_code: 'col col--sm-12 col--lg-4'
+                },
+                submit: {
+                    enable: true
+                },
+                cancel: {
+                    enable: true,
+                    url: url('customer/address'),
+                    text: 'general.back.button' | trans,
+                    icon: null
+                }
+            }
+        } only %}
+    </div>
+{% endblock %}

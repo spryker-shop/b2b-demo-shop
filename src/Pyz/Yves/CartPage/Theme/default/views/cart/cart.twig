@@ -1,0 +1,221 @@
+{% extends template('page-layout-main') %}
+
+{% define data = {
+    cart: _view.cart,
+    cartItems: _view.cartItems,
+    isQuoteValid: _view.isQuoteValid,
+    attributes: _view.attributes,
+    request: app.request,
+    products: _view.products,
+
+    title: 'cart.cart' | trans
+} %}
+
+{% block breadcrumbs %}
+    {% set steps = [{
+        label: 'multi_cart_widget.cart.carts' | trans,
+        url: url('multi-cart'),
+        isActive: false
+    }, {
+        label: data.cart.name ? data.cart.name : 'cart.cart' | trans,
+        isActive: true
+    }]%}
+
+    {% embed molecule('breadcrumb') with {
+        data: {
+            steps: steps
+        }
+    } only %}
+        {% block breadcrumbs %}
+            {% for step in data.steps %}
+                {% set modifiers = step.isActive ? ['active'] : [] %}
+
+                {% include molecule('breadcrumb-step') with {
+                    modifiers: modifiers,
+                    data: {
+                        label: step.label,
+                        url: step.isActive ? '' : step.url,
+                        withChevron: not loop.last
+                    }
+                } only %}
+            {% endfor %}
+        {% endblock %}
+    {% endembed %}
+{% endblock %}
+
+{% block title %}
+{% endblock %}
+
+{% block contentClass %}page-layout-main page-layout-main--cart-page{% endblock %}
+
+{% block content %}
+    {% if data.cart.items is empty %}
+        <div class="text-center">
+            {% include atom('icon') with {
+                modifiers: ['biggest'],
+                class: 'text-alt',
+                data: {
+                    name: 'shopping-cart'
+                }
+            } only %}
+            <h6>{{ 'cart.empty' | trans }}</h6>
+        </div>
+    {% else %}
+
+        {% set canEditCart = (not is_granted('ROLE_USER') or can('WriteSharedCartPermissionPlugin', data.cart.idQuote)) %}
+
+        <div class="grid grid--gap">
+            <div class="col col--sm-12 col--xl-9">
+                <div class="cart-title">
+                    <h3 class="grid grid--middle cart-title__text">
+                        {{ data.cart.name }}
+                        {% if can('ChangeCartItemPermissionPlugin') %}
+                            <a href="{{ path('multi-cart/update', {idQuote: data.cart.idQuote}) }}" class="col button button--hollow-icon button--edit cart-title__link" title="{{ "multi_cart_widget.cart.action.change_name" | trans }}">
+                                {% include atom('icon') with {
+                                    modifiers: ['big'],
+                                    data: {
+                                        name: 'edit'
+                                    }
+                                } only %}
+                            </a>
+                        {% endif %}
+                    </h3>
+                    <div class="grid grid--justify grid--middle">
+                        <div class="col col--sm-8">
+                            {% if data.cart.priceMode is not empty %}
+                                {% include molecule('price-mode') with {
+                                    modifiers: ['big'],
+                                    data: {
+                                        priceMode: data.cart.priceMode
+                                    }
+                                } only %}
+                            {% endif %}
+                        </div>
+                        <div class="col col--sm-2 text-right cart-title__quantity">{{ app['cart.quantity'] }} {{ 'checkout.step.summary.items' | trans }}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col col--sm-12 col--xl-9">
+                {% for cartItem in data.cartItems %}
+                    {% embed molecule('product-item') with {
+                        data: {
+                            list: data.cart,
+                            listItem: cartItem,
+                            attributes: data.attributes[cartItem.sku] | default([]),
+                            canEdit: ((not is_granted('ROLE_USER') or can('WriteSharedCartPermissionPlugin', data.cart.idQuote)) and can('RemoveCartItemPermissionPlugin'))
+                        },
+                        embed: {
+                            product: data.products[cartItem.sku]
+                        }
+                    } only %}
+                        {% block price %}
+                            {% if can('SeePricePermissionPlugin') %}
+                                {% set price = data.listItem.sumGrossPrice is defined ? data.listItem.sumGrossPrice : data.listItem.price %}
+                                {% include molecule('price') with {
+                                    modifiers: ['cart'],
+                                    data: {
+                                        amount: price | money
+                                    },
+                                } only %}
+                            {% endif %}
+                        {% endblock %}
+
+                        {% block info %}
+                            {{ parent() }}
+
+                            {% if embed.product.attributes.farbe is defined %}
+                                <br/>
+                                <small class="text-secondary">{{ 'cart.item.color' | trans }}  {{ embed.product.attributes.farbe  }} </small>
+                            {% endif %}
+                        {% endblock %}
+                    {% endembed %}
+                {% endfor %}
+
+                {% if canEditCart and can('RemoveCartItemPermissionPlugin') %}
+                    <div class="grid grid--right cart-bottom">
+                        <a href="{{ path('multi-cart/clear', {idQuote: data.cart.idQuote}) }}" class="link link--icon">
+                            {% include atom('icon') with {
+                                modifiers: ['link'],
+                                data: {
+                                    name: 'delete'
+                                }
+                            } only %}
+                            {{ "multi_cart_page.delete_all" | trans }}
+                        </a>
+                    </div>
+                {% endif %}
+
+                {% widget 'CartDiscountPromotionProductListWidget' args [
+                    data.cart,
+                    data.request
+                ] only %}
+                {% endwidget %}
+            </div>
+
+            <div class="col col--sm-12 col--xl-3 order-sidebar js-order-sidebar">
+                {% if canEditCart and can('ChangeCartItemPermissionPlugin') %}
+                    {% widget 'CartNoteFormWidget' args [data.cart] only %}
+                        {% block body %}
+                            <div class="order-sidebar__item order-sidebar__item--note">
+                                <h5 class="order-sidebar__title toggler-accordion__item js-order-sidebar__trigger" data-toggle-target='.js-order-sidebar__content-note'>
+                                    {{ 'cart_note.quote_form.enter_note' | trans }}
+                                    <span class="icon icon--toggler-cross toggler-accordion__icon"></span>
+                                </h5>
+                                <div class="order-sidebar__content js-order-sidebar__content-note is-hidden">
+                                    {{ parent() }}
+                                </div>
+                            </div>
+                        {% endblock %}
+                    {% endwidget %}
+
+                    {% if data.cart.idQuote is not empty and data.cart.items is not empty %}
+                        {% widget 'CreateShoppingListFromCartWidget' args [data.cart.idQuote] only %}
+                            {% block body %}
+                                <div class="order-sidebar__item">
+                                    <h5 class="order-sidebar__title toggler-accordion__item js-order-sidebar__trigger" data-toggle-target='.js-order-sidebar__content-shopping-list'>
+                                        {{ 'cart.add-to-shopping-list' | trans }}
+                                        <span class="icon icon--toggler-cross toggler-accordion__icon"></span>
+                                    </h5>
+                                    <div class="order-sidebar__content js-order-sidebar__content-shopping-list is-hidden">
+                                        {{ parent() }}
+                                    </div>
+                                </div>
+                            {% endblock %}
+                        {% endwidget %}
+                    {% endif %}
+                {% endif %}
+
+                <div class="order-sidebar__item order-sidebar__item--summary">
+                    <div class="order-sidebar__item order-sidebar__item--start">
+                        <div class=" grid grid--justify grid--middle order-sidebar__order">
+                            <h6 class="col order-sidebar__title">{{ 'cart.your-order' | trans }}</h6>
+                            <div class="col order-sidebar__quantity">{{ app['cart.quantity'] }} {{ 'checkout.step.summary.items' | trans }}</div>
+                        </div>
+
+                        {% if canEditCart and can('ChangeCartItemPermissionPlugin') and can('SeePricePermissionPlugin') %}
+                            {% widget 'DiscountVoucherFormWidget' only %}{% endwidget %}
+                        {% endif %}
+                    </div>
+
+                    {% if can('SeePricePermissionPlugin') %}
+                        {% include molecule('cart-summary', 'CartPage') with {
+                            data: {
+                                cart: data.cart,
+                                isQuoteValid: data.isQuoteValid
+                            }
+                        } only %}
+                    {% endif %}
+                </div>
+
+                {% include molecule('toggler-accordion') with {
+                    attributes: {
+                        'wrap-selector': '.js-order-sidebar',
+                        'trigger-selector': '.js-order-sidebar__trigger',
+                        'class-to-toggle': 'is-hidden'
+                    }
+                } only %}
+            </div>
+        </div>
+        {% widget 'UpSellingProductsWidget' args [data.cart] only %}{% endwidget %}
+    {% endif %}
+{% endblock %}

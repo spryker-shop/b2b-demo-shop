@@ -1,14 +1,13 @@
 <?php
 
 /**
- * This file is part of the Spryker Suite.
+ * This file is part of the Spryker Commerce OS.
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
 namespace Pyz\Yves\ProductRelationWidget;
 
 use SprykerShop\Yves\ProductRelationWidget\ProductRelationWidgetDependencyProvider as SprykerShopProductRelationWidgetDependencyProvider;
-use SprykerShop\Yves\ProductWidget\Plugin\ProductRelationWidget\ProductWidgetPlugin;
 
 class ProductRelationWidgetDependencyProvider extends SprykerShopProductRelationWidgetDependencyProvider
 {
@@ -17,9 +16,7 @@ class ProductRelationWidgetDependencyProvider extends SprykerShopProductRelation
      */
     protected function getProductDetailPageSimilarProductsWidgetPlugins(): array
     {
-        return [
-            ProductWidgetPlugin::class,
-        ];
+        return [];
     }
 
     /**
@@ -27,8 +24,6 @@ class ProductRelationWidgetDependencyProvider extends SprykerShopProductRelation
      */
     protected function getCartPageUpSellingProductsWidgetPlugins(): array
     {
-        return [
-            ProductWidgetPlugin::class,
-        ];
+        return [];
     }
 }

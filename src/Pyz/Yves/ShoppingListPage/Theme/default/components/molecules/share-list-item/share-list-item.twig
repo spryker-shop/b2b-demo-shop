@@ -1,0 +1,22 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'shopping-list-item',
+    tag: 'li'
+} %}
+
+{% define data = {
+    name: required,
+    shareForm: required
+} %}
+
+{% block body %}
+    <div class="grid grid--justify grid--middle">
+        <div class="col">
+            <label class="{{ config.name }}__label">{{ data.name }}</label>
+        </div>
+        <div class="col col--sm-3">
+            {{ form_widget(data.shareForm) }}
+        </div>
+    </div>
+{% endblock %}

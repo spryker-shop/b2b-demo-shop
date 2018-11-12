@@ -6,8 +6,10 @@
     category: _view.category | default,
     categories: categories | default([]),
     categoryId: _view.idCategory | default,
+    isEmptyCategoryFilterValueVisible: _view.isEmptyCategoryFilterValueVisible | default,
     filterPath: _view.filterPath | default,
     viewMode: _view.viewMode | default,
+    searchString: _view.searchString,
 
     title: _view.category.name | default,
     metaTitle: _view.pageTitle | default(_view.category.name | default),
@@ -22,29 +24,38 @@
         showAlwaysFirstAndLast: true
     }
 } %}
+{% block contentTop %}
+    {% if data.categoryId is not empty %}
+        <div class="catalog-cms-block catalog-cms-block--sidebar">
+            {{ widgetBlock('CatalogCmsBlockWidgetPlugin', 'top', data.categoryId) }}
+        </div>
+    {% endif %}
+{% endblock %}
 
 {% block filterBar %}
     {{parent()}}
 
-    {% if data.categoryId %}
-        <div class="box">
+    {% if data.categoryId is not empty %}
+        <div class="catalog-cms-block catalog-cms-block--sidebar">
             {{ widgetBlock('CatalogCmsBlockWidgetPlugin', 'middle', data.categoryId) }}
         </div>
     {% endif %}
 {% endblock %}
 
-{% block content %}
-    {% if data.categoryId %}
-        <div class="box">
-            {{ widgetBlock('CatalogCmsBlockWidgetPlugin', 'top', data.categoryId) }}
+{% block contentBottom %}
+    {% if data.categoryId is not empty %}
+        <div class="catalog-cms-block-wrap">
+            <div class="container catalog-cms-block catalog-cms-block--bottom">
+                {{ widgetBlock('CatalogCmsBlockWidgetPlugin', 'bottom', data.categoryId) }}
+            </div>
         </div>
     {% endif %}
+{% endblock %}
 
-    {{parent()}}
+{% block form %}
+    {{ parent() }}
 
-    {% if data.categoryId %}
-        <div class="box">
-            {{ widgetBlock('CatalogCmsBlockWidgetPlugin', 'bottom', data.categoryId) }}
-        </div>
+    {% if data.searchString is not empty %}
+        <input type="hidden" name="q" value="{{ data.searchString }}" />
     {% endif %}
 {% endblock %}

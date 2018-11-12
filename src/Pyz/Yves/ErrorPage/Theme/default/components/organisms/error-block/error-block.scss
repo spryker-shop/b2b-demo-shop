@@ -1,0 +1,51 @@
+.error-block {
+    &__text {
+        font-weight: fw(medium);
+        letter-spacing: rem(0.3);
+        line-height: rem(20);
+    }
+
+    &__code {
+        font-size: rem(100);
+        font-weight: fw(bold);
+        color: $setting-color-yellow-2;
+    }
+
+    &__code-decor {
+        position: relative;
+        width: rem(121);
+        height: rem(121);
+        border-radius: 50%;
+        background: $setting-color-yellow-2;
+        margin: 0 rem(5);
+    }
+
+    &__code-decor-inner {
+        position: absolute;
+        width: rem(40);
+        height: rem(30);
+        border-bottom: rem(4) solid $setting-color-black;
+        top: rem(37);
+        left: rem(50);
+
+        &::after,
+        &::before {
+            content: '';
+            position: absolute;
+            background: $setting-color-black;
+            display: block;
+            width: rem(8);
+            height: rem(8);
+            border-radius: 50%;
+            top: 0;
+        }
+
+        &::after {
+            left: 0;
+        }
+
+        &::before {
+            right: 0;
+        }
+    }
+}

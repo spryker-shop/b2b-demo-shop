@@ -1,0 +1,47 @@
+{% extends template('page-layout-shopping-list', 'ShoppingListPage') %}
+
+{% define data = {
+    title: _view.shoppingList.name,
+    backUrl: app.request.headers.get('referer') | default(url('shopping-list')),
+    shoppingList: _view.shoppingList,
+    idShoppingList: _view.shoppingList.idShoppingList,
+    shoppingListName: _view.shoppingList.name
+} %}
+
+{% block breadcrumbs %}
+    {% include molecule('breadcrumb') with {
+        data: {
+            steps: [{
+                label: 'customer.account' | trans,
+            },{
+                label: 'customer.account.shopping_list' | trans,
+            },{
+                label: 'customer.account.shopping_list.overview.dismiss' | trans,
+            },{
+                label: 'customer.account.shopping_list.overview.warning' | trans,
+            }]
+        }
+    } only %}
+{% endblock %}
+
+{% block customerNavigation %}
+    {% widget 'CustomerNavigationWidget' args ['shoppingList', data.shoppingList.idShoppingList] only %}{% endwidget %}
+{% endblock %}
+
+{% block customerContent %}
+    <h3 class="spacing-bottom spacing-bottom--big">{{ "customer.account.shopping_list.overview.warning" | trans }}</h3>
+    <div class="box">
+        <h5>{{ data.shoppingListName }}</h5>
+        <p>
+            {{ "shopping_list_page.dismiss_confirmation.trying_to_dismiss" | trans }}
+        </p>
+        <div class="spacing-top spacing-top--bigger">
+            <a href="{{ data.backUrl }}" class="button button--hollow spacing-right">
+                {{ "general.cancel.button" | trans }}
+            </a>
+            <a href="{{ url('shopping-list/dismiss', { 'idShoppingList': data.idShoppingList }) }}" class="button button--alert">
+                {{ "customer.account.shopping_list.overview.dismiss" | trans }}
+            </a>
+        </div>
+    </div>
+{% endblock %}

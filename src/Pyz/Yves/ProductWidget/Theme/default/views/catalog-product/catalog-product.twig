@@ -1,0 +1,42 @@
+{% extends template('widget') %}
+
+{% define data = {
+    product: _widget.product,
+    viewMode: _widget.viewMode
+} %}
+
+{% block body %}
+    {% set productTemplate = molecule('product-card') %}
+    {% set class = 'col col--sm-12 col--md-6 col--lg-6 col--xl-4' %}
+
+    {% if data.viewMode == 'list' %}
+        {% set productTemplate = molecule('product-list-item') %}
+        {% set class = 'col col--sm-12' %}
+    {% endif %}
+
+    {% embed productTemplate with {
+        productTemplate: productTemplate,
+        class: class,
+        modifiers: ['catalog'],
+        data: {
+            name: data.product.abstract_name,
+            abstractId: data.product.id_product_abstract,
+            url: data.product.url,
+            imageUrl: data.product.images is empty ? '' : data.product.images.0.external_url_small,
+            price: data.product.prices.DEFAULT | default(null),
+            originalPrice: data.product.prices.ORIGINAL | default(null),
+            id_product_labels: data.product.id_product_labels,
+            rating: data.product.rating | default(false)
+        }
+    } only %}
+        {% block labels %}
+            {% widget 'ProductConcreteLabelWidget' args [data.id_product_labels] only %}{% endwidget %}
+        {% endblock %}
+
+        {% block rating %}
+            {% if data.rating is defined and data.rating is not empty %}
+                {% widget 'ProductReviewDisplayWidget' args [data.rating] only %}{% endwidget %}
+            {% endif %}
+        {% endblock %}
+    {% endembed %}
+{% endblock %}

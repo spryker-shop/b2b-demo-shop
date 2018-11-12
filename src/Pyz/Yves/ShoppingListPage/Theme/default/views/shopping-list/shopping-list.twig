@@ -1,0 +1,111 @@
+{% extends template('page-layout-shopping-list', 'ShoppingListPage') %}
+
+{% block breadcrumbs %}
+    {% include molecule('breadcrumb') with {
+        data: {
+            steps: [{
+                label: 'customer.account' | trans,
+            },{
+                label: 'customer.account.shopping_list' | trans,
+            }]
+        }
+    } only %}
+{% endblock %}
+
+{% define data = {
+    title: _view.shoppingListOverview.shoppingList.name,
+    shoppingList: _view.shoppingListOverview.shoppingList,
+    shoppingListCollection: _view.shoppingListOverview.shoppingLists,
+    shoppingListItems: _view.shoppingListItems
+} %}
+
+{% block customerNavigation %}
+    {% widget 'CustomerNavigationWidget' args ['shoppingList', data.shoppingList.idShoppingList] only %}{% endwidget %}
+{% endblock %}
+
+{% block customerContent %}
+    <div class="grid grid--justify">
+        <div class="col">
+            <h2>{{ data.shoppingList.name }}</h2>
+        </div>
+        <div class="col">
+            <div class="list list--inline">
+                {% if can('WriteShoppingListPermissionPlugin', data.shoppingList.idShoppingList) %}
+                    <a class="list__item link link--alt link--action" href="{{ url('shopping-list/update', { idShoppingList: data.shoppingList.idShoppingList }) }}" title="{{ 'customer.account.shopping_list.overview.edit' | trans }}">
+                        {% include atom('icon') with {
+                            modifiers: ['bigger'],
+                            data: {
+                                name: 'edit'
+                            }
+                        } only %}
+                    </a>
+                    <a class="list__item link link--alt link--action" href="{{ url('shopping-list/share', { idShoppingList: data.shoppingList.idShoppingList }) }}" title="{{ 'customer.account.shopping_list.overview.share' | trans }}">
+                        {% include atom('icon') with {
+                            modifiers: ['bigger'],
+                            data: {
+                                name: 'share'
+                            }
+                        } only %}
+                    </a>
+                {% endif %}
+                <a class="list__item link link--alt link--action" href="{{ path('shopping-list/print', {idShoppingList: data.shoppingList.idShoppingList}) }}" target="_blank" title="{{ 'customer.account.shopping_list.print_shopping_list' | trans }}">
+                    {% include atom('icon') with {
+                        modifiers: ['bigger'],
+                        data: {
+                            name: 'print'
+                        }
+                    } only %}
+                </a>
+            </div>
+        </div>
+    </div>
+
+    {% include molecule('shopping-list-info', 'ShoppingListPage') with {
+        data: {
+            shoppingList: data.shoppingList
+        }
+    } only %}
+
+    {% if data.shoppingListItems|length %}
+        <form method="POST" action="{{ path('shopping-list/add-to-cart') }}">
+            <div class="grid grid--justify spacing-bottom spacing-bottom--bigger">
+                <div class="col">
+                    <button type="submit" class="button button--hollow" {{qa('submit-button')}}>
+                        {{ 'customer.account.shopping_list.add_selected_items_to_cart' | trans }}
+                        {% include atom('icon') with {
+                            class: 'spacing-left spacing-left--small',
+                            modifiers: ['trolley'],
+                            data: {
+                                name: 'cart'
+                            }
+                        } only %}
+                    </button>
+                </div>
+                <div class="col">
+                    <button type="submit" class="button" name="add-all-available" value="1" {{qa('submit-button')}}>
+                        {{ 'customer.account.shopping_list.add_all_available_to_cart' | trans }}
+                        {% include atom('icon') with {
+                            class: 'spacing-left spacing-left--small',
+                            modifiers: ['trolley'],
+                            data: {
+                                name: 'cart'
+                            }
+                        } only %}
+                    </button>
+                </div>
+            </div>
+
+            <input type="hidden" value="{{ data.shoppingList.idShoppingList }}" name="idShoppingList"/>
+
+            {% include molecule('shopping-list-table', 'ShoppingListPage') with {
+                class: 'table table--expand',
+                data: {
+                    shoppingList: data.shoppingList,
+                    shoppingListItems: data.shoppingListItems
+                }
+            } only %}
+        </form>
+    {% else %}
+        {{ 'customer.account.shopping_list.empty' | trans }}
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends template('widget') %}
+
+{% define data = {
+    product: product | default,
+    products: products | default([])
+} %}
+
+{% block body %}
+    <div class="grid grid--stretch grid--gap">
+        {% for availableProduct in data.products if availableProduct.available %}
+            {% widget 'CmsProductWidget' args [availableProduct] only %}
+            {% endwidget %}
+        {% endfor %}
+
+        {% if data.product is not empty %}
+            {% widget 'CmsProductWidget' args [data.product] only %}
+            {% endwidget %}
+        {% endif %}
+    </div>
+{% endblock %}

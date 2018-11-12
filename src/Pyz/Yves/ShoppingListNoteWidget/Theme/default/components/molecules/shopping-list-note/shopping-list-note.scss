@@ -1,0 +1,28 @@
+@mixin shopping-list-note-widget-shopping-list-note ($name: '.shopping-list-note') {
+    #{$name} {
+        margin-top: rem(16);
+
+        &__container {
+            background-color: $setting-color-gray-7;
+            padding: rem(17) rem(20);
+        }
+
+        &__title {
+            font-size: rem(14);
+            font-weight: fw(medium);
+            line-height: normal;
+            color: $setting-color-gray-5;
+            margin-bottom: rem(7);
+        }
+
+        &__text {
+            color: $setting-color-gray-3;
+            font-size: rem(13);
+            line-height: 2.23;
+        }
+
+        @content;
+    }
+}
+
+@include shopping-list-note-widget-shopping-list-note;

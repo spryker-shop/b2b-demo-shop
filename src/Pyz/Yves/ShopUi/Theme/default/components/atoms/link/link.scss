@@ -1,0 +1,76 @@
+@include shop-ui-link {
+
+    &--icon {
+        @include helper-effect-transition(color);
+        display: flex;
+        align-items: center;
+        color: $setting-color-gray-3;
+        font-size: rem(13);
+        font-weight: fw(medium);
+        line-height: 1rem;
+
+        &:hover,
+        &:focus {
+            text-decoration: none;
+            color: $setting-color-gray-4;
+
+            .icon {
+                color: $setting-color-gray-4;
+            }
+        }
+    }
+
+    &--footer {
+        line-height: rem(30);
+    }
+
+    &--checkout {
+        font-size: rem(13);
+        line-height: normal;
+    }
+
+    &--privacy {
+        color: $setting-color-white;
+
+        &:hover,
+        &:focus {
+            color: $setting-color-alt;
+        }
+    }
+
+    &--action {
+        color: $setting-color-gray-2;
+
+        &:hover,
+        &:focus {
+            color: $setting-color-gray-4;
+        }
+    }
+
+    &--error-block {
+        text-decoration: underline;
+        font: fw(regular) rem(15)/rem(30) $setting-font-family;
+        color: $setting-color-gray-2;
+    }
+
+    &--company-user {
+        color: $setting-color-gray-3;
+        white-space: nowrap;
+        @include helper-effect-transition(color);
+
+        &:hover {
+            text-decoration: none;
+            color: $setting-color-gray-5;
+        }
+    }
+
+    &--secondary {
+        color: $setting-color-gray-3;
+        @include helper-effect-transition(color);
+
+        &:hover {
+            text-decoration: none;
+            color: $setting-color-gray-4;
+        }
+    }
+}

@@ -1,0 +1,15 @@
+{% extends template('widget') %}
+
+{% block body %}
+    {% include atom('checkbox') with {
+        modifiers: ['alternative'],
+        attributes: {
+            name: 'separate_product',
+            value: 1,
+            checked: true
+        },
+        data: {
+            label: 'shared_cart_widget.add_product.separate' | trans
+        }
+    } only %}
+{% endblock %}

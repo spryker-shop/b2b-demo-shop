@@ -2,11 +2,13 @@ import Component from 'ShopUi/models/component';
 
 export default class ColorSelector extends Component {
     colors: HTMLAnchorElement[]
-    images: HTMLImageElement[]
+    image: HTMLImageElement
+    detailsLink: HTMLAnchorElement
 
     protected readyCallback(): void {
-        this.colors = <HTMLAnchorElement[]>Array.from(this.getElementsByClassName(`${this.jsName}__color`));
-        this.images = <HTMLImageElement[]>Array.from(document.querySelectorAll(this.targetImageSelector));
+        this.colors = <HTMLAnchorElement[]>Array.from(this.querySelectorAll(`.${this.jsName}__color`));
+        this.image = <HTMLImageElement>document.querySelector(this.targetImageSelector);
+        this.detailsLink = <HTMLAnchorElement>document.querySelector(this.targetDetailsLink);
         this.mapEvents();
     }
 
@@ -20,27 +22,45 @@ export default class ColorSelector extends Component {
         event.preventDefault();
         const color = <HTMLAnchorElement>event.currentTarget;
         const imageSrc = color.getAttribute('data-image-src');
-        this.changeActiveColor(color);
-        this.changeImage(imageSrc);
+        const productUrl = color.getAttribute('href');
+        this.setActiveColor(color);
+        this.setImage(imageSrc);
+        this.setProductUrl(productUrl);
     }
 
-    changeActiveColor(newColor: HTMLAnchorElement): void {
+    setActiveColor(newColor: HTMLAnchorElement): void {
         this.colors.forEach((color: HTMLAnchorElement) => {
-            color.classList.remove(`${this.name}__color--active`);
+            color.classList.remove(this.colorActiveClass);
         });
 
-        newColor.classList.add(`${this.name}__color--active`);
+        newColor.classList.add(this.colorActiveClass);
     }
 
-    changeImage(newImageSrc: string): void {
-        this.images.forEach((image: HTMLImageElement) => {
-            if (image.src !== newImageSrc) {
-                image.src = newImageSrc;
-            }
-        });
+    setImage(newImageSrc: string): void {
+        if (this.image.src !== newImageSrc) {
+            this.image.src = newImageSrc;
+        }
+    }
+
+    setProductUrl(url: string): void {
+        this.setProductHrefAttribute(this.detailsLink, url);
+    }
+
+    setProductHrefAttribute(link, url): void {
+        if (link.getAttribute('href') !== url) {
+            link.setAttribute('href', url);
+        }
     }
 
     get targetImageSelector(): string {
         return this.getAttribute('target-image-selector');
+    }
+
+    get targetDetailsLink(): string {
+        return this.getAttribute('target-url-selector');
+    }
+
+    get colorActiveClass(): string {
+        return this.getAttribute('active-color-class');
     }
 }

@@ -1,0 +1,34 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'business-unit-chart-item',
+    tag: 'div'
+} %}
+
+{% define data = {
+    node: required,
+    level: 1
+} %}
+
+{% block body %}
+    <a class="{{ config.name }}__link {{ config.name }}__link--level-{{ data.level }}" href="{{ url('company/business-unit/update', {'id': data.node.id_company_business_unit}) }}">
+        <span class="{{ config.name }}__name">{{ data.node.name }}</span>
+
+        {% include atom('icon') with {
+            class: config.name ~ '__icon',
+            modifiers: ['chevron'],
+            data: {
+                name: 'chevron-right'
+            }
+        } only %}
+    </a>
+
+    {% for item in data.node.children %}
+        {% include molecule('business-unit-chart-item', 'CompanyPage') with {
+            data: {
+                node: item,
+                level: data.level + 1
+            }
+        } only %}
+    {% endfor %}
+{% endblock %}

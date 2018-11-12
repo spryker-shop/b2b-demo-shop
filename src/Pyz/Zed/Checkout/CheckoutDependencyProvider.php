@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Spryker Suite.
+ * This file is part of the Spryker Commerce OS.
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
@@ -24,6 +24,8 @@ use Spryker\Zed\ProductOption\Communication\Plugin\Checkout\ProductOptionOrderSa
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Checkout\AmountAvailabilityCheckoutPreConditionPlugin;
 use Spryker\Zed\Sales\Communication\Plugin\Checkout\SalesOrderSaverPlugin;
 use Spryker\Zed\Sales\Communication\Plugin\SalesOrderExpanderPlugin;
+use Spryker\Zed\SalesOrderThreshold\Communication\Plugin\Checkout\SalesOrderThresholdCheckoutPreConditionPlugin;
+use Spryker\Zed\SalesOrderThreshold\Communication\Plugin\Checkout\SalesOrderThresholdExpenseSavePlugin;
 use Spryker\Zed\SalesProductConnector\Communication\Plugin\Checkout\ItemMetadataSaverPlugin;
 use Spryker\Zed\SalesReclamation\Communication\Plugin\ReclamationOrderSaverPlugin;
 use Spryker\Zed\Shipment\Communication\Plugin\Checkout\OrderShipmentSavePlugin;
@@ -32,7 +34,7 @@ use Spryker\Zed\ShipmentCheckoutConnector\Communication\Plugin\Checkout\Shipment
 class CheckoutDependencyProvider extends SprykerCheckoutDependencyProvider
 {
     /**
-     * @param \Spryker\Zed\Kernel\Container $container ’
+     * @param \Spryker\Zed\Kernel\Container $container
      *
      * @return \Spryker\Zed\Checkout\Dependency\Plugin\CheckoutPreConditionInterface[]
      */
@@ -46,6 +48,7 @@ class CheckoutDependencyProvider extends SprykerCheckoutDependencyProvider
             new ShipmentCheckoutPreCheckPlugin(),
             new ProductDiscontinuedCheckoutPreConditionPlugin(), #ProductDiscontinuedFeature
             new AmountAvailabilityCheckoutPreConditionPlugin(),
+            new SalesOrderThresholdCheckoutPreConditionPlugin(),
         ];
     }
 
@@ -67,6 +70,7 @@ class CheckoutDependencyProvider extends SprykerCheckoutDependencyProvider
             new ProductBundleOrderSaverPlugin(),
             new PaymentOrderSaverPlugin(),
             new ReclamationOrderSaverPlugin(),
+            new SalesOrderThresholdExpenseSavePlugin(),
         ];
     }
 

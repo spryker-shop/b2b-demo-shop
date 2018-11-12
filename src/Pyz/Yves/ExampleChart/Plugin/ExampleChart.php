@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Spryker Suite.
+ * This file is part of the Spryker Commerce OS.
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
@@ -14,16 +14,18 @@ use Spryker\Shared\Chart\Dependency\Plugin\ChartPluginInterface;
 
 class ExampleChart implements ChartPluginInterface
 {
+    public const NAME = 'testChart';
+
     /**
      * @return string
      */
     public function getName(): string
     {
-        return 'testChart';
+        return static::NAME;
     }
 
     /**
-     * @param null|string $dataIdentifier
+     * @param string|null $dataIdentifier
      *
      * @return \Generated\Shared\Transfer\ChartDataTransfer
      */
