@@ -22,7 +22,7 @@ export default class TogglerClick extends Component {
 
     protected onTriggerClick(event: Event): void {
         event.preventDefault();
-        this.toggle();
+        this.toggle(event);
     }
 
     protected fixBody(isClassAddedFlag: boolean): void {
@@ -43,10 +43,17 @@ export default class TogglerClick extends Component {
         }
     }
 
-    toggle(): void {
+    toggle(event: Event): void {
+        if (this.triggerClassToToggle.length !== 0) {
+            const triggerTarget = <HTMLElement>event.currentTarget;
+
+            triggerTarget.classList.toggle(this.triggerClassToToggle);
+        }
+
         this.targets.forEach((target: HTMLElement) => {
             const addClass = !target.classList.contains(this.classToToggle);
             target.classList.toggle(this.classToToggle, addClass);
+
             if (this.bodyFlagVar) {
                 this.fixBody(addClass);
             }
@@ -63,6 +70,10 @@ export default class TogglerClick extends Component {
 
     get classToToggle(): string {
         return this.getAttribute('class-to-toggle');
+    }
+
+    get triggerClassToToggle(): string {
+        return this.getAttribute('trigger-class-to-toggle');
     }
 
     get bodyFlag(): string {

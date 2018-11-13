@@ -33,6 +33,14 @@
         }
     }
 
+    &--filter-sidebar {
+        display: none;
+
+        @include helper-breakpoint-media-min($lg) {
+            display: block;
+        }
+    }
+
     &--bottom {
         text-align: center;
 
