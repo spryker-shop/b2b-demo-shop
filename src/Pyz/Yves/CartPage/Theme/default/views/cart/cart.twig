@@ -102,7 +102,7 @@
                             list: data.cart,
                             listItem: cartItem,
                             attributes: data.attributes[cartItem.sku] | default([]),
-                            canEdit: (not is_granted('ROLE_USER') or can('ChangeCartItemPermissionPlugin', data.cart.idQuote)),
+                            canEdit: not is_granted('ROLE_USER') or (can('ChangeCartItemPermissionPlugin', data.cart.idQuote) and can('WriteSharedCartPermissionPlugin', data.cart.idQuote)),
                             canRemove: can('RemoveCartItemPermissionPlugin')
                         },
                         embed: {
