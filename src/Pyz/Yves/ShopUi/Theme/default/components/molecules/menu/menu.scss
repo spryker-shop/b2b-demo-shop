@@ -3,9 +3,14 @@
 
         &__link,
         &__text {
+            position: relative;
             letter-spacing: rem(0.2);
-            white-space: nowrap;
+            z-index: $setting-zi-element;
             @include helper-effect-transition(color);
+
+            @include helper-breakpoint-media-min($xl) {
+                white-space: nowrap;
+            }
         }
 
         &__text {
@@ -99,16 +104,42 @@
             right: 0;
             top: 0;
             line-height: 0;
+            background: none;
+            z-index: $setting-zi-element - 1;
+
+            @include helper-breakpoint-media-min($xl) {
+                width: rem(20);
+                display: none;
+                background: none;
+            }
 
             &-icon {
                 position: absolute;
                 top: 50%;
                 left: 50%;
                 transform: translate(-50%, -50%) rotate(-90deg);
+
+                @include helper-breakpoint-media-min($xl) {
+                    color: $setting-color-gray-3;
+                    margin-top: rem(2);
+                    transform: translate(-50%, -50%);
+                }
             }
 
-            @include helper-breakpoint-media-min($xl) {
+            &.is-active {
+                #{$name}__trigger-btn-icon {
+                    transform: translate(-50%, -50%) rotate(-180deg);
+                }
+            }
+        }
+
+        &-wrapper {
+            &--hidden-on-touch {
                 display: none;
+
+                @include helper-breakpoint-media-min($xl) {
+                    display: block;
+                }
             }
         }
 
@@ -201,7 +232,7 @@
             line-height: rem(52);
             color: $setting-color-gray-5;
 
-            @include helper-breakpoint-media-min($lg) {
+            @include helper-breakpoint-media-min($xl) {
                 padding: 0;
                 font-weight: fw(regular);
                 line-height: rem(68);
@@ -212,6 +243,22 @@
 
             &:hover {
                 color: $setting-color-gray-4;
+            }
+        }
+
+        &__trigger--lvl-0 {
+            @include helper-breakpoint-media-min($xl) {
+                .is-touch & {
+                    padding-right: rem(20);
+                }
+            }
+        }
+
+        &__trigger-btn--lvl-0 {
+            @include helper-breakpoint-media-min($xl) {
+                .is-touch & {
+                    display: block;
+                }
             }
         }
 
@@ -233,7 +280,7 @@
             }
         }
         &--lvl-1 {
-            padding: rem(8) 0 rem(12);
+            padding-bottom: rem(12);
 
             @include helper-breakpoint-media-min($xl) {
                 display: flex;
@@ -243,7 +290,7 @@
                 box-shadow: 0 18px 18px 0 $setting-color-shadow-1, 0 3px 3px 0 $setting-color-shadow-1;
             }
 
-            @include helper-breakpoint-media-min($xxl) {
+            @include helper-breakpoint-media-min($xxxl) {
                 padding: rem(38) rem(39) rem(43);
             }
         }
@@ -251,7 +298,7 @@
         &__item--lvl-1 {
             &:not(:last-child) {
                 @include helper-breakpoint-media-min($xl) {
-                    margin-right: rem(35);
+                    margin-right: rem(16);
                 }
 
                 @include helper-breakpoint-media-min($xxl) {
@@ -280,6 +327,26 @@
 
         &__link--lvl-1:hover {
             color: $setting-color-gray-3;
+        }
+
+        &__trigger-btn--lvl-1 {
+            color: $setting-color-gray-2;
+
+            &.is-active::after {
+                content: '';
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                top: 0;
+                width: 999px;
+                height: 100%;
+                background: $setting-color-gray-7;
+                z-index: -1;
+
+                @include helper-breakpoint-media-min($xl) {
+                    display: none;
+                }
+            }
         }
 
         // Level 2

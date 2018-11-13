@@ -19,13 +19,13 @@
     {{ parent() }}
 
     {% if(data.node.children | length > 0) %}
-        <div class="menu-wrapper menu-wrapper--lvl-{{ data.levelMenu }} is-hidden-sm-lg">
+        <div class="menu-wrapper menu-wrapper--lvl-{{ data.levelMenu }} js-menu-wrapper menu-wrapper--hidden-on-touch">
             <ul class="menu menu--lvl-{{ data.levelMenu }}">
                 {% for childNode in data.node.children %}
                     {% set hasChildren = childNode.children | length > 0 %}
 
                     {% include molecule('navigation-multilevel-node') with {
-                        class: 'menu__item menu__item--lvl-' ~ data.levelMenu ~ (hasChildren ? ' menu__item--has-children-list' : ''),
+                        class: 'menu__item menu__item--lvl-' ~ data.levelMenu ~ (hasChildren ? ' menu__item--has-children-list js-menu-item' : ''),
                         data: {
                             node: childNode,
                             levelMenu: data.levelMenu + 1
@@ -37,75 +37,49 @@
     {% endif %}
 {% endblock %}
 
+{% block mobileTrigger %}
+   {% if(data.node.children | length > 0) %}
+       <button class="menu__trigger-btn menu__trigger-btn--lvl-{{ data.levelMenu - 1 }} js-menu-touch-trigger" data-toggle-target=".js-menu-wrapper" data-class-to-toggle="menu-wrapper--hidden-on-touch">
+           {% include atom('icon') with {
+               modifiers: ['small'],
+               class: 'menu__trigger-btn-icon',
+               data: {
+                   name: 'caret-down'
+               }
+           } only %}
+       </button>
+   {% endif %}
+{% endblock %}
+
 {% block url %}
-    <span class="menu__trigger">
+    <span class="menu__trigger menu__trigger--lvl-{{ data.levelMenu - 1 }}">
         <a class="menu__link menu__link--lvl-{{ data.levelMenu - 1 }}" href="{{ data.node.url }}">{{ data.node.title }}</a>
 
-        {% if(data.node.children | length > 0) %}
-            <button class="menu__trigger-btn menu__trigger-btn--lvl-{{ data.levelMenu - 1 }}" data-toggle-target=".menu-wrapper">
-                {% include atom('icon') with {
-                    modifiers: ['small'],
-                    class: 'menu__trigger-btn-icon',
-                    data: {
-                        name: 'caret-down'
-                    }
-                } only %}
-            </button>
-        {% endif %}
+        {{block('mobileTrigger')}}
     </span>
 {% endblock %}
 
 {% block link %}
-    <span class="menu__trigger">
+    <span class="menu__trigger menu__trigger--lvl-{{ data.levelMenu - 1 }}">
         <a class="menu__link menu__link--lvl-{{ data.levelMenu - 1 }}" href="{{ data.node.url }}">{{ data.node.title }}</a>
 
-        {% if(data.node.children | length > 0) %}
-            <button class="menu__trigger-btn menu__trigger-btn--lvl-{{ data.levelMenu - 1 }}">
-                {% include atom('icon') with  {
-                    modifiers: ['small'],
-                    class: 'menu__trigger-btn-icon',
-                    data: {
-                        name: 'caret-down'
-                    }
-                } only %}
-            </button>
-        {% endif %}
+        {{block('mobileTrigger')}}
     </span>
 {% endblock %}
 
 {% block externalUrl %}
-    <span class="menu__trigger">
+    <span class="menu__trigger menu__trigger--lvl-{{ data.levelMenu - 1 }}">
         <a class="menu__link menu__link--lvl-{{ data.levelMenu - 1 }}" href="{{ data.node.url }}" target="_blank">{{ data.node.title }}</a>
 
-        {% if(data.node.children | length > 0) %}
-            <button class="menu__trigger-btn menu__trigger-btn--lvl-{{ data.levelMenu - 1 }}">
-                {% include atom('icon') with {
-                    modifiers: ['small'],
-                    class: 'menu__trigger-btn-icon',
-                    data: {
-                        name: 'caret-down'
-                    }
-                } only %}
-            </button>
-        {% endif %}
+        {{block('mobileTrigger')}}
     </span>
 {% endblock %}
 
 {% block other %}
-    <span class="menu__trigger">
+    <span class="menu__trigger menu__trigger--lvl-{{ data.levelMenu - 1 }}">
         <span class="menu__text menu__text--lvl-{{ data.levelMenu - 1 }}">{{ data.node.title }}</span>
 
-        {% if(data.node.children | length > 0) %}
-            <button class="menu__trigger-btn menu__trigger-btn--lvl-{{ data.levelMenu - 1 }}">
-                {% include atom('icon') with {
-                    modifiers: ['small'],
-                    class: 'menu__trigger-btn-icon',
-                    data: {
-                        name: 'caret-down'
-                    }
-                } only %}
-            </button>
-        {% endif %}
+        {{block('mobileTrigger')}}
     </span>
 {% endblock %}
 

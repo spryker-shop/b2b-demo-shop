@@ -23,11 +23,16 @@ $shop-ui-side-drawer-width: rem(375);
             position: fixed;
             top: 0;
             bottom: 0;
-            left: - $shop-ui-side-drawer-width;
-            width: $shop-ui-side-drawer-width;
+            left: -100%;
+            width: 100%;
             background-color: $setting-color-bg;
             padding: rem(10) rem(13);
-            overflow-y: auto;
+            overflow: hidden;
+
+            @include helper-breakpoint-media-min($md) {
+                left: - $shop-ui-side-drawer-width;
+                width: $shop-ui-side-drawer-width;
+            }
         }
 
         &__close {

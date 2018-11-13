@@ -4,12 +4,14 @@ import OverlayBlock from '../../atoms/overlay-block/overlay-block';
 export default class NavigationMultilevel extends Component {
     readonly overlay: OverlayBlock
     readonly triggers: HTMLElement[]
+    readonly touchTriggers: HTMLElement[]
     readonly targets: HTMLElement[]
 
     constructor() {
         super();
         this.overlay = <OverlayBlock>document.querySelector(this.overlaySelector);
         this.triggers = <HTMLElement[]>Array.from(this.querySelectorAll(this.trigerSelector));
+        this.touchTriggers = <HTMLElement[]>Array.from(this.querySelectorAll(this.touchSelector));
         this.targets = <HTMLElement[]>Array.from(document.querySelectorAll(this.targetSelector));
     }
 
@@ -20,6 +22,7 @@ export default class NavigationMultilevel extends Component {
     protected mapEvents(): void {
         this.triggers.forEach((trigger: HTMLElement) => trigger.addEventListener('mouseover', (event: Event) => this.onTriggerOver(event)));
         this.triggers.forEach((trigger: HTMLElement) => trigger.addEventListener('mouseout', (event: Event) => this.onTriggerOut(event)));
+        this.touchTriggers.forEach((trigger: HTMLElement) => trigger.addEventListener('click', (event: Event) => this.onTriggerClick(event)));
     }
 
     protected onTriggerOver(event: Event): void {
@@ -48,6 +51,23 @@ export default class NavigationMultilevel extends Component {
         trigger.classList.remove(this.classToToggle);
     }
 
+    protected onTriggerClick(event: Event): void {
+        if (window.innerWidth < this.availableBreakpoint) {
+            const trigger = <HTMLElement>event.currentTarget;
+            const contentToShowSelector = this.getDataAttribute(trigger, 'data-toggle-target');
+            const contentToggleClass = this.getDataAttribute(trigger, 'data-class-to-toggle');
+            const closestParentNode = trigger.closest('.js-menu-item');
+            const contentToShow = closestParentNode.querySelector(contentToShowSelector);
+
+            contentToShow.classList.toggle(contentToggleClass);
+            trigger.classList.toggle('is-active');
+        }
+    }
+
+    protected getDataAttribute(block: HTMLElement, attr: string): string {
+        return block.getAttribute(attr);
+    }
+
     get targetSelector(): string {
         return this.getAttribute('target-selector');
     }
@@ -68,4 +88,7 @@ export default class NavigationMultilevel extends Component {
         return '.js-menu-trigger';
     }
 
+    get touchSelector(): string {
+        return '.js-menu-touch-trigger';
+    }
 }
