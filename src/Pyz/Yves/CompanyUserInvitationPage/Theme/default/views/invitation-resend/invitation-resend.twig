@@ -1,0 +1,21 @@
+{% extends template('page-layout-company', 'CompanyPage') %}
+
+{% define data = {
+    idCompanyUserInvitation: _view.idCompanyUserInvitation,
+    title: 'company.user.invitation.title.plural' | trans,
+    activePage: 'users'
+} %}
+
+{% block companyContent %}
+    {% include molecule('action-bar') with {
+        data: {
+            title: 'company.user.invitation.resend.title' | trans
+        }
+    } only %}
+    {{ "company.user.invitation.resend.confirmation.question" | trans }}<br><br>
+
+    <div>
+        <a href="{{url('company/user-invitation')}}" class="button button--info">{{ "general.back.button" | trans }}</a>
+        <a href="{{url('company/user-invitation/resend/confirm', {'idCompanyUserInvitation': data.idCompanyUserInvitation})}}" class="button button--alert">{{ "company.user.invitation.resend.button" | trans }}</a>
+    </div>
+{% endblock %}

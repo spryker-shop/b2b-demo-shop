@@ -38,7 +38,7 @@
                                 {{parent()}}
                                 {% include molecule('variant-configurator', 'DiscountPromotionWidget') with {
                                     data: {
-                                        idProductAbstract: embed.idProductAbstract,
+                                        sku: embed.sku,
                                         superAttributes: embed.superAttributes,
                                         selectedAttributes: embed.selectedAttributes,
                                         availableAttributes: embed.availableAttributes
@@ -61,7 +61,7 @@
                                             <input type="hidden" value="{{ embed.sku }}" name="groupKey">
                                             <input type="hidden" value="{{ embed.promotionDiscount.id }}" name="idDiscountPromotion">
 
-                                            <button type="submit" class="button button--expand {{ config.jsName ~ '__button-' ~ embed.sku }}" {{ disabled ? 'disabled' : '' }}>
+                                            <button type="submit" class="button button--expand {{ config.jsName ~ '__button-' ~ embed.sku }}" {{ disabled ? 'disabled' : '' }} onclick="this.form.submit(); this.disabled='disabled'; return false;">
                                                 {{ 'page.detail.add-to-cart' | trans }}
                                             </button>
                                             {% include molecule('action-single-click-enforcer') with {

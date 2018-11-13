@@ -28,20 +28,19 @@
                 {% set isBundle = item.bundleItems is defined %}
                 {% set concreteItem = item.bundleProduct | default(item) %}
 
-                <tr class="{{ config.name }}__row">
-                    {% block row %}
-                        {% include [
-                            molecule('order-detail-product-packaging-unit', 'ProductPackagingUnitWidget'),
-                            molecule('order-detail-product-packaging-unit-default', 'CustomerPage'),
+                {% block row %}
+                    {% include [
+                        molecule('order-detail-product-packaging-unit', 'ProductPackagingUnitWidget'),
+                        molecule('order-detail-product-packaging-unit-default', 'CustomerPage'),
                         ] ignore missing with {
-                            data: {
-                                concreteItem: item,
-                                currencyIsoCode: data.currencyIsoCode,
-                                concreteItemDefault: concreteItem
-                            }
-                        } only %}
-                    {% endblock %}
-                </tr>
+                        class: config.name ~ '__row',
+                        data: {
+                            concreteItem: concreteItem,
+                            currencyIsoCode: data.currencyIsoCode,
+                            concreteItemDefault: concreteItem
+                        }
+                    } only %}
+                {% endblock %}
 
                 {% if isBundle %}
                     <tr class="{{ config.name }}__row {{ config.name }}__row--detail">
@@ -81,7 +80,7 @@
                 {% endif %}
                 <tr>
                     <td></td>
-                    <td colspan="5">
+                    <td class="{{ config.name }}__cell {{ config.name }}__cell--detail" colspan="5">
                         {% include molecule('note-list', 'CartNoteWidget') ignore missing with {
                             data: {
                                 label: 'cart_note.customer_page.item_note',

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Spryker Suite.
+ * This file is part of the Spryker Commerce OS.
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
@@ -25,7 +25,7 @@ class CmsContentWidgetDependencyProvider extends SprykerCmsContentWidgetDependen
      *
      * @return \Spryker\Yves\CmsContentWidget\Dependency\CmsContentWidgetPluginInterface[]
      */
-    public function getCmsContentWidgetPlugins()
+    public function getCmsContentWidgetPlugins(): array
     {
         return [
             CmsChartContentWidgetConfigurationProvider::FUNCTION_NAME => new CmsChartContentWidgetPlugin(

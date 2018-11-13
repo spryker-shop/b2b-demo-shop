@@ -9,7 +9,7 @@
     abstractId: required,
     url: required,
     imageUrl: required,
-    price: required,
+    price: null,
     originalPrice: null,
     category: ''
 } %}
@@ -29,14 +29,24 @@
         } only %}
 
         {% block groups %}
-            {% widget 'ProductGroupWidget' args [data.abstractId] only %}{% endwidget %}
+            {% widget 'ExampleProductColorSelectorWidget' args [data.abstractId] use view('product-color-selector', 'ExampleProductColorGroupWidget') only %}
+            {% endwidget %}
         {% endblock %}
     </div>
 {% endblock %}
 
 {% block content %}
     {% block labels %}
-        {% widget 'ProductAbstractLabelWidget' args [data.abstractId] only %}{% endwidget %}
+        {% widget 'ProductAbstractLabelWidget' args [data.abstractId] with {modifiers: modifiers} only %}
+            {% block body %}
+                {% include molecule('label-group', 'ProductLabelWidget') with {
+                    modifiers: isLabels ? modifiers : ['hidden'],
+                    data: {
+                        labels: labels
+                    }
+                } only %}
+            {% endblock %}
+        {% endwidget %}
     {% endblock %}
 
     {% block name %}

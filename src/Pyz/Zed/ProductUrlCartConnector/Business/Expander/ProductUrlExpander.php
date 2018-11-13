@@ -1,9 +1,10 @@
 <?php
 
 /**
- * This file is part of the Spryker Suite.
+ * This file is part of the Spryker Commerce OS.
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
+
 namespace Pyz\Zed\ProductUrlCartConnector\Business\Expander;
 
 use Generated\Shared\Transfer\CartChangeTransfer;
@@ -41,7 +42,7 @@ class ProductUrlExpander implements ProductUrlExpanderInterface
      *
      * @return \Generated\Shared\Transfer\CartChangeTransfer
      */
-    public function expandItems(CartChangeTransfer $cartChangeTransfer)
+    public function expandItems(CartChangeTransfer $cartChangeTransfer): CartChangeTransfer
     {
         foreach ($cartChangeTransfer->getItems() as $itemTransfer) {
             $this->expandItemsWithUrl($itemTransfer);
@@ -54,7 +55,7 @@ class ProductUrlExpander implements ProductUrlExpanderInterface
      *
      * @return void
      */
-    protected function expandItemsWithUrl(ItemTransfer $itemTransfer)
+    protected function expandItemsWithUrl(ItemTransfer $itemTransfer): void
     {
         $idLocale = $this->localeFacade->getCurrentLocale()->getIdLocale();
         $productAbstractTransfer = new ProductAbstractTransfer();
@@ -63,7 +64,7 @@ class ProductUrlExpander implements ProductUrlExpanderInterface
             ->setIdProductAbstract($itemTransfer->getIdProductAbstract());
         $productUrlTransfer = $this->productFacade->getProductUrl($productAbstractTransfer);
         foreach ($productUrlTransfer->getUrls() as $localizedUrlTransfer) {
-            if ($localizedUrlTransfer->getLocale()->getIdLocale() == $idLocale) {
+            if ($localizedUrlTransfer->getLocale() !== null && $localizedUrlTransfer->getLocale()->getIdLocale() === $idLocale) {
                 $itemTransfer->setUrl($localizedUrlTransfer->getUrl());
             }
         }

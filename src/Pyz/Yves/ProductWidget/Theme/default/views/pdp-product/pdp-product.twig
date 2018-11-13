@@ -12,7 +12,7 @@
             abstractId: data.product.idProductAbstract,
             url: data.product.url,
             imageUrl: data.product.images is empty ? '' : data.product.images.0.externalUrlSmall,
-            price: data.product.prices.DEFAULT,
+            price: data.product.prices.DEFAULT | default(null),
             originalPrice: data.product.prices.ORIGINAL | default(null)
         }
     } only %}

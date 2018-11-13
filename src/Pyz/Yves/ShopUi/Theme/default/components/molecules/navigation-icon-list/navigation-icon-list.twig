@@ -26,7 +26,7 @@
                 }
             } only %}
                 {% block url %}
-                    <a class="link link--alt link--social" href="{{ data.node.url }}" title="{{ data.node.title }}">
+                    <a class="link link--secondary" href="{{ data.node.url }}" title="{{ data.node.title }}">
                         {% include atom('icon') with {
                             modifiers: ['big'],
                             data: {
@@ -37,7 +37,7 @@
                 {% endblock %}
 
                 {% block externalUrl %}
-                    <a class="link link--alt link--social" href="{{ data.node.url }}" target="_blank" title="{{ data.node.title }}">
+                    <a class="link link--secondary" href="{{ data.node.url }}" target="_blank" title="{{ data.node.title }}">
                         {% include atom('icon') with {
                             modifiers: ['big'],
                             data: {

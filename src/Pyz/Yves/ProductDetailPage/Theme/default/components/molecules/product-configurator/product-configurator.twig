@@ -86,7 +86,8 @@
         } only %}
     {% endif %}
 
-    {% widget 'ProductGroupWidget' args [data.product.idProductAbstract] only %}{% endwidget %}
+    {% widget 'ExampleProductColorSelectorWidget' args [data.product.idProductAbstract] use view('pdp-color-selector', 'ExampleProductColorGroupWidget') only %}
+    {% endwidget %}
 
     {% include molecule('variant-configurator', 'ProductDetailPage') with {
         data: {
@@ -141,10 +142,6 @@
 
     {% if can('SeeShoppingListPermissionPlugin') %}
         {% widget 'AddToShoppingListWidget' args [sku, isDisabled] only %}{% endwidget %}
-    {% endif %}
-
-    {% if not isProductAvailable and widgetExists('WishlistWidgetPlugin') %}
-        {{ widget('WishlistWidgetPlugin', data.product) }}
     {% endif %}
 
     {% widget 'ProductDiscontinuedNoteWidget' args [sku] only %}{% endwidget %}

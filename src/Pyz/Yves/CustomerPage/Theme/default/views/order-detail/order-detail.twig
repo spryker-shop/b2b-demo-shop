@@ -86,10 +86,27 @@
         {% endblock %}
 
         {% block row %}
-            <td>
-                {{ widgetBlock('CustomerReorderWidgetPlugin', 'formCheckbox', embed.order, concreteItem) }}
-            </td>
-            {{parent()}}
+            {% embed [
+                molecule('order-detail-product-packaging-unit', 'ProductPackagingUnitWidget'),
+                molecule('order-detail-product-packaging-unit-default', 'CustomerPage'),
+                ] ignore missing with {
+                class: config.name ~ '__row',
+                data: {
+                    concreteItem: concreteItem,
+                    currencyIsoCode: data.currencyIsoCode,
+                    concreteItemDefault: concreteItem
+                },
+                embed: {
+                    order: embed.order
+                }
+            } only %}
+                {% block body %}
+                    <td>
+                        {{ widgetBlock('CustomerReorderWidgetPlugin', 'formCheckbox', embed.order, data.concreteItem) }}
+                    </td>
+                    {{parent()}}
+                {% endblock %}
+            {% endembed %}
         {% endblock %}
     {% endembed %}
 

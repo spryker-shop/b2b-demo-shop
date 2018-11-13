@@ -59,20 +59,12 @@ $name: '.product-card';
         &--product-set {
             padding: 0 $catalog-space-x rem(26);
         }
-
-        &--stretch {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: baseline;
-        }
     }
 
     &__image-wrap {
         position: relative;
         padding: rem(12) 0;
         margin-bottom: rem(17);
-        flex-basis: 100%;
 
         @include helper-breakpoint-media-min($lg) {
             padding-left: rem(10);
@@ -122,6 +114,10 @@ $name: '.product-card';
                     display: block;
                 }
             }
+        }
+        &--stretch {
+            margin-left: 0;
+            margin-right: 0;
         }
     }
 
@@ -203,6 +199,11 @@ $name: '.product-card';
 
     &__info {
         max-width: 100%;
+    }
+
+    &__variant {
+        position: relative;
+        z-index: $setting-zi-element + 2;
     }
 
     &__category {

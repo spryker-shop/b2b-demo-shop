@@ -5,7 +5,7 @@ cart.add.items.success,Produkte erfolgreich im Warenkorb,de_DE
 cart.add.items.success,Items added successfully,en_US
 cart.add.items.error.text,Something went wrong. Sorry.,en_US
 cart.add.items.error.text,Leider ging etwas schief. Tut uns leid.,de_DE
-cart.your-order,Ihre Bestellung,de_DE
+cart.your-order,Deine Bestellung,de_DE
 cart.your-order,Your Order,en_US
 cart.price,Preis,de_DE
 cart.price,Price,en_US
@@ -31,8 +31,8 @@ cart.item_quantity,Anzahl,de_DE
 cart.item_quantity,Quantity,en_US
 cart.item_attributes_needed,Please select more attributes,en_US
 cart.item_attributes_needed,Bitte wählen Sie mindestens ein anderes Attribut,de_DE
-cart.voucher.redeem,Einlösen,de_DE
-cart.voucher.redeem,Redeem,en_US
+cart.voucher.redeem,Code einlösen,de_DE
+cart.voucher.redeem,Redeem code,en_US
 cart.price.subtotal,Zwischensumme,de_DE
 cart.price.subtotal,Subtotal,en_US
 cart.price.grand.total,Summe,de_DE
@@ -171,7 +171,7 @@ page.privacy.title,Datenschutz,de_DE
 page.privacy.title,Data privacy,en_US
 catalog.currency,€,de_DE
 catalog.currency,€,en_US
-catalog.filter.button,Filtern,de_DE
+catalog.filter.button,Filter,de_DE
 catalog.filter.button,Filter,en_US
 catalog.filter.active,Aktive Filter,de_DE
 catalog.filter.active,Active Filter,en_US
@@ -220,14 +220,14 @@ catalog.sort.price_asc,Sort by price ascending,en_US
 catalog.sort.price_desc,Nach Preis absteigend sortieren,de_DE
 catalog.sort.price_desc,Sort by price descending,en_US
 catalog.sort.rating,Sort by product ratings,en_US
-catalog.sort.rating,Nach Bewertungen sortieren,de_DE
+caralot.sort.rating,Nach Produktbewertungen sortieren,de_DE
 catalog.filter.activeFilters,Aktive Filter,de_DE
 catalog.filter.activeFilters,Active filters,en_US
 catalog.filter.resetAllFilters,Alle Filter zurücksetzen,de_DE
 catalog.filter.resetAllFilters,Reset all filters,en_US
 product.filter.category,Kategorien,de_DE
 product.filter.category,Categories,en_US
-product.filter.price,Preis,de_DE
+product.filter.price,Preisspanne,de_DE
 product.filter.price,Price range,en_US
 product.filter.rating,Product Ratings,en_US
 product.filter.rating,Produktbewertungen,de_DE
@@ -431,7 +431,7 @@ customer.account.profile_data,Profile,en_US
 customer.account.profile_data,Benutzerdaten,de_DE
 customer.account.address,Addresses,en_US
 customer.account.address,Adressen,de_DE
-customer.account.order_history,Orders History,en_US
+customer.account.order_history,Order History,en_US
 customer.account.order_history,Bestellungen,de_DE
 customer.account.newsletter,Newsletter,en_US
 customer.account.newsletter,Newsletter,de_DE
@@ -454,7 +454,7 @@ customer.account.edit_address_information,Ändern,de_DE
 customer.account.additional_addresses,Additional Addresses,en_US
 customer.account.additional_addresses,Zusätzliche Adressen,de_DE
 customer.account.add_new_address,Add new address,en_US
-customer.account.add_new_address,Neue Adresse hinzufügen,de_DE
+customer.account.add_new_address,Neue adresse hinzufügen,de_DE
 customer.newsletter.not_subscribed,No newsletter subscription,en_US
 customer.newsletter.not_subscribed,Newsletter nicht abonniert.,de_DE
 customer.profile.order_history,Last Orders,en_US
@@ -531,6 +531,8 @@ customer.order.reorder_all,Reorder all,en_US
 customer.order.reorder_all,Alle Artikel Nachbestellen,de_DE
 customer.order.reorder_selected,Reorder selected items,en_US
 customer.order.reorder_selected,Ausgewählte Artikel Nachbestellen,de_DE
+customer.order.reorder.error.unable_to_reorder_items,"You can not reorder those products directly, please add them to your cart separately",en_US
+customer.order.reorder.error.unable_to_reorder_items,"Sie können diese Produkte nicht direkt nachbestellen, bitte fügen Sie sie separat in Ihren Warenkorb",de_DE
 customer.order.date,Order Date,en_US
 customer.order.date,Datum,de_DE
 customer.order.item_sku,SKU,de_DE
@@ -667,12 +669,18 @@ customer.password.recovery.mail.sent,"If there is an account associated with thi
 customer.password.recovery.mail.sent,"Falls ein Konto für diese Emailaddresse existiert, werden Sie eine Email mit den weiteren Anweisungen bekommen",de_DE
 customer.address.number,Number,en_US
 customer.address.number,Nummer,de_DE
+countries.iso.AT,Austria,en_US
+countries.iso.AT,Österreich,de_DE
 countries.iso.DE,Germany,en_US
 countries.iso.DE,Deutschland,de_DE
+countries.iso.NO,Norway,en_US
+countries.iso.NO,Norwegen,de_DE
 countries.iso.CH,Switzerland,en_US
 countries.iso.CH,Schweiz,de_DE
 countries.iso.ES,Spain,en_US
 countries.iso.ES,Spanien,de_DE
+countries.iso.GB,United Kingdom,en_US
+countries.iso.GB,Großbritannien,de_DE
 customer.billingSameAsShipping,Billing address same as shipping address,en_US
 customer.billingSameAsShipping,Liefer- und Rechnungsadresse sind gleich,de_DE
 checkout.customer.proceed_as_user,Proceed as a registered user (sign up),en_US
@@ -689,8 +697,8 @@ checkout.step.shipment.title,Shipment,en_US
 checkout.step.shipment.title,Versand,de_DE
 checkout.step.payment.title,Payment,en_US
 checkout.step.payment.title,Zahlung,de_DE
-checkout.step.summary.title,Summary,en_US
-checkout.step.summary.title,Übersicht Bestellung,de_DE
+checkout.step.summary.title,Confirm,en_US
+checkout.step.summary.title,Bestätigen,de_DE
 checkout.step.shipment,Go to Shipment,en_US
 checkout.step.shipment,Weiter zur Lieferung,de_DE
 checkout.step.address.select_address,Select an address,en_US
@@ -743,8 +751,14 @@ discount.quote_change.discount.not_available,"The discounts you have chosen for 
 discount.quote_change.discount.not_available,"The discounts you have chosen for the following items skus is no longer available",de_DE
 discount.quote_change.discount.amount_changed,"The discounts you selected for the following items skus have changed",en_US
 discount.quote_change.discount.amount_changed,"The discounts you selected for the following items skus have changed",de_DE
+discount.quote_change.does_not_apply_for_currency,"Voucher ""%code%"" was disabled because it does not apply for this currency.",en_US
+discount.quote_change.does_not_apply_for_currency,"Der Gutschein mit dem Namen ""%code%"" wurde deaktiviert, da er nicht auf diese Währung anwendbar ist.",de_DE
+discount.voucher_code.usage_limit.reached,"Voucher code usage limit reached",en_US
+discount.voucher_code.usage_limit.reached,"Gutscheincode-Nutzungslimit erreicht",de_DE
 product.unavailable,Product '%sku%' is not available at the moment,en_US
 product.unavailable,Das Produkt '%sku%' ist momentan nicht verfügbar,de_DE
+product.access.denied,"Sorry, this product is not available.",en_US
+product.access.denied,"Entschuldigung, dieses Produkt ist nicht verfügbar.",de_DE
 product_bundle.unavailable,Product '%productSku%' in the Bundle Product '%bundleSku%' is not available at the moment,en_US
 product_bundle.unavailable,Das Produkt '%productSku%' in das Bundle Product '%bundleSku%' ist momentan nicht verfügbar,de_DE
 product.attribute.slug,slug,en_US
@@ -791,8 +805,8 @@ product.attribute.battery,Battery,en_US
 product.attribute.battery,Batterie,de_DE
 product.attribute.short_description,Short Description,en_US
 product.attribute.short_description,Kurzbeschreibung,de_DE
-product.attribute.long_description,Description,en_US
-product.attribute.long_description,Beschreibung,de_DE
+product.attribute.long_description,Long Description,en_US
+product.attribute.long_description,Langbeschreibung,de_DE
 product.attribute.manufacturer_name,Brand,en_US
 product.attribute.manufacturer_name,Marke,de_DE
 product.attribute.product_id,Product ID,en_US
@@ -1157,14 +1171,18 @@ product-cart.validation.error.abstract-product-exists,"Product ""sku"" not found
 product-cart.validation.error.abstract-product-exists,"Produkt ""sku"" nicht gefunden",de_DE
 product-cart.validation.error.concrete-product-exists,"Product ""sku"" not found",en_US
 product-cart.validation.error.concrete-product-exists,"Produkt ""sku"" nicht gefunden",de_DE
+cart.item.option.pre.check.validation.error.exists,"Product option with value '%id%' does not exist.",en_US
+cart.item.option.pre.check.validation.error.exists,"Die Produktoption '%id%' existiert nicht.",de_DE
 product-cart.validation.error.product-option-value-price-exists,"Product option price not found for product '%sku%'.",en_US
 product-cart.validation.error.product-option-value-price-exists,"Produktoptionspreis nicht gefunden für Produkt '%sku%'.",de_DE
 product-cart.validation.error.concrete-product-inactive,"Product %sku% is not active.",en_US
 product-cart.validation.error.concrete-product-inactive,"Produkt %sku% ist nicht aktiv.",de_DE
 product-cart.info.concrete-product-inactive.removed,"Inactive item %sku% was removed from your shopping cart.",en_US
 product-cart.info.concrete-product-inactive.removed,"Der inaktive Artikel %sku% wurde aus Ihrem Warenkorb entfernt.",de_DE
-product-cart.info.restricted-product.removed,"Unavailable item %sku% was removed from your shopping cart.",en_US
-product-cart.info.restricted-product.removed,"Der nicht verfügbare Artikel% sku% wurde aus Ihrem Einkaufswagen entfernt.",de_DE
+product-cart.info.restricted-product.removed,"The Item %sku% was removed from the cart because it was deactivated.",en_US
+product-cart.info.restricted-product.removed,"Der Artikel %sku% wurde aus Ihrem Warenkorb entfernt da er deaktiviert wurde.",de_DE
+reorder.info.restricted-product.removed,"The Item %sku% could not be added to cart because it was deactivated.",en_US
+reorder.info.restricted-product.removed,"Der Artikel %sku% konnte Ihrem Warenkorb nicht hinzugefügt werden da er deaktiviert wurde.",de_DE
 product.filter.label,Product Labels,en_US
 product.filter.label,Label,de_DE
 product.filter.price-default-chf-gross_mode,Preis,de_DE
@@ -1187,6 +1205,8 @@ cart.pre.check.price.failed,"Price in selected currency not found for product wi
 cart.pre.check.price.failed,"Der Preis in der ausgewählten Währung wurde für das Produkt mit sku '%sku%' nicht gefunden. Bitte ändern Sie die Währung oder entfernen Sie das Produkt aus der Bestellung.",de_DE
 price.mode.switch.error,"Can't switch price mode when there are items in the cart.",en_US
 price.mode.switch.error,"Preismodus kann nicht geändert werden, wenn sich Artikel im Warenkorb befinden.",de_DE
+price-cart-connector.info.concrete-product-without-price.removed,"Item %sku% without price was removed from your shopping cart.",en_US
+price-cart-connector.info.concrete-product-without-price.removed,"Artikel% sku% ohne Preis wurde aus Ihrem Einkaufswagen entfernt.",de_DE
 cart.pre.check.shipment.failed,"Can't apply these changes. The shipment method not found. Please select another shipment method.",en_US
 cart.pre.check.shipment.failed,"Diese Änderungen können nicht angewendet werden. Die Versandart wurde nicht gefunden. Bitte wählen Sie eine andere Versandart.",de_DE
 catalog.view.mode.grid,Grid,en_US
@@ -1337,7 +1357,7 @@ mail.company.user.invitation.body.text,"Hi %name%, You have been invited to join
 mail.company.user.invitation.body.text,"Hi %name%, Sie wurden eingeladen, einem Unternehmenskonto im Spryker Demo-Shop beizutreten. Bitte folgen Sie diesem Link %invitationLink%, um Ihre Registrierung abzuschließen",de_DE
 company.account.overview,Übersicht,de_DE
 company.account.add_new_address,Add new address,en_US
-company.account.add_new_address,Neue Adresse hinzufügen,de_DE
+company.account.add_new_address,Neue adresse hinzufügen,de_DE
 company.account.table.actions,Actions,en_US
 company.account.table.actions,Aktion,de_DE
 company.account.business_unit.view,View,en_US
@@ -1356,6 +1376,10 @@ company.account.business_unit.description,Mit dem Erstellen einer neuen Geschäf
 company.account.business_unit.description,With creating a new business unit you are able to set different roles and sub units.,en_US
 company.company_business_unit.delete.error.has_users,You can not delete a business unit while it contains users,en_US
 company.company_business_unit.delete.error.has_users,Sie können diese Geschäftseinheit nicht löschen solange Nutzer vorhanden sind,de_DE
+company.company_business_unit.delete.confirmation.warning,Warning,en_US
+company.company_business_unit.delete.confirmation.warning,Warnung,de_DE
+company.company_business_unit.delete.confirmation.back,Back,en_US
+company.company_business_unit.delete.confirmation.back,Zurück,de_DE
 company.account.address.is_default_billing,Is default billing address,en_US
 company.account.address.is_default_billing,Standard Rechnungsadresse,de_DE
 company.account.authorization.success,Registration Successful,en_US
@@ -1436,7 +1460,11 @@ company.account.company_user.business_unit,Business unit,en_US
 company.account.company_user.business_unit,Geschäftseinheit,de_DE
 company.account.company_user.edit,Edit,en_US
 company.account.company_user.edit,Bearbeiten,de_DE
-company.account.company_user.delete.successful,Company user successfully removed,en_US
+company.account.company_user.create.successful,Company User has been successfully created,en_US
+company.account.company_user.create.successful,Der Firmenbenutzer wurde erfolgreich erstellt,de_DE
+company.account.company_user.update.successful,Company User has been successfully updated,en_US
+company.account.company_user.update.successful,Der Firmenbenutzer wurde erfolgreich aktualisiert,de_DE
+company.account.company_user.delete.successful,Company User has been successfully removed,en_US
 company.account.company_user.delete.successful,Der Firmenbenutzer wurde erfolgreich entfernt,de_DE
 company.account.company_user.delete.error,Company user cannot be removed,en_US
 company.account.company_user.delete.error,Der Firmenbenutzer konnte nicht enfernt werden,de_DE
@@ -1451,6 +1479,8 @@ company.account.company_user.delete.confirmation.deleted_from_everywhere,Es wird
 company.account.company_user.delete,Delete,en_US
 company.account.company_user.delete,Löschen,de_DE
 company.account.company_user.edit_information,Edit user information,en_US
+customer.access.cannot_see_price,Please login to see the price,en_US
+customer.access.cannot_see_price,Bitte melden Sie sich an um den Preis zu sehen,de_DE
 company.account.company_user.edit_information,Benutzerinfomation bearbeiten,de_DE
 company.account.company_user.delete.back,Back,en_US
 company.account.company_user.delete.back,Zurück,de_DE
@@ -1612,6 +1642,8 @@ cart.pre.check.quantity.min.failed,Die minimale Mengenanforderung für Produkt S
 cart.pre.check.quantity.min.failed,Minimum quantity requirements for product SKU '%sku%' are not fulfilled.,en_US
 cart.pre.check.quantity.max.failed,Die maximale Mengenanforderung für Produkt SKU '%sku%' ist überschritten.,de_DE
 cart.pre.check.quantity.max.failed,Maximum quantity for product SKU '%sku%' is exceeded.,en_US
+cart.pre.check.quantity.value.failed,Falsche Menge für Produkt SKU '%sku%'.,de_DE
+cart.pre.check.quantity.value.failed,Wrong quantity for product SKU '%sku%'.,en_US
 cart.pre.check.quantity.interval.failed,Die Anzahl für Produkt SKU '%sku%' liegt nicht innerhalb des vorgegebenen Intervals.,de_DE
 cart.pre.check.quantity.interval.failed,Quantity interval requirements for product SKU '%sku%' are not fulfilled.,en_US
 company.account.company_user.edit_information,Benutzerinfomation bearbeiten,de_DE
@@ -1935,6 +1967,18 @@ customer.account.shopping_list.item.added_all_available_to_cart,Available items 
 customer.account.shopping_list.item.added_all_available_to_cart,Verfügbare Produkte wurden erfolgreich in den Warenkorb gelegt.,de_DE
 customer.account.shopping_list.item.added_all_available_to_cart.failed,Not all items are added to cart successfully,en_US
 customer.account.shopping_list.item.added_all_available_to_cart.failed,Nicht alle Artikel konnten erfolgreich in den Warenkorb gelegt werden.,de_DE
+validation.not_blank,This value should not be blank.,en_US
+validation.not_blank,Dieses Feld sollte nicht leer sein.,de_DE
+validation.address_number,This value is not valid (accepted format e.g.: 12c).,en_US
+validation.address_number,Dieser Wert ist nicht gültig (akzeptiertes Format z. B. 12c).,de_DE
+validation.zip_code,This field should contain exactly 5 digits.,en_US
+validation.zip_code,Dieses Feld sollte genau 5 Ziffern enthalten.,de_DE
+validation.min_length,This field must be at least {{limit}} characters long.,en_US
+validation.min_length,Dieses Feld muss mindestens {{limit}} Zeichen lang sein.,de_DE
+validation.email,This value is not a valid email address.,en_US
+validation.email,Dieser Wert ist keine gültige E-Mail-Adresse.,de_DE
+validation.choice,This value is not valid,en_US
+validation.choice,Dieser Wert ist nicht gültig,de_DE
 shopping_list.cart.items_add.failed,Items could not be added to the List,en_US
 shopping_list.cart.items_add.failed,Artikel konnten der Liste nicht hinzugefügt werden,de_DE
 shopping_list.cart.items_add.success,Items were added to the List,en_US
@@ -1995,8 +2039,8 @@ packaging_unit_type.pack_5.name,Pack 5,en_US
 packaging_unit_type.pack_5.name,Pack 5,de_DE
 packaging_unit_type.pack_10.name,Pack 10,en_US
 packaging_unit_type.pack_10.name,Pack 10,de_DE
-business_on_behalf_widget.no_selected_company,No selected company,en_US
-business_on_behalf_widget.no_selected_company,Kein Unternehmen ausgewählt,de_DE
+business_on_behalf_widget.no_selected_company,Your Business Unit,en_US
+business_on_behalf_widget.no_selected_company,Ihre Geschäftseinheit,de_DE
 business_on_behalf_widget.change_company_user,Select Business Unit,en_US
 business_on_behalf_widget.change_company_user,Geschäftseinheit auswählen,de_DE
 company_user.business_on_behalf.error.company_not_active,"You can not select this company user, company is not active.",en_US
@@ -2011,6 +2055,8 @@ company_user.remember_choice,Remember choice,en_US
 company_user.remember_choice,Auswahl speichern,de_DE
 company_page.company_user_restricted_message,Regular customers are not allowed to operate on company pages,en_US
 company_page.company_user_restricted_message,Normale Kunden dürfen keinen Zugang zu den Unternehmensseiten habe,de_DE
+company_page.company_business_unit_restricted_message,You don't have permissions to perform this operation,en_US
+company_page.company_business_unit_restricted_message,Sie haben nicht die notwendigen Rechte um diesen Vorgang auszuführen,de_DE
 customer.account.print_shopping_list.table.barcode,Barcode,en_US
 customer.account.print_shopping_list.table.barcode,Barcode,de_DE
 customer.account.print_shopping_list.table.product_sku,Product SKU,en_US
@@ -2057,6 +2103,8 @@ message.business_unit.delete,Business unit '%unit%' was deleted successfully.,en
 message.business_unit.delete,Geschäftseinheit wurde '%unit%' erfolgreich gelöscht.,de_DE
 message.submit_link,Ok!,en_US
 message.submit_link,Ok!,de_DE
+company.business_unit.delete.message.text,You are trying to delete Business unit,en_US
+company.business_unit.delete.message.text,Sie versuchen eine Geschäftseinheit zu löschen,de_DE
 company.account.choose_parent_company_business_unit,Choose parent Business Unit,en_US
 company.account.choose_parent_company_business_unit,Übergeordnete Geschäftseinheit auswählen,de_DE
 company.account.choose_parent_company_business_unit_placeholder,Parent BU name,en_US
@@ -2201,6 +2249,8 @@ permission.name.CompanyUserStatusChangePermissionPlugin,Enable / Disable company
 permission.name.CompanyUserStatusChangePermissionPlugin,Firmennutzer Aktivieren / Deaktivieren,de_DE
 company.account.company_role.create,Create role,en_US
 company.account.company_role.create,Rolle erstellen,de_DE
+company.account.company_role.create.successful,Role has been successfully created.,en_US
+company.account.company_role.create.successful,Rolle erfolgreich angelegt.,de_DE
 company.account.company_user.form.select_roles,Select roles,en_US
 company.account.company_user.form.select_roles,Rolle auswählen,de_DE
 company.account.company_user.form.select_business_unit,Select business unit,en_US
@@ -2214,7 +2264,7 @@ message.business_unit.delete.error,"Beim Versuch, die Geschäftseinheit '%unit%'
 product.sets.widget.title,Shop the Collection,en_US
 product.sets.widget.title,Shoppen Sie die Sammlung,de_DE
 product.set,Product Set,en_US
-product.set,Produktsets,de_DE
+product.set,Product Set,de_DE
 product.set.detail.add_all_to,Add all to,en_US
 product.set.detail.add_all_to,Alle Artikel in den,de_DE
 checkout.success.to_orders.url,/en/customer/order,en_US
@@ -2233,6 +2283,10 @@ customer.account.shopping_list.create_from_cart.title,Add to shopping list,en_US
 customer.account.shopping_list.create_from_cart.title,Auf die Einkaufsliste,de_DE
 customer.account.shopping_list.shopping_cart,Shopping carts,en_US
 customer.account.shopping_list.shopping_cart,Warenkörbe,de_DE
+customer.account.shopping_list.business_unit,Business Unit,en_US
+customer.account.shopping_list.business_unit,Geschäftseinheit,de_DE
+customer.account.shopping_list.customer,Customer,en_US
+customer.account.shopping_list.customer,Benutzer,de_DE
 page.multi_cart.shopping_cart.list.title,Shopping carts,en_US
 page.multi_cart.shopping_cart.list.title,Warenkörbe,de_DE
 page.multi_cart.shopping_cart.list.create_link,Create Shopping Cart,en_US
@@ -2273,6 +2327,20 @@ page.multi_cart.shopping_cart.update.title,Edit,en_US
 page.multi_cart.shopping_cart.update.title,Bearbeiten,de_DE
 page.multi_cart.shopping_cart.create.title,Create,en_US
 page.multi_cart.shopping_cart.create.title,Neuen Warenkorb erstellen,de_DE
+validation.not_blank,This value should not be blank.,en_US
+validation.not_blank,Dieses Feld sollte nicht leer sein.,de_DE
+validation.address_number,This value is not valid (accepted format e.g.: 12c).,en_US
+validation.address_number,Dieser Wert ist nicht gültig (akzeptiertes Format z. B. 12c).,de_DE
+validation.zip_code,This field should contain exactly 5 digits.,en_US
+validation.zip_code,Dieses Feld sollte genau 5 Ziffern enthalten.,de_DE
+validation.min_length,This field must be at least {{limit}} characters long.,en_US
+validation.min_length,Dieses Feld muss mindestens {{limit}} Zeichen lang sein.,de_DE
+validation.email,This value is not a valid email address.,en_US
+validation.email,Dieser Wert ist keine gültige E-Mail-Adresse.,de_DE
+validation.choice,This value is not valid,en_US
+validation.choice,Dieser Wert ist nicht gültig,de_DE
+customer.order.reorder.error.unable_to_reorder_items,"You can not reorder those products directly, please add them to your cart separately",en_US
+customer.order.reorder.error.unable_to_reorder_items,"Sie können diese Produkte nicht direkt nachbestellen, bitte fügen Sie sie separat in Ihren Warenkorb",de_DE
 shopping_list_widget.items,Items,en_US
 shopping_list_widget.items,Artikel,de_DE
 shopping_list_widget.full_access,Full access,en_US
@@ -2419,3 +2487,13 @@ company.account.company_user.edit_information,Edit user information,en_US
 company.account.company_user.edit_information,Benutzerinfomation bearbeiten,de_DE
 Only company users are allowed to access this page,"Nur Firmenbenutzer dürfen auf diese Seite zugreifen.",de_DE
 Only company users are allowed to access this page,"Only company users are allowed to access this page.",en_US
+shopping_list.not_found,Shopping list was not found,en_US
+shopping_list.not_found,Einkaufsliste wurde nicht gefunden,de_DE
+shopping_list.already_removed,This shopping list has been deleted,en_US
+shopping_list.already_removed,Die Einkaufsliste wurde gelöscht,de_DE
+shopping_list.no_access,You do not have permissions to view this shopping list,en_US
+shopping_list.no_access,"Sie haben keine Rechte, um auf diese Einkaufsliste zuzugreifen.",de_DE
+wishlist.validation.error.name.wrong_format,"Please enter name using only letters, numbers, underscores, spaces or dashes.",en_US
+wishlist.validation.error.name.wrong_format,"Bitte geben Sie Ihren Namen nur mit Buchstaben, Zahlen, Unterstriche, Leerzeichen oder Bindestriche ein.",de_DE
+wishlist.validation.error.name.already_exists,"A wishlist with the same name already exists.",en_US
+wishlist.validation.error.name.already_exists,"Eine Wunschliste mit dem gleichen Namen existiert schon.",de_DE

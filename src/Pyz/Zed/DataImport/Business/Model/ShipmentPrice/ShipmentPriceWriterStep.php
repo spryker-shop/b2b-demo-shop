@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Spryker Suite.
+ * This file is part of the Spryker Commerce OS.
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
@@ -96,6 +96,7 @@ class ShipmentPriceWriterStep implements DataImportStepInterface
     {
         if (!isset(static::$idStoreCache[$storeName])) {
             static::$idStoreCache[$storeName] = SpyStoreQuery::create()
+                ->setIgnoreCase(true)
                 ->findOneByName(strtoupper($storeName))
                 ->getIdStore();
         }

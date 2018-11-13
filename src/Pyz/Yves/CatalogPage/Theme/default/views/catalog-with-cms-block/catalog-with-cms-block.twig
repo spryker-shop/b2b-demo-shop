@@ -24,19 +24,26 @@
         showAlwaysFirstAndLast: true
     }
 } %}
+{% block contentTop %}
+    {% if data.categoryId is not empty %}
+        <div class="catalog-cms-block catalog-cms-block--sidebar">
+            {{ widgetBlock('CatalogCmsBlockWidgetPlugin', 'top', data.categoryId) }}
+        </div>
+    {% endif %}
+{% endblock %}
 
 {% block filterBar %}
     {{parent()}}
 
-    {% if data.categoryId %}
-        <div class="catalog-cms-block catalog-cms-block--sidebar is-hidden-sm-md">
+    {% if data.categoryId is not empty %}
+        <div class="catalog-cms-block catalog-cms-block--sidebar">
             {{ widgetBlock('CatalogCmsBlockWidgetPlugin', 'middle', data.categoryId) }}
         </div>
     {% endif %}
 {% endblock %}
 
 {% block contentBottom %}
-    {% if data.categoryId %}
+    {% if data.categoryId is not empty %}
         <div class="catalog-cms-block-wrap">
             {% embed molecule('cms-mobile-cutter') with {
                 modifiers: ['bg-dark'],

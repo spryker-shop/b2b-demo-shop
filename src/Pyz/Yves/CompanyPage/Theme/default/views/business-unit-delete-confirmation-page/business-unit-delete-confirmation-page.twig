@@ -1,0 +1,41 @@
+{% extends template('page-layout-company', 'CompanyPage') %}
+
+{% define data = {
+    title: 'company.company_business_unit.delete.confirmation.warning' | trans,
+    activePage: 'business-unit',
+    companyBusinessUnit: _view.companyBusinessUnit
+} %}
+
+{% block breadcrumbs %}
+    {% include molecule('breadcrumb') with {
+        data: {
+            steps: [
+                {
+                    label: 'company.account.page-title' | trans,
+                    url: url('company/overview')
+                }, {
+                    label: 'company.account.business_unit' | trans,
+                    url: url('company/business-unit')
+                }, {
+                    label: 'company.account.business_unit.edit' | trans,
+                    url: url('company/business-unit/update', {'id': data.companyBusinessUnit.idCompanyBusinessUnit })
+                }, {
+                    label: 'company.account.business_unit.delete' | trans,
+                }
+            ]
+        }
+    } only %}
+{% endblock %}
+
+{% block companyContent %}
+    {% include molecule('action-bar') with {
+        data: {
+            title: data.title
+        }
+    } only %}
+    {% include molecule('business-unit-delete-message', 'CompanyPage') with {
+        data: {
+            companyBusinessUnit: data.companyBusinessUnit
+        }
+    } only %}
+{% endblock %}

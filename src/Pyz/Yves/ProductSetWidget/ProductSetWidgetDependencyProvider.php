@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Spryker Suite.
+ * This file is part of the Spryker Commerce OS.
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
@@ -20,24 +20,26 @@ class ProductSetWidgetDependencyProvider extends SprykerProductSetWidgetDependen
      *
      * @return \Spryker\Yves\Kernel\Container
      */
-    public function provideDependencies(Container $container)
+    public function provideDependencies(Container $container): Container
     {
         $container = parent::provideDependencies($container);
         $container = $this->addProductStorageClient($container);
         $container = $this->addProductSetStorageClient($container);
+
         return $container;
     }
 
     /**
      * @param \Spryker\Yves\Kernel\Container $container
      *
-     * @return mixed
+     * @return \Spryker\Yves\Kernel\Container $container
      */
-    protected function addProductStorageClient(Container $container)
+    protected function addProductStorageClient(Container $container): Container
     {
         $container[static::CLIENT_PRODUCT_STORAGE] = function (Container $container) {
             return $container->getLocator()->productStorage()->client();
         };
+
         return $container;
     }
 
@@ -51,6 +53,7 @@ class ProductSetWidgetDependencyProvider extends SprykerProductSetWidgetDependen
         $container[static::CLIENT_PRODUCT_SET_STORAGE] = function (Container $container) {
             return $container->getLocator()->productSetStorage()->client();
         };
+
         return $container;
     }
 }

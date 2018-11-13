@@ -1,13 +1,12 @@
 <?php
 
 /**
- * This file is part of the Spryker Suite.
+ * This file is part of the Spryker Commerce OS.
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
 namespace Pyz\Yves\ShopApplication;
 
-use Pyz\Yves\CustomerPage\Plugin\Provider\CustomerTwigFunctionServiceProvider;
 use Pyz\Yves\ExampleProductSalePage\Plugin\Provider\ExampleProductSaleControllerProvider;
 use Pyz\Yves\MultiCartPage\Plugin\Provider\MultiCartPageControllerProvider;
 use Pyz\Yves\PriceWidget\Plugin\Provider\TwigPriceModeFunctionServiceProvider;
@@ -31,7 +30,6 @@ use Spryker\Yves\Application\Plugin\ServiceProvider\SslServiceProvider;
 use Spryker\Yves\CmsContentWidget\Plugin\CmsContentWidgetServiceProvider;
 use Spryker\Yves\Messenger\Plugin\Provider\FlashMessengerServiceProvider;
 use Spryker\Yves\Monitoring\Plugin\ServiceProvider\MonitoringRequestTransactionServiceProvider;
-use Spryker\Yves\NewRelic\Plugin\ServiceProvider\NewRelicRequestTransactionServiceProvider;
 use Spryker\Yves\Session\Plugin\ServiceProvider\SessionServiceProvider as SprykerSessionServiceProvider;
 use Spryker\Yves\Storage\Plugin\Provider\StorageCacheServiceProvider;
 use Spryker\Yves\Twig\Plugin\ServiceProvider\TwigServiceProvider as SprykerTwigServiceProvider;
@@ -90,7 +88,6 @@ use SprykerShop\Yves\ShopRouter\Plugin\Router\StorageRouter;
 use SprykerShop\Yves\ShopTranslator\Plugin\Provider\TranslationServiceProvider;
 use SprykerShop\Yves\ShopUi\Plugin\Provider\ShopUiTwigServiceProvider;
 use SprykerShop\Yves\WebProfilerWidget\Plugin\ServiceProvider\WebProfilerWidgetServiceProvider;
-use SprykerShop\Yves\WishlistPage\Plugin\Provider\WishlistPageControllerProvider;
 
 class YvesBootstrap extends SprykerYvesBootstrap
 {
@@ -118,11 +115,9 @@ class YvesBootstrap extends SprykerYvesBootstrap
         $this->application->register(new SprykerSessionServiceProvider());
         $this->application->register(new SecurityServiceProvider());
         $this->application->register(new CustomerSecurityServiceProvider());
-        $this->application->register(new CustomerTwigFunctionServiceProvider());
         $this->application->register(new YvesSecurityServiceProvider());
         $this->application->register(new YvesExceptionServiceProvider());
         $this->application->register(new ErrorPageServiceProvider());
-        $this->application->register(new NewRelicRequestTransactionServiceProvider());
         $this->application->register(new MonitoringRequestTransactionServiceProvider());
         $this->application->register(new CookieServiceProvider());
         $this->application->register(new UrlGeneratorServiceProvider());
@@ -191,7 +186,6 @@ class YvesBootstrap extends SprykerYvesBootstrap
             new CustomerReorderControllerProvider($isSsl),
             new NewsletterPageControllerProvider($isSsl),
             new CartControllerProvider($isSsl),
-            new WishlistPageControllerProvider($isSsl),
             new HeartbeatPageControllerProvider($isSsl),
             new NewsletterWidgetControllerProvider($isSsl),
             new CatalogPageControllerProvider($isSsl),

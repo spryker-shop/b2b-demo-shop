@@ -1,22 +1,24 @@
 <?php
 
 /**
- * This file is part of the Spryker Suite.
+ * This file is part of the Spryker Commerce OS.
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
 namespace Pyz\Yves\ShopApplication;
 
+use Pyz\Yves\BusinessOnBehalfWidget\Widget\BusinessOnBehalfStatusWidget;
 use Pyz\Yves\CompanyPage\Plugin\ShopApplication\CompanyUserRestrictionHandlerPlugin;
 use Pyz\Yves\CompanyWidget\Widget\MenuItemCompanyWidget;
+use Pyz\Yves\CustomerFullNameWidget\Widget\CustomerFullNameWidget;
 use Pyz\Yves\ExampleProductColorGroupWidget\Widget\ExampleProductColorSelectorWidget;
 use Pyz\Yves\ProductSetWidget\Widget\ProductSetIdsWidget;
 use SprykerShop\Yves\AgentWidget\Widget\AgentControlBarWidget;
-use SprykerShop\Yves\BusinessOnBehalfWidget\Widget\BusinessOnBehalfStatusWidget;
 use SprykerShop\Yves\CartNoteWidget\Widget\CartItemNoteFormWidget;
 use SprykerShop\Yves\CartNoteWidget\Widget\CartNoteFormWidget;
 use SprykerShop\Yves\CartToShoppingListWidget\Widget\CreateShoppingListFromCartWidget;
 use SprykerShop\Yves\CompanyPage\Plugin\ShopApplication\CheckBusinessOnBehalfCompanyUserHandlerPlugin;
+use SprykerShop\Yves\CompanyPage\Plugin\ShopApplication\CompanyBusinessUnitControllerRestrictionPlugin;
 use SprykerShop\Yves\CompanyWidget\Widget\CompanyBusinessUnitAddressWidget;
 use SprykerShop\Yves\CurrencyWidget\Widget\CurrencyWidget;
 use SprykerShop\Yves\CustomerPage\Widget\CustomerNavigationWidget;
@@ -34,6 +36,7 @@ use SprykerShop\Yves\PriceProductVolumeWidget\Widget\ProductPriceVolumeWidget;
 use SprykerShop\Yves\PriceWidget\Widget\PriceModeSwitcherWidget;
 use SprykerShop\Yves\ProductAlternativeWidget\Widget\ProductAlternativeListWidget;
 use SprykerShop\Yves\ProductAlternativeWidget\Widget\ShoppingListProductAlternativeWidget;
+use SprykerShop\Yves\ProductBarcodeWidget\Widget\ProductBarcodeWidget;
 use SprykerShop\Yves\ProductBundleWidget\Widget\ProductBundleCartItemsListWidget;
 use SprykerShop\Yves\ProductBundleWidget\Widget\ProductBundleItemCounterWidget;
 use SprykerShop\Yves\ProductCategoryWidget\Widget\ProductBreadcrumbsWithCategoriesWidget;
@@ -89,6 +92,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             PdpProductRelationWidget::class,
             PdpProductReplacementForListWidget::class,
             ProductAlternativeWidget::class,
+            ProductBarcodeWidget::class,
             ProductBreadcrumbsWithCategoriesWidget::class,
             SimilarProductsWidget::class,
             ProductAlternativeListWidget::class,
@@ -132,6 +136,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             ExampleProductColorSelectorWidget::class,
             CompanyBusinessUnitAddressWidget::class,
             ProductRatingFilterWidget::class,
+            CustomerFullNameWidget::class,
         ];
     }
 
@@ -143,6 +148,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
         return [
             new CompanyUserRestrictionHandlerPlugin(),
             new CheckBusinessOnBehalfCompanyUserHandlerPlugin(), #BusinessOnBehalfFeature
+            new CompanyBusinessUnitControllerRestrictionPlugin(),
         ];
     }
 }

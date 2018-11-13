@@ -18,12 +18,26 @@
             }
         }
 
+        &--product-set {
+            border: none;
+            margin-bottom: rem(8);
+
+            &:last-child {
+                border: none;
+                margin-bottom: 0;
+            }
+        }
+
         &__title {
             font-size: rem(16);
             font-weight: fw(medium);
             line-height: rem(54);
             color: $setting-color-gray-5;
             position: relative;
+
+            &--product-set {
+                line-height: rem(32);
+            }
         }
 
         &__selected-value {
