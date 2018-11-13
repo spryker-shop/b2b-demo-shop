@@ -9,6 +9,15 @@
     <div class="page-layout">
         {% widget 'AgentControlBarWidget' only %}{% endwidget %}
 
+        {% block sidebar %}
+            {% include organism('side-drawer') with {
+                attributes: {
+                    'container-selector': 'js-page-layout-main__side-drawer-container',
+                    'trigger-selector': 'js-page-layout-main__side-drawer-trigger'
+                }
+            } only %}
+        {% endblock %}
+
         {% block outside %}{% endblock %}
 
         {% block header %}
@@ -62,6 +71,7 @@
     </div>
 
     {% include atom('overlay-block') only %}
+    {% include molecule('ui-less') only %}
 
     {% block icons %}
         {% include atom('icon-sprite') only %}

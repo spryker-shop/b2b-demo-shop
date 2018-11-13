@@ -23,12 +23,48 @@
 
     <div class="{{ component.renderClass(config.name ~ '__main', modifiers) }}">
         {% block headerMainContent %}
-            <div class="grid container">
-                {% include molecule('logo') with {
-                    class: 'col'
-                } only %}
+            <div class="grid grid--middle container">
+                <div class="col header__actions">
+                    <div class="grid">
+                        <div class="col header__actions-item">
+                            <a href="#" class="link link--alternative js-page-layout-main__side-drawer-trigger">
+                                {% include atom('icon') with {
+                                    data: {
+                                        name: 'bars'
+                                    }
+                                } only %}
+                            </a>
+                        </div>
+                        <div class="col header__actions-item header__actions-item--search">
+                            <a href="#" class="link link--alternative">
+                                {% include atom('icon') with {
+                                    modifiers: ['big'],
+                                    data: {
+                                        name: 'search'
+                                    }
+                                } only %}
+                            </a>
+                        </div>
+                    </div>
+                </div>
 
-                <div class="col col--expand {{ config.name }}__search">
+                {% embed molecule('logo') with {
+                    class: 'col header__logo',
+                    modifiers: ['main']
+                } only %}
+                    {% block mobile %}
+                        <span class="{{ config.name ~ '__image ' ~  config.name ~ '__image--mobile'  }}">
+                            {% include atom('icon') with {
+                                modifiers: modifiersForIcon,
+                                data: {
+                                    name: 'logo-mobile'
+                                }
+                            } only %}
+                        </span>
+                    {% endblock %}
+                {% endembed %}
+
+                <div class="col {{ config.name }}__search">
                     {% if data.showSearchForm %}
                         {% include molecule('search-form') with {
                             class: config.name ~ '__search-form is-hidden-sm-md',
@@ -39,7 +75,20 @@
                     {% endif %}
                 </div>
 
-                <div class="col col--right">
+                {% if is_granted('ROLE_USER') %}
+                    <div class="col col--right {{ config.name }}__user">
+                        <a href="{{ url('customer/overview') }}" class="link link--alternative">
+                            {% include atom('icon') with {
+                                modifiers: ['big'],
+                                data: {
+                                    name: 'user'
+                                }
+                            } only %}
+                        </a>
+                    </div>
+                {% endif %}
+
+                <div class="col col--right {% if is_granted('ROLE_USER') %} {{ config.name }}__user-nav {% endif %}">
                     {% if data.showUserMenu %}
                         {% if is_granted('ROLE_USER') %}
                             {% include molecule('user-navigation') with {
@@ -49,7 +98,7 @@
                                 }
                             } only %}
                         {% else %}
-                            <a href="{{ url('login') }}" class="button button--big">{{ 'customer.please_login'|trans }}</a>
+                            <a href="{{ url('login') }}" class="button button--tight button--secondary {{ config.name }}__login">{{ 'customer.please_login'|trans }}</a>
                         {% endif %}
                     {% endif %}
                 </div>

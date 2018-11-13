@@ -60,6 +60,16 @@
             }
         }
 
+        &--secondary {
+            font-size: rem(14);
+            padding: rem(10) rem(30);
+
+            @include helper-breakpoint-media-min($lg) {
+                font-size: rem(16);
+                padding: rem(15) rem(27);
+            }
+        }
+
         &--alternative {
             background-color: $setting-color-alt;
             border-color: $setting-color-alt;

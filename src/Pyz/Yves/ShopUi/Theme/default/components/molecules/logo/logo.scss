@@ -1,8 +1,21 @@
 @mixin shop-ui-logo($name: '.logo') {
     #{$name} {
 
-        padding-right: 58px;
-        margin-top: -17px;
+        &__image {
+            &--main {
+                display: none;
+
+                @include helper-breakpoint-media-min($lg) {
+                    display: block;
+                }
+            }
+
+            &--mobile {
+                @include helper-breakpoint-media-min($lg) {
+                    display: none;
+                }
+            }
+        }
 
         &--checkout {
             padding-right: 0;

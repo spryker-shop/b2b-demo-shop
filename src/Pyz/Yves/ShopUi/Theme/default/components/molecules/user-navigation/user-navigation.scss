@@ -1,16 +1,43 @@
 @mixin shop-ui-user-navigation($name: '.user-navigation') {
     #{$name} {
-        padding-left: 43px;
         display: flex;
+        margin: 0 rem(-15);
+
+        @include helper-breakpoint-media-min($xl) {
+            margin: 0;
+        }
 
         &__item {
-            max-width: 100px;
+            width: 33.333%;
             position: relative;
-            padding-bottom: 10px;
+            background-color: $setting-color-white;
+            box-shadow: rem(2) rem(2) rem(8) 0 rgba($setting-color-black, 0.12);
             z-index: $setting-zi-element + 2;
 
+            @include helper-breakpoint-media-min($lg) {
+                width: 25%;
+                background-color: transparent;
+                padding-bottom: rem(10);
+            }
+
+            @include helper-breakpoint-media-min($xl) {
+                box-shadow: none;
+                max-width: rem(100);
+                width: auto;
+            }
+
             &:not(:first-child) {
-                margin-left: 30px;
+                @include helper-breakpoint-media-min($xl) {
+                    margin-left: rem(30);
+                }
+            }
+
+            &--user {
+                display: none;
+
+                @include helper-breakpoint-media-min($lg) {
+                    display: block;
+                }
             }
 
             &:hover #{$name}__sub-nav {
@@ -18,7 +45,11 @@
                 opacity: 1;
 
                 &--pull-left {
-                    transform: translateX(-90%);
+                    transform: translateX(-95%) scale(1);
+
+                    @include helper-breakpoint-media-min($xxxl) {
+                        transform: translateX(-90%) scale(1);
+                    }
                 }
             }
         }
@@ -41,16 +72,41 @@
             }
         }
 
+        &__link {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: rem(8);
+            letter-spacing: rem(0.2);
+            color: $setting-color-black;
+            padding: 0 rem(15);
+
+            @include helper-breakpoint-media-min($lg) {
+                display: block;
+                font-size: rem(10);
+                letter-spacing: rem(0.6);
+                padding: 0;
+                color: $setting-color-gray-4;
+            }
+        }
+
         &__icon {
             display: flex;
             justify-content: center;
-            height: 38px;
+            align-items: center;
+            height: rem(38);
+            padding-right: rem(10);
+
+            @include helper-breakpoint-media-min($lg) {
+                align-items: flex-start;
+                padding: 0;
+            }
         }
 
         &__arrow {
-            margin: 15px 0 0 5px;
-            width: 7px;
-            height: 4px;
+            margin: rem(15) 0 0 rem(5);
+            width: rem(7);
+            height: rem(4);
         }
 
         &__sub-nav {
@@ -62,7 +118,7 @@
             transform-origin: top center;
             background: $setting-color-white;
             border-radius: $setting-border-radius;
-            box-shadow: 0 18px 18px 0 $setting-color-shadow-1, 0 3px 3px 0 $setting-color-shadow-1;
+            box-shadow: 0 rem(18) rem(18) 0 $setting-color-shadow-1, 0 rem(3) rem(3) 0 $setting-color-shadow-1;
             padding: rem(21) rem(38) rem(21) rem(29);
             white-space: nowrap;
             font-size: rem(15);
@@ -83,7 +139,11 @@
             }
 
             &--pull-left::before {
-                left: 90%;
+                left: 95%;
+
+                @include helper-breakpoint-media-min($xxxl) {
+                    transform: translateX(-90%);
+                }
             }
         }
 
