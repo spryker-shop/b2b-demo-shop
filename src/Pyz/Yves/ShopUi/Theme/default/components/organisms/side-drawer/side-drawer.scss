@@ -26,17 +26,44 @@ $shop-ui-side-drawer-width: rem(375);
             left: - $shop-ui-side-drawer-width;
             width: $shop-ui-side-drawer-width;
             background-color: $setting-color-bg;
+            padding: rem(10) rem(13);
             overflow-y: auto;
         }
 
         &__close {
             padding: 0.5rem 1rem;
-            background-color: $setting-color-lighter;
             text-align: right;
         }
 
         &__navigation {
-            padding: 1rem;
+            padding-bottom: rem(45);
+        }
+
+        &__contact {
+            display: block;
+            padding: rem(16) rem(15) rem(16) rem(64);
+            margin-bottom: rem(15);
+            border-radius: 2px;
+            border: 1px solid $setting-color-gray-1;
+            color: $setting-color-gray-2;
+            position: relative;
+
+            &-icon {
+                position: absolute;
+                left: rem(20);
+                top: 50%;
+                transform: translateY(-50%);
+            }
+
+            &-text {
+                display: block;
+                font-size: rem(14);
+                line-height: 1.2;
+
+                &--weight {
+                    font-weight: fw(medium);
+                }
+            }
         }
 
         &--show &__overlay {

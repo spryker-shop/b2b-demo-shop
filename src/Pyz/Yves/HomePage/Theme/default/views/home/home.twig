@@ -121,30 +121,30 @@
     {% endembed %}
 
     {#common-section common-section--mobile-partly-hidden js-common-section-mobile-partly-hidden#}
-    {% embed organism('section') with {
-        modifiers: ['secondary'],
-        data: {
-            innerClass: 'container'
-        }
-    } only %}
-        {% block inner %}
-            {{ spyCmsBlock({
-                name: 'Teaser for home page'
-            }) }}
+    {#{% embed organism('section') with {#}
+        {#modifiers: ['secondary'],#}
+        {#data: {#}
+            {#innerClass: 'container'#}
+        {#}#}
+    {#} only %}#}
+        {#{% block inner %}#}
+            {#{{ spyCmsBlock({#}
+                {#name: 'Teaser for home page'#}
+            {#}) }}#}
 
-            {% include molecule('toggler-click') with {
-                attributes: {
-                    'target-selector': '.js-common-section-mobile-partly-hidden',
-                    'trigger-selector': '.js-common-section-mobile-partly-hidden__trigger',
-                    'class-to-toggle': 'is-full-visible-common-section'
-                }
-            } only %}
+            {#{% include molecule('toggler-click') with {#}
+                {#attributes: {#}
+                    {#'target-selector': '.js-common-section-mobile-partly-hidden',#}
+                    {#'trigger-selector': '.js-common-section-mobile-partly-hidden__trigger',#}
+                    {#'class-to-toggle': 'is-full-visible-common-section'#}
+                {#}#}
+            {#} only %}#}
 
-            <div class="common-section__trigger">
-                <a href="#" class="button button--hollow button--tight js-common-section-mobile-partly-hidden__trigger">
-                    {{ 'global.show_more' | trans }}
-                </a>
-            </div>
-        {% endblock %}
-    {% endembed %}
+            {#<div class="common-section__trigger">#}
+                {#<a href="#" class="button button--hollow button--tight js-common-section-mobile-partly-hidden__trigger">#}
+                    {#{{ 'global.show_more' | trans }}#}
+                {#</a>#}
+            {#</div>#}
+        {#{% endblock %}#}
+    {#{% endembed %}#}
 {% endblock %}

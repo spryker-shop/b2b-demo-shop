@@ -19,7 +19,7 @@
     {{ parent() }}
 
     {% if(data.node.children | length > 0) %}
-        <div class="menu-wrapper menu-wrapper--lvl-{{ data.levelMenu }}">
+        <div class="menu-wrapper menu-wrapper--lvl-{{ data.levelMenu }} is-hidden-sm-lg">
             <ul class="menu menu--lvl-{{ data.levelMenu }}">
                 {% for childNode in data.node.children %}
                     {% set hasChildren = childNode.children | length > 0 %}
@@ -38,18 +38,74 @@
 {% endblock %}
 
 {% block url %}
-    <a class="menu__link menu__link--lvl-{{ data.levelMenu - 1 }}" href="{{ data.node.url }}">{{ data.node.title }}</a>
+    <span class="menu__trigger">
+        <a class="menu__link menu__link--lvl-{{ data.levelMenu - 1 }}" href="{{ data.node.url }}">{{ data.node.title }}</a>
+
+        {% if(data.node.children | length > 0) %}
+            <button class="menu__trigger-btn menu__trigger-btn--lvl-{{ data.levelMenu - 1 }}" data-toggle-target=".menu-wrapper">
+                {% include atom('icon') with {
+                    modifiers: ['small'],
+                    class: 'menu__trigger-btn-icon',
+                    data: {
+                        name: 'caret-down'
+                    }
+                } only %}
+            </button>
+        {% endif %}
+    </span>
 {% endblock %}
 
 {% block link %}
-    <a class="menu__link menu__link--lvl-{{ data.levelMenu - 1 }}" href="{{ data.node.url }}">{{ data.node.title }}</a>
+    <span class="menu__trigger">
+        <a class="menu__link menu__link--lvl-{{ data.levelMenu - 1 }}" href="{{ data.node.url }}">{{ data.node.title }}</a>
+
+        {% if(data.node.children | length > 0) %}
+            <button class="menu__trigger-btn menu__trigger-btn--lvl-{{ data.levelMenu - 1 }}">
+                {% include atom('icon') with  {
+                    modifiers: ['small'],
+                    class: 'menu__trigger-btn-icon',
+                    data: {
+                        name: 'caret-down'
+                    }
+                } only %}
+            </button>
+        {% endif %}
+    </span>
 {% endblock %}
 
 {% block externalUrl %}
-    <a class="menu__link menu__link--lvl-{{ data.levelMenu - 1 }}" href="{{ data.node.url }}" target="_blank">{{ data.node.title }}</a>
+    <span class="menu__trigger">
+        <a class="menu__link menu__link--lvl-{{ data.levelMenu - 1 }}" href="{{ data.node.url }}" target="_blank">{{ data.node.title }}</a>
+
+        {% if(data.node.children | length > 0) %}
+            <button class="menu__trigger-btn menu__trigger-btn--lvl-{{ data.levelMenu - 1 }}">
+                {% include atom('icon') with {
+                    modifiers: ['small'],
+                    class: 'menu__trigger-btn-icon',
+                    data: {
+                        name: 'caret-down'
+                    }
+                } only %}
+            </button>
+        {% endif %}
+    </span>
 {% endblock %}
 
 {% block other %}
-    <span class="menu__text menu__text--lvl-{{ data.levelMenu - 1 }}">{{ data.node.title }}</span>
+    <span class="menu__trigger">
+        <span class="menu__text menu__text--lvl-{{ data.levelMenu - 1 }}">{{ data.node.title }}</span>
+
+        {% if(data.node.children | length > 0) %}
+            <button class="menu__trigger-btn menu__trigger-btn--lvl-{{ data.levelMenu - 1 }}">
+                {% include atom('icon') with {
+                    modifiers: ['small'],
+                    class: 'menu__trigger-btn-icon',
+                    data: {
+                        name: 'caret-down'
+                    }
+                } only %}
+            </button>
+        {% endif %}
+    </span>
 {% endblock %}
 

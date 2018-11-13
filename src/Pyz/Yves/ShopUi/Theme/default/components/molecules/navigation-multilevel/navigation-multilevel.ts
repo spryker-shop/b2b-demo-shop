@@ -23,10 +23,12 @@ export default class NavigationMultilevel extends Component {
     }
 
     protected onTriggerOver(event: Event): void {
-        const trigger = <HTMLElement>event.currentTarget;
-        event.preventDefault();
-        this.overlay.showOverlay('no-header');
-        this.addClass(trigger);
+        if (window.innerWidth >= this.availableBreakpoint) {
+            const trigger = <HTMLElement>event.currentTarget;
+            event.preventDefault();
+            this.overlay.showOverlay('no-header');
+            this.addClass(trigger);
+        }
     }
 
     protected addClass(trigger: HTMLElement): void {
@@ -34,10 +36,12 @@ export default class NavigationMultilevel extends Component {
     }
 
     protected onTriggerOut(event: Event): void {
-        const trigger = <HTMLElement>event.currentTarget;
-        event.preventDefault();
-        this.overlay.hideOverlay('no-header');
-        this.removeClass(trigger);
+        if (window.innerWidth >= this.availableBreakpoint) {
+            const trigger = <HTMLElement>event.currentTarget;
+            event.preventDefault();
+            this.overlay.hideOverlay('no-header');
+            this.removeClass(trigger);
+        }
     }
 
     protected removeClass(trigger: HTMLElement): void {
@@ -50,6 +54,10 @@ export default class NavigationMultilevel extends Component {
 
     get classToToggle(): string {
         return this.getAttribute('class-to-toggle');
+    }
+
+    get availableBreakpoint(): number {
+        return +this.getAttribute('available-breakpoint');
     }
 
     get overlaySelector(): string {
