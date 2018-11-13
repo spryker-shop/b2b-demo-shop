@@ -1,15 +1,18 @@
 <?php
 
 /**
- * This file is part of the Spryker Suite.
+ * This file is part of the Spryker Commerce OS.
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
 namespace Pyz\Zed\ProductUrlCartConnector\Business;
 
 use Pyz\Zed\ProductUrlCartConnector\Business\Expander\ProductUrlExpander;
+use Pyz\Zed\ProductUrlCartConnector\Business\Expander\ProductUrlExpanderInterface;
 use Pyz\Zed\ProductUrlCartConnector\ProductUrlCartConnectorDependencyProvider;
 use Spryker\Zed\Kernel\Business\AbstractBusinessFactory;
+use Spryker\Zed\Locale\Business\LocaleFacadeInterface;
+use Spryker\Zed\Product\Business\ProductFacadeInterface;
 
 /**
  * @method \Pyz\Zed\ProductUrlCartConnector\ProductUrlCartConnectorConfig getConfig()
@@ -17,9 +20,9 @@ use Spryker\Zed\Kernel\Business\AbstractBusinessFactory;
 class ProductUrlCartConnectorBusinessFactory extends AbstractBusinessFactory
 {
     /**
-     * @return \Pyz\Zed\ProductUrlCartConnector\Business\Expander\ProductUrlExpander
+     * @return \Pyz\Zed\ProductUrlCartConnector\Business\Expander\ProductUrlExpanderInterface
      */
-    public function createProductExpander()
+    public function createProductExpander(): ProductUrlExpanderInterface
     {
         return new ProductUrlExpander(
             $this->getProductFacade(),
@@ -28,9 +31,9 @@ class ProductUrlCartConnectorBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return \Spryker\Zed\ProductRelation\Business\ProductRelationFacadeInterface
+     * @return \Spryker\Zed\Product\Business\ProductFacadeInterface
      */
-    protected function getProductFacade()
+    protected function getProductFacade(): ProductFacadeInterface
     {
         return $this->getProvidedDependency(ProductUrlCartConnectorDependencyProvider::FACADE_PRODUCT);
     }
@@ -38,7 +41,7 @@ class ProductUrlCartConnectorBusinessFactory extends AbstractBusinessFactory
     /**
      * @return \Spryker\Zed\Locale\Business\LocaleFacadeInterface
      */
-    protected function getLocaleFacade()
+    protected function getLocaleFacade(): LocaleFacadeInterface
     {
         return $this->getProvidedDependency(ProductUrlCartConnectorDependencyProvider::FACADE_LOCALE);
     }

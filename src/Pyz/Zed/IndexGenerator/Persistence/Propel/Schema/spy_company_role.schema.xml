@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<database xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="zed" xsi:noNamespaceSchemaLocation="http://static.spryker.com/schema-01.xsd" namespace="Orm\Zed\CompanyRole\Persistence" package="src.Orm.Zed.CompanyRole.Persistence">
+  <table name="spy_company_role">
+    <index name="index-spy_company_role-fk_company">
+      <index-column name="fk_company"/>
+    </index>
+  </table>
+  <table name="spy_company_role_to_company_user">
+    <index name="index-spy_company_role_to_company_user-fk_company_role">
+      <index-column name="fk_company_role"/>
+    </index>
+    <index name="index-spy_company_role_to_company_user-fk_company_user">
+      <index-column name="fk_company_user"/>
+    </index>
+  </table>
+</database>

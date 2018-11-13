@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Spryker Suite.
+ * This file is part of the Spryker Commerce OS.
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
@@ -95,6 +95,7 @@ class RabbitMqConfig extends SprykerRabbitMqConfig
         $queueOptionTransfer
             ->setQueueName($queueName)
             ->setDurable(true)
+            ->setNoWait(false)
             ->addRoutingKey('');
 
         return $queueOptionTransfer;
@@ -112,6 +113,7 @@ class RabbitMqConfig extends SprykerRabbitMqConfig
         $queueOptionTransfer
             ->setQueueName($errorQueueName)
             ->setDurable(true)
+            ->setNoWait(false)
             ->addRoutingKey($routingKey);
 
         return $queueOptionTransfer;

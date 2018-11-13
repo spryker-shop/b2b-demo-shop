@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Spryker Suite.
+ * This file is part of the Spryker Commerce OS.
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
@@ -16,7 +16,7 @@ class WebProfilerWidgetDependencyProvider extends SprykerWebProfilerDependencyPr
     /**
      * @return array
      */
-    protected function getWebProfilerPlugins()
+    protected function getWebProfilerPlugins(): array
     {
         return [
             new WebProfilerServiceProvider(),

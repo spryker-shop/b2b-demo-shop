@@ -1,15 +1,15 @@
 <?php
 
 /**
- * This file is part of the Spryker Suite.
+ * This file is part of the Spryker Commerce OS.
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
 namespace Pyz\Zed\ShoppingListDataImport;
 
-use Spryker\Zed\ShoppingListDataImport\ShoppingListDataImportConfig as CoreShoppingListDataImportConfig;
+use Spryker\Zed\ShoppingListDataImport\ShoppingListDataImportConfig as SprykerShoppingListDataImportConfig;
 
-class ShoppingListDataImportConfig extends CoreShoppingListDataImportConfig
+class ShoppingListDataImportConfig extends SprykerShoppingListDataImportConfig
 {
     /**
      * @return string

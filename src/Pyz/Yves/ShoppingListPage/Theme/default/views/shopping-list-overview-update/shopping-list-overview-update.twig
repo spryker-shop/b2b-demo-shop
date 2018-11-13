@@ -61,7 +61,7 @@
                         {% set productDiscontinuedWidget = findWidget('ProductDiscontinuedWidget', [product.sku]) %}
 
                         {% if productDiscontinuedWidget %}
-                            {% set isProductAvailable = productDiscontinuedWidget.isDiscontinued and isProductAvailable %}
+                            {% set isProductAvailable = not productDiscontinuedWidget.isDiscontinued and isProductAvailable %}
                         {% endif %}
 
                         {% embed molecule('product-item') with {
@@ -101,14 +101,16 @@
                                 } only %}
                             {% endblock %}
 
+                            {% block bundle %}{% endblock %}
+
                             {% block note %}
                                 {% for subForm in data.form.items[embed.key].children  %}
-                                    {% if not subForm.rendered %}
-                                        {% if subForm.vars.template_path is defined %}
-                                            {% include subForm.vars.template_path with {'form': subForm, 'rowClass': config.name ~ '__options-row'} %}
-                                        {% endif %}
+                                {% if not subForm.rendered %}
+                                    {% if subForm.vars.template_path is defined %}
+                                        {% include subForm.vars.template_path with {'form': subForm, 'rowClass': config.name ~ '__options-row'} %}
                                     {% endif %}
-                                {% endfor %}
+                                {% endif %}
+                            {% endfor %}
                             {% endblock %}
 
                             {% block price %}

@@ -51,11 +51,10 @@
                     {% if embed.isItemAvailable %}
                         {{ 'customer.account.shopping_list.available' | trans }}
                     {% else %}
-                        {% if widgetExists('ProductDiscontinuedWidgetPlugin') %}
-                            {{ widget('ProductDiscontinuedWidgetPlugin', data.listItem.sku) }}
-                        {% else %}
+                        {% widget 'ProductDiscontinuedWidget' args [data.listItem.sku] only %}
+                        {% nowidget %}
                             {{ 'customer.account.shopping_list.not_available' | trans }}
-                        {% endif %}
+                        {% endwidget %}
                     {% endif %}
                 </span>
                 {{ parent() }}
@@ -68,7 +67,6 @@
                         listItem: data.listItem,
                     }
                 } only %}
-                {% widget 'ShoppingListItemNoteWidget' args [data.listItem.shoppingListItem] only %}{% endwidget %}
                 {{ widget('ShoppingListItemProductOptionWidgetPlugin', data.listItem.shoppingListItem) }}
             {% endblock %}
 
@@ -84,6 +82,14 @@
                 {% else %}
                     {{ 'product_alternative_widget.not_applicable' | trans }}
                 {% endif %}
+            {% endblock %}
+
+            {% block bundle %}
+            {% endblock %}
+
+            {% block note %}
+                {% widget 'ShoppingListItemNoteWidget' args [data.listItem.shoppingListItem] only %}
+                {% endwidget %}
             {% endblock %}
 
             {% block quantity %}

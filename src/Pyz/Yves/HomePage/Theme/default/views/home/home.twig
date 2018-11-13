@@ -80,49 +80,71 @@
 
 {% block content %}
 
-    <section class="common-section common-section--no-mobile-bottom-indent spacing-top spacing-top--inner spacing-top--big ">
-        {{ spyCmsBlock({
-            name: 'Featured Products'
-        }) }}
-    </section>
+    {#common-section spacing-top spacing-top--inner spacing-top--big#}
+    {% embed organism('section') with {
+        modifiers: ['secondary'],
+        class: 'spacing-top spacing-top--inner spacing-top--big'
+    } only %}
+        {% block inner %}
+            {{ spyCmsBlock({
+                name: 'Featured Products'
+            }) }}
+        {% endblock %}
+    {% endembed %}
 
-    <section class="common-section common-section--full-width spacing-top spacing-top--inner spacing-top--big">
-        {{ spyCmsBlock({
-            name: 'Featured Categories'
-        }) }}
-    </section>
-
+    {#common-section common-section--full-width spacing-top spacing-top--inner spacing-top--big#}
+    {% embed organism('section') with {
+        modifiers: ['secondary', 'full-width'],
+        class: 'spacing-top spacing-top--inner spacing-top--big'
+    } only %}
+        {% block inner %}
+            {{ spyCmsBlock({
+                name: 'Featured Categories'
+            }) }}
+        {% endblock %}
+    {% endembed %}
 {% endblock %}
 
 {% block contentBottom %}
-    <section class="common-section common-section--bg-dark">
-        <div class="container">
+    {#common-section common-section--bg-dark#}
+    {% embed organism('section') with {
+        modifiers: ['secondary', 'bg-dark'],
+        data: {
+            innerClass: 'container'
+        }
+    } only %}
+        {% block inner %}
             {{ spyCmsBlock({
                 name: 'Top Sellers'
             }) }}
-        </div>
-    </section>
+        {% endblock %}
+    {% endembed %}
 
-    <section class="common-section common-section--mobile-partly-hidden js-common-section-mobile-partly-hidden">
-        <div class="container">
+    {#common-section common-section--mobile-partly-hidden js-common-section-mobile-partly-hidden#}
+    {% embed organism('section') with {
+        modifiers: ['secondary'],
+        data: {
+            innerClass: 'container'
+        }
+    } only %}
+        {% block inner %}
             {{ spyCmsBlock({
                 name: 'Teaser for home page'
             }) }}
-        </div>
 
-        {% include molecule('toggler-click') with {
-            attributes: {
-                'target-selector': '.js-common-section-mobile-partly-hidden',
-                'trigger-selector': '.js-common-section-mobile-partly-hidden__trigger',
-                'class-to-toggle': 'is-full-visible-common-section'
-            }
-        } only %}
+            {% include molecule('toggler-click') with {
+                attributes: {
+                    'target-selector': '.js-common-section-mobile-partly-hidden',
+                    'trigger-selector': '.js-common-section-mobile-partly-hidden__trigger',
+                    'class-to-toggle': 'is-full-visible-common-section'
+                }
+            } only %}
 
-        <div class="common-section__trigger">
-            <a href="#" class="button button--hollow button--tight js-common-section-mobile-partly-hidden__trigger">
-                {{ 'global.show_more' | trans }}
-            </a>
-        </div>
-    </section>
-
+            <div class="common-section__trigger">
+                <a href="#" class="button button--hollow button--tight js-common-section-mobile-partly-hidden__trigger">
+                    {{ 'global.show_more' | trans }}
+                </a>
+            </div>
+        {% endblock %}
+    {% endembed %}
 {% endblock %}

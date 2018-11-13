@@ -28,6 +28,7 @@ export default class QuantityCounter extends Component {
     protected mapEvents(): void {
         this.incrementButton.addEventListener('click', (event: Event) => this.incrementValue(event));
         this.decrementButton.addEventListener('click', (event: Event) => this.decrementValue(event));
+        this.input.addEventListener('input', (event: Event) => this.triggerInputEvent());
         if(this.autoUpdate) {
             this.input.addEventListener('change', () => this.delayToSubmit());
         }

@@ -105,13 +105,12 @@
             {% endblock %}
 
             {% block bundle %}
-                {% widget 'ProductBundleItemsMultiCartItemsListWidget' args [data.listItem, data.list] only %}{% endwidget %}
+                {% widget 'ProductBundleCartItemsListWidget' args [data.listItem, data.list] only %}
+                {% endwidget %}
             {% endblock %}
 
             {% block note %}
-                {% if data.canEdit %}
-                    {% widget 'CartItemNoteFormWidget' args [data.listItem, data.list] only %}{% endwidget %}
-                {% endif %}
+                {% widget 'CartItemNoteFormWidget' args [data.listItem, data.list] only %}{% endwidget %}
             {% endblock %}
 
             {% if data.listItem.productOptions is defined and data.listItem.productOptions | length > 0 %}

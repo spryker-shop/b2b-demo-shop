@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Spryker Suite.
+ * This file is part of the Spryker Commerce OS.
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
@@ -17,7 +17,8 @@ class MenuItemCompanyWidget extends AbstractWidget
     public function __construct()
     {
         $this->addParameter('isVisible', $this->isVisible())
-            ->addParameter('companyName', $this->getCompanyName());
+            ->addParameter('companyName', $this->getCompanyName())
+            ->addParameter('hasCompanyAccess', $this->hasCompanyAccess());
     }
 
     /**
@@ -66,5 +67,15 @@ class MenuItemCompanyWidget extends AbstractWidget
         }
 
         return false;
+    }
+
+    /**
+     * @return bool
+     */
+    protected function hasCompanyAccess(): bool
+    {
+        $customerTransfer = $this->getFactory()->getCustomerClient()->getCustomer();
+
+        return $customerTransfer && ($customerTransfer->getCompanyUserTransfer() || $customerTransfer->getIsOnBehalf());
     }
 }

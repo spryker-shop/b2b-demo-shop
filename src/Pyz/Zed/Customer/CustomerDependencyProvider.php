@@ -1,14 +1,13 @@
 <?php
 
 /**
- * This file is part of the Spryker Suite.
+ * This file is part of the Spryker Commerce OS.
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
 namespace Pyz\Zed\Customer;
 
 use Pyz\Zed\CompanyUser\Communication\Plugin\Customer\IsEnabledCustomerCompanyUserPluginTransferExpanderPlugin;
-use Spryker\Client\Customer\Plugin\CustomerTransferRefreshPlugin;
 use Spryker\Shared\Newsletter\NewsletterConstants;
 use Spryker\Zed\BusinessOnBehalf\Communication\Plugin\Customer\DefaultCompanyUserCustomerTransferExpanderPlugin;
 use Spryker\Zed\BusinessOnBehalf\Communication\Plugin\Customer\IsOnBehalfCustomerTransferExpanderPlugin;
@@ -35,7 +34,7 @@ class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
      *
      * @return \Spryker\Zed\Kernel\Container
      */
-    public function provideCommunicationLayerDependencies(Container $container)
+    public function provideCommunicationLayerDependencies(Container $container): Container
     {
         $container = parent::provideCommunicationLayerDependencies($container);
 
@@ -53,7 +52,7 @@ class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
     /**
      * @return \Spryker\Zed\Customer\Dependency\Plugin\CustomerAnonymizerPluginInterface[]
      */
-    protected function getCustomerAnonymizerPlugins()
+    protected function getCustomerAnonymizerPlugins(): array
     {
         return [
             new CustomerUnsubscribePlugin([
@@ -66,7 +65,7 @@ class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
     /**
      * @return \Spryker\Zed\Customer\Dependency\Plugin\CustomerTransferExpanderPluginInterface[]
      */
-    protected function getCustomerTransferExpanderPlugins()
+    protected function getCustomerTransferExpanderPlugins(): array
     {
         return [
             new CustomerTransferUsernameExpanderPlugin(),
@@ -88,16 +87,6 @@ class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
     {
         return [
             new CompanyUserInvitationPostCustomerRegistrationPlugin(),
-        ];
-    }
-
-    /**
-     * @return \Spryker\Client\Customer\Dependency\Plugin\CustomerSessionGetPluginInterface[]
-     */
-    protected function getCustomerSessionGetPlugins()
-    {
-        return [
-            new CustomerTransferRefreshPlugin(),
         ];
     }
 

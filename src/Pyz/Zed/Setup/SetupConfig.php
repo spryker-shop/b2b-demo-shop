@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Spryker Suite.
+ * This file is part of the Spryker Commerce OS.
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
@@ -19,6 +19,10 @@ use Spryker\Zed\ZedNavigation\Communication\Console\BuildNavigationConsole;
 class SetupConfig extends SprykerSetupConfig
 {
     /**
+     * The following commands are a boilerplate stack. Please customize for your project.
+     *
+     * For a first initial migration you must use OPTION_NO_DIFF false.
+     *
      * @return array
      */
     public function getSetupInstallCommandNames()

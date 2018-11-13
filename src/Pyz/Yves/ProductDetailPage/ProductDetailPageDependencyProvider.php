@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Spryker Suite.
+ * This file is part of the Spryker Commerce OS.
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
@@ -15,22 +15,15 @@ class ProductDetailPageDependencyProvider extends SprykerShopProductDetailPageDe
     public const CLIENT_PRODUCT_STORAGE_PYZ = 'CLIENT_PRODUCT_STORAGE_PYZ';
 
     /**
-     * @return \Spryker\Yves\Kernel\Dependency\Plugin\WidgetPluginInterface[]
-     */
-    protected function getProductDetailPageWidgetPlugins(): array
-    {
-        return [];
-    }
-
-    /**
      * @param \Spryker\Yves\Kernel\Container $container
      *
      * @return \Spryker\Yves\Kernel\Container
      */
-    public function provideDependencies(Container $container)
+    public function provideDependencies(Container $container): Container
     {
         $container = parent::provideDependencies($container);
         $container = $this->addProductStoragePyzClient($container);
+
         return $container;
     }
 
@@ -39,11 +32,12 @@ class ProductDetailPageDependencyProvider extends SprykerShopProductDetailPageDe
      *
      * @return \Spryker\Yves\Kernel\Container
      */
-    protected function addProductStoragePyzClient(Container $container)
+    protected function addProductStoragePyzClient(Container $container): Container
     {
         $container[self::CLIENT_PRODUCT_STORAGE_PYZ] = function (Container $container) {
             return $container->getLocator()->productStorage()->client();
         };
+
         return $container;
     }
 }

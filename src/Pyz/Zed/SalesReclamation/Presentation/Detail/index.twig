@@ -1,0 +1,29 @@
+{% extends '@Application/Layout/layout.twig' %}
+
+{% block section_title %}
+    {{ 'Overview of reclamation:' | trans }} {{ reclamation.idSalesReclamation }}
+{% endblock %}
+
+{% block action %}
+    {{ backActionButton('/sales-reclamation', 'Back to Reclamatinos' | trans) }}
+{% endblock %}
+
+{% block content %}
+    <div id="items">
+        {% include '@SalesReclamation/Detail/boxes/items.twig' with {
+            'reclamation': reclamation,
+        } %}
+    </div>
+
+    {% if reclamation.createdOrders|length %}
+        {% include '@SalesReclamation/Detail/_connected_orders.twig' with {
+            'createdOrders': reclamation.createdOrders,
+        } %}
+    {% endif %}
+
+{% endblock %}
+
+{% block head_css %}
+    {{ parent() }}
+    <link rel="stylesheet" href="/assets/css/spryker-zed-sales-reclamation-main.css">
+{% endblock %}
