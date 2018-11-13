@@ -48,10 +48,10 @@
 
             {% set isHidden = (data.levelMenu != 1) %}
 
-            <li class="{{ config.name }}__menu-item {{ config.name }}__menu-item--lvl-{{ data.levelMenu }} {% if isActive %} {{ config.name }}__menu-item--active {{ config.jsName }}__menu-item{% endif %} {% if isHidden and not isActive %}is-hidden{% endif %}">
-                <a href="{{ url(categoryUrl) }}" class="link {{ config.name }}__menu-link {{ config.name }}__menu-link--lvl-{{ data.levelMenu }} {% if isActive %} {{ config.name }}__menu-link--active{% endif %}" {% if quantity == 0 %}disabled="disabled"{% endif %}>
-                    <span class="{{ config.name }}__link-text {% if isActive %}{{ config.name }}__link-text--active{% endif %}">{{ categoryNode.name }}</span> <span class="is-hidden-sm-md">{{ quantity }}</span>
-                </a>
+            <li class="{{ config.name }}__menu-item {{ config.name }}__menu-item--lvl-{{ data.levelMenu }} {% if isActive %} {{ config.name }}__menu-item--active {{ config.jsName }}__menu-item {% endif %} {% if isHidden and not isActive %}is-hidden{% endif %}">
+                <button class="link {{ config.name }}__menu-link {{ config.name }}__menu-link--lvl-{{ data.levelMenu }} {% if isActive %} {{ config.name }}__menu-link--active{% endif %} {{ config.jsName }}__category-trigger" {% if quantity == 0 %}disabled="disabled"{% endif %} data-change-action-to="{{ categoryUrl }}">
+                    <span class="{{ config.name }}__link-text {% if isActive %}{{ config.name }}__link-text--active{% endif %}">{{ categoryNode.name }}</span> <span>{{ quantity }}</span>
+                </button>
 
                 {% if hasChildren %}
                     {% include molecule('filter-category', 'CatalogPage') with {
@@ -66,5 +66,12 @@
             </li>
 
         {% endfor %}
+
+        {% include molecule('form-submitter') with {
+            attributes: {
+                'trigger-selector': '.' ~ config.jsName ~ '__category-trigger',
+                'event': 'click'
+            }
+        } only %}
     </ul>
 {% endblock %}

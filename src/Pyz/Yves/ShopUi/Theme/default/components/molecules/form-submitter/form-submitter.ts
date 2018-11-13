@@ -20,12 +20,20 @@ export default class FormSubmitter extends Component {
 
     protected onTriggerEvent(event: Event): void {
         event.preventDefault();
-        const trigger = <HTMLElement>event.target;
+        const trigger = <HTMLElement>event.currentTarget;
+        const newActionName = this.getDataAttribute(trigger, 'data-change-action-to');
         const form = <HTMLFormElement>trigger.closest('form');
+        if (newActionName !== null) {
+            form.action = newActionName;
+        }
         form.submit();
     }
 
     get triggerSelector(): string {
         return this.getAttribute('trigger-selector');
+    }
+
+    protected getDataAttribute(block: HTMLElement, attr: string): string {
+        return block.getAttribute(attr);
     }
 }
