@@ -1,6 +1,6 @@
 import Component from 'ShopUi/models/component';
 
-export default class BreakpointDependentBlockMover extends Component {
+export default class BreakpointDependentBlockPlacer extends Component {
     protected data: Object[]
     protected blocks: HTMLElement[]
 

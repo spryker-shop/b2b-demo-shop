@@ -1,4 +1,4 @@
-@mixin shop-ui-custom-select($name: '.custom-select') {
+    @mixin shop-ui-custom-select($name: '.custom-select') {
     #{$name} {
         position: relative;
         max-width: 100%;
@@ -53,7 +53,7 @@
             #{$name}__select {
                 text-transform: uppercase;
                 border-radius: 0;
-                background: transparent;
+                background: $setting-color-transparent;
                 border: none;
                 color: $setting-color-gray-4;
                 font-size: rem(11);

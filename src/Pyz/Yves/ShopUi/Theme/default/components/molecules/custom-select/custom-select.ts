@@ -22,16 +22,16 @@ export default class CustomSelect extends Component {
     }
 
     protected mapEvents(): void {
-        if (this.isInited) {
-            this.$select.on('select2:select', () => this.onChangeSelect());
-        }
+        this.$select.on('select2:select', () => this.onChangeSelect());
         window.addEventListener('resize', () => setTimeout(() => this.initSelect(), 300));
     }
 
     protected onChangeSelect(): void {
-        const event = new Event('change');
-        this.select.dispatchEvent(event);
-        this.removeAttributeTitle();
+        if (this.isInited) {
+            const event = new Event('change');
+            this.select.dispatchEvent(event);
+            this.removeAttributeTitle();
+        }
     }
 
     protected initSelect(): void {

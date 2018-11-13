@@ -48,7 +48,7 @@
 
             {% set isHidden = (data.levelMenu != 1) %}
 
-            <li class="{{ config.name }}__menu-item {{ config.name }}__menu-item--lvl-{{ data.levelMenu }} {% if isActive %} {{ config.name }}__menu-item--active js-{{ config.name }}__menu-item{% endif %} {% if isHidden and not isActive %}is-hidden{% endif %}">
+            <li class="{{ config.name }}__menu-item {{ config.name }}__menu-item--lvl-{{ data.levelMenu }} {% if isActive %} {{ config.name }}__menu-item--active {{ config.jsName }}__menu-item{% endif %} {% if isHidden and not isActive %}is-hidden{% endif %}">
                 <button class="link {{ config.name }}__menu-link {{ config.name }}__menu-link--lvl-{{ data.levelMenu }} {% if isActive %} {{ config.name }}__menu-link--active{% endif %}" onclick="this.form.action='{{ categoryUrl }}'" {% if quantity == 0 %}disabled="disabled"{% endif %}>
                     <span class="{{ config.name }}__link-text {% if isActive %}{{ config.name }}__link-text--active{% endif %}">{{ categoryNode.name }}</span> <span class="is-hidden-sm-md">{{ quantity }}</span>
                 </button>

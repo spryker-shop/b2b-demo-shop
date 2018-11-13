@@ -37,7 +37,7 @@
 {% block contentBottom %}
     {% if data.categoryId is not empty %}
         <div class="catalog-cms-block-wrap">
-            {% embed molecule('cms-mobile-cutter') with {
+            {% embed molecule('content-collapser') with {
                 modifiers: ['bg-dark'],
                 embed: {
                     categoryId: data.categoryId
