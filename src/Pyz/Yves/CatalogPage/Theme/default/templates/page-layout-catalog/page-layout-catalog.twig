@@ -74,7 +74,7 @@
                         }
                     } only %}
 
-                    <a href="#" class="button button--justify button--secondary js-catalog-filters-trigger is-hidden-lg-xl spacing-bottom spacing-bottom--big">
+                    <button class="button button--justify button--secondary js-catalog-filters-trigger is-hidden-lg-xl spacing-bottom spacing-bottom--big">
                         {{ 'catalog.filter.button' | trans }} / {{ 'catalog.sort' | trans }} (2)
                         {% include atom('icon') with {
                             modifiers: ['filter'],
@@ -82,7 +82,7 @@
                                 name: 'filter'
                             }
                         } only %}
-                    </a>
+                    </button>
 
                     {% include molecule('toggler-click') with {
                         attributes: {

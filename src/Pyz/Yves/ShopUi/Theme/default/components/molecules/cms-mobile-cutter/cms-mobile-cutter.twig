@@ -5,7 +5,8 @@
 } %}
 
 {%- block class -%}
-    {{config.jsName}} {{config.name}}
+    {{parent()}}
+    {{config.jsName}}
 {%- endblock -%}
 
 {% block body %}
@@ -22,8 +23,8 @@
     } only %}
 
     <div class="{{config.name}}__trigger-holder">
-        <a href="#" class="button button--hollow button--tight {{config.jsName}}__trigger">
+        <button class="button button--hollow button--tight {{config.jsName}}__trigger">
             {{ 'global.show_more' | trans }}
-        </a>
+        </button>
     </div>
 {% endblock %}

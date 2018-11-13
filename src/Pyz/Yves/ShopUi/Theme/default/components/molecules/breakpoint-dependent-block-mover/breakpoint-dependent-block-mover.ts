@@ -1,6 +1,6 @@
 import Component from 'ShopUi/models/component';
 
-export default class BlockFlowFixer extends Component {
+export default class BreakpointDependentBlockMover extends Component {
     protected data: Object[]
     protected blocks: HTMLElement[]
 
