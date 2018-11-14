@@ -131,7 +131,7 @@ export default class TogglerClick extends Component {
 
     protected removeOverlay(): void {
         if (this.overlayModifiers.length !== 0) {
-            this.overlay.showOverlay(this.OverlayModifiers[0], this.OverlayModifiers[1]);
+            this.overlay.hideOverlay(this.OverlayModifiers[0], this.OverlayModifiers[1]);
         }
     }
 
