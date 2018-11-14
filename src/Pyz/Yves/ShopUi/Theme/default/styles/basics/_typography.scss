@@ -32,6 +32,14 @@
         background-color: $setting-color-white;
         color: $setting-color-gray-4;
         font-family: $setting-font-family;
+
+        &.is-locked {
+            position: fixed;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            height: 100%;
+        }
     }
 
     * {

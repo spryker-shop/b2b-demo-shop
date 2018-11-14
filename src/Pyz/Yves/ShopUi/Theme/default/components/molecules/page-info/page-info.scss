@@ -1,8 +1,19 @@
 .page-info {
     background-color: $setting-color-gray-7;
-    padding: rem(14) 0 rem(12);
+    padding: rem(10) 0 rem(12);
+
+    @include helper-breakpoint-media-min($lg) {
+        padding-top: rem(14);
+    }
 
     &__title {
-        font: fw(bold) rem(28)/rem(36) $setting-font-family;
+        padding-top: rem(4);
+        font: fw(bold) rem(22)/rem(26) $setting-font-family;
+
+        @include helper-breakpoint-media-min($lg) {
+            padding-top: 0;
+            font-size: rem(28);
+            line-height: rem(36);
+        }
     }
 }

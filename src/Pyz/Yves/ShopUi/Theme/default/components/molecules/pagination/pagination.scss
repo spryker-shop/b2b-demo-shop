@@ -2,10 +2,15 @@
     #{$name} {
         @include helper-font-size(small);
         text-align: center;
-        margin-top: rem(40);
+        margin-top: rem(7);
 
-        &__item {
-            display: inline-block;
+        @include helper-breakpoint-media-min($lg) {
+            margin-top: rem(40);
+        }
+
+        &__list {
+            display: flex;
+            justify-content: center;
         }
 
         &__step {
@@ -20,8 +25,8 @@
                 border: 1px solid $setting-color-gray-1;
                 border-radius: $setting-border-radius;
                 color: $setting-color-gray-2;
-                margin-left: rem(4);
-                margin-right: rem(4);
+                margin-left: rem(5);
+                margin-right: rem(5);
 
                 &:hover,
                 &:focus {

@@ -1,37 +1,50 @@
 .view-mode-switch {
-    width: 100%;
     display: flex;
-    border: 1px solid $setting-color-gray-1;
-    border-radius: $setting-border-radius;
+    margin: rem(3) rem(-8) 0;
+
+    @include helper-breakpoint-media-min($lg) {
+        width: 100%;
+        border: 1px solid $setting-color-gray-1;
+        border-radius: $setting-border-radius;
+        margin: 0;
+    }
 
     &__link {
-        @include helper-effect-transition(color);
-        display: flex;
-        width: 50%;
-        flex-shrink: 0;
-        justify-content: center;
-        padding: rem(12) 20px rem(10);
-        font-size: rem(14);
+        padding: 0 rem(8);
+        font-size: 0;
         color: $setting-color-gray-2;
-        line-height: rem(18);
 
-        &:not(:first-child) {
-            border-left: 1px solid $setting-color-gray-1;
-        }
+        @include helper-breakpoint-media-min($lg) {
+            @include helper-effect-transition(color);
+            display: flex;
+            width: 50%;
+            flex-shrink: 0;
+            justify-content: center;
+            padding: rem(12) rem(20) rem(10);
+            font-size: rem(14);
+            line-height: rem(18);
 
-        &:first-child {
-            padding-left: 21px;
-        }
+            &:not(:first-child) {
+                border-left: 1px solid $setting-color-gray-1;
+            }
 
-        &:hover,
-        &:focus {
-            color: $setting-color-gray-4;
+            &:first-child {
+                padding-left: rem(21);
+            }
+
+            &:hover,
+            &:focus {
+                color: $setting-color-gray-4;
+            }
         }
     }
 
     &__link--active {
-        background-color: $setting-color-gray-7;
-        font-weight: fw(bold);
         color: $setting-color-gray-4;
+
+        @include helper-breakpoint-media-min($lg) {
+            background-color: $setting-color-gray-7;
+            font-weight: fw(bold);
+        }
     }
 }

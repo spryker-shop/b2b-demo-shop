@@ -25,8 +25,24 @@
             min-width: 2.5rem;
         }
 
+        &--category-list {
+            height: rem(313);
+
+            @include helper-breakpoint-media-min($md) {
+                height: 10rem;
+            }
+        }
+
         &--catalog {
             height: rem(180);
+
+            @include helper-breakpoint-media-min($lg) {
+                height: 15rem;
+            }
+        }
+
+        &--category {
+            height: rem(124);
 
             @include helper-breakpoint-media-min($lg) {
                 height: 15rem;
