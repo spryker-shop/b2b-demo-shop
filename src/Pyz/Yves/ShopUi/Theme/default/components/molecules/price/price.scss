@@ -44,11 +44,23 @@
             @include helper-breakpoint-media-min($lg) {
                 @include helper-font-size(big);
             }
+
+            &#{$name}__amount--catalog-list {
+                @include helper-breakpoint-media-min($md) {
+                    margin-left: rem(4);
+                }
+            }
         }
 
         &--alt {
             color: $setting-color-alt;
             margin-right: rem(4);
+
+            &#{$name}__amount--catalog-list {
+                @include helper-breakpoint-media-min($md) {
+                    margin-right: 0;
+                }
+            }
         }
     }
 

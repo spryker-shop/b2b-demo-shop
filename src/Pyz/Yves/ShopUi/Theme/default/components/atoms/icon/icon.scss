@@ -283,7 +283,9 @@ $shop-ui-icon-size-bigger: 1.5rem;
     }
 
     &--view-mode-switch {
-        margin-right: rem(9);
+        @include helper-breakpoint-media-min($lg) {
+            margin-right: rem(9);
+        }
     }
 
     &--reset {

@@ -17,17 +17,27 @@
 {% endblock %}
 
 {% block body %}
-    {% for filter in data.facets %}
-        {% set filterHasValues = filter.values is not defined or filter.values | length > 0 %}
-        {% set toglerClass = '' %}
+    <h3 class="{{ config.name ~ '__title' }} is-hidden-lg-xl">{{ 'catalog.filter.button' | trans }} / {{ 'catalog.sort' | trans }}</h3>
+    <button class="{{ config.name ~ '__close' }} is-hidden-lg-xl js-catalog-filters-trigger">
+        {% include atom('icon') with {
+            data: {
+                name: 'cross'
+            }
+        } only %}
+    </button>
 
-        {% if filterHasValues %}
-            {% if filter.config.type == 'price-range' and can('SeePricePermissionPlugin') is empty %}
+    <div class="{{ config.name ~ '__sorting ' ~ config.jsName ~ '__sorting' }} is-hidden-lg-xl"></div>
+    <div class="{{ config.name ~ '__holder' }}">
+        {% for filter in data.facets %}
+            {% set filterHasValues = filter.values is not defined or filter.values | length > 0 %}
+            {% set toglerClass = '' %}
 
-            {% else %}
-                <div class="{{ config.name ~ '__item' }} {% if filter.name == 'category' %}{{ config.name ~ '__item--hollow' }}{% endif %}">
-                    {% if filter.name != 'category' %}
-                        <h6 class="{{ config.name ~ '__item-title toggler-accordion__item js-' ~ config.name ~ '__trigger'}}" {{ 'data-toggle-target=.js-' ~ filter.name ~ '' }}>
+            {% if filterHasValues %}
+                {% if filter.config.type == 'price-range' and can('SeePricePermissionPlugin') is empty %}
+
+                {% else %}
+                    <div class="{{ config.name ~ '__item' }} {% if filter.name == 'category' %}{{ config.name ~ '__item--hollow' }}{% endif %}">
+                        <h6 class="{{ config.name ~ '__item-title toggler-accordion__item ' ~ config.jsName ~ '__trigger' ~ '-' ~ filter.name}} {% if filter.name == 'category' %}{{ 'is-hidden-lg-xl' }}{% endif %}">
                             {{ ('product.filter.' ~ filter.name | lower) | trans }}
                             {% include atom('icon') with {
                                 class: 'toggler-accordion__icon',
@@ -37,44 +47,41 @@
                                 }
                             } only %}
                         </h6>
-                        {% set toglerClass = config.name ~ '__item-content js-' ~  filter.name ~ ' is-hidden' %}
-                    {% endif %}
+                        {% set contentModifier = filter.name == 'category' ? config.name ~ '__item-content--hollow' : '' %}
+                        {% set hiddenClassToToggleSections = filter.name == 'category' ? 'is-hidden-sm-md' : 'is-hidden' %}
+                        {% set toglerClass = config.name ~ '__item-content ' ~ config.jsName ~ '__' ~ filter.name ~ ' ' ~ hiddenClassToToggleSections ~ ' ' ~ contentModifier %}
 
-                    {% include [
-                        molecule('filter-' ~ filter.config.name, 'CatalogPage'),
-                        molecule('filter-' ~ filter.config.type, 'CatalogPage')
-                    ] ignore missing with {
-                        data: {
-                            filterPath: data.filterPath,
-                            categories: data.categories,
-                            filter: filter,
-                            parameter: filter.config.parameterName | default(''),
-                            min: filter.min | default(0),
-                            max: filter.max | default(0),
-                            activeMin: filter.activeMin | default(0),
-                            activeMax: filter.activeMax | default(0)
-                        },
-                        class: toglerClass
-                    } only %}
-                </div>
+
+                        {% include [
+                            molecule('filter-' ~ filter.config.name, 'CatalogPage'),
+                            molecule('filter-' ~ filter.config.type, 'CatalogPage')
+                        ] ignore missing with {
+                            data: {
+                                filterPath: data.filterPath,
+                                categories: data.categories,
+                                filter: filter,
+                                parameter: filter.config.parameterName | default(''),
+                                min: filter.min | default(0),
+                                max: filter.max | default(0),
+                                activeMin: filter.activeMin | default(0),
+                                activeMax: filter.activeMax | default(0)
+                            },
+                            class: toglerClass
+                        } only %}
+
+                        {% include molecule('toggler-click') with {
+                            attributes: {
+                                'trigger-selector': '.' ~ config.jsName ~ '__trigger-' ~ filter.name,
+                                'target-selector': '.' ~ config.jsName ~ '__' ~ filter.name,
+                                'class-to-toggle': hiddenClassToToggleSections,
+                                'trigger-class-to-toggle': 'active'
+                            }
+                        } only %}
+                    </div>
+                {% endif %}
             {% endif %}
-        {% endif %}
-    {% endfor %}
+        {% endfor %}
+    </div>
 
-    {% include molecule('toggler-accordion') with {
-        attributes: {
-            'wrap-selector': '.' ~ config.jsName,
-            'trigger-selector': '.js-' ~ config.name ~ '__trigger',
-            'class-to-toggle': 'is-hidden'
-        }
-    } only %}
-
-    <button type="submit" class="button button--expand button--big {{ config.name ~ '__button' }}">
-        {{ 'catalog.filter.button' | trans }}
-        {% include atom('icon') with {
-            data: {
-                name: 'filter'
-            }
-        } only %}
-    </button>
+    <button type="submit" class="button button--expand button--big {{ config.name ~ '__button' }}">{{ 'catalog.filter.button' | trans }}</button>
 {% endblock %}

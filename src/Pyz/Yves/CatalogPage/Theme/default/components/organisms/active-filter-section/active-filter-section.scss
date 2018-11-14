@@ -1,5 +1,4 @@
 .active-filter-section {
-    margin-top: rem(20);
     margin-bottom: rem(12);
     font-size: rem(14);
 
@@ -11,12 +10,37 @@
             margin-right: rem(10);
         }
     }
+
+    &__item {
+        &--title {
+            display: none;
+
+            @include helper-breakpoint-media-min($lg) {
+                display: block;
+            }
+        }
+
+        &--filters {
+            width: 100%;
+
+            @include helper-breakpoint-media-min($lg) {
+                width: auto;
+            }
+        }
+    }
+
     &__reset {
         @include helper-effect-transition(color);
         display: flex;
+        flex-grow: 1;
         align-items: center;
+        justify-content: flex-end;
         font-weight: fw(bold);
         color: $setting-color-gray-4;
+
+        @include helper-breakpoint-media-min($lg) {
+            justify-content: flex-start;
+        }
 
         &:hover,
         &:focus {

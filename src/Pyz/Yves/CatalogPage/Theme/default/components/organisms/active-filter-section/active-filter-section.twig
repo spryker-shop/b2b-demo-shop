@@ -47,7 +47,7 @@
 {% endblock %}
 
 {% block body %}
-    <span class="col {{config.name}}__item">{{ 'catalog.filter.activeFilters' | trans }}:</span>
+    <span class="col {{config.name}}__item {{config.name}}__item--title">{{ 'catalog.filter.activeFilters' | trans }}:</span>
     {{ activeFilters | join | raw }}
     <a class="col {{config.name}}__item {{config.name}}__reset" href="{{ generateUrlWithoutAllActiveSearchFilters(data.facets) }}">
         {% include atom('icon') with {

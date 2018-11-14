@@ -80,9 +80,8 @@
 
 {% block content %}
 
-    {#common-section spacing-top spacing-top--inner spacing-top--big#}
     {% embed organism('section') with {
-        modifiers: ['secondary'],
+        modifiers: ['secondary', 'no-mobile-bottom-indent'],
         class: 'spacing-top spacing-top--inner spacing-top--big'
     } only %}
         {% block inner %}
@@ -92,7 +91,6 @@
         {% endblock %}
     {% endembed %}
 
-    {#common-section common-section--full-width spacing-top spacing-top--inner spacing-top--big#}
     {% embed organism('section') with {
         modifiers: ['secondary', 'full-width'],
         class: 'spacing-top spacing-top--inner spacing-top--big'
@@ -103,10 +101,10 @@
             }) }}
         {% endblock %}
     {% endembed %}
+
 {% endblock %}
 
 {% block contentBottom %}
-    {#common-section common-section--bg-dark#}
     {% embed organism('section') with {
         modifiers: ['secondary', 'bg-dark'],
         data: {
@@ -120,31 +118,21 @@
         {% endblock %}
     {% endembed %}
 
-    {#common-section common-section--mobile-partly-hidden js-common-section-mobile-partly-hidden#}
-    {#{% embed organism('section') with {#}
-        {#modifiers: ['secondary'],#}
-        {#data: {#}
-            {#innerClass: 'container'#}
-        {#}#}
-    {#} only %}#}
-        {#{% block inner %}#}
-            {#{{ spyCmsBlock({#}
-                {#name: 'Teaser for home page'#}
-            {#}) }}#}
+    {% embed organism('section') with {
+        modifiers: ['secondary'],
+        data: {
+            innerClass: 'container'
+        }
+    } only %}
+        {% block inner %}
+            {% embed molecule('content-collapser') only %}
+                {% block content %}
+                    {{ spyCmsBlock({
+                        name: 'Teaser for home page'
+                    }) }}
+                {% endblock %}
+            {% endembed %}
+        {% endblock %}
+    {% endembed %}
 
-            {#{% include molecule('toggler-click') with {#}
-                {#attributes: {#}
-                    {#'target-selector': '.js-common-section-mobile-partly-hidden',#}
-                    {#'trigger-selector': '.js-common-section-mobile-partly-hidden__trigger',#}
-                    {#'class-to-toggle': 'is-full-visible-common-section'#}
-                {#}#}
-            {#} only %}#}
-
-            {#<div class="common-section__trigger">#}
-                {#<a href="#" class="button button--hollow button--tight js-common-section-mobile-partly-hidden__trigger">#}
-                    {#{{ 'global.show_more' | trans }}#}
-                {#</a>#}
-            {#</div>#}
-        {#{% endblock %}#}
-    {#{% endembed %}#}
 {% endblock %}

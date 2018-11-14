@@ -181,6 +181,22 @@
             }
         }
 
+        &--justify {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        &--secondary {
+            padding: rem(14) rem(20);
+            background: $setting-color-white;
+            border-color: $setting-color-gray-6;
+            color: $setting-color-gray-5;
+            box-shadow: 0 rem(10) rem(18) 0 rgba($setting-color-black, 0.05), 0 rem(3) rem(3) 0 rgba($setting-color-black, 0.04);
+            font-size: rem(15);
+        }
+
         @each $action, $setting-color-action in $setting-color-actions {
             @include shop-ui-button-action($action, $setting-color-action);
         }

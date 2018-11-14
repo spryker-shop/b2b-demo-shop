@@ -15,11 +15,20 @@
 
 .page-layout-main {
     &--catalog-page {
-        padding-top: rem(20);
+        position: relative;
+        padding-top: rem(16);
+
+        @include helper-breakpoint-media-min($lg) {
+            padding-top: rem(20);
+        }
     }
 
     &--catalog-page-content {
-        padding-bottom: rem(70);
+        padding-bottom: rem(60);
+
+        @include helper-breakpoint-media-min($lg) {
+            padding-bottom: rem(70);
+        }
     }
 
     &--pdp {

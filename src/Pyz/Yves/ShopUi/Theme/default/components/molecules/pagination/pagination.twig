@@ -30,7 +30,7 @@
 
 {% block body %}
     {% if data.maxPage > 1 %}
-    <ul>
+    <ul class="{{config.name}}__list">
         {% if data.currentPage > 1 %}
             <li class="{{config.name}}__item">
                 <a class="{{config.name}}__step {{config.name}}__step--previous" href="{{ path(data.paginationPath, data.parameters|merge({page: data.currentPage-1})) }}{{ data.anchor }}">
