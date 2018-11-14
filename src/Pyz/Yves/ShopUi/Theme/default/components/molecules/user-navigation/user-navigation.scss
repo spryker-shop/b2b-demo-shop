@@ -63,9 +63,13 @@
             line-height: 1;
             letter-spacing: rem(0.6);
             text-transform: uppercase;
-            text-align: center;
+            text-align: left;
             cursor: pointer;
             @include helper-effect-transition(color);
+
+            @include helper-breakpoint-media-min($lg) {
+                text-align: center;
+            }
 
             &:hover {
                 color: helper-color-light($setting-color-gray-4, 25);

@@ -49,32 +49,60 @@
 
         &--alternative {
             text-transform: uppercase;
+            width: 100%;
+
+            @include helper-breakpoint-media-min($lg) {
+                width: auto;
+            }
 
             #{$name}__select {
-                text-transform: uppercase;
-                border-radius: 0;
-                background: $setting-color-transparent;
-                border: none;
-                color: $setting-color-gray-4;
-                font-size: rem(11);
-                line-height: rem(40);
-                font-weight: fw(bold);
-                letter-spacing: rem(0.6);
-                padding: 0 rem(30) 0 rem(18);
+                width: 100%;
+                font-size: rem(12);
+                line-height: rem(38);
+                padding: 0 rem(20) 0 rem(10);
+                border: 1px solid $setting-color-gray-1;
+                color: $setting-color-gray-5;
+                background: $setting-color-gray-6;
+
+                @include helper-breakpoint-media-min($lg) {
+                    width: auto;
+                    text-transform: uppercase;
+                    border-radius: 0;
+                    background: $setting-color-transparent;
+                    border: none;
+                    color: $setting-color-gray-4;
+                    font-size: rem(11);
+                    line-height: rem(40);
+                    font-weight: fw(bold);
+                    letter-spacing: rem(0.6);
+                    padding: 0 rem(30) 0 rem(18);
+                }
             }
 
             #{$name}__caret {
-                right: 13px;
-                width: 7px;
-                height: 4px;
-                transform: translateY(-2px);
+                width: rem(7);
+                height: rem(11);
+                right: rem(10);
+
+                @include helper-breakpoint-media-min($lg) {
+                    right: 13px;
+                    width: 7px;
+                    height: 4px;
+                    transform: translateY(-2px);
+                }
             }
         }
 
         &--small {
             #{$name}__select {
-                font-size: rem(14);
+                font-size: rem(13);
                 line-height: rem(38);
+                font-weight: fw(medium);
+
+                @include helper-breakpoint-media-min($lg) {
+                    font-size: rem(14);
+                    font-weight: fw(regular);
+                }
             }
 
             #{$name}__caret {
@@ -88,8 +116,16 @@
         &--mobile-expand {
             width: 100%;
 
+            @include helper-breakpoint-media-min($lg) {
+                width: auto;
+            }
+
             #{$name}__select {
                 width: 100%;
+
+                @include helper-breakpoint-media-min($lg) {
+                    width: auto;
+                }
             }
         }
 

@@ -77,7 +77,7 @@ export default class NavigationMultilevel extends Component {
     }
 
     get availableBreakpoint(): number {
-        return +this.getAttribute('available-breakpoint');
+        return Number(this.getAttribute('available-breakpoint'));
     }
 
     get overlaySelector(): string {

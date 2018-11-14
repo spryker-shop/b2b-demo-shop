@@ -18,7 +18,7 @@
     <a class="js-suggest-search__item--navigable js-suggest-search__product-item--navigable {{ config.name }}__link" href="{{ data.url }}">
         {% if data.image %}
             {% include atom('thumbnail') with {
-                modifiers: ['smaller'],
+                modifiers: ['smaller', 'reset-indents'],
                 attributes: {
                     alt: data.alt,
                     src: data.image.external_url_small,

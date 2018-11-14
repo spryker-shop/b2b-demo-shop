@@ -21,8 +21,9 @@ export default class SideDrawer extends Component {
 
     toggle(): void {
         const isShown = !this.classList.contains(`${this.name}--show`);
+        const lockedSelector = this.lockedBodySelector;
         this.classList.toggle(`${this.name}--show`, isShown);
-        this.containers.forEach((conatiner: HTMLElement) => conatiner.classList.toggle(`is-not-scrollable`, isShown));
+        this.containers.forEach((conatiner: HTMLElement) => conatiner.classList.toggle(lockedSelector, isShown));
     }
 
     get triggerSelector(): string {
@@ -31,5 +32,9 @@ export default class SideDrawer extends Component {
 
     get containerSelector(): string {
         return this.getAttribute('container-selector');
+    }
+
+    get lockedBodySelector(): string {
+        return this.getAttribute('locked-body-selector');
     }
 }

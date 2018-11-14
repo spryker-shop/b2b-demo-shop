@@ -116,6 +116,16 @@
             }
         }
 
+        &--font-size-changer {
+            font-size: rem(14);
+            padding: rem(10) rem(30);
+
+            @include helper-breakpoint-media-min($lg) {
+                font-size: rem(16);
+                padding: rem(15) rem(27);
+            }
+        }
+
         &--bigger {
             padding-top: rem(12);
             padding-bottom: rem(12);

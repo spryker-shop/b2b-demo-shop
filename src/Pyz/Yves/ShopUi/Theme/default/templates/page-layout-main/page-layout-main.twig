@@ -13,7 +13,8 @@
             {% include organism('side-drawer') with {
                 attributes: {
                     'container-selector': 'js-page-layout-main__side-drawer-container',
-                    'trigger-selector': 'js-page-layout-main__side-drawer-trigger'
+                    'trigger-selector': 'js-page-layout-main__side-drawer-trigger',
+                    'locked-body-selector': 'is-locked-tablet'
                 }
             } only %}
         {% endblock %}
