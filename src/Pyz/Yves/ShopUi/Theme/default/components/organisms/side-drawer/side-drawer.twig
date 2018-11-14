@@ -28,7 +28,11 @@
         {% endblock %}
 
         <div class="{{config.name}}__navigation-top">
+            {% if is_granted('ROLE_USER') %}
 
+            {% else %}
+
+            {% endif %}
         </div>
 
         <div class="grid {{config.name}}__actions">
@@ -60,6 +64,8 @@
             <span class="{{config.name}}__contact-text">+49 (0)30 208 498 350</span>
         </a>
 
-        <a href="{{ url('logout') }}" class="button button--hollow button--expand">Logout</a>
+        {% if is_granted('ROLE_USER') %}
+            <a href="{{ url('logout') }}" class="spacing-top spacing-top--big button button--hollow button--expand">Logout</a>
+        {% endif %}
     </aside>
 {% endblock %}
