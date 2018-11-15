@@ -32,10 +32,24 @@
     }
 
     &--pdp {
-        padding: 30px 0 0;
+        @include helper-breakpoint-media-min($lg) {
+            padding: 30px 0 0;
+        }
 
         .gallery-side {
-            width: 660px;
+            background: $setting-color-alpha-2;
+            padding: 0 rem(15) rem(15);
+            margin: rem(-10) rem(-15) 0;
+            width: auto;
+            min-width: 100%;
+
+            @include helper-breakpoint-media-min($lg) {
+                background: transparent;
+                width: calc(660 / 1200 * 100%);
+                min-width: calc(660 / 1200 * 100%);
+                margin: auto;
+                padding-bottom: 0;
+            }
         }
     }
 

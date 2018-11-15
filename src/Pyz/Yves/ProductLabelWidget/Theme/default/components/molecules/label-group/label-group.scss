@@ -35,9 +35,28 @@
             background-color: $setting-color-white;
             color: $setting-color-alt;
         }
+
+        &--pdp {
+            padding: 0 14px;
+            margin: -5px 5px 0 0;
+        }
     }
 
     &--sets {
         padding-left: rem(14);
+    }
+
+    &--pdp {
+        order: 2;
+        position: static;
+        padding: rem(10) 0 0;
+        display: inline-block;
+        font-size: 0;
+        line-height: 0;
+        vertical-align: middle;
+
+        @include helper-breakpoint-media-min($lg) {
+            padding: 0;
+        }
     }
 }

@@ -17,8 +17,18 @@
 {% endblock %}
 
 {% block title %}
-    <h3 itemprop="name" class="pdp-title">
-        {% widget 'ProductAbstractLabelWidget' args [data.product.idProductAbstract] only %}{% endwidget %}{{ data.product.name }}
+    <h3 itemprop="name" class="page-info__title">
+        {% widget 'ProductAbstractLabelWidget' args [data.product.idProductAbstract] only %}
+            {% block body %}
+                {% include molecule('label-group', 'ProductLabelWidget') with {
+                    modifiers: ['pdp'],
+                    data: {
+                        labels: labels
+                    }
+                } only %}
+            {% endblock %}
+        {% endwidget %}
+        {{ data.product.name }}
     </h3>
     <link itemprop="url" href="{{ data.productUrl }}" />
 {% endblock %}
@@ -27,7 +37,7 @@
 
 {% block content %}
     <div class="grid grid--gap grid--justify">
-        <div class="col gallery-side">
+        <div class="gallery-side">
             {% include molecule('image-gallery', 'ProductImageWidget') ignore missing with {
                 data: {
                     idProductAbstract: data.product.idProductAbstract,
@@ -36,7 +46,7 @@
             } only %}
         </div>
 
-        <div class="col col--sm-5">
+        <div class="col col--sm-12 col--lg-5">
             {% include molecule('product-configurator', 'ProductDetailPage') with {
                 data: {
                     product: data.product,

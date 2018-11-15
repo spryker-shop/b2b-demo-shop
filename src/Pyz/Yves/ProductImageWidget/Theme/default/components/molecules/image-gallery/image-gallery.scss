@@ -3,44 +3,59 @@
         position: relative;
 
         &__container {
-            height: 570px;
-            position: relative;
-            z-index: $setting-zi-element;
-            background: $setting-color-white;
+            display: none;
 
-            &::before {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                background: $setting-color-alpha-2;
-                z-index: $setting-zi-element + 1;
+            @include helper-breakpoint-media-min($lg) {
+                display: block;
+                height: rem(420);
+                position: relative;
+                z-index: $setting-zi-element;
+                background: $setting-color-white;
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    background: $setting-color-alpha-2;
+                    z-index: $setting-zi-element + 1;
+                }
+            }
+
+            @include helper-breakpoint-media-min($xl) {
+                height: rem(570);
             }
         }
 
         &__item {
-            @include helper-effect-transition(opacity);
-            position: absolute;
-            left: 0;
-            top: 0;
-            padding: 37px;
-            width: 100%;
-            height: 570px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            z-index: $setting-zi-element - 1;
+            @include helper-breakpoint-media-min($lg) {
+                @include helper-effect-transition(opacity);
+                position: absolute;
+                left: 0;
+                top: 0;
+                padding: rem(37);
+                width: 100%;
+                height: rem(420);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                opacity: 0;
+                z-index: $setting-zi-element - 1;
 
-            &--left-indent {
-                padding-left: 73px;
+                &--left-indent {
+                    padding-left: rem(73);
+                }
+
+                &--active,
+                &--color-active {
+                    opacity: 1;
+                }
             }
 
-            &--active,
-            &--color-active {
-                opacity: 1;
+            @include helper-breakpoint-media-min($xl) {
+                height: rem(570);
             }
         }
 
@@ -52,66 +67,95 @@
         // Thumbnail slider
 
         &__thumbnail {
-            position: absolute;
-            top: 20px;
-            left: 30px;
-            z-index: $setting-zi-element + 1;
-            width: 70px;
-            max-height: 424px;
-            overflow: hidden;
+            .slick-dots {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-top: rem(18);
 
-            .thumb-prev,
-            .thumb-next {
-                padding: 5px 0 0;
-                text-align: center;
-                cursor: pointer;
-                display: block;
-
-                svg {
+                li {
                     display: block;
-                    width: 100%;
-                    height: 7px;
-                    color: $setting-color-gray-2;
-                }
+                    margin: 0 0.5rem;
+                    width: rem(5);
+                    height: rem(5);
+                    background: $setting-color-light;
+                    border-radius: 50%;
+                    font-size: 0;
 
-                &[aria-disabled='true'] {
-                    cursor: default;
-                    pointer-events: none;
+                    &:hover {
+                        cursor: pointer;
+                    }
 
-                    svg {
-                        color: $setting-color-transparent;
+                    &.slick-active {
+                        width: rem(10);
+                        height: rem(10);
+                        background: $setting-color-transparent;
+                        border: 2px solid $setting-color-gray-4;
                     }
                 }
             }
 
-            .thumb-prev {
-                padding: 0 0 5px;
+            @include helper-breakpoint-media-min($lg) {
+                position: absolute;
+                top: rem(20);
+                left: rem(20);
+                z-index: $setting-zi-element + 1;
+                width: rem(40);
+                max-height: rem(424);
+                overflow: hidden;
 
-                svg {
-                    transform: rotate(180deg);
+                .thumb-prev,
+                .thumb-next {
+                    padding: rem(5) 0 0;
+                    text-align: center;
+                    cursor: pointer;
+                    display: block;
+
+                    svg {
+                        display: block;
+                        width: 100%;
+                        height: rem(7);
+                        color: $setting-color-gray-2;
+                    }
+
+                    &[aria-disabled='true'] {
+                        cursor: default;
+                        pointer-events: none;
+
+                        svg {
+                            color: $setting-color-transparent;
+                        }
+                    }
+                }
+
+                .thumb-prev {
+                    padding: 0 0 rem(5);
+
+                    svg {
+                        transform: rotate(180deg);
+                    }
+                }
+
+                .slick-slide {
+                    border: none;
+                }
+
+                .slick-current #{$name}__thumbnail-item::before {
+                    background: $setting-color-transparent;
                 }
             }
 
-            .slick-slide {
-                border: none;
-            }
-
-            .slick-current #{$name}__thumbnail-item::before {
-                background: $setting-color-transparent;
+            @include helper-breakpoint-media-min($xl) {
+                left: rem(30);
+                width: rem(70);
             }
         }
 
         &__thumbnail-item {
-            display: flex !important;
-            align-items: center;
-            justify-content: center;
-            width: 70px;
-            height: 70px;
-            padding: 5px;
             background: $setting-color-white;
             position: relative;
-            margin: 15px 0;
-            cursor: pointer;
+            height: rem(255);
+            overflow: hidden;
 
             &::before {
                 content: '';
@@ -120,7 +164,37 @@
                 left: 0;
                 right: 0;
                 bottom: 0;
-                background: $setting-color-alpha-3;
+                z-index: $setting-zi-element;
+                background: $setting-color-alpha-2;
+            }
+
+            @include helper-breakpoint-media-min($lg) {
+                width: rem(40);
+                height: rem(40);
+                position: relative;
+                margin: rem(10) 0;
+                cursor: pointer;
+
+                &::before {
+                    background: $setting-color-alpha-1;
+                }
+            }
+
+            @include helper-breakpoint-media-min($xl) {
+                width: rem(70);
+                height: rem(70);
+            }
+        }
+
+        &__thumbnail-img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+            @include helper-breakpoint-media-min($lg) {
+                max-width: calc(100% - 10px);
+                max-height: calc(100% - 10px);
             }
         }
 
