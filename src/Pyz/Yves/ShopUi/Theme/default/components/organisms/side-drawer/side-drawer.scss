@@ -21,6 +21,8 @@ $shop-ui-side-drawer-width: rem(375);
         }
 
         &__drawer {
+            display: flex;
+            flex-direction: column;
             @include helper-ui-shadow;
             @include helper-visibility-invisible;
             @include helper-effect-transition(opacity visibility left);
@@ -30,7 +32,7 @@ $shop-ui-side-drawer-width: rem(375);
             width: 100%;
             height: 100%;
             background-color: $setting-color-bg;
-            padding: rem(10) rem(13);
+            padding: rem(10) 0;
             overflow: hidden;
 
             @include helper-breakpoint-media-min($md) {
@@ -40,9 +42,10 @@ $shop-ui-side-drawer-width: rem(375);
         }
 
         &__holder {
-            height: calc(100% - 3.125rem);
+            flex-grow: 1;
             overflow: hidden;
             overflow-y: auto;
+            padding: 0 rem(13);
         }
 
         &__close {
@@ -55,7 +58,7 @@ $shop-ui-side-drawer-width: rem(375);
         }
 
         &__navigation-top {
-            padding: 0 0 rem(10) rem(41);
+            padding: 0 rem(13) rem(10) rem(54);
 
             @include helper-breakpoint-media-min($lg) {
                 justify-content: flex-end;

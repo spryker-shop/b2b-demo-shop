@@ -20,6 +20,7 @@ export default class TogglerClick extends Component {
     }
 
     protected readyCallback(): void {
+        this.inspectionContentOpened();
         this.mapEvents();
     }
 
@@ -33,7 +34,19 @@ export default class TogglerClick extends Component {
         this.toggle(event);
     }
 
-    protected clickOutside(event: Event): void {
+    protected inspectionContentOpened(): void {
+        if (this.clickOutsideAction.length !== 0) {
+            this.targets.forEach((target: HTMLElement) => {
+                const isTargetActive = target.classList.contains(this.classToToggle);
+
+                if (isTargetActive) {
+                    this.isContentOpened = true;
+                }
+            })
+        }
+    }
+
+    clickOutside(event: Event): void {
         if (this.clickOutsideAction.length !== 0) {
             if (this.isContentOpened) {
                 const eventTrigger = <HTMLElement>event.target;

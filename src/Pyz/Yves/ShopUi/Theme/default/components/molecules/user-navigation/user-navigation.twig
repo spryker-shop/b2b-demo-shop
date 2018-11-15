@@ -12,6 +12,10 @@
 
 {% set cartQuantity = data.cartQuantity > 0 ? data.cartQuantity ~ ' ' : '' %}
 
+{%- block class -%}
+    {{ parent() }} {{ config.jsName }}
+{%- endblock -%}
+
 {% block body %}
     <li class="{{ config.name }}__item {{ config.name }}__item--user">
         <div class="{{ config.name }}__user-name">
@@ -75,7 +79,7 @@
     {% widget 'ShoppingListNavigationMenuWidget' with {config: config} only %}
         {% block body %}
             <li class="{{ config.name }}__item">
-                <a class="{{ config.name }}__link" href="{{ url('shopping-list') }}">
+                <a class="{{ config.name }}__link {{ config.jsName }}__trigger" href="{{ url('shopping-list') }}" data-toggle-target='.{{ config.jsName }}__sub-nav-shopping-list'>
                     <span class="{{ config.name }}__icon">
                     {% include atom('icon') with {
                         modifiers: ['header-shopping-list'],
@@ -86,8 +90,27 @@
                     </span>
                     {{ 'customer.account.shopping_list'|trans }}
                 </a>
-                <div class="{{ config.name }}__sub-nav {{ config.name }}__sub-nav--pull-left spacing spacing--inner spacing--reset">
-                    {{ parent() }}
+                <div class="{{ config.name }}__sub-nav {{ config.name }}__sub-nav--pull-left spacing spacing--inner spacing--reset {{ config.jsName }}__sub-nav-shopping-list">
+                    <button class="{{config.name}}__sub-nav-close {{ config.jsName }}__trigger" data-toggle-target='.{{ config.jsName }}__sub-nav-shopping-list'>
+                        {% include atom('icon') with {
+                            data: {
+                                name: 'cross'
+                            }
+                        } only %}
+                    </button>
+                    <h4 class="{{ config.name }}__sub-nav-title">
+                        {{ 'shopping_list.shopping_list'|trans }}
+                    </h4>
+                    {% block listItems %}
+                        <div class="{{ config.name }}__sub-nav-inner">
+                            {{ parent() }}
+                        </div>
+                    {% endblock %}
+                    {% block listActions %}
+                        <div class="{{ config.name }}__sub-nav-actions">
+                            {{ parent() }}
+                        </div>
+                    {% endblock %}
                 </div>
             </li>
         {% endblock %}
@@ -95,13 +118,50 @@
 
     <li class="{{ config.name }}__item">
         {% include molecule('cart-items-counter') with {
-            class: config.name ~ '__link',
+            class: config.name ~ '__link ' ~ config.jsName ~ '__trigger',
             data: {
                 quantity: data.cartQuantity
+            },
+            attributes: {
+                'data-toggle-target': '.' ~ config.jsName ~ '__sub-nav-cart'
             }
         } only %}
-        <div class="{{ config.name }}__sub-nav {{ config.name }}__sub-nav--pull-left spacing spacing--inner spacing--reset">
-            {% widget 'MiniCartWidget' args [cartQuantity] only %}{% endwidget %}
+        <div class="{{ config.name }}__sub-nav {{ config.name }}__sub-nav--pull-left spacing spacing--inner spacing--reset {{ config.jsName }}__sub-nav-cart">
+            {% widget 'MiniCartWidget' args [cartQuantity] with {config: config} only %}
+                {% block body %}
+                    <button class="{{config.name}}__sub-nav-close {{ config.jsName }}__trigger" data-toggle-target='.{{ config.jsName }}__sub-nav-cart'>
+                        {% include atom('icon') with {
+                            data: {
+                                name: 'cross'
+                            }
+                        } only %}
+                    </button>
+                    <h4 class="{{ config.name }}__sub-nav-title">
+                        {{ 'multi_cart_widget.cart.carts'|trans }}
+                    </h4>
+                    {% block cartItems %}
+                        <div class="{{ config.name }}__sub-nav-inner">
+                            {{ parent() }}
+                        </div>
+                    {% endblock %}
+
+                    {% block cartActions %}
+                        <div class="{{ config.name }}__sub-nav-actions">
+                            {{ parent() }}
+                        </div>
+                    {% endblock %}
+                {% endblock %}
+
+            {% endwidget %}
         </div>
     </li>
+
+    {% include molecule('toggler-accordion') with {
+        attributes: {
+            'wrap-selector': '.' ~ config.jsName,
+            'trigger-selector': '.' ~ config.jsName ~ '__trigger',
+            'class-to-toggle': config.name ~ '__sub-nav--touch-active'
+        }
+    } only %}
+
 {% endblock %}
