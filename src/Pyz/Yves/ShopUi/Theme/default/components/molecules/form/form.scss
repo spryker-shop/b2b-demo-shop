@@ -15,17 +15,53 @@
 
         &__actions {
             display: flex;
-            flex-flow: row nowrap;
+            flex-flow: row wrap;
             align-items: center;
             margin-top: 1rem;
+            text-align: center;
+
+            @include helper-breakpoint-media-min($lg) {
+                flex-wrap: wrap;
+            }
         }
 
         &__action {
             flex: none;
-            margin: 0 1rem 0 0;
+            width: 100%;
+            margin: 0 0 rem(10) 0;
+
+            &:first-child {
+                margin-bottom: 0;
+            }
+
+            @include helper-breakpoint-media-min($lg) {
+                width: auto;
+                margin: 0 1rem 0 0;
+            }
 
             &--primary {
                 order: -1;
+            }
+
+            &--mobile-first {
+                order: -1;
+
+                @include helper-breakpoint-media-min($lg) {
+                    order: unset;
+                }
+            }
+
+            &--link {
+                width: auto;
+                margin: 0 auto;
+                font-size: rem(13);
+                text-decoration: underline;
+
+                @include helper-breakpoint-media-min($lg) {
+                    margin: 0 1rem 0 0;
+                    font-size: rem(16);
+                    text-decoration: none;
+                }
             }
         }
 

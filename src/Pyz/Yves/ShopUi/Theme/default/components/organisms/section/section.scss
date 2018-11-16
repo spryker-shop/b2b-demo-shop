@@ -1,6 +1,10 @@
 @mixin shop-ui-section($name: '.section') {
     #{$name} {
-        padding: rem(48) 0;
+        padding: rem(22) 0;
+
+        @include helper-breakpoint-media-min($lg) {
+            padding: rem(48) 0;
+        }
 
         &--center {
             display: flex;
@@ -14,7 +18,11 @@
         }
 
         &--last {
-            padding-bottom: rem(96);
+            padding-bottom: rem(80);
+
+            @include helper-breakpoint-media-min($lg) {
+                padding-bottom: rem(96);
+            }
         }
 
         &--secondary {
@@ -92,6 +100,14 @@
             &--secondary {
                 color: $setting-color-gray-4;
                 text-align: center;
+            }
+
+            &--mobile-center {
+                text-align: center;
+
+                @include helper-breakpoint-media-min($lg) {
+                    text-align: left;
+                }
             }
         }
 
