@@ -2,10 +2,14 @@
     &__item {
         background-color: $setting-color-gray-7;
         margin-top: rem(10);
-        padding: rem(17) rem(20);
+        padding: rem(17) rem(20) rem(37);
         font-size: rem(14);
         font-weight: fw(medium);
         border-radius: $setting-border-radius;
+
+        @include helper-breakpoint-media-min($lg) {
+            padding-bottom: rem(17);
+        }
 
         &--summary {
             margin-top: rem(20);
@@ -60,9 +64,14 @@
     }
 
     &__title {
-        font-size: rem(14);
+        font-size: rem(18);
         font-weight: fw(medium);
-        line-height: rem(18);
+        line-height: rem(30);
+
+        @include helper-breakpoint-media-min($lg) {
+            font-size: rem(14);
+            line-height: rem(18);
+        }
 
         &--space-bottom {
             margin-bottom: rem(8);
@@ -70,8 +79,14 @@
     }
 
     &__text {
-        font-size: rem(13);
+        font-size: rem(14);
+        letter-spacing: rem(-0.1);
         font-weight: fw(regular);
+
+        @include helper-breakpoint-media-min($lg) {
+            letter-spacing: 0;
+            font-size: rem(13);
+        }
     }
 
     &__content {
@@ -89,6 +104,17 @@
         .form__action {
             margin-top: rem(12);
             margin-left: 0;
+            width: 100%;
+            font-size: rem(16);
+            line-height: rem(20);
+            padding: rem(12) rem(32);
+
+            @include helper-breakpoint-media-min($lg) {
+                width: auto;
+                font-size: rem(14);
+                line-height: rem(18);
+                padding: rem(10) rem(30);
+            }
         }
     }
 
