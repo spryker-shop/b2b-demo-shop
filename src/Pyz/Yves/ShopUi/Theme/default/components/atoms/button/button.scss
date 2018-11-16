@@ -107,8 +107,12 @@
         }
 
         &--bigger {
-            padding-top: rem(12);
-            padding-bottom: rem(12);
+            padding-top: rem(15);
+            padding-bottom: rem(15);
+
+            @include helper-breakpoint-media-min($lg) {
+                padding: rem(15) rem(27);
+            }
         }
 
         &--form {
@@ -190,7 +194,7 @@
         &--mobile-big {
             font-size: rem(16);
             line-height: rem(20);
-            padding: rem(12) rem(32);
+            padding: rem(15) rem(32);
 
             @include helper-breakpoint-media-min($lg) {
                 font-size: rem(14);
