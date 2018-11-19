@@ -1,0 +1,32 @@
+@mixin shop-ui-product-set-details ($name: '.product-set-details') {
+    #{$name} {
+        &__banner {
+            margin: 0 rem(-30);
+
+            @include helper-breakpoint-media-min($lg) {
+                margin: 0;
+            }
+        }
+
+        &__container {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            color: $setting-color-white;
+        }
+
+        &__title {
+            font-size: rem(22);
+            font-weight: fw(medium);
+
+            @include helper-breakpoint-media-min($lg) {
+                font-size: rem(50);
+            }
+        }
+    }
+
+    @content;
+}
+
+@include shop-ui-product-set-details;

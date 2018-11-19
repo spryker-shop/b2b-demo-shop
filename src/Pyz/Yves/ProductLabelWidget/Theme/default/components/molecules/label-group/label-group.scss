@@ -38,6 +38,11 @@
     }
 
     &--sets {
-        padding-left: rem(14);
+        padding-left: 0;
+
+        @include helper-breakpoint-media-min($lg) {
+            padding-left: rem(14);
+        }
+
     }
 }

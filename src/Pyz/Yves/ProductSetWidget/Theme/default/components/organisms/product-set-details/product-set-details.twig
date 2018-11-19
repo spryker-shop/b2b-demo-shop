@@ -14,22 +14,31 @@
         "slidesToShow": 4,
         "slidesToScroll": 1,
         "dots": false,
-        "infinite": false
+        "infinite": false,
+        "responsive": [{
+             "breakpoint": 768,
+             "settings": {
+                 "slidesToShow": 2,
+                 "infinite": true
+             }
+        }]
     }'
 } %}
 {% block body %}
     {% block banner %}
         {% embed molecule('banner') with {
-            class: 'spacing spacing--reset',
+            class: config.name ~ '__banner',
             data: {
                 imageUrl: data.images.0.externalUrlLarge | default(null),
                 title: data.title
             }
         } only %}
             {% block body %}
-                <div class="{{config.name}}__container {{config.name}}__container--product-set" style="{{backgroundImage}}">
-                    <h1 class="title title--light">{{ data.title }}</h1>
-                    <span>{{ 'product.set' | trans }} </span>
+                <div class="{{config.name}}__container product-set-details__container" style="{{backgroundImage}}">
+                    <div>
+                        <h1 class="title title--light product-set-details__title">{{ data.title }}</h1>
+                        <span>{{ 'product.set' | trans }} </span>
+                    </div>
                 </div>
             {% endblock %}
         {% endembed %}
@@ -98,7 +107,7 @@
     {% block productSet %}
         <form method="GET">
             {% embed molecule('slick-carousel') with {
-                modifiers: ['equal-height', 'stretch'],
+                modifiers: ['product-set'],
                 data: {
                     slides: data.products
                 },
