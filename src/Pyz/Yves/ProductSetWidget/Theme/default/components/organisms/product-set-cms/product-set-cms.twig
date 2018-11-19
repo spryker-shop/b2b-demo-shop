@@ -15,7 +15,15 @@
         "dots": false,
         "infinite": true,
         "loop": true,
-        "variableWidth": true
+        "variableWidth": true,
+        "responsive": [{
+             "breakpoint": 768,
+             "settings": {
+                 "slidesToShow": 2,
+                 "infinite": true,
+                 "variableWidth": false
+             }
+        }]
     }'
 } %}
 
@@ -39,7 +47,7 @@
         {% endblock %}
     {% endembed %}
     <div class="grid grid--gap grid--center">
-        <div class="col col--xs-12 col--md-6 col--lg-5 spacing-right spacing-right--inner spacing-right--biggest">
+        <div class="{{ config.name ~ "__container" }} col col--sm-12 col--md-6 col--lg-5">
             {% block banner %}
                 {% embed molecule('banner') with {
                     class: 'spacing-bottom spacing-bottom--reset',
@@ -54,11 +62,11 @@
                 {% endembed %}
             {% endblock %}
         </div>
-        <div class="col col--xs-12 col--md-6 col--lg-7">
+        <div class="col col--sm-12 col--md-6 col--lg-7">
             {% block productSet %}
                 <form method="GET">
                     {% embed molecule('slick-carousel') with {
-                        modifiers: ['equal-height', 'product-set'],
+                        modifiers: ['equal-height', 'product-set-widget'],
                         data: {
                             slides: data.products
                         },
