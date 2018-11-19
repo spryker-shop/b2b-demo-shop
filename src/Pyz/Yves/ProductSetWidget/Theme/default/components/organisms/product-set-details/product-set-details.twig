@@ -34,11 +34,11 @@
             }
         } only %}
             {% block body %}
-                <div class="{{config.name}}__container product-set-details__container" style="{{backgroundImage}}">
-                    <div>
-                        <h1 class="title title--light product-set-details__title">{{ data.title }}</h1>
-                        <span>{{ 'product.set' | trans }} </span>
-                    </div>
+                <div class="{{config.name}}__container grid grid--middle grid--center" style="{{backgroundImage}}">
+                    <h1 class="title title--light title--product-set-details">
+                        {{ data.title }}
+                        <p class="{{ config.name }}__text spacing-bottom spacing-bottom--reset">{{ 'product.set' | trans }} </p>
+                    </h1>
                 </div>
             {% endblock %}
         {% endembed %}
