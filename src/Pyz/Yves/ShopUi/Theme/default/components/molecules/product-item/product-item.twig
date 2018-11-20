@@ -171,7 +171,7 @@
 
                         {% block deleteButton %}
                             {% if data.canEdit %}
-                                <div class="col">
+                                <div class="col {{ config.name }}__delete-cart">
                                     <a class="link link--icon {{ config.jsName }}-remove-button-{{ data.listItem.sku }}" data-group-key="{{ data.listItem.groupKey }}" href="{{ path('cart/remove', {'sku': data.listItem.sku, 'groupKey': data.listItem.groupKey }) }}">
                                         {% include atom('icon') with {
                                             modifiers: ['link'],
@@ -179,7 +179,7 @@
                                                 name: 'delete'
                                             }
                                         } only %}
-                                        {{ 'cart.delete.item' | trans }}
+                                        <span class="is-hidden-sm-md">{{ 'cart.delete.item' | trans }}</span>
                                     </a>
                                 </div>
 

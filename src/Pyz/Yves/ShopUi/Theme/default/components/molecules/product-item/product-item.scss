@@ -121,7 +121,10 @@
             }
 
             &--actions {
+                padding-bottom: rem(6);
+
                 @include helper-breakpoint-media-min($lg) {
+                    padding-bottom: 0;
                     align-items: flex-end;
                 }
             }
@@ -228,6 +231,12 @@
                 color: $setting-color-gray-5;
                 font-weight: fw(medium);
             }
+        }
+
+        &__delete-cart {
+            position: absolute;
+            bottom: rem(32);
+            right: rem(6);
         }
 
         @content;
