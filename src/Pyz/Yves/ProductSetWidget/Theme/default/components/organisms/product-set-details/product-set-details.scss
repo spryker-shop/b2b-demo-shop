@@ -1,0 +1,15 @@
+@mixin shop-ui-product-set-details ($name: '.product-set-details') {
+    #{$name} {
+        &__banner {
+            margin: 0 rem(-30);
+
+            @include helper-breakpoint-media-min($lg) {
+                margin: 0;
+            }
+        }
+    }
+
+    @content;
+}
+
+@include shop-ui-product-set-details;
