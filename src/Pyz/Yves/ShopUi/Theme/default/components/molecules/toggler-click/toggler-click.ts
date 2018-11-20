@@ -7,6 +7,8 @@ export default class TogglerClick extends Component {
     readonly isFixBodyOnClick: boolean
     readonly overlay: OverlayBlock
     readonly overlayModifiers: string[]
+    isShowClasses: string
+    isHideClasses: string
     isContentOpened: boolean
 
     constructor() {
@@ -14,9 +16,12 @@ export default class TogglerClick extends Component {
         this.overlay = <OverlayBlock>document.querySelector(this.overlaySelector);
         this.triggers = <HTMLElement[]>Array.from(document.querySelectorAll(this.triggerSelector));
         this.targets = <HTMLElement[]>Array.from(document.querySelectorAll(this.targetSelector));
-        this.isFixBodyOnClick = JSON.parse(this.checkedIsShouldFixBody);
+        this.isFixBodyOnClick = this.checkedIsShouldFixBody === 'true' ? true : false;
         this.overlayModifiers = this.customOverlayModifiers.split(', ');
         this.isContentOpened = false;
+        this.isShowClasses = 'show-class';
+        this.isHideClasses = 'hide-class';
+
     }
 
     protected readyCallback(): void {
@@ -54,7 +59,7 @@ export default class TogglerClick extends Component {
                 const isClosestTriggerExist = !!eventTrigger.closest(this.triggerSelector);
 
                 if (!isClosestTargetExist && !isClosestTriggerExist) {
-                    if (this.onDocumentClickAction === 'hide-class') {
+                    if (this.onDocumentClickAction === this.isHideClasses) {
                         this.targets.forEach((target: HTMLElement) => {
                             target.classList.remove(this.classToToggle);
                         })
@@ -68,7 +73,7 @@ export default class TogglerClick extends Component {
                         this.removeOverlay();
                     }
 
-                    if (this.onDocumentClickAction === 'show-class') {
+                    if (this.onDocumentClickAction === this.isShowClasses) {
                         this.targets.forEach((target: HTMLElement) => {
                             target.classList.add(this.classToToggle);
                         })

@@ -26,7 +26,7 @@ export default class NavigationMultilevel extends Component {
     }
 
     protected onTriggerOver(event: Event): void {
-        if (window.innerWidth >= this.availableBreakpoint) {
+        if (this.isWidthMoreThanAvailableBreakpoint()) {
             const trigger = <HTMLElement>event.currentTarget;
             event.preventDefault();
             this.overlay.showOverlay();
@@ -39,7 +39,7 @@ export default class NavigationMultilevel extends Component {
     }
 
     protected onTriggerOut(event: Event): void {
-        if (window.innerWidth >= this.availableBreakpoint) {
+        if (this.isWidthMoreThanAvailableBreakpoint()) {
             const trigger = <HTMLElement>event.currentTarget;
             event.preventDefault();
             this.overlay.hideOverlay();
@@ -52,7 +52,7 @@ export default class NavigationMultilevel extends Component {
     }
 
     protected onTriggerClick(event: Event): void {
-        if (window.innerWidth < this.availableBreakpoint) {
+        if (!this.isWidthMoreThanAvailableBreakpoint()) {
             const trigger = <HTMLElement>event.currentTarget;
             const contentToShowSelector = this.getDataAttribute(trigger, 'data-toggle-target');
             const contentToggleClass = this.getDataAttribute(trigger, 'data-class-to-toggle');
@@ -62,6 +62,10 @@ export default class NavigationMultilevel extends Component {
             contentToShow.classList.toggle(contentToggleClass);
             trigger.classList.toggle('is-active');
         }
+    }
+
+    protected isWidthMoreThanAvailableBreakpoint(): boolean {
+        return window.innerWidth >= this.availableBreakpoint;
     }
 
     protected getDataAttribute(block: HTMLElement, attr: string): string {
