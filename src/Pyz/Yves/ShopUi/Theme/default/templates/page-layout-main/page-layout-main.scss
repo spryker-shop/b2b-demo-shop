@@ -35,22 +35,6 @@
         @include helper-breakpoint-media-min($lg) {
             padding: 30px 0 0;
         }
-
-        .gallery-side {
-            background: $setting-color-alpha-2;
-            padding: 0 rem(15) rem(15);
-            margin: rem(-10) rem(-15) 0;
-            width: auto;
-            min-width: 100%;
-
-            @include helper-breakpoint-media-min($lg) {
-                background: transparent;
-                width: calc(660 / 1200 * 100%);
-                min-width: calc(660 / 1200 * 100%);
-                margin: auto;
-                padding-bottom: 0;
-            }
-        }
     }
 
     &--quick-order-page {
@@ -73,5 +57,21 @@
         background-size: cover;
         min-height: rem(760);
         padding-top: rem(35);
+    }
+
+    &__pdp-gallery {
+        background: $setting-color-alpha-2;
+        padding: 0 rem(15) rem(15);
+        margin: rem(-10) rem(-15) 0;
+        width: auto;
+        min-width: 100%;
+
+        @include helper-breakpoint-media-min($lg) {
+            background: transparent;
+            width: calc(660 / 1200 * 100%);
+            min-width: calc(660 / 1200 * 100%);
+            margin: 0 rem(15) 0 0;
+            padding-bottom: 0;
+        }
     }
 }

@@ -81,20 +81,23 @@ $product-review-rating-selector-icon-size-big: 24px;
         }
 
         &--pdp {
-            padding-top: rem(7);
-            padding-bottom: rem(16);
+
+            @include helper-breakpoint-media-min($lg) {
+                padding-top: rem(7);
+                padding-bottom: rem(16);
+            }
 
             #{$name}__star {
                 min-width: $product-review-rating-selector-icon-size-pdp;
                 min-height: $product-review-rating-selector-icon-size-pdp;
                 height: $product-review-rating-selector-icon-size-pdp;
+
                 &--half-left {
                     left: $product-review-rating-selector-icon-size-pdp / 2;
                 }
             }
 
             #{$name}__step {
-
                 &--half {
                     width: $product-review-rating-selector-icon-size-pdp / 2;
                 }

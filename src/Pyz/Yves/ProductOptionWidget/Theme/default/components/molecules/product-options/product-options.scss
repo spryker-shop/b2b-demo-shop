@@ -1,9 +1,12 @@
 @mixin product-options-product-options($name: '.product-options') {
     #{$name} {
-        border-bottom: solid 1px $setting-color-gray-6;
+
+        @include helper-breakpoint-media-min($lg) {
+            border-top: solid 1px $setting-color-gray-6;
+        }
 
         &__item {
-            border-top: solid 1px $setting-color-gray-6;
+            border-bottom: solid 1px $setting-color-gray-6;
         }
 
         &__title {
