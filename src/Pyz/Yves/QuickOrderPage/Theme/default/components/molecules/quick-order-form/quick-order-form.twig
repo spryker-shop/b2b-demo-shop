@@ -72,7 +72,7 @@
                 </div>
                 {% if can("SeeAddToCartPermissionPlugin") %}
                 <div class="col col--sm-12 col--md-auto spacing-bottom spacing-bottom--big">
-                    <button type="submit" name="addToCart" class="button button--expand button--big {{ embed.name }}__button js-add-to-cart-button">
+                    <button type="submit" name="addToCart" class="button button--expand button--big {{ embed.name }}__button">
                         {% include atom('icon') with {
                             modifiers: ['cart-plus'],
                             data: {
