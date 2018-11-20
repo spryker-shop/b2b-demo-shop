@@ -21,7 +21,7 @@
             } only %}
         </div>
         {% if hasQuantitySalesUnit %}
-            <div class="col">
+            <div class="col col--sm-12 col-md-auto">
                 {% set value = data.cartItem.quantitySalesUnit.value %}
                 {% set precision = data.cartItem.quantitySalesUnit.precision %}
                 {% set salesUnitName = data.cartItem.quantitySalesUnit.productMeasurementUnit.name | default('') %}

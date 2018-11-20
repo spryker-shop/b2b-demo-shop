@@ -2,6 +2,10 @@
     #{$name} {
         border-bottom: solid 1px $setting-color-gray-6;
 
+        &--no-border {
+            border-bottom: none;
+        }
+
         &__item {
             border-top: solid 1px $setting-color-gray-6;
         }
@@ -38,6 +42,12 @@
 
             &.active::after {
                 display: none;
+            }
+        }
+
+        &__price {
+            @include helper-breakpoint-media-min($lg) {
+                float: right;
             }
         }
     }

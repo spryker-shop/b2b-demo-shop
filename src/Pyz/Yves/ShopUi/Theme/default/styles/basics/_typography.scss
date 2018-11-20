@@ -84,7 +84,11 @@
     }
 
     small {
-        @include helper-font-size(small);
+        font-size: rem(12);
+
+        @include helper-breakpoint-media-min($lg) {
+            @include helper-font-size(small);
+        }
     }
 
     big {
