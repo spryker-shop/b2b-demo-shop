@@ -203,6 +203,14 @@
             }
         }
 
+        &--mobile-full {
+            width: 100%;
+
+            @include helper-breakpoint-media-min($lg) {
+                width: auto;
+            }
+        }
+
         @each $action, $setting-color-action in $setting-color-actions {
             @include shop-ui-button-action($action, $setting-color-action);
         }

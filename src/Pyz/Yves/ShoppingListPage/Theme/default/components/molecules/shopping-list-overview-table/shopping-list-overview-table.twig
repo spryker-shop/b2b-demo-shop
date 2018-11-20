@@ -12,7 +12,7 @@
 } %}
 
 {% block body %}
-    <table class="table table--grid table--expand spacing-bottom spacing-bottom--biggest">
+    <table class="table table--grid table--expand table--responsive spacing-bottom spacing-bottom--biggest">
         <thead>
             <tr>
                 <th class="text-left">{{ 'customer.account.shopping_list.overview.name' | trans }}</th>
@@ -27,9 +27,10 @@
         {% for shoppingList in data.shoppingLists %}
             {% set hasWritePermission = can('WriteShoppingListPermissionPlugin', shoppingList.idShoppingList) %}
             <tr>
-                <td>
+                <td class="reverse-cell spacing-top spacing-top--inner spacing-top--big">
                     {% if data.enableTableForm %}
                         {% include atom('checkbox') with {
+                            modifiers: ['shopping-list'],
                             attributes: {
                                 name: 'shoppingLists[]',
                                 value: shoppingList.idShoppingList
@@ -38,16 +39,16 @@
                     {% endif %}
                     <a class="{{ config.name }}__title text-center" href="{{ path('shopping-list/details', { idShoppingList: shoppingList.idShoppingList }) }}">{{ shoppingList.name }}</a>
                 </td>
-                <td class="text-center">{{ shoppingList.owner }}</td>
-                <td class="text-center">{{ shoppingList.createdAt | formatDate }}</td>
-                <td class="text-center">
+                <td class="text-center transform-cell" data-content={{ 'customer.account.shopping_list.overview.owner' | trans }}>{{ shoppingList.owner }}</td>
+                <td class="text-center transform-cell" data-content={{ 'customer.account.shopping_list.overview.created_date' | trans }}>{{ shoppingList.createdAt | formatDate }}</td>
+                <td class="text-center transform-cell" data-content={{ 'customer.account.shopping_list.access' | trans }}>
                     {% include molecule('shopping-list-permission', 'ShoppingListPage') with {
                         data: {
                             hasWritePermission: hasWritePermission
                         }
                     } only %}
                 </td>
-                <td class="text-center">
+                <td class="text-center transform-cell spacing-bottom spacing-bottom--inner spacing-bottom--big" data-content={{ 'customer.account.shopping_list.overview.item_count' | trans }}>
                     <span class="badge badge--shopping-list">
                         {{ shoppingList.numberOfItems }}
                         {{ 'checkout.step.summary.items' | trans }}

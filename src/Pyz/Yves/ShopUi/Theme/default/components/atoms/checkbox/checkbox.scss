@@ -42,7 +42,9 @@
             }
 
             &--shopping-list {
-                margin-right: 0;
+                @include helper-breakpoint-media-max($lg) {
+                    margin-right: 0;
+                }
             }
 
             &--alternative {
@@ -167,11 +169,6 @@
                     border-color: $setting-color-gray-2;
                 }
             }
-        }
-
-        &--shopping-list {
-            display: flex;
-            height: 100%;
         }
 
         &--error &__box {
