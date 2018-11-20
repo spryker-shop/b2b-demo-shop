@@ -2,6 +2,11 @@
     margin-top: rem(15);
 
     &__item {
-        margin-right: rem(27);
+        width: 50%;
+
+        @include helper-breakpoint-media-min($lg) {
+            width: auto;
+            margin-right: rem(27);
+        }
     }
 }

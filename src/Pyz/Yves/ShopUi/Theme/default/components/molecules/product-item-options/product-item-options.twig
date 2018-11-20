@@ -14,6 +14,7 @@
     <li class="{{ component.renderClass(config.name ~ '__item', modifiers) }}">
         {% if data.productItem %}
             {% include molecule('product-options', 'ProductOptionWidget') ignore missing with {
+                modifiers: ['no-border'],
                 data: {
                     options: data.productItem.productOptions | default([])
                 }

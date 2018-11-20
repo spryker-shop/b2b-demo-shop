@@ -17,7 +17,25 @@
                     "slidesToShow": 4,
                     "dots": false,
                     "arrows": true,
-                    "adaptiveHeight": true
+                    "adaptiveHeight": true,
+                    "responsive": [{
+                        "breakpoint": 1023,
+                        "settings": {
+                            "slidesToShow": 3
+                        }
+                    },
+                    {
+                        "breakpoint": 770,
+                        "settings": {
+                            "slidesToShow": 2
+                        }
+                    },
+                    {
+                        "breakpoint": 375,
+                        "settings": {
+                            "slidesToShow": 1
+                        }
+                    }]
                 }'
             }
         } only %}
