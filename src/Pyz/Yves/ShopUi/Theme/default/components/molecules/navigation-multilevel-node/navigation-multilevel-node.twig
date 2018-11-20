@@ -13,14 +13,14 @@
 {% set cssClass = data.node.cssClass is empty ? '' : ' ' ~ data.node.cssClass %}
 
 {% block class %}
-    {{ parent() }}{{ cssClass }} {{ data.parentJsName }}-trigger {{ data.parentJsName }}-item
+    {{ parent() }}{{ cssClass }} {{ data.parentJsName }}__trigger {{ data.parentJsName }}__item
 {% endblock %}
 
 {% block body %}
     {{ parent() }}
 
     {% if(data.node.children | length > 0) %}
-        <div class="menu-wrapper menu-wrapper--lvl-{{ data.levelMenu }} {{ data.parentJsName }}-wrapper is-hidden-sm-lg">
+        <div class="menu-wrapper menu-wrapper--lvl-{{ data.levelMenu }} {{ data.parentJsName }}__wrapper is-hidden-sm-lg">
             <ul class="menu menu--lvl-{{ data.levelMenu }}">
                 {% for childNode in data.node.children %}
                     {% set hasChildren = childNode.children | length > 0 %}
@@ -41,10 +41,10 @@
 
 {% block mobileTrigger %}
    {% if(data.node.children | length > 0) %}
-       <button class="menu__trigger-btn menu__trigger-btn--lvl-{{ data.levelMenu - 1 }} {{ data.parentJsName }}-touch-trigger" data-toggle-target=".{{ data.parentJsName }}-wrapper" data-class-to-toggle="is-hidden-sm-lg">
+       <button class="menu__trigger-button menu__trigger-button--lvl-{{ data.levelMenu - 1 }} {{ data.parentJsName }}__touch-trigger" data-toggle-target=".{{ data.parentJsName }}__wrapper" data-class-to-toggle="is-hidden-sm-lg">
            {% include atom('icon') with {
                modifiers: ['small'],
-               class: 'menu__trigger-btn-icon',
+               class: 'menu__trigger-button-icon',
                data: {
                    name: 'caret-down'
                }

@@ -11,11 +11,6 @@
 
         &--is-shown {
             @include helper-visibility-visible;
-
-            &#{$name}--no-header {
-                z-index: $setting-zi-header - 1;
-            }
-
             &#{$name}--no-search,
             &#{$name}--no-agent-user {
                 z-index: $setting-zi-search-suggestions - 1;

@@ -97,7 +97,7 @@
             }
         }
 
-        &__trigger-btn {
+        &__trigger-button {
             position: absolute;
             height: 100%;
             width: rem(27);
@@ -109,6 +109,7 @@
 
             @include helper-breakpoint-media-min($xl) {
                 width: rem(20);
+                right: rem(-20);
                 display: none;
                 background: none;
             }
@@ -127,7 +128,7 @@
             }
 
             &.is-active {
-                #{$name}__trigger-btn-icon {
+                #{$name}__trigger-button-icon {
                     transform: translate(-50%, -50%) rotate(-180deg);
                 }
             }
@@ -177,7 +178,7 @@
 
             &:not(:last-child) {
                 @include helper-breakpoint-media-min($xl) {
-                    margin-right: rem(30);
+                    margin-right: rem(40);
                 }
 
                 @include helper-breakpoint-media-min($xxl) {
@@ -236,15 +237,7 @@
             }
         }
 
-        &__trigger--lvl-0 {
-            @include helper-breakpoint-media-min($xl) {
-                .is-touch & {
-                    padding-right: rem(20);
-                }
-            }
-        }
-
-        &__trigger-btn--lvl-0 {
+        &__trigger-button--lvl-0 {
             @include helper-breakpoint-media-min($xl) {
                 .is-touch & {
                     display: block;
@@ -319,7 +312,7 @@
             color: $setting-color-gray-3;
         }
 
-        &__trigger-btn--lvl-1 {
+        &__trigger-button--lvl-1 {
             color: $setting-color-gray-2;
 
             &.is-active::after {

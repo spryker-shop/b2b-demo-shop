@@ -5,15 +5,9 @@
 
         &--mobile-small {
             #{$name}__box {
-                width: 20px;
-                height: 20px;
+                width: rem(20);
+                height: rem(20);
                 line-height: rem(20);
-
-                @include helper-breakpoint-media-min($lg) {
-                    width: 1.25rem;
-                    height: 1.25rem;
-                    line-height: 1.25rem;
-                }
             }
         }
 

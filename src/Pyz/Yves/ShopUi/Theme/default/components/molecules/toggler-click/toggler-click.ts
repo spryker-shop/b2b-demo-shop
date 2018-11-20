@@ -4,9 +4,9 @@ import OverlayBlock from '../../atoms/overlay-block/overlay-block';
 export default class TogglerClick extends Component {
     readonly triggers: HTMLElement[]
     readonly targets: HTMLElement[]
-    readonly bodyFlagVar: boolean
+    readonly isFixBodyOnClick: boolean
     readonly overlay: OverlayBlock
-    readonly OverlayModifiers: string[]
+    readonly overlayModifiers: string[]
     isContentOpened: boolean
 
     constructor() {
@@ -14,19 +14,19 @@ export default class TogglerClick extends Component {
         this.overlay = <OverlayBlock>document.querySelector(this.overlaySelector);
         this.triggers = <HTMLElement[]>Array.from(document.querySelectorAll(this.triggerSelector));
         this.targets = <HTMLElement[]>Array.from(document.querySelectorAll(this.targetSelector));
-        this.bodyFlagVar = JSON.parse(this.bodyFlag);
-        this.OverlayModifiers = this.overlayModifiers.split(', ');
+        this.isFixBodyOnClick = JSON.parse(this.checkedIsShouldFixBody);
+        this.overlayModifiers = this.customOverlayModifiers.split(', ');
         this.isContentOpened = false;
     }
 
     protected readyCallback(): void {
-        this.inspectionContentOpened();
+        this.checkContentIsOpened();
         this.mapEvents();
     }
 
     protected mapEvents(): void {
         this.triggers.forEach((trigger: HTMLElement) => trigger.addEventListener('click', (event: Event) => this.onTriggerClick(event)));
-        document.addEventListener('click', (event: Event) => this.clickOutside(event));
+        document.addEventListener('click', (event: Event) => this.onDocumentClick(event));
     }
 
     protected onTriggerClick(event: Event): void {
@@ -34,8 +34,8 @@ export default class TogglerClick extends Component {
         this.toggle(event);
     }
 
-    protected inspectionContentOpened(): void {
-        if (this.clickOutsideAction.length !== 0) {
+    protected checkContentIsOpened(): void {
+        if (this.onDocumentClickAction.length !== 0) {
             this.targets.forEach((target: HTMLElement) => {
                 const isTargetActive = target.classList.contains(this.classToToggle);
 
@@ -46,15 +46,15 @@ export default class TogglerClick extends Component {
         }
     }
 
-    clickOutside(event: Event): void {
-        if (this.clickOutsideAction.length !== 0) {
+    onDocumentClick(event: Event): void {
+        if (this.onDocumentClickAction.length !== 0) {
             if (this.isContentOpened) {
                 const eventTrigger = <HTMLElement>event.target;
-                const closestTarget = !!eventTrigger.closest(this.targetSelector);
-                const closestTriggers = !!eventTrigger.closest(this.triggerSelector);
+                const isClosestTargetExist = !!eventTrigger.closest(this.targetSelector);
+                const isClosestTriggerExist = !!eventTrigger.closest(this.triggerSelector);
 
-                if (!closestTarget && !closestTriggers) {
-                    if (this.clickOutsideAction === 'hide-class') {
+                if (!isClosestTargetExist && !isClosestTriggerExist) {
+                    if (this.onDocumentClickAction === 'hide-class') {
                         this.targets.forEach((target: HTMLElement) => {
                             target.classList.remove(this.classToToggle);
                         })
@@ -68,7 +68,7 @@ export default class TogglerClick extends Component {
                         this.removeOverlay();
                     }
 
-                    if (this.clickOutsideAction === 'show-class') {
+                    if (this.onDocumentClickAction === 'show-class') {
                         this.targets.forEach((target: HTMLElement) => {
                             target.classList.add(this.classToToggle);
                         })
@@ -96,7 +96,7 @@ export default class TogglerClick extends Component {
             this.toggleOverlay(addClass);
             this.isContentOpened = !this.isContentOpened;
 
-            if (this.bodyFlagVar) {
+            if (this.isFixBodyOnClick) {
                 this.fixBody(addClass);
             }
         });
@@ -128,8 +128,8 @@ export default class TogglerClick extends Component {
         }
     }
 
-    protected toggleOverlay(flag: boolean): void {
-        if (flag) {
+    protected toggleOverlay(isShouldToShowOverlay: boolean): void {
+        if (isShouldToShowOverlay) {
             this.addOverlay();
         } else {
             this.removeOverlay();
@@ -137,14 +137,14 @@ export default class TogglerClick extends Component {
     }
 
     protected addOverlay(): void {
-        if (this.overlayModifiers.length !== 0) {
-            this.overlay.showOverlay(this.OverlayModifiers[0], this.OverlayModifiers[1]);
+        if (this.customOverlayModifiers.length !== 0) {
+            this.overlay.showOverlay(this.overlayModifiers[0], this.overlayModifiers[1]);
         }
     }
 
     protected removeOverlay(): void {
-        if (this.overlayModifiers.length !== 0) {
-            this.overlay.hideOverlay(this.OverlayModifiers[0], this.OverlayModifiers[1]);
+        if (this.customOverlayModifiers.length !== 0) {
+            this.overlay.hideOverlay(this.overlayModifiers[0], this.overlayModifiers[1]);
         }
     }
 
@@ -164,7 +164,7 @@ export default class TogglerClick extends Component {
         return this.getAttribute('trigger-class-to-toggle');
     }
 
-    get bodyFlag(): string {
+    get checkedIsShouldFixBody(): string {
         return this.getAttribute('fix-body');
     }
 
@@ -172,12 +172,12 @@ export default class TogglerClick extends Component {
         return '.js-overlay-block';
     }
 
-    get overlayModifiers(): string {
+    get customOverlayModifiers(): string {
         return this.getAttribute('toggle-overlay-modifiers');
     }
 
-    get clickOutsideAction(): string {
-        return this.getAttribute('click-outside');
+    get onDocumentClickAction(): string {
+        return this.getAttribute('document-click');
     }
 
 }

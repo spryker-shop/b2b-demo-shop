@@ -26,11 +26,10 @@ export default class NavigationMultilevel extends Component {
     }
 
     protected onTriggerOver(event: Event): void {
-
         if (window.innerWidth >= this.availableBreakpoint) {
             const trigger = <HTMLElement>event.currentTarget;
             event.preventDefault();
-            this.overlay.showOverlay('no-header');
+            this.overlay.showOverlay();
             this.addClass(trigger);
         }
     }
@@ -43,7 +42,7 @@ export default class NavigationMultilevel extends Component {
         if (window.innerWidth >= this.availableBreakpoint) {
             const trigger = <HTMLElement>event.currentTarget;
             event.preventDefault();
-            this.overlay.hideOverlay('no-header');
+            this.overlay.hideOverlay();
             this.removeClass(trigger);
         }
     }
@@ -57,7 +56,7 @@ export default class NavigationMultilevel extends Component {
             const trigger = <HTMLElement>event.currentTarget;
             const contentToShowSelector = this.getDataAttribute(trigger, 'data-toggle-target');
             const contentToggleClass = this.getDataAttribute(trigger, 'data-class-to-toggle');
-            const closestParentNode = trigger.closest(`.${this.jsName}-item`);
+            const closestParentNode = trigger.closest(`.${this.jsName}__item`);
             const contentToShow = closestParentNode.querySelector(contentToShowSelector);
 
             contentToShow.classList.toggle(contentToggleClass);
@@ -86,10 +85,10 @@ export default class NavigationMultilevel extends Component {
     }
 
     get trigerSelector(): string {
-        return `.${this.jsName}-trigger`;
+        return `.${this.jsName}__trigger`;
     }
 
     get touchSelector(): string {
-        return `.${this.jsName}-touch-trigger`;
+        return `.${this.jsName}__touch-trigger`;
     }
 }
