@@ -107,8 +107,12 @@
         }
 
         &--bigger {
-            padding-top: rem(12);
-            padding-bottom: rem(12);
+            padding-top: rem(15);
+            padding-bottom: rem(15);
+
+            @include helper-breakpoint-media-min($lg) {
+                padding: rem(15) rem(27);
+            }
         }
 
         &--form {
@@ -185,6 +189,18 @@
             color: $setting-color-gray-5;
             box-shadow: 0 rem(10) rem(18) 0 rgba($setting-color-black, 0.05), 0 rem(3) rem(3) 0 rgba($setting-color-black, 0.04);
             font-size: rem(15);
+        }
+
+        &--mobile-big {
+            font-size: rem(16);
+            line-height: rem(20);
+            padding: rem(15) rem(32);
+
+            @include helper-breakpoint-media-min($lg) {
+                font-size: rem(14);
+                line-height: rem(18);
+                padding: rem(10) rem(30);
+            }
         }
 
         @each $action, $setting-color-action in $setting-color-actions {

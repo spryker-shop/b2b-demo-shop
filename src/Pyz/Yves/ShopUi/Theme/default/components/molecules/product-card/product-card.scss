@@ -57,7 +57,12 @@ $name: '.product-card';
         }
 
         &--product-set {
-            padding: 0 $catalog-space-x rem(26);
+            padding: 0;
+
+            @include helper-breakpoint-media-min($lg) {
+                padding: 0 $catalog-space-x rem(26);
+            }
+
         }
     }
 

@@ -38,7 +38,11 @@
     }
 
     &--quick-order-page {
-        padding: 50px 0 70px;
+        padding: rem(14) 0 rem(60);
+
+        @include helper-breakpoint-media-min($lg) {
+            padding: rem(50) 0 rem(54);
+        }
     }
 
     &--checkout-page,

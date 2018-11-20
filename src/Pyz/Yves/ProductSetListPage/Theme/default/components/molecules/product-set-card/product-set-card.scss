@@ -1,0 +1,51 @@
+@mixin shop-ui-product-set-card ($name: '.product-set-card') {
+    #{$name} {
+        &__container {
+            position: relative;
+        }
+
+        &__actions-container {
+            padding: 1rem;
+            border-radius: 0 0 $setting-border-radius $setting-border-radius;
+            box-shadow: 0 rem(10) rem(18) 0 $setting-color-shadow-1, 0 rem(3) rem(3) 0 $setting-color-shadow-1;
+            border: 1px solid $setting-color-gray-6;
+
+            @include helper-breakpoint-media-min($lg) {
+                padding: 0;
+                border: none;
+                box-shadow: none;
+            }
+        }
+
+        &__img-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: rem(200);
+            background-size: cover;
+            background-position: center;
+            font-size: rem(30);
+            line-height: normal;
+            font-weight: fw(medium);
+            color: $setting-color-white;
+            border-radius: $setting-border-radius $setting-border-radius 0 0;
+
+            @include helper-breakpoint-media-min($lg) {
+                border: none;
+                text-indent: rem(-9999);
+            }
+        }
+
+        &__name {
+            display: none;
+
+            @include helper-breakpoint-media-min($lg) {
+                display: block;
+            }
+        }
+    }
+
+    @content;
+}
+
+@include shop-ui-product-set-card;
