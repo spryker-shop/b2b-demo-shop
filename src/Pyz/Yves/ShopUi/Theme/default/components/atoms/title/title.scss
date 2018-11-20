@@ -88,6 +88,15 @@
             color: $setting-color-white;
         }
 
+        &--product-set-details {
+            font-size: rem(22);
+            font-weight: fw(medium);
+
+            @include helper-breakpoint-media-min($lg) {
+                font-size: rem(50);
+            }
+        }
+
         @content;
     }
 }

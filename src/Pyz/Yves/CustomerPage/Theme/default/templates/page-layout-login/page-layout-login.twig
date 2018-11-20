@@ -20,9 +20,9 @@
     {% embed organism('section') with {
         data: {
             title: 'customer.login.title' | trans,
-            innerClass: 'col col--sm-12 col--md-9 col--lg-6'
+            innerClass: 'col col--sm-12 col--md-9 col--lg-8 col--xl-6'
         },
-        modifiers: ['center', 'last']
+        modifiers: ['center', 'last', 'mobile-center']
     } only %}
         {% block inner %}
             {% include molecule('form') with {
@@ -39,7 +39,7 @@
                         url: url('password/forgotten'),
                         text: 'forms.forgot-password' | trans,
                         icon: null,
-                        class: 'link link--action',
+                        class: 'link link--action form__action--link',
                         qa: 'customer-forgot-password-link'
                     }
                 }
