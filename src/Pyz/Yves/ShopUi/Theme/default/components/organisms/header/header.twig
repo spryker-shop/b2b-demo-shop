@@ -27,42 +27,31 @@
                 <div class="col {{ config.name }}__actions">
                     <div class="grid">
                         <div class="col {{ config.name }}__actions-item">
-                            <a href="#" class="link link--alternative js-page-layout-main__side-drawer-trigger">
+                            <button class="link link--alternative js-page-layout-main__side-drawer-trigger">
                                 {% include atom('icon') with {
                                     data: {
                                         name: 'bars'
                                     }
                                 } only %}
-                            </a>
+                            </button>
                         </div>
                         <div class="col {{ config.name }}__actions-item header__actions-item--search">
-                            <a href="#" class="link link--alternative {{ config.jsName }}__actions-search-trigger">
+                            <button class="link link--alternative {{ config.jsName }}__actions-search-trigger">
                                 {% include atom('icon') with {
                                     modifiers: ['big'],
                                     data: {
                                         name: 'search'
                                     }
                                 } only %}
-                            </a>
+                            </button>
                         </div>
                     </div>
                 </div>
 
-                {% embed molecule('logo') with {
+                {% include molecule('logo') with {
                     class: 'col ' ~  config.name ~ '__logo',
                     modifiers: ['main']
                 } only %}
-                    {% block mobile %}
-                        <span class="{{ config.name ~ '__image ' ~  config.name ~ '__image--mobile'  }}">
-                            {% include atom('icon') with {
-                                modifiers: modifiersForIcon,
-                                data: {
-                                    name: 'logo-mobile'
-                                }
-                            } only %}
-                        </span>
-                    {% endblock %}
-                {% endembed %}
 
                 <div class="col {{ config.name }}__search">
                     {% if data.showSearchForm %}
@@ -84,14 +73,28 @@
 
                 {% if is_granted('ROLE_USER') %}
                     <div class="col col--right {{ config.name }}__user">
-                        <a href="{{ url('customer/overview') }}" class="link link--alternative">
-                            {% include atom('icon') with {
-                                modifiers: ['big'],
-                                data: {
-                                    name: 'user'
-                                }
-                            } only %}
-                        </a>
+                        <div class="grid grid--gap">
+                            <div class="col">
+                                <a href="{{ url('company/overview') }}" class="link link--alternative {{config.name}}__user-link">
+                                    {% include atom('icon') with {
+                                        modifiers: ['big'],
+                                        data: {
+                                            name: 'office'
+                                        }
+                                    } only %}
+                                </a>
+                            </div>
+                            <div class="col">
+                                <a href="{{ url('customer/overview') }}" class="link link--alternative">
+                                    {% include atom('icon') with {
+                                        modifiers: ['big'],
+                                        data: {
+                                            name: 'user'
+                                        }
+                                    } only %}
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 {% endif %}
 
@@ -105,7 +108,7 @@
                                 }
                             } only %}
                         {% else %}
-                            <a href="{{ url('login') }}" class="button button--tight button--font-size-changer {{ config.name }}__login">{{ 'customer.please_login'|trans }}</a>
+                            <a href="{{ url('login') }}" class="button button--tight button--medium {{ config.name }}__login">{{ 'customer.please_login'|trans }}</a>
                         {% endif %}
                     {% endif %}
                 </div>

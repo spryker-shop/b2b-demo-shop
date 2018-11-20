@@ -6,29 +6,31 @@
 } %}
 
 {% define data = {
-    levelMenu: 1
+    levelMenu: 1,
+    parentJsName: ''
 } %}
 
 {% set cssClass = data.node.cssClass is empty ? '' : ' ' ~ data.node.cssClass %}
 
 {% block class %}
-    {{ parent() }}{{ cssClass }}
+    {{ parent() }}{{ cssClass }} {{ data.parentJsName }}-trigger {{ data.parentJsName }}-item
 {% endblock %}
 
 {% block body %}
     {{ parent() }}
 
     {% if(data.node.children | length > 0) %}
-        <div class="menu-wrapper menu-wrapper--lvl-{{ data.levelMenu }} js-menu-wrapper menu-wrapper--hidden-on-touch">
+        <div class="menu-wrapper menu-wrapper--lvl-{{ data.levelMenu }} {{ data.parentJsName }}-wrapper is-hidden-sm-lg">
             <ul class="menu menu--lvl-{{ data.levelMenu }}">
                 {% for childNode in data.node.children %}
                     {% set hasChildren = childNode.children | length > 0 %}
 
                     {% include molecule('navigation-multilevel-node') with {
-                        class: 'menu__item menu__item--lvl-' ~ data.levelMenu ~ (hasChildren ? ' menu__item--has-children-list js-menu-item' : ''),
+                        class: 'menu__item menu__item--lvl-' ~ data.levelMenu ~ (hasChildren ? ' menu__item--has-children-list' : ''),
                         data: {
                             node: childNode,
-                            levelMenu: data.levelMenu + 1
+                            levelMenu: data.levelMenu + 1,
+                            parentJsName: data.parentJsName
                         }
                     } only %}
                 {% endfor %}
@@ -39,7 +41,7 @@
 
 {% block mobileTrigger %}
    {% if(data.node.children | length > 0) %}
-       <button class="menu__trigger-btn menu__trigger-btn--lvl-{{ data.levelMenu - 1 }} js-menu-touch-trigger" data-toggle-target=".js-menu-wrapper" data-class-to-toggle="menu-wrapper--hidden-on-touch">
+       <button class="menu__trigger-btn menu__trigger-btn--lvl-{{ data.levelMenu - 1 }} {{ data.parentJsName }}-touch-trigger" data-toggle-target=".{{ data.parentJsName }}-wrapper" data-class-to-toggle="is-hidden-sm-lg">
            {% include atom('icon') with {
                modifiers: ['small'],
                class: 'menu__trigger-btn-icon',

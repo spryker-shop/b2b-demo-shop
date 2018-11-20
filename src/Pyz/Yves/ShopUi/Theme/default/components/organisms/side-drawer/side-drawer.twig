@@ -8,13 +8,13 @@
 {% define attributes = {
     'trigger-selector': required,
     'container-selector': '',
-    'locked-body-selector': 'is-not-scrollable'
+    'locked-body-selector': 'is-locked-tablet'
 } %}
 
 {% block body %}
     <div class="{{config.name}}__overlay {{attributes['trigger-selector']}}"></div>
 
-    <aside class="{{config.name}}__drawer">
+    <aside class="{{config.name}}__drawer {% if is_granted('ROLE_USER') %}{{config.name}}__drawer--logged{% endif %}">
         {% block close %}
             <button class="{{config.name}}__close {{attributes['trigger-selector']}}">
                 {% include atom('icon') with {
@@ -25,59 +25,28 @@
             </button>
         {% endblock %}
 
-        {% set gridClass = is_granted('ROLE_USER') ? 'grid--gap grid--right' : 'grid--gap-smaller' %}
-
-        <div class="grid {{ gridClass }} {{config.name}}__navigation-top">
+        <div class="grid grid--gap-smaller {{config.name}}__navigation-top">
             {% if is_granted('ROLE_USER') %}
-                <div class="col">
-                    <a href="{{ url('company/overview') }}" class="link link--alternative {{config.name}}__user-link">
-                        {% include atom('icon') with {
-                            class: config.name ~ '__user-link-icon',
-                            modifiers: ['big'],
-                            data: {
-                                name: 'office'
-                            }
-                        } only %}
-                        {{ 'customer.address.company'|trans }}
-                    </a>
+                <div class="col col--sm-5 {{config.name}}__navigation-top-actions">
+                    {% widget 'PriceModeSwitcherWidget' only %}{% endwidget %}
                 </div>
-                <div class="col">
-                    <a href="{{ url('customer/overview') }}" class="link link--alternative {{config.name}}__user-link">
-                        {% include atom('icon') with {
-                            class: config.name ~ '__user-link-icon',
-                            modifiers: ['big'],
-                            data: {
-                                name: 'user'
-                            }
-                        } only %}
-                        {{ 'global.account'|trans }}
-                    </a>
+                <div class="col col--sm-4 {{config.name}}__navigation-top-actions">
+                    {% widget 'CurrencyWidget' only %}{% endwidget %}
                 </div>
-            {% else %}
-                <div class="col col--sm-4 {{config.name}}__navigation-top-lang">
+                <div class="col col--sm-3 {{config.name}}__navigation-top-actions">
                     {% widget 'LanguageSwitcherWidget' args [app.request.pathInfo, app.request.queryString, app.request.requestUri] only %}{% endwidget %}
                 </div>
-                <div class="col {{config.name}}__navigation-top-login">
+            {% else %}
+                <div class="col col--sm-4 {{config.name}}__navigation-top-actions">
+                    {% widget 'LanguageSwitcherWidget' args [app.request.pathInfo, app.request.queryString, app.request.requestUri] only %}{% endwidget %}
+                </div>
+                <div class="col col--expand">
                     <a href="{{ url('login') }}" class="button button--tight button--expand {{ config.name }}__login">{{ 'customer.please_login'|trans }}</a>
                 </div>
             {% endif %}
         </div>
 
         <div class="{{config.name}}__holder">
-            {% if is_granted('ROLE_USER') %}
-                <div class="grid grid--gap-smaller {{config.name}}__actions">
-                    <div class="col col--sm-4">
-                        {% widget 'PriceModeSwitcherWidget' only %}{% endwidget %}
-                    </div>
-                    <div class="col col--sm-4">
-                        {% widget 'CurrencyWidget' only %}{% endwidget %}
-                    </div>
-                    <div class="col col--sm-4">
-                        {% widget 'LanguageSwitcherWidget' args [app.request.pathInfo, app.request.queryString, app.request.requestUri] only %}{% endwidget %}
-                    </div>
-                </div>
-            {% endif %}
-
             <div class="{{config.name}}__navigation">
                 {% widget 'NavigationWidget' args ['MAIN_NAVIGATION', 'navigation-main'] only %}{% endwidget %}
             </div>

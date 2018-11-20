@@ -156,10 +156,10 @@
                     content: '';
                     background: $setting-color-white;
                     position: absolute;
-                    top: -5px;
+                    top: rem(-5);
                     left: 50%;
-                    width: 10px;
-                    height: 10px;
+                    width: rem(10);
+                    height: rem(10);
                     transform: translateX(-50%) rotate(45deg);
                 }
 
@@ -174,7 +174,7 @@
         }
 
         &__sub-nav-inner {
-            border-top: 1px solid $setting-color-gray-6;
+            border-top: rem(1) solid $setting-color-gray-6;
             flex-grow: 1;
             overflow: hidden;
             overflow-y: auto;
@@ -192,6 +192,10 @@
             width: rem(40);
             height: rem(40);
             background: none;
+
+            @include helper-breakpoint-media-min($lg) {
+                display: none;
+            }
         }
 
         &__sub-nav-title {

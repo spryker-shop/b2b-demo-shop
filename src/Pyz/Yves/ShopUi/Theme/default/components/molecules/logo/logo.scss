@@ -1,26 +1,10 @@
 @mixin shop-ui-logo($name: '.logo') {
     #{$name} {
 
-        &__image {
-            &--main {
-                display: none;
-
-                @include helper-breakpoint-media-min($lg) {
-                    display: block;
-                }
-            }
-
-            &--mobile {
-                @include helper-breakpoint-media-min($lg) {
-                    display: none;
-                }
-            }
-        }
-
         &--checkout {
             padding-right: 0;
-            margin-top: -10px;
-            margin-bottom: -10px;
+            margin-top: rem(-10);
+            margin-bottom: rem(-10);
         }
 
         @content;

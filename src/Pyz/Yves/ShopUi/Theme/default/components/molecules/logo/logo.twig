@@ -22,15 +22,20 @@
             {% set modifiersForIcon = modifiers | merge(['logo']) %}
             <span class="{{ component.renderClass(config.name ~ '__image', modifiers) }}">
                 {% include atom('icon') with {
+                    class: 'is-hidden-lg-xl',
+                    modifiers: modifiersForIcon,
+                    data: {
+                        name: 'logo-mobile'
+                    }
+                } only %}
+                {% include atom('icon') with {
+                    class: 'is-hidden-sm-md',
                     modifiers: modifiersForIcon,
                     data: {
                         name: 'logo'
                     }
                 } only %}
             </span>
-            {% block mobile %}
-
-            {% endblock %}
         {% else %}
             <img {{component.renderAttributes(attributes)}} />
         {% endif %}

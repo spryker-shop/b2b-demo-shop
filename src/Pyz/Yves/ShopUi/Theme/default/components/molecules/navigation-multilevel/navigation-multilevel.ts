@@ -26,6 +26,7 @@ export default class NavigationMultilevel extends Component {
     }
 
     protected onTriggerOver(event: Event): void {
+
         if (window.innerWidth >= this.availableBreakpoint) {
             const trigger = <HTMLElement>event.currentTarget;
             event.preventDefault();
@@ -56,7 +57,7 @@ export default class NavigationMultilevel extends Component {
             const trigger = <HTMLElement>event.currentTarget;
             const contentToShowSelector = this.getDataAttribute(trigger, 'data-toggle-target');
             const contentToggleClass = this.getDataAttribute(trigger, 'data-class-to-toggle');
-            const closestParentNode = trigger.closest('.js-menu-item');
+            const closestParentNode = trigger.closest(`.${this.jsName}-item`);
             const contentToShow = closestParentNode.querySelector(contentToShowSelector);
 
             contentToShow.classList.toggle(contentToggleClass);
@@ -85,10 +86,10 @@ export default class NavigationMultilevel extends Component {
     }
 
     get trigerSelector(): string {
-        return '.js-menu-trigger';
+        return `.${this.jsName}-trigger`;
     }
 
     get touchSelector(): string {
-        return '.js-menu-touch-trigger';
+        return `.${this.jsName}-touch-trigger`;
     }
 }

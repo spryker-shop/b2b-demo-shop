@@ -3,7 +3,7 @@
         position: relative;
         padding: rem(13) rem(15) rem(15) rem(21);
         width: 100%;
-        border-bottom: 1px solid $setting-color-gray-6;
+        border-bottom: rem(1) solid $setting-color-gray-6;
 
         @include helper-breakpoint-media-min($lg) {
             padding-left: rem(24);
@@ -84,16 +84,12 @@
             color: $setting-color-white;
             background-color: $setting-color-yellow-1;
             padding: 0 rem(9);
-            margin-right: rem(9);
+            margin-right: rem(4);
             border-radius: $setting-border-radius;
             vertical-align: middle;
-        }
-
-        &__price-mode {
-            display: none;
 
             @include helper-breakpoint-media-min($lg) {
-                display: inline;
+                margin-right: rem(9);
             }
         }
 

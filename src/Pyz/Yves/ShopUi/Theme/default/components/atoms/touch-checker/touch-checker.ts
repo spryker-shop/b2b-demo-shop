@@ -1,6 +1,6 @@
 import Component from 'ShopUi/models/component';
 
-export default class UiLess extends Component {
+export default class TouchChecker extends Component {
     protected readyCallback(): void {
         this.touchInspectionInit();
     }

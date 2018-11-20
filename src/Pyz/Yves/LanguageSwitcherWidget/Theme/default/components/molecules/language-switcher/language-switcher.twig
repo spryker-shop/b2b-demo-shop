@@ -37,20 +37,5 @@
                 </option>
             {% endfor %}
         {% endblock %}
-        {% block caret %}
-            {% include atom('icon') with {
-                class: config.name ~ '__caret is-hidden-sm-md',
-                data: {
-                    name: 'caret-down'
-                }
-            } only %}
-
-            {% include atom('icon') with {
-                class: config.name ~ '__caret is-hidden-lg-xl',
-                data: {
-                    name: 'double-chevrons'
-                }
-            } only %}
-        {% endblock %}
     {% endembed %}
 {% endblock %}

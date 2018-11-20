@@ -9,7 +9,7 @@
         }
 
         &__row {
-            padding: 0.5rem;
+            padding: rem(8);
         }
 
         &__navigation-top {
@@ -56,7 +56,7 @@
 
             @include helper-breakpoint-media-min($lg) {
                 display: block;
-                padding-left: 50px;
+                padding-left: rem(50);
                 background: $setting-color-gray-1;
             }
 
@@ -70,13 +70,13 @@
             text-align: center;
 
             @include helper-breakpoint-media-min($lg) {
-                margin-top: -17px;
-                padding: 0 30px 0 0;
+                margin-top: rem(-17);
+                padding: 0 rem(30) 0 0;
                 flex-grow: 0;
             }
 
             @include helper-breakpoint-media-min($xl) {
-                padding-right: 58px;
+                padding-right: rem(58);
             }
         }
 
@@ -131,10 +131,6 @@
         &__actions {
             margin: 0 rem(-10);
 
-            @include helper-breakpoint-media-min($md) {
-                margin: 0 rem(-15);
-            }
-
             @include helper-breakpoint-media-min($lg) {
                 position: absolute;
                 top: rem(7);
@@ -148,10 +144,6 @@
             &-item {
                 padding: 0 rem(10);
                 color: $setting-color-black;
-
-                @include helper-breakpoint-media-min($md) {
-                    padding: 0 rem(15);
-                }
 
                 @include helper-breakpoint-media-min($lg) {
                     &--search {

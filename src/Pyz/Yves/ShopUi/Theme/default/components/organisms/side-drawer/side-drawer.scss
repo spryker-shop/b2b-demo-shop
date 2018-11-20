@@ -25,10 +25,10 @@ $shop-ui-side-drawer-width: rem(375);
             flex-direction: column;
             @include helper-ui-shadow;
             @include helper-visibility-invisible;
-            @include helper-effect-transition(opacity visibility left);
+            @include helper-effect-transition(opacity visibility top);
             position: fixed;
-            top: 0;
-            left: -100%;
+            top: -100%;
+            left: 0;
             width: 100%;
             height: 100%;
             background-color: $setting-color-bg;
@@ -36,8 +36,16 @@ $shop-ui-side-drawer-width: rem(375);
             overflow: hidden;
 
             @include helper-breakpoint-media-min($md) {
+                @include helper-effect-transition(opacity visibility left);
+                top: 0;
                 left: - $shop-ui-side-drawer-width;
                 width: $shop-ui-side-drawer-width;
+            }
+
+            @include helper-breakpoint-media-min($lg) {
+                &--logged {
+                    padding-top: rem(50);
+                }
             }
         }
 
@@ -65,23 +73,10 @@ $shop-ui-side-drawer-width: rem(375);
             }
         }
 
-        &__actions,
-        &__navigation-top-lang {
+        &__navigation-top-actions {
             @include helper-breakpoint-media-min($lg) {
                 display: none;
             }
-        }
-
-        &__navigation-top-login {
-            flex-grow: 1;
-
-            @include helper-breakpoint-media-min($lg) {
-                flex-grow: 0;
-            }
-        }
-
-        &__actions {
-            padding-bottom: rem(10);
         }
 
         &__user-link {
@@ -106,8 +101,8 @@ $shop-ui-side-drawer-width: rem(375);
         &__contact {
             display: block;
             padding: rem(16) rem(15) rem(16) rem(64);
-            border-radius: 2px;
-            border: 1px solid $setting-color-gray-1;
+            border-radius: rem(2);
+            border: rem(1) solid $setting-color-gray-1;
             color: $setting-color-gray-2;
             position: relative;
 
@@ -136,6 +131,7 @@ $shop-ui-side-drawer-width: rem(375);
         &--show &__drawer {
             @include helper-visibility-visible;
             left: 0;
+            top: 0;
         }
 
         @content;

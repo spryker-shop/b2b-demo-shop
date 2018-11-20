@@ -133,16 +133,6 @@
             }
         }
 
-        &-wrapper {
-            &--hidden-on-touch {
-                display: none;
-
-                @include helper-breakpoint-media-min($xl) {
-                    display: block;
-                }
-            }
-        }
-
         // Level 0
 
         &--lvl-0 {
@@ -154,7 +144,7 @@
         &__item--lvl-0 {
             position: relative;
             padding-left: rem(11);
-            border-bottom: solid 1px $setting-color-gray-1;
+            border-bottom: solid rem(1) $setting-color-gray-1;
             z-index: $setting-zi-element + 1;
 
             @include helper-breakpoint-media-min($xl) {
@@ -168,8 +158,8 @@
                     left: 50%;
                     bottom: 0;
                     transform: translateX(-50%);
-                    width: 30px;
-                    height: 2px;
+                    width: rem(30);
+                    height: rem(2);
                     background: $setting-color-gray-4;
                 }
             }
@@ -200,10 +190,10 @@
                     content: '';
                     position: absolute;
                     left: 50%;
-                    bottom: -25px;
+                    bottom: rem(-25);
                     transform: rotate(45deg) translateX(-50%);
-                    width: 10px;
-                    height: 10px;
+                    width: rem(10);
+                    height: rem(10);
                     border-radius: $setting-border-radius;
                     background: $setting-color-white;
                     transition: helper-effect-transition(opacity, $setting-effect-fast-duration);
@@ -287,7 +277,7 @@
                 padding: rem(19) rem(20) rem(21);
                 background-color: $setting-color-white;
                 border-radius: $setting-border-radius;
-                box-shadow: 0 18px 18px 0 $setting-color-shadow-1, 0 3px 3px 0 $setting-color-shadow-1;
+                box-shadow: 0 rem(18) rem(18) 0 $setting-color-shadow-1, 0 rem(3) rem(3) 0 $setting-color-shadow-1;
             }
 
             @include helper-breakpoint-media-min($xxxl) {
@@ -338,7 +328,7 @@
                 left: 50%;
                 transform: translateX(-50%);
                 top: 0;
-                width: 999px;
+                width: rem(999);
                 height: 100%;
                 background: $setting-color-gray-7;
                 z-index: -1;
@@ -356,7 +346,7 @@
 
             @include helper-breakpoint-media-min($xl) {
                 padding-bottom: 0;
-                margin-top: 19px;
+                margin-top: rem(19);
             }
         }
 
