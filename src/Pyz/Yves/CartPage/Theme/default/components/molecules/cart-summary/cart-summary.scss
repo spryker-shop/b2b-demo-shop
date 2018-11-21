@@ -3,6 +3,13 @@
     &__item {
         color: $setting-color-gray-2;
         line-height: rem(24);
+        font-size: rem(16);
+        font-weight: fw(bold);
+
+        @include helper-breakpoint-media-min($lg) {
+            font-size: rem(14);
+            font-weight: fw(regular);
+        }
 
         &--top-space {
             padding-top: rem(23);

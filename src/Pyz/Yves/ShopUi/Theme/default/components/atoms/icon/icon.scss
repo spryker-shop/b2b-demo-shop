@@ -337,4 +337,14 @@ $shop-ui-icon-size-bigger: 1.5rem;
         width: rem(35);
         height: rem(26);
     }
+
+    &--mobile-small {
+        width: rem(16);
+        height: rem(16);
+
+        @include helper-breakpoint-media-min($lg) {
+            width: rem(20);
+            height: rem(20);
+        }
+    }
 }
