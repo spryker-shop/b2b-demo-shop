@@ -36,9 +36,24 @@
         &.is-locked {
             position: fixed;
             left: 0;
+            top: 0;
             width: 100%;
             overflow: hidden;
             height: 100%;
+        }
+
+        &.is-locked-tablet {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            overflow: hidden;
+            height: 100%;
+
+            @include helper-breakpoint-media-min($xl) {
+                overflow: visible;
+                position: static;
+            }
         }
     }
 

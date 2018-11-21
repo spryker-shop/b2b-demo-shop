@@ -1,10 +1,16 @@
 @mixin shopping-list-widget-shop-list-item($name: '.shop-list-item') {
     #{$name} {
         position: relative;
-        padding: rem(13) rem(24) rem(15);
-        min-width: rem(468);
-        max-width: rem(620);
+        padding: rem(13) rem(15) rem(15) rem(21);
+        width: 100%;
         border-bottom: 1px solid $setting-color-gray-6;
+
+        @include helper-breakpoint-media-min($lg) {
+            padding-left: rem(24);
+            padding-right: rem(24);
+            min-width: rem(468);
+            max-width: rem(620);
+        }
 
         &:hover {
             background-color: $setting-color-gray-7;
@@ -26,9 +32,13 @@
             text-overflow: ellipsis;
             overflow: hidden;
             display: block;
-            max-width: rem(370);
+            max-width: 80%;
             white-space: nowrap;
             margin-right: 0.25rem;
+
+            @include helper-breakpoint-media-min($lg) {
+                max-width: rem(370);
+            }
 
             &:hover {
                 color: $setting-color-gray-4;

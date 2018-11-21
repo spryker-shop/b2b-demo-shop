@@ -13,7 +13,7 @@
 
 {% block body %}
     <div class="grid grid--middle grid--justify grid--nowrap grid--gap">
-        <div class="col">
+        <div class="col col--sm-9">
             <div class="grid grid--middle grid--nowrap">
                 <div class="col">
                     {% include molecule('mini-cart-radio', 'MultiCartWidget') with {
@@ -24,7 +24,7 @@
                         }
                     } only %}
                 </div>
-                <div class="col">
+                <div class="col col--mobile-expand">
                     {% if data.cart.isDefault %}
                         <a class="{{ config.name }}__title grid grid--nowrap" href="{{ path('cart') }}">
                             <strong class="col {{ config.name }}__name">{{ data.cart.name }}</strong>
@@ -53,6 +53,7 @@
 
                         {% if data.cart.priceMode is not empty %}
                             {% include molecule('price-mode') with {
+                                class: config.name ~ '__price-mode',
                                 modifiers: ['small'],
                                 data: {
                                     priceMode: data.cart.priceMode
@@ -63,7 +64,7 @@
                 </div>
             </div>
         </div>
-        <div class="col text-right">
+        <div class="col col--sm-3 text-right">
             <span class="{{ config.name }}__price {{ data.cart.isDefault ? config.name ~ '__price--active' : '' }}">
                {{ data.total | money(true, data.cart.currency.code) }}
             </span>

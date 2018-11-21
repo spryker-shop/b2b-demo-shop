@@ -44,6 +44,14 @@
             flex-grow: 1;
         }
 
+        &--mobile-expand {
+            flex-grow: 1;
+
+            @include helper-breakpoint-media-min($lg) {
+                flex-grow: 0;
+            }
+        }
+
         &--top {
             align-self: flex-start;
             margin-bottom: auto;
@@ -74,6 +82,14 @@
             align-self: center;
             margin-top: auto;
             margin-bottom: auto;
+        }
+
+        &--bottom-indent {
+            padding-bottom: $setting-grid-space-mobile;
+
+            @include helper-breakpoint-media-min($lg) {
+                padding-bottom: $setting-grid-space;
+            }
         }
     }
 
@@ -139,6 +155,16 @@
                     padding-left: $setting-grid-space;
                     padding-right: $setting-grid-space;
                 }
+            }
+        }
+
+        &--gap-smaller {
+            margin-left: rem(-5);
+            margin-right: rem(-5);
+
+            & > .col {
+                padding-left: rem(5);
+                padding-right: rem(5);
             }
         }
 

@@ -6,9 +6,16 @@
             font-weight: fw(regular);
             line-height: normal;
             letter-spacing: rem(0.2);
-            padding-bottom: rem(16);
-            padding-top: rem(26);
+            padding: rem(26) 0 rem(6);
             color: $setting-color-gray-4;
+
+            @include helper-breakpoint-media-min($lg) {
+                padding-bottom: rem(16);
+            }
+
+            &--bottom-indent {
+                padding-bottom: rem(16);
+            }
         }
 
         &__item {
