@@ -65,7 +65,7 @@
                 <div class="{{ config.name }}__form {{ config.jsName }}__form {{ config.jsName }}__form--{{ jsModifier }} {% if isNoteNotEmpty %}is-hidden{% endif %}">
                     <h6 class="{{ config.name }}__label toggler-accordion__item {{ config.jsName }}__trigger {% if isNoteNotEmpty %}active{% endif %}" data-toggle-target='.{{ config.jsName }}__content--{{ jsModifier }}'>
                         {{ 'cart_note.form.add_comment' | trans }}
-                        <span class="icon icon--toggler-cross icon--toggler-cross-link toggler-accordion__icon"></span>
+                        <span class="icon icon--toggler-cross icon--toggler-cross-mobile-small icon--toggler-cross-link toggler-accordion__icon"></span>
                     </h6>
                     <div class="{{ config.name }}__content {{ config.jsName }}__content {{ config.jsName }}__content--{{ jsModifier }} {% if not isNoteNotEmpty %}is-hidden{% endif %}">
                         {% include molecule('form') with {

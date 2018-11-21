@@ -1,3 +1,11 @@
 .cart-bottom {
-    padding-right: $setting-grid-space * 2;
+    padding: rem(10) 0 rem(20);
+
+    @include helper-breakpoint-media-min($lg) {
+        padding-top: 0;
+    }
+
+    @include helper-breakpoint-media-min($xxl) {
+        padding: 0 $setting-grid-space * 2 0 0;
+    }
 }
