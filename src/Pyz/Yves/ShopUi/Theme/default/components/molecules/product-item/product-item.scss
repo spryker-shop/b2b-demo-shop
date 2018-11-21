@@ -237,6 +237,10 @@
             position: absolute;
             bottom: rem(32);
             right: rem(6);
+
+            @include helper-breakpoint-media-min($lg) {
+                position: static;
+            }
         }
 
         @content;
