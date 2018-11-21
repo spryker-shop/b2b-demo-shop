@@ -127,31 +127,11 @@ $shop-ui-icon-size-bigger: 1.5rem;
         }
 
         &::before {
-            height: rem(3);
+            height: rem(2);
             width: 100%;
             top: 50%;
             left: 0;
             transform: translateY(-50%);
-        }
-
-        &::after {
-            height: 100%;
-            width: rem(3);
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .active & {
-            &::after {
-                display: none;
-            }
-        }
-    }
-
-    &--toggler-cross-mobile-small {
-        &::before {
-            height: rem(2);
 
             @include helper-breakpoint-media-min($lg) {
                 height: rem(3);
@@ -159,10 +139,20 @@ $shop-ui-icon-size-bigger: 1.5rem;
         }
 
         &::after {
+            height: 100%;
             width: rem(2);
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
 
             @include helper-breakpoint-media-min($lg) {
                 width: rem(3);
+            }
+        }
+
+        .active & {
+            &::after {
+                display: none;
             }
         }
     }
