@@ -9,14 +9,17 @@
 } %}
 
 {% block body %}
-    {% embed molecule('content-collapser') with {
-        modifiers: ['bg-dark'],
-        embed: {
-            idProductAbstract: data.idProductAbstract
-        }
-    } only %}
-        {% block content %}
-            {{ spyCmsBlock({ product: embed.idProductAbstract }) }}
-        {% endblock %}
-    {% endembed %}
+    {% set cmsContent = spyCmsBlock({ product: data.idProductAbstract }) %}
+    {% if cmsContent is not empty %}
+        {% embed molecule('content-collapser') with {
+            modifiers: ['bg-dark'],
+            embed: {
+                idProductAbstract: data.idProductAbstract
+            }
+        } only %}
+            {% block content %}
+                {{ spyCmsBlock({ product: embed.idProductAbstract }) }}
+            {% endblock %}
+        {% endembed %}
+    {% endif %}
 {% endblock %}
