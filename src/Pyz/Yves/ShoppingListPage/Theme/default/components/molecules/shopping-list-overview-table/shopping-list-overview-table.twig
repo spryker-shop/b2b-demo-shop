@@ -27,7 +27,7 @@
         {% for shoppingList in data.shoppingLists %}
             {% set hasWritePermission = can('WriteShoppingListPermissionPlugin', shoppingList.idShoppingList) %}
             <tr>
-                <td class="reverse-cell spacing-top spacing-top--inner spacing-top--big">
+                <td class="transform-cell spacing-top spacing-top--inner spacing-top--big" data-content={{ 'customer.account.shopping_list.overview.name' | trans }}>
                     {% if data.enableTableForm %}
                         {% include atom('checkbox') with {
                             modifiers: ['shopping-list'],

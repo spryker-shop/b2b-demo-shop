@@ -100,20 +100,13 @@
                     padding-right: 10px;
                 }
 
-                .reverse-cell {
-                    display: flex;
-                    align-items: center;
-                    flex-direction: row-reverse;
-                    justify-content: space-between;
-                }
-
-                .transform-cell::before {
-                    content: attr(data-content)':';
-                }
-
-                .transform-cell,
-                .reverse-cell {
+                .transform-cell {
+                    position: relative;
                     background-color: $setting-color-gray-7;
+
+                    &::before {
+                        content: attr(data-content)':';
+                    }
                 }
             }
         }
