@@ -87,7 +87,7 @@
         &--medium {
             font-size: rem(14);
             line-height: normal;
-            padding: rem(11) rem(20);
+            padding: rem(10) rem(30);
 
             @include helper-breakpoint-media-min($lg) {
                 font-size: rem(16);
@@ -120,6 +120,11 @@
         &--tight {
             padding-left: rem(20);
             padding-right: rem(20);
+        }
+
+        &--mobile-tight {
+            padding-left: rem(15);
+            padding-right: rem(15);
 
             @include helper-breakpoint-media-min($lg) {
                 padding-left: rem(30);

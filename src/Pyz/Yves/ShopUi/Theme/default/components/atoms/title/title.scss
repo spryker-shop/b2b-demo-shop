@@ -73,11 +73,21 @@
 
         &--product-slider {
             text-align: center;
-            margin-bottom: rem(33);
+            font-size: rem(28);
+            margin-bottom: rem(16);
+
+            @include helper-breakpoint-media-min($lg) {
+                margin-bottom: rem(33);
+                font-size: rem(32);
+            }
         }
 
         &--top-margin {
-            margin-top: rem(110);
+            margin-top: rem(61);
+
+            @include helper-breakpoint-media-min($lg) {
+                margin-top: rem(110);
+            }
         }
 
         &--top-margin-small {

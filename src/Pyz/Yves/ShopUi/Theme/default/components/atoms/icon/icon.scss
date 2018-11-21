@@ -3,62 +3,96 @@ $shop-ui-icon-size-bigger: 1.5rem;
 
 @include shop-ui-icon {
     &--logo {
-        width: 195px;
-        height: 70px;
+        width: rem(96);
+        height: rem(32);
+
+        @include helper-breakpoint-media-min($lg) {
+            width: rem(175);
+            height: rem(70);
+        }
+
+        @include helper-breakpoint-media-min($xl) {
+            width: rem(195);
+        }
     }
 
     &--checkout {
-        width: 167px;
-        height: 60px;
+        width: rem(167);
+        height: rem(60);
     }
 
     &--header-check {
-        width: 12px;
-        height: 9px;
-        margin: -2px 9px 0 0;
+        width: rem(12);
+        height: rem(9);
+        margin: rem(-2) rem(9) 0 0;
     }
 
     &--progress-check {
-        width: 10px;
-        height: 8px;
+        width: rem(10);
+        height: rem(8);
     }
 
     &--phone {
-        width: 15px;
-        height: 15px;
-        margin-right: 6px;
+        width: rem(15);
+        height: rem(15);
+        margin-right: rem(6);
     }
 
     &--search {
-        width: 20px;
-        height: 20px;
+        width: rem(20);
+        height: rem(20);
         fill: $setting-color-gray-4;
         stroke: $setting-color-gray-4;
-        stroke-width: 0.5px;
+        stroke-width: rem(0.5);
     }
 
     &--user {
-        width: 18px;
-        height: 21px;
-        margin-top: 7px;
+        width: rem(18);
+        height: rem(21);
+        margin-top: rem(7);
     }
 
     &--quick-order {
-        width: 32px;
-        height: 19px;
-        margin-top: 10px;
+        width: rem(27);
+        height: rem(16);
+
+        @include helper-breakpoint-media-min($lg) {
+            width: rem(32);
+            height: rem(19);
+            margin-top: rem(10);
+        }
     }
 
     &--header-shopping-list {
-        width: 17px;
-        height: 16px;
-        margin-top: 10px;
+        width: rem(13);
+        height: rem(12);
+
+        @include helper-breakpoint-media-min($lg) {
+            width: rem(17);
+            height: rem(16);
+            margin-top: rem(10);
+        }
     }
 
     &--cart {
-        width: 30px;
-        height: 26px;
-        margin-top: 5px;
+        width: rem(20);
+        height: rem(17);
+
+        @include helper-breakpoint-media-min($lg) {
+            width: rem(30);
+            height: rem(26);
+            margin-top: rem(5);
+        }
+    }
+
+    &--contact {
+        width: rem(22);
+        height: rem(24);
+        margin-bottom: rem(8);
+
+        @include helper-breakpoint-media-min($lg) {
+            display: none;
+        }
     }
 
     &--contact {
@@ -93,19 +127,27 @@ $shop-ui-icon-size-bigger: 1.5rem;
         }
 
         &::before {
-            height: rem(3);
+            height: rem(2);
             width: 100%;
             top: 50%;
             left: 0;
             transform: translateY(-50%);
+
+            @include helper-breakpoint-media-min($lg) {
+                height: rem(3);
+            }
         }
 
         &::after {
             height: 100%;
-            width: rem(3);
+            width: rem(2);
             top: 0;
             left: 50%;
             transform: translateX(-50%);
+
+            @include helper-breakpoint-media-min($lg) {
+                width: rem(3);
+            }
         }
 
         .active & {
@@ -127,9 +169,9 @@ $shop-ui-icon-size-bigger: 1.5rem;
 
     &--cart-plus {
         display: inline-block;
-        width: 26px;
-        height: 23px;
-        margin: -6px 12px -2px 0;
+        width: rem(26);
+        height: rem(23);
+        margin: rem(-6) rem(12) rem(-2) 0;
     }
 
     &--toggler-cross-link {
@@ -146,7 +188,7 @@ $shop-ui-icon-size-bigger: 1.5rem;
     }
 
     &--lock {
-        margin-bottom: 5px;
+        margin-bottom: rem(5);
         margin-right: rem(5);
     }
 
@@ -179,30 +221,30 @@ $shop-ui-icon-size-bigger: 1.5rem;
     }
 
     &--overview {
-        width: 17px;
-        height: 16px;
+        width: rem(17);
+        height: rem(16);
     }
 
     &--users {
-        width: 29px;
-        height: 19px;
+        width: rem(29);
+        height: rem(19);
     }
 
     &--business-unit {
-        width: 22px;
-        height: 22px;
+        width: rem(22);
+        height: rem(22);
     }
 
     &--role {
-        width: 18px;
-        height: 21px;
+        width: rem(18);
+        height: rem(21);
     }
 
     &--plus-small {
         width: rem(10);
         height: rem(10);
         position: relative;
-        top: -1px;
+        top: rem(-1);
     }
 
     &--share {
@@ -211,7 +253,7 @@ $shop-ui-icon-size-bigger: 1.5rem;
 
     &--add-to-list {
         position: relative;
-        top: 1px;
+        top: rem(1);
         width: rem(26);
         height: rem(26);
     }
