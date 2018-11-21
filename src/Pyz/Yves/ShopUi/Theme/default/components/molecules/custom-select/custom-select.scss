@@ -1,4 +1,4 @@
-    @mixin shop-ui-custom-select($name: '.custom-select') {
+@mixin shop-ui-custom-select($name: '.custom-select') {
     #{$name} {
         position: relative;
         max-width: 100%;
@@ -6,7 +6,7 @@
 
         &__select {
             border-radius: $setting-border-radius;
-            border: 1px solid $setting-color-gray-1;
+            border: rem(1) solid $setting-color-gray-1;
             color: $setting-color-gray-5;
             background: $setting-color-gray-7;
             font: fw(regular) rem(15)/rem(46) $setting-font-family;
@@ -49,25 +49,47 @@
 
         &--alternative {
             text-transform: uppercase;
+            width: 100%;
+
+            @include helper-breakpoint-media-min($lg) {
+                width: auto;
+            }
 
             #{$name}__select {
-                text-transform: uppercase;
-                border-radius: 0;
-                background: $setting-color-transparent;
-                border: none;
-                color: $setting-color-gray-4;
-                font-size: rem(11);
-                line-height: rem(40);
-                font-weight: fw(bold);
-                letter-spacing: rem(0.6);
-                padding: 0 rem(30) 0 rem(18);
+                width: 100%;
+                font-size: rem(12);
+                line-height: rem(38);
+                padding: 0 rem(20) 0 rem(10);
+                border: rem(1) solid $setting-color-gray-1;
+                color: $setting-color-gray-5;
+                background: $setting-color-gray-6;
+
+                @include helper-breakpoint-media-min($lg) {
+                    width: auto;
+                    text-transform: uppercase;
+                    border-radius: 0;
+                    background: $setting-color-transparent;
+                    border: none;
+                    color: $setting-color-gray-4;
+                    font-size: rem(11);
+                    line-height: rem(40);
+                    font-weight: fw(bold);
+                    letter-spacing: rem(0.6);
+                    padding: 0 rem(30) 0 rem(18);
+                }
             }
 
             #{$name}__caret {
-                right: 13px;
-                width: 7px;
-                height: 4px;
-                transform: translateY(-2px);
+                width: rem(7);
+                height: rem(11);
+                right: rem(10);
+
+                @include helper-breakpoint-media-min($lg) {
+                    right: rem(13);
+                    width: rem(7);
+                    height: rem(4);
+                    transform: translateY(rem(-2));
+                }
             }
         }
 
@@ -75,16 +97,18 @@
             #{$name}__select {
                 font-size: rem(13);
                 line-height: rem(38);
+                font-weight: fw(medium);
 
                 @include helper-breakpoint-media-min($lg) {
                     font-size: rem(14);
+                    font-weight: fw(regular);
                 }
             }
 
             #{$name}__caret {
                 @include helper-breakpoint-media-min($lg) {
-                    width: 9px;
-                    height: 5px;
+                    width: rem(9);
+                    height: rem(5);
                 }
             }
         }
@@ -141,7 +165,7 @@
         &-selection__rendered {
             display: block;
             border-radius: $setting-border-radius;
-            border: 1px solid $setting-color-gray-1;
+            border: rem(1) solid $setting-color-gray-1;
             color: $setting-color-gray-5;
             background: $setting-color-gray-7;
             font: fw(regular) rem(15)/rem(46) $setting-font-family;
@@ -160,11 +184,11 @@
             border: 0;
             clip: rect(0 0 0 0);
             clip-path: inset(50%);
-            height: 1px;
+            height: rem(1);
             overflow: hidden;
             padding: 0;
             position: absolute;
-            width: 1px;
+            width: rem(1);
             white-space: nowrap;
         }
 
@@ -191,7 +215,7 @@
                 #{$name}-dropdown {
                     padding: rem(11) 0 rem(12) rem(19);
                     border-radius: 0 0 $setting-border-radius $setting-border-radius;
-                    box-shadow: 0 18px 18px 0 $setting-color-shadow-1, 0 3px 3px 0 $setting-color-shadow-1;
+                    box-shadow: 0 rem(18) rem(18) 0 $setting-color-shadow-1, 0 rem(3) rem(3) 0 $setting-color-shadow-1;
                 }
 
                 #{$name}-results__option {
@@ -228,7 +252,7 @@
             padding: rem(15) rem(20) rem(15) rem(15);
             border-radius: $setting-border-radius;
             background: $setting-color-white;
-            box-shadow: 0 18px 18px 0 $setting-color-shadow-1, 0 3px 3px 0 $setting-color-shadow-1;
+            box-shadow: 0 rem(18) rem(18) 0 $setting-color-shadow-1, 0 rem(3) rem(3) 0 $setting-color-shadow-1;
         }
 
         &-search--dropdown.select2-search--hide {
@@ -245,7 +269,7 @@
             font-weight: fw(regular);
             line-height: 1.87;
             letter-spacing: rem(0.2);
-            padding: 0 0 0 27px;
+            padding: 0 0 0 rem(27);
             white-space: nowrap;
             text-overflow: ellipsis;
             overflow: hidden;
@@ -260,10 +284,10 @@
                 &::before {
                     content: '';
                     position: absolute;
-                    border-left: 2px solid $setting-color-gray-3;
-                    border-bottom: 2px solid $setting-color-gray-3;
-                    width: 10px;
-                    height: 6px;
+                    border-left: rem(2) solid $setting-color-gray-3;
+                    border-bottom: rem(2) solid $setting-color-gray-3;
+                    width: rem(10);
+                    height: rem(6);
                     top: rem(9);
                     left: rem(3);
                     transform: rotate(-45deg);

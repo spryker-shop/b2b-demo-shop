@@ -20,12 +20,22 @@
     <a href="{{data.url}}" class="{{ component.renderClass(config.name ~ '__link', modifiers) }}">
         {% if attributes.src is empty %}
             {% set modifiersForIcon = modifiers | merge(['logo']) %}
-            {% include atom('icon') with {
-                modifiers: modifiersForIcon,
-                data: {
-                    name: 'logo'
-                }
-            } only %}
+            <span class="{{ component.renderClass(config.name ~ '__image', modifiers) }}">
+                {% include atom('icon') with {
+                    class: 'is-hidden-lg-xl',
+                    modifiers: modifiersForIcon,
+                    data: {
+                        name: 'logo-mobile'
+                    }
+                } only %}
+                {% include atom('icon') with {
+                    class: 'is-hidden-sm-md',
+                    modifiers: modifiersForIcon,
+                    data: {
+                        name: 'logo'
+                    }
+                } only %}
+            </span>
         {% else %}
             <img {{component.renderAttributes(attributes)}} />
         {% endif %}

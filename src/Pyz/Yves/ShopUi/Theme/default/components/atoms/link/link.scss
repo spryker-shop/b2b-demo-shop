@@ -88,4 +88,14 @@
             color: $setting-color-gray-4;
         }
     }
+
+    &--alternative {
+        color: $setting-color-black;
+        @include helper-effect-transition(color);
+
+        &:hover {
+            text-decoration: none;
+            color: $setting-color-gray-3;
+        }
+    }
 }

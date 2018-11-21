@@ -6,20 +6,21 @@
 } %}
 
 {% define data = {
-    levelMenu: 1
+    levelMenu: 1,
+    parentJsName: ''
 } %}
 
 {% set cssClass = data.node.cssClass is empty ? '' : ' ' ~ data.node.cssClass %}
 
 {% block class %}
-    {{ parent() }}{{ cssClass }}
+    {{ parent() }}{{ cssClass }} {{ data.parentJsName }}__trigger {{ data.parentJsName }}__item
 {% endblock %}
 
 {% block body %}
     {{ parent() }}
 
     {% if(data.node.children | length > 0) %}
-        <div class="menu-wrapper menu-wrapper--lvl-{{ data.levelMenu }}">
+        <div class="menu-wrapper menu-wrapper--lvl-{{ data.levelMenu }} {{ data.parentJsName }}__wrapper is-hidden-sm-lg">
             <ul class="menu menu--lvl-{{ data.levelMenu }}">
                 {% for childNode in data.node.children %}
                     {% set hasChildren = childNode.children | length > 0 %}
@@ -28,7 +29,8 @@
                         class: 'menu__item menu__item--lvl-' ~ data.levelMenu ~ (hasChildren ? ' menu__item--has-children-list' : ''),
                         data: {
                             node: childNode,
-                            levelMenu: data.levelMenu + 1
+                            levelMenu: data.levelMenu + 1,
+                            parentJsName: data.parentJsName
                         }
                     } only %}
                 {% endfor %}
@@ -37,19 +39,49 @@
     {% endif %}
 {% endblock %}
 
+{% block mobileTrigger %}
+   {% if(data.node.children | length > 0) %}
+       <button class="menu__trigger-button menu__trigger-button--lvl-{{ data.levelMenu - 1 }} {{ data.parentJsName }}__touch-trigger" data-toggle-target=".{{ data.parentJsName }}__wrapper" data-class-to-toggle="is-hidden-sm-lg">
+           {% include atom('icon') with {
+               modifiers: ['small'],
+               class: 'menu__trigger-button-icon',
+               data: {
+                   name: 'caret-down'
+               }
+           } only %}
+       </button>
+   {% endif %}
+{% endblock %}
+
 {% block url %}
-    <a class="menu__link menu__link--lvl-{{ data.levelMenu - 1 }}" href="{{ data.node.url }}">{{ data.node.title }}</a>
+    <span class="menu__trigger menu__trigger--lvl-{{ data.levelMenu - 1 }}">
+        <a class="menu__link menu__link--lvl-{{ data.levelMenu - 1 }}" href="{{ data.node.url }}">{{ data.node.title }}</a>
+
+        {{block('mobileTrigger')}}
+    </span>
 {% endblock %}
 
 {% block link %}
-    <a class="menu__link menu__link--lvl-{{ data.levelMenu - 1 }}" href="{{ data.node.url }}">{{ data.node.title }}</a>
+    <span class="menu__trigger menu__trigger--lvl-{{ data.levelMenu - 1 }}">
+        <a class="menu__link menu__link--lvl-{{ data.levelMenu - 1 }}" href="{{ data.node.url }}">{{ data.node.title }}</a>
+
+        {{block('mobileTrigger')}}
+    </span>
 {% endblock %}
 
 {% block externalUrl %}
-    <a class="menu__link menu__link--lvl-{{ data.levelMenu - 1 }}" href="{{ data.node.url }}" target="_blank">{{ data.node.title }}</a>
+    <span class="menu__trigger menu__trigger--lvl-{{ data.levelMenu - 1 }}">
+        <a class="menu__link menu__link--lvl-{{ data.levelMenu - 1 }}" href="{{ data.node.url }}" target="_blank">{{ data.node.title }}</a>
+
+        {{block('mobileTrigger')}}
+    </span>
 {% endblock %}
 
 {% block other %}
-    <span class="menu__text menu__text--lvl-{{ data.levelMenu - 1 }}">{{ data.node.title }}</span>
+    <span class="menu__trigger menu__trigger--lvl-{{ data.levelMenu - 1 }}">
+        <span class="menu__text menu__text--lvl-{{ data.levelMenu - 1 }}">{{ data.node.title }}</span>
+
+        {{block('mobileTrigger')}}
+    </span>
 {% endblock %}
 
