@@ -9,7 +9,7 @@
         }
 
         &__row {
-            padding: 0.5rem;
+            padding: rem(8);
         }
 
         &__navigation-top {
@@ -18,8 +18,28 @@
         }
 
         &__search-form {
-            position: relative;
-            z-index: $setting-zi-element;
+            @include helper-visibility-invisible;
+            @include helper-effect-transition(transform visibility opacity);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: $setting-zi-header + 1;
+            transform: translateY(-100%);
+
+            &--active {
+                @include helper-visibility-visible;
+                transform: translateY(0);
+            }
+
+            @include helper-breakpoint-media-min($lg) {
+                display: block;
+                position: relative;
+                transform: none;
+                transition: none;
+                @include helper-visibility-visible;
+                z-index: $setting-zi-element;
+            }
 
             .body-overlay--no-search & {
                 z-index: $setting-zi-search-suggestions;
@@ -32,13 +52,43 @@
         }
 
         &__top {
-            background: $setting-color-gray-1;
+            display: none;
+
+            @include helper-breakpoint-media-min($lg) {
+                display: block;
+                padding-left: rem(50);
+                background: $setting-color-gray-1;
+            }
+
+            @include helper-breakpoint-media-min($xl) {
+                padding-left: 0;
+            }
+        }
+
+        &__logo {
+            flex-grow: 1;
+            text-align: center;
+
+            @include helper-breakpoint-media-min($lg) {
+                margin-top: rem(-17);
+                padding: 0 rem(30) 0 0;
+                flex-grow: 0;
+            }
+
+            @include helper-breakpoint-media-min($xl) {
+                padding-right: rem(58);
+            }
         }
 
         &__main {
             background: $setting-color-gray-6;
-            padding-top: 30px;
-            min-height: 114px;
+            padding: rem(8) 0 0;
+            min-height: rem(56);
+
+            @include helper-breakpoint-media-min($lg) {
+                min-height: rem(114);
+                padding: rem(30) 0 0;
+            }
 
             &--checkout {
                 padding-top: rem(20);
@@ -48,11 +98,81 @@
         }
 
         &__search {
-            max-width: 485px;
+            width: 0;
+            flex-grow: 0;
+
+            @include helper-breakpoint-media-min($lg) {
+                flex-grow: 1;
+            }
+
+            @include helper-breakpoint-media-min($xl) {
+                max-width: rem(515);
+            }
+        }
+
+        &__login {
+            margin-right: rem(-5);
+
+            @include helper-breakpoint-media-min($md) {
+                margin-right: 0;
+                margin-left: 1.875rem;
+            }
         }
 
         &__navigation {
-            background: $setting-color-white;
+            display: none;
+
+            @include helper-breakpoint-media-min($xl) {
+                display: block;
+                background: $setting-color-white;
+            }
+        }
+
+        &__actions {
+            margin: 0 rem(-10);
+
+            @include helper-breakpoint-media-min($lg) {
+                position: absolute;
+                top: rem(7);
+                left: rem(15);
+            }
+
+            @include helper-breakpoint-media-min($xl) {
+                display: none;
+            }
+
+            &-item {
+                padding: 0 rem(10);
+                color: $setting-color-black;
+
+                @include helper-breakpoint-media-min($lg) {
+                    &--search {
+                        display: none;
+                    }
+                }
+            }
+        }
+
+        &__user {
+            padding-left: rem(20);
+
+            @include helper-breakpoint-media-min($lg) {
+                display: none;
+            }
+        }
+
+        &__user-nav {
+            padding-top: rem(10);
+            width: 100%;
+
+            @include helper-breakpoint-media-min($lg) {
+                padding-top: rem(20);
+            }
+
+            @include helper-breakpoint-media-min($xl) {
+                width: auto;
+                padding: 0 0 0 rem(43);
+            }
         }
 
         @content;

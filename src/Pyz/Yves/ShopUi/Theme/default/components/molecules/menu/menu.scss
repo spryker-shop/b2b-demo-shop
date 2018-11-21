@@ -3,9 +3,14 @@
 
         &__link,
         &__text {
+            position: relative;
             letter-spacing: rem(0.2);
-            white-space: nowrap;
+            z-index: $setting-zi-element;
             @include helper-effect-transition(color);
+
+            @include helper-breakpoint-media-min($xl) {
+                white-space: nowrap;
+            }
         }
 
         &__text {
@@ -81,57 +86,130 @@
             }
         }
 
+        &__trigger {
+            display: block;
+            position: relative;
+            padding-right: rem(27);
+
+            @include helper-breakpoint-media-min($xl) {
+                position: static;
+                padding-right: 0;
+            }
+        }
+
+        &__trigger-button {
+            position: absolute;
+            height: 100%;
+            width: rem(27);
+            right: 0;
+            top: 0;
+            line-height: 0;
+            background: none;
+            z-index: $setting-zi-element - 1;
+
+            @include helper-breakpoint-media-min($xl) {
+                width: rem(20);
+                right: rem(-20);
+                display: none;
+                background: none;
+            }
+
+            &-icon {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%) rotate(-90deg);
+
+                @include helper-breakpoint-media-min($xl) {
+                    color: $setting-color-gray-3;
+                    margin-top: rem(2);
+                    transform: translate(-50%, -50%);
+                }
+            }
+
+            &.is-active {
+                #{$name}__trigger-button-icon {
+                    transform: translate(-50%, -50%) rotate(-180deg);
+                }
+            }
+        }
+
         // Level 0
 
         &--lvl-0 {
-            display: flex;
+            @include helper-breakpoint-media-min($xl) {
+                display: flex;
+            }
         }
 
         &__item--lvl-0 {
             position: relative;
+            padding-left: rem(11);
+            border-bottom: solid rem(1) $setting-color-gray-1;
             z-index: $setting-zi-element + 1;
 
+            @include helper-breakpoint-media-min($xl) {
+                padding-left: 0;
+                border: none;
+
+                &::before {
+                    content: '';
+                    display: none;
+                    position: absolute;
+                    left: 50%;
+                    bottom: 0;
+                    transform: translateX(-50%);
+                    width: rem(30);
+                    height: rem(2);
+                    background: $setting-color-gray-4;
+                }
+            }
+
             &.showed #{$name}-wrapper--lvl-1 {
-                opacity: 1;
-                transform: scale(1);
+                @include helper-breakpoint-media-min($xl) {
+                    opacity: 1;
+                    transform: scale(1);
+                }
+            }
+
+            &:last-of-type {
+                border: none;
             }
 
             &:not(:last-child) {
-                margin-right: rem(60);
-            }
+                @include helper-breakpoint-media-min($xl) {
+                    margin-right: rem(40);
+                }
 
-            &::before {
-                content: '';
-                display: none;
-                position: absolute;
-                left: 50%;
-                bottom: 0;
-                transform: translateX(-50%);
-                width: 30px;
-                height: 2px;
-                background: $setting-color-gray-4;
+                @include helper-breakpoint-media-min($xxl) {
+                    margin-right: rem(60);
+                }
             }
 
             &#{$name}__item--has-children-dropdown::after {
-                content: '';
-                position: absolute;
-                left: 50%;
-                bottom: -25px;
-                transform: rotate(45deg) translateX(-50%);
-                width: 10px;
-                height: 10px;
-                border-radius: $setting-border-radius;
-                background: $setting-color-white;
-                transition: helper-effect-transition(opacity, $setting-effect-fast-duration);
-                opacity: 0;
+                @include helper-breakpoint-media-min($xl) {
+                    content: '';
+                    position: absolute;
+                    left: 50%;
+                    bottom: rem(-25);
+                    transform: rotate(45deg) translateX(-50%);
+                    width: rem(10);
+                    height: rem(10);
+                    border-radius: $setting-border-radius;
+                    background: $setting-color-white;
+                    transition: helper-effect-transition(opacity, $setting-effect-fast-duration);
+                    opacity: 0;
+                }
             }
 
             &:hover {
-                &::before {
-                    display: block;
-                }
-                &::after {
-                    opacity: 1;
+                @include helper-breakpoint-media-min($xl) {
+                    &::before {
+                        display: block;
+                    }
+                    &::after {
+                        opacity: 1;
+                    }
                 }
             }
         }
@@ -140,66 +218,153 @@
         &__text--lvl-0 {
             display: block;
             font-size: rem(17);
-            font-weight: fw(regular);
-            line-height: rem(68);
-            color: $setting-color-gray-3;
-            @include helper-effect-transition(color);
+            font-weight: fw(medium);
+            letter-spacing: rem(0.2);
+            line-height: rem(52);
+            color: $setting-color-gray-5;
+
+            @include helper-breakpoint-media-min($xl) {
+                padding: 0;
+                font-weight: fw(regular);
+                line-height: rem(68);
+                color: $setting-color-gray-3;
+                letter-spacing: 0;
+                @include helper-effect-transition(color);
+            }
+
             &:hover {
                 color: $setting-color-gray-4;
+            }
+        }
+
+        &__trigger-button--lvl-0 {
+            @include helper-breakpoint-media-min($xl) {
+                .is-touch & {
+                    display: block;
+                }
             }
         }
 
         // Level 1
 
         &-wrapper--lvl-1 {
-            padding-top: rem(15);
-            position: absolute;
-            top: 100%;
-            left: rem(-28);
-            @include helper-effect-transition(transform);
-            transform-origin: top left;
-            transform: scale(0);
+            @include helper-breakpoint-media-min($xl) {
+                padding-top: rem(15);
+                position: absolute;
+                top: 100%;
+                left: rem(-10);
+                @include helper-effect-transition(transform);
+                transform-origin: top left;
+                transform: scale(0);
+            }
+
+            @include helper-breakpoint-media-min($xxl) {
+                left: rem(-28);
+            }
         }
         &--lvl-1 {
-            display: flex;
-            padding: rem(38) rem(39) rem(43);
-            background-color: $setting-color-white;
-            border-radius: $setting-border-radius;
-            box-shadow: 0 18px 18px 0 $setting-color-shadow-1, 0 3px 3px 0 $setting-color-shadow-1;
+            padding-bottom: rem(12);
+
+            @include helper-breakpoint-media-min($xl) {
+                display: flex;
+                padding: rem(19) rem(20) rem(21);
+                background-color: $setting-color-white;
+                border-radius: $setting-border-radius;
+                box-shadow: 0 rem(18) rem(18) 0 $setting-color-shadow-1, 0 rem(3) rem(3) 0 $setting-color-shadow-1;
+            }
+
+            @include helper-breakpoint-media-min($xxxl) {
+                padding: rem(38) rem(39) rem(43);
+            }
         }
 
         &__item--lvl-1 {
             &:not(:last-child) {
-                margin-right: 70px;
+                @include helper-breakpoint-media-min($xl) {
+                    margin-right: rem(16);
+                }
+
+                @include helper-breakpoint-media-min($xxl) {
+                    margin-right: rem(70);
+                }
             }
         }
 
         &__link--lvl-1,
         &__text--lvl-1 {
-            font-size: rem(17);
-            font-weight: fw(bold);
-            line-height: normal;
-            color: $setting-color-gray-4;
+            display: block;
+            font-size: rem(16);
+            line-height: rem(42);
+            letter-spacing: rem(0.2);
+            color: $setting-color-gray-5;
+
+            @include helper-breakpoint-media-min($xl) {
+                display: inline-block;
+                font-size: rem(17);
+                font-weight: fw(bold);
+                line-height: normal;
+                letter-spacing: 0;
+                color: $setting-color-gray-4;
+            }
         }
+
         &__link--lvl-1:hover {
             color: $setting-color-gray-3;
+        }
+
+        &__trigger-button--lvl-1 {
+            color: $setting-color-gray-2;
+
+            &.is-active::after {
+                content: '';
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                top: 0;
+                width: rem(999);
+                height: 100%;
+                background: $setting-color-gray-7;
+                z-index: -1;
+
+                @include helper-breakpoint-media-min($xl) {
+                    display: none;
+                }
+            }
         }
 
         // Level 2
 
         &--lvl-2 {
-            margin-top: 19px;
+            padding-bottom: rem(10);
+
+            @include helper-breakpoint-media-min($xl) {
+                padding-bottom: 0;
+                margin-top: rem(19);
+            }
         }
 
         &__item--lvl-2 {
-            padding: rem(3) 0;
+            @include helper-breakpoint-media-min($xl) {
+                padding: rem(3) 0;
+            }
         }
 
         &__link--lvl-2,
         &__text--lvl-2 {
+            display: block;
+            padding: 0 rem(20);
             font-size: rem(15);
+            line-height: rem(42);
             font-weight: fw(regular);
+            letter-spacing: rem(0.2);
             color: $setting-color-gray-3;
+
+            @include helper-breakpoint-media-min($xl) {
+                display: inline-block;
+                line-height: normal;
+                letter-spacing: 0;
+                padding: 0;
+            }
         }
         &__link--lvl-2:hover {
             color: $setting-color-gray-4;

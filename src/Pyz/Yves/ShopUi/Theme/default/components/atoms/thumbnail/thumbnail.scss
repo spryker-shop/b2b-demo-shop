@@ -6,7 +6,11 @@
         margin: 0.5rem;
 
         &--smaller {
-            height: rem(42);
+            height: rem(52);
+
+            @include helper-breakpoint-media-min($lg) {
+                height: rem(42);
+            }
         }
 
         &--small {
@@ -23,6 +27,10 @@
 
         &--min-size {
             min-width: 2.5rem;
+        }
+
+        &--reset-indents {
+            margin: 0;
         }
 
         &--category-list {
