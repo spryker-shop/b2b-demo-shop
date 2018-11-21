@@ -162,6 +162,15 @@
         &--alternative {
             margin-bottom: rem(15);
 
+            &:hover {
+                #{$name}__box--alternative {
+                    border-color: $setting-color-gray-2;
+                }
+            }
+        }
+
+        &--pdp {
+
             @include helper-breakpoint-media-min($lg) {
                 margin-left: rem(132);
             }

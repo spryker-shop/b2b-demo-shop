@@ -1,8 +1,13 @@
 @mixin product-detail-page-product-configurator($name: '.product-configurator') {
     #{$name} {
+        padding: 0 rem(15) rem(14);
+        margin: 0 rem(-15);
+        border-bottom: solid 1px $setting-color-gray-6;
 
         @include helper-breakpoint-media-min($lg) {
-            padding-top: rem(22);
+            padding: rem(22) 0 0;
+            margin: 0;
+            border-bottom: 0;
         }
 
         &__top-block {
@@ -46,7 +51,11 @@
 
         &__add-to-cart {
             padding-top: rem(21);
-            padding-bottom: rem(10);
+            padding-bottom: rem(15);
+
+            @include helper-breakpoint-media-min($lg) {
+                padding-bottom: rem(10);
+            }
         }
 
         @content;

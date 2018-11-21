@@ -3,25 +3,25 @@
         position: relative;
 
         &__container {
-            display: none;
+            display: block;
+            height: rem(289);
+            position: relative;
+            z-index: $setting-zi-element;
+            background: $setting-color-white;
+
+            &::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: $setting-color-alpha-2;
+                z-index: $setting-zi-element + 1;
+            }
 
             @include helper-breakpoint-media-min($lg) {
-                display: block;
                 height: rem(420);
-                position: relative;
-                z-index: $setting-zi-element;
-                background: $setting-color-white;
-
-                &::before {
-                    content: '';
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    right: 0;
-                    bottom: 0;
-                    background: $setting-color-alpha-2;
-                    z-index: $setting-zi-element + 1;
-                }
             }
 
             @include helper-breakpoint-media-min($xl) {
@@ -30,28 +30,31 @@
         }
 
         &__item {
+            @include helper-effect-transition(opacity);
+            position: absolute;
+            left: 0;
+            top: 0;
+            padding: rem(10);
+            width: 100%;
+            height: rem(289);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            z-index: $setting-zi-element - 1;
+
+            &--left-indent {
+                padding-left: rem(73);
+            }
+
+            &--active,
+            &--color-active {
+                opacity: 1;
+            }
+
             @include helper-breakpoint-media-min($lg) {
-                @include helper-effect-transition(opacity);
-                position: absolute;
-                left: 0;
-                top: 0;
                 padding: rem(37);
-                width: 100%;
                 height: rem(420);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                opacity: 0;
-                z-index: $setting-zi-element - 1;
-
-                &--left-indent {
-                    padding-left: rem(73);
-                }
-
-                &--active,
-                &--color-active {
-                    opacity: 1;
-                }
             }
 
             @include helper-breakpoint-media-min($xl) {
@@ -67,6 +70,13 @@
         // Thumbnail slider
 
         &__thumbnail {
+
+            @include helper-breakpoint-media-max($lg - 1) {
+                ~ #{$name}__container {
+                    display: none;
+                }
+            }
+
             .slick-dots {
                 display: flex;
                 justify-content: center;

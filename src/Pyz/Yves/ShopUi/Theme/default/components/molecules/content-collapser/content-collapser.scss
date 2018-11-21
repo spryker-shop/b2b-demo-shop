@@ -18,12 +18,10 @@
         &__container {
             position: relative;
             max-height: rem(220);
-            margin-bottom: rem(26);
             overflow: hidden;
 
             @include helper-breakpoint-media-min($lg) {
                 max-height: none;
-                margin-bottom: 0;
             }
 
             &::after {
@@ -48,6 +46,11 @@
         &__trigger-holder {
             text-align: center;
             padding-bottom: rem(26);
+            padding-top: rem(26);
+
+            &--bg-dark {
+                background: $setting-color-gray-7;
+            }
 
             @include helper-breakpoint-media-min($lg) {
                 display: none;

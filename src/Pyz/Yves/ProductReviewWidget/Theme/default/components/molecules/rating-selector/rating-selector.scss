@@ -81,6 +81,12 @@ $product-review-rating-selector-icon-size-big: 24px;
         }
 
         &--pdp {
+            min-width: rem(100);
+            margin: 0 rem(4);
+
+            @include helper-breakpoint-media-min($md) {
+                margin: 0 0 rem(7);
+            }
 
             @include helper-breakpoint-media-min($lg) {
                 padding-top: rem(7);

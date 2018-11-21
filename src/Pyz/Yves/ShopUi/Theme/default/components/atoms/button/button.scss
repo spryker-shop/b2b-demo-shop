@@ -129,6 +129,12 @@
             width: 100%;
         }
 
+        &--expand-sm-only {
+            @include helper-breakpoint-media-max($md - 1) {
+                width: 100%;
+            }
+        }
+
         &--checkout {
             min-width: rem(200);
         }
@@ -201,6 +207,11 @@
                 line-height: rem(18);
                 padding: rem(10) rem(30);
             }
+        }
+
+        &--no-horizontal-padding {
+            padding-left: 0;
+            padding-right: 0;
         }
 
         @each $action, $setting-color-action in $setting-color-actions {

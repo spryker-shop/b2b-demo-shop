@@ -1,0 +1,22 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'product-cms-block'
+} %}
+
+{% define data = {
+    idProductAbstract: required
+} %}
+
+{% block body %}
+    {% embed molecule('content-collapser') with {
+        modifiers: ['bg-dark'],
+        embed: {
+            idProductAbstract: data.idProductAbstract
+        }
+    } only %}
+        {% block content %}
+            {{ spyCmsBlock({ product: embed.idProductAbstract }) }}
+        {% endblock %}
+    {% endembed %}
+{% endblock %}
