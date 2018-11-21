@@ -17,6 +17,15 @@
                     'locked-body-selector': 'is-locked-tablet'
                 }
             } only %}
+
+            {% include organism('user-account-navigation') with {
+                modifiers: ['user-navigation'],
+                attributes: {
+                    'container-selector': 'js-page-layout-main__side-drawer-container',
+                    'trigger-selector': 'js-page-layout-main__side-drawer-trigger',
+                    'locked-body-selector': 'is-locked-tablet'
+                }
+            } only %}
         {% endblock %}
 
         {% block outside %}{% endblock %}
