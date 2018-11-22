@@ -83,6 +83,7 @@ $product-review-rating-selector-icon-size-big: 24px;
         &--pdp {
             min-width: rem(100);
             margin: 0 rem(4);
+            display: flex;
 
             @include helper-breakpoint-media-min($md) {
                 margin: 0 0 rem(7);
@@ -127,6 +128,12 @@ $product-review-rating-selector-icon-size-big: 24px;
             line-height: rem(16);
             font-family: $setting-font-family;
             color: $setting-color-gray-3;
+            margin-left: rem(3);
+
+            &--pdp {
+                font-size: rem(15);
+                margin-left: rem(5);
+            }
         }
     }
 }
