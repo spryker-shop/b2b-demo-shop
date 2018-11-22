@@ -18,9 +18,10 @@
             font-weight: fw(regular);
             line-height: rem(29);
             color: $setting-color-gray-3;
+            padding-bottom: rem(35);
 
-            @include helper-breakpoint-media-max($lg - 1) {
-                padding-bottom: rem(35);
+            @include helper-breakpoint-media-min($lg) {
+                padding-bottom: 0;
             }
         }
 
