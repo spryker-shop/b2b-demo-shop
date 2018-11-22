@@ -36,8 +36,9 @@
                     {% endblock %}
                 {% endembed %}
             {% else %}
+                {{ node }}
                 {% if node.url %}
-                    <li><a class="{{ component.renderClass('link', modifiers) }}" href="{{ node.url }}">{{ node.title }}</a></li>
+                    <li><a class="{{ component.renderClass('link', modifiers) }} " href="{{ node.url }}">{{ node.title }}</a></li>
                 {% else %}
                     <li><span class="{{ component.renderClass('text', modifiers) }}">{{ node.title }}</span></li>
                 {% endif %}
