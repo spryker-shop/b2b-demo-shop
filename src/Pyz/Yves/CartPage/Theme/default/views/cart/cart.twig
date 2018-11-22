@@ -67,16 +67,17 @@
         <div class="grid grid--gap">
             <div class="col col--sm-12 col--xl-9">
                 <div class="cart-title">
-                    <h3 class="grid grid--middle cart-title__text">
+                    <h3 class="grid grid--nowrap grid--middle cart-title__text">
                         {{ data.cart.name }}
                         {% if can('ChangeCartItemPermissionPlugin') %}
                             <a href="{{ path('multi-cart/update', {idQuote: data.cart.idQuote}) }}" class="col button button--hollow-icon button--edit cart-title__link" title="{{ "multi_cart_widget.cart.action.change_name" | trans }}">
                                 {% include atom('icon') with {
-                                    modifiers: ['big'],
+                                    modifiers: ['mobile-small'],
                                     data: {
                                         name: 'edit'
                                     }
                                 } only %}
+                                <span class="is-hidden-lg-xl">{{ 'general.edit.button' | trans }}</span>
                             </a>
                         {% endif %}
                     </h3>
@@ -84,7 +85,7 @@
                         <div class="col col--sm-8">
                             {% if data.cart.priceMode is not empty %}
                                 {% include molecule('price-mode') with {
-                                    modifiers: ['big'],
+                                    modifiers: ['mobile-small'],
                                     data: {
                                         priceMode: data.cart.priceMode
                                     }
@@ -102,7 +103,8 @@
                             list: data.cart,
                             listItem: cartItem,
                             attributes: data.attributes[cartItem.sku] | default([]),
-                            canEdit: ((not is_granted('ROLE_USER') or can('WriteSharedCartPermissionPlugin', data.cart.idQuote)) and can('RemoveCartItemPermissionPlugin')),
+                            canEdit: not is_granted('ROLE_USER') or (can('ChangeCartItemPermissionPlugin', data.cart.idQuote) and can('WriteSharedCartPermissionPlugin', data.cart.idQuote)),
+                            canRemove: can('RemoveCartItemPermissionPlugin'),
                             imageModifiers: ['cart']
                         },
                         embed: {
@@ -134,7 +136,7 @@
 
                 {% if canEditCart and can('RemoveCartItemPermissionPlugin') %}
                     <div class="grid grid--right cart-bottom">
-                        <a href="{{ path('multi-cart/clear', {idQuote: data.cart.idQuote}) }}" class="link link--icon">
+                        <a href="{{ path('multi-cart/clear', {idQuote: data.cart.idQuote}) }}" class="link link--icon cart-bottom__button">
                             {% include atom('icon') with {
                                 modifiers: ['link'],
                                 data: {
