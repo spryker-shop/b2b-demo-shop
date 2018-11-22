@@ -1,8 +1,23 @@
 .sales-order-threshold-expense {
     &__text {
         color: $setting-color-gray-3;
+
         &--cart {
+            font-size: rem(12);
+            line-height: rem(13);
             color: $setting-color-gray-2;
+
+            @include helper-breakpoint-media-min($lg) {
+                font-size: rem(14);
+                line-height: rem(21);
+            }
+        }
+    }
+
+    &__price {
+        &--cart {
+            font-size: rem(14);
+            line-height: rem(21);
         }
     }
 }

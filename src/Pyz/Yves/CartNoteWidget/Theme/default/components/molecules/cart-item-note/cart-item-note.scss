@@ -53,8 +53,12 @@
     }
 
     .form__action {
-        margin-top: rem(12);
+        margin-top: rem(3);
         margin-left: 0;
+
+        @include helper-breakpoint-media-min($lg) {
+            margin-top: rem(12);
+        }
     }
 
     .label {
@@ -70,12 +74,13 @@
         border-radius: $setting-border-radius;
         border: none;
         box-shadow: 0 rem(10) rem(10) 0 $setting-color-shadow-1, 0 rem(3) rem(3) 0 $setting-color-shadow-1;
-        min-height: rem(86);
+        min-height: rem(119);
         max-width: 100%;
 
         @include helper-breakpoint-media-min($lg) {
             font-size: rem(13);
             padding: rem(15) rem(20);
+            min-height: rem(86);
         }
     }
 }

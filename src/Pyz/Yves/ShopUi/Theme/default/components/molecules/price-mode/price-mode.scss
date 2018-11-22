@@ -12,11 +12,27 @@
             color: $setting-color-gray-4;
         }
 
+        &--mobile-small {
+            font-size: rem(14);
+
+            @include helper-breakpoint-media-min($lg) {
+                font-size: rem(16);
+            }
+        }
+
         &__icon {
-            margin-right: 0.5rem;
+            margin-right: rem(8);
 
             &--small {
-                margin-right: 0.25rem;
+                margin-right: rem(4);
+            }
+
+            &--mobile-small {
+                margin-right: rem(4);
+
+                @include helper-breakpoint-media-min($lg) {
+                    margin-right: rem(8);
+                }
             }
         }
 
