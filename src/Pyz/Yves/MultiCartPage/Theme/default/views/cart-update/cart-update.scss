@@ -1,6 +1,10 @@
 .cart-update {
-    margin-top: rem(42);
+    margin-top: rem(18);
     margin-bottom: rem(42);
+
+    @include helper-breakpoint-media-min($lg) {
+        margin-top: rem(42);
+    }
 
     .label {
         display: inline-block;
@@ -17,11 +21,24 @@
 
     .form__actions {
         text-align: left;
-        margin-top: rem(20);
+        margin-top: rem(10);
+
+        @include helper-breakpoint-media-min($lg) {
+            margin-top: rem(20);
+        }
     }
 
     .form__action {
-        margin-left: 0;
-        margin-right: rem(20);
+        margin-bottom: rem(10);
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        @include helper-breakpoint-media-min($lg) {
+            margin-bottom: 0;
+            margin-left: 0;
+            margin-right: rem(20);
+        }
     }
 }

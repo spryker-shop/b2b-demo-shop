@@ -18,13 +18,16 @@
 {% block body %}
     <div class="order-sidebar__item order-sidebar__item--end">
         <ul class="list">
-            {% include molecule('cart-discount-summary', 'DiscountWidget') ignore missing with {
-                data: {
-                    voucherDiscounts: data.cart.voucherDiscounts,
-                    ruleDiscounts: data.cart.cartRuleDiscounts,
-                    discountTotal: data.cart.totals.discounttotal
-                }
-            } only %}
+            <li class="list__item">
+                {% include molecule('cart-discount-summary', 'DiscountWidget') ignore missing with {
+                    modifiers: ['cart'],
+                    data: {
+                        voucherDiscounts: data.cart.voucherDiscounts,
+                        ruleDiscounts: data.cart.cartRuleDiscounts,
+                        discountTotal: data.cart.totals.discounttotal
+                    }
+                } only %}
+            </li>
 
             {% widget 'SalesOrderThresholdWidget' args [data.cart.expenses] only %}{% endwidget %}
 
