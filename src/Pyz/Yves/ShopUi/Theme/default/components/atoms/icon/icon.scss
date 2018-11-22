@@ -127,19 +127,27 @@ $shop-ui-icon-size-bigger: 1.5rem;
         }
 
         &::before {
-            height: rem(3);
+            height: rem(2);
             width: 100%;
             top: 50%;
             left: 0;
             transform: translateY(-50%);
+
+            @include helper-breakpoint-media-min($lg) {
+                height: rem(3);
+            }
         }
 
         &::after {
             height: 100%;
-            width: rem(3);
+            width: rem(2);
             top: 0;
             left: 50%;
             transform: translateX(-50%);
+
+            @include helper-breakpoint-media-min($lg) {
+                width: rem(3);
+            }
         }
 
         .active & {

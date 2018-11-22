@@ -47,8 +47,17 @@
 
     &--checkout-page,
     &--cart-page {
-        padding-top: rem(32);
-        padding-bottom: rem(120);
+        padding-top: rem(14);
+        padding-bottom: rem(30);
+
+        @include helper-breakpoint-media-min($lg) {
+            padding-top: rem(32);
+            padding-bottom: rem(60);
+        }
+
+        @include helper-breakpoint-media-min($xl) {
+            padding-bottom: rem(120);
+        }
     }
 
     &--cms-page {
