@@ -26,10 +26,18 @@
             overflow: hidden;
         }
 
-        &--summary,
-        &--shopping-list {
+        &--summary {
             padding-top: rem(28);
             padding-bottom: rem(20);
+        }
+
+        &--shopping-list {
+            padding: 0;
+
+            @include helper-breakpoint-media-min($lg) {
+                padding-top: rem(28);
+                padding-bottom: rem(20);
+            }
         }
 
         @content;

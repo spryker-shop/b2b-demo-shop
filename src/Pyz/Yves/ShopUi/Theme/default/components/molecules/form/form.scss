@@ -31,7 +31,9 @@
             margin: 0 0 rem(10) 0;
 
             &:first-child {
-                margin-bottom: 0;
+                @include helper-breakpoint-media-max($lg) {
+                    margin-bottom: 0;
+                }
             }
 
             @include helper-breakpoint-media-min($lg) {

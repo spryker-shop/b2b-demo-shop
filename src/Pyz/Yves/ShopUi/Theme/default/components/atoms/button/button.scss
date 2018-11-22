@@ -198,6 +198,26 @@
             font-size: rem(15);
         }
 
+        &--mobile-full {
+            width: 100%;
+
+            @include helper-breakpoint-media-min($lg) {
+                width: auto;
+            }
+        }
+
+        &--shopping-list {
+            position: absolute;
+            bottom: rem(22);
+            left: rem(22);
+            width: calc(100% - 44px);
+
+            @include helper-breakpoint-media-min($lg) {
+                position: static;
+                width: auto;
+            }
+        }
+
         @each $action, $setting-color-action in $setting-color-actions {
             @include shop-ui-button-action($action, $setting-color-action);
         }
