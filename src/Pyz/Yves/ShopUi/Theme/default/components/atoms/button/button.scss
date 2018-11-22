@@ -189,13 +189,33 @@
             width: 100%;
         }
 
-        &--secondary {
+        &--additional {
             padding: rem(14) rem(20);
             background: $setting-color-white;
             border-color: $setting-color-gray-6;
             color: $setting-color-gray-5;
             box-shadow: 0 rem(10) rem(18) 0 rgba($setting-color-black, 0.05), 0 rem(3) rem(3) 0 rgba($setting-color-black, 0.04);
             font-size: rem(15);
+        }
+
+        &--mobile-full {
+            width: 100%;
+
+            @include helper-breakpoint-media-min($lg) {
+                width: auto;
+            }
+        }
+
+        &--shopping-list {
+            position: absolute;
+            bottom: rem(22);
+            left: rem(22);
+            width: calc(100% - 44px);
+
+            @include helper-breakpoint-media-min($lg) {
+                position: static;
+                width: auto;
+            }
         }
 
         @each $action, $setting-color-action in $setting-color-actions {

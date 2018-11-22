@@ -30,7 +30,7 @@
         } only %}
             {% block image %}
                 <div class="grid grid--justify grid--stretch {{ config.name }}__checkbox">
-                    <div class="col {{ config.name }}__checkbox-col">
+                    <div class="col {{ config.name }}__checkbox-col--shopping-list">
                         {% include atom('checkbox') with {
                             modifiers: ['shopping-list'],
                             attributes: {
@@ -103,8 +103,12 @@
                         value: data.listItem.quantity
                     }
                 } only %}
+
+            {% endblock %}
+
+            {% block deleteButton %}
                 {% if embed.isItemAvailable %}
-                    <button type="submit" name="add-item" class="button button--hollow" value="{{ data.listItem.idShoppingListItem }}" {{qa('submit-button')}}>
+                    <button type="submit" name="add-item" class="button button--hollow button--shopping-list" value="{{ data.listItem.idShoppingListItem }}" {{qa('submit-button')}}>
                         {{'customer.account.shopping_list.add-to-cart' | trans}}
                     </button>
                 {% endif %}
