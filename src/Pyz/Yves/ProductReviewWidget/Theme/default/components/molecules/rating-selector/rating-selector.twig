@@ -101,7 +101,9 @@
         {% endspaceless %}
     </span>
 
-    <span class="{{config.name}}__count">{{ data.reviewCount }}</span>
+    {% if data.reviewCount is not empty %}
+        <span class="{{ component.renderClass(config.name ~ '__count', modifiers) }}">({{ data.reviewCount }})</span>
+    {% endif %}
 
     {% if not attributes.readonly %}
         {% block input %}

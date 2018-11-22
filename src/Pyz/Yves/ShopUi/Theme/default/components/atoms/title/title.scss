@@ -111,6 +111,30 @@
             }
         }
 
+        &--mobile-toggler-section {
+            @include helper-breakpoint-media-max($lg - 1) {
+                font-size: rem(17);
+                padding-left: rem(29);
+                position: relative;
+
+                &::before,
+                &::after {
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    width: rem(10);
+                    height: rem(2);
+                    background: $setting-color-gray-5;
+                }
+
+                &::after {
+                    transform: translateY(-50%) rotate(90deg);
+                }
+            }
+        }
+
         @content;
     }
 }

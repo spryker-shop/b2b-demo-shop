@@ -11,16 +11,41 @@
 
         &__sub-title {
             margin-bottom: rem(20);
-            font-size: rem(24);
+            font-size: rem(18);
             font-weight: fw(medium);
             line-height: normal;
             color: $setting-color-gray-5;
+            text-align: center;
+
+            @include helper-breakpoint-media-min($lg) {
+                text-align: left;
+                font-size: rem(24);
+            }
         }
 
         &__rating-box {
             border-radius: $setting-border-radius;
             background-color: $setting-color-gray-7;
-            padding: rem(37) rem(40) rem(37) rem(40);
+            padding: rem(22) rem(38) rem(40);
+            margin-bottom: rem(21);
+
+            @include helper-breakpoint-media-min($lg) {
+                padding: rem(30) rem(20) rem(37);
+                margin-bottom: 0;
+            }
+
+            @include helper-breakpoint-media-min($xl) {
+                padding: rem(37) rem(40) rem(37);
+            }
+        }
+
+        &__no-review {
+            text-align: center;
+            margin: rem(8) 0;
+
+            @include helper-breakpoint-media-min($lg) {
+                text-align: left;
+            }
         }
     }
 }
