@@ -8,6 +8,8 @@ export default class SideDrawer extends Component {
         this.triggers = <HTMLElement[]>Array.from(document.getElementsByClassName(this.triggerSelector));
         this.containers = <HTMLElement[]>Array.from(document.getElementsByClassName(this.containerSelector));
         this.mapEvents();
+
+        console.log(this.name);
     }
 
     protected mapEvents(): void {
