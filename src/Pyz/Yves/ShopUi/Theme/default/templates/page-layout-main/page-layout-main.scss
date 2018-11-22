@@ -47,8 +47,17 @@
 
     &--checkout-page,
     &--cart-page {
-        padding-top: rem(32);
-        padding-bottom: rem(120);
+        padding-top: rem(14);
+        padding-bottom: rem(30);
+
+        @include helper-breakpoint-media-min($lg) {
+            padding-top: rem(32);
+            padding-bottom: rem(60);
+        }
+
+        @include helper-breakpoint-media-min($xl) {
+            padding-bottom: rem(120);
+        }
     }
 
     &--cms-page {
@@ -63,6 +72,9 @@
         padding-top: rem(35);
     }
 
+    $setting-pdp-gallery-max-width: 660;
+    $setting-site-max-width: 1200;
+
     &__pdp-gallery {
         background: $setting-color-alpha-2;
         padding: 0 rem(15) rem(15);
@@ -72,10 +84,11 @@
 
         @include helper-breakpoint-media-min($lg) {
             background: transparent;
-            width: calc(660 / 1200 * 100%);
-            min-width: calc(660 / 1200 * 100%);
+            width: calc(#{$setting-pdp-gallery-max-width} / #{$setting-site-max-width} * 100%);
+            min-width: calc(#{$setting-pdp-gallery-max-width} / #{$setting-site-max-width} * 100%);
             margin: 0 rem(15) 0 0;
             padding-bottom: 0;
         }
     }
 }
+

@@ -11,7 +11,11 @@
     }
 
     &--cart {
-        margin-bottom: $setting-grid-space;
+        margin: 0;
+
+        @include helper-breakpoint-media-min($lg) {
+            margin: 0 0 $setting-grid-space;
+        }
     }
 
     &__amount {
@@ -35,6 +39,7 @@
         }
 
         &--cart {
+            font-size: rem(18);
             font-weight: fw(bold);
             line-height: normal;
             color: $setting-color-gray-5;

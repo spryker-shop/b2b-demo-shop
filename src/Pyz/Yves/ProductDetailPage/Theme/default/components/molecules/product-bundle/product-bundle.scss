@@ -37,10 +37,14 @@
         &__list {
 
             &--cart {
-                padding: 0 0 0 rem(20);
+                padding: 0 0 0 rem(8);
                 font-size: rem(13);
                 font-weight: fw(regular);
                 color: $setting-color-gray-5;
+
+                @include helper-breakpoint-media-min($lg) {
+                    padding-left: rem(20);
+                }
             }
         }
 

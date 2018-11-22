@@ -12,7 +12,7 @@
     {% set cmsContent = spyCmsBlock({ product: data.idProductAbstract }) %}
     {% if cmsContent is not empty %}
         {% embed molecule('content-collapser') with {
-            modifiers: ['bg-dark'],
+            modifiers: ['with-background'],
             embed: {
                 idProductAbstract: data.idProductAbstract
             }

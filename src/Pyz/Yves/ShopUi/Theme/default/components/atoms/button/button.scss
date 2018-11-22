@@ -72,16 +72,6 @@
             }
         }
 
-        &--secondary {
-            font-size: rem(14);
-            padding: rem(10) rem(30);
-
-            @include helper-breakpoint-media-min($lg) {
-                font-size: rem(16);
-                padding: rem(15) rem(27);
-            }
-        }
-
         &--alternative {
             background-color: $setting-color-alt;
             border-color: $setting-color-alt;
@@ -97,7 +87,7 @@
         &--medium {
             font-size: rem(14);
             line-height: normal;
-            padding: rem(10) rem(20);
+            padding: rem(10) rem(30);
 
             @include helper-breakpoint-media-min($lg) {
                 font-size: rem(16);
@@ -130,11 +120,6 @@
         &--tight {
             padding-left: rem(20);
             padding-right: rem(20);
-
-            @include helper-breakpoint-media-min($lg) {
-                padding-left: rem(30);
-                padding-right: rem(30);
-            }
         }
 
         &--mobile-tight {
