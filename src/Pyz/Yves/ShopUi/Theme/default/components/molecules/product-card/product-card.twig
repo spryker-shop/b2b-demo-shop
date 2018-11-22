@@ -40,7 +40,6 @@
         {% widget 'ProductAbstractLabelWidget' args [data.abstractId] with {modifiers: modifiers} only %}
             {% block body %}
                 {% include molecule('label-group', 'ProductLabelWidget') with {
-                    modifiers: isLabels ? modifiers : ['hidden'],
                     data: {
                         labels: labels
                     }

@@ -141,8 +141,13 @@
             margin-bottom: rem(21);
         }
 
-        &--margin-top {
+        &--shopping-list {
             margin-top: rem(12);
+
+            @include helper-breakpoint-media-min($xl) {
+                margin-left: rem(132);
+                width: calc(100% - 132px);
+            }
         }
 
         &--light {

@@ -36,25 +36,27 @@
 {% endif %}
 
 {% block body %}
-    {% widget 'ProductDetailPageReviewWidget' args [data.product.idProductAbstract] use view('pdp-review-rating', 'ProductReviewWidget') only %}{% endwidget %}
 
-    {% if brand is not empty %}
-        <div class="{{ config.name }}__brand-name">{{brand}}</div>
-    {% endif %}
-
-    <div class="{{ config.name }}__sku">{{ 'product.attribute.sku' | trans }}: {{sku}}</div>
+    <div class="{{ config.name }}__top-block">
+        {% widget 'ProductDetailPageReviewWidget' args [data.product.idProductAbstract] use view('pdp-review-rating', 'ProductReviewWidget') only %}{% endwidget %}
+        <div class="{{ config.name }}__brand-sku-wrapper">
+            {% if brand is not empty %}
+                <div class="{{ config.name }}__brand-name">{{brand}}</div>
+            {% endif %}
+            <div class="{{ config.name }}__sku">{{ 'product.attribute.sku' | trans }}: {{sku}}</div>
+        </div>
+    </div>
 
     {% if can('SeePricePermissionPlugin') %}
         {% widget 'ProductPriceVolumeWidget' args [data.product] only %}
         {% nowidget %}
-            <p>
-                {% include molecule('price') with {
-                    data: {
-                        amount: data.product.price | money,
-                        originalAmount: data.product.prices.ORIGINAL | default
-                    }
-                } only %}
-            </p>
+            {% include molecule('price') with {
+                modifiers: ['pdp'],
+                data: {
+                    amount: data.product.price | money,
+                    originalAmount: data.product.prices.ORIGINAL is defined ? data.product.prices.ORIGINAL | money : null
+                }
+            } only %}
         {% endwidget %}
     {% endif %}
 
@@ -113,7 +115,7 @@
                         } only %}
 
                         <div class="col">
-                            <button type="submit" class="button button--alternative button--big button--expand" {{ isDisabled ? 'disabled' : '' }} onclick="this.form.submit(); this.disabled='disabled'; return false;" {{qa('add-to-cart-button')}}>
+                            <button type="submit" class="button button--alternative button--big button--expand button--no-horizontal-padding" {{ isDisabled ? 'disabled' : '' }} onclick="this.form.submit(); this.disabled='disabled'; return false;" {{qa('add-to-cart-button')}}>
                                 {% include atom('icon') with {
                                     modifiers: ['cart-plus'],
                                     data: {

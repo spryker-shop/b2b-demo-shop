@@ -1,26 +1,61 @@
 @mixin product-detail-page-product-configurator($name: '.product-configurator') {
     #{$name} {
-        padding-top: 22px;
+        padding: 0 rem(15) rem(14);
+        margin: 0 rem(-15);
+        border-bottom: solid 1px $setting-color-gray-6;
+
+        @include helper-breakpoint-media-min($lg) {
+            padding: rem(22) 0 0;
+            margin: 0;
+            border-bottom: 0;
+        }
+
+        &__top-block {
+            @include helper-breakpoint-media-max($lg - 1) {
+                background: $setting-color-gray-6;
+                padding: rem(15);
+                margin: 0 rem(-15);
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+        }
 
         &__brand-name {
-            font-size: rem(18);
+            font-size: rem(16);
             font-weight: fw(medium);
             line-height: rem(23);
             color: $setting-color-gray-5;
-            margin-bottom: rem(3);
+            text-align: right;
+
+            @include helper-breakpoint-media-min($lg) {
+                font-size: rem(18);
+                margin-bottom: rem(3);
+                text-align: left;
+            }
         }
 
         &__sku {
-            font-size: rem(14);
+            font-size: rem(13);
             font-weight: fw(regular);
             line-height: normal;
             color: $setting-color-gray-3;
-            margin-bottom: rem(28);
+            text-align: right;
+
+            @include helper-breakpoint-media-min($lg) {
+                font-size: rem(14);
+                margin-bottom: rem(28);
+                text-align: left;
+            }
         }
 
         &__add-to-cart {
             padding-top: rem(21);
-            padding-bottom: rem(10);
+            padding-bottom: rem(15);
+
+            @include helper-breakpoint-media-min($lg) {
+                padding-bottom: rem(10);
+            }
         }
 
         @content;
