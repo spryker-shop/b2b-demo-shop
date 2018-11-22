@@ -9,8 +9,11 @@
     &__title {
         padding-top: rem(4);
         font: fw(bold) rem(22)/rem(26) $setting-font-family;
+        display: flex;
+        flex-direction: column;
 
         @include helper-breakpoint-media-min($lg) {
+            display: block;
             padding-top: 0;
             font-size: rem(28);
             line-height: rem(36);

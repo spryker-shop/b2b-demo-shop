@@ -16,7 +16,7 @@
     </div>
 
     {% include molecule('rating-selector', 'ProductReviewWidget') with {
-        modifiers: ['pdp', 'space'],
+        modifiers: ['pdp'],
         class: config.name ~ '__rating-selector',
         data: {
             value: data.summary.averageRating,
@@ -28,14 +28,17 @@
         }
     } only %}
 
-    <div class="review-average-display__total-review">
-        {% if data.summary.totalReview > 0 %}
+    {% if data.summary.totalReview > 0 %}
+        <div class="review-average-display__total-review">
             {{- data.summary.totalReview }}
             {% transchoice data.summary.totalReview %}
                 product_review.summary.review|product_review.summary.reviews
             {% endtranschoice -%}
-        {% else %}
+        </div>
+    {% else %}
+        <div class="review-average-display__total-review is-hidden-sm-only">
             {{ 'product_review.no_reviews' | trans }}
-        {% endif %}
-    </div>
+        </div>
+    {% endif %}
+
 {% endblock %}

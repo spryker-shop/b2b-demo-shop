@@ -13,12 +13,24 @@
 {% define attributes = {
     'active-class': config.name ~ '__item--active',
     'config-thumbnail-slider': '{
-        "slidesToShow":4,
-        "slidesToScroll":1,
-        "infinite":false,
-        "vertical":true,
-        "prevArrow":"<div class=\'thumb-prev\'><svg class=\'icon\'><use href=\'#:caret-down\'></use></svg></div>",
-        "nextArrow":"<div class=\'thumb-next\'><svg class=\'icon\'><use href=\'#:caret-down\'></use></svg></div>"
+        "slidesToShow": 4,
+        "slidesToScroll": 1,
+        "infinite": false,
+        "vertical": true,
+        "dots": false,
+        "arrows": true,
+        "prevArrow": "<div class=\'thumb-prev\'><svg class=\'icon\'><use href=\'#:caret-down\'></use></svg></div>",
+        "nextArrow": "<div class=\'thumb-next\'><svg class=\'icon\'><use href=\'#:caret-down\'></use></svg></div>",
+        "responsive": [
+            {
+                "breakpoint": 768,
+                "settings": {
+                    "dots": true,
+                    "slidesToShow": 1,
+                    "arrows": false,
+                    "vertical": false
+                }
+            }]
     }'
 } %}
 

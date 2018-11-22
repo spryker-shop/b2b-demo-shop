@@ -6,20 +6,33 @@
             font-size: rem(15);
             padding-right: 21px;
             padding-bottom: 6px;
+            white-space: nowrap;
         }
 
         &__progress {
-            width: 140px;
+            width: rem(110);
             height: 6px;
             border-radius: $setting-border-radius-1;
             background-color: $setting-color-alpha-3;
             position: relative;
             overflow: hidden;
+
+            @include helper-breakpoint-media-min($md) {
+                width: rem(215);
+            }
+
+            @include helper-breakpoint-media-min($lg) {
+                width: rem(100);
+            }
+
+            @include helper-breakpoint-media-min($xl) {
+                width: rem(140);
+            }
         }
 
         &__progress-active {
-            width: 140px;
-            height: 6px;
+            width: 100%;
+            height: rem(6);
             border-radius: $setting-border-radius-1;
             background-color: $setting-color-yellow-1;
             position: absolute;

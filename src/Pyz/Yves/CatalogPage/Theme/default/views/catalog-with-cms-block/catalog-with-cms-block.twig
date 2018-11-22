@@ -38,7 +38,7 @@
     {% if data.categoryId is not empty %}
         <div class="catalog-cms-block-wrap">
             {% embed molecule('content-collapser') with {
-                modifiers: ['bg-dark'],
+                modifiers: ['with-background'],
                 embed: {
                     categoryId: data.categoryId
                 }

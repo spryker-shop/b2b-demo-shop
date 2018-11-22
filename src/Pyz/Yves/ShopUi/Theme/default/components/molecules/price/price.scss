@@ -2,7 +2,12 @@
     $name: &;
 
     &--pdp {
-        margin-bottom: 23px;
+        margin-top: rem(12);
+        margin-bottom: rem(23);
+
+        @include helper-breakpoint-media-min($lg) {
+            margin-top: 0;
+        }
     }
 
     &--cart {
@@ -20,9 +25,13 @@
         }
 
         &--pdp {
-            font-size: rem(26);
+            font-size: rem(24);
             font-weight: rem(bold);
             line-height: normal;
+
+            @include helper-breakpoint-media-min($lg) {
+                font-size: rem(26);
+            }
         }
 
         &--cart {
@@ -51,6 +60,13 @@
                     margin-left: rem(4);
                 }
             }
+
+            &#{$name}__amount--pdp {
+                @include helper-breakpoint-media-max($lg - 1) {
+                    font-size: rem(24);
+                    margin-right: rem(4);
+                }
+            }
         }
 
         &--alt {
@@ -66,15 +82,14 @@
     }
 
     &__mode {
-        display: block;
+        display: inline;
         color: $setting-color-gray-2;
-        font-size: rem(10);
+        font-size: rem(12);
         font-weight: fw(regular);
         line-height: rem(12);
         margin-left: 0;
 
         @include helper-breakpoint-media-min($lg) {
-            display: inline;
             margin-left: 5px;
             font-size: rem(12);
         }

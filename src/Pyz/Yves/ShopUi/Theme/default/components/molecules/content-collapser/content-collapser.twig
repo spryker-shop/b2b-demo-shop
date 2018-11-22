@@ -22,7 +22,7 @@
         }
     } only %}
 
-    <div class="{{config.name}}__trigger-holder">
+    <div class="{{ component.renderClass(config.name ~ '__trigger-holder', modifiers) }}">
         <button class="button button--hollow button--tight {{config.jsName}}__trigger">
             {{ 'global.show_more' | trans }}
         </button>
