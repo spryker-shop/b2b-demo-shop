@@ -81,10 +81,19 @@
                 }
             }
 
-            &--summary:not(&--image),
-            &--shopping-list:not(&--image) {
+            &--summary:not(&--image) {
                 padding-top: rem(28);
                 padding-bottom: rem(20);
+            }
+
+            &--shopping-list:not(&--image) {
+                padding-bottom: rem(20);
+                padding-top: 0;
+
+                @include helper-breakpoint-media-min($lg) {
+                    padding-bottom: rem(20);
+                    padding-top: rem(28);
+                }
             }
 
             &--shopping-list-alternative {
@@ -211,6 +220,18 @@
             &-col {
                 background-color: $setting-color-alpha-2;
                 padding-left: rem(12);
+
+                &--shopping-list {
+                    position: absolute;
+                    right: 0;
+                    top: 0;
+                    background: $setting-color-transparent;
+
+                    @include helper-breakpoint-media-min($lg) {
+                        position: static;
+                        background-color: $setting-color-alpha-2;
+                    }
+                }
             }
         }
 
@@ -240,6 +261,22 @@
 
             @include helper-breakpoint-media-min($lg) {
                 position: static;
+            }
+        }
+
+        &__remove-button {
+            margin-top: rem(-48);
+
+            @include helper-breakpoint-media-min($lg) {
+                margin: 0;
+            }
+        }
+
+        &__remove-button-text {
+            display: none;
+
+            @include helper-breakpoint-media-min($lg) {
+                display: inline-block;
             }
         }
 

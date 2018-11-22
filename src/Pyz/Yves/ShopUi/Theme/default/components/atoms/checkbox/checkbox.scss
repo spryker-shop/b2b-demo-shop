@@ -42,8 +42,15 @@
             }
 
             &--shopping-list {
-                @include helper-breakpoint-media-max($lg) {
-                    margin-right: 0;
+                position: absolute;
+                top: rem(12);
+                right: rem(15);
+                margin-right: 0;
+                z-index: $setting-zi-element;
+
+                @include helper-breakpoint-media-min($lg) {
+                    position: static;
+                    margin-right: rem(10);
                 }
             }
 
