@@ -8,15 +8,15 @@
 
 {% block customerContent %}
     {% include molecule('action-bar') with {
-        modifiers: ['first'],
+        modifiers: ['first', 'middle'],
         data: {
             title: 'customer.account.newsletter' | trans,
         }
     } only %}
 
     <div class="box">
-        <h5>{{ 'customer.newsletter.subscription' | trans }}</h5>
-        <p>{{ 'customer.newsletter.text' | trans }}</p>
+        <h4>{{ 'customer.newsletter.subscription' | trans }}</h4>
+        <p class="text-small">{{ 'customer.newsletter.text' | trans }}</p>
 
         {% include molecule('form') with {
             data: {
