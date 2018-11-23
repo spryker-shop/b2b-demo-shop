@@ -30,11 +30,11 @@
     {% if data.address.isDefaultBilling or data.address.isDefaultShipping %}
         <li class="list__item {{ component.renderClass(config.name ~ '__bottom', modifiers) }}">
             {% if data.address.isDefaultBilling %}
-                <span class="badge badge--summary spacing-right">{{'customer.order.billing_address' | trans}}</span>
+                <span class="badge badge--summary badge--multi-cart spacing-right">{{'customer.order.billing_address' | trans}}</span>
             {% endif %}
 
             {% if data.address.isDefaultShipping %}
-                <span class="badge badge--summary">{{'customer.order.shipping_address' | trans}}</span>
+                <span class="badge badge--summary badge--multi-cart">{{'customer.order.shipping_address' | trans}}</span>
             {% endif %}
         </li>
     {% endif %}
