@@ -50,8 +50,32 @@
         }
 
         &__actions {
-            width: 1px;
             white-space: nowrap;
+
+            @include helper-breakpoint-media-min($lg) {
+                justify-content: flex-end;
+            }
+
+            &--order {
+                padding-top: $setting-grid-space;
+                padding-bottom: $setting-grid-space-mobile;
+                display: flex;
+                justify-content: space-between;
+
+                @include helper-breakpoint-media-min($lg) {
+                    margin: 0;
+                    justify-content: flex-end;
+                }
+            }
+
+            &--order-item {
+                flex-basis: 48%;
+
+                @include helper-breakpoint-media-min($lg) {
+                    flex-basis: auto;
+                    margin-right: $setting-grid-space-mobile;
+                }
+            }
         }
 
         &__icon {
