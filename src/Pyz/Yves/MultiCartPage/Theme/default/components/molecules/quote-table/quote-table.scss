@@ -1,6 +1,4 @@
 .quote-table {
-    margin-top: rem(20);
-
     tbody {
         font-size: rem(13);
 
@@ -33,16 +31,9 @@
 
     td {
         padding-top: rem(12);
-        
+
         @include helper-breakpoint-media-min($lg) {
             padding-top: rem(16);
-        }
-
-        &:first-child,
-        &:first-child {
-            @include helper-breakpoint-media-min($lg) {
-                padding-left: rem(30);
-            }
         }
 
         &:before {
@@ -52,7 +43,15 @@
         }
     }
 
+    td:first-child,
+    th:first-child {
+        @include helper-breakpoint-media-min($lg) {
+            padding-left: rem(30);
+        }
+    }
+
     &__cart-name {
+        display: inline-block;
         color: $setting-color-gray-5;
         font-weight: fw(medium);
 

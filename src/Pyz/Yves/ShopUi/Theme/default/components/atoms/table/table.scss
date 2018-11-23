@@ -101,8 +101,13 @@
                 }
 
                 .transform-cell {
+                    display: flex;
                     position: relative;
                     background-color: $setting-color-gray-7;
+
+                    @include helper-breakpoint-media-min($lg) {
+                        display: table-cell;
+                    }
 
                     &::before {
                         content: attr(data-content)':';

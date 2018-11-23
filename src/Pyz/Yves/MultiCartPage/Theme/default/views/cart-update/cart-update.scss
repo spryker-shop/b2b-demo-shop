@@ -21,7 +21,6 @@
 
     .form__actions {
         text-align: left;
-        margin-top: rem(10);
 
         @include helper-breakpoint-media-min($lg) {
             margin-top: rem(20);
@@ -29,14 +28,7 @@
     }
 
     .form__action {
-        margin-bottom: rem(10);
-
-        &:last-child {
-            margin-bottom: 0;
-        }
-
         @include helper-breakpoint-media-min($lg) {
-            margin-bottom: 0;
             margin-left: 0;
             margin-right: rem(20);
         }

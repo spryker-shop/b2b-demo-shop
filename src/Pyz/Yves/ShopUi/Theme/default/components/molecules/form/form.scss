@@ -17,10 +17,11 @@
             display: flex;
             flex-flow: row wrap;
             align-items: center;
-            margin-top: rem(16);
+            margin-top: rem(6);
             text-align: center;
 
             @include helper-breakpoint-media-min($lg) {
+                margin-top: rem(16);
                 flex-wrap: wrap;
             }
         }
@@ -28,13 +29,7 @@
         &__action {
             flex: none;
             width: 100%;
-            margin: 0 0 rem(10) 0;
-
-            &:first-child {
-                @include helper-breakpoint-media-max($lg) {
-                    margin-bottom: 0;
-                }
-            }
+            margin: rem(10) 0 0 0;
 
             @include helper-breakpoint-media-min($lg) {
                 width: auto;
@@ -55,7 +50,7 @@
 
             &--link {
                 width: auto;
-                margin: 0 auto;
+                margin: rem(10) auto 0;
                 font-size: rem(13);
                 text-decoration: underline;
 

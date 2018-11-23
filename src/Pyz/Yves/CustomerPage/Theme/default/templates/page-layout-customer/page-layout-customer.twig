@@ -28,7 +28,7 @@
             <div class="{{ config.name }}__inner {{ data.innerClass }}">
                 {% block inner %}
                     <div class="grid">
-                        <div class="col col--xl-3">
+                        <div class="is-hidden-sm-lg col col--xl-3">
                             {% block customerNavigation %}
                                 {%  widget 'CustomerNavigationWidget' args [data.activePage] only %}{% endwidget %}
                             {% endblock %}

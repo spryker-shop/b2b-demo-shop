@@ -26,11 +26,11 @@
 {% block customerContent %}
 
     <div class="grid grid--justify">
-        <div class="col">
+        <div class="col col--sm-12 col--md-auto spacing-bottom spacing-bottom--big">
             <h3>{{ 'page.multi_cart.shopping_cart.list.title' | trans }}</h3>
         </div>
-        <div class="col">
-            <a class="button button--hollow" href="{{ url('multi-cart/create') }}">
+        <div class="col col--sm-12 col--md-auto spacing-bottom spacing-bottom--big">
+            <a class="button button--expand button--hollow" href="{{ url('multi-cart/create') }}">
                 {% include atom('icon') with {
                     class: 'spacing-right spacing-right--small',
                     modifiers: ['plus-small'],
