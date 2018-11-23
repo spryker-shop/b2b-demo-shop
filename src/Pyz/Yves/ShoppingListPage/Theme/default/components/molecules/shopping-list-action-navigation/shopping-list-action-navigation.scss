@@ -12,25 +12,8 @@
 
         &__item {
             flex-basis: 20%;
-            padding: rem(4) 0;
-            border: 1px solid $setting-color-gray-2;
-            border-radius: $setting-border-radius;
-            text-align: center;
-
             @include helper-breakpoint-media-min($lg) {
-                padding: 0;
                 flex-basis: auto;
-                line-height: normal;
-                border: none;
-            }
-        }
-
-        &__text {
-            display: block;
-            font-size: rem(11);
-
-            @include helper-breakpoint-media-min($lg) {
-                display: none;
             }
         }
 
