@@ -41,6 +41,16 @@
             text-transform: uppercase;
             padding-right: rem(6);
         }
+
+        &:last-child {
+            padding-left: 0;
+            padding-right: 0;
+
+            @include helper-breakpoint-media-min($lg) {
+                padding-left: rem(15);
+                padding-right: rem(15);
+            }
+        }
     }
 
     td:first-child,

@@ -82,67 +82,75 @@
                     <td class="transform-cell spacing-bottom spacing-bottom--inner spacing-bottom--big" data-content={{ 'page.multi_cart.shopping_cart.list.label.total' | trans }}><strong>{{ quote.totals.subtotal | default(0) | money }}</strong></td>
                     {% if showActions %}
                         <td>
-                            <ul class="menu grid grid--middle grid--justify grid--nowrap grid--gap-smaller">
+                            <ul class="menu grid grid--stretch grid--justify grid--nowrap grid--gap-smaller">
                                 {% if isQuoteEditable %}
                                     {% if data.actions.update %}
-                                        <li class="col menu__item">
-                                            <a class="link link--alt link--action" href="{{ url('multi-cart/update', {idQuote: quote.idQuote}) }}">
-                                                {% include atom('icon') with {
-                                                    data: {
-                                                        name: 'edit'
-                                                    },
-                                                    attributes: {
-                                                        title: 'page.multi_cart.shopping_cart.list.link.edit_name' | trans
-                                                    }
-                                                } only %}
-                                            </a>
+                                        <li class="col col--equal menu__item">
+                                            {% include molecule('table-action') with {
+                                                modifiers: ['tight', 'full-height'],
+                                                class: 'link link--alt link--action',
+                                                data: {
+                                                    url: url('multi-cart/update', { idQuote: quote.idQuote }),
+                                                    icon: 'edit',
+                                                    title: 'page.multi_cart.shopping_cart.update.title'
+                                                },
+                                                attributes: {
+                                                    title: 'page.multi_cart.shopping_cart.list.link.edit_name' | trans
+                                                }
+                                            } only %}
                                         </li>
                                     {% endif %}
                                     {% if data.actions.duplicate %}
-                                        <li class="col menu__item">
-                                            <a class="link link--alt link--action" href="{{ url('multi-cart/duplicate', {idQuote: quote.idQuote}) }}">
-                                                {% include atom('icon') with {
-                                                    data: {
-                                                        name: 'duplicate'
-                                                    },
-                                                    attributes: {
-                                                        title: 'page.multi_cart.shopping_cart.list.link.duplicate' | trans
-                                                    }
-                                                } only %}
-                                            </a>
+                                        <li class="col col--equal menu__item">
+                                            {% include molecule('table-action') with {
+                                                class: 'link link--alt link--action',
+                                                modifiers: ['tight', 'full-height'],
+                                                data: {
+                                                    url: url('multi-cart/duplicate', {idQuote: quote.idQuote}),
+                                                    icon: 'duplicate',
+                                                    title: 'page.multi_cart.shopping_cart.list.link.duplicate'
+                                                },
+                                                attributes: {
+                                                    title: 'page.multi_cart.shopping_cart.list.link.duplicate' | trans
+                                                }
+                                            } only %}
                                         </li>
                                     {% endif %}
                                 {% endif %}
 
                                 {% if isQuoteEditable %}
-                                    <li class="col menu__item">
-                                        <a class="link link--alt link--action" href="{{ url('shopping-list/create-from-exist-cart', {idQuote: quote.idQuote}) }}">
-                                            {% include atom('icon') with {
-                                                modifiers: ['create-list'],
-                                                data: {
-                                                    name: 'create-list'
-                                                },
-                                                attributes: {
-                                                    title: 'widget.shopping_list.multi_cart.to_shopping_list' | trans
-                                                }
-                                            } only %}
-                                        </a>
+                                    <li class="col col--equal menu__item">
+                                        {% include molecule('table-action') with {
+                                            class: 'link link--alt link--action',
+                                            modifiers: ['tight', 'full-height'],
+                                            data: {
+                                                url: url('shopping-list/create-from-exist-cart', {idQuote: quote.idQuote}),
+                                                icon: 'create-list',
+                                                title: 'page.multi_cart.shopping_cart.list.link.add_to_list',
+                                                iconModifier: 'create-list'
+                                            },
+                                            attributes: {
+                                                title: 'widget.shopping_list.multi_cart.to_shopping_list' | trans
+                                            }
+                                        } only %}
                                     </li>
                                 {% endif %}
 
                                 {% widget 'CartListPermissionGroupWidget' args [quote, isQuoteDeletable] use view('multi-cart-permission-actions', 'SharedCartWidget') only %}
                                 {% nowidget %}
-                                    <li class="col menu__item">
-                                        <a class="link link--alt link--action" href="{{ url('multi-cart/confirm-delete', {idQuote: quote.idQuote}) }}">
-                                            {% include atom('icon') with {
-                                                data: {
-                                                    name: 'delete'
-                                                },
-                                                attributes: {
-                                                    title: 'page.multi_cart.shopping_cart.list.link.delete' | trans
-                                                }
-                                            } only %}
-                                        </a>
+                                    <li class="col col--equal menu__item">
+                                        {% include molecule('table-action') with {
+                                            class: 'link link--alt link--action',
+                                            modifiers: ['tight', 'full-height'],
+                                            data: {
+                                                url: url('multi-cart/confirm-delete', {idQuote: quote.idQuote}),
+                                                icon: 'delete',
+                                                title: 'page.multi_cart.shopping_cart.list.link.delete'
+                                            },
+                                            attributes: {
+                                                title: 'page.multi_cart.shopping_cart.list.link.delete' | trans
+                                            }
+                                        } only %}
                                     </li>
                                 {% endwidget %}
                             </ul>
