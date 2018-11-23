@@ -14,28 +14,41 @@
             showNavigation: false
         }
     } only %}
-        {% block headerTopContent %}{% endblock %}
         {% block headerMainContent %}
-            <div class="grid grid--justify grid--middle container">
-                <div class="col">
-                    <a href="{{ url('cart') }}" class="button button--hollow button--second">
-                        {{ 'checkout.back_button' | trans }}
-                    </a>
-                </div>
+            <div class="container">
+                <div class="grid grid--middle grid--nowrap grid--gap-smaller">
+                    <div class="col col--sm-4">
+                        <a href="{{ url('cart') }}" class="{{ config.name }}__back">
+                            {% include atom('icon') with {
+                                class: 'is-hidden-lg-xl spacing-right spacing-right--small',
+                                modifiers: ['small', 'reverse'],
+                                data: {
+                                    name: 'chevron-right'
+                                }
+                            } only %}
+                            {{ 'checkout.back_button' | trans }}
+                        </a>
+                    </div>
 
-                {% include molecule('logo') with {
-                    modifiers: ['checkout'],
-                    class: 'col'
-                } only %}
-
-                <div class="col col--right checkout-secure">
-                    {% include atom('icon') with {
-                        modifiers: ['lock'],
-                        data: {
-                            name: 'lock'
-                        }
+                    {% include molecule('logo') with {
+                        modifiers: ['checkout'],
+                        class: 'col col--sm-4 text-center'
                     } only %}
-                    {{ 'checkout.secure' | trans }}
+
+                    <div class="col col--sm-4">
+                        <div class="grid">
+                            <div class="col--right">
+                                <div class="{{ config.name }}__checkout-secure">
+                                    {% include atom('icon') with {
+                                        data: {
+                                            name: 'lock'
+                                        }
+                                    } only %}
+                                    <span class="{{ config.name }}__checkout-secure-text">{{ 'checkout.secure' | trans }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         {% endblock %}
