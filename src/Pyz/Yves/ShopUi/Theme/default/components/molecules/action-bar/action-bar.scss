@@ -1,12 +1,19 @@
 @mixin shop-ui-action-bar($name: '.action-bar') {
     #{$name} {
-        display: flex;
-        flex-flow: row nowrap;
         margin-top: rem(16);
         margin-bottom: rem(16);
 
+        @include helper-breakpoint-media-min($md) {
+            display: flex;
+            flex-flow: row nowrap;
+        }
+
         &--first {
             margin-top: 0;
+        }
+
+        &--big {
+            margin-top: rem(48);
         }
 
         &--small {
@@ -36,7 +43,15 @@
         }
 
         &__action {
-            margin-left: rem(8);
+            margin-top: rem(8);
+            width: 100%;
+            justify-content: center;
+
+            @include helper-breakpoint-media-min($md) {
+                margin-top: 0;
+                margin-left: rem(8);
+                width: auto;
+            }
         }
 
         &__icon {

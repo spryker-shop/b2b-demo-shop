@@ -30,11 +30,11 @@
             width: 100%;
             margin: 0 0 rem(10) 0;
 
-            &:first-child {
+            &:last-child {
                 margin-bottom: 0;
             }
 
-            @include helper-breakpoint-media-min($lg) {
+            @include helper-breakpoint-media-min($md) {
                 width: auto;
                 margin: 0 1rem 0 0;
             }
@@ -73,8 +73,12 @@
             #{$name}__container {
                 width: 100%;
 
+                @include helper-breakpoint-media-min($md) {
+                    max-width: rem(700);
+                }
+
                 @include helper-breakpoint-media-min($xl) {
-                    width: 60%;
+                    max-width: rem(500);
                 }
             }
         }
