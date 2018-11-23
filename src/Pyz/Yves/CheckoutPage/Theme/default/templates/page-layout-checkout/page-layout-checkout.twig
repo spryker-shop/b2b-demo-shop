@@ -4,6 +4,8 @@
     breadcrumbs: _view.stepBreadcrumbs.breadcrumbs | default([])
 } %}
 
+{% block sidebar %}{% endblock %}
+
 {% block header %}
     {% embed organism('header') with {
         modifiers: ['checkout'],
@@ -12,10 +14,13 @@
             showNavigation: false
         }
     } only %}
+        {% block headerTopContent %}{% endblock %}
         {% block headerMainContent %}
             <div class="grid grid--justify grid--middle container">
                 <div class="col">
-                    <a href="{{ url('cart') }}" class="button button--hollow button--second">{{ 'checkout.back_button' | trans }}</a>
+                    <a href="{{ url('cart') }}" class="button button--hollow button--second">
+                        {{ 'checkout.back_button' | trans }}
+                    </a>
                 </div>
 
                 {% include molecule('logo') with {

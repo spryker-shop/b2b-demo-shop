@@ -91,9 +91,14 @@
             }
 
             &--checkout {
-                padding-top: rem(20);
-                padding-bottom: rem(20);
+                padding-top: rem(12);
+                padding-bottom: rem(12);
                 min-height: 0;
+
+                @include helper-breakpoint-media-min($lg) {
+                    padding-top: rem(20);
+                    padding-bottom: rem(20);
+                }
             }
         }
 

@@ -17,8 +17,13 @@ $shop-ui-icon-size-bigger: 1.5rem;
     }
 
     &--checkout {
-        width: rem(167);
-        height: rem(60);
+        width: rem(109);
+        height: rem(32);
+
+        @include helper-breakpoint-media-min($lg) {
+            width: rem(167);
+            height: rem(60);
+        }
     }
 
     &--header-check {
