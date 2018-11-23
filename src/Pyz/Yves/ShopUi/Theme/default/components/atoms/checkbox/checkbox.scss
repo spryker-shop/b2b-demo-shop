@@ -42,7 +42,16 @@
             }
 
             &--shopping-list {
+                position: absolute;
+                top: rem(12);
+                right: rem(15);
                 margin-right: 0;
+                z-index: $setting-zi-element;
+
+                @include helper-breakpoint-media-min($lg) {
+                    position: static;
+                    margin-right: rem(10);
+                }
             }
 
             &--alternative {
@@ -114,7 +123,7 @@
             display: inline-block;
             vertical-align: middle;
             text-transform: none;
-            font-size: rem(15);
+            font-size: rem(14);
             font-weight: fw(regular);
             margin: 0;
             user-select: none;
@@ -160,8 +169,8 @@
         }
 
         &--alternative {
-            margin-left: 132px;
             margin-bottom: rem(15);
+
             &:hover {
                 #{$name}__box--alternative {
                     border-color: $setting-color-gray-2;
@@ -169,9 +178,16 @@
             }
         }
 
-        &--shopping-list {
-            display: flex;
-            height: 100%;
+        &--pdp {
+            @include helper-breakpoint-media-min($lg) {
+                margin-left: rem(132);
+            }
+
+            &:hover {
+                #{$name}__box--alternative {
+                    border-color: $setting-color-gray-2;
+                }
+            }
         }
 
         &--error &__box {

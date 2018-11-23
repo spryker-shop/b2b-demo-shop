@@ -1,17 +1,18 @@
 {% extends template('widget') %}
 
 {% block reorderAction %}
-    <a class="link link--alt link--action"
-       href="{{ path('customer/order/reorder', {'idSalesOrder': _widget.order.idSalesOrder}) }}"
-       title="{{ 'customer.order.reorder' | trans }}"
-    >
-        {% include atom('icon') with {
-            modifiers: ['big'],
-            data: {
-                name: 'cart'
-            }
-        } only %}
-    </a>
+    {% include molecule('table-action') with {
+        class: 'link link--alt link--action',
+        data: {
+            url: path('customer/order/reorder', {'idSalesOrder': _widget.order.idSalesOrder}),
+            icon: 'cart',
+            title: 'customer.order.reorder',
+            iconModifier: 'big'
+        },
+        attributes: {
+            title: 'customer.order.reorder' | trans
+        }
+    } only %}
 {% endblock %}
 
 {% block formStart %}

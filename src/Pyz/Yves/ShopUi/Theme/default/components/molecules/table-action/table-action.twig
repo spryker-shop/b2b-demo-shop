@@ -1,0 +1,28 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'table-action',
+    tag: 'a'
+} %}
+
+{% define data = {
+    url: required,
+    icon: required,
+    title: required,
+    iconModifier: null,
+} %}
+
+{% define attributes = {
+    href: data.url
+} %}
+
+{% block body %}
+    {% include atom('icon') with {
+        modifiers: [ data.iconModifier ],
+        data: {
+            name: data.icon
+        }
+    } only %}
+    <span class="{{ config.name }}__title is-hidden-lg-xl">{{ data.title | trans }}</span>
+{% endblock %}
+

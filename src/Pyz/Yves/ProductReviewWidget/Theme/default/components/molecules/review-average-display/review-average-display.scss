@@ -1,6 +1,17 @@
 @mixin product-review-average-review($name: '.review-average-display') {
     #{$name} {
-        max-width: 140px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        @include helper-breakpoint-media-min($md) {
+            display: block;
+            max-width: rem(110);
+        }
+
+        @include helper-breakpoint-media-min($xl) {
+            max-width: rem(140);
+        }
 
         &__average-rating {
             text-align: center;
@@ -20,6 +31,11 @@
             font-weight: fw(regular);
             line-height: 1.1;
             color: $setting-color-gray-3;
+            white-space: nowrap;
+
+            @include helper-breakpoint-media-min($md) {
+                white-space: normal;
+            }
         }
     }
 }

@@ -1,0 +1,24 @@
+@mixin shopping-list-action-navigation ($name: '.shopping-list-action-navigation') {
+    #{$name} {
+        padding-top: $setting-grid-space;
+        padding-bottom: $setting-grid-space-mobile;
+        margin: 0 rem(-15);
+
+        @include helper-breakpoint-media-min($lg) {
+            padding-top: 0;
+            padding-bottom: 0;
+            margin: 0;
+        }
+
+        &__item {
+            flex-basis: 20%;
+            @include helper-breakpoint-media-min($lg) {
+                flex-basis: auto;
+            }
+        }
+
+        @content;
+    }
+}
+
+@include shopping-list-action-navigation;

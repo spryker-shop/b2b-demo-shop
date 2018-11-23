@@ -13,40 +13,55 @@
 
 {% block body %}
     {% if data.hasWritePermission %}
-        <a class="col link link--alt link--action" href="{{ url('shopping-list/update', { idShoppingList: data.idShoppingList }) }}">
-            {% include atom('icon') with {
+        <span class="{{ config.name }}__item">
+            {% include molecule('table-action') with {
+                class: 'link link--alt link--action',
                 data: {
-                    name: 'edit'
+                    url: url('shopping-list/update', { idShoppingList: data.idShoppingList }),
+                    icon: 'edit',
+                    title: 'general.edit.button'
                 }
             } only %}
-        </a>
-        <a class="col link link--alt link--action" class="spacing-left spacing-left--small" href="{{ url('shopping-list/share', { idShoppingList: data.idShoppingList }) }}">
-            {% include atom('icon') with {
-                modifiers: ['share'],
+        </span>
+        <span class="{{ config.name }}__item">
+            {% include molecule('table-action') with {
+                class: 'link link--alt link--action',
                 data: {
-                    name: 'share'
+                    url: url('shopping-list/share', { idShoppingList: data.idShoppingList }),
+                    icon: 'share',
+                    title: 'customer.account.shopping_list.overview.share',
+                    iconModifier: 'share'
                 }
             } only %}
-        </a>
+        </span>
     {% endif %}
 
-    <a class="col link link--alt link--action" class="spacing-left spacing-left--small" href="{{ url('shopping-list/print', { idShoppingList: data.idShoppingList }) }}" target="_blank">
-        {% include atom('icon') with {
+    <span class="{{ config.name }}__item">
+        {% include molecule('table-action') with {
+            class: 'link link--alt link--action',
             data: {
-                name: 'print'
+                url: url('shopping-list/print', { idShoppingList: data.idShoppingList }),
+                icon: 'print',
+                title: 'customer.account.shopping_list.overview.print'
+            },
+            attributes: {
+                target: '_blank'
             }
         } only %}
-    </a>
+    </span>
 
     {{ widget('ShoppingListDismissWidgetPlugin', data.shoppingList) }}
 
     {% if data.hasWritePermission %}
-        <a class="col link link--alt link--action" class="spacing-left spacing-left--small" href="{{ url('shopping-list/delete', { idShoppingList: data.idShoppingList }) }}">
-            {% include atom('icon') with {
+        <span class="{{ config.name }}__item">
+            {% include molecule('table-action') with {
+                class: 'link link--alt link--action',
                 data: {
-                    name: 'delete'
+                    url: url('shopping-list/delete', { idShoppingList: data.idShoppingList }),
+                    icon: 'delete',
+                    title: 'customer.account.shopping_list.overview.delete'
                 }
             } only %}
-        </a>
+        </span>
     {% endif %}
 {% endblock %}

@@ -4,6 +4,7 @@
             font: fw(bold) rem(16)/rem(50) $setting-font-family;
             width: 100%;
             position: relative;
+            text-transform: capitalize;
 
             @include helper-breakpoint-media-min($md) {
                 line-height: rem(34);
@@ -85,6 +86,10 @@
             margin-top: rem(61);
 
             @include helper-breakpoint-media-min($lg) {
+                margin-top: rem(80);
+            }
+
+            @include helper-breakpoint-media-min($xl) {
                 margin-top: rem(110);
             }
         }
@@ -103,6 +108,30 @@
 
             @include helper-breakpoint-media-min($lg) {
                 font-size: rem(50);
+            }
+        }
+
+        &--mobile-toggler-section {
+            @include helper-breakpoint-media-max($lg - 1) {
+                font-size: rem(17);
+                padding-left: rem(29);
+                position: relative;
+
+                &::before,
+                &::after {
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    width: rem(10);
+                    height: rem(2);
+                    background: $setting-color-gray-5;
+                }
+
+                &::after {
+                    transform: translateY(-50%) rotate(90deg);
+                }
             }
         }
 

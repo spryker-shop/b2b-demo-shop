@@ -50,8 +50,32 @@
         }
 
         &__actions {
-            width: 1px;
             white-space: nowrap;
+
+            @include helper-breakpoint-media-min($lg) {
+                justify-content: flex-end;
+            }
+
+            &--order {
+                padding-top: $setting-grid-space;
+                padding-bottom: $setting-grid-space-mobile;
+                display: flex;
+                justify-content: space-between;
+
+                @include helper-breakpoint-media-min($lg) {
+                    margin: 0;
+                    justify-content: flex-end;
+                }
+            }
+
+            &--order-item {
+                flex-basis: 48%;
+
+                @include helper-breakpoint-media-min($lg) {
+                    flex-basis: auto;
+                    margin-right: $setting-grid-space-mobile;
+                }
+            }
         }
 
         &__icon {
@@ -67,6 +91,47 @@
             th,
             td {
                 padding: rem(16) rem(15);
+            }
+        }
+
+        &--responsive {
+            @include helper-breakpoint-media-max($lg) {
+                display: block;
+
+                thead, tbody, th, td, tr {
+                    display: block;
+                    text-transform: capitalize;
+                }
+
+                thead tr {
+                    display: none;
+                }
+
+                tr {
+                    padding-top: $setting-grid-space;
+                    padding-bottom: $setting-grid-space;
+                }
+
+                td {
+                    padding-top: 0;
+                    padding-bottom: 0;
+                }
+
+                td:before {
+                    font-weight: fw(medium);
+                    display: inline-block;
+                    width: auto;
+                    padding-right: 10px;
+                }
+
+                .transform-cell {
+                    position: relative;
+                    background-color: $setting-color-gray-7;
+
+                    &::before {
+                        content: attr(data-content)':';
+                    }
+                }
             }
         }
 

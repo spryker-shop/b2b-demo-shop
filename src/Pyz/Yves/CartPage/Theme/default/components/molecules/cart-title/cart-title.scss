@@ -1,19 +1,45 @@
 .cart-title {
-    margin-bottom: rem(20);
+    margin-bottom: rem(11);
+
+    @include helper-breakpoint-media-min($lg) {
+        margin-bottom: rem(20);
+    }
 
     &__text {
-        font-size: rem(32);
+        font-size: rem(22);
         line-height: normal;
         font-weight: fw(medium);
         margin-bottom: rem(12);
+        justify-content: space-between;
+
+        &::after {
+            display: none;
+        }
+
+        @include helper-breakpoint-media-min($lg) {
+            font-size: rem(32);
+            justify-content: flex-start;
+        }
     }
 
     &__link {
         padding-bottom: 0;
+        padding-right: 0;
         margin-left: rem(10);
+        font-size: rem(12);
+
+        @include helper-breakpoint-media-min($lg) {
+            padding-right: rem(8);
+            font-size: rem(14);
+        }
     }
 
     &__quantity {
+        font-size: rem(14);
         font-weight: fw(medium);
+
+        @include helper-breakpoint-media-min($lg) {
+            font-size: rem(16);
+        }
     }
 }

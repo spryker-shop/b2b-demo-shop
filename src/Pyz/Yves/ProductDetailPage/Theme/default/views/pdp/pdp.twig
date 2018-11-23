@@ -17,8 +17,18 @@
 {% endblock %}
 
 {% block title %}
-    <h3 itemprop="name" class="pdp-title">
-        {% widget 'ProductAbstractLabelWidget' args [data.product.idProductAbstract] only %}{% endwidget %}{{ data.product.name }}
+    <h3 itemprop="name" class="page-info__title">
+        {% widget 'ProductAbstractLabelWidget' args [data.product.idProductAbstract] only %}
+            {% block body %}
+                {% include molecule('label-group', 'ProductLabelWidget') with {
+                    modifiers: ['pdp'],
+                    data: {
+                        labels: labels
+                    }
+                } only %}
+            {% endblock %}
+        {% endwidget %}
+        {{ data.product.name }}
     </h3>
     <link itemprop="url" href="{{ data.productUrl }}" />
 {% endblock %}
@@ -27,7 +37,7 @@
 
 {% block content %}
     <div class="grid grid--gap grid--justify">
-        <div class="col gallery-side">
+        <div class="page-layout-main__pdp-gallery">
             {% include molecule('image-gallery', 'ProductImageWidget') ignore missing with {
                 data: {
                     idProductAbstract: data.product.idProductAbstract,
@@ -36,7 +46,7 @@
             } only %}
         </div>
 
-        <div class="col col--sm-5">
+        <div class="col col--sm-12 col--lg-5">
             {% include molecule('product-configurator', 'ProductDetailPage') with {
                 data: {
                     product: data.product,
@@ -49,10 +59,22 @@
 
     {% widget 'ProductAlternativeListWidget' args [data.product] only %}{% endwidget %}
 
-    {% include molecule('product-detail', 'ProductDetailPage') with {
-        data: {
-            description: data.product.description,
-            attributes: data.product.attributes
+    <div class="js-pdp-section">
+        {% include molecule('product-detail', 'ProductDetailPage') with {
+            data: {
+                description: data.product.description,
+                attributes: data.product.attributes
+            }
+        } only %}
+
+        {% widget 'ProductDetailPageReviewWidget' args [data.product.idProductAbstract] only %}{% endwidget %}
+    </div>
+
+    {% include molecule('toggler-accordion') with {
+        attributes: {
+            'wrap-selector': '.js-pdp-section',
+            'trigger-selector': '.js-pdp-section__trigger',
+            'class-to-toggle': 'is-hidden-sm-md'
         }
     } only %}
 
@@ -67,8 +89,6 @@
     {% endif %}
 
     {% widget 'SimilarProductsWidget' args [data.product] only %}{% endwidget %}
-
-    {% widget 'ProductDetailPageReviewWidget' args [data.product.idProductAbstract] only %}{% endwidget %}
 
     {% if data.product.productSetIds is not empty %}
         {% widget 'ProductSetIdsWidget' args [data.product.productSetIds] only %}{% endwidget %}
