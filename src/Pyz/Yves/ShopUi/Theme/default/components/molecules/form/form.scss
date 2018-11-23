@@ -17,7 +17,6 @@
             display: flex;
             flex-flow: row wrap;
             align-items: center;
-            margin-top: rem(6);
             text-align: center;
 
             @include helper-breakpoint-media-min($lg) {
@@ -34,6 +33,17 @@
             @include helper-breakpoint-media-min($lg) {
                 width: auto;
                 margin: 0 rem(16) 0 0;
+            }
+
+            &--expand-sm-md {
+                @include helper-breakpoint-media-min($md) {
+                    width: auto;
+                    margin: rem(10) rem(16) 0 0;
+                }
+
+                @include helper-breakpoint-media-min($lg) {
+                    margin-top: 0;
+                }
             }
 
             &--primary {

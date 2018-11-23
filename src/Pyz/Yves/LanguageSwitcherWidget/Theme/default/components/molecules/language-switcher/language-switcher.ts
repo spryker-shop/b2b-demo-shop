@@ -1,11 +1,11 @@
 import Component from 'ShopUi/models/component';
 
 export default class LanguageSwitcher extends Component {
-    readonly select: HTMLSelectElement;
+    readonly select: HTMLSelectElement[];
 
     constructor() {
         super();
-        this.select = <HTMLSelectElement>document.querySelector(`.${this.jsName}`);
+        this.select = <HTMLSelectElement[]>Array.from(document.querySelectorAll(`.${this.jsName}`));
     }
 
     protected readyCallback(): void {
@@ -13,21 +13,22 @@ export default class LanguageSwitcher extends Component {
     }
 
     protected mapEvents(): void {
-        this.select.addEventListener('change', () => this.onTriggerChange());
+        this.select.forEach((select: HTMLSelectElement) => select.addEventListener('change', (event: Event) => this.onTriggerChange(event)));
     }
 
-    protected onTriggerChange(): void {
-        if(this.hasUrl) {
-            window.location.assign(this.value);
+    protected onTriggerChange(event: Event): void {
+        const selectTarget = <HTMLSelectElement>event.currentTarget;
+        if(this.hasUrl(selectTarget)) {
+            window.location.assign(this.value(selectTarget));
         }
     }
 
-    get value(): string {
-        return this.select.options[this.select.selectedIndex].value;
+    protected value(select: HTMLSelectElement): string {
+        return select.options[select.selectedIndex].value;
     }
 
-    get hasUrl(): boolean {
-        return !!this.value;
+    protected hasUrl(select: HTMLSelectElement): boolean {
+        return !!select.value;
     }
 
 }
