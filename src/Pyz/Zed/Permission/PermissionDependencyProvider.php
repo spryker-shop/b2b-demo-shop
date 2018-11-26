@@ -10,6 +10,7 @@ namespace Pyz\Zed\Permission;
 use Pyz\Zed\CompanyUser\Communication\Plugin\Permission\SeeCompanyMenuPermissionPlugin;
 use Spryker\Client\CompanyUser\Plugin\AddCompanyUserPermissionPlugin;
 use Spryker\Client\ShoppingList\Plugin\ReadShoppingListPermissionPlugin;
+use Spryker\Zed\CartPermissionConnector\Communication\Plugin\Cart\AlterCartUpToAmountPermissionPlugin;
 use Spryker\Zed\CompanyRole\Communication\Plugin\PermissionStoragePlugin;
 use Spryker\Zed\CompanyUserInvitation\Communication\Plugin\Permission\ManageCompanyUserInvitationPermissionPlugin;
 use Spryker\Zed\Permission\PermissionDependencyProvider as SprykerPermissionDependencyProvider;
@@ -55,7 +56,7 @@ class PermissionDependencyProvider extends SprykerPermissionDependencyProvider
             new AddCartItemPermissionPlugin(),
             new ChangeCartItemPermissionPlugin(),
             new RemoveCartItemPermissionPlugin(),
-            new PlaceOrderWithAmountUpToPermissionPlugin(),
+            new AlterCartUpToAmountPermissionPlugin(),
         ];
     }
 }
