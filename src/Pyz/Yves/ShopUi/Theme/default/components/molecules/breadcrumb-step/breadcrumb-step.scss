@@ -18,7 +18,7 @@
                 margin: 0 rem(29);
             }
 
-            &:not(:last-child):after {
+            &:not(:last-child)::after {
                 content: '';
                 position: absolute;
                 left: 100%;
@@ -50,7 +50,7 @@
         &--progress-complete {
             color: $setting-color-main;
 
-            &:not(:last-child):after {
+            &:not(:last-child)::after {
                 background: $setting-color-main;
             }
 
