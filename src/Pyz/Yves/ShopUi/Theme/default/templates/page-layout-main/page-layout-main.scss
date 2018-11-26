@@ -45,7 +45,6 @@
         }
     }
 
-    &--checkout-page,
     &--cart-page {
         padding-top: rem(14);
         padding-bottom: rem(30);
@@ -53,6 +52,19 @@
         @include helper-breakpoint-media-min($lg) {
             padding-top: rem(32);
             padding-bottom: rem(60);
+        }
+
+        @include helper-breakpoint-media-min($xl) {
+            padding-bottom: rem(120);
+        }
+    }
+
+    &--checkout-page {
+        padding-top: rem(24);
+        padding-bottom: rem(80);
+
+        @include helper-breakpoint-media-min($lg) {
+            padding-top: rem(32);
         }
 
         @include helper-breakpoint-media-min($xl) {

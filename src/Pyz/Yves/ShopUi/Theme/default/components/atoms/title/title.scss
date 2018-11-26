@@ -41,9 +41,14 @@
         }
 
         &--checkout {
-            font-size: rem(28);
+            font-size: rem(22);
             font-weight: fw(bold);
-            margin-bottom: rem(25);
+            margin-bottom: rem(14);
+
+            @include helper-breakpoint-media-min($lg) {
+                font-size: rem(28);
+                margin-bottom: rem(25);
+            }
         }
 
         &--second {
@@ -53,7 +58,11 @@
 
         &__index {
             color: $setting-color-main;
-            margin-right: map-get($setting-spacing, 'default');
+            margin-right: rem(4);
+
+            @include helper-breakpoint-media-min($lg) {
+                margin-right: map-get($setting-spacing, 'default');
+            }
         }
 
         &--sub {
