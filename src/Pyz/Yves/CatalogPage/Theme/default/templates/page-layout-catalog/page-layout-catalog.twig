@@ -74,7 +74,7 @@
                         }
                     } only %}
 
-                    <button class="button button--justify button--additional js-catalog-filters-trigger is-hidden-lg-xl spacing-bottom spacing-bottom--big">
+                    <button class="button button--justify button--additional js-catalog-filters-trigger is-hidden-lg-xxl spacing-bottom spacing-bottom--big">
                         {{ 'catalog.filter.button' | trans }} / {{ 'catalog.sort' | trans }}
                         {% include atom('icon') with {
                             modifiers: ['filter'],
@@ -113,7 +113,7 @@
                             </div>
                             <div class="col">
                                 {% include molecule('view-mode-switch', 'CatalogPage') with {
-                                    class: 'is-hidden-lg-xl',
+                                    class: 'is-hidden-lg-xxl',
                                     data: {
                                         viewMode: data.viewMode
                                     }

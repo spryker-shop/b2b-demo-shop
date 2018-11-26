@@ -56,8 +56,13 @@
                     title: 'customer.account.order_history' | trans
                 },
                 {
+                    url: url('customer/newsletter'),
+                    title: 'customer.account.newsletter' | trans
+                },
+                {
                     url: url('logout'),
-                    title: 'customer.logout' | trans
+                    title: 'customer.logout' | trans,
+                    additionalClass: 'link--additional'
                 }
             ]}
         } only %}
@@ -160,7 +165,8 @@
         attributes: {
             'wrap-selector': '.' ~ config.jsName,
             'trigger-selector': '.' ~ config.jsName ~ '__trigger',
-            'class-to-toggle': config.name ~ '__sub-nav--touch-active'
+            'class-to-toggle': config.name ~ '__sub-nav--touch-active',
+            'active-on-touch': 'true'
         }
     } only %}
 

@@ -55,6 +55,20 @@
                 position: static;
             }
         }
+
+        &.is-locked-mobile {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            overflow: hidden;
+            height: 100%;
+
+            @include helper-breakpoint-media-min($lg) {
+                overflow: visible;
+                position: static;
+            }
+        }
     }
 
     * {

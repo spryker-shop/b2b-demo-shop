@@ -12,14 +12,14 @@
 {% block body %}
 
     {% if data.shared is not empty %}
-        <ul class="list spacing-bottom spacing-bottom--big">
+        <ul class="{{ config.name }}__list list spacing-bottom spacing-bottom--big">
             {% for shareDetail in data.shared %}
                 <li class="{{ config.name }}__item">
-                    <div class="grid grid--middle">
-                        <div class="col col--sm-6 col--md-10">
-                            {{ shareDetail.vars.value.customerName }}
+                    <div class="grid grid--justify grid--middle">
+                        <div class="col col--sm-12 col--lg-9">
+                            <span class="{{ config.name }}__label">{{ shareDetail.vars.value.customerName }}</span>
                         </div>
-                        <div class="col col--sm-6 col--md-2">
+                        <div class="col col--sm-12 col--lg-3">
                             {{ form_widget(shareDetail.quotePermissionGroup) }}
                             {{ form_errors(shareDetail.quotePermissionGroup) }}
                         </div>

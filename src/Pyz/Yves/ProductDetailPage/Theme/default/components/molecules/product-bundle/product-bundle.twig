@@ -13,24 +13,61 @@
 {% block body %}
     <h4 class="product-bundle__title">{{ 'bundle.title' | trans }}</h4>
 
-    <div class="grid grid--gap">
-        {% for item in data.bundleItems %}
-            <div class="col col--sm-4 {{ config.name }}__item">
-                <a href="{{ item.url }}" class="{{ config.name }}__img-block">
-                    <img class="{{ config.name }}__img" src="{{ item.image }}" alt="">
-                </a>
-                <div class="{{ config.name }}__info">
-                    <div class="{{ config.name }}__name">{{ item.name }}</div>
-                    <div class="{{ config.name }}__quantity">x {{ item.quantity }}</div>
-                </div>
-                {% include molecule('product-bundle-detail', 'ProductDetailPage') with {
-                    data: {
-                        description: item.description,
-                        attributes: item.attributes,
-                        index: loop.index
-                    }
-                } only %}
-            </div>
-        {% endfor %}
-    </div>
+        {% embed molecule('slick-carousel') with {
+            modifiers: ['full-width', 'equal-height', 'products', 'full-height'],
+            data: {
+                slides: data.bundleItems,
+                name: config.name
+            },
+            attributes: {
+                'slider-config': '{
+                "slidesToShow": 4,
+                "slidesToScroll": 1,
+                "dots": false,
+                "infinite": false,
+                "responsive": [{
+                     "breakpoint": 1024,
+                     "settings": {
+                         "slidesToShow": 3
+                     }
+                },
+                {
+                     "breakpoint": 768,
+                     "settings": {
+                         "slidesToShow": 2,
+                         "infinite": true
+                     }
+                },
+                {
+                     "breakpoint": 550,
+                     "settings": {
+                         "slidesToShow": 1,
+                         "infinite": true
+                     }
+                }]
+            }'
+            }
+        } only %}
+            {% block slides %}
+                {% for slide in data.slides %}
+                    <div class="{{ data.name }}__item">
+                        <a href="{{ slide.url }}" class="{{ data.name }}__img-block">
+                            <img class="{{ data.name }}__img" src="{{ slide.image }}" alt="">
+                        </a>
+                        <div class="{{ data.name }}__info">
+                            <div class="{{ data.name }}__name">{{ slide.name }}</div>
+                            <div class="{{ data.name }}__quantity">x {{ slide.quantity }}</div>
+                        </div>
+                        {% include molecule('product-bundle-detail', 'ProductDetailPage') with {
+                            data: {
+                                description: slide.description,
+                                attributes: slide.attributes,
+                                index: loop.index
+                            }
+                        } only %}
+                    </div>
+                {% endfor %}
+            {% endblock %}
+        {% endembed %}
+
 {% endblock %}
