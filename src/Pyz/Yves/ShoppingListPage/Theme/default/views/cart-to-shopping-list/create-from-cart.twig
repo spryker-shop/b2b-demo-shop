@@ -34,11 +34,13 @@
         data: {
             form: data.form,
             submit: {
-                enable: true
+                enable: true,
+                class: 'form__action--expand-sm-md button button--success'
             },
             cancel: {
                 enable: true,
                 url: url('shopping-list'),
+                class: 'form__action--expand-sm-md button button--secondary button--hollow',
                 text: 'general.back.button' | trans,
                 icon: null
             }

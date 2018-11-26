@@ -1,0 +1,49 @@
+{% extends organism('side-drawer') %}
+
+{% define config = {
+    name: 'account-navigation',
+    tag: 'account-navigation'
+} %}
+
+{% define data = {
+    introIcon: 'user',
+    activePage: '',
+    items: required,
+    title: ''
+} %}
+
+{% block close %}
+    <button class="{{config.name}}__close {{attributes['trigger-selector']}}">
+        {% include atom('icon') with {
+            modifiers: ['small'],
+            data: {
+                name: 'cross'
+            }
+        } only %}
+    </button>
+{% endblock %}
+
+{% block topBlock %}
+    <div class="{{ component.renderClass(config.name ~ '__account', modifiers) }}">
+        {% include atom('icon') with {
+            class:  config.name ~ '__account-icon',
+            modifiers: ['big'],
+            data: {
+                name: data.introIcon
+            }
+        } only %}
+        <span class="{{ config.name }}__account-text">
+            {{ data.title }}
+        </span>
+    </div>
+{% endblock %}
+
+{% block navigation %}
+    {% include molecule('navigation-sidebar') with {
+        modifiers: ['account'],
+        data: {
+            activePage: data.activePage,
+            items: data.items
+        }
+    } only %}
+{% endblock %}
