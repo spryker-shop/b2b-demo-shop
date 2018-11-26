@@ -3,6 +3,15 @@
         margin-bottom: 1rem;
         padding: 1rem 2rem;
         background-color: $setting-color-lighter;
+
+        &__item {
+            display: flex;
+            justify-content: space-between;
+
+            @include helper-breakpoint-media-min($lg) {
+                justify-content: flex-end;
+            }
+        }
     }
 }
 

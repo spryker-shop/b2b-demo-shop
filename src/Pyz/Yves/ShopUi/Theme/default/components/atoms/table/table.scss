@@ -98,7 +98,7 @@
             @include helper-breakpoint-media-max($lg) {
                 display: block;
 
-                thead, tbody, th, td, tr {
+                thead, tbody, th, td {
                     display: block;
                     text-transform: capitalize;
                 }
@@ -107,9 +107,13 @@
                     display: none;
                 }
 
-                tr {
+                tr:not(.order-detail-table__row) {
                     padding-top: $setting-grid-space;
                     padding-bottom: $setting-grid-space;
+                }
+
+                tbody tr:not(.is-hidden-sm-md) {
+                    display: block;
                 }
 
                 td {
@@ -130,6 +134,11 @@
 
                     &::before {
                         content: attr(data-content)':';
+                    }
+
+                    &--alt {
+                        padding: 0;
+                        background-color: $setting-color-transparent;
                     }
                 }
             }

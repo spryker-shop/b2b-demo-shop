@@ -20,22 +20,30 @@
 
         {% set amountSalesUnitName = data.concreteItem.amountSalesUnit.productMeasurementUnit.name | default('') %}
     {% endif %}
-    <td class="order-detail-table__cell">
+    <td class="order-detail-table__cell transform-cell transform-cell--alt" data-content={{ 'customer.order.item_sku' | trans }}>
         {{ data.concreteItem.sku }}
     </td>
-    <td class="order-detail-table__cell">
+    <td class="order-detail-table__cell transform-cell transform-cell--alt" data-content={{ 'customer.order.product_name' | trans }}">
         {{ data.concreteItem.name }}<br>
         {% if data.concreteItem.amount and data.concreteItem.quantity %}
             <span class="text-secondary">&times;</span> {{ data.concreteItem.amount }} {{ 'packaging_units.cart.item' | trans }} (= {{ data.concreteItem.amount / data.concreteItem.amountSalesUnit.conversion }}{{ amountSalesUnitName | trans }}) = {{ data.concreteItem.quantity * data.concreteItem.amount }} {{ 'packaging_units.cart.item' | trans }}
         {% endif %}
     </td>
-    <td class="order-detail-table__cell">
+    <td class="order-detail-table__cell transform-cell transform-cell--alt" data-content={{ 'customer.order.item_price' | trans }}>
         {{ data.concreteItem.unitPrice | money(true, data.currencyIsoCode) }}
     </td>
-    <td class="order-detail-table__cell">
+    <td class="order-detail-table__cell transform-cell transform-cell--alt" data-content={{ 'customer.order.item_quantity' | trans }}>
         {{ data.concreteItem.quantity }} {% if salesUnitSummary is defined and salesUnitSummary is not empty %}(={{ salesUnitSummary }}){% endif %}
     </td>
-    <td class="order-detail-table__cell">
+    <td class="order-detail-table__cell transform-cell transform-cell--alt" data-content={{ 'customer.order.item_sum' | trans }}>
         {{ data.concreteItem.unitPriceToPayAggregation | money(true, data.currencyIsoCode) }}
+    </td>
+    <td class="{{ config.name }}__cell {{ config.name }}__cell--detail transform-cell--alt is-hidden-lg-xl" colspan="5">
+        {% include molecule('note-list', 'CartNoteWidget') ignore missing with {
+            data: {
+                label: 'cart_note.customer_page.item_note',
+                note: data.concreteItem.cartNote
+            }
+        } only %}
     </td>
 {% endblock body %}

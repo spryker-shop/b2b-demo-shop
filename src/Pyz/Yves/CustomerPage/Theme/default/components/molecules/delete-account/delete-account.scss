@@ -1,0 +1,12 @@
+@mixin shop-ui-delete-account ($name: '.delete-account') {
+    #{$name} {
+        &--profile {
+            background-color: $setting-color-gray-7;
+            padding: rem(21) rem(30);
+        }
+
+        @content
+    }
+}
+
+@include shop-ui-delete-account();
