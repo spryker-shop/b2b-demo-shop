@@ -38,7 +38,7 @@
     <td class="order-detail-table__cell transform-cell transform-cell--alt" data-content={{ 'customer.order.item_sum' | trans }}>
         {{ data.concreteItem.unitPriceToPayAggregation | money(true, data.currencyIsoCode) }}
     </td>
-    <td class="{{ config.name }}__cell {{ config.name }}__cell--detail transform-cell--alt is-hidden-lg-xl" colspan="5">
+    <td class="{{ config.name }}__cell {{ config.name }}__cell--detail transform-cell--alt is-hidden-lg-xxl" colspan="5">
         {% include molecule('note-list', 'CartNoteWidget') ignore missing with {
             data: {
                 label: 'cart_note.customer_page.item_note',
