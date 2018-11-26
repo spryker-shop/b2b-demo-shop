@@ -54,14 +54,21 @@
         {% endblock %}
     {% endembed %}
 {% endblock %}
-    
-{% block breadcrumbs %}
-    {% include view('cart-checkout-breadcrumb', 'CheckoutWidget') with {
-        data: {
-            isCartPage: false,
-            checkoutBreadcrumbs: data.breadcrumbs
-        }
-    } only %}
+
+{% block pageInfo %}
+    <div class="page-info page-info--checkout">
+        <div class="container">
+            {% block breadcrumbs %}
+                {% include view('cart-checkout-breadcrumb', 'CheckoutWidget') with {
+                    modifiers: ['checkout'],
+                    data: {
+                        isCartPage: false,
+                        checkoutBreadcrumbs: data.breadcrumbs
+                    }
+                } only %}
+            {% endblock %}
+        </div>
+    </div>
 {% endblock %}
 
 {% block title %}{% endblock %}
