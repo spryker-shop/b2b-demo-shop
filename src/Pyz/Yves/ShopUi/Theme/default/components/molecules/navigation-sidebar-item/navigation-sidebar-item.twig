@@ -14,10 +14,10 @@
 
 
 {%- block body -%}
-    <a class="{{ config.name }}__link" href="{{ data.url }}">
+    <a class="{{ component.renderClass(config.name ~ '__link', modifiers) }}" href="{{ data.url }}">
         {% spaceless %}
             {% if data.icon | default(false) %}
-                <div class="{{ config.name }}__icon-wrapper">
+                <div class="{{ component.renderClass(config.name ~ '__icon-wrapper', modifiers) }}">
                     {% include atom('icon') with {
                         modifiers: ['big', data.name],
                         data: {
@@ -28,7 +28,7 @@
                 </div>
             {% endif %}
 
-            <div class="{{ config.name }}__label">
+            <div class="{{ component.renderClass(config.name ~ '__label', modifiers) }}">
                 {{ data.label }}
             </div>
         {% endspaceless %}
