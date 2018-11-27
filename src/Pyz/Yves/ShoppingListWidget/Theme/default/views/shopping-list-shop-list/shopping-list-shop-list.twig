@@ -29,13 +29,13 @@
     {% block listActions %}
         <div class="grid grid--gap grid--justify">
             {% if data.shoppingListCollection.shoppingLists | length %}
-                <div class="col col--bottom-indent col--mobile-expand">
+                <div class="col col--bottom-indent col--expand">
                     <a href="{{ path('shopping-list') }}" class="button button--mobile-tight button--expand button--hollow">
                         {{ 'shopping_list.all_shopping_lists' | trans }}
                     </a>
                 </div>
             {% endif %}
-            <div class="col col--bottom-indent col--mobile-expand">
+            <div class="col col--bottom-indent col--expand">
                 <a href="{{ path('shopping-list') }}" class="col button button--mobile-tight button--expand">
                     {% include atom('icon') with {
                         modifiers: ['create-list'],
