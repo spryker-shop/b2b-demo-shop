@@ -43,7 +43,7 @@
         &--checkout {
             font-size: rem(22);
             font-weight: fw(bold);
-            margin-bottom: rem(14);
+            margin-bottom: rem(10);
 
             @include helper-breakpoint-media-min($lg) {
                 font-size: rem(28);
@@ -52,8 +52,12 @@
         }
 
         &--second {
-            font-size: rem(24);
+            font-size: rem(18);
             margin-bottom: rem(14);
+
+            @include helper-breakpoint-media-min($lg) {
+                font-size: rem(24);
+            }
         }
 
         &__index {

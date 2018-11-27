@@ -23,20 +23,20 @@
             submit: {
                 enable: true,
                 text: 'checkout.step.payment' | trans,
-                class: 'button button--big'
+                class: 'form__action--expand-sm-md button button--big'
             },
             cancel: {
                 enable: true,
                 url: data.backUrl,
                 text: 'general.back.button' | trans,
                 icon: '',
-                class: 'button button--big button--hollow-icon button--back'
+                class: 'form__action--expand-sm-md button button--big button--hollow-icon button--back'
             }
         }
     } only %}
         {% block fields %}
             {% for name, choices in data.form.idShipmentMethod.vars.choices %}
-                <div class="form__field col col--sm-12 shipment-item">
+                <div class="form__field form__field--shipment col col--sm-12">
                     <h5 class="grid grid--justify grid--middle title title--second">
                         <span class="col">{{name}}</span>
                         {% include atom('icon') with {

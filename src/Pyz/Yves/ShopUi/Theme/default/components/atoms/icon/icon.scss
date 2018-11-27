@@ -207,8 +207,13 @@ $shop-ui-icon-size-bigger: 1.5rem;
     }
 
     &--invoice-logo {
-        width: rem(83);
-        height: rem(28);
+        width: rem(52);
+        height: rem(20);
+
+        @include helper-breakpoint-media-min($lg) {
+            width: rem(83);
+            height: rem(28);
+        }
     }
 
     &--invoice-logo-small {
@@ -218,8 +223,13 @@ $shop-ui-icon-size-bigger: 1.5rem;
 
     &--payment-logo {
         position: absolute;
-        top: rem(27);
-        right: rem(30);
+        top: rem(33);
+        right: rem(20);
+
+        @include helper-breakpoint-media-min($lg) {
+            top: rem(27);
+            right: rem(30);
+        }
     }
 
     &--summary-shipping {
