@@ -10,18 +10,6 @@
         }
 
         &__row {
-            padding: rem(20);
-            border: 1px solid $setting-color-gray-1;
-            border-radius: $setting-border-radius;
-            position: relative;
-            margin-bottom: rem(16);
-
-            @include helper-breakpoint-media-min($lg) {
-                padding: 0;
-                border: none;
-                margin-bottom: 0;
-            }
-
             &:not(:first-child) {
                 border-top: 1px solid $setting-color-gray-6;
             }

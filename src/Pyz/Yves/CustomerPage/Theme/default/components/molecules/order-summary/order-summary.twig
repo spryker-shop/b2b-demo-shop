@@ -14,12 +14,14 @@
         {{ 'customer.order.subTotal' | trans }}:
         <span>{{ data.order.totals.subtotal | money(true, data.order.currencyIsoCode) }}</span>
     </li>
-        {% for expense in data.order.expenses %}
-            <li class="{{ config.name }}__item">
+
+    {% for expense in data.order.expenses %}
+        <li class="{{ config.name }}__item">
             {% if expense.type == 'SHIPMENT_EXPENSE_TYPE' %} {{ 'customer.order.shipment' | trans }} {% endif %} {{ expense.name | trans }}:
             <span>{{ expense.sumPrice | money(true, data.order.currencyIsoCode) }}</span>
-            </li>
-        {% endfor %}
+        </li>
+    {% endfor %}
+
     <li class="{{ config.name }}__item">
         {{ 'customer.order.discount.total' | trans }}:
         <strong class="text-alt">- {{ data.order.totals.discountTotal | money(true, data.order.currencyIsoCode) }}</strong>
