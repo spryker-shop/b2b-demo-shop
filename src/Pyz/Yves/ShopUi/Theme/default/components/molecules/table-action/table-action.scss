@@ -13,9 +13,29 @@
             margin-right: $setting-grid-space-mobile;
         }
 
+        &--tight {
+            padding-left: rem(3);
+            padding-right: rem(3);
+            font-weight: fw(medium);
+
+            @include helper-breakpoint-media-min($lg) {
+                margin-right: $setting-grid-space-mobile;
+            }
+        }
+
+        &--full-height {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+
         &__title {
             display: block;
+            padding-top: rem(3);
             font-size: rem(11);
+            line-height: rem(13);
         }
 
         @content;

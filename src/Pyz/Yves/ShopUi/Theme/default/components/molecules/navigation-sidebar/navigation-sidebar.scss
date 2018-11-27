@@ -1,15 +1,26 @@
 @mixin shop-ui-navigation-sidebar($name: '.navigation-sidebar') {
     #{$name} {
-        border: 1px solid $setting-color-gray-1;
+        border: rem(1) solid $setting-color-gray-1;
+
+        @include helper-breakpoint-media-min($md) {
+            margin-right: rem(32);
+        }
+
+        &--account {
+            border: 0;
+            padding: 0;
+            margin: 0;
+        }
 
         &__list {
             list-style: none;
             padding: rem(16) 0 rem(16) rem(8);
-            border-radius: 2px;
-        }
+            border-radius: rem(2);
 
-        @include helper-breakpoint-media-min($md) {
-            margin-right: rem(32);
+            &--account {
+                padding: 0;
+                border-radius: 0;
+            }
         }
     }
 }

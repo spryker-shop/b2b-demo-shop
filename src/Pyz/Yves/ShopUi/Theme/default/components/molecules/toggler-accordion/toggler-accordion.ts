@@ -23,8 +23,10 @@ export default class TogglerAccordion extends Component {
     }
 
     protected onTriggerClick(event: Event): void {
-        if (this.touchRulesFlag && this.isTouch) {
-            this.initializeClick(event);
+        if (this.touchRulesFlag) {
+            if (this.isTouch) {
+                this.initializeClick(event);
+            }
         } else {
             this.initializeClick(event);
         }
