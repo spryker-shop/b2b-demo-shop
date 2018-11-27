@@ -1,7 +1,7 @@
 {% extends model('component') %}
 
 {% define config = {
-    name: 'table-action',
+    name: 'table-action-link',
     tag: 'a'
 } %}
 
@@ -9,11 +9,12 @@
     url: required,
     icon: required,
     title: required,
-    iconModifier: null,
+    iconModifier: null
 } %}
 
 {% define attributes = {
-    href: data.url
+    href: data.url,
+    title: data.title | trans
 } %}
 
 {% block body %}

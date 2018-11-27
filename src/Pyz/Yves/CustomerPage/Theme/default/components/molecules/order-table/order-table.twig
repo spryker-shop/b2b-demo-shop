@@ -21,7 +21,6 @@
                     <th colspan="2">{{ 'customer.order.total' | trans }}</th>
                 </tr>
             </thead>
-
             <tbody>
                 {% for order in data.orders %}
                     <tr>
@@ -36,29 +35,32 @@
                                 {{- order.totals.grandTotal | default(0) | money(true, order.currencyIsoCode) -}}
                             </strong>
                         </td>
-                        <td class="table__actions grid spacing spacing--inner spacing--reset">
 
-                            <ul class="table__actions--order">
-                                <li class="table__actions--order-item">
-                                    {% include molecule('table-action') with {
-                                        class: 'link link--alt link--action',
-                                        data: {
+                        <td class="table__actions grid spacing spacing--inner spacing--reset">
+                            {% embed molecule('table-action-list') with {
+                                data: {
+                                    items: [
+                                        {
                                             url: path('customer/order/details', { id: order.idSalesOrder }),
                                             icon: 'eye',
                                             title: 'customer.order.view_order',
                                             iconModifier: 'big'
-                                        },
-                                        attributes: {
-                                            title: 'customer.order.view_order' | trans
                                         }
-                                    } only %}
-                                </li>
-                                {% if widgetExists('CustomerReorderWidgetPlugin') %}
-                                    <li class="table__actions--order-item">
-                                        {{ widgetBlock('CustomerReorderWidgetPlugin', 'reorderAction', order) }}
-                                    </li>
-                                {% endif %}
-                            </ul>
+                                    ]
+                                },
+                                embed: {
+                                    order: order
+                                }
+                            } only %}
+                                {% block body %}
+                                    {{ parent() }}
+                                    {% if widgetExists('CustomerReorderWidgetPlugin') %}
+                                        <li class="{{ config.name }}__item">
+                                            {{ widgetBlock('CustomerReorderWidgetPlugin', 'reorderAction', embed.order) }}
+                                        </li>
+                                    {% endif %}
+                                {% endblock %}
+                            {% endembed %}
                         </td>
                     </tr>
                 {% endfor %}

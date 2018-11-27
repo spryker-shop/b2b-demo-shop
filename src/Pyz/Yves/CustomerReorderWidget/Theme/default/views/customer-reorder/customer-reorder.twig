@@ -1,16 +1,13 @@
 {% extends template('widget') %}
 
 {% block reorderAction %}
-    {% include molecule('table-action') with {
+    {% include molecule('table-action-link') with {
         class: 'link link--alt link--action',
         data: {
             url: path('customer/order/reorder', {'idSalesOrder': _widget.order.idSalesOrder}),
             icon: 'cart',
             title: 'customer.order.reorder',
             iconModifier: 'big'
-        },
-        attributes: {
-            title: 'customer.order.reorder' | trans
         }
     } only %}
 {% endblock %}
