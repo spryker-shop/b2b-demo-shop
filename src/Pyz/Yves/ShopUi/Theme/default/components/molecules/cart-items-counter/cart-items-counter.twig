@@ -29,6 +29,6 @@
         {% endif %}
     </span>
 
-    {% if data.label is not empty %}{{data.label}} <span class="is-hidden-lg-xxl"> ({{data.quantity}})</span>{% endif %}
+    <span class="user-navigation__text">{% if data.label is not empty %}{{data.label}} <span class="is-hidden-lg-xxl"> ({{data.quantity}})</span>{% endif %}</span>
 
 {% endblock %}
