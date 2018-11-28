@@ -9,20 +9,32 @@
     }
 
     .form {
-        padding-left: rem(10);
-        padding-right: rem(10);
+        padding-left: 0;
+        padding-right: 0;
         width: 100%;
+
+        @include helper-breakpoint-media-min($lg) {
+            padding-left: rem(10);
+            padding-right: rem(10);
+        }
     }
 
     .form__fields {
-        margin-left: rem(-10);
-        margin-right: rem(-10);
+        margin-left: rem(-4);
+        margin-right: rem(-4);
+
+        @include helper-breakpoint-media-min($lg) {
+            margin-left: rem(-10);
+            margin-right: rem(-10);
+        }
     }
 
     .form__field {
-        padding-top: 0;
-        padding-left: rem(10);
-        padding-right: rem(10);
+        padding: 0 rem(4) rem(16);
+
+        @include helper-breakpoint-media-min($lg) {
+            padding: 0 rem(10) rem(16);;
+        }
     }
 
     .form__actions {
@@ -36,6 +48,12 @@
 
     .label:not(span) {
         color: $setting-color-gray-5;
+        font-size: rem(10);
+
+        @include helper-breakpoint-media-min($lg) {
+            font-size: rem(12);
+        }
+
     }
 
     .input {
