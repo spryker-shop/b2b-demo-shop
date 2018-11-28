@@ -56,7 +56,7 @@
             </div>
 
             <div class="{{config.name}}__info">
-                <a href="tel:+49030208498350" class="{{config.name}}__contact">
+                <a href="tel:{{ 'global.phone.number' | trans|replace({' ': ''})}}" class="{{config.name}}__contact">
                     <span class="{{config.name}}__contact-icon">
                         {% include atom('icon') with {
                             modifiers: ['bigger'],
@@ -66,7 +66,7 @@
                         } only %}
                     </span>
                     <span class="{{config.name}}__contact-text {{config.name}}__contact-text--weight">{{ 'global.contact_us' | trans }}:</span>
-                    <span class="{{config.name}}__contact-text">+49 (0)30 208 498 350</span>
+                    <span class="{{config.name}}__contact-text">{{ 'global.phone.number' | trans}}</span>
                 </a>
                 {% if is_granted('ROLE_USER') %}
                     <a href="{{ url('logout') }}" class="spacing-top spacing-top--big button button--hollow button--expand">{{ 'customer.logout' | trans }}</a>
