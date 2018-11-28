@@ -1,10 +1,9 @@
 @mixin shop-ui-slick-carousel ($name: '.slick-carousel') {
     #{$name} {
-
         &__container {
-            max-height: 320px;
+            max-height: 394px;
             opacity: 0;
-            @include helper-effect-transition(opacity, 0.8s);
+            @include helper-effect-transition(opacity, 0.5s);
 
             &.is-inited {
                 opacity: 1;
