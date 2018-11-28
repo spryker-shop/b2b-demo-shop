@@ -1,7 +1,17 @@
 @mixin shop-ui-slick-carousel ($name: '.slick-carousel') {
     #{$name} {
 
-        // fix blink on macbook screen
+        &__container {
+            max-height: 320px;
+            opacity: 0;
+            @include helper-effect-transition(opacity, 0.8s);
+
+            &.is-inited {
+                opacity: 1;
+                max-height: none;
+            }
+        }
+
         .slick-track,
         .slick-list {
             transition-delay: $setting-effect-default-duration;
