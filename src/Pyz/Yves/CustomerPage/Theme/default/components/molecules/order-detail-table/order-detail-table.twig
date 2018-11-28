@@ -11,7 +11,7 @@
 } %}
 
 {% block body %}
-    <table>
+    <table class="table table--responsive">
         <thead class="{{ config.name }}__head">
             <tr>
                 {% block headerRow %}
@@ -78,7 +78,7 @@
                         {% endfor %}
                     {% endif %}
                 {% endif %}
-                <tr>
+                <tr class="is-hidden-sm-md">
                     <td></td>
                     <td class="{{ config.name }}__cell {{ config.name }}__cell--detail" colspan="5">
                         {% include molecule('note-list', 'CartNoteWidget') ignore missing with {
