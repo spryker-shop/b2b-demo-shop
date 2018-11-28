@@ -21,10 +21,11 @@
         }
 
         &--subscription {
-            font: fw(medium) rem(16)/rem(50) $setting-font-family;
+            font: fw(bold) rem(16)/rem(50) $setting-font-family;
             position: relative;
 
             @include helper-breakpoint-media-min($md) {
+                font-weight: fw(medium);
                 font-size: rem(18);
                 line-height: normal;
             }
