@@ -139,6 +139,22 @@ $name: '.product-card';
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
 
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: rem(220);
+            z-index: $setting-zi-element;
+        }
+
+        &--category {
+            &::before {
+                height: rem(164);
+            }
+        }
+
         @include helper-breakpoint-media-min($lg) {
             height: rem(64);
             font-size: rem(18);
@@ -147,15 +163,9 @@ $name: '.product-card';
             -webkit-line-clamp: 3;
 
             &::before {
-                content: '';
                 @include helper-effect-transition(background-color box-shadow);
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
                 background-color: $setting-color-alpha-2;
-                z-index: $setting-zi-element;
+                height: 100%;
             }
         }
 
