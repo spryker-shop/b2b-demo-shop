@@ -22,7 +22,13 @@
         }
 
         &--narrow {
-            max-width: 60%;
+            @include helper-breakpoint-media-min($md) {
+                max-width: rem(700);
+            }
+
+            @include helper-breakpoint-media-min($xl) {
+                max-width: rem(500);
+            }
         }
 
         &__title {
@@ -38,17 +44,22 @@
             }
         }
 
-        &__actions,
-        &__action {
-            flex: none;
-            display: flex;
-            flex-flow: row nowrap;
-            align-items: center;
+        &__actions {
+            @include helper-breakpoint-media-min($md) {
+                flex: none;
+                display: flex;
+                flex-flow: row nowrap;
+                align-items: center;
+            }
         }
 
         &__action {
             margin-top: rem(8);
             width: 100%;
+            display: flex;
+            flex-flow: row nowrap;
+            flex: none;
+            align-items: center;
             justify-content: center;
 
             @include helper-breakpoint-media-min($md) {

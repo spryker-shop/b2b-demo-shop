@@ -18,7 +18,8 @@ $setting-color-business-chart-item-level: (
             display: flex;
             flex-flow: row nowrap;
             align-items: center;
-            padding: rem(20) rem(34);
+            font-size: rem(14);
+            padding: rem(12) rem(15) rem(12) rem(20);
             margin-bottom: map-get($setting-spacing, default);
             background-color: $setting-color-gray-7;
             color: $setting-color-gray-5;
@@ -41,6 +42,11 @@ $setting-color-business-chart-item-level: (
                     color: inherit;
                 }
             }
+
+            @include helper-breakpoint-media-min($lg) {
+                padding: rem(20) rem(34);
+                font-size: rem(16);
+            }
         }
 
         &__name {
@@ -48,7 +54,11 @@ $setting-color-business-chart-item-level: (
         }
 
         #{$name} {
-            padding-left: rem(30);
+            padding-left: rem(10);
+
+            @include helper-breakpoint-media-min($lg) {
+                padding-left: rem(30);
+            }
         }
     }
 }
