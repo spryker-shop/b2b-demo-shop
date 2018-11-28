@@ -16,7 +16,7 @@ export default class SlickCarousel extends Component {
     }
 
     protected showSlider(): void {
-        this.slider.classList.add('is-inited');
+        this.slider.classList.add(`${this.name}__container--is-inited`);
     }
 
     protected sliderInit (): void {
