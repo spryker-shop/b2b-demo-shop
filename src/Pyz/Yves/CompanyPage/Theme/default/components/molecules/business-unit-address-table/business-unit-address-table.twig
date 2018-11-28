@@ -11,19 +11,19 @@
 } %}
 
 {% block body %}
-    <table class="table table--expand">
+    <table class="table table--expand table--responsive">
         {% if data.headline %}
             <thead>
-            <tr>
-                <th>{{ data.headline }}</th>
-                <th></th>
-            </tr>
+                <tr class="transform-table-header">
+                    <th class="transform-table-header__cell">{{ data.headline }}</th>
+                    <th></th>
+                </tr>
             </thead>
         {% endif %}
         <tbody>
         {% for address in data.addresses %}
             <tr>
-                <td>
+                <td class="transform-cell transform-cell--no-label spacing-y spacing-y--inner spacing-y--big">
                     {{ form_widget(address, {
                             'attr': {
                                 'label': address.vars.label
@@ -31,27 +31,23 @@
                         })
                     }}
                 </td>
-                <td class="table__actions">
-                    <ul class="menu menu--inline">
-                        <li class="menu__item">
-                            <a class="table__action link link--alt link--action" href="{{ url('company/address/update', {'id': address.vars.value, 'idCompanyBusinessUnit': data.idCompanyBusinessUnit }) }}" title="{{ 'company.account.address.edit' | trans }}">
-                                {% include atom('icon') with {
-                                    data: {
-                                        name: 'edit'
-                                    }
-                                } only %}
-                            </a>
-                        </li>
-                        <li class="menu__item">
-                            <a class="table__action link link--alt link--action" href="{{ url('company/address/delete-confirmation', {'id': address.vars.value, 'idCompanyBusinessUnit': data.idCompanyBusinessUnit }) }}" title="{{ 'company.account.address.delete' | trans }}">
-                                {% include atom('icon') with {
-                                    data: {
-                                        name: 'delete'
-                                    }
-                                } only %}
-                            </a>
-                        </li>
-                    </ul>
+                <td class="table__actions grid spacing spacing--inner spacing--reset">
+                    {% include molecule('table-action-list') with {
+                        data: {
+                            items: [
+                                {
+                                    url: url('company/address/update', {'id': address.vars.value, 'idCompanyBusinessUnit': data.idCompanyBusinessUnit }),
+                                    icon: 'edit',
+                                    title: 'company.account.address.edit'
+                                },
+                                {
+                                    url: url('company/address/delete-confirmation', {'id': address.vars.value, 'idCompanyBusinessUnit': data.idCompanyBusinessUnit }),
+                                    icon: 'delete',
+                                    title: 'company.account.address.delete'
+                                }
+                            ]
+                        }
+                    } only %}
                 </td>
             </tr>
         {% endfor %}

@@ -74,7 +74,8 @@
                     text-transform: capitalize;
                 }
 
-                thead tr {
+                thead tr,
+                thead th {
                     display: none;
                 }
 
@@ -115,6 +116,19 @@
                     }
                 }
 
+                .transform-table-header,
+                .transform-table-header__cell {
+                    display: block;
+                    padding: 0;
+                    background: $setting-color-white;
+                }
+
+                .transform-table-header__cell {
+                    font-size: rem(18);
+                    font-weight: fw(medium);
+                    padding-top: rem(16);
+                }
+
                 .transform-cell {
                     display: flex;
                     position: relative;
@@ -131,6 +145,10 @@
                     &--alt {
                         padding: 0;
                         background-color: $setting-color-transparent;
+                    }
+
+                    &--no-label:before {
+                        display: none;
                     }
                 }
             }

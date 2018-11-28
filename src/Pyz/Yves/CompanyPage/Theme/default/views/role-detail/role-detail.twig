@@ -96,7 +96,9 @@
             data: {
                 permissions: data.permissions,
                 idCompanyRole: data.role.idCompanyRole,
-                showActions: false
+                actions: {
+                    configure: true
+                }
             }
         } only %}
     {% endif %}
