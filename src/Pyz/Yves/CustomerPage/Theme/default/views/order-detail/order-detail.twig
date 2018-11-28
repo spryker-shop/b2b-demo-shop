@@ -90,7 +90,7 @@
                 molecule('order-detail-product-packaging-unit', 'ProductPackagingUnitWidget'),
                 molecule('order-detail-product-packaging-unit-default', 'CustomerPage'),
                 ] ignore missing with {
-                class: config.name ~ '__row',
+                class: config.name ~ '__row row row--order-details',
                 data: {
                     concreteItem: concreteItem,
                     currencyIsoCode: data.currencyIsoCode,
@@ -101,7 +101,7 @@
                 }
             } only %}
                 {% block body %}
-                    <td>
+                    <td class="order-detail-table__cell order-detail-table__cell--float">
                         {{ widgetBlock('CustomerReorderWidgetPlugin', 'formCheckbox', embed.order, data.concreteItem) }}
                     </td>
                     {{parent()}}

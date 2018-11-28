@@ -54,15 +54,45 @@
                         {{ 'checkout.step.summary.items' | trans }}
                     </span>
                 </td>
-                <td class="spacing-right spacing-right--inner spacing-right--reset">
-                    {% include molecule('shopping-list-action-navigation', 'ShoppingListPage') with {
-                        class: 'grid grid--justify',
+                <td class="spacing spacing--inner spacing--reset">
+                    {% embed molecule('table-action-list') with {
                         data: {
-                            hasWritePermission: hasWritePermission,
-                            idShoppingList: shoppingList.idShoppingList,
+                            items: [
+                                {
+                                    url: url('shopping-list/update', { idShoppingList: shoppingList.idShoppingList }),
+                                    icon: 'edit',
+                                    title: 'general.edit.button',
+                                    available: hasWritePermission
+                                },
+                                {
+                                    url: url('shopping-list/share', { idShoppingList: shoppingList.idShoppingList }),
+                                    icon: 'share',
+                                    title: 'customer.account.shopping_list.overview.share',
+                                    iconModifier: 'share',
+                                    available: hasWritePermission
+                                },
+                                {
+                                    url: url('shopping-list/print', { idShoppingList: shoppingList.idShoppingList }),
+                                    icon: 'print',
+                                    title: 'customer.account.shopping_list.overview.print'
+                                },
+                                {
+                                    url: url('shopping-list/delete', { idShoppingList: shoppingList.idShoppingList }),
+                                    icon: 'delete',
+                                    title: 'customer.account.shopping_list.overview.delete',
+                                    available: hasWritePermission
+                                }
+                            ]
+                        },
+                        embed: {
                             shoppingList: shoppingList
                         }
                     } only %}
+                        {% block body %}
+                            {{ parent() }}
+                            {{ widget('ShoppingListDismissWidgetPlugin', embed.shoppingList) }}
+                        {% endblock %}
+                    {% endembed %}
                 </td>
             </tr>
         {% endfor %}

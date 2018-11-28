@@ -1,0 +1,28 @@
+@mixin shop-ui-table-action ($name: '.table-action-list') {
+    #{$name} {
+        display: flex;
+        padding-top: $setting-grid-space;
+        padding-bottom: $setting-grid-space-mobile;
+        margin: 0 rem(-4);
+        justify-content: space-between;
+
+        @include helper-breakpoint-media-min($lg) {
+            width: 100%;
+            margin: 0;
+            justify-content: flex-end;
+        }
+
+        &__item {
+            flex-grow: 1;
+            padding: 0 rem(4);
+
+            @include helper-breakpoint-media-min($lg) {
+                flex-grow: 0;
+            }
+        }
+
+        @content;
+    }
+}
+
+@include shop-ui-table-action();

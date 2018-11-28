@@ -61,8 +61,5 @@
             ]
         }
     } only %}
-
-    {% include molecule('delete-account', 'CustomerPage') with {
-        modifiers: ['profile']
-    } only %}
+    {% include molecule('delete-account', 'CustomerPage') only %}
 {% endblock %}

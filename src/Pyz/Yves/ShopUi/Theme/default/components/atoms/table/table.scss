@@ -49,35 +49,6 @@
             }
         }
 
-        &__actions {
-            white-space: nowrap;
-
-            @include helper-breakpoint-media-min($lg) {
-                justify-content: flex-end;
-            }
-
-            &--order {
-                padding-top: $setting-grid-space;
-                padding-bottom: $setting-grid-space-mobile;
-                display: flex;
-                justify-content: space-between;
-
-                @include helper-breakpoint-media-min($lg) {
-                    margin: 0;
-                    justify-content: flex-end;
-                }
-            }
-
-            &--order-item {
-                flex-basis: 48%;
-
-                @include helper-breakpoint-media-min($lg) {
-                    flex-basis: auto;
-                    margin-right: $setting-grid-space-mobile;
-                }
-            }
-        }
-
         &__icon {
             height: 1em;
         }
@@ -98,7 +69,7 @@
             @include helper-breakpoint-media-max($lg) {
                 display: block;
 
-                thead, tbody, th, td, tr {
+                thead, tbody, th, td {
                     display: block;
                     text-transform: capitalize;
                 }
@@ -110,6 +81,10 @@
                 tr {
                     padding-top: $setting-grid-space;
                     padding-bottom: $setting-grid-space;
+                }
+
+                tbody tr:not(.is-hidden-sm-md) {
+                    display: block;
                 }
 
                 td {
@@ -124,6 +99,22 @@
                     padding-right: 10px;
                 }
 
+                .row {
+                    &--order-details {
+                        padding: rem(20);
+                        border: 1px solid $setting-color-gray-1;
+                        border-radius: $setting-border-radius;
+                        position: relative;
+                        margin-bottom: rem(16);
+
+                        @include helper-breakpoint-media-min($lg) {
+                            padding: 0;
+                            border: none;
+                            margin-bottom: 0;
+                        }
+                    }
+                }
+
                 .transform-cell {
                     display: flex;
                     position: relative;
@@ -135,6 +126,11 @@
 
                     &::before {
                         content: attr(data-content)':';
+                    }
+
+                    &--alt {
+                        padding: 0;
+                        background-color: $setting-color-transparent;
                     }
                 }
             }

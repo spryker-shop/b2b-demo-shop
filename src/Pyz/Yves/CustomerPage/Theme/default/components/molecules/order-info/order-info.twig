@@ -11,12 +11,14 @@
 } %}
 
 {% block body %}
-    <div>
-        {{ 'customer.order.order_id' | trans }}:
-        <strong>{{ data.id }}</strong>
-    </div>
-    <div>
-        {{ 'customer.order.date' | trans }}:
-        <strong>{{ data.date }}</strong>
+    <div class="box">
+        <div>
+            {{ 'customer.order.order_id' | trans }}:
+            <strong>{{ data.id }}</strong>
+        </div>
+        <div>
+            {{ 'customer.order.date' | trans }}:
+            <strong>{{ data.date }}</strong>
+        </div>
     </div>
 {% endblock %}
