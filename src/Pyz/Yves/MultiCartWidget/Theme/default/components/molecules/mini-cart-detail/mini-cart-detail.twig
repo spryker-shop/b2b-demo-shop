@@ -45,7 +45,7 @@
                 </div>
             </div>
             <div class="{{ config.name }}__info grid grid--middle">
-                <div class="grid grid--nowrap grid--middle">
+                <div class="col grid grid--nowrap grid--middle">
                     {% widget 'ProductBundleItemCounterWidget' args [data.cart] with {
                         configName: config.name
                     } only %}
@@ -61,7 +61,7 @@
                 </div>
                 {% if data.cart.priceMode is not empty %}
                     {% include molecule('price-mode') with {
-                        class: config.name ~ '__price-mode',
+                        class: config.name ~ '__price-mode col',
                         modifiers: ['small'],
                         data: {
                             priceMode: data.cart.priceMode
