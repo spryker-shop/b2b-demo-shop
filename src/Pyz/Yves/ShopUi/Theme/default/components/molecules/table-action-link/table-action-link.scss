@@ -1,8 +1,8 @@
-@mixin shop-ui-table-action ($name: '.table-action') {
+@mixin shop-ui-table-action ($name: '.table-action-link') {
     #{$name} {
         width: 100%;
         padding: rem(4) rem(15);
-        border: 1px solid $setting-color-gray-2;
+        border: rem(1) solid $setting-color-gray-2;
         border-radius: $setting-border-radius;
         text-align: center;
 
@@ -19,7 +19,8 @@
             font-weight: fw(medium);
 
             @include helper-breakpoint-media-min($lg) {
-                margin-right: $setting-grid-space-mobile;
+                margin: 0;
+                padding: 0;
             }
         }
 

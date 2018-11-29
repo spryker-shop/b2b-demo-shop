@@ -2,6 +2,31 @@ $shop-ui-cart-items-counter-quantity-size: rem(16);
 
 @mixin shop-ui-cart-items-counter($name: '.cart-items-counter') {
     #{$name} {
+        &__icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: rem(38);
+            padding-right: rem(4);
+
+            @include helper-breakpoint-media-min($lg) {
+                align-items: flex-start;
+                padding: 0;
+            }
+        }
+
+        &__text {
+            display: block;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+
+            @include helper-breakpoint-media-min($lg) {
+                display: inline;
+                white-space: normal;
+            }
+        }
+
         &__quantity {
             display: flex;
             align-items: center;

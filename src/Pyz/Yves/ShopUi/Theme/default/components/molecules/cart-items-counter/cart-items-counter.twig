@@ -17,7 +17,7 @@
 
 {% block body %}
 
-    <span class="user-navigation__icon">
+    <span class="{{config.name}}__icon">
         {% include atom('icon') with {
             modifiers: ['cart'],
             data: {
@@ -29,6 +29,6 @@
         {% endif %}
     </span>
 
-    {% if data.label is not empty %}{{data.label}} <span class="is-hidden-lg-xxl"> ({{data.quantity}})</span>{% endif %}
+    <span class="{{config.name}}__text">{% if data.label is not empty %}{{data.label}} <span class="is-hidden-lg-xxl"> ({{data.quantity}})</span>{% endif %}</span>
 
 {% endblock %}

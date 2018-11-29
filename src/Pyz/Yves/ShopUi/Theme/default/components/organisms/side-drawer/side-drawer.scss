@@ -50,6 +50,8 @@ $shop-ui-side-drawer-width: rem(375);
         }
 
         &__holder {
+            display: flex;
+            flex-direction: column;
             flex-grow: 1;
             overflow: hidden;
             overflow-y: auto;
@@ -96,7 +98,13 @@ $shop-ui-side-drawer-width: rem(375);
         }
 
         &__navigation {
-            padding-bottom: rem(45);
+            padding-bottom: rem(15);
+            flex: 1;
+        }
+
+        &__info {
+            flex-shrink: 0;
+            padding-bottom: rem(25);
         }
 
         &__contact {
