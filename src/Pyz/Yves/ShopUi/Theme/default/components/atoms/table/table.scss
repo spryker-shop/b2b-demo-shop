@@ -22,7 +22,7 @@
             font-size: map_get($setting-font-size, small);
 
             tr:not(:first-child) {
-                border-top: 1px solid $setting-color-gray-6;
+                border-top: rem(1) solid $setting-color-gray-6;
             }
 
             th {
@@ -50,7 +50,7 @@
         }
 
         &__icon {
-            height: 1em;
+            height: rem(14);
         }
 
         &--grid {
@@ -93,17 +93,17 @@
                     padding-bottom: 0;
                 }
 
-                td:before {
+                td::before {
                     font-weight: fw(medium);
                     display: inline-block;
                     width: auto;
-                    padding-right: 10px;
+                    padding-right: rem(10);
                 }
 
                 .row {
                     &--order-details {
                         padding: rem(20);
-                        border: 1px solid $setting-color-gray-1;
+                        border: rem(1) solid $setting-color-gray-1;
                         border-radius: $setting-border-radius;
                         position: relative;
                         margin-bottom: rem(16);
@@ -147,7 +147,7 @@
                         background-color: $setting-color-transparent;
                     }
 
-                    &--no-label:before {
+                    &--no-label::before {
                         display: none;
                     }
                 }
