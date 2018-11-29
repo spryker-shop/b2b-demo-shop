@@ -42,7 +42,7 @@
                 border-bottom: 0;
 
                 @include helper-breakpoint-media-min($lg) {
-                    border-bottom: 1px solid $setting-color-gray-4;
+                    border-bottom: rem(1) solid $setting-color-gray-4;
                 }
             }
         }
@@ -78,14 +78,14 @@
         }
 
         &__separator {
-            margin-left: 0.25rem;
-            margin-right: 0.25rem;
+            margin-left: rem(4);
+            margin-right: rem(4);
             color: $setting-color-gray-3;
         }
 
         &--active {
             font-weight: fw(medium);
-            border-bottom: 1px solid $setting-color-gray-4;
+            border-bottom: rem(1) solid $setting-color-gray-4;
             color: $setting-color-gray-4;
         }
 
