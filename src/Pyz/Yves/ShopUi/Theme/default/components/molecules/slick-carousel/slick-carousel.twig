@@ -14,7 +14,7 @@
 } %}
 
 {% block body %}
-    <div class="{{ config.name }}__container {{ config.jsName }}__container is-hidden">
+    <div class="{{ config.name }}__container {{ config.jsName }}__container ">
         {% block slides %}
             {% for slide in data.slides %}
                 {{ slide }}
