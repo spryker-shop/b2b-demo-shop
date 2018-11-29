@@ -43,7 +43,11 @@
     } only %}
         {% block title %}
             {% if data.title is not empty %}
-                <h4>{{data.title}}</h4>
+                {% include molecule('action-bar', 'ShopUi') with {
+                    data: {
+                        title: 'company.account.business_unit.create' | trans
+                    }
+                } only %}
             {% endif %}
             <div class="{{config.name}}__title-description">{{ 'company.account.business_unit.description' | trans }}</div>
         {% endblock %}

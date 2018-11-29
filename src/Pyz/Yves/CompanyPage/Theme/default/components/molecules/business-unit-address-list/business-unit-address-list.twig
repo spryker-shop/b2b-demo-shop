@@ -45,7 +45,7 @@
                 }
             } %}
         {% else %}
-            <div class="box box--small"><i>{{ 'company.account.address.assigned.empty' | trans }}</i></div>
+            <div class="box box--small text-center">{{ 'company.account.address.assigned.empty' | trans }}</div>
         {% endif %}
     </div>
 
@@ -58,6 +58,6 @@
             }
         } %}
     {% else %}
-        <div class="box box--small"><i>{{ 'company.account.address.unassigned.empty' | trans }}</i></div>
+        <div class="box box--small text-center">{{ 'company.account.address.unassigned.empty' | trans }}</div>
     {% endif %}
 {% endblock %}
