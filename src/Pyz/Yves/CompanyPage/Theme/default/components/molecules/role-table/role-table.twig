@@ -48,19 +48,19 @@
                                         url: path('company/company-role/details', {'id': role.idCompanyRole}),
                                         icon: 'edit',
                                         title: 'company.account.company_role.view',
-                                        available: data.actions.view ? true : false
+                                        available: data.actions.view
                                     },
                                     {
                                         url: url('company/company-role/update', {'id': role.idCompanyRole}),
                                         icon: 'edit',
                                         title: 'company.account.business_unit.edit',
-                                        available: data.actions.update ? true : false
+                                        available: data.actions.update
                                     },
                                     {
                                         url: url('company/company-role/confirm-delete', {'id': role.idCompanyRole }),
                                         icon: 'delete',
                                         title: 'company.account.business_unit.delete',
-                                        available: data.actions.delete ? true : false
+                                        available: data.actions.delete
                                     }
                                 ]
                             }

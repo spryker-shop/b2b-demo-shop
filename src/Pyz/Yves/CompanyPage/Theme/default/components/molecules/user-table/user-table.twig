@@ -72,13 +72,13 @@
                                                 url: url('company/user/update', {'id': user.idCompanyUser}),
                                                 icon: 'edit',
                                                 title: 'company.account.company_user.edit',
-                                                available: data.actions.update ? true : false
+                                                available: data.actions.update
                                             },
                                             {
                                                 url: url('company/user/confirm-delete', {'id': user.idCompanyUser }),
                                                 icon: 'delete',
                                                 title: 'company.account.company_user.delete',
-                                                available: (data.currentCompanyUserId != user.idCompanyUser) and data.actions.delete ? true : false
+                                                available: (data.currentCompanyUserId != user.idCompanyUser) and data.actions.delete
                                             }
                                         ]
                                     }

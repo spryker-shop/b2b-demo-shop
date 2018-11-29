@@ -37,13 +37,13 @@
                                     url: path('company/user-invitation/send', {'idCompanyUserInvitation': invitation.idCompanyUserInvitation}),
                                     icon: 'send',
                                     title: 'company.user.invitation.send.button',
-                                    available: invitation.companyUserInvitationStatusKey == 'new' ? true : false
+                                    available: invitation.companyUserInvitationStatusKey == 'new'
                                 },
                                 {
                                     url: path('company/user-invitation/resend', {'idCompanyUserInvitation': invitation.idCompanyUserInvitation}),
                                     icon: 'send',
                                     title: 'company.user.invitation.resend.button',
-                                    available: invitation.companyUserInvitationStatusKey == 'pending' ? true : false
+                                    available: invitation.companyUserInvitationStatusKey == 'pending'
                                 },
                                 {
                                     url: path('company/user-invitation/delete', {'idCompanyUserInvitation': invitation.idCompanyUserInvitation}),
