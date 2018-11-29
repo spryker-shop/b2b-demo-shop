@@ -38,13 +38,13 @@
         {% endblock %}
 
         {% block cartActions %}
-            <div class="grid grid--gap grid--justify">
-                <div class="col col--bottom-indent col--expand">
+            <div class="grid grid--gap grid--justify grid--nowrap-lg-only">
+                <div class="col col--bottom-indent col--mobile-expand">
                     <a class="button button--mobile-tight button--expand button--hollow spacing-right spacing-right--big" href="{{ path('multi-cart') }}" title="{{ 'multi_cart_widget.cart.view_all' | trans }}">
                         {{ 'multi_cart_widget.cart.view_all' | trans }}
                     </a>
                 </div>
-                <div class="col col--bottom-indent col--expand">
+                <div class="col col--bottom-indent col--mobile-expand">
                     <a class="button button--mobile-tight button--expand" href="{{url('multi-cart/create')}}" title="{{ 'multi_cart_widget.cart.add' | trans }}">
                         {% include atom('icon') with {
                             modifiers: ['create-new-cart'],
