@@ -1,12 +1,19 @@
 @mixin shop-ui-action-bar($name: '.action-bar') {
     #{$name} {
-        display: flex;
-        flex-flow: row nowrap;
         margin-top: rem(16);
         margin-bottom: rem(16);
 
+        @include helper-breakpoint-media-min($md) {
+            display: flex;
+            flex-flow: row nowrap;
+        }
+
         &--first {
             margin-top: 0;
+        }
+
+        &--big {
+            margin-top: rem(48);
         }
 
         &--small {
@@ -15,7 +22,13 @@
         }
 
         &--narrow {
-            max-width: 60%;
+            @include helper-breakpoint-media-min($md) {
+                max-width: rem(700);
+            }
+
+            @include helper-breakpoint-media-min($xl) {
+                max-width: rem(500);
+            }
         }
 
         &__title {
@@ -31,16 +44,29 @@
             }
         }
 
-        &__actions,
-        &__action {
-            flex: none;
-            display: flex;
-            flex-flow: row nowrap;
-            align-items: center;
+        &__actions {
+            @include helper-breakpoint-media-min($md) {
+                flex: none;
+                display: flex;
+                flex-flow: row nowrap;
+                align-items: center;
+            }
         }
 
         &__action {
-            margin-left: rem(8);
+            margin-top: rem(8);
+            width: 100%;
+            display: flex;
+            flex-flow: row nowrap;
+            flex: none;
+            align-items: center;
+            justify-content: center;
+
+            @include helper-breakpoint-media-min($md) {
+                margin-top: 0;
+                margin-left: rem(8);
+                width: auto;
+            }
         }
 
         &__icon {

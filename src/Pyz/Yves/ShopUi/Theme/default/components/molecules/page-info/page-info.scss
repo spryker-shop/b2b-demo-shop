@@ -6,6 +6,17 @@
         padding-top: rem(14);
     }
 
+    &--checkout {
+        padding: rem(15) 0;
+        background-color: $setting-color-white;
+        box-shadow: 0 rem(10) rem(18) 0 $setting-color-alpha-2, 0 rem(3) rem(3) 0 $setting-color-alpha-2;
+
+        @include helper-breakpoint-media-min($lg) {
+            background-color: $setting-color-gray-7;
+            padding: rem(14) 0 rem(12);
+        }
+    }
+
     &__title {
         padding-top: rem(4);
         font: fw(bold) rem(22)/rem(26) $setting-font-family;

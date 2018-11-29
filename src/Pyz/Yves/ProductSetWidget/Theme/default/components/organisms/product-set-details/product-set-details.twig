@@ -93,7 +93,7 @@
                         {% endif %}
                     {% endfor %}
 
-                    <button type="submit" class="button spacing-bottom spacing-bottom--biggest" {% if isDisabled %}disabled{% endif %}>
+                    <button type="submit" class="button button--expand-sm-only spacing-bottom spacing-bottom--biggest" {% if isDisabled %}disabled{% endif %}>
                         {{ 'product.set.detail.add_all_to' | trans }}
                         {% include atom('icon') with {
                             class: 'spacing-y spacing-y--reset',
@@ -138,7 +138,7 @@
                             }
                         } only %}
                             {% block actionsContainer %}
-                                <div class="spacing-top spacing-bottom spacing-bottom--bigger {{ config.name }}__variant">
+                                <div class="{{ config.name }}__variant">
 
                                     {% set isNotAvailable = embed.product.idProductConcrete and not embed.product.available %}
 

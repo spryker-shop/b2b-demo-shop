@@ -1,27 +1,32 @@
-.cart-summary {
+@mixin cart-page-cart-summary($name: '.cart-summary') {
+    #{$name} {
+        &__item {
+            color: $setting-color-gray-2;
+            line-height: rem(24);
+            font-size: rem(16);
+            font-weight: fw(bold);
 
-    &__item {
-        color: $setting-color-gray-2;
-        line-height: rem(24);
-        font-size: rem(16);
-        font-weight: fw(bold);
+            @include helper-breakpoint-media-min($lg) {
+                font-size: rem(14);
+                font-weight: fw(regular);
+            }
 
-        @include helper-breakpoint-media-min($lg) {
-            font-size: rem(14);
-            font-weight: fw(regular);
+            &--top-space {
+                padding-top: rem(23);
+            }
         }
 
-        &--top-space {
-            padding-top: rem(23);
+        &__total {
+            color: $setting-color-gray-5;
+            padding-bottom: rem(7);
         }
-    }
 
-    &__total {
-        color: $setting-color-gray-5;
-        padding-bottom: rem(7);
-    }
+        &__button {
+            margin-top: rem(20);
+        }
 
-    &__button {
-        margin-top: rem(20);
+        @content;
     }
 }
+
+@include cart-page-cart-summary();

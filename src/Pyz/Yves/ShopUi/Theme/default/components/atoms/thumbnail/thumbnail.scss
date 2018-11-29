@@ -75,6 +75,16 @@
             }
         }
 
+        &--summary {
+            height: rem(75);
+            margin: 0;
+
+            @include helper-breakpoint-media-min($lg) {
+                height: rem(100);
+                margin: rem(4);
+            }
+        }
+
         &__image {
             position: absolute;
             left: 0;

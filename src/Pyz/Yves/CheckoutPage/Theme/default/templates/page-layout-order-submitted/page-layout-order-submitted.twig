@@ -20,48 +20,53 @@
     {% endembed %}
 {% endblock %}
 
+{% block contentClass %}page-layout-main page-layout-main--success{% endblock %}
+
 {% block pageInfo %}{% endblock %}
 
 {% block contentWrap %}
     <div class="container container--checkout-success container--expand spacing-x spacing-x--inner spacing-x--reset">
         {% block content %}
-            <div class="spacing-bottom spacing-bottom--biggest">
-                {% embed molecule('banner') with {
-                    class: 'spacing spacing--reset',
-                    modifiers: ['color-second'],
-                    data: {
-                        imageUrl: '/assets/images/img-success.jpg',
-                        title: data.title,
-                        message: data.message
-                    }
-                } only %}
-                    {% block body %}
-                        <div class="{{config.name}}__container grid grid--middle grid--center spacing spacing--inner spacing--reset" style="{{backgroundImage}}">
-                            <div class="grid grid--center text-center">
-                                <div class="col col--md-6 col--lg-8">
-                                    {% include atom('icon') with {
-                                        modifiers: ['success'],
-                                        data: {
-                                            name: 'success'
-                                        }
-                                    } only %}
-                                    {% if data.title is not empty %}
-                                        <h1 class="spacing-bottom spacing-bottom--biggest title title--light">{{ data.title }}</h1>
-                                    {% endif %}
-                                    {% if data.message is not empty %}
-                                        <p class="{{ config.name }}__success-text">{{ data.message }}</p>
-                                    {% endif %}
-                                </div>
+            {% embed molecule('banner') with {
+                modifiers: ['color-second', 'success'],
+                data: {
+                    imageUrl: '/assets/images/img-success.jpg',
+                    title: data.title,
+                    message: data.message
+                }
+            } only %}
+                {% block body %}
+                    <div class="{{config.name}}__container {{config.name}}__container--success grid grid--middle grid--center" style="{{backgroundImage}}">
+                        <div class="grid grid--center text-center">
+                            <div class="col col--md-10 col--lg-8">
+                                {% include atom('icon') with {
+                                    modifiers: ['success'],
+                                    data: {
+                                        name: 'success'
+                                    }
+                                } only %}
+                                {% if data.title is not empty %}
+                                    <h1 class="{{ config.name }}__success-title">{{ data.title }}</h1>
+                                {% endif %}
+                                {% if data.message is not empty %}
+                                    <p class="{{ config.name }}__success-text">{{ data.message }}</p>
+                                {% endif %}
                             </div>
                         </div>
-                    {% endblock %}
-                {% endembed %}
-            </div>
+                    </div>
+                {% endblock %}
+            {% endembed %}
         {% endblock %}
         {% block actions %}
-            <div class="container container--checkout text-center spacing-y spacing-y--inner">
-                <a href="{{ 'checkout.success.to_orders.url' | trans }}" class="button button--big spacing-x spacing-x--big">{{ 'checkout.success.to_orders.title' | trans }}</a>
-                <a href="{{ url('') }}" class="button button--big button--hollow button--second spacing-x spacing-x--big">{{ 'checkout.success.back_to_home.title' | trans }}</a>
+            <div class="container container--checkout">
+                <div class="grid grid--gap grid--center">
+                    <div class="col col--sm-12 col--lg-auto spacing-bottom">
+                        <a href="{{ 'checkout.success.to_orders.url' | trans }}" class="button button--expand button--big">{{ 'checkout.success.to_orders.title' | trans }}</a>
+                    </div>
+                    <div class="col col--sm-12 col--lg-auto spacing-bottom">
+                        <a href="{{ url('') }}" class="button button--expand button--medium button--hollow">{{ 'checkout.success.back_to_home.title' | trans }}</a>
+                    </div>
+                </div>
             </div>
         {% endblock %}
     </div>

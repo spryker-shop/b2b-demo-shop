@@ -22,10 +22,14 @@
         margin: 0;
         display: flex;
         height: rem(48);
-        font-size: rem(14);
+        font-size: rem(12);
         font-weight: fw(bold);
         color: $setting-color-gray-5;
-        padding-right: rem(20);
+
+        @include helper-breakpoint-media-min($lg) {
+            padding-right: rem(20);
+            font-size: rem(14);
+        }
 
         &:hover,
         &:focus {

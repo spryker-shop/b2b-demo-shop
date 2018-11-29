@@ -21,6 +21,16 @@
             }
         }
 
+        &--success {
+            height: auto;
+            margin-bottom: rem(15);
+
+            @include helper-breakpoint-media-min($lg) {
+                height: rem(450);
+                margin-bottom: rem(40);
+            }
+        }
+
         &--color-second {
             color: $setting-color-white;
         }
@@ -42,6 +52,16 @@
 
             @include helper-breakpoint-media-min($xl) {
                 padding: 0 rem(30);
+            }
+
+            &--success {
+                margin: 0;
+                padding: rem(20) rem(15) rem(26);
+
+                @include helper-breakpoint-media-min($lg) {
+                    padding-top: 0;
+                    padding-bottom: 0;
+                }
             }
         }
 
@@ -75,9 +95,27 @@
             }
         }
 
+        &__success-title {
+            font-size: rem(32);
+            line-height: rem(34);
+            color: $setting-color-white;
+            margin-bottom: rem(11);
+
+            @include helper-breakpoint-media-min($lg) {
+                margin-bottom: rem(32);
+                font-size: rem(50);
+                line-height: rem(55);
+            }
+        }
+
         &__success-text {
-            font-size: rem(22);
-            letter-spacing: rem(0.4);
+            font-size: rem(18);
+            letter-spacing: rem(0.3);
+
+            @include helper-breakpoint-media-min($lg) {
+                font-size: rem(22);
+                letter-spacing: rem(0.4);
+            }
         }
 
         @content;

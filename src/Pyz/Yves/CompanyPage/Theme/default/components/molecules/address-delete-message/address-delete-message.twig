@@ -12,15 +12,11 @@
 } %}
 
 {% block body %}
-    <h5 class="{{ config.name }}__delete-message">
-        {% include atom('icon') with {
-            modifiers: ['big'],
-            data: {
-                name: 'action-warning'
-            }
-        } only %}
-        {{ "company.account.address.delete.message.title" | trans }}
-    </h5>
+    {% include molecule('action-bar') with {
+        data: {
+            title: 'company.account.address.delete.message.title' | trans
+        }
+    } only %}
 
     <div class="spacing-y spacing-y--big">
         {{ "company.account.address.delete.message.description" | trans }}
@@ -47,15 +43,15 @@
 
     {% if data.idCompanyBusinessUnit is not empty %}
         <a class="button button--hollow {{ config.name }}__action" href="{{ url('company/business-unit/update', {'id': data.idCompanyBusinessUnit }) }}">
-            {{ "label.button.cancel" | trans }}
+            {{ 'company.company_business_unit.delete.confirmation.back' | trans }}
         </a>
     {% else %}
         <a class="button button--hollow {{ config.name }}__action" href="{{ url('company/business-unit') }}">
-            {{ "label.button.cancel" | trans }}
+            {{ 'company.company_business_unit.delete.confirmation.back' | trans }}
         </a>
     {% endif %}
 
-    <a class="button" href="{{ url('company/address/delete', {'id': data.companyUnitAddress.idCompanyUnitAddress, 'idCompanyBusinessUnit': data.idCompanyBusinessUnit }) }}">
-        {{ "label.button.submit" | trans }}
+    <a class="button button--alert" href="{{ url('company/address/delete', {'id': data.companyUnitAddress.idCompanyUnitAddress, 'idCompanyBusinessUnit': data.idCompanyBusinessUnit }) }}">
+        {{ 'company.account.business_unit.delete' | trans }}
     </a>
 {% endblock %}

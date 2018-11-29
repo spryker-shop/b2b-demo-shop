@@ -114,13 +114,13 @@ export default class TogglerClick extends Component {
             const offset = window.pageYOffset;
 
             body.style.cssText = "top:"+`${-offset}px`;
-            body.classList.add("is-locked");
+            body.classList.add(this.classToFixBody);
             body.dataset.scrollTo = offset.toString();
         } else {
             const scrollToVal = +body.dataset.scrollTo;
 
             body.style.cssText = "top: '';";
-            body.classList.remove("is-locked");
+            body.classList.remove(this.classToFixBody);
             window.scrollTo( 0, scrollToVal );
         }
     }
@@ -183,6 +183,10 @@ export default class TogglerClick extends Component {
 
     get onDocumentClickAction(): string {
         return this.getAttribute('document-click');
+    }
+
+    get classToFixBody(): string {
+        return this.getAttribute('class-to-fix-body');
     }
 
 }

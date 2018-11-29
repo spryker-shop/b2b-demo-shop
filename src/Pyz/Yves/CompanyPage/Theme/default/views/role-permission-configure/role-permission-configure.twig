@@ -1,9 +1,9 @@
 {% extends template('page-layout-company', 'CompanyPage') %}
 
 {% define data = {
-    form: _view.companyRoleForm,
+    form: _view.form,
 
-    title: 'company.account.company_role.create' | trans,
+    title: 'company.account.company_role.permissions' | trans,
     activePage: 'role'
 } %}
 
@@ -18,17 +18,18 @@
                     label: 'company.account.company_role' | trans,
                     url: url('company/company-role')
                 }, {
-                    label: 'company.account.company_role.create' | trans
+                    label: 'company.account.company_role.permission.configure' | trans
                 }
             ]
         }
     } only %}
 {% endblock %}
 
+
 {% block companyContent %}
     {% include molecule('action-bar', 'ShopUi') with {
         data: {
-            title: 'company.account.company_role.create' | trans
+            title: 'company.account.company_role.permission.configure' | trans
         }
     } only %}
 
@@ -36,16 +37,19 @@
         modifiers: ['narrow'],
         data: {
             form: data.form,
+            layout: {
+                name: 'col col--sm-12 col--lg-6',
+                is_default: 'col col--sm-12 col--lg-6'
+            },
             submit: {
-                enable: true,
-                class: 'button'
+                enable: true
             },
             cancel: {
                 enable: true,
-                url: url('company/company-role'),
-                text: 'general.back.button' | trans,
                 icon: null,
-                class: 'button button--hollow'
+                class: 'button button--hollow',
+                url: url('company/company-role'),
+                text: 'general.back.button' | trans
             }
         }
     } only %}

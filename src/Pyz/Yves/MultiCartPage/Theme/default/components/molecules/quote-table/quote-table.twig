@@ -86,7 +86,7 @@
                                 {% if isQuoteEditable %}
                                     {% if data.actions.update %}
                                         <li class="col col--equal menu__item">
-                                            {% include molecule('table-action') with {
+                                            {% include molecule('table-action-link') with {
                                                 modifiers: ['tight', 'full-height'],
                                                 class: 'link link--alt link--action',
                                                 data: {
@@ -102,7 +102,7 @@
                                     {% endif %}
                                     {% if data.actions.duplicate %}
                                         <li class="col col--equal menu__item">
-                                            {% include molecule('table-action') with {
+                                            {% include molecule('table-action-link') with {
                                                 class: 'link link--alt link--action',
                                                 modifiers: ['tight', 'full-height'],
                                                 data: {
@@ -120,7 +120,7 @@
 
                                 {% if isQuoteEditable %}
                                     <li class="col col--equal menu__item">
-                                        {% include molecule('table-action') with {
+                                        {% include molecule('table-action-link') with {
                                             class: 'link link--alt link--action',
                                             modifiers: ['tight', 'full-height'],
                                             data: {
@@ -139,7 +139,7 @@
                                 {% widget 'CartListPermissionGroupWidget' args [quote, isQuoteDeletable] use view('multi-cart-permission-actions', 'SharedCartWidget') only %}
                                 {% nowidget %}
                                     <li class="col col--equal menu__item">
-                                        {% include molecule('table-action') with {
+                                        {% include molecule('table-action-link') with {
                                             class: 'link link--alt link--action',
                                             modifiers: ['tight', 'full-height'],
                                             data: {

@@ -3,8 +3,71 @@
         display: inline-block;
         font: fw(500) rem(13)/rem(16) $setting-font-family;
 
-        &:last-child {
+        &--progress-step,
+        &--progress-complete {
+            font-size: rem(10);
+            line-height: normal;
+            margin: 0 rem(15);
+            position: relative;
 
+            @include helper-breakpoint-media-min($md) {
+                font-size: rem(18);
+            }
+
+            @include helper-breakpoint-media-min($lg) {
+                margin: 0 rem(29);
+            }
+
+            &:not(:last-child)::after {
+                content: '';
+                position: absolute;
+                left: 100%;
+                top: rem(6);
+                width: rem(36);
+                margin-left: rem(-3);
+                height: rem(1);
+                background: rgba($setting-color-gray-2, 0.8);
+
+                @include helper-breakpoint-media-min($md) {
+                    height: rem(2);
+                    top: rem(12);
+                }
+
+                @include helper-breakpoint-media-min($lg) {
+                    display: none;
+                }
+            }
+
+            &#{$name}--active {
+                border-bottom: 0;
+
+                @include helper-breakpoint-media-min($lg) {
+                    border-bottom: rem(1) solid $setting-color-gray-4;
+                }
+            }
+        }
+
+        &--progress-complete {
+            color: $setting-color-main;
+
+            &:not(:last-child)::after {
+                background: $setting-color-main;
+            }
+
+            #{$name}__link {
+                color: inherit;
+
+                @include helper-breakpoint-media-min($lg) {
+                    margin-left: rem(4);
+                }
+            }
+
+            #{$name}__number {
+                display: none;
+            }
+        }
+
+        &:last-child {
             #{$name}__separator {
                 display: none;
             }
@@ -15,14 +78,14 @@
         }
 
         &__separator {
-            margin-left: 0.25rem;
-            margin-right: 0.25rem;
+            margin-left: rem(4);
+            margin-right: rem(4);
             color: $setting-color-gray-3;
         }
 
         &--active {
             font-weight: fw(medium);
-            border-bottom: 1px solid $setting-color-gray-4;
+            border-bottom: rem(1) solid $setting-color-gray-4;
             color: $setting-color-gray-4;
         }
 
@@ -38,13 +101,44 @@
         }
 
         &__checked {
-            width: rem(18);
-            height: rem(18);
-            line-height: rem(14);
+            width: rem(13);
+            height: rem(13);
+            line-height: rem(11);
             background-color: $setting-color-main;
             color: $setting-color-white;
             border-radius: 50%;
-            margin-left: rem(4);
+            margin-bottom: rem(2);
+
+            @include helper-breakpoint-media-min($md) {
+                width: rem(18);
+                height: rem(18);
+                line-height: rem(15);
+                margin: rem(3) 0 rem(4);
+            }
+
+            @include helper-breakpoint-media-min($lg) {
+                margin: 0 0 0 rem(4);
+            }
+        }
+
+        &__number {
+            display: block;
+            margin-bottom: rem(2);
+
+            @include helper-breakpoint-media-min($lg) {
+                display: inline;
+                margin-bottom: 0;
+            }
+        }
+
+        &__holder {
+            display: flex;
+            flex-direction: column-reverse;
+            align-items: center;
+
+            @include helper-breakpoint-media-min($lg) {
+                flex-direction: row;
+            }
         }
 
         @content;

@@ -217,8 +217,13 @@ $name: '.product-card';
     }
 
     &__variant {
+        margin: rem(8) 0 rem(10);
         position: relative;
         z-index: $setting-zi-element + 2;
+
+        @include helper-breakpoint-media-min($lg) {
+            margin-bottom: rem(24);
+        }
     }
 
     &__category {

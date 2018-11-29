@@ -37,14 +37,7 @@
 {% block companyContent %}
      {% include molecule('action-bar') with {
         data: {
-            title: 'company.user.invitation.import.title' | trans,
-            actions: [
-                {
-                    title: 'general.back.button' | trans,
-                    url: url('company/user'),
-                    primary: false
-                }
-            ]
+            title: 'company.user.invitation.import.title' | trans
         }
     } only %}
 
@@ -60,6 +53,13 @@
             },
             submit: {
                 enable: true
+            },
+            cancel: {
+                enable: true,
+                url: url('company/user'),
+                text: 'general.back.button' | trans,
+                class: 'button button--hollow',
+                icon: null
             }
         }
     } only %}
@@ -72,6 +72,7 @@
 
     {% if data.invitations is not empty %}
         {% include molecule('action-bar', 'ShopUi') with {
+            modifiers: ['big'],
             data: {
                 title: 'company.user.invitation.imported.title.plural' | trans,
                 actions: [
