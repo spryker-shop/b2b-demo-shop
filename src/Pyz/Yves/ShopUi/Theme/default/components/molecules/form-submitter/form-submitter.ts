@@ -26,7 +26,6 @@ export default class FormSubmitter extends Component {
         if (newActionName !== null) {
             form.action = newActionName;
         }
-        console.log(form);
         form.submit();
     }
 
