@@ -133,7 +133,7 @@
                             }
                         } only %}
                             {% block actionsContainer %}
-                                <div class="spacing-top spacing-bottom spacing-bottom--bigger {{ config.name }}__variant">
+                                <div class="{{ config.name }}__variant">
 
                                     {% set isNotAvailable = embed.product.idProductConcrete and not embed.product.available %}
 
