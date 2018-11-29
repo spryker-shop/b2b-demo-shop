@@ -35,9 +35,9 @@
             text-overflow: ellipsis;
             overflow: hidden;
             display: block;
-            max-width: rem(100);
+            max-width: rem(110);
             white-space: nowrap;
-            margin-right: 0.25rem;
+            margin-right: rem(4);
 
             @include helper-breakpoint-media-min($md) {
                 max-width: rem(330);
@@ -50,6 +50,8 @@
         }
 
         &__price {
+            display: block;
+            transform: translateY(rem(14));
             font-size: $setting-font-size-base;
             font-weight: fw(medium);
             line-height: normal;
