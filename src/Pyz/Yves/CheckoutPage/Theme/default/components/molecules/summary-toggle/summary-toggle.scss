@@ -20,22 +20,23 @@
             padding: rem(15) rem(20);
             border-radius: $setting-border-radius;
             border: none;
-            box-shadow: 0 10px 10px 0 $setting-color-shadow-1, 0 3px 3px 0 $setting-color-shadow-1;
+            box-shadow: 0 rem(10) rem(10) 0 $setting-color-shadow-1, 0 rem(3) rem(3) 0 $setting-color-shadow-1;
         }
     }
 
     &__title {
-        font-size: rem(16);
+        font-size: rem(14);
         font-weight: fw(medium);
-        line-height: rem(18);
+        line-height: rem(16);
+
+        @include helper-breakpoint-media-min($lg) {
+            font-size: rem(16);
+            line-height: rem(18);
+        }
     }
 
     &__content {
         margin-top: rem(18);
-
-        &--voucher {
-            max-width: 550px;
-        }
 
         .form__field {
             padding-top: 0;

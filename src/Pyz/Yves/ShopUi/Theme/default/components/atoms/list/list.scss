@@ -10,9 +10,16 @@
     }
 
     &--checkout {
+        margin-bottom: 0;
+
         & > .list__item {
-            margin-left: rem(10);
-            margin-right: rem(10);
+            margin-left: rem(19);
+            margin-right: rem(19);
+
+            @include helper-breakpoint-media-min($md) {
+                margin-left: rem(10);
+                margin-right: rem(10);
+            }
         }
     }
 
