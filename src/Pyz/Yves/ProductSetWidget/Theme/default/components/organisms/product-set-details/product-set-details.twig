@@ -169,9 +169,11 @@
                                 </div>
                                 {% if can("SeeAddToCartPermissionPlugin") %}
                                     <div class="{{ config.name }}__actions">
-                                        <a href="{{ isDisabled ? 'javascript:void(0)' : path('cart/add', {sku: embed.product.sku}) }}" class="button button--expand {% if isDisabled %}button--disabled{% endif %}">
-                                            {{ 'page.detail.add-to-cart' | trans }}
-                                        </a>
+                                        {% if isDisabled %}
+                                            <span class="button button--expand isDisabled button--disabled">{{ 'page.detail.add-to-cart' | trans }}</span>
+                                        {% else %}
+                                            <a href="{{ path('cart/add', {sku: embed.product.sku}) }}" class="button button--expand ">{{ 'page.detail.add-to-cart' | trans }}</a>
+                                        {% endif %}
                                     </div>
                                 {% endif %}
                             {% endblock %}
