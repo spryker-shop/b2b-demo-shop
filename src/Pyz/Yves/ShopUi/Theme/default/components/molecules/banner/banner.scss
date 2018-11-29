@@ -73,6 +73,16 @@
                 font-size: rem(18);
                 margin-bottom: rem(35);
             }
+
+            &--subtitle {
+                font-family: $setting-font-family;
+                font-weight: fw(medium);
+
+                @include helper-breakpoint-media-min($lg) {
+                    font-size: rem(38);
+                    line-height: rem(40);
+                }
+            }
         }
 
         &__success-text {
