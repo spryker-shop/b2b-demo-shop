@@ -7,7 +7,7 @@
 
 {% define data = {
     items: [],
-    modifiers: []
+    linkModifiers: []
 } %}
 
 {% block body %}
@@ -17,7 +17,7 @@
             <li class="{{ config.name }}__item">
                 {% include molecule('table-action-link') with {
                     class: 'link link--alt link--action',
-                    modifiers: data.modifiers,
+                    modifiers: data.linkModifiers,
                     data: item
                 } only %}
             </li>
