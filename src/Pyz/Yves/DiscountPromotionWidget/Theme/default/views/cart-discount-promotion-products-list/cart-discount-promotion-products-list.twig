@@ -48,7 +48,7 @@
                                 {% set disabled = embed.idProductConcrete is empty %}
 
                                 <div class="{{ component.renderClass(config.name ~ '__actions', modifiers) }}">
-                                    <form method="POST" action="/cart/add/{{embed.sku}}" class="grid grid--bottom grid--justify">
+                                    <form method="POST" action="{{ path("cart/add", {"sku": embed.sku}) }}" class="grid grid--bottom grid--justify">
                                         <div class="col col--sm-12 spacing-bottom spacing-bottom--big">
                                             {% include molecule('quantity-counter') with {
                                                 attributes: {
