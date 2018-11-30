@@ -11,8 +11,8 @@
     {% if data.isSharingAllowed and data.accessType == 'OWNER_ACCESS' %}
         <li class="col col--equal menu__item">
             {% include molecule('table-action-link') with {
-                class: 'link link--alt link--action',
-                modifiers: ['tight', 'full-height', 'reset-indent'],
+                class: 'link link--alt link--action spacing-right spacing-right--reset',
+                modifiers: ['tight', 'full-height'],
                 data: {
                     url: url('shared-cart/share', {idQuote: data.cart.idQuote}),
                     icon: 'share',
@@ -28,8 +28,8 @@
     {% if data.accessType != 'OWNER_ACCESS' %}
         <li class="col col--equal menu__item">
             {% include molecule('table-action-link') with {
-                class: 'link link--alt link--action',
-                modifiers: ['tight', 'full-height', 'reset-indent'],
+                class: 'link link--alt link--action spacing-right spacing-right--reset',
+                modifiers: ['tight', 'full-height'],
                 data: {
                     url: url('shared-cart/dismiss-confirm', {idQuote: data.cart.idQuote}),
                     icon: 'dismiss',
@@ -44,8 +44,8 @@
     {% if data.isQuoteDeletable and can('WriteSharedCartPermissionPlugin', data.cart.idQuote) %}
         <li class="col col--equal menu__item">
             {% include molecule('table-action-link') with {
-                class: 'link link--alt link--action',
-                modifiers: ['tight', 'full-height', 'reset-indent'],
+                class: 'link link--alt link--action spacing-right spacing-right--reset',
+                modifiers: ['tight', 'full-height'],
                 data: {
                     url: url('multi-cart/confirm-delete', {idQuote: data.cart.idQuote}),
                     icon: 'delete',

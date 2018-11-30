@@ -87,8 +87,8 @@
                                     {% if data.actions.update %}
                                         <li class="col col--equal menu__item">
                                             {% include molecule('table-action-link') with {
-                                                modifiers: ['tight', 'full-height', 'reset-indent'],
-                                                class: 'link link--alt link--action',
+                                                modifiers: ['tight', 'full-height'],
+                                                class: 'link link--alt link--action spacing-right spacing-right--reset',
                                                 data: {
                                                     url: url('multi-cart/update', { idQuote: quote.idQuote }),
                                                     icon: 'edit',
@@ -103,8 +103,8 @@
                                     {% if data.actions.duplicate %}
                                         <li class="col col--equal menu__item">
                                             {% include molecule('table-action-link') with {
-                                                class: 'link link--alt link--action',
-                                                modifiers: ['tight', 'full-height', 'reset-indent'],
+                                                class: 'link link--alt link--action spacing-right spacing-right--reset',
+                                                modifiers: ['tight', 'full-height'],
                                                 data: {
                                                     url: url('multi-cart/duplicate', {idQuote: quote.idQuote}),
                                                     icon: 'duplicate',
@@ -121,8 +121,8 @@
                                 {% if isQuoteEditable %}
                                     <li class="col col--equal menu__item">
                                         {% include molecule('table-action-link') with {
-                                            class: 'link link--alt link--action',
-                                            modifiers: ['tight', 'full-height', 'reset-indent'],
+                                            class: 'link link--alt link--action spacing-right spacing-right--reset',
+                                            modifiers: ['tight', 'full-height'],
                                             data: {
                                                 url: url('shopping-list/create-from-exist-cart', {idQuote: quote.idQuote}),
                                                 icon: 'create-list',
@@ -140,8 +140,8 @@
                                 {% nowidget %}
                                     <li class="col col--equal menu__item">
                                         {% include molecule('table-action-link') with {
-                                            class: 'link link--alt link--action',
-                                            modifiers: ['tight', 'full-height', 'reset-indent'],
+                                            class: 'link link--alt link--action spacing-right spacing-right--reset',
+                                            modifiers: ['tight', 'full-height'],
                                             data: {
                                                 url: url('multi-cart/confirm-delete', {idQuote: quote.idQuote}),
                                                 icon: 'delete',
