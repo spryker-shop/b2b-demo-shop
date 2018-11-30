@@ -91,9 +91,13 @@
                     } only %}
                         {% block body %}
                             {{ parent() }}
-                            <div class="{{ config.name }}__item">
-                                {{ widget('ShoppingListDismissWidgetPlugin', embed.shoppingList) }}
-                            </div>
+                            {% widget 'ShoppingListDismissWidgetPlugin' args [embed.shoppingList] with {config: config} only %}
+                                {% block link %}
+                                    <div class="{{ config.name }}__item">
+                                        {{ parent() }}
+                                    </div>
+                                {% endblock %}
+                            {% endwidget %}
                         {% endblock %}
                     {% endembed %}
                 </td>
