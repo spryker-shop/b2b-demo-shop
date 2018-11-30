@@ -32,7 +32,6 @@
             {% set isListEditable = can('WriteShoppingListPermissionPlugin', data.shoppingList.idShoppingList) %}
             {% embed molecule('table-action-list') with {
                 modifiers: ['shopping-list'],
-                tag: 'div',
                 data: {
                     linkModifiers: ['tight'],
                     items: [
