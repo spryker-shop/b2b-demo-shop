@@ -30,37 +30,46 @@
         </div>
         <div class="col col--sm-12 col--lg-auto">
             {% set isListEditable = can('WriteShoppingListPermissionPlugin', data.shoppingList.idShoppingList) %}
-            {% include molecule('table-action-list') with {
+            {% embed molecule('table-action-list') with {
+                modifiers: ['shopping-list'],
+                tag: 'div',
                 data: {
-
+                    linkModifiers: ['tight'],
                     items: [
                         {
                             url: url('shopping-list/update', { idShoppingList: data.shoppingList.idShoppingList }),
                             icon: 'edit',
                             title: 'page.multi_cart.shopping_cart.update.title',
-                            iconModifier: 'bigger',
+                            iconModifier: 'sm-lg-bigger',
                             available: isListEditable
                         },
                         {
                             url: url('shopping-list/share', { idShoppingList: data.shoppingList.idShoppingList }),
                             icon: 'share',
                             title: 'shared_cart.form.share_button',
-                            iconModifier: 'bigger',
+                            iconModifier: 'sm-lg-bigger',
                             available: isListEditable
                         },
                         {
                             url: path('shopping-list/print', {idShoppingList: data.shoppingList.idShoppingList}),
                             icon: 'print',
                             title: 'customer.account.shopping_list.overview.print',
-                            iconModifier: 'bigger'
+                            iconModifier: 'sm-lg-bigger'
                         }
                     ]
                 }
             } only %}
+                {% block body %}
+                    <ul class="{{ config.name }}__inner">
+                        {{ parent() }}
+                    </ul>
+                {% endblock %}
+            {% endembed %}
         </div>
     </div>
 
     {% include molecule('shopping-list-info', 'ShoppingListPage') with {
+        modifiers: ['editable'],
         data: {
             shoppingList: data.shoppingList
         }
