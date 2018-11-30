@@ -101,6 +101,14 @@
                     padding-bottom: rem(20);
                     padding-top: rem(28);
                 }
+
+                &:last-child {
+                    padding-bottom: 0;
+
+                    @include helper-breakpoint-media-min($lg) {
+                        padding-bottom: rem(20);
+                    }
+                }
             }
 
             &--shopping-list-alternative {

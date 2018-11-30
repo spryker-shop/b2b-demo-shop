@@ -116,7 +116,7 @@
                             {% block price %}
                                 {% if data.listItem.price is not empty %}
                                     {% include molecule('price') with {
-                                        modifiers: ['cart'],
+                                        modifiers: ['cart', 'shopping-list'],
                                         data: {
                                             amount: data.listItem.price | money,
                                             originalAmount: data.listItem.prices.ORIGINAL is not defined or data.listItem.prices.ORIGINAL is empty ? null : (data.listItem.prices.ORIGINAL | money)
