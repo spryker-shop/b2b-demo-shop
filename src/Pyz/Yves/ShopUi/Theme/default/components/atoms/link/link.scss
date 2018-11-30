@@ -1,13 +1,16 @@
 @include shop-ui-link {
 
     &--icon {
-        @include helper-effect-transition(color);
         display: flex;
         align-items: center;
         color: $setting-color-gray-3;
         font-size: rem(13);
         font-weight: fw(medium);
-        line-height: 1rem;
+        line-height: rem(16);
+
+        @include helper-breakpoint-media-min($xl) {
+            @include helper-effect-transition(color);
+        }
 
         &:hover,
         &:focus {
@@ -71,8 +74,12 @@
     &--company-user {
         color: $setting-color-gray-3;
         white-space: nowrap;
-        @include helper-effect-transition(color);
 
+        @include helper-breakpoint-media-min($xl) {
+            @include helper-effect-transition(color);
+        }
+
+        &:focus,
         &:hover {
             text-decoration: none;
             color: $setting-color-gray-5;
@@ -81,7 +88,10 @@
 
     &--secondary {
         color: $setting-color-gray-3;
-        @include helper-effect-transition(color);
+
+        @include helper-breakpoint-media-min($xl) {
+            @include helper-effect-transition(color);
+        }
 
         &:hover {
             text-decoration: none;
@@ -91,8 +101,12 @@
 
     &--alternative {
         color: $setting-color-black;
-        @include helper-effect-transition(color);
 
+        @include helper-breakpoint-media-min($xl) {
+            @include helper-effect-transition(color);
+        }
+
+        &:focus,
         &:hover {
             text-decoration: none;
             color: $setting-color-gray-3;
@@ -101,8 +115,12 @@
 
     &--additional {
         color: $setting-color-main;
-        @include helper-effect-transition(color);
 
+        @include helper-breakpoint-media-min($xl) {
+            @include helper-effect-transition(color);
+        }
+
+        &:focus,
         &:hover {
             text-decoration: none;
             color: $setting-color-gray-4;
