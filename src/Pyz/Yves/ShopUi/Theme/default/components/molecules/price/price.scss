@@ -14,6 +14,14 @@
         margin: 0 0 $setting-grid-space;
     }
 
+    &--shopping-list {
+        margin: 0;
+
+        @include helper-breakpoint-media-min($lg) {
+            margin: 0 0 $setting-grid-space;
+        }
+    }
+
     &--summary {
         margin: 0;
     }
@@ -94,7 +102,7 @@
         margin-left: 0;
 
         @include helper-breakpoint-media-min($lg) {
-            margin-left: 5px;
+            margin-left: rem(5);
             font-size: rem(12);
         }
 
