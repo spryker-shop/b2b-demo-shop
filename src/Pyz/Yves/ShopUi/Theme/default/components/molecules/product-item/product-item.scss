@@ -236,8 +236,11 @@
                     background: $setting-color-transparent;
 
                     @include helper-breakpoint-media-min($lg) {
+                        display: flex;
+                        align-items: center;
                         position: static;
                         background-color: $setting-color-alpha-2;
+                        padding-bottom: rem(20);
                     }
                 }
             }

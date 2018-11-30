@@ -30,7 +30,7 @@
         } only %}
             {% block image %}
                 <div class="grid grid--justify grid--stretch {{ config.name }}__checkbox">
-                    <div class="col {{ config.name }}__checkbox-col--shopping-list">
+                    <div class="col {{ config.name }}__checkbox-col {{ config.name }}__checkbox-col--shopping-list">
                         {% include atom('checkbox') with {
                             modifiers: ['shopping-list'],
                             attributes: {
