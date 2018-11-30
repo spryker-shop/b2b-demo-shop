@@ -174,7 +174,7 @@
             height: rem(14);
             border-radius: 50%;
             margin-left: rem(4);
-            text-indent: -9999px;
+            text-indent: rem(-9999);
             vertical-align: middle;
         }
 
@@ -219,7 +219,7 @@
         }
 
         &--shopping-list-alternative {
-            margin-bottom: 10px;
+            margin-bottom: rem(10);
         }
 
         &__checkbox {
@@ -236,8 +236,11 @@
                     background: $setting-color-transparent;
 
                     @include helper-breakpoint-media-min($lg) {
+                        display: flex;
+                        align-items: center;
                         position: static;
                         background-color: $setting-color-alpha-2;
+                        padding-bottom: rem(20);
                     }
                 }
             }
