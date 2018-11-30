@@ -25,38 +25,38 @@
 
 {% block customerContent %}
     <div class="grid grid--justify">
-        <div class="col">
+        <div class="col col--sm-12 col--lg-auto">
             <h2>{{ data.shoppingList.name }}</h2>
         </div>
-        <div class="col">
-            <div class="list list--inline">
-                {% if can('WriteShoppingListPermissionPlugin', data.shoppingList.idShoppingList) %}
-                    <a class="list__item link link--alt link--action" href="{{ url('shopping-list/update', { idShoppingList: data.shoppingList.idShoppingList }) }}" title="{{ 'customer.account.shopping_list.overview.edit' | trans }}">
-                        {% include atom('icon') with {
-                            modifiers: ['bigger'],
-                            data: {
-                                name: 'edit'
-                            }
-                        } only %}
-                    </a>
-                    <a class="list__item link link--alt link--action" href="{{ url('shopping-list/share', { idShoppingList: data.shoppingList.idShoppingList }) }}" title="{{ 'customer.account.shopping_list.overview.share' | trans }}">
-                        {% include atom('icon') with {
-                            modifiers: ['bigger'],
-                            data: {
-                                name: 'share'
-                            }
-                        } only %}
-                    </a>
-                {% endif %}
-                <a class="list__item link link--alt link--action" href="{{ path('shopping-list/print', {idShoppingList: data.shoppingList.idShoppingList}) }}" target="_blank" title="{{ 'customer.account.shopping_list.print_shopping_list' | trans }}">
-                    {% include atom('icon') with {
-                        modifiers: ['bigger'],
-                        data: {
-                            name: 'print'
+        <div class="col col--sm-12 col--lg-auto">
+            {% set isListEditable = can('WriteShoppingListPermissionPlugin', data.shoppingList.idShoppingList) %}
+            {% include molecule('table-action-list') with {
+                data: {
+
+                    items: [
+                        {
+                            url: url('shopping-list/update', { idShoppingList: data.shoppingList.idShoppingList }),
+                            icon: 'edit',
+                            title: 'page.multi_cart.shopping_cart.update.title',
+                            iconModifier: 'bigger',
+                            available: isListEditable
+                        },
+                        {
+                            url: url('shopping-list/share', { idShoppingList: data.shoppingList.idShoppingList }),
+                            icon: 'share',
+                            title: 'shared_cart.form.share_button',
+                            iconModifier: 'bigger',
+                            available: isListEditable
+                        },
+                        {
+                            url: path('shopping-list/print', {idShoppingList: data.shoppingList.idShoppingList}),
+                            icon: 'print',
+                            title: 'customer.account.shopping_list.overview.print',
+                            iconModifier: 'bigger'
                         }
-                    } only %}
-                </a>
-            </div>
+                    ]
+                }
+            } only %}
         </div>
     </div>
 
