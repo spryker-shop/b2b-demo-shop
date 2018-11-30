@@ -57,6 +57,7 @@
                 <td class="spacing spacing--inner spacing--reset">
                     {% embed molecule('table-action-list') with {
                         data: {
+                            modifiers: ['tight'],
                             items: [
                                 {
                                     url: url('shopping-list/update', { idShoppingList: shoppingList.idShoppingList }),
@@ -90,7 +91,9 @@
                     } only %}
                         {% block body %}
                             {{ parent() }}
-                            {{ widget('ShoppingListDismissWidgetPlugin', embed.shoppingList) }}
+                            <div class="{{ config.name }}__item">
+                                {{ widget('ShoppingListDismissWidgetPlugin', embed.shoppingList) }}
+                            </div>
                         {% endblock %}
                     {% endembed %}
                 </td>

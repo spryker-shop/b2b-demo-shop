@@ -12,7 +12,7 @@
         <li class="col col--equal menu__item">
             {% include molecule('table-action-link') with {
                 class: 'link link--alt link--action',
-                modifiers: ['tight', 'full-height'],
+                modifiers: ['tight', 'full-height', 'reset-indent'],
                 data: {
                     url: url('shared-cart/share', {idQuote: data.cart.idQuote}),
                     icon: 'share',
@@ -29,7 +29,7 @@
         <li class="col col--equal menu__item">
             {% include molecule('table-action-link') with {
                 class: 'link link--alt link--action',
-                modifiers: ['tight', 'full-height'],
+                modifiers: ['tight', 'full-height', 'reset-indent'],
                 data: {
                     url: url('shared-cart/dismiss-confirm', {idQuote: data.cart.idQuote}),
                     icon: 'dismiss',
@@ -45,7 +45,7 @@
         <li class="col col--equal menu__item">
             {% include molecule('table-action-link') with {
                 class: 'link link--alt link--action',
-                modifiers: ['tight', 'full-height'],
+                modifiers: ['tight', 'full-height', 'reset-indent'],
                 data: {
                     url: url('multi-cart/confirm-delete', {idQuote: data.cart.idQuote}),
                     icon: 'delete',

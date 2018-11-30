@@ -87,7 +87,7 @@
                                     {% if data.actions.update %}
                                         <li class="col col--equal menu__item">
                                             {% include molecule('table-action-link') with {
-                                                modifiers: ['tight', 'full-height'],
+                                                modifiers: ['tight', 'full-height', 'reset-indent'],
                                                 class: 'link link--alt link--action',
                                                 data: {
                                                     url: url('multi-cart/update', { idQuote: quote.idQuote }),
@@ -104,7 +104,7 @@
                                         <li class="col col--equal menu__item">
                                             {% include molecule('table-action-link') with {
                                                 class: 'link link--alt link--action',
-                                                modifiers: ['tight', 'full-height'],
+                                                modifiers: ['tight', 'full-height', 'reset-indent'],
                                                 data: {
                                                     url: url('multi-cart/duplicate', {idQuote: quote.idQuote}),
                                                     icon: 'duplicate',
@@ -122,7 +122,7 @@
                                     <li class="col col--equal menu__item">
                                         {% include molecule('table-action-link') with {
                                             class: 'link link--alt link--action',
-                                            modifiers: ['tight', 'full-height'],
+                                            modifiers: ['tight', 'full-height', 'reset-indent'],
                                             data: {
                                                 url: url('shopping-list/create-from-exist-cart', {idQuote: quote.idQuote}),
                                                 icon: 'create-list',
@@ -141,7 +141,7 @@
                                     <li class="col col--equal menu__item">
                                         {% include molecule('table-action-link') with {
                                             class: 'link link--alt link--action',
-                                            modifiers: ['tight', 'full-height'],
+                                            modifiers: ['tight', 'full-height', 'reset-indent'],
                                             data: {
                                                 url: url('multi-cart/confirm-delete', {idQuote: quote.idQuote}),
                                                 icon: 'delete',

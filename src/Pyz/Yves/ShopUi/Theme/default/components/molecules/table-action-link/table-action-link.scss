@@ -19,9 +19,12 @@
             font-weight: fw(medium);
 
             @include helper-breakpoint-media-min($lg) {
-                margin: 0;
                 padding: 0;
             }
+        }
+
+        &--reset-indent {
+            margin-right: 0;
         }
 
         &--full-height {
