@@ -149,6 +149,15 @@
             }
         }
 
+        &--link {
+            color: $setting-color-gray-5;
+            font-weight: fw(medium);
+
+            @include helper-breakpoint-media-min($lg) {
+                margin-left: rem(20);
+            }
+        }
+
         @content;
     }
 }

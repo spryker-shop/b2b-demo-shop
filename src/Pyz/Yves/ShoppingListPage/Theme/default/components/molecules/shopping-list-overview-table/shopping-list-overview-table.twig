@@ -37,7 +37,7 @@
                             }
                         } only %}
                     {% endif %}
-                    <a class="{{ config.name }}__title text-center" href="{{ path('shopping-list/details', { idShoppingList: shoppingList.idShoppingList }) }}">{{ shoppingList.name }}</a>
+                    <a class="title title--link text-center" href="{{ path('shopping-list/details', { idShoppingList: shoppingList.idShoppingList }) }}">{{ shoppingList.name }}</a>
                 </td>
                 <td class="text-center transform-cell" data-content="{{ 'customer.account.shopping_list.overview.owner' | trans }}">{{ shoppingList.owner }}</td>
                 <td class="text-center transform-cell" data-content="{{ 'customer.account.shopping_list.overview.created_date' | trans }}">{{ shoppingList.createdAt | formatDate }}</td>
