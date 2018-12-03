@@ -19,7 +19,7 @@
         {% endif %}
 
         {% embed molecule('product-item') with {
-            modifiers: ['shopping-list', isItemAvailable ? '' : 'hidden'],
+            modifiers: ['shopping-list', isItemAvailable ? 'shopping-list-available' : 'hidden'],
             data: {
                 listItem: item,
                 imageModifiers: ['shopping-list']
@@ -61,19 +61,21 @@
             {% endblock %}
 
             {% block itemAttributes %}
-                {% include molecule('product-item-attributes') with {
-                    class: 'spacing-y spacing-y--big text-small',
-                    data: {
-                        listItem: data.listItem,
-                    }
-                } only %}
-                {{ widget('ShoppingListItemProductOptionWidgetPlugin', data.listItem.shoppingListItem) }}
+                {% if data.attributes is not empty %}
+                    {% include molecule('product-item-attributes') with {
+                        class: 'spacing-y spacing-y--big text-small',
+                        data: {
+                            listItem: data.listItem,
+                        }
+                    } only %}
+                    {{ widget('ShoppingListItemProductOptionWidgetPlugin', data.listItem.shoppingListItem) }}
+                {% endif %}
             {% endblock %}
 
             {% block price %}
                 {% if data.listItem.price is not empty %}
                     {% include molecule('price') with {
-                        modifiers: ['cart'],
+                        modifiers: ['cart', 'available'],
                         data: {
                             amount: data.listItem.price | money,
                             originalAmount: data.listItem.prices.ORIGINAL is not defined or data.listItem.prices.ORIGINAL is empty ? null : (data.listItem.prices.ORIGINAL | money)
