@@ -1,6 +1,10 @@
 @mixin product-review-review-summary($name: '.review-summary') {
     #{$name} {
-        margin-bottom: rem(90);
+        margin-bottom: rem(45);
+
+        @include helper-breakpoint-media-min($lg) {
+            margin-bottom: rem(90);
+        }
 
         &__title {
             margin-bottom: rem(24);
@@ -45,6 +49,14 @@
 
             @include helper-breakpoint-media-min($lg) {
                 text-align: left;
+            }
+        }
+
+        &__new-review-form {
+            padding-bottom: rem(20);
+
+            @include helper-breakpoint-media-min($lg) {
+                padding-bottom: 0;
             }
         }
     }
