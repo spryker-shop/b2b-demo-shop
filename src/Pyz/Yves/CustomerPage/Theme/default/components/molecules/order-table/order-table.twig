@@ -24,13 +24,13 @@
             <tbody>
                 {% for order in data.orders %}
                     <tr>
-                        <td class="transform-cell spacing-top spacing-top--inner spacing-top--big" data-content={{ 'customer.order.order_id' | trans }}>
+                        <td class="transform-cell spacing-top spacing-top--inner spacing-top--big" data-content="{{ 'customer.order.order_id' | trans }}">
                             {{- order.orderReference -}}
                         </td>
-                        <td class="transform-cell" data-content={{ 'customer.order.date' | trans }}>
+                        <td class="transform-cell" data-content="{{ 'customer.order.date' | trans }}">
                             {{- date(order.createdAt) | formatDateTime -}}
                         </td>
-                        <td class="transform-cell spacing-bottom spacing-bottom--inner spacing-bottom--big" data-content={{ 'customer.order.total' | trans }}>
+                        <td class="transform-cell spacing-bottom spacing-bottom--inner spacing-bottom--big" data-content="{{ 'customer.order.total' | trans }}">
                             <strong>
                                 {{- order.totals.grandTotal | default(0) | money(true, order.currencyIsoCode) -}}
                             </strong>
@@ -55,9 +55,9 @@
                                 {% block body %}
                                     {{ parent() }}
                                     {% if widgetExists('CustomerReorderWidgetPlugin') %}
-                                        <li class="{{ config.name }}__item">
+                                        <div class="{{ config.name }}__item">
                                             {{ widgetBlock('CustomerReorderWidgetPlugin', 'reorderAction', embed.order) }}
-                                        </li>
+                                        </div>
                                     {% endif %}
                                 {% endblock %}
                             {% endembed %}
