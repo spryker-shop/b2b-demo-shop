@@ -59,9 +59,9 @@
                 }
             } only %}
                 {% block body %}
-                    <ul class="{{ config.name }}__inner">
+                    <div class="{{ config.name }}__inner">
                         {{ parent() }}
-                    </ul>
+                    </div>
                 {% endblock %}
             {% endembed %}
         </div>
