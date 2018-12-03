@@ -142,6 +142,12 @@
             }
         }
 
+        &--expand-sm-lg {
+            @include helper-breakpoint-media-max($lg - 1) {
+                width: 100%;
+            }
+        }
+
         &--checkout {
             min-width: rem(200);
         }
@@ -202,14 +208,6 @@
             color: $setting-color-gray-5;
             box-shadow: 0 rem(10) rem(18) 0 rgba($setting-color-black, 0.05), 0 rem(3) rem(3) 0 rgba($setting-color-black, 0.04);
             font-size: rem(15);
-        }
-
-        &--mobile-full {
-            width: 100%;
-
-            @include helper-breakpoint-media-min($lg) {
-                width: auto;
-            }
         }
 
         &--shopping-list {
