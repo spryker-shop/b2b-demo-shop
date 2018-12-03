@@ -33,7 +33,7 @@
                 <td class="transform-cell spacing-top spacing-top--inner spacing-top--big" data-content="{{ 'company.account.company_role.name' | trans }}">{{ role.name }}</td>
                 <td class="transform-cell spacing-bottom spacing-bottom--inner spacing-bottom--big" data-content="{{ 'company.account.company_role.is_default' | trans }}">
                     {% include atom('icon') with {
-                        class: 'table__icon',
+                        class: 'table__icon spacing-top spacing-top--small',
                         data: {
                             name: role.isDefault ? 'check' : 'cross'
                         }
