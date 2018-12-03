@@ -30,11 +30,7 @@
             width: 100%;
             margin: rem(10) 0 0 0;
 
-            &:last-child {
-                margin-bottom: 0;
-            }
-
-            @include helper-breakpoint-media-min($md) {
+            @include helper-breakpoint-media-min($lg) {
                 width: auto;
                 margin: 0 rem(16) 0 0;
             }
@@ -54,10 +50,18 @@
                 order: -1;
             }
 
-            &--mobile-first {
+            &--sm-lg-first {
                 order: -1;
 
                 @include helper-breakpoint-media-min($lg) {
+                    order: 0;
+                }
+            }
+
+            &--sm-md-first {
+                order: -1;
+
+                @include helper-breakpoint-media-min($md) {
                     order: 0;
                 }
             }
