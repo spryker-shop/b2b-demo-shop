@@ -76,7 +76,7 @@
 
     {% if data.shoppingListItems|length %}
         <form method="POST" action="{{ path('shopping-list/add-to-cart') }}">
-            <div class="grid grid--justify spacing-bottom--big">
+            <div class="grid grid--justify spacing-bottom spacing-bottom--big">
                 <div class="col col--sm-12 col--lg-auto spacing-bottom">
                     <button type="submit" class="button button--expand-sm-lg button--hollow" {{qa('submit-button')}}>
                         {{ 'customer.account.shopping_list.add_selected_items_to_cart' | trans }}
