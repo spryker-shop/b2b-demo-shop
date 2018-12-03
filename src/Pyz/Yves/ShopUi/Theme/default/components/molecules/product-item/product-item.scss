@@ -15,6 +15,14 @@
             margin-bottom: rem(20);
         }
 
+        &--shopping-list-available {
+            padding-bottom: rem(75);
+
+            @include helper-breakpoint-media-min($lg) {
+                padding-bottom: 0;
+            }
+        }
+
         &__col {
             padding-top: rem(8);
             padding-bottom: rem(12);
@@ -112,14 +120,43 @@
             }
 
             &--shopping-list-alternative {
-                &:not(#{$name}__col--content) {
-                    width: 27%;
-                    max-width: 27%;
+                width: 69%;
+                min-width: 69%;
+
+                @include helper-breakpoint-media-min($lg) {
+                    width: 78%;
+                    min-width: 78%;
                 }
 
-                &:not(#{$name}__col--image):not(#{$name}__col--total) {
-                    width: 46%;
-                    min-width: 46%;
+                &#{$name}__col--image {
+                    width: 31%;
+                    min-width: 31%;
+
+                    @include helper-breakpoint-media-min($lg) {
+                        width: 22%;
+                        min-width: 22%;
+                    }
+                }
+
+                &#{$name}__col--content {
+                    width: 100%;
+                    min-width: 100%;
+
+                    @include helper-breakpoint-media-min($lg) {
+                        width: 58%;
+                        min-width: 58%;
+                    }
+                }
+
+
+                &#{$name}__col--total {
+                    width: 100%;
+                    min-width: 100%;
+
+                    @include helper-breakpoint-media-min($lg) {
+                        width: 42%;
+                        min-width: 42%;
+                    }
                 }
             }
 
@@ -167,8 +204,11 @@
             }
 
             &--shopping-list-alternative {
-                font-size: rem(16);
-                margin-bottom: 0;
+                font-size: rem(12);
+
+                @include helper-breakpoint-media-min($lg) {
+                    font-size: rem(16);
+                }
             }
 
             &--hidden {

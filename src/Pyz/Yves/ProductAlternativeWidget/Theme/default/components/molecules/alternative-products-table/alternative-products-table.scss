@@ -1,4 +1,19 @@
-.alternative-products-table {
-    margin-left: 22%;
-    margin-bottom: 40px;
+@mixin alternative-products-table($name: '.alternative-products-table') {
+    #{$name} {
+        margin-left: rem(25);
+        margin-bottom: rem(20);
+
+        @include helper-breakpoint-media-min($lg) {
+            margin-left: 10%;
+        }
+
+        @include helper-breakpoint-media-min($xl) {
+            margin-left: 22%;
+            margin-bottom: rem(40);
+        }
+
+        @content;
+    }
 }
+
+@include alternative-products-table;
