@@ -72,7 +72,7 @@
                         {% if can('ChangeCartItemPermissionPlugin') %}
                             <a href="{{ path('multi-cart/update', {idQuote: data.cart.idQuote}) }}" class="col button button--hollow-icon button--edit cart-title__link" title="{{ "multi_cart_widget.cart.action.change_name" | trans }}">
                                 {% include atom('icon') with {
-                                    modifiers: ['mobile-small'],
+                                    modifiers: ['sm-lg-regular'],
                                     data: {
                                         name: 'edit'
                                     }
@@ -85,7 +85,7 @@
                         <div class="col col--sm-8">
                             {% if data.cart.priceMode is not empty %}
                                 {% include molecule('price-mode') with {
-                                    modifiers: ['mobile-small'],
+                                    modifiers: ['sm-lg-regular'],
                                     data: {
                                         priceMode: data.cart.priceMode
                                     }

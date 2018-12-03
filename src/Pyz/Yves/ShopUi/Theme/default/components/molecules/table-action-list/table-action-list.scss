@@ -12,6 +12,24 @@
             justify-content: flex-end;
         }
 
+        &--shopping-list {
+            display: block;
+            background-color: $setting-color-gray-7;
+            padding: rem(9) rem(20);
+            margin: rem(8) 0 0;
+
+            @include helper-breakpoint-media-min($lg) {
+                padding: 0;
+                background-color: $setting-color-transparent;
+            }
+        }
+
+        &__inner {
+            display: flex;
+            justify-content: space-between;
+            margin: 0 rem(-4);
+        }
+
         &__item {
             flex-grow: 1;
             padding: 0 rem(4);

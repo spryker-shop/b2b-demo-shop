@@ -1,8 +1,7 @@
 {% extends model('component') %}
 
 {% define config = {
-    name: 'table-action-list',
-    tag: 'ul'
+    name: 'table-action-list'
 } %}
 
 {% define data = {
@@ -14,13 +13,13 @@
     {% for item in data.items %}
         {% set available = item.available is defined ? item.available : true %}
         {% if available %}
-            <li class="{{ config.name }}__item">
+            <div class="{{ config.name }}__item">
                 {% include molecule('table-action-link') with {
                     class: 'link link--alt link--action',
                     modifiers: data.linkModifiers,
                     data: item
                 } only %}
-            </li>
+            </div>
         {% endif %}
     {% endfor %}
 {% endblock %}

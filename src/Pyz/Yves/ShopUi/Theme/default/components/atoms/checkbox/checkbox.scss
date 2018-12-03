@@ -15,7 +15,7 @@
             width: rem(26);
             height: rem(26);
             line-height: rem(26);
-            border: 1px solid $setting-color-input-border;
+            border: rem(1) solid $setting-color-input-border;
             background-color: $setting-color-white;
             margin-right: rem(10);
             text-align: center;
@@ -24,9 +24,9 @@
 
             @include helper-breakpoint-media-min($lg) {
                 margin-right: rem(14);
-                width: 1.25rem;
-                height: 1.25rem;
-                line-height: 1.25rem;
+                width: rem(20);
+                height: rem(20);
+                line-height: rem(20);
             }
 
             &--filter {
@@ -50,12 +50,12 @@
 
                 @include helper-breakpoint-media-min($lg) {
                     position: static;
-                    margin-right: 0;
+                    margin-right: rem(10);
                 }
             }
 
             &--alternative {
-                border: solid 2px $setting-color-gray-2;
+                border: solid rem(2) $setting-color-gray-2;
             }
         }
 
@@ -151,7 +151,7 @@
         }
 
         &__counter {
-            padding-left: 0.5rem;
+            padding-left: rem(8);
         }
 
         &--expand {
@@ -191,7 +191,7 @@
         }
 
         &--error &__box {
-            border-color: map-get($setting-color-actions, alert);
+            border-color: $setting-color-alt;
         }
 
         &:hover {
