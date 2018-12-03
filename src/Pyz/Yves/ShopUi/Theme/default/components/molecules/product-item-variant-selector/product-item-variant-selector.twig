@@ -6,6 +6,7 @@
 
 {% define data = {
     productItem: required,
+    canEdit: required,
     productItemAttributes: []
 } %}
 
@@ -49,7 +50,8 @@
                             attributes: {
                                 name: 'preselectedAttributes[' ~ attributeName ~ ']',
                                 'onchange': 'this.form.submit();',
-                                'config-theme': 'small'
+                                'config-theme': 'small',
+                                disabled: not data.canEdit
                             }
                         } only %}
                     </label>
