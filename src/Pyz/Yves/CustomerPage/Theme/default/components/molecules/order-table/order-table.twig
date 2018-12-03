@@ -55,9 +55,9 @@
                                 {% block body %}
                                     {{ parent() }}
                                     {% if widgetExists('CustomerReorderWidgetPlugin') %}
-                                        <li class="{{ config.name }}__item">
+                                        <div class="{{ config.name }}__item">
                                             {{ widgetBlock('CustomerReorderWidgetPlugin', 'reorderAction', embed.order) }}
-                                        </li>
+                                        </div>
                                     {% endif %}
                                 {% endblock %}
                             {% endembed %}
