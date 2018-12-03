@@ -149,6 +149,18 @@
             }
         }
 
+        &--warning {
+            color: $setting-color-alt;
+            line-height: rem(52);
+            background-color: $setting-color-alpha-5;
+            margin: 0 rem(-15) rem(8);
+
+            @include helper-breakpoint-media-min($lg) {
+                font-size: rem(16);
+                margin: 0 0 rem(8);
+            }
+        }
+
         @content;
     }
 }
