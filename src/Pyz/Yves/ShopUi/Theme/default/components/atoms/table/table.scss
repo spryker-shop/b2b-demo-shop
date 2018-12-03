@@ -14,8 +14,13 @@
 
         th,
         td {
-            padding: rem(16) rem(32);
+            padding: rem(16) rem(15);
             text-align: left;
+
+            @include helper-breakpoint-media-min($lg) {
+                padding-left: rem(32);
+                padding-right: rem(32);
+            }
         }
 
         tbody {
@@ -99,6 +104,7 @@
                     width: auto;
                     padding-right: rem(10);
                     text-transform: uppercase;
+                    flex-shrink: 0;
                 }
 
                 .row {
