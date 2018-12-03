@@ -92,17 +92,19 @@
                 ] ignore missing with {
                 class: config.name ~ '__row row row--order-details',
                 data: {
-                    concreteItem: concreteItem,
-                    currencyIsoCode: data.currencyIsoCode,
-                    concreteItemDefault: concreteItem
+                    parentSelector: config.name,
+                    item: item,
+                    currencyIsoCode: data.currencyIsoCode
                 },
                 embed: {
                     order: embed.order
                 }
             } only %}
                 {% block body %}
+                    {% set concreteItem = data.item.bundleProduct | default(data.item) %}
+
                     <td class="order-detail-table__cell order-detail-table__cell--float">
-                        {{ widgetBlock('CustomerReorderWidgetPlugin', 'formCheckbox', embed.order, data.concreteItem) }}
+                        {{ widgetBlock('CustomerReorderWidgetPlugin', 'formCheckbox', embed.order, concreteItem) }}
                     </td>
                     {{parent()}}
                 {% endblock %}
@@ -127,7 +129,7 @@
                     content: _self.address('billing_address', data.order.billingAddress)
                 },
                 {
-                    content: _self.note(data.order)
+                    content: data.order.cartNote is not empty ? _self.note(data.order) : ''
                 }
             ]
         }

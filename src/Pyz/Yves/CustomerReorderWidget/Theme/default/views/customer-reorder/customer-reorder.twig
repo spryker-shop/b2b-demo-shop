@@ -35,12 +35,12 @@
 {% block formActions %}
     <div class="grid grid--middle grid--right spacing-top spacing-top--biggest">
         <div class="form-field col col--sm-12 col--lg-3 spacing-x spacing-x--inner spacing-x--small">
-            <button class="button button--expand button--hollow js-customer-reorder__trigger spacing-bottom" {% if not _widget.availability %}disabled{% endif %}>
+            <button class="button button--tight button--expand button--hollow js-customer-reorder__trigger spacing-bottom" {% if not _widget.availability %}disabled{% endif %}>
                 {{'customer.order.reorder_selected' | trans}}
             </button>
         </div>
         <div class="form-field col col--sm-12 col--lg-3 spacing-x spacing-x--inner spacing-x--small">
-            <a href="{{ path('customer/order/reorder', {'idSalesOrder': _widget.order.idSalesOrder}) }}" class="button button--expand spacing-bottom">
+            <a href="{{ path('customer/order/reorder', {'idSalesOrder': _widget.order.idSalesOrder}) }}" class="button button--tight button--expand spacing-bottom">
                 {{ 'customer.order.reorder_all' | trans }}
             </a>
         </div>

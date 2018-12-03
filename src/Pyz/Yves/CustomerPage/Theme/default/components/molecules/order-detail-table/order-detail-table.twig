@@ -35,15 +35,15 @@
                         ] ignore missing with {
                         class: config.name ~ '__row',
                         data: {
-                            concreteItem: concreteItem,
-                            currencyIsoCode: data.currencyIsoCode,
-                            concreteItemDefault: concreteItem
+                            parentSelector: config.name,
+                            item: item,
+                            currencyIsoCode: data.currencyIsoCode
                         }
                     } only %}
                 {% endblock %}
 
                 {% if isBundle %}
-                    <tr class="{{ config.name }}__row {{ config.name }}__row--detail">
+                    <tr class="{{ config.name }}__row {{ config.name }}__row--detail is-hidden-sm-md">
                         {% block bundleDetailRow %}
                             <td class="{{ config.name }}__cell {{ config.name }}__cell--detail" colspan="5">
                                 {{ "customer.order.bundled_items" | trans }} <br>
@@ -63,7 +63,7 @@
                 {% else %}
                     {% if concreteItem.productOptions is not empty %}
                         {% for productOption in concreteItem.productOptions %}
-                            <tr class="{{ config.name }}__row {{ config.name }}__row--detail">
+                            <tr class="{{ config.name }}__row {{ config.name }}__row--detail is-hidden-sm-md">
                                 {% block detailRow %}
                                     <td></td>
                                     <td class="{{ config.name }}__cell {{ config.name }}__cell--detail">
@@ -78,17 +78,19 @@
                         {% endfor %}
                     {% endif %}
                 {% endif %}
-                <tr class="is-hidden-sm-md">
-                    <td></td>
-                    <td class="{{ config.name }}__cell {{ config.name }}__cell--detail" colspan="5">
-                        {% include molecule('note-list', 'CartNoteWidget') ignore missing with {
-                            data: {
-                                label: 'cart_note.customer_page.item_note',
-                                note: concreteItem.cartNote
-                            }
-                        } only %}
-                    </td>
-                </tr>
+                {% if concreteItem.cartNote is not empty %}
+                    <tr class="is-hidden-sm-md">
+                        <td></td>
+                        <td class="{{ config.name }}__cell {{ config.name }}__cell--detail" colspan="5">
+                            {% include molecule('note-list', 'CartNoteWidget') ignore missing with {
+                                data: {
+                                    label: 'cart_note.customer_page.item_note',
+                                    note: concreteItem.cartNote
+                                }
+                            } only %}
+                        </td>
+                    </tr>
+                {% endif %}
             {% endfor %}
         </tbody>
     </table>
