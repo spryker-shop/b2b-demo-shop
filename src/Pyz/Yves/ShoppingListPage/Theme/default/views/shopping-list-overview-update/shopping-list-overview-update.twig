@@ -190,18 +190,18 @@
 
         <div class="grid">
             <div class="col col--sm-6 text-left spacing-right spacing-right--inner spacing-right--small">
-                <a class="button button--alert button--hollow button--mobile-full spacing-bottom spacing-right" href="{{ path('shopping-list/delete/confirm', {idShoppingList: data.idShoppingList}) }}">
+                <a class="button button--alert button--hollow button--expand-sm-lg spacing-bottom spacing-right" href="{{ path('shopping-list/delete/confirm', {idShoppingList: data.idShoppingList}) }}">
                     {{ 'customer.account.shopping_list.overview.delete' | trans }}
                 </a>
             </div>
             <div class="col col--sm-6 col--lg-4 text-right spacing-left spacing-left--inner spacing-left--small">
-                <a href="{{ path('shopping-list/details', {idShoppingList: data.idShoppingList}) }}" class="button button--hollow button--mobile-full spacing-bottom">
+                <a href="{{ path('shopping-list/details', {idShoppingList: data.idShoppingList}) }}" class="button button--hollow button--expand-sm-lg spacing-bottom">
                     {{ 'general.back.button' | trans }}
                 </a>
 
             </div>
             <div class="col col--sm-12 col--lg-2 text-right">
-                <button type="submit" class="button button--success button--mobile-full">
+                <button type="submit" class="button button--success button--expand-sm-lg">
                     {{ 'forms.submit-btn' | trans }}
                 </button>
             </div>
