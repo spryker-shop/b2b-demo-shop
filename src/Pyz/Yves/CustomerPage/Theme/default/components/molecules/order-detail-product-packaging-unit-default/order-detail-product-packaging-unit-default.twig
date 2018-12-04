@@ -16,7 +16,7 @@
 
     {% if concreteItem.amount is not null and concreteItem.quantity is not null %}
         {% set salesUnitName = concreteItem.quantitySalesUnit.productMeasurementUnit.name | default('') %}
-        {% if salesUnitName %}
+        {% if salesUnitName is not empty %}
             {% set salesUnitSummary = concreteItem.quantity / concreteItem.quantitySalesUnit.conversion ~ ' ' ~ salesUnitName | trans %}
         {% endif %}
 
@@ -43,7 +43,7 @@
         {{ concreteItem.unitPrice | money(true, currencyIsoCode) }}
     </td>
     <td class="transform-cell transform-cell--alt" data-content="{{ 'customer.order.item_quantity' | trans }}">
-        {{ concreteItem.quantity }} {% if salesUnitSummary is defined and salesUnitSummary is defined %}= ({{ salesUnitSummary }}){% endif %}
+        {{ concreteItem.quantity }} {% if salesUnitSummary is defined %}= ({{ salesUnitSummary }}){% endif %}
     </td>
     <td class="transform-cell transform-cell--alt" data-content="{{ 'customer.order.item_sum' | trans }}">
         {{ concreteItem.unitPriceToPayAggregation | money(true, currencyIsoCode) }}
