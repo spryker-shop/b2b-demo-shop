@@ -12,7 +12,7 @@
 {% block body %}
     <ul>
         {% if data.label %}
-            <li class="{{ config.name }}__title spacing-bottom">{{ data.label | trans }}:</li>
+            <li class="{{ component.renderClass(config.name ~ '__title', modifiers) }} spacing-bottom">{{ data.label | trans }}:</li>
         {% endif %}
         <li class="box">{{ data.note | escape | nl2br }}</li>
     </ul>
