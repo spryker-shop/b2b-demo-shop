@@ -1,0 +1,64 @@
+@mixin shop-ui-content-collapser($name: '.content-collapser') {
+    #{$name} {
+        &--full-visible {
+            #{$name}__container {
+                max-height: none;
+                margin-bottom: 0;
+
+                &::after {
+                    display: none;
+                }
+            }
+
+            #{$name}__trigger-holder {
+                display: none;
+            }
+        }
+
+        &__container {
+            position: relative;
+            max-height: rem(220);
+            overflow: hidden;
+
+            @include helper-breakpoint-media-min($lg) {
+                max-height: none;
+            }
+
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: rem(80);
+                box-shadow: inset 0 rem(-50) rem(80) 0 $setting-color-white;
+
+                @include helper-breakpoint-media-min($lg) {
+                    display: none;
+                }
+            }
+
+            &--with-background::after {
+                box-shadow: inset 0 rem(-50) rem(80) 0 $setting-color-gray-7;
+            }
+        }
+
+        &__trigger-holder {
+            text-align: center;
+            padding-bottom: rem(26);
+            padding-top: rem(26);
+
+            &--with-background {
+                background: $setting-color-gray-7;
+            }
+
+            @include helper-breakpoint-media-min($lg) {
+                display: none;
+            }
+        }
+
+        @content;
+    }
+}
+
+@include shop-ui-content-collapser();

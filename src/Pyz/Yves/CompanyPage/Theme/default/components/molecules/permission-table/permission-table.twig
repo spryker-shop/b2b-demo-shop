@@ -16,15 +16,15 @@
 {% set showActions = data.actions.configure or data.actions.switch %}
 
 {% block body %}
-    <table class="table table--expand">
+    <table class="table table--expand table--responsive">
         <thead>
             <tr>
                 <th>{{ 'company.account.company_role.permission.key' | trans }}</th>
                 {% if data.actions.switch %}
-                    <th>{{ 'company.account.company_role.permission.status' | trans }}</th>
+                    <th>{{ 'company.account.company_user.enable' | trans }}</th>
                 {% endif %}
                 {% if showActions %}
-                    <th>{{ 'company.account.table.actions' | trans }}</th>
+                    <th></th>
                 {% endif %}
             </tr>
         </thead>
@@ -32,43 +32,43 @@
         {% for permission in data.permissions %}
             {% set isAssigned = permission.idCompanyRole | default(false) %}
             <tr>
-                <td>{{ permission.key | trans }}</td>
+                <td class="transform-cell spacing-top spacing-top--inner spacing-top--big" data-content="{{ 'company.account.company_role.permission.key' | trans }}">{{ permission.key | trans }}</td>
                 {% if data.actions.switch %}
-                    <td>
-                        {% if isAssigned %}
-                            {{ 'company.account.company_role.permission.assigned' | trans }}
-                        {% else %}
-                            {{ 'company.account.company_role.permission.unassigned' | trans }}
+                    <td class="transform-cell spacing-bottom spacing-bottom--inner spacing-bottom--big" data-content="{{ 'company.account.company_user.enable' | trans }}">
+                        {% if data.actions.switch %}
+                            {% set linkAssign = path('company/company-role-permission/assign', {'id-permission': permission.idPermission, 'id-company-role': _view.idCompanyRole}) %}
+                            {% set linkUnassign = path('company/company-role-permission/unassign', {'id-permission': permission.idPermission, 'id-company-role': _view.idCompanyRole}) %}
+                            {% set titleAssign = 'company.account.company_role.permission.assign' | trans %}
+                            {% set titleUnassign = 'company.account.company_role.permission.unassign' | trans %}
+
+                            {% include atom('switch') with {
+                                modifiers: isAssigned ? ['active'] : [],
+                                attributes: {
+                                    href: isAssigned ? linkUnassign : linkAssign,
+                                    title: isAssigned ? titleUnassign : titleAssign
+                                }
+                            } only %}
                         {% endif %}
                     </td>
                 {% endif %}
                 {% if showActions %}
-                    <td>
-                        <ul class="menu menu--inline">
-                            {% if data.actions.configure and permission.configurationSignature %}
-                                <li class="menu__item">
-                                    <a href="{{ path('company/company-role-permission/configure', {
-                                        'id-permission': permission.idPermission,
-                                        'id-company-role': data.idCompanyRole
-                                    }) }}">
-                                        {{ 'company.account.company_role.permission.configure' | trans }}
-                                    </a>
-                                </li>
-                            {% endif %}
-                            {% if data.actions.switch %}
-                                <li class="menu__item">
-                                    {% if isAssigned %}
-                                        <a href="{{ path('company/company-role-permission/unassign', {'id-permission': permission.idPermission, 'id-company-role': _view.idCompanyRole}) }}">
-                                            {{ 'company.account.company_role.permission.unassign' | trans }}
-                                        </a>
-                                    {% else %}
-                                        <a class="link link--alt" href="{{ path('company/company-role-permission/assign', {'id-permission': permission.idPermission, 'id-company-role': _view.idCompanyRole}) }}">
-                                            {{ 'company.account.company_role.permission.assign' | trans }}
-                                        </a>
-                                    {% endif %}
-                                </li>
-                            {% endif %}
-                        </ul>
+                    <td class="table__actions grid spacing spacing--inner spacing--reset ">
+                        {% if data.actions.configure and permission.configurationSignature %}
+                            {% include molecule('table-action-list') with {
+                                data: {
+                                    items: [
+                                        {
+                                            url: path('company/company-role-permission/configure', {
+                                                        'id-permission': permission.idPermission,
+                                                        'id-company-role': data.idCompanyRole
+                                                    }),
+                                            icon: 'settings',
+                                            title: 'company.account.company_role.permission.configure'
+                                        }
+                                    ]
+                                }
+                            } only %}
+                        {% endif %}
                     </td>
                 {% endif %}
             </tr>

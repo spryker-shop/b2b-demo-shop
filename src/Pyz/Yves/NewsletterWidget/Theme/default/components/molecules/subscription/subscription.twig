@@ -1,0 +1,55 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'subscription'
+} %}
+
+{% define data = {
+    form: required,
+    events: {
+        success: required,
+        error: required
+    }
+} %}
+
+{% block body %}
+
+    <div class="grid grid--middle grid--justify {{ config.jsName }}">
+        {% include molecule('subscription-info', 'NewsletterWidget') with {
+            class: 'col col--sm-12 col--md-5 col--lg-6',
+            data: {
+                title: 'global.subscribe.title' | trans,
+                text: 'newsletter.form.subscribe.text' | trans,
+                togglerClass: config.jsName
+            }
+        } only %}
+
+        <div class="col col--sm-12 col--md-6 col--lg-5 {{ config.jsName }}__target is-hidden-sm-only">
+            {% include molecule('form') with {
+                modifiers: ['inline', 'subscription'],
+                data: {
+                    form: data.form,
+                    submit: {
+                        enable: true,
+                        text: '',
+                        icon: 'chevron-right',
+                        class: 'button button--hollow-icon'
+                    }
+                }
+            } only %}
+            {% if data.events.success is not empty %}
+                <p class="text-big text-center text-success">{{data.events.success | trans}}</p>
+            {% elseif data.events.error is not empty %}
+                <p class="text-big text-center text-alert">{{data.events.error | trans}}</p>
+            {% endif %}
+        </div>
+    </div>
+
+    {% include molecule('toggler-accordion') with {
+        attributes: {
+            'wrap-selector': '.' ~ config.jsName,
+            'trigger-selector': '.' ~ config.jsName ~ '__trigger',
+            'class-to-toggle': 'is-hidden-sm-only'
+        }
+    } only %}
+{% endblock %}

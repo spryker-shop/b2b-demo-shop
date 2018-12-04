@@ -19,9 +19,11 @@
 {% set rightVisible = data.product_abstract is not empty %}
 
 {% block body %}
-    <div class="grid">
+    {% set colClasses = is_granted('ROLE_USER') ? 'col col--sm-12 col--md-6 col--xl-6' : 'col col--sm-12 col--md-6 col--lg-12 col--xl-6' %}
+
+    <div class="grid grid--gap">
         {% if leftVisible %}
-            <div class="col col--sm-12 col--lg-6">
+            <div class="{{ colClasses }}">
                 {% include molecule('suggestion-links-list', 'CatalogPage') with {
                     data: {
                         name: 'global.search.suggestions' | trans,
@@ -35,6 +37,7 @@
                     data: {
                         name: 'global.search.suggestion.in_categories' | trans,
                         items: data.category,
+                        isTitleHiddenOnTablet: false,
                         length: data.categoriesLength
                     }
                 } only %}
@@ -42,6 +45,7 @@
                     data: {
                         name: 'global.search.suggestion.in_cms' | trans,
                         items: data.cms_page,
+                        isTitleHiddenOnTablet: false,
                         length: data.pagesLength
                     }
                 } only %}
@@ -50,11 +54,12 @@
 
 
         {% if rightVisible %}
-            <div class="col is-hidden-sm-md col--sm-12 col--lg-6">
-                <div class="suggest-search__box suggest-search__product">
-                    <h6 class="suggestion-links-list__title">{{ 'global.search.suggestion.in_products' | trans }}</h6>
+            <div class="{{ colClasses }}">
+                <div class="suggest-search__box">
+                    <h6 class="suggestion-links-list__title suggestion-links-list__title--bottom-indent">{{ 'global.search.suggestion.in_products' | trans }}</h6>
                     {% for product in data.product_abstract | slice(0, data.productsLength)  %}
                         {% include molecule('suggestion-product', 'CatalogPage') with {
+                            class: 'suggest-search__product',
                             data: {
                                 product: product,
                                 url: product.url | default,

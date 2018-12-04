@@ -7,8 +7,8 @@
         background-color: transparentize($setting-color-gray-1, 0.4);
         border-radius: rem(7);
         overflow: visible;
-        margin-left: rem(10);
-        transition: 0.3s background-color, 0.3s margin-left;
+        margin: rem(3) 0 rem(3) rem(10);
+        @include helper-effect-transition(background-color margin-left, $setting-effect-default-duration);
 
         &__handle {
             display: block;
@@ -21,7 +21,7 @@
             box-shadow: 0 rem(2) rem(4) $setting-color-shadow-2;
             left: 0;
             top: 0;
-            transition: 0.3s left, 0.3s background-color;
+            @include helper-effect-transition(background-color left, $setting-effect-default-duration);
         }
 
         &--active {

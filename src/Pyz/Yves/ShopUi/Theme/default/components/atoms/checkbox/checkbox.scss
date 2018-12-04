@@ -12,28 +12,50 @@
         &__box {
             @include helper-effect-transition(border-color background-color);
             display: block;
-            width: 1.25rem;
-            height: 1.25rem;
-            line-height: 1.25rem;
-            border: 1px solid $setting-color-input-border;
+            width: rem(26);
+            height: rem(26);
+            line-height: rem(26);
+            border: rem(1) solid $setting-color-input-border;
             background-color: $setting-color-white;
-            margin-right: rem(14);
+            margin-right: rem(10);
             text-align: center;
             border-radius: $setting-border-radius;
             flex: none;
 
+            @include helper-breakpoint-media-min($lg) {
+                margin-right: rem(14);
+                width: rem(20);
+                height: rem(20);
+                line-height: rem(20);
+            }
+
             &--filter {
-                width: 1.125rem;
-                height: 1.125rem;
-                line-height: 1.125rem;
+                width: rem(24);
+                height: rem(24);
+                line-height: rem(24);
+
+                @include helper-breakpoint-media-min($lg) {
+                    width: 1.125rem;
+                    height: 1.125rem;
+                    line-height: 1.125rem;
+                }
             }
 
             &--shopping-list {
+                position: absolute;
+                top: rem(12);
+                right: rem(15);
                 margin-right: 0;
+                z-index: $setting-zi-element;
+
+                @include helper-breakpoint-media-min($lg) {
+                    position: static;
+                    margin-right: rem(10);
+                }
             }
 
             &--alternative {
-                border: solid 2px $setting-color-gray-2;
+                border: solid rem(2) $setting-color-gray-2;
             }
         }
 
@@ -101,7 +123,7 @@
             display: inline-block;
             vertical-align: middle;
             text-transform: none;
-            font-size: rem(15);
+            font-size: rem(14);
             font-weight: fw(regular);
             margin: 0;
             user-select: none;
@@ -111,6 +133,7 @@
                 flex-grow: 1;
                 display: flex;
                 justify-content: space-between;
+                align-items: center;
                 font-size: rem(14);
                 font-weight: fw(regular);
                 text-transform: none;
@@ -128,7 +151,7 @@
         }
 
         &__counter {
-            padding-left: 0.5rem;
+            padding-left: rem(8);
         }
 
         &--expand {
@@ -137,13 +160,17 @@
 
         &--filter {
             width: 100%;
-            font-size: rem(14);
+            font-size: rem(15);
             line-height: rem(18);
+
+            @include helper-breakpoint-media-min($lg) {
+                font-size: rem(14);
+            }
         }
 
         &--alternative {
-            margin-left: 132px;
             margin-bottom: rem(15);
+
             &:hover {
                 #{$name}__box--alternative {
                     border-color: $setting-color-gray-2;
@@ -151,13 +178,20 @@
             }
         }
 
-        &--shopping-list {
-            display: flex;
-            height: 100%;
+        &--pdp {
+            @include helper-breakpoint-media-min($lg) {
+                margin-left: rem(132);
+            }
+
+            &:hover {
+                #{$name}__box--alternative {
+                    border-color: $setting-color-gray-2;
+                }
+            }
         }
 
         &--error &__box {
-            border-color: map-get($setting-color-actions, alert);
+            border-color: $setting-color-alt;
         }
 
         &:hover {

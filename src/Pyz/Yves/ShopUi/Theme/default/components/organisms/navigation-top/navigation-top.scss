@@ -3,7 +3,9 @@
         white-space: nowrap;
 
         &__actions {
-            max-width: calc(100% - 350px);
+            @include helper-breakpoint-media-min($xl) {
+                max-width: calc(100% - 350px);
+            }
         }
 
         &__action-item {
@@ -14,13 +16,13 @@
             &:hover .list--company-user {
                 transform: scale(1);
             }
-        }
 
-        &__tel {
-            font-size: rem(12);
-            font-weight: fw(bold);
-            line-height: rem(40);
-            padding-right: rem(31);
+            &--tel {
+                font-size: rem(12);
+                font-weight: fw(bold);
+                line-height: rem(40);
+                padding-right: rem(31);
+            }
         }
 
         &__company {
@@ -33,12 +35,19 @@
             height: 100%;
             text-transform: uppercase;
             white-space: nowrap;
-            max-width: 365px;
+            max-width: rem(150);
             overflow: hidden;
             text-overflow: ellipsis;
             position: relative;
-
             @include helper-effect-transition(color);
+
+            @include helper-breakpoint-media-min($xl) {
+                max-width: rem(365);
+            }
+
+            .is-touch & {
+                pointer-events: none;
+            }
 
             &:hover {
                 color: helper-color-light($setting-color-gray-4, 25);

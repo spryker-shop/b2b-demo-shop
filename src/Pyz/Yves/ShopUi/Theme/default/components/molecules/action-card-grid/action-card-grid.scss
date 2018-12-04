@@ -5,10 +5,18 @@
         margin: -0.5rem;
         width: calc(100% + 1rem);
 
+        @include helper-breakpoint-media-min($lg) {
+            justify-content: flex-end;
+        }
+
         &__card {
-            width: 50%;
+            width: 100%;
             padding: 0.5rem;
             display: flex;
+
+            @include helper-breakpoint-media-min($lg) {
+                width: 50%;
+            }
         }
     }
 }

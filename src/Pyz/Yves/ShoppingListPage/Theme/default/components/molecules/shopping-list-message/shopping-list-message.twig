@@ -1,0 +1,92 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'shopping-list-message'
+} %}
+
+{% define data = {
+    title: required,
+    backUrl: required,
+    idShoppingList: required,
+    sharedCompanyUsers: required,
+    sharedCompanyBusinessUnits: required
+} %}
+
+{% block body %}
+    <h3 class="title title--warning grid grid--left">
+        <div class="{{ config.name }}__icon-box grid grid--center grid--middle spacing-right spacing-right--bigger">
+            {% include atom('icon') with {
+                modifiers: ['big'],
+                data: {
+                    name: 'alert-white'
+                }
+            } only %}
+        </div>
+        {{ 'customer.account.shopping_list.delete.warning' | trans }}
+    </h3>
+    <p class="{{ config.name }}__text spacing-y spacing-y--big">
+        {{ 'customer.account.shopping_list.delete.you_are_trying_to_delete_shopping_list' | trans({
+            '%link%': url('shopping-list/details', {'idShoppingList': data.idShoppingList}),
+            '%name%': data.title}) | raw
+        }}
+    </p>
+    {% if data.sharedCompanyUsers.count or data.sharedCompanyBusinessUnits.count %}
+        <p class="{{ config.name }}__text spacing-y spacing-y--big">
+            {{ 'customer.account.shopping_list.delete.it_belongs_to_follow' | trans }}
+        </p>
+
+        {% if data.sharedCompanyBusinessUnits.count %}
+            <h4 class="grid grid--middle spacing-bottom spacing-bottom--big">
+                {{ 'company.account.business_unit' | trans }}:
+                {% include atom('icon') with {
+                    class: 'col col--right',
+                    modifiers: ['title'],
+                    data: {
+                        name: 'building'
+                    }
+                } only %}
+            </h4>
+            <ul class="{{ config.name }}__list">
+                {% for sharedCompanyBusinessUnit in data.sharedCompanyBusinessUnits %}
+                    <li class="{{ config.name }}__list-item spacing-bottom spacing-bottom--small">
+                        <strong>{{ sharedCompanyBusinessUnit.name }}</strong>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        <br>
+
+        {% if data.sharedCompanyUsers.count %}
+            <h4 class="grid grid--middle spacing-bottom spacing-bottom--big">
+                {{ 'company.account.company_user' | trans }}:
+                {% include atom('icon') with {
+                    class: 'col col--right',
+                    modifiers: ['title'],
+                    data: {
+                        name: 'users'
+                    }
+                } only %}
+            </h4>
+            <ul class="{{ config.name }}__list">
+                {% for sharedCompanyUser in data.sharedCompanyUsers %}
+                    <li class="{{ config.name }}__list-item spacing-bottom spacing-bottom--small">
+                        {{ sharedCompanyUser.customer.firstName ~ ' ' ~  sharedCompanyUser.customer.lastName }}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        <br>
+
+        <p>
+            <strong class="{{ config.name }}__text text-alt">
+                {{ 'customer.account.shopping_list.delete.it_wll_be_deleted_from_all_of_them' | trans }}
+            </strong>
+        </p>
+    {% endif %}
+    <div class="spacing-y spacing-y--big">
+        <a href="{{ data.backUrl }}" class="button button--hollow button--expand-sm-only spacing-bottom">{{ 'general.cancel.button' | trans }}</a>
+        <a href="{{ url('shopping-list/delete', {'idShoppingList': data.idShoppingList})}}" class="button button--alert button--expand-sm-only spacing-bottom">{{ 'customer.account.shopping_list.overview.delete' | trans }}</a>
+    </div>
+{% endblock %}

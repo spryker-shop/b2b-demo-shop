@@ -10,7 +10,7 @@
 } %}
 
 {% block body %}
-    <table class="table table--expand">
+    <table class="table table--expand table--responsive">
         <thead>
         <tr class="active">
             <th>{{ 'company.user.invitation.first.name' | trans }}</th>
@@ -24,49 +24,36 @@
         <tbody>
         {% for invitation in data.invitations %}
             <tr>
-              <td>{{ invitation.firstName }}</td>
-              <td>{{ invitation.lastName }}</td>
-              <td>{{ invitation.email }}</td>
-              <td>{{ invitation.companyBusinessUnitName }}</td>
-              <td>{{ ('company.user.invitation.status.'~invitation.companyUserInvitationStatusKey) | trans }}</td>
-              <td class="table__actions">
-                  <ul class="menu menu--inline">
-                      {% if invitation.companyUserInvitationStatusKey == 'new'  %}
-                          <li class="menu__item">
-                              <a href="{{ path('company/user-invitation/send', {'idCompanyUserInvitation': invitation.idCompanyUserInvitation}) }}"
-                                 class="{{config.jsName}}__invitation-sender link link--alt link--action">
-                                  {% include atom('icon') with {
-                                      data: {
-                                          name: 'send'
-                                      }
-                                  } only %}
-                              </a>
-                          </li>
-                      {% endif %}
-                      {% if invitation.companyUserInvitationStatusKey == 'pending'  %}
-                          <li class="menu__item">
-                              <a href="{{ path('company/user-invitation/resend', {'idCompanyUserInvitation': invitation.idCompanyUserInvitation}) }}"
-                                 class="link link--alt link--action">
-                                  {% include atom('icon') with {
-                                      data: {
-                                          name: 'send'
-                                      }
-                                  } only %}
-                              </a>
-                          </li>
-                      {% endif %}
-                      <li class="menu__item">
-                          <a href="{{ path('company/user-invitation/delete', {'idCompanyUserInvitation': invitation.idCompanyUserInvitation}) }}"
-                             class="link link--alt link--action">
-                              {% include atom('icon') with {
-                                  data: {
-                                      name: 'delete'
-                                  }
-                              } only %}
-                          </a>
-                      </li>
-                  </ul>
-              </td>
+                <td class="transform-cell spacing-top spacing-top--inner spacing-top--big" data-content="{{ 'company.user.invitation.first.name' | trans }}">{{ invitation.firstName }}</td>
+                <td class="transform-cell" data-content="{{ 'company.user.invitation.last.name' | trans }}">{{ invitation.lastName }}</td>
+                <td class="transform-cell" data-content="{{ 'company.user.invitation.mail' | trans }}">{{ invitation.email }}</td>
+                <td class="transform-cell" data-content="{{ 'company.user.invitation.business.unit' | trans }}">{{ invitation.companyBusinessUnitName }}</td>
+                <td class="transform-cell spacing-bottom spacing-bottom--inner spacing-bottom--big" data-content="{{ 'company.user.invitation.status' | trans }}">{{ ('company.user.invitation.status.'~invitation.companyUserInvitationStatusKey) | trans }}</td>
+                <td class="table__actions grid spacing spacing--inner spacing--reset">
+                    {% include molecule('table-action-list') with {
+                        data: {
+                            items: [
+                                {
+                                    url: path('company/user-invitation/send', {'idCompanyUserInvitation': invitation.idCompanyUserInvitation}),
+                                    icon: 'send',
+                                    title: 'company.user.invitation.send.button',
+                                    available: invitation.companyUserInvitationStatusKey == 'new'
+                                },
+                                {
+                                    url: path('company/user-invitation/resend', {'idCompanyUserInvitation': invitation.idCompanyUserInvitation}),
+                                    icon: 'send',
+                                    title: 'company.user.invitation.resend.button',
+                                    available: invitation.companyUserInvitationStatusKey == 'pending'
+                                },
+                                {
+                                    url: path('company/user-invitation/delete', {'idCompanyUserInvitation': invitation.idCompanyUserInvitation}),
+                                    icon: 'delete',
+                                    title: 'company.user.invitation.delete.button'
+                                }
+                            ]
+                        }
+                    } only %}
+                </td>
             </tr>
         {% endfor %}
         {% include molecule('action-single-click-enforcer') with {

@@ -8,12 +8,29 @@
     category: required,
     template: '' | default('navigation-footer'),
     title: '',
+    toggleClass: ''
 } %}
 
+{% block class %}
+    {{ parent() }} {{ data.toggleClass }}
+{% endblock %}
+
 {% block body %}
+    {% set toggleClass = data.toggleClass ? data.toggleClass ~ '__trigger' : '' %}
+    {% set targetAttribute = data.toggleClass ? 'data-toggle-target=.' ~ data.toggleClass ~ '__target' : '' %}
+
     {% if data.title is not empty %}
-        <h5 class="title title--footer">{{ data.title }}</h5>
+        <h5 class="{{ component.renderClass('title', modifiers) }} title--footer {{ toggleClass }}" {{ targetAttribute }}>
+            {{ data.title }}
+            <span class="icon icon--toggler-cross icon--toggler-cross-thin toggler-accordion__icon is-hidden-md-xxl"></span>
+        </h5>
     {% endif %}
 
-    {% widget 'NavigationWidget' args [data.category, data.template] only %}{% endwidget %}
+    {% if data.toggleClass is not empty %}
+        <div class="{{ data.toggleClass }}__target is-hidden-sm-only">
+    {% endif %}
+        {% widget 'NavigationWidget' args [data.category, data.template] only %}{% endwidget %}
+    {% if data.toggleClass is not empty %}
+        </div>
+    {% endif %}
 {% endblock %}

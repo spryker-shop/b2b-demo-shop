@@ -1,12 +1,31 @@
 .privacy-navigation {
-    width: 25%;
-    position: absolute;
-    right: 0;
     text-align: left;
+    padding-top: rem(10);
     padding-left: $setting-grid-space;
     padding-right: $setting-grid-space;
+    order: 2;
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
 
-    &__item:not(:first-child) {
-        padding-top: 5px;
+    @include helper-breakpoint-media-min($lg) {
+        display: block;
+        width: 25%;
+        position: absolute;
+        right: 0;
+        padding-top: 0;
+    }
+
+    &__item {
+        padding: 0 rem(8);
+
+        @include helper-breakpoint-media-min($lg) {
+            padding: 0;
+        }
+
+        &:not(:first-child) {
+            padding-top: 5px;
+        }
     }
 }

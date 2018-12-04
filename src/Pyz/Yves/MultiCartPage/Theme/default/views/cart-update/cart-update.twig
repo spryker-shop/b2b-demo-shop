@@ -31,7 +31,7 @@
 
 {% block content %}
     <div class="grid cart-update">
-        <div class="col col--md-6">
+        <div class="col col--sm-12 col--lg-6">
             <h2>{{ 'multi_cart.form.edit' | trans }} «{{ data.form.vars.value.name }}»</h2>
             {% include molecule('form') with {
                 data: {
@@ -41,12 +41,14 @@
                     },
                     submit: {
                         enable: true,
+                        class: 'form__action--expand-sm-md button button--success',
                         text: 'cart_note.form.save' | trans
                     },
                     cancel: {
                         enable: true,
                         url: data.backUrl,
                         icon: null,
+                        class: 'form__action--expand-sm-md button button--secondary button--hollow',
                         text: 'general.back.button' | trans
                     }
                 }

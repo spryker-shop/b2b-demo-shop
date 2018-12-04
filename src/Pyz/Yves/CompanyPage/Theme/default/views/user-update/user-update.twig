@@ -44,19 +44,19 @@
                 action: url('company/user/update')
             },
             layout: {
-                salutation: 'col col--sm-12 col--lg-3',
-                first_name: 'col col--sm-12 col--lg-4',
-                last_name: 'col col--sm-12 col--lg-5'
+                salutation: 'col col--sm-12 col--md-3',
+                first_name: 'col col--sm-12 col--md-4',
+                last_name: 'col col--sm-12 col--md-5'
             },
             submit: {
                 enable: true,
-                class: 'button form__action--primary'
+                class: 'form__action--expand-sm-md form__action--sm-md-first button'
             },
             cancel: {
                 enable: true,
                 url: url('company/user'),
                 text: 'general.back.button' | trans,
-                class: 'button button--hollow',
+                class: 'form__action--expand-sm-md button button--hollow',
                 icon: null
             }
         }

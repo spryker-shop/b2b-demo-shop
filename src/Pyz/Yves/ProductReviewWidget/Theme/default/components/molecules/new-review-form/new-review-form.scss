@@ -2,20 +2,36 @@
     #{$name} {
         &__actions {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            flex-direction: column-reverse;
             width: 100%;
+
+            @include helper-breakpoint-media-min($md) {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
         }
 
         &__actions-buttons {
             display: flex;
-            flex-direction: row-reverse;
+            flex-flow: column-reverse;
+            width: 100%;
+
+            @include helper-breakpoint-media-min($md) {
+                flex-flow: row-reverse nowrap;
+                width: auto;
+            }
+        }
+
+        &__action-button {
+            width: auto;
         }
 
         &__required-fields {
             font-size: rem(13);
             color: $setting-color-gray-2;
             flex-shrink: 0;
+            text-align: left;
         }
     }
 }

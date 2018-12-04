@@ -7,12 +7,16 @@
 
 {% block body %}
     {% if data.isOwner == false %}
-    <a class="col link link--alt link--action" href="{{ url('shopping-list/dismiss-confirm', { idShoppingList: data.idShoppingList }) }}" title="{{ 'customer.account.shopping_list.overview.dismiss' | trans }}">
-        {% include atom('icon') with {
-            data: {
-                name: 'dismiss'
-            }
-        } only %}
-    </a>
+        {% block link %}
+            {% include molecule('table-action-link') with {
+                class: 'link link--alt link--action',
+                modifiers: ['tight'],
+                data: {
+                    url: url('shopping-list/dismiss-confirm', { idShoppingList: data.idShoppingList }),
+                    icon: 'dismiss',
+                    title: 'customer.account.shopping_list.overview.dismiss'
+                }
+            } only %}
+        {% endblock %}
     {% endif %}
 {% endblock %}

@@ -1,17 +1,15 @@
 {% extends template('widget') %}
 
 {% block reorderAction %}
-    <a class="link link--alt link--action"
-       href="{{ path('customer/order/reorder', {'idSalesOrder': _widget.order.idSalesOrder}) }}"
-       title="{{ 'customer.order.reorder' | trans }}"
-    >
-        {% include atom('icon') with {
-            modifiers: ['big'],
-            data: {
-                name: 'cart'
-            }
-        } only %}
-    </a>
+    {% include molecule('table-action-link') with {
+        class: 'link link--alt link--action',
+        data: {
+            url: path('customer/order/reorder', {'idSalesOrder': _widget.order.idSalesOrder}),
+            icon: 'cart',
+            title: 'customer.order.reorder',
+            iconModifier: 'big'
+        }
+    } only %}
 {% endblock %}
 
 {% block formStart %}
@@ -36,13 +34,13 @@
 
 {% block formActions %}
     <div class="grid grid--middle grid--right spacing-top spacing-top--biggest">
-        <div class="form-field col col--sm-5 col--lg-3 spacing-x">
-            <button class="button button--expand button--hollow js-customer-reorder__trigger" {% if not _widget.availability %}disabled{% endif %}>
+        <div class="col col--sm-12 col--lg-3 spacing-x spacing-x--inner spacing-x--small">
+            <button class="button button--tight button--expand button--hollow js-customer-reorder__trigger spacing-bottom" {% if not _widget.availability %}disabled{% endif %}>
                 {{'customer.order.reorder_selected' | trans}}
             </button>
         </div>
-        <div class="form-field col col--sm-5 col--lg-3">
-            <a href="{{ path('customer/order/reorder', {'idSalesOrder': _widget.order.idSalesOrder}) }}" class="button button--expand">
+        <div class="col col--sm-12 col--lg-3 spacing-x spacing-x--inner spacing-x--small">
+            <a href="{{ path('customer/order/reorder', {'idSalesOrder': _widget.order.idSalesOrder}) }}" class="button button--tight button--expand spacing-bottom">
                 {{ 'customer.order.reorder_all' | trans }}
             </a>
         </div>

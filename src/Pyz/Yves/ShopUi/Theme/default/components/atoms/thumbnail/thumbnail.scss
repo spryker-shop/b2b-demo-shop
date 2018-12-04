@@ -2,11 +2,15 @@
     #{$name} {
         position: relative;
         display: block;
-        height: 10rem;
-        margin: 0.5rem;
+        height: rem(160);
+        margin: rem(8);
 
         &--smaller {
-            height: rem(42);
+            height: rem(52);
+
+            @include helper-breakpoint-media-min($lg) {
+                height: rem(42);
+            }
         }
 
         &--small {
@@ -25,8 +29,60 @@
             min-width: 2.5rem;
         }
 
+        &--reset-indents {
+            margin: 0;
+        }
+
+        &--category-list {
+            height: rem(313);
+
+            @include helper-breakpoint-media-min($md) {
+                height: 10rem;
+            }
+        }
+
         &--catalog {
-            height: 15rem;
+            height: rem(180);
+
+            @include helper-breakpoint-media-min($lg) {
+                height: 15rem;
+            }
+        }
+
+        &--category {
+            height: rem(124);
+
+            @include helper-breakpoint-media-min($lg) {
+                height: 15rem;
+            }
+        }
+
+        &--shopping-list {
+            height: rem(75);
+
+            @include helper-breakpoint-media-min($lg) {
+                height: 10rem;
+            }
+        }
+
+        &--cart {
+            height: rem(75);
+            margin: 0;
+
+            @include helper-breakpoint-media-min($lg) {
+                height: rem(160);
+                margin: rem(8);
+            }
+        }
+
+        &--summary {
+            height: rem(75);
+            margin: 0;
+
+            @include helper-breakpoint-media-min($lg) {
+                height: rem(100);
+                margin: rem(4);
+            }
         }
 
         &__image {

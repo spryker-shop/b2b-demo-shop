@@ -2,6 +2,31 @@ $shop-ui-cart-items-counter-quantity-size: rem(16);
 
 @mixin shop-ui-cart-items-counter($name: '.cart-items-counter') {
     #{$name} {
+        &__icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: rem(38);
+            padding-right: rem(4);
+
+            @include helper-breakpoint-media-min($lg) {
+                align-items: flex-start;
+                padding: 0;
+            }
+        }
+
+        &__text {
+            display: block;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+
+            @include helper-breakpoint-media-min($lg) {
+                display: inline;
+                white-space: normal;
+            }
+        }
+
         &__quantity {
             display: flex;
             align-items: center;
@@ -14,7 +39,11 @@ $shop-ui-cart-items-counter-quantity-size: rem(16);
             text-align: center;
             font-size: rem(11);
             font-weight: fw(bold);
-            margin: 10px 0 0 6px;
+            margin: rem(6) 0 0 rem(1);
+
+            @include helper-breakpoint-media-min($lg) {
+                margin: rem(10) 0 0 rem(6);
+            }
         }
 
         @content;

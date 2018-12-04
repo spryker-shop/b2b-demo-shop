@@ -63,52 +63,12 @@
         }
     } only %}
 
-    {% embed molecule('order-detail-table', 'CustomerPage') with {
+    {% include molecule('order-detail-table', 'CustomerPage') with {
         data: {
             items: data.orderItems,
-            currencyIsoCode: data.order.currencyIsoCode
-        },
-        embed: {
             order: data.order
         }
     } only %}
-        {% block headerRow %}
-            <td></td>
-            {{parent()}}
-        {% endblock %}
-        {% block bundleDetailRow %}
-            <td></td>
-            {{parent()}}
-        {% endblock %}
-        {% block detailRow %}
-            <td></td>
-            {{parent()}}
-        {% endblock %}
-
-        {% block row %}
-            {% embed [
-                molecule('order-detail-product-packaging-unit', 'ProductPackagingUnitWidget'),
-                molecule('order-detail-product-packaging-unit-default', 'CustomerPage'),
-                ] ignore missing with {
-                class: config.name ~ '__row',
-                data: {
-                    concreteItem: concreteItem,
-                    currencyIsoCode: data.currencyIsoCode,
-                    concreteItemDefault: concreteItem
-                },
-                embed: {
-                    order: embed.order
-                }
-            } only %}
-                {% block body %}
-                    <td>
-                        {{ widgetBlock('CustomerReorderWidgetPlugin', 'formCheckbox', embed.order, data.concreteItem) }}
-                    </td>
-                    {{parent()}}
-                {% endblock %}
-            {% endembed %}
-        {% endblock %}
-    {% endembed %}
 
     {% include molecule('order-summary', 'CustomerPage') with {
         class: 'text-right',
@@ -127,7 +87,7 @@
                     content: _self.address('billing_address', data.order.billingAddress)
                 },
                 {
-                    content: _self.note(data.order)
+                    content: data.order.cartNote is not empty ? _self.note(data.order) : ''
                 }
             ]
         }

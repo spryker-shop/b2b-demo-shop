@@ -1,8 +1,7 @@
 {% extends model('component') %}
 
 {% define config = {
-    name: 'product-set-details',
-    tag: 'div'
+    name: 'product-set-details'
 } %}
 
 {% define data = {
@@ -15,91 +14,99 @@
         "slidesToShow": 4,
         "slidesToScroll": 1,
         "dots": false,
-        "infinite": false
+        "infinite": false,
+        "responsive": [{
+            "breakpoint": 768,
+            "settings": {
+                "slidesToShow": 2
+                }
+        },
+        {
+            "breakpoint": 375,
+            "settings": {
+                "slidesToShow": 1
+            }
+        }]
     }'
 } %}
 {% block body %}
     {% block banner %}
         {% embed molecule('banner') with {
-            class: 'spacing spacing--reset',
+            class: config.name ~ '__banner',
             data: {
                 imageUrl: data.images.0.externalUrlLarge | default(null),
                 title: data.title
             }
         } only %}
             {% block body %}
-                <div class="{{config.name}}__container {{config.name}}__container--product-set" style="{{backgroundImage}}">
-                    <h1 class="title title--light">{{ data.title }}</h1>
-                    <span>{{ 'product.set' | trans }} </span>
+                <div class="{{config.name}}__container grid grid--column grid--middle grid--center" style="{{backgroundImage}}">
+                    <h1 class="title title--light title--product-set-details">
+                        {{ data.title }}
+                    </h1>
+                    <p class="{{ config.name }}__text {{ config.name }}__text--subtitle spacing-bottom spacing-bottom--reset">{{ 'product.set' | trans }} </p>
                 </div>
             {% endblock %}
         {% endembed %}
     {% endblock %}
 
     {% block header %}
-
-        {% embed organism('section') with {
-            config: {
-                tag: 'form'
-            },
-            attributes: {
-                'method': 'POST',
-                'action': path('cart/add-items')
-            },
-            modifiers: ['secondary'],
-            class: 'text-center',
-            data: {
-                title: 'product.sets.widget.title' | trans
-            },
-            embed: {
-                description: data.description,
-                addAllSetButton: data.addAllSetButton,
-                products: data.products
-            }
-        } only %}
-            {% block inner %}
-                <div class="{{ config.name }}__text">
-                    {% block description %}
-                        {% if embed.description is not empty %}
-                            <p>{{ embed.description }}</p>
-                        {% endif %}
-                    {% endblock %}
-                </div>
-
-                {% if embed.addAllSetButton %}
-                    {% set isDisabled = false %}
-
-                    {% for product in embed.products %}
-                        {% if product.idProductConcrete is not empty %}
-                            {% if product.available %}
-                                <input type="hidden" name="items[{{ loop.index }}][sku]" value="{{ product.sku }}"/>
-                                <input type="hidden" name="items[{{ loop.index }}][quantity]" value="1"/>
+        <form action="{{ path('cart/add-items') }}" method="POST">
+            {% embed organism('section') with {
+                modifiers: ['secondary'],
+                class: 'text-center',
+                data: {
+                    title: 'product.sets.widget.title' | trans
+                },
+                embed: {
+                    description: data.description,
+                    addAllSetButton: data.addAllSetButton,
+                    products: data.products
+                }
+            } only %}
+                {% block inner %}
+                    <div class="{{ config.name }}__text">
+                        {% block description %}
+                            {% if embed.description is not empty %}
+                                <p>{{ embed.description }}</p>
                             {% endif %}
-                        {% else %}
-                            {% set isDisabled = true %}
-                        {% endif %}
-                    {% endfor %}
+                        {% endblock %}
+                    </div>
 
-                    <button type="submit" class="button spacing-bottom spacing-bottom--biggest" {% if isDisabled %}disabled{% endif %}>
-                        {{ 'product.set.detail.add_all_to' | trans }}
-                        {% include atom('icon') with {
-                            class: 'spacing-y spacing-y--reset',
-                            modifiers: ['cart'],
-                            data: {
-                                name: 'cart'
-                            }
-                        } only %}
-                    </button>
-                {% endif %}
-            {% endblock %}
-        {% endembed %}
+                    {% if embed.addAllSetButton %}
+                        {% set isDisabled = false %}
+
+                        {% for product in embed.products %}
+                            {% if product.idProductConcrete is not empty %}
+                                {% if product.available %}
+                                    <input type="hidden" name="items[{{ loop.index }}][sku]" value="{{ product.sku }}"/>
+                                    <input type="hidden" name="items[{{ loop.index }}][quantity]" value="1"/>
+                                {% endif %}
+                            {% else %}
+                                {% set isDisabled = true %}
+                            {% endif %}
+                        {% endfor %}
+
+                        <button type="submit" class="button button--expand-sm-only spacing-bottom spacing-bottom--biggest" {% if isDisabled %}disabled{% endif %}>
+                            {{ 'product.set.detail.add_all_to' | trans }}
+                            {% include atom('icon') with {
+                                class: 'spacing-y spacing-y--reset',
+                                modifiers: ['cart'],
+                                data: {
+                                    name: 'cart'
+                                }
+                            } only %}
+                        </button>
+                    {% endif %}
+                {% endblock %}
+            {% endembed %}
+        </form>
     {% endblock %}
 
 
     {% block productSet %}
         <form method="GET">
             {% embed molecule('slick-carousel') with {
-                modifiers: ['equal-height', 'stretch'],
+                modifiers: ['product-set'],
                 data: {
                     slides: data.products
                 },
@@ -125,7 +132,7 @@
                             }
                         } only %}
                             {% block actionsContainer %}
-                                <div class="spacing-top spacing-bottom spacing-bottom--bigger {{ config.name }}__variant">
+                                <div class="{{ config.name }}__variant">
 
                                     {% set isNotAvailable = embed.product.idProductConcrete and not embed.product.available %}
 
@@ -150,7 +157,8 @@
                                                         label: ('product.attribute.' ~ name) | trans,
                                                         isAvailable: isAvailable,
                                                         selectModifiers: ['small'],
-                                                        selectTheme: 'small'
+                                                        selectTheme: 'small',
+                                                        selectPlaceholder: 'global.select.placeholder.value'
                                                     }
                                                 } only %}
                                             {% endif %}
@@ -168,9 +176,11 @@
                                 </div>
                                 {% if can("SeeAddToCartPermissionPlugin") %}
                                     <div class="{{ config.name }}__actions">
-                                        <a href="{{ isDisabled ? 'javascript:void(0)' : path('cart/add', {sku: embed.product.sku}) }}" class="product-set__add-to-cart button button--expand" {% if isDisabled %}disabled{% endif %}>
-                                            {{ 'page.detail.add-to-cart' | trans }}
-                                        </a>
+                                        {% if isDisabled %}
+                                            <span class="button button--expand isDisabled button--disabled">{{ 'page.detail.add-to-cart' | trans }}</span>
+                                        {% else %}
+                                            <a href="{{ path('cart/add', {sku: embed.product.sku}) }}" class="button button--expand ">{{ 'page.detail.add-to-cart' | trans }}</a>
+                                        {% endif %}
                                     </div>
                                 {% endif %}
                             {% endblock %}

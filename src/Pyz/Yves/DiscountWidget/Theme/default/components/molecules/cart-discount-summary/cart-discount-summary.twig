@@ -1,0 +1,71 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'cart-discount-summary',
+    tag: 'ul'
+} %}
+
+{% define data = {
+    voucherDiscounts: null,
+    ruleDiscounts: null,
+    discountTotal: null
+} %}
+
+{% block component %}
+    {% if data.discountTotal and (data.voucherDiscounts is not empty or data.ruleDiscounts is not empty) %}
+        {{parent()}}
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+    {% if data.voucherDiscounts is not empty %}
+        <li class="list__item">
+            <a class="float-right text-small" href="{{ url('discount/voucher/clear') }}">
+                {% include atom('icon') with {
+                    modifiers: ['smaller'],
+                    data: {
+                        name: 'times'
+                    }
+                } only %}
+                {{ 'cart.vouchers.clear-all' | trans }}
+            </a>
+            <strong>{{ 'cart.vouchers' | trans }}</strong>
+
+            <ul>
+                {% for voucherDiscount in data.voucherDiscounts %}
+                    <li class="grid grid--justify">
+                        <span class="col col--sm-8">
+                            {{ voucherDiscount.displayName }}
+                            <br/>
+                            <a class="text-small" href="{{ url('discount/voucher/remove', {'code': voucherDiscount.voucherCode}) }}">
+                                {% include atom('icon') with {
+                                    modifiers: ['smaller'],
+                                    data: {
+                                        name: 'times'
+                                    }
+                                } only %}
+                                {{ 'cart.voucher.remove' | trans }}
+                            </a>
+                        </span>
+                        <span class="col col--expand text-right">- {{ voucherDiscount.amount | money }}</span>
+                    </li>
+                {% endfor %}
+            </ul>
+            <hr />
+        </li>
+    {% endif %}
+
+    {% if data.ruleDiscounts is not empty %}
+        <li class="list__item">
+            <strong>{{ 'cart.discounts' | trans }}</strong>
+            <ul class="{{ component.renderClass(config.name ~ '__description', modifiers) }}">
+                {% for ruleDiscount in data.ruleDiscounts %}
+                    <li class="grid grid--justify">
+                        <span class="col col--sm-8 {{ config.name }}__text {{ config.name }}__text--desktop-bigger">{{ ruleDiscount.displayName }}</span>
+                        <span class="col col--expand text-right {{ config.name }}__price">- {{ ruleDiscount.amount | money }}</span>
+                    </li>
+                {% endfor %}
+            </ul>
+        </li>
+    {% endif %}
+{% endblock %}

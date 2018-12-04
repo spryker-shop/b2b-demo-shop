@@ -41,7 +41,17 @@
     {% if data.form.vars.value.shareDetails is not empty %}
         {{ form_start(data.form) }}
         <div {{ qa('share-cart-table') }}>
-            <h4 class="spacing-y spacing-y--big">{{ 'shared_cart.share.form.users' | trans }}</h4>
+            <div class="spacing-y spacing-y--big grid grid--bottom grid--justify">
+                <h4 class="col">{{ 'shared_cart.share.form.users' | trans }}</h4>
+                {% include atom('icon') with {
+                    modifiers: ['title'],
+                    class: 'col',
+                    data: {
+                        name: 'users'
+                    }
+                } only %}
+            </div>
+
             {% include molecule('user-share-list', 'SharedCartPage') with {
                 data: {
                     shareDetailsForm: data.form,
@@ -49,6 +59,7 @@
                 }
             } only %}
 
+            <div class="is-hidden-lg-xxl text-fw-medium text-secondary text-small spacing-bottom spacing-bottom--smaller">{{ "customer.account.shopping_list.share.choose_access" | trans }}:</div>
             {% include molecule('user-share-list', 'SharedCartPage') with {
                 data: {
                     shareDetailsForm: data.form,
@@ -56,21 +67,25 @@
                 }
             } only %}
 
-            <div class="form__actions">
-                <a href="{{ data.backUrl }}" class="form__action button button--hollow">
-                    {{ "general.back.button" | trans }}
-                </a>
-                <button type="submit" class="form__action button button--success float-right">
-                    {{ 'shared_cart.form.save_button' | trans }}
-                </button>
+            <div class="grid grid--gap grid--justify">
+                <div class="col col--sm-12 col--md-auto">
+                    <a href="{{ data.backUrl }}" class="button button--expand button--hollow spacing-top">
+                        {{ "general.back.button" | trans }}
+                    </a>
+                </div>
+                <div class="col col--sm-12 col--md-auto">
+                    <button type="submit" class="button button--expand button--success spacing-top">
+                        {{ 'shared_cart.form.save_button' | trans }}
+                    </button>
+                </div>
             </div>
         </div>
         {{ form_end(data.form) }}
     {% else %}
         <div {{ qa('share-cart-table') }}>
             {{ 'shared_cart.form.data_empty' | trans }}
-            <div class="form__actions">
-                <a href="{{ data.backUrl }}" class="button button--secondary button--hollow">
+            <div class="grid spacing-top spacing-top--big">
+                <a href="{{ data.backUrl }}" class="col col--sm-12 col--md-auto button button--secondary button--hollow">
                     {{ "general.back.button" | trans }}
                 </a>
             </div>

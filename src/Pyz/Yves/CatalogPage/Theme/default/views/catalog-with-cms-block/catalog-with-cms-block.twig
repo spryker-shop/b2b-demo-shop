@@ -24,19 +24,11 @@
         showAlwaysFirstAndLast: true
     }
 } %}
-{% block contentTop %}
-    {% if data.categoryId is not empty %}
-        <div class="catalog-cms-block catalog-cms-block--sidebar">
-            {{ widgetBlock('CatalogCmsBlockWidgetPlugin', 'top', data.categoryId) }}
-        </div>
-    {% endif %}
-{% endblock %}
-
 {% block filterBar %}
     {{parent()}}
 
     {% if data.categoryId is not empty %}
-        <div class="catalog-cms-block catalog-cms-block--sidebar">
+        <div class="catalog-cms-block catalog-cms-block--sidebar catalog-cms-block--filter-sidebar">
             {{ widgetBlock('CatalogCmsBlockWidgetPlugin', 'middle', data.categoryId) }}
         </div>
     {% endif %}
@@ -45,9 +37,18 @@
 {% block contentBottom %}
     {% if data.categoryId is not empty %}
         <div class="catalog-cms-block-wrap">
-            <div class="container catalog-cms-block catalog-cms-block--bottom">
-                {{ widgetBlock('CatalogCmsBlockWidgetPlugin', 'bottom', data.categoryId) }}
-            </div>
+            {% embed molecule('content-collapser') with {
+                modifiers: ['with-background'],
+                embed: {
+                    categoryId: data.categoryId
+                }
+            } only %}
+                {% block content %}
+                    <div class="container catalog-cms-block catalog-cms-block--bottom">
+                        {{ widgetBlock('CatalogCmsBlockWidgetPlugin', 'bottom', embed.categoryId) }}
+                    </div>
+                {% endblock %}
+            {% endembed %}
         </div>
     {% endif %}
 {% endblock %}

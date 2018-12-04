@@ -34,5 +34,9 @@
                 <span class="{{ config.name }}__tooltip">{{ item.attributes.farbe }}</span>
             </a>
         {% endfor %}
+        <span class="{{ config.name }}__active-color-name">
+            {% set color = data.items | first %}
+            {{ color.attributes.farbe }}
+        </span>
     </div>
 {% endblock %}

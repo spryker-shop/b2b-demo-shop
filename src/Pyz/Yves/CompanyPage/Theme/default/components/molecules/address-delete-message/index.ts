@@ -1,1 +1,1 @@
-import './style';
+import './address-delete-message';

@@ -1,0 +1,40 @@
+@mixin product-packaging-unit-widget-order-detail-product-packaging-unit($name: '.order-detail-product-packaging-unit') {
+    #{$name} {
+        font-size: rem(14);
+
+        @include helper-breakpoint-media-min($lg) {
+            font-size: rem(16);
+        }
+
+        &__checkbox {
+            position: absolute;
+            right: rem(-17);
+            top: rem(8);
+            z-index: $setting-zi-element;
+
+            @include helper-breakpoint-media-min($lg) {
+                position: static;
+            }
+        }
+
+        &__title {
+            display: block;
+            width: 100%;
+            font-size: rem(14);
+            font-weight: fw(bold);
+            text-transform: uppercase;
+        }
+
+        &__inner {
+            display: block;
+
+            &--lg-inline {
+                @include helper-breakpoint-media-min($lg) {
+                    display: inline;
+                }
+            }
+        }
+    }
+}
+
+@include product-packaging-unit-widget-order-detail-product-packaging-unit;

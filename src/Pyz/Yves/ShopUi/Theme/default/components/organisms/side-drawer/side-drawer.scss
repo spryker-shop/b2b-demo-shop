@@ -1,0 +1,150 @@
+$shop-ui-side-drawer-width: rem(375);
+
+@mixin shop-ui-side-drawer($name: '.side-drawer') {
+    #{$name} {
+        position: relative;
+        z-index: $setting-zi-side-drawer;
+
+        @include helper-breakpoint-media-min($xl) {
+            display: none;
+        }
+
+        &__overlay {
+            @include helper-visibility-invisible;
+            @include helper-effect-transition(opacity visibility);
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: $setting-color-overlay;
+        }
+
+        &__drawer {
+            display: flex;
+            flex-direction: column;
+            @include helper-ui-shadow;
+            @include helper-visibility-invisible;
+            @include helper-effect-transition(opacity visibility top);
+            position: fixed;
+            top: -100%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: $setting-color-bg;
+            padding: rem(10) 0;
+            overflow: hidden;
+
+            @include helper-breakpoint-media-min($md) {
+                @include helper-effect-transition(opacity visibility left);
+                top: 0;
+                left: - $shop-ui-side-drawer-width;
+                width: $shop-ui-side-drawer-width;
+            }
+
+            @include helper-breakpoint-media-min($lg) {
+                &--logged {
+                    padding-top: rem(50);
+                }
+            }
+        }
+
+        &__holder {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            overflow: hidden;
+            overflow-y: auto;
+            padding: 0 rem(13);
+        }
+
+        &__close {
+            position: absolute;
+            left: rem(5);
+            top: rem(10);
+            width: rem(40);
+            height: rem(40);
+            background: none;
+        }
+
+        &__navigation-top {
+            padding: 0 rem(13) rem(10) rem(54);
+            flex-shrink: 0;
+
+            @include helper-breakpoint-media-min($lg) {
+                justify-content: flex-end;
+            }
+        }
+
+        &__navigation-top-actions {
+            @include helper-breakpoint-media-min($lg) {
+                display: none;
+            }
+        }
+
+        &__user-link {
+            display: flex;
+            align-items: flex-end;
+            padding: rem(12) 0;
+            font-weight: fw(bold);
+            line-height: rem(16);
+            font-size: rem(10);
+            letter-spacing: rem(0.6);
+            text-transform: uppercase;
+
+            &-icon {
+                margin-right: rem(10);
+            }
+        }
+
+        &__navigation {
+            padding-bottom: rem(15);
+            flex: 1;
+        }
+
+        &__info {
+            flex-shrink: 0;
+            padding-bottom: rem(25);
+        }
+
+        &__contact {
+            display: block;
+            padding: rem(16) rem(15) rem(16) rem(64);
+            border-radius: rem(2);
+            border: rem(1) solid $setting-color-gray-1;
+            color: $setting-color-gray-2;
+            position: relative;
+
+            &-icon {
+                position: absolute;
+                left: rem(20);
+                top: 50%;
+                transform: translateY(-50%);
+            }
+
+            &-text {
+                display: block;
+                font-size: rem(14);
+                line-height: 1.2;
+
+                &--weight {
+                    font-weight: fw(medium);
+                }
+            }
+        }
+
+        &--show &__overlay {
+            @include helper-visibility-visible;
+        }
+
+        &--show &__drawer {
+            @include helper-visibility-visible;
+            left: 0;
+            top: 0;
+        }
+
+        @content;
+    }
+}
+
+@include shop-ui-side-drawer();
