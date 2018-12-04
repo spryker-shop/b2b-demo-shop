@@ -33,7 +33,7 @@
         <span class="{{ config.name }}__inner">
             {{ concreteItem.name }}<br>
             {% if concreteItem.amount and concreteItem.quantity %}
-                <span class="{{ config.name }}__text {{ config.name }}__inner--lg-inline">
+                <span class="{{ config.name }}__inner {{ config.name }}__inner--lg-inline">
                     <span class="text-secondary">&times;</span> {{ concreteItem.amount }} {{ 'packaging_units.cart.item' | trans }} = ({{ concreteItem.amount / concreteItem.amountSalesUnit.conversion }}{{ amountSalesUnitName | trans }}) = {{ concreteItem.quantity * concreteItem.amount }} {{ 'packaging_units.cart.item' | trans }}
                 </span>
             {% endif %}
