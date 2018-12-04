@@ -5,6 +5,10 @@
     tag: 'div'
 } %}
 
+{% define data = {
+    cards: required
+} %}
+
 {% block body %}
     {% for card in data.cards %}
         {% if card.content is not empty %}

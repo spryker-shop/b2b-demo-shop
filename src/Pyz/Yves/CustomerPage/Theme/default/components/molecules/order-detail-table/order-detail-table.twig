@@ -7,14 +7,17 @@
 
 {% define data = {
     items: required,
-    currencyIsoCode: required
+    order: required
 } %}
 
 {% block body %}
+    {% set currencyIsoCode = data.order.currencyIsoCode %}
+
     <table class="table table--responsive">
         <thead class="{{ config.name }}__head">
             <tr>
                 {% block headerRow %}
+                    <td></td>
                     <th class="{{ config.name }}__cell {{ config.name }}__cell--head">{{ 'customer.order.item_sku' | trans }}</th>
                     <th class="{{ config.name }}__cell {{ config.name }}__cell--head">{{ 'customer.order.product_name' | trans }}</th>
                     <th class="{{ config.name }}__cell {{ config.name }}__cell--head">{{ 'customer.order.item_price' | trans }}</th>
@@ -33,11 +36,10 @@
                         molecule('order-detail-product-packaging-unit', 'ProductPackagingUnitWidget'),
                         molecule('order-detail-product-packaging-unit-default', 'CustomerPage'),
                         ] ignore missing with {
-                        class: config.name ~ '__row',
+                        class: config.name ~ '__row row row--order-details',
                         data: {
-                            parentSelector: config.name,
                             item: item,
-                            currencyIsoCode: data.currencyIsoCode
+                            order: data.order
                         }
                     } only %}
                 {% endblock %}
@@ -45,6 +47,7 @@
                 {% if isBundle %}
                     <tr class="{{ config.name }}__row {{ config.name }}__row--detail is-hidden-sm-md">
                         {% block bundleDetailRow %}
+                            <td></td>
                             <td class="{{ config.name }}__cell {{ config.name }}__cell--detail" colspan="5">
                                 {{ "customer.order.bundled_items" | trans }} <br>
                                 {% for bundledItem in item.bundleItems %}
@@ -54,7 +57,7 @@
                                 {% if concreteItem.productOptions is not empty %}
                                     {{ "customer.order.options" | trans }} <br>
                                     {% for productOption in concreteItem.productOptions %}
-                                        &nbsp; - {{ productOption.value | trans }} {{ productOption.sumPrice | money(true, data.currencyIsoCode) }}  <br>
+                                        - {{ productOption.value | trans }} {{ productOption.sumPrice | money(true, currencyIsoCode) }}  <br>
                                     {% endfor %}
                                 {% endif %}
                             </td>
@@ -66,11 +69,12 @@
                             <tr class="{{ config.name }}__row {{ config.name }}__row--detail is-hidden-sm-md">
                                 {% block detailRow %}
                                     <td></td>
+                                    <td></td>
                                     <td class="{{ config.name }}__cell {{ config.name }}__cell--detail">
-                                        +&nbsp;<small>{{ productOption.value | trans }}</small>
+                                        + <small>{{ productOption.value | trans }}</small>
                                     </td>
                                     <td class="{{ config.name }}__cell {{ config.name }}__cell--detail">
-                                        <small>{{ productOption.sumPrice | money(true, data.currencyIsoCode) }}</small>
+                                        <small>{{ productOption.sumPrice | money(true, currencyIsoCode) }}</small>
                                     </td>
                                     <td class="{{ config.name }}__cell {{ config.name }}__cell--detail" colspan="2"></td>
                                 {% endblock %}

@@ -63,54 +63,12 @@
         }
     } only %}
 
-    {% embed molecule('order-detail-table', 'CustomerPage') with {
+    {% include molecule('order-detail-table', 'CustomerPage') with {
         data: {
             items: data.orderItems,
-            currencyIsoCode: data.order.currencyIsoCode
-        },
-        embed: {
             order: data.order
         }
     } only %}
-        {% block headerRow %}
-            <td></td>
-            {{parent()}}
-        {% endblock %}
-        {% block bundleDetailRow %}
-            <td></td>
-            {{parent()}}
-        {% endblock %}
-        {% block detailRow %}
-            <td></td>
-            {{parent()}}
-        {% endblock %}
-
-        {% block row %}
-            {% embed [
-                molecule('order-detail-product-packaging-unit', 'ProductPackagingUnitWidget'),
-                molecule('order-detail-product-packaging-unit-default', 'CustomerPage'),
-                ] ignore missing with {
-                class: config.name ~ '__row row row--order-details',
-                data: {
-                    parentSelector: config.name,
-                    item: item,
-                    currencyIsoCode: data.currencyIsoCode
-                },
-                embed: {
-                    order: embed.order
-                }
-            } only %}
-                {% block body %}
-                    {% set concreteItem = data.item.bundleProduct | default(data.item) %}
-
-                    <td class="order-detail-table__cell order-detail-table__cell--float">
-                        {{ widgetBlock('CustomerReorderWidgetPlugin', 'formCheckbox', embed.order, concreteItem) }}
-                    </td>
-                    {{parent()}}
-                {% endblock %}
-            {% endembed %}
-        {% endblock %}
-    {% endembed %}
 
     {% include molecule('order-summary', 'CustomerPage') with {
         class: 'text-right',
