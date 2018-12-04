@@ -69,7 +69,7 @@
                 <div class="cart-title">
                     <h3 class="grid grid--nowrap grid--middle cart-title__text">
                         {{ data.cart.name }}
-                        {% if can('ChangeCartItemPermissionPlugin') %}
+                        {% if can('ChangeCartItemPermissionPlugin', data.cart.idQuote) and canEditCart %}
                             <a href="{{ path('multi-cart/update', {idQuote: data.cart.idQuote}) }}" class="col button button--hollow-icon button--edit cart-title__link" title="{{ "multi_cart_widget.cart.action.change_name" | trans }}">
                                 {% include atom('icon') with {
                                     modifiers: ['sm-lg-regular'],
