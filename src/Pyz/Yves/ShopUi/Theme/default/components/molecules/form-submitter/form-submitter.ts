@@ -3,11 +3,13 @@ import Component from 'ShopUi/models/component';
 export default class FormSubmitter extends Component {
     readonly event: string
     readonly triggers: HTMLElement[]
+    readonly isShouldNotSubmitFormFlag: boolean
 
     constructor() {
         super();
         this.event = <string>this.getAttribute('event');
         this.triggers = <HTMLElement[]>Array.from(document.querySelectorAll(this.triggerSelector));
+        this.isShouldNotSubmitFormFlag = this.isShouldSubmitForm === 'true' ? true : false;
     }
 
     protected readyCallback(): void {
@@ -26,11 +28,17 @@ export default class FormSubmitter extends Component {
         if (newActionName !== null) {
             form.action = newActionName;
         }
-        form.submit();
+        if (this.isShouldNotSubmitFormFlag) {
+            form.submit();
+        }
     }
 
     get triggerSelector(): string {
         return this.getAttribute('trigger-selector');
+    }
+
+    get isShouldSubmitForm(): string {
+        return this.getAttribute('withoutFormSubmit');
     }
 
     protected getDataAttribute(block: HTMLElement, attr: string): string {
