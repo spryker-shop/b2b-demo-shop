@@ -39,7 +39,7 @@
                 {% set totals = quote.items | length %}
                 {% set isQuoteEditable = can('WriteSharedCartPermissionPlugin', quote.idQuote) %}
                 <tr>
-                    <td class="transform-cell spacing-top spacing-top--inner spacing-top--big" data-content={{ 'page.multi_cart.shopping_cart.list.label.name' | trans }}>
+                    <td class="transform-cell spacing-top spacing-top--inner spacing-top--big" data-content="{{ 'page.multi_cart.shopping_cart.list.label.name' | trans }}">
                         <a href="{{ url('multi-cart/set-default', {idQuote: quote.idQuote}) }}"
                             class="{{ config.name }}__cart-name{% if quote.isDefault %} {{ config.name }}__cart-name--active{% endif %}">
                             {{ quote.name }}
@@ -47,12 +47,12 @@
                     </td>
                     {% widget 'CartListPermissionGroupWidget' args [quote, isQuoteDeletable] only %}
                         {% block body %}
-                            <td class="transform-cell" data-content={{ 'page.multi_cart.shopping_cart.list.label.access' | trans }}>
+                            <td class="transform-cell" data-content="{{ 'page.multi_cart.shopping_cart.list.label.access' | trans }}">
                                 {{ parent() }}
                             </td>
                         {% endblock %}
                     {% endwidget %}
-                    <td class="transform-cell" data-content={{ 'page.multi_cart.shopping_cart.list.label.num_of_products' | trans }}>
+                    <td class="transform-cell" data-content="{{ 'page.multi_cart.shopping_cart.list.label.num_of_products' | trans }}">
                         {% widget 'ProductBundleItemCounterWidget' args [quote] only %}
                             {% block body %}
                                 <span class="badge badge--multi-cart">
@@ -68,7 +68,7 @@
                             <span class="badge cart-items-quantity">{{ totals }} {{ label | trans }}</span>
                         {% endwidget %}
                     </td>
-                    <td class="transform-cell" data-content={{ 'page.multi_cart.shopping_cart.list.label.prices' | trans }}>
+                    <td class="transform-cell" data-content="{{ 'page.multi_cart.shopping_cart.list.label.prices' | trans }}">
                         {% if quote.priceMode is not empty %}
                             {% include molecule('price-mode') with {
                                 modifiers: ['secondary'],
@@ -79,7 +79,7 @@
                             } only %}
                         {% endif %}
                     </td>
-                    <td class="transform-cell spacing-bottom spacing-bottom--inner spacing-bottom--big" data-content={{ 'page.multi_cart.shopping_cart.list.label.total' | trans }}><strong>{{ quote.totals.subtotal | default(0) | money }}</strong></td>
+                    <td class="transform-cell spacing-bottom spacing-bottom--inner spacing-bottom--big" data-content="{{ 'page.multi_cart.shopping_cart.list.label.total' | trans }}"><strong>{{ quote.totals.subtotal | default(0) | money }}</strong></td>
                     {% if showActions %}
                         <td>
                             <ul class="menu grid grid--stretch grid--justify grid--nowrap grid--gap-smaller">
