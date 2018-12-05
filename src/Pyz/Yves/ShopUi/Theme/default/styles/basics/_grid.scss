@@ -211,6 +211,12 @@
             flex-wrap: nowrap;
         }
 
+        &--nowrap-lg-only {
+            @include helper-breakpoint-media-min($lg) {
+                flex-wrap: nowrap;
+            }
+        }
+
         &--column {
             flex-direction: column;
         }

@@ -27,14 +27,15 @@
             title: 'company.account.business_unit.create' | trans,
             form: data.form,
             submit: {
-                enable: true
+                enable: true,
+                class: 'form__action--expand-sm-md form__action--sm-md-first button'
             },
             cancel: {
                 enable: true,
                 url: url('company/business-unit'),
                 text: 'general.back.button' | trans,
                 icon: null,
-                class: 'button button--hollow'
+                class: 'form__action--expand-sm-md button button--hollow'
             }
         },
         embed: {

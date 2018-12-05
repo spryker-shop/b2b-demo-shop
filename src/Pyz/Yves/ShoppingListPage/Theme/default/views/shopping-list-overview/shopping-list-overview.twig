@@ -15,7 +15,7 @@
                     enable: true,
                     text: 'customer.account.shopping_list.overview.add_new' | trans,
                     icon: 'plus',
-                    class: 'button button--hollow button--form spacing-right spacing-right--reset spacing-bottom'
+                    class: 'button button--hollow button--form spacing-right spacing-right--reset'
                 }
             }
         } only %}
@@ -36,14 +36,14 @@
                     {% endblock %}
 
                     <div class="grid grid--bottom grid--gap">
-                        <div class="col col--expand">
+                        <div class="col col--sm-12 col--md-auto col col--expand">
                             {% block fieldset %}
                                 {{ parent() }}
                             {% endblock %}
                         </div>
-                        <div class="col">
+                        <div class="col col--sm-12 col--md-auto spacing-bottom">
                             {% block submit %}
-                                <button type="submit" class="{{config.name}}__action {{data.submit.class}}" {{qa(data.submit.qa)}}>
+                                <button type="submit" class="{{config.name}}__action {{data.submit.class}} button--expand button--mobile-tight" {{qa(data.submit.qa)}}>
                                     {% if data.submit.icon is not empty %}
                                         {% include atom('icon') with {
                                             modifiers: ['plus-small'],
@@ -75,7 +75,7 @@
                         shoppingListResponse: data.shoppingListResponse
                     }
                 } only %}
-                <button type="submit" class="button button--success button--mobile-full" {{qa('submit-button')}}>
+                <button type="submit" class="button button--success button--expand-sm-lg" {{qa('submit-button')}}>
                     {{ 'customer.account.shopping_list.overview.add_shopping_list_to_cart' | trans }}
                     {% include atom('icon') with {
                         class: 'spacing-left spacing-left--small',

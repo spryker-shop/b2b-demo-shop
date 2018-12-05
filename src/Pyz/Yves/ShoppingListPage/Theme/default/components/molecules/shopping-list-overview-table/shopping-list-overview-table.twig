@@ -27,7 +27,7 @@
         {% for shoppingList in data.shoppingLists %}
             {% set hasWritePermission = can('WriteShoppingListPermissionPlugin', shoppingList.idShoppingList) %}
             <tr>
-                <td class="transform-cell spacing-top spacing-top--inner spacing-top--big" data-content={{ 'customer.account.shopping_list.overview.name' | trans }}>
+                <td class="transform-cell spacing-top spacing-top--inner spacing-top--big" data-content="{{ 'customer.account.shopping_list.overview.name' | trans }}">
                     {% if data.enableTableForm %}
                         {% include atom('checkbox') with {
                             modifiers: ['shopping-list'],
@@ -37,18 +37,18 @@
                             }
                         } only %}
                     {% endif %}
-                    <a class="{{ config.name }}__title text-center" href="{{ path('shopping-list/details', { idShoppingList: shoppingList.idShoppingList }) }}">{{ shoppingList.name }}</a>
+                    <a class="title title--link text-center" href="{{ path('shopping-list/details', { idShoppingList: shoppingList.idShoppingList }) }}">{{ shoppingList.name }}</a>
                 </td>
-                <td class="text-center transform-cell" data-content={{ 'customer.account.shopping_list.overview.owner' | trans }}>{{ shoppingList.owner }}</td>
-                <td class="text-center transform-cell" data-content={{ 'customer.account.shopping_list.overview.created_date' | trans }}>{{ shoppingList.createdAt | formatDate }}</td>
-                <td class="text-center transform-cell" data-content={{ 'customer.account.shopping_list.access' | trans }}>
+                <td class="text-center transform-cell" data-content="{{ 'customer.account.shopping_list.overview.owner' | trans }}">{{ shoppingList.owner }}</td>
+                <td class="text-center transform-cell" data-content="{{ 'customer.account.shopping_list.overview.created_date' | trans }}">{{ shoppingList.createdAt | formatDate }}</td>
+                <td class="text-center transform-cell" data-content="{{ 'customer.account.shopping_list.access' | trans }}">
                     {% include molecule('shopping-list-permission', 'ShoppingListPage') with {
                         data: {
                             hasWritePermission: hasWritePermission
                         }
                     } only %}
                 </td>
-                <td class="text-center transform-cell spacing-bottom spacing-bottom--inner spacing-bottom--big" data-content={{ 'customer.account.shopping_list.overview.item_count' | trans }}>
+                <td class="text-center transform-cell spacing-bottom spacing-bottom--inner spacing-bottom--big" data-content="{{ 'customer.account.shopping_list.overview.item_count' | trans }}">
                     <span class="badge badge--shopping-list">
                         {{ shoppingList.numberOfItems }}
                         {{ 'checkout.step.summary.items' | trans }}
@@ -57,6 +57,7 @@
                 <td class="spacing spacing--inner spacing--reset">
                     {% embed molecule('table-action-list') with {
                         data: {
+                            linkModifiers: ['tight'],
                             items: [
                                 {
                                     url: url('shopping-list/update', { idShoppingList: shoppingList.idShoppingList }),
@@ -90,7 +91,13 @@
                     } only %}
                         {% block body %}
                             {{ parent() }}
-                            {{ widget('ShoppingListDismissWidgetPlugin', embed.shoppingList) }}
+                            {% widget 'ShoppingListDismissWidgetPlugin' args [embed.shoppingList] with {config: config} only %}
+                                {% block link %}
+                                    <div class="{{ config.name }}__item">
+                                        {{ parent() }}
+                                    </div>
+                                {% endblock %}
+                            {% endwidget %}
                         {% endblock %}
                     {% endembed %}
                 </td>

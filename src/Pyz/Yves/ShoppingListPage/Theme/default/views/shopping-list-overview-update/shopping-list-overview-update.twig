@@ -116,7 +116,7 @@
                             {% block price %}
                                 {% if data.listItem.price is not empty %}
                                     {% include molecule('price') with {
-                                        modifiers: ['cart'],
+                                        modifiers: ['cart', 'available'],
                                         data: {
                                             amount: data.listItem.price | money,
                                             originalAmount: data.listItem.prices.ORIGINAL is not defined or data.listItem.prices.ORIGINAL is empty ? null : (data.listItem.prices.ORIGINAL | money)
@@ -170,7 +170,7 @@
                     {% endfor %}
 
                     <div class="grid grid--right spacing-bottom spacing-bottom--biggest">
-                        <a class="col button button--second button--mobile-full link link--icon grid grid--center spacing spacing--inner spacing--big" href="{{ path('shopping-list/clear', {idShoppingList: data.idShoppingList}) }}">
+                        <a class="col link link--icon link--to-button grid grid--center spacing-top spacing-x spacing-x--inner spacing-x--big" href="{{ path('shopping-list/clear', {idShoppingList: data.idShoppingList}) }}">
                             {% include atom('icon') with {
                                 modifiers: ['link'],
                                 data: {
@@ -190,18 +190,18 @@
 
         <div class="grid">
             <div class="col col--sm-6 text-left spacing-right spacing-right--inner spacing-right--small">
-                <a class="button button--alert button--hollow button--mobile-full spacing-bottom spacing-right" href="{{ path('shopping-list/delete/confirm', {idShoppingList: data.idShoppingList}) }}">
+                <a class="button button--alert button--hollow button--expand-sm-lg spacing-bottom spacing-right" href="{{ path('shopping-list/delete/confirm', {idShoppingList: data.idShoppingList}) }}">
                     {{ 'customer.account.shopping_list.overview.delete' | trans }}
                 </a>
             </div>
             <div class="col col--sm-6 col--lg-4 text-right spacing-left spacing-left--inner spacing-left--small">
-                <a href="{{ path('shopping-list/details', {idShoppingList: data.idShoppingList}) }}" class="button button--hollow button--mobile-full spacing-bottom">
+                <a href="{{ path('shopping-list/details', {idShoppingList: data.idShoppingList}) }}" class="button button--hollow button--expand-sm-lg spacing-bottom">
                     {{ 'general.back.button' | trans }}
                 </a>
 
             </div>
             <div class="col col--sm-12 col--lg-2 text-right">
-                <button type="submit" class="button button--success button--mobile-full">
+                <button type="submit" class="button button--success button--expand-sm-lg">
                     {{ 'forms.submit-btn' | trans }}
                 </button>
             </div>

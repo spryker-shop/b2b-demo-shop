@@ -126,6 +126,11 @@
         }
 
         &--mobile-toggler-section {
+            margin-bottom: rem(24);
+            font-weight: fw(medium);
+            line-height: normal;
+            color: $setting-color-gray-5;
+
             @include helper-breakpoint-media-max($lg - 1) {
                 font-size: rem(17);
                 padding-left: rem(29);
@@ -146,6 +151,45 @@
                 &::after {
                     transform: translateY(-50%) rotate(90deg);
                 }
+
+                &.active::after {
+                    display: none;
+                }
+            }
+        }
+
+        &--link {
+            color: $setting-color-gray-5;
+            font-weight: fw(medium);
+
+            @include helper-breakpoint-media-min($lg) {
+                margin-left: rem(20);
+            }
+        }
+
+        &--warning {
+            color: $setting-color-alt;
+            line-height: rem(52);
+            background-color: $setting-color-alpha-5;
+            margin: 0 rem(-15) rem(8);
+
+            @include helper-breakpoint-media-min($lg) {
+                font-size: rem(16);
+                margin: 0 0 rem(8);
+            }
+        }
+
+        &--review-subtitle {
+            margin-bottom: rem(20);
+            font-size: rem(18);
+            font-weight: fw(medium);
+            line-height: normal;
+            color: $setting-color-gray-5;
+            text-align: center;
+
+            @include helper-breakpoint-media-min($lg) {
+                text-align: left;
+                font-size: rem(24);
             }
         }
 

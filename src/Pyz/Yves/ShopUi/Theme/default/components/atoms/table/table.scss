@@ -14,8 +14,13 @@
 
         th,
         td {
-            padding: rem(16) rem(32);
+            padding: rem(16) rem(15);
             text-align: left;
+
+            @include helper-breakpoint-media-min($lg) {
+                padding-left: rem(32);
+                padding-right: rem(32);
+            }
         }
 
         tbody {
@@ -49,10 +54,6 @@
             }
         }
 
-        &__icon {
-            height: rem(14);
-        }
-
         &--grid {
 
             thead {
@@ -66,7 +67,7 @@
         }
 
         &--responsive {
-            @include helper-breakpoint-media-max($lg) {
+            @include helper-breakpoint-media-max($lg - 1) {
                 display: block;
 
                 thead, tbody, th, td {
@@ -94,10 +95,12 @@
                 }
 
                 td::before {
-                    font-weight: fw(medium);
+                    font-weight: fw(bold);
                     display: inline-block;
                     width: auto;
                     padding-right: rem(10);
+                    text-transform: uppercase;
+                    flex-shrink: 0;
                 }
 
                 .row {

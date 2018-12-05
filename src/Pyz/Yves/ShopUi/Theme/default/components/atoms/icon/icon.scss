@@ -252,8 +252,7 @@ $shop-ui-icon-size-bigger: 1.5rem;
     }
 
     &--role {
-        width: rem(18);
-        height: rem(21);
+        height: rem(14);
     }
 
     &--plus-small {
@@ -344,13 +343,23 @@ $shop-ui-icon-size-bigger: 1.5rem;
         height: rem(26);
     }
 
-    &--mobile-small {
+    &--sm-lg-regular {
         width: rem(16);
         height: rem(16);
 
         @include helper-breakpoint-media-min($lg) {
             width: rem(20);
             height: rem(20);
+        }
+    }
+
+    &--sm-lg-bigger {
+        width: rem(16);
+        height: rem(16);
+
+        @include helper-breakpoint-media-min($lg) {
+            width: rem(24);
+            height: rem(24);
         }
     }
 }

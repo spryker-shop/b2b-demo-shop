@@ -79,12 +79,6 @@
         }
 
         &--product-set-widget {
-            margin: 0 rem(-10);
-
-            @include helper-breakpoint-media-min($lg) {
-                margin: 0;
-            }
-
             .slick-slide {
                 min-height: rem(400);
                 width: rem(280);
@@ -180,10 +174,7 @@
             transform: translateY(-50%);
 
             @include helper-breakpoint-media-min($lg) {
-                top: rem(135);
-            }
-
-            @include helper-breakpoint-media-min($xxxl) {
+                margin-top: rem(-30);
                 top: 50%;
             }
 
@@ -211,6 +202,7 @@
             margin-top: rem(15);
 
             @include helper-breakpoint-media-min($lg) {
+                margin-top: rem(-15);
                 right: rem(15);
             }
 
