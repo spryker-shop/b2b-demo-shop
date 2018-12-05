@@ -1,15 +1,17 @@
 import Component from 'ShopUi/models/component';
 
-export default class FormSubmitter extends Component {
+export default class FormHandler extends Component {
     readonly event: string
     readonly triggers: HTMLElement[]
-    readonly isShouldNotSubmitFormFlag: boolean
+    readonly isShouldSubmitFormFlag: boolean
+    readonly isShouldChangeActionFlag: boolean
 
     constructor() {
         super();
         this.event = <string>this.getAttribute('event');
         this.triggers = <HTMLElement[]>Array.from(document.querySelectorAll(this.triggerSelector));
-        this.isShouldNotSubmitFormFlag = this.isShouldSubmitForm === 'true' ? true : false;
+        this.isShouldSubmitFormFlag = this.isShouldSubmitForm === 'true' ? true : false;
+        this.isShouldChangeActionFlag = this.isShouldChangeAction === 'true' ? true : false;
     }
 
     protected readyCallback(): void {
@@ -21,14 +23,14 @@ export default class FormSubmitter extends Component {
     }
 
     protected onTriggerEvent(event: Event): void {
-        event.preventDefault();
         const trigger = <HTMLElement>event.currentTarget;
-        const newActionName = this.getDataAttribute(trigger, 'data-change-action-to');
         const form = <HTMLFormElement>trigger.closest('form');
-        if (newActionName !== null) {
+        if (this.isShouldChangeActionFlag) {
+            const newActionName = this.getDataAttribute(trigger, 'data-change-action-to');
             form.action = newActionName;
         }
-        if (this.isShouldNotSubmitFormFlag) {
+        if ( this.isShouldSubmitFormFlag) {
+            event.preventDefault();
             form.submit();
         }
     }
@@ -38,7 +40,11 @@ export default class FormSubmitter extends Component {
     }
 
     get isShouldSubmitForm(): string {
-        return this.getAttribute('withoutFormSubmit');
+        return this.getAttribute('submit-form');
+    }
+
+    get isShouldChangeAction(): string {
+        return this.getAttribute('change-action');
     }
 
     protected getDataAttribute(block: HTMLElement, attr: string): string {

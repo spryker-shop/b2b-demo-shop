@@ -44,7 +44,7 @@
                 {% endblock %}
             {% endembed %}
 
-            {% include molecule('form-submitter') with {
+            {% include molecule('form-handler') with {
                 attributes: {
                     'trigger-selector': '[name=\"' ~ data.formName ~ '\"]'
                 }

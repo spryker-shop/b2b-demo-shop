@@ -67,11 +67,12 @@
 
         {% endfor %}
 
-        {% include molecule('form-submitter') with {
+        {% include molecule('form-handler') with {
             attributes: {
                 'trigger-selector': '.' ~ config.jsName ~ '__category-trigger',
                 'event': 'click',
-                'withoutFormSubmit': 'true'
+                'change-action': 'true',
+                'submit-form': 'false'
             }
         } only %}
     </ul>
