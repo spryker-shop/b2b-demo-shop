@@ -3,6 +3,8 @@
         display: inline-block;
         position: relative;
 
+        $spacing-under-tooltip: rem(10);
+
         &__tooltip {
             background: $setting-color-alpha-7;
             color: $setting-color-white;
@@ -13,24 +15,26 @@
             border-radius: $setting-border-radius;
             position: absolute;
             left: 50%;
-            bottom: calc(100% + #{rem(10)});
+            bottom: calc(100% + #{$spacing-under-tooltip});
             transform-origin: bottom center;
             transform: translateX(-50%) scale(0);
             @include helper-effect-transition(transform);
 
+            $border-angle-size: rem(3);
+
             &::before {
                 content: '';
-                border-top: solid rem(3) $setting-color-alpha-7;
-                border-left: solid rem(3) $setting-color-transparent;
-                border-right: solid rem(3) $setting-color-transparent;
+                border-top: solid $border-angle-size $setting-color-alpha-7;
+                border-left: solid $border-angle-size $setting-color-transparent;
+                border-right: solid $border-angle-size $setting-color-transparent;
                 position: absolute;
                 top: 100%;
-                left: calc(50% - #{rem(3)});
+                left: calc(50% - #{$border-angle-size});
             }
-        }
 
-        &:hover &__tooltip {
-            transform: translateX(-50%) scale(1);
+            #{$name}:hover & {
+                transform: translateX(-50%) scale(1);
+            }
         }
 
         @content;

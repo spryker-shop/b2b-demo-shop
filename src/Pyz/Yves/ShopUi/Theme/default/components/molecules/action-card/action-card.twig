@@ -22,7 +22,7 @@
                         href="{{ action.url }}"
                         >
                         {% if action.icon | default(false) %}
-                            {% include atom('icon-tooltip') with {
+                            {% include molecule('icon-tooltip') with {
                                 modifiers: ['big'],
                                 data: {
                                     icon: action.icon,

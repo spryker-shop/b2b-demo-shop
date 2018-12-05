@@ -71,7 +71,7 @@
                         {{ data.cart.name }}
                         {% if can('ChangeCartItemPermissionPlugin', data.cart.idQuote) and canEditCart %}
                             <a href="{{ path('multi-cart/update', {idQuote: data.cart.idQuote}) }}" class="col button button--hollow-icon button--edit cart-title__link">
-                                {% include atom('icon-tooltip') with {
+                                {% include molecule('icon-tooltip') with {
                                     modifiers: ['sm-lg-regular'],
                                     data: {
                                         icon: 'edit',
