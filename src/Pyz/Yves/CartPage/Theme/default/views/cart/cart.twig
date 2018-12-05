@@ -70,11 +70,12 @@
                     <h3 class="grid grid--nowrap grid--middle cart-title__text">
                         {{ data.cart.name }}
                         {% if can('ChangeCartItemPermissionPlugin') %}
-                            <a href="{{ path('multi-cart/update', {idQuote: data.cart.idQuote}) }}" class="col button button--hollow-icon button--edit cart-title__link" title="{{ "multi_cart_widget.cart.action.change_name" | trans }}">
-                                {% include atom('icon') with {
+                            <a href="{{ path('multi-cart/update', {idQuote: data.cart.idQuote}) }}" class="col button button--hollow-icon button--edit cart-title__link">
+                                {% include atom('icon-tooltip') with {
                                     modifiers: ['mobile-small'],
                                     data: {
-                                        name: 'edit'
+                                        icon: 'edit',
+                                        text: 'multi_cart_widget.cart.action.change_name' | trans
                                     }
                                 } only %}
                                 <span class="is-hidden-lg-xxl">{{ 'general.edit.button' | trans }}</span>

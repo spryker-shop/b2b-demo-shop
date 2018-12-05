@@ -31,28 +31,31 @@
         <div class="col">
             <div class="list list--inline">
                 {% if can('WriteShoppingListPermissionPlugin', data.shoppingList.idShoppingList) %}
-                    <a class="list__item link link--alt link--action" href="{{ url('shopping-list/update', { idShoppingList: data.shoppingList.idShoppingList }) }}" title="{{ 'customer.account.shopping_list.overview.edit' | trans }}">
-                        {% include atom('icon') with {
+                    <a class="list__item link link--alt link--action" href="{{ url('shopping-list/update', { idShoppingList: data.shoppingList.idShoppingList }) }}">
+                        {% include atom('icon-tooltip') with {
                             modifiers: ['bigger'],
                             data: {
-                                name: 'edit'
+                                icon: 'edit',
+                                text: 'customer.account.shopping_list.overview.edit' | trans
                             }
                         } only %}
                     </a>
-                    <a class="list__item link link--alt link--action" href="{{ url('shopping-list/share', { idShoppingList: data.shoppingList.idShoppingList }) }}" title="{{ 'customer.account.shopping_list.overview.share' | trans }}">
-                        {% include atom('icon') with {
+                    <a class="list__item link link--alt link--action" href="{{ url('shopping-list/share', { idShoppingList: data.shoppingList.idShoppingList }) }}">
+                        {% include atom('icon-tooltip') with {
                             modifiers: ['bigger'],
                             data: {
-                                name: 'share'
+                                icon: 'share',
+                                text: 'customer.account.shopping_list.overview.share' | trans
                             }
                         } only %}
                     </a>
                 {% endif %}
-                <a class="list__item link link--alt link--action" href="{{ path('shopping-list/print', {idShoppingList: data.shoppingList.idShoppingList}) }}" target="_blank" title="{{ 'customer.account.shopping_list.print_shopping_list' | trans }}">
-                    {% include atom('icon') with {
+                <a class="list__item link link--alt link--action" href="{{ path('shopping-list/print', {idShoppingList: data.shoppingList.idShoppingList}) }}" target="_blank">
+                    {% include atom('icon-tooltip') with {
                         modifiers: ['bigger'],
                         data: {
-                            name: 'print'
+                            icon: 'print',
+                            text: 'customer.account.shopping_list.print_shopping_list' | trans
                         }
                     } only %}
                 </a>

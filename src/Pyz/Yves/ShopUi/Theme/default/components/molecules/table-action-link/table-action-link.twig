@@ -13,15 +13,15 @@
 } %}
 
 {% define attributes = {
-    href: data.url,
-    title: data.title | trans
+    href: data.url
 } %}
 
 {% block body %}
-    {% include atom('icon') with {
+    {% include atom('icon-tooltip') with {
         modifiers: [ data.iconModifier ],
         data: {
-            name: data.icon
+            icon: data.icon,
+            text: data.title | trans
         }
     } only %}
     <span class="{{ config.name }}__title is-hidden-lg-xxl">{{ data.title | trans }}</span>

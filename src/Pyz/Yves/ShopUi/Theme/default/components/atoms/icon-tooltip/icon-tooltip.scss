@@ -1,0 +1,40 @@
+@mixin shop-ui-icon-tooltip($name: '.icon-tooltip') {
+    #{$name} {
+        display: inline-block;
+        position: relative;
+
+        &__tooltip {
+            background: $setting-color-alpha-7;
+            color: $setting-color-white;
+            text-transform: uppercase;
+            font: fw(medium) rem(10) $setting-font-family;
+            white-space: nowrap;
+            padding: rem(7) rem(14);
+            border-radius: $setting-border-radius;
+            position: absolute;
+            left: 50%;
+            bottom: calc(100% + #{rem(10)});
+            transform-origin: bottom center;
+            transform: translateX(-50%) scale(0);
+            @include helper-effect-transition(transform);
+
+            &::before {
+                content: '';
+                border-top: solid rem(3) $setting-color-alpha-7;
+                border-left: solid rem(3) $setting-color-transparent;
+                border-right: solid rem(3) $setting-color-transparent;
+                position: absolute;
+                top: 100%;
+                left: calc(50% - #{rem(3)});
+            }
+        }
+
+        &:hover &__tooltip {
+            transform: translateX(-50%) scale(1);
+        }
+
+        @content;
+    }
+}
+
+@include shop-ui-icon-tooltip;

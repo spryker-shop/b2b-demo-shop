@@ -19,15 +19,14 @@
             {% block actions %}
                 {% for action in data.actions %}
                     <a class="link link--alt link--action spacing-left"
-                    href="{{ action.url }}"
-                    title="{{ action.title }}"
-                    >
+                        href="{{ action.url }}"
+                        >
                         {% if action.icon | default(false) %}
-                            {% include atom('icon') with {
+                            {% include atom('icon-tooltip') with {
                                 modifiers: ['big'],
-                                class: config.name ~ '__icon',
                                 data: {
-                                    name: action.icon
+                                    icon: action.icon,
+                                    text: action.title
                                 }
                             } only %}
                         {% endif %}
