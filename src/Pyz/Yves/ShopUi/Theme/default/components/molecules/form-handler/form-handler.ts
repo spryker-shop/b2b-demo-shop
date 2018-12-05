@@ -10,8 +10,8 @@ export default class FormHandler extends Component {
         super();
         this.event = <string>this.getAttribute('event');
         this.triggers = <HTMLElement[]>Array.from(document.querySelectorAll(this.triggerSelector));
-        this.isShouldSubmitFormFlag = this.isShouldSubmitForm === 'true' ? true : false;
-        this.isShouldChangeActionFlag = this.isShouldChangeAction === 'true' ? true : false;
+        this.isShouldSubmitFormFlag = this.isShouldSubmitForm === 'true';
+        this.isShouldChangeActionFlag = this.isShouldChangeAction === 'true';
     }
 
     protected readyCallback(): void {
