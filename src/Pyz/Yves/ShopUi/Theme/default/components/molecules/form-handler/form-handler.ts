@@ -3,15 +3,11 @@ import Component from 'ShopUi/models/component';
 export default class FormHandler extends Component {
     readonly event: string
     readonly triggers: HTMLElement[]
-    readonly isShouldSubmitFormFlag: boolean
-    readonly isShouldChangeActionFlag: boolean
 
     constructor() {
         super();
         this.event = <string>this.getAttribute('event');
         this.triggers = <HTMLElement[]>Array.from(document.querySelectorAll(this.triggerSelector));
-        this.isShouldSubmitFormFlag = this.isShouldSubmitForm === 'true';
-        this.isShouldChangeActionFlag = this.isShouldChangeAction === 'true';
     }
 
     protected readyCallback(): void {
@@ -25,11 +21,11 @@ export default class FormHandler extends Component {
     protected onTriggerEvent(event: Event): void {
         const trigger = <HTMLElement>event.currentTarget;
         const form = <HTMLFormElement>trigger.closest('form');
-        if (this.isShouldChangeActionFlag) {
+        if (this.shouldChangeAction) {
             const newActionName = this.getDataAttribute(trigger, 'data-change-action-to');
             form.action = newActionName;
         }
-        if ( this.isShouldSubmitFormFlag) {
+        if ( this.shouldSubmitForm) {
             event.preventDefault();
             form.submit();
         }
@@ -39,11 +35,19 @@ export default class FormHandler extends Component {
         return this.getAttribute('trigger-selector');
     }
 
-    get isShouldSubmitForm(): string {
+    get shouldSubmitForm(): boolean {
+        return this.submitForm === 'true';
+    }
+
+    get submitForm(): string  {
         return this.getAttribute('submit-form');
     }
 
-    get isShouldChangeAction(): string {
+    get shouldChangeAction(): boolean {
+        return this.changeAction === 'true';
+    }
+
+    get changeAction(): string {
         return this.getAttribute('change-action');
     }
 

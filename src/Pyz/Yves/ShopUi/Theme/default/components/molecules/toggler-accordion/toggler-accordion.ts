@@ -3,14 +3,12 @@ import Component from 'ShopUi/models/component';
 export default class TogglerAccordion extends Component {
     readonly wrap: HTMLElement
     readonly triggers: HTMLElement[]
-    readonly touchRulesFlag: boolean
     readonly isTouch: boolean
 
     constructor() {
         super();
         this.wrap = <HTMLElement>document.querySelector(this.wrapSelector);
         this.triggers = <HTMLElement[]>Array.from(document.querySelectorAll(this.triggerSelector));
-        this.touchRulesFlag = this.touchRules === 'true' ? true : false;
         this.isTouch = "ontouchstart" in window;
     }
 
@@ -23,7 +21,7 @@ export default class TogglerAccordion extends Component {
     }
 
     protected onTriggerClick(event: Event): void {
-        if (this.touchRulesFlag) {
+        if (this.isTouchScreen) {
             if (this.isTouch) {
                 this.initializeClick(event);
             }
@@ -74,6 +72,10 @@ export default class TogglerAccordion extends Component {
 
     get triggerActiveClass(): string {
         return this.getAttribute('active-class');
+    }
+
+    get isTouchScreen(): boolean {
+        return this.touchRules === 'true';
     }
 
     get touchRules(): string {
