@@ -4,7 +4,6 @@ import OverlayBlock from '../../atoms/overlay-block/overlay-block';
 export default class TogglerClick extends Component {
     readonly triggers: HTMLElement[]
     readonly targets: HTMLElement[]
-    readonly isFixBodyOnClick: boolean
     readonly overlay: OverlayBlock
     readonly overlayModifiers: string[]
     isShowClasses: string
@@ -16,7 +15,6 @@ export default class TogglerClick extends Component {
         this.overlay = <OverlayBlock>document.querySelector(this.overlaySelector);
         this.triggers = <HTMLElement[]>Array.from(document.querySelectorAll(this.triggerSelector));
         this.targets = <HTMLElement[]>Array.from(document.querySelectorAll(this.targetSelector));
-        this.isFixBodyOnClick = this.checkedIsShouldFixBody === 'true' ? true : false;
         this.overlayModifiers = this.customOverlayModifiers.split(', ');
         this.isContentOpened = false;
         this.isShowClasses = 'show-class';
@@ -167,6 +165,10 @@ export default class TogglerClick extends Component {
 
     get triggerClassToToggle(): string {
         return this.getAttribute('trigger-class-to-toggle');
+    }
+
+    get isFixBodyOnClick(): boolean {
+        return this.checkedIsShouldFixBody === 'true';
     }
 
     get checkedIsShouldFixBody(): string {
