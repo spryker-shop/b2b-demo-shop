@@ -45,6 +45,6 @@
             <span class="col navigation-top__company navigation-top__company--no-menu">{{ data.companyName }}</span>
         {% endif %}
     {% else %}
-        <a href="{{ path('company/overview') }}" class="col navigation-top__company" title="{{ data.companyName }}">{{ 'company.account.page-title' | trans }}</a>
+        <a href="{{ path('company/user/select') }}" class="col navigation-top__company" title="{{ data.companyName }}">{{ 'company.account.no-company-title' | trans }}</a>
     {% endif %}
 {% endblock %}

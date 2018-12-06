@@ -72,9 +72,12 @@
                 </div>
 
                 {% if is_granted('ROLE_USER') %}
+                    {% set BusinessOnBehalfStatusWidget = findWidget('BusinessOnBehalfStatusWidget', ['']) %}
+                    {% set isUserOnBehalf = BusinessOnBehalfStatusWidget.isOnBehalf %}
+
                     <div class="col col--right {{ config.name }}__user">
                         <div class="grid grid--gap">
-                            {% if can('SeeCompanyMenuPermissionPlugin') %}
+                            {% if can('SeeCompanyMenuPermissionPlugin') and not isUserOnBehalf %}
                                 <div class="col">
                                     <button class="link link--alternative js-page-layout-main__company-account-navigation-trigger">
                                         {% include atom('icon') with {
@@ -84,6 +87,18 @@
                                             }
                                         } only %}
                                     </button>
+                                </div>
+                            {% endif %}
+                            {% if isUserOnBehalf %}
+                                <div class="col">
+                                    <a href="{{ path('company/user/select') }}" class="link link--alternative">
+                                        {% include atom('icon') with {
+                                            modifiers: ['big'],
+                                            data: {
+                                                name: 'office'
+                                            }
+                                        } only %}
+                                    </a>
                                 </div>
                             {% endif %}
                             <div class="col">
