@@ -1,0 +1,11 @@
+{% extends template('page-layout-main') %}
+
+{% define data = {
+    error: error
+} %}
+
+{% block content %}
+    <div class="box spacing-y spacing-y--bigger">
+        <p>{{ data.error | trans }}</p>
+    </div>
+{% endblock %}
