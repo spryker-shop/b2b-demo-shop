@@ -1,6 +1,6 @@
 import Component from 'ShopUi/models/component';
 
-export default class FormSubmitter extends Component {
+export default class FormHandler extends Component {
     readonly event: string
     readonly triggers: HTMLElement[]
 
@@ -19,18 +19,36 @@ export default class FormSubmitter extends Component {
     }
 
     protected onTriggerEvent(event: Event): void {
-        event.preventDefault();
         const trigger = <HTMLElement>event.currentTarget;
-        const newActionName = this.getDataAttribute(trigger, 'data-change-action-to');
         const form = <HTMLFormElement>trigger.closest('form');
-        if (newActionName !== null) {
+        if (this.shouldChangeAction) {
+            const newActionName = this.getDataAttribute(trigger, 'data-change-action-to');
             form.action = newActionName;
         }
-        form.submit();
+        if ( this.shouldSubmitForm) {
+            event.preventDefault();
+            form.submit();
+        }
     }
 
     get triggerSelector(): string {
         return this.getAttribute('trigger-selector');
+    }
+
+    get shouldSubmitForm(): boolean {
+        return this.submitForm === 'true';
+    }
+
+    get submitForm(): string  {
+        return this.getAttribute('submit-form');
+    }
+
+    get shouldChangeAction(): boolean {
+        return this.changeAction === 'true';
+    }
+
+    get changeAction(): string {
+        return this.getAttribute('change-action');
     }
 
     protected getDataAttribute(block: HTMLElement, attr: string): string {

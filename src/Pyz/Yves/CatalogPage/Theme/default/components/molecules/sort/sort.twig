@@ -113,7 +113,7 @@
         }
     } only %}
 
-    {% include molecule('form-submitter') with {
+    {% include molecule('form-handler') with {
         attributes: {
             'trigger-selector': '.' ~ config.jsName ~ '__per-page-select' ~ ', .' ~ config.jsName ~ '__sort-select'
         }
