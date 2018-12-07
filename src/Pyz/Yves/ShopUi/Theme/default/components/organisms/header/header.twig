@@ -72,8 +72,8 @@
                 </div>
 
                 {% if is_granted('ROLE_USER') %}
-                    {% set BusinessOnBehalfStatusWidget = findWidget('BusinessOnBehalfStatusWidget', ['']) %}
-                    {% set isUserOnBehalf = BusinessOnBehalfStatusWidget.isOnBehalf %}
+                    {% set businessOnBehalfStatusWidget = findWidget('BusinessOnBehalfStatusWidget', ['']) %}
+                    {% set isUserOnBehalf = businessOnBehalfStatusWidget.isOnBehalf %}
 
                     <div class="col col--right {{ config.name }}__user">
                         <div class="grid grid--gap">
