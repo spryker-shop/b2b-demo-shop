@@ -15,18 +15,11 @@
 {% endblock %}
 
 {% block body %}
-    {% set label = '' %}
-    {% if data.isOnBehalf and data.companyName is not empty and data.companyBusinessUnitName is not empty %}
-        {% set label = data.companyName ~ ' / ' ~ data.companyBusinessUnitName %}
-    {% else %}
-        {% set label = 'business_on_behalf_widget.no_selected_company' | trans %}
-    {% endif %}
-
     {% include molecule('navigation-sidebar-item') with {
         data: {
             url: path('company/user/select'),
             icon: 'building',
-            label: label,
+            label: 'business_on_behalf_widget.no_selected_company' | trans,
             name: 'no-company',
             active: data.isActivePage
         },
