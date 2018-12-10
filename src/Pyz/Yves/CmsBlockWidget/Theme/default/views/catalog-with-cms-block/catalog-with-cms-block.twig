@@ -1,0 +1,36 @@
+{% extends template('widget') %}
+
+{% block top %}
+    {% set contentCmsBlock = spyCmsBlock({category: _widget.idCategory, position: 'top'})  %}
+    {% if contentCmsBlock is not empty %}
+    <div class="container">
+        <div class="catalog-cms-block spacing-top spacing-top--small spacing-bottom spacing-bottom--big">
+            {{ contentCmsBlock | raw }}
+        </div>
+    </div>
+    {% endif %}
+{% endblock %}
+
+{% block middle %}
+    {% set contentCmsBlock = spyCmsBlock({category: _widget.idCategory, position: 'middle'})  %}
+    {% if contentCmsBlock is not empty %}
+    <div class="catalog-cms-block catalog-cms-block--sidebar">
+        {{ contentCmsBlock | raw }}
+    </div>
+    {% endif %}
+{% endblock %}
+
+{% block bottom %}
+    {% set contentCmsBlock = spyCmsBlock({category: _widget.idCategory, position: 'bottom'})  %}
+    {% if contentCmsBlock is not empty %}
+    <div class="catalog-cms-block-wrap">
+        <div class="container catalog-cms-block catalog-cms-block--bottom">
+        {{ contentCmsBlock | raw }}
+        </div>
+    </div>
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+    {{ spyCmsBlock({category: _widget.idCategory, position: _widget.position}) }}
+{% endblock %}

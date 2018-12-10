@@ -26,11 +26,7 @@
 } %}
 {% block contentTop %}
     {% if data.categoryId is not empty %}
-        <div class="container">
-            <div class="catalog-cms-block spacing-top spacing-top--small spacing-bottom spacing-bottom--big">
-                {{ widgetBlock('CatalogCmsBlockWidgetPlugin', 'top', data.categoryId) }}
-            </div>
-        </div>
+            {{ widgetBlock('CatalogCmsBlockWidgetPlugin', 'top', data.categoryId) }}
     {% endif %}
 {% endblock %}
 
@@ -38,19 +34,13 @@
     {{parent()}}
 
     {% if data.categoryId is not empty %}
-        <div class="catalog-cms-block catalog-cms-block--sidebar">
             {{ widgetBlock('CatalogCmsBlockWidgetPlugin', 'middle', data.categoryId) }}
-        </div>
     {% endif %}
 {% endblock %}
 
 {% block contentBottom %}
     {% if data.categoryId is not empty %}
-        <div class="catalog-cms-block-wrap">
-            <div class="container catalog-cms-block catalog-cms-block--bottom">
-                {{ widgetBlock('CatalogCmsBlockWidgetPlugin', 'bottom', data.categoryId) }}
-            </div>
-        </div>
+        {{ widgetBlock('CatalogCmsBlockWidgetPlugin', 'bottom', data.categoryId) }}
     {% endif %}
 {% endblock %}
 
