@@ -36,6 +36,7 @@ use Spryker\Zed\ProductList\Communication\Plugin\CartExtension\RemoveRestrictedI
 use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\Cart\QuantitySalesUnitGroupKeyItemExpanderPlugin;
 use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\Cart\QuantitySalesUnitItemExpanderPlugin;
 use Spryker\Zed\ProductMeasurementUnit\Communication\Plugin\Cart\QuantitySalesUnitValuePostSavePlugin;
+use Spryker\Zed\ProductOptionCartConnector\Communication\Plugin\Cart\CartItemOptionPreCheckPlugin;
 use Spryker\Zed\ProductOptionCartConnector\Communication\Plugin\CartItemGroupKeyOptionPlugin;
 use Spryker\Zed\ProductOptionCartConnector\Communication\Plugin\CartItemProductOptionPlugin;
 use Spryker\Zed\ProductOptionCartConnector\Communication\Plugin\ChangeProductOptionQuantityPlugin;
@@ -98,6 +99,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
         return [
             new ProductExistsCartPreCheckPlugin(),
             new CartItemPricePreCheckPlugin(),
+            new CartItemOptionPreCheckPlugin(),
             new ProductOptionValuePriceExistsCartPreCheckPlugin(),
             new CartBundleAvailabilityPreCheckPlugin(),
             new CartShipmentPreCheckPlugin(),
