@@ -163,7 +163,7 @@ export default class PackagingUnitQuantitySelector extends Component {
         this.measurementUnitInput.addEventListener('change', (event: Event) => this.measurementUnitInputChange(event));
 
         if(this.isAmountBlockEnabled) {
-            this.amountInSalesUnitInput.addEventListener('input', (event: Event) => this.amountInputChange());
+            this.amountInSalesUnitInput.addEventListener('change', (event: Event) => this.amountInputChange());
             this.leadSalesUnitSelect.addEventListener('change', (event: Event) => this.leadSalesUnitSelectChange(event));
         }
     }
@@ -402,6 +402,7 @@ export default class PackagingUnitQuantitySelector extends Component {
         this.productPackagingNewPriceBlock.classList.add('is-hidden');
         this.puError = false;
         let amountInBaseUnits = this.multiply(amountInSalesUnitInput, +this.currentLeadSalesUnit.conversion);
+        amountInBaseUnits = Math.round(amountInBaseUnits);
 
         if ((amountInBaseUnits - this.getMinAmount()) % this.getAmountInterval() !== 0) {
             this.puError = true;
