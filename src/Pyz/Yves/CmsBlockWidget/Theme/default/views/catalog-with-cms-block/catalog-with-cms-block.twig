@@ -3,8 +3,10 @@
 {% block top %}
     {% set contentCmsBlock = spyCmsBlock({category: _widget.idCategory, position: 'top'})  %}
     {% if contentCmsBlock is not empty %}
-    <div class="catalog-cms-block catalog-cms-block--sidebar">
-        {{ contentCmsBlock | raw }}
+    <div class="container">
+        <div class="catalog-cms-block spacing-top spacing-top--small spacing-bottom spacing-bottom--big">
+            {{ contentCmsBlock | raw }}
+        </div>
     </div>
     {% endif %}
 {% endblock %}
