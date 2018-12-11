@@ -14,7 +14,7 @@
 {% block middle %}
     {% set contentCmsBlock = spyCmsBlock({category: _widget.idCategory, position: 'middle'})  %}
     {% if contentCmsBlock is not empty %}
-        <div class="catalog-cms-block catalog-cms-block--sidebar">
+        <div class="is-hidden-sm-md catalog-cms-block catalog-cms-block--sidebar">
             {{ contentCmsBlock | raw }}
         </div>
     {% endif %}
