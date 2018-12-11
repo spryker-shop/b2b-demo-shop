@@ -26,13 +26,15 @@
                 iso2_code: 'col col--sm-12 col--lg-4'
             },
             submit: {
-                enable: true
+                enable: true,
+                class: 'form__action--expand-sm-md form__action--sm-md-first button'
             },
             cancel: {
                 enable: true,
                 url: url('customer/address'),
                 text: 'general.back.button' | trans,
-                icon: null
+                icon: null,
+                class: 'form__action--expand-sm-md button button--hollow'
             }
         }
     } only %}
