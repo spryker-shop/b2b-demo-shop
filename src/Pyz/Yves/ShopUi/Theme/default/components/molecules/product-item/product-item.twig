@@ -103,7 +103,8 @@
                             {% include molecule('product-item-variant-selector') with {
                                 data: {
                                     productItem: data.listItem,
-                                    productItemAttributes: data.attributes
+                                    productItemAttributes: data.attributes,
+                                    canEdit: data.canEdit
                                 }
                             } only %}
                         {% endif %}
