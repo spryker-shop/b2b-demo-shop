@@ -15,10 +15,12 @@
 } %}
 
 {% block image %}
+    {% set thumbnailModifier = 'category' in modifiers ? ['category'] : [] %}
+
     <div class="{{ component.renderClass(config.name ~ '__image-wrap', modifiers) }}">
         {% include atom('thumbnail') with {
             class: 'js-product-color-group__image-' ~ data.abstractId,
-            modifiers: ['catalog'],
+            modifiers: ['catalog'] | merge(thumbnailModifier),
             attributes: {
                 alt: data.name,
                 src: data.imageUrl,
@@ -38,7 +40,6 @@
         {% widget 'ProductAbstractLabelWidget' args [data.abstractId] with {modifiers: modifiers} only %}
             {% block body %}
                 {% include molecule('label-group', 'ProductLabelWidget') with {
-                    modifiers: isLabels ? modifiers : ['hidden'],
                     data: {
                         labels: labels
                     }

@@ -13,7 +13,8 @@
     label: '',
     isAvailable: true,
     selectModifiers: ['margin-bottom'],
-    selectTheme: 'default'
+    selectTheme: 'default',
+    selectPlaceholder: 'product.attribute._none'
 } %}
 
 {% set selectModifiers = data.selectModifiers | merge(['full-width']) %}
@@ -31,18 +32,19 @@
                     'config-theme': data.selectTheme
                 },
                 embed: {
-                    values: data.values
+                    values: data.values,
+                    selectPlaceholder: data.selectPlaceholder
                 }
             } only %}
                 {% block options %}
-                    <option>{{ 'product.attribute._none' | trans }}</option>
+                    <option>{{ embed.selectPlaceholder | trans }}</option>
                     {% for value in embed.values %}
                         <option value="{{value}}">{{value}}</option>
                     {% endfor %}
                 {% endblock %}
             {% endembed %}
 
-            {% include molecule('form-submitter') with {
+            {% include molecule('form-handler') with {
                 attributes: {
                     'trigger-selector': '[name=\"' ~ data.formName ~ '\"]'
                 }

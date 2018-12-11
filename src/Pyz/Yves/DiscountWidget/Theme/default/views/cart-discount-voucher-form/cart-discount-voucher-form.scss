@@ -4,15 +4,19 @@
         position: relative;
 
         .input {
-            padding-left: rem(12);
+            padding-left: rem(20);
             padding-right: rem(65);
+
+            @include helper-breakpoint-media-min($lg) {
+                padding-left: rem(12);
+            }
         }
     }
 
     .form__actions {
         position: absolute;
-        top: 0.5rem;
-        bottom: 0.5rem;
+        top: rem(8);
+        bottom: rem(8);
         right: 0;
         margin-top: 0;
     }

@@ -6,13 +6,13 @@
 } %}
 
 {% block body %}
-    <div class="grid grid--middle grid--justify spacing-top spacing-top--biggest">
-        <div class="col">
-            <h5>{{ "customer.profile.delete" | trans }}</h5>
+    <div class="grid grid--middle grid--justify box">
+        <div class="col col--sm-12 col--lg-auto spacing-y spacing-y--small">
+            <h4 class="spacing-bottom spacing-bottom--big">{{ "customer.profile.delete" | trans }}</h4>
             {{ "customer.profile.delete.description" | trans }}
         </div>
-        <div class="col">
-            <a href="{{url('customer/delete')}}" class="button button--alert button--hollow">{{ "customer.profile.delete" | trans }}</a>
+        <div class="col col--sm-12 col--lg-auto spacing-y spacing-y--small">
+            <a href="{{url('customer/delete')}}" class="button button--expand-sm-only button--alert button--hollow">{{ "customer.profile.delete" | trans }}</a>
         </div>
     </div>
 {% endblock %}

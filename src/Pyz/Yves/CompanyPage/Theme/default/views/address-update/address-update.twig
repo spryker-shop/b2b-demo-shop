@@ -43,22 +43,22 @@
                 action: url('company/address/update', { idCompanyBusinessUnit: data.idCompanyBusinessUnit })
             },
             layout: {
-                address1: 'col col--sm-12 col--lg-10',
-                address2: 'col col--sm-12 col--lg-2',
+                address1: 'col col--sm-12 col--lg-9',
+                address2: 'col col--sm-12 col--lg-3',
                 zip_code: 'col col--sm-12 col--lg-4',
                 city: 'col col--sm-12 col--lg-4',
                 iso2code: 'col col--sm-12 col--lg-4'
             },
             submit: {
                 enable: true,
-                class: 'button'
+                class: 'form__action--expand-sm-md form__action--sm-md-first button'
             },
             cancel: {
                 enable: true,
                 url: data.idCompanyBusinessUnit ? buIndexUrl : buListUrl,
                 text: 'general.back.button' | trans,
                 icon: null,
-                class: 'button button--hollow'
+                class: 'form__action--expand-sm-md button button--hollow'
             }
         }
     } only %}

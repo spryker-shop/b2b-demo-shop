@@ -1,13 +1,16 @@
 @include product-label-widget-label-group {
-    padding: 20px 0;
+    line-height: 0;
+    padding: rem(20) 0;
 
     &__text {
         display: inline-block;
         font-size: rem(10);
         line-height: rem(24);
+        font-weight: fw(bold);
+        letter-spacing: rem(0.4);
         background-color: $setting-color-alt;
         color: $setting-color-white;
-        padding: 0 rem(10);
+        padding: 0 rem(11);
 
         &--top {
             background-color: $setting-color-blue-1;
@@ -32,9 +35,33 @@
             background-color: $setting-color-white;
             color: $setting-color-alt;
         }
+
+        &--pdp {
+            padding: 0 14px;
+            margin: -5px 5px 0 0;
+        }
     }
 
     &--sets {
-        padding-left: rem(14);
+        padding-left: 0;
+
+        @include helper-breakpoint-media-min($lg) {
+            padding-left: rem(14);
+        }
+
+    }
+
+    &--pdp {
+        order: 2;
+        position: static;
+        padding: rem(10) 0 0;
+        display: inline-block;
+        font-size: 0;
+        line-height: 0;
+        vertical-align: middle;
+
+        @include helper-breakpoint-media-min($lg) {
+            padding: 0;
+        }
     }
 }

@@ -9,7 +9,7 @@
 
 {% block companyContent %}
     {% if data.company is not empty %}
-        {% include molecule('tile', 'ShopUi') with {
+        {% include molecule('tile', 'CompanyPage') with {
             data: {
                 icon: 'office',
                 title: 'company.account.name' | trans,
@@ -19,7 +19,7 @@
     {% endif %}
 
     {# TODO: show actual deafult company address #}
-    {% include molecule('tile', 'ShopUi') with {
+    {% include molecule('tile', 'CompanyPage') with {
         data: {
             icon: 'marker',
             title: 'company.account.address' | trans,

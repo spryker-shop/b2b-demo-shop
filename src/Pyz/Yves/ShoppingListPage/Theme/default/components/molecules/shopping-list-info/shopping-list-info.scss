@@ -2,9 +2,19 @@
     padding: rem(20);
     background-color: $setting-color-gray-7;
     border-radius: $setting-border-radius;
-    margin: rem(10) 0 1.5rem;
+    margin: rem(10) 0 rem(24);
     color: $setting-color-gray-3;
     font-size: rem(14);
+
+    &--editable {
+        margin-top: 0;
+        padding-top: rem(10);
+
+        @include helper-breakpoint-media-min($lg) {
+            margin-top: rem(10);
+            padding-top: rem(20);
+        }
+    }
 
     &__title {
         color: $setting-color-gray-5;

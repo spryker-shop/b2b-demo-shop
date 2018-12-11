@@ -2,41 +2,88 @@
     display: flex;
     flex-direction: column;
     height: 100%;
+
     .content-wrap {
         flex: 1;
+
+        // TODO: temporary remove horizontal scroll, need to remove this style after implementation mobile design on header and footer
+        > main {
+            overflow: hidden;
+        }
     }
 }
 
 .page-layout-main {
     &--catalog-page {
-        padding-top: rem(20);
+        position: relative;
+        padding-top: rem(16);
+
+        @include helper-breakpoint-media-min($lg) {
+            padding-top: rem(20);
+        }
     }
 
     &--catalog-page-content {
-        padding-bottom: rem(70);
+        padding-bottom: rem(60);
+
+        @include helper-breakpoint-media-min($lg) {
+            padding-bottom: rem(70);
+        }
     }
 
     &--pdp {
-        padding: 30px 0 0;
-
-        .gallery-side {
-            width: 660px;
+        @include helper-breakpoint-media-min($lg) {
+            padding: 30px 0 0;
         }
     }
 
     &--quick-order-page {
-        padding: 50px 0 70px;
+        padding: rem(14) 0 rem(60);
+
+        @include helper-breakpoint-media-min($lg) {
+            padding: rem(50) 0 rem(54);
+        }
     }
 
-    &--checkout-page,
     &--cart-page {
-        padding-top: rem(32);
-        padding-bottom: rem(120);
+        padding-top: rem(14);
+        padding-bottom: rem(30);
+
+        @include helper-breakpoint-media-min($lg) {
+            padding-top: rem(32);
+            padding-bottom: rem(60);
+        }
+
+        @include helper-breakpoint-media-min($xl) {
+            padding-bottom: rem(120);
+        }
+    }
+
+    &--checkout-page {
+        padding-top: rem(24);
+        padding-bottom: rem(80);
+
+        @include helper-breakpoint-media-min($lg) {
+            padding-top: rem(32);
+        }
+
+        @include helper-breakpoint-media-min($xl) {
+            padding-bottom: rem(120);
+        }
     }
 
     &--cms-page {
         padding-top: rem(32);
         padding-bottom: rem(70);
+    }
+
+    &--success {
+        padding-top: 0;
+        padding-bottom: rem(50);
+
+        @include helper-breakpoint-media-min($xl) {
+            padding-bottom: rem(110);
+        }
     }
 
     &--error-page {
@@ -45,4 +92,24 @@
         min-height: rem(760);
         padding-top: rem(35);
     }
+
+    $setting-pdp-gallery-max-width: 660;
+    $setting-site-max-width: 1200;
+
+    &__pdp-gallery {
+        background: $setting-color-alpha-2;
+        padding: 0 rem(15) rem(15);
+        margin: 0 rem(-15);
+        width: calc(100% + 30px);
+        min-width: 100%;
+
+        @include helper-breakpoint-media-min($lg) {
+            background: transparent;
+            width: calc(#{$setting-pdp-gallery-max-width} / #{$setting-site-max-width} * 100%);
+            min-width: calc(#{$setting-pdp-gallery-max-width} / #{$setting-site-max-width} * 100%);
+            margin: 0 rem(15) 0 0;
+            padding-bottom: 0;
+        }
+    }
 }
+

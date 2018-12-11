@@ -32,6 +32,43 @@
         background-color: $setting-color-white;
         color: $setting-color-gray-4;
         font-family: $setting-font-family;
+
+        &.is-locked {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            overflow: hidden;
+            height: 100%;
+        }
+
+        &.is-locked-tablet {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            overflow: hidden;
+            height: 100%;
+
+            @include helper-breakpoint-media-min($xl) {
+                overflow: visible;
+                position: static;
+            }
+        }
+
+        &.is-locked-mobile {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            overflow: hidden;
+            height: 100%;
+
+            @include helper-breakpoint-media-min($lg) {
+                overflow: visible;
+                position: static;
+            }
+        }
     }
 
     * {
@@ -76,7 +113,11 @@
     }
 
     small {
-        @include helper-font-size(small);
+        font-size: rem(12);
+
+        @include helper-breakpoint-media-min($lg) {
+            @include helper-font-size(small);
+        }
     }
 
     big {

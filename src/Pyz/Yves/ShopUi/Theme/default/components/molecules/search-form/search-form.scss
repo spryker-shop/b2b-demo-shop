@@ -2,17 +2,32 @@
     #{$name} {
         position: relative;
 
-        &__submit {
+        &__button {
             position: absolute;
             top: 0;
-            left: 0;
-            width: rem(56);
+            width: rem(43);
             height: 100%;
             padding: 0;
             border: none;
             background: $setting-color-transparent;
             color: $setting-color-gray-4;
             z-index: $setting-zi-search-suggestions + 3;
+
+            @include helper-breakpoint-media-min($lg) {
+                width: rem(56);
+            }
+
+            &--submit {
+                left: 0;
+            }
+
+            &--close {
+                right: 0;
+
+                @include helper-breakpoint-media-min($lg) {
+                    display: none;
+                }
+            }
 
             &:hover {
                 background: $setting-color-transparent;

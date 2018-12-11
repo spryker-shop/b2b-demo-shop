@@ -26,18 +26,18 @@
 
 {% block content %}
     <div class="grid cart-update">
-        <div class="col col--md-6">
+        <div class="col--sm-12 col--lg-6">
             <h2>{{ "multi_cart_page.cart_delete_confirmation.warning" | trans }}</h2>
 
             <p>{{ "multi_cart_page.cart_delete_confirmation.trying_to_delete" | trans }}: <strong>{{ data.cartName }}</strong></p>
 
             {% widget 'CartDeleteCompanyUsersListWidget' args [data.cart] only %}{% endwidget %}
 
-            <div class="form__actions">
-                <a href="{{ data.backUrl }}" class="button button--hollow spacing-right spacing-right--big">
+            <div class="grid">
+                <a href="{{ data.backUrl }}" class="col col--sm-12 col--md-auto button button--hollow spacing-right spacing-right--big spacing-top spacing-top">
                     {{ "general.back.button" | trans }}
                 </a>
-                <a href="{{ url('multi-cart/delete', { 'idQuote' : data.cartIdQuote }) }}" class="button button--alert">
+                <a href="{{ url('multi-cart/delete', { 'idQuote' : data.cartIdQuote }) }}" class="col col--sm-12 col--md-auto button button--alert spacing-top spacing-top">
                     {{ "multi_cart_page.cart_delete_confirmation.delete" | trans }}
                 </a>
             </div>

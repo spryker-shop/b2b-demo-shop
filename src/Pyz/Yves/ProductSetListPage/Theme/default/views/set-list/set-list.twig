@@ -13,7 +13,8 @@
                 {% set imageUrl = productSet.imageSets.0.images.0.externalUrlSmall | default('') %}
 
                 <div class="col col--sm-12 col--lg-4 text-center">
-                    {% include molecule('card') with {
+                    {% include molecule('product-set-card', 'ProductSetListPage') with {
+                        class: 'spacing-bottom spacing-bottom--bigger',
                         data: {
                             name: productSet.name,
                             url: productSet.url,

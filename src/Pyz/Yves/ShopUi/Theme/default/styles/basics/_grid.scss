@@ -32,11 +32,24 @@
                         min-width: helper-grid-span($column);
                     }
                 }
+
+                &--#{$breakpoint}-auto {
+                    width: auto;
+                    min-width: 0;
+                }
             }
         }
 
         &--expand {
             flex-grow: 1;
+        }
+
+        &--mobile-expand {
+            flex-grow: 1;
+
+            @include helper-breakpoint-media-min($lg) {
+                flex-grow: 0;
+            }
         }
 
         &--top {
@@ -69,6 +82,19 @@
             align-self: center;
             margin-top: auto;
             margin-bottom: auto;
+        }
+
+        &--equal {
+            flex-grow: 1;
+            flex-basis: 0;
+        }
+
+        &--bottom-indent {
+            padding-bottom: $setting-grid-space-mobile;
+
+            @include helper-breakpoint-media-min($lg) {
+                padding-bottom: $setting-grid-space;
+            }
         }
     }
 
@@ -118,12 +144,32 @@
         }
 
         &--gap {
-            margin-left: -$setting-grid-space;
-            margin-right: -$setting-grid-space;
+            margin-left: -$setting-grid-space-mobile;
+            margin-right: -$setting-grid-space-mobile;
+
+            @include helper-breakpoint-media-min($lg) {
+                margin-left: -$setting-grid-space;
+                margin-right: -$setting-grid-space;
+            }
 
             & > .col {
-                padding-left: $setting-grid-space;
-                padding-right: $setting-grid-space;
+                padding-left: $setting-grid-space-mobile;
+                padding-right: $setting-grid-space-mobile;
+
+                @include helper-breakpoint-media-min($lg) {
+                    padding-left: $setting-grid-space;
+                    padding-right: $setting-grid-space;
+                }
+            }
+        }
+
+        &--gap-smaller {
+            margin-left: rem(-5);
+            margin-right: rem(-5);
+
+            & > .col {
+                padding-left: rem(5);
+                padding-right: rem(5);
             }
         }
 
@@ -165,8 +211,22 @@
             flex-wrap: nowrap;
         }
 
+        &--nowrap-lg-only {
+            @include helper-breakpoint-media-min($lg) {
+                flex-wrap: nowrap;
+            }
+        }
+
         &--column {
             flex-direction: column;
+        }
+
+        &--column-mob-reverse {
+            flex-direction: column-reverse;
+
+            @include helper-breakpoint-media-min($lg) {
+                flex-direction: column;
+            }
         }
 
         &--inline {

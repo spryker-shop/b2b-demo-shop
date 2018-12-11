@@ -1,0 +1,51 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'product-set-card',
+    tag: 'article'
+} %}
+
+{% define data = {
+    name: required,
+    url: required,
+    imageUrl: required,
+    description: ''
+} %}
+
+{% block body %}
+    {% block content %}
+        <div class="{{ component.renderClass(config.name ~ '__container', modifiers) }}">
+            {% block image %}
+                <a href="{{data.url}}" class="{{ config.name ~ '__img-box' }}" style="background-image: url({{ data.imageUrl }})">
+                    {{data.name}}
+                </a>
+            {% endblock %}
+
+            {% block name %}
+                <strong class="{{ config.name ~ '__name' }} spacing-y spacing-y--big">{{data.name}}</strong>
+            {% endblock %}
+
+            {% block description %}
+                {% if data.description is not empty %}
+                    <p>{{data.description}}</p>
+                {% endif %}
+            {% endblock %}
+        </div>
+    {% endblock %}
+
+    {% block actionsContainer %}
+        <div class="{{ component.renderClass(config.name ~ '__actions-container') }}">
+            {% block actions %}
+                <a class="button button--expand" href="{{data.url}}">
+                    {{'product.view' | trans}}
+                    {% include atom('icon') with {
+                        modifiers: ['small'],
+                        data: {
+                            name: 'angle-double-right'
+                        }
+                    } only %}
+                </a>
+            {% endblock %}
+        </div>
+    {% endblock %}
+{% endblock %}

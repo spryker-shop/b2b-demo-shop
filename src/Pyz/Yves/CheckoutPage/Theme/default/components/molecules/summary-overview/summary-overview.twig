@@ -24,22 +24,22 @@
         <div class="col col--sm-8">
             <h6 class="{{ config.name }}__title">{{ 'checkout.step.summary.overview' | trans }}</h6>
         </div>
-        <div class="col col--sm-2 text-right">{{ app['cart.quantity'] }} {{ 'checkout.step.summary.items' | trans }}</div>
+        <div class="col col--expand text-right">{{ app['cart.quantity'] }} {{ 'checkout.step.summary.items' | trans }}</div>
     </div>
     <ul class="{{ config.name }}__list">
         <li class="{{ config.name }}__item">
-            {{ 'checkout.step.summary.sub_total' | trans }}
-            <span class="float-right">{{ data.prices.subTotal | money }}</span>
+            <span class="{{ config.name }}__text {{ config.name }}__text--bigger">{{ 'checkout.step.summary.sub_total' | trans }}</span>
+            <span class="float-right {{ config.name }}__text {{ config.name }}__text--bigger">{{ data.prices.subTotal | money }}</span>
         </li>
 
         {% if data.prices.discountTotal %}
             {% if data.voucherDiscounts is not empty %}
                 <li class="{{ config.name }}__item">
-                    {{ 'cart.vouchers' | trans }}
+                    <span class="{{ config.name }}__text {{ config.name }}__text--bigger">{{ 'cart.vouchers' | trans }}</span>
                     {% for voucherDiscount in data.voucherDiscounts %}
                         <div class="grid grid--justify grid--middle {{ config.name }}__text-wrap">
-                            <span class="col col--sm-10 text-secondary {{ config.name }}__text">{{ voucherDiscount.displayName }}</span>
-                            <span class="col col--expand text-right text-alt">{{ voucherDiscount.amount | money }}</span>
+                            <span class="col col--sm-8 col--lg-10 text-secondary {{ config.name }}__text">{{ voucherDiscount.displayName }}</span>
+                            <span class="col col--expand text-right text-alt {{ config.name }}__text {{ config.name }}__text--bigger">{{ voucherDiscount.amount | money }}</span>
                         </div>
                     {% endfor %}
                 </li>
@@ -47,11 +47,11 @@
 
             {% if data.cartRuleDiscounts|length %}
                 <li class="{{ config.name }}__item">
-                    {{ 'cart.discounts' | trans }}
+                    <span class="{{ config.name }}__text {{ config.name }}__text--bigger">{{ 'cart.discounts' | trans }}</span>
                     {% for ruleDiscount in data.cartRuleDiscounts %}
                         <div class="grid grid--justify grid--middle {{ config.name }}__text-wrap">
-                            <span class="col col--sm-10 text-secondary {{ config.name }}__text">{{ ruleDiscount.displayName }}</span>
-                            <span class="col col--expand text-right text-alt">- {{ ruleDiscount.amount | money }}</span>
+                            <span class="col col--sm-8 col--lg-10 text-secondary {{ config.name }}__text">{{ ruleDiscount.displayName }}</span>
+                            <span class="col col--expand text-right text-alt {{ config.name }}__text {{ config.name }}__text--bigger">- {{ ruleDiscount.amount | money }}</span>
                         </div>
                     {% endfor %}
                 </li>
@@ -65,10 +65,10 @@
 
         <li class="{{ config.name }}__item">
             <span class="float-right">{{ data.prices.storeCurrency | money }}</span>
-            {{ 'checkout.step.summary.shipping' | trans }} ({{ data.shipmentMethod }})
+            <span class="{{ config.name }}__text {{ config.name }}__text--bigger">{{ 'checkout.step.summary.shipping' | trans }} ({{ data.shipmentMethod }})</span>
             <div class="{{ config.name }}__inner-row">
-                <span class="text-secondary">{{ 'checkout.step.summary.tax' | trans }}</span>
-                <span class="text-secondary float-right">{{ data.prices.tax | money }}</span>
+                <span class="text-secondary {{ config.name }}__text">{{ 'checkout.step.summary.tax' | trans }}</span>
+                <span class="text-secondary float-right {{ config.name }}__text {{ config.name }}__text--bigger">{{ data.prices.tax | money }}</span>
             </div>
         </li>
         <li class="{{ config.name }}__item {{ config.name }}__item--total">

@@ -1,9 +1,13 @@
 @mixin shop-ui-product-item-image($name: '.product-item-image') {
     #{$name} {
         display: flex;
-        height: 100%;
         position: relative;
-        padding: rem(36) rem(4) rem(28);
+        padding: rem(4);
+
+        @include helper-breakpoint-media-min($lg) {
+            height: 100%;
+            padding: rem(36) rem(4) rem(28);
+        }
 
         &::before {
             content: '';
@@ -22,10 +26,20 @@
             overflow: hidden;
         }
 
-        &--summary,
+        &--summary {
+            @include helper-breakpoint-media-min($lg) {
+                padding-top: rem(28);
+                padding-bottom: rem(20);
+            }
+        }
+
         &--shopping-list {
-            padding-top: rem(28);
-            padding-bottom: rem(20);
+            padding: 0;
+
+            @include helper-breakpoint-media-min($lg) {
+                padding-top: rem(28);
+                padding-bottom: rem(20);
+            }
         }
 
         @content;

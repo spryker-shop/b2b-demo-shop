@@ -40,7 +40,20 @@
 
 {% block contentBottom %}
     {% if data.categoryId is not empty %}
-        {{ widgetBlock('CatalogCmsBlockWidgetPlugin', 'bottom', data.categoryId) }}
+        <div class="catalog-cms-block-wrap">
+            {% embed molecule('content-collapser') with {
+                modifiers: ['with-background'],
+                embed: {
+                    categoryId: data.categoryId
+                }
+            } only %}
+                {% block content %}
+                    <div class="container catalog-cms-block catalog-cms-block--bottom">
+                        {{ widgetBlock('CatalogCmsBlockWidgetPlugin', 'bottom', embed.categoryId) }}
+                    </div>
+                {% endblock %}
+            {% endembed %}
+        </div>
     {% endif %}
 {% endblock %}
 

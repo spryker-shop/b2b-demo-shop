@@ -38,7 +38,7 @@
                     {% endfor %}
                 {% endblock %}
             {% endembed %}
-            {% include molecule('form-submitter') with {
+            {% include molecule('form-handler') with {
                 attributes: {
                     'trigger-selector': '.js-' ~ data.name ~ '-select'
                 }

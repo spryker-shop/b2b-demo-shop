@@ -11,7 +11,8 @@
 
 {% define attributes = {
     'target-selector': required,
-    'class-to-toggle': required
+    'class-to-toggle': required,
+    'available-breakpoint': '0'
 } %}
 
 {% block body %}
@@ -20,9 +21,10 @@
             {% set hasChildren = node.children | length > 0 %}
             
             {% include molecule('navigation-multilevel-node') with {
-                class: 'menu__item menu__item--lvl-0 ' ~ (hasChildren ? 'menu__item--has-children-dropdown js-menu-trigger' : ''),
+                class: 'menu__item menu__item--lvl-0 ' ~ (hasChildren ? 'menu__item--has-children-dropdown' : ''),
                 data: {
-                    node: node
+                    node: node,
+                    parentJsName: config.jsName
                 }
             } only %}
         {% endfor %}

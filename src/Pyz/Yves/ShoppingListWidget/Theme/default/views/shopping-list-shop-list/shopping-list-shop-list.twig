@@ -5,45 +5,47 @@
 } %}
 
 {% block body %}
-    <ul class="menu menu--wide text-left shop-list-item__list">
-        {% if data.shoppingListCollection.shoppingLists | length %}
-            {% for shoppingList in data.shoppingListCollection.shoppingLists %}
-                <li class="menu__item">
-                    {% include molecule('shop-list-item', 'ShoppingListWidget') with {
-                        data: {
-                            shoppingList: shoppingList
-                        }
-                    } only %}
-                </li>
-            {% endfor %}
-        {% else %}
-            <li class="menu__item">
-                <div class="spacing-x spacing-x--inner spacing-x--bigger spacing-top spacing-top--inner spacing-top--big">
-                    {{ 'shopping_list.no_lists_created' | trans }}
-                </div>
-            </li>
-        {% endif %}
-        <li class="menu__item spacing-x spacing-x--inner spacing-x--bigger spacing-y spacing-y--inner spacing-y--big">
-            <div class="grid grid--justify grid--nowrap">
-                {% if data.shoppingListCollection.shoppingLists | length %}
-                    <div class="col">
-                        <a href="{{ path('shopping-list') }}" class="button button--hollow spacing-right spacing-right--big">
-                            {{ 'shopping_list.all_shopping_lists' | trans }}
-                        </a>
-                    </div>
-                {% endif %}
-                <div class="col">
-                    <a href="{{ path('shopping-list') }}" class="col button">
-                        {% include atom('icon') with {
-                            modifiers: ['create-list'],
+    {% block listItems %}
+        <ul class="menu menu--wide text-left shop-list-item__list">
+            {% if data.shoppingListCollection.shoppingLists | length %}
+                {% for shoppingList in data.shoppingListCollection.shoppingLists %}
+                    <li class="menu__item">
+                        {% include molecule('shop-list-item', 'ShoppingListWidget') with {
                             data: {
-                                name: 'create-list'
+                                shoppingList: shoppingList
                             }
                         } only %}
-                        {{ 'shopping_list.create_new_list' | trans }}
+                    </li>
+                {% endfor %}
+            {% else %}
+                <li class="menu__item">
+                    <div class="spacing-x spacing-x--inner spacing-x--bigger spacing-top spacing-top--inner spacing-top--big">
+                        {{ 'shopping_list.no_lists_created' | trans }}
+                    </div>
+                </li>
+            {% endif %}
+        </ul>
+    {% endblock %}
+    {% block listActions %}
+        <div class="grid grid--gap grid--justify grid--nowrap-lg-only">
+            {% if data.shoppingListCollection.shoppingLists | length %}
+                <div class="col col--bottom-indent col--mobile-expand">
+                    <a href="{{ path('shopping-list') }}" class="button button--mobile-tight button--expand button--hollow">
+                        {{ 'shopping_list.all_shopping_lists' | trans }}
                     </a>
                 </div>
+            {% endif %}
+            <div class="col col--bottom-indent col--mobile-expand">
+                <a href="{{ path('shopping-list') }}" class="button button--mobile-tight button--expand">
+                    {% include atom('icon') with {
+                        modifiers: ['create-list'],
+                        data: {
+                            name: 'create-list'
+                        }
+                    } only %}
+                    {{ 'shopping_list.create_new_list' | trans }}
+                </a>
             </div>
-        </li>
-    </ul>
+        </div>
+    {% endblock %}
 {% endblock %}
