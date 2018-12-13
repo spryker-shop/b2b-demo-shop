@@ -1,4 +1,8 @@
 @mixin basic-typography() {
+    $main-locked-class: '.is-locked';
+    $mobile-locked-class: '.is-locked-mobile';
+    $tablet-locked-class: '.is-locked-tablet';
+
     @font-face {
         font-family: Circular;
         src: url('https://s3.eu-central-1.amazonaws.com/spryker/fonts/circular-pro/lineto-circular-pro-book.woff2') format('woff2'), url('https://s3.eu-central-1.amazonaws.com/spryker/fonts/circular-pro/lineto-circular-pro-book.woff') format('woff');
@@ -33,7 +37,7 @@
         color: $setting-color-gray-4;
         font-family: $setting-font-family;
 
-        &.is-locked {
+        &#{$main-locked-class} {
             position: fixed;
             left: 0;
             top: 0;
@@ -42,7 +46,7 @@
             height: 100%;
         }
 
-        &.is-locked-tablet {
+        &#{$tablet-locked-class} {
             position: fixed;
             left: 0;
             top: 0;
@@ -56,7 +60,7 @@
             }
         }
 
-        &.is-locked-mobile {
+        &#{$mobile-locked-class} {
             position: fixed;
             left: 0;
             top: 0;
