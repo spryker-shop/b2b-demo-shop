@@ -2,15 +2,6 @@
     margin-bottom: rem(12);
     font-size: rem(14);
 
-    &__item,
-    .active-filter {
-        margin-bottom: rem(10);
-
-        &:not(:last-child) {
-            margin-right: rem(10);
-        }
-    }
-
     &__item {
         &--title {
             display: none;
@@ -26,6 +17,15 @@
             @include helper-breakpoint-media-min($lg) {
                 width: auto;
             }
+        }
+    }
+
+    &__item,
+    .active-filter {
+        margin-bottom: rem(10);
+
+        &:not(:last-child) {
+            margin-right: rem(10);
         }
     }
 

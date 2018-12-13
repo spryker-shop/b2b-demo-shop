@@ -1,5 +1,6 @@
 @mixin shop-ui-menu($name: '.menu') {
     @include shop-ui-list($name) {
+        $active-trigger-class: '.is-active';
 
         &__link,
         &__text {
@@ -130,7 +131,7 @@
                 }
             }
 
-            &.is-active {
+            &#{$active-trigger-class} {
                 #{$name}__trigger-button-icon {
                     transform: translate(-50%, -50%) rotate(-180deg);
                 }
@@ -318,7 +319,7 @@
         &__trigger-button--lvl-1 {
             color: $setting-color-gray-2;
 
-            &.is-active::after {
+            &#{$active-trigger-class}::after {
                 content: '';
                 position: absolute;
                 left: 50%;
@@ -327,7 +328,7 @@
                 width: rem(999);
                 height: 100%;
                 background: $setting-color-gray-7;
-                z-index: -1;
+                z-index: $setting-zi-substrate;
 
                 @include helper-breakpoint-media-min($xl) {
                     display: none;
