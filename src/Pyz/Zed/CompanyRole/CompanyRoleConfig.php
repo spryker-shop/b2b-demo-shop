@@ -12,6 +12,7 @@ use Pyz\Zed\CompanyUser\Communication\Plugin\Permission\SeeCompanyMenuPermission
 use Spryker\Shared\CheckoutPermissionConnector\Plugin\Permission\PlaceOrderWithAmountUpToPermissionPlugin;
 use Spryker\Shared\CompanyUser\Plugin\AddCompanyUserPermissionPlugin;
 use Spryker\Shared\CompanyUserInvitation\Plugin\ManageCompanyUserInvitationPermissionPlugin;
+use Spryker\Zed\CartPermissionConnector\Communication\Plugin\Cart\AlterCartUpToAmountPermissionPlugin;
 use Spryker\Zed\CompanyRole\CompanyRoleConfig as SprykerCompanyRoleConfig;
 use SprykerShop\Shared\CartPage\Plugin\AddCartItemPermissionPlugin;
 use SprykerShop\Shared\CartPage\Plugin\ChangeCartItemPermissionPlugin;
@@ -45,6 +46,7 @@ class CompanyRoleConfig extends SprykerCompanyRoleConfig
             ChangeCartItemPermissionPlugin::KEY,
             RemoveCartItemPermissionPlugin::KEY,
             PlaceOrderWithAmountUpToPermissionPlugin::KEY,
+            AlterCartUpToAmountPermissionPlugin::KEY,
         ];
     }
 
