@@ -22,7 +22,8 @@
             modifiers: ['shopping-list', isItemAvailable ? 'shopping-list-available' : 'hidden'],
             data: {
                 listItem: item,
-                imageModifiers: ['shopping-list']
+                imageModifiers: ['shopping-list'],
+                attributes: item.attributes | default([])
                 },
             embed: {
                 isItemAvailable: isItemAvailable,
