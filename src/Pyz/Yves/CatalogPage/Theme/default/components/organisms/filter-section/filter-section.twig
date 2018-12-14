@@ -17,7 +17,7 @@
 {% endblock %}
 
 {% block body %}
-    <h3 class="{{ config.name ~ '__title' }} is-hidden-lg-xxl">{{ 'catalog.filter.button' | trans }} / {{ 'catalog.sort' | trans }}</h3>
+    <h3 class="{{ config.name ~ '__title' }} is-hidden-lg-xxl">{{ 'catalog.filter.and.sorting.button' | trans }}</h3>
     <button class="{{ config.name ~ '__close' }} is-hidden-lg-xxl js-catalog-filters-trigger">
         {% include atom('icon') with {
             data: {
