@@ -1,8 +1,4 @@
 @mixin basic-typography() {
-    $main-locked-class: '.is-locked';
-    $mobile-locked-class: '.is-locked-mobile';
-    $tablet-locked-class: '.is-locked-tablet';
-
     @font-face {
         font-family: Circular;
         src: url('https://s3.eu-central-1.amazonaws.com/spryker/fonts/circular-pro/lineto-circular-pro-book.woff2') format('woff2'), url('https://s3.eu-central-1.amazonaws.com/spryker/fonts/circular-pro/lineto-circular-pro-book.woff') format('woff');
@@ -26,6 +22,33 @@
 
     html {
         font-size: $setting-font-size-base;
+
+        & > {
+            .is-locked-tablet,
+            .is-locked-mobile,
+            .is-locked {
+                position: fixed;
+                left: 0;
+                top: 0;
+                width: 100%;
+                overflow: hidden;
+                height: 100%;
+            }
+
+            .is-locked-tablet {
+                @include helper-breakpoint-media-min($xl) {
+                    overflow: visible;
+                    position: static;
+                }
+            }
+
+            .is-locked-mobile {
+                @include helper-breakpoint-media-min($lg) {
+                    overflow: visible;
+                    position: static;
+                }
+            }
+        }
     }
 
     body {
@@ -36,43 +59,6 @@
         background-color: $setting-color-white;
         color: $setting-color-gray-4;
         font-family: $setting-font-family;
-
-        &#{$main-locked-class} {
-            position: fixed;
-            left: 0;
-            top: 0;
-            width: 100%;
-            overflow: hidden;
-            height: 100%;
-        }
-
-        &#{$tablet-locked-class} {
-            position: fixed;
-            left: 0;
-            top: 0;
-            width: 100%;
-            overflow: hidden;
-            height: 100%;
-
-            @include helper-breakpoint-media-min($xl) {
-                overflow: visible;
-                position: static;
-            }
-        }
-
-        &#{$mobile-locked-class} {
-            position: fixed;
-            left: 0;
-            top: 0;
-            width: 100%;
-            overflow: hidden;
-            height: 100%;
-
-            @include helper-breakpoint-media-min($lg) {
-                overflow: visible;
-                position: static;
-            }
-        }
     }
 
     * {
