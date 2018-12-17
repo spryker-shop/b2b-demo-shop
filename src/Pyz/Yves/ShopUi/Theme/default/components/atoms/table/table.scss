@@ -70,7 +70,10 @@
             @include helper-breakpoint-media-max($lg - 1) {
                 display: block;
 
-                thead, tbody, th, td {
+                thead,
+                tbody,
+                th,
+                td {
                     display: block;
                     text-transform: capitalize;
                 }
@@ -142,7 +145,7 @@
                     }
 
                     &::before {
-                        content: attr(data-content)':';
+                        content: attr(data-content) ':';
                     }
 
                     &--alt {
