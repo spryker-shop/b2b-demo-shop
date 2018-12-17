@@ -15,13 +15,7 @@
 {% block body %}
 
     {% for label in data.labels %}
-        {% set labelType = label.type %}
-        {% if 'Alternatives' in label.text %}
-            {% set labelType = 'alternative' %}
-        {% elseif 'Discontinued' in label.text  %}
-            {% set labelType = 'discontinued' %}
-        {% endif %}
-        <span class="{{ component.renderClass(config.name ~ '__text', modifiers) }} {{ config.name }}__text--{{ labelType }}">{{ label.text }}</span>
+        <span class="{{ component.renderClass(config.name ~ '__text', modifiers) }} {{ config.name }}__text--{{ label.type }}">{{ label.text }}</span>
     {% endfor %}
 
 {% endblock %}

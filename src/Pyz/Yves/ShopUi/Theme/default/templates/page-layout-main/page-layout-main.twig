@@ -1,5 +1,10 @@
 {% extends template('page-blank') %}
 
+{% block meta %}
+    {{ parent() }}
+    <meta name="format-detection" content="telephone=no">
+{% endblock %}
+
 {%- block class -%}js-page-layout-main__side-drawer-container{%- endblock -%}
 
 {% block body %}
