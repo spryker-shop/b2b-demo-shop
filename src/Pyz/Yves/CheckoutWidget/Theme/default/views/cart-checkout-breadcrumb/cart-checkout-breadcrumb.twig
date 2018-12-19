@@ -24,7 +24,7 @@
 
 {% block body %}
     {% embed molecule('breadcrumb') with {
-        class: 'text-center spacing-y spacing-y--inner spacing-y--big',
+        class: 'text-center',
         modifiers: ['progress'],
         data: {
             steps: steps,
@@ -35,10 +35,10 @@
             {% for key, step in data.steps | slice(1) %}
                 {% set modifiers = step.isActive ? ['active'] : [] %}
                 {% set modifiers = step.isEnabled ? modifiers : modifiers | merge(['disabled']) %}
+                {% set progressStep =  step.isActive or not step.isEnabled ? ['progress-step'] : ['progress-complete']%}
 
                 {% embed molecule('breadcrumb-step') with {
-                    class: (step.isActive or not step.isEnabled) ? config.name ~ '--progress-step' : config.name ~ '--progress-complete',
-                    modifiers: modifiers,
+                    modifiers: progressStep | merge(modifiers),
                     data: {
                         stepNumber: key + 1,
                         label: step.label,
@@ -46,12 +46,13 @@
                         withChevron: false
                     },
                     embed: {
-                        lastItem: loop.last
+                        lastItem: loop.last,
+                        progressStep: step.isActive or not step.isEnabled
                     }
                 } only %}
                     {% block body %}
                         {% if isLink and not embed.lastItem %}
-                            <div class="grid grid--middle">
+                            <div class="{{ config.name }}__holder">
                                 {{ parent() }}
                                 <span class="{{ config.name }}__checked">
                                     {% include atom('icon') with {

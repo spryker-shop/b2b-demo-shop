@@ -3,14 +3,26 @@
         overflow: hidden;
 
         &__container {
-            height: rem(455);
+            height: rem(360);
             background-color: $setting-color-main;
             background-position: center center;
             background-size: cover;
             background-repeat: no-repeat;
-            text-align: left;
+            text-align: center;
             position: relative;
-            padding: 0 rem(88);
+            padding: 0 rem(15);
+
+            @include helper-breakpoint-media-min($md) {
+                padding-left: rem(40);
+                padding-right: rem(40);
+            }
+
+            @include helper-breakpoint-media-min($lg) {
+                height: rem(455);
+                text-align: left;
+                padding-left: rem(88);
+                padding-right: rem(88);
+            }
         }
 
         &__title,
@@ -19,20 +31,45 @@
         }
 
         &__title {
-            font-size: rem(50);
-            line-height: rem(48);
+            font-size: rem(34);
+            line-height: rem(38);
             font-weight: fw(medium);
             margin-bottom: rem(27);
+            letter-spacing: rem(-0.3);
             text-shadow: 0 10px 30px $setting-color-shadow, 0 2px 4px $setting-color-shadow;
+
+            @include helper-breakpoint-media-min($lg) {
+                font-size: rem(42);
+                line-height: rem(46);
+                letter-spacing: 0;
+            }
+
+            @include helper-breakpoint-media-min($xl) {
+                font-size: rem(50);
+                line-height: rem(48);
+            }
         }
 
         &__text {
-            font-size: rem(22);
-            line-height: rem(28);
+            padding: 0 rem(12);
+            font-size: rem(16);
+            line-height: rem(20);
             font-weight: fw(regular);
             letter-spacing: rem(0.41);
             text-shadow: 0 2px 4px $setting-color-shadow;
-            margin-bottom: rem(48);
+            margin-bottom: rem(26);
+
+            @include helper-breakpoint-media-min($lg) {
+                padding: 0;
+                font-size: rem(18);
+                line-height: rem(22);
+            }
+
+            @include helper-breakpoint-media-min($xl) {
+                font-size: rem(22);
+                line-height: rem(28);
+                margin-bottom: rem(48);
+            }
         }
 
         @content;

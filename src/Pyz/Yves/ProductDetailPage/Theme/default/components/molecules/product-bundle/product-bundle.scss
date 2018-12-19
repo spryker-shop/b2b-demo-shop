@@ -1,12 +1,11 @@
 @mixin product-detail-page-bundle($name: '.product-bundle') {
     #{$name} {
-        max-width: 870px;
-        margin: 0 auto 90px;
+        margin: 0 auto rem(90);
 
         &--configurator {
             max-width: 100%;
             margin: 0;
-            padding-bottom: 11px;
+            padding-bottom: rem(11);
         }
 
         &--cart {
@@ -16,39 +15,48 @@
 
         &__title {
             text-align: center;
-            font-size: rem(32);
+            font-size: rem(24);
             font-weight: fw(middle);
             color: $setting-color-gray-5;
-            margin-bottom: 22px;
+            margin-bottom: rem(14);
+
+            @include helper-breakpoint-media-min($lg) {
+                font-size: rem(32);
+                margin-bottom: rem(22);
+            }
 
             &--cart {
                 font-size: rem(14);
                 font-weight: fw(medium);
                 color: $setting-color-gray-5;
                 text-align: left;
-                margin: 10px 0 3px;
+                margin: rem(10) 0 rem(3);
             }
         }
 
         &__list {
 
             &--cart {
-                padding: 0 0 0 rem(20);
+                padding: 0 0 0 rem(8);
                 font-size: rem(13);
                 font-weight: fw(regular);
                 color: $setting-color-gray-5;
+
+                @include helper-breakpoint-media-min($lg) {
+                    padding-left: rem(20);
+                }
             }
         }
 
         &__item {
 
             &--configurator {
-                padding-bottom: 10px;
+                padding-bottom: rem(10);
                 display: flex;
             }
 
             &--cart {
-                padding: 3px 0;
+                padding: rem(3) 0;
             }
         }
 
@@ -56,10 +64,10 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 10px;
-            height: 320px;
+            padding: rem(10);
+            height: rem(320);
             position: relative;
-            margin-bottom: 16px;
+            margin-bottom: rem(16);
 
             &::before {
                 content: '';
@@ -72,11 +80,11 @@
             }
 
             &--configurator {
-                padding: 5px;
-                min-width: 70px;
-                width: 70px;
-                height: 70px;
-                margin: 0 20px 0 0;
+                padding: rem(5);
+                min-width: rem(70);
+                width: rem(70);
+                height: rem(70);
+                margin: 0 rem(20) 0 0;
             }
         }
 
@@ -86,8 +94,14 @@
         }
 
         &__info {
-            min-height: 95px;
-            padding-bottom: 5px;
+            min-height: rem(95);
+            padding-bottom: rem(5);
+            display: flex;
+            justify-content: space-between;
+
+            @include helper-breakpoint-media-min($lg) {
+                display: block;
+            }
 
             &--configurator {
                 display: flex;
@@ -110,6 +124,13 @@
             font-weight: fw(regular);
             line-height: rem(19);
             color: $setting-color-gray-3;
+            padding-left: rem(15);
+            white-space: nowrap;
+
+            @include helper-breakpoint-media-min($lg) {
+                display: block;
+                padding-left: 0;
+            }
 
             &--cart {
                 font-size: rem(13);

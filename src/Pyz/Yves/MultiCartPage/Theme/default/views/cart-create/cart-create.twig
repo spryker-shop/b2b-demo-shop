@@ -28,7 +28,7 @@
 
 {% block content %}
     <div class="grid cart-update">
-        <div class="col col--md-6">
+        <div class="col col--sm-12 col--lg-6">
             <h2>{{ 'page.multi_cart.shopping_cart.create.title' | trans }}</h2>
             {% include molecule('form') with {
                 data: {
@@ -37,11 +37,13 @@
                         action: data.formAction
                     },
                     submit: {
-                        enable: true
+                        enable: true,
+                        class: 'form__action--expand-sm-md button button--success'
                     },
                     cancel: {
                         enable: true,
                         url: data.backUrl,
+                        class: 'form__action--expand-sm-md button button--secondary button--hollow',
                         text: 'general.back.button' | trans,
                         icon: null
                     }

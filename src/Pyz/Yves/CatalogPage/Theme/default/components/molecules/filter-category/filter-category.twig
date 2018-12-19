@@ -17,7 +17,7 @@
     'parent-selector': config.name ~ '__menu-item--lvl-1',
     'list-selector': '.js-' ~ config.name ~ '__menu-item',
     'category-selector': '.' ~ config.name ~ '__menu-item',
-    'change-class': 'is-hidden'
+    'change-class': 'is-hidden-lg-xxl'
 } %}
 
 {% block component %}
@@ -48,8 +48,8 @@
 
             {% set isHidden = (data.levelMenu != 1) %}
 
-            <li class="{{ config.name }}__menu-item {{ config.name }}__menu-item--lvl-{{ data.levelMenu }} {% if isActive %} {{ config.name }}__menu-item--active js-{{ config.name }}__menu-item{% endif %} {% if isHidden and not isActive %}is-hidden{% endif %}">
-                <button class="link {{ config.name }}__menu-link {{ config.name }}__menu-link--lvl-{{ data.levelMenu }} {% if isActive %} {{ config.name }}__menu-link--active{% endif %}" onclick="this.form.action='{{ categoryUrl }}'" {% if quantity == 0 %}disabled="disabled"{% endif %}>
+            <li class="{{ config.name }}__menu-item {{ config.name }}__menu-item--lvl-{{ data.levelMenu }} {% if isActive %} {{ config.name }}__menu-item--active {{ config.jsName }}__menu-item{% endif %} {% if isHidden and not isActive %}is-hidden-lg-xxl{% endif %}">
+                <button class="link {{ config.name }}__menu-link {{ config.name }}__menu-link--lvl-{{ data.levelMenu }} {% if isActive %} {{ config.name }}__menu-link--active{% endif %} {{ config.jsName }}__category-trigger" {% if quantity == 0 %}disabled="disabled"{% endif %} data-change-action-to="{{ categoryUrl }}">
                     <span class="{{ config.name }}__link-text {% if isActive %}{{ config.name }}__link-text--active{% endif %}">{{ categoryNode.name }}</span> <span>{{ quantity }}</span>
                 </button>
 
@@ -66,5 +66,14 @@
             </li>
 
         {% endfor %}
+
+        {% include molecule('form-handler') with {
+            attributes: {
+                'trigger-selector': '.' ~ config.jsName ~ '__category-trigger',
+                'event': 'click',
+                'change-action': 'true',
+                'submit-form': 'false'
+            }
+        } only %}
     </ul>
 {% endblock %}

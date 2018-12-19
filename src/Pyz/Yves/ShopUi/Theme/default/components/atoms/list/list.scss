@@ -1,8 +1,25 @@
 @include shop-ui-list {
+    &--footer {
+        padding: 0 rem(10);
+        margin-bottom: rem(26);
+
+        @include helper-breakpoint-media-min($md) {
+            padding: 0;
+            margin-bottom: 0;
+        }
+    }
+
     &--checkout {
+        margin-bottom: 0;
+
         & > .list__item {
-            margin-left: rem(10);
-            margin-right: rem(10);
+            margin-left: rem(19);
+            margin-right: rem(19);
+
+            @include helper-breakpoint-media-min($md) {
+                margin-left: rem(10);
+                margin-right: rem(10);
+            }
         }
     }
 
@@ -23,17 +40,24 @@
     &--company-user {
         position: absolute;
         top: 100%;
-        left: 0;
+        right: 0;
         font-size: rem(15);
         font-weight: fw(regular);
-        line-height: 1.93;
+        line-height: rem(31);
         letter-spacing: rem(0.2);
         border-radius: 0 0 $setting-border-radius $setting-border-radius;
         background-color: $setting-color-white;
-        box-shadow: 0 18px 18px 0 $setting-color-alpha-2, 0 3px 3px 0 $setting-color-alpha-2;
+        box-shadow: 0 rem(18) rem(18) 0 $setting-color-alpha-2, 0 rem(3) rem(3) 0 $setting-color-alpha-2;
         padding: rem(21) rem(38) rem(21) rem(29);
-        transform-origin: top left;
+        transform-origin: top right;
         transform: scale(0);
+        z-index: $setting-zi-element;
         @include helper-effect-transition(transform);
+
+        @include helper-breakpoint-media-min($xxxl) {
+            transform-origin: top left;
+            left: 0;
+            right: auto;
+        }
     }
 }

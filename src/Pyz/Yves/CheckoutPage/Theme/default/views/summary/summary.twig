@@ -36,7 +36,7 @@
 
 {% block content %}
     <div class="grid grid--gap">
-        <div class="col col--sm-12 col--lg-4">
+        <div class="col col--sm-12 col--xl-4">
             {% include molecule('summary-sidebar-item', 'CheckoutPage') with {
                 data: {
                     title: 'checkout.step.summary.payment' | trans,
@@ -60,16 +60,16 @@
             } only %}
         </div>
 
-        <div class="col col--sm-12 col--lg-8">
+        <div class="col col--sm-12 col--xl-8">
             {% for item in data.cartItems %}
                 {% set bundles = item.bundleProduct is defined ? item.bundleItems : [] %}
                 {% set item = item.bundleProduct is defined ? item.bundleProduct : item %}
                 {% embed molecule('product-item') with {
                     modifiers: ['summary'],
                     data: {
+                        list: data.cartItems,
                         listItem: item,
                         quantity: item.quantity,
-                        options: item.productOptions | default([]),
                         imageModifiers: ['small', 'summary']
                     },
                     embed: {
@@ -88,7 +88,7 @@
                         {% set salesUnitName = embed.quantitySalesUnit.productMeasurementUnit.name | default('') %}
                         {% if salesUnitName is not empty and embed.amount == 0 %}
                             {% include atom('quantity-option') with {
-                                class: 'col',
+                                class: 'col col--sm-12 col--md-auto',
                                 data: {
                                     value: embed.quantity,
                                     precision: embed.quantitySalesUnit.conversion,
@@ -100,7 +100,7 @@
                         {% if embed.amount != 0 %}
                             {% set amountSalesUnitName = embed.amountSalesUnit.productMeasurementUnit.name | default('') %}
                             {% include atom('quantity-option') with {
-                                class: 'col',
+                                class: 'col col--sm-12 col--md-auto',
                                 data: {
                                     value: embed.amount,
                                     precision: embed.quantity,
@@ -136,6 +136,7 @@
                             } only %}
                         {% endif %}
                     {% endblock %}
+                    {% block packagingUnitCart %}{% endblock %}
                 {% endembed %}
             {% endfor %}
 

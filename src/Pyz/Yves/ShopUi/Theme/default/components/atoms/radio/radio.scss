@@ -3,6 +3,14 @@
 @mixin shop-ui-radio($name: '.radio') {
     @include shop-ui-checkbox($name) {
 
+        &--mobile-small {
+            #{$name}__box {
+                width: rem(20);
+                height: rem(20);
+                line-height: rem(20);
+            }
+        }
+
         &__box {
             @include helper-effect-transition(border-color);
             border-radius: 100%;

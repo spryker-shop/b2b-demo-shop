@@ -34,6 +34,7 @@
     } only %}
 
     {% include molecule('action-card-grid') with {
+        class: 'spacing-bottom',
         data: {
             cards: [
                 {
@@ -60,6 +61,5 @@
             ]
         }
     } only %}
-
     {% include molecule('delete-account', 'CustomerPage') only %}
 {% endblock %}

@@ -1,0 +1,65 @@
+@import '../side-drawer/side-drawer';
+
+@mixin shop-ui-account-navigation($name: '.account-navigation') {
+    @include shop-ui-side-drawer($name) {
+        @include helper-breakpoint-media-min($lg) {
+            display: none;
+        }
+
+        &__drawer {
+            @include helper-effect-transition(opacity visibility right);
+            width: rem(320);
+            left: auto;
+            padding-top: 0;
+            right: rem(-320);
+            top: 0;
+        }
+
+        &--show &__drawer {
+            left: auto;
+            right: 0;
+        }
+
+        &__close {
+            right: 0;
+            top: rem(5);
+            left: auto;
+            color: $setting-color-white;
+        }
+
+        &__account {
+            display: flex;
+            align-items: center;
+            padding: rem(16) rem(50) rem(16) rem(24);
+            color: $setting-color-white;
+            background: $setting-color-blue-1;
+            flex-shrink: 0;
+
+            &--company {
+                background: $setting-color-main;
+            }
+
+            &-icon {
+                flex-shrink: 0;
+                margin-right: rem(30);
+            }
+
+            &-text {
+                font-size: rem(14);
+                line-height: rem(14);
+                font-weight: fw(medium);
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden;
+            }
+        }
+
+        &__holder {
+            padding: 0 rem(20);
+        }
+
+        @content;
+    }
+}
+
+@include shop-ui-account-navigation;

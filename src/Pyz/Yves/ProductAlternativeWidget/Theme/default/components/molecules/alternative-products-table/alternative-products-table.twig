@@ -19,7 +19,7 @@
     {% for item in data.products %}
         {% embed molecule('product-item') with {
             class: loop.index > data.maxShownItems ? 'js-product-alternative-' ~ idShoppingListItem ~ '__show-all-target is-hidden' : '',
-            modifiers: ['shopping-list', 'shopping-list-alternative'],
+            modifiers: ['shopping-list', 'shopping-list-alternative', 'shopping-list-available'],
             data: {
                 listItem: item,
                 imageModifiers: ['shopping-list']
@@ -30,12 +30,14 @@
             }
         } only %}
             {% block itemAttributes %}
-                {% include molecule('product-item-attributes') with {
-                    class: 'spacing-y spacing-y--big text-small',
-                    data: {
-                        listItem: data.listItem,
-                    }
-                } only %}
+                {% if data.attributes is not empty %}
+                    {% include molecule('product-item-attributes') with {
+                        class: 'spacing-y spacing-y--big text-small',
+                        data: {
+                            listItem: data.listItem,
+                        }
+                    } only %}
+                {% endif %}
             {% endblock %}
 
             {% block bundle %}
@@ -54,9 +56,18 @@
                         value: embed.quantity,
                     }
                 } only %}
-                <a class="button button--hollow" href="{{ url('shopping-list/add-item', {quantity: embed.quantity, sku: data.listItem.sku, idShoppingList: embed.shoppingList.idShoppingList}) }}">
+                <a class="button button--hollow button--shopping-list" href="{{ url('shopping-list/add-item', {quantity: embed.quantity, sku: data.listItem.sku, idShoppingList: embed.shoppingList.idShoppingList}) }}">
                     {{ 'product_alternative_widget.add_to_shopping_list' | trans}}
                 </a>
+            {% endblock %}
+            {% block price %}
+                {% include molecule('price') with {
+                    modifiers: ['cart', 'available'],
+                    data: {
+                        amount: price | money,
+                        originalAmount: data.listItem.prices.ORIGINAL is not defined or data.listItem.prices.ORIGINAL is empty ? null : (data.listItem.prices.ORIGINAL | money)
+                    },
+                } only %}
             {% endblock %}
         {% endembed %}
         {% if loop.index > data.maxShownItems and loop.last %}

@@ -11,12 +11,13 @@
 } %}
 
 {% block attributes %}
+    {{ parent() }}
     href="{{ url('cart') }}"
 {% endblock %}
 
 {% block body %}
 
-    <span class="user-navigation__icon">
+    <span class="{{config.name}}__icon">
         {% include atom('icon') with {
             modifiers: ['cart'],
             data: {
@@ -24,10 +25,10 @@
             }
         } only %}
         {% if data.quantity is not empty and data.quantity > 0 %}
-            <span class="{{config.name}}__quantity">{{data.quantity}}</span>
+            <span class="{{config.name}}__quantity is-hidden-sm-md">{{data.quantity}}</span>
         {% endif %}
     </span>
 
-    {% if data.label is not empty %}{{data.label}}{% endif %}
+    <span class="{{config.name}}__text">{% if data.label is not empty %}{{data.label}} <span class="is-hidden-lg-xxl"> ({{data.quantity}})</span>{% endif %}</span>
 
 {% endblock %}

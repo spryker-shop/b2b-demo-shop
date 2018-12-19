@@ -6,6 +6,7 @@
 
 {% define data = {
     productItem: required,
+    canEdit: required,
     productItemAttributes: []
 } %}
 
@@ -38,20 +39,24 @@
                 {% endfor %}
 
                 <li class="list__item spacing-y">
-                    <label>
-                        <span class="{{ config.name }}__label">{{ ('product.attribute.' ~ attributeName) | trans }}:</span>
-                        {% include molecule('custom-select') with {
-                            modifiers: ['small'],
-                            data: {
-                                label: ('product.attribute.' ~ attributeName) | trans,
-                                options: options
-                            },
-                            attributes: {
-                                name: 'preselectedAttributes[' ~ attributeName ~ ']',
-                                'onchange': 'this.form.submit();',
-                                'config-theme': 'small'
-                            }
-                        } only %}
+                    <label class="grid grid--middle">
+                        <div class="col">
+                            <span class="{{ config.name }}__label">{{ ('product.attribute.' ~ attributeName) | trans }}:</span>
+                        </div>
+                        <div class="col col--expand {{ config.name }}__select">
+                            {% include molecule('custom-select') with {
+                                modifiers: ['small', 'mobile-expand', 'mobile-xs'],
+                                data: {
+                                    label: ('product.attribute.' ~ attributeName) | trans,
+                                    options: options
+                                },
+                                attributes: {
+                                    name: 'preselectedAttributes[' ~ attributeName ~ ']',
+                                    'onchange': 'this.form.submit();',
+                                    'config-theme': 'small'
+                                }
+                            } only %}
+                        </div>
                     </label>
                     <input name="selectedAttributes[{{ attributeName }}]" type="hidden" />
                 </li>

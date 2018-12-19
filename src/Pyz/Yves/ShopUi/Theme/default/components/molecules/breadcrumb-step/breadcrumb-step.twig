@@ -17,7 +17,7 @@
 
 {% block body %}
     {% if data.stepNumber is not empty %}
-        {{ data.stepNumber }}
+       <span class="{{ config.name ~ '__number' }}">{{ data.stepNumber }}</span>
     {% endif %}
     {%- if isLink -%}<a class="{{ config.name ~ '__link' }}" href="{{data.url}}">{%- endif -%}
     {%- if data.itemProp -%}<span itemprop="{{-data.itemProp-}}">{%- endif -%}

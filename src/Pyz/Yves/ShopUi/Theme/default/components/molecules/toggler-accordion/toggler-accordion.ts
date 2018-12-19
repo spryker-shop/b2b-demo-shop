@@ -3,11 +3,13 @@ import Component from 'ShopUi/models/component';
 export default class TogglerAccordion extends Component {
     readonly wrap: HTMLElement
     readonly triggers: HTMLElement[]
+    readonly isTouch: boolean
 
     constructor() {
         super();
         this.wrap = <HTMLElement>document.querySelector(this.wrapSelector);
         this.triggers = <HTMLElement[]>Array.from(document.querySelectorAll(this.triggerSelector));
+        this.isTouch = "ontouchstart" in window;
     }
 
     protected readyCallback(): void {
@@ -19,6 +21,16 @@ export default class TogglerAccordion extends Component {
     }
 
     protected onTriggerClick(event: Event): void {
+        if (this.isTouchScreen) {
+            if (this.isTouch) {
+                this.initializeClick(event);
+            }
+        } else {
+            this.initializeClick(event);
+        }
+    }
+
+    protected initializeClick(event: Event): void {
         this.triggers.forEach((trigger: HTMLElement) => {
             let target = <any> event.target;
             while (target != this.wrap) {
@@ -35,11 +47,15 @@ export default class TogglerAccordion extends Component {
     protected toggle(activeTrigger: HTMLElement): void {
         const isTriggerActive = activeTrigger.classList.contains(this.triggerActiveClass);
         activeTrigger.classList.toggle(this.triggerActiveClass, !isTriggerActive);
-        this.targetToggle(activeTrigger, isTriggerActive);
+        this.targetToggle(activeTrigger);
     }
 
-    protected targetToggle(target: HTMLElement, active: boolean): void {
-        document.querySelector(target.dataset.toggleTarget).classList.toggle(this.classToToggle, active)
+    protected targetToggle(target: HTMLElement): void {
+        const targets = <HTMLElement[]>Array.from(document.querySelectorAll(target.dataset.toggleTarget));
+        targets.forEach((target: HTMLElement) => {
+            const isTargetActive = !target.classList.contains(this.classToToggle);
+            target.classList.toggle(this.classToToggle, isTargetActive);
+        })
     }
 
     get wrapSelector(): string {
@@ -56,5 +72,13 @@ export default class TogglerAccordion extends Component {
 
     get triggerActiveClass(): string {
         return this.getAttribute('active-class');
+    }
+
+    get isTouchScreen(): boolean {
+        return this.touchRules === 'true';
+    }
+
+    get touchRules(): string {
+        return this.getAttribute('active-on-touch');
     }
 }

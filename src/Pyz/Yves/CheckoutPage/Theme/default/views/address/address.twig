@@ -173,7 +173,7 @@
                         {% endif %}
 
                         {% if hasBillingAddresses %}
-                            <div class="checkout-wrap__container">
+                            <div class="checkout-wrap__container checkout-wrap__container--top">
                                 {% if companyBusinessUnitAddressWidget and companyBusinessUnitAddressWidget.isApplicable %}
                                     {% widget companyBusinessUnitAddressWidget %}{% endwidget %}
                                     {% for address in existingBillingAddresses %}
