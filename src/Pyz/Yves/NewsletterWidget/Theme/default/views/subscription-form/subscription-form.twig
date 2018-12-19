@@ -2,8 +2,6 @@
 
 {% define data = {
     form: _view.newsletterSubscriptionForm,
-    text: 'newsletter.form.subscribe.text' | trans,
-
     events: {
         success: _view.success,
         error: _view.error
@@ -11,33 +9,15 @@
 } %}
 
 {% block body %}
-    <div class="grid grid--middle grid--justify">
-        {% include molecule('subscription-info', 'NewsletterWidget') with {
-            class: 'col col--sm-12 col--lg-5',
-            data: {
-                title: 'global.subscribe.title' | trans,
-                text: data.text,
-            }
-        } only %}
 
-        {% include molecule('form') with {
-            class: 'col col--sm-12 col--lg-5',
-            modifiers: ['inline', 'subscription'],
-            data: {
-                form: data.form,
-                submit: {
-                    enable: true,
-                    text: '',
-                    icon: 'chevron-right',
-                    class: 'button button--hollow-icon'
-                }
+    {% include molecule('subscription', 'NewsletterWidget') with {
+        data: {
+            form: data.form,
+            events: {
+                success: data.events.success,
+                error: data.events.error
             }
-        } only %}
-    </div>
+        }
+    } only %}
 
-    {% if data.events.success is not empty %}
-        <p class="text-big text-center text-success">{{data.events.success | trans}}</p>
-    {% elseif data.events.error is not empty %}
-        <p class="text-big text-center text-alert">{{data.events.error | trans}}</p>
-    {% endif %}
 {% endblock %}

@@ -1,24 +1,57 @@
 @mixin shop-ui-user-navigation($name: '.user-navigation') {
     #{$name} {
-        padding-left: 43px;
         display: flex;
+        margin: 0 rem(-15);
+
+        @include helper-breakpoint-media-min($xl) {
+            margin: 0;
+        }
 
         &__item {
-            max-width: 100px;
-            position: relative;
-            padding-bottom: 10px;
-            z-index: $setting-zi-element + 2;
+            width: 33.333%;
+            background-color: $setting-color-white;
+            box-shadow: rem(2) rem(2) rem(8) 0 rgba($setting-color-black, 0.12);
+
+            @include helper-breakpoint-media-min($lg) {
+                position: relative;
+                width: 25%;
+                background-color: transparent;
+                padding-bottom: rem(10);
+                z-index: $setting-zi-element + 2;
+            }
+
+            @include helper-breakpoint-media-min($xl) {
+                box-shadow: none;
+                max-width: rem(100);
+                width: auto;
+            }
 
             &:not(:first-child) {
-                margin-left: 30px;
+                @include helper-breakpoint-media-min($xl) {
+                    margin-left: rem(30);
+                }
+            }
+
+            &--user {
+                display: none;
+
+                @include helper-breakpoint-media-min($lg) {
+                    display: block;
+                }
             }
 
             &:hover #{$name}__sub-nav {
-                transform: translateX(-50%) scale(1);
-                opacity: 1;
+                @include helper-breakpoint-media-min($lg) {
+                    transform: translateX(-50%) scale(1);
+                    opacity: 1;
 
-                &--pull-left {
-                    transform: translateX(-90%);
+                    &--pull-left {
+                        transform: translateX(-95%) scale(1);
+
+                        @include helper-breakpoint-media-min($xxxl) {
+                            transform: translateX(-90%) scale(1);
+                        }
+                    }
                 }
             }
         }
@@ -32,58 +65,166 @@
             line-height: 1;
             letter-spacing: rem(0.6);
             text-transform: uppercase;
-            text-align: center;
+            text-align: left;
             cursor: pointer;
             @include helper-effect-transition(color);
+
+            @include helper-breakpoint-media-min($lg) {
+                text-align: center;
+            }
 
             &:hover {
                 color: helper-color-light($setting-color-gray-4, 25);
             }
         }
 
+        &__link {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: rem(8);
+            color: $setting-color-black;
+            padding: 0 rem(3);
+            letter-spacing: 0;
+
+            @include helper-breakpoint-media-min($lg) {
+                display: block;
+                font-size: rem(10);
+                letter-spacing: rem(0.6);
+                padding: 0;
+                color: $setting-color-gray-4;
+            }
+        }
+
         &__icon {
             display: flex;
             justify-content: center;
-            height: 38px;
+            align-items: center;
+            height: rem(38);
+            padding-right: rem(4);
+
+            @include helper-breakpoint-media-min($lg) {
+                align-items: flex-start;
+                padding: 0;
+            }
+        }
+
+        &__text {
+            display: block;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+
+            @include helper-breakpoint-media-min($lg) {
+                display: inline;
+                white-space: normal;
+            }
         }
 
         &__arrow {
-            margin: 15px 0 0 5px;
-            width: 7px;
-            height: 4px;
+            margin: rem(15) 0 0 rem(5);
+            width: rem(7);
+            height: rem(4);
         }
 
         &__sub-nav {
-            @include helper-effect-transition(opacity transform);
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            transform: translateX(-50%) scale(0);
-            transform-origin: top center;
+            display: flex;
+            flex-direction: column;
+            @include helper-effect-transition(opacity);
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
             background: $setting-color-white;
             border-radius: $setting-border-radius;
-            box-shadow: 0 18px 18px 0 $setting-color-shadow-1, 0 3px 3px 0 $setting-color-shadow-1;
-            padding: rem(21) rem(38) rem(21) rem(29);
             white-space: nowrap;
             font-size: rem(15);
             font-weight: fw(regular);
             line-height: 1.93;
             letter-spacing: rem(0.2);
             opacity: 0;
+            transform: scale(0);
+            z-index: $setting-zi-header + 3;
 
-            &::before {
-                content: '';
-                background: $setting-color-white;
-                position: absolute;
-                top: -5px;
-                left: 50%;
-                width: 10px;
-                height: 10px;
-                transform: translateX(-50%) rotate(45deg);
+            &--touch-active {
+                opacity: 1;
+                transform: scale(1);
             }
 
-            &--pull-left::before {
-                left: 90%;
+            @include helper-breakpoint-media-min($lg) {
+                @include helper-effect-transition(opacity transform);
+                position: absolute;
+                top: 100%;
+                left: 50%;
+                height: auto;
+                width: auto;
+                transform: translateX(-50%) scale(0);
+                transform-origin: top center;
+                box-shadow: 0 rem(18) rem(18) 0 $setting-color-shadow-1, 0 rem(3) rem(3) 0 $setting-color-shadow-1;
+                padding: rem(21) rem(38) rem(21) rem(29);
+
+                &::before {
+                    content: '';
+                    background: $setting-color-white;
+                    position: absolute;
+                    top: rem(-5);
+                    left: 50%;
+                    width: rem(10);
+                    height: rem(10);
+                    transform: translateX(-50%) rotate(45deg);
+                }
+
+                &--pull-left::before {
+                    left: 95%;
+
+                    @include helper-breakpoint-media-min($xxxl) {
+                        left: 90%;
+                    }
+                }
+            }
+        }
+
+        &__sub-nav-inner {
+            border-top: rem(1) solid $setting-color-gray-6;
+            flex-grow: 1;
+            overflow: hidden;
+            overflow-y: auto;
+
+            @include helper-breakpoint-media-min($lg) {
+                border: none;
+                flex-grow: 0;
+            }
+        }
+
+        &__sub-nav-close {
+            position: absolute;
+            top: rem(6);
+            left: rem(8);
+            width: rem(40);
+            height: rem(40);
+            background: none;
+
+            @include helper-breakpoint-media-min($lg) {
+                display: none;
+            }
+        }
+
+        &__sub-nav-title {
+            padding: rem(12) rem(60) rem(14);
+            line-height: 1.67;
+            text-align: center;
+
+            @include helper-breakpoint-media-min($lg) {
+                display: none;
+            }
+        }
+
+        &__sub-nav-actions {
+            padding: rem(21) rem(16) rem(30);
+
+            @include helper-breakpoint-media-min($lg) {
+                padding: rem(16) rem(24) rem(1);
             }
         }
 

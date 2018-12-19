@@ -2,6 +2,10 @@
     margin-top: rem(15);
 
     &__item {
-        margin-right: rem(27);
+        margin: 0 rem(27) rem(5) 0;
+
+        @include helper-breakpoint-media-min($lg) {
+            margin-bottom: 0;
+        }
     }
 }

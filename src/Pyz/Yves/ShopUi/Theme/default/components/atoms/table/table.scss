@@ -14,15 +14,20 @@
 
         th,
         td {
-            padding: rem(16) rem(32);
+            padding: rem(16) rem(15);
             text-align: left;
+
+            @include helper-breakpoint-media-min($lg) {
+                padding-left: rem(32);
+                padding-right: rem(32);
+            }
         }
 
         tbody {
             font-size: map_get($setting-font-size, small);
 
             tr:not(:first-child) {
-                border-top: 1px solid $setting-color-gray-6;
+                border-top: rem(1) solid $setting-color-gray-6;
             }
 
             th {
@@ -49,15 +54,6 @@
             }
         }
 
-        &__actions {
-            width: 1px;
-            white-space: nowrap;
-        }
-
-        &__icon {
-            height: 1em;
-        }
-
         &--grid {
 
             thead {
@@ -67,6 +63,100 @@
             th,
             td {
                 padding: rem(16) rem(15);
+            }
+        }
+
+        &--responsive {
+            @include helper-breakpoint-media-max($lg - 1) {
+                display: block;
+
+                thead,
+                tbody,
+                th,
+                td {
+                    display: block;
+                    text-transform: capitalize;
+                }
+
+                thead tr,
+                thead th {
+                    display: none;
+                }
+
+                tr {
+                    padding-top: $setting-grid-space;
+                    padding-bottom: $setting-grid-space;
+                }
+
+                tbody tr:not(.is-hidden-sm-md) {
+                    display: block;
+                }
+
+                td {
+                    padding-top: 0;
+                    padding-bottom: 0;
+                }
+
+                td::before {
+                    font-weight: fw(bold);
+                    display: inline-block;
+                    width: auto;
+                    padding-right: rem(10);
+                    text-transform: uppercase;
+                    flex-shrink: 0;
+                }
+
+                .row {
+                    &--order-details {
+                        padding: rem(20);
+                        border: rem(1) solid $setting-color-gray-1;
+                        border-radius: $setting-border-radius;
+                        position: relative;
+                        margin-bottom: rem(16);
+
+                        @include helper-breakpoint-media-min($lg) {
+                            padding: 0;
+                            border: none;
+                            margin-bottom: 0;
+                        }
+                    }
+                }
+
+                .transform-table-header,
+                .transform-table-header__cell {
+                    display: block;
+                    padding: 0;
+                    background: $setting-color-white;
+                }
+
+                .transform-table-header__cell {
+                    font-size: rem(18);
+                    font-weight: fw(medium);
+                    padding-top: rem(16);
+                }
+
+                .transform-cell {
+                    display: flex;
+                    position: relative;
+                    background-color: $setting-color-gray-7;
+
+                    @include helper-breakpoint-media-min($lg) {
+                        display: table-cell;
+                    }
+
+                    &::before {
+                        content: attr(data-content) ':';
+                    }
+
+                    &--alt {
+                        padding: 0;
+                        background-color: $setting-color-transparent;
+                    }
+
+                    &--no-label::before {
+                        display: none;
+                    }
+                }
             }
         }
 

@@ -1,6 +1,11 @@
 @mixin quick-order-page-quick-order-form($name: '.quick-order-form') {
     #{$name} {
         position: relative;
+        padding-bottom: rem(50);
+
+        @include helper-breakpoint-media-min($xxl) {
+            padding-bottom: 0;
+        }
 
         &__button {
             min-width: rem(250);

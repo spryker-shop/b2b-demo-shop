@@ -1,19 +1,31 @@
 @mixin product-options-product-options($name: '.product-options') {
     #{$name} {
-        border-bottom: solid 1px $setting-color-gray-6;
 
-        &__item {
+        @include helper-breakpoint-media-min($lg) {
             border-top: solid 1px $setting-color-gray-6;
         }
 
+        &--no-border {
+            border-bottom: none;
+            border-top: none;
+        }
+
+        &__item {
+            border-bottom: solid 1px $setting-color-gray-6;
+        }
+
         &__title {
-            font-size: rem(16);
+            font-size: rem(15);
             font-weight: fw(medium);
             line-height: rem(54);
             color: $setting-color-gray-5;
             position: relative;
             cursor: pointer;
             user-select: none;
+
+            @include helper-breakpoint-media-min($lg) {
+                font-size: rem(16);
+            }
 
             &::before,
             &::after {
@@ -38,6 +50,12 @@
 
             &.active::after {
                 display: none;
+            }
+        }
+
+        &__price {
+            @include helper-breakpoint-media-min($lg) {
+                float: right;
             }
         }
     }

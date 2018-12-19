@@ -19,7 +19,7 @@ $name: '.color-selector';
         bottom: 0;
         margin: rem(10) 0;
 
-        @include helper-breakpoint-media-min($lg-min) {
+        @include helper-breakpoint-media-min($lg) {
             position: absolute;
             left: 20px;
             bottom: 45px;
@@ -52,6 +52,10 @@ $name: '.color-selector';
             border-width: 1px;
             border-style: solid;
         }
+    }
+
+    &__active-color-name {
+        display: none;
     }
 }
 

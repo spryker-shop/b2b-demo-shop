@@ -1,0 +1,23 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'icon-tooltip',
+    tag: 'span'
+} %}
+
+{% define data = {
+    icon: required,
+    text: required,
+    classIcon: ''
+} %}
+
+{% block body %}
+    {% include atom('icon') with {
+        modifiers: modifiers,
+        class: data.classIcon,
+        data: {
+            name: data.icon
+        }
+    } only %}
+    <span class="{{ config.name }}__tooltip">{{ data.text }}</span>
+{% endblock %}

@@ -6,6 +6,7 @@
 
         &__address {
             color: $setting-color-main;
+            font-weight: fw(bold);
         }
 
         &__action {
@@ -15,3 +16,5 @@
         @content;
     }
 }
+
+@include company-page-address-delete-message;

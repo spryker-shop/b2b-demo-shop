@@ -13,7 +13,7 @@
     {% if data.orders is empty %}
         <p>{{ 'customer.account.no_order' | trans }}</p>
     {% else %}
-        <table class="table table--expand">
+        <table class="table table--expand table--responsive">
             <thead>
                 <tr>
                     <th>{{ 'customer.order.order_id' | trans }}</th>
@@ -21,42 +21,46 @@
                     <th colspan="2">{{ 'customer.order.total' | trans }}</th>
                 </tr>
             </thead>
-
             <tbody>
                 {% for order in data.orders %}
                     <tr>
-                        <td>
+                        <td class="transform-cell spacing-top spacing-top--inner spacing-top--big" data-content="{{ 'customer.order.order_id' | trans }}">
                             {{- order.orderReference -}}
                         </td>
-                        <td>
+                        <td class="transform-cell" data-content="{{ 'customer.order.date' | trans }}">
                             {{- date(order.createdAt) | formatDateTime -}}
                         </td>
-                        <td>
+                        <td class="transform-cell spacing-bottom spacing-bottom--inner spacing-bottom--big" data-content="{{ 'customer.order.total' | trans }}">
                             <strong>
                                 {{- order.totals.grandTotal | default(0) | money(true, order.currencyIsoCode) -}}
                             </strong>
                         </td>
-                        <td class="table__actions">
-                            <ul class="menu menu--inline">
-                                <li class="menu__item">
-                                    <a class="link link--alt link--action"
-                                       href="{{ path('customer/order/details', { id: order.idSalesOrder }) }}"
-                                       title="{{ 'customer.order.view_order' | trans }}"
-                                    >
-                                        {% include atom('icon') with {
-                                            modifiers: ['big'],
-                                            data: {
-                                                name: 'eye'
-                                            }
-                                        } only %}
-                                    </a>
-                                </li>
-                                {% if widgetExists('CustomerReorderWidgetPlugin') %}
-                                    <li class="menu__item">
-                                        {{ widgetBlock('CustomerReorderWidgetPlugin', 'reorderAction', order) }}
-                                    </li>
-                                {% endif %}
-                            </ul>
+
+                        <td class="table__actions grid spacing spacing--inner spacing--reset">
+                            {% embed molecule('table-action-list') with {
+                                data: {
+                                    items: [
+                                        {
+                                            url: path('customer/order/details', { id: order.idSalesOrder }),
+                                            icon: 'eye',
+                                            title: 'customer.order.view_order',
+                                            iconModifier: 'big'
+                                        }
+                                    ]
+                                },
+                                embed: {
+                                    order: order
+                                }
+                            } only %}
+                                {% block body %}
+                                    {{ parent() }}
+                                    {% if widgetExists('CustomerReorderWidgetPlugin') %}
+                                        <div class="{{ config.name }}__item">
+                                            {{ widgetBlock('CustomerReorderWidgetPlugin', 'reorderAction', embed.order) }}
+                                        </div>
+                                    {% endif %}
+                                {% endblock %}
+                            {% endembed %}
                         </td>
                     </tr>
                 {% endfor %}

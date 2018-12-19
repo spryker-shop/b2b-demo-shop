@@ -31,14 +31,14 @@
     {% endfor %}
 
     <ul class="col grid grid--nowrap grid--stretch navigation-top__actions">
-        <li class="col {{ config.name }}__action-item {{ config.name }}__tel">
+        <li class="col {{ config.name }}__action-item {{ config.name }}__action-item--tel">
             {% include atom('icon') with {
                 modifiers: ['phone'],
                 data: {
                     name: 'phone'
                 }
             } only %}
-            +49 (0) 30 208 498 350
+            {{ 'global.phone.number' | trans }}
         </li>
 
         {% if can('SeePricePermissionPlugin') %}

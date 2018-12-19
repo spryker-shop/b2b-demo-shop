@@ -35,7 +35,7 @@
                 "centerMode": true,
                 "centerPadding": "240px",
                 "responsive": [{
-                     "breakpoint": 1600,
+                     "breakpoint": 1400,
                      "settings": {
                          "centerPadding": "130px"
                      }
@@ -47,9 +47,16 @@
                     }
                 },
                 {
-                    "breakpoint": 770,
+                    "breakpoint": 768,
                     "settings": {
                         "centerPadding": "12px",
+                        "autoplay": false
+                    }
+                },
+                {
+                    "breakpoint": 375,
+                    "settings": {
+                        "centerMode": false,
                         "autoplay": false
                     }
                 }]
@@ -72,8 +79,9 @@
 {% endblock %}
 
 {% block content %}
+
     {% embed organism('section') with {
-        modifiers: ['secondary'],
+        modifiers: ['secondary', 'no-mobile-bottom-indent'],
         class: 'spacing-top spacing-top--inner spacing-top--big'
     } only %}
         {% block inner %}
@@ -93,6 +101,7 @@
             }) }}
         {% endblock %}
     {% endembed %}
+
 {% endblock %}
 
 {% block contentBottom %}
@@ -116,9 +125,14 @@
         }
     } only %}
         {% block inner %}
-            {{ spyCmsBlock({
-                name: 'Teaser for home page'
-            }) }}
+            {% embed molecule('content-collapser') only %}
+                {% block content %}
+                    {{ spyCmsBlock({
+                        name: 'Teaser for home page'
+                    }) }}
+                {% endblock %}
+            {% endembed %}
         {% endblock %}
     {% endembed %}
+
 {% endblock %}

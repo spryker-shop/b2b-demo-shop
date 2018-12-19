@@ -25,14 +25,14 @@
             submit: {
                 enable: true,
                 text: 'checkout.step.summary' | trans,
-                class: 'button button--big'
+                class: 'form__action--expand-sm-md button button--big'
             },
             cancel: {
                 enable: true,
                 url: data.backUrl,
                 text: 'general.back.button' | trans,
                 icon: '',
-                class: 'button button--big button--hollow-icon button--back'
+                class: 'form__action--expand-sm-md button button--big button--hollow-icon button--back'
             }
         }
     } only %}
@@ -96,12 +96,6 @@
                                         }
                                     }) }}
                                 {% endif %}
-
-                                <div class="checkout-list__content grid is-hidden js-payment-method-{{embed.index}}">
-                                    <div class="col col--sm-12 col--md-7">
-                                        {{parent()}}
-                                    </div>
-                                </div>
                             {% endblock %}
                         {% endembed %}
                     {% endblock %}

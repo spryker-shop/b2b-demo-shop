@@ -1,18 +1,31 @@
-@mixin product-alternative-slider($name: '.product-alternative-slider') {
+@mixin product-alternative-widget-product-alternative-slider($name: '.product-alternative-slider') {
     #{$name} {
-        margin-top: rem(60);
+        margin: rem(40) rem(-15) 0;
+        padding: 0 rem(15);
+        border-bottom: solid 1px $setting-color-gray-6;
+
+        @include helper-breakpoint-media-min($lg) {
+            margin: rem(60) 0 0;
+            padding: 0;
+            border-bottom: 0;
+        }
 
         &__title {
-            font-size: rem(32);
+            font-size: rem(24);
             font-weight: fw(medium);
             line-height: normal;
             text-align: center;
             color: $setting-color-gray-5;
-            margin-bottom: rem(33);
+            margin-bottom: rem(14);
+
+            @include helper-breakpoint-media-min($lg) {
+                font-size: rem(32);
+                margin-bottom: rem(33);
+            }
         }
 
         @content;
     }
 }
 
-@include product-alternative-slider;
+@include product-alternative-widget-product-alternative-slider;

@@ -1,0 +1,26 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'table-action-list'
+} %}
+
+{% define data = {
+    items: [],
+    linkModifiers: []
+} %}
+
+{% block body %}
+    {% for item in data.items %}
+        {% set available = item.available is defined ? item.available : true %}
+        {% if available %}
+            <div class="{{ config.name }}__item">
+                {% include molecule('table-action-link') with {
+                    class: 'link link--alt link--action',
+                    modifiers: data.linkModifiers,
+                    data: item
+                } only %}
+            </div>
+        {% endif %}
+    {% endfor %}
+{% endblock %}
+

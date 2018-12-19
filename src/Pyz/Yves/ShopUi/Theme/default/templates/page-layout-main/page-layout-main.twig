@@ -1,5 +1,10 @@
 {% extends template('page-blank') %}
 
+{% block meta %}
+    {{ parent() }}
+    <meta name="format-detection" content="telephone=no">
+{% endblock %}
+
 {%- block class -%}js-page-layout-main__side-drawer-container{%- endblock -%}
 
 {% block body %}
@@ -8,6 +13,120 @@
     {% endblock %}
     <div class="page-layout">
         {% widget 'AgentControlBarWidget' only %}{% endwidget %}
+
+        {% block sidebar %}
+            {% include organism('side-drawer') with {
+                attributes: {
+                    'container-selector': 'js-page-layout-main__side-drawer-container',
+                    'trigger-selector': 'js-page-layout-main__side-drawer-trigger',
+                    'locked-body-selector': 'is-locked-tablet'
+                }
+            } only %}
+
+            {% if is_granted('ROLE_USER') %}
+                {% set customerFullNameWidget = findWidget('CustomerFullNameWidget') %}
+                {% set customerFullName = customerFullNameWidget.customerFullName %}
+
+                {% include organism('account-navigation') with {
+                    attributes: {
+                        'container-selector': 'js-page-layout-main__side-drawer-container',
+                        'trigger-selector': 'js-page-layout-main__user-account-navigation-trigger',
+                        'locked-body-selector': 'is-locked-mobile'
+                    },
+                    data: {
+                        title: customerFullName,
+                        items: [
+                            {
+                                name: 'overview',
+                                url: path('customer/overview'),
+                                label: 'customer.account.overview' | trans,
+                                icon: 'page'
+                            },
+                            {
+                                name: 'profile',
+                                url: path('customer/profile'),
+                                label: 'customer.account.profile_data' | trans,
+                                icon: 'user'
+                            },
+                            {
+                                name: 'address',
+                                url: path('customer/address'),
+                                label: 'customer.account.address' | trans,
+                                icon: 'marker'
+                            },
+                            {
+                                name: 'order',
+                                url: path('customer/order'),
+                                label: 'customer.account.order_history' | trans,
+                                icon: 'history'
+                            },
+                            {
+                                name: 'newsletter',
+                                url: path('customer/newsletter'),
+                                label: 'customer.account.newsletter' | trans,
+                                icon: 'envelopes'
+                            },
+                            {
+                                name: 'shopping-list',
+                                url: path('shopping-list'),
+                                label: 'customer.account.shopping_list' | trans,
+                                icon: 'shopping-list'
+                            },
+                            {
+                                name: 'shopping-cart',
+                                url: path('multi-cart'),
+                                label: 'page.multi_cart.shopping_cart.list.title' | trans,
+                                icon: 'cart'
+                            }
+                        ]
+                    }
+                } only %}
+
+                {% if can('SeeCompanyMenuPermissionPlugin') %}
+                    {% set menuItemCompanyWidget = findWidget('MenuItemCompanyWidget') %}
+                    {% set companyName = menuItemCompanyWidget.companyName %}
+
+                    {% include organism('account-navigation') with {
+                        modifiers: ['company'],
+                        attributes: {
+                            'container-selector': 'js-page-layout-main__side-drawer-container',
+                            'trigger-selector': 'js-page-layout-main__company-account-navigation-trigger',
+                            'locked-body-selector': 'is-locked-mobile'
+                        },
+                        data: {
+                            introIcon: 'office',
+                            title: companyName,
+                            items: [
+                                {
+                                    name: 'overview',
+                                    url: path('company/overview'),
+                                    label: 'company.account.overview' | trans,
+                                    icon: 'shopping-list'
+                                },
+                                {
+                                    name: 'users',
+                                    url: path('company/user'),
+                                    label: 'company.account.company_user' | trans,
+                                    icon: 'users'
+                                },
+                                {
+                                    name: 'business-unit',
+                                    url: path('company/business-unit'),
+                                    label: 'company.account.business_unit' | trans,
+                                    icon: 'office'
+                                },
+                                {
+                                    name: 'role',
+                                    url: path('company/company-role'),
+                                    label: 'company.account.company_role' | trans,
+                                    icon: 'user'
+                                }
+                            ]
+                        }
+                    } only %}
+                {% endif %}
+            {% endif %}
+        {% endblock %}
 
         {% block outside %}{% endblock %}
 
@@ -62,6 +181,7 @@
     </div>
 
     {% include atom('overlay-block') only %}
+    {% include atom('touch-checker') only %}
 
     {% block icons %}
         {% include atom('icon-sprite') only %}

@@ -2,8 +2,12 @@
     #{$name} {
         background-color: $setting-color-gray-7;
         border: 0 none;
-        padding: rem(32);
+        padding: rem(27) rem(20) rem(30);
         margin: 0;
+
+        @include helper-breakpoint-media-min($lg) {
+            padding: rem(32);
+        }
 
         &--small {
             padding: rem(16) rem(32);

@@ -2,6 +2,15 @@
     #{$name} {
         padding-bottom: rem(80);
 
+        &__container {
+            margin-bottom: rem(40);
+
+            @include helper-breakpoint-media-min($lg) {
+                margin-bottom: 0;
+                padding-right: rem(32);
+            }
+        }
+
         @content;
     }
 }

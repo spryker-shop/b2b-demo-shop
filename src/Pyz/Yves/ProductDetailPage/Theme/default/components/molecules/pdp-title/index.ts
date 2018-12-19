@@ -1,1 +1,0 @@
-import './pdp-title.scss';

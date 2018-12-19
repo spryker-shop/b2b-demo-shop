@@ -1,6 +1,6 @@
 @mixin shop-ui-quantity-counter($name: '.quantity-counter') {
     #{$name} {
-        padding: 8px 10px;
+        padding: rem(8) rem(10);
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -12,7 +12,7 @@
             font-size: rem(16);
             font-weight: fw(500);
             line-height: normal;
-            width: 46px;
+            width: rem(46);
             text-align: center;
             border: none;
             background: none;
@@ -22,11 +22,11 @@
         }
 
         &__button {
-            width: 28px;
-            height: 28px;
+            width: rem(28);
+            height: rem(28);
             border-radius: $setting-border-radius;
             background-color: $setting-color-white;
-            box-shadow: 0 10px 10px 0 $setting-color-shadow, 0 3px 3px 0 $setting-color-shadow;
+            box-shadow: 0 rem(10) rem(10) 0 $setting-color-shadow, 0 rem(3) rem(3) 0 $setting-color-shadow;
             line-height: 0;
             font-size: 0;
             cursor: pointer;
@@ -41,14 +41,14 @@
                 left: 50%;
                 top: 50%;
                 transform: translate(-50%, -50%);
-                width: 9px;
-                height: 2px;
+                width: rem(9);
+                height: rem(2);
                 background: $setting-color-gray-3;
                 @include helper-effect-transition(background);
             }
             &--increment::after {
-                width: 2px;
-                height: 9px;
+                width: rem(2);
+                height: rem(9);
             }
 
             &:hover {
@@ -62,7 +62,7 @@
             &--disabled {
                 background: $setting-color-white;
                 cursor: not-allowed;
-                box-shadow: 0 3px 3px 0 $setting-color-shadow;
+                box-shadow: 0 rem(3) rem(3) 0 $setting-color-shadow;
 
                 &::before,
                 &::after {
@@ -81,18 +81,20 @@
         }
 
         &--right-space {
-            margin-right: 10px;
+            margin-right: rem(10);
         }
 
         &--cart {
-            padding-top: rem(10);
-            padding-bottom: rem(12);
+            @include helper-breakpoint-media-min($lg) {
+                padding-top: rem(10);
+                padding-bottom: rem(12);
+            }
         }
 
         &--shopping-list {
             padding-top: rem(10);
             padding-bottom: rem(12);
-            margin-bottom: 20px;
+            margin-bottom: rem(20);
         }
     }
 }
