@@ -181,7 +181,8 @@ class CalculationDependencyProvider extends SprykerCalculationDependencyProvider
      */
     protected function getQuoteCalculatorPluginStack(Container $container)
     {
-        return [
+        /** @var \Spryker\Zed\CalculationExtension\Dependency\Plugin\CalculationPluginInterface[] $plugins */
+        $plugins = [
             new RemoveTotalsCalculatorPlugin(),
             new RemoveAllCalculatedDiscountsCalculatorPlugin(),
             new RemovePromotionItemsCalculatorPlugin(),
@@ -224,6 +225,8 @@ class CalculationDependencyProvider extends SprykerCalculationDependencyProvider
 
             new PaymentCalculatorPlugin(),
         ];
+
+        return $plugins;
     }
 
     /**
