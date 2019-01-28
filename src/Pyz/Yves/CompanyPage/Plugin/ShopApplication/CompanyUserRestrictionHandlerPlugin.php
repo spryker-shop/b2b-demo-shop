@@ -61,7 +61,7 @@ class CompanyUserRestrictionHandlerPlugin extends SprykerCompanyUserRestrictionH
     {
         $companyUserTransfer = $customerTransfer->getCompanyUserTransfer();
 
-        return $companyUserTransfer && $this->hasPermission($companyUserTransfer, static::PERMISSION_KEY);
+        return $companyUserTransfer && $this->hasPermission($companyUserTransfer);
     }
 
     /**
