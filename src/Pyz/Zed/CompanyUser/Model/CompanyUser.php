@@ -10,7 +10,7 @@ namespace Pyz\Zed\CompanyUser\Model;
 use Generated\Shared\Transfer\CustomerTransfer;
 use Spryker\Zed\CompanyUser\Business\Model\CompanyUser as SprykerCompanyUser;
 
-class CompanyUser extends SprykerCompanyUser
+class CompanyUser extends SprykerCompanyUser implements CompanyUserInterface
 {
     /**
      * @var \Pyz\Zed\CompanyUser\Persistence\CompanyUserRepositoryInterface
