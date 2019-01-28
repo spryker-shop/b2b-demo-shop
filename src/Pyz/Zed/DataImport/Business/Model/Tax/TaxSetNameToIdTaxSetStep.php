@@ -8,7 +8,6 @@
 namespace Pyz\Zed\DataImport\Business\Model\Tax;
 
 use Orm\Zed\Tax\Persistence\SpyTaxSetQuery;
-use Pyz\Zed\DataImport\Business\Exception\EntityNotFoundException;
 use Spryker\Zed\DataImport\Business\Exception\DataKeyNotFoundInDataSetException;
 use Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
@@ -50,7 +49,7 @@ class TaxSetNameToIdTaxSetStep implements DataImportStepInterface
      *
      * @return void
      */
-    public function execute(DataSetInterface $dataSet)
+    public function execute(DataSetInterface $dataSet): void
     {
         if (!isset($dataSet[$this->source])) {
             throw new DataKeyNotFoundInDataSetException(sprintf(
@@ -70,19 +69,13 @@ class TaxSetNameToIdTaxSetStep implements DataImportStepInterface
     /**
      * @param string $taxSetName
      *
-     * @throws \Pyz\Zed\DataImport\Business\Exception\EntityNotFoundException
-     *
      * @return int
      */
-    protected function resolveIdStock($taxSetName)
+    protected function resolveIdStock($taxSetName): int
     {
         $taxSetEntity = SpyTaxSetQuery::create()
             ->filterByName($taxSetName)
             ->findOneOrCreate();
-
-        if (!$taxSetEntity) {
-            throw new EntityNotFoundException(sprintf('Tax set by name "%s" not found.', $taxSetName));
-        }
 
         $taxSetEntity->save();
 

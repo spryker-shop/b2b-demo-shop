@@ -5,12 +5,12 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Orm\Zed\GiftCard\Persistence;
+namespace Orm\Zed\ProductPageSearch\Persistence;
 
-use Spryker\Zed\GiftCard\Persistence\Propel\AbstractSpyGiftCardProductAbstractConfiguration as BaseSpyGiftCardProductAbstractConfiguration;
+use Spryker\Zed\ProductPageSearch\Persistence\Propel\AbstractSpyProductConcretePageSearch as BaseSpyProductConcretePageSearch;
 
 /**
- * Skeleton subclass for representing a row from the 'spy_gift_card_product_abstract_configuration' table.
+ * Skeleton subclass for representing a row from the 'spy_product_concrete_page_search' table.
  *
  *
  *
@@ -19,6 +19,6 @@ use Spryker\Zed\GiftCard\Persistence\Propel\AbstractSpyGiftCardProductAbstractCo
  * long as it does not already exist in the output directory.
  *
  */
-class SpyGiftCardProductAbstractConfiguration extends BaseSpyGiftCardProductAbstractConfiguration
+class SpyProductConcretePageSearch extends BaseSpyProductConcretePageSearch
 {
 }

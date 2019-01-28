@@ -64,9 +64,7 @@ class ProductController extends SprykerShopProductController
                 ],
                 $this->getLocale()
             );
-            if ($bundledProductView) {
-                $bundledProduct['image'] = $bundledProductView->getImages()->offsetGet(0)->getExternalUrlSmall();
-            }
+            $bundledProduct['image'] = $bundledProductView->getImages()->offsetGet(0)->getExternalUrlSmall();
             $bundledProducts[] = $bundledProduct;
         }
 
