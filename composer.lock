@@ -2982,7 +2982,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-feature/product.git",
-                "reference": "5b486ffae114c1d05b1ec56a8052722df411c57d"
+                "reference": "ee4a4c9618a957d7d6e73250000f8d729b23c3fa"
             },
             "require": {
                 "php": ">=7.1",
@@ -2990,28 +2990,30 @@
                 "spryker-shop/product-category-widget": "^1.1.2",
                 "spryker-shop/product-detail-page": "^1.7.2",
                 "spryker-shop/product-image-widget": "^1.0.1",
+                "spryker-shop/product-search-widget": "^1.0.0",
                 "spryker-shop/product-widget": "^1.2.1",
-                "spryker/product": "^6.8.0",
+                "spryker/product": "^6.8.1",
                 "spryker/product-abstract-data-feed": "^0.2.2",
                 "spryker/product-attribute": "^1.1.1",
                 "spryker/product-attribute-gui": "^1.0.7",
                 "spryker/product-category-filter": "^1.2.2",
-                "spryker/product-category-filter-gui": "^1.1.7",
+                "spryker/product-category-filter-gui": "^1.1.8",
                 "spryker/product-category-filter-storage": "^1.1.0",
                 "spryker/product-category-storage": "^1.3.0",
                 "spryker/product-image-storage": "^1.5.0",
                 "spryker/product-management": "^0.16.4",
                 "spryker/product-page-search": "^3.0.0",
-                "spryker/product-search": "^5.6.0",
+                "spryker/product-quantity-storage": "^1.2.0",
+                "spryker/product-search": "^5.6.1",
                 "spryker/product-search-config-storage": "^1.1.0",
-                "spryker/product-storage": "^1.7.0"
+                "spryker/product-storage": "^1.8.0"
             },
             "type": "metapackage",
             "license": [
                 "proprietary"
             ],
             "description": "Product [feature]",
-            "time": "2019-01-17T10:04:34+00:00"
+            "time": "2019-01-28T13:35:15+00:00"
         },
         {
             "name": "spryker-feature/product-barcode",
@@ -3347,19 +3349,20 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-feature/quick-add-to-cart.git",
-                "reference": "55ee55e35962bcd64b482ba64a5b47458cdcd714"
+                "reference": "5913509e9570652e4e83ed8a203cb83895b02fc5"
             },
             "require": {
                 "php": ">=7.1",
                 "spryker-feature/cart": "^201902.0",
-                "spryker-shop/quick-order-page": "^2.0.1"
+                "spryker-shop/quick-order-page": "^2.0.1",
+                "spryker/quick-order": "^1.0.0"
             },
             "type": "metapackage",
             "license": [
                 "proprietary"
             ],
             "description": "Quick add to cart [feature]",
-            "time": "2019-01-17T10:05:20+00:00"
+            "time": "2019-01-28T13:35:53+00:00"
         },
         {
             "name": "spryker-feature/reclamations",
@@ -3486,7 +3489,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-feature/shopping-lists.git",
-                "reference": "c977e8bbab76dc16ff36b36ed68315a55f1b0c64"
+                "reference": "0d4f149fe32ec287cec5987d2d2ce8dac8ecb9db"
             },
             "require": {
                 "php": ">=7.1",
@@ -3496,9 +3499,9 @@
                 "spryker-feature/prices": "^201902.0",
                 "spryker-feature/product": "^201902.0",
                 "spryker-feature/spryker-core": "^201902.0",
-                "spryker-shop/cart-to-shopping-list-widget": "^0.4.9",
+                "spryker-shop/cart-to-shopping-list-widget": "^0.4.8",
                 "spryker-shop/shopping-list-note-widget": "^1.1.0",
-                "spryker-shop/shopping-list-page": "^0.5.10",
+                "spryker-shop/shopping-list-page": "^0.5.13",
                 "spryker-shop/shopping-list-widget": "^0.4.2",
                 "spryker/shopping-list": "^2.5.1",
                 "spryker/shopping-list-data-import": "^0.1.0",
@@ -3511,7 +3514,7 @@
                 "proprietary"
             ],
             "description": "Shopping Lists [feature]",
-            "time": "2019-01-17T10:05:39+00:00"
+            "time": "2019-01-28T14:46:37+00:00"
         },
         {
             "name": "spryker-feature/split-shipment",
@@ -6547,6 +6550,55 @@
             ],
             "description": "ProductReviewWidget module",
             "time": "2019-01-04T15:29:56+00:00"
+        },
+        {
+            "name": "spryker-shop/product-search-widget",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/product-search-widget.git",
+                "reference": "7ebd2672476cdd11dcba0045f7f165ab02f29156"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/product-search-widget/zipball/7ebd2672476cdd11dcba0045f7f165ab02f29156",
+                "reference": "7ebd2672476cdd11dcba0045f7f165ab02f29156",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/catalog": "^5.5.0",
+                "spryker/kernel": "^3.0.0",
+                "spryker/symfony": "^3.0.0"
+            },
+            "require-dev": {
+                "spryker-shop/shop-application": "*",
+                "spryker/code-sniffer": "*",
+                "spryker/silex": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker-shop/quick-order-page": "Use this module when using plugins that need QuickOrderPage dependencies.",
+                "spryker-shop/shop-application": "Use this module when using plugins that need ShopApplication dependencies.",
+                "spryker/silex": "Use this module when using plugins that need Silex dependencies."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ProductSearchWidget module",
+            "time": "2018-12-21T11:03:50+00:00"
         },
         {
             "name": "spryker-shop/product-set-detail-page",

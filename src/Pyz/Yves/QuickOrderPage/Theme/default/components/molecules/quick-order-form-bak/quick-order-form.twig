@@ -6,14 +6,17 @@
 } %}
 
 {% define data = {
-    form: required
+    form: required,
+    products: [],
+    prices: [],
+    additionalColumns: []
 } %}
 
 {% block body %}
     {% include molecule('ajax-provider') with {
         class: config.jsName ~ '__provider ' ~ config.jsName ~ '__add-row-provider',
         attributes: {
-            method: 'post',
+            method: 'POST',
             url: url('quick-order/add-rows')
         }
     } only %}
@@ -21,7 +24,7 @@
     {% include molecule('ajax-provider') with {
         class: config.jsName ~ '__provider ' ~ config.jsName ~ '__remove-row-provider',
         attributes: {
-            method: 'post',
+            method: 'POST',
             url: url('quick-order/delete-row')
         }
     } only %}
@@ -36,6 +39,8 @@
     {% embed molecule('form') with {
         data: {
             form: data.form,
+            products: data.products,
+            prices: data.prices,
             options: {
                 attr: {
                     class: config.jsName ~ '__form'
