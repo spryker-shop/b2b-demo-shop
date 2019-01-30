@@ -66,7 +66,6 @@
     {% include molecule('order-detail-table', 'CustomerPage') with {
         data: {
             items: data.orderItems,
-            currencyIsoCode: data.order.currencyIsoCode,
             order: data.order
         }
     } only %}

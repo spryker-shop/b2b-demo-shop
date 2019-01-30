@@ -1,15 +1,18 @@
 {% extends model('component') %}
 
 {% define config = {
-    name: 'order-detail-table'
+    name: 'order-detail-table',
+    tag: 'div'
 } %}
 
 {% define data = {
     items: required,
-    currencyIsoCode: required
+    order: required
 } %}
 
 {% block body %}
+    {% set currencyIsoCode = data.order.currencyIsoCode %}
+
     <table class="table table--responsive">
         <thead class="{{ config.name }}__head">
             <tr>
@@ -32,12 +35,10 @@
                     {% include [
                         molecule('order-detail-product-packaging-unit', 'ProductPackagingUnitWidget'),
                         molecule('order-detail-product-packaging-unit-default', 'CustomerPage'),
-                    ] ignore missing with {
+                        ] ignore missing with {
                         class: config.name ~ '__row row row--order-details',
                         data: {
-                            concreteItem: item,
-                            currencyIsoCode: data.currencyIsoCode,
-                            concreteItemDefault: concreteItem,
+                            item: item,
                             order: data.order
                         }
                     } only %}
@@ -56,7 +57,7 @@
                                 {% if concreteItem.productOptions is not empty %}
                                     {{ "customer.order.options" | trans }} <br>
                                     {% for productOption in concreteItem.productOptions %}
-                                        - {{ productOption.value | trans }} {{ productOption.sumPrice | money(true, data.currencyIsoCode) }}  <br>
+                                        - {{ productOption.value | trans }} {{ productOption.sumPrice | money(true, currencyIsoCode) }}  <br>
                                     {% endfor %}
                                 {% endif %}
                             </td>
@@ -73,7 +74,7 @@
                                         + <small>{{ productOption.value | trans }}</small>
                                     </td>
                                     <td class="{{ config.name }}__cell {{ config.name }}__cell--detail">
-                                        <small>{{ productOption.sumPrice | money(true, data.currencyIsoCode) }}</small>
+                                        <small>{{ productOption.sumPrice | money(true, currencyIsoCode) }}</small>
                                     </td>
                                     <td class="{{ config.name }}__cell {{ config.name }}__cell--detail" colspan="2"></td>
                                 {% endblock %}

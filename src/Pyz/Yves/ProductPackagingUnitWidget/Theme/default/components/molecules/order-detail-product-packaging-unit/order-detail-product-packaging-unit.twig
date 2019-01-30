@@ -6,84 +6,87 @@
 } %}
 
 {% define data = {
-    concreteItem: required,
-    currencyIsoCode: required
+    item: required,
+    order: required
 } %}
 
 {% block body %}
-    {% if data.concreteItem.quantitySalesUnit is not null and data.concreteItem.quantity is not null %}
-        {% set salesUnitName = data.concreteItem.quantitySalesUnit.productMeasurementUnit.name | default('') %}
-        {% set salesUnitQuantity = data.concreteItem.quantity / data.concreteItem.quantitySalesUnit.conversion %}
+    {% set currencyIsoCode = data.order.currencyIsoCode %}
+    {% set concreteItem = data.item.bundleProduct | default(data.item) %}
+
+    {% if concreteItem.quantitySalesUnit is not null and concreteItem.quantity is not null %}
+        {% set salesUnitName = concreteItem.quantitySalesUnit.productMeasurementUnit.name | default('') %}
+        {% set salesUnitQuantity = concreteItem.quantity / concreteItem.quantitySalesUnit.conversion %}
         {% set salesUnitSummary = '' %}
         {% if salesUnitName %}
-            {% set salesUnitSummary = salesUnitQuantity | round(data.concreteItem.quantitySalesUnit.precision, 'floor') ~ ' ' ~ salesUnitName | trans %}
+            {% set salesUnitSummary = salesUnitQuantity | round(concreteItem.quantitySalesUnit.precision, 'floor') ~ ' ' ~ salesUnitName | trans %}
         {% endif %}
 
-        {% set amountSalesUnitName = data.concreteItem.amountSalesUnit.productMeasurementUnit.name | default('') %}
+        {% set amountSalesUnitName = concreteItem.amountSalesUnit.productMeasurementUnit.name | default('') %}
     {% endif %}
 
     <td class="{{ config.name }}__checkbox">
-        {{ widgetBlock('CustomerReorderWidgetPlugin', 'formCheckbox', data.order, data.concreteItem) }}
+        {{ widgetBlock('CustomerReorderWidgetPlugin', 'formCheckbox', data.order, concreteItem) }}
     </td>
     <td class="transform-cell transform-cell--alt" data-content="{{ 'customer.order.item_sku' | trans }}">
-        {{ data.concreteItem.sku }}
+        {{ concreteItem.sku }}
     </td>
     <td class="transform-cell transform-cell--alt" data-content="{{ 'customer.order.product_name' | trans }}">
         <span class="{{ config.name }}__inner">
-            {{ data.concreteItem.name }}<br>
-            {% if data.concreteItem.amount and data.concreteItem.quantity %}
+            {{ concreteItem.name }}<br>
+            {% if concreteItem.amount and concreteItem.quantity %}
                 <span class="{{ config.name }}__inner {{ config.name }}__inner--lg-inline">
-                    <span class="text-secondary">&times;</span> {{ data.concreteItem.amount }} {{ 'packaging_units.cart.item' | trans }} = ({{ data.concreteItem.amount / data.concreteItem.amountSalesUnit.conversion }}{{ amountSalesUnitName | trans }}) = {{ data.concreteItem.quantity * data.concreteItem.amount }} {{ 'packaging_units.cart.item' | trans }}
+                    <span class="text-secondary">&times;</span> {{ concreteItem.amount }} {{ 'packaging_units.cart.item' | trans }} = ({{ concreteItem.amount / concreteItem.amountSalesUnit.conversion }}{{ amountSalesUnitName | trans }}) = {{ concreteItem.quantity * concreteItem.amount }} {{ 'packaging_units.cart.item' | trans }}
                 </span>
             {% endif %}
         </span>
     </td>
     <td class="transform-cell transform-cell--alt" data-content="{{ 'customer.order.item_price' | trans }}">
-        {{ data.concreteItem.unitPrice | money(true, data.currencyIsoCode) }}
+        {{ concreteItem.unitPrice | money(true, currencyIsoCode) }}
     </td>
     <td class="transform-cell transform-cell--alt" data-content="{{ 'customer.order.item_quantity' | trans }}">
-        {{ data.concreteItem.quantity }} {% if salesUnitSummary is defined %}= ({{ salesUnitSummary }}){% endif %}
+        {{ concreteItem.quantity }} {% if salesUnitSummary is defined %}= ({{ salesUnitSummary }}){% endif %}
     </td>
     <td class="transform-cell transform-cell--alt" data-content="{{ 'customer.order.item_sum' | trans }}">
-        {{ data.concreteItem.unitPriceToPayAggregation | money(true, data.currencyIsoCode) }}
+        {{ concreteItem.unitPriceToPayAggregation | money(true, currencyIsoCode) }}
     </td>
-    {% if data.concreteItem.bundleItems is defined %}
+    {% if data.item.bundleItems is defined %}
         <td class="transform-cell transform-cell--alt transform-cell--no-label is-hidden-lg-xxl" colspan="5">
             <div class="{{ config.name }}__inner">
                 <span class="{{ config.name }}__title">{{ "customer.order.bundled_items" | trans }} </span>
-                {% for bundledItem in data.concreteItem.bundleItems %}
+                {% for bundledItem in data.item.bundleItems %}
                     - {{ bundledItem.quantity }} x {{ bundledItem.name }} <br>
                 {% endfor %}
 
-                {% if data.concreteItem.productOptions is not empty %}
+                {% if concreteItem.productOptions is not empty %}
                     {{ "customer.order.options" | trans }} <br>
-                    {% for productOption in data.concreteItem.productOptions %}
-                        - {{ productOption.value | trans }} {{ productOption.sumPrice | money(true, data.currencyIsoCode) }}  <br>
+                    {% for productOption in concreteItem.productOptions %}
+                        - {{ productOption.value | trans }} {{ productOption.sumPrice | money(true, currencyIsoCode) }}  <br>
                     {% endfor %}
                 {% endif %}
             </div>
         </td>
     {% else %}
-        {% if data.concreteItem.productOptions is not empty %}
+        {% if concreteItem.productOptions is not empty %}
             <td class="transform-cell transform-cell--alt transform-cell--no-label is-hidden-lg-xxl" colspan="5">
                 <div class="{{ config.name }}__inner">
                     <span class="{{ config.name }}__title">{{ "customer.order.item_options" | trans }}:</span>
                     <ul>
-                        {% for productOption in data.concreteItem.productOptions %}
-                            <li>+ {{ productOption.value | trans }} {{ productOption.sumPrice | money(true, data.currencyIsoCode) }}</li>
+                        {% for productOption in concreteItem.productOptions %}
+                            <li>+ {{ productOption.value | trans }} {{ productOption.sumPrice | money(true, currencyIsoCode) }}</li>
                         {% endfor %}
                     </ul>
                 </div>
             </td>
         {% endif %}
     {% endif %}
-    {% if data.concreteItem.cartNote is not empty %}
+    {% if concreteItem.cartNote is not empty %}
         <td class="transform-cell transform-cell--alt transform-cell--no-label is-hidden-lg-xxl" colspan="5">
             {% include molecule('note-list', 'CartNoteWidget') ignore missing with {
                 modifiers: ['order-detail'],
                 data: {
                     label: 'cart_note.customer_page.item_note',
-                    note: data.concreteItem.cartNote
+                    note: concreteItem.cartNote
                 }
             } only %}
         </td>
