@@ -1,0 +1,30 @@
+@mixin quick-order-page-quick-order-row-partial($name: '.quick-order-row-partial') {
+    #{$name} {
+        &__holder-quantity {
+            position: relative;
+        }
+
+        &__error {
+            @include helper-effect-transition(transform);
+            position: absolute;
+            left: 0.5rem;
+            top: 100%;
+            width: calc(100% - 1rem);
+            padding: 0.5rem;
+            background-color: $setting-color-white;
+            box-shadow: 0 0 10px rgba(0,0,0, 0.5);
+            color: $setting-color-alt;
+            z-index: $setting-zi-notification-area;
+            transform-origin: center top;
+            transform: scale(0);
+
+            &--show {
+                transform: scale(1);
+            }
+        }
+
+        @content;
+    }
+}
+
+@include quick-order-page-quick-order-row-partial();

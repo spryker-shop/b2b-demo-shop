@@ -15,7 +15,7 @@
 
 {% block content %}
     <div class="grid grid--gap grid--justify">
-        <div class="col col--sm-12 col--xl-9">
+        <div class="col col--sm-12 col--md-9">
             {% include molecule('quick-order-form', 'QuickOrderPage') with {
                 data: {
                     form: data.forms.quickOrderForm,
@@ -25,7 +25,7 @@
                 }
             } only %}
         </div>
-        <div class="col col--sm-12 col--xl-4 order-sidebar">
+        <div class="col col--sm-12 col--md-3 order-sidebar">
             <div class="order-sidebar__item">
                 <h5 class="order-sidebar__title order-sidebar__title--space-bottom">{{ 'quick-order.paste-order.title' | trans }}</h5>
                 <div class="order-sidebar__text">
