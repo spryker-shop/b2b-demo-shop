@@ -181,6 +181,7 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
         return [
             new LocalizedQueryExpanderPlugin(),
             new PaginatedProductConcreteCatalogSearchQueryExpanderPlugin(),
+            new ProductListQueryExpanderPlugin(),
         ];
     }
 }
