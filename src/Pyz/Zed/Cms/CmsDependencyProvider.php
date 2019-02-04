@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the Spryker Suite.
+ * This file is part of the Spryker Commerce OS.
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
@@ -21,7 +21,7 @@ class CmsDependencyProvider extends SprykerCmsDependencyProvider
      *
      * @return array
      */
-    protected function getPostSavePlugins(Container $container): array
+    protected function getPostSavePlugins(Container $container)
     {
         return [
             new UserCmsVersionPostSavePlugin(),
@@ -33,7 +33,7 @@ class CmsDependencyProvider extends SprykerCmsDependencyProvider
      *
      * @return array
      */
-    protected function getTransferExpanderPlugins(Container $container): array
+    protected function getTransferExpanderPlugins(Container $container)
     {
         return [
             new UserCmsVersionTransferExpanderPlugin(),
@@ -41,9 +41,9 @@ class CmsDependencyProvider extends SprykerCmsDependencyProvider
     }
 
     /**
-     * @return \Spryker\Zed\CmsExtension\Dependency\Plugin\CmsPageDataExpanderPluginInterface[]
+     * @return \Spryker\Zed\Cms\Dependency\Plugin\CmsPageDataExpanderPluginInterface[]
      */
-    protected function getCmsPageDataExpanderPlugins(): array
+    protected function getCmsPageDataExpanderPlugins()
     {
         return [
             new CmsPageParameterMapExpanderPlugin(),
@@ -53,7 +53,7 @@ class CmsDependencyProvider extends SprykerCmsDependencyProvider
     /**
      * @return \Spryker\Zed\Cms\Communication\Plugin\PostCmsPageActivatorPluginInterface[]
      */
-    protected function getCmsPagePostActivatorPlugins(): array
+    protected function getCmsPagePostActivatorPlugins()
     {
         return [
             new PostCmsPageActivatorNavigationPlugin(),
