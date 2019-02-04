@@ -80,6 +80,7 @@ class CategoryDependencyProvider extends SprykerDependencyProvider
             new CategoryImageSetExpanderPlugin(),
         ]);
     }
+
     /**
      * @return \Spryker\Zed\CategoryExtension\Dependency\Plugin\CategoryUpdateAfterPluginInterface[]
      */
@@ -89,6 +90,7 @@ class CategoryDependencyProvider extends SprykerDependencyProvider
             new CategoryImageSetUpdaterPlugin(),
         ];
     }
+
     /**
      * @return \Spryker\Zed\CategoryExtension\Dependency\Plugin\CategoryCreateAfterPluginInterface[]
      */
@@ -98,6 +100,7 @@ class CategoryDependencyProvider extends SprykerDependencyProvider
             new CategoryImageSetCreatorPlugin(),
         ];
     }
+    
     /**
      * @return \Spryker\Zed\CategoryExtension\Dependency\Plugin\CategoryFormTabExpanderPluginInterface[]
      */
