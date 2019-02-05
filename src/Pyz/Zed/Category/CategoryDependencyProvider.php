@@ -100,7 +100,7 @@ class CategoryDependencyProvider extends SprykerDependencyProvider
             new CategoryImageSetCreatorPlugin(),
         ];
     }
-    
+
     /**
      * @return \Spryker\Zed\CategoryExtension\Dependency\Plugin\CategoryFormTabExpanderPluginInterface[]
      */
