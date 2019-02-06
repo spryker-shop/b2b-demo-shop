@@ -53,7 +53,6 @@ class DataImportConfig extends SprykerDataImportConfig
     public const IMPORT_TYPE_TAX = 'tax';
     public const IMPORT_TYPE_CURRENCY = 'currency';
     public const IMPORT_TYPE_STORE = 'store';
-    public const IMPORT_TYPE_ORDER_SOURCE = 'order-source';
 
     /**
      * @return \Generated\Shared\Transfer\DataImporterConfigurationTransfer
@@ -61,14 +60,6 @@ class DataImportConfig extends SprykerDataImportConfig
     public function getCurrencyDataImporterConfiguration()
     {
         return $this->buildImporterConfiguration('currency.csv', static::IMPORT_TYPE_CURRENCY);
-    }
-
-    /**
-     * @return \Generated\Shared\Transfer\DataImporterConfigurationTransfer
-     */
-    public function getOrderSourceDataImporterConfiguration()
-    {
-        return $this->buildImporterConfiguration('order_source.csv', static::IMPORT_TYPE_ORDER_SOURCE);
     }
 
     /**
