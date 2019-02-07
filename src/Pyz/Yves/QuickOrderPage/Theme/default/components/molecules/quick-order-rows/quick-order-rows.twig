@@ -61,6 +61,9 @@
                     skuFieldValue: product is null ? null : product.sku,
                     searchFieldValue: product is null ? null : product.localizedAttributes[0].name ~ ' (' ~ product.sku ~ ')'
                 }
+            },
+            attributes: {
+                'autocomplete-form': 'product-search-autocomplete-form'
             }
         } only %}
     {% endfor %}

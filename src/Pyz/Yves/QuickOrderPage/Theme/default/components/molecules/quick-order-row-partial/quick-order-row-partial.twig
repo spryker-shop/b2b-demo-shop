@@ -30,33 +30,49 @@
             </div>
         {% endif %}
 
-        <div class="col col--sm-5 {{ config.name }}__holder-quantity spacing-y spacing-x spacing-x--inner spacing-x--bigger">
-            {% block quantity %}
-                {% set options = {
-                    required: true,
-                    label: false,
-                    attr: {
-                        class: config.jsName ~ '__quantity',
-                        min: 1,
-                        max: null,
-                        step: 1,
-                        disabled: data.product is empty,
-                        value: data.product is empty ? null : data.quantityField.vars.value
-                    }
-                } %}
+        <div class="col col--sm-5 spacing-y spacing-x spacing-x--inner spacing-x--bigger">
+            <div class="{{ config.name }}__holder-quantity">
+                {% block quantity %}
+                    {% set options = {
+                        required: true,
+                        label: false,
+                        attr: {
+                            class: config.name ~ '__quantity ' ~ config.jsName ~ '__quantity',
+                            min: 1,
+                            max: null,
+                            step: 1,
+                            disabled: data.product is empty,
+                            value: data.product is empty ? null : data.quantityField.vars.value
+                        }
+                    } %}
 
-                {% if (data.customQuantityFieldName) %}
-                    {% set options = options|merge({full_name: data.customQuantityFieldName}) %}
-                {% endif %}
+                    {% if (data.customQuantityFieldName) %}
+                        {% set options = options|merge({full_name: data.customQuantityFieldName}) %}
+                    {% endif %}
 
-                {{ form_widget(data.quantityField, options) }}
+                    <button class="{{ config.name }}__button
+                                   {% if data.product is empty %}
+                                        {{ config.name }}__button--disabled
+                                   {% endif %}
+                                   {{ config.jsName }}__button-decrement
+                                   {{ config.name }}__button--decrement">-</button>
 
-                {% if (data.isQuantityAdjusted) %}
-                    <span class="{{ config.name }}__error {{ config.name }}__error--show">
-                        {{ 'quick-order.input-quantity.message.error' | trans }}
-                    </span>
-                {% endif %}
-            {% endblock %}
+                    {{ form_widget(data.quantityField, options) }}
+
+                    <button class="{{ config.name }}__button
+                                   {% if data.product is empty %}
+                                       {{ config.name }}__button--disabled
+                                   {% endif %}
+                                   {{ config.jsName }}__button-increment
+                                   {{ config.name }}__button--increment">+</button>
+
+                    {% if (data.isQuantityAdjusted) %}
+                        <span class="{{ config.name }}__error {{ config.name }}__error--show">
+                            {{ 'quick-order.input-quantity.message.error' | trans }}
+                        </span>
+                    {% endif %}
+                {% endblock %}
+            </div>
         </div>
 
         <div class="col col--sm-4 col--middle spacing-y spacing-x spacing-x--inner spacing-x--bigger">

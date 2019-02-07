@@ -18,6 +18,10 @@
     }
 } %}
 
+{% define attributes = {
+    'autocomplete-form': required
+} %}
+
 {% block body %}
     {% include molecule('ajax-provider') with {
         class: config.jsName ~ '__provider ' ~ config.jsName ~ '__provider-' ~ data.index,
