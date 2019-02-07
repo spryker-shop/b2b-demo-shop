@@ -1,0 +1,51 @@
+@mixin quick-order-page-quick-order-form($name: '.quick-order-form') {
+    #{$name} {
+        position: relative;
+        padding-bottom: rem(50);
+
+        @include helper-breakpoint-media-min($xxl) {
+            padding-bottom: 0;
+        }
+
+        &__rows {
+            width: 100%;
+        }
+
+        &__button {
+            min-width: rem(250);
+        }
+
+        &__clear-all-trigger,
+        &__add-row-trigger {
+            font-size: rem(13);
+            color: $setting-color-gray-3;
+            vertical-align: bottom;
+        }
+
+        &__add-row-trigger {
+            position: relative;
+            display: flex;
+            align-items: center;
+
+            &::before {
+                content: "+";
+                font-size: rem(25);
+                font-weight: fw(bold);
+                color: $setting-color-main;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: rem(40);
+                height: rem(27);
+                border: 2px solid $setting-color-main;
+                border-radius: $setting-border-radius-2;
+                margin-right: rem(8);
+
+            }
+        }
+
+        @content;
+    }
+}
+
+@include quick-order-page-quick-order-form;
