@@ -15,7 +15,9 @@ export default class TogglerClick extends Component {
         this.overlay = <OverlayBlock>document.querySelector(this.overlaySelector);
         this.triggers = <HTMLElement[]>Array.from(document.querySelectorAll(this.triggerSelector));
         this.targets = <HTMLElement[]>Array.from(document.querySelectorAll(this.targetSelector));
-        this.overlayModifiers = this.customOverlayModifiers.split(', ');
+        if (this.customOverlayModifiers) {
+            this.overlayModifiers = this.customOverlayModifiers.split(', ');
+        }
         this.isContentOpened = false;
         this.isShowClasses = 'show-class';
         this.isHideClasses = 'hide-class';
