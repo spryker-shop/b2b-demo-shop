@@ -5,12 +5,12 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Orm\Zed\ManualOrderEntry\Persistence;
+namespace Orm\Zed\Cms\Persistence;
 
-use Spryker\Zed\ManualOrderEntry\Persistence\Propel\AbstractSpyOrderSource as BaseSpyOrderSource;
+use Spryker\Zed\Cms\Persistence\Propel\AbstractSpyCmsPageStoreQuery as BaseSpyCmsPageStoreQuery;
 
 /**
- * Skeleton subclass for representing a row from the 'spy_order_source' table.
+ * Skeleton subclass for performing query and update operations on the 'spy_cms_page_store' table.
  *
  *
  *
@@ -19,6 +19,6 @@ use Spryker\Zed\ManualOrderEntry\Persistence\Propel\AbstractSpyOrderSource as Ba
  * long as it does not already exist in the output directory.
  *
  */
-class SpyOrderSource extends BaseSpyOrderSource
+class SpyCmsPageStoreQuery extends BaseSpyCmsPageStoreQuery
 {
 }
