@@ -65,12 +65,6 @@
                                    {% endif %}
                                    {{ config.jsName }}__button-increment
                                    {{ config.name }}__button--increment">+</button>
-
-                    {% if (data.isQuantityAdjusted) %}
-                        <span class="{{ config.name }}__error {{ config.name }}__error--show">
-                            {{ 'quick-order.input-quantity.message.error' | trans }}
-                        </span>
-                    {% endif %}
                 {% endblock %}
             </div>
         </div>
@@ -83,6 +77,14 @@
                     }
                 } only %}
             {% endblock %}
+        </div>
+
+        <div class="col col--sm-12 col--md-12">\
+            {% if (data.isQuantityAdjusted) %}
+                <span class="{{ config.name }}__error {{ config.name }}__error--show">
+                    {{ 'quick-order.input-quantity.message.error' | trans }}
+                </span>
+            {% endif %}
         </div>
     </div>
 {% endblock %}
