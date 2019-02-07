@@ -14,10 +14,12 @@
     {% set currencyIsoCode = data.order.currencyIsoCode %}
     {% set concreteItem = data.item.bundleProduct | default(data.item) %}
 
-    {% if concreteItem.amount is not null and concreteItem.quantity is not null %}
+    {% if concreteItem.quantitySalesUnit is not null and concreteItem.quantity is not null %}
         {% set salesUnitName = concreteItem.quantitySalesUnit.productMeasurementUnit.name | default('') %}
-        {% if salesUnitName is not empty %}
-            {% set salesUnitSummary = concreteItem.quantity / concreteItem.quantitySalesUnit.conversion ~ ' ' ~ salesUnitName | trans %}
+        {% set salesUnitQuantity = concreteItem.quantity / concreteItem.quantitySalesUnit.conversion %}
+        {% set salesUnitSummary = '' %}
+        {% if salesUnitName %}
+            {% set salesUnitSummary = salesUnitQuantity | round(concreteItem.quantitySalesUnit.precision, 'floor') ~ ' ' ~ salesUnitName | trans %}
         {% endif %}
 
         {% set amountSalesUnitName = concreteItem.amountSalesUnit.productMeasurementUnit.name | default('') %}
