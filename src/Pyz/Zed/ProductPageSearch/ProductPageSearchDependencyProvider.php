@@ -93,6 +93,7 @@ class ProductPageSearchDependencyProvider extends SprykerProductPageSearchDepend
             new ProductConcreteProductListPageMapExpanderPlugin(),
         ];
     }
+
     /**
      * @return \Spryker\Zed\ProductPageSearchExtension\Dependency\Plugin\ProductConcretePageDataExpanderPluginInterface[]
      */
