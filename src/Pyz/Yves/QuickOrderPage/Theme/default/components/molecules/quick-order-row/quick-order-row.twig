@@ -1,0 +1,76 @@
+{% extends molecule('quick-order-row-partial', 'QuickOrderPage') %}
+
+{% define config = {
+    name: 'quick-order-row',
+    tag: 'quick-order-row'
+} %}
+
+{% define data = {
+    index: 0,
+    quantityField: required,
+    skuField: required,
+    product: null,
+
+    autocomplete: {
+        skuFieldName: required,
+        skuFieldValue: null,
+        searchFieldValue: null,
+    }
+} %}
+
+{% define attributes = {
+    'autocomplete-form': required
+} %}
+
+{% block body %}
+    {% include molecule('ajax-provider') with {
+        class: config.jsName ~ '__provider ' ~ config.jsName ~ '__provider-' ~ data.index,
+        attributes: {
+            url: '/quick-order/product-additional-data'
+        }
+    } only %}
+
+    {% include molecule('ajax-renderer') with {
+        class: config.jsName ~ '__renderer',
+        attributes: {
+            'provider-selector': '.' ~ config.jsName ~ '__provider-'  ~ data.index,
+            'target-selector': '.' ~ config.jsName ~ '__target-' ~ data.index
+        }
+    } only %}
+
+    {% do data.skuField.setRendered %}
+
+    <div class="grid grid--justify grid--middle">
+        <div class="col col--sm-4 spacing-y spacing-x spacing-x--inner spacing-x--bigger">
+            {% block search %}
+                {% set skuFieldValue = (data.autocomplete.skuFieldValue | length > 1) ? data.autocomplete.skuFieldValue : data.skuField.vars.value %}
+                {% widget 'ProductConcreteSearchWidget' args [
+                    'ajax-provider' ~ data.index,
+                    data.autocomplete.skuFieldName ~ '[sku]',
+                    skuFieldValue,
+                    data.autocomplete.searchFieldValue,
+                ] only %}
+                {% endwidget %}
+            {% endblock %}
+        </div>
+
+        <div class="col col--sm-7 {{config.jsName}}__target {{config.jsName}}__target-{{data.index}}">
+            {{parent()}}
+        </div>
+
+        <div class="col col--sm-1 spacing-y spacing-x spacing-x--inner spacing-x--bigger">
+            {% block delete %}
+                <a href="#remove"
+                    class="js-quick-order-form__remove-row-trigger"
+                    data-row-index="{{ data.index }}">
+                    {% include atom('icon') with {
+                        modifiers: ['quick-order-delete-row'],
+                        data: {
+                            name: 'delete'
+                        }
+                    } only %}
+                </a>
+            {% endblock %}
+        </div>
+    </div>
+{% endblock %}
