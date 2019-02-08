@@ -1,0 +1,35 @@
+{% extends template('widget') %}
+
+{% define data = {
+    shoppingListOptions: _widget.shoppingListOptions,
+    isVisible: _widget.isVisible,
+} %}
+
+{% block template %}
+    {% if data.isVisible %}
+        {{parent()}}
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+    <div class="grid grid--bottom grid--justify">
+        <div class="col col--sm-12 spacing-bottom spacing-bottom--big">
+            <button type="submit" name="addToShoppingList" class="button button--expand button--hollow button--big">
+                {{ 'shopping_list_add_items_widget.add_to_shopping_list' | trans }}
+            </button>
+        </div>
+        <div class="col col--sm-12">
+        {%  if data.shoppingListOptions | length %}
+            {% include atom('select') with {
+                modifiers: ['expand', 'quick-order-page'],
+                attributes: {
+                    name: 'idShoppingList'
+                },
+                data: {
+                    options: data.shoppingListOptions
+                }
+            } only %}
+        {% endif %}
+        </div>
+    </div>
+{% endblock %}

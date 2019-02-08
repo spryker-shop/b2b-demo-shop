@@ -2,10 +2,12 @@
 
 {% define data = {
     forms: {
-        items: _view.itemsForm,
-        textOrder: _view.textOrderForm
+        quickOrderForm: _view.quickOrderForm,
+        textOrderForm: _view.textOrderForm
     },
-
+    additionalColumns: _view.additionalColumns,
+    products: _view.products,
+    prices: _view.prices,
     title: 'quick-order.page-title' | trans
 } %}
 
@@ -13,14 +15,17 @@
 
 {% block content %}
     <div class="grid grid--gap grid--justify">
-        <div class="col col--sm-12 col--xl-8">
+        <div class="col col--sm-12 col--md-9">
             {% include molecule('quick-order-form', 'QuickOrderPage') with {
                 data: {
-                    form: data.forms.items
+                    form: data.forms.quickOrderForm,
+                    products: data.products,
+                    prices: data.prices,
+                    additionalColumns: data.additionalColumns
                 }
             } only %}
         </div>
-        <div class="col col--sm-12 col--xl-4 order-sidebar">
+        <div class="col col--sm-12 col--md-3 order-sidebar">
             <div class="order-sidebar__item">
                 <h5 class="order-sidebar__title order-sidebar__title--space-bottom">{{ 'quick-order.paste-order.title' | trans }}</h5>
                 <div class="order-sidebar__text">
@@ -29,7 +34,7 @@
                 {% include molecule('form') with {
                     class: 'order-sidebar__content',
                     data: {
-                        form: data.forms.textOrder,
+                        form: data.forms.textOrderForm,
                         submit: {
                             enable: true,
                             text: 'quick-order.paste-order.button.verify' | trans
