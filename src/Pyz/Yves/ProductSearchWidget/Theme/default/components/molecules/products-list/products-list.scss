@@ -1,0 +1,20 @@
+@mixin product-search-widget-products-list($name: '.products-list') {
+    #{$name} {
+        &__item {
+            cursor: pointer;
+            padding-right: rem(15);
+            padding-left: rem(15);
+            font-size: rem(12);
+            font-weight: fw(medium);
+            line-height: normal;
+            color: $setting-color-gray-5;
+
+            &:hover,
+            &--selected {
+                background-color: $setting-color-lighter;
+            }
+        }
+    }
+}
+
+@include product-search-widget-products-list();
