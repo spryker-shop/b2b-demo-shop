@@ -1,0 +1,23 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'save-new-address',
+    tag: 'save-new-address'
+} %}
+
+{% define data = {
+    form: required
+} %}
+
+{% define attributes = {
+    'shipping-address-toggler-selector': '',
+    'billing-address-toggler-selector': '',
+    'billing-same-as-shipping-toggler-selector': '',
+    'save-address-toggler-selector': ''
+} %}
+
+{% block body %}
+    {% if data.form.isAddressSavingSkipped is defined %}
+        {{ form_row(data.form.isAddressSavingSkipped) }}
+    {% endif %}
+{% endblock %}
