@@ -229,7 +229,7 @@
                         {% endif %}
 
 
-                        {% include molecule('save-new-address', 'CheckoutPage') ignore missing with {
+                        {% include molecule('save-new-address', 'CustomerPage') ignore missing with {
                             class: 'col is-hidden',
                             data: {
                                 form: data.form
@@ -237,7 +237,7 @@
                             attributes: {
                                 'shipping-address-toggler-selector': existingShippingAddressSelectSelector | default(''),
                                 'billing-address-toggler-selector': existingBillingAddressSelectSelector | default(''),
-                                'billing-same-as-shipping-toggler-selector': '[name="' ~ data.form.billingSameAsShipping.vars.full_name ~ '"]',
+                                'billing-same-as-shipping-toggler-selector': '.js-toggler-checkbox__trigger',
                                 'save-address-toggler-selector': '[name="' ~ data.form.isAddressSavingSkipped.vars.full_name ~ '"]',
                                 'add-new-shipping-address-selector': '.js-form-add-new-address__shippingAddress' | default (''),
                                 'add-new-billing-address-selector': '.js-form-add-new-address__billingAddress' | default ('')
