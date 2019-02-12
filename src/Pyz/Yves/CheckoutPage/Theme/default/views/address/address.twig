@@ -34,8 +34,8 @@
 
         {% block fields %}
             {% set existingShippingAddresses = data.form.shippingAddress.id_customer_address | default %}
-            {% set hasShippingAddresses = existingShippingAddresses is defined %}
-            {% set hideShippingAddressForm = existingShippingAddresses is defined %}
+            {% set hasShippingAddresses = data.form.shippingAddress.id_customer_address is defined %}
+            {% set hideShippingAddressForm = data.form.shippingAddress.id_customer_address is defined %}
             {% set companyBusinessUnitAddressWidget = findWidget('CompanyBusinessUnitAddressWidget', ['shippingAddress', embed.forms.shipping.vars.data]) %}
 
             {% if companyBusinessUnitAddressWidget and companyBusinessUnitAddressWidget.isApplicable %}
@@ -160,7 +160,7 @@
                     {% endblock %}
                     {% block fields %}
                         {% set existingBillingAddresses = data.form.id_customer_address | default %}
-                        {% set hasBillingAddresses = existingBillingAddresses is defined %}
+                        {% set hasBillingAddresses = data.form.id_customer_address is defined %}
                         {% set companyBusinessUnitAddressWidget = findWidget('CompanyBusinessUnitAddressWidget', ['billingAddress', data.form.vars.data]) %}
                         {% if companyBusinessUnitAddressWidget and companyBusinessUnitAddressWidget.isApplicable %}
                             {% set hasBillingAddresses = true %}
