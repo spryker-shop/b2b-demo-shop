@@ -76,9 +76,9 @@ class CategoryDependencyProvider extends SprykerDependencyProvider
      */
     protected function getCategoryPostReadPlugins(): array
     {
-        return array_merge(parent::getCategoryPostReadPlugins(), [
+        return [
             new CategoryImageSetExpanderPlugin(),
-        ]);
+        ];
     }
 
     /**
@@ -86,9 +86,9 @@ class CategoryDependencyProvider extends SprykerDependencyProvider
      */
     protected function getCategoryPostUpdatePlugins(): array
     {
-        return array_merge(parent::getCategoryPostUpdatePlugins(), [
+        return [
             new CategoryImageSetUpdaterPlugin(),
-        ]);
+        ];
     }
 
     /**
@@ -96,9 +96,9 @@ class CategoryDependencyProvider extends SprykerDependencyProvider
      */
     protected function getCategoryPostCreatePlugins(): array
     {
-        return array_merge(parent::getCategoryPostCreatePlugins(), [
+        return [
             new CategoryImageSetCreatorPlugin(),
-        ]);
+        ];
     }
 
     /**
@@ -106,9 +106,9 @@ class CategoryDependencyProvider extends SprykerDependencyProvider
      */
     protected function getCategoryFormTabExpanderPlugins(): array
     {
-        return array_merge(parent::getCategoryFormTabExpanderPlugins(), [
+        return [
             new CategoryImageFormTabExpanderPlugin(),
-        ]);
+        ];
     }
 
     /**
@@ -119,7 +119,7 @@ class CategoryDependencyProvider extends SprykerDependencyProvider
         return array_merge(parent::getCategoryFormPlugins(), [
             new CategoryFormPlugin(),
             new CategoryImageFormPlugin(),
-        ]);
+        ];
     }
 
     /**
