@@ -1,0 +1,95 @@
+{% extends molecule('autocomplete-form') %}
+
+{% define config = {
+    name: 'product-search-autocomplete-form',
+    tag: 'product-search-autocomplete-form'
+} %}
+
+{% define data = {
+    id: required,
+    name: 'query',
+    value: '',
+    hiddenValue: '',
+    placeholder: ''
+} %}
+
+{% define attributes = {
+    'item-selector': '',
+    'query-param-name': 'query',
+    'value-data-attribute': 'data-value',
+    'debounce-delay': 500,
+    'min-letters': 3,
+
+    'suggestion-url': required,
+    'selected-value-key': '',
+    'show-clean-button': true
+} %}
+
+{% block body %}
+
+    {% include molecule('ajax-provider') with {
+        class: config.jsName ~ '__provider ' ~ config.jsName ~ '__provider-' ~ data.id,
+        attributes: {
+            method: 'GET',
+            url: attributes['suggestion-url']
+        }
+    } only %}
+
+    {% include molecule('ajax-loader') with {
+        attributes: {
+            'provider-selector': '.' ~ config.jsName ~ '__provider-' ~ data.id
+        }
+    } only %}
+
+    {% block input %}
+        <div class="{{ config.name }}__field">
+
+            {% include atom('icon') with {
+                class: config.name ~ '__search-icon',
+                modifiers: ['search'],
+                data: {
+                    name: 'search'
+                }
+            } only %}
+
+            <input name="query"
+                   type="text"
+                   class="input input--expand {{ config.name }}__input {{ config.jsName }}__input"
+                   placeholder="{{ data.placeholder | trans }}"
+                   value="{{ data.value }}"
+                   autocomplete="off"/>
+
+            <input {% if data.name is not empty %}name="{{ data.name }}"{% endif %}
+                   type="hidden"
+                   class="{{ config.jsName }}__input-hidden"
+                   value="{{ data.hiddenValue }}"/>
+
+            {% if attributes['show-clean-button'] %}
+                {% block cleanButton %}
+                    <button type="button" class="button button--hollow-icon {{ config.name }}__clean-button {{ config.jsName }}__clean-button">
+                        {% include atom('icon') with {
+                            modifiers: ['small'],
+                            data: {
+                                name: 'cross'
+                            }
+                        } only %}
+                    </button>
+                {% endblock %}
+            {% endif %}
+        </div>
+    {% endblock %}
+
+    {% block suggestion %}
+        <div class="is-hidden {{ config.name }}__suggestions {{ config.jsName }}__suggestions {{ config.jsName }}__suggestions-{{data.id}}">
+            {% include molecule('ajax-renderer') with {
+                class: config.name ~ '__sugestion',
+                attributes: {
+                    'provider-selector': '.' ~ config.jsName ~ '__provider-' ~ data.id,
+                    'target-selector': '.' ~ config.jsName ~ '__suggestions-' ~ data.id,
+                    'render-if-response-is-empty': true,
+                }
+            } only %}
+        </div>
+    {% endblock %}
+
+{% endblock %}
