@@ -8,7 +8,8 @@
 {% define data = {
     facets: [],
     filterPath: null,
-    categories: []
+    categories: [],
+    isEmptyCategoryFilterValueVisible: null
 } %}
 
 {% block class %}
@@ -65,6 +66,25 @@
                                 max: filter.max | default(0),
                                 activeMin: filter.activeMin | default(0),
                                 activeMax: filter.activeMax | default(0)
+                            },
+                            class: toglerClass
+                        } only %}
+
+                        <h6>{{ ('product.filter.' ~ filter.name | lower) | trans }}</h6>
+                        {% include [
+                            molecule('filter-' ~ filter.config.name, 'CatalogPage'),
+                            molecule('filter-' ~ filter.config.type, 'CatalogPage')
+                            ] ignore missing with {
+                            data: {
+                                filterPath: data.filterPath,
+                                categories: data.categories,
+                                filter: filter,
+                                parameter: filter.config.parameterName | default(''),
+                                min: filter.min | default(0),
+                                max: filter.max | default(0),
+                                activeMin: filter.activeMin | default(0),
+                                activeMax: filter.activeMax | default(0),
+                                isEmptyCategoryFilterValueVisible: data.isEmptyCategoryFilterValueVisible
                             },
                             class: toglerClass
                         } only %}
