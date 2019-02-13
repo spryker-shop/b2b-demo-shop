@@ -33,7 +33,7 @@
         {% block title %}{% endblock %}
 
         {% block fields %}
-            {% set existingShippingAddresses = data.form.shippingAddress.id_customer_address | default %}
+            {% set existingShippingAddresses = data.form.shippingAddress.id_customer_address is defined %}
             {% set hasShippingAddresses = data.form.shippingAddress.id_customer_address is defined %}
             {% set hideShippingAddressForm = data.form.shippingAddress.id_customer_address is defined %}
             {% set companyBusinessUnitAddressWidget = findWidget('CompanyBusinessUnitAddressWidget', ['shippingAddress', embed.forms.shipping.vars.data]) %}
@@ -48,9 +48,9 @@
                     <div class="checkout-wrap__container checkout-wrap__container--top">
                         {% if companyBusinessUnitAddressWidget and companyBusinessUnitAddressWidget.isApplicable %}
                             {% widget companyBusinessUnitAddressWidget %}{% endwidget %}
-                            {% for address in existingShippingAddresses %}
-                                {% do address.setRendered %}
-                            {% endfor %}
+                            {% if existingShippingAddresses %}
+                                {% do data.form.shippingAddress.id_customer_address.setRendered %}
+                            {% endif %}
                         {% else %}
                             <ul class="list spacing-y">
                                 <li class="list__item spacing-y">
@@ -159,7 +159,7 @@
                         }) }}
                     {% endblock %}
                     {% block fields %}
-                        {% set existingBillingAddresses = data.form.id_customer_address | default %}
+                        {% set existingBillingAddresses = data.form.id_customer_address is defined %}
                         {% set hasBillingAddresses = data.form.id_customer_address is defined %}
                         {% set companyBusinessUnitAddressWidget = findWidget('CompanyBusinessUnitAddressWidget', ['billingAddress', data.form.vars.data]) %}
                         {% if companyBusinessUnitAddressWidget and companyBusinessUnitAddressWidget.isApplicable %}
@@ -170,9 +170,9 @@
                             <div class="checkout-wrap__container checkout-wrap__container--top">
                                 {% if companyBusinessUnitAddressWidget and companyBusinessUnitAddressWidget.isApplicable %}
                                     {% widget companyBusinessUnitAddressWidget %}{% endwidget %}
-                                    {% for address in existingBillingAddresses %}
-                                        {% do address.setRendered %}
-                                    {% endfor %}
+                                    {% if existingBillingAddresses %}
+                                        {% do data.form.id_customer_address.setRendered %}
+                                    {% endif %}
                                 {% else %}
                                     <ul class="list spacing-y">
                                         <li class="list__item spacing-y">
