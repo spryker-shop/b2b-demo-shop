@@ -61,6 +61,7 @@ use SprykerShop\Yves\ProductRelationWidget\Widget\UpSellingProductsWidget;
 use SprykerShop\Yves\ProductReplacementForWidget\Widget\ProductReplacementForListWidget;
 use SprykerShop\Yves\ProductReviewWidget\Widget\DisplayProductAbstractReviewWidget;
 use SprykerShop\Yves\ProductReviewWidget\Widget\ProductDetailPageReviewWidget;
+use SprykerShop\Yves\ProductSearchWidget\Widget\ProductConcreteAddWidget;
 use SprykerShop\Yves\ProductReviewWidget\Widget\ProductRatingFilterWidget;
 use SprykerShop\Yves\ProductReviewWidget\Widget\ProductReviewDisplayWidget;
 use SprykerShop\Yves\ProductSearchWidget\Widget\ProductConcreteSearchWidget;
@@ -166,6 +167,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             CustomerFullNameWidget::class,
             ProductSetIdsWidget::class,
             ProductConcreteSearchWidget::class,
+            ProductConcreteAddWidget::class,
         ];
     }
 

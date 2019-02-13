@@ -48,6 +48,7 @@ use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Cart\AmountSalesUnitIt
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Cart\AmountSalesUnitValuePostSavePlugin;
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Cart\CustomAmountPriceItemExpanderPlugin;
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Cart\ProductPackagingUnitCartAddItemStrategyPlugin;
+use Spryker\Zed\ProductQuantity\Communication\Plugin\Cart\CartChangeTransferQuantityNormalizerPlugin;
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Cart\ProductPackagingUnitCartRemoveItemStrategyPlugin;
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Cart\ProductPackagingUnitItemExpanderPlugin;
 use Spryker\Zed\ProductQuantity\Communication\Plugin\Cart\ProductQuantityRestrictionCartPreCheckPlugin;
@@ -86,6 +87,18 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new AmountSalesUnitItemExpanderPlugin(), #ProductPackagingUnit
             new ProductPackagingUnitItemExpanderPlugin(), #ProductPackagingUnit
             new CustomAmountPriceItemExpanderPlugin(), #ProductPackagingUnit
+        ];
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\CartExtension\Dependency\Plugin\CartChangeTransferNormalizerPluginInterface[]
+     */
+    protected function getCartBeforePreCheckNormalizerPlugins(Container $container): array
+    {
+        return [
+            new CartChangeTransferQuantityNormalizerPlugin(),
         ];
     }
 

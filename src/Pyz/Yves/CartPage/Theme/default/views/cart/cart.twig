@@ -63,6 +63,7 @@
     {% else %}
 
         {% set canEditCart = (not is_granted('ROLE_USER') or can('WriteSharedCartPermissionPlugin', data.cart.idQuote)) %}
+        {% set canWriteToCart = (not is_granted('ROLE_USER') or canEditCart) %}
 
         <div class="grid grid--gap">
             <div class="col col--sm-12 col--xl-9">
@@ -187,6 +188,16 @@
                             {% endblock %}
                         {% endwidget %}
                     {% endif %}
+                {% endif %}
+
+                {% if canWriteToCart %}
+                    {% widget 'ProductConcreteAddWidget' args [
+                        'cart.quick_add_to_cart' | trans,
+                        'cart.quick_add_to_cart.submit' | trans,
+                        'cart/quick-add',
+                        true
+                    ] only %}
+                    {% endwidget %}
                 {% endif %}
 
                 <div class="order-sidebar__item order-sidebar__item--summary">
