@@ -64,9 +64,7 @@
             {{ parent() }}
         {% endblock %}
         {% block optionsGroup %}
-            {% if not embed.defaultAddressKey %}
             <option value="">{{ 'page.checkout.address.address_select' | trans }}</option>
-            {% endif %}
 
             {% if embed.customerAddresses is not empty %}
                 <optgroup label="{{ 'page.checkout.address.option_group.customer' | trans }}">
