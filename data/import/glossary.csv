@@ -1139,6 +1139,8 @@ price.mode.incl_vat,incl VAT,en_US
 price.mode.incl_vat,inkl. MwSt.,de_DE
 price.mode.excl_vat,excl VAT,en_US
 price.mode.excl_vat,exkl. MwSt.,de_DE
+price_product.error.price_not_found,Product price not found.,en_US
+price_product.error.price_not_found,Produktpreis nicht gefunden.,de_DE
 cart.pre.check.price.failed,"Price in selected currency not found for product with sku '%sku%'. Please change the currency or remove product from order.",en_US
 cart.pre.check.price.failed,"Der Preis in der ausgewählten Währung wurde für das Produkt mit sku '%sku%' nicht gefunden. Bitte ändern Sie die Währung oder entfernen Sie das Produkt aus der Bestellung.",de_DE
 price.mode.switch.error,"Can't switch price mode when there are items in the cart.",en_US
@@ -1460,6 +1462,8 @@ quick-order.errors.items-required,Please enter at least one product SKU,en_US
 quick-order.errors.items-required,Bitte geben Sie mindestens eine Produkt-Artikelnummer,de_DE
 quick-order.errors.quantity-required,Quantity must be at least 1,en_US
 quick-order.errors.quantity-required,Die Anzahl muss mindestens 1 sein,de_DE
+quick-order.errors.quantity-invalid,Entered quantity value is invalid. Quantity was adjusted to the next possible valid value.,en_US
+quick-order.errors.quantity-invalid,Der eingegebene Mengenwert ist ungültig. Die Menge wurde an den nächstmöglichen gültigen Wert angepasst.,de_DE
 quick-order.paste-order.title,Add articles,en_US
 quick-order.paste-order.title,Artikel hinzufügen,de_DE
 quick-order.paste-order.description,"Copy and paste your articles with the SKU and quantity separated by space, semicolon or comma.",en_US
@@ -1472,6 +1476,40 @@ quick-order.paste-order.errors.text-order-format-incorrect,"Order format is inco
 quick-order.paste-order.errors.text-order-format-incorrect,"Falsches Bestellungsformat.",de_DE
 quick-order.paste-order.errors.parser.separator-not-detected,"Separator is not defined.",en_US
 quick-order.paste-order.errors.parser.separator-not-detected,"Trennzeichen nicht definiert.",de_DE
+quick-order.file-upload-order.title,Upload your order,en_US
+quick-order.file-upload-order.title,Bestellung hochladen,de_DE
+quick-order.file-upload-order.description,Choose file,en_US
+quick-order.file-upload-order.description,Datei auswählen,de_DE
+quick-order.file-upload-order.success-message,File successfully uploaded,en_US
+quick-order.file-upload-order.success-message,Datei erfolgreich hochgeladen,de_DE
+quick-order.file-upload-order.error-message,File could not be uploaded. Click here %url% to download the csv template,en_US
+quick-order.file-upload-order.error-message,Datei konnte nich hochgeladen werden. Hier klicken %url% um das csv Vorlage,de_DE
+quick-order.file-upload-order.file-template-download-message,Click here to download a %template% template,en_US
+quick-order.file-upload-order.file-template-download-message,Hier klicken für das %template% Vorlage,de_DE
+quick-order.file-upload-order.button.upload,Upload,en_US
+quick-order.file-upload-order.button.upload,Hochladen,de_DE
+quick-order.upload-order.errors.upload-order-invalid-mime-type,Invalid file type.,en_US
+quick-order.upload-order.errors.upload-order-invalid-mime-type,Ungültiger Dateityp.,de_DE
+quick-order.upload-order.errors.upload-order-invalid-amount-of-rows,"To many rows, file can’t be processed.",en_US
+quick-order.upload-order.errors.upload-order-invalid-amount-of-rows,"Zu viele Zeilen, die Datei kann nicht bearbeitet werden.",de_DE
+quick-order.upload-order.errors.upload-order-invalid-format,Invalid format.,en_US
+quick-order.upload-order.errors.upload-order-invalid-format,Ungültiges Format.,de_DE
+quick-order.upload-order.errors.upload-order-no-file,There was no file added.,en_US
+quick-order.upload-order.errors.upload-order-no-file,Es wurde keine Datei hinzugefügt.,de_DE
+quick-order.input-label.sku.name,SKU or Name,en_US
+quick-order.input-label.sku.name,SKU oder Name,de_DE
+quick-order.input.placeholder,Search by SKU or Name,en_US
+quick-order.input.placeholder,Suche per SKU oder Name,de_DE
+quick-order.input-label.measurement_unit,Measuring Unit,en_US
+quick-order.input-label.measurement_unit,Maßeinheit,de_DE
+quick-order.input-label.price,Price,en_US
+quick-order.input-label.price,Preis,de_DE
+quick-order.search.no_results,Item cannot be found,en_US
+quick-order.search.no_results,Das produkt konnte nicht gefunden werden.,de_DE
+quick-order.input-quantity.message.error,Die bestellte Anzahl wurde auf die nächstmögliche Anzahl für diesen Artikel angepasst.,de_DE
+quick-order.input-quantity.message.error,The ordered quantity was adjusted to the next possible quantity for the article.,en_US
+quick-order.upload-order.errors.upload-order-invalid-sku-item,Product with this SKU is not found.,en_US
+quick-order.upload-order.errors.upload-order-invalid-sku-item,Produkt mit dieser SKU wurde nicht gefunden.,de_DE
 checkout.pre.check.shipment.failed,Invalid shipping method.,en_US
 checkout.pre.check.shipment.failed,Ungültige Versandmethode,de_DE
 measurement_units.item.name,Item,en_US
@@ -2091,6 +2129,8 @@ product_discontinued_widget.note,Note,en_US
 product_discontinued_widget.note,Notiz,de_DE
 product_discontinued.super_attribute_discontinued,Discontinued,en_US
 product_discontinued.super_attribute_discontinued,Abgesetzt,de_DE
+product_discontinued.message.product_discontinued,"Product is discontinued, please choose an alternative one.",en_US
+product_discontinued.message.product_discontinued,"Produkt ist nicht mehr verfügbar, bitte wählen Sie eine Alternative.",de_DE
 shopping_list.pre.check.product_discontinued,"Product %sku% is discontinued, please choose an alternative one.",en_US
 shopping_list.pre.check.product_discontinued,"Produkt %sku% ist nicht mehr verfügbar, bitte wählen Sie eine Alternative.",de_DE
 cart.pre.check.product_discontinued,"Product %sku% is discontinued, please choose an alternative one.",en_US
@@ -2463,21 +2503,15 @@ cms.page.sort.name_desc,Nach Name absteigend sortieren,de_DE
 cms.page.sort.name_desc,Sort by name descending,en_US
 cms.page.itemsFound,Artikel gefunden,de_DE
 cms.page.itemsFound,Items found,en_US
-quick-order.input-label.sku.name,SKU or Name,en_US
-quick-order.input-label.sku.name,SKU oder Name,de_DE
-quick-order.input.placeholder,Search by SKU or Name,en_US
-quick-order.input.placeholder,Suche per SKU oder Name,de_DE
-quick-order.input-label.measurement_unit,Measuring Unit,en_US
-quick-order.input-label.measurement_unit,Maßeinheit,de_DE
-quick-order.input-label.price,Price,en_US
-quick-order.input-label.price,Preis,de_DE
-quick-order.search.no_results,Item cannot be found,en_US
-quick-order.search.no_results,Das produkt konnte nicht gefunden werden.,de_DE
-quick-order.input-quantity.message.error,Die bestellte Anzahl wurde auf die nächstmögliche Anzahl für diesen Artikel angepasst.,de_DE
-quick-order.input-quantity.message.error,The ordered quantity was adjusted to the next possible quantity for the article.,en_US
 product-quantity.errors.quantity.min.failed,Quantity %s does not satisfy requirements for product. Minimum quantity is %s.,en_US
 product-quantity.errors.quantity.min.failed,Anzahl %s erfüllt nicht die Anforderungen für dieses Produkt. Mindestanzahl is %s.,de_DE
 product-quantity.errors.quantity.max.failed,Quantity %s does not satisfy requirements for product. Maximum quantity is %s.,en_US
 product-quantity.errors.quantity.max.failed,Anzahl %s erfüllt nicht die Anforderungen für dieses Produkt. Maximalanzahl is %s.,de_DE
 product-quantity.errors.quantity.interval.failed,Quantity %s does not satisfy requirements for product. Quantity step is %s.,en_US
 product-quantity.errors.quantity.interval.failed,Anzahl %s erfüllt nicht die Anforderungen für dieses Produkt. Intervallgröße ist %s.,de_DE
+product-quantity.warning.quantity.min.failed,The ordered quantity was adjusted to the next possible quantity for the article because minimum quantity is %min%.,en_US
+product-quantity.warning.quantity.min.failed,Die bestellte Anzahl erfüllt nicht die Anforderungen für dieses Produkt. Mindestanzahl ist %min%.,de_DE
+product-quantity.warning.quantity.max.failed,The ordered quantity was adjusted to the next possible quantity for the article because maximum quantity is %max%.,en_US
+product-quantity.warning.quantity.max.failed,Die bestellte Anzahl erfüllt nicht die Anforderungen für dieses Produkt. Maximalanzahl ist %max%.,de_DE
+product-quantity.warning.quantity.interval.failed,The ordered quantity was adjusted to the next possible quantity for the article because quantity step is %step%.,en_US
+product-quantity.warning.quantity.interval.failed,Die bestellte Anzahl erfüllt nicht die Anforderungen für dieses Produkt. Intervallgröße ist %step%.,de_DE
