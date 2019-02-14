@@ -88,7 +88,7 @@
         <button type="button" class="button spacing-bottom js-from-add-new-address__{{ data.formType }}">
             {{ 'page.checkout.address.use_selected_address' | trans }}
         </button>
-        {% include molecule('company-business-unit-address-handler', 'CompanyWidget') with {
+        {% include molecule('custom-company-business-unit-address-handler', 'CompanyWidget') with {
             attributes: {
                 'form-selector': '.js-form-handler__' ~ data.formType,
                 'trigger-selector': '.js-from-add-new-address__' ~ data.formType,
