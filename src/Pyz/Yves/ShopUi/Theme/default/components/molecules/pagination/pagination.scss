@@ -82,6 +82,14 @@
             }
         }
 
+        &--search-cms-results {
+            margin-bottom: rem(60);
+
+            @include helper-breakpoint-media-min($xl) {
+                margin-bottom: rem(110);
+            }
+        }
+
         @content;
     }
 }
