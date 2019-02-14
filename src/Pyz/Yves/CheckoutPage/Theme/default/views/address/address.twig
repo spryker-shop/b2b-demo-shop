@@ -234,8 +234,8 @@
                                 form: data.form
                             },
                             attributes: {
-                                'shipping-address-toggler-selector': embed.forms.shipping.id_customer_address is defined ? 'input[name="' ~ embed.forms.shipping.id_customer_address.vars.full_name ~ '"]' : '',
-                                'billing-address-toggler-selector': embed.forms.billing.id_customer_address is defined ? 'input[name="' ~ embed.forms.billing.id_customer_address.vars.full_name ~ '"]' : '',
+                                'shipping-address-toggler-selector': embed.forms.shipping.id_customer_address is defined ? '[name="' ~ embed.forms.shipping.id_customer_address.vars.full_name ~ '"]' : '',
+                                'billing-address-toggler-selector': embed.forms.billing.id_customer_address is defined ? '[name="' ~ embed.forms.billing.id_customer_address.vars.full_name ~ '"]' : '',
                                 'billing-same-as-shipping-toggler-selector': 'input[name="' ~ data.form.billingSameAsShipping.vars.full_name ~ '"]',
                                 'save-address-toggler-selector': 'input[name="' ~ data.form.isAddressSavingSkipped.vars.full_name ~ '"]',
                                 'add-new-shipping-address-selector': '.js-from-add-new-address__shippingAddress' | default (''),
