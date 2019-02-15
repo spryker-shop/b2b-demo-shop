@@ -167,7 +167,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             CustomerFullNameWidget::class,
             ProductSetIdsWidget::class,
             ProductConcreteSearchWidget::class,
-            AvailabilityNotificationSubscriptionWidget::class
+            AvailabilityNotificationSubscriptionWidget::class,
         ];
     }
 
