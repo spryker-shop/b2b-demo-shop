@@ -40,7 +40,7 @@
 
     {% do data.skuField.setRendered %}
 
-    <div class="grid grid--justify grid--middle">
+    <div class="grid grid--justify grid--start">
         <div class="col col--sm-4 spacing-y spacing-x spacing-x--inner spacing-x--bigger">
             {% block search %}
                 {% set skuFieldValue = (data.autocomplete.skuFieldValue | length > 1) ? data.autocomplete.skuFieldValue : data.skuField.vars.value %}
