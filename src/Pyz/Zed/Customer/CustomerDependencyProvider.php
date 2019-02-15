@@ -9,6 +9,8 @@ namespace Pyz\Zed\Customer;
 
 use Pyz\Zed\CompanyUser\Communication\Plugin\Customer\IsEnabledCustomerCompanyUserPluginTransferExpanderPlugin;
 use Spryker\Shared\Newsletter\NewsletterConstants;
+use Spryker\Zed\AvailabilityNotification\Communication\Plugin\Customer\AvailabilityNotificationSubscriptionCustomerTransferExpanderPlugin;
+use Spryker\Zed\AvailabilityNotification\Communication\Plugin\CustomerAnonymizer\AvailabilityNotificationAnonymizerPlugin;
 use Spryker\Zed\BusinessOnBehalf\Communication\Plugin\Customer\DefaultCompanyUserCustomerTransferExpanderPlugin;
 use Spryker\Zed\BusinessOnBehalf\Communication\Plugin\Customer\IsOnBehalfCustomerTransferExpanderPlugin;
 use Spryker\Zed\BusinessOnBehalfGui\Communication\Plugin\Customer\BusinessOnBehalfGuiAttachToCompanyButtonCustomerTableActionExpanderPlugin;
@@ -60,6 +62,7 @@ class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
                 NewsletterConstants::DEFAULT_NEWSLETTER_TYPE,
             ]),
             new RemoveCustomerFromGroupPlugin(),
+            new AvailabilityNotificationAnonymizerPlugin(),
         ];
     }
 
@@ -78,6 +81,7 @@ class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
             new IsOnBehalfCustomerTransferExpanderPlugin(), #BusinessOnBefalfFeature
             new DefaultCompanyUserCustomerTransferExpanderPlugin(), #BusinessOnBefalfFeature
             new ProductListCustomerTransferExpanderPlugin(),
+            new AvailabilityNotificationSubscriptionCustomerTransferExpanderPlugin(),
         ];
     }
 
