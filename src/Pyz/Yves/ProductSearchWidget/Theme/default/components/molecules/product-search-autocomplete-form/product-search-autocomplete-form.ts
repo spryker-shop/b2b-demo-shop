@@ -10,9 +10,11 @@ export enum Events {
 
 export default class ProductSearchAutocompleteForm extends AutocompleteForm {
     widgetSuggestionsContainer: HTMLElement;
+    quantityInput: HTMLInputElement;
 
     protected readyCallback(): void {
         this.widgetSuggestionsContainer = <HTMLElement>this.querySelector(`.${this.jsName}__suggestions`);
+        this.quantityInput = <HTMLInputElement>document.querySelector(`.${this.jsName}__quantity-field`);
         super.readyCallback();
     }
 
@@ -53,6 +55,10 @@ export default class ProductSearchAutocompleteForm extends AutocompleteForm {
             text: this.inputText,
             value: this.inputValue
         });
+
+        if (this.quantityInput) {
+            this.quantityInput.focus();
+        }
     }
 
     protected onBlur(): void {

@@ -76,6 +76,7 @@
 
     {% if can('WriteShoppingListPermissionPlugin', data.shoppingList.idShoppingList) %}
         {% include molecule('shopping-list-product-quick-add', 'ShoppingListPage') with {
+            class: 'spacing-bottom spacing-bottom--bigger',
             data: {
                 activeShoppingListId: data.shoppingList.idShoppingList
             }
