@@ -1423,16 +1423,16 @@
         },
         {
             "name": "php-amqplib/php-amqplib",
-            "version": "2.8.2",
+            "version": "v2.8.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-amqplib/php-amqplib.git",
-                "reference": "20fc065ec03c5944cd3ada9adc56625b449b158e"
+                "reference": "84449ffd3f5a7466bbee3946facb3746ff11f075"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-amqplib/php-amqplib/zipball/20fc065ec03c5944cd3ada9adc56625b449b158e",
-                "reference": "20fc065ec03c5944cd3ada9adc56625b449b158e",
+                "url": "https://api.github.com/repos/php-amqplib/php-amqplib/zipball/84449ffd3f5a7466bbee3946facb3746ff11f075",
+                "reference": "84449ffd3f5a7466bbee3946facb3746ff11f075",
                 "shasum": ""
             },
             "require": {
@@ -1492,7 +1492,7 @@
                 "queue",
                 "rabbitmq"
             ],
-            "time": "2018-10-31T14:27:47+00:00"
+            "time": "2018-11-13T09:35:17+00:00"
         },
         {
             "name": "phpdocumentor/graphviz",
@@ -2864,21 +2864,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-feature/mailing-notifications.git",
-                "reference": "394ca8687fad21f0b1fe0e830bc6535c1e1bfffc"
+                "reference": "52ee7d0b7292f5399ded31cfb2c6fd260559fc2e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-feature/mailing-notifications/zipball/394ca8687fad21f0b1fe0e830bc6535c1e1bfffc",
-                "reference": "394ca8687fad21f0b1fe0e830bc6535c1e1bfffc",
+                "url": "https://api.github.com/repos/spryker-feature/mailing-notifications/zipball/52ee7d0b7292f5399ded31cfb2c6fd260559fc2e",
+                "reference": "52ee7d0b7292f5399ded31cfb2c6fd260559fc2e",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
-                "spryker-shop/availability-notification-page": "^1.0.0",
-                "spryker-shop/availability-notification-widget": "^1.0.0",
                 "spryker-shop/newsletter-page": "^1.0.2",
                 "spryker-shop/newsletter-widget": "^1.2.1",
-                "spryker/availability-notification": "^1.0.0",
                 "spryker/mail": "^4.1.0",
                 "spryker/newsletter": "^4.4.0"
             },
@@ -2893,7 +2890,7 @@
                 "proprietary"
             ],
             "description": "Mailing & Notifications [feature]",
-            "time": "2019-02-13T10:55:00+00:00"
+            "time": "2019-02-18T13:41:56+00:00"
         },
         {
             "name": "spryker-feature/measurement-units",
@@ -4628,104 +4625,6 @@
             ],
             "description": "AgentWidget module",
             "time": "2019-01-14T13:35:32+00:00"
-        },
-        {
-            "name": "spryker-shop/availability-notification-page",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker-shop/availability-notification-page.git",
-                "reference": "ba2ace25446e7cfe3fd7328aeb0dd9792daaeec0"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/availability-notification-page/zipball/ba2ace25446e7cfe3fd7328aeb0dd9792daaeec0",
-                "reference": "ba2ace25446e7cfe3fd7328aeb0dd9792daaeec0",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.1",
-                "spryker-shop/shop-application": "^1.0.0",
-                "spryker/availability-notification": "^1.0.0",
-                "spryker/customer": "^7.16.0",
-                "spryker/kernel": "^3.24.0",
-                "spryker/symfony": "^3.1.0"
-            },
-            "require-dev": {
-                "spryker/code-sniffer": "*",
-                "spryker/silex": "*",
-                "spryker/testify": "*"
-            },
-            "suggest": {
-                "spryker/silex": "If you want to use silex"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "SprykerShop\\": "src/SprykerShop/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "AvailabilityNotificationPage module",
-            "time": "2019-02-07T10:05:16+00:00"
-        },
-        {
-            "name": "spryker-shop/availability-notification-widget",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker-shop/availability-notification-widget.git",
-                "reference": "730197eda5c64697facd8092f5863632a6b3ad0a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/availability-notification-widget/zipball/730197eda5c64697facd8092f5863632a6b3ad0a",
-                "reference": "730197eda5c64697facd8092f5863632a6b3ad0a",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.1",
-                "spryker-shop/shop-application": "^1.3.0",
-                "spryker/application": "^3.8.0",
-                "spryker/availability-notification": "^1.0.0",
-                "spryker/customer": "^7.16.0",
-                "spryker/kernel": "^3.24.0",
-                "spryker/symfony": "^3.1.0"
-            },
-            "require-dev": {
-                "spryker/code-sniffer": "*",
-                "spryker/silex": "*",
-                "spryker/testify": "*"
-            },
-            "suggest": {
-                "spryker-shop/product-detail-page": "If you want to see AvailabilityNotificationWidget on pdp",
-                "spryker/silex": "If you want to use silex"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "SprykerShop\\": "src/SprykerShop/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "AvailabilityNotificationWidget module",
-            "time": "2019-02-11T15:46:18+00:00"
         },
         {
             "name": "spryker-shop/availability-widget",
@@ -9331,65 +9230,6 @@
             ],
             "description": "AvailabilityGui module",
             "time": "2019-02-11T10:10:52+00:00"
-        },
-        {
-            "name": "spryker/availability-notification",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker/availability-notification.git",
-                "reference": "7ace9a5a5274d40c85013adfa2047bd149e91c53"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker/availability-notification/zipball/7ace9a5a5274d40c85013adfa2047bd149e91c53",
-                "reference": "7ace9a5a5274d40c85013adfa2047bd149e91c53",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.1",
-                "spryker/application": "^3.2.0",
-                "spryker/customer": "^7.16.1",
-                "spryker/glossary": "^3.0.0",
-                "spryker/kernel": "^3.0.0",
-                "spryker/locale": "^3.0.0",
-                "spryker/mail": "^4.0.0",
-                "spryker/product": "^6.8.0",
-                "spryker/propel-orm": "^1.0.0",
-                "spryker/store": "^1.5.0",
-                "spryker/util-text": "^1.2.0",
-                "spryker/util-validate": "^1.0.0",
-                "spryker/zed-request": "^3.0.0"
-            },
-            "require-dev": {
-                "spryker/availability": "*",
-                "spryker/code-sniffer": "*",
-                "spryker/event": "*",
-                "spryker/propel": "*",
-                "spryker/testify": "*"
-            },
-            "suggest": {
-                "spryker/availability": "If you want use handler for availability_notification Event",
-                "spryker/event": "If you want to use availability_notification Event"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Spryker\\": "src/Spryker/",
-                    "SprykerTest\\Zed\\AvailabilityNotification\\Helper\\": "tests/SprykerTest/Zed/AvailabilityNotification/_support/Helper/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "AvailabilityNotification module",
-            "time": "2019-02-11T13:41:03+00:00"
         },
         {
             "name": "spryker/availability-storage",
@@ -15990,16 +15830,16 @@
         },
         {
             "name": "spryker/install",
-            "version": "0.5.0",
+            "version": "0.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/install.git",
-                "reference": "8c9c7d30e10c226de4729ee0211e7947c179fe30"
+                "reference": "44f57df70386126f25eaae9c047c720a1862a05b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/install/zipball/8c9c7d30e10c226de4729ee0211e7947c179fe30",
-                "reference": "8c9c7d30e10c226de4729ee0211e7947c179fe30",
+                "url": "https://api.github.com/repos/spryker/install/zipball/44f57df70386126f25eaae9c047c720a1862a05b",
+                "reference": "44f57df70386126f25eaae9c047c720a1862a05b",
                 "shasum": ""
             },
             "require": {
@@ -16012,7 +15852,7 @@
             "require-dev": {
                 "codeception/codeception": "*",
                 "php-coveralls/php-coveralls": "^1.0",
-                "phpstan/phpstan": "^0.8.5",
+                "phpstan/phpstan": "^0.10.0",
                 "spryker/code-sniffer": "dev-master as 1.0.0",
                 "symfony/var-dumper": "^3.0.0"
             },
@@ -16030,7 +15870,7 @@
                 "MIT"
             ],
             "description": "Spryker install tool",
-            "time": "2018-07-26T07:36:01+00:00"
+            "time": "2019-02-18T13:22:03+00:00"
         },
         {
             "name": "spryker/installer",
@@ -31314,6 +31154,7 @@
                 "mock",
                 "xunit"
             ],
+            "abandoned": true,
             "time": "2018-08-09T05:50:03+00:00"
         },
         {
