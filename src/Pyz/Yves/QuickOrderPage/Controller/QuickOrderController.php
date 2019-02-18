@@ -30,7 +30,7 @@ class QuickOrderController extends SprykerQuickOrderController
      *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|null
      */
-    protected function handleQuickOrderForm(FormInterface $quickOrderForm, Request $request): ?RedirectResponse
+    protected function processQuickOrderForm(FormInterface $quickOrderForm, Request $request): ?RedirectResponse
     {
         $quickOrder = $quickOrderForm->getData();
 
