@@ -53,7 +53,7 @@ export default class ProductSearchAutocompleteForm extends AutocompleteForm {
 
     protected mapItemEvents(): void {
         const self = this;
-        const items = Array.from(this.widgetSuggestionsContainer.querySelectorAll(this.itemSelector));
+        const items = <HTMLElement[]>Array.from(this.widgetSuggestionsContainer.querySelectorAll(this.itemSelector));
         items.forEach((item: HTMLElement) => item.addEventListener('click', (event: Event) => self.onItemClick(event)));
     }
 
