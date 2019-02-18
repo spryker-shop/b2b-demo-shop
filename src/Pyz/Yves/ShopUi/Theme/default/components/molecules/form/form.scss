@@ -181,6 +181,40 @@
                 }
             }
         }
+
+        &--browse-file {
+            #{$name}__field:not(:first-of-type),
+            #{$name}__actions,
+            .input {
+                display: none;
+            }
+        }
+
+        &--text-order {
+            #{$name}__field {
+                padding-top: 0;
+            }
+
+            #{$name}__actions {
+                display: none;
+            }
+
+            .textarea {
+                min-height: rem(119);
+                padding: rem(17) rem(20) rem(18);
+                font-size: rem(13);
+                font-weight: fw(regular);
+                color: $setting-color-gray-3;
+                border-radius: $setting-border-radius;
+                border: none;
+                box-shadow: 0 rem(10) rem(10) 0 $setting-color-shadow-1, 0 rem(3) rem(3) 0 $setting-color-shadow-1;
+
+                @include helper-breakpoint-media-min($lg) {
+                    min-height: rem(86);
+                    padding: rem(15) rem(20);
+                }
+            }
+        }
     }
 }
 
