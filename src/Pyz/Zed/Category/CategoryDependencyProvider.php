@@ -29,15 +29,10 @@ class CategoryDependencyProvider extends SprykerDependencyProvider
      */
     protected function getRelationDeletePluginStack()
     {
-        $deletePlugins = array_merge(
-            [
-                new RemoveProductCategoryRelationPlugin(),
-                new RemoveCategoryImageSetRelationPlugin(),
-            ],
-            parent::getRelationDeletePluginStack()
-        );
-
-        return $deletePlugins;
+        return [
+            new RemoveProductCategoryRelationPlugin(),
+            new RemoveCategoryImageSetRelationPlugin(),
+        ];
     }
 
     /**
@@ -45,14 +40,11 @@ class CategoryDependencyProvider extends SprykerDependencyProvider
      */
     protected function getRelationUpdatePluginStack()
     {
-        return array_merge(
-            [
-                new UpdateProductCategoryRelationPlugin(),
-                new CategoryFormPlugin(),
-                new UpdateNavigationRelationPlugin(),
-            ],
-            parent::getRelationUpdatePluginStack()
-        );
+        return [
+            new UpdateProductCategoryRelationPlugin(),
+            new CategoryFormPlugin(),
+            new UpdateNavigationRelationPlugin(),
+        ];
     }
 
     /**
@@ -60,15 +52,10 @@ class CategoryDependencyProvider extends SprykerDependencyProvider
      */
     protected function getRelationReadPluginStack()
     {
-        $readPlugins = array_merge(
-            [
-                new ReadProductCategoryRelationPlugin(),
-                new ReadCmsBlockCategoryRelationsPlugin(),
-            ],
-            parent::getRelationReadPluginStack()
-        );
-
-        return $readPlugins;
+        return [
+            new ReadProductCategoryRelationPlugin(),
+            new ReadCmsBlockCategoryRelationsPlugin(),
+        ];
     }
 
     /**
@@ -112,14 +99,14 @@ class CategoryDependencyProvider extends SprykerDependencyProvider
     }
 
     /**
-     * @return array
+     * @return \Spryker\Zed\Category\Dependency\Plugin\CategoryFormPluginInterface[]
      */
     protected function getCategoryFormPlugins()
     {
-        return array_merge(parent::getCategoryFormPlugins(), [
+        return [
             new CategoryFormPlugin(),
             new CategoryImageFormPlugin(),
-        ]);
+        ];
     }
 
     /**
