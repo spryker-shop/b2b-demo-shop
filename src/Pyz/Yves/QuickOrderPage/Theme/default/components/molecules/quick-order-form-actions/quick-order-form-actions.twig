@@ -10,20 +10,20 @@
 
 {% block body %}
     <div class="col col--sm-12 col--md-7 spacing-bottom spacing-bottom--big text-left">
-        <a href="#add-more" class="{{ config.name }}__add-row-trigger {{ data.addRowTriggerClass }}">
+        <a class="{{ config.name }}__add-row-trigger {{ data.addRowTriggerClass }}" href="#add-more">
             {{ 'quick-order.button.add-more-rows' | trans }}
         </a>
     </div>
 
     <div class="col col--sm-12 col--md-5">
         <div class="text-right">
-            <a href="{{ url('quick-order/clear-all-rows') }}"
-               class="{{ config.name }}__clear-all-trigger">
+            <a class="{{ config.name }}__clear-all-trigger" href="{{ url('quick-order/clear-all-rows') }}">
                 {% include atom('icon') with {
                     data: {
                         name: 'delete'
                     }
                 } only %}
+
                 {{ 'quick-order.button.clear-all-rows' | trans }}
             </a>
         </div>
@@ -37,6 +37,7 @@
                             name: 'cart-plus'
                         }
                     } only %}
+
                     {{ 'page.detail.add-to-cart' | trans }}
                 </button>
             </div>

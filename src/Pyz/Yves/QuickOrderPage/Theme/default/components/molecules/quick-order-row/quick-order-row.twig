@@ -40,10 +40,11 @@
 
     {% do data.skuField.setRendered %}
 
-    <div class="grid grid--justify grid--middle">
+    <div class="grid grid--justify">
         <div class="col col--sm-4 spacing-y spacing-x spacing-x--inner spacing-x--bigger">
             {% block search %}
                 {% set skuFieldValue = (data.autocomplete.skuFieldValue | length > 1) ? data.autocomplete.skuFieldValue : data.skuField.vars.value %}
+
                 {% widget 'ProductConcreteSearchWidget' args [
                     'ajax-provider' ~ data.index,
                     data.autocomplete.skuFieldName ~ '[sku]',
@@ -52,17 +53,27 @@
                 ] only %}
                 {% endwidget %}
             {% endblock %}
+
+            {% block errorMessages %}
+                {% if data.messages is not empty %}
+                    {% for message in data.messages %}
+                        <div class="{{ config.name }}__message {{ config.name }}__message--{{ message.type }} spacing-top">
+                            {{ message.value | trans(
+                                message.parameters
+                            ) }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endblock %}
         </div>
 
         <div class="col col--sm-7 {{config.jsName}}__target {{config.jsName}}__target-{{data.index}}">
             {{parent()}}
         </div>
 
-        <div class="col col--sm-1 spacing-y spacing-x spacing-x--inner spacing-x--bigger">
+        <div class="col col--sm-1 spacing-y spacing--inner spacing-x spacing-x--inner spacing-x--bigger">
             {% block delete %}
-                <a href="#remove"
-                    class="js-quick-order-form__remove-row-trigger"
-                    data-row-index="{{ data.index }}">
+                <a href="#remove" class="js-quick-order-form__remove-row-trigger" data-row-index="{{ data.index }}">
                     {% include atom('icon') with {
                         modifiers: ['quick-order-delete-row'],
                         data: {

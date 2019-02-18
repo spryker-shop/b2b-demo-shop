@@ -5,8 +5,10 @@ export default class QuickOrderFileUpload extends Component {
     protected fileUploadMessage: HTMLElement;
     protected fileExtensionMessage: HTMLElement;
     protected removeIcon: HTMLElement;
+    protected browseFileLabel: HTMLLabelElement;
     protected uploadMessage: string;
     protected readonly hiddenClass: string = 'is-hidden';
+    protected readonly browseFileLabelToggleClass: string = 'label--browse-file-cursor-default';
 
     protected readyCallback(): void {
         this.inputFile = <HTMLInputElement>this.querySelector(this.inputFileAttribute);
@@ -14,6 +16,7 @@ export default class QuickOrderFileUpload extends Component {
         this.uploadMessage = <string>this.fileUploadMessage.innerText;
         this.fileExtensionMessage = <HTMLElement>this.querySelector(`.${this.jsName}__file-extension`);
         this.removeIcon = <HTMLElement>this.querySelector(`.${this.jsName}__remove-file`);
+        this.browseFileLabel = <HTMLLabelElement>this.querySelector(`.${this.jsName}__browse-file`);
         this.mapEvents();
     }
 
@@ -28,6 +31,7 @@ export default class QuickOrderFileUpload extends Component {
             Array.from(inputFile.files).forEach(file => filesName += file.name);
             this.fileUploadMessage.innerText = filesName;
             this.toggleClassForIconExtensionMessage();
+            this.browseFileLabel.removeAttribute('for');
         }
     }
 
@@ -36,11 +40,13 @@ export default class QuickOrderFileUpload extends Component {
         this.inputFile.value = '';
         this.fileUploadMessage.innerText = this.uploadMessage;
         this.toggleClassForIconExtensionMessage();
+        this.browseFileLabel.setAttribute('for', this.inputFileAttribute.substring(1));
     }
 
     protected toggleClassForIconExtensionMessage(): void {
         this.fileExtensionMessage.classList.toggle(this.hiddenClass);
         this.removeIcon.classList.toggle(this.hiddenClass);
+        this.browseFileLabel.classList.toggle(this.browseFileLabelToggleClass);
     }
 
     get inputFileAttribute(): string {
