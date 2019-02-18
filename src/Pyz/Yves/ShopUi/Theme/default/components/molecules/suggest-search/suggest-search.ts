@@ -178,9 +178,7 @@ export default class SuggestSearch extends Component {
     protected async getSuggestions(): Promise<void> {
         const suggestQuery = this.getSearchValue();
 
-        const urlParams = [['q', suggestQuery]];
-
-        this.addUrlParams(urlParams);
+        this.ajaxProvider.queryParams.set('q', suggestQuery);
 
         const response = await this.ajaxProvider.fetch(suggestQuery);
 
@@ -204,16 +202,6 @@ export default class SuggestSearch extends Component {
         this.navigation = this.getNavigation();
 
         this.updateNavigation();
-    }
-
-    protected addUrlParams(params: Array<Array<string>>): void {
-        const baseSuggestUrl = this.getAttribute('base-suggest-url');
-        let paramsString = '?';
-        params.forEach((element, index) => {
-            paramsString += index == 0 ? '' : '&';
-            paramsString += `${element[0]}=${element[1]}`;
-        });
-        this.ajaxProvider.setAttribute('url', `${baseSuggestUrl}${paramsString}`);
     }
 
     showSugestions(): void {
