@@ -54,7 +54,7 @@ export default class ProductSearchAutocompleteForm extends AutocompleteForm {
     protected mapItemEvents(): void {
         const self = this;
         const items = Array.from(this.widgetSuggestionsContainer.querySelectorAll(this.itemSelector));
-        items.forEach((item: HTMLElement) => item.addEventListener('click', (e: Event) => self.onItemClick(e)));
+        items.forEach((item: HTMLElement) => item.addEventListener('click', (event: Event) => self.onItemClick(event)));
     }
 
     protected onKeyDown(event: KeyboardEvent): void {
@@ -111,7 +111,7 @@ export default class ProductSearchAutocompleteForm extends AutocompleteForm {
         this.showSuggestions();
         this.ajaxProvider.queryParams.set(this.queryParamName, this.inputText);
         await this.ajaxProvider.fetch();
-        this.suggestionItems = Array.from(this.widgetSuggestionsContainer.querySelectorAll(this.itemSelector));
+        this.suggestionItems = <HTMLElement[]>Array.from(this.widgetSuggestionsContainer.querySelectorAll(this.itemSelector));
         this.lastSelectedItem = this.suggestionItems[0];
         this.mapItemEvents();
     }

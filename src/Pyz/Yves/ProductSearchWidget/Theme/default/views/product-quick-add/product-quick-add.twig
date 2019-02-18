@@ -26,8 +26,8 @@
         {% block body %}
             {% if data.title is not empty %}
                 <div class="col col--sm-12">
-                    <h5 class="{{ config.name }}__title col col--sm-12 spacing-bottom spacing-bottom--big {{ data.verticalLayout ? '' : 'col--md-2 ' ~ config.name ~ '__title--row' }}">
-                        {{data.title}}
+                    <h5 class="{{ config.name }}__title spacing-bottom spacing-bottom--big {{ data.verticalLayout ? '' : config.name ~ '__title--row' }}">
+                        {{ data.title }}
                     </h5>
                 </div>
             {% endif %}
