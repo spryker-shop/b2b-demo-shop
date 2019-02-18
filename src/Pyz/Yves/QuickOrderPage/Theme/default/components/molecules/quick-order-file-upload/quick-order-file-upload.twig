@@ -67,6 +67,7 @@
                                     {% set fileExt = (loop.last == false) ? '.' ~ fileTemplateExt ~ ', ' : '.' ~ fileTemplateExt %}
                                     <strong>{{ fileExt }}</strong>
                                 {% endfor %}
+
                                 {{ 'quick-order.file-extension-second-part' | trans }}
                             </span>
                         {% endif %}

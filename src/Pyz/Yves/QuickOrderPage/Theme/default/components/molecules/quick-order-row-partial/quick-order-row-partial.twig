@@ -15,7 +15,7 @@
 } %}
 
 {% block body %}
-    <div class="grid grid--justify">
+    <div class="grid grid--justify grid--middle">
         {% if data.additionalColumns is not empty %}
             <div class="col col--sm-3">
                 {% for additionalColumn in data.additionalColumns %}
@@ -78,5 +78,20 @@
                 } only %}
             {% endblock %}
         </div>
+
+
+        {% block errorMessages %}
+            {% if data.messages is not empty %}
+                <div class="col col--sm-12 spacing-bottom">
+                    {% for message in data.messages %}
+                        <div class="{{ config.name }}__message {{ config.name }}__message--{{ message.type }} spacing-top">
+                            {{ message.value | trans(
+                                message.parameters
+                            ) }}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endblock %}
     </div>
 {% endblock %}
