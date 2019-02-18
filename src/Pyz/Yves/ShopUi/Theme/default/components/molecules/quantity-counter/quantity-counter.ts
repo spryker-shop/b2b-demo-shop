@@ -64,7 +64,7 @@ export default class QuantityCounter extends Component {
 
     protected delayToSubmit(): void {
         clearTimeout(this.timeout);
-        this.timeout = setTimeout(() => this.onSubmit(), this.duration);
+        this.timeout = <any>setTimeout(() => this.onSubmit(), this.duration);
     }
 
     protected onSubmit(): void {
