@@ -1,0 +1,55 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'quick-order-form-actions'
+} %}
+
+{% define data = {
+    addRowTriggerClass: required
+} %}
+
+{% block body %}
+    <div class="col col--sm-12 col--md-7 spacing-bottom spacing-bottom--big text-left">
+        <a href="#add-more" class="{{ config.name }}__add-row-trigger {{ data.addRowTriggerClass }}">
+            {{ 'quick-order.button.add-more-rows' | trans }}
+        </a>
+    </div>
+
+    <div class="col col--sm-12 col--md-5">
+        <div class="text-right">
+            <a href="{{ url('quick-order/clear-all-rows') }}"
+               class="{{ config.name }}__clear-all-trigger">
+                {% include atom('icon') with {
+                    data: {
+                        name: 'delete'
+                    }
+                } only %}
+                {{ 'quick-order.button.clear-all-rows' | trans }}
+            </a>
+        </div>
+
+        {% if can("SeeAddToCartPermissionPlugin") %}
+            <div class="spacing-top spacing-top--big">
+                <button type="submit" name="addToCart" class="button button--expand button--big button--alert">
+                    {% include atom('icon') with {
+                        modifiers: ['cart-plus'],
+                        data: {
+                            name: 'cart-plus'
+                        }
+                    } only %}
+                    {{ 'page.detail.add-to-cart' | trans }}
+                </button>
+            </div>
+
+            <div class="spacing-top spacing-top--big is-hidden">
+                {% widget 'QuickOrderPageWidget' only %}{% endwidget %}
+            </div>
+        {% endif %}
+
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            <div class="spacing-top spacing-top--big">
+                {% widget 'AddItemsToShoppingListWidget' only %}{% endwidget %}
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

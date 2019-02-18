@@ -1,0 +1,52 @@
+@mixin quick-order-page-quick-order-text-order-form($name: '.quick-order-text-order-form') {
+    #{$name} {
+        background-color: $setting-color-gray-7;
+        padding: rem(17) rem(20);
+        border-radius: $setting-border-radius;
+
+        &__content {
+            font-size: rem(14);
+            letter-spacing: rem(-0.1);
+            font-weight: fw(regular);
+
+            @include helper-breakpoint-media-min($lg) {
+                letter-spacing: 0;
+                font-size: rem(13);
+            }
+
+            .form__field {
+                padding-top: 0;
+            }
+
+            .form__actions {
+                display: none;
+            }
+
+            .textarea {
+                min-height: rem(119);
+                padding: rem(17) rem(20) rem(18);
+                font-size: rem(13);
+                font-weight: fw(regular);
+                color: $setting-color-gray-3;
+                border-radius: $setting-border-radius;
+                border: none;
+                box-shadow: 0 rem(10) rem(10) 0 $setting-color-shadow-1, 0 rem(3) rem(3) 0 $setting-color-shadow-1;
+
+                @include helper-breakpoint-media-min($lg) {
+                    min-height: rem(86);
+                    padding: rem(15) rem(20);
+                }
+            }
+        }
+
+        &__title {
+            font-size: rem(14);
+            line-height: rem(18);
+            font-weight: fw(medium);
+        }
+
+        @content;
+    }
+}
+
+@include quick-order-page-quick-order-text-order-form;

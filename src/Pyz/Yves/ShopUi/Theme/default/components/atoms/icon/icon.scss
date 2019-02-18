@@ -358,4 +358,26 @@ $shop-ui-icon-size-bigger: 1.5rem;
             height: rem(24);
         }
     }
+
+    &--browse-file {
+        width: rem(28);
+        height: rem(28);
+    }
+
+    &--download-file {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: rem(30);
+        height: rem(30);
+    }
+
+    &--remove-file {
+        @include helper-effect-transition(color);
+        margin: rem(-2) 0 0 rem(5);
+
+        &:hover {
+            color: $setting-color-gray-4;
+        }
+    }
 }

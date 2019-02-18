@@ -181,6 +181,14 @@
                 }
             }
         }
+
+        &--browse-file {
+            #{$name}__field:not(:first-of-type),
+            #{$name}__actions,
+            .input {
+                display: none;
+            }
+        }
     }
 }
 
