@@ -3,6 +3,7 @@
 {% define data = {
     pages: _view.cms_pages,
     searchString: _view.searchString,
+    sort: _view.sort,
 
     title: ('global.search.results' | trans) ~ ' ' ~ _view.searchString,
     metaTitle: _view.pageTitle | default,
@@ -14,7 +15,10 @@
         currentPage: _view.pagination.currentPage,
         paginationPath: app.request.attributes.get('_route'),
         maxPage: _view.pagination.maxPage,
-        showAlwaysFirstAndLast: true
+        showAlwaysFirstAndLast: true,
+        numFound: _view.pagination.numFound,
+        config: _view.pagination.config,
+        currentItemsPerPage: _view.pagination.currentItemsPerPage
     }
 } %}
 
@@ -40,7 +44,12 @@
     </div>
 
     <div class="col col--sm-12">
-        {% include molecule('sort', 'CmsSearchPage') only %}
+        {% include molecule('sort', 'CmsSearchPage') with {
+            data: {
+                pagination: data.pagination,
+                sort: data.sort
+            }
+        } only %}
 
         {% include molecule('search-cms-results', 'CmsSearchPage') with {
             data: {

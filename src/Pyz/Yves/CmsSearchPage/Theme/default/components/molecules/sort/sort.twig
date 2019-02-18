@@ -4,10 +4,15 @@
     name: 'sort'
 } %}
 
+{% define data = {
+    pagination: required,
+    sort: required
+} %}
+
 {% block body %}
     <div class="grid grid--middle grid--justify">
         <div class="{{ config.name }}__col {{ config.name }}__col--counter col col--sm-12 col--lg-auto spacing-y spacing-y--inner">
-            {{ _view.pagination.numFound }} {{ 'cms.page.itemsFound' | trans }}
+            {{ data.pagination.numFound }} {{ 'cms.page.itemsFound' | trans }}
         </div>
 
         <div class="{{ config.name }}__col col col--sm-12 col--lg-auto">
@@ -26,7 +31,7 @@
                                     'config-theme': 'small'
                                 },
                                 embed: {
-                                    pagination: _view.pagination,
+                                    pagination: data.pagination,
                                     jsName: config.jsName
                                 }
                             } only %}
@@ -74,7 +79,7 @@
                                     'config-theme': 'small'
                                 },
                                 embed: {
-                                    sort: _view.sort,
+                                    sort: data.sort,
                                     jsName: config.jsName
                                 }
                             } only %}
@@ -84,6 +89,7 @@
 
                                 {% block options %}
                                     <option value="">{{ 'cms.page.sort.relevance' | trans }}</option>
+
                                     {% for sortParamName in embed.sort.sortParamNames %}
                                         <option value="{{ sortParamName }}" {% if sortParamName == embed.sort.currentSortParam %}selected{% endif %}>
                                             {{ ('cms.page.sort.' ~ sortParamName) | trans }}
