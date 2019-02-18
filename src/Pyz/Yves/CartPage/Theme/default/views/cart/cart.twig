@@ -63,6 +63,7 @@
     {% else %}
 
         {% set canEditCart = (not is_granted('ROLE_USER') or can('WriteSharedCartPermissionPlugin', data.cart.idQuote)) %}
+        {% set canWriteToCart = (not is_granted('ROLE_USER') or canEditCart) %}
 
         <div class="grid grid--gap">
             <div class="col col--sm-12 col--xl-9">
@@ -187,6 +188,27 @@
                             {% endblock %}
                         {% endwidget %}
                     {% endif %}
+                {% endif %}
+
+                {% if canWriteToCart %}
+                    {% widget 'ProductConcreteAddWidget' args [
+                        '',
+                        'cart.quick_add_to_cart.submit' | trans,
+                        'cart/quick-add',
+                        true
+                    ] only %}
+                        {% block body %}
+                            <div class="order-sidebar__item">
+                                <h5 class="order-sidebar__title toggler-accordion__item js-order-sidebar__trigger" data-toggle-target='.js-order-sidebar__content-quick-add-widget'>
+                                    {{ 'cart.quick_add_to_cart' | trans}}
+                                    <span class="icon icon--toggler-cross toggler-accordion__icon"></span>
+                                </h5>
+                                <div class="order-sidebar__content js-order-sidebar__content-quick-add-widget is-hidden">
+                                    {{ parent() }}
+                                </div>
+                            </div>
+                        {% endblock %}
+                    {% endwidget %}
                 {% endif %}
 
                 <div class="order-sidebar__item order-sidebar__item--summary">

@@ -52,6 +52,7 @@
                 index: loop.index0,
                 quantityField: row.quantity,
                 skuField: row.sku,
+                messages: row.vars.value.messages,
                 additionalColumns: data.additionalColumns,
                 product: product,
                 price: product is null ? null : data.prices[product.sku] | default(),
@@ -59,7 +60,7 @@
                 autocomplete: {
                     skuFieldName: row.vars.full_name,
                     skuFieldValue: product is null ? null : product.sku,
-                    searchFieldValue: product is null ? null : product.localizedAttributes[0].name ~ ' (' ~ product.sku ~ ')'
+                    searchFieldValue: product is null ? null : product.localizedAttributes[0] is defined ? product.localizedAttributes[0].name ~ ' (' ~ product.sku ~ ')': '' ~ ' (' ~ product.sku ~ ')'
                 }
             },
             attributes: {

@@ -11,11 +11,11 @@
     customQuantityFieldName: null,
     price: null,
     additionalColumns: [],
-    isQuantityAdjusted: false
+    messages: null
 } %}
 
 {% block body %}
-    <div class="grid grid--justify">
+    <div class="grid grid--justify grid--middle">
         {% if data.additionalColumns is not empty %}
             <div class="col col--sm-3">
                 {% for additionalColumn in data.additionalColumns %}
@@ -79,12 +79,19 @@
             {% endblock %}
         </div>
 
-        <div class="col col--sm-12 col--md-12">
-            {% if (data.isQuantityAdjusted) %}
-                <span class="{{ config.name }}__error {{ config.name }}__error--show">
-                    {{ 'quick-order.input-quantity.message.error' | trans }}
-                </span>
+
+        {% block errorMessages %}
+            {% if data.messages is not empty %}
+                <div class="col col--sm-12 spacing-bottom">
+                    {% for message in data.messages %}
+                        <div class="{{ config.name }}__message {{ config.name }}__message--{{ message.type }} spacing-top">
+                            {{ message.value | trans(
+                                message.parameters
+                            ) }}
+                        </div>
+                    {% endfor %}
+                </div>
             {% endif %}
-        </div>
+        {% endblock %}
     </div>
 {% endblock %}
