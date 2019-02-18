@@ -44,9 +44,9 @@
                             }
                         } only %}
 
-                        <span class="{{ embed.parentClass }}__file-select">
+                        <span class="{{ embed.parentClass }}__file-select text-center">
                             <span class="{{ embed.parentJsClass }}__file-select">
-                                No file selected. Browse file
+                                {{ 'quick-order.browse-file' | trans }}
                             </span>
                             {% include atom('icon') with {
                                 class: 'is-hidden ' ~ embed.parentJsClass ~ '__remove-file',
@@ -61,12 +61,13 @@
                             {% set filteTemplatesExt = '' %}
 
                             <span class="{{ embed.parentJsClass }}__file-extension">
-                                Only
+                                {{ 'quick-order.file-extension-first-part' | trans }}
+
                                 {% for fileTemplateExt in embed.fileTemplateExtensions %}
                                     {% set fileExt = (loop.last == false) ? '.' ~ fileTemplateExt ~ ', ' : '.' ~ fileTemplateExt %}
                                     <strong>{{ fileExt }}</strong>
                                 {% endfor %}
-                                files accepted
+                                {{ 'quick-order.file-extension-second-part' | trans }}
                             </span>
                         {% endif %}
                     </span>
