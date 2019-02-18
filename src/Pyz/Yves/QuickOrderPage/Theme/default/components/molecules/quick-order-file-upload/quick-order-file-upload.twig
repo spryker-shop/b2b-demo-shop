@@ -46,7 +46,7 @@
 
                         <span class="{{ embed.parentClass }}__file-select text-center">
                             <span class="{{ embed.parentJsClass }}__file-select">
-                                {{ 'quick-order.browse-file' | trans }}
+                                {{ 'quick-order.upload-order.browse-file' | trans }}
                             </span>
                             {% include atom('icon') with {
                                 class: 'is-hidden ' ~ embed.parentJsClass ~ '__remove-file',
@@ -57,18 +57,14 @@
                             } only %}
                         </span>
 
-                        {% if(embed.fileTemplateExtensions is not null) %}
-                            {% set filteTemplatesExt = '' %}
-
+                        {% if (embed.fileTemplateExtensions is not null) %}
+                            {% set fileExtensions = [] %}
+                            {% for fileExt in embed.fileTemplateExtensions %}
+                                {% set fileExtensions = fileExtensions | merge(['.' ~ fileExt]) %}
+                            {% endfor %}
+                            {% set fileExtensions = '<strong>' ~ fileExtensions | join(', ') ~ '</strong>'%}
                             <span class="{{ embed.parentJsClass }}__file-extension">
-                                {{ 'quick-order.file-extension-first-part' | trans }}
-
-                                {% for fileTemplateExt in embed.fileTemplateExtensions %}
-                                    {% set fileExt = (loop.last == false) ? '.' ~ fileTemplateExt ~ ', ' : '.' ~ fileTemplateExt %}
-                                    <strong>{{ fileExt }}</strong>
-                                {% endfor %}
-
-                                {{ 'quick-order.file-extension-second-part' | trans }}
+                                {{ 'quick-order.upload-order.allowed-file-extensions' | trans({"%extensions%": fileExtensions}) | raw }}
                             </span>
                         {% endif %}
                     </span>
