@@ -1,0 +1,28 @@
+@mixin quick-order-page-quick-order-text-order-form($name: '.quick-order-text-order-form') {
+    #{$name} {
+        background-color: $setting-color-gray-7;
+        padding: rem(17) rem(20);
+        border-radius: $setting-border-radius;
+
+        &__content {
+            font-size: rem(14);
+            letter-spacing: rem(-0.1);
+            font-weight: fw(regular);
+
+            @include helper-breakpoint-media-min($lg) {
+                letter-spacing: 0;
+                font-size: rem(13);
+            }
+        }
+
+        &__title {
+            font-size: rem(14);
+            line-height: rem(18);
+            font-weight: fw(medium);
+        }
+
+        @content;
+    }
+}
+
+@include quick-order-page-quick-order-text-order-form;

@@ -7,7 +7,7 @@
         background: $setting-color-gray-7;
     }
 
-    &__quantity[type="number"]{
+    &__quantity[type='number'] {
         margin: 0;
         padding: 0;
         font-size: rem(16);
@@ -21,22 +21,25 @@
             appearance: none;
         }
 
-        &[disabled] {
+        &__[disabled] {
             background-color: $setting-color-transparent;
         }
     }
 
-    &__error {
-        color: $setting-color-alt;
-        padding: 0.5rem;
-        background-color: $setting-color-white;
-        position: static;
-        transform: none;
-        box-shadow: none;
-        display: inline-block;
-        text-align: center;
-        border: 1px solid $setting-color-gray-4;
-        margin-bottom: rem(8);
+    &__message {
+        padding: rem(6) rem(12);
+        border: none;
+        font-size: rem(12);
+
+        &--error {
+            background-color: $setting-color-alpha-5;
+            color: $setting-color-alt;
+        }
+
+        &--warning {
+            background-color: $setting-color-alpha-8;
+            color: $setting-color-yellow-1;
+        }
     }
 
     &__button {
@@ -97,4 +100,4 @@
             }
         }
     }
-};
+}

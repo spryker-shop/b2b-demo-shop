@@ -18,6 +18,7 @@ use SprykerShop\Yves\AvailabilityNotificationWidget\Widget\AvailabilityNotificat
 use SprykerShop\Yves\CartNoteWidget\Widget\CartItemNoteFormWidget;
 use SprykerShop\Yves\CartNoteWidget\Widget\CartNoteFormWidget;
 use SprykerShop\Yves\CartToShoppingListWidget\Widget\CreateShoppingListFromCartWidget;
+use SprykerShop\Yves\CategoryImageStorageWidget\Widget\CategoryImageStorageWidget;
 use SprykerShop\Yves\CheckoutWidget\Widget\CheckoutBreadcrumbWidget;
 use SprykerShop\Yves\CompanyPage\Plugin\ShopApplication\CheckBusinessOnBehalfCompanyUserHandlerPlugin;
 use SprykerShop\Yves\CompanyPage\Plugin\ShopApplication\CompanyBusinessUnitControllerRestrictionPlugin;
@@ -64,6 +65,7 @@ use SprykerShop\Yves\ProductReviewWidget\Widget\DisplayProductAbstractReviewWidg
 use SprykerShop\Yves\ProductReviewWidget\Widget\ProductDetailPageReviewWidget;
 use SprykerShop\Yves\ProductReviewWidget\Widget\ProductRatingFilterWidget;
 use SprykerShop\Yves\ProductReviewWidget\Widget\ProductReviewDisplayWidget;
+use SprykerShop\Yves\ProductSearchWidget\Widget\ProductConcreteAddWidget;
 use SprykerShop\Yves\ProductSearchWidget\Widget\ProductConcreteSearchWidget;
 use SprykerShop\Yves\ProductWidget\Widget\CatalogPageProductWidget;
 use SprykerShop\Yves\ProductWidget\Widget\CmsProductGroupWidget;
@@ -166,8 +168,10 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             MenuItemCompanyWidget::class,
             CustomerFullNameWidget::class,
             ProductSetIdsWidget::class,
+            CategoryImageStorageWidget::class,
             ProductConcreteSearchWidget::class,
             AvailabilityNotificationSubscriptionWidget::class,
+            ProductConcreteAddWidget::class,
         ];
     }
 

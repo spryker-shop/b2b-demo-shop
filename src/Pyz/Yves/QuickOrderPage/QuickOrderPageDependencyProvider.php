@@ -9,7 +9,9 @@ namespace Pyz\Yves\QuickOrderPage;
 
 use SprykerShop\Yves\ProductPackagingUnitWidget\Plugin\QuickOrder\QuickOrderItemDefaultPackagingUnitExpanderPlugin;
 use SprykerShop\Yves\QuickOrderPage\Plugin\QuickOrder\QuickOrderFormMeasurementUnitColumnPlugin;
-use SprykerShop\Yves\QuickOrderPage\Plugin\QuickOrderPage\ProductQuantityFilterPlugin;
+use SprykerShop\Yves\QuickOrderPage\Plugin\QuickOrderPage\QuickOrderCsvFileTemplateStrategyPlugin;
+use SprykerShop\Yves\QuickOrderPage\Plugin\QuickOrderPage\QuickOrderCsvUploadedFileParserStrategyPlugin;
+use SprykerShop\Yves\QuickOrderPage\Plugin\QuickOrderPage\QuickOrderCsvUploadedFileValidatorStrategyPlugin;
 use SprykerShop\Yves\QuickOrderPage\QuickOrderPageDependencyProvider as SprykerQuickOrderPageDependencyProvider;
 use SprykerShop\Yves\ShoppingListWidget\Plugin\QuickOrderPage\ShoppingListQuickOrderFormHandlerStrategyPlugin;
 
@@ -46,12 +48,32 @@ class QuickOrderPageDependencyProvider extends SprykerQuickOrderPageDependencyPr
     }
 
     /**
-     * @return \SprykerShop\Yves\QuickOrderPageExtension\Dependency\Plugin\QuickOrderItemFilterPluginInterface[]
+     * @return \SprykerShop\Yves\QuickOrderPageExtension\Dependency\Plugin\QuickOrderUploadedFileParserStrategyPluginInterface[]
      */
-    protected function getQuickOrderItemFilterPlugins(): array
+    protected function getQuickOrderUploadedFileParserPlugins(): array
     {
         return [
-            new ProductQuantityFilterPlugin(),
+            new QuickOrderCsvUploadedFileParserStrategyPlugin(),
+        ];
+    }
+
+    /**
+     * @return \SprykerShop\Yves\QuickOrderPageExtension\Dependency\Plugin\QuickOrderFileTemplateStrategyPluginInterface[]
+     */
+    protected function getQuickOrderFileTemplatePlugins(): array
+    {
+        return [
+            new QuickOrderCsvFileTemplateStrategyPlugin(),
+        ];
+    }
+
+    /**
+     * @return \SprykerShop\Yves\QuickOrderPageExtension\Dependency\Plugin\QuickOrderUploadedFileValidatorStrategyPluginInterface[]
+     */
+    protected function getQuickOrderUploadedFileValidatorPlugins(): array
+    {
+        return [
+            new QuickOrderCsvUploadedFileValidatorStrategyPlugin(),
         ];
     }
 }
