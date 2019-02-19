@@ -1,0 +1,42 @@
+{% extends template('widget') %}
+
+{% define data = {
+    isSubscribed: _widget.isSubscribed,
+    subscribeForm: _widget.subscribeForm,
+    unsubscribeForm: _widget.unsubscribeForm
+} %}
+
+{% block body %}
+    {% if data.isSubscribed %}
+        {% include molecule('form') with {
+            modifiers: ['inline'],
+            data: {
+                form: data.unsubscribeForm,
+                options: {
+                    action: url('availability-notification/unsubscribe')
+                },
+                submit: {
+                    enable: true,
+                    text: 'availability_notification.do_not_notify_me' | trans,
+                    class: 'button button--secondary button--form spacing-right spacing-right--reset'
+                }
+            }
+        } only %}
+    {% else %}
+        {% include molecule('form') with {
+            modifiers: ['inline'],
+            data: {
+                form: data.subscribeForm,
+                options: {
+                    action: url('availability-notification/subscribe')
+                },
+                submit: {
+                    enable: true,
+                    class: 'button button--secondary button--form spacing-right spacing-right--reset',
+                    icon: 'chevron-right',
+                    text: ''
+                }
+            }
+        } only %}
+    {% endif %}
+{% endblock %}
