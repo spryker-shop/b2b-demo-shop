@@ -97,7 +97,7 @@ export default class QuickOrderRow extends Component {
         this.registerQuantityInput();
         this.mapQuantityInputChange();
 
-        this.timer = setTimeout(() => this.hideErrorMessage(), this.timeout);
+        this.timer = <any>setTimeout(() => this.hideErrorMessage(), this.timeout);
 
         if (!!sku) {
             this.quantityInput.focus();
