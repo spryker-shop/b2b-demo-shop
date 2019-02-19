@@ -3,45 +3,30 @@
 {% define data = {
     forms: {
         quickOrderForm: _view.quickOrderForm,
-        textOrderForm: _view.textOrderForm
+        textOrderForm: _view.textOrderForm,
+        uploadOrderForm: _view.uploadOrderForm
     },
     additionalColumns: _view.additionalColumns,
     products: _view.products,
     prices: _view.prices,
+    fileTemplateExtensions: _view.fileTemplateExtensions,
     title: 'quick-order.page-title' | trans
 } %}
 
-{% block contentClass %}page-layout-main page-layout-main--quick-order-page{% endblock %}
+{% block contentClass %}
+    page-layout-main page-layout-main--quick-order-page
+{% endblock %}
 
 {% block content %}
-    <div class="grid grid--gap grid--justify">
-        <div class="col col--sm-12 col--md-9">
-            {% include molecule('quick-order-form', 'QuickOrderPage') with {
-                data: {
-                    form: data.forms.quickOrderForm,
-                    products: data.products,
-                    prices: data.prices,
-                    additionalColumns: data.additionalColumns
-                }
-            } only %}
-        </div>
-        <div class="col col--sm-12 col--md-3 order-sidebar">
-            <div class="order-sidebar__item">
-                <h5 class="order-sidebar__title order-sidebar__title--space-bottom">{{ 'quick-order.paste-order.title' | trans }}</h5>
-                <div class="order-sidebar__text">
-                    {{ 'quick-order.paste-order.description' | trans }}
-                </div>
-                {% include molecule('form') with {
-                    class: 'order-sidebar__content',
-                    data: {
-                        form: data.forms.textOrderForm,
-                        submit: {
-                            enable: true,
-                            text: 'quick-order.paste-order.button.verify' | trans
-                        }
-                    }
-                } only %}
-            </div>
-        </div>
-    </div>
+    {% include molecule('quick-order-form', 'QuickOrderPage') with {
+        data: {
+            form: data.forms.quickOrderForm,
+            products: data.products,
+            prices: data.prices,
+            fileTemplateExtensions: data.fileTemplateExtensions,
+            additionalColumns: data.additionalColumns,
+            textOrderForm: data.forms.textOrderForm,
+            uploadOrderForm: data.forms.uploadOrderForm
+        }
+    } only %}
 {% endblock %}

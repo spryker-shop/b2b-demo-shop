@@ -21,6 +21,30 @@
             }
         }
 
+        &--browse-file {
+            @include helper-effect-transition(border-color);
+            display: flex;
+            align-items: center;
+            width: 100%;
+            min-height: rem(120);
+            padding: rem(10);
+            border: rem(2) dashed $setting-color-gray-2;
+            border-radius: rem(2);
+            background-color: $setting-color-white;
+            color: $setting-color-gray-3;
+            text-transform: initial;
+            font-weight: fw(regular);
+            cursor: pointer;
+
+            &:hover {
+                border-color: $setting-color-main;
+            }
+        }
+
+        &--browse-file-cursor-default {
+            cursor: default;
+        }
+
         @content;
     }
 }
