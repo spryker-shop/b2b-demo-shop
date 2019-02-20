@@ -35,11 +35,8 @@ class CartItemsProductProvider implements CartItemsProductProviderInterface
         $productBySku = [];
 
         foreach ($cartItems as $item) {
-            $productBySku[$item->getSku()] = $this->productStorageClient->mapProductStorageData(
-                $this->productStorageClient->findProductAbstractStorageData(
-                    $item->getIdProductAbstract(),
-                    $locale
-                ),
+            $productBySku[$item->getSku()] = $this->productStorageClient->findProductAbstractViewTransfer(
+                $item->getIdProductAbstract(),
                 $locale
             );
         }

@@ -14,6 +14,7 @@ use Spryker\Shared\CompanyUser\Plugin\AddCompanyUserPermissionPlugin;
 use Spryker\Shared\CompanyUserInvitation\Plugin\ManageCompanyUserInvitationPermissionPlugin;
 use Spryker\Zed\CartPermissionConnector\Communication\Plugin\Cart\AlterCartUpToAmountPermissionPlugin;
 use Spryker\Zed\CompanyRole\CompanyRoleConfig as SprykerCompanyRoleConfig;
+use Spryker\Zed\QuoteApproval\Communication\Plugin\Permission\ApproveQuotePermissionPlugin;
 use SprykerShop\Shared\CartPage\Plugin\AddCartItemPermissionPlugin;
 use SprykerShop\Shared\CartPage\Plugin\ChangeCartItemPermissionPlugin;
 use SprykerShop\Shared\CartPage\Plugin\RemoveCartItemPermissionPlugin;
@@ -22,6 +23,7 @@ use SprykerShop\Shared\CompanyPage\Plugin\CompanyUserStatusChangePermissionPlugi
 class CompanyRoleConfig extends SprykerCompanyRoleConfig
 {
     protected const BUYER_ROLE_NAME = 'Buyer';
+    protected const APPROVER_ROLE_NAME = 'Approver';
 
     /**
      * @return string[]
@@ -34,6 +36,30 @@ class CompanyRoleConfig extends SprykerCompanyRoleConfig
             CompanyUserStatusChangePermissionPlugin::KEY,
             SeeCompanyMenuPermissionPlugin::KEY,
         ];
+    }
+
+    /**
+     * @return \Generated\Shared\Transfer\CompanyRoleTransfer[]
+     */
+    public function getPredefinedCompanyRoles(): array
+    {
+        $companyRoleTransfers = parent::getPredefinedCompanyRoles();
+        $companyRoleTransfers[] = $this->getBuyerRole();
+        $companyRoleTransfers[] = $this->getApproverRole();
+
+        return $companyRoleTransfers;
+    }
+
+    /**
+     * @return \Generated\Shared\Transfer\CompanyRoleTransfer
+     */
+    protected function getBuyerRole(): CompanyRoleTransfer
+    {
+        return (new CompanyRoleTransfer())
+            ->setName(static::BUYER_ROLE_NAME)
+            ->setPermissionCollection($this->createPermissionCollectionFromPermissionKeys(
+                $this->getBuyerRolePermissionKeys()
+            ));
     }
 
     /**
@@ -51,25 +77,26 @@ class CompanyRoleConfig extends SprykerCompanyRoleConfig
     }
 
     /**
-     * @return \Generated\Shared\Transfer\CompanyRoleTransfer[]
+     * @return \Generated\Shared\Transfer\CompanyRoleTransfer
      */
-    public function getPredefinedCompanyRoles(): array
+    protected function getApproverRole(): CompanyRoleTransfer
     {
-        $companyRoleTransfers = parent::getPredefinedCompanyRoles();
-        $companyRoleTransfers[] = $this->getBuyerRole();
-
-        return $companyRoleTransfers;
+        return (new CompanyRoleTransfer())
+            ->setName(static::APPROVER_ROLE_NAME)
+            ->setPermissionCollection(
+                $this->createPermissionCollectionFromPermissionKeys(
+                    $this->getApproverRolePermissionKeys()
+                )
+            );
     }
 
     /**
-     * @return \Generated\Shared\Transfer\CompanyRoleTransfer
+     * @return string[]
      */
-    protected function getBuyerRole(): CompanyRoleTransfer
+    protected function getApproverRolePermissionKeys(): array
     {
-        return (new CompanyRoleTransfer())
-            ->setName(static::BUYER_ROLE_NAME)
-            ->setPermissionCollection($this->createPermissionCollectionFromPermissionKeys(
-                $this->getBuyerRolePermissionKeys()
-            ));
+        return [
+            ApproveQuotePermissionPlugin::KEY,
+        ];
     }
 }

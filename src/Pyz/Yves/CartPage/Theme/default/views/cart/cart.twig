@@ -2,6 +2,7 @@
 
 {% define data = {
     cart: _view.cart,
+    isQuoteEditable: _view.isQuoteEditable,
     cartItems: _view.cartItems,
     isQuoteValid: _view.isQuoteValid,
     attributes: _view.attributes,
@@ -62,15 +63,12 @@
         </div>
     {% else %}
 
-        {% set canEditCart = (not is_granted('ROLE_USER') or can('WriteSharedCartPermissionPlugin', data.cart.idQuote)) %}
-        {% set canWriteToCart = (not is_granted('ROLE_USER') or canEditCart) %}
-
         <div class="grid grid--gap">
             <div class="col col--sm-12 col--xl-9">
                 <div class="cart-title">
                     <h3 class="grid grid--nowrap grid--middle cart-title__text">
                         {{ data.cart.name }}
-                        {% if can('ChangeCartItemPermissionPlugin', data.cart.idQuote) and canEditCart %}
+                        {% if can('ChangeCartItemPermissionPlugin', data.cart.idQuote) and data.isQuoteEditable %}
                             <a href="{{ path('multi-cart/update', {idQuote: data.cart.idQuote}) }}" class="col button button--hollow-icon button--edit cart-title__link">
                                 {% include molecule('icon-tooltip') with {
                                     modifiers: ['sm-lg-regular'],
@@ -105,8 +103,8 @@
                             list: data.cart,
                             listItem: cartItem,
                             attributes: data.attributes[cartItem.sku] | default([]),
-                            canEdit: not is_granted('ROLE_USER') or (can('ChangeCartItemPermissionPlugin', data.cart.idQuote) and can('WriteSharedCartPermissionPlugin', data.cart.idQuote)),
-                            canRemove: can('RemoveCartItemPermissionPlugin'),
+                            canEdit: data.isQuoteEditable and can('ChangeCartItemPermissionPlugin', data.cart.idQuote),
+                            canRemove: data.isQuoteEditable and can('RemoveCartItemPermissionPlugin'),
                             imageModifiers: ['cart']
                         },
                         embed: {
@@ -136,7 +134,7 @@
                     {% endembed %}
                 {% endfor %}
 
-                {% if canEditCart and can('RemoveCartItemPermissionPlugin') %}
+                {% if data.isQuoteEditable and can('RemoveCartItemPermissionPlugin') %}
                     <div class="grid grid--right cart-bottom">
                         <a href="{{ path('multi-cart/clear', {idQuote: data.cart.idQuote}) }}" class="link link--icon cart-bottom__button">
                             {% include atom('icon') with {
@@ -150,11 +148,13 @@
                     </div>
                 {% endif %}
 
-                {% widget 'CartDiscountPromotionProductListWidget' args [
-                    data.cart,
-                    data.request
-                ] only %}
-                {% endwidget %}
+                {% if data.isQuoteEditable %}
+                    {% widget 'CartDiscountPromotionProductListWidget' args [
+                        data.cart,
+                        data.request
+                    ] only %}
+                    {% endwidget %}
+                {% endif %}
             </div>
 
             <div class="col col--sm-12 col--xl-3 order-sidebar js-order-sidebar">
@@ -172,7 +172,7 @@
                     {% endblock %}
                 {% endwidget %}
 
-                {% if canEditCart and can('ChangeCartItemPermissionPlugin') %}
+                {% if data.isQuoteEditable and can('ChangeCartItemPermissionPlugin') %}
                     {% if data.cart.idQuote is not empty and data.cart.items is not empty %}
                         {% widget 'CreateShoppingListFromCartWidget' args [data.cart.idQuote] only %}
                             {% block body %}
@@ -190,7 +190,7 @@
                     {% endif %}
                 {% endif %}
 
-                {% if canWriteToCart %}
+                {% if data.isQuoteEditable %}
                     {% widget 'ProductConcreteAddWidget' args [
                         '',
                         'cart.quick_add_to_cart.submit' | trans,
@@ -218,7 +218,7 @@
                             <div class="col order-sidebar__quantity">{{ app['cart.quantity'] }} {{ 'checkout.step.summary.items' | trans }}</div>
                         </div>
 
-                        {% if canEditCart and can('ChangeCartItemPermissionPlugin') and can('SeePricePermissionPlugin') %}
+                        {% if data.isQuoteEditable and can('ChangeCartItemPermissionPlugin') and can('SeePricePermissionPlugin') %}
                             {% widget 'DiscountVoucherFormWidget' only %}{% endwidget %}
                         {% endif %}
                     </div>
@@ -227,7 +227,8 @@
                         {% include molecule('cart-summary', 'CartPage') with {
                             data: {
                                 cart: data.cart,
-                                isQuoteValid: data.isQuoteValid
+                                isQuoteValid: data.isQuoteValid,
+                                isQuoteEditable: data.isQuoteEditable
                             }
                         } only %}
                     {% endif %}
@@ -242,6 +243,9 @@
                 } only %}
             </div>
         </div>
-        {% widget 'UpSellingProductsWidget' args [data.cart] only %}{% endwidget %}
+
+        {% if data.isQuoteEditable %}
+            {% widget 'UpSellingProductsWidget' args [data.cart] only %}{% endwidget %}
+        {% endif %}
     {% endif %}
 {% endblock %}

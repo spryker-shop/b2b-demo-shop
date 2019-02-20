@@ -151,17 +151,20 @@
                 } only %}
             {% endif %}
 
-            <div class="summary-toggle js-summary-toggle">
-                <div class="summary-toggle__item">
-                    <h5 class="summary-toggle__title toggler-accordion__item js-summary-toggle__trigger" data-toggle-target='.js-summary-toggle__content--voucher'>
-                        {{ 'page.checkout.finalize.enter-voucher' | trans }}
-                        <span class="icon icon--toggler-cross toggler-accordion__icon"></span>
-                    </h5>
-                    <div class="summary-toggle__content summary-toggle__content--voucher js-summary-toggle__content--voucher is-hidden">
-                        {% widget 'CheckoutVoucherFormWidget' args [data.transfer] only %}{% endwidget %}
+            {% set checkoutVoucherFormWidget = findWidget('CheckoutVoucherFormWidget', [data.transfer]) %}
+            {% if checkoutVoucherFormWidget and checkoutVoucherFormWidget.isQuoteEditable %}
+                <div class="summary-toggle js-summary-toggle">
+                    <div class="summary-toggle__item">
+                        <h5 class="summary-toggle__title toggler-accordion__item js-summary-toggle__trigger" data-toggle-target='.js-summary-toggle__content--voucher'>
+                            {{ 'page.checkout.finalize.enter-voucher' | trans }}
+                            <span class="icon icon--toggler-cross toggler-accordion__icon"></span>
+                        </h5>
+                        <div class="summary-toggle__content summary-toggle__content--voucher js-summary-toggle__content--voucher is-hidden">
+                            {% widget checkoutVoucherFormWidget %}{% endwidget %}
+                        </div>
                     </div>
                 </div>
-            </div>
+            {% endif %}
 
             {% include molecule('toggler-accordion') with {
                 attributes: {
