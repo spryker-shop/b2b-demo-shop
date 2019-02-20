@@ -30,7 +30,7 @@
 
     {% set hasWritePermission = can('WriteShoppingListPermissionPlugin', data.idShoppingList) %}
 
-    <div class="spacing-bottom--bigger">
+    <div class="spacing-bottom spacing-bottom--bigger">
         {% if can('WriteShoppingListPermissionPlugin', data.shoppingList.idShoppingList) %}
             {% include molecule('shopping-list-product-quick-add', 'ShoppingListPage') with {
                 data: {
