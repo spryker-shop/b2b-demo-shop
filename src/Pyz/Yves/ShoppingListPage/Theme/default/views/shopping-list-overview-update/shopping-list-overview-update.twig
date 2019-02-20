@@ -29,6 +29,17 @@
 {% block customerContent %}
 
     {% set hasWritePermission = can('WriteShoppingListPermissionPlugin', data.idShoppingList) %}
+
+    <div class="spacing-bottom--bigger">
+        {% if can('WriteShoppingListPermissionPlugin', data.shoppingList.idShoppingList) %}
+            {% include molecule('shopping-list-product-quick-add', 'ShoppingListPage') with {
+                data: {
+                    activeShoppingListId: data.shoppingList.idShoppingList
+                }
+            } only %}
+        {% endif %}
+    </div>
+
     <div class="form" data-qa="component form">
         {{ form_start(data.form) }}
 
