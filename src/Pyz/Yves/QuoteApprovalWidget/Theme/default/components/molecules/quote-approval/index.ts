@@ -1,0 +1,1 @@
+import './quote-approval.scss';

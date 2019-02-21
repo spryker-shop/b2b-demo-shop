@@ -49,8 +49,13 @@ class CartController extends SprykerCartController
             ->createCartItemsProductsProvider()
             ->getItemsProducts($cartItems, $this->getLocale());
 
+        $isQuoteEditable = $this->getFactory()
+            ->getQuoteClient()
+            ->isQuoteEditable($quoteTransfer);
+
         return [
             'cart' => $quoteTransfer,
+            'isQuoteEditable' => $isQuoteEditable,
             'cartItems' => $cartItems,
             'products' => $productBySku,
             'attributes' => $itemAttributeVariantsBySku,
