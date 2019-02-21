@@ -9,6 +9,7 @@ namespace Pyz\Yves\CustomerPage;
 
 use Generated\Shared\Transfer\CustomerTransfer;
 use Pyz\Yves\CustomerPage\Security\Customer;
+use Spryker\Client\Session\SessionClientInterface;
 use SprykerShop\Yves\CustomerPage\CustomerPageFactory as SprykerCustomerPageFactory;
 use SprykerShop\Yves\CustomerPage\Plugin\Provider\CustomerSecurityServiceProvider;
 
@@ -27,5 +28,13 @@ class CustomerPageFactory extends SprykerCustomerPageFactory
             $customerTransfer->getPassword(),
             [CustomerSecurityServiceProvider::ROLE_USER]
         );
+    }
+
+    /**
+     * @return \Spryker\Client\Session\SessionClientInterface
+     */
+    public function getSessionClient(): SessionClientInterface
+    {
+        return $this->getProvidedDependency(CustomerPageDependencyProvider::CLIENT_SESSION);
     }
 }
