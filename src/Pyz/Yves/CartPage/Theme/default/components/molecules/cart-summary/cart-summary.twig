@@ -32,8 +32,6 @@
 
             {% widget 'SalesOrderThresholdWidget' args [data.cart.expenses] only %}{% endwidget %}
 
-            {% widget 'QuoteApprovalWidget' args [data.cart] only %}{% endwidget %}
-
             <li class="list__item {{ config.name }}__item {{ config.name }}__item--top-space">
                 {{ 'cart.price.subtotal' | trans }}
                 <span class="float-right">{{ data.cart.totals.subtotal | money }}</span>
@@ -57,9 +55,22 @@
         </ul>
     </div>
 
+    {% widget 'QuoteApprovalWidget' args [data.cart] only %}
+        {% block container %}
+            <div class="order-sidebar__item order-sidebar__item--approve-request">
+                {{ parent() }}
+            </div>
+        {% endblock %}
+    {% endwidget %}
+
     {% if data.isQuoteValid %}
-        <hr />
-        {% widget 'QuoteApproveRequestWidget' args [data.cart] %}{% endwidget %}
+        {% widget 'QuoteApproveRequestWidget' args [data.cart] %}
+            {% block container %}
+                <div class="order-sidebar__item order-sidebar__item--approve-request">
+                    {{ parent() }}
+                </div>
+            {% endblock %}
+        {% endwidget %}
     {% endif %}
 
     {% if canProceedToCheckout and can('SeeOrderPlaceSubmitPermissionPlugin') %}

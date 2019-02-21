@@ -1,0 +1,30 @@
+@mixin status-color($action-color, $opacity: 1) {
+    background-color: rgba(helper-color-light(map-get($setting-color-actions, $action-color), 10), $opacity);
+    color: map-get($setting-color-actions, $action-color);
+}
+
+@mixin shop-ui-quote-status($name: '.quote-status') {
+    #{$name} {
+        border-radius: 1rem;
+        padding: 0.25rem map-get($setting-spacing, 'big');
+        font-size: rem(12);
+
+        &--waiting {
+            @include status-color('warning', 0.3);
+        }
+
+        &--approved {
+            @include status-color('success', 0.3);
+        }
+
+        &--declined {
+            @include status-color('alert', 0.3);
+        }
+
+        &--small {
+            padding: 0 map-get($setting-spacing, 'default');
+        }
+    }
+}
+
+@include shop-ui-quote-status;

@@ -1,0 +1,38 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'quote-approval'
+} %}
+
+{% define data = {
+    customerName: required,
+    updateDate: required,
+    quoteTransfer: required
+} %}
+
+{% block body %}
+    <div class="grid grid--justify grid--middle">
+        <div class="col">
+            <strong>{{ 'quote_approval_widget.title' | trans }}</strong>
+        </div>
+        <div class="col">
+            {% widget 'QuoteApprovalStatusWidget' args [data.quoteTransfer] only %}{% endwidget %}
+        </div>
+    </div>
+    <div class="grid">
+        <div class="{{ config.name }}__text col col--sm-6 spacing-y spacing-y--big">
+            {{ 'quote_approval.request.approval_by' | trans }} {{ data.customerName }}
+        </div>
+        <div class="{{ config.name }}__text col col--sm-6 spacing-y spacing-y--big text-right">
+            {% include atom('icon') with {
+                class: 'spacing-right spacing-right--small',
+                modifiers: ['clock'],
+                data: {
+                    name: 'clock'
+                }
+            } only %}
+
+            {{ data.updateDate | date }}
+        </div>
+    </div>
+{% endblock %}

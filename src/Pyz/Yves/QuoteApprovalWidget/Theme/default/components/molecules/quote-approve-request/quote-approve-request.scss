@@ -1,0 +1,11 @@
+@mixin quote-approve-request($name: '.quote-approve-request') {
+    #{$name} {
+        &__text {
+            font-size: rem(12);
+            line-height: rem(16);
+            color: $setting-color-gray-2;
+        }
+    }
+}
+
+@include quote-approve-request;
