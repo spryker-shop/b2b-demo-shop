@@ -82,6 +82,7 @@ class QuoteDependencyProvider extends SprykerQuoteDependencyProvider
     {
         return [
             new RemoveSharedQuoteBeforeQuoteDeletePlugin(), #SharedCartFeature
+            new RemoveQuoteApprovalsBeforeQuoteDeletePlugin(), #QuoteApproval
         ];
     }
 
@@ -105,7 +106,6 @@ class QuoteDependencyProvider extends SprykerQuoteDependencyProvider
          */
         $plugins = [
             new InitDefaultQuoteCustomerQuoteDeleteAfterPlugin(), #MultiCartFeature
-            new RemoveQuoteApprovalsBeforeQuoteDeletePlugin(), #QuoteApproval
         ];
 
         return $plugins;
