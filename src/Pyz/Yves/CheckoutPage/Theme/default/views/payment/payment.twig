@@ -39,9 +39,8 @@
         }
     } only %}
         {% block fieldset %}
-            {% for name, choices in data.form.paymentSelection.vars.choices %}
+            {% for choices in data.form.paymentSelection.vars.choices %}
                 {% set paymentProviderIndex = loop.index0 %}
-
                 {% embed molecule('checkout-list', 'CheckoutPage') with {
                     modifiers: ['bottom-margin'],
                     data: {
@@ -50,7 +49,8 @@
                         customForms: data.customForms
                     },
                     embed: {
-                        form: data.form
+                        form: data.form,
+                        paymentProviderIndex: paymentProviderIndex
                     }
                 } only %}
                     {% block contentItem %}
@@ -69,6 +69,7 @@
                                 form: embed.form[embed.form.paymentSelection[key].vars.value],
                                 enableStart: false,
                                 enableEnd: false,
+                                customForms: data.customForms,
                                 layout: {
                                     'card_expires_month': 'col col--sm-4',
                                     'card_expires_year': 'col col--sm-8'
@@ -76,7 +77,7 @@
                                 customForms: data.customForms
                             },
                             embed: {
-                                index: loop.index,
+                                index: loop.index ~ '-' ~ embed.paymentProviderIndex,
                                 toggler: embed.form.paymentSelection[key]
                             }
                         } only %}
