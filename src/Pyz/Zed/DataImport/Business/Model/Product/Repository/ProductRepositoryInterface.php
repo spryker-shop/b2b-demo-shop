@@ -22,7 +22,7 @@ interface ProductRepositoryInterface
     /**
      * @param string $sku
      *
-     * @return int
+     * @return string
      */
     public function getAbstractSkuByConcreteSku($sku);
 
@@ -47,4 +47,9 @@ interface ProductRepositoryInterface
      * @return void
      */
     public function addProductConcrete(SpyProduct $productEntity, $abstractSku = null);
+
+    /**
+     * @return void
+     */
+    public function flush(): void;
 }

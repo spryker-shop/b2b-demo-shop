@@ -41,7 +41,7 @@ class ProductRepository implements ProductRepositoryInterface
     /**
      * @param string $sku
      *
-     * @return int
+     * @return string
      */
     public function getAbstractSkuByConcreteSku($sku)
     {
@@ -134,5 +134,13 @@ class ProductRepository implements ProductRepositoryInterface
             static::ID_PRODUCT => $productEntity->getIdProduct(),
             static::ABSTRACT_SKU => ($abstractSku) ? $abstractSku : $productEntity->getSpyProductAbstract()->getSku(),
         ];
+    }
+
+    /**
+     * @return void
+     */
+    public function flush(): void
+    {
+        static::$resolved = [];
     }
 }
