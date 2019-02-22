@@ -47,4 +47,12 @@ class IndexController extends SprykerIndexController
             'idProductAbstract' => $idProductAbstract,
         ];
     }
+
+    /**
+     * @return \Symfony\Component\HttpFoundation\Request
+     */
+    protected function getParentRequest(): Request
+    {
+        return $this->getApplication()['request_stack']->getMasterRequest();
+    }
 }
