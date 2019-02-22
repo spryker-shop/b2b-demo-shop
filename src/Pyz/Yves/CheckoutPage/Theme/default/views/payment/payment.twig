@@ -73,7 +73,8 @@
                                 layout: {
                                     'card_expires_month': 'col col--sm-4',
                                     'card_expires_year': 'col col--sm-8'
-                                }
+                                },
+                                customForms: data.customForms
                             },
                             embed: {
                                 index: loop.index ~ '-' ~ embed.paymentProviderIndex,
@@ -81,7 +82,6 @@
                             }
                         } only %}
                             {% block fieldset %}
-
                                 {% if embed.index == 1 %}
                                     {{ form_row(embed.toggler, {
                                         required: false,
@@ -102,7 +102,6 @@
                                         }
                                     }) }}
                                 {% endif %}
-
                                 <div class="col col--sm-12 is-hidden js-payment-method-{{embed.index}}">
                                     <div class="col col--sm-12 col--md-6">
                                         {% if data.customForms[data.form.vars.template_path] is not defined %}

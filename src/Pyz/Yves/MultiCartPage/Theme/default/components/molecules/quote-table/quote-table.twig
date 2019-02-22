@@ -82,7 +82,9 @@
                             } only %}
                         {% endif %}
                     </td>
-                    <td class="transform-cell spacing-bottom spacing-bottom--inner spacing-bottom--big" data-content="{{ 'page.multi_cart.shopping_cart.list.label.total' | trans }}"><strong>{{ quote.totals.subtotal | default(0) | money }}</strong></td>
+                    <td class="transform-cell spacing-bottom spacing-bottom--inner spacing-bottom--big" data-content="{{ 'page.multi_cart.shopping_cart.list.label.total' | trans }}">
+                        <strong>{{ quote.totals.grandTotal | default(0) | money(true, quote.currency.code) }}</strong>
+                    </td>
                     {% if widgetGlobalExists('QuoteApprovalStatusWidget') %}
                         <td>
                             {% widget 'QuoteApprovalStatusWidget' args [quote] only %}{% endwidget %}
