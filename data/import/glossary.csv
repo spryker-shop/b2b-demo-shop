@@ -462,7 +462,7 @@ customer.account.edit_address_information,Ändern,de_DE
 customer.account.additional_addresses,Additional Addresses,en_US
 customer.account.additional_addresses,Zusätzliche Adressen,de_DE
 customer.account.add_new_address,Add new address,en_US
-customer.account.add_new_address,Neue adresse hinzufügen,de_DE
+customer.account.add_new_address,Neue Adresse hinzufügen,de_DE
 customer.newsletter.not_subscribed,No newsletter subscription,en_US
 customer.newsletter.not_subscribed,Newsletter nicht abonniert.,de_DE
 customer.profile.order_history,Last Orders,en_US
@@ -899,10 +899,10 @@ cart.pre.check.availability.failed.empty,Product '%sku%' is not available at the
 cart.pre.check.availability.failed.empty,Das Produkt '%sku%' ist momentan nicht verfügbar.,de_DE
 cart.pre.check.availability.failed.lead.product,Products inside the item 'sku' are not available at the moment.,en_US
 cart.pre.check.availability.failed.lead.product,Produkte im Artikel 'sku' sind momentan nicht verfügbar.,de_DE
-mail.sender.name,Spryker demoshop,en_US
-mail.sender.name,Spryker demoshop,de_DE
-mail.sender.email,demoshop@spryker.com,en_US
-mail.sender.email,demoshop@spryker.de,de_DE
+mail.sender.name,Spryker No-Reply,en_US
+mail.sender.name,Spryker No-Reply,de_DE
+mail.sender.email,noreply@demo-spryker.com,en_US
+mail.sender.email,noreply@demo-spryker.com,de_DE
 mail.company.status.subject,"Your company has changed status",en_US
 mail.company.status.subject,"Ihre Firma hat den Status geändert",de_DE
 mail.company.status.text,"Your company has changed status to: ",en_US
@@ -1109,8 +1109,8 @@ product-cart.validation.error.abstract-product-exists,"Product ""sku"" not found
 product-cart.validation.error.abstract-product-exists,"Produkt ""sku"" nicht gefunden",de_DE
 product-cart.validation.error.concrete-product-exists,"Product ""sku"" not found",en_US
 product-cart.validation.error.concrete-product-exists,"Produkt ""sku"" nicht gefunden",de_DE
-cart.item.option.pre.check.validation.error.exists,"Product option with value '%id%' does not exist.",en_US
-cart.item.option.pre.check.validation.error.exists,"Die Produktoption '%id%' existiert nicht.",de_DE
+cart.item.option.pre.check.validation.error.exists,"You can not reorder the product %name% directly, please add it to your cart separately.",en_US
+cart.item.option.pre.check.validation.error.exists,"Sie können das Produkt %name% nicht direkt nachbestellen, fügen Sie es bitte separat in Ihren Warenkorb.",de_DE
 product-cart.validation.error.product-option-value-price-exists,"Product option price not found for product '%sku%'.",en_US
 product-cart.validation.error.product-option-value-price-exists,"Produktoptionspreis nicht gefunden für Produkt '%sku%'.",de_DE
 product-cart.validation.error.concrete-product-inactive,"Product %sku% is not active.",en_US
@@ -1881,6 +1881,8 @@ shopping_list_page.dismiss.success,Shopping list was dismissed successfully.,en_
 shopping_list_page.dismiss.success,"Einkaufsliste wurde erfolgreich abgelehnt.",de_DE
 customer.account.shopping_list.share.from.share,Share,en_US
 customer.account.shopping_list.share.from.share,Teilen,de_DE
+customer.account.shopping_list.share.from.share.title,Share "%name%",en_US
+customer.account.shopping_list.share.from.share.title,Teilen "%name%",de_DE
 customer.account.shopping_list.share.from.share_with,Share Shopping List with:,en_US
 customer.account.shopping_list.share.from.share_with,Einkaufsliste teilen mit:,de_DE
 customer.account.shopping_list.item.select_item,At least one product should be selected.,en_US
@@ -2583,3 +2585,89 @@ product-quantity.warning.quantity.max.failed,The ordered quantity was adjusted t
 product-quantity.warning.quantity.max.failed,Die bestellte Anzahl erfüllt nicht die Anforderungen für dieses Produkt. Maximalanzahl ist %max%.,de_DE
 product-quantity.warning.quantity.interval.failed,The ordered quantity was adjusted to the next possible quantity for the article because quantity step is %step%.,en_US
 product-quantity.warning.quantity.interval.failed,Die bestellte Anzahl erfüllt nicht die Anforderungen für dieses Produkt. Intervallgröße ist %step%.,de_DE
+cart.locked.change_denied,"You can't modify this cart because it's in the process of approval.",en_US
+cart.locked.change_denied,"Sie können diesen Warenkorb nicht ändern, weil er sich gerade in der Genehmigungsphase befindet.",de_DE
+quote_approval.request.send,Send Request,en_US
+quote_approval.request.send,Anfrage Senden,de_DE
+quote_approval.remove,Cancel Request,en_US
+quote_approval.remove,Anfrage Abbrechen,de_DE
+quote_approval.cart.require_approval,"You can't place this order because of your purchasing limit, please send your cart for approval or contact your manager.",en_US
+quote_approval.cart.require_approval,"Sie können diese Bestellung aufgrund Ihres Einkaufslimits nicht aufgeben. Senden Sie Ihren Einkaufswagen zur Genehmigung oder wenden Sie sich an Ihren Kontakmanager.",de_DE
+quote_approval.create.approver_cant_approve_quote,"Selected approver cannot approve your request due to approver limit.",en_US
+quote_approval.create.approver_cant_approve_quote,"Der ausgewählte Manager kann Ihre Anfrage aufgrund des Genehmigungslimits nicht genehmigen.",de_DE
+quote_approval.create.you_cant_approve_quote,"You can't approve or decline this cart because it's amount higher that your Approver limit.",en_US
+quote_approval.create.you_cant_approve_quote,"Sie können diesen Einkaufswagen nicht genehmigen oder ablehnen, weil dessen Betrag höher als ihr Genehmigungslimit ist.",de_DE
+quote_approval.create.quote_already_approved,"This Cart was already approved.",en_US
+quote_approval.create.quote_already_approved,"Dieser Einkaufswagen wurde schon zur Genehmigung gesendet.",de_DE
+quote_approval.create.quote_already_declined,"This Cart was already declined.",en_US
+quote_approval.create.quote_already_declined,"Dieser Einkaufswagen wurde schon abgelehnt.",de_DE
+quote_approval.create.quote_already_cancelled,"You can't work with this Cart it was already sent to another approver.",en_US
+quote_approval.create.quote_already_cancelled,"Sie können nicht mit diesem Einkaufswagen arbeiten, er wurde schon dem anderen Manager gesendet.",de_DE
+quote_approval.create.quote_already_waiting_for_approval,"This Cart was already sent for approval.",en_US
+quote_approval.create.quote_already_waiting_for_approval,"",de_DE
+quote_approval.create.only_quote_owner_can_send_request,"You can't sent Cart for Approval, only Cart owner can do it.",en_US
+quote_approval.create.only_quote_owner_can_send_request,"Sie können den Einkaufswagen zur Genehmigung nicht senden, das kann nur Inhaber des Einkaufswagens machen.",de_DE
+quote_approval.cancel.do_not_have_permission,"You don't have permissions to cancel Approval request.",en_US
+quote_approval.cancel.do_not_have_permission,"Sie haben nicht die notwendigen Rechte um die Genehmigungsanfrage zu abbrechen.",de_DE
+quote_approval.request.approval_by,by,en_US
+quote_approval.request.approval_by,von,de_DE
+quote_approval.created,"Your request for Approval was send to %first_name% %last_name%".,en_US
+quote_approval.created,"Ihre Anfrage zur Genehmigung wurde an %first_name% %last_name% gesendet.",de_DE
+quote_approval.removed,"Your request for Approval was canceled.",en_US
+quote_approval.removed,"Ihre Genehmigungsanfrage wurde abgebrochen.",de_DE
+quote_approval_widget.title,Approval Request,en_US
+quote_approval_widget.title,Genehmigungsanfrage,de_DE
+quote_approval_widget.limit.unlimited,Unlimited,en_US
+quote_approval_widget.limit.unlimited,Unbegrenzt,de_DE
+quote_approval_widget.no_approvers_found,Keine Genehmiger gefunden.,de_DE
+quote_approval_widget.no_approvers_found,No approvers found.,en_US
+quote_approval_widget.cart.status.approved,"Approved",en_US
+quote_approval_widget.cart.status.approved,"Genehmigt",de_DE
+quote_approval_widget.cart.status.declined,"Declined",en_US
+quote_approval_widget.cart.status.declined,"Abgelehnt",de_DE
+quote_approval_widget.cart.status.waiting,"Waiting",en_US
+quote_approval_widget.cart.status.waiting,"Wartet",de_DE
+quote_approval_widget.shared_cart_warning,"After a cart has been sent to approval, all of its shares will be dismissed.",en_US
+quote_approval_widget.shared_cart_warning,"Nachdem der Warenkorb zur Genehmigung gesendet wurde, wird sein Sharing aufgehoben.",de_DE
+quote_approval_widget.limit_text,"Your purchase limit is %amount%. To spend more, request approval from your manager.",en_US
+quote_approval_widget.limit_text,"Ihr Einkaufsrahmen liegt bei %amount%. Um mehr auszugeben, fordern Sie bitte die Genehmigung bei Ihrem Manager an",de_DE
+quote_approval_widget.no_limit_text,"You do not have a purchase limit",en_US
+quote_approval_widget.no_limit_text,"Sie haben kein Einkaufslimit",de_DE
+quote_approval.request.waiting_for_approval_from,Waiting for Approval from,en_US
+quote_approval.request.waiting_for_approval_from,Wartet auf die Genehmigung von,de_DE
+quote_approval.request.approved_by,Approved by,en_US
+quote_approval.request.approved_by,Genehmigt von,de_DE
+quote_approval.request.declined_by,Declined by,en_US
+quote_approval.request.declined_by,Abgelehnt um,de_DE
+quote_approval_widget.cart.status,"Status",en_US
+quote_approval_widget.cart.status,"Status",de_DE
+quote_approval_widget.cart.approve,"Approve",en_US
+quote_approval_widget.cart.approve,"Genehmigen",de_DE
+quote_approval_widget.cart.decline,"Decline",en_US
+quote_approval_widget.cart.decline,"Ablehnen",de_DE
+quote_approval_widget.cart.cancel,"Cancel",en_US
+quote_approval_widget.cart.cancel,"Abbrechen",de_DE
+quote_approval_widget.cart.success_message.approved,"Request from %first_name% %last_name% was successfully approved",en_US
+quote_approval_widget.cart.success_message.approved,"Anfrage von %first_name% %last_name% wurde erfolgreich genehmigt",de_DE
+quote_approval_widget.cart.success_message.declined,"Request from %first_name% %last_name% was successfully declined",en_US
+quote_approval_widget.cart.success_message.declined,"Anfrage von %first_name% %last_name% wurde erfolgreich abgelehnt",de_DE
+quote_approval_widget.cart.success_message.canceled,"Request from %first_name% %last_name% was successfully canceled",en_US
+quote_approval_widget.cart.success_message.canceled,"Anfrage von %first_name% %last_name% wurde erfolgreich abgebrochen",de_DE
+permission.name.PlaceOrderPermissionPlugin,Buy up to grand total (Requires “Send cart for approval”),en_US
+permission.name.PlaceOrderPermissionPlugin,Bis zur Gesamtsumme kaufen (erfordert “Einkaufswagen zur Genehmigung senden”),de_DE
+permission.name.RequestQuoteApprovalPermissionPlugin,Send cart for approval (Requires “Buy up to grand total”),en_US
+permission.name.RequestQuoteApprovalPermissionPlugin,Einkaufswagen zur Genehmigung senden (erfordert “Bis zur Gesamtsumme kaufen”),de_DE
+permission.name.ApproveQuotePermissionPlugin,Approve up to grand total,en_US
+permission.name.ApproveQuotePermissionPlugin,Bis zur Gesamtsumme genehmigen,de_DE
+company_page.multi_currency_type.name.cent_amount.EUR,Cent Amount,en_US
+company_page.multi_currency_type.name.cent_amount.EUR,Cent Betrag,de_DE
+company_page.multi_currency_type.name.cent_amount.CHF,Centime Amount,en_US
+company_page.multi_currency_type.name.cent_amount.CHF,Rappen Betrag,de_DE
+company_page.multi_currency_type.label,Configure permission,en_US
+company_page.multi_currency_type.label,Berechtigung konfigurieren,de_DE
+company_page.company_role_permission.permission_not_found_error,Permission was not found,en_US
+company_page.company_role_permission.permission_not_found_error,Berechtigungskonfiguration wurde nicht gefunden,de_DE
+company_page.company_role_permission.permission_save_error,Permission configuration has not been updated,en_US
+company_page.company_role_permission.permission_save_error,Berechtigungskonfiguration wurde nicht aktualisiert,de_DE
+company_page.company_role_permission.permission_save_success,Permission configuration has been updated,en_US
+company_page.company_role_permission.permission_save_success,Berechtigungskonfiguration wurde aktualisiert,de_DE

@@ -19,7 +19,12 @@ class QuoteConfig extends SprykerQuoteConfig
     {
         return array_merge(parent::getQuoteFieldsAllowedForSaving(), [
             QuoteTransfer::BUNDLE_ITEMS,
-            QuoteTransfer::CART_NOTE, #CartNoteFeature
+            QuoteTransfer::CART_NOTE, #CartNoteFeature,
+            QuoteTransfer::EXPENSES, #QuoteApprovalFeature
+            QuoteTransfer::VOUCHER_DISCOUNTS, #QuoteApprovalFeature
+            QuoteTransfer::CART_RULE_DISCOUNTS, #QuoteApprovalFeature
+            QuoteTransfer::PROMOTION_ITEMS, #QuoteApprovalFeature
+            QuoteTransfer::IS_LOCKED, #QuoteApprovalFeature
         ]);
     }
 }

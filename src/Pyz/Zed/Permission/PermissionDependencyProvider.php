@@ -15,6 +15,8 @@ use Spryker\Zed\CartPermissionConnector\Communication\Plugin\Cart\AlterCartUpToA
 use Spryker\Zed\CompanyRole\Communication\Plugin\PermissionStoragePlugin;
 use Spryker\Zed\CompanyUserInvitation\Communication\Plugin\Permission\ManageCompanyUserInvitationPermissionPlugin;
 use Spryker\Zed\Permission\PermissionDependencyProvider as SprykerPermissionDependencyProvider;
+use Spryker\Zed\QuoteApproval\Communication\Plugin\Permission\ApproveQuotePermissionPlugin;
+use Spryker\Zed\QuoteApproval\Communication\Plugin\Permission\PlaceOrderPermissionPlugin;
 use Spryker\Zed\SharedCart\Communication\Plugin\QuotePermissionStoragePlugin;
 use Spryker\Zed\SharedCart\Communication\Plugin\ReadSharedCartPermissionPlugin;
 use Spryker\Zed\SharedCart\Communication\Plugin\WriteSharedCartPermissionPlugin;
@@ -58,6 +60,8 @@ class PermissionDependencyProvider extends SprykerPermissionDependencyProvider
             new RemoveCartItemPermissionPlugin(),
             new PlaceOrderWithAmountUpToPermissionPlugin(),
             new AlterCartUpToAmountPermissionPlugin(),
+            new PlaceOrderPermissionPlugin(), #QuoteApprovalFeature
+            new ApproveQuotePermissionPlugin(), #QuoteApprovalFeature
         ];
     }
 }

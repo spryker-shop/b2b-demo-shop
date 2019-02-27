@@ -55,7 +55,7 @@
                 messages: row.vars.value.messages,
                 additionalColumns: data.additionalColumns,
                 product: product,
-                price: product is null ? null : data.prices[product.sku] | default(),
+                price: row.vars.value.sumPrice,
 
                 autocomplete: {
                     skuFieldName: row.vars.full_name,
