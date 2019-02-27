@@ -51,15 +51,41 @@
 
 {% block content %}
     {% if data.cart.items is empty %}
-        <div class="text-center">
-            {% include atom('icon') with {
-                modifiers: ['biggest'],
-                class: 'text-alt',
-                data: {
-                    name: 'shopping-cart'
-                }
-            } only %}
-            <h6>{{ 'cart.empty' | trans }}</h6>
+        <div class="grid">
+            <div class="col col--xl-9">
+                <div class="text-center">
+                    {% include atom('icon') with {
+                        modifiers: ['biggest'],
+                        class: 'text-alt',
+                        data: {
+                            name: 'shopping-cart'
+                        }
+                    } only %}
+                    <h6>{{ 'cart.empty' | trans }}</h6>
+                </div>
+            </div>
+            <div class="col col--xl-3">
+                <div>
+                    {% widget 'ProductConcreteAddWidget' args [
+                        '',
+                        'cart.quick_add_to_cart.submit' | trans,
+                        'cart/quick-add',
+                        true
+                    ] only %}
+                        {% block body %}
+                            <div class="order-sidebar__item">
+                                <h5 class="order-sidebar__title toggler-accordion__item js-order-sidebar__trigger" data-toggle-target='.js-order-sidebar__content-quick-add-widget'>
+                                    {{ 'cart.quick_add_to_cart' | trans}}
+                                    <span class="icon icon--toggler-cross toggler-accordion__icon"></span>
+                                </h5>
+                                <div class="order-sidebar__content js-order-sidebar__content-quick-add-widget">
+                                    {{ parent() }}
+                                </div>
+                            </div>
+                        {% endblock %}
+                    {% endwidget %}
+                </div>
+            </div>
         </div>
     {% else %}
 
