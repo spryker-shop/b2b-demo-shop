@@ -33,12 +33,10 @@ class RegisterController extends SprykerRegisterController
             return $response;
         }
 
-        $response['templateName'] = 'page-layout-login';
-
         if ($this->getFactory()->getSessionClient()->get(static::INVITATION_SESSION_ID)) {
-            $response['templateName'] = 'page-layout-login-with-registration';
+            return $this->view($response, [], '@CustomerPage/views/register/register.twig');
         }
 
-        return $this->view($response, [], '@CustomerPage/views/register/register.twig');
+        return $this->view($response, [], '@CustomerPage/views/login/login.twig');
     }
 }
