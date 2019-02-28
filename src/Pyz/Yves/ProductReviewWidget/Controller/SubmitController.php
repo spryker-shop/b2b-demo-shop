@@ -95,7 +95,6 @@ class SubmitController extends SprykerSubmitController
         return false;
     }
 
-
     /**
      * @param \Symfony\Component\Form\FormInterface $form
      *

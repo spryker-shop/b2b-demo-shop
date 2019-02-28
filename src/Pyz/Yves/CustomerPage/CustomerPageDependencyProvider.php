@@ -7,6 +7,7 @@
 
 namespace Pyz\Yves\CustomerPage;
 
+use Spryker\Yves\Kernel\Container;
 use SprykerShop\Yves\AgentPage\Plugin\FixAgentTokenAfterCustomerAuthenticationSuccessPlugin;
 use SprykerShop\Yves\CompanyPage\Plugin\CustomerPage\BusinessOnBehalfCompanyUserRedirectAfterLoginStrategyPlugin;
 use SprykerShop\Yves\CompanyUserInvitationPage\Plugin\CompanyUserInvitationPreRegistrationCustomerTransferExpanderPlugin;
@@ -15,6 +16,22 @@ use SprykerShop\Yves\CustomerReorderWidget\Plugin\CustomerPage\CustomerReorderWi
 
 class CustomerPageDependencyProvider extends SprykerShopCustomerPageDependencyProvider
 {
+    public const CLIENT_SESSION = 'CLIENT_SESSION';
+
+    /**
+     * @param \Spryker\Yves\Kernel\Container $container
+     *
+     * @return \Spryker\Yves\Kernel\Container
+     */
+    public function provideDependencies(Container $container): Container
+    {
+        $container = parent::provideDependencies($container);
+
+        $container = $this->addSessionClient($container);
+
+        return $container;
+    }
+
     /**
      * @return string[]
      */
@@ -73,5 +90,19 @@ class CustomerPageDependencyProvider extends SprykerShopCustomerPageDependencyPr
         return [
             new FixAgentTokenAfterCustomerAuthenticationSuccessPlugin(),
         ];
+    }
+
+    /**
+     * @param \Spryker\Yves\Kernel\Container $container
+     *
+     * @return \Spryker\Yves\Kernel\Container
+     */
+    protected function addSessionClient(Container $container): Container
+    {
+        $container[static::CLIENT_SESSION] = function (Container $container) {
+            return $container->getLocator()->session()->client();
+        };
+
+        return $container;
     }
 }
