@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5c7be07bacff8d6dd45421b3239dee29",
+    "content-hash": "a281fbbd365bcd3ec315f91313803c95",
     "packages": [
         {
             "name": "codeitnowin/barcode",
@@ -6192,6 +6192,56 @@
             ],
             "description": "FileManagerWidget module",
             "time": "2018-07-18T14:28:23+00:00"
+        },
+        {
+            "name": "spryker-shop/heartbeat-page",
+            "version": "1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/heartbeat-page.git",
+                "reference": "39a532be4e71b34e8812db024a25db9fd538a413"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/heartbeat-page/zipball/39a532be4e71b34e8812db024a25db9fd538a413",
+                "reference": "39a532be4e71b34e8812db024a25db9fd538a413",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker-shop/shop-application": "^1.0.0",
+                "spryker/heartbeat": "^3.2.0",
+                "spryker/kernel": "^3.16.0",
+                "spryker/search": "^7.0.0 || ^8.0.0",
+                "spryker/session": "^3.2.0 || ^4.0.0",
+                "spryker/storage": "^3.4.0",
+                "spryker/symfony": "^3.1.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/silex": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/silex": "Use this module when using plugins that need Silex dependencies."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "HeartbeatPage module",
+            "time": "2019-01-04T15:29:56+00:00"
         },
         {
             "name": "spryker-shop/home-page",
@@ -15611,16 +15661,16 @@
         },
         {
             "name": "spryker/glue-application",
-            "version": "1.14.1",
+            "version": "1.14.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/glue-application.git",
-                "reference": "b85edd1e9eb547c69eade69737cd8a0586b1c1f2"
+                "reference": "ddb5d533ab8876746ec181af93e92bba1c83e40e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/glue-application/zipball/b85edd1e9eb547c69eade69737cd8a0586b1c1f2",
-                "reference": "b85edd1e9eb547c69eade69737cd8a0586b1c1f2",
+                "url": "https://api.github.com/repos/spryker/glue-application/zipball/ddb5d533ab8876746ec181af93e92bba1c83e40e",
+                "reference": "ddb5d533ab8876746ec181af93e92bba1c83e40e",
                 "shasum": ""
             },
             "require": {
@@ -15628,7 +15678,7 @@
                 "spryker/application": "^3.13.0",
                 "spryker/container": "^1.0.0",
                 "spryker/documentation-generator-rest-api-extension": "^1.0.0",
-                "spryker/glue-application-extension": "^1.1.0",
+                "spryker/glue-application-extension": "^1.1.2",
                 "spryker/kernel": "^3.31.0",
                 "spryker/log": "^3.0.0",
                 "spryker/session": "^3.0.0 || ^4.0.0",
@@ -15663,20 +15713,20 @@
                 "proprietary"
             ],
             "description": "GlueApplication module",
-            "time": "2019-02-15T09:07:59+00:00"
+            "time": "2019-02-21T15:08:05+00:00"
         },
         {
             "name": "spryker/glue-application-extension",
-            "version": "1.1.1",
+            "version": "1.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/glue-application-extension.git",
-                "reference": "05ed2530470c3e386047ba5a90533fd5e57492e4"
+                "reference": "294bfb2993fa94c2254a6f5013097f5f0c75dcac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/glue-application-extension/zipball/05ed2530470c3e386047ba5a90533fd5e57492e4",
-                "reference": "05ed2530470c3e386047ba5a90533fd5e57492e4",
+                "url": "https://api.github.com/repos/spryker/glue-application-extension/zipball/294bfb2993fa94c2254a6f5013097f5f0c75dcac",
+                "reference": "294bfb2993fa94c2254a6f5013097f5f0c75dcac",
                 "shasum": ""
             },
             "require": {
@@ -15710,7 +15760,7 @@
                 "proprietary"
             ],
             "description": "GlueApplicationExtension module",
-            "time": "2019-01-08T14:16:26+00:00"
+            "time": "2019-02-21T07:05:11+00:00"
         },
         {
             "name": "spryker/graph",
@@ -15786,16 +15836,16 @@
         },
         {
             "name": "spryker/gui",
-            "version": "3.18.0",
+            "version": "3.18.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/gui.git",
-                "reference": "dbe7b508bdcb34a7344a858b355cd7ad2dbf2186"
+                "reference": "106ccb0c9be90151f5c27686c6a0ff7929cc64b1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/gui/zipball/dbe7b508bdcb34a7344a858b355cd7ad2dbf2186",
-                "reference": "dbe7b508bdcb34a7344a858b355cd7ad2dbf2186",
+                "url": "https://api.github.com/repos/spryker/gui/zipball/106ccb0c9be90151f5c27686c6a0ff7929cc64b1",
+                "reference": "106ccb0c9be90151f5c27686c6a0ff7929cc64b1",
                 "shasum": ""
             },
             "require": {
@@ -15833,7 +15883,7 @@
                 "proprietary"
             ],
             "description": "Gui module",
-            "time": "2019-02-19T17:29:22+00:00"
+            "time": "2019-03-01T14:03:04+00:00"
         },
         {
             "name": "spryker/guzzle",
@@ -16604,6 +16654,54 @@
             ],
             "description": "MerchantRelationshipDataImport module",
             "time": "2018-10-02T07:35:34+00:00"
+        },
+        {
+            "name": "spryker/merchant-relationship-gui",
+            "version": "1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/merchant-relationship-gui.git",
+                "reference": "09fe393b867c8a2126287e60f483dd8c9cddbcab"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/merchant-relationship-gui/zipball/09fe393b867c8a2126287e60f483dd8c9cddbcab",
+                "reference": "09fe393b867c8a2126287e60f483dd8c9cddbcab",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/company": "^1.0.0",
+                "spryker/company-business-unit": "^1.0.0 || ^2.0.0",
+                "spryker/gui": "^3.13.0",
+                "spryker/kernel": "^3.0.0",
+                "spryker/merchant": "^1.1.0",
+                "spryker/merchant-relationship": "^1.5.0",
+                "spryker/propel-orm": "^1.0.0",
+                "spryker/symfony": "^3.0.0",
+                "spryker/util-text": "^1.1.1"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "MerchantRelationshipGui module",
+            "time": "2019-02-07T09:51:00+00:00"
         },
         {
             "name": "spryker/merchant-relationship-product-list",
@@ -32494,54 +32592,6 @@
             "time": "2019-02-20T13:55:11+00:00"
         },
         {
-            "name": "spryker/merchant-relationship-gui",
-            "version": "1.2.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker/merchant-relationship-gui.git",
-                "reference": "09fe393b867c8a2126287e60f483dd8c9cddbcab"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker/merchant-relationship-gui/zipball/09fe393b867c8a2126287e60f483dd8c9cddbcab",
-                "reference": "09fe393b867c8a2126287e60f483dd8c9cddbcab",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.1",
-                "spryker/company": "^1.0.0",
-                "spryker/company-business-unit": "^1.0.0 || ^2.0.0",
-                "spryker/gui": "^3.13.0",
-                "spryker/kernel": "^3.0.0",
-                "spryker/merchant": "^1.1.0",
-                "spryker/merchant-relationship": "^1.5.0",
-                "spryker/propel-orm": "^1.0.0",
-                "spryker/symfony": "^3.0.0",
-                "spryker/util-text": "^1.1.1"
-            },
-            "require-dev": {
-                "spryker/code-sniffer": "*",
-                "spryker/testify": "*"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Spryker\\": "src/Spryker/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "MerchantRelationshipGui module",
-            "time": "2019-02-07T09:51:00+00:00"
-        },
-        {
             "name": "spryker/navigation-collector",
             "version": "1.0.4",
             "source": {
@@ -33309,422 +33359,422 @@
     ],
     "aliases": [
         {
-            "alias": "201902.0",
-            "alias_normalized": "201902.0",
+            "alias": "201903.0",
+            "alias_normalized": "201903.0",
             "version": "9999999-dev",
             "package": "spryker-feature/agent-assist"
         },
         {
-            "alias": "201902.0",
-            "alias_normalized": "201902.0",
+            "alias": "201903.0",
+            "alias_normalized": "201903.0",
             "version": "9999999-dev",
             "package": "spryker-feature/alternative-products"
         },
         {
-            "alias": "201902.0",
-            "alias_normalized": "201902.0",
+            "alias": "201903.0",
+            "alias_normalized": "201903.0",
             "version": "9999999-dev",
             "package": "spryker-feature/approval-process"
         },
         {
-            "alias": "201902.0",
-            "alias_normalized": "201902.0",
+            "alias": "201903.0",
+            "alias_normalized": "201903.0",
             "version": "9999999-dev",
             "package": "spryker-feature/availability-notification"
         },
         {
-            "alias": "201902.0",
-            "alias_normalized": "201902.0",
+            "alias": "201903.0",
+            "alias_normalized": "201903.0",
             "version": "9999999-dev",
             "package": "spryker-feature/backup"
         },
         {
-            "alias": "201902.0",
-            "alias_normalized": "201902.0",
+            "alias": "201903.0",
+            "alias_normalized": "201903.0",
             "version": "9999999-dev",
             "package": "spryker-feature/cart"
         },
         {
-            "alias": "201902.0",
-            "alias_normalized": "201902.0",
+            "alias": "201903.0",
+            "alias_normalized": "201903.0",
             "version": "9999999-dev",
             "package": "spryker-feature/cart-notes"
         },
         {
-            "alias": "201902.0",
-            "alias_normalized": "201902.0",
+            "alias": "201903.0",
+            "alias_normalized": "201903.0",
             "version": "9999999-dev",
             "package": "spryker-feature/catalog"
         },
         {
-            "alias": "201902.0",
-            "alias_normalized": "201902.0",
+            "alias": "201903.0",
+            "alias_normalized": "201903.0",
             "version": "9999999-dev",
             "package": "spryker-feature/category-image"
         },
         {
-            "alias": "201902.0",
-            "alias_normalized": "201902.0",
+            "alias": "201903.0",
+            "alias_normalized": "201903.0",
             "version": "9999999-dev",
             "package": "spryker-feature/category-management"
         },
         {
-            "alias": "201902.0",
-            "alias_normalized": "201902.0",
+            "alias": "201903.0",
+            "alias_normalized": "201903.0",
             "version": "9999999-dev",
             "package": "spryker-feature/checkout"
         },
         {
-            "alias": "201902.0",
-            "alias_normalized": "201902.0",
+            "alias": "201903.0",
+            "alias_normalized": "201903.0",
             "version": "9999999-dev",
             "package": "spryker-feature/cms"
         },
         {
-            "alias": "201902.0",
-            "alias_normalized": "201902.0",
+            "alias": "201903.0",
+            "alias_normalized": "201903.0",
             "version": "9999999-dev",
             "package": "spryker-feature/company-account"
         },
         {
-            "alias": "201902.0",
-            "alias_normalized": "201902.0",
+            "alias": "201903.0",
+            "alias_normalized": "201903.0",
             "version": "9999999-dev",
             "package": "spryker-feature/content-based-shop-navigation"
         },
         {
-            "alias": "201902.0",
-            "alias_normalized": "201902.0",
+            "alias": "201903.0",
+            "alias_normalized": "201903.0",
             "version": "9999999-dev",
             "package": "spryker-feature/customer-access"
         },
         {
-            "alias": "201902.0",
-            "alias_normalized": "201902.0",
+            "alias": "201903.0",
+            "alias_normalized": "201903.0",
             "version": "9999999-dev",
             "package": "spryker-feature/customer-account-management"
         },
         {
-            "alias": "201902.0",
-            "alias_normalized": "201902.0",
+            "alias": "201903.0",
+            "alias_normalized": "201903.0",
             "version": "9999999-dev",
             "package": "spryker-feature/customer-notes"
         },
         {
-            "alias": "201902.0",
-            "alias_normalized": "201902.0",
+            "alias": "201903.0",
+            "alias_normalized": "201903.0",
             "version": "9999999-dev",
             "package": "spryker-feature/data-export"
         },
         {
-            "alias": "201902.0",
-            "alias_normalized": "201902.0",
+            "alias": "201903.0",
+            "alias_normalized": "201903.0",
             "version": "9999999-dev",
             "package": "spryker-feature/deployment-tools"
         },
         {
-            "alias": "201902.0",
-            "alias_normalized": "201902.0",
+            "alias": "201903.0",
+            "alias_normalized": "201903.0",
             "version": "9999999-dev",
             "package": "spryker-feature/discontinued-products"
         },
         {
-            "alias": "201902.0",
-            "alias_normalized": "201902.0",
+            "alias": "201903.0",
+            "alias_normalized": "201903.0",
             "version": "9999999-dev",
             "package": "spryker-feature/file-manager"
         },
         {
-            "alias": "201902.0",
-            "alias_normalized": "201902.0",
+            "alias": "201903.0",
+            "alias_normalized": "201903.0",
             "version": "9999999-dev",
             "package": "spryker-feature/inventory-management"
         },
         {
-            "alias": "201902.0",
-            "alias_normalized": "201902.0",
+            "alias": "201903.0",
+            "alias_normalized": "201903.0",
             "version": "9999999-dev",
             "package": "spryker-feature/invoice"
         },
         {
-            "alias": "201902.0",
-            "alias_normalized": "201902.0",
+            "alias": "201903.0",
+            "alias_normalized": "201903.0",
             "version": "9999999-dev",
             "package": "spryker-feature/mailing-notifications"
         },
         {
-            "alias": "201902.0",
-            "alias_normalized": "201902.0",
+            "alias": "201903.0",
+            "alias_normalized": "201903.0",
             "version": "9999999-dev",
             "package": "spryker-feature/measurement-units"
         },
         {
-            "alias": "201902.0",
-            "alias_normalized": "201902.0",
+            "alias": "201903.0",
+            "alias_normalized": "201903.0",
             "version": "9999999-dev",
             "package": "spryker-feature/merchant"
         },
         {
-            "alias": "201902.0",
-            "alias_normalized": "201902.0",
+            "alias": "201903.0",
+            "alias_normalized": "201903.0",
             "version": "9999999-dev",
             "package": "spryker-feature/merchant-contracts"
         },
         {
-            "alias": "201902.0",
-            "alias_normalized": "201902.0",
+            "alias": "201903.0",
+            "alias_normalized": "201903.0",
             "version": "9999999-dev",
             "package": "spryker-feature/merchant-custom-prices"
         },
         {
-            "alias": "201902.0",
-            "alias_normalized": "201902.0",
+            "alias": "201903.0",
+            "alias_normalized": "201903.0",
             "version": "9999999-dev",
             "package": "spryker-feature/merchant-order-threshold"
         },
         {
-            "alias": "201902.0",
-            "alias_normalized": "201902.0",
+            "alias": "201903.0",
+            "alias_normalized": "201903.0",
             "version": "9999999-dev",
             "package": "spryker-feature/merchant-product-restrictions"
         },
         {
-            "alias": "201902.0",
-            "alias_normalized": "201902.0",
+            "alias": "201903.0",
+            "alias_normalized": "201903.0",
             "version": "9999999-dev",
             "package": "spryker-feature/multiple-carts"
         },
         {
-            "alias": "201902.0",
-            "alias_normalized": "201902.0",
+            "alias": "201903.0",
+            "alias_normalized": "201903.0",
             "version": "9999999-dev",
             "package": "spryker-feature/navigation"
         },
         {
-            "alias": "201902.0",
-            "alias_normalized": "201902.0",
+            "alias": "201903.0",
+            "alias_normalized": "201903.0",
             "version": "9999999-dev",
             "package": "spryker-feature/newsletter-subscription"
         },
         {
-            "alias": "201902.0",
-            "alias_normalized": "201902.0",
+            "alias": "201903.0",
+            "alias_normalized": "201903.0",
             "version": "9999999-dev",
             "package": "spryker-feature/non-splittable-products"
         },
         {
-            "alias": "201902.0",
-            "alias_normalized": "201902.0",
+            "alias": "201903.0",
+            "alias_normalized": "201903.0",
             "version": "9999999-dev",
             "package": "spryker-feature/order-management"
         },
         {
-            "alias": "201902.0",
-            "alias_normalized": "201902.0",
+            "alias": "201903.0",
+            "alias_normalized": "201903.0",
             "version": "9999999-dev",
             "package": "spryker-feature/order-threshold"
         },
         {
-            "alias": "201902.0",
-            "alias_normalized": "201902.0",
+            "alias": "201903.0",
+            "alias_normalized": "201903.0",
             "version": "9999999-dev",
             "package": "spryker-feature/packaging-units"
         },
         {
-            "alias": "201902.0",
-            "alias_normalized": "201902.0",
+            "alias": "201903.0",
+            "alias_normalized": "201903.0",
             "version": "9999999-dev",
             "package": "spryker-feature/payments"
         },
         {
-            "alias": "201902.0",
-            "alias_normalized": "201902.0",
+            "alias": "201903.0",
+            "alias_normalized": "201903.0",
             "version": "9999999-dev",
             "package": "spryker-feature/persistent-cart"
         },
         {
-            "alias": "201902.0",
-            "alias_normalized": "201902.0",
+            "alias": "201903.0",
+            "alias_normalized": "201903.0",
             "version": "9999999-dev",
             "package": "spryker-feature/prices"
         },
         {
-            "alias": "201902.0",
-            "alias_normalized": "201902.0",
+            "alias": "201903.0",
+            "alias_normalized": "201903.0",
             "version": "9999999-dev",
             "package": "spryker-feature/product"
         },
         {
-            "alias": "201902.0",
-            "alias_normalized": "201902.0",
+            "alias": "201903.0",
+            "alias_normalized": "201903.0",
             "version": "9999999-dev",
             "package": "spryker-feature/product-barcode"
         },
         {
-            "alias": "201902.0",
-            "alias_normalized": "201902.0",
+            "alias": "201903.0",
+            "alias_normalized": "201903.0",
             "version": "9999999-dev",
             "package": "spryker-feature/product-based-shop-navigation"
         },
         {
-            "alias": "201902.0",
-            "alias_normalized": "201902.0",
+            "alias": "201903.0",
+            "alias_normalized": "201903.0",
             "version": "9999999-dev",
             "package": "spryker-feature/product-bundles"
         },
         {
-            "alias": "201902.0",
-            "alias_normalized": "201902.0",
+            "alias": "201903.0",
+            "alias_normalized": "201903.0",
             "version": "9999999-dev",
             "package": "spryker-feature/product-customer-restrictions"
         },
         {
-            "alias": "201902.0",
-            "alias_normalized": "201902.0",
+            "alias": "201903.0",
+            "alias_normalized": "201903.0",
             "version": "9999999-dev",
             "package": "spryker-feature/product-groups"
         },
         {
-            "alias": "201902.0",
-            "alias_normalized": "201902.0",
+            "alias": "201903.0",
+            "alias_normalized": "201903.0",
             "version": "9999999-dev",
             "package": "spryker-feature/product-image-management"
         },
         {
-            "alias": "201902.0",
-            "alias_normalized": "201902.0",
+            "alias": "201903.0",
+            "alias_normalized": "201903.0",
             "version": "9999999-dev",
             "package": "spryker-feature/product-labels"
         },
         {
-            "alias": "201902.0",
-            "alias_normalized": "201902.0",
+            "alias": "201903.0",
+            "alias_normalized": "201903.0",
             "version": "9999999-dev",
             "package": "spryker-feature/product-lists"
         },
         {
-            "alias": "201902.0",
-            "alias_normalized": "201902.0",
+            "alias": "201903.0",
+            "alias_normalized": "201903.0",
             "version": "9999999-dev",
             "package": "spryker-feature/product-options"
         },
         {
-            "alias": "201902.0",
-            "alias_normalized": "201902.0",
+            "alias": "201903.0",
+            "alias_normalized": "201903.0",
             "version": "9999999-dev",
             "package": "spryker-feature/product-promotions"
         },
         {
-            "alias": "201902.0",
-            "alias_normalized": "201902.0",
+            "alias": "201903.0",
+            "alias_normalized": "201903.0",
             "version": "9999999-dev",
             "package": "spryker-feature/product-rating-reviews"
         },
         {
-            "alias": "201902.0",
-            "alias_normalized": "201902.0",
+            "alias": "201903.0",
+            "alias_normalized": "201903.0",
             "version": "9999999-dev",
             "package": "spryker-feature/product-relations"
         },
         {
-            "alias": "201902.0",
-            "alias_normalized": "201902.0",
+            "alias": "201903.0",
+            "alias_normalized": "201903.0",
             "version": "9999999-dev",
             "package": "spryker-feature/product-sets"
         },
         {
-            "alias": "201902.0",
-            "alias_normalized": "201902.0",
+            "alias": "201903.0",
+            "alias_normalized": "201903.0",
             "version": "9999999-dev",
             "package": "spryker-feature/product-validity"
         },
         {
-            "alias": "201902.0",
-            "alias_normalized": "201902.0",
+            "alias": "201903.0",
+            "alias_normalized": "201903.0",
             "version": "9999999-dev",
             "package": "spryker-feature/promotions-discounts"
         },
         {
-            "alias": "201902.0",
-            "alias_normalized": "201902.0",
+            "alias": "201903.0",
+            "alias_normalized": "201903.0",
             "version": "9999999-dev",
             "package": "spryker-feature/quick-add-to-cart"
         },
         {
-            "alias": "201902.0",
-            "alias_normalized": "201902.0",
+            "alias": "201903.0",
+            "alias_normalized": "201903.0",
             "version": "9999999-dev",
             "package": "spryker-feature/reclamations"
         },
         {
-            "alias": "201902.0",
-            "alias_normalized": "201902.0",
+            "alias": "201903.0",
+            "alias_normalized": "201903.0",
             "version": "9999999-dev",
             "package": "spryker-feature/refunds"
         },
         {
-            "alias": "201902.0",
-            "alias_normalized": "201902.0",
+            "alias": "201903.0",
+            "alias_normalized": "201903.0",
             "version": "9999999-dev",
             "package": "spryker-feature/reorder"
         },
         {
-            "alias": "201902.0",
-            "alias_normalized": "201902.0",
+            "alias": "201903.0",
+            "alias_normalized": "201903.0",
             "version": "9999999-dev",
             "package": "spryker-feature/search"
         },
         {
-            "alias": "201902.0",
-            "alias_normalized": "201902.0",
+            "alias": "201903.0",
+            "alias_normalized": "201903.0",
             "version": "9999999-dev",
             "package": "spryker-feature/shared-carts"
         },
         {
-            "alias": "201902.0",
-            "alias_normalized": "201902.0",
+            "alias": "201903.0",
+            "alias_normalized": "201903.0",
             "version": "9999999-dev",
             "package": "spryker-feature/shipment"
         },
         {
-            "alias": "201902.0",
-            "alias_normalized": "201902.0",
+            "alias": "201903.0",
+            "alias_normalized": "201903.0",
             "version": "9999999-dev",
             "package": "spryker-feature/shopping-lists"
         },
         {
-            "alias": "201902.0",
-            "alias_normalized": "201902.0",
+            "alias": "201903.0",
+            "alias_normalized": "201903.0",
             "version": "9999999-dev",
             "package": "spryker-feature/spryker-core"
         },
         {
-            "alias": "201902.0",
-            "alias_normalized": "201902.0",
+            "alias": "201903.0",
+            "alias_normalized": "201903.0",
             "version": "9999999-dev",
             "package": "spryker-feature/spryker-core-back-office"
         },
         {
-            "alias": "201902.0",
-            "alias_normalized": "201902.0",
+            "alias": "201903.0",
+            "alias_normalized": "201903.0",
             "version": "9999999-dev",
             "package": "spryker-feature/spryker-core-e-commerce"
         },
         {
-            "alias": "201902.0",
-            "alias_normalized": "201902.0",
+            "alias": "201903.0",
+            "alias_normalized": "201903.0",
             "version": "9999999-dev",
             "package": "spryker-feature/state-machine"
         },
         {
-            "alias": "201902.0",
-            "alias_normalized": "201902.0",
+            "alias": "201903.0",
+            "alias_normalized": "201903.0",
             "version": "9999999-dev",
             "package": "spryker-feature/tax"
         },
         {
-            "alias": "201902.0",
-            "alias_normalized": "201902.0",
+            "alias": "201903.0",
+            "alias_normalized": "201903.0",
             "version": "9999999-dev",
             "package": "spryker-feature/development-tools"
         }
