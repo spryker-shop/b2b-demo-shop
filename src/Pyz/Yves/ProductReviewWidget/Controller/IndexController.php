@@ -23,7 +23,7 @@ class IndexController extends SprykerIndexController
      */
     protected function executeIndexAction(Request $request): array
     {
-        $parentRequestParams = $this->getParentRequest()->query->all();
+        $parentRequest = $this->getParentRequest();
         $idProductAbstract = $request->attributes->get('idProductAbstract');
 
         $customer = $this->getFactory()->getCustomerClient()->getCustomer();
@@ -31,10 +31,7 @@ class IndexController extends SprykerIndexController
 
         $productReviewSearchRequestTransfer = new ProductReviewSearchRequestTransfer();
         $productReviewSearchRequestTransfer->setIdProductAbstract($idProductAbstract);
-
-        if ($parentRequestParams) {
-            $productReviewSearchRequestTransfer->setRequestParams($parentRequestParams);
-        }
+        $productReviewSearchRequestTransfer->setRequestParams($parentRequest->query->all());
 
         $productReviews = $this->getFactory()
             ->getProductReviewClient()
