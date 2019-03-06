@@ -56,11 +56,22 @@
                             iconModifier: 'sm-lg-bigger'
                         }
                     ]
+                },
+                embed: {
+                    shoppingList: data.shoppingList
                 }
             } only %}
                 {% block body %}
                     <div class="{{ config.name }}__inner">
                         {{ parent() }}
+
+                        {% widget 'ShoppingListDismissWidget' args [embed.shoppingList] with {config: config} only %}
+                            {% block link %}
+                                <div class="{{ config.name }}__item">
+                                    {{ parent() }}
+                                </div>
+                            {% endblock %}
+                        {% endwidget %}
                     </div>
                 {% endblock %}
             {% endembed %}
