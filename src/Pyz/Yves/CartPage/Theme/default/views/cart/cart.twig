@@ -113,7 +113,7 @@
                     } only %}
                         {% block price %}
                             {% if can('SeePricePermissionPlugin') %}
-                                {% set price = data.listItem.sumGrossPrice is defined ? data.listItem.sumGrossPrice : data.listItem.price %}
+                                {% set price = data.listItem.sumPrice is defined ? data.listItem.sumPrice : data.listItem.price %}
                                 {% include molecule('price') with {
                                     modifiers: ['cart'],
                                     data: {
