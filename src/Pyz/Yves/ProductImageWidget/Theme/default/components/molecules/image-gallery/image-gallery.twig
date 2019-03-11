@@ -65,7 +65,7 @@
         <div class="{{config.name}}__item
                     js-pdp-image-color-group
                     {% if (imagesQuantity > 1) %}{{config.name}}__item--left-indent{% endif %}">
-            {% if firstImage.externalUrlLarge is not empty %}
+            {% if firstImage.externalUrlLarge is defined %}
                 <img class="{{config.name}}__image" src="{{ firstImage.externalUrlLarge }}" alt="">
             {% endif %}
         </div>
