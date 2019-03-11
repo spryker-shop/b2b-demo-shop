@@ -31,9 +31,8 @@ class IndexController extends SprykerIndexController
 
         $productReviewSearchRequestTransfer = new ProductReviewSearchRequestTransfer();
         $productReviewSearchRequestTransfer->setIdProductAbstract($idProductAbstract);
-        if ($parentRequest) {
-            $productReviewSearchRequestTransfer->setRequestParams($parentRequest->query->all());
-        }
+        $productReviewSearchRequestTransfer->setRequestParams($parentRequest->query->all());
+
         $productReviews = $this->getFactory()
             ->getProductReviewClient()
             ->findProductReviewsInSearch($productReviewSearchRequestTransfer);
