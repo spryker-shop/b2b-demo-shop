@@ -298,7 +298,7 @@ $config[ApplicationConstants::YVES_SSL_EXCLUDED] = [
 
 $config[ZedRequestConstants::ZED_API_SSL_ENABLED] = false;
 $config[ApplicationConstants::ZED_SSL_ENABLED] =
-$config[SessionConstants::ZED_SSL_ENABLED]
+    $config[SessionConstants::ZED_SSL_ENABLED]
     = false;
 $config[ApplicationConstants::ZED_SSL_EXCLUDED] = ['heartbeat/index'];
 

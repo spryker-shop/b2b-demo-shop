@@ -22,7 +22,8 @@ class CompanyUserBusinessFactory extends SprykerCompanyUserBusinessFactory
             $this->getRepository(),
             $this->getEntityManager(),
             $this->getCustomerFacade(),
-            $this->createCompanyUserPluginExecutor()
+            $this->createCompanyUserPluginExecutor(),
+            $this->getCompanyUserSavePreCheckPlugins()
         );
     }
 }
