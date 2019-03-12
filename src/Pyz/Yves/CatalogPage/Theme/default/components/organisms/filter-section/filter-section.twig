@@ -53,8 +53,7 @@
                             {% set contentModifier = filter.name == 'category' ? config.name ~ '__item-content--hollow' : '' %}
                             {% set hiddenClassToToggleSections = filter.name == 'category' ? 'is-hidden-sm-md' : 'is-hidden' %}
                             {% set toglerClass = config.name ~ '__item-content ' ~ config.jsName ~ '__' ~ filter.name ~ ' ' ~ hiddenClassToToggleSections ~ ' ' ~ contentModifier %}
-
-                            <h6>{{ ('product.filter.' ~ filter.name | lower) | trans }}</h6>
+                            
                             {% include [
                                 molecule('filter-' ~ filter.config.name, 'CatalogPage'),
                                 molecule('filter-' ~ filter.config.type, 'CatalogPage')
