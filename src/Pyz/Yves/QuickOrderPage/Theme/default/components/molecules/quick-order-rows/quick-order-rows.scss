@@ -1,0 +1,23 @@
+@mixin quick-order-page-quick-order-rows($name: '.quick-order-rows') {
+    #{$name} {
+        width: 100%;
+
+        &__row {
+            border-bottom: rem(1) solid $setting-color-gray-7;
+
+            &--head {
+                background-color: $setting-color-gray-7;
+            }
+        }
+
+        &__cell {
+            font-size: rem(12);
+            font-weight: fw(bold);
+            text-transform: uppercase;
+        }
+
+        @content;
+    }
+}
+
+@include quick-order-page-quick-order-rows();

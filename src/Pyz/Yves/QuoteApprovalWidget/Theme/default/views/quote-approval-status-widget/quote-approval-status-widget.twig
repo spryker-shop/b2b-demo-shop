@@ -1,0 +1,15 @@
+{% extends template('widget') %}
+
+{% define data = {
+    quoteStatus: _widget.quoteStatus
+} %}
+
+{% block body %}
+    {% include molecule('quote-status') with {
+        class: 'text-center',
+        modifiers: [data.quoteStatus | lower],
+        data: {
+            quoteStatus: data.quoteStatus
+        }
+    } only %}
+{% endblock %}

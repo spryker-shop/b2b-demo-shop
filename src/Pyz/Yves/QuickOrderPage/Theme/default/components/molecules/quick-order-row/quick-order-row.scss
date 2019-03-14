@@ -1,0 +1,103 @@
+@include quick-order-page-quick-order-row() {
+    &__holder-quantity {
+        padding: rem(8) rem(10);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: $setting-color-gray-7;
+    }
+
+    &__quantity[type='number'] {
+        margin: 0;
+        padding: 0;
+        font-size: rem(16);
+        font-weight: fw(500);
+        line-height: normal;
+        width: rem(46);
+        text-align: center;
+        border: none;
+        background-color: $setting-color-transparent;
+        &::-webkit-inner-spin-button {
+            appearance: none;
+        }
+
+        &__[disabled] {
+            background-color: $setting-color-transparent;
+        }
+    }
+
+    &__message {
+        padding: rem(6) rem(12);
+        border: none;
+        font-size: rem(12);
+
+        &--error {
+            background-color: $setting-color-alpha-5;
+            color: $setting-color-alt;
+        }
+
+        &--warning {
+            background-color: $setting-color-alpha-8;
+            color: $setting-color-yellow-1;
+        }
+    }
+
+    &__button {
+        width: rem(28);
+        height: rem(28);
+        border-radius: $setting-border-radius;
+        background-color: $setting-color-white;
+        box-shadow: 0 rem(10) rem(10) 0 $setting-color-shadow, 0 rem(3) rem(3) 0 $setting-color-shadow;
+        line-height: 0;
+        font-size: 0;
+        cursor: pointer;
+        position: relative;
+        @include helper-effect-transition(background);
+
+        &--decrement::before,
+        &--increment::before,
+        &--increment::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: rem(9);
+            height: rem(2);
+            background: $setting-color-gray-3;
+            @include helper-effect-transition(background);
+        }
+        &--increment::after {
+            width: rem(2);
+            height: rem(9);
+        }
+
+        &:hover {
+            background: $setting-color-main;
+            &::before,
+            &::after {
+                background: $setting-color-white;
+            }
+        }
+
+        &--disabled {
+            background: $setting-color-white;
+            cursor: not-allowed;
+            box-shadow: 0 rem(3) rem(3) 0 $setting-color-shadow;
+
+            &::before,
+            &::after {
+                background: $setting-color-gray-6;
+            }
+
+            &:hover,
+            &:focus {
+                background: $setting-color-white;
+                &::before,
+                &::after {
+                    background: $setting-color-gray-6;
+                }
+            }
+        }
+    }
+}

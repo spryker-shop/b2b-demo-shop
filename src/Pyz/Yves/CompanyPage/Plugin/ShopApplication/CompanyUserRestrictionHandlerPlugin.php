@@ -59,34 +59,25 @@ class CompanyUserRestrictionHandlerPlugin extends SprykerCompanyUserRestrictionH
      */
     protected function canAccess(CustomerTransfer $customerTransfer): bool
     {
-        if (!$customerTransfer) {
-            return false;
-        }
-
         $companyUserTransfer = $customerTransfer->getCompanyUserTransfer();
 
-        if ($companyUserTransfer && $this->hasPermission($companyUserTransfer, static::PERMISSION_KEY)) {
-            return true;
-        }
-
-        return false;
+        return $companyUserTransfer && $this->hasPermission($companyUserTransfer);
     }
 
     /**
      * @param \Generated\Shared\Transfer\CompanyUserTransfer $customerTransfer
-     * @param string $permissionKey
      *
      * @return bool
      */
-    protected function hasPermission(CompanyUserTransfer $customerTransfer, string $permissionKey): bool
+    protected function hasPermission(CompanyUserTransfer $customerTransfer): bool
     {
-        $roles = $customerTransfer
+        $companyRoleTransfers = $customerTransfer
             ->getCompanyRoleCollection()
             ->getRoles();
 
-        foreach ($roles as $role) {
-            foreach ($role->getPermissionCollection()->getPermissions() as $permission) {
-                if ($permission->getKey() === static::PERMISSION_KEY) {
+        foreach ($companyRoleTransfers as $companyRoleTransfer) {
+            foreach ($companyRoleTransfer->getPermissionCollection()->getPermissions() as $permissionTransfer) {
+                if ($permissionTransfer->getKey() === static::PERMISSION_KEY) {
                     return true;
                 }
             }

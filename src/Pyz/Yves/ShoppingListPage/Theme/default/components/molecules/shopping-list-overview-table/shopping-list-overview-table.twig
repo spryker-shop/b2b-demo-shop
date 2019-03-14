@@ -78,7 +78,7 @@
                                     title: 'customer.account.shopping_list.overview.print'
                                 },
                                 {
-                                    url: url('shopping-list/delete', { idShoppingList: shoppingList.idShoppingList }),
+                                    url: url('shopping-list/delete/confirm', { idShoppingList: shoppingList.idShoppingList }),
                                     icon: 'delete',
                                     title: 'customer.account.shopping_list.overview.delete',
                                     available: hasWritePermission
@@ -91,7 +91,7 @@
                     } only %}
                         {% block body %}
                             {{ parent() }}
-                            {% widget 'ShoppingListDismissWidgetPlugin' args [embed.shoppingList] with {config: config} only %}
+                            {% widget 'ShoppingListDismissWidget' args [embed.shoppingList] with {config: config} only %}
                                 {% block link %}
                                     <div class="{{ config.name }}__item">
                                         {{ parent() }}

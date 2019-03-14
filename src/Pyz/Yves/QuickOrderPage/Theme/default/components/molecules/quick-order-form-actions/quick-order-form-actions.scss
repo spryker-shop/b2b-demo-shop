@@ -1,0 +1,31 @@
+@mixin quick-order-page-quick-order-form-actions($name: '.quick-order-form-actions') {
+    #{$name} {
+        &__clear-all-trigger,
+        &__add-row-trigger {
+            font-size: rem(13);
+            color: $setting-color-gray-3;
+            vertical-align: bottom;
+        }
+
+        &__add-row-trigger {
+            display: flex;
+            align-items: center;
+
+            &::before {
+                content: '\002B';
+                margin-right: rem(12);
+                min-width: rem(40);
+                font-size: rem(15);
+                font-weight: fw(bold);
+                color: $setting-color-main;
+                text-align: center;
+                border: rem(2) solid $setting-color-main;
+                border-radius: $setting-border-radius-2;
+            }
+        }
+
+        @content;
+    }
+}
+
+@include quick-order-page-quick-order-form-actions;

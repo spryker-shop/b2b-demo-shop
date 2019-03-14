@@ -1,0 +1,58 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'quote-approve-request',
+} %}
+
+{% define data = {
+    quote: required,
+    customer: required,
+    quoteApproval: required,
+    quoteStatus: required
+} %}
+
+{% block body %}
+    <div class="grid grid--justify grid--middle">
+        <div class="col">
+            <strong>{{ 'quote_approval_widget.title' | trans }}</strong>
+        </div>
+        <div class="col">
+            {% widget 'QuoteApprovalStatusWidget' args [data.quote] only %}{% endwidget %}
+        </div>
+    </div>
+    {% if data.quoteApproval %}
+        <div class="grid">
+            <div class="{{ config.name }}__text col col--sm-6 spacing-y spacing-y--big">
+                {% if data.quoteApproval.status is defined %}
+                    {% if data.quoteApproval.status == 'waiting' %}
+                        {{ 'quote_approval.request.waiting_for_approval_from' | trans }}
+                    {% elseif data.quoteApproval.status == 'approved' %}
+                        {{ 'quote_approval.request.approved_by' | trans }}
+                    {% elseif data.quoteApproval.status == 'declined' %}
+                        {{ 'quote_approval.request.declined_by' | trans }}
+                    {% endif %}
+                {% endif %}
+                {{ data.customer.firstName }} {{ data.customer.lastName }}
+            </div>
+            <div class="{{ config.name }}__text col col--sm-6 spacing-y spacing-y--big text-right">
+                {% include atom('icon') with {
+                    class: 'spacing-right spacing-right--small',
+                    modifiers: ['clock'],
+                    data: {
+                        name: 'clock'
+                    }
+                } only %}
+                {% if data.quoteApproval.updatedAt is defined %}
+                    {{ data.quoteApproval.updatedAt | date }}
+                {% endif %}
+            </div>
+            {% if data.quoteStatus == 'waiting' %}
+                <div class="col col--sm-12">
+                    <form method="POST" action="{{ path('quote-approval-remove', {'idQuoteApproval': data.quoteApproval.idQuoteApproval}) }}">
+                        <button type="submit" class="button button--expand button--hollow button--alert">{{ 'quote_approval.remove' | trans }}</button>
+                    </form>
+                </div>
+            {% endif %}
+        </div>
+    {% endif %}
+{% endblock %}

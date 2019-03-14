@@ -30,41 +30,44 @@ class QuickOrderController extends SprykerQuickOrderController
      *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|null
      */
-    protected function handleQuickOrderForm(FormInterface $quickOrderForm, Request $request): ?RedirectResponse
+    protected function processQuickOrderForm(FormInterface $quickOrderForm, Request $request): ?RedirectResponse
     {
-        if ($quickOrderForm->isSubmitted() && $quickOrderForm->isValid()) {
-            $quickOrder = $quickOrderForm->getData();
+        $quickOrder = $quickOrderForm->getData();
 
-            if ($request->get(QuickOrderForm::SUBMIT_BUTTON_ADD_TO_CART) !== null) {
-                if (!$this->can(AddCartItemPermissionPlugin::KEY)) {
-                    $this->addErrorMessage("Access Denied");
+        if ($request->get(QuickOrderForm::SUBMIT_BUTTON_ADD_TO_CART) !== null) {
+            if (!$this->can(AddCartItemPermissionPlugin::KEY)) {
+                $this->addErrorMessage("Access Denied");
 
-                    return null;
-                }
-                $result = $this->getFactory()
-                    ->createFormOperationHandler()
-                    ->addToCart($quickOrder);
+                return null;
+            }
+            $result = $this->getFactory()
+                ->createFormOperationHandler()
+                ->addToCart($quickOrder);
 
-                if (!$result) {
-                    return null;
-                }
-
-                return $this->redirectResponseInternal(CartControllerProvider::ROUTE_CART);
+            if (!$result) {
+                return null;
             }
 
-            if ($request->get(QuickOrderForm::SUBMIT_BUTTON_CREATE_ORDER) !== null) {
-                $result = $this->getFactory()
-                    ->createFormOperationHandler()
-                    ->createOrder($quickOrder);
-
-                if (!$result) {
-                    return null;
-                }
-
-                return $this->redirectResponseInternal(CheckoutPageControllerProvider::CHECKOUT_INDEX);
-            }
+            return $this->redirectResponseInternal(CartControllerProvider::ROUTE_CART);
         }
 
-        return null;
+        if ($request->get(QuickOrderForm::SUBMIT_BUTTON_CREATE_ORDER) !== null) {
+            if (!$this->can(AddCartItemPermissionPlugin::KEY)) {
+                $this->addErrorMessage("Access Denied");
+
+                return null;
+            }
+            $result = $this->getFactory()
+                ->createFormOperationHandler()
+                ->addToEmptyCart($quickOrder);
+
+            if (!$result) {
+                return null;
+            }
+
+            return $this->redirectResponseInternal(CheckoutPageControllerProvider::CHECKOUT_INDEX);
+        }
+
+        return $this->executeQuickOrderFormHandlerStrategyPlugin($quickOrderForm, $request);
     }
 }

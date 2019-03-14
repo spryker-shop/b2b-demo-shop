@@ -163,6 +163,8 @@ $config[ApplicationConstants::YVES_TRUSTED_HOSTS] = [
     $config[ApplicationConstants::HOST_ZED],
     'localhost',
 ];
+
 // ---------- Guest cart
 $config[QuoteConstants::GUEST_QUOTE_LIFETIME] = 'P01M';
+
 $config[MailConstants::SMTP_PORT] = 1025;

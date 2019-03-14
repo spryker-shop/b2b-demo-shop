@@ -1,0 +1,42 @@
+@mixin cms-search-page-search-cms-results($name: '.search-cms-results') {
+    #{$name} {
+        &__list {
+            margin-bottom: rem(20);
+        }
+
+        &__item {
+            background-color: $setting-color-gray-7;
+            margin-bottom: rem(10);
+            padding: rem(22) rem(20);
+            text-align: center;
+
+            @include helper-breakpoint-media-min($md) {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            @include helper-breakpoint-media-min($xl) {
+                @include helper-effect-transition(background-color box-shadow);
+
+                &:hover {
+                    box-shadow: 0 rem(3) rem(3) 0 $setting-color-shadow-1, 0 rem(18) rem(18) 0 $setting-color-shadow-1;
+                    background-color: $setting-color-white;
+                }
+            }
+        }
+
+        &__name {
+            font: fw(medium) rem(18)/rem(20) $setting-font-family;
+            color: $setting-color-black;
+
+            @include helper-breakpoint-media-min($md) {
+                padding-right: rem(10);
+            }
+        }
+
+        @content;
+    }
+}
+
+@include cms-search-page-search-cms-results();
