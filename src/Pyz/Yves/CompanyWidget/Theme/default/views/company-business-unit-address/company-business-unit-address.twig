@@ -64,9 +64,7 @@
             {{ parent() }}
         {% endblock %}
         {% block optionsGroup %}
-            {% if not embed.defaultAddressKey %}
             <option value="">{{ 'page.checkout.address.address_select' | trans }}</option>
-            {% endif %}
 
             {% if embed.customerAddresses is not empty %}
                 <optgroup label="{{ 'page.checkout.address.option_group.customer' | trans }}">
@@ -90,7 +88,7 @@
         <button type="button" class="button spacing-bottom js-from-add-new-address__{{ data.formType }}">
             {{ 'page.checkout.address.use_selected_address' | trans }}
         </button>
-        {% include molecule('company-business-unit-address-handler', 'CompanyWidget') with {
+        {% include molecule('custom-company-business-unit-address-handler', 'CompanyWidget') with {
             attributes: {
                 'form-selector': '.js-form-handler__' ~ data.formType,
                 'trigger-selector': '.js-from-add-new-address__' ~ data.formType,
@@ -99,6 +97,7 @@
                 'customer-address-id-selector': '.js-form-customer-id__' ~ data.formType,
                 'default-address-selector': '.js-form-default-address__' ~ data.formType,
                 'custom-address-trigger': '.js-from-clear__'~ data.formType ~'-toggler',
+                'address-hidden-input-selector': 'addressesForm[' ~ data.formType ~ '][id_customer_address]',
                 'addresses': data.addresses
             }
         } only %}

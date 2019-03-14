@@ -6,14 +6,20 @@
 } %}
 
 {% define data = {
-    form: required
+    form: required,
+    products: [],
+    prices: [],
+    additionalColumns: [],
+    fileTemplateExtensions: [],
+    textOrderForm: required,
+    uploadOrderForm: required
 } %}
 
 {% block body %}
     {% include molecule('ajax-provider') with {
         class: config.jsName ~ '__provider ' ~ config.jsName ~ '__add-row-provider',
         attributes: {
-            method: 'post',
+            method: 'POST',
             url: url('quick-order/add-rows')
         }
     } only %}
@@ -21,7 +27,7 @@
     {% include molecule('ajax-provider') with {
         class: config.jsName ~ '__provider ' ~ config.jsName ~ '__remove-row-provider',
         attributes: {
-            method: 'post',
+            method: 'POST',
             url: url('quick-order/delete-row')
         }
     } only %}
@@ -36,54 +42,66 @@
     {% embed molecule('form') with {
         data: {
             form: data.form,
+            products: data.products,
+            prices: data.prices,
+            fileTemplateExtensions: data.fileTemplateExtensions,
             options: {
                 attr: {
-                    class: config.jsName ~ '__form'
+                    class: config.jsName ~ '__form',
+                    'enctype': 'multipart/form-data'
                 }
-            }
+            },
+            textOrderForm: data.textOrderForm,
+            uploadOrderForm: data.uploadOrderForm
         },
         embed: {
             name: config.name,
-            selector: config.jsName
+            jsName: config.jsName,
+            additionalColumns: data.additionalColumns
         }
     } only %}
-        {% block fields %}
-            {% embed molecule('quick-order-form-field-list', 'QuickOrderPage') with {
-                class: embed.selector ~ '__list',
-                data: {
-                    items: data.form.items
-                },
-                embed: embed
-            } only %}
-                {% block removeActionClass %}{{embed.selector}}__remove-row-trigger{% endblock %}
-            {% endembed %}
-        {% endblock %}
+        {% block fieldset %}
+            <div class="{{ config.name }}__fields grid">
+                {% block fields %}
+                    <div class="{{ config.name }}__field col col--sm-12 col--xl-9">
+                        <div class="{{embed.jsName}}__rows">
+                            {% include molecule('quick-order-rows', 'QuickOrderPage') with {
+                                data: {
+                                    rows: data.form.items,
+                                    products: data.products,
+                                    prices: data.prices,
+                                    additionalColumns: embed.additionalColumns
+                                }
+                            } only %}
+                        </div>
 
-        {% block actions %}
-            <div class="grid grid--wide grid--justify">
-                <div class="col col--sm-12 col--md-auto spacing-bottom spacing-bottom--big">
-                    <a href="#add-more" class="{{embed.selector}}__add-row-trigger button button--hollow button--expand">
-                        {{ 'quick-order.button.add-more-rows' | trans }}
-                    </a>
-                </div>
-
-                <div class="col is-hidden">
-                    {% widget 'QuickOrderPageWidget' only %}{% endwidget %}
-                </div>
-                {% if can("SeeAddToCartPermissionPlugin") %}
-                <div class="col col--sm-12 col--md-auto spacing-bottom spacing-bottom--big">
-                    <button type="submit" name="addToCart" class="button button--expand button--big {{ embed.name }}__button">
-                        {% include atom('icon') with {
-                            modifiers: ['cart-plus'],
+                        {% include molecule('quick-order-form-actions', 'QuickOrderPage') with {
+                            class: 'grid grid--wide grid--justify spacing-top spacing-top--bigger',
                             data: {
-                                name: 'cart-plus'
+                                addRowTriggerClass: embed.jsName ~ '__add-row-trigger'
                             }
                         } only %}
-                        {{ 'page.detail.add-to-cart' | trans }}
-                    </button>
-                </div>
-                {% endif %}
+                    </div>
+
+                    <div class="{{ config.name }}__field col col--top col--sm-12 col--xl-3">
+                        {% include molecule('quick-order-text-order-form', 'QuickOrderPage') with {
+                            data: {
+                                textOrderForm: data.textOrderForm,
+                            }
+                        } only %}
+
+                        {% include molecule('quick-order-file-upload', 'QuickOrderPage') with {
+                            class: 'spacing-top',
+                            data: {
+                                uploadOrderForm: data.uploadOrderForm,
+                                fileTemplateExtensions: data.fileTemplateExtensions
+                            }
+                        } only %}
+                    </div>
+                {% endblock %}
             </div>
         {% endblock %}
+
+        {% block actions %}{% endblock %}
     {% endembed %}
 {% endblock %}

@@ -1,0 +1,49 @@
+@mixin quick-order-page-quick-order-file-upload($name: '.quick-order-file-upload') {
+    #{$name} {
+        background-color: $setting-color-gray-7;
+        padding: rem(17) rem(20);
+        border-radius: $setting-border-radius;
+
+        &__content {
+            font-size: rem(14);
+            letter-spacing: rem(-0.1);
+            font-weight: fw(regular);
+
+            @include helper-breakpoint-media-min($lg) {
+                letter-spacing: 0;
+                font-size: rem(13);
+            }
+        }
+
+        &__title {
+            font-size: rem(14);
+            line-height: rem(18);
+            font-weight: fw(medium);
+        }
+
+        &__browse-file-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+        &__file-select {
+            font-size: rem(11);
+            font-weight: fw(bold);
+            text-transform: uppercase;
+        }
+
+        &__download-link {
+            position: relative;
+            display: inline-block;
+            padding-left: rem(33);
+            color: $setting-color-gray-3;
+            font-weight: fw(bold);
+        }
+
+        @content;
+    }
+}
+
+@include quick-order-page-quick-order-file-upload;

@@ -1,0 +1,68 @@
+@mixin cms-search-page-sort($name: '.sort') {
+    #{$name} {
+        margin-bottom: rem(16);
+
+        @include helper-breakpoint-media-min($lg) {
+            margin-bottom: rem(20);
+        }
+
+        &__col {
+            font-size: rem(14);
+
+            &:not(:last-child) {
+                @include helper-breakpoint-media-min($lg) {
+                    padding-right: 0.5rem;
+                }
+            }
+
+            &--counter {
+                padding-right: rem(10);
+                font-weight: fw(medium);
+                font-size: rem(14);
+
+                @include helper-breakpoint-media-min($md) {
+                    font-size: rem(15);
+                }
+            }
+
+            &--filters {
+                width: 100%;
+                margin: 0 rem(-5);
+
+                @include helper-breakpoint-media-min($lg) {
+                    margin: 0;
+                }
+
+                @include helper-breakpoint-media-min($xl) {
+                    width: auto;
+                }
+            }
+
+            &--select {
+                padding: 0 rem(5);
+
+                @include helper-breakpoint-media-min($lg) {
+                    padding: 0;
+                }
+
+                &:not(:last-child) {
+                    @include helper-breakpoint-media-min($lg) {
+                        padding-right: rem(30);
+                    }
+                }
+            }
+        }
+
+        &__filter-grid {
+            margin: 0 rem(-5);
+
+            @include helper-breakpoint-media-min($lg) {
+                margin: 0;
+            }
+        }
+
+        @content;
+    }
+}
+
+@include cms-search-page-sort();

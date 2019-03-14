@@ -1,0 +1,67 @@
+@mixin product-search-widget-product-search-autocomplete-form {
+    @include shop-ui-autocomplete-form($name: '.product-search-autocomplete-form') {
+        &__field {
+            position: relative;
+            z-index: $setting-zi-element-floating;
+        }
+
+        &__search-icon {
+            position: absolute;
+            left: rem(12);
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        &__input {
+            @include helper-effect-transition(background-color);
+            padding: rem(15) rem(36) rem(15) rem(38);
+            font-size: rem(12);
+            font-weight: fw(medium);
+            border-radius: $setting-border-radius;
+            box-shadow: 0 rem(3) rem(3) 0 $setting-color-shadow-1;
+
+            &--no-icon {
+                padding-left: rem(20);
+                padding-right: rem(20);
+            }
+
+            &:focus {
+                border: none;
+                background-color: $setting-color-gray-6;
+            }
+        }
+
+        &__suggestions {
+            margin: 0;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background-color: $setting-color-white;
+            padding: rem(10) rem(18);
+            font-size: rem(14);
+            line-height: 2;
+            border-radius: 0 0 $setting-border-radius $setting-border-radius;
+            box-shadow: 0 rem(18) rem(18) 0 $setting-color-shadow-1, 0 rem(3) rem(3) 0 $setting-color-shadow-1;
+            max-height: 30rem;
+            overflow-x: hidden;
+            z-index: $setting-zi-search-suggestions + 3;
+        }
+
+        &__clean-button {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            padding-right: rem(12);
+            color: $setting-color-gray-2;
+
+            &:hover,
+            &:focus {
+                color: $setting-color-gray-4;
+            }
+        }
+    }
+}
+
+@include product-search-widget-product-search-autocomplete-form;

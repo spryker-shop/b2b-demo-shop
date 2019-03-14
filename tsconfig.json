@@ -17,8 +17,14 @@
             "*": [
                 "*"
             ],
+            "src/ShopUi/*": [
+                "./src/Pyz/Yves/ShopUi/Theme/default/*"
+            ],
             "ShopUi/*": [
                 "./vendor/spryker-shop/shop-ui/src/SprykerShop/Yves/ShopUi/Theme/default/*"
+            ],
+            "CompanyWidget/*": [
+                "./vendor/spryker-shop/company-widget/src/SprykerShop/Yves/CompanyWidget/Theme/default/*"
             ],
             "SprykerShop/*": [
                 "./vendor/spryker-shop/*"
@@ -32,6 +38,7 @@
     ],
     "include": [
         "./vendor/spryker-shop/**/*",
+        "./vendor/spryker-eco/**/*",
         "./src/Pyz/Yves/**/*"
     ],
     "exclude": [

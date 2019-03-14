@@ -29,6 +29,9 @@
                 <th>{{ 'page.multi_cart.shopping_cart.list.label.num_of_products' | trans }}</th>
                 <th>{{ 'page.multi_cart.shopping_cart.list.label.prices' | trans }}</th>
                 <th>{{ 'page.multi_cart.shopping_cart.list.label.total' | trans }}</th>
+                {% if widgetGlobalExists('QuoteApprovalStatusWidget') %}
+                    <th>{{ 'quote_approval_widget.cart.status' | trans }}</th>
+                {% endif %}
                 {% if showActions %}
                     <th></th>
                 {% endif %}
@@ -79,7 +82,14 @@
                             } only %}
                         {% endif %}
                     </td>
-                    <td class="transform-cell spacing-bottom spacing-bottom--inner spacing-bottom--big" data-content="{{ 'page.multi_cart.shopping_cart.list.label.total' | trans }}"><strong>{{ quote.totals.subtotal | default(0) | money }}</strong></td>
+                    <td class="transform-cell spacing-bottom spacing-bottom--inner spacing-bottom--big" data-content="{{ 'page.multi_cart.shopping_cart.list.label.total' | trans }}">
+                        <strong>{{ quote.totals.grandTotal | default(0) | money(true, quote.currency.code) }}</strong>
+                    </td>
+                    {% if widgetGlobalExists('QuoteApprovalStatusWidget') %}
+                        <td>
+                            {% widget 'QuoteApprovalStatusWidget' args [quote] only %}{% endwidget %}
+                        </td>
+                    {% endif %}
                     {% if showActions %}
                         <td>
                             <ul class="menu grid grid--stretch grid--justify grid--nowrap grid--gap-smaller">

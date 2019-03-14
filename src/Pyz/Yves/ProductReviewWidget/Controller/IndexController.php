@@ -32,6 +32,7 @@ class IndexController extends SprykerIndexController
         $productReviewSearchRequestTransfer = new ProductReviewSearchRequestTransfer();
         $productReviewSearchRequestTransfer->setIdProductAbstract($idProductAbstract);
         $productReviewSearchRequestTransfer->setRequestParams($parentRequest->query->all());
+
         $productReviews = $this->getFactory()
             ->getProductReviewClient()
             ->findProductReviewsInSearch($productReviewSearchRequestTransfer);
@@ -44,5 +45,13 @@ class IndexController extends SprykerIndexController
             'maximumRating' => $this->getFactory()->getProductReviewClient()->getMaximumRating(),
             'idProductAbstract' => $idProductAbstract,
         ];
+    }
+
+    /**
+     * @return \Symfony\Component\HttpFoundation\Request
+     */
+    protected function getParentRequest(): Request
+    {
+        return $this->getApplication()['request_stack']->getMasterRequest();
     }
 }

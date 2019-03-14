@@ -25,6 +25,7 @@ use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Installer\ProductPacka
 use Spryker\Zed\SalesOrderThreshold\Communication\Plugin\Installer\SalesOrderThresholdTypeInstallerPlugin;
 use Spryker\Zed\SharedCart\Communication\Plugin\SharedCartPermissionInstallerPlugin;
 use Spryker\Zed\ShoppingList\Communication\Plugin\ShoppingListPermissionsInstallerPlugin;
+use Spryker\Zed\Translator\Communication\Plugin\TranslatorInstallerPlugin;
 use Spryker\Zed\User\Communication\Plugin\UserInstallerPlugin;
 
 class InstallerDependencyProvider extends SprykerInstallerDependencyProvider
@@ -43,6 +44,7 @@ class InstallerDependencyProvider extends SprykerInstallerDependencyProvider
             new NewsletterInstallerPlugin(),
             new GlossaryInstallerPlugin(),
             new CustomerAccessInstallerPlugin(),
+            new TranslatorInstallerPlugin(),
             new ShoppingListPermissionsInstallerPlugin(),
             new SharedCartPermissionInstallerPlugin(), #SharedCartFeature
             new ProductMeasurementUnitInstallerPlugin(),

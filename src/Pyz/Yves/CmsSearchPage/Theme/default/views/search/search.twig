@@ -1,0 +1,72 @@
+{% extends template('search-cms-template', 'CmsSearchPage') %}
+
+{% define data = {
+    pages: _view.cms_pages,
+    searchString: _view.searchString,
+    sort: _view.sort,
+
+    title: ('global.search.results' | trans) ~ ' ' ~ _view.searchString,
+    metaTitle: _view.pageTitle | default,
+    metaDescription: _view.pageDescription | default,
+    metaKeywords: _view.pageKeywords | default,
+
+    pagination: {
+        parameters: app.request.query.all(),
+        currentPage: _view.pagination.currentPage,
+        paginationPath: app.request.attributes.get('_route'),
+        maxPage: _view.pagination.maxPage,
+        showAlwaysFirstAndLast: true,
+        numFound: _view.pagination.numFound,
+        config: _view.pagination.config,
+        currentItemsPerPage: _view.pagination.currentItemsPerPage
+    }
+} %}
+
+{% block breadcrumbs %}
+    {% include molecule('breadcrumb') with {
+        data: {
+            steps: [{
+                label: 'global.search' | trans
+            }]
+        }
+    } only %}
+{% endblock %}
+
+{% block contentClass %}page-layout-main page-layout-main--cms-search-page{% endblock %}
+
+{% block title %}
+    <h3>{{ 'global.search.results' | trans }} "<strong>{{ data.searchString }}</strong>"</h3>
+{% endblock %}
+
+{% block form %}
+    <div class="col col--sm-12 spacing-y spacing-y--inner">
+        {% widget 'FullTextSearchTabsWidget' args [data.searchString, 'FullTextSearchCmsPage'] only %}{% endwidget %}
+    </div>
+
+    <div class="col col--sm-12">
+        {% include molecule('sort', 'CmsSearchPage') with {
+            data: {
+                pagination: data.pagination,
+                sort: data.sort
+            }
+        } only %}
+
+        {% include molecule('search-cms-results', 'CmsSearchPage') with {
+            data: {
+                pages: data.pages
+            }
+        } only %}
+
+        {% include molecule('pagination') with {
+            modifiers: ['search-cms-results'],
+            data: data.pagination
+        } only %}
+
+    </div>
+
+    {{ parent() }}
+
+    {% if data.searchString is not empty %}
+        <input type="hidden" name="q" value="{{ data.searchString }}" />
+    {% endif %}
+{% endblock %}
