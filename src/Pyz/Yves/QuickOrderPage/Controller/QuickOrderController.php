@@ -32,7 +32,11 @@ class QuickOrderController extends SprykerQuickOrderController
      */
     protected function processQuickOrderForm(FormInterface $quickOrderForm, Request $request): ?RedirectResponse
     {
-        $quickOrder = $quickOrderForm->getData();
+        $quickOrderTransfer = $quickOrderForm->getData();
+
+        $quickOrderTransfer = $this->getFactory()
+            ->getQuickOrderClient()
+            ->buildQuickOrderTransfer($quickOrderTransfer);
 
         if ($request->get(QuickOrderForm::SUBMIT_BUTTON_ADD_TO_CART) !== null) {
             if (!$this->can(AddCartItemPermissionPlugin::KEY)) {
@@ -42,7 +46,7 @@ class QuickOrderController extends SprykerQuickOrderController
             }
             $result = $this->getFactory()
                 ->createFormOperationHandler()
-                ->addToCart($quickOrder);
+                ->addToCart($quickOrderTransfer);
 
             if (!$result) {
                 return null;
@@ -59,7 +63,7 @@ class QuickOrderController extends SprykerQuickOrderController
             }
             $result = $this->getFactory()
                 ->createFormOperationHandler()
-                ->addToEmptyCart($quickOrder);
+                ->addToEmptyCart($quickOrderTransfer);
 
             if (!$result) {
                 return null;
