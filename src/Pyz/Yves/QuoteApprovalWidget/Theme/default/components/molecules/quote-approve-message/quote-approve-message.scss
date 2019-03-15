@@ -1,0 +1,15 @@
+@mixin quote-approve-message($name: '.quote-approve-message') {
+    #{$name} {
+        &__item {
+            font-size: rem(12);
+            line-height: rem(16);
+            color: $setting-color-gray-2;
+
+            &--dark {
+                color: $setting-color-gray-4;
+            }
+        }
+    }
+}
+
+@include quote-approve-message;

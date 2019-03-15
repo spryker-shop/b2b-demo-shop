@@ -56,11 +56,22 @@
                             iconModifier: 'sm-lg-bigger'
                         }
                     ]
+                },
+                embed: {
+                    shoppingList: data.shoppingList
                 }
             } only %}
                 {% block body %}
                     <div class="{{ config.name }}__inner">
                         {{ parent() }}
+
+                        {% widget 'ShoppingListDismissWidget' args [embed.shoppingList] with {config: config} only %}
+                            {% block link %}
+                                <div class="{{ config.name }}__item">
+                                    {{ parent() }}
+                                </div>
+                            {% endblock %}
+                        {% endwidget %}
                     </div>
                 {% endblock %}
             {% endembed %}
@@ -73,6 +84,15 @@
             shoppingList: data.shoppingList
         }
     } only %}
+
+    {% if can('WriteShoppingListPermissionPlugin', data.shoppingList.idShoppingList) %}
+        {% include molecule('shopping-list-product-quick-add', 'ShoppingListPage') with {
+            class: 'spacing-bottom spacing-bottom--bigger',
+            data: {
+                activeShoppingListId: data.shoppingList.idShoppingList
+            }
+        } only %}
+    {% endif %}
 
     {% if data.shoppingListItems|length %}
         <form method="POST" action="{{ path('shopping-list/add-to-cart') }}">

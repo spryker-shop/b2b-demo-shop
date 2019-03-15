@@ -1,19 +1,22 @@
 {% extends template('widget') %}
 
 {% define data = {
-    form: _widget.voucherForm
+    form: _widget.voucherForm,
+    isQuoteEditable: _widget.isQuoteEditable
 } %}
 
 {% block body %}
-    {% include molecule('form') with {
-        class: 'checkout-summary-dicount-voucher-form',
-        data: {
-            form: data.form,
-            submit: {
-                enable: true,
-                text: 'cart.voucher.redeem' | trans,
-                class: 'button button--hollow-icon'
+    {% if data.isQuoteEditable %}
+        {% include molecule('form') with {
+            class: 'checkout-summary-dicount-voucher-form',
+            data: {
+                form: data.form,
+                submit: {
+                    enable: true,
+                    text: 'cart.voucher.redeem' | trans,
+                    class: 'button button--hollow-icon'
+                }
             }
-        }
-    } only %}
+        } only %}
+    {% endif %}
 {% endblock %}

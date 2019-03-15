@@ -1,0 +1,33 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'quote-approve-message'
+} %}
+
+{% define data = {
+    hasApprovers: required,
+    limit: required
+} %}
+
+{% block body %}
+    {% if data.hasApprovers %}
+        <p class="{{ config.name }}__item {{ config.name }}__item--dark spacing-bottom spacing-bottom--big">
+            {{ 'quote_approval_widget.shared_cart_warning' | trans }}
+        </p>
+        <hr>
+    {% endif %}
+
+    {% if not can('PlaceOrderPermissionPlugin') %}
+        <p class="{{ config.name }}__item spacing-y spacing-y--big ">
+            {% if data.limit is null %}
+                {{ 'quote_approval_widget.no_limit_text' | trans }}
+            {% else %}
+                {{ 'quote_approval_widget.limit_text' | trans({'%amount%': data.limit | money}) }}
+            {% endif %}
+        </p>
+    {% endif %}
+
+    {% if not data.hasApprovers %}
+        <p class="{{ config.name }}__item">{{ 'quote_approval_widget.no_approvers_found' | trans }}</p>
+    {% endif %}
+{% endblock %}

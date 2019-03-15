@@ -50,7 +50,7 @@
             {% include molecule('product-configurator', 'ProductDetailPage') with {
                 data: {
                     product: data.product,
-                    isBundle: data.isBundle,
+                    isBundle: data.bundleItems,
                     bundleItems: data.bundleItems
                 }
             } only %}
@@ -80,7 +80,7 @@
 
     {% widget 'ProductReplacementForListWidget' args [data.product.sku] only %}{% endwidget %}
 
-    {% if data.isBundle != null %}
+    {% if data.bundleItems != null %}
         {% include molecule('product-bundle', 'ProductDetailPage') with {
             data: {
                 bundleItems: data.bundleItems

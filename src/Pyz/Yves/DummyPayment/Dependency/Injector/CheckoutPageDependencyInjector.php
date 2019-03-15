@@ -7,20 +7,20 @@
 
 namespace Pyz\Yves\DummyPayment\Dependency\Injector;
 
-use Spryker\Shared\Kernel\ContainerInterface;
 use Spryker\Yves\Checkout\CheckoutDependencyProvider;
 use Spryker\Yves\DummyPayment\Dependency\Injector\CheckoutPageDependencyInjector as SprykerCheckoutPageDependencyInjector;
 use Spryker\Yves\DummyPayment\Plugin\DummyPaymentInvoiceSubFormPlugin;
+use Spryker\Yves\Kernel\Container;
 use Spryker\Yves\StepEngine\Dependency\Plugin\Form\SubFormPluginCollection;
 
 class CheckoutPageDependencyInjector extends SprykerCheckoutPageDependencyInjector
 {
     /**
-     * @param \Spryker\Shared\Kernel\ContainerInterface $container
+     * @param \Spryker\Yves\Kernel\Container $container
      *
-     * @return \Spryker\Shared\Kernel\ContainerInterface
+     * @return \Spryker\Yves\Kernel\Container
      */
-    protected function injectPaymentSubForms(ContainerInterface $container): ContainerInterface
+    protected function injectPaymentSubForms(Container $container): Container
     {
         $container->extend(CheckoutDependencyProvider::PAYMENT_SUB_FORMS, function (SubFormPluginCollection $paymentSubForms) {
             $paymentSubForms->add(new DummyPaymentInvoiceSubFormPlugin());

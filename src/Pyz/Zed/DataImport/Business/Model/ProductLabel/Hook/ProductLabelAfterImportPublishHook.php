@@ -20,10 +20,6 @@ class ProductLabelAfterImportPublishHook implements DataImporterAfterImportInter
      */
     public function afterImport()
     {
-        DataImporterPublisher::addImportedEntityEvents([
-            ProductLabelEvents::PRODUCT_LABEL_DICTIONARY_PUBLISH => [
-                static::ID_DEFAULT,
-            ],
-        ]);
+        DataImporterPublisher::addEvent(ProductLabelEvents::PRODUCT_LABEL_DICTIONARY_PUBLISH, static::ID_DEFAULT);
     }
 }

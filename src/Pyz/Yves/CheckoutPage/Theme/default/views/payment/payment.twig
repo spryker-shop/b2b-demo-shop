@@ -7,7 +7,8 @@
     },
 
     title: 'checkout.step.payment.title' | trans,
-    stepNumder: 3
+    stepNumder: 3,
+    customForms: {}
 } %}
 
 {% block content %}
@@ -33,19 +34,23 @@
                 text: 'general.back.button' | trans,
                 icon: '',
                 class: 'form__action--expand-sm-md button button--big button--hollow-icon button--back'
-            }
+            },
+            customForms: data.customForms
         }
     } only %}
         {% block fieldset %}
             {% for choices in data.form.paymentSelection.vars.choices %}
+                {% set paymentProviderIndex = loop.index0 %}
                 {% embed molecule('checkout-list', 'CheckoutPage') with {
                     modifiers: ['bottom-margin'],
                     data: {
                         form: null,
-                        choices: choices
+                        choices: choices,
+                        customForms: data.customForms
                     },
                     embed: {
-                        form: data.form
+                        form: data.form,
+                        paymentProviderIndex: paymentProviderIndex
                     }
                 } only %}
                     {% block contentItem %}
@@ -64,18 +69,19 @@
                                 form: embed.form[embed.form.paymentSelection[key].vars.value],
                                 enableStart: false,
                                 enableEnd: false,
+                                customForms: data.customForms,
                                 layout: {
                                     'card_expires_month': 'col col--sm-4',
                                     'card_expires_year': 'col col--sm-8'
-                                }
+                                },
+                                customForms: data.customForms
                             },
                             embed: {
-                                index: loop.index,
+                                index: loop.index ~ '-' ~ embed.paymentProviderIndex,
                                 toggler: embed.form.paymentSelection[key]
                             }
                         } only %}
                             {% block fieldset %}
-
                                 {% if embed.index == 1 %}
                                     {{ form_row(embed.toggler, {
                                         required: false,
@@ -96,6 +102,19 @@
                                         }
                                     }) }}
                                 {% endif %}
+                                <div class="col col--sm-12 is-hidden js-payment-method-{{embed.index}}">
+                                    <div class="col col--sm-12 col--md-6">
+                                        {% if data.customForms[data.form.vars.template_path] is not defined %}
+                                            {{ parent() }}
+                                        {% else %}
+                                            {% set viewName = data.customForms[data.form.vars.template_path] | first %}
+                                            {% set moduleName = data.customForms[data.form.vars.template_path] | last %}
+                                            {% include view(viewName, moduleName) ignore missing with {
+                                                form: data.form.parent
+                                            } only %}
+                                        {% endif %}
+                                    </div>
+                                </div>
                             {% endblock %}
                         {% endembed %}
                     {% endblock %}

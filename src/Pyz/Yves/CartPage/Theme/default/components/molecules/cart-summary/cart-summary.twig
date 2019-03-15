@@ -7,7 +7,8 @@
 
 {% define data = {
     cart: required,
-    isQuoteValid: required
+    isQuoteValid: required,
+    isQuoteEditable: required,
 } %}
 
 {% set canProceedToCheckout = data.cart.items is not empty
@@ -54,9 +55,25 @@
         </ul>
     </div>
 
+    {% widget 'QuoteApprovalWidget' args [data.cart] only %}
+        {% block container %}
+            <div class="order-sidebar__item order-sidebar__item--approve-request">
+                {{ parent() }}
+            </div>
+        {% endblock %}
+    {% endwidget %}
+
+    {% if data.isQuoteValid %}
+        {% widget 'QuoteApproveRequestWidget' args [data.cart] %}
+            {% block container %}
+                <div class="order-sidebar__item order-sidebar__item--approve-request">
+                    {{ parent() }}
+                </div>
+            {% endblock %}
+        {% endwidget %}
+    {% endif %}
+
     {% if canProceedToCheckout and can('SeeOrderPlaceSubmitPermissionPlugin') %}
-        <a class="{{ config.name }}__button button button--expand button--big button--success" href="{{ url('checkout-index') }}" {{qa('cart-go-to-checkout')}}>
-            {{ 'cart.checkout' | trans }}
-        </a>
+        {% widget 'ProceedToCheckoutButtonWidget' args [data.cart] %}{% endwidget %}
     {% endif %}
 {% endblock %}

@@ -1,0 +1,50 @@
+{% extends template('widget') %}
+
+{% define data = {
+    quoteApprovalRequestForm: _widget.quoteApprovalRequestForm|default,
+    hasApprovers: _widget.quoteApprovalRequestForm ? _widget.quoteApprovalRequestForm.approverCompanyUserId.vars.choices is not empty : false,
+    quote: _widget.quote,
+    limit: _widget.limit,
+    isVisible: _widget.isVisible,
+    quoteStatus: _widget.quoteStatus,
+    canSendApprovalRequest: _widget.canSendApprovalRequest,
+    quoteApprovalRequestFormOptions: {
+        action: path('quote-approval-create')
+    }
+} %}
+
+{% block body %}
+    {% if data.isVisible %}
+        {% block container %}
+            {% set quoteApproval = data.quote.quoteApprovals | length > 0 ? data.quote.quoteApprovals | last : null %}
+            {% set customer = quoteApproval ? quoteApproval.approver.customer : null %}
+
+            {% include molecule('quote-approve-request', 'QuoteApprovalWidget') with {
+                data: {
+                    customer: customer,
+                    quoteStatus: data.quoteStatus,
+                    quoteApproval: quoteApproval,
+                    quote: data.quote
+                }
+            } only %}
+
+            {% if data.canSendApprovalRequest %}
+                {% include molecule('quote-approve-message', 'QuoteApprovalWidget') with {
+                    data: {
+                        hasApprovers: data.hasApprovers,
+                        limit: data.limit
+                    }
+                } only %}
+            {% endif %}
+
+            {% if data.canSendApprovalRequest and data.hasApprovers %}
+                {% include molecule('approve-request-form', 'QuoteApprovalWidget') with {
+                    data: {
+                        quoteApprovalRequestForm: data.quoteApprovalRequestForm,
+                        quoteApprovalRequestFormOptions: data.quoteApprovalRequestFormOptions
+                    }
+                } only %}
+            {% endif %}
+        {% endblock %}
+    {% endif %}
+{% endblock %}

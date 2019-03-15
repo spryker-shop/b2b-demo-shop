@@ -1,0 +1,71 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'quick-order-rows'
+} %}
+
+{% define data = {
+    rows: required,
+    products: [],
+    prices: [],
+    additionalColumns: []
+} %}
+
+{% block body %}
+    <div class="grid grid--justify grid--middle {{config.name}}__row {{config.name}}__row--head">
+        <div class="col col--sm-4 spacing-x spacing-x--inner spacing-x--bigger spacing-y spacing-y--big {{config.name}}__cell">
+            {{ 'quick-order.input-label.sku.name' | trans }}
+        </div>
+
+        <div class="col col--sm-7">
+            <div class="grid grid--justify grid--middle">
+                {% if data.additionalColumns is not empty %}
+                    <div class="col col--sm-3">
+                        {% for additionalColumn in data.additionalColumns %}
+                            <div class="col col--expand spacing-x spacing-x--inner spacing-x--bigger spacing-y spacing-y--big {{config.name}}__cell">
+                                {% block additionalColumn %}
+                                    {{ additionalColumn.title | trans }}
+                                {% endblock %}
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+                <div class="col col--sm-5 spacing-x spacing-x--inner spacing-x--bigger spacing-y spacing-y--big {{config.name}}__cell">
+                    {{ 'quick-order.input-label.qty' | trans }}
+                </div>
+
+                <div class="col col--sm-4 spacing-x spacing-x--inner spacing-x--bigger spacing-y spacing-y--big {{config.name}}__cell">
+                    {{ 'quick-order.input-label.price' | trans }}
+                </div>
+            </div>
+        </div>
+
+        <div class="col col--sm-1"></div>
+    </div>
+
+    {% for row in data.rows %}
+        {% set product = data.products[row.sku.vars.value] ?? null %}
+        {% include molecule('quick-order-row', 'QuickOrderPage') with {
+            class: config.name ~ '__row',
+            data: {
+                index: loop.index0,
+                quantityField: row.quantity,
+                skuField: row.sku,
+                messages: row.vars.value.messages,
+                additionalColumns: data.additionalColumns,
+                product: product,
+                price: row.vars.value.sumPrice,
+
+                autocomplete: {
+                    skuFieldName: row.vars.full_name,
+                    skuFieldValue: product is null ? null : product.sku,
+                    searchFieldValue: product is null ? null : product.localizedAttributes[0] is defined ? product.localizedAttributes[0].name ~ ' (' ~ product.sku ~ ')': '' ~ ' (' ~ product.sku ~ ')'
+                }
+            },
+            attributes: {
+                'autocomplete-form': 'product-search-autocomplete-form'
+            }
+        } only %}
+    {% endfor %}
+{% endblock %}

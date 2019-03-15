@@ -21,6 +21,16 @@ $jobs[] = [
     'stores' => $allStores,
 ];
 
+/* ProductValidity */
+$jobs[] = [
+    'name' => 'check-product-validity',
+    'command' => '$PHP_BIN vendor/bin/console product:check-validity',
+    'schedule' => '0 6 * * *',
+    'enable' => true,
+    'run_on_non_production' => true,
+    'stores' => $allStores,
+];
+
 /* ProductLabel */
 $jobs[] = [
     'name' => 'check-product-label-validity',
@@ -132,3 +142,13 @@ $jobs[] = [
     'stores' => $allStores,
 ];
 */
+
+/* Quote */
+$jobs[] = [
+    'name' => 'clean-expired-guest-cart',
+    'command' => '$PHP_BIN vendor/bin/console quote:delete-expired-guest-quotes',
+    'schedule' => '30 1 * * *',
+    'enable' => true,
+    'run_on_non_production' => true,
+    'stores' => $allStores,
+];
