@@ -8,13 +8,18 @@ env:
 
 matrix:
   fast_finish: true
+
+  allow_failures: []
+
   include:
     - php: "7.1"
       env:
         - TEST_GROUP=without-acceptance
+        - ON_EVENTS=push,cron
     - php: "7.1"
       env:
         - TEST_GROUP=acceptance
+        - ON_EVENTS=push,cron
     - php: "7.1"
       env:
         - VALIDATION=1
@@ -34,6 +39,8 @@ cache:
   directories:
     - $HOME/.composer/cache
     - /home/travis/.rvm/gems # Mailcatcher is a ruby gem, takes 5 minutes to install.
+    - ./node_modules
+    - ./vendor
 
 services:
   - postgresql
@@ -46,7 +53,6 @@ sudo: required
 before_install:
   - if [[ $VALIDATION != 1 && $ON_EVENTS != *$TRAVIS_EVENT_TYPE* ]] ; then exit ; fi
   - echo "extension = redis.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
-  - mkdir /tmp/opcache || true; echo -e 'opcache.enable_cli=1\nopcache.file_cache=/tmp/opcache' >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
   - phpenv config-rm xdebug.ini
   - composer global require hirak/prestissimo
   - if [[ $DB == 'mysql' ]]; then chmod +x ./config/Shared/ci/travis/mysql/* ; fi
