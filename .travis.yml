@@ -11,18 +11,13 @@ env:
 
 matrix:
   fast_finish: true
-
-  allow_failures: []
-
   include:
     - php: "7.1"
       env:
         - TEST_GROUP=without-acceptance
-        - ON_EVENTS=push,cron
     - php: "7.1"
       env:
         - TEST_GROUP=acceptance
-        - ON_EVENTS=push,cron
     - php: "7.1"
       env:
         - VALIDATION=1
@@ -53,7 +48,6 @@ services:
 sudo: required
 
 before_install:
-  - if [[ $VALIDATION != 1 && $ON_EVENTS != *$TRAVIS_EVENT_TYPE* ]] ; then exit ; fi
   - echo "extension = redis.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
   - phpenv config-rm xdebug.ini
   - composer global require hirak/prestissimo
