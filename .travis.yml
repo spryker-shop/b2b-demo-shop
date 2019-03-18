@@ -1,5 +1,8 @@
 language: php
 
+git:
+  depth: 3
+
 env:
   global:
     - APPLICATION_ENV=devtest
@@ -39,6 +42,7 @@ cache:
   directories:
     - $HOME/.composer/cache
     - /home/travis/.rvm/gems # Mailcatcher is a ruby gem, takes 5 minutes to install.
+    - ./node_modules
 
 services:
   - postgresql
