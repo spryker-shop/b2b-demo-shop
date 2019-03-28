@@ -69,7 +69,12 @@
                             listItem: data.listItem,
                         }
                     } only %}
-                    {{ widget('ShoppingListItemProductOptionWidgetPlugin', data.listItem.shoppingListItem) }}
+                    {% include molecule('shopping-list-item-product-option-display', 'ProductOptionWidget') with {
+                        class: 'list list--expand',
+                        data: {
+                            options: data.listItem.shoppingListItem.productOptions
+                        }
+                    } only %}
                 {% endif %}
             {% endblock %}
 
