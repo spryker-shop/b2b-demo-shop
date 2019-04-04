@@ -28,6 +28,7 @@ export default class RangeSlider extends Component {
     }
 
     protected setInputValueToSlider(index, value) {
+        console.log(index, value);
         const inputsValue = [null, null];
         inputsValue[index] = value;
         (<noUiSlider>this.sliderContainer).noUiSlider.set(inputsValue);
