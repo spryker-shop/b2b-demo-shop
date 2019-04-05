@@ -13,15 +13,17 @@ export default class FilterCategory extends Component {
     }
 
     protected readyCallback(): void {
-
         if (this.activeCategory) {
             if (this.activeCategory.classList.contains(this.parentSelector)) {
                 this.removeClass(this.categoriesToShow);
             } else {
-                let target = <HTMLElement> this.activeCategory;
+                let target = <HTMLElement>this.activeCategory;
                 while (!target.classList.contains(this.wrapSelector)) {
                     if (target.classList.contains(this.parentSelector)) {
-                        this.removeClass(<HTMLElement[]>Array.from(target.querySelectorAll(this.categoriesToShowSelector)));
+                        this.removeClass(<HTMLElement[]>Array.from(
+                            target.querySelectorAll(this.categoriesToShowSelector)
+                        ));
+
                         return;
                     }
                     target = <HTMLElement> target.parentNode;
@@ -32,8 +34,8 @@ export default class FilterCategory extends Component {
         }
     }
 
-    protected removeClass(categoriesToShow): void {
-        for (let i = 0; i <= categoriesToShow.length - 1; i++) {
+    protected removeClass(categoriesToShow: HTMLElement[]): void {
+        for (let i = 0; i <= categoriesToShow.length - 1; i += 1) {
             categoriesToShow[i].classList.remove(this.classToRemove);
         }
     }

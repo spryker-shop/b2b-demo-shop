@@ -5,7 +5,6 @@ export default class SuggestSearchExtended extends SuggestSearch {
     protected overlay: OverlayBlock;
 
     protected readyCallback(): void {
-        console.log(this.keyboardCodes);
         this.overlay = <OverlayBlock>document.querySelector(this.overlaySelector);
         super.readyCallback();
     }

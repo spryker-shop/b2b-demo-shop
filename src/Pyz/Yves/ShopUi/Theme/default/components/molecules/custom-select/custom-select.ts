@@ -1,18 +1,16 @@
 import Component from 'ShopUi/models/component';
-import $ from 'jquery';
+import $ from 'jquery/dist/jquery';
 import select from 'select2';
 
 export default class CustomSelect extends Component {
-
-    select: HTMLSelectElement
-    $select: $
-    mobileResolution: Number
-    isInited: boolean
+    select: HTMLSelectElement;
+    $select: $;
+    mobileResolution: number = 768;
+    isInited: boolean = false;
+    protected timeout: number = 300;
 
     protected readyCallback(): void {
         const select2 = select;
-        this.mobileResolution = 768;
-        this.isInited = false;
         this.select = <HTMLSelectElement>this.querySelector(`.${this.jsName}`);
         this.$select = $(this.select);
 
@@ -23,7 +21,7 @@ export default class CustomSelect extends Component {
 
     protected mapEvents(): void {
         this.$select.on('select2:select', () => this.onChangeSelect());
-        window.addEventListener('resize', () => setTimeout(() => this.initSelect(), 300));
+        window.addEventListener('resize', () => setTimeout(() => this.initSelect(), this.timeout));
     }
 
     protected onChangeSelect(): void {

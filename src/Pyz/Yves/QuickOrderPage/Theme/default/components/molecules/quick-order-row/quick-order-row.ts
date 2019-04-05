@@ -24,9 +24,15 @@ export default class QuickOrderRow extends Component {
     }
 
     protected registerQuantityInput(): void {
-        this.incrementButton = <HTMLButtonElement>this.querySelector(`.${this.jsName}__button-increment, .${this.jsName}-partial__button-increment`);
-        this.decrementButton = <HTMLButtonElement>this.querySelector(`.${this.jsName}__button-decrement, .${this.jsName}-partial__button-decrement`);
-        this.quantityInput = <HTMLInputElement>this.querySelector(`.${this.jsName}__quantity, .${this.jsName}-partial__quantity`);
+        this.incrementButton = <HTMLButtonElement>this.querySelector(
+            `.${this.jsName}__button-increment, .${this.jsName}-partial__button-increment`
+        );
+        this.decrementButton = <HTMLButtonElement>this.querySelector(
+            `.${this.jsName}__button-decrement, .${this.jsName}-partial__button-decrement`
+        );
+        this.quantityInput = <HTMLInputElement>this.querySelector(
+            `.${this.jsName}__quantity, .${this.jsName}-partial__quantity`
+        );
         this.errorMessage = <HTMLElement>this.querySelector(`.${this.name}__error, .${this.name}-partial__error`);
     }
 
@@ -39,7 +45,9 @@ export default class QuickOrderRow extends Component {
     protected mapQuantityInputChange(): void {
         this.incrementButton.addEventListener('click', (event: Event) => this.incrementValue(event));
         this.decrementButton.addEventListener('click', (event: Event) => this.decrementValue(event));
-        this.quantityInput.addEventListener('input', debounce(() => this.onQuantityChange(), this.autocompleteInput.debounceDelay));
+        this.quantityInput.addEventListener('input', debounce(() => {
+            this.onQuantityChange();
+        }, this.autocompleteInput.debounceDelay));
     }
 
     protected onAutocompleteSet(): void {
@@ -62,21 +70,21 @@ export default class QuickOrderRow extends Component {
         this.errorMessage.classList.remove(ERROR_MESSAGE_CLASS, ERROR_PARTIAL_MESSAGE_CLASS);
     }
 
-    protected incrementValue(event): void {
+    protected incrementValue(event: Event): void {
         event.preventDefault();
         const value = +this.quantityInput.value;
         const potentialValue = value + this.step;
-        if(value < this.maxQuantity) {
+        if (value < this.maxQuantity) {
             this.quantityInput.value = potentialValue.toString();
             this.onQuantityChange();
         }
     }
 
-    protected decrementValue(event): void {
+    protected decrementValue(event: Event): void {
         event.preventDefault();
         const value = +this.quantityInput.value;
         const potentialValue = value - this.step;
-        if(potentialValue >= this.minQuantity) {
+        if (potentialValue >= this.minQuantity) {
             this.quantityInput.value = potentialValue.toString();
             this.onQuantityChange();
         }
@@ -97,7 +105,7 @@ export default class QuickOrderRow extends Component {
         this.registerQuantityInput();
         this.mapQuantityInputChange();
 
-        this.timer = <any>setTimeout(() => this.hideErrorMessage(), this.timeout);
+        this.timer = setTimeout(() => this.hideErrorMessage(), this.timeout);
 
         if (!!sku) {
             this.quantityInput.focus();
@@ -118,11 +126,13 @@ export default class QuickOrderRow extends Component {
 
     get maxQuantity(): number {
         const max = +this.quantityInput.getAttribute('max');
+
         return max > 0 && max > this.minQuantity ? max : Infinity;
     }
 
     get step(): number {
         const step = +this.quantityInput.getAttribute('step');
+
         return step > 0 ? step : 1;
     }
 }
