@@ -72,7 +72,7 @@ export default class QuickOrderRow extends Component {
 
     protected incrementValue(event: Event): void {
         event.preventDefault();
-        const value = +this.quantityInput.value;
+        const value = Number(this.quantityInput.value);
         const potentialValue = value + this.step;
         if (value < this.maxQuantity) {
             this.quantityInput.value = potentialValue.toString();
@@ -82,7 +82,7 @@ export default class QuickOrderRow extends Component {
 
     protected decrementValue(event: Event): void {
         event.preventDefault();
-        const value = +this.quantityInput.value;
+        const value = Number(this.quantityInput.value);
         const potentialValue = value - this.step;
         if (potentialValue >= this.minQuantity) {
             this.quantityInput.value = potentialValue.toString();
@@ -121,17 +121,17 @@ export default class QuickOrderRow extends Component {
     }
 
     get minQuantity(): number {
-        return +this.quantityInput.getAttribute('min');
+        return Number(this.quantityInput.getAttribute('min'));
     }
 
     get maxQuantity(): number {
-        const max = +this.quantityInput.getAttribute('max');
+        const max = Number(this.quantityInput.getAttribute('max'));
 
         return max > 0 && max > this.minQuantity ? max : Infinity;
     }
 
     get step(): number {
-        const step = +this.quantityInput.getAttribute('step');
+        const step = Number(this.quantityInput.getAttribute('step'));
 
         return step > 0 ? step : 1;
     }

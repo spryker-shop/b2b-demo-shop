@@ -35,9 +35,7 @@ export default class FilterCategory extends Component {
     }
 
     protected removeClass(categoriesToShow: HTMLElement[]): void {
-        for (let i = 0; i <= categoriesToShow.length - 1; i += 1) {
-            categoriesToShow[i].classList.remove(this.classToRemove);
-        }
+        categoriesToShow.forEach((element: HTMLElement) => element.classList.remove(this.classToRemove));
     }
 
     get wrapSelector(): string {

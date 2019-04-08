@@ -30,7 +30,7 @@ export default class VolumePrice extends Component {
     }
 
     private quantityChangeHandler(event: Event): void {
-        this.currentQuantityValue = +(<HTMLInputElement>event.target).value;
+        this.currentQuantityValue = Number((<HTMLInputElement>event.target).value);
         this.checkQuantityValue();
     }
 
