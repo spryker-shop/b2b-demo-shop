@@ -34,7 +34,7 @@ export default class QuantityCounter extends Component {
     protected incrementValue(event: Event): void {
         event.preventDefault();
         if (this.isAvailable) {
-            const value = +this.input.value;
+            const value = Number(this.input.value);
             const potentialValue = value + this.step;
             if (value < this.maxQuantity) {
                 this.input.value = potentialValue.toString();
@@ -46,7 +46,7 @@ export default class QuantityCounter extends Component {
     protected decrementValue(event: Event): void {
         event.preventDefault();
         if (this.isAvailable) {
-            const value = +this.input.value;
+            const value = Number(this.input.value);
             const potentialValue = value - this.step;
             if (potentialValue >= this.minQuantity) {
                 this.input.value = potentialValue.toString();
@@ -71,23 +71,23 @@ export default class QuantityCounter extends Component {
     }
 
     get minQuantity(): number {
-        return +this.input.getAttribute('min');
+        return Number(this.input.getAttribute('min'));
     }
 
     get maxQuantity(): number {
-        const max = +this.input.getAttribute('max');
+        const max = Number(this.input.getAttribute('max'));
 
         return max > 0 && max > this.minQuantity ? max : Infinity;
     }
 
     get step(): number {
-        const step = +this.input.getAttribute('step');
+        const step = Number(this.input.getAttribute('step'));
 
         return step > 0 ? step : 1;
     }
 
     get getValue(): number {
-        return +this.input.value;
+        return Number(this.input.value);
     }
 
     get autoUpdate(): boolean {
