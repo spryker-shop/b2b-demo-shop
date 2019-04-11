@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0e87e68960d50b0dba11f1fe22426bea",
+    "content-hash": "7fb921be2cc2054613ef61b4b0732ec4",
     "packages": [
         {
             "name": "codeitnowin/barcode",
@@ -29542,36 +29542,39 @@
         },
         {
             "name": "nette/bootstrap",
-            "version": "v3.0.0",
+            "version": "v3.0.0-RC1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/bootstrap.git",
-                "reference": "e1075af05c211915e03e0c86542f3ba5433df4a3"
+                "reference": "5c323e105b16e80881648cf77fac363509e4fbf8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/bootstrap/zipball/e1075af05c211915e03e0c86542f3ba5433df4a3",
-                "reference": "e1075af05c211915e03e0c86542f3ba5433df4a3",
+                "url": "https://api.github.com/repos/nette/bootstrap/zipball/5c323e105b16e80881648cf77fac363509e4fbf8",
+                "reference": "5c323e105b16e80881648cf77fac363509e4fbf8",
                 "shasum": ""
             },
             "require": {
-                "nette/di": "^3.0",
-                "nette/utils": "^3.0",
+                "nette/di": "^2.4.7 || ^3.0",
+                "nette/utils": "^2.4 || ^3.0",
                 "php": ">=7.1"
+            },
+            "conflict": {
+                "nette/nette": "<2.2"
             },
             "require-dev": {
                 "latte/latte": "^2.2",
-                "nette/application": "^3.0",
-                "nette/caching": "^3.0",
-                "nette/database": "^3.0",
-                "nette/forms": "^3.0",
-                "nette/http": "^3.0",
-                "nette/mail": "^3.0",
-                "nette/robot-loader": "^3.0",
+                "nette/application": "^2.3 || ^3.0",
+                "nette/caching": "^2.3 || ^3.0",
+                "nette/database": "^2.3 || ^3.0",
+                "nette/forms": "^2.3 || ^3.0",
+                "nette/http": "^2.4.0 || ^3.0",
+                "nette/mail": "^2.3 || ^3.0",
+                "nette/robot-loader": "^2.4.2 || ^3.0",
                 "nette/safe-stream": "^2.2",
-                "nette/security": "^3.0",
+                "nette/security": "^2.3 || ^3.0",
                 "nette/tester": "^2.0",
-                "tracy/tracy": "^2.6"
+                "tracy/tracy": "^2.5"
             },
             "suggest": {
                 "nette/robot-loader": "to use Configurator::createRobotLoader()",
@@ -29604,35 +29607,35 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "🅱 Nette Bootstrap: the simple way to configure and bootstrap your Nette application.",
+            "description": "? Nette Bootstrap: the simple way to configure and bootstrap your Nette application.",
             "homepage": "https://nette.org",
             "keywords": [
                 "bootstrapping",
                 "configurator",
                 "nette"
             ],
-            "time": "2019-03-26T12:59:07+00:00"
+            "time": "2018-11-04T13:05:13+00:00"
         },
         {
             "name": "nette/di",
-            "version": "v3.0.0-alpha1",
+            "version": "v2.4.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/di.git",
-                "reference": "5a589e2a6c72ce537684eb8ae98f584c07d73c0a"
+                "reference": "d0561b8f77e8ef2ed6d83328860e16c81a5a8649"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/di/zipball/5a589e2a6c72ce537684eb8ae98f584c07d73c0a",
-                "reference": "5a589e2a6c72ce537684eb8ae98f584c07d73c0a",
+                "url": "https://api.github.com/repos/nette/di/zipball/d0561b8f77e8ef2ed6d83328860e16c81a5a8649",
+                "reference": "d0561b8f77e8ef2ed6d83328860e16c81a5a8649",
                 "shasum": ""
             },
             "require": {
                 "ext-tokenizer": "*",
                 "nette/neon": "^2.3.3 || ~3.0.0",
-                "nette/php-generator": "^2.5 || ~3.0.0",
-                "nette/utils": "^2.4.3 || ~3.0.0",
-                "php": ">=7.0"
+                "nette/php-generator": "^2.6.1 || ^3.0.0",
+                "nette/utils": "^2.5.0 || ~3.0.0",
+                "php": ">=5.6.0"
             },
             "conflict": {
                 "nette/bootstrap": "<2.4",
@@ -29645,7 +29648,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.0-dev"
+                    "dev-master": "2.4-dev"
                 }
             },
             "autoload": {
@@ -29669,9 +29672,18 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "Nette Dependency Injection Component",
+            "description": "? Nette Dependency Injection Container: Flexible, compiled and full-featured DIC with perfectly usable autowiring and support for all new PHP 7.1 features.",
             "homepage": "https://nette.org",
-            "time": "2017-02-02T03:11:32+00:00"
+            "keywords": [
+                "compiled",
+                "di",
+                "dic",
+                "factory",
+                "ioc",
+                "nette",
+                "static"
+            ],
+            "time": "2019-01-30T13:26:05+00:00"
         },
         {
             "name": "nette/finder",
@@ -30568,16 +30580,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "0.10.8",
+            "version": "0.11.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "4f828460a0276180da76c670a0a6e592e7c38b71"
+                "reference": "24ce5a566a798b81343138ed5d41d6877554cf9a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/4f828460a0276180da76c670a0a6e592e7c38b71",
-                "reference": "4f828460a0276180da76c670a0a6e592e7c38b71",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/24ce5a566a798b81343138ed5d41d6877554cf9a",
+                "reference": "24ce5a566a798b81343138ed5d41d6877554cf9a",
                 "shasum": ""
             },
             "require": {
@@ -30600,17 +30612,17 @@
                 "brianium/paratest": "^2.0",
                 "consistence/coding-standard": "^3.5",
                 "dealerdirect/phpcodesniffer-composer-installer": "^0.4.4",
-                "ext-gd": "*",
                 "ext-intl": "*",
                 "ext-mysqli": "*",
+                "ext-soap": "*",
                 "ext-zip": "*",
                 "jakub-onderka/php-parallel-lint": "^1.0",
-                "localheinz/composer-normalize": "~0.9.0",
+                "localheinz/composer-normalize": "^1.1.0",
                 "phing/phing": "^2.16.0",
-                "phpstan/phpstan-deprecation-rules": "^0.10.2",
-                "phpstan/phpstan-php-parser": "^0.10",
-                "phpstan/phpstan-phpunit": "^0.10",
-                "phpstan/phpstan-strict-rules": "^0.10",
+                "phpstan/phpstan-deprecation-rules": "^0.11",
+                "phpstan/phpstan-php-parser": "^0.11",
+                "phpstan/phpstan-phpunit": "^0.11",
+                "phpstan/phpstan-strict-rules": "^0.11",
                 "phpunit/phpunit": "^7.0",
                 "slevomat/coding-standard": "^4.7.2",
                 "squizlabs/php_codesniffer": "^3.3.2"
@@ -30621,7 +30633,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "0.10-dev"
+                    "dev-master": "0.11-dev"
                 }
             },
             "autoload": {
@@ -30637,7 +30649,7 @@
                 "MIT"
             ],
             "description": "PHPStan - PHP Static Analysis Tool",
-            "time": "2019-01-08T09:51:19+00:00"
+            "time": "2019-03-25T16:40:09+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -31969,6 +31981,11 @@
         {
             "name": "spryker-feature/development-tools",
             "version": "201903.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-feature/development-tools.git",
+                "reference": "cf58d157e0633e460b78c8d69b40af71704e3d51"
+            },
             "require": {
                 "php": ">=7.1",
                 "spryker-shop/web-profiler-widget": "^1.0.0",
