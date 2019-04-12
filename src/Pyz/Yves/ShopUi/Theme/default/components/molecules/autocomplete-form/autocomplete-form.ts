@@ -4,7 +4,7 @@ import debounce from 'lodash-es/debounce';
 import OverlayBlock from '../../atoms/overlay-block/overlay-block';
 
 export default class AutocompleteForm extends Component {
-    ajaxProvider: AjaxProvider
+    ajaxProvider: AjaxProvider;
     inputElement: HTMLInputElement;
     hiddenInputElement: HTMLInputElement;
     suggestionsContainer: HTMLElement;
@@ -12,8 +12,8 @@ export default class AutocompleteForm extends Component {
     overlay: OverlayBlock;
 
     protected readyCallback(): void {
-        this.ajaxProvider = <AjaxProvider> this.querySelector(`.${this.jsName}__provider`);
-        this.suggestionsContainer = <HTMLElement> this.querySelector(`.${this.jsName}__container`);
+        this.ajaxProvider = <AjaxProvider>this.querySelector(`.${this.jsName}__provider`);
+        this.suggestionsContainer = <HTMLElement>this.querySelector(`.${this.jsName}__container`);
         this.inputElement = <HTMLInputElement>this.querySelector(`.${this.jsName}__input`);
         this.hiddenInputElement = <HTMLInputElement>this.querySelector(`.${this.jsName}__input-hidden`);
         this.cleanButton = <HTMLButtonElement>this.querySelector(`.${this.jsName}__clean-button`);
@@ -43,6 +43,7 @@ export default class AutocompleteForm extends Component {
         this.overlay.showOverlay('no-agent-user', 'no-agent-user');
         if (this.inputValue.length >= this.minLetters) {
             this.showSuggestions();
+
             return;
         }
     }
@@ -50,6 +51,7 @@ export default class AutocompleteForm extends Component {
     protected onInput(): void {
         if (this.inputValue.length >= this.minLetters) {
             this.loadSuggestions();
+
             return;
         }
         this.hideSuggestions();
@@ -74,21 +76,22 @@ export default class AutocompleteForm extends Component {
     protected mapItemEvents(): void {
         const self = this;
         const items = Array.from(this.suggestionsContainer.querySelectorAll(this.itemSelector));
-        items.forEach((item: HTMLElement) => item.addEventListener('click', (e: Event) => self.onItemClick(e)));
+        items.forEach((item: HTMLElement) => {
+            item.addEventListener('click', (event: Event) => self.onItemClick(event));
+        });
     }
 
-    protected onItemClick(e: Event): void {
-        const dataTarget = <HTMLElement>e.target;
-        const textTarget = <HTMLElement>e.srcElement;
+    protected onItemClick(event: Event): void {
+        const dataTarget = <HTMLElement>event.target;
         const data = dataTarget.getAttribute(this.valueDataAttribute);
-        const text = textTarget.textContent.trim();
+        const text = dataTarget.textContent.trim();
 
         this.setInputs(data, text);
     }
 
     setInputs(data: string, text: string): void {
-        this.inputElement.value = text;
         this.hiddenInputElement.value = data;
+        this.inputElement.value = text;
     }
 
     cleanFields(): void {

@@ -8,16 +8,6 @@ export enum Events {
     UNSET = 'unset'
 }
 
-interface keyCodes {
-    [key: string]: number;
-}
-
-const keyCodes = {
-    arrowUp: 38,
-    arrowDown: 40,
-    enter: 13
-};
-
 export default class ProductSearchAutocompleteForm extends AutocompleteForm {
     widgetSuggestionsContainer: HTMLElement;
     suggestionItems: HTMLElement[];
@@ -32,12 +22,13 @@ export default class ProductSearchAutocompleteForm extends AutocompleteForm {
     }
 
     protected plugKeydownEvent(): void {
-        this.inputElement.addEventListener('keydown', (event) => this.onKeyDown(event));
+        this.inputElement.addEventListener('keydown', (event: KeyboardEvent) => this.onKeyDown(event));
     }
 
     protected onInput(): void {
         if (this.inputText.length >= this.minLetters) {
             this.loadSuggestions();
+
             return;
         }
         this.hideSuggestions();
@@ -54,7 +45,9 @@ export default class ProductSearchAutocompleteForm extends AutocompleteForm {
     protected mapItemEvents(): void {
         const self = this;
         const items = <HTMLElement[]>Array.from(this.widgetSuggestionsContainer.querySelectorAll(this.itemSelector));
-        items.forEach((item: HTMLElement) => item.addEventListener('click', (event: Event) => self.onItemClick(event)));
+        items.forEach((item: HTMLElement) => {
+            item.addEventListener('click', (event: Event) => self.onItemClick(event));
+        });
     }
 
     protected onKeyDown(event: KeyboardEvent): void {
@@ -62,19 +55,10 @@ export default class ProductSearchAutocompleteForm extends AutocompleteForm {
             return;
         }
 
-        switch (event.keyCode) {
-            case keyCodes.arrowUp:
-                event.preventDefault();
-                this.onKeyDownArrowUp();
-                break;
-            case keyCodes.arrowDown:
-                event.preventDefault();
-                this.onKeyDownArrowDown();
-                break;
-            case keyCodes.enter:
-                event.preventDefault();
-                this.onKeyDownEnter();
-                break;
+        switch (event.key) {
+            case 'ArrowUp': this.onKeyDownArrowUp(); break;
+            case 'ArrowDown': this.onKeyDownArrowDown(); break;
+            case 'Enter': this.onKeyDownEnter(); break;
         }
     }
 
@@ -111,7 +95,9 @@ export default class ProductSearchAutocompleteForm extends AutocompleteForm {
         this.showSuggestions();
         this.ajaxProvider.queryParams.set(this.queryParamName, this.inputText);
         await this.ajaxProvider.fetch();
-        this.suggestionItems = <HTMLElement[]>Array.from(this.widgetSuggestionsContainer.querySelectorAll(this.itemSelector));
+        this.suggestionItems = <HTMLElement[]>Array.from(
+            this.widgetSuggestionsContainer.querySelectorAll(this.itemSelector)
+        );
         this.lastSelectedItem = this.suggestionItems[0];
         this.mapItemEvents();
     }
@@ -120,10 +106,7 @@ export default class ProductSearchAutocompleteForm extends AutocompleteForm {
         this.inputText = text;
         this.inputValue = data;
 
-        this.dispatchCustomEvent(Events.SET, {
-            text: this.inputText,
-            value: this.inputValue
-        });
+        this.dispatchCustomEvent(Events.SET, {text: this.inputText, value: this.inputValue});
 
         if (this.quantityInput) {
             this.quantityInput.focus();
@@ -137,6 +120,7 @@ export default class ProductSearchAutocompleteForm extends AutocompleteForm {
     protected onFocus(): void {
         if (this.inputText.length >= this.minLetters) {
             this.showSuggestions();
+
             return;
         }
     }
