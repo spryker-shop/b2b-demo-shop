@@ -1,15 +1,15 @@
 import Component from 'ShopUi/models/component';
 
 export default class TogglerAccordion extends Component {
-    readonly wrap: HTMLElement
-    readonly triggers: HTMLElement[]
-    readonly isTouch: boolean
+    readonly wrap: HTMLElement;
+    readonly triggers: HTMLElement[];
+    readonly isTouch: boolean;
 
     constructor() {
         super();
         this.wrap = <HTMLElement>document.querySelector(this.wrapSelector);
         this.triggers = <HTMLElement[]>Array.from(document.querySelectorAll(this.triggerSelector));
-        this.isTouch = "ontouchstart" in window;
+        this.isTouch = 'ontouchstart' in window;
     }
 
     protected readyCallback(): void {
@@ -32,14 +32,15 @@ export default class TogglerAccordion extends Component {
 
     protected initializeClick(event: Event): void {
         this.triggers.forEach((trigger: HTMLElement) => {
-            let target = <any> event.target;
-            while (target != this.wrap) {
+            let target = <HTMLElement>event.target;
+            while (target !== this.wrap) {
                 if (target === trigger) {
                     event.preventDefault();
                     this.toggle(trigger);
+
                     return;
                 }
-                target = target.parentNode;
+                target = <HTMLElement>target.parentNode;
             }
         });
     }
@@ -52,10 +53,10 @@ export default class TogglerAccordion extends Component {
 
     protected targetToggle(target: HTMLElement): void {
         const targets = <HTMLElement[]>Array.from(document.querySelectorAll(target.dataset.toggleTarget));
-        targets.forEach((target: HTMLElement) => {
-            const isTargetActive = !target.classList.contains(this.classToToggle);
-            target.classList.toggle(this.classToToggle, isTargetActive);
-        })
+        targets.forEach((element: HTMLElement) => {
+            const isTargetActive = !element.classList.contains(this.classToToggle);
+            element.classList.toggle(this.classToToggle, isTargetActive);
+        });
     }
 
     get wrapSelector(): string {

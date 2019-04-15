@@ -1,3 +1,7 @@
+/**
+ * @todo Check tslint errors after refactoring.
+ */
+/* tslint:disable */
 import Component from 'ShopUi/models/component';
 
 export default class PackagingUnitQuantitySelector extends Component {

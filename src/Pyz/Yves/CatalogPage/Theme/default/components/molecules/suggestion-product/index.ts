@@ -1,1 +1,1 @@
-import './suggestion-product'
+import './suggestion-product';
