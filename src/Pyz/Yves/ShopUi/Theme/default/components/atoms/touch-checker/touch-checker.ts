@@ -6,10 +6,10 @@ export default class TouchChecker extends Component {
     }
 
     protected touchInspectionInit(): void {
-        const isTouch = "ontouchstart" in window;
+        const isTouch = 'ontouchstart' in window;
 
         if (isTouch) {
-            document.body.classList.add("is-touch");
+            document.body.classList.add('is-touch');
         }
     }
 }

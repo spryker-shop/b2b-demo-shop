@@ -1,8 +1,8 @@
 import Component from 'ShopUi/models/component';
 
 export default class SideDrawer extends Component {
-    triggers: HTMLElement[]
-    containers: HTMLElement[]
+    triggers: HTMLElement[];
+    containers: HTMLElement[];
 
     protected readyCallback(): void {
         this.triggers = <HTMLElement[]>Array.from(document.getElementsByClassName(this.triggerSelector));
@@ -11,7 +11,9 @@ export default class SideDrawer extends Component {
     }
 
     protected mapEvents(): void {
-        this.triggers.forEach((trigger: HTMLElement) => trigger.addEventListener('click', (event: Event) => this.onTriggerClick(event)));
+        this.triggers.forEach((trigger: HTMLElement) => {
+            trigger.addEventListener('click', (event: Event) => this.onTriggerClick(event));
+        });
     }
 
     protected onTriggerClick(event: Event): void {
