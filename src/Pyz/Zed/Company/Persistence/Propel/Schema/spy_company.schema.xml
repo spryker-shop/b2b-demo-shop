@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<database xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="zed"
+          xsi:noNamespaceSchemaLocation="http://static.spryker.com/schema-01.xsd"
+          namespace="Orm\Zed\Company\Persistence" package="src.Orm.Zed.Company.Persistence">
+
+    <table name="spy_company">
+        <behavior name="event">
+            <parameter name="spy_company_is_active" column="is_active"/>
+            <parameter name="spy_company_status" column="status"/>
+        </behavior>
+    </table>
+
+</database>
