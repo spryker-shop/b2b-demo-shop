@@ -46,8 +46,6 @@ class OauthDependencyProvider extends SprykerOauthDependencyProvider
     protected function getGrantTypeConfigurationProviderPlugins(): array
     {
         return array_merge(parent::getGrantTypeConfigurationProviderPlugins(), [
-            new PasswordOauthGrantTypeConfigurationProviderPlugin(),
-            new RefreshTokenOauthGrantTypeConfigurationProviderPlugin(),
             new IdCompanyUserOauthGrantTypeConfigurationProviderPlugin(),
         ]);
     }
