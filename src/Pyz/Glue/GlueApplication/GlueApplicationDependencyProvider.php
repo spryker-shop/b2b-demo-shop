@@ -14,6 +14,13 @@ use Spryker\Glue\AuthRestApi\Plugin\RefreshTokensResourceRoutePlugin;
 use Spryker\Glue\AuthRestApi\Plugin\RestUserFinderByAccessTokenPlugin;
 use Spryker\Glue\CompanyUserAuthRestApi\Plugin\GlueApplication\CompanyUserAccessTokensResourceRoutePlugin;
 use Spryker\Glue\CompanyUsersRestApi\Plugin\GlueApplication\CompanyUsersResourceRoutePlugin;
+use Spryker\Glue\CustomersRestApi\CustomersRestApiConfig;
+use Spryker\Glue\CustomersRestApi\Plugin\AddressesResourceRoutePlugin;
+use Spryker\Glue\CustomersRestApi\Plugin\CustomerForgottenPasswordResourceRoutePlugin;
+use Spryker\Glue\CustomersRestApi\Plugin\CustomerPasswordResourceRoutePlugin;
+use Spryker\Glue\CustomersRestApi\Plugin\CustomerRestorePasswordResourceRoutePlugin;
+use Spryker\Glue\CustomersRestApi\Plugin\CustomersResourceRoutePlugin;
+use Spryker\Glue\CustomersRestApi\Plugin\CustomersToAddressesRelationshipPlugin;
 use Spryker\Glue\CustomersRestApi\Plugin\SetCustomerBeforeActionPlugin;
 use Spryker\Glue\GlueApplication\GlueApplicationDependencyProvider as SprykerGlueApplicationDependencyProvider;
 use Spryker\Glue\GlueApplication\Plugin\Rest\SetStoreCurrentLocaleBeforeActionPlugin;
@@ -31,6 +38,12 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new RefreshTokensResourceRoutePlugin(),
             new CompanyUsersResourceRoutePlugin(),
             new CompanyUserAccessTokensResourceRoutePlugin(),
+            new CustomersResourceRoutePlugin(),
+            new AddressesResourceRoutePlugin(),
+            new CustomerForgottenPasswordResourceRoutePlugin(),
+            new CustomerRestorePasswordResourceRoutePlugin(),
+            new CustomerPasswordResourceRoutePlugin(),
+
         ];
     }
 
@@ -73,6 +86,11 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
     protected function getResourceRelationshipPlugins(
         ResourceRelationshipCollectionInterface $resourceRelationshipCollection
     ): ResourceRelationshipCollectionInterface {
+        $resourceRelationshipCollection->addRelationship(
+            CustomersRestApiConfig::RESOURCE_CUSTOMERS,
+            new CustomersToAddressesRelationshipPlugin()
+        );
+
         return $resourceRelationshipCollection;
     }
 
