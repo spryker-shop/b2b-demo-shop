@@ -37,7 +37,7 @@
                         required: true,
                         label: false,
                         attr: {
-                            class: config.name ~ '__quantity ' ~ config.jsName ~ '__quantity',
+                            class: config.name ~ '__quantity ' ~ config.jsName ~ '__quantity ' ~ (data.product is empty ? 'input--transparent' : ''),
                             min: 1,
                             max: null,
                             step: 1,

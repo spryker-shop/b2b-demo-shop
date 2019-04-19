@@ -17,12 +17,9 @@
         text-align: center;
         border: none;
         background-color: $setting-color-transparent;
+
         &::-webkit-inner-spin-button {
             appearance: none;
-        }
-
-        &__[disabled] {
-            background-color: $setting-color-transparent;
         }
     }
 
@@ -67,6 +64,7 @@
             background: $setting-color-gray-3;
             @include helper-effect-transition(background);
         }
+
         &--increment::after {
             width: rem(2);
             height: rem(9);
@@ -74,6 +72,7 @@
 
         &:hover {
             background: $setting-color-main;
+
             &::before,
             &::after {
                 background: $setting-color-white;
@@ -93,6 +92,7 @@
             &:hover,
             &:focus {
                 background: $setting-color-white;
+
                 &::before,
                 &::after {
                     background: $setting-color-gray-6;

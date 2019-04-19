@@ -1,4 +1,6 @@
 @include shop-ui-input {
+    $name: '.input';
+
     border-radius: $setting-border-radius;
     color: $setting-color-gray-5;
     font: fw(regular) rem(15)/rem(19) $setting-font-family;
@@ -11,8 +13,9 @@
     }
 
     &--measurement-unit {
-        max-width: 90px;
+        max-width: rem(90);
         appearance: none;
+
         &::-webkit-inner-spin-button,
         &::-webkit-outer-spin-button {
             appearance: none;
@@ -29,5 +32,9 @@
         @include helper-breakpoint-media-min($md) {
             padding-left: rem(12);
         }
+    }
+
+    &--transparent[disabled] {
+        background-color: $setting-color-transparent;
     }
 }
