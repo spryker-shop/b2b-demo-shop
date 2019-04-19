@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d70e38512b62ba0c034c03da10ec7783",
+    "content-hash": "fe08317774b0ebcaade16b3ff6daf740",
     "packages": [
         {
             "name": "codeitnowin/barcode",
@@ -22085,6 +22085,56 @@
             "time": "2018-12-12T11:22:13+00:00"
         },
         {
+            "name": "spryker/product-prices-rest-api",
+            "version": "1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/product-prices-rest-api.git",
+                "reference": "3c63ba38712dd24530cd7af75f5bb542a95b2971"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/product-prices-rest-api/zipball/3c63ba38712dd24530cd7af75f5bb542a95b2971",
+                "reference": "3c63ba38712dd24530cd7af75f5bb542a95b2971",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/currency": "^3.4.0",
+                "spryker/glue-application": "^1.8.0",
+                "spryker/glue-application-extension": "^1.0.0",
+                "spryker/kernel": "^3.22.0",
+                "spryker/price": "^5.0.0",
+                "spryker/price-product": "^2.0.0",
+                "spryker/price-product-storage": "^2.2.0",
+                "spryker/product-storage": "^1.2.0",
+                "spryker/products-rest-api": "^2.0.0",
+                "spryker/store": "^1.4.0",
+                "spryker/symfony": "^3.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ProductPricesRestApi module",
+            "time": "2019-03-26T09:38:45+00:00"
+        },
+        {
             "name": "spryker/product-quantity",
             "version": "1.2.0",
             "source": {
@@ -23045,6 +23095,142 @@
             ],
             "description": "ProductValidity module",
             "time": "2018-10-18T15:50:28+00:00"
+        },
+        {
+            "name": "spryker/products-product-prices-resource-relationship",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/products-product-prices-resource-relationship.git",
+                "reference": "24d315393a2829183bb196c65d60a2ed7c46cf14"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/products-product-prices-resource-relationship/zipball/24d315393a2829183bb196c65d60a2ed7c46cf14",
+                "reference": "24d315393a2829183bb196c65d60a2ed7c46cf14",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/glue-application": "^1.0.0",
+                "spryker/glue-application-extension": "^1.0.0",
+                "spryker/kernel": "^3.22.0",
+                "spryker/product-prices-rest-api": "^1.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/products-rest-api": "If you want to expand product resources with prices relationships."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ProductsProductPricesResourceRelationship module",
+            "time": "2018-09-07T08:22:20+00:00"
+        },
+        {
+            "name": "spryker/products-rest-api",
+            "version": "2.4.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/products-rest-api.git",
+                "reference": "b229e40ca1cad30d44d52015d79bc029556d3afe"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/products-rest-api/zipball/b229e40ca1cad30d44d52015d79bc029556d3afe",
+                "reference": "b229e40ca1cad30d44d52015d79bc029556d3afe",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/glossary-storage": "^1.0.0",
+                "spryker/glue-application": "^1.0.0",
+                "spryker/glue-application-extension": "^1.0.0",
+                "spryker/kernel": "^3.22.0",
+                "spryker/product-storage": "^1.2.0",
+                "spryker/products-rest-api-extension": "^1.0.0",
+                "spryker/symfony": "^3.0.0",
+                "spryker/synchronization-behavior": "^1.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ProductsRestApi module",
+            "time": "2019-04-08T07:50:37+00:00"
+        },
+        {
+            "name": "spryker/products-rest-api-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/products-rest-api-extension.git",
+                "reference": "3447d053ba1bde2378ebc762aa6420de6d99fbb0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/products-rest-api-extension/zipball/3447d053ba1bde2378ebc762aa6420de6d99fbb0",
+                "reference": "3447d053ba1bde2378ebc762aa6420de6d99fbb0",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/glue-application": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/glue-application": "If you want to use plugins with glue application."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ProductsRestApiExtension module",
+            "time": "2019-01-15T07:07:53+00:00"
         },
         {
             "name": "spryker/propel",
