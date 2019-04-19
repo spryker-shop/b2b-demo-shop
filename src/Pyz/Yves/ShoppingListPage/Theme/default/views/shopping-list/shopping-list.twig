@@ -136,4 +136,6 @@
     {% else %}
         {{ 'customer.account.shopping_list.empty' | trans }}
     {% endif %}
+
+    {% widget 'ShoppingListSubtotalWidget' args [data.shoppingListItems] only %}{% endwidget %}
 {% endblock %}

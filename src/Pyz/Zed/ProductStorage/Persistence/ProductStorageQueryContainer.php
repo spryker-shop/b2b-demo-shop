@@ -28,6 +28,7 @@ class ProductStorageQueryContainer extends SprykerProductStorageQueryContainer
      */
     public function queryProductAbstractByIds(array $productAbstractIds): SpyProductAbstractLocalizedAttributesQuery
     {
+        /** @var \Orm\Zed\Product\Persistence\SpyProductAbstractLocalizedAttributesQuery $query */
         $query = $this->getFactory()->getProductQueryContainer()
             ->queryAllProductAbstractLocalizedAttributes()
             ->joinWithLocale()
@@ -42,10 +43,12 @@ class ProductStorageQueryContainer extends SprykerProductStorageQueryContainer
             ->endUse()
             ->filterByFkProductAbstract_In($productAbstractIds)
             ->setFormatter(ModelCriteria::FORMAT_ARRAY);
+
         $query
             ->join('SpyProductAbstract.SpyUrl')
             ->addJoinCondition('SpyUrl', 'spy_url.fk_locale = ' . SpyProductAbstractLocalizedAttributesTableMap::COL_FK_LOCALE)
             ->withColumn(SpyUrlTableMap::COL_URL, 'url');
+
         return $query;
     }
 

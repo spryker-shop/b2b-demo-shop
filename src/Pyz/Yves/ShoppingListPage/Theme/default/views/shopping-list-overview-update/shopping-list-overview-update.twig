@@ -196,6 +196,9 @@
                         {{ 'customer.account.shopping_list.empty' | trans }}
                     </div>
                 {% endif %}
+                <div class="col col--sm-12">
+                    {% widget 'ShoppingListSubtotalWidget' args [data.shoppingListItemProducts] only %}{% endwidget %}
+                </div>
             </div>
         </div>
 
