@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1920729659754aa84dfd123042189aa4",
+    "content-hash": "bac78e1cb1f7212493ce62e0abbf76aa",
     "packages": [
         {
             "name": "codeitnowin/barcode",
@@ -11824,6 +11824,54 @@
             ],
             "description": "Collector module",
             "time": "2018-10-08T12:38:04+00:00"
+        },
+        {
+            "name": "spryker/companies-rest-api",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/companies-rest-api.git",
+                "reference": "525c6db047a5bf51854ffb1c602ea605510fbdf6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/companies-rest-api/zipball/525c6db047a5bf51854ffb1c602ea605510fbdf6",
+                "reference": "525c6db047a5bf51854ffb1c602ea605510fbdf6",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/company": "^1.0.0",
+                "spryker/glue-application": "^1.14.0",
+                "spryker/glue-application-extension": "^1.0.0",
+                "spryker/kernel": "^3.29.0",
+                "spryker/symfony": "^3.0.0",
+                "spryker/uuid-behavior": "^1.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/auth-rest-api": "If you want to authorize and authenticate customers via access tokens."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CompaniesRestApi module",
+            "time": "2019-02-07T20:31:57+00:00"
         },
         {
             "name": "spryker/company",
