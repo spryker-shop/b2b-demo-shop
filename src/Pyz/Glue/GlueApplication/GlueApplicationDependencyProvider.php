@@ -26,6 +26,8 @@ use Spryker\Glue\CatalogSearchProductsResourceRelationship\Plugin\CatalogSearchS
 use Spryker\Glue\CatalogSearchRestApi\CatalogSearchRestApiConfig;
 use Spryker\Glue\CatalogSearchRestApi\Plugin\CatalogSearchResourceRoutePlugin;
 use Spryker\Glue\CatalogSearchRestApi\Plugin\CatalogSearchSuggestionsResourceRoutePlugin;
+use Spryker\Glue\CategoriesRestApi\Plugin\CategoriesResourceRoutePlugin;
+use Spryker\Glue\CategoriesRestApi\Plugin\CategoryResourceRoutePlugin;
 use Spryker\Glue\CompaniesRestApi\Plugin\GlueApplication\CompaniesResourcePlugin;
 use Spryker\Glue\CompaniesRestApi\Plugin\GlueApplication\CompanyByCompanyUserResourceRelationshipPlugin;
 use Spryker\Glue\CompanyUserAuthRestApi\Plugin\GlueApplication\CompanyUserAccessTokensResourceRoutePlugin;
@@ -94,6 +96,8 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new AbstractAlternativeProductsResourceRoutePlugin(),
             new ConcreteAlternativeProductsResourceRoutePlugin(),
             new StoresResourceRoutePlugin(),
+            new CategoriesResourceRoutePlugin(),
+            new CategoryResourceRoutePlugin(),
         ];
     }
 
