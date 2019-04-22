@@ -28,12 +28,16 @@ use Spryker\Glue\CustomersRestApi\Plugin\SetCustomerBeforeActionPlugin;
 use Spryker\Glue\GlueApplication\GlueApplicationDependencyProvider as SprykerGlueApplicationDependencyProvider;
 use Spryker\Glue\GlueApplication\Plugin\Rest\SetStoreCurrentLocaleBeforeActionPlugin;
 use Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResourceRelationshipCollectionInterface;
+use Spryker\Glue\ProductImageSetsRestApi\Plugin\Relationship\AbstractProductsProductImageSetsResourceRelationshipPlugin;
+use Spryker\Glue\ProductImageSetsRestApi\Plugin\Relationship\ConcreteProductsProductImageSetsResourceRelationshipPlugin;
 use Spryker\Glue\ProductPricesRestApi\Plugin\AbstractProductPricesRoutePlugin;
 use Spryker\Glue\ProductPricesRestApi\Plugin\ConcreteProductPricesRoutePlugin;
 use Spryker\Glue\ProductPricesRestApi\Plugin\GlueApplication\CurrencyParameterValidatorPlugin;
 use Spryker\Glue\ProductPricesRestApi\Plugin\GlueApplication\PriceModeParameterValidatorPlugin;
 use Spryker\Glue\ProductsProductPricesResourceRelationship\Plugin\AbstractProductsProductPricesResourceRelationshipPlugin;
 use Spryker\Glue\ProductsProductPricesResourceRelationship\Plugin\ConcreteProductsProductPricesResourceRelationshipPlugin;
+use Spryker\Glue\ProductsRestApi\Plugin\AbstractProductsResourceRoutePlugin;
+use Spryker\Glue\ProductsRestApi\Plugin\ConcreteProductsResourceRoutePlugin;
 use Spryker\Glue\ProductsRestApi\ProductsRestApiConfig;
 use Spryker\Glue\RestRequestValidator\Plugin\ValidateRestRequestAttributesPlugin;
 
@@ -57,6 +61,8 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new CompaniesResourcePlugin(),
             new AbstractProductPricesRoutePlugin(),
             new ConcreteProductPricesRoutePlugin(),
+            new AbstractProductsResourceRoutePlugin(),
+            new ConcreteProductsResourceRoutePlugin(),
         ];
     }
 
@@ -118,6 +124,14 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
         $resourceRelationshipCollection->addRelationship(
             ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
             new ConcreteProductsProductPricesResourceRelationshipPlugin()
+        );
+        $resourceRelationshipCollection->addRelationship(
+            ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
+            new AbstractProductsProductImageSetsResourceRelationshipPlugin()
+        );
+        $resourceRelationshipCollection->addRelationship(
+            ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
+            new ConcreteProductsProductImageSetsResourceRelationshipPlugin()
         );
 
         return $resourceRelationshipCollection;
