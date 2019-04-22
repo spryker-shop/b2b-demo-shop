@@ -7,6 +7,8 @@
 
 namespace Pyz\Glue\GlueApplication;
 
+use Spryker\Glue\AlternativeProductsRestApi\Plugin\GlueApplication\AbstractAlternativeProductsResourceRoutePlugin;
+use Spryker\Glue\AlternativeProductsRestApi\Plugin\GlueApplication\ConcreteAlternativeProductsResourceRoutePlugin;
 use Spryker\Glue\AuthRestApi\Plugin\AccessTokenRestRequestValidatorPlugin;
 use Spryker\Glue\AuthRestApi\Plugin\AccessTokensResourceRoutePlugin;
 use Spryker\Glue\AuthRestApi\Plugin\FormatAuthenticationErrorResponseHeadersPlugin;
@@ -88,6 +90,8 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new GuestCartItemsResourceRoutePlugin(),
             new CatalogSearchResourceRoutePlugin(),
             new CatalogSearchSuggestionsResourceRoutePlugin(),
+            new AbstractAlternativeProductsResourceRoutePlugin(),
+            new ConcreteAlternativeProductsResourceRoutePlugin(),
         ];
     }
 
