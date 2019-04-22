@@ -19,6 +19,11 @@ use Spryker\Glue\CartsRestApi\Plugin\ResourceRoute\CartsResourceRoutePlugin;
 use Spryker\Glue\CartsRestApi\Plugin\ResourceRoute\GuestCartItemsResourceRoutePlugin;
 use Spryker\Glue\CartsRestApi\Plugin\ResourceRoute\GuestCartsResourceRoutePlugin;
 use Spryker\Glue\CartsRestApi\Plugin\Validator\AnonymousCustomerUniqueIdValidatorPlugin;
+use Spryker\Glue\CatalogSearchProductsResourceRelationship\Plugin\CatalogSearchAbstractProductsResourceRelationshipPlugin;
+use Spryker\Glue\CatalogSearchProductsResourceRelationship\Plugin\CatalogSearchSuggestionsAbstractProductsResourceRelationshipPlugin;
+use Spryker\Glue\CatalogSearchRestApi\CatalogSearchRestApiConfig;
+use Spryker\Glue\CatalogSearchRestApi\Plugin\CatalogSearchResourceRoutePlugin;
+use Spryker\Glue\CatalogSearchRestApi\Plugin\CatalogSearchSuggestionsResourceRoutePlugin;
 use Spryker\Glue\CompaniesRestApi\Plugin\GlueApplication\CompaniesResourcePlugin;
 use Spryker\Glue\CompaniesRestApi\Plugin\GlueApplication\CompanyByCompanyUserResourceRelationshipPlugin;
 use Spryker\Glue\CompanyUserAuthRestApi\Plugin\GlueApplication\CompanyUserAccessTokensResourceRoutePlugin;
@@ -80,7 +85,9 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new CartsResourceRoutePlugin(),
             new CartItemsResourceRoutePlugin(),
             new GuestCartsResourceRoutePlugin(),
-            new GuestCartItemsResourceRoutePlugin()
+            new GuestCartItemsResourceRoutePlugin(),
+            new CatalogSearchResourceRoutePlugin(),
+            new CatalogSearchSuggestionsResourceRoutePlugin(),
         ];
     }
 
@@ -171,6 +178,14 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
         $resourceRelationshipCollection->addRelationship(
             CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
             new ConcreteProductBySkuResourceRelationshipPlugin()
+        );
+        $resourceRelationshipCollection->addRelationship(
+            CatalogSearchRestApiConfig::RESOURCE_CATALOG_SEARCH,
+            new CatalogSearchAbstractProductsResourceRelationshipPlugin()
+        );
+        $resourceRelationshipCollection->addRelationship(
+            CatalogSearchRestApiConfig::RESOURCE_CATALOG_SEARCH_SUGGESTIONS,
+            new CatalogSearchSuggestionsAbstractProductsResourceRelationshipPlugin()
         );
 
         return $resourceRelationshipCollection;
