@@ -39,7 +39,10 @@ use Spryker\Glue\ProductsProductPricesResourceRelationship\Plugin\ConcreteProduc
 use Spryker\Glue\ProductsRestApi\Plugin\AbstractProductsResourceRoutePlugin;
 use Spryker\Glue\ProductsRestApi\Plugin\ConcreteProductsResourceRoutePlugin;
 use Spryker\Glue\ProductsRestApi\ProductsRestApiConfig;
+use Spryker\Glue\RelatedProductsRestApi\Plugin\GlueApplication\RelatedProductsResourceRoutePlugin;
 use Spryker\Glue\RestRequestValidator\Plugin\ValidateRestRequestAttributesPlugin;
+use Spryker\Glue\UpSellingProductsRestApi\Plugin\GlueApplication\CartUpSellingProductsResourceRoutePlugin;
+use Spryker\Glue\UpSellingProductsRestApi\Plugin\GlueApplication\GuestCartUpSellingProductsResourceRoutePlugin;
 
 class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependencyProvider
 {
@@ -63,6 +66,9 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new ConcreteProductPricesRoutePlugin(),
             new AbstractProductsResourceRoutePlugin(),
             new ConcreteProductsResourceRoutePlugin(),
+            new RelatedProductsResourceRoutePlugin(),
+            new CartUpSellingProductsResourceRoutePlugin(),
+            new GuestCartUpSellingProductsResourceRoutePlugin(),
         ];
     }
 
