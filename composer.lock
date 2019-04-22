@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8054c6226eff15dfbb8d662fcbd55612",
+    "content-hash": "25f58dd2d94cd44d83ab7d10494b1737",
     "packages": [
         {
             "name": "codeitnowin/barcode",
@@ -9799,6 +9799,105 @@
             ],
             "description": "CartVariant module",
             "time": "2018-02-08T10:41:19+00:00"
+        },
+        {
+            "name": "spryker/carts-rest-api",
+            "version": "2.4.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/carts-rest-api.git",
+                "reference": "353cec24227da90e411f1461d98799c1184f32d3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/carts-rest-api/zipball/353cec24227da90e411f1461d98799c1184f32d3",
+                "reference": "353cec24227da90e411f1461d98799c1184f32d3",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/cart": "^5.1.0",
+                "spryker/carts-rest-api-extension": "^1.0.0",
+                "spryker/customers-rest-api-extension": "^1.0.0",
+                "spryker/glue-application": "^1.8.0",
+                "spryker/glue-application-extension": "^1.0.0",
+                "spryker/kernel": "^3.29.0",
+                "spryker/persistent-cart": "^1.2.0",
+                "spryker/propel-orm": "^1.0.0",
+                "spryker/quote": "^2.5.0",
+                "spryker/symfony": "^3.0.0",
+                "spryker/uuid-behavior": "^1.0.0",
+                "spryker/zed-request": "^3.6.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/auth-rest-api": "If you want to authorize and authenticate customers via access tokens.",
+                "spryker/rest-request-validator": "If you want to use rest request validation.",
+                "spryker/uuid": "If you want to generate UUIDs for existing entities."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CartsRestApi module",
+            "time": "2019-04-16T11:39:56+00:00"
+        },
+        {
+            "name": "spryker/carts-rest-api-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/carts-rest-api-extension.git",
+                "reference": "8ca7feffe531084d62f0e13522377e832b29bae8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/carts-rest-api-extension/zipball/8ca7feffe531084d62f0e13522377e832b29bae8",
+                "reference": "8ca7feffe531084d62f0e13522377e832b29bae8",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/glue-application": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/glue-application": "If you want to use RestRequestInterface"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CartsRestApiExtension module",
+            "time": "2018-10-25T07:49:17+00:00"
         },
         {
             "name": "spryker/catalog",
