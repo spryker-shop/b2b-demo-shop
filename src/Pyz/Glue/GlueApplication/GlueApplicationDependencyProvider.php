@@ -56,6 +56,7 @@ use Spryker\Glue\ProductsRestApi\Plugin\GlueApplication\ConcreteProductBySkuReso
 use Spryker\Glue\ProductsRestApi\ProductsRestApiConfig;
 use Spryker\Glue\RelatedProductsRestApi\Plugin\GlueApplication\RelatedProductsResourceRoutePlugin;
 use Spryker\Glue\RestRequestValidator\Plugin\ValidateRestRequestAttributesPlugin;
+use Spryker\Glue\StoresRestApi\Plugin\StoresResourceRoutePlugin;
 use Spryker\Glue\UpSellingProductsRestApi\Plugin\GlueApplication\CartUpSellingProductsResourceRoutePlugin;
 use Spryker\Glue\UpSellingProductsRestApi\Plugin\GlueApplication\GuestCartUpSellingProductsResourceRoutePlugin;
 
@@ -92,6 +93,7 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new CatalogSearchSuggestionsResourceRoutePlugin(),
             new AbstractAlternativeProductsResourceRoutePlugin(),
             new ConcreteAlternativeProductsResourceRoutePlugin(),
+            new StoresResourceRoutePlugin(),
         ];
     }
 
