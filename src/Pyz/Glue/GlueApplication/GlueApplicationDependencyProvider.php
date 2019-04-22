@@ -16,6 +16,9 @@ use Spryker\Glue\CartsRestApi\CartsRestApiConfig;
 use Spryker\Glue\CartsRestApi\Plugin\ControllerBeforeAction\SetAnonymousCustomerIdControllerBeforeActionPlugin;
 use Spryker\Glue\CartsRestApi\Plugin\ResourceRoute\CartItemsResourceRoutePlugin;
 use Spryker\Glue\CartsRestApi\Plugin\ResourceRoute\CartsResourceRoutePlugin;
+use Spryker\Glue\CartsRestApi\Plugin\ResourceRoute\GuestCartItemsResourceRoutePlugin;
+use Spryker\Glue\CartsRestApi\Plugin\ResourceRoute\GuestCartsResourceRoutePlugin;
+use Spryker\Glue\CartsRestApi\Plugin\Validator\AnonymousCustomerUniqueIdValidatorPlugin;
 use Spryker\Glue\CompaniesRestApi\Plugin\GlueApplication\CompaniesResourcePlugin;
 use Spryker\Glue\CompaniesRestApi\Plugin\GlueApplication\CompanyByCompanyUserResourceRelationshipPlugin;
 use Spryker\Glue\CompanyUserAuthRestApi\Plugin\GlueApplication\CompanyUserAccessTokensResourceRoutePlugin;
@@ -76,6 +79,8 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new GuestCartUpSellingProductsResourceRoutePlugin(),
             new CartsResourceRoutePlugin(),
             new CartItemsResourceRoutePlugin(),
+            new GuestCartsResourceRoutePlugin(),
+            new GuestCartItemsResourceRoutePlugin()
         ];
     }
 
@@ -89,6 +94,18 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new CurrencyParameterValidatorPlugin(),
             new PriceModeParameterValidatorPlugin(),
             new ValidateRestRequestAttributesPlugin(),
+        ];
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @return \Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ValidateRestRequestPluginInterface[]
+     */
+    protected function getValidateRestRequestPlugins(): array
+    {
+        return [
+            new AnonymousCustomerUniqueIdValidatorPlugin(),
         ];
     }
 
