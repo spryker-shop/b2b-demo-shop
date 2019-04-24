@@ -12,14 +12,14 @@
 
 {% block body %}
     {% embed molecule('card') with {
-        class: 'spacing-x spacing-x--inner spacing-bottom spacing-bottom--inner',
-        modifiers: [ config.name ],
+        class: config.name ~ '__container spacing',
         data: {
             url: data.url,
             name: data.name
         },
         embed: {
-            id: data.id
+            id: data.id,
+            name: config.name
         }
     } only %}
         {% block image %}
@@ -34,6 +34,14 @@
                     <strong>{{ data.name }}</strong>
                 </p>
             {% endblock %}
+        {% endblock %}
+
+        {% block actionsContainer %}
+            <div class="{{ embed.name ~ '__actions-container' }}">
+                {% block actions %}
+                    {{ parent() }}
+                {% endblock %}
+            </div>
         {% endblock %}
     {% endembed %}
 {% endblock %}
