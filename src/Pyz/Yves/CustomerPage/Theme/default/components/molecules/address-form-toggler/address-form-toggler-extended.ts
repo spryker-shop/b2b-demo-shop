@@ -6,7 +6,7 @@ export default class AddressFormTogglerExtended extends AddressFormToggler {
     }
 
     toggle(isShown: boolean): void {
-        const hasCompanyBusinessUnitAddress = (this.hasCompanyBusinessUnitAddress == 'true');
+        const hasCompanyBusinessUnitAddress = (this.hasCompanyBusinessUnitAddress === 'true');
 
         if (hasCompanyBusinessUnitAddress || !isShown) {
             this.form.classList.remove(this.classToToggle);
