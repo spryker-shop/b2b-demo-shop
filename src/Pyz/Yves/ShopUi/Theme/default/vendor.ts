@@ -1,2 +1,4 @@
 import '@webcomponents/webcomponentsjs/webcomponents-bundle';
-import 'element-closest';
+import elementClosestPolyfill from 'element-closest';
+
+elementClosestPolyfill(window);
