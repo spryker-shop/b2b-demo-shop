@@ -113,7 +113,13 @@
 
             @include helper-breakpoint-media-min($xl) {
                 max-width: rem(515);
-                width: 100%;
+            }
+        }
+
+        &__login-wrap {
+            @include helper-media-ie() {
+                flex-grow: 0.1;
+                text-align: right;
             }
         }
 
