@@ -1,6 +1,6 @@
-import AddressFormToggler from 'CustomerPage/components/molecules/address-form-toggler/address-form-toggler';
+import ShopUiAddressFormToggler from 'CustomerPage/components/molecules/address-form-toggler/address-form-toggler';
 
-export default class AddressFormTogglerExtended extends AddressFormToggler {
+export default class AddressFormToggler extends ShopUiAddressFormToggler {
     toggle(isShown: boolean): void {
         const hasCompanyBusinessUnitAddress = <boolean>(this.hasCompanyBusinessUnitAddress === 'true');
 
