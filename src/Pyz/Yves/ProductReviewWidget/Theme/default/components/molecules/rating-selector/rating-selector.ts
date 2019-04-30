@@ -6,7 +6,7 @@ export default class RatingSelector extends Component {
 
     protected readyCallback(): void {
         this.input = <HTMLInputElement>this.querySelector(`.${this.jsName}__input`);
-        this.steps = <HTMLElement[]>Array.from(this.getElementsByClassName(`${this.jsName}__step`));
+        this.steps = <HTMLElement[]>Array.from(this.querySelectorAll(`.${this.jsName}__step`));
 
         if (!this.readOnly) {
             this.checkInput(this.value);
@@ -21,8 +21,6 @@ export default class RatingSelector extends Component {
     }
 
     protected onStepClick(event: Event): void {
-        event.preventDefault();
-
         const step = <HTMLElement>event.currentTarget;
         const newValue = parseFloat(step.getAttribute('data-step-value'));
 

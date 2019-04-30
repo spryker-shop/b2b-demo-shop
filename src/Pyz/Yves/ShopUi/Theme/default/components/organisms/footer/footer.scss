@@ -1,6 +1,9 @@
 .footer {
     background-color: $setting-color-gray-6;
-    overflow: hidden;
+
+    @include helper-media-ie() {
+        overflow: hidden;
+    }
 
     &__subscribe {
         @include helper-breakpoint-media-min($md) {
