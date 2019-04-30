@@ -11,6 +11,8 @@
     ratingMaxValue: required,
     hasCustomer: required,
     idProductAbstract: required,
+    reviewForm: required,
+    action: required,
 
     pagination: {
         parameters: required,
@@ -80,7 +82,12 @@
                 <a id="review"></a>
 
                 <div class="{{ config.name }}__new-review-form {{ config.jsName }}__new-review-form">
-                    {{ render(path('product-review/submit', {'idProductAbstract': data.idProductAbstract})) }}
+                    {% include molecule('new-review-form', 'ProductReviewWidget') with {
+                        data: {
+                            form: data.reviewForm,
+                            action: url(data.action, {idProductAbstract: data.idProductAbstract})
+                        }
+                    } only %}
                 </div>
             {% endif %}
 

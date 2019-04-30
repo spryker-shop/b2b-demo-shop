@@ -5,7 +5,8 @@
 } %}
 
 {% define data = {
-    form: required
+    form: required,
+    action: required
 } %}
 
 {% block body %}
@@ -15,7 +16,7 @@
         data: {
             form: data.form,
             options: {
-                action: '#review'
+                action: data.action
             },
             layout: {
                 'nickname': 'col col--sm-12',
