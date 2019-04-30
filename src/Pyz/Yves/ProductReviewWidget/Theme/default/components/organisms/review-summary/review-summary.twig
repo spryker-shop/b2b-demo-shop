@@ -79,7 +79,7 @@
             {% if is_granted('ROLE_USER') %}
                 <a id="review"></a>
 
-                <div class="is-hidden {{ config.name }}__new-review-form {{ config.jsName }}__new-review-form">
+                <div class="{{ config.name }}__new-review-form {{ config.jsName }}__new-review-form">
                     {{ render(path('product-review/submit', {'idProductAbstract': data.idProductAbstract})) }}
                 </div>
             {% endif %}
