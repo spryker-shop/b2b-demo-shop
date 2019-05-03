@@ -1,0 +1,16 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'date-time-picker',
+    tag: 'date-time-picker'
+} %}
+
+{% define attributes = {
+    language: required,
+    parent: '.' ~ config.name,
+    config: '{}'
+} %}
+
+{% block body %}
+    <input class="{{ config.name }}__trigger {{ config.jsName }}__trigger input input--expand" type="text">
+{% endblock %}
