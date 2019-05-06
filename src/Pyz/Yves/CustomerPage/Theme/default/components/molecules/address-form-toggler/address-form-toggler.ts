@@ -1,4 +1,3 @@
-/* tslint:disable:match-default-export-name */
 import ShopUiAddressFormToggler from 'CustomerPage/components/molecules/address-form-toggler/address-form-toggler';
 
 export default class AddressFormToggler extends ShopUiAddressFormToggler {
