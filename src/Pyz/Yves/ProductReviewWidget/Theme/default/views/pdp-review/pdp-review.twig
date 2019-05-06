@@ -1,7 +1,23 @@
 {% extends template('widget') %}
 
 {% define data = {
-    idProductAbstract: _widget.idProductAbstract
+    idProductAbstract: _widget.idProductAbstract,
+    form: _widget.form,
+    showSuccessMessage: false,
+    action: 'product-review/create',
+    reviews: _widget.productReviews,
+    summary: _widget.summary,
+    ratingMaxValue: _widget.maximumRating,
+    hasCustomer: _widget.hasCustomer,
+
+    pagination: {
+        parameters: app.request.query.all(),
+        currentPage: _widget.pagination.currentPage,
+        paginationPath: app.request.getPathInfo(),
+        maxPage: _widget.pagination.maxPage,
+        showAlwaysFirstAndLast: true,
+        anchor: 'product-reviews'
+    }
 } %}
 
 {% block rating %}
@@ -18,5 +34,16 @@
 {% endblock %}
 
 {% block body %}
-    {{ render(path('product-review/index', {'idProductAbstract': data.idProductAbstract})) }}
+    {% include organism('review-summary', 'ProductReviewWidget') with {
+        data: {
+            reviews: data.reviews,
+            summary: data.summary,
+            ratingMaxValue: data.ratingMaxValue,
+            hasCustomer: data.hasCustomer,
+            pagination: data.pagination,
+            idProductAbstract: data.idProductAbstract,
+            action: data.action,
+            reviewForm: data.form
+        }
+    } only %}
 {% endblock %}
