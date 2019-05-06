@@ -14,7 +14,9 @@
 
             &--active {
                 #{$name}__icon {
-                    transform: translateY(-50%) rotate(180deg);
+                    &::after {
+                        display: none;
+                    }
                 }
             }
         }
