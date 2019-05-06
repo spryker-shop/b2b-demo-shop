@@ -51,6 +51,21 @@
 
         {% widget 'MultiCartMenuItemWidget' args [data.activePage] only %}{% endwidget %}
 
-        {% widget 'BusinessOnBehalfStatusWidget' args [data.activePage] only %}{% endwidget %}
+        {% widget 'BusinessOnBehalfStatusWidget' use view('change-company-user', 'BusinessOnBehalfWidget') with {
+            isActivePage: 'change-company-user' == data.activePage
+        } only %}
+            {% block body %}
+                {% include molecule('navigation-sidebar-item') with {
+                    data: {
+                        url: path('company/user/select'),
+                        icon: 'building',
+                        label: 'business_on_behalf_widget.no_selected_company' | trans,
+                        name: 'no-company',
+                        active: isActivePage
+                    },
+                    modifiers: isActivePage ? ['active'] : []
+                } only %}
+            {% endblock %}
+        {% endwidget %}
     </ul>
 {% endblock %}

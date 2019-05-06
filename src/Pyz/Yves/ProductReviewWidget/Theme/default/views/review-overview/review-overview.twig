@@ -5,7 +5,6 @@
     summary: _view.summary,
     ratingMaxValue: _view.maximumRating,
     hasCustomer: _view.hasCustomer,
-    idProductAbstract: _view.idProductAbstract,
 
     pagination: {
         parameters: app.request.query.all(),
@@ -24,8 +23,7 @@
             summary: data.summary,
             ratingMaxValue: data.ratingMaxValue,
             hasCustomer: data.hasCustomer,
-            pagination: data.pagination,
-            idProductAbstract: data.idProductAbstract
+            pagination: data.pagination
         }
     } only %}
 {% endblock %}
