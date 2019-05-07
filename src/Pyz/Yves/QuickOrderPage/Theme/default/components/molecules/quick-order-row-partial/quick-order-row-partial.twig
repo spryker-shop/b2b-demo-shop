@@ -17,11 +17,14 @@
 {% block body %}
     <div class="grid grid--justify grid--middle">
         {% if data.additionalColumns is not empty %}
-            <div class="col col--sm-3">
+            <div class="col col--sm-12 col--md-3">
                 {% for additionalColumn in data.additionalColumns %}
-                    <div class="col col--expand spacing-y spacing-x spacing-x--inner spacing-x--bigger">
+                    <div class="col col--expand spacing-x spacing-x--inner spacing-x--bigger">
                         {% block additionalColumn %}
                             {% if data.product and data.product.columns[additionalColumn.dataPath] is defined %}
+                                {% if data.product.columns[additionalColumn.dataPath] is not empty %}
+                                    <span class="is-hidden-md-xxl">{{ additionalColumn.title | trans }}: </span>
+                                {% endif %}
                                 {{ data.product.columns[additionalColumn.dataPath] | trans }}
                             {% endif %}
                         {% endblock %}
@@ -30,7 +33,7 @@
             </div>
         {% endif %}
 
-        <div class="col col--sm-5 spacing-y spacing-x spacing-x--inner spacing-x--bigger">
+        <div class="col col--sm-6 col--md-5 spacing-y spacing-x spacing-x--inner spacing-x--bigger">
             <div class="{{ config.name }}__holder-quantity">
                 {% block quantity %}
                     {% set options = {
