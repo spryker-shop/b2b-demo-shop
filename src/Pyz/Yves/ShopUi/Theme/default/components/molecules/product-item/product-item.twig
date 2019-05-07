@@ -2,7 +2,7 @@
 
 {% define config = {
     name: 'product-item',
-    tag: 'article'
+    tag: 'article',
 } %}
 
 {% define data = {
@@ -15,7 +15,7 @@
     quantity: null,
     imageModifiers: [],
 
-    isShoppingList: false
+    isShoppingList: false,
 } %}
 
 {% block body %}
@@ -25,15 +25,26 @@
     <div class="grid grid--stretch grid--gap">
         <div class="{{ component.renderClass(config.name ~ '__col', modifiers) }} {{ config.name }}__col--image col">
             {% block image %}
-                <a href="{{ data.listItem.url }}">
+                {% if data.listItem.url is defined and data.listItem.url is not empty %}
+                    <a href="{{ data.listItem.url }}" title="{{ data.listItem.name }}">
+                        {% include molecule('product-item-image') with {
+                            modifiers: data.imageModifiers,
+                            data: {
+                                name: data.listItem.name | default(''),
+                                image: data.listItem.images is empty ? null : (data.listItem.images | first),
+                            }
+                        } only %}
+                    </a>
+                {% else %}
                     {% include molecule('product-item-image') with {
+                        class: 'spacing-y spacing-y--inner spacing-y--reset',
                         modifiers: data.imageModifiers,
                         data: {
                             name: data.listItem.name | default(''),
-                            image: data.listItem.images is empty ? null : (data.listItem.images | first)
+                            image: data.listItem.images is empty ? null : (data.listItem.images | first),
                         }
                     } only %}
-                </a>
+                {% endif %}
             {% endblock %}
         </div>
 
@@ -43,7 +54,7 @@
 
                     {% block title %}
                         <h6 class="{{ component.renderClass(config.name ~ '__title', modifiers) }}">
-                            <a href="{{ data.listItem.url }}" class="{{ component.renderClass(config.name ~ '__title', modifiers) }}">{{ data.listItem.name }}</a>
+                            <a href="{{ data.listItem.url }}" class="{{ component.renderClass(config.name ~ '__title', modifiers) }}" title="{{ data.listItem.name }}">{{ data.listItem.name }}</a>
                         </h6>
                     {% endblock %}
 
@@ -72,7 +83,7 @@
                                     amountSalesUnit: data.listItem.amountSalesUnit,
                                     amountConversion: data.listItem.amountSalesUnit.conversion,
                                     amountProductMeasurementUnit: data.listItem.amountSalesUnit.productMeasurementUnit,
-                                    amountValue: data.listItem.amountSalesUnit.value
+                                    amountValue: data.listItem.amountSalesUnit.value,
                                 }
                             } only %}
                         {% endif %}
@@ -90,7 +101,7 @@
                                     {% include molecule('product-item-quantity') with {
                                         data: {
                                             productItem: data.listItem,
-                                            isDisabled: not data.canEdit
+                                            isDisabled: not data.canEdit,
                                         }
                                     } only %}
                                 {% endif %}
@@ -104,7 +115,7 @@
                                 data: {
                                     productItem: data.listItem,
                                     productItemAttributes: data.attributes,
-                                    canEdit: data.canEdit
+                                    canEdit: data.canEdit,
                                 }
                             } only %}
                         {% endif %}
@@ -123,7 +134,7 @@
                         {% include molecule('product-item-options') with {
                             modifiers: modifiers,
                             data: {
-                                productItem: data.listItem
+                                productItem: data.listItem,
                             }
                         } only %}
                     {% endif %}
@@ -131,7 +142,7 @@
                     {% if data.options | length > 0 %}
                         {% include molecule('product-item-options') with {
                             data: {
-                                options: data.options
+                                options: data.options,
                             }
                         } only %}
                     {% endif %}
@@ -146,7 +157,7 @@
                                         modifiers: ['cart'],
                                         data: {
                                             amount: price | money,
-                                            originalAmount: data.listItem.prices.ORIGINAL is not defined or data.listItem.prices.ORIGINAL is empty ? null : (data.listItem.prices.ORIGINAL | money)
+                                            originalAmount: data.listItem.prices.ORIGINAL is not defined or data.listItem.prices.ORIGINAL is empty ? null : (data.listItem.prices.ORIGINAL | money),
                                         },
                                     } only %}
                                 {% endblock %}
@@ -157,12 +168,11 @@
 
                                             {% if cartProductMeasurementUnitQuantitySelectorWidget and data.canEdit %}
                                                 {% widget cartProductMeasurementUnitQuantitySelectorWidget only %}{% endwidget %}
-
                                             {% else %}
                                                 {% include molecule('product-item-quantity') with {
                                                     data: {
                                                         productItem: data.listItem,
-                                                        isDisabled: not data.canEdit
+                                                        isDisabled: not data.canEdit,
                                                     }
                                                 } only %}
                                             {% endif %}
@@ -175,11 +185,11 @@
                         {% block deleteButton %}
                             {% if data.canRemove %}
                                 <div class="col {{ config.name }}__delete-cart">
-                                    <a class="link link--icon {{ config.jsName }}-remove-button-{{ data.listItem.sku }}" data-group-key="{{ data.listItem.groupKey }}" href="{{ path('cart/remove', {'sku': data.listItem.sku, 'groupKey': data.listItem.groupKey }) }}">
+                                    <a class="link link--icon {{ config.jsName }}-remove-button-{{ data.listItem.sku }}" data-group-key="{{ data.listItem.groupKey }}" href="{{ path('cart/remove', {'sku': data.listItem.sku, 'groupKey': data.listItem.groupKey }) }}" title="{{ 'cart.delete.item' | trans }}">
                                         {% include atom('icon') with {
                                             modifiers: ['link'],
                                             data: {
-                                                name: 'delete'
+                                                name: 'delete',
                                             }
                                         } only %}
                                         <span class="is-hidden-sm-md">{{ 'cart.delete.item' | trans }}</span>
@@ -188,7 +198,7 @@
 
                                 {% include molecule('action-single-click-enforcer') with {
                                     attributes: {
-                                        'target-selector': '.' ~ config.jsName ~ '-remove-button-' ~ data.listItem.sku ~ '[data-group-key="' ~ data.listItem.groupKey ~ '"]'
+                                        'target-selector': '.' ~ config.jsName ~ '-remove-button-' ~ data.listItem.sku ~ '[data-group-key="' ~ data.listItem.groupKey ~ '"]',
                                     }
                                 } only %}
                             {% endif %}
