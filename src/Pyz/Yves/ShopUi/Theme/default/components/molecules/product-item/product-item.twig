@@ -32,7 +32,7 @@
                             data: {
                                 name: data.listItem.name | default(''),
                                 image: data.listItem.images is empty ? null : (data.listItem.images | first),
-                            }
+                            },
                         } only %}
                     </a>
                 {% else %}
@@ -42,7 +42,7 @@
                         data: {
                             name: data.listItem.name | default(''),
                             image: data.listItem.images is empty ? null : (data.listItem.images | first),
-                        }
+                        },
                     } only %}
                 {% endif %}
             {% endblock %}
@@ -84,7 +84,7 @@
                                     amountConversion: data.listItem.amountSalesUnit.conversion,
                                     amountProductMeasurementUnit: data.listItem.amountSalesUnit.productMeasurementUnit,
                                     amountValue: data.listItem.amountSalesUnit.value,
-                                }
+                                },
                             } only %}
                         {% endif %}
                     {% endblock %}
@@ -102,7 +102,7 @@
                                         data: {
                                             productItem: data.listItem,
                                             isDisabled: not data.canEdit,
-                                        }
+                                        },
                                     } only %}
                                 {% endif %}
                             </div>
@@ -116,7 +116,7 @@
                                     productItem: data.listItem,
                                     productItemAttributes: data.attributes,
                                     canEdit: data.canEdit,
-                                }
+                                },
                             } only %}
                         {% endif %}
                     {% endblock %}
@@ -135,7 +135,7 @@
                             modifiers: modifiers,
                             data: {
                                 productItem: data.listItem,
-                            }
+                            },
                         } only %}
                     {% endif %}
 
@@ -143,7 +143,7 @@
                         {% include molecule('product-item-options') with {
                             data: {
                                 options: data.options,
-                            }
+                            },
                         } only %}
                     {% endif %}
                 </div>
@@ -173,7 +173,7 @@
                                                     data: {
                                                         productItem: data.listItem,
                                                         isDisabled: not data.canEdit,
-                                                    }
+                                                    },
                                                 } only %}
                                             {% endif %}
                                         </div>
@@ -190,7 +190,7 @@
                                             modifiers: ['link'],
                                             data: {
                                                 name: 'delete',
-                                            }
+                                            },
                                         } only %}
                                         <span class="is-hidden-sm-md">{{ 'cart.delete.item' | trans }}</span>
                                     </a>
@@ -199,7 +199,7 @@
                                 {% include molecule('action-single-click-enforcer') with {
                                     attributes: {
                                         'target-selector': '.' ~ config.jsName ~ '-remove-button-' ~ data.listItem.sku ~ '[data-group-key="' ~ data.listItem.groupKey ~ '"]',
-                                    }
+                                    },
                                 } only %}
                             {% endif %}
                         {% endblock %}

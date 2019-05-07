@@ -27,7 +27,7 @@
                 },
             embed: {
                 isItemAvailable: isItemAvailable,
-            }
+            },
         } only %}
             {% block image %}
                 <div class="grid grid--justify grid--stretch {{ config.name }}__checkbox">
@@ -39,7 +39,7 @@
                                     name: 'shoppingListItem[idShoppingListItem][' ~ data.listItem.idShoppingListItem ~ ']',
                                     value: data.listItem.idShoppingListItem,
                                     disabled: not embed.isItemAvailable,
-                                }
+                                },
                             } only %}
                         </div>
                     {% endif %}
@@ -69,13 +69,13 @@
                         class: 'spacing-y spacing-y--big text-small',
                         data: {
                             listItem: data.listItem,
-                        }
+                        },
                     } only %}
                     {% include molecule('shopping-list-item-product-option-display', 'ProductOptionWidget') with {
                         class: 'list list--expand',
                         data: {
                             options: data.listItem.shoppingListItem.productOptions,
-                        }
+                        },
                     } only %}
                 {% endif %}
             {% endblock %}
@@ -87,7 +87,7 @@
                         data: {
                             amount: data.listItem.price | money,
                             originalAmount: data.listItem.prices.ORIGINAL is not defined or data.listItem.prices.ORIGINAL is empty ? null : (data.listItem.prices.ORIGINAL | money),
-                        }
+                        },
                     } only %}
                 {% else %}
                     {{ 'product_alternative_widget.not_applicable' | trans }}
@@ -111,7 +111,7 @@
                     attributes: {
                         name: 'shoppingListItem[quantity][' ~ data.listItem.idShoppingListItem ~ ']',
                         value: data.listItem.quantity,
-                    }
+                    },
                 } only %}
 
             {% endblock %}
