@@ -282,7 +282,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new GenerateTranslationCacheConsole(),
 
             new PriceProductScheduleApplyConsole(),
-            new PriceProductScheduleCleanupConsole()
+            new PriceProductScheduleCleanupConsole(),
         ];
 
         $propelCommands = $container->getLocator()->propel()->facade()->getConsoleCommands();
