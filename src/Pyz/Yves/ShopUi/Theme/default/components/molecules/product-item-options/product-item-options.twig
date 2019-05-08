@@ -31,7 +31,7 @@
             </ul>
         {% endif %}
     </li>
-    {% if totalPrice is not empty %}
+    {% if totalPrice %}
         <li>
             {% if can('SeePricePermissionPlugin') %}
                 <strong class="text-small spacing-left spacing-left--inner spacing-left--big">{{ 'cart.item.item_total' | trans }}</strong>
