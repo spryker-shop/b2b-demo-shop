@@ -1,25 +1,28 @@
 {% extends model('component') %}
 
 {% define config = {
-    name: 'product-cms-block'
+    name: 'product-cms-block',
 } %}
 
 {% define data = {
-    idProductAbstract: required
+    idProductAbstract: required,
 } %}
 
+{% set cmsContent = spyCmsBlock({ product: data.idProductAbstract }) %}
+
 {% block body %}
-    {% set cmsContent = spyCmsBlock({ product: data.idProductAbstract }) %}
-    {% if cmsContent is not empty %}
-        {% embed molecule('content-collapser') with {
-            modifiers: ['with-background'],
-            embed: {
-                idProductAbstract: data.idProductAbstract
-            }
-        } only %}
-            {% block content %}
-                {{ spyCmsBlock({ product: embed.idProductAbstract }) }}
-            {% endblock %}
-        {% endembed %}
-    {% endif %}
+    <div class="container">
+        {% if cmsContent is not empty %}
+            {% embed molecule('content-collapser') with {
+                modifiers: ['with-background'],
+                embed: {
+                    idProductAbstract: data.idProductAbstract,
+                },
+            } only %}
+                {% block content %}
+                    {{ spyCmsBlock({ product: embed.idProductAbstract }) }}
+                {% endblock %}
+            {% endembed %}
+        {% endif %}
+    </div>
 {% endblock %}
