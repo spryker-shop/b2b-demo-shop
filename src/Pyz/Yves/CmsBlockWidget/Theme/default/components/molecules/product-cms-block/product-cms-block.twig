@@ -11,8 +11,8 @@
 {% set cmsContent = spyCmsBlock({ product: data.idProductAbstract }) %}
 
 {% block body %}
-    <div class="container">
-        {% if cmsContent is not empty %}
+    {% if cmsContent is not empty %}
+        <div class="container">
             {% embed molecule('content-collapser') with {
                 modifiers: ['with-background'],
                 embed: {
@@ -23,6 +23,6 @@
                     {{ spyCmsBlock({ product: embed.idProductAbstract }) }}
                 {% endblock %}
             {% endembed %}
-        {% endif %}
-    </div>
+        </div>
+    {% endif %}
 {% endblock %}
