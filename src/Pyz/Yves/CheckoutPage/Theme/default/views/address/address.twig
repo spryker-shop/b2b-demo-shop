@@ -6,6 +6,7 @@
         shipping: _view.addressesForm.shippingAddress,
         billing: _view.addressesForm.billingAddress,
     },
+
     title: 'checkout.step.address.title' | trans,
     stepNumder: 1,
 } %}
@@ -65,7 +66,7 @@
                 {% endif %}
 
                 {% embed molecule('form') with {
-                    class: 'js-address__shipping' ~ (hideShippingAddressForm ? ' is-hidden ' : ''),
+                    class: 'js-address__shipping',
                     data: {
                         form: embed.forms.shipping,
                         enableStart: false,
@@ -119,7 +120,7 @@
 
             <div class="col col--sm-12 js-form-handler__billingAddress js-form-clear__billingAddress-form">
                 {% embed molecule('form') with {
-                    class: 'is-hidden spacing-top spacing-top--big js-address__billing-same-as-shipping checkout-form--hidden-actions',
+                    class: 'spacing-top spacing-top--big js-address__billing-same-as-shipping checkout-form--hidden-actions',
                     data: {
                         form: embed.forms.billing,
                         enableStart: false,
@@ -195,7 +196,7 @@
         {% endblock %}
 
         {% block actions %}
-            <div class="grid grid--middle grid--justify">
+            <div class="grid grid--middle grid--justify grid--expand">
                 <div class="col col--sm-12 spacing-bottom spacing-bottom--biggest">
                     {% if data.form.isAddressSavingSkipped is defined %}
                         {% set companyBusinessUnitAddressWidget = findWidget('CompanyBusinessUnitAddressWidget', ['shippingAddress', embed.forms.shipping.vars.data]) %}
@@ -228,7 +229,7 @@
                         } only %}
 
                         {% include molecule('save-new-address', 'CustomerPage') ignore missing with {
-                            class: 'col is-hidden',
+                            class: 'is-hidden text-left',
                             data: {
                                 form: data.form,
                             },

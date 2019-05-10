@@ -8,7 +8,6 @@
 namespace Pyz\Yves\ShoppingListWidget\Controller;
 
 use SprykerShop\Yves\ShoppingListWidget\Controller\ShoppingListWidgetController as SprykerShopShoppingListWidgetController;
-use SprykerShop\Yves\ShoppingListWidget\ShoppingListWidgetConfig;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -26,23 +25,13 @@ class ShoppingListWidgetController extends SprykerShopShoppingListWidgetControll
      */
     public function indexAction(Request $request): RedirectResponse
     {
-        $shoppingListItemTransfer = $this->getShoppingListItemTransferFromRequest($request);
-
-        $shoppingListItemTransfer = $this->getFactory()
-            ->getShoppingListClient()
-            ->addItem($shoppingListItemTransfer, $request->request->all());
-
-        if (!$shoppingListItemTransfer->getIdShoppingListItem()) {
-            $this->addErrorMessage(static::GLOSSARY_KEY_CUSTOMER_ACCOUNT_SHOPPING_LIST_ITEM_NOT_ADDED);
-        }
+        $parentResponse = parent::indexAction($request);
 
         if ($this->getRefererUrl($request) !== null) {
             return $this->redirectResponseExternal($this->getRefererUrl($request));
         }
 
-        return $this->redirectResponseInternal(ShoppingListWidgetConfig::SHOPPING_LIST_REDIRECT_URL, [
-            'idShoppingList' => $shoppingListItemTransfer->getFkShoppingList(),
-        ]);
+        return $parentResponse;
     }
 
     /**
