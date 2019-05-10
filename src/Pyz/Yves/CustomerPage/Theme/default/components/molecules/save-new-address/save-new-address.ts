@@ -1,8 +1,8 @@
-import CustomerPageSaveNewAddress from 'CustomerPage/components/molecules/save-new-address/save-new-address';
+import SaveNewAddress from 'CustomerPage/components/molecules/save-new-address/save-new-address';
 
-export default class SaveNewAddress extends CustomerPageSaveNewAddress {
+export default class CustomerPageSaveNewAddress extends SaveNewAddress {
     protected readyCallback(): void {
-        super.readyCallback()
+        super.readyCallback();
     }
 
     protected initSaveNewAddressState(): void {
@@ -10,6 +10,6 @@ export default class SaveNewAddress extends CustomerPageSaveNewAddress {
             this.newShippingAddressChecked = this.isSaveNewAddressOptionSelected(this.customerShippingAddresses);
             this.newBillingAddressChecked = this.isSaveNewAddressOptionSelected(this.customerBillingAddresses);
             this.toggleSaveNewAddress();
-        })
+        });
     }
 }

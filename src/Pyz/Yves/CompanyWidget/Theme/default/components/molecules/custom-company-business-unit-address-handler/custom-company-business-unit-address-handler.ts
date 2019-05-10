@@ -34,7 +34,7 @@ export default class CustomCompanyBusinessUnitAddressHandler extends CompanyBusi
     }
 
     fillFormFields(address: object): void {
-        for (let key in address) {
+        for (const key in address) {
             const formElement = this.form.querySelector(`[data-key="${key}"]`);
 
             if (formElement !== null) {
