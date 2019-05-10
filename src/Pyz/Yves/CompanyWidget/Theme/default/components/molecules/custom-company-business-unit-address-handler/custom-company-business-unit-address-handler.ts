@@ -1,7 +1,12 @@
 import CompanyBusinessUnitAddressHandler from 'CompanyWidget/components/molecules/company-business-unit-address-handler/company-business-unit-address-handler';
 
+const EVENT_ADDRESSES_FIELDS_FILLED = 'addresses-fields-filled';
+
 export default class CustomCompanyBusinessUnitAddressHandler extends CompanyBusinessUnitAddressHandler {
+    formFieldsFilled: CustomEvent;
+
     protected readyCallback(): void {
+        this.createCustomEvents();
         super.readyCallback();
     }
 
@@ -22,5 +27,20 @@ export default class CustomCompanyBusinessUnitAddressHandler extends CompanyBusi
             }
         });
         addressSelect.dispatchEvent(event);
+    }
+
+    protected createCustomEvents(): void {
+        this.formFieldsFilled = <CustomEvent>new CustomEvent(EVENT_ADDRESSES_FIELDS_FILLED);
+    }
+
+    fillFormFields(address: object): void {
+        for (let key in address) {
+            const formElement = this.form.querySelector(`[data-key="${key}"]`);
+
+            if (formElement !== null) {
+                (<HTMLFormElement>formElement).value = address[key];
+            }
+        }
+        document.dispatchEvent(this.formFieldsFilled);
     }
 }
