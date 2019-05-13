@@ -8,9 +8,8 @@
     idProductAbstract: required,
 } %}
 
-{% set cmsContent = spyCmsBlock({ product: data.idProductAbstract }) %}
-
 {% block body %}
+    {% set cmsContent = spyCmsBlock({ product: data.idProductAbstract }) %}
     {% if cmsContent is not empty %}
         <div class="container">
             {% embed molecule('content-collapser') with {
