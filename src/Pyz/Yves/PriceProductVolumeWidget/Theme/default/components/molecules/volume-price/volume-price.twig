@@ -1,4 +1,4 @@
-{% extends molecule('price') %}
+{% extends molecule('money-price') %}
 
 {% define config = {
     name: 'volume-price',
@@ -22,7 +22,7 @@
         </span>
     </span>
 
-    {% if data.originalAmount is not empty -%}
+    {% if data.originalAmount is not empty and data.originalAmount > data.amount -%}
         <span class="price__amount price__amount--pdp {{config.name}}__amount {{config.name}}__amount--original">{{ data.originalAmount | money }}</span>
     {%- endif -%}
 
