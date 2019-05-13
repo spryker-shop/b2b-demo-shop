@@ -1,6 +1,6 @@
 @mixin status-color($action-color, $opacity: 1) {
     background-color: rgba(helper-color-light(map-get($setting-color-actions, $action-color), 10), $opacity);
-    color: map-get($setting-color-actions, $action-color);
+    color: helper-color-dark(map-get($setting-color-actions, $action-color));
 }
 
 @mixin shop-ui-quote-status($name: '.quote-status') {
@@ -10,7 +10,7 @@
         font-size: rem(12);
 
         &--waiting {
-            @include status-color('warning', 0.3);
+            @include status-color('warning', 0.5);
         }
 
         &--approved {
