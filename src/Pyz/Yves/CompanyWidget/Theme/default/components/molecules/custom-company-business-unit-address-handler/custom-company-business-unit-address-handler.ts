@@ -23,4 +23,21 @@ export default class CustomCompanyBusinessUnitAddressHandler extends CompanyBusi
         });
         addressSelect.dispatchEvent(event);
     }
+
+    fillFormFields(address: object): void {
+        for (const key in address) {
+            if (address.hasOwnProperty(key)) {
+                const formElement = this.form.querySelector(`[data-key="${key}"]`);
+
+                if (formElement !== null) {
+                    (<HTMLFormElement>formElement).value = address[key];
+                }
+
+                if (formElement !== null && formElement.nodeName === 'SELECT') {
+                    const event = new Event('change');
+                    formElement.dispatchEvent(event);
+                }
+            }
+        }
+    }
 }
