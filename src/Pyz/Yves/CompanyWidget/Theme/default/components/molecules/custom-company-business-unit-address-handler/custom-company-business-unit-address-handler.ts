@@ -41,6 +41,6 @@ export default class CustomCompanyBusinessUnitAddressHandler extends CompanyBusi
                 (<HTMLFormElement>formElement).value = address[key];
             }
         }
-        document.dispatchEvent(this.formFieldsFilled);
+        this.dispatchEvent(this.formFieldsFilled);
     }
 }
