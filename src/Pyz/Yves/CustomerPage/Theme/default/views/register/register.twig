@@ -3,8 +3,8 @@
 {% define data = {
     forms: {
         register: _view.registerForm,
-        login: _view.loginForm
-    }
+        login: _view.loginForm,
+    },
 } %}
 
 {% block title %}
@@ -15,36 +15,45 @@
     <section class="section section--last">
         <div class="grid">
             <div class="col col--sm-12 col--lg-6 spacing-x spacing-x--inner spacing-x--big">
-                {% include molecule('form') with {
+                {% embed molecule('form') with {
                     class: 'box',
                     data: {
                         title: 'customer.registration.title' | trans,
                         form: data.forms.register,
                         options: {
-                            action: url('register')
+                            action: url('register'),
                         },
                         submit: {
                             enable: true,
-                            text: 'forms.submit.register' | trans
-                        }
+                            text: 'forms.submit.register' | trans,
+                        },
                     },
                     qa: 'register-form'
                 } only %}
+                    {% block fieldset %}
+                        {{ parent() }}
+                        <div class="grid">
+                            <div class="col col-ms--12">
+                                <small class="text-secondary">{{ 'general.required_fields.text' | trans }}</small>
+                            </div>
+                        </div>
+                    {% endblock %}
+                {% endembed %}
             </div>
 
             <div class="col col--sm-12 col--lg-6 spacing-x spacing-x--inner spacing-x--big">
-                {% include molecule('form') with {
+                {% embed molecule('form') with {
                     class: 'box',
                     data: {
                         title: 'customer.login.title' | trans,
                         form: data.forms.login,
                         layout: {
                             email: 'col col--sm-6',
-                            password: 'col col--sm-6'
+                            password: 'col col--sm-6',
                         },
                         submit: {
                             enable: true,
-                            text: 'forms.submit.login' | trans
+                            text: 'forms.submit.login' | trans,
                         },
                         cancel: {
                             enable: true,
@@ -52,10 +61,19 @@
                             text: 'forms.forgot-password' | trans,
                             icon: null,
                             class: 'link',
-                            qa: 'customer-forgot-password-link'
-                        }
-                    }
+                            qa: 'customer-forgot-password-link',
+                        },
+                    },
                 } only %}
+                    {% block fieldset %}
+                        {{ parent() }}
+                        <div class="grid">
+                            <div class="col col-ms--12">
+                                <small class="text-secondary">{{ 'general.required_fields.text' | trans }}</small>
+                            </div>
+                        </div>
+                    {% endblock %}
+                {% endembed %}
             </div>
         </div>
     </section>

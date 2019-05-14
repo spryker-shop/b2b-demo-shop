@@ -3,24 +3,33 @@
 {% define data = {
     forms: {
         profile: _view.profileForm,
-        password: _view.passwordForm
+        password: _view.passwordForm,
     },
 
     activePage: 'profile',
-    title: 'customer.account.profile_data' | trans
+    title: 'customer.account.profile_data' | trans,
 } %}
 
 {% macro profileForm(title, content) %}
     {% embed molecule('action-card') with {
         data: {
             title: title,
-            content: content
-        }
+            content: content,
+        },
     } only %}
         {% block content %}
-            {% include molecule('form') with {
-                data: data.content
+            {% embed molecule('form') with {
+                data: data.content,
             } only %}
+                {% block fieldset %}
+                    {{ parent() }}
+                    <div class="grid">
+                        <div class="col col-ms--12">
+                            <small class="text-secondary">{{ 'general.required_fields.text' | trans }}</small>
+                        </div>
+                    </div>
+                {% endblock %}
+            {% endembed %}
         {% endblock %}
     {% endembed %}
 {% endmacro %}
@@ -30,7 +39,7 @@
         modifiers: ['first'],
         data: {
             title: 'customer.account.profile_data' | trans,
-        }
+        },
     } only %}
 
     {% include molecule('action-card-grid') with {
@@ -43,23 +52,23 @@
                         layout: {
                             salutation: 'col col--sm-12 col--lg-4',
                             first_name: 'col col--sm-12 col--lg-4',
-                            last_name: 'col col--sm-12 col--lg-4'
+                            last_name: 'col col--sm-12 col--lg-4',
                         },
                         submit: {
-                            enable: true
-                        }
+                            enable: true,
+                        },
                     })
                 },
                 {
                     content: _self.profileForm('customer.password.update' | trans, {
                         form: data.forms.password,
                         submit: {
-                            enable: true
-                        }
+                            enable: true,
+                        },
                     })
-                }
-            ]
-        }
+                },
+            ],
+        },
     } only %}
     {% include molecule('delete-account', 'CustomerPage') only %}
 {% endblock %}
