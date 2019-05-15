@@ -51,6 +51,8 @@
 
         {% widget 'MultiCartMenuItemWidget' args [data.activePage] only %}{% endwidget %}
 
+        {% widget 'QuoteRequestMenuItemWidget' args [data.activePage] only %}{% endwidget %}
+
         {% widget 'BusinessOnBehalfStatusWidget' use view('change-company-user', 'BusinessOnBehalfWidget') with {
             isActivePage: 'change-company-user' == data.activePage
         } only %}

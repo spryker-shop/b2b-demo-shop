@@ -63,5 +63,16 @@
                 } only %}
             </div>
         </div>
+        <div class="grid grid--middle spacing-bottom spacing-bottom--big">
+            <div class="col col--sm-12">
+                {% widget 'QuoteRequestAgentOverviewWidget' only %}
+                    {% block body %}
+                        <div class="box box--dark">
+                            {{ parent() }}
+                        </div>
+                    {% endblock %}
+                {% endwidget %}
+            </div>
+        </div>
     </div>
 {% endblock %}

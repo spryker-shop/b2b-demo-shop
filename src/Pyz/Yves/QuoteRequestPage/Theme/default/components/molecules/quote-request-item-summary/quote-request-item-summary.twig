@@ -1,0 +1,46 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'quote-request-item-summary',
+    tag: 'ul'
+} %}
+
+{% define data = {
+    priceMode: required,
+    unitPrice: required,
+    subtotalPrice: required,
+    cartItem: required,
+    currency: required,
+} %}
+
+{% set priceModeGross = 'GROSS_MODE' %}
+{% set originUnitPrice = (data.priceMode == priceModeGross) ? data.cartItem.originUnitGrossPrice : data.cartItem.originUnitNetPrice %}
+
+{% block class %}{{ parent() }} list{% endblock %}
+
+{% block body %}
+    <li class="list__item spacing-y">
+        {{ 'cart.item.item_price' | trans }}
+        {% if data.cartItem.sourceUnitGrossPrice is not null or data.cartItem.sourceUnitNetPrice is not null %}
+            <span class="float-right"><s>{{ originUnitPrice | money(true, data.currency.code) }}</s> {{ data.unitPrice }}</span>
+        {% else %}
+            <span class="float-right">{{ data.unitPrice }}</span>
+        {% endif %}
+    </li>
+
+    {% if data.cartItem.productOptions | length > 0 %}
+        <li class="list__item text-small">
+            {% include molecule('product-options', 'ProductOptionWidget') ignore missing with {
+                data: {
+                    options: data.cartItem.productOptions,
+                }
+            } only %}
+        </li>
+    {% endif %}
+
+    <li class="list__item spacing-y">
+        <strong>{{ 'cart.item.item_total' | trans }}</strong>
+        <strong class="float-right">{{ data.subtotalPrice }}</strong>
+    </li>
+
+{% endblock %}

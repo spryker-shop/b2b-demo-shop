@@ -10,55 +10,58 @@
 {% set cartAmount = data.carts | length + 1 %}
 
 {% block body %}
-    {% if data.isMultiCartAllowed is not empty %}
         {% block cartItems %}
-            <ul class="menu menu--wide">
-                {% if data.activeCart is not empty %}
-                    <li class="menu__item">
-                        {% include molecule('mini-cart-detail', 'MultiCartWidget') with {
-                            data: {
-                                cart: data.activeCart
-                            }
-                        } only %}
-                    </li>
-                {% endif %}
-
-                {% if data.carts is not empty %}
-                    {% for cart in data.carts %}
+            {% if data.isMultiCartAllowed is not empty %}
+                <ul class="menu menu--wide">
+                    {% if data.activeCart is not empty %}
                         <li class="menu__item">
                             {% include molecule('mini-cart-detail', 'MultiCartWidget') with {
                                 data: {
-                                    cart: cart
+                                    cart: data.activeCart
                                 }
                             } only %}
                         </li>
-                    {% endfor %}
-                {% endif %}
-            </ul>
+                    {% endif %}
+
+                    {% if data.carts is not empty %}
+                        {% for cart in data.carts %}
+                            <li class="menu__item">
+                                {% include molecule('mini-cart-detail', 'MultiCartWidget') with {
+                                    data: {
+                                        cart: cart
+                                    }
+                                } only %}
+                            </li>
+                        {% endfor %}
+                    {% endif %}
+                </ul>
+            {% endif %}
         {% endblock %}
 
         {% block cartActions %}
-            <div class="grid grid--gap grid--justify grid--nowrap-lg-only">
-                <div class="col col--bottom-indent col--mobile-expand">
-                    <a class="button button--mobile-tight button--expand button--hollow spacing-right spacing-right--big" href="{{ path('multi-cart') }}" title="{{ 'multi_cart_widget.cart.view_all' | trans }}">
-                        {{ 'multi_cart_widget.cart.view_all' | trans }}
-                    </a>
+            {% if data.isMultiCartAllowed %}
+                <div class="grid grid--gap grid--justify grid--nowrap-lg-only">
+                    <div class="col col--bottom-indent col--mobile-expand">
+                        <a class="button button--mobile-tight button--expand button--hollow spacing-right spacing-right--big" href="{{ path('multi-cart') }}" title="{{ 'multi_cart_widget.cart.view_all' | trans }}">
+                            {{ 'multi_cart_widget.cart.view_all' | trans }}
+                        </a>
+                    </div>
+                    <div class="col col--bottom-indent col--mobile-expand">
+                        <a class="button button--mobile-tight button--expand" href="{{url('multi-cart/create')}}" title="{{ 'multi_cart_widget.cart.add' | trans }}">
+                            {% include atom('icon') with {
+                                modifiers: ['create-new-cart'],
+                                data: {
+                                    name: 'create-new-cart'
+                                }
+                            } only %}
+                            {{ 'multi_cart_widget.cart.add' | trans }}
+                        </a>
+                    </div>
                 </div>
-                <div class="col col--bottom-indent col--mobile-expand">
-                    <a class="button button--mobile-tight button--expand" href="{{url('multi-cart/create')}}" title="{{ 'multi_cart_widget.cart.add' | trans }}">
-                        {% include atom('icon') with {
-                            modifiers: ['create-new-cart'],
-                            data: {
-                                name: 'create-new-cart'
-                            }
-                        } only %}
-                        {{ 'multi_cart_widget.cart.add' | trans }}
-                    </a>
-                </div>
-            </div>
+            {% endif %}
         {% endblock %}
 
-    {% else %}
+    {% if not data.isMultiCartAllowed%}
         {% include molecule('cart-items-counter') with {
             data: {
                 quantity: data.cartQuantity
