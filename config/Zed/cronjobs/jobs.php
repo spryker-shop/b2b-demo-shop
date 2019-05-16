@@ -152,3 +152,13 @@ $jobs[] = [
     'run_on_non_production' => true,
     'stores' => $allStores,
 ];
+
+/* QuoteRequest */
+$jobs[] = [
+    'name' => 'close-outdated-quote-requests',
+    'command' => '$PHP_BIN vendor/bin/console quote-request:close-outdated',
+    'schedule' => '0 * * * *',
+    'enable' => true,
+    'run_on_non_production' => true,
+    'stores' => $allStores,
+];
