@@ -1,9 +1,9 @@
 import Component from 'ShopUi/models/component';
 
 export default class ColorSelector extends Component {
-    colors: HTMLAnchorElement[]
-    image: HTMLImageElement
-    detailsLink: HTMLAnchorElement
+    colors: HTMLAnchorElement[];
+    image: HTMLImageElement;
+    detailsLink: HTMLAnchorElement;
 
     protected readyCallback(): void {
         this.colors = <HTMLAnchorElement[]>Array.from(this.querySelectorAll(`.${this.jsName}__color`));
@@ -46,7 +46,7 @@ export default class ColorSelector extends Component {
         this.setProductHrefAttribute(this.detailsLink, url);
     }
 
-    setProductHrefAttribute(link, url): void {
+    setProductHrefAttribute(link: HTMLAnchorElement, url: string): void {
         if (link.getAttribute('href') !== url) {
             link.setAttribute('href', url);
         }

@@ -9,7 +9,7 @@
         }
 
         &__action-item {
-            border-right: solid 1px $setting-color-gray-2;
+            border-right: solid rem(1) $setting-color-gray-2;
             position: relative;
             z-index: $setting-zi-element + 4;
 
@@ -26,12 +26,13 @@
         }
 
         &__company {
+            @include helper-effect-transition(color);
             font-size: rem(11);
             font-weight: fw(bold);
             letter-spacing: rem(0.6);
             line-height: rem(40);
             color: $setting-color-gray-4;
-            padding: 0 30px 0 18px;
+            padding: 0 rem(30) 0 rem(18);
             height: 100%;
             text-transform: uppercase;
             white-space: nowrap;
@@ -39,18 +40,17 @@
             overflow: hidden;
             text-overflow: ellipsis;
             position: relative;
-            @include helper-effect-transition(color);
 
             @include helper-breakpoint-media-min($xl) {
                 max-width: rem(365);
             }
 
-            .is-touch & {
-                pointer-events: none;
-            }
-
             &:hover {
                 color: helper-color-light($setting-color-gray-4, 25);
+            }
+
+            .is-touch & {
+                pointer-events: none;
             }
 
             &--no-menu {
@@ -63,12 +63,12 @@
         }
 
         &__company-icon {
-            width: 7px;
-            height: 4px;
-            margin: 0 -5px 0 5px;
+            width: rem(7);
+            height: rem(4);
+            margin: 0 rem(-5) 0 rem(5);
             position: absolute;
-            top: calc(50% - 2px);
-            right: 17px;
+            top: calc(50% - #{rem(2)});
+            right: rem(17);
         }
 
         @content;

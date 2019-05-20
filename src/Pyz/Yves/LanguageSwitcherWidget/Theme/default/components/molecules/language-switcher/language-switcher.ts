@@ -13,12 +13,15 @@ export default class LanguageSwitcher extends Component {
     }
 
     protected mapEvents(): void {
-        this.selectList.forEach((select: HTMLSelectElement) => select.addEventListener('change', (event: Event) => this.onTriggerChange(event)));
+        this.selectList.forEach((select: HTMLSelectElement) => {
+            select.addEventListener('change', (event: Event) => this.onTriggerChange(event));
+        });
     }
 
     protected onTriggerChange(event: Event): void {
         const selectTarget = <HTMLSelectElement>event.currentTarget;
-        if(this.hasUrl(selectTarget)) {
+
+        if (this.hasUrl(selectTarget)) {
             window.location.assign(this.currentSelectValue(selectTarget));
         }
     }

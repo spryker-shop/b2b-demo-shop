@@ -13,12 +13,15 @@ matrix:
   fast_finish: true
   include:
     - php: "7.1"
+      dist: trusty
       env:
         - TEST_GROUP=without-acceptance
     - php: "7.1"
+      dist: trusty
       env:
         - TEST_GROUP=acceptance
     - php: "7.1"
+      dist: trusty
       env:
         - VALIDATION=1
 addons:
@@ -108,7 +111,8 @@ script:
   - if [[ $TEST_GROUP == 'without-acceptance' ]] ; then vendor/bin/codecept run -x Presentation ; fi
   - if [[ $TEST_GROUP == 'acceptance' ]] ; then vendor/bin/codecept run -g Presentation ; fi
 
-  - if [[ $VALIDATION == 1 ]] ; then npm run yves:lint ; fi
+  - if [[ $VALIDATION == 1 ]] ; then node ./frontend/libs/stylelint ; fi
+  - if [[ $VALIDATION == 1 ]] ; then node ./frontend/libs/tslint stylish ; fi
 
 notifications:
   email: false

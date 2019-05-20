@@ -17,8 +17,8 @@ export default class ShoppingListNoteToggler extends Component {
     }
 
     protected mapEvents(): void {
-        if(this.label) {
-            this.label.addEventListener('click', (event: Event) => this.onClick(event))
+        if (this.label) {
+            this.label.addEventListener('click', (event: Event) => this.onClick(event));
         }
     }
 
@@ -28,8 +28,8 @@ export default class ShoppingListNoteToggler extends Component {
         this.focusTextarea();
     }
 
-    private toggleClass(elementsToToggle:Array<HTMLElement>): void {
-        elementsToToggle.forEach((element) => {
+    private toggleClass(elementsToToggle: HTMLElement[]): void {
+        elementsToToggle.forEach(element => {
             element.classList.toggle(this.hiddenClass);
         });
     }

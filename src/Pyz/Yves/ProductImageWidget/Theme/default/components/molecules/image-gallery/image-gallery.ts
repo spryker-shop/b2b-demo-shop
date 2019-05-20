@@ -3,10 +3,9 @@ import $ from 'jquery/dist/jquery';
 import 'slick-carousel';
 
 export default class ImageGallery extends Component {
-    readonly galleryItems: HTMLElement[]
-    readonly quantityImages: number
-    readonly thumbnailSlider: $
-
+    readonly galleryItems: HTMLElement[];
+    readonly quantityImages: number;
+    readonly thumbnailSlider: $;
 
     constructor() {
         super();
@@ -26,7 +25,7 @@ export default class ImageGallery extends Component {
     }
 
     protected initializationSlider(): void {
-        if(this.quantityImages > 1) {
+        if (this.quantityImages > 1) {
             this.thumbnailSlider.slick(
                 this.thumbnailSliderConfig
             );
@@ -34,9 +33,10 @@ export default class ImageGallery extends Component {
     }
 
     protected onThumbnailHover(event: Event): void {
-        let slide = $(event.currentTarget),
-            index = slide.data('slick-index');
-        if(!slide.hasClass('slick-current')) {
+        const slide = $(event.currentTarget);
+        const index = slide.data('slick-index');
+
+        if (!slide.hasClass('slick-current')) {
             this.thumbnailSlider.find('.slick-slide').removeClass('slick-current');
             slide.addClass('slick-current');
             this.changeImage(index);
@@ -44,16 +44,16 @@ export default class ImageGallery extends Component {
     }
 
     protected onAfterChange(event: Event, slider: $): void {
-        let index = slider.currentSlide;
+        const index = slider.currentSlide;
         this.changeImage(index);
     }
 
     protected changeImage(activeItemIndex: number): void {
         this.galleryItems.forEach((galleryItem, index) => {
-            if(galleryItem.classList.contains(this.activeClass) && activeItemIndex !== index){
+            if (galleryItem.classList.contains(this.activeClass) && activeItemIndex !== index){
                 galleryItem.classList.remove(this.activeClass);
             }
-            if(activeItemIndex === index) {
+            if (activeItemIndex === index) {
                 galleryItem.classList.add(this.activeClass);
             }
         });
@@ -65,6 +65,7 @@ export default class ImageGallery extends Component {
 
     get thumbnailSliderConfig(): object {
         const sliderConfig: string = this.getAttribute('config-thumbnail-slider');
+
         return JSON.parse(sliderConfig);
     }
 }

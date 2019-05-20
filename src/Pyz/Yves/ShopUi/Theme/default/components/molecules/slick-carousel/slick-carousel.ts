@@ -3,7 +3,7 @@ import $ from 'jquery/dist/jquery';
 import 'slick-carousel';
 
 export default class SlickCarousel extends Component {
-    slider: HTMLElement
+    slider: HTMLElement;
 
     readyCallback(): void {
         this.slider = this.querySelector(`.${this.jsName}__container`);
@@ -19,7 +19,7 @@ export default class SlickCarousel extends Component {
         this.slider.classList.add(`${this.name}__container--is-inited`);
     }
 
-    protected sliderInit (): void {
+    protected sliderInit(): void {
         $(this.slider).slick(
             this.sliderConfig
         );

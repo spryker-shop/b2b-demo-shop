@@ -1,1 +1,1 @@
-import './quantity-option'
+import './quantity-option';
