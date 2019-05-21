@@ -1,0 +1,15 @@
+@mixin quote-request-page-sidebar($name: '.quote-request-sidebar') {
+    #{$name} {
+        &__item {
+            background-color: $setting-color-gray-7;
+            padding: rem(17) rem(20);
+            font-size: rem(14);
+            font-weight: fw(medium);
+            border-radius: $setting-border-radius;
+        }
+
+        @content;
+    }
+}
+
+@include quote-request-page-sidebar();

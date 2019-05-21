@@ -1,0 +1,74 @@
+@mixin quote-request-page-cart-item($name: '.quote-request-cart-item') {
+    #{$name} {
+        &__column {
+            padding-top: rem(8);
+            padding-bottom: rem(12);
+
+            @include helper-breakpoint-media-min($lg) {
+                padding-top: rem(36);
+                padding-bottom: rem(28);
+            }
+
+            &--image {
+                border-radius: $setting-border-radius 0 0 $setting-border-radius;
+                padding-top: 0;
+                padding-bottom: 0;
+                width: rem(78);
+                min-width: rem(78);
+
+                @include helper-breakpoint-media-min($md) {
+                    width: 22%;
+                    min-width: 22%;
+                }
+            }
+
+            &--description {
+                padding-top: 0;
+                padding-bottom: 0;
+                width: calc(100% - #{rem(78)});
+                min-width: calc(100% - #{rem(78)});
+
+                @include helper-breakpoint-media-min($md) {
+                    width: 78%;
+                    min-width: 78%;
+                }
+            }
+
+            &--total {
+                padding-top: 0;
+                padding-bottom: 0;
+                width: 100%;
+                min-width: 100%;
+
+                @include helper-breakpoint-media-min($lg) {
+                    padding-top: rem(36);
+                    padding-bottom: rem(28);
+                    width: 28%;
+                    min-width: 28%;
+                    text-align: right;
+                }
+
+                #{$name} & {
+                    @include helper-breakpoint-media-min($lg) {
+                        padding-left: 0;
+                        padding-right: calc(#{$setting-grid-space*2} + #{$setting-grid-space});
+                    }
+                }
+            }
+
+            &--content {
+                width: 100%;
+                min-width: 100%;
+
+                @include helper-breakpoint-media-min($lg) {
+                    width: 72%;
+                    min-width: 72%;
+                }
+            }
+        }
+
+        @content;
+    }
+}
+
+@include quote-request-page-cart-item();

@@ -1,0 +1,37 @@
+@mixin quote-request-agent-widget-request-detail($name: '.quote-request-detail') {
+    #{$name} {
+        &--small {
+            #{$name}__counter,
+            #{$name}__link,
+            #{$name}__status {
+                font-size: rem(10);
+            }
+        }
+
+        &__text {
+            font-size: rem(12);
+
+            &--small {
+                margin: 0;
+            }
+        }
+
+        &__counter {
+            display: inline-block;
+            line-height: 1.375rem;
+            font-weight: 700;
+            letter-spacing: 0.025rem;
+            color: #fff;
+            background-color: #fdbe36;
+            padding: 0 0.5rem;
+            margin-right: 0.25rem;
+            margin-bottom: 0;
+            border-radius: 2px;
+            vertical-align: middle;
+        }
+
+        @content;
+    }
+}
+
+@include quote-request-agent-widget-request-detail();

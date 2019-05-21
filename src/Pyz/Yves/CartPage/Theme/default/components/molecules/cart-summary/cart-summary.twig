@@ -80,8 +80,9 @@
     {% if is_granted('ROLE_USER') %}
         {% widget 'QuoteRequestCreateWidget' args [data.cart] only %}
             {% block body %}
-                <hr />
-                {{ parent() }}
+                <div class="spacing-y">
+                    {{ parent() }}
+                </div>
             {% endblock %}
         {% endwidget %}
         {% widget 'QuoteRequestCartWidget' args [data.cart] only %}{% endwidget %}

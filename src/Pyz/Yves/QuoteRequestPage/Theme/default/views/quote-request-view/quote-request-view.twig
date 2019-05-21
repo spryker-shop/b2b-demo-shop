@@ -1,0 +1,32 @@
+{% extends template('page-layout-quote-request', 'QuoteRequestPage') %}
+
+{% define data = {
+    quoteRequests: _view.quoteRequests,
+
+    pagination: {
+        parameters: {},
+        currentPage: _view.pagination.page,
+        paginationPath: 'quote-request',
+        maxPage: _view.pagination.lastPage,
+        showAlwaysFirstAndLast: true,
+    },
+} %}
+
+{% block customerContent %}
+    {% if data.title is not empty %}
+        <h3 class=" spacing-bottom spacing-bottom--bigger">{{ data.title }}</h3>
+    {% endif %}
+    {% if data.quoteRequests | length %}
+        {% include molecule('quote-request-view-table', 'QuoteRequestPage') with {
+            data: {
+                quoteRequests: data.quoteRequests,
+            },
+        } only %}
+        <hr/>
+        {% include molecule('pagination') with {
+            data: data.pagination,
+        } only %}
+    {% else %}
+        {{ 'quote_request_page.quote_request.view.empty' | trans }}
+    {% endif %}
+{% endblock %}

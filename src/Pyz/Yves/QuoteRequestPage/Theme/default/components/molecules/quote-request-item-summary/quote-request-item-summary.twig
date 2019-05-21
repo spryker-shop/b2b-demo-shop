@@ -2,7 +2,7 @@
 
 {% define config = {
     name: 'quote-request-item-summary',
-    tag: 'ul'
+    tag: 'ul',
 } %}
 
 {% define data = {
@@ -20,27 +20,24 @@
 
 {% block body %}
     <li class="list__item spacing-y">
-        {{ 'cart.item.item_price' | trans }}
+        <strong>{{ 'cart.item.item_price' | trans }}:</strong>
         {% if data.cartItem.sourceUnitGrossPrice is not null or data.cartItem.sourceUnitNetPrice is not null %}
-            <span class="float-right"><s>{{ originUnitPrice | money(true, data.currency.code) }}</s> {{ data.unitPrice }}</span>
+            <span class="text-secondary spacing-x spacing-x--inner spacing-x--small"><s>{{ originUnitPrice | money(true, data.currency.code) }}</s> {{ data.unitPrice }}</span>
         {% else %}
-            <span class="float-right">{{ data.unitPrice }}</span>
+            <span class="text-secondary spacing-x spacing-x--inner spacing-x--small">{{ data.unitPrice }}</span>
         {% endif %}
     </li>
 
     {% if data.cartItem.productOptions | length > 0 %}
         <li class="list__item text-small">
             {% include molecule('product-options', 'ProductOptionWidget') ignore missing with {
+                modifiers: ['no-border'],
+                class: 'spacing-y spacing-y--inner text-secondary',
                 data: {
                     options: data.cartItem.productOptions,
-                }
+                },
             } only %}
         </li>
     {% endif %}
-
-    <li class="list__item spacing-y">
-        <strong>{{ 'cart.item.item_total' | trans }}</strong>
-        <strong class="float-right">{{ data.subtotalPrice }}</strong>
-    </li>
 
 {% endblock %}

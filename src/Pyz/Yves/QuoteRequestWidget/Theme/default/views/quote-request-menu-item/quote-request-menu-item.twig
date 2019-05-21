@@ -1,0 +1,19 @@
+{% extends template('widget') %}
+
+{% define data = {
+    isActivePage: _widget.isActivePage,
+    isVisible: _widget.isVisible,
+} %}
+
+{% set itemClass = data.isActivePage ? ' navigation-sidebar-item--active' : '' %}
+
+{% block body %}
+    {% if data.isVisible %}
+        {% include molecule('quote-request-menu-item', 'QuoteRequestAgentWidget') ignore missing with {
+            data: {
+                url: 'quote-request',
+            },
+            class: 'navigation-sidebar-item ' ~ itemClass,
+        } only %}
+    {% endif %}
+{% endblock %}

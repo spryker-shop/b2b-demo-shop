@@ -260,6 +260,18 @@
                     {% endif %}
                 </div>
 
+                {% widget 'QuoteRequestAgentOverviewWidget' only %}
+                    {% block body %}
+                        {% block activeRequest %}
+                            {% if data.quoteRequestOverviewCollection.currentQuoteRequest is not empty %}
+                                <div class="order-sidebar__item--summary">
+                                    {{ block('activeRequestActions') }}
+                                </div>
+                            {% endif %}
+                        {% endblock %}
+                    {% endblock %}
+                {% endwidget %}
+
                 {% include molecule('toggler-accordion') with {
                     attributes: {
                         'wrap-selector': '.js-order-sidebar',

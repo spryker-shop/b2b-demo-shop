@@ -5,12 +5,17 @@
     tag: 'date-time-picker'
 } %}
 
+{% define data = {
+    field: required
+} %}
+
 {% define attributes = {
-    language: required,
+    language: 'date_time_picker_language' | trans,
     parent: '.' ~ config.name,
-    config: '{}'
+    config: '{}',
+    'trigger-selector': required
 } %}
 
 {% block body %}
-    <input class="{{ config.name }}__trigger {{ config.jsName }}__trigger input input--expand" type="text">
+    {{ form_row(data.field) }}
 {% endblock %}

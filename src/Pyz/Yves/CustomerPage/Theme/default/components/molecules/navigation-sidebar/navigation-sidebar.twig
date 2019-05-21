@@ -36,38 +36,36 @@
             name: 'newsletter',
             url: path('customer/newsletter'),
             label: 'customer.account.newsletter' | trans,
-            icon: 'envelopes'
-        }
+            icon: 'envelopes',
+        },
     ]
 } %}
 
 {% block postContent %}
-    <ul class="menu">
-        {% widget 'ShoppingListMenuItemWidget' args [
-            data.activePage,
-            data.activeEntityId
-        ] only %}
-        {% endwidget %}
+    {% widget 'ShoppingListMenuItemWidget' args [
+        data.activePage,
+        data.activeEntityId
+    ] only %}
+    {% endwidget %}
 
-        {% widget 'MultiCartMenuItemWidget' args [data.activePage] only %}{% endwidget %}
+    {% widget 'MultiCartMenuItemWidget' args [data.activePage] only %}{% endwidget %}
 
-        {% widget 'QuoteRequestMenuItemWidget' args [data.activePage] only %}{% endwidget %}
+    {% widget 'QuoteRequestMenuItemWidget' args [data.activePage] only %}{% endwidget %}
 
-        {% widget 'BusinessOnBehalfStatusWidget' use view('change-company-user', 'BusinessOnBehalfWidget') with {
-            isActivePage: 'change-company-user' == data.activePage
-        } only %}
-            {% block body %}
-                {% include molecule('navigation-sidebar-item') with {
-                    data: {
-                        url: path('company/user/select'),
-                        icon: 'building',
-                        label: 'business_on_behalf_widget.no_selected_company' | trans,
-                        name: 'no-company',
-                        active: isActivePage
-                    },
-                    modifiers: isActivePage ? ['active'] : []
-                } only %}
-            {% endblock %}
-        {% endwidget %}
-    </ul>
+    {% widget 'BusinessOnBehalfStatusWidget' use view('change-company-user', 'BusinessOnBehalfWidget') with {
+        isActivePage: 'change-company-user' == data.activePage
+    } only %}
+        {% block body %}
+            {% include molecule('navigation-sidebar-item') with {
+                data: {
+                    url: path('company/user/select'),
+                    icon: 'building',
+                    label: 'business_on_behalf_widget.no_selected_company' | trans,
+                    name: 'no-company',
+                    active: isActivePage,
+                },
+                modifiers: isActivePage ? ['active'] : []
+            } only %}
+        {% endblock %}
+    {% endwidget %}
 {% endblock %}

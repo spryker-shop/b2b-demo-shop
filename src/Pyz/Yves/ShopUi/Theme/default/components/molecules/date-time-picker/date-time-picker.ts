@@ -6,7 +6,7 @@ export default class DateTimePicker extends Component {
     trigger: HTMLInputElement;
 
     protected readyCallback(): void {
-        this.trigger = <HTMLInputElement>this.querySelector(`.${this.jsName}__trigger`);
+        this.trigger = <HTMLInputElement>this.querySelector(this.triggerSelector);
         this.mapEvents();
     }
 
@@ -25,6 +25,10 @@ export default class DateTimePicker extends Component {
 
     get parent(): string {
         return this.getAttribute('parent');
+    }
+
+    get triggerSelector(): string {
+        return this.getAttribute('trigger-selector');
     }
 
     get language(): string {

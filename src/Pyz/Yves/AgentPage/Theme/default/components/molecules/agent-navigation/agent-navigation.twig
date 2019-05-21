@@ -1,0 +1,37 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'navigation-sidebar',
+    tag: 'nav',
+} %}
+
+{% define data = {
+    activePage: required,
+} %}
+
+{%- macro isActive(page, activePage) -%}
+    {%- if page == activePage -%}navigation-sidebar-item--active{%- endif -%}
+{%- endmacro -%}
+
+{%- import _self as macros -%}
+
+{% block body %}
+    <ul class="{{ config.name }}__list menu">
+        {% include molecule('navigation-sidebar-item') with {
+            data: {
+                url: path('agent/overview'),
+                icon: 'page',
+                label: 'agent.account.overview' | trans,
+                name: 'overview',
+                active: macros.isActive('overview', data.activePage),
+            },
+            modifiers: macros.isActive('overview', data.activePage) ? ['active'] : []
+        } only %}
+        {% include molecule('quote-request-menu-item', 'QuoteRequestAgentWidget') ignore missing with {
+            data: {
+                url: 'agent/quote-request',
+            },
+            class: config.name ~ '-item ' ~ macros.isActive('quoteRequestAgent', data.activePage),
+        } only %}
+    </ul>
+{% endblock %}

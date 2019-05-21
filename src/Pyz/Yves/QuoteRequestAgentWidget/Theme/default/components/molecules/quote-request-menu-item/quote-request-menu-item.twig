@@ -1,0 +1,28 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'navigation-sidebar-item',
+    tag: 'li',
+} %}
+
+{% define data = {
+    activePage: null,
+    url: required,
+} %}
+
+{% block body %}
+    <a class="{{ config.name }}__link" href="{{ url(data.url) }}" data-id="sidebar-quote-request">
+        <div class="{{ config.name }}__icon-wrapper">
+            {% include atom('icon') with {
+                modifiers: ['big', 'message'],
+                data: {
+                    name: 'message',
+                },
+                class: config.name ~ '__icon',
+            } only %}
+        </div>
+        <div class="{{ config.name }}__label">
+            {{ 'agent.account.quote_request' | trans }}
+        </div>
+    </a>
+{% endblock %}
