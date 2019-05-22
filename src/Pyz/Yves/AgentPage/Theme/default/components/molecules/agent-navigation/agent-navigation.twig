@@ -25,13 +25,13 @@
                 name: 'overview',
                 active: macros.isActive('overview', data.activePage),
             },
-            modifiers: macros.isActive('overview', data.activePage) ? ['active'] : []
+            modifiers: macros.isActive('overview', data.activePage) ? ['active'] : [],
         } only %}
         {% include molecule('quote-request-menu-item', 'QuoteRequestAgentWidget') ignore missing with {
             data: {
-                url: 'agent/quote-request',
+                url: url('agent/quote-request'),
             },
-            class: config.name ~ '-item ' ~ macros.isActive('quoteRequestAgent', data.activePage),
+            class: macros.isActive('quoteRequestAgent', data.activePage),
         } only %}
     </ul>
 {% endblock %}

@@ -2,18 +2,18 @@
 
 {% define config = {
     name: 'date-time-picker',
-    tag: 'date-time-picker'
+    tag: 'date-time-picker',
 } %}
 
 {% define data = {
-    field: required
+    field: required,
 } %}
 
 {% define attributes = {
-    language: 'date_time_picker_language' | trans,
-    parent: '.' ~ config.name,
-    config: '{}',
-    'trigger-selector': required
+    'language': 'date_time_picker_language' | trans,
+    'parent': '.' ~ config.name,
+    'config': '{}',
+    'trigger-selector': required,
 } %}
 
 {% block body %}

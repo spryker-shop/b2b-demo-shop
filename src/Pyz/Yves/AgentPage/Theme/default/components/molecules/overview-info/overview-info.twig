@@ -2,7 +2,6 @@
 
 {% define config = {
     name: 'overview-info',
-    tag: 'div',
 } %}
 
 {% define data = {
@@ -28,7 +27,7 @@
 {% endmacro %}
 
 {% block body %}
-    {% include molecule('action-bar', 'ShopUi') with {
+    {% include molecule('action-bar') with {
         modifiers: ['small'],
         data: {
             title: 'agent.account.profile_data' | trans,
@@ -38,7 +37,7 @@
         data: {
             cards: [
                 { content: _self.agent(data) },
-            ]
-        }
+            ],
+        },
     } only %}
 {% endblock %}

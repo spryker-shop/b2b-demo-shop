@@ -11,7 +11,7 @@
 } %}
 
 {% block body %}
-    <a class="{{ config.name }}__link" href="{{ url(data.url) }}" data-id="sidebar-quote-request">
+    <a class="{{ config.name }}__link" href="{{ data.url }}" data-id="sidebar-quote-request">
         <div class="{{ config.name }}__icon-wrapper">
             {% include atom('icon') with {
                 modifiers: ['big', 'message'],

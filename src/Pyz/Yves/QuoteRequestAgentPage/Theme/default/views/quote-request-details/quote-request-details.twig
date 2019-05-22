@@ -33,7 +33,7 @@
     } only %}
 {% endblock %}
 
-{% block contentClass %}page-layout-main--rfq{% endblock %}
+{% block contentClass %}page-layout-main--request-for-quote{% endblock %}
 
 {% block content %}
     <div class="grid grid--gap">
@@ -59,7 +59,7 @@
                     {% endif %}
                     {% if quote is not empty %}
                         {% for cartItem in quote.items %}
-                            {% include molecule('quote-request-cart-item', 'QuoteRequestPage') with {
+                            {% include molecule('quote-request-cart-item', 'QuoteRequestPage') ignore missing with {
                                 class: 'product-item',
                                 data: {
                                     priceMode: quote.priceMode,
@@ -118,15 +118,15 @@
                 </p>
                 {% if isLatestVersion %}
                     {% if data.quoteRequest.isLatestVersionHidden %}
-                        <p><b>{{ 'quote_request_page.quote_request.labels.latest_version_is_hidden' | trans }}</b></p>
+                        <p><strong>{{ 'quote_request_page.quote_request.labels.latest_version_is_hidden' | trans }}</strong></p>
                     {% else %}
-                        <p><b>{{ 'quote_request_page.quote_request.labels.latest_version_is_visible' | trans }}</b></p>
+                        <p><strong>{{ 'quote_request_page.quote_request.labels.latest_version_is_visible' | trans }}</strong></p>
                     {% endif %}
                 {% endif %}
             </div>
             <div class="quote-request-sidebar__item spacing-bottom spacing-bottom--big">
                 {% if quote and quote.items is not empty %}
-                    {% include molecule('quote-request-cart-summary', 'QuoteRequestPage') with {
+                    {% include molecule('quote-request-cart-summary', 'QuoteRequestPage') ignore missing with {
                         data: {
                             cart: quote,
                         },

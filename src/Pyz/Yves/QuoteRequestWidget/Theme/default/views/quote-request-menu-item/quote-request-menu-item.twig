@@ -11,7 +11,7 @@
     {% if data.isVisible %}
         {% include molecule('quote-request-menu-item', 'QuoteRequestAgentWidget') ignore missing with {
             data: {
-                url: 'quote-request',
+                url: url('quote-request'),
             },
             class: 'navigation-sidebar-item ' ~ itemClass,
         } only %}

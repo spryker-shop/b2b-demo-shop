@@ -20,7 +20,7 @@
     } only %}
 {% endblock %}
 
-{% block contentClass %}page-layout-main--rfq{% endblock %}
+{% block contentClass %}page-layout-main--request-for-quote{% endblock %}
 
 {% define data = {
     title: 'quote_request_page.quote_request' | trans,
@@ -48,76 +48,76 @@
 
         {{ form_start(data.quoteRequestForm) }}
 
-        <div class="grid grid--gap">
-            <div class="col col--sm-12 col--xl-9">
-                <div class="grid grid--gap box spacing-bottom spacing-bottom--bigger">
-                    {% for child in data.quoteRequestForm.latestVersion.metadata %}
-                        <div class="col col--sm-12 col--xl-6 spacing-bottom spacing-bottom--big">
-                            {% if child.vars.name == 'delivery_date' %}
-                                {% include molecule('date-time-picker') with {
-                                    data: {
-                                        field: child,
-                                    },
-                                    attributes: {
-                                        'trigger-selector': '.datepicker',
-                                        'config': '{
-                                            "timepicker": false
-                                        }',
-                                    },
-                                } only %}
-                            {% else %}
-                                {{ form_row(child) }}
-                            {% endif %}
-                        </div>
-                    {% endfor %}
-                </div>
-                <div class="grid grid--gap">
-                    <div class="col col--sm-12">
-                        {% if quote and quote.priceMode is not empty %}
-                            <div class="spacing-bottom spacing-bottom--bigger">
-                                {% include molecule('price-mode') with {
-                                    data: {
-                                        priceMode: quote.priceMode,
-                                    },
-                                } only %}
+            <div class="grid grid--gap">
+                <div class="col col--sm-12 col--xl-9">
+                    <div class="grid grid--gap box spacing-bottom spacing-bottom--bigger">
+                        {% for child in data.quoteRequestForm.latestVersion.metadata %}
+                            <div class="col col--sm-12 col--xl-6 spacing-bottom spacing-bottom--big">
+                                {% if child.vars.name == 'delivery_date' %}
+                                    {% include molecule('date-time-picker') with {
+                                        data: {
+                                            field: child,
+                                        },
+                                        attributes: {
+                                            'trigger-selector': '.datepicker',
+                                            'config': '{
+                                                "timepicker": false
+                                            }',
+                                        },
+                                    } only %}
+                                {% else %}
+                                    {{ form_row(child) }}
+                                {% endif %}
                             </div>
-                        {% endif %}
-                        {% for cartItem in quote.items %}
-                            {% include molecule('quote-request-cart-item', 'QuoteRequestPage') with {
-                                class: 'product-item',
-                                data: {
-                                    priceMode: quote.priceMode,
-                                    cartItem: cartItem,
-                                    currency: quote.currency,
-                                },
-                            } only %}
                         {% endfor %}
                     </div>
+                    <div class="grid grid--gap">
+                        <div class="col col--sm-12">
+                            {% if quote and quote.priceMode is not empty %}
+                                <div class="spacing-bottom spacing-bottom--bigger">
+                                    {% include molecule('price-mode') with {
+                                        data: {
+                                            priceMode: quote.priceMode,
+                                        },
+                                    } only %}
+                                </div>
+                            {% endif %}
+                            {% for cartItem in quote.items %}
+                                {% include molecule('quote-request-cart-item', 'QuoteRequestPage') with {
+                                    class: 'product-item',
+                                    data: {
+                                        priceMode: quote.priceMode,
+                                        cartItem: cartItem,
+                                        currency: quote.currency,
+                                    },
+                                } only %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="quote-request-sidebar col col--sm-12 col--xl-3">
+                    <div class="quote-request-sidebar__item spacing-bottom">
+                        <p>{{ 'quote_request_page.quote_request.labels.date' | trans }}: <span class="text-secondary">{{ data.quoteRequestForm.vars.value.createdAt | formatDateTime }}</span></p>
+                        <p>{{ 'quote_request_page.quote_request.labels.status' | trans }}:</p>
+                        <p>{{ 'quote_request_page.quote_request.labels.valid_till' | trans }}:</p>
+                        <p>{{ 'quote_request_page.quote_request.labels.history' | trans }}:
+                        </p>
+                    </div>
+                    <div class="quote-request-sidebar__item spacing-bottom spacing-bottom--big">
+                        {% include molecule('quote-request-cart-summary', 'QuoteRequestPage') with {
+                            data: {
+                                cart: quote,
+                            },
+                        } only %}
+                    </div>
+                    <a class="spacing-bottom button button--expand button--cancel" href="{{ url('cart') }}">
+                        {{ 'quote_request_page.quote_request.actions.cancel' | trans }}
+                    </a>
+                    <button type="submit" class="spacing-bottom button button--expand button--success">
+                        {{ 'quote_request_page.quote_request.submit' | trans }}
+                    </button>
                 </div>
             </div>
-            <div class="quote-request-sidebar col col--sm-12 col--xl-3">
-                <div class="quote-request-sidebar__item spacing-bottom">
-                    <p>{{ 'quote_request_page.quote_request.labels.date' | trans }}: <span class="text-secondary">{{ data.quoteRequestForm.vars.value.createdAt | formatDateTime }}</span></p>
-                    <p>{{ 'quote_request_page.quote_request.labels.status' | trans }}:</p>
-                    <p>{{ 'quote_request_page.quote_request.labels.valid_till' | trans }}:</p>
-                    <p>{{ 'quote_request_page.quote_request.labels.history' | trans }}:
-                    </p>
-                </div>
-                <div class="quote-request-sidebar__item spacing-bottom spacing-bottom--big">
-                    {% include molecule('quote-request-cart-summary', 'QuoteRequestPage') with {
-                        data: {
-                            cart: quote,
-                        },
-                    } only %}
-                </div>
-                <a class="spacing-bottom button button--expand button--cancel" href="{{ url('cart') }}">
-                    {{ 'quote_request_page.quote_request.actions.cancel' | trans }}
-                </a>
-                <button type="submit" class="spacing-bottom button button--expand button--success">
-                    {{ 'quote_request_page.quote_request.submit' | trans }}
-                </button>
-            </div>
-        </div>
 
         {{ form_end(data.quoteRequestForm) }}
 

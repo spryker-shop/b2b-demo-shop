@@ -12,25 +12,25 @@
             name: 'overview',
             url: path('customer/overview'),
             label: 'customer.account.overview' | trans,
-            icon: 'page'
+            icon: 'page',
         },
         {
             name: 'profile',
             url: path('customer/profile'),
             label: 'customer.account.profile_data' | trans,
-            icon: 'user'
+            icon: 'user',
         },
         {
             name: 'address',
             url: path('customer/address'),
             label: 'customer.account.address' | trans,
-            icon: 'marker'
+            icon: 'marker',
         },
         {
             name: 'order',
             url: path('customer/order'),
             label: 'customer.account.order_history' | trans,
-            icon: 'history'
+            icon: 'history',
         },
         {
             name: 'newsletter',
@@ -64,7 +64,7 @@
                     name: 'no-company',
                     active: isActivePage,
                 },
-                modifiers: isActivePage ? ['active'] : []
+                modifiers: isActivePage ? ['active'] : [],
             } only %}
         {% endblock %}
     {% endwidget %}
