@@ -16,8 +16,8 @@
 
 {% block title %}{% endblock %}
 
-{% block agentContent %}
-    {% if data.title is not empty %}
+{% block customerContent %}
+    {% if data.title %}
         <h3 class="spacing-bottom spacing-bottom--bigger grid grid--justify">
             <span class="col">{{ data.title }}</span>
             <a class="col button button--hollow button--mobile-tight" href="{{ url('agent/quote-request/create') }}">
@@ -39,7 +39,6 @@
                 quoteRequests: data.quoteRequests,
             },
         } only %}
-        <hr/>
         {% include molecule('pagination') with {
             data: data.pagination,
         } only %}

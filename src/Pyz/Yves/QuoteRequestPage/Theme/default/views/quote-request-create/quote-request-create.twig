@@ -34,6 +34,7 @@
 {% block content %}
 
     {% if not quote or quote.items is empty %}
+
         <div class="box text-center">
             {% include atom('icon') with {
                 modifiers: ['biggest'],
@@ -44,79 +45,43 @@
             } only %}
             <h6>{{ 'cart.empty' | trans }}</h6>
         </div>
+
     {% else %}
 
         {{ form_start(data.quoteRequestForm) }}
 
             <div class="grid grid--gap">
-                <div class="col col--sm-12 col--xl-9">
-                    <div class="grid grid--gap box spacing-bottom spacing-bottom--bigger">
-                        {% for child in data.quoteRequestForm.latestVersion.metadata %}
-                            <div class="col col--sm-12 col--xl-6 spacing-bottom spacing-bottom--big">
-                                {% if child.vars.name == 'delivery_date' %}
-                                    {% include molecule('date-time-picker') with {
-                                        data: {
-                                            field: child,
-                                        },
-                                        attributes: {
-                                            'trigger-selector': '.datepicker',
-                                            'config': '{
-                                                "timepicker": false
-                                            }',
-                                        },
-                                    } only %}
-                                {% else %}
-                                    {{ form_row(child) }}
-                                {% endif %}
-                            </div>
+
+                {% embed organism('quote-request-main-content', 'QuoteRequestPage') ignore missing with {
+                    class: 'col col--sm-12 col--xl-9',
+                    data: {
+                        version: data.quoteRequestForm.latestVersion,
+                        quote: quote,
+                    },
+                } only %}
+                    {% block formContent %}
+                        {% for child in data.version.metadata %}
+                            {% include molecule('quote-request-form-field', 'QuoteRequestPage') with {
+                                class: 'col col--sm-12 col--xl-6 spacing-bottom spacing-bottom--big',
+                                data: {
+                                    field: child,
+                                },
+                            } only %}
                         {% endfor %}
-                    </div>
-                    <div class="grid grid--gap">
-                        <div class="col col--sm-12">
-                            {% if quote and quote.priceMode is not empty %}
-                                <div class="spacing-bottom spacing-bottom--bigger">
-                                    {% include molecule('price-mode') with {
-                                        data: {
-                                            priceMode: quote.priceMode,
-                                        },
-                                    } only %}
-                                </div>
-                            {% endif %}
-                            {% for cartItem in quote.items %}
-                                {% include molecule('quote-request-cart-item', 'QuoteRequestPage') with {
-                                    class: 'product-item',
-                                    data: {
-                                        priceMode: quote.priceMode,
-                                        cartItem: cartItem,
-                                        currency: quote.currency,
-                                    },
-                                } only %}
-                            {% endfor %}
-                        </div>
-                    </div>
-                </div>
-                <div class="quote-request-sidebar col col--sm-12 col--xl-3">
-                    <div class="quote-request-sidebar__item spacing-bottom">
-                        <p>{{ 'quote_request_page.quote_request.labels.date' | trans }}: <span class="text-secondary">{{ data.quoteRequestForm.vars.value.createdAt | formatDateTime }}</span></p>
-                        <p>{{ 'quote_request_page.quote_request.labels.status' | trans }}:</p>
-                        <p>{{ 'quote_request_page.quote_request.labels.valid_till' | trans }}:</p>
-                        <p>{{ 'quote_request_page.quote_request.labels.history' | trans }}:
-                        </p>
-                    </div>
-                    <div class="quote-request-sidebar__item spacing-bottom spacing-bottom--big">
-                        {% include molecule('quote-request-cart-summary', 'QuoteRequestPage') with {
-                            data: {
-                                cart: quote,
-                            },
-                        } only %}
-                    </div>
-                    <a class="spacing-bottom button button--expand button--cancel" href="{{ url('cart') }}">
-                        {{ 'quote_request_page.quote_request.actions.cancel' | trans }}
-                    </a>
-                    <button type="submit" class="spacing-bottom button button--expand button--success">
-                        {{ 'quote_request_page.quote_request.submit' | trans }}
-                    </button>
-                </div>
+                    {% endblock %}
+                {% endembed %}
+
+                {% include organism('quote-request-sidebar', 'QuoteRequestPage') with {
+                    class: 'col col--sm-12 col--xl-3',
+                    data: {
+                        quoteRequest: data.quoteRequest,
+                        quoteRequestForm: data.quoteRequestForm,
+                        quote: quote,
+                        cancelTitle: 'quote_request_page.quote_request.actions.cancel' | trans,
+                        cancelUrl: url('cart'),
+                    },
+                } only %}
+
             </div>
 
         {{ form_end(data.quoteRequestForm) }}

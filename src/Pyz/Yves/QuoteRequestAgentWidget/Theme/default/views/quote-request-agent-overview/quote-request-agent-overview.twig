@@ -46,7 +46,7 @@
                             </a>
                         </div>
                         <div class="col">
-                            <a href="{{ path('agent/quote-request/create') }}" class="button button--success" title="{{ 'quote_request_agent_widget.create_new_request' | trans }}">
+                            <a href="{{ path('agent/quote-request/create') }}" class="button button--success" title="{{ 'quote_request_agent_widget.create_new_request' | trans }}" data-init-single-click>
                                 {{ 'quote_request_agent_widget.create_new_request' | trans }}
                             </a>
                         </div>
@@ -60,7 +60,7 @@
 {% block body %}
     {{ block('requestList') }}
     {% block activeRequest %}
-        {% if data.quoteRequestOverviewCollection.currentQuoteRequest is not empty %}
+        {% if data.quoteRequestOverviewCollection.currentQuoteRequest %}
             <div class="grid grid--middle box spacing--inner">
                 <div class="col col--sm-12">
                     {% include molecule('quote-request-detail', 'QuoteRequestAgentWidget') with {

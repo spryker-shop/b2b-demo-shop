@@ -16,7 +16,7 @@
         {% endwidget %}
     </h6>
     <h6 class="spacing-bottom spacing-bottom--inner">{{ 'cart.your-order' | trans }}</h6>
-    <hr />
+    <hr>
 
     {% widget 'SalesOrderThresholdWidget' args [data.cart.expenses] only %}
         {% block body %}
@@ -37,12 +37,10 @@
     } only %}
 
     <ul class="list spacing-y">
-
         <li class="list__item spacing-y">
             {{ 'cart.price.subtotal' | trans }}
             <span class="float-right">{{ data.cart.totals.subtotal | money(true, data.cart.currency.code) }}</span>
         </li>
-
         <li class="list__item spacing-y">
             {{ 'cart.total.tax_total' | trans }}
             <span class="float-right">{{ data.cart.totals.taxTotal.amount | money(true, data.cart.currency.code) }}</span>

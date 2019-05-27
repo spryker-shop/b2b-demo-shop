@@ -3,7 +3,7 @@ import $ from 'jquery/dist/jquery';
 import 'jquery-datetimepicker/build/jquery.datetimepicker.full';
 
 export default class DateTimePicker extends Component {
-    trigger: HTMLInputElement;
+    protected trigger: HTMLInputElement;
 
     protected readyCallback(): void {
         this.trigger = <HTMLInputElement>this.querySelector(this.triggerSelector);
@@ -24,7 +24,7 @@ export default class DateTimePicker extends Component {
     }
 
     get parent(): string {
-        return this.getAttribute('parent');
+        return this.getAttribute('parent-id');
     }
 
     get triggerSelector(): string {

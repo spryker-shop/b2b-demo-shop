@@ -18,11 +18,11 @@
                 },
                 {
                     label: 'quote_request_page.quote_request' | trans,
-                    url: path('agent/quote-request')
+                    url: path('agent/quote-request'),
                 },
                 {
                     label: '#' ~ data.quoteRequest.quoteRequestReference,
-                    url: path('agent/quote-request/details', {quoteRequestReference: data.quoteRequest.quoteRequestReference})
+                    url: path('agent/quote-request/details', {quoteRequestReference: data.quoteRequest.quoteRequestReference}),
                 },
                 {
                     label: 'quote_request_page.quote_request.actions.edit' | trans,
@@ -39,140 +39,101 @@
     {{ form_start(data.quoteRequestForm) }}
 
         <div class="grid grid--gap">
-            <div class="col col--sm-12 col--xl-9">
-                <div class="grid grid--gap box spacing-bottom spacing-bottom--bigger">
-                    {% for child in data.quoteRequestForm.latestVersion.metadata %}
-                        <div class="col col--sm-12 col--xl-6 spacing-bottom spacing-bottom--big">
-                            {% if child.vars.name == 'delivery_date' %}
-                                {% include molecule('date-time-picker') with {
+            {% embed organism('quote-request-main-content', 'QuoteRequestPage') ignore missing with {
+                class: 'col col--sm-12 col--xl-9',
+                data: {
+                    version: data.quoteRequestForm.latestVersion,
+                    quote: quote,
+                },
+            } only %}
+                {% block formContent %}
+                    {% for child in data.version.metadata %}
+                        {% include molecule('quote-request-form-field', 'QuoteRequestPage') with {
+                            class: 'col col--sm-12 col--xl-6 spacing-bottom spacing-bottom--big',
+                            data: {
+                                field: child,
+                            },
+                        } only %}
+                    {% endfor %}
+                {% endblock %}
+                {% block cartItems %}
+                    {% for itemChild in data.version.quote.items %}
+                        {% set cartItem = itemChild.vars.value %}
+                        {% embed molecule('quote-request-cart-item', 'QuoteRequestPage') ignore missing with {
+                            data: {
+                                priceMode: data.quote.priceMode,
+                                cartItem: cartItem,
+                                currency: data.quote.currency,
+                                itemChild: itemChild,
+                            },
+                        } only %}
+                            {% block sourcePriceForm %}
+                                {% set unitSourcePrice = null %}
+                                {% if data.itemChild.sourceUnitGrossPrice is defined %}
+                                    {% set unitSourcePrice = data.itemChild.sourceUnitGrossPrice.vars.value %}
+                                {% endif %}
+                                {% if data.itemChild.sourceUnitNetPrice is defined %}
+                                    {% set unitSourcePrice = data.itemChild.sourceUnitNetPrice.vars.value %}
+                                {% endif %}
+                                {% include molecule('source-price-form', 'QuoteRequestAgentPage') with {
                                     data: {
-                                        field: child,
+                                        priceFiled: data.itemChild,
+                                        checkboxName: 'use_default_price',
+                                        checkboxValue: 1,
+                                        isChecked: unitSourcePrice != null ? false : true,
+                                        checkboxLabel: 'quote_request_page.quote_request.use_default_price' | trans,
                                     },
                                     attributes: {
-                                        'trigger-selector': '.datepicker',
-                                        'config': '{
-                                            "timepicker": false
-                                        }',
+                                        price: unitSourcePrice,
                                     },
                                 } only %}
-                            {% else %}
-                                {{ form_row(child) }}
-                            {% endif %}
-                        </div>
+                            {% endblock %}
+                        {% endembed %}
                     {% endfor %}
-                </div>
-                <div class="grid grid--gap">
-                    <div class="col col--sm-12">
-                        {% if quote and quote.priceMode is not empty %}
-                            <div class="spacing-bottom spacing-bottom--bigger">
-                                {% include molecule('price-mode') with {
-                                    data: {
-                                        priceMode: quote.priceMode,
-                                    },
-                                } only %}
-                            </div>
-                        {% endif %}
-                        {% for itemChild in data.quoteRequestForm.latestVersion.quote.items %}
-                            {% set cartItem = itemChild.vars.value %}
-                            {% embed molecule('quote-request-cart-item', 'QuoteRequestPage') ignore missing with {
-                                class: 'product-item',
-                                data: {
-                                    priceMode: quote.priceMode,
-                                    cartItem: cartItem,
-                                    currency: quote.currency,
-                                    itemChild: itemChild,
-                                },
-                            } only %}
-                                {% block sourcePriceForm %}
-                                    {% set unitSourcePrice = null %}
+                {% endblock %}
+            {% endembed %}
 
-                                    {% if data.itemChild.sourceUnitGrossPrice is defined %}
-                                        {% set unitSourcePrice = data.itemChild.sourceUnitGrossPrice.vars.value %}
-                                    {% endif %}
-
-                                    {% if data.itemChild.sourceUnitNetPrice is defined %}
-                                        {% set unitSourcePrice = data.itemChild.sourceUnitNetPrice.vars.value %}
-                                    {% endif %}
-
-                                    {% include molecule('source-price-form', 'QuoteRequestAgentPage') with {
-                                        data: {
-                                            priceFiled: data.itemChild,
-                                            checkboxName: 'use_default_price',
-                                            checkboxValue: 1,
-                                            isChecked: unitSourcePrice != null ? false : true,
-                                            checkboxLabel: 'quote_request_page.quote_request.use_default_price' | trans,
-                                        },
-                                        attributes: {
-                                            price: unitSourcePrice,
-                                        },
-                                    } only %}
-                                {% endblock %}
-                            {% endembed %}
-                        {% endfor %}
-                    </div>
-                </div>
-            </div>
-            <div class="quote-request-sidebar col col--sm-12 col--xl-3">
-                <div class="quote-request-sidebar__item spacing-bottom">
-                    <p>{{ 'quote_request_page.quote_request.labels.date' | trans }}:
-                        <span class="text-secondary">{{ data.quoteRequest.createdAt | formatDateTime }}</span>
-                    </p>
-                    <p>{{ 'quote_request_page.quote_request.labels.company' | trans }}:
-                        <span class="text-secondary">{{ data.quoteRequest.companyUser.company.name }}</span>
-                    </p>
-                    <p>{{ 'quote_request_page.quote_request.labels.business_unit' | trans }}:
-                        <span class="text-secondary">{{ data.quoteRequest.companyUser.companyBusinessUnit ? data.quoteRequest.companyUser.companyBusinessUnit.name : '' }}</span>
-                    </p>
-                    <p>{{ 'quote_request_page.quote_request.labels.customer' | trans }}:
-                        <span class="testimonials text-secondary">{{ data.quoteRequest.companyUser.customer.firstName }} {{ data.quoteRequest.companyUser.customer.lastName }}</span>
-                    </p>
-                    <p>{{ 'quote_request_page.quote_request.labels.status' | trans }}:
-                        <span class="quote-status request-status request-status--{{ data.quoteRequest.status }}">{{ ('quote_request.status.' ~ data.quoteRequest.status) | trans }}</span>
-                    </p>
+            {% embed organism('quote-request-sidebar', 'QuoteRequestPage') with {
+                class: 'col col--sm-12 col--xl-3',
+                data: {
+                    quoteRequestForm: data.quoteRequestForm,
+                    quoteRequest: data.quoteRequest,
+                    quote: quote,
+                },
+            } only %}
+                {% block additionalContent %}
                     <div>
                         <p>{{ 'quote_request_page.quote_request.labels.valid_till' | trans }}:</p>
                         {% include molecule('date-time-picker') with {
                             data: {
                                 field: data.quoteRequestForm.validUntil,
                             },
-                            attributes: {
-                                'trigger-selector': '.datepicker',
-                            },
                         } only %}
                     </div>
                     <p>{{ 'quote_request_page.quote_request.labels.history' | trans }}:
                         <span class="text-secondary">{{ data.quoteRequest.latestVersion ? data.quoteRequest.latestVersion.versionReference : null }}</span>
                     </p>
-                    <p>
-                        {{ form_row(data.quoteRequestForm.isLatestVersionHidden) }}
-                    </p>
-                </div>
-                <div class="quote-request-sidebar__item spacing-bottom spacing-bottom--big">
-                    {% if quote and quote.items is not empty %}
-                        {% include molecule('quote-request-cart-summary', 'QuoteRequestPage') ignore missing with {
-                            data: {
-                                cart: quote,
-                            },
-                        } only %}
-                    {% endif %}
-                </div>
-                <a class="spacing-bottom button button--expand button--hollow"
-                   href="{{ url('agent/quote-request/details', {quoteRequestReference: data.quoteRequest.quoteRequestReference}) }}">
-                    {{ 'quote_request_page.quote_request.actions.back_to_view' | trans }}
-                </a>
-                <a class="spacing-bottom button button--expand button--edit-items"
-                   href="{{ url('agent/quote-request/edit-items', {quoteRequestReference: data.quoteRequest.quoteRequestReference}) }}">
-                    {{ 'quote_request_page.quote_request.actions.edit_items' | trans }}
-                </a>
-                <button type="submit" name="save" class="spacing-bottom button button--expand button--success">
-                    {{ 'quote_request_page.quote_request.actions.save' | trans }}
-                </button>
-                {% if data.quoteRequest.latestVersion.quote.items | length %}
-                    <button type="submit" name="sendToCustomer" class="spacing-bottom button button--expand button--success">
-                        {{ 'quote_request_page.quote_request.actions.send_to_customer' | trans }}
+                    <p>{{ form_row(data.quoteRequestForm.isLatestVersionHidden) }}</p>
+                {% endblock %}
+                {% block quoteActions %}
+                    <a class="spacing-bottom button button--expand button--hollow"
+                       href="{{ url('agent/quote-request/details', {quoteRequestReference: data.quoteRequest.quoteRequestReference}) }}" data-init-single-click>
+                        {{ 'quote_request_page.quote_request.actions.back_to_view' | trans }}
+                    </a>
+                    <a class="spacing-bottom button button--expand button--edit-items"
+                       href="{{ url('agent/quote-request/edit-items', {quoteRequestReference: data.quoteRequest.quoteRequestReference}) }}">
+                        {{ 'quote_request_page.quote_request.actions.edit_items' | trans }}
+                    </a>
+                    <button type="submit" name="save" class="spacing-bottom button button--expand button--success">
+                        {{ 'quote_request_page.quote_request.actions.save' | trans }}
                     </button>
-                {% endif %}
-            </div>
+                    {% if data.quoteRequest.latestVersion.quote.items | length %}
+                        <button type="submit" name="sendToCustomer" class="spacing-bottom button button--expand button--success">
+                            {{ 'quote_request_page.quote_request.actions.send_to_customer' | trans }}
+                        </button>
+                    {% endif %}
+                {% endblock %}
+            {% endembed %}
         </div>
 
     {{ form_end(data.quoteRequestForm) }}

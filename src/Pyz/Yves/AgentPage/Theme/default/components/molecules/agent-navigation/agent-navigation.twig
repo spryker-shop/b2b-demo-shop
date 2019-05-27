@@ -1,37 +1,22 @@
-{% extends model('component') %}
+{% extends molecule('navigation-sidebar') %}
 
 {% define config = {
-    name: 'navigation-sidebar',
-    tag: 'nav',
+    name: 'agent-navigation',
 } %}
 
 {% define data = {
-    activePage: required,
+    items: [
+        {
+            name: 'overview',
+            url: url('agent/overview'),
+            label: 'customer.account.overview' | trans,
+            icon: 'page',
+        },
+        {
+            name: 'quoteRequestAgent',
+            url: url('agent/quote-request'),
+            label: 'agent.account.quote_request' | trans,
+            icon: 'message',
+        },
+    ],
 } %}
-
-{%- macro isActive(page, activePage) -%}
-    {%- if page == activePage -%}navigation-sidebar-item--active{%- endif -%}
-{%- endmacro -%}
-
-{%- import _self as macros -%}
-
-{% block body %}
-    <ul class="{{ config.name }}__list menu">
-        {% include molecule('navigation-sidebar-item') with {
-            data: {
-                url: path('agent/overview'),
-                icon: 'page',
-                label: 'agent.account.overview' | trans,
-                name: 'overview',
-                active: macros.isActive('overview', data.activePage),
-            },
-            modifiers: macros.isActive('overview', data.activePage) ? ['active'] : [],
-        } only %}
-        {% include molecule('quote-request-menu-item', 'QuoteRequestAgentWidget') ignore missing with {
-            data: {
-                url: url('agent/quote-request'),
-            },
-            class: macros.isActive('quoteRequestAgent', data.activePage),
-        } only %}
-    </ul>
-{% endblock %}

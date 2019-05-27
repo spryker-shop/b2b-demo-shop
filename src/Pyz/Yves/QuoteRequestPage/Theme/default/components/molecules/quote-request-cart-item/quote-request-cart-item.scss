@@ -1,5 +1,22 @@
-@mixin quote-request-page-cart-item($name: '.quote-request-cart-item') {
+$quote-request-cart-item-image-width: rem(78);
+
+@mixin quote-request-page-quote-request-cart-item($name: '.quote-request-cart-item') {
     #{$name} {
+        border: rem(2) solid $setting-color-gray-7;
+        border-radius: $setting-border-radius;
+        padding: rem(12);
+        margin-bottom: rem(10);
+        position: relative;
+
+        @include helper-breakpoint-media-min($md) {
+            padding-right: rem(22);
+        }
+
+        @include helper-breakpoint-media-min($lg) {
+            padding: 0;
+            margin-bottom: rem(20);
+        }
+
         &__column {
             padding-top: rem(8);
             padding-bottom: rem(12);
@@ -13,8 +30,8 @@
                 border-radius: $setting-border-radius 0 0 $setting-border-radius;
                 padding-top: 0;
                 padding-bottom: 0;
-                width: rem(78);
-                min-width: rem(78);
+                width: $quote-request-cart-item-image-width;
+                min-width: $quote-request-cart-item-image-width;
 
                 @include helper-breakpoint-media-min($md) {
                     width: 22%;
@@ -25,8 +42,8 @@
             &--description {
                 padding-top: 0;
                 padding-bottom: 0;
-                width: calc(100% - #{rem(78)});
-                min-width: calc(100% - #{rem(78)});
+                width: calc(100% - #{$quote-request-cart-item-image-width});
+                min-width: calc(100% - #{$quote-request-cart-item-image-width});
 
                 @include helper-breakpoint-media-min($md) {
                     width: 78%;
@@ -71,4 +88,4 @@
     }
 }
 
-@include quote-request-page-cart-item();
+@include quote-request-page-quote-request-cart-item();

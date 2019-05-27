@@ -263,7 +263,7 @@
                 {% widget 'QuoteRequestAgentOverviewWidget' only %}
                     {% block body %}
                         {% block activeRequest %}
-                            {% if data.quoteRequestOverviewCollection.currentQuoteRequest is not empty %}
+                            {% if data.quoteRequestOverviewCollection.currentQuoteRequest %}
                                 <div class="order-sidebar__item--summary">
                                     {{ block('activeRequestActions') }}
                                 </div>

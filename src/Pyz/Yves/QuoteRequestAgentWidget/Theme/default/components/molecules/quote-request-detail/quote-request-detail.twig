@@ -14,7 +14,7 @@
     <div class="grid grid--middle text-small text-left">
         <div class="col col--sm-3 ">
             <p>
-                <a class="{{ config.name }}__link" href="{{ path('agent/quote-request/details', { quoteRequestReference: (data.quoteRequest.quoteRequestReference)}) }}" title="#{{ data.quoteRequest.quoteRequestReference }}">
+                <a class="{{ config.name }}__link" href="{{ path('agent/quote-request/details', { quoteRequestReference: (data.quoteRequest.quoteRequestReference)}) }}" title="#{{ data.quoteRequest.quoteRequestReference }}" data-init-single-click>
                     #{{ data.quoteRequest.quoteRequestReference }}
                 </a>
             </p>

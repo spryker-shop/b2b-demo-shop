@@ -13,7 +13,7 @@
 } %}
 
 {% block customerContent %}
-    {% if data.title is not empty %}
+    {% if data.title %}
         <h3 class=" spacing-bottom spacing-bottom--bigger">{{ data.title }}</h3>
     {% endif %}
     {% if data.quoteRequests | length %}

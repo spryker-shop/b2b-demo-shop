@@ -1,4 +1,4 @@
-{% extends template('page-layout-main') %}
+{% extends template('page-layout-customer', 'CustomerPage') %}
 
 {% define data = {
     activePage: 'overview',
@@ -21,37 +21,15 @@
     } only %}
 {% endblock %}
 
-{% block title %}{% endblock %}
-
 {% block content %}
-    {% set agentContent %}
-        {% block agentContent %}{% endblock %}
-    {% endset %}
-
-    {% embed organism('section') with {
-        modifiers: ['last'],
-    } %}
-        {% block body %}
-            <div class="{{ config.name }}__inner {{ data.innerClass }}">
-                {% block inner %}
-                    <div class="grid">
-                        <div class="col col--sm-12 col--md-3">
-                            {% block agentNavigation %}
-                                {% include molecule('agent-navigation', 'AgentPage') with {
-                                    data: {
-                                        activePage: data.activePage,
-                                    },
-                                } only %}
-                            {% endblock %}
-                        </div>
-                        <div class="col col--sm-12 col--md-9">
-                            {{ agentContent }}
-                        </div>
-                    </div>
-                {% endblock %}
-            </div>
+    {% set customerNavigation %}
+        {% block customerNavigation %}
+            {% include molecule('agent-navigation', 'AgentPage') with {
+                data: {
+                    activePage: data.activePage,
+                },
+            } only %}
         {% endblock %}
-    {% endembed %}
+    {% endset %}
+    {{ parent() }}
 {% endblock %}
-
-{% block footer %}{% endblock %}

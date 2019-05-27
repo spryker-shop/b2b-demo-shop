@@ -5,15 +5,16 @@
     isVisible: _widget.isVisible,
 } %}
 
-{% set itemClass = data.isActivePage ? ' navigation-sidebar-item--active' : '' %}
-
 {% block body %}
     {% if data.isVisible %}
-        {% include molecule('quote-request-menu-item', 'QuoteRequestAgentWidget') ignore missing with {
+        {% include molecule('navigation-sidebar-item') ignore missing with {
+            modifiers: data.isActivePage ? ['active'] : [],
             data: {
                 url: url('quote-request'),
+                icon: 'message',
+                label: 'agent.account.quote_request' | trans,
+                name: 'message',
             },
-            class: 'navigation-sidebar-item ' ~ itemClass,
         } only %}
     {% endif %}
 {% endblock %}

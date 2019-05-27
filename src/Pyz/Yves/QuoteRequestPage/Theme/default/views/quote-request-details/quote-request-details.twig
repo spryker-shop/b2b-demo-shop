@@ -10,7 +10,7 @@
     isQuoteRequestEditable: _view.isQuoteRequestEditable,
 } %}
 
-{% set isLatestVersion = (data.version.idQuoteRequestVersion == data.quoteRequest.latestVisibleVersion.idQuoteRequestVersion) ? true : false %}
+{% set isLatestVersion = data.version.idQuoteRequestVersion == data.quoteRequest.latestVisibleVersion.idQuoteRequestVersion %}
 {% set quote = data.version.quote %}
 
 {% block breadcrumbs %}
@@ -37,121 +37,28 @@
 
 {% block content %}
     <div class="grid grid--gap">
-        <div class="col col--sm-12 col--xl-9">
-            <div class="grid grid--gap box spacing-bottom spacing-bottom--bigger">
-                {% for key, value in data.version.metadata %}
-                    <div class="col col--sm-12 col--xl-6">
-                        <label class="label">{{ ('quote_request_page.quote_request.metadata.label.' ~ key) | trans }}</label>
-                        <p class="text-break">{{ value }}</p>
-                    </div>
-                {% endfor %}
-            </div>
-            <div class="grid grid--gap">
-                <div class="col col--sm-12">
-                    {% if quote and quote.priceMode is not empty %}
-                        <div class="spacing-bottom spacing-bottom--bigger">
-                            {% include molecule('price-mode') with {
-                                data: {
-                                    priceMode: quote.priceMode,
-                                },
-                            } only %}
-                        </div>
-                    {% endif %}
-                    {% if quote %}
-                        {% for cartItem in quote.items %}
-                            {% include molecule('quote-request-cart-item', 'QuoteRequestPage') with {
-                                class: 'product-item',
-                                data: {
-                                    priceMode: quote.priceMode,
-                                    cartItem: cartItem,
-                                    currency: quote.currency,
-                                },
-                            } only %}
-                        {% endfor %}
-                    {% endif %}
-                </div>
-            </div>
-        </div>
-        <div class="quote-request-sidebar col col--sm-12 col--xl-3">
-            <div class="quote-request-sidebar__item spacing-bottom">
-                <p>{{ 'quote_request_page.quote_request.labels.date' | trans }}:
-                    <span class="text-secondary">{{ data.quoteRequest.createdAt | formatDateTime }}</span>
-                </p>
-                <p>{{ 'quote_request_page.quote_request.labels.status' | trans }}:
-                    <span class="quote-status request-status request-status--{{ data.quoteRequest.status }}">{{ ('quote_request.status.' ~ data.quoteRequest.status) | trans }}</span>
-                </p>
-                {% if data.quoteRequest.validUntil %}
-                    <p>{{ 'quote_request_page.quote_request.labels.valid_till' | trans }}:
-                        <span class="text-secondary">{{ data.quoteRequest.validUntil | formatDateTime }}</span>
-                    </p>
-                {% endif %}
-                <p class="grid grid--justify grid--middle">
-                    <span class="col col--sm-12 col--md-4">{{ 'quote_request_page.quote_request.labels.history' | trans }}:</span>
-                    {% embed atom('select') with {
-                        class: 'col col--sm-12 col--md-8',
-                        attributes: {
-                            name: 'quote-request-versions',
-                            onchange: 'this.options[this.selectedIndex].value && (window.location.search = "quote-request-version-reference=" + this.options[this.selectedIndex].value);',
-                        },
-                        embed: {
-                            versionReferences: data.quoteRequestVersionReferences,
-                            currentVersionReference: data.version ? data.version.versionReference : null,
-                        },
-                    } only %}
-                        {% block options %}
-                            {% for versionReference in embed.versionReferences %}
-                                <option value="{{ versionReference }}" {{ (versionReference == embed.currentVersionReference) ? 'selected' : '' }}>{{ versionReference }}</option>
-                            {% endfor %}
-                        {% endblock %}
-                    {% endembed %}
-                </p>
-            </div>
-            <div class="quote-request-sidebar__item spacing-bottom spacing-bottom--big">
-                {% if quote.items is not empty %}
-                    {% include molecule('quote-request-cart-summary', 'QuoteRequestPage') with {
-                        data: {
-                            cart: quote,
-                        },
-                    } only %}
-                {% endif %}
-            </div>
+        {% include organism('quote-request-main-content', 'QuoteRequestPage') ignore missing with {
+            class: 'col col--sm-12 col--xl-9',
+            data: {
+                version: data.version,
+                quote: quote,
+            },
+        } only %}
 
-            <a class="spacing-bottom button button--expand button--hollow" href="{{ url('quote-request') }}">
-                {{ 'quote_request_page.quote_request.actions.back_to_list' | trans }}
-            </a>
-
-            {% if data.version and data.version.idQuoteRequestVersion == data.quoteRequest.latestVisibleVersion.idQuoteRequestVersion %}
-
-                {% if data.isQuoteRequestCancelable %}
-                    <a class="spacing-bottom button button--expand button--cancel"
-                       href="{{ path('quote-request/cancel', { quoteRequestReference: (data.quoteRequest.quoteRequestReference) }) }}">
-                        {{ 'quote_request_page.quote_request.actions.cancel' | trans }}
-                    </a>
-                {% endif %}
-
-                {% if data.isQuoteRequestReady %}
-                    <a class="spacing-bottom button button--expand button--hollow"
-                       href="{{ path('quote-request/revise', { quoteRequestReference: (data.quoteRequest.quoteRequestReference) }) }}">
-                        {{ 'quote_request_page.quote_request.actions.revise' | trans }}
-                    </a>
-                    <a class="spacing-bottom button button--expand button--success"
-                       href="{{ path('quote-request/convert-to-cart', { quoteRequestReference: (data.quoteRequest.quoteRequestReference) }) }}">
-                        {{ 'quote_request_page.quote_request.actions.convert_to_cart' | trans }}
-                    </a>
-                {% endif %}
-
-                {% if data.isQuoteRequestEditable %}
-                    <a class="spacing-bottom button button--expand button--success"
-                       href="{{ path('quote-request/edit', { quoteRequestReference: (data.quoteRequest.quoteRequestReference) }) }}">
-                        {{ 'quote_request_page.quote_request.actions.edit' | trans }}
-                    </a>
-                    <a class="spacing-bottom button button--expand button--success"
-                       href="{{ path('quote-request/send-to-user', { quoteRequestReference: (data.quoteRequest.quoteRequestReference) }) }}">
-                        {{ 'quote_request_page.quote_request.actions.send_to_agent' | trans }}
-                    </a>
-                {% endif %}
-
-            {% endif %}
-        </div>
+        {% include organism('quote-request-sidebar', 'QuoteRequestPage') with {
+            class: 'col col--sm-12 col--xl-3',
+            data: {
+                quoteRequest: data.quoteRequest,
+                quote: quote,
+                quoteRequestVersionReferences: data.quoteRequestVersionReferences,
+                version: data.version,
+                cancelTitle: 'quote_request_page.quote_request.actions.back_to_list' | trans,
+                cancelUrl: url('quote-request'),
+                isQuoteRequestCancelable: data.isQuoteRequestCancelable,
+                isQuoteRequestReady: data.isQuoteRequestReady,
+                isQuoteRequestEditable: data.isQuoteRequestEditable,
+                isLatestVersion: isLatestVersion,
+            },
+        } only %}
     </div>
 {% endblock %}

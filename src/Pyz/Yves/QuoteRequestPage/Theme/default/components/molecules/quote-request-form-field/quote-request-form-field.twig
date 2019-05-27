@@ -1,0 +1,26 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'quote-request-form-field',
+} %}
+
+{% define data = {
+    field: required,
+} %}
+
+{% block body %}
+    {% if data.field.vars.name == 'delivery_date' %}
+        {% include molecule('date-time-picker') with {
+            data: {
+                field: data.field,
+            },
+            attributes: {
+                'config': '{
+                    "timepicker": false
+                }',
+            },
+        } only %}
+    {% else %}
+        {{ form_row(data.field) }}
+    {% endif %}
+{% endblock %}

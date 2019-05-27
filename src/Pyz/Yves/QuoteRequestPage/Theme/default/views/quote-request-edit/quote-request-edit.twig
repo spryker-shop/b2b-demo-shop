@@ -44,98 +44,53 @@
             <h6>{{ 'cart.empty' | trans }}</h6>
         </div>
     {% else %}
-
         {{ form_start(data.quoteRequestForm) }}
-
             <div class="grid grid--gap">
-                <div class="col col--sm-12 col--xl-9">
-                    <div class="grid grid--gap box spacing-bottom spacing-bottom--bigger">
-                        {% for child in data.quoteRequestForm.latestVersion.metadata %}
-                            <div class="col col--sm-12 col--xl-6 spacing-bottom spacing-bottom--big">
-                                {% if child.vars.name == 'delivery_date' %}
-                                    {% include molecule('date-time-picker') with {
-                                        data: {
-                                            field: child,
-                                        },
-                                        attributes: {
-                                            'trigger-selector': '.datepicker',
-                                            'config': '{
-                                                "timepicker": false
-                                            }',
-                                        },
-                                    } only %}
-                                {% else %}
-                                    {{ form_row(child) }}
-                                {% endif %}
-                            </div>
+                {% embed organism('quote-request-main-content', 'QuoteRequestPage') ignore missing with {
+                    class: 'col col--sm-12 col--xl-9',
+                    data: {
+                        version: data.quoteRequestForm.latestVersion,
+                        quote: quote,
+                    },
+                } only %}
+                    {% block formContent %}
+                        {% for child in data.version.metadata %}
+                            {% include molecule('quote-request-form-field', 'QuoteRequestPage') with {
+                                class: 'col col--sm-12 col--xl-6 spacing-bottom spacing-bottom--big',
+                                data: {
+                                    field: child,
+                                },
+                            } only %}
                         {% endfor %}
-                    </div>
-                    <div class="grid grid--gap">
-                        <div class="col col--sm-12">
-                            {% if quote and quote.priceMode is not empty %}
-                                <div class="spacing-bottom spacing-bottom--bigger">
-                                    {% include molecule('price-mode') with {
-                                        data: {
-                                            priceMode: quote.priceMode,
-                                        },
-                                    } only %}
-                                </div>
-                            {% endif %}
-                            {% for cartItem in quote.items %}
-                                {% include molecule('quote-request-cart-item', 'QuoteRequestPage') with {
-                                    class: 'product-item',
-                                    data: {
-                                        priceMode: quote.priceMode,
-                                        cartItem: cartItem,
-                                        currency: quote.currency,
-                                    },
-                                } only %}
-                            {% endfor %}
-                        </div>
-                    </div>
-                </div>
-                <div class="quote-request-sidebar col col--sm-12 col--xl-3">
-                    <div class="quote-request-sidebar__item spacing-bottom">
-                        <p>{{ 'quote_request_page.quote_request.labels.date' | trans }}:
-                            <span class="text-secondary">{{ data.quoteRequest.createdAt | formatDateTime }}</span>
-                        </p>
-                        <p>{{ 'quote_request_page.quote_request.labels.status' | trans }}:
-                            <span class="quote-status request-status request-status--{{ data.quoteRequest.status }}">{{ ('quote_request.status.' ~ data.quoteRequest.status) | trans }}</span>
-                        </p>
-                        {% if data.quoteRequest.validUntil %}
-                            <p>{{ 'quote_request_page.quote_request.labels.valid_till' | trans }}:
-                                <span class="text-secondary">{{ data.quoteRequest.validUntil | formatDateTime }}</span>
-                            </p>
-                        {% endif %}
-                        <p>{{ 'quote_request_page.quote_request.labels.history' | trans }}:
-                            <span class="text-secondary">{{ data.quoteRequest.latestVersion ? data.quoteRequest.latestVersion.versionReference : null }}</span>
-                        </p>
-                    </div>
-                    <div class="quote-request-sidebar__item spacing-bottom spacing-bottom--big">
-                        {% include molecule('quote-request-cart-summary', 'QuoteRequestPage') with {
-                            data: {
-                                cart: quote,
-                            },
-                        } only %}
-                    </div>
-                    <a class="spacing-bottom button button--expand button--hollow"
-                       href="{{ url('quote-request/details', {quoteRequestReference: data.quoteRequest.quoteRequestReference}) }}">
-                        {{ 'quote_request_page.quote_request.actions.back_to_view' | trans }}
-                    </a>
-                    <a class="spacing-bottom button button--expand button--edit-items"
-                       href="{{ url('quote-request/edit-items', { quoteRequestReference: (data.quoteRequest.quoteRequestReference) }) }}">
-                        {{ 'quote_request_page.quote_request.actions.edit_items' | trans }}
-                    </a>
-                    <button type="submit" name="save" class="spacing-bottom button button--expand button--success">
-                        {{ 'quote_request_page.quote_request.actions.save' | trans }}
-                    </button>
-                    <button type="submit" name="sendToUser" class="spacing-bottom button button--expand button--success">
-                        {{ 'quote_request_page.quote_request.actions.send_to_agent' | trans }}
-                    </button>
-                </div>
+                    {% endblock %}
+                {% endembed %}
+
+                {% embed organism('quote-request-sidebar', 'QuoteRequestPage') with {
+                    class: 'col col--sm-12 col--xl-3',
+                    data: {
+                        quoteRequest: data.quoteRequest,
+                        quote: quote,
+                    },
+                } only %}
+                    {% block quoteActions %}
+                        <a class="spacing-bottom button button--expand button--hollow"
+                           href="{{ url('quote-request/details', {quoteRequestReference: data.quoteRequest.quoteRequestReference}) }}">
+                            {{ 'quote_request_page.quote_request.actions.back_to_view' | trans }}
+                        </a>
+                        <a class="spacing-bottom button button--expand button--edit-items"
+                           href="{{ url('quote-request/edit-items', { quoteRequestReference: (data.quoteRequest.quoteRequestReference) }) }}">
+                            {{ 'quote_request_page.quote_request.actions.edit_items' | trans }}
+                        </a>
+                        <button type="submit" name="save" class="spacing-bottom button button--expand button--success">
+                            {{ 'quote_request_page.quote_request.actions.save' | trans }}
+                        </button>
+                        <button type="submit" name="sendToUser" class="spacing-bottom button button--expand button--success">
+                            {{ 'quote_request_page.quote_request.actions.send_to_agent' | trans }}
+                        </button>
+                    {% endblock %}
+                {% endembed %}
+
             </div>
-
         {{ form_end(data.quoteRequestForm) }}
-
     {% endif %}
 {% endblock %}

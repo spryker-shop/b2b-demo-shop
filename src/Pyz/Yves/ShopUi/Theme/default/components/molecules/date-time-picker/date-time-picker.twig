@@ -11,9 +11,9 @@
 
 {% define attributes = {
     'language': 'date_time_picker_language' | trans,
-    'parent': '.' ~ config.name,
+    'parent-id': '.' ~ config.name,
     'config': '{}',
-    'trigger-selector': required,
+    'trigger-selector': '.datepicker',
 } %}
 
 {% block body %}
