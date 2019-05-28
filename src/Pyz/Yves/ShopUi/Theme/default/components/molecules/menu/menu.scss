@@ -41,7 +41,7 @@
         &__item {
 
             font-weight: fw(regular);
-            margin: 0.5rem 0;
+            margin: rem(8) 0;
 
             &--has-children-dropdown {
                 position: relative;
@@ -53,17 +53,17 @@
                     @include helper-effect-transition;
                     position: absolute;
                     left: 0;
-                    width: 15rem;
-                    margin-left: - 0.5rem;
-                    border: 1px solid $setting-color-light;
+                    width: rem(240);
+                    margin-left: rem(-8);
+                    border: rem(1) solid $setting-color-light;
                     background-color: $setting-color-white;
 
                     &--wide {
-                        width: 23rem;
+                        width: rem(368);
                     }
 
                     &--wider {
-                        width: 28rem;
+                        width: rem(448);
                     }
                 }
 
@@ -72,8 +72,8 @@
                 }
 
                 & > #{$name} > #{$name}__item {
-                    margin-left: 0.5rem;
-                    margin-right: 0.5rem;
+                    margin-left: rem(8);
+                    margin-right: rem(8);
                 }
 
                 &::after {
