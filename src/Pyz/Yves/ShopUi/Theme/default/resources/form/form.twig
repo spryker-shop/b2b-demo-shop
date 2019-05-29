@@ -213,7 +213,7 @@
     {% if widget == 'single_text' %}
         {%- set label = (label | default('')) | trans -%}
         {%- set attr = attr | merge({
-            class: ('input input--expand' ~ (errors ? ' input--error' : ' ') ~ (attr.class | default(''))) | trim,
+            class: ('input input--expand' ~ (errors ? ' input--error ' : ' ') ~ (attr.class | default(''))) | trim,
             type: 'text',
             autocomplete: 'off',
             placeholder: attr.placeholder | default(label),
@@ -233,7 +233,7 @@
     {%- if widget == 'single_text' -%}
         {%- set label = (label | default('')) | trans -%}
         {%- set attr = attr | merge({
-            class: ('input input--expand' ~ (errors ? ' input--error' : ' ') ~ (attr.class | default(''))) | trim,
+            class: ('input input--expand' ~ (errors ? ' input--error ' : ' ') ~ (attr.class | default(''))) | trim,
             type: 'text',
             autocomplete: 'off',
             placeholder: attr.placeholder | default(label),

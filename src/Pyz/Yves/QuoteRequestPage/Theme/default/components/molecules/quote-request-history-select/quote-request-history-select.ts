@@ -13,9 +13,10 @@ export default class QuoteRequestHistorySelect extends Component {
     }
 
     protected onChange(): void {
+        const VERSION_REFERENCE_TITLE = 'quote-request-version-reference';
         const selectedValue = this.select.options[this.select.selectedIndex].value;
         if (selectedValue) {
-            window.location.search = `quote-request-version-reference=${selectedValue}`;
+            window.location.search = `${VERSION_REFERENCE_TITLE}=${selectedValue}`;
         }
     }
 }

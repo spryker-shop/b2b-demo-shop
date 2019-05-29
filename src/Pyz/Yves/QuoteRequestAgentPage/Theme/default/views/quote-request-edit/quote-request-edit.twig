@@ -48,7 +48,7 @@
             } only %}
                 {% block formContent %}
                     {% for child in data.version.metadata %}
-                        {% include molecule('quote-request-form-field', 'QuoteRequestPage') with {
+                        {% include molecule('quote-request-form-field', 'QuoteRequestPage') ignore missing with {
                             class: 'col col--sm-12 col--xl-6 spacing-bottom spacing-bottom--big',
                             data: {
                                 field: child,
@@ -93,7 +93,7 @@
                 {% endblock %}
             {% endembed %}
 
-            {% embed organism('quote-request-sidebar', 'QuoteRequestPage') with {
+            {% embed organism('quote-request-sidebar', 'QuoteRequestPage') ignore missing with {
                 class: 'col col--sm-12 col--xl-3',
                 data: {
                     quoteRequestForm: data.quoteRequestForm,
@@ -104,11 +104,22 @@
                 {% block additionalContent %}
                     <div>
                         <p>{{ 'quote_request_page.quote_request.labels.valid_till' | trans }}:</p>
-                        {% include molecule('date-time-picker') with {
+                        {% widget 'LanguageSwitcherWidget' args [app.request.pathInfo, app.request.queryString, app.request.requestUri] with {
                             data: {
                                 field: data.quoteRequestForm.validUntil,
                             },
                         } only %}
+                            {% block body %}
+                                {% include molecule('date-time-picker') with {
+                                    data: {
+                                        field: data.field,
+                                    },
+                                    attributes: {
+                                        'language': data.currentLanguage,
+                                    },
+                                } only %}
+                            {% endblock %}
+                        {% endwidget %}
                     </div>
                     <p>{{ 'quote_request_page.quote_request.labels.history' | trans }}:
                         <span class="text-secondary">{{ data.quoteRequest.latestVersion ? data.quoteRequest.latestVersion.versionReference : null }}</span>

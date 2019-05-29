@@ -10,16 +10,25 @@
 
 {% block body %}
     {% if data.field.vars.name == 'delivery_date' %}
-        {% include molecule('date-time-picker') with {
+        {% widget 'LanguageSwitcherWidget' args [app.request.pathInfo, app.request.queryString, app.request.requestUri] with {
             data: {
                 field: data.field,
             },
-            attributes: {
-                'config': '{
-                    "timepicker": false
-                }',
-            },
         } only %}
+            {% block body %}
+                {% include molecule('date-time-picker') with {
+                    data: {
+                        field: data.field,
+                    },
+                    attributes: {
+                        'language': data.currentLanguage,
+                        'config': '{
+                            "timepicker": false
+                        }',
+                    },
+                } only %}
+            {% endblock %}
+        {% endwidget %}
     {% else %}
         {{ form_row(data.field) }}
     {% endif %}
