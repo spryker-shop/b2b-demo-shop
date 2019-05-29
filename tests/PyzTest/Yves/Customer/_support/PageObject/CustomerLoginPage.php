@@ -9,11 +9,11 @@ namespace PyzTest\Yves\Customer\PageObject;
 
 class CustomerLoginPage extends Customer
 {
-    public const URL = '/register';
+    public const URL = '/login';
 
     public const FORGOT_PASSWORD_LINK = '[data-qa="customer-forgot-password-link"]';
 
-    public const TITLE_LOGIN = 'Access your account';
+    public const TITLE_LOGIN = 'Please Login';
     public const TITLE_FORGOT_PASSWORD = 'Recover my password';
 
     public const FORM_FIELD_SELECTOR_EMAIL = 'loginForm[email]';
