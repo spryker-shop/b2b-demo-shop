@@ -5,9 +5,11 @@
 
 @mixin shop-ui-quote-status($name: '.quote-status') {
     #{$name} {
-        border-radius: 1rem;
-        padding: 0.25rem map-get($setting-spacing, 'big');
+        border-radius: rem(16);
+        padding: rem(4) map-get($setting-spacing, 'default');
         font-size: rem(12);
+        min-width: rem(78);
+        text-align: center;
 
         &--waiting {
             @include status-color('warning', 0.3);
