@@ -9,8 +9,6 @@ namespace PyzTest\Yves\Customer\Helper;
 
 use Codeception\Module;
 use Codeception\TestInterface;
-use Codeception\Util\Stub;
-use Generated\Shared\DataBuilder\CustomerBuilder;
 use Generated\Shared\Transfer\NewsletterSubscriberTransfer;
 use Generated\Shared\Transfer\NewsletterSubscriptionRequestTransfer;
 use Generated\Shared\Transfer\NewsletterTypeTransfer;
@@ -18,14 +16,12 @@ use Orm\Zed\Country\Persistence\SpyCountryQuery;
 use Orm\Zed\Customer\Persistence\SpyCustomer;
 use Orm\Zed\Customer\Persistence\SpyCustomerAddress;
 use Orm\Zed\Customer\Persistence\SpyCustomerQuery;
+use PyzTest\Yves\CompanyUser\Helper\CompanyUserHelper;
 use PyzTest\Yves\Customer\PageObject\Customer;
 use PyzTest\Yves\Customer\PageObject\CustomerAddressesPage;
 use PyzTest\Yves\Customer\PageObject\CustomerLoginPage;
 use Spryker\Client\Session\SessionClient;
 use Spryker\Shared\Newsletter\NewsletterConstants;
-use Spryker\Zed\Customer\CustomerDependencyProvider;
-use Spryker\Zed\Customer\Dependency\Facade\CustomerToMailBridge;
-use Spryker\Zed\Mail\Business\MailFacadeInterface;
 use Spryker\Zed\Newsletter\Business\NewsletterFacade;
 use SprykerTest\Shared\Testify\Helper\DependencyHelperTrait;
 use SprykerTest\Shared\Testify\Helper\LocatorHelperTrait;
@@ -131,33 +127,9 @@ class CustomerHelper extends Module
     {
         $this->setupSession();
 
-        $customerBuilder = new CustomerBuilder($seed);
-        $customerTransfer = $customerBuilder->build();
-        $password = $customerTransfer->getPassword();
-
-        $mailMock = new CustomerToMailBridge($this->getMailMock());
-        $this->setDependency(CustomerDependencyProvider::FACADE_MAIL, $mailMock);
-        $this->getFacade()->registerCustomer($customerTransfer);
-
-        $customerTransfer->setPassword($password);
-
-        return $customerTransfer;
-    }
-
-    /**
-     * @return \Spryker\Zed\Customer\Business\CustomerFacadeInterface
-     */
-    private function getFacade()
-    {
-        return $this->getLocator()->customer()->facade();
-    }
-
-    /**
-     * @return object|\Spryker\Zed\Mail\Business\MailFacadeInterface
-     */
-    private function getMailMock()
-    {
-        return Stub::makeEmpty(MailFacadeInterface::class);
+        return $this->getModule('\\' . CompanyUserHelper::class)
+            ->haveRegisteredCompanyUser()
+            ->getCustomer();
     }
 
     /**

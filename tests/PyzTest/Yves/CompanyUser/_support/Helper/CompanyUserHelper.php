@@ -43,14 +43,6 @@ class CompanyUserHelper extends Module
             CompanyUserTransfer::FK_COMPANY_BUSINESS_UNIT => $companyBusinessUnitTransfer->getIdCompanyBusinessUnit(),
         ]);
 
-        // TODO: Remove if not needed.
-        $companyUserTransfer->getCustomer()
-            ->setCompanyUserTransfer($companyUserTransfer);
-
-        // TODO: Remove if not needed.
-        $companyUserTransfer->setCompany($companyTransfer)
-            ->setCompanyBusinessUnit($companyBusinessUnitTransfer);
-
         return $companyUserTransfer;
     }
 
