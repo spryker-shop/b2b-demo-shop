@@ -15,9 +15,10 @@ use Generated\Shared\Transfer\CompanyUserTransfer;
 use Generated\Shared\Transfer\CustomerTransfer;
 use Spryker\Zed\CompanyMailConnector\CompanyMailConnectorDependencyProvider;
 use Spryker\Zed\CompanyMailConnector\Dependency\Facade\CompanyMailConnectorToMailFacadeBridge;
+use Spryker\Zed\Customer\CustomerDependencyProvider;
+use Spryker\Zed\Customer\Dependency\Facade\CustomerToMailBridge;
 use Spryker\Zed\Mail\Business\MailFacadeInterface;
 use SprykerTest\Shared\CompanyUser\Helper\CompanyUserHelper as SprykerTestCompanyUserHelper;
-use SprykerTest\Shared\Customer\Helper\CustomerDataHelper;
 use SprykerTest\Shared\Testify\Helper\DependencyHelperTrait;
 use SprykerTest\Zed\Company\Helper\CompanyHelper;
  use SprykerTest\Zed\CompanyBusinessUnit\Helper\CompanyBusinessUnitHelper;
@@ -27,11 +28,12 @@ class CompanyUserHelper extends Module
     use DependencyHelperTrait;
 
     /**
+     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
+     *
      * @return \Generated\Shared\Transfer\CompanyUserTransfer
      */
-    public function haveRegisteredCompanyUser(): CompanyUserTransfer
+    public function haveRegisteredCompanyUser(CustomerTransfer $customerTransfer): CompanyUserTransfer
     {
-        $customerTransfer = $this->createCustomer();
         $companyTransfer = $this->createCompany();
 
         $companyBusinessUnitTransfer = $this->createCompanyBusinessUnit([
@@ -44,18 +46,6 @@ class CompanyUserHelper extends Module
         ]);
 
         return $companyUserTransfer;
-    }
-
-    /**
-     * @param array $seed
-     *
-     * @return \Generated\Shared\Transfer\CustomerTransfer
-     */
-    protected function createCustomer(array $seed = []): CustomerTransfer
-    {
-        return $this->getModule('\\' . CustomerDataHelper::class)->haveCustomer($seed + [
-                CustomerTransfer::IS_ENABLED => true,
-            ]);
     }
 
     /**
@@ -92,6 +82,9 @@ class CompanyUserHelper extends Module
      */
     protected function createCompanyUser(array $seed = []): CompanyUserTransfer
     {
+        $mailMock = new CustomerToMailBridge($this->getMailMock());
+        $this->setDependency(CustomerDependencyProvider::FACADE_MAIL, $mailMock);
+
         return $this->getModule('\\' . SprykerTestCompanyUserHelper::class)
             ->haveCompanyUser($seed + [
                 CompanyUserTransfer::IS_ACTIVE => true,

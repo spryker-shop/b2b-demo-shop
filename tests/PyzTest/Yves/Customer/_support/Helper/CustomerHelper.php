@@ -9,6 +9,7 @@ namespace PyzTest\Yves\Customer\Helper;
 
 use Codeception\Module;
 use Codeception\TestInterface;
+use Generated\Shared\DataBuilder\CustomerBuilder;
 use Generated\Shared\Transfer\NewsletterSubscriberTransfer;
 use Generated\Shared\Transfer\NewsletterSubscriptionRequestTransfer;
 use Generated\Shared\Transfer\NewsletterTypeTransfer;
@@ -127,9 +128,17 @@ class CustomerHelper extends Module
     {
         $this->setupSession();
 
-        return $this->getModule('\\' . CompanyUserHelper::class)
-            ->haveRegisteredCompanyUser()
+        $customerBuilder = new CustomerBuilder($seed);
+        $customerTransfer = $customerBuilder->build();
+        $password = $customerTransfer->getPassword();
+
+        $this->getModule('\\' . CompanyUserHelper::class)
+            ->haveRegisteredCompanyUser($customerTransfer)
             ->getCustomer();
+
+        $customerTransfer->setPassword($password);
+
+        return $customerTransfer;
     }
 
     /**
