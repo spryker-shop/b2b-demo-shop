@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "12368c89251bb8fd9d57303fcfb3d27f",
+    "content-hash": "207f2e5a8ebce323aa685eef33efbc5e",
     "packages": [
         {
             "name": "codeitnowin/barcode",
@@ -949,32 +949,29 @@
         },
         {
             "name": "lcobucci/jwt",
-            "version": "3.2.5",
+            "version": "3.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/lcobucci/jwt.git",
-                "reference": "82be04b4753f8b7693b62852b7eab30f97524f9b"
+                "reference": "a11ec5f4b4d75d1fcd04e133dede4c317aac9e18"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lcobucci/jwt/zipball/82be04b4753f8b7693b62852b7eab30f97524f9b",
-                "reference": "82be04b4753f8b7693b62852b7eab30f97524f9b",
+                "url": "https://api.github.com/repos/lcobucci/jwt/zipball/a11ec5f4b4d75d1fcd04e133dede4c317aac9e18",
+                "reference": "a11ec5f4b4d75d1fcd04e133dede4c317aac9e18",
                 "shasum": ""
             },
             "require": {
+                "ext-mbstring": "*",
                 "ext-openssl": "*",
-                "php": ">=5.5"
+                "php": "^5.6 || ^7.0"
             },
             "require-dev": {
-                "mdanter/ecc": "~0.3.1",
                 "mikey179/vfsstream": "~1.5",
                 "phpmd/phpmd": "~2.2",
                 "phpunit/php-invoker": "~1.1",
-                "phpunit/phpunit": "~4.5",
+                "phpunit/phpunit": "^5.7 || ^7.3",
                 "squizlabs/php_codesniffer": "~2.3"
-            },
-            "suggest": {
-                "mdanter/ecc": "Required to use Elliptic Curves based algorithms."
             },
             "type": "library",
             "extra": {
@@ -1003,7 +1000,7 @@
                 "JWS",
                 "jwt"
             ],
-            "time": "2018-11-11T12:22:26+00:00"
+            "time": "2019-05-24T18:30:49+00:00"
         },
         {
             "name": "league/csv",
@@ -3615,12 +3612,6 @@
                 "type": "git",
                 "url": "https://github.com/spryker-feature/promotions-discounts.git",
                 "reference": "0e4b01fde63cf61d452909b945f680612e02f9c8"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker-feature/promotions-discounts/zipball/0e4b01fde63cf61d452909b945f680612e02f9c8",
-                "reference": "0e4b01fde63cf61d452909b945f680612e02f9c8",
-                "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
@@ -15919,52 +15910,6 @@
             "time": "2019-03-26T15:19:37+00:00"
         },
         {
-            "name": "spryker/event-dispatcher-extension",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker/event-dispatcher-extension.git",
-                "reference": "866c63e861aa67af34f70629924ae06b0dcafd14"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker/event-dispatcher-extension/zipball/866c63e861aa67af34f70629924ae06b0dcafd14",
-                "reference": "866c63e861aa67af34f70629924ae06b0dcafd14",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.1"
-            },
-            "require-dev": {
-                "spryker/code-sniffer": "*",
-                "spryker/container": "*",
-                "spryker/event-dispatcher": "*",
-                "spryker/testify": "*"
-            },
-            "suggest": {
-                "spryker/container": "If you want to use EventDispatcherPlugin.",
-                "spryker/event-dispatcher": "If you want to use EventDispatcherPlugin.",
-                "spryker/symfony": "If you want to use EventDispatcherPlugin."
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Spryker\\": "src/Spryker/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "EventDispatcherExtension module",
-            "time": "2019-03-26T15:19:37+00:00"
-        },
-        {
             "name": "spryker/file-manager",
             "version": "1.0.2",
             "source": {
@@ -18568,16 +18513,16 @@
         },
         {
             "name": "spryker/oauth",
-            "version": "1.3.1",
+            "version": "1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/oauth.git",
-                "reference": "bef2dcfb2b42b99e0da2fe9e2a5fa05843377cb3"
+                "reference": "62254cd055dde06ecd7c45db3727d9687be66476"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/oauth/zipball/bef2dcfb2b42b99e0da2fe9e2a5fa05843377cb3",
-                "reference": "bef2dcfb2b42b99e0da2fe9e2a5fa05843377cb3",
+                "url": "https://api.github.com/repos/spryker/oauth/zipball/62254cd055dde06ecd7c45db3727d9687be66476",
+                "reference": "62254cd055dde06ecd7c45db3727d9687be66476",
                 "shasum": ""
             },
             "require": {
@@ -18592,8 +18537,12 @@
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
+                "spryker/installer": "*",
                 "spryker/propel": "*",
                 "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/installer": "If you want to use Installer plugins."
             },
             "type": "library",
             "extra": {
@@ -18611,20 +18560,20 @@
                 "proprietary"
             ],
             "description": "Oauth module",
-            "time": "2019-05-03T10:55:36+00:00"
+            "time": "2019-05-22T14:23:12+00:00"
         },
         {
             "name": "spryker/oauth-company-user",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/oauth-company-user.git",
-                "reference": "0232bfd2d4c4d7ff34f98b1c39f5f674b4af9c96"
+                "reference": "4d2b8454247e10f10fb8fd6baa1a7a3cb4f0b2dd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/oauth-company-user/zipball/0232bfd2d4c4d7ff34f98b1c39f5f674b4af9c96",
-                "reference": "0232bfd2d4c4d7ff34f98b1c39f5f674b4af9c96",
+                "url": "https://api.github.com/repos/spryker/oauth-company-user/zipball/4d2b8454247e10f10fb8fd6baa1a7a3cb4f0b2dd",
+                "reference": "4d2b8454247e10f10fb8fd6baa1a7a3cb4f0b2dd",
                 "shasum": ""
             },
             "require": {
@@ -18636,6 +18585,7 @@
                 "spryker/glue-application": "^1.15.0",
                 "spryker/kernel": "^3.0.0",
                 "spryker/oauth": "^1.3.0",
+                "spryker/oauth-company-user-extension": "^1.0.0",
                 "spryker/oauth-extension": "^1.1.0",
                 "spryker/util-encoding": "^2.0.0"
             },
@@ -18663,20 +18613,59 @@
                 "proprietary"
             ],
             "description": "OauthCompanyUser module",
-            "time": "2019-03-25T20:35:18+00:00"
+            "time": "2019-04-24T13:03:48+00:00"
         },
         {
-            "name": "spryker/oauth-customer-connector",
-            "version": "1.3.1",
+            "name": "spryker/oauth-company-user-extension",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/spryker/oauth-customer-connector.git",
-                "reference": "2f361f6cbbba18c7917de8ad2cc2ca93d17f56b9"
+                "url": "https://github.com/spryker/oauth-company-user-extension.git",
+                "reference": "d8417473f74aca02f2921be2b3334a03118268a6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/oauth-customer-connector/zipball/2f361f6cbbba18c7917de8ad2cc2ca93d17f56b9",
-                "reference": "2f361f6cbbba18c7917de8ad2cc2ca93d17f56b9",
+                "url": "https://api.github.com/repos/spryker/oauth-company-user-extension/zipball/d8417473f74aca02f2921be2b3334a03118268a6",
+                "reference": "d8417473f74aca02f2921be2b3334a03118268a6",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "OauthCompanyUserExtension module",
+            "time": "2019-05-21T11:03:32+00:00"
+        },
+        {
+            "name": "spryker/oauth-customer-connector",
+            "version": "1.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/oauth-customer-connector.git",
+                "reference": "35d7472741ce40112736e61ce70ed763129a3184"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/oauth-customer-connector/zipball/35d7472741ce40112736e61ce70ed763129a3184",
+                "reference": "35d7472741ce40112736e61ce70ed763129a3184",
                 "shasum": ""
             },
             "require": {
@@ -18713,7 +18702,7 @@
                 "proprietary"
             ],
             "description": "OauthCustomerConnector module",
-            "time": "2019-04-16T11:37:14+00:00"
+            "time": "2019-05-22T14:37:18+00:00"
         },
         {
             "name": "spryker/oauth-customer-connector-extension",
@@ -18792,6 +18781,58 @@
             ],
             "description": "OauthExtension module",
             "time": "2019-03-06T07:19:29+00:00"
+        },
+        {
+            "name": "spryker/oauth-permission",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/oauth-permission.git",
+                "reference": "95c5c499171f971eea0c44c41673dd96b0346406"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/oauth-permission/zipball/95c5c499171f971eea0c44c41673dd96b0346406",
+                "reference": "95c5c499171f971eea0c44c41673dd96b0346406",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/company-user": "^2.9.0",
+                "spryker/kernel": "^3.0.0",
+                "spryker/oauth": "^1.3.0",
+                "spryker/oauth-company-user-extension": "^1.0.0",
+                "spryker/oauth-customer-connector-extension": "^1.0.0",
+                "spryker/permission": "^1.5.0",
+                "spryker/permission-extension": "^1.0.0",
+                "spryker/symfony": "^3.0.0",
+                "spryker/util-encoding": "^2.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/company": "*",
+                "spryker/company-role": "*",
+                "spryker/customer": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "OauthPermission module",
+            "time": "2019-04-25T09:30:10+00:00"
         },
         {
             "name": "spryker/oms",
@@ -26380,16 +26421,16 @@
         },
         {
             "name": "spryker/shopping-list",
-            "version": "2.7.1",
+            "version": "2.7.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/shopping-list.git",
-                "reference": "c67c00e2c821ea0894db766f25f6a622ab92e82a"
+                "reference": "6c95bb66e147e2d3a77ec1588addd5ee96080198"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/shopping-list/zipball/c67c00e2c821ea0894db766f25f6a622ab92e82a",
-                "reference": "c67c00e2c821ea0894db766f25f6a622ab92e82a",
+                "url": "https://api.github.com/repos/spryker/shopping-list/zipball/6c95bb66e147e2d3a77ec1588addd5ee96080198",
+                "reference": "6c95bb66e147e2d3a77ec1588addd5ee96080198",
                 "shasum": ""
             },
             "require": {
@@ -26441,7 +26482,7 @@
                 "proprietary"
             ],
             "description": "ShoppingList module",
-            "time": "2019-04-24T14:22:53+00:00"
+            "time": "2019-05-20T13:52:51+00:00"
         },
         {
             "name": "spryker/shopping-list-data-import",
@@ -29052,16 +29093,16 @@
         },
         {
             "name": "symfony/config",
-            "version": "v4.2.9",
+            "version": "v4.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/config.git",
-                "reference": "6bec7694d45aff68dec7b67dde3001f68dfaac64"
+                "reference": "5455fc0ae8b46269b83a22949429ea878496408c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/config/zipball/6bec7694d45aff68dec7b67dde3001f68dfaac64",
-                "reference": "6bec7694d45aff68dec7b67dde3001f68dfaac64",
+                "url": "https://api.github.com/repos/symfony/config/zipball/5455fc0ae8b46269b83a22949429ea878496408c",
+                "reference": "5455fc0ae8b46269b83a22949429ea878496408c",
                 "shasum": ""
             },
             "require": {
@@ -29085,7 +29126,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.2-dev"
+                    "dev-master": "4.3-dev"
                 }
             },
             "autoload": {
@@ -29112,7 +29153,7 @@
             ],
             "description": "Symfony Config Component",
             "homepage": "https://symfony.com",
-            "time": "2019-05-09T16:56:19+00:00"
+            "time": "2019-05-20T16:16:12+00:00"
         },
         {
             "name": "symfony/console",
@@ -29219,7 +29260,6 @@
                 "psr/cache": "When using the Cache contracts",
                 "psr/container": "When using the Service contracts",
                 "psr/event-dispatcher": "When using the EventDispatcher contracts",
-                "symfony/cache-contracts-implementation": "",
                 "symfony/cache-implementation": "",
                 "symfony/event-dispatcher-implementation": "",
                 "symfony/http-client-implementation": "",
@@ -29324,30 +29364,36 @@
         },
         {
             "name": "symfony/event-dispatcher",
-            "version": "v4.2.9",
+            "version": "v4.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/event-dispatcher.git",
-                "reference": "fbce53cd74ac509cbe74b6f227622650ab759b02"
+                "reference": "c71314cd3b9420b732e1526f33a24eff5430b5b3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/fbce53cd74ac509cbe74b6f227622650ab759b02",
-                "reference": "fbce53cd74ac509cbe74b6f227622650ab759b02",
+                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/c71314cd3b9420b732e1526f33a24eff5430b5b3",
+                "reference": "c71314cd3b9420b732e1526f33a24eff5430b5b3",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.1.3",
-                "symfony/contracts": "^1.0"
+                "symfony/event-dispatcher-contracts": "^1.1"
             },
             "conflict": {
                 "symfony/dependency-injection": "<3.4"
+            },
+            "provide": {
+                "psr/event-dispatcher-implementation": "1.0",
+                "symfony/event-dispatcher-implementation": "1.1"
             },
             "require-dev": {
                 "psr/log": "~1.0",
                 "symfony/config": "~3.4|~4.0",
                 "symfony/dependency-injection": "~3.4|~4.0",
                 "symfony/expression-language": "~3.4|~4.0",
+                "symfony/http-foundation": "^3.4|^4.0",
+                "symfony/service-contracts": "^1.1",
                 "symfony/stopwatch": "~3.4|~4.0"
             },
             "suggest": {
@@ -29357,7 +29403,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.2-dev"
+                    "dev-master": "4.3-dev"
                 }
             },
             "autoload": {
@@ -29384,7 +29430,7 @@
             ],
             "description": "Symfony EventDispatcher Component",
             "homepage": "https://symfony.com",
-            "time": "2019-04-06T13:51:08+00:00"
+            "time": "2019-05-28T07:50:59+00:00"
         },
         {
             "name": "symfony/filesystem",
@@ -29941,7 +29987,7 @@
                 },
                 {
                     "name": "Gert de Pagter",
-                    "email": "backendtea@gmail.com"
+                    "email": "BackEndTea@gmail.com"
                 }
             ],
             "description": "Symfony polyfill for ctype functions",
