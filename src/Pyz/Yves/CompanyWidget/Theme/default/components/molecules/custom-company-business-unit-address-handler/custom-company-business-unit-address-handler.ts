@@ -29,11 +29,13 @@ export default class CustomCompanyBusinessUnitAddressHandler extends CompanyBusi
             if (address.hasOwnProperty(key)) {
                 const formElement = this.form.querySelector(`[data-key="${key}"]`);
 
-                if (formElement !== null) {
-                    (<HTMLFormElement>formElement).value = address[key];
+                if (formElement === null) {
+                    continue;
                 }
 
-                if (formElement !== null && formElement.nodeName === 'SELECT') {
+                (<HTMLFormElement>formElement).value = address[key];
+
+                if (formElement.nodeName === 'SELECT') {
                     const event = new Event('change');
                     formElement.dispatchEvent(event);
                 }
