@@ -116,6 +116,7 @@
                                     },
                                     attributes: {
                                         'language': data.currentLanguage,
+                                        'config': '{"format": "Y-m-d H:i"}',
                                     },
                                 } only %}
                             {% endblock %}
@@ -124,7 +125,7 @@
                     <p>{{ 'quote_request_page.quote_request.labels.history' | trans }}:
                         <span class="text-secondary">{{ data.quoteRequest.latestVersion ? data.quoteRequest.latestVersion.versionReference : null }}</span>
                     </p>
-                    <p>{{ form_row(data.quoteRequestForm.isLatestVersionHidden) }}</p>
+                    <p>{{ form_row(data.quoteRequestForm.isLatestVersionVisible) }}</p>
                 {% endblock %}
                 {% block quoteActions %}
                     <a class="spacing-bottom button button--expand button--hollow"
