@@ -13,7 +13,7 @@ class CustomerAddressesPage extends Customer
 {
     public const URL = '/customer/address';
 
-    public const ADD_ADDRESS_LINK = '[data-qa="customer-add-new-address"]';
+    public const ADD_NEW_ADDRESS_BUTTON = 'Add new address';
 
     public const ADDRESS_A = 'address a';
     public const ADDRESS_B = 'address b';

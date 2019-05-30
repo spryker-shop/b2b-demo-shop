@@ -31,7 +31,7 @@ class CustomerAddressesCest
     {
         $i->amLoggedInCustomer();
         $i->amOnPage(CustomerAddressesPage::URL);
-        $i->click(CustomerAddressesPage::ADD_ADDRESS_LINK);
+        $i->click(CustomerAddressesPage::ADD_NEW_ADDRESS_BUTTON);
         $i->seeCurrentUrlEquals(CustomerAddressPage::URL);
     }
 }
