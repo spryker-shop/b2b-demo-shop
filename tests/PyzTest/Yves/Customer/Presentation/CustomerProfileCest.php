@@ -32,7 +32,7 @@ class CustomerProfileCest
         $i->amLoggedInCustomer();
         $i->amOnPage(CustomerProfilePage::URL);
 
-        $newCustomerTransfer = CustomerProfilePage::getCustomerData(CustomerProfilePage::NEW_CUSTOMER_EMAIL);
+        $newCustomerTransfer = (new CustomerBuilder())->build();
 
         $i->selectOption(CustomerProfilePage::FORM_FIELD_SELECTOR_SALUTATION, $newCustomerTransfer->getSalutation());
         $i->fillField(CustomerProfilePage::FORM_FIELD_SELECTOR_FIRST_NAME, $newCustomerTransfer->getFirstName());
@@ -106,10 +106,9 @@ class CustomerProfileCest
      */
     public function testICanNotChangePasswordWhenNewPasswordsNotMatch(CustomerPresentationTester $i): void
     {
-        $i->amLoggedInCustomer();
+        $customerTransfer = $i->amLoggedInCustomer();
         $i->amOnPage(CustomerProfilePage::URL);
 
-        $customerTransfer = CustomerProfilePage::getCustomerData(CustomerProfilePage::REGISTERED_CUSTOMER_EMAIL);
         $oldPassword = $customerTransfer->getPassword();
         $newPassword = strrev($oldPassword);
 
