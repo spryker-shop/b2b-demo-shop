@@ -8,6 +8,8 @@
 namespace PyzTest\Yves\CompanyUser;
 
 use Codeception\Actor;
+use Codeception\Scenario;
+use PyzTest\Yves\CompanyUser\_support\PageObject\CompanyRegistrationPage;
 
 /**
  * Inherited Methods
@@ -28,7 +30,31 @@ class CompanyUserPresentationTester extends Actor
 {
     use _generated\CompanyUserPresentationTesterActions;
 
-   /**
-    * Define custom actions here
-    */
+    /**
+     * @param \Codeception\Scenario $scenario
+     */
+    public function __construct(Scenario $scenario)
+    {
+        parent::__construct($scenario);
+
+        $this->amYves();
+    }
+
+    /**
+     * @return void
+     */
+    public function fillOutCompanyRegistrationForm()
+    {
+        $i = $this;
+        $companyData = CompanyRegistrationPage::getCompanyData();
+
+        $i->selectOption(CompanyRegistrationPage::FORM_FIELD_SELECTOR_SALUTATION, $companyData[CompanyRegistrationPage::FORM_FIELD_SELECTOR_SALUTATION]);
+        $i->fillField(CompanyRegistrationPage::FORM_FIELD_SELECTOR_FIRST_NAME, $companyData[CompanyRegistrationPage::FORM_FIELD_SELECTOR_FIRST_NAME]);
+        $i->fillField(CompanyRegistrationPage::FORM_FIELD_SELECTOR_LAST_NAME, $companyData[CompanyRegistrationPage::FORM_FIELD_SELECTOR_LAST_NAME]);
+        $i->fillField(CompanyRegistrationPage::FORM_FIELD_SELECTOR_COMPANY_NAME, $companyData[CompanyRegistrationPage::FORM_FIELD_SELECTOR_COMPANY_NAME]);
+        $i->fillField(CompanyRegistrationPage::FORM_FIELD_SELECTOR_EMAIL, $companyData[CompanyRegistrationPage::FORM_FIELD_SELECTOR_EMAIL]);
+        $i->fillField(CompanyRegistrationPage::FORM_FIELD_SELECTOR_PASSWORD, $companyData[CompanyRegistrationPage::FORM_FIELD_SELECTOR_PASSWORD]);
+        $i->fillField(CompanyRegistrationPage::FORM_FIELD_SELECTOR_PASSWORD_CONFIRM, $companyData[CompanyRegistrationPage::FORM_FIELD_SELECTOR_PASSWORD_CONFIRM]);
+        $i->click(CompanyRegistrationPage::FORM_FIELD_SELECTOR_ACCEPT_TERMS);
+    }
 }
