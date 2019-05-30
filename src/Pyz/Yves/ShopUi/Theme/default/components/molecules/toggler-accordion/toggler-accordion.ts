@@ -31,14 +31,15 @@ export default class TogglerAccordion extends Component {
     }
 
     protected initializeClick(event: Event): void {
-        this.triggers.forEach((trigger: HTMLElement) => {
+        this.triggers.some((trigger: HTMLElement) => {
             let target = <HTMLElement>event.target;
+
             while (target !== this.wrap) {
                 if (target === trigger) {
                     event.preventDefault();
                     this.toggle(trigger);
 
-                    return;
+                    return true;
                 }
                 target = <HTMLElement>target.parentNode;
             }

@@ -126,11 +126,11 @@
 
                             {% block price %}
                                 {% if data.listItem.price is not empty %}
-                                    {% include molecule('price') with {
+                                    {% include molecule('money-price') with {
                                         modifiers: ['cart', 'available'],
                                         data: {
-                                            amount: data.listItem.price | money,
-                                            originalAmount: data.listItem.prices.ORIGINAL is not defined or data.listItem.prices.ORIGINAL is empty ? null : (data.listItem.prices.ORIGINAL | money)
+                                            amount: data.listItem.price,
+                                            originalAmount: data.listItem.prices.ORIGINAL is not defined or data.listItem.prices.ORIGINAL is empty ? null : data.listItem.prices.ORIGINAL
                                         }
                                     } only %}
                                 {% else %}
@@ -196,6 +196,9 @@
                         {{ 'customer.account.shopping_list.empty' | trans }}
                     </div>
                 {% endif %}
+                <div class="col col--sm-12">
+                    {% widget 'ShoppingListSubtotalWidget' args [data.shoppingListItemProducts] only %}{% endwidget %}
+                </div>
             </div>
         </div>
 

@@ -1,0 +1,18 @@
+@mixin catalog-page-category-card($name: '.category-card') {
+    #{$name} {
+        &__container {
+            background-color: $setting-color-gray-7;
+        }
+
+        &__actions-container {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        @content;
+    }
+}
+
+@include catalog-page-category-card();

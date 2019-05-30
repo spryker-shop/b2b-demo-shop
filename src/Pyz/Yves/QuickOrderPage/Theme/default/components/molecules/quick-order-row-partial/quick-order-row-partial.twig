@@ -37,7 +37,7 @@
                         required: true,
                         label: false,
                         attr: {
-                            class: config.name ~ '__quantity ' ~ config.jsName ~ '__quantity',
+                            class: config.name ~ '__quantity ' ~ config.jsName ~ '__quantity ' ~ (data.product is empty ? 'input--transparent' : ''),
                             min: 1,
                             max: null,
                             step: 1,
@@ -71,9 +71,9 @@
 
         <div class="col col--sm-4 col--middle spacing-y spacing-x spacing-x--inner spacing-x--bigger">
             {% block price %}
-                {% include molecule('price') with {
+                {% include molecule('money-price') with {
                     data: {
-                        amount: data.price is empty ? null : data.price | money
+                        amount: data.price is empty ? null : data.price
                     }
                 } only %}
             {% endblock %}

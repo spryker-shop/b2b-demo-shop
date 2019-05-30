@@ -115,7 +115,7 @@
                     </div>
                 {% endif %}
 
-                <div class="col col--right {% if is_granted('ROLE_USER') %} {{ config.name }}__user-nav {% endif %}">
+                <div class="col col--right {% if is_granted('ROLE_USER') %} {{ config.name }}__user-nav {% else %} {{ config.name }}__login-wrap {% endif %}">
                     {% if data.showUserMenu %}
                         {% if is_granted('ROLE_USER') %}
                             {% include molecule('user-navigation') with {

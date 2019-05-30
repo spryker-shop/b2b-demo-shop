@@ -114,6 +114,7 @@
         {% endif %}
 
         {% embed atom('checkbox') with {
+            modifiers: ['expand'],
             data: {
                 label: checkboxLabel,
                 isChecked: data.isCustomAddress ? true : false

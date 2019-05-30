@@ -39,10 +39,6 @@
             &::-webkit-inner-spin-button {
                 appearance: none;
             }
-
-            &__[disabled] {
-                background-color: $setting-color-transparent;
-            }
         }
 
         &__button {
@@ -96,6 +92,7 @@
                 &:hover,
                 &:focus {
                     background: $setting-color-white;
+
                     &::before,
                     &::after {
                         background: $setting-color-gray-6;
