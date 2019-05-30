@@ -61,11 +61,11 @@
                 </a>
             {% endblock %}
             {% block price %}
-                {% include molecule('price') with {
+                {% include molecule('money-price') with {
                     modifiers: ['cart', 'available'],
                     data: {
-                        amount: price | money,
-                        originalAmount: data.listItem.prices.ORIGINAL is not defined or data.listItem.prices.ORIGINAL is empty ? null : (data.listItem.prices.ORIGINAL | money)
+                        amount: price,
+                        originalAmount: data.listItem.prices.ORIGINAL is not defined or data.listItem.prices.ORIGINAL is empty ? null : data.listItem.prices.ORIGINAL
                     },
                 } only %}
             {% endblock %}
