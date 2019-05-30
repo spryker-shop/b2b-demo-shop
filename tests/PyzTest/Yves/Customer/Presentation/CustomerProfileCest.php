@@ -7,6 +7,7 @@
 
 namespace PyzTest\Yves\Customer\Presentation;
 
+use Generated\Shared\DataBuilder\CustomerBuilder;
 use PyzTest\Yves\Customer\CustomerPresentationTester;
 use PyzTest\Yves\Customer\PageObject\CustomerProfilePage;
 
@@ -26,32 +27,16 @@ class CustomerProfileCest
      *
      * @return void
      */
-    public function testICanUpdateProfileData(CustomerPresentationTester $i)
+    public function testICanUpdateProfileData(CustomerPresentationTester $i): void
     {
         $i->amLoggedInCustomer();
         $i->amOnPage(CustomerProfilePage::URL);
 
-        $customerTransfer = CustomerProfilePage::getCustomerData(CustomerProfilePage::REGISTERED_CUSTOMER_EMAIL);
+        $newCustomerTransfer = CustomerProfilePage::getCustomerData(CustomerProfilePage::NEW_CUSTOMER_EMAIL);
 
-        $i->selectOption(CustomerProfilePage::FORM_FIELD_SELECTOR_SALUTATION, $customerTransfer->getSalutation());
-        $i->fillField(CustomerProfilePage::FORM_FIELD_SELECTOR_FIRST_NAME, $customerTransfer->getFirstName());
-        $i->fillField(CustomerProfilePage::FORM_FIELD_SELECTOR_LAST_NAME, $customerTransfer->getLastName());
-        $i->click('Submit', ['name' => 'profileForm']);
-
-        $i->seeInSource(CustomerProfilePage::SUCCESS_MESSAGE);
-    }
-
-    /**
-     * @param \PyzTest\Yves\Customer\CustomerPresentationTester $i
-     *
-     * @return void
-     */
-    public function testICanUpdateEmail(CustomerPresentationTester $i)
-    {
-        $i->amLoggedInCustomer();
-        $i->amOnPage(CustomerProfilePage::URL);
-
-        $i->fillField(CustomerProfilePage::FORM_FIELD_SELECTOR_EMAIL, CustomerProfilePage::REGISTERED_CUSTOMER_EMAIL);
+        $i->selectOption(CustomerProfilePage::FORM_FIELD_SELECTOR_SALUTATION, $newCustomerTransfer->getSalutation());
+        $i->fillField(CustomerProfilePage::FORM_FIELD_SELECTOR_FIRST_NAME, $newCustomerTransfer->getFirstName());
+        $i->fillField(CustomerProfilePage::FORM_FIELD_SELECTOR_LAST_NAME, $newCustomerTransfer->getLastName());
         $i->click(CustomerProfilePage::BUTTON_PROFILE_FORM_SUBMIT_TEXT, CustomerProfilePage::BUTTON_PROFILE_FORM_SUBMIT_SELECTOR);
 
         $i->seeInSource(CustomerProfilePage::SUCCESS_MESSAGE);
@@ -62,13 +47,32 @@ class CustomerProfileCest
      *
      * @return void
      */
-    public function testICanNotUpdateEmailToAnAlreadyUsedOne(CustomerPresentationTester $i)
+    public function testICanUpdateEmail(CustomerPresentationTester $i): void
     {
         $i->amLoggedInCustomer();
-        $i->haveRegisteredCustomer(['email' => CustomerProfilePage::REGISTERED_CUSTOMER_EMAIL]);
         $i->amOnPage(CustomerProfilePage::URL);
 
-        $i->fillField(CustomerProfilePage::FORM_FIELD_SELECTOR_EMAIL, CustomerProfilePage::REGISTERED_CUSTOMER_EMAIL);
+        $newCustomerEmail = (new CustomerBuilder())->build()->getEmail();
+
+        $i->fillField(CustomerProfilePage::FORM_FIELD_SELECTOR_EMAIL, $newCustomerEmail);
+        $i->click(CustomerProfilePage::BUTTON_PROFILE_FORM_SUBMIT_TEXT, CustomerProfilePage::BUTTON_PROFILE_FORM_SUBMIT_SELECTOR);
+
+        $i->seeInSource(CustomerProfilePage::SUCCESS_MESSAGE);
+    }
+
+    /**
+     * @param \PyzTest\Yves\Customer\CustomerPresentationTester $i
+     *
+     * @return void
+     */
+    public function testICanNotUpdateEmailToAnAlreadyUsedOne(CustomerPresentationTester $i): void
+    {
+        $i->amLoggedInCustomer();
+        $anotherCustomerTransfer = $i->haveRegisteredCustomer();
+
+        $i->amOnPage(CustomerProfilePage::URL);
+
+        $i->fillField(CustomerProfilePage::FORM_FIELD_SELECTOR_EMAIL, $anotherCustomerTransfer->getEmail());
         $i->click(CustomerProfilePage::BUTTON_PROFILE_FORM_SUBMIT_TEXT, CustomerProfilePage::BUTTON_PROFILE_FORM_SUBMIT_SELECTOR);
 
         $i->seeInSource(CustomerProfilePage::ERROR_MESSAGE_EMAIL);
@@ -79,7 +83,7 @@ class CustomerProfileCest
      *
      * @return void
      */
-    public function testICanChangePassword(CustomerPresentationTester $i)
+    public function testICanChangePassword(CustomerPresentationTester $i): void
     {
         $customerTransfer = $i->amLoggedInCustomer();
         $i->amOnPage(CustomerProfilePage::URL);
@@ -100,7 +104,7 @@ class CustomerProfileCest
      *
      * @return void
      */
-    public function testICanNotChangePasswordWhenNewPasswordsNotMatch(CustomerPresentationTester $i)
+    public function testICanNotChangePasswordWhenNewPasswordsNotMatch(CustomerPresentationTester $i): void
     {
         $i->amLoggedInCustomer();
         $i->amOnPage(CustomerProfilePage::URL);
