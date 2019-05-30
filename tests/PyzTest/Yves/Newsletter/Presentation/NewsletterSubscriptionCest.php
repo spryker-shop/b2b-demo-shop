@@ -8,6 +8,7 @@
 namespace PyzTest\Yves\Newsletter\Presentation;
 
 use Generated\Shared\DataBuilder\CustomerBuilder;
+use Generated\Shared\Transfer\CustomerTransfer;
 use PyzTest\Yves\Application\PageObject\Homepage;
 use PyzTest\Yves\Customer\PageObject\CustomerNewsletterPage;
 use PyzTest\Yves\Customer\PageObject\CustomerOverviewPage;
@@ -30,14 +31,14 @@ class NewsletterSubscriptionCest
      *
      * @return void
      */
-    public function iCanSubscribeWithAnUnsubscribedEmail(NewsletterPresentationTester $i)
+    public function iCanSubscribeWithAnUnsubscribedEmail(NewsletterPresentationTester $i): void
     {
         $i->wantTo('Subscribe to the newsletter with an unsubscribed new email.');
         $i->expect('Success message is displayed.');
 
         $i->amOnPage(Homepage::URL);
 
-        $customerTransfer = $this->buildCustomerTransfer();
+        $customerTransfer = (new CustomerBuilder())->build();
 
         $i->fillField(NewsletterSubscriptionHomePage::FORM_SELECTOR, $customerTransfer->getEmail());
         $i->click(NewsletterSubscriptionHomePage::FORM_SUBMIT);
@@ -50,14 +51,14 @@ class NewsletterSubscriptionCest
      *
      * @return void
      */
-    public function iCanNotSubscribeWithAnAlreadySubscribedEmail(NewsletterPresentationTester $i)
+    public function iCanNotSubscribeWithAnAlreadySubscribedEmail(NewsletterPresentationTester $i): void
     {
         $i->wantTo('Subscribe to the newsletter with an already subscribed email.');
         $i->expect('Error message is displayed.');
 
         $i->amOnPage(Homepage::URL);
 
-        $customerTransfer = $this->buildCustomerTransfer();
+        $customerTransfer = (new CustomerBuilder())->build();
 
         $i->haveAnAlreadySubscribedEmail($customerTransfer->getEmail());
 
@@ -72,22 +73,24 @@ class NewsletterSubscriptionCest
      *
      * @return void
      */
-    public function subscribedEmailIsLinkedWithCustomerAfterRegistration(NewsletterPresentationTester $i)
+    public function subscribedEmailIsLinkedWithCustomerAfterRegistration(NewsletterPresentationTester $i): void
     {
         $i->wantTo('Subscribe to the newsletter with an unsubscribed email and later on register with that address.');
         $i->expect('Subscriber email should be linked with registered customer.');
 
         $i->amOnPage(Homepage::URL);
 
-        $customerTransfer = $this->buildCustomerTransfer();
+        $customerTransfer = (new CustomerBuilder())->build();
 
         $i->fillField(NewsletterSubscriptionHomePage::FORM_SELECTOR, $customerTransfer->getEmail());
         $i->click(NewsletterSubscriptionHomePage::FORM_SUBMIT);
-
-        $i->amLoggedInCustomer($customerTransfer->toArray());
-
-        $i->amOnPage(CustomerOverviewPage::URL);
         $i->see(CustomerOverviewPage::NEWSLETTER_SUBSCRIBED);
+
+        $i->amLoggedInCustomer([
+            CustomerTransfer::EMAIL => $customerTransfer->getEmail(),
+        ]);
+        $i->amOnPage(CustomerNewsletterPage::URL);
+        $i->seeCheckboxIsChecked(CustomerNewsletterPage::FORM_FIELD_SELECTOR_NEWSLETTER_SUBSCRIPTION_INPUT);
     }
 
     /**
@@ -95,39 +98,26 @@ class NewsletterSubscriptionCest
      *
      * @return void
      */
-    public function subscribedEmailCanBeUnsubscribedByCustomerAfterRegistration(NewsletterPresentationTester $i)
+    public function subscribedEmailCanBeUnsubscribedByCustomerAfterRegistration(NewsletterPresentationTester $i): void
     {
         $i->wantTo('Subscribe to the newsletter with an unsubscribed email should be able to unsubscribe after registration.');
         $i->expect('Subscribed email should be unsubscribed after customer unsubscribe.');
 
         $i->amOnPage(Homepage::URL);
 
-        $customerTransfer = $this->buildCustomerTransfer();
+        $customerTransfer = (new CustomerBuilder())->build();
 
         $i->fillField(NewsletterSubscriptionHomePage::FORM_SELECTOR, $customerTransfer->getEmail());
         $i->click(NewsletterSubscriptionHomePage::FORM_SUBMIT);
-
-        $i->amLoggedInCustomer($customerTransfer->toArray());
-
-        $i->amOnPage(CustomerOverviewPage::URL);
         $i->see(CustomerOverviewPage::NEWSLETTER_SUBSCRIBED);
 
+        $i->amLoggedInCustomer([
+            CustomerTransfer::EMAIL => $customerTransfer->getEmail(),
+        ]);
         $i->amOnPage(CustomerNewsletterPage::URL);
-        $i->amOnPage(CustomerNewsletterPage::URL);
-        $i->click(CustomerNewsletterPage::FORM_FIELD_SELECTOR_NEWSLETTER_SUBSCRIPTION);
+
+        $i->uncheckOption(CustomerNewsletterPage::FORM_FIELD_SELECTOR_NEWSLETTER_SUBSCRIPTION_INPUT);
         $i->click(CustomerNewsletterPage::BUTTON_SUBMIT);
         $i->seeInSource(CustomerNewsletterPage::SUCCESS_MESSAGE_UN_SUBSCRIBED);
-
-        $i->dontSeeCheckboxIsChecked(CustomerNewsletterPage::FORM_FIELD_SELECTOR_NEWSLETTER_SUBSCRIPTION_INPUT);
-    }
-
-    /**
-     * @return \Generated\Shared\Transfer\CustomerTransfer|\Spryker\Shared\Kernel\Transfer\AbstractTransfer
-     */
-    protected function buildCustomerTransfer()
-    {
-        $customerTransfer = (new CustomerBuilder())->build();
-
-        return $customerTransfer;
     }
 }
