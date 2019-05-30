@@ -10,8 +10,6 @@
     options: [],
 } %}
 
-{% set totalPrice = data.productItem.sumSubtotalAggregation | default %}
-
 {% block body %}
     <li class="{{ component.renderClass(config.name ~ '__item', modifiers) }}">
         {% if data.productItem %}
@@ -31,14 +29,4 @@
             </ul>
         {% endif %}
     </li>
-    {% if totalPrice %}
-        <li>
-            {% if can('SeePricePermissionPlugin') %}
-                <strong class="text-small spacing-left spacing-left--inner spacing-left--big">{{ 'cart.item.item_total' | trans }}</strong>
-                <strong class="{{ config.name }}__total-price text-small">{{ totalPrice | money }}</strong>
-            {% else %}
-                {{ 'customer.access.cannot_see_price' | trans }}
-            {% endif %}
-        </li>
-    {% endif %}
 {% endblock %}
