@@ -15,8 +15,6 @@ use Generated\Shared\Transfer\CompanyUserTransfer;
 use Generated\Shared\Transfer\CustomerTransfer;
 use Spryker\Zed\CompanyMailConnector\CompanyMailConnectorDependencyProvider;
 use Spryker\Zed\CompanyMailConnector\Dependency\Facade\CompanyMailConnectorToMailFacadeBridge;
-use Spryker\Zed\Customer\CustomerDependencyProvider;
-use Spryker\Zed\Customer\Dependency\Facade\CustomerToMailBridge;
 use Spryker\Zed\Mail\Business\MailFacadeInterface;
 use SprykerTest\Shared\CompanyUser\Helper\CompanyUserHelper as SprykerTestCompanyUserHelper;
 use SprykerTest\Shared\Testify\Helper\DependencyHelperTrait;
@@ -82,9 +80,6 @@ class CompanyUserHelper extends Module
      */
     protected function createCompanyUser(array $seed = []): CompanyUserTransfer
     {
-        $mailMock = new CustomerToMailBridge($this->getMailMock());
-        $this->setDependency(CustomerDependencyProvider::FACADE_MAIL, $mailMock);
-
         return $this->getModule('\\' . SprykerTestCompanyUserHelper::class)
             ->haveCompanyUser($seed + [
                 CompanyUserTransfer::IS_ACTIVE => true,

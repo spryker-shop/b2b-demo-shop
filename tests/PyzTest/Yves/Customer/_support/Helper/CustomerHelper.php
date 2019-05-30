@@ -8,22 +8,25 @@
 namespace PyzTest\Yves\Customer\Helper;
 
 use Codeception\Module;
-use Codeception\TestInterface;
+use Codeception\Util\Stub;
 use Generated\Shared\DataBuilder\CustomerBuilder;
+use Generated\Shared\Transfer\CustomerTransfer;
 use Generated\Shared\Transfer\NewsletterSubscriberTransfer;
 use Generated\Shared\Transfer\NewsletterSubscriptionRequestTransfer;
 use Generated\Shared\Transfer\NewsletterTypeTransfer;
 use Orm\Zed\Country\Persistence\SpyCountryQuery;
-use Orm\Zed\Customer\Persistence\SpyCustomer;
 use Orm\Zed\Customer\Persistence\SpyCustomerAddress;
 use Orm\Zed\Customer\Persistence\SpyCustomerQuery;
 use PyzTest\Yves\CompanyUser\Helper\CompanyUserHelper;
-use PyzTest\Yves\Customer\PageObject\Customer;
 use PyzTest\Yves\Customer\PageObject\CustomerAddressesPage;
 use PyzTest\Yves\Customer\PageObject\CustomerLoginPage;
 use Spryker\Client\Session\SessionClient;
 use Spryker\Shared\Newsletter\NewsletterConstants;
+use Spryker\Zed\Customer\CustomerDependencyProvider;
+use Spryker\Zed\Customer\Dependency\Facade\CustomerToMailBridge;
+use Spryker\Zed\Mail\Business\MailFacadeInterface;
 use Spryker\Zed\Newsletter\Business\NewsletterFacade;
+use SprykerTest\Shared\Customer\Helper\CustomerDataHelper;
 use SprykerTest\Shared\Testify\Helper\DependencyHelperTrait;
 use SprykerTest\Shared\Testify\Helper\LocatorHelperTrait;
 use Symfony\Component\HttpFoundation\Session\Session;
@@ -33,78 +36,6 @@ class CustomerHelper extends Module
 {
     use DependencyHelperTrait;
     use LocatorHelperTrait;
-
-    /**
-     * @param \Codeception\TestInterface $step
-     *
-     * @return void
-     */
-    public function _before(TestInterface $step)
-    {
-        $this->cleanUpDatabase();
-    }
-
-    /**
-     * @return void
-     */
-    protected function cleanUpDatabase()
-    {
-        $customer = [
-            Customer::NEW_CUSTOMER_EMAIL,
-            Customer::REGISTERED_CUSTOMER_EMAIL,
-        ];
-
-        foreach ($customer as $customerEmail) {
-            $this->deleteCustomerByEmail($customerEmail);
-        }
-    }
-
-    /**
-     * @param string $email
-     *
-     * @return void
-     */
-    protected function deleteCustomerByEmail($email)
-    {
-        $customerEntity = $this->loadCustomerByEmail($email);
-        if ($customerEntity) {
-            $this->deleteCustomerAddresses($customerEntity);
-            $this->deleteNewsletterSubscription($customerEntity);
-
-            $customerEntity->delete();
-        }
-    }
-
-    /**
-     * @param \Orm\Zed\Customer\Persistence\SpyCustomer $customerEntity
-     *
-     * @return void
-     */
-    protected function deleteCustomerAddresses(SpyCustomer $customerEntity)
-    {
-        $addresses = $customerEntity->getAddresses();
-        if ($addresses) {
-            $addresses->delete();
-        }
-    }
-
-    /**
-     * @param \Orm\Zed\Customer\Persistence\SpyCustomer $customerEntity
-     *
-     * @return void
-     */
-    protected function deleteNewsletterSubscription(SpyCustomer $customerEntity)
-    {
-        $newsletterSubscriptions = $customerEntity->getSpyNewsletterSubscribers();
-        if ($newsletterSubscriptions) {
-            foreach ($newsletterSubscriptions as $newsletterSubscription) {
-                foreach ($newsletterSubscription->getSpyNewsletterSubscriptions() as $spyNewsletterSubscription) {
-                    $spyNewsletterSubscription->delete();
-                }
-                $newsletterSubscription->delete();
-            }
-        }
-    }
 
     /**
      * @param string $email
@@ -128,15 +59,11 @@ class CustomerHelper extends Module
     {
         $this->setupSession();
 
-        $customerBuilder = new CustomerBuilder($seed);
-        $customerTransfer = $customerBuilder->build();
-        $password = $customerTransfer->getPassword();
+        $customerTransfer = $this->createCustomer($seed);
 
         $this->getModule('\\' . CompanyUserHelper::class)
             ->haveRegisteredCompanyUser($customerTransfer)
             ->getCustomer();
-
-        $customerTransfer->setPassword($password);
 
         return $customerTransfer;
     }
@@ -215,6 +142,44 @@ class CustomerHelper extends Module
         $tester->wait(2);
 
         return $customerTransfer;
+    }
+
+    /**
+     * @param array $seed
+     *
+     * @return \Generated\Shared\Transfer\CustomerTransfer
+     */
+    protected function createCustomer(array $seed = []): CustomerTransfer
+    {
+        $mailMock = new CustomerToMailBridge($this->getMailMock());
+        $this->setDependency(CustomerDependencyProvider::FACADE_MAIL, $mailMock);
+
+        $customerTransfer = (new CustomerBuilder($seed))->build();
+
+        $password = $customerTransfer->getPassword();
+
+        $customerTransfer = $this->getModule('\\' . CustomerDataHelper::class)
+            ->haveCustomer($customerTransfer->toArray() + [
+                CustomerTransfer::PASSWORD => $password,
+            ]);
+
+        return $customerTransfer->setPassword($password);
+    }
+
+    /**
+     * @return object|\Spryker\Zed\Mail\Business\MailFacadeInterface
+     */
+    protected function getMailMock()
+    {
+        return Stub::makeEmpty(MailFacadeInterface::class);
+    }
+
+    /**
+     * @return \Spryker\Zed\Kernel\Business\AbstractFacade|\Spryker\Zed\Customer\Business\CustomerFacadeInterface
+     */
+    protected function getFacade()
+    {
+        return $this->getLocator()->customer()->facade();
     }
 
     /**
