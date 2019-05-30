@@ -7,7 +7,7 @@
 
 namespace PyzTest\Yves\Customer\PageObject;
 
-class CustomerLoginPage extends Customer
+class CustomerLoginPage
 {
     public const URL = '/login';
 

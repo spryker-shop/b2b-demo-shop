@@ -9,7 +9,7 @@ namespace PyzTest\Yves\Customer\PageObject;
 
 use Generated\Shared\Transfer\AddressTransfer;
 
-class CustomerAddressesPage extends Customer
+class CustomerAddressesPage
 {
     public const URL = '/customer/address';
 
