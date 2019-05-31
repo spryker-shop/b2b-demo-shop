@@ -113,6 +113,7 @@ class QuoteDependencyProvider extends SprykerQuoteDependencyProvider
 
         return $plugins;
     }
+
     /**
      * @return \Spryker\Zed\QuoteExtension\Dependency\Plugin\QuoteValidatorPluginInterface[]
      */
