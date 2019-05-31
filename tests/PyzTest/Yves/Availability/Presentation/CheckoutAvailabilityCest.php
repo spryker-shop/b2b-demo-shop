@@ -39,7 +39,7 @@ class CheckoutAvailabilityCest
         $i->wantTo('Checkout item with stock');
         $i->expectTo('Availability changed during SM processing.');
 
-        $i->amOnPage(AvailabilityPresentationTester::FUJITSU_PRODUCT_PAGE);
+        $i->amOnPage(AvailabilityPresentationTester::URL_EN_PRODUCT_PAGE);
 
         $i->click(ProductDetailPage::ADD_TO_CART_XPATH);
 
