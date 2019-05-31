@@ -28,12 +28,15 @@ use PyzTest\Zed\NavigationGui\PageObject\NavigationPage;
  */
 class NavigationTreeCest
 {
+    protected const URL_EN_CATEGORY_URL = '/en/stationery/paper';
+    protected const URL_DE_CATEGORY_URL = '/de/bürobedarf/papier';
+
     /**
      * @param \PyzTest\Zed\NavigationGui\NavigationGuiPresentationTester $i
      *
      * @return void
      */
-    public function testSeeEmptyNavigationTree(NavigationGuiPresentationTester $i)
+    public function testSeeEmptyNavigationTree(NavigationGuiPresentationTester $i): void
     {
         $i->wantTo('See navigation tree.');
         $i->expect('Empty navigation tree displayed.');
@@ -55,7 +58,7 @@ class NavigationTreeCest
      *
      * @return void
      */
-    public function testCreateChildNodeWithoutType(NavigationGuiPresentationTester $i)
+    public function testCreateChildNodeWithoutType(NavigationGuiPresentationTester $i): void
     {
         $i->wantTo('Create child node without type.');
         $i->expect('Navigation should have a root node persisted.');
@@ -84,7 +87,7 @@ class NavigationTreeCest
      *
      * @return void
      */
-    public function testCreateChildNodeWithExternalUrlType(NavigationGuiPresentationTester $i)
+    public function testCreateChildNodeWithExternalUrlType(NavigationGuiPresentationTester $i): void
     {
         $i->wantTo('Create external URL child node.');
         $i->expect('Navigation should have a root node persisted.');
@@ -118,7 +121,7 @@ class NavigationTreeCest
      *
      * @return void
      */
-    public function testUpdateNodeToCategoryType(NavigationGuiPresentationTester $i)
+    public function testUpdateNodeToCategoryType(NavigationGuiPresentationTester $i): void
     {
         $i->wantTo('Update child node to category type.');
         $i->expect('Node changes should persist in Zed.');
@@ -145,7 +148,7 @@ class NavigationTreeCest
         $i->clickNode($idNavigationNode);
         $i->switchToNodeForm();
         $i->see('Edit node');
-        $i->submitUpdateNodeToCategoryType('/en/computer', '/de/computer');
+        $i->submitUpdateNodeToCategoryType(static::URL_EN_CATEGORY_URL, static::URL_DE_CATEGORY_URL);
 
         $i->seeSuccessMessage(NavigationNodeUpdatePage::MESSAGE_SUCCESS);
         $i->switchToNavigationTree();
@@ -157,7 +160,7 @@ class NavigationTreeCest
      *
      * @return void
      */
-    public function testCreateChildNodeWithCmsPageType(NavigationGuiPresentationTester $i)
+    public function testCreateChildNodeWithCmsPageType(NavigationGuiPresentationTester $i): void
     {
         $i->wantTo('Create CMS page child node.');
         $i->expect('Navigation should have a new child node persisted.');
@@ -200,7 +203,7 @@ class NavigationTreeCest
      *
      * @return void
      */
-    public function testChangeNavigationTreeStructure(NavigationGuiPresentationTester $i)
+    public function testChangeNavigationTreeStructure(NavigationGuiPresentationTester $i): void
     {
         $i->wantTo('Change tree structure and save.');
         $i->expect('Updated navigation tree structure should have persisted.');
@@ -257,7 +260,7 @@ class NavigationTreeCest
      *
      * @return void
      */
-    public function testDeleteNavigationNode(NavigationGuiPresentationTester $i)
+    public function testDeleteNavigationNode(NavigationGuiPresentationTester $i): void
     {
         /**
          * Test skipped because popup confirmation is not working as expected under phantomjs.
