@@ -11,17 +11,16 @@
 {% block body %}
     {% set cmsContent = spyCmsBlock({ product: data.idProductAbstract }) %}
     {% if cmsContent is not empty %}
-        <div class="container">
-            {% embed molecule('content-collapser') with {
-                modifiers: ['with-background'],
-                embed: {
-                    idProductAbstract: data.idProductAbstract,
-                },
-            } only %}
-                {% block content %}
-                    {{ spyCmsBlock({ product: embed.idProductAbstract }) }}
-                {% endblock %}
-            {% endembed %}
-        </div>
+        {% embed molecule('content-collapser') with {
+            class: 'container',
+            modifiers: ['with-background'],
+            embed: {
+                idProductAbstract: data.idProductAbstract,
+            },
+        } only %}
+            {% block content %}
+                {{ spyCmsBlock({ product: embed.idProductAbstract }) }}
+            {% endblock %}
+        {% endembed %}
     {% endif %}
 {% endblock %}
