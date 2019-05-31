@@ -14,13 +14,16 @@ use Spryker\Shared\Search\SearchConstants;
 use Spryker\Shared\Session\SessionConfig;
 use Spryker\Shared\Session\SessionConstants;
 use Spryker\Shared\Setup\SetupConstants;
+use SprykerShop\Shared\ShopApplication\ShopApplicationConstants;
 use Spryker\Shared\Storage\StorageConstants;
 use Spryker\Shared\ZedNavigation\ZedNavigationConstants;
 use Spryker\Shared\ZedRequest\ZedRequestConstants;
 
 // ---------- General
 $config[KernelConstants::SPRYKER_ROOT] = APPLICATION_ROOT_DIR . '/vendor/spryker';
-$config[ApplicationConstants::ENABLE_APPLICATION_DEBUG] = false;
+$config[ApplicationConstants::ENABLE_APPLICATION_DEBUG]
+    = $config[ShopApplicationConstants::ENABLE_APPLICATION_DEBUG]
+    = false;
 $config[ZedRequestConstants::SET_REPEAT_DATA] = false;
 $config[KernelConstants::STORE_PREFIX] = 'DEV';
 
