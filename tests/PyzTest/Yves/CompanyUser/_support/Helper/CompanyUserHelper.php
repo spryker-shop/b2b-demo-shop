@@ -10,6 +10,7 @@ namespace PyzTest\Yves\CompanyUser\Helper;
 use Codeception\Module;
 use Codeception\Util\Stub;
 use Generated\Shared\Transfer\CompanyBusinessUnitTransfer;
+use Generated\Shared\Transfer\CompanyRoleCollectionTransfer;
 use Generated\Shared\Transfer\CompanyTransfer;
 use Generated\Shared\Transfer\CompanyUserTransfer;
 use Generated\Shared\Transfer\CustomerTransfer;
@@ -54,7 +55,9 @@ class CompanyUserHelper extends Module
             CompanyUserTransfer::FK_COMPANY_BUSINESS_UNIT => $companyBusinessUnitTransfer->getIdCompanyBusinessUnit(),
         ]);
 
-        $this->updateCompanyUserRolePermissions($companyUserTransfer);
+        if ($this->hasCompanyRoles($companyUserTransfer->getCompanyRoleCollection())) {
+            $this->updateCompanyUserRolePermissions($companyUserTransfer);
+        }
 
         return $companyUserTransfer;
     }
@@ -119,6 +122,16 @@ class CompanyUserHelper extends Module
         }
 
         return $permissionCollectionTransfer->addPermission($permissionTransfer);
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\CompanyRoleCollectionTransfer|null $companyRoleCollectionTransfer
+     *
+     * @return bool
+     */
+    protected function hasCompanyRoles(?CompanyRoleCollectionTransfer $companyRoleCollectionTransfer): bool
+    {
+        return $companyRoleCollectionTransfer && $companyRoleCollectionTransfer->getRoles()->count();
     }
 
     /**
