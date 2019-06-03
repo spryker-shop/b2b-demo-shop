@@ -7,6 +7,7 @@
 
 namespace PyzTest\Zed\NavigationGui\Presentation;
 
+use Codeception\Scenario;
 use Generated\Shared\Transfer\NavigationNodeLocalizedAttributesTransfer;
 use Generated\Shared\Transfer\NavigationNodeTransfer;
 use Generated\Shared\Transfer\NavigationTransfer;
@@ -14,6 +15,7 @@ use Generated\Shared\Transfer\NavigationTreeNodeTransfer;
 use Generated\Shared\Transfer\NavigationTreeTransfer;
 use PyzTest\Zed\NavigationGui\NavigationGuiPresentationTester;
 use PyzTest\Zed\NavigationGui\PageObject\NavigationNodeCreatePage;
+use PyzTest\Zed\NavigationGui\PageObject\NavigationNodeDeletePage;
 use PyzTest\Zed\NavigationGui\PageObject\NavigationNodeUpdatePage;
 use PyzTest\Zed\NavigationGui\PageObject\NavigationPage;
 
@@ -254,46 +256,44 @@ class NavigationTreeCest
 
     /**
      * @param \PyzTest\Zed\NavigationGui\NavigationGuiPresentationTester $i
+     * @param \Codeception\Scenario $scenario
      *
      * @return void
      */
-    public function testDeleteNavigationNode(NavigationGuiPresentationTester $i): void
+    public function testDeleteNavigationNode(NavigationGuiPresentationTester $i, Scenario $scenario): void
     {
-        /**
-         * Test skipped because popup confirmation is not working as expected under phantomjs.
-         * TODO: Once we have Chromium + ChromeDriver or Firefox, enable this test case.
-         */
-        return;
-//        $i->wantTo('Remove child node.');
-//        $i->expect('Node should be removed from Zed.');
-//
-//        $i->amLoggedInUser();
-//        $navigationTreeTransfer = $i->prepareTestNavigationTreeEntities((new NavigationTreeTransfer())
-//            ->setNavigation((new NavigationTransfer())
-//                ->setName('Delete navigation node')
-//                ->setKey('Delete navigation node')
-//                ->setIsActive(true))
-//            ->addNode((new NavigationTreeNodeTransfer())
-//                ->setNavigationNode((new NavigationNodeTransfer())
-//                    ->addNavigationNodeLocalizedAttribute((new NavigationNodeLocalizedAttributesTransfer())
-//                        ->setFkLocale($i->getIdLocale('en_US'))
-//                        ->setTitle('foo'))
-//                    ->addNavigationNodeLocalizedAttribute((new NavigationNodeLocalizedAttributesTransfer())
-//                        ->setFkLocale($i->getIdLocale('de_DE'))
-//                        ->setTitle('foo')))));
-//        $i->amOnPage(NavigationPage::URL);
-//
-//        $idNavigationNode = $navigationTreeTransfer->getNodes()[0]->getNavigationNode()->getIdNavigationNode();
-//
-//        $i->waitForNavigationTree();
-//        $i->clickNode($idNavigationNode);
-//        $i->switchToNodeForm();
-//        $i->clickRemoveNodeButton();
-//        $i->canSeeInPopup('Are you sure you remove the selected node and all its children?');
-//        $i->acceptPopup();
-//
-//        $i->seeSuccessMessage(NavigationNodeDeletePage::MESSAGE_SUCCESS);
-//        $i->switchToNavigationTree();
-//        $i->seeNumberOfNavigationNodes(1);
+        $scenario->skip('Once we have Chromium + ChromeDriver or Firefox, enable this test case.');
+
+        $i->wantTo('Remove child node.');
+        $i->expect('Node should be removed from Zed.');
+
+        $i->amLoggedInUser();
+        $navigationTreeTransfer = $i->prepareTestNavigationTreeEntities((new NavigationTreeTransfer())
+            ->setNavigation((new NavigationTransfer())
+                ->setName('Delete navigation node')
+                ->setKey('Delete navigation node')
+                ->setIsActive(true))
+            ->addNode((new NavigationTreeNodeTransfer())
+                ->setNavigationNode((new NavigationNodeTransfer())
+                    ->addNavigationNodeLocalizedAttribute((new NavigationNodeLocalizedAttributesTransfer())
+                        ->setFkLocale($i->getIdLocale('en_US'))
+                        ->setTitle('foo'))
+                    ->addNavigationNodeLocalizedAttribute((new NavigationNodeLocalizedAttributesTransfer())
+                        ->setFkLocale($i->getIdLocale('de_DE'))
+                        ->setTitle('foo')))));
+        $i->amOnPage(NavigationPage::URL);
+
+        $idNavigationNode = $navigationTreeTransfer->getNodes()[0]->getNavigationNode()->getIdNavigationNode();
+
+        $i->waitForNavigationTree();
+        $i->clickNode($idNavigationNode);
+        $i->switchToNodeForm();
+        $i->clickRemoveNodeButton();
+        $i->canSeeInPopup('Are you sure you remove the selected node and all its children?');
+        $i->acceptPopup();
+
+        $i->seeSuccessMessage(NavigationNodeDeletePage::MESSAGE_SUCCESS);
+        $i->switchToNavigationTree();
+        $i->seeNumberOfNavigationNodes(1);
     }
 }

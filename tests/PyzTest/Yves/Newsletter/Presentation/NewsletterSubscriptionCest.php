@@ -7,6 +7,7 @@
 
 namespace PyzTest\Yves\Newsletter\Presentation;
 
+use Codeception\Scenario;
 use Generated\Shared\DataBuilder\CustomerBuilder;
 use Generated\Shared\Transfer\CustomerTransfer;
 use PyzTest\Yves\Application\PageObject\Homepage;
@@ -95,11 +96,14 @@ class NewsletterSubscriptionCest
 
     /**
      * @param \PyzTest\Yves\Newsletter\NewsletterPresentationTester $i
+     * @param \Codeception\Scenario $scenario
      *
      * @return void
      */
-    public function subscribedEmailCanBeUnsubscribedByCustomerAfterRegistration(NewsletterPresentationTester $i): void
+    public function subscribedEmailCanBeUnsubscribedByCustomerAfterRegistration(NewsletterPresentationTester $i, Scenario $scenario): void
     {
+        $scenario->skip('Once we have Chromium + ChromeDriver or Firefox, enable this test case.');
+
         $i->wantTo('Subscribe to the newsletter with an unsubscribed email should be able to unsubscribe after registration.');
         $i->expect('Subscribed email should be unsubscribed after customer unsubscribe.');
 

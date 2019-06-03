@@ -7,6 +7,7 @@
 
 namespace PyzTest\Yves\CompanyUser\Presentation;
 
+use Codeception\Scenario;
 use PyzTest\Yves\CompanyUser\_support\PageObject\CompanyRegistrationPage;
 use PyzTest\Yves\CompanyUser\CompanyUserPresentationTester;
 use PyzTest\Yves\Customer\PageObject\CustomerLoginPage;
@@ -35,11 +36,14 @@ class CompanyRegistrationCest
 
     /**
      * @param \PyzTest\Yves\CompanyUser\CompanyUserPresentationTester $i
+     * @param \Codeception\Scenario $scenario
      *
      * @return void
      */
-    public function testICanRegisterWithValidData(CompanyUserPresentationTester $i): void
+    public function testICanRegisterWithValidData(CompanyUserPresentationTester $i, Scenario $scenario): void
     {
+        $scenario->skip('Once we have Chromium + ChromeDriver or Firefox, enable this test case.');
+
         $i->amOnPage(CompanyRegistrationPage::URL);
 
         $i->fillOutCompanyRegistrationForm();
