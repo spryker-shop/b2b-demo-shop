@@ -43,7 +43,7 @@ class CompanyUserPresentationTester extends Actor
     /**
      * @return void
      */
-    public function fillOutCompanyRegistrationForm()
+    public function fillOutCompanyRegistrationForm(): void
     {
         $i = $this;
         $companyData = CompanyRegistrationPage::getCompanyData();

@@ -15,17 +15,17 @@ class CompanyRegistrationPage
 
     public const BUTTON_REGISTER = 'Register';
 
-    public const FORM_FIELD_SELECTOR_SALUTATION = 'company_register_form[salutation]';
-    public const FORM_FIELD_SELECTOR_FIRST_NAME = 'company_register_form[first_name]';
-    public const FORM_FIELD_SELECTOR_LAST_NAME = 'company_register_form[last_name]';
+    public const FORM_FIELD_SELECTOR_SALUTATION = '//form[@name = \'company_register_form\']//select[@name = \'company_register_form[salutation]\']';
+    public const FORM_FIELD_SELECTOR_FIRST_NAME = '//form[@name = \'company_register_form\']//input[@name = \'company_register_form[first_name]\']';
+    public const FORM_FIELD_SELECTOR_LAST_NAME = '//form[@name = \'company_register_form\']//input[@name = \'company_register_form[last_name]\']';
 
-    public const FORM_FIELD_SELECTOR_COMPANY_NAME = 'company_register_form[company_name]';
+    public const FORM_FIELD_SELECTOR_COMPANY_NAME = '//form[@name = \'company_register_form\']//input[@name = \'company_register_form[company_name]\']';
+    public const FORM_FIELD_SELECTOR_EMAIL = '//form[@name = \'company_register_form\']//input[@name = \'company_register_form[email]\']';
 
-    public const FORM_FIELD_SELECTOR_EMAIL = 'company_register_form[email]';
-    public const FORM_FIELD_SELECTOR_PASSWORD = 'company_register_form[password][pass]';
-    public const FORM_FIELD_SELECTOR_PASSWORD_CONFIRM = 'company_register_form[password][confirm]';
+    public const FORM_FIELD_SELECTOR_PASSWORD = '//form[@name = \'company_register_form\']//input[@id = \'company_register_form_password_pass\']';
+    public const FORM_FIELD_SELECTOR_PASSWORD_CONFIRM = '//form[@name = \'company_register_form\']//input[@id = \'company_register_form_password_confirm\']';
 
-    public const FORM_FIELD_SELECTOR_ACCEPT_TERMS = '#company_register_form_accept_terms';
+    public const FORM_FIELD_SELECTOR_ACCEPT_TERMS = '//form[@name = \'company_register_form\']//input[@name = \'company_register_form[accept_terms]\']';
 
     public const SUCCESS_MESSAGE = 'Registration Successful';
 
