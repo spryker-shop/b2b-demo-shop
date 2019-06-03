@@ -32,11 +32,12 @@ class CustomerProfileCest
         $i->amLoggedInCustomer();
         $i->amOnPage(CustomerProfilePage::URL);
 
-        $newCustomerTransfer = (new CustomerBuilder())->build();
+        $customerTransfer = (new CustomerBuilder())
+            ->build();
 
-        $i->selectOption(CustomerProfilePage::FORM_FIELD_SELECTOR_SALUTATION, $newCustomerTransfer->getSalutation());
-        $i->fillField(CustomerProfilePage::FORM_FIELD_SELECTOR_FIRST_NAME, $newCustomerTransfer->getFirstName());
-        $i->fillField(CustomerProfilePage::FORM_FIELD_SELECTOR_LAST_NAME, $newCustomerTransfer->getLastName());
+        $i->selectOption(CustomerProfilePage::FORM_FIELD_SELECTOR_SALUTATION, $customerTransfer->getSalutation());
+        $i->fillField(CustomerProfilePage::FORM_FIELD_SELECTOR_FIRST_NAME, $customerTransfer->getFirstName());
+        $i->fillField(CustomerProfilePage::FORM_FIELD_SELECTOR_LAST_NAME, $customerTransfer->getLastName());
         $i->click(CustomerProfilePage::BUTTON_PROFILE_FORM_SUBMIT_TEXT, CustomerProfilePage::BUTTON_PROFILE_FORM_SUBMIT_SELECTOR);
 
         $i->seeInSource(CustomerProfilePage::SUCCESS_MESSAGE);
@@ -52,9 +53,11 @@ class CustomerProfileCest
         $i->amLoggedInCustomer();
         $i->amOnPage(CustomerProfilePage::URL);
 
-        $newCustomerEmail = (new CustomerBuilder())->build()->getEmail();
+        $customerEmail = (new CustomerBuilder())
+            ->build()
+            ->getEmail();
 
-        $i->fillField(CustomerProfilePage::FORM_FIELD_SELECTOR_EMAIL, $newCustomerEmail);
+        $i->fillField(CustomerProfilePage::FORM_FIELD_SELECTOR_EMAIL, $customerEmail);
         $i->click(CustomerProfilePage::BUTTON_PROFILE_FORM_SUBMIT_TEXT, CustomerProfilePage::BUTTON_PROFILE_FORM_SUBMIT_SELECTOR);
 
         $i->seeInSource(CustomerProfilePage::SUCCESS_MESSAGE);

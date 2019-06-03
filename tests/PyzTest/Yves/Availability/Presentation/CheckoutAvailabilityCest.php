@@ -41,7 +41,7 @@ class CheckoutAvailabilityCest
 
         $i->amOnPage(AvailabilityPresentationTester::URL_EN_PRODUCT_PAGE);
 
-        $i->click(ProductDetailPage::ADD_TO_CART_XPATH);
+        $i->click(ProductDetailPage::BUTTON_ADD_TO_CART);
 
         $i->see(CartListPage::CART_HEADER);
         $i->click(CartListPage::START_CHECKOUT_XPATH);

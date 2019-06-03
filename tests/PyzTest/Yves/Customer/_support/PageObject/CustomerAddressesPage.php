@@ -13,7 +13,7 @@ class CustomerAddressesPage
 {
     public const URL = '/customer/address';
 
-    public const ADD_NEW_ADDRESS_BUTTON = 'Add new address';
+    public const BUTTON_ADD_NEW_ADDRESS = '//nav//a[contains(@class, \'button\') and contains(text(), \'Add new address\')]';
 
     public const ADDRESS_A = 'address a';
     public const ADDRESS_B = 'address b';
@@ -55,7 +55,7 @@ class CustomerAddressesPage
      *
      * @return \Generated\Shared\Transfer\AddressTransfer
      */
-    public static function getAddressData($address)
+    public static function getAddressData($address): AddressTransfer
     {
         $addressTransfer = new AddressTransfer();
         $addressTransfer->fromArray(self::$addresses[$address]);

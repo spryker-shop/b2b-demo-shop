@@ -43,9 +43,9 @@ class CompanyRegistrationCest
         $i->amOnPage(CompanyRegistrationPage::URL);
 
         $i->fillOutCompanyRegistrationForm();
-        $i->click(CompanyRegistrationPage::BUTTON_REGISTER);
+        $i->click(CompanyRegistrationPage::FORM_BUTTON_SUBMIT);
 
         $i->seeCurrentUrlEquals(CustomerLoginPage::URL);
-        $i->seeInSource(CompanyRegistrationPage::SUCCESS_MESSAGE);
+        $i->seeInSource(CompanyRegistrationPage::MESSAGE_SUCCESS_COMPANY_REGISTERED);
     }
 }

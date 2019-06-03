@@ -40,8 +40,8 @@ class NewsletterSubscriptionCest
 
         $customerTransfer = (new CustomerBuilder())->build();
 
-        $i->fillField(NewsletterSubscriptionHomePage::FORM_SELECTOR, $customerTransfer->getEmail());
-        $i->click(NewsletterSubscriptionHomePage::FORM_SUBMIT);
+        $i->fillField(NewsletterSubscriptionHomePage::FORM_FIELD_EMAIL, $customerTransfer->getEmail());
+        $i->click(NewsletterSubscriptionHomePage::FORM_BUTTON_SUBMIT);
 
         $i->seeInPageSource(NewsletterSubscriptionHomePage::SUCCESS_MESSAGE);
     }
@@ -62,8 +62,8 @@ class NewsletterSubscriptionCest
 
         $i->haveAnAlreadySubscribedEmail($customerTransfer->getEmail());
 
-        $i->fillField(NewsletterSubscriptionHomePage::FORM_SELECTOR, $customerTransfer->getEmail());
-        $i->click(NewsletterSubscriptionHomePage::FORM_SUBMIT);
+        $i->fillField(NewsletterSubscriptionHomePage::FORM_FIELD_EMAIL, $customerTransfer->getEmail());
+        $i->click(NewsletterSubscriptionHomePage::FORM_BUTTON_SUBMIT);
 
         $i->seeInPageSource(NewsletterSubscriptionHomePage::ERROR_MESSAGE);
     }
@@ -82,9 +82,9 @@ class NewsletterSubscriptionCest
 
         $customerTransfer = (new CustomerBuilder())->build();
 
-        $i->fillField(NewsletterSubscriptionHomePage::FORM_SELECTOR, $customerTransfer->getEmail());
-        $i->click(NewsletterSubscriptionHomePage::FORM_SUBMIT);
-        $i->see(CustomerOverviewPage::NEWSLETTER_SUBSCRIBED);
+        $i->fillField(NewsletterSubscriptionHomePage::FORM_FIELD_EMAIL, $customerTransfer->getEmail());
+        $i->click(NewsletterSubscriptionHomePage::FORM_BUTTON_SUBMIT);
+        $i->see(CustomerOverviewPage::MESSAGE_SUCCESS_NEWSLETTER_SUBSCRIBED);
 
         $i->amLoggedInCustomer([
             CustomerTransfer::EMAIL => $customerTransfer->getEmail(),
@@ -107,9 +107,9 @@ class NewsletterSubscriptionCest
 
         $customerTransfer = (new CustomerBuilder())->build();
 
-        $i->fillField(NewsletterSubscriptionHomePage::FORM_SELECTOR, $customerTransfer->getEmail());
-        $i->click(NewsletterSubscriptionHomePage::FORM_SUBMIT);
-        $i->see(CustomerOverviewPage::NEWSLETTER_SUBSCRIBED);
+        $i->fillField(NewsletterSubscriptionHomePage::FORM_FIELD_EMAIL, $customerTransfer->getEmail());
+        $i->click(NewsletterSubscriptionHomePage::FORM_BUTTON_SUBMIT);
+        $i->see(CustomerOverviewPage::MESSAGE_SUCCESS_NEWSLETTER_SUBSCRIBED);
 
         $i->amLoggedInCustomer([
             CustomerTransfer::EMAIL => $customerTransfer->getEmail(),

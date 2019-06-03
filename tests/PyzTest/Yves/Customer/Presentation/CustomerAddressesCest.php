@@ -27,11 +27,11 @@ class CustomerAddressesCest
      *
      * @return void
      */
-    public function testICanOpenAddAddressPage(CustomerPresentationTester $i)
+    public function testICanOpenAddAddressPage(CustomerPresentationTester $i): void
     {
         $i->amLoggedInCustomer();
         $i->amOnPage(CustomerAddressesPage::URL);
-        $i->click(CustomerAddressesPage::ADD_NEW_ADDRESS_BUTTON);
+        $i->click(CustomerAddressesPage::BUTTON_ADD_NEW_ADDRESS);
         $i->seeCurrentUrlEquals(CustomerAddressPage::URL);
     }
 }

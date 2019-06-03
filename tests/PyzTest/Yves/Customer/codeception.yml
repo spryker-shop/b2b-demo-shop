@@ -31,6 +31,17 @@ suites:
                   window_size: 1920x1080
                   host: 0.0.0.0
                   restart: false
+
+#              - WebDriver:
+#                  url: 'http://www-test.de.b2b-demo-shop.local/'
+#                  window_size: false
+#                  port: 9515
+#                  browser: chrome
+#                  capabilities:
+#                    chromeOptions:
+#                      args: ["--headless", "--disable-gpu", "--window-size=1920,1080"]
+#                      binary: "/usr/bin/google-chrome"
+
               - \SprykerTest\Shared\Testify\Helper\DataCleanupHelper
               - \SprykerTest\Shared\Application\Helper\YvesHelper
               - \SprykerTest\Shared\Customer\Helper\CustomerDataHelper

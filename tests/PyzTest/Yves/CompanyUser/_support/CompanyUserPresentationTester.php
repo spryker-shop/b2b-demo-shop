@@ -48,13 +48,13 @@ class CompanyUserPresentationTester extends Actor
         $i = $this;
         $companyData = CompanyRegistrationPage::getCompanyData();
 
-        $i->selectOption(CompanyRegistrationPage::FORM_FIELD_SELECTOR_SALUTATION, $companyData[CompanyRegistrationPage::FORM_FIELD_SELECTOR_SALUTATION]);
-        $i->fillField(CompanyRegistrationPage::FORM_FIELD_SELECTOR_FIRST_NAME, $companyData[CompanyRegistrationPage::FORM_FIELD_SELECTOR_FIRST_NAME]);
-        $i->fillField(CompanyRegistrationPage::FORM_FIELD_SELECTOR_LAST_NAME, $companyData[CompanyRegistrationPage::FORM_FIELD_SELECTOR_LAST_NAME]);
-        $i->fillField(CompanyRegistrationPage::FORM_FIELD_SELECTOR_COMPANY_NAME, $companyData[CompanyRegistrationPage::FORM_FIELD_SELECTOR_COMPANY_NAME]);
-        $i->fillField(CompanyRegistrationPage::FORM_FIELD_SELECTOR_EMAIL, $companyData[CompanyRegistrationPage::FORM_FIELD_SELECTOR_EMAIL]);
-        $i->fillField(CompanyRegistrationPage::FORM_FIELD_SELECTOR_PASSWORD, $companyData[CompanyRegistrationPage::FORM_FIELD_SELECTOR_PASSWORD]);
-        $i->fillField(CompanyRegistrationPage::FORM_FIELD_SELECTOR_PASSWORD_CONFIRM, $companyData[CompanyRegistrationPage::FORM_FIELD_SELECTOR_PASSWORD_CONFIRM]);
-        $i->click(CompanyRegistrationPage::FORM_FIELD_SELECTOR_ACCEPT_TERMS);
+        $i->selectOption(CompanyRegistrationPage::FORM_FIELD_SALUTATION, $companyData[CompanyRegistrationPage::FORM_FIELD_SALUTATION]);
+        $i->fillField(CompanyRegistrationPage::FORM_FIELD_FIRST_NAME, $companyData[CompanyRegistrationPage::FORM_FIELD_FIRST_NAME]);
+        $i->fillField(CompanyRegistrationPage::FORM_FIELD_LAST_NAME, $companyData[CompanyRegistrationPage::FORM_FIELD_LAST_NAME]);
+        $i->fillField(CompanyRegistrationPage::FORM_FIELD_COMPANY_NAME, $companyData[CompanyRegistrationPage::FORM_FIELD_COMPANY_NAME]);
+        $i->fillField(CompanyRegistrationPage::FORM_FIELD_EMAIL, $companyData[CompanyRegistrationPage::FORM_FIELD_EMAIL]);
+        $i->fillField(CompanyRegistrationPage::FORM_FIELD_PASSWORD, $companyData[CompanyRegistrationPage::FORM_FIELD_PASSWORD]);
+        $i->fillField(CompanyRegistrationPage::FORM_FIELD_PASSWORD_CONFIRM, $companyData[CompanyRegistrationPage::FORM_FIELD_PASSWORD_CONFIRM]);
+        $i->click(CompanyRegistrationPage::FORM_FIELD_ACCEPT_TERMS);
     }
 }

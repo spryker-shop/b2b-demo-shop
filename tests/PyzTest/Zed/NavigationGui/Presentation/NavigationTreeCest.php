@@ -28,9 +28,6 @@ use PyzTest\Zed\NavigationGui\PageObject\NavigationPage;
  */
 class NavigationTreeCest
 {
-    protected const URL_EN_CATEGORY_URL = '/en/stationery/paper';
-    protected const URL_DE_CATEGORY_URL = '/de/bürobedarf/papier';
-
     /**
      * @param \PyzTest\Zed\NavigationGui\NavigationGuiPresentationTester $i
      *
@@ -148,7 +145,7 @@ class NavigationTreeCest
         $i->clickNode($idNavigationNode);
         $i->switchToNodeForm();
         $i->see('Edit node');
-        $i->submitUpdateNodeToCategoryType(static::URL_EN_CATEGORY_URL, static::URL_DE_CATEGORY_URL);
+        $i->submitUpdateNodeToCategoryType(NavigationPage::URL_EN_CREATE_NAVIGATION_CATEGORY, NavigationPage::URL_DE_CREATE_NAVIGATION_CATEGORY);
 
         $i->seeSuccessMessage(NavigationNodeUpdatePage::MESSAGE_SUCCESS);
         $i->switchToNavigationTree();
@@ -252,7 +249,7 @@ class NavigationTreeCest
         $i->moveNavigationNode($idNavigationNode, $idTargetNavigationNode);
         $i->seeNavigationNodeHierarchy($idTargetNavigationNode, $idNavigationNode);
         $i->saveNavigationTreeOrder();
-        $i->seeSuccessfulOrderSaveMessage(NavigationPage::MESSAGE_TREE_UPDATE_SUCCESS);
+        $i->seeSuccessfulOrderSaveMessage(NavigationPage::MESSAGE_SUCCESS_NAVIGATION_TREE_UPDATED);
     }
 
     /**

@@ -14,7 +14,8 @@ class CustomerOverviewPage
     public const BOX_HEADLINE_ORDERS = 'Last orders';
     public const BOX_HEADLINE_PROFILE = 'Profile';
     public const BOX_HEADLINE_NEWSLETTER = 'Newsletter';
-    public const NEWSLETTER_SUBSCRIBED = 'You successfully subscribed to the newsletter';
+
+    public const MESSAGE_SUCCESS_NEWSLETTER_SUBSCRIBED = 'You successfully subscribed to the newsletter';
 
     public const LINK_TO_PROFILE_PAGE = '//a[@class=\'navigation-sidebar-item__link\' and @href=\'/customer/profile\']';
     public const LINK_TO_ADDRESSES_PAGE = '//a[@class=\'navigation-sidebar-item__link\' and @href=\'/customer/address\']';
