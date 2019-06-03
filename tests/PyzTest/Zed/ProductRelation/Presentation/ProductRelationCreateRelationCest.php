@@ -27,7 +27,7 @@ class ProductRelationCreateRelationCest
      *
      * @return void
      */
-    public function testICanCreateProductRelationAndSeeInYves(ProductRelationPresentationTester $i)
+    public function testICanCreateProductRelationAndSeeInYves(ProductRelationPresentationTester $i): void
     {
         $i->wantTo('I want to create up selling relation');
         $i->expect('relation is persisted, exported to yves and carousel component is visible');
@@ -36,20 +36,25 @@ class ProductRelationCreateRelationCest
 
         $i->amOnPage(ProductRelationCreatePage::URL);
 
-        $i->selectRelationType(ProductRelationTypes::TYPE_RELATED_PRODUCTS);
-        $i->filterProductsByName('Samsung Bundle');
+        $i->filterProductsByName(ProductRelationCreatePage::PRODUCT_RELATION_PRODUCT_1_NAME);
         $i->wait(5);
-        $i->selectProduct(214);
+        $i->selectProduct(ProductRelationCreatePage::PRODUCT_RELATION_PRODUCT_1_SKU);
 
+        $i->selectRelationType(ProductRelationTypes::TYPE_RELATED_PRODUCTS);
         $i->switchToAssignProductsTab();
 
-        $i->selectProductRule('product_sku', 'equal', '123');
+        $i->selectProductRule(
+            ProductRelationCreatePage::PRODUCT_RULE_NAME,
+            ProductRelationCreatePage::PRODUCT_RULE_OPERATOR,
+            ProductRelationCreatePage::PRODUCT_RELATION_PRODUCT_2_SKU
+        );
 
         $i->clickSaveButton();
+        $i->see(ProductRelationCreatePage::MESSAGE_SUCCESS_PRODUCT_RELATION_CREATED);
 
-        $i->see(ProductRelationCreatePage::PRODUCT_SUCCESS_FULLY_CREATED_MESSAGE);
-
-        //$i->activateRelation();
+        $i->activateRelation();
+        $i->wait(5);
+        $i->see(ProductRelationCreatePage::MESSAGE_SUCCESS_PRODUCT_RELATION_ACTIVATED);
 
         // TODO re-enable
         //$i->runCollectors();
