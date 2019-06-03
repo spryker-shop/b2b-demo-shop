@@ -30,14 +30,14 @@ class CustomerOverviewCest
      *
      * @return void
      */
-    public function testICanOpenOverviewPage(CustomerPresentationTester $i)
+    public function testICanOpenOverviewPage(CustomerPresentationTester $i): void
     {
         $i->amLoggedInCustomer();
         $i->amOnPage(CustomerOverviewPage::URL);
 
-        $i->see(CustomerOverviewPage::BOX_HEADLINE_ORDERS, 'h5');
-        $i->see(CustomerOverviewPage::BOX_HEADLINE_PROFILE, 'h5');
-        $i->see(CustomerOverviewPage::BOX_HEADLINE_NEWSLETTER, 'h5');
+        $i->see(CustomerOverviewPage::BOX_HEADLINE_ORDERS, 'h3');
+        $i->see(CustomerOverviewPage::BOX_HEADLINE_PROFILE, 'h4');
+        $i->see(CustomerOverviewPage::BOX_HEADLINE_NEWSLETTER, 'h4');
     }
 
     /**
@@ -45,21 +45,7 @@ class CustomerOverviewCest
      *
      * @return void
      */
-    public function testCustomerWithoutAddressShouldSeeAddAddressInfoText(CustomerPresentationTester $i)
-    {
-        $i->amLoggedInCustomer();
-        $i->amOnPage(CustomerOverviewPage::URL);
-
-        // $i->see(CustomerOverviewPage::INFO_TEXT_ADD_SHIPPING_ADDRESS);
-        // $i->see(CustomerOverviewPage::INFO_TEXT_ADD_BILLING_ADDRESS);
-    }
-
-    /**
-     * @param \PyzTest\Yves\Customer\CustomerPresentationTester $i
-     *
-     * @return void
-     */
-    public function testICanGoFromOverviewToProfilePage(CustomerPresentationTester $i)
+    public function testICanGoFromOverviewToProfilePage(CustomerPresentationTester $i): void
     {
         $i->amLoggedInCustomer();
         $i->amOnPage(CustomerOverviewPage::URL);
@@ -72,7 +58,7 @@ class CustomerOverviewCest
      *
      * @return void
      */
-    public function testICanGoFromOverviewToAddressesPage(CustomerPresentationTester $i)
+    public function testICanGoFromOverviewToAddressesPage(CustomerPresentationTester $i): void
     {
         $i->amLoggedInCustomer();
         $i->amOnPage(CustomerOverviewPage::URL);
@@ -85,7 +71,7 @@ class CustomerOverviewCest
      *
      * @return void
      */
-    public function testICanGoFromOverviewToOrdersPage(CustomerPresentationTester $i)
+    public function testICanGoFromOverviewToOrdersPage(CustomerPresentationTester $i): void
     {
         $i->amLoggedInCustomer();
         $i->amOnPage(CustomerOverviewPage::URL);
@@ -98,7 +84,7 @@ class CustomerOverviewCest
      *
      * @return void
      */
-    public function testICanGoFromOverviewToNewsletterPage(CustomerPresentationTester $i)
+    public function testICanGoFromOverviewToNewsletterPage(CustomerPresentationTester $i): void
     {
         $i->amLoggedInCustomer();
         $i->amOnPage(CustomerOverviewPage::URL);
