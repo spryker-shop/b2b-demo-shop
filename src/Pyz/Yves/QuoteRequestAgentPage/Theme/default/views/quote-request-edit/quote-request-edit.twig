@@ -68,6 +68,8 @@
                             },
                         } only %}
                             {% block sourcePriceForm %}
+                                {% set priceModeGross = 'GROSS_MODE' %}
+                                {% set originUnitPrice = (data.priceMode == priceModeGross) ? data.cartItem.originUnitGrossPrice : data.cartItem.originUnitNetPrice %}
                                 {% set unitSourcePrice = null %}
                                 {% if data.itemChild.sourceUnitGrossPrice is defined %}
                                     {% set unitSourcePrice = data.itemChild.sourceUnitGrossPrice.vars.value %}
@@ -76,12 +78,15 @@
                                     {% set unitSourcePrice = data.itemChild.sourceUnitNetPrice.vars.value %}
                                 {% endif %}
                                 {% include molecule('source-price-form', 'QuoteRequestAgentPage') with {
+                                    class: 'spacing-bottom spacing-bottom--big',
                                     data: {
                                         priceFiled: data.itemChild,
                                         checkboxName: 'use_default_price',
                                         checkboxValue: 1,
                                         isChecked: unitSourcePrice != null ? false : true,
                                         checkboxLabel: 'quote_request_page.quote_request.use_default_price' | trans,
+                                        priceItem: data.cartItem.unitPrice | money(true, data.currency.code),
+                                        originUnitPrice: originUnitPrice | money(true, data.currency.code),
                                     },
                                     attributes: {
                                         price: unitSourcePrice,

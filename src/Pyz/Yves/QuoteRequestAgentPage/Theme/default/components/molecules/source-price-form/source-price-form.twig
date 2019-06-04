@@ -1,0 +1,56 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'source-price-form',
+    tag: 'source-price-form',
+} %}
+
+{% define data = {
+    priceFiled: required,
+    checkboxName: required,
+    checkboxValue: required,
+    isChecked: required,
+    checkboxLabel: required,
+    priceItem: required,
+    originUnitPrice: required,
+} %}
+
+{% define attributes = {
+    price: required,
+} %}
+
+{% block body %}
+    <div class="grid grid--middle grid--justify grid--gap spacing-bottom">
+        <div class="col col--sm-6">
+            <strong>
+                <s class="{{ config.jsName }}__origin-price {{ data.priceItem == data.originUnitPrice ? 'is-hidden' }} text-big text-secondary">
+                    {{ data.originUnitPrice }}
+                </s>
+            </strong>
+        </div>
+        <div class="col col--sm-6">
+            {{ form_row(data.priceFiled, {'attr': {'class': config.jsName ~ '__input-container is-hidden'}}) }}
+            {% if data.priceItem != data.originUnitPrice  %}
+                <strong class="{{ config.jsName }}__price is-hidden text-big">{{ data.originUnitPrice }}</strong>
+            {% else %}
+                <strong class="{{ config.jsName }}__price text-big">{{ data.priceItem }}</strong>
+            {% endif %}
+        </div>
+    </div>
+    <div class="grid grid--gap">
+        <div class="col col--sm-12">
+            {% include atom('checkbox') with {
+                class: config.jsName ~ '__checkbox-container',
+                attributes: {
+                    name: data.checkboxName,
+                    value: data.checkboxValue,
+                    checked: data.isChecked,
+                    disabled: data.priceFiled.vars.disabled,
+                },
+                data: {
+                    label: data.checkboxLabel
+                }
+            } only %}
+        </div>
+    </div>
+{% endblock %}

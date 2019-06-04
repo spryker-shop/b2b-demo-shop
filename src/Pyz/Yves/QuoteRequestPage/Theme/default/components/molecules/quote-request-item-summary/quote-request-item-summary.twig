@@ -19,15 +19,6 @@
 {% block class %}{{ parent() }} list{% endblock %}
 
 {% block body %}
-    <li class="list__item spacing-y">
-        <strong>{{ 'cart.item.item_price' | trans }}:</strong>
-        {% if data.cartItem.sourceUnitGrossPrice is not null or data.cartItem.sourceUnitNetPrice is not null %}
-            <span class="text-secondary spacing-x spacing-x--inner spacing-x--small"><s>{{ originUnitPrice | money(true, data.currency.code) }}</s> {{ data.unitPrice }}</span>
-        {% else %}
-            <span class="text-secondary spacing-x spacing-x--inner spacing-x--small">{{ data.unitPrice }}</span>
-        {% endif %}
-    </li>
-
     {% if data.cartItem.productOptions | length > 0 %}
         <li class="list__item text-small">
             {% include molecule('product-options', 'ProductOptionWidget') ignore missing with {
@@ -39,5 +30,4 @@
             } only %}
         </li>
     {% endif %}
-
 {% endblock %}
