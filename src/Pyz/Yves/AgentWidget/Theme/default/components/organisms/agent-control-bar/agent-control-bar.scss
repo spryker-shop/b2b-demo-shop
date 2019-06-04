@@ -3,7 +3,6 @@
         position: relative;
         z-index: $setting-zi-header + 1;
         background-color: $setting-color-gray-6;
-        padding: rem(22) 0;
 
         .body-overlay--no-agent-user & {
             z-index: $setting-zi-search-suggestions;
@@ -14,6 +13,14 @@
                 flex-direction: column-reverse;
                 text-align: right;
             }
+        }
+
+        &__top-bar {
+            padding: rem(22) 0;
+        }
+
+        &__bottom-bar {
+            background-color: $setting-color-lightest;
         }
 
         @content;

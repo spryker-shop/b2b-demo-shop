@@ -14,19 +14,19 @@
 
         {{ form_start(data.cartForm) }}
 
-            <div class="grid">
-                <div class="col col--sm-12 spacing-bottom">
-                    <a class="button button--hollow button--expand" href="{{ path('agent/quote-request/cart/clear') }}" title="{{ 'quote_request_page.quote_request.actions.cancel' | trans }}" data-init-single-click>
+            <div class="grid grid--justify">
+                <div class="col">
+                    <a class="button button--hollow" href="{{ path('agent/quote-request/cart/clear') }}" title="{{ 'quote_request_page.quote_request.actions.cancel' | trans }}" data-init-single-click>
                         {{ 'quote_request_page.quote_request.actions.cancel' | trans }}
                     </a>
                 </div>
-                <div class="col col--sm-12 spacing-bottom">
-                    <button type="submit" name="save" class="button button--success button--expand">
+                <div class="col">
+                    <button type="submit" name="save" class="button button--success">
                         {{ 'quote_request_page.quote_request.actions.save' | trans }}
                     </button>
                 </div>
-                <div class="col col--sm-12 spacing-bottom">
-                    <button type="submit" name="saveAndBack" class="button button--success button--expand">
+                <div class="col">
+                    <button type="submit" name="saveAndBack" class="button button--success spacing-x spacing-x--inner">
                         {{ 'quote_request_page.quote_request.actions.save_and_back_to_edit' | trans }}
                     </button>
                 </div>
