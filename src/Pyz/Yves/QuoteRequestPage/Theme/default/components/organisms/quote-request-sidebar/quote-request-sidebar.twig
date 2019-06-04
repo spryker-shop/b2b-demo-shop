@@ -92,7 +92,6 @@
         </a>
 
         {% if data.isLatestVersion %}
-
             {% if data.isQuoteRequestCancelable %}
                 {% block quoteRequestCancelableAction %}
                     <a class="spacing-bottom button button--expand button--cancel"
@@ -127,10 +126,6 @@
                     </a>
                 {% endblock %}
             {% endif %}
-        {% else %}
-            <button type="submit" class="spacing-bottom button button--expand button--success">
-                {{ 'quote_request_page.quote_request.submit' | trans }}
-            </button>
         {% endif %}
     {% endblock %}
 {% endblock %}
