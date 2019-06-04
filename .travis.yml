@@ -109,7 +109,7 @@ script:
 
   - vendor/bin/phantomjs --webdriver=4444 --disk-cache=true --load-images=false &
   - if [[ $TEST_GROUP == 'without-acceptance' ]] ; then vendor/bin/codecept run -x Presentation ; fi
-  - if [[ $TEST_GROUP == 'acceptance' ]] ; then vendor/bin/codecept run -g Presentation ; fi
+  - if [[ $TEST_GROUP == 'acceptance' ]] ; then vendor/bin/codecept run -g Presentation --debug ; fi
 
   - if [[ $VALIDATION == 1 ]] ; then node ./frontend/libs/stylelint ; fi
   - if [[ $VALIDATION == 1 ]] ; then node ./frontend/libs/tslint stylish ; fi
