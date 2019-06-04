@@ -15,6 +15,7 @@ use Generated\Shared\Transfer\NewsletterSubscriberTransfer;
 use Generated\Shared\Transfer\NewsletterSubscriptionRequestTransfer;
 use Generated\Shared\Transfer\NewsletterTypeTransfer;
 use Orm\Zed\Country\Persistence\SpyCountryQuery;
+use Orm\Zed\Customer\Persistence\SpyCustomer;
 use Orm\Zed\Customer\Persistence\SpyCustomerAddress;
 use Orm\Zed\Customer\Persistence\SpyCustomerQuery;
 use PyzTest\Yves\CompanyUser\Helper\CompanyUserHelper;
@@ -42,7 +43,7 @@ class CustomerHelper extends Module
      *
      * @return \Orm\Zed\Customer\Persistence\SpyCustomer
      */
-    public function loadCustomerByEmail($email)
+    public function loadCustomerByEmail($email): SpyCustomer
     {
         $customerQuery = new SpyCustomerQuery();
         $customerEntity = $customerQuery->findOneByEmail($email);
@@ -55,7 +56,7 @@ class CustomerHelper extends Module
      *
      * @return \Generated\Shared\Transfer\CustomerTransfer
      */
-    public function haveRegisteredCustomer(array $seed = [])
+    public function haveRegisteredCustomer(array $seed = []): CustomerTransfer
     {
         $this->setupSession();
 
@@ -76,7 +77,7 @@ class CustomerHelper extends Module
      *
      * @return void
      */
-    public function addAddressToCustomer($email, $address, $isDefaultShipping = true, $isDefaultBilling = true)
+    public function addAddressToCustomer($email, $address, $isDefaultShipping = true, $isDefaultBilling = true): void
     {
         $customerEntity = $this->loadCustomerByEmail($email);
         $addressTransfer = CustomerAddressesPage::getAddressData($address);
@@ -105,7 +106,7 @@ class CustomerHelper extends Module
      *
      * @return void
      */
-    public function addNewsletterSubscription($email, $type = NewsletterConstants::DEFAULT_NEWSLETTER_TYPE)
+    public function addNewsletterSubscription($email, $type = NewsletterConstants::DEFAULT_NEWSLETTER_TYPE): void
     {
         $customerEntity = $this->loadCustomerByEmail($email);
         $newsletterSubscriberTransfer = new NewsletterSubscriberTransfer();
@@ -128,7 +129,7 @@ class CustomerHelper extends Module
      *
      * @return \Generated\Shared\Transfer\CustomerTransfer
      */
-    public function amLoggedInCustomer(array $seed = [])
+    public function amLoggedInCustomer(array $seed = []): CustomerTransfer
     {
         $customerTransfer = $this->haveRegisteredCustomer($seed);
 
@@ -155,7 +156,6 @@ class CustomerHelper extends Module
         $this->setDependency(CustomerDependencyProvider::FACADE_MAIL, $mailMock);
 
         $customerTransfer = (new CustomerBuilder($seed))->build();
-
         $password = $customerTransfer->getPassword();
 
         $customerTransfer = $this->getModule('\\' . CustomerDataHelper::class)
@@ -193,7 +193,7 @@ class CustomerHelper extends Module
     /**
      * @return void
      */
-    protected function setupSession()
+    protected function setupSession(): void
     {
         $sessionContainer = new Session(new MockArraySessionStorage());
         $sessionClient = new SessionClient();
