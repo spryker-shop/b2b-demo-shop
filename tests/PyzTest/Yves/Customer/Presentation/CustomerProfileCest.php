@@ -114,11 +114,14 @@ class CustomerProfileCest
 
     /**
      * @param \PyzTest\Yves\Customer\CustomerPresentationTester $i
+     * @param \Codeception\Scenario $scenario
      *
      * @return void
      */
-    public function testICanNotChangePasswordWhenNewPasswordsNotMatch(CustomerPresentationTester $i): void
+    public function testICanNotChangePasswordWhenNewPasswordsNotMatch(CustomerPresentationTester $i, Scenario $scenario): void
     {
+        $scenario->skip('Once we have Chromium + ChromeDriver or Firefox, enable this test case.');
+
         $customerTransfer = $i->amLoggedInCustomer();
         $i->amOnPage(CustomerProfilePage::URL);
 
