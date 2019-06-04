@@ -46,11 +46,14 @@ class CustomerOverviewCest
 
     /**
      * @param \PyzTest\Yves\Customer\CustomerPresentationTester $i
+     * @param \Codeception\Scenario $scenario
      *
      * @return void
      */
-    public function testICanGoFromOverviewToProfilePage(CustomerPresentationTester $i): void
+    public function testICanGoFromOverviewToProfilePage(CustomerPresentationTester $i, Scenario $scenario): void
     {
+        $scenario->skip('Once we have Chromium + ChromeDriver or Firefox, enable this test case.');
+
         $i->amLoggedInCustomer();
         $i->amOnPage(CustomerOverviewPage::URL);
         $i->click(CustomerOverviewPage::LINK_TO_PROFILE_PAGE);
@@ -59,11 +62,14 @@ class CustomerOverviewCest
 
     /**
      * @param \PyzTest\Yves\Customer\CustomerPresentationTester $i
+     * @param \Codeception\Scenario $scenario
      *
      * @return void
      */
-    public function testICanGoFromOverviewToAddressesPage(CustomerPresentationTester $i): void
+    public function testICanGoFromOverviewToAddressesPage(CustomerPresentationTester $i, Scenario $scenario): void
     {
+        $scenario->skip('Once we have Chromium + ChromeDriver or Firefox, enable this test case.');
+
         $i->amLoggedInCustomer();
         $i->amOnPage(CustomerOverviewPage::URL);
         $i->click(CustomerOverviewPage::LINK_TO_ADDRESSES_PAGE);
