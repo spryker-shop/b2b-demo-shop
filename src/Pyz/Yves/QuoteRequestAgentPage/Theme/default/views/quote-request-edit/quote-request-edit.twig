@@ -80,13 +80,13 @@
                                 {% include molecule('source-price-form', 'QuoteRequestAgentPage') with {
                                     class: 'spacing-bottom spacing-bottom--big',
                                     data: {
-                                        priceFiled: data.itemChild,
+                                        priceField: data.itemChild,
                                         checkboxName: 'use_default_price',
                                         checkboxValue: 1,
                                         isChecked: unitSourcePrice != null ? false : true,
                                         checkboxLabel: 'quote_request_page.quote_request.use_default_price' | trans,
-                                        priceItem: data.cartItem.unitPrice | money(true, data.currency.code),
-                                        originUnitPrice: originUnitPrice | money(true, data.currency.code),
+                                        currentItemPrice: data.cartItem.unitPrice | money(true, data.currency.code),
+                                        originItemPrice: originUnitPrice | money(true, data.currency.code),
                                     },
                                     attributes: {
                                         price: unitSourcePrice,

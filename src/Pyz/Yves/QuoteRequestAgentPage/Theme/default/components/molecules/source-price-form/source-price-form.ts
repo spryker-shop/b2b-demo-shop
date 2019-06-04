@@ -3,7 +3,7 @@ import SourcePriceFormParentClass from 'QuoteRequestAgentPage/components/molecul
 export default class SourcePriceForm extends SourcePriceFormParentClass {
     protected price: HTMLElement;
     protected originPrice: HTMLElement;
-    readonly hiddenClass: string = 'is-hidden';
+    protected readonly hiddenClass: string = 'is-hidden';
 
     protected readyCallback(): void {
         this.price = <HTMLElement>this.querySelector(`.${this.jsName}__price`);
@@ -11,12 +11,16 @@ export default class SourcePriceForm extends SourcePriceFormParentClass {
         super.readyCallback();
     }
 
+    protected toggler(): void {
+        this.price.classList.toggle(this.hiddenClass);
+        this.originPrice.classList.toggle(this.hiddenClass);
+    }
+
     protected onInputType(event: Event): void {
         super.onInputType(event);
 
         if (this.checkboxChecked) {
-            this.price.classList.remove(this.hiddenClass);
-            this.originPrice.classList.add(this.hiddenClass);
+            this.toggler();
         }
     }
 
@@ -24,13 +28,11 @@ export default class SourcePriceForm extends SourcePriceFormParentClass {
         super.onCheckboxChange(event);
 
         if (this.checkboxChecked) {
-            this.price.classList.remove(this.hiddenClass);
-            this.originPrice.classList.add(this.hiddenClass);
+            this.toggler();
 
             return;
         }
 
-        this.price.classList.add(this.hiddenClass);
-        this.originPrice.classList.remove(this.hiddenClass);
+        this.toggler();
     }
 }

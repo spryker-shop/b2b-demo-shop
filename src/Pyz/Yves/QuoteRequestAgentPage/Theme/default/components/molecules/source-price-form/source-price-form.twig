@@ -6,13 +6,13 @@
 } %}
 
 {% define data = {
-    priceFiled: required,
+    priceField: required,
     checkboxName: required,
     checkboxValue: required,
     isChecked: required,
     checkboxLabel: required,
-    priceItem: required,
-    originUnitPrice: required,
+    currentItemPrice: required,
+    originItemPrice: required,
 } %}
 
 {% define attributes = {
@@ -23,17 +23,17 @@
     <div class="grid grid--middle grid--justify grid--gap spacing-bottom">
         <div class="col col--sm-6">
             <strong>
-                <s class="{{ config.jsName }}__origin-price {{ data.priceItem == data.originUnitPrice ? 'is-hidden' }} text-big text-secondary">
-                    {{ data.originUnitPrice }}
+                <s class="{{ config.jsName }}__origin-price {{ data.currentItemPrice == data.originItemPrice ? 'is-hidden' }} text-big text-secondary">
+                    {{ data.originItemPrice }}
                 </s>
             </strong>
         </div>
         <div class="col col--sm-6">
-            {{ form_row(data.priceFiled, {'attr': {'class': config.jsName ~ '__input-container is-hidden'}}) }}
-            {% if data.priceItem != data.originUnitPrice  %}
-                <strong class="{{ config.jsName }}__price is-hidden text-big">{{ data.originUnitPrice }}</strong>
+            {{ form_row(data.priceField, {'attr': {'class': config.jsName ~ '__input-container is-hidden'}}) }}
+            {% if data.currentItemPrice != data.originItemPrice %}
+                <strong class="{{ config.jsName }}__price is-hidden text-big">{{ data.originItemPrice }}</strong>
             {% else %}
-                <strong class="{{ config.jsName }}__price text-big">{{ data.priceItem }}</strong>
+                <strong class="{{ config.jsName }}__price text-big">{{ data.currentItemPrice }}</strong>
             {% endif %}
         </div>
     </div>
@@ -45,11 +45,11 @@
                     name: data.checkboxName,
                     value: data.checkboxValue,
                     checked: data.isChecked,
-                    disabled: data.priceFiled.vars.disabled,
+                    disabled: data.priceField.vars.disabled,
                 },
                 data: {
-                    label: data.checkboxLabel
-                }
+                    label: data.checkboxLabel,
+                },
             } only %}
         </div>
     </div>
