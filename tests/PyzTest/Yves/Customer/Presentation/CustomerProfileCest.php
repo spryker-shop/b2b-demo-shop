@@ -7,6 +7,7 @@
 
 namespace PyzTest\Yves\Customer\Presentation;
 
+use Codeception\Scenario;
 use Generated\Shared\DataBuilder\CustomerBuilder;
 use PyzTest\Yves\Customer\CustomerPresentationTester;
 use PyzTest\Yves\Customer\PageObject\CustomerProfilePage;
@@ -24,11 +25,14 @@ class CustomerProfileCest
 {
     /**
      * @param \PyzTest\Yves\Customer\CustomerPresentationTester $i
+     * @param \Codeception\Scenario $scenario
      *
      * @return void
      */
-    public function testICanUpdateProfileData(CustomerPresentationTester $i): void
+    public function testICanUpdateProfileData(CustomerPresentationTester $i, Scenario $scenario): void
     {
+        $scenario->skip('Once we have Chromium + ChromeDriver or Firefox, enable this test case.');
+
         $i->amLoggedInCustomer();
         $i->amOnPage(CustomerProfilePage::URL);
 
@@ -45,11 +49,14 @@ class CustomerProfileCest
 
     /**
      * @param \PyzTest\Yves\Customer\CustomerPresentationTester $i
+     * @param \Codeception\Scenario $scenario
      *
      * @return void
      */
-    public function testICanUpdateEmail(CustomerPresentationTester $i): void
+    public function testICanUpdateEmail(CustomerPresentationTester $i, Scenario $scenario): void
     {
+        $scenario->skip('Once we have Chromium + ChromeDriver or Firefox, enable this test case.');
+
         $i->amLoggedInCustomer();
         $i->amOnPage(CustomerProfilePage::URL);
 
@@ -83,11 +90,14 @@ class CustomerProfileCest
 
     /**
      * @param \PyzTest\Yves\Customer\CustomerPresentationTester $i
+     * @param \Codeception\Scenario $scenario
      *
      * @return void
      */
-    public function testICanChangePassword(CustomerPresentationTester $i): void
+    public function testICanChangePassword(CustomerPresentationTester $i, Scenario $scenario): void
     {
+        $scenario->skip('Once we have Chromium + ChromeDriver or Firefox, enable this test case.');
+
         $customerTransfer = $i->amLoggedInCustomer();
         $i->amOnPage(CustomerProfilePage::URL);
 
