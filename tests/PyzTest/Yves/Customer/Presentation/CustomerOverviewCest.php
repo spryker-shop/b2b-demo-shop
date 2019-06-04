@@ -7,6 +7,7 @@
 
 namespace PyzTest\Yves\Customer\Presentation;
 
+use Codeception\Scenario;
 use PyzTest\Yves\Customer\CustomerPresentationTester;
 use PyzTest\Yves\Customer\PageObject\CustomerAddressesPage;
 use PyzTest\Yves\Customer\PageObject\CustomerNewsletterPage;
@@ -27,11 +28,14 @@ class CustomerOverviewCest
 {
     /**
      * @param \PyzTest\Yves\Customer\CustomerPresentationTester $i
+     * @param \Codeception\Scenario $scenario
      *
      * @return void
      */
-    public function testICanOpenOverviewPage(CustomerPresentationTester $i): void
+    public function testICanOpenOverviewPage(CustomerPresentationTester $i, Scenario $scenario): void
     {
+        $scenario->skip('Once we have Chromium + ChromeDriver or Firefox, enable this test case.');
+
         $i->amLoggedInCustomer();
         $i->amOnPage(CustomerOverviewPage::URL);
 
