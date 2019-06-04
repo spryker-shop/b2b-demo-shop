@@ -1,15 +1,30 @@
-{% extends model('component') %}
+{% extends molecule('product-quick-add-fields-partial', 'ProductSearchWidget') %}
 
 {% define config = {
-    name: 'product-quick-add-fields'
+    name: 'product-quick-add-fields',
+    tag: 'product-quick-add-fields',
 } %}
 
-{% define data = {
-    form: required,
-    verticalLayout: false
+{% define attributes = {
+    'partial-quantity-selector': '.js-' ~ config.name ~ '-partial__quantity',
 } %}
 
 {% block body %}
+    {% include molecule('ajax-provider') with {
+        class: config.jsName ~ '__provider ',
+        attributes: {
+            url: path('render-product-quick-add-form'),
+        },
+    } only %}
+
+    {% include molecule('ajax-renderer') with {
+        class: config.jsName ~ '__renderer',
+        attributes: {
+            'provider-selector': '.' ~ config.jsName ~ '__provider',
+            'target-selector': '.' ~ config.jsName ~ '__target',
+        },
+    } only %}
+
     {% do data.form.sku.setRendered %}
 
     <div class="col col--sm-12 spacing-bottom spacing-bottom--big {{ data.verticalLayout ? '' : 'col--md-8 spacing-right spacing-right--inner' }}">
@@ -20,14 +35,7 @@
         {% endwidget %}
     </div>
 
-    <div class="col col--sm-12 spacing-bottom spacing-bottom--big {{ data.verticalLayout ? '' : 'col--md-4 spacing-right spacing-right--inner' }}">
-        {{ form_widget(data.form.children.quantity, {
-            attr: {
-                class: config.jsName ~ '__quantity ' ~ 'product-search-autocomplete-form__input product-search-autocomplete-form__input--no-icon js-product-search-autocomplete-form__quantity-field',
-                min: 1,
-                step: 1,
-                placeholder: 'product_quick_add_widget.form.quantity' | trans
-            }}
-        ) }}
+    <div class="col col--sm-12 {{ config.jsName }}__target {{ data.verticalLayout ? 'spacing-bottom' : 'col--md-4 spacing-right spacing-right--inner' }}">
+        {{ parent() }}
     </div>
 {% endblock %}

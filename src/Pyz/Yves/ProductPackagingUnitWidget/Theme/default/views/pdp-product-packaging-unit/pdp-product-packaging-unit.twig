@@ -2,7 +2,6 @@
 
 {% define data = {
     product: _widget.product,
-    quantityOptions: _widget.quantityOptions,
     baseUnit: _widget.baseUnit | default,
     salesUnits: _widget.salesUnits | default([]),
     leadProductSalesUnits: _widget.leadProductSalesUnits | default([]),
@@ -15,6 +14,9 @@
     jsonScheme: _widget.jsonScheme | default(''),
     minQuantityInBaseUnit: _widget.minQuantityInBaseUnit,
     minQuantityInSalesUnits: _widget.minQuantityInSalesUnits,
+    minQuantity: _widget.minQuantity,
+    maxQuantity: _widget.maxQuantity,
+    quantityInterval: _widget.quantityInterval,
 } %}
 
 {% block body %}
@@ -45,7 +47,10 @@
                             id: 'sales-unit-quantity',
                             value: data.minQuantityInSalesUnits,
                             class: 'js-volume-price__quantity',
-                            name: 'sales-unit-quantity'
+                            name: 'sales-unit-quantity',
+                            minQuantity: data.minQuantity,
+                            maxQuantity: data.maxQuantity,
+                            step: data.quantityInterval,
                         }
                     } only %}
                     <input id="base-unit-quantity" type="hidden" value="{{ data.minQuantityInBaseUnit }}" name="quantity"/>
@@ -80,7 +85,16 @@
     {% else %}
         <div class="grid grid--stretch grid--justify">
             {% embed molecule('quantity-counter') with {
-                modifiers: ['right-space']
+                modifiers: ['right-space'],
+                attributes: {
+                    id: 'sales-unit-quantity',
+                    value: data.minQuantity,
+                    class: 'js-volume-price__quantity',
+                    name: 'sales-unit-quantity',
+                    minQuantity: data.minQuantity,
+                    maxQuantity: data.maxQuantity,
+                    step: data.quantityInterval,
+                }
             } only %}
                 {% block inputClass %}js-volume-price__quantity{% endblock %}
             {% endembed %}

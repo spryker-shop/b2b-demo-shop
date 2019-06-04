@@ -14,7 +14,7 @@ use Spryker\Client\ProductDiscontinuedStorage\Plugin\ProductStorage\ProductViewD
 use Spryker\Client\ProductImageStorage\Plugin\ProductViewImageExpanderPlugin;
 use Spryker\Client\ProductListStorage\Plugin\ProductStorageExtension\ProductAbstractRestrictionPlugin;
 use Spryker\Client\ProductListStorage\Plugin\ProductStorageExtension\ProductConcreteRestrictionPlugin;
-use Spryker\Client\ProductQuantityStorage\Plugin\QuickOrder\ProductConcreteTransferQuantityRestrictionExpanderPlugin;
+use Spryker\Client\ProductQuantityStorage\Plugin\ProductStorage\ProductConcreteTransferQuantityRestrictionExpanderPlugin;
 use Spryker\Client\ProductStorage\Plugin\ProductViewVariantExpanderPlugin;
 use Spryker\Client\ProductStorage\ProductStorageDependencyProvider as SprykerProductStorageDependencyProvider;
 
