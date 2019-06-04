@@ -67,8 +67,8 @@
                                 itemChild: itemChild,
                             },
                         } only %}
+                            {% set priceModeGross = 'GROSS_MODE' %}
                             {% block sourcePriceForm %}
-                                {% set priceModeGross = 'GROSS_MODE' %}
                                 {% set originUnitPrice = (data.priceMode == priceModeGross) ? data.cartItem.originUnitGrossPrice : data.cartItem.originUnitNetPrice %}
                                 {% set unitSourcePrice = null %}
                                 {% if data.itemChild.sourceUnitGrossPrice is defined %}
