@@ -8,6 +8,7 @@
 namespace PyzTest\Yves\Customer\Helper;
 
 use Codeception\Module;
+use Codeception\Module\WebDriver;
 use Codeception\Util\Stub;
 use Generated\Shared\DataBuilder\CustomerBuilder;
 use Generated\Shared\Transfer\CustomerTransfer;
@@ -23,6 +24,7 @@ use PyzTest\Yves\Customer\PageObject\CustomerAddressesPage;
 use PyzTest\Yves\Customer\PageObject\CustomerLoginPage;
 use Spryker\Client\Session\SessionClient;
 use Spryker\Shared\Newsletter\NewsletterConstants;
+use Spryker\Zed\Customer\Business\CustomerFacadeInterface;
 use Spryker\Zed\Customer\CustomerDependencyProvider;
 use Spryker\Zed\Customer\Dependency\Facade\CustomerToMailBridge;
 use Spryker\Zed\Mail\Business\MailFacadeInterface;
@@ -167,25 +169,25 @@ class CustomerHelper extends Module
     }
 
     /**
-     * @return object|\Spryker\Zed\Mail\Business\MailFacadeInterface
+     * @return \Spryker\Zed\Mail\Business\MailFacadeInterface
      */
-    protected function getMailMock()
+    protected function getMailMock(): MailFacadeInterface
     {
         return Stub::makeEmpty(MailFacadeInterface::class);
     }
 
     /**
-     * @return \Spryker\Zed\Kernel\Business\AbstractFacade|\Spryker\Zed\Customer\Business\CustomerFacadeInterface
+     * @return \Spryker\Zed\Customer\Business\CustomerFacadeInterface
      */
-    protected function getFacade()
+    protected function getCustomerFacade(): CustomerFacadeInterface
     {
         return $this->getLocator()->customer()->facade();
     }
 
     /**
-     * @return \Codeception\Module|\Codeception\Module\WebDriver
+     * @return \Codeception\Module\WebDriver
      */
-    protected function getWebDriver()
+    protected function getWebDriver(): WebDriver
     {
         return $this->getModule('WebDriver');
     }

@@ -18,7 +18,9 @@ use Generated\Shared\Transfer\PermissionCollectionTransfer;
 use Generated\Shared\Transfer\PermissionTransfer;
 use Spryker\Zed\CompanyMailConnector\CompanyMailConnectorDependencyProvider;
 use Spryker\Zed\CompanyMailConnector\Dependency\Facade\CompanyMailConnectorToMailFacadeBridge;
+use Spryker\Zed\CompanyRole\Business\CompanyRoleFacadeInterface;
 use Spryker\Zed\Mail\Business\MailFacadeInterface;
+use Spryker\Zed\Permission\Business\PermissionFacadeInterface;
 use SprykerTest\Shared\CompanyUser\Helper\CompanyUserHelper as SprykerTestCompanyUserHelper;
 use SprykerTest\Shared\Testify\Helper\DependencyHelperTrait;
 use SprykerTest\Shared\Testify\Helper\LocatorHelperTrait;
@@ -177,7 +179,7 @@ class CompanyUserHelper extends Module
     /**
      * @return \Spryker\Zed\CompanyRole\Business\CompanyRoleFacadeInterface
      */
-    protected function getCompanyRoleFacade()
+    protected function getCompanyRoleFacade(): CompanyRoleFacadeInterface
     {
         return $this->getLocator()->companyRole()->facade();
     }
@@ -185,15 +187,15 @@ class CompanyUserHelper extends Module
     /**
      * @return \Spryker\Zed\Permission\Business\PermissionFacadeInterface
      */
-    protected function getPermissionFacade()
+    protected function getPermissionFacade(): PermissionFacadeInterface
     {
         return $this->getLocator()->permission()->facade();
     }
 
     /**
-     * @return object|\Spryker\Zed\Mail\Business\MailFacadeInterface
+     * @return \Spryker\Zed\Mail\Business\MailFacadeInterface
      */
-    protected function getMailMock()
+    protected function getMailMock(): MailFacadeInterface
     {
         return Stub::makeEmpty(MailFacadeInterface::class);
     }
