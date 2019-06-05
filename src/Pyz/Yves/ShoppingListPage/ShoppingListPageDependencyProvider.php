@@ -23,12 +23,17 @@ class ShoppingListPageDependencyProvider extends SprykerShoppingListPageDependen
      */
     protected function getShoppingListItemExpanderPlugins(): array
     {
-        return [
+        /**
+         * @var \Spryker\Client\ProductStorage\Dependency\Plugin\ProductViewExpanderPluginInterface[] $plugins
+         */
+        $plugins = [
             new ProductViewPriceExpanderPlugin(),
             new ProductViewImageExpanderPlugin(),
             new ProductViewAvailabilityStorageExpanderPlugin(),
             new ProductViewQuantityRestrictionExpanderPlugin(),
         ];
+
+        return $plugins;
     }
 
     /**
