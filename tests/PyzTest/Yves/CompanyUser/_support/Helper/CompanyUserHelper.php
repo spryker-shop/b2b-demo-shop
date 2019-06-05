@@ -16,10 +16,12 @@ use Generated\Shared\Transfer\CompanyTransfer;
 use Generated\Shared\Transfer\CompanyUserTransfer;
 use Generated\Shared\Transfer\CustomerTransfer;
 use Generated\Shared\Transfer\PermissionCollectionTransfer;
+use Pyz\Zed\Permission\PermissionDependencyProvider;
 use Spryker\Zed\CompanyMailConnector\CompanyMailConnectorDependencyProvider;
 use Spryker\Zed\CompanyMailConnector\Dependency\Facade\CompanyMailConnectorToMailFacadeBridge;
 use Spryker\Zed\Mail\Business\MailFacadeInterface;
 use Spryker\Zed\Permission\Business\PermissionFacadeInterface;
+use Spryker\Zed\PermissionExtension\Dependency\Plugin\PermissionStoragePluginInterface;
 use SprykerTest\Shared\CompanyUser\Helper\CompanyUserHelper as SprykerTestCompanyUserHelper;
 use SprykerTest\Shared\Testify\Helper\DependencyHelperTrait;
 use SprykerTest\Shared\Testify\Helper\LocatorHelperTrait;
@@ -69,6 +71,10 @@ class CompanyUserHelper extends Module
      */
     protected function createPermissionCollectionTransferWithCartPermissions(): PermissionCollectionTransfer
     {
+        $this->setDependency(PermissionDependencyProvider::PLUGINS_PERMISSION_STORAGE, [
+            $this->getPermissionStoragePluginMock(),
+        ]);
+
         $availablePermissions = $this->getPermissionFacade()
             ->findMergedRegisteredNonInfrastructuralPermissions()
             ->getPermissions();
@@ -140,6 +146,14 @@ class CompanyUserHelper extends Module
     protected function getPermissionFacade(): PermissionFacadeInterface
     {
         return $this->getLocator()->permission()->facade();
+    }
+
+    /**
+     * @return \Spryker\Zed\PermissionExtension\Dependency\Plugin\PermissionStoragePluginInterface
+     */
+    protected function getPermissionStoragePluginMock(): PermissionStoragePluginInterface
+    {
+        return Stub::makeEmpty(PermissionStoragePluginInterface::class);
     }
 
     /**
