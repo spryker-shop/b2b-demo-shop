@@ -106,12 +106,12 @@
                     {% include molecule('quantity-counter') with {
                         modifiers: ['shopping-list'],
                         data: {
-                            isDisabled: not embed.isItemAvailable
+                            isDisabled: not embed.isItemAvailable,
                         },
                         attributes: {
                             name: 'shoppingListItem[quantity][' ~ data.listItem.idShoppingListItem ~ ']',
-                            value: data.listItem.quantity
-                        }
+                            value: data.listItem.quantity,
+                        },
                     } only %}
                 {% endwidget %}
 

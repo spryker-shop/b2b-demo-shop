@@ -87,14 +87,11 @@
             {% embed molecule('quantity-counter') with {
                 modifiers: ['right-space'],
                 attributes: {
-                    id: 'sales-unit-quantity',
                     value: data.minQuantity,
-                    class: 'js-volume-price__quantity',
-                    name: 'sales-unit-quantity',
                     minQuantity: data.minQuantity,
                     maxQuantity: data.maxQuantity,
                     step: data.quantityInterval,
-                }
+                },
             } only %}
                 {% block inputClass %}js-volume-price__quantity{% endblock %}
             {% endembed %}
