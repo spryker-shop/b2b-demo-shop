@@ -11,14 +11,13 @@ use Codeception\Module;
 use Codeception\Util\Stub;
 use Generated\Shared\Transfer\CompanyBusinessUnitTransfer;
 use Generated\Shared\Transfer\CompanyRoleCollectionTransfer;
+use Generated\Shared\Transfer\CompanyRoleTransfer;
 use Generated\Shared\Transfer\CompanyTransfer;
 use Generated\Shared\Transfer\CompanyUserTransfer;
 use Generated\Shared\Transfer\CustomerTransfer;
 use Generated\Shared\Transfer\PermissionCollectionTransfer;
-use Generated\Shared\Transfer\PermissionTransfer;
 use Spryker\Zed\CompanyMailConnector\CompanyMailConnectorDependencyProvider;
 use Spryker\Zed\CompanyMailConnector\Dependency\Facade\CompanyMailConnectorToMailFacadeBridge;
-use Spryker\Zed\CompanyRole\Business\CompanyRoleFacadeInterface;
 use Spryker\Zed\Mail\Business\MailFacadeInterface;
 use Spryker\Zed\Permission\Business\PermissionFacadeInterface;
 use SprykerTest\Shared\CompanyUser\Helper\CompanyUserHelper as SprykerTestCompanyUserHelper;
@@ -26,6 +25,7 @@ use SprykerTest\Shared\Testify\Helper\DependencyHelperTrait;
 use SprykerTest\Shared\Testify\Helper\LocatorHelperTrait;
 use SprykerTest\Zed\Company\Helper\CompanyHelper;
 use SprykerTest\Zed\CompanyBusinessUnit\Helper\CompanyBusinessUnitHelper;
+use SprykerTest\Zed\CompanyRole\Helper\CompanyRoleHelper;
 
 class CompanyUserHelper extends Module
 {
@@ -47,7 +47,10 @@ class CompanyUserHelper extends Module
     public function haveRegisteredCompanyUser(CustomerTransfer $customerTransfer): CompanyUserTransfer
     {
         $companyTransfer = $this->createCompany();
-
+        $companyRoleTransfer = $this->createCompanyRole([
+            CompanyRoleTransfer::FK_COMPANY => $companyTransfer->getIdCompany(),
+            CompanyRoleTransfer::PERMISSION_COLLECTION => $this->createPermissionCollectionTransferWithCartPermissions(),
+        ]);
         $companyBusinessUnitTransfer = $this->createCompanyBusinessUnit([
             CompanyBusinessUnitTransfer::FK_COMPANY => $companyTransfer->getIdCompany(),
         ]);
@@ -55,85 +58,40 @@ class CompanyUserHelper extends Module
             CompanyUserTransfer::CUSTOMER => $customerTransfer,
             CompanyUserTransfer::FK_COMPANY => $companyTransfer->getIdCompany(),
             CompanyUserTransfer::FK_COMPANY_BUSINESS_UNIT => $companyBusinessUnitTransfer->getIdCompanyBusinessUnit(),
+            CompanyUserTransfer::COMPANY_ROLE_COLLECTION => (new CompanyRoleCollectionTransfer())->addRole($companyRoleTransfer),
         ]);
 
-        if ($this->hasCompanyRoles($companyUserTransfer->getCompanyRoleCollection())) {
-            $this->updateCompanyUserRolePermissions($companyUserTransfer);
-        }
-
         return $companyUserTransfer;
     }
 
     /**
-     * @param \Generated\Shared\Transfer\CompanyUserTransfer $companyUserTransfer
-     *
-     * @return \Generated\Shared\Transfer\CompanyUserTransfer
-     */
-    protected function updateCompanyUserRolePermissions(CompanyUserTransfer $companyUserTransfer): CompanyUserTransfer
-    {
-        $companyRoleTransfer = $companyUserTransfer->getCompanyRoleCollection()
-            ->getRoles()
-            ->offsetGet(0);
-
-        $companyRoleTransfer->setPermissionCollection(
-            $this->getUpdatedPermissionCollectionTransfer($companyRoleTransfer->getPermissionCollection())
-        );
-
-        $this->getCompanyRoleFacade()->update($companyRoleTransfer);
-
-        return $companyUserTransfer;
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\PermissionCollectionTransfer $companyRolePermissionCollectionTransfer
-     *
      * @return \Generated\Shared\Transfer\PermissionCollectionTransfer
      */
-    protected function getUpdatedPermissionCollectionTransfer(
-        PermissionCollectionTransfer $companyRolePermissionCollectionTransfer
-    ): PermissionCollectionTransfer {
-        $availablePermissionCollectionTransfer = $this->getPermissionFacade()
-            ->findMergedRegisteredNonInfrastructuralPermissions();
+    protected function createPermissionCollectionTransferWithCartPermissions(): PermissionCollectionTransfer
+    {
+        $availablePermissions = $this->getPermissionFacade()
+            ->findMergedRegisteredNonInfrastructuralPermissions()
+            ->getPermissions();
 
-        foreach ($availablePermissionCollectionTransfer->getPermissions() as $permissionTransfer) {
+        $permissionCollectionTransfer = new PermissionCollectionTransfer();
+        foreach ($availablePermissions as $permissionTransfer) {
             if (in_array($permissionTransfer->getKey(), static::COMPANY_USER_PERMISSIONS_KEY_LIST, true)) {
-                $companyRolePermissionCollectionTransfer = $this->addPermissionToPermissionCollection(
-                    $permissionTransfer,
-                    $companyRolePermissionCollectionTransfer
-                );
+                $permissionCollectionTransfer->addPermission($permissionTransfer);
             }
         }
 
-        return $companyRolePermissionCollectionTransfer;
+        return $permissionCollectionTransfer;
     }
 
     /**
-     * @param \Generated\Shared\Transfer\PermissionTransfer $permissionTransfer
-     * @param \Generated\Shared\Transfer\PermissionCollectionTransfer $permissionCollectionTransfer
+     * @param array $seed
      *
-     * @return \Generated\Shared\Transfer\PermissionCollectionTransfer
+     * @return \Generated\Shared\Transfer\CompanyRoleTransfer
      */
-    protected function addPermissionToPermissionCollection(
-        PermissionTransfer $permissionTransfer,
-        PermissionCollectionTransfer $permissionCollectionTransfer
-    ): PermissionCollectionTransfer {
-        foreach ($permissionCollectionTransfer as $companyRolePermissionTransfer) {
-            if ($companyRolePermissionTransfer->getIdPermission() === $permissionTransfer->getIdPermission()) {
-                return $permissionCollectionTransfer;
-            }
-        }
-
-        return $permissionCollectionTransfer->addPermission($permissionTransfer);
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\CompanyRoleCollectionTransfer|null $companyRoleCollectionTransfer
-     *
-     * @return bool
-     */
-    protected function hasCompanyRoles(?CompanyRoleCollectionTransfer $companyRoleCollectionTransfer): bool
+    protected function createCompanyRole(array $seed = []): CompanyRoleTransfer
     {
-        return $companyRoleCollectionTransfer && $companyRoleCollectionTransfer->getRoles()->count();
+        return $this->getModule('\\' . CompanyRoleHelper::class)
+            ->haveCompanyRole($seed);
     }
 
     /**
@@ -174,14 +132,6 @@ class CompanyUserHelper extends Module
             ->haveCompanyUser($seed + [
                 CompanyUserTransfer::IS_ACTIVE => true,
             ]);
-    }
-
-    /**
-     * @return \Spryker\Zed\CompanyRole\Business\CompanyRoleFacadeInterface
-     */
-    protected function getCompanyRoleFacade(): CompanyRoleFacadeInterface
-    {
-        return $this->getLocator()->companyRole()->facade();
     }
 
     /**
