@@ -45,7 +45,7 @@
             },
         } only %}
 
-        {% include organism('quote-request-sidebar', 'QuoteRequestPage') with {
+        {% embed organism('quote-request-sidebar', 'QuoteRequestPage') with {
             class: 'col col--sm-12 col--xl-3',
             data: {
                 quoteRequest: data.quoteRequest,
@@ -60,5 +60,7 @@
                 isLatestVersion: isLatestVersion,
             },
         } only %}
+            {% block latestVersionVisibilityStatus %}{% endblock %}
+        {% endembed %}
     </div>
 {% endblock %}

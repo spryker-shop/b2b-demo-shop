@@ -65,13 +65,15 @@
                 {% else %}
                     <p>{{ 'quote_request_page.quote_request.labels.history' | trans }}: --</p>
                 {% endif %}
-                {% if data.isLatestVersion %}
-                    {% if data.quoteRequest.isLatestVersionVisible %}
-                        <p><strong>{{ 'quote_request_page.quote_request.labels.latest_version_is_visible' | trans }}</strong></p>
-                    {% else %}
-                        <p><strong>{{ 'quote_request_page.quote_request.labels.latest_version_is_hidden' | trans }}</strong></p>
+                {% block latestVersionVisibilityStatus %}
+                    {% if data.isLatestVersion %}
+                        {% if data.quoteRequest.isLatestVersionVisible %}
+                            <p><strong>{{ 'quote_request_page.quote_request.labels.latest_version_is_visible' | trans }}</strong></p>
+                        {% else %}
+                            <p><strong>{{ 'quote_request_page.quote_request.labels.latest_version_is_hidden' | trans }}</strong></p>
+                        {% endif %}
                     {% endif %}
-                {% endif %}
+                {% endblock %}
             {% endblock %}
         </div>
     {% endblock %}
