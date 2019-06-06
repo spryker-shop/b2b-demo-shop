@@ -32,13 +32,13 @@ export default class QuantityCounter extends Component {
     }
 
     protected sumQuantities(firstQuantity: number, secondQuantity: number): string {
-        let resultQuantity = firstQuantity + secondQuantity;
+        const resultQuantity = firstQuantity + secondQuantity;
 
         return resultQuantity.toFixed(this.getMaxPrecision(firstQuantity, secondQuantity));
     }
 
     protected subtractQuantities(firstQuantity: number, secondQuantity: number): string {
-        let resultQuantity = firstQuantity - secondQuantity;
+        const resultQuantity = firstQuantity - secondQuantity;
 
         return resultQuantity.toFixed(this.getMaxPrecision(firstQuantity, secondQuantity));
     }
@@ -48,14 +48,14 @@ export default class QuantityCounter extends Component {
     }
 
     protected getQuantityPrecision(quantity: number): number {
-        let stringQuantity = quantity.toString();
+        const stringQuantity = quantity.toString();
         const indexOfDecimalDelimiter = stringQuantity.indexOf('.');
 
         if (indexOfDecimalDelimiter === -1) {
             return 0;
         }
 
-       return stringQuantity.substring(indexOfDecimalDelimiter + 1).length;
+        return stringQuantity.substring(indexOfDecimalDelimiter + 1).length;
     }
 
     protected incrementValue(event: Event): void {
@@ -75,7 +75,6 @@ export default class QuantityCounter extends Component {
         if (this.isAvailable) {
             const value = Number(this.input.value);
             const potentialValue = parseFloat(this.subtractQuantities(value, this.step));
-            console.log(potentialValue);
             if (potentialValue >= this.minQuantity) {
                 this.input.value = potentialValue.toString();
                 this.triggerInputEvent();
