@@ -17,15 +17,15 @@
                 },
                 {
                     label: 'quote_request_page.quote_request' | trans,
-                    url: path('agent/quote-request')
+                    url: path('agent/quote-request'),
                 },
                 {
                     label: '#' ~ data.quoteRequest.quoteRequestReference,
-                    url: path('agent/quote-request/details', {quoteRequestReference: data.quoteRequest.quoteRequestReference})
+                    url: path('agent/quote-request/details', {quoteRequestReference: data.quoteRequest.quoteRequestReference}),
                 },
                 {
                     label: 'quote_request_page.quote_request.actions.edit' | trans,
-                    url: path('agent/quote-request/edit', {quoteRequestReference: data.quoteRequest.quoteRequestReference})
+                    url: path('agent/quote-request/edit', {quoteRequestReference: data.quoteRequest.quoteRequestReference}),
                 },
                 {
                     label: 'quote_request_page.quote_request.actions.edit_items' | trans,
