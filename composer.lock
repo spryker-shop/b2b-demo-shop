@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "207f2e5a8ebce323aa685eef33efbc5e",
+    "content-hash": "f0d854d07313b2304e8f1886e2489490",
     "packages": [
         {
             "name": "codeitnowin/barcode",
@@ -3612,6 +3612,12 @@
                 "type": "git",
                 "url": "https://github.com/spryker-feature/promotions-discounts.git",
                 "reference": "0e4b01fde63cf61d452909b945f680612e02f9c8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-feature/promotions-discounts/zipball/0e4b01fde63cf61d452909b945f680612e02f9c8",
+                "reference": "0e4b01fde63cf61d452909b945f680612e02f9c8",
+                "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
@@ -24302,6 +24308,57 @@
             "time": "2019-01-11T11:24:33+00:00"
         },
         {
+            "name": "spryker/product-tax-sets-rest-api",
+            "version": "1.0.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/product-tax-sets-rest-api.git",
+                "reference": "f4742beb16db1f34bf5864c5175a86e89afa7d90"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/product-tax-sets-rest-api/zipball/f4742beb16db1f34bf5864c5175a86e89afa7d90",
+                "reference": "f4742beb16db1f34bf5864c5175a86e89afa7d90",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/glue-application": "^1.8.0",
+                "spryker/glue-application-extension": "^1.0.0",
+                "spryker/kernel": "^3.22.0",
+                "spryker/products-rest-api": "^2.0.0",
+                "spryker/propel-orm": "^1.0.0",
+                "spryker/symfony": "^3.0.0",
+                "spryker/tax": "^5.0.0",
+                "spryker/tax-product-connector": "^4.1.0",
+                "spryker/uuid-behavior": "^1.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/uuid": "If you want to generate UUIDs for existing entities."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ProductTaxSetsRestApi module",
+            "time": "2019-04-08T07:50:37+00:00"
+        },
+        {
             "name": "spryker/product-validity",
             "version": "1.0.1",
             "source": {
@@ -24389,6 +24446,49 @@
             ],
             "description": "ProductsProductPricesResourceRelationship module",
             "time": "2018-09-07T08:22:20+00:00"
+        },
+        {
+            "name": "spryker/products-product-tax-sets-resource-relationship",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/products-product-tax-sets-resource-relationship.git",
+                "reference": "0f495b3b83fff6cbfd9f232a0516615036a2e59a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/products-product-tax-sets-resource-relationship/zipball/0f495b3b83fff6cbfd9f232a0516615036a2e59a",
+                "reference": "0f495b3b83fff6cbfd9f232a0516615036a2e59a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/glue-application": "^1.0.0",
+                "spryker/glue-application-extension": "^1.0.0",
+                "spryker/kernel": "^3.22.0",
+                "spryker/product-tax-sets-rest-api": "^1.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ProductsProductTaxSetsResourceRelationship module",
+            "time": "2018-09-12T12:27:41+00:00"
         },
         {
             "name": "spryker/products-rest-api",
@@ -29987,7 +30087,7 @@
                 },
                 {
                     "name": "Gert de Pagter",
-                    "email": "BackEndTea@gmail.com"
+                    "email": "backendtea@gmail.com"
                 }
             ],
             "description": "Symfony polyfill for ctype functions",
