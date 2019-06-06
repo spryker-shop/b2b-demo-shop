@@ -77,8 +77,8 @@
     {% endblock %}
 
     {% block middleSidebar %}
-        {% set quote = data.quoteRequest.latestVersion.quote %}
-        {% if quote and quote.priceMode %}
+        {% set quoteLatestVersion = data.quoteRequest.latestVersion.quote %}
+        {% if quoteLatestVersion and quoteLatestVersion.priceMode %}
             <div class="{{ config.name }}__item spacing-bottom spacing-bottom--big">
                 {% include molecule('quote-request-cart-summary', 'QuoteRequestPage') with {
                     data: {
