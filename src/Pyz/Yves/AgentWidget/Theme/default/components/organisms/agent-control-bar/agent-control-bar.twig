@@ -11,22 +11,24 @@
 } %}
 
 {% block body %}
-    <div class="{{ config.name }}__top-bar">
+    <div class="{{ config.name }}__header">
         <div class="container">
             <div class="grid grid--middle grid--gap {{ config.name }}__container">
                 <div class="col col--sm-12 col--md-9">
                     <div class="grid grid--middle">
                         {% if is_granted('ROLE_PREVIOUS_ADMIN') %}
-                            {% include molecule('agent-control-item', 'AgentWidget') with {
-                                class: 'grid grid--gap grid--inline grid--middle',
-                                data: {
-                                    title: 'agent.control_bar.customer_name' | trans,
-                                    buttonLink: '/?_switch_user=_exit',
-                                    buttonName: 'agent.control_bar.logout_as_customer' | trans,
-                                    firstName: data.customer.firstName,
-                                    lastName: data.customer.lastName,
-                                },
-                            } only %}
+                            <div class="col">
+                                {% include molecule('agent-control-item', 'AgentWidget') with {
+                                    class: 'grid grid--gap grid--inline grid--middle',
+                                    data: {
+                                        title: 'agent.control_bar.customer_name' | trans,
+                                        buttonLink: '/?_switch_user=_exit',
+                                        buttonName: 'agent.control_bar.logout_as_customer' | trans,
+                                        firstName: data.customer.firstName,
+                                        lastName: data.customer.lastName,
+                                    },
+                                } only %}
+                            </div>
                         {% else %}
                             <form class="col col--sm-12 col--md-8" method="GET" action="/">
                                 <div class="grid grid--gap grid--middle">
@@ -49,10 +51,12 @@
                                 </div>
                             </form>
                         {% endif %}
-                        {% widget 'QuoteRequestAgentOverviewWidget' only %}
-                            {% block activeRequestActions %}{% endblock %}
-                            {% block activeRequest %}{% endblock %}
-                        {% endwidget %}
+                        <div class="col">
+                            {% widget 'QuoteRequestAgentOverviewWidget' only %}
+                                {% block activeRequestActions %}{% endblock %}
+                                {% block activeRequest %}{% endblock %}
+                            {% endwidget %}
+                        </div>
                     </div>
                 </div>
                 <div class="col col--sm-12 col--md-3 text-right">
@@ -70,7 +74,7 @@
             </div>
         </div>
     </div>
-    <div class="{{ config.name }}__bottom-bar">
+    <div class="{{ config.name }}__footer">
         {% widget 'QuoteRequestAgentOverviewWidget' only %}
             {% block requestList %}{% endblock %}
             {% block activeRequest %}
