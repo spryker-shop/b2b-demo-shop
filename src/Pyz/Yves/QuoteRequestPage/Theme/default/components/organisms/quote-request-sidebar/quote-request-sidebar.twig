@@ -69,9 +69,9 @@
                     {% if data.isLatestVersion %}
                         <p>
                             <strong>
-                                {{ data.quoteRequest.isLatestVersionVisible ?
+                                {{- data.quoteRequest.isLatestVersionVisible ?
                                     'quote_request_page.quote_request.labels.latest_version_is_visible' | trans :
-                                    'quote_request_page.quote_request.labels.latest_version_is_hidden' | trans }}
+                                    'quote_request_page.quote_request.labels.latest_version_is_hidden' | trans -}}
                             </strong>
                         </p>
                     {% endif %}
