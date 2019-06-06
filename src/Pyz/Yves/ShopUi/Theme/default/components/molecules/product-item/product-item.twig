@@ -162,7 +162,10 @@
                                                 {% include molecule('product-item-quantity') with {
                                                     data: {
                                                         productItem: data.listItem,
-                                                        isDisabled: not data.canEdit
+                                                        isDisabled: not data.canEdit,
+                                                        minQuantity: data.listItem.quantityMin ?? 1,
+                                                        maxQuantity: data.listItem.quantityMax,
+                                                        quantityInterval: data.listItem.quantityInterval ?? 1,
                                                     }
                                                 } only %}
                                             {% endif %}

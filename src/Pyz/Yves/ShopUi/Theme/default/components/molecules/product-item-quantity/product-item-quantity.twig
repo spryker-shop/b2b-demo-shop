@@ -10,7 +10,7 @@
     maxQuantity: null,
     minQuantity: 1,
     value: 1,
-    step: 1,
+    quantityInterval: 1,
 } %}
 
 {% block body %}
@@ -19,7 +19,10 @@
             modifiers: ['cart'],
             data: {
                 isDisabled: data.isDisabled,
-                autoUpdate: true
+                autoUpdate: true,
+                maxQuantity: data.maxQuantity,
+                minQuantity: data.minQuantity,
+                step: data.quantityInterval,
             },
             attributes: {
                 max: data.productItem.maxQuantity,
