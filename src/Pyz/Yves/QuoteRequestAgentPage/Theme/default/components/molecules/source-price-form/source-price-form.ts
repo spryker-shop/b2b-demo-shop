@@ -11,7 +11,7 @@ export default class SourcePriceForm extends SourcePriceFormParentClass {
         super.readyCallback();
     }
 
-    protected toggler(): void {
+    protected togglePriceVisibility(): void {
         this.price.classList.toggle(this.hiddenClass);
         this.originPrice.classList.toggle(this.hiddenClass);
     }
@@ -20,7 +20,7 @@ export default class SourcePriceForm extends SourcePriceFormParentClass {
         super.onInputType(event);
 
         if (this.checkboxChecked) {
-            this.toggler();
+            this.togglePriceVisibility();
         }
     }
 
@@ -28,11 +28,11 @@ export default class SourcePriceForm extends SourcePriceFormParentClass {
         super.onCheckboxChange(event);
 
         if (this.checkboxChecked) {
-            this.toggler();
+            this.togglePriceVisibility();
 
             return;
         }
 
-        this.toggler();
+        this.togglePriceVisibility();
     }
 }
