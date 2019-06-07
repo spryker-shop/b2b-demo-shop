@@ -83,7 +83,7 @@
                                         priceField: data.itemChild,
                                         checkboxName: 'use_default_price',
                                         checkboxValue: 1,
-                                        isChecked: unitSourcePrice != null,
+                                        isChecked: unitSourcePrice == null,
                                         checkboxLabel: 'quote_request_page.quote_request.use_default_price' | trans,
                                         currentItemPrice: data.cartItem.unitPrice | money(true, data.currency.code),
                                         originItemPrice: originUnitPrice | money(true, data.currency.code),
