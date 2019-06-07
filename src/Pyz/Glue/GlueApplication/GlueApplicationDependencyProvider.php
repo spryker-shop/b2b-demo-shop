@@ -38,8 +38,10 @@ use Spryker\Glue\CompaniesRestApi\Plugin\GlueApplication\CompanyByCompanyUserRes
 use Spryker\Glue\CompanyBusinessUnitAddressesRestApi\Plugin\GlueApplication\CompanyBusinessUnitAddressesByCompanyBusinessUnitResourceRelationshipPlugin;
 use Spryker\Glue\CompanyBusinessUnitAddressesRestApi\Plugin\GlueApplication\CompanyBusinessUnitAddressesResourcePlugin;
 use Spryker\Glue\CompanyBusinessUnitsRestApi\CompanyBusinessUnitsRestApiConfig;
+use Spryker\Glue\CompanyBusinessUnitsRestApi\Plugin\GlueApplication\CompanyBusinessUnitByCompanyUserResourceRelationshipPlugin;
 use Spryker\Glue\CompanyBusinessUnitsRestApi\Plugin\GlueApplication\CompanyBusinessUnitsResourcePlugin;
 use Spryker\Glue\CompanyRolesRestApi\CompanyRolesRestApiConfig;
+use Spryker\Glue\CompanyRolesRestApi\Plugin\GlueApplication\CompanyRoleByCompanyUserResourceRelationshipPlugin;
 use Spryker\Glue\CompanyRolesRestApi\Plugin\GlueApplication\CompanyRolesResourcePlugin;
 use Spryker\Glue\CompanyUserAuthRestApi\Plugin\GlueApplication\CompanyUserAccessTokensResourceRoutePlugin;
 use Spryker\Glue\CompanyUsersRestApi\CompanyUsersRestApiConfig;
@@ -51,6 +53,7 @@ use Spryker\Glue\CustomersRestApi\Plugin\CustomerPasswordResourceRoutePlugin;
 use Spryker\Glue\CustomersRestApi\Plugin\CustomerRestorePasswordResourceRoutePlugin;
 use Spryker\Glue\CustomersRestApi\Plugin\CustomersResourceRoutePlugin;
 use Spryker\Glue\CustomersRestApi\Plugin\CustomersToAddressesRelationshipPlugin;
+use Spryker\Glue\CustomersRestApi\Plugin\GlueApplication\CustomerByCompanyUserResourceRelationshipPlugin;
 use Spryker\Glue\CustomersRestApi\Plugin\SetCustomerBeforeActionPlugin;
 use Spryker\Glue\GlueApplication\GlueApplicationDependencyProvider as SprykerGlueApplicationDependencyProvider;
 use Spryker\Glue\GlueApplication\Plugin\Rest\SetStoreCurrentLocaleBeforeActionPlugin;
@@ -190,6 +193,21 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
         $resourceRelationshipCollection->addRelationship(
             CompanyUsersRestApiConfig::RESOURCE_COMPANY_USERS,
             new CompanyByCompanyUserResourceRelationshipPlugin()
+        );
+
+        $resourceRelationshipCollection->addRelationship(
+            CompanyUsersRestApiConfig::RESOURCE_COMPANY_USERS,
+            new CompanyBusinessUnitByCompanyUserResourceRelationshipPlugin()
+        );
+
+        $resourceRelationshipCollection->addRelationship(
+            CompanyUsersRestApiConfig::RESOURCE_COMPANY_USERS,
+            new CompanyRoleByCompanyUserResourceRelationshipPlugin()
+        );
+
+        $resourceRelationshipCollection->addRelationship(
+            CompanyUsersRestApiConfig::RESOURCE_COMPANY_USERS,
+            new CustomerByCompanyUserResourceRelationshipPlugin()
         );
 
         $resourceRelationshipCollection->addRelationship(
