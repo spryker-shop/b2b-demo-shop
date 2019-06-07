@@ -71,7 +71,7 @@
                     {% endblock %}
                 {% endembed %}
 
-                {% include organism('quote-request-sidebar', 'QuoteRequestPage') with {
+                {% embed organism('quote-request-sidebar', 'QuoteRequestPage') with {
                     class: 'col col--sm-12 col--xl-3',
                     data: {
                         quoteRequest: data.quoteRequest,
@@ -81,6 +81,13 @@
                         cancelUrl: url('cart'),
                     },
                 } only %}
+                    {% block quoteActions %}
+                        {{ parent() }}
+                        <button type="submit" class="spacing-bottom button button--expand button--success">
+                            {{ 'quote_request_page.quote_request.submit' | trans }}
+                        </button>
+                    {% endblock %}
+                {% endembed %}
 
             </div>
 
