@@ -81,13 +81,16 @@
     {% endblock %}
 
     {% block middleSidebar %}
-        <div class="{{ config.name }}__item spacing-bottom spacing-bottom--big">
-            {% include molecule('quote-request-cart-summary', 'QuoteRequestPage') with {
-                data: {
-                    cart: data.quote,
-                },
-            } only %}
-        </div>
+        {% set quoteLatestVersion = data.quoteRequest.latestVersion.quote %}
+        {% if quoteLatestVersion and quoteLatestVersion.priceMode %}
+            <div class="{{ config.name }}__item spacing-bottom spacing-bottom--big">
+                {% include molecule('quote-request-cart-summary', 'QuoteRequestPage') with {
+                    data: {
+                        cart: data.quote,
+                    },
+                } only %}
+            </div>
+        {% endif %}
     {% endblock %}
 
     {% block quoteActions %}
