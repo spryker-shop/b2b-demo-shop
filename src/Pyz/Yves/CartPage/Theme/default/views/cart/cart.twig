@@ -140,10 +140,10 @@
                         {% block price %}
                             {% if can('SeePricePermissionPlugin') %}
                                 {% set price = data.listItem.sumPrice is defined ? data.listItem.sumPrice : data.listItem.price %}
-                                {% include molecule('price') with {
+                                {% include molecule('money-price') with {
                                     modifiers: ['cart'],
                                     data: {
-                                        amount: price | money
+                                        amount: price
                                     },
                                 } only %}
                             {% endif %}
