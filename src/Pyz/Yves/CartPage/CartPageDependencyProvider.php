@@ -22,7 +22,7 @@ class CartPageDependencyProvider extends SprykerCartPageDependencyProvider
      */
     public function provideDependencies(Container $container)
     {
-        $container =  parent::provideDependencies($container);
+        $container = parent::provideDependencies($container);
         $container = $this->addQuantityStorageClient($container);
 
         return $container;

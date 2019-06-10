@@ -18,6 +18,7 @@ class CartItemsProductProvider implements CartItemsProductProviderInterface
      * @var \SprykerShop\Yves\CartPage\Dependency\Client\CartPageToProductStorageClientInterface
      */
     protected $productStorageClient;
+
     /**
      * @var \Spryker\Client\ProductQuantityStorage\ProductQuantityStorageClientInterface
      */
@@ -30,8 +31,7 @@ class CartItemsProductProvider implements CartItemsProductProviderInterface
     public function __construct(
         CartPageToProductStorageClientInterface $productStorageClient,
         ProductQuantityStorageClientInterface $productQuantityStorageClient
-    )
-    {
+    ) {
         $this->productStorageClient = $productStorageClient;
         $this->productQuantityStorageClient = $productQuantityStorageClient;
     }
@@ -58,6 +58,12 @@ class CartItemsProductProvider implements CartItemsProductProviderInterface
         return $productBySku;
     }
 
+    /**
+     * @param \Generated\Shared\Transfer\ProductViewTransfer $productViewTransfer
+     * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
+     *
+     * @return \Generated\Shared\Transfer\ProductViewTransfer
+     */
     protected function setQuantityRestrictions(ProductViewTransfer $productViewTransfer, ItemTransfer $itemTransfer): ProductViewTransfer
     {
         $minQuantity = 1;
@@ -65,6 +71,7 @@ class CartItemsProductProvider implements CartItemsProductProviderInterface
         $quantityInterval = 1;
         $productQuantityStorageTransfer = $this->productQuantityStorageClient
             ->findProductQuantityStorage($itemTransfer->getId());
+
         if ($productQuantityStorageTransfer !== null) {
             $minQuantity = $productQuantityStorageTransfer->getQuantityMin() ?? 1;
             $maxQuantity = $productQuantityStorageTransfer->getQuantityMax();
