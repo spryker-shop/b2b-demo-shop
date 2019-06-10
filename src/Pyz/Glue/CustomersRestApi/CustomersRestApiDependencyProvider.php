@@ -19,7 +19,7 @@ class CustomersRestApiDependencyProvider extends SprykerCustomersRestApiDependen
      */
     protected function getCustomerPostRegisterPlugins(): array
     {
-        return array_merge(parent::getCustomerPostCreatePlugins(), [
+        return array_merge(parent::getCustomerPostRegisterPlugins(), [
             new UpdateCartCreateCustomerReferencePlugin(),
         ]);
     }
