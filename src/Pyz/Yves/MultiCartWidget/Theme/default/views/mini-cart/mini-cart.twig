@@ -11,25 +11,25 @@
 
 {% block body %}
         {% block cartItems %}
-            {% if data.isMultiCartAllowed is not empty %}
+            {% if data.isMultiCartAllowed %}
                 <ul class="menu menu--wide">
-                    {% if data.activeCart is not empty %}
+                    {% if data.activeCart %}
                         <li class="menu__item">
                             {% include molecule('mini-cart-detail', 'MultiCartWidget') with {
                                 data: {
-                                    cart: data.activeCart
-                                }
+                                    cart: data.activeCart,
+                                },
                             } only %}
                         </li>
                     {% endif %}
 
-                    {% if data.carts is not empty %}
+                    {% if data.carts %}
                         {% for cart in data.carts %}
                             <li class="menu__item">
                                 {% include molecule('mini-cart-detail', 'MultiCartWidget') with {
                                     data: {
-                                        cart: cart
-                                    }
+                                        cart: cart,
+                                    },
                                 } only %}
                             </li>
                         {% endfor %}
@@ -51,8 +51,8 @@
                             {% include atom('icon') with {
                                 modifiers: ['create-new-cart'],
                                 data: {
-                                    name: 'create-new-cart'
-                                }
+                                    name: 'create-new-cart',
+                                },
                             } only %}
                             {{ 'multi_cart_widget.cart.add' | trans }}
                         </a>

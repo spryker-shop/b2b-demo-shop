@@ -5,16 +5,17 @@
 } %}
 
 {% define data = {
-    title: required,
+    status: required,
+    title: data.status,
     buttonLink: required,
     buttonName: required,
     firstName: '',
     lastName: '',
-} %}
+} %} {# @deprecated data.status. Use data.title instead. #}
 
 {% block body %}
     <div class="col {{ config.name }}__info">
-        {{ data.title }}
+        {{ data.title ?: data.status }}
         <div class="{{ config.name }}__name">{{ data.firstName }} {{ data.lastName }}</div>
     </div>
     <div class="col {{ config.name }}__button-wrap">

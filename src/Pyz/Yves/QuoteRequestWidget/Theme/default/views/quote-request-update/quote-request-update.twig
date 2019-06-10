@@ -11,7 +11,7 @@
         {{ form_start(data.form) }}
 
             <div class="quote-request spacing-top spacing-top--big">
-                <a class="spacing-bottom button button--expand button--hollow" href="{{ path('quote-request/cart/clear') }}" title="{{ 'quote_request_page.quote_request.actions.cancel' | trans }}">
+                <a class="spacing-bottom button button--expand button--hollow" href="{{ path('quote-request/cart/clear') }}" title="{{ 'quote_request_page.quote_request.actions.cancel' | trans }}" data-init-single-click>
                     {{ 'quote_request_page.quote_request.actions.cancel' | trans }}
                 </a>
                 <button type="submit" name="save" class="spacing-bottom button button--expand button--success">

@@ -8,7 +8,7 @@
     quoteRequest: required,
 } %}
 
-{% set quote = data.quoteRequest.latestVersion ? data.quoteRequest.latestVersion.quote : null %}
+{% set quote = data.quoteRequest.latestVersion ? data.quoteRequest.latestVersion.quote : {} %}
 
 {% block body %}
     <div class="grid grid--middle text-small text-left">

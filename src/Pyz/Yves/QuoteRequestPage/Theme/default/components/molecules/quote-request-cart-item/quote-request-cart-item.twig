@@ -17,7 +17,7 @@
             {% include molecule('product-item-image') with {
                 data: {
                     name: data.cartItem.name | default(''),
-                    image: data.cartItem.images is empty ? null : (data.cartItem.images | first),
+                    image: data.cartItem.images ? (data.cartItem.images | first) : null,
                 },
             } only %}
         </div>

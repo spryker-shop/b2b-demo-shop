@@ -32,9 +32,7 @@
 {% set quote = data.latestVersion ? data.latestVersion.quote : null %}
 
 {% block content %}
-
     {% if not quote or quote.items is empty %}
-
         <div class="box text-center">
             {% include atom('icon') with {
                 modifiers: ['biggest'],
@@ -45,13 +43,9 @@
             } only %}
             <h6>{{ 'cart.empty' | trans }}</h6>
         </div>
-
     {% else %}
-
         {{ form_start(data.quoteRequestForm) }}
-
             <div class="grid grid--gap">
-
                 {% embed organism('quote-request-main-content', 'QuoteRequestPage') ignore missing with {
                     class: 'col col--sm-12 col--xl-9',
                     data: {
@@ -88,10 +82,7 @@
                         </button>
                     {% endblock %}
                 {% endembed %}
-
             </div>
-
         {{ form_end(data.quoteRequestForm) }}
-
     {% endif %}
 {% endblock %}

@@ -5,7 +5,9 @@ import 'jquery-datetimepicker/build/jquery.datetimepicker.full';
 export default class DateTimePicker extends Component {
     protected trigger: HTMLInputElement;
 
-    protected readyCallback(): void {
+    protected readyCallback(): void {}
+
+    mountCallback(): void {
         this.trigger = <HTMLInputElement>this.querySelector('input');
         this.mapEvents();
     }
