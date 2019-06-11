@@ -12,9 +12,9 @@
     price: null,
     additionalColumns: [],
     messages: null,
-    minQuantity: _view.minQuantity | default(1),
-    maxQuantity: _view.maxQuantity | default(null),
-    quantityInterval: _view.quantityInterval | default(1),
+    minQuantity: data.product.minQuantity | default(1),
+    maxQuantity: data.product.maxQuantity | default(null),
+    quantityInterval: data.product.quantityInterval | default(1),
 } %}
 
 {% block body %}
