@@ -24,14 +24,9 @@
     }
 
     &__message {
-        margin-left: rem(24);
         padding: rem(6) rem(12);
         border: none;
         font-size: rem(12);
-
-        @include helper-breakpoint-media-min($md) {
-            margin-left: 0;
-        }
 
         &--error {
             background-color: $setting-color-alpha-5;

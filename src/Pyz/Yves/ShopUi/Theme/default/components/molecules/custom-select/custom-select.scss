@@ -275,7 +275,9 @@
             line-height: 1.87;
             letter-spacing: rem(0.2);
             padding: 0 0 0 rem(27);
-            word-break: break-word;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
 
             &[aria-selected] {
                 cursor: pointer;

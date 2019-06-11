@@ -8,6 +8,7 @@
 namespace Pyz\Zed\Permission;
 
 use Pyz\Zed\CompanyUser\Communication\Plugin\Permission\SeeCompanyMenuPermissionPlugin;
+use Spryker\Client\OauthPermission\Plugin\Permission\OauthPermissionStoragePlugin;
 use Spryker\Client\ShoppingList\Plugin\ReadShoppingListPermissionPlugin;
 use Spryker\Shared\Checkout\Plugin\Permission\PlaceOrderWithAmountUpToPermissionPlugin;
 use Spryker\Shared\CompanyUser\Plugin\AddCompanyUserPermissionPlugin;
@@ -38,6 +39,7 @@ class PermissionDependencyProvider extends SprykerPermissionDependencyProvider
             new QuotePermissionStoragePlugin(), #SharedCartFeature
             new ShoppingListPermissionStoragePlugin(), #ShoppingListFeature
             new PermissionStoragePlugin(),
+            new OauthPermissionStoragePlugin(),
         ];
     }
 

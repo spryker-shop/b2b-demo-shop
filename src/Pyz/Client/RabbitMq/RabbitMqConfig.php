@@ -16,6 +16,7 @@ use Spryker\Shared\CategoryPageSearch\CategoryPageSearchConstants;
 use Spryker\Shared\CategoryStorage\CategoryStorageConstants;
 use Spryker\Shared\CmsPageSearch\CmsPageSearchConstants;
 use Spryker\Shared\CmsStorage\CmsStorageConstants;
+use Spryker\Shared\CompanyUserStorage\CompanyUserStorageConfig;
 use Spryker\Shared\CustomerAccessStorage\CustomerAccessStorageConstants;
 use Spryker\Shared\Event\EventConfig;
 use Spryker\Shared\Event\EventConstants;
@@ -57,6 +58,12 @@ class RabbitMqConfig extends SprykerRabbitMqConfig
             $this->createQueueOption(
                 $this->get(LogConstants::LOG_QUEUE_NAME),
                 $this->get(LogConstants::LOG_ERROR_QUEUE_NAME)
+            )
+        );
+        $queueOptionCollection->append(
+            $this->createQueueOption(
+                CompanyUserStorageConfig::COMPANY_USER_SYNC_STORAGE_QUEUE,
+                CompanyUserStorageConfig::COMPANY_USER_SYNC_STORAGE_ERROR_QUEUE
             )
         );
 

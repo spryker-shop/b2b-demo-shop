@@ -41,6 +41,7 @@ use Spryker\Zed\Development\Communication\Console\ModuleBridgeCreateConsole;
 use Spryker\Zed\Development\Communication\Console\ModuleCreateConsole;
 use Spryker\Zed\Development\Communication\Console\PluginUsageFinderConsole;
 use Spryker\Zed\Development\Communication\Console\PropelAbstractValidateConsole;
+use Spryker\Zed\DocumentationGeneratorRestApi\Communication\Console\GenerateRestApiDocumentationConsole;
 use Spryker\Zed\EventBehavior\Communication\Console\EventBehaviorTriggerTimeoutConsole;
 use Spryker\Zed\EventBehavior\Communication\Console\EventTriggerConsole;
 use Spryker\Zed\EventBehavior\Communication\Console\EventTriggerListenerConsole;
@@ -85,6 +86,7 @@ use Spryker\Zed\RabbitMq\Communication\Console\DeleteAllExchangesConsole;
 use Spryker\Zed\RabbitMq\Communication\Console\DeleteAllQueuesConsole;
 use Spryker\Zed\RabbitMq\Communication\Console\PurgeAllQueuesConsole;
 use Spryker\Zed\RabbitMq\Communication\Console\SetUserPermissionsConsole;
+use Spryker\Zed\RestRequestValidator\Communication\Console\BuildValidationCacheConsole;
 use Spryker\Zed\Search\Communication\Console\GenerateIndexMapConsole;
 use Spryker\Zed\Search\Communication\Console\SearchCloseIndexConsole;
 use Spryker\Zed\Search\Communication\Console\SearchConsole;
@@ -126,6 +128,7 @@ use Spryker\Zed\Translator\Communication\Console\CleanTranslationCacheConsole;
 use Spryker\Zed\Translator\Communication\Console\GenerateTranslationCacheConsole;
 use Spryker\Zed\Twig\Communication\Console\CacheWarmerConsole;
 use Spryker\Zed\Twig\Communication\Plugin\ServiceProvider\TwigServiceProvider as SprykerTwigServiceProvider;
+use Spryker\Zed\Uuid\Communication\Console\UuidGeneratorConsole;
 use Spryker\Zed\ZedNavigation\Communication\Console\BuildNavigationConsole;
 use Stecman\Component\Symfony\Console\BashCompletion\CompletionCommand;
 
@@ -283,6 +286,9 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
 
             new PriceProductScheduleApplyConsole(),
             new PriceProductScheduleCleanupConsole(),
+            new UuidGeneratorConsole(),
+            new BuildValidationCacheConsole(),
+            new GenerateRestApiDocumentationConsole(),
         ];
 
         $propelCommands = $container->getLocator()->propel()->facade()->getConsoleCommands();
