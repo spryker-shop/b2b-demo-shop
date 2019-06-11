@@ -25,10 +25,19 @@
         {{ 'customer.account.shopping_list.delete.warning' | trans }}
     </h3>
     <p class="{{ config.name }}__text spacing-y spacing-y--big">
-        {{ 'customer.account.shopping_list.delete.you_are_trying_to_delete_shopping_list' | trans({
-            '%link%': url('shopping-list/details', {'idShoppingList': data.idShoppingList}),
-            '%name%': data.title}) | raw
-        }}
+        {{ 'customer.account.shopping_list.delete.you_are_trying_to_delete_shopping_list' | trans }}
+        <div class="box">
+            <a href="{{ url('shopping-list/details', {'idShoppingList': data.idShoppingList}) }}" class="grid grid--middle" title="{{ data.title }}">
+                {% include atom('icon') with {
+                    class: 'spacing-right',
+                    modifiers: ['big'],
+                    data: {
+                        name: 'shopping-list',
+                    },
+                } only %}
+                {{ data.title }}
+            </a>
+        </div>
     </p>
     {% if data.sharedCompanyUsers.count or data.sharedCompanyBusinessUnits.count %}
         <p class="{{ config.name }}__text spacing-y spacing-y--big">
