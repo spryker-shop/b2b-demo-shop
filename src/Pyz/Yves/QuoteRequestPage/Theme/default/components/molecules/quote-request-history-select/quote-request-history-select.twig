@@ -25,7 +25,7 @@
         } only %}
             {% block options %}
                 {% for versionReference in embed.versionReferences %}
-                    <option value="{{ versionReference }}" {{ (versionReference == embed.currentVersionReference) ? 'selected' : '' }}>{{ versionReference }}</option>
+                    <option value="{{ versionReference }}" {{ (versionReference == embed.currentVersionReference) ? 'selected' }}>{{ versionReference }}</option>
                 {% endfor %}
             {% endblock %}
         {% endembed %}

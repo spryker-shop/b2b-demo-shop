@@ -33,7 +33,7 @@
         </h3>
     {% endif %}
 
-    {% if data.quoteRequests is not empty %}
+    {% if data.quoteRequests %}
         {% include molecule('quote-request-table', 'QuoteRequestAgentPage') with {
             data: {
                 quoteRequests: data.quoteRequests,

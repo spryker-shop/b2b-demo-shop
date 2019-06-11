@@ -32,13 +32,13 @@
         {{ form_start(data.quoteRequestCreateForm) }}
 
             <div class="grid">
-                <div class="col col--sm-12 col--md-12">
+                <div class="col col--sm-12">
                     <label>{{ 'quote_request_agent_widget.form.select_customer' | trans }}:</label>
                     {% include molecule('autocomplete-form') with {
                         class: 'spacing-top spacing-bottom spacing-bottom--big',
                         data: {
                             id: 'agent-company-user',
-                            value: data.impersonatedCustomer ? data.impersonatedCustomer.email : '',
+                            value: data.impersonatedCustomer ? data.impersonatedCustomer.email,
                         },
                         attributes: {
                             'item-selector': '.company-user-list__container-item',

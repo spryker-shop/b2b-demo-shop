@@ -15,7 +15,7 @@
 
 {% block body %}
     <div class="col {{ config.name }}__info">
-        {{ data.title ?: data.status }}
+        {{ data.title }}
         <div class="{{ config.name }}__name">{{ data.firstName }} {{ data.lastName }}</div>
     </div>
     <div class="col {{ config.name }}__button-wrap">

@@ -19,7 +19,7 @@
 {% block class %}{{ parent() }} list{% endblock %}
 
 {% block body %}
-    {% if data.cartItem.productOptions | length > 0 %}
+    {% if data.cartItem.productOptions | length %}
         <li class="list__item text-small">
             {% include molecule('product-options', 'ProductOptionWidget') ignore missing with {
                 modifiers: ['no-border'],
