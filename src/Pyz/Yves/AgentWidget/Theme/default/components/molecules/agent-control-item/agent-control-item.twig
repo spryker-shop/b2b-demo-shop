@@ -4,6 +4,7 @@
     name: 'agent-control-item'
 } %}
 
+{# @deprecated data.status. Use data.title instead. #}
 {% define data = {
     status: required,
     title: data.status,
@@ -11,7 +12,7 @@
     buttonName: required,
     firstName: '',
     lastName: '',
-} %} {# @deprecated data.status. Use data.title instead. #}
+} %}
 
 {% block body %}
     <div class="col {{ config.name }}__info">
