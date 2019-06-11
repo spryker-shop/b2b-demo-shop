@@ -1,0 +1,18 @@
+@mixin quote-request-agent-widget-quote-request-cart-from($name: '.quote-request-cart-from') {
+    #{$name} {
+        &__action {
+            &--restrict {
+                max-width: rem(130);
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
+                padding: rem(10) rem(8);
+            }
+        }
+
+        @content;
+    }
+
+}
+
+@include quote-request-agent-widget-quote-request-cart-from();
