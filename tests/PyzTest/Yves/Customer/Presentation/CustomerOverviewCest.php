@@ -34,10 +34,9 @@ class CustomerOverviewCest
      */
     public function testICanOpenOverviewPage(CustomerPresentationTester $i, Scenario $scenario): void
     {
-        $scenario->skip('Once we have Chromium + ChromeDriver or Firefox, enable this test case.');
-
         $i->amLoggedInCustomer();
         $i->amOnPage(CustomerOverviewPage::URL);
+        $i->waitForElementVisible(CustomerOverviewPage::LINK_TO_PROFILE_PAGE, 15);
 
         $i->see(CustomerOverviewPage::BOX_HEADLINE_ORDERS, 'h3');
         $i->see(CustomerOverviewPage::BOX_HEADLINE_PROFILE, 'h4');
@@ -52,10 +51,9 @@ class CustomerOverviewCest
      */
     public function testICanGoFromOverviewToProfilePage(CustomerPresentationTester $i, Scenario $scenario): void
     {
-        $scenario->skip('Once we have Chromium + ChromeDriver or Firefox, enable this test case.');
-
         $i->amLoggedInCustomer();
         $i->amOnPage(CustomerOverviewPage::URL);
+        $i->waitForElementVisible(CustomerOverviewPage::LINK_TO_PROFILE_PAGE, 15);
         $i->click(CustomerOverviewPage::LINK_TO_PROFILE_PAGE);
         $i->amOnPage(CustomerProfilePage::URL);
     }
@@ -68,10 +66,9 @@ class CustomerOverviewCest
      */
     public function testICanGoFromOverviewToAddressesPage(CustomerPresentationTester $i, Scenario $scenario): void
     {
-        $scenario->skip('Once we have Chromium + ChromeDriver or Firefox, enable this test case.');
-
         $i->amLoggedInCustomer();
         $i->amOnPage(CustomerOverviewPage::URL);
+        $i->waitForElementVisible(CustomerOverviewPage::LINK_TO_ADDRESSES_PAGE, 15);
         $i->click(CustomerOverviewPage::LINK_TO_ADDRESSES_PAGE);
         $i->amOnPage(CustomerAddressesPage::URL);
     }
