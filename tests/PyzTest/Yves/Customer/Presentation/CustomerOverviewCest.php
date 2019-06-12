@@ -98,6 +98,7 @@ class CustomerOverviewCest
     {
         $i->amLoggedInCustomer();
         $i->amOnPage(CustomerOverviewPage::URL);
+        $i->waitForElementVisible(CustomerOverviewPage::LINK_TO_NEWSLETTER_PAGE, 15);
         $i->click(CustomerOverviewPage::LINK_TO_NEWSLETTER_PAGE);
         $i->amOnPage(CustomerNewsletterPage::URL);
     }
