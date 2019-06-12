@@ -36,7 +36,7 @@ class CustomerOverviewCest
     {
         $i->amLoggedInCustomer();
         $i->amOnPage(CustomerOverviewPage::URL);
-        $i->waitForElementVisible(CustomerOverviewPage::LINK_TO_PROFILE_PAGE, 15);
+        $i->waitForElement(CustomerOverviewPage::LINK_TO_PROFILE_PAGE, 10);
 
         $i->see(CustomerOverviewPage::BOX_HEADLINE_ORDERS, 'h3');
         $i->see(CustomerOverviewPage::BOX_HEADLINE_PROFILE, 'h4');
@@ -53,7 +53,7 @@ class CustomerOverviewCest
     {
         $i->amLoggedInCustomer();
         $i->amOnPage(CustomerOverviewPage::URL);
-        $i->waitForElementVisible(CustomerOverviewPage::LINK_TO_PROFILE_PAGE, 15);
+        $i->waitForElement(CustomerOverviewPage::LINK_TO_PROFILE_PAGE, 10);
         $i->click(CustomerOverviewPage::LINK_TO_PROFILE_PAGE);
         $i->amOnPage(CustomerProfilePage::URL);
     }
@@ -68,7 +68,7 @@ class CustomerOverviewCest
     {
         $i->amLoggedInCustomer();
         $i->amOnPage(CustomerOverviewPage::URL);
-        $i->waitForElementVisible(CustomerOverviewPage::LINK_TO_ADDRESSES_PAGE, 15);
+        $i->waitForElement(CustomerOverviewPage::LINK_TO_ADDRESSES_PAGE, 10);
         $i->click(CustomerOverviewPage::LINK_TO_ADDRESSES_PAGE);
         $i->amOnPage(CustomerAddressesPage::URL);
     }
@@ -95,7 +95,7 @@ class CustomerOverviewCest
     {
         $i->amLoggedInCustomer();
         $i->amOnPage(CustomerOverviewPage::URL);
-        $i->waitForElementVisible(CustomerOverviewPage::LINK_TO_NEWSLETTER_PAGE, 15);
+        $i->waitForElement(CustomerOverviewPage::LINK_TO_NEWSLETTER_PAGE, 10);
         $i->click(CustomerOverviewPage::LINK_TO_NEWSLETTER_PAGE);
         $i->amOnPage(CustomerNewsletterPage::URL);
     }
