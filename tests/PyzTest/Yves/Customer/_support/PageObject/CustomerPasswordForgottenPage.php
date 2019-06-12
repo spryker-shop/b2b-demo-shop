@@ -7,7 +7,7 @@
 
 namespace PyzTest\Yves\Customer\PageObject;
 
-class CustomerPasswordForgottenPage extends Customer
+class CustomerPasswordForgottenPage
 {
     public const URL = '/password/forgotten';
 
