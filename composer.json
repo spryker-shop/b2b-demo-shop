@@ -1,5 +1,5 @@
 {
-  "name": "spryker-shop/b2b-demo-shop",
+  "name": "spryker-shop/b2b-demo-shop-internal",
   "description": "Spryker B2B Demo Shop",
   "license": "proprietary",
   "require": {
@@ -70,7 +70,7 @@
     "spryker-feature/reclamations": "dev-master as 201906.0",
     "spryker-feature/refunds": "dev-master as 201906.0",
     "spryker-feature/reorder": "dev-master as 201906.0",
-    "spryker-feature/scheduled-prices": "dev-master as 201906.0",
+    "spryker-feature/scheduled-prices": "^201906.0",
     "spryker-feature/search": "dev-master as 201906.0",
     "spryker-feature/shared-carts": "dev-master as 201906.0",
     "spryker-feature/shipment": "dev-master as 201906.0",
@@ -176,10 +176,7 @@
   "autoload-dev": {
     "psr-4": {
       "PyzTest\\": "tests/PyzTest/",
-      "PhpStan\\": "tests/PhpStan/",
-      "Acceptance\\Auth\\": "vendor/spryker/auth/tests/",
-      "Application\\Module\\": "vendor/spryker/application/tests/_support/Module/",
-      "Auth\\Module\\": "vendor/spryker/auth/tests/_support/Module/"
+      "Acceptance\\Auth\\": "vendor/spryker/auth/tests/"
     },
     "files": [
       "test-autoload.php"
