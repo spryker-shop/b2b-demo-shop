@@ -30,7 +30,6 @@ class AvailabilityAddToCartCest
         $i->amLoggedInCustomer();
 
         $i->amOnPage(AvailabilityPresentationTester::URL_ADD_AVAILABLE_PRODUCT_TO_CART);
-        $i->waitForElement(AvailabilityPresentationTester::CART_AVAILABLE_ITEM_BLOCK, 10);
         $i->seeElementInDOM(AvailabilityPresentationTester::CART_AVAILABLE_ITEM_BLOCK);
     }
 
@@ -44,7 +43,6 @@ class AvailabilityAddToCartCest
         $i->amLoggedInCustomer();
 
         $i->amOnPage(AvailabilityPresentationTester::URL_ADD_UNAVAILABLE_PRODUCT_TO_CART);
-        $i->waitForElement(AvailabilityPresentationTester::CART_UNAVAILABLE_ITEM_BLOCK, 10);
         $i->cantSeeElementInDOM(AvailabilityPresentationTester::CART_UNAVAILABLE_ITEM_BLOCK);
     }
 }
