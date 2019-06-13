@@ -34,7 +34,7 @@
             <div class="grid">
                 <div class="col col--sm-12">
                     <label>{{ 'quote_request_agent_widget.form.select_customer' | trans }}:</label>
-                    {% include molecule('autocomplete-form') with {
+                    {% include molecule('quote-request-autocomplete-form', 'QuoteRequestAgentPage') with {
                         class: 'spacing-top spacing-bottom spacing-bottom--big',
                         data: {
                             id: 'agent-company-user',

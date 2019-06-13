@@ -75,6 +75,7 @@
                         cancelUrl: url('cart'),
                     },
                 } only %}
+                    {% block latestVersionVisibilityStatus %}{% endblock %}
                     {% block quoteActions %}
                         {{ parent() }}
                         <button type="submit" class="spacing-bottom button button--expand button--success">
