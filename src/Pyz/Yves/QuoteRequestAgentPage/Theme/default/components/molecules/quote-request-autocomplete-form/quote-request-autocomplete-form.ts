@@ -1,4 +1,4 @@
-import AutocompleteForm from "src/ShopUi/components/molecules/autocomplete-form/autocomplete-form";
+import AutocompleteForm from 'src/ShopUi/components/molecules/autocomplete-form/autocomplete-form';
 
 export default class QuoteRequestAutocompleteForm extends AutocompleteForm {
     protected textInput: HTMLInputElement;
