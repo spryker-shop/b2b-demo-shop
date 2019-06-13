@@ -26,7 +26,7 @@ class AvailabilityAddToCartCest
      *
      * @return void
      */
-    public function testAddToCartWhenBiggerQuantityIsUsed(AvailabilityPresentationTester $i)
+    public function testAddToCartWhenBiggerQuantityIsUsed(AvailabilityPresentationTester $i): void
     {
         $i->wantTo('Open product page, and add item to cart with larger quantity than available');
         $i->expectTo('Display error message');
@@ -35,9 +35,10 @@ class AvailabilityAddToCartCest
 
         $i->amOnPage(AvailabilityPresentationTester::PRODUCT_WITH_LIMITED_AVAILABILITY_ADD_TO_CART_URL);
 
+        $i->wait(15);
+
         $i->see(CartListPage::CART_HEADER);
 
-        $i->waitForElement(CartListPage::FIRST_CART_ITEM_QUANTITY_INPUT_XPATH, 15);
         $i->fillField(CartListPage::FIRST_CART_ITEM_QUANTITY_INPUT_XPATH, 50);
         $i->click(CartListPage::FIRST_CART_ITEM_CHANGE_QUANTITY_BUTTON_XPATH);
 
