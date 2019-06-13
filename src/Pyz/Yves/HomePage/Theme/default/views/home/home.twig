@@ -6,24 +6,6 @@
     {% embed molecule('slick-carousel') with {
         class: 'spacing-bottom spacing-bottom--big',
         modifiers: ['jumbotron'],
-        data: {
-            slides: [{
-                imageUrl: '/assets/images/section-slider-item-image-10@2x.jpg',
-                link: 'main_slider_1.url',
-                cmsBlockName: 'Main slide-1',
-                btnTitle: 'main_slider.btn.title'
-            },{
-                imageUrl: '/assets/images/section-slider-item-image-6@2x.jpg',
-                link: 'main_slider_2.url',
-                cmsBlockName: 'Main slide-2',
-                btnTitle: 'main_slider.btn.title'
-            },{
-                imageUrl: '/assets/images/section-slider-item-image-7@2x.jpg',
-                link: 'main_slider_3.url',
-                cmsBlockName: 'Main slide-3',
-                btnTitle: 'main_slider.btn.title'
-            }]
-        },
         attributes: {
             'slider-config': '{
                 "slidesToShow": 1,
@@ -64,16 +46,9 @@
         }
     } only %}
         {% block slides %}
-            {% for slide in data.slides %}
-                {% include molecule('jumbotron') with {
-                    data: {
-                        imageUrl: slide.imageUrl,
-                        link: slide.link,
-                        cmsBlockName: slide.cmsBlockName,
-                        btnTitle: slide.btnTitle
-                    }
-                } only %}
-            {% endfor %}
+            {{ spyCmsBlock({
+                name: 'Homepage Top Banners Carousel'
+            }) }}
         {% endblock %}
     {% endembed %}
 {% endblock %}
@@ -86,7 +61,7 @@
     } only %}
         {% block inner %}
             {{ spyCmsBlock({
-                name: 'Featured Products'
+                name: 'Homepage Featured Products'
             }) }}
         {% endblock %}
     {% endembed %}
@@ -113,7 +88,7 @@
     } only %}
         {% block inner %}
             {{ spyCmsBlock({
-                name: 'Top Sellers'
+                name: 'Top sellers Products'
             }) }}
         {% endblock %}
     {% endembed %}
