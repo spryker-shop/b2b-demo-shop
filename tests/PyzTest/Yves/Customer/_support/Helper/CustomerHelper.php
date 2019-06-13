@@ -137,7 +137,7 @@ class CustomerHelper extends Module
 
         $tester = $this->getWebDriver();
         $tester->amOnPage(CustomerLoginPage::URL);
-        $tester->waitForElement('[name=loginForm]');
+        $tester->waitForElement('[name=loginForm]', 30);
         $tester->submitForm(['name' => 'loginForm'], [
             CustomerLoginPage::FORM_FIELD_SELECTOR_EMAIL => $customerTransfer->getEmail(),
             CustomerLoginPage::FORM_FIELD_SELECTOR_PASSWORD => $customerTransfer->getPassword(),

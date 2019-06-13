@@ -35,10 +35,9 @@ class AvailabilityAddToCartCest
 
         $i->amOnPage(AvailabilityPresentationTester::PRODUCT_WITH_LIMITED_AVAILABILITY_ADD_TO_CART_URL);
 
-        $i->wait(15);
-
         $i->see(CartListPage::CART_HEADER);
 
+        $i->waitForElement(CartListPage::FIRST_CART_ITEM_QUANTITY_INPUT_XPATH, 30);
         $i->fillField(CartListPage::FIRST_CART_ITEM_QUANTITY_INPUT_XPATH, 50);
         $i->click(CartListPage::FIRST_CART_ITEM_CHANGE_QUANTITY_BUTTON_XPATH);
 
