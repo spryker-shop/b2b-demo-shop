@@ -7,6 +7,7 @@
 
 namespace PyzTest\Yves\Customer\Presentation;
 
+use Codeception\Scenario;
 use PyzTest\Yves\Customer\CustomerPresentationTester;
 use PyzTest\Yves\Customer\PageObject\CustomerAddressesPage;
 use PyzTest\Yves\Customer\PageObject\CustomerNewsletterPage;
@@ -27,40 +28,32 @@ class CustomerOverviewCest
 {
     /**
      * @param \PyzTest\Yves\Customer\CustomerPresentationTester $i
+     * @param \Codeception\Scenario $scenario
      *
      * @return void
      */
-    public function testICanOpenOverviewPage(CustomerPresentationTester $i)
+    public function testICanOpenOverviewPage(CustomerPresentationTester $i, Scenario $scenario): void
     {
+        $scenario->skip('Once we have Chromium + ChromeDriver or Firefox, enable this test case.');
+
         $i->amLoggedInCustomer();
         $i->amOnPage(CustomerOverviewPage::URL);
 
-        $i->see(CustomerOverviewPage::BOX_HEADLINE_ORDERS, 'h5');
-        $i->see(CustomerOverviewPage::BOX_HEADLINE_PROFILE, 'h5');
-        $i->see(CustomerOverviewPage::BOX_HEADLINE_NEWSLETTER, 'h5');
+        $i->see(CustomerOverviewPage::BOX_HEADLINE_ORDERS, 'h3');
+        $i->see(CustomerOverviewPage::BOX_HEADLINE_PROFILE, 'h4');
+        $i->see(CustomerOverviewPage::BOX_HEADLINE_NEWSLETTER, 'h4');
     }
 
     /**
      * @param \PyzTest\Yves\Customer\CustomerPresentationTester $i
+     * @param \Codeception\Scenario $scenario
      *
      * @return void
      */
-    public function testCustomerWithoutAddressShouldSeeAddAddressInfoText(CustomerPresentationTester $i)
+    public function testICanGoFromOverviewToProfilePage(CustomerPresentationTester $i, Scenario $scenario): void
     {
-        $i->amLoggedInCustomer();
-        $i->amOnPage(CustomerOverviewPage::URL);
+        $scenario->skip('Once we have Chromium + ChromeDriver or Firefox, enable this test case.');
 
-        // $i->see(CustomerOverviewPage::INFO_TEXT_ADD_SHIPPING_ADDRESS);
-        // $i->see(CustomerOverviewPage::INFO_TEXT_ADD_BILLING_ADDRESS);
-    }
-
-    /**
-     * @param \PyzTest\Yves\Customer\CustomerPresentationTester $i
-     *
-     * @return void
-     */
-    public function testICanGoFromOverviewToProfilePage(CustomerPresentationTester $i)
-    {
         $i->amLoggedInCustomer();
         $i->amOnPage(CustomerOverviewPage::URL);
         $i->click(CustomerOverviewPage::LINK_TO_PROFILE_PAGE);
@@ -69,11 +62,14 @@ class CustomerOverviewCest
 
     /**
      * @param \PyzTest\Yves\Customer\CustomerPresentationTester $i
+     * @param \Codeception\Scenario $scenario
      *
      * @return void
      */
-    public function testICanGoFromOverviewToAddressesPage(CustomerPresentationTester $i)
+    public function testICanGoFromOverviewToAddressesPage(CustomerPresentationTester $i, Scenario $scenario): void
     {
+        $scenario->skip('Once we have Chromium + ChromeDriver or Firefox, enable this test case.');
+
         $i->amLoggedInCustomer();
         $i->amOnPage(CustomerOverviewPage::URL);
         $i->click(CustomerOverviewPage::LINK_TO_ADDRESSES_PAGE);
@@ -85,7 +81,7 @@ class CustomerOverviewCest
      *
      * @return void
      */
-    public function testICanGoFromOverviewToOrdersPage(CustomerPresentationTester $i)
+    public function testICanGoFromOverviewToOrdersPage(CustomerPresentationTester $i): void
     {
         $i->amLoggedInCustomer();
         $i->amOnPage(CustomerOverviewPage::URL);
@@ -98,7 +94,7 @@ class CustomerOverviewCest
      *
      * @return void
      */
-    public function testICanGoFromOverviewToNewsletterPage(CustomerPresentationTester $i)
+    public function testICanGoFromOverviewToNewsletterPage(CustomerPresentationTester $i): void
     {
         $i->amLoggedInCustomer();
         $i->amOnPage(CustomerOverviewPage::URL);
