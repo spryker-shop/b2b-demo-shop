@@ -2,7 +2,6 @@
 
 {% define config = {
     name: 'address-delete-message',
-    tag: 'div'
 } %}
 
 {% define data = {
@@ -47,20 +46,24 @@
         </ul>
     {% endif %}
 
-    <br>
-
     {% if data.companyBusinessUnits %}
+        <br>
         <strong class="{{ config.name }}__delete-message">
             {{ "company.account.address.delete.message.all" | trans }}!
         </strong>
     {% endif %}
 
     <div class="spacing-y spacing-y--big">
-        <a class="button button--hollow {{ config.name }}__action" href="{{ data.idCompanyBusinessUnit ? url('company/business-unit/update', {'id': data.idCompanyBusinessUnit }) : url('company/business-unit') }}" title="{{ 'company.company_business_unit.delete.confirmation.back' | trans }}">
+        <a class="{{ config.jsName }}__action button button--hollow spacing-right" href="{{ data.idCompanyBusinessUnit ? url('company/business-unit/update', {'id': data.idCompanyBusinessUnit }) : url('company/business-unit') }}" title="{{ 'company.company_business_unit.delete.confirmation.back' | trans }}">
             {{ 'company.company_business_unit.delete.confirmation.back' | trans }}
         </a>
-        <a class="button button--alert" href="{{ url('company/address/delete', {'id': data.companyUnitAddress.idCompanyUnitAddress, 'idCompanyBusinessUnit': data.idCompanyBusinessUnit }) }}" title="{{ 'company.account.business_unit.delete' | trans }}">
+        <a class="{{ config.jsName }}__action button button--alert" href="{{ url('company/address/delete', {'id': data.companyUnitAddress.idCompanyUnitAddress, 'idCompanyBusinessUnit': data.idCompanyBusinessUnit }) }}" title="{{ 'company.account.business_unit.delete' | trans }}">
             {{ 'company.account.business_unit.delete' | trans }}
         </a>
+        {% include molecule('action-single-click-enforcer') with {
+            attributes: {
+                'target-selector': '.' ~ config.jsName ~ '__action',
+            },
+        } only %}
     </div>
 {% endblock %}
