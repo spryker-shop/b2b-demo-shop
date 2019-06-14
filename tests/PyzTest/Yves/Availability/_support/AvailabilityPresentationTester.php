@@ -29,6 +29,8 @@ class AvailabilityPresentationTester extends Actor
 {
     use _generated\AvailabilityPresentationTesterActions;
 
+    public const FUJITSU_PRODUCT_ID = 118;
+
     public const URL_EN_PRODUCT_PAGE = '/en/bic-mehrfarbkugelschreiber-4-colours-831253-0-4mm-bl-sw-r-gn-M21646';
 
     public const URL_ADD_AVAILABLE_PRODUCT_TO_CART = '/cart/add/421261';
