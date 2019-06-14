@@ -33,7 +33,7 @@
         <address class="{{ config.name }}__address">{{ data.companyUnitAddress.zipCode }} {{ data.companyUnitAddress.city }}, {{ ('countries.iso.' ~ data.companyUnitAddress.iso2code) | trans }}</address>
     </div>
 
-    {% if data.companyBusinessUnits is not empty %}
+    {% if data.companyBusinessUnits %}
         <p class="{{ config.name }}__text spacing-y spacing-y--big">
             {{ "company.account.address.delete.message.belongs" | trans }}:
         </p>
@@ -49,14 +49,14 @@
 
     <br>
 
-    {% if data.companyBusinessUnits is not empty %}
+    {% if data.companyBusinessUnits %}
         <strong class="{{ config.name }}__delete-message">
             {{ "company.account.address.delete.message.all" | trans }}!
         </strong>
     {% endif %}
 
     <div class="spacing-y spacing-y--big">
-        <a class="button button--hollow {{ config.name }}__action" href="{{ data.idCompanyBusinessUnit is not empty ? url('company/business-unit/update', {'id': data.idCompanyBusinessUnit }) : url('company/business-unit') }}" title="{{ 'company.company_business_unit.delete.confirmation.back' | trans }}">
+        <a class="button button--hollow {{ config.name }}__action" href="{{ data.idCompanyBusinessUnit ? url('company/business-unit/update', {'id': data.idCompanyBusinessUnit }) : url('company/business-unit') }}" title="{{ 'company.company_business_unit.delete.confirmation.back' | trans }}">
             {{ 'company.company_business_unit.delete.confirmation.back' | trans }}
         </a>
         <a class="button button--alert" href="{{ url('company/address/delete', {'id': data.companyUnitAddress.idCompanyUnitAddress, 'idCompanyBusinessUnit': data.idCompanyBusinessUnit }) }}" title="{{ 'company.account.business_unit.delete' | trans }}">
