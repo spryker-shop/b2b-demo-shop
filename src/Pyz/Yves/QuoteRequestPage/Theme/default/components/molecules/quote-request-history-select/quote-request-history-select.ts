@@ -3,7 +3,9 @@ import Component from 'ShopUi/models/component';
 export default class QuoteRequestHistorySelect extends Component {
     protected select: HTMLSelectElement;
 
-    protected readyCallback(): void {
+    protected readyCallback(): void {}
+
+    mountCallback(): void {
         this.select = <HTMLSelectElement>this.querySelector('select');
         this.mapEvents();
     }

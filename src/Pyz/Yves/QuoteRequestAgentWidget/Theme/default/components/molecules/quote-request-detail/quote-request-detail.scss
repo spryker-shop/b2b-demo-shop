@@ -1,8 +1,12 @@
-@mixin quote-request-agent-widget-request-detail($name: '.quote-request-detail') {
+@mixin quote-request-agent-widget-quote-request-detail($name: '.quote-request-detail') {
     #{$name} {
+        &--light {
+            background-color: $setting-color-white;
+            border-radius: $setting-border-radius;
+        }
+
         &--small {
             #{$name}__counter,
-            #{$name}__link,
             #{$name}__status {
                 font-size: rem(10);
             }
@@ -34,4 +38,4 @@
     }
 }
 
-@include quote-request-agent-widget-request-detail();
+@include quote-request-agent-widget-quote-request-detail();

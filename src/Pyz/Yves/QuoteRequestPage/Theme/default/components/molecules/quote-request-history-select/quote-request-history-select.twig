@@ -12,20 +12,22 @@
 
 {% block body %}
     <span class="col col--sm-12 col--md-4">{{ 'quote_request_page.quote_request.labels.history' | trans }}:</span>
-    {% embed atom('select') with {
-        class: 'col col--sm-12 col--md-8',
-        attributes: {
-            name: 'quote-request-versions',
-        },
-        embed: {
-            versionReferences: data.quoteRequestVersionReferences,
-            currentVersionReference: data.version ? data.version.versionReference : null,
-        },
-    } only %}
-        {% block options %}
-            {% for versionReference in embed.versionReferences %}
-                <option value="{{ versionReference }}" {{ (versionReference == embed.currentVersionReference) ? 'selected' : '' }}>{{ versionReference }}</option>
-            {% endfor %}
-        {% endblock %}
-    {% endembed %}
+    <span class="col col--sm-12 col--md-8">
+        {% embed molecule('custom-select') with {
+            modifiers: ['full-width', 'light'],
+            attributes: {
+                name: 'quote-request-versions',
+            },
+            embed: {
+                versionReferences: data.quoteRequestVersionReferences,
+                currentVersionReference: data.version ? data.version.versionReference : null,
+            },
+        } only %}
+            {% block options %}
+                {% for versionReference in embed.versionReferences %}
+                    <option value="{{ versionReference }}" {{ (versionReference == embed.currentVersionReference) ? 'selected' }}>{{ versionReference }}</option>
+                {% endfor %}
+            {% endblock %}
+        {% endembed %}
+    </span>
 {% endblock %}

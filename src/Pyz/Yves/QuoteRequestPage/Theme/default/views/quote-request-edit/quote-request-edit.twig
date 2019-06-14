@@ -72,6 +72,7 @@
                         quote: quote,
                     },
                 } only %}
+                    {% block latestVersionVisibilityStatus %}{% endblock %}
                     {% block quoteActions %}
                         <a class="spacing-bottom button button--expand button--hollow"
                            href="{{ url('quote-request/details', {quoteRequestReference: data.quoteRequest.quoteRequestReference}) }}">

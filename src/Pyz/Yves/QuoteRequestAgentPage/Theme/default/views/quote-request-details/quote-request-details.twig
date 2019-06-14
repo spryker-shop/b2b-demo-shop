@@ -51,6 +51,7 @@
                 quoteRequest: data.quoteRequest,
                 quote: quote,
                 quoteRequestVersionReferences: data.quoteRequestVersionReferences,
+                version: data.version,
                 isLatestVersion: isLatestVersion,
                 cancelTitle: 'quote_request_page.quote_request.actions.back_to_list' | trans,
                 cancelUrl: url('agent/quote-request'),
@@ -83,18 +84,20 @@
             {% block quoteRequestReadyAction %}{% endblock %}
             {% block quoteActions %}
                 {{ parent() }}
-                {% if data.isQuoteRequestRevisable %}
-                    <a class="spacing-bottom button button--expand button--hollow"
-                       href="{{ path('agent/quote-request/revise', { quoteRequestReference: (data.quoteRequest.quoteRequestReference) }) }}">
-                        {{ 'quote_request_page.quote_request.actions.revise' | trans }}
-                    </a>
-                {% endif %}
+                {% if data.isLatestVersion %}
+                    {% if data.isQuoteRequestRevisable %}
+                        <a class="spacing-bottom button button--expand button--hollow"
+                           href="{{ path('agent/quote-request/revise', { quoteRequestReference: (data.quoteRequest.quoteRequestReference) }) }}">
+                            {{ 'quote_request_page.quote_request.actions.revise' | trans }}
+                        </a>
+                    {% endif %}
 
-                {% if data.quoteRequest.status == 'ready' %}
-                    <a class="spacing-bottom button button--expand button--success"
-                       href="{{ path('agent/quote-request/convert-to-cart', { quoteRequestReference: (data.quoteRequest.quoteRequestReference) }) }}">
-                        {{ 'quote_request_page.quote_request.actions.convert_to_cart' | trans }}
-                    </a>
+                    {% if data.quoteRequest.status == 'ready' %}
+                        <a class="spacing-bottom button button--expand button--success"
+                           href="{{ path('agent/quote-request/convert-to-cart', { quoteRequestReference: (data.quoteRequest.quoteRequestReference) }) }}">
+                            {{ 'quote_request_page.quote_request.actions.convert_to_cart' | trans }}
+                        </a>
+                    {% endif %}
                 {% endif %}
             {% endblock %}
         {% endembed %}

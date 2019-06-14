@@ -4,8 +4,10 @@
     name: 'agent-control-item'
 } %}
 
+{# @deprecated data.status. Use data.title instead. #}
 {% define data = {
-    title: required,
+    status: required,
+    title: data.status,
     buttonLink: required,
     buttonName: required,
     firstName: '',

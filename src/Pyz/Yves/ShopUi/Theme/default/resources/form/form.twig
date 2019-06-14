@@ -213,12 +213,12 @@
     {% if widget == 'single_text' %}
         {%- set label = (label | default('')) | trans -%}
         {%- set attr = attr | merge({
-            class: ('input input--expand' ~ (errors ? ' input--error ' : ' ') ~ (attr.class | default(''))) | trim,
+            class: ('input input--expand ' ~ (errors is not empty ? 'input--error ') ~ (attr.class | default(''))) | trim,
             type: 'text',
             autocomplete: 'off',
-            placeholder: attr.placeholder | default(label),
+            placeholder: 'yyyy-mm-dd HH:mm',
         }) -%}
-        <input {{ block('widget_attributes') }} {% if value %}value="{{ value }}" {% endif %} />
+        <input {{ block('widget_attributes') }} {% if value %}value="{{ value }}" {% endif %}>
     {%- else -%}
         <div {{ block('widget_container_attributes') }}>
             {{- form_errors(form.date) -}}
@@ -233,12 +233,12 @@
     {%- if widget == 'single_text' -%}
         {%- set label = (label | default('')) | trans -%}
         {%- set attr = attr | merge({
-            class: ('input input--expand' ~ (errors ? ' input--error ' : ' ') ~ (attr.class | default(''))) | trim,
+            class: ('input input--expand ' ~ (errors is not empty ? 'input--error ') ~ (attr.class | default(''))) | trim,
             type: 'text',
             autocomplete: 'off',
-            placeholder: attr.placeholder | default(label),
+            placeholder: 'yyyy-mm-dd',
         }) -%}
-        <input {{ block('widget_attributes') }} {% if value %}value="{{ value }}" {% endif %} />
+        <input {{ block('widget_attributes') }} {% if value %}value="{{ value }}" {% endif %}>
     {%- else -%}
         <div {{ block('widget_container_attributes') }}>
             {{- date_pattern|replace({
