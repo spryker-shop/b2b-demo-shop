@@ -10,7 +10,6 @@ namespace PyzTest\Yves\Customer\Presentation;
 use Codeception\Scenario;
 use Generated\Shared\DataBuilder\CustomerBuilder;
 use PyzTest\Yves\Customer\CustomerPresentationTester;
-use PyzTest\Yves\Customer\PageObject\CustomerOverviewPage;
 use PyzTest\Yves\Customer\PageObject\CustomerProfilePage;
 
 /**
@@ -38,7 +37,7 @@ class CustomerProfileCest
         $customerTransfer = (new CustomerBuilder())
             ->build();
 
-        $i->waitForElement(CustomerProfilePage::FORM_FIELD_SELECTOR_SALUTATION, 30);
+        $i->waitForElement(CustomerProfilePage::FORM_FIELD_SELECTOR_EMAIL, 30);
         $i->selectOption(CustomerProfilePage::FORM_FIELD_SELECTOR_SALUTATION, $customerTransfer->getSalutation());
         $i->fillField(CustomerProfilePage::FORM_FIELD_SELECTOR_FIRST_NAME, $customerTransfer->getFirstName());
         $i->fillField(CustomerProfilePage::FORM_FIELD_SELECTOR_LAST_NAME, $customerTransfer->getLastName());

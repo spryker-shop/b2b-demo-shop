@@ -36,7 +36,7 @@ class CustomerOverviewCest
     {
         $i->amLoggedInCustomer();
         $i->amOnPage(CustomerOverviewPage::URL);
-        $i->waitForElement(CustomerOverviewPage::LINK_TO_PROFILE_PAGE, 30);
+        $i->waitForElement('h4', 30);
 
         $i->see(CustomerOverviewPage::BOX_HEADLINE_ORDERS, 'h3');
         $i->see(CustomerOverviewPage::BOX_HEADLINE_PROFILE, 'h4');
