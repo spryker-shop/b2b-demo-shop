@@ -26,8 +26,10 @@ class AvailabilityAddToCartCest
      *
      * @return void
      */
-    public function testAddToCartWhenBiggerQuantityIsUsed(AvailabilityPresentationTester $i): void
+    public function testAddToCartWhenBiggerQuantityIsUsed(AvailabilityPresentationTester $i, Scenario $scenario): void
     {
+        $scenario->skip('Once we have Chromium + ChromeDriver or Firefox, enable this test case.');
+
         $i->wantTo('Open product page, and add item to cart with larger quantity than available');
         $i->expectTo('Display error message');
 
