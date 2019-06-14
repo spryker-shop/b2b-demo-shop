@@ -19,8 +19,13 @@ suites:
             enabled:
               - Asserts
               - \PyzTest\Shared\Testify\Helper\Environment
+              - \SprykerTest\Shared\Propel\Helper\ConnectionHelper
+              - \SprykerTest\Shared\Testify\Helper\LocatorHelper:
+                  projectNamespaces: ['Pyz']
+              - \SprykerTest\Shared\Testify\Helper\DependencyHelper
               - \SprykerTest\Shared\Config\Helper\ConfigInit
               - \PyzTest\Yves\Checkout\Helper\CheckoutHelper
+              - \PyzTest\Yves\Customer\Helper\CustomerHelper
               - \SprykerTest\Shared\Propel\Helper\PropelInstallHelper
               - WebDriver:
                   url: ''
@@ -31,3 +36,9 @@ suites:
               - \SprykerTest\Shared\Testify\Helper\DataCleanupHelper
               - \SprykerTest\Shared\Application\Helper\YvesHelper
               - \SprykerTest\Shared\Application\Helper\ZedHelper
+              - \SprykerTest\Shared\Customer\Helper\CustomerDataHelper
+              - \SprykerTest\Shared\CompanyUser\Helper\CompanyUserHelper
+              - \SprykerTest\Zed\Company\Helper\CompanyHelper
+              - \SprykerTest\Zed\CompanyBusinessUnit\Helper\CompanyBusinessUnitHelper
+              - \SprykerTest\Zed\CompanyRole\Helper\CompanyRoleHelper
+              - \PyzTest\Yves\CompanyUser\Helper\CompanyUserHelper
