@@ -31,6 +31,8 @@ class CustomerProfileCest
      */
     public function testICanUpdateProfileData(CustomerPresentationTester $i, Scenario $scenario): void
     {
+        $scenario->skip('Once we have Chromium + ChromeDriver or Firefox, enable this test case.');
+
         $i->amLoggedInCustomer();
         $i->amOnPage(CustomerProfilePage::URL);
 
@@ -54,6 +56,8 @@ class CustomerProfileCest
      */
     public function testICanUpdateEmail(CustomerPresentationTester $i, Scenario $scenario): void
     {
+        $scenario->skip('Once we have Chromium + ChromeDriver or Firefox, enable this test case.');
+
         $i->amLoggedInCustomer();
         $i->amOnPage(CustomerProfilePage::URL);
 
@@ -70,11 +74,14 @@ class CustomerProfileCest
 
     /**
      * @param \PyzTest\Yves\Customer\CustomerPresentationTester $i
+     * @param \Codeception\Scenario $scenario
      *
      * @return void
      */
-    public function testICanNotUpdateEmailToAnAlreadyUsedOne(CustomerPresentationTester $i): void
+    public function testICanNotUpdateEmailToAnAlreadyUsedOne(CustomerPresentationTester $i, Scenario $scenario): void
     {
+        $scenario->skip('Once we have Chromium + ChromeDriver or Firefox, enable this test case.');
+
         $i->amLoggedInCustomer();
         $anotherCustomerTransfer = $i->haveRegisteredCustomer();
 
@@ -94,6 +101,8 @@ class CustomerProfileCest
      */
     public function testICanChangePassword(CustomerPresentationTester $i, Scenario $scenario): void
     {
+        $scenario->skip('Once we have Chromium + ChromeDriver or Firefox, enable this test case.');
+
         $customerTransfer = $i->amLoggedInCustomer();
         $i->amOnPage(CustomerProfilePage::URL);
 
@@ -117,6 +126,8 @@ class CustomerProfileCest
      */
     public function testICanNotChangePasswordWhenNewPasswordsNotMatch(CustomerPresentationTester $i, Scenario $scenario): void
     {
+        $scenario->skip('Once we have Chromium + ChromeDriver or Firefox, enable this test case.');
+
         $customerTransfer = $i->amLoggedInCustomer();
         $i->amOnPage(CustomerProfilePage::URL);
 
