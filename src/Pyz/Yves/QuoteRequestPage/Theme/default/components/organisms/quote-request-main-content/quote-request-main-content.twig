@@ -1,0 +1,49 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'quote-request-main-content',
+} %}
+
+{% define data = {
+    version: required,
+    quote: required,
+} %}
+
+{% block body %}
+    <div class="grid grid--gap box spacing-bottom spacing-bottom--bigger">
+        {% block formContent %}
+            {% for key, value in data.version.metadata %}
+                <div class="col col--sm-12 col--xl-6 spacing-bottom spacing-bottom--big">
+                    <label class="label">{{ ('quote_request_page.quote_request.metadata.label.' ~ key) | trans }}</label>
+                    <p class="text-break">{{ value }}</p>
+                </div>
+            {% endfor %}
+        {% endblock %}
+    </div>
+    <div class="grid grid--gap">
+        <div class="col col--sm-12">
+            {% if data.quote and data.quote.priceMode %}
+                <div class="spacing-bottom spacing-bottom--bigger">
+                    {% include molecule('price-mode') with {
+                        data: {
+                            priceMode: data.quote.priceMode,
+                        },
+                    } only %}
+                </div>
+            {% endif %}
+            {% if data.quote %}
+                {% block cartItems %}
+                    {% for cartItem in data.quote.items %}
+                        {% include molecule('quote-request-cart-item', 'QuoteRequestPage') ignore missing with {
+                            data: {
+                                priceMode: data.quote.priceMode,
+                                cartItem: cartItem,
+                                currency: data.quote.currency,
+                            },
+                        } only %}
+                    {% endfor %}
+                {% endblock %}
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

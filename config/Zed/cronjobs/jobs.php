@@ -49,6 +49,16 @@ $jobs[] = [
     'stores' => $allStores,
 ];
 
+/* PriceProductSchedule */
+$jobs[] = [
+    'name' => 'apply-price-product-schedule',
+    'command' => '$PHP_BIN vendor/bin/console price-product-schedule:apply',
+    'schedule' => '0 6 * * *',
+    'enable' => true,
+    'run_on_non_production' => true,
+    'stores' => $allStores,
+];
+
 /* Oms */
 $jobs[] = [
     'name' => 'check-oms-conditions',
@@ -148,6 +158,16 @@ $jobs[] = [
     'name' => 'clean-expired-guest-cart',
     'command' => '$PHP_BIN vendor/bin/console quote:delete-expired-guest-quotes',
     'schedule' => '30 1 * * *',
+    'enable' => true,
+    'run_on_non_production' => true,
+    'stores' => $allStores,
+];
+
+/* QuoteRequest */
+$jobs[] = [
+    'name' => 'close-outdated-quote-requests',
+    'command' => '$PHP_BIN vendor/bin/console quote-request:close-outdated',
+    'schedule' => '0 * * * *',
     'enable' => true,
     'run_on_non_production' => true,
     'stores' => $allStores,

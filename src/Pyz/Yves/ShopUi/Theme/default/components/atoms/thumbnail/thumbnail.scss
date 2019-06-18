@@ -94,11 +94,19 @@
             margin: auto;
             max-width: 100%;
             max-height: 100%;
+
+            &--color-light {
+                color: $setting-color-light;
+            }
         }
 
         &--has-border {
             border: 0.25rem solid $setting-color-transparent;
             box-shadow: 0 0 0 1px $setting-color-lighter;
+        }
+
+        &--expand {
+            width: 100%;
         }
 
         @content;
