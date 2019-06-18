@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "92b64631b2e5e2c4a1225c198d45a048",
+    "content-hash": "cc31c9697fe4d8ce9a680f16737130e9",
     "packages": [
         {
             "name": "codeitnowin/barcode",
@@ -54,50 +54,6 @@
                 "symfony"
             ],
             "time": "2018-10-25T18:32:10+00:00"
-        },
-        {
-            "name": "composer/xdebug-handler",
-            "version": "1.3.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/composer/xdebug-handler.git",
-                "reference": "46867cbf8ca9fb8d60c506895449eb799db1184f"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/composer/xdebug-handler/zipball/46867cbf8ca9fb8d60c506895449eb799db1184f",
-                "reference": "46867cbf8ca9fb8d60c506895449eb799db1184f",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^5.3.2 || ^7.0",
-                "psr/log": "^1.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^4.8.35 || ^5.7 || ^6.5"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Composer\\XdebugHandler\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "John Stevenson",
-                    "email": "john-stevenson@blueyonder.co.uk"
-                }
-            ],
-            "description": "Restarts a process without xdebug.",
-            "keywords": [
-                "Xdebug",
-                "performance"
-            ],
-            "time": "2019-05-27T17:52:04+00:00"
         },
         {
             "name": "container-interop/container-interop",
@@ -931,57 +887,6 @@
             "time": "2014-10-12T19:18:40+00:00"
         },
         {
-            "name": "jean85/pretty-package-versions",
-            "version": "1.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Jean85/pretty-package-versions.git",
-                "reference": "75c7effcf3f77501d0e0caa75111aff4daa0dd48"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Jean85/pretty-package-versions/zipball/75c7effcf3f77501d0e0caa75111aff4daa0dd48",
-                "reference": "75c7effcf3f77501d0e0caa75111aff4daa0dd48",
-                "shasum": ""
-            },
-            "require": {
-                "ocramius/package-versions": "^1.2.0",
-                "php": "^7.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^6.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Jean85\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Alessandro Lai",
-                    "email": "alessandro.lai85@gmail.com"
-                }
-            ],
-            "description": "A wrapper for ocramius/package-versions to get pretty versions strings",
-            "keywords": [
-                "composer",
-                "package",
-                "release",
-                "versions"
-            ],
-            "time": "2018-06-13T13:22:40+00:00"
-        },
-        {
             "name": "lcobucci/jwt",
             "version": "3.3.1",
             "source": {
@@ -1475,630 +1380,6 @@
             "time": "2018-11-05T09:00:11+00:00"
         },
         {
-            "name": "nette/bootstrap",
-            "version": "v3.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/nette/bootstrap.git",
-                "reference": "e1075af05c211915e03e0c86542f3ba5433df4a3"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/nette/bootstrap/zipball/e1075af05c211915e03e0c86542f3ba5433df4a3",
-                "reference": "e1075af05c211915e03e0c86542f3ba5433df4a3",
-                "shasum": ""
-            },
-            "require": {
-                "nette/di": "^3.0",
-                "nette/utils": "^3.0",
-                "php": ">=7.1"
-            },
-            "require-dev": {
-                "latte/latte": "^2.2",
-                "nette/application": "^3.0",
-                "nette/caching": "^3.0",
-                "nette/database": "^3.0",
-                "nette/forms": "^3.0",
-                "nette/http": "^3.0",
-                "nette/mail": "^3.0",
-                "nette/robot-loader": "^3.0",
-                "nette/safe-stream": "^2.2",
-                "nette/security": "^3.0",
-                "nette/tester": "^2.0",
-                "tracy/tracy": "^2.6"
-            },
-            "suggest": {
-                "nette/robot-loader": "to use Configurator::createRobotLoader()",
-                "tracy/tracy": "to use Configurator::enableTracy()"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.0-dev"
-                }
-            },
-            "autoload": {
-                "classmap": [
-                    "src/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause",
-                "GPL-2.0",
-                "GPL-3.0"
-            ],
-            "authors": [
-                {
-                    "name": "David Grudl",
-                    "homepage": "https://davidgrudl.com"
-                },
-                {
-                    "name": "Nette Community",
-                    "homepage": "https://nette.org/contributors"
-                }
-            ],
-            "description": "🅱 Nette Bootstrap: the simple way to configure and bootstrap your Nette application.",
-            "homepage": "https://nette.org",
-            "keywords": [
-                "bootstrapping",
-                "configurator",
-                "nette"
-            ],
-            "time": "2019-03-26T12:59:07+00:00"
-        },
-        {
-            "name": "nette/di",
-            "version": "v3.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/nette/di.git",
-                "reference": "19d83539245aaacb59470828919182411061841f"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/nette/di/zipball/19d83539245aaacb59470828919182411061841f",
-                "reference": "19d83539245aaacb59470828919182411061841f",
-                "shasum": ""
-            },
-            "require": {
-                "ext-tokenizer": "*",
-                "nette/neon": "^3.0",
-                "nette/php-generator": "^3.2.2",
-                "nette/robot-loader": "^3.2",
-                "nette/schema": "^1.0",
-                "nette/utils": "^3.0",
-                "php": ">=7.1"
-            },
-            "conflict": {
-                "nette/bootstrap": "<3.0"
-            },
-            "require-dev": {
-                "nette/tester": "^2.2",
-                "tracy/tracy": "^2.3"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.0-dev"
-                }
-            },
-            "autoload": {
-                "classmap": [
-                    "src/"
-                ],
-                "files": [
-                    "src/compatibility.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause",
-                "GPL-2.0",
-                "GPL-3.0"
-            ],
-            "authors": [
-                {
-                    "name": "David Grudl",
-                    "homepage": "https://davidgrudl.com"
-                },
-                {
-                    "name": "Nette Community",
-                    "homepage": "https://nette.org/contributors"
-                }
-            ],
-            "description": "💎 Nette Dependency Injection Container: Flexible, compiled and full-featured DIC with perfectly usable autowiring and support for all new PHP 7.1 features.",
-            "homepage": "https://nette.org",
-            "keywords": [
-                "compiled",
-                "di",
-                "dic",
-                "factory",
-                "ioc",
-                "nette",
-                "static"
-            ],
-            "time": "2019-04-03T19:35:46+00:00"
-        },
-        {
-            "name": "nette/finder",
-            "version": "v2.5.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/nette/finder.git",
-                "reference": "6be1b83ea68ac558aff189d640abe242e0306fe2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/nette/finder/zipball/6be1b83ea68ac558aff189d640abe242e0306fe2",
-                "reference": "6be1b83ea68ac558aff189d640abe242e0306fe2",
-                "shasum": ""
-            },
-            "require": {
-                "nette/utils": "^2.4 || ~3.0.0",
-                "php": ">=7.1"
-            },
-            "conflict": {
-                "nette/nette": "<2.2"
-            },
-            "require-dev": {
-                "nette/tester": "^2.0",
-                "tracy/tracy": "^2.3"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.5-dev"
-                }
-            },
-            "autoload": {
-                "classmap": [
-                    "src/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause",
-                "GPL-2.0",
-                "GPL-3.0"
-            ],
-            "authors": [
-                {
-                    "name": "David Grudl",
-                    "homepage": "https://davidgrudl.com"
-                },
-                {
-                    "name": "Nette Community",
-                    "homepage": "https://nette.org/contributors"
-                }
-            ],
-            "description": "? Nette Finder: find files and directories with an intuitive API.",
-            "homepage": "https://nette.org",
-            "keywords": [
-                "filesystem",
-                "glob",
-                "iterator",
-                "nette"
-            ],
-            "time": "2019-02-28T18:13:25+00:00"
-        },
-        {
-            "name": "nette/neon",
-            "version": "v3.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/nette/neon.git",
-                "reference": "cbff32059cbdd8720deccf9e9eace6ee516f02eb"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/nette/neon/zipball/cbff32059cbdd8720deccf9e9eace6ee516f02eb",
-                "reference": "cbff32059cbdd8720deccf9e9eace6ee516f02eb",
-                "shasum": ""
-            },
-            "require": {
-                "ext-iconv": "*",
-                "ext-json": "*",
-                "php": ">=7.0"
-            },
-            "require-dev": {
-                "nette/tester": "^2.0",
-                "tracy/tracy": "^2.3"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.0-dev"
-                }
-            },
-            "autoload": {
-                "classmap": [
-                    "src/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause",
-                "GPL-2.0",
-                "GPL-3.0"
-            ],
-            "authors": [
-                {
-                    "name": "David Grudl",
-                    "homepage": "https://davidgrudl.com"
-                },
-                {
-                    "name": "Nette Community",
-                    "homepage": "https://nette.org/contributors"
-                }
-            ],
-            "description": "🍸 Nette NEON: encodes and decodes NEON file format.",
-            "homepage": "http://ne-on.org",
-            "keywords": [
-                "export",
-                "import",
-                "neon",
-                "nette",
-                "yaml"
-            ],
-            "time": "2019-02-05T21:30:40+00:00"
-        },
-        {
-            "name": "nette/php-generator",
-            "version": "v3.2.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/nette/php-generator.git",
-                "reference": "acff8b136fad84b860a626d133e791f95781f9f5"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/nette/php-generator/zipball/acff8b136fad84b860a626d133e791f95781f9f5",
-                "reference": "acff8b136fad84b860a626d133e791f95781f9f5",
-                "shasum": ""
-            },
-            "require": {
-                "nette/utils": "^2.4.2 || ~3.0.0",
-                "php": ">=7.1"
-            },
-            "require-dev": {
-                "nette/tester": "^2.0",
-                "tracy/tracy": "^2.3"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.2-dev"
-                }
-            },
-            "autoload": {
-                "classmap": [
-                    "src/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause",
-                "GPL-2.0",
-                "GPL-3.0"
-            ],
-            "authors": [
-                {
-                    "name": "David Grudl",
-                    "homepage": "https://davidgrudl.com"
-                },
-                {
-                    "name": "Nette Community",
-                    "homepage": "https://nette.org/contributors"
-                }
-            ],
-            "description": "🐘 Nette PHP Generator: generates neat PHP code for you. Supports new PHP 7.3 features.",
-            "homepage": "https://nette.org",
-            "keywords": [
-                "code",
-                "nette",
-                "php",
-                "scaffolding"
-            ],
-            "time": "2019-03-15T03:41:13+00:00"
-        },
-        {
-            "name": "nette/robot-loader",
-            "version": "v3.2.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/nette/robot-loader.git",
-                "reference": "0712a0e39ae7956d6a94c0ab6ad41aa842544b5c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/nette/robot-loader/zipball/0712a0e39ae7956d6a94c0ab6ad41aa842544b5c",
-                "reference": "0712a0e39ae7956d6a94c0ab6ad41aa842544b5c",
-                "shasum": ""
-            },
-            "require": {
-                "ext-tokenizer": "*",
-                "nette/finder": "^2.5",
-                "nette/utils": "^3.0",
-                "php": ">=7.1"
-            },
-            "require-dev": {
-                "nette/tester": "^2.0",
-                "tracy/tracy": "^2.3"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.2-dev"
-                }
-            },
-            "autoload": {
-                "classmap": [
-                    "src/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause",
-                "GPL-2.0",
-                "GPL-3.0"
-            ],
-            "authors": [
-                {
-                    "name": "David Grudl",
-                    "homepage": "https://davidgrudl.com"
-                },
-                {
-                    "name": "Nette Community",
-                    "homepage": "https://nette.org/contributors"
-                }
-            ],
-            "description": "? Nette RobotLoader: high performance and comfortable autoloader that will search and autoload classes within your application.",
-            "homepage": "https://nette.org",
-            "keywords": [
-                "autoload",
-                "class",
-                "interface",
-                "nette",
-                "trait"
-            ],
-            "time": "2019-03-08T21:57:24+00:00"
-        },
-        {
-            "name": "nette/schema",
-            "version": "v1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/nette/schema.git",
-                "reference": "6241d8d4da39e825dd6cb5bfbe4242912f4d7e4d"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/nette/schema/zipball/6241d8d4da39e825dd6cb5bfbe4242912f4d7e4d",
-                "reference": "6241d8d4da39e825dd6cb5bfbe4242912f4d7e4d",
-                "shasum": ""
-            },
-            "require": {
-                "nette/utils": "^3.0.1",
-                "php": ">=7.1"
-            },
-            "require-dev": {
-                "nette/tester": "^2.2",
-                "tracy/tracy": "^2.3"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0-dev"
-                }
-            },
-            "autoload": {
-                "classmap": [
-                    "src/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause",
-                "GPL-2.0",
-                "GPL-3.0"
-            ],
-            "authors": [
-                {
-                    "name": "David Grudl",
-                    "homepage": "https://davidgrudl.com"
-                },
-                {
-                    "name": "Nette Community",
-                    "homepage": "https://nette.org/contributors"
-                }
-            ],
-            "description": "📐 Nette Schema: validating data structures against a given Schema.",
-            "homepage": "https://nette.org",
-            "keywords": [
-                "config",
-                "nette"
-            ],
-            "time": "2019-04-03T15:53:25+00:00"
-        },
-        {
-            "name": "nette/utils",
-            "version": "v3.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/nette/utils.git",
-                "reference": "bd961f49b211997202bda1d0fbc410905be370d4"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/nette/utils/zipball/bd961f49b211997202bda1d0fbc410905be370d4",
-                "reference": "bd961f49b211997202bda1d0fbc410905be370d4",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.1"
-            },
-            "require-dev": {
-                "nette/tester": "~2.0",
-                "tracy/tracy": "^2.3"
-            },
-            "suggest": {
-                "ext-gd": "to use Image",
-                "ext-iconv": "to use Strings::webalize() and toAscii()",
-                "ext-intl": "to use Strings::webalize(), toAscii(), normalize() and compare()",
-                "ext-json": "to use Nette\\Utils\\Json",
-                "ext-mbstring": "to use Strings::lower() etc...",
-                "ext-xml": "to use Strings::length() etc. when mbstring is not available"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.0-dev"
-                }
-            },
-            "autoload": {
-                "classmap": [
-                    "src/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause",
-                "GPL-2.0",
-                "GPL-3.0"
-            ],
-            "authors": [
-                {
-                    "name": "David Grudl",
-                    "homepage": "https://davidgrudl.com"
-                },
-                {
-                    "name": "Nette Community",
-                    "homepage": "https://nette.org/contributors"
-                }
-            ],
-            "description": "🛠 Nette Utils: lightweight utilities for string & array manipulation, image handling, safe JSON encoding/decoding, validation, slug or strong password generating etc.",
-            "homepage": "https://nette.org",
-            "keywords": [
-                "array",
-                "core",
-                "datetime",
-                "images",
-                "json",
-                "nette",
-                "paginator",
-                "password",
-                "slugify",
-                "string",
-                "unicode",
-                "utf-8",
-                "utility",
-                "validation"
-            ],
-            "time": "2019-03-22T01:00:30+00:00"
-        },
-        {
-            "name": "nikic/php-parser",
-            "version": "v4.2.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "1bd73cc04c3843ad8d6b0bfc0956026a151fc420"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/1bd73cc04c3843ad8d6b0bfc0956026a151fc420",
-                "reference": "1bd73cc04c3843ad8d6b0bfc0956026a151fc420",
-                "shasum": ""
-            },
-            "require": {
-                "ext-tokenizer": "*",
-                "php": ">=7.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^6.5 || ^7.0"
-            },
-            "bin": [
-                "bin/php-parse"
-            ],
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "4.2-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "PhpParser\\": "lib/PhpParser"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Nikita Popov"
-                }
-            ],
-            "description": "A PHP parser written in PHP",
-            "keywords": [
-                "parser",
-                "php"
-            ],
-            "time": "2019-05-25T20:07:01+00:00"
-        },
-        {
-            "name": "ocramius/package-versions",
-            "version": "1.4.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Ocramius/PackageVersions.git",
-                "reference": "a4d4b60d0e60da2487bd21a2c6ac089f85570dbb"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Ocramius/PackageVersions/zipball/a4d4b60d0e60da2487bd21a2c6ac089f85570dbb",
-                "reference": "a4d4b60d0e60da2487bd21a2c6ac089f85570dbb",
-                "shasum": ""
-            },
-            "require": {
-                "composer-plugin-api": "^1.0.0",
-                "php": "^7.1.0"
-            },
-            "require-dev": {
-                "composer/composer": "^1.6.3",
-                "doctrine/coding-standard": "^5.0.1",
-                "ext-zip": "*",
-                "infection/infection": "^0.7.1",
-                "phpunit/phpunit": "^7.0.0"
-            },
-            "type": "composer-plugin",
-            "extra": {
-                "class": "PackageVersions\\Installer",
-                "branch-alias": {
-                    "dev-master": "2.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "PackageVersions\\": "src/PackageVersions"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Marco Pivetta",
-                    "email": "ocramius@gmail.com"
-                }
-            ],
-            "description": "Composer plugin that provides efficient querying for installed package versions (no runtime IO)",
-            "time": "2019-02-21T12:16:21+00:00"
-        },
-        {
             "name": "paragonie/random_compat",
             "version": "v9.99.99",
             "source": {
@@ -2257,127 +1538,6 @@
                 }
             ],
             "time": "2016-02-02T13:00:08+00:00"
-        },
-        {
-            "name": "phpstan/phpdoc-parser",
-            "version": "0.3.5",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/phpstan/phpdoc-parser.git",
-                "reference": "8c4ef2aefd9788238897b678a985e1d5c8df6db4"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/8c4ef2aefd9788238897b678a985e1d5c8df6db4",
-                "reference": "8c4ef2aefd9788238897b678a985e1d5c8df6db4",
-                "shasum": ""
-            },
-            "require": {
-                "php": "~7.1"
-            },
-            "require-dev": {
-                "consistence/coding-standard": "^3.5",
-                "jakub-onderka/php-parallel-lint": "^0.9.2",
-                "phing/phing": "^2.16.0",
-                "phpstan/phpstan": "^0.10",
-                "phpunit/phpunit": "^6.3",
-                "slevomat/coding-standard": "^4.7.2",
-                "squizlabs/php_codesniffer": "^3.3.2",
-                "symfony/process": "^3.4 || ^4.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "0.3-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "PHPStan\\PhpDocParser\\": [
-                        "src/"
-                    ]
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "PHPDoc parser with support for nullable, intersection and generic types",
-            "time": "2019-06-07T19:13:52+00:00"
-        },
-        {
-            "name": "phpstan/phpstan",
-            "version": "0.11.8",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "fcf0081bf3a254ddacffa03e78be87842d0c09c9"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/fcf0081bf3a254ddacffa03e78be87842d0c09c9",
-                "reference": "fcf0081bf3a254ddacffa03e78be87842d0c09c9",
-                "shasum": ""
-            },
-            "require": {
-                "composer/xdebug-handler": "^1.3.0",
-                "jean85/pretty-package-versions": "^1.0.3",
-                "nette/bootstrap": "^2.4 || ^3.0",
-                "nette/di": "^2.4.7 || ^3.0",
-                "nette/robot-loader": "^3.0.1",
-                "nette/schema": "^1.0",
-                "nette/utils": "^2.4.5 || ^3.0",
-                "nikic/php-parser": "^4.0.2",
-                "php": "~7.1",
-                "phpstan/phpdoc-parser": "^0.3.4",
-                "symfony/console": "~3.2 || ~4.0",
-                "symfony/finder": "~3.2 || ~4.0"
-            },
-            "conflict": {
-                "symfony/console": "3.4.16 || 4.1.5"
-            },
-            "require-dev": {
-                "brianium/paratest": "^2.0",
-                "consistence/coding-standard": "^3.5",
-                "dealerdirect/phpcodesniffer-composer-installer": "^0.4.4",
-                "ext-intl": "*",
-                "ext-mysqli": "*",
-                "ext-soap": "*",
-                "ext-zip": "*",
-                "jakub-onderka/php-parallel-lint": "^1.0",
-                "localheinz/composer-normalize": "^1.1.0",
-                "phing/phing": "^2.16.0",
-                "phpstan/phpstan-deprecation-rules": "^0.11",
-                "phpstan/phpstan-php-parser": "^0.11",
-                "phpstan/phpstan-phpunit": "^0.11",
-                "phpstan/phpstan-strict-rules": "^0.11",
-                "phpunit/phpunit": "^7.0",
-                "slevomat/coding-standard": "^4.7.2",
-                "squizlabs/php_codesniffer": "^3.3.2"
-            },
-            "bin": [
-                "bin/phpstan"
-            ],
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "0.11-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "PHPStan\\": [
-                        "src/",
-                        "build/PHPStan"
-                    ]
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "PHPStan - PHP Static Analysis Tool",
-            "time": "2019-05-28T19:58:33+00:00"
         },
         {
             "name": "predis/predis",
@@ -2871,12 +2031,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-eco/loggly.git",
-                "reference": "8e3830b9fbd19baf06a45186b30fa57d0ac0545d"
+                "reference": "f13c86f9585b4b8e947a5f0e90fb7d33db05da5c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-eco/loggly/zipball/8e3830b9fbd19baf06a45186b30fa57d0ac0545d",
-                "reference": "8e3830b9fbd19baf06a45186b30fa57d0ac0545d",
+                "url": "https://api.github.com/repos/spryker-eco/loggly/zipball/f13c86f9585b4b8e947a5f0e90fb7d33db05da5c",
+                "reference": "f13c86f9585b4b8e947a5f0e90fb7d33db05da5c",
                 "shasum": ""
             },
             "require": {
@@ -2908,7 +2068,7 @@
                 "proprietary"
             ],
             "description": "Loggly module",
-            "time": "2019-05-09T08:36:38+00:00"
+            "time": "2019-06-12T09:16:28+00:00"
         },
         {
             "name": "spryker-feature/agent-assist",
@@ -3987,17 +3147,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-feature/non-splittable-products.git",
-                "reference": "dc4d0622a1627afb47571259be277eedbd3fe39c"
+                "reference": "1a7b90df20be6ca636e9cc2f9888a670e2857f6c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-feature/non-splittable-products/zipball/dc4d0622a1627afb47571259be277eedbd3fe39c",
-                "reference": "dc4d0622a1627afb47571259be277eedbd3fe39c",
+                "url": "https://api.github.com/repos/spryker-feature/non-splittable-products/zipball/1a7b90df20be6ca636e9cc2f9888a670e2857f6c",
+                "reference": "1a7b90df20be6ca636e9cc2f9888a670e2857f6c",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
                 "spryker-feature/product": "^201906.0",
+                "spryker-shop/product-quantity-widget": "^1.0.0",
                 "spryker/product-quantity": "^2.0.0",
                 "spryker/product-quantity-data-import": "^2.0.0",
                 "spryker/product-quantity-storage": "^2.0.0"
@@ -4013,7 +3174,7 @@
                 "proprietary"
             ],
             "description": "Non-splittable Products [feature]",
-            "time": "2019-06-04T09:51:37+00:00"
+            "time": "2019-06-18T13:03:28+00:00"
         },
         {
             "name": "spryker-feature/order-management",
@@ -4762,6 +3923,49 @@
             "time": "2019-06-04T09:52:39+00:00"
         },
         {
+            "name": "spryker-feature/quotation-process",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-feature/quotation-process.git",
+                "reference": "59e6650dea0d695437d312c3510fbca9bd7c80b7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-feature/quotation-process/zipball/59e6650dea0d695437d312c3510fbca9bd7c80b7",
+                "reference": "59e6650dea0d695437d312c3510fbca9bd7c80b7",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker-feature/agent-assist": "^201906.0",
+                "spryker-feature/company-account": "^201906.0",
+                "spryker-feature/customer-account-management": "^201906.0",
+                "spryker-feature/persistent-cart": "^201906.0",
+                "spryker-feature/prices": "^201906.0",
+                "spryker-feature/spryker-core": "^201906.0",
+                "spryker-shop/quote-request-agent-page": "^2.0.0",
+                "spryker-shop/quote-request-agent-widget": "^2.0.0",
+                "spryker-shop/quote-request-page": "^2.0.0",
+                "spryker-shop/quote-request-widget": "^2.0.0",
+                "spryker/quote-request": "^2.0.0",
+                "spryker/quote-request-agent": "^2.0.0",
+                "spryker/quote-request-data-import": "^0.2.0"
+            },
+            "type": "metapackage",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "201906.x-dev"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "Quotation Process [feature]",
+            "time": "2019-06-14T15:41:44+00:00"
+        },
+        {
             "name": "spryker-feature/reclamations",
             "version": "dev-master",
             "source": {
@@ -4862,19 +4066,19 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-feature/scheduled-prices.git",
-                "reference": "479dc44633cb4b98b07724d9da8baee3fe90c8e6"
+                "reference": "fe53586513169160954c995d582dfe8c590091a0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-feature/scheduled-prices/zipball/479dc44633cb4b98b07724d9da8baee3fe90c8e6",
-                "reference": "479dc44633cb4b98b07724d9da8baee3fe90c8e6",
+                "url": "https://api.github.com/repos/spryker-feature/scheduled-prices/zipball/fe53586513169160954c995d582dfe8c590091a0",
+                "reference": "fe53586513169160954c995d582dfe8c590091a0",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
-                "spryker/price-product-schedule": "^0.1.0",
+                "spryker/price-product-schedule": "^1.0.0",
                 "spryker/price-product-schedule-data-import": "^0.1.0",
-                "spryker/price-product-schedule-gui": "^0.1.0"
+                "spryker/price-product-schedule-gui": "^1.0.0"
             },
             "type": "metapackage",
             "extra": {
@@ -4887,7 +4091,7 @@
                 "proprietary"
             ],
             "description": "Scheduled Prices [feature]",
-            "time": "2019-06-05T12:27:19+00:00"
+            "time": "2019-06-14T12:40:04+00:00"
         },
         {
             "name": "spryker-feature/search",
@@ -5251,60 +4455,6 @@
             ],
             "description": "Tax [feature]",
             "time": "2019-05-22T10:36:37+00:00"
-        },
-        {
-            "name": "spryker-sdk/phpstan-spryker",
-            "version": "0.2.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker-sdk/phpstan-spryker.git",
-                "reference": "b654a59c6d0ccb69b11116054a57de28de447f10"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker-sdk/phpstan-spryker/zipball/b654a59c6d0ccb69b11116054a57de28de447f10",
-                "reference": "b654a59c6d0ccb69b11116054a57de28de447f10",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.1",
-                "phpstan/phpstan": "^0.11.1"
-            },
-            "require-dev": {
-                "jakub-onderka/php-parallel-lint": "^1.0",
-                "localheinz/composer-normalize": "~0.9.0",
-                "phing/phing": "^2.16.0",
-                "phpstan/phpstan-strict-rules": "^0.11",
-                "spryker/code-sniffer": "^0.14"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "PHPStan\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Spryker",
-                    "homepage": "https://spryker.com"
-                }
-            ],
-            "description": "Spryker PHPStan Extensions",
-            "homepage": "https://spryker.com",
-            "keywords": [
-                "PHPStan",
-                "analyzing"
-            ],
-            "time": "2019-04-10T12:43:01+00:00"
         },
         {
             "name": "spryker-shop/agent-page",
@@ -5763,16 +4913,16 @@
         },
         {
             "name": "spryker-shop/cart-page",
-            "version": "2.0.0",
+            "version": "2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/cart-page.git",
-                "reference": "4177187558e0578ff3804f260ed90434daef70f3"
+                "reference": "494486b6c5994846a9e223bfc6e7e1746cdfaa3b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/cart-page/zipball/4177187558e0578ff3804f260ed90434daef70f3",
-                "reference": "4177187558e0578ff3804f260ed90434daef70f3",
+                "url": "https://api.github.com/repos/spryker-shop/cart-page/zipball/494486b6c5994846a9e223bfc6e7e1746cdfaa3b",
+                "reference": "494486b6c5994846a9e223bfc6e7e1746cdfaa3b",
                 "shasum": ""
             },
             "require": {
@@ -5830,7 +4980,7 @@
                 "proprietary"
             ],
             "description": "CartPage module",
-            "time": "2019-05-23T21:56:07+00:00"
+            "time": "2019-06-18T07:15:14+00:00"
         },
         {
             "name": "spryker-shop/cart-to-shopping-list-widget",
@@ -7900,16 +7050,16 @@
         },
         {
             "name": "spryker-shop/product-detail-page",
-            "version": "2.0.0",
+            "version": "2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/product-detail-page.git",
-                "reference": "e6e9d93146135ce77010f1564d91435c11a07620"
+                "reference": "40d7f132972239a3106ccacd092db4126bb45df5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/product-detail-page/zipball/e6e9d93146135ce77010f1564d91435c11a07620",
-                "reference": "e6e9d93146135ce77010f1564d91435c11a07620",
+                "url": "https://api.github.com/repos/spryker-shop/product-detail-page/zipball/40d7f132972239a3106ccacd092db4126bb45df5",
+                "reference": "40d7f132972239a3106ccacd092db4126bb45df5",
                 "shasum": ""
             },
             "require": {
@@ -7952,7 +7102,7 @@
                 "proprietary"
             ],
             "description": "ProductDetailPage module",
-            "time": "2019-05-23T21:56:07+00:00"
+            "time": "2019-06-14T09:28:03+00:00"
         },
         {
             "name": "spryker-shop/product-discontinued-widget",
@@ -8141,16 +7291,16 @@
         },
         {
             "name": "spryker-shop/product-measurement-unit-widget",
-            "version": "0.7.0",
+            "version": "0.7.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/product-measurement-unit-widget.git",
-                "reference": "1399b7ca1ca46124fdbf9f5d16c92a057c873b7e"
+                "reference": "e3a0248bbbc9f8100d4413cfb67882ee960e5378"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/product-measurement-unit-widget/zipball/1399b7ca1ca46124fdbf9f5d16c92a057c873b7e",
-                "reference": "1399b7ca1ca46124fdbf9f5d16c92a057c873b7e",
+                "url": "https://api.github.com/repos/spryker-shop/product-measurement-unit-widget/zipball/e3a0248bbbc9f8100d4413cfb67882ee960e5378",
+                "reference": "e3a0248bbbc9f8100d4413cfb67882ee960e5378",
                 "shasum": ""
             },
             "require": {
@@ -8186,7 +7336,7 @@
                 "proprietary"
             ],
             "description": "ProductMeasurementUnitWidget module",
-            "time": "2019-05-23T21:56:07+00:00"
+            "time": "2019-06-13T09:40:40+00:00"
         },
         {
             "name": "spryker-shop/product-new-page",
@@ -8350,6 +7500,48 @@
             ],
             "description": "ProductPackagingUnitWidget module",
             "time": "2019-05-23T21:56:07+00:00"
+        },
+        {
+            "name": "spryker-shop/product-quantity-widget",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/product-quantity-widget.git",
+                "reference": "80f1108f0a7a90dc3db9e67735becea0630cac63"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/product-quantity-widget/zipball/80f1108f0a7a90dc3db9e67735becea0630cac63",
+                "reference": "80f1108f0a7a90dc3db9e67735becea0630cac63",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker-shop/shop-ui": "^1.13.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/product-quantity-storage": "^2.1.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ProductQuantityWidget module",
+            "time": "2019-06-18T07:42:46+00:00"
         },
         {
             "name": "spryker-shop/product-relation-widget",
@@ -8656,16 +7848,16 @@
         },
         {
             "name": "spryker-shop/product-set-widget",
-            "version": "1.2.1",
+            "version": "1.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/product-set-widget.git",
-                "reference": "118466c30ad743f5235e845dbd344fc18be68b54"
+                "reference": "95a2c0e8a28fb7f34807184ffcaade4d419f72af"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/product-set-widget/zipball/118466c30ad743f5235e845dbd344fc18be68b54",
-                "reference": "118466c30ad743f5235e845dbd344fc18be68b54",
+                "url": "https://api.github.com/repos/spryker-shop/product-set-widget/zipball/95a2c0e8a28fb7f34807184ffcaade4d419f72af",
+                "reference": "95a2c0e8a28fb7f34807184ffcaade4d419f72af",
                 "shasum": ""
             },
             "require": {
@@ -8701,7 +7893,7 @@
                 "proprietary"
             ],
             "description": "ProductSetWidget module",
-            "time": "2019-03-04T16:59:14+00:00"
+            "time": "2019-05-17T10:00:27+00:00"
         },
         {
             "name": "spryker-shop/product-widget",
@@ -8910,6 +8102,327 @@
             ],
             "description": "QuoteApprovalWidget module",
             "time": "2019-05-17T07:21:31+00:00"
+        },
+        {
+            "name": "spryker-shop/quote-request-agent-page",
+            "version": "2.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/quote-request-agent-page.git",
+                "reference": "1f715a9ac867b2cb97ed21860631944e83829ac9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/quote-request-agent-page/zipball/1f715a9ac867b2cb97ed21860631944e83829ac9",
+                "reference": "1f715a9ac867b2cb97ed21860631944e83829ac9",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker-shop/quote-request-agent-page-extension": "^1.0.0",
+                "spryker-shop/shop-application": "^1.2.0",
+                "spryker-shop/shop-ui": "^1.20.0",
+                "spryker/application": "^3.8.0",
+                "spryker/cart": "^5.9.0 || ^6.0.0",
+                "spryker/company-user": "^2.10.0",
+                "spryker/customer": "^7.0.0",
+                "spryker/kernel": "^3.24.0",
+                "spryker/price": "^5.0.0",
+                "spryker/quote": "^2.0.0",
+                "spryker/quote-request": "^2.0.0",
+                "spryker/quote-request-agent": "^2.0.0",
+                "spryker/store": "^1.8.0",
+                "spryker/symfony": "^3.1.0",
+                "spryker/util-date-time": "^1.0.0"
+            },
+            "require-dev": {
+                "spryker-shop/agent-page": "*",
+                "spryker-shop/quote-request-page": "*",
+                "spryker/code-sniffer": "*",
+                "spryker/silex": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker-shop/agent-page": "If you want to use agent layout templates: ^1.2.0",
+                "spryker-shop/company-user-agent-widget": "If you want to use company user auto-complete form: ^1.0.0",
+                "spryker-shop/quote-request-page": "If you want to use quote request page molecules: ^2.0.0",
+                "spryker/silex": "Use this module when using plugins that need Silex dependencies."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "QuoteRequestAgentPage module",
+            "time": "2019-05-31T08:07:21+00:00"
+        },
+        {
+            "name": "spryker-shop/quote-request-agent-page-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/quote-request-agent-page-extension.git",
+                "reference": "5d75565f470acb7ac6aa3485409bc2bf1bcda6ff"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/quote-request-agent-page-extension/zipball/5d75565f470acb7ac6aa3485409bc2bf1bcda6ff",
+                "reference": "5d75565f470acb7ac6aa3485409bc2bf1bcda6ff",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/symfony": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/symfony": "If you want to use QuoteRequestAgentPage form expander plugins."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "QuoteRequestAgentPageExtension module",
+            "time": "2019-05-08T08:02:51+00:00"
+        },
+        {
+            "name": "spryker-shop/quote-request-agent-widget",
+            "version": "2.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/quote-request-agent-widget.git",
+                "reference": "eccb36a79a94a7ffa80d4e2c6a17faa47ebf910e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/quote-request-agent-widget/zipball/eccb36a79a94a7ffa80d4e2c6a17faa47ebf910e",
+                "reference": "eccb36a79a94a7ffa80d4e2c6a17faa47ebf910e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker-shop/shop-application": "^1.2.0",
+                "spryker-shop/shop-ui": "^1.0.0",
+                "spryker/application": "^3.8.0",
+                "spryker/customer": "^7.0.0",
+                "spryker/kernel": "^3.24.0",
+                "spryker/persistent-cart": "^1.8.0 || ^2.0.0",
+                "spryker/quote": "^2.0.0",
+                "spryker/quote-request-agent": "^2.0.0",
+                "spryker/symfony": "^3.1.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/silex": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker-shop/quote-request-agent-page": "Use this module if you want see quote request agent pages.",
+                "spryker/silex": "Use this module when using plugins that need Silex dependencies."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "QuoteRequestAgentWidget module",
+            "time": "2019-05-31T08:07:21+00:00"
+        },
+        {
+            "name": "spryker-shop/quote-request-page",
+            "version": "2.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/quote-request-page.git",
+                "reference": "ea6936737aec90a2b1977ba058fd67e6900a5d10"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/quote-request-page/zipball/ea6936737aec90a2b1977ba058fd67e6900a5d10",
+                "reference": "ea6936737aec90a2b1977ba058fd67e6900a5d10",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker-shop/quote-request-page-extension": "^1.0.0",
+                "spryker-shop/shop-application": "^1.0.0",
+                "spryker-shop/shop-ui": "^1.0.0",
+                "spryker/application": "^3.8.0",
+                "spryker/cart": "^5.0.0 || ^6.0.0",
+                "spryker/company-user": "^2.10.0",
+                "spryker/customer": "^7.0.0",
+                "spryker/kernel": "^3.0.0",
+                "spryker/persistent-cart": "^1.8.0 || ^2.0.0",
+                "spryker/quote": "^2.0.0",
+                "spryker/quote-request": "^2.0.0",
+                "spryker/symfony": "^3.1.0",
+                "spryker/util-date-time": "^1.0.0"
+            },
+            "require-dev": {
+                "spryker-shop/cart-page": "*",
+                "spryker-shop/customer-page": "*",
+                "spryker-shop/product-option-widget": "*",
+                "spryker-shop/product-packaging-unit-widget": "*",
+                "spryker/code-sniffer": "*",
+                "spryker/silex": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker-shop/cart-page": "If you want to use cart page molecules: ^1.5.0",
+                "spryker-shop/customer-page": "If you want to use customer layout templates: ^1.0.0",
+                "spryker-shop/discount-widget": "If you want to use discount widget functionality: ^1.2.0",
+                "spryker-shop/product-option-widget": "If you want to use product option widget functionality",
+                "spryker-shop/product-packaging-unit-widget": "If you want to use product packaging unit widget functionality",
+                "spryker/silex": "Use this module when using plugins that need Silex dependencies."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "QuoteRequestPage module",
+            "time": "2019-05-31T08:07:21+00:00"
+        },
+        {
+            "name": "spryker-shop/quote-request-page-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/quote-request-page-extension.git",
+                "reference": "65e452cd63d151575e724797e40123d097744fac"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/quote-request-page-extension/zipball/65e452cd63d151575e724797e40123d097744fac",
+                "reference": "65e452cd63d151575e724797e40123d097744fac",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/symfony": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/symfony": "If you want to use QuoteRequestPage form expander plugins."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "QuoteRequestPageExtension module",
+            "time": "2019-05-08T08:02:51+00:00"
+        },
+        {
+            "name": "spryker-shop/quote-request-widget",
+            "version": "2.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/quote-request-widget.git",
+                "reference": "cc2285f798033214c48499466e37d0bcde5d54f5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/quote-request-widget/zipball/cc2285f798033214c48499466e37d0bcde5d54f5",
+                "reference": "cc2285f798033214c48499466e37d0bcde5d54f5",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker-shop/shop-application": "^1.2.0",
+                "spryker-shop/shop-ui": "^1.0.0",
+                "spryker/application": "^3.8.0",
+                "spryker/company-user": "^2.10.0",
+                "spryker/customer": "^7.0.0",
+                "spryker/kernel": "^3.0.0",
+                "spryker/persistent-cart": "^1.8.0 || ^2.0.0",
+                "spryker/quote": "^2.0.0",
+                "spryker/quote-request": "^2.0.0",
+                "spryker/symfony": "^3.1.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/silex": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker-shop/quote-request-page": "Use this module if you want see quote request pages.",
+                "spryker/silex": "Use this module when using plugins that need Silex dependencies."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "QuoteRequestWidget module",
+            "time": "2019-05-31T08:07:21+00:00"
         },
         {
             "name": "spryker-shop/redirect-page",
@@ -10870,16 +10383,16 @@
         },
         {
             "name": "spryker/cart",
-            "version": "6.0.0",
+            "version": "6.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/cart.git",
-                "reference": "caa222c4aa09b7b9aeddc39d6217ee4c2c121d3d"
+                "reference": "613df90f0e739a49958ae241b882b180d0ae9a7a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/cart/zipball/caa222c4aa09b7b9aeddc39d6217ee4c2c121d3d",
-                "reference": "caa222c4aa09b7b9aeddc39d6217ee4c2c121d3d",
+                "url": "https://api.github.com/repos/spryker/cart/zipball/613df90f0e739a49958ae241b882b180d0ae9a7a",
+                "reference": "613df90f0e739a49958ae241b882b180d0ae9a7a",
                 "shasum": ""
             },
             "require": {
@@ -10920,7 +10433,7 @@
                 "proprietary"
             ],
             "description": "Cart module",
-            "time": "2019-05-30T12:05:47+00:00"
+            "time": "2019-06-11T10:45:14+00:00"
         },
         {
             "name": "spryker/cart-code",
@@ -12392,21 +11905,22 @@
         },
         {
             "name": "spryker/cms-block-gui",
-            "version": "2.2.0",
+            "version": "2.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/cms-block-gui.git",
-                "reference": "6340cae1824b75737dca622d6d8919951b1e1bab"
+                "reference": "bfd1b746e11b8d99e58fdb7b8801179053f2e5bf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/cms-block-gui/zipball/6340cae1824b75737dca622d6d8919951b1e1bab",
-                "reference": "6340cae1824b75737dca622d6d8919951b1e1bab",
+                "url": "https://api.github.com/repos/spryker/cms-block-gui/zipball/bfd1b746e11b8d99e58fdb7b8801179053f2e5bf",
+                "reference": "bfd1b746e11b8d99e58fdb7b8801179053f2e5bf",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
                 "spryker/cms-block": "^2.0.0",
+                "spryker/cms-block-gui-extension": "^1.0.0",
                 "spryker/gui": "^3.21.0",
                 "spryker/kernel": "^3.13.0",
                 "spryker/locale": "^3.0.0",
@@ -12439,7 +11953,46 @@
                 "proprietary"
             ],
             "description": "CmsBlockGui module",
-            "time": "2019-05-07T15:17:18+00:00"
+            "time": "2019-06-12T11:58:53+00:00"
+        },
+        {
+            "name": "spryker/cms-block-gui-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/cms-block-gui-extension.git",
+                "reference": "ddfae6b92a7272f179e6911d824807a4d0a85c6f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/cms-block-gui-extension/zipball/ddfae6b92a7272f179e6911d824807a4d0a85c6f",
+                "reference": "ddfae6b92a7272f179e6911d824807a4d0a85c6f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CmsBlockGuiExtension module",
+            "time": "2019-05-27T10:14:13+00:00"
         },
         {
             "name": "spryker/cms-block-product-connector",
@@ -12942,22 +12495,23 @@
         },
         {
             "name": "spryker/cms-gui",
-            "version": "5.3.0",
+            "version": "5.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/cms-gui.git",
-                "reference": "e19efdd9345b7a377137514222bc403e06b9987b"
+                "reference": "088d3d4c2a522732fbd4c448d5a668e4d4d26185"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/cms-gui/zipball/e19efdd9345b7a377137514222bc403e06b9987b",
-                "reference": "e19efdd9345b7a377137514222bc403e06b9987b",
+                "url": "https://api.github.com/repos/spryker/cms-gui/zipball/088d3d4c2a522732fbd4c448d5a668e4d4d26185",
+                "reference": "088d3d4c2a522732fbd4c448d5a668e4d4d26185",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
                 "spryker/application": "^3.2.0",
                 "spryker/cms": "^7.0.0",
+                "spryker/cms-gui-extension": "^1.0.0",
                 "spryker/glossary": "^3.0.0",
                 "spryker/gui": "^3.21.0",
                 "spryker/kernel": "^3.28.0",
@@ -12991,7 +12545,46 @@
                 "proprietary"
             ],
             "description": "CmsGui module",
-            "time": "2019-05-07T15:17:18+00:00"
+            "time": "2019-05-28T13:18:22+00:00"
+        },
+        {
+            "name": "spryker/cms-gui-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/cms-gui-extension.git",
+                "reference": "d0b4dd119c7508efb274fb3eb5307411eae19384"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/cms-gui-extension/zipball/d0b4dd119c7508efb274fb3eb5307411eae19384",
+                "reference": "d0b4dd119c7508efb274fb3eb5307411eae19384",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CmsGuiExtension module",
+            "time": "2019-05-27T10:14:13+00:00"
         },
         {
             "name": "spryker/cms-navigation-connector",
@@ -14744,16 +14337,16 @@
         },
         {
             "name": "spryker/company-user-storage",
-            "version": "1.0.1",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/company-user-storage.git",
-                "reference": "7f9916191373be8634828588edff9f2eb49a4071"
+                "reference": "cc63df5042c57d869f54fbd26792d612e31a7f6d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/company-user-storage/zipball/7f9916191373be8634828588edff9f2eb49a4071",
-                "reference": "7f9916191373be8634828588edff9f2eb49a4071",
+                "url": "https://api.github.com/repos/spryker/company-user-storage/zipball/cc63df5042c57d869f54fbd26792d612e31a7f6d",
+                "reference": "cc63df5042c57d869f54fbd26792d612e31a7f6d",
                 "shasum": ""
             },
             "require": {
@@ -14762,6 +14355,7 @@
                 "spryker/company-user-storage-extension": "^1.0.0",
                 "spryker/event-behavior": "^1.3.1",
                 "spryker/kernel": "^3.29.0",
+                "spryker/shared-carts-rest-api-extension": "^1.0.0",
                 "spryker/storage": "^3.4.0",
                 "spryker/synchronization": "^1.1.0",
                 "spryker/synchronization-behavior": "^1.0.0",
@@ -14798,7 +14392,7 @@
                 "proprietary"
             ],
             "description": "CompanyUserStorage module",
-            "time": "2019-04-08T07:50:37+00:00"
+            "time": "2019-06-14T11:27:19+00:00"
         },
         {
             "name": "spryker/company-user-storage-extension",
@@ -15073,16 +14667,16 @@
         },
         {
             "name": "spryker/currency",
-            "version": "3.7.0",
+            "version": "3.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/currency.git",
-                "reference": "fa1b91fe7bcce47c6da098db21e77e59b4c14c1b"
+                "reference": "b434717d54a6d8200cc4b5a1f6d8dd3fae4bd3f9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/currency/zipball/fa1b91fe7bcce47c6da098db21e77e59b4c14c1b",
-                "reference": "fa1b91fe7bcce47c6da098db21e77e59b4c14c1b",
+                "url": "https://api.github.com/repos/spryker/currency/zipball/b434717d54a6d8200cc4b5a1f6d8dd3fae4bd3f9",
+                "reference": "b434717d54a6d8200cc4b5a1f6d8dd3fae4bd3f9",
                 "shasum": ""
             },
             "require": {
@@ -15129,7 +14723,7 @@
                 "proprietary"
             ],
             "description": "Currency module",
-            "time": "2019-05-23T13:14:45+00:00"
+            "time": "2019-06-12T13:57:04+00:00"
         },
         {
             "name": "spryker/currency-extension",
@@ -17001,16 +16595,16 @@
         },
         {
             "name": "spryker/glue-application",
-            "version": "1.18.0",
+            "version": "1.18.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/glue-application.git",
-                "reference": "338a9e0bf57ffde48e01f9c8a211b227e93a8143"
+                "reference": "e9c5deda447bfff942467b49725388fd9fe9bebf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/glue-application/zipball/338a9e0bf57ffde48e01f9c8a211b227e93a8143",
-                "reference": "338a9e0bf57ffde48e01f9c8a211b227e93a8143",
+                "url": "https://api.github.com/repos/spryker/glue-application/zipball/e9c5deda447bfff942467b49725388fd9fe9bebf",
+                "reference": "e9c5deda447bfff942467b49725388fd9fe9bebf",
                 "shasum": ""
             },
             "require": {
@@ -17053,7 +16647,7 @@
                 "proprietary"
             ],
             "description": "GlueApplication module",
-            "time": "2019-05-16T06:09:24+00:00"
+            "time": "2019-06-11T08:20:27+00:00"
         },
         {
             "name": "spryker/glue-application-extension",
@@ -17176,16 +16770,16 @@
         },
         {
             "name": "spryker/gui",
-            "version": "3.21.0",
+            "version": "3.22.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/gui.git",
-                "reference": "7f1bc21f061a5771900c6c64b62b216fd17d7364"
+                "reference": "dc86034a042e6ffb7ed1d4fb998e15f413d70ffd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/gui/zipball/7f1bc21f061a5771900c6c64b62b216fd17d7364",
-                "reference": "7f1bc21f061a5771900c6c64b62b216fd17d7364",
+                "url": "https://api.github.com/repos/spryker/gui/zipball/dc86034a042e6ffb7ed1d4fb998e15f413d70ffd",
+                "reference": "dc86034a042e6ffb7ed1d4fb998e15f413d70ffd",
                 "shasum": ""
             },
             "require": {
@@ -17226,7 +16820,7 @@
                 "proprietary"
             ],
             "description": "Gui module",
-            "time": "2019-05-07T14:37:08+00:00"
+            "time": "2019-06-17T12:35:54+00:00"
         },
         {
             "name": "spryker/guzzle",
@@ -18481,16 +18075,16 @@
         },
         {
             "name": "spryker/messenger",
-            "version": "3.2.0",
+            "version": "3.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/messenger.git",
-                "reference": "be4784f544be1798e700483d11aff983e82caabb"
+                "reference": "ab423c632866f9a805f88eaa4dea9a09d5219695"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/messenger/zipball/be4784f544be1798e700483d11aff983e82caabb",
-                "reference": "be4784f544be1798e700483d11aff983e82caabb",
+                "url": "https://api.github.com/repos/spryker/messenger/zipball/ab423c632866f9a805f88eaa4dea9a09d5219695",
+                "reference": "ab423c632866f9a805f88eaa4dea9a09d5219695",
                 "shasum": ""
             },
             "require": {
@@ -18522,7 +18116,7 @@
                 "proprietary"
             ],
             "description": "Messenger module",
-            "time": "2019-02-07T13:01:39+00:00"
+            "time": "2019-06-11T17:09:25+00:00"
         },
         {
             "name": "spryker/messenger-extension",
@@ -19594,16 +19188,16 @@
         },
         {
             "name": "spryker/persistent-cart",
-            "version": "2.0.0",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/persistent-cart.git",
-                "reference": "43674e63f0282679d36ca2ff3df17ad3472aac67"
+                "reference": "028b77a7774abd9258337e0d7bc76a0e2c59ec8f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/persistent-cart/zipball/43674e63f0282679d36ca2ff3df17ad3472aac67",
-                "reference": "43674e63f0282679d36ca2ff3df17ad3472aac67",
+                "url": "https://api.github.com/repos/spryker/persistent-cart/zipball/028b77a7774abd9258337e0d7bc76a0e2c59ec8f",
+                "reference": "028b77a7774abd9258337e0d7bc76a0e2c59ec8f",
                 "shasum": ""
             },
             "require": {
@@ -19642,7 +19236,7 @@
                 "proprietary"
             ],
             "description": "PersistentCart module",
-            "time": "2019-05-29T11:32:00+00:00"
+            "time": "2019-06-11T12:04:32+00:00"
         },
         {
             "name": "spryker/persistent-cart-extension",
@@ -20209,29 +19803,30 @@
         },
         {
             "name": "spryker/price-product-schedule",
-            "version": "0.1.3",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/price-product-schedule.git",
-                "reference": "6a2776968bbdde32bbbb4387ca72f1d652fa8375"
+                "reference": "7fe82bba0bea9f2f5fcd6eb9e0e791e2e77133d4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/price-product-schedule/zipball/6a2776968bbdde32bbbb4387ca72f1d652fa8375",
-                "reference": "6a2776968bbdde32bbbb4387ca72f1d652fa8375",
+                "url": "https://api.github.com/repos/spryker/price-product-schedule/zipball/7fe82bba0bea9f2f5fcd6eb9e0e791e2e77133d4",
+                "reference": "7fe82bba0bea9f2f5fcd6eb9e0e791e2e77133d4",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
-                "spryker/currency": "^3.6.0",
+                "spryker/currency": "^3.8.0",
                 "spryker/kernel": "^3.32.0",
-                "spryker/price-product": "^2.13.0 || ^3.0.0",
+                "spryker/price-product": "^3.0.0",
                 "spryker/product": "^6.9.0",
                 "spryker/propel": "^3.8.0",
                 "spryker/propel-orm": "^1.8.0",
-                "spryker/store": "^1.9.1",
+                "spryker/store": "^1.11.0",
                 "spryker/symfony": "^3.2.2",
-                "spryker/user": "^3.7.0"
+                "spryker/user": "^3.7.0",
+                "spryker/util-csv": "^1.0.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
@@ -20254,20 +19849,20 @@
                 "proprietary"
             ],
             "description": "PriceProductSchedule module",
-            "time": "2019-05-31T07:59:48+00:00"
+            "time": "2019-06-12T13:53:34+00:00"
         },
         {
             "name": "spryker/price-product-schedule-data-import",
-            "version": "0.1.1",
+            "version": "0.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/price-product-schedule-data-import.git",
-                "reference": "cfca53afe5ccb6dfdf8f5ea8aed8e2c1d15fe6d8"
+                "reference": "975a10f6221c5b0d1b8110dd0ea51b14dedda3f4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/price-product-schedule-data-import/zipball/cfca53afe5ccb6dfdf8f5ea8aed8e2c1d15fe6d8",
-                "reference": "cfca53afe5ccb6dfdf8f5ea8aed8e2c1d15fe6d8",
+                "url": "https://api.github.com/repos/spryker/price-product-schedule-data-import/zipball/975a10f6221c5b0d1b8110dd0ea51b14dedda3f4",
+                "reference": "975a10f6221c5b0d1b8110dd0ea51b14dedda3f4",
                 "shasum": ""
             },
             "require": {
@@ -20276,7 +19871,7 @@
                 "spryker/data-import": "^1.4.3",
                 "spryker/kernel": "^3.9.0",
                 "spryker/price-product": "^2.9.2 || ^3.0.0",
-                "spryker/price-product-schedule": "^0.1.0",
+                "spryker/price-product-schedule": "^0.1.0 || ^1.0.0",
                 "spryker/product": "^6.9.0",
                 "spryker/store": "^1.9.1"
             },
@@ -20301,31 +19896,33 @@
                 "MIT"
             ],
             "description": "PriceProductScheduleDataImport module",
-            "time": "2019-05-31T07:59:48+00:00"
+            "time": "2019-06-13T11:43:43+00:00"
         },
         {
             "name": "spryker/price-product-schedule-gui",
-            "version": "0.1.0",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/price-product-schedule-gui.git",
-                "reference": "e750882533e33eb62edb072b721dc502b1d38dc7"
+                "reference": "517990433aaea5731afb2626c78db0da8fa74251"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/price-product-schedule-gui/zipball/e750882533e33eb62edb072b721dc502b1d38dc7",
-                "reference": "e750882533e33eb62edb072b721dc502b1d38dc7",
+                "url": "https://api.github.com/repos/spryker/price-product-schedule-gui/zipball/517990433aaea5731afb2626c78db0da8fa74251",
+                "reference": "517990433aaea5731afb2626c78db0da8fa74251",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
                 "spryker/currency": "^3.6.0",
-                "spryker/gui": "^3.21.0",
+                "spryker/gui": "^3.21.1",
                 "spryker/kernel": "^3.33.0",
                 "spryker/money": "^2.7.0",
                 "spryker/price-product": "^3.0.0",
-                "spryker/price-product-schedule": "^0.1.0",
+                "spryker/price-product-schedule": "^1.0.0",
+                "spryker/product": "^6.10.0",
                 "spryker/product-management-extension": "^1.3.0",
+                "spryker/propel-orm": "^1.8.0",
                 "spryker/store": "^1.10.0",
                 "spryker/symfony": "^3.2.0",
                 "spryker/translator": "^1.1.0",
@@ -20351,7 +19948,7 @@
                 "proprietary"
             ],
             "description": "PriceProductScheduleGui module",
-            "time": "2019-06-04T12:01:32+00:00"
+            "time": "2019-06-13T11:43:43+00:00"
         },
         {
             "name": "spryker/price-product-storage",
@@ -23684,16 +23281,16 @@
         },
         {
             "name": "spryker/product-quantity",
-            "version": "2.0.0",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product-quantity.git",
-                "reference": "eeb7469c13cbcf1296b313cec049629433ca7d7b"
+                "reference": "705cebbf588ebb03a97d8769dad69a0b31222e17"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-quantity/zipball/eeb7469c13cbcf1296b313cec049629433ca7d7b",
-                "reference": "eeb7469c13cbcf1296b313cec049629433ca7d7b",
+                "url": "https://api.github.com/repos/spryker/product-quantity/zipball/705cebbf588ebb03a97d8769dad69a0b31222e17",
+                "reference": "705cebbf588ebb03a97d8769dad69a0b31222e17",
                 "shasum": ""
             },
             "require": {
@@ -23729,7 +23326,7 @@
                 "proprietary"
             ],
             "description": "ProductQuantity module",
-            "time": "2019-05-30T12:05:47+00:00"
+            "time": "2019-06-13T12:07:30+00:00"
         },
         {
             "name": "spryker/product-quantity-data-import",
@@ -23778,16 +23375,16 @@
         },
         {
             "name": "spryker/product-quantity-storage",
-            "version": "2.0.0",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product-quantity-storage.git",
-                "reference": "c2f4e5e460fdade16abe9f4566e85ab9814c9041"
+                "reference": "9e391061a55fc25a1ea7c35bb4c831883836276a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-quantity-storage/zipball/c2f4e5e460fdade16abe9f4566e85ab9814c9041",
-                "reference": "c2f4e5e460fdade16abe9f4566e85ab9814c9041",
+                "url": "https://api.github.com/repos/spryker/product-quantity-storage/zipball/9e391061a55fc25a1ea7c35bb4c831883836276a",
+                "reference": "9e391061a55fc25a1ea7c35bb4c831883836276a",
                 "shasum": ""
             },
             "require": {
@@ -23832,7 +23429,7 @@
                 "proprietary"
             ],
             "description": "ProductQuantityStorage module",
-            "time": "2019-05-30T12:05:47+00:00"
+            "time": "2019-06-14T12:01:30+00:00"
         },
         {
             "name": "spryker/product-relation",
@@ -25123,6 +24720,164 @@
             "time": "2019-05-20T12:24:06+00:00"
         },
         {
+            "name": "spryker/quote-request",
+            "version": "2.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/quote-request.git",
+                "reference": "60b2294cbeea91301b0373059254d86321e75b12"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/quote-request/zipball/60b2294cbeea91301b0373059254d86321e75b12",
+                "reference": "60b2294cbeea91301b0373059254d86321e75b12",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/calculation": "^4.0.0",
+                "spryker/cart": "^5.9.0 || ^6.0.0",
+                "spryker/cart-extension": "^2.4.0 || ^3.0.0",
+                "spryker/checkout-extension": "^1.2.0",
+                "spryker/company": "^1.0.0",
+                "spryker/company-user": "^1.0.0 || ^2.0.0",
+                "spryker/customer": "^7.0.0",
+                "spryker/kernel": "^3.17.0",
+                "spryker/persistent-cart": "^1.8.0 || ^2.0.0",
+                "spryker/propel-orm": "^1.0.0",
+                "spryker/quote": "^2.0.0",
+                "spryker/quote-approval-extension": "^1.0.0",
+                "spryker/quote-extension": "^1.3.0",
+                "spryker/quote-request-extension": "^1.0.0",
+                "spryker/symfony": "^3.0.0",
+                "spryker/util-encoding": "^2.0.0",
+                "spryker/uuid-behavior": "^1.0.0",
+                "spryker/zed-request": "^3.4.0"
+            },
+            "require-dev": {
+                "spryker/checkout": "*",
+                "spryker/code-sniffer": "*",
+                "spryker/company-business-unit": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/checkout": "If you want to use Checkout plugins.",
+                "spryker/multi-cart": "If you want to use multicart functionality, min version 1.5.0",
+                "spryker/quote-approval": "If you want to use quote approval functionality, min version 1.0.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/",
+                    "SprykerTest\\Shared\\QuoteRequest\\Helper\\": "tests/SprykerTest/Shared/QuoteRequest/_support/Helper/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "QuoteRequest module",
+            "time": "2019-06-03T08:22:13+00:00"
+        },
+        {
+            "name": "spryker/quote-request-agent",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/quote-request-agent.git",
+                "reference": "a4bc1d103590b2aba356da0d433b9f4cf6400399"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/quote-request-agent/zipball/a4bc1d103590b2aba356da0d433b9f4cf6400399",
+                "reference": "a4bc1d103590b2aba356da0d433b9f4cf6400399",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/kernel": "^3.17.0",
+                "spryker/quote": "^2.0.0",
+                "spryker/quote-request": "^2.0.0",
+                "spryker/zed-request": "^3.4.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "QuoteRequestAgent module",
+            "time": "2019-05-20T10:47:51+00:00"
+        },
+        {
+            "name": "spryker/quote-request-data-import",
+            "version": "0.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/quote-request-data-import.git",
+                "reference": "02366a1ae2f92def2505cc01089e1ea2d8f21462"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/quote-request-data-import/zipball/02366a1ae2f92def2505cc01089e1ea2d8f21462",
+                "reference": "02366a1ae2f92def2505cc01089e1ea2d8f21462",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/company-user": "^2.0.0",
+                "spryker/data-import": "^1.0.0",
+                "spryker/kernel": "^3.0.0",
+                "spryker/quote-request": "^2.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/company": "*",
+                "spryker/company-business-unit": "*",
+                "spryker/customer": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/",
+                    "SprykerTest\\Zed\\QuoteRequestDataImport\\Helper\\": "tests/SprykerTest/Zed/QuoteRequestDataImport/_support/Helper/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "QuoteRequestDataImport module",
+            "time": "2019-05-17T10:59:24+00:00"
+        },
+        {
             "name": "spryker/quote-request-extension",
             "version": "1.0.0",
             "source": {
@@ -26392,16 +26147,16 @@
         },
         {
             "name": "spryker/shared-cart",
-            "version": "1.10.0",
+            "version": "1.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/shared-cart.git",
-                "reference": "80376a1114fbcd4c73a3ac48568f8b08568c4112"
+                "reference": "8def9a23c123a492a6005d91e064a40913c150d2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/shared-cart/zipball/80376a1114fbcd4c73a3ac48568f8b08568c4112",
-                "reference": "80376a1114fbcd4c73a3ac48568f8b08568c4112",
+                "url": "https://api.github.com/repos/spryker/shared-cart/zipball/8def9a23c123a492a6005d91e064a40913c150d2",
+                "reference": "8def9a23c123a492a6005d91e064a40913c150d2",
                 "shasum": ""
             },
             "require": {
@@ -26452,7 +26207,7 @@
                 "proprietary"
             ],
             "description": "SharedCart module",
-            "time": "2019-06-06T10:17:34+00:00"
+            "time": "2019-06-12T14:23:13+00:00"
         },
         {
             "name": "spryker/shared-cart-data-import",
@@ -26503,6 +26258,45 @@
             ],
             "description": "SharedCartDataImport module",
             "time": "2019-04-25T08:16:46+00:00"
+        },
+        {
+            "name": "spryker/shared-carts-rest-api-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/shared-carts-rest-api-extension.git",
+                "reference": "6d3aa6a97e4af59acc8f3df9161657272c66a122"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/shared-carts-rest-api-extension/zipball/6d3aa6a97e4af59acc8f3df9161657272c66a122",
+                "reference": "6d3aa6a97e4af59acc8f3df9161657272c66a122",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "SharedCartsRestApiExtension module",
+            "time": "2019-06-12T15:27:44+00:00"
         },
         {
             "name": "spryker/shipment",
@@ -28049,16 +27843,16 @@
         },
         {
             "name": "spryker/transfer",
-            "version": "3.10.0",
+            "version": "3.10.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/transfer.git",
-                "reference": "070fb5286f9c4a158c025816e3aa0144ddd24f8d"
+                "reference": "522088622a0a847f648bc93b284b833d0afaaa0b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/transfer/zipball/070fb5286f9c4a158c025816e3aa0144ddd24f8d",
-                "reference": "070fb5286f9c4a158c025816e3aa0144ddd24f8d",
+                "url": "https://api.github.com/repos/spryker/transfer/zipball/522088622a0a847f648bc93b284b833d0afaaa0b",
+                "reference": "522088622a0a847f648bc93b284b833d0afaaa0b",
                 "shasum": ""
             },
             "require": {
@@ -28092,7 +27886,7 @@
                 "proprietary"
             ],
             "description": "Transfer module",
-            "time": "2019-04-26T08:55:11+00:00"
+            "time": "2019-06-12T11:31:25+00:00"
         },
         {
             "name": "spryker/translator",
@@ -29008,20 +28802,25 @@
         },
         {
             "name": "spryker/util-text",
-            "version": "1.2.1",
+            "version": "1.2.3",
             "source": {
                 "type": "git",
-                "url": "https://github.com/spryker/UtilText.git",
-                "reference": "c7fbae692a06470b6d392831fc4352e8b03704de"
+                "url": "https://github.com/spryker/util-text.git",
+                "reference": "b7b7d3c87fec6270aa69a88dae9b2d1bf5d1213e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/UtilText/zipball/c7fbae692a06470b6d392831fc4352e8b03704de",
-                "reference": "c7fbae692a06470b6d392831fc4352e8b03704de",
+                "url": "https://api.github.com/repos/spryker/util-text/zipball/b7b7d3c87fec6270aa69a88dae9b2d1bf5d1213e",
+                "reference": "b7b7d3c87fec6270aa69a88dae9b2d1bf5d1213e",
                 "shasum": ""
             },
             "require": {
+                "php": ">=7.1",
                 "spryker/kernel": "^3.0.0"
+            },
+            "require-dev": {
+                "spryker/propel": "*",
+                "spryker/testify": "*"
             },
             "type": "library",
             "extra": {
@@ -29039,7 +28838,7 @@
                 "proprietary"
             ],
             "description": "UtilText module",
-            "time": "2017-10-24T13:32:31+00:00"
+            "time": "2019-06-04T10:09:31+00:00"
         },
         {
             "name": "spryker/util-uuid-generator",
@@ -32032,6 +31831,50 @@
             "time": "2018-05-17T09:31:08+00:00"
         },
         {
+            "name": "composer/xdebug-handler",
+            "version": "1.3.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/composer/xdebug-handler.git",
+                "reference": "46867cbf8ca9fb8d60c506895449eb799db1184f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/composer/xdebug-handler/zipball/46867cbf8ca9fb8d60c506895449eb799db1184f",
+                "reference": "46867cbf8ca9fb8d60c506895449eb799db1184f",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.3.2 || ^7.0",
+                "psr/log": "^1.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.8.35 || ^5.7 || ^6.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Composer\\XdebugHandler\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "John Stevenson",
+                    "email": "john-stevenson@blueyonder.co.uk"
+                }
+            ],
+            "description": "Restarts a process without xdebug.",
+            "keywords": [
+                "Xdebug",
+                "performance"
+            ],
+            "time": "2019-05-27T17:52:04+00:00"
+        },
+        {
             "name": "doctrine/instantiator",
             "version": "1.0.5",
             "source": {
@@ -32185,6 +32028,57 @@
             "time": "2017-08-16T08:57:05+00:00"
         },
         {
+            "name": "jean85/pretty-package-versions",
+            "version": "1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Jean85/pretty-package-versions.git",
+                "reference": "75c7effcf3f77501d0e0caa75111aff4daa0dd48"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Jean85/pretty-package-versions/zipball/75c7effcf3f77501d0e0caa75111aff4daa0dd48",
+                "reference": "75c7effcf3f77501d0e0caa75111aff4daa0dd48",
+                "shasum": ""
+            },
+            "require": {
+                "ocramius/package-versions": "^1.2.0",
+                "php": "^7.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^6.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Jean85\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alessandro Lai",
+                    "email": "alessandro.lai85@gmail.com"
+                }
+            ],
+            "description": "A wrapper for ocramius/package-versions to get pretty versions strings",
+            "keywords": [
+                "composer",
+                "package",
+                "release",
+                "versions"
+            ],
+            "time": "2018-06-13T13:22:40+00:00"
+        },
+        {
             "name": "jetbrains/phpstorm-stubs",
             "version": "v2019.1",
             "source": {
@@ -32316,6 +32210,630 @@
                 "object graph"
             ],
             "time": "2019-04-07T13:18:21+00:00"
+        },
+        {
+            "name": "nette/bootstrap",
+            "version": "v3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nette/bootstrap.git",
+                "reference": "e1075af05c211915e03e0c86542f3ba5433df4a3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nette/bootstrap/zipball/e1075af05c211915e03e0c86542f3ba5433df4a3",
+                "reference": "e1075af05c211915e03e0c86542f3ba5433df4a3",
+                "shasum": ""
+            },
+            "require": {
+                "nette/di": "^3.0",
+                "nette/utils": "^3.0",
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "latte/latte": "^2.2",
+                "nette/application": "^3.0",
+                "nette/caching": "^3.0",
+                "nette/database": "^3.0",
+                "nette/forms": "^3.0",
+                "nette/http": "^3.0",
+                "nette/mail": "^3.0",
+                "nette/robot-loader": "^3.0",
+                "nette/safe-stream": "^2.2",
+                "nette/security": "^3.0",
+                "nette/tester": "^2.0",
+                "tracy/tracy": "^2.6"
+            },
+            "suggest": {
+                "nette/robot-loader": "to use Configurator::createRobotLoader()",
+                "tracy/tracy": "to use Configurator::enableTracy()"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.0-dev"
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause",
+                "GPL-2.0",
+                "GPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "David Grudl",
+                    "homepage": "https://davidgrudl.com"
+                },
+                {
+                    "name": "Nette Community",
+                    "homepage": "https://nette.org/contributors"
+                }
+            ],
+            "description": "🅱 Nette Bootstrap: the simple way to configure and bootstrap your Nette application.",
+            "homepage": "https://nette.org",
+            "keywords": [
+                "bootstrapping",
+                "configurator",
+                "nette"
+            ],
+            "time": "2019-03-26T12:59:07+00:00"
+        },
+        {
+            "name": "nette/di",
+            "version": "v3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nette/di.git",
+                "reference": "19d83539245aaacb59470828919182411061841f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nette/di/zipball/19d83539245aaacb59470828919182411061841f",
+                "reference": "19d83539245aaacb59470828919182411061841f",
+                "shasum": ""
+            },
+            "require": {
+                "ext-tokenizer": "*",
+                "nette/neon": "^3.0",
+                "nette/php-generator": "^3.2.2",
+                "nette/robot-loader": "^3.2",
+                "nette/schema": "^1.0",
+                "nette/utils": "^3.0",
+                "php": ">=7.1"
+            },
+            "conflict": {
+                "nette/bootstrap": "<3.0"
+            },
+            "require-dev": {
+                "nette/tester": "^2.2",
+                "tracy/tracy": "^2.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.0-dev"
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ],
+                "files": [
+                    "src/compatibility.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause",
+                "GPL-2.0",
+                "GPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "David Grudl",
+                    "homepage": "https://davidgrudl.com"
+                },
+                {
+                    "name": "Nette Community",
+                    "homepage": "https://nette.org/contributors"
+                }
+            ],
+            "description": "💎 Nette Dependency Injection Container: Flexible, compiled and full-featured DIC with perfectly usable autowiring and support for all new PHP 7.1 features.",
+            "homepage": "https://nette.org",
+            "keywords": [
+                "compiled",
+                "di",
+                "dic",
+                "factory",
+                "ioc",
+                "nette",
+                "static"
+            ],
+            "time": "2019-04-03T19:35:46+00:00"
+        },
+        {
+            "name": "nette/finder",
+            "version": "v2.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nette/finder.git",
+                "reference": "6be1b83ea68ac558aff189d640abe242e0306fe2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nette/finder/zipball/6be1b83ea68ac558aff189d640abe242e0306fe2",
+                "reference": "6be1b83ea68ac558aff189d640abe242e0306fe2",
+                "shasum": ""
+            },
+            "require": {
+                "nette/utils": "^2.4 || ~3.0.0",
+                "php": ">=7.1"
+            },
+            "conflict": {
+                "nette/nette": "<2.2"
+            },
+            "require-dev": {
+                "nette/tester": "^2.0",
+                "tracy/tracy": "^2.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.5-dev"
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause",
+                "GPL-2.0",
+                "GPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "David Grudl",
+                    "homepage": "https://davidgrudl.com"
+                },
+                {
+                    "name": "Nette Community",
+                    "homepage": "https://nette.org/contributors"
+                }
+            ],
+            "description": "? Nette Finder: find files and directories with an intuitive API.",
+            "homepage": "https://nette.org",
+            "keywords": [
+                "filesystem",
+                "glob",
+                "iterator",
+                "nette"
+            ],
+            "time": "2019-02-28T18:13:25+00:00"
+        },
+        {
+            "name": "nette/neon",
+            "version": "v3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nette/neon.git",
+                "reference": "cbff32059cbdd8720deccf9e9eace6ee516f02eb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nette/neon/zipball/cbff32059cbdd8720deccf9e9eace6ee516f02eb",
+                "reference": "cbff32059cbdd8720deccf9e9eace6ee516f02eb",
+                "shasum": ""
+            },
+            "require": {
+                "ext-iconv": "*",
+                "ext-json": "*",
+                "php": ">=7.0"
+            },
+            "require-dev": {
+                "nette/tester": "^2.0",
+                "tracy/tracy": "^2.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.0-dev"
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause",
+                "GPL-2.0",
+                "GPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "David Grudl",
+                    "homepage": "https://davidgrudl.com"
+                },
+                {
+                    "name": "Nette Community",
+                    "homepage": "https://nette.org/contributors"
+                }
+            ],
+            "description": "🍸 Nette NEON: encodes and decodes NEON file format.",
+            "homepage": "http://ne-on.org",
+            "keywords": [
+                "export",
+                "import",
+                "neon",
+                "nette",
+                "yaml"
+            ],
+            "time": "2019-02-05T21:30:40+00:00"
+        },
+        {
+            "name": "nette/php-generator",
+            "version": "v3.2.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nette/php-generator.git",
+                "reference": "acff8b136fad84b860a626d133e791f95781f9f5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nette/php-generator/zipball/acff8b136fad84b860a626d133e791f95781f9f5",
+                "reference": "acff8b136fad84b860a626d133e791f95781f9f5",
+                "shasum": ""
+            },
+            "require": {
+                "nette/utils": "^2.4.2 || ~3.0.0",
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "nette/tester": "^2.0",
+                "tracy/tracy": "^2.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.2-dev"
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause",
+                "GPL-2.0",
+                "GPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "David Grudl",
+                    "homepage": "https://davidgrudl.com"
+                },
+                {
+                    "name": "Nette Community",
+                    "homepage": "https://nette.org/contributors"
+                }
+            ],
+            "description": "🐘 Nette PHP Generator: generates neat PHP code for you. Supports new PHP 7.3 features.",
+            "homepage": "https://nette.org",
+            "keywords": [
+                "code",
+                "nette",
+                "php",
+                "scaffolding"
+            ],
+            "time": "2019-03-15T03:41:13+00:00"
+        },
+        {
+            "name": "nette/robot-loader",
+            "version": "v3.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nette/robot-loader.git",
+                "reference": "0712a0e39ae7956d6a94c0ab6ad41aa842544b5c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nette/robot-loader/zipball/0712a0e39ae7956d6a94c0ab6ad41aa842544b5c",
+                "reference": "0712a0e39ae7956d6a94c0ab6ad41aa842544b5c",
+                "shasum": ""
+            },
+            "require": {
+                "ext-tokenizer": "*",
+                "nette/finder": "^2.5",
+                "nette/utils": "^3.0",
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "nette/tester": "^2.0",
+                "tracy/tracy": "^2.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.2-dev"
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause",
+                "GPL-2.0",
+                "GPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "David Grudl",
+                    "homepage": "https://davidgrudl.com"
+                },
+                {
+                    "name": "Nette Community",
+                    "homepage": "https://nette.org/contributors"
+                }
+            ],
+            "description": "? Nette RobotLoader: high performance and comfortable autoloader that will search and autoload classes within your application.",
+            "homepage": "https://nette.org",
+            "keywords": [
+                "autoload",
+                "class",
+                "interface",
+                "nette",
+                "trait"
+            ],
+            "time": "2019-03-08T21:57:24+00:00"
+        },
+        {
+            "name": "nette/schema",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nette/schema.git",
+                "reference": "6241d8d4da39e825dd6cb5bfbe4242912f4d7e4d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nette/schema/zipball/6241d8d4da39e825dd6cb5bfbe4242912f4d7e4d",
+                "reference": "6241d8d4da39e825dd6cb5bfbe4242912f4d7e4d",
+                "shasum": ""
+            },
+            "require": {
+                "nette/utils": "^3.0.1",
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "nette/tester": "^2.2",
+                "tracy/tracy": "^2.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause",
+                "GPL-2.0",
+                "GPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "David Grudl",
+                    "homepage": "https://davidgrudl.com"
+                },
+                {
+                    "name": "Nette Community",
+                    "homepage": "https://nette.org/contributors"
+                }
+            ],
+            "description": "📐 Nette Schema: validating data structures against a given Schema.",
+            "homepage": "https://nette.org",
+            "keywords": [
+                "config",
+                "nette"
+            ],
+            "time": "2019-04-03T15:53:25+00:00"
+        },
+        {
+            "name": "nette/utils",
+            "version": "v3.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nette/utils.git",
+                "reference": "bd961f49b211997202bda1d0fbc410905be370d4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nette/utils/zipball/bd961f49b211997202bda1d0fbc410905be370d4",
+                "reference": "bd961f49b211997202bda1d0fbc410905be370d4",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "nette/tester": "~2.0",
+                "tracy/tracy": "^2.3"
+            },
+            "suggest": {
+                "ext-gd": "to use Image",
+                "ext-iconv": "to use Strings::webalize() and toAscii()",
+                "ext-intl": "to use Strings::webalize(), toAscii(), normalize() and compare()",
+                "ext-json": "to use Nette\\Utils\\Json",
+                "ext-mbstring": "to use Strings::lower() etc...",
+                "ext-xml": "to use Strings::length() etc. when mbstring is not available"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.0-dev"
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause",
+                "GPL-2.0",
+                "GPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "David Grudl",
+                    "homepage": "https://davidgrudl.com"
+                },
+                {
+                    "name": "Nette Community",
+                    "homepage": "https://nette.org/contributors"
+                }
+            ],
+            "description": "🛠 Nette Utils: lightweight utilities for string & array manipulation, image handling, safe JSON encoding/decoding, validation, slug or strong password generating etc.",
+            "homepage": "https://nette.org",
+            "keywords": [
+                "array",
+                "core",
+                "datetime",
+                "images",
+                "json",
+                "nette",
+                "paginator",
+                "password",
+                "slugify",
+                "string",
+                "unicode",
+                "utf-8",
+                "utility",
+                "validation"
+            ],
+            "time": "2019-03-22T01:00:30+00:00"
+        },
+        {
+            "name": "nikic/php-parser",
+            "version": "v4.2.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nikic/PHP-Parser.git",
+                "reference": "1bd73cc04c3843ad8d6b0bfc0956026a151fc420"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/1bd73cc04c3843ad8d6b0bfc0956026a151fc420",
+                "reference": "1bd73cc04c3843ad8d6b0bfc0956026a151fc420",
+                "shasum": ""
+            },
+            "require": {
+                "ext-tokenizer": "*",
+                "php": ">=7.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^6.5 || ^7.0"
+            },
+            "bin": [
+                "bin/php-parse"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "4.2-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "PhpParser\\": "lib/PhpParser"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Nikita Popov"
+                }
+            ],
+            "description": "A PHP parser written in PHP",
+            "keywords": [
+                "parser",
+                "php"
+            ],
+            "time": "2019-05-25T20:07:01+00:00"
+        },
+        {
+            "name": "ocramius/package-versions",
+            "version": "1.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Ocramius/PackageVersions.git",
+                "reference": "a4d4b60d0e60da2487bd21a2c6ac089f85570dbb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Ocramius/PackageVersions/zipball/a4d4b60d0e60da2487bd21a2c6ac089f85570dbb",
+                "reference": "a4d4b60d0e60da2487bd21a2c6ac089f85570dbb",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^1.0.0",
+                "php": "^7.1.0"
+            },
+            "require-dev": {
+                "composer/composer": "^1.6.3",
+                "doctrine/coding-standard": "^5.0.1",
+                "ext-zip": "*",
+                "infection/infection": "^0.7.1",
+                "phpunit/phpunit": "^7.0.0"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "class": "PackageVersions\\Installer",
+                "branch-alias": {
+                    "dev-master": "2.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "PackageVersions\\": "src/PackageVersions"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Marco Pivetta",
+                    "email": "ocramius@gmail.com"
+                }
+            ],
+            "description": "Composer plugin that provides efficient querying for installed package versions (no runtime IO)",
+            "time": "2019-02-21T12:16:21+00:00"
         },
         {
             "name": "pdepend/pdepend",
@@ -32679,16 +33197,16 @@
         },
         {
             "name": "phpspec/prophecy",
-            "version": "1.8.0",
+            "version": "1.8.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpspec/prophecy.git",
-                "reference": "4ba436b55987b4bf311cb7c6ba82aa528aac0a06"
+                "reference": "1927e75f4ed19131ec9bcc3b002e07fb1173ee76"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/4ba436b55987b4bf311cb7c6ba82aa528aac0a06",
-                "reference": "4ba436b55987b4bf311cb7c6ba82aa528aac0a06",
+                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/1927e75f4ed19131ec9bcc3b002e07fb1173ee76",
+                "reference": "1927e75f4ed19131ec9bcc3b002e07fb1173ee76",
                 "shasum": ""
             },
             "require": {
@@ -32709,8 +33227,8 @@
                 }
             },
             "autoload": {
-                "psr-0": {
-                    "Prophecy\\": "src/"
+                "psr-4": {
+                    "Prophecy\\": "src/Prophecy"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -32738,7 +33256,128 @@
                 "spy",
                 "stub"
             ],
-            "time": "2018-08-05T17:53:17+00:00"
+            "time": "2019-06-13T12:50:23+00:00"
+        },
+        {
+            "name": "phpstan/phpdoc-parser",
+            "version": "0.3.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phpstan/phpdoc-parser.git",
+                "reference": "8c4ef2aefd9788238897b678a985e1d5c8df6db4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/8c4ef2aefd9788238897b678a985e1d5c8df6db4",
+                "reference": "8c4ef2aefd9788238897b678a985e1d5c8df6db4",
+                "shasum": ""
+            },
+            "require": {
+                "php": "~7.1"
+            },
+            "require-dev": {
+                "consistence/coding-standard": "^3.5",
+                "jakub-onderka/php-parallel-lint": "^0.9.2",
+                "phing/phing": "^2.16.0",
+                "phpstan/phpstan": "^0.10",
+                "phpunit/phpunit": "^6.3",
+                "slevomat/coding-standard": "^4.7.2",
+                "squizlabs/php_codesniffer": "^3.3.2",
+                "symfony/process": "^3.4 || ^4.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "PHPStan\\PhpDocParser\\": [
+                        "src/"
+                    ]
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "PHPDoc parser with support for nullable, intersection and generic types",
+            "time": "2019-06-07T19:13:52+00:00"
+        },
+        {
+            "name": "phpstan/phpstan",
+            "version": "0.11.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phpstan/phpstan.git",
+                "reference": "fcf0081bf3a254ddacffa03e78be87842d0c09c9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/fcf0081bf3a254ddacffa03e78be87842d0c09c9",
+                "reference": "fcf0081bf3a254ddacffa03e78be87842d0c09c9",
+                "shasum": ""
+            },
+            "require": {
+                "composer/xdebug-handler": "^1.3.0",
+                "jean85/pretty-package-versions": "^1.0.3",
+                "nette/bootstrap": "^2.4 || ^3.0",
+                "nette/di": "^2.4.7 || ^3.0",
+                "nette/robot-loader": "^3.0.1",
+                "nette/schema": "^1.0",
+                "nette/utils": "^2.4.5 || ^3.0",
+                "nikic/php-parser": "^4.0.2",
+                "php": "~7.1",
+                "phpstan/phpdoc-parser": "^0.3.4",
+                "symfony/console": "~3.2 || ~4.0",
+                "symfony/finder": "~3.2 || ~4.0"
+            },
+            "conflict": {
+                "symfony/console": "3.4.16 || 4.1.5"
+            },
+            "require-dev": {
+                "brianium/paratest": "^2.0",
+                "consistence/coding-standard": "^3.5",
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.4.4",
+                "ext-intl": "*",
+                "ext-mysqli": "*",
+                "ext-soap": "*",
+                "ext-zip": "*",
+                "jakub-onderka/php-parallel-lint": "^1.0",
+                "localheinz/composer-normalize": "^1.1.0",
+                "phing/phing": "^2.16.0",
+                "phpstan/phpstan-deprecation-rules": "^0.11",
+                "phpstan/phpstan-php-parser": "^0.11",
+                "phpstan/phpstan-phpunit": "^0.11",
+                "phpstan/phpstan-strict-rules": "^0.11",
+                "phpunit/phpunit": "^7.0",
+                "slevomat/coding-standard": "^4.7.2",
+                "squizlabs/php_codesniffer": "^3.3.2"
+            },
+            "bin": [
+                "bin/phpstan"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.11-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "PHPStan\\": [
+                        "src/",
+                        "build/PHPStan"
+                    ]
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "PHPStan - PHP Static Analysis Tool",
+            "time": "2019-05-28T19:58:33+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -34102,6 +34741,60 @@
             "time": "2019-05-13T14:23:08+00:00"
         },
         {
+            "name": "spryker-sdk/phpstan-spryker",
+            "version": "0.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-sdk/phpstan-spryker.git",
+                "reference": "b654a59c6d0ccb69b11116054a57de28de447f10"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-sdk/phpstan-spryker/zipball/b654a59c6d0ccb69b11116054a57de28de447f10",
+                "reference": "b654a59c6d0ccb69b11116054a57de28de447f10",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "phpstan/phpstan": "^0.11.1"
+            },
+            "require-dev": {
+                "jakub-onderka/php-parallel-lint": "^1.0",
+                "localheinz/composer-normalize": "~0.9.0",
+                "phing/phing": "^2.16.0",
+                "phpstan/phpstan-strict-rules": "^0.11",
+                "spryker/code-sniffer": "^0.14"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "PHPStan\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Spryker",
+                    "homepage": "https://spryker.com"
+                }
+            ],
+            "description": "Spryker PHPStan Extensions",
+            "homepage": "https://spryker.com",
+            "keywords": [
+                "PHPStan",
+                "analyzing"
+            ],
+            "time": "2019-04-10T12:43:01+00:00"
+        },
+        {
             "name": "spryker-shop/web-profiler-widget",
             "version": "1.1.0",
             "source": {
@@ -35032,16 +35725,16 @@
         },
         {
             "name": "theseer/tokenizer",
-            "version": "1.1.2",
+            "version": "1.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/theseer/tokenizer.git",
-                "reference": "1c42705be2b6c1de5904f8afacef5895cab44bf8"
+                "reference": "11336f6f84e16a720dae9d8e6ed5019efa85a0f9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/theseer/tokenizer/zipball/1c42705be2b6c1de5904f8afacef5895cab44bf8",
-                "reference": "1c42705be2b6c1de5904f8afacef5895cab44bf8",
+                "url": "https://api.github.com/repos/theseer/tokenizer/zipball/11336f6f84e16a720dae9d8e6ed5019efa85a0f9",
+                "reference": "11336f6f84e16a720dae9d8e6ed5019efa85a0f9",
                 "shasum": ""
             },
             "require": {
@@ -35068,7 +35761,7 @@
                 }
             ],
             "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",
-            "time": "2019-04-04T09:56:43+00:00"
+            "time": "2019-06-13T22:48:21+00:00"
         },
         {
             "name": "webmozart/assert",
@@ -35511,6 +36204,12 @@
             "alias": "201906.0",
             "alias_normalized": "201906.0",
             "version": "9999999-dev",
+            "package": "spryker-feature/quotation-process"
+        },
+        {
+            "alias": "201906.0",
+            "alias_normalized": "201906.0",
+            "version": "9999999-dev",
             "package": "spryker-feature/development-tools"
         }
     ],
@@ -35581,6 +36280,7 @@
         "spryker-feature/spryker-core-e-commerce": 20,
         "spryker-feature/state-machine": 20,
         "spryker-feature/tax": 20,
+        "spryker-feature/quotation-process": 20,
         "spryker-feature/development-tools": 20
     },
     "prefer-stable": true,

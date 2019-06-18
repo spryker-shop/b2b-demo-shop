@@ -1,0 +1,23 @@
+@mixin quote-request-agent-widget-quote-request-cart-from($name: '.quote-request-cart-from') {
+    #{$name} {
+        margin: rem(16) 0;
+
+        @include helper-breakpoint-media-min($lg) {
+            padding-left: rem(16);
+            margin: 0;
+        }
+
+        &__action {
+            display: block;
+            max-width: 100%;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+            padding: rem(10) rem(8);
+        }
+
+        @content;
+    }
+}
+
+@include quote-request-agent-widget-quote-request-cart-from();
