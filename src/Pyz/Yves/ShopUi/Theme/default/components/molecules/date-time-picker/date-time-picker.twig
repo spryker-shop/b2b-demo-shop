@@ -1,0 +1,20 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'date-time-picker',
+    tag: 'date-time-picker',
+} %}
+
+{% define data = {
+    field: required,
+} %}
+
+{% define attributes = {
+    'language': required,
+    'parent-id': '.' ~ config.name,
+    'config': '{}',
+} %}
+
+{% block body %}
+    {{ form_row(data.field) }}
+{% endblock %}

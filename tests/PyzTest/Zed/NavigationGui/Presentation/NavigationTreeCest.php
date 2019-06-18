@@ -7,6 +7,7 @@
 
 namespace PyzTest\Zed\NavigationGui\Presentation;
 
+use Codeception\Scenario;
 use Generated\Shared\Transfer\NavigationNodeLocalizedAttributesTransfer;
 use Generated\Shared\Transfer\NavigationNodeTransfer;
 use Generated\Shared\Transfer\NavigationTransfer;
@@ -14,6 +15,7 @@ use Generated\Shared\Transfer\NavigationTreeNodeTransfer;
 use Generated\Shared\Transfer\NavigationTreeTransfer;
 use PyzTest\Zed\NavigationGui\NavigationGuiPresentationTester;
 use PyzTest\Zed\NavigationGui\PageObject\NavigationNodeCreatePage;
+use PyzTest\Zed\NavigationGui\PageObject\NavigationNodeDeletePage;
 use PyzTest\Zed\NavigationGui\PageObject\NavigationNodeUpdatePage;
 use PyzTest\Zed\NavigationGui\PageObject\NavigationPage;
 
@@ -33,7 +35,7 @@ class NavigationTreeCest
      *
      * @return void
      */
-    public function testSeeEmptyNavigationTree(NavigationGuiPresentationTester $i)
+    public function testSeeEmptyNavigationTree(NavigationGuiPresentationTester $i): void
     {
         $i->wantTo('See navigation tree.');
         $i->expect('Empty navigation tree displayed.');
@@ -55,7 +57,7 @@ class NavigationTreeCest
      *
      * @return void
      */
-    public function testCreateChildNodeWithoutType(NavigationGuiPresentationTester $i)
+    public function testCreateChildNodeWithoutType(NavigationGuiPresentationTester $i): void
     {
         $i->wantTo('Create child node without type.');
         $i->expect('Navigation should have a root node persisted.');
@@ -84,7 +86,7 @@ class NavigationTreeCest
      *
      * @return void
      */
-    public function testCreateChildNodeWithExternalUrlType(NavigationGuiPresentationTester $i)
+    public function testCreateChildNodeWithExternalUrlType(NavigationGuiPresentationTester $i): void
     {
         $i->wantTo('Create external URL child node.');
         $i->expect('Navigation should have a root node persisted.');
@@ -118,7 +120,7 @@ class NavigationTreeCest
      *
      * @return void
      */
-    public function testUpdateNodeToCategoryType(NavigationGuiPresentationTester $i)
+    public function testUpdateNodeToCategoryType(NavigationGuiPresentationTester $i): void
     {
         $i->wantTo('Update child node to category type.');
         $i->expect('Node changes should persist in Zed.');
@@ -145,7 +147,7 @@ class NavigationTreeCest
         $i->clickNode($idNavigationNode);
         $i->switchToNodeForm();
         $i->see('Edit node');
-        $i->submitUpdateNodeToCategoryType('/en/computer', '/de/computer');
+        $i->submitUpdateNodeToCategoryType(NavigationPage::URL_EN_CREATE_NAVIGATION_CATEGORY, NavigationPage::URL_DE_CREATE_NAVIGATION_CATEGORY);
 
         $i->seeSuccessMessage(NavigationNodeUpdatePage::MESSAGE_SUCCESS);
         $i->switchToNavigationTree();
@@ -157,7 +159,7 @@ class NavigationTreeCest
      *
      * @return void
      */
-    public function testCreateChildNodeWithCmsPageType(NavigationGuiPresentationTester $i)
+    public function testCreateChildNodeWithCmsPageType(NavigationGuiPresentationTester $i): void
     {
         $i->wantTo('Create CMS page child node.');
         $i->expect('Navigation should have a new child node persisted.');
@@ -200,7 +202,7 @@ class NavigationTreeCest
      *
      * @return void
      */
-    public function testChangeNavigationTreeStructure(NavigationGuiPresentationTester $i)
+    public function testChangeNavigationTreeStructure(NavigationGuiPresentationTester $i): void
     {
         $i->wantTo('Change tree structure and save.');
         $i->expect('Updated navigation tree structure should have persisted.');
@@ -249,51 +251,49 @@ class NavigationTreeCest
         $i->moveNavigationNode($idNavigationNode, $idTargetNavigationNode);
         $i->seeNavigationNodeHierarchy($idTargetNavigationNode, $idNavigationNode);
         $i->saveNavigationTreeOrder();
-        $i->seeSuccessfulOrderSaveMessage(NavigationPage::MESSAGE_TREE_UPDATE_SUCCESS);
+        $i->seeSuccessfulOrderSaveMessage(NavigationPage::MESSAGE_SUCCESS_NAVIGATION_TREE_UPDATED);
     }
 
     /**
      * @param \PyzTest\Zed\NavigationGui\NavigationGuiPresentationTester $i
+     * @param \Codeception\Scenario $scenario
      *
      * @return void
      */
-    public function testDeleteNavigationNode(NavigationGuiPresentationTester $i)
+    public function testDeleteNavigationNode(NavigationGuiPresentationTester $i, Scenario $scenario): void
     {
-        /**
-         * Test skipped because popup confirmation is not working as expected under phantomjs.
-         * TODO: once we have Selenium, enable this test case.
-         */
-        return;
-//        $i->wantTo('Remove child node.');
-//        $i->expect('Node should be removed from Zed.');
-//
-//        $i->amLoggedInUser();
-//        $navigationTreeTransfer = $i->prepareTestNavigationTreeEntities((new NavigationTreeTransfer())
-//            ->setNavigation((new NavigationTransfer())
-//                ->setName('Delete navigation node')
-//                ->setKey('Delete navigation node')
-//                ->setIsActive(true))
-//            ->addNode((new NavigationTreeNodeTransfer())
-//                ->setNavigationNode((new NavigationNodeTransfer())
-//                    ->addNavigationNodeLocalizedAttribute((new NavigationNodeLocalizedAttributesTransfer())
-//                        ->setFkLocale($i->getIdLocale('en_US'))
-//                        ->setTitle('foo'))
-//                    ->addNavigationNodeLocalizedAttribute((new NavigationNodeLocalizedAttributesTransfer())
-//                        ->setFkLocale($i->getIdLocale('de_DE'))
-//                        ->setTitle('foo')))));
-//        $i->amOnPage(NavigationPage::URL);
-//
-//        $idNavigationNode = $navigationTreeTransfer->getNodes()[0]->getNavigationNode()->getIdNavigationNode();
-//
-//        $i->waitForNavigationTree();
-//        $i->clickNode($idNavigationNode);
-//        $i->switchToNodeForm();
-//        $i->clickRemoveNodeButton();
-//        $i->canSeeInPopup('Are you sure you remove the selected node and all its children?');
-//        $i->acceptPopup();
-//
-//        $i->seeSuccessMessage(NavigationNodeDeletePage::MESSAGE_SUCCESS);
-//        $i->switchToNavigationTree();
-//        $i->seeNumberOfNavigationNodes(1);
+        $scenario->skip('Once we have Chromium + ChromeDriver or Firefox, enable this test case.');
+
+        $i->wantTo('Remove child node.');
+        $i->expect('Node should be removed from Zed.');
+
+        $i->amLoggedInUser();
+        $navigationTreeTransfer = $i->prepareTestNavigationTreeEntities((new NavigationTreeTransfer())
+            ->setNavigation((new NavigationTransfer())
+                ->setName('Delete navigation node')
+                ->setKey('Delete navigation node')
+                ->setIsActive(true))
+            ->addNode((new NavigationTreeNodeTransfer())
+                ->setNavigationNode((new NavigationNodeTransfer())
+                    ->addNavigationNodeLocalizedAttribute((new NavigationNodeLocalizedAttributesTransfer())
+                        ->setFkLocale($i->getIdLocale('en_US'))
+                        ->setTitle('foo'))
+                    ->addNavigationNodeLocalizedAttribute((new NavigationNodeLocalizedAttributesTransfer())
+                        ->setFkLocale($i->getIdLocale('de_DE'))
+                        ->setTitle('foo')))));
+        $i->amOnPage(NavigationPage::URL);
+
+        $idNavigationNode = $navigationTreeTransfer->getNodes()[0]->getNavigationNode()->getIdNavigationNode();
+
+        $i->waitForNavigationTree();
+        $i->clickNode($idNavigationNode);
+        $i->switchToNodeForm();
+        $i->clickRemoveNodeButton();
+        $i->canSeeInPopup('Are you sure you remove the selected node and all its children?');
+        $i->acceptPopup();
+
+        $i->seeSuccessMessage(NavigationNodeDeletePage::MESSAGE_SUCCESS);
+        $i->switchToNavigationTree();
+        $i->seeNumberOfNavigationNodes(1);
     }
 }

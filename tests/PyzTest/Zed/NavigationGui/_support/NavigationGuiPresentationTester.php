@@ -370,7 +370,7 @@ class NavigationGuiPresentationTester extends Actor
         $i->moveNavigationNode($idNavigationNode, $idTargetNavigationNode);
         $i->seeNavigationNodeHierarchy($idTargetNavigationNode, $idNavigationNode);
         $i->saveNavigationTreeOrder();
-        $i->seeSuccessfulOrderSaveMessage(NavigationPage::MESSAGE_TREE_UPDATE_SUCCESS);
+        $i->seeSuccessfulOrderSaveMessage(NavigationPage::MESSAGE_SUCCESS_NAVIGATION_TREE_UPDATED);
     }
 
     /**
