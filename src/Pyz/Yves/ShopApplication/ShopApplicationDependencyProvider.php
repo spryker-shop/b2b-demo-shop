@@ -77,6 +77,12 @@ use SprykerShop\Yves\ProductWidget\Widget\ProductAlternativeWidget;
 use SprykerShop\Yves\QuoteApprovalWidget\Widget\QuoteApprovalStatusWidget;
 use SprykerShop\Yves\QuoteApprovalWidget\Widget\QuoteApprovalWidget;
 use SprykerShop\Yves\QuoteApprovalWidget\Widget\QuoteApproveRequestWidget;
+use SprykerShop\Yves\QuoteRequestAgentWidget\Widget\QuoteRequestAgentCancelWidget;
+use SprykerShop\Yves\QuoteRequestAgentWidget\Widget\QuoteRequestAgentOverviewWidget;
+use SprykerShop\Yves\QuoteRequestWidget\Widget\QuoteRequestCancelWidget;
+use SprykerShop\Yves\QuoteRequestWidget\Widget\QuoteRequestCartWidget;
+use SprykerShop\Yves\QuoteRequestWidget\Widget\QuoteRequestCreateWidget;
+use SprykerShop\Yves\QuoteRequestWidget\Widget\QuoteRequestMenuItemWidget;
 use SprykerShop\Yves\SalesOrderThresholdWidget\Widget\SalesOrderThresholdWidget;
 use SprykerShop\Yves\SharedCartWidget\Widget\CartDeleteCompanyUsersListWidget;
 use SprykerShop\Yves\SharedCartWidget\Widget\CartListPermissionGroupWidget;
@@ -135,6 +141,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             ProductReplacementForListWidget::class,
             PriceModeSwitcherWidget::class,
             ProductAbstractLabelWidget::class,
+            QuoteRequestMenuItemWidget::class,
             ProductAlternativeListWidget::class,
             ProductAlternativeWidget::class,
             ProductBarcodeWidget::class,
@@ -184,6 +191,11 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             ProductConcreteSearchWidget::class,
             AvailabilityNotificationSubscriptionWidget::class,
             ProductConcreteAddWidget::class,
+            QuoteRequestCreateWidget::class,
+            QuoteRequestCartWidget::class,
+            QuoteRequestCancelWidget::class,
+            QuoteRequestAgentOverviewWidget::class,
+            QuoteRequestAgentCancelWidget::class,
         ];
     }
 

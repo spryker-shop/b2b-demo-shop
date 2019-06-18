@@ -1,0 +1,48 @@
+{% extends template('page-layout-quote-request', 'QuoteRequestAgentPage') %}
+
+{% define data = {
+    quoteRequests: _view.quoteRequests,
+
+    pagination: {
+        parameters: {},
+        currentPage: _view.pagination.page,
+        paginationPath: 'agent/quote-request',
+        maxPage: _view.pagination.lastPage,
+        showAlwaysFirstAndLast: true,
+    },
+
+    title: 'agent.account.quote_request' | trans,
+} %}
+
+{% block title %}{% endblock %}
+
+{% block customerContent %}
+    {% if data.title %}
+        <h3 class="spacing-bottom spacing-bottom--bigger grid grid--justify">
+            <span class="col">{{ data.title }}</span>
+            <a class="col button button--hollow button--mobile-tight" href="{{ url('agent/quote-request/create') }}">
+                {% include atom('icon') with {
+                    modifiers: ['plus-small'],
+                    class: 'spacing-right spacing-right--small',
+                    data: {
+                        name: 'plus',
+                    },
+                } only %}
+                {{ 'quote_request_agent_widget.create_new_request' | trans }}
+            </a>
+        </h3>
+    {% endif %}
+
+    {% if data.quoteRequests %}
+        {% include molecule('quote-request-table', 'QuoteRequestAgentPage') with {
+            data: {
+                quoteRequests: data.quoteRequests,
+            },
+        } only %}
+        {% include molecule('pagination') with {
+            data: data.pagination,
+        } only %}
+    {% else %}
+        {{ 'quote_request_page.quote_request.view.empty' | trans }}
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,158 @@
+{% extends template('page-layout-quote-request', 'QuoteRequestAgentPage') %}
+
+{% define data = {
+    title: 'quote_request_page.quote_request' | trans,
+    quoteRequestForm: _view.quoteRequestForm,
+    quoteRequest: _view.quoteRequestForm.vars.value,
+} %}
+
+{% set quote = data.quoteRequest.latestVersion.quote %}
+
+{% block breadcrumbs %}
+    {% include molecule('breadcrumb') with {
+        data: {
+            steps: [
+                {
+                    label: 'agent.account.page_title' | trans,
+                    url: path('agent/overview'),
+                },
+                {
+                    label: 'quote_request_page.quote_request' | trans,
+                    url: path('agent/quote-request'),
+                },
+                {
+                    label: '#' ~ data.quoteRequest.quoteRequestReference,
+                    url: path('agent/quote-request/details', {quoteRequestReference: data.quoteRequest.quoteRequestReference}),
+                },
+                {
+                    label: 'quote_request_page.quote_request.actions.edit' | trans,
+                },
+            ],
+        },
+    } only %}
+{% endblock %}
+
+{% block contentClass %}page-layout-main--request-for-quote{% endblock %}
+
+{% block content %}
+
+    {{ form_start(data.quoteRequestForm) }}
+
+        <div class="grid grid--gap">
+            {% embed organism('quote-request-main-content', 'QuoteRequestPage') ignore missing with {
+                class: 'col col--sm-12 col--xl-9',
+                data: {
+                    version: data.quoteRequestForm.latestVersion,
+                    quote: quote,
+                },
+            } only %}
+                {% block formContent %}
+                    {% for child in data.version.metadata %}
+                        {% include molecule('quote-request-form-field', 'QuoteRequestPage') ignore missing with {
+                            class: 'col col--sm-12 col--xl-6 spacing-bottom spacing-bottom--big',
+                            data: {
+                                field: child,
+                            },
+                        } only %}
+                    {% endfor %}
+                {% endblock %}
+                {% block cartItems %}
+                    {% for itemChild in data.version.quote.items %}
+                        {% set cartItem = itemChild.vars.value %}
+                        {% embed molecule('quote-request-cart-item', 'QuoteRequestPage') ignore missing with {
+                            data: {
+                                priceMode: data.quote.priceMode,
+                                cartItem: cartItem,
+                                currency: data.quote.currency,
+                                itemChild: itemChild,
+                            },
+                        } only %}
+                            {% set priceModeGross = 'GROSS_MODE' %}
+                            {% block sourcePriceForm %}
+                                {% set originUnitPrice = (data.priceMode == priceModeGross) ? data.cartItem.originUnitGrossPrice : data.cartItem.originUnitNetPrice %}
+                                {% set unitSourcePrice = null %}
+                                {% if data.itemChild.sourceUnitGrossPrice is defined %}
+                                    {% set unitSourcePrice = data.itemChild.sourceUnitGrossPrice.vars.value %}
+                                {% endif %}
+                                {% if data.itemChild.sourceUnitNetPrice is defined %}
+                                    {% set unitSourcePrice = data.itemChild.sourceUnitNetPrice.vars.value %}
+                                {% endif %}
+                                {% include molecule('source-price-form', 'QuoteRequestAgentPage') with {
+                                    class: 'spacing-bottom spacing-bottom--big',
+                                    data: {
+                                        priceField: data.itemChild,
+                                        checkboxName: 'use_default_price',
+                                        checkboxValue: 1,
+                                        isChecked: unitSourcePrice == null,
+                                        checkboxLabel: 'quote_request_page.quote_request.use_default_price' | trans,
+                                        currentItemPrice: data.cartItem.unitPrice | money(true, data.currency.code),
+                                        originItemPrice: originUnitPrice | money(true, data.currency.code),
+                                    },
+                                    attributes: {
+                                        price: unitSourcePrice,
+                                    },
+                                } only %}
+                            {% endblock %}
+                        {% endembed %}
+                    {% endfor %}
+                {% endblock %}
+            {% endembed %}
+
+            {% embed organism('quote-request-sidebar', 'QuoteRequestPage') ignore missing with {
+                class: 'col col--sm-12 col--xl-3',
+                data: {
+                    quoteRequestForm: data.quoteRequestForm,
+                    quoteRequest: data.quoteRequest,
+                    quote: quote,
+                },
+            } only %}
+                {% block additionalContent %}
+                    <div>
+                        <p>{{ 'quote_request_page.quote_request.labels.valid_till' | trans }}:</p>
+                        {% widget 'LanguageSwitcherWidget' args [app.request.pathInfo, app.request.queryString, app.request.requestUri] with {
+                            data: {
+                                field: data.quoteRequestForm.validUntil,
+                            },
+                        } only %}
+                            {% block body %}
+                                {% include molecule('date-time-picker') with {
+                                    data: {
+                                        field: data.field,
+                                    },
+                                    attributes: {
+                                        'language': data.currentLanguage,
+                                        'config': '{"format": "Y-m-d H:i"}',
+                                    },
+                                } only %}
+                            {% endblock %}
+                        {% endwidget %}
+                    </div>
+                    <p>{{ 'quote_request_page.quote_request.labels.history' | trans }}:
+                        <span class="text-secondary">{{ data.quoteRequest.latestVersion ? data.quoteRequest.latestVersion.versionReference : null }}</span>
+                    </p>
+                    <p>{{ form_row(data.quoteRequestForm.isLatestVersionVisible) }}</p>
+                {% endblock %}
+                {% block quoteActions %}
+                    <a class="spacing-bottom button button--expand button--hollow"
+                       href="{{ url('agent/quote-request/details', {quoteRequestReference: data.quoteRequest.quoteRequestReference}) }}" data-init-single-click>
+                        {{ 'quote_request_page.quote_request.actions.back_to_view' | trans }}
+                    </a>
+                    <a class="spacing-bottom button button--expand button--edit-items"
+                       href="{{ url('agent/quote-request/edit-items', {quoteRequestReference: data.quoteRequest.quoteRequestReference}) }}">
+                        {{ 'quote_request_page.quote_request.actions.edit_items' | trans }}
+                    </a>
+                    <button type="submit" name="save" class="spacing-bottom button button--expand button--success">
+                        {{ 'quote_request_page.quote_request.actions.save' | trans }}
+                    </button>
+                    {% if data.quoteRequest.latestVersion.quote.items | length %}
+                        <button type="submit" name="sendToCustomer" class="spacing-bottom button button--expand button--success">
+                            {{ 'quote_request_page.quote_request.actions.send_to_customer' | trans }}
+                        </button>
+                    {% endif %}
+                {% endblock %}
+            {% endembed %}
+        </div>
+
+    {{ form_end(data.quoteRequestForm) }}
+
+{% endblock %}

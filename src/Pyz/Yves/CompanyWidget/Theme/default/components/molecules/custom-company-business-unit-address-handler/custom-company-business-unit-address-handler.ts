@@ -35,10 +35,19 @@ export default class CustomCompanyBusinessUnitAddressHandler extends CompanyBusi
 
     fillFormFields(address: object): void {
         for (const key in address) {
-            const formElement = this.form.querySelector(`[data-key="${key}"]`);
+            if (address.hasOwnProperty(key)) {
+                const formElement = this.form.querySelector(`[data-key="${key}"]`);
 
-            if (formElement !== null) {
+                if (formElement === null) {
+                    continue;
+                }
+
                 (<HTMLFormElement>formElement).value = address[key];
+
+                if (formElement.nodeName === 'SELECT') {
+                    const event = new Event('change');
+                    formElement.dispatchEvent(event);
+                }
             }
         }
         this.dispatchEvent(this.formFieldsFilled);
