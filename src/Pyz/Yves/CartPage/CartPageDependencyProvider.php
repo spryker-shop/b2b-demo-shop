@@ -13,35 +13,6 @@ use SprykerShop\Yves\ProductBundleWidget\Plugin\CartPage\ProductBundleCartItemTr
 
 class CartPageDependencyProvider extends SprykerCartPageDependencyProvider
 {
-    public const CLIENT_PRODUCT_QUANTITY_STORAGE = 'CLIENT_PRODUCT_QUANTITY_STORAGE';
-
-    /**
-     * @param \Spryker\Yves\Kernel\Container $container
-     *
-     * @return \Spryker\Yves\Kernel\Container
-     */
-    public function provideDependencies(Container $container): Container
-    {
-        $container = parent::provideDependencies($container);
-        $container = $this->addQuantityStorageClient($container);
-
-        return $container;
-    }
-
-    /**
-     * @param \Spryker\Yves\Kernel\Container $container
-     *
-     * @return \Spryker\Yves\Kernel\Container
-     */
-    protected function addQuantityStorageClient(Container $container): Container
-    {
-        $container[static::CLIENT_PRODUCT_QUANTITY_STORAGE] = function (Container $container) {
-            return $container->getLocator()->productQuantityStorage()->client();
-        };
-
-        return $container;
-    }
-
     /**
      * @return \SprykerShop\Yves\CartPage\Dependency\Plugin\CartItemTransformerPluginInterface[]
      */
