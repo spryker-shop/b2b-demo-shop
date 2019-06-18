@@ -1,0 +1,28 @@
+{% extends template('widget') %}
+
+{% define data = {
+    form: _widget.form,
+    isVisible: _widget.isVisible,
+} %}
+
+{% block body %}
+    {% if data.isVisible %}
+
+        {{ form_start(data.form) }}
+
+            <div class="quote-request spacing-top spacing-top--big">
+                <a class="spacing-bottom button button--expand button--hollow" href="{{ path('quote-request/cart/clear') }}" title="{{ 'quote_request_page.quote_request.actions.cancel' | trans }}" data-init-single-click>
+                    {{ 'quote_request_page.quote_request.actions.cancel' | trans }}
+                </a>
+                <button type="submit" name="save" class="spacing-bottom button button--expand button--success">
+                    {{ 'quote_request_page.quote_request.actions.save' | trans }}
+                </button>
+                <button type="submit" name="saveAndBack" class="spacing-bottom button button--expand button--success">
+                    {{ 'quote_request_page.quote_request.actions.save_and_back_to_edit' | trans }}
+                </button>
+            </div>
+
+        {{ form_end(data.form) }}
+
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,37 @@
+@mixin quote-request-agent-widget-request-status($name: '.request-status') {
+    @include shop-ui-badge($name) {
+        &--in-progress {
+            background-color: helper-color-light(map-get($setting-color-actions, 'alert'));
+            color: helper-color-dark(map-get($setting-color-actions, 'alert'));
+        }
+
+        &--ready {
+            background-color: helper-color-light(map-get($setting-color-actions, 'success'), $degree: 40);
+            color: helper-color-dark(map-get($setting-color-actions, 'success'));
+        }
+
+        &--waiting {
+            background-color: helper-color-light(map-get($setting-color-actions, 'warning'));
+            color: helper-color-dark(map-get($setting-color-actions, 'warning'), $degree: 15);
+        }
+
+        &--closed {
+            background-color: $setting-color-gray-1;
+            color: helper-color-dark($setting-color-darkest);
+        }
+
+        &--canceled {
+            background-color: helper-color-light($setting-color-darker, $degree: 50);
+            color: $setting-color-gray-2;
+        }
+
+        &--draft {
+            background-color: helper-color-light($setting-color-blue-1, $degree: 55);
+            color: helper-color-dark($setting-color-blue-1);
+        }
+
+        @content;
+    }
+}
+
+@include quote-request-agent-widget-request-status();
