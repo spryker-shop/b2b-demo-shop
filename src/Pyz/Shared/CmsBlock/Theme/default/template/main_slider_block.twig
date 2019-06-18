@@ -1,12 +1,12 @@
 {% block content %}
     <!-- CMS_BLOCK_PLACEHOLDER : "title" -->
-    <!-- CMS_BLOCK_PLACEHOLDER : "description" -->
+    <!-- CMS_BLOCK_PLACEHOLDER : "content" -->
     <div class="jumbotron__title">
         {{ spyCmsBlockPlaceholder('title') | raw }}
     </div>
 
     <div class="jumbotron__text">
-        {{ spyCmsBlockPlaceholder('description') | raw }}
+        {{ spyCmsBlockPlaceholder('content') | raw }}
     </div>
 
 {% endblock %}
