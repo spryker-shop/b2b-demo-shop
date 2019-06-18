@@ -17,9 +17,9 @@ class CustomersRestApiDependencyProvider extends SprykerCustomersRestApiDependen
     /**
      * @return \Spryker\Glue\CustomersRestApiExtension\Dependency\Plugin\CustomerPostRegisterPluginInterface[]
      */
-    protected function getCustomerPostRegisterPlugins(): array
+    protected function getCustomerPostCreatePlugins(): array
     {
-        return array_merge(parent::getCustomerPostRegisterPlugins(), [
+        return array_merge(parent::getCustomerPostCreatePlugins(), [
             new UpdateCartCreateCustomerReferencePlugin(),
         ]);
     }
