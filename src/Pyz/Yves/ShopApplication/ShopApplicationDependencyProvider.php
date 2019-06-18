@@ -59,6 +59,7 @@ use SprykerShop\Yves\ProductMeasurementUnitWidget\Widget\CartProductMeasurementU
 use SprykerShop\Yves\ProductMeasurementUnitWidget\Widget\ManageProductMeasurementUnitWidget;
 use SprykerShop\Yves\ProductOptionWidget\Widget\ProductOptionConfiguratorWidget;
 use SprykerShop\Yves\ProductPackagingUnitWidget\Widget\ProductPackagingUnitWidget;
+use SprykerShop\Yves\ProductQuantityWidget\Widget\ProductQuantityWidget;
 use SprykerShop\Yves\ProductRelationWidget\Widget\SimilarProductsWidget;
 use SprykerShop\Yves\ProductRelationWidget\Widget\UpSellingProductsWidget;
 use SprykerShop\Yves\ProductReplacementForWidget\Widget\ProductReplacementForListWidget;
@@ -198,6 +199,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             QuoteRequestCancelWidget::class,
             QuoteRequestAgentOverviewWidget::class,
             QuoteRequestAgentCancelWidget::class,
+            ProductQuantityWidget::class,
         ];
     }
 

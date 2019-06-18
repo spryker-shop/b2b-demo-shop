@@ -98,12 +98,35 @@
                                 {% if cartProductMeasurementUnitQuantitySelectorWidget and data.canEdit %}
                                     {% widget cartProductMeasurementUnitQuantitySelectorWidget only %}{% endwidget %}
                                 {% else %}
-                                    {% include molecule('product-item-quantity') with {
-                                        data: {
-                                            productItem: data.listItem,
-                                            isDisabled: not data.canEdit,
-                                        },
-                                    } only %}
+                                    {% widget 'ProductQuantityWidget' args [data.listItem.quantity, data.listItem.id, data.listItem.sku, data.listItem.groupKey] only %}
+                                        {% block body %}
+                                            <form method="POST" action="{{ path('cart/change/quantity', {'sku': data.sku }) }}">
+                                                {% include molecule('quantity-counter') with {
+                                                    modifiers: ['cart'],
+                                                    data: {
+                                                        isDisabled: false,
+                                                        autoUpdate: true,
+                                                        maxQuantity: data.productQuantityStorage.quantityMax,
+                                                        minQuantity: data.productQuantityStorage.quantityMin,
+                                                        step: data.productQuantityStorage.quantityInterval,
+                                                    },
+                                                    attributes: {
+                                                        max: data.productQuantityStorage.quantityMax,
+                                                        value: data.quantity,
+                                                    }
+                                                } only %}
+
+                                                <input type="hidden" value="{{ data.groupKey }}" name="groupKey" />
+                                            </form>
+                                        {% endblock %}
+                                    {% nowidget %}
+                                        {% include molecule('product-item-quantity') with {
+                                            data: {
+                                                productItem: data.listItem,
+                                                isDisabled: not data.canEdit,
+                                            },
+                                        } only %}
+                                    {% endwidget %}
                                 {% endif %}
                             </div>
                         </div>
@@ -169,15 +192,38 @@
                                             {% if cartProductMeasurementUnitQuantitySelectorWidget and data.canEdit %}
                                                 {% widget cartProductMeasurementUnitQuantitySelectorWidget only %}{% endwidget %}
                                             {% else %}
-                                                {% include molecule('product-item-quantity') with {
-                                                    data: {
-                                                        productItem: data.listItem,
-                                                        isDisabled: not data.canEdit,
-                                                        minQuantity: data.listItem.quantityMin ?? 1,
-                                                        maxQuantity: data.listItem.quantityMax,
-                                                        quantityInterval: data.listItem.quantityInterval ?? 1,
-                                                    },
-                                                } only %}
+                                                {% widget 'ProductQuantityWidget' args [data.listItem.quantity, data.listItem.id, data.listItem.sku, data.listItem.groupKey] only %}
+                                                    {% block body %}
+                                                        <form method="POST" action="{{ path('cart/change/quantity', {'sku': data.sku }) }}">
+                                                            {% include molecule('quantity-counter') with {
+                                                                modifiers: ['cart'],
+                                                                data: {
+                                                                    isDisabled: false,
+                                                                    autoUpdate: true,
+                                                                    maxQuantity: data.productQuantityStorage.quantityMax,
+                                                                    minQuantity: data.productQuantityStorage.quantityMin,
+                                                                    step: data.productQuantityStorage.quantityInterval,
+                                                                },
+                                                                attributes: {
+                                                                    max: data.productQuantityStorage.quantityMax,
+                                                                    value: data.quantity,
+                                                                }
+                                                            } only %}
+
+                                                            <input type="hidden" value="{{ data.groupKey }}" name="groupKey" />
+                                                        </form>
+                                                    {% endblock %}
+                                                {% nowidget %}
+                                                    {% include molecule('product-item-quantity') with {
+                                                        data: {
+                                                            productItem: data.listItem,
+                                                            isDisabled: not data.canEdit,
+                                                            minQuantity: data.listItem.quantityMin ?? 1,
+                                                            maxQuantity: data.listItem.quantityMax,
+                                                            quantityInterval: data.listItem.quantityInterval ?? 1,
+                                                        },
+                                                    } only %}
+                                                {% endwidget %}
                                             {% endif %}
                                         </div>
                                     {% endif %}

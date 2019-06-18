@@ -7,9 +7,6 @@
 
 namespace Pyz\Yves\CartPage\Plugin\Provider;
 
-use Generated\Shared\Transfer\ItemTransfer;
-use Generated\Shared\Transfer\ProductViewTransfer;
-use Spryker\Client\ProductQuantityStorage\ProductQuantityStorageClientInterface;
 use SprykerShop\Yves\CartPage\Dependency\Client\CartPageToProductStorageClientInterface;
 
 class CartItemsProductProvider implements CartItemsProductProviderInterface
@@ -20,20 +17,10 @@ class CartItemsProductProvider implements CartItemsProductProviderInterface
     protected $productStorageClient;
 
     /**
-     * @var \Spryker\Client\ProductQuantityStorage\ProductQuantityStorageClientInterface
-     */
-    protected $productQuantityStorageClient;
-
-    /**
      * @param \SprykerShop\Yves\CartPage\Dependency\Client\CartPageToProductStorageClientInterface $productStorageClient
-     * @param \Spryker\Client\ProductQuantityStorage\ProductQuantityStorageClientInterface $productQuantityStorageClient
      */
-    public function __construct(
-        CartPageToProductStorageClientInterface $productStorageClient,
-        ProductQuantityStorageClientInterface $productQuantityStorageClient
-    ) {
+    public function __construct(CartPageToProductStorageClientInterface $productStorageClient) {
         $this->productStorageClient = $productStorageClient;
-        $this->productQuantityStorageClient = $productQuantityStorageClient;
     }
 
     /**
@@ -47,40 +34,12 @@ class CartItemsProductProvider implements CartItemsProductProviderInterface
         $productBySku = [];
 
         foreach ($cartItems as $item) {
-            $productViewTransfer = $this->productStorageClient->findProductAbstractViewTransfer(
+            $productBySku[$item->getSku()] = $this->productStorageClient->findProductAbstractViewTransfer(
                 $item->getIdProductAbstract(),
                 $locale
             );
-            $productViewTransfer = $this->setQuantityRestrictions($productViewTransfer, $item);
-            $productBySku[$item->getSku()] = $productViewTransfer;
         }
 
         return $productBySku;
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\ProductViewTransfer $productViewTransfer
-     * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
-     *
-     * @return \Generated\Shared\Transfer\ProductViewTransfer
-     */
-    protected function setQuantityRestrictions(ProductViewTransfer $productViewTransfer, ItemTransfer $itemTransfer): ProductViewTransfer
-    {
-        $minQuantity = 1;
-        $maxQuantity = null;
-        $quantityInterval = 1;
-        $productQuantityStorageTransfer = $this->productQuantityStorageClient
-            ->findProductQuantityStorage($itemTransfer->getId());
-
-        if ($productQuantityStorageTransfer !== null) {
-            $minQuantity = $productQuantityStorageTransfer->getQuantityMin() ?? 1;
-            $maxQuantity = $productQuantityStorageTransfer->getQuantityMax();
-            $quantityInterval = $productQuantityStorageTransfer->getQuantityInterval() ?? 1;
-        }
-        $productViewTransfer->setQuantityMin($minQuantity);
-        $productViewTransfer->setQuantityMax($maxQuantity);
-        $productViewTransfer->setQuantityInterval($quantityInterval);
-
-        return $productViewTransfer;
     }
 }
