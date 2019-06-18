@@ -139,11 +139,11 @@
                     } only %}
                         {% block price %}
                             {% if can('SeePricePermissionPlugin') %}
-                                {% set price = data.listItem.unitPrice is defined ? data.listItem.unitPrice : data.listItem.price %}
+                                {% set subtotalPrice = data.listItem.unitSubtotalAggregation is defined ? data.listItem.unitSubtotalAggregation : data.listItem.price %}
                                 {% include molecule('price') with {
                                     modifiers: ['cart'],
                                     data: {
-                                        amount: price | money,
+                                        amount: subtotalPrice | money,
                                     },
                                 } only %}
                             {% endif %}
