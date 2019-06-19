@@ -59,6 +59,7 @@ use SprykerShop\Yves\ProductMeasurementUnitWidget\Widget\CartProductMeasurementU
 use SprykerShop\Yves\ProductMeasurementUnitWidget\Widget\ManageProductMeasurementUnitWidget;
 use SprykerShop\Yves\ProductOptionWidget\Widget\ProductOptionConfiguratorWidget;
 use SprykerShop\Yves\ProductPackagingUnitWidget\Widget\ProductPackagingUnitWidget;
+use SprykerShop\Yves\ProductQuantityWidget\Widget\ProductQuantityWidget;
 use SprykerShop\Yves\ProductRelationWidget\Widget\SimilarProductsWidget;
 use SprykerShop\Yves\ProductRelationWidget\Widget\UpSellingProductsWidget;
 use SprykerShop\Yves\ProductReplacementForWidget\Widget\ProductReplacementForListWidget;
@@ -95,6 +96,7 @@ use SprykerShop\Yves\ShoppingListNoteWidget\Widget\ShoppingListItemNoteWidget;
 use SprykerShop\Yves\ShoppingListPage\Widget\ShoppingListDismissWidget;
 use SprykerShop\Yves\ShoppingListWidget\Widget\AddItemsToShoppingListWidget;
 use SprykerShop\Yves\ShoppingListWidget\Widget\AddToShoppingListWidget;
+use SprykerShop\Yves\ShoppingListWidget\Widget\ShoppingListItemQuantityInputWidget;
 use SprykerShop\Yves\ShoppingListWidget\Widget\ShoppingListMenuItemWidget;
 use SprykerShop\Yves\ShoppingListWidget\Widget\ShoppingListNavigationMenuWidget;
 use SprykerShop\Yves\ShoppingListWidget\Widget\ShoppingListSubtotalWidget;
@@ -191,11 +193,13 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             ProductConcreteSearchWidget::class,
             AvailabilityNotificationSubscriptionWidget::class,
             ProductConcreteAddWidget::class,
+            ShoppingListItemQuantityInputWidget::class,
             QuoteRequestCreateWidget::class,
             QuoteRequestCartWidget::class,
             QuoteRequestCancelWidget::class,
             QuoteRequestAgentOverviewWidget::class,
             QuoteRequestAgentCancelWidget::class,
+            ProductQuantityWidget::class,
         ];
     }
 
