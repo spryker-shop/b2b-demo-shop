@@ -3,6 +3,7 @@
 {% define data = {
     concreteItem: _widget.item,
     currencyIsoCode: _widget.currencyIsoCode,
+    salesUnitQuantity: _widget.salesUnitQuantity | default(''),
 } %}
 
 {% block body %}
@@ -10,7 +11,7 @@
         {% set salesUnitName = data.concreteItem.quantitySalesUnit.productMeasurementUnit.name | default('') %}
         {% set salesUnitSummary = '' %}
         {% if salesUnitName %}
-            {% set salesUnitSummary = data.concreteItem.quantity / data.concreteItem.quantitySalesUnit.conversion ~ ' ' ~ salesUnitName | trans %}
+            {% set salesUnitSummary = data.salesUnitQuantity ~ ' ' ~ salesUnitName | trans %}
         {% endif %}
 
         {% set amountSalesUnitName = data.concreteItem.amountSalesUnit.productMeasurementUnit.name | default('') %}
