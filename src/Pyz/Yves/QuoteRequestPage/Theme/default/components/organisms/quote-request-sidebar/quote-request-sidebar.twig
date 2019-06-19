@@ -1,0 +1,138 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'quote-request-sidebar',
+    tag: 'aside',
+} %}
+
+{% define data = {
+    quoteRequest: required,
+    quote: required,
+    quoteRequestVersionReferences: null,
+    version: null,
+    cancelTitle: '',
+    cancelUrl: '',
+    isQuoteRequestCancelable: false,
+    isQuoteRequestReady: false,
+    isQuoteRequestEditable: false,
+    isQuoteRequestRevisable: false,
+    isLatestVersion: false,
+} %}
+
+{% block body %}
+    {% block topSidebar %}
+        <div class="{{ config.name }}__item spacing-bottom">
+            <p>{{ 'quote_request_page.quote_request.labels.date' | trans }}:
+                <span class="text-secondary">{{ data.quoteRequest.createdAt | formatDateTime }}</span>
+            </p>
+            {% if data.quoteRequest.companyUser and data.quoteRequest.companyUser.company %}
+                <p>{{ 'quote_request_page.quote_request.labels.company' | trans }}:
+                    <span class="text-secondary">
+                        {{ data.quoteRequest.companyUser.company.name }}
+                    </span>
+                </p>
+                <p>{{ 'quote_request_page.quote_request.labels.business_unit' | trans }}:
+                    <span class="text-secondary">{{ data.quoteRequest.companyUser.companyBusinessUnit ? data.quoteRequest.companyUser.companyBusinessUnit.name : '' }}</span>
+                </p>
+                <p>{{ 'quote_request_page.quote_request.labels.customer' | trans }}:
+                    <span class="text-secondary">{{ data.quoteRequest.companyUser.customer.firstName }} {{ data.quoteRequest.companyUser.customer.lastName }}</span>
+                </p>
+            {% endif %}
+            <p>{{ 'quote_request_page.quote_request.labels.status' | trans }}:
+                {% if data.quoteRequest.status %}
+                    <span class="quote-status request-status request-status--{{ data.quoteRequest.status }}">{{ ('quote_request.status.' ~ data.quoteRequest.status) | trans }}</span>
+                {% else %}
+                    --
+                {% endif %}
+            </p>
+            {% block additionalContent %}
+                <p>{{ 'quote_request_page.quote_request.labels.valid_till' | trans }}:
+                    {% if data.quoteRequest.validUntil %}
+                        <span class="text-secondary">{{ data.quoteRequest.validUntil | formatDateTime }}</span>
+                    {% else %}
+                        --
+                    {% endif %}
+                </p>
+                {% if data.quoteRequestVersionReferences %}
+                    {% include molecule('quote-request-history-select', 'QuoteRequestPage') ignore missing with {
+                        class: 'grid grid--justify grid--middle',
+                        data: {
+                            quoteRequestVersionReferences: data.quoteRequestVersionReferences,
+                            version: data.version,
+                        },
+                    } only %}
+                {% else %}
+                    <p>{{ 'quote_request_page.quote_request.labels.history' | trans }}: --</p>
+                {% endif %}
+                {% block latestVersionVisibilityStatus %}
+                    <p>
+                        <strong>
+                            {{- data.quoteRequest.isLatestVersionVisible ?
+                            'quote_request_page.quote_request.labels.latest_version_is_visible' | trans :
+                            'quote_request_page.quote_request.labels.latest_version_is_hidden' | trans -}}
+                        </strong>
+                    </p>
+                {% endblock %}
+            {% endblock %}
+        </div>
+    {% endblock %}
+
+    {% block middleSidebar %}
+        {% set quoteLatestVersion = data.quoteRequest.latestVersion.quote %}
+        {% set isQuoteSummaryEnabled = data.quote.totals and quoteLatestVersion.priceMode %}
+        {% if quoteLatestVersion and isQuoteSummaryEnabled %}
+            <div class="{{ config.name }}__item spacing-bottom spacing-bottom--big">
+                {% include molecule('quote-request-cart-summary', 'QuoteRequestPage') with {
+                    data: {
+                        cart: data.quote,
+                    },
+                } only %}
+            </div>
+        {% endif %}
+
+    {% endblock %}
+
+    {% block quoteActions %}
+        <a class="spacing-bottom button button--expand {{ data.quoteRequest.quoteRequestReference ? 'button--hollow' : 'button--cancel' }}" href="{{ data.cancelUrl }}" data-init-single-click>
+            {{ data.cancelTitle }}
+        </a>
+
+        {% if data.isLatestVersion %}
+            {% if data.isQuoteRequestCancelable %}
+                {% block quoteRequestCancelableAction %}
+                    <a class="spacing-bottom button button--expand button--cancel"
+                       href="{{ path('quote-request/cancel', { quoteRequestReference: (data.quoteRequest.quoteRequestReference) }) }}" data-init-single-click>
+                        {{ 'quote_request_page.quote_request.actions.cancel' | trans }}
+                    </a>
+                {% endblock %}
+            {% endif %}
+
+            {% if data.isQuoteRequestReady %}
+                {% block quoteRequestReadyAction %}
+                    <a class="spacing-bottom button button--expand button--hollow"
+                       href="{{ path('quote-request/revise', { quoteRequestReference: (data.quoteRequest.quoteRequestReference) }) }}" data-init-single-click>
+                        {{ 'quote_request_page.quote_request.actions.revise' | trans }}
+                    </a>
+                    <a class="spacing-bottom button button--expand button--success"
+                       href="{{ path('quote-request/convert-to-cart', { quoteRequestReference: (data.quoteRequest.quoteRequestReference) }) }}" data-init-single-click>
+                        {{ 'quote_request_page.quote_request.actions.convert_to_cart' | trans }}
+                    </a>
+                {% endblock %}
+            {% endif %}
+
+            {% if data.isQuoteRequestEditable %}
+                {% block quoteRequestEditableAction %}
+                    <a class="spacing-bottom button button--expand button--success"
+                       href="{{ path('quote-request/edit', { quoteRequestReference: (data.quoteRequest.quoteRequestReference) }) }}" data-init-single-click>
+                        {{ 'quote_request_page.quote_request.actions.edit' | trans }}
+                    </a>
+                    <a class="spacing-bottom button button--expand button--success"
+                       href="{{ path('quote-request/send-to-user', { quoteRequestReference: (data.quoteRequest.quoteRequestReference) }) }}" data-init-single-click>
+                        {{ 'quote_request_page.quote_request.actions.send_to_agent' | trans }}
+                    </a>
+                {% endblock %}
+            {% endif %}
+        {% endif %}
+    {% endblock %}
+{% endblock %}
+

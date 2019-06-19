@@ -2,56 +2,68 @@
 
 {% define config = {
     name: 'address-delete-message',
-    tag: 'div'
 } %}
 
 {% define data = {
     companyUnitAddress: required,
     companyBusinessUnits: null,
-    idCompanyBusinessUnit: null
+    idCompanyBusinessUnit: null,
 } %}
 
 {% block body %}
-    {% include molecule('action-bar') with {
-        data: {
-            title: 'company.account.address.delete.message.title' | trans
-        }
-    } only %}
+    <h3 class="title title--warning grid grid--left">
+        <div class="{{ config.name }}__icon-box grid grid--center grid--middle spacing-right spacing-right--bigger">
+            {% include atom('icon') with {
+                modifiers: ['big'],
+                data: {
+                    name: 'alert-white',
+                },
+            } only %}
+        </div>
+        {{ 'company.account.address.delete.message.title' | trans }}
+    </h3>
 
-    <div class="spacing-y spacing-y--big">
-        {{ "company.account.address.delete.message.description" | trans }}
+    <p class="{{ config.name }}__text spacing-y spacing-y--big">
+        {{ "company.account.address.delete.message.description" | trans }}:
+    </p>
 
+    <div class="box">
         <address class="{{ config.name }}__address">{{ data.companyUnitAddress.address1 }} {{ data.companyUnitAddress.address2 }}</address>
         <address class="{{ config.name }}__address">{{ data.companyUnitAddress.zipCode }} {{ data.companyUnitAddress.city }}, {{ ('countries.iso.' ~ data.companyUnitAddress.iso2code) | trans }}</address>
-
-        {% if data.companyBusinessUnits is not empty %}
-            {{ "company.account.address.delete.message.belongs" | trans }}:
-
-            <ul class="list list--bullet">
-                {% for companyBusinessUnit in data.companyBusinessUnits %}
-                    <li class="list__item list__item--bullet">{{ companyBusinessUnit.name }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
     </div>
 
-    {% if data.companyBusinessUnits is not empty %}
-        <p class="{{ config.name }}__delete-message">
-            {{ "company.account.address.delete.message.all" | trans }}.
+    {% if data.companyBusinessUnits %}
+        <p class="{{ config.name }}__text spacing-y spacing-y--big">
+            {{ "company.account.address.delete.message.belongs" | trans }}:
         </p>
+
+        <ul class="{{ config.name }}__list">
+            {% for companyBusinessUnit in data.companyBusinessUnits %}
+                <li class="{{ config.name }}__list-item spacing-bottom spacing-bottom--small">
+                    <strong>{{ companyBusinessUnit.name }}</strong>
+                </li>
+            {% endfor %}
+        </ul>
     {% endif %}
 
-    {% if data.idCompanyBusinessUnit is not empty %}
-        <a class="button button--hollow {{ config.name }}__action" href="{{ url('company/business-unit/update', {'id': data.idCompanyBusinessUnit }) }}">
-            {{ 'company.company_business_unit.delete.confirmation.back' | trans }}
-        </a>
-    {% else %}
-        <a class="button button--hollow {{ config.name }}__action" href="{{ url('company/business-unit') }}">
-            {{ 'company.company_business_unit.delete.confirmation.back' | trans }}
-        </a>
+    {% if data.companyBusinessUnits %}
+        <br>
+        <strong class="{{ config.name }}__delete-message">
+            {{ "company.account.address.delete.message.all" | trans }}!
+        </strong>
     {% endif %}
 
-    <a class="button button--alert" href="{{ url('company/address/delete', {'id': data.companyUnitAddress.idCompanyUnitAddress, 'idCompanyBusinessUnit': data.idCompanyBusinessUnit }) }}">
-        {{ 'company.account.business_unit.delete' | trans }}
-    </a>
+    <div class="spacing-y spacing-y--big">
+        <a class="{{ config.jsName }}__action button button--hollow spacing-right" href="{{ data.idCompanyBusinessUnit ? url('company/business-unit/update', {'id': data.idCompanyBusinessUnit }) : url('company/business-unit') }}" title="{{ 'company.company_business_unit.delete.confirmation.back' | trans }}">
+            {{ 'company.company_business_unit.delete.confirmation.back' | trans }}
+        </a>
+        <a class="{{ config.jsName }}__action button button--alert" href="{{ url('company/address/delete', {'id': data.companyUnitAddress.idCompanyUnitAddress, 'idCompanyBusinessUnit': data.idCompanyBusinessUnit }) }}" title="{{ 'company.account.business_unit.delete' | trans }}">
+            {{ 'company.account.business_unit.delete' | trans }}
+        </a>
+        {% include molecule('action-single-click-enforcer') with {
+            attributes: {
+                'target-selector': '.' ~ config.jsName ~ '__action',
+            },
+        } only %}
+    </div>
 {% endblock %}

@@ -1,0 +1,97 @@
+{% extends template('page-layout-customer', 'CustomerPage') %}
+
+{% define data = {
+    title: 'quote_request_page.quote_request' | trans,
+    quoteRequestForm: _view.quoteRequestForm,
+    quoteRequest: _view.quoteRequestForm.vars.value,
+} %}
+
+{% set quote = data.quoteRequest.latestVersion.quote %}
+
+{% block breadcrumbs %}
+    {% include molecule('breadcrumb') with {
+        data: {
+            steps: [
+                {
+                    label: 'customer.account' | trans,
+                    url: path('customer/overview'),
+                },
+                {
+                    label: 'quote_request_page.quote_request' | trans,
+                    url: path('quote-request'),
+                },
+                {
+                    label: 'quote_request_page.quote_request.actions.edit' | trans,
+                },
+            ],
+        },
+    } only %}
+{% endblock %}
+
+{% block contentClass %}page-layout-main--request-for-quote{% endblock %}
+
+{% block content %}
+
+    {% if not quote or quote.items is empty %}
+        <div class="box text-center">
+            {% include atom('icon') with {
+                modifiers: ['biggest'],
+                class: 'text-alt',
+                data: {
+                    name: 'shopping-cart',
+                },
+            } only %}
+            <h6>{{ 'cart.empty' | trans }}</h6>
+        </div>
+    {% else %}
+        {{ form_start(data.quoteRequestForm) }}
+            <div class="grid grid--gap">
+                {% embed organism('quote-request-main-content', 'QuoteRequestPage') ignore missing with {
+                    class: 'col col--sm-12 col--xl-9',
+                    data: {
+                        version: data.quoteRequestForm.latestVersion,
+                        quote: quote,
+                    },
+                } only %}
+                    {% block formContent %}
+                        {% for child in data.version.metadata %}
+                            {% include molecule('quote-request-form-field', 'QuoteRequestPage') with {
+                                class: 'col col--sm-12 col--xl-6 spacing-bottom spacing-bottom--big',
+                                data: {
+                                    field: child,
+                                },
+                            } only %}
+                        {% endfor %}
+                    {% endblock %}
+                {% endembed %}
+
+                {% embed organism('quote-request-sidebar', 'QuoteRequestPage') with {
+                    class: 'col col--sm-12 col--xl-3',
+                    data: {
+                        quoteRequest: data.quoteRequest,
+                        quote: quote,
+                    },
+                } only %}
+                    {% block latestVersionVisibilityStatus %}{% endblock %}
+                    {% block quoteActions %}
+                        <a class="spacing-bottom button button--expand button--hollow"
+                           href="{{ url('quote-request/details', {quoteRequestReference: data.quoteRequest.quoteRequestReference}) }}">
+                            {{ 'quote_request_page.quote_request.actions.back_to_view' | trans }}
+                        </a>
+                        <a class="spacing-bottom button button--expand button--edit-items"
+                           href="{{ url('quote-request/edit-items', { quoteRequestReference: (data.quoteRequest.quoteRequestReference) }) }}">
+                            {{ 'quote_request_page.quote_request.actions.edit_items' | trans }}
+                        </a>
+                        <button type="submit" name="save" class="spacing-bottom button button--expand button--success">
+                            {{ 'quote_request_page.quote_request.actions.save' | trans }}
+                        </button>
+                        <button type="submit" name="sendToUser" class="spacing-bottom button button--expand button--success">
+                            {{ 'quote_request_page.quote_request.actions.send_to_agent' | trans }}
+                        </button>
+                    {% endblock %}
+                {% endembed %}
+
+            </div>
+        {{ form_end(data.quoteRequestForm) }}
+    {% endif %}
+{% endblock %}

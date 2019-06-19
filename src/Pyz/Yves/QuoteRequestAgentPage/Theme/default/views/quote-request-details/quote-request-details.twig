@@ -1,0 +1,105 @@
+{% extends template('page-layout-quote-request', 'QuoteRequestAgentPage') %}
+
+{% define data = {
+    title: 'quote_request_page.quote_request' | trans,
+    quoteRequest: _view.quoteRequest,
+    quoteRequestVersionReferences: _view.quoteRequestVersionReferences,
+    version: _view.version,
+    isQuoteRequestCancelable: _view.isQuoteRequestCancelable,
+    isQuoteRequestRevisable: _view.isQuoteRequestRevisable,
+    isQuoteRequestEditable: _view.isQuoteRequestEditable,
+} %}
+
+{% set isLatestVersion = data.version.idQuoteRequestVersion == data.quoteRequest.latestVersion.idQuoteRequestVersion %}
+{% set quote = (data.isQuoteRequestEditable and isLatestVersion) ? data.quoteRequest.latestVersion.quote : data.version.quote %}
+
+{% block breadcrumbs %}
+    {% include molecule('breadcrumb') with {
+        data: {
+            steps: [
+                {
+                    label: 'agent.account.page_title' | trans,
+                    url: path('agent/overview'),
+                },
+                {
+                    label: 'quote_request_page.quote_request' | trans,
+                    url: path('agent/quote-request'),
+                },
+                {
+                    label: '#' ~ data.quoteRequest.quoteRequestReference,
+                },
+            ],
+        },
+    } only %}
+{% endblock %}
+
+{% block contentClass %}page-layout-main--request-for-quote{% endblock %}
+
+{% block content %}
+    <div class="grid grid--gap">
+        {% include organism('quote-request-main-content', 'QuoteRequestPage') ignore missing with {
+            class: 'col col--sm-12 col--xl-9',
+            data: {
+                version: data.version,
+                quote: quote,
+            },
+        } only %}
+
+        {% embed organism('quote-request-sidebar', 'QuoteRequestPage') ignore missing with {
+            class: 'col col--sm-12 col--xl-3',
+            data: {
+                quoteRequest: data.quoteRequest,
+                quote: quote,
+                quoteRequestVersionReferences: data.quoteRequestVersionReferences,
+                version: data.version,
+                isLatestVersion: isLatestVersion,
+                cancelTitle: 'quote_request_page.quote_request.actions.back_to_list' | trans,
+                cancelUrl: url('agent/quote-request'),
+                isQuoteRequestCancelable: data.isQuoteRequestCancelable,
+                isQuoteRequestRevisable: data.isQuoteRequestRevisable,
+                isQuoteRequestEditable: data.isQuoteRequestEditable,
+            },
+            embed: {
+                isLatestVersion: isLatestVersion,
+            },
+        } only %}
+            {% block quoteRequestCancelableAction %}
+                <a class="spacing-bottom button button--expand button--cancel"
+                   href="{{ path('agent/quote-request/cancel', { quoteRequestReference: (data.quoteRequest.quoteRequestReference) }) }}" data-init-single-click>
+                    {{ 'quote_request_page.quote_request.actions.cancel' | trans }}
+                </a>
+            {% endblock %}
+            {% block quoteRequestEditableAction %}
+                <a class="spacing-bottom button button--expand button--success"
+                   href="{{ path('agent/quote-request/edit', { quoteRequestReference: (data.quoteRequest.quoteRequestReference) }) }}">
+                    {{ 'quote_request_page.quote_request.actions.edit' | trans }}
+                </a>
+                {% if data.quoteRequest.latestVersion.quote.items is not empty %}
+                    <a class="spacing-bottom button button--expand button--success"
+                       href="{{ path('agent/quote-request/send-to-customer', { quoteRequestReference: (data.quoteRequest.quoteRequestReference) }) }}">
+                        {{ 'quote_request_page.quote_request.actions.send_to_customer' | trans }}
+                    </a>
+                {% endif %}
+            {% endblock %}
+            {% block quoteRequestReadyAction %}{% endblock %}
+            {% block quoteActions %}
+                {{ parent() }}
+                {% if data.isLatestVersion %}
+                    {% if data.isQuoteRequestRevisable %}
+                        <a class="spacing-bottom button button--expand button--hollow"
+                           href="{{ path('agent/quote-request/revise', { quoteRequestReference: (data.quoteRequest.quoteRequestReference) }) }}">
+                            {{ 'quote_request_page.quote_request.actions.revise' | trans }}
+                        </a>
+                    {% endif %}
+
+                    {% if data.quoteRequest.status == 'ready' %}
+                        <a class="spacing-bottom button button--expand button--success"
+                           href="{{ path('agent/quote-request/convert-to-cart', { quoteRequestReference: (data.quoteRequest.quoteRequestReference) }) }}">
+                            {{ 'quote_request_page.quote_request.actions.convert_to_cart' | trans }}
+                        </a>
+                    {% endif %}
+                {% endif %}
+            {% endblock %}
+        {% endembed %}
+    </div>
+{% endblock %}

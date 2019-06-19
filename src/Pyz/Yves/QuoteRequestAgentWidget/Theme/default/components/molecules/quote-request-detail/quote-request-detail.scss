@@ -1,0 +1,41 @@
+@mixin quote-request-agent-widget-quote-request-detail($name: '.quote-request-detail') {
+    #{$name} {
+        &--light {
+            background-color: $setting-color-white;
+            border-radius: $setting-border-radius;
+        }
+
+        &--small {
+            #{$name}__counter,
+            #{$name}__status {
+                font-size: rem(10);
+            }
+        }
+
+        &__text {
+            font-size: rem(12);
+
+            &--small {
+                margin: 0;
+            }
+        }
+
+        &__counter {
+            display: inline-block;
+            line-height: rem(22);
+            font-weight: fw(bold);
+            letter-spacing: rem(0.4);
+            color: $setting-color-white;
+            background-color: $setting-color-yellow-1;
+            padding: 0 rem(8);
+            margin-right: rem(4);
+            margin-bottom: 0;
+            border-radius: rem(2);
+            vertical-align: middle;
+        }
+
+        @content;
+    }
+}
+
+@include quote-request-agent-widget-quote-request-detail();
