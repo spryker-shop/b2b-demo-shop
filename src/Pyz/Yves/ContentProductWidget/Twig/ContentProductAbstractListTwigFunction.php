@@ -27,7 +27,7 @@ class ContentProductAbstractListTwigFunction extends SprykerShopContentProductAb
         $contentWidgetTemplates = parent::getAvailableTemplates();
 
         return [
-            static::WIDGET_TEMPLATE_IDENTIFIER_SLIDER => '@ContentProductWidget/views/cms-product-abstract/cms-product-abstract-slider.twig',
+            static::WIDGET_TEMPLATE_IDENTIFIER_SLIDER => '@ContentProductWidget/views/cms-product-abstract-slider/cms-product-abstract-slider.twig',
         ] + $contentWidgetTemplates;
     }
 }

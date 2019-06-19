@@ -27,7 +27,7 @@ class ContentProductSetTwigFunction extends SprykerShopContentProductSetTwigFunc
         $contentWidgetTemplates = parent::getAvailableTemplates();
 
         return [
-            static::WIDGET_TEMPLATE_IDENTIFIER_LANDING_PAGE => '@ContentProductSetWidget/views/content-product-set/content-product-set-landing-page.twig',
+            static::WIDGET_TEMPLATE_IDENTIFIER_LANDING_PAGE => '@ContentProductSetWidget/views/content-product-set-landing-page/content-product-set-landing-page.twig',
         ] + $contentWidgetTemplates;
     }
 }

@@ -24,7 +24,7 @@ class ContentBannerTwigFunction extends SprykerShopContentBannerTwigFunction
         $contentWidgetTemplates = parent::getAvailableTemplates();
 
         return [
-            static::WIDGET_TEMPLATE_IDENTIFIER_HOME_PAGE => '@ContentBannerWidget/views/banner/banner-home-page.twig',
+            static::WIDGET_TEMPLATE_IDENTIFIER_HOME_PAGE => '@ContentBannerWidget/views/banner-home-page/banner-home-page.twig',
         ] + $contentWidgetTemplates;
     }
 }
