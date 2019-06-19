@@ -13,7 +13,7 @@
                 name: data.productSet.name,
                 description: data.productSet.description,
                 images: data.productSet.imageSets.0.images | default([]),
-            }
+            },
         } only %}
     {% endif %}
 {% endblock %}
