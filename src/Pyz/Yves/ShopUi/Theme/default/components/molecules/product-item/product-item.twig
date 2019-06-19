@@ -195,21 +195,7 @@
                                                 {% widget 'ProductQuantityWidget' args [data.listItem.quantity, data.listItem.id, data.listItem.sku, data.listItem.groupKey] only %}
                                                     {% block body %}
                                                         <form method="POST" action="{{ path('cart/change/quantity', {'sku': data.sku }) }}">
-                                                            {% include molecule('quantity-counter') with {
-                                                                modifiers: ['cart'],
-                                                                data: {
-                                                                    isDisabled: false,
-                                                                    autoUpdate: true,
-                                                                    maxQuantity: data.productQuantityStorage.quantityMax,
-                                                                    minQuantity: data.productQuantityStorage.quantityMin,
-                                                                    step: data.productQuantityStorage.quantityInterval,
-                                                                },
-                                                                attributes: {
-                                                                    max: data.productQuantityStorage.quantityMax,
-                                                                    value: data.quantity,
-                                                                }
-                                                            } only %}
-
+                                                            {{ parent() }}
                                                             <input type="hidden" value="{{ data.groupKey }}" name="groupKey" />
                                                         </form>
                                                     {% endblock %}
