@@ -8,19 +8,24 @@
 {% define data = {
     isDisabled: false,
     isReadOnly: false,
-    autoUpdate: false
+    autoUpdate: false,
+    maxQuantity: null,
+    minQuantity: 1,
+    value: 1,
+    step: 1,
 } %}
 
 {% set isEditable = not data.isReadOnly and not data.isDisabled %}
 
 {% define attributes = {
-    value: 1,
     type: "number",
     name: "quantity",
     onkeypress: isEditable ? null : "return false;",
     onkeydown: isEditable ? null : "return false;",
-    min: 1,
-    step: 1,
+    min: data.minQuantity,
+    max: data.maxQuantity is empty ? false : data.maxQuantity,
+    value: data.value,
+    step: data.step,
 } %}
 
 {% block attributes %}{% endblock %}
