@@ -109,8 +109,6 @@ $config[KernelConstants::AUTO_LOADER_UNRESOLVABLE_CACHE_ENABLED] = false;
 
 // ---------- Logging
 $config[LogConstants::LOG_LEVEL] = Logger::INFO;
-$config[LogConstants::LOGGER_CONFIG] = SprykerLoggerConfig::class;
-$config[LogConstants::LOG_FILE_PATH] = APPLICATION_ROOT_DIR . '/data/logs';
 
 $baseLogFilePath = sprintf('%s/data/%s/logs', APPLICATION_ROOT_DIR, $CURRENT_STORE);
 
