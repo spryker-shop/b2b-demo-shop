@@ -17,6 +17,11 @@
 {% block title %}{% endblock %}
 
 {% block content %}
+    {% set customerNavigation %}
+        {% block customerNavigation %}
+            {%  widget 'CustomerNavigationWidget' args [data.activePage] only %}{% endwidget %}
+        {% endblock %}
+    {% endset %}
     {% set customerContent %}
         {% block customerContent %}{% endblock %}
     {% endset %}
@@ -27,11 +32,9 @@
         {% block body %}
             <div class="{{ config.name }}__inner {{ data.innerClass }}">
                 {% block inner %}
-                    <div class="grid">
+                    <div class="grid grid--gap">
                         <div class="is-hidden-sm-lg col col--xl-3">
-                            {% block customerNavigation %}
-                                {%  widget 'CustomerNavigationWidget' args [data.activePage] only %}{% endwidget %}
-                            {% endblock %}
+                            {{ customerNavigation }}
                         </div>
 
                         <div class="col col--sm-12 col--xl-9">
@@ -41,6 +44,5 @@
                 {% endblock %}
             </div>
         {% endblock %}
-
     {% endembed %}
 {% endblock %}

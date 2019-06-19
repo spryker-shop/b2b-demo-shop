@@ -15,11 +15,11 @@ use Spryker\Glue\CustomersRestApi\CustomersRestApiDependencyProvider as SprykerC
 class CustomersRestApiDependencyProvider extends SprykerCustomersRestApiDependencyProvider
 {
     /**
-     * @return \Spryker\Glue\CustomersRestApiExtension\Dependency\Plugin\CustomerPostRegisterPluginInterface[]
+     * @return \Spryker\Glue\CustomersRestApiExtension\Dependency\Plugin\CustomerPostCreatePluginInterface[]
      */
-    protected function getCustomerPostRegisterPlugins(): array
+    protected function getCustomerPostCreatePlugins(): array
     {
-        return array_merge(parent::getCustomerPostRegisterPlugins(), [
+        return array_merge(parent::getCustomerPostCreatePlugins(), [
             new UpdateCartCreateCustomerReferencePlugin(),
         ]);
     }

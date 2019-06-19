@@ -1,0 +1,40 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'quote-request-detail',
+} %}
+
+{% define data = {
+    quoteRequest: required,
+} %}
+
+{% set quote = data.quoteRequest.latestVersion ? data.quoteRequest.latestVersion.quote : {} %}
+
+{% block body %}
+    <div class="grid grid--middle text-small text-left">
+        <div class="col col--sm-3 ">
+            <p>
+                <a class="{{ config.name }}__link" href="{{ path('agent/quote-request/details', { quoteRequestReference: (data.quoteRequest.quoteRequestReference)}) }}" title="#{{ data.quoteRequest.quoteRequestReference }}" data-init-single-click>
+                    #{{ data.quoteRequest.quoteRequestReference }}
+                </a>
+            </p>
+            <p class="{{ config.name }}__counter">
+                {{ quote ? (quote.items | length) : 0 }}
+                {{ 'quote_request_agent_widget.items' | trans }}
+            </p>
+        </div>
+        <div class="col col--sm-6">
+            <p class="{{ component.renderClass(config.name ~ '__text', modifiers) }}">{{ data.quoteRequest.companyUser.company.name }}</p>
+            <p class="{{ component.renderClass(config.name ~ '__text', modifiers) }}">{{ data.quoteRequest.companyUser.companyBusinessUnit.name }}</p>
+            <p class="{{ component.renderClass(config.name ~ '__text', modifiers) }}">{{ data.quoteRequest.companyUser.customer.firstName ~ ' ' ~ data.quoteRequest.companyUser.customer.lastName }}</p>
+        </div>
+        <div class="col col--sm-3 text-right">
+            <p class="{{ config.name }}__status quote-status request-status request-status--{{ data.quoteRequest.status }}">
+                {{ ('quote_request.status.' ~ data.quoteRequest.status) | trans }}
+            </p>
+            <div>
+                <strong>{{ quote.totals.grandTotal | default(0) | money(true, quote.currency ? quote.currency.code : '') }}</strong>
+            </div>
+        </div>
+    </div>
+{% endblock %}

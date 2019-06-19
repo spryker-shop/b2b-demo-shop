@@ -1,0 +1,54 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'quote-request-cart-summary',
+} %}
+
+{% define data = {
+    cart: required,
+} %}
+
+{% block body %}
+    <h6 class="{{ config.name }}__quantity text-secondary float-right">
+        {% widget 'ProductBundleItemCounterWidget' args [data.cart] only %}
+        {% nowidget %}
+            {{ data.cart.items | length }} {{ 'item' | trans }}
+        {% endwidget %}
+    </h6>
+    <h6 class="spacing-bottom spacing-bottom--inner">{{ 'cart.your-order' | trans }}</h6>
+    <hr>
+
+    {% widget 'SalesOrderThresholdWidget' args [data.cart.expenses] only %}
+        {% block body %}
+            <li class="list__item spacing-y">
+                {{ parent() }}
+            </li>
+        {% endblock %}
+    {% endwidget %}
+
+    {% include molecule('quote-request-discount-summary', 'QuoteRequestPage') ignore missing with {
+        class: 'list spacing-y',
+        data: {
+            voucherDiscounts: data.cart.voucherDiscounts,
+            ruleDiscounts: data.cart.cartRuleDiscounts,
+            discountTotal: data.cart.totals.discountTotal,
+            currency: data.cart.currency,
+        },
+    } only %}
+
+    <ul class="list spacing-y">
+        <li class="list__item spacing-y">
+            {{ 'cart.price.subtotal' | trans }}
+            <span class="float-right">{{ data.cart.totals.subtotal | money(true, data.cart.currency.code) }}</span>
+        </li>
+        <li class="list__item spacing-y">
+            {{ 'cart.total.tax_total' | trans }}
+            <span class="float-right">{{ data.cart.totals.taxTotal.amount | money(true, data.cart.currency.code) }}</span>
+        </li>
+        <li class="list__item spacing-y">
+            {{ 'cart.price.grand.total' | trans }}
+            <strong class="float-right">{{ data.cart.totals.grandTotal | money(true, data.cart.currency.code) }}</strong>
+        </li>
+    </ul>
+
+{% endblock %}

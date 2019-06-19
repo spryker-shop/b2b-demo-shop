@@ -1,0 +1,33 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'quote-request-item-summary',
+    tag: 'ul',
+} %}
+
+{% define data = {
+    priceMode: required,
+    unitPrice: required,
+    subtotalPrice: required,
+    cartItem: required,
+    currency: required,
+} %}
+
+{% set priceModeGross = 'GROSS_MODE' %}
+{% set originUnitPrice = (data.priceMode == priceModeGross) ? data.cartItem.originUnitGrossPrice : data.cartItem.originUnitNetPrice %}
+
+{% block class %}{{ parent() }} list{% endblock %}
+
+{% block body %}
+    {% if data.cartItem.productOptions | length %}
+        <li class="list__item text-small">
+            {% include molecule('product-options', 'ProductOptionWidget') ignore missing with {
+                modifiers: ['no-border'],
+                class: 'spacing-y spacing-y--inner text-secondary',
+                data: {
+                    options: data.cartItem.productOptions,
+                },
+            } only %}
+        </li>
+    {% endif %}
+{% endblock %}

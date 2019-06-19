@@ -26,8 +26,14 @@
         tbody {
             font-size: map_get($setting-font-size, small);
 
-            tr:not(:first-child) {
-                border-top: rem(1) solid $setting-color-gray-6;
+            tr {
+                &:not(:first-child) {
+                    border-top: rem(1) solid $setting-color-gray-6;
+                }
+
+                &:last-child {
+                    border-bottom: rem(1) solid $setting-color-gray-6;
+                }
             }
 
             th {

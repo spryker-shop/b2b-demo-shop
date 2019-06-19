@@ -1,0 +1,38 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'quote-request-cart-from',
+} %}
+
+{% define data = {
+    quoteRequestReference: required,
+    cartForm: required,
+} %}
+
+{% block body %}
+    {% if data.quoteRequestReference %}
+
+        {{ form_start(data.cartForm) }}
+
+            <div class="grid grid--justify">
+                <div class="col col--sm-3">
+                    <a class="{{ config.name }}__action button button--hollow button--expand" href="{{ path('agent/quote-request/cart/clear') }}" title="{{ 'quote_request_page.quote_request.actions.cancel' | trans }}" data-init-single-click>
+                        {{ 'quote_request_page.quote_request.actions.cancel' | trans }}
+                    </a>
+                </div>
+                <div class="col col--sm-4 spacing-x spacing-x--inner">
+                    <button type="submit" name="save" class="{{ config.name }}__action button button--success button--expand" title="{{ 'quote_request_page.quote_request.actions.save' | trans }}">
+                        {{ 'quote_request_page.quote_request.actions.save' | trans }}
+                    </button>
+                </div>
+                <div class="col col--sm-5">
+                    <button type="submit" name="saveAndBack" class="{{ config.name }}__action button button--success button--expand" title="{{ 'quote_request_page.quote_request.actions.save_and_back_to_edit' | trans }}">
+                        {{ 'quote_request_page.quote_request.actions.save_and_back_to_edit' | trans }}
+                    </button>
+                </div>
+            </div>
+
+        {{ form_end(data.cartForm) }}
+
+    {% endif %}
+{% endblock %}

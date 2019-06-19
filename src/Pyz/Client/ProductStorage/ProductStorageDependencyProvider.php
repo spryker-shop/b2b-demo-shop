@@ -14,6 +14,8 @@ use Spryker\Client\ProductDiscontinuedStorage\Plugin\ProductStorage\ProductViewD
 use Spryker\Client\ProductImageStorage\Plugin\ProductViewImageExpanderPlugin;
 use Spryker\Client\ProductListStorage\Plugin\ProductStorageExtension\ProductAbstractRestrictionPlugin;
 use Spryker\Client\ProductListStorage\Plugin\ProductStorageExtension\ProductConcreteRestrictionPlugin;
+use Spryker\Client\ProductQuantityStorage\Plugin\ProductStorage\ProductConcreteTransferQuantityRestrictionExpanderPlugin;
+use Spryker\Client\ProductQuantityStorage\Plugin\ProductStorage\ProductViewQuantityRestrictionExpanderPlugin;
 use Spryker\Client\ProductStorage\Plugin\ProductViewVariantExpanderPlugin;
 use Spryker\Client\ProductStorage\ProductStorageDependencyProvider as SprykerProductStorageDependencyProvider;
 
@@ -32,6 +34,7 @@ class ProductStorageDependencyProvider extends SprykerProductStorageDependencyPr
             new ProductViewAvailabilityStorageExpanderPlugin(),
             new ProductDiscontinuedProductAvailabilityExpanderPlugin(), #ProductDiscontinuedFeature
             new ProductViewImageExpanderPlugin(),
+            new ProductViewQuantityRestrictionExpanderPlugin(),
         ];
 
         return $plugins;
@@ -54,6 +57,16 @@ class ProductStorageDependencyProvider extends SprykerProductStorageDependencyPr
     {
         return [
             new ProductConcreteRestrictionPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Client\ProductStorageExtension\Dependency\Plugin\ProductConcreteExpanderPluginInterface[]
+     */
+    protected function getProductConcreteExpanderPlugins(): array
+    {
+        return [
+            new ProductConcreteTransferQuantityRestrictionExpanderPlugin(),
         ];
     }
 }
