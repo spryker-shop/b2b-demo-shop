@@ -19,7 +19,8 @@ class CartItemsProductProvider implements CartItemsProductProviderInterface
     /**
      * @param \SprykerShop\Yves\CartPage\Dependency\Client\CartPageToProductStorageClientInterface $productStorageClient
      */
-    public function __construct(CartPageToProductStorageClientInterface $productStorageClient) {
+    public function __construct(CartPageToProductStorageClientInterface $productStorageClient)
+    {
         $this->productStorageClient = $productStorageClient;
     }
 
