@@ -1,0 +1,67 @@
+{% extends template('page-layout-quote-request', 'QuoteRequestAgentPage') %}
+
+{% define data = {
+    title: 'quote_request_page.quote_request' | trans,
+    quoteRequestCreateForm: _view.quoteRequestCreateForm,
+    impersonatedCustomer: _view.impersonatedCustomer,
+} %}
+
+{% block breadcrumbs %}
+    {% include molecule('breadcrumb') with {
+        data: {
+            steps: [
+                {
+                    label: 'agent.account.page_title' | trans,
+                    url: path('agent/overview'),
+                },
+                {
+                    label: 'quote_request_page.quote_request' | trans,
+                    url: path('agent/quote-request'),
+                },
+                {
+                    label: 'quote_request_page.quote_request.create' | trans,
+                },
+            ],
+        },
+    } only %}
+{% endblock %}
+
+{% block customerContent %}
+    <div class="box">
+
+        {{ form_start(data.quoteRequestCreateForm) }}
+
+            <div class="grid">
+                <div class="col col--sm-12">
+                    <label>{{ 'quote_request_agent_widget.form.select_customer' | trans }}:</label>
+                    {% include molecule('quote-request-autocomplete-form', 'QuoteRequestAgentPage') with {
+                        class: 'spacing-top spacing-bottom spacing-bottom--big',
+                        data: {
+                            id: 'agent-company-user',
+                            value: data.impersonatedCustomer ? data.impersonatedCustomer.email,
+                        },
+                        attributes: {
+                            'item-selector': '.company-user-list__container-item',
+                            'value-data-attribute': 'data-value',
+                            'selected-value-key' : 'idCompanyUser',
+                            'suggestion-url': path('agent/company-user/autocomplete'),
+                            'query-param-name': 'pattern',
+                            'auto-init': data.impersonatedCustomer ? true : false,
+                        },
+                    } only %}
+                </div>
+                <div class="col col--sm-12 text-right">
+                    <a class="button button--hollow"
+                       href="{{ url('agent/quote-request') }}">
+                        {{ 'quote_request_page.quote_request.actions.back_to_list' | trans }}
+                    </a>
+                    <button type="submit" name="save" class="button button--success">
+                        {{ 'quote_request_page.quote_request.actions.save' | trans }}
+                    </button>
+                </div>
+            </div>
+
+        {{ form_end(data.quoteRequestCreateForm) }}
+
+    </div>
+{% endblock %}

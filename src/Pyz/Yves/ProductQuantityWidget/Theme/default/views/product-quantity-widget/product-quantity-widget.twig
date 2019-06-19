@@ -1,0 +1,25 @@
+{% extends template('widget') %}
+
+{% define data = {
+    productQuantityStorage: _widget.productQuantityStorage,
+    quantity: _widget.quantity,
+    sku: _widget.sku,
+    groupKey: _widget.groupKey,
+} %}
+
+{% block body %}
+    {% include molecule('quantity-counter') with {
+        modifiers: ['cart'],
+        data: {
+            isDisabled: false,
+            autoUpdate: true,
+            maxQuantity: data.productQuantityStorage.quantityMax,
+            minQuantity: data.productQuantityStorage.quantityMin,
+            step: data.productQuantityStorage.quantityInterval,
+        },
+        attributes: {
+            max: data.productQuantityStorage.quantityMax,
+            value: data.quantity,
+        }
+    } only %}
+{% endblock %}

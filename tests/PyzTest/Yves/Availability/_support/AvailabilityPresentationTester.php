@@ -31,11 +31,9 @@ class AvailabilityPresentationTester extends Actor
 
     public const URL_EN_PRODUCT_PAGE = '/en/bic-mehrfarbkugelschreiber-4-colours-831253-0-4mm-bl-sw-r-gn-M21646';
 
-    public const URL_ADD_AVAILABLE_PRODUCT_TO_CART = '/cart/add/421261';
-    public const URL_ADD_UNAVAILABLE_PRODUCT_TO_CART = '/cart/add/421540';
+    public const PRODUCT_WITH_LIMITED_AVAILABILITY_ADD_TO_CART_URL = '/cart/add/490001';
 
-    public const CART_AVAILABLE_ITEM_BLOCK = '//article[@class = \'product-item\']//small[@class = \'text-secondary\' and contains(text(), \'421261\')]';
-    public const CART_UNAVAILABLE_ITEM_BLOCK = '//article[@class = \'product-item\']//small[@class = \'text-secondary\' and contains(text(), \'421540\')]';
+    public const CART_PRE_CHECK_AVAILABILITY_ERROR_MESSAGE = 'Item 490001 only has availability of 20.';
 
     /**
      * @param \Codeception\Scenario $scenario

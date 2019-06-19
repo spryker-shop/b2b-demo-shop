@@ -1,0 +1,16 @@
+@mixin quote-request-page-quote-request-cart-summary($name: '.quote-request-cart-summary') {
+    #{$name} {
+        &__quantity {
+            background-color: $setting-color-alpha-3;
+            border-radius: $setting-border-radius;
+            font-size: rem(11);
+            line-height: normal;
+            color: $setting-color-gray-3;
+            padding: rem(5) rem(8);
+        }
+
+        @content;
+    }
+}
+
+@include quote-request-page-quote-request-cart-summary();

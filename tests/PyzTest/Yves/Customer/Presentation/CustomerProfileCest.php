@@ -39,6 +39,7 @@ class CustomerProfileCest
         $customerTransfer = (new CustomerBuilder())
             ->build();
 
+        $i->waitForElement(CustomerProfilePage::FORM_FIELD_SELECTOR_EMAIL, 30);
         $i->selectOption(CustomerProfilePage::FORM_FIELD_SELECTOR_SALUTATION, $customerTransfer->getSalutation());
         $i->fillField(CustomerProfilePage::FORM_FIELD_SELECTOR_FIRST_NAME, $customerTransfer->getFirstName());
         $i->fillField(CustomerProfilePage::FORM_FIELD_SELECTOR_LAST_NAME, $customerTransfer->getLastName());
@@ -64,6 +65,7 @@ class CustomerProfileCest
             ->build()
             ->getEmail();
 
+        $i->waitForElement(CustomerProfilePage::FORM_FIELD_SELECTOR_EMAIL, 30);
         $i->fillField(CustomerProfilePage::FORM_FIELD_SELECTOR_EMAIL, $customerEmail);
         $i->click(CustomerProfilePage::BUTTON_PROFILE_FORM_SUBMIT_TEXT, CustomerProfilePage::BUTTON_PROFILE_FORM_SUBMIT_SELECTOR);
 
@@ -72,11 +74,14 @@ class CustomerProfileCest
 
     /**
      * @param \PyzTest\Yves\Customer\CustomerPresentationTester $i
+     * @param \Codeception\Scenario $scenario
      *
      * @return void
      */
-    public function testICanNotUpdateEmailToAnAlreadyUsedOne(CustomerPresentationTester $i): void
+    public function testICanNotUpdateEmailToAnAlreadyUsedOne(CustomerPresentationTester $i, Scenario $scenario): void
     {
+        $scenario->skip('Once we have Chromium + ChromeDriver or Firefox, enable this test case.');
+
         $i->amLoggedInCustomer();
         $anotherCustomerTransfer = $i->haveRegisteredCustomer();
 
@@ -104,6 +109,7 @@ class CustomerProfileCest
         $oldPassword = $customerTransfer->getPassword();
         $newPassword = strrev($oldPassword);
 
+        $i->waitForElement(CustomerProfilePage::FORM_FIELD_CHANGE_PASSWORD_SELECTOR_PASSWORD, 30);
         $i->fillField(CustomerProfilePage::FORM_FIELD_CHANGE_PASSWORD_SELECTOR_PASSWORD, $oldPassword);
         $i->fillField(CustomerProfilePage::FORM_FIELD_CHANGE_PASSWORD_SELECTOR_NEW_PASSWORD, $newPassword);
         $i->fillField(CustomerProfilePage::FORM_FIELD_CHANGE_PASSWORD_SELECTOR_NEW_PASSWORD_CONFIRM, $newPassword);
@@ -128,6 +134,7 @@ class CustomerProfileCest
         $oldPassword = $customerTransfer->getPassword();
         $newPassword = strrev($oldPassword);
 
+        $i->waitForElement(CustomerProfilePage::FORM_FIELD_CHANGE_PASSWORD_SELECTOR_PASSWORD, 30);
         $i->fillField(CustomerProfilePage::FORM_FIELD_CHANGE_PASSWORD_SELECTOR_PASSWORD, $oldPassword);
         $i->fillField(CustomerProfilePage::FORM_FIELD_CHANGE_PASSWORD_SELECTOR_NEW_PASSWORD, $newPassword);
         $i->fillField(CustomerProfilePage::FORM_FIELD_CHANGE_PASSWORD_SELECTOR_NEW_PASSWORD_CONFIRM, 'not matching password');

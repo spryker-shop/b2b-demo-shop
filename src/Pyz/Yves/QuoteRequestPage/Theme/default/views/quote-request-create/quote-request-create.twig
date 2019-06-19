@@ -1,0 +1,89 @@
+{% extends template('page-layout-customer', 'CustomerPage') %}
+
+{% block breadcrumbs %}
+    {% include molecule('breadcrumb') with {
+        data: {
+            steps: [
+                {
+                    label: 'customer.account' | trans,
+                    url: path('customer/overview'),
+                },
+                {
+                    label: 'quote_request_page.quote_request' | trans,
+                    url: path('quote-request'),
+                },
+                {
+                    label: 'quote_request_page.quote_request.create' | trans,
+                },
+            ],
+        },
+    } only %}
+{% endblock %}
+
+{% block contentClass %}page-layout-main--request-for-quote{% endblock %}
+
+{% define data = {
+    title: 'quote_request_page.quote_request' | trans,
+    quoteRequestForm: _view.quoteRequestForm,
+    quoteRequest: _view.quoteRequestForm.vars.value,
+    latestVersion: _view.quoteRequestForm.vars.value.latestVersion,
+} %}
+
+{% set quote = data.latestVersion ? data.latestVersion.quote : null %}
+
+{% block content %}
+    {% if not quote or quote.items is empty %}
+        <div class="box text-center">
+            {% include atom('icon') with {
+                modifiers: ['biggest'],
+                class: 'text-alt',
+                data: {
+                    name: 'shopping-cart',
+                },
+            } only %}
+            <h6>{{ 'cart.empty' | trans }}</h6>
+        </div>
+    {% else %}
+        {{ form_start(data.quoteRequestForm) }}
+            <div class="grid grid--gap">
+                {% embed organism('quote-request-main-content', 'QuoteRequestPage') ignore missing with {
+                    class: 'col col--sm-12 col--xl-9',
+                    data: {
+                        version: data.quoteRequestForm.latestVersion,
+                        quote: quote,
+                    },
+                } only %}
+                    {% block formContent %}
+                        {% for child in data.version.metadata %}
+                            {% include molecule('quote-request-form-field', 'QuoteRequestPage') with {
+                                class: 'col col--sm-12 col--xl-6 spacing-bottom spacing-bottom--big',
+                                data: {
+                                    field: child,
+                                },
+                            } only %}
+                        {% endfor %}
+                    {% endblock %}
+                {% endembed %}
+
+                {% embed organism('quote-request-sidebar', 'QuoteRequestPage') with {
+                    class: 'col col--sm-12 col--xl-3',
+                    data: {
+                        quoteRequest: data.quoteRequest,
+                        quoteRequestForm: data.quoteRequestForm,
+                        quote: quote,
+                        cancelTitle: 'quote_request_page.quote_request.actions.cancel' | trans,
+                        cancelUrl: url('cart'),
+                    },
+                } only %}
+                    {% block latestVersionVisibilityStatus %}{% endblock %}
+                    {% block quoteActions %}
+                        {{ parent() }}
+                        <button type="submit" class="spacing-bottom button button--expand button--success">
+                            {{ 'quote_request_page.quote_request.submit' | trans }}
+                        </button>
+                    {% endblock %}
+                {% endembed %}
+            </div>
+        {{ form_end(data.quoteRequestForm) }}
+    {% endif %}
+{% endblock %}
