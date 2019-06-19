@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "143bae28444335c13abe06be70048aaa",
+    "content-hash": "0cb73168be4f7d7c9f8eb69e26ce4e12",
     "packages": [
         {
             "name": "codeitnowin/barcode",
@@ -14823,25 +14823,26 @@
         },
         {
             "name": "spryker/company-user-auth-rest-api",
-            "version": "1.0.0",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/company-user-auth-rest-api.git",
-                "reference": "c9a8565c75d368ff2679a18b15fa6c5a91b2dd2b"
+                "reference": "8be8e02e7c6e437e22386b1a898c3191e31ec8d8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/company-user-auth-rest-api/zipball/c9a8565c75d368ff2679a18b15fa6c5a91b2dd2b",
-                "reference": "c9a8565c75d368ff2679a18b15fa6c5a91b2dd2b",
+                "url": "https://api.github.com/repos/spryker/company-user-auth-rest-api/zipball/8be8e02e7c6e437e22386b1a898c3191e31ec8d8",
+                "reference": "8be8e02e7c6e437e22386b1a898c3191e31ec8d8",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
+                "spryker/auth-rest-api-extension": "^1.0.0",
+                "spryker/company-user-storage": "^1.0.0",
                 "spryker/glue-application": "^1.15.0",
                 "spryker/glue-application-extension": "^1.0.0",
                 "spryker/kernel": "^3.0.0",
-                "spryker/oauth": "^1.3.0",
-                "spryker/oauth-company-user": "^1.0.0",
+                "spryker/oauth": "^1.4.0",
                 "spryker/symfony": "^3.0.0"
             },
             "require-dev": {
@@ -14864,7 +14865,7 @@
                 "proprietary"
             ],
             "description": "CompanyUserAuthRestApi module",
-            "time": "2019-04-01T09:20:07+00:00"
+            "time": "2019-05-27T08:51:33+00:00"
         },
         {
             "name": "spryker/company-user-data-import",
@@ -19780,34 +19781,37 @@
         },
         {
             "name": "spryker/oauth-company-user",
-            "version": "1.1.0",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/oauth-company-user.git",
-                "reference": "4d2b8454247e10f10fb8fd6baa1a7a3cb4f0b2dd"
+                "reference": "3d0854010b321f99d6790ca500d568f5761d435c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/oauth-company-user/zipball/4d2b8454247e10f10fb8fd6baa1a7a3cb4f0b2dd",
-                "reference": "4d2b8454247e10f10fb8fd6baa1a7a3cb4f0b2dd",
+                "url": "https://api.github.com/repos/spryker/oauth-company-user/zipball/3d0854010b321f99d6790ca500d568f5761d435c",
+                "reference": "3d0854010b321f99d6790ca500d568f5761d435c",
                 "shasum": ""
             },
             "require": {
                 "league/oauth2-server": "^7.1",
                 "php": ">=7.1",
-                "spryker/auth-rest-api-extension": "^1.0.0",
-                "spryker/company-user": "^2.9.0",
-                "spryker/company-user-storage": "^1.0.0",
-                "spryker/glue-application": "^1.15.0",
+                "spryker/company-user": "^2.11.0",
+                "spryker/customer": "^7.0.0",
+                "spryker/customer-extension": "^1.3.0",
                 "spryker/kernel": "^3.0.0",
-                "spryker/oauth": "^1.3.0",
-                "spryker/oauth-company-user-extension": "^1.0.0",
+                "spryker/oauth": "^1.4.0",
+                "spryker/oauth-company-user-extension": "^1.1.0",
                 "spryker/oauth-extension": "^1.1.0",
-                "spryker/util-encoding": "^2.0.0"
+                "spryker/util-encoding": "^2.0.0",
+                "spryker/zed-request": "^3.0.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
+                "spryker/company": "*",
                 "spryker/installer": "*",
+                "spryker/oauth-customer-connector": "*",
+                "spryker/propel": "*",
                 "spryker/testify": "*"
             },
             "suggest": {
@@ -19829,7 +19833,7 @@
                 "proprietary"
             ],
             "description": "OauthCompanyUser module",
-            "time": "2019-04-24T13:03:48+00:00"
+            "time": "2019-05-22T14:31:42+00:00"
         },
         {
             "name": "spryker/oauth-company-user-extension",
@@ -25673,52 +25677,6 @@
             ],
             "description": "ProductValidity module",
             "time": "2018-10-18T15:50:28+00:00"
-        },
-        {
-            "name": "spryker/products-product-prices-resource-relationship",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker/products-product-prices-resource-relationship.git",
-                "reference": "24d315393a2829183bb196c65d60a2ed7c46cf14"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker/products-product-prices-resource-relationship/zipball/24d315393a2829183bb196c65d60a2ed7c46cf14",
-                "reference": "24d315393a2829183bb196c65d60a2ed7c46cf14",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.1",
-                "spryker/glue-application": "^1.0.0",
-                "spryker/glue-application-extension": "^1.0.0",
-                "spryker/kernel": "^3.22.0",
-                "spryker/product-prices-rest-api": "^1.0.0"
-            },
-            "require-dev": {
-                "spryker/code-sniffer": "*",
-                "spryker/testify": "*"
-            },
-            "suggest": {
-                "spryker/products-rest-api": "If you want to expand product resources with prices relationships."
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Spryker\\": "src/Spryker/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "ProductsProductPricesResourceRelationship module",
-            "time": "2018-09-07T08:22:20+00:00"
         },
         {
             "name": "spryker/products-rest-api",
