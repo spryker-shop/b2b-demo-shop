@@ -9,7 +9,6 @@ namespace Pyz\Yves\CartPage;
 
 use Pyz\Yves\CartPage\Plugin\Provider\CartItemsProductProvider;
 use Pyz\Yves\CartPage\Plugin\Provider\CartItemsProductProviderInterface;
-use Spryker\Client\ProductQuantityStorage\ProductQuantityStorageClientInterface;
 use SprykerShop\Yves\CartPage\CartPageFactory as SprykerCartPageFactory;
 
 class CartPageFactory extends SprykerCartPageFactory
@@ -22,13 +21,5 @@ class CartPageFactory extends SprykerCartPageFactory
         return new CartItemsProductProvider(
             $this->getProductStorageClient()
         );
-    }
-
-    /**
-     * @return \Spryker\Client\ProductQuantityStorage\ProductQuantityStorageClientInterface
-     */
-    public function getProductQuantityStorageClient(): ProductQuantityStorageClientInterface
-    {
-        return $this->getProvidedDependency(CartPageDependencyProvider::CLIENT_PRODUCT_QUANTITY_STORAGE);
     }
 }
