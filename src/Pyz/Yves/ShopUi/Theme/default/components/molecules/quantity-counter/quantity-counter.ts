@@ -31,11 +31,38 @@ export default class QuantityCounter extends Component {
         }
     }
 
+    protected sumQuantities(firstQuantity: number, secondQuantity: number): string {
+        const resultQuantity = firstQuantity + secondQuantity;
+
+        return resultQuantity.toFixed(this.getMaxPrecision(firstQuantity, secondQuantity));
+    }
+
+    protected subtractQuantities(firstQuantity: number, secondQuantity: number): string {
+        const resultQuantity = firstQuantity - secondQuantity;
+
+        return resultQuantity.toFixed(this.getMaxPrecision(firstQuantity, secondQuantity));
+    }
+
+    protected getMaxPrecision(firstQuantity: number, secondQuantity: number): number {
+        return Math.max(this.getQuantityPrecision(firstQuantity), this.getQuantityPrecision(secondQuantity));
+    }
+
+    protected getQuantityPrecision(quantity: number): number {
+        const stringQuantity = quantity.toString();
+        const indexOfDecimalDelimiter = stringQuantity.indexOf('.');
+
+        if (indexOfDecimalDelimiter === -1) {
+            return 0;
+        }
+
+        return stringQuantity.substring(indexOfDecimalDelimiter + 1).length;
+    }
+
     protected incrementValue(event: Event): void {
         event.preventDefault();
         if (this.isAvailable) {
             const value = Number(this.input.value);
-            const potentialValue = value + this.step;
+            const potentialValue = this.sumQuantities(value, this.step);
             if (value < this.maxQuantity) {
                 this.input.value = potentialValue.toString();
                 this.triggerInputEvent();
@@ -47,7 +74,7 @@ export default class QuantityCounter extends Component {
         event.preventDefault();
         if (this.isAvailable) {
             const value = Number(this.input.value);
-            const potentialValue = value - this.step;
+            const potentialValue = parseFloat(this.subtractQuantities(value, this.step));
             if (potentialValue >= this.minQuantity) {
                 this.input.value = potentialValue.toString();
                 this.triggerInputEvent();

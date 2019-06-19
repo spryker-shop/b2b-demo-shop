@@ -4,7 +4,7 @@
     title: 'company.account.address.delete_confimation_page' | trans,
     activePage: 'business-unit',
     companyUnitAddress: _view.companyUnitAddress,
-    companyBusinessUnits: _view.companyUnitAddress.companyBusinessUnitCollection.companyBusinessUnits|default([]),
+    companyBusinessUnits: _view.companyUnitAddress.companyBusinessUnits.companyBusinessUnits|default([]),
     idCompanyBusinessUnit: _view.idCompanyBusinessUnit,
 } %}
 
@@ -13,7 +13,7 @@
         data: {
             companyUnitAddress: data.companyUnitAddress,
             companyBusinessUnits: data.companyBusinessUnits,
-            idCompanyBusinessUnit: data.idCompanyBusinessUnit
-        }
+            idCompanyBusinessUnit: data.idCompanyBusinessUnit,
+        },
     } only %}
 {% endblock %}
