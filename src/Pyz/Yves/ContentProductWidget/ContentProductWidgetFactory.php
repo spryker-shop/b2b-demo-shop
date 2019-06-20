@@ -20,7 +20,7 @@ class ContentProductWidgetFactory extends SprykerShopContentProductWidgetFactory
      *
      * @return \Pyz\Yves\ContentProductWidget\Twig\ContentProductAbstractListTwigFunction
      */
-    public function createContentBannerTwigFunction(Environment $twig, string $localeName): SprykerShopContentProductAbstractListTwigFunction
+    public function createContentProductAbstractListTwigFunction(Environment $twig, string $localeName): SprykerShopContentProductAbstractListTwigFunction
     {
         return new ContentProductAbstractListTwigFunction(
             $twig,
