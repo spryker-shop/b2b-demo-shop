@@ -64,6 +64,8 @@ use Spryker\Glue\ProductAvailabilitiesRestApi\Plugin\AbstractProductAvailabiliti
 use Spryker\Glue\ProductAvailabilitiesRestApi\Plugin\ConcreteProductAvailabilitiesRoutePlugin;
 use Spryker\Glue\ProductAvailabilitiesRestApi\Plugin\GlueApplication\AbstractProductAvailabilitiesByResourceIdResourceRelationshipPlugin;
 use Spryker\Glue\ProductAvailabilitiesRestApi\Plugin\GlueApplication\ConcreteProductAvailabilitiesByResourceIdResourceRelationshipPlugin;
+use Spryker\Glue\ProductImageSetsRestApi\Plugin\AbstractProductImageSetsRoutePlugin;
+use Spryker\Glue\ProductImageSetsRestApi\Plugin\ConcreteProductImageSetsRoutePlugin;
 use Spryker\Glue\ProductImageSetsRestApi\Plugin\Relationship\AbstractProductsProductImageSetsResourceRelationshipPlugin;
 use Spryker\Glue\ProductImageSetsRestApi\Plugin\Relationship\ConcreteProductsProductImageSetsResourceRelationshipPlugin;
 use Spryker\Glue\ProductLabelsRestApi\Plugin\GlueApplication\ProductLabelsRelationshipByResourceIdPlugin;
@@ -112,6 +114,8 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new CartUpSellingProductsResourceRoutePlugin(),
             new GuestCartUpSellingProductsResourceRoutePlugin(),
             new CartsResourceRoutePlugin(),
+            new AbstractProductImageSetsRoutePlugin(),
+            new ConcreteProductImageSetsRoutePlugin(),
             new CartItemsResourceRoutePlugin(),
             new GuestCartsResourceRoutePlugin(),
             new GuestCartItemsResourceRoutePlugin(),
@@ -206,7 +210,7 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new ConcreteProductPricesByResourceIdResourceRelationshipPlugin()
         );
         $resourceRelationshipCollection->addRelationship(
-            ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
+            ProductsRestApiConfig::RESOURCE_ABSTRACT_PRODUCTS,
             new AbstractProductsProductImageSetsResourceRelationshipPlugin()
         );
         $resourceRelationshipCollection->addRelationship(
