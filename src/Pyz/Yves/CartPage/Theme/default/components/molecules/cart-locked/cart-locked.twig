@@ -4,6 +4,11 @@
     name: 'cart-locked',
 } %}
 
+{% define data = {
+    quoteApprovals: required,
+    quoteRequestVersionReference: required
+} %}
+
 {% block body %}
     <form class="{{ config.name }}__form" method="POST" action="{{ path('cart/reset-lock') }}">
 
@@ -11,21 +16,23 @@
             modifiers: ['cart-locked'],
             data: {
                 name: 'cart-locked'
-            }
+            },
         } only %}
 
         <div class="{{ config.name }}__info">
             <strong>{{ 'cart_page.quote.label.locked_cart' | trans }}</strong>
             <p>
-                {% if data.cart.quoteApprovals is not empty %}
+                {% if data.quoteApprovals %}
                     {{ 'persistent_cart.quote.label.locked_cart.by_quote_approval' | trans }}
-                {% elseif data.cart.quoteRequestVersionReference %}
-                    {{ 'persistent_cart.quote.label.locked_cart.by_quote_request' | trans }}
                 {% else %}
-                    {{ 'persistent_cart.quote.label.locked_cart' | trans }}
+                    {{ (data.quoteRequestVersionReference ?
+                    'persistent_cart.quote.label.locked_cart.by_quote_request' :
+                    'persistent_cart.quote.label.locked_cart') | trans }}
                 {% endif %}
 
-                <button type="submit" class="link link--cart-locked">{{ 'persistent_cart.quote.button.reset_lock' | trans }}</button>
+                <button type="submit" class="link link--cart-locked">
+                    {{ 'persistent_cart.quote.button.reset_lock' | trans }}
+                </button>
                 {{ 'persistent_cart.quote.label.discarded_locked_cart' | trans }}
             </p>
         </div>
