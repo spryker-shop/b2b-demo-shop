@@ -6,7 +6,7 @@
 
 {% define data = {
     quoteApprovals: required,
-    quoteRequestVersionReference: required
+    quoteRequestVersionReference: required,
 } %}
 
 {% block body %}
@@ -15,7 +15,7 @@
         {% include atom('icon') with {
             modifiers: ['cart-locked'],
             data: {
-                name: 'cart-locked'
+                name: 'cart-locked',
             },
         } only %}
 
@@ -36,6 +36,5 @@
                 {{ 'persistent_cart.quote.label.discarded_locked_cart' | trans }}
             </p>
         </div>
-
     </form>
 {% endblock %}
