@@ -6,6 +6,7 @@
 
 {% block body %}
     <form class="{{ config.name }}__form" method="POST" action="{{ path('cart/reset-lock') }}">
+
         {% include atom('icon') with {
             modifiers: ['cart-locked'],
             data: {
@@ -28,5 +29,6 @@
                 {{ 'persistent_cart.quote.label.discarded_locked_cart' | trans }}
             </p>
         </div>
+
     </form>
 {% endblock %}

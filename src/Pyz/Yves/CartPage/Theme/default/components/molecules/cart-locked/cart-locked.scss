@@ -1,3 +1,5 @@
+$cart-locked-info-width: calc(100% - rem(52));
+
 @mixin cart-page-cart-locked($name: '.cart-locked') {
     #{$name} {
         margin-bottom: rem(20);
@@ -11,7 +13,7 @@
         }
 
         &__info {
-            width: calc(100% - 52px);
+            width: $cart-locked-info-width;
         }
 
         @content;
