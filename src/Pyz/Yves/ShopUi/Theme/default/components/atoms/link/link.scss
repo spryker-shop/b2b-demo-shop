@@ -143,4 +143,18 @@
             font-size: rem(13);
         }
     }
+
+    &--cart-locked {
+        color: $setting-color-alt;
+
+        @include helper-breakpoint-media-min($xl) {
+            @include helper-effect-transition(color);
+        }
+
+        &:focus,
+        &:hover {
+            text-decoration: none;
+            color: $setting-color-main;
+        }
+    }
 }

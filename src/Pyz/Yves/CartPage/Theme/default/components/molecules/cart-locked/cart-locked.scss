@@ -1,0 +1,21 @@
+@mixin cart-page-cart-locked($name: '.cart-locked') {
+    #{$name} {
+        margin-bottom: rem(20);
+        padding: rem(10) rem(18);
+        background-color: $setting-color-gray-7;
+
+        &__form {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        &__info {
+            width: calc(100% - 52px);
+        }
+
+        @content;
+    }
+}
+
+@include cart-page-cart-locked();
