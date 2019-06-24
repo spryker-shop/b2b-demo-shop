@@ -32,16 +32,12 @@ use Spryker\Zed\Development\Communication\Console\CodePhpMessDetectorConsole;
 use Spryker\Zed\Development\Communication\Console\CodePhpstanConsole;
 use Spryker\Zed\Development\Communication\Console\CodeStyleSnifferConsole;
 use Spryker\Zed\Development\Communication\Console\CodeTestConsole;
-use Spryker\Zed\Development\Communication\Console\ComposerJsonUpdaterConsole;
 use Spryker\Zed\Development\Communication\Console\GenerateClientIdeAutoCompletionConsole;
 use Spryker\Zed\Development\Communication\Console\GenerateIdeAutoCompletionConsole;
 use Spryker\Zed\Development\Communication\Console\GenerateServiceIdeAutoCompletionConsole;
 use Spryker\Zed\Development\Communication\Console\GenerateYvesIdeAutoCompletionConsole;
 use Spryker\Zed\Development\Communication\Console\GenerateZedIdeAutoCompletionConsole;
-use Spryker\Zed\Development\Communication\Console\ModuleBridgeCreateConsole;
-use Spryker\Zed\Development\Communication\Console\ModuleCreateConsole;
 use Spryker\Zed\Development\Communication\Console\PluginUsageFinderConsole;
-use Spryker\Zed\Development\Communication\Console\PropelAbstractValidateConsole;
 use Spryker\Zed\DocumentationGeneratorRestApi\Communication\Console\GenerateRestApiDocumentationConsole;
 use Spryker\Zed\EventBehavior\Communication\Console\EventBehaviorTriggerTimeoutConsole;
 use Spryker\Zed\EventBehavior\Communication\Console\EventTriggerConsole;
@@ -297,7 +293,6 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new PriceProductScheduleCleanupConsole(),
             new UuidGeneratorConsole(),
             new BuildValidationCacheConsole(),
-            new GenerateRestApiDocumentationConsole(),
         ];
 
         $propelCommands = $container->getLocator()->propel()->facade()->getConsoleCommands();
@@ -308,10 +303,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             $commands[] = new CodeStyleSnifferConsole();
             $commands[] = new CodeArchitectureSnifferConsole();
             $commands[] = new CodePhpstanConsole();
-            $commands[] = new ModuleBridgeCreateConsole();
-            $commands[] = new ModuleCreateConsole();
             $commands[] = new CodePhpMessDetectorConsole();
-            $commands[] = new ComposerJsonUpdaterConsole();
             $commands[] = new ValidatorConsole();
             $commands[] = new BundleCodeGeneratorConsole();
             $commands[] = new BundleYvesCodeGeneratorConsole();
@@ -330,12 +322,12 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             $commands[] = new PropelSchemaValidatorConsole();
             $commands[] = new PropelSchemaXmlNameValidatorConsole();
             $commands[] = new DataImportDumpConsole();
-            $commands[] = new PropelAbstractValidateConsole();
             $commands[] = new PluginUsageFinderConsole();
             $commands[] = new PostgresIndexGeneratorConsole();
             $commands[] = new PostgresIndexRemoverConsole();
             $commands[] = new QueueDumpConsole();
             $commands[] = new EventTriggerListenerConsole();
+            $commands[] = new GenerateRestApiDocumentationConsole();
         }
 
         return $commands;
