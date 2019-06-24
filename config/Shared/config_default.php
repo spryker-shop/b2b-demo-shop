@@ -3,6 +3,7 @@
 use Monolog\Logger;
 use Pyz\Shared\DataImport\DataImportConstants;
 use Spryker\Client\RabbitMq\Model\RabbitMqAdapter;
+use Spryker\Glue\Log\Plugin\GlueLoggerConfigPlugin;
 use Spryker\Service\FlysystemLocalFileSystem\Plugin\Flysystem\LocalFilesystemBuilderPlugin;
 use Spryker\Shared\Acl\AclConstants;
 use Spryker\Shared\Application\ApplicationConstants;
@@ -37,7 +38,11 @@ use Spryker\Shared\Search\SearchConstants;
 use Spryker\Shared\SequenceNumber\SequenceNumberConstants;
 use Spryker\Shared\Session\SessionConfig;
 use Spryker\Shared\Session\SessionConstants;
+use Spryker\Shared\SessionFile\SessionFileConstants;
+use Spryker\Shared\SessionRedis\SessionRedisConfig;
+use Spryker\Shared\SessionRedis\SessionRedisConstants;
 use Spryker\Shared\Storage\StorageConstants;
+use Spryker\Shared\StorageRedis\StorageRedisConstants;
 use Spryker\Shared\Tax\TaxConstants;
 use Spryker\Shared\Translator\TranslatorConstants;
 use Spryker\Shared\Twig\TwigConstants;
@@ -252,22 +257,68 @@ $config[ZedRequestConstants::TRANSFER_DEBUG_SESSION_NAME] = 'XDEBUG_SESSION';
 
 // ---------- KV storage
 $config[StorageConstants::STORAGE_KV_SOURCE] = 'redis';
-$config[StorageConstants::STORAGE_PERSISTENT_CONNECTION] = true;
+
+/**
+ * Data source names are used exclusively when set, e.g. no other Redis storage configuration will be used for the client.
+ *
+ * Example:
+ *   $config[StorageRedisConstants::STORAGE_REDIS_DATA_SOURCE_NAMES] = ['tcp://127.0.0.1:10009', 'tcp://10.0.0.1:6379']
+ */
+//$config[StorageRedisConstants::STORAGE_REDIS_DATA_SOURCE_NAMES] = [];
+
+$config[StorageRedisConstants::STORAGE_REDIS_PERSISTENT_CONNECTION] = true;
+$config[StorageRedisConstants::STORAGE_REDIS_PROTOCOL] = 'tcp';
+$config[StorageRedisConstants::STORAGE_REDIS_HOST] = '127.0.0.1';
+$config[StorageRedisConstants::STORAGE_REDIS_PORT] = 10009;
+$config[StorageRedisConstants::STORAGE_REDIS_PASSWORD] = false;
+$config[StorageRedisConstants::STORAGE_REDIS_DATABASE] = 0;
 
 // ---------- Session
-$config[SessionConstants::YVES_SESSION_SAVE_HANDLER] = SessionConfig::SESSION_HANDLER_REDIS_LOCKING;
+$config[SessionConstants::YVES_SESSION_SAVE_HANDLER] = SessionRedisConfig::SESSION_HANDLER_REDIS_LOCKING;
 $config[SessionConstants::YVES_SESSION_TIME_TO_LIVE] = SessionConfig::SESSION_LIFETIME_1_HOUR;
+$config[SessionRedisConstants::YVES_SESSION_TIME_TO_LIVE] = $config[SessionConstants::YVES_SESSION_TIME_TO_LIVE];
+$config[SessionFileConstants::YVES_SESSION_TIME_TO_LIVE] = $config[SessionConstants::YVES_SESSION_TIME_TO_LIVE];
 $config[SessionConstants::YVES_SESSION_COOKIE_TIME_TO_LIVE] = SessionConfig::SESSION_LIFETIME_0_5_HOUR;
-$config[SessionConstants::YVES_SESSION_FILE_PATH] = session_save_path();
-$config[SessionConstants::YVES_SESSION_PERSISTENT_CONNECTION] = $config[StorageConstants::STORAGE_PERSISTENT_CONNECTION];
-$config[SessionConstants::ZED_SESSION_SAVE_HANDLER] = SessionConfig::SESSION_HANDLER_REDIS;
+$config[SessionFileConstants::YVES_SESSION_FILE_PATH] = session_save_path();
+$config[SessionConstants::YVES_SESSION_PERSISTENT_CONNECTION] = $config[StorageRedisConstants::STORAGE_REDIS_PERSISTENT_CONNECTION];
+$config[SessionConstants::ZED_SESSION_SAVE_HANDLER] = SessionRedisConfig::SESSION_HANDLER_REDIS;
 $config[SessionConstants::ZED_SESSION_TIME_TO_LIVE] = SessionConfig::SESSION_LIFETIME_1_HOUR;
+$config[SessionRedisConstants::ZED_SESSION_TIME_TO_LIVE] = $config[SessionConstants::ZED_SESSION_TIME_TO_LIVE];
+$config[SessionFileConstants::ZED_SESSION_TIME_TO_LIVE] = $config[SessionConstants::ZED_SESSION_TIME_TO_LIVE];
 $config[SessionConstants::ZED_SESSION_COOKIE_TIME_TO_LIVE] = SessionConfig::SESSION_LIFETIME_BROWSER_SESSION;
-$config[SessionConstants::ZED_SESSION_FILE_PATH] = session_save_path();
-$config[SessionConstants::ZED_SESSION_PERSISTENT_CONNECTION] = $config[StorageConstants::STORAGE_PERSISTENT_CONNECTION];
-$config[SessionConstants::SESSION_HANDLER_REDIS_LOCKING_TIMEOUT_MILLISECONDS] = 0;
-$config[SessionConstants::SESSION_HANDLER_REDIS_LOCKING_RETRY_DELAY_MICROSECONDS] = 0;
-$config[SessionConstants::SESSION_HANDLER_REDIS_LOCKING_LOCK_TTL_MILLISECONDS] = 0;
+$config[SessionFileConstants::ZED_SESSION_FILE_PATH] = session_save_path();
+$config[SessionConstants::ZED_SESSION_PERSISTENT_CONNECTION] = $config[StorageRedisConstants::STORAGE_REDIS_PERSISTENT_CONNECTION];
+$config[SessionRedisConstants::LOCKING_TIMEOUT_MILLISECONDS] = 0;
+$config[SessionRedisConstants::LOCKING_RETRY_DELAY_MICROSECONDS] = 0;
+$config[SessionRedisConstants::LOCKING_LOCK_TTL_MILLISECONDS] = 0;
+
+/**
+ * Data source names are used exclusively when set, e.g. no other Redis session configuration will be used for the client.
+ *
+ * Example:
+ *   $config[SessionRedisConstants::YVES_SESSION_REDIS_DATA_SOURCE_NAMES] = ['tcp://127.0.0.1:10009', 'tcp://10.0.0.1:6379']
+ */
+//$config[SessionRedisConstants::YVES_SESSION_REDIS_DATA_SOURCE_NAMES] = [];
+
+$config[SessionRedisConstants::YVES_SESSION_REDIS_PROTOCOL] = $config[StorageRedisConstants::STORAGE_REDIS_PROTOCOL];
+$config[SessionRedisConstants::YVES_SESSION_REDIS_HOST] = $config[StorageRedisConstants::STORAGE_REDIS_HOST];
+$config[SessionRedisConstants::YVES_SESSION_REDIS_PORT] = $config[StorageRedisConstants::STORAGE_REDIS_PORT];
+$config[SessionRedisConstants::YVES_SESSION_REDIS_PASSWORD] = $config[StorageRedisConstants::STORAGE_REDIS_PASSWORD];
+$config[SessionRedisConstants::YVES_SESSION_REDIS_DATABASE] = 1;
+
+/**
+ * Data source names are used exclusively when set, e.g. no other Redis session configuration will be used for the client.
+ *
+ * Example:
+ *   $config[SessionRedisConstants::ZED_SESSION_REDIS_DATA_SOURCE_NAMES] = ['tcp://127.0.0.1:10009', 'tcp://10.0.0.1:6379']
+ */
+//$config[SessionRedisConstants::ZED_SESSION_REDIS_DATA_SOURCE_NAMES] = [];
+
+$config[SessionRedisConstants::ZED_SESSION_REDIS_PROTOCOL] = $config[StorageRedisConstants::STORAGE_REDIS_PROTOCOL];
+$config[SessionRedisConstants::ZED_SESSION_REDIS_HOST] = $config[StorageRedisConstants::STORAGE_REDIS_HOST];
+$config[SessionRedisConstants::ZED_SESSION_REDIS_PORT] = $config[StorageRedisConstants::STORAGE_REDIS_PORT];
+$config[SessionRedisConstants::ZED_SESSION_REDIS_PASSWORD] = $config[StorageRedisConstants::STORAGE_REDIS_PASSWORD];
+$config[SessionRedisConstants::ZED_SESSION_REDIS_DATABASE] = 2;
 
 // ---------- Cookie
 $config[ApplicationConstants::YVES_COOKIE_DEVICE_ID_NAME] = 'did';
@@ -320,6 +371,7 @@ $config[ErrorHandlerConstants::ERROR_LEVEL] = E_ALL & ~E_DEPRECATED & ~E_USER_DE
 // ---------- Logging
 $config[LogConstants::LOGGER_CONFIG_ZED] = ZedLoggerConfigPlugin::class;
 $config[LogConstants::LOGGER_CONFIG_YVES] = YvesLoggerConfigPlugin::class;
+$config[LogConstants::LOGGER_CONFIG_GLUE] = GlueLoggerConfigPlugin::class;
 
 $config[LogConstants::LOG_LEVEL] = Logger::INFO;
 
@@ -327,6 +379,7 @@ $baseLogFilePath = sprintf('%s/data/%s/logs', APPLICATION_ROOT_DIR, $CURRENT_STO
 
 $config[LogConstants::LOG_FILE_PATH_YVES] = $baseLogFilePath . '/YVES/application.log';
 $config[LogConstants::LOG_FILE_PATH_ZED] = $baseLogFilePath . '/ZED/application.log';
+$config[LogConstants::LOG_FILE_PATH_GLUE] = $baseLogFilePath . '/GLUE/application.log';
 
 $config[LogConstants::EXCEPTION_LOG_FILE_PATH_YVES] = $baseLogFilePath . '/YVES/exception.log';
 $config[LogConstants::EXCEPTION_LOG_FILE_PATH_ZED] = $baseLogFilePath . '/ZED/exception.log';

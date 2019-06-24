@@ -9,6 +9,7 @@ namespace Pyz\Zed\Console;
 
 use Pyz\Zed\DataImport\DataImportConfig;
 use Pyz\Zed\PriceProductScheduleDataImport\PriceProductScheduleDataImportConfig;
+use Pyz\Zed\ProductQuantityDataImport\ProductQuantityDataImportConfig;
 use Silex\Provider\TwigServiceProvider as SilexTwigServiceProvider;
 use Spryker\Shared\Config\Environment;
 use Spryker\Zed\BusinessOnBehalfDataImport\BusinessOnBehalfDataImportConfig;
@@ -41,6 +42,7 @@ use Spryker\Zed\Development\Communication\Console\ModuleBridgeCreateConsole;
 use Spryker\Zed\Development\Communication\Console\ModuleCreateConsole;
 use Spryker\Zed\Development\Communication\Console\PluginUsageFinderConsole;
 use Spryker\Zed\Development\Communication\Console\PropelAbstractValidateConsole;
+use Spryker\Zed\DocumentationGeneratorRestApi\Communication\Console\GenerateRestApiDocumentationConsole;
 use Spryker\Zed\EventBehavior\Communication\Console\EventBehaviorTriggerTimeoutConsole;
 use Spryker\Zed\EventBehavior\Communication\Console\EventTriggerConsole;
 use Spryker\Zed\EventBehavior\Communication\Console\EventTriggerListenerConsole;
@@ -81,10 +83,12 @@ use Spryker\Zed\Queue\Communication\Console\QueueDumpConsole;
 use Spryker\Zed\Queue\Communication\Console\QueueTaskConsole;
 use Spryker\Zed\Queue\Communication\Console\QueueWorkerConsole;
 use Spryker\Zed\Quote\Communication\Console\DeleteExpiredGuestQuoteConsole;
+use Spryker\Zed\QuoteRequest\Communication\Console\CloseOutdatedQuoteRequestConsole;
 use Spryker\Zed\RabbitMq\Communication\Console\DeleteAllExchangesConsole;
 use Spryker\Zed\RabbitMq\Communication\Console\DeleteAllQueuesConsole;
 use Spryker\Zed\RabbitMq\Communication\Console\PurgeAllQueuesConsole;
 use Spryker\Zed\RabbitMq\Communication\Console\SetUserPermissionsConsole;
+use Spryker\Zed\RestRequestValidator\Communication\Console\BuildValidationCacheConsole;
 use Spryker\Zed\Search\Communication\Console\GenerateIndexMapConsole;
 use Spryker\Zed\Search\Communication\Console\SearchCloseIndexConsole;
 use Spryker\Zed\Search\Communication\Console\SearchConsole;
@@ -118,6 +122,8 @@ use Spryker\Zed\StateMachine\Communication\Console\ClearLocksConsole as StateMac
 use Spryker\Zed\Storage\Communication\Console\StorageDeleteAllConsole;
 use Spryker\Zed\Storage\Communication\Console\StorageExportRdbConsole;
 use Spryker\Zed\Storage\Communication\Console\StorageImportRdbConsole;
+use Spryker\Zed\StorageRedis\Communication\Console\StorageRedisExportRdbConsole;
+use Spryker\Zed\StorageRedis\Communication\Console\StorageRedisImportRdbConsole;
 use Spryker\Zed\Synchronization\Communication\Console\ExportSynchronizedDataConsole;
 use Spryker\Zed\Transfer\Communication\Console\DataBuilderGeneratorConsole;
 use Spryker\Zed\Transfer\Communication\Console\GeneratorConsole;
@@ -126,6 +132,7 @@ use Spryker\Zed\Translator\Communication\Console\CleanTranslationCacheConsole;
 use Spryker\Zed\Translator\Communication\Console\GenerateTranslationCacheConsole;
 use Spryker\Zed\Twig\Communication\Console\CacheWarmerConsole;
 use Spryker\Zed\Twig\Communication\Plugin\ServiceProvider\TwigServiceProvider as SprykerTwigServiceProvider;
+use Spryker\Zed\Uuid\Communication\Console\UuidGeneratorConsole;
 use Spryker\Zed\ZedNavigation\Communication\Console\BuildNavigationConsole;
 use Stecman\Component\Symfony\Console\BashCompletion\CompletionCommand;
 
@@ -219,6 +226,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . ShoppingListDataImportConfig::IMPORT_TYPE_SHOPPING_LIST_ITEM),
             new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . ShoppingListDataImportConfig::IMPORT_TYPE_SHOPPING_LIST_COMPANY_USER),
             new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . ShoppingListDataImportConfig::IMPORT_TYPE_SHOPPING_LIST_COMPANY_BUSINESS_UNIT),
+            new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . ProductQuantityDataImportConfig::IMPORT_TYPE_PRODUCT_QUANTITY),
 
             // Publish and Synchronization
             new EventBehaviorTriggerTimeoutConsole(),
@@ -242,7 +250,9 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
 
             new DeleteLogFilesConsole(),
             new StorageExportRdbConsole(),
+            new StorageRedisExportRdbConsole(),
             new StorageImportRdbConsole(),
+            new StorageRedisImportRdbConsole(),
             new StorageDeleteAllConsole(),
             new SearchDeleteIndexConsole(),
             new SearchCloseIndexConsole(),
@@ -281,8 +291,13 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new CleanTranslationCacheConsole(),
             new GenerateTranslationCacheConsole(),
 
+            new CloseOutdatedQuoteRequestConsole(),
+
             new PriceProductScheduleApplyConsole(),
             new PriceProductScheduleCleanupConsole(),
+            new UuidGeneratorConsole(),
+            new BuildValidationCacheConsole(),
+            new GenerateRestApiDocumentationConsole(),
         ];
 
         $propelCommands = $container->getLocator()->propel()->facade()->getConsoleCommands();

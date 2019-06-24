@@ -50,6 +50,7 @@
 {% block contentClass %}page-layout-main page-layout-main--cart-page{% endblock %}
 
 {% block content %}
+    {% set isQuoteEnadled = data.cart.idQuote and data.isQuoteEditable %}
     {% if data.cart.items is empty %}
         <div class="grid">
             <div class="col col--xl-9">
@@ -94,7 +95,7 @@
                 <div class="cart-title">
                     <h3 class="grid grid--nowrap grid--middle cart-title__text">
                         {{ data.cart.name }}
-                        {% if can('ChangeCartItemPermissionPlugin', data.cart.idQuote) and data.isQuoteEditable %}
+                        {% if isQuoteEnadled and can('ChangeCartItemPermissionPlugin', data.cart.idQuote) %}
                             <a href="{{ path('multi-cart/update', {idQuote: data.cart.idQuote}) }}" class="col button button--hollow-icon button--edit cart-title__link">
                                 {% include molecule('icon-tooltip') with {
                                     modifiers: ['sm-lg-regular'],
@@ -160,7 +161,7 @@
                     {% endembed %}
                 {% endfor %}
 
-                {% if data.isQuoteEditable and can('RemoveCartItemPermissionPlugin') %}
+                {% if isQuoteEnadled and can('RemoveCartItemPermissionPlugin') %}
                     <div class="grid grid--right cart-bottom">
                         <a href="{{ path('multi-cart/clear', {idQuote: data.cart.idQuote}) }}" class="link link--icon cart-bottom__button">
                             {% include atom('icon') with {
@@ -259,6 +260,18 @@
                         } only %}
                     {% endif %}
                 </div>
+
+                {% widget 'QuoteRequestAgentOverviewWidget' only %}
+                    {% block body %}
+                        {% block activeRequest %}
+                            {% if data.quoteRequestOverviewCollection.currentQuoteRequest %}
+                                <div class="order-sidebar__item--summary">
+                                    {{ block('activeRequestActions') }}
+                                </div>
+                            {% endif %}
+                        {% endblock %}
+                    {% endblock %}
+                {% endwidget %}
 
                 {% include molecule('toggler-accordion') with {
                     attributes: {

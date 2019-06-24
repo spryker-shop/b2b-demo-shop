@@ -7,22 +7,18 @@
 
 namespace PyzTest\Yves\Customer\PageObject;
 
-class CustomerOverviewPage extends Customer
+class CustomerOverviewPage
 {
     public const URL = '/customer/overview';
 
     public const BOX_HEADLINE_ORDERS = 'Last orders';
     public const BOX_HEADLINE_PROFILE = 'Profile';
     public const BOX_HEADLINE_NEWSLETTER = 'Newsletter';
-    public const NEWSLETTER_SUBSCRIBED = 'Newsletter subscribed';
-    public const BOX_HEADLINE_BILLING_ADDRESS = 'Default Billing Address';
-    public const BOX_HEADLINE_SHIPPING_ADDRESS = 'Default Shipping Address';
 
-    public const LINK_TO_PROFILE_PAGE = '//a[@data-id="sidebar-profile"]';//'Profile';
-    public const LINK_TO_ADDRESSES_PAGE = '//a[@data-id="sidebar-address"]';//'Addresses';
-    public const LINK_TO_ORDERS_PAGE = '//a[@data-id="sidebar-order"]';//'Orders History';
-    public const LINK_TO_NEWSLETTER_PAGE = '//a[@data-id="sidebar-newsletter"]';//'Newsletter';
+    public const MESSAGE_SUCCESS_NEWSLETTER_SUBSCRIBED = 'You successfully subscribed to the newsletter';
 
-    public const INFO_TEXT_ADD_SHIPPING_ADDRESS = 'Please Specify Shipping Address';
-    public const INFO_TEXT_ADD_BILLING_ADDRESS = 'Please Specify Billing Address';
+    public const LINK_TO_PROFILE_PAGE = '//a[@class=\'navigation-sidebar-item__link\' and @href=\'/customer/profile\']';
+    public const LINK_TO_ADDRESSES_PAGE = '//a[@class=\'navigation-sidebar-item__link\' and @href=\'/customer/address\']';
+    public const LINK_TO_ORDERS_PAGE = '//a[@class=\'navigation-sidebar-item__link\' and @href=\'/customer/order\']';
+    public const LINK_TO_NEWSLETTER_PAGE = '//a[@class=\'navigation-sidebar-item__link\' and @href=\'/customer/newsletter\']';
 }

@@ -44,6 +44,7 @@ use SprykerShop\Yves\CheckoutPage\Plugin\Provider\CheckoutPageControllerProvider
 use SprykerShop\Yves\CmsPage\Plugin\Provider\PreviewControllerProvider;
 use SprykerShop\Yves\CmsSearchPage\Plugin\Provider\CmsSearchPageControllerProvider;
 use SprykerShop\Yves\CompanyPage\Plugin\Provider\CompanyPageControllerProvider;
+use SprykerShop\Yves\CompanyUserAgentWidget\Plugin\Provider\CompanyUserAgentWidgetControllerProvider;
 use SprykerShop\Yves\CompanyUserInvitationPage\Plugin\Provider\CompanyUserInvitationPageControllerProvider;
 use SprykerShop\Yves\CurrencyWidget\Plugin\Provider\CurrencyWidgetControllerProvider;
 use SprykerShop\Yves\CustomerPage\Plugin\Provider\CustomerPageControllerProvider;
@@ -63,6 +64,10 @@ use SprykerShop\Yves\ProductSearchWidget\Plugin\Provider\ProductSearchWidgetCont
 use SprykerShop\Yves\ProductSetListPage\Plugin\Provider\ProductSetListPageControllerProvider;
 use SprykerShop\Yves\QuickOrderPage\Plugin\Provider\QuickOrderPageControllerProvider;
 use SprykerShop\Yves\QuoteApprovalWidget\Plugin\Provider\QuoteApprovalControllerProvider;
+use SprykerShop\Yves\QuoteRequestAgentPage\Plugin\Provider\QuoteRequestAgentPageControllerProvider;
+use SprykerShop\Yves\QuoteRequestAgentWidget\Plugin\Provider\QuoteRequestAgentWidgetControllerProvider;
+use SprykerShop\Yves\QuoteRequestPage\Plugin\Provider\QuoteRequestPageControllerProvider;
+use SprykerShop\Yves\QuoteRequestWidget\Plugin\Provider\QuoteRequestWidgetControllerProvider;
 use SprykerShop\Yves\SharedCartPage\Plugin\Provider\SharedCartPageControllerProvider;
 use SprykerShop\Yves\ShopApplication\Plugin\Provider\AutoloaderCacheServiceProvider;
 use SprykerShop\Yves\ShopApplication\Plugin\Provider\ShopControllerEventServiceProvider;
@@ -183,6 +188,11 @@ class YvesBootstrap extends SprykerYvesBootstrap
             new AvailabilityNotificationWidgetControllerProvider($isSsl),
             new AvailabilityNotificationPageControllerProvider($isSsl),
             new QuoteApprovalControllerProvider($isSsl), #QuoteApprovalFeature
+            new QuoteRequestPageControllerProvider($isSsl),
+            new QuoteRequestAgentPageControllerProvider($isSsl),
+            new QuoteRequestAgentWidgetControllerProvider($isSsl),
+            new QuoteRequestWidgetControllerProvider($isSsl),
+            new CompanyUserAgentWidgetControllerProvider($isSsl),
         ];
     }
 }
