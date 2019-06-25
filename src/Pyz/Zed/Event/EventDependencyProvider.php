@@ -17,8 +17,8 @@ use Spryker\Zed\CmsBlockProductStorage\Communication\Plugin\Event\Subscriber\Cms
 use Spryker\Zed\CmsBlockStorage\Communication\Plugin\Event\Subscriber\CmsBlockStorageEventSubscriber;
 use Spryker\Zed\CmsPageSearch\Communication\Plugin\Event\Subscriber\CmsPageSearchEventSubscriber;
 use Spryker\Zed\CmsStorage\Communication\Plugin\Event\Subscriber\CmsStorageEventSubscriber;
-use Spryker\Zed\ContentStorage\Communication\Plugin\Event\Subscriber\ContentStorageEventSubscriber;
 use Spryker\Zed\CompanyUserStorage\Communication\Plugin\Event\Subscriber\CompanyUserStorageEventSubscriber;
+use Spryker\Zed\ContentStorage\Communication\Plugin\Event\Subscriber\ContentStorageEventSubscriber;
 use Spryker\Zed\CustomerAccessStorage\Communication\Plugin\Event\Subscriber\CustomerAccessStorageEventSubscriber;
 use Spryker\Zed\Event\EventDependencyProvider as SprykerEventDependencyProvider;
 use Spryker\Zed\FileManagerStorage\Communication\Plugin\Event\Subscriber\FileManagerStorageSubscriber;
