@@ -6,14 +6,12 @@
 } %}
 
 {% block body %}
-    {% if data.productViews is not empty %}
-        {% include organism('product-set-details', 'ProductSetWidget') ignore missing with {
-            data: {
-                products: data.productViews,
-                name: data.productSet.name,
-                description: data.productSet.description,
-                images: data.productSet.imageSets.0.images | default([]),
-            },
-        } only %}
-    {% endif %}
+    {% include organism('product-set-details', 'ProductSetWidget') ignore missing with {
+        data: {
+            products: data.productViews,
+            title: data.productSet.name,
+            description: data.productSet.description,
+            images: data.productSet.imageSets.0.images | default([]),
+        },
+    } only %}
 {% endblock %}
