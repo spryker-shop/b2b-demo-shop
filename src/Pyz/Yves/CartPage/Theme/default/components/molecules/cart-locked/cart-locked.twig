@@ -30,7 +30,7 @@
                     'persistent_cart.quote.label.locked_cart') | trans }}
                 {% endif %}
 
-                <button type="submit" class="link link--cart-locked">
+                <button type="submit" class="link {{ config.name }}__reset-link">
                     {{ 'persistent_cart.quote.button.reset_lock' | trans }}
                 </button>
                 {{ 'persistent_cart.quote.label.discarded_locked_cart' | trans }}

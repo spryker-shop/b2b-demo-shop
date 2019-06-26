@@ -16,6 +16,20 @@ $cart-locked-info-padding: rem(52);
             width: calc(100% - #{$cart-locked-info-padding});
         }
 
+        &__reset-link {
+            color: $setting-color-alt;
+
+            @include helper-breakpoint-media-min($xl) {
+                @include helper-effect-transition(color);
+            }
+
+            &:focus,
+            &:hover {
+                text-decoration: none;
+                color: $setting-color-main;
+            }
+        }
+
         @content;
     }
 }
