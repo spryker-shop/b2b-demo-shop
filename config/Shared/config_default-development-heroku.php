@@ -16,10 +16,13 @@ use Spryker\Shared\Setup\SetupConstants;
 use Spryker\Shared\StorageRedis\StorageRedisConstants;
 use Spryker\Shared\ZedNavigation\ZedNavigationConstants;
 use Spryker\Shared\ZedRequest\ZedRequestConstants;
+use SprykerShop\Shared\ShopApplication\ShopApplicationConstants;
 
 // ---------- General
 $config[KernelConstants::SPRYKER_ROOT] = APPLICATION_ROOT_DIR . '/vendor/spryker';
-$config[ApplicationConstants::ENABLE_APPLICATION_DEBUG] = false;
+$config[ApplicationConstants::ENABLE_APPLICATION_DEBUG]
+    = $config[ShopApplicationConstants::ENABLE_APPLICATION_DEBUG]
+    = false;
 $config[ZedRequestConstants::SET_REPEAT_DATA] = false;
 $config[KernelConstants::STORE_PREFIX] = 'DEV';
 
