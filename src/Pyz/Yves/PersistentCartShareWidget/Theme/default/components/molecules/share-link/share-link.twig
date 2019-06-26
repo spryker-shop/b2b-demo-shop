@@ -1,0 +1,33 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'share-link',
+} %}
+
+{% define data = {
+    shareOption: required,
+    cartShareLink: required,
+    cartShareLinkLabel: required,
+} %}
+
+{% block body %}
+    <div class="grid grid--bottom grid--nowrap">
+        <div class="col col--expand">
+            {% if data.cartShareLinkLabel | trans %}
+                <label class="label label--small" for="{{ data.shareOption }}">{{ data.cartShareLinkLabel | trans }}</label>
+            {% endif %}
+            <input id="{{ data.shareOption }}" class="{{ config.jsName }}__target-{{ data.shareOption }} input input--expand input--inline" type="url" value="{{ data.cartShareLink }}">
+        </div>
+        <div class="col">
+            <button type="button" class="{{ config.jsName }}__trigger-{{ data.shareOption }} button button--inline">
+                {{ 'persistent_cart_share.copy' | trans }}
+            </button>
+        </div>
+    </div>
+    {% include molecule('clipboard-copy') with {
+        attributes: {
+            'trigger-selector': '.' ~ config.jsName ~ '__trigger-' ~ data.shareOption,
+            'target-selector': '.' ~ config.jsName ~ '__target-' ~ data.shareOption,
+        }
+    } only %}
+{% endblock %}

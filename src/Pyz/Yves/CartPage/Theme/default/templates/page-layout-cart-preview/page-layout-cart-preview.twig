@@ -1,0 +1,145 @@
+{% extends template('page-layout-cart', 'CartPage') %}
+
+{% define data = {
+    isQuoteEditable: false,
+    isQuoteValid: false,
+    products: '',
+} %}
+
+{% block header %}
+    {% embed organism('header') only %}
+        {% block body %}
+            <div class="{{ config.name }}__main">
+                <div class="container grid grid--middle">
+                    {% include molecule('logo') with {
+                        class: 'col ' ~  config.name ~ '__logo',
+                        modifiers: ['main'],
+                    } only %}
+
+                    <div class="col col--right {{ is_granted('ROLE_USER') ? config.name ~ '__user-nav' : config.name ~ '__login-wrap' }}">
+                        {% if is_granted('ROLE_USER') %}
+                            <a href="{{ url('logout') }}" class="button button--tight button--medium {{ config.name }}__login">{{ 'customer.logout' | trans }}</a>
+                        {% else %}
+                            <a href="{{ url('login') }}" class="button button--tight button--medium {{ config.name }}__login">{{ 'customer.please_login' | trans }}</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        {% endblock %}
+    {% endembed %}
+{% endblock %}
+
+{% block pageInfo %}{% endblock %}
+
+{% block cartTitle %}
+    {{- 'persistent_cart_share_page.preview' | trans({'%title%': data.cart.name}) -}}
+{% endblock %}
+
+{% block emptyCart %}
+    <div class="grid">
+        <div class="col col--sm-12">
+            {{ block('emptyCartMessage') }}
+        </div>
+    </div>
+{% endblock %}
+
+{% block cartItem %}
+    {% embed molecule('product-item') with {
+        data: {
+            list: data.cart,
+            listItem: cartItem,
+            attributes: data.attributes[cartItem.sku] | default([]),
+            canEdit: false,
+            canRemove: false,
+            imageModifiers: ['cart'],
+        },
+        embed: {
+            product: data.products[cartItem.sku] | default,
+        },
+    } only %}
+        {% block price %}
+            {% set price = data.listItem.sumPrice ?? data.listItem.price %}
+            {% include molecule('money-price') with {
+                modifiers: ['cart'],
+                data: {
+                    amount: price,
+                    currencyIsoCode: data.list.currency.code,
+                },
+            } only %}
+        {% endblock %}
+
+        {% block info %}
+            {{ parent() }}
+
+            {% if embed.product.attributes.farbe is defined %}
+                <br>
+                <span class="{{ config.name }}__color-preview">{{ 'cart.item.color' | trans }}:  <span class="{{ config.name }}__color-preview-decoration" style="background: {{ embed.product.colorCode  }}" title="{{ embed.product.attributes.farbe  }}"></span></span>
+            {% endif %}
+        {% endblock %}
+
+        {% block note %}
+            {% widget 'CartItemNoteFormWidget' args [data.listItem, data.list] only %}
+                {% block body %}
+                    {% set canWrite = false %}
+                    {{ parent() }}
+                {% endblock %}
+            {% endwidget %}
+        {% endblock %}
+
+        {% block quantity %}
+            <div class="{{ config.name }}__quantity">
+                <span class="{{ config.name }}__quantity-title">{{ 'cart.item_quantity' | trans }}:</span> {{ data.listItem.quantity }}
+            </div>
+        {% endblock %}
+    {% endembed %}
+{% endblock %}
+
+{% block cartNote %}
+    {% widget 'CartNoteFormWidget' args [data.cart] only %}
+        {% block body %}
+            {% set canWrite = false %}
+            {% if data.form.cartNote.vars.value %}
+                <div class="order-sidebar__item order-sidebar__item--note">
+                    <h5 class="order-sidebar__title toggler-accordion__item js-order-sidebar__trigger" data-toggle-target='.js-order-sidebar__content-note'>
+                        {{ 'cart_note.quote_form.enter_note' | trans }}
+                        <span class="icon icon--toggler-cross toggler-accordion__icon"></span>
+                    </h5>
+                    <div class="order-sidebar__content js-order-sidebar__content-note is-hidden">
+                        {{ parent() }}
+                    </div>
+                </div>
+            {% endif %}
+        {% endblock %}
+    {% endwidget %}
+{% endblock %}
+
+{% block cartSummary %}
+    {% embed molecule('cart-summary', 'CartPage') with {
+        data: {
+            cart: data.cart,
+            isQuoteValid: data.isQuoteValid,
+            isQuoteEditable: data.isQuoteEditable,
+        },
+    } only %}
+        {% block body %}
+            <div class="order-sidebar__item order-sidebar__item--end">
+                <ul class="list">
+                    {% block cartSummaryContent %}
+                        <li class="list__item">
+                            {% include molecule('cart-discount-summary', 'DiscountWidget') ignore missing with {
+                                modifiers: ['cart'],
+                                data: {
+                                    voucherDiscounts: data.cart.voucherDiscounts,
+                                    ruleDiscounts: data.cart.cartRuleDiscounts,
+                                    discountTotal: data.cart.totals.discounttotal,
+                                    currencyIsoCode: data.cart.currency.code,
+                                },
+                            } only %}
+                        </li>
+                        {{ block('cartTotal') }}
+                    {% endblock %}
+                </ul>
+            </div>
+        {% endblock %}
+    {% endembed %}
+{% endblock %}
