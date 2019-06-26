@@ -173,7 +173,7 @@
 
                 <div class="{{ component.renderClass(config.name ~ '__col', modifiers) }} {{ config.name }}__col--total col">
                     <div class="{{ config.name }}__inner {{ config.name }}__inner--full-height {{ config.name }}__inner--actions grid grid--column grid--justify-column">
-                        <div class="col">
+                        <div class="col col--sm-12">
                             <div class="{{ config.name }}__inner {{ config.name }}__inner--total grid grid--column">
                                 {% block price %}
                                     {% include molecule('money-price') with {
@@ -214,6 +214,7 @@
                                         </div>
                                     {% endif %}
                                 {% endblock %}
+                                {% block totalPrice %}{% endblock %}
                             </div>
                         </div>
 
