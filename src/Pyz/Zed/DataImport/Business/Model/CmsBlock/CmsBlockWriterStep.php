@@ -44,7 +44,7 @@ class CmsBlockWriterStep extends PublishAwareStep implements DataImportStepInter
     public const KEY_PRODUCTS = 'products';
     public const KEY_ACTIVE = 'active';
     public const KEY_PLACEHOLDER_TITLE = 'placeholder.title';
-    public const KEY_PLACEHOLDER_DESCRIPTION = 'placeholder.description';
+    public const KEY_PLACEHOLDER_CONTENT = 'placeholder.content';
 
     /**
      * @var \Pyz\Zed\DataImport\Business\Model\CmsBlock\Category\Repository\CategoryRepositoryInterface
