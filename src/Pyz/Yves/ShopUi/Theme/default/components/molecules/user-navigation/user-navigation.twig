@@ -11,8 +11,7 @@
 } %}
 
 {% set cartQuantity = data.cartQuantity > 0 ? data.cartQuantity ~ ' ' : '' %}
-{% set miniCartWidget = findWidget('MiniCartWidget', [cartQuantity]) %}
-{% set isShowMiniCart = miniCartWidget.cartList | length ? true : false %}
+{% set isShowMiniCart = findWidget('MiniCartWidget', [cartQuantity]).cartList | length %}
 
 {%- block class -%}
     {{ parent() }} {{ config.jsName }}
