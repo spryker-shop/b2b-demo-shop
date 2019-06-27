@@ -13,7 +13,7 @@
 {% block body %}
     <div class="grid grid--bottom grid--nowrap">
         <div class="col col--expand">
-            {% if data.cartShareLinkLabel | trans %}
+            {% if data.cartShareLinkLabel %}
                 <label class="label label--small" for="{{ data.shareOption }}">{{ data.cartShareLinkLabel | trans }}</label>
             {% endif %}
             <input id="{{ data.shareOption }}" class="{{ config.jsName }}__target-{{ data.shareOption }} input input--expand input--inline" type="url" value="{{ data.cartShareLink }}">
@@ -28,6 +28,6 @@
         attributes: {
             'trigger-selector': '.' ~ config.jsName ~ '__trigger-' ~ data.shareOption,
             'target-selector': '.' ~ config.jsName ~ '__target-' ~ data.shareOption,
-        }
+        },
     } only %}
 {% endblock %}

@@ -17,11 +17,7 @@
                     } only %}
 
                     <div class="col col--right {{ is_granted('ROLE_USER') ? config.name ~ '__user-nav' : config.name ~ '__login-wrap' }}">
-                        {% if is_granted('ROLE_USER') %}
-                            <a href="{{ url('logout') }}" class="button button--tight button--medium {{ config.name }}__login">{{ 'customer.logout' | trans }}</a>
-                        {% else %}
-                            <a href="{{ url('login') }}" class="button button--tight button--medium {{ config.name }}__login">{{ 'customer.please_login' | trans }}</a>
-                        {% endif %}
+                        <a href="{{ is_granted('ROLE_USER') ? url('logout') : url('login') }}" class="button button--tight button--medium {{ config.name }}__login">{{ (is_granted('ROLE_USER') ? 'customer.logout' : 'customer.please_login') | trans }}</a>
                     </div>
                 </div>
             </div>

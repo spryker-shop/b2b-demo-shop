@@ -6,13 +6,14 @@
 } %}
 
 {% block body %}
+    {% set isCollectionOfLinks = data.cartShareLinks | length > 1 %}
     {% for shareOption, cartShareLink in data.cartShareLinks %}
         {% include molecule('share-link' , 'PersistentCartShareWidget') with {
             class: 'spacing-bottom',
             data: {
                 shareOption: shareOption,
                 cartShareLink: cartShareLink,
-                cartShareLinkLabel: data.cartShareLinkLabels[shareOption],
+                cartShareLinkLabel: isCollectionOfLinks ? data.cartShareLinkLabels[shareOption],
             },
         } only %}
     {% endfor %}
