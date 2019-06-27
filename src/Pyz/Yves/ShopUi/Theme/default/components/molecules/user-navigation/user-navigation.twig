@@ -11,6 +11,8 @@
 } %}
 
 {% set cartQuantity = data.cartQuantity > 0 ? data.cartQuantity ~ ' ' : '' %}
+{% set miniCartWidget = findWidget('MiniCartWidget', [cartQuantity]) %}
+{% set isShowMiniCart = miniCartWidget.cartList | length ? true : false %}
 
 {%- block class -%}
     {{ parent() }} {{ config.jsName }}
@@ -125,45 +127,46 @@
         {% endblock %}
     {% endwidget %}
 
-    <li class="{{ config.name }}__item">
-        {% include molecule('cart-items-counter') with {
-            class: config.name ~ '__link ' ~ config.jsName ~ '__trigger',
-            data: {
-                quantity: data.cartQuantity,
-            },
-            attributes: {
-                'data-toggle-target': '.' ~ config.jsName ~ '__sub-nav-cart',
-            },
-        } only %}
-        <div class="{{ config.name }}__sub-nav {{ config.name }}__sub-nav--pull-left spacing spacing--inner spacing--reset {{ config.jsName }}__sub-nav-cart">
-            {% widget 'MiniCartWidget' args [cartQuantity] with {config: config} only %}
-                {% block body %}
-                    <button class="{{config.name}}__sub-nav-close {{ config.jsName }}__trigger" data-toggle-target='.{{ config.jsName }}__sub-nav-cart'>
-                        {% include atom('icon') with {
-                            data: {
-                                name: 'cross',
-                            },
-                        } only %}
-                    </button>
-                    <h4 class="{{ config.name }}__sub-nav-title">
-                        {{ 'multi_cart_widget.cart.carts'|trans }}
-                    </h4>
-                    {% block cartItems %}
-                        <div class="{{ config.name }}__sub-nav-inner">
-                            {{ parent() }}
-                        </div>
-                    {% endblock %}
+    {% if isShowMiniCart %}
+        <li class="{{ config.name }}__item">
+            {% include molecule('cart-items-counter') with {
+                class: config.name ~ '__link ' ~ config.jsName ~ '__trigger',
+                data: {
+                    quantity: data.cartQuantity,
+                },
+                attributes: {
+                    'data-toggle-target': '.' ~ config.jsName ~ '__sub-nav-cart',
+                },
+            } only %}
+            <div class="{{ config.name }}__sub-nav {{ config.name }}__sub-nav--pull-left spacing spacing--inner spacing--reset {{ config.jsName }}__sub-nav-cart">
+                {% widget 'MiniCartWidget' args [cartQuantity] with {config: config} only %}
+                    {% block body %}
+                        <button class="{{config.name}}__sub-nav-close {{ config.jsName }}__trigger" data-toggle-target='.{{ config.jsName }}__sub-nav-cart'>
+                            {% include atom('icon') with {
+                                data: {
+                                    name: 'cross',
+                                },
+                            } only %}
+                        </button>
+                        <h4 class="{{ config.name }}__sub-nav-title">
+                            {{ 'multi_cart_widget.cart.carts'|trans }}
+                        </h4>
+                        {% block cartItems %}
+                            <div class="{{ config.name }}__sub-nav-inner">
+                                {{ parent() }}
+                            </div>
+                        {% endblock %}
 
-                    {% block cartActions %}
-                        <div class="{{ config.name }}__sub-nav-actions">
-                            {{ parent() }}
-                        </div>
+                        {% block cartActions %}
+                            <div class="{{ config.name }}__sub-nav-actions">
+                                {{ parent() }}
+                            </div>
+                        {% endblock %}
                     {% endblock %}
-                {% endblock %}
-
-            {% endwidget %}
-        </div>
-    </li>
+                {% endwidget %}
+            </div>
+        </li>
+    {% endif %}
 
     {% include molecule('toggler-accordion') with {
         attributes: {
