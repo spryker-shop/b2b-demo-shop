@@ -2,12 +2,12 @@
 
 {% define config = {
     name: 'product-item-options',
-    tag: 'ul'
+    tag: 'ul',
 } %}
 
 {% define data = {
     productItem: {},
-    options: []
+    options: [],
 } %}
 
 {% block body %}
@@ -16,8 +16,8 @@
             {% include molecule('product-options', 'ProductOptionWidget') ignore missing with {
                 modifiers: ['no-border'],
                 data: {
-                    options: data.productItem.productOptions | default([])
-                }
+                    options: data.productItem.productOptions | default([]),
+                },
             } only %}
         {% else %}
             <ul class="option-display">

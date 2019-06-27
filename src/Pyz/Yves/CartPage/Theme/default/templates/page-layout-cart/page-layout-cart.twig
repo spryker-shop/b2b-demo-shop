@@ -146,14 +146,33 @@
                         } only %}
                             {% block price %}
                                 {% if can('SeePricePermissionPlugin') %}
-                                    {% set price = data.listItem.sumPrice ?? data.listItem.price %}
+                                    {% set subtotalPrice = data.listItem.unitSubtotalAggregation is defined ? data.listItem.unitSubtotalAggregation : data.listItem.price %}
                                     {% include molecule('money-price') with {
                                         modifiers: ['cart'],
                                         data: {
-                                            amount: price,
+                                            amount: subtotalPrice,
                                             currencyIsoCode: data.list.currency.code,
                                         },
                                     } only %}
+                                {% endif %}
+                            {% endblock %}
+
+                            {% block totalPrice %}
+                                {% if can('SeePricePermissionPlugin') %}
+                                    {% set totalPrice = data.listItem.unitPrice is defined ? data.listItem.sumSubtotalAggregation : data.listItem.price %}
+                                    {% embed molecule('money-price') with {
+                                        class: 'spacing spacing--inner spacing-y spacing-y--big',
+                                        modifiers: ['cart'],
+                                        data: {
+                                            amount: totalPrice,
+                                            currencyIsoCode: data.list.currency.code,
+                                        },
+                                    } only %}
+                                        {% block body %}
+                                            <strong class="float-left">{{ 'cart.item.item_total' | trans }}</strong>
+                                            {{ parent() }}
+                                        {% endblock %}
+                                    {% endembed %}
                                 {% endif %}
                             {% endblock %}
 

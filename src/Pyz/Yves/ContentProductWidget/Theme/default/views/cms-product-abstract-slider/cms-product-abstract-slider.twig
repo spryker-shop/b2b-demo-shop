@@ -1,0 +1,40 @@
+{% extends template('widget') %}
+
+{% define data = {
+    productAbstractViewCollection: productAbstractViewCollection | default([]),
+} %}
+
+{% block body %}
+    {% embed molecule('slick-carousel') with {
+        modifiers: ['full-width', 'equal-height'],
+        data: {
+            slides: data.productAbstractViewCollection,
+        },
+        attributes: {
+            'slider-config': '{
+                "slidesToShow": 3,
+                "dots": false,
+                "arrows": true,
+                "adaptiveHeight": true,
+                "responsive": [{
+                    "breakpoint": 768,
+                    "settings": {
+                        "slidesToShow": 2
+                    }
+                },
+                {
+                    "breakpoint": 375,
+                    "settings": {
+                        "slidesToShow": 1
+                    }
+                }]
+            }',
+        },
+    } only %}
+        {% block slides %}
+            {% for availableProduct in data.slides if availableProduct.available %}
+                {% widget 'CmsProductWidget' args [availableProduct] use '@ProductWidget/views/cms-product-slider/cms-product-slider.twig' only %}{% endwidget %}
+            {% endfor %}
+        {% endblock %}
+    {% endembed %}
+{% endblock %}

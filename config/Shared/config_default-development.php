@@ -26,13 +26,16 @@ use Spryker\Shared\Setup\SetupConstants;
 use Spryker\Shared\WebProfiler\WebProfilerConstants;
 use Spryker\Shared\ZedNavigation\ZedNavigationConstants;
 use Spryker\Shared\ZedRequest\ZedRequestConstants;
+use SprykerShop\Shared\ShopApplication\ShopApplicationConstants;
 
 $CURRENT_STORE = Store::getInstance()->getStoreName();
 
 // ---------- General environment
 $config[KernelConstants::SPRYKER_ROOT] = APPLICATION_ROOT_DIR . '/vendor/spryker';
 $config[KernelConstants::STORE_PREFIX] = 'DEV';
-$config[ApplicationConstants::ENABLE_APPLICATION_DEBUG] = true;
+$config[ApplicationConstants::ENABLE_APPLICATION_DEBUG]
+    = $config[ShopApplicationConstants::ENABLE_APPLICATION_DEBUG]
+    = true;
 $config[WebProfilerConstants::ENABLE_WEB_PROFILER]
     = $config[ConfigConstants::ENABLE_WEB_PROFILER]
     = true;
