@@ -16,8 +16,14 @@ $cart-locked-info-padding: rem(52);
             width: calc(100% - #{$cart-locked-info-padding});
         }
 
+        &__message {
+            font-size: rem(13);
+            color: $setting-color-gray-2;
+        }
+
         &__reset-link {
             color: $setting-color-alt;
+            font-weight: map_get($setting-font-weight, medium);
 
             @include helper-breakpoint-media-min($xl) {
                 @include helper-effect-transition(color);

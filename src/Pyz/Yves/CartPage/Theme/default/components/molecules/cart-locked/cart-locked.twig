@@ -21,7 +21,7 @@
 
         <div class="{{ config.name }}__info">
             <strong>{{ 'cart_page.quote.label.locked_cart' | trans }}</strong>
-            <p>
+            <p class="{{ config.name }}__message">
                 {% if data.quoteApprovals %}
                     {{ 'persistent_cart.quote.label.locked_cart.by_quote_approval' | trans }}
                 {% else %}
