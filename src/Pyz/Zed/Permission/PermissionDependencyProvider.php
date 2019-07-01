@@ -8,7 +8,6 @@
 namespace Pyz\Zed\Permission;
 
 use Pyz\Zed\CompanyUser\Communication\Plugin\Permission\SeeCompanyMenuPermissionPlugin;
-use Spryker\Client\ShoppingList\Plugin\ReadShoppingListPermissionPlugin;
 use Spryker\Shared\Checkout\Plugin\Permission\PlaceOrderWithAmountUpToPermissionPlugin;
 use Spryker\Shared\CompanyUser\Plugin\AddCompanyUserPermissionPlugin;
 use Spryker\Zed\CartPermissionConnector\Communication\Plugin\Cart\AlterCartUpToAmountPermissionPlugin;
@@ -20,6 +19,7 @@ use Spryker\Zed\QuoteApproval\Communication\Plugin\Permission\PlaceOrderPermissi
 use Spryker\Zed\SharedCart\Communication\Plugin\QuotePermissionStoragePlugin;
 use Spryker\Zed\SharedCart\Communication\Plugin\ReadSharedCartPermissionPlugin;
 use Spryker\Zed\SharedCart\Communication\Plugin\WriteSharedCartPermissionPlugin;
+use Spryker\Zed\ShoppingList\Communication\Plugin\ReadShoppingListPermissionPlugin;
 use Spryker\Zed\ShoppingList\Communication\Plugin\ShoppingListPermissionStoragePlugin;
 use Spryker\Zed\ShoppingList\Communication\Plugin\WriteShoppingListPermissionPlugin;
 use SprykerShop\Shared\CartPage\Plugin\AddCartItemPermissionPlugin;

@@ -14,16 +14,14 @@ use Spryker\Shared\Log\LogConstants;
 use Spryker\Shared\Propel\PropelConstants;
 use Spryker\Shared\PropelOrm\PropelOrmConstants;
 use Spryker\Shared\Session\SessionConstants;
-use Spryker\Shared\Setup\SetupConstants;
 use Spryker\Shared\Twig\TwigConstants;
 use Spryker\Shared\ZedNavigation\ZedNavigationConstants;
 use Spryker\Shared\ZedRequest\ZedRequestConstants;
+use SprykerShop\Shared\ShopApplication\ShopApplicationConstants;
 
 $config[SessionConstants::YVES_SESSION_COOKIE_DOMAIN] = $config[ApplicationConstants::HOST_YVES];
 $config[SessionConstants::YVES_SESSION_COOKIE_SECURE] = false;
 
-$config[SetupConstants::JENKINS_BASE_URL] = 'http://' . $config[ApplicationConstants::HOST_ZED_GUI] . ':10007/jenkins';
-$config[SetupConstants::JENKINS_DIRECTORY] = '/data/shop/development/shared/data/common/jenkins';
 $config[ZedRequestConstants::TRANSFER_DEBUG_SESSION_FORWARD_ENABLED] = true;
 
 $config[TwigConstants::ZED_TWIG_OPTIONS] = [
@@ -49,7 +47,9 @@ $config[PropelOrmConstants::PROPEL_SHOW_EXTENDED_EXCEPTION] = true;
 $config[ErrorHandlerConstants::DISPLAY_ERRORS] = true;
 $config[ErrorHandlerConstants::ERROR_RENDERER] = WebExceptionErrorRenderer::class;
 
-$config[ApplicationConstants::ENABLE_APPLICATION_DEBUG] = true;
+$config[ApplicationConstants::ENABLE_APPLICATION_DEBUG]
+    = $config[ShopApplicationConstants::ENABLE_APPLICATION_DEBUG]
+    = true;
 $config[ZedRequestConstants::SET_REPEAT_DATA] = true;
 $config[KernelConstants::STORE_PREFIX] = 'DEV';
 

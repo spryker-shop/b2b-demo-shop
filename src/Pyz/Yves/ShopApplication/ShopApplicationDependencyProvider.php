@@ -12,6 +12,10 @@ use Pyz\Yves\CompanyWidget\Widget\MenuItemCompanyWidget;
 use Pyz\Yves\CustomerFullNameWidget\Widget\CustomerFullNameWidget;
 use Pyz\Yves\ExampleProductColorGroupWidget\Widget\ExampleProductColorSelectorWidget;
 use Pyz\Yves\ProductSetWidget\Widget\ProductSetIdsWidget;
+use Spryker\Yves\EventDispatcher\Plugin\Application\EventDispatcherApplicationPlugin;
+use Spryker\Yves\Locale\Plugin\Application\LocaleApplicationPlugin;
+use Spryker\Yves\Store\Plugin\Application\StoreApplicationPlugin;
+use Spryker\Yves\Twig\Plugin\Application\TwigApplicationPlugin;
 use SprykerShop\Yves\AgentWidget\Widget\AgentControlBarWidget;
 use SprykerShop\Yves\AvailabilityNotificationWidget\Widget\AvailabilityNotificationSubscriptionWidget;
 use SprykerShop\Yves\BusinessOnBehalfWidget\Widget\BusinessOnBehalfStatusWidget;
@@ -91,6 +95,7 @@ use SprykerShop\Yves\SharedCartWidget\Widget\SharedCartDetailsWidget;
 use SprykerShop\Yves\SharedCartWidget\Widget\SharedCartOperationsWidget;
 use SprykerShop\Yves\SharedCartWidget\Widget\SharedCartPermissionGroupWidget;
 use SprykerShop\Yves\SharedCartWidget\Widget\SharedCartShareWidget;
+use SprykerShop\Yves\ShopApplication\Plugin\Application\ShopApplicationApplicationPlugin;
 use SprykerShop\Yves\ShopApplication\ShopApplicationDependencyProvider as SprykerShopApplicationDependencyProvider;
 use SprykerShop\Yves\ShoppingListNoteWidget\Widget\ShoppingListItemNoteWidget;
 use SprykerShop\Yves\ShoppingListPage\Widget\ShoppingListDismissWidget;
@@ -212,6 +217,20 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             new CompanyUserRestrictionHandlerPlugin(),
             new CheckBusinessOnBehalfCompanyUserHandlerPlugin(), #BusinessOnBehalfFeature
             new CompanyBusinessUnitControllerRestrictionPlugin(),
+        ];
+    }
+
+    /**
+     * @return array
+     */
+    protected function getApplicationPlugins(): array
+    {
+        return [
+            new TwigApplicationPlugin(),
+            new EventDispatcherApplicationPlugin(),
+            new ShopApplicationApplicationPlugin(),
+            new StoreApplicationPlugin(),
+            new LocaleApplicationPlugin(),
         ];
     }
 }
