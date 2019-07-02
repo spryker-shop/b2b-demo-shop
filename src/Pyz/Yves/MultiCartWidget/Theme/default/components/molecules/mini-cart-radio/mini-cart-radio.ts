@@ -13,7 +13,7 @@ export default class MiniCartRadio extends Component {
         this.onclick = () => window.location.href = this.locationUrl;
     }
 
-    get locationUrl(): string {
+    protected get locationUrl(): string {
         return this.radio.dataset.href;
     }
 }

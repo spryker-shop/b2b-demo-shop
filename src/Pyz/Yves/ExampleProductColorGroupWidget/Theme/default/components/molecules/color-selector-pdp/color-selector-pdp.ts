@@ -44,11 +44,11 @@ export default class ColorSelectorPdp extends ColorSelector {
         this.container.classList.remove(this.imageActiveClass);
     }
 
-    get imageActiveClass(): string {
+    protected get imageActiveClass(): string {
         return this.getAttribute('active-image-class');
     }
 
-    get imageContainerSelector(): string {
+    protected get imageContainerSelector(): string {
         return this.getAttribute('target-selector');
     }
 }

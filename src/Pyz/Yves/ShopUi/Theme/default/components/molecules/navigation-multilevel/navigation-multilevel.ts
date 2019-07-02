@@ -78,27 +78,27 @@ export default class NavigationMultilevel extends Component {
         return block.getAttribute(attr);
     }
 
-    get targetSelector(): string {
+    protected get targetSelector(): string {
         return this.getAttribute('target-selector');
     }
 
-    get classToToggle(): string {
+    protected get classToToggle(): string {
         return this.getAttribute('class-to-toggle');
     }
 
-    get availableBreakpoint(): number {
+    protected get availableBreakpoint(): number {
         return Number(this.getAttribute('available-breakpoint'));
     }
 
-    get overlaySelector(): string {
+    protected get overlaySelector(): string {
         return '.js-overlay-block';
     }
 
-    get trigerSelector(): string {
+    protected get trigerSelector(): string {
         return `.${this.jsName}__trigger`;
     }
 
-    get touchSelector(): string {
+    protected get touchSelector(): string {
         return `.${this.jsName}__touch-trigger`;
     }
 }

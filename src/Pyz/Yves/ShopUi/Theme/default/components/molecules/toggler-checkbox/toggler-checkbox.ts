@@ -36,19 +36,19 @@ export default class TogglerCheckbox extends Component {
         this.dispatchEvent(this.event);
     }
 
-    get addClass(): boolean {
+    protected get addClass(): boolean {
         return this.addClassWhenChecked ? this.trigger.checked : !this.trigger.checked;
     }
 
-    get targetSelector(): string {
+    protected get targetSelector(): string {
         return this.trigger.getAttribute('target-selector');
     }
 
-    get classToToggle(): string {
+    protected get classToToggle(): string {
         return this.trigger.getAttribute('class-to-toggle');
     }
 
-    get addClassWhenChecked(): boolean {
+    protected get addClassWhenChecked(): boolean {
         return this.trigger.hasAttribute('add-class-when-checked');
     }
 }

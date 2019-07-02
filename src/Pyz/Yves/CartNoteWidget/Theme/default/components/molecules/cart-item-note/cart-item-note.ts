@@ -51,23 +51,23 @@ export default class CartItemNote extends Component {
         activeTrigger.classList.toggle(this.classToToggle, !isTriggerActive);
     }
 
-    get editButtonSelector(): string {
+    protected get editButtonSelector(): string {
         return this.getAttribute('edit-button-selector');
     }
 
-    get removeButtonSelector(): string {
+    protected get removeButtonSelector(): string {
         return this.getAttribute('remove-button-selector');
     }
 
-    get textTargetSelector(): string {
+    protected get textTargetSelector(): string {
         return this.getAttribute('read-section-selector');
     }
 
-    get formSelector(): string {
+    protected get formSelector(): string {
         return this.getAttribute('form-selector');
     }
 
-    get classToToggle(): string {
+    protected get classToToggle(): string {
         return this.getAttribute('change-class');
     }
 }

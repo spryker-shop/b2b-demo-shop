@@ -5,7 +5,7 @@ export default class SuggestSearchExtended extends SuggestSearch {
     protected overlay: OverlayBlock;
 
     protected readyCallback(): void {
-        this.overlay = <OverlayBlock>document.querySelector(this.overlaySelector);
+        this.overlay = <OverlayBlock>document.getElementsByClassName(this.overlayClassName)[0];
         super.readyCallback();
     }
 
@@ -29,12 +29,11 @@ export default class SuggestSearchExtended extends SuggestSearch {
         }
     }
 
-    get overlaySelector(): string {
-        return '.js-overlay-block';
+    protected get overlayClassName(): string {
+        return this.getAttribute('overlay-class');
     }
 
-    get overlayBreakpoint(): number {
+    protected get overlayBreakpoint(): number {
         return Number(this.getAttribute('overlay-breakpoint'));
     }
-
 }

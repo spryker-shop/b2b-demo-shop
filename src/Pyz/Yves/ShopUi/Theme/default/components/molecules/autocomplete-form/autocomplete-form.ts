@@ -98,33 +98,35 @@ export default class AutocompleteForm extends Component {
         this.setInputs('', '');
     }
 
-    get minLetters(): number {
+    protected get minLetters(): number {
         return Number(this.getAttribute('min-letters'));
     }
 
-    get inputValue(): string {
+    protected get inputValue(): string {
         return this.inputElement.value.trim();
     }
 
-    get queryParamName(): string {
+    protected get queryParamName(): string {
         return this.getAttribute('query-param-name');
     }
 
-    get valueDataAttribute(): string {
+    protected get valueDataAttribute(): string {
         return this.getAttribute('value-data-attribute');
     }
 
-    get itemSelector(): string {
+    protected get itemSelector(): string {
         return this.getAttribute('item-selector');
     }
 
-    get debounceDelay(): number {
+    protected get debounceDelay(): number {
         return Number(this.getAttribute('debounce-delay'));
     }
-    get showCleanButton(): boolean {
+
+    protected get showCleanButton(): boolean {
         return this.hasAttribute('show-clean-button');
     }
-    get overlaySelector(): string {
+
+    protected get overlaySelector(): string {
         return '.js-overlay-block';
     }
 }

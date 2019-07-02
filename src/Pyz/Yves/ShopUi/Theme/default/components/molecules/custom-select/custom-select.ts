@@ -11,7 +11,7 @@ export default class CustomSelect extends Component {
 
     protected readyCallback(): void {
         const select2 = select;
-        this.select = <HTMLSelectElement>this.querySelector(`.${this.jsName}`);
+        this.select = <HTMLSelectElement>this.getElementsByClassName(`${this.jsName}`)[0];
         this.$select = $(this.select);
 
         this.mapEvents();
@@ -48,15 +48,15 @@ export default class CustomSelect extends Component {
 
     protected removeAttributeTitle(): void {
         if (this.isInited) {
-            this.querySelector('.select2-selection__rendered').removeAttribute('title');
+            this.getElementsByClassName('select2-selection__rendered')[0].removeAttribute('title');
         }
     }
 
-    get configWidth(): string {
+    protected get configWidth(): string {
         return this.select.getAttribute('config-width');
     }
 
-    get configTheme(): string {
+    protected get configTheme(): string {
         return this.select.getAttribute('config-theme');
     }
 }

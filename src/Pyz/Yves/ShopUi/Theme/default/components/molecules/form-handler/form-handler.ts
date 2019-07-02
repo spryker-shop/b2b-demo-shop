@@ -33,23 +33,23 @@ export default class FormHandler extends Component {
         }
     }
 
-    get triggerSelector(): string {
+    protected get triggerSelector(): string {
         return this.getAttribute('trigger-selector');
     }
 
-    get shouldSubmitForm(): boolean {
+    protected get shouldSubmitForm(): boolean {
         return this.submitForm === 'true';
     }
 
-    get submitForm(): string  {
+    protected get submitForm(): string  {
         return this.getAttribute('submit-form');
     }
 
-    get shouldChangeAction(): boolean {
+    protected get shouldChangeAction(): boolean {
         return this.changeAction === 'true';
     }
 
-    get changeAction(): string {
+    protected get changeAction(): string {
         return this.getAttribute('change-action');
     }
 

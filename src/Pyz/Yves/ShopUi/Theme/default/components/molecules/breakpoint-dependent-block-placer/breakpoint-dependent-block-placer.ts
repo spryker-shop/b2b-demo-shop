@@ -53,7 +53,7 @@ export default class BreakpointDependentBlockPlacer extends Component {
         });
     }
 
-    get blockSelector(): string {
+    protected get blockSelector(): string {
         return this.getAttribute('block-selector');
     }
 

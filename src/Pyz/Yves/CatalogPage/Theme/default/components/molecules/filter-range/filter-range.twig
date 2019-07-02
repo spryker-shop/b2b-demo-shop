@@ -18,7 +18,7 @@
     <div class="grid grid--justify grid--middle filter-range__inputs">
 
         <div class="col col--sm-5 filter-range__input-wrap">
-            <input class="input input--expand input--small input--filter-range js-form-input-default-value-disabler__catalog-input {{ config.jsName }}__target-min"
+            <input class="input input--expand input--small input--filter-range js-form-input-default-value-disabler__catalog-input {{ config.jsName }}__input"
                    type="number"
                    name="{{ data.parameter }}[min]"
                    value="{{ data.activeMin }}"
@@ -35,7 +35,7 @@
         <div class="col col--sm-1 text-center">-</div>
 
         <div class="col col--sm-5 filter-range__input-wrap">
-            <input class="input input--expand input--small input--filter-range js-form-input-default-value-disabler__catalog-input {{ config.jsName }}__target-max"
+            <input class="input input--expand input--small input--filter-range js-form-input-default-value-disabler__catalog-input {{ config.jsName }}__input"
                    type="number"
                    name="{{ data.parameter }}[max]"
                    value="{{ data.activeMax }}"
@@ -52,8 +52,8 @@
 
     {% include molecule('range-slider') with {
         attributes: {
-            'wrap-selector': '.' ~ config.jsName,
-            'target-selector': '.' ~ config.jsName ~ '__target-min, .' ~ config.jsName ~ '__target-max',
+            'wrap-class-name': config.jsName,
+            'inputs-class-name': config.jsName ~ '__input',
             'slider-config': '{"start":[' ~ data.activeMin ~ ',' ~ data.activeMax ~ '],"step":1,"connect":true,"margin":1,"range":{"min":' ~ data.min ~ ',' ~ '"max":' ~ data.max ~ '}}'
         }
     } only %}

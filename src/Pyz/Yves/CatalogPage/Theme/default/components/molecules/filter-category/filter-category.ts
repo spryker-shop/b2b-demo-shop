@@ -38,23 +38,23 @@ export default class FilterCategory extends Component {
         categoriesToShow.forEach((element: HTMLElement) => element.classList.remove(this.classToRemove));
     }
 
-    get wrapSelector(): string {
+    protected get wrapSelector(): string {
         return this.getAttribute('wrap-selector');
     }
 
-    get parentSelector(): string {
+    protected get parentSelector(): string {
         return this.getAttribute('parent-selector');
     }
 
-    get listSelector(): string {
+    protected get listSelector(): string {
         return this.getAttribute('list-selector');
     }
 
-    get categoriesToShowSelector(): string {
+    protected get categoriesToShowSelector(): string {
         return this.getAttribute('category-selector');
     }
 
-    get classToRemove(): string {
+    protected get classToRemove(): string {
         return this.getAttribute('change-class');
     }
 }

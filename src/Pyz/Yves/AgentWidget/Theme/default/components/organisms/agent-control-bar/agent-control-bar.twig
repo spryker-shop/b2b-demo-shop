@@ -21,13 +21,13 @@
                                 {% include molecule('agent-control-item', 'AgentWidget') with {
                                     class: 'grid grid--gap grid--inline grid--middle',
                                     data: {
-                                        status: 'agent.control_bar.customer_name' | trans,
+                                        title: 'agent.control_bar.customer_name' | trans,
                                         buttonLink: '/?_switch_user=_exit',
                                         buttonName: 'agent.control_bar.logout_as_customer' | trans,
                                         firstName: data.customer.firstName,
                                         lastName: data.customer.lastName,
                                     },
-                                } only %} {# @deprecated data.status. Use data.title instead. #}
+                                } only %}
                             </div>
                         {% else %}
                             <form class="col col--sm-12 col--md-8" method="GET" action="/">
@@ -63,13 +63,13 @@
                     {% include molecule('agent-control-item', 'AgentWidget') with {
                         class: 'grid grid--gap grid--inline grid--middle',
                         data: {
-                            status: 'agent.control_bar.username' | trans,
+                            title: 'agent.control_bar.username' | trans,
                             buttonLink: path('agent/logout'),
                             buttonName: 'agent.control_bar.logout' | trans,
                             firstName: data.agent.firstName,
                             lastName: data.agent.lastName,
                         },
-                    } only %} {# @deprecated data.status. Use data.title instead. #}
+                    } only %}
                 </div>
             </div>
         </div>

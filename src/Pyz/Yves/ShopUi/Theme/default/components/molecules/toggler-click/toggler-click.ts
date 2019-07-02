@@ -151,43 +151,43 @@ export default class TogglerClick extends Component {
         }
     }
 
-    get triggerSelector(): string {
+    protected get triggerSelector(): string {
         return this.getAttribute('trigger-selector');
     }
 
-    get targetSelector(): string {
+    protected get targetSelector(): string {
         return this.getAttribute('target-selector');
     }
 
-    get classToToggle(): string {
+    protected get classToToggle(): string {
         return this.getAttribute('class-to-toggle');
     }
 
-    get triggerClassToToggle(): string {
+    protected get triggerClassToToggle(): string {
         return this.getAttribute('trigger-class-to-toggle');
     }
 
-    get isFixBodyOnClick(): boolean {
+    protected get isFixBodyOnClick(): boolean {
         return this.checkedIsShouldFixBody === 'true';
     }
 
-    get checkedIsShouldFixBody(): string {
+    protected get checkedIsShouldFixBody(): string {
         return this.getAttribute('fix-body');
     }
 
-    get overlaySelector(): string {
+    protected get overlaySelector(): string {
         return '.js-overlay-block';
     }
 
-    get customOverlayModifiers(): string {
+    protected get customOverlayModifiers(): string {
         return this.getAttribute('toggle-overlay-modifiers');
     }
 
-    get onDocumentClickAction(): string {
+    protected get onDocumentClickAction(): string {
         return this.getAttribute('document-click');
     }
 
-    get classToFixBody(): string {
+    protected get classToFixBody(): string {
         return this.getAttribute('class-to-fix-body');
     }
 

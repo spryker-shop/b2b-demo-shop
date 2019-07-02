@@ -125,23 +125,23 @@ export default class ProductSearchAutocompleteForm extends AutocompleteForm {
         }
     }
 
-    get inputText(): string {
+    protected get inputText(): string {
         return this.inputElement.value.trim();
     }
 
-    set inputText(value: string) {
+    protected set inputText(value: string) {
         this.inputElement.value = value;
     }
 
-    get selectedInputClass(): string {
+    protected get selectedInputClass(): string {
         return `${this.itemSelector}--selected`.substr(1);
     }
 
-    get inputValue(): string {
+    protected get inputValue(): string {
         return this.hiddenInputElement.value;
     }
 
-    set inputValue(value: string) {
+    protected set inputValue(value: string) {
         this.hiddenInputElement.value = value;
     }
 }

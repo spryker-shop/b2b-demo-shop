@@ -60,27 +60,27 @@ export default class TogglerAccordion extends Component {
         });
     }
 
-    get wrapSelector(): string {
+    protected get wrapSelector(): string {
         return this.getAttribute('wrap-selector');
     }
 
-    get triggerSelector(): string {
+    protected get triggerSelector(): string {
         return this.getAttribute('trigger-selector');
     }
 
-    get classToToggle(): string {
+    protected get classToToggle(): string {
         return this.getAttribute('class-to-toggle');
     }
 
-    get triggerActiveClass(): string {
+    protected get triggerActiveClass(): string {
         return this.getAttribute('active-class');
     }
 
-    get isTouchScreen(): boolean {
+    protected get isTouchScreen(): boolean {
         return this.touchRules === 'true';
     }
 
-    get touchRules(): string {
+    protected get touchRules(): string {
         return this.getAttribute('active-on-touch');
     }
 }

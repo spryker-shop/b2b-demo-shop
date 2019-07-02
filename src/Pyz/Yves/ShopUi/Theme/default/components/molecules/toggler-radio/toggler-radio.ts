@@ -21,7 +21,7 @@ export default class TogglerRadio extends TogglerCheckbox {
         });
     }
 
-    get groupName(): string {
+    protected get groupName(): string {
         return this.getAttribute('group-name');
     }
 }

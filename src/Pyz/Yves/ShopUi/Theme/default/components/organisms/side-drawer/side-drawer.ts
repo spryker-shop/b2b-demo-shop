@@ -28,15 +28,15 @@ export default class SideDrawer extends Component {
         this.containers.forEach((conatiner: HTMLElement) => conatiner.classList.toggle(lockedSelector, isShown));
     }
 
-    get triggerSelector(): string {
+    protected get triggerSelector(): string {
         return this.getAttribute('trigger-selector');
     }
 
-    get containerSelector(): string {
+    protected get containerSelector(): string {
         return this.getAttribute('container-selector');
     }
 
-    get lockedBodySelector(): string {
+    protected get lockedBodySelector(): string {
         return this.getAttribute('locked-body-selector');
     }
 }

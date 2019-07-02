@@ -7,8 +7,8 @@ export default class RangeSlider extends Component {
     protected numberDigitsAfterDecimalPoint: number = 2;
 
     protected readyCallback(): void {
-        this.sliderContainer = document.querySelector(this.wrapSelector);
-        this.rangeInputs = Array.from(document.querySelectorAll(this.targetSelector));
+        this.sliderContainer = <HTMLElement>document.getElementsByClassName(this.wrapClassName)[0];
+        this.rangeInputs = <HTMLInputElement[]>Array.from(document.getElementsByClassName(this.inputsClassName));
 
         this.initUiSlider();
         this.mapEvents();
@@ -40,15 +40,15 @@ export default class RangeSlider extends Component {
         });
     }
 
-    get wrapSelector(): string {
-        return this.getAttribute('wrap-selector');
+    protected get wrapClassName(): string {
+        return this.getAttribute('wrap-class-name');
     }
 
-    get targetSelector(): string {
-        return this.getAttribute('target-selector');
+    protected get inputsClassName(): string {
+        return this.getAttribute('inputs-class-name');
     }
 
-    get sliderConfig(): object {
+    protected get sliderConfig(): object {
         return Object.assign(JSON.parse(this.getAttribute('slider-config')), {format: {
             from: value => value,
             to: value => {

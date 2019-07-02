@@ -2,7 +2,7 @@
 
 {% define config = {
     name: 'suggest-search',
-    tag: 'suggest-search'
+    tag: 'suggest-search',
 } %}
 
 {% define attributes = {
@@ -12,7 +12,8 @@
     'debounce-delay': 500,
     'throttle-delay': 200,
     'letters-trashold': 2,
-    'overlay-breakpoint': '0'
+    'overlay-class': 'js-overlay-block',
+    'overlay-breakpoint': '0',
 } %}
 
 {% block body %}
@@ -22,14 +23,14 @@
         class: config.jsName ~ '__ajax-provider',
         attributes: {
             method: 'post',
-            url: attributes['suggestion-url']
-        }
+            url: attributes['suggestion-url'],
+        },
     } only %}
 
     {% include molecule('ajax-loader') with {
         modifiers: ['big'],
         attributes: {
-            'provider-selector': '.' ~ config.jsName ~ '__ajax-provider'
-        }
+            'provider-selector': '.' ~ config.jsName ~ '__ajax-provider',
+        },
     } only %}
 {% endblock %}

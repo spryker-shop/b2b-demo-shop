@@ -59,11 +59,11 @@ export default class ImageGallery extends Component {
         });
     }
 
-    get activeClass(): string {
+    protected get activeClass(): string {
         return this.getAttribute('active-class');
     }
 
-    get thumbnailSliderConfig(): object {
+    protected get thumbnailSliderConfig(): object {
         const sliderConfig: string = this.getAttribute('config-thumbnail-slider');
 
         return JSON.parse(sliderConfig);

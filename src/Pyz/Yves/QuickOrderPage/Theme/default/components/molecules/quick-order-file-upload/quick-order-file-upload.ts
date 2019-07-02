@@ -49,7 +49,7 @@ export default class QuickOrderFileUpload extends Component {
         this.browseFileLabel.classList.toggle(this.browseFileLabelToggleClass);
     }
 
-    get inputFileAttribute(): string {
+    protected get inputFileAttribute(): string {
         return this.getAttribute('input-file');
     }
 }

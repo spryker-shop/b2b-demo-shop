@@ -60,15 +60,15 @@ export default class RatingSelector extends Component {
         });
     }
 
-    get value(): number {
+    protected get value(): number {
         return parseFloat(this.input.value);
     }
 
-    get readOnly(): boolean {
+    protected get readOnly(): boolean {
         return this.hasAttribute('readonly');
     }
 
-    get disableIfEmptyValue(): boolean {
+    protected get disableIfEmptyValue(): boolean {
         return this.hasAttribute('disable-if-empty-value');
     }
 }

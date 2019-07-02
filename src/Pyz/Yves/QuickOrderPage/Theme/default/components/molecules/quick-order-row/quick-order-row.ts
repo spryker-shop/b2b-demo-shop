@@ -112,25 +112,25 @@ export default class QuickOrderRow extends Component {
         }
     }
 
-    get quantityValue(): string {
+    protected get quantityValue(): string {
         return this.quantityInput.value;
     }
 
-    get autocompleteFormSelector(): string {
+    protected get autocompleteFormSelector(): string {
         return this.getAttribute('autocomplete-form');
     }
 
-    get minQuantity(): number {
+    protected get minQuantity(): number {
         return Number(this.quantityInput.getAttribute('min'));
     }
 
-    get maxQuantity(): number {
+    protected get maxQuantity(): number {
         const max = Number(this.quantityInput.getAttribute('max'));
 
         return max > 0 && max > this.minQuantity ? max : Infinity;
     }
 
-    get step(): number {
+    protected get step(): number {
         const step = Number(this.quantityInput.getAttribute('step'));
 
         return step > 0 ? step : 1;

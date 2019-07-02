@@ -52,15 +52,15 @@ export default class ColorSelector extends Component {
         }
     }
 
-    get targetImageSelector(): string {
+    protected get targetImageSelector(): string {
         return this.getAttribute('target-image-selector');
     }
 
-    get targetDetailsLink(): string {
+    protected get targetDetailsLink(): string {
         return this.getAttribute('target-url-selector');
     }
 
-    get colorActiveClass(): string {
+    protected get colorActiveClass(): string {
         return this.getAttribute('active-color-class');
     }
 }

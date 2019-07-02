@@ -15,16 +15,16 @@ export default class QuantityCounter extends Component {
     }
 
     protected readyCallback(): void {
-        this.incrementButton = <HTMLButtonElement>this.querySelector(`.${this.jsName}__button-increment`);
-        this.decrementButton = <HTMLButtonElement>this.querySelector(`.${this.jsName}__button-decrement`);
-        this.input = <HTMLInputElement>this.querySelector(`.${this.jsName}__input`);
+        this.incrementButton = <HTMLButtonElement>this.getElementsByClassName(`${this.jsName}__button-increment`)[0];
+        this.decrementButton = <HTMLButtonElement>this.getElementsByClassName(`${this.jsName}__button-decrement`)[0];
+        this.input = <HTMLInputElement>this.getElementsByClassName(`${this.jsName}__input`)[0];
         this.value = this.getValue;
         this.mapEvents();
     }
 
     protected mapEvents(): void {
-        this.incrementButton.addEventListener('click', (event: Event) => this.incrementValue(event));
         this.decrementButton.addEventListener('click', (event: Event) => this.decrementValue(event));
+        this.incrementButton.addEventListener('click', (event: Event) => this.incrementValue(event));
         this.input.addEventListener('input', (event: Event) => this.triggerInputEvent());
         if (this.autoUpdate) {
             this.input.addEventListener('change', () => this.delayToSubmit());
@@ -97,31 +97,31 @@ export default class QuantityCounter extends Component {
         }
     }
 
-    get minQuantity(): number {
+    protected get minQuantity(): number {
         return Number(this.input.getAttribute('min'));
     }
 
-    get maxQuantity(): number {
+    protected get maxQuantity(): number {
         const max = Number(this.input.getAttribute('max'));
 
         return max > 0 && max > this.minQuantity ? max : Infinity;
     }
 
-    get step(): number {
+    protected get step(): number {
         const step = Number(this.input.getAttribute('step'));
 
         return step > 0 ? step : 1;
     }
 
-    get getValue(): number {
+    protected get getValue(): number {
         return Number(this.input.value);
     }
 
-    get autoUpdate(): boolean {
+    protected get autoUpdate(): boolean {
         return !!this.input.dataset.autoUpdate;
     }
 
-    get isAvailable(): boolean {
+    protected get isAvailable(): boolean {
         if (!this.input.disabled && !this.input.readOnly) {
             return true;
         }
