@@ -126,7 +126,7 @@
             </div>
             <div class="col col--sm-12 col--xl-9">
                 {% if data.isQuoteLocked %}
-                    {% include molecule('cart-locked', 'CartPage') with {
+                    {% include molecule('cart-locking', 'CartPage') with {
                         data: {
                             quoteApprovals: data.cart.quoteApprovals,
                             quoteRequestVersionReference: data.cart.quoteRequestVersionReference,
