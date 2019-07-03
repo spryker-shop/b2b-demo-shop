@@ -25,7 +25,7 @@
         {% if data.isAvailable %}
             {% embed molecule('custom-select') with {
                 modifiers: selectModifiers,
-                class: 'name',
+                class: config.jsName ~ '__select',
                 attributes: {
                     name: data.formName,
                     'config-width': '100%',
@@ -46,8 +46,8 @@
 
             {% include molecule('form-handler') with {
                 attributes: {
-                    'trigger-selector': '[name=\"' ~ data.formName ~ '\"]'
-                }
+                    'trigger-class-name': config.jsName ~ '__select',
+                },
             } only %}
         {% else %}
             {{ 'product.attribute.not_available' | trans }}

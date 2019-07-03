@@ -69,11 +69,11 @@
 
         {% include molecule('form-handler') with {
             attributes: {
-                'trigger-selector': '.' ~ config.jsName ~ '__category-trigger',
+                'trigger-class-name': config.jsName ~ '__category-trigger',
                 'event': 'click',
                 'change-action': 'true',
-                'submit-form': 'false'
-            }
+                'submit-form': 'false',
+            },
         } only %}
     </ul>
 {% endblock %}
