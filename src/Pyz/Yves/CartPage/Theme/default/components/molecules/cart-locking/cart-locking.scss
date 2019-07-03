@@ -1,4 +1,4 @@
-$cart-locked-info-padding: rem(52);
+$cart-locking-info-padding: rem(52);
 
 @mixin cart-page-cart-locking($name: '.cart-locking') {
     #{$name} {
@@ -13,7 +13,7 @@ $cart-locked-info-padding: rem(52);
         }
 
         &__info {
-            width: calc(100% - #{$cart-locked-info-padding});
+            width: calc(100% - #{$cart-locking-info-padding});
         }
 
         &__message {
