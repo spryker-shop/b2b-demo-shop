@@ -11,7 +11,7 @@
 } %}
 
 {% set cartQuantity = data.cartQuantity > 0 ? data.cartQuantity ~ ' ' : '' %}
-{% set isShowMiniCart = findWidget('MiniCartWidget', [cartQuantity]).cartList | length %}
+{% set shouldShowMiniCart = findWidget('MiniCartWidget', [cartQuantity]).cartList | length %}
 
 {%- block class -%}
     {{ parent() }} {{ config.jsName }}
@@ -126,7 +126,7 @@
         {% endblock %}
     {% endwidget %}
 
-    {% if isShowMiniCart %}
+    {% if shouldShowMiniCart %}
         <li class="{{ config.name }}__item">
             {% include molecule('cart-items-counter') with {
                 class: config.name ~ '__link ' ~ config.jsName ~ '__trigger',
