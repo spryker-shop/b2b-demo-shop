@@ -32,24 +32,26 @@
 } %}
 
 {% block body %}
-    {% embed organism('section') with {
-        modifiers: ['secondary'],
-        class: 'spacing-bottom spacing-bottom--reset',
-        data: {
-            title: data.title
-        },
-        embed: {
-            description: data.description
-        }
-    } only %}
-        {% block inner %}
-            <div class="{{ config.name }}__text">
-                {% if embed.description is not empty %}
-                    {{ embed.description }}
-                {% endif %}
-            </div>
-        {% endblock %}
-    {% endembed %}
+    {% block header %}
+        {% embed organism('section') with {
+            modifiers: ['secondary'],
+            class: 'spacing-bottom spacing-bottom--reset',
+            data: {
+                title: data.title
+            },
+            embed: {
+                description: data.description
+            }
+        } only %}
+            {% block inner %}
+                <div class="{{ config.name }}__text">
+                    {% if embed.description is not empty %}
+                        {{ embed.description }}
+                    {% endif %}
+                </div>
+            {% endblock %}
+        {% endembed %}
+    {% endblock %}
     <div class="grid grid--gap grid--center">
         <div class="{{ config.name ~ "__container" }} col col--sm-12 col--md-6 col--lg-5">
             {% block banner %}

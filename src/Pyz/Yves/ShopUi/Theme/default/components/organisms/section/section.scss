@@ -136,6 +136,10 @@
             line-height: 1.61;
             max-width: rem(970);
 
+            &--full-width {
+                max-width: initial;
+            }
+
             @include helper-breakpoint-media-min($lg) {
                 font-size: map_get($setting-font-size, big);
             }

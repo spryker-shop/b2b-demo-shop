@@ -1,0 +1,25 @@
+{% extends template('widget') %}
+
+{% define data = {
+    productAbstractViewCollection: productAbstractViewCollection,
+} %}
+
+{% block body %}
+    <div class="grid grid--stretch">
+        {% for productAbstractView in data.productAbstractViewCollection %}
+            <div class="col col--sm-12 col--md-6 col--lg-4 spacing-x spacing-x--big spacing-x--inner">
+                {% include molecule('product-card') with {
+                    data: {
+                        name: productAbstractView.name,
+                        abstractId: productAbstractView.idProductAbstract,
+                        url: productAbstractView.url,
+                        imageUrl: productAbstractView.images is empty ? '' : productAbstractView.images.0.externalUrlSmall,
+                        price: productAbstractView.prices.DEFAULT | default(null),
+                        originalPrice: productAbstractView.prices.ORIGINAL is defined ? productAbstractView.prices.ORIGINAL : null,
+                        category: 'Office Furniture',
+                    },
+                } only %}
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
