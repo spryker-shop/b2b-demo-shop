@@ -13,11 +13,6 @@
     placeholder: ''
 } %}
 
-{% block class -%}
-    {{ parent() }}
-    {{ config.jsName }}
-{%- endblock %}
-
 {% define attributes = {
     'item-selector': '',
     'query-param-name': 'query',
