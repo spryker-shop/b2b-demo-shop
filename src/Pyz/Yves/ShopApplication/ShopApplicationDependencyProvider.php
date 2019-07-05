@@ -12,6 +12,10 @@ use Pyz\Yves\CompanyWidget\Widget\MenuItemCompanyWidget;
 use Pyz\Yves\CustomerFullNameWidget\Widget\CustomerFullNameWidget;
 use Pyz\Yves\ExampleProductColorGroupWidget\Widget\ExampleProductColorSelectorWidget;
 use Pyz\Yves\ProductSetWidget\Widget\ProductSetIdsWidget;
+use Spryker\Yves\EventDispatcher\Plugin\Application\EventDispatcherApplicationPlugin;
+use Spryker\Yves\Locale\Plugin\Application\LocaleApplicationPlugin;
+use Spryker\Yves\Store\Plugin\Application\StoreApplicationPlugin;
+use Spryker\Yves\Twig\Plugin\Application\TwigApplicationPlugin;
 use SprykerShop\Yves\AgentWidget\Widget\AgentControlBarWidget;
 use SprykerShop\Yves\AvailabilityNotificationWidget\Widget\AvailabilityNotificationSubscriptionWidget;
 use SprykerShop\Yves\BusinessOnBehalfWidget\Widget\BusinessOnBehalfStatusWidget;
@@ -77,6 +81,12 @@ use SprykerShop\Yves\ProductWidget\Widget\ProductAlternativeWidget;
 use SprykerShop\Yves\QuoteApprovalWidget\Widget\QuoteApprovalStatusWidget;
 use SprykerShop\Yves\QuoteApprovalWidget\Widget\QuoteApprovalWidget;
 use SprykerShop\Yves\QuoteApprovalWidget\Widget\QuoteApproveRequestWidget;
+use SprykerShop\Yves\QuoteRequestAgentWidget\Widget\QuoteRequestAgentCancelWidget;
+use SprykerShop\Yves\QuoteRequestAgentWidget\Widget\QuoteRequestAgentOverviewWidget;
+use SprykerShop\Yves\QuoteRequestWidget\Widget\QuoteRequestCancelWidget;
+use SprykerShop\Yves\QuoteRequestWidget\Widget\QuoteRequestCartWidget;
+use SprykerShop\Yves\QuoteRequestWidget\Widget\QuoteRequestCreateWidget;
+use SprykerShop\Yves\QuoteRequestWidget\Widget\QuoteRequestMenuItemWidget;
 use SprykerShop\Yves\SalesOrderThresholdWidget\Widget\SalesOrderThresholdWidget;
 use SprykerShop\Yves\SharedCartWidget\Widget\CartDeleteCompanyUsersListWidget;
 use SprykerShop\Yves\SharedCartWidget\Widget\CartListPermissionGroupWidget;
@@ -84,6 +94,7 @@ use SprykerShop\Yves\SharedCartWidget\Widget\SharedCartDetailsWidget;
 use SprykerShop\Yves\SharedCartWidget\Widget\SharedCartOperationsWidget;
 use SprykerShop\Yves\SharedCartWidget\Widget\SharedCartPermissionGroupWidget;
 use SprykerShop\Yves\SharedCartWidget\Widget\SharedCartShareWidget;
+use SprykerShop\Yves\ShopApplication\Plugin\Application\ShopApplicationApplicationPlugin;
 use SprykerShop\Yves\ShopApplication\ShopApplicationDependencyProvider as SprykerShopApplicationDependencyProvider;
 use SprykerShop\Yves\ShoppingListNoteWidget\Widget\ShoppingListItemNoteWidget;
 use SprykerShop\Yves\ShoppingListPage\Widget\ShoppingListDismissWidget;
@@ -135,6 +146,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             ProductReplacementForListWidget::class,
             PriceModeSwitcherWidget::class,
             ProductAbstractLabelWidget::class,
+            QuoteRequestMenuItemWidget::class,
             ProductAlternativeListWidget::class,
             ProductAlternativeWidget::class,
             ProductBarcodeWidget::class,
@@ -184,6 +196,11 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             ProductConcreteSearchWidget::class,
             AvailabilityNotificationSubscriptionWidget::class,
             ProductConcreteAddWidget::class,
+            QuoteRequestCreateWidget::class,
+            QuoteRequestCartWidget::class,
+            QuoteRequestCancelWidget::class,
+            QuoteRequestAgentOverviewWidget::class,
+            QuoteRequestAgentCancelWidget::class,
         ];
     }
 
@@ -196,6 +213,20 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             new CompanyUserRestrictionHandlerPlugin(),
             new CheckBusinessOnBehalfCompanyUserHandlerPlugin(), #BusinessOnBehalfFeature
             new CompanyBusinessUnitControllerRestrictionPlugin(),
+        ];
+    }
+
+    /**
+     * @return array
+     */
+    protected function getApplicationPlugins(): array
+    {
+        return [
+            new TwigApplicationPlugin(),
+            new EventDispatcherApplicationPlugin(),
+            new ShopApplicationApplicationPlugin(),
+            new StoreApplicationPlugin(),
+            new LocaleApplicationPlugin(),
         ];
     }
 }

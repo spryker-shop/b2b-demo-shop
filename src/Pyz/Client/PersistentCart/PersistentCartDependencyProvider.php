@@ -9,11 +9,13 @@ namespace Pyz\Client\PersistentCart;
 
 use Spryker\Client\DiscountPromotion\Plugin\AddDiscountPromotionPersistentCartRequestExpanderPlugin;
 use Spryker\Client\MultiCart\Plugin\DefaultQuoteUpdatePlugin;
+use Spryker\Client\MultiCart\Plugin\PersistentCart\MultiCartQuotePersistPlugin;
 use Spryker\Client\MultiCart\Plugin\QuickOrderQuoteNameExpanderPlugin;
 use Spryker\Client\MultiCart\Plugin\QuoteSelectorPersistentCartChangeExpanderPlugin;
 use Spryker\Client\MultiCart\Plugin\ReorderPersistentCartChangeExpanderPlugin;
 use Spryker\Client\MultiCart\Plugin\SaveCustomerQuotesQuoteUpdatePlugin;
 use Spryker\Client\PersistentCart\PersistentCartDependencyProvider as SprykerPersistentCartDependencyProvider;
+use Spryker\Client\PersistentCartExtension\Dependency\Plugin\QuotePersistPluginInterface;
 use Spryker\Client\ProductMeasurementUnit\Plugin\PersistentCart\SingleItemQuantitySalesUnitPersistentCartChangeExpanderPlugin;
 use Spryker\Client\ProductPackagingUnit\Plugin\PersistentCartExtension\ProductPackagingUnitAmountPersistentCartChangeExpanderPlugin;
 use Spryker\Client\SharedCart\Plugin\PermissionUpdateQuoteUpdatePlugin;
@@ -49,5 +51,13 @@ class PersistentCartDependencyProvider extends SprykerPersistentCartDependencyPr
             new SingleItemQuantitySalesUnitPersistentCartChangeExpanderPlugin(),
             new ProductPackagingUnitAmountPersistentCartChangeExpanderPlugin(), #ProductPackagingUnit
         ];
+    }
+
+    /**
+     * @return \Spryker\Client\PersistentCartExtension\Dependency\Plugin\QuotePersistPluginInterface
+     */
+    protected function getQuotePersistPlugin(): QuotePersistPluginInterface
+    {
+        return new MultiCartQuotePersistPlugin();
     }
 }

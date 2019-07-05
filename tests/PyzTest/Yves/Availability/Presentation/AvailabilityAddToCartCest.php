@@ -7,9 +7,9 @@
 
 namespace PyzTest\Yves\Availability\Presentation;
 
+use Codeception\Scenario;
 use PyzTest\Yves\Availability\AvailabilityPresentationTester;
 use PyzTest\Yves\Cart\PageObject\CartListPage;
-use PyzTest\Yves\Product\PageObject\ProductDetailPage;
 
 /**
  * Auto-generated group annotations
@@ -24,20 +24,25 @@ class AvailabilityAddToCartCest
 {
     /**
      * @param \PyzTest\Yves\Availability\AvailabilityPresentationTester $i
+     * @param \Codeception\Scenario $scenario
      *
      * @return void
      */
-    public function testAddToCartWhenBiggerQuantityIsUsed(AvailabilityPresentationTester $i)
+    public function testAddToCartWhenBiggerQuantityIsUsed(AvailabilityPresentationTester $i, Scenario $scenario): void
     {
+        $scenario->skip('Once we have Chromium + ChromeDriver or Firefox, enable this test case.');
+
         $i->wantTo('Open product page, and add item to cart with larger quantity than available');
         $i->expectTo('Display error message');
 
-        $i->amOnPage(AvailabilityPresentationTester::FUJITSU2_PRODUCT_PAGE);
+        $i->amLoggedInCustomer();
 
-        $i->click(ProductDetailPage::ADD_TO_CART_XPATH);
+        $i->amOnPage(AvailabilityPresentationTester::PRODUCT_WITH_LIMITED_AVAILABILITY_ADD_TO_CART_URL);
 
+        $i->amOnPage(CartListPage::CART_URL);
         $i->see(CartListPage::CART_HEADER);
 
+        $i->waitForElement(CartListPage::FIRST_CART_ITEM_QUANTITY_INPUT_XPATH, 30);
         $i->fillField(CartListPage::FIRST_CART_ITEM_QUANTITY_INPUT_XPATH, 50);
         $i->click(CartListPage::FIRST_CART_ITEM_CHANGE_QUANTITY_BUTTON_XPATH);
 

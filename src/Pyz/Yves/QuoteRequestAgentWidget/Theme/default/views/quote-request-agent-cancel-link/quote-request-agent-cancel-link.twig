@@ -1,0 +1,20 @@
+{% extends template('widget') %}
+
+{% define data = {
+    quoteRequestReference: _widget.quoteRequest.quoteRequestReference,
+    isQuoteRequestCancelable: _widget.isQuoteRequestCancelable,
+} %}
+
+{% block body %}
+    {% if data.isQuoteRequestCancelable %}
+        {% include molecule('table-action-link') with {
+            class: 'link link--alt link--action',
+            data: {
+                url: path('agent/quote-request/cancel', { quoteRequestReference: (data.quoteRequestReference) }),
+                icon: 'cross',
+                title: 'quote_request_page.quote_request.actions.cancel',
+                iconModifier: 'small',
+            },
+        } only %}
+    {% endif %}
+{% endblock %}

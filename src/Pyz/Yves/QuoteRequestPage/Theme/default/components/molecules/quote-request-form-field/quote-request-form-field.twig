@@ -1,0 +1,36 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'quote-request-form-field',
+} %}
+
+{% define data = {
+    field: required,
+} %}
+
+{% block body %}
+    {% if data.field.vars.name == 'delivery_date' %}
+        {% widget 'LanguageSwitcherWidget' args [app.request.pathInfo, app.request.queryString, app.request.requestUri] with {
+            data: {
+                field: data.field,
+            },
+        } only %}
+            {% block body %}
+                {% include molecule('date-time-picker') with {
+                    data: {
+                        field: data.field,
+                    },
+                    attributes: {
+                        'language': data.currentLanguage,
+                        'config': '{
+                            "format": "Y-m-d",
+                            "timepicker": false
+                        }',
+                    },
+                } only %}
+            {% endblock %}
+        {% endwidget %}
+    {% else %}
+        {{ form_row(data.field) }}
+    {% endif %}
+{% endblock %}
