@@ -119,7 +119,7 @@
                                 } only %}
                             {% endif %}
                         </div>
-                        <div class="col col--sm-2 text-right cart-title__quantity">{{ app['cart.quantity'] }} {{ 'checkout.step.summary.items' | trans }}</div>
+                        <div class="col col--sm-2 text-right cart-title__quantity">{{ cartQuantity }} {{ 'checkout.step.summary.items' | trans }}</div>
                     </div>
                 </div>
             </div>
@@ -259,7 +259,7 @@
                     <div class="order-sidebar__item order-sidebar__item--start">
                         <div class=" grid grid--justify grid--middle order-sidebar__order">
                             <h6 class="col order-sidebar__title">{{ 'cart.your-order' | trans }}</h6>
-                            <div class="col order-sidebar__quantity">{{ app['cart.quantity'] }} {{ 'checkout.step.summary.items' | trans }}</div>
+                            <div class="col order-sidebar__quantity">{{ cartQuantity }} {{ 'checkout.step.summary.items' | trans }}</div>
                         </div>
 
                         {% if data.isQuoteEditable and can('ChangeCartItemPermissionPlugin') and can('SeePricePermissionPlugin') %}
