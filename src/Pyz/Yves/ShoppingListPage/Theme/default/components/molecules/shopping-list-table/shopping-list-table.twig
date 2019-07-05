@@ -103,19 +103,16 @@
             {% endblock %}
 
             {% block quantity %}
-                {% widget 'ShoppingListItemQuantityInputWidget' args [data.listItem, embed.isItemAvailable] only %}
-                {% nowidget %}
-                    {% include molecule('quantity-counter') with {
-                        modifiers: ['shopping-list'],
-                        data: {
-                            isDisabled: not embed.isItemAvailable,
-                        },
-                        attributes: {
-                            name: 'shoppingListItem[quantity][' ~ data.listItem.idShoppingListItem ~ ']',
-                            value: data.listItem.quantity,
-                        },
-                    } only %}
-                {% endwidget %}
+                {% include molecule('quantity-counter') with {
+                    modifiers: ['shopping-list'],
+                    data: {
+                        isDisabled: not embed.isItemAvailable,
+                    },
+                    attributes: {
+                        name: 'shoppingListItem[quantity][' ~ data.listItem.idShoppingListItem ~ ']',
+                        value: data.listItem.quantity,
+                    },
+                } only %}
 
             {% endblock %}
 

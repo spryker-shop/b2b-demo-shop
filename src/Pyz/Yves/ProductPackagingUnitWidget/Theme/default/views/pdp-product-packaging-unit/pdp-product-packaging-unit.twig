@@ -14,9 +14,6 @@
     jsonScheme: _widget.jsonScheme | default(''),
     minQuantityInBaseUnit: _widget.minQuantityInBaseUnit,
     minQuantityInSalesUnits: _widget.minQuantityInSalesUnits,
-    minQuantity: _widget.minQuantity,
-    maxQuantity: _widget.maxQuantity,
-    quantityInterval: _widget.quantityInterval,
 } %}
 
 {% block body %}
@@ -46,10 +43,8 @@
                         attributes: {
                             id: 'sales-unit-quantity',
                             value: data.minQuantityInSalesUnits,
-                            name: 'sales-unit-quantity',
-                            minQuantity: data.minQuantity,
-                            maxQuantity: data.maxQuantity,
-                            step: data.quantityInterval,
+                            class: 'js-volume-price__quantity',
+                            name: 'sales-unit-quantity'
                         }
                     } only %}
                     <input id="base-unit-quantity" type="hidden" value="{{ data.minQuantityInBaseUnit }}" name="quantity"/>
@@ -84,13 +79,7 @@
     {% else %}
         <div class="grid grid--stretch grid--justify">
             {% embed molecule('quantity-counter') with {
-                modifiers: ['right-space'],
-                attributes: {
-                    value: data.minQuantity,
-                    min: data.minQuantity,
-                    max: data.maxQuantity,
-                    step: data.quantityInterval,
-                },
+                modifiers: ['right-space']
             } only %}
                 {% block inputClass %}js-volume-price__quantity{% endblock %}
             {% endembed %}

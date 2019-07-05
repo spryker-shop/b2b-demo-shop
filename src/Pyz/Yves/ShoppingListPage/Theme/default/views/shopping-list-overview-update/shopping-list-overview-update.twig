@@ -191,14 +191,14 @@
                             {{ 'shopping_list.remove_all_items' | trans }}
                         </a>
                     </div>
-                    <div class="col col--sm-12">
-                        {% widget 'ShoppingListSubtotalWidget' args [data.shoppingListItemProducts] only %}{% endwidget %}
-                    </div>
                 {% else %}
                     <div class="col col--sm-12 text-center">
                         {{ 'customer.account.shopping_list.empty' | trans }}
                     </div>
                 {% endif %}
+                <div class="col col--sm-12">
+                    {% widget 'ShoppingListSubtotalWidget' args [data.shoppingListItemProducts] only %}{% endwidget %}
+                </div>
             </div>
         </div>
 
