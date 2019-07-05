@@ -4,7 +4,7 @@
     form: _view.form,
     idCompanyBusinessUnit: _view.idCompanyBusinessUnit|default(''),
     title: 'company.account.address' | trans,
-    activePage: 'business-unit'
+    activePage: 'business-unit',
 } %}
 
 {% block breadcrumbs %}
@@ -14,41 +14,52 @@
                 label: 'company.account' | trans,
             }, {
                 label: 'company.account.business_unit' | trans,
-            }]}
+            }],
+        },
     } only %}
 {% endblock %}
 
 {% block companyContent %}
     {% include molecule('action-bar', 'ShopUi') with {
         data: {
-            title: 'company.account.create_address_information' | trans
-        }
+            title: 'company.account.create_address_information' | trans,
+        },
     } only %}
-    {% include molecule('form') with {
+
+    {% embed molecule('form') with {
         modifiers: ['narrow'],
         data: {
             form: data.form,
             options: {
-                action: url('company/address/create', { idCompanyBusinessUnit: data.idCompanyBusinessUnit })
+                action: url('company/address/create', { idCompanyBusinessUnit: data.idCompanyBusinessUnit }),
             },
             layout: {
                 address1: 'col col--sm-12 col--lg-9',
                 address2: 'col col--sm-12 col--lg-3',
                 zip_code: 'col col--sm-12 col--lg-4',
                 city: 'col col--sm-12 col--lg-4',
-                iso2code: 'col col--sm-12 col--lg-4'
+                iso2code: 'col col--sm-12 col--lg-4',
             },
             submit: {
                 enable: true,
-                class: 'form__action--expand-sm-md form__action--sm-md-first button'
+                class: 'form__action--expand-sm-md form__action--sm-md-first button',
             },
             cancel: {
                 enable: true,
                 url: url('company/business-unit/update', {'id': data.idCompanyBusinessUnit}),
                 text: 'general.back.button' | trans,
                 icon: null,
-                class: 'form__action--expand-sm-md button button--hollow'
-            }
-        }
+                class: 'form__action--expand-sm-md button button--hollow',
+            },
+        },
     } only %}
+        {% block fieldset %}
+            {{ parent() }}
+            <div class="grid">
+                <div class="col col-ms--12">
+                    <small class="text-secondary">{{ 'general.required_fields.text' | trans }}</small>
+                </div>
+            </div>
+        {% endblock %}
+    {% endembed %}
 {% endblock %}

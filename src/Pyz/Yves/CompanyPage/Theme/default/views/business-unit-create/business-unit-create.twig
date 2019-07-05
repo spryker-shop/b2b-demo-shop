@@ -4,7 +4,7 @@
     form: _view.form,
     addresses: _view.addresses| default([]),
     title: 'company.account.business_unit.create' | trans,
-    activePage: 'business-unit'
+    activePage: 'business-unit',
 } %}
 
 {% block breadcrumbs %}
@@ -15,8 +15,8 @@
                 },
                 {
                     label: 'company.account.business_unit' | trans,
-                }
-            ]}
+                },
+            ]},
     } only %}
 {% endblock %}
 
@@ -28,19 +28,19 @@
             form: data.form,
             submit: {
                 enable: true,
-                class: 'form__action--expand-sm-md form__action--sm-md-first button'
+                class: 'form__action--expand-sm-md form__action--sm-md-first button',
             },
             cancel: {
                 enable: true,
                 url: url('company/business-unit'),
                 text: 'general.back.button' | trans,
                 icon: null,
-                class: 'form__action--expand-sm-md button button--hollow'
-            }
+                class: 'form__action--expand-sm-md button button--hollow',
+            },
         },
         embed: {
-            addresses: data.addresses
-        }
+            addresses: data.addresses,
+        },
     } only %}
         {% block title %}
             {% if data.title is not empty %}
@@ -59,13 +59,21 @@
                     {% include molecule('business-unit-address-list', 'CompanyPage') with {
                         data: {
                             field: field,
-                            idCompanyBusinessUnit: null
-                        }
+                            idCompanyBusinessUnit: null,
+                        },
                     } only %}
                 </div>
             {% else %}
-                {{parent()}}
+                {{ parent() }}
             {% endif %}
+        {% endblock %}
+        {% block actions %}
+            <div class="grid grid--wide">
+                <div class="col col--sm-12 spacing-bottom text-left">
+                    <small class="text-secondary">{{ 'general.required_fields.text' | trans }}</small>
+                </div>
+            </div>
+            {{ parent() }}
         {% endblock %}
     {% endembed %}
 {% endblock %}

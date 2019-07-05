@@ -4,7 +4,7 @@
     form: _view.form,
     addresses: _view.addresses,
     title: 'company.account.business_unit' | trans,
-    activePage: 'business-unit'
+    activePage: 'business-unit',
 } %}
 
 {% block breadcrumbs %}
@@ -13,15 +13,15 @@
             steps: [
                 {
                     label: 'company.account.page-title' | trans,
-                    url: url('company/overview')
+                    url: url('company/overview'),
                 }, {
                     label: 'company.account.business_unit' | trans,
-                    url: url('company/business-unit')
+                    url: url('company/business-unit'),
                 }, {
-                    label: 'company.account.business_unit.edit' | trans
-                }
-            ]
-        }
+                    label: 'company.account.business_unit.edit' | trans,
+                },
+            ],
+        },
     } only %}
 {% endblock %}
 
@@ -35,10 +35,10 @@
                     title: 'company.account.business_unit.delete' | trans,
                     url: url('company/business-unit/delete-confirmation', {'id': data.form.vars.value.id_company_business_unit }),
                     modifiers: ['alternative', 'hollow'],
-                    icon: 'delete'
-                }
-            ]
-        }
+                    icon: 'delete',
+                },
+            ],
+        },
     } only %}
 
     {% embed molecule('form') with {
@@ -47,23 +47,23 @@
             form: data.form,
             layout: {
                 email: 'col col--sm-12 col--lg-6',
-                phone: 'col col--sm-12 col--lg-6'
+                phone: 'col col--sm-12 col--lg-6',
             },
             cancel: {
                 enable: true,
                 url: url('company/business-unit'),
                 text: 'general.back.button' | trans,
                 icon: null,
-                class: 'form__action--expand-sm-md button button--hollow'
+                class: 'form__action--expand-sm-md button button--hollow',
             },
             submit: {
                 enable: true,
-                class: 'form__action--expand-sm-md form__action--sm-md-first button'
+                class: 'form__action--expand-sm-md form__action--sm-md-first button',
             },
             embed: {
-                addresses: data.addresses
-            }
-        }
+                addresses: data.addresses,
+            },
+        },
     } only %}
         {% block field %}
             {% if field.vars.name == 'address_collection' %}
@@ -73,13 +73,21 @@
                         data: {
                             field: field,
                             addresses: data.embed.addresses,
-                            idCompanyBusinessUnit: data.form.vars.value.id_company_business_unit
-                        }
+                            idCompanyBusinessUnit: data.form.vars.value.id_company_business_unit,
+                        },
                     } only %}
                 </div>
             {% else %}
-                {{parent()}}
+                {{ parent() }}
             {% endif %}
+        {% endblock %}
+        {% block actions %}
+            <div class="grid grid--wide">
+                <div class="col col--sm-12 spacing-bottom text-left">
+                    <small class="text-secondary">{{ 'general.required_fields.text' | trans }}</small>
+                </div>
+            </div>
+            {{ parent() }}
         {% endblock %}
     {% endembed %}
 {% endblock %}

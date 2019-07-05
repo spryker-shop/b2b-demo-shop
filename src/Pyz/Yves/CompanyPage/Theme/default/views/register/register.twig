@@ -1,0 +1,40 @@
+{% extends template('page-layout-company', 'CompanyPage') %}
+
+{% define data = {
+    forms: {
+        register: _view.registerForm
+    }
+} %}
+
+{% block pageInfo %}{% endblock %}
+
+{% block content %}
+    {% embed molecule('form') with {
+        class: 'box',
+        data: {
+            title: 'company.account.registration.title' | trans,
+            form: data.forms.register,
+            options: {
+                action: url('company/register'),
+            },
+            layout: {
+                salutation: 'col col--sm-12 col--lg-2',
+                first_name: 'col col--sm-12 col--lg-5',
+                last_name: 'col col--sm-12 col--lg-5',
+            },
+            submit: {
+                enable: true,
+                text: 'forms.submit.register' | trans,
+            }
+        }
+    } only %}
+        {% block fieldset %}
+            {{ parent() }}
+            <div class="grid">
+                <div class="col col-ms--12">
+                    <small class="text-secondary">{{ 'general.required_fields.text' | trans }}</small>
+                </div>
+            </div>
+        {% endblock %}
+    {% endembed %}
+{% endblock %}

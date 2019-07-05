@@ -3,7 +3,7 @@
 {% define data = {
     form: _view.companyUserForm,
     title: 'company.account.company_user.add' | trans,
-    activePage: 'users'
+    activePage: 'users',
 } %}
 
 {% block breadcrumbs %}
@@ -12,48 +12,57 @@
             steps: [
                 {
                     label: 'company.account.page-title' | trans,
-                    url: url('company/overview')
+                    url: url('company/overview'),
                 }, {
                     label: 'company.account.company_user' | trans,
-                    url: url('company/user')
+                    url: url('company/user'),
                 }, {
-                    label: 'company.account.company_user.add' | trans
-                }
-            ]
-        }
+                    label: 'company.account.company_user.add' | trans,
+                },
+            ],
+        },
     } only %}
 {% endblock %}
 
 {% block companyContent %}
     {% include molecule('action-bar', 'ShopUi') with {
         data: {
-            title: 'company.account.company_user.add' | trans
-        }
+            title: 'company.account.company_user.add' | trans,
+        },
     } only %}
 
-    {% include molecule('form') with {
+    {% embed molecule('form') with {
         modifiers: ['narrow'],
         data: {
             form: data.form,
             options: {
-                action: url('company/user/create')
+                action: url('company/user/create'),
             },
             layout: {
                 salutation: 'col col--sm-12 col--md-3',
                 first_name: 'col col--sm-12 col--md-4',
-                last_name: 'col col--sm-12 col--md-5'
+                last_name: 'col col--sm-12 col--md-5',
             },
             submit: {
                 enable: true,
-                class: 'form__action--expand-sm-md form__action--sm-md-first button'
+                class: 'form__action--expand-sm-md form__action--sm-md-first button',
             },
             cancel: {
                 enable: true,
                 url: url('company/user'),
                 text: 'general.back.button' | trans,
                 class: 'form__action--expand-sm-md button button--hollow',
-                icon: null
-            }
-        }
+                icon: null,
+            },
+        },
     } only %}
+        {% block fieldset %}
+            {{ parent() }}
+            <div class="grid">
+                <div class="col col-ms--12">
+                    <small class="text-secondary">{{ 'general.required_fields.text' | trans }}</small>
+                </div>
+            </div>
+        {% endblock %}
+    {% endembed %}
 {% endblock %}
