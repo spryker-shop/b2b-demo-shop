@@ -111,15 +111,7 @@
                         {% include molecule('quantity-counter') with {
                             modifiers: ['right-space'],
                             data: {
-                                isDisabled: false,
-                                autoUpdate: false,
-                                maxQuantity: data.product.quantityMax,
-                                minQuantity: data.product.quantityMin,
-                                step: data.product.quantityInterval,
-                            },
-                            attributes: {
-                                max: data.product.quantityMax,
-                                value: data.product.quantityMin,
+                                isDisabled: isDisabled
                             }
                         } only %}
 

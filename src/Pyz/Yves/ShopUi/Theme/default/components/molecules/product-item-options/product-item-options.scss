@@ -20,6 +20,12 @@
             }
         }
 
+        &__total-price {
+            @include helper-breakpoint-media-min($lg) {
+                float: right;
+            }
+        }
+
         @content;
     }
 }

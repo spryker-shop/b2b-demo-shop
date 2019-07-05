@@ -4,6 +4,7 @@ use Spryker\Client\RabbitMq\Model\RabbitMqAdapter;
 use Spryker\Shared\Application\ApplicationConstants;
 use Spryker\Shared\Customer\CustomerConstants;
 use Spryker\Shared\Event\EventConstants;
+use Spryker\Shared\GlueApplication\GlueApplicationConstants;
 use Spryker\Shared\Newsletter\NewsletterConstants;
 use Spryker\Shared\ProductManagement\ProductManagementConstants;
 use Spryker\Shared\Queue\QueueConfig;
@@ -63,6 +64,10 @@ $config[SessionConstants::ZED_SESSION_COOKIE_NAME] = $config[ApplicationConstant
 
 // ---------- Events
 $config[EventConstants::LOG_FILE_PATH] = APPLICATION_ROOT_DIR . '/data/DE/logs/application_events.log';
+
+// ----------- Glue Application
+$config[GlueApplicationConstants::GLUE_APPLICATION_DOMAIN] = sprintf('http://glue.de.%s.local', $domain);
+$config[GlueApplicationConstants::GLUE_APPLICATION_CORS_ALLOW_ORIGIN] = sprintf('http://glue.de.%s.local', $domain);
 
 // ----------- RabbitMq
 $config[RabbitMqEnv::RABBITMQ_CONNECTIONS] = [

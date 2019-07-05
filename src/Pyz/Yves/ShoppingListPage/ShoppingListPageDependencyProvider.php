@@ -10,7 +10,6 @@ namespace Pyz\Yves\ShoppingListPage;
 use Spryker\Client\AvailabilityStorage\Plugin\ProductViewAvailabilityStorageExpanderPlugin;
 use Spryker\Client\PriceProductStorage\Plugin\ProductViewPriceExpanderPlugin;
 use Spryker\Client\ProductImageStorage\Plugin\ProductViewImageExpanderPlugin;
-use Spryker\Client\ProductQuantityStorage\Plugin\ProductStorage\ProductViewQuantityRestrictionExpanderPlugin;
 use SprykerShop\Yves\ProductOptionWidget\Plugin\ShoppingListPage\ShoppingListItemProductOptionFormDataProviderMapperPlugin;
 use SprykerShop\Yves\ProductOptionWidget\Plugin\ShoppingListPage\ShoppingListItemProductOptionFormExpanderPlugin;
 use SprykerShop\Yves\ShoppingListNoteWidget\Plugin\ShoppingListPage\ShoppingListItemNoteFormExpanderPlugin;
@@ -23,17 +22,11 @@ class ShoppingListPageDependencyProvider extends SprykerShoppingListPageDependen
      */
     protected function getShoppingListItemExpanderPlugins(): array
     {
-        /**
-         * @var \Spryker\Client\ProductStorage\Dependency\Plugin\ProductViewExpanderPluginInterface[] $plugins
-         */
-        $plugins = [
+        return [
             new ProductViewPriceExpanderPlugin(),
             new ProductViewImageExpanderPlugin(),
             new ProductViewAvailabilityStorageExpanderPlugin(),
-            new ProductViewQuantityRestrictionExpanderPlugin(),
         ];
-
-        return $plugins;
     }
 
     /**
