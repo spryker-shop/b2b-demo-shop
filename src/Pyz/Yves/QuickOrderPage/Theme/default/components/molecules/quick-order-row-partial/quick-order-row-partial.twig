@@ -11,10 +11,7 @@
     customQuantityFieldName: null,
     price: null,
     additionalColumns: [],
-    messages: null,
-    minQuantity: data.product.minQuantity | default(1),
-    maxQuantity: data.product.maxQuantity | default(null),
-    quantityInterval: data.product.quantityInterval | default(1),
+    messages: null
 } %}
 
 {% block body %}
@@ -42,12 +39,11 @@
                         label: false,
                         attr: {
                             class: config.name ~ '__quantity ' ~ config.jsName ~ '__quantity ' ~ (data.product is empty ? 'input--transparent' : ''),
-                            min: data.product is empty ? data.minQuantity : data.product.minQuantity,
-                            max: data.product is empty ? data.maxQuantity : data.product.maxQuantity,
-                            step: data.product is empty ? data.quantityInterval : data.product.quantityInterval,
+                            min: 1,
+                            max: null,
+                            step: 1,
                             disabled: data.product is empty,
-                            value: data.product is empty ? null : (data.quantityField.vars.value ? data.quantityField.vars.value : data.product.minQuantity),
-                            pattern: '[0-9]+([\,|\.][0-9]+)?',
+                            value: data.product is empty ? null : data.quantityField.vars.value
                         }
                     } %}
 
