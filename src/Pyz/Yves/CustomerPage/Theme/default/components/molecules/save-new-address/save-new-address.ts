@@ -5,9 +5,9 @@ export default class CustomerPageSaveNewAddress extends SaveNewAddress {
     trigger: CustomCompanyBusinessUnitAddressHandler;
 
     protected readyCallback(): void {
-        this.trigger = <CustomCompanyBusinessUnitAddressHandler>document.querySelector(
+        this.trigger = <CustomCompanyBusinessUnitAddressHandler>document.getElementsByTagName(
             'custom-company-business-unit-address-handler'
-        );
+        )[0];
         super.readyCallback();
     }
 

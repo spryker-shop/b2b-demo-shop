@@ -17,7 +17,6 @@ export default class FormHandler extends Component {
     }
 
     protected onTriggerEvent(event: Event): void {
-        console.log(1111);
         const trigger = <HTMLElement>event.currentTarget;
         const form = <HTMLFormElement>trigger.closest('form');
         if (this.shouldChangeAction) {

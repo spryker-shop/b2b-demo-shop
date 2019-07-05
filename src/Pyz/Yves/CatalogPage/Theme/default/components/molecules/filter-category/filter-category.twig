@@ -2,22 +2,21 @@
 
 {% define config = {
     name: 'filter-category',
-    tag: 'filter-category'
+    tag: 'filter-category',
 } %}
 
 {% define data = {
     filter: null,
     filterPath: null,
     categories: [],
-    levelMenu: 1
+    levelMenu: 1,
 } %}
 
 {% define attributes = {
-    'wrap-selector': config.name ~ '__menu--lvl-1',
-    'parent-selector': config.name ~ '__menu-item--lvl-1',
-    'list-selector': '.js-' ~ config.name ~ '__menu-item',
-    'category-selector': '.' ~ config.name ~ '__menu-item',
-    'change-class': 'is-hidden-lg-xxl'
+    'wrap-class-name': config.name ~ '__menu--lvl-1',
+    'parent-class-name': config.name ~ '__menu-item--lvl-1',
+    'categories-to-show-class-name': config.name ~ '__menu-item',
+    'class-to-remove': 'is-hidden-lg-xxl',
 } %}
 
 {% block component %}

@@ -2,8 +2,7 @@
 
 {% define config = {
     name: 'cart-item-note',
-    jsName: 'js-cart-item-note',
-    tag: 'cart-item-note'
+    tag: 'cart-item-note',
 } %}
 
 {% define data = {
@@ -11,15 +10,11 @@
     canWrite: required,
     label: '',
     note: '',
-    isNoteNotEmpty: null
+    isNoteNotEmpty: null,
 } %}
 
 {% define attributes = {
-    'edit-button-selector': '.' ~ config.jsName ~ '__edit',
-    'remove-button-selector': '.' ~ config.jsName ~ '__remove',
-    'read-section-selector': '.' ~ config.jsName ~ '__text-wrap',
-    'form-selector': '.' ~ config.jsName ~ '__form',
-    'change-class': 'is-hidden'
+    'class-to-toggle': 'is-hidden',
 } %}
 
 {% block body %}
