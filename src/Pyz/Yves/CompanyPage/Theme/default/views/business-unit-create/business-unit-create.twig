@@ -26,6 +26,7 @@
         data: {
             title: 'company.account.business_unit.create' | trans,
             form: data.form,
+            shouldRequireMessage: true,
             submit: {
                 enable: true,
                 class: 'form__action--expand-sm-md form__action--sm-md-first button',
@@ -66,14 +67,6 @@
             {% else %}
                 {{ parent() }}
             {% endif %}
-        {% endblock %}
-        {% block actions %}
-            <div class="grid grid--wide">
-                <div class="col col--sm-12 spacing-bottom text-left">
-                    <small class="text-secondary">{{ 'general.required_fields.text' | trans }}</small>
-                </div>
-            </div>
-            {{ parent() }}
         {% endblock %}
     {% endembed %}
 {% endblock %}

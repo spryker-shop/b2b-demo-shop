@@ -45,6 +45,7 @@
         modifiers: ['narrow'],
         data: {
             form: data.form,
+            shouldRequireMessage: true,
             layout: {
                 email: 'col col--sm-12 col--lg-6',
                 phone: 'col col--sm-12 col--lg-6',
@@ -80,14 +81,6 @@
             {% else %}
                 {{ parent() }}
             {% endif %}
-        {% endblock %}
-        {% block actions %}
-            <div class="grid grid--wide">
-                <div class="col col--sm-12 spacing-bottom text-left">
-                    <small class="text-secondary">{{ 'general.required_fields.text' | trans }}</small>
-                </div>
-            </div>
-            {{ parent() }}
         {% endblock %}
     {% endembed %}
 {% endblock %}

@@ -18,18 +18,9 @@
         },
     } only %}
         {% block content %}
-            {% embed molecule('form') with {
+            {% include molecule('form') with {
                 data: data.content,
             } only %}
-                {% block fieldset %}
-                    {{ parent() }}
-                    <div class="grid">
-                        <div class="col col-ms--12">
-                            <small class="text-secondary">{{ 'general.required_fields.text' | trans }}</small>
-                        </div>
-                    </div>
-                {% endblock %}
-            {% endembed %}
         {% endblock %}
     {% endembed %}
 {% endmacro %}
@@ -49,6 +40,7 @@
                 {
                     content: _self.profileForm('customer.profile.update' | trans, {
                         form: data.forms.profile,
+                        shouldRequireMessage: true,
                         layout: {
                             salutation: 'col col--sm-12 col--lg-4',
                             first_name: 'col col--sm-12 col--lg-4',
@@ -62,6 +54,7 @@
                 {
                     content: _self.profileForm('customer.password.update' | trans, {
                         form: data.forms.password,
+                        shouldRequireMessage: true,
                         submit: {
                             enable: true,
                         },

@@ -8,10 +8,11 @@
 } %}
 
 {% block customerContent %}
-    {% embed molecule('form') with {
+    {% include molecule('form') with {
         data: {
             title: 'customer.account.edit_address_information' | trans,
             form: data.form,
+            shouldRequireMessage: true,
             options: {
                 action: data.formAction,
             },
@@ -38,13 +39,4 @@
             },
         },
     } only %}
-        {% block fieldset %}
-            {{ parent() }}
-            <div class="grid">
-                <div class="col col-ms--12">
-                    <small class="text-secondary">{{ 'general.required_fields.text' | trans }}</small>
-                </div>
-            </div>
-        {% endblock %}
-    {% endembed %}
 {% endblock %}

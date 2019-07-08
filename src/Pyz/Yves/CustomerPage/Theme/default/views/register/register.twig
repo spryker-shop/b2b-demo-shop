@@ -15,11 +15,12 @@
     <section class="section section--last">
         <div class="grid">
             <div class="col col--sm-12 col--lg-6 spacing-x spacing-x--inner spacing-x--big">
-                {% embed molecule('form') with {
+                {% include molecule('form') with {
                     class: 'box',
                     data: {
                         title: 'customer.registration.title' | trans,
                         form: data.forms.register,
+                        shouldRequireMessage: true,
                         options: {
                             action: url('register'),
                         },
@@ -30,23 +31,15 @@
                     },
                     qa: 'register-form'
                 } only %}
-                    {% block fieldset %}
-                        {{ parent() }}
-                        <div class="grid">
-                            <div class="col col-ms--12">
-                                <small class="text-secondary">{{ 'general.required_fields.text' | trans }}</small>
-                            </div>
-                        </div>
-                    {% endblock %}
-                {% endembed %}
             </div>
 
             <div class="col col--sm-12 col--lg-6 spacing-x spacing-x--inner spacing-x--big">
-                {% embed molecule('form') with {
+                {% include molecule('form') with {
                     class: 'box',
                     data: {
                         title: 'customer.login.title' | trans,
                         form: data.forms.login,
+                        shouldRequireMessage: true,
                         layout: {
                             email: 'col col--sm-6',
                             password: 'col col--sm-6',
@@ -65,15 +58,6 @@
                         },
                     },
                 } only %}
-                    {% block fieldset %}
-                        {{ parent() }}
-                        <div class="grid">
-                            <div class="col col-ms--12">
-                                <small class="text-secondary">{{ 'general.required_fields.text' | trans }}</small>
-                            </div>
-                        </div>
-                    {% endblock %}
-                {% endembed %}
             </div>
         </div>
     </section>
