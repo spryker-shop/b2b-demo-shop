@@ -11,12 +11,12 @@ export default class QuickOrderFileUpload extends Component {
     protected readonly browseFileLabelToggleClass: string = 'label--browse-file-cursor-default';
 
     protected readyCallback(): void {
-        this.inputFile = <HTMLInputElement>this.querySelector(this.inputFileAttribute);
-        this.fileUploadMessage = <HTMLElement>this.querySelector(`.${this.jsName}__file-select`);
+        this.inputFile = <HTMLInputElement>document.getElementById(this.inputFileId);
+        this.fileUploadMessage = <HTMLElement>this.getElementsByClassName(`${this.jsName}__file-select`)[0];
         this.uploadMessage = <string>this.fileUploadMessage.innerText;
-        this.fileExtensionMessage = <HTMLElement>this.querySelector(`.${this.jsName}__file-extension`);
-        this.removeIcon = <HTMLElement>this.querySelector(`.${this.jsName}__remove-file`);
-        this.browseFileLabel = <HTMLLabelElement>this.querySelector(`.${this.jsName}__browse-file`);
+        this.fileExtensionMessage = <HTMLElement>this.getElementsByClassName(`${this.jsName}__file-extension`)[0];
+        this.removeIcon = <HTMLElement>this.getElementsByClassName(`${this.jsName}__remove-file`)[0];
+        this.browseFileLabel = <HTMLLabelElement>this.getElementsByClassName(`${this.jsName}__browse-file`)[0];
         this.mapEvents();
     }
 
@@ -40,7 +40,7 @@ export default class QuickOrderFileUpload extends Component {
         this.inputFile.value = '';
         this.fileUploadMessage.innerText = this.uploadMessage;
         this.toggleClassForIconExtensionMessage();
-        this.browseFileLabel.setAttribute('for', this.inputFileAttribute.substring(1));
+        this.browseFileLabel.setAttribute('for', this.inputFileId.substring(1));
     }
 
     protected toggleClassForIconExtensionMessage(): void {
@@ -49,7 +49,7 @@ export default class QuickOrderFileUpload extends Component {
         this.browseFileLabel.classList.toggle(this.browseFileLabelToggleClass);
     }
 
-    protected get inputFileAttribute(): string {
-        return this.getAttribute('input-file');
+    protected get inputFileId(): string {
+        return this.getAttribute('input-file-id');
     }
 }

@@ -15,8 +15,8 @@ export default class ProductSearchAutocompleteForm extends AutocompleteForm {
     quantityInput: HTMLInputElement;
 
     protected readyCallback(): void {
-        this.widgetSuggestionsContainer = <HTMLElement>this.querySelector(`.${this.jsName}__suggestions`);
-        this.quantityInput = <HTMLInputElement>document.querySelector(`.${this.jsName}__quantity-field`);
+        this.widgetSuggestionsContainer = <HTMLElement>this.getElementsByClassName(`${this.jsName}__suggestions`)[0];
+        this.quantityInput = <HTMLInputElement>document.getElementsByClassName(`${this.jsName}__quantity-field`)[0];
         super.readyCallback();
         this.plugKeydownEvent();
     }

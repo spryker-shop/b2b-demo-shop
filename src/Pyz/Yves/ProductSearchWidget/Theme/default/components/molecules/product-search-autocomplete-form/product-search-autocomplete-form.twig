@@ -2,7 +2,7 @@
 
 {% define config = {
     name: 'product-search-autocomplete-form',
-    tag: 'product-search-autocomplete-form'
+    tag: 'product-search-autocomplete-form',
 } %}
 
 {% define data = {
@@ -10,7 +10,7 @@
     name: 'query',
     value: '',
     hiddenValue: '',
-    placeholder: ''
+    placeholder: '',
 } %}
 
 {% define attributes = {
@@ -22,8 +22,12 @@
 
     'suggestion-url': required,
     'selected-value-key': '',
-    'show-clean-button': true
+    'show-clean-button': true,
 } %}
+
+{%- block class -%}
+    {{ parent() }} {{ config.jsName }}
+{%- endblock -%}
 
 {% block body %}
 
