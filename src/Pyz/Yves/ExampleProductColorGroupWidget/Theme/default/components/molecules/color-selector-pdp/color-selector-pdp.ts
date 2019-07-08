@@ -4,9 +4,9 @@ export default class ColorSelectorPdp extends ColorSelector {
     container: HTMLElement;
 
     protected readyCallback(): void {
-        this.colors = <HTMLAnchorElement[]>Array.from(this.querySelectorAll(`.${this.jsName}__color`));
-        this.image = <HTMLImageElement>document.querySelector(this.targetImageSelector);
-        this.container = <HTMLElement>document.querySelector(this.imageContainerSelector);
+        this.colors = <HTMLAnchorElement[]>Array.from(this.getElementsByClassName(`${this.jsName}__color`));
+        this.container = <HTMLElement>document.getElementsByClassName(this.imageContainerClassName)[0];
+        this.image = <HTMLImageElement>this.container.getElementsByTagName('img')[0];
         this.mapEvents();
     }
 
@@ -36,19 +36,19 @@ export default class ColorSelectorPdp extends ColorSelector {
     protected setActiveImage(newImageSrc: string): void {
         if (this.image.src !== newImageSrc) {
             this.image.src = newImageSrc;
-            this.container.classList.add(this.imageActiveClass);
+            this.container.classList.add(this.imageActiveClassName);
         }
     }
 
     protected resetActiveImage(): void {
-        this.container.classList.remove(this.imageActiveClass);
+        this.container.classList.remove(this.imageActiveClassName);
     }
 
-    protected get imageActiveClass(): string {
-        return this.getAttribute('active-image-class');
+    protected get imageActiveClassName(): string {
+        return this.getAttribute('active-image-class-name');
     }
 
-    protected get imageContainerSelector(): string {
-        return this.getAttribute('target-selector');
+    protected get imageContainerClassName(): string {
+        return this.getAttribute('target-image-container-class-name');
     }
 }

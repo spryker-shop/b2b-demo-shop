@@ -9,7 +9,7 @@ export default class ImageGallery extends Component {
 
     constructor() {
         super();
-        this.galleryItems = <HTMLElement[]>Array.from(this.querySelectorAll(`.${this.jsName}__item`));
+        this.galleryItems = <HTMLElement[]>Array.from(this.getElementsByClassName(`${this.jsName}__item`));
         this.quantityImages = this.galleryItems.length;
         this.thumbnailSlider = $(`.${this.jsName}__thumbnails`);
     }

@@ -9,11 +9,11 @@
     {% include molecule('color-selector', 'ExampleProductColorGroupWidget') with {
         class: 'text-left',
         data: {
-            items: data.items
+            items: data.items,
         },
         attributes: {
-            'target-image-selector': '.js-product-color-group__image-' ~ data.idProductAbstract ~ ' img',
-            'target-url-selector': '.js-product-color-group__link-' ~ data.idProductAbstract,
-        }
+            'target-image-container-class-name': 'js-product-color-group__image-' ~ data.idProductAbstract,
+            'target-details-link-class-name': 'js-product-color-group__link-' ~ data.idProductAbstract,
+        },
     } only %}
 {% endblock %}

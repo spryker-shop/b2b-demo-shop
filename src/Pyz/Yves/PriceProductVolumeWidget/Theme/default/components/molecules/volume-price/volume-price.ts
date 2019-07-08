@@ -14,9 +14,9 @@ export default class VolumePrice extends Component {
     protected timeout: number = 400;
 
     protected readyCallback(): void {
-        this.productPriceElement = <HTMLElement>this.querySelector(`.${this.jsName}__price`);
+        this.productPriceElement = <HTMLElement>this.getElementsByClassName(`${this.jsName}__price`)[0];
         this.volumePricesData = <VolumePricesData[]>JSON.parse(this.dataset.json).reverse();
-        this.quantityElement = <HTMLFormElement>document.querySelector(`.${this.jsName}__quantity`);
+        this.quantityElement = <HTMLFormElement>document.getElementsByClassName(`${this.jsName}__quantity`)[0];
         this.highLightedClass = <string>`${this.name}__price--highlighted`;
 
         if (this.quantityElement) {

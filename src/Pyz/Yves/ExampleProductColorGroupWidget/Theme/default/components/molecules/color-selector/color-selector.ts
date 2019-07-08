@@ -2,13 +2,15 @@ import Component from 'ShopUi/models/component';
 
 export default class ColorSelector extends Component {
     colors: HTMLAnchorElement[];
+    imageContainer: HTMLElement;
     image: HTMLImageElement;
     detailsLink: HTMLAnchorElement;
 
     protected readyCallback(): void {
-        this.colors = <HTMLAnchorElement[]>Array.from(this.querySelectorAll(`.${this.jsName}__color`));
-        this.image = <HTMLImageElement>document.querySelector(this.targetImageSelector);
-        this.detailsLink = <HTMLAnchorElement>document.querySelector(this.targetDetailsLink);
+        this.colors = <HTMLAnchorElement[]>Array.from(this.getElementsByClassName(`${this.jsName}__color`));
+        this.imageContainer = <HTMLImageElement>document.getElementsByClassName(this.targetImageContainerClassName)[0];
+        this.image = <HTMLImageElement>this.imageContainer.getElementsByTagName('img')[0];
+        this.detailsLink = <HTMLAnchorElement>document.getElementsByClassName(this.targetDetailsLinkClassName)[0];
         this.mapEvents();
     }
 
@@ -30,10 +32,10 @@ export default class ColorSelector extends Component {
 
     setActiveColor(newColor: HTMLAnchorElement): void {
         this.colors.forEach((color: HTMLAnchorElement) => {
-            color.classList.remove(this.colorActiveClass);
+            color.classList.remove(this.colorActiveClassName);
         });
 
-        newColor.classList.add(this.colorActiveClass);
+        newColor.classList.add(this.colorActiveClassName);
     }
 
     setImage(newImageSrc: string): void {
@@ -52,15 +54,15 @@ export default class ColorSelector extends Component {
         }
     }
 
-    protected get targetImageSelector(): string {
-        return this.getAttribute('target-image-selector');
+    protected get targetImageContainerClassName(): string {
+        return this.getAttribute('target-image-container-class-name');
     }
 
-    protected get targetDetailsLink(): string {
-        return this.getAttribute('target-url-selector');
+    protected get targetDetailsLinkClassName(): string {
+        return this.getAttribute('target-details-link-class-name');
     }
 
-    protected get colorActiveClass(): string {
-        return this.getAttribute('active-color-class');
+    protected get colorActiveClassName(): string {
+        return this.getAttribute('active-color-class-name');
     }
 }

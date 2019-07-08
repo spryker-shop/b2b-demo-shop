@@ -5,7 +5,7 @@ export default class LanguageSwitcher extends Component {
 
     constructor() {
         super();
-        this.selectList = <HTMLSelectElement[]>Array.from(document.querySelectorAll(`.${this.jsName}`));
+        this.selectList = <HTMLSelectElement[]>Array.from(document.getElementsByClassName(`${this.jsName}`));
     }
 
     protected readyCallback(): void {
