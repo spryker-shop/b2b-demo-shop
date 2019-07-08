@@ -34,11 +34,22 @@
                     {% include atom('icon') with {
                         modifiers: ['cart-plus'],
                         data: {
-                            name: 'cart-plus'
-                        }
+                            name: 'cart-plus',
+                        },
                     } only %}
 
                     {{ 'page.detail.add-to-cart' | trans }}
+                </button>
+
+                <button type="submit" name="createOrder" class="button button--expand button--big button--success spacing-top spacing-top--big">
+                    {% include atom('icon') with {
+                        modifiers: ['cart-plus'],
+                        data: {
+                            name: 'cart-plus',
+                        },
+                    } only %}
+
+                    {{ 'quick-order.button.create-order' | trans }}
                 </button>
             </div>
 
