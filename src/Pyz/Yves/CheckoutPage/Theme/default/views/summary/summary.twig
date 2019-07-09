@@ -7,6 +7,7 @@
     shippingAddress: _view.quoteTransfer.shippingAddress,
     billingAddress: _view.quoteTransfer.billingAddress,
     shipmentMethod: _view.quoteTransfer.shipment.method.name,
+    shipmentParentMethod: _view.quoteTransfer.shipment.method.carrierName,
     paymentMethod: _view.quoteTransfer.payment.paymentMethod,
 
     forms: {
@@ -47,14 +48,12 @@
                 }
             } only %}
 
-            {% set shippingLogo = 'Air' in data.shipmentMethod ? 'hermes-logo' : 'dhl-logo' %}
-
             {% include molecule('summary-sidebar-item', 'CheckoutPage') with {
                 data: {
                     title: 'checkout.step.summary.shipping' | trans,
                     method: data.shipmentMethod,
                     address: data.shippingAddress,
-                    iconName: shippingLogo,
+                    iconName: data.shipmentParentMethod | lower ~ '-logo',
                     iconModifiers: 'summary-shipping'
                 }
             } only %}
