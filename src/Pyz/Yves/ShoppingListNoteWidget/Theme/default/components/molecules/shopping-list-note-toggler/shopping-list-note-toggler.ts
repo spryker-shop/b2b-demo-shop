@@ -8,10 +8,10 @@ export default class ShoppingListNoteToggler extends Component {
     hiddenClass: string;
 
     protected readyCallback(): void {
-        this.label = <HTMLElement>this.querySelector(`.${this.jsName}__label`);
-        this.trigger = <HTMLElement>this.querySelector(`.${this.jsName}__title`);
-        this.noteTextFieldWrapper = <HTMLFormElement>this.querySelector(`.${this.jsName}__wrapper`);
-        this.noteTextarea = <HTMLFormElement>this.querySelector(`.${this.jsName}__note-textarea`);
+        this.label = <HTMLElement>this.getElementsByClassName(`${this.jsName}__label`)[0];
+        this.trigger = <HTMLElement>this.getElementsByClassName(`${this.jsName}__title`)[0];
+        this.noteTextFieldWrapper = <HTMLFormElement>this.getElementsByClassName(`${this.jsName}__wrapper`)[0];
+        this.noteTextarea = <HTMLFormElement>this.getElementsByClassName(`${this.jsName}__note-textarea`)[0];
         this.hiddenClass = 'is-hidden';
         this.mapEvents();
     }

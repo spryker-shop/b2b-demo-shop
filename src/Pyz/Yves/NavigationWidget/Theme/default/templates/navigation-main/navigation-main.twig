@@ -1,7 +1,7 @@
 {% extends template('widget') %}
 
 {% define data = {  
-    nodes: _widget.navigationTree.nodes
+    nodes: _widget.navigationTree.nodes,
 } %}
 
 {% block body %}
@@ -9,12 +9,11 @@
         data: {
             nodes: data.nodes,
             menuInline: true,
-            menuDropdown: true
+            menuDropdown: true,
         },
         attributes: {
-            'target-selector': '.js-overlay-block',
             'class-to-toggle': 'showed',
-            'available-breakpoint': '1024'
-        }
+            'available-breakpoint': '1024',
+        },
     } only %}
 {% endblock %}

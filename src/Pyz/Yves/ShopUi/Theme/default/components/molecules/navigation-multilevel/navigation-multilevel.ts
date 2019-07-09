@@ -9,10 +9,9 @@ export default class NavigationMultilevel extends Component {
 
     constructor() {
         super();
-        this.overlay = <OverlayBlock>document.querySelector(this.overlaySelector);
-        this.triggers = <HTMLElement[]>Array.from(this.querySelectorAll(this.trigerSelector));
-        this.touchTriggers = <HTMLElement[]>Array.from(this.querySelectorAll(this.touchSelector));
-        this.targets = <HTMLElement[]>Array.from(document.querySelectorAll(this.targetSelector));
+        this.overlay = <OverlayBlock>document.getElementsByClassName(this.overlayBlockClassName)[0];
+        this.triggers = <HTMLElement[]>Array.from(this.getElementsByClassName(`${this.jsName}__trigger`));
+        this.touchTriggers = <HTMLElement[]>Array.from(this.getElementsByClassName(`${this.jsName}__touch-trigger`));
     }
 
     protected readyCallback(): void {
@@ -78,10 +77,6 @@ export default class NavigationMultilevel extends Component {
         return block.getAttribute(attr);
     }
 
-    protected get targetSelector(): string {
-        return this.getAttribute('target-selector');
-    }
-
     protected get classToToggle(): string {
         return this.getAttribute('class-to-toggle');
     }
@@ -90,15 +85,7 @@ export default class NavigationMultilevel extends Component {
         return Number(this.getAttribute('available-breakpoint'));
     }
 
-    protected get overlaySelector(): string {
-        return '.js-overlay-block';
-    }
-
-    protected get trigerSelector(): string {
-        return `.${this.jsName}__trigger`;
-    }
-
-    protected get touchSelector(): string {
-        return `.${this.jsName}__touch-trigger`;
+    protected get overlayBlockClassName(): string {
+        return this.getAttribute('overlay-block-class-name');
     }
 }

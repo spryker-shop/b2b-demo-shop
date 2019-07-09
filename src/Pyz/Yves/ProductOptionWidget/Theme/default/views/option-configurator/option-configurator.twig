@@ -40,9 +40,9 @@
 
     {% include molecule('toggler-accordion') with {
         attributes: {
-            'wrap-selector': '.js-product-options',
-            'trigger-selector': '.js-product-options__title',
-            'class-to-toggle': 'is-hidden'
-        }
+            'wrap-class-name': 'js-product-options',
+            'trigger-class-name': 'js-product-options__title',
+            'class-to-toggle': 'is-hidden',
+        },
     } only %}
 {% endblock %}

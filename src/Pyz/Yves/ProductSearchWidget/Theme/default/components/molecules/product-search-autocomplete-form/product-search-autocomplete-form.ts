@@ -44,7 +44,7 @@ export default class ProductSearchAutocompleteForm extends AutocompleteForm {
 
     protected mapItemEvents(): void {
         const self = this;
-        const items = <HTMLElement[]>Array.from(this.widgetSuggestionsContainer.querySelectorAll(this.itemSelector));
+        const items = <HTMLElement[]>Array.from(this.widgetSuggestionsContainer.getElementsByClassName(this.itemClassName));
         items.forEach((item: HTMLElement) => {
             item.addEventListener('click', (event: Event) => self.onItemClick(event));
         });
@@ -96,7 +96,7 @@ export default class ProductSearchAutocompleteForm extends AutocompleteForm {
         this.ajaxProvider.queryParams.set(this.queryParamName, this.inputText);
         await this.ajaxProvider.fetch();
         this.suggestionItems = <HTMLElement[]>Array.from(
-            this.widgetSuggestionsContainer.querySelectorAll(this.itemSelector)
+            this.widgetSuggestionsContainer.getElementsByClassName(this.itemClassName)
         );
         this.lastSelectedItem = this.suggestionItems[0];
         this.mapItemEvents();
@@ -134,7 +134,7 @@ export default class ProductSearchAutocompleteForm extends AutocompleteForm {
     }
 
     protected get selectedInputClass(): string {
-        return `${this.itemSelector}--selected`.substr(1);
+        return `${this.itemClassName}--selected`.substr(1);
     }
 
     protected get inputValue(): string {

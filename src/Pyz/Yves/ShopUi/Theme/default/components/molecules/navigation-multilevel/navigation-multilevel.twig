@@ -2,17 +2,17 @@
 
 {% define config = {
     name: 'navigation-multilevel',
-    tag: 'navigation-multilevel'
+    tag: 'navigation-multilevel',
 } %}
 
 {% define data = {
-    nodes: []
+    nodes: [],
 } %}
 
 {% define attributes = {
-    'target-selector': required,
     'class-to-toggle': required,
-    'available-breakpoint': '0'
+    'available-breakpoint': '0',
+    'overlay-block-class-name': 'js-overlay-block',
 } %}
 
 {% block body %}
@@ -24,8 +24,8 @@
                 class: 'menu__item menu__item--lvl-0 ' ~ (hasChildren ? 'menu__item--has-children-dropdown' : ''),
                 data: {
                     node: node,
-                    parentJsName: config.jsName
-                }
+                    parentJsName: config.jsName,
+                },
             } only %}
         {% endfor %}
     </ul>

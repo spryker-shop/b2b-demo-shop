@@ -16,10 +16,10 @@
 
     {% include molecule('toggler-click') with {
         attributes: {
-            'target-selector': '.' ~ config.jsName,
-            'trigger-selector': '.' ~ config.jsName ~ '__trigger',
-            'class-to-toggle': config.name ~ '--full-visible'
-        }
+            'target-class-name': config.jsName,
+            'trigger-class-name': config.jsName ~ '__trigger',
+            'class-to-toggle': config.name ~ '--full-visible',
+        },
     } only %}
 
     <div class="{{ component.renderClass(config.name ~ '__trigger-holder', modifiers) }}">

@@ -12,9 +12,9 @@ export default class TogglerClick extends Component {
 
     constructor() {
         super();
-        this.overlay = <OverlayBlock>document.querySelector(this.overlaySelector);
-        this.triggers = <HTMLElement[]>Array.from(document.querySelectorAll(this.triggerSelector));
-        this.targets = <HTMLElement[]>Array.from(document.querySelectorAll(this.targetSelector));
+        this.overlay = <OverlayBlock>document.getElementsByClassName(this.overlayBlockClassName)[0];
+        this.triggers = <HTMLElement[]>Array.from(document.getElementsByClassName(this.triggerClassName));
+        this.targets = <HTMLElement[]>Array.from(document.getElementsByClassName(this.targetClassName));
         if (this.customOverlayModifiers) {
             this.overlayModifiers = this.customOverlayModifiers.split(', ');
         }
@@ -53,8 +53,8 @@ export default class TogglerClick extends Component {
         if (this.onDocumentClickAction.length !== 0) {
             if (this.isContentOpened) {
                 const eventTrigger = <HTMLElement>event.target;
-                const isClosestTargetExist = !!eventTrigger.closest(this.targetSelector);
-                const isClosestTriggerExist = !!eventTrigger.closest(this.triggerSelector);
+                const isClosestTargetExist = !!eventTrigger.closest(`.${this.targetClassName}`);
+                const isClosestTriggerExist = !!eventTrigger.closest(`.${this.triggerClassName}`);
 
                 if (!isClosestTargetExist && !isClosestTriggerExist) {
                     if (this.onDocumentClickAction === this.isHideClasses) {
@@ -106,7 +106,7 @@ export default class TogglerClick extends Component {
     }
 
     protected fixBody(isClassAddedFlag: boolean): void {
-        const body = document.querySelector('body');
+        const body = document.getElementsByTagName('body')[0];
 
         if (!isClassAddedFlag) {
             const offset = window.pageYOffset;
@@ -151,12 +151,12 @@ export default class TogglerClick extends Component {
         }
     }
 
-    protected get triggerSelector(): string {
-        return this.getAttribute('trigger-selector');
+    protected get triggerClassName(): string {
+        return this.getAttribute('trigger-class-name');
     }
 
-    protected get targetSelector(): string {
-        return this.getAttribute('target-selector');
+    protected get targetClassName(): string {
+        return this.getAttribute('target-class-name');
     }
 
     protected get classToToggle(): string {
@@ -175,8 +175,8 @@ export default class TogglerClick extends Component {
         return this.getAttribute('fix-body');
     }
 
-    protected get overlaySelector(): string {
-        return '.js-overlay-block';
+    protected get overlayBlockClassName(): string {
+        return this.getAttribute('overlay-block-class-name');
     }
 
     protected get customOverlayModifiers(): string {
@@ -190,5 +190,4 @@ export default class TogglerClick extends Component {
     protected get classToFixBody(): string {
         return this.getAttribute('class-to-fix-body');
     }
-
 }

@@ -292,10 +292,10 @@
 
                 {% include molecule('toggler-accordion') with {
                     attributes: {
-                        'wrap-selector': '.js-order-sidebar',
-                        'trigger-selector': '.js-order-sidebar__trigger',
-                        'class-to-toggle': 'is-hidden'
-                    }
+                        'wrap-class-name': 'js-order-sidebar',
+                        'trigger-class-name': 'js-order-sidebar__trigger',
+                        'class-to-toggle': 'is-hidden',
+                    },
                 } only %}
             </div>
         </div>

@@ -74,11 +74,11 @@
 
                             {% include molecule('toggler-click') with {
                                 attributes: {
-                                    'trigger-selector': '.' ~ config.jsName ~ '__trigger-' ~ filter.name,
-                                    'target-selector': '.' ~ config.jsName ~ '__' ~ filter.name,
+                                    'trigger-class-name': config.jsName ~ '__trigger-' ~ filter.name,
+                                    'target-class-name': config.jsName ~ '__' ~ filter.name,
                                     'class-to-toggle': hiddenClassToToggleSections,
-                                    'trigger-class-to-toggle': 'active'
-                                }
+                                    'trigger-class-to-toggle': 'active',
+                                },
                             } only %}
                         </div>
                     {% endif %}

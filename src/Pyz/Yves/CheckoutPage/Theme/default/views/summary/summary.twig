@@ -168,10 +168,10 @@
 
             {% include molecule('toggler-accordion') with {
                 attributes: {
-                    'wrap-selector': '.js-summary-toggle',
-                    'trigger-selector': '.js-summary-toggle__trigger',
-                    'class-to-toggle': 'is-hidden'
-                }
+                    'wrap-class-name': 'js-summary-toggle',
+                    'trigger-class-name': 'js-summary-toggle__trigger',
+                    'class-to-toggle': 'is-hidden',
+                },
             } only %}
 
             {% embed molecule('form') with {

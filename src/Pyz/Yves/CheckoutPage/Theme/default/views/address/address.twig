@@ -104,10 +104,10 @@
                         component: molecule('toggler-checkbox'),
                         label: 'customer.billingSameAsShipping' | trans,
                         attributes: {
-                            'target-selector': '.js-address__billing-same-as-shipping',
+                            'target-class-name': 'js-address__billing-same-as-shipping',
                             'class-to-toggle': 'is-hidden',
-                            'add-class-when-checked': true
-                        }
+                            'add-class-when-checked': true,
+                        },
                     })
                 }}
             </div>

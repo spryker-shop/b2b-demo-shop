@@ -5,8 +5,8 @@ export default class SideDrawer extends Component {
     containers: HTMLElement[];
 
     protected readyCallback(): void {
-        this.triggers = <HTMLElement[]>Array.from(document.getElementsByClassName(this.triggerSelector));
-        this.containers = <HTMLElement[]>Array.from(document.getElementsByClassName(this.containerSelector));
+        this.triggers = <HTMLElement[]>Array.from(document.getElementsByClassName(this.triggerClassName));
+        this.containers = <HTMLElement[]>Array.from(document.getElementsByClassName(this.containerClassName));
         this.mapEvents();
     }
 
@@ -23,20 +23,19 @@ export default class SideDrawer extends Component {
 
     toggle(): void {
         const isShown = !this.classList.contains(`${this.name}--show`);
-        const lockedSelector = this.lockedBodySelector;
         this.classList.toggle(`${this.name}--show`, isShown);
-        this.containers.forEach((conatiner: HTMLElement) => conatiner.classList.toggle(lockedSelector, isShown));
+        this.containers.forEach((conatiner: HTMLElement) => conatiner.classList.toggle(this.lockedBodyClassName, isShown));
     }
 
-    protected get triggerSelector(): string {
-        return this.getAttribute('trigger-selector');
+    protected get triggerClassName(): string {
+        return this.getAttribute('trigger-class-name');
     }
 
-    protected get containerSelector(): string {
-        return this.getAttribute('container-selector');
+    protected get containerClassName(): string {
+        return this.getAttribute('container-class-name');
     }
 
-    protected get lockedBodySelector(): string {
-        return this.getAttribute('locked-body-selector');
+    protected get lockedBodyClassName(): string {
+        return this.getAttribute('locked-body-class-name');
     }
 }

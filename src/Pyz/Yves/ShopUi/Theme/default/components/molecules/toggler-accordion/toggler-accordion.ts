@@ -7,8 +7,8 @@ export default class TogglerAccordion extends Component {
 
     constructor() {
         super();
-        this.wrap = <HTMLElement>document.querySelector(this.wrapSelector);
-        this.triggers = <HTMLElement[]>Array.from(document.querySelectorAll(this.triggerSelector));
+        this.wrap = <HTMLElement>document.getElementsByClassName(this.wrapClassName)[0];
+        this.triggers = <HTMLElement[]>Array.from(document.getElementsByClassName(this.triggerClassName));
         this.isTouch = 'ontouchstart' in window;
     }
 
@@ -60,12 +60,12 @@ export default class TogglerAccordion extends Component {
         });
     }
 
-    protected get wrapSelector(): string {
-        return this.getAttribute('wrap-selector');
+    protected get wrapClassName(): string {
+        return this.getAttribute('wrap-class-name');
     }
 
-    protected get triggerSelector(): string {
-        return this.getAttribute('trigger-selector');
+    protected get triggerClassName(): string {
+        return this.getAttribute('trigger-class-name');
     }
 
     protected get classToToggle(): string {

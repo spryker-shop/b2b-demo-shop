@@ -11,7 +11,7 @@
         </div>
 
         <div class="col {{config.name}}__col {{config.name}}__col--filters is-hidden-sm-md">
-            <div class="grid grid--middle {{config.name}}__filter-grid {{config.jsName}}__filter-grid" data-block-to=".js-filter-section__sorting" data-breackpoint="768">
+            <div class="grid grid--middle {{config.name}}__filter-grid {{config.jsName}}__filter-grid" data-block-to="js-filter-section__sorting" data-breakpoint="768">
                 <div class="{{config.name}}__col {{config.name}}__col--select col col--sm-6 col--lg-auto">
                     <div class="grid grid--middle">
                         <div class="{{config.name}}__col col is-hidden-sm-md">
@@ -109,8 +109,8 @@
 
     {% include molecule('breakpoint-dependent-block-placer') with {
         attributes: {
-            'block-selector': '.' ~ config.jsName ~ '__filter-grid'
-        }
+            'block-class-name': config.jsName ~ '__filter-grid',
+        },
     } only %}
 
     {% include molecule('form-handler') with {

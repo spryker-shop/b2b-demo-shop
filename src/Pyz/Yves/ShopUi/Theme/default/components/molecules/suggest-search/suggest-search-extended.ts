@@ -30,7 +30,7 @@ export default class SuggestSearchExtended extends SuggestSearch {
     }
 
     protected get overlayClassName(): string {
-        return this.getAttribute('overlay-class');
+        return this.getAttribute('overlay-class-name');
     }
 
     protected get overlayBreakpoint(): number {

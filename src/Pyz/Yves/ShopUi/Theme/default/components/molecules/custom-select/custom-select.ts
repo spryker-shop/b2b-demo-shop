@@ -1,6 +1,6 @@
 import Component from 'ShopUi/models/component';
 import $ from 'jquery/dist/jquery';
-import select from 'select2';
+import 'select2';
 
 export default class CustomSelect extends Component {
     select: HTMLSelectElement;
@@ -10,7 +10,6 @@ export default class CustomSelect extends Component {
     protected timeout: number = 300;
 
     protected readyCallback(): void {
-        const select2 = select;
         this.select = <HTMLSelectElement>this.getElementsByClassName(`${this.jsName}`)[0];
         this.$select = $(this.select);
 

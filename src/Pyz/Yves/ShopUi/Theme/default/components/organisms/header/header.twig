@@ -143,11 +143,11 @@
 
     {% include molecule('toggler-click') with {
         attributes: {
-            'trigger-selector': '.' ~ config.jsName ~ '__actions-search-trigger',
-            'target-selector': '.' ~ config.jsName ~ '__search-form',
+            'trigger-class-name': config.jsName ~ '__actions-search-trigger',
+            'target-class-name': config.jsName ~ '__search-form',
             'class-to-toggle': config.name ~ '__search-form--active',
             'toggle-overlay-modifiers': 'no-search, no-search',
-            'document-click': 'hide-class'
-        }
+            'document-click': 'hide-class',
+        },
     } only %}
 {% endblock %}

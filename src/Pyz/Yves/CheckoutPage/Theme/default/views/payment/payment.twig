@@ -87,19 +87,19 @@
                                         required: false,
                                         component: molecule('toggler-radio'),
                                         attributes: {
-                                            'target-selector': '.js-payment-method-' ~ embed.index,
+                                            'target-class-name': 'js-payment-method-' ~ embed.index,
                                             'class-to-toggle': 'is-hidden',
-                                            'checked': 'checked'
-                                        }
+                                            'checked': 'checked',
+                                        },
                                     }) }}
                                 {% else %}
                                     {{ form_row(embed.toggler, {
                                         required: false,
                                         component: molecule('toggler-radio'),
                                         attributes: {
-                                            'target-selector': '.js-payment-method-' ~ embed.index,
-                                            'class-to-toggle': 'is-hidden'
-                                        }
+                                            'target-class-name': 'js-payment-method-' ~ embed.index,
+                                            'class-to-toggle': 'is-hidden',
+                                        },
                                     }) }}
                                 {% endif %}
                                 <div class="col col--sm-12 is-hidden js-payment-method-{{embed.index}}">

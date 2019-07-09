@@ -47,9 +47,9 @@
 
     {% include molecule('toggler-accordion') with {
         attributes: {
-            'wrap-selector': '.' ~ config.jsName ~ '-' ~ data.index,
-            'trigger-selector': '.' ~ config.jsName ~ '__title',
-            'class-to-toggle': 'is-hidden'
-        }
+            'wrap-class-name': config.jsName ~ '-' ~ data.index,
+            'trigger-class-name': config.jsName ~ '__title',
+            'class-to-toggle': 'is-hidden',
+        },
     } only %}
 {% endblock %}

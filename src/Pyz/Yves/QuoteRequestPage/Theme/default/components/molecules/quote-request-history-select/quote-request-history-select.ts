@@ -6,7 +6,7 @@ export default class QuoteRequestHistorySelect extends Component {
     protected readyCallback(): void {}
 
     mountCallback(): void {
-        this.select = <HTMLSelectElement>this.querySelector('select');
+        this.select = <HTMLSelectElement>this.getElementsByTagName('select')[0];
         this.mapEvents();
     }
 
