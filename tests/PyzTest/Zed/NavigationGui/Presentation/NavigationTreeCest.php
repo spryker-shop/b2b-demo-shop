@@ -194,8 +194,15 @@ class NavigationTreeCest
         $i->clickNode($idNavigationNode);
         $i->switchToNodeForm();
         $i->clickAddChildNodeButton();
+
         $i->see('Create child node');
-        $i->submitCreateNodeFormWithCmsPageType('Child 1.1', '/en/imprint', '/de/impressum');
+        $data = [];
+        $urls = $i->generateUrlByAvailableLocaleTransfers('imprint', ['de_DE' => 'impressum']);
+        foreach ($urls as $url) {
+            $data[] = ['title' => 'Child 1.1', 'url' => $url];
+        }
+
+        $i->submitCreateNodeFormWithCmsPageTypeWithFormData($data);
 
         $childNavigationNodeName = $i->seeSuccessMessage(NavigationNodeCreatePage::MESSAGE_SUCCESS);
         $i->switchToNavigationTree();
