@@ -380,6 +380,7 @@ class NavigationGuiPresentationTester extends Actor
     public function testDeleteNavigationNode()
     {
         $i = $this;
+
         /**
          * Test skipped because popup confirmation is not working as expected under phantomjs.
          * TODO: once we have Selenium, enable this test case.
@@ -646,6 +647,27 @@ class NavigationGuiPresentationTester extends Actor
     }
 
     /**
+     * @param array $data
+     *
+     * @return void
+     */
+    public function submitCreateNodeFormWithCmsPageTypeWithFormData(array $data): void
+    {
+        $formData = [
+            'navigation_node[node_type]' => 'cms_page',
+            'navigation_node[is_active]' => true,
+        ];
+        foreach ($data as $index => $localizedData) {
+            $titleKey = sprintf('navigation_node[navigation_node_localized_attributes][%s][title]', $index);
+            $urlKey = sprintf('navigation_node[navigation_node_localized_attributes][%s][cms_page_url]', $index);
+            $formData[$titleKey] = $localizedData['title'];
+            $formData[$urlKey] = $localizedData['url'];
+        }
+
+        $this->submitForm(static::NODE_FORM_SELECTOR, $formData);
+    }
+
+    /**
      * @param \Generated\Shared\Transfer\NavigationTreeTransfer $navigationTreeTransfer
      *
      * @return \Generated\Shared\Transfer\NavigationTreeTransfer
@@ -726,6 +748,26 @@ class NavigationGuiPresentationTester extends Actor
             ->findByName(
                 $navigationTransfer->getName()
             )->getFirst();
+
         return $navigationEntity;
+    }
+
+    /**
+     * @param string $defaultSlug
+     * @param string[] $localizedSlugs
+     *
+     * @return array
+     */
+    public function generateUrlByAvailableLocaleTransfers(string $defaultSlug, array $localizedSlugs): array
+    {
+        $localeTransfers = $this->getLocator()->locale()->facade()->getLocaleCollection();
+
+        $localeUrls = [];
+        foreach ($localeTransfers as $localeTransfer) {
+            $localePrefix = substr($localeTransfer->getLocaleName(), 0, 2);
+            $localeUrls[] = sprintf('/%s/%s', $localePrefix, $localizedSlugs[$localeTransfer->getLocaleName()] ?? $defaultSlug);
+        }
+
+        return $localeUrls;
     }
 }

@@ -35,7 +35,7 @@ class MultiCartPageControllerProvider extends SprykerShopMultiCartPageController
     /**
      * @return $this
      */
-    protected function addMultiCartSetDefaultBackRoute(): self
+    protected function addMultiCartSetDefaultBackRoute()
     {
         $this->createGetController('/{multiCart}/set-default-back/{idQuote}', static::ROUTE_MULTI_CART_SET_DEFAULT_BACK, 'MultiCartPage', 'MultiCart', 'setDefaultBack')
             ->assert('multiCart', $this->getAllowedLocalesPattern() . 'multi-cart|multi-cart')

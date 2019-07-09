@@ -1,0 +1,25 @@
+{% extends template('widget') %}
+
+{% define data = {
+    cart: _widget.cart,
+    isQuoteOwner: _widget.isQuoteOwner,
+    shareOptionGroups: _widget.shareOptionGroups,
+} %}
+
+{% block body %}
+    {% if data.isQuoteOwner and data.cart.idQuote is not empty %}
+        {% for shareOptionGroup, shareOptionGroupLabel in data.shareOptionGroups %}
+            {% include molecule('url-mask-generator' , 'PersistentCartShareWidget') with {
+                class: 'spacing-top',
+                data: {
+                    group: 'cart-share',
+                    label: shareOptionGroupLabel | trans,
+                },
+                attributes: {
+                    idQuote: data.cart.idQuote,
+                    shareOptionGroup: shareOptionGroup,
+                },
+            } only %}
+        {% endfor %}
+    {% endif %}
+{% endblock %}
