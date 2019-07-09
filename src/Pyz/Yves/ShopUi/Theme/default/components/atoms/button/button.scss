@@ -227,6 +227,14 @@
             padding-right: 0;
         }
 
+        &--inline {
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+            padding: rem(15);
+            font-size: rem(11);
+            line-height: rem(13);
+        }
+
         @each $action, $setting-color-action in $setting-color-actions {
             @include shop-ui-button-action($action, $setting-color-action);
         }
