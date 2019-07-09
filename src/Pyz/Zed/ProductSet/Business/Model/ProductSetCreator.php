@@ -62,6 +62,7 @@ class ProductSetCreator extends SprykerProductSetCreator
                 $this->eventFacade->trigger(ProductEvents::PRODUCT_ABSTRACT_PUBLISH, (new EventEntityTransfer())->setId($productAbstractSets->getFkProductAbstract()));
             }
         }
+
         return $productSetTransfer;
     }
 }

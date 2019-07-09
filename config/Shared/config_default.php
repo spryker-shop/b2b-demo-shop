@@ -8,7 +8,6 @@ use Spryker\Service\FlysystemLocalFileSystem\Plugin\Flysystem\LocalFilesystemBui
 use Spryker\Shared\Acl\AclConstants;
 use Spryker\Shared\Application\ApplicationConstants;
 use Spryker\Shared\Auth\AuthConstants;
-use Spryker\Shared\Cms\CmsConstants;
 use Spryker\Shared\CmsGui\CmsGuiConstants;
 use Spryker\Shared\Collector\CollectorConstants;
 use Spryker\Shared\Customer\CustomerConstants;
@@ -27,7 +26,6 @@ use Spryker\Shared\Kernel\Store;
 use Spryker\Shared\Log\LogConstants;
 use Spryker\Shared\Monitoring\MonitoringConstants;
 use Spryker\Shared\Oauth\OauthConstants;
-use Spryker\Shared\OauthCustomerConnector\OauthCustomerConnectorConstants;
 use Spryker\Shared\Oms\OmsConstants;
 use Spryker\Shared\Propel\PropelConstants;
 use Spryker\Shared\Queue\QueueConfig;
@@ -57,6 +55,7 @@ use SprykerEco\Shared\Loggly\LogglyConstants;
 use SprykerShop\Shared\CalculationPage\CalculationPageConstants;
 use SprykerShop\Shared\ErrorPage\ErrorPageConstants;
 use SprykerShop\Shared\ShopApplication\ShopApplicationConstants;
+use Twig\Cache\FilesystemCache;
 
 $CURRENT_STORE = Store::getInstance()->getStoreName();
 
@@ -218,23 +217,23 @@ $config[SearchConstants::SEARCH_INDEX_NAME_SUFFIX] = '';
 
 // ---------- Twig
 $config[TwigConstants::YVES_TWIG_OPTIONS] = [
-    'cache' => new Twig_Cache_Filesystem(
+    'cache' => new FilesystemCache(
         sprintf(
             '%s/data/%s/cache/Yves/twig',
             APPLICATION_ROOT_DIR,
             $CURRENT_STORE
         ),
-        Twig_Cache_Filesystem::FORCE_BYTECODE_INVALIDATION
+        FilesystemCache::FORCE_BYTECODE_INVALIDATION
     ),
 ];
 $config[TwigConstants::ZED_TWIG_OPTIONS] = [
-    'cache' => new Twig_Cache_Filesystem(
+    'cache' => new FilesystemCache(
         sprintf(
             '%s/data/%s/cache/Zed/twig',
             APPLICATION_ROOT_DIR,
             $CURRENT_STORE
         ),
-        Twig_Cache_Filesystem::FORCE_BYTECODE_INVALIDATION
+        FilesystemCache::FORCE_BYTECODE_INVALIDATION
     ),
 ];
 $config[TwigConstants::YVES_PATH_CACHE_FILE] = sprintf(
@@ -355,11 +354,6 @@ $config[ApplicationConstants::ZED_SSL_ENABLED] =
     $config[SessionConstants::ZED_SSL_ENABLED]
     = false;
 $config[ApplicationConstants::ZED_SSL_EXCLUDED] = ['heartbeat/index'];
-
-// ---------- Theme
-$YVES_THEME = 'default';
-$config[TwigConstants::YVES_THEME] = $YVES_THEME;
-$config[CmsConstants::YVES_THEME] = $YVES_THEME;
 
 // ---------- Error handling
 $config[ErrorHandlerConstants::YVES_ERROR_PAGE] = APPLICATION_ROOT_DIR . '/public/Yves/errorpage/error.html';
@@ -490,10 +484,8 @@ $config[CmsGuiConstants::CMS_FOLDER_PATH] = '@Cms/templates/';
 $config[OauthConstants::PRIVATE_KEY_PATH] = 'file://';
 $config[OauthConstants::PUBLIC_KEY_PATH] = 'file://';
 $config[OauthConstants::ENCRYPTION_KEY] = '';
-
-// ----------- AuthRestApi
-$config[OauthCustomerConnectorConstants::OAUTH_CLIENT_IDENTIFIER] = '';
-$config[OauthCustomerConnectorConstants::OAUTH_CLIENT_SECRET] = '';
+$config[OauthConstants::OAUTH_CLIENT_IDENTIFIER] = '';
+$config[OauthConstants::OAUTH_CLIENT_SECRET] = '';
 
 // ---------- FileSystem
 $config[FileSystemConstants::FILESYSTEM_SERVICE] = [
@@ -522,7 +514,7 @@ $config[DataImportConstants::IS_ENABLE_INTERNAL_IMAGE] = false;
 
 // ----------- Translator
 $config[TranslatorConstants::TRANSLATION_ZED_FALLBACK_LOCALES] = [
-    'de_DE' => ['en_EN'],
+    'de_DE' => ['en_US'],
 ];
 $config[TranslatorConstants::TRANSLATION_ZED_CACHE_DIRECTORY] = sprintf(
     '%s/data/%s/cache/Zed/translation',
