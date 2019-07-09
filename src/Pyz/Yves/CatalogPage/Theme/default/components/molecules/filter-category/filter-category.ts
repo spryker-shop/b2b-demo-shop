@@ -9,7 +9,9 @@ export default class FilterCategory extends Component {
         this.activeCategory = <HTMLElement>document.getElementsByClassName(`${this.jsName}__menu-item`)[0];
 
         const parent = this.activeCategory ? this.activeCategory : this;
-        this.categoriesToShow = <HTMLElement[]>Array.from(parent.getElementsByClassName(this.categoriesToShowClassName));
+        this.categoriesToShow = <HTMLElement[]>Array.from(parent.getElementsByClassName(
+            this.categoriesToShowClassName
+        ));
     }
 
     protected readyCallback(): void {

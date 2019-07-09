@@ -24,7 +24,9 @@ export default class SideDrawer extends Component {
     toggle(): void {
         const isShown = !this.classList.contains(`${this.name}--show`);
         this.classList.toggle(`${this.name}--show`, isShown);
-        this.containers.forEach((conatiner: HTMLElement) => conatiner.classList.toggle(this.lockedBodyClassName, isShown));
+        this.containers.forEach((conatiner: HTMLElement) => {
+            conatiner.classList.toggle(this.lockedBodyClassName, isShown);
+        });
     }
 
     protected get triggerClassName(): string {
