@@ -87,6 +87,17 @@
                                 </div>
                             {% endblock %}
                         {% endwidget %}
+                        {% if data.cart.idQuote is not empty %}
+                            <div class="order-sidebar__item">
+                                {% widget 'CommentThreadWidget' args [
+                                    data.cart.idQuote,
+                                    'quote',
+                                    app.request.requestUri,
+                                    data.cart.commentThread
+                                ] only %}
+                                {% endwidget %}
+                            </div>
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -228,6 +239,18 @@
                     {% endwidget %}
                 {% endblock %}
 
+                {% if data.cart.idQuote is not empty %}
+                    <div class="order-sidebar__item">
+                        {% widget 'CommentThreadWidget' args [
+                            data.cart.idQuote,
+                            'quote',
+                            app.request.requestUri,
+                            data.cart.commentThread
+                        ] only %}
+                        {% endwidget %}
+                    </div>
+                {% endif %}
+
                 {% if data.isQuoteEditable and can('ChangeCartItemPermissionPlugin') %}
                     {% if data.cart.idQuote is not empty and data.cart.items is not empty %}
                         {% widget 'CreateShoppingListFromCartWidget' args [data.cart.idQuote] only %}
@@ -265,6 +288,7 @@
                             </div>
                         {% endblock %}
                     {% endwidget %}
+
                     {% widget 'ShareCartByLinkWidget' args [data.cart] only %}
                         {% block body %}
                             <div class="order-sidebar__item order-sidebar__item--with-label order-sidebar__item--shadow-less">

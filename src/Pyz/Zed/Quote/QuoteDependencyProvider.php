@@ -97,7 +97,7 @@ class QuoteDependencyProvider extends SprykerQuoteDependencyProvider
     {
         return [
             new QuoteApprovalExpanderPlugin(), #QuoteApprovalFeature
-            new CommentThreadQuoteExpanderPlugin(), #QuoteApprovalFeature
+            new CommentThreadQuoteExpanderPlugin(),
         ];
     }
 
