@@ -13,11 +13,9 @@ use Silex\Provider\SessionServiceProvider;
 use Silex\Provider\TwigServiceProvider;
 use Spryker\Service\UtilDateTime\ServiceProvider\DateTimeFormatterServiceProvider;
 use Spryker\Shared\Application\ServiceProvider\FormFactoryServiceProvider;
-use Spryker\Shared\Config\Environment;
 use Spryker\Shared\ErrorHandler\Plugin\ServiceProvider\WhoopsErrorHandlerServiceProvider;
 use Spryker\Zed\Acl\Communication\Plugin\Bootstrap\AclBootstrapProvider;
 use Spryker\Zed\Application\ApplicationDependencyProvider as SprykerApplicationDependencyProvider;
-use Spryker\Zed\Application\Communication\Plugin\ServiceProvider\AssertUrlConfigurationServiceProvider;
 use Spryker\Zed\Application\Communication\Plugin\ServiceProvider\EnvironmentInformationServiceProvider;
 use Spryker\Zed\Application\Communication\Plugin\ServiceProvider\MvcRoutingServiceProvider;
 use Spryker\Zed\Application\Communication\Plugin\ServiceProvider\RequestServiceProvider;
@@ -90,10 +88,6 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
             new SaveSessionServiceProvider(),
         ];
 
-        if (Environment::isDevelopment()) {
-            array_unshift($providers, new AssertUrlConfigurationServiceProvider());
-        }
-
         $providers = array_merge($providers, $coreProviders);
 
         return $providers;
@@ -116,7 +110,7 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
             new EventBehaviorServiceProvider(),
         ];
 
-        if (Environment::isDevelopment()) {
+        if ($this->getConfig()->isPrettyErrorHandlerEnabled()) {
             $providers[] = new WhoopsErrorHandlerServiceProvider();
         }
 
