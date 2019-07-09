@@ -188,6 +188,7 @@ class ProductImageWriterStep extends PublishAwareStep implements DataImportStepI
         if (isset($dataSet[static::KEY_SORT_ORDER]) && $dataSet[static::KEY_SORT_ORDER] >= 0) {
             return (int)$dataSet[static::KEY_SORT_ORDER];
         }
+
         return static::DEFAULT_IMAGE_SORT_ORDER;
     }
 }

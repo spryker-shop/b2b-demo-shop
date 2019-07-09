@@ -58,6 +58,7 @@ class ProductSetIdsWidget extends AbstractWidget
             }
             $productSets[] = $productSet;
         }
+
         return $productSets;
     }
 
@@ -72,6 +73,7 @@ class ProductSetIdsWidget extends AbstractWidget
         if (!$productSet || !$productSet->getIsActive()) {
             return [];
         }
+
         return [
             'productSet' => $productSet,
             'productViews' => $this->mapProductSetDataStorageTransfers($productSet),
@@ -106,6 +108,7 @@ class ProductSetIdsWidget extends AbstractWidget
                 $this->getLocale()
             );
         }
+
         return $productViewTransfers;
     }
 }
