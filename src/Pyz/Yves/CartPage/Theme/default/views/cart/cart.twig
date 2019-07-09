@@ -255,6 +255,18 @@
                     {% endwidget %}
                 {% endif %}
 
+                {% if data.cart.idQuote is not empty %}
+                    <div class="order-sidebar__item">
+                        {% widget 'CommentThreadWidget' args [
+                            data.cart.idQuote,
+                            'quote',
+                            app.request.requestUri,
+                            data.cart.commentThread
+                        ] only %}
+                        {% endwidget %}
+                    </div>
+                {% endif %}
+
                 <div class="order-sidebar__item order-sidebar__item--summary">
                     <div class="order-sidebar__item order-sidebar__item--start">
                         <div class=" grid grid--justify grid--middle order-sidebar__order">
