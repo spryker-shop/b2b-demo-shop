@@ -11,7 +11,7 @@
 } %}
 
 {% set cartQuantity = data.cartQuantity > 0 ? data.cartQuantity ~ ' ' : '' %}
-{% set shouldShowMiniCart = findWidget('MiniCartWidget', [cartQuantity]).cartList | length %}
+{% set shouldShowMiniCart = findWidget('MiniCartWidget', [cartQuantity]).isMultiCartAllowed %}
 
 {%- block class -%}
     {{ parent() }} {{ config.jsName }}
@@ -126,8 +126,21 @@
         {% endblock %}
     {% endwidget %}
 
-    {% if shouldShowMiniCart %}
-        <li class="{{ config.name }}__item">
+    <li class="{{ config.name }}__item">
+        {% if not shouldShowMiniCart %}
+            <span class="{{ config.name }}__link">
+                <span class="{{ config.name }}__empty-cart">
+                    {% include atom('icon') with {
+                        modifiers: ['cart'],
+                        data: {
+                            name: 'cart'
+                        }
+                    } only %}
+                </span>
+
+                <span>{{ 'global.my-cart' | trans }}</span>
+            </span>
+        {% else %}
             {% include molecule('cart-items-counter') with {
                 class: config.name ~ '__link ' ~ config.jsName ~ '__trigger',
                 data: {
@@ -164,8 +177,8 @@
                     {% endblock %}
                 {% endwidget %}
             </div>
-        </li>
-    {% endif %}
+        {% endif %}
+    </li>
 
     {% include molecule('toggler-accordion') with {
         attributes: {
