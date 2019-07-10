@@ -9,7 +9,7 @@
     user: required,
 } %}
 
-{% set cartQuantityText = cartQuantity > 0 ? cartQuantity ~ ' ' : '' %}
+{% set cartQuantityText = cartQuantity > 0 ? cartQuantity ~ ' ' %}
 {% set shouldShowMiniCart = findWidget('MiniCartWidget', [cartQuantityText]).isMultiCartAllowed %}
 
 {%- block class -%}
@@ -132,8 +132,8 @@
                     {% include atom('icon') with {
                         modifiers: ['cart'],
                         data: {
-                            name: 'cart'
-                        }
+                            name: 'cart',
+                        },
                     } only %}
                 </span>
 

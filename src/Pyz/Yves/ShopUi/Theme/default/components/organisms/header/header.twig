@@ -120,8 +120,8 @@
                             {% include molecule('user-navigation') with {
                                 data: {
                                     user: data.user,
-                                    cartQuantity: cartQuantity
-                                }
+                                    cartQuantity: cartQuantity,
+                                },
                             } only %}
                         {% else %}
                             <a href="{{ url('login') }}" class="button button--tight button--medium {{ config.name }}__login">{{ 'customer.please_login'|trans }}</a>
