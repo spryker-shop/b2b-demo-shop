@@ -34,25 +34,26 @@
                             {{ embed.description }}
                         {% endif %}
                     </div>
+                    {% if is_granted('ROLE_USER') %}
+                        <form method="POST" class="text-center" action="{{ path('cart/add-items') }}">
+                            {% set isDisabled = false %}
 
-                    <form method="POST" class="text-center" action="{{ path('cart/add-items') }}">
-                        {% set isDisabled = false %}
-
-                        {% for product in embed.products %}
-                            {% if product.idProductConcrete is not empty %}
-                                {% if product.available %}
-                                    <input type="hidden" name="items[{{ loop.index }}][sku]" value="{{ product.sku }}" />
-                                    <input type="hidden" name="items[{{ loop.index }}][quantity]" value="1" />
+                            {% for product in embed.products %}
+                                {% if product.idProductConcrete is not empty %}
+                                    {% if product.available %}
+                                        <input type="hidden" name="items[{{ loop.index }}][sku]" value="{{ product.sku }}" />
+                                        <input type="hidden" name="items[{{ loop.index }}][quantity]" value="1" />
+                                    {% endif %}
+                                {% else %}
+                                    {% set isDisabled = true %}
                                 {% endif %}
-                            {% else %}
-                                {% set isDisabled = true %}
-                            {% endif %}
-                        {% endfor %}
+                            {% endfor %}
 
-                        <button type="submit" class="button" data-init-single-click {% if isDisabled %}disabled{% endif %}>
-                            {{ 'product.set.detail.add-all-to-cart' | trans }}
-                        </button>
-                    </form>
+                            <button type="submit" class="button" data-init-single-click {% if isDisabled %}disabled{% endif %}>
+                                {{ 'product.set.detail.add-all-to-cart' | trans }}
+                            </button>
+                        </form>
+                    {% endif %}
                 {% endblock %}
             {% endembed %}
         {% endblock %}
