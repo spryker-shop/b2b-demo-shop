@@ -29,13 +29,13 @@ use Spryker\Zed\ProductImageStorage\Communication\Plugin\Event\ProductAbstractIm
 use Spryker\Zed\ProductImageStorage\Communication\Plugin\Event\ProductConcreteImageEventResourceQueryContainerPlugin;
 use Spryker\Zed\ProductLabelStorage\Communication\Plugin\Event\ProductAbstractLabelEventResourceQueryContainerPlugin;
 use Spryker\Zed\ProductLabelStorage\Communication\Plugin\Event\ProductLabelDictionaryEventResourceQueryContainerPlugin;
-use Spryker\Zed\ProductMeasurementUnitStorage\Communication\Plugin\Event\ProductConcreteMeasurementUnitEventResourceRepositoryPlugin;
-use Spryker\Zed\ProductMeasurementUnitStorage\Communication\Plugin\Event\ProductMeasurementUnitEventResourceRepositoryPlugin;
+use Spryker\Zed\ProductMeasurementUnitStorage\Communication\Plugin\Event\ProductConcreteMeasurementUnitEventResourceBulkRepositoryPlugin;
+use Spryker\Zed\ProductMeasurementUnitStorage\Communication\Plugin\Event\ProductMeasurementUnitEventResourceBulkRepositoryPlugin;
 use Spryker\Zed\ProductOptionStorage\Communication\Plugin\Event\ProductOptionEventResourceQueryContainerPlugin;
 use Spryker\Zed\ProductPackagingUnitStorage\Communication\Plugin\Event\ProductAbstractPackagingEventResourceRepositoryPlugin;
 use Spryker\Zed\ProductPageSearch\Communication\Plugin\Event\ProductConcretePageSearchEventResourceRepositoryPlugin;
 use Spryker\Zed\ProductPageSearch\Communication\Plugin\Event\ProductPageEventResourceQueryContainerPlugin;
-use Spryker\Zed\ProductQuantityStorage\Communication\Plugin\Event\ProductQuantityEventResourceRepositoryPlugin;
+use Spryker\Zed\ProductQuantityStorage\Communication\Plugin\Event\ProductQuantityEventResourceBulkRepositoryPlugin;
 use Spryker\Zed\ProductRelationStorage\Communication\Plugin\Event\ProductRelationEventResourceQueryContainerPlugin;
 use Spryker\Zed\ProductReviewSearch\Communication\Plugin\Event\ProductReviewEventResourceQueryContainerPlugin as ProductReviewSearchEventResourceQueryContainerPlugin;
 use Spryker\Zed\ProductReviewStorage\Communication\Plugin\Event\ProductReviewEventResourceQueryContainerPlugin;
@@ -87,9 +87,9 @@ class EventBehaviorDependencyProvider extends SprykerEventBehaviorDependencyProv
             new ProductConcreteEventResourceQueryContainerPlugin(),
             new UrlEventResourceQueryContainerPlugin(),
             new RedirectEventResourceQueryContainerPlugin(),
-            new ProductMeasurementUnitEventResourceRepositoryPlugin(),
-            new ProductConcreteMeasurementUnitEventResourceRepositoryPlugin(),
-            new ProductQuantityEventResourceRepositoryPlugin(),
+            new ProductMeasurementUnitEventResourceBulkRepositoryPlugin(),
+            new ProductConcreteMeasurementUnitEventResourceBulkRepositoryPlugin(),
+            new ProductQuantityEventResourceBulkRepositoryPlugin(),
             new ProductConcretePageSearchEventResourceRepositoryPlugin(),
             new ProductAbstractPackagingEventResourceRepositoryPlugin(),
             new ContentStorageEventResourceRepositoryPlugin(),

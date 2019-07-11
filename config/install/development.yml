@@ -46,7 +46,6 @@ sections:
         remove-generated-files:
             command: "vendor/bin/console setup:empty-generated-directory"
 
-
     generate:
         generate-transfers:
             command: "vendor/bin/console transfer:generate"
@@ -57,12 +56,10 @@ sections:
         generate-ide-auto-completion:
             command: "vendor/bin/console dev:ide:generate-auto-completion"
 
-
     jenkins-down:
         jenkins-stop:
             command: "vendor/bin/console scheduler:clean"
             stores: true
-
 
     cache:
         twig-cache-warmup:
@@ -218,7 +215,6 @@ sections:
                 - US
                 - DE
 
-
     jenkins-up:
         jenkins-generate:
             command: "vendor/bin/console scheduler:setup"
@@ -227,7 +223,6 @@ sections:
         jenkins-enable:
             command: "vendor/bin/console scheduler:resume"
             stores: true
-
 
     frontend:
         dependencies-install:
