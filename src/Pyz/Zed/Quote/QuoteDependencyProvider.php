@@ -8,8 +8,8 @@
 namespace Pyz\Zed\Quote;
 
 use Spryker\Zed\Comment\Communication\Plugin\Quote\CommentThreadQuoteExpanderPlugin;
+use Spryker\Zed\Currency\Communication\Plugin\Quote\DefaultCurrencyQuoteExpandBeforeCreatePlugin;
 use Spryker\Zed\Currency\Communication\Plugin\Quote\QuoteCurrencyValidatorPlugin;
-use Spryker\Zed\Currency\Communication\Plugin\SetDefaultCurrencyBeforeQuoteCreatePlugin;
 use Spryker\Zed\MultiCart\Communication\Plugin\AddDefaultNameBeforeQuoteSavePlugin;
 use Spryker\Zed\MultiCart\Communication\Plugin\AddSuccessMessageAfterQuoteCreatedPlugin;
 use Spryker\Zed\MultiCart\Communication\Plugin\DeactivateQuotesBeforeQuoteSavePlugin;
@@ -45,7 +45,6 @@ class QuoteDependencyProvider extends SprykerQuoteDependencyProvider
     protected function getQuoteCreateBeforePlugins(): array
     {
         return [
-            new SetDefaultCurrencyBeforeQuoteCreatePlugin(),
             new AddDefaultNameBeforeQuoteSavePlugin(), #MultiCartFeature
             new ResolveQuoteNameBeforeQuoteCreatePlugin(), #MultiCartFeature
             new DeactivateQuotesBeforeQuoteSavePlugin(), #MultiCartFeature
@@ -125,6 +124,16 @@ class QuoteDependencyProvider extends SprykerQuoteDependencyProvider
             new QuoteCurrencyValidatorPlugin(),
             new QuotePriceModeValidatorPlugin(),
             new QuoteStoreValidatorPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\QuoteExtension\Dependency\Plugin\QuoteExpandBeforeCreatePluginInterface[]
+     */
+    protected function getQuoteExpandBeforeCreatePlugins(): array
+    {
+        return [
+            new DefaultCurrencyQuoteExpandBeforeCreatePlugin(),
         ];
     }
 }
