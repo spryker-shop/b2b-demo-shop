@@ -14,32 +14,30 @@
         },
         attributes: {
             'slider-config': '{
-                    "slidesToShow": 3,
-                    "dots": false,
-                    "arrows": true,
-                    "adaptiveHeight": true,
-                    "responsive": [{
-                        "breakpoint": 768,
-                        "settings": {
-                            "slidesToShow": 2
-                        }
-                    },
-                    {
-                        "breakpoint": 375,
-                        "settings": {
-                            "slidesToShow": 1
-                        }
-                    }]
-                }'
+                "slidesToShow": 3,
+                "dots": false,
+                "arrows": true,
+                "adaptiveHeight": true,
+                "responsive": [{
+                    "breakpoint": 768,
+                    "settings": {
+                        "slidesToShow": 2
+                    }
+                },
+                {
+                    "breakpoint": 375,
+                    "settings": {
+                        "slidesToShow": 1
+                    }
+                }]
+            }'
         }
     } only %}
-
         {% block slides %}
             {% for availableProduct in data.slides if availableProduct.available %}
                 {% widget 'CmsProductWidget' args [availableProduct] use '@ProductWidget/views/cms-product-slider/cms-product-slider.twig' only %}{% endwidget %}
             {% endfor %}
         {% endblock %}
-
     {% endembed %}
 
     {% if data.product is not empty %}
