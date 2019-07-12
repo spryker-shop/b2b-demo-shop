@@ -162,7 +162,7 @@
                                     {% set totalPrice = data.listItem.unitPrice is defined ? data.listItem.sumSubtotalAggregation : data.listItem.price %}
                                     {% embed molecule('money-price') with {
                                         class: 'grid grid--wide spacing spacing--inner spacing-y spacing-y--big',
-                                        modifiers: ['gray'],
+                                        modifiers: ['secondary'],
                                         data: {
                                             amount: totalPrice,
                                             currencyIsoCode: data.list.currency.code,
