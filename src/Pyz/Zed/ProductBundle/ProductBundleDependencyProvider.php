@@ -38,6 +38,7 @@ class ProductBundleDependencyProvider extends SprykerProductBundleDependencyProv
         $container[static::FACADE_EVENT] = function (Container $container) {
             return $container->getLocator()->event()->facade();
         };
+
         return $container;
     }
 }

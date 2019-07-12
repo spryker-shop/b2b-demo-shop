@@ -59,7 +59,7 @@
             margin-top: 0;
         }
 
-        .label {
+        &:not(&--with-label) .label {
             display: none;
         }
 
@@ -69,9 +69,7 @@
             font-weight: fw(regular);
             line-height: rem(15);
             color: $setting-color-gray-3;
-            border-radius: $setting-border-radius;
             border: none;
-            box-shadow: 0 rem(10) rem(10) 0 $setting-color-shadow-1, 0 rem(3) rem(3) 0 $setting-color-shadow-1;
 
             @include helper-breakpoint-media-min($lg) {
                 padding-top: rem(15);
@@ -87,6 +85,13 @@
 
             @include helper-breakpoint-media-min($lg) {
                 min-height: rem(86);
+            }
+        }
+
+        &:not(&--shadow-less) {
+            .input,
+            .textarea {
+                box-shadow: 0 rem(10) rem(10) 0 $setting-color-shadow-1, 0 rem(3) rem(3) 0 $setting-color-shadow-1;
             }
         }
 
