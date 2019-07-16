@@ -2,7 +2,7 @@ import Component from 'ShopUi/models/component';
 import $ from 'jquery/dist/jquery';
 import select from 'select2';
 
-const DROPDOWN_SELECTOR = 'body .select2-container--open';
+const DROPDOWN_SELECTOR = 'body > .select2-container--open';
 
 export default class CustomSelect extends Component {
     select: HTMLSelectElement;
@@ -24,7 +24,10 @@ export default class CustomSelect extends Component {
     protected mapEvents(): void {
         this.$select.on('select2:select', () => this.onChangeSelect());
         if (this.configDropdownRight) {
-            this.$select.on('select2:open', () => this.changeDropdownPosition());
+            this.$select.on('select2:open', () => {
+                this.changeDropdownPosition();
+                window.addEventListener('resize', () => this.changeDropdownPosition());
+            });
         }
         window.addEventListener('resize', () => setTimeout(() => this.initSelect(), this.timeout));
     }
@@ -38,17 +41,19 @@ export default class CustomSelect extends Component {
     }
 
     protected changeDropdownPosition(): void {
-        let rightPosition = this.absoluteOffset();
-        console.log(rightPosition);
+        const dropdown = <HTMLElement>document.querySelector(DROPDOWN_SELECTOR);
+        const rightPosition = window.innerWidth - this.absoluteOffsetLeft() - this.clientWidth;
+        dropdown.style.right = `${rightPosition}px`;
     }
 
-    protected absoluteOffset(): number {
-        let offsetElement = <HTMLElement>this;
+    protected absoluteOffsetLeft(): number {
+        let elementLeftOffset = <HTMLElement>this;
         let left = 0;
+
         do {
-            left += offsetElement.offsetLeft || 0;
-            offsetElement = <HTMLElement>offsetElement.offsetParent;
-        } while(offsetElement);
+            left += elementLeftOffset.offsetLeft || 0;
+            elementLeftOffset = <HTMLElement>elementLeftOffset.offsetParent;
+        } while(elementLeftOffset);
 
         return left;
     }

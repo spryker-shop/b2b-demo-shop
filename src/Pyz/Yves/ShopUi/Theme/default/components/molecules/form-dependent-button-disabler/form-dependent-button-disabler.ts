@@ -28,7 +28,6 @@ export default class FormDependentButtonDisabler extends Component {
             trigger.classList.remove('valid-message');
             target.setAttribute('disabled', '');
         }
-        console.log(trigger.value);
     }
     protected hasEnoughSymbols(trigger): boolean {
         const filteredValue = trigger.value.trim();
