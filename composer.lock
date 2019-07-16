@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3572df925c6be16f9742ce3fb6dcb87c",
+    "content-hash": "e7daacefaf6eb0471070dccef5cf77ac",
     "packages": [
         {
             "name": "codeception/phpunit-wrapper",
@@ -14042,16 +14042,16 @@
         },
         {
             "name": "spryker/checkout-rest-api",
-            "version": "1.3.5",
+            "version": "1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/checkout-rest-api.git",
-                "reference": "5f3b3c12b5ea6f04af7e0e4a4d9282c5b2cde3e6"
+                "reference": "701e3b4c59aacd44fbde7115a22ad69ae807e724"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/checkout-rest-api/zipball/5f3b3c12b5ea6f04af7e0e4a4d9282c5b2cde3e6",
-                "reference": "5f3b3c12b5ea6f04af7e0e4a4d9282c5b2cde3e6",
+                "url": "https://api.github.com/repos/spryker/checkout-rest-api/zipball/701e3b4c59aacd44fbde7115a22ad69ae807e724",
+                "reference": "701e3b4c59aacd44fbde7115a22ad69ae807e724",
                 "shasum": ""
             },
             "require": {
@@ -14060,12 +14060,12 @@
                 "spryker/cart": "^5.0.0 || ^7.0.0",
                 "spryker/carts-rest-api": "^2.2.0 || ^3.0.0 || ^5.0.0",
                 "spryker/checkout": "^4.0.0 || ^6.0.0",
-                "spryker/checkout-rest-api-extension": "^1.1.0",
+                "spryker/checkout-rest-api-extension": "^1.2.0",
                 "spryker/customer": "^7.11.0",
                 "spryker/glossary-storage": "^1.0.0",
                 "spryker/glue-application": "^1.2.0",
                 "spryker/glue-application-extension": "^1.0.0",
-                "spryker/kernel": "^3.29.0",
+                "spryker/kernel": "^3.30.0",
                 "spryker/payment": "^4.4.0",
                 "spryker/quote": "^2.0.0",
                 "spryker/shipment": "^6.0.0",
@@ -14095,20 +14095,20 @@
                 "proprietary"
             ],
             "description": "CheckoutRestApi module",
-            "time": "2019-07-04T13:56:23+00:00"
+            "time": "2019-07-09T13:15:05+00:00"
         },
         {
             "name": "spryker/checkout-rest-api-extension",
-            "version": "1.1.0",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/checkout-rest-api-extension.git",
-                "reference": "8f8c494d94b18e275c5122bb2e77c42c8c496480"
+                "reference": "b2628364641950349bd3a41e9c7d592e496391d6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/checkout-rest-api-extension/zipball/8f8c494d94b18e275c5122bb2e77c42c8c496480",
-                "reference": "8f8c494d94b18e275c5122bb2e77c42c8c496480",
+                "url": "https://api.github.com/repos/spryker/checkout-rest-api-extension/zipball/b2628364641950349bd3a41e9c7d592e496391d6",
+                "reference": "b2628364641950349bd3a41e9c7d592e496391d6",
                 "shasum": ""
             },
             "require": {
@@ -14134,7 +14134,7 @@
                 "proprietary"
             ],
             "description": "CheckoutRestApiExtension module",
-            "time": "2019-04-03T14:26:37+00:00"
+            "time": "2019-06-27T12:40:47+00:00"
         },
         {
             "name": "spryker/cms",
@@ -23071,6 +23071,90 @@
             "time": "2019-06-27T10:59:33+00:00"
         },
         {
+            "name": "spryker/order-payments-rest-api",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/order-payments-rest-api.git",
+                "reference": "018dbb880bd42690f33d72cf62bc50701eb73da1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/order-payments-rest-api/zipball/018dbb880bd42690f33d72cf62bc50701eb73da1",
+                "reference": "018dbb880bd42690f33d72cf62bc50701eb73da1",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/glue-application": "^1.9.0",
+                "spryker/glue-application-extension": "^1.0.0",
+                "spryker/kernel": "^3.29.0",
+                "spryker/order-payments-rest-api-extension": "^1.0.0",
+                "spryker/symfony": "^3.0.0",
+                "spryker/zed-request": "^3.6.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "OrderPaymentsRestApi module",
+            "time": "2019-04-23T13:11:17+00:00"
+        },
+        {
+            "name": "spryker/order-payments-rest-api-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/order-payments-rest-api-extension.git",
+                "reference": "19a43cd6bb35d76cc5fb89815c5ed1333f2afbc5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/order-payments-rest-api-extension/zipball/19a43cd6bb35d76cc5fb89815c5ed1333f2afbc5",
+                "reference": "19a43cd6bb35d76cc5fb89815c5ed1333f2afbc5",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "OrderPaymentsRestApiExtension module",
+            "time": "2019-04-18T11:28:21+00:00"
+        },
+        {
             "name": "spryker/orders-rest-api",
             "version": "3.0.0",
             "source": {
@@ -31461,22 +31545,22 @@
         },
         {
             "name": "spryker/shipments-rest-api",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/shipments-rest-api.git",
-                "reference": "19d93b794e37820d0b9b5516351f4e322c5cbf92"
+                "reference": "e1e043b2496c9d163ab16594b5cb5bb4972b3c6c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/shipments-rest-api/zipball/19d93b794e37820d0b9b5516351f4e322c5cbf92",
-                "reference": "19d93b794e37820d0b9b5516351f4e322c5cbf92",
+                "url": "https://api.github.com/repos/spryker/shipments-rest-api/zipball/e1e043b2496c9d163ab16594b5cb5bb4972b3c6c",
+                "reference": "e1e043b2496c9d163ab16594b5cb5bb4972b3c6c",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
-                "spryker/checkout-rest-api-extension": "^1.0.0",
-                "spryker/kernel": "^3.22.0",
+                "spryker/checkout-rest-api-extension": "^1.2.0",
+                "spryker/kernel": "^3.30.0",
                 "spryker/shipment": "^6.2.0"
             },
             "require-dev": {
@@ -31499,7 +31583,7 @@
                 "proprietary"
             ],
             "description": "ShipmentsRestApi module",
-            "time": "2018-12-04T14:39:16+00:00"
+            "time": "2019-07-09T13:15:05+00:00"
         },
         {
             "name": "spryker/shopping-list",
@@ -37679,7 +37763,7 @@
             "time": "2019-03-25T16:59:23+00:00"
         },
         {
-            "name": "mikey179/vfsstream",
+            "name": "mikey179/vfsStream",
             "version": "v1.6.6",
             "source": {
                 "type": "git",
@@ -37982,7 +38066,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "? Nette NEON: encodes and decodes NEON file format.",
+            "description": "🍸 Nette NEON: encodes and decodes NEON file format.",
             "homepage": "http://ne-on.org",
             "keywords": [
                 "export",

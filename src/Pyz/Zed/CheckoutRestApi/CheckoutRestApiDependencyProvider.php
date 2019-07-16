@@ -11,6 +11,7 @@ use Spryker\Zed\CheckoutRestApi\CheckoutRestApiDependencyProvider as SprykerChec
 use Spryker\Zed\CustomersRestApi\Communication\Plugin\CheckoutRestApi\AddressQuoteMapperPlugin;
 use Spryker\Zed\CustomersRestApi\Communication\Plugin\CheckoutRestApi\CustomerQuoteMapperPlugin;
 use Spryker\Zed\PaymentsRestApi\Communication\Plugin\CheckoutRestApi\PaymentsQuoteMapperPlugin;
+use Spryker\Zed\ShipmentsRestApi\Communication\Plugin\CheckoutRestApi\ShipmentMethodCheckoutDataValidatorPlugin;
 use Spryker\Zed\ShipmentsRestApi\Communication\Plugin\CheckoutRestApi\ShipmentQuoteMapperPlugin;
 
 class CheckoutRestApiDependencyProvider extends SprykerCheckoutRestApiDependencyProvider
@@ -25,6 +26,16 @@ class CheckoutRestApiDependencyProvider extends SprykerCheckoutRestApiDependency
             new AddressQuoteMapperPlugin(),
             new PaymentsQuoteMapperPlugin(),
             new ShipmentQuoteMapperPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\CheckoutRestApiExtension\Dependency\Plugin\CheckoutDataValidatorPluginInterface[]
+     */
+    protected function getCheckoutDataValidatorPlugins(): array
+    {
+        return [
+            new ShipmentMethodCheckoutDataValidatorPlugin(),
         ];
     }
 }
