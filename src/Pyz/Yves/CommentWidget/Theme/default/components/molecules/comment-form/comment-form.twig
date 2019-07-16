@@ -1,0 +1,106 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'comment-form',
+    tag: 'comment-form',
+} %}
+
+{% define data = {
+    method: 'POST',
+    comment: required,
+    returnUrl: required,
+    ownerId: '',
+    ownerType: '',
+    idCustomer: null,
+    jsTriggerSelector: required,
+    jsTargetSelector: required,
+
+    submit: {
+        text: '',
+        action: '',
+    },
+
+    remove: {
+        text: '',
+        action: '',
+    },
+
+    edit: {
+        text: '',
+    },
+
+    cancel: {
+        text: '',
+    },
+} %}
+
+{% block body %}
+    {% set uuidField %}
+        <input type="hidden" name="uuid" value="{{ data.comment.uuid }}">
+    {% endset %}
+
+    {% set messageField %}
+        <textarea name="message"
+                  placeholder="{{ 'comment_widget.form.placeholder.add_comment' | trans }}"
+                  required="required"
+                  class="textarea textarea--small textarea--cart-comment">{{ data.comment.message }}</textarea>
+    {% endset %}
+
+    {% set returnUrlField %}
+        <input type="hidden" name="returnUrl" value="{{ data.returnUrl }}">
+    {% endset %}
+
+    {% block form %}
+        <form class="{{ config.jsName }}__form" method="{{ data.method }}">
+            {% block readComment %}
+                <div class="{{ config.name }}__readonly {{ data.jsTargetSelector }}">
+                    <p>{{ data.comment.message }}</p>
+                    {% block tags %}
+                        {% if data.comment.tagNames is defined %}
+                            {% include molecule('tag-list', 'CommentWidget') with {
+                                data: {
+                                    tagNames: data.comment.tagNames,
+                                    uuid: data.comment.uuid,
+                                    returnUrl: data.returnUrl,
+                                    idCustomer: data.idCustomer,
+                                },
+                            } only %}
+                        {% endif %}
+                    {% endblock %}
+                    <div class="grid grid--center">
+                        <button class="col button button--hollow-icon-small {{ data.jsTriggerSelector }}">
+                            {% include atom('icon') with {
+                                data: {
+                                    name: 'edit'
+                                }
+                            } only %}
+                            {{ data.edit.text }}
+                        </button>
+                        <button action="{{ data.remove.action }}" class="col button button--hollow-icon-small {{ config.jsName }}__remove-button">
+                            {% include atom('icon') with {
+                                data: {
+                                    name: 'delete'
+                                }
+                            } only %}
+                            {{ data.remove.text }}
+                        </button>
+                    </div>
+                </div>
+            {% endblock %}
+
+            {% block editComment %}
+                <div class="{{ config.name }}__edit  {{ data.jsTargetSelector }} is-hidden">
+                    {{ messageField }}
+                    {{ uuidField }}
+                    {{ returnUrlField }}
+                    <button action="{{ data.submit.action }}" class="button button--small {{ config.jsName }}__submit-button">
+                        {{ data.submit.text }}
+                    </button>
+                    <button class="button button--small button--hollow-icon button--back {{ data.jsTriggerSelector }}">
+                        {{ data.cancel.text }}
+                    </button>
+                </div>
+            {% endblock %}
+        </form>
+    {% endblock %}
+{% endblock %}

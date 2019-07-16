@@ -1,0 +1,11 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'form-dependent-button-disabler',
+    tag: 'form-dependent-button-disabler',
+} %}
+
+{% define attributes = {
+    'trigger-form-class-name': required,
+    'max-symbols': '1',
+} %}

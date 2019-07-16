@@ -1,0 +1,38 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'add-comment-form',
+    tag: 'add-comment-form',
+} %}
+
+{% define data = {
+    returnUrl: required,
+    ownerId: '',
+    ownerType: '',
+} %}
+
+{% block body %}
+    <form method="POST" action="{{ path('comment/add') }}">
+        <textarea name="message"
+                  class="textarea textarea--cart-comment {{ config.name }}__textarea {{ config.jsName }}__textarea"
+                  target-button-class-name="{{ config.jsName }}__button"
+                  placeholder="{{ 'comment_widget.form.placeholder.add_comment' | trans }}"
+                  required="required"></textarea>
+        <input type="hidden" name="returnUrl" value="{{ data.returnUrl }}">
+        <input type="hidden" name="ownerId" value="{{ data.ownerId }}">
+        <input type="hidden" name="ownerType" value="{{ data.ownerType }}">
+
+        <button class="button button--primary {{ config.name }}__button {{ config.jsName }}__button" disabled>
+            {% include atom('icon') with {
+                data: {
+                    name: 'send'
+                }
+            } only %}
+        </button>
+        {% include molecule('form-dependent-button-disabler') with {
+            attributes: {
+                'trigger-form-class-name': config.jsName ~ '__textarea',
+            },
+        } only %}
+    </form>
+{% endblock %}

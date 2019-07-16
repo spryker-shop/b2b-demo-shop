@@ -2,6 +2,8 @@ import Component from 'ShopUi/models/component';
 import $ from 'jquery/dist/jquery';
 import select from 'select2';
 
+const DROPDOWN_SELECTOR = 'body .select2-container--open';
+
 export default class CustomSelect extends Component {
     select: HTMLSelectElement;
     $select: $;
@@ -21,6 +23,9 @@ export default class CustomSelect extends Component {
 
     protected mapEvents(): void {
         this.$select.on('select2:select', () => this.onChangeSelect());
+        if (this.configDropdownRight) {
+            this.$select.on('select2:open', () => this.changeDropdownPosition());
+        }
         window.addEventListener('resize', () => setTimeout(() => this.initSelect(), this.timeout));
     }
 
@@ -32,13 +37,30 @@ export default class CustomSelect extends Component {
         }
     }
 
+    protected changeDropdownPosition(): void {
+        let rightPosition = this.absoluteOffset();
+        console.log(rightPosition);
+    }
+
+    protected absoluteOffset(): number {
+        let offsetElement = <HTMLElement>this;
+        let left = 0;
+        do {
+            left += offsetElement.offsetLeft || 0;
+            offsetElement = <HTMLElement>offsetElement.offsetParent;
+        } while(offsetElement);
+
+        return left;
+    }
+
     protected initSelect(): void {
         if (window.innerWidth >= this.mobileResolution && !this.isInited) {
             this.isInited = true;
             this.$select.select2({
                 minimumResultsForSearch: Infinity,
                 width: this.configWidth,
-                theme: this.configTheme
+                theme: this.configTheme,
+                dropdownAutoWidth: this.configDropdownAutoWidth,
             });
         } else if (window.innerWidth < this.mobileResolution && this.isInited) {
             this.isInited = false;
@@ -58,5 +80,13 @@ export default class CustomSelect extends Component {
 
     get configTheme(): string {
         return this.select.getAttribute('config-theme');
+    }
+
+    get configDropdownAutoWidth(): boolean {
+        return Boolean(this.select.getAttribute('config-dropdown-auto-width'));
+    }
+
+    get configDropdownRight(): boolean {
+        return Boolean(this.select.getAttribute('config-dropdown-right'));
     }
 }
