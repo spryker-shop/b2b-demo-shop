@@ -70,9 +70,9 @@
                 {% block sourcePriceForm %}
                     {% set priceModeGross = 'GROSS_MODE' %}
                     {% set originUnitPrice = (data.priceMode == priceModeGross) ? data.cartItem.originUnitGrossPrice : data.cartItem.originUnitNetPrice %}
-                    {% set isHiddenOriginPrice = data.cartItem.unitPrice | money(true, data.currency.code) == originUnitPrice | money(true, data.currency.code) %}
+                    {% set isOriginPriceHidden = data.cartItem.unitPrice | money(true, data.currency.code) == originUnitPrice | money(true, data.currency.code) %}
                     <div class="spacing-bottom text-right">
-                        <strong class="{{ isHiddenOriginPrice ? 'is-hidden' }} spacing-right">
+                        <strong class="{{ isOriginPriceHidden ? 'is-hidden' }} spacing-right">
                             <s class="text-big text-secondary">{{ originUnitPrice | money(true, data.currency.code) }}</s>
                         </strong>
                         <strong class="text-big">{{ data.cartItem.unitPrice | money(true, data.currency.code) }}</strong>
