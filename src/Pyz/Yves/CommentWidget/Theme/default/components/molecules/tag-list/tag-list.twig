@@ -12,10 +12,12 @@
     idCustomer: null,
 } %}
 
+{% set disableClassName = data.idCustomer is null ? config.name ~ '__item-link--disabled' %}
+
 {% block body %}
     {% for tagName in data.tagNames %}
         <li class="{{ config.name }}__item">
-            <a class="{{ config.name }}__item-link {% if data.idCustomer is null %}{{ config.name }}__item-link--disabled{% endif %}" href="{{ path('comment/tag/remove', {'uuid': data.uuid, 'name': tagName, 'returnUrl': data.returnUrl }) }}">
+            <a class="{{ config.name }}__item-link {{ disableClassName }}" href="{{ path('comment/tag/remove', {'uuid': data.uuid, 'name': tagName, 'returnUrl': data.returnUrl }) }}">
                 {{ tagName }}
             </a>
         </li>

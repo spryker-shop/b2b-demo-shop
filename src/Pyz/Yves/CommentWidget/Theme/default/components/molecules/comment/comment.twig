@@ -54,28 +54,7 @@
                         idCustomer: data.idCustomer,
                         jsTriggerSelector: jsTriggerSelector,
                         jsTargetSelector: jsTargetSelector,
-                        submit: {
-                            text: 'comment_widget.form.update_comment' | trans,
-                            action: path('comment/update'),
-                        },
-                        remove: {
-                            text: 'comment_widget.form.remove_comment' | trans,
-                            action: path('comment/remove'),
-                        },
-                        edit: {
-                            text: 'comment_widget.form.edit_comment' | trans,
-                        },
-                        cancel: {
-                            text: 'comment_widget.form.cancel_comment' | trans,
-                        },
                     },
-                } only %}
-                {% include molecule('toggler-click') with {
-                    attributes: {
-                        'trigger-selector': '.' ~ jsTriggerSelector,
-                        'target-selector':  '.' ~ jsTargetSelector,
-                        'class-to-toggle': 'is-hidden',
-                    }
                 } only %}
             {% endblock %}
         {% else %}

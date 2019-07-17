@@ -50,10 +50,10 @@ export default class CustomSelect extends Component {
         let elementLeftOffset = <HTMLElement>this;
         let left = 0;
 
-        do {
+        while(elementLeftOffset) {
             left += elementLeftOffset.offsetLeft || 0;
             elementLeftOffset = <HTMLElement>elementLeftOffset.offsetParent;
-        } while(elementLeftOffset);
+        }
 
         return left;
     }
@@ -79,19 +79,19 @@ export default class CustomSelect extends Component {
         }
     }
 
-    get configWidth(): string {
+    protected get configWidth(): string {
         return this.select.getAttribute('config-width');
     }
 
-    get configTheme(): string {
+    protected get configTheme(): string {
         return this.select.getAttribute('config-theme');
     }
 
-    get configDropdownAutoWidth(): boolean {
+    protected get configDropdownAutoWidth(): boolean {
         return Boolean(this.select.getAttribute('config-dropdown-auto-width'));
     }
 
-    get configDropdownRight(): boolean {
+    protected get configDropdownRight(): boolean {
         return Boolean(this.select.getAttribute('config-dropdown-right'));
     }
 }

@@ -12,26 +12,8 @@
     ownerId: '',
     ownerType: '',
     idCustomer: null,
-    jsTriggerSelector: required,
-    jsTargetSelector: required,
-
-    submit: {
-        text: '',
-        action: '',
-    },
-
-    remove: {
-        text: '',
-        action: '',
-    },
-
-    edit: {
-        text: '',
-    },
-
-    cancel: {
-        text: '',
-    },
+    jsTriggerSelector: 'js' ~ config.name ~ '__trigger-' ~ data.comment.uuid,
+    jsTargetSelector: 'js' ~ config.name ~ '__target-' ~ data.comment.uuid,
 } %}
 
 {% block body %}
@@ -43,7 +25,7 @@
         <textarea name="message"
                   placeholder="{{ 'comment_widget.form.placeholder.add_comment' | trans }}"
                   required="required"
-                  class="textarea textarea--small textarea--cart-comment">{{ data.comment.message }}</textarea>
+                  class="textarea textarea--alternative textarea--cart-comment">{{ data.comment.message }}</textarea>
     {% endset %}
 
     {% set returnUrlField %}
@@ -71,18 +53,18 @@
                         <button class="col button button--hollow-icon-small {{ data.jsTriggerSelector }}">
                             {% include atom('icon') with {
                                 data: {
-                                    name: 'edit'
-                                }
+                                    name: 'edit',
+                                },
                             } only %}
-                            {{ data.edit.text }}
+                            {{ 'comment_widget.form.edit_comment' | trans }}
                         </button>
-                        <button action="{{ data.remove.action }}" class="col button button--hollow-icon-small {{ config.jsName }}__remove-button">
+                        <button action="{{ path('comment/remove') }}" class="col button button--hollow-icon-small {{ config.jsName }}__remove-button">
                             {% include atom('icon') with {
                                 data: {
-                                    name: 'delete'
-                                }
+                                    name: 'delete',
+                                },
                             } only %}
-                            {{ data.remove.text }}
+                            {{ 'comment_widget.form.remove_comment' | trans }}
                         </button>
                     </div>
                 </div>
@@ -93,14 +75,22 @@
                     {{ messageField }}
                     {{ uuidField }}
                     {{ returnUrlField }}
-                    <button action="{{ data.submit.action }}" class="button button--small {{ config.jsName }}__submit-button">
-                        {{ data.submit.text }}
+                    <button action="{{ path('comment/update') }}" class="button button--small {{ config.jsName }}__submit-button">
+                        {{ 'comment_widget.form.update_comment' | trans }}
                     </button>
                     <button class="button button--small button--hollow-icon button--back {{ data.jsTriggerSelector }}">
-                        {{ data.cancel.text }}
+                        {{ 'comment_widget.form.cancel_comment' | trans }}
                     </button>
                 </div>
             {% endblock %}
         </form>
     {% endblock %}
+
+    {% include molecule('toggler-click') with {
+        attributes: {
+            'trigger-selector': '.' ~ data.jsTriggerSelector,
+            'target-selector':  '.' ~ data.jsTargetSelector,
+            'class-to-toggle': 'is-hidden',
+        }
+    } only %}
 {% endblock %}

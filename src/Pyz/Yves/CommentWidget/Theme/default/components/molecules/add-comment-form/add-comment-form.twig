@@ -22,14 +22,14 @@
         <input type="hidden" name="ownerId" value="{{ data.ownerId }}">
         <input type="hidden" name="ownerType" value="{{ data.ownerType }}">
 
-        <button class="button button--primary {{ config.name }}__button {{ config.jsName }}__button" disabled>
+        <button title="{{ 'comment_widget.form.add_comment' | trans }}" class="button button--primary {{ config.name }}__button {{ config.jsName }}__button" disabled>
             {% include atom('icon') with {
                 data: {
-                    name: 'send'
-                }
+                    name: 'send',
+                },
             } only %}
         </button>
-        {% include molecule('form-dependent-button-disabler') with {
+        {% include molecule('button-disable-toggler') with {
             attributes: {
                 'trigger-form-class-name': config.jsName ~ '__textarea',
             },
