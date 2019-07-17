@@ -2,7 +2,6 @@
 
 {% define config = {
     name: 'add-comment-form',
-    tag: 'add-comment-form',
 } %}
 
 {% define data = {
@@ -13,26 +12,29 @@
 
 {% block body %}
     <form method="POST" action="{{ path('comment/add') }}">
-        <textarea name="message"
-                  class="textarea textarea--cart-comment {{ config.name }}__textarea {{ config.jsName }}__textarea"
-                  target-button-class-name="{{ config.jsName }}__button"
-                  placeholder="{{ 'comment_widget.form.placeholder.add_comment' | trans }}"
-                  required="required"></textarea>
-        <input type="hidden" name="returnUrl" value="{{ data.returnUrl }}">
-        <input type="hidden" name="ownerId" value="{{ data.ownerId }}">
-        <input type="hidden" name="ownerType" value="{{ data.ownerType }}">
+        {% block fieldSet %}
+            <textarea name="message"
+                      class="textarea textarea--cart-comment {{ config.name }}__textarea {{ config.jsName }}__textarea"
+                      target-button-class-name="{{ config.jsName }}__button"
+                      placeholder="{{ 'comment_widget.form.placeholder.add_comment' | trans }}"></textarea>
+            <input type="hidden" name="returnUrl" value="{{ data.returnUrl }}">
+            <input type="hidden" name="ownerId" value="{{ data.ownerId }}">
+            <input type="hidden" name="ownerType" value="{{ data.ownerType }}">
+        {% endblock %}
 
-        <button title="{{ 'comment_widget.form.add_comment' | trans }}" class="button button--primary {{ config.name }}__button {{ config.jsName }}__button" disabled>
-            {% include atom('icon') with {
-                data: {
-                    name: 'send',
+        {% block buttonsHolder %}
+            <button title="{{ 'comment_widget.form.add_comment' | trans }}" class="button button--primary {{ config.name }}__button {{ config.jsName }}__button" disabled>
+                {% include atom('icon') with {
+                    data: {
+                        name: 'send',
+                    },
+                } only %}
+            </button>
+            {% include molecule('button-disable-toggler') with {
+                attributes: {
+                    'trigger-form-class-name': config.jsName ~ '__textarea',
                 },
             } only %}
-        </button>
-        {% include molecule('button-disable-toggler') with {
-            attributes: {
-                'trigger-form-class-name': config.jsName ~ '__textarea',
-            },
-        } only %}
+        {% endblock %}
     </form>
 {% endblock %}
