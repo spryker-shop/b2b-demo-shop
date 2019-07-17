@@ -5,14 +5,15 @@
 } %}
 
 {% block body %}
-    {% include molecule('jumbotron') with {
+    {% embed molecule('jumbotron') with {
         data: {
             imageUrl: data.banner.imageUrl,
             link: data.banner.clickUrl,
             headline: data.banner.title,
             subHeadline: data.banner.subtitle,
             btnTitle: 'main_slider.btn.title',
-            contentPositionClass: 'grid--bottom',
         },
     } only %}
+        {% block contentPositionClass %}grid--bottom{% endblock %}
+    {% endembed %}
 {% endblock %}

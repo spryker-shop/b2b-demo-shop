@@ -16,7 +16,7 @@
                         imageUrl: productAbstractView.images is empty ? '' : productAbstractView.images.0.externalUrlSmall,
                         price: productAbstractView.prices.DEFAULT | default(null),
                         originalPrice: productAbstractView.prices.ORIGINAL is defined ? productAbstractView.prices.ORIGINAL : null,
-                        category: 'Office Furniture',
+                        category: 'category.office.furniture' | trans,
                     },
                 } only %}
             </div>

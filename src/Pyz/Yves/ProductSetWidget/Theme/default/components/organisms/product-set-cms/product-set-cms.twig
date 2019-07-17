@@ -37,15 +37,15 @@
             modifiers: ['secondary'],
             class: 'spacing-bottom spacing-bottom--reset',
             data: {
-                title: data.title
+                title: data.title,
             },
             embed: {
-                description: data.description
-            }
+                description: data.description,
+            },
         } only %}
             {% block inner %}
                 <div class="{{ config.name }}__text">
-                    {% if embed.description is not empty %}
+                    {% if embed.description %}
                         {{ embed.description }}
                     {% endif %}
                 </div>
@@ -59,8 +59,8 @@
                     class: 'spacing-bottom spacing-bottom--reset',
                     modifiers: ['medium'],
                     data: {
-                        imageUrl: data.images.0.externalUrlLarge | default([])
-                    }
+                        imageUrl: data.images.0.externalUrlLarge | default([]),
+                    },
                 } only %}
                     {% block body %}
                         <div class="{{config.name}}__container spacing-x spacing-x--reset" style="{{backgroundImage}}"></div>
@@ -74,11 +74,11 @@
                     {% embed molecule('slick-carousel') with {
                         modifiers: ['equal-height', 'product-set-widget'],
                         data: {
-                            slides: data.products
+                            slides: data.products,
                         },
                         attributes: {
-                            'slider-config': data.sliderConfig
-                        }
+                            'slider-config': data.sliderConfig,
+                        },
                     } only %}
                         {% block slides %}
                             {% for product in data.slides %}
@@ -92,8 +92,8 @@
                                         imageUrl: product.images.0.externalUrlSmall | default,
                                         price: product.price,
                                         originalPrice: product.prices['ORIGINAL'] | default,
-                                        category: 'Office Furniture'
-                                    }
+                                        category: 'category.office.furniture' | trans,
+                                    },
                                 } only %}
                                     {% block content %}
                                         <div class="col col--bottom">

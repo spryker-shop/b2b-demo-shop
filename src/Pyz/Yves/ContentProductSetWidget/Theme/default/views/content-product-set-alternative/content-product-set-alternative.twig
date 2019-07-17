@@ -21,15 +21,15 @@
                 modifiers: ['secondary'],
                 class: 'spacing-bottom spacing-bottom--reset',
                 data: {
-                    title: data.title
+                    title: data.title,
                 },
                 embed: {
-                    description: data.description
-                }
+                    description: data.description,
+                },
             } only %}
                 {% block inner %}
                     <div class="{{ config.name }}__text {{ config.name }}__text--full-width">
-                        {% if embed.description is not empty %}
+                        {% if embed.description %}
                             {{ embed.description }}
                         {% endif %}
                     </div>
@@ -46,15 +46,15 @@
                     {% for product in data.products %}
                         {% if product.idProductConcrete is not empty %}
                             {% if product.available %}
-                                <input type="hidden" name="items[{{ loop.index }}][sku]" value="{{ product.sku }}" />
-                                <input type="hidden" name="items[{{ loop.index }}][quantity]" value="1" />
+                                <input type="hidden" name="items[{{ loop.index }}][sku]" value="{{ product.sku }}">
+                                <input type="hidden" name="items[{{ loop.index }}][quantity]" value="1">
                             {% endif %}
                         {% else %}
                             {% set isDisabled = true %}
                         {% endif %}
                     {% endfor %}
 
-                    <button type="submit" class="button" data-init-single-click {% if isDisabled %}disabled{% endif %}>
+                    <button type="submit" class="button" data-init-single-click {{ isDisabled ? 'disabled' }}>
                         {{ 'product.set.detail.add-all-to-cart' | trans }}
                     </button>
                 </form>
