@@ -14,8 +14,8 @@
     canRemove: false,
     quantity: null,
     imageModifiers: [],
-
     isShoppingList: false,
+    currencyIsoCode: null,
 } %}
 
 {% block body %}
@@ -98,35 +98,12 @@
                                 {% if cartProductMeasurementUnitQuantitySelectorWidget and data.canEdit %}
                                     {% widget cartProductMeasurementUnitQuantitySelectorWidget only %}{% endwidget %}
                                 {% else %}
-                                    {% widget 'ProductQuantityWidget' args [data.listItem.quantity, data.listItem.id, data.listItem.sku, data.listItem.groupKey] only %}
-                                        {% block body %}
-                                            <form method="POST" action="{{ path('cart/change/quantity', {'sku': data.sku }) }}">
-                                                {% include molecule('quantity-counter') with {
-                                                    modifiers: ['cart'],
-                                                    data: {
-                                                        isDisabled: false,
-                                                        autoUpdate: true,
-                                                        maxQuantity: data.productQuantityStorage.quantityMax,
-                                                        minQuantity: data.productQuantityStorage.quantityMin,
-                                                        step: data.productQuantityStorage.quantityInterval,
-                                                    },
-                                                    attributes: {
-                                                        max: data.productQuantityStorage.quantityMax,
-                                                        value: data.quantity,
-                                                    }
-                                                } only %}
-
-                                                <input type="hidden" value="{{ data.groupKey }}" name="groupKey" />
-                                            </form>
-                                        {% endblock %}
-                                    {% nowidget %}
-                                        {% include molecule('product-item-quantity') with {
-                                            data: {
-                                                productItem: data.listItem,
-                                                isDisabled: not data.canEdit,
-                                            },
-                                        } only %}
-                                    {% endwidget %}
+                                    {% include molecule('product-item-quantity') with {
+                                        data: {
+                                            productItem: data.listItem,
+                                            isDisabled: not data.canEdit,
+                                        },
+                                    } only %}
                                 {% endif %}
                             </div>
                         </div>
@@ -180,7 +157,8 @@
                                         modifiers: ['cart'],
                                         data: {
                                             amount: price,
-                                            originalAmount: data.listItem.prices.ORIGINAL is not defined or data.listItem.prices.ORIGINAL is empty ? null : data.listItem.prices.ORIGINAL, 
+                                            originalAmount: data.listItem.prices.ORIGINAL is not defined or data.listItem.prices.ORIGINAL is empty ? null : data.listItem.prices.ORIGINAL,
+                                            currencyIsoCode: data.currencyIsoCode,
                                         },
                                     } only %}
                                 {% endblock %}
@@ -192,24 +170,12 @@
                                             {% if cartProductMeasurementUnitQuantitySelectorWidget and data.canEdit %}
                                                 {% widget cartProductMeasurementUnitQuantitySelectorWidget only %}{% endwidget %}
                                             {% else %}
-                                                {% widget 'ProductQuantityWidget' args [data.listItem.quantity, data.listItem.id, data.listItem.sku, data.listItem.groupKey] only %}
-                                                    {% block body %}
-                                                        <form method="POST" action="{{ path('cart/change/quantity', {'sku': data.sku }) }}">
-                                                            {{ parent() }}
-                                                            <input type="hidden" value="{{ data.groupKey }}" name="groupKey" />
-                                                        </form>
-                                                    {% endblock %}
-                                                {% nowidget %}
-                                                    {% include molecule('product-item-quantity') with {
-                                                        data: {
-                                                            productItem: data.listItem,
-                                                            isDisabled: not data.canEdit,
-                                                            minQuantity: data.listItem.quantityMin ?? 1,
-                                                            maxQuantity: data.listItem.quantityMax,
-                                                            quantityInterval: data.listItem.quantityInterval ?? 1,
-                                                        },
-                                                    } only %}
-                                                {% endwidget %}
+                                                {% include molecule('product-item-quantity') with {
+                                                    data: {
+                                                        productItem: data.listItem,
+                                                        isDisabled: not data.canEdit,
+                                                    },
+                                                } only %}
                                             {% endif %}
                                         </div>
                                     {% endif %}

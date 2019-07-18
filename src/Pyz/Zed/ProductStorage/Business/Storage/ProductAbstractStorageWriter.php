@@ -37,6 +37,7 @@ class ProductAbstractStorageWriter extends SprykerProductAbstractStorageWriter
             }
             $productAbstractStorageTransfer->setProductSetIds($productSetIds);
         }
+
         return $productAbstractStorageTransfer;
     }
 }
