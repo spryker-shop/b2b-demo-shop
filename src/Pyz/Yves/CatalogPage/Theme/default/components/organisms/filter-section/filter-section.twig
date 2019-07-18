@@ -2,17 +2,17 @@
 
 {% define config = {
     name: 'filter-section',
-    tag: 'section'
+    tag: 'section',
 } %}
 
 {% define data = {
     facets: [],
     filterPath: null,
     categories: [],
-    isEmptyCategoryFilterValueVisible: null
+    isEmptyCategoryFilterValueVisible: null,
 } %}
 
-{% set isShownConent = data.facets | length > 0 %}
+{% set isContentPresent = data.facets | length > 0 %}
 
 {% block class %}
     {{  parent() }}
@@ -20,13 +20,13 @@
 {% endblock %}
 
 {% block body %}
-    {% if isShownConent %}
+    {% if isContentPresent %}
         <h3 class="{{ config.name ~ '__title' }} is-hidden-lg-xxl">{{ 'catalog.filter.and.sorting.button' | trans }}</h3>
         <button class="{{ config.name ~ '__close' }} is-hidden-lg-xxl js-catalog-filters-trigger">
             {% include atom('icon') with {
                 data: {
-                    name: 'cross'
-                }
+                    name: 'cross',
+                },
             } only %}
         </button>
 
@@ -34,7 +34,7 @@
         <div class="{{ config.name ~ '__holder' }}">
             {% for filter in data.facets %}
                 {% set filterHasValues = filter.values is not defined or filter.values | length > 0 %}
-                {% set toglerClass = '' %}
+                {% set togglerClass = '' %}
 
                 {% if filterHasValues %}
                     {% block filters %}
@@ -49,8 +49,8 @@
                                         class: 'toggler-accordion__icon',
                                         modifiers: ['small'],
                                         data: {
-                                            name: 'caret-down'
-                                        }
+                                            name: 'caret-down',
+                                        },
                                     } only %}
                                 </h6>
                                 {% set contentModifier = filter.name == 'category' ? config.name ~ '__item-content--hollow' : '' %}
@@ -59,7 +59,7 @@
 
                                 {% include [
                                     molecule('filter-' ~ filter.config.name, 'CatalogPage'),
-                                    molecule('filter-' ~ filter.config.type, 'CatalogPage')
+                                    molecule('filter-' ~ filter.config.type, 'CatalogPage'),
                                     ] ignore missing with {
                                     data: {
                                         filterPath: data.filterPath,
@@ -70,9 +70,9 @@
                                         max: filter.max | default(0),
                                         activeMin: filter.activeMin | default(0),
                                         activeMax: filter.activeMax | default(0),
-                                        isEmptyCategoryFilterValueVisible: data.isEmptyCategoryFilterValueVisible
+                                        isEmptyCategoryFilterValueVisible: data.isEmptyCategoryFilterValueVisible,
                                     },
-                                    class: toglerClass
+                                    class: toglerClass,
                                 } only %}
 
                                 {% include molecule('toggler-click') with {
@@ -80,8 +80,8 @@
                                         'trigger-selector': '.' ~ config.jsName ~ '__trigger-' ~ filter.name,
                                         'target-selector': '.' ~ config.jsName ~ '__' ~ filter.name,
                                         'class-to-toggle': hiddenClassToToggleSections,
-                                        'trigger-class-to-toggle': 'active'
-                                    }
+                                        'trigger-class-to-toggle': 'active',
+                                    },
                                 } only %}
                             </div>
                         {% endif %}
