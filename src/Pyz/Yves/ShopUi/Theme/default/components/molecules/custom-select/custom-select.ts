@@ -50,8 +50,8 @@ export default class CustomSelect extends Component {
         let elementLeftOffset = <HTMLElement>this;
         let left = 0;
 
-        while(elementLeftOffset) {
-            left += elementLeftOffset.offsetLeft || 0;
+        while (elementLeftOffset) {
+            left += elementLeftOffset.offsetLeft;
             elementLeftOffset = <HTMLElement>elementLeftOffset.offsetParent;
         }
 

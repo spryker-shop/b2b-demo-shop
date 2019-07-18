@@ -16,7 +16,7 @@ export default class ButtonDisableToggler extends Component {
         });
     }
 
-    protected toggleButtonVisibility(event:Event): void {
+    protected toggleButtonVisibility(event: Event): void {
         const trigger = <TTriggerElement>event.currentTarget;
         const targetClass = trigger.getAttribute('target-button-class-name');
         const target = <HTMLButtonElement>document.getElementsByClassName(targetClass)[0];
@@ -31,6 +31,7 @@ export default class ButtonDisableToggler extends Component {
 
     protected hasEnoughSymbols(textarea: TTriggerElement): boolean {
         const filteredValueLength = textarea.value.trim().length;
+
         return filteredValueLength >= this.minSymbols;
     }
 
