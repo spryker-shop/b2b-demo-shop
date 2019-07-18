@@ -20,9 +20,15 @@
             <input type="hidden" name="returnUrl" value="{{ data.returnUrl }}">
             <input type="hidden" name="ownerId" value="{{ data.ownerId }}">
             <input type="hidden" name="ownerType" value="{{ data.ownerType }}">
+            {% include molecule('button-disable-toggler') with {
+                attributes: {
+                    'trigger-form-class-name': config.jsName ~ '__textarea',
+                    'active-trigger-class-name': config.name ~ '__textarea--valid-message',
+                },
+            } only %}
         {% endblock %}
 
-        {% block buttonsHolder %}
+        {% block actions %}
             <button title="{{ 'comment_widget.form.add_comment' | trans }}" class="button button--primary {{ config.name }}__button {{ config.jsName }}__button" disabled>
                 {% include atom('icon') with {
                     data: {
@@ -30,11 +36,6 @@
                     },
                 } only %}
             </button>
-            {% include molecule('button-disable-toggler') with {
-                attributes: {
-                    'trigger-form-class-name': config.jsName ~ '__textarea',
-                },
-            } only %}
         {% endblock %}
     </form>
 {% endblock %}
