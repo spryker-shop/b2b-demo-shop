@@ -19,7 +19,7 @@
     }, {
         label: data.cart.name ? data.cart.name : 'cart.cart' | trans,
         isActive: true,
-    }]%}
+    }] %}
 
     {% embed molecule('breadcrumb') with {
         data: {
@@ -77,7 +77,8 @@
                         ] only %}
                             {% block body %}
                                 <div class="order-sidebar__item">
-                                    <h5 class="order-sidebar__title toggler-accordion__item js-order-sidebar__trigger" data-toggle-target='.js-order-sidebar__content-quick-add-widget'>
+                                    <h5 class="order-sidebar__title toggler-accordion__item js-order-sidebar__trigger"
+                                        data-toggle-target='.js-order-sidebar__content-quick-add-widget'>
                                         {{ 'cart.quick_add_to_cart' | trans }}
                                         <span class="icon icon--toggler-cross toggler-accordion__icon"></span>
                                     </h5>
@@ -93,7 +94,10 @@
         {% endblock %}
     {% else %}
         {% set productBundleItemCounterWidget = findWidget('ProductBundleItemCounterWidget', [data.cart]) %}
-        {% set transformedCartItems = productBundleItemCounterWidget.items %}
+
+        {% if (productBundleItemCounterWidget) %}
+            {% set data = data|merge({cartItems: productBundleItemCounterWidget.items}) %}
+        {% endif %}
 
         <div class="grid grid--gap">
             <div class="col col--sm-12 col--xl-9">
@@ -102,7 +106,8 @@
                         {% block cartTitle %}
                             {{ data.cart.name }}
                             {% if isQuoteEnadled and can('ChangeCartItemPermissionPlugin', data.cart.idQuote) %}
-                                <a href="{{ path('multi-cart/update', {idQuote: data.cart.idQuote}) }}" class="col button button--hollow-icon button--edit cart-title__link">
+                                <a href="{{ path('multi-cart/update', {idQuote: data.cart.idQuote}) }}"
+                                   class="col button button--hollow-icon button--edit cart-title__link">
                                     {% include molecule('icon-tooltip') with {
                                         modifiers: ['sm-lg-regular'],
                                         data: {
@@ -131,7 +136,7 @@
                 </div>
             </div>
             <div class="col col--sm-12 col--xl-9">
-                {% for cartItem in transformedCartItems %}
+                {% for cartItem in data.cartItems %}
                     {% block cartItem %}
                         {% embed molecule('product-item') with {
                             data: {
@@ -183,7 +188,10 @@
 
                                 {% if embed.product.attributes.farbe is defined %}
                                     <br>
-                                    <span class="{{ config.name }}__color-preview">{{ 'cart.item.color' | trans }}:  <span class="{{ config.name }}__color-preview-decoration" style="background: {{ embed.product.colorCode  }}" title="{{ embed.product.attributes.farbe  }}"></span></span>
+                                    <span class="{{ config.name }}__color-preview">{{ 'cart.item.color' | trans }}:  <span
+                                                class="{{ config.name }}__color-preview-decoration"
+                                                style="background: {{ embed.product.colorCode }}"
+                                                title="{{ embed.product.attributes.farbe }}"></span></span>
                                 {% endif %}
                             {% endblock %}
                         {% endembed %}
@@ -192,7 +200,8 @@
 
                 {% if isQuoteEnadled and can('RemoveCartItemPermissionPlugin') %}
                     <div class="grid grid--right cart-bottom">
-                        <a href="{{ path('multi-cart/clear', {idQuote: data.cart.idQuote}) }}" class="link link--icon cart-bottom__button">
+                        <a href="{{ path('multi-cart/clear', {idQuote: data.cart.idQuote}) }}"
+                           class="link link--icon cart-bottom__button">
                             {% include atom('icon') with {
                                 modifiers: ['link'],
                                 data: {
@@ -218,7 +227,8 @@
                     {% widget 'CartNoteFormWidget' args [data.cart] only %}
                         {% block body %}
                             <div class="order-sidebar__item order-sidebar__item--note">
-                                <h5 class="order-sidebar__title toggler-accordion__item js-order-sidebar__trigger" data-toggle-target='.js-order-sidebar__content-note'>
+                                <h5 class="order-sidebar__title toggler-accordion__item js-order-sidebar__trigger"
+                                    data-toggle-target='.js-order-sidebar__content-note'>
                                     {{ 'cart_note.quote_form.enter_note' | trans }}
                                     <span class="icon icon--toggler-cross toggler-accordion__icon"></span>
                                 </h5>
@@ -235,7 +245,8 @@
                         {% widget 'CreateShoppingListFromCartWidget' args [data.cart.idQuote] only %}
                             {% block body %}
                                 <div class="order-sidebar__item">
-                                    <h5 class="order-sidebar__title toggler-accordion__item js-order-sidebar__trigger" data-toggle-target='.js-order-sidebar__content-shopping-list'>
+                                    <h5 class="order-sidebar__title toggler-accordion__item js-order-sidebar__trigger"
+                                        data-toggle-target='.js-order-sidebar__content-shopping-list'>
                                         {{ 'cart.add-to-shopping-list' | trans }}
                                         <span class="icon icon--toggler-cross toggler-accordion__icon"></span>
                                     </h5>
@@ -257,8 +268,9 @@
                     ] only %}
                         {% block body %}
                             <div class="order-sidebar__item">
-                                <h5 class="order-sidebar__title toggler-accordion__item js-order-sidebar__trigger" data-toggle-target='.js-order-sidebar__content-quick-add-widget'>
-                                    {{ 'cart.quick_add_to_cart' | trans}}
+                                <h5 class="order-sidebar__title toggler-accordion__item js-order-sidebar__trigger"
+                                    data-toggle-target='.js-order-sidebar__content-quick-add-widget'>
+                                    {{ 'cart.quick_add_to_cart' | trans }}
                                     <span class="icon icon--toggler-cross toggler-accordion__icon"></span>
                                 </h5>
                                 <div class="order-sidebar__content js-order-sidebar__content-quick-add-widget is-hidden">
@@ -270,8 +282,9 @@
                     {% widget 'ShareCartByLinkWidget' args [data.cart] only %}
                         {% block body %}
                             <div class="order-sidebar__item order-sidebar__item--with-label order-sidebar__item--shadow-less">
-                                <h5 class="order-sidebar__title toggler-accordion__item js-order-sidebar__trigger" data-toggle-target='.js-order-sidebar__content-share-by-link-widget'>
-                                    {{ 'persistent_cart_share.title' | trans}}
+                                <h5 class="order-sidebar__title toggler-accordion__item js-order-sidebar__trigger"
+                                    data-toggle-target='.js-order-sidebar__content-share-by-link-widget'>
+                                    {{ 'persistent_cart_share.title' | trans }}
                                     <span class="icon icon--toggler-cross toggler-accordion__icon"></span>
                                 </h5>
                                 <div class="order-sidebar__content js-order-sidebar__content-share-by-link-widget is-hidden">
