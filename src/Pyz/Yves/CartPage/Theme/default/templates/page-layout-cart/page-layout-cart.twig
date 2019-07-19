@@ -92,6 +92,8 @@
             </div>
         {% endblock %}
     {% else %}
+        {% set productBundleItemCounterWidget = findWidget('ProductBundleItemCounterWidget', [data.cart]) %}
+        {% set transformedCartItems = productBundleItemCounterWidget.items %}
 
         <div class="grid grid--gap">
             <div class="col col--sm-12 col--xl-9">
@@ -129,7 +131,7 @@
                 </div>
             </div>
             <div class="col col--sm-12 col--xl-9">
-                {% for cartItem in data.cartItems %}
+                {% for cartItem in transformedCartItems %}
                     {% block cartItem %}
                         {% embed molecule('product-item') with {
                             data: {
