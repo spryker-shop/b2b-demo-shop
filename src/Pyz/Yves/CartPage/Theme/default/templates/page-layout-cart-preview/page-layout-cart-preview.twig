@@ -125,6 +125,7 @@
                             {% include molecule('cart-discount-summary', 'DiscountWidget') ignore missing with {
                                 modifiers: ['cart'],
                                 data: {
+                                    isLinksPresent: false,
                                     voucherDiscounts: data.cart.voucherDiscounts,
                                     ruleDiscounts: data.cart.cartRuleDiscounts,
                                     discountTotal: data.cart.totals.discounttotal,
