@@ -25,44 +25,48 @@
     }
 } %}
 {% block contentTop %}
-    {% if data.categoryId is not empty %}
-        {% include molecule('catalog-cms-block', 'CmsBlockWidget') with {
-            data: {
-                idCategory: data.categoryId,
-                position: 'top'
-            }
-        } only %}
+    {% if data.categoryId %}
+        <div class="container">
+            {% include molecule('catalog-cms-block', 'CmsBlockWidget') with {
+                data: {
+                    idCategory: data.categoryId,
+                    position: 'top',
+                },
+            } only %}
+        </div>
     {% endif %}
 {% endblock %}
 
 {% block filterBar %}
     {{parent()}}
 
-    {% if data.categoryId is not empty %}
+    {% if data.categoryId %}
         {% include molecule('catalog-cms-block', 'CmsBlockWidget') with {
             data: {
                 idCategory: data.categoryId,
-                position: 'middle'
-            }
+                position: 'middle',
+            },
         } only %}
     {% endif %}
 {% endblock %}
 
 {% block contentBottom %}
-    {% if data.categoryId is not empty %}
-        {% include molecule('catalog-cms-block', 'CmsBlockWidget') with {
-            data: {
-                idCategory: data.categoryId,
-                position: 'bottom'
-            }
-        } only %}
+    {% if data.categoryId %}
+        <div class="container">
+            {% include molecule('catalog-cms-block', 'CmsBlockWidget') with {
+                data: {
+                    idCategory: data.categoryId,
+                    position: 'bottom',
+                },
+            } only %}
+        </div>
     {% endif %}
 {% endblock %}
 
 {% block form %}
     {{ parent() }}
 
-    {% if data.searchString is not empty %}
-        <input type="hidden" name="q" value="{{ data.searchString }}" />
+    {% if data.searchString %}
+        <input type="hidden" name="q" value="{{ data.searchString }}">
     {% endif %}
 {% endblock %}
