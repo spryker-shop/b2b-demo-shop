@@ -48,6 +48,28 @@
 
 {% block contentClass %}page-layout-main page-layout-main--cart-page{% endblock %}
 
+{% block commentThreadWidget %}
+    {% if data.cart.idQuote is not empty %}
+        {% widget 'CommentThreadWidget' args [
+            data.cart.idQuote,
+            'quote',
+            app.request.requestUri,
+            data.cart.commentThread
+        ] only %}
+            {% block body %}
+                <div class="order-sidebar__item">
+                    <h5 class="order-sidebar__title">
+                        {{ 'comment_widget.comments_to_cart' | trans }}
+                    </h5>
+                    <div class="order-sidebar__content">
+                        {{ parent() }}
+                    </div>
+                </div>
+            {% endblock %}
+        {% endwidget %}
+    {% endif %}
+{% endblock %}
+
 {% block content %}
     {% set isQuoteEnadled = data.cart.idQuote and data.isQuoteEditable %}
     {% if data.cart.items is empty %}
@@ -87,6 +109,8 @@
                                 </div>
                             {% endblock %}
                         {% endwidget %}
+
+                        {{ block('commentThreadWidget') }}
                     </div>
                 </div>
             </div>
@@ -265,6 +289,7 @@
                             </div>
                         {% endblock %}
                     {% endwidget %}
+
                     {% widget 'ShareCartByLinkWidget' args [data.cart] only %}
                         {% block body %}
                             <div class="order-sidebar__item order-sidebar__item--with-label order-sidebar__item--shadow-less">
@@ -279,6 +304,8 @@
                         {% endblock %}
                     {% endwidget %}
                 {% endif %}
+
+                {{ block('commentThreadWidget') }}
 
                 <div class="order-sidebar__item order-sidebar__item--summary">
                     <div class="order-sidebar__item order-sidebar__item--start">

@@ -1,0 +1,79 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'comment',
+} %}
+
+{% define data = {
+    comment: required,
+    availableCommentTags: required,
+    returnUrl: required,
+    idCustomer: null,
+    filterName: required,
+} %}
+
+{% set shouldShowTagForm = data.comment.tagNames | length != data.availableCommentTags | length and data.idCustomer is not null %}
+
+{% block body %}
+    {% set jsTriggerSelector = config.jsName ~ '__trigger-' ~ data.filterName ~ '-' ~ data.comment.uuid %}
+    {% set jsTargetSelector = config.jsName ~ '__target-' ~ data.filterName ~ '-' ~ data.comment.uuid %}
+    {% block header %}
+        <div class="grid grid--justify grid--nowrap spacing-bottom spacing-bottom--small">
+            <span class="col {{ config.name }}__author">{{ data.comment.customer.firstName }} {{ data.comment.customer.lastName }}</span>
+            {% if shouldShowTagForm %}
+                {% include molecule('comment-tag-form', 'CommentWidget') with {
+                    class: 'col ' ~ jsTargetSelector,
+                    data: {
+                        action: path('comment/tag/add', {'uuid': data.comment.uuid }),
+                        availableTags: data.availableCommentTags,
+                        tagNames: data.comment.tagNames,
+                        returnUrl: data.returnUrl,
+                    },
+                } only %}
+            {% endif %}
+        </div>
+    {% endblock %}
+
+    {% block commentCreated %}
+        <div class="{{ config.name }}__date spacing-bottom spacing-bottom--small">
+            {{ data.comment.createdAt | formatDateTime }}
+            {% if data.comment.isUpdated %}
+                ({{ 'comment_widget.form.edited' | trans }})
+            {% endif %}
+        </div>
+    {% endblock %}
+
+    {% block comment %}
+        {% if data.idCustomer is not null and data.comment.customer.idCustomer == data.idCustomer %}
+            {% block commentUpdate %}
+                {% include molecule('comment-form', 'CommentWidget') with {
+                    data: {
+                        formView: 'update',
+                        comment: data.comment,
+                        returnUrl: data.returnUrl,
+                        idCustomer: data.idCustomer,
+                        jsTriggerSelector: jsTriggerSelector,
+                        jsTargetSelector: jsTargetSelector,
+                    },
+                } only %}
+            {% endblock %}
+        {% else %}
+            {% block commentMessage %}
+                <p>{{ data.comment.message }}</p>
+            {% endblock %}
+
+            {% block tags %}
+                {% if data.comment.tagNames is defined and data.comment.tagNames %}
+                    {% include molecule('tag-list', 'CommentWidget') with {
+                        data: {
+                            tagNames: data.comment.tagNames,
+                            uuid: data.comment.uuid,
+                            returnUrl: data.returnUrl,
+                            idCustomer: data.idCustomer,
+                        },
+                    } only %}
+                {% endif %}
+            {% endblock %}
+        {% endif %}
+    {% endblock %}
+{% endblock %}

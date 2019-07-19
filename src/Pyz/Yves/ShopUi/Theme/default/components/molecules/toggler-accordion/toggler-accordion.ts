@@ -8,7 +8,7 @@ export default class TogglerAccordion extends Component {
     constructor() {
         super();
         this.wrap = <HTMLElement>document.querySelector(this.wrapSelector);
-        this.triggers = <HTMLElement[]>Array.from(document.querySelectorAll(this.triggerSelector));
+        this.triggers = <HTMLElement[]>Array.from(this.wrap.querySelectorAll(this.triggerSelector));
         this.isTouch = 'ontouchstart' in window;
     }
 
