@@ -93,10 +93,7 @@
         {% endblock %}
     {% else %}
         {% set productBundleItemCounterWidget = findWidget('ProductBundleItemCounterWidget', [data.cart]) %}
-
-        {% if (productBundleItemCounterWidget) %}
-            {% set data = data|merge({cartItems: productBundleItemCounterWidget.items}) %}
-        {% endif %}
+        {% set transformedCartItems = productBundleItemCounterWidget.items | default(data.cartItems) %}
 
         <div class="grid grid--gap">
             <div class="col col--sm-12 col--xl-9">
@@ -129,12 +126,12 @@
                                 } only %}
                             {% endif %}
                         </div>
-                        <div class="col col--sm-2 text-right cart-title__quantity">{{ data.cartItems | length }} {{ 'checkout.step.summary.items' | trans }}</div>
+                        <div class="col col--sm-2 text-right cart-title__quantity">{{ transformedCartItems | length }} {{ 'checkout.step.summary.items' | trans }}</div>
                     </div>
                 </div>
             </div>
             <div class="col col--sm-12 col--xl-9">
-                {% for cartItem in data.cartItems %}
+                {% for cartItem in transformedCartItems %}
                     {% block cartItem %}
                         {% embed molecule('product-item') with {
                             data: {
@@ -289,7 +286,7 @@
                     <div class="order-sidebar__item order-sidebar__item--start">
                         <div class=" grid grid--justify grid--middle order-sidebar__order">
                             <h6 class="col order-sidebar__title">{{ 'cart.your-order' | trans }}</h6>
-                            <div class="col order-sidebar__quantity">{{ data.cartItems | length }} {{ 'checkout.step.summary.items' | trans }}</div>
+                            <div class="col order-sidebar__quantity">{{ transformedCartItems | length }} {{ 'checkout.step.summary.items' | trans }}</div>
                         </div>
 
                         {% if data.isQuoteEditable and can('ChangeCartItemPermissionPlugin') and can('SeePricePermissionPlugin') %}
