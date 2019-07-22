@@ -174,7 +174,7 @@
                                 {% if can('SeePricePermissionPlugin') %}
                                     {% set subtotalPrice = data.listItem.unitSubtotalAggregation is defined ? data.listItem.unitSubtotalAggregation : data.listItem.price %}
                                     {% include molecule('money-price') with {
-                                        modifiers: ['cart'],
+                                        class: 'spacing-bottom',
                                         data: {
                                             amount: subtotalPrice,
                                             currencyIsoCode: data.list.currency.code,
@@ -187,16 +187,23 @@
                                 {% if can('SeePricePermissionPlugin') %}
                                     {% set totalPrice = data.listItem.unitPrice is defined ? data.listItem.sumSubtotalAggregation : data.listItem.price %}
                                     {% embed molecule('money-price') with {
-                                        class: 'spacing spacing--inner spacing-y spacing-y--big',
-                                        modifiers: ['cart'],
+                                        class: 'grid grid--wide spacing spacing--inner spacing-y spacing-y--big',
+                                        modifiers: ['secondary'],
                                         data: {
                                             amount: totalPrice,
                                             currencyIsoCode: data.list.currency.code,
                                         },
                                     } only %}
                                         {% block body %}
-                                            <strong class="float-left">{{ 'cart.item.item_total' | trans }}</strong>
-                                            {{ parent() }}
+                                            <strong class="col col--sm-4 col--lg-5 text-left">{{ 'cart.item.item_total' | trans }}</strong>
+
+                                            {% if data.amount is empty -%}
+                                                {{ data.noPriceText }}
+                                            {%- else -%}
+                                                <span class="{{config.name}}__amount col col--sm-8 col--lg-7">
+                                                    {{ data.amount | money(true, data.currencyIsoCode) }}
+                                                </span>
+                                            {%- endif -%}
                                         {% endblock %}
                                     {% endembed %}
                                 {% endif %}
