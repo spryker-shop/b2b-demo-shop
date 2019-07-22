@@ -27,7 +27,7 @@
 {% block contentTop %}
     {% if data.categoryId %}
         <div class="container">
-            {% include molecule('catalog-cms-block', 'CmsBlockWidget') with {
+            {% include molecule('catalog-cms-block', 'CmsBlockWidget') ignore missing with {
                 data: {
                     idCategory: data.categoryId,
                     position: 'top',
@@ -41,7 +41,7 @@
     {{parent()}}
 
     {% if data.categoryId %}
-        {% include molecule('catalog-cms-block', 'CmsBlockWidget') with {
+        {% include molecule('catalog-cms-block', 'CmsBlockWidget') ignore missing with {
             data: {
                 idCategory: data.categoryId,
                 position: 'middle',
@@ -53,7 +53,7 @@
 {% block contentBottom %}
     {% if data.categoryId %}
         <div class="container">
-            {% include molecule('catalog-cms-block', 'CmsBlockWidget') with {
+            {% include molecule('catalog-cms-block', 'CmsBlockWidget') ignore missing with {
                 data: {
                     idCategory: data.categoryId,
                     position: 'bottom',
