@@ -13,15 +13,15 @@
         data: {
             steps: [{
                 url: url('customer/overview'),
-                label: 'customer.profile' | trans
+                label: 'customer.profile' | trans,
             },{
                 url: url('multi-cart'),
-                label: 'shared_cart.share.breadcrumbs.shopping_carts' | trans
+                label: 'shared_cart.share.breadcrumbs.shopping_carts' | trans,
             },{
                 url: data.cart.isDefault ? url('cart') : url('multi-cart/set-default', {idQuote: data.cart.idQuote}),
-                label: data.cartName
+                label: data.cartName,
             },{
-                label: 'shared_cart.share.breadcrumbs.share' | trans
+                label: 'shared_cart.share.breadcrumbs.share' | trans,
             }]
         }
     } only %}
