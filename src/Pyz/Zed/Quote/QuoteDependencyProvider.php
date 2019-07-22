@@ -21,6 +21,7 @@ use Spryker\Zed\QuoteApproval\Communication\Plugin\Quote\RemoveQuoteApprovalsBef
 use Spryker\Zed\SharedCart\Communication\Plugin\CleanQuoteShareBeforeQuoteCreatePlugin;
 use Spryker\Zed\SharedCart\Communication\Plugin\DeactivateSharedQuotesBeforeQuoteSavePlugin;
 use Spryker\Zed\SharedCart\Communication\Plugin\MarkAsDefaultQuoteAfterSavePlugin;
+use Spryker\Zed\SharedCart\Communication\Plugin\Quote\ShareDetailsQuoteExpanderPlugin;
 use Spryker\Zed\SharedCart\Communication\Plugin\RemoveSharedQuoteBeforeQuoteDeletePlugin;
 use Spryker\Zed\SharedCart\Communication\Plugin\SharedQuoteSetDefaultBeforeQuoteSavePlugin;
 use Spryker\Zed\SharedCart\Communication\Plugin\UpdateShareDetailsQuoteAfterSavePlugin;
@@ -95,6 +96,7 @@ class QuoteDependencyProvider extends SprykerQuoteDependencyProvider
     {
         return [
             new QuoteApprovalExpanderPlugin(), #QuoteApprovalFeature
+            new ShareDetailsQuoteExpanderPlugin(),
         ];
     }
 

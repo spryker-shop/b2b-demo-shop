@@ -204,8 +204,6 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new SetStoreCurrentLocaleBeforeActionPlugin(),
             new SetCustomerBeforeActionPlugin(),
             new SetAnonymousCustomerIdControllerBeforeActionPlugin(),
-            new SetCurrencyBeforeActionPlugin(),
-            new SetPriceModeBeforeActionPlugin(),
         ];
     }
 
