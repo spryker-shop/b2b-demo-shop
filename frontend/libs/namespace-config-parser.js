@@ -42,10 +42,6 @@ const getFilteredNamespaceConfigList = requestedArguments => {
         });
 };
 
-const getPathToAssets = () => {
-
-};
-
 module.exports = {
     getFilteredNamespaceConfigList
 };
