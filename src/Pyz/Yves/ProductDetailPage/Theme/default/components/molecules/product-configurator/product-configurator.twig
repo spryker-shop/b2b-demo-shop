@@ -133,13 +133,8 @@
             {% widget 'AddToMultiCartWidget' args [isDisabled] only %}{% endwidget %}
         {% endif %}
 
-        {% if is_granted('ROLE_USER') %}
-            {% include molecule('availability-product', 'AvailabilityWidget') ignore missing with {
-                data: {
-                    idProductConcrete: data.product.idProductConcrete,
-                    isAvailable: data.product.available
-                }
-            } only %}
+        {% if not data.product.available %}
+            <p class="text-alert">{{ "product.detail.out_of_stock" | trans }}</p>
         {% endif %}
     </form>
 
