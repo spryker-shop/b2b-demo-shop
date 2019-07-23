@@ -1,0 +1,96 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'comment-form',
+    tag: 'comment-form',
+} %}
+
+{% define data = {
+    method: 'POST',
+    comment: required,
+    returnUrl: required,
+    ownerId: '',
+    ownerType: '',
+    idCustomer: null,
+    jsTriggerSelector: 'js-' ~ config.name ~ '__trigger-' ~ data.comment.uuid,
+    jsTargetSelector: 'js-' ~ config.name ~ '__target-' ~ data.comment.uuid,
+} %}
+
+{% block body %}
+    {% set uuidField %}
+        <input type="hidden" name="uuid" value="{{ data.comment.uuid }}">
+    {% endset %}
+
+    {% set messageField %}
+        <textarea name="message"
+                  placeholder="{{ 'comment_widget.form.placeholder.add_comment' | trans }}"
+                  required="required"
+                  class="textarea textarea--alternative textarea--cart-comment">{{ data.comment.message }}</textarea>
+    {% endset %}
+
+    {% set returnUrlField %}
+        <input type="hidden" name="returnUrl" value="{{ data.returnUrl }}">
+    {% endset %}
+
+    {% block form %}
+        <form class="{{ config.jsName }}__form" method="{{ data.method }}">
+            {% block readComment %}
+                <div class="{{ config.name }}__readonly {{ data.jsTargetSelector }}">
+                    <p>{{ data.comment.message }}</p>
+                    {% block tags %}
+                        {% if data.comment.tagNames is defined and data.comment.tagNames %}
+                            {% include molecule('tag-list', 'CommentWidget') with {
+                                data: {
+                                    tagNames: data.comment.tagNames,
+                                    uuid: data.comment.uuid,
+                                    returnUrl: data.returnUrl,
+                                    idCustomer: data.idCustomer,
+                                },
+                            } only %}
+                        {% endif %}
+                    {% endblock %}
+                    <div class="grid grid--center">
+                        <button class="col button button--hollow-icon-small {{ data.jsTriggerSelector }}">
+                            {% include atom('icon') with {
+                                data: {
+                                    name: 'edit',
+                                },
+                            } only %}
+                            {{ 'comment_widget.form.edit_comment' | trans }}
+                        </button>
+                        <button action="{{ path('comment/remove') }}" class="col button button--hollow-icon-small {{ config.jsName }}__remove-button">
+                            {% include atom('icon') with {
+                                data: {
+                                    name: 'delete',
+                                },
+                            } only %}
+                            {{ 'comment_widget.form.remove_comment' | trans }}
+                        </button>
+                    </div>
+                </div>
+            {% endblock %}
+
+            {% block editComment %}
+                <div class="{{ config.name }}__edit {{ data.jsTargetSelector }} is-hidden">
+                    {{ messageField }}
+                    {{ uuidField }}
+                    {{ returnUrlField }}
+                    <button action="{{ path('comment/update') }}" class="button button--small {{ config.jsName }}__submit-button">
+                        {{ 'comment_widget.form.update_comment' | trans }}
+                    </button>
+                    <button class="button button--small button--hollow-icon button--back {{ data.jsTriggerSelector }}">
+                        {{ 'comment_widget.form.cancel_comment' | trans }}
+                    </button>
+                </div>
+            {% endblock %}
+        </form>
+    {% endblock %}
+
+    {% include molecule('toggler-click') with {
+        attributes: {
+            'trigger-selector': '.' ~ data.jsTriggerSelector,
+            'target-selector':  '.' ~ data.jsTargetSelector,
+            'class-to-toggle': 'is-hidden',
+        }
+    } only %}
+{% endblock %}

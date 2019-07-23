@@ -6,15 +6,43 @@
 } %}
 
 {% block body %}
-    <div class="grid grid--stretch grid--gap">
-        {% for availableProduct in data.products if availableProduct.available %}
-            {% widget 'CmsProductWidget' args [availableProduct] only %}
-            {% endwidget %}
-        {% endfor %}
 
-        {% if data.product is not empty %}
-            {% widget 'CmsProductWidget' args [data.product] only %}
-            {% endwidget %}
-        {% endif %}
-    </div>
+    {% embed molecule('slick-carousel') with {
+        modifiers: ['full-width', 'equal-height'],
+        data: {
+            slides: data.products
+        },
+        attributes: {
+            'slider-config': '{
+                "slidesToShow": 3,
+                "dots": false,
+                "arrows": true,
+                "adaptiveHeight": true,
+                "responsive": [{
+                    "breakpoint": 768,
+                    "settings": {
+                        "slidesToShow": 2
+                    }
+                },
+                {
+                    "breakpoint": 375,
+                    "settings": {
+                        "slidesToShow": 1
+                    }
+                }]
+            }'
+        }
+    } only %}
+        {% block slides %}
+            {% for availableProduct in data.slides if availableProduct.available %}
+                {% widget 'CmsProductWidget' args [availableProduct] use '@ProductWidget/views/cms-product-slider/cms-product-slider.twig' only %}{% endwidget %}
+            {% endfor %}
+        {% endblock %}
+    {% endembed %}
+
+    {% if data.product is not empty %}
+        {% widget 'CmsProductWidget' args [data.product] only %}
+        {% endwidget %}
+    {% endif %}
+
 {% endblock %}

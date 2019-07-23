@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4fefae27f200bce638cad23762eb70be",
+    "content-hash": "c29522ca757cb887d24241f75eccdcc6",
     "packages": [
         {
             "name": "codeception/phpunit-wrapper",
@@ -3901,6 +3901,40 @@
             "time": "2019-07-04T14:01:26+00:00"
         },
         {
+            "name": "spryker-feature/comments",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-feature/comments.git",
+                "reference": "d082553378cecd5b7199c342e0e1920b94b8c272"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-feature/comments/zipball/d082553378cecd5b7199c342e0e1920b94b8c272",
+                "reference": "d082553378cecd5b7199c342e0e1920b94b8c272",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker-feature/customer-account-management": "^201907.0",
+                "spryker-shop/comment-widget": "^1.0.0",
+                "spryker/comment": "^1.0.0",
+                "spryker/comment-data-import": "^0.1.0"
+            },
+            "type": "metapackage",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "201907.x-dev"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "Comments [feature]",
+            "time": "2019-07-09T09:28:44+00:00"
+        },
+        {
             "name": "spryker-feature/company-account",
             "version": "dev-master",
             "source": {
@@ -6011,16 +6045,16 @@
         },
         {
             "name": "spryker-shop/agent-page",
-            "version": "1.3.1",
+            "version": "1.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/agent-page.git",
-                "reference": "c515d9019fb0f2dc936f64b78b600fccf6340370"
+                "reference": "2afc203c68fd2d718f3ef3d06edda23b7bd9c1ce"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/agent-page/zipball/c515d9019fb0f2dc936f64b78b600fccf6340370",
-                "reference": "c515d9019fb0f2dc936f64b78b600fccf6340370",
+                "url": "https://api.github.com/repos/spryker-shop/agent-page/zipball/2afc203c68fd2d718f3ef3d06edda23b7bd9c1ce",
+                "reference": "2afc203c68fd2d718f3ef3d06edda23b7bd9c1ce",
                 "shasum": ""
             },
             "require": {
@@ -6032,7 +6066,7 @@
                 "spryker/agent": "^1.0.0",
                 "spryker/application": "^3.9.0",
                 "spryker/customer": "^7.10.0",
-                "spryker/kernel": "^3.23.0",
+                "spryker/kernel": "^3.30.0",
                 "spryker/messenger": "^3.1.0",
                 "spryker/quote": "^2.0.0",
                 "spryker/symfony": "^3.1.0"
@@ -6064,7 +6098,7 @@
                 "proprietary"
             ],
             "description": "AgentPage module",
-            "time": "2019-07-04T11:50:18+00:00"
+            "time": "2019-07-09T16:02:52+00:00"
         },
         {
             "name": "spryker-shop/agent-widget",
@@ -7220,6 +7254,56 @@
             ],
             "description": "CmsSearchPage module",
             "time": "2019-03-04T16:59:14+00:00"
+        },
+        {
+            "name": "spryker-shop/comment-widget",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/comment-widget.git",
+                "reference": "e625c7f873bbd9fa9754c27e0753e21d603a322a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/comment-widget/zipball/e625c7f873bbd9fa9754c27e0753e21d603a322a",
+                "reference": "e625c7f873bbd9fa9754c27e0753e21d603a322a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker-shop/comment-widget-extension": "^1.0.0",
+                "spryker-shop/shop-application": "^1.2.0",
+                "spryker-shop/shop-ui": "^1.0.0",
+                "spryker/comment": "^1.0.0",
+                "spryker/customer": "^7.0.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/symfony": "^3.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/silex": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/silex": "Use this module when using plugins that need Silex dependencies."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CommentWidget module",
+            "time": "2019-07-04T09:21:32+00:00"
         },
         {
             "name": "spryker-shop/comment-widget-extension",
@@ -10849,22 +10933,22 @@
         },
         {
             "name": "spryker-shop/shop-ui",
-            "version": "1.25.1",
+            "version": "1.26.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/shop-ui.git",
-                "reference": "5a02bd2a01ce60fed8821109991d6f3db4bf2fad"
+                "reference": "0aa0122e8d26eb5d527a58abfcdf022af73b22d8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/shop-ui/zipball/5a02bd2a01ce60fed8821109991d6f3db4bf2fad",
-                "reference": "5a02bd2a01ce60fed8821109991d6f3db4bf2fad",
+                "url": "https://api.github.com/repos/spryker-shop/shop-ui/zipball/0aa0122e8d26eb5d527a58abfcdf022af73b22d8",
+                "reference": "0aa0122e8d26eb5d527a58abfcdf022af73b22d8",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
-                "spryker/kernel": "^3.24.0",
-                "spryker/twig": "^3.3.1",
+                "spryker/kernel": "^3.30.0",
+                "spryker/twig": "^3.7.0",
                 "spryker/twig-extension": "^1.0.0"
             },
             "require-dev": {
@@ -10893,7 +10977,7 @@
                 "proprietary"
             ],
             "description": "ShopUi module",
-            "time": "2019-06-25T10:51:12+00:00"
+            "time": "2019-07-18T07:25:29+00:00"
         },
         {
             "name": "spryker-shop/shopping-list-note-widget",
@@ -15349,6 +15433,145 @@
             "time": "2019-04-10T06:07:50+00:00"
         },
         {
+            "name": "spryker/comment",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/comment.git",
+                "reference": "1a409ee5e8554ec0969ff28df33f717dc46c5f5d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/comment/zipball/1a409ee5e8554ec0969ff28df33f717dc46c5f5d",
+                "reference": "1a409ee5e8554ec0969ff28df33f717dc46c5f5d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/customer": "^7.0.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/propel-orm": "^1.0.0",
+                "spryker/quote-extension": "^1.2.0",
+                "spryker/uuid-behavior": "^1.0.0",
+                "spryker/zed-request": "^3.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*",
+                "spryker/util-text": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/",
+                    "SprykerTest\\Shared\\Comment\\Helper\\": "tests/SprykerTest/Shared/Comment/_support/Helper/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "Comment module",
+            "time": "2019-07-02T13:29:34+00:00"
+        },
+        {
+            "name": "spryker/comment-data-import",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/comment-data-import.git",
+                "reference": "b8887491c0b84b8ed73deb4152bc6ed66cadb8c2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/comment-data-import/zipball/b8887491c0b84b8ed73deb4152bc6ed66cadb8c2",
+                "reference": "b8887491c0b84b8ed73deb4152bc6ed66cadb8c2",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/comment": "^1.0.0",
+                "spryker/customer": "^7.0.0",
+                "spryker/data-import": "^1.0.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/quote": "^2.0.0",
+                "spryker/util-encoding": "^2.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/",
+                    "SprykerTest\\Zed\\CommentDataImport\\Helper\\": "tests/SprykerTest/Zed/CommentDataImport/_support/Helper/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "CommentDataImport module",
+            "time": "2019-07-05T11:07:22+00:00"
+        },
+        {
+            "name": "spryker/comment-sales-connector",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/comment-sales-connector.git",
+                "reference": "d8676c27e900547f50b0f9b289e85f603358db6d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/comment-sales-connector/zipball/d8676c27e900547f50b0f9b289e85f603358db6d",
+                "reference": "d8676c27e900547f50b0f9b289e85f603358db6d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/comment": "^1.0.0",
+                "spryker/gui": "^3.0.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/sales-extension": "^1.3.0",
+                "spryker/symfony": "^3.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CommentSalesConnector module",
+            "time": "2019-06-27T13:27:03+00:00"
+        },
+        {
             "name": "spryker/companies-rest-api",
             "version": "1.1.0",
             "source": {
@@ -18330,16 +18553,16 @@
         },
         {
             "name": "spryker/customer",
-            "version": "7.22.0",
+            "version": "7.22.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/customer.git",
-                "reference": "06fecf9e277de4ff67b4a47b510b78eb5cd90ff1"
+                "reference": "d7aa174245905e7dc1c38f7ec586e9b60f7d2dd9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/customer/zipball/06fecf9e277de4ff67b4a47b510b78eb5cd90ff1",
-                "reference": "06fecf9e277de4ff67b4a47b510b78eb5cd90ff1",
+                "url": "https://api.github.com/repos/spryker/customer/zipball/d7aa174245905e7dc1c38f7ec586e9b60f7d2dd9",
+                "reference": "d7aa174245905e7dc1c38f7ec586e9b60f7d2dd9",
                 "shasum": ""
             },
             "require": {
@@ -18347,7 +18570,7 @@
                 "spryker/country": "^3.0.0",
                 "spryker/customer-extension": "^1.3.0",
                 "spryker/gui": "^3.17.0",
-                "spryker/kernel": "^3.0.0",
+                "spryker/kernel": "^3.30.0",
                 "spryker/locale": "^3.0.0",
                 "spryker/mail": "^4.0.0",
                 "spryker/propel": "^3.0.0",
@@ -18389,7 +18612,7 @@
                 "proprietary"
             ],
             "description": "Customer module",
-            "time": "2019-05-27T11:23:42+00:00"
+            "time": "2019-07-09T12:37:23+00:00"
         },
         {
             "name": "spryker/customer-access",
@@ -20598,21 +20821,21 @@
         },
         {
             "name": "spryker/gui",
-            "version": "3.24.0",
+            "version": "3.24.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/gui.git",
-                "reference": "058f2a795bd63b8dad3667f73289b086662a4183"
+                "reference": "2ca1d305abc2ea3a6eda4c175c553f17fa40f19a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/gui/zipball/058f2a795bd63b8dad3667f73289b086662a4183",
-                "reference": "058f2a795bd63b8dad3667f73289b086662a4183",
+                "url": "https://api.github.com/repos/spryker/gui/zipball/2ca1d305abc2ea3a6eda4c175c553f17fa40f19a",
+                "reference": "2ca1d305abc2ea3a6eda4c175c553f17fa40f19a",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
-                "spryker/kernel": "^3.0.0",
+                "spryker/kernel": "^3.30.0",
                 "spryker/propel-orm": "^1.0.0",
                 "spryker/symfony": "^3.0.0",
                 "spryker/twig": "^3.0.0",
@@ -20648,7 +20871,7 @@
                 "proprietary"
             ],
             "description": "Gui module",
-            "time": "2019-07-03T12:34:24+00:00"
+            "time": "2019-07-09T12:37:27+00:00"
         },
         {
             "name": "spryker/guzzle",
@@ -20892,16 +21115,16 @@
         },
         {
             "name": "spryker/kernel",
-            "version": "3.36.0",
+            "version": "3.37.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/kernel.git",
-                "reference": "c230fd45e6cc4c5c825fc51328fe4c6d8cf77370"
+                "reference": "602175502447f70f40bceed788ee58325fd95af1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/kernel/zipball/c230fd45e6cc4c5c825fc51328fe4c6d8cf77370",
-                "reference": "c230fd45e6cc4c5c825fc51328fe4c6d8cf77370",
+                "url": "https://api.github.com/repos/spryker/kernel/zipball/602175502447f70f40bceed788ee58325fd95af1",
+                "reference": "602175502447f70f40bceed788ee58325fd95af1",
                 "shasum": ""
             },
             "require": {
@@ -20937,7 +21160,7 @@
                 "proprietary"
             ],
             "description": "Kernel module",
-            "time": "2019-07-04T11:29:14+00:00"
+            "time": "2019-07-08T11:13:56+00:00"
         },
         {
             "name": "spryker/key-builder",
@@ -31048,16 +31271,16 @@
         },
         {
             "name": "spryker/shared-cart",
-            "version": "1.12.1",
+            "version": "1.14.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/shared-cart.git",
-                "reference": "21e4b0e75c8756cf7ff6eba54a4051234593fff7"
+                "reference": "272871d26531076d8f386d8698160a8d445f0a9a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/shared-cart/zipball/21e4b0e75c8756cf7ff6eba54a4051234593fff7",
-                "reference": "21e4b0e75c8756cf7ff6eba54a4051234593fff7",
+                "url": "https://api.github.com/repos/spryker/shared-cart/zipball/272871d26531076d8f386d8698160a8d445f0a9a",
+                "reference": "272871d26531076d8f386d8698160a8d445f0a9a",
                 "shasum": ""
             },
             "require": {
@@ -31067,7 +31290,7 @@
                 "spryker/company-user": "^1.0.0 || ^2.0.0",
                 "spryker/company-user-extension": "^1.1.0",
                 "spryker/customer": "^7.0.0",
-                "spryker/kernel": "^3.19.0",
+                "spryker/kernel": "^3.30.0",
                 "spryker/messenger": "^3.0.0",
                 "spryker/multi-cart": "^1.0.0",
                 "spryker/permission": "^1.0.0",
@@ -31111,7 +31334,7 @@
                 "proprietary"
             ],
             "description": "SharedCart module",
-            "time": "2019-06-27T10:59:33+00:00"
+            "time": "2019-07-15T08:35:59+00:00"
         },
         {
             "name": "spryker/shared-cart-data-import",
@@ -32313,22 +32536,22 @@
         },
         {
             "name": "spryker/store",
-            "version": "1.12.0",
+            "version": "1.12.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/store.git",
-                "reference": "70535a6974999ba822428235526fa1c80934e1a6"
+                "reference": "76870e1c9e0e59b328fffcc631341aa24339b3bb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/store/zipball/70535a6974999ba822428235526fa1c80934e1a6",
-                "reference": "70535a6974999ba822428235526fa1c80934e1a6",
+                "url": "https://api.github.com/repos/spryker/store/zipball/76870e1c9e0e59b328fffcc631341aa24339b3bb",
+                "reference": "76870e1c9e0e59b328fffcc631341aa24339b3bb",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
                 "spryker/application-extension": "^1.0.0",
-                "spryker/kernel": "^3.18.0",
+                "spryker/kernel": "^3.30.0",
                 "spryker/propel-orm": "^1.0.0",
                 "spryker/quote-extension": "^1.4.0",
                 "spryker/symfony": "^3.0.0"
@@ -32361,7 +32584,7 @@
                 "proprietary"
             ],
             "description": "Store module",
-            "time": "2019-07-08T07:39:55+00:00"
+            "time": "2019-07-09T12:37:23+00:00"
         },
         {
             "name": "spryker/stores-rest-api",
@@ -33034,16 +33257,16 @@
         },
         {
             "name": "spryker/twig",
-            "version": "3.6.0",
+            "version": "3.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/twig.git",
-                "reference": "fb19c28182355ce8a6a0950b4d2c649c93434ecf"
+                "reference": "c9bcda6b55f118fa44f282cb545867d650035d0f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/twig/zipball/fb19c28182355ce8a6a0950b4d2c649c93434ecf",
-                "reference": "fb19c28182355ce8a6a0950b4d2c649c93434ecf",
+                "url": "https://api.github.com/repos/spryker/twig/zipball/c9bcda6b55f118fa44f282cb545867d650035d0f",
+                "reference": "c9bcda6b55f118fa44f282cb545867d650035d0f",
                 "shasum": ""
             },
             "require": {
@@ -33051,7 +33274,7 @@
                 "spryker/application-extension": "^1.0.0",
                 "spryker/container": "^1.1.0",
                 "spryker/event-dispatcher-extension": "^1.0.0",
-                "spryker/kernel": "^3.0.0",
+                "spryker/kernel": "^3.30.0",
                 "spryker/symfony": "^3.0.0",
                 "spryker/twig-extension": "^1.0.0",
                 "spryker/util-text": "^1.0.0",
@@ -33087,7 +33310,7 @@
                 "proprietary"
             ],
             "description": "Twig module",
-            "time": "2019-07-01T11:55:33+00:00"
+            "time": "2019-07-09T10:51:30+00:00"
         },
         {
             "name": "spryker/twig-extension",
@@ -35367,7 +35590,7 @@
                 },
                 {
                     "name": "Gert de Pagter",
-                    "email": "backendtea@gmail.com"
+                    "email": "BackEndTea@gmail.com"
                 }
             ],
             "description": "Symfony polyfill for ctype functions",
@@ -37440,7 +37663,7 @@
             "time": "2019-03-25T16:59:23+00:00"
         },
         {
-            "name": "mikey179/vfsStream",
+            "name": "mikey179/vfsstream",
             "version": "v1.6.6",
             "source": {
                 "type": "git",
@@ -37743,7 +37966,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "🍸 Nette NEON: encodes and decodes NEON file format.",
+            "description": "? Nette NEON: encodes and decodes NEON file format.",
             "homepage": "http://ne-on.org",
             "keywords": [
                 "export",
@@ -40283,6 +40506,7 @@
         "spryker-feature/category-management": 20,
         "spryker-feature/checkout": 20,
         "spryker-feature/cms": 20,
+        "spryker-feature/comments": 20,
         "spryker-feature/company-account": 20,
         "spryker-feature/content-based-shop-navigation": 20,
         "spryker-feature/content-item": 20,

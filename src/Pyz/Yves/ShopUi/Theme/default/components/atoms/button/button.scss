@@ -47,6 +47,23 @@
                 }
             }
 
+            &-icon-small {
+                @include helper-effect-transition(color);
+                background-color: $setting-color-transparent;
+                border: none;
+                font-size: rem(12);
+                color: $setting-color-gray-3;
+                line-height: 0.9;
+                padding: rem(5) rem(10);
+                margin: 0 rem(8);
+
+                &:hover,
+                &:focus {
+                    background-color: $setting-color-transparent;
+                    color: $setting-color-main;
+                }
+            }
+
             &-second {
                 color: $setting-color-white;
                 border-color: $setting-color-white;
@@ -82,6 +99,11 @@
                 background-color: helper-color-dark($setting-color-alt);
                 border-color: helper-color-dark($setting-color-alt);
             }
+        }
+
+        &--small {
+            font-size: rem(13);
+            padding: rem(6) rem(20);
         }
 
         &--medium {
