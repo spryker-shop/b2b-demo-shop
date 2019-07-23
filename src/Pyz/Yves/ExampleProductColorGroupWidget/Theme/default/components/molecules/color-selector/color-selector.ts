@@ -2,13 +2,14 @@ import Component from 'ShopUi/models/component';
 
 export default class ColorSelector extends Component {
     parent: HTMLElement | Document;
+    parentSelector: string = '.product-card';
     currentColor: HTMLAnchorElement;
     colors: HTMLAnchorElement[];
     image: HTMLImageElement;
     detailsLink: HTMLAnchorElement;
 
     protected readyCallback(): void {
-        this.parent = <HTMLElement | Document>this.closest('.product-card') || document;
+        this.parent = <HTMLElement | Document>this.closest(this.parentSelector) || document;
         this.init();
         this.mapEvents();
     }
@@ -34,7 +35,7 @@ export default class ColorSelector extends Component {
             const colorSelectors: NodeListOf<Element> = slickSlider.querySelectorAll(`.${this.name}`);
             if (colorSelectors.length > 1) {
                 colorSelectors.forEach(colorSelector => {
-                    const parent = colorSelector.closest('.product-card');
+                    const parent = colorSelector.closest(this.parentSelector);
                     this.init(colorSelector, parent);
                     this.onSetColorSelector(this.currentColor);
                 });
