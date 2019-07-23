@@ -2,6 +2,8 @@ import Component from 'ShopUi/models/component';
 import $ from 'jquery/dist/jquery';
 import select from 'select2';
 
+const DROPDOWN_SELECTOR = 'body > .select2-container--open';
+
 export default class CustomSelect extends Component {
     select: HTMLSelectElement;
     $select: $;
@@ -21,6 +23,12 @@ export default class CustomSelect extends Component {
 
     protected mapEvents(): void {
         this.$select.on('select2:select', () => this.onChangeSelect());
+        if (this.configDropdownRight) {
+            this.$select.on('select2:open', () => {
+                this.changeDropdownPosition();
+                window.addEventListener('resize', () => this.changeDropdownPosition());
+            });
+        }
         window.addEventListener('resize', () => setTimeout(() => this.initSelect(), this.timeout));
     }
 
@@ -32,13 +40,32 @@ export default class CustomSelect extends Component {
         }
     }
 
+    protected changeDropdownPosition(): void {
+        const dropdown = <HTMLElement>document.querySelector(DROPDOWN_SELECTOR);
+        const rightPosition = window.innerWidth - this.absoluteOffsetLeft() - this.clientWidth;
+        dropdown.style.right = `${rightPosition}px`;
+    }
+
+    protected absoluteOffsetLeft(): number {
+        let elementLeftOffset = <HTMLElement>this;
+        let left = 0;
+
+        while (elementLeftOffset) {
+            left += elementLeftOffset.offsetLeft;
+            elementLeftOffset = <HTMLElement>elementLeftOffset.offsetParent;
+        }
+
+        return left;
+    }
+
     protected initSelect(): void {
         if (window.innerWidth >= this.mobileResolution && !this.isInited) {
             this.isInited = true;
             this.$select.select2({
                 minimumResultsForSearch: Infinity,
                 width: this.configWidth,
-                theme: this.configTheme
+                theme: this.configTheme,
+                dropdownAutoWidth: this.configDropdownAutoWidth,
             });
         } else if (window.innerWidth < this.mobileResolution && this.isInited) {
             this.isInited = false;
@@ -52,11 +79,19 @@ export default class CustomSelect extends Component {
         }
     }
 
-    get configWidth(): string {
+    protected get configWidth(): string {
         return this.select.getAttribute('config-width');
     }
 
-    get configTheme(): string {
+    protected get configTheme(): string {
         return this.select.getAttribute('config-theme');
+    }
+
+    protected get configDropdownAutoWidth(): boolean {
+        return Boolean(this.select.getAttribute('config-dropdown-auto-width'));
+    }
+
+    protected get configDropdownRight(): boolean {
+        return Boolean(this.select.getAttribute('config-dropdown-right'));
     }
 }

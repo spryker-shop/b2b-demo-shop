@@ -1,0 +1,29 @@
+@mixin shop-ui-money-price($name: '.money-price') {
+    #{$name} {
+        display: block;
+
+        &__amount {
+            @include helper-font-size(big);
+
+            &--original {
+                @include helper-font-size(small);
+                display: block;
+                color: $setting-color-dark;
+                text-decoration: line-through;
+            }
+        }
+
+        &__tag {
+            margin-right: 0.25rem;
+            color: $setting-color-alt;
+        }
+
+        &--secondary {
+            background-color: $setting-color-gray-7;
+        }
+
+        @content;
+    }
+}
+
+@include shop-ui-money-price();
