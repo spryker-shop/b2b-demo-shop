@@ -8,7 +8,8 @@
 {% define data = {
     voucherDiscounts: null,
     ruleDiscounts: null,
-    discountTotal: null
+    discountTotal: null,
+    currencyIsoCode: null,
 } %}
 
 {% block component %}
@@ -34,9 +35,9 @@
             <ul>
                 {% for voucherDiscount in data.voucherDiscounts %}
                     <li class="grid grid--justify">
-                        <span class="col col--sm-8">
+                        <span class="col col--sm-7">
                             {{ voucherDiscount.displayName }}
-                            <br/>
+                            <br>
                             <a class="text-small" href="{{ url('discount/voucher/remove', {'code': voucherDiscount.voucherCode}) }}">
                                 {% include atom('icon') with {
                                     modifiers: ['smaller'],
@@ -47,7 +48,7 @@
                                 {{ 'cart.voucher.remove' | trans }}
                             </a>
                         </span>
-                        <span class="col col--expand text-right">- {{ voucherDiscount.amount | money }}</span>
+                        <span class="col col--expand text-right">- {{ voucherDiscount.amount | money(true, data.currencyIsoCode) }}</span>
                     </li>
                 {% endfor %}
             </ul>
@@ -62,7 +63,7 @@
                 {% for ruleDiscount in data.ruleDiscounts %}
                     <li class="grid grid--justify">
                         <span class="col col--sm-8 {{ config.name }}__text {{ config.name }}__text--desktop-bigger">{{ ruleDiscount.displayName }}</span>
-                        <span class="col col--expand text-right {{ config.name }}__price">- {{ ruleDiscount.amount | money }}</span>
+                        <span class="col col--expand text-right {{ config.name }}__price">- {{ ruleDiscount.amount | money(true, data.currencyIsoCode) }}</span>
                     </li>
                 {% endfor %}
             </ul>

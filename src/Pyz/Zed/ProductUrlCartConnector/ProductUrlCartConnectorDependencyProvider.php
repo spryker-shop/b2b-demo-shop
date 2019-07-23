@@ -28,6 +28,7 @@ class ProductUrlCartConnectorDependencyProvider extends AbstractBundleDependency
         $container[self::FACADE_LOCALE] = function (Container $container) {
             return $container->getLocator()->locale()->facade();
         };
+
         return $container;
     }
 }
