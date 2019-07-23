@@ -1,0 +1,48 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'comment-tag-form',
+    tag: 'comment-tag-form',
+} %}
+
+{% define data = {
+    action: required,
+    availableTags: required,
+    tagNames: required,
+    returnUrl: required,
+} %}
+
+{% define attributes = {
+    name: 'name',
+} %}
+
+{% block body %}
+    <form class="{{ config.jsName }}__form" method="GET" action="{{ data.action }}">
+        {% embed molecule('custom-select') with {
+            modifiers: ['full-width', 'smaller'],
+            attributes: {
+                name: attributes.name,
+                'config-width': '100%',
+                'config-theme': 'smaller',
+                'config-dropdown-auto-width': 'true',
+                'config-dropdown-right': 'true',
+            },
+            embed: {
+                availableTags: data.availableTags,
+                tagNames: data.tagNames,
+                jsClass: config.jsName ~ '__select',
+            },
+        } only %}
+            {% block selectClass %}{{ config.jsName }} {{ embed.jsClass }} {{ component.renderClass(config.name ~ '__select', modifiers) }}{% endblock %}
+            {% block options %}
+                <option value="">{{ 'comment_widget.form.tags' | trans }}</option>
+
+                {% for availableTag in embed.availableTags if not (availableTag in embed.tagNames) %}
+                    <option value="{{ availableTag }}">{{ ('comment_widget.tags.' ~ availableTag) | trans }}</option>
+                {% endfor %}
+            {% endblock %}
+        {% endembed %}
+
+        <input type="hidden" name="returnUrl" value="{{ data.returnUrl }}">
+    </form>
+{% endblock %}
