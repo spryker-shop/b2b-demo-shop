@@ -12,12 +12,16 @@
     {% include molecule('breadcrumb') with {
         data: {
             steps: [{
-                label: 'cart.cart' | trans,
-                url: url('cart'),
-                isActive: false
-            }, {
-                label: data.title,
-                isActive: true
+                url: url('customer/overview'),
+                label: 'customer.profile' | trans,
+            },{
+                url: url('multi-cart'),
+                label: 'shared_cart.share.breadcrumbs.shopping_carts' | trans,
+            },{
+                url: data.cart.isDefault ? url('cart') : url('multi-cart/set-default', {idQuote: data.cart.idQuote}),
+                label: data.cartName,
+            },{
+                label: 'shared_cart.share.breadcrumbs.share' | trans,
             }]
         }
     } only %}

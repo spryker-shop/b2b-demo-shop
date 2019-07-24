@@ -13,6 +13,7 @@ const getConfiguration = async appSettings => {
     const alias = getAliasList(appSettings);
 
     const vendorTs = await findAppEntryPoint(appSettings.find.shopUiEntryPoints, './vendor.ts');
+    const es6PolyfillTs = await findAppEntryPoint(appSettings.find.shopUiEntryPoints, './es6-polyfill.ts');
     const appTs = await findAppEntryPoint(appSettings.find.shopUiEntryPoints, './app.ts');
     const basicScss = await findAppEntryPoint(appSettings.find.shopUiEntryPoints, './styles/basic.scss');
     const utilScss = await findAppEntryPoint(appSettings.find.shopUiEntryPoints, './styles/util.scss');
@@ -39,6 +40,7 @@ const getConfiguration = async appSettings => {
 
             entry: {
                 'vendor': vendorTs,
+                'es6-polyfill': es6PolyfillTs,
                 'app': [
                     appTs,
                     basicScss,

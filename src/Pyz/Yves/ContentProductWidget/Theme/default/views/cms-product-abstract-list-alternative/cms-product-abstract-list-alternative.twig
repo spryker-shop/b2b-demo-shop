@@ -1,0 +1,68 @@
+{% extends template('widget') %}
+
+{% define data = {
+    productAbstractViewCollection: productAbstractViewCollection,
+} %}
+
+{% block body %}
+    <div class="grid grid--stretch">
+        {% for productAbstractView in data.productAbstractViewCollection %}
+            <div class="col col--sm-12 col--md-6 col--lg-4 spacing-x spacing-x--big spacing-x--inner">
+                {% embed molecule('product-card') with {
+                    data: {
+                        name: productAbstractView.name,
+                        abstractId: productAbstractView.idProductAbstract,
+                        url: productAbstractView.url,
+                        imageUrl: productAbstractView.images ? productAbstractView.images.0.externalUrlSmall,
+                        price: productAbstractView.prices.DEFAULT | default(null),
+                        originalPrice: productAbstractView.prices.ORIGINAL ?? null,
+                        category: 'category.office.furniture' | trans,
+                    },
+                } only %}
+                    {% block body %}
+                        <div class="{% block cardClass %}{{config.name}}__container{% endblock %}">
+                            {% block content %}
+                                {% block name %}
+                                    {{ parent() }}
+                                {% endblock %}
+
+                                {% block sku %}
+                                    {{ parent() }}
+                                {% endblock %}
+
+                                {% block category %}
+                                    {{ parent() }}
+                                {% endblock %}
+
+                                {% block rating %}
+                                    {{ parent() }}
+                                {% endblock %}
+
+                                {% block price %}
+                                    {{ parent() }}
+                                {% endblock %}
+
+                                {% block image %}
+                                    {{ parent() }}
+                                {% endblock %}
+
+                                {% block labels %}
+                                    {% widget 'ProductAbstractLabelWidget' args [data.abstractId] with {modifiers: modifiers} only %}
+                                        {% block body %}
+                                            {% include molecule('label-group', 'ProductLabelWidget') with {
+                                                modifiers: ['bottom-right'],
+                                                data: {
+                                                    labels: labels,
+                                                },
+                                            } only %}
+                                        {% endblock %}
+                                    {% endwidget %}
+                                {% endblock %}
+                            {% endblock %}
+                        </div>
+                    {% endblock %}
+                {% endembed %}
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
