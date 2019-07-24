@@ -12,13 +12,61 @@
 {% block pageInfo %}{% endblock %}
 
 {% block content %}
-    {% include organism('product-set-details', 'ProductSetWidget') ignore missing with {
+    {% set images = [] %}
+    {% for image in data.set.imageSets.0.images %}
+        {% set images = images | merge([image.externalUrlLarge | default(null)]) %}
+    {% endfor %}
+
+    {% embed organism('product-set-details', 'ProductSetWidget') ignore missing with {
         data: {
             title: data.set.name,
             products: data.views,
             name: data.set.name,
             description: data.set.description,
-            images: data.set.imageSets.0.images | default([])
-        }
+            images: data.set.imageSets.0.images | default([]),
+        },
+        embed: {
+            title: data.title,
+            images: images,
+        },
     } only %}
+        {% block banner %}
+            {% embed molecule('slick-carousel') with {
+                modifiers: ['jumbotron', 'auto-height'],
+                attributes: {
+                    'slider-config': '{
+                        "slidesToShow": 1,
+                        "dots": true,
+                        "autoplay": false,
+                        "nextArrow": false,
+                        "prevArrow": false
+                    }'
+                },
+                embed: {
+                    title: data.title,
+                    images: embed.images,
+                    configName: config.name,
+                },
+            } only %}
+                {% block slides %}
+                    {% for image in embed.images %}
+                        {% embed molecule('banner') with {
+                            class: embed.configName,
+                            data: {
+                                imageUrl: image,
+                                title: embed.title,
+                            },
+                        } only %}
+                            {% block body %}
+                                <div class="{{ config.name }}__container grid grid--column grid--middle grid--center" style="{{ backgroundImage }}">
+                                    <h1 class="title title--light title--product-set-details">{{ data.title }}</h1>
+                                    <p class="{{ config.name }}__text {{ config.name }}__text--subtitle spacing-bottom spacing-bottom--reset">{{ 'product.set' | trans }}</p>
+                                </div>
+                            {% endblock %}
+                        {% endembed %}
+                    {% endfor %}
+                {% endblock %}
+            {% endembed %}
+        {% endblock %}
+    {% endembed %}
 {% endblock %}
