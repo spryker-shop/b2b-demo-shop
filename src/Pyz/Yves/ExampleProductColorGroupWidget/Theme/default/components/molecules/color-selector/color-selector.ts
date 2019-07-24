@@ -10,12 +10,12 @@ export default class ColorSelector extends Component {
 
     protected readyCallback(): void {
         this.parent = <HTMLElement | Document>this.closest(this.parentSelector) || document;
-        this.initialProperty();
+        this.initializeProperties();
         this.mapEvents();
     }
 
-    protected initialProperty(colorSelector: Element = this, parent: Element | Document = this.parent): void {
-        this.colors = <HTMLAnchorElement[]>Array.from(colorSelector.querySelectorAll(`.${this.jsName}__color`));
+    protected initializeProperties(colorSelector: Element = this, parent: Element | Document = this.parent): void {
+        this.colors = <HTMLAnchorElement[]>Array.from(colorSelector.getElementsByClassName(`.${this.jsName}__color`));
         this.image = <HTMLImageElement>parent.querySelector(this.targetImageSelector);
         this.detailsLink = <HTMLAnchorElement>parent.querySelector(this.targetDetailsLink);
     }
@@ -36,7 +36,7 @@ export default class ColorSelector extends Component {
             if (colorSelectors.length > 1) {
                 colorSelectors.forEach(colorSelector => {
                     const parent = colorSelector.closest(this.parentSelector);
-                    this.initialProperty(colorSelector, parent);
+                    this.initializeProperties(colorSelector, parent);
                     this.onSetColorSelector(this.currentColor);
                 });
             }
