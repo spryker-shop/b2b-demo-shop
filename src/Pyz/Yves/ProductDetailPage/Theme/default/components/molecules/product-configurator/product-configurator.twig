@@ -102,7 +102,7 @@
 
     <form method="POST" class="{{ config.jsName }}__form" action="{{ path("cart/add", {"sku": sku}) }}">
         {% widget 'ProductOptionConfiguratorWidget' args [data.product] only %}{% endwidget %}
-        {% if not isDisabled and can('SeeAddToCartPermissionPlugin') %}
+        {% if can('SeeAddToCartPermissionPlugin') %}
             <div class="{{ config.name }}__add-to-cart">
                 {% widget 'ProductPackagingUnitWidget' args [data.product, isDisabled, options] only %}
                 {% elsewidget 'ManageProductMeasurementUnitWidget' args [data.product, isDisabled, options] only %}
@@ -133,13 +133,8 @@
             {% widget 'AddToMultiCartWidget' args [isDisabled] only %}{% endwidget %}
         {% endif %}
 
-        {% if is_granted('ROLE_USER') %}
-            {% include molecule('availability-product', 'AvailabilityWidget') ignore missing with {
-                data: {
-                    idProductConcrete: data.product.idProductConcrete,
-                    isAvailable: data.product.available
-                }
-            } only %}
+        {% if not data.product.available %}
+            <p class="text-alert">{{ "product.detail.out_of_stock" | trans }}</p>
         {% endif %}
     </form>
 

@@ -32,24 +32,26 @@
 } %}
 
 {% block body %}
-    {% embed organism('section') with {
-        modifiers: ['secondary'],
-        class: 'spacing-bottom spacing-bottom--reset',
-        data: {
-            title: data.title
-        },
-        embed: {
-            description: data.description
-        }
-    } only %}
-        {% block inner %}
-            <div class="{{ config.name }}__text">
-                {% if embed.description is not empty %}
-                    {{ embed.description }}
-                {% endif %}
-            </div>
-        {% endblock %}
-    {% endembed %}
+    {% block header %}
+        {% embed organism('section') with {
+            modifiers: ['secondary'],
+            class: 'spacing-bottom spacing-bottom--reset',
+            data: {
+                title: data.title,
+            },
+            embed: {
+                description: data.description,
+            },
+        } only %}
+            {% block inner %}
+                <div class="{{ config.name }}__text">
+                    {% if embed.description %}
+                        {{ embed.description }}
+                    {% endif %}
+                </div>
+            {% endblock %}
+        {% endembed %}
+    {% endblock %}
     <div class="grid grid--gap grid--center">
         <div class="{{ config.name ~ "__container" }} col col--sm-12 col--md-6 col--lg-5">
             {% block banner %}
@@ -57,8 +59,8 @@
                     class: 'spacing-bottom spacing-bottom--reset',
                     modifiers: ['medium'],
                     data: {
-                        imageUrl: data.images.0.externalUrlLarge | default([])
-                    }
+                        imageUrl: data.images.0.externalUrlLarge | default([]),
+                    },
                 } only %}
                     {% block body %}
                         <div class="{{config.name}}__container spacing-x spacing-x--reset" style="{{backgroundImage}}"></div>
@@ -72,17 +74,17 @@
                     {% embed molecule('slick-carousel') with {
                         modifiers: ['equal-height', 'product-set-widget'],
                         data: {
-                            slides: data.products
+                            slides: data.products,
                         },
                         attributes: {
-                            'slider-config': data.sliderConfig
-                        }
+                            'slider-config': data.sliderConfig,
+                        },
                     } only %}
                         {% block slides %}
                             {% for product in data.slides %}
                                 {% embed molecule('product-card') with {
                                     class: 'spacing-bottom spacing-bottom--inner spacing-bottom--reset',
-                                    modifiers: ['stretch', 'product-set'],
+                                    modifiers: ['catalog', 'stretch', 'product-set'],
                                     data: {
                                         name: product.name,
                                         abstractId: product.idProductAbstract,
@@ -90,14 +92,65 @@
                                         imageUrl: product.images.0.externalUrlSmall | default,
                                         price: product.price,
                                         originalPrice: product.prices['ORIGINAL'] | default,
-                                        category: 'Office Furniture'
-                                    }
+                                        category: 'category.office.furniture' | trans,
+                                    },
+                                    embed: {
+                                        product: product,
+                                    },
                                 } only %}
-                                    {% block content %}
-                                        <div class="col col--bottom">
-                                            {% block category %}{% endblock %}
-                                            {{parent()}}
+                                    {% block category %}{% endblock %}
+
+                                    {% block actionsContainer %}
+                                        <div class="{{ config.name }}__variant">
+                                            {% set isNotAvailable = embed.product.idProductConcrete and not embed.product.available %}
+
+                                            {% embed molecule('variant-configurator', 'ProductDetailPage') with {
+                                                data: {
+                                                    superAttributes: embed.product.attributeMap.superAttributes,
+                                                    selectedAttributes: embed.product.selectedAttributes,
+                                                    availableAttributes: embed.product.availableAttributes,
+                                                    useExternalForm: true,
+                                                },
+                                                embed: embed,
+                                            } only %}
+                                                {% block variant %}
+                                                    {% if can("SeeAddToCartPermissionPlugin") %}
+                                                        {% include molecule('variant', 'ProductDetailPage') with {
+                                                            modifiers: ['product-set'],
+                                                            data: {
+                                                                name: name,
+                                                                formName: 'attributes[' ~ embed.product.idProductAbstract ~ '][' ~ name ~ ']',
+                                                                values: values,
+                                                                selectedValue: selectedValue,
+                                                                label: ('product.attribute.' ~ name) | trans,
+                                                                isAvailable: isAvailable,
+                                                                selectModifiers: ['small'],
+                                                                selectTheme: 'small',
+                                                                selectPlaceholder: 'global.select.placeholder.value',
+                                                            },
+                                                        } only %}
+                                                    {% endif %}
+                                                {% endblock %}
+
+                                            {% endembed %}
+
+                                            {% if isNotAvailable %}
+                                                <p>
+                                                    <strong>{{ "product.detail.out_of_stock" | trans }}</strong>
+                                                </p>
+                                            {% endif %}
+
+                                            {% set isDisabled = not embed.product.idProductConcrete or not embed.product.available or not can('ROLE_USER')%}
                                         </div>
+                                        {% if can("SeeAddToCartPermissionPlugin") %}
+                                            <div class="{{ config.name }}__actions">
+                                                {% if isDisabled %}
+                                                    <span class="button button--expand button--disabled">{{ 'page.detail.add-to-cart' | trans }}</span>
+                                                {% else %}
+                                                    <a href="{{ path('cart/add', {sku: embed.product.sku}) }}" class="button button--expand ">{{ 'page.detail.add-to-cart' | trans }}</a>
+                                                {% endif %}
+                                            </div>
+                                        {% endif %}
                                     {% endblock %}
                                 {% endembed %}
                             {% endfor %}

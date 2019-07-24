@@ -48,6 +48,28 @@
 
 {% block contentClass %}page-layout-main page-layout-main--cart-page{% endblock %}
 
+{% block commentThreadWidget %}
+    {% if data.cart.idQuote is not empty %}
+        {% widget 'CommentThreadWidget' args [
+            data.cart.idQuote,
+            'quote',
+            app.request.requestUri,
+            data.cart.commentThread
+        ] only %}
+            {% block body %}
+                <div class="order-sidebar__item">
+                    <h5 class="order-sidebar__title">
+                        {{ 'comment_widget.comments_to_cart' | trans }}
+                    </h5>
+                    <div class="order-sidebar__content">
+                        {{ parent() }}
+                    </div>
+                </div>
+            {% endblock %}
+        {% endwidget %}
+    {% endif %}
+{% endblock %}
+
 {% block content %}
     {% set isQuoteEnadled = data.cart.idQuote and data.isQuoteEditable %}
     {% if data.cart.items is empty %}
@@ -87,11 +109,15 @@
                                 </div>
                             {% endblock %}
                         {% endwidget %}
+
+                        {{ block('commentThreadWidget') }}
                     </div>
                 </div>
             </div>
         {% endblock %}
     {% else %}
+        {% set productBundleItemCounterWidget = findWidget('ProductBundleItemCounterWidget', [data.cart]) %}
+        {% set transformedCartItems = productBundleItemCounterWidget.items | default(data.cartItems) %}
 
         <div class="grid grid--gap">
             <div class="col col--sm-12 col--xl-9">
@@ -124,12 +150,12 @@
                                 } only %}
                             {% endif %}
                         </div>
-                        <div class="col col--sm-2 text-right cart-title__quantity">{{ data.cartItems | length }} {{ 'checkout.step.summary.items' | trans }}</div>
+                        <div class="col col--sm-2 text-right cart-title__quantity">{{ transformedCartItems | length }} {{ 'checkout.step.summary.items' | trans }}</div>
                     </div>
                 </div>
             </div>
             <div class="col col--sm-12 col--xl-9">
-                {% for cartItem in data.cartItems %}
+                {% for cartItem in transformedCartItems %}
                     {% block cartItem %}
                         {% embed molecule('product-item') with {
                             data: {
@@ -148,7 +174,7 @@
                                 {% if can('SeePricePermissionPlugin') %}
                                     {% set subtotalPrice = data.listItem.unitSubtotalAggregation is defined ? data.listItem.unitSubtotalAggregation : data.listItem.price %}
                                     {% include molecule('money-price') with {
-                                        modifiers: ['cart'],
+                                        class: 'spacing-bottom',
                                         data: {
                                             amount: subtotalPrice,
                                             currencyIsoCode: data.list.currency.code,
@@ -161,16 +187,23 @@
                                 {% if can('SeePricePermissionPlugin') %}
                                     {% set totalPrice = data.listItem.unitPrice is defined ? data.listItem.sumSubtotalAggregation : data.listItem.price %}
                                     {% embed molecule('money-price') with {
-                                        class: 'spacing spacing--inner spacing-y spacing-y--big',
-                                        modifiers: ['cart'],
+                                        class: 'grid grid--wide spacing spacing--inner spacing-y spacing-y--big',
+                                        modifiers: ['secondary'],
                                         data: {
                                             amount: totalPrice,
                                             currencyIsoCode: data.list.currency.code,
                                         },
                                     } only %}
                                         {% block body %}
-                                            <strong class="float-left">{{ 'cart.item.item_total' | trans }}</strong>
-                                            {{ parent() }}
+                                            <strong class="col col--sm-4 col--lg-5 text-left">{{ 'cart.item.item_total' | trans }}</strong>
+
+                                            {% if data.amount is empty -%}
+                                                {{ data.noPriceText }}
+                                            {%- else -%}
+                                                <span class="{{config.name}}__amount col col--sm-8 col--lg-7">
+                                                    {{ data.amount | money(true, data.currencyIsoCode) }}
+                                                </span>
+                                            {%- endif -%}
                                         {% endblock %}
                                     {% endembed %}
                                 {% endif %}
@@ -265,6 +298,7 @@
                             </div>
                         {% endblock %}
                     {% endwidget %}
+
                     {% widget 'ShareCartByLinkWidget' args [data.cart] only %}
                         {% block body %}
                             <div class="order-sidebar__item order-sidebar__item--with-label order-sidebar__item--shadow-less">
@@ -280,11 +314,13 @@
                     {% endwidget %}
                 {% endif %}
 
+                {{ block('commentThreadWidget') }}
+
                 <div class="order-sidebar__item order-sidebar__item--summary">
                     <div class="order-sidebar__item order-sidebar__item--start">
                         <div class=" grid grid--justify grid--middle order-sidebar__order">
                             <h6 class="col order-sidebar__title">{{ 'cart.your-order' | trans }}</h6>
-                            <div class="col order-sidebar__quantity">{{ data.cartItems | length }} {{ 'checkout.step.summary.items' | trans }}</div>
+                            <div class="col order-sidebar__quantity">{{ transformedCartItems | length }} {{ 'checkout.step.summary.items' | trans }}</div>
                         </div>
 
                         {% if data.isQuoteEditable and can('ChangeCartItemPermissionPlugin') and can('SeePricePermissionPlugin') %}
