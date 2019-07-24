@@ -127,7 +127,7 @@
 
     <li class="{{ config.name }}__item">
         {% if not shouldShowMiniCart %}
-            <span class="{{ config.name }}__link">
+            <a class="{{ config.name }}__link" href="{{ url('cart') }}">
                 <span class="{{ config.name }}__empty-cart">
                     {% include atom('icon') with {
                         modifiers: ['cart'],
@@ -138,7 +138,7 @@
                 </span>
 
                 <span>{{ 'global.my-cart' | trans }}</span>
-            </span>
+            </a>
         {% else %}
             {% include molecule('cart-items-counter') with {
                 class: config.name ~ '__link ' ~ config.jsName ~ '__trigger',
