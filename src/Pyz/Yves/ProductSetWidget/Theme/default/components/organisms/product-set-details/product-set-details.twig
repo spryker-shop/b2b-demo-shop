@@ -96,6 +96,10 @@
                                 }
                             } only %}
                         </button>
+                    {% else %}
+                        <p>
+                            {{ 'product.set.detail.no-products' | trans }}
+                        </p>
                     {% endif %}
                 {% endblock %}
             {% endembed %}
