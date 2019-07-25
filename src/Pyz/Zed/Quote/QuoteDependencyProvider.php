@@ -66,6 +66,18 @@ class QuoteDependencyProvider extends SprykerQuoteDependencyProvider
     }
 
     /**
+     * @return \Spryker\Zed\QuoteExtension\Dependency\Plugin\QuoteExpanderPluginInterface[]
+     */
+    protected function getQuoteExpanderPlugins(): array
+    {
+        return [
+            new QuoteApprovalExpanderPlugin(), #QuoteApprovalFeature
+            new CommentThreadQuoteExpanderPlugin(),
+            new ShareDetailsQuoteExpanderPlugin(),
+        ];
+    }
+
+    /**
      * @return \Spryker\Zed\QuoteExtension\Dependency\Plugin\QuoteWritePluginInterface[]
      */
     protected function getQuoteUpdateBeforePlugins(): array
@@ -87,18 +99,6 @@ class QuoteDependencyProvider extends SprykerQuoteDependencyProvider
         return [
             new RemoveSharedQuoteBeforeQuoteDeletePlugin(), #SharedCartFeature
             new RemoveQuoteApprovalsBeforeQuoteDeletePlugin(), #QuoteApproval
-        ];
-    }
-
-    /**
-     * @return \Spryker\Zed\QuoteExtension\Dependency\Plugin\QuoteExpanderPluginInterface[]
-     */
-    protected function getQuoteExpanderPlugins(): array
-    {
-        return [
-            new QuoteApprovalExpanderPlugin(), #QuoteApprovalFeature
-            new CommentThreadQuoteExpanderPlugin(),
-            new ShareDetailsQuoteExpanderPlugin(),
         ];
     }
 
