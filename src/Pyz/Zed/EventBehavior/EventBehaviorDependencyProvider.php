@@ -20,6 +20,8 @@ use Spryker\Zed\ContentStorage\Communication\Plugin\Event\ContentStorageEventRes
 use Spryker\Zed\EventBehavior\EventBehaviorDependencyProvider as SprykerEventBehaviorDependencyProvider;
 use Spryker\Zed\GlossaryStorage\Communication\Plugin\Event\GlossaryEventResourceQueryContainerPlugin;
 use Spryker\Zed\NavigationStorage\Communication\Plugin\Event\NavigationEventResourceQueryContainerPlugin;
+use Spryker\Zed\PriceProductMerchantRelationshipStorage\Communication\Plugin\Event\PriceProductAbstractMerchantRelationEventResourceBulkRepositoryPlugin;
+use Spryker\Zed\PriceProductMerchantRelationshipStorage\Communication\Plugin\Event\PriceProductConcreteMerchantRelationEventResourceBulkRepositoryPlugin;
 use Spryker\Zed\PriceProductStorage\Communication\Plugin\Event\PriceProductAbstractEventResourceQueryContainerPlugin;
 use Spryker\Zed\PriceProductStorage\Communication\Plugin\Event\PriceProductConcreteEventResourceQueryContainerPlugin;
 use Spryker\Zed\ProductCategoryFilterStorage\Communication\Plugin\Event\ProductCategoryFilterEventResourceQueryContainerPlugin;
@@ -71,6 +73,8 @@ class EventBehaviorDependencyProvider extends SprykerEventBehaviorDependencyProv
             new NavigationEventResourceQueryContainerPlugin(),
             new PriceProductConcreteEventResourceQueryContainerPlugin(),
             new PriceProductAbstractEventResourceQueryContainerPlugin(),
+            new PriceProductAbstractMerchantRelationEventResourceBulkRepositoryPlugin(),
+            new PriceProductConcreteMerchantRelationEventResourceBulkRepositoryPlugin(),
             new ProductCategoryFilterEventResourceQueryContainerPlugin(),
             new ProductCategoryEventResourceQueryContainerPlugin(),
             new ProductGroupEventResourceQueryContainerPlugin(),
