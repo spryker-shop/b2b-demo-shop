@@ -15,7 +15,7 @@ export default class ColorSelector extends Component {
     }
 
     protected initializeProperties(colorSelector: Element = this, parent: Element | Document = this.parent): void {
-        this.colors = <HTMLAnchorElement[]>Array.from(colorSelector.getElementsByClassName(`.${this.jsName}__color`));
+        this.colors = <HTMLAnchorElement[]>Array.from(colorSelector.getElementsByClassName(`${this.jsName}__color`));
         this.image = <HTMLImageElement>parent.querySelector(this.targetImageSelector);
         this.detailsLink = <HTMLAnchorElement>parent.querySelector(this.targetDetailsLink);
     }
