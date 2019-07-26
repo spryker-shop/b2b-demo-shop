@@ -6,6 +6,7 @@
 } %}
 
 {% define data = {
+    isLinkPresent: true,
     voucherDiscounts: null,
     ruleDiscounts: null,
     discountTotal: null,
@@ -21,15 +22,18 @@
 {% block body %}
     {% if data.voucherDiscounts is not empty %}
         <li class="list__item">
-            <a class="float-right text-small" href="{{ url('discount/voucher/clear') }}">
-                {% include atom('icon') with {
-                    modifiers: ['smaller'],
-                    data: {
-                        name: 'times'
-                    }
-                } only %}
-                {{ 'cart.vouchers.clear-all' | trans }}
-            </a>
+            {% if data.isLinkPresent %}
+                <a class="float-right text-small" href="{{ url('discount/voucher/clear') }}">
+                    {% include atom('icon') with {
+                        modifiers: ['smaller'],
+                        data: {
+                            name: 'times'
+                        }
+                    } only %}
+                    {{ 'cart.vouchers.clear-all' | trans }}
+                </a>
+            {% endif %}
+
             <strong>{{ 'cart.vouchers' | trans }}</strong>
 
             <ul>
@@ -38,15 +42,17 @@
                         <span class="col col--sm-7">
                             {{ voucherDiscount.displayName }}
                             <br>
-                            <a class="text-small" href="{{ url('discount/voucher/remove', {'code': voucherDiscount.voucherCode}) }}">
-                                {% include atom('icon') with {
-                                    modifiers: ['smaller'],
-                                    data: {
-                                        name: 'times'
-                                    }
-                                } only %}
-                                {{ 'cart.voucher.remove' | trans }}
-                            </a>
+                            {% if data.isLinkPresent %}
+                                <a class="text-small" href="{{ url('discount/voucher/remove', {'code': voucherDiscount.voucherCode}) }}">
+                                    {% include atom('icon') with {
+                                        modifiers: ['smaller'],
+                                        data: {
+                                            name: 'times'
+                                        }
+                                    } only %}
+                                    {{ 'cart.voucher.remove' | trans }}
+                                </a>
+                            {% endif %}
                         </span>
                         <span class="col col--expand text-right">- {{ voucherDiscount.amount | money(true, data.currencyIsoCode) }}</span>
                     </li>

@@ -48,6 +48,7 @@ class SalesConfig extends SprykerSalesConfig
     {
         $projectExternalBlocks = [
             'cart_note' => '/cart-note/sales/list', #CartNoteFeature
+            'comment' => '/comment-sales-connector/sales/list',
             'cart_note_bundle_items' => '/cart-note-product-bundle-connector/sales/list', #CartNoteFeature
             'payments' => '/payment/sales/list',
             'shipment' => '/shipment/sales/list',

@@ -23,12 +23,14 @@
                         node: node
                     }
                 } only %}
+                    {% set additionalClass = data.node.cssClass ?? '' %}
+
                     {% block url %}
-                        <a class="{{ component.renderClass('link', modifiers) }}" href="{{ data.node.url }}">{{ data.node.title }}</a>
+                        <a class="{{ component.renderClass('link', modifiers) }} {{ additionalClass }}" href="{{ data.node.url }}">{{ data.node.title }}</a>
                     {% endblock %}
 
                     {% block externalUrl %}
-                        <a class="{{ component.renderClass('link', modifiers) }}" href="{{ data.node.url }}" target="_blank">{{ data.node.title }}</a>
+                        <a class="{{ component.renderClass('link', modifiers) }} {{ additionalClass }}" href="{{ data.node.url }}" target="_blank">{{ data.node.title }}</a>
                     {% endblock %}
 
                     {% block other %}
@@ -36,7 +38,8 @@
                     {% endblock %}
                 {% endembed %}
             {% else %}
-                {% set additionalClass = node.additionalClass is defined ? node.additionalClass : '' %}
+                {% set additionalClass = node.cssClass ?? '' %}
+
                 {% if node.url %}
                     <li><a class="{{ component.renderClass('link', modifiers) }} {{ additionalClass }}" href="{{ node.url }}">{{ node.title }}</a></li>
                 {% else %}

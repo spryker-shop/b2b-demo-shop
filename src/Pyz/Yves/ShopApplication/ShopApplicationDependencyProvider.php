@@ -25,6 +25,7 @@ use SprykerShop\Yves\CartToShoppingListWidget\Widget\CreateShoppingListFromCartW
 use SprykerShop\Yves\CategoryImageStorageWidget\Widget\CategoryImageStorageWidget;
 use SprykerShop\Yves\CheckoutWidget\Widget\CheckoutBreadcrumbWidget;
 use SprykerShop\Yves\CheckoutWidget\Widget\ProceedToCheckoutButtonWidget;
+use SprykerShop\Yves\CommentWidget\Widget\CommentThreadWidget;
 use SprykerShop\Yves\CompanyPage\Plugin\ShopApplication\CheckBusinessOnBehalfCompanyUserHandlerPlugin;
 use SprykerShop\Yves\CompanyPage\Plugin\ShopApplication\CompanyBusinessUnitControllerRestrictionPlugin;
 use SprykerShop\Yves\CompanyWidget\Widget\CompanyBusinessUnitAddressWidget;
@@ -89,7 +90,7 @@ use SprykerShop\Yves\QuoteRequestWidget\Widget\QuoteRequestCartWidget;
 use SprykerShop\Yves\QuoteRequestWidget\Widget\QuoteRequestCreateWidget;
 use SprykerShop\Yves\QuoteRequestWidget\Widget\QuoteRequestMenuItemWidget;
 use SprykerShop\Yves\SalesOrderThresholdWidget\Widget\SalesOrderThresholdWidget;
-use SprykerShop\Yves\SharedCartWidget\Widget\CartDeleteCompanyUsersListWidget;
+use SprykerShop\Yves\SharedCartWidget\Widget\CartDeleteSharingCompanyUsersListWidget;
 use SprykerShop\Yves\SharedCartWidget\Widget\CartListPermissionGroupWidget;
 use SprykerShop\Yves\SharedCartWidget\Widget\SharedCartDetailsWidget;
 use SprykerShop\Yves\SharedCartWidget\Widget\SharedCartOperationsWidget;
@@ -118,7 +119,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             AddToShoppingListWidget::class,
             AgentControlBarWidget::class,
             BusinessOnBehalfStatusWidget::class,
-            CartDeleteCompanyUsersListWidget::class,
+            CartDeleteSharingCompanyUsersListWidget::class,
             CartDiscountPromotionProductListWidget::class,
             CartItemNoteFormWidget::class,
             CartListPermissionGroupWidget::class,
@@ -203,6 +204,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             QuoteRequestCancelWidget::class,
             QuoteRequestAgentOverviewWidget::class,
             QuoteRequestAgentCancelWidget::class,
+            CommentThreadWidget::class,
         ];
     }
 
