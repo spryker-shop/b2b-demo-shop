@@ -72,7 +72,7 @@
                         {% endblock %}
                     </div>
 
-                    {% if embed.addAllSetButton %}
+                    {% if embed.addAllSetButton and embed.products | length %}
                         {% set isDisabled = false %}
 
                         {% for product in embed.products %}
@@ -96,10 +96,6 @@
                                 }
                             } only %}
                         </button>
-                    {% else %}
-                        <p>
-                            {{ 'product.set.detail.no-products' | trans }}
-                        </p>
                     {% endif %}
                 {% endblock %}
             {% endembed %}
@@ -193,5 +189,10 @@
                 {% endblock %}
             {% endembed %}
         </form>
+        {% if (not data.products | length) %}
+            <div class="{{ config.name }}__text text-center">
+                <p> {{ 'product.set.detail.no-products' | trans }} </p>
+            </div>
+        {% endif %}
     {% endblock %}
 {% endblock %}
