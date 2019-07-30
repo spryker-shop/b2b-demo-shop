@@ -7,7 +7,7 @@
 {% block body %}
     {% embed molecule('jumbotron') with {
         data: {
-            imageUrl: publicPath(data.banner.imageUrl),
+            imageUrl: data.banner.imageUrl,
             link: data.banner.clickUrl,
             headline: data.banner.title,
             subHeadline: data.banner.subtitle,
