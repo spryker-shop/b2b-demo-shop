@@ -1,6 +1,6 @@
 {% extends template('widget') %}
 
-{% define data = {  
+{% define data = {
     nodes: _widget.navigationTree.nodes
 } %}
 
@@ -13,7 +13,7 @@
         },
         attributes: {
             'target-selector': '.js-overlay-block',
-            'class-to-toggle': 'showed',
+            'class-to-toggle': 'is-shown',
             'available-breakpoint': '1024'
         }
     } only %}

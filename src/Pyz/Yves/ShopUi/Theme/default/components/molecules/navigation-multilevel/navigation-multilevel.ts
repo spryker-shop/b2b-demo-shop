@@ -50,8 +50,8 @@ export default class NavigationMultilevel extends Component {
     }
 
     protected addClass(trigger: HTMLElement): void {
-        const dropItem: HTMLElement = trigger.querySelector(this.multiLevelDropItemSelector);
-        const reverseClass = this.isDropReverse(trigger, dropItem) ? this.classToToggleReverse : null;
+        const dropItem = <HTMLElement>trigger.getElementsByClassName(this.multiLevelDropItemClass)[0];
+        const reverseClass = this.isDropMenuReverse(trigger, dropItem) ? this.classToToggleReverse : null;
 
         trigger.classList.add(this.classToToggle, reverseClass);
     }
@@ -73,7 +73,7 @@ export default class NavigationMultilevel extends Component {
         }
     }
 
-    protected isDropReverse(trigger: HTMLElement, dropItem: HTMLElement): boolean {
+    protected isDropMenuReverse(trigger: HTMLElement, dropItem: HTMLElement): boolean {
         const leftPositionToTheMenuItem = trigger.offsetLeft;
         const windowWidth = window.innerWidth;
         const dropItemWidth = dropItem.offsetWidth;
@@ -105,8 +105,8 @@ export default class NavigationMultilevel extends Component {
         return Number(this.getAttribute('available-breakpoint'));
     }
 
-    get multiLevelDropItemSelector(): string {
-        return `.${this.jsName}__wrapper`;
+    get multiLevelDropItemClass(): string {
+        return `${this.jsName}__wrapper`;
     }
 
     get overlaySelector(): string {
