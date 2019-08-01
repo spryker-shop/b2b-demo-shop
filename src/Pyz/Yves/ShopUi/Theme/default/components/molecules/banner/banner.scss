@@ -46,6 +46,10 @@
             padding: 0 rem(10);
             margin: 0 rem(15);
 
+            @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: none) {
+                height: 100%;
+            }
+
             @include helper-breakpoint-media-min($lg) {
                 text-align: left;
             }
