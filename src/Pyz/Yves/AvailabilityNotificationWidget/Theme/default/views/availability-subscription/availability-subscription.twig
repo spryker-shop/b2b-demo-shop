@@ -8,20 +8,22 @@
 
 {% block body %}
     {% if data.isSubscribed %}
-        {% include molecule('form') with {
+        {% embed molecule('form') with {
             modifiers: ['inline'],
             data: {
                 form: data.unsubscribeForm,
                 options: {
-                    action: url('availability-notification/unsubscribe')
+                    action: url('availability-notification/unsubscribe'),
                 },
-                submit: {
-                    enable: true,
-                    text: 'availability_notification.do_not_notify_me' | trans,
-                    class: 'button button--secondary button--form spacing-right spacing-right--reset'
-                }
-            }
+            },
         } only %}
+            {% block fieldset %}
+                {{ parent() }}
+                <button type="submit" class="button button--secondary button--form button--medium-pdp spacing-right spacing-right--reset" data-init-single-click>
+                    {{ 'availability_notification.do_not_notify_me' | trans }}
+                </button>
+            {% endblock %}
+        {% endembed %}
     {% else %}
         {% include molecule('form') with {
             modifiers: ['inline'],
