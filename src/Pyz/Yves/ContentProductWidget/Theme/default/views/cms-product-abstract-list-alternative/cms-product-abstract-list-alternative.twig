@@ -9,6 +9,7 @@
         {% for productAbstractView in data.productAbstractViewCollection %}
             <div class="col col--sm-12 col--md-6 col--lg-4 spacing-x spacing-x--big spacing-x--inner">
                 {% embed molecule('product-card') with {
+                    modifiers: ['catalog'],
                     data: {
                         name: productAbstractView.name,
                         abstractId: productAbstractView.idProductAbstract,
@@ -40,6 +41,7 @@
 
                                 {% block price %}
                                     {{ parent() }}
+                                    <br>
                                 {% endblock %}
 
                                 {% block image %}
