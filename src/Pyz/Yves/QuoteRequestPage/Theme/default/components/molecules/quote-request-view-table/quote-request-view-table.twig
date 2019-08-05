@@ -1,0 +1,67 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'quote-request-view-table',
+} %}
+
+{% define data = {
+    quoteRequests: required,
+} %}
+
+{% block body %}
+    <table class="table table--expand">
+        <thead>
+        <tr>
+            <th class="text-left">{{ 'quote_request_page.quote_request.list.reference' | trans }}</th>
+            <th>{{ 'quote_request_page.quote_request.list.owner' | trans }}</th>
+            <th>{{ 'quote_request_page.quote_request.list.total' | trans }}</th>
+            <th>{{ 'quote_request_page.quote_request.list.date' | trans }}</th>
+            <th>{{ 'quote_request_page.quote_request.list.status' | trans }}</th>
+            <th>{{ 'quote_request_page.quote_request.list.actions' | trans }}</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for quoteRequest in data.quoteRequests %}
+            <tr>
+                <td>
+                    <strong>{{ quoteRequest.quoteRequestReference }}</strong>
+                </td>
+                <td>
+                    {{ quoteRequest.companyUser.customer.firstName ~ ' ' ~ quoteRequest.companyUser.customer.lastName }}
+                </td>
+                <td class="text-center">
+                     <strong>{{ quoteRequest.latestVisibleVersion.quote.totals.grandTotal | default(0) | money(true, quoteRequest.latestVersion.quote.currency ? quoteRequest.latestVersion.quote.currency.code : '') }}</strong>
+                </td>
+                <td class="text-center">{{ quoteRequest.createdAt | formatDateTime }}</td>
+                <td class="text-center">
+                    <p class="quote-status request-status request-status--{{ quoteRequest.status }}">
+                        {{ ('quote_request.status.' ~ quoteRequest.status) | trans }}
+                    </p>
+                <td>
+                    <ul class="menu grid grid--stretch grid--justify grid--nowrap grid--gap-smaller">
+                        <li class="col col--equal menu__item">
+                            {% include molecule('table-action-link') with {
+                                class: 'link link--alt link--action',
+                                data: {
+                                    url: path('quote-request/details', { quoteRequestReference: (quoteRequest.quoteRequestReference) }),
+                                    icon: 'eye',
+                                    title: 'quote_request_page.quote_request.actions.view',
+                                    iconModifier: 'big',
+                                },
+                            } only %}
+                        </li>
+
+                        {% widget 'QuoteRequestCancelWidget' args [quoteRequest] only %}
+                            {% block body %}
+                                <li class="col col--equal menu__item">
+                                    {{ parent() }}
+                                </li>
+                            {% endblock %}
+                        {% endwidget %}
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

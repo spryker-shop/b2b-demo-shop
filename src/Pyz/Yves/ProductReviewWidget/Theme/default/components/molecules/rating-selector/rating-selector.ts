@@ -1,12 +1,12 @@
 import Component from 'ShopUi/models/component';
 
 export default class RatingSelector extends Component {
-    input: HTMLInputElement
-    steps: HTMLElement[]
+    input: HTMLInputElement;
+    steps: HTMLElement[];
 
     protected readyCallback(): void {
         this.input = <HTMLInputElement>this.querySelector(`.${this.jsName}__input`);
-        this.steps = <HTMLElement[]>Array.from(this.getElementsByClassName(`${this.jsName}__step`));
+        this.steps = <HTMLElement[]>Array.from(this.querySelectorAll(`.${this.jsName}__step`));
 
         if (!this.readOnly) {
             this.checkInput(this.value);
@@ -15,7 +15,9 @@ export default class RatingSelector extends Component {
     }
 
     protected mapEvents(): void {
-        this.steps.forEach((step: HTMLElement) => step.addEventListener('click', (event: Event) => this.onStepClick(event)));
+        this.steps.forEach((step: HTMLElement) => {
+            step.addEventListener('click', (event: Event) => this.onStepClick(event));
+        });
     }
 
     protected onStepClick(event: Event): void {
@@ -35,6 +37,7 @@ export default class RatingSelector extends Component {
 
         if (!value) {
             this.input.setAttribute('disabled', 'disabled');
+
             return;
         }
 
@@ -49,6 +52,7 @@ export default class RatingSelector extends Component {
 
             if (value >= stepValue) {
                 step.classList.add(`${this.name}__step--active`);
+
                 return;
             }
 

@@ -1,0 +1,22 @@
+{% extends molecule('navigation-sidebar') %}
+
+{% define config = {
+    name: 'agent-navigation',
+} %}
+
+{% define data = {
+    items: [
+        {
+            name: 'overview',
+            url: url('agent/overview'),
+            label: 'customer.account.overview' | trans,
+            icon: 'page',
+        },
+        {
+            name: 'quoteRequestAgent',
+            url: url('agent/quote-request'),
+            label: 'quote_request_widget.request_for_quote.list.title' | trans,
+            icon: 'message',
+        },
+    ],
+} %}

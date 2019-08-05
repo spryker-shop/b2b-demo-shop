@@ -1,26 +1,55 @@
 import Component from 'ShopUi/models/component';
 
 export default class ColorSelector extends Component {
-    colors: HTMLAnchorElement[]
-    image: HTMLImageElement
-    detailsLink: HTMLAnchorElement
+    parent: HTMLElement | Document;
+    parentSelector: string = '.product-card';
+    currentColor: HTMLAnchorElement;
+    colors: HTMLAnchorElement[];
+    image: HTMLImageElement;
+    detailsLink: HTMLAnchorElement;
 
     protected readyCallback(): void {
-        this.colors = <HTMLAnchorElement[]>Array.from(this.querySelectorAll(`.${this.jsName}__color`));
-        this.image = <HTMLImageElement>document.querySelector(this.targetImageSelector);
-        this.detailsLink = <HTMLAnchorElement>document.querySelector(this.targetDetailsLink);
+        this.parent = <HTMLElement | Document>this.closest(this.parentSelector) || document;
+        this.initializeProperties();
         this.mapEvents();
+    }
+
+    protected initializeProperties(colorSelector: Element = this, parent: Element | Document = this.parent): void {
+        this.colors = <HTMLAnchorElement[]>Array.from(colorSelector.getElementsByClassName(`${this.jsName}__color`));
+        this.image = <HTMLImageElement>parent.querySelector(this.targetImageSelector);
+        this.detailsLink = <HTMLAnchorElement>parent.querySelector(this.targetDetailsLink);
     }
 
     protected mapEvents(): void {
         this.colors.forEach((color: HTMLAnchorElement) => {
-            color.addEventListener('mouseenter', (event: Event) => this.onColorSelection(event));
+            color.addEventListener('mouseenter', (event: Event) => {
+                this.onColorSelection(event);
+                this.colorSelectorsHandler();
+            });
         });
+    }
+
+    protected colorSelectorsHandler(): void {
+        if (this.parent instanceof HTMLElement && this.currentColor) {
+            const slickSlider: Element = this.parent.closest('.slick-carousel');
+            const colorSelectors: NodeListOf<Element> = slickSlider.querySelectorAll(`.${this.name}`);
+            if (colorSelectors.length > 1) {
+                colorSelectors.forEach(colorSelector => {
+                    const parent = colorSelector.closest(this.parentSelector);
+                    this.initializeProperties(colorSelector, parent);
+                    this.onSetColorSelector(this.currentColor);
+                });
+            }
+        }
     }
 
     protected onColorSelection(event: Event): void {
         event.preventDefault();
         const color = <HTMLAnchorElement>event.currentTarget;
+        this.onSetColorSelector(color);
+    }
+
+    protected onSetColorSelector(color: HTMLAnchorElement): void {
         const imageSrc = color.getAttribute('data-image-src');
         const productUrl = color.getAttribute('href');
         this.setActiveColor(color);
@@ -34,6 +63,7 @@ export default class ColorSelector extends Component {
         });
 
         newColor.classList.add(this.colorActiveClass);
+        this.currentColor = newColor;
     }
 
     setImage(newImageSrc: string): void {
@@ -46,7 +76,7 @@ export default class ColorSelector extends Component {
         this.setProductHrefAttribute(this.detailsLink, url);
     }
 
-    setProductHrefAttribute(link, url): void {
+    setProductHrefAttribute(link: HTMLAnchorElement, url: string): void {
         if (link.getAttribute('href') !== url) {
             link.setAttribute('href', url);
         }

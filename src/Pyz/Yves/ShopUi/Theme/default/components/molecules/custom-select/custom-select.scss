@@ -113,6 +113,29 @@
             }
         }
 
+        &--smaller {
+            width: 100%;
+
+            #{$name}__select {
+                width: 100%;
+                font-size: rem(12);
+                line-height: rem(20);
+                font-weight: fw(regular);
+                border-radius: $setting-border-radius;
+                border: none;
+                color: $setting-color-gray-2;
+                background: $setting-color-gray-7;
+                padding: 0 rem(27) 0 rem(8);
+            }
+
+            #{$name}__caret {
+                width: rem(8);
+                height: rem(20);
+                right: rem(6);
+                color: $setting-color-gray-2;
+            }
+        }
+
         &--mobile-expand {
             width: 100%;
 
@@ -245,6 +268,39 @@
                     font-size: rem(14);
                 }
             }
+
+            &--smaller {
+                left: auto !important;
+
+                #{$name}-selection__rendered {
+                    border-radius: $setting-border-radius;
+                    border: none;
+                    color: $setting-color-gray-2;
+                    background: $setting-color-gray-7;
+                    font-size: rem(12);
+                    line-height: rem(20);
+                    font-weight: fw(regular);
+                    padding: 0 rem(27) 0 rem(8);
+                }
+
+                #{$name}-dropdown {
+                    padding: rem(3) rem(12);
+                    border-radius: 0 0 $setting-border-radius $setting-border-radius;
+                    box-shadow: 0 rem(18) rem(18) 0 $setting-color-shadow-1, 0 rem(3) rem(3) 0 $setting-color-shadow-1;
+                }
+
+                #{$name}-results__option {
+                    padding: 0;
+                    font-size: rem(13);
+                    line-height: 2.23;
+
+                    &[aria-selected='true'] {
+                        &::before {
+                            display: none;
+                        }
+                    }
+                }
+            }
         }
 
         &-dropdown {
@@ -275,9 +331,7 @@
             line-height: 1.87;
             letter-spacing: rem(0.2);
             padding: 0 0 0 rem(27);
-            white-space: nowrap;
-            text-overflow: ellipsis;
-            overflow: hidden;
+            word-break: break-word;
 
             &[aria-selected] {
                 cursor: pointer;

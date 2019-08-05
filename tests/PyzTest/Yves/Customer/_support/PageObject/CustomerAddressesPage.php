@@ -9,11 +9,11 @@ namespace PyzTest\Yves\Customer\PageObject;
 
 use Generated\Shared\Transfer\AddressTransfer;
 
-class CustomerAddressesPage extends Customer
+class CustomerAddressesPage
 {
     public const URL = '/customer/address';
 
-    public const ADD_ADDRESS_LINK = '[data-qa="customer-add-new-address"]';
+    public const BUTTON_ADD_NEW_ADDRESS = '//nav//a[contains(@class, \'button\') and contains(text(), \'Add new address\')]';
 
     public const ADDRESS_A = 'address a';
     public const ADDRESS_B = 'address b';
@@ -55,7 +55,7 @@ class CustomerAddressesPage extends Customer
      *
      * @return \Generated\Shared\Transfer\AddressTransfer
      */
-    public static function getAddressData($address)
+    public static function getAddressData($address): AddressTransfer
     {
         $addressTransfer = new AddressTransfer();
         $addressTransfer->fromArray(self::$addresses[$address]);

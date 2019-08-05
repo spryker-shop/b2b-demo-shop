@@ -23,23 +23,26 @@ export default class CartItemNote extends Component {
     }
 
     protected onTriggerClick(event: Event): void {
-        let target = <any> event.target;
-        while (target != this) {
+        let target = <HTMLElement>event.target;
+
+        while (target !== this) {
             if (target === this.editButton) {
                 event.preventDefault();
                 this.classToggle(this.formTarget);
                 this.classToggle(this.textTarget);
+
                 return;
             }
             if (target === this.removeButton) {
                 event.preventDefault();
                 const form = <HTMLFormElement>this.formTarget.querySelector('form');
                 const textarea = <HTMLTextAreaElement>form.querySelector('textarea');
-                textarea.value = null;
+                textarea.value = '';
                 form.submit();
+
                 return;
             }
-            target = target.parentNode;
+            target = <HTMLElement>target.parentNode;
         }
     }
 

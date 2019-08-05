@@ -7,7 +7,7 @@
 
 namespace PyzTest\Yves\Customer\PageObject;
 
-class CustomerAddressPage extends Customer
+class CustomerAddressPage
 {
     public const URL = '/customer/address/new';
 

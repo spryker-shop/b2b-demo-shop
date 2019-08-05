@@ -7,6 +7,7 @@
 
 namespace PyzTest\Yves\Customer\Presentation;
 
+use Codeception\Scenario;
 use PyzTest\Yves\Customer\CustomerPresentationTester;
 use PyzTest\Yves\Customer\PageObject\CustomerAddressesPage;
 use PyzTest\Yves\Customer\PageObject\CustomerAddressPage;
@@ -24,11 +25,14 @@ class CustomerAddressCest
 {
     /**
      * @param \PyzTest\Yves\Customer\CustomerPresentationTester $i
+     * @param \Codeception\Scenario $scenario
      *
      * @return void
      */
-    public function testICanAddNewAddress(CustomerPresentationTester $i)
+    public function testICanAddNewAddress(CustomerPresentationTester $i, Scenario $scenario): void
     {
+        $scenario->skip('Once we have Chromium + ChromeDriver or Firefox, enable this test case.');
+
         $i->amLoggedInCustomer();
         $i->amOnPage(CustomerAddressPage::URL);
 

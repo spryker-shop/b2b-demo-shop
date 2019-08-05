@@ -1,8 +1,8 @@
 import Component from 'ShopUi/models/component';
 
 export default class FormHandler extends Component {
-    readonly event: string
-    readonly triggers: HTMLElement[]
+    readonly event: string;
+    readonly triggers: HTMLElement[];
 
     constructor() {
         super();
@@ -15,7 +15,9 @@ export default class FormHandler extends Component {
     }
 
     protected mapEvents(): void {
-        this.triggers.forEach((trigger: HTMLElement) => trigger.addEventListener(this.event, (event: Event) => this.onTriggerEvent(event)));
+        this.triggers.forEach((trigger: HTMLElement) => {
+            trigger.addEventListener(this.event, (event: Event) => this.onTriggerEvent(event));
+        });
     }
 
     protected onTriggerEvent(event: Event): void {
@@ -25,7 +27,7 @@ export default class FormHandler extends Component {
             const newActionName = this.getDataAttribute(trigger, 'data-change-action-to');
             form.action = newActionName;
         }
-        if ( this.shouldSubmitForm) {
+        if (this.shouldSubmitForm) {
             event.preventDefault();
             form.submit();
         }

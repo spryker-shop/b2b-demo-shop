@@ -24,7 +24,7 @@
         <div class="col col--sm-8">
             <h6 class="{{ config.name }}__title">{{ 'checkout.step.summary.overview' | trans }}</h6>
         </div>
-        <div class="col col--expand text-right">{{ app['cart.quantity'] }} {{ 'checkout.step.summary.items' | trans }}</div>
+        <div class="col col--expand text-right">{{ cartQuantity }} {{ 'checkout.step.summary.items' | trans }}</div>
     </div>
     <ul class="{{ config.name }}__list">
         <li class="{{ config.name }}__item">

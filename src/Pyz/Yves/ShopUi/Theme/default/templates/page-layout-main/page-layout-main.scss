@@ -3,13 +3,12 @@
     flex-direction: column;
     height: 100%;
 
+    @include helper-media-ie() {
+        display: block;
+    }
+
     .content-wrap {
         flex: 1;
-
-        // TODO: temporary remove horizontal scroll, need to remove this style after implementation mobile design on header and footer
-        > main {
-            overflow: hidden;
-        }
     }
 }
 
@@ -46,7 +45,8 @@
         }
     }
 
-    &--cart-page {
+    &--cart-page,
+    &--request-for-quote {
         padding-top: rem(14);
         padding-bottom: rem(30);
 
@@ -88,7 +88,7 @@
     }
 
     &--error-page {
-        background: url('/assets/images/error-page-img.svg') center no-repeat;
+        background: url('../images/error-page-img.svg') center no-repeat;
         background-size: cover;
         min-height: rem(760);
         padding-top: rem(35);
@@ -113,4 +113,3 @@
         }
     }
 }
-

@@ -117,6 +117,10 @@ shipment.standart.description,2-4 Werktage,de_DE
 shipment.standart.description,2-4 working days,en_US
 page.checkout.shipping.delivery_time,Lieferzeit:,de_DE
 page.checkout.shipping.delivery_time,Delivery time:,en_US
+page.checkout.shipping.day,day,en_US
+page.checkout.shipping.day,Tag,de_DE
+page.checkout.shipping.days,days,en_US
+page.checkout.shipping.days,Tage,de_DE
 page.checkout.shipping.price,Preis:,de_DE
 page.checkout.shipping.price,Price:,en_US
 shipment.express.description,innerhalb von 24-48 Stunden (Werktage),de_DE
@@ -841,6 +845,8 @@ product.set.detail.add-all-to-cart,Add all to Cart,en_US
 product.set.detail.add-all-to-cart,Alle Artikel in den Warenkorb,de_DE
 product.set.detail.set-contents,Products in this set,en_US
 product.set.detail.set-contents,Produkte in diesem Set,de_DE
+product.set.detail.no-products,No products in the set,en_US
+product.set.detail.no-products,Es gibt keine Produkte im Set,de_DE
 product.view,View,en_US
 product.view,Ansehen,de_DE
 product.color-selector,Available Colors,en_US
@@ -1113,8 +1119,8 @@ cart.item.option.pre.check.validation.error.exists,"You can not reorder the prod
 cart.item.option.pre.check.validation.error.exists,"Sie können das Produkt %name% nicht direkt nachbestellen, fügen Sie es bitte separat in Ihren Warenkorb.",de_DE
 product-cart.validation.error.product-option-value-price-exists,"Product option price not found for product '%sku%'.",en_US
 product-cart.validation.error.product-option-value-price-exists,"Produktoptionspreis nicht gefunden für Produkt '%sku%'.",de_DE
-product-cart.validation.error.concrete-product-inactive,"Product %sku% is not active.",en_US
-product-cart.validation.error.concrete-product-inactive,"Produkt %sku% ist nicht aktiv.",de_DE
+product-cart.validation.error.concrete-product-inactive,"Product ""sku"" is not active.",en_US
+product-cart.validation.error.concrete-product-inactive,"Produkt ""sku"" ist nicht aktiv.",de_DE
 product-cart.info.concrete-product-inactive.removed,"Inactive item %sku% was removed from your shopping cart.",en_US
 product-cart.info.concrete-product-inactive.removed,"Der inaktive Artikel %sku% wurde aus Ihrem Warenkorb entfernt.",de_DE
 product-cart.info.restricted-product.removed,"The Item %sku% was removed from the cart because it was deactivated.",en_US
@@ -1613,7 +1619,7 @@ measurement_units.standard.ggeu.name,Benzin Gallonenäquivalent,de_DE
 measurement_units.standard.busl.name,Bushel,en_US
 measurement_units.standard.busl.name,Scheffel,de_DE
 measurement_units.recommendation.between-units-info,The quantity you have chosen is in between 2 base units,en_US
-measurement_units.recommendation.between-units-info,Ihre gewählte Anzahl liegt zwischen 2 basis Einheiten,de_DE
+measurement_units.recommendation.between-units-info,Ihre gewählte Anzahl liegt zwischen 2 Basiseinheiten,de_DE
 measurement_units.recommendation.min-violation,Minimum quantity requirements for product are not fulfilled,en_US
 measurement_units.recommendation.min-violation,Minimale Mengenanforderungen für das Produkt sind nicht erfüllt,de_DE
 measurement_units.recommendation.max-violation,Maximum quantity requirements for product are not fulfilled,en_US
@@ -1807,7 +1813,7 @@ shared_cart_page.share.breadcrumbs.dismiss,Dismiss,en_US
 shared_cart_page.share.breadcrumbs.dismiss,Ablehnen,de_DE
 shared_cart_page.cart.dismiss,Dismiss,en_US
 shared_cart_page.cart.dismiss,Ablehnen,de_DE
-shared_cart_page.dismiss_confirmation.trying_to_dismiss,Are you sure that you what to dismiss shopping cart?,en_US
+shared_cart_page.dismiss_confirmation.trying_to_dismiss,Are you sure that you want to dismiss shopping cart?,en_US
 shared_cart_page.dismiss_confirmation.trying_to_dismiss,"Sind Sie sicher, dass Sie den Warenkorb ablehnen wollen?",de_DE
 shared_cart_page.dismiss.success,Shopping cart was dismissed successfully.,en_US
 shared_cart_page.dismiss.success,Warenkorb wurde erfolgreich abgelehnt.,de_DE
@@ -1873,7 +1879,7 @@ customer.account.shopping_list.overview.print,Print,en_US
 customer.account.shopping_list.overview.print,Drucken,de_DE
 customer.account.shopping_list.overview.dismiss,Dismiss,en_US
 customer.account.shopping_list.overview.dismiss,Ablehnen,de_DE
-shopping_list_page.dismiss_confirmation.trying_to_dismiss,"Are you sure that you what to dismiss shopping list?",en_US
+shopping_list_page.dismiss_confirmation.trying_to_dismiss,"Are you sure that you want to dismiss shopping list?",en_US
 shopping_list_page.dismiss_confirmation.trying_to_dismiss,"Sind Sie sicher, dass Sie den Einkaufsliste ablehnen wollen?",de_DE
 shopping_list_page.dismiss.failed,Shopping list was not dismissed.,en_US
 shopping_list_page.dismiss.failed,Einkaufsliste wurde nicht abgelehnt,de_DE
@@ -1915,6 +1921,8 @@ customer.account.shopping_list.quick_add,"Quick add to shopping list",en_US
 customer.account.shopping_list.quick_add,"Schnell zur Einkaufsliste hinzufügen",de_DE
 customer.account.shopping_list.quick_add.submit,Add,en_US
 customer.account.shopping_list.quick_add.submit,Hinzufügen,de_DE
+customer.account.shopping_list.subtotal,Subtotal,en_US
+customer.account.shopping_list.subtotal,Zwischensumme,de_DE
 customer.account.shopping_list.print_shopping_list,Print,en_US
 customer.account.shopping_list.print_shopping_list,Drucken,de_DE
 customer.account.shopping_list.item.not_added,Failed to add product to shopping list.,en_US
@@ -1933,14 +1941,14 @@ customer.account.shopping_list.delete.success,Shopping list deleted successfully
 customer.account.shopping_list.delete.success,Einkaufsliste erfolgreich gelöscht.,de_DE
 customer.account.shopping_list.delete.failed,Shopping list was not deleted.,en_US
 customer.account.shopping_list.delete.failed,Einkaufsliste konnte nicht gelöscht.,de_DE
-customer.account.shopping_list.delete.you_are_trying_to_delete_shopping_list,"You are trying to delete shopping list <div class=""box""><a href=""%link%"">%name%</a></div>",en_US
-customer.account.shopping_list.delete.you_are_trying_to_delete_shopping_list,"Sie versuchen die Einkaufsliste <div class=""box""><a href=""%link%"">%name%</a></div> zu löschen",de_DE
+customer.account.shopping_list.delete.you_are_trying_to_delete_shopping_list,You are trying to delete shopping list,en_US
+customer.account.shopping_list.delete.you_are_trying_to_delete_shopping_list,Sie versuchen die Einkaufsliste zu löschen,de_DE
 customer.account.shopping_list.delete.warning,Warning,en_US
 customer.account.shopping_list.delete.warning,Warnung,de_DE
 customer.account.shopping_list.delete.it_belongs_to_follow,It belongs to following,en_US
 customer.account.shopping_list.delete.it_belongs_to_follow,Es gehört zu folgenden,de_DE
-customer.account.shopping_list.delete.it_wll_be_deleted_from_all_of_them,It will be deleted from all of them,en_US
-customer.account.shopping_list.delete.it_wll_be_deleted_from_all_of_them,Es wird von allen gelöscht,de_DE
+customer.account.shopping_list.delete.it_wll_be_deleted_from_all_of_them,It will be deleted from all of them!,en_US
+customer.account.shopping_list.delete.it_wll_be_deleted_from_all_of_them,Es wird von allen gelöscht!,de_DE
 customer.account.shopping_list.quantity,Quantity,en_US
 customer.account.shopping_list.quantity,Anzahl,de_DE
 customer.account.shopping_list.remove,Remove,en_US
@@ -1969,8 +1977,8 @@ validation.address_number,This value is not valid (accepted format e.g.: 12c).,e
 validation.address_number,Dieser Wert ist nicht gültig (akzeptiertes Format z. B. 12c).,de_DE
 validation.zip_code,This field should contain exactly 5 digits.,en_US
 validation.zip_code,Dieses Feld sollte genau 5 Ziffern enthalten.,de_DE
-validation.min_length,This field must be at least {{limit}} characters long.,en_US
-validation.min_length,Dieses Feld muss mindestens {{limit}} Zeichen lang sein.,de_DE
+validation.min_length,This field must be at least {{ limit }} characters long.,en_US
+validation.min_length,Dieses Feld muss mindestens {{ limit }} Zeichen lang sein.,de_DE
 validation.email,This value is not a valid email address.,en_US
 validation.email,Dieser Wert ist keine gültige E-Mail-Adresse.,de_DE
 validation.choice,This value is not valid,en_US
@@ -2271,6 +2279,8 @@ company.account.company_role.create,Create role,en_US
 company.account.company_role.create,Rolle erstellen,de_DE
 company.account.company_role.create.successful,Role has been successfully created.,en_US
 company.account.company_role.create.successful,Rolle erfolgreich angelegt.,de_DE
+company.account.company_role.update.successful,Role has been successfully updated.,en_US
+company.account.company_role.update.successful,Rolle wurde erfolgreich aktualisiert.,de_DE
 company.account.company_user.form.select_roles,Select roles,en_US
 company.account.company_user.form.select_roles,Rolle auswählen,de_DE
 company.account.company_user.form.select_business_unit,Select business unit,en_US
@@ -2355,8 +2365,6 @@ validation.address_number,This value is not valid (accepted format e.g.: 12c).,e
 validation.address_number,Dieser Wert ist nicht gültig (akzeptiertes Format z. B. 12c).,de_DE
 validation.zip_code,This field should contain exactly 5 digits.,en_US
 validation.zip_code,Dieses Feld sollte genau 5 Ziffern enthalten.,de_DE
-validation.min_length,This field must be at least {{limit}} characters long.,en_US
-validation.min_length,Dieses Feld muss mindestens {{limit}} Zeichen lang sein.,de_DE
 validation.email,This value is not a valid email address.,en_US
 validation.email,Dieser Wert ist keine gültige E-Mail-Adresse.,de_DE
 validation.choice,This value is not valid,en_US
@@ -2653,6 +2661,188 @@ quote_approval_widget.cart.success_message.declined,"Request from %first_name% %
 quote_approval_widget.cart.success_message.declined,"Anfrage von %first_name% %last_name% wurde erfolgreich abgelehnt",de_DE
 quote_approval_widget.cart.success_message.canceled,"Request from %first_name% %last_name% was successfully canceled",en_US
 quote_approval_widget.cart.success_message.canceled,"Anfrage von %first_name% %last_name% wurde erfolgreich abgebrochen",de_DE
+quote_approval.create.cart_cant_be_sent_for_approval,Cart can't be sent for approval.,en_US
+quote_approval.create.cart_cant_be_sent_for_approval,Der Einkaufswagen kann nicht zur Genehmigung geschickt werden.,de_DE
+quote_approval.create.cant_send_for_approve_empty_quote,Empty cart can't be sent for approval.,en_US
+quote_approval.create.cant_send_for_approve_empty_quote,Der leere Einkaufswagen kann nicht zur Genehmigung geschickt werden.,de_DE
+persistent_cart.quote.label.locked_cart,"The cart is locked and cart editing is disabled. To unlock the cart, click",en_US
+persistent_cart.quote.label.locked_cart,"Der Einkaufswagen ist gesperrt und die Bearbeitung des Warenkorbs ist deaktiviert. Um den Einkaufswagen zu entsperren, klicken Sie auf",de_DE
+persistent_cart.quote.label.locked_cart.by_quote_request,"The cart is locked by a request for quote and cart editing is disabled. To unlock the cart, click",en_US
+persistent_cart.quote.label.locked_cart.by_quote_request,"Der Einkaufswagen ist von einem Genehmigungsprozess gesperrt und die Bearbeitung des Warenkorbs ist deaktiviert. Um den Einkaufswagen zu entsperren, klicken Sie auf",de_DE
+persistent_cart.quote.label.locked_cart.by_quote_approval,"The cart is locked by a quote approval process and cart editing is disabled. To unlock the cart, click",en_US
+persistent_cart.quote.label.locked_cart.by_quote_approval,"Der Einkaufswagen ist von einer Angebotsanfrage gesperrt und die Bearbeitung des Warenkorbs ist deaktiviert. Um den Einkaufswagen zu entsperren, klicken Sie auf",de_DE
+persistent_cart.quote.label.discarded_locked_cart,"Your current modifications will be discarded.",en_US
+persistent_cart.quote.label.discarded_locked_cart,"Ihre aktuellen Änderungen werden zurückgesetzt.",de_DE
+persistent_cart.quote.button.reset_lock,Reset lock,en_US
+persistent_cart.quote.button.reset_lock,Sperre zurücksetzen,de_DE
+cart_page.quote.reset_lock.success,Shopping Cart lock was successfully reset.,en_US
+cart_page.quote.reset_lock.success,Die Einkaufswagen-Sperre wurde erfolgreich zurückgesetzt.,de_DE
+cart_page.quote.label.locked_cart,Locked Cart,en_US
+cart_page.quote.label.locked_cart,Gesperrter Einkaufswagen,de_DE
+quote_request_widget.request_for_quote,Request a Quote,en_US
+quote_request_widget.request_for_quote,Angebotsanfrage,de_DE
+quote_request_widget.request_for_quote.list.title,Quote Requests,en_US
+quote_request_widget.request_for_quote.list.title,Angebotsanfragen,de_DE
+quote_request_page.quote_request,Quote Request,en_US
+quote_request_page.quote_request,Angebotsanfrage,de_DE
+quote_request_page.quote_request.create,Create,en_US
+quote_request_page.quote_request.create,Erstellen,de_DE
+quote_request_page.quote_request_version.created,Quote Request have got new version,en_US
+quote_request_page.quote_request_version.created,Angebotsanfrage hat neue Version bekommen,de_DE
+quote_request_page.quote_request.submit,Submit Request,en_US
+quote_request_page.quote_request.submit,Anfrage Einreichen,de_DE
+quote_request_page.quote_request.metadata.label.note,Notes,en_US
+quote_request_page.quote_request.metadata.label.note,Anmerkungen,de_DE
+quote_request_page.quote_request.metadata.label.delivery_date,Do not ship later than,en_US
+quote_request_page.quote_request.metadata.label.delivery_date,Versenden Sie nicht später als,de_DE
+quote_request_page.quote_request.metadata.label.purchase_order_number,Purchase order number,en_US
+quote_request_page.quote_request.metadata.label.purchase_order_number,Bestellnummer,de_DE
+quote_request_page.quote_request.violations.invalid_date,Date should be greater than current date.,en_US
+quote_request_page.quote_request.violations.invalid_date,Datum muss größer sein als das aktuelle Datum.,de_DE
+quote_request_page.quote_request.created,Quote request created successfully.,en_US
+quote_request_page.quote_request.created,Angebotsanfrage erfolgreich erstellt.,de_DE
+quote_request_page.quote_request.list.reference,#Reference,en_US
+quote_request_page.quote_request.list.reference,#Referenz,de_DE
+quote_request_page.quote_request.list.company,Company,en_US
+quote_request_page.quote_request.list.company,Firma,de_DE
+quote_request_page.quote_request.list.business_unit,Business unit,en_US
+quote_request_page.quote_request.list.business_unit,Geschäftseinheit,de_DE
+quote_request_page.quote_request.list.owner,Owner,en_US
+quote_request_page.quote_request.list.owner,Inhaber,de_DE
+quote_request_page.quote_request.list.total,Total,en_US
+quote_request_page.quote_request.list.total,Gesamt,de_DE
+quote_request_page.quote_request.list.date,Date,en_US
+quote_request_page.quote_request.list.date,Datum,de_DE
+quote_request_page.quote_request.list.status,Status,en_US
+quote_request_page.quote_request.list.status,Status,de_DE
+quote_request_page.quote_request.list.actions,Actions,en_US
+quote_request_page.quote_request.list.actions,Aktionen,de_DE
+quote_request_page.quote_request.labels.date,Date,en_US
+quote_request_page.quote_request.labels.date,Datum,de_DE
+quote_request_page.quote_request.labels.status,Status,en_US
+quote_request_page.quote_request.labels.status,Status,de_DE
+quote_request_page.quote_request.labels.valid_till,Valid Till,en_US
+quote_request_page.quote_request.labels.valid_till,Gültig bis,de_DE
+quote_request_page.quote_request.labels.show_latest_version,Show latest version to customer,en_US
+quote_request_page.quote_request.labels.show_latest_version,Die aktuelle Version dem Kunden anzeigen,de_DE
+quote_request_page.quote_request.labels.latest_version_is_hidden,The latest version is hidden from the customer,en_US
+quote_request_page.quote_request.labels.latest_version_is_hidden,Die letzte Version ist dem Kunden verborgen,de_DE
+quote_request_page.quote_request.labels.latest_version_is_visible,The latest version is visible to the customer,en_US
+quote_request_page.quote_request.labels.latest_version_is_visible,Die letzte Version ist für den Kunden sichtbar,de_DE
+quote_request_page.quote_request.labels.history,History,en_US
+quote_request_page.quote_request.labels.history,Geschichte,de_DE
+quote_request_page.quote_request.labels.customer,Customer,en_US
+quote_request_page.quote_request.labels.customer,Kunde,de_DE
+quote_request_page.quote_request.labels.company,Company,en_US
+quote_request_page.quote_request.labels.company,Unternehmen,de_DE
+quote_request_page.quote_request.labels.business_unit,Business unit,en_US
+quote_request_page.quote_request.labels.business_unit,Geschäftseinheit,de_DE
+quote_request_page.quote_request.labels.information,Quote Request Information,en_US
+quote_request_page.quote_request.labels.information,Informationen zur Angebotsanfrage,de_DE
+quote_request_page.quote_request.labels.version_information,Version Information,en_US
+quote_request_page.quote_request.labels.version_information,Versionsinformation,de_DE
+quote_request_page.quote_request.actions.view,View,en_US
+quote_request_page.quote_request.actions.view,Ansehen,de_DE
+quote_request_page.quote_request.actions.cancel,Cancel,en_US
+quote_request_page.quote_request.actions.cancel,Stornieren,de_DE
+quote_request_page.quote_request.actions.save,Save,en_US
+quote_request_page.quote_request.actions.save,Speichern,de_DE
+quote_request_page.quote_request.actions.back_to_list,Back to List,en_US
+quote_request_page.quote_request.actions.back_to_list,Zurück zur Liste,de_DE
+quote_request_page.quote_request.actions.back_to_view,Back to View,en_US
+quote_request_page.quote_request.actions.back_to_view,Zurück zur Ansicht,de_DE
+quote_request_page.quote_request.actions.send_to_customer,Send to Customer,en_US
+quote_request_page.quote_request.actions.send_to_customer,An den Kunden Senden,de_DE
+quote_request_page.quote_request.actions.send_to_agent,Send to Agent,en_US
+quote_request_page.quote_request.actions.send_to_agent,An Agent senden,de_DE
+quote_request_page.quote_request.actions.save_and_back_to_edit,Save and Back to Edit,en_US
+quote_request_page.quote_request.actions.save_and_back_to_edit,Speichern & Zurück,de_DE
+quote_request_page.quote_request.actions.convert_to_cart,Convert to Cart,en_US
+quote_request_page.quote_request.actions.convert_to_cart,In den Warenkorb konvertieren,de_DE
+quote_request_page.quote_request.actions.revise,Revise,en_US
+quote_request_page.quote_request.actions.revise,Überarbeiten,de_DE
+quote_request_page.quote_request.actions.edit,Edit,en_US
+quote_request_page.quote_request.actions.edit,Ändern,de_DE
+quote_request_page.quote_request.actions.edit_items,Edit Items,en_US
+quote_request_page.quote_request.actions.edit_items,Produkte bearbeiten,de_DE
+quote_request_page.quote_request.view.empty,You do not have any quote requests yet.,en_US
+quote_request_page.quote_request.view.empty,Sie haben noch keine Angebotsanfragen.,de_DE
+quote_request_page.quote_request.updated,Quote request updated successfully.,en_US
+quote_request_page.quote_request.updated,Angebotsanfrage erfolgreich aktualisiert.,de_DE
+quote_request_page.quote_request.sent_to_customer,Quote request sent to customer successfully.,en_US
+quote_request_page.quote_request.sent_to_customer,Angebotsanfrage erfolgreich an den Kunden gesendet.,de_DE
+quote_request_page.quote_request.sent_to_user,Quote request was successfully sent to the agent for processing.,en_US
+quote_request_page.quote_request.sent_to_user,Die Angebotsanfrage wurde erfolgreich zur Bearbeitung an den Agenten gesendet.,de_DE
+quote_request_page.quote_request.use_default_price,Use default price,en_US
+quote_request_page.quote_request.use_default_price,Standardpreis verwenden,de_DE
+quote_request_page.quote_request.converted_to_cart,Quote request converted to cart successfully.,en_US
+quote_request_page.quote_request.converted_to_cart,Die Angebotsanfrage wurde erfolgreich in den Warenkorb konvertiert.,de_DE
+quote_request_page.quote_request.edit_items_confirm,"You are editing Quote Request <a href=""%link%"">%reference%</a> if you will leave it, all changes will be dropped.",en_US
+quote_request_page.quote_request.edit_items_confirm,"Sie bearbeiten Angebotsanfrage <a href=""%link%"">%reference%</a> wenn Sie es verlassen, werden alle Änderungen verworfen.",de_DE
+quote_request_page.quote_request.source_price_changes_forbidden,"You can't edit prices in this Quote Request, because it's invalid.",en_US
+quote_request_page.quote_request.source_price_changes_forbidden,"Sie können die Preise in dieser Angebotsanfrage nicht bearbeiten, da sie ungültig ist.",de_DE
+quote_request.status.waiting,Waiting,en_US
+quote_request.status.waiting,Warten,de_DE
+quote_request.status.in-progress,In Progress,en_US
+quote_request.status.in-progress,Bearbeitung,de_DE
+quote_request.status.ready,Ready,en_US
+quote_request.status.ready,Bereit,de_DE
+quote_request.status.canceled,Canceled,en_US
+quote_request.status.canceled,Abgebrochen,de_DE
+quote_request.status.closed,Closed,en_US
+quote_request.status.closed,Geschlossen,de_DE
+quote_request.status.draft,Draft,en_US
+quote_request.status.draft,Entwurf,de_DE
+quote_request.validation.success.canceled,Quote request canceled successfully.,en_US
+quote_request.validation.success.canceled,Angebotsanfrage erfolgreich abgebrochen.,de_DE
+quote_request.validation.converted_to_cart.success,Quote request converted to cart successfully.,en_US
+quote_request.validation.converted_to_cart.success,Die Angebotsanfrage wurde erfolgreich in den Warenkorb konvertiert.,de_DE
+quote_request.validation.error.not_exists,Quote Request not exists.,en_US
+quote_request.validation.error.not_exists,Angebotsanfrage existiert nicht.,de_DE
+quote_request.validation.error.wrong_status,Wrong Quote Request status for this operation.,en_US
+quote_request.validation.error.wrong_status,Falscher Angebotsanforderungsstatus für diesen Vorgang.,de_DE
+quote_request.validation.error.company_user_not_found,Company User not found.,en_US
+quote_request.validation.error.company_user_not_found,Firmenbenutzer nicht gefunden.,de_DE
+quote_request.validation.error.empty_cart,Quote request can't be created from empty cart.,en_US
+quote_request.validation.error.empty_cart,Angebotsanfrage kann nicht aus leerem Einkaufswagen erstellt werden.,de_DE
+quote_request.checkout.validation.error.version_not_found,Quote Request Version not found.,en_US
+quote_request.checkout.validation.error.version_not_found,Angebotsanforderung Version nicht gefunden.,de_DE
+quote_request.checkout.validation.error.not_found,Quote Request not found.,en_US
+quote_request.checkout.validation.error.not_found,Angebotsanfrage nicht gefunden.,de_DE
+quote_request.checkout.validation.error.wrong_status,The Quote Request is in a wrong status at the moment.,en_US
+quote_request.checkout.validation.error.wrong_status,Die Angebotsanfrage befindet sich zurzeit in einem falschen Status.,de_DE
+quote_request.checkout.validation.error.wrong_version,The version of Quote Request for this cart is outdated.,en_US
+quote_request.checkout.validation.error.wrong_version,Die Version der Angebotsanfrage für diesen Warenkorb ist veraltet.,de_DE
+quote_request.checkout.validation.error.wrong_valid_until,Quote Request from which this cart was created is not valid anymore.,en_US
+quote_request.checkout.validation.error.wrong_valid_until,"Angebotsanfrage, aus der dieser Warenkorb erstellt wurde, ist nicht mehr gültig.",de_DE
+quote_request.checkout.convert.error.wrong_valid_until,Quote Request is not valid anymore.,en_US
+quote_request.checkout.convert.error.wrong_valid_until,Die Angebotsanfrage ist nicht mehr gültig.,de_DE
+quote_request.update.validation.error.wrong_valid_until,The validity date of this Quote Request is already passed. Please change the date to send to the customer.,en_US
+quote_request.update.validation.error.wrong_valid_until,"Das Gültigkeitsdatum dieser Angebotsanfrage ist bereits abgelaufen. Bitte ändern Sie das Datum, um es an den Kunden zu senden.",de_DE
+quote_request.update.validation.concurrent,Quote Request could not be updated due to parallel-customer interaction.,en_US
+quote_request.update.validation.concurrent,Die Angebotsanfrage konnte aufgrund der parallelen Kundeninteraktion nicht aktualisiert werden.,de_DE
+agent.account.overview,Overview,en_US
+agent.account.overview,Übersicht,de_DE
+agent.account.quote_request,Requests for Quote,en_US
+agent.account.quote_request,Angebotsanfragen,de_DE
+agent.account.page_title,Agent,en_US
+agent.account.page_title,Agent,de_DE
+agent.account.profile_data,Agent Profile,en_US
+agent.account.profile_data,Agent-Profil,de_DE
+quote_request_agent_widget.quote_request,Quote Request,en_US
+quote_request_agent_widget.quote_request,Angebotsanfrage,de_DE
+quote_request_agent_widget.items,Items,en_US
+quote_request_agent_widget.items,Artikel,de_DE
+quote_request_agent_widget.no_request_created,You do not have any quote requests yet.,en_US
+quote_request_agent_widget.no_request_created,Sie haben noch keine Angebotsanfragen.,de_DE
+quote_request_agent_widget.create_new_request,Create new Quote Request,en_US
+quote_request_agent_widget.create_new_request,Neue Angebotsanfrage,de_DE
+quote_request_agent_widget.view_all_requests,View all requests,en_US
+quote_request_agent_widget.view_all_requests,Alle Anfragen anzeigen,de_DE
+quote_request_agent_widget.form.select_customer,Select customer,en_US
+quote_request_agent_widget.form.select_customer,"Wählen Sie den Kunden aus",de_DE
+quote_request_agent_page.form.invalid_price,Invalid price.,en_US
+quote_request_agent_page.form.invalid_price,Ungültiger Preis.,de_DE
 permission.name.PlaceOrderPermissionPlugin,Buy up to grand total (Requires “Send cart for approval”),en_US
 permission.name.PlaceOrderPermissionPlugin,Bis zur Gesamtsumme kaufen (erfordert “Einkaufswagen zur Genehmigung senden”),de_DE
 permission.name.RequestQuoteApprovalPermissionPlugin,Send cart for approval (Requires “Buy up to grand total”),en_US
@@ -2671,3 +2861,110 @@ company_page.company_role_permission.permission_save_error,Permission configurat
 company_page.company_role_permission.permission_save_error,Berechtigungskonfiguration wurde nicht aktualisiert,de_DE
 company_page.company_role_permission.permission_save_success,Permission configuration has been updated,en_US
 company_page.company_role_permission.permission_save_success,Berechtigungskonfiguration wurde aktualisiert,de_DE
+quote.validation.error.price_mode_is_missing,Price mode is missing,en_US
+quote.validation.error.price_mode_is_incorrect,Price mode is incorrect,en_US
+quote.validation.error.currency_is_missing,Currency is missing,en_US
+quote.validation.error.currency_is_incorrect,Currency mode is incorrect,en_US
+resource_share.activator.error.strategy_expects_logged_in_customer,Please login to access requested shared resource.,en_US
+resource_share.activator.error.strategy_expects_logged_in_customer,"Bitte anmelden, um Zugand zu der angeforderten Ressource zu erhalten.",de_DE
+resource_share.reader.error.resource_is_not_found_by_provided_uuid,Resource is not found by provided UUID.,en_US
+resource_share.reader.error.resource_is_not_found_by_provided_uuid,Resource wurde nicht bei dem angegebenen UUID gefunden.,de_DE
+resource_share.generation.error.resource_type_is_not_defined,Resource type is not defined.,en_US
+resource_share.generation.error.resource_type_is_not_defined,Ressourcentyp wurde nicht definiert.,de_DE
+resource_share.generation.error.customer_reference_is_not_defined,Customer reference is not defined.,en_US
+resource_share.generation.error.customer_reference_is_not_defined,Kundenreferenz wurde nicht definiert.,de_DE
+resource_share.validation.error.resource_share_is_expired,Resource share is expired.,en_US
+resource_share.validation.error.resource_share_is_expired,Ressourcenteilung ist abgelaufen.,de_DE
+resource-share.link.error.no-route,Redirect route should not be empty.,en_US
+resource-share.link.error.no-route,Redirect Route kann nicht leer sein.,de_DE
+persistent_cart_share.error.resource_is_not_available,The cart you are trying to access is not available.,en_US
+persistent_cart_share.error.resource_is_not_available,"Der Warenkorb, auf den Sie zugreifen möchten, ist nicht verfügbar.",de_DE
+persistent_cart_share.error.quote_is_not_available,The cart you are trying to access is not available.,en_US
+persistent_cart_share.error.quote_is_not_available,"Der Warenkorb, auf den Sie zugreifen möchten, ist nicht verfügbar.",de_DE
+persistent_cart_share.share_options.external.PREVIEW,,en_US
+persistent_cart_share.share_options.external.PREVIEW,,de_DE
+persistent_cart_share.share_options.internal.READ_ONLY,Read Only,en_US
+persistent_cart_share.share_options.internal.READ_ONLY,Schreibgeschützt,de_DE
+persistent_cart_share.share_options.internal.FULL_ACCESS,Full Access,en_US
+persistent_cart_share.share_options.internal.FULL_ACCESS,Ohne Einschränkung,de_DE
+persistent_cart_share.copy,Copy,en_US
+persistent_cart_share.copy,Kopieren,de_DE
+persistent_cart_share.external_users,External Users,en_US
+persistent_cart_share.external_users,Externe Benutzer,de_DE
+persistent_cart_share.internal_users,Internal Users,en_US
+persistent_cart_share.internal_users,Interne Benutzer,de_DE
+persistent_cart_share.title,Share Cart via link,en_US
+persistent_cart_share.title,Einkaufswagen per Link teilen,de_DE
+clipboard.copy.success,Successfully copied to clipboard!,en_US
+clipboard.copy.success,Erfolgreich in die Zwischenablage kopiert!,de_DE
+clipboard.copy.error,Copying to clipboard is not supported by your browser. Try to copy the text manually.,en_US
+clipboard.copy.error,Das Kopieren in die Zwischenablage wird von Ihrem Browser nicht unterstützt. Versuchen Sie den Text manuell zu kopieren.,de_DE
+persistent_cart_share_page.preview,Preview: %title%,en_US
+persistent_cart_share_page.preview,Vorschau: %title%,de_DE
+shared_cart.resource_share.strategy.error.cart_access_denied,The cart URL is wrong or try to login with another company user account.,en_US
+shared_cart.resource_share.strategy.error.cart_access_denied,"Die URL des Einkaufswagens ist falsch, oder versuchen Sie sich mit einem anderen Konto anzumelden.",de_DE
+shared_cart.resource_share.strategy.error.unable_to_share_cart,Unable to share a cart with provided customer.,en_US
+shared_cart.resource_share.strategy.error.unable_to_share_cart,Der Einkaufswagen kann nicht mit dem angegebenen Kunden geteilt werden.,de_DE
+shared_cart.resource_share.strategy.success.cart_share_access_updated,Access level was updated.,en_US
+shared_cart.resource_share.strategy.success.cart_share_access_updated,Zugriffsebene wurde aktualisiert.,de_DE
+category.office.furniture,Office Furniture,en_US
+category.office.furniture,Büromöbel,de_DE
+comment.validation.error.comment_not_found,Comment not found.,en_US
+comment.validation.error.comment_not_found,Kommentar nicht gefunden.,de_DE
+comment.validation.error.comment_thread_not_found,Comment Thread not found.,en_US
+comment.validation.error.comment_thread_not_found,Kommentar Thread nicht gefunden.,de_DE
+comment.validation.error.access_denied,Access denied.,en_US
+comment.validation.error.access_denied,Zugriff verweigert.,en_US
+comment.validation.error.comment_thread_already_exists,Comment Thread already exists.,de_DE
+comment.validation.error.comment_thread_already_exists,Kommentar Thread existiert bereits.,de_DE
+comment.validation.error.invalid_message_length,Invalid message length.,en_US
+comment.validation.error.invalid_message_length,Ungültige Nachrichtenlänge.,de_DE
+comment.validation.error.comment_tag_not_available,Comment tag not available.,en_US
+comment.validation.error.comment_tag_not_available,Kommentar-Tag nicht verfügbar.,de_DE
+comment_widget.comments_to_cart,Comments to Cart,en_US
+comment_widget.comments_to_cart,Kommentare zum Warenkorb,de_DE
+comment_widget.form.add_comment,Add,en_US
+comment_widget.form.add_comment,Hinzufügen,de_DE
+comment_widget.form.update_comment,Update,en_US
+comment_widget.form.update_comment,Aktualisieren,de_DE
+comment_widget.form.remove_comment,Remove,en_US
+comment_widget.form.remove_comment,Entfernen,de_DE
+comment_widget.form.edit_comment,Edit,en_US
+comment_widget.form.edit_comment,Ändern,de_DE
+comment_widget.form.cancel_comment,Cancel,en_US
+comment_widget.form.cancel_comment,Abbrechen,de_DE
+comment_widget.form.you,You,en_US
+comment_widget.form.you,Sie,de_DE
+comment_widget.form.attach,Attach,en_US
+comment_widget.form.attach,Anhängen,de_DE
+comment_widget.form.unattach,Unattach,en_US
+comment_widget.form.unattach, Anhang entfernen,de_DE
+comment_widget.form.all,All,en_US
+comment_widget.form.all,Alles,de_DE
+comment_widget.form.attached,Attached,en_US
+comment_widget.form.attached,Angehängt,de_DE
+comment_widget.form.button_default,Button,en_US
+comment_widget.form.button_default,Schaltfläche,de_DE
+comment_widget.form.edited,edited,en_US
+comment_widget.form.edited,bearbeitet,de_DE
+comment_widget.form.tags,Tags,en_US
+comment_widget.form.tags,Tags,de_DE
+comment_widget.form.placeholder.add_comment,Write a comment,en_US
+comment_widget.form.placeholder.add_comment,Kommentar hinzufügen,de_DE
+comment_widget.tags.all,All,en_US
+comment_widget.tags.all,Alles,de_DE
+comment_widget.tags.delivery,Delivery,en_US
+comment_widget.tags.delivery,Lieferung,de_DE
+comment_widget.tags.important,Important,en_US
+comment_widget.tags.important,Wichtig,de_DE
+general.next.button,Weiter,de_DE
+shipment.validation.not_found,Shipment method not found.,en_US
+shipment.validation.not_found,Versandart nicht gefunden.,de_DE
+billing.address.validation.is_missing,Billing address is missing,en_US
+billing.address.validation.is_missing,Rechnungsadresse fehlt,de_DE
+shipping.address.validation.is_missing,Shipping address is missing,en_US
+shipping.address.validation.is_missing,Lieferadresse fehlt,de_DE
+billing.address.country.validation.not_found,Billing address country not found for country code: %code%,en_US
+billing.address.country.validation.not_found,Rechnungsadresse Land für Ländercode nicht gefunden: %code%,de_DE
+shipping.address.country.validation.not_found,Shipping address country not found for country code: %code%,en_US
+shipping.address.country.validation.not_found,Lieferadresse Land für Ländercode nicht gefunden: %code%,de_DE

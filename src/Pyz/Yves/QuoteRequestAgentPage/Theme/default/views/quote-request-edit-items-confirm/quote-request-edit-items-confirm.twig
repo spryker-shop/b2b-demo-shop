@@ -1,0 +1,60 @@
+{% extends template('page-layout-quote-request', 'QuoteRequestAgentPage') %}
+
+{% define data = {
+    title: 'quote_request_page.quote_request' | trans,
+    form: _view.quoteRequestEditItemsConfirmForm,
+    quoteRequest: _view.quoteRequestEditItemsConfirmForm.vars.value,
+    quoteRequestReference: _view.quoteRequestReference,
+} %}
+
+{% block breadcrumbs %}
+    {% include molecule('breadcrumb') with {
+        data: {
+            steps: [
+                {
+                    label: 'agent.account.page_title' | trans,
+                    url: path('agent/overview'),
+                },
+                {
+                    label: 'quote_request_widget.request_for_quote.list.title' | trans,
+                    url: path('agent/quote-request'),
+                },
+                {
+                    label: '#' ~ data.quoteRequest.quoteRequestReference,
+                    url: path('agent/quote-request/details', {quoteRequestReference: data.quoteRequest.quoteRequestReference}),
+                },
+                {
+                    label: 'quote_request_page.quote_request.actions.edit' | trans,
+                    url: path('agent/quote-request/edit', {quoteRequestReference: data.quoteRequest.quoteRequestReference}),
+                },
+                {
+                    label: 'quote_request_page.quote_request.actions.edit_items' | trans,
+                },
+            ],
+        },
+    } only %}
+{% endblock %}
+
+{% block customerContent %}
+
+    <div class="box spacing spacing--inner spacing--bigger">
+        {{ 'quote_request_page.quote_request.edit_items_confirm' | trans({
+            '%link%': url('agent/quote-request/edit', {quoteRequestReference: data.quoteRequestReference}),
+            '%reference%': data.quoteRequestReference,
+        }) | raw }}
+        {% include molecule('form') with {
+            data: {
+                form: data.form,
+                submit: {
+                    enable: true,
+                },
+                cancel: {
+                    enable: true,
+                    url: url('agent/quote-request/edit', {quoteRequestReference: data.quoteRequest.quoteRequestReference}),
+                    text: 'general.back.button' | trans,
+                },
+            },
+        } only %}
+    </div>
+
+{% endblock %}

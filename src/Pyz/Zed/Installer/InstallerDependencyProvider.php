@@ -15,7 +15,9 @@ use Spryker\Zed\Glossary\Communication\Plugin\GlossaryInstallerPlugin;
 use Spryker\Zed\Installer\InstallerDependencyProvider as SprykerInstallerDependencyProvider;
 use Spryker\Zed\Locale\Communication\Plugin\LocaleInstallerPlugin;
 use Spryker\Zed\Newsletter\Communication\Plugin\NewsletterInstallerPlugin;
-use Spryker\Zed\OauthCustomerConnector\Communication\Plugin\Installer\OauthCustomerInstallerPlugin;
+use Spryker\Zed\Oauth\Communication\Plugin\Installer\OauthClientInstallerPlugin;
+use Spryker\Zed\OauthCompanyUser\Communication\Plugin\Installer\OauthCompanyUserInstallerPlugin;
+use Spryker\Zed\OauthCustomerConnector\Communication\Plugin\Installer\OauthCustomerScopeInstallerPlugin;
 use Spryker\Zed\Payment\Communication\Plugin\Installer\SalesPaymentMethodTypeInstallerPlugin;
 use Spryker\Zed\PriceProduct\Communication\Plugin\PriceInstallerPlugin;
 use Spryker\Zed\ProductAlternativeProductLabelConnector\Communication\Plugin\Installer\ProductAlternativeProductLabelConnectorInstallerPlugin;
@@ -53,8 +55,10 @@ class InstallerDependencyProvider extends SprykerInstallerDependencyProvider
             new CompanyUserInvitationStatusInstallerPlugin(), #BulkImportCompanyUserInvitationsFeature
             new ProductPackagingUnitTypeInstallerPlugin(),
             new SalesOrderThresholdTypeInstallerPlugin(), #SalesOrderThresholdFeature
-            new OauthCustomerInstallerPlugin(),
+            new OauthClientInstallerPlugin(),
+            new OauthCustomerScopeInstallerPlugin(),
             new SalesPaymentMethodTypeInstallerPlugin(),
+            new OauthCompanyUserInstallerPlugin(),
         ];
     }
 }

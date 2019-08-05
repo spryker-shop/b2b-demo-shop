@@ -5,7 +5,8 @@
 } %}
 
 {% define data = {
-    form: required
+    form: required,
+    action: required
 } %}
 
 {% block body %}
@@ -15,7 +16,7 @@
         data: {
             form: data.form,
             options: {
-                action: '#review'
+                action: data.action
             },
             layout: {
                 'nickname': 'col col--sm-12',
@@ -40,18 +41,16 @@
                 <div class="form__field col col--sm-12">
                     {% do field.setRendered %}
 
-                    <label>
-                        {{form_label(field)}}
-                        {% include molecule('rating-selector', 'ProductReviewWidget') with {
-                            modifiers: ['big'],
-                            data: {
-                                maxValue: (field.vars.choices | length) - 1,
-                                inputId: 'productReviewForm_rating',
-                                inputName: 'productReviewForm[rating]'
-                            }
-                        } only %}
-                        {{form_errors(field)}}
-                    </label>
+                    {{form_label(field)}}
+                    {% include molecule('rating-selector', 'ProductReviewWidget') with {
+                        modifiers: ['big'],
+                        data: {
+                            maxValue: (field.vars.choices | length) - 1,
+                            inputId: 'productReviewForm_rating',
+                            inputName: 'productReviewForm[rating]'
+                        }
+                    } only %}
+                    {{form_errors(field)}}
                 </div>
             {% else %}
                 {{parent()}}

@@ -1,7 +1,7 @@
 import ColorSelector from '../color-selector/color-selector';
 
 export default class ColorSelectorPdp extends ColorSelector {
-    container: HTMLElement
+    container: HTMLElement;
 
     protected readyCallback(): void {
         this.colors = <HTMLAnchorElement[]>Array.from(this.querySelectorAll(`.${this.jsName}__color`));
@@ -11,8 +11,8 @@ export default class ColorSelectorPdp extends ColorSelector {
     }
 
     protected mapEvents(): void {
-        this.colors.forEach((color: HTMLAnchorElement, i: Number) => {
-            if (i !== 0) {
+        this.colors.forEach((color: HTMLAnchorElement, index: number) => {
+            if (index !== 0) {
                 color.addEventListener('mouseenter', (event: Event) => this.onColorSelection(event));
                 color.addEventListener('mouseout', (event: Event) => this.onColorUnselection(event));
             }

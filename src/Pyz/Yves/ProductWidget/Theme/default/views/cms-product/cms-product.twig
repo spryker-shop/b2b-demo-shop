@@ -14,7 +14,7 @@
             imageUrl: data.product.images is empty ? '' : data.product.images.0.externalUrlSmall,
             price: data.product.prices.DEFAULT | default(null),
             originalPrice: data.product.prices.ORIGINAL | default(null),
-            category: 'Office Furniture'
-        }
+            category: 'category.office.furniture' | trans,
+        },
     } only %}
 {% endblock %}

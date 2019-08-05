@@ -1,0 +1,39 @@
+customers:
+  post:
+    salutation:
+      - NotBlank
+      - Choice:
+          choices: [Mr, Mrs, Ms, Dr]
+    gender:
+      - NotBlank
+      - Choice:
+          choices: [Male, Female]
+
+  patch:
+    salutation:
+      - Optional:
+          constraints:
+            - NotBlank
+            - Choice:
+                choices: [Mr, Mrs, Ms, Dr]
+    gender:
+      - Optional:
+          constraints:
+            - NotBlank
+            - Choice:
+                choices: [Male, Female]
+
+addresses:
+  post:
+    salutation:
+      - NotBlank
+      - Choice:
+          choices: [Mr, Mrs, Ms, Dr]
+
+  patch:
+    salutation:
+      - Optional:
+          constraints:
+            - NotBlank
+            - Choice:
+                choices: [Mr, Mrs, Ms, Dr]

@@ -17,19 +17,21 @@
         text-align: center;
         border: none;
         background-color: $setting-color-transparent;
+
         &::-webkit-inner-spin-button {
             appearance: none;
-        }
-
-        &__[disabled] {
-            background-color: $setting-color-transparent;
         }
     }
 
     &__message {
+        margin-left: rem(24);
         padding: rem(6) rem(12);
         border: none;
         font-size: rem(12);
+
+        @include helper-breakpoint-media-min($md) {
+            margin-left: 0;
+        }
 
         &--error {
             background-color: $setting-color-alpha-5;
@@ -67,6 +69,7 @@
             background: $setting-color-gray-3;
             @include helper-effect-transition(background);
         }
+
         &--increment::after {
             width: rem(2);
             height: rem(9);
@@ -74,6 +77,7 @@
 
         &:hover {
             background: $setting-color-main;
+
             &::before,
             &::after {
                 background: $setting-color-white;
@@ -93,6 +97,7 @@
             &:hover,
             &:focus {
                 background: $setting-color-white;
+
                 &::before,
                 &::after {
                     background: $setting-color-gray-6;

@@ -1,21 +1,28 @@
-.toggler-accordion {
+@mixin shop-ui-toggler-accordion($name: '.toggler-accordion') {
+    #{$name} {
+        &__icon {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
 
-    &__icon {
-        position: absolute;
-        right: 0;
-        top: 50%;
-        transform: translateY(-50%);
-    }
+        &__item {
+            position: relative;
+            cursor: pointer;
+            padding-right: 1rem;
 
-    &__item {
-        position: relative;
-        cursor: pointer;
-        padding-right: 1rem;
-
-        &.active {
-            .toggler-accordion__icon {
-                transform: translateY(-50%) rotate(180deg);
+            &--active {
+                #{$name}__icon {
+                    &::after {
+                        display: none;
+                    }
+                }
             }
         }
+
+        @content;
     }
 }
+
+@include shop-ui-toggler-accordion();

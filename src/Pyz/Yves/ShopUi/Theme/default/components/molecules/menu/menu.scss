@@ -39,6 +39,63 @@
         }
 
         &__item {
+            font-weight: fw(regular);
+            margin: rem(8) 0;
+
+            &--has-children-dropdown {
+                position: relative;
+                z-index: $setting-zi-element + 1;
+
+                & > #{$name} {
+                    @include helper-ui-shadow;
+                    @include helper-visibility-invisible;
+                    @include helper-effect-transition;
+                    position: absolute;
+                    left: 0;
+                    width: rem(240);
+                    margin-left: rem(-8);
+                    border: rem(1) solid $setting-color-light;
+                    background-color: $setting-color-white;
+
+                    &--wide {
+                        width: rem(368);
+                    }
+
+                    &--wider {
+                        width: rem(448);
+                    }
+                }
+
+                &:hover > #{$name} {
+                    @include helper-visibility-visible;
+                }
+
+                & > #{$name} > #{$name}__item {
+                    margin-left: rem(8);
+                    margin-right: rem(8);
+                }
+
+                &::after {
+                    @include helper-breakpoint-media-min($xl) {
+                        content: '';
+                        position: absolute;
+                        left: 50%;
+                        bottom: rem(-25);
+                        transform: rotate(45deg) translateX(-50%);
+                        width: rem(10);
+                        height: rem(10);
+                        border-radius: $setting-border-radius;
+                        background: $setting-color-white;
+                        transition: helper-effect-transition(opacity, $setting-effect-fast-duration);
+                        opacity: 0;
+                    }
+                }
+            }
+
+            &--has-overlay {
+                z-index: $setting-zi-header + 1;
+            }
+
             &--filter-enumeration {
                 line-height: rem(18);
                 margin-bottom: rem(10);
@@ -187,22 +244,6 @@
 
                 @include helper-breakpoint-media-min($xxl) {
                     margin-right: rem(60);
-                }
-            }
-
-            &#{$name}__item--has-children-dropdown::after {
-                @include helper-breakpoint-media-min($xl) {
-                    content: '';
-                    position: absolute;
-                    left: 50%;
-                    bottom: rem(-25);
-                    transform: rotate(45deg) translateX(-50%);
-                    width: rem(10);
-                    height: rem(10);
-                    border-radius: $setting-border-radius;
-                    background: $setting-color-white;
-                    transition: helper-effect-transition(opacity, $setting-effect-fast-duration);
-                    opacity: 0;
                 }
             }
 

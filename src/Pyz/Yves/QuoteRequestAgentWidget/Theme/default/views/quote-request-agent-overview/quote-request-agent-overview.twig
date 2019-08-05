@@ -1,0 +1,118 @@
+{% extends template('widget') %}
+
+{% define data = {
+    quoteRequestOverviewCollection: _widget.quoteRequestOverviewCollection,
+    cartForm: _widget.cartForm ?? null,
+} %}
+
+{% block requestList %}
+    <ul class="col menu menu--inline">
+        <li class="menu__item menu__item--has-children-dropdown menu__item--has-overlay">
+            <a class="grid grid--center text-secondary" href="{{ path('agent/quote-request') }}" title="{{ 'quote_request_agent_widget.quote_request' | trans }}">
+                {% include atom('icon') with {
+                    class: 'col col-sm-12',
+                    modifiers: ['big', 'message'],
+                    data: {
+                        name: 'message',
+                    },
+                } only %}
+                <div class="col col--sm-12 text-center">{{ 'quote_request_widget.request_for_quote.list.title' | trans }}</div>
+            </a>
+            <ul class="menu menu--wider text-left">
+                {% if data.quoteRequestOverviewCollection.quoteRequests | length %}
+                    {% for quoteRequest in data.quoteRequestOverviewCollection.quoteRequests %}
+                        <li class="menu__item">
+                            {% include molecule('quote-request-detail', 'QuoteRequestAgentWidget') with {
+                                data: {
+                                    quoteRequest: quoteRequest,
+                                },
+                            } only %}
+                        </li>
+                        <li class="menu__separator menu__separator--horizontal-line"></li>
+                    {% endfor %}
+                {% else %}
+                    <li class="menu__item">
+                        <span class="no-items no-quote-requests">
+                            {{ 'quote_request_agent_widget.no_request_created' | trans }}
+                        </span>
+                    </li>
+                {% endif %}
+
+                <li class="menu__item">
+                    <div class="grid grid--justify spacing-y spacing-y--inner">
+                        <div class="col">
+                            <a href="{{ path('agent/quote-request') }}" class="button button--hollow" title="{{ 'quote_request_agent_widget.view_all_requests' | trans }}">
+                                {{ 'quote_request_agent_widget.view_all_requests' | trans }}
+                            </a>
+                        </div>
+                        <div class="col">
+                            <a href="{{ path('agent/quote-request/create') }}" class="button button--success" title="{{ 'quote_request_agent_widget.create_new_request' | trans }}" data-init-single-click>
+                                {{ 'quote_request_agent_widget.create_new_request' | trans }}
+                            </a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </li>
+    </ul>
+{% endblock %}
+
+{% block body %}
+    {{ block('requestList') }}
+    {% block activeRequest %}
+        {% if data.quoteRequestOverviewCollection.currentQuoteRequest %}
+            <div class="grid grid--middle spacing-y spacing-y--inner spacing-y--big">
+                <div class="col col--sm-12 col--lg-8">
+                    {% embed molecule('quote-request-detail', 'QuoteRequestAgentWidget') with {
+                        class: 'spacing spacing--inner',
+                        modifiers: ['light', 'small'],
+                        data: {
+                            quoteRequest: data.quoteRequestOverviewCollection.currentQuoteRequest,
+                        },
+                    } only %}
+                        {% block body %}
+                            <div class="grid grid--middle grid--justify text-small text-left">
+                                <div class="col">
+                                    <a href="{{ path('agent/quote-request/details', { quoteRequestReference: (data.quoteRequest.quoteRequestReference)}) }}" title="#{{ data.quoteRequest.quoteRequestReference }}">
+                                        #{{ data.quoteRequest.quoteRequestReference }}
+                                    </a>
+                                </div>
+                                <div class="col">
+                                    <strong class="{{ config.name }}__text">{{ data.quoteRequest.companyUser.customer.firstName ~ ' ' ~ data.quoteRequest.companyUser.customer.lastName }}</strong>
+                                </div>
+                                <div class="col">
+                                    <strong class="{{ config.name }}__text">{{ data.quoteRequest.companyUser.company.name }}</strong>
+                                </div>
+                                <div class="col">
+                                    <span class="{{ config.name }}__text">{{ data.quoteRequest.companyUser.companyBusinessUnit.name }}</span>
+                                </div>
+                                <div class="col">
+                                    <span class="{{ config.name }}__counter">
+                                        {{ quote ? (quote.items | length) : 0 }}
+                                        {{ 'quote_request_agent_widget.items' | trans }}
+                                    </span>
+                                </div>
+                                <div class="col">
+                                    <span class="quote-status request-status request-status--{{ data.quoteRequest.status }}">
+                                        {{ ('quote_request.status.' ~ data.quoteRequest.status) | trans }}
+                                    </span>
+                                </div>
+                                <div class="col">
+                                    <strong>{{ quote.totals.grandTotal | default(0) | money(true, quote.currency ? quote.currency.code : '') }}</strong>
+                                </div>
+                            </div>
+                        {% endblock %}
+                    {% endembed %}
+                </div>
+                <div class="col col--sm-12 col--lg-4">
+                    {% include molecule('quote-request-cart-from', 'QuoteRequestAgentWidget') with {
+                        data: {
+                            quoteRequestReference: data.quoteRequestOverviewCollection.currentQuoteRequest.quoteRequestReference,
+                            cartForm: data.cartForm,
+                        },
+                    } only %}
+                </div>
+            </div>
+        {% endif %}
+    {% endblock %}
+{% endblock %}

@@ -2,13 +2,13 @@ import Component from 'ShopUi/models/component';
 import OverlayBlock from '../../atoms/overlay-block/overlay-block';
 
 export default class TogglerClick extends Component {
-    readonly triggers: HTMLElement[]
-    readonly targets: HTMLElement[]
-    readonly overlay: OverlayBlock
-    readonly overlayModifiers: string[]
-    isShowClasses: string
-    isHideClasses: string
-    isContentOpened: boolean
+    readonly triggers: HTMLElement[];
+    readonly targets: HTMLElement[];
+    readonly overlay: OverlayBlock;
+    readonly overlayModifiers: string[];
+    isShowClasses: string = 'show-class';
+    isHideClasses: string = 'hide-class';
+    isContentOpened: boolean = false;
 
     constructor() {
         super();
@@ -18,10 +18,6 @@ export default class TogglerClick extends Component {
         if (this.customOverlayModifiers) {
             this.overlayModifiers = this.customOverlayModifiers.split(', ');
         }
-        this.isContentOpened = false;
-        this.isShowClasses = 'show-class';
-        this.isHideClasses = 'hide-class';
-
     }
 
     protected readyCallback(): void {
@@ -30,7 +26,9 @@ export default class TogglerClick extends Component {
     }
 
     protected mapEvents(): void {
-        this.triggers.forEach((trigger: HTMLElement) => trigger.addEventListener('click', (event: Event) => this.onTriggerClick(event)));
+        this.triggers.forEach((trigger: HTMLElement) => {
+            trigger.addEventListener('click', (event: Event) => this.onTriggerClick(event));
+        });
         document.addEventListener('click', (event: Event) => this.onDocumentClick(event));
     }
 
@@ -47,7 +45,7 @@ export default class TogglerClick extends Component {
                 if (isTargetActive) {
                     this.isContentOpened = true;
                 }
-            })
+            });
         }
     }
 
@@ -62,12 +60,12 @@ export default class TogglerClick extends Component {
                     if (this.onDocumentClickAction === this.isHideClasses) {
                         this.targets.forEach((target: HTMLElement) => {
                             target.classList.remove(this.classToToggle);
-                        })
+                        });
 
                         if (this.triggerClassToToggle.length !== 0) {
                             this.triggers.forEach((trigger: HTMLElement) => {
                                 trigger.classList.remove(this.classToToggle);
-                            })
+                            });
                         }
 
                         this.removeOverlay();
@@ -76,12 +74,12 @@ export default class TogglerClick extends Component {
                     if (this.onDocumentClickAction === this.isShowClasses) {
                         this.targets.forEach((target: HTMLElement) => {
                             target.classList.add(this.classToToggle);
-                        })
+                        });
 
                         if (this.triggerClassToToggle.length !== 0) {
                             this.triggers.forEach((trigger: HTMLElement) => {
                                 trigger.classList.add(this.classToToggle);
-                            })
+                            });
                         }
                     }
 
@@ -108,20 +106,20 @@ export default class TogglerClick extends Component {
     }
 
     protected fixBody(isClassAddedFlag: boolean): void {
-        const body = document.querySelector("body");
+        const body = document.querySelector('body');
 
         if (!isClassAddedFlag) {
             const offset = window.pageYOffset;
 
-            body.style.cssText = "top:"+`${-offset}px`;
+            body.style.cssText = 'top:' + `${-offset}px`;
             body.classList.add(this.classToFixBody);
             body.dataset.scrollTo = offset.toString();
         } else {
             const scrollToVal = +body.dataset.scrollTo;
 
-            body.style.cssText = "top: '';";
+            body.style.cssText = 'top: 0;';
             body.classList.remove(this.classToFixBody);
-            window.scrollTo( 0, scrollToVal );
+            window.scrollTo(0, scrollToVal);
         }
     }
 
