@@ -1,13 +1,7 @@
 @mixin agent-control-bar($name: '.agent-control-bar') {
     #{$name} {
         position: relative;
-        z-index: $setting-zi-header + 1;
         background-color: $setting-color-gray-6;
-        padding: rem(22) 0;
-
-        .body-overlay--no-agent-user & {
-            z-index: $setting-zi-search-suggestions;
-        }
 
         &__container {
             @include helper-breakpoint-media-max($md) {
@@ -16,9 +10,16 @@
             }
         }
 
+        &__header {
+            padding: rem(22) 0;
+        }
+
+        &__footer {
+            background-color: $setting-color-lightest;
+        }
+
         @content;
     }
 }
 
 @include agent-control-bar();
-

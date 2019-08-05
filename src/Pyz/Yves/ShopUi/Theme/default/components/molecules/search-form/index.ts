@@ -1,1 +1,1 @@
-import './search-form';
+import './search-form.scss';

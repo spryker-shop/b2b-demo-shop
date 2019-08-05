@@ -47,6 +47,7 @@ class ProductUrlExpander implements ProductUrlExpanderInterface
         foreach ($cartChangeTransfer->getItems() as $itemTransfer) {
             $this->expandItemsWithUrl($itemTransfer);
         }
+
         return $cartChangeTransfer;
     }
 

@@ -1,0 +1,39 @@
+@mixin comment-widget-add-comment-form($name: '.add-comment-form') {
+    #{$name} {
+        position: relative;
+        margin: 0 rem(-20) rem(-17);
+        font-size: 0;
+        line-height: 0;
+
+        &__textarea {
+            display: block;
+            font: fw(regular) rem(12)/rem(18) $setting-font-family;
+            color: $setting-color-gray-3;
+            border: none;
+            border-radius: $setting-border-radius;
+            padding: rem(15) rem(42) rem(10) rem(20);
+            min-width: 100%;
+            max-width: 100%;
+            min-height: rem(44);
+            height: rem(44);
+            @include helper-effect-transition(min-height);
+
+            &:focus,
+            &--valid-message {
+                min-height: rem(75);
+            }
+        }
+
+        &__button {
+            position: absolute;
+            bottom: rem(6);
+            right: rem(6);
+            width: rem(32);
+            height: rem(32);
+            border-radius: 50%;
+            padding: 0;
+        }
+    }
+}
+
+@include comment-widget-add-comment-form();

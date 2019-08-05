@@ -2,10 +2,10 @@ import Component from 'ShopUi/models/component';
 import OverlayBlock from '../../atoms/overlay-block/overlay-block';
 
 export default class NavigationMultilevel extends Component {
-    readonly overlay: OverlayBlock
-    readonly triggers: HTMLElement[]
-    readonly touchTriggers: HTMLElement[]
-    readonly targets: HTMLElement[]
+    readonly overlay: OverlayBlock;
+    readonly triggers: HTMLElement[];
+    readonly touchTriggers: HTMLElement[];
+    readonly targets: HTMLElement[];
 
     constructor() {
         super();
@@ -20,9 +20,15 @@ export default class NavigationMultilevel extends Component {
     }
 
     protected mapEvents(): void {
-        this.triggers.forEach((trigger: HTMLElement) => trigger.addEventListener('mouseover', (event: Event) => this.onTriggerOver(event)));
-        this.triggers.forEach((trigger: HTMLElement) => trigger.addEventListener('mouseout', (event: Event) => this.onTriggerOut(event)));
-        this.touchTriggers.forEach((trigger: HTMLElement) => trigger.addEventListener('click', (event: Event) => this.onTriggerClick(event)));
+        this.triggers.forEach((trigger: HTMLElement) => {
+            trigger.addEventListener('mouseover', (event: Event) => this.onTriggerOver(event));
+        });
+        this.triggers.forEach((trigger: HTMLElement) => {
+            trigger.addEventListener('mouseout', (event: Event) => this.onTriggerOut(event));
+        });
+        this.touchTriggers.forEach((trigger: HTMLElement) => {
+            trigger.addEventListener('click', (event: Event) => this.onTriggerClick(event));
+        });
     }
 
     protected onTriggerOver(event: Event): void {

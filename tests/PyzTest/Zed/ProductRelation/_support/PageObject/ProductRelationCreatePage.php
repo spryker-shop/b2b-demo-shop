@@ -11,5 +11,14 @@ class ProductRelationCreatePage
 {
     public const URL = 'product-relation/create/index';
 
-    public const PRODUCT_SUCCESS_FULLY_CREATED_MESSAGE = 'Product relation successfully created';
+    public const PRODUCT_RELATION_PRODUCT_1_NAME = 'Our Conference Room Bundle';
+    public const PRODUCT_RELATION_PRODUCT_1_SKU = 'B0002';
+
+    public const PRODUCT_RULE_NAME = 'sku';
+    public const PRODUCT_RULE_OPERATOR = 'equal';
+
+    public const PRODUCT_RELATION_PRODUCT_2_SKU = 'B0001';
+
+    public const MESSAGE_SUCCESS_PRODUCT_RELATION_CREATED = 'Product relation successfully created';
+    public const MESSAGE_SUCCESS_PRODUCT_RELATION_ACTIVATED = 'Relation successfully activated.';
 }

@@ -1,0 +1,31 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'comment-thread',
+} %}
+
+{% define data = {
+    commentThread: required,
+    availableCommentTags: required,
+    returnUrl: required,
+    idCustomer: null,
+} %}
+
+{% define attributes = {
+    'name': required,
+} %}
+
+{% block body %}
+    {% for comment in data.commentThread %}
+        {% include molecule('comment', 'CommentWidget') with {
+            class: 'spacing-bottom spacing-bottom--medium',
+            data: {
+                comment: comment,
+                availableCommentTags: data.availableCommentTags,
+                returnUrl: data.returnUrl,
+                idCustomer: data.idCustomer,
+                filterName: attributes.name,
+            },
+        } only %}
+    {% endfor %}
+{% endblock %}

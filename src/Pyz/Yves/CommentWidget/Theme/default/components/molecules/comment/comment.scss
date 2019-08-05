@@ -1,0 +1,18 @@
+@include comment-widget-comment() {
+    background: $setting-color-white;
+    padding: rem(11);
+    margin-bottom: rem(10);
+    border-radius: $setting-border-radius;
+    font-size: rem(13);
+    line-height: 1.38;
+
+    &__author {
+        font-weight: fw(bold);
+        color: $setting-color-gray-5;
+    }
+
+    &__date {
+        font-size: rem(11);
+        color: $setting-color-gray-2;
+    }
+}

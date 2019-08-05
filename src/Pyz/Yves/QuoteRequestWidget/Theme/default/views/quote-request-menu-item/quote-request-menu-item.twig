@@ -1,0 +1,20 @@
+{% extends template('widget') %}
+
+{% define data = {
+    isActivePage: _widget.isActivePage,
+    isVisible: _widget.isVisible,
+} %}
+
+{% block body %}
+    {% if data.isVisible %}
+        {% include molecule('navigation-sidebar-item') ignore missing with {
+            modifiers: data.isActivePage ? ['active'] : [],
+            data: {
+                url: url('quote-request'),
+                icon: 'message',
+                label: 'quote_request_widget.request_for_quote.list.title' | trans,
+                name: 'message',
+            },
+        } only %}
+    {% endif %}
+{% endblock %}

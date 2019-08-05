@@ -1,0 +1,17 @@
+{% extends template('widget') %}
+
+{% define data = {
+    banner: banner,
+} %}
+
+{% block body %}
+    {% include molecule('jumbotron') with {
+        data: {
+            imageUrl: data.banner.imageUrl,
+            link: data.banner.clickUrl,
+            headline: data.banner.title,
+            subHeadline: data.banner.subtitle,
+            btnTitle: 'main_slider.btn.title',
+        },
+    } only %}
+{% endblock %}

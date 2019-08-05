@@ -50,11 +50,11 @@
                     <div class="{{ config.name }}__inner--total grid grid--column grid--justify-column grid--bottom">
                         <div class="col">
                             {% if can('SeePricePermissionPlugin') %}
-                                {% include molecule('price') with {
+                                {% include molecule('money-price') with {
                                     modifiers: ['catalog', 'catalog-list'],
                                     data: {
-                                        amount: data.price | money,
-                                        originalAmount: data.originalPrice is empty ? null : (data.originalPrice | money)
+                                        amount: data.price,
+                                        originalAmount: data.originalPrice is empty ? null : data.originalPrice
                                     }
                                 } only %}
                             {% endif %}

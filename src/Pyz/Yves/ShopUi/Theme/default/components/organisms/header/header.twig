@@ -8,7 +8,6 @@
 {% define data = {
     showSearchForm: true,
     showNavigation: true,
-    cartQuantity: app['cart.quantity'] | default,
     user: app['user'],
     showUserMenu: not (hideUserMenu | default(false))
 } %}
@@ -115,14 +114,14 @@
                     </div>
                 {% endif %}
 
-                <div class="col col--right {% if is_granted('ROLE_USER') %} {{ config.name }}__user-nav {% endif %}">
+                <div class="col col--right {% if is_granted('ROLE_USER') %} {{ config.name }}__user-nav {% else %} {{ config.name }}__login-wrap {% endif %}">
                     {% if data.showUserMenu %}
                         {% if is_granted('ROLE_USER') %}
                             {% include molecule('user-navigation') with {
                                 data: {
                                     user: data.user,
-                                    cartQuantity: data.cartQuantity
-                                }
+                                    cartQuantity: cartQuantity,
+                                },
                             } only %}
                         {% else %}
                             <a href="{{ url('login') }}" class="button button--tight button--medium {{ config.name }}__login">{{ 'customer.please_login'|trans }}</a>

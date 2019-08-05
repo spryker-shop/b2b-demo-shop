@@ -15,6 +15,7 @@ use Generated\Shared\Transfer\NavigationTransfer;
 use Generated\Shared\Transfer\NavigationTreeNodeTransfer;
 use Generated\Shared\Transfer\NavigationTreeTransfer;
 use Orm\Zed\Navigation\Persistence\SpyNavigation;
+use Orm\Zed\Navigation\Persistence\SpyNavigationQuery;
 use PyzTest\Zed\NavigationGui\PageObject\NavigationNodeCreatePage;
 use PyzTest\Zed\NavigationGui\PageObject\NavigationNodeUpdatePage;
 use PyzTest\Zed\NavigationGui\PageObject\NavigationPage;
@@ -370,7 +371,7 @@ class NavigationGuiPresentationTester extends Actor
         $i->moveNavigationNode($idNavigationNode, $idTargetNavigationNode);
         $i->seeNavigationNodeHierarchy($idTargetNavigationNode, $idNavigationNode);
         $i->saveNavigationTreeOrder();
-        $i->seeSuccessfulOrderSaveMessage(NavigationPage::MESSAGE_TREE_UPDATE_SUCCESS);
+        $i->seeSuccessfulOrderSaveMessage(NavigationPage::MESSAGE_SUCCESS_NAVIGATION_TREE_UPDATED);
     }
 
     /**
@@ -379,6 +380,7 @@ class NavigationGuiPresentationTester extends Actor
     public function testDeleteNavigationNode()
     {
         $i = $this;
+
         /**
          * Test skipped because popup confirmation is not working as expected under phantomjs.
          * TODO: once we have Selenium, enable this test case.
@@ -645,6 +647,27 @@ class NavigationGuiPresentationTester extends Actor
     }
 
     /**
+     * @param array $data
+     *
+     * @return void
+     */
+    public function submitCreateNodeFormWithCmsPageTypeWithFormData(array $data): void
+    {
+        $formData = [
+            'navigation_node[node_type]' => 'cms_page',
+            'navigation_node[is_active]' => true,
+        ];
+        foreach ($data as $index => $localizedData) {
+            $titleKey = sprintf('navigation_node[navigation_node_localized_attributes][%s][title]', $index);
+            $urlKey = sprintf('navigation_node[navigation_node_localized_attributes][%s][cms_page_url]', $index);
+            $formData[$titleKey] = $localizedData['title'];
+            $formData[$urlKey] = $localizedData['url'];
+        }
+
+        $this->submitForm(static::NODE_FORM_SELECTOR, $formData);
+    }
+
+    /**
      * @param \Generated\Shared\Transfer\NavigationTreeTransfer $navigationTreeTransfer
      *
      * @return \Generated\Shared\Transfer\NavigationTreeTransfer
@@ -689,5 +712,62 @@ class NavigationGuiPresentationTester extends Actor
     public function getIdLocale($locale)
     {
         return $this->getLocator()->locale()->facade()->getLocale($locale)->getIdLocale();
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\NavigationTreeTransfer $navigationTreeTransfer
+     *
+     * @return void
+     */
+    public function cleanUpNavigationTree(NavigationTreeTransfer $navigationTreeTransfer): void
+    {
+        $navigationEntity = $this->findNavigationByName($navigationTreeTransfer->getNavigation());
+        if (!$navigationEntity) {
+            return;
+        }
+        $navigationNodeEntities = $navigationEntity->getSpyNavigationNodes();
+        foreach ($navigationNodeEntities as $navigationNodeEntity) {
+            $navigationNodeEntity->getSpyNavigationNodeLocalizedAttributess()->delete();
+        }
+        $navigationNodeEntities->delete();
+        $navigationEntity->delete();
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\NavigationTransfer $navigationTransfer
+     *
+     * @return \Orm\Zed\Navigation\Persistence\SpyNavigation|null
+     */
+    protected function findNavigationByName(NavigationTransfer $navigationTransfer): ?SpyNavigation
+    {
+        $navigationEntity = (new SpyNavigationQuery())
+            ->joinWithSpyNavigationNode()
+            ->useSpyNavigationNodeQuery()
+            ->joinWithSpyNavigationNodeLocalizedAttributes()
+            ->endUse()
+            ->findByName(
+                $navigationTransfer->getName()
+            )->getFirst();
+
+        return $navigationEntity;
+    }
+
+    /**
+     * @param string $defaultSlug
+     * @param string[] $localizedSlugs
+     *
+     * @return array
+     */
+    public function generateUrlByAvailableLocaleTransfers(string $defaultSlug, array $localizedSlugs): array
+    {
+        $localeTransfers = $this->getLocator()->locale()->facade()->getLocaleCollection();
+
+        $localeUrls = [];
+        foreach ($localeTransfers as $localeTransfer) {
+            $localePrefix = substr($localeTransfer->getLocaleName(), 0, 2);
+            $localeUrls[] = sprintf('/%s/%s', $localePrefix, $localizedSlugs[$localeTransfer->getLocaleName()] ?? $defaultSlug);
+        }
+
+        return $localeUrls;
     }
 }

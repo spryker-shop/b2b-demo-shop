@@ -1,19 +1,16 @@
 import Component from 'ShopUi/models/component';
 
 export default class QuantityCounter extends Component {
-
     incrementButton: HTMLButtonElement;
     decrementButton: HTMLButtonElement;
     input: HTMLInputElement;
     value: number;
-    readonly duration: number;
-    timeout: number;
+    readonly duration: number = 1000;
+    timeout: number = 0;
     inputChange: Event;
 
     constructor() {
         super();
-        this.duration = 1000;
-        this.timeout = 0;
         this.inputChange = new Event('change');
     }
 
@@ -29,29 +26,29 @@ export default class QuantityCounter extends Component {
         this.incrementButton.addEventListener('click', (event: Event) => this.incrementValue(event));
         this.decrementButton.addEventListener('click', (event: Event) => this.decrementValue(event));
         this.input.addEventListener('input', (event: Event) => this.triggerInputEvent());
-        if(this.autoUpdate) {
+        if (this.autoUpdate) {
             this.input.addEventListener('change', () => this.delayToSubmit());
         }
     }
 
-    protected incrementValue(event): void {
+    protected incrementValue(event: Event): void {
         event.preventDefault();
-        if(this.isAvailable) {
-            const value = +this.input.value;
+        if (this.isAvailable) {
+            const value = Number(this.input.value);
             const potentialValue = value + this.step;
-            if(value < this.maxQuantity) {
+            if (value < this.maxQuantity) {
                 this.input.value = potentialValue.toString();
                 this.triggerInputEvent();
             }
         }
     }
 
-    protected decrementValue(event): void {
+    protected decrementValue(event: Event): void {
         event.preventDefault();
-        if(this.isAvailable) {
-            const value = +this.input.value;
+        if (this.isAvailable) {
+            const value = Number(this.input.value);
             const potentialValue = value - this.step;
-            if(potentialValue >= this.minQuantity) {
+            if (potentialValue >= this.minQuantity) {
                 this.input.value = potentialValue.toString();
                 this.triggerInputEvent();
             }
@@ -64,31 +61,33 @@ export default class QuantityCounter extends Component {
 
     protected delayToSubmit(): void {
         clearTimeout(this.timeout);
-        this.timeout = <any>setTimeout(() => this.onSubmit(), this.duration);
+        this.timeout = window.setTimeout(() => this.onSubmit(), this.duration);
     }
 
     protected onSubmit(): void {
-        if(this.value !== this.getValue) {
+        if (this.value !== this.getValue) {
             this.input.form.submit();
         }
     }
 
     get minQuantity(): number {
-        return +this.input.getAttribute('min');
+        return Number(this.input.getAttribute('min'));
     }
 
     get maxQuantity(): number {
-        const max = +this.input.getAttribute('max');
+        const max = Number(this.input.getAttribute('max'));
+
         return max > 0 && max > this.minQuantity ? max : Infinity;
     }
 
     get step(): number {
-        const step = +this.input.getAttribute('step');
+        const step = Number(this.input.getAttribute('step'));
+
         return step > 0 ? step : 1;
     }
 
     get getValue(): number {
-        return +this.input.value;
+        return Number(this.input.value);
     }
 
     get autoUpdate(): boolean {
@@ -96,9 +95,10 @@ export default class QuantityCounter extends Component {
     }
 
     get isAvailable(): boolean {
-        if(!this.input.disabled && !this.input.readOnly) {
+        if (!this.input.disabled && !this.input.readOnly) {
             return true;
         }
+
         return false;
     }
 }

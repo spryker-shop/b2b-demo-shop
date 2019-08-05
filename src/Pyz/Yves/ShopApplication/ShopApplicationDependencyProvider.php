@@ -7,20 +7,25 @@
 
 namespace Pyz\Yves\ShopApplication;
 
-use Pyz\Yves\BusinessOnBehalfWidget\Widget\BusinessOnBehalfStatusWidget;
 use Pyz\Yves\CompanyPage\Plugin\ShopApplication\CompanyUserRestrictionHandlerPlugin;
 use Pyz\Yves\CompanyWidget\Widget\MenuItemCompanyWidget;
 use Pyz\Yves\CustomerFullNameWidget\Widget\CustomerFullNameWidget;
 use Pyz\Yves\ExampleProductColorGroupWidget\Widget\ExampleProductColorSelectorWidget;
 use Pyz\Yves\ProductSetWidget\Widget\ProductSetIdsWidget;
+use Spryker\Yves\EventDispatcher\Plugin\Application\EventDispatcherApplicationPlugin;
+use Spryker\Yves\Locale\Plugin\Application\LocaleApplicationPlugin;
+use Spryker\Yves\Store\Plugin\Application\StoreApplicationPlugin;
+use Spryker\Yves\Twig\Plugin\Application\TwigApplicationPlugin;
 use SprykerShop\Yves\AgentWidget\Widget\AgentControlBarWidget;
 use SprykerShop\Yves\AvailabilityNotificationWidget\Widget\AvailabilityNotificationSubscriptionWidget;
+use SprykerShop\Yves\BusinessOnBehalfWidget\Widget\BusinessOnBehalfStatusWidget;
 use SprykerShop\Yves\CartNoteWidget\Widget\CartItemNoteFormWidget;
 use SprykerShop\Yves\CartNoteWidget\Widget\CartNoteFormWidget;
 use SprykerShop\Yves\CartToShoppingListWidget\Widget\CreateShoppingListFromCartWidget;
 use SprykerShop\Yves\CategoryImageStorageWidget\Widget\CategoryImageStorageWidget;
 use SprykerShop\Yves\CheckoutWidget\Widget\CheckoutBreadcrumbWidget;
 use SprykerShop\Yves\CheckoutWidget\Widget\ProceedToCheckoutButtonWidget;
+use SprykerShop\Yves\CommentWidget\Widget\CommentThreadWidget;
 use SprykerShop\Yves\CompanyPage\Plugin\ShopApplication\CheckBusinessOnBehalfCompanyUserHandlerPlugin;
 use SprykerShop\Yves\CompanyPage\Plugin\ShopApplication\CompanyBusinessUnitControllerRestrictionPlugin;
 use SprykerShop\Yves\CompanyWidget\Widget\CompanyBusinessUnitAddressWidget;
@@ -39,6 +44,7 @@ use SprykerShop\Yves\MultiCartWidget\Widget\MultiCartMenuItemWidget;
 use SprykerShop\Yves\MultiCartWidget\Widget\QuickOrderPageWidget;
 use SprykerShop\Yves\NavigationWidget\Widget\NavigationWidget;
 use SprykerShop\Yves\NewsletterWidget\Widget\NewsletterSubscriptionSummaryWidget;
+use SprykerShop\Yves\PersistentCartShareWidget\Widget\ShareCartByLinkWidget;
 use SprykerShop\Yves\PriceProductVolumeWidget\Widget\ProductPriceVolumeWidget;
 use SprykerShop\Yves\PriceWidget\Widget\PriceModeSwitcherWidget;
 use SprykerShop\Yves\ProductAlternativeWidget\Widget\ProductAlternativeListWidget;
@@ -77,13 +83,20 @@ use SprykerShop\Yves\ProductWidget\Widget\ProductAlternativeWidget;
 use SprykerShop\Yves\QuoteApprovalWidget\Widget\QuoteApprovalStatusWidget;
 use SprykerShop\Yves\QuoteApprovalWidget\Widget\QuoteApprovalWidget;
 use SprykerShop\Yves\QuoteApprovalWidget\Widget\QuoteApproveRequestWidget;
+use SprykerShop\Yves\QuoteRequestAgentWidget\Widget\QuoteRequestAgentCancelWidget;
+use SprykerShop\Yves\QuoteRequestAgentWidget\Widget\QuoteRequestAgentOverviewWidget;
+use SprykerShop\Yves\QuoteRequestWidget\Widget\QuoteRequestCancelWidget;
+use SprykerShop\Yves\QuoteRequestWidget\Widget\QuoteRequestCartWidget;
+use SprykerShop\Yves\QuoteRequestWidget\Widget\QuoteRequestCreateWidget;
+use SprykerShop\Yves\QuoteRequestWidget\Widget\QuoteRequestMenuItemWidget;
 use SprykerShop\Yves\SalesOrderThresholdWidget\Widget\SalesOrderThresholdWidget;
-use SprykerShop\Yves\SharedCartWidget\Widget\CartDeleteCompanyUsersListWidget;
+use SprykerShop\Yves\SharedCartWidget\Widget\CartDeleteSharingCompanyUsersListWidget;
 use SprykerShop\Yves\SharedCartWidget\Widget\CartListPermissionGroupWidget;
 use SprykerShop\Yves\SharedCartWidget\Widget\SharedCartDetailsWidget;
 use SprykerShop\Yves\SharedCartWidget\Widget\SharedCartOperationsWidget;
 use SprykerShop\Yves\SharedCartWidget\Widget\SharedCartPermissionGroupWidget;
 use SprykerShop\Yves\SharedCartWidget\Widget\SharedCartShareWidget;
+use SprykerShop\Yves\ShopApplication\Plugin\Application\ShopApplicationApplicationPlugin;
 use SprykerShop\Yves\ShopApplication\ShopApplicationDependencyProvider as SprykerShopApplicationDependencyProvider;
 use SprykerShop\Yves\ShoppingListNoteWidget\Widget\ShoppingListItemNoteWidget;
 use SprykerShop\Yves\ShoppingListPage\Widget\ShoppingListDismissWidget;
@@ -91,6 +104,7 @@ use SprykerShop\Yves\ShoppingListWidget\Widget\AddItemsToShoppingListWidget;
 use SprykerShop\Yves\ShoppingListWidget\Widget\AddToShoppingListWidget;
 use SprykerShop\Yves\ShoppingListWidget\Widget\ShoppingListMenuItemWidget;
 use SprykerShop\Yves\ShoppingListWidget\Widget\ShoppingListNavigationMenuWidget;
+use SprykerShop\Yves\ShoppingListWidget\Widget\ShoppingListSubtotalWidget;
 use SprykerShop\Yves\TabsWidget\Widget\FullTextSearchTabsWidget;
 
 class ShopApplicationDependencyProvider extends SprykerShopApplicationDependencyProvider
@@ -105,7 +119,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             AddToShoppingListWidget::class,
             AgentControlBarWidget::class,
             BusinessOnBehalfStatusWidget::class,
-            CartDeleteCompanyUsersListWidget::class,
+            CartDeleteSharingCompanyUsersListWidget::class,
             CartDiscountPromotionProductListWidget::class,
             CartItemNoteFormWidget::class,
             CartListPermissionGroupWidget::class,
@@ -134,6 +148,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             ProductReplacementForListWidget::class,
             PriceModeSwitcherWidget::class,
             ProductAbstractLabelWidget::class,
+            QuoteRequestMenuItemWidget::class,
             ProductAlternativeListWidget::class,
             ProductAlternativeWidget::class,
             ProductBarcodeWidget::class,
@@ -154,6 +169,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             ProductReviewDisplayWidget::class,
             QuickOrderPageWidget::class,
             SalesOrderThresholdWidget::class,
+            ShareCartByLinkWidget::class,
             SharedCartDetailsWidget::class,
             SharedCartOperationsWidget::class,
             SharedCartPermissionGroupWidget::class,
@@ -163,6 +179,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             ShoppingListMenuItemWidget::class,
             ShoppingListNavigationMenuWidget::class,
             ShoppingListProductAlternativeWidget::class,
+            ShoppingListSubtotalWidget::class,
             SimilarProductsWidget::class,
             UpSellingProductsWidget::class,
             DiscountVoucherFormWidget::class,
@@ -182,6 +199,12 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             ProductConcreteSearchWidget::class,
             AvailabilityNotificationSubscriptionWidget::class,
             ProductConcreteAddWidget::class,
+            QuoteRequestCreateWidget::class,
+            QuoteRequestCartWidget::class,
+            QuoteRequestCancelWidget::class,
+            QuoteRequestAgentOverviewWidget::class,
+            QuoteRequestAgentCancelWidget::class,
+            CommentThreadWidget::class,
         ];
     }
 
@@ -194,6 +217,20 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             new CompanyUserRestrictionHandlerPlugin(),
             new CheckBusinessOnBehalfCompanyUserHandlerPlugin(), #BusinessOnBehalfFeature
             new CompanyBusinessUnitControllerRestrictionPlugin(),
+        ];
+    }
+
+    /**
+     * @return array
+     */
+    protected function getApplicationPlugins(): array
+    {
+        return [
+            new TwigApplicationPlugin(),
+            new EventDispatcherApplicationPlugin(),
+            new ShopApplicationApplicationPlugin(),
+            new StoreApplicationPlugin(),
+            new LocaleApplicationPlugin(),
         ];
     }
 }

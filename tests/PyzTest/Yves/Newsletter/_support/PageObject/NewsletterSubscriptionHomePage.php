@@ -12,10 +12,9 @@ class NewsletterSubscriptionHomePage
     public const NEW_EMAIL = 'foo@bar.com';
     public const EXISTING_EMAIL = 'bar@foo.com';
 
-    public const FORM_SELECTOR = ['id' => 'newsletterSubscriptionForm_subscribe'];
+    public const FORM_FIELD_EMAIL = '//form[@name=\'newsletterSubscriptionForm\']//input[@type=\'email\']';
+    public const FORM_BUTTON_SUBMIT = '//button[@type=\'submit\' and @data-qa=\'submit-button\']';
 
     public const ERROR_MESSAGE = 'You are already subscribed to the newsletter';
     public const SUCCESS_MESSAGE = 'You successfully subscribed to the newsletter';
-
-    public const FORM_SUBMIT = 'Subscribe';
 }

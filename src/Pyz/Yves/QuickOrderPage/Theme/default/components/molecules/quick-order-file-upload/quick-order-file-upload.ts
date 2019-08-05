@@ -26,7 +26,7 @@ export default class QuickOrderFileUpload extends Component {
     }
 
     protected inputFileHandler(inputFile: HTMLInputElement): void {
-        if(inputFile.files && inputFile.files.length > 0) {
+        if (inputFile.files && inputFile.files.length > 0) {
             let filesName = '';
             Array.from(inputFile.files).forEach(file => filesName += file.name);
             this.fileUploadMessage.innerText = filesName;

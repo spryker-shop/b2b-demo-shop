@@ -1,0 +1,92 @@
+$quote-request-cart-item-image-width: rem(78);
+
+@mixin quote-request-page-quote-request-cart-item($name: '.quote-request-cart-item') {
+    #{$name} {
+        border: rem(2) solid $setting-color-gray-7;
+        border-radius: $setting-border-radius;
+        padding: rem(12);
+        margin-bottom: rem(10);
+        position: relative;
+
+        @include helper-breakpoint-media-min($md) {
+            padding-right: rem(22);
+        }
+
+        @include helper-breakpoint-media-min($lg) {
+            padding: 0;
+            margin-bottom: rem(20);
+        }
+
+        &__column {
+            padding-top: rem(8);
+            padding-bottom: rem(12);
+
+            @include helper-breakpoint-media-min($lg) {
+                padding-top: rem(36);
+                padding-bottom: rem(28);
+            }
+
+            &--image {
+                border-radius: $setting-border-radius 0 0 $setting-border-radius;
+                padding-top: 0;
+                padding-bottom: 0;
+                width: $quote-request-cart-item-image-width;
+                min-width: $quote-request-cart-item-image-width;
+
+                @include helper-breakpoint-media-min($md) {
+                    width: 22%;
+                    min-width: 22%;
+                }
+            }
+
+            &--description {
+                padding-top: 0;
+                padding-bottom: 0;
+                width: calc(100% - #{$quote-request-cart-item-image-width});
+                min-width: calc(100% - #{$quote-request-cart-item-image-width});
+
+                @include helper-breakpoint-media-min($md) {
+                    width: 78%;
+                    min-width: 78%;
+                }
+            }
+
+            &--total {
+                padding-top: 0;
+                padding-bottom: 0;
+                width: 100%;
+                min-width: 100%;
+
+                @include helper-breakpoint-media-min($lg) {
+                    padding-top: rem(36);
+                    padding-bottom: rem(28);
+                    width: 40%;
+                    min-width: 40%;
+                    text-align: right;
+                }
+
+                #{$name} & {
+                    @include helper-breakpoint-media-min($lg) {
+                        padding-left: 0;
+                        padding-right: calc(#{$setting-grid-space*2} + #{$setting-grid-space});
+                    }
+                }
+            }
+
+            &--content {
+                width: 100%;
+                min-width: 100%;
+                padding-right: rem(16);
+
+                @include helper-breakpoint-media-min($lg) {
+                    width: 60%;
+                    min-width: 60%;
+                }
+            }
+        }
+
+        @content;
+    }
+}
+
+@include quote-request-page-quote-request-cart-item();

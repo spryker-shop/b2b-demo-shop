@@ -17,7 +17,7 @@
                 right: 0;
                 bottom: 0;
                 background: $setting-color-alpha-2;
-                z-index: $setting-zi-element + 1;
+                z-index: $setting-zi-element;
             }
 
             @include helper-breakpoint-media-min($lg) {
@@ -184,10 +184,6 @@
                 position: relative;
                 margin: rem(10) 0;
                 cursor: pointer;
-
-                &::before {
-                    background: $setting-color-alpha-1;
-                }
             }
 
             @include helper-breakpoint-media-min($xl) {

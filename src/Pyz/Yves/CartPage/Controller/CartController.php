@@ -7,7 +7,6 @@
 
 namespace Pyz\Yves\CartPage\Controller;
 
-use Generated\Shared\Transfer\ItemTransfer;
 use SprykerShop\Yves\CartPage\Controller\CartController as SprykerCartController;
 use SprykerShop\Yves\CartPage\Plugin\Provider\CartControllerProvider;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -27,40 +26,14 @@ class CartController extends SprykerCartController
      */
     protected function executeIndexAction(?array $selectedAttributes): array
     {
-        $validateQuoteResponseTransfer = $this->getFactory()
-            ->getCartClient()
-            ->validateQuote();
+        $viewData = parent::executeIndexAction($selectedAttributes);
+        $cartItems = $viewData['cartItems'];
 
-        $this->getFactory()
-            ->getZedRequestClient()
-            ->addFlashMessagesFromLastZedRequest();
-
-        $quoteTransfer = $validateQuoteResponseTransfer->getQuoteTransfer();
-
-        $cartItems = $this->getFactory()
-            ->createCartItemReader()
-            ->getCartItems($quoteTransfer);
-
-        $itemAttributeVariantsBySku = $this->getFactory()
-            ->createCartItemsAttributeProvider()
-            ->getItemsAttributes($quoteTransfer, $this->getLocale(), $selectedAttributes);
-
-        $productBySku = $this->getFactory()
+        $viewData['products'] = $this->getFactory()
             ->createCartItemsProductsProvider()
             ->getItemsProducts($cartItems, $this->getLocale());
 
-        $isQuoteEditable = $this->getFactory()
-            ->getQuoteClient()
-            ->isQuoteEditable($quoteTransfer);
-
-        return [
-            'cart' => $quoteTransfer,
-            'isQuoteEditable' => $isQuoteEditable,
-            'cartItems' => $cartItems,
-            'products' => $productBySku,
-            'attributes' => $itemAttributeVariantsBySku,
-            'isQuoteValid' => $validateQuoteResponseTransfer->getIsSuccessful(),
-        ];
+        return $viewData;
     }
 
     /**
@@ -73,26 +46,7 @@ class CartController extends SprykerCartController
      */
     public function addAction($sku, $quantity, array $optionValueIds, Request $request)
     {
-        if (!$this->canAddCartItem()) {
-            $this->addErrorMessage(static::MESSAGE_PERMISSION_FAILED);
-
-            return $this->redirectToReferer($request);
-        }
-
-        $itemTransfer = new ItemTransfer();
-        $itemTransfer
-            ->setSku($sku)
-            ->setQuantity($quantity);
-
-        $this->addProductOptions($optionValueIds, $itemTransfer);
-
-        $this->getFactory()
-            ->getCartClient()
-            ->addItem($itemTransfer, $request->request->all());
-
-        $this->getFactory()
-            ->getZedRequestClient()
-            ->addFlashMessagesFromLastZedRequest();
+        parent::addAction($sku, $quantity, $optionValueIds, $request);
 
         return $this->redirectToReferer($request);
     }

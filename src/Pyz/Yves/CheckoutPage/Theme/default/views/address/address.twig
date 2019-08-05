@@ -4,11 +4,11 @@
     forms: {
         address: _view.addressesForm,
         shipping: _view.addressesForm.shippingAddress,
-        billing: _view.addressesForm.billingAddress
+        billing: _view.addressesForm.billingAddress,
     },
 
     title: 'checkout.step.address.title' | trans,
-    stepNumder: 1
+    stepNumder: 1,
 } %}
 
 {% block content %}
@@ -20,14 +20,14 @@
             submit: {
                 enable: true,
                 text: 'checkout.step.shipment' | trans,
-                class: 'button button--big button--checkout'
-            }
+                class: 'button button--big button--checkout',
+            },
         },
         embed: {
             forms: {
                 shipping: data.forms.shipping,
-                billing: data.forms.billing
-            }
+                billing: data.forms.billing,
+            },
         }
     } only %}
         {% block title %}{% endblock %}
@@ -66,7 +66,7 @@
                 {% endif %}
 
                 {% embed molecule('form') with {
-                    class: 'js-address__shipping' ~ (hideShippingAddressForm ? ' is-hidden ' : ''),
+                    class: 'js-address__shipping',
                     data: {
                         form: embed.forms.shipping,
                         enableStart: false,
@@ -81,14 +81,8 @@
                             zip_code: 'col col--sm-6 col--lg-2',
                             city: 'col col--sm-6 col--lg-6',
                             iso2_code: 'col col--sm-12 col--lg-4',
-                            phone: 'col col--sm-12 col--lg-7'
+                            phone: 'col col--sm-12 col--lg-7',
                         },
-                        submit: {
-                            enable: false
-                        },
-                        cancel: {
-                            enable: false
-                        }
                     }
                 } only %}
                     {% block field %}
@@ -120,7 +114,7 @@
 
             <div class="col col--sm-12 js-form-handler__billingAddress js-form-clear__billingAddress-form">
                 {% embed molecule('form') with {
-                    class: 'is-hidden spacing-top spacing-top--big js-address__billing-same-as-shipping checkout-form--hidden-actions',
+                    class: 'spacing-top spacing-top--big js-address__billing-same-as-shipping checkout-form--hidden-actions',
                     data: {
                         form: embed.forms.billing,
                         enableStart: false,
@@ -135,14 +129,8 @@
                             zip_code: 'col col--sm-6 col--lg-2',
                             city: 'col col--sm-6 col--lg-6',
                             iso2_code: 'col col--sm-12 col--lg-4',
-                            phone: 'col col--sm-12 col--lg-7'
+                            phone: 'col col--sm-12 col--lg-7',
                         },
-                        submit: {
-                            enable: false
-                        },
-                        cancel: {
-                            enable: false
-                        }
                     }
                 } only %}
                     {% block title %}
@@ -196,7 +184,7 @@
         {% endblock %}
 
         {% block actions %}
-            <div class="grid grid--middle grid--justify">
+            <div class="grid grid--middle grid--justify grid--expand">
                 <div class="col col--sm-12 spacing-bottom spacing-bottom--biggest">
                     {% if data.form.isAddressSavingSkipped is defined %}
                         {% set companyBusinessUnitAddressWidget = findWidget('CompanyBusinessUnitAddressWidget', ['shippingAddress', embed.forms.shipping.vars.data]) %}
@@ -215,8 +203,8 @@
                                 'trigger-selector': existingShippingAddressSelectSelector | default(''),
                                 'target-selector': '.js-address__shipping',
                                 'class-to-toggle': 'is-hidden',
-                                'has-company-business-unit-address': hasCompanyBusinessUnitAddress ? 'true' : 'false'
-                            }
+                                'has-company-business-unit-address': hasCompanyBusinessUnitAddress ? 'true' : 'false',
+                            },
                         } only %}
 
                         {% include molecule('address-form-toggler', 'CustomerPage') ignore missing with {
@@ -224,14 +212,14 @@
                                 'trigger-selector': existingBillingAddressSelectSelector | default(''),
                                 'target-selector': '.js-address__billing',
                                 'class-to-toggle': 'is-hidden',
-                                'has-company-business-unit-address': hasCompanyBusinessUnitAddress ? 'true' : 'false'
-                            }
+                                'has-company-business-unit-address': hasCompanyBusinessUnitAddress ? 'true' : 'false',
+                            },
                         } only %}
 
                         {% include molecule('save-new-address', 'CustomerPage') ignore missing with {
-                            class: 'col is-hidden',
+                            class: 'is-hidden text-left',
                             data: {
-                                form: data.form
+                                form: data.form,
                             },
                             attributes: {
                                 'shipping-address-toggler-selector': embed.forms.shipping.id_customer_address is defined ? '[name="' ~ embed.forms.shipping.id_customer_address.vars.full_name ~ '"]' : '',
@@ -239,8 +227,8 @@
                                 'billing-same-as-shipping-toggler-selector': 'input[name="' ~ data.form.billingSameAsShipping.vars.full_name ~ '"]',
                                 'save-address-toggler-selector': 'input[name="' ~ data.form.isAddressSavingSkipped.vars.full_name ~ '"]',
                                 'add-new-shipping-address-selector': '.js-from-add-new-address__shippingAddress' | default (''),
-                                'add-new-billing-address-selector': '.js-from-add-new-address__billingAddress' | default ('')
-                            }
+                                'add-new-billing-address-selector': '.js-from-add-new-address__billingAddress' | default (''),
+                            },
                         } only %}
                     {% endif %}
                 </div>

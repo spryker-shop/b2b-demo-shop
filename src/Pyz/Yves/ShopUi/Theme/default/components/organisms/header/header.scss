@@ -1,7 +1,7 @@
 @mixin shop-ui-header($name: '.header') {
     #{$name} {
         position: relative;
-        background-color: helper-color-light($setting-color-main);
+        background-color: $setting-color-gray-6;
         z-index: $setting-zi-header;
 
         .body-overlay--no-search & {
@@ -113,6 +113,13 @@
 
             @include helper-breakpoint-media-min($xl) {
                 max-width: rem(515);
+            }
+        }
+
+        &__login-wrap {
+            @include helper-media-ie() {
+                flex-grow: 0.1;
+                text-align: right;
             }
         }
 
