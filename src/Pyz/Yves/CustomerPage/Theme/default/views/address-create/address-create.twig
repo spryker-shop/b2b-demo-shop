@@ -4,7 +4,7 @@
     form: _view.form,
     formAction: url('customer/address/new'),
     title: 'customer.account.address' | trans,
-    activePage: 'address'
+    activePage: 'address',
 } %}
 
 {% block customerContent %}
@@ -12,8 +12,9 @@
         data: {
             title: 'customer.account.edit_address_information' | trans,
             form: data.form,
+            shouldRequireMessage: true,
             options: {
-                action: data.formAction
+                action: data.formAction,
             },
             layout: {
                 salutation: 'col col--sm-12 col--lg-2',
@@ -23,19 +24,19 @@
                 address2: 'col col--sm-12 col--md-4 col--lg-2',
                 zip_code: 'col col--sm-12 col--lg-4',
                 city: 'col col--sm-12 col--lg-4',
-                iso2_code: 'col col--sm-12 col--lg-4'
+                iso2_code: 'col col--sm-12 col--lg-4',
             },
             submit: {
                 enable: true,
-                class: 'form__action--expand-sm-md form__action--sm-md-first button'
+                class: 'form__action--expand-sm-md form__action--sm-md-first button',
             },
             cancel: {
                 enable: true,
                 url: url('customer/address'),
                 text: 'general.back.button' | trans,
                 icon: null,
-                class: 'form__action--expand-sm-md button button--hollow'
-            }
-        }
+                class: 'form__action--expand-sm-md button button--hollow',
+            },
+        },
     } only %}
 {% endblock %}

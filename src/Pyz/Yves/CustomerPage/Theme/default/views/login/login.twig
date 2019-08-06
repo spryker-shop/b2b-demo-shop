@@ -8,8 +8,8 @@
                     data: {
                         steps: [{
                             label: 'customer.login' | trans
-                        }]
-                    }
+                        }],
+                    },
                 } only %}
             {% endblock %}
         </div>
@@ -20,19 +20,20 @@
     {% embed organism('section') with {
         data: {
             title: 'customer.login.title' | trans,
-            innerClass: 'col col--sm-12 col--md-9 col--lg-8 col--xl-6'
+            innerClass: 'col col--sm-12 col--md-9 col--lg-8 col--xl-6',
         },
-        modifiers: ['center', 'last', 'mobile-center']
+        modifiers: ['center', 'last', 'mobile-center'],
     } only %}
         {% block inner %}
             {% include molecule('form') with {
                 class: 'box',
                 data: {
                     form: _view.loginForm,
+                    shouldRequireMessage: true,
                     submit: {
                         enable: true,
                         class: 'button button--big form__action--primary',
-                        text: 'forms.submit.login' | trans
+                        text: 'forms.submit.login' | trans,
                     },
                     cancel: {
                         enable: true,
@@ -40,9 +41,9 @@
                         text: 'forms.forgot-password' | trans,
                         icon: null,
                         class: 'link link--action form__action--link',
-                        qa: 'customer-forgot-password-link'
-                    }
-                }
+                        qa: 'customer-forgot-password-link',
+                    },
+                },
             } only %}
         {% endblock %}
     {% endembed %}
