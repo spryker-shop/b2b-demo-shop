@@ -76,14 +76,24 @@
     {% endif %}
 
     {% if canProceedToCheckout and can('SeeOrderPlaceSubmitPermissionPlugin') %}
-        {% widget 'ProceedToCheckoutButtonWidget' args [data.cart] %}{% endwidget %}
+        {% widget 'ProceedToCheckoutButtonWidget' args [data.cart] %}
+            {% block body %}
+                <div class="spacing-top spacing-top--big">
+                    {{ parent() }}
+                </div>
+            {% endblock %}
+        {% endwidget %}
     {% endif %}
 
     {% if is_granted('ROLE_USER') %}
         {% widget 'QuoteRequestCreateWidget' args [data.cart] only %}
             {% block body %}
                 <div class="spacing-y">
-                    {{ parent() }}
+                    {% if data.isVisible %}
+                        <a class="button button--expand button--hollow" href="{{ url('quote-request/create') }}">
+                            {{ 'quote_request_widget.request_for_quote' | trans }}
+                        </a>
+                    {% endif %}
                 </div>
             {% endblock %}
         {% endwidget %}
