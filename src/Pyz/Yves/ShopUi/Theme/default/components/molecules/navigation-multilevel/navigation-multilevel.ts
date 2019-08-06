@@ -40,10 +40,6 @@ export default class NavigationMultilevel extends Component {
         }
     }
 
-    protected addClass(trigger: HTMLElement): void {
-        trigger.classList.add(this.classToToggle);
-    }
-
     protected onTriggerOut(event: Event): void {
         if (this.isWidthMoreThanAvailableBreakpoint()) {
             const trigger = <HTMLElement>event.currentTarget;
@@ -53,8 +49,15 @@ export default class NavigationMultilevel extends Component {
         }
     }
 
+    protected addClass(trigger: HTMLElement): void {
+        const dropItem = <HTMLElement>trigger.getElementsByClassName(this.multiLevelDropItemClass)[0];
+        const reverseClass = this.isDropMenuReverse(trigger, dropItem) ? this.classToToggleReverse : null;
+
+        trigger.classList.add(this.classToToggle, reverseClass);
+    }
+
     protected removeClass(trigger: HTMLElement): void {
-        trigger.classList.remove(this.classToToggle);
+        trigger.classList.remove(this.classToToggle, this.classToToggleReverse);
     }
 
     protected onTriggerClick(event: Event): void {
@@ -68,6 +71,14 @@ export default class NavigationMultilevel extends Component {
             contentToShow.classList.toggle(contentToggleClass);
             trigger.classList.toggle('is-active');
         }
+    }
+
+    protected isDropMenuReverse(trigger: HTMLElement, dropItem: HTMLElement): boolean {
+        const leftPositionToTheMenuItem = trigger.offsetLeft;
+        const windowWidth = window.innerWidth;
+        const dropItemWidth = dropItem.offsetWidth;
+
+        return windowWidth - leftPositionToTheMenuItem < dropItemWidth;
     }
 
     protected isWidthMoreThanAvailableBreakpoint(): boolean {
@@ -86,8 +97,16 @@ export default class NavigationMultilevel extends Component {
         return this.getAttribute('class-to-toggle');
     }
 
+    get classToToggleReverse(): string {
+        return `${this.classToToggle}--reverse`;
+    }
+
     get availableBreakpoint(): number {
         return Number(this.getAttribute('available-breakpoint'));
+    }
+
+    get multiLevelDropItemClass(): string {
+        return `${this.jsName}__wrapper`;
     }
 
     get overlaySelector(): string {
