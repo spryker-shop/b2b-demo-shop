@@ -51,7 +51,7 @@ export default class NavigationMultilevel extends Component {
 
     protected addClass(trigger: HTMLElement): void {
         const dropItem = <HTMLElement>trigger.getElementsByClassName(this.multiLevelDropItemClass)[0];
-        const reverseClass = this.isDropMenuReverse(trigger, dropItem) ? this.classToToggleReverse : null;
+        const reverseClass = this.isDropMenuReverse(trigger, dropItem) ? this.classToToggleReverse : '';
 
         trigger.classList.add(this.classToToggle, reverseClass);
     }

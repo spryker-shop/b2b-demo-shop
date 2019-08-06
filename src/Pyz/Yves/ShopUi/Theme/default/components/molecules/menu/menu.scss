@@ -226,7 +226,10 @@
                 }
             }
 
+            /* stylelint-disable selector-no-qualifying-type, indentation */
             &.is-shown {
+            /* stylelint-enable */
+
                 #{$name}-wrapper--lvl-1 {
                     @include helper-breakpoint-media-min($xl) {
                         opacity: 1;
