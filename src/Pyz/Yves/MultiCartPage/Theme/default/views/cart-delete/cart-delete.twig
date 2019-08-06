@@ -31,7 +31,7 @@
 
             <p>{{ "multi_cart_page.cart_delete_confirmation.trying_to_delete" | trans }}: <strong>{{ data.cartName }}</strong></p>
 
-            {% widget 'CartDeleteCompanyUsersListWidget' args [data.cart] only %}{% endwidget %}
+            {% widget 'CartDeleteSharingCompanyUsersListWidget' args [data.cart] only %}{% endwidget %}
 
             <div class="grid">
                 <a href="{{ data.backUrl }}" class="col col--sm-12 col--md-auto button button--hollow spacing-right spacing-right--big spacing-top spacing-top">

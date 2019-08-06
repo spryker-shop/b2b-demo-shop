@@ -14,8 +14,8 @@
     canRemove: false,
     quantity: null,
     imageModifiers: [],
-
     isShoppingList: false,
+    currencyIsoCode: null,
 } %}
 
 {% block body %}
@@ -157,7 +157,8 @@
                                         modifiers: ['cart'],
                                         data: {
                                             amount: price,
-                                            originalAmount: data.listItem.prices.ORIGINAL is not defined or data.listItem.prices.ORIGINAL is empty ? null : data.listItem.prices.ORIGINAL, 
+                                            originalAmount: data.listItem.prices.ORIGINAL is not defined or data.listItem.prices.ORIGINAL is empty ? null : data.listItem.prices.ORIGINAL,
+                                            currencyIsoCode: data.currencyIsoCode,
                                         },
                                     } only %}
                                 {% endblock %}

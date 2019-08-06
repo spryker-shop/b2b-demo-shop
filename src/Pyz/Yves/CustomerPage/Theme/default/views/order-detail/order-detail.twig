@@ -95,4 +95,14 @@
 
     {{ widgetBlock('CustomerReorderWidgetPlugin', 'formActions', data.order) }}
     {{ widgetBlock('CustomerReorderWidgetPlugin', 'formEnd', data.order) }}
+
+    <div class="box">
+        {% widget 'CommentThreadWidget' args [
+            data.order.idSalesOrder,
+            'sales_order',
+            app.request.requestUri,
+            data.order.commentThread
+        ] only %}
+        {% endwidget %}
+    </div>
 {% endblock %}

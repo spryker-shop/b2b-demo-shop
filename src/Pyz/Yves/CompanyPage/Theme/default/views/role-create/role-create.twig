@@ -2,9 +2,8 @@
 
 {% define data = {
     form: _view.companyRoleForm,
-
     title: 'company.account.company_role.create' | trans,
-    activePage: 'role'
+    activePage: 'role',
 } %}
 
 {% block breadcrumbs %}
@@ -13,40 +12,41 @@
             steps: [
                 {
                     label: 'company.account.page-title' | trans,
-                    url: url('company/overview')
+                    url: url('company/overview'),
                 }, {
                     label: 'company.account.company_role' | trans,
-                    url: url('company/company-role')
+                    url: url('company/company-role'),
                 }, {
-                    label: 'company.account.company_role.create' | trans
-                }
-            ]
-        }
+                    label: 'company.account.company_role.create' | trans,
+                },
+            ],
+        },
     } only %}
 {% endblock %}
 
 {% block companyContent %}
     {% include molecule('action-bar', 'ShopUi') with {
         data: {
-            title: 'company.account.company_role.create' | trans
-        }
+            title: 'company.account.company_role.create' | trans,
+        },
     } only %}
 
     {% include molecule('form') with {
         modifiers: ['narrow'],
         data: {
             form: data.form,
+            shouldRequireMessage: true,
             submit: {
                 enable: true,
-                class: 'form__action--expand-sm-md form__action--sm-md-first button'
+                class: 'form__action--expand-sm-md form__action--sm-md-first button',
             },
             cancel: {
                 enable: true,
                 url: url('company/company-role'),
                 text: 'general.back.button' | trans,
                 icon: null,
-                class: 'form__action--expand-sm-md button button--hollow'
-            }
-        }
+                class: 'form__action--expand-sm-md button button--hollow',
+            },
+        },
     } only %}
 {% endblock %}

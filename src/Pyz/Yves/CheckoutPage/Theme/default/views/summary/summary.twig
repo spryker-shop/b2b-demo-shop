@@ -57,6 +57,18 @@
                     iconModifiers: 'summary-shipping'
                 }
             } only %}
+
+            {% if data.transfer.idQuote is not empty %}
+                <div class="summary-sidebar-item">
+                    {% widget 'CommentThreadWidget' args [
+                        data.transfer.idQuote,
+                        'quote',
+                        app.request.requestUri,
+                        data.transfer.commentThread
+                    ] only %}
+                    {% endwidget %}
+                </div>
+            {% endif %}
         </div>
 
         <div class="col col--sm-12 col--xl-8">
