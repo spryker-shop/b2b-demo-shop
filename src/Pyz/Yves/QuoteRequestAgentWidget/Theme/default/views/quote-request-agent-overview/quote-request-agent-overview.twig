@@ -7,7 +7,7 @@
 
 {% block requestList %}
     <ul class="col menu menu--inline">
-        <li class="menu__item menu__item--has-children-dropdown">
+        <li class="menu__item menu__item--has-children-dropdown menu__item--has-overlay">
             <a class="grid grid--center text-secondary" href="{{ path('agent/quote-request') }}" title="{{ 'quote_request_agent_widget.quote_request' | trans }}">
                 {% include atom('icon') with {
                     class: 'col col-sm-12',
@@ -16,7 +16,7 @@
                         name: 'message',
                     },
                 } only %}
-                <div class="col col--sm-12 text-center">{{ 'quote_request_agent_widget.quote_request' | trans }}</div>
+                <div class="col col--sm-12 text-center">{{ 'quote_request_widget.request_for_quote.list.title' | trans }}</div>
             </a>
             <ul class="menu menu--wider text-left">
                 {% if data.quoteRequestOverviewCollection.quoteRequests | length %}

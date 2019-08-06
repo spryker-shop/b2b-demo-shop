@@ -11,6 +11,7 @@ use Spryker\Zed\BusinessOnBehalfDataImport\Communication\Plugin\DataImport\Busin
 use Spryker\Zed\CategoryDataImport\Communication\Plugin\CategoryDataImportPlugin;
 use Spryker\Zed\CmsPageDataImport\Communication\Plugin\CmsPageDataImportPlugin;
 use Spryker\Zed\CmsPageDataImport\Communication\Plugin\CmsPageStoreDataImportPlugin;
+use Spryker\Zed\CommentDataImport\Communication\Plugin\CommentDataImportPlugin;
 use Spryker\Zed\CompanyBusinessUnitDataImport\Communication\Plugin\CompanyBusinessUnitAddressDataImportPlugin;
 use Spryker\Zed\CompanyBusinessUnitDataImport\Communication\Plugin\CompanyBusinessUnitDataImportPlugin;
 use Spryker\Zed\CompanyBusinessUnitDataImport\Communication\Plugin\CompanyBusinessUnitUserDataImportPlugin;
@@ -22,6 +23,9 @@ use Spryker\Zed\CompanyUnitAddressDataImport\Communication\Plugin\CompanyUnitAdd
 use Spryker\Zed\CompanyUnitAddressLabelDataImport\Communication\Plugin\CompanyUnitAddressLabelDataImportPlugin;
 use Spryker\Zed\CompanyUnitAddressLabelDataImport\Communication\Plugin\CompanyUnitAddressLabelRelationDataImportPlugin;
 use Spryker\Zed\CompanyUserDataImport\Communication\Plugin\DataImport\CompanyUserDataImportPlugin;
+use Spryker\Zed\ContentBannerDataImport\Communication\Plugin\ContentBannerDataImportPlugin;
+use Spryker\Zed\ContentProductDataImport\Communication\Plugin\ContentProductAbstractListDataImportPlugin;
+use Spryker\Zed\ContentProductSetDataImport\Communication\Plugin\ContentProductSetDataImportPlugin;
 use Spryker\Zed\DataImport\Communication\Plugin\DataImportEventBehaviorPlugin;
 use Spryker\Zed\DataImport\Communication\Plugin\DataImportPublisherPlugin;
 use Spryker\Zed\DataImport\DataImportDependencyProvider as SprykerDataImportDependencyProvider;
@@ -202,6 +206,10 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
             new QuoteRequestDataImportPlugin(),
             new QuoteRequestVersionDataImportPlugin(),
             new PriceProductScheduleDataImportPlugin(),
+            new ContentBannerDataImportPlugin(),
+            new ContentProductAbstractListDataImportPlugin(),
+            new ContentProductSetDataImportPlugin(),
+            new CommentDataImportPlugin(),
         ];
     }
 

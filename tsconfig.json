@@ -26,6 +26,9 @@
             "ShopUi/*": [
                 "./vendor/spryker-shop/shop-ui/src/SprykerShop/Yves/ShopUi/Theme/default/*"
             ],
+            "CommentWidget/*": [
+                "./vendor/spryker-shop/comment-widget/src/SprykerShop/Yves/CommentWidget/Theme/default/*"
+            ],
             "CompanyWidget/*": [
                 "./vendor/spryker-shop/company-widget/src/SprykerShop/Yves/CompanyWidget/Theme/default/*"
             ],
@@ -35,9 +38,6 @@
             "CustomerPage/*": [
                 "./vendor/spryker-shop/customer-page/src/SprykerShop/Yves/CustomerPage/Theme/default/*"
             ],
-            "ProductSearchWidget/*": [
-              "./vendor/spryker-shop/product-search-widget/src/SprykerShop/Yves/ProductSearchWidget/Theme/default/*"
-            ],
             "SprykerShop/*": [
                 "./vendor/spryker-shop/*"
             ]
@@ -45,8 +45,7 @@
     },
     "files": [
         "./src/Pyz/Yves/ShopUi/Theme/default/app.ts",
-        "./src/Pyz/Yves/ShopUi/Theme/default/vendor.ts",
-        "./src/Pyz/Yves/ShopUi/Theme/default/es6-polyfill.ts"
+        "./src/Pyz/Yves/ShopUi/Theme/default/vendor.ts"
     ],
     "include": [
         "./vendor/spryker-shop/**/*",

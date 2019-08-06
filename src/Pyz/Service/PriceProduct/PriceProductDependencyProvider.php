@@ -21,8 +21,10 @@ class PriceProductDependencyProvider extends SprykerPriceProductDependencyProvid
     protected function getPriceProductDecisionPlugins(): array
     {
         return array_merge([
-            new MerchantRelationshipPriceProductFilterPlugin(),
             new PriceProductVolumeFilterPlugin(),
+
+            // Should be placed after PriceProductVolumeFilterPlugin
+            new MerchantRelationshipPriceProductFilterPlugin(),
         ], parent::getPriceProductDecisionPlugins());
     }
 }

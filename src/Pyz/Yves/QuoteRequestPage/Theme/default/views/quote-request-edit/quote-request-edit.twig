@@ -17,7 +17,7 @@
                     url: path('customer/overview'),
                 },
                 {
-                    label: 'quote_request_page.quote_request' | trans,
+                    label: 'quote_request_widget.request_for_quote.list.title' | trans,
                     url: path('quote-request'),
                 },
                 {
@@ -74,15 +74,15 @@
                 } only %}
                     {% block latestVersionVisibilityStatus %}{% endblock %}
                     {% block quoteActions %}
-                        <a class="spacing-bottom button button--expand button--hollow"
+                        <a class="spacing-bottom button button--expand button--hollow button--second"
                            href="{{ url('quote-request/details', {quoteRequestReference: data.quoteRequest.quoteRequestReference}) }}">
                             {{ 'quote_request_page.quote_request.actions.back_to_view' | trans }}
                         </a>
-                        <a class="spacing-bottom button button--expand button--edit-items"
+                        <a class="spacing-bottom button button--expand button--hollow"
                            href="{{ url('quote-request/edit-items', { quoteRequestReference: (data.quoteRequest.quoteRequestReference) }) }}">
                             {{ 'quote_request_page.quote_request.actions.edit_items' | trans }}
                         </a>
-                        <button type="submit" name="save" class="spacing-bottom button button--expand button--success">
+                        <button type="submit" name="save" class="spacing-bottom button button--expand button--hollow">
                             {{ 'quote_request_page.quote_request.actions.save' | trans }}
                         </button>
                         <button type="submit" name="sendToUser" class="spacing-bottom button button--expand button--success">

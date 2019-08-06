@@ -8,7 +8,6 @@ use Spryker\Service\FlysystemLocalFileSystem\Plugin\Flysystem\LocalFilesystemBui
 use Spryker\Shared\Acl\AclConstants;
 use Spryker\Shared\Application\ApplicationConstants;
 use Spryker\Shared\Auth\AuthConstants;
-use Spryker\Shared\Cms\CmsConstants;
 use Spryker\Shared\CmsGui\CmsGuiConstants;
 use Spryker\Shared\Collector\CollectorConstants;
 use Spryker\Shared\Customer\CustomerConstants;
@@ -21,13 +20,13 @@ use Spryker\Shared\FileManager\FileManagerConstants;
 use Spryker\Shared\FileManagerGui\FileManagerGuiConstants;
 use Spryker\Shared\FileSystem\FileSystemConstants;
 use Spryker\Shared\Flysystem\FlysystemConstants;
+use Spryker\Shared\GlueApplication\GlueApplicationConstants;
 use Spryker\Shared\Kernel\ClassResolver\Cache\Provider\File;
 use Spryker\Shared\Kernel\KernelConstants;
 use Spryker\Shared\Kernel\Store;
 use Spryker\Shared\Log\LogConstants;
 use Spryker\Shared\Monitoring\MonitoringConstants;
 use Spryker\Shared\Oauth\OauthConstants;
-use Spryker\Shared\OauthCustomerConnector\OauthCustomerConnectorConstants;
 use Spryker\Shared\Oms\OmsConstants;
 use Spryker\Shared\Propel\PropelConstants;
 use Spryker\Shared\Queue\QueueConfig;
@@ -54,6 +53,11 @@ use Spryker\Zed\Log\Communication\Plugin\ZedLoggerConfigPlugin;
 use Spryker\Zed\Oms\OmsConfig;
 use Spryker\Zed\Propel\PropelConfig;
 use SprykerEco\Shared\Loggly\LogglyConstants;
+use SprykerShop\Shared\CalculationPage\CalculationPageConstants;
+use SprykerShop\Shared\ErrorPage\ErrorPageConstants;
+use SprykerShop\Shared\ShopApplication\ShopApplicationConstants;
+use SprykerShop\Shared\ShopUi\ShopUiConstants;
+use Twig\Cache\FilesystemCache;
 
 $CURRENT_STORE = Store::getInstance()->getStoreName();
 
@@ -75,6 +79,7 @@ $config[KernelConstants::CORE_NAMESPACES] = [
     'SprykerShop',
     'SprykerEco',
     'Spryker',
+    'SprykerSdk',
 ];
 
 // ---------- Propel
@@ -215,23 +220,23 @@ $config[SearchConstants::SEARCH_INDEX_NAME_SUFFIX] = '';
 
 // ---------- Twig
 $config[TwigConstants::YVES_TWIG_OPTIONS] = [
-    'cache' => new Twig_Cache_Filesystem(
+    'cache' => new FilesystemCache(
         sprintf(
             '%s/data/%s/cache/Yves/twig',
             APPLICATION_ROOT_DIR,
             $CURRENT_STORE
         ),
-        Twig_Cache_Filesystem::FORCE_BYTECODE_INVALIDATION
+        FilesystemCache::FORCE_BYTECODE_INVALIDATION
     ),
 ];
 $config[TwigConstants::ZED_TWIG_OPTIONS] = [
-    'cache' => new Twig_Cache_Filesystem(
+    'cache' => new FilesystemCache(
         sprintf(
             '%s/data/%s/cache/Zed/twig',
             APPLICATION_ROOT_DIR,
             $CURRENT_STORE
         ),
-        Twig_Cache_Filesystem::FORCE_BYTECODE_INVALIDATION
+        FilesystemCache::FORCE_BYTECODE_INVALIDATION
     ),
 ];
 $config[TwigConstants::YVES_PATH_CACHE_FILE] = sprintf(
@@ -250,8 +255,6 @@ $config[TwigConstants::ZED_PATH_CACHE_FILE] = sprintf(
 $config[ZedNavigationConstants::ZED_NAVIGATION_CACHE_ENABLED] = true;
 
 // ---------- Zed request
-$config[ZedRequestConstants::TRANSFER_USERNAME] = 'yves';
-$config[ZedRequestConstants::TRANSFER_PASSWORD] = 'o7&bg=Fz;nSslHBC';
 $config[ZedRequestConstants::TRANSFER_DEBUG_SESSION_FORWARD_ENABLED] = false;
 $config[ZedRequestConstants::TRANSFER_DEBUG_SESSION_NAME] = 'XDEBUG_SESSION';
 
@@ -353,11 +356,6 @@ $config[ApplicationConstants::ZED_SSL_ENABLED] =
     = false;
 $config[ApplicationConstants::ZED_SSL_EXCLUDED] = ['heartbeat/index'];
 
-// ---------- Theme
-$YVES_THEME = 'default';
-$config[TwigConstants::YVES_THEME] = $YVES_THEME;
-$config[CmsConstants::YVES_THEME] = $YVES_THEME;
-
 // ---------- Error handling
 $config[ErrorHandlerConstants::YVES_ERROR_PAGE] = APPLICATION_ROOT_DIR . '/public/Yves/errorpage/error.html';
 $config[ErrorHandlerConstants::ZED_ERROR_PAGE] = APPLICATION_ROOT_DIR . '/public/Zed/errorpage/error.html';
@@ -383,6 +381,7 @@ $config[LogConstants::LOG_FILE_PATH_GLUE] = $baseLogFilePath . '/GLUE/applicatio
 
 $config[LogConstants::EXCEPTION_LOG_FILE_PATH_YVES] = $baseLogFilePath . '/YVES/exception.log';
 $config[LogConstants::EXCEPTION_LOG_FILE_PATH_ZED] = $baseLogFilePath . '/ZED/exception.log';
+$config[LogConstants::EXCEPTION_LOG_FILE_PATH_GLUE] = $baseLogFilePath . '/GLUE/exception.log';
 $config[LogConstants::LOG_FOLDER_PATH_INSTALLATION] = sprintf('%s/data/install/logs', APPLICATION_ROOT_DIR);
 
 $config[LogConstants::LOG_SANITIZE_FIELDS] = [
@@ -466,7 +465,7 @@ $config[EventConstants::EVENT_CHUNK] = 500;
 $config[EventBehaviorConstants::EVENT_BEHAVIOR_TRIGGERING_ACTIVE] = true;
 
 // ---------- Customer
-$config[CustomerConstants::CUSTOMER_SECURED_PATTERN] = '(^/login_check$|^(/en|/de)?/customer($|/)|^(/en|/de)?/wishlist($|/)|^(/en|/de)?/shopping-list($|/)|^(/en|/de)?/company(?!/register)($|/)|^(/en|/de)?/multi-cart($|/)|^(/en|/de)?/shared-cart($|/)|^(/en|/de)?/cart(?!/add)($|/)|^(/en|/de)?/checkout($|/))';
+$config[CustomerConstants::CUSTOMER_SECURED_PATTERN] = '(^/login_check$|^(/en|/de)?/customer($|/)|^(/en|/de)?/wishlist($|/)|^(/en|/de)?/shopping-list($|/)|^(/en|/de)?/quote-request($|/)|^(/en|/de)?/comment($|/)|^(/en|/de)?/company(?!/register)($|/)|^(/en|/de)?/multi-cart($|/)|^(/en|/de)?/shared-cart($|/)|^(/en|/de)?/cart(?!(/add|/preview))($|/)|^(/en|/de)?/checkout($|/))';
 $config[CustomerConstants::CUSTOMER_ANONYMOUS_PATTERN] = '^/.*';
 
 // ---------- Taxes
@@ -482,15 +481,18 @@ $config[LogglyConstants::TOKEN] = 'loggly-token:sample:123456';
 // ---------- CMS
 $config[CmsGuiConstants::CMS_FOLDER_PATH] = '@Cms/templates/';
 
+// ----------- Glue Application
+$config[GlueApplicationConstants::GLUE_APPLICATION_DOMAIN] = '';
+$config[GlueApplicationConstants::GLUE_APPLICATION_REST_DEBUG] = false;
+$config[GlueApplicationConstants::GLUE_APPLICATION_CORS_ALLOW_ORIGIN] = '';
+
 // ----------- OAUTH
 //Check how to generate https://oauth2.thephpleague.com/installation/
 $config[OauthConstants::PRIVATE_KEY_PATH] = 'file://';
 $config[OauthConstants::PUBLIC_KEY_PATH] = 'file://';
 $config[OauthConstants::ENCRYPTION_KEY] = '';
-
-// ----------- AuthRestApi
-$config[OauthCustomerConnectorConstants::OAUTH_CLIENT_IDENTIFIER] = '';
-$config[OauthCustomerConnectorConstants::OAUTH_CLIENT_SECRET] = '';
+$config[OauthConstants::OAUTH_CLIENT_IDENTIFIER] = '';
+$config[OauthConstants::OAUTH_CLIENT_SECRET] = '';
 
 // ---------- FileSystem
 $config[FileSystemConstants::FILESYSTEM_SERVICE] = [
@@ -519,7 +521,7 @@ $config[DataImportConstants::IS_ENABLE_INTERNAL_IMAGE] = false;
 
 // ----------- Translator
 $config[TranslatorConstants::TRANSLATION_ZED_FALLBACK_LOCALES] = [
-    'de_DE' => ['en_EN'],
+    'de_DE' => ['en_US'],
 ];
 $config[TranslatorConstants::TRANSLATION_ZED_CACHE_DIRECTORY] = sprintf(
     '%s/data/%s/cache/Zed/translation',
@@ -529,3 +531,22 @@ $config[TranslatorConstants::TRANSLATION_ZED_CACHE_DIRECTORY] = sprintf(
 $config[TranslatorConstants::TRANSLATION_ZED_FILE_PATH_PATTERNS] = [
     APPLICATION_ROOT_DIR . '/data/translation/Zed/*/[a-z][a-z]_[A-Z][A-Z].csv',
 ];
+
+// ----------- Kernel test
+$config[KernelConstants::ENABLE_CONTAINER_OVERRIDING] = false;
+
+// ----------- Calculation page
+$config[CalculationPageConstants::ENABLE_CART_DEBUG] = false;
+
+// ----------- Error page
+$config[ErrorPageConstants::ENABLE_ERROR_404_STACK_TRACE] = false;
+
+// ----------- Application
+$config[ApplicationConstants::TWIG_ENVIRONMENT_NAME]
+    = $config[ShopApplicationConstants::TWIG_ENVIRONMENT_NAME]
+    = APPLICATION_ENV;
+
+$config[ApplicationConstants::ENABLE_PRETTY_ERROR_HANDLER] = false;
+
+// ----------- Yves assets
+$config[ShopUiConstants::YVES_ASSETS_URL_PATTERN] = sprintf('/assets/%s/%s/', $CURRENT_STORE, '%theme%');

@@ -1,4 +1,5 @@
 import Component from 'ShopUi/models/component';
+import { mount } from 'ShopUi/app';
 import $ from 'jquery/dist/jquery';
 import 'slick-carousel';
 
@@ -12,7 +13,10 @@ export default class SlickCarousel extends Component {
     }
 
     protected mapEvents(): void {
-        $(this.slider).on('init', () => this.showSlider());
+        $(this.slider).on('init', async() => {
+            this.showSlider();
+            await mount();
+        });
     }
 
     protected showSlider(): void {

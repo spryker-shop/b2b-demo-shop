@@ -1,0 +1,73 @@
+{% extends template('widget') %}
+
+{% define data = {
+    ownerId: _widget.ownerId,
+    ownerType: _widget.ownerType,
+    returnUrl: _widget.returnUrl,
+    customer: _widget.customer,
+    taggedComments: _widget.taggedComments,
+    availableCommentTags: _widget.availableCommentTags,
+} %}
+
+{% set commentListOptions = [] %}
+{% set commentThreadSelectClass = 'js-comments-cart' %}
+
+{% for key, comments in data.taggedComments %}
+    {% set commentListOptions = commentListOptions | merge([{
+        value: key,
+        count: comments | length,
+    }]) %}
+{% endfor %}
+
+{% block body %}
+    {% if data.taggedComments is not empty %}
+        {% block selectCommentThread %}
+            {% embed molecule('custom-select') with {
+                modifiers: ['full-width'],
+                class: 'spacing-bottom',
+                attributes: {
+                    'config-width': '100%',
+                },
+                embed: {
+                    commentListOptions: commentListOptions,
+                    commentThreadSelectClass: commentThreadSelectClass,
+                },
+            } only %}
+                {% block selectClass %}{{ config.jsName }} {{ embed.commentThreadSelectClass }}{% endblock %}
+                {% block options %}
+                    {% for commentOption in embed.commentListOptions %}
+                        <option value="{{ commentOption.value }}">
+                            {{ ('comment_widget.tags.' ~ commentOption.value) | trans ~ ' (' ~ commentOption.count ~ ')' }}
+                        </option>
+                    {% endfor %}
+                {% endblock %}
+            {% endembed %}
+        {% endblock %}
+
+        {% block commentThreadList %}
+            {% include molecule('comment-thread-list', 'CommentWidget') with {
+                attributes: {
+                    'comment-thread-select-selector': '.' ~ commentThreadSelectClass,
+                },
+                data: {
+                    commentsThreadList: data.taggedComments,
+                    availableCommentTags: data.availableCommentTags,
+                    returnUrl: data.returnUrl,
+                    idCustomer: data.customer ? data.customer.idCustomer : null,
+                },
+            } only %}
+        {% endblock %}
+    {% endif %}
+
+    {% block newCommentForm %}
+        {% if data.customer %}
+            {% include molecule('add-comment-form', 'CommentWidget') with {
+                data: {
+                    returnUrl: data.returnUrl,
+                    ownerId: data.ownerId,
+                    ownerType: data.ownerType,
+                },
+            } only %}
+        {% endif %}
+    {% endblock %}
+{% endblock %}

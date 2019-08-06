@@ -54,7 +54,7 @@ class CustomerAccessForm extends SprykerCustomerAccessForm
      *
      * @return $this
      */
-    protected function addContentTypeAccessManageable(FormBuilderInterface $builder, array $options): self
+    protected function addContentTypeAccessManageable(FormBuilderInterface $builder, array $options)
     {
         $builder->add(static::FIELD_CONTENT_TYPE_ACCESS, ChoiceType::class, [
             'expanded' => true,
@@ -87,7 +87,7 @@ class CustomerAccessForm extends SprykerCustomerAccessForm
      *
      * @return $this
      */
-    protected function addContentTypeAccessNonManageable(FormBuilderInterface $builder, array $options): self
+    protected function addContentTypeAccessNonManageable(FormBuilderInterface $builder, array $options)
     {
         $builder->add(static::FIELD_CONTENT_TYPE_ACCESS_NON_MANAGEABLE, ChoiceType::class, [
             'mapped' => false,
