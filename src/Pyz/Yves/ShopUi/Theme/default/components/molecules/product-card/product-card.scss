@@ -65,6 +65,10 @@ $name: '.product-card';
                 padding: 0 $catalog-space-x rem(26);
             }
         }
+
+        &--sets {
+            padding-bottom: rem(66);
+        }
     }
 
     &__image-wrap {
@@ -261,5 +265,17 @@ $name: '.product-card';
     &__actions {
         position: relative;
         z-index: $setting-zi-element + 1;
+
+        &--sticky-bottom {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: rem(26);
+
+            @include helper-breakpoint-media-min($xl) {
+                left: rem(14);
+                right: rem(14);
+            }
+        }
     }
 }
