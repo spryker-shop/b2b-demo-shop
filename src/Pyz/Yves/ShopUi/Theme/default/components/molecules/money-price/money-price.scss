@@ -1,29 +1,119 @@
-@mixin shop-ui-money-price($name: '.money-price') {
-    #{$name} {
-        display: block;
+@include shop-ui-money-price {
+    $name: &;
 
-        &__amount {
+    &--pdp {
+        margin-top: rem(12);
+        margin-bottom: rem(23);
+
+        @include helper-breakpoint-media-min($lg) {
+            margin-top: 0;
+        }
+    }
+
+    &--cart {
+        margin: 0 0 $setting-grid-space;
+        width: 100%;
+    }
+
+    &--available {
+        margin: 0;
+
+        @include helper-breakpoint-media-min($lg) {
+            margin: 0 0 $setting-grid-space;
+        }
+    }
+
+    &--summary {
+        margin: 0;
+    }
+
+    &__amount {
+        font-size: rem(16);
+        font-weight: fw(medium);
+        line-height: map_get($setting-font-line-height, 2);
+        color: $setting-color-gray-4;
+
+        @include helper-breakpoint-media-min($lg) {
             @include helper-font-size(big);
+        }
 
-            &--original {
-                @include helper-font-size(small);
-                display: block;
-                color: $setting-color-dark;
-                text-decoration: line-through;
+        &--pdp {
+            font-size: rem(24);
+            font-weight: rem(bold);
+            line-height: normal;
+
+            @include helper-breakpoint-media-min($lg) {
+                font-size: rem(26);
             }
         }
 
-        &__tag {
-            margin-right: 0.25rem;
+        &--cart {
+            font-size: rem(18);
+            font-weight: fw(bold);
+            line-height: normal;
+            color: $setting-color-gray-5;
+        }
+
+        &--catalog {
+            color: $setting-color-gray-5;
+        }
+
+        &--original {
+            font-size: rem(15);
+            display: inline-block;
+            color: $setting-color-gray-2;
+            font-weight: fw(regular);
+
+            @include helper-breakpoint-media-min($lg) {
+                @include helper-font-size(big);
+            }
+
+            &#{$name}__amount--catalog-list {
+                @include helper-breakpoint-media-min($md) {
+                    margin-left: rem(4);
+                }
+            }
+
+            &#{$name}__amount--pdp {
+                @include helper-breakpoint-media-max($lg - 1) {
+                    font-size: rem(24);
+                    margin-right: rem(4);
+                }
+            }
+        }
+
+        &--alt {
             color: $setting-color-alt;
+            margin-right: rem(4);
+
+            &#{$name}__amount--catalog-list {
+                @include helper-breakpoint-media-min($md) {
+                    margin-right: 0;
+                }
+            }
+        }
+    }
+
+    &__mode {
+        color: $setting-color-gray-2;
+        font-size: rem(12);
+        font-weight: fw(regular);
+        line-height: rem(12);
+
+        @include helper-breakpoint-media-min($lg) {
+            margin-left: rem(5);
+            font-size: rem(12);
         }
 
-        &--secondary {
-            background-color: $setting-color-gray-7;
+        &--pdp {
+            font-size: rem(13);
+            line-height: normal;
         }
 
-        @content;
+        &--cart,
+        &--catalog-list,
+        &--block {
+            display: block;
+        }
     }
 }
-
-@include shop-ui-money-price();

@@ -152,7 +152,7 @@
                         {% block price %}
                             {% if can('SeePricePermissionPlugin') %}
                                 {% set subtotalPrice = data.listItem.unitSubtotalAggregation is defined ? data.listItem.unitSubtotalAggregation : data.listItem.price %}
-                                {% include molecule('price') with {
+                                {% include molecule('money-price') with {
                                     modifiers: ['cart'],
                                     data: {
                                         amount: subtotalPrice | money,
@@ -163,7 +163,7 @@
                         {% block totalPrice %}
                             {% if can('SeePricePermissionPlugin') %}
                                 {% set totalPrice = data.listItem.unitPrice is defined ? data.listItem.sumSubtotalAggregation : data.listItem.price %}
-                                {% embed molecule('price') with {
+                                {% embed molecule('money-price') with {
                                     class: 'box spacing spacing--inner spacing-y spacing-y--big',
                                     modifiers: ['cart'],
                                     data: {
