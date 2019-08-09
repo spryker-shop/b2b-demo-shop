@@ -16,7 +16,7 @@
 {% block body %}
     {% set addressSalutation = 'customer.salutation.' ~ data.address.salutation | lower %}
 
-    <li class="list__item">{{ addressSalutation | trans }} <strong>{{ data.address.firstName }} {{ data.address.lastName }}</strong></li>
+    <li class="list__item">{{ addressSalutation | trans }} <strong class="{{ component.renderClass(config.name ~ '__name', modifiers) }}">{{ data.address.firstName }} {{ data.address.lastName }}</strong></li>
 
     {% if data.address.company is not empty %}
         <li class="list__item">{{ data.address.company }}</li>
