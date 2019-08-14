@@ -1,0 +1,19 @@
+{% extends molecule('money-price', '@SprykerShop:ShopUi') %}
+
+{% define data = {
+    priceMode: app.priceMode,
+} %}
+
+{% block body %}
+    {{ parent() }}
+
+    <span class="{{ component.renderClass(config.name ~ '__mode', modifiers) }}">
+        {% if data.priceMode == 'GROSS_MODE' %}
+            {{ 'price.mode.incl_vat' | trans }}
+        {% endif %}
+
+        {% if data.priceMode == 'NET_MODE' %}
+            {{ 'price.mode.excl_vat' | trans }}
+        {% endif %}
+    </span>
+{% endblock %}

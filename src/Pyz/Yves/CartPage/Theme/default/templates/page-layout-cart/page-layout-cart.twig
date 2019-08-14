@@ -3,6 +3,7 @@
 {% define data = {
     cart: _view.cart,
     isQuoteEditable: _view.isQuoteEditable,
+    isQuoteLocked: _view.isQuoteLocked,
     cartItems: _view.cartItems,
     isQuoteValid: _view.isQuoteValid,
     attributes: _view.attributes,
@@ -155,6 +156,15 @@
                 </div>
             </div>
             <div class="col col--sm-12 col--xl-9">
+                {% if data.isQuoteLocked %}
+                    {% include molecule('cart-locking', 'CartPage') with {
+                        data: {
+                            quoteApprovals: data.cart.quoteApprovals,
+                            quoteRequestVersionReference: data.cart.quoteRequestVersionReference,
+                        },
+                    } %}
+                {% endif %}
+
                 {% for cartItem in transformedCartItems %}
                     {% block cartItem %}
                         {% embed molecule('product-item') with {
