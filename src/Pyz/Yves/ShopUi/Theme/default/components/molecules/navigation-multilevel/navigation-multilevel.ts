@@ -5,7 +5,6 @@ export default class NavigationMultilevel extends Component {
     readonly overlay: OverlayBlock;
     readonly triggers: HTMLElement[];
     readonly touchTriggers: HTMLElement[];
-    readonly targets: HTMLElement[];
 
     constructor() {
         super();
@@ -39,10 +38,6 @@ export default class NavigationMultilevel extends Component {
         }
     }
 
-    protected addClass(trigger: HTMLElement): void {
-        trigger.classList.add(this.classToToggle);
-    }
-
     protected onTriggerOut(event: Event): void {
         if (this.isWidthMoreThanAvailableBreakpoint()) {
             const trigger = <HTMLElement>event.currentTarget;
@@ -52,8 +47,15 @@ export default class NavigationMultilevel extends Component {
         }
     }
 
+    protected addClass(trigger: HTMLElement): void {
+        const dropItem = <HTMLElement>trigger.getElementsByClassName(`${this.jsName}__wrapper`)[0];
+        const reverseClass = this.isDropMenuReverse(trigger, dropItem) ? `${this.classToToggle}--reverse` : '';
+
+        trigger.classList.add(this.classToToggle, reverseClass);
+    }
+
     protected removeClass(trigger: HTMLElement): void {
-        trigger.classList.remove(this.classToToggle);
+        trigger.classList.remove(this.classToToggle, `${this.classToToggle}--reverse`);
     }
 
     protected onTriggerClick(event: Event): void {
@@ -67,6 +69,14 @@ export default class NavigationMultilevel extends Component {
             contentToShow.classList.toggle(contentToggleClass);
             trigger.classList.toggle('is-active');
         }
+    }
+
+    protected isDropMenuReverse(trigger: HTMLElement, dropItem: HTMLElement): boolean {
+        const leftPositionToTheMenuItem = trigger.offsetLeft;
+        const windowWidth = window.innerWidth;
+        const dropItemWidth = dropItem.offsetWidth;
+
+        return windowWidth - leftPositionToTheMenuItem < dropItemWidth;
     }
 
     protected isWidthMoreThanAvailableBreakpoint(): boolean {

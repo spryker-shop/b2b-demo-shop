@@ -1,0 +1,43 @@
+{% extends molecule('form', '@SprykerShop:ShopUi') %}
+
+{% define data = {
+    shouldRequireMessage: false,
+} %}
+
+{% block body %}
+    {% block title %}
+        {{ parent() }}
+    {% endblock %}
+
+    {% if data.enableStart %}
+        {{ form_start(data.form, data.options) }}
+    {% endif %}
+
+    <div class="{{config.name}}__container">
+        {% block errors %}
+            {{ parent() }}
+        {% endblock %}
+
+        {% block fieldset %}
+            {{ parent() }}
+        {% endblock %}
+
+        {% block message %}
+            {% if data.shouldRequireMessage %}
+                <div class="{{ config.name }}__require-message">
+                    <small class="text-secondary">{{ 'general.required_fields.text' | trans }}</small>
+                </div>
+            {% endif %}
+        {% endblock %}
+
+        <div class="{{config.name}}__actions">
+            {% block actions %}
+                {{ parent() }}
+            {% endblock %}
+        </div>
+    </div>
+
+    {% if data.enableEnd %}
+        {{ form_end(data.form) }}
+    {% endif %}
+{% endblock %}

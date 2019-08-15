@@ -154,6 +154,7 @@
 
             @include helper-breakpoint-media-min($lg) {
                 @include helper-effect-transition(opacity transform);
+                display: block;
                 position: absolute;
                 top: 100%;
                 left: 50%;
@@ -235,6 +236,12 @@
             &:hover {
                 color: $setting-color-gray-4;
             }
+        }
+
+        &__empty-cart {
+            display: block;
+            height: rem(38);
+            padding-right: rem(4);
         }
 
         @content;

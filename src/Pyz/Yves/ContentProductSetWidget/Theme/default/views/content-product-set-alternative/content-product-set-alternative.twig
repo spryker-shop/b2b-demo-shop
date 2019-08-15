@@ -1,0 +1,62 @@
+{% extends template('widget') %}
+
+{% define data = {
+    products: productViews,
+    name: productSet.name,
+    description: productSet.description,
+    images: productSet.imageSets.0.images | default([]),
+} %}
+
+{% block body %}
+    {% embed organism('product-set-cms', 'ProductSetWidget') ignore missing with {
+        data: {
+            products: data.products,
+            title: data.name,
+            description: data.description,
+            images: data.images,
+        },
+    } only %}
+        {% block header %}
+            {% embed organism('section') with {
+                modifiers: ['secondary'],
+                class: 'spacing-bottom spacing-bottom--reset',
+                data: {
+                    title: data.title,
+                },
+                embed: {
+                    description: data.description,
+                },
+            } only %}
+                {% block inner %}
+                    <div class="{{ config.name }}__text {{ config.name }}__text--full-width">
+                        {% if embed.description %}
+                            {{ embed.description }}
+                        {% endif %}
+                    </div>
+                {% endblock %}
+            {% endembed %}
+        {% endblock %}
+
+        {% block body %}
+            {{ parent() }}
+            {% if is_granted('ROLE_USER') %}
+                <form method="POST" class="spacing-top spacing-top--bigger text-center" action="{{ path('cart/add-items') }}">
+                    {% set isDisabled = false %}
+
+                    {% for product in data.products %}
+                        {% if product.idProductConcrete is not empty and product.available %}
+                            <input type="hidden" name="items[{{ loop.index }}][sku]" value="{{ product.sku }}">
+                            <input type="hidden" name="items[{{ loop.index }}][quantity]" value="1">
+                        {% else %}
+                            {% set isDisabled = true %}
+                        {% endif %}
+                    {% endfor %}
+
+                    <button type="submit" class="button" data-init-single-click {{ isDisabled ? 'disabled' }}>
+                        {{ 'product.set.detail.add-all-to-cart' | trans }}
+                    </button>
+                </form>
+            {% endif %}
+        {% endblock %}
+    {% endembed %}
+{% endblock %}

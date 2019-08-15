@@ -3,8 +3,8 @@
 {% define data = {
     forms: {
         register: _view.registerForm,
-        login: _view.loginForm
-    }
+        login: _view.loginForm,
+    },
 } %}
 
 {% block title %}
@@ -20,13 +20,14 @@
                     data: {
                         title: 'customer.registration.title' | trans,
                         form: data.forms.register,
+                        shouldRequireMessage: true,
                         options: {
-                            action: url('register')
+                            action: url('register'),
                         },
                         submit: {
                             enable: true,
-                            text: 'forms.submit.register' | trans
-                        }
+                            text: 'forms.submit.register' | trans,
+                        },
                     },
                     qa: 'register-form'
                 } only %}
@@ -38,13 +39,14 @@
                     data: {
                         title: 'customer.login.title' | trans,
                         form: data.forms.login,
+                        shouldRequireMessage: true,
                         layout: {
                             email: 'col col--sm-6',
-                            password: 'col col--sm-6'
+                            password: 'col col--sm-6',
                         },
                         submit: {
                             enable: true,
-                            text: 'forms.submit.login' | trans
+                            text: 'forms.submit.login' | trans,
                         },
                         cancel: {
                             enable: true,
@@ -52,9 +54,9 @@
                             text: 'forms.forgot-password' | trans,
                             icon: null,
                             class: 'link',
-                            qa: 'customer-forgot-password-link'
-                        }
-                    }
+                            qa: 'customer-forgot-password-link',
+                        },
+                    },
                 } only %}
             </div>
         </div>

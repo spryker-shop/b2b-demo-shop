@@ -19,7 +19,9 @@ class EntityTagsRestApiConfig extends SprykerEntityTagsRestApiConfig
     {
         return array_merge(
             parent::getEntityTagRequiredResources(),
-            [CartsRestApiConfig::RESOURCE_CARTS]
+            [
+                CartsRestApiConfig::RESOURCE_CARTS,
+            ]
         );
     }
 }
