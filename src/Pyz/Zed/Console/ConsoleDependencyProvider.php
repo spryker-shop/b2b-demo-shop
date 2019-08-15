@@ -120,8 +120,6 @@ use Spryker\Zed\StateMachine\Communication\Console\CheckConditionConsole as Stat
 use Spryker\Zed\StateMachine\Communication\Console\CheckTimeoutConsole as StateMachineCheckTimeoutConsole;
 use Spryker\Zed\StateMachine\Communication\Console\ClearLocksConsole as StateMachineClearLocksConsole;
 use Spryker\Zed\Storage\Communication\Console\StorageDeleteAllConsole;
-use Spryker\Zed\Storage\Communication\Console\StorageExportRdbConsole;
-use Spryker\Zed\Storage\Communication\Console\StorageImportRdbConsole;
 use Spryker\Zed\StorageRedis\Communication\Console\StorageRedisExportRdbConsole;
 use Spryker\Zed\StorageRedis\Communication\Console\StorageRedisImportRdbConsole;
 use Spryker\Zed\Synchronization\Communication\Console\ExportSynchronizedDataConsole;
@@ -246,9 +244,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new DeleteMigrationFilesConsole(),
 
             new DeleteLogFilesConsole(),
-            new StorageExportRdbConsole(),
             new StorageRedisExportRdbConsole(),
-            new StorageImportRdbConsole(),
             new StorageRedisImportRdbConsole(),
             new StorageDeleteAllConsole(),
             new SearchDeleteIndexConsole(),
