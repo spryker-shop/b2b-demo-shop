@@ -2,14 +2,14 @@
 
 {% define config = {
     name: 'filter-section',
-    tag: 'section'
+    tag: 'section',
 } %}
 
 {% define data = {
     facets: [],
     filterPath: null,
     categories: [],
-    isEmptyCategoryFilterValueVisible: null
+    isEmptyCategoryFilterValueVisible: null,
 } %}
 
 {% set isContentPresent = data.facets | length > 0 %}
