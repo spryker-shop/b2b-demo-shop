@@ -25,17 +25,22 @@
         {% if data.isAvailable %}
             {% embed molecule('custom-select') with {
                 modifiers: selectModifiers,
-                class: config.jsName ~ '__select',
+                class: 'name',
                 attributes: {
                     name: data.formName,
                     'config-width': '100%',
-                    'config-theme': data.selectTheme
+                    'config-theme': data.selectTheme,
                 },
                 embed: {
                     values: data.values,
-                    selectPlaceholder: data.selectPlaceholder
-                }
+                    selectPlaceholder: data.selectPlaceholder,
+                    jsName: config.jsName,
+                },
             } only %}
+                {% block selectClass %}
+                    {{ parent() }} {{ embed.jsName ~ '__select' }}
+                {% endblock %}
+
                 {% block options %}
                     <option>{{ embed.selectPlaceholder | trans }}</option>
                     {% for value in embed.values %}
