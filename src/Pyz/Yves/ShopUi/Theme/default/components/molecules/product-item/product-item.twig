@@ -187,7 +187,7 @@
                         {% block deleteButton %}
                             {% if data.canRemove %}
                                 <div class="col {{ config.name }}__delete-cart">
-                                    <a class="link link--icon {{ config.jsName }}-remove-button-{{ data.listItem.sku }}" data-group-key="{{ data.listItem.groupKey }}" href="{{ path('cart/remove', {'sku': data.listItem.sku, 'groupKey': data.listItem.groupKey }) }}" title="{{ 'cart.delete.item' | trans }}">
+                                    <a class="link link--icon" href="{{ path('cart/remove', {'sku': data.listItem.sku, 'groupKey': data.listItem.groupKey }) }}" title="{{ 'cart.delete.item' | trans }}" data-init-single-click>
                                         {% include atom('icon') with {
                                             modifiers: ['link'],
                                             data: {
@@ -197,12 +197,6 @@
                                         <span class="is-hidden-sm-md">{{ 'cart.delete.item' | trans }}</span>
                                     </a>
                                 </div>
-
-                                {% include molecule('action-single-click-enforcer') with {
-                                    attributes: {
-                                        'target-selector': '.' ~ config.jsName ~ '-remove-button-' ~ data.listItem.sku ~ '[data-group-key="' ~ data.listItem.groupKey ~ '"]',
-                                    },
-                                } only %}
                             {% endif %}
                         {% endblock %}
                     </div>
