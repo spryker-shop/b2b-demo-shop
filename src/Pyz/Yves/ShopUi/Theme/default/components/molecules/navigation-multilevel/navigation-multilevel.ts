@@ -5,6 +5,7 @@ export default class NavigationMultilevel extends Component {
     readonly overlay: OverlayBlock;
     readonly triggers: HTMLElement[];
     readonly touchTriggers: HTMLElement[];
+    protected readonly reverseClass: string = 'menu-wrapper--reverse';
 
     constructor() {
         super();
@@ -15,6 +16,7 @@ export default class NavigationMultilevel extends Component {
 
     protected readyCallback(): void {
         this.mapEvents();
+        this.addReverseClassToDropDownMenu();
     }
 
     protected mapEvents(): void {
@@ -26,6 +28,15 @@ export default class NavigationMultilevel extends Component {
         });
         this.touchTriggers.forEach((trigger: HTMLElement) => {
             trigger.addEventListener('click', (event: Event) => this.onTriggerClick(event));
+        });
+    }
+
+    protected addReverseClassToDropDownMenu(): void {
+        this.triggers.forEach((trigger: HTMLElement) => {
+            const dropItem = <HTMLElement>trigger.getElementsByClassName(`${this.jsName}__wrapper`)[0];
+            const reverseClass = this.isDropMenuReverse(trigger, dropItem) ? this.reverseClass : undefined;
+
+            dropItem ? dropItem.classList.add(reverseClass) : undefined;
         });
     }
 
@@ -48,14 +59,11 @@ export default class NavigationMultilevel extends Component {
     }
 
     protected addClass(trigger: HTMLElement): void {
-        const dropItem = <HTMLElement>trigger.getElementsByClassName(`${this.jsName}__wrapper`)[0];
-        const reverseClass = this.isDropMenuReverse(trigger, dropItem) ? `${this.classToToggle}--reverse` : '';
-
-        trigger.classList.add(this.classToToggle, reverseClass);
+        trigger.classList.add(this.classToToggle);
     }
 
     protected removeClass(trigger: HTMLElement): void {
-        trigger.classList.remove(this.classToToggle, `${this.classToToggle}--reverse`);
+        trigger.classList.remove(this.classToToggle);
     }
 
     protected onTriggerClick(event: Event): void {
@@ -74,7 +82,7 @@ export default class NavigationMultilevel extends Component {
     protected isDropMenuReverse(trigger: HTMLElement, dropItem: HTMLElement): boolean {
         const leftPositionToTheMenuItem = trigger.offsetLeft;
         const windowWidth = window.innerWidth;
-        const dropItemWidth = dropItem.offsetWidth;
+        const dropItemWidth = dropItem ? dropItem.offsetWidth : 0;
 
         return windowWidth - leftPositionToTheMenuItem < dropItemWidth;
     }
