@@ -30,7 +30,7 @@
     {% include molecule('ajax-loader') with {
         modifiers: ['big'],
         attributes: {
-            'provider-selector': '.' ~ config.jsName ~ '__ajax-provider',
+            'provider-class-name': config.jsName ~ '__ajax-provider',
         },
     } only %}
 {% endblock %}

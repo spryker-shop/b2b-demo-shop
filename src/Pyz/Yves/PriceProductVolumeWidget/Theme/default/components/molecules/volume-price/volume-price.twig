@@ -12,22 +12,22 @@
 } %}
 
 {% block class %}
-    {{ parent() }} price--pdp
+    {{ parent() }} money-price--pdp
 {% endblock %}
 
 {% block body %}
 
-    <span class="price__amount price__amount--pdp {{ config.name }}__amount {% if data.originalAmount is not empty -%} price__amount--alt {%- endif -%}">
+    <span class="money-price__amount money-price__amount--pdp {{ config.name }}__amount {% if data.originalAmount is not empty -%} money-price__amount--alt {%- endif -%}">
         <span class="{{ config.jsName }}__price {{ config.name }}__price">
             {{ data.amount | money }}
         </span>
     </span>
 
     {% if data.originalAmount is not empty and data.originalAmount > data.amount -%}
-        <span class="price__amount price__amount--pdp {{config.name}}__amount {{config.name}}__amount--original">{{ data.originalAmount | money }}</span>
+        <span class="money-price__amount money-price__amount--pdp {{config.name}}__amount {{config.name}}__amount--original">{{ data.originalAmount | money }}</span>
     {%- endif -%}
 
-    <span class="price__mode price__mode--pdp">
+    <span class="money-price__mode money-price__mode--pdp">
 
         {% if data.priceMode == 'GROSS_MODE' %}
             {{ 'price.mode.incl_vat' | trans }}

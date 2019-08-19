@@ -54,16 +54,11 @@
     {% endif %}
 
     <div class="spacing-y spacing-y--big">
-        <a class="{{ config.jsName }}__action button button--hollow spacing-right" href="{{ data.idCompanyBusinessUnit ? url('company/business-unit/update', {'id': data.idCompanyBusinessUnit }) : url('company/business-unit') }}" title="{{ 'company.company_business_unit.delete.confirmation.back' | trans }}">
+        <a class="button button--hollow spacing-right" href="{{ data.idCompanyBusinessUnit ? url('company/business-unit/update', {'id': data.idCompanyBusinessUnit }) : url('company/business-unit') }}" title="{{ 'company.company_business_unit.delete.confirmation.back' | trans }}" data-init-single-click>
             {{ 'company.company_business_unit.delete.confirmation.back' | trans }}
         </a>
-        <a class="{{ config.jsName }}__action button button--alert" href="{{ url('company/address/delete', {'id': data.companyUnitAddress.idCompanyUnitAddress, 'idCompanyBusinessUnit': data.idCompanyBusinessUnit }) }}" title="{{ 'company.account.business_unit.delete' | trans }}">
+        <a class="button button--alert" href="{{ url('company/address/delete', {'id': data.companyUnitAddress.idCompanyUnitAddress, 'idCompanyBusinessUnit': data.idCompanyBusinessUnit }) }}" title="{{ 'company.account.business_unit.delete' | trans }}" data-init-single-click>
             {{ 'company.account.business_unit.delete' | trans }}
         </a>
-        {% include molecule('action-single-click-enforcer') with {
-            attributes: {
-                'target-selector': '.' ~ config.jsName ~ '__action',
-            },
-        } only %}
     </div>
 {% endblock %}
