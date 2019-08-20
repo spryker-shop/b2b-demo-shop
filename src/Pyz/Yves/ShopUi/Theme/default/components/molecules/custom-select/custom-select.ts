@@ -16,12 +16,15 @@ export default class CustomSelect extends Component {
         this.$select = $(this.select);
 
         this.mapEvents();
-        this.initSelect();
-        this.removeAttributeTitle();
+
+        if (this.autoInit) {
+            this.initSelect();
+            this.removeAttributeTitle();
+        }
     }
 
     protected mapEvents(): void {
-        this.$select.on('select2:select', () => this.onChangeSelect());
+        this.changeSelectEvent();
         if (this.configDropdownRight) {
             this.$select.on('select2:open', () => {
                 this.changeDropdownPosition();
@@ -57,7 +60,11 @@ export default class CustomSelect extends Component {
         return left;
     }
 
-    protected initSelect(): void {
+    changeSelectEvent(): void {
+        this.$select.on('select2:select', () => this.onChangeSelect());
+    }
+
+    initSelect(): void {
         if (window.innerWidth >= this.mobileResolution && !this.isInited) {
             this.isInited = true;
             this.$select.select2({
@@ -92,5 +99,9 @@ export default class CustomSelect extends Component {
 
     protected get configDropdownRight(): boolean {
         return Boolean(this.select.getAttribute('config-dropdown-right'));
+    }
+
+    protected get autoInit(): boolean {
+        return !this.select.hasAttribute('auto-init');
     }
 }
