@@ -9,11 +9,13 @@
     url: required,
     icon: required,
     title: required,
-    iconModifier: null
+    iconModifier: null,
+    isSingleClickable: false,
 } %}
 
 {% define attributes = {
-    href: data.url
+    href: data.url,
+    'data-init-single-click': data.isSingleClickable,
 } %}
 
 {% block body %}

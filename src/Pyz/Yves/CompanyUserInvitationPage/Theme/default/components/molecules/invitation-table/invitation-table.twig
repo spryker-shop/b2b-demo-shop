@@ -37,7 +37,8 @@
                                     url: path('company/user-invitation/send', {'idCompanyUserInvitation': invitation.idCompanyUserInvitation}),
                                     icon: 'send',
                                     title: 'company.user.invitation.send.button',
-                                    available: invitation.companyUserInvitationStatusKey == 'new'
+                                    available: invitation.companyUserInvitationStatusKey == 'new',
+                                    isSingleClickable: true
                                 },
                                 {
                                     url: path('company/user-invitation/resend', {'idCompanyUserInvitation': invitation.idCompanyUserInvitation}),
@@ -56,11 +57,6 @@
                 </td>
             </tr>
         {% endfor %}
-        {% include molecule('action-single-click-enforcer') with {
-            attributes: {
-                'target-selector': '.' ~ config.jsName ~ '__invitation-sender'
-            }
-        } only %}
         </tbody>
     </table>
 {% endblock %}

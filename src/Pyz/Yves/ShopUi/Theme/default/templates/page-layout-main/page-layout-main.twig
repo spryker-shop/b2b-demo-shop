@@ -180,14 +180,6 @@
         {% endblock %}
     </div>
 
-    {% block globalComponents %}
-        {% include molecule('action-single-click-enforcer') with {
-            attributes: {
-                'target-selector': '[data-init-single-click]',
-            },
-        } only %}
-    {% endblock %}
-
     {% include atom('overlay-block') only %}
     {% include atom('touch-checker') only %}
 
