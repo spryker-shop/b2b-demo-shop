@@ -62,7 +62,7 @@
             {% endblock %}
             {% block price %}
                 {% include molecule('money-price') with {
-                    modifiers: ['cart', 'available'],
+                    modifiers: ['medium', 'block', 'margin-bottom-from-tablet'],
                     data: {
                         amount: price,
                         originalAmount: data.listItem.prices.ORIGINAL is not defined or data.listItem.prices.ORIGINAL is empty ? null : data.listItem.prices.ORIGINAL

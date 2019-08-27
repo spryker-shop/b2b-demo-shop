@@ -1,19 +1,39 @@
-@mixin shop-ui-volume-price($name: '.volume-price') {
+@mixin price-product-volume-widget-volume-price($name: '.volume-price') {
     #{$name} {
-        @include helper-font-size(big);
+        margin-top: rem(12);
+        margin-bottom: rem(23);
 
-        &__amount {
-            &--original {
-                @include helper-font-size(small);
-                color: $setting-color-gray-2 !important;
-                text-decoration: line-through;
-            }
-            margin-right: rem(7);
+        @include helper-breakpoint-media-min($lg) {
+            margin-top: 0;
         }
 
-        &__tag {
-            margin-right: 0.25rem;
-            color: $setting-color-alt;
+        &__amount {
+            font-size: rem(24);
+            font-weight: fw(bold);
+            line-height: normal;
+            margin-right: rem(7);
+
+            @include helper-breakpoint-media-min($lg) {
+                font-size: rem(26);
+            }
+
+            &--original {
+                font-size: rem(24);
+                font-weight: fw(regular);
+                margin-right: rem(4);
+                display: inline-block;
+                color: $setting-color-gray-2;
+                text-decoration: line-through;
+
+                @include helper-breakpoint-media-min($lg) {
+                    @include helper-font-size(big);
+                }
+            }
+
+            &--alt {
+                color: $setting-color-alt;
+                margin-right: rem(4);
+            }
         }
 
         &__price {
@@ -26,11 +46,16 @@
             }
         }
 
+        &__mode {
+            color: $setting-color-gray-2;
+            font-size: rem(13);
+        }
+
         @content;
     }
 }
 
-@include shop-ui-volume-price();
+@include price-product-volume-widget-volume-price();
 
 @keyframes priceHighlight {
     0% {

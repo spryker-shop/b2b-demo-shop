@@ -51,7 +51,7 @@
                         <div class="col">
                             {% if can('SeePricePermissionPlugin') %}
                                 {% include molecule('money-price') with {
-                                    modifiers: ['catalog', 'catalog-list'],
+                                    modifiers: ['color-gray', 'block', 'margin-left-from-tablet'],
                                     data: {
                                         amount: data.price,
                                         originalAmount: data.originalPrice is empty ? null : data.originalPrice

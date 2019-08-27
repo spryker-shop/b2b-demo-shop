@@ -68,7 +68,7 @@
         {% if can('SeePricePermissionPlugin') %}
             <div class="{{ component.renderClass(config.name ~ '__price', modifiers) }}">
                 {% include molecule('money-price') with {
-                    modifiers: ['catalog'],
+                    modifiers: ['color-gray'],
                     data: {
                         amount: data.price,
                         originalAmount: data.originalPrice is empty ? null : data.originalPrice
