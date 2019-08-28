@@ -5,7 +5,6 @@ export default class NavigationMultilevel extends Component {
     readonly overlay: OverlayBlock;
     readonly triggers: HTMLElement[];
     readonly touchTriggers: HTMLElement[];
-    protected readonly reverseClass: string = 'menu-wrapper--reverse';
 
     constructor() {
         super();
@@ -35,9 +34,11 @@ export default class NavigationMultilevel extends Component {
         this.triggers.forEach((trigger: HTMLElement) => {
             const dropItem = <HTMLElement>trigger.getElementsByClassName(`${this.jsName}__wrapper`)[0];
 
-            if (!dropItem) return;
+            if (!dropItem) {
+                return;
+            }
 
-            const reverseClass = this.isDropMenuReverse(trigger, dropItem) ? this.reverseClass : undefined;
+            const reverseClass = this.isDropMenuReverse(trigger, dropItem) ? this.reverseClassName : undefined;
 
             dropItem.classList.add(reverseClass);
         });
@@ -108,5 +109,9 @@ export default class NavigationMultilevel extends Component {
 
     protected get overlayBlockClassName(): string {
         return this.getAttribute('overlay-block-class-name');
+    }
+
+    protected get reverseClassName(): string {
+        return this.getAttribute('reverse-class-name');
     }
 }

@@ -34,10 +34,12 @@ export default class ColorSelectorPdp extends ColorSelector {
     }
 
     protected setActiveImage(newImageSrc: string): void {
-        if (this.image.src !== newImageSrc) {
-            this.image.src = newImageSrc;
-            this.container.classList.add(this.imageActiveClassName);
+        if (this.image.src === newImageSrc) {
+            return;
         }
+
+        this.image.src = newImageSrc;
+        this.container.classList.add(this.imageActiveClassName);
     }
 
     protected resetActiveImage(): void {

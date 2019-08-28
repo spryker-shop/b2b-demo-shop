@@ -102,6 +102,6 @@ export default class CustomSelect extends Component {
     }
 
     protected get autoInit(): boolean {
-        return !this.select.hasAttribute('auto-init');
+        return this.select.hasAttribute('auto-init');
     }
 }

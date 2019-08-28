@@ -38,21 +38,21 @@
                                     icon: 'send',
                                     title: 'company.user.invitation.send.button',
                                     available: invitation.companyUserInvitationStatusKey == 'new',
-                                    isSingleClickable: true
+                                    isSingleClickable: true,
                                 },
                                 {
                                     url: path('company/user-invitation/resend', {'idCompanyUserInvitation': invitation.idCompanyUserInvitation}),
                                     icon: 'send',
                                     title: 'company.user.invitation.resend.button',
-                                    available: invitation.companyUserInvitationStatusKey == 'pending'
+                                    available: invitation.companyUserInvitationStatusKey == 'pending',
                                 },
                                 {
                                     url: path('company/user-invitation/delete', {'idCompanyUserInvitation': invitation.idCompanyUserInvitation}),
                                     icon: 'delete',
-                                    title: 'company.user.invitation.delete.button'
-                                }
-                            ]
-                        }
+                                    title: 'company.user.invitation.delete.button',
+                                },
+                            ],
+                        },
                     } only %}
                 </td>
             </tr>

@@ -77,7 +77,7 @@ export default class PackagingUnitQuantitySelector extends Component {
         this.muMinNotificationElement = <HTMLDivElement>document.getElementById('minimum-quantity');
         this.muMaxNotificationElement = <HTMLDivElement>document.getElementById('maximum-quantity');
         this.muTranslationsElement = <HTMLScriptElement>document.getElementById('measurement-unit-translation');
-        this.muChoiceListElement = <HTMLUListElement>document.getElementById('measurement-unit-choices .list');
+        this.muChoiceListElement = <HTMLUListElement>document.getElementById('measurement-unit-choices').getElementsByClassName('list')[0];
         this.muCurrentChoiceElement = <HTMLSpanElement>document.querySelector('.measurement-unit-choice #current-choice');
         this.puChoiceElement = <HTMLDivElement>document.getElementsByClassName('packaging-unit-choice')[0];
         this.puMinNotificationElement = <HTMLDivElement>document.getElementById('packaging-amount-min');
