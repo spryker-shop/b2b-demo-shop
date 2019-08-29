@@ -61,7 +61,7 @@
                                             <input type="hidden" value="{{ embed.sku }}" name="groupKey">
                                             <input type="hidden" value="{{ embed.promotionDiscount.id }}" name="idDiscountPromotion">
 
-                                            <button type="submit" class="button button--expand" {{ disabled ? 'disabled' : '' }} data-form-submitter data-init-single-click>
+                                            <button type="submit" class="button button--expand" {{ disabled ? 'disabled' }} data-form-submitter data-init-single-click>
                                                 {{ 'page.detail.add-to-cart' | trans }}
                                             </button>
                                         </div>
