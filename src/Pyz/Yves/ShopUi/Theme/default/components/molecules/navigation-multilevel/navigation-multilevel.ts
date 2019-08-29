@@ -38,7 +38,7 @@ export default class NavigationMultilevel extends Component {
                 return;
             }
 
-            const reverseClass = this.isDropMenuReverse(trigger, dropItem) ? this.reverseClassName : undefined;
+            const reverseClass = this.isDropMenuReverse(trigger, dropItem) ? this.reverseClassName : '';
 
             dropItem.classList.add(reverseClass);
         });
