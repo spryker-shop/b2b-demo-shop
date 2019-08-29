@@ -59,33 +59,10 @@
             display: inline-block;
             color: $setting-color-gray-2;
             font-weight: fw(regular);
+            margin-left: rem(4);
 
             @include helper-breakpoint-media-min($lg) {
                 @include helper-font-size(big);
-            }
-
-            &#{$name}__amount--margin-left-from-tablet {
-                @include helper-breakpoint-media-min($md) {
-                    margin-left: rem(4);
-                }
-            }
-
-            &#{$name}__amount--big {
-                @include helper-breakpoint-media-max($lg - 1) {
-                    font-size: rem(24);
-                    margin-right: rem(4);
-                }
-            }
-        }
-
-        &--alt {
-            color: $setting-color-alt;
-            margin-right: rem(4);
-
-            &#{$name}__amount--margin-left-from-tablet {
-                @include helper-breakpoint-media-min($md) {
-                    margin-right: 0;
-                }
             }
         }
     }
