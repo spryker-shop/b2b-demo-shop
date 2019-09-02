@@ -11,7 +11,8 @@
     canWrite: required,
     label: '',
     note: '',
-    isNoteNotEmpty: null
+    isNoteNotEmpty: null,
+    isTitleVisible: true,
 } %}
 
 {% define attributes = {
@@ -30,7 +31,7 @@
 
     {% if data.canWrite or isNoteNotEmpty %}
 
-        {% if isNoteNotEmpty %}
+        {% if isNoteNotEmpty and data.isTitleVisible %}
             <h6 class="{{ config.name }}__title">{{ title | trans }}:</h6>
         {% endif %}
 

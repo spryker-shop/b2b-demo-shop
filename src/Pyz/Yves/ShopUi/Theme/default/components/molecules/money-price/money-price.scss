@@ -27,6 +27,16 @@
         margin: 0;
     }
 
+    &--secondary {
+        margin-top: rem(8);
+        padding: 0.88rem 1rem;
+        background: $setting-color-gray-7;
+
+        @include helper-breakpoint-media-min($lg) {
+
+        }
+    }
+
     &__amount {
         font-size: rem(16);
         font-weight: fw(medium);
@@ -35,6 +45,16 @@
 
         @include helper-breakpoint-media-min($lg) {
             @include helper-font-size(big);
+        }
+
+        &--secondary {
+            margin-top: 0.25rem;
+            padding-right: 1.5rem;
+
+            @include helper-breakpoint-media-min($lg) {
+                margin-top: 0;
+                padding-right: 0;
+            }
         }
 
         &--pdp {

@@ -24,14 +24,6 @@
         }
 
         &__col {
-            padding-top: rem(8);
-            padding-bottom: rem(12);
-
-            @include helper-breakpoint-media-min($lg) {
-                padding-top: rem(36);
-                padding-bottom: rem(28);
-            }
-
             &--image {
                 border-radius: $setting-border-radius 0 0 $setting-border-radius;
                 padding-top: 0;
@@ -52,8 +44,6 @@
                 min-width: 100%;
 
                 @include helper-breakpoint-media-min($lg) {
-                    padding-top: rem(36);
-                    padding-bottom: rem(28);
                     width: 40%;
                     min-width: 40%;
                     text-align: right;
@@ -85,14 +75,19 @@
             }
 
             &--description {
-                padding-top: 0;
-                padding-bottom: 0;
+                padding-top: rem(8);
+                padding-bottom: rem(12);
                 width: calc(100% - #{rem(78)});
                 min-width: calc(100% - #{rem(78)});
 
                 @include helper-breakpoint-media-min($md) {
                     width: 78%;
                     min-width: 78%;
+                }
+
+                @include helper-breakpoint-media-min($lg) {
+                    padding-top: rem(36);
+                    padding-bottom: rem(28);
                 }
 
                 &#{$name}__col--summary {
@@ -163,6 +158,17 @@
                 &:not(#{$name}__col--content) {
                     opacity: 0.5;
                 }
+            }
+        }
+
+        &__comment-title {
+            padding-top: rem(16);
+            font-size: rem(14);
+            font-weight: fw(bold);
+            line-height: normal;
+
+            @include helper-breakpoint-media-min($lg) {
+                padding-top: rem(28);
             }
         }
 
@@ -318,10 +324,11 @@
 
         &__delete-cart {
             position: absolute;
-            bottom: rem(32);
-            right: rem(6);
+            bottom: rem(48);
+            right: rem(32);
 
             @include helper-breakpoint-media-min($lg) {
+                padding-top: 2rem;
                 position: static;
             }
         }
