@@ -1,3 +1,5 @@
+$product-image-width: rem(78);
+
 @mixin shop-ui-product-item($name: '.product-item') {
     #{$name} {
         border: rem(2) solid $setting-color-gray-7;
@@ -77,8 +79,8 @@
             &--description {
                 padding-top: rem(8);
                 padding-bottom: rem(12);
-                width: calc(100% - #{rem(78)});
-                min-width: calc(100% - #{rem(78)});
+                width: calc(100% - #{$product-image-width});
+                min-width: calc(100% - #{$product-image-width});
 
                 @include helper-breakpoint-media-min($md) {
                     width: 78%;
@@ -205,7 +207,7 @@
 
             @include helper-breakpoint-media-min($lg) {
                 font-size: rem(20);
-                margin-bottom: rem(8);
+                margin-bottom: rem(16);
             }
 
             &--shopping-list-alternative {
@@ -328,7 +330,7 @@
             right: rem(32);
 
             @include helper-breakpoint-media-min($lg) {
-                padding-top: 2rem;
+                padding-top: rem(32);
                 position: static;
             }
         }

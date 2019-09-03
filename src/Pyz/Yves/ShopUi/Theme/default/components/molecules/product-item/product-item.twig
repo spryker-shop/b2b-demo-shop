@@ -52,9 +52,9 @@
             <div class="{{ component.renderClass(config.name ~ '__col', modifiers) }} {{ config.name }}__col--description col">
                 <div class="grid grid--stretch grid--gap {{ config.name }}__inner {{ config.name }}__inner--full-height">
                     <div class="{{ component.renderClass(config.name ~ '__col', modifiers) }} {{ config.name }}__col--content col">
-                        {% block characteristic %}
+                        {% block productCharacteristics %}
                             {% block title %}
-                                <h6 class="{{ component.renderClass(config.name ~ '__title', modifiers) }}">
+                                <h6>
                                     <a href="{{ data.listItem.url }}" class="{{ component.renderClass(config.name ~ '__title', modifiers) }}" title="{{ data.listItem.name }}">{{ data.listItem.name }}</a>
                                 </h6>
                             {% endblock %}
@@ -94,7 +94,9 @@
                                 {% endblock %}
 
                                 {% block salesInfo %}
-                                    {% if amountSalesUnit is empty and quantitySalesUnit is not empty and data.quantity is empty %}
+                                    {% set isAmountEmpty = amountSalesUnit is empty and quantitySalesUnit is not empty and data.quantity is empty %}
+
+                                    {% if isAmountEmpty %}
                                         <div class="{{ config.name }}__quantity grid grid--middle grid--gap">
                                             <div class="col col--sm-12 col--md-2">{{ 'packaging_units.cart.quantity' | trans }}: </div>
                                             <div class="col">
@@ -163,17 +165,21 @@
                             <div class="col col--sm-12">
                                 <div class="{{ config.name }}__inner {{ config.name }}__inner--total grid grid--column">
                                     {% block price %}
+                                        {% set originalAmount = data.listItem.prices.ORIGINAL is not defined or data.listItem.prices.ORIGINAL is empty ? null : data.listItem.prices.ORIGINAL %}
+
                                         {% include molecule('money-price') with {
                                             modifiers: ['cart'],
                                             data: {
                                                 amount: price,
-                                                originalAmount: data.listItem.prices.ORIGINAL is not defined or data.listItem.prices.ORIGINAL is empty ? null : data.listItem.prices.ORIGINAL,
+                                                originalAmount: originalAmount,
                                                 currencyIsoCode: data.currencyIsoCode,
                                             },
                                         } only %}
                                     {% endblock %}
                                     {% block quantity %}
-                                        {% if amountSalesUnit is empty and quantitySalesUnit is empty and data.quantity is empty %}
+                                        {% set isAmountSalesUnitEmpty = amountSalesUnit is empty and quantitySalesUnit is empty and data.quantity is empty %}
+
+                                        {% if isAmountSalesUnitEmpty %}
                                             <div class="{{ config.name }}__quantity-holder">
                                                 {% set cartProductMeasurementUnitQuantitySelectorWidget = findWidget('CartProductMeasurementUnitQuantitySelectorWidget', [data.listItem]) %}
 
