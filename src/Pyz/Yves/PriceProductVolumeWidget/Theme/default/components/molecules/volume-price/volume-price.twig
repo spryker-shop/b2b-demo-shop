@@ -6,7 +6,7 @@
 } %}
 
 {% block body %}
-    {% set amountClassName = data.originalAmount is not empty ? 'text--alt' %}
+    {% set amountClassName = data.originalAmount is not empty ? 'text-alt' %}
 
     <span class="{{ config.name }}__amount {{ amountClassName }}">
         <span class="{{ config.jsName }}__price {{ config.name }}__price">

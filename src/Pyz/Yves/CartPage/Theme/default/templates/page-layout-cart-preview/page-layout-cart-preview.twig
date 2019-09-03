@@ -56,7 +56,7 @@
         {% block price %}
             {% set price = data.listItem.sumPrice ?? data.listItem.price %}
             {% include molecule('money-price') with {
-                modifiers: ['medium'],
+                modifiers: ['medium', 'gray-color'],
                 data: {
                     amount: price,
                     currencyIsoCode: data.list.currency.code,
