@@ -1,38 +1,37 @@
 import Component from 'ShopUi/models/component';
 
 export default class FilterCategory extends Component {
-    readonly activeCategory: HTMLElement;
+    activeCategory: HTMLElement;
     categoriesToShow: HTMLElement[];
+    parent: HTMLElement;
 
-    constructor() {
-        super();
+    protected init(): void {
         this.activeCategory = <HTMLElement>document.querySelector(this.listSelector);
+        this.parent = this.activeCategory ? this.activeCategory : this;
+        this.categoriesToShow = <HTMLElement[]>Array.from(this.parent.querySelectorAll(this.categoriesToShowSelector));
 
-        const parent = this.activeCategory ? this.activeCategory : this;
-        this.categoriesToShow = <HTMLElement[]>Array.from(parent.querySelectorAll(this.categoriesToShowSelector));
-    }
-
-    protected readyCallback(): void {
-        if (this.activeCategory) {
-            if (this.activeCategory.classList.contains(this.parentSelector)) {
-                this.removeClass(this.categoriesToShow);
-            } else {
-                let target = <HTMLElement>this.activeCategory;
-                while (!target.classList.contains(this.wrapSelector)) {
-                    if (target.classList.contains(this.parentSelector)) {
-                        this.removeClass(<HTMLElement[]>Array.from(
-                            target.querySelectorAll(this.categoriesToShowSelector)
-                        ));
-
-                        return;
-                    }
-                    target = <HTMLElement> target.parentNode;
-                }
-            }
-        } else {
+        if (!this.activeCategory || this.activeCategory.classList.contains(this.parentSelector)) {
             this.removeClass(this.categoriesToShow);
+
+            return;
+        }
+
+        let target = <HTMLElement>this.activeCategory;
+
+        while (!target.classList.contains(this.wrapSelector)) {
+            if (target.classList.contains(this.parentSelector)) {
+                this.removeClass(<HTMLElement[]>Array.from(
+                    target.querySelectorAll(this.categoriesToShowSelector)
+                ));
+
+                return;
+            }
+
+            target = <HTMLElement> target.parentNode;
         }
     }
+
+    protected readyCallback(): void {}
 
     protected removeClass(categoriesToShow: HTMLElement[]): void {
         categoriesToShow.forEach((element: HTMLElement) => element.classList.remove(this.classToRemove));
