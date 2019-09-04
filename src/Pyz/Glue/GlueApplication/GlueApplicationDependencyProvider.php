@@ -105,6 +105,7 @@ use Spryker\Glue\SharedCartsRestApi\SharedCartsRestApiConfig;
 use Spryker\Glue\StoresRestApi\Plugin\StoresResourceRoutePlugin;
 use Spryker\Glue\UpSellingProductsRestApi\Plugin\GlueApplication\CartUpSellingProductsResourceRoutePlugin;
 use Spryker\Glue\UpSellingProductsRestApi\Plugin\GlueApplication\GuestCartUpSellingProductsResourceRoutePlugin;
+use Spryker\Glue\UrlsRestApi\Plugin\GlueApplication\UrlResolverResourceRoutePlugin;
 
 class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependencyProvider
 {
@@ -160,6 +161,7 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new SharedCartsResourceRoutePlugin(),
             new ContentBannerResourceRoutePlugin(),
             new ContentProductAbstractListRoutePlugin(),
+            new UrlResolverResourceRoutePlugin(),
         ];
     }
 
