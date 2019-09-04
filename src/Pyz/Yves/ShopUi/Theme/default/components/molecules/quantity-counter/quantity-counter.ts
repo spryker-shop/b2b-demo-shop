@@ -92,10 +92,6 @@ export default class QuantityCounter extends Component {
     }
 
     protected get isAvailable(): boolean {
-        if (!this.input.disabled && !this.input.readOnly) {
-            return true;
-        }
-
-        return false;
+        return !this.input.disabled && !this.input.readOnly;
     }
 }
