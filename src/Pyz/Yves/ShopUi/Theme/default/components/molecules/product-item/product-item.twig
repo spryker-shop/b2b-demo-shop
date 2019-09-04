@@ -23,7 +23,7 @@
     {% set quantitySalesUnit = data.listItem.quantitySalesUnit is defined ? data.listItem.quantitySalesUnit : null %}
     {% set price = data.listItem.unitPrice is defined ? data.listItem.unitPrice : data.listItem.price %}
     <div class="grid grid--stretch grid--gap">
-        <div class="{{ component.renderClass(config.name ~ '__col', modifiers) }} {{ config.name }}__col--image col">
+        <div class="{{ component.renderClass(config.name ~ '__col', modifiers, config.name ~ '__col--image') }} col">
             {% block image %}
                 {% if data.listItem.url is defined and data.listItem.url is not empty %}
                     <a href="{{ data.listItem.url }}" title="{{ data.listItem.name }}">
@@ -49,9 +49,9 @@
         </div>
 
         {% block productDescription %}
-            <div class="{{ component.renderClass(config.name ~ '__col', modifiers) }} {{ config.name }}__col--description col">
+            <div class="{{ component.renderClass(config.name ~ '__col', modifiers, config.name ~ '__col--description') }} col">
                 <div class="grid grid--stretch grid--gap {{ config.name }}__inner {{ config.name }}__inner--full-height">
-                    <div class="{{ component.renderClass(config.name ~ '__col', modifiers) }} {{ config.name }}__col--content col">
+                    <div class="{{ component.renderClass(config.name ~ '__col', modifiers, config.name ~ '__col--content') }} col">
                         {% block productCharacteristics %}
                             {% block title %}
                                 <h6>
@@ -160,7 +160,7 @@
                         {% endblock %}
                     </div>
 
-                    <div class="{{ component.renderClass(config.name ~ '__col', modifiers) }} {{ config.name }}__col--total col">
+                    <div class="{{ component.renderClass(config.name ~ '__col', modifiers, config.name ~ '__col--total') }} col">
                         <div class="{{ config.name }}__inner {{ config.name }}__inner--full-height {{ config.name }}__inner--actions grid grid--column grid--justify-column">
                             <div class="col col--sm-12">
                                 <div class="{{ config.name }}__inner {{ config.name }}__inner--total grid grid--column">

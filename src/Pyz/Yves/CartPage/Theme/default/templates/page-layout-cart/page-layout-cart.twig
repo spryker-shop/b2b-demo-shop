@@ -260,7 +260,7 @@
                                                 {% endwidget %}
                                             {% endblock %}
 
-                                            {% if data.listItem.productOptions is defined and data.listItem.productOptions | length > 0 %}
+                                            {% if data.listItem.productOptions is defined and data.listItem.productOptions %}
                                                 {% include molecule('product-item-options') with {
                                                     modifiers: modifiers,
                                                     data: {
