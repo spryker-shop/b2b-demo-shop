@@ -52,11 +52,11 @@
         {% widget 'ProductPriceVolumeWidget' args [data.product] only %}
         {% nowidget %}
             {% include molecule('money-price') with {
-                modifiers: ['pdp'],
+                modifiers: ['big'],
                 data: {
                     amount: data.product.price,
-                    originalAmount: data.product.prices.ORIGINAL is defined ? data.product.prices.ORIGINAL : null
-                }
+                    originalAmount: data.product.prices.ORIGINAL is defined ? data.product.prices.ORIGINAL : null,
+                },
             } only %}
         {% endwidget %}
     {% endif %}
