@@ -168,7 +168,7 @@
                                         {% set originalAmount = data.listItem.prices.ORIGINAL is not defined or data.listItem.prices.ORIGINAL is empty ? null : data.listItem.prices.ORIGINAL %}
 
                                         {% include molecule('money-price') with {
-                                            modifiers: ['cart'],
+                                            modifiers: ['medium'],
                                             data: {
                                                 amount: price,
                                                 originalAmount: originalAmount,
