@@ -1,7 +1,7 @@
 @include shop-ui-money-price {
     $name: &;
 
-    &--pdp {
+    &--big {
         margin-top: rem(12);
         margin-bottom: rem(23);
 
@@ -10,12 +10,12 @@
         }
     }
 
-    &--cart {
+    &--medium {
         margin: 0 0 $setting-grid-space;
         width: 100%;
     }
 
-    &--available {
+    &--margin-bottom-from-tablet {
         margin: 0;
 
         @include helper-breakpoint-media-min($lg) {
@@ -23,23 +23,19 @@
         }
     }
 
-    &--summary {
-        margin: 0;
-    }
-
     &__amount {
         font-size: rem(16);
         font-weight: fw(medium);
-        line-height: map_get($setting-font-line-height, 2);
+        line-height: 1.2;
         color: $setting-color-gray-4;
 
         @include helper-breakpoint-media-min($lg) {
             @include helper-font-size(big);
         }
 
-        &--pdp {
+        &--big {
             font-size: rem(24);
-            font-weight: rem(bold);
+            font-weight: fw(bold);
             line-height: normal;
 
             @include helper-breakpoint-media-min($lg) {
@@ -47,14 +43,13 @@
             }
         }
 
-        &--cart {
+        &--medium {
             font-size: rem(18);
             font-weight: fw(bold);
             line-height: normal;
-            color: $setting-color-gray-5;
         }
 
-        &--catalog {
+        &--gray-color {
             color: $setting-color-gray-5;
         }
 
@@ -63,33 +58,10 @@
             display: inline-block;
             color: $setting-color-gray-2;
             font-weight: fw(regular);
+            margin-left: rem(4);
 
             @include helper-breakpoint-media-min($lg) {
                 @include helper-font-size(big);
-            }
-
-            &#{$name}__amount--catalog-list {
-                @include helper-breakpoint-media-min($md) {
-                    margin-left: rem(4);
-                }
-            }
-
-            &#{$name}__amount--pdp {
-                @include helper-breakpoint-media-max($lg - 1) {
-                    font-size: rem(24);
-                    margin-right: rem(4);
-                }
-            }
-        }
-
-        &--alt {
-            color: $setting-color-alt;
-            margin-right: rem(4);
-
-            &#{$name}__amount--catalog-list {
-                @include helper-breakpoint-media-min($md) {
-                    margin-right: 0;
-                }
             }
         }
     }
@@ -105,13 +77,11 @@
             font-size: rem(12);
         }
 
-        &--pdp {
+        &--big {
             font-size: rem(13);
             line-height: normal;
         }
 
-        &--cart,
-        &--catalog-list,
         &--block {
             display: block;
         }

@@ -13,10 +13,10 @@
 
 {% block body %}
     {% include molecule('money-price') with {
-        modifiers: ['pdp'],
+        modifiers: ['big'],
         data: {
             amount: data.amount,
-            originalAmount: data.originalAmount is empty ? null : data.originalAmount
-        }
+            originalAmount: data.originalAmount is empty ? null : data.originalAmount,
+        },
     } only %}
 {% endblock %}
