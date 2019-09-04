@@ -1,10 +1,12 @@
 import Component from 'ShopUi/models/component';
 
 export default class RatingSelector extends Component {
-    input: HTMLInputElement;
-    steps: HTMLElement[];
+    protected input: HTMLInputElement;
+    protected steps: HTMLElement[];
 
-    protected readyCallback(): void {
+    protected readyCallback(): void {}
+
+    protected init(): void {
         this.input = <HTMLInputElement>this.getElementsByClassName(`${this.jsName}__input`)[0];
         this.steps = <HTMLElement[]>Array.from(this.getElementsByClassName(`${this.jsName}__step`));
 

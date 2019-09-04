@@ -9,15 +9,17 @@ export enum Events {
 }
 
 export default class ProductSearchAutocompleteForm extends AutocompleteForm {
-    widgetSuggestionsContainer: HTMLElement;
-    suggestionItems: HTMLElement[];
-    lastSelectedItem: HTMLElement;
-    quantityInput: HTMLInputElement;
+    protected widgetSuggestionsContainer: HTMLElement;
+    protected suggestionItems: HTMLElement[];
+    protected lastSelectedItem: HTMLElement;
+    protected quantityInput: HTMLInputElement;
 
-    protected readyCallback(): void {
+    protected readyCallback(): void {}
+
+    protected init(): void {
         this.widgetSuggestionsContainer = <HTMLElement>this.getElementsByClassName(`${this.jsName}__suggestions`)[0];
         this.quantityInput = <HTMLInputElement>document.getElementsByClassName(`${this.jsName}__quantity-field`)[0];
-        super.readyCallback();
+        super.init();
         this.plugKeydownEvent();
     }
 

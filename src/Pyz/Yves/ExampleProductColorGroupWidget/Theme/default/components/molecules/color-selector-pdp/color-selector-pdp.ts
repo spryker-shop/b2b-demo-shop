@@ -1,9 +1,11 @@
 import ColorSelector from '../color-selector/color-selector';
 
 export default class ColorSelectorPdp extends ColorSelector {
-    container: HTMLElement;
+    protected container: HTMLElement;
 
-    protected readyCallback(): void {
+    protected readyCallback(): void {}
+
+    protected init(): void {
         this.colors = <HTMLAnchorElement[]>Array.from(this.getElementsByClassName(`${this.jsName}__color`));
         this.container = <HTMLElement>document.getElementsByClassName(this.imageContainerClassName)[0];
         this.image = <HTMLImageElement>this.container.getElementsByTagName('img')[0];

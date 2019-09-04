@@ -1,12 +1,14 @@
 import Component from 'ShopUi/models/component';
 
 export default class CartItemNote extends Component {
-    editButton: HTMLButtonElement;
-    removeButton: HTMLButtonElement;
-    formTarget: HTMLElement;
-    textTarget: HTMLElement;
+    protected editButton: HTMLButtonElement;
+    protected removeButton: HTMLButtonElement;
+    protected formTarget: HTMLElement;
+    protected textTarget: HTMLElement;
 
-    protected readyCallback(): void {
+    protected readyCallback(): void {}
+
+    protected init(): void {
         this.editButton = <HTMLButtonElement>this.getElementsByClassName(`${this.jsName}__edit`)[0];
         this.removeButton = <HTMLButtonElement>this.getElementsByClassName(`${this.jsName}__remove`)[0];
         this.formTarget = <HTMLElement>this.getElementsByClassName(`${this.jsName}__form`)[0];

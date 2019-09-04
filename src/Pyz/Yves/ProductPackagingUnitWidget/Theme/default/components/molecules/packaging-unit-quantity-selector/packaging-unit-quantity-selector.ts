@@ -5,57 +5,53 @@
 import Component from 'ShopUi/models/component';
 
 export default class PackagingUnitQuantitySelector extends Component {
-    qtyInSalesUnitInput: HTMLInputElement;
-    qtyInBaseUnitInput: HTMLInputElement;
-    measurementUnitInput: HTMLSelectElement;
-    addToCartButton: HTMLButtonElement;
-    leadSalesUnitSelect: HTMLSelectElement;
+    protected qtyInSalesUnitInput: HTMLInputElement;
+    protected qtyInBaseUnitInput: HTMLInputElement;
+    protected measurementUnitInput: HTMLSelectElement;
+    protected addToCartButton: HTMLButtonElement;
+    protected leadSalesUnitSelect: HTMLSelectElement;
+    protected baseUnit: any;
+    protected salesUnits: any;
+    protected currentSalesUnit: any;
+    protected productQuantityStorage: any;
+    protected currentValue: Number;
+    protected translations: any;
+    protected leadSalesUnits: any;
+    protected productPackagingUnitStorage: any;
+    protected amountInSalesUnitInput: any;
+    protected amountDefaultInBaseUnitInput: any;
+    protected packagingUnitAmountInput: any;
+    protected itemBasePriceInput: any;
+    protected itemMoneySymbolInput: any;
+    protected amountInBaseUnitInput: any;
+    protected isAmountBlockEnabled: boolean;
+    protected isAddToCartDisabled: boolean;
+    protected currentLeadSalesUnit: any;
+    protected defaultAmount: any;
+    protected productPackagingNewPriceBlock: any;
+    protected productPackagingNewPriceValueBlock: any;
+    protected quantityBetweenElement: HTMLDivElement;
+    protected quantityMinElement: HTMLDivElement;
+    protected quantityMaxElement: HTMLDivElement;
+    protected muChoiceNotificationElement: HTMLDivElement;
+    protected muBetweenNotificationElement: HTMLDivElement;
+    protected muMinNotificationElement: HTMLDivElement;
+    protected muMaxNotificationElement: HTMLDivElement;
+    protected muTranslationsElement: HTMLScriptElement;
+    protected muChoiceListElement: HTMLUListElement;
+    protected muCurrentChoiceElement: HTMLSpanElement;
+    protected puChoiceElement: HTMLDivElement;
+    protected puMinNotificationElement: HTMLDivElement;
+    protected puMaxNotificationElement: HTMLDivElement;
+    protected puIntervalNotificationElement: HTMLDivElement;
+    protected puChoiceListElement: HTMLUListElement;
+    protected puCurrentChoiceElement: HTMLSpanElement;
+    protected muError: boolean;
+    protected puError: boolean;
 
-    baseUnit: any;
-    salesUnits: any;
-    currentSalesUnit: any;
-    productQuantityStorage: any;
-    currentValue: Number;
-    translations: any;
-    leadSalesUnits: any;
-    productPackagingUnitStorage: any;
-    amountInSalesUnitInput: any;
-    amountDefaultInBaseUnitInput: any;
-    packagingUnitAmountInput: any;
-    itemBasePriceInput: any;
-    itemMoneySymbolInput: any;
-    amountInBaseUnitInput: any;
-    isAmountBlockEnabled: boolean;
-    isAddToCartDisabled: boolean;
-    currentLeadSalesUnit: any;
-    defaultAmount: any;
+    protected readyCallback(): void {}
 
-    productPackagingNewPriceBlock: any;
-    productPackagingNewPriceValueBlock: any;
-
-    quantityBetweenElement: HTMLDivElement;
-    quantityMinElement: HTMLDivElement;
-    quantityMaxElement: HTMLDivElement;
-
-    muChoiceNotificationElement: HTMLDivElement;
-    muBetweenNotificationElement: HTMLDivElement;
-    muMinNotificationElement: HTMLDivElement;
-    muMaxNotificationElement: HTMLDivElement;
-    muTranslationsElement: HTMLScriptElement;
-    muChoiceListElement: HTMLUListElement;
-    muCurrentChoiceElement: HTMLSpanElement;
-
-    puChoiceElement: HTMLDivElement;
-    puMinNotificationElement: HTMLDivElement;
-    puMaxNotificationElement: HTMLDivElement;
-    puIntervalNotificationElement: HTMLDivElement;
-    puChoiceListElement: HTMLUListElement;
-    puCurrentChoiceElement: HTMLSpanElement;
-
-    muError: boolean;
-    puError: boolean;
-
-    protected readyCallback(event?: Event): void {
+    protected init(event?: Event): void {
         this.qtyInSalesUnitInput = <HTMLInputElement>document.getElementById('sales-unit-quantity');
         this.qtyInBaseUnitInput = <HTMLInputElement>document.getElementById('base-unit-quantity');
         this.measurementUnitInput = <HTMLSelectElement>document.getElementsByClassName('select-measurement-unit')[0];

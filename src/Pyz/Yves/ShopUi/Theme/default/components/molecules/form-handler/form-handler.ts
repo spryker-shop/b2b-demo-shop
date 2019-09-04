@@ -1,10 +1,12 @@
 import Component from 'ShopUi/models/component';
 
 export default class FormHandler extends Component {
-    event: string;
-    triggers: HTMLElement[];
+    protected event: string;
+    protected triggers: HTMLElement[];
 
-    protected readyCallback(): void {
+    protected readyCallback(): void {}
+
+    protected init(): void {
         this.event = this.getAttribute('event');
         this.triggers = <HTMLElement[]>Array.from(document.getElementsByClassName(this.triggerClassName));
         this.mapEvents();

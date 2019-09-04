@@ -1,10 +1,12 @@
 import Component from 'ShopUi/models/component';
 
 export default class SideDrawer extends Component {
-    triggers: HTMLElement[];
-    containers: HTMLElement[];
+    protected triggers: HTMLElement[];
+    protected containers: HTMLElement[];
 
-    protected readyCallback(): void {
+    protected readyCallback(): void {}
+
+    protected init(): void {
         this.triggers = <HTMLElement[]>Array.from(document.getElementsByClassName(this.triggerClassName));
         this.containers = <HTMLElement[]>Array.from(document.getElementsByClassName(this.containerClassName));
         this.mapEvents();

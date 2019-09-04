@@ -2,11 +2,13 @@ import Component from 'ShopUi/models/component';
 import noUiSlider from 'nouislider';
 
 export default class RangeSlider extends Component {
-    sliderContainer: HTMLElement;
-    rangeInputs: HTMLInputElement[];
+    protected sliderContainer: HTMLElement;
+    protected rangeInputs: HTMLInputElement[];
     protected numberDigitsAfterDecimalPoint: number = 2;
 
-    protected readyCallback(): void {
+    protected readyCallback(): void {}
+
+    protected init(): void {
         this.sliderContainer = <HTMLElement>document.getElementsByClassName(this.wrapClassName)[0];
         this.rangeInputs = <HTMLInputElement[]>Array.from(document.getElementsByClassName(this.inputsClassName));
 

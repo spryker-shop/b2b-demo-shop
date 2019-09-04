@@ -1,17 +1,16 @@
 import Component from 'ShopUi/models/component';
 
 export default class TogglerCheckbox extends Component {
-    readonly trigger: HTMLInputElement;
-    readonly targets: HTMLElement[];
+    protected trigger: HTMLInputElement;
+    protected targets: HTMLElement[];
     protected event: CustomEvent;
 
-    constructor() {
-        super();
+    protected readyCallback(): void {}
+
+    protected init(): void {
         this.trigger = <HTMLInputElement>this.getElementsByClassName(`${this.jsName}__trigger`)[0];
         this.targets = <HTMLElement[]>Array.from(document.getElementsByClassName(this.targetClassName));
-    }
 
-    protected readyCallback(): void {
         this.toggle();
         this.fireToggleEvent();
         this.mapEvents();

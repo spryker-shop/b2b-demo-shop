@@ -3,18 +3,15 @@ import $ from 'jquery/dist/jquery';
 import 'slick-carousel';
 
 export default class ImageGallery extends Component {
-    readonly galleryItems: HTMLElement[];
-    readonly quantityImages: number;
-    readonly thumbnailSlider: $;
+    protected galleryItems: HTMLElement[];
+    protected thumbnailSlider: $;
 
-    constructor() {
-        super();
+    protected readyCallback(): void {}
+
+    protected init(): void {
         this.galleryItems = <HTMLElement[]>Array.from(this.getElementsByClassName(`${this.jsName}__item`));
-        this.quantityImages = this.galleryItems.length;
         this.thumbnailSlider = $(`.${this.jsName}__thumbnails`);
-    }
 
-    readyCallback(): void {
         this.initializationSlider();
         this.mapEvents();
     }
@@ -25,7 +22,7 @@ export default class ImageGallery extends Component {
     }
 
     protected initializationSlider(): void {
-        if (this.quantityImages > 1) {
+        if (this.galleryItems.length > 1) {
             this.thumbnailSlider.slick(
                 this.thumbnailSliderConfig
             );

@@ -2,18 +2,17 @@ import Component from 'ShopUi/models/component';
 import OverlayBlock from '../../atoms/overlay-block/overlay-block';
 
 export default class NavigationMultilevel extends Component {
-    readonly overlay: OverlayBlock;
-    readonly triggers: HTMLElement[];
-    readonly touchTriggers: HTMLElement[];
+    protected overlay: OverlayBlock;
+    protected triggers: HTMLElement[];
+    protected touchTriggers: HTMLElement[];
 
-    constructor() {
-        super();
+    protected readyCallback(): void {}
+
+    protected init(): void {
         this.overlay = <OverlayBlock>document.getElementsByClassName(this.overlayBlockClassName)[0];
         this.triggers = <HTMLElement[]>Array.from(this.getElementsByClassName(`${this.jsName}__trigger`));
         this.touchTriggers = <HTMLElement[]>Array.from(this.getElementsByClassName(`${this.jsName}__touch-trigger`));
-    }
 
-    protected readyCallback(): void {
         this.mapEvents();
         this.addReverseClassToDropDownMenu();
     }
@@ -38,9 +37,9 @@ export default class NavigationMultilevel extends Component {
                 return;
             }
 
-            const reverseClass = this.isDropMenuReverse(trigger, dropItem) ? this.reverseClassName : '';
-
-            dropItem.classList.add(reverseClass);
+            if (this.isDropMenuReverse(trigger, dropItem)) {
+                dropItem.classList.add(this.reverseClassName);
+            }
         });
     }
 

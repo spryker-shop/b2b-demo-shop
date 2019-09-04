@@ -4,13 +4,15 @@ import AjaxProvider from 'ShopUi/components/molecules/ajax-provider/ajax-provide
 import debounce from 'lodash-es/debounce';
 
 export default class QuickOrderRow extends Component {
-    ajaxProvider: AjaxProvider;
-    autocompleteInput: AutocompleteForm;
-    quantityInput: HTMLInputElement;
-    incrementButton: HTMLButtonElement;
-    decrementButton: HTMLButtonElement;
+    protected ajaxProvider: AjaxProvider;
+    protected autocompleteInput: AutocompleteForm;
+    protected quantityInput: HTMLInputElement;
+    protected incrementButton: HTMLButtonElement;
+    protected decrementButton: HTMLButtonElement;
 
-    protected readyCallback(): void {
+    protected readyCallback(): void {}
+
+    protected init(): void {
         this.ajaxProvider = <AjaxProvider>this.getElementsByClassName(`${this.jsName}__provider`)[0];
         this.autocompleteInput = <AutocompleteForm>this.getElementsByClassName(this.autocompleteFormClassName)[0];
         this.registerQuantityInput();

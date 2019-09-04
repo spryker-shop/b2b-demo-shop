@@ -4,14 +4,16 @@ import debounce from 'lodash-es/debounce';
 import OverlayBlock from '../../atoms/overlay-block/overlay-block';
 
 export default class AutocompleteForm extends Component {
-    ajaxProvider: AjaxProvider;
-    inputElement: HTMLInputElement;
-    hiddenInputElement: HTMLInputElement;
-    suggestionsContainer: HTMLElement;
-    cleanButton: HTMLButtonElement;
-    overlay: OverlayBlock;
+    protected ajaxProvider: AjaxProvider;
+    protected inputElement: HTMLInputElement;
+    protected hiddenInputElement: HTMLInputElement;
+    protected suggestionsContainer: HTMLElement;
+    protected cleanButton: HTMLButtonElement;
+    protected overlay: OverlayBlock;
 
-    protected readyCallback(): void {
+    protected readyCallback(): void {}
+
+    protected init(): void {
         this.ajaxProvider = <AjaxProvider>this.getElementsByClassName(`${this.jsName}__provider`)[0];
         this.suggestionsContainer = <HTMLElement>this.getElementsByClassName(`${this.jsName}__container`)[0];
         this.inputElement = <HTMLInputElement>this.getElementsByClassName(`${this.jsName}__input`)[0];

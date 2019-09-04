@@ -5,13 +5,15 @@ import 'select2';
 const DROPDOWN_SELECTOR = 'body > .select2-container--open';
 
 export default class CustomSelect extends Component {
-    select: HTMLSelectElement;
-    $select: $;
-    mobileResolution: number = 768;
-    isInited: boolean = false;
+    protected select: HTMLSelectElement;
+    protected $select: $;
+    protected mobileResolution: number = 768;
+    protected isInited: boolean = false;
     protected timeout: number = 300;
 
-    protected readyCallback(): void {
+    protected readyCallback(): void {}
+
+    protected init(): void {
         this.select = <HTMLSelectElement>this.getElementsByClassName(`${this.jsName}`)[0];
         this.$select = $(this.select);
 

@@ -1,18 +1,17 @@
 import Component from 'ShopUi/models/component';
 
 export default class TogglerAccordion extends Component {
-    readonly wrap: HTMLElement;
-    readonly triggers: HTMLElement[];
-    readonly isTouch: boolean;
+    protected wrap: HTMLElement;
+    protected triggers: HTMLElement[];
+    protected isTouch: boolean;
 
-    constructor() {
-        super();
+    protected readyCallback(): void {}
+
+    protected init(): void {
         this.wrap = <HTMLElement>document.getElementsByClassName(this.wrapClassName)[0];
         this.triggers = <HTMLElement[]>Array.from(document.getElementsByClassName(this.triggerClassName));
         this.isTouch = 'ontouchstart' in window;
-    }
 
-    protected readyCallback(): void {
         this.mapEvents();
     }
 

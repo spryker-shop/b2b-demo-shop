@@ -1,15 +1,17 @@
 import Component from 'ShopUi/models/component';
 
 export default class ColorSelector extends Component {
-    parent: HTMLElement | Document;
-    parentSelector: string = '.product-card';
-    currentColor: HTMLAnchorElement;
-    colors: HTMLAnchorElement[];
-    imageContainer: HTMLElement;
-    image: HTMLImageElement;
-    detailsLink: HTMLAnchorElement;
+    protected parent: HTMLElement | Document;
+    protected parentSelector: string = '.product-card';
+    protected currentColor: HTMLAnchorElement;
+    protected colors: HTMLAnchorElement[];
+    protected imageContainer: HTMLElement;
+    protected image: HTMLImageElement;
+    protected detailsLink: HTMLAnchorElement;
 
-    protected readyCallback(): void {
+    protected readyCallback(): void {}
+
+    protected init(): void {
         this.parent = <HTMLElement | Document>this.closest(this.parentSelector) || document;
         this.initializeProperties();
         this.mapEvents();

@@ -2,25 +2,24 @@ import Component from 'ShopUi/models/component';
 import OverlayBlock from '../../atoms/overlay-block/overlay-block';
 
 export default class TogglerClick extends Component {
-    readonly triggers: HTMLElement[];
-    readonly targets: HTMLElement[];
-    readonly overlay: OverlayBlock;
-    readonly overlayModifiers: string[];
-    isShowClasses: string = 'show-class';
-    isHideClasses: string = 'hide-class';
-    isContentOpened: boolean = false;
+    protected triggers: HTMLElement[];
+    protected targets: HTMLElement[];
+    protected overlay: OverlayBlock;
+    protected overlayModifiers: string[];
+    protected isShowClasses: string = 'show-class';
+    protected isHideClasses: string = 'hide-class';
+    protected isContentOpened: boolean = false;
 
-    constructor() {
-        super();
+    protected readyCallback(): void {}
+
+    protected init(): void {
         this.overlay = <OverlayBlock>document.getElementsByClassName(this.overlayBlockClassName)[0];
         this.triggers = <HTMLElement[]>Array.from(document.getElementsByClassName(this.triggerClassName));
         this.targets = <HTMLElement[]>Array.from(document.getElementsByClassName(this.targetClassName));
         if (this.customOverlayModifiers) {
             this.overlayModifiers = this.customOverlayModifiers.split(', ');
         }
-    }
 
-    protected readyCallback(): void {
         this.checkContentIsOpened();
         this.mapEvents();
     }

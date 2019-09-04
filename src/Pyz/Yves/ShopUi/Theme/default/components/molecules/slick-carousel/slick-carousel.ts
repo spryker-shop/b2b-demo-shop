@@ -5,10 +5,12 @@ import $ from 'jquery/dist/jquery';
 import 'slick-carousel';
 
 export default class SlickCarousel extends Component {
-    slider: HTMLElement;
+    protected slider: HTMLElement;
     protected customSelects: CustomSelect[];
 
-    readyCallback(): void {
+    protected readyCallback(): void {}
+
+    protected init(): void {
         this.slider = <HTMLElement>this.getElementsByClassName(`${this.jsName}__container`)[0];
         if (this.customSelectClassName) {
             this.customSelects = <CustomSelect[]>Array.from(this.getElementsByClassName(this.customSelectClassName));
