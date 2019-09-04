@@ -141,7 +141,7 @@
                                 {% widget 'CartItemNoteFormWidget' args [data.listItem, data.list] only %}{% endwidget %}
                             {% endblock %}
 
-                            {% if data.listItem.productOptions is defined and data.listItem.productOptions | length > 0 %}
+                            {% if data.listItem.productOptions is defined and data.listItem.productOptions %}
                                 {% include molecule('product-item-options') with {
                                     modifiers: modifiers,
                                     data: {
@@ -150,7 +150,7 @@
                                 } only %}
                             {% endif %}
 
-                            {% if data.options | length > 0 %}
+                            {% if data.options %}
                                 {% include molecule('product-item-options') with {
                                     data: {
                                         options: data.options,
