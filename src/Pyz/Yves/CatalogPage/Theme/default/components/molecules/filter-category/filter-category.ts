@@ -1,37 +1,46 @@
 import Component from 'ShopUi/models/component';
 
 export default class FilterCategory extends Component {
-    activeCategory: HTMLElement;
-    categoriesToShow: HTMLElement[];
-    parent: HTMLElement;
+    protected activeCategory: HTMLElement;
+    protected categoriesToShow: HTMLElement[];
+    protected parent: HTMLElement;
+
+    protected readyCallback(): void {}
 
     protected init(): void {
-        this.activeCategory = <HTMLElement>document.querySelector(this.listSelector);
+        this.activeCategory = <HTMLElement>document.getElementsByClassName(this.listSelector)[0];
         this.parent = this.activeCategory ? this.activeCategory : this;
-        this.categoriesToShow = <HTMLElement[]>Array.from(this.parent.querySelectorAll(this.categoriesToShowSelector));
+        this.categoriesToShow = <HTMLElement[]>Array.from(
+            this.parent.getElementsByClassName(this.categoriesToShowSelector));
 
+        this.removeVisibilityClass();
+    }
+
+    protected removeVisibilityClass(): void {
         if (!this.activeCategory || this.activeCategory.classList.contains(this.parentSelector)) {
             this.removeClass(this.categoriesToShow);
 
             return;
         }
 
+        this.removeVisibilityClasses();
+    }
+
+    protected removeVisibilityClasses(): void {
         let target = <HTMLElement>this.activeCategory;
 
         while (!target.classList.contains(this.wrapSelector)) {
             if (target.classList.contains(this.parentSelector)) {
                 this.removeClass(<HTMLElement[]>Array.from(
-                    target.querySelectorAll(this.categoriesToShowSelector)
+                    target.getElementsByClassName(this.categoriesToShowSelector)
                 ));
 
                 return;
             }
 
-            target = <HTMLElement> target.parentNode;
+            target = <HTMLElement>target.parentNode;
         }
     }
-
-    protected readyCallback(): void {}
 
     protected removeClass(categoriesToShow: HTMLElement[]): void {
         categoriesToShow.forEach((element: HTMLElement) => element.classList.remove(this.classToRemove));
