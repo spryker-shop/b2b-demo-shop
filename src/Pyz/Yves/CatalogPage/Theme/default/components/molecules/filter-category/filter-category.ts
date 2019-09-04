@@ -8,16 +8,16 @@ export default class FilterCategory extends Component {
     protected readyCallback(): void {}
 
     protected init(): void {
-        this.activeCategory = <HTMLElement>document.getElementsByClassName(this.listSelector)[0];
+        this.activeCategory = <HTMLElement>document.getElementsByClassName(this.listClassName)[0];
         this.parent = this.activeCategory ? this.activeCategory : this;
         this.categoriesToShow = <HTMLElement[]>Array.from(
-            this.parent.getElementsByClassName(this.categoriesToShowSelector));
+            this.parent.getElementsByClassName(this.categoriesToShowClassName));
 
         this.removeVisibilityClass();
     }
 
     protected removeVisibilityClass(): void {
-        if (!this.activeCategory || this.activeCategory.classList.contains(this.parentSelector)) {
+        if (!this.activeCategory || this.activeCategory.classList.contains(this.parentClassName)) {
             this.removeClass(this.categoriesToShow);
 
             return;
@@ -29,10 +29,10 @@ export default class FilterCategory extends Component {
     protected removeVisibilityClasses(): void {
         let target = <HTMLElement>this.activeCategory;
 
-        while (!target.classList.contains(this.wrapSelector)) {
-            if (target.classList.contains(this.parentSelector)) {
+        while (!target.classList.contains(this.wrapClassName)) {
+            if (target.classList.contains(this.parentClassName)) {
                 this.removeClass(<HTMLElement[]>Array.from(
-                    target.getElementsByClassName(this.categoriesToShowSelector)
+                    target.getElementsByClassName(this.categoriesToShowClassName)
                 ));
 
                 return;
@@ -46,23 +46,23 @@ export default class FilterCategory extends Component {
         categoriesToShow.forEach((element: HTMLElement) => element.classList.remove(this.classToRemove));
     }
 
-    get wrapSelector(): string {
-        return this.getAttribute('wrap-selector');
+    protected get wrapClassName(): string {
+        return this.getAttribute('wrap-class-name');
     }
 
-    get parentSelector(): string {
-        return this.getAttribute('parent-selector');
+    protected get parentClassName(): string {
+        return this.getAttribute('parent-class-name');
     }
 
-    get listSelector(): string {
-        return this.getAttribute('list-selector');
+    protected get listClassName(): string {
+        return this.getAttribute('list-class-name');
     }
 
-    get categoriesToShowSelector(): string {
-        return this.getAttribute('category-selector');
+    protected get categoriesToShowClassName(): string {
+        return this.getAttribute('category-class-name');
     }
 
-    get classToRemove(): string {
+    protected get classToRemove(): string {
         return this.getAttribute('change-class');
     }
 }
