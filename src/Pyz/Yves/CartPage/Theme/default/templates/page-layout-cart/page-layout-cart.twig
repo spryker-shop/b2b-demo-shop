@@ -179,6 +179,7 @@
                             embed: {
                                 product: data.products[cartItem.sku] | default,
                                 hasAdditionalTitle: cartItem.cartNote,
+                                additionalTitleText: 'cart_note.form.comment' | trans,
                             },
                         } only %}
                             {% block productDescription %}
@@ -206,7 +207,7 @@
                                             {% endblock %}
 
                                             {% if embed.hasAdditionalTitle %}
-                                                <h6 class="{{ config.name }}__additional-title">{{ 'cart_note.form.comment' | trans }}:</h6>
+                                                <h6 class="{{ config.name }}__additional-title">{{ embed.additionalTitleText }}:</h6>
                                             {% endif %}
                                         </div>
 
