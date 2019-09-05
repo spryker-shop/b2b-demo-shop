@@ -39,7 +39,7 @@
 
             {% if isNoteNotEmpty %}
                 <div class="{{ config.name }}__text-wrap {{ config.jsName }}__text-wrap">
-                    <div class="{{ config.name }}__text">{{ note }}</div>
+                    <div class="{{ config.name }}__text">{{ note | nl2br }}</div>
 
                     {% if data.canWrite %}
                         {% include molecule('cart-item-note-actions', 'CartNoteWidget') with {
