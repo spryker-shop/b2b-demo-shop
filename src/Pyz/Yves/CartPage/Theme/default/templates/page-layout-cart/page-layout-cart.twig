@@ -178,6 +178,7 @@
                             },
                             embed: {
                                 product: data.products[cartItem.sku] | default,
+                                hasAdditionalTitle: cartItem.cartNote,
                             },
                         } only %}
                             {% block productDescription %}
@@ -193,7 +194,10 @@
 
                                                 {% if embed.product.attributes.farbe is defined %}
                                                     <br>
-                                                    <span class="{{ config.name }}__color-preview">{{ 'cart.item.color' | trans }}:  <span class="{{ config.name }}__color-preview-decoration" style="background: {{ embed.product.colorCode  }}" title="{{ embed.product.attributes.farbe  }}"></span></span>
+                                                    <span class="{{ config.name }}__color-preview">
+                                                        {{ 'cart.item.color' | trans }}:
+                                                        <span class="{{ config.name }}__color-preview-decoration" style="background: {{ embed.product.colorCode  }}" title="{{ embed.product.attributes.farbe  }}"></span>
+                                                    </span>
                                                 {% endif %}
                                             {% endblock %}
 
@@ -201,8 +205,8 @@
                                                 {{ parent() }}
                                             {% endblock %}
 
-                                            {% if data.listItem.cartNote %}
-                                                <h6 class="{{ config.name }}__comment-title">{{ 'cart_note.form.comment' | trans }}:</h6>
+                                            {% if embed.hasAdditionalTitle %}
+                                                <h6 class="{{ config.name }}__additional-title">{{ 'cart_note.form.comment' | trans }}:</h6>
                                             {% endif %}
                                         </div>
 
