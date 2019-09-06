@@ -16,99 +16,114 @@
     {{ parent() }} {{ config.jsName }}
 {% endblock %}
 
-{% block commentThreadWidget %}
-    {% if data.cart.idQuote is not empty %}
-        {% widget 'CommentThreadWidget' args [
-            data.cart.idQuote,
-            'quote',
-            app.request.requestUri,
-            data.cart.commentThread
-        ] only %}
-            {% block body %}
-                <div class="cart-sidebar__item">
-                    <h5 class="cart-sidebar__title">
-                        {{ 'comment_widget.comments_to_cart' | trans }}
-                    </h5>
-                    <div class="cart-sidebar__content">
-                        {{ parent() }}
-                    </div>
-                </div>
-            {% endblock %}
-        {% endwidget %}
-    {% endif %}
-{% endblock %}
-
 {% block body %}
+    {% set cartSidebarItem = 'cart-sidebar-item' %}
+
     {% block cartNote %}
-        {% widget 'CartNoteFormWidget' args [data.cart] only %}
-            {% block body %}
-                <div class="cart-sidebar__item cart-sidebar__item--note">
-                    <h5 class="cart-sidebar__title toggler-accordion__item js-cart-sidebar__trigger" data-toggle-target='.js-cart-sidebar__content-note'>
-                        {{ 'cart_note.quote_form.enter_note' | trans }}
-                        <span class="icon icon--toggler-cross toggler-accordion__icon"></span>
-                    </h5>
-                    <div class="cart-sidebar__content js-cart-sidebar__content-note is-hidden">
-                        {{ parent() }}
-                    </div>
-                </div>
+        {% embed molecule('cart-sidebar-item', 'CartPage') with {
+            data: {
+                title: 'cart_note.quote_form.enter_note' | trans,
+                cart: data.cart,
+            },
+            modifiers: ['note'],
+            attributes: {
+                'data-toggle-target': '.js-cart-sidebar-item__content-note',
+            },
+        } only %}
+            {% block contentClasses %}
+                {{ config.jsName }}__trigger {{ config.jsName }}__content-note is-hidden
             {% endblock %}
-        {% endwidget %}
+            {% block contentInner %}
+                {% widget 'CartNoteFormWidget' args [data.cart] only %}{% endwidget %}
+            {% endblock %}
+        {% endembed %}
     {% endblock %}
 
     {% if data.isQuoteEditable and can('ChangeCartItemPermissionPlugin') %}
         {% if data.cart.idQuote is not empty and data.cart.items is not empty %}
-            {% widget 'CreateShoppingListFromCartWidget' args [data.cart.idQuote] only %}
-                {% block body %}
-                    <div class="cart-sidebar__item">
-                        <h5 class="cart-sidebar__title toggler-accordion__item js-cart-sidebar__trigger" data-toggle-target='.js-cart-sidebar__content-shopping-list'>
-                            {{ 'cart.add-to-shopping-list' | trans }}
-                            <span class="icon icon--toggler-cross toggler-accordion__icon"></span>
-                        </h5>
-                        <div class="cart-sidebar__content js-cart-sidebar__content-shopping-list is-hidden">
-                            {{ parent() }}
-                        </div>
-                    </div>
+            {% embed molecule('cart-sidebar-item', 'CartPage') with {
+                data: {
+                    title: 'cart.add-to-shopping-list' | trans,
+                    cart: data.cart,
+                },
+                attributes: {
+                    'data-toggle-target': '.js-cart-sidebar-item__content-shopping-list',
+                },
+            } only %}
+                {% block contentClasses %}
+                    {{ config.jsName }}__trigger {{ config.jsName }}__content-shopping-list is-hidden
                 {% endblock %}
-            {% endwidget %}
+                {% block contentInner %}
+                    {% widget 'CreateShoppingListFromCartWidget' args [data.cart.idQuote] only %}{% endwidget %}
+                {% endblock %}
+            {% endembed %}
         {% endif %}
     {% endif %}
 
     {% if data.isQuoteEditable %}
-        {% widget 'ProductConcreteAddWidget' args [
-            '',
-            'cart.quick_add_to_cart.submit' | trans,
-            'cart/quick-add',
-            true,
-        ] only %}
-            {% block body %}
-                <div class="cart-sidebar__item">
-                    <h5 class="cart-sidebar__title toggler-accordion__item js-cart-sidebar__trigger" data-toggle-target='.js-cart-sidebar__content-quick-add-widget'>
-                        {{ 'cart.quick_add_to_cart' | trans}}
-                        <span class="icon icon--toggler-cross toggler-accordion__icon"></span>
-                    </h5>
-                    <div class="cart-sidebar__content js-cart-sidebar__content-quick-add-widget is-hidden">
-                        {{ parent() }}
-                    </div>
-                </div>
+        {% embed molecule('cart-sidebar-item', 'CartPage') with {
+            data: {
+                title: 'cart.quick_add_to_cart' | trans,
+                cart: data.cart,
+            },
+            attributes: {
+                'data-toggle-target': '.js-cart-sidebar-item__content-quick-add-widget',
+            },
+        } only %}
+            {% block contentClasses %}
+                {{ config.jsName }}__trigger {{ config.jsName }}__content-quick-add-widget is-hidden
             {% endblock %}
-        {% endwidget %}
+            {% block contentInner %}
+                {% widget 'ProductConcreteAddWidget' args [
+                    '',
+                    'cart.quick_add_to_cart.submit' | trans,
+                    'cart/quick-add',
+                    true,
+                ] only %}
+                {% endwidget %}
+            {% endblock %}
+        {% endembed %}
 
-        {% widget 'ShareCartByLinkWidget' args [data.cart] only %}
-            {% block body %}
-                <div class="cart-sidebar__item cart-sidebar__item--with-label cart-sidebar__item--shadow-less">
-                    <h5 class="cart-sidebar__title toggler-accordion__item js-cart-sidebar__trigger" data-toggle-target='.js-cart-sidebar__content-share-by-link-widget'>
-                        {{ 'persistent_cart_share.title' | trans}}
-                        <span class="icon icon--toggler-cross toggler-accordion__icon"></span>
-                    </h5>
-                    <div class="cart-sidebar__content js-cart-sidebar__content-share-by-link-widget is-hidden">
-                        {{ parent() }}
-                    </div>
-                </div>
+        {% embed molecule('cart-sidebar-item', 'CartPage') with {
+            data: {
+                title: 'persistent_cart_share.title' | trans,
+                cart: data.cart,
+            },
+            attributes: {
+                'data-toggle-target': '.js-cart-sidebar-item__content-share-by-link-widget',
+            },
+            modifiers: ['with-label','shadow-less'],
+        } only %}
+            {% block contentClasses %}
+                {{ config.jsName }}__trigger {{ config.jsName }}__content-share-by-link-widget is-hidden
             {% endblock %}
-        {% endwidget %}
+            {% block contentInner %}
+                {% widget 'ShareCartByLinkWidget' args [data.cart] only %}{% endwidget %}
+            {% endblock %}
+        {% endembed %}
     {% endif %}
 
-    {{ block('commentThreadWidget') }}
+    {% if data.cart.idQuote is not empty %}
+        {% embed molecule('cart-sidebar-item', 'CartPage') with {
+            data: {
+                title: 'comment_widget.comments_to_cart' | trans,
+                cart: data.cart,
+            },
+        } only %}
+            {% block contentClasses %}
+
+            {% endblock %}
+            {% block contentInner %}
+                {% widget 'CommentThreadWidget' args [
+                    data.cart.idQuote,
+                    'quote',
+                    app.request.requestUri,
+                    data.cart.commentThread
+                ] only %}
+                {% endwidget %}
+            {% endblock %}
+        {% endembed %}
+    {% endif %}
 
     <div class="cart-sidebar__item cart-sidebar__item--summary">
         <div class="cart-sidebar__item cart-sidebar__item--start">
@@ -150,7 +165,7 @@
     {% include molecule('toggler-accordion') with {
         attributes: {
             'wrap-selector': '.js-cart-sidebar',
-            'trigger-selector': '.js-cart-sidebar__trigger',
+            'trigger-selector': '.js-cart-sidebar-item__trigger',
             'class-to-toggle': 'is-hidden',
         },
     } only %}
