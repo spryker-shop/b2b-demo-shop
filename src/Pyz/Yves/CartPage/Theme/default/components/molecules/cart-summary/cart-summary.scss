@@ -1,5 +1,20 @@
 @mixin cart-page-cart-summary($name: '.cart-summary') {
     #{$name} {
+        &__wrapper {
+            background-color: $setting-color-gray-7;
+            margin: 0 rem(-15);
+            padding: 0 rem(15) rem(17);
+            font-size: rem(14);
+            font-weight: fw(medium);
+            border-radius: 0 0 $setting-border-radius $setting-border-radius;
+
+            @include helper-breakpoint-media-min($lg) {
+                margin: 0;
+                padding-left: rem(20);
+                padding-right: rem(20);
+            }
+        }
+
         &__item {
             color: $setting-color-gray-2;
             line-height: rem(24);

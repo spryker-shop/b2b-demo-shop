@@ -110,9 +110,8 @@
                 cart: data.cart,
             },
         } only %}
-            {% block contentClasses %}
-
-            {% endblock %}
+            {% block icon %}{% endblock %}
+            {% block contentClasses %}{% endblock %}
             {% block contentInner %}
                 {% widget 'CommentThreadWidget' args [
                     data.cart.idQuote,
@@ -125,30 +124,40 @@
         {% endembed %}
     {% endif %}
 
-    <div class="cart-sidebar__item cart-sidebar__item--summary">
-        <div class="cart-sidebar__item cart-sidebar__item--start">
-            <div class=" grid grid--justify grid--middle cart-sidebar__order">
-                <h6 class="col cart-sidebar__title">{{ 'cart.your-order' | trans }}</h6>
-                <div class="col cart-sidebar__quantity">{{ data.transformedCartItems | length }} {{ 'checkout.step.summary.items' | trans }}</div>
+    {% embed molecule('cart-sidebar-item', 'CartPage') with {
+        data: {
+            cart: data.cart,
+            transformedCartItems: data.transformedCartItems,
+            isQuoteValid: data.isQuoteValid,
+            isQuoteEditable: data.isQuoteEditable,
+        },
+        modifiers: ['summary'],
+    } only %}
+        {% block body %}
+            <div class="{{ config.name }} {{ config.name }}--start">
+                <div class=" grid grid--justify grid--middle {{ config.name }}__order">
+                    <h6 class="col {{ config.name }}__title">{{ 'cart.your-order' | trans }}</h6>
+                    <div class="col {{ config.name }}__quantity">{{ data.transformedCartItems | length }} {{ 'checkout.step.summary.items' | trans }}</div>
+                </div>
+
+                {% if data.isQuoteEditable and can('ChangeCartItemPermissionPlugin') and can('SeePricePermissionPlugin') %}
+                    {% widget 'DiscountVoucherFormWidget' only %}{% endwidget %}
+                {% endif %}
             </div>
 
-            {% if data.isQuoteEditable and can('ChangeCartItemPermissionPlugin') and can('SeePricePermissionPlugin') %}
-                {% widget 'DiscountVoucherFormWidget' only %}{% endwidget %}
-            {% endif %}
-        </div>
-
-        {% block cartSummary %}
-            {% if can('SeePricePermissionPlugin') %}
-                {% include molecule('cart-summary', 'CartPage') with {
-                    data: {
-                        cart: data.cart,
-                        isQuoteValid: data.isQuoteValid,
-                        isQuoteEditable: data.isQuoteEditable,
-                    },
-                } only %}
-            {% endif %}
+            {% block cartSummary %}
+                {% if can('SeePricePermissionPlugin') %}
+                    {% include molecule('cart-summary', 'CartPage') with {
+                        data: {
+                            cart: data.cart,
+                            isQuoteValid: data.isQuoteValid,
+                            isQuoteEditable: data.isQuoteEditable,
+                        },
+                    } only %}
+                {% endif %}
+            {% endblock %}
         {% endblock %}
-    </div>
+    {% endembed %}
 
     {% widget 'QuoteRequestAgentOverviewWidget' only %}
         {% block body %}

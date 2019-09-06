@@ -16,7 +16,7 @@
 %}
 
 {% block body %}
-    <div class="order-sidebar__item order-sidebar__item--end">
+    <div class="{{ config.name }}__wrapper">
         <ul class="list">
             {% block cartSummaryContent %}
                 <li class="list__item">
@@ -59,7 +59,7 @@
 
     {% widget 'QuoteApprovalWidget' args [data.cart] only %}
         {% block container %}
-            <div class="order-sidebar__item order-sidebar__item--approve-request">
+            <div class="cart-sidebar__item cart-sidebar__item--approve-request">
                 {{ parent() }}
             </div>
         {% endblock %}
@@ -68,7 +68,7 @@
     {% if data.isQuoteValid %}
         {% widget 'QuoteApproveRequestWidget' args [data.cart] %}
             {% block container %}
-                <div class="order-sidebar__item order-sidebar__item--approve-request">
+                <div class="cart-sidebar__item cart-sidebar__item--approve-request">
                     {{ parent() }}
                 </div>
             {% endblock %}
