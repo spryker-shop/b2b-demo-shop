@@ -1,86 +1,92 @@
-.cart-item-note {
-    margin-top: rem(16);
+@mixin cart-note-widget-cart-item-note($name: '.cart-item-note') {
+    #{$name} {
+        margin-top: rem(8);
 
-    &__container {
-        background-color: $setting-color-gray-7;
-        padding: rem(13) rem(20);
+        &__container {
+            background-color: $setting-color-gray-7;
+            padding: rem(13) rem(20);
 
-        @include helper-breakpoint-media-min($lg) {
-            padding-top: rem(17);
-            padding-bottom: rem(17);
+            @include helper-breakpoint-media-min($lg) {
+                padding-top: rem(17);
+                padding-bottom: rem(17);
+            }
         }
-    }
 
-    &__title {
-        font-size: rem(13);
-        font-weight: fw(medium);
-        line-height: normal;
-        color: $setting-color-gray-5;
-        margin-bottom: rem(7);
-
-        @include helper-breakpoint-media-min($lg) {
-            font-size: rem(14);
-        }
-    }
-
-    &__label {
-        font-size: rem(12);
-        line-height: rem(18);
-        color: $setting-color-gray-3;
-
-        @include helper-breakpoint-media-min($lg) {
-            font-size: rem(14);
-        }
-    }
-
-    &__content {
-        margin-top: rem(17);
-    }
-
-    &__text {
-        color: $setting-color-gray-3;
-        font-size: rem(13);
-        line-height: 1.38;
-    }
-
-    .form__field {
-        padding-top: 0;
-    }
-
-    .form__actions {
-        text-align: left;
-        margin-top: 0;
-    }
-
-    .form__action {
-        margin-top: rem(3);
-        margin-left: 0;
-
-        @include helper-breakpoint-media-min($lg) {
-            margin-top: rem(12);
-        }
-    }
-
-    .label {
-        display: none;
-    }
-
-    .textarea {
-        font-size: rem(12);
-        font-weight: fw(regular);
-        line-height: rem(18);
-        color: $setting-color-gray-3;
-        padding: rem(12) rem(13);
-        border-radius: $setting-border-radius;
-        border: none;
-        box-shadow: 0 rem(10) rem(10) 0 $setting-color-shadow-1, 0 rem(3) rem(3) 0 $setting-color-shadow-1;
-        min-height: rem(119);
-        max-width: 100%;
-
-        @include helper-breakpoint-media-min($lg) {
+        &__title {
             font-size: rem(13);
-            padding: rem(15) rem(20);
-            min-height: rem(86);
+            font-weight: fw(medium);
+            line-height: normal;
+            color: $setting-color-gray-5;
+            margin-bottom: rem(7);
+
+            @include helper-breakpoint-media-min($lg) {
+                font-size: rem(14);
+            }
         }
+
+        &__label {
+            font-size: rem(12);
+            line-height: rem(18);
+            color: $setting-color-gray-3;
+
+            @include helper-breakpoint-media-min($lg) {
+                font-size: rem(14);
+            }
+        }
+
+        &__content {
+            margin-top: rem(17);
+        }
+
+        &__text {
+            color: $setting-color-gray-3;
+            font-size: rem(13);
+            line-height: 1.38;
+        }
+
+        .form__field {
+            padding-top: 0;
+        }
+
+        .form__actions {
+            text-align: left;
+            margin-top: 0;
+        }
+
+        .form__action {
+            margin-top: rem(3);
+            margin-left: 0;
+
+            @include helper-breakpoint-media-min($lg) {
+                margin-top: rem(12);
+            }
+        }
+
+        .label {
+            display: none;
+        }
+
+        .textarea {
+            font-size: rem(12);
+            font-weight: fw(regular);
+            line-height: rem(18);
+            color: $setting-color-gray-3;
+            padding: rem(12) rem(13);
+            border-radius: $setting-border-radius;
+            border: none;
+            box-shadow: 0 rem(10) rem(10) 0 $setting-color-shadow-1, 0 rem(3) rem(3) 0 $setting-color-shadow-1;
+            min-height: rem(119);
+            max-width: 100%;
+
+            @include helper-breakpoint-media-min($lg) {
+                font-size: rem(13);
+                padding: rem(15) rem(20);
+                min-height: rem(86);
+            }
+        }
+
+        @content;
     }
 }
+
+@include cart-note-widget-cart-item-note();
