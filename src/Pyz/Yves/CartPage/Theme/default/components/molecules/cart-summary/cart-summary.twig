@@ -57,22 +57,28 @@
         </ul>
     </div>
 
-    {% widget 'QuoteApprovalWidget' args [data.cart] only %}
-        {% block container %}
-            <div class="cart-sidebar__item cart-sidebar__item--approve-request">
-                {{ parent() }}
-            </div>
+    {% embed molecule('cart-sidebar-item', 'CartPage') with {
+        data: {
+            cart: data.cart,
+        },
+        modifiers: ['approve-request'],
+    } only %}
+        {% block body %}
+            {% widget 'QuoteApprovalWidget' args [data.cart] only %}{% endwidget %}
         {% endblock %}
-    {% endwidget %}
+    {% endembed %}
 
     {% if data.isQuoteValid %}
-        {% widget 'QuoteApproveRequestWidget' args [data.cart] %}
-            {% block container %}
-                <div class="cart-sidebar__item cart-sidebar__item--approve-request">
-                    {{ parent() }}
-                </div>
+        {% embed molecule('cart-sidebar-item', 'CartPage') with {
+            data: {
+                cart: data.cart,
+            },
+            modifiers: ['approve-request'],
+        } only %}
+            {% block body %}
+                {% widget 'QuoteApproveRequestWidget' args [data.cart] %}{% endwidget %}
             {% endblock %}
-        {% endwidget %}
+        {% endembed %}
     {% endif %}
 
     {% if canProceedToCheckout and can('SeeOrderPlaceSubmitPermissionPlugin') %}
