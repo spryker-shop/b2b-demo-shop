@@ -17,8 +17,6 @@
 {% endblock %}
 
 {% block body %}
-    {% set cartSidebarItem = 'cart-sidebar-item' %}
-
     {% block cartNote %}
         {% embed molecule('cart-sidebar-item', 'CartPage') with {
             data: {
@@ -31,7 +29,7 @@
             },
         } only %}
             {% block contentClasses %}
-                {{ config.jsName }}__trigger {{ config.jsName }}__content-note is-hidden
+                {{ config.jsName }}__content-note is-hidden
             {% endblock %}
             {% block contentInner %}
                 {% widget 'CartNoteFormWidget' args [data.cart] only %}{% endwidget %}
@@ -51,7 +49,7 @@
                 },
             } only %}
                 {% block contentClasses %}
-                    {{ config.jsName }}__trigger {{ config.jsName }}__content-shopping-list is-hidden
+                    {{ config.jsName }}__content-shopping-list is-hidden
                 {% endblock %}
                 {% block contentInner %}
                     {% widget 'CreateShoppingListFromCartWidget' args [data.cart.idQuote] only %}{% endwidget %}
@@ -71,7 +69,7 @@
             },
         } only %}
             {% block contentClasses %}
-                {{ config.jsName }}__trigger {{ config.jsName }}__content-quick-add-widget is-hidden
+                {{ config.jsName }}__content-quick-add-widget is-hidden
             {% endblock %}
             {% block contentInner %}
                 {% widget 'ProductConcreteAddWidget' args [
@@ -95,7 +93,7 @@
             modifiers: ['with-label','shadow-less'],
         } only %}
             {% block contentClasses %}
-                {{ config.jsName }}__trigger {{ config.jsName }}__content-share-by-link-widget is-hidden
+                {{ config.jsName }}__content-share-by-link-widget is-hidden
             {% endblock %}
             {% block contentInner %}
                 {% widget 'ShareCartByLinkWidget' args [data.cart] only %}{% endwidget %}
