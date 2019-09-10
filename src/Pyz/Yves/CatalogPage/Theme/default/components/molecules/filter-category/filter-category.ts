@@ -2,37 +2,37 @@ import Component from 'ShopUi/models/component';
 
 export default class FilterCategory extends Component {
     protected activeCategory: HTMLElement;
-    protected categoriesToShow: HTMLElement[];
+    protected visibleCategories: HTMLElement[];
     protected parent: HTMLElement;
 
     protected readyCallback(): void {}
 
     protected init(): void {
-        this.activeCategory = <HTMLElement>document.getElementsByClassName(this.listClassName)[0];
+        this.activeCategory = <HTMLElement>document.getElementsByClassName(this.activeCategoryClassName)[0];
         this.parent = this.activeCategory ? this.activeCategory : this;
-        this.categoriesToShow = <HTMLElement[]>Array.from(
-            this.parent.getElementsByClassName(this.categoriesToShowClassName));
+        this.visibleCategories = <HTMLElement[]>Array.from(
+            this.parent.getElementsByClassName(this.visibleCategoryClass));
 
-        this.removeVisibilityClass();
+        this.hideCategory();
     }
 
-    protected removeVisibilityClass(): void {
+    protected hideCategory(): void {
         if (!this.activeCategory || this.activeCategory.classList.contains(this.parentClassName)) {
-            this.removeClass(this.categoriesToShow);
+            this.removeClass(this.visibleCategories);
 
             return;
         }
 
-        this.removeVisibilityClasses();
+        this.hideParentCategories();
     }
 
-    protected removeVisibilityClasses(): void {
+    protected hideParentCategories(): void {
         let target = <HTMLElement>this.activeCategory;
 
         while (!target.classList.contains(this.wrapClassName)) {
             if (target.classList.contains(this.parentClassName)) {
                 this.removeClass(<HTMLElement[]>Array.from(
-                    target.getElementsByClassName(this.categoriesToShowClassName)
+                    target.getElementsByClassName(this.visibleCategoryClass)
                 ));
 
                 return;
@@ -54,15 +54,15 @@ export default class FilterCategory extends Component {
         return this.getAttribute('parent-class-name');
     }
 
-    protected get listClassName(): string {
-        return this.getAttribute('list-class-name');
+    protected get activeCategoryClassName(): string {
+        return this.getAttribute('active-category-class-name');
     }
 
-    protected get categoriesToShowClassName(): string {
-        return this.getAttribute('category-class-name');
+    protected get visibleCategoryClass(): string {
+        return this.getAttribute('visible-category-class');
     }
 
     protected get classToRemove(): string {
-        return this.getAttribute('change-class');
+        return this.getAttribute('class-to-remove');
     }
 }

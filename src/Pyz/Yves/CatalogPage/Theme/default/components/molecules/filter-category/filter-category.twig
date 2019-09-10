@@ -15,9 +15,9 @@
 {% define attributes = {
     'wrap-class-name': config.name ~ '__menu--lvl-1',
     'parent-class-name': config.name ~ '__menu-item--lvl-1',
-    'list-class-name': 'js-' ~ config.name ~ '__menu-item',
-    'category-class-name': config.name ~ '__menu-item',
-    'change-class': 'is-hidden-lg-xxl'
+    'active-category-class-name': 'js-' ~ config.name ~ '__menu-item',
+    'visible-category-class': config.name ~ '__menu-item',
+    'class-to-remove': 'is-hidden-lg-xxl'
 } %}
 
 {% block component %}
