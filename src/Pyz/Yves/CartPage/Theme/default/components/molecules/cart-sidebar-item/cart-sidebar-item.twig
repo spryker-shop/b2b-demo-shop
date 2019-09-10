@@ -20,7 +20,7 @@
 
 {% block body %}
     {% block title %}
-        <h5 class="{{ config.name }}__title {{ config.jsName }}__trigger {% block titleClasses %}{{ config.jsName }}__trigger toggler-accordion__item{% endblock %}" {% block titleAttributes %}{{ component.renderAttributes(attributes) }}{% endblock %}>
+        <h5 class="{{ config.name }}__title {% block titleClasses %}{{ config.jsName }}__trigger toggler-accordion__item{% endblock %}" {{ component.renderAttributes(attributes) }}>
             {% block titleText %}
                 {{ data.title }}
             {% endblock %}

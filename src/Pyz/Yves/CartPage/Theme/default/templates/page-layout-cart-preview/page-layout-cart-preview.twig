@@ -113,7 +113,7 @@
                 },
             } only %}
                 {% block contentClasses %}
-                    {{ config.jsName }}__content-note is-hidden
+                    {{ config.jsName }}__content-note {{ parent() }}
                 {% endblock %}
 
                 {% block contentInner %}
@@ -137,21 +137,19 @@
                     isQuoteValid: data.isQuoteValid,
                     isQuoteEditable: data.isQuoteEditable,
                 },
-                modifiers: ['summary', 'start'],
+                modifiers: ['summary'],
             } only %}
                 {% block body %}
-                    <div class="{{ config.name }}>
-                        <div class=" grid grid--justify grid--middle {{ config.name }}__order-header">
-                            <h6 class="col {{ config.name }}__title">{{ 'cart.your-order' | trans }}</h6>
-                            <div class="col {{ config.name }}__quantity">{{ data.transformedCartItems | length }} {{ 'checkout.step.summary.items' | trans }}</div>
-                        </div>
-
-                        {% set isDiscountVoucherFormWidget = data.isQuoteEditable and can('ChangeCartItemPermissionPlugin') and can('SeePricePermissionPlugin') %}
-
-                        {% if isDiscountVoucherFormWidget %}
-                            {% widget 'DiscountVoucherFormWidget' only %}{% endwidget %}
-                        {% endif %}
+                    <div class="{{ config.name }}__start grid grid--justify grid--middle">
+                        <h6 class="{{ config.name }}__title col">{{ 'cart.your-order' | trans }}</h6>
+                        <div class="{{ config.name }}__quantity col">{{ data.transformedCartItems | length }} {{ 'checkout.step.summary.items' | trans }}</div>
                     </div>
+
+                    {% set isDiscountVoucherFormWidget = data.isQuoteEditable and can('ChangeCartItemPermissionPlugin') and can('SeePricePermissionPlugin') %}
+
+                    {% if isDiscountVoucherFormWidget %}
+                        {% widget 'DiscountVoucherFormWidget' only %}{% endwidget %}
+                    {% endif %}
 
                     {% block cartSummary %}
                         {% embed molecule('cart-summary', 'CartPage') with {
@@ -162,7 +160,7 @@
                             },
                         } only %}
                             {% block body %}
-                                <div class="cart-summary__wrapper">
+                                <div class="{{ config.name }}__wrapper">
                                     <ul class="list">
                                         {% block cartSummaryContent %}
                                             <li class="list__item">

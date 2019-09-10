@@ -18,16 +18,15 @@
             background: none;
         }
 
-        &--start {
-            margin: 0 rem(-15);
-            padding-left: rem(15);
-            padding-right: rem(15);
-            padding-bottom: rem(10);
+        &__start {
+            margin: rem(5) rem(-15) 0;
+            padding: rem(17) rem(15) rem(10);
+            background-color: $setting-color-gray-7;
             border-radius: $setting-border-radius $setting-border-radius 0 0;
             border-bottom: rem(1) solid $setting-color-gray-1;
 
             @include helper-breakpoint-media-min($lg) {
-                margin: 0;
+                margin: rem(10) 0 0;
                 padding-left: rem(20);
                 padding-right: rem(20);
                 padding-bottom: rem(17);

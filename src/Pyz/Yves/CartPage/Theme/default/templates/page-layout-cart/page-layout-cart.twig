@@ -81,7 +81,7 @@
                             },
                         } only %}
                             {% block contentClasses %}
-                                {{ config.jsName }}__trigger {{ config.jsName }}__content-quick-add-widget
+                                {{ config.jsName }}__content-quick-add-widget {{ parent() }}
                             {% endblock %}
 
                             {% block contentInner %}
