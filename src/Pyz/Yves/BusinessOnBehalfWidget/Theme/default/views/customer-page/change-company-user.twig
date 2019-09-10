@@ -1,8 +1,7 @@
-{% extends template('widget') %}
+{% extends view('change-company-user', '@SprykerShop:BusinessOnBehalfWidget') %}
 
 {% define data = {
-    isVisible: _widget.isVisible,
-    isActivePage: app.request.pathInfo == path('company/user/select')
+    isActivePage: app.request.pathInfo == path('company/user/select'),
 } %}
 
 {% block template %}
