@@ -37,26 +37,27 @@
         {% endembed %}
     {% endblock %}
 
-    {% if data.isQuoteEditable and can('ChangeCartItemPermissionPlugin') %}
-        {% if data.cart.idQuote is not empty and data.cart.items is not empty %}
-            {% embed molecule('cart-sidebar-item', 'CartPage') with {
-                data: {
-                    title: 'cart.add-to-shopping-list' | trans,
-                    cart: data.cart,
-                },
-                attributes: {
-                    'data-toggle-target': '.js-cart-sidebar-item__content-shopping-list',
-                },
-            } only %}
-                {% block contentClasses %}
-                    {{ config.jsName }}__content-shopping-list {{ parent() }}
-                {% endblock %}
+    {% set isPermission = data.isQuoteEditable and can('ChangeCartItemPermissionPlugin') %}
+    {% set isQuoteAndItems = data.cart.idQuote is not empty and data.cart.items is not empty %}
 
-                {% block contentInner %}
-                    {% widget 'CreateShoppingListFromCartWidget' args [data.cart.idQuote] only %}{% endwidget %}
-                {% endblock %}
-            {% endembed %}
-        {% endif %}
+    {% if isPermission and isQuoteAndItems %}
+        {% embed molecule('cart-sidebar-item', 'CartPage') with {
+            data: {
+                title: 'cart.add-to-shopping-list' | trans,
+                cart: data.cart,
+            },
+            attributes: {
+                'data-toggle-target': '.js-cart-sidebar-item__content-shopping-list',
+            },
+        } only %}
+            {% block contentClasses %}
+                {{ config.jsName }}__content-shopping-list {{ parent() }}
+            {% endblock %}
+
+            {% block contentInner %}
+                {% widget 'CreateShoppingListFromCartWidget' args [data.cart.idQuote] only %}{% endwidget %}
+            {% endblock %}
+        {% endembed %}
     {% endif %}
 
     {% if data.isQuoteEditable %}
