@@ -1,1 +1,1 @@
-import './cart-sidebar-item';
+import './cart-sidebar-item.scss';

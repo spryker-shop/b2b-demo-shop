@@ -51,6 +51,7 @@
 
 {% block content %}
     {% set isQuoteEnadled = data.cart.idQuote and data.isQuoteEditable %}
+
     {% if data.cart.items is empty %}
         {% block emptyCart %}
             <div class="grid">
@@ -82,6 +83,7 @@
                             {% block contentClasses %}
                                 {{ config.jsName }}__trigger {{ config.jsName }}__content-quick-add-widget
                             {% endblock %}
+
                             {% block contentInner %}
                                 {% widget 'ProductConcreteAddWidget' args [
                                     '',
@@ -228,6 +230,7 @@
                                                                 } only %}
                                                             {% endif %}
                                                         {% endblock %}
+
                                                         {% block quantity %}
                                                             {% set isEmptyProductInfo = amountSalesUnit is empty and quantitySalesUnit is empty and data.quantity is empty %}
 

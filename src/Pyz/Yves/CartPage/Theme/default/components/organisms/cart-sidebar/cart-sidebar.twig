@@ -23,14 +23,14 @@
                 title: 'cart_note.quote_form.enter_note' | trans,
                 cart: data.cart,
             },
-            modifiers: ['note'],
             attributes: {
                 'data-toggle-target': '.js-cart-sidebar-item__content-note',
             },
         } only %}
             {% block contentClasses %}
-                {{ config.jsName }}__content-note is-hidden
+                {{ config.jsName }}__content-note {{ parent() }}
             {% endblock %}
+
             {% block contentInner %}
                 {% widget 'CartNoteFormWidget' args [data.cart] only %}{% endwidget %}
             {% endblock %}
@@ -49,8 +49,9 @@
                 },
             } only %}
                 {% block contentClasses %}
-                    {{ config.jsName }}__content-shopping-list is-hidden
+                    {{ config.jsName }}__content-shopping-list {{ parent() }}
                 {% endblock %}
+
                 {% block contentInner %}
                     {% widget 'CreateShoppingListFromCartWidget' args [data.cart.idQuote] only %}{% endwidget %}
                 {% endblock %}
@@ -69,8 +70,9 @@
             },
         } only %}
             {% block contentClasses %}
-                {{ config.jsName }}__content-quick-add-widget is-hidden
+                {{ config.jsName }}__content-quick-add-widget {{ parent() }}
             {% endblock %}
+
             {% block contentInner %}
                 {% widget 'ProductConcreteAddWidget' args [
                     '',
@@ -93,8 +95,9 @@
             modifiers: ['with-label','shadow-less'],
         } only %}
             {% block contentClasses %}
-                {{ config.jsName }}__content-share-by-link-widget is-hidden
+                {{ config.jsName }}__content-share-by-link-widget {{ parent() }}
             {% endblock %}
+
             {% block contentInner %}
                 {% widget 'ShareCartByLinkWidget' args [data.cart] only %}{% endwidget %}
             {% endblock %}
@@ -109,7 +112,9 @@
             },
         } only %}
             {% block icon %}{% endblock %}
+
             {% block contentClasses %}{% endblock %}
+
             {% block contentInner %}
                 {% widget 'CommentThreadWidget' args [
                     data.cart.idQuote,
@@ -134,12 +139,14 @@
         } only %}
             {% block body %}
                 <div class="{{ config.name }} {{ config.name }}--start">
-                    <div class=" grid grid--justify grid--middle {{ config.name }}__order">
+                    <div class=" grid grid--justify grid--middle {{ config.name }}__order-header">
                         <h6 class="col {{ config.name }}__title">{{ 'cart.your-order' | trans }}</h6>
                         <div class="col {{ config.name }}__quantity">{{ data.transformedCartItems | length }} {{ 'checkout.step.summary.items' | trans }}</div>
                     </div>
 
-                    {% if data.isQuoteEditable and can('ChangeCartItemPermissionPlugin') and can('SeePricePermissionPlugin') %}
+                    {% set isDiscountVoucherFormWidget = data.isQuoteEditable and can('ChangeCartItemPermissionPlugin') and can('SeePricePermissionPlugin') %}
+
+                    {% if isDiscountVoucherFormWidget %}
                         {% widget 'DiscountVoucherFormWidget' only %}{% endwidget %}
                     {% endif %}
                 </div>
@@ -163,7 +170,7 @@
         {% block body %}
             {% block activeRequest %}
                 {% if data.quoteRequestOverviewCollection.currentQuoteRequest %}
-                    <div class="cart-sidebar__item--summary">
+                    <div class="cart-sidebar__item cart-sidebar__item--summary">
                         {{ block('activeRequestActions') }}
                     </div>
                 {% endif %}
