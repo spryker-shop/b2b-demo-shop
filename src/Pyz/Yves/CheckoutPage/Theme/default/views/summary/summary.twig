@@ -142,7 +142,7 @@
                                     isNoteNotEmpty: true,
                                     canWrite: false,
                                     label: 'cart_note.checkout_page.quote_note',
-                                    note: embed.item.cartNote | escape | nl2br
+                                    note: embed.item.cartNote
                                 }
                             } only %}
                         {% endif %}
@@ -157,7 +157,7 @@
                         isNoteNotEmpty: true,
                         canWrite: false,
                         label: 'cart_note.checkout_page.quote_note',
-                        note: data.transfer.cartNote | escape | nl2br
+                        note: data.transfer.cartNote
                     }
                 } only %}
             {% endif %}
