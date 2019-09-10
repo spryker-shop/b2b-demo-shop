@@ -51,6 +51,7 @@
 
 {% block content %}
     {% set isQuoteEnadled = data.cart.idQuote and data.isQuoteEditable %}
+
     {% if data.cart.items is empty %}
         {% block emptyCart %}
             <div class="grid">
@@ -70,26 +71,50 @@
                 </div>
                 <div class="col col--xl-3">
                     <div>
-                        {% widget 'ProductConcreteAddWidget' args [
-                            '',
-                            'cart.quick_add_to_cart.submit' | trans,
-                            'cart/quick-add',
-                            true,
-                        ] only %}
-                            {% block body %}
-                                <div class="order-sidebar__item">
-                                    <h5 class="order-sidebar__title toggler-accordion__item js-order-sidebar__trigger" data-toggle-target='.js-order-sidebar__content-quick-add-widget'>
-                                        {{ 'cart.quick_add_to_cart' | trans }}
-                                        <span class="icon icon--toggler-cross toggler-accordion__icon"></span>
-                                    </h5>
-                                    <div class="order-sidebar__content js-order-sidebar__content-quick-add-widget">
-                                        {{ parent() }}
-                                    </div>
-                                </div>
+                        {% embed molecule('cart-sidebar-item', 'CartPage') with {
+                            data: {
+                                title: 'cart.quick_add_to_cart' | trans,
+                                cart: data.cart,
+                            },
+                            attributes: {
+                                'data-toggle-target': '.js-order-sidebar__content-quick-add-widget',
+                            },
+                        } only %}
+                            {% block contentClasses %}
+                                {{ config.jsName }}__trigger {{ config.jsName }}__content-quick-add-widget
                             {% endblock %}
-                        {% endwidget %}
 
-                        {{ block('commentThreadWidget') }}
+                            {% block contentInner %}
+                                {% widget 'ProductConcreteAddWidget' args [
+                                    '',
+                                    'cart.quick_add_to_cart.submit' | trans,
+                                    'cart/quick-add',
+                                    true,
+                                ] only %}
+                                {% endwidget %}
+                            {% endblock %}
+                        {% endembed %}
+
+                        {% if data.cart.idQuote is not empty %}
+                            {% embed molecule('cart-sidebar-item', 'CartPage') with {
+                                data: {
+                                    title: 'comment_widget.comments_to_cart' | trans,
+                                    cart: data.cart,
+                                },
+                            } only %}
+                                {% block icon %}{% endblock %}
+                                {% block contentClasses %}{% endblock %}
+                                {% block contentInner %}
+                                    {% widget 'CommentThreadWidget' args [
+                                        data.cart.idQuote,
+                                        'quote',
+                                        app.request.requestUri,
+                                        data.cart.commentThread
+                                    ] only %}
+                                    {% endwidget %}
+                                {% endblock %}
+                            {% endembed %}
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -205,6 +230,7 @@
                                                                 } only %}
                                                             {% endif %}
                                                         {% endblock %}
+
                                                         {% block quantity %}
                                                             {% set isEmptyProductInfo = amountSalesUnit is empty and quantitySalesUnit is empty and data.quantity is empty %}
 
@@ -338,17 +364,18 @@
                     {% endwidget %}
                 {% endif %}
             </div>
-
-            {% include organism('cart-sidebar', 'CartPage') with {
-                class: 'col col--sm-12 col--xl-3',
-                data: {
-                    cart: data.cart,
-                    cartItems: data.cartItems,
-                    transformedCartItems: transformedCartItems,
-                    isQuoteEditable: data.isQuoteEditable,
-                    isQuoteValid: data.isQuoteValid,
-                },
-            } only %}
+            {% block cartSidebar %}
+                {% include organism('cart-sidebar', 'CartPage') with {
+                    class: 'col col--sm-12 col--xl-3',
+                    data: {
+                        cart: data.cart,
+                        cartItems: data.cartItems,
+                        transformedCartItems: transformedCartItems,
+                        isQuoteEditable: data.isQuoteEditable,
+                        isQuoteValid: data.isQuoteValid,
+                    },
+                } only %}
+            {% endblock %}
         </div>
         {% if data.isQuoteEditable %}
             {% widget 'UpSellingProductsWidget' args [data.cart] only %}{% endwidget %}
