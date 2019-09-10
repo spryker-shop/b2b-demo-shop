@@ -29,7 +29,7 @@ export default class FilterCategory extends Component {
     protected hideParentCategories(): void {
         let target = <HTMLElement>this.activeCategory;
 
-        while (!target.classList.contains(this.wrapClassName)) {
+        while (!target.classList.contains(this.wrapperClassName)) {
             if (target.classList.contains(this.parentClassName)) {
                 this.removeClass(<HTMLElement[]>Array.from(
                     target.getElementsByClassName(this.visibleCategoryClass)
@@ -46,8 +46,8 @@ export default class FilterCategory extends Component {
         categoriesToShow.forEach((element: HTMLElement) => element.classList.remove(this.classToRemove));
     }
 
-    protected get wrapClassName(): string {
-        return this.getAttribute('wrap-class-name');
+    protected get wrapperClassName(): string {
+        return this.getAttribute('wrapper-class-name');
     }
 
     protected get parentClassName(): string {
