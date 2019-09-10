@@ -361,17 +361,18 @@
                     {% endwidget %}
                 {% endif %}
             </div>
-
-            {% include organism('cart-sidebar', 'CartPage') with {
-                class: 'col col--sm-12 col--xl-3',
-                data: {
-                    cart: data.cart,
-                    cartItems: data.cartItems,
-                    transformedCartItems: transformedCartItems,
-                    isQuoteEditable: data.isQuoteEditable,
-                    isQuoteValid: data.isQuoteValid,
-                },
-            } only %}
+            {% block cartSidebar %}
+                {% include organism('cart-sidebar', 'CartPage') with {
+                    class: 'col col--sm-12 col--xl-3',
+                    data: {
+                        cart: data.cart,
+                        cartItems: data.cartItems,
+                        transformedCartItems: transformedCartItems,
+                        isQuoteEditable: data.isQuoteEditable,
+                        isQuoteValid: data.isQuoteValid,
+                    },
+                } only %}
+            {% endblock %}
         </div>
         {% if data.isQuoteEditable %}
             {% widget 'UpSellingProductsWidget' args [data.cart] only %}{% endwidget %}
