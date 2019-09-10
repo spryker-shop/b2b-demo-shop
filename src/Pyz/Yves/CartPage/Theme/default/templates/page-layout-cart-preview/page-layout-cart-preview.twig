@@ -127,34 +127,59 @@
                 {% endblock %}
             {% endembed %}
         {% endblock %}
-        {% block cartSummary %}
-            {% embed molecule('cart-summary', 'CartPage') with {
+        {% block cartSummaryItem %}
+            {% embed molecule('cart-sidebar-item', 'CartPage') with {
                 data: {
                     cart: data.cart,
+                    transformedCartItems: data.transformedCartItems,
                     isQuoteValid: data.isQuoteValid,
                     isQuoteEditable: data.isQuoteEditable,
                 },
+                modifiers: ['summary'],
             } only %}
                 {% block body %}
-                    <div class="cart-summary__wrapper">
-                        <ul class="list">
-                            {% block cartSummaryContent %}
-                                <li class="list__item">
-                                    {% include molecule('cart-discount-summary', 'DiscountWidget') ignore missing with {
-                                        modifiers: ['cart'],
-                                        data: {
-                                            isLinkPresent: false,
-                                            voucherDiscounts: data.cart.voucherDiscounts,
-                                            ruleDiscounts: data.cart.cartRuleDiscounts,
-                                            discountTotal: data.cart.totals.discounttotal,
-                                            currencyIsoCode: data.cart.currency.code,
-                                        },
-                                    } only %}
-                                </li>
-                                {{ block('cartTotal') }}
-                            {% endblock %}
-                        </ul>
+                    <div class="{{ config.name }} {{ config.name }}--start">
+                        <div class=" grid grid--justify grid--middle {{ config.name }}__order">
+                            <h6 class="col {{ config.name }}__title">{{ 'cart.your-order' | trans }}</h6>
+                            <div class="col {{ config.name }}__quantity">{{ data.transformedCartItems | length }} {{ 'checkout.step.summary.items' | trans }}</div>
+                        </div>
+
+                        {% if data.isQuoteEditable and can('ChangeCartItemPermissionPlugin') and can('SeePricePermissionPlugin') %}
+                            {% widget 'DiscountVoucherFormWidget' only %}{% endwidget %}
+                        {% endif %}
                     </div>
+
+                    {% block cartSummary %}
+                        {% embed molecule('cart-summary', 'CartPage') with {
+                            data: {
+                                cart: data.cart,
+                                isQuoteValid: data.isQuoteValid,
+                                isQuoteEditable: data.isQuoteEditable,
+                            },
+                        } only %}
+                            {% block body %}
+                                <div class="cart-summary__wrapper">
+                                    <ul class="list">
+                                        {% block cartSummaryContent %}
+                                            <li class="list__item">
+                                                {% include molecule('cart-discount-summary', 'DiscountWidget') ignore missing with {
+                                                    modifiers: ['cart'],
+                                                    data: {
+                                                        isLinkPresent: false,
+                                                        voucherDiscounts: data.cart.voucherDiscounts,
+                                                        ruleDiscounts: data.cart.cartRuleDiscounts,
+                                                        discountTotal: data.cart.totals.discounttotal,
+                                                        currencyIsoCode: data.cart.currency.code,
+                                                    },
+                                                } only %}
+                                            </li>
+                                            {{ block('cartTotal') }}
+                                        {% endblock %}
+                                    </ul>
+                                </div>
+                            {% endblock %}
+                        {% endembed %}
+                    {% endblock %}
                 {% endblock %}
             {% endembed %}
         {% endblock %}
