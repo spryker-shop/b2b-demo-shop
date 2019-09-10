@@ -1,16 +1,4 @@
-{% extends model('component') %}
-
-{% define config = {
-    name: 'filter-range'
-} %}
-
-{% define data = {
-    parameter: required,
-    min: required,
-    activeMin: required,
-    max: required,
-    activeMax: required
-} %}
+{% extends molecule('filter-range', '@SprykerShop:CatalogPage') %}
 
 {% block body %}
     <div class="range-slider {{ config.jsName }}"></div>
@@ -54,7 +42,7 @@
         attributes: {
             'wrap-selector': '.' ~ config.jsName,
             'target-selector': '.' ~ config.jsName ~ '__target-min, .' ~ config.jsName ~ '__target-max',
-            'slider-config': '{"start":[' ~ data.activeMin ~ ',' ~ data.activeMax ~ '],"step":1,"connect":true,"margin":1,"range":{"min":' ~ data.min ~ ',' ~ '"max":' ~ data.max ~ '}}'
-        }
+            'slider-config': '{"start":[' ~ data.activeMin ~ ',' ~ data.activeMax ~ '],"step":1,"connect":true,"margin":1,"range":{"min":' ~ data.min ~ ',' ~ '"max":' ~ data.max ~ '}}',
+        },
     } only %}
 {% endblock %}

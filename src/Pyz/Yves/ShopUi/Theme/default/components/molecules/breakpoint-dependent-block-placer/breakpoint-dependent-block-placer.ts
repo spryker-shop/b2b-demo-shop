@@ -21,7 +21,7 @@ export default class BreakpointDependentBlockPlacer extends Component {
                 isMoved: false,
                 node: block,
                 parentNode: block.parentElement,
-                breakpoint: +this.getDataAttribute(block, 'data-breackpoint'),
+                breakpoint: +this.getDataAttribute(block, 'data-breakpoint'),
                 selectorBlockToMove: this.getDataAttribute(block, 'data-block-to')
             };
         });
