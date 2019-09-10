@@ -1,13 +1,6 @@
-{% extends template('page-layout-checkout', 'CheckoutPage') %}
+{% extends view('address', '@SprykerShop:CheckoutPage') %}
 
 {% define data = {
-    forms: {
-        address: _view.addressesForm,
-        shipping: _view.addressesForm.shippingAddress,
-        billing: _view.addressesForm.billingAddress,
-    },
-
-    title: 'checkout.step.address.title' | trans,
     stepNumder: 1,
 } %}
 
@@ -28,7 +21,7 @@
                 shipping: data.forms.shipping,
                 billing: data.forms.billing,
             },
-        }
+        },
     } only %}
         {% block title %}{% endblock %}
 
@@ -83,7 +76,7 @@
                             iso2_code: 'col col--sm-12 col--lg-4',
                             phone: 'col col--sm-12 col--lg-7',
                         },
-                    }
+                    },
                 } only %}
                     {% block field %}
                         {{ form_row(field, {
@@ -106,8 +99,8 @@
                         attributes: {
                             'target-selector': '.js-address__billing-same-as-shipping',
                             'class-to-toggle': 'is-hidden',
-                            'add-class-when-checked': true
-                        }
+                            'add-class-when-checked': true,
+                        },
                     })
                 }}
             </div>
@@ -139,11 +132,11 @@
                     {% block field %}
                         {{ form_row(field, {
                         attr: {
-                                'data-key': field.vars.name
+                                'data-key': field.vars.name,
                             },
                         rowAttr: {
-                                class: config.name ~ '__field ' ~ fieldLayoutClass
-                            }
+                                class: config.name ~ '__field ' ~ fieldLayoutClass,
+                            },
                         }) }}
                     {% endblock %}
                     {% block fields %}
@@ -166,7 +159,7 @@
                                         <li class="list__item spacing-y">
                                             {{
                                                 form_row(data.form.id_customer_address, {
-                                                    component: molecule('select')
+                                                    component: molecule('select'),
                                                 })
                                             }}
                                         </li>
@@ -176,7 +169,7 @@
                         {% endif %}
 
                         <div class="js-address__billing grid grid--bottom grid--wide">
-                            {{parent()}}
+                            {{ parent() }}
                         </div>
                     {% endblock %}
                 {% endembed %}
