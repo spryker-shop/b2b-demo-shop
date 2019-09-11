@@ -1,12 +1,4 @@
-{% extends model('component') %}
-
-{% define config = {
-    name: 'product-cms-block',
-} %}
-
-{% define data = {
-    idProductAbstract: required,
-} %}
+{% extends molecule('product-cms-block', '@SprykerShop:CmsBlockWidget') %}
 
 {% block body %}
     {% set cmsContent = spyCmsBlock({ product: data.idProductAbstract }) %}
@@ -16,10 +8,11 @@
             modifiers: ['with-background'],
             embed: {
                 idProductAbstract: data.idProductAbstract,
+                content: cmsContent,
             },
         } only %}
             {% block content %}
-                {{ spyCmsBlock({ product: embed.idProductAbstract }) }}
+                {{ embed.content | raw }}
             {% endblock %}
         {% endembed %}
     {% endif %}

@@ -1,4 +1,4 @@
-{% extends template('widget') %}
+{% extends view('catalog-with-cms-block', '@SprykerShop:CmsBlockWidget') %}
 
 {% block top %}
     {% set contentCmsBlock = spyCmsBlock({category: _widget.idCategory, position: 'top'})  %}
@@ -41,5 +41,5 @@
 {% endblock %}
 
 {% block body %}
-    {{ spyCmsBlock({category: _widget.idCategory, position: _widget.position}) }}
+    {{ parent() }}
 {% endblock %}
