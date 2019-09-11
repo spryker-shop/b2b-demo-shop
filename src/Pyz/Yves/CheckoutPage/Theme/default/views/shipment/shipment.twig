@@ -1,13 +1,7 @@
-{% extends template('page-layout-checkout', 'CheckoutPage') %}
+{% extends view('shipment', '@SprykerShop:CheckoutPage') %}
 
 {% define data = {
-    backUrl: _view.previousStepUrl,
-    forms: {
-        shipment: _view.shipmentForm
-    },
-
-    title: 'checkout.step.shipment.title' | trans,
-    stepNumder: 2
+    stepNumder: 2,
 } %}
 
 {% block content %}
@@ -17,42 +11,42 @@
             form: data.forms.shipment,
             options: {
                 attr: {
-                    id: 'payment-form'
-                }
+                    id: 'payment-form',
+                },
             },
             submit: {
                 enable: true,
                 text: 'checkout.step.payment' | trans,
-                class: 'form__action--expand-sm-md button button--big'
+                class: 'form__action--expand-sm-md button button--big',
             },
             cancel: {
                 enable: true,
                 url: data.backUrl,
                 text: 'general.back.button' | trans,
                 icon: '',
-                class: 'form__action--expand-sm-md button button--big button--hollow-icon button--back'
-            }
+                class: 'form__action--expand-sm-md button button--big button--hollow-icon button--back',
+            },
         }
     } only %}
         {% block fields %}
             {% for name, choices in data.form.idShipmentMethod.vars.choices %}
                 <div class="form__field form__field--shipment col col--sm-12">
                     <h5 class="grid grid--justify grid--middle title title--second">
-                        <span class="col">{{name}}</span>
+                        <span class="col">{{ name }}</span>
                         {% include atom('icon') with {
                             class: 'col',
                             modifiers: ['shipment', name | lower ~ '-logo'],
                             data: {
-                                name: name | lower ~ '-logo'
-                            }
+                                name: name | lower ~ '-logo',
+                            },
                         } only %}
                     </h5>
 
                     {% include molecule('checkout-list', 'CheckoutPage') with {
                         data: {
                             form: data.form.idShipmentMethod,
-                            choices: choices
-                        }
+                            choices: choices,
+                        },
                     } only %}
                 </div>
             {% endfor %}
