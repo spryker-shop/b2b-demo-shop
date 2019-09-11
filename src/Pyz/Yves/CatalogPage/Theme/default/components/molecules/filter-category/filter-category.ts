@@ -1,38 +1,44 @@
 import Component from 'ShopUi/models/component';
 
 export default class FilterCategory extends Component {
-    activeCategory: HTMLElement;
-    categoriesToShow: HTMLElement[];
+    protected activeCategory: HTMLElement;
+    protected visibleCategories: HTMLElement[];
+    protected parent: HTMLElement;
 
-    constructor() {
-        super();
-        this.activeCategory = <HTMLElement>document.getElementsByClassName(`${this.jsName}__menu-item`)[0];
+    protected readyCallback(): void {}
 
-        const parent = this.activeCategory ? this.activeCategory : this;
-        this.categoriesToShow = <HTMLElement[]>Array.from(parent.getElementsByClassName(
-            this.categoriesToShowClassName
-        ));
+    protected init(): void {
+        this.activeCategory = <HTMLElement>document.getElementsByClassName(this.activeCategoryClassName)[0];
+        this.parent = this.activeCategory ? this.activeCategory : this;
+        this.visibleCategories = <HTMLElement[]>Array.from(
+            this.parent.getElementsByClassName(this.visibleCategoryClass));
+
+        this.hideCategory();
     }
 
-    protected readyCallback(): void {
-        if (this.activeCategory) {
-            if (this.activeCategory.classList.contains(this.parentClassName)) {
-                this.removeClass(this.categoriesToShow);
-            } else {
-                let target = <HTMLElement>this.activeCategory;
-                while (!target.classList.contains(this.wrapClassName)) {
-                    if (target.classList.contains(this.parentClassName)) {
-                        this.removeClass(<HTMLElement[]>Array.from(
-                            target.getElementsByClassName(this.categoriesToShowClassName)
-                        ));
+    protected hideCategory(): void {
+        if (!this.activeCategory || this.activeCategory.classList.contains(this.parentClassName)) {
+            this.removeClass(this.visibleCategories);
 
-                        return;
-                    }
-                    target = <HTMLElement> target.parentNode;
-                }
+            return;
+        }
+
+        this.hideParentCategories();
+    }
+
+    protected hideParentCategories(): void {
+        let target = <HTMLElement>this.activeCategory;
+
+        while (!target.classList.contains(this.wrapperClassName)) {
+            if (target.classList.contains(this.parentClassName)) {
+                this.removeClass(<HTMLElement[]>Array.from(
+                    target.getElementsByClassName(this.visibleCategoryClass)
+                ));
+
+                return;
             }
-        } else {
-            this.removeClass(this.categoriesToShow);
+
+            target = <HTMLElement>target.parentNode;
         }
     }
 
@@ -40,16 +46,20 @@ export default class FilterCategory extends Component {
         categoriesToShow.forEach((element: HTMLElement) => element.classList.remove(this.classToRemove));
     }
 
-    protected get wrapClassName(): string {
-        return this.getAttribute('wrap-class-name');
+    protected get wrapperClassName(): string {
+        return this.getAttribute('wrapper-class-name');
     }
 
     protected get parentClassName(): string {
         return this.getAttribute('parent-class-name');
     }
 
-    protected get categoriesToShowClassName(): string {
-        return this.getAttribute('categories-to-show-class-name');
+    protected get activeCategoryClassName(): string {
+        return this.getAttribute('active-category-class-name');
+    }
+
+    protected get visibleCategoryClass(): string {
+        return this.getAttribute('visible-category-class');
     }
 
     protected get classToRemove(): string {
