@@ -23,10 +23,11 @@
                 title: 'cart_note.quote_form.enter_note' | trans,
                 cart: data.cart,
             },
-            attributes: {
-                'data-toggle-target': '.js-cart-sidebar-item__content-note',
-            },
         } only %}
+            {% block titleAttributes %}
+                data-toggle-target = '.js-cart-sidebar-item__content-note'
+            {% endblock %}
+
             {% block contentClasses %}
                 {{ config.jsName }}__content-note {{ parent() }}
             {% endblock %}
@@ -46,10 +47,11 @@
                 title: 'cart.add-to-shopping-list' | trans,
                 cart: data.cart,
             },
-            attributes: {
-                'data-toggle-target': '.js-cart-sidebar-item__content-shopping-list',
-            },
         } only %}
+            {% block titleAttributes %}
+                data-toggle-target = '.js-cart-sidebar-item__content-shopping-list'
+            {% endblock %}
+
             {% block contentClasses %}
                 {{ config.jsName }}__content-shopping-list {{ parent() }}
             {% endblock %}
@@ -66,10 +68,11 @@
                 title: 'cart.quick_add_to_cart' | trans,
                 cart: data.cart,
             },
-            attributes: {
-                'data-toggle-target': '.js-cart-sidebar-item__content-quick-add-widget',
-            },
         } only %}
+            {% block titleAttributes %}
+                data-toggle-target = '.js-cart-sidebar-item__content-quick-add-widget'
+            {% endblock %}
+
             {% block contentClasses %}
                 {{ config.jsName }}__content-quick-add-widget {{ parent() }}
             {% endblock %}
@@ -90,11 +93,12 @@
                 title: 'persistent_cart_share.title' | trans,
                 cart: data.cart,
             },
-            attributes: {
-                'data-toggle-target': '.js-cart-sidebar-item__content-share-by-link-widget',
-            },
             modifiers: ['with-label','shadow-less'],
         } only %}
+            {% block titleAttributes %}
+                data-toggle-target = '.js-cart-sidebar-item__content-share-by-link-widget'
+            {% endblock %}
+
             {% block contentClasses %}
                 {{ config.jsName }}__content-share-by-link-widget {{ parent() }}
             {% endblock %}
@@ -110,10 +114,9 @@
             data: {
                 title: 'comment_widget.comments_to_cart' | trans,
                 cart: data.cart,
+                isAccordionItem: false,
             },
         } only %}
-            {% block icon %}{% endblock %}
-
             {% block contentClasses %}{% endblock %}
 
             {% block contentInner %}
@@ -167,22 +170,10 @@
         {% endembed %}
     {% endblock %}
 
-    {% widget 'QuoteRequestAgentOverviewWidget' only %}
-        {% block body %}
-            {% block activeRequest %}
-                {% if data.quoteRequestOverviewCollection.currentQuoteRequest %}
-                    <div class="{{ config.name }}__item {{ config.name }}__item--summary">
-                        {{ block('activeRequestActions') }}
-                    </div>
-                {% endif %}
-            {% endblock %}
-        {% endblock %}
-    {% endwidget %}
-
     {% include molecule('toggler-accordion') with {
         attributes: {
             'wrap-selector': '.' ~ config.jsName,
-            'trigger-selector': '.js-cart-sidebar-item__trigger',
+            'trigger-selector': '.' ~ config.jsName ~ '-item__title',
             'class-to-toggle': 'is-hidden',
         },
     } only %}

@@ -10,22 +10,23 @@
     transformedCartItems: [],
     isQuoteValid: false,
     isQuoteEditable: false,
+    isAccordionItem: true,
 } %}
 
 {% block class %}
-    {{ parent() }} {{ config.jsName }}
+    {{ parent() }}
 {% endblock %}
-
-{% block attributes %}{% endblock %}
 
 {% block body %}
     {% block title %}
-        <h5 class="{{ config.name }}__title {% block titleClasses %}{{ config.jsName }}__trigger toggler-accordion__item{% endblock %}" {{ component.renderAttributes(attributes) }}>
+        <h5 class="{{ config.name }}__title {% block titleClasses %}{% if data.isAccordionItem %}{{ config.jsName }}__title toggler-accordion__item{% endif %}{% endblock %}" {% block titleAttributes %}{% endblock %}>
             {% block titleText %}
                 {{ data.title }}
             {% endblock %}
             {% block icon %}
-                <span class="icon icon--toggler-cross toggler-accordion__icon"></span>
+                {% if data.isAccordionItem %}
+                    <span class="icon icon--toggler-cross toggler-accordion__icon"></span>
+                {% endif %}
             {% endblock %}
         </h5>
     {% endblock %}

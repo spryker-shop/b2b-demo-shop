@@ -108,10 +108,11 @@
                     title: 'cart_note.quote_form.enter_note' | trans,
                     cart: data.cart,
                 },
-                attributes: {
-                    'data-toggle-target': '.js-cart-sidebar-item__content-note',
-                },
             } only %}
+                {% block titleAttributes %}
+                    data-toggle-target = '.js-cart-sidebar-item__content-note'
+                {% endblock %}
+
                 {% block contentClasses %}
                     {{ config.jsName }}__content-note {{ parent() }}
                 {% endblock %}
