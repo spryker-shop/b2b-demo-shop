@@ -46,6 +46,9 @@
 
     {% for row in data.rows %}
         {% set product = data.products[row.sku.vars.value] ?? null %}
+        {% set searchFieldValue = product is not null ? (product.localizedAttributes[0] is defined ? product.localizedAttributes[0].name ~ ' (' ~ product.sku ~ ')' : '(' ~ product.sku ~ ')') : null %}
+        {% set skuFieldValue = product is not null ? product.sku : null %}
+
         {% include molecule('quick-order-row', 'QuickOrderPage') with {
             class: config.name ~ '__row',
             data: {
@@ -59,8 +62,8 @@
 
                 autocomplete: {
                     skuFieldName: row.vars.full_name,
-                    skuFieldValue: product is null ?: product.sku,
-                    searchFieldValue: product is null ?: product.localizedAttributes[0] is defined ? product.localizedAttributes[0].name ~ ' (' ~ product.sku ~ ')' : ' (' ~ product.sku ~ ')',
+                    skuFieldValue: skuFieldValue,
+                    searchFieldValue: searchFieldValue,
                 },
             },
             attributes: {
