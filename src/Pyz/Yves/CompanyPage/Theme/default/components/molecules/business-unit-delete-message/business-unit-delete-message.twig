@@ -1,22 +1,16 @@
-{% extends model('component') %}
+{% extends molecule('business-unit-delete-message', '@SprykerShop:CompanyPage') %}
 
-{% define config = {
-    name: 'business-unit-delete-message',
-    tag: 'div'
-} %}
-
-{% define data = {
-    companyBusinessUnit: required
-} %}
+{% set businessUnitId = {'id': data.companyBusinessUnit.idCompanyBusinessUnit} %}
 
 {% block body %}
-    {{ "company.business_unit.delete.message.text" | trans }}:  <strong>{{ data.companyBusinessUnit.name }}</strong><br><br>
-    <div>
-        <a href="{{ url('company/business-unit/update', {'id': data.companyBusinessUnit.idCompanyBusinessUnit}) }}" class="button button--hollow">
-            {{ "company.company_business_unit.delete.confirmation.back" | trans }}
-        </a>
-        <a href="{{ url('company/business-unit/delete', {'id': data.companyBusinessUnit.idCompanyBusinessUnit}) }}" class="button button--alert">
-            {{ "company.account.business_unit.delete" | trans }}
-        </a>
+    <div class="spacing-bottom spacing-bottom--big">
+        {{ "company.business_unit.delete.message.text" | trans }}:
+        <strong>{{ data.companyBusinessUnit.name }}</strong>
     </div>
+    <a href="{{ url('company/business-unit/update', businessUnitId) }}" class="button button--hollow">
+        {{ "company.company_business_unit.delete.confirmation.back" | trans }}
+    </a>
+    <a href="{{ url('company/business-unit/delete', businessUnitId) }}" class="button button--alert">
+        {{ "company.account.business_unit.delete" | trans }}
+    </a>
 {% endblock %}

@@ -1,11 +1,4 @@
-{% extends template('page-layout-company', 'CompanyPage') %}
-
-{% define data = {
-    users: _view.companyUserCollection,
-    idCompanyRole: _view.idCompanyRole,
-    title: 'company.account.company_role' | trans,
-    activePage: 'role'
-} %}
+{% extends view('role-user', '@SprykerShop:CompanyPage') %}
 
 {% block breadcrumbs %}
     {% include molecule('breadcrumb') with {
@@ -13,33 +6,33 @@
             steps: [
                 {
                     label: 'company.account.page-title' | trans,
-                    url: url('company/overview')
+                    url: url('company/overview'),
                 }, {
                     label: 'company.account.company_role' | trans,
-                    url: url('company/company-role')
+                    url: url('company/company-role'),
                 }, {
                     label: 'company.account.company_role.details' | trans,
-                    url: url('company/company-role/details', {'id': data.idCompanyRole})
+                    url: url('company/company-role/details', {'id': data.idCompanyRole}),
                 }, {
-                    label: 'company.account.company_role.users' | trans
-                }
-            ]
-        }
+                    label: data.title,
+                },
+            ],
+        },
     } only %}
 {% endblock %}
 
 {% block companyContent %}
     {% include molecule('action-bar', 'ShopUi') with {
         data: {
-            title: 'company.account.company_role.users' | trans,
+            title: data.title,
             actions: [
                 {
                     title: 'general.back.button' | trans,
                     url: path('company/company-role/details', {'id': data.idCompanyRole}),
-                    primary: false
-                }
-            ]
-        }
+                    primary: false,
+                },
+            ],
+        },
     } only %}
 
     {% include molecule('role-user-table', 'CompanyPage') with {
@@ -47,8 +40,8 @@
             users: data.users,
             idCompanyRole: data.idCompanyRole,
             actions: {
-                switch: true
-            }
-        }
+                switch: true,
+            },
+        },
     } only %}
 {% endblock %}

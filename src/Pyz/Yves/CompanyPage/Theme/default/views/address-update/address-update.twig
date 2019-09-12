@@ -1,29 +1,4 @@
-{% extends template('page-layout-company', 'CompanyPage') %}
-
-{% define data = {
-    form: _view.form,
-    idCompanyBusinessUnit: _view.idCompanyBusinessUnit|default(''),
-    title: 'company.account.edit_address_information' | trans,
-    activePage: 'business-unit',
-} %}
-
-{% block breadcrumbs %}
-    {% include molecule('breadcrumb') with {
-        data: {
-            steps: [
-                {
-                    label: 'company.account.page-title' | trans,
-                    url: url('company/overview'),
-                }, {
-                    label: 'company.account.business_unit' | trans,
-                    url: url('company/business-unit'),
-                }, {
-                    label: 'company.account.edit_address_information' | trans,
-                },
-            ],
-        },
-    } only %}
-{% endblock %}
+{% extends view('address-update', '@SprykerShop:CompanyPage') %}
 
 {% block companyContent %}
     {% set buIndexUrl = url('company/business-unit/update', { id: data.idCompanyBusinessUnit }) %}

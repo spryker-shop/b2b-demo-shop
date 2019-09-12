@@ -1,28 +1,4 @@
-{% extends template('page-layout-company', 'CompanyPage') %}
-
-{% define data = {
-    form: _view.companyRoleForm,
-    title: 'company.account.company_role.create' | trans,
-    activePage: 'role',
-} %}
-
-{% block breadcrumbs %}
-    {% include molecule('breadcrumb') with {
-        data: {
-            steps: [
-                {
-                    label: 'company.account.page-title' | trans,
-                    url: url('company/overview'),
-                }, {
-                    label: 'company.account.company_role' | trans,
-                    url: url('company/company-role'),
-                }, {
-                    label: 'company.account.company_role.create' | trans,
-                },
-            ],
-        },
-    } only %}
-{% endblock %}
+{% extends view('role-create', '@SprykerShop:CompanyPage') %}
 
 {% block companyContent %}
     {% include molecule('action-bar', 'ShopUi') with {
