@@ -1,11 +1,4 @@
-{% extends template('page-layout-customer', 'CustomerPage') %}
-
-{% define data = {
-    form: _view.form,
-    formAction: url('customer/address/new'),
-    title: 'customer.account.address' | trans,
-    activePage: 'address',
-} %}
+{% extends view('address-create', '@SprykerShop:CustomerPage') %}
 
 {% block customerContent %}
     {% include molecule('form') with {
