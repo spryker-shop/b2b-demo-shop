@@ -17,7 +17,7 @@
 } %}
 {% block titleClasses %}
     {% if data.isAccordionItem %}
-        {{ config.jsName }}__title toggler-accordion__item
+        {{ config.jsName }}__title {{ data.accordionItemClass }}
     {% endif %}
 {% endblock %}
 
