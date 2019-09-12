@@ -36,7 +36,7 @@
 
             {% block icon %}
                 {% if data.isAccordionItem %}
-                    <span class="icon icon--toggler-cross toggler-accordion__icon"></span>
+                    <span class="icon icon--toggler-cross {{ data.accordionIconClass }}"></span>
                 {% endif %}
             {% endblock %}
         </h5>
