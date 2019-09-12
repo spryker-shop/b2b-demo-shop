@@ -107,6 +107,8 @@
                 data: {
                     title: 'cart_note.quote_form.enter_note' | trans,
                     cart: data.cart,
+                    accordionItemClass: 'toggler-accordion__item',
+                    accordionIconClass: 'toggler-accordion__icon',
                 },
             } only %}
                 {% block titleAttributes %}
@@ -137,6 +139,7 @@
                     transformedCartItems: data.transformedCartItems,
                     isQuoteValid: data.isQuoteValid,
                     isQuoteEditable: data.isQuoteEditable,
+                    isAccordionItem: false,
                 },
                 modifiers: ['summary'],
             } only %}

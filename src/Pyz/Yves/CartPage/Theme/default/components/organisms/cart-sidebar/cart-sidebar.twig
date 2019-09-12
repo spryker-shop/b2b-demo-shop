@@ -22,6 +22,8 @@
             data: {
                 title: 'cart_note.quote_form.enter_note' | trans,
                 cart: data.cart,
+                accordionItemClass: 'toggler-accordion__item',
+                accordionIconClass: 'toggler-accordion__icon',
             },
         } only %}
             {% block titleAttributes %}
@@ -46,6 +48,8 @@
             data: {
                 title: 'cart.add-to-shopping-list' | trans,
                 cart: data.cart,
+                accordionItemClass: 'toggler-accordion__item',
+                accordionIconClass: 'toggler-accordion__icon',
             },
         } only %}
             {% block titleAttributes %}
@@ -67,6 +71,8 @@
             data: {
                 title: 'cart.quick_add_to_cart' | trans,
                 cart: data.cart,
+                accordionItemClass: 'toggler-accordion__item',
+                accordionIconClass: 'toggler-accordion__icon',
             },
         } only %}
             {% block titleAttributes %}
@@ -92,6 +98,8 @@
             data: {
                 title: 'persistent_cart_share.title' | trans,
                 cart: data.cart,
+                accordionItemClass: 'toggler-accordion__item',
+                accordionIconClass: 'toggler-accordion__icon',
             },
             modifiers: ['with-label','shadow-less'],
         } only %}
@@ -138,6 +146,7 @@
                 transformedCartItems: data.transformedCartItems,
                 isQuoteValid: data.isQuoteValid,
                 isQuoteEditable: data.isQuoteEditable,
+                isAccordionItem: false,
             },
             modifiers: ['summary'],
         } only %}
