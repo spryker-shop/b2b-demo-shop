@@ -24,9 +24,7 @@
 {% block titleAttributes %}{% endblock %}
 
 {% block contentClasses %}
-    {% set contentClasses = data.isAccordionItem ? 'is-hidden' %}
-
-    {{ contentClasses }}
+    {{ data.isAccordionItem ? 'is-hidden' }}
 {% endblock %}
 
 {% block body %}
