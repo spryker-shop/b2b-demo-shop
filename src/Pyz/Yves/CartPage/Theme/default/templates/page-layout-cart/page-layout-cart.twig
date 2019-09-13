@@ -51,6 +51,7 @@
 
 {% block content %}
     {% set isQuoteEnadled = data.cart.idQuote and data.isQuoteEditable %}
+    {% set transformedCartItems = productBundleItemCounterWidget.items | default(data.cartItems) %}
 
     {% if data.cart.items is empty %}
         {% block emptyCart %}
@@ -69,21 +70,24 @@
                         </div>
                     {% endblock %}
                 </div>
-                <div class="col col--xl-3">
-                    <div>
+                {% embed organism('cart-sidebar', 'CartPage') with {
+                    class: 'col col--xl-3',
+                    data: {
+                        cart: data.cart,
+                        cartItems: data.cartItems,
+                        transformedCartItems: transformedCartItems,
+                        isQuoteEditable: data.isQuoteEditable,
+                        isQuoteValid: data.isQuoteValid,
+                    },
+                } only %}
+                    {% block body %}
                         {% embed molecule('cart-sidebar-item', 'CartPage') with {
                             data: {
                                 title: 'cart.quick_add_to_cart' | trans,
                                 cart: data.cart,
-                            },
-                            attributes: {
-                                'data-toggle-target': '.js-order-sidebar__content-quick-add-widget',
+                                isAccordionItem: false,
                             },
                         } only %}
-                            {% block contentClasses %}
-                                {{ config.jsName }}__content-quick-add-widget {{ parent() }}
-                            {% endblock %}
-
                             {% block contentInner %}
                                 {% widget 'ProductConcreteAddWidget' args [
                                     '',
@@ -100,9 +104,9 @@
                                 data: {
                                     title: 'comment_widget.comments_to_cart' | trans,
                                     cart: data.cart,
+                                    isAccordionItem: false,
                                 },
                             } only %}
-                                {% block icon %}{% endblock %}
                                 {% block contentClasses %}{% endblock %}
                                 {% block contentInner %}
                                     {% widget 'CommentThreadWidget' args [
@@ -115,13 +119,12 @@
                                 {% endblock %}
                             {% endembed %}
                         {% endif %}
-                    </div>
-                </div>
+                    {% endblock %}
+                {% endembed %}
             </div>
         {% endblock %}
     {% else %}
         {% set productBundleItemCounterWidget = findWidget('ProductBundleItemCounterWidget', [data.cart]) %}
-        {% set transformedCartItems = productBundleItemCounterWidget.items | default(data.cartItems) %}
 
         <div class="grid grid--gap">
             <div class="col col--sm-12 col--xl-9">

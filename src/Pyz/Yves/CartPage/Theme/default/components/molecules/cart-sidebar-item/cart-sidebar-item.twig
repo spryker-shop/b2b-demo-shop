@@ -24,7 +24,7 @@
 {% block titleAttributes %}{% endblock %}
 
 {% block contentClasses %}
-    is-hidden
+    {{ data.isAccordionItem ? 'is-hidden' }}
 {% endblock %}
 
 {% block body %}

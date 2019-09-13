@@ -125,8 +125,6 @@
                 isAccordionItem: false,
             },
         } only %}
-            {% block contentClasses %}{% endblock %}
-
             {% block contentInner %}
                 {% widget 'CommentThreadWidget' args [
                     data.cart.idQuote,
@@ -171,6 +169,7 @@
                                 cart: data.cart,
                                 isQuoteValid: data.isQuoteValid,
                                 isQuoteEditable: data.isQuoteEditable,
+                                isAccordionItem: false,
                             },
                         } only %}
                     {% endif %}
