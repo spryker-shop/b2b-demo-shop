@@ -71,7 +71,7 @@
                     {% endblock %}
                 </div>
                 {% embed organism('cart-sidebar', 'CartPage') with {
-                    class: 'col col--sm-12 col--xl-3',
+                    class: 'col col--xl-3',
                     data: {
                         cart: data.cart,
                         cartItems: data.cartItems,
@@ -88,7 +88,6 @@
                                 isAccordionItem: false,
                             },
                         } only %}
-                            {% block contentClasses %}{% endblock %}
                             {% block contentInner %}
                                 {% widget 'ProductConcreteAddWidget' args [
                                     '',
