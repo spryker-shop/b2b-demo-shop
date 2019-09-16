@@ -1,13 +1,4 @@
-{% extends model('component') %}
-
-{% define config = {
-    name: 'new-review-form'
-} %}
-
-{% define data = {
-    form: required,
-    action: required
-} %}
+{% extends molecule('new-review-form', '@SprykerShop:ProductReviewWidget') %}
 
 {% block body %}
     <h4 class="title title--product-review">{{ 'product_review.submit.add_a_review' | trans }}</h4>
@@ -16,50 +7,49 @@
         data: {
             form: data.form,
             options: {
-                action: data.action
+                action: data.action,
             },
             layout: {
                 'nickname': 'col col--sm-12',
-                'summary': 'col col--sm-12'
+                'summary': 'col col--sm-12',
             },
             submit: {
-                enable: true
+                enable: true,
             },
             cancel: {
                 enable: true,
                 icon: '',
                 text: 'general.cancel.button' | trans,
                 class: 'button button--hollow js-review-summary__' ~ config.name ~ '-close',
-            }
+            },
         },
         embed: {
-            name: 'new-review-form'
-        }
+            name: 'new-review-form',
+        },
     } only %}
         {% block field %}
             {% if fieldName == 'rating' %}
                 <div class="form__field col col--sm-12">
                     {% do field.setRendered %}
-
-                    {{form_label(field)}}
+                    {{ form_label(field) }}
                     {% include molecule('rating-selector', 'ProductReviewWidget') with {
                         modifiers: ['big'],
                         data: {
                             maxValue: (field.vars.choices | length) - 1,
                             inputId: 'productReviewForm_rating',
-                            inputName: 'productReviewForm[rating]'
-                        }
+                            inputName: 'productReviewForm[rating]',
+                        },
                     } only %}
-                    {{form_errors(field)}}
+                    {{ form_errors(field) }}
                 </div>
             {% else %}
-                {{parent()}}
+                {{ parent() }}
             {% endif %}
         {% endblock %}
         {% block actions %}
             <div class="{{ embed.name }}__actions">
                 <div class="{{ embed.name }}__actions-buttons">
-                    {{parent()}}
+                    {{ parent() }}
                 </div>
                 <div class="{{ embed.name }}__required-fields">
                     {{ 'general.required_fields.text' | trans }}
