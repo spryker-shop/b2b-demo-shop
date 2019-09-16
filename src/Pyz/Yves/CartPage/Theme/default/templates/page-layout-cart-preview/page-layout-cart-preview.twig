@@ -55,8 +55,9 @@
     } only %}
         {% block price %}
             {% set price = data.listItem.sumPrice ?? data.listItem.price %}
+
             {% include molecule('money-price') with {
-                modifiers: ['cart'],
+                modifiers: ['medium', 'gray-color'],
                 data: {
                     amount: price,
                     currencyIsoCode: data.list.currency.code,
@@ -90,53 +91,103 @@
     {% endembed %}
 {% endblock %}
 
-{% block cartNote %}
-    {% widget 'CartNoteFormWidget' args [data.cart] only %}
-        {% block body %}
-            {% set canWrite = false %}
-            {% if data.form.cartNote.vars.value %}
-                <div class="order-sidebar__item order-sidebar__item--note">
-                    <h5 class="order-sidebar__title toggler-accordion__item js-order-sidebar__trigger" data-toggle-target='.js-order-sidebar__content-note'>
-                        {{ 'cart_note.quote_form.enter_note' | trans }}
-                        <span class="icon icon--toggler-cross toggler-accordion__icon"></span>
-                    </h5>
-                    <div class="order-sidebar__content js-order-sidebar__content-note is-hidden">
-                        {{ parent() }}
-                    </div>
-                </div>
-            {% endif %}
-        {% endblock %}
-    {% endwidget %}
-{% endblock %}
-
-{% block cartSummary %}
-    {% embed molecule('cart-summary', 'CartPage') with {
+{% block cartSidebar %}
+    {% embed organism('cart-sidebar', 'CartPage') with {
+        class: 'col col--sm-12 col--xl-3',
         data: {
             cart: data.cart,
-            isQuoteValid: data.isQuoteValid,
+            cartItems: data.cartItems,
+            transformedCartItems: transformedCartItems,
             isQuoteEditable: data.isQuoteEditable,
+            isQuoteValid: data.isQuoteValid,
         },
     } only %}
-        {% block body %}
-            <div class="order-sidebar__item order-sidebar__item--end">
-                <ul class="list">
-                    {% block cartSummaryContent %}
-                        <li class="list__item">
-                            {% include molecule('cart-discount-summary', 'DiscountWidget') ignore missing with {
-                                modifiers: ['cart'],
-                                data: {
-                                    isLinkPresent: false,
-                                    voucherDiscounts: data.cart.voucherDiscounts,
-                                    ruleDiscounts: data.cart.cartRuleDiscounts,
-                                    discountTotal: data.cart.totals.discounttotal,
-                                    currencyIsoCode: data.cart.currency.code,
-                                },
-                            } only %}
-                        </li>
-                        {{ block('cartTotal') }}
+        {% block cartNote %}
+            {% embed molecule('cart-sidebar-item', 'CartPage') with {
+                data: {
+                    title: 'cart_note.quote_form.enter_note' | trans,
+                    cart: data.cart,
+                    accordionItemClass: 'toggler-accordion__item',
+                    accordionIconClass: 'toggler-accordion__icon',
+                },
+            } only %}
+                {% block titleAttributes %}
+                    data-toggle-target='.js-cart-sidebar-item__content-note'
+                {% endblock %}
+
+                {% block contentClasses %}
+                    {{ config.jsName }}__content-note {{ parent() }}
+                {% endblock %}
+
+                {% block contentInner %}
+                    {% widget 'CartNoteFormWidget' args [data.cart] only %}
+                        {% block body %}
+                            {% set canWrite = false %}
+                            {% if data.form.cartNote.vars.value %}
+                                {{ parent() }}
+                            {% endif %}
+                        {% endblock %}
+                    {% endwidget %}
+                {% endblock %}
+            {% endembed %}
+        {% endblock %}
+
+        {% block cartSummaryItem %}
+            {% embed molecule('cart-sidebar-item', 'CartPage') with {
+                data: {
+                    cart: data.cart,
+                    transformedCartItems: data.transformedCartItems,
+                    isQuoteValid: data.isQuoteValid,
+                    isQuoteEditable: data.isQuoteEditable,
+                    isAccordionItem: false,
+                },
+                modifiers: ['summary'],
+            } only %}
+                {% block body %}
+                    <div class="{{ config.name }}__start grid grid--justify grid--middle">
+                        <h6 class="{{ config.name }}__title col">{{ 'cart.your-order' | trans }}</h6>
+                        <div class="{{ config.name }}__quantity col">{{ data.transformedCartItems | length }} {{ 'checkout.step.summary.items' | trans }}</div>
+                    </div>
+
+                    {% set isDiscountVoucherFormWidget = data.isQuoteEditable and can('ChangeCartItemPermissionPlugin') and can('SeePricePermissionPlugin') %}
+
+                    {% if isDiscountVoucherFormWidget %}
+                        {% widget 'DiscountVoucherFormWidget' only %}{% endwidget %}
+                    {% endif %}
+
+                    {% block cartSummary %}
+                        {% embed molecule('cart-summary', 'CartPage') with {
+                            data: {
+                                cart: data.cart,
+                                isQuoteValid: data.isQuoteValid,
+                                isQuoteEditable: data.isQuoteEditable,
+                            },
+                        } only %}
+                            {% block body %}
+                                <div class="{{ config.name }}__wrapper">
+                                    <ul class="list">
+                                        {% block cartSummaryContent %}
+                                            <li class="list__item">
+                                                {% include molecule('cart-discount-summary', 'DiscountWidget') ignore missing with {
+                                                    modifiers: ['cart'],
+                                                    data: {
+                                                        isLinkPresent: false,
+                                                        voucherDiscounts: data.cart.voucherDiscounts,
+                                                        ruleDiscounts: data.cart.cartRuleDiscounts,
+                                                        discountTotal: data.cart.totals.discounttotal,
+                                                        currencyIsoCode: data.cart.currency.code,
+                                                    },
+                                                } only %}
+                                            </li>
+                                            {{ block('cartTotal') }}
+                                        {% endblock %}
+                                    </ul>
+                                </div>
+                            {% endblock %}
+                        {% endembed %}
                     {% endblock %}
-                </ul>
-            </div>
+                {% endblock %}
+            {% endembed %}
         {% endblock %}
     {% endembed %}
 {% endblock %}
