@@ -1,8 +1,4 @@
-{% extends template('widget') %}
-
-{% define data = {
-    products: _widget.products
-} %}
+{% extends view('product-replacement-for-list', '@SprykerShop:ProductReplacementForWidget') %}
 
 {% block body %}
     {% if data.products is not empty %}
@@ -14,7 +10,7 @@
             {% embed molecule('slick-carousel') with {
                 modifiers: ['full-width', 'equal-height', 'products', 'full-height'],
                 data: {
-                    slides: data.products
+                    slides: data.products,
                 },
                 attributes: {
                     'slider-config': '{
@@ -22,8 +18,8 @@
                         "dots": false,
                         "arrows": true,
                         "adaptiveHeight": true
-                    }'
-                }
+                    }',
+                },
             } only %}
                 {% block slides %}
                     {% for slide in data.slides %}
