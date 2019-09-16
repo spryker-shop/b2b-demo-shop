@@ -1,8 +1,4 @@
-{% extends template('widget') %}
-
-{% define data = {
-    product: _widget.product
-} %}
+{% extends view('pdp-product', '@SprykerShop:ProductWidget') %}
 
 {% block body %}
     {% include molecule('product-card') with {
@@ -13,7 +9,7 @@
             url: data.product.url,
             imageUrl: data.product.images is empty ? '' : data.product.images.0.externalUrlSmall,
             price: data.product.prices.DEFAULT | default(null),
-            originalPrice: data.product.prices.ORIGINAL | default(null)
-        }
+            originalPrice: data.product.prices.ORIGINAL | default(null),
+        },
     } only %}
 {% endblock %}
