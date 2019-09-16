@@ -102,36 +102,6 @@
             isQuoteValid: data.isQuoteValid,
         },
     } only %}
-        {% block cartNote %}
-            {% embed molecule('cart-sidebar-item', 'CartPage') with {
-                data: {
-                    title: 'cart_note.quote_form.enter_note' | trans,
-                    cart: data.cart,
-                    accordionItemClass: 'toggler-accordion__item',
-                    accordionIconClass: 'toggler-accordion__icon',
-                },
-            } only %}
-                {% block titleAttributes %}
-                    data-toggle-target='.js-cart-sidebar-item__content-note'
-                {% endblock %}
-
-                {% block contentClasses %}
-                    {{ config.jsName }}__content-note {{ parent() }}
-                {% endblock %}
-
-                {% block contentInner %}
-                    {% widget 'CartNoteFormWidget' args [data.cart] only %}
-                        {% block body %}
-                            {% set canWrite = false %}
-                            {% if data.form.cartNote.vars.value %}
-                                {{ parent() }}
-                            {% endif %}
-                        {% endblock %}
-                    {% endwidget %}
-                {% endblock %}
-            {% endembed %}
-        {% endblock %}
-
         {% block cartSummaryItem %}
             {% embed molecule('cart-sidebar-item', 'CartPage') with {
                 data: {
