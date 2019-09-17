@@ -12,12 +12,15 @@ use Spryker\Yves\Kernel\Plugin\Pimple;
 use Spryker\Yves\Payment\Plugin\PaymentFormFilterPlugin;
 use Spryker\Yves\StepEngine\Dependency\Form\StepEngineFormDataProviderInterface;
 use SprykerShop\Yves\CheckoutPage\CheckoutPageDependencyProvider as SprykerShopCheckoutPageDependencyProvider;
+use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToShipmentClientInterface;
+use SprykerShop\Yves\CompanyPage\Plugin\CheckoutPage\CompanyUnitAddressExpanderPlugin;
 use SprykerShop\Yves\CustomerPage\Form\CheckoutAddressCollectionForm;
 use SprykerShop\Yves\CustomerPage\Form\CustomerCheckoutForm;
 use SprykerShop\Yves\CustomerPage\Form\DataProvider\CheckoutAddressFormDataProvider;
 use SprykerShop\Yves\CustomerPage\Form\GuestForm;
 use SprykerShop\Yves\CustomerPage\Form\LoginForm;
 use SprykerShop\Yves\CustomerPage\Form\RegisterForm;
+use SprykerShop\Yves\CustomerPage\Plugin\CheckoutPage\CustomerAddressExpanderPlugin;
 use SprykerShop\Yves\SalesOrderThresholdWidget\Plugin\CheckoutPage\SalesOrderThresholdWidgetPlugin;
 use Symfony\Component\Form\FormFactory;
 
@@ -98,7 +101,22 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
      */
     protected function getAddressStepFormDataProvider(Container $container): StepEngineFormDataProviderInterface
     {
-        return new CheckoutAddressFormDataProvider($this->getCustomerClient($container), $this->getStore());
+        return new CheckoutAddressFormDataProvider(
+            $this->getCustomerClient($container),
+            $this->getStore(),
+            $this->getCustomerService($container),
+            $this->getShipmentClient($container)
+        );
+    }
+
+    /**
+     * @param \Spryker\Yves\Kernel\Container $container
+     *
+     * @return \SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToShipmentClientInterface
+     */
+    public function getShipmentClient(Container $container): CheckoutPageToShipmentClientInterface
+    {
+        return $container->get(static::CLIENT_SHIPMENT);
     }
 
     /**
@@ -108,6 +126,17 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
     {
         return [
             new PaymentFormFilterPlugin(),
+        ];
+    }
+
+    /**
+     * @return \SprykerShop\Yves\CheckoutPageExtension\Dependency\Plugin\AddressTransferExpanderPluginInterface[]
+     */
+    protected function getAddressStepExecutorAddressExpanderPlugins(): array
+    {
+        return [
+            new CustomerAddressExpanderPlugin(),
+            new CompanyUnitAddressExpanderPlugin(),
         ];
     }
 }
