@@ -1,25 +1,11 @@
-{% extends template('page-layout-main') %}
-
-{% define data = {
-    activePage: 'overview'
-} %}
-
-{% block breadcrumbs %}
-    {% include molecule('breadcrumb') with {
-        data: {
-            steps: [{
-                label: 'customer.account' | trans
-            }]
-        }
-    } only %}
-{% endblock %}
+{% extends template('page-layout-customer', '@SprykerShop:CustomerPage') %}
 
 {% block title %}{% endblock %}
 
 {% block content %}
     {% set customerNavigation %}
         {% block customerNavigation %}
-            {%  widget 'CustomerNavigationWidget' args [data.activePage] only %}{% endwidget %}
+            {{ parent() }}
         {% endblock %}
     {% endset %}
     {% set customerContent %}
