@@ -64,7 +64,7 @@
                         {% endif %}
 
                         {% embed molecule('form') with {
-                            class: 'checkout-form--hidden-actions',
+                            class: 'checkout-form checkout-form--hidden-actions',
                             data: {
                                 form: embed.form[embed.form.paymentSelection[key].vars.value],
                                 enableStart: false,

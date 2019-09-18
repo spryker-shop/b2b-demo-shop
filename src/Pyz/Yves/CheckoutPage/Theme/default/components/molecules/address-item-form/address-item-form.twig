@@ -1,0 +1,40 @@
+{% extends molecule('address-item-form', '@SprykerShop:CheckoutPage') %}
+
+{% block body %}
+    {% if is_granted('ROLE_USER') %}
+        <div class="text-right spacing spacing--inner">
+            <hr>
+            <a href="{{url('customer/address')}}">{{ 'page.checkout.address.manage_your_addresses' | trans }}</a>
+            <hr>
+        </div>
+    {% endif %}
+    {% embed molecule('form') with {
+        data: {
+            form: data.form,
+            enableStart: false,
+            enableEnd: false,
+            options: {
+                attr: {
+                    class: config.jsName ~ '__form',
+                },
+            },
+        },
+        embed: {
+            jsName: config.jsName,
+            shippingForm: data.shippingForm,
+            jsAddressClass: data.jsAddressClass,
+        },
+    } only %}
+        {% block fields %}
+            <div class="{{ embed.jsName }}__list col col--sm-12">
+                {% include molecule('address-item-form-field-list', 'CheckoutPage') with {
+                    data: {
+                        items: data.form,
+                        shippingForm: embed.shippingForm,
+                        jsAddressClass: embed.jsAddressClass,
+                    },
+                } only %}
+            </div>
+        {% endblock %}
+    {% endembed %}
+{% endblock %}
