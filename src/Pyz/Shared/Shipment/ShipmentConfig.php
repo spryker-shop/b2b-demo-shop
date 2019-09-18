@@ -5,6 +5,7 @@
  */
 
 namespace Pyz\Shared\Shipment;
+
 use Spryker\Shared\Shipment\ShipmentConfig as SprykerShipmentConfig;
 
 class ShipmentConfig extends SprykerShipmentConfig
