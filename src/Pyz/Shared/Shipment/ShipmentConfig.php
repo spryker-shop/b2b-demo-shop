@@ -4,6 +4,8 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
+namespace Pyz\Shared\Shipment;
+
 use Spryker\Shared\Shipment\ShipmentConfig as SprykerShipmentConfig;
 
 class ShipmentConfig extends SprykerShipmentConfig
@@ -13,6 +15,6 @@ class ShipmentConfig extends SprykerShipmentConfig
      */
     public function isMultiShipmentSelectionEnabled(): bool
     {
-        return false;
+        return true;
     }
 }
