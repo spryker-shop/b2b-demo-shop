@@ -8,6 +8,7 @@
 namespace PyzTest\Yves\Checkout;
 
 use Codeception\Actor;
+use Spryker\Client\Customer\CustomerClientInterface;
 use Spryker\Service\Customer\CustomerServiceInterface;
 use Spryker\Service\Shipment\ShipmentServiceInterface;
 
@@ -48,5 +49,13 @@ class CheckoutBusinessTester extends Actor
     public function getShipmentService(): ShipmentServiceInterface
     {
         return $this->getLocator()->shipment()->service();
+    }
+
+    /**
+     * @return \PHPUnit_Framework_MockObject_MockObject|\Spryker\Client\Customer\CustomerClientInterface
+     */
+    public function getCustomerClient(): CustomerClientInterface
+    {
+        return $this->getLocator()->customer()->client();
     }
 }

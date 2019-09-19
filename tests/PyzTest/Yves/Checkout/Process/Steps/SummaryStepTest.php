@@ -102,11 +102,9 @@ class SummaryStepTest extends Unit
      */
     protected function createShipmentServiceMock(): CheckoutPageToShipmentServiceInterface
     {
-        $calculationMock = $this->getMockBuilder(CheckoutPageToShipmentServiceBridge::class)
+        return $this->getMockBuilder(CheckoutPageToShipmentServiceBridge::class)
             ->setConstructorArgs([$this->tester->getShipmentService()])
             ->getMock();
-
-        return $calculationMock;
     }
 
     /**
@@ -114,8 +112,6 @@ class SummaryStepTest extends Unit
      */
     protected function createConfigMock(): CheckoutPageConfig
     {
-        $calculationMock = $this->getMockBuilder(CheckoutPageConfig::class)->getMock();
-
-        return $calculationMock;
+        return $this->getMockBuilder(CheckoutPageConfig::class)->getMock();
     }
 }
