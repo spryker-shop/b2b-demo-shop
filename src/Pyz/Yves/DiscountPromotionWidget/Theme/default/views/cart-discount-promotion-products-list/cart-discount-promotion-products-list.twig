@@ -15,14 +15,13 @@
                                 url: product.url,
                                 imageUrl: (product.images|length ? product.images.0.externalUrlSmall),
                                 price: product.prices.DEFAULT,
-                                originalPrice: (product.prices.ORIGINAL is defined ? product.prices.ORIGINAL : null),
+                                originalPrice: (product.prices.ORIGINAL ?? null),
                             },
                             embed: {
                                 superAttributes: product.attributeMap.superAttributes,
                                 selectedAttributes: product.selectedAttributes,
                                 availableAttributes: product.availableAttributes,
                                 sku: product.sku,
-                                idProductAbstract: product.idProductAbstract,
                                 idProductConcrete: product.idProductConcrete,
                                 promotionDiscount: {
                                     id: product.promotionItem.discount.discountPromotion.idDiscountPromotion,

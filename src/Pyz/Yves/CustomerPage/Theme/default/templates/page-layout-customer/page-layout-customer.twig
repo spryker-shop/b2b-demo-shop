@@ -13,18 +13,22 @@
     {% endset %}
 
     {% embed organism('section') with {
-        modifiers: ['last']
-    } %}
+        modifiers: ['last'],
+        embed: {
+            customerNavigation: customerNavigation,
+            customerContent: customerContent,
+        },
+    } only %}
         {% block body %}
             <div class="{{ config.name }}__inner {{ data.innerClass }}">
                 {% block inner %}
                     <div class="grid grid--gap">
                         <div class="is-hidden-sm-lg col col--xl-3">
-                            {{ customerNavigation }}
+                            {{ embed.customerNavigation }}
                         </div>
 
                         <div class="col col--sm-12 col--xl-9">
-                            {{ customerContent }}
+                            {{ embed.customerContent }}
                         </div>
                     </div>
                 {% endblock %}
