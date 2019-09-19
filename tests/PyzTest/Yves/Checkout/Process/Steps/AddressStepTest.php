@@ -12,9 +12,12 @@ use Generated\Shared\Transfer\AddressesTransfer;
 use Generated\Shared\Transfer\AddressTransfer;
 use Generated\Shared\Transfer\CustomerTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
+use SprykerShop\Yves\CheckoutPage\CheckoutPageConfig;
 use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCalculationClientInterface;
 use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCustomerClientInterface;
 use SprykerShop\Yves\CheckoutPage\Process\Steps\AddressStep;
+use SprykerShop\Yves\CheckoutPage\Process\Steps\AddressStep\PostConditionChecker;
+use SprykerShop\Yves\CheckoutPage\Process\Steps\PostConditionCheckerInterface;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -188,10 +191,18 @@ class AddressStepTest extends Unit
         }
 
         $calculationClientMock = $this->createCalculationClientMock();
+        $addressStepPostConditionChecker = $this->createAddressStepPostConditionCheckerMock();
 
         $addressStepMock = $this->getMockBuilder(AddressStep::class)
             ->setMethods(['getDataClass'])
-            ->setConstructorArgs([$customerClientMock, $calculationClientMock, 'address_step', 'escape_route'])
+            ->setConstructorArgs([
+                $customerClientMock,
+                $calculationClientMock,
+                $addressStepPostConditionChecker,
+                $this->createConfigMock(),
+                'address_step',
+                'escape_route',
+            ])
             ->getMock();
 
         $addressStepMock->method('getDataClass')->willReturn(new QuoteTransfer());
@@ -205,6 +216,26 @@ class AddressStepTest extends Unit
     protected function createCalculationClientMock()
     {
         $calculationMock = $this->getMockBuilder(CheckoutPageToCalculationClientInterface::class)->getMock();
+
+        return $calculationMock;
+    }
+
+    /**
+     * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerShop\Yves\CheckoutPage\Process\Steps\PostConditionCheckerInterface
+     */
+    protected function createAddressStepPostConditionCheckerMock(): PostConditionCheckerInterface
+    {
+        $calculationMock = $this->getMockBuilder(PostConditionChecker::class)->getMock();
+
+        return $calculationMock;
+    }
+
+    /**
+     * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerShop\Yves\CheckoutPage\CheckoutPageConfig
+     */
+    protected function createConfigMock(): CheckoutPageConfig
+    {
+        $calculationMock = $this->getMockBuilder(CheckoutPageConfig::class)->getMock();
 
         return $calculationMock;
     }

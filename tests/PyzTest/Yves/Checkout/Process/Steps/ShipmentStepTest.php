@@ -16,6 +16,10 @@ use Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginCollectio
 use Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginInterface;
 use SprykerShop\Yves\CheckoutPage\CheckoutPageDependencyProvider;
 use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCalculationClientInterface;
+use SprykerShop\Yves\CheckoutPage\GiftCard\GiftCardItemsChecker;
+use SprykerShop\Yves\CheckoutPage\GiftCard\GiftCardItemsCheckerInterface;
+use SprykerShop\Yves\CheckoutPage\Process\Steps\PostConditionCheckerInterface;
+use SprykerShop\Yves\CheckoutPage\Process\Steps\ShipmentStep\PostConditionChecker;
 use SprykerShop\Yves\CheckoutPage\Process\Steps\ShipmentStep;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -77,6 +81,8 @@ class ShipmentStepTest extends Unit
         return new ShipmentStep(
             $this->createCalculationClientMock(),
             $shipmentPlugins,
+            $this->createShipmentStepPostConditionCheckerMock(),
+            $this->createGiftCardItemsCheckerMock(),
             CheckoutPageDependencyProvider::PLUGIN_SHIPMENT_STEP_HANDLER,
             'escape_route'
         );
@@ -108,5 +114,26 @@ class ShipmentStepTest extends Unit
     protected function createShipmentMock(): StepHandlerPluginInterface
     {
         return $this->createMock(StepHandlerPluginInterface::class);
+    }
+
+
+    /**
+     * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerShop\Yves\CheckoutPage\Process\Steps\PostConditionCheckerInterface
+     */
+    protected function createShipmentStepPostConditionCheckerMock(): PostConditionCheckerInterface
+    {
+        $calculationMock = $this->getMockBuilder(PostConditionChecker::class)->getMock();
+
+        return $calculationMock;
+    }
+
+    /**
+     * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerShop\Yves\CheckoutPage\GiftCard\GiftCardItemsCheckerInterface
+     */
+    protected function createGiftCardItemsCheckerMock(): GiftCardItemsCheckerInterface
+    {
+        $calculationMock = $this->getMockBuilder(GiftCardItemsChecker::class)->getMock();
+
+        return $calculationMock;
     }
 }

@@ -12,8 +12,10 @@ use Generated\Shared\Transfer\AddressTransfer;
 use Generated\Shared\Transfer\PaymentTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Generated\Shared\Transfer\ShipmentTransfer;
-use Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginInterface;
+use SprykerShop\Yves\CheckoutPage\CheckoutPageConfig;
 use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToProductBundleClientInterface;
+use SprykerShop\Yves\CheckoutPage\Dependency\Service\CheckoutPageToShipmentServiceBridge;
+use SprykerShop\Yves\CheckoutPage\Dependency\Service\CheckoutPageToShipmentServiceInterface;
 use SprykerShop\Yves\CheckoutPage\Process\Steps\SummaryStep;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -67,6 +69,8 @@ class SummaryStepTest extends Unit
 
         return new SummaryStep(
             $productBundleClient,
+            $this->createShipmentServiceMock(),
+            $this->createConfigMock(),
             'shipment',
             'escape_route'
         );
@@ -89,10 +93,22 @@ class SummaryStepTest extends Unit
     }
 
     /**
-     * @return \PHPUnit_Framework_MockObject_MockObject|\Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginInterface
+     * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerShop\Yves\CheckoutPage\Dependency\Service\CheckoutPageToShipmentServiceInterface
      */
-    protected function createShipmentMock()
+    protected function createShipmentServiceMock(): CheckoutPageToShipmentServiceInterface
     {
-        return $this->getMockBuilder(StepHandlerPluginInterface::class)->getMock();
+        $calculationMock = $this->getMockBuilder(CheckoutPageToShipmentServiceBridge::class)->getMock();
+
+        return $calculationMock;
+    }
+
+    /**
+     * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerShop\Yves\CheckoutPage\CheckoutPageConfig
+     */
+    protected function createConfigMock(): CheckoutPageConfig
+    {
+        $calculationMock = $this->getMockBuilder(CheckoutPageConfig::class)->getMock();
+
+        return $calculationMock;
     }
 }
