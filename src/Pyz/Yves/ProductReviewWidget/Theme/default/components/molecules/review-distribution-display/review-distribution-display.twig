@@ -2,11 +2,11 @@
 
 {% define config = {
     name: 'review-distribution-display',
-    tag: 'table'
+    tag: 'table',
 } %}
 
 {% define data = {
-    summary: required
+    summary: required,
 } %}
 
 {% block body %}
@@ -21,9 +21,8 @@
         <tr>
             <td class="{{ config.name }}__summary-stars">
                 {{ rating }}
-                {% transchoice rating %}
-                    product_review.summary.star|product_review.summary.stars
-                {% endtranschoice %}
+
+                {{ rating == 1 ? 'product_review.summary.star' | trans : 'product_review.summary.stars' | trans }}
             </td>
             <td>
                 <div class="{{ config.name }}__progress" max="{{ data.summary.totalReview }}" value="{{ ratingReview }}">
