@@ -16,6 +16,8 @@ use Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginCollectio
 use Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginInterface;
 use SprykerShop\Yves\CheckoutPage\CheckoutPageDependencyProvider;
 use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCalculationClientInterface;
+use SprykerShop\Yves\CheckoutPage\Dependency\Service\CheckoutPageToCustomerServiceBridge;
+use SprykerShop\Yves\CheckoutPage\Dependency\Service\CheckoutPageToCustomerServiceInterface;
 use SprykerShop\Yves\CheckoutPage\GiftCard\GiftCardItemsChecker;
 use SprykerShop\Yves\CheckoutPage\GiftCard\GiftCardItemsCheckerInterface;
 use SprykerShop\Yves\CheckoutPage\Process\Steps\PostConditionCheckerInterface;
@@ -35,6 +37,11 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class ShipmentStepTest extends Unit
 {
+    /**
+     * @var \PyzTest\Yves\Checkout\CheckoutBusinessTester
+     */
+    public $tester;
+
     /**
      * @return void
      */
@@ -121,7 +128,9 @@ class ShipmentStepTest extends Unit
      */
     protected function createShipmentStepPostConditionCheckerMock(): PostConditionCheckerInterface
     {
-        $calculationMock = $this->getMockBuilder(PostConditionChecker::class)->getMock();
+        $calculationMock = $this->getMockBuilder(PostConditionChecker::class)
+            ->setConstructorArgs([$this->createCustomerServiceMock()])
+            ->getMock();
 
         return $calculationMock;
     }
@@ -134,5 +143,15 @@ class ShipmentStepTest extends Unit
         $calculationMock = $this->getMockBuilder(GiftCardItemsChecker::class)->getMock();
 
         return $calculationMock;
+    }
+
+    /**
+     * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerShop\Yves\CheckoutPage\Dependency\Service\CheckoutPageToCustomerServiceInterface
+     */
+    protected function createCustomerServiceMock(): CheckoutPageToCustomerServiceInterface
+    {
+        return $this->getMockBuilder(CheckoutPageToCustomerServiceBridge::class)
+            ->setConstructorArgs([$this->tester->getCustomerService()])
+            ->getMock();
     }
 }

@@ -32,6 +32,11 @@ use Symfony\Component\HttpFoundation\Request;
 class SummaryStepTest extends Unit
 {
     /**
+     * @var \PyzTest\Yves\Checkout\CheckoutBusinessTester
+     */
+    public $tester;
+
+    /**
      * @return void
      */
     public function testPostConditionShouldReturnWhenQuoteReadyForSummaryDisplay()
@@ -97,7 +102,9 @@ class SummaryStepTest extends Unit
      */
     protected function createShipmentServiceMock(): CheckoutPageToShipmentServiceInterface
     {
-        $calculationMock = $this->getMockBuilder(CheckoutPageToShipmentServiceBridge::class)->getMock();
+        $calculationMock = $this->getMockBuilder(CheckoutPageToShipmentServiceBridge::class)
+            ->setConstructorArgs([$this->tester->getShipmentService()])
+            ->getMock();
 
         return $calculationMock;
     }

@@ -15,6 +15,8 @@ use Generated\Shared\Transfer\QuoteTransfer;
 use SprykerShop\Yves\CheckoutPage\CheckoutPageConfig;
 use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCalculationClientInterface;
 use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCustomerClientInterface;
+use SprykerShop\Yves\CheckoutPage\Dependency\Service\CheckoutPageToCustomerServiceBridge;
+use SprykerShop\Yves\CheckoutPage\Dependency\Service\CheckoutPageToCustomerServiceInterface;
 use SprykerShop\Yves\CheckoutPage\Process\Steps\AddressStep;
 use SprykerShop\Yves\CheckoutPage\Process\Steps\AddressStep\PostConditionChecker;
 use SprykerShop\Yves\CheckoutPage\Process\Steps\PostConditionCheckerInterface;
@@ -32,6 +34,11 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class AddressStepTest extends Unit
 {
+    /**
+     * @var \PyzTest\Yves\Checkout\CheckoutBusinessTester
+     */
+    public $tester;
+
     /**
      * @return void
      */
@@ -225,7 +232,9 @@ class AddressStepTest extends Unit
      */
     protected function createAddressStepPostConditionCheckerMock(): PostConditionCheckerInterface
     {
-        $calculationMock = $this->getMockBuilder(PostConditionChecker::class)->getMock();
+        $calculationMock = $this->getMockBuilder(PostConditionChecker::class)
+            ->setConstructorArgs([$this->createCustomerServiceMock()])
+            ->getMock();
 
         return $calculationMock;
     }
@@ -254,5 +263,15 @@ class AddressStepTest extends Unit
     protected function createCustomerClientMock()
     {
         return $this->getMockBuilder(CheckoutPageToCustomerClientInterface::class)->getMock();
+    }
+
+    /**
+     * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerShop\Yves\CheckoutPage\Dependency\Service\CheckoutPageToCustomerServiceInterface
+     */
+    protected function createCustomerServiceMock(): CheckoutPageToCustomerServiceInterface
+    {
+        return $this->getMockBuilder(CheckoutPageToCustomerServiceBridge::class)
+            ->setConstructorArgs([$this->tester->getCustomerService()])
+            ->getMock();
     }
 }
