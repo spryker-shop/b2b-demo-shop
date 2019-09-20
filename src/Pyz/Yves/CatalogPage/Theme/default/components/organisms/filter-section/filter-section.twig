@@ -38,8 +38,11 @@
 
                 {% if filterHasValues %}
                     {% block filters %}
-                        <div class="{{ config.name ~ '__item' }} {% if filter.name == 'category' %}{{ config.name ~ '__item--hollow' }}{% endif %}">
-                            <h6 class="{{ config.name ~ '__item-title toggler-accordion__item ' ~ config.jsName ~ '__trigger' ~ '-' ~ filter.name}} {% if filter.name == 'category' %}{{ 'is-hidden-lg-xxl' }}{% endif %}">
+                        {% set itemClass = filter.name == 'category' ? config.name ~ '__item--hollow' %}
+                        {% set itemTitleClass = filter.name == 'category' ? 'is-hidden-lg-xxl' %}
+
+                        <div class="{{ config.name ~ '__item' }} {{ itemClass }}">
+                            <h6 class="{{ config.name ~ '__item-title toggler-accordion__item ' ~ config.jsName ~ '__trigger' ~ '-' ~ filter.name }} {{ itemTitleClass }}">
                                 {{ ('product.filter.' ~ filter.name | lower) | trans }}
                                 {% include atom('icon') with {
                                     class: 'toggler-accordion__icon',
