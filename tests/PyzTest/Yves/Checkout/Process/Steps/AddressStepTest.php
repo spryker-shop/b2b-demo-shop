@@ -14,7 +14,7 @@ use Generated\Shared\Transfer\CustomerTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use SprykerShop\Yves\CheckoutPage\CheckoutPageConfig;
 use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCalculationClientInterface;
-use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCustomerClientBridge;
+use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCustomerClientInterface;
 use SprykerShop\Yves\CheckoutPage\Dependency\Service\CheckoutPageToCustomerServiceBridge;
 use SprykerShop\Yves\CheckoutPage\Dependency\Service\CheckoutPageToCustomerServiceInterface;
 use SprykerShop\Yves\CheckoutPage\Process\Steps\AddressStep;
@@ -179,7 +179,7 @@ class AddressStepTest extends Unit
         $quoteTransfer->setShippingAddress(new AddressTransfer());
         $quoteTransfer->setBillingAddress(new AddressTransfer());
 
-        $this->assertFalse($addressStep->postCondition($quoteTransfer));
+        $this->assertTrue($addressStep->postCondition($quoteTransfer));
     }
 
     /**
@@ -278,10 +278,7 @@ class AddressStepTest extends Unit
      */
     protected function createCustomerClientMock()
     {
-        return $this->getMockBuilder(CheckoutPageToCustomerClientBridge::class)
-            ->setConstructorArgs([$this->tester->getCustomerClient()])
-            ->enableProxyingToOriginalMethods()
-            ->getMock();
+        return $this->getMockBuilder(CheckoutPageToCustomerClientInterface::class)->getMock();
     }
 
     /**
