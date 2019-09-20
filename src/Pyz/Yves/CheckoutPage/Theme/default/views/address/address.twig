@@ -9,16 +9,21 @@
     {% set isCompanyBusinessUnitShippingAddressApplicable = companyBusinessUnitShippingAddressWidget and companyBusinessUnitShippingAddressWidget.isApplicable %}
     {% set jsAddressClass = 'js-address' %}
 
-    <h5 class="title title--second">{{ 'page.checkout.address.shipping-address' | trans }}</h5>
-    <pre>{{ dump(data.isMultipleShipmentEnabled) }}</pre>
+    <div class="grid grid--justify grid--baseline">
+        <h5 class="title title--second col col--sm-6 col--lg-8">{{ 'page.checkout.address.shipping-address' | trans }}</h5>
+        {% if is_granted('ROLE_USER') %}
+            <a class="link link--secondary link--checkout text-right col col--sm-6 col--lg-4" href="{{ url('customer/address') }}">{{ 'page.checkout.address.manage_your_addresses' | trans }}</a>
+        {% endif %}
+    </div>
+
     {% embed molecule('form') with {
-        class: 'checkout-wrap checkout-form',
+        class: 'checkout-form',
         data: {
             form: data.forms.address,
             submit: {
                 enable: true,
                 text: 'checkout.step.shipment' | trans,
-                class: 'button button--big button--checkout ' ~ jsAddressClass ~ '__form-submit',
+                class: 'button button--big button--checkout spacing-top spacing-top--big ' ~ jsAddressClass ~ '__form-submit',
             },
         },
         embed: {
@@ -40,9 +45,9 @@
             {% set hasCompanyUnitAddresses = data.form.shippingAddress.id_company_unit_address is defined %}
             {% set hasShippingAddressesAndApplicable = embed.isCompanyBusinessUnitShippingAddressApplicable ? true : hasShippingAddresses %}
 
-            <div class="grid grid--bottom col col--sm-12 {{ embed.jsAddressClass }}__form-handler-shippingAddress">
+            <div class="address-wrapper grid grid--bottom spacing-bottom spacing-bottom--big col col--sm-12 {{ embed.jsAddressClass }}__form-handler-shippingAddress">
                 {% if hasShippingAddressesAndApplicable %}
-                    <div class="checkout-wrap__container checkout-wrap__container--top">
+                    <div class="address-wrapper__header">
                         {% if embed.isCompanyBusinessUnitShippingAddressApplicable %}
                             {% widget embed.companyBusinessUnitShippingAddressWidget with {
                                 data: {
@@ -78,7 +83,7 @@
                 {% endif %}
 
                 {% include molecule('form') with {
-                    class: embed.jsAddressClass ~ '__shipping' ~ (hasShippingAddressesAndApplicable ? ' is-hidden'),
+                    class: 'address-wrapper__content address-wrapper__content--mobile-background ' ~ embed.jsAddressClass ~ '__shipping' ~ (hasShippingAddressesAndApplicable ? ' is-hidden'),
                     data: {
                         form: embed.forms.shipping,
                         enableStart: false,
@@ -95,20 +100,20 @@
                         },
                     },
                 } only %}
+
+                {% if embed.isMultipleShipmentEnabled %}
+                    {% include molecule('address-item-form', 'CheckoutPage') with {
+                        class: 'address-wrapper__content address-wrapper__content--full-width ' ~ embed.jsAddressClass ~ '__items-target col col--sm-12 is-hidden',
+                        data: {
+                            form: embed.forms.items,
+                            shippingForm: embed.forms.shipping,
+                            jsAddressClass: embed.jsAddressClass,
+                        },
+                    } only %}
+                {% endif %}
             </div>
 
-            {% if embed.isMultipleShipmentEnabled %}
-                {% include molecule('address-item-form', 'CheckoutPage') with {
-                    class: embed.jsAddressClass ~ '__items-target col col--sm-12 is-hidden',
-                    data: {
-                        form: embed.forms.items,
-                        shippingForm: embed.forms.shipping,
-                        jsAddressClass: embed.jsAddressClass,
-                    },
-                } only %}
-            {% endif %}
-
-            <div class="form__field col col--sm-12 {{ embed.jsAddressClass }}__form-handler-billingSameAsShipping">
+            <div class="col col--sm-12 {{ embed.jsAddressClass }}__form-handler-billingSameAsShipping">
                 {{
                     form_row(data.form.billingSameAsShipping, {
                         component: molecule('toggler-checkbox'),
@@ -117,7 +122,7 @@
                             'target-selector': '.' ~ embed.jsAddressClass ~ '__billing-same-as-shipping',
                             'class-to-toggle': 'is-hidden',
                             'add-class-when-checked': true,
-                            'checked': true,
+                            checked: true,
                         }
                     })
                 }}
@@ -125,7 +130,7 @@
 
             <div class="col col--sm-12 {{ embed.jsAddressClass }}__form-handler-billingAddress">
                 {% embed molecule('form') with {
-                    class: 'checkout-form checkout-form--hidden-actions spacing-top spacing-top--big ' ~ embed.jsAddressClass ~ '__billing-same-as-shipping',
+                    class: 'checkout-form checkout-form--hidden-actions spacing-top spacing-top--big ' ~ embed.jsAddressClass ~ '__billing-same-as-shipping is-hidden',
                     data: {
                         form: embed.forms.billing,
                         enableStart: false,
@@ -150,48 +155,52 @@
                     {% endblock %}
 
                     {% block fields %}
-                        {% set companyBusinessUnitBillingAddressWidget = findWidget('CompanyBusinessUnitAddressWidget', ['billingAddress', data.form.vars.data]) %}
-                        {% set isCompanyBusinessUnitBillingAddressApplicable = companyBusinessUnitBillingAddressWidget and companyBusinessUnitBillingAddressWidget.isApplicable %}
-                        {% set hasBillingAddresses = data.form.id_customer_address is defined %}
-                        {% set hasCompanyUnitBillingAddresses = data.form.id_company_unit_address is defined %}
-                        {% set hasBillingAddressesAndApplicable = isCompanyBusinessUnitBillingAddressApplicable ? true : hasBillingAddresses %}
+                        <div class="address-wrapper">
+                            {% set companyBusinessUnitBillingAddressWidget = findWidget('CompanyBusinessUnitAddressWidget', ['billingAddress', data.form.vars.data]) %}
+                            {% set isCompanyBusinessUnitBillingAddressApplicable = companyBusinessUnitBillingAddressWidget and companyBusinessUnitBillingAddressWidget.isApplicable %}
+                            {% set hasBillingAddresses = data.form.id_customer_address is defined %}
+                            {% set hasCompanyUnitBillingAddresses = data.form.id_company_unit_address is defined %}
+                            {% set hasBillingAddressesAndApplicable = isCompanyBusinessUnitBillingAddressApplicable ? true : hasBillingAddresses %}
 
-                        {% if hasBillingAddressesAndApplicable %}
-                            <div class="checkout-wrap__container checkout-wrap__container--top">
-                                {% if isCompanyBusinessUnitBillingAddressApplicable %}
-                                    {% widget companyBusinessUnitBillingAddressWidget with {
-                                        data: {
-                                            jsAddressClass: embed.jsAddressClass,
-                                        },
-                                    } only %}
-                                    {% endwidget %}
+                            {% if hasBillingAddressesAndApplicable %}
+                                <div class="address-wrapper__header">
+                                    {% if isCompanyBusinessUnitBillingAddressApplicable %}
+                                        {% widget companyBusinessUnitBillingAddressWidget with {
+                                            data: {
+                                                jsAddressClass: embed.jsAddressClass,
+                                            },
+                                        } only %}
+                                        {% endwidget %}
 
-                                    {% if hasBillingAddresses %}
-                                        {% do data.form.id_customer_address.setRendered %}
+                                        {% if hasBillingAddresses %}
+                                            {% do data.form.id_customer_address.setRendered %}
+                                        {% endif %}
+
+                                        {% if hasCompanyUnitBillingAddresses %}
+                                            {% do data.form.id_company_unit_address.setRendered %}
+                                        {% endif %}
                                     {% endif %}
 
-                                    {% if hasCompanyUnitBillingAddresses %}
-                                        {% do data.form.id_company_unit_address.setRendered %}
+                                    {% if not isCompanyBusinessUnitBillingAddressApplicable %}
+                                        <ul class="list spacing-y">
+                                            <li class="list__item spacing-y">
+                                                {{
+                                                    form_row(data.form.id_customer_address, {
+                                                        label: 'page.checkout.address.billing.address_select' | trans | upper,
+                                                        component: molecule('select'),
+                                                    })
+                                                }}
+                                            </li>
+                                        </ul>
                                     {% endif %}
-                                {% endif %}
+                                </div>
+                            {% endif %}
 
-                                {% if not isCompanyBusinessUnitBillingAddressApplicable %}
-                                    <ul class="list spacing-y">
-                                        <li class="list__item spacing-y">
-                                            {{
-                                                form_row(data.form.id_customer_address, {
-                                                    label: 'page.checkout.address.billing.address_select' | trans | upper,
-                                                    component: molecule('select'),
-                                                })
-                                            }}
-                                        </li>
-                                    </ul>
-                                {% endif %}
+                            <div class="address-wrapper__content address-wrapper__content--mobile-background {{ embed.jsAddressClass }}__billing {{ hasBillingAddressesAndApplicable ? ' is-hidden ' }} grid grid--bottom grid--wide">
+                                <div class="address-wrapper__inner-content">
+                                    {{ parent() }}
+                                </div>
                             </div>
-                        {% endif %}
-
-                        <div class="{{ embed.jsAddressClass }}__billing {{ hasBillingAddressesAndApplicable ? ' is-hidden ' }} grid grid--bottom grid--wide">
-                            {{ parent() }}
                         </div>
                     {% endblock %}
                 {% endembed %}
@@ -200,7 +209,7 @@
 
         {% block actions %}
             <div class="grid grid--middle grid--justify grid--expand">
-                <div class="col col--sm-12 spacing-bottom spacing-bottom--biggest">
+                <div class="col col--sm-12">
                     {% set optionValueDeliverToMultipleAddresses = '-1' %}
 
                     {% if embed.isCompanyBusinessUnitShippingAddressApplicable %}
@@ -232,7 +241,7 @@
                         },
                     } only %}
                 </div>
-                <div class="col col--sm-12 text-left">
+                <div class="spacing-top col col--sm-12 text-left">
                     {{ parent() }}
                 </div>
             </div>

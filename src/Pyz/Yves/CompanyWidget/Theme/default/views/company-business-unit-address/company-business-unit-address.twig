@@ -33,11 +33,12 @@
     {% endif %}
 
     {% embed molecule('custom-select') with {
-        modifiers: ['full-width', 'light'],
+        modifiers: ['full-width', 'group'],
         class: 'spacing-bottom',
         attributes: {
             name: 'checkout-full-addresses',
             'config-width': '100%',
+            'config-theme': 'group',
         },
         data: {
             isGrouped: true,

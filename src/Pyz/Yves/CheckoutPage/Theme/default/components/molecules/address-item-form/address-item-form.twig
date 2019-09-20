@@ -1,14 +1,12 @@
 {% extends molecule('address-item-form', '@SprykerShop:CheckoutPage') %}
 
 {% block body %}
-    {% if is_granted('ROLE_USER') %}
-        <div class="text-right spacing spacing--inner">
-            <hr>
-            <a href="{{url('customer/address')}}">{{ 'page.checkout.address.manage_your_addresses' | trans }}</a>
-            <hr>
-        </div>
-    {% endif %}
+    {% block title %}
+        <h5 class="title title--second title--underline">{{ 'page.checkout.address.multi_shipment.title' | trans }}</h5>
+    {% endblock %}
+
     {% embed molecule('form') with {
+        class: 'spacing-x spacing-x--inner spacing-x--reset',
         data: {
             form: data.form,
             enableStart: false,
