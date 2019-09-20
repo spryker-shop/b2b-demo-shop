@@ -12,7 +12,6 @@ use Spryker\Yves\Kernel\Plugin\Pimple;
 use Spryker\Yves\Payment\Plugin\PaymentFormFilterPlugin;
 use Spryker\Yves\StepEngine\Dependency\Form\StepEngineFormDataProviderInterface;
 use SprykerShop\Yves\CheckoutPage\CheckoutPageDependencyProvider as SprykerShopCheckoutPageDependencyProvider;
-use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToShipmentClientInterface;
 use SprykerShop\Yves\CustomerPage\Form\CheckoutAddressCollectionForm;
 use SprykerShop\Yves\CustomerPage\Form\CustomerCheckoutForm;
 use SprykerShop\Yves\CustomerPage\Form\DataProvider\CheckoutAddressFormDataProvider;
@@ -99,22 +98,7 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
      */
     protected function getAddressStepFormDataProvider(Container $container): StepEngineFormDataProviderInterface
     {
-        return new CheckoutAddressFormDataProvider(
-            $this->getCustomerClient($container),
-            $this->getStore(),
-            $this->getCustomerService($container),
-            $this->getShipmentClient($container)
-        );
-    }
-    
-    /**
-     * @param \Spryker\Yves\Kernel\Container $container
-     *
-     * @return \SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToShipmentClientInterface
-     */
-    public function getShipmentClient(Container $container): CheckoutPageToShipmentClientInterface
-    {
-        return $container->get(static::CLIENT_SHIPMENT);
+        return new CheckoutAddressFormDataProvider($this->getCustomerClient($container), $this->getStore());
     }
 
     /**
