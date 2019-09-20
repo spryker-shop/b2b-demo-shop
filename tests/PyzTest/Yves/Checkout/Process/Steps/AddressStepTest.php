@@ -240,7 +240,7 @@ class AddressStepTest extends Unit
             ->setConstructorArgs([
                 $this->createCustomerServiceMock(),
                 $customerClientMock,
-                $this->getShoppingListItemExpanderPlugins()
+                $this->getShoppingListItemExpanderPlugins(),
             ])
             ->enableProxyingToOriginalMethods()
             ->getMock();
