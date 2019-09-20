@@ -2,6 +2,30 @@ $address-sub-form-width: rem(710);
 
 @mixin checkout-page-address-item-form-field-list($name: '.address-item-form-field-list') {
     #{$name} {
+        &__wrapper {
+            position: relative;
+            margin-bottom: rem(15);
+
+            @include helper-breakpoint-media-min($lg) {
+                margin-bottom: 0;
+            }
+
+            &::after {
+                content: '';
+                position: absolute;
+                left: rem(-20);
+                right: rem(-12);
+                bottom: 0;
+                width: calc(100% + #{rem(40)});
+                height: rem(1);
+                background-color: $setting-color-gray-6;
+
+                @include helper-breakpoint-media-min($lg) {
+                    display: none;
+                }
+            }
+        }
+
         &__content {
             margin-bottom: rem(20);
             padding: rem(10) 0;
@@ -39,6 +63,29 @@ $address-sub-form-width: rem(710);
                     @include helper-breakpoint-media-min($lg) {
                         display: none;
                     }
+                }
+            }
+        }
+
+        &__dropdown {
+            position: absolute;
+            left: rem(-2);
+            width: calc(100% + #{rem(4)});
+            top: calc(100% + #{rem(15)});
+
+            @include helper-breakpoint-media-min($lg) {
+                position: static;
+                width: 100%;
+                left: auto;
+                top: auto;
+            }
+
+            .select2-selection__rendered,
+            .custom-select__select {
+                background-color: $setting-color-white;
+
+                @include helper-breakpoint-media-min($lg) {
+                    background-color: $setting-color-gray-7;
                 }
             }
         }

@@ -26,6 +26,14 @@ $product-image-width: rem(78);
             }
         }
 
+        &--checkout {
+            margin-bottom: rem(100);
+
+            @include helper-breakpoint-media-min($lg) {
+                margin-bottom: rem(20);
+            }
+        }
+
         &__col {
             &--image {
                 border-radius: $setting-border-radius 0 0 $setting-border-radius;
