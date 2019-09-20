@@ -106,6 +106,7 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
             $this->getShipmentClient($container)
         );
     }
+    
     /**
      * @param \Spryker\Yves\Kernel\Container $container
      *
