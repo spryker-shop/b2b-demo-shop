@@ -7,6 +7,7 @@ $product-image-width: rem(78);
         padding: rem(12);
         margin-bottom: rem(10);
         position: relative;
+        width: 100%;
 
         @include helper-breakpoint-media-min($md) {
             padding-right: rem(22);
@@ -37,6 +38,13 @@ $product-image-width: rem(78);
                     width: 22%;
                     min-width: 22%;
                 }
+
+                &#{$name}__col--checkout {
+                    @include helper-breakpoint-media-min($lg) {
+                        width: 17%;
+                        min-width: 17%;
+                    }
+                }
             }
 
             &--total {
@@ -57,6 +65,26 @@ $product-image-width: rem(78);
                         padding-right: calc(#{$setting-grid-space*2} + #{$setting-grid-space});
                     }
                 }
+
+                &#{$name}__col--checkout {
+                    @include helper-breakpoint-media-min($lg) {
+                        width: 60%;
+                        min-width: 60%;
+                        text-align: left;
+                    }
+
+                    #{$name} & {
+                        @include helper-breakpoint-media-min($lg) {
+                            padding-left: 0;
+                            padding-right: #{$setting-grid-space*2};
+                        }
+                    }
+
+                    #{$name}__inner {
+                        align-items: flex-start;
+                        height: auto;
+                    }
+                }
             }
 
             &--content {
@@ -66,6 +94,13 @@ $product-image-width: rem(78);
                 @include helper-breakpoint-media-min($lg) {
                     width: 60%;
                     min-width: 60%;
+                }
+
+                &#{$name}__col--checkout {
+                    @include helper-breakpoint-media-min($lg) {
+                        width: 40%;
+                        min-width: 40%;
+                    }
                 }
             }
 
@@ -90,6 +125,19 @@ $product-image-width: rem(78);
                 @include helper-breakpoint-media-min($lg) {
                     padding-top: rem(36);
                     padding-bottom: rem(28);
+                }
+
+                &#{$name}__col--checkout {
+                    @include helper-breakpoint-media-min($lg) {
+                        width: 83%;
+                        min-width: 83%;
+                    }
+
+                    @include helper-breakpoint-media-min($lg) {
+                        padding-top: rem(20);
+                        padding-bottom: rem(15);
+                        margin-left: rem(-10);
+                    }
                 }
 
                 &#{$name}__col--summary {
@@ -320,7 +368,7 @@ $product-image-width: rem(78);
 
             &-title {
                 color: $setting-color-gray-5;
-                font-weight: fw(medium);
+                font-weight: fw(bold);
             }
         }
 

@@ -1,50 +1,68 @@
-{% extends template('widget') %}
+{% extends view('company-business-unit-address', '@SprykerShop:CompanyWidget') %}
 
-{% define data = {
-    formType: _widget.formType,
-    currentAddressId: _widget.formAddressTransfer.idCustomerAddress | default,
-    formAddressTransfer: _widget.formAddressTransfer,
-    addresses: _widget.addresses,
-    customerAddresses: _widget.customerAddresses,
-    companyBusinessUnitAddresses: _widget.companyBusinessUnitAddresses,
-    isCustomAddress: app.request.get('customAddress')[_widget.formType]  | default(not _widget.formAddressTransfer.idCustomerAddress)
-} %}
-
-{% block template %}
+{% block body %}
     {% set defaultAddressKey = null %}
-    {% if not data.isCustomAddress and (data.currentAddressId or not data.formAddressTransfer.firstName) %}
-        {% for address in data.customerAddresses %}
-            {% if not data.currentAddressId and data.formType == 'shippingAddress' and address.isDefaultShipping %}
+    {% set optionValueDeliverToMultipleAddresses = '-1' %}
+    {% set fullAddresses = data.customerAddresses ?: data.companyBusinessUnitAddresses %}
+    {% set shippingAddress = 'shippingAddress' %}
+    {% set billingAddress = 'billingAddress' %}
+
+    {% if fullAddresses %}
+        {% for address in fullAddresses %}
+            {% if not data.currentAddressId and data.formType == shippingAddress and address.isDefaultShipping %}
                 {% set defaultAddressKey = address.key %}
             {% endif %}
-            {% if not data.currentAddressId and data.formType == 'billingAddress' and address.isDefaultBilling %}
+            {% if not data.currentAddressId and data.formType == billingAddress and address.isDefaultBilling %}
                 {% set defaultAddressKey = address.key %}
             {% endif %}
             {% if data.currentAddressId == address.idCustomerAddress %}
                 {% set defaultAddressKey = address.key %}
             {% endif %}
+            {% if data.currentAddressId == optionValueDeliverToMultipleAddresses %}
+                {% set defaultAddressKey = optionValueDeliverToMultipleAddresses %}
+            {% endif %}
         {% endfor %}
     {% endif %}
 
+    {% if data.formType == shippingAddress %}
+        <label class="label">{{ 'page.checkout.address.delivery.address_select' | trans }}</label>
+    {% endif %}
+
+    {% if data.formType == billingAddress %}
+        <label class="label">{{ 'page.checkout.address.billing.address_select' | trans }}</label>
+    {% endif %}
+
     {% embed molecule('custom-select') with {
-        modifiers: ['full-width'],
+        modifiers: ['full-width', 'group'],
         class: 'spacing-bottom',
         attributes: {
             name: 'checkout-full-addresses',
-            'config-width': '100%'
+            'config-width': '100%',
+            'config-theme': 'group',
         },
         data: {
-            isGrouped: true
+            isGrouped: true,
         },
         embed: {
             customerAddresses: data.customerAddresses,
             companyBusinessUnitAddresses: data.companyBusinessUnitAddresses,
             formType: data.formType,
             defaultAddressKey: defaultAddressKey,
-            currentAddressId: data.currentAddressId
-        }
+            currentAddressId: data.currentAddressId,
+            isMultipleShipmentEnabled: data.isMultipleShipmentEnabled,
+            optionValueDeliverToMultipleAddresses: optionValueDeliverToMultipleAddresses,
+            itemShippingTriggerJsClass: data.itemShippingTriggerJsClass,
+            items: data.items,
+            shippingAddress: shippingAddress,
+            jsAddressClass: data.jsAddressClass,
+        },
     } only %}
-        {% block selectClass %}{{ parent() }} js-form-clear__ignore-element js-from-select-address__{{ embed.formType }}{% endblock %}
+        {%- block selectClass -%}
+            {{ embed.jsAddressClass }}__form-select-{{ embed.formType }}
+            {{ embed.itemShippingTriggerJsClass ? embed.itemShippingTriggerJsClass }}
+            {{ parent() }}
+        {%- endblock -%}
+
         {% block option %}
             {% set isSelected = embed.defaultAddressKey == address.key %}
             {% set fullName = '%s %s %s, %s %s, %s %s' | format(
@@ -63,82 +81,39 @@
             } %}
             {{ parent() }}
         {% endblock %}
-        {% block optionsGroup %}
-            <option value="">{{ 'page.checkout.address.address_select' | trans }}</option>
 
-            {% if embed.customerAddresses is not empty %}
-                <optgroup label="{{ 'page.checkout.address.option_group.customer' | trans }}">
+        {% block optionsGroup %}
+            <option value="">{{ 'company.account.add_new_address' | trans }}</option>
+
+            {% if embed.customerAddresses %}
+                <optgroup label="{{ 'page.checkout.address.option_group.customer' | trans | upper }}">
                     {% for address in embed.customerAddresses %}
                         {{ block('option') }}
                     {% endfor %}
                 </optgroup>
             {% endif %}
 
-            {% if embed.companyBusinessUnitAddresses is not empty %}
-                <optgroup label="{{ 'page.checkout.address.option_group.company_business_unit' | trans }}">
+            {% if embed.companyBusinessUnitAddresses %}
+                <optgroup label="{{ 'page.checkout.address.option_group.company_business_unit' | trans | upper }}">
                     {% for address in embed.companyBusinessUnitAddresses %}
                         {{ block('option') }}
                     {% endfor %}
                 </optgroup>
             {% endif %}
+
+            {% if embed.formType == embed.shippingAddress and embed.isMultipleShipmentEnabled %}
+                <option value="{{ embed.optionValueDeliverToMultipleAddresses }}" {% if embed.defaultAddressKey == embed.optionValueDeliverToMultipleAddresses %}selected{% endif %}>
+                    {{ 'customer.account.deliver_to_multiple_addresses' | trans }}
+                </option>
+            {% endif %}
         {% endblock %}
     {% endembed %}
 
-    <div>
-        <button type="button" class="button spacing-bottom js-from-add-new-address__{{ data.formType }}">
-            {{ 'page.checkout.address.use_selected_address' | trans }}
-        </button>
-        {% include molecule('custom-company-business-unit-address-handler', 'CompanyWidget') with {
-            attributes: {
-                'form-selector': '.js-form-handler__' ~ data.formType,
-                'trigger-selector': '.js-from-add-new-address__' ~ data.formType,
-                'data-selector': '.js-from-select-address__' ~ data.formType,
-                'ignore-selector': '.js-form-clear__ignore-element',
-                'customer-address-id-selector': '.js-form-customer-id__' ~ data.formType,
-                'default-address-selector': '.js-form-default-address__' ~ data.formType,
-                'custom-address-trigger': '.js-from-clear__'~ data.formType ~'-toggler',
-                'address-hidden-input-selector': 'addressesForm[' ~ data.formType ~ '][id_customer_address]',
-                'addresses': data.addresses
-            }
-        } only %}
-    </div>
+    {% block addressHandler %}
+        {{ parent() }}
+    {% endblock %}
 
-    <div>
-
-        {% set checkboxLabel = '' %}
-        {% if data.formType == 'shippingAddress' %}
-            {% set checkboxLabel = 'page.checkout.address.different_delivery_address' | trans %}
-        {% endif %}
-        {% if data.formType == 'billingAddress' %}
-            {% set checkboxLabel =  'page.checkout.address.different_billing_address' | trans %}
-        {% endif %}
-
-        {% embed atom('checkbox') with {
-            modifiers: ['expand'],
-            data: {
-                label: checkboxLabel,
-                isChecked: data.isCustomAddress ? true : false
-            },
-            attributes: {
-                name: 'customAddress[' ~ data.formType ~ ']',
-                value: 1
-            },
-            embed: {
-                formType: data.formType
-            }
-        } only %}
-            {% block inputClass %}js-from-clear__{{ embed.formType }}-toggler js-form-clear__ignore-element{% endblock %}
-        {% endembed %}
-
-        {% include molecule('form-clear') with {
-            attributes: {
-                'form-selector': '.js-form-clear__' ~ data.formType ~ '-form',
-                'trigger-selector': '.js-from-clear__' ~ data.formType ~ '-toggler',
-                'ignore-selector': '.js-form-clear__ignore-element'
-            }
-        } only %}
-    </div>
-
-    <input type="hidden" name="addressesForm[{{ data.formType }}][id_customer_address]" data-key="id_customer_address" class="js-form-customer-id__{{ data.formType }}">
-    <input type="hidden" class="js-form-clear__ignore-element js-form-default-address__{{ data.formType }}" value="{{ defaultAddressKey }}">
+    {% block hiddenFields %}
+        {{ parent() }}
+    {% endblock %}
 {% endblock %}
