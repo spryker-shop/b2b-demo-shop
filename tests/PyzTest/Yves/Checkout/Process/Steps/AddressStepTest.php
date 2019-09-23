@@ -8,6 +8,9 @@
 namespace PyzTest\Yves\Checkout\Process\Steps;
 
 use Codeception\Test\Unit;
+use Generated\Shared\DataBuilder\ItemBuilder;
+use Generated\Shared\DataBuilder\QuoteBuilder;
+use Generated\Shared\DataBuilder\ShipmentBuilder;
 use Generated\Shared\Transfer\AddressesTransfer;
 use Generated\Shared\Transfer\AddressTransfer;
 use Generated\Shared\Transfer\CustomerTransfer;
@@ -172,14 +175,63 @@ class AddressStepTest extends Unit
     /**
      * @return void
      */
-    public function testPostConditionIfAddressesIsSetShouldReturnTrue()
+    public function testPostConditionIfEmptyAddressesIsSetShouldReturnFalse()
     {
+        // Arrange
         $addressStep = $this->createAddressStep();
         $quoteTransfer = new QuoteTransfer();
         $quoteTransfer->setShippingAddress(new AddressTransfer());
         $quoteTransfer->setBillingAddress(new AddressTransfer());
 
-        $this->assertTrue($addressStep->postCondition($quoteTransfer));
+        // Act
+        $result = $addressStep->postCondition($quoteTransfer);
+
+        // Assert
+        $this->assertFalse($result);
+    }
+
+    /**
+     * @return void
+     */
+    public function testPostConditionIfNotEmptyAddressesIsSetShouldReturnTrue()
+    {
+        // Arrange
+        $addressStep = $this->createAddressStep();
+
+        $quoteTransfer = (new QuoteBuilder())
+            ->withShippingAddress()
+            ->withAnotherBillingAddress()
+            ->build();
+
+        // Act
+        $result = $addressStep->postCondition($quoteTransfer);
+
+        // Assert
+        $this->assertTrue($result);
+    }
+
+    /**
+     * @return void
+     */
+    public function testPostConditionIfAddressesIsSetShouldReturnTrueWithItemLevelShippingAddresses()
+    {
+        // Arrange
+        $addressStep = $this->createAddressStep();
+
+        $shipmentBuilder = (new ShipmentBuilder())
+            ->withShippingAddress();
+        $itemBuilder = (new ItemBuilder())
+            ->withShipment($shipmentBuilder);
+        $quoteTransfer = (new QuoteBuilder())
+            ->withBillingAddress()
+            ->withItem($itemBuilder)
+            ->build();
+
+        // Act
+        $result = $addressStep->postCondition($quoteTransfer);
+
+        // Assert
+        $this->assertTrue($result);
     }
 
     /**

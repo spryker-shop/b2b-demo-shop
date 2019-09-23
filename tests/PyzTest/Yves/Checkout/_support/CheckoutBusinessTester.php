@@ -50,12 +50,4 @@ class CheckoutBusinessTester extends Actor
     {
         return $this->getLocator()->shipment()->service();
     }
-
-    /**
-     * @return \PHPUnit_Framework_MockObject_MockObject|\Spryker\Client\Customer\CustomerClientInterface
-     */
-    public function getCustomerClient(): CustomerClientInterface
-    {
-        return $this->getLocator()->customer()->client();
-    }
 }
