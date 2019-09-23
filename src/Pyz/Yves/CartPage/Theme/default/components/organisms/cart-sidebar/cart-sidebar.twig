@@ -17,29 +17,6 @@
 {% endblock %}
 
 {% block body %}
-    {% block cartNote %}
-        {% embed molecule('cart-sidebar-item', 'CartPage') with {
-            data: {
-                title: 'cart_note.quote_form.enter_note' | trans,
-                cart: data.cart,
-                accordionItemClass: 'toggler-accordion__item',
-                accordionIconClass: 'toggler-accordion__icon',
-            },
-        } only %}
-            {% block titleAttributes %}
-                data-toggle-target='.js-cart-sidebar-item__content-note'
-            {% endblock %}
-
-            {% block contentClasses %}
-                {{ config.jsName }}__content-note {{ parent() }}
-            {% endblock %}
-
-            {% block contentInner %}
-                {% widget 'CartNoteFormWidget' args [data.cart] only %}{% endwidget %}
-            {% endblock %}
-        {% endembed %}
-    {% endblock %}
-
     {% set isPermission = data.isQuoteEditable and can('ChangeCartItemPermissionPlugin') %}
     {% set isQuoteAndItems = data.cart.idQuote is not empty and data.cart.items is not empty %}
 
