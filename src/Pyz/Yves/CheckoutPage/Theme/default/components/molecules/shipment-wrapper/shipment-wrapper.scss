@@ -1,0 +1,9 @@
+@mixin checkout-page-shipment-wrapper($name: '.shipment-wrapper') {
+    #{$name} {
+
+
+        @content;
+    }
+}
+
+@include checkout-page-shipment-wrapper();
