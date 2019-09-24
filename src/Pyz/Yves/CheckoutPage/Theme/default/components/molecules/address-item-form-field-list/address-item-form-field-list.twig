@@ -16,7 +16,7 @@
             {% set itemSku = item.vars.data.sku | default %}
 
             {% embed molecule('product-item') with {
-                modifiers: ['checkout'],
+                modifiers: ['checkout', 'checkout-address'],
                 data: {
                     listItem: item,
                     quantity: itemQuantity,

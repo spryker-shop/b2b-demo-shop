@@ -2,6 +2,7 @@
 
 {% define data = {
     stepNumder: 2,
+    currentLanguage: _view.currentLanguage,
 } %}
 
 {% block containerClass %}container--large{% endblock %}
@@ -31,6 +32,9 @@
                 class: 'form__action--expand-sm-md button button--big button--hollow-icon button--back',
             },
         },
+        embed: {
+            currentLanguage: data.currentLanguage,
+        },
     } only %}
         {% block fieldset %}
             {% set shipmentGroupCollectionForm = data.form.shipmentGroups | default %}
@@ -53,27 +57,27 @@
                             {% for item in shipmentGroupForm.vars.data.items %}
                                 {% set item = item.bundleProduct ?? item %}
 
-                                {% include molecule('summary-item', 'CheckoutPage') with {
-                                    data: {
-                                        name: item.name,
-                                        quantity: item.quantity,
-                                        price: item.sumPrice | money,
-                                        options: item.productOptions | default({}),
-                                        bundleItems: item.bundleItems | default([]),
-                                        quantitySalesUnit: item.quantitySalesUnit,
-                                        amountSalesUnit: item.amountSalesUnit,
-                                        amount: item.amount,
-                                        groupKey: item.groupKey,
-                                        images: item.images,
-                                        sku: item.sku,
-                                    },
-                                } only %}
-
                                 {% embed molecule('product-item') with {
+                                    modifiers: ['checkout'],
                                     data: {
                                         listItem: item,
+                                        quantity: item.quantity,
                                     },
                                 } only %}
+                                    {% block image %}
+                                        {% include molecule('product-item-image') with {
+                                            modifiers: ['small'],
+                                            data: {
+                                                name: data.listItem.name | default,
+                                                image: data.listItem.images is not empty ? (data.listItem.images | first) : null,
+                                            },
+                                        } only %}
+                                    {% endblock %}
+
+                                    {% block title %}
+                                        <h6 class="{{ config.name }}__title">{{ data.listItem.name }}</h6>
+                                    {% endblock %}
+
                                     {% block salesInfo %}{% endblock %}
                                     {% block bundle %}{% endblock %}
                                     {% block note %}{% endblock %}
@@ -125,7 +129,7 @@
                                         hasIcon: true,
                                     },
                                     attributes: {
-                                        'language': 'en',
+                                        'language': embed.currentLanguage,
                                         'config': '{
                                             "format": "Y-m-d",
                                             "timepicker": false
