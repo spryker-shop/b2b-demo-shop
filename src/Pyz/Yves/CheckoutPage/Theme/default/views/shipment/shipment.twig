@@ -4,6 +4,8 @@
     stepNumder: 2,
 } %}
 
+{% block containerClass %}container--large{% endblock %}
+
 {% block content %}
     {% embed molecule('form') with {
         class: 'checkout-form',
@@ -30,79 +32,111 @@
             },
         },
     } only %}
-        {% block fields %}
+        {% block fieldset %}
             {% set shipmentGroupCollectionForm = data.form.shipmentGroups | default %}
 
-            {% for shipmentGroupForm in shipmentGroupCollectionForm %}
-                {% if shipmentGroupForm.hash is defined %}
-                    {% do shipmentGroupForm.hash.setRendered %}
-                {% endif %}
+            <div class="grid">
+                {% for shipmentGroupForm in shipmentGroupCollectionForm %}
+                    {% if shipmentGroupForm.hash is defined %}
+                        {% do shipmentGroupForm.hash.setRendered %}
+                    {% endif %}
 
-                <article class="col col--sm-12 grid spacing spacing--inner">
-                    <div class="col col--sm-12 col--lg-8">
-                        {% for item in shipmentGroupForm.vars.data.items %}
-                            {% set item = item.bundleProduct ?? item %}
+                    <article class="shipment-wrapper col col--sm-12 grid grid--gap">
+                        <h3 class="shipment-wrapper__group-heading col col--sm-12">
+                            {{ 'page.checkout.shipment.shipment_group_heading' | trans({
+                                '%current%': loop.index,
+                                '%total%': loop.length
+                            }) }}
+                        </h3>
 
-                            {% include molecule('summary-item', 'CheckoutPage') with {
-                                data: {
-                                    name: item.name,
-                                    quantity: item.quantity,
-                                    price: item.sumPrice | money,
-                                    options: item.productOptions | default({}),
-                                    bundleItems: item.bundleItems | default([]),
-                                    quantitySalesUnit: item.quantitySalesUnit,
-                                    amountSalesUnit: item.amountSalesUnit,
-                                    amount: item.amount,
-                                    groupKey: item.groupKey,
-                                    images: item.images,
-                                    sku: item.sku,
-                                },
-                            } only %}
-                        {% endfor %}
-                    </div>
+                        <div class="col col--sm-12 col--lg-8">
+                            {% for item in shipmentGroupForm.vars.data.items %}
+                                {% set item = item.bundleProduct ?? item %}
 
-                    <div class="col col--sm-12 col--lg-4">
-                        <div class="{{ config.name }}__sidebar-item">
-                            <h5>{{ 'page.checkout.shipment.shipping_address.title' | trans }}</h5>
-                            <div>{{ shipmentGroupForm.shipment.vars.label }}</div>
+                                {% include molecule('summary-item', 'CheckoutPage') with {
+                                    data: {
+                                        name: item.name,
+                                        quantity: item.quantity,
+                                        price: item.sumPrice | money,
+                                        options: item.productOptions | default({}),
+                                        bundleItems: item.bundleItems | default([]),
+                                        quantitySalesUnit: item.quantitySalesUnit,
+                                        amountSalesUnit: item.amountSalesUnit,
+                                        amount: item.amount,
+                                        groupKey: item.groupKey,
+                                        images: item.images,
+                                        sku: item.sku,
+                                    },
+                                } only %}
+
+                                {% embed molecule('product-item') with {
+                                    data: {
+                                        listItem: item,
+                                    },
+                                } only %}
+                                    {% block salesInfo %}{% endblock %}
+                                    {% block bundle %}{% endblock %}
+                                    {% block note %}{% endblock %}
+                                    {% block quantity %}{% endblock %}
+                                {% endembed %}
+                            {% endfor %}
                         </div>
 
-                        {{ form_errors(shipmentGroupForm.shipment.shipmentSelection) }}
-                        {% for name, choices in shipmentGroupForm.shipment.shipmentSelection.vars.choices %}
-                            <div class="{{ config.name }}__sidebar-item form__field form__field--shipment col col--sm-12">
-                                <h5 class="grid grid--justify grid--middle title title--second">
-                                    <span class="col">{{ name }}</span>
+                        <div class="col col--sm-12 col--lg-4">
+                            <div class="shipment-wrapper__sidebar-item">
+                                <h4 class="shipment-wrapper__sidebar-title">{{ 'page.checkout.shipment.shipping_address.title' | trans }}</h4>
+                                <div class="shipment-wrapper__sidebar-content">{{ shipmentGroupForm.shipment.vars.label }}</div>
+                            </div>
 
-                                    {% include atom('icon') with {
-                                        class: 'col',
-                                        modifiers: ['shipment', name | lower ~ '-logo'],
+                            <div class="shipment-wrapper__sidebar-item">
+                                {{ form_errors(shipmentGroupForm.shipment.shipmentSelection) }}
+
+                                <h4 class="shipment-wrapper__sidebar-title">{{ 'page.checkout.shipment.shipping_method_heading' | trans }}</h4>
+
+                                {% for name, choices in shipmentGroupForm.shipment.shipmentSelection.vars.choices %}
+                                    <h4 class="shipment-wrapper__sidebar-title grid grid--justify grid--middle">
+                                        <span class="col">{{ name }}</span>
+
+                                        {% include atom('icon') with {
+                                            class: 'col',
+                                            modifiers: ['shipment', name | lower ~ '-logo'],
+                                            data: {
+                                                name: name | lower ~ '-logo',
+                                            },
+                                        } only %}
+                                    </h4>
+
+                                    {% include molecule('checkout-list', 'CheckoutPage') with {
                                         data: {
-                                            name: name | lower ~ '-logo',
+                                            form: shipmentGroupForm.shipment.shipmentSelection,
+                                            choices: choices,
                                         },
                                     } only %}
-                                </h5>
+                                {% endfor %}
+                            </div>
 
-                                {% include molecule('checkout-list', 'CheckoutPage') with {
+                            <div class="shipment-wrapper__sidebar-item">
+                                <h4 class="shipment-wrapper__sidebar-title">{{ 'page.checkout.shipment.requested_delivery_date.title' | trans }}</h4>
+
+                                {% include molecule('date-time-picker') with {
+                                    modifiers: ['with-icon'],
                                     data: {
-                                        form: shipmentGroupForm.shipment.shipmentSelection,
-                                        choices: choices,
+                                        field: shipmentGroupForm.shipment.requestedDeliveryDate,
+                                        hasIcon: true,
+                                    },
+                                    attributes: {
+                                        'language': 'en',
+                                        'config': '{
+                                            "format": "Y-m-d",
+                                            "timepicker": false
+                                        }',
                                     },
                                 } only %}
                             </div>
-                        {% endfor %}
-
-                        <div class="{{ config.name }}__sidebar-item">
-                            <h3>{{ 'page.checkout.shipment.requested_delivery_date.title' | trans }}</h3>
-                            {{ form_row(shipmentGroupForm.shipment.requestedDeliveryDate, {
-                                attr: {
-                                    'placeholder': 'YYYY-MM-DD',
-                                }
-                            }) }}
                         </div>
-                    </div>
-                </article>
-                <div class="col col--sm-12 spacing spacing--inner"><hr></div>
-            {% endfor %}
+                    </article>
+                {% endfor %}
+            </div>
         {% endblock %}
     {% endembed %}
 {% endblock %}
