@@ -7,15 +7,16 @@
 
 namespace Pyz\Yves\CheckoutPage\Process\Steps;
 
+use Pyz\Yves\CheckoutPage\Plugin\Provider\CartItemsProductProviderInterface;
 use Spryker\Shared\Kernel\Store;
 use Spryker\Shared\Kernel\Transfer\AbstractTransfer;
-use Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginCollection;
+use SprykerShop\Yves\CheckoutPage\CheckoutPageConfig;
 use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCalculationClientInterface;
-use SprykerShop\Yves\CheckoutPage\GiftCard\GiftCardItemsCheckerInterface;
+use SprykerShop\Yves\CheckoutPage\Process\Steps\AddressStep as SprykerShopAddressStep;
 use SprykerShop\Yves\CheckoutPage\Process\Steps\PostConditionCheckerInterface;
-use SprykerShop\Yves\CheckoutPage\Process\Steps\ShipmentStep as SprykerShopShipmentStep;
+use SprykerShop\Yves\CheckoutPage\Process\Steps\StepExecutorInterface;
 
-class ShipmentStep extends SprykerShopShipmentStep
+class AddressStep extends SprykerShopAddressStep
 {
     /**
      * @var \SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCalculationClientInterface
@@ -23,33 +24,41 @@ class ShipmentStep extends SprykerShopShipmentStep
     protected $store;
 
     /**
+     * @var \Pyz\Yves\CheckoutPage\Plugin\Provider\CartItemsProductProviderInterface
+     */
+    protected $cartItemsProductsProvider;
+
+    /**
      * @param \SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCalculationClientInterface $calculationClient
-     * @param \Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginCollection $shipmentPlugins
+     * @param \SprykerShop\Yves\CheckoutPage\Process\Steps\StepExecutorInterface $stepExecutor
      * @param \SprykerShop\Yves\CheckoutPage\Process\Steps\PostConditionCheckerInterface $postConditionChecker
-     * @param \SprykerShop\Yves\CheckoutPage\GiftCard\GiftCardItemsCheckerInterface $giftCardItemsChecker
+     * @param \SprykerShop\Yves\CheckoutPage\CheckoutPageConfig $checkoutPageConfig
      * @param \Spryker\Shared\Kernel\Store $store
+     * @param \Pyz\Yves\CheckoutPage\Plugin\Provider\CartItemsProductProviderInterface $cartItemsProductsProvider
      * @param string $stepRoute
      * @param string $escapeRoute
      */
     public function __construct(
         CheckoutPageToCalculationClientInterface $calculationClient,
-        StepHandlerPluginCollection $shipmentPlugins,
+        StepExecutorInterface $stepExecutor,
         PostConditionCheckerInterface $postConditionChecker,
-        GiftCardItemsCheckerInterface $giftCardItemsChecker,
+        CheckoutPageConfig $checkoutPageConfig,
         Store $store,
+        CartItemsProductProviderInterface $cartItemsProductsProvider,
         $stepRoute,
         $escapeRoute
     ) {
         parent::__construct(
             $calculationClient,
-            $shipmentPlugins,
+            $stepExecutor,
             $postConditionChecker,
-            $giftCardItemsChecker,
+            $checkoutPageConfig,
             $stepRoute,
             $escapeRoute
         );
 
         $this->store = $store;
+        $this->cartItemsProductsProvider = $cartItemsProductsProvider;
     }
 
     /**
@@ -60,7 +69,20 @@ class ShipmentStep extends SprykerShopShipmentStep
     public function getTemplateVariables(AbstractTransfer $quoteTransfer)
     {
         return [
-            'currentLanguage' => $this->store->getCurrentLanguage(),
+            'products' => $this->cartItemsProductsProvider->getItemsProducts(
+                $this->getCartItems($quoteTransfer),
+                $this->store->getCurrentLocale()
+            ),
         ];
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
+     *
+     * @return array
+     */
+    protected function getCartItems(AbstractTransfer $quoteTransfer): array
+    {
+        return $quoteTransfer->getItems()->getArrayCopy();
     }
 }
