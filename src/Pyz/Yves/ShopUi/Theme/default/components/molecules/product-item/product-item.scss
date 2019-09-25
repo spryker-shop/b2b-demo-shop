@@ -26,6 +26,10 @@ $product-image-width: rem(78);
             }
         }
 
+        &--checkout {
+            margin-bottom: rem(15);
+        }
+
         &--checkout-address {
             margin-bottom: rem(100);
 
@@ -136,12 +140,12 @@ $product-image-width: rem(78);
                 }
 
                 &#{$name}__col--checkout {
+                    padding-top: 0;
+                    padding-bottom: 0;
+
                     @include helper-breakpoint-media-min($lg) {
                         width: 83%;
                         min-width: 83%;
-                    }
-
-                    @include helper-breakpoint-media-min($lg) {
                         padding-top: rem(20);
                         padding-bottom: rem(15);
                         margin-left: rem(-10);
