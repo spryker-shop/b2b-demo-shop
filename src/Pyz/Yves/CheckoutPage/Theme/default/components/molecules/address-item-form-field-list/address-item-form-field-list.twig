@@ -17,7 +17,7 @@
             {% set imageUrl = listItem.images is not empty ? listItem.images[0] %}
 
             {% embed molecule('product-item') with {
-                modifiers: ['checkout'],
+                modifiers: ['checkout', 'checkout-address'],
                 data: {
                     listItem: listItem,
                     quantity: listItem.quantity,

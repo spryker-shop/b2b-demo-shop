@@ -2,16 +2,15 @@
 
 {% define config = {
     name: 'checkout-list',
-    tag: 'ul'
+    tag: 'ul',
 } %}
 
 {% define data = {
     choices: required,
-    form: required
+    form: required,
 } %}
 
 {% block body %}
-
     {% for key, choice in data.choices %}
         <li class="{{ config.name }}__item">
             {% block contentItem %}
@@ -33,5 +32,4 @@
             {% endblock %}
         </li>
     {% endfor %}
-
 {% endblock %}

@@ -5,6 +5,8 @@
     products: _view.products | default,
 } %}
 
+{% block containerClass %}container--medium{% endblock %}
+
 {% block content %}
     {% set companyBusinessUnitShippingAddressWidget = findWidget('CompanyBusinessUnitAddressWidget', ['shippingAddress', data.forms.shipping.vars.data]) %}
     {% set isCompanyBusinessUnitShippingAddressApplicable = companyBusinessUnitShippingAddressWidget and companyBusinessUnitShippingAddressWidget.isApplicable %}
