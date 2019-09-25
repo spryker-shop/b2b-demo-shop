@@ -1,0 +1,44 @@
+@mixin checkout-page-shipment-wrapper($name: '.shipment-wrapper') {
+    #{$name} {
+        margin-bottom: rem(15);
+
+        @include helper-breakpoint-media-min($lg) {
+            margin-bottom: rem(30);
+        }
+
+        &__group-heading {
+            font-weight: fw(medium);
+            margin-bottom: rem(5);
+            font-size: rem(18);
+
+            @include helper-breakpoint-media-min($lg) {
+                font-size: rem(24);
+            }
+        }
+
+        &__sidebar-item {
+            background-color: $setting-color-gray-8;
+            padding: rem(20) rem(15);
+            margin: 0 rem(-15) rem(20);
+
+            @include helper-breakpoint-media-min($lg) {
+                margin: 0 0 rem(20);
+            }
+        }
+
+        &__sidebar-title {
+            margin-bottom: rem(10);
+            font-weight: fw(medium);
+        }
+
+        &__sidebar-content {
+            font-size: rem(15);
+            line-height: 1.47;
+            color: $setting-color-gray-3;
+        }
+
+        @content;
+    }
+}
+
+@include checkout-page-shipment-wrapper();

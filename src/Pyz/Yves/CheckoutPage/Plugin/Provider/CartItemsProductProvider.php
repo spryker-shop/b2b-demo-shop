@@ -1,0 +1,46 @@
+<?php
+
+/**
+ * This file is part of the Spryker Commerce OS.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
+ */
+
+namespace Pyz\Yves\CheckoutPage\Plugin\Provider;
+
+use Pyz\Yves\CheckoutPage\Dependency\Client\CheckoutPageToProductStorageClientInterface;
+
+class CartItemsProductProvider implements CartItemsProductProviderInterface
+{
+    /**
+     * @var \Pyz\Yves\CheckoutPage\Dependency\Client\CheckoutPageToProductStorageClientInterface
+     */
+    protected $productStorageClient;
+
+    /**
+     * @param \Pyz\Yves\CheckoutPage\Dependency\Client\CheckoutPageToProductStorageClientInterface $productStorageClient
+     */
+    public function __construct(CheckoutPageToProductStorageClientInterface $productStorageClient)
+    {
+        $this->productStorageClient = $productStorageClient;
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\ItemTransfer[] $cartItems
+     * @param string $locale
+     *
+     * @return \Generated\Shared\Transfer\ProductViewTransfer[]
+     */
+    public function getItemsProducts(array $cartItems, string $locale): array
+    {
+        $productBySku = [];
+
+        foreach ($cartItems as $item) {
+            $productBySku[$item->getSku()] = $this->productStorageClient->findProductAbstractViewTransfer(
+                $item->getIdProductAbstract(),
+                $locale
+            );
+        }
+
+        return $productBySku;
+    }
+}

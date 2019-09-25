@@ -42,7 +42,6 @@
             {% for choices in data.form.paymentSelection.vars.choices %}
                 {% set paymentProviderIndex = loop.index0 %}
                 {% embed molecule('checkout-list', 'CheckoutPage') with {
-                    modifiers: ['bottom-margin'],
                     data: {
                         form: null,
                         choices: choices,

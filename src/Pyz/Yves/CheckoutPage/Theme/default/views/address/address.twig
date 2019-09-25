@@ -1,8 +1,11 @@
 {% extends view('address', '@SprykerShop:CheckoutPage') %}
 
 {% define data = {
-    stepNumder: 1
+    stepNumder: 1,
+    products: _view.products | default,
 } %}
+
+{% block containerClass %}container--medium{% endblock %}
 
 {% block content %}
     {% set companyBusinessUnitShippingAddressWidget = findWidget('CompanyBusinessUnitAddressWidget', ['shippingAddress', data.forms.shipping.vars.data]) %}
@@ -36,6 +39,7 @@
             companyBusinessUnitShippingAddressWidget: companyBusinessUnitShippingAddressWidget,
             isCompanyBusinessUnitShippingAddressApplicable: isCompanyBusinessUnitShippingAddressApplicable,
             jsAddressClass: jsAddressClass,
+            products: data.products,
         },
     } only %}
         {% block title %}{% endblock %}
@@ -108,6 +112,7 @@
                             form: embed.forms.items,
                             shippingForm: embed.forms.shipping,
                             jsAddressClass: embed.jsAddressClass,
+                            products: embed.products,
                         },
                     } only %}
                 {% endif %}

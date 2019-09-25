@@ -20,9 +20,9 @@
                 },
             } only %}
         {% else %}
-            <ul class="option-display">
+            <ul class="list list--expand list--plus">
                 {% for option in data.options %}
-                    <li class="option-display__item">
+                    <li class="list__item">
                         {{ option.value | trans }} - {{ (option.sumPrice | default(0)) | money }}
                     </li>
                 {% endfor %}

@@ -7,6 +7,7 @@
 
 namespace Pyz\Yves\CheckoutPage;
 
+use Pyz\Yves\CheckoutPage\Dependency\Client\CheckoutPageToProductStorageClientBridge;
 use Spryker\Yves\Kernel\Container;
 use Spryker\Yves\Kernel\Plugin\Pimple;
 use Spryker\Yves\Payment\Plugin\PaymentFormFilterPlugin;
@@ -26,6 +27,22 @@ use Symfony\Component\Form\FormFactory;
 
 class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyProvider
 {
+    public const CLIENT_PRODUCT_STORAGE = 'CLIENT_PRODUCT_STORAGE';
+
+    /**
+     * @param \Spryker\Yves\Kernel\Container $container
+     *
+     * @return \Spryker\Yves\Kernel\Container
+     */
+    public function provideDependencies(Container $container)
+    {
+        $container = parent::provideDependencies($container);
+
+        $container = $this->addProductStorageClient($container);
+
+        return $container;
+    }
+
     /**
      * @return string[]
      */
@@ -138,5 +155,19 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
             new CustomerAddressExpanderPlugin(),
             new CompanyUnitAddressExpanderPlugin(),
         ];
+    }
+
+    /**
+     * @param \Spryker\Yves\Kernel\Container $container
+     *
+     * @return \Spryker\Yves\Kernel\Container
+     */
+    protected function addProductStorageClient(Container $container): Container
+    {
+        $container->set(static::CLIENT_PRODUCT_STORAGE, function (Container $container) {
+            return new CheckoutPageToProductStorageClientBridge($container->getLocator()->productStorage()->client());
+        });
+
+        return $container;
     }
 }
