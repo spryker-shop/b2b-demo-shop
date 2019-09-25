@@ -1,5 +1,9 @@
 {% extends molecule('address-item-form-field-list', '@SprykerShop:CheckoutPage') %}
 
+{% define data = {
+    products: data.products | default,
+} %}
+
 {% block body %}
     {% set companyBusinessUnitShippingAddressWidget = findWidget('CompanyBusinessUnitAddressWidget', ['shippingAddress', data.shippingForm.vars.data]) %}
     {% set isCompanyBusinessUnitShippingAddressApplicable = companyBusinessUnitShippingAddressWidget and companyBusinessUnitShippingAddressWidget.isApplicable %}
@@ -9,24 +13,20 @@
             {% set hasShippingAddresses = item.shippingAddress.id_customer_address is defined %}
             {% set hasCompanyUnitAddresses = item.shippingAddress.id_company_unit_address is defined %}
             {% set hasShippingAddressesAndApplicable = isCompanyBusinessUnitShippingAddressApplicable ? true : hasShippingAddresses %}
-            {% set itemName = item.vars.data.name | default %}
-            {% set itemQuantity = item.vars.data.quantity | default %}
-            {% set imageUrl = item.vars.data.images is not empty ? item.vars.data.images[0] %}
-            {% set itemOptions = item.vars.data.productOptions | default([]) %}
-            {% set itemSku = item.vars.data.sku | default %}
+            {% set listItem = item.vars.data %}
+            {% set imageUrl = listItem.images is not empty ? listItem.images[0] %}
 
             {% embed molecule('product-item') with {
                 modifiers: ['checkout', 'checkout-address'],
                 data: {
-                    listItem: item,
-                    quantity: itemQuantity,
-                    options: itemOptions,
+                    listItem: listItem,
+                    quantity: listItem.quantity,
+                    options: listItem.productOptions,
                     priceModifiers: ['medium'],
                 },
                 embed: {
-                    itemName: itemName,
+                    listItem: listItem,
                     imageUrl: imageUrl,
-                    itemSku: itemSku,
                     jsName: config.jsName,
                     item: item,
                     index: loop.index,
@@ -36,24 +36,33 @@
                     hasShippingAddresses: hasShippingAddresses,
                     hasCompanyUnitAddresses: hasCompanyUnitAddresses,
                     configName: config.name,
+                    product: data.products[listItem.sku] | default,
                 },
             } only %}
                 {% block image %}
                     {% include molecule('product-item-image') with {
                         modifiers: ['small'],
                         data: {
-                            name: embed.itemName,
+                            name: embed.listItem.name,
                             image: embed.imageUrl,
                         },
                     } only %}
                 {% endblock %}
 
                 {% block title %}
-                    <h6 class="{{ config.name }}__title spacing spacing--reset">{{ embed.itemName }}</h6>
+                    <h6 class="{{ config.name }}__title spacing spacing--reset">{{ embed.listItem.name }}</h6>
                 {% endblock %}
 
                 {% block info %}
-                    <small class="text-secondary">{{ 'cart.item.sku' | trans }}: {{ embed.itemSku }}</small>
+                    {{ parent() }}
+<pre>{{ dump(embed.listItem.productOptions) }}</pre>
+                    {% if embed.product.attributes.farbe is defined %}
+                        <br>
+                        <span class="{{ config.name }}__color-preview">
+                            {{ 'cart.item.color' | trans }}:
+                            <span class="{{ config.name }}__color-preview-decoration" style="background: {{ embed.product.colorCode  }}" title="{{ embed.product.attributes.farbe  }}"></span>
+                        </span>
+                    {% endif %}
                 {% endblock %}
 
                 {% block productTotal %}

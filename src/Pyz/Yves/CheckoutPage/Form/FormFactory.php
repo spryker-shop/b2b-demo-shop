@@ -9,9 +9,9 @@ namespace Pyz\Yves\CheckoutPage\Form;
 
 use Pyz\Yves\CheckoutPage\Form\Steps\PaymentForm;
 use Spryker\Yves\StepEngine\Form\FormCollectionHandlerInterface;
-use SprykerShop\Yves\CheckoutPage\Form\FormFactory as SprykerFormFactory;
+use SprykerShop\Yves\CheckoutPage\Form\FormFactory as SprykerShopFormFactory;
 
-class FormFactory extends SprykerFormFactory
+class FormFactory extends SprykerShopFormFactory
 {
      /**
       * @return \Spryker\Yves\StepEngine\Form\FormCollectionHandlerInterface
