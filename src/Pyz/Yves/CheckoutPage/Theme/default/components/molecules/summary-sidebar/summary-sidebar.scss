@@ -1,0 +1,8 @@
+@mixin checkout-page-summary-sidebar($name: '.summary-sidebar') {
+    #{$name} {
+
+        @content;
+    }
+}
+
+@include checkout-page-summary-sidebar();

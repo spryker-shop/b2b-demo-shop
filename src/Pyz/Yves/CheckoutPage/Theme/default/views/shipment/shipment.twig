@@ -5,8 +5,6 @@
     currentLanguage: _view.currentLanguage,
 } %}
 
-{% block containerClass %}container--large{% endblock %}
-
 {% block content %}
     {% embed molecule('form') with {
         class: 'checkout-form',
@@ -45,16 +43,16 @@
                         {% do shipmentGroupForm.hash.setRendered %}
                     {% endif %}
 
-                    <article class="shipment-wrapper col col--sm-12 grid grid--gap">
-                        <h3 class="shipment-wrapper__group-heading col col--sm-12">
+                    <article class="col col--sm-12 grid grid--gap spacing-bottom spacing-bottom--big">
+                        <h3 class="col col--sm-12 title title--second spacing-bottom spacing-bottom--small">
                             {{ 'page.checkout.shipment.shipment_group_heading' | trans({
                                 '%current%': loop.index,
                                 '%total%': loop.length
                             }) }}
                         </h3>
 
-                        <div class="col col--sm-12 col--lg-8">
-                            {% for item in shipmentGroupForm.vars.data.items %}
+                        <div class="col col--sm-12 col--xl-8">
+                            {% for item in shipmentGroupForm.   vars.data.items %}
                                 {% set item = item.bundleProduct ?? item %}
 
                                 {% embed molecule('product-item') with {
@@ -87,57 +85,13 @@
                             {% endfor %}
                         </div>
 
-                        <div class="col col--sm-12 col--lg-4">
-                            <div class="shipment-wrapper__sidebar-item">
-                                <h4 class="shipment-wrapper__sidebar-title">{{ 'page.checkout.shipment.shipping_address.title' | trans }}</h4>
-                                <div class="shipment-wrapper__sidebar-content">{{ shipmentGroupForm.shipment.vars.label }}</div>
-                            </div>
-
-                            <div class="shipment-wrapper__sidebar-item">
-                                {{ form_errors(shipmentGroupForm.shipment.shipmentSelection) }}
-
-                                <h4 class="shipment-wrapper__sidebar-title">{{ 'page.checkout.shipment.shipping_method_heading' | trans }}</h4>
-
-                                {% for name, choices in shipmentGroupForm.shipment.shipmentSelection.vars.choices %}
-                                    <h4 class="shipment-wrapper__sidebar-title grid grid--justify grid--middle">
-                                        <span class="col">{{ name }}</span>
-
-                                        {% include atom('icon') with {
-                                            class: 'col',
-                                            modifiers: ['shipment', name | lower ~ '-logo'],
-                                            data: {
-                                                name: name | lower ~ '-logo',
-                                            },
-                                        } only %}
-                                    </h4>
-
-                                    {% include molecule('checkout-list', 'CheckoutPage') with {
-                                        data: {
-                                            form: shipmentGroupForm.shipment.shipmentSelection,
-                                            choices: choices,
-                                        },
-                                    } only %}
-                                {% endfor %}
-                            </div>
-
-                            <div class="shipment-wrapper__sidebar-item">
-                                <h4 class="shipment-wrapper__sidebar-title">{{ 'page.checkout.shipment.requested_delivery_date.title' | trans }}</h4>
-
-                                {% include molecule('date-time-picker') with {
-                                    modifiers: ['with-icon'],
-                                    data: {
-                                        field: shipmentGroupForm.shipment.requestedDeliveryDate,
-                                        hasIcon: true,
-                                    },
-                                    attributes: {
-                                        'language': embed.currentLanguage,
-                                        'config': '{
-                                            "format": "Y-m-d",
-                                            "timepicker": false
-                                        }',
-                                    },
-                                } only %}
-                            </div>
+                        <div class="col col--sm-12 col--xl-4">
+                            {% include molecule('shipment-sidebar', 'CheckoutPage') with {
+                                data: {
+                                    shipment: shipmentGroupForm.shipment,
+                                    currentLanguage: embed.currentLanguage,
+                                },
+                            } only %}
                         </div>
                     </article>
                 {% endfor %}

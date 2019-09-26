@@ -1,7 +1,7 @@
 {% extends molecule('address-item-form-field-list', '@SprykerShop:CheckoutPage') %}
 
 {% define data = {
-    products: data.products | default,
+    products: required,
 } %}
 
 {% block body %}
@@ -21,7 +21,6 @@
                 data: {
                     listItem: listItem,
                     quantity: listItem.quantity,
-                    options: listItem.productOptions,
                     priceModifiers: ['medium'],
                 },
                 embed: {
@@ -55,9 +54,8 @@
 
                 {% block info %}
                     {{ parent() }}
-<pre>{{ dump(embed.listItem.productOptions) }}</pre>
+
                     {% if embed.product.attributes.farbe is defined %}
-                        <br>
                         <span class="{{ config.name }}__color-preview">
                             {{ 'cart.item.color' | trans }}:
                             <span class="{{ config.name }}__color-preview-decoration" style="background: {{ embed.product.colorCode  }}" title="{{ embed.product.attributes.farbe  }}"></span>

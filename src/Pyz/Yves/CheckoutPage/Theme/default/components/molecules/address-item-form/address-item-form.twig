@@ -1,7 +1,7 @@
 {% extends molecule('address-item-form', '@SprykerShop:CheckoutPage') %}
 
 {% define data = {
-    products: data.products | default,
+    products: required,
 } %}
 
 {% block body %}

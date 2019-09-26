@@ -1,15 +1,11 @@
-{% extends template('page-layout-checkout', 'CheckoutPage') %}
+{% extends view('payment', '@SprykerShop:CheckoutPage') %}
 
 {% define data = {
-    backUrl: _view.previousStepUrl,
-    forms: {
-        payment: _view.paymentForm
-    },
-
-    title: 'checkout.step.payment.title' | trans,
     stepNumder: 3,
-    customForms: {}
+    customForms: {},
 } %}
+
+{% block containerClass %}container--small{% endblock %}
 
 {% block content %}
     <h5 class="title title--second">{{ 'page.checkout.payment.title' | trans }}</h5>
@@ -20,45 +16,46 @@
             form: data.forms.payment,
             options: {
                 attr: {
-                    id: 'payment-form'
-                }
+                    id: 'payment-form',
+                },
             },
             submit: {
                 enable: true,
                 text: 'checkout.step.summary' | trans,
-                class: 'form__action--expand-sm-md button button--big'
+                class: 'form__action--expand-sm-md button button--big',
             },
             cancel: {
                 enable: true,
                 url: data.backUrl,
                 text: 'general.back.button' | trans,
                 icon: '',
-                class: 'form__action--expand-sm-md button button--big button--hollow-icon button--back'
+                class: 'form__action--expand-sm-md button button--big button--hollow-icon button--back',
             },
-            customForms: data.customForms
-        }
+            customForms: data.customForms,
+        },
     } only %}
         {% block fieldset %}
             {% for choices in data.form.paymentSelection.vars.choices %}
                 {% set paymentProviderIndex = loop.index0 %}
                 {% embed molecule('checkout-list', 'CheckoutPage') with {
+                    class: 'spacing-bottom spacing-bottom--bigger',
                     data: {
                         form: null,
                         choices: choices,
-                        customForms: data.customForms
+                        customForms: data.customForms,
                     },
                     embed: {
                         form: data.form,
-                        paymentProviderIndex: paymentProviderIndex
-                    }
+                        paymentProviderIndex: paymentProviderIndex,
+                    },
                 } only %}
                     {% block contentItem %}
                         {% if embed.form.paymentSelection[key].vars.value == 'dummyPaymentInvoice' %}
                             {% include atom('icon') with {
                                 modifiers: ['invoice-logo', 'payment-logo'],
                                 data: {
-                                    name: 'dummyPaymentInvoice.icon' | trans
-                                }
+                                    name: 'dummyPaymentInvoice.icon' | trans,
+                                },
                             } only %}
                         {% endif %}
 
@@ -71,14 +68,14 @@
                                 customForms: data.customForms,
                                 layout: {
                                     'card_expires_month': 'col col--sm-4',
-                                    'card_expires_year': 'col col--sm-8'
+                                    'card_expires_year': 'col col--sm-8',
                                 },
-                                customForms: data.customForms
+                                customForms: data.customForms,
                             },
                             embed: {
                                 index: loop.index ~ '-' ~ embed.paymentProviderIndex,
-                                toggler: embed.form.paymentSelection[key]
-                            }
+                                toggler: embed.form.paymentSelection[key],
+                            },
                         } only %}
                             {% block fieldset %}
                                 {% if embed.index == 1 %}
@@ -101,7 +98,7 @@
                                         }
                                     }) }}
                                 {% endif %}
-                                <div class="col col--sm-12 is-hidden js-payment-method-{{embed.index}}">
+                                <div class="col col--sm-12 is-hidden js-payment-method-{{ embed.index }}">
                                     <div class="col col--sm-12 col--md-6">
                                         {% if data.customForms[data.form.vars.template_path] is not defined %}
                                             {{ parent() }}

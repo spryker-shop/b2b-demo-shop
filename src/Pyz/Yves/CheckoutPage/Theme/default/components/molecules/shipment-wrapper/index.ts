@@ -1,1 +1,0 @@
-import './shipment-wrapper.scss';

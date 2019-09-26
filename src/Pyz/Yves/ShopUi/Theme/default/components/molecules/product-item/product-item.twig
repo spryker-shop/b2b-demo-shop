@@ -61,7 +61,9 @@
                             {% endblock %}
 
                             {% block info %}
-                                <small class="text-secondary">{{ 'cart.item.sku' | trans }}: {{ data.listItem.sku }}</small>
+                                <div class="spacing-bottom">
+                                    <small class="text-secondary">{{ 'cart.item.sku' | trans }}: {{ data.listItem.sku }}</small>
+                                </div>
                             {% endblock %}
 
                             {% block productInfo %}
