@@ -10,13 +10,12 @@ namespace Pyz\Yves\CheckoutPage\Process\Steps;
 use Pyz\Yves\CheckoutPage\Plugin\Provider\CartItemsProductProviderInterface;
 use Spryker\Shared\Kernel\Store;
 use Spryker\Shared\Kernel\Transfer\AbstractTransfer;
-use Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginCollection;
-use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCalculationClientInterface;
-use SprykerShop\Yves\CheckoutPage\GiftCard\GiftCardItemsCheckerInterface;
-use SprykerShop\Yves\CheckoutPage\Process\Steps\PostConditionCheckerInterface;
-use SprykerShop\Yves\CheckoutPage\Process\Steps\ShipmentStep as SprykerShopShipmentStep;
+use SprykerShop\Yves\CheckoutPage\CheckoutPageConfig;
+use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToProductBundleClientInterface;
+use SprykerShop\Yves\CheckoutPage\Dependency\Service\CheckoutPageToShipmentServiceInterface;
+use SprykerShop\Yves\CheckoutPage\Process\Steps\SummaryStep as SprykerShopSummaryStep;
 
-class ShipmentStep extends SprykerShopShipmentStep
+class SummaryStep extends SprykerShopSummaryStep
 {
     /**
      * @var \Spryker\Shared\Kernel\Store
@@ -29,30 +28,27 @@ class ShipmentStep extends SprykerShopShipmentStep
     protected $cartItemsProductsProvider;
 
     /**
-     * @param \SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCalculationClientInterface $calculationClient
-     * @param \Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginCollection $shipmentPlugins
-     * @param \SprykerShop\Yves\CheckoutPage\Process\Steps\PostConditionCheckerInterface $postConditionChecker
-     * @param \SprykerShop\Yves\CheckoutPage\GiftCard\GiftCardItemsCheckerInterface $giftCardItemsChecker
+     * @param \SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToProductBundleClientInterface $productBundleClient
+     * @param \SprykerShop\Yves\CheckoutPage\Dependency\Service\CheckoutPageToShipmentServiceInterface $shipmentService
+     * @param \SprykerShop\Yves\CheckoutPage\CheckoutPageConfig $checkoutPageConfig
      * @param \Spryker\Shared\Kernel\Store $store
      * @param \Pyz\Yves\CheckoutPage\Plugin\Provider\CartItemsProductProviderInterface $cartItemsProductsProvider
      * @param string $stepRoute
      * @param string $escapeRoute
      */
     public function __construct(
-        CheckoutPageToCalculationClientInterface $calculationClient,
-        StepHandlerPluginCollection $shipmentPlugins,
-        PostConditionCheckerInterface $postConditionChecker,
-        GiftCardItemsCheckerInterface $giftCardItemsChecker,
+        CheckoutPageToProductBundleClientInterface $productBundleClient,
+        CheckoutPageToShipmentServiceInterface $shipmentService,
+        CheckoutPageConfig $checkoutPageConfig,
         Store $store,
         CartItemsProductProviderInterface $cartItemsProductsProvider,
         $stepRoute,
         $escapeRoute
     ) {
         parent::__construct(
-            $calculationClient,
-            $shipmentPlugins,
-            $postConditionChecker,
-            $giftCardItemsChecker,
+            $productBundleClient,
+            $shipmentService,
+            $checkoutPageConfig,
             $stepRoute,
             $escapeRoute
         );
@@ -71,12 +67,12 @@ class ShipmentStep extends SprykerShopShipmentStep
         $templateVariables = parent::getTemplateVariables($quoteTransfer);
 
         return $templateVariables + [
-            'currentLanguage' => $this->store->getCurrentLanguage(),
-            'products' => $this->cartItemsProductsProvider->getItemsProducts(
-                $this->getCartItems($quoteTransfer),
-                $this->store->getCurrentLocale()
-            ),
-        ];
+                'currentLanguage' => $this->store->getCurrentLanguage(),
+                'products' => $this->cartItemsProductsProvider->getItemsProducts(
+                    $this->getCartItems($quoteTransfer),
+                    $this->store->getCurrentLocale()
+                ),
+            ];
     }
 
     /**
