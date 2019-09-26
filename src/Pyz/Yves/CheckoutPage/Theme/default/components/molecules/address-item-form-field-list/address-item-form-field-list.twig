@@ -13,19 +13,15 @@
             {% set hasShippingAddresses = item.shippingAddress.id_customer_address is defined %}
             {% set hasCompanyUnitAddresses = item.shippingAddress.id_company_unit_address is defined %}
             {% set hasShippingAddressesAndApplicable = isCompanyBusinessUnitShippingAddressApplicable ? true : hasShippingAddresses %}
-            {% set listItem = item.vars.data %}
-            {% set imageUrl = listItem.images is not empty ? listItem.images[0] %}
 
             {% embed molecule('product-item') with {
                 modifiers: ['checkout', 'checkout-address'],
                 data: {
-                    listItem: listItem,
-                    quantity: listItem.quantity,
+                    listItem: item.vars.data,
+                    quantity: item.vars.data.quantity,
                     priceModifiers: ['medium'],
                 },
                 embed: {
-                    listItem: listItem,
-                    imageUrl: imageUrl,
                     jsName: config.jsName,
                     item: item,
                     index: loop.index,
@@ -35,21 +31,23 @@
                     hasShippingAddresses: hasShippingAddresses,
                     hasCompanyUnitAddresses: hasCompanyUnitAddresses,
                     configName: config.name,
-                    product: data.products[listItem.sku] | default,
+                    product: data.products[item.vars.data.sku],
                 },
             } only %}
                 {% block image %}
+                    {% set imageUrl = data.listItem.images is not empty ? data.listItem.images[0] %}
+
                     {% include molecule('product-item-image') with {
                         modifiers: ['small'],
                         data: {
-                            name: embed.listItem.name,
-                            image: embed.imageUrl,
+                            name: data.listItem.name,
+                            image: imageUrl,
                         },
                     } only %}
                 {% endblock %}
 
                 {% block title %}
-                    <h6 class="{{ config.name }}__title spacing spacing--reset">{{ embed.listItem.name }}</h6>
+                    <h6 class="{{ config.name }}__title spacing spacing--reset">{{ data.listItem.name }}</h6>
                 {% endblock %}
 
                 {% block info %}
@@ -120,12 +118,13 @@
                     </div>
                 {% endblock %}
 
-                {% block bundle %}{% endblock %}
                 {% block note %}{% endblock %}
+                {% block bundle %}{% endblock %}
             {% endembed %}
 
             <div class="col col--sm-12">
-                {% set itemClass = config.name ~ '__content ' ~ config.name ~ '__content--mobile-background ' ~ config.jsName ~ '__item-shipping ' ~ (hasShippingAddressesAndApplicable ? ' is-hidden ') ~ config.jsName ~ '__item-shipping--' ~ loop.index ~ ' spacing-x spacing-x--inner spacing-x--reset' %}
+                {% set itemClass = config.name ~ '__content ' ~ config.name ~ '__content--mobile-background ' ~ config.jsName ~ '__item-shipping '
+                    ~ (hasShippingAddressesAndApplicable ? ' is-hidden ') ~ config.jsName ~ '__item-shipping--' ~ loop.index ~ ' spacing-x spacing-x--inner spacing-x--reset' %}
 
                 {% include molecule('form') with {
                     class: itemClass,
