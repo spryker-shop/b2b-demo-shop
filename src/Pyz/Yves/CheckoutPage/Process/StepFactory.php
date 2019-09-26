@@ -13,6 +13,7 @@ use Pyz\Yves\CheckoutPage\Plugin\Provider\CartItemsProductProvider;
 use Pyz\Yves\CheckoutPage\Plugin\Provider\CartItemsProductProviderInterface;
 use Pyz\Yves\CheckoutPage\Process\Steps\AddressStep;
 use Pyz\Yves\CheckoutPage\Process\Steps\ShipmentStep;
+use Pyz\Yves\CheckoutPage\Process\Steps\SummaryStep;
 use SprykerShop\Yves\CheckoutPage\Plugin\Provider\CheckoutPageControllerProvider;
 use SprykerShop\Yves\CheckoutPage\Process\StepFactory as SprykerShopStepFactory;
 use SprykerShop\Yves\CheckoutPage\Process\Steps\AddressStep as SpykerShopAddressStep;
@@ -48,7 +49,24 @@ class StepFactory extends SprykerShopStepFactory
             $this->createShipmentStepPostConditionChecker(),
             $this->createGiftCardItemsChecker(),
             $this->getStore(),
+            $this->createCartItemsProductsProvider(),
             CheckoutPageControllerProvider::CHECKOUT_SHIPMENT,
+            HomePageControllerProvider::ROUTE_HOME
+        );
+    }
+
+    /**
+     * @return \Pyz\Yves\CheckoutPage\Process\Steps\SummaryStep
+     */
+    public function createSummaryStep()
+    {
+        return new SummaryStep(
+            $this->getProductBundleClient(),
+            $this->getShipmentService(),
+            $this->getConfig(),
+            $this->getStore(),
+            $this->createCartItemsProductsProvider(),
+            CheckoutPageControllerProvider::CHECKOUT_SUMMARY,
             HomePageControllerProvider::ROUTE_HOME
         );
     }

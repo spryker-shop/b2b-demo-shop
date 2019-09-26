@@ -8,7 +8,6 @@
 namespace PyzTest\Yves\Checkout;
 
 use Codeception\Actor;
-use Spryker\Client\Customer\CustomerClientInterface;
 use Spryker\Service\Customer\CustomerServiceInterface;
 use Spryker\Service\Shipment\ShipmentServiceInterface;
 
