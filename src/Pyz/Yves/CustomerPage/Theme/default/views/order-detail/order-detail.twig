@@ -30,15 +30,6 @@
     {% endif %}
 {% endmacro %}
 
-{% macro note(order) %}
-    {% include molecule('note-list', 'CartNoteWidget') ignore missing with {
-        data: {
-            label: 'cart_note.customer_page.order_note',
-            note: order.cartNote
-        }
-    } only %}
-{% endmacro %}
-
 {% block customerContent %}
     {{ widgetBlock('CustomerReorderWidgetPlugin', 'formStart', data.order) }}
 
@@ -86,9 +77,6 @@
                 {
                     content: _self.address('billing_address', data.order.billingAddress)
                 },
-                {
-                    content: data.order.cartNote is not empty ? _self.note(data.order) : ''
-                }
             ]
         }
     } only %}

@@ -1,0 +1,44 @@
+{% embed '@Gui/Partials/widget.twig' with { widget_title: 'Cart Notes' } %}
+
+    {% block widget_content %}
+        {% set itemsHaveNote = false %}
+        {% for orderItem in order.items %}
+            {% if orderItem.cartNote %}
+                {% set itemsHaveNote = true %}
+            {% endif %}
+        {% endfor %}
+        <div class="row">
+            {% if itemsHaveNote %}
+                <div class="col-md-6">
+                    <table class="table">
+                        <caption>{{ 'Item Cart Notes' | trans }}</caption>
+                        <tr>
+                            <th>{{ 'Order Item' | trans }}</th>
+                            <th>{{ 'Note' | trans }}</th>
+                        </tr>
+                        {% for orderItem in order.items %}
+                            {% if orderItem.cartNote %}
+                                <tr>
+                                    <td class="text-left">
+                                        <div>
+                                              {{ orderItem.name }}
+                                        </div>
+                                        <div class="sku">
+                                          {{ 'Sku' | trans }}: {{ orderItem.Sku }}
+                                        </div>
+                                    </td>
+                                    <td class="text-left">{{ orderItem.cartNote | escape | nl2br }}</td>
+                                </tr>
+                            {% endif %}
+                        {% endfor %}
+                    </table>
+                </div>
+            {% endif %}
+            {% if not itemsHaveNote and not order.cartNote %}
+                <div class="col-md-12">
+                    <span class="text-left">{{ 'Order has no notes' | trans }}</span>
+                </div>
+            {% endif %}
+        </div>
+    {% endblock %}
+{% endembed %}
