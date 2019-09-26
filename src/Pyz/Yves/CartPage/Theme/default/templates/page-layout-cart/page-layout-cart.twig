@@ -1,16 +1,4 @@
-{% extends template('page-layout-main') %}
-
-{% define data = {
-    cart: _view.cart,
-    isQuoteEditable: _view.isQuoteEditable,
-    isQuoteLocked: _view.isQuoteLocked,
-    cartItems: _view.cartItems,
-    isQuoteValid: _view.isQuoteValid,
-    attributes: _view.attributes,
-    request: app.request,
-    products: _view.products | default,
-    title: 'cart.cart' | trans,
-} %}
+{% extends template('page-layout-cart', '@SprykerShop:CartPage') %}
 
 {% block breadcrumbs %}
     {% set steps = [{
@@ -18,7 +6,7 @@
         url: url('multi-cart'),
         isActive: false,
     }, {
-        label: data.cart.name ? data.cart.name : 'cart.cart' | trans,
+        label: data.cart.name ? data.cart.name : data.title,
         isActive: true,
     }]%}
 
@@ -44,8 +32,7 @@
     {% endembed %}
 {% endblock %}
 
-{% block title %}
-{% endblock %}
+{% block title %}{% endblock %}
 
 {% block contentClass %}page-layout-main page-layout-main--cart-page{% endblock %}
 
@@ -113,7 +100,7 @@
                                         data.cart.idQuote,
                                         'quote',
                                         app.request.requestUri,
-                                        data.cart.commentThread
+                                        data.cart.commentThread,
                                     ] only %}
                                     {% endwidget %}
                                 {% endblock %}
@@ -123,7 +110,8 @@
                 {% endembed %}
             </div>
         {% endblock %}
-    {% else %}
+    {% endif %}
+    {% if data.cart.items is not empty %}
         {% set productBundleItemCounterWidget = findWidget('ProductBundleItemCounterWidget', [data.cart]) %}
 
         <div class="grid grid--gap">
@@ -384,4 +372,8 @@
             {% widget 'UpSellingProductsWidget' args [data.cart] only %}{% endwidget %}
         {% endif %}
     {% endif %}
+{% endblock %}
+
+{% block footer %}
+    {% include organism('footer') only %}
 {% endblock %}
