@@ -2,7 +2,8 @@
 
 {% define data = {
     stepNumder: 1,
-    products: _view.products | default,
+    products: _view.products,
+    currentLanguage: _view.currentLanguage,
 } %}
 
 {% block containerClass %}container--medium{% endblock %}

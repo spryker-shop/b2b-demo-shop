@@ -19,7 +19,7 @@ use SprykerShop\Yves\CheckoutPage\Process\Steps\StepExecutorInterface;
 class AddressStep extends SprykerShopAddressStep
 {
     /**
-     * @var \SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCalculationClientInterface
+     * @var \Spryker\Shared\Kernel\Store
      */
     protected $store;
 
@@ -68,12 +68,15 @@ class AddressStep extends SprykerShopAddressStep
      */
     public function getTemplateVariables(AbstractTransfer $quoteTransfer)
     {
-        return [
-            'products' => $this->cartItemsProductsProvider->getItemsProducts(
-                $this->getCartItems($quoteTransfer),
-                $this->store->getCurrentLocale()
-            ),
-        ];
+        $templateVariables = parent::getTemplateVariables($quoteTransfer);
+
+        return $templateVariables + [
+                'currentLanguage' => $this->store->getCurrentLanguage(),
+                'products' => $this->cartItemsProductsProvider->getItemsProducts(
+                    $this->getCartItems($quoteTransfer),
+                    $this->store->getCurrentLocale()
+                ),
+            ];
     }
 
     /**
