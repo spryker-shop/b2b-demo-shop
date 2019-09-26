@@ -6,7 +6,7 @@
         data: {
             value: _widget.productReviewStorageTransfer.averageRating | default(0),
             maxValue: _widget.maximumRating,
-            reviewCount: _widget.productReviewStorageTransfer.reviewCount | default(''),
+            reviewCount: _widget.productReviewStorageTransfer.reviewCount | default,
         },
         attributes: {
             readonly: true,

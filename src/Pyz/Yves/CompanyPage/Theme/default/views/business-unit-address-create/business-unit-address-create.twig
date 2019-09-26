@@ -3,7 +3,7 @@
 {% block companyContent %}
     {% set buIndexUrl = url('company/business-unit/update', { id: data.idCompanyBusinessUnit }) %}
 
-    {% include molecule('action-bar', 'ShopUi') with {
+    {% include molecule('action-bar') with {
         data: {
             title: 'company.account.create_address_information' | trans,
             actions: [
@@ -11,7 +11,7 @@
                     title: 'general.back.button' | trans,
                     url: buIndexUrl,
                 },
-            ]
+            ],
         },
     } only %}
 

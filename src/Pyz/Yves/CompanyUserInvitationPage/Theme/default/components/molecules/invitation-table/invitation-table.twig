@@ -48,11 +48,11 @@
                 </td>
             </tr>
         {% endfor %}
-        {% include molecule('action-single-click-enforcer') with {
-            attributes: {
-                'target-selector': '.' ~ config.jsName ~ '__invitation-sender',
-            },
-        } only %}
         </tbody>
     </table>
+    {% include molecule('action-single-click-enforcer') with {
+        attributes: {
+            'target-selector': '.' ~ config.jsName ~ '__invitation-sender',
+        },
+    } only %}
 {% endblock %}

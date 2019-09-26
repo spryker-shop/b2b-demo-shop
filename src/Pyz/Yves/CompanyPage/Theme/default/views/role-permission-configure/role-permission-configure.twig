@@ -6,10 +6,10 @@
             steps: [
                 {
                     label: 'company.account.page-title' | trans,
-                    url: url('company/overview')
+                    url: url('company/overview'),
                 }, {
                     label: 'company.account.company_role' | trans,
-                    url: url('company/company-role')
+                    url: url('company/company-role'),
                 }, {
                     label: 'company.account.company_role.permission.configure' | trans,
                 },
@@ -19,7 +19,7 @@
 {% endblock %}
 
 {% block companyContent %}
-    {% include molecule('action-bar', 'ShopUi') with {
+    {% include molecule('action-bar') with {
         data: {
             title: 'company.account.company_role.permission.configure' | trans,
         },

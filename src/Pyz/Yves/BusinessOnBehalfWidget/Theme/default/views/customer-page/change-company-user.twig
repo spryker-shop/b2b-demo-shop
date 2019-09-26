@@ -6,7 +6,7 @@
 
 {% block template %}
     {% if data.isVisible %}
-        {{parent()}}
+        {{ parent() }}
     {% endif %}
 {% endblock %}
 
@@ -17,9 +17,9 @@
                 url: path('company/user/select'),
                 icon: 'office',
                 label: 'business_on_behalf_widget.change_company_user' | trans,
-                name: 'change-company-user'
+                name: 'change-company-user',
             },
-            modifiers: data.isActivePage ? ['active'] : []
+            modifiers: data.isActivePage ? ['active'] : [],
         } only %}
     {% endif %}
 {% endblock %}

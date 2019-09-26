@@ -4,7 +4,7 @@
     {% set buIndexUrl = url('company/business-unit/update', { id: data.idCompanyBusinessUnit }) %}
     {% set buListUrl = url('company/business-unit') %}
 
-    {% include molecule('action-bar', 'ShopUi') with {
+    {% include molecule('action-bar') with {
         data: {
             title: 'company.account.edit_address_information' | trans,
         },
