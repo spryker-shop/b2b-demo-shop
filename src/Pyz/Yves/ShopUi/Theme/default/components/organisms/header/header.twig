@@ -145,8 +145,14 @@
             'trigger-selector': '.' ~ config.jsName ~ '__actions-search-trigger',
             'target-selector': '.' ~ config.jsName ~ '__search-form',
             'class-to-toggle': config.name ~ '__search-form--active',
-            'toggle-overlay-modifiers': 'no-search, no-search',
             'document-click': 'hide-class'
+        }
+    } only %}
+
+    {% include molecule('overlay-enabler') with {
+        attributes: {
+            'trigger-class-name': config.jsName ~ '__actions-search-trigger',
+            'toggle-overlay-modifiers': 'no-search, no-search',
         }
     } only %}
 {% endblock %}
