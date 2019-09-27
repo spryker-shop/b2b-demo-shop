@@ -30,8 +30,10 @@
         } only %}
     </div>
 
-    <div class="{{ config.name }}__item">
-        <h4 class="{{ config.name }}__title">{{ 'checkout.step.summary.requested_delivery_date' | trans }}</h4>
-        <span class="{{ config.name }}__content">{{ data.shipment.requestedDeliveryDate }}</span>
-    </div>
+    {% if data.shipment.requestedDeliveryDate %}
+        <div class="{{ config.name }}__item">
+            <h4 class="{{ config.name }}__title">{{ 'checkout.step.summary.requested_delivery_date' | trans }}</h4>
+            <span class="{{ config.name }}__content">{{ data.shipment.requestedDeliveryDate }}</span>
+        </div>
+    {% endif %}
 {% endblock %}

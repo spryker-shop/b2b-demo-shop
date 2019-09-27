@@ -19,7 +19,7 @@
                 data: {
                     listItem: item.vars.data,
                     quantity: item.vars.data.quantity,
-                    priceModifiers: ['medium'],
+                    priceModifiers: ['medium', 'margin-bottom-from-tablet'],
                 },
                 embed: {
                     jsName: config.jsName,
@@ -62,6 +62,8 @@
                 {% endblock %}
 
                 {% block productTotal %}
+                    <div class="{{ embed.configName }}__price">{{ parent() }}</div>
+
                     <div class="{{ embed.configName }}__dropdown">
                         {% if embed.hasShippingAddressesAndApplicable %}
                             {% if embed.isCompanyBusinessUnitShippingAddressApplicable %}

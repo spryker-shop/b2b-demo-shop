@@ -1,12 +1,12 @@
 @mixin checkout-page-summary-item($name: '.summary-item') {
     #{$name} {
-        padding: rem(17) rem(20) rem(20);
         background-color: $setting-color-gray-7;
-        margin-bottom: rem(15);
+        margin: 0 rem(-15) rem(15);
+        padding: rem(15);
 
         @include helper-breakpoint-media-min($lg) {
+            margin: 0 0 rem(30);
             padding: rem(27) rem(30) rem(30);
-            margin-bottom: rem(30);
         }
 
         &__title {
@@ -22,6 +22,36 @@
 
             @include helper-breakpoint-media-min($lg) {
                 font-size: rem(15);
+            }
+        }
+
+        &--medium {
+            @include helper-breakpoint-media-min($lg) {
+                padding: rem(20) rem(20) rem(17);
+            }
+        }
+
+        &--mobile-border-top {
+            position: relative;
+            margin-top: rem(25);
+
+            @include helper-breakpoint-media-min($lg) {
+                margin-top: 0;
+            }
+
+            &::before {
+                content: '';
+                position: absolute;
+                left: rem(-15);
+                right: rem(-15);
+                top: rem(-30);
+                height: rem(1);
+                display: block;
+                background-color: $setting-color-gray-6;
+
+                @include helper-breakpoint-media-min($lg) {
+                    display: none;
+                }
             }
         }
 

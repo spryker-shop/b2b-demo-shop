@@ -33,6 +33,7 @@
         },
         embed: {
             currentLanguage: data.currentLanguage,
+            products: data.products,
         },
     } only %}
         {% block fieldset %}
@@ -63,6 +64,9 @@
                                         quantity: item.quantity,
                                         priceModifiers: ['medium', 'margin-bottom-from-tablet'],
                                     },
+                                    embed: {
+                                        product: embed.products[item.sku],
+                                    },
                                 } only %}
                                     {% block image %}
                                         {% set imageUrl = data.listItem.images is not empty ? (data.listItem.images | first) : null %}
@@ -78,6 +82,17 @@
 
                                     {% block title %}
                                         <h6 class="{{ config.name }}__title spacing spacing--reset">{{ data.listItem.name }}</h6>
+                                    {% endblock %}
+
+                                    {% block info %}
+                                        {{ parent() }}
+
+                                        {% if embed.product.attributes.farbe is defined %}
+                                            <span class="{{ config.name }}__color-preview">
+                                                {{ 'cart.item.color' | trans }}:
+                                                <span class="{{ config.name }}__color-preview-decoration" style="background: {{ embed.product.colorCode  }}" title="{{ embed.product.attributes.farbe  }}"></span>
+                                            </span>
+                                        {% endif %}
                                     {% endblock %}
 
                                     {% block salesInfo %}{% endblock %}

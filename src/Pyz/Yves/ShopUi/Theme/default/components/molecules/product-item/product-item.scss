@@ -85,16 +85,18 @@ $product-image-width: rem(78);
                         text-align: left;
                     }
 
+                    #{$name}__inner {
+                        align-items: flex-start;
+                        height: auto;
+                    }
+                }
+
+                &#{$name}__col--checkout {
                     #{$name} & {
                         @include helper-breakpoint-media-min($lg) {
                             padding-left: 0;
                             padding-right: #{$setting-grid-space*2};
                         }
-                    }
-
-                    #{$name}__inner {
-                        align-items: flex-start;
-                        height: auto;
                     }
                 }
             }

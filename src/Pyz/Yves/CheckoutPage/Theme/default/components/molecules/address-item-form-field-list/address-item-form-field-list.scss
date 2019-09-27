@@ -90,6 +90,14 @@ $address-sub-form-width: rem(710);
             }
         }
 
+        &__price {
+            width: 100%;
+
+            @include helper-breakpoint-media-min($lg) {
+                text-align: right;
+            }
+        }
+
         @content;
     }
 }

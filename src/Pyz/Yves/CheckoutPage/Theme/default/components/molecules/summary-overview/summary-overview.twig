@@ -28,7 +28,7 @@
     </div>
 
     <ul class="{{ config.name }}__list">
-        <li class="{{ config.name }}__item">
+        <li class="{{ config.name }}__item is-hidden-sm-md">
             <span class="{{ config.name }}__text {{ config.name }}__text--bigger float-right">{{ data.prices.subTotal | money }}</span>
             <span class="{{ config.name }}__text {{ config.name }}__text--bigger">{{ 'checkout.step.summary.sub_total' | trans }}</span>
         </li>
@@ -56,14 +56,22 @@
             {{ widget('SalesOrderThresholdWidgetPlugin', data.expenses) }}
         {% endif %}
 
-        <li class="{{ config.name }}__item">
+        <li class="{{ config.name }}__item is-hidden-sm-md">
             <span class="float-right">{{ data.prices.tax | money }}</span>
             <span class="{{ config.name }}__text {{ config.name }}__text--bigger">{{ 'checkout.step.summary.tax' | trans }}</span>
         </li>
 
         <li class="{{ config.name }}__item {{ config.name }}__item--total">
-            <strong class="float-right {{ config.name }}__title {{ config.name }}__title--total">{{ data.prices.grandTotal | money }}</strong>
-            <h6 class="{{ config.name }}__title {{ config.name }}__title--total">{{ 'checkout.step.summary.grand_total' | trans }}</h6>
+            <div class="is-hidden-lg-xxl">
+                <strong class="{{ config.name }}__title {{ config.name }}__title--total float-right">{{ data.prices.subTotal | money }}</strong>
+                <h6 class="{{ config.name }}__title {{ config.name }}__title--total">{{ 'checkout.step.summary.sub_total' | trans }}</h6>
+            </div>
+            <div class="is-hidden-lg-xxl">
+                <strong class="{{ config.name }}__title {{ config.name }}__title--total float-right">{{ data.prices.tax | money }}</strong>
+                <h6 class="{{ config.name }}__title {{ config.name }}__title--total">{{ 'checkout.step.summary.tax' | trans }}</h6>
+            </div>
+            <strong class="{{ config.name }}__title {{ config.name }}__title--total {{ config.name }}__title--color-gray float-right">{{ data.prices.grandTotal | money }}</strong>
+            <h6 class="{{ config.name }}__title {{ config.name }}__title--total {{ config.name }}__title--color-gray">{{ 'checkout.step.summary.grand_total' | trans }}</h6>
         </li>
     </ul>
 {% endblock %}

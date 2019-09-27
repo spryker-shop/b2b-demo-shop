@@ -2,6 +2,7 @@
 
 {% define data = {
     stepNumder: 4,
+    products: _view.products,
 } %}
 
 {% block content %}
@@ -23,7 +24,10 @@
                             list: data.cartItems,
                             listItem: item,
                             quantity: item.quantity,
-                            priceModifiers: ['medium'],
+                            priceModifiers: ['medium', 'margin-bottom-from-tablet'],
+                        },
+                        embed: {
+                            product: data.products[item.sku],
                         },
                     } only %}
                         {% block image %}
@@ -40,6 +44,17 @@
 
                         {% block title %}
                             <h6 class="{{ config.name }}__title spacing spacing--reset">{{ data.listItem.name }}</h6>
+                        {% endblock %}
+
+                        {% block info %}
+                            {{ parent() }}
+
+                            {% if embed.product.attributes.farbe is defined %}
+                                <span class="{{ config.name }}__color-preview">
+                                    {{ 'cart.item.color' | trans }}:
+                                    <span class="{{ config.name }}__color-preview-decoration" style="background: {{ embed.product.colorCode  }}" title="{{ embed.product.attributes.farbe  }}"></span>
+                                </span>
+                            {% endif %}
                         {% endblock %}
 
                         {% block subQuantity %}
@@ -102,6 +117,7 @@
     <div class="grid grid--gap">
         <div class="col col--sm-12 col--lg-6">
             {% include molecule('summary-item', 'CheckoutPage') with {
+                modifiers: ['mobile-border-top'],
                 data: {
                     title: 'checkout.step.summary.payment' | trans,
                     method: data.transfer.payment.paymentMethod,
@@ -122,7 +138,7 @@
     <div class="grid">
         <div class="col col--sm-12">
             {% if data.cart.idQuote is not empty %}
-                <div class="summary-item">
+                <div class="summary-item summary-item--medium">
                     {% widget 'CommentThreadWidget' args [
                         data.cart.idQuote,
                         'quote',
@@ -134,7 +150,7 @@
             {% endif %}
 
             {% if data.transfer.cartNote %}
-                <div class="summary-item">
+                <div class="summary-item summary-item--medium">
                     {% include molecule('note-list', 'CartNoteWidget') ignore missing with {
                         data: {
                             label: 'cart_note.checkout_page.quote_note',
