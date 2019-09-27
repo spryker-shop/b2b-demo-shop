@@ -1,0 +1,28 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'delivery-information',
+} %}
+
+{% define data = {
+    method: required,
+} %}
+
+{% block body %}
+    <h4 class="{{ config.name }}__title grid grid--justify grid--middle">
+        <span class="col">{{ data.method.carrierName }}</span>
+
+        {% include atom('icon') with {
+            class: 'col',
+            modifiers: [data.method.carrierName | lower ~ '-logo'],
+            data: {
+                name: data.method.carrierName | lower ~ '-logo',
+            },
+        } only %}
+    </h4>
+
+    <div class="{{ config.name }}__content grid grid--justify">
+        <div class="col">{{ data.method.name }}</div>
+        <div class="col">{{ data.method.storeCurrencyPrice | money(true, data.method.currencyIsoCode) }}</div>
+    </div>
+{% endblock %}

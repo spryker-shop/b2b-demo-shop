@@ -1,16 +1,5 @@
-@mixin checkout-page-summary-sidebar($name: '.summary-sidebar') {
+@mixin customer-page-delivery-information($name: '.delivery-information') {
     #{$name} {
-        &__item {
-            background-color: $setting-color-gray-8;
-            padding: rem(20) rem(15);
-            margin: 0 rem(-15) rem(20);
-
-            @include helper-breakpoint-media-min($lg) {
-                margin: 0 0 rem(20);
-                padding: rem(20);
-            }
-        }
-
         &__title {
             margin-bottom: rem(10);
             font-weight: fw(medium);
@@ -31,4 +20,4 @@
     }
 }
 
-@include checkout-page-summary-sidebar();
+@include customer-page-delivery-information();

@@ -38,11 +38,11 @@
             <span class="{{ config.name }}__text {{ config.name }}__text--bigger">{{ 'checkout.step.summary.shipment_costs_total' | trans }}</span>
 
             {% for shipmentGroup in data.shipmentGroups %}
-                {% set shipmentCosts = shipmentGroup.shipment.method %}
+                {% set shippingMethod = shipmentGroup.shipment.method %}
 
                 <div class="{{ config.name }}__text-wrap grid grid--justify grid--middle">
-                    <span class="{{ config.name }}__text col col--sm-8 col--lg-10 text-secondary">{{ shipmentCosts.carrierName }} - {{ shipmentCosts.name }}</span>
-                    <span class="{{ config.name }}__text {{ config.name }}__text--bigger col col--expand text-secondary text-right">{{ shipmentCosts.storeCurrencyPrice | money }}</span>
+                    <span class="{{ config.name }}__text col col--sm-8 col--lg-10 text-secondary">{{ shippingMethod.carrierName }} - {{ shippingMethod.name }}</span>
+                    <span class="{{ config.name }}__text {{ config.name }}__text--bigger col col--expand text-secondary text-right">{{ shippingMethod.storeCurrencyPrice | money }}</span>
                 </div>
             {% endfor %}
         </li>

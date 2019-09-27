@@ -1,0 +1,32 @@
+@mixin checkout-page-summary-item($name: '.summary-item') {
+    #{$name} {
+        padding: rem(17) rem(20) rem(20);
+        background-color: $setting-color-gray-7;
+        margin-bottom: rem(15);
+
+        @include helper-breakpoint-media-min($lg) {
+            padding: rem(27) rem(30) rem(30);
+            margin-bottom: rem(30);
+        }
+
+        &__title {
+            margin-bottom: rem(10);
+            font-weight: fw(medium);
+        }
+
+        &__method {
+            font-weight: fw(medium);
+            font-size: rem(14);
+            line-height: rem(20);
+            padding-right: rem(10);
+
+            @include helper-breakpoint-media-min($lg) {
+                font-size: rem(15);
+            }
+        }
+
+        @content;
+    }
+}
+
+@include checkout-page-summary-item();

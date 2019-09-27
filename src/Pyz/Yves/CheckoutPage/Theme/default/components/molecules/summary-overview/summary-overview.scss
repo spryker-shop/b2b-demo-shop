@@ -1,94 +1,96 @@
-.summary-overview {
-    margin: rem(20) 0;
-
-    @include helper-breakpoint-media-min($lg) {
-        margin: rem(36) 0 rem(30);
-    }
-
-    &__top {
-        margin-bottom: rem(10);
-        font-size: rem(16);
-        font-weight: fw(medium);
-        color: $setting-color-gray-5;
+@mixin checkout-page-summary-overview($name: '.summary-overview') {
+    #{$name} {
+        margin: rem(20) 0;
 
         @include helper-breakpoint-media-min($lg) {
-            margin-bottom: rem(15);
+            margin: rem(36) 0 rem(30);
         }
-    }
 
-    &__title {
-        font-weight: fw(medium);
-        color: $setting-color-gray-5;
-        font-size: rem(16);
-
-        &--total {
+        &__top {
+            margin-bottom: rem(10);
             font-size: rem(16);
-            font-weight: fw(bold);
-            line-height: 1.2;
-
-            @include helper-breakpoint-media-min($lg) {
-                font-size: rem(20);
-            }
-        }
-    }
-
-    &__list {
-        margin: 0 rem(-15);
-        background-color: $setting-color-gray-7;
-        border-radius: $setting-border-radius;
-
-        @include helper-breakpoint-media-min($lg) {
-            margin: 0;
-        }
-    }
-
-    &__item {
-        padding: rem(18) rem(15) rem(17);
-        font-weight: fw(medium);
-        line-height: normal;
-        color: $setting-color-gray-5;
-
-        @include helper-breakpoint-media-min($lg) {
-            padding: rem(18) rem(30) rem(14);
-        }
-
-        &:not(:first-child) {
-            border-top: rem(1) solid $setting-color-gray-1;
-        }
-
-        &--total {
-            padding: rem(18) rem(15) rem(28);
-
-            @include helper-breakpoint-media-min($lg) {
-                padding: rem(28) rem(30);
-            }
-        }
-    }
-
-    &__text-wrap {
-        margin-top: rem(11);
-    }
-
-    &__text {
-        font-size: rem(12);
-        line-height: 1;
-        font-weight: fw(regular);
-
-        @include helper-breakpoint-media-min($lg) {
-            font-size: rem(15);
-        }
-
-        &--bigger {
-            font-size: rem(14);
             font-weight: fw(medium);
+            color: $setting-color-gray-5;
 
             @include helper-breakpoint-media-min($lg) {
-                font-size: rem(16);
+                margin-bottom: rem(15);
             }
         }
-    }
 
-    &__inner-row {
-        margin-top: rem(4);
+        &__title {
+            font-weight: fw(medium);
+            color: $setting-color-gray-5;
+            font-size: rem(16);
+
+            &--total {
+                font-size: rem(16);
+                font-weight: fw(bold);
+                line-height: 1.2;
+
+                @include helper-breakpoint-media-min($lg) {
+                    font-size: rem(20);
+                }
+            }
+        }
+
+        &__list {
+            margin: 0 rem(-15);
+            background-color: $setting-color-gray-7;
+            border-radius: $setting-border-radius;
+
+            @include helper-breakpoint-media-min($lg) {
+                margin: 0;
+            }
+        }
+
+        &__item {
+            padding: rem(18) rem(15) rem(17);
+            font-weight: fw(medium);
+            line-height: normal;
+            color: $setting-color-gray-5;
+
+            @include helper-breakpoint-media-min($lg) {
+                padding: rem(18) rem(30) rem(14);
+            }
+
+            &:not(:first-child) {
+                border-top: rem(1) solid $setting-color-gray-1;
+            }
+
+            &--total {
+                padding: rem(18) rem(15) rem(28);
+
+                @include helper-breakpoint-media-min($lg) {
+                    padding: rem(28) rem(30);
+                }
+            }
+        }
+
+        &__text-wrap {
+            margin-top: rem(11);
+        }
+
+        &__text {
+            font-size: rem(12);
+            line-height: 1;
+            font-weight: fw(regular);
+
+            @include helper-breakpoint-media-min($lg) {
+                font-size: rem(15);
+            }
+
+            &--bigger {
+                font-size: rem(14);
+                font-weight: fw(medium);
+
+                @include helper-breakpoint-media-min($lg) {
+                    font-size: rem(16);
+                }
+            }
+        }
+
+        @content;
     }
 }
+
+@include checkout-page-summary-overview();

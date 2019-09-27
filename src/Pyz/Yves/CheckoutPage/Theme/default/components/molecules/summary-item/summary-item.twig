@@ -1,0 +1,64 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'summary-item',
+} %}
+
+{% define data = {
+    title: required,
+    method: null,
+    address: null,
+    iconName: null,
+} %}
+
+{% block body %}
+    <h4 class="{{ config.name }}__title">{{ data.title }}</h4>
+
+    {% if data.method %}
+        <span class="{{ config.name }}__method">
+            {{ 'checkout.step.summary.with_method' | trans }} {{ data.method | capitalize }}
+        </span>
+        {% if data.iconName %}
+            {% include atom('icon') with {
+                modifiers: [data.iconName ~ '-logo-small'],
+                data: {
+                    name: data.iconName ~ '-logo',
+                },
+            } only %}
+        {% endif %}
+    {% endif %}
+
+    {% if data.address %}
+        {% include molecule('display-address') with {
+            data: {
+                address: data.address,
+            },
+        } only %}
+    {% endif %}
+
+
+
+
+    {#<div class="grid grid--justify">#}
+        {#<h6 class="col {{ config.name }}__title">{{ data.title }}</h6>#}
+        {#<div class="col text-right">#}
+            {#<div class="{{ config.name }}__method">{{ 'checkout.step.summary.with_method' | trans }} {{ data.method | capitalize }}</div>#}
+            {#{% if data.iconName %}#}
+                {#{% include atom('icon') with {#}
+                    {#modifiers: [data.iconModifiers],#}
+                    {#data: {#}
+                        {#name: data.iconName#}
+                    {#}#}
+                {#} only %}#}
+            {#{% endif %}#}
+        {#</div>#}
+    {#</div>#}
+
+    {#{% include molecule('display-address') with {#}
+        {#modifiers: ['summary'],#}
+        {#class: config.name ~ '__list',#}
+        {#data: {#}
+            {#address: data.address#}
+        {#}#}
+    {#} only %}#}
+{% endblock %}
