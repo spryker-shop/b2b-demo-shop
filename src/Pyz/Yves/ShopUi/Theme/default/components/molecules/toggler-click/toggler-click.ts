@@ -3,6 +3,7 @@ import Component from 'ShopUi/models/component';
 export default class TogglerClick extends Component {
     readonly triggers: HTMLElement[];
     readonly targets: HTMLElement[];
+    protected disablers: HTMLElement[] = [];
     isShowClasses: string = 'show-class';
     isHideClasses: string = 'hide-class';
     isContentOpened: boolean = false;
@@ -11,10 +12,18 @@ export default class TogglerClick extends Component {
         super();
         this.triggers = <HTMLElement[]>Array.from(document.querySelectorAll(this.triggerSelector));
         this.targets = <HTMLElement[]>Array.from(document.querySelectorAll(this.targetSelector));
+
+        if (this.disablerClassName) {
+            const disablerClassNamesList = this.disablerClassName.split(',');
+
+            disablerClassNamesList.forEach(disablerClassName => {
+                this.disablers = <HTMLElement[]>
+                    [...this.disablers, ...Array.from(document.getElementsByClassName(disablerClassName))];
+            });
+        }
     }
 
     protected readyCallback(): void {
-        this.checkContentIsOpened();
         this.mapEvents();
     }
 
@@ -23,7 +32,9 @@ export default class TogglerClick extends Component {
             trigger.addEventListener('click', (event: Event) => this.onTriggerClick(event));
         });
 
-        document.addEventListener('click', (event: Event) => this.onDocumentClick(event));
+        this.disablers.forEach((disabler: HTMLElement) => {
+            disabler.addEventListener('click', (event: Event) => this.removeClassToToggle());
+        });
     }
 
     protected onTriggerClick(event: Event): void {
@@ -32,54 +43,10 @@ export default class TogglerClick extends Component {
         this.toggle(event);
     }
 
-    protected checkContentIsOpened(): void {
-        if (this.onDocumentClickAction.length !== 0) {
-            this.targets.forEach((target: HTMLElement) => {
-                const isTargetActive = target.classList.contains(this.classToToggle);
-
-                if (isTargetActive) {
-                    this.isContentOpened = true;
-                }
-            });
-        }
-    }
-
-    onDocumentClick(event: Event): void {
-        if (this.onDocumentClickAction.length !== 0) {
-            if (this.isContentOpened) {
-                const eventTrigger = <HTMLElement>event.target;
-                const isClosestTargetExist = !!eventTrigger.closest(this.targetSelector);
-                const isClosestTriggerExist = !!eventTrigger.closest(this.triggerSelector);
-
-                if (!isClosestTargetExist && !isClosestTriggerExist) {
-                    if (this.onDocumentClickAction === this.isHideClasses) {
-                        this.targets.forEach((target: HTMLElement) => {
-                            target.classList.remove(this.classToToggle);
-                        });
-
-                        if (this.triggerClassToToggle.length !== 0) {
-                            this.triggers.forEach((trigger: HTMLElement) => {
-                                trigger.classList.remove(this.classToToggle);
-                            });
-                        }
-                    }
-
-                    if (this.onDocumentClickAction === this.isShowClasses) {
-                        this.targets.forEach((target: HTMLElement) => {
-                            target.classList.add(this.classToToggle);
-                        });
-
-                        if (this.triggerClassToToggle.length !== 0) {
-                            this.triggers.forEach((trigger: HTMLElement) => {
-                                trigger.classList.add(this.classToToggle);
-                            });
-                        }
-                    }
-
-                    this.isContentOpened = false;
-                }
-            }
-        }
+    protected removeClassToToggle(): void {
+        this.targets.forEach((target: HTMLElement) => {
+            target.classList.remove(this.classToToggle);
+        });
     }
 
     toggle(event: Event): void {
@@ -88,8 +55,6 @@ export default class TogglerClick extends Component {
         this.targets.forEach((target: HTMLElement) => {
             const addClass = !target.classList.contains(this.classToToggle);
             target.classList.toggle(this.classToToggle, addClass);
-
-            this.isContentOpened = !this.isContentOpened;
 
             if (this.isFixBodyOnClick) {
                 this.fixBody(addClass);
@@ -137,6 +102,10 @@ export default class TogglerClick extends Component {
 
     get triggerClassToToggle(): string {
         return this.getAttribute('trigger-class-to-toggle');
+    }
+
+    protected get disablerClassName(): string {
+        return this.getAttribute('disabler-class-name');
     }
 
     get isFixBodyOnClick(): boolean {

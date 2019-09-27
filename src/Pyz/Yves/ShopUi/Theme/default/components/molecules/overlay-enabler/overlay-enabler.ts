@@ -23,12 +23,16 @@ export default class OverlayEnabler extends OverlayBlock {
         });
 
         this.overlay.addEventListener('click', () => {
+            this.overlayIsShown = false;
+
             this.removeOverlay();
         });
     }
 
     protected toggleOverlay(): void {
-        if (!this.overlayIsShown) {
+        this.overlayIsShown = !this.overlayIsShown;
+
+        if (this.overlayIsShown) {
             this.addOverlay();
 
             return;
@@ -39,14 +43,12 @@ export default class OverlayEnabler extends OverlayBlock {
 
     protected addOverlay(): void {
         if (this.modifiers.length) {
-            this.overlayIsShown = true;
             this.overlay.showOverlay(this.modifiers[0], this.modifiers[1]);
         }
     }
 
     protected removeOverlay(): void {
         if (this.modifiers.length) {
-            this.overlayIsShown = false;
             this.overlay.hideOverlay(this.modifiers[0], this.modifiers[1]);
         }
     }
