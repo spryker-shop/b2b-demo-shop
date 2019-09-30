@@ -19242,16 +19242,16 @@
         },
         {
             "name": "spryker/data-import",
-            "version": "1.6.0",
+            "version": "1.7.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/data-import.git",
-                "reference": "670a63ffac5501d03bad929fb1b046198020696d"
+                "reference": "a9b3ed5c8ad3808ed1e3e28ab0571e8b832b4af2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/data-import/zipball/670a63ffac5501d03bad929fb1b046198020696d",
-                "reference": "670a63ffac5501d03bad929fb1b046198020696d",
+                "url": "https://api.github.com/repos/spryker/data-import/zipball/a9b3ed5c8ad3808ed1e3e28ab0571e8b832b4af2",
+                "reference": "a9b3ed5c8ad3808ed1e3e28ab0571e8b832b4af2",
                 "shasum": ""
             },
             "require": {
@@ -19259,7 +19259,7 @@
                 "spryker/data-import-extension": "^1.1.0",
                 "spryker/error-handler": "^2.1.0",
                 "spryker/event": "^2.3.0",
-                "spryker/kernel": "^3.0.0",
+                "spryker/kernel": "^3.30.0",
                 "spryker/locale": "^2.0.0 || ^3.0.0",
                 "spryker/propel-orm": "^1.0.0",
                 "spryker/queue": "^1.5.0",
@@ -19293,7 +19293,7 @@
                 "proprietary"
             ],
             "description": "DataImport module",
-            "time": "2019-05-21T09:42:13+00:00"
+            "time": "2019-08-27T09:48:53+00:00"
         },
         {
             "name": "spryker/data-import-extension",
@@ -34860,78 +34860,57 @@
         },
         {
             "name": "symfony/console",
-            "version": "v4.3.4",
+            "version": "3.10.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/symfony/console.git",
-                "reference": "de63799239b3881b8a08f8481b22348f77ed7b36"
+                "url": "https://github.com/spryker/storage.git",
+                "reference": "ecd8c32fbb6f83c66462dec46af7ce31a4d42bd6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/de63799239b3881b8a08f8481b22348f77ed7b36",
-                "reference": "de63799239b3881b8a08f8481b22348f77ed7b36",
+                "url": "https://api.github.com/repos/spryker/storage/zipball/ecd8c32fbb6f83c66462dec46af7ce31a4d42bd6",
+                "reference": "ecd8c32fbb6f83c66462dec46af7ce31a4d42bd6",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.1.3",
-                "symfony/polyfill-mbstring": "~1.0",
-                "symfony/polyfill-php73": "^1.8",
-                "symfony/service-contracts": "^1.1"
-            },
-            "conflict": {
-                "symfony/dependency-injection": "<3.4",
-                "symfony/event-dispatcher": "<4.3",
-                "symfony/process": "<3.3"
-            },
-            "provide": {
-                "psr/log-implementation": "1.0"
+                "php": ">=7.1",
+                "spryker/config": "^3.0.0",
+                "spryker/gui": "^3.0.0",
+                "spryker/kernel": "^3.33.0",
+                "spryker/locale": "^3.0.0",
+                "spryker/redis": "^2.2.0",
+                "spryker/silex": "^2.0.0",
+                "spryker/storage-extension": "^1.1.0",
+                "spryker/store": "^1.4.0",
+                "spryker/symfony": "^3.0.0",
+                "spryker/util-sanitize": "^2.0.0",
+                "spryker/util-text": "^1.1.0"
             },
             "require-dev": {
-                "psr/log": "~1.0",
-                "symfony/config": "~3.4|~4.0",
-                "symfony/dependency-injection": "~3.4|~4.0",
-                "symfony/event-dispatcher": "^4.3",
-                "symfony/lock": "~3.4|~4.0",
-                "symfony/process": "~3.4|~4.0",
-                "symfony/var-dumper": "^4.3"
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
             },
             "suggest": {
-                "psr/log": "For using the console logger",
-                "symfony/event-dispatcher": "",
-                "symfony/lock": "",
-                "symfony/process": ""
+                "spryker/collector-storage-connector": "If you want to use dropStorageTimestamps functionality from Collector module"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.3-dev"
+                    "dev-master": "3.0.x-dev"
                 }
             },
             "autoload": {
                 "psr-4": {
-                    "Symfony\\Component\\Console\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
+                    "Spryker\\": "src/Spryker/",
+                    "SprykerTest\\Client\\Storage\\Helper\\": "tests/SprykerTest/Client/Storage/_support/Helper/"
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "MIT"
+                "proprietary"
             ],
-            "authors": [
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Symfony Console Component",
-            "homepage": "https://symfony.com",
-            "time": "2019-08-26T08:26:39+00:00"
+            "description": "Storage module",
+            "time": "2019-08-28T09:07:33+00:00"
         },
         {
             "name": "symfony/contracts",
@@ -36042,64 +36021,6 @@
                 }
             ],
             "description": "Symfony polyfill backporting some PHP 7.2+ features to lower PHP versions",
-            "homepage": "https://symfony.com",
-            "keywords": [
-                "compatibility",
-                "polyfill",
-                "portable",
-                "shim"
-            ],
-            "time": "2019-08-06T08:03:45+00:00"
-        },
-        {
-            "name": "symfony/polyfill-php73",
-            "version": "v1.12.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/polyfill-php73.git",
-                "reference": "2ceb49eaccb9352bff54d22570276bb75ba4a188"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php73/zipball/2ceb49eaccb9352bff54d22570276bb75ba4a188",
-                "reference": "2ceb49eaccb9352bff54d22570276bb75ba4a188",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.3"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.12-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\Polyfill\\Php73\\": ""
-                },
-                "files": [
-                    "bootstrap.php"
-                ],
-                "classmap": [
-                    "Resources/stubs"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Nicolas Grekas",
-                    "email": "p@tchwork.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Symfony polyfill backporting some PHP 7.3+ features to lower PHP versions",
             "homepage": "https://symfony.com",
             "keywords": [
                 "compatibility",
@@ -40096,6 +40017,64 @@
             "description": "Symfony DomCrawler Component",
             "homepage": "https://symfony.com",
             "time": "2019-06-13T11:03:18+00:00"
+        },
+        {
+            "name": "symfony/polyfill-php73",
+            "version": "v1.12.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-php73.git",
+                "reference": "2ceb49eaccb9352bff54d22570276bb75ba4a188"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/polyfill-php73/zipball/2ceb49eaccb9352bff54d22570276bb75ba4a188",
+                "reference": "2ceb49eaccb9352bff54d22570276bb75ba4a188",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.12-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Polyfill\\Php73\\": ""
+                },
+                "files": [
+                    "bootstrap.php"
+                ],
+                "classmap": [
+                    "Resources/stubs"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony polyfill backporting some PHP 7.3+ features to lower PHP versions",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "compatibility",
+                "polyfill",
+                "portable",
+                "shim"
+            ],
+            "time": "2019-08-06T08:03:45+00:00"
         },
         {
             "name": "symfony/var-dumper",
