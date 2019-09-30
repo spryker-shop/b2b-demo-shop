@@ -37,16 +37,14 @@ class CartController extends SprykerCartController
     }
 
     /**
-     * @param string $sku
-     * @param int $quantity
-     * @param array $optionValueIds
      * @param \Symfony\Component\HttpFoundation\Request $request
+     * @param string $sku
      *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
-    public function addAction($sku, $quantity, array $optionValueIds, Request $request)
+    public function addAction(Request $request, $sku): RedirectResponse
     {
-        parent::addAction($sku, $quantity, $optionValueIds, $request);
+        parent::addAction($request, $sku);
 
         return $this->redirectToReferer($request);
     }
