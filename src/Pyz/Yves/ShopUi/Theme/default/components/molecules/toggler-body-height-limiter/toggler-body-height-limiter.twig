@@ -1,0 +1,11 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'toggler-body-height-limiter',
+    tag: 'toggler-body-height-limiter',
+} %}
+
+{% define attributes = {
+    'trigger-class-name': required,
+    'class-to-fix-body': 'is-locked',
+} %}

@@ -4,9 +4,6 @@ export default class TogglerClick extends Component {
     readonly triggers: HTMLElement[];
     readonly targets: HTMLElement[];
     protected disablers: HTMLElement[] = [];
-    isShowClasses: string = 'show-class';
-    isHideClasses: string = 'hide-class';
-    isContentOpened: boolean = false;
 
     constructor() {
         super();
@@ -55,29 +52,7 @@ export default class TogglerClick extends Component {
         this.targets.forEach((target: HTMLElement) => {
             const addClass = !target.classList.contains(this.classToToggle);
             target.classList.toggle(this.classToToggle, addClass);
-
-            if (this.isFixBodyOnClick) {
-                this.fixBody(addClass);
-            }
         });
-    }
-
-    protected fixBody(isClassAddedFlag: boolean): void {
-        const body = document.querySelector('body');
-
-        if (!isClassAddedFlag) {
-            const offset = window.pageYOffset;
-
-            body.style.cssText = 'top:' + `${-offset}px`;
-            body.classList.add(this.classToFixBody);
-            body.dataset.scrollTo = offset.toString();
-        } else {
-            const scrollToVal = +body.dataset.scrollTo;
-
-            body.style.cssText = 'top: 0;';
-            body.classList.remove(this.classToFixBody);
-            window.scrollTo(0, scrollToVal);
-        }
     }
 
     protected onTriggerToggleClass(event: Event): void {
@@ -106,21 +81,5 @@ export default class TogglerClick extends Component {
 
     protected get disablerClassName(): string {
         return this.getAttribute('disabler-class-name');
-    }
-
-    get isFixBodyOnClick(): boolean {
-        return this.checkedIsShouldFixBody === 'true';
-    }
-
-    get checkedIsShouldFixBody(): string {
-        return this.getAttribute('fix-body');
-    }
-
-    get onDocumentClickAction(): string {
-        return this.getAttribute('document-click');
-    }
-
-    get classToFixBody(): string {
-        return this.getAttribute('class-to-fix-body');
     }
 }
