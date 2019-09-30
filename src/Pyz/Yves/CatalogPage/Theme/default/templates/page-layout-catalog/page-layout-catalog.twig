@@ -89,8 +89,13 @@
                             'trigger-selector': '.js-catalog-filters-trigger',
                             'target-selector': '.js-filter-section',
                             'class-to-toggle': 'is-hidden-sm-md',
-                            'fix-body': 'true',
-                            'class-to-fix-body': 'is-locked-mobile'
+                        }
+                    } only %}
+
+                    {% include molecule('toggler-body-height-limiter') with {
+                        attributes: {
+                            'trigger-class-name': 'js-catalog-filters-trigger',
+                            'class-to-fix-body': 'is-locked-mobile',
                         }
                     } only %}
 
