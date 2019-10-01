@@ -22,9 +22,6 @@ class DiscountAmountWriterStep implements DataImportStepInterface
     public const KEY_VALUE_NET = 'value_net';
     public const KEY_VALUE_GROSS = 'value_gross';
 
-    /**
-     * @var \Orm\Zed\Currency\Persistence\SpyCurrency[]
-     */
     protected static $currencyCache = [];
 
     /**
