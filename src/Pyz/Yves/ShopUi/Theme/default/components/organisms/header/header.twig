@@ -142,8 +142,8 @@
 
     {% include molecule('toggler-click') with {
         attributes: {
-            'trigger-selector': '.' ~ config.jsName ~ '__actions-search-trigger',
-            'target-selector': '.' ~ config.jsName ~ '__search-form',
+            'trigger-class-name': config.jsName ~ '__actions-search-trigger',
+            'target-class-name': config.jsName ~ '__search-form',
             'class-to-toggle': config.name ~ '__search-form--active',
             'disabler-class-name': 'js-overlay-block',
         }

@@ -1,14 +1,6 @@
-{% extends model('component') %}
-
-{% define config = {
-    name: 'toggler-click',
-    tag: 'toggler-click'
-} %}
+{% extends molecule('toggler-click', '@SprykerShop:ShopUi') %}
 
 {% define attributes = {
     'trigger-class-to-toggle': '',
-    'trigger-selector': required,
-    'target-selector': required,
-    'class-to-toggle': required,
     'disablerClassNames': '',
 } %}
