@@ -88,8 +88,8 @@
 
     {% include molecule('toggler-click') with {
         attributes: {
-            'trigger-selector': '.' ~ data.jsTriggerSelector,
-            'target-selector':  '.' ~ data.jsTargetSelector,
+            'trigger-class-name': data.jsTriggerSelector,
+            'target-class-name': data.jsTargetSelector,
             'class-to-toggle': 'is-hidden',
         }
     } only %}

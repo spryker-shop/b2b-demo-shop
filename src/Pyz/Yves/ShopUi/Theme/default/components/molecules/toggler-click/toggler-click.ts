@@ -1,81 +1,84 @@
-import Component from 'ShopUi/models/component';
+import TogglerClickCore from 'ShopUi/components/molecules/toggler-click/toggler-click';
 
-export default class TogglerClick extends Component {
-    readonly triggers: HTMLElement[];
-    readonly targets: HTMLElement[];
-    protected disablers: HTMLElement[] = [];
+export default class TogglerClick extends TogglerClickCore {
+    protected disablers: HTMLElement[];
 
-    constructor() {
-        super();
-        this.triggers = <HTMLElement[]>Array.from(document.querySelectorAll(this.triggerSelector));
-        this.targets = <HTMLElement[]>Array.from(document.querySelectorAll(this.targetSelector));
+    protected init(): void {
+        const triggerClassNames: string[] | undefined = this.triggerClassName ?
+            this.triggerClassName.split('.') : undefined;
+        const targetClassNames: string[] | undefined = this.targetClassName ?
+            this.targetClassName.split('.') : undefined;
+
+        if (triggerClassNames) {
+            this.saveCollectionToProperty('triggersList', triggerClassNames);
+        }
+
+        if (targetClassNames) {
+            this.saveCollectionToProperty('targetsList', targetClassNames);
+        }
 
         if (this.disablerClassName) {
             const disablerClassNamesList = this.disablerClassName.split(',');
 
-            disablerClassNamesList.forEach(disablerClassName => {
-                this.disablers = <HTMLElement[]>
-                    [...this.disablers, ...Array.from(document.getElementsByClassName(disablerClassName))];
-            });
+            this.saveCollectionToProperty('disablers', disablerClassNamesList);
         }
-    }
 
-    protected readyCallback(): void {
         this.mapEvents();
     }
 
     protected mapEvents(): void {
-        this.triggers.forEach((trigger: HTMLElement) => {
-            trigger.addEventListener('click', (event: Event) => this.onTriggerClick(event));
-        });
+        super.mapEvents();
 
-        this.disablers.forEach((disabler: HTMLElement) => {
-            disabler.addEventListener('click', (event: Event) => this.removeClassToToggle());
-        });
+        if (this.disablers) {
+            this.disablers.forEach((disabler: HTMLElement) => {
+                disabler.addEventListener('click', (event: Event) => this.removeClassToToggle());
+            });
+        }
     }
 
-    protected onTriggerClick(event: Event): void {
-        event.preventDefault();
+    protected saveCollectionToProperty(propertyName: string, classes: string[]): void {
+        if (!classes.length) {
+            return;
+        }
 
-        this.toggle(event);
+        let property: HTMLElement[];
+
+        classes.forEach((className, index) => {
+            if (!index) {
+                property = <HTMLElement[]>Array.from(document.getElementsByClassName(className));
+
+                return;
+            }
+
+            property = [...property, Object.assign(document.getElementsByClassName(className))];
+        });
+
+        this[propertyName] = <HTMLElement[]>property;
     }
 
     protected removeClassToToggle(): void {
-        this.targets.forEach((target: HTMLElement) => {
+        this.targetsList.forEach((target: HTMLElement) => {
             target.classList.remove(this.classToToggle);
         });
     }
 
-    toggle(event: Event): void {
+    toggle(): void {
         this.onTriggerToggleClass(event);
 
-        this.targets.forEach((target: HTMLElement) => {
-            const addClass = !target.classList.contains(this.classToToggle);
-            target.classList.toggle(this.classToToggle, addClass);
-        });
+        super.toggle();
     }
 
     protected onTriggerToggleClass(event: Event): void {
-        if (this.triggerClassToToggle.length !== 0) {
-            const triggerTarget = <HTMLElement>event.currentTarget;
-
-            triggerTarget.classList.toggle(this.triggerClassToToggle);
+        if (!this.triggerClassToToggle.length) {
+            return;
         }
+
+        const triggerTarget = <HTMLElement>event.currentTarget;
+
+        triggerTarget.classList.toggle(this.triggerClassToToggle);
     }
 
-    get triggerSelector(): string {
-        return this.getAttribute('trigger-selector');
-    }
-
-    get targetSelector(): string {
-        return this.getAttribute('target-selector');
-    }
-
-    get classToToggle(): string {
-        return this.getAttribute('class-to-toggle');
-    }
-
-    get triggerClassToToggle(): string {
+    protected get triggerClassToToggle(): string {
         return this.getAttribute('trigger-class-to-toggle');
     }
 
