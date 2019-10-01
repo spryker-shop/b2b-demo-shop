@@ -31,7 +31,7 @@
                         },
                     } only %}
                         {% block image %}
-                            {% set imageUrl = data.listItem.images is not empty ? (data.listItem.images | first) : null %}
+                            {% set imageUrl = data.listItem.images is not empty ? data.listItem.images[0].externalUrlLarge : null %}
 
                             {% include molecule('product-item-image') with {
                                 modifiers: ['small'],
@@ -99,7 +99,6 @@
                         {% endblock %}
 
                         {% block bundle %}{% endblock %}
-                        {% block packagingUnitCart %}{% endblock %}
                     {% endembed %}
                 {% endfor %}
             </div>
@@ -116,12 +115,14 @@
 
     <div class="grid grid--gap">
         <div class="col col--sm-12 col--lg-6">
+            {% set paymentMethod = data.transfer.payment.paymentMethod %}
+
             {% include molecule('summary-item', 'CheckoutPage') with {
                 modifiers: ['mobile-border-top'],
                 data: {
                     title: 'checkout.step.summary.payment' | trans,
-                    method: data.transfer.payment.paymentMethod,
-                    iconName: data.transfer.payment.paymentMethod | lower,
+                    method: paymentMethod,
+                    iconName: paymentMethod | lower,
                 },
             } only %}
         </div>
@@ -138,7 +139,7 @@
     <div class="grid">
         <div class="col col--sm-12">
             {% if data.cart.idQuote is not empty %}
-                <div class="summary-item summary-item--medium">
+                <div class="box box--medium">
                     {% widget 'CommentThreadWidget' args [
                         data.cart.idQuote,
                         'quote',
@@ -150,14 +151,12 @@
             {% endif %}
 
             {% if data.transfer.cartNote %}
-                <div class="summary-item summary-item--medium">
-                    {% include molecule('note-list', 'CartNoteWidget') ignore missing with {
-                        data: {
-                            label: 'cart_note.checkout_page.quote_note',
-                            note: data.transfer.cartNote,
-                        },
-                    } only %}
-                </div>
+                {% include molecule('note-list', 'CartNoteWidget') ignore missing with {
+                    data: {
+                        label: 'cart_note.checkout_page.quote_note',
+                        note: data.transfer.cartNote,
+                    },
+                } only %}
             {% endif %}
 
             {% include molecule('summary-voucher-form', 'CheckoutPage') with {

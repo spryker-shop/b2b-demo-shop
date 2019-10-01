@@ -22,9 +22,11 @@
 {% block body %}
     <div class="{{ config.name }}__top grid grid--justify grid--middle">
         <div class="col col--sm-8">
-            <h6 class="{{ config.name }}__title">{{ 'checkout.step.summary.overview' | trans }}</h6>
+            <h6 class="{{ config.name }}__title">{{ 'page.checkout.summary.complete_checkout' | trans }}</h6>
         </div>
-        <div class="col col--expand text-right">{{ cartQuantity }} {{ 'checkout.step.summary.items' | trans }}</div>
+        <div class="col col--expand text-right">
+            <span class="{{ config.name }}__label">{{ cartQuantity }} {{ 'checkout.step.summary.items' | trans }}</span>
+        </div>
     </div>
 
     <ul class="{{ config.name }}__list">

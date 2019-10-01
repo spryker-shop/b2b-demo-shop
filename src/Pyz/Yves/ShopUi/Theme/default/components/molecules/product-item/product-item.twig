@@ -26,13 +26,15 @@
     <div class="grid grid--stretch grid--gap">
         <div class="{{ component.renderClass(config.name ~ '__col', modifiers, config.name ~ '__col--image') }} col">
             {% block image %}
+                {% set imageUrl = data.listItem.images is not empty ? data.listItem.images[0].externalUrlLarge : null %}
+
                 {% if data.listItem.url is defined and data.listItem.url is not empty %}
                     <a href="{{ data.listItem.url }}" title="{{ data.listItem.name }}">
                         {% include molecule('product-item-image') with {
                             modifiers: data.imageModifiers,
                             data: {
-                                name: data.listItem.name | default(''),
-                                image: data.listItem.images is empty ? null : (data.listItem.images | first),
+                                name: data.listItem.name | default,
+                                image: imageUrl,
                             },
                         } only %}
                     </a>
@@ -41,8 +43,8 @@
                         class: 'spacing-y spacing-y--inner spacing-y--reset',
                         modifiers: data.imageModifiers,
                         data: {
-                            name: data.listItem.name | default(''),
-                            image: data.listItem.images is empty ? null : (data.listItem.images | first),
+                            name: data.listItem.name | default,
+                            image: imageUrl,
                         },
                     } only %}
                 {% endif %}

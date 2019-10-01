@@ -1,7 +1,7 @@
 {% extends model('component') %}
 
 {% define config = {
-    name: 'summary-item',
+    name: 'order-detail-item',
 } %}
 
 {% define data = {
@@ -16,7 +16,7 @@
 
     {% if data.method %}
         <span class="{{ config.name }}__method">
-            {{ 'checkout.step.summary.with_method' | trans }} {{ data.method | capitalize }}
+            {{ 'customer.order.with_method' | trans }} {{ data.method | capitalize }}
         </span>
         {% if data.iconName %}
             {% include atom('icon') with {

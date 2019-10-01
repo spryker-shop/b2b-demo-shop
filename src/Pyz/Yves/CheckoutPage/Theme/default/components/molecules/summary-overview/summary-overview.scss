@@ -7,13 +7,33 @@
         }
 
         &__top {
-            margin-bottom: rem(10);
+            padding: rem(13) rem(15);
+            margin: 0 rem(-15);
+            background-color: $setting-color-gray-7;
             font-size: rem(16);
             font-weight: fw(medium);
             color: $setting-color-gray-5;
 
             @include helper-breakpoint-media-min($lg) {
-                margin-bottom: rem(15);
+                padding: 0;
+                margin: 0 0 rem(15);
+                background-color: $setting-color-transparent;
+            }
+        }
+
+        &__label {
+            font-size: rem(11);
+            color: $setting-color-gray-3;
+            background-color: $setting-color-alpha-3;
+            border-radius: $setting-border-radius;
+            padding: rem(3) rem(5);
+
+            @include helper-breakpoint-media-min($lg) {
+                font-size: rem(16);
+                font-weight: fw(medium);
+                color: $setting-color-gray-5;
+                background-color: $setting-color-transparent;
+                padding: 0;
             }
         }
 

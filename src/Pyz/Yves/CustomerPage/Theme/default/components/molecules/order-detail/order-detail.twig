@@ -1,0 +1,71 @@
+{% extends molecule('order-detail', '@SprykerShop:CustomerPage') %}
+
+{% block body %}
+    {% include molecule('action-bar') with {
+        modifiers: ['first'],
+        data: {
+            title: 'customer.profile.order_details' | trans,
+            actions: [
+                {
+                    title: 'general.back.button' | trans,
+                    url: url('customer/order'),
+                    modifiers: ['hollow'],
+                },
+            ],
+        },
+    } only %}
+
+    {% include molecule('order-info', 'CustomerPage') with {
+        data: {
+            id: data.order.orderReference,
+            date: data.order.createdAt | formatDateTime,
+        },
+    } only %}
+
+    {% include molecule('order-detail-table', 'CustomerPage') with {
+        data: {
+            shipmentGroups: data.shipmentGroups,
+            orderShipmentExpenses: data.orderShipmentExpenses,
+            currencyIsoCode: data.order.currencyIsoCode,
+            order: data.order,
+        },
+    } only %}
+
+    <div class="grid grid--gap">
+        <div class="col col--sm-12 col--lg-6">
+            {% set paymentMethod = data.order.payments[0].paymentMethod %}
+
+            {% include molecule('order-detail-item', 'CustomerPage') with {
+                modifiers: ['mobile-border-top'],
+                data: {
+                    title: 'customer.order.payment' | trans,
+                    method: paymentMethod,
+                    iconName: paymentMethod | lower,
+                },
+            } only %}
+        </div>
+        <div class="col col--sm-12 col--lg-6">
+            {% include molecule('order-detail-item', 'CustomerPage') with {
+                data: {
+                    title: 'customer.order.billing_address' | trans,
+                    address: data.order.billingAddress,
+                },
+            } only %}
+        </div>
+    </div>
+
+    {% if data.order.cartNote is not empty %}
+        {% include molecule('note-list', 'CartNoteWidget') ignore missing with {
+            data: {
+                label: 'cart_note.customer_page.order_note',
+                note: data.order.cartNote,
+            },
+        } only %}
+    {% endif %}
+
+    {% include molecule('order-summary', 'CustomerPage') with {
+        data: {
+            order: data.order,
+        },
+    } only %}
+{% endblock %}

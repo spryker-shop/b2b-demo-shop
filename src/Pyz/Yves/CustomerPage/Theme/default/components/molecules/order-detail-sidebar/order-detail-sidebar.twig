@@ -1,0 +1,39 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'order-detail-sidebar',
+} %}
+
+{% define data = {
+    shipment: required,
+} %}
+
+{% block body %}
+    <div class="{{ config.name }}__item">
+        <h4 class="{{ config.name }}__title">{{ 'customer.order.delivery_address' | trans }}</h4>
+
+        {% include molecule('display-address') with {
+            data: {
+                address: data.shipment.shippingAddress,
+                isAddressLabelVisible: false,
+            },
+        } only %}
+    </div>
+
+    <div class="{{ config.name }}__item">
+        <h4 class="{{ config.name }}__title">{{ 'customer.order.delivery_method' | trans }}</h4>
+
+        {% include molecule('delivery-information', 'CustomerPage') with {
+            data: {
+                method: data.shipment.method,
+            },
+        } only %}
+    </div>
+
+    {% if data.shipment.requestedDeliveryDate %}
+        <div class="{{ config.name }}__item">
+            <h4 class="{{ config.name }}__title">{{ 'customer.order.requested_delivery_date' | trans }}</h4>
+            <span class="{{ config.name }}__content">{{ data.shipment.requestedDeliveryDate }}</span>
+        </div>
+    {% endif %}
+{% endblock %}

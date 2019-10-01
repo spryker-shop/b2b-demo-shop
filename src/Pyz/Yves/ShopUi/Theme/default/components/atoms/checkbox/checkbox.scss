@@ -1,6 +1,8 @@
 @mixin shop-ui-checkbox($name: '.checkbox') {
     #{$name} {
         display: inline-block;
+        position: relative;
+        z-index: $setting-zi-element;
 
         &__container {
             cursor: pointer;

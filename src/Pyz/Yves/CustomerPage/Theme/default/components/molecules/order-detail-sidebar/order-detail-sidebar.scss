@@ -1,0 +1,34 @@
+@mixin customer-page-order-detail-sidebar($name: '.order-detail-sidebar') {
+    #{$name} {
+        &__item {
+            background-color: $setting-color-gray-8;
+            padding: rem(20) rem(15);
+            margin: 0 rem(-15) rem(20);
+
+            @include helper-breakpoint-media-min($lg) {
+                margin: 0 0 rem(20);
+                padding: rem(20);
+            }
+        }
+
+        &__title {
+            margin-bottom: rem(10);
+            font-weight: fw(medium);
+        }
+
+        &__content {
+            font-size: rem(14);
+            line-height: rem(20);
+            color: $setting-color-gray-3;
+
+            @include helper-breakpoint-media-min($lg) {
+                font-size: rem(15);
+                line-height: rem(22);
+            }
+        }
+
+        @content;
+    }
+}
+
+@include customer-page-order-detail-sidebar();

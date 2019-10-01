@@ -60,6 +60,7 @@
                                 {% embed molecule('product-item') with {
                                     modifiers: ['checkout'],
                                     data: {
+                                        list: shipmentGroupForm.vars.data.items,
                                         listItem: item,
                                         quantity: item.quantity,
                                         priceModifiers: ['medium', 'margin-bottom-from-tablet'],
@@ -69,7 +70,7 @@
                                     },
                                 } only %}
                                     {% block image %}
-                                        {% set imageUrl = data.listItem.images is not empty ? (data.listItem.images | first) : null %}
+                                        {% set imageUrl = data.listItem.images is not empty ? data.listItem.images[0].externalUrlLarge : null %}
 
                                         {% include molecule('product-item-image') with {
                                             modifiers: ['small'],
@@ -95,10 +96,7 @@
                                         {% endif %}
                                     {% endblock %}
 
-                                    {% block salesInfo %}{% endblock %}
                                     {% block bundle %}{% endblock %}
-                                    {% block note %}{% endblock %}
-                                    {% block quantity %}{% endblock %}
                                 {% endembed %}
                             {% endfor %}
                         </div>

@@ -35,7 +35,7 @@
                 },
             } only %}
                 {% block image %}
-                    {% set imageUrl = data.listItem.images is not empty ? data.listItem.images[0] %}
+                    {% set imageUrl = data.listItem.images is not empty ? data.listItem.images[0].externalUrlLarge : null %}
 
                     {% include molecule('product-item-image') with {
                         modifiers: ['small'],
