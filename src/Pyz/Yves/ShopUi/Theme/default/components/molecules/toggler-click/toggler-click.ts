@@ -4,8 +4,10 @@ export default class TogglerClick extends TogglerClickCore {
     protected disablers: HTMLElement[];
 
     protected init(): void {
-        const triggerClassNames: string[] | null = this.triggerClassName ? this.triggerClassName.split('.') : null;
-        const targetClassNames: string[] | null = this.targetClassName ? this.targetClassName.split('.') : null;
+        const triggerClassNames: string[] | undefined = this.triggerClassName ?
+            this.triggerClassName.split('.') : undefined;
+        const targetClassNames: string[] | undefined = this.targetClassName ?
+            this.targetClassName.split('.') : undefined;
 
         if (triggerClassNames) {
             this.saveCollectionToProperty('triggersList', triggerClassNames);
