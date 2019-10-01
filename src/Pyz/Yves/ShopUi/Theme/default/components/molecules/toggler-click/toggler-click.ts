@@ -1,31 +1,61 @@
 import TogglerClickCore from 'ShopUi/components/molecules/toggler-click/toggler-click';
 
 export default class TogglerClick extends TogglerClickCore {
-    protected disablers: HTMLElement[] = [];
+    protected disablers: HTMLElement[];
 
     protected init(): void {
+        const triggerClassNames: string[] | null = this.triggerClassName ? this.triggerClassName.split('.') : null;
+        const targetClassNames: string[] | null = this.targetClassName ? this.targetClassName.split('.') : null;
+
+        if (triggerClassNames) {
+            this.saveCollectionToProperty('triggersList', triggerClassNames);
+        }
+
+        if (targetClassNames) {
+            this.saveCollectionToProperty('targetsList', targetClassNames);
+        }
+
         if (this.disablerClassName) {
             const disablerClassNamesList = this.disablerClassName.split(',');
 
-            disablerClassNamesList.forEach(disablerClassName => {
-                this.disablers = <HTMLElement[]>
-                    [...this.disablers, ...Array.from(document.getElementsByClassName(disablerClassName))];
-            });
+            this.saveCollectionToProperty('disablers', disablerClassNamesList);
         }
 
-        super.init();
+        this.mapEvents();
     }
 
     protected mapEvents(): void {
         super.mapEvents();
 
-        this.disablers.forEach((disabler: HTMLElement) => {
-            disabler.addEventListener('click', (event: Event) => this.removeClassToToggle());
+        if (this.disablers) {
+            this.disablers.forEach((disabler: HTMLElement) => {
+                disabler.addEventListener('click', (event: Event) => this.removeClassToToggle());
+            });
+        }
+    }
+
+    protected saveCollectionToProperty(propertyName: string, classes: string[]): void {
+        if (!classes.length) {
+            return;
+        }
+
+        let property: HTMLElement[];
+
+        classes.forEach((className, index) => {
+            if (!index) {
+                property = <HTMLElement[]>Array.from(document.getElementsByClassName(className));
+
+                return;
+            }
+
+            property = [...property, Object.assign(document.getElementsByClassName(className))];
         });
+
+        this[propertyName] = <HTMLElement[]>property;
     }
 
     protected removeClassToToggle(): void {
-        this.targets.forEach((target: HTMLElement) => {
+        this.targetsList.forEach((target: HTMLElement) => {
             target.classList.remove(this.classToToggle);
         });
     }

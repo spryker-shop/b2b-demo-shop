@@ -63,8 +63,8 @@
 
             {% include molecule('toggler-click') with {
                 attributes: {
-                    'trigger-selector': '.' ~ config.jsName ~ '__new-review-form-open, ' ~ '.' ~ config.jsName ~ '__new-review-form-close',
-                    'target-selector': '.' ~ config.jsName ~ '__new-review-form, ' ~ '.' ~ config.jsName ~ '__new-review-form-open',
+                    'trigger-class-name': config.jsName ~ '__new-review-form-open,' ~ config.jsName ~ '__new-review-form-close',
+                    'target-class-name': config.jsName ~ '__new-review-form,' ~ config.jsName ~ '__new-review-form-open',
                     'class-to-toggle': 'is-hidden'
                 }
             } only %}
