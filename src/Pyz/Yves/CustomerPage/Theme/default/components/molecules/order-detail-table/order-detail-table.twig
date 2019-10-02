@@ -1,5 +1,9 @@
 {% extends molecule('order-detail-table', '@SprykerShop:CustomerPage') %}
 
+{% define data = {
+    products: required,
+} %}
+
 {% block body %}
     {% for shipmentGroup in data.shipmentGroups %}
         <article class="grid grid--gap spacing-bottom spacing-bottom--big">
@@ -22,6 +26,7 @@
                         },
                         embed: {
                             order: data.order,
+                            product: data.products[item.sku],
                         },
                     } only %}
                         {% block image %}
@@ -50,6 +55,17 @@
 
                         {% block title %}
                             <h6 class="{{ config.name }}__title spacing spacing--reset">{{ data.listItem.name }}</h6>
+                        {% endblock %}
+
+                        {% block info %}
+                            {{ parent() }}
+
+                            {% if embed.product.attributes.farbe is defined %}
+                                <span class="{{ config.name }}__color-preview">
+                                    {{ 'cart.item.color' | trans }}:
+                                    <span class="{{ config.name }}__color-preview-decoration" style="background: {{ embed.product.colorCode  }}" title="{{ embed.product.attributes.farbe  }}"></span>
+                                </span>
+                            {% endif %}
                         {% endblock %}
 
                         {% block subQuantity %}
