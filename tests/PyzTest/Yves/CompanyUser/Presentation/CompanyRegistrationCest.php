@@ -14,6 +14,7 @@ use PyzTest\Yves\Customer\PageObject\CustomerLoginPage;
 
 /**
  * Auto-generated group annotations
+ *
  * @group PyzTest
  * @group Yves
  * @group CompanyUser

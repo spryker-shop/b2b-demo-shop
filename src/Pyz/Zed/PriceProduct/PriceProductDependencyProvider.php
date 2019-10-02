@@ -21,7 +21,7 @@ use Spryker\Zed\PriceProductVolume\Communication\Plugin\PriceProductExtension\Pr
 class PriceProductDependencyProvider extends SprykerPriceProductDependencyProvider
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      *
      * @return \Spryker\Zed\PriceProductExtension\Dependency\Plugin\PriceDimensionQueryCriteriaPluginInterface[]
      */
@@ -33,7 +33,7 @@ class PriceProductDependencyProvider extends SprykerPriceProductDependencyProvid
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      *
      * @return \Spryker\Zed\PriceProductExtension\Dependency\Plugin\PriceDimensionAbstractSaverPluginInterface[]
      */
@@ -45,7 +45,7 @@ class PriceProductDependencyProvider extends SprykerPriceProductDependencyProvid
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      *
      * @return \Spryker\Zed\PriceProductExtension\Dependency\Plugin\PriceDimensionConcreteSaverPluginInterface[]
      */

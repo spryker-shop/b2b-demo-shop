@@ -17,7 +17,7 @@ use Spryker\Zed\CustomerAccessGui\Dependency\Facade\CustomerAccessGuiToCustomerA
 class CustomerAccessFacade extends SprykerCustomerAccessFacade implements CustomerAccessFacadeInterface, CustomerAccessGuiToCustomerAccessFacadeInterface
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      *
      * @api
      *
@@ -33,7 +33,7 @@ class CustomerAccessFacade extends SprykerCustomerAccessFacade implements Custom
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      *
      * @api
      *
