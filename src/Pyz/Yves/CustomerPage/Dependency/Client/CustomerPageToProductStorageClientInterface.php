@@ -5,11 +5,11 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Pyz\Yves\CheckoutPage\Dependency\Client;
+namespace Pyz\Yves\CustomerPage\Dependency\Client;
 
 use Generated\Shared\Transfer\ProductViewTransfer;
 
-interface CheckoutPageToProductStorageClientInterface
+interface CustomerPageToProductStorageClientInterface
 {
     /**
      * @param int $idProductAbstract

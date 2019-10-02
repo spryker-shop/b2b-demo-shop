@@ -8,6 +8,9 @@
 namespace Pyz\Yves\CustomerPage;
 
 use Generated\Shared\Transfer\CustomerTransfer;
+use Pyz\Yves\CustomerPage\Dependency\Client\CustomerPageToProductStorageClientInterface;
+use Pyz\Yves\CustomerPage\Plugin\Provider\CartItemsProductProvider;
+use Pyz\Yves\CustomerPage\Plugin\Provider\CartItemsProductProviderInterface;
 use Pyz\Yves\CustomerPage\Security\Customer;
 use Spryker\Client\Session\SessionClientInterface;
 use SprykerShop\Yves\CustomerPage\CustomerPageFactory as SprykerCustomerPageFactory;
@@ -36,5 +39,23 @@ class CustomerPageFactory extends SprykerCustomerPageFactory
     public function getSessionClient(): SessionClientInterface
     {
         return $this->getProvidedDependency(CustomerPageDependencyProvider::CLIENT_SESSION);
+    }
+
+    /**
+     * @return \Pyz\Yves\CustomerPage\Plugin\Provider\CartItemsProductProviderInterface
+     */
+    public function createCartItemsProductsProvider(): CartItemsProductProviderInterface
+    {
+        return new CartItemsProductProvider(
+            $this->getProductStorageClient()
+        );
+    }
+
+    /**
+     * @return \Pyz\Yves\CustomerPage\Dependency\Client\CustomerPageToProductStorageClientInterface
+     */
+    public function getProductStorageClient(): CustomerPageToProductStorageClientInterface
+    {
+        return $this->getProvidedDependency(CustomerPageDependencyProvider::CLIENT_PRODUCT_STORAGE);
     }
 }
