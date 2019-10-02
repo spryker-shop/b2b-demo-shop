@@ -27,6 +27,17 @@
             overflow: hidden;
         }
 
+        &__checkbox {
+            position: absolute;
+            top: rem(10);
+            left: rem(-35);
+
+            @include helper-breakpoint-media-min($md) {
+                top: auto;
+                left: auto;
+            }
+        }
+
         &--summary {
             @include helper-breakpoint-media-min($lg) {
                 padding-top: rem(28);

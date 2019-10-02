@@ -1,4 +1,5 @@
 $product-image-width: rem(78);
+$product-image-left-indent: rem(35);
 
 @mixin shop-ui-product-item($name: '.product-item') {
     #{$name} {
@@ -43,8 +44,8 @@ $product-image-width: rem(78);
                 border-radius: $setting-border-radius 0 0 $setting-border-radius;
                 padding-top: 0;
                 padding-bottom: 0;
-                width: rem(78);
-                min-width: rem(78);
+                width: $product-image-width;
+                min-width: $product-image-width;
 
                 @include helper-breakpoint-media-min($md) {
                     width: 22%;
@@ -55,6 +56,16 @@ $product-image-width: rem(78);
                     @include helper-breakpoint-media-min($lg) {
                         width: 17%;
                         min-width: 17%;
+                    }
+                }
+
+                &#{$name}__col--order-detail {
+                    margin-left: $product-image-left-indent;
+                    padding-right: rem(5);
+
+                    @include helper-breakpoint-media-min($md) {
+                        margin-left: 0;
+                        padding-right: $setting-grid-space;
                     }
                 }
             }
@@ -152,6 +163,16 @@ $product-image-width: rem(78);
                     @include helper-breakpoint-media-min($lg) {
                         width: 83%;
                         min-width: 83%;
+                    }
+                }
+
+                &#{$name}__col--order-detail {
+                    width: calc(100% - #{$product-image-width} - #{$product-image-left-indent});
+                    min-width: calc(100% - #{$product-image-width} - #{$product-image-left-indent});
+
+                    @include helper-breakpoint-media-min($md) {
+                        width: 78%;
+                        min-width: 78%;
                     }
                 }
 
