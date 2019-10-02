@@ -126,7 +126,7 @@
 
             <div class="col col--sm-12">
                 {% set itemClass = config.name ~ '__content ' ~ config.name ~ '__content--mobile-background ' ~ config.jsName ~ '__item-shipping '
-                    ~ (hasShippingAddressesAndApplicable ? ' is-hidden ') ~ config.jsName ~ '__item-shipping--' ~ loop.index ~ ' spacing-x spacing-x--inner spacing-x--reset' %}
+                    ~ config.jsName ~ '__item-shipping--' ~ loop.index ~ (hasShippingAddressesAndApplicable ? ' is-hidden ') ~ ' spacing-x spacing-x--inner spacing-x--reset' %}
 
                 {% include molecule('form') with {
                     class: itemClass,
