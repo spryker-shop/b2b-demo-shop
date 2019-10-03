@@ -1,12 +1,14 @@
 import Component from 'ShopUi/models/component';
 
-export default class TogglerBodyHeightLimiter extends Component {
+export default class StickyBodyToggler extends Component {
     protected triggers: HTMLElement[];
+    protected body: HTMLElement;
 
     protected readyCallback(): void {}
 
     protected init(): void {
         this.triggers = <HTMLElement[]>Array.from(document.getElementsByClassName(this.triggerClassName));
+        this.body = <HTMLElement>document.body;
 
         this.mapEvents();
     }
@@ -18,29 +20,27 @@ export default class TogglerBodyHeightLimiter extends Component {
     }
 
     protected toggleBodyHeightFix(): void {
-        const classAddedFlag = document.body.classList.contains(this.classToFixBody);
+        const classAddedFlag = this.body.classList.contains(this.classToFixBody);
 
         this.fixBody(classAddedFlag);
     }
 
     protected fixBody(isClassAddedFlag: boolean): void {
-        const body = document.body;
-
         if (isClassAddedFlag) {
-            const scrollToVal = parseInt(body.dataset.scrollTo);
+            const scrollToVal = parseInt(this.body.dataset.scrollTo);
 
-            body.style.top = '0';
-            body.classList.remove(this.classToFixBody);
+            this.body.style.top = '0';
+            this.body.classList.remove(this.classToFixBody);
             window.scrollTo(0, scrollToVal);
+
+            return;
         }
 
-        if (!isClassAddedFlag) {
-            const offset = window.pageYOffset;
+        const offset = window.pageYOffset;
 
-            body.style.top = `${-offset}px`;
-            body.classList.add(this.classToFixBody);
-            body.dataset.scrollTo = offset.toString();
-        }
+        this.body.style.top = `${-offset}px`;
+        this.body.classList.add(this.classToFixBody);
+        this.body.dataset.scrollTo = offset.toString();
     }
 
     protected get triggerClassName(): string {

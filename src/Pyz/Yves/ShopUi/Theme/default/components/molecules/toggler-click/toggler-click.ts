@@ -4,26 +4,13 @@ export default class TogglerClick extends TogglerClickCore {
     protected disablers: HTMLElement[];
 
     protected init(): void {
-        const triggerClassNames: string[] | undefined = this.triggerClassName ?
-            this.triggerClassName.split('.') : undefined;
-        const targetClassNames: string[] | undefined = this.targetClassName ?
-            this.targetClassName.split('.') : undefined;
-
-        if (triggerClassNames) {
-            this.saveCollectionToProperty('triggersList', triggerClassNames);
-        }
-
-        if (targetClassNames) {
-            this.saveCollectionToProperty('targetsList', targetClassNames);
-        }
-
-        if (this.disablerClassName) {
-            const disablerClassNamesList = this.disablerClassName.split(',');
+        if (this.removerClassName) {
+            const disablerClassNamesList = this.removerClassName.split(',');
 
             this.saveCollectionToProperty('disablers', disablerClassNamesList);
         }
 
-        this.mapEvents();
+        super.init();
     }
 
     protected mapEvents(): void {
@@ -82,7 +69,7 @@ export default class TogglerClick extends TogglerClickCore {
         return this.getAttribute('trigger-class-to-toggle');
     }
 
-    protected get disablerClassName(): string {
-        return this.getAttribute('disabler-class-name');
+    protected get removerClassName(): string {
+        return this.getAttribute('removers-toggler-class-to-toggle');
     }
 }

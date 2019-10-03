@@ -1,6 +1,7 @@
+import Component from 'ShopUi/models/component';
 import OverlayBlock from '../../atoms/overlay-block/overlay-block';
 
-export default class OverlayEnabler extends OverlayBlock {
+export default class OverlayEnabler extends Component {
     protected modifiers: string[];
     protected triggers: HTMLElement[];
     protected overlay: OverlayBlock;
@@ -13,7 +14,6 @@ export default class OverlayEnabler extends OverlayBlock {
         this.modifiers = this.overlayModifiers.split(', ');
         this.overlay = <OverlayBlock>document.getElementsByClassName(this.overlayClassName)[0];
         this.overlayIsShown = false;
-
         this.mapEvents();
     }
 
@@ -24,8 +24,7 @@ export default class OverlayEnabler extends OverlayBlock {
 
         this.overlay.addEventListener('click', () => {
             this.overlayIsShown = false;
-
-            this.removeOverlay();
+            this.hideOverlay();
         });
     }
 
@@ -33,21 +32,21 @@ export default class OverlayEnabler extends OverlayBlock {
         this.overlayIsShown = !this.overlayIsShown;
 
         if (this.overlayIsShown) {
-            this.addOverlay();
+            this.showOverlay();
 
             return;
         }
 
-        this.removeOverlay();
+        this.hideOverlay();
     }
 
-    protected addOverlay(): void {
+    protected showOverlay(): void {
         if (this.modifiers.length) {
             this.overlay.showOverlay(this.modifiers[0], this.modifiers[1]);
         }
     }
 
-    protected removeOverlay(): void {
+    protected hideOverlay(): void {
         if (this.modifiers.length) {
             this.overlay.hideOverlay(this.modifiers[0], this.modifiers[1]);
         }
