@@ -56,7 +56,6 @@
                     {% if data.showSearchForm %}
                         {% embed molecule('search-form') with {
                             class: config.name ~ '__search-form ' ~ config.jsName ~ '__search-form',
-                            modifiers: ['fixed'],
                             attributes: {
                                 'data-search-id': 'desktop'
                             },

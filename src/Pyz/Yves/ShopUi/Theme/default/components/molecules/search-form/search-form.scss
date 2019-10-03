@@ -1,16 +1,12 @@
 @mixin shop-ui-search-form($name: '.search-form') {
     #{$name} {
-        position: relative;
-
-        &--fixed {
-            @include helper-visibility-invisible;
-            @include helper-effect-transition(transform visibility opacity);
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            transform: translateY(-100%);
-        }
+        @include helper-visibility-invisible;
+        @include helper-effect-transition(transform visibility opacity);
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        transform: translateY(-100%);
 
         &__button {
             position: absolute;
