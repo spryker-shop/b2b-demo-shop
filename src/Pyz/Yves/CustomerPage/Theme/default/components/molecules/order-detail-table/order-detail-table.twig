@@ -57,7 +57,7 @@
                                 {% if concreteItem.productOptions is not empty %}
                                     {{ "customer.order.options" | trans }} <br>
                                     {% for productOption in concreteItem.productOptions %}
-                                        - {{ productOption.value | trans }} {{ productOption.sumPrice | money(true, currencyIsoCode) }}  <br>
+                                        - {{ productOption.value | trans }} {{ productOption.sumPrice | default(productOption.unitPrice)) | money(true, currencyIsoCode) }}  <br>
                                     {% endfor %}
                                 {% endif %}
                             </td>
@@ -74,7 +74,7 @@
                                         + <small>{{ productOption.value | trans }}</small>
                                     </td>
                                     <td class="{{ config.name }}__cell {{ config.name }}__cell--detail">
-                                        <small>{{ productOption.sumPrice | money(true, currencyIsoCode) }}</small>
+                                        <small>{{ productOption.sumPrice  | default(productOption.unitPrice)) | money(true, currencyIsoCode) }}</small>
                                     </td>
                                     <td class="{{ config.name }}__cell {{ config.name }}__cell--detail" colspan="2"></td>
                                 {% endblock %}
