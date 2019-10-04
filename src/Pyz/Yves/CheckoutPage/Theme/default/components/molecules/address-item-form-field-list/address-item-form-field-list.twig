@@ -12,7 +12,7 @@
         <div class="{{ config.name }}__wrapper grid grid--middle {{ config.jsName }}__item-shipping-{{ loop.index }}">
             {% set hasShippingAddresses = item.shippingAddress.id_customer_address is defined %}
             {% set hasCompanyUnitAddresses = item.shippingAddress.id_company_unit_address is defined %}
-            {% set hasShippingAddressesAndApplicable = isCompanyBusinessUnitShippingAddressApplicable ? true : hasShippingAddresses %}
+            {% set hasShippingAddressesAndApplicable = isCompanyBusinessUnitShippingAddressApplicable or hasShippingAddresses %}
 
             {% embed molecule('product-item') with {
                 modifiers: ['checkout', 'checkout-address'],
@@ -30,7 +30,7 @@
                     isCompanyBusinessUnitShippingAddressApplicable: isCompanyBusinessUnitShippingAddressApplicable,
                     hasShippingAddresses: hasShippingAddresses,
                     hasCompanyUnitAddresses: hasCompanyUnitAddresses,
-                    configName: config.name,
+                    parentConfigName: config.name,
                     product: data.products[item.vars.data.sku],
                 },
             } only %}
@@ -62,9 +62,9 @@
                 {% endblock %}
 
                 {% block productTotal %}
-                    <div class="{{ embed.configName }}__price">{{ parent() }}</div>
+                    <div class="{{ embed.parentConfigName }}__price">{{ parent() }}</div>
 
-                    <div class="{{ embed.configName }}__dropdown">
+                    <div class="{{ embed.parentConfigName }}__dropdown">
                         {% if embed.hasShippingAddressesAndApplicable %}
                             {% if embed.isCompanyBusinessUnitShippingAddressApplicable %}
                                 {% widget embed.companyBusinessUnitShippingAddressWidget with {

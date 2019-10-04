@@ -9,15 +9,14 @@
 
     {% if fullAddresses %}
         {% for address in fullAddresses %}
-            {% if not data.currentAddressId and data.formType == shippingAddress and address.isDefaultShipping %}
+            {% set isShippingAddress = not data.currentAddressId and data.formType == shippingAddress and address.isDefaultShipping %}
+            {% set isBillingAddress = not data.currentAddressId and data.formType == billingAddress and address.isDefaultBilling %}
+            {% set isCustomerAddress = data.currentAddressId == address.idCustomerAddress %}
+
+            {% if isShippingAddress or isBillingAddress or isCustomerAddress %}
                 {% set defaultAddressKey = address.key %}
             {% endif %}
-            {% if not data.currentAddressId and data.formType == billingAddress and address.isDefaultBilling %}
-                {% set defaultAddressKey = address.key %}
-            {% endif %}
-            {% if data.currentAddressId == address.idCustomerAddress %}
-                {% set defaultAddressKey = address.key %}
-            {% endif %}
+
             {% if data.currentAddressId == optionValueDeliverToMultipleAddresses %}
                 {% set defaultAddressKey = optionValueDeliverToMultipleAddresses %}
             {% endif %}

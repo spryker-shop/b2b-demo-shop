@@ -8,7 +8,7 @@
 
 {% block content %}
     {% embed molecule('form') with {
-        class: 'checkout-form',
+        modifiers: ['checkout-form'],
         data: {
             form: data.forms.shipment,
             cart: data.forms.shipment.vars.data,

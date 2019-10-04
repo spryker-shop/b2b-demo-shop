@@ -35,7 +35,7 @@
         <div class="col col--sm-12 col--lg-6">
             {% set paymentMethod = data.order.payments[0].paymentMethod %}
 
-            {% include molecule('order-detail-item', 'CustomerPage') with {
+            {% include molecule('summary-item-box', 'CheckoutPage') ignore missing with {
                 modifiers: ['mobile-border-top'],
                 data: {
                     title: 'customer.order.payment' | trans,
@@ -45,7 +45,7 @@
             } only %}
         </div>
         <div class="col col--sm-12 col--lg-6">
-            {% include molecule('order-detail-item', 'CustomerPage') with {
+            {% include molecule('summary-item-box', 'CheckoutPage') ignore missing with {
                 data: {
                     title: 'customer.order.billing_address' | trans,
                     address: data.order.billingAddress,

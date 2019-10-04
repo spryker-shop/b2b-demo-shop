@@ -1,4 +1,6 @@
 $address-sub-form-width: rem(710);
+$address-sub-form-dropdown-width: calc(100% + #{rem(4)});
+$address-sub-form-top-indent: calc(100% + #{rem(15)});
 
 @mixin checkout-page-address-item-form-field-list($name: '.address-item-form-field-list') {
     #{$name} {
@@ -14,9 +16,9 @@ $address-sub-form-width: rem(710);
                 content: '';
                 position: absolute;
                 left: rem(-20);
-                right: rem(-12);
+                right: rem(-20);
                 bottom: 0;
-                width: calc(100% + #{rem(40)});
+                display: block;
                 height: rem(1);
                 background-color: $setting-color-gray-6;
 
@@ -54,9 +56,8 @@ $address-sub-form-width: rem(710);
                     top: 0;
                     left: rem(-20);
                     right: rem(-20);
-                    width: calc(100% + #{rem(40)});
                     background-color: $setting-color-alpha-2;
-                    z-index: -1;
+                    z-index: $setting-zi-substrate;
                     border-top: rem(1) solid $setting-color-gray-6;
                     border-bottom: rem(1) solid $setting-color-gray-6;
 
@@ -70,8 +71,8 @@ $address-sub-form-width: rem(710);
         &__dropdown {
             position: absolute;
             left: rem(-2);
-            width: calc(100% + #{rem(4)});
-            top: calc(100% + #{rem(15)});
+            width: $address-sub-form-dropdown-width;
+            top: $address-sub-form-top-indent;
 
             @include helper-breakpoint-media-min($lg) {
                 position: static;

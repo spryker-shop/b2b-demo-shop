@@ -99,7 +99,7 @@
             </div>
 
             <div class="col col--sm-12 col--xl-4">
-                {% include molecule('order-detail-sidebar', 'CustomerPage') with {
+                {% include molecule('summary-sidebar', 'CheckoutPage') ignore missing with {
                     data: {
                         shipment: shipmentGroup.shipment,
                     },

@@ -25,7 +25,10 @@
 
         {% include molecule('delivery-information', 'CustomerPage') ignore missing with {
             data: {
-                method: data.shipment.method,
+                carrierName: data.shipment.method.carrierName,
+                methodName: data.shipment.method.name,
+                storeCurrencyPrice: data.shipment.method.storeCurrencyPrice,
+                currencyIsoCode: data.shipment.method.currencyIsoCode,
             },
         } only %}
     </div>

@@ -2,6 +2,8 @@ $shop-ui-icon-size-big: 1.25rem;
 $shop-ui-icon-size-bigger: 1.5rem;
 
 @include shop-ui-icon {
+    z-index: $setting-zi-element + 2;
+
     &--logo {
         width: rem(96);
         height: rem(32);

@@ -117,7 +117,7 @@
         <div class="col col--sm-12 col--lg-6">
             {% set paymentMethod = data.transfer.payment.paymentMethod %}
 
-            {% include molecule('summary-item', 'CheckoutPage') with {
+            {% include molecule('summary-item-box', 'CheckoutPage') with {
                 modifiers: ['mobile-border-top'],
                 data: {
                     title: 'checkout.step.summary.payment' | trans,
@@ -127,7 +127,7 @@
             } only %}
         </div>
         <div class="col col--sm-12 col--lg-6">
-            {% include molecule('summary-item', 'CheckoutPage') with {
+            {% include molecule('summary-item-box', 'CheckoutPage') with {
                 data: {
                     title: 'checkout.step.summary.billing_address' | trans,
                     address: data.billingAddress,
@@ -166,7 +166,7 @@
             } only %}
 
             {% embed molecule('form') with {
-                class: 'checkout-form',
+                modifiers: ['checkout-form'],
                 data: {
                     form: data.forms.summary,
                     submit: {

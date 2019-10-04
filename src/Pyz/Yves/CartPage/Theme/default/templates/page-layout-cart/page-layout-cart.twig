@@ -181,7 +181,6 @@
                                 canEdit: data.isQuoteEditable and can('ChangeCartItemPermissionPlugin', data.cart.idQuote),
                                 canRemove: data.isQuoteEditable and can('RemoveCartItemPermissionPlugin'),
                                 imageModifiers: ['cart'],
-                                priceModifiers: ['medium'],
                             },
                             embed: {
                                 product: data.products[cartItem.sku] | default,
@@ -226,6 +225,7 @@
                                                                 {% set subtotalPrice = data.listItem.unitSubtotalAggregation is defined ? data.listItem.unitSubtotalAggregation : data.listItem.price %}
 
                                                                 {% include molecule('money-price') with {
+                                                                    modofiers: ['medium'],
                                                                     data: {
                                                                         amount: subtotalPrice,
                                                                         currencyIsoCode: data.list.currency.code,

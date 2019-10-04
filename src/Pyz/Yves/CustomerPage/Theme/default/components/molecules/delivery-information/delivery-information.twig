@@ -1,28 +1,26 @@
-{% extends model('component') %}
+{% extends molecule('delivery-information', '@SprykerShop:CustomerPage') %}
 
 {% define config = {
-    name: 'delivery-information',
+    tag: 'div',
 } %}
 
-{% define data = {
-    method: required,
-} %}
+{% block class %}{{ parent() }}{% endblock %}
 
 {% block body %}
     <h4 class="{{ config.name }}__title grid grid--justify grid--middle">
-        <span class="col">{{ data.method.carrierName }}</span>
+        <span class="col">{{ data.carrierName }}</span>
 
         {% include atom('icon') with {
             class: 'col',
-            modifiers: [data.method.carrierName | lower ~ '-logo'],
+            modifiers: [data.carrierName | lower ~ '-logo'],
             data: {
-                name: data.method.carrierName | lower ~ '-logo',
+                name: data.carrierName | lower ~ '-logo',
             },
         } only %}
     </h4>
 
     <div class="{{ config.name }}__content grid grid--justify">
-        <div class="col">{{ data.method.name }}</div>
-        <div class="col">{{ data.method.storeCurrencyPrice | money(true, data.method.currencyIsoCode) }}</div>
+        <div class="col">{{ data.methodName }}</div>
+        <div class="col">{{ data.storeCurrencyPrice | money(true, data.currencyIsoCode) }}</div>
     </div>
 {% endblock %}
