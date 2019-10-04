@@ -1,6 +1,7 @@
 {% extends template('page-layout-checkout', 'CheckoutPage') %}
 
 {% define data = {
+    cart: _view.quoteTransfer,
     backUrl: _view.previousStepUrl,
     transfer: _view.quoteTransfer,
     cartItems: _view.cartItems,
@@ -38,6 +39,13 @@
 {% block content %}
     <div class="grid grid--gap">
         <div class="col col--sm-12 col--xl-4">
+            {% widget 'QuoteConfiguredBundleWidget' args [data.cart] with {
+                data: {
+                    isEditable: false,
+                },
+            } only %}
+            {% endwidget %}
+
             {% include molecule('summary-sidebar-item', 'CheckoutPage') with {
                 data: {
                     title: 'checkout.step.summary.payment' | trans,

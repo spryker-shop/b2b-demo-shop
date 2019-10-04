@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fff2efe3906f178f76ee22195cc907b3",
+    "content-hash": "2a229be8c77ad39d870d0e9fec1a4bbc",
     "packages": [
         {
             "name": "codeception/phpunit-wrapper",
@@ -3988,6 +3988,42 @@
             "time": "2019-08-01T16:13:22+00:00"
         },
         {
+            "name": "spryker-feature/configurable-bundle",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-feature/configurable-bundle.git",
+                "reference": "956c2af32edc30907b85afeb631a4edacc5b0850"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-feature/configurable-bundle/zipball/956c2af32edc30907b85afeb631a4edacc5b0850",
+                "reference": "956c2af32edc30907b85afeb631a4edacc5b0850",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker-shop/configurable-bundle-widget": "^1.0.0",
+                "spryker-shop/sales-configurable-bundle-widget": "^1.0.0",
+                "spryker/configurable-bundle": "^1.0.0",
+                "spryker/configurable-bundle-data-import": "^0.1.0",
+                "spryker/configurable-bundle-storage": "^1.0.0",
+                "spryker/sales-configurable-bundle": "^1.0.0"
+            },
+            "type": "metapackage",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "201910.x-dev"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "Configurable Bundle [feature]",
+            "time": "2019-08-15T11:09:56+00:00"
+        },
+        {
             "name": "spryker-feature/content-based-shop-navigation",
             "version": "201907.0",
             "source": {
@@ -7492,6 +7528,59 @@
             "time": "2019-07-17T07:36:13+00:00"
         },
         {
+            "name": "spryker-shop/configurable-bundle-widget",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/configurable-bundle-widget.git",
+                "reference": "06fda17812b9e5d260fc6ccb1b1d9020af726f95"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/configurable-bundle-widget/zipball/06fda17812b9e5d260fc6ccb1b1d9020af726f95",
+                "reference": "06fda17812b9e5d260fc6ccb1b1d9020af726f95",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker-shop/shop-application": "^1.2.0",
+                "spryker-shop/shop-ui": "^1.29.0",
+                "spryker/cart": "^7.0.0",
+                "spryker/configurable-bundle": "^1.0.0",
+                "spryker/kernel": "^3.33.0",
+                "spryker/quote": "^2.8.0",
+                "spryker/symfony": "^3.1.0",
+                "spryker/zed-request": "^3.4.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/router": "*",
+                "spryker/silex": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/router": "Use this module if you want use the RouterProviderPlugin.",
+                "spryker/silex": "Use this module when using plugins that need Silex dependencies."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ConfigurableBundleWidget module",
+            "time": "2019-09-26T05:02:17+00:00"
+        },
+        {
             "name": "spryker-shop/content-banner-widget",
             "version": "1.0.0",
             "source": {
@@ -10430,6 +10519,48 @@
             ],
             "description": "ResourceSharePageExtension module",
             "time": "2019-05-29T13:35:37+00:00"
+        },
+        {
+            "name": "spryker-shop/sales-configurable-bundle-widget",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/sales-configurable-bundle-widget.git",
+                "reference": "70cc11ba67b25eef2fe68d8c3a7126a8957525f4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/sales-configurable-bundle-widget/zipball/70cc11ba67b25eef2fe68d8c3a7126a8957525f4",
+                "reference": "70cc11ba67b25eef2fe68d8c3a7126a8957525f4",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker-shop/shop-ui": "^1.28.0",
+                "spryker/kernel": "^3.33.0",
+                "spryker/sales-configurable-bundle": "^1.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "SalesConfigurableBundleWidget module",
+            "time": "2019-09-03T13:11:10+00:00"
         },
         {
             "name": "spryker-shop/sales-order-threshold-widget",
@@ -17399,6 +17530,147 @@
             ],
             "description": "Config module",
             "time": "2019-09-26T05:14:06+00:00"
+        },
+        {
+            "name": "spryker/configurable-bundle",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/configurable-bundle.git",
+                "reference": "8bcdf506f9142845c8e16daa29c861214ee8bb78"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/configurable-bundle/zipball/8bcdf506f9142845c8e16daa29c861214ee8bb78",
+                "reference": "8bcdf506f9142845c8e16daa29c861214ee8bb78",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/kernel": "^3.33.0",
+                "spryker/product-list": "^1.5.0",
+                "spryker/uuid-behavior": "^1.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ConfigurableBundle module",
+            "time": "2019-08-14T14:24:45+00:00"
+        },
+        {
+            "name": "spryker/configurable-bundle-data-import",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/configurable-bundle-data-import.git",
+                "reference": "dc05b1b8e260327a691509b3662ba1e52e283c49"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/configurable-bundle-data-import/zipball/dc05b1b8e260327a691509b3662ba1e52e283c49",
+                "reference": "dc05b1b8e260327a691509b3662ba1e52e283c49",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/configurable-bundle": "^1.0.0",
+                "spryker/data-import": "^1.0.0",
+                "spryker/kernel": "^3.33.0",
+                "spryker/product-list": "^1.4.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/",
+                    "SprykerTest\\Zed\\ConfigurableBundleDataImport\\Helper\\": "tests/SprykerTest/Zed/ConfigurableBundleDataImport/_support/Helper/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "ConfigurableBundleDataImport module",
+            "time": "2019-08-13T11:58:50+00:00"
+        },
+        {
+            "name": "spryker/configurable-bundle-storage",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/configurable-bundle-storage.git",
+                "reference": "167dd13e2168eb646f291bf9e06e13cf32f2b3f8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/configurable-bundle-storage/zipball/167dd13e2168eb646f291bf9e06e13cf32f2b3f8",
+                "reference": "167dd13e2168eb646f291bf9e06e13cf32f2b3f8",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/configurable-bundle": "^1.0.0",
+                "spryker/event-behavior": "^1.0.0",
+                "spryker/kernel": "^3.33.0",
+                "spryker/propel-orm": "^1.5.0",
+                "spryker/storage": "^3.0.0",
+                "spryker/synchronization": "^1.0.0",
+                "spryker/synchronization-behavior": "^1.0.0",
+                "spryker/synchronization-extension": "^1.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/event": "*",
+                "spryker/glossary": "*",
+                "spryker/propel": "*",
+                "spryker/queue": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/event": "If you want to use Event plugins, minimum required version: 2.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ConfigurableBundleStorage module",
+            "time": "2019-08-14T15:57:33+00:00"
         },
         {
             "name": "spryker/console",
@@ -30275,6 +30547,52 @@
             "time": "2019-07-31T15:18:14+00:00"
         },
         {
+            "name": "spryker/sales-configurable-bundle",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/sales-configurable-bundle.git",
+                "reference": "a7511d421d2295046459ccf2417118e28bed21cb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/sales-configurable-bundle/zipball/a7511d421d2295046459ccf2417118e28bed21cb",
+                "reference": "a7511d421d2295046459ccf2417118e28bed21cb",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/configurable-bundle": "^1.0.0",
+                "spryker/kernel": "^3.33.0",
+                "spryker/propel-orm": "^1.0.0",
+                "spryker/sales": "^10.0.0 || ^11.0.0",
+                "spryker/sales-extension": "^1.3.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/oms": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "SalesConfigurableBundle module",
+            "time": "2019-09-09T08:36:34+00:00"
+        },
+        {
             "name": "spryker/sales-extension",
             "version": "1.3.0",
             "source": {
@@ -40309,6 +40627,12 @@
             "alias": "201910.0",
             "alias_normalized": "201910.0",
             "version": "9999999-dev",
+            "package": "spryker-feature/configurable-bundle"
+        },
+        {
+            "alias": "201910.0",
+            "alias_normalized": "201910.0",
+            "version": "9999999-dev",
             "package": "spryker-feature/inventory-management"
         },
         {
@@ -40333,6 +40657,7 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "spryker-eco/loggly": 20,
+        "spryker-feature/configurable-bundle": 20,
         "spryker-feature/inventory-management": 20,
         "spryker-feature/prices": 20,
         "spryker-feature/scheduled-prices": 20,
