@@ -7,6 +7,7 @@
 
 namespace Pyz\Yves\CustomerPage;
 
+use Pyz\Yves\CustomerPage\Dependency\Client\CustomerPageToProductStorageClientBridge;
 use Spryker\Yves\Kernel\Container;
 use SprykerShop\Yves\AgentPage\Plugin\FixAgentTokenAfterCustomerAuthenticationSuccessPlugin;
 use SprykerShop\Yves\CompanyPage\Plugin\CustomerPage\BusinessOnBehalfCompanyUserRedirectAfterLoginStrategyPlugin;
@@ -18,6 +19,7 @@ use SprykerShop\Yves\CustomerReorderWidget\Plugin\CustomerPage\CustomerReorderWi
 class CustomerPageDependencyProvider extends SprykerShopCustomerPageDependencyProvider
 {
     public const CLIENT_SESSION = 'CLIENT_SESSION';
+    public const CLIENT_PRODUCT_STORAGE = 'CLIENT_PRODUCT_STORAGE';
 
     /**
      * @param \Spryker\Yves\Kernel\Container $container
@@ -29,6 +31,7 @@ class CustomerPageDependencyProvider extends SprykerShopCustomerPageDependencyPr
         $container = parent::provideDependencies($container);
 
         $container = $this->addSessionClient($container);
+        $container = $this->addProductStorageClient($container);
 
         return $container;
     }
@@ -104,6 +107,20 @@ class CustomerPageDependencyProvider extends SprykerShopCustomerPageDependencyPr
         $container[static::CLIENT_SESSION] = function (Container $container) {
             return $container->getLocator()->session()->client();
         };
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Yves\Kernel\Container $container
+     *
+     * @return \Spryker\Yves\Kernel\Container
+     */
+    protected function addProductStorageClient(Container $container): Container
+    {
+        $container->set(static::CLIENT_PRODUCT_STORAGE, function (Container $container) {
+            return new CustomerPageToProductStorageClientBridge($container->getLocator()->productStorage()->client());
+        });
 
         return $container;
     }

@@ -14,14 +14,6 @@ interface CheckoutPageToProductStorageClientInterface
     /**
      * @param int $idProductAbstract
      * @param string $localeName
-     *
-     * @return array|null
-     */
-    public function findProductAbstractStorageData(int $idProductAbstract, string $localeName): ?array;
-
-    /**
-     * @param int $idProductAbstract
-     * @param string $localeName
      * @param array $selectedAttributes
      *
      * @return \Generated\Shared\Transfer\ProductViewTransfer|null

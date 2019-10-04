@@ -16,6 +16,7 @@ use Spryker\Zed\Newsletter\NewsletterDependencyProvider;
 
 /**
  * Auto-generated group annotations
+ *
  * @group PyzTest
  * @group Yves
  * @group Customer

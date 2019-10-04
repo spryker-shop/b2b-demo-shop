@@ -19,7 +19,7 @@ class CompanyUserRestrictionHandlerPlugin extends SprykerCompanyUserRestrictionH
     protected const PERMISSION_KEY = 'SeeCompanyMenuPermissionPlugin';
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      *
      * @api
      *

@@ -120,7 +120,19 @@
                     </div>
                 {% endblock %}
 
-                {% block note %}{% endblock %}
+                {% block note %}
+                    {% if data.listItem.cartNote is not empty %}
+                        {% include molecule('cart-item-note', 'CartNoteWidget') ignore missing with {
+                            data: {
+                                isNoteNotEmpty: true,
+                                canWrite: false,
+                                label: 'cart_note.checkout_page.quote_note',
+                                note: data.listItem.cartNote,
+                            },
+                        } only %}
+                    {% endif %}
+                {% endblock %}
+
                 {% block bundle %}{% endblock %}
             {% endembed %}
 
