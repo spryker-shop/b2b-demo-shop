@@ -2,7 +2,6 @@ import Component from 'ShopUi/models/component';
 import OverlayBlock from '../../atoms/overlay-block/overlay-block';
 
 export default class OverlayEnabler extends Component {
-    protected modifiers: string[];
     protected triggers: HTMLElement[];
     protected overlay: OverlayBlock;
     protected overlayIsShown: boolean;
@@ -11,7 +10,6 @@ export default class OverlayEnabler extends Component {
 
     protected init(): void {
         this.triggers = <HTMLElement[]>Array.from(document.getElementsByClassName(this.triggerClassName));
-        this.modifiers = this.overlayModifiers.split(', ');
         this.overlay = <OverlayBlock>document.getElementsByClassName(this.overlayClassName)[0];
         this.overlayIsShown = false;
         this.mapEvents();
@@ -24,7 +22,7 @@ export default class OverlayEnabler extends Component {
 
         this.overlay.addEventListener('click', () => {
             this.overlayIsShown = false;
-            this.hideOverlay();
+            this.overlay.hideOverlay();
         });
     }
 
@@ -32,35 +30,19 @@ export default class OverlayEnabler extends Component {
         this.overlayIsShown = !this.overlayIsShown;
 
         if (this.overlayIsShown) {
-            this.showOverlay();
+            this.overlay.showOverlay();
 
             return;
         }
 
-        this.hideOverlay();
-    }
-
-    protected showOverlay(): void {
-        if (this.modifiers.length) {
-            this.overlay.showOverlay(this.modifiers[0], this.modifiers[1]);
-        }
-    }
-
-    protected hideOverlay(): void {
-        if (this.modifiers.length) {
-            this.overlay.hideOverlay(this.modifiers[0], this.modifiers[1]);
-        }
+        this.overlay.hideOverlay();
     }
 
     protected get triggerClassName(): string {
         return this.getAttribute('trigger-class-name');
     }
 
-    protected get overlayModifiers(): string {
-        return this.getAttribute('toggle-overlay-modifiers');
-    }
-
     protected get overlayClassName(): string {
-        return 'js-overlay-block';
+        return this.getAttribute('overlay-class-name');
     }
 }

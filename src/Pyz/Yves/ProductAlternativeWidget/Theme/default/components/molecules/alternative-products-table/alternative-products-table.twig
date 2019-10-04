@@ -35,7 +35,7 @@
                         class: 'spacing-y spacing-y--big text-small',
                         data: {
                             listItem: data.listItem,
-                        }
+                        },
                     } only %}
                 {% endif %}
             {% endblock %}
@@ -54,7 +54,7 @@
                     },
                     attributes: {
                         value: embed.quantity,
-                    }
+                    },
                 } only %}
                 <a class="button button--hollow button--shopping-list" href="{{ url('shopping-list/add-item', {quantity: embed.quantity, sku: data.listItem.sku, idShoppingList: embed.shoppingList.idShoppingList}) }}">
                     {{ 'product_alternative_widget.add_to_shopping_list' | trans}}
@@ -90,7 +90,7 @@
                 attributes: {
                     'trigger-class-name': 'js-product-alternative-' ~ idShoppingListItem ~ '__show-all-trigger',
                     'target-class-name': 'js-product-alternative-' ~ idShoppingListItem ~ '__show-all-target',
-                }
+                },
             } only %}
         {% endif %}
     {% endfor %}

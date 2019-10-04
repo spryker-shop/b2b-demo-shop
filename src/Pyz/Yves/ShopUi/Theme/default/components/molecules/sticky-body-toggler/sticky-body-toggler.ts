@@ -9,24 +9,19 @@ export default class StickyBodyToggler extends Component {
     protected init(): void {
         this.triggers = <HTMLElement[]>Array.from(document.getElementsByClassName(this.triggerClassName));
         this.body = <HTMLElement>document.body;
-
         this.mapEvents();
     }
 
     protected mapEvents(): void {
         this.triggers.forEach((trigger: HTMLElement) => {
-            trigger.addEventListener('click', () => this.toggleBodyHeightFix());
+            trigger.addEventListener('click', () => this.toggleStickyBody());
         });
     }
 
-    protected toggleBodyHeightFix(): void {
-        const classAddedFlag = this.body.classList.contains(this.classToFixBody);
+    protected toggleStickyBody(): void {
+        const isBodySticky = this.body.classList.contains(this.classToFixBody);
 
-        this.fixBody(classAddedFlag);
-    }
-
-    protected fixBody(isClassAddedFlag: boolean): void {
-        if (isClassAddedFlag) {
+        if (isBodySticky) {
             const scrollToVal = parseInt(this.body.dataset.scrollTo);
 
             this.body.style.top = '0';
