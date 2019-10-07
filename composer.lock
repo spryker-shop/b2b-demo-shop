@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fff2efe3906f178f76ee22195cc907b3",
+    "content-hash": "2ae1bf77d6d096454229a27b1e8a1fa4",
     "packages": [
         {
             "name": "codeception/phpunit-wrapper",
@@ -703,8 +703,8 @@
             "authors": [
                 {
                     "name": "Filipe Dobreira",
-                    "homepage": "https://github.com/filp",
-                    "role": "Developer"
+                    "role": "Developer",
+                    "homepage": "https://github.com/filp"
                 }
             ],
             "description": "php error handling for cool kids",
@@ -11644,30 +11644,34 @@
         },
         {
             "name": "spryker/auth-rest-api",
-            "version": "2.6.0",
+            "version": "2.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/auth-rest-api.git",
-                "reference": "744f828df7aae2ba9cf0c8d50d7760b5569b8dbb"
+                "reference": "2e8e0091641d931b51a7e2835d14233d58cb15c0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/auth-rest-api/zipball/744f828df7aae2ba9cf0c8d50d7760b5569b8dbb",
-                "reference": "744f828df7aae2ba9cf0c8d50d7760b5569b8dbb",
+                "url": "https://api.github.com/repos/spryker/auth-rest-api/zipball/2e8e0091641d931b51a7e2835d14233d58cb15c0",
+                "reference": "2e8e0091641d931b51a7e2835d14233d58cb15c0",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
-                "spryker/auth-rest-api-extension": "^1.0.0",
+                "spryker/auth-rest-api-extension": "^1.1.0",
                 "spryker/glue-application": "^1.15.0",
                 "spryker/glue-application-extension": "^1.2.0",
-                "spryker/kernel": "^3.0.0",
+                "spryker/kernel": "^3.30.0",
                 "spryker/oauth": "^1.4.0",
                 "spryker/symfony": "^3.0.0",
-                "spryker/util-encoding": "^2.0.0"
+                "spryker/util-encoding": "^2.0.0",
+                "spryker/zed-request": "^3.0.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
+                "spryker/customer": "*",
+                "spryker/oauth-customer-connector": "*",
+                "spryker/propel": "*",
                 "spryker/testify": "*"
             },
             "suggest": {
@@ -11682,7 +11686,8 @@
             },
             "autoload": {
                 "psr-4": {
-                    "Spryker\\": "src/Spryker/"
+                    "Spryker\\": "src/Spryker/",
+                    "SprykerTest\\Glue\\AuthRestApi\\Helper\\": "tests/SprykerTest/Glue/AuthRestApi/_support/Helper/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -11690,20 +11695,20 @@
                 "proprietary"
             ],
             "description": "AuthRestApi module",
-            "time": "2019-05-20T13:52:51+00:00"
+            "time": "2019-10-03T11:29:05+00:00"
         },
         {
             "name": "spryker/auth-rest-api-extension",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/auth-rest-api-extension.git",
-                "reference": "0784e29042c26d391eafec150659d45349442f37"
+                "reference": "be7e5ebe15c469f7e12b300161842dae70986392"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/auth-rest-api-extension/zipball/0784e29042c26d391eafec150659d45349442f37",
-                "reference": "0784e29042c26d391eafec150659d45349442f37",
+                "url": "https://api.github.com/repos/spryker/auth-rest-api-extension/zipball/be7e5ebe15c469f7e12b300161842dae70986392",
+                "reference": "be7e5ebe15c469f7e12b300161842dae70986392",
                 "shasum": ""
             },
             "require": {
@@ -11733,7 +11738,7 @@
                 "proprietary"
             ],
             "description": "AuthRestApiExtension module",
-            "time": "2019-03-25T20:35:18+00:00"
+            "time": "2019-09-25T13:31:36+00:00"
         },
         {
             "name": "spryker/availability",
@@ -12965,20 +12970,21 @@
         },
         {
             "name": "spryker/carts-rest-api",
-            "version": "5.3.2",
+            "version": "5.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/carts-rest-api.git",
-                "reference": "20317fe83f69e78af71a206a40806d14d2be8e47"
+                "reference": "d2129bd4e1c5e313cff20d248ac9d507d3a6c2cd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/carts-rest-api/zipball/20317fe83f69e78af71a206a40806d14d2be8e47",
-                "reference": "20317fe83f69e78af71a206a40806d14d2be8e47",
+                "url": "https://api.github.com/repos/spryker/carts-rest-api/zipball/d2129bd4e1c5e313cff20d248ac9d507d3a6c2cd",
+                "reference": "d2129bd4e1c5e313cff20d248ac9d507d3a6c2cd",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
+                "spryker/auth-rest-api-extension": "^1.1.0",
                 "spryker/cart": "^7.0.0",
                 "spryker/carts-rest-api-extension": "^1.4.0",
                 "spryker/customers-rest-api-extension": "^1.2.0",
@@ -12995,6 +13001,8 @@
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
+                "spryker/customer": "*",
+                "spryker/propel": "*",
                 "spryker/testify": "*"
             },
             "suggest": {
@@ -13018,7 +13026,7 @@
                 "proprietary"
             ],
             "description": "CartsRestApi module",
-            "time": "2019-07-23T13:24:26+00:00"
+            "time": "2019-09-30T08:11:02+00:00"
         },
         {
             "name": "spryker/carts-rest-api-extension",
@@ -38139,7 +38147,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "? Nette Finder: find files and directories with an intuitive API.",
+            "description": "🔍 Nette Finder: find files and directories with an intuitive API.",
             "homepage": "https://nette.org",
             "keywords": [
                 "filesystem",
@@ -38199,7 +38207,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "? Nette NEON: encodes and decodes NEON file format.",
+            "description": "🍸 Nette NEON: encodes and decodes NEON file format.",
             "homepage": "http://ne-on.org",
             "keywords": [
                 "export",
@@ -38320,7 +38328,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "? Nette RobotLoader: high performance and comfortable autoloader that will search and autoload classes within your application.",
+            "description": "🍀 Nette RobotLoader: high performance and comfortable autoloader that will search and autoload classes within your application.",
             "homepage": "https://nette.org",
             "keywords": [
                 "autoload",
