@@ -204,7 +204,7 @@
                                 </div>
                             {% endif %}
 
-                            <div class="address-wrapper__content address-wrapper__content--mobile-background {{ embed.jsAddressClass }}__billing {{ hasBillingAddressesAndApplicable ? ' is-hidden ' }} grid grid--bottom grid--wide">
+                            <div class="address-wrapper__content address-wrapper__content--mobile-background {{ embed.jsAddressClass }}__billing {{ hasBillingAddressesAndApplicable ? 'is-hidden' }} grid grid--bottom grid--wide">
                                 <div class="address-wrapper__inner-content">
                                     {{ parent() }}
                                 </div>
@@ -232,7 +232,7 @@
 
                     {% include molecule('address-form-toggler', 'CustomerPage') ignore missing with {
                         attributes: {
-                            'trigger-selector': existingShippingAddressSelectSelector | default(''),
+                            'trigger-selector': existingShippingAddressSelectSelector | default,
                             'target-selector': '.' ~ embed.jsAddressClass ~ '__shipping',
                             'sub-target-selector': '.' ~ embed.jsAddressClass ~ '__items-target',
                             'container-billing-address-selector': '.' ~ embed.jsAddressClass ~ '__billing-same-as-shipping',
@@ -244,7 +244,7 @@
 
                     {% include molecule('address-form-toggler', 'CustomerPage') ignore missing with {
                         attributes: {
-                            'trigger-selector': existingBillingAddressSelectSelector | default(''),
+                            'trigger-selector': existingBillingAddressSelectSelector | default,
                             'target-selector': '.' ~ embed.jsAddressClass ~ '__billing',
                         },
                     } only %}
