@@ -225,7 +225,7 @@
                                                                 {% set subtotalPrice = data.listItem.unitSubtotalAggregation is defined ? data.listItem.unitSubtotalAggregation : data.listItem.price %}
 
                                                                 {% include molecule('money-price') with {
-                                                                    modofiers: ['medium'],
+                                                                    modifiers: ['medium', 'block'],
                                                                     data: {
                                                                         amount: subtotalPrice,
                                                                         currencyIsoCode: data.list.currency.code,

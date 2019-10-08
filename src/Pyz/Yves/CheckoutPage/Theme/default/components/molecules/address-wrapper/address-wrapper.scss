@@ -1,4 +1,5 @@
 $address-form-width: rem(710);
+$address-form-background-width: calc(100% + #{rem(40)});
 
 @mixin checkout-page-address-wrapper($name: '.address-wrapper') {
     #{$name} {
@@ -63,9 +64,9 @@ $address-form-width: rem(710);
                     top: 0;
                     left: rem(-20);
                     right: rem(-20);
-                    width: calc(100% + #{rem(40)});
+                    width: $address-form-background-width;
                     background-color: $setting-color-alpha-2;
-                    z-index: -1;
+                    z-index: $setting-zi-substrate;
                     border-top: rem(1) solid $setting-color-gray-6;
                     border-bottom: rem(1) solid $setting-color-gray-6;
 

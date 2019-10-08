@@ -20,11 +20,11 @@ class CartController extends SprykerCartController
     protected const PARAM_REFERER = 'referer';
 
     /**
-     * @param array $selectedAttributes
+     * @param array|null $selectedAttributes
      *
      * @return array
      */
-    protected function executeIndexAction(array $selectedAttributes = []): array
+    protected function executeIndexAction(?array $selectedAttributes): array
     {
         $viewData = parent::executeIndexAction($selectedAttributes);
         $cartItems = $viewData['cartItems'];
@@ -37,14 +37,16 @@ class CartController extends SprykerCartController
     }
 
     /**
-     * @param \Symfony\Component\HttpFoundation\Request $request
      * @param string $sku
+     * @param int $quantity
+     * @param array $optionValueIds
+     * @param \Symfony\Component\HttpFoundation\Request $request
      *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
-    public function addAction(Request $request, $sku)
+    public function addAction($sku, $quantity, array $optionValueIds, Request $request)
     {
-        parent::addAction($request, $sku);
+        parent::addAction($sku, $quantity, $optionValueIds, $request);
 
         return $this->redirectToReferer($request);
     }

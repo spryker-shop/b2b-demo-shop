@@ -19,7 +19,7 @@
                 data: {
                     listItem: item.vars.data,
                     quantity: item.vars.data.quantity,
-                    priceModifiers: ['medium', 'margin-bottom-from-tablet'],
+                    priceModifiers: ['medium', 'block', 'margin-bottom-from-tablet'],
                 },
                 embed: {
                     jsName: config.jsName,
@@ -78,23 +78,23 @@
                                     },
                                 } only %}
                                     {% block addressHandler %}
-                                        {% set index0 = embed.index - 1 %}
+                                        {% set index = embed.index - 1 %}
                                         {% include molecule('company-business-unit-address-handler', 'CompanyWidget') ignore missing with {
                                             attributes: {
                                                 'form-selector': '.' ~ embed.jsName ~ '__item-shipping-' ~ embed.index,
                                                 'data-selector': '.' ~ embed.jsName ~ '__trigger--' ~ embed.index,
                                                 'default-address-selector': '.' ~ embed.jsName ~ '__default-address-item-shipping-' ~ embed.index,
-                                                'address-hidden-input-selector': '[name="addressesForm[multiShippingAddresses][' ~ index0 ~ '][shippingAddress][id_customer_address]"]',
-                                                'company-address-hidden-input-selector': '[name="addressesForm[multiShippingAddresses][' ~ index0 ~ '][shippingAddress][id_company_unit_address]"]',
+                                                'address-hidden-input-selector': '[name="addressesForm[multiShippingAddresses][' ~ index ~ '][shippingAddress][id_customer_address]"]',
+                                                'company-address-hidden-input-selector': '[name="addressesForm[multiShippingAddresses][' ~ index ~ '][shippingAddress][id_company_unit_address]"]',
                                                 'addresses': data.addresses,
                                             },
                                         } only %}
                                     {% endblock %}
 
                                     {% block hiddenFields %}
-                                        {% set index0 = embed.index - 1 %}
-                                        <input type="hidden" name="addressesForm[multiShippingAddresses][{{ index0 }}][shippingAddress][id_customer_address]">
-                                        <input type="hidden" name="addressesForm[multiShippingAddresses][{{ index0 }}][shippingAddress][id_company_unit_address]">
+                                        {% set index = embed.index - 1 %}
+                                        <input type="hidden" name="addressesForm[multiShippingAddresses][{{ index }}][shippingAddress][id_customer_address]">
+                                        <input type="hidden" name="addressesForm[multiShippingAddresses][{{ index }}][shippingAddress][id_company_unit_address]">
                                         <input type="hidden" class="{{ embed.jsName }}__default-address-item-shipping-{{ embed.index }}" value="{{ defaultAddressKey }}">
                                     {% endblock %}
                                 {% endwidget %}
@@ -142,6 +142,7 @@
 
                 {% include molecule('form') with {
                     class: itemClass,
+                    modifiers: ['checkout-address-content'],
                     data: {
                         form: item.shippingAddress,
                         enableStart: false,

@@ -1,5 +1,9 @@
 {% extends molecule('order-summary', '@SprykerShop:CustomerPage') %}
 
+{% define config = {
+    tag: 'div',
+} %}
+
 {% block body %}
     <div class="{{ config.name }}__top grid grid--justify grid--middle">
         <div class="col col--sm-8">

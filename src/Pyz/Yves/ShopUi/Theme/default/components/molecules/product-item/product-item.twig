@@ -172,7 +172,7 @@
                                     <div class="{{ config.name }}__inner {{ config.name }}__inner--total grid grid--column">
                                         {% block price %}
                                             {% set price = data.listItem.unitPrice is defined ? data.listItem.unitPrice : data.listItem.price %}
-                                            {% set originalAmount = data.listItem.prices.ORIGINAL is not defined or data.listItem.prices.ORIGINAL is empty ? null : data.listItem.prices.ORIGINAL %}
+                                            {% set originalAmount = data.listItem.prices.ORIGINAL ?? null %}
 
                                             {% include molecule('money-price') with {
                                                 modifiers: data.priceModifiers,
