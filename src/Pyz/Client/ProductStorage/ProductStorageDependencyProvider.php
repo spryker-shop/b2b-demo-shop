@@ -68,6 +68,7 @@ class ProductStorageDependencyProvider extends SprykerProductStorageDependencyPr
             new ProductAbstractListStorageRestrictionFilterPlugin(),
         ];
     }
+    
     /**
      * @return \Spryker\Client\ProductStorageExtension\Dependency\Plugin\ProductConcreteRestrictionFilterPluginInterface[]
      */
