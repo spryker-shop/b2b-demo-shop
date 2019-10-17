@@ -5,7 +5,7 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Pyz\Yves\CustomerPage\Plugin\Provider;
+namespace Pyz\Yves\CheckoutPage\Process\DataProviders;
 
 interface CartItemsProductProviderInterface
 {

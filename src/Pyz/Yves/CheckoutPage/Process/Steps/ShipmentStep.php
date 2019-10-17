@@ -7,7 +7,7 @@
 
 namespace Pyz\Yves\CheckoutPage\Process\Steps;
 
-use Pyz\Yves\CheckoutPage\Plugin\Provider\CartItemsProductProviderInterface;
+use Pyz\Yves\CheckoutPage\Process\DataProviders\CartItemsProductProviderInterface;
 use Spryker\Shared\Kernel\Store;
 use Spryker\Shared\Kernel\Transfer\AbstractTransfer;
 use Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginCollection;
@@ -24,7 +24,7 @@ class ShipmentStep extends SprykerShopShipmentStep
     protected $store;
 
     /**
-     * @var \Pyz\Yves\CheckoutPage\Plugin\Provider\CartItemsProductProviderInterface
+     * @var \Pyz\Yves\CheckoutPage\Process\DataProviders\CartItemsProductProviderInterface
      */
     protected $cartItemsProductsProvider;
 
@@ -34,7 +34,7 @@ class ShipmentStep extends SprykerShopShipmentStep
      * @param \SprykerShop\Yves\CheckoutPage\Process\Steps\PostConditionCheckerInterface $postConditionChecker
      * @param \SprykerShop\Yves\CheckoutPage\GiftCard\GiftCardItemsCheckerInterface $giftCardItemsChecker
      * @param \Spryker\Shared\Kernel\Store $store
-     * @param \Pyz\Yves\CheckoutPage\Plugin\Provider\CartItemsProductProviderInterface $cartItemsProductsProvider
+     * @param \Pyz\Yves\CheckoutPage\Process\DataProviders\CartItemsProductProviderInterface $cartItemsProductsProvider
      * @param string $stepRoute
      * @param string $escapeRoute
      */

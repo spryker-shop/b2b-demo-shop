@@ -5,21 +5,21 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Pyz\Yves\CheckoutPage\Plugin\Provider;
+namespace Pyz\Yves\CustomerPage\DataProvider;
 
-use Pyz\Yves\CheckoutPage\Dependency\Client\CheckoutPageToProductStorageClientInterface;
+use Pyz\Yves\CustomerPage\Dependency\Client\CustomerPageToProductStorageClientInterface;
 
 class CartItemsProductProvider implements CartItemsProductProviderInterface
 {
     /**
-     * @var \Pyz\Yves\CheckoutPage\Dependency\Client\CheckoutPageToProductStorageClientInterface
+     * @var \Pyz\Yves\CustomerPage\Dependency\Client\CustomerPageToProductStorageClientInterface
      */
     protected $productStorageClient;
 
     /**
-     * @param \Pyz\Yves\CheckoutPage\Dependency\Client\CheckoutPageToProductStorageClientInterface $productStorageClient
+     * @param \Pyz\Yves\CustomerPage\Dependency\Client\CustomerPageToProductStorageClientInterface $productStorageClient
      */
-    public function __construct(CheckoutPageToProductStorageClientInterface $productStorageClient)
+    public function __construct(CustomerPageToProductStorageClientInterface $productStorageClient)
     {
         $this->productStorageClient = $productStorageClient;
     }

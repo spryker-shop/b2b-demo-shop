@@ -9,8 +9,8 @@ namespace Pyz\Yves\CheckoutPage\Process;
 
 use Pyz\Yves\CheckoutPage\CheckoutPageDependencyProvider;
 use Pyz\Yves\CheckoutPage\Dependency\Client\CheckoutPageToProductStorageClientInterface;
-use Pyz\Yves\CheckoutPage\Plugin\Provider\CartItemsProductProvider;
-use Pyz\Yves\CheckoutPage\Plugin\Provider\CartItemsProductProviderInterface;
+use Pyz\Yves\CheckoutPage\Process\DataProviders\CartItemsProductProvider;
+use Pyz\Yves\CheckoutPage\Process\DataProviders\CartItemsProductProviderInterface;
 use Pyz\Yves\CheckoutPage\Process\Steps\AddressStep;
 use Pyz\Yves\CheckoutPage\Process\Steps\ShipmentStep;
 use Pyz\Yves\CheckoutPage\Process\Steps\SummaryStep;
@@ -72,7 +72,7 @@ class StepFactory extends SprykerShopStepFactory
     }
 
     /**
-     * @return \Pyz\Yves\CheckoutPage\Plugin\Provider\CartItemsProductProviderInterface
+     * @return \Pyz\Yves\CheckoutPage\Process\DataProviders\CartItemsProductProviderInterface
      */
     public function createCartItemsProductsProvider(): CartItemsProductProviderInterface
     {

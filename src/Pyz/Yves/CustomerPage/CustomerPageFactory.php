@@ -9,8 +9,8 @@ namespace Pyz\Yves\CustomerPage;
 
 use Generated\Shared\Transfer\CustomerTransfer;
 use Pyz\Yves\CustomerPage\Dependency\Client\CustomerPageToProductStorageClientInterface;
-use Pyz\Yves\CustomerPage\Plugin\Provider\CartItemsProductProvider;
-use Pyz\Yves\CustomerPage\Plugin\Provider\CartItemsProductProviderInterface;
+use Pyz\Yves\CustomerPage\DataProvider\CartItemsProductProvider;
+use Pyz\Yves\CustomerPage\DataProvider\CartItemsProductProviderInterface;
 use Pyz\Yves\CustomerPage\Security\Customer;
 use Spryker\Client\Session\SessionClientInterface;
 use SprykerShop\Yves\CustomerPage\CustomerPageFactory as SprykerCustomerPageFactory;
@@ -42,7 +42,7 @@ class CustomerPageFactory extends SprykerCustomerPageFactory
     }
 
     /**
-     * @return \Pyz\Yves\CustomerPage\Plugin\Provider\CartItemsProductProviderInterface
+     * @return \Pyz\Yves\CustomerPage\DataProvider\CartItemsProductProviderInterface
      */
     public function createCartItemsProductsProvider(): CartItemsProductProviderInterface
     {
