@@ -146,9 +146,11 @@
 
                 {% if hasShippingAddressesAndApplicable %}
                     {% include molecule('address-form-toggler', 'CustomerPage') ignore missing with {
+                        class: config.jsName ~ '__toggler',
                         attributes: {
                             'trigger-selector': '.' ~ config.jsName ~ '__trigger--' ~ loop.index,
                             'target-selector': '.' ~ config.jsName ~ '__item-shipping--' ~ loop.index,
+                            'parent-target-class-name': config.jsName,
                         },
                     } only %}
                 {% endif %}
@@ -169,6 +171,7 @@
             'container-selector': '.' ~ config.jsName ~ '__item-shipping',
             'target-selector': '.' ~ data.jsAddressClass ~ '__form-submit',
             'dropdown-trigger-selector': '.' ~ config.jsName ~ '__trigger',
+            'parent-target-class-name': config.jsName,
             'is-enable': false,
         },
     } only %}
