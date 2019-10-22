@@ -31,7 +31,7 @@
                     hasShippingAddresses: hasShippingAddresses,
                     hasCompanyUnitAddresses: hasCompanyUnitAddresses,
                     parentConfigName: config.name,
-                    product: data.products[item.vars.data.sku],
+                    product: data.products[item.vars.data.sku] | default(null),
                 },
             } only %}
                 {% block image %}

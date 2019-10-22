@@ -2,8 +2,8 @@
 
 {% define data = {
     stepNumder: 2,
-    products: _view.products,
-    currentLanguage: _view.currentLanguage,
+    products: _view.products | default({}),
+    currentLanguage: _view.currentLanguage | default,
 } %}
 
 {% block content %}
@@ -66,7 +66,7 @@
                                         priceModifiers: ['medium', 'block', 'margin-bottom-from-tablet'],
                                     },
                                     embed: {
-                                        product: embed.products[item.sku],
+                                        product: embed.products[item.sku] | default(null),
                                     },
                                 } only %}
                                     {% block image %}

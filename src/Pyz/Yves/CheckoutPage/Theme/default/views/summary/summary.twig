@@ -2,7 +2,7 @@
 
 {% define data = {
     stepNumder: 4,
-    products: _view.products,
+    products: _view.products | default({}),
 } %}
 
 {% block content %}
@@ -27,7 +27,7 @@
                             priceModifiers: ['medium', 'block', 'margin-bottom-from-tablet'],
                         },
                         embed: {
-                            product: data.products[item.sku],
+                            product: data.products[item.sku] | default(null),
                         },
                     } only %}
                         {% block image %}
