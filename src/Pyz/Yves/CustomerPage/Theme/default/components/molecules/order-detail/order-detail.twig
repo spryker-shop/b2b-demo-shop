@@ -1,9 +1,5 @@
 {% extends molecule('order-detail', '@SprykerShop:CustomerPage') %}
 
-{% define data = {
-    products: required,
-} %}
-
 {% block body %}
     {% include molecule('action-bar') with {
         modifiers: ['first'],
@@ -32,7 +28,6 @@
             orderShipmentExpenses: data.orderShipmentExpenses,
             currencyIsoCode: data.order.currencyIsoCode,
             order: data.order,
-            products: data.products,
         },
     } only %}
 

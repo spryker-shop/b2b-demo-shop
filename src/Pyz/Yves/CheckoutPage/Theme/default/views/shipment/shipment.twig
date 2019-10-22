@@ -2,8 +2,6 @@
 
 {% define data = {
     stepNumder: 2,
-    products: _view.products | default({}),
-    currentLanguage: _view.currentLanguage | default,
 } %}
 
 {% block content %}
@@ -30,10 +28,6 @@
                 icon: '',
                 class: 'form__action--expand-sm-md button button--big button--hollow-icon button--back',
             },
-        },
-        embed: {
-            currentLanguage: data.currentLanguage,
-            products: data.products,
         },
     } only %}
         {% block fieldset %}
@@ -65,9 +59,6 @@
                                         quantity: item.quantity,
                                         priceModifiers: ['medium', 'block', 'margin-bottom-from-tablet'],
                                     },
-                                    embed: {
-                                        product: embed.products[item.sku] | default(null),
-                                    },
                                 } only %}
                                     {% block image %}
                                         {% set imageUrl = data.listItem.images is not empty ? data.listItem.images[0].externalUrlLarge : null %}
@@ -83,17 +74,6 @@
 
                                     {% block title %}
                                         <h6 class="{{ config.name }}__title spacing spacing--reset">{{ data.listItem.name }}</h6>
-                                    {% endblock %}
-
-                                    {% block info %}
-                                        {{ parent() }}
-
-                                        {% if embed.product.attributes.farbe is defined %}
-                                            <span class="{{ config.name }}__color-preview">
-                                                {{ 'cart.item.color' | trans }}:
-                                                <span class="{{ config.name }}__color-preview-decoration" style="background: {{ embed.product.colorCode  }}" title="{{ embed.product.attributes.farbe  }}"></span>
-                                            </span>
-                                        {% endif %}
                                     {% endblock %}
 
                                     {% block note %}
@@ -118,7 +98,6 @@
                             {% include molecule('shipment-sidebar', 'CheckoutPage') with {
                                 data: {
                                     shipment: shipmentGroupForm.shipment,
-                                    currentLanguage: embed.currentLanguage,
                                 },
                             } only %}
                         </div>

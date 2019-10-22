@@ -1,9 +1,5 @@
 {% extends molecule('address-item-form', '@SprykerShop:CheckoutPage') %}
 
-{% define data = {
-    products: required,
-} %}
-
 {% block body %}
     {% block title %}
         <h5 class="title title--second title--underline">{{ 'page.checkout.address.multi_shipment.title' | trans }}</h5>
@@ -26,7 +22,6 @@
             jsName: config.jsName,
             shippingForm: data.shippingForm,
             jsAddressClass: data.jsAddressClass,
-            products: data.products,
         },
     } only %}
         {% block fields %}
@@ -36,7 +31,6 @@
                         items: data.form,
                         shippingForm: embed.shippingForm,
                         jsAddressClass: embed.jsAddressClass,
-                        products: embed.products,
                     },
                 } only %}
             </div>

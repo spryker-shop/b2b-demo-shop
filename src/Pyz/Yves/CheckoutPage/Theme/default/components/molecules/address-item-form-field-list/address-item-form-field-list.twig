@@ -1,9 +1,5 @@
 {% extends molecule('address-item-form-field-list', '@SprykerShop:CheckoutPage') %}
 
-{% define data = {
-    products: required,
-} %}
-
 {% block body %}
     {% set companyBusinessUnitShippingAddressWidget = findWidget('CompanyBusinessUnitAddressWidget', ['shippingAddress', data.shippingForm.vars.data]) %}
     {% set isCompanyBusinessUnitShippingAddressApplicable = companyBusinessUnitShippingAddressWidget and companyBusinessUnitShippingAddressWidget.isApplicable %}
@@ -31,7 +27,6 @@
                     hasShippingAddresses: hasShippingAddresses,
                     hasCompanyUnitAddresses: hasCompanyUnitAddresses,
                     parentConfigName: config.name,
-                    product: data.products[item.vars.data.sku] | default(null),
                 },
             } only %}
                 {% block image %}
@@ -48,17 +43,6 @@
 
                 {% block title %}
                     <h6 class="{{ config.name }}__title spacing spacing--reset">{{ data.listItem.name }}</h6>
-                {% endblock %}
-
-                {% block info %}
-                    {{ parent() }}
-
-                    {% if embed.product.attributes.farbe is defined %}
-                        <span class="{{ config.name }}__color-preview">
-                            {{ 'cart.item.color' | trans }}:
-                            <span class="{{ config.name }}__color-preview-decoration" style="background: {{ embed.product.colorCode  }}" title="{{ embed.product.attributes.farbe  }}"></span>
-                        </span>
-                    {% endif %}
                 {% endblock %}
 
                 {% block productTotal %}

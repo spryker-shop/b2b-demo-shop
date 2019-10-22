@@ -2,7 +2,6 @@
 
 {% define data = {
     stepNumder: 1,
-    products: _view.products | default({}),
 } %}
 
 {% block containerClass %}container--medium{% endblock %}
@@ -39,7 +38,6 @@
             companyBusinessUnitShippingAddressWidget: companyBusinessUnitShippingAddressWidget,
             isCompanyBusinessUnitShippingAddressApplicable: isCompanyBusinessUnitShippingAddressApplicable,
             jsAddressClass: jsAddressClass,
-            products: data.products,
         },
     } only %}
         {% block title %}{% endblock %}
@@ -113,7 +111,6 @@
                             form: embed.forms.items,
                             shippingForm: embed.forms.shipping,
                             jsAddressClass: embed.jsAddressClass,
-                            products: embed.products,
                         },
                     } only %}
                 {% endif %}
