@@ -27,8 +27,10 @@ use SprykerShop\Yves\CheckoutPage\Process\Steps\AddressStep\PostConditionChecker
 use SprykerShop\Yves\CheckoutPage\Process\Steps\PostConditionCheckerInterface;
 use SprykerShop\Yves\CheckoutPage\Process\Steps\StepExecutorInterface;
 use SprykerShop\Yves\CheckoutPageExtension\Dependency\Plugin\AddressTransferExpanderPluginInterface;
+use SprykerShop\Yves\CheckoutPageExtension\Dependency\Plugin\CheckoutAddressStepEnterPreCheckPluginInterface;
 use SprykerShop\Yves\CompanyPage\Plugin\CheckoutPage\CompanyUnitAddressExpanderPlugin;
 use SprykerShop\Yves\CustomerPage\Plugin\CheckoutPage\CustomerAddressExpanderPlugin;
+use SprykerShop\Yves\QuoteApprovalWidget\Plugin\CheckoutPage\QuoteApprovalCheckerCheckoutAddressStepEnterPreCheckPlugin;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -379,6 +381,7 @@ class AddressStepTest extends Unit
                 $this->createConfigMock(),
                 'address_step',
                 'escape_route',
+                $this->getCheckoutAddressStepEnterPreCheckPlugins()
             ])
             ->getMock();
 
@@ -489,5 +492,25 @@ class AddressStepTest extends Unit
             $this->createCustomerAddressExpanderPluginMock(),
             $this->createCompanyUnitAddressExpanderPluginMock(),
         ];
+    }
+
+    /**
+     * @return \SprykerShop\Yves\CheckoutPageExtension\Dependency\Plugin\CheckoutAddressStepEnterPreCheckPluginInterface[]
+     */
+    public function getCheckoutAddressStepEnterPreCheckPlugins(): array
+    {
+        return [
+            $this->getQuoteApprovalCheckerCheckoutAddressStepEnterPreCheckPluginMock(),
+        ];
+    }
+
+    /**
+     * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerShop\Yves\CheckoutPageExtension\Dependency\Plugin\CheckoutAddressStepEnterPreCheckPluginInterface
+     */
+    protected function getQuoteApprovalCheckerCheckoutAddressStepEnterPreCheckPluginMock(): CheckoutAddressStepEnterPreCheckPluginInterface
+    {
+        return $this->getMockBuilder(QuoteApprovalCheckerCheckoutAddressStepEnterPreCheckPlugin::class)
+            ->enableProxyingToOriginalMethods()
+            ->getMock();
     }
 }
