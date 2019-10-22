@@ -23,6 +23,8 @@ use SprykerShop\Yves\CheckoutPage\GiftCard\GiftCardItemsCheckerInterface;
 use SprykerShop\Yves\CheckoutPage\Process\Steps\PostConditionCheckerInterface;
 use SprykerShop\Yves\CheckoutPage\Process\Steps\ShipmentStep;
 use SprykerShop\Yves\CheckoutPage\Process\Steps\ShipmentStep\PostConditionChecker;
+use SprykerShop\Yves\CheckoutPageExtension\Dependency\Plugin\CheckoutShipmentStepEnterPreCheckPluginInterface;
+use SprykerShop\Yves\QuoteApprovalWidget\Plugin\CheckoutPage\QuoteApprovalCheckerCheckoutShipmentStepEnterPreCheckPlugin;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -94,7 +96,8 @@ class ShipmentStepTest extends Unit
             $this->createShipmentStepPostConditionCheckerMock($giftCardItemsCheckerMock),
             $giftCardItemsCheckerMock,
             CheckoutPageDependencyProvider::PLUGIN_SHIPMENT_STEP_HANDLER,
-            'escape_route'
+            'escape_route',
+            $this->getCheckoutShipmentStepEnterPreCheckPlugins()
         );
     }
 
@@ -156,6 +159,26 @@ class ShipmentStepTest extends Unit
     {
         return $this->getMockBuilder(CheckoutPageToShipmentServiceBridge::class)
             ->setConstructorArgs([$this->tester->getShipmentService()])
+            ->enableProxyingToOriginalMethods()
+            ->getMock();
+    }
+
+    /**
+     * @return \SprykerShop\Yves\CheckoutPageExtension\Dependency\Plugin\CheckoutShipmentStepEnterPreCheckPluginInterface[]
+     */
+    public function getCheckoutShipmentStepEnterPreCheckPlugins(): array
+    {
+        return [
+            $this->getQuoteApprovalCheckerCheckoutShipmentStepEnterPreCheckPluginMock(),
+        ];
+    }
+
+    /**
+     * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerShop\Yves\CheckoutPageExtension\Dependency\Plugin\CheckoutShipmentStepEnterPreCheckPluginInterface
+     */
+    protected function getQuoteApprovalCheckerCheckoutShipmentStepEnterPreCheckPluginMock(): CheckoutShipmentStepEnterPreCheckPluginInterface
+    {
+        return $this->getMockBuilder(QuoteApprovalCheckerCheckoutShipmentStepEnterPreCheckPlugin::class)
             ->enableProxyingToOriginalMethods()
             ->getMock();
     }
