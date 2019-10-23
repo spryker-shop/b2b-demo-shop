@@ -344,6 +344,7 @@
             &[aria-selected='true'] {
                 background: none;
                 position: relative;
+
                 &::before {
                     content: '';
                     position: absolute;
@@ -360,9 +361,11 @@
             &--highlighted[aria-selected] {
                 background: none;
                 color: $setting-color-gray-3;
+
                 &:hover {
                     background: none;
                     color: $setting-color-gray-5;
+
                     &::before {
                         border-color: $setting-color-gray-5;
                     }

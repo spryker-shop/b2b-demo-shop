@@ -64,11 +64,11 @@
     }
 
     &__contact-info-item {
+        @include helper-effect-transition(color);
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        @include helper-effect-transition(color);
         color: $setting-color-gray-5;
         font-size: rem(14);
         font-weight: fw(medium);

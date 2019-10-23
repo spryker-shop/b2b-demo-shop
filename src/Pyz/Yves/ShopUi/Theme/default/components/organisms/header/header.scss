@@ -26,11 +26,11 @@
             }
 
             @include helper-breakpoint-media-min($lg) {
+                @include helper-visibility-visible;
                 display: block;
                 position: relative;
                 transform: none;
                 transition: none;
-                @include helper-visibility-visible;
                 z-index: $setting-zi-element;
             }
 
@@ -191,8 +191,8 @@
             font-weight: fw(medium);
 
             @include helper-breakpoint-media-min($lg) {
-                display: inline-block;
                 @include helper-effect-transition(color border-color);
+                display: inline-block;
                 padding: rem(10) rem(30);
                 border: rem(1) solid $setting-color-gray-2;
                 border-radius: $setting-border-radius;
