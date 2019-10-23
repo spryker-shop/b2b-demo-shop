@@ -23,6 +23,12 @@
         }
     }
 
+    &--text-right-from-tablet {
+        @include helper-breakpoint-media-min($lg) {
+            text-align: right;
+        }
+    }
+
     &--secondary {
         margin-top: rem(8);
         padding: rem(14) rem(16);

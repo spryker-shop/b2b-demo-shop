@@ -1,7 +1,3 @@
-$address-sub-form-width: rem(710);
-$address-sub-form-dropdown-width: calc(100% + #{rem(4)});
-$address-sub-form-top-indent: calc(100% + #{rem(15)});
-
 @mixin checkout-page-address-item-form-field-list($name: '.address-item-form-field-list') {
     #{$name} {
         &__wrapper {
@@ -60,37 +56,6 @@ $address-sub-form-top-indent: calc(100% + #{rem(15)});
                         display: none;
                     }
                 }
-            }
-        }
-
-        &__dropdown {
-            position: absolute;
-            left: rem(-2);
-            width: $address-sub-form-dropdown-width;
-            top: $address-sub-form-top-indent;
-
-            @include helper-breakpoint-media-min($lg) {
-                position: static;
-                width: 100%;
-                left: auto;
-                top: auto;
-            }
-
-            .select2-selection__rendered,
-            .custom-select__select {
-                background-color: $setting-color-white;
-
-                @include helper-breakpoint-media-min($lg) {
-                    background-color: $setting-color-gray-7;
-                }
-            }
-        }
-
-        &__price {
-            width: 100%;
-
-            @include helper-breakpoint-media-min($lg) {
-                text-align: right;
             }
         }
 

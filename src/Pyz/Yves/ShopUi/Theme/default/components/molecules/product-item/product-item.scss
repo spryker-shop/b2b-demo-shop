@@ -1,5 +1,7 @@
 $product-image-width: rem(78);
 $product-image-left-indent: rem(35);
+$address-sub-form-dropdown-width: calc(100% + #{rem(4)});
+$address-sub-form-top-indent: calc(100% + #{rem(15)});
 
 @mixin shop-ui-product-item($name: '.product-item') {
     #{$name} {
@@ -279,6 +281,29 @@ $product-image-left-indent: rem(35);
             }
         }
 
+        &__dropdown {
+            position: absolute;
+            left: rem(-2);
+            width: $address-sub-form-dropdown-width;
+            top: $address-sub-form-top-indent;
+
+            @include helper-breakpoint-media-min($lg) {
+                position: static;
+                width: 100%;
+                left: auto;
+                top: auto;
+            }
+
+            .select2-selection__rendered,
+            .custom-select__select {
+                background-color: $setting-color-white;
+
+                @include helper-breakpoint-media-min($lg) {
+                    background-color: $setting-color-gray-7;
+                }
+            }
+        }
+
         &--shopping-list-available {
             padding-bottom: rem(75);
 
@@ -307,7 +332,7 @@ $product-image-left-indent: rem(35);
                     #{$name} & {
                         @include helper-breakpoint-media-min($lg) {
                             padding-left: 0;
-                            padding-right: #{$setting-grid-space*2};
+                            padding-right: #{$setting-grid-space * 2};
                         }
                     }
                 }
@@ -385,7 +410,7 @@ $product-image-left-indent: rem(35);
                     #{$name} & {
                         @include helper-breakpoint-media-min($lg) {
                             padding-left: 0;
-                            padding-right: #{$setting-grid-space*2};
+                            padding-right: #{$setting-grid-space * 2};
                         }
                     }
                 }
