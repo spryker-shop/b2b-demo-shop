@@ -1,9 +1,5 @@
 {% extends view('order-detail', '@SprykerShop:CustomerPage') %}
 
-{% define data = {
-    products: _view.products | default({}),
-} %}
-
 {% block customerContent %}
     {% embed molecule('customer-reorder-form', 'CustomerReorderWidget') ignore missing with {
         data: {
@@ -13,7 +9,6 @@
             order: data.order,
             shipmentGroups: data.shipmentGroups,
             orderShipmentExpenses: data.orderShipmentExpenses,
-            products: data.products,
         },
     } only %}
         {% block formContent %}
@@ -22,7 +17,6 @@
                     order: embed.order,
                     shipmentGroups: embed.shipmentGroups,
                     orderShipmentExpenses: embed.orderShipmentExpenses,
-                    products: embed.products,
                 },
             } only %}
         {% endblock %}

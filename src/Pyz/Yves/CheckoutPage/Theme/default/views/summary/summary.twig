@@ -2,7 +2,6 @@
 
 {% define data = {
     stepNumder: 4,
-    products: _view.products | default({}),
 } %}
 
 {% block content %}
@@ -26,9 +25,6 @@
                             quantity: item.quantity,
                             priceModifiers: ['medium', 'block', 'margin-bottom-from-tablet'],
                         },
-                        embed: {
-                            product: data.products[item.sku] | default(null),
-                        },
                     } only %}
                         {% block image %}
                             {% set imageUrl = data.listItem.images is not empty ? data.listItem.images[0].externalUrlLarge : null %}
@@ -44,17 +40,6 @@
 
                         {% block title %}
                             <h6 class="{{ config.name }}__title spacing spacing--reset">{{ data.listItem.name }}</h6>
-                        {% endblock %}
-
-                        {% block info %}
-                            {{ parent() }}
-
-                            {% if embed.product.attributes.farbe is defined %}
-                                <span class="{{ config.name }}__color-preview">
-                                    {{ 'cart.item.color' | trans }}:
-                                    <span class="{{ config.name }}__color-preview-decoration" style="background: {{ embed.product.colorCode  }}" title="{{ embed.product.attributes.farbe  }}"></span>
-                                </span>
-                            {% endif %}
                         {% endblock %}
 
                         {% block subQuantity %}
