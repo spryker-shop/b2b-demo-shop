@@ -6,30 +6,33 @@
     {% set fullAddresses = data.customerAddresses ?: data.companyBusinessUnitAddresses %}
     {% set shippingAddress = 'shippingAddress' %}
     {% set billingAddress = 'billingAddress' %}
+    {% set fullAddresses = data.customerAddresses ? data.customerAddresses | merge(data.companyBusinessUnitAddresses) : data.companyBusinessUnitAddresses %}
+    {% set isShippingAddressFormType = data.formType == shippingAddress %}
+    {% set isBillingAddressFormType = data.formType == billingAddress %}
+    {% set addressSelectLabel = isShippingAddressFormType ? 'page.checkout.address.delivery.address_select' : 'page.checkout.address.billing.address_select' %}
 
     {% if fullAddresses %}
         {% for address in fullAddresses %}
-            {% set isShippingAddress = not data.currentAddressId and data.formType == shippingAddress and address.isDefaultShipping %}
-            {% set isBillingAddress = not data.currentAddressId and data.formType == billingAddress and address.isDefaultBilling %}
-            {% set isCustomerAddress = data.currentAddressId == address.idCustomerAddress %}
+            {% set canUseCurrentAsDefaultCustomerAddress = not data.currentAddressId and not data.currentCompanyUnitAddressId and isShippingAddressFormType and address.isDefaultShipping and data.isCurrentAddressEmpty %}
+            {% set canUseCurrentAsDefaultCompanyUnitAddress = not data.currentAddressId and not data.currentCompanyUnitAddressId and isBillingAddressFormType and address.isDefaultBilling and data.isCurrentAddressEmpty %}
+            {% set isCurrentCustomerAddress = data.currentAddressId and data.currentAddressId == address.idCustomerAddress %}
+            {% set isCurrentCompanyUnitAddress = data.currentCompanyUnitAddressId and data.currentCompanyUnitAddressId == address.idCompanyUnitAddress %}
+            {% set isCurrentValueDeliverToMultipleAddresses = data.currentAddressId == optionValueDeliverToMultipleAddresses %}
+            {% set isBillingAddress = not data.currentAddressId and isBillingAddressFormType and address.isDefaultBilling %}
 
-            {% if isShippingAddress or isBillingAddress or isCustomerAddress %}
+            {% if canUseCurrentAsDefaultCustomerAddress or canUseCurrentAsDefaultCompanyUnitAddress
+                or isCurrentCustomerAddress or isCurrentCompanyUnitAddress
+            %}
                 {% set defaultAddressKey = address.key %}
             {% endif %}
 
-            {% if data.currentAddressId == optionValueDeliverToMultipleAddresses %}
+            {% if isCurrentValueDeliverToMultipleAddresses %}
                 {% set defaultAddressKey = optionValueDeliverToMultipleAddresses %}
             {% endif %}
         {% endfor %}
     {% endif %}
 
-    {% if data.formType == shippingAddress %}
-        <label class="label">{{ 'page.checkout.address.delivery.address_select' | trans }}</label>
-    {% endif %}
-
-    {% if data.formType == billingAddress %}
-        <label class="label">{{ 'page.checkout.address.billing.address_select' | trans }}</label>
-    {% endif %}
+    <label>{{ addressSelectLabel | trans }}</label><br>
 
     {% embed molecule('custom-select') with {
         modifiers: ['full-width', 'group'],
