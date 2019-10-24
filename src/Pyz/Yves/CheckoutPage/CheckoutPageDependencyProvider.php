@@ -114,7 +114,7 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
      *
      * @return \SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToShipmentClientInterface
      */
-    public function getShipmentClient(Container $container): CheckoutPageToShipmentClientInterface
+    protected function getShipmentClient(Container $container): CheckoutPageToShipmentClientInterface
     {
         return $container->get(static::CLIENT_SHIPMENT);
     }
