@@ -1,7 +1,7 @@
 $product-image-width: rem(78);
 $product-image-left-indent: rem(35);
-$address-sub-form-dropdown-width: calc(100% + #{rem(4)});
-$address-sub-form-top-indent: calc(100% + #{rem(15)});
+$dropdown-width: calc(100% + #{rem(4)});
+$dropdown-top-indent: calc(100% + #{rem(15)});
 
 @mixin shop-ui-product-item($name: '.product-item') {
     #{$name} {
@@ -284,8 +284,8 @@ $address-sub-form-top-indent: calc(100% + #{rem(15)});
         &__dropdown {
             position: absolute;
             left: rem(-2);
-            width: $address-sub-form-dropdown-width;
-            top: $address-sub-form-top-indent;
+            width: $dropdown-width;
+            top: $dropdown-top-indent;
 
             @include helper-breakpoint-media-min($lg) {
                 position: static;
