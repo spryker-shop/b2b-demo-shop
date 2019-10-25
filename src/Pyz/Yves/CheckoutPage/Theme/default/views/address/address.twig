@@ -133,7 +133,7 @@
 
             <div class="col col--sm-12 {{ embed.jsAddressClass }}__form-handler-billingAddress">
                 {% embed molecule('form') with {
-                    class: 'spacing-top spacing-top--big ' ~ embed.jsAddressClass ~ '__billing-same-as-shipping is-hidden',
+                    class: 'spacing-top spacing-top--big spacing-x spacing-x--inner spacing-x--reset ' ~ embed.jsAddressClass ~ '__billing-same-as-shipping is-hidden',
                     modifiers: ['checkout-form', 'hidden-actions'],
                     data: {
                         form: embed.forms.billing,

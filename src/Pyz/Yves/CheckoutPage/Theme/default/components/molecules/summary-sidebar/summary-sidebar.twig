@@ -13,8 +13,7 @@
         <h4 class="{{ config.name }}__title">
             {{ 'checkout.step.summary.delivery_address' | trans }}
 
-            <a class="float-right" href="{{ url('checkout-address') }}">
-                {{ 'general.edit.button' | trans }}
+            <a class="float-right link link--alt link--action spacing-left" href="{{ url('checkout-address') }}">
                 {% include molecule('icon-tooltip') with {
                     modifiers: ['big'],
                     data: {
@@ -34,7 +33,19 @@
     </div>
 
     <div class="{{ config.name }}__item">
-        <h4 class="{{ config.name }}__title">{{ 'checkout.step.summary.delivery_method' | trans }}</h4>
+        <h4 class="{{ config.name }}__title">
+            {{ 'checkout.step.summary.delivery_method' | trans }}
+
+            <a class="float-right link link--alt link--action spacing-left" href="{{ url('checkout-shipment') }}">
+                {% include molecule('icon-tooltip') with {
+                    modifiers: ['big'],
+                    data: {
+                        icon: 'edit',
+                        text: 'general.edit.button' | trans,
+                    },
+                } only %}
+            </a>
+        </h4>
 
         {% include molecule('delivery-information', 'CustomerPage') ignore missing with {
             data: {
@@ -48,7 +59,19 @@
 
     {% if data.shipment.requestedDeliveryDate %}
         <div class="{{ config.name }}__item">
-            <h4 class="{{ config.name }}__title">{{ 'checkout.step.summary.requested_delivery_date' | trans }}</h4>
+            <h4 class="{{ config.name }}__title">
+                {{ 'checkout.step.summary.requested_delivery_date' | trans }}
+
+                <a class="float-right link link--alt link--action spacing-left" href="{{ url('checkout-shipment') }}">
+                    {% include molecule('icon-tooltip') with {
+                        modifiers: ['big'],
+                        data: {
+                            icon: 'edit',
+                            text: 'general.edit.button' | trans,
+                        },
+                    } only %}
+                </a>
+            </h4>
             <span class="{{ config.name }}__content">{{ data.shipment.requestedDeliveryDate }}</span>
         </div>
     {% endif %}

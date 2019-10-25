@@ -106,6 +106,8 @@
                     title: 'checkout.step.summary.payment' | trans,
                     method: data.paymentMethod,
                     iconName: data.paymentMethod | lower,
+                    editUrl: 'checkout-payment',
+                    canEdit: true,
                 },
             } only %}
         </div>
@@ -114,6 +116,8 @@
                 data: {
                     title: 'checkout.step.summary.billing_address' | trans,
                     address: data.billingAddress,
+                    editUrl: 'checkout-address',
+                    canEdit: true,
                 },
             } only %}
         </div>
