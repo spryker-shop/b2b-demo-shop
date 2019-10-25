@@ -13,10 +13,10 @@
         }
 
         &__link {
+            @include helper-effect-transition(color);
             display: flex;
             align-items: center;
             color: $setting-color-gray-4;
-            @include helper-effect-transition(color);
 
             &:hover {
                 color: $setting-color-gray-3;
