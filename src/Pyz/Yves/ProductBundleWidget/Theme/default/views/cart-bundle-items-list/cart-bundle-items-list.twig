@@ -1,13 +1,13 @@
 {% extends template('widget') %}
 
 {% define data = {
-    items: _widget.bundleItems
+    items: _widget.bundleItems,
 } %}
 
 {% block body %}
     {% include molecule('cart-bundle-items', 'ProductBundleWidget') with {
         data: {
             items: data.items,
-        }
+        },
     } only %}
 {% endblock %}
