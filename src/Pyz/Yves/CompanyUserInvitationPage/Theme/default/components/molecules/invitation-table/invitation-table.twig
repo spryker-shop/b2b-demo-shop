@@ -3,14 +3,14 @@
 {% block body %}
     <table class="table table--expand table--responsive">
         <thead>
-        <tr class="active">
-            <th>{{ 'company.user.invitation.first.name' | trans }}</th>
-            <th>{{ 'company.user.invitation.last.name' | trans }}</th>
-            <th>{{ 'company.user.invitation.mail' | trans }}</th>
-            <th>{{ 'company.user.invitation.business.unit' | trans }}</th>
-            <th>{{ 'company.user.invitation.status' | trans }}</th>
-            <th></th>
-        </tr>
+            <tr class="active">
+                <th>{{ 'company.user.invitation.first.name' | trans }}</th>
+                <th>{{ 'company.user.invitation.last.name' | trans }}</th>
+                <th>{{ 'company.user.invitation.mail' | trans }}</th>
+                <th>{{ 'company.user.invitation.business.unit' | trans }}</th>
+                <th>{{ 'company.user.invitation.status' | trans }}</th>
+                <th></th>
+            </tr>
         </thead>
         <tbody>
         {% for invitation in data.invitations %}
@@ -50,9 +50,4 @@
         {% endfor %}
         </tbody>
     </table>
-    {% include molecule('action-single-click-enforcer') with {
-        attributes: {
-            'target-selector': '.' ~ config.jsName ~ '__invitation-sender',
-        },
-    } only %}
 {% endblock %}
