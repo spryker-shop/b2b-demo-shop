@@ -14,6 +14,7 @@
             {% block title %}
                 <h5 class="{{config.name}}__title">{{ 'cart.item.bundle.description' | trans }}</h5>
             {% endblock %}
+
             {% block itemsList %}
                 <ul class="{{config.name}}__list">
                     {% for item in data.items %}
