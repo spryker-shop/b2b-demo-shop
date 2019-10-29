@@ -1,10 +1,4 @@
-{% extends template('widget') %}
-
-{% define data = {
-    isSubscribed: _widget.isSubscribed,
-    subscribeForm: _widget.subscribeForm,
-    unsubscribeForm: _widget.unsubscribeForm
-} %}
+{% extends view('availability-subscription', '@SprykerShop:AvailabilityNotificationWidget') %}
 
 {% block body %}
     {% if data.isSubscribed %}
@@ -30,14 +24,14 @@
             data: {
                 form: data.subscribeForm,
                 options: {
-                    action: url('availability-notification/subscribe')
+                    action: url('availability-notification/subscribe'),
                 },
                 submit: {
                     enable: true,
                     class: 'button button--secondary button--form spacing-right spacing-right--reset',
                     icon: 'chevron-right',
-                    text: ''
-                }
+                    text: '',
+                },
             }
         } only %}
     {% endif %}

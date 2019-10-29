@@ -1,32 +1,7 @@
-{% extends template('page-layout-company', 'CompanyPage') %}
-
-{% define data = {
-    form: _view.form,
-    addresses: _view.addresses,
-    title: 'company.account.business_unit' | trans,
-    activePage: 'business-unit',
-} %}
-
-{% block breadcrumbs %}
-    {% include molecule('breadcrumb') with {
-        data: {
-            steps: [
-                {
-                    label: 'company.account.page-title' | trans,
-                    url: url('company/overview'),
-                }, {
-                    label: 'company.account.business_unit' | trans,
-                    url: url('company/business-unit'),
-                }, {
-                    label: 'company.account.business_unit.edit' | trans,
-                },
-            ],
-        },
-    } only %}
-{% endblock %}
+{% extends view('business-unit-update', '@SprykerShop:CompanyPage') %}
 
 {% block companyContent %}
-    {% include molecule('action-bar', 'ShopUi') with {
+    {% include molecule('action-bar') with {
         modifiers: ['narrow'],
         data: {
             title: 'company.account.business_unit.edit_information' | trans,
@@ -40,7 +15,6 @@
             ],
         },
     } only %}
-
     {% embed molecule('form') with {
         modifiers: ['narrow'],
         data: {

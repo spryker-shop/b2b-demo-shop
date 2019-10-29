@@ -1,10 +1,4 @@
-{% extends template('page-layout-company', 'CompanyPage') %}
-
-{% define data = {
-    form: _view.companyUserForm,
-    title: 'company.account.company_user.add' | trans,
-    activePage: 'users',
-} %}
+{% extends view('user-create', '@SprykerShop:CompanyPage') %}
 
 {% block breadcrumbs %}
     {% include molecule('breadcrumb') with {
@@ -14,7 +8,7 @@
                     label: 'company.account.page-title' | trans,
                     url: url('company/overview'),
                 }, {
-                    label: 'company.account.company_user' | trans,
+                    label: data.title,
                     url: url('company/user'),
                 }, {
                     label: 'company.account.company_user.add' | trans,
@@ -25,7 +19,7 @@
 {% endblock %}
 
 {% block companyContent %}
-    {% include molecule('action-bar', 'ShopUi') with {
+    {% include molecule('action-bar') with {
         data: {
             title: 'company.account.company_user.add' | trans,
         },

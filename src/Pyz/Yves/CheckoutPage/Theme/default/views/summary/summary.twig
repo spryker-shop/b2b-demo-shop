@@ -1,36 +1,8 @@
-{% extends template('page-layout-checkout', 'CheckoutPage') %}
+{% extends view('summary', '@SprykerShop:CheckoutPage') %}
 
 {% define data = {
-    backUrl: _view.previousStepUrl,
-    transfer: _view.quoteTransfer,
-    cartItems: _view.cartItems,
-    shippingAddress: _view.quoteTransfer.shippingAddress,
-    billingAddress: _view.quoteTransfer.billingAddress,
-    shipmentMethod: _view.quoteTransfer.shipment.method.name,
     shipmentParentMethod: _view.quoteTransfer.shipment.method.carrierName,
-    paymentMethod: _view.quoteTransfer.payment.paymentMethod,
-
-    forms: {
-        summary: _view.summaryForm
-    },
-
-    overview: {
-        shipmentMethod: _view.quoteTransfer.shipment.method.name,
-        expenses: _view.quoteTransfer.expenses,
-        voucherDiscounts: _view.quoteTransfer.voucherDiscounts,
-        cartRuleDiscounts: _view.quoteTransfer.cartRuleDiscounts,
-
-        prices: {
-            subTotal: _view.quoteTransfer.totals.subtotal,
-            storeCurrency: _view.quoteTransfer.shipment.method.storeCurrencyPrice,
-            grandTotal: _view.quoteTransfer.totals.grandtotal,
-            tax: _view.quoteTransfer.totals.taxtotal.amount,
-            discountTotal: _view.quoteTransfer.totals.discounttotal | default
-        }
-    },
-
-    title: 'checkout.step.summary.title' | trans,
-    stepNumder: 4
+    stepNumder: 4,
 } %}
 
 {% block containerClass %}{% endblock %}
@@ -44,8 +16,8 @@
                     method: data.paymentMethod,
                     address: data.billingAddress,
                     iconName: 'dummyPaymentInvoice.icon' | trans,
-                    iconModifiers: 'invoice-logo-small'
-                }
+                    iconModifiers: 'invoice-logo-small',
+                },
             } only %}
 
             {% include molecule('summary-sidebar-item', 'CheckoutPage') with {
@@ -54,8 +26,8 @@
                     method: data.shipmentMethod,
                     address: data.shippingAddress,
                     iconName: data.shipmentParentMethod | lower ~ '-logo',
-                    iconModifiers: 'summary-shipping'
-                }
+                    iconModifiers: 'summary-shipping',
+                },
             } only %}
 
             {% if data.transfer.idQuote is not empty %}
@@ -81,7 +53,7 @@
                         list: data.cartItems,
                         listItem: item,
                         quantity: item.quantity,
-                        imageModifiers: ['small', 'summary']
+                        imageModifiers: ['small', 'summary'],
                     },
                     embed: {
                         item: item,
@@ -92,8 +64,8 @@
                         bundleItems: bundles | default([]),
                         quantitySalesUnit: item.quantitySalesUnit,
                         amountSalesUnit: item.amountSalesUnit,
-                        amount: item.amount | default(0)
-                    }
+                        amount: item.amount | default(0),
+                    },
                 } only %}
                     {% block subQuantity %}
                         {% set salesUnitName = embed.quantitySalesUnit.productMeasurementUnit.name | default('') %}
@@ -103,8 +75,8 @@
                                 data: {
                                     value: embed.quantity,
                                     precision: embed.quantitySalesUnit.conversion,
-                                    optionName: salesUnitName | trans
-                                }
+                                    optionName: salesUnitName | trans,
+                                },
                             } only %}
                         {% endif %}
 
@@ -115,8 +87,8 @@
                                 data: {
                                     value: embed.amount,
                                     precision: embed.quantity,
-                                    optionName: amountSalesUnitName | trans
-                                }
+                                    optionName: amountSalesUnitName | trans,
+                                },
                             } only %}
                         {% endif %}
                     {% endblock %}
@@ -142,14 +114,25 @@
                                     isNoteNotEmpty: true,
                                     canWrite: false,
                                     label: 'cart_note.checkout_page.quote_note',
-                                    note: embed.item.cartNote
-                                }
+                                    note: embed.item.cartNote,
+                                },
                             } only %}
                         {% endif %}
                     {% endblock %}
                     {% block packagingUnitCart %}{% endblock %}
                 {% endembed %}
             {% endfor %}
+
+            {% if data.transfer.cartNote is not empty %}
+                {% include molecule('cart-item-note', 'CartNoteWidget') ignore missing with {
+                    data: {
+                        isNoteNotEmpty: true,
+                        canWrite: false,
+                        label: 'cart_note.checkout_page.quote_note',
+                        note: data.transfer.cartNote,
+                    },
+                } only %}
+            {% endif %}
 
             {% set checkoutVoucherFormWidget = findWidget('CheckoutVoucherFormWidget', [data.transfer]) %}
             {% if checkoutVoucherFormWidget and checkoutVoucherFormWidget.isQuoteEditable %}
@@ -170,8 +153,7 @@
                 attributes: {
                     'wrap-selector': '.js-summary-toggle',
                     'trigger-selector': '.js-summary-toggle__trigger',
-                    'class-to-toggle': 'is-hidden'
-                }
+                },
             } only %}
 
             {% embed molecule('form') with {
@@ -181,18 +163,18 @@
                     submit: {
                         enable: true,
                         text: 'checkout.step.place.order' | trans,
-                        class: 'button button--big button--success'
-                    }
+                        class: 'button button--big button--success',
+                    },
                 },
                 embed: {
-                    overview: data.overview
-                }
+                    overview: data.overview,
+                },
             } only %}
                 {% block body %}
                     {% include molecule('summary-overview', 'CheckoutPage') with {
-                        data: embed.overview
+                        data: embed.overview,
                     } only %}
-                    {{parent()}}
+                    {{ parent() }}
                 {% endblock %}
             {% endembed %}
         </div>
