@@ -5,7 +5,7 @@
 } %}
 
 {% block body %}
-    {% include molecule('cart-bundle-items', 'ProductBundleWidget') with {
+    {% include molecule('bundle-items', 'ProductBundleWidget') with {
         data: {
             items: data.items,
         },
