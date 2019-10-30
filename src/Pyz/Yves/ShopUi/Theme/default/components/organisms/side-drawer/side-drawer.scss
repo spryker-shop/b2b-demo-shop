@@ -21,11 +21,11 @@ $shop-ui-side-drawer-width: rem(375);
         }
 
         &__drawer {
-            display: flex;
-            flex-direction: column;
             @include helper-ui-shadow;
             @include helper-visibility-invisible;
             @include helper-effect-transition(opacity visibility top);
+            display: flex;
+            flex-direction: column;
             position: fixed;
             top: -100%;
             left: 0;

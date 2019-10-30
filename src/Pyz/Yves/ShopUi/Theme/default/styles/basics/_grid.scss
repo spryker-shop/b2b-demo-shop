@@ -8,8 +8,12 @@
         margin: auto;
         padding: 0 $setting-grid-space;
 
-        &--checkout {
-            max-width: 800px;
+        &--medium {
+            max-width: rem(1000);
+        }
+
+        &--small {
+            max-width: rem(800);
         }
 
         &--expand {
@@ -114,6 +118,10 @@
             width: 100%;
         }
 
+        &--baseline {
+            align-items: baseline;
+        }
+
         &--top {
             align-items: flex-start;
         }
@@ -150,10 +158,12 @@
         &--gap {
             margin-left: -$setting-grid-space-mobile;
             margin-right: -$setting-grid-space-mobile;
+            width: calc(100% + #{$setting-grid-space-mobile * 2});
 
             @include helper-breakpoint-media-min($lg) {
                 margin-left: -$setting-grid-space;
                 margin-right: -$setting-grid-space;
+                width: calc(100% + #{$setting-grid-space * 2});
             }
 
             & > .col {
@@ -170,6 +180,7 @@
         &--gap-smaller {
             margin-left: rem(-5);
             margin-right: rem(-5);
+            width: calc(100% + #{rem(10)});
 
             & > .col {
                 padding-left: rem(5);

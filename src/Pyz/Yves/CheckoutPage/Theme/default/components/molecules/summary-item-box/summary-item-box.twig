@@ -1,0 +1,54 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'summary-item-box',
+} %}
+
+{% define data = {
+    title: required,
+    method: '',
+    address: {},
+    iconName: '',
+    editUrl: '',
+    canEdit: false,
+} %}
+
+{% block body %}
+    <h4 class="{{ config.name }}__title">
+        {{ data.title }}
+
+        {% if data.canEdit %}
+            <a class="float-right link link--alt link--action spacing-left" href="{{ url(data.editUrl) }}">
+                {% include molecule('icon-tooltip') with {
+                    modifiers: ['big'],
+                    data: {
+                        icon: 'edit',
+                        text: 'general.edit.button' | trans,
+                    },
+                } only %}
+            </a>
+        {% endif %}
+    </h4>
+
+    {% if data.method %}
+        <span class="{{ config.name }}__method">
+            {{ 'checkout.step.summary.with_method' | trans }} {{ data.method | capitalize }}
+        </span>
+        {% if data.iconName %}
+            {% include atom('icon') with {
+                modifiers: [data.iconName ~ '-logo-small'],
+                data: {
+                    name: data.iconName ~ '-logo',
+                },
+            } only %}
+        {% endif %}
+    {% endif %}
+
+    {% if data.address %}
+        {% include molecule('display-address') with {
+            data: {
+                address: data.address,
+            },
+        } only %}
+    {% endif %}
+{% endblock %}

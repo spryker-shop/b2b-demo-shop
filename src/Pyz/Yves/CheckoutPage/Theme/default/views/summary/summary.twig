@@ -1,206 +1,194 @@
-{% extends template('page-layout-checkout', 'CheckoutPage') %}
+{% extends view('summary', '@SprykerShop:CheckoutPage') %}
 
 {% define data = {
     cart: _view.quoteTransfer,
-    backUrl: _view.previousStepUrl,
-    transfer: _view.quoteTransfer,
-    cartItems: _view.cartItems,
-    shippingAddress: _view.quoteTransfer.shippingAddress,
-    billingAddress: _view.quoteTransfer.billingAddress,
-    shipmentMethod: _view.quoteTransfer.shipment.method.name,
-    shipmentParentMethod: _view.quoteTransfer.shipment.method.carrierName,
-    paymentMethod: _view.quoteTransfer.payment.paymentMethod,
-
-    forms: {
-        summary: _view.summaryForm
-    },
-
-    overview: {
-        shipmentMethod: _view.quoteTransfer.shipment.method.name,
-        expenses: _view.quoteTransfer.expenses,
-        voucherDiscounts: _view.quoteTransfer.voucherDiscounts,
-        cartRuleDiscounts: _view.quoteTransfer.cartRuleDiscounts,
-
-        prices: {
-            subTotal: _view.quoteTransfer.totals.subtotal,
-            storeCurrency: _view.quoteTransfer.shipment.method.storeCurrencyPrice,
-            grandTotal: _view.quoteTransfer.totals.grandtotal,
-            tax: _view.quoteTransfer.totals.taxtotal.amount,
-            discountTotal: _view.quoteTransfer.totals.discounttotal | default
-        }
-    },
-
-    title: 'checkout.step.summary.title' | trans,
-    stepNumder: 4
+    stepNumder: 4,
 } %}
 
-{% block containerClass %}{% endblock %}
-
 {% block content %}
+    {% for shipmentGroup in data.shipmentGroups %}
+        <article class="grid grid--gap spacing-bottom spacing-bottom--big">
+            <h3 class="col col--sm-12 title title--second spacing-bottom spacing-bottom--small">
+                {{ 'page.checkout.shipment.shipment_group_heading' | trans({
+                    '%current%': loop.index,
+                    '%total%': loop.length
+                }) }}
+            </h3>
+            <div class="col col--sm-12 col--xl-8">
+                {% for item in shipmentGroup.items %}
+                    {% set item = item.bundleProduct ?? item %}
+
+                    {% embed molecule('product-item') with {
+                        modifiers: ['checkout'],
+                        data: {
+                            list: data.cartItems,
+                            listItem: item,
+                            quantity: item.quantity,
+                            priceModifiers: ['medium', 'block', 'margin-bottom-from-tablet'],
+                        },
+                    } only %}
+                        {% block image %}
+                            {% set imageUrl = data.listItem.images is not empty ? data.listItem.images[0].externalUrlLarge : null %}
+
+                            {% include molecule('product-item-image') with {
+                                modifiers: ['small'],
+                                data: {
+                                    name: data.listItem.name,
+                                    image: imageUrl,
+                                },
+                            } only %}
+                        {% endblock %}
+
+                        {% block title %}
+                            <h6 class="{{ config.name }}__title spacing spacing--reset">{{ data.listItem.name }}</h6>
+                        {% endblock %}
+
+                        {% block subQuantity %}
+                            {% set salesUnitName = data.listItem.quantitySalesUnit.productMeasurementUnit.name | default %}
+
+                            {% if salesUnitName is not empty and data.listItem.amount == 0 %}
+                                {% include atom('quantity-option') with {
+                                    class: 'col col--sm-12 col--md-auto',
+                                    data: {
+                                        value: data.listItem.quantity,
+                                        precision: data.listItem.quantitySalesUnit.conversion,
+                                        optionName: salesUnitName | trans,
+                                    },
+                                } only %}
+                            {% endif %}
+
+                            {% if data.listItem.amount != 0 %}
+                                {% set amountSalesUnitName = data.listItem.amountSalesUnit.productMeasurementUnit.name | default %}
+
+                                {% include atom('quantity-option') with {
+                                    class: 'col col--sm-12 col--md-auto',
+                                    data: {
+                                        value: data.listItem.amount,
+                                        precision: data.listItem.quantity,
+                                        optionName: amountSalesUnitName | trans,
+                                    },
+                                } only %}
+                            {% endif %}
+                        {% endblock %}
+
+                        {% block note %}
+                            {% if data.listItem.cartNote is not empty %}
+                                {% include molecule('cart-item-note', 'CartNoteWidget') ignore missing with {
+                                    data: {
+                                        isNoteNotEmpty: true,
+                                        canWrite: false,
+                                        label: 'cart_note.checkout_page.quote_note',
+                                        note: data.listItem.cartNote,
+                                    },
+                                } only %}
+                            {% endif %}
+                        {% endblock %}
+
+                        {% block bundle %}{% endblock %}
+                    {% endembed %}
+                {% endfor %}
+            </div>
+
+            <div class="col col--sm-12 col--xl-4">
+                {% include molecule('summary-sidebar', 'CheckoutPage') with {
+                    data: {
+                        shipment: shipmentGroup.shipment,
+                    },
+                } only %}
+            </div>
+        </article>
+    {% endfor %}
+
     <div class="grid grid--gap">
-        <div class="col col--sm-12 col--xl-4">
+        <div class="col col--sm-12 col--lg-6">
             {% widget 'QuoteConfiguredBundleWidget' args [data.cart] with {
                 data: {
                     isEditable: false,
                 },
             } only %}
             {% endwidget %}
+        </div>
 
-            {% include molecule('summary-sidebar-item', 'CheckoutPage') with {
+        <div class="col col--sm-12 col--lg-6">
+            {% include molecule('summary-item-box', 'CheckoutPage') with {
+                modifiers: ['mobile-border-top'],
                 data: {
                     title: 'checkout.step.summary.payment' | trans,
                     method: data.paymentMethod,
-                    address: data.billingAddress,
-                    iconName: 'dummyPaymentInvoice.icon' | trans,
-                    iconModifiers: 'invoice-logo-small'
-                }
+                    iconName: data.paymentMethod | lower,
+                    editUrl: 'checkout-payment',
+                    canEdit: true,
+                },
             } only %}
-
-            {% include molecule('summary-sidebar-item', 'CheckoutPage') with {
+        </div>
+        <div class="col col--sm-12 col--lg-6">
+            {% include molecule('summary-item-box', 'CheckoutPage') with {
                 data: {
-                    title: 'checkout.step.summary.shipping' | trans,
-                    method: data.shipmentMethod,
-                    address: data.shippingAddress,
-                    iconName: data.shipmentParentMethod | lower ~ '-logo',
-                    iconModifiers: 'summary-shipping'
-                }
+                    title: 'checkout.step.summary.billing_address' | trans,
+                    address: data.billingAddress,
+                    editUrl: 'checkout-address',
+                    canEdit: true,
+                },
             } only %}
+        </div>
+    </div>
 
-            {% if data.transfer.idQuote is not empty %}
-                <div class="summary-sidebar-item">
+    <div class="grid">
+        <div class="col col--sm-12">
+            {% if data.cart.idQuote is not empty %}
+                <div class="box box--medium">
                     {% widget 'CommentThreadWidget' args [
-                        data.transfer.idQuote,
+                        data.cart.idQuote,
                         'quote',
                         app.request.requestUri,
-                        data.transfer.commentThread
+                        data.cart.commentThread,
                     ] only %}
                     {% endwidget %}
                 </div>
             {% endif %}
-        </div>
 
-        <div class="col col--sm-12 col--xl-8">
-            {% for item in data.cartItems %}
-                {% set bundles = item.bundleProduct is defined ? item.bundleItems : [] %}
-                {% set item = item.bundleProduct is defined ? item.bundleProduct : item %}
-                {% embed molecule('product-item') with {
-                    modifiers: ['summary'],
+            {% if data.transfer.cartNote %}
+                {% include molecule('note-list', 'CartNoteWidget') ignore missing with {
                     data: {
-                        list: data.cartItems,
-                        listItem: item,
-                        quantity: item.quantity,
-                        imageModifiers: ['small', 'summary']
+                        label: 'cart_note.checkout_page.quote_note',
+                        note: data.transfer.cartNote,
                     },
-                    embed: {
-                        item: item,
-                        name: item.name,
-                        quantity: item.quantity,
-                        price: item.sumPrice | money,
-                        options: item.productOptions | default({}),
-                        bundleItems: bundles | default([]),
-                        quantitySalesUnit: item.quantitySalesUnit,
-                        amountSalesUnit: item.amountSalesUnit,
-                        amount: item.amount | default(0)
-                    }
                 } only %}
-                    {% block subQuantity %}
-                        {% set salesUnitName = embed.quantitySalesUnit.productMeasurementUnit.name | default('') %}
-                        {% if salesUnitName is not empty and embed.amount == 0 %}
-                            {% include atom('quantity-option') with {
-                                class: 'col col--sm-12 col--md-auto',
-                                data: {
-                                    value: embed.quantity,
-                                    precision: embed.quantitySalesUnit.conversion,
-                                    optionName: salesUnitName | trans
-                                }
-                            } only %}
-                        {% endif %}
-
-                        {% if embed.amount != 0 %}
-                            {% set amountSalesUnitName = embed.amountSalesUnit.productMeasurementUnit.name | default('') %}
-                            {% include atom('quantity-option') with {
-                                class: 'col col--sm-12 col--md-auto',
-                                data: {
-                                    value: embed.amount,
-                                    precision: embed.quantity,
-                                    optionName: amountSalesUnitName | trans
-                                }
-                            } only %}
-                        {% endif %}
-                    {% endblock %}
-                    {% block bundle %}
-                        {% if embed.bundleItems is not empty %}
-                            <div class="product-bundle product-bundle--cart">
-                                <h5 class="product-bundle__title product-bundle__title--cart">{{ 'checkout.summary.item.bundle.description' | trans }}</h5>
-                                <ul class="product-bundle__list product-bundle__list--cart">
-                                    {% for bundle in embed.bundleItems %}
-                                        <li class="product-bundle__item product-bundle__item--cart">
-                                            {{ bundle.name }}
-                                            <span class="product-bundle__quantity product-bundle__quantity--cart">x {{ bundle.quantity }}</span>
-                                        </li>
-                                    {% endfor %}
-                                </ul>
-                            </div>
-                        {% endif %}
-                    {% endblock %}
-                    {% block note %}
-                        {% if embed.item.cartNote is not empty %}
-                            {% include molecule('cart-item-note', 'CartNoteWidget') ignore missing with {
-                                data: {
-                                    isNoteNotEmpty: true,
-                                    canWrite: false,
-                                    label: 'cart_note.checkout_page.quote_note',
-                                    note: embed.item.cartNote
-                                }
-                            } only %}
-                        {% endif %}
-                    {% endblock %}
-                    {% block packagingUnitCart %}{% endblock %}
-                {% endembed %}
-            {% endfor %}
-
-            {% set checkoutVoucherFormWidget = findWidget('CheckoutVoucherFormWidget', [data.transfer]) %}
-            {% if checkoutVoucherFormWidget and checkoutVoucherFormWidget.isQuoteEditable %}
-                <div class="summary-toggle js-summary-toggle">
-                    <div class="summary-toggle__item">
-                        <h5 class="summary-toggle__title toggler-accordion__item js-summary-toggle__trigger" data-toggle-target='.js-summary-toggle__content--voucher'>
-                            {{ 'page.checkout.finalize.enter-voucher' | trans }}
-                            <span class="icon icon--toggler-cross toggler-accordion__icon"></span>
-                        </h5>
-                        <div class="summary-toggle__content summary-toggle__content--voucher js-summary-toggle__content--voucher is-hidden">
-                            {% widget checkoutVoucherFormWidget %}{% endwidget %}
-                        </div>
-                    </div>
-                </div>
             {% endif %}
 
-            {% include molecule('toggler-accordion') with {
-                attributes: {
-                    'wrap-selector': '.js-summary-toggle',
-                    'trigger-selector': '.js-summary-toggle__trigger',
-                    'class-to-toggle': 'is-hidden'
-                }
+            {% include molecule('summary-voucher-form', 'CheckoutPage') with {
+                data: {
+                    transfer: data.transfer,
+                },
             } only %}
 
             {% embed molecule('form') with {
-                class: '',
+                modifiers: ['checkout-form'],
                 data: {
                     form: data.forms.summary,
                     submit: {
                         enable: true,
                         text: 'checkout.step.place.order' | trans,
-                        class: 'button button--big button--success'
-                    }
+                        class: 'form__action--expand-sm-md button button--big',
+                    },
+                    cancel: {
+                        enable: true,
+                        url: data.backUrl,
+                        text: 'general.back.button' | trans,
+                        icon: '',
+                        class: 'form__action--expand-sm-md button button--big button--hollow-icon button--back',
+                    },
                 },
                 embed: {
-                    overview: data.overview
-                }
+                    overview: data.overview,
+                },
             } only %}
                 {% block body %}
                     {% include molecule('summary-overview', 'CheckoutPage') with {
-                        data: embed.overview
+                        data: embed.overview,
                     } only %}
-                    {{parent()}}
+
+                    {{ parent() }}
                 {% endblock %}
             {% endembed %}
         </div>

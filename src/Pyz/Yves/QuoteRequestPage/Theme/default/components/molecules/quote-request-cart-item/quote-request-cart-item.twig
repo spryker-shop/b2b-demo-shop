@@ -14,10 +14,12 @@
 {% block body %}
     <div class="grid grid--stretch grid--gap">
         <div class="{{ config.name }}__column {{ config.name }}__column--image col">
+            {% set imageUrl = data.cartItem.images is not empty ? data.cartItem.images[0].externalUrlLarge : null %}
+
             {% include molecule('product-item-image') with {
                 data: {
-                    name: data.cartItem.name | default(''),
-                    image: data.cartItem.images ? (data.cartItem.images | first) : null,
+                    name: data.cartItem.name | default,
+                    image: imageUrl,
                 },
             } only %}
         </div>
