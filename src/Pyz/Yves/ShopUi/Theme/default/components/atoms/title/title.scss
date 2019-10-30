@@ -193,6 +193,35 @@
             }
         }
 
+        &--underline {
+            padding-bottom: rem(10);
+            margin-bottom: rem(10);
+            position: relative;
+
+            @include helper-breakpoint-media-min($lg) {
+                padding-bottom: rem(20);
+                margin-bottom: rem(20);
+            }
+
+            &::after {
+                content: '';
+                display: block;
+                position: absolute;
+                left: rem(-15);
+                right: rem(-15);
+                bottom: 0;
+                width: calc(100% + #{$setting-grid-space * 2});
+                height: rem(1);
+                background-color: $setting-color-gray-6;
+
+                @include helper-breakpoint-media-min($lg) {
+                    left: 0;
+                    right: 0;
+                    width: 100%;
+                }
+            }
+        }
+
         @content;
     }
 }

@@ -50,14 +50,14 @@
                 {% include molecule('quantity-counter') with {
                     modifiers: ['shopping-list'],
                     data: {
-                        isReadOnly: true
+                        isReadOnly: true,
                     },
                     attributes: {
                         value: embed.quantity,
                     },
                 } only %}
                 <a class="button button--hollow button--shopping-list" href="{{ url('shopping-list/add-item', {quantity: embed.quantity, sku: data.listItem.sku, idShoppingList: embed.shoppingList.idShoppingList}) }}">
-                    {{ 'product_alternative_widget.add_to_shopping_list' | trans}}
+                    {{ 'product_alternative_widget.add_to_shopping_list' | trans }}
                 </a>
             {% endblock %}
             {% block price %}

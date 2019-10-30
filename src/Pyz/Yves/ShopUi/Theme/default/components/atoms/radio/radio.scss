@@ -22,11 +22,82 @@
         }
 
         &__input:checked ~ {
-
             #{$name}__box {
                 background-color: $setting-color-main;
                 border-color: $setting-color-main;
                 box-shadow: inset 0 0 0 rem(3) $setting-color-bg;
+            }
+        }
+
+        &--checkout {
+            width: 100%;
+
+            #{$name}__container {
+                padding: rem(26) rem(20) rem(26) rem(25);
+                display: flex;
+                align-items: center;
+                background-color: $setting-color-white;
+
+                @include helper-breakpoint-media-min($md) {
+                    padding: rem(30);
+                }
+            }
+
+            #{$name}__box {
+                width: rem(24);
+                height: rem(24);
+                line-height: rem(24);
+
+                @include helper-breakpoint-media-min($lg) {
+                    width: rem(26);
+                    height: rem(26);
+                    line-height: rem(26);
+                }
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    border: rem(1) solid $setting-color-gray-6;
+                }
+            }
+
+            #{$name}__label {
+                color: $setting-color-gray-2;
+                font-size: rem(15);
+                display: flex;
+                justify-content: space-between;
+                flex-grow: 1;
+                margin-bottom: 0;
+            }
+
+            #{$name}__input:checked ~ {
+                #{$name}__box {
+                    background-color: $setting-color-bg;
+                    box-shadow: inset 0 0 0 rem(4) $setting-color-main;
+
+                    &::before {
+                        border-color: $setting-color-gray-7;
+                        box-shadow: 0 rem(10) rem(18) 0 $setting-color-shadow-1, 0 rem(3) rem(3) 0 $setting-color-shadow-1;
+                        z-index: $setting-zi-element;
+                    }
+                }
+
+                #{$name}__label {
+                    color: $setting-color-gray-5;
+                    font-weight: fw(medium);
+                }
+            }
+        }
+
+        &--border-top-less {
+            #{$name}__box {
+                &::before {
+                    border-top: none;
+                }
             }
         }
 

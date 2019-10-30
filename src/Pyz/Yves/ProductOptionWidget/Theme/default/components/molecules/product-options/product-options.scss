@@ -1,7 +1,7 @@
-@mixin product-options-product-options($name: '.product-options') {
+@mixin product-option-widget-product-options($name: '.product-options') {
     #{$name} {
         @include helper-breakpoint-media-min($lg) {
-            border-top: solid 1px $setting-color-gray-6;
+            border-top: solid rem(1) $setting-color-gray-6;
         }
 
         &--no-border {
@@ -52,12 +52,8 @@
             }
         }
 
-        &__price {
-            @include helper-breakpoint-media-min($lg) {
-                float: right;
-            }
-        }
+        @content;
     }
 }
 
-@include product-options-product-options;
+@include product-option-widget-product-options();
