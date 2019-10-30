@@ -122,15 +122,12 @@
                     {% endblock %}
                     {% block bundle %}
                         {% if embed.bundleItems is not empty %}
-                            {% embed molecule('bundle-items', 'ProductBundleWidget') with {
+                            {% include molecule('bundle-items', 'ProductBundleWidget') with {
                                 data: {
                                     items: embed.bundleItems,
+                                    title: 'checkout.summary.item.bundle.description' | trans,
                                 },
                             } only %}
-                                {% block titleText %}
-                                    {{ 'checkout.summary.item.bundle.description' | trans }}
-                                {% endblock %}
-                            {% endembed %}
                         {% endif %}
                     {% endblock %}
                     {% block note %}

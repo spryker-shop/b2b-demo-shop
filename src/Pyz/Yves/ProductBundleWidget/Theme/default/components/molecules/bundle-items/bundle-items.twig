@@ -6,6 +6,7 @@
 
 {% define data = {
     items: required,
+    title: 'cart.item.bundle.description' | trans,
 } %}
 
 {% block template %}
@@ -16,13 +17,8 @@
 
 {% block body %}
     {% block title %}
-        <h5 class="{{config.name}}__title">
-            {% block titleText %}
-                {{ 'cart.item.bundle.description' | trans }}
-            {% endblock %}
-        </h5>
+        <h5 class="{{config.name}}__title">{{ data.title }}</h5>
     {% endblock %}
-
     {% block itemsList %}
         <ul class="{{config.name}}__list">
             {% block items %}
