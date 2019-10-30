@@ -11,7 +11,7 @@
     paymentMethod: _view.quoteTransfer.payment.paymentMethod,
 
     forms: {
-        summary: _view.summaryForm
+        summary: _view.summaryForm,
     },
 
     overview: {
@@ -25,8 +25,8 @@
             storeCurrency: _view.quoteTransfer.shipment.method.storeCurrencyPrice,
             grandTotal: _view.quoteTransfer.totals.grandtotal,
             tax: _view.quoteTransfer.totals.taxtotal.amount,
-            discountTotal: _view.quoteTransfer.totals.discounttotal | default
-        }
+            discountTotal: _view.quoteTransfer.totals.discounttotal | default,
+        },
     },
 
     title: 'checkout.step.summary.title' | trans,
@@ -44,8 +44,8 @@
                     method: data.paymentMethod,
                     address: data.billingAddress,
                     iconName: 'dummyPaymentInvoice.icon' | trans,
-                    iconModifiers: 'invoice-logo-small'
-                }
+                    iconModifiers: 'invoice-logo-small',
+                },
             } only %}
 
             {% include molecule('summary-sidebar-item', 'CheckoutPage') with {
@@ -54,8 +54,8 @@
                     method: data.shipmentMethod,
                     address: data.shippingAddress,
                     iconName: data.shipmentParentMethod | lower ~ '-logo',
-                    iconModifiers: 'summary-shipping'
-                }
+                    iconModifiers: 'summary-shipping',
+                },
             } only %}
 
             {% if data.transfer.idQuote is not empty %}
@@ -64,7 +64,7 @@
                         data.transfer.idQuote,
                         'quote',
                         app.request.requestUri,
-                        data.transfer.commentThread
+                        data.transfer.commentThread,
                     ] only %}
                     {% endwidget %}
                 </div>
@@ -81,7 +81,7 @@
                         list: data.cartItems,
                         listItem: item,
                         quantity: item.quantity,
-                        imageModifiers: ['small', 'summary']
+                        imageModifiers: ['small', 'summary'],
                     },
                     embed: {
                         item: item,
@@ -92,8 +92,8 @@
                         bundleItems: bundles | default([]),
                         quantitySalesUnit: item.quantitySalesUnit,
                         amountSalesUnit: item.amountSalesUnit,
-                        amount: item.amount | default(0)
-                    }
+                        amount: item.amount | default(0),
+                    },
                 } only %}
                     {% block subQuantity %}
                         {% set salesUnitName = embed.quantitySalesUnit.productMeasurementUnit.name | default('') %}
@@ -103,8 +103,8 @@
                                 data: {
                                     value: embed.quantity,
                                     precision: embed.quantitySalesUnit.conversion,
-                                    optionName: salesUnitName | trans
-                                }
+                                    optionName: salesUnitName | trans,
+                                },
                             } only %}
                         {% endif %}
 
@@ -115,24 +115,22 @@
                                 data: {
                                     value: embed.amount,
                                     precision: embed.quantity,
-                                    optionName: amountSalesUnitName | trans
-                                }
+                                    optionName: amountSalesUnitName | trans,
+                                },
                             } only %}
                         {% endif %}
                     {% endblock %}
                     {% block bundle %}
                         {% if embed.bundleItems is not empty %}
-                            <div class="product-bundle product-bundle--cart">
-                                <h5 class="product-bundle__title product-bundle__title--cart">{{ 'checkout.summary.item.bundle.description' | trans }}</h5>
-                                <ul class="product-bundle__list product-bundle__list--cart">
-                                    {% for bundle in embed.bundleItems %}
-                                        <li class="product-bundle__item product-bundle__item--cart">
-                                            {{ bundle.name }}
-                                            <span class="product-bundle__quantity product-bundle__quantity--cart">x {{ bundle.quantity }}</span>
-                                        </li>
-                                    {% endfor %}
-                                </ul>
-                            </div>
+                            {% embed molecule('bundle-items', 'ProductBundleWidget') with {
+                                data: {
+                                    items: embed.bundleItems,
+                                },
+                            } only %}
+                                {% block titleText %}
+                                    {{ 'checkout.summary.item.bundle.description' | trans }}
+                                {% endblock %}
+                            {% endembed %}
                         {% endif %}
                     {% endblock %}
                     {% block note %}
@@ -170,8 +168,8 @@
                 attributes: {
                     'wrap-selector': '.js-summary-toggle',
                     'trigger-selector': '.js-summary-toggle__trigger',
-                    'class-to-toggle': 'is-hidden'
-                }
+                    'class-to-toggle': 'is-hidden',
+                },
             } only %}
 
             {% embed molecule('form') with {
@@ -181,16 +179,16 @@
                     submit: {
                         enable: true,
                         text: 'checkout.step.place.order' | trans,
-                        class: 'button button--big button--success'
-                    }
+                        class: 'button button--big button--success',
+                    },
                 },
                 embed: {
-                    overview: data.overview
-                }
+                    overview: data.overview,
+                },
             } only %}
                 {% block body %}
                     {% include molecule('summary-overview', 'CheckoutPage') with {
-                        data: embed.overview
+                        data: embed.overview,
                     } only %}
                     {{parent()}}
                 {% endblock %}

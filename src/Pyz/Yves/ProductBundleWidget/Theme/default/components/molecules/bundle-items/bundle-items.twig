@@ -16,7 +16,11 @@
 
 {% block body %}
     {% block title %}
-        <h5 class="{{config.name}}__title">{{ 'cart.item.bundle.description' | trans }}</h5>
+        <h5 class="{{config.name}}__title">
+            {% block titleText %}
+                {{ 'cart.item.bundle.description' | trans }}
+            {% endblock %}
+        </h5>
     {% endblock %}
 
     {% block itemsList %}
