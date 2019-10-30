@@ -122,7 +122,7 @@
                     {% endblock %}
                     {% block bundle %}
                         {% if embed.bundleItems is not empty %}
-                            {% include molecule('bundle-items', 'ProductBundleWidget') with {
+                            {% include molecule('bundle-items', 'ProductBundleWidget') ignore missing with {
                                 data: {
                                     items: embed.bundleItems,
                                     title: 'checkout.summary.item.bundle.description' | trans,
@@ -165,7 +165,7 @@
                 attributes: {
                     'wrap-selector': '.js-summary-toggle',
                     'trigger-selector': '.js-summary-toggle__trigger',
-                    'class-to-toggle': 'is-hidden',
+                    'class-to-toggle': 'is-hidden'
                 },
             } only %}
 
