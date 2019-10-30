@@ -1,14 +1,14 @@
 {% extends model('component') %}
 
 {% define config = {
-    name: 'alternative-products-table'
+    name: 'alternative-products-table',
 } %}
 
 {% define data = {
     item: required,
     shoppingList: required,
     products: required,
-    maxShownItems: 3
+    maxShownItems: 3,
 } %}
 
 {% set idShoppingListItem = data.item.idShoppingListItem %}
@@ -22,12 +22,12 @@
             modifiers: ['shopping-list', 'shopping-list-alternative', 'shopping-list-available'],
             data: {
                 listItem: item,
-                imageModifiers: ['shopping-list']
+                imageModifiers: ['shopping-list'],
             },
             embed: {
                 shoppingList: data.shoppingList,
-                quantity: data.item.quantity
-            }
+                quantity: data.item.quantity,
+            },
         } only %}
             {% block itemAttributes %}
                 {% if data.attributes is not empty %}
@@ -35,7 +35,7 @@
                         class: 'spacing-y spacing-y--big text-small',
                         data: {
                             listItem: data.listItem,
-                        }
+                        },
                     } only %}
                 {% endif %}
             {% endblock %}
@@ -50,14 +50,14 @@
                 {% include molecule('quantity-counter') with {
                     modifiers: ['shopping-list'],
                     data: {
-                        isReadOnly: true
+                        isReadOnly: true,
                     },
                     attributes: {
                         value: embed.quantity,
-                    }
+                    },
                 } only %}
                 <a class="button button--hollow button--shopping-list" href="{{ url('shopping-list/add-item', {quantity: embed.quantity, sku: data.listItem.sku, idShoppingList: embed.shoppingList.idShoppingList}) }}">
-                    {{ 'product_alternative_widget.add_to_shopping_list' | trans}}
+                    {{ 'product_alternative_widget.add_to_shopping_list' | trans }}
                 </a>
             {% endblock %}
             {% block price %}
@@ -65,7 +65,7 @@
                     modifiers: ['medium', 'block', 'margin-bottom-from-tablet', 'gray-color'],
                     data: {
                         amount: price,
-                        originalAmount: data.listItem.prices.ORIGINAL is not defined or data.listItem.prices.ORIGINAL is empty ? null : data.listItem.prices.ORIGINAL
+                        originalAmount: data.listItem.prices.ORIGINAL is not defined or data.listItem.prices.ORIGINAL is empty ? null : data.listItem.prices.ORIGINAL,
                     },
                 } only %}
             {% endblock %}
@@ -79,18 +79,18 @@
                             class: 'spacing-left spacing-left--small',
                             modifiers: ['smaller'],
                             data: {
-                                name: 'caret-down'
-                            }
+                                name: 'caret-down',
+                            },
                         } only %}
                     </button>
                 </div>
             </div>
+
             {% include molecule('toggler-click') with {
                 attributes: {
-                    'trigger-selector': '.js-product-alternative-' ~ idShoppingListItem ~ '__show-all-trigger',
-                    'target-selector': '.js-product-alternative-' ~ idShoppingListItem ~ '__show-all-target',
-                    'class-to-toggle': 'is-hidden'
-                }
+                    'trigger-class-name': 'js-product-alternative-' ~ idShoppingListItem ~ '__show-all-trigger',
+                    'target-class-name': 'js-product-alternative-' ~ idShoppingListItem ~ '__show-all-target',
+                },
             } only %}
         {% endif %}
     {% endfor %}

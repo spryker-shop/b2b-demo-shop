@@ -2,36 +2,31 @@
 
 {% define config = {
     name: 'checkout-list',
-    tag: 'ul'
+    tag: 'ul',
 } %}
 
 {% define data = {
     choices: required,
-    form: required
+    form: required,
 } %}
 
 {% block body %}
-
     {% for key, choice in data.choices %}
         <li class="{{ config.name }}__item">
             {% block contentItem %}
                 {% set parts = data.form[key].vars.label | split(':') %}
-                {% if key == 0 %}
-                    {{ form_row(data.form[key], {
-                        label: '<span class="col">' ~ parts[0] ~ '</span> <span class="col">' ~ parts[1] ~ '</span>',
-                        required: false,
-                        attributes: {
-                            'checked': 'checked'
-                        }
-                    }) }}
-                {% else %}
-                    {{ form_row(data.form[key], {
-                        label: '<span class="col">' ~ parts[0] ~ '</span> <span class="col">' ~ parts[1] ~ '</span>',
-                        required: false
-                    }) }}
-                {% endif %}
+
+                {{ form_row(data.form[key], {
+                    label: '<span class="col">' ~ parts[0] ~ '</span> <span class="col">' ~ parts[1] ~ '</span>',
+                    required: false,
+                    attributes: {
+                        checked: key == 0,
+                    },
+                    rowAttr: {
+                        class: 'radio radio--checkout' ~ (key != 0 ? ' radio--border-top-less'),
+                    },
+                }) }}
             {% endblock %}
         </li>
     {% endfor %}
-
 {% endblock %}
