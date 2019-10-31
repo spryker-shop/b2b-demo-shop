@@ -1,0 +1,32 @@
+@mixin configurable-bundle-widget-configured-bundle($name: '.configured-bundle') {
+    #{$name} {
+        border: 0.125rem solid $setting-color-gray-7;
+        margin-bottom: rem(22);
+
+        &__content {
+            padding: rem(18) rem(30);
+            overflow: hidden;
+            background: $setting-color-gray-8;
+        }
+
+        &__title {
+            font-size: rem(14);
+            font-weight: fw(medium);
+            line-height: normal;
+            color: $setting-color-gray-5;
+            margin-bottom: 0;
+
+            @include helper-breakpoint-media-min($lg) {
+                font-size: rem(20);
+            }
+        }
+
+        &__products {
+            padding: rem(18) rem(30);
+        }
+
+        @content;
+    }
+}
+
+@include configurable-bundle-widget-configured-bundle;

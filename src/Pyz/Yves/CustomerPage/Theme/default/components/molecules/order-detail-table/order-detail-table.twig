@@ -13,7 +13,7 @@
                 {% for item in shipmentGroup.items %}
                     {% set item = item.bundleProduct ?? item %}
 
-                    {% embed molecule('product-item') with {
+                    {% embed molecule('product-card-item') with {
                         modifiers: ['order-detail'],
                         data: {
                             listItem: item,

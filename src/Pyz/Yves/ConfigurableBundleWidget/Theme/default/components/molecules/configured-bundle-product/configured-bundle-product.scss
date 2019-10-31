@@ -1,0 +1,26 @@
+@include configurable-bundle-widget-configured-bundle-product {
+    $name: '.configured-bundle-product';
+
+    @include shop-ui-product-item($name) {
+        &__col {
+            display: flex;
+
+            &--image {
+                width: 22%;
+                min-width: 22%;
+            }
+        }
+
+        &__item-title {
+            font-size: rem(14);
+            font-weight: fw(medium);
+            line-height: normal;
+            color: $setting-color-gray-5;
+            margin-bottom: 0;
+
+            @include helper-breakpoint-media-min($lg) {
+                font-size: rem(20);
+            }
+        }
+    }
+}
