@@ -1,14 +1,41 @@
-@include configurable-bundle-widget-configured-bundle-product {
-    $name: '.configured-bundle-product';
+@mixin configurable-bundle-widget-configured-bundle-product($name: '.configured-bundle-product') {
+    #{$name} {
+        overflow: hidden;
 
-    @include shop-ui-product-item($name) {
+        &__container {
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            margin-top: 0;
+
+            @include helper-breakpoint-media-min($lg) {
+                justify-content: space-between;
+            }
+        }
+
         &__col {
             display: flex;
+            flex-wrap: wrap;
+
+            &--center {
+                @include helper-breakpoint-media-min($lg) {
+                    justify-content: center;
+                }
+            }
+
+            &--right {
+                @include helper-breakpoint-media-min($lg) {
+                    justify-content: flex-end;
+                }
+            }
 
             &--image {
                 width: 22%;
                 min-width: 22%;
             }
+        }
+
+        &__text {
+            font-size: rem(14);
         }
 
         &__item-title {
@@ -24,3 +51,5 @@
         }
     }
 }
+
+@include configurable-bundle-widget-configured-bundle-product;

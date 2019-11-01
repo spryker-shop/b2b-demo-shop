@@ -100,16 +100,17 @@
     {% endfor %}
 
     <div class="grid grid--gap">
-        <div class="col col--sm-12 col--lg-6">
+        <div class="col col--sm-12 col--lg-8">
             {% widget 'QuoteConfiguredBundleWidget' args [data.cart] with {
                 data: {
                     isEditable: false,
+                    isQuantityVisible: false,
                 },
             } only %}
             {% endwidget %}
         </div>
 
-        <div class="col col--sm-12 col--lg-6">
+        <div class="col col--sm-12 col--lg-4">
             {% include molecule('summary-item-box', 'CheckoutPage') with {
                 modifiers: ['mobile-border-top'],
                 data: {

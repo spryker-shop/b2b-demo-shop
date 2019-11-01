@@ -1,0 +1,15 @@
+{% extends molecule('configured-bundle-quantity', '@SprykerShop:ConfigurableBundleWidget') %}
+
+{% block form %}
+    <form method="POST" action="{{ path('cart/configured-bundle/change', {'configuredBundleGroupKey': data.configuredBundle.groupKey }) }}">
+        {% include molecule('quantity-counter') with {
+            modifiers: ['cart', 'bundle'],
+            data: {
+                autoUpdate: true,
+            },
+            attributes: {
+                value: data.configuredBundle.quantity,
+            }
+        } only %}
+    </form>
+{% endblock %}

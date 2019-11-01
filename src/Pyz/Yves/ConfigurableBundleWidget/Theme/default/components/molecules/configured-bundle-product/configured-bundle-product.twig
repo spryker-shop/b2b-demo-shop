@@ -26,64 +26,37 @@
     <div class="{{ config.name }}__container col col--sm-12 col--lg-6">
         {% block priceInformationInner %}
             {% block priceCol %}
-                <div class="{{ config.name }}__col col col--sm-4 col--lg-5">
+                <div class="{{ config.name }}__col {{ config.name }}__col--center col col--sm-12 col--lg-4">
                     {% block price %}
-                        <span class="{{ config.name }}__text">
-                                        {% block priceInner %}
-                                            {% if can('SeePricePermissionPlugin') and data.product.unitPrice is not empty %}
-                                                {%- block priceTitle -%}
-                                                    {{ 'configured_bundle.price' | trans }}
-                                                {% endblock %}
+                        <strong class="{{ config.name }}__text col">
+                            {% block priceInner %}
+                                {{ parent() }}
+                            {% endblock %}
 
-                                                {%- block priceValue -%}
-                                                    {% if data.product.sourceUnitGrossPrice is not null or data.product.sourceUnitNetPrice is not null %}
-                                                        {% set priceModeGross = 'GROSS_MODE' %}
-                                                        {% set originUnitPrice = (data.priceMode == priceModeGross) ? data.product.originUnitGrossPrice : data.product.originUnitNetPrice %}
-
-                                                        {%- block oldPriceValue -%}
-                                                            <del class="spacing-right">{{ originUnitPrice | money(true, data.currencyIsoCode) }}</del>
-                                                        {% endblock %}
-                                                    {% endif %}
-
-                                                    {{ data.product.unitPrice | money(true, data.currencyIsoCode) }}
-                                                {% endblock %}
-                                            {% else %}
-                                                {{ 'customer.access.cannot_see_price' | trans }}
-                                            {% endif %}
-                                        {% endblock %}
-                                    </span>
+                            {%- block priceTitle -%}{% endblock %}
+                        </strong>
                     {% endblock %}
                 </div>
             {% endblock %}
 
             {% block quantityCol %}
-                <div class="{{ config.name }}__col col col--sm-4 col--lg-3 text-center">
+                <div class="{{ config.name }}__col {{ config.name }}__col--center col col--sm-12 col--lg-5 text-center">
                     {% block quantity %}
-                        <span class="{{ config.name }}__text">
-                                        {{ 'configured_bundle.quantity' | trans }} {{ data.quantity }}
-                                    </span>
+                        {{ parent() }}
                     {% endblock %}
                 </div>
             {% endblock %}
 
             {% block totalCol %}
-                <div class="{{ config.name }}__col col col--sm-4 col--lg-4 text-right">
+                <div class="{{ config.name }}__col {{ config.name }}__col--right col col col--sm-12 col--right col--lg-3">
                     {% block total %}
-                        <strong class="{{ config.name }}__text">
+                        <strong class="{{ config.name }}__text col">
                             {% block totalInner %}
-                                {% if can('SeePricePermissionPlugin') and data.product.sumSubtotalAggregation is not empty %}
-                                    {%- block totalTitle -%}
-                                        {{ 'configured_bundle.total' | trans }}
-                                    {% endblock %}
-
-                                    {%- block totalValue -%}
-                                        {{ data.product.sumSubtotalAggregation | money(true, data.currencyIsoCode) }}
-                                    {% endblock %}
-                                {% else %}
-                                    {{ 'customer.access.cannot_see_price' | trans }}
-                                {% endif %}
+                                {{ parent() }}
                             {% endblock %}
                         </strong>
+
+                        {%- block totalTitle -%}{% endblock %}
                     {% endblock %}
                 </div>
             {% endblock %}
