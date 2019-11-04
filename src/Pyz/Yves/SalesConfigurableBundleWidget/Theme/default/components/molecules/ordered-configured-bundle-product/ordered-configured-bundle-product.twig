@@ -1,31 +1,52 @@
-{% extends molecule('configured-bundle-product', '@SprykerShop:ConfigurableBundleWidget') %}
+{% extends molecule('ordered-configured-bundle-product', '@SprykerShop:SalesConfigurableBundleWidget') %}
+
+{% block extraClass %}{% endblock %}
 
 {% block imageContainer %}
-    <div class="{{ config.name }}__col col col--sm-12 col--lg-2">
-        {% set imageModifiers =  ['small', 'item'] %}
+    <div class="{{ config.name }}__col col col--sm-12 col--lg-3">
+        <div class="grid grid--middle">
+            {% widget 'CustomerReorderItemCheckboxWidget' args [data.product] with {
+                data: {
+                    checkboxClasses: 'js-customer-reorder-form__selection js-bundle-child',
+                },
+            } only %}{% endwidget %}
+        </div>
+        <div class="col col--expand grid grid--middle">
+            {% block image %}
+                {% include atom('thumbnail') with {
+                    modifiers: ['small', 'item'],
+                    attributes: {
+                        src: data.image,
+                        alt: data.name,
+                    },
+                } only %}
+            {% endblock %}
+        </div>
+    </div>
+{% endblock %}
 
-        {% block image %}
+{% block content %}
+    <div class="{{ config.name }}__col col col--sm-12 col--lg-9 col--middle">
+        {% block contentInner %}
             {{ parent() }}
         {% endblock %}
     </div>
 {% endblock %}
 
 {% block generalInformation %}
-    <div class="col--sm-12 col--lg-6">
+    <div class="col--sm-12 col--lg-5 spacing-x spacing-x--inner">
         {% block name -%}
             <h6 class="{{ config.name }}__item-title">{{ data.name }}</h6>
         {%- endblock %}
 
         {% block sku -%}
-            <small class="text-secondary {{ config.name }}__sku">
-                {{- 'configured_bundle.item_sku' | trans }} {{ data.sku -}}
-            </small>
+            {{ parent() }}
         {%- endblock %}
     </div>
 {% endblock %}
 
 {% block priceInformation %}
-    <div class="{{ config.name }}__container col col--sm-12 col--lg-6">
+    <div class="{{ config.name }}__container col col--sm-12 col--lg-7">
         {% block priceInformationInner %}
             {% block priceCol %}
                 <div class="{{ config.name }}__col {{ config.name }}__col--center col col--sm-12 col--lg-4">

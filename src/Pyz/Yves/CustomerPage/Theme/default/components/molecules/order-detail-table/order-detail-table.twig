@@ -3,13 +3,16 @@
 {% block body %}
     {% for shipmentGroup in data.shipmentGroups %}
         <article class="grid grid--gap spacing-bottom spacing-bottom--big">
-            <h3 class="col col--sm-12 title title--second spacing-bottom spacing-bottom--small">
+            <h3 class="col col--sm-12 col--xl-8 title title--second spacing-bottom spacing-bottom--small">
                 {{ 'page.checkout.shipment.shipment_group_heading' | trans({
                     '%current%': loop.index,
                     '%total%': loop.length
                 }) }}
             </h3>
             <div class="col col--sm-12 col--xl-8">
+                {% widget 'OrderConfiguredBundleWidget' args [data.order, shipmentGroup.items] only %}
+                {% endwidget %}
+
                 {% for item in shipmentGroup.items %}
                     {% set item = item.bundleProduct ?? item %}
 
@@ -107,4 +110,6 @@
             </div>
         </article>
     {% endfor %}
+    {% include molecule('bundle-checkbox', 'SalesConfigurableBundleWidget') with {
+    } only %}
 {% endblock %}

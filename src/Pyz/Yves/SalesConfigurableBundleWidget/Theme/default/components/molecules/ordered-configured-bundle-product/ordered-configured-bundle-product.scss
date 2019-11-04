@@ -1,0 +1,14 @@
+@import '../../../../../../ConfigurableBundleWidget/Theme/default/components/molecules/configured-bundle-product/configured-bundle-product';
+
+@mixin sales-configurable-bundle-widget-ordered-configured-bundle-product($name: '.ordered-configured-bundle-product') {
+    @include configurable-bundle-widget-configured-bundle-product($name) {
+
+        &__item-title {
+            font-size: rem(14);
+        }
+
+        @content;
+    }
+}
+
+@include sales-configurable-bundle-widget-ordered-configured-bundle-product();
