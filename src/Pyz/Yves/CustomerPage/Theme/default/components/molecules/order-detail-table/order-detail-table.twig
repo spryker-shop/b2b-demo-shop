@@ -13,7 +13,7 @@
                 {% widget 'OrderConfiguredBundleWidget' args [data.order, shipmentGroup.items] only %}
                 {% endwidget %}
 
-                {% for item in shipmentGroup.items %}
+                {% for item in shipmentGroup.items if not item.salesOrderConfiguredBundleItem | default({}) %}
                     {% set item = item.bundleProduct ?? item %}
 
                     {% embed molecule('product-card-item') with {
