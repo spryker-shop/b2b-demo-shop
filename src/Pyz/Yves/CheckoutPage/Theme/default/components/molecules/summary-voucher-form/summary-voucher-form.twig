@@ -31,8 +31,8 @@
 
     {% include molecule('toggler-accordion') with {
         attributes: {
-            'wrap-selector': '.' ~ config.jsName,
-            'trigger-selector': '.' ~ config.jsName ~ '__title',
+            'wrap-class-name': config.jsName,
+            'trigger-class-name': config.jsName ~ '__title',
             'class-to-toggle': 'is-hidden',
         },
     } only %}
