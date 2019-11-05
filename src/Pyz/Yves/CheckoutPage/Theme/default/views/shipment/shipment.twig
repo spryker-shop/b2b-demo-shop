@@ -1,61 +1,109 @@
-{% extends template('page-layout-checkout', 'CheckoutPage') %}
+{% extends view('shipment', '@SprykerShop:CheckoutPage') %}
 
 {% define data = {
-    backUrl: _view.previousStepUrl,
-    forms: {
-        shipment: _view.shipmentForm
-    },
-
-    title: 'checkout.step.shipment.title' | trans,
-    stepNumder: 2
+    stepNumder: 2,
 } %}
 
 {% block content %}
     {% embed molecule('form') with {
-        class: 'checkout-form',
+        modifiers: ['checkout-form'],
         data: {
             form: data.forms.shipment,
+            cart: data.forms.shipment.vars.data,
+            attributes: [],
             options: {
                 attr: {
-                    id: 'payment-form'
-                }
+                    id: 'payment-form',
+                },
             },
             submit: {
                 enable: true,
                 text: 'checkout.step.payment' | trans,
-                class: 'form__action--expand-sm-md button button--big'
+                class: 'form__action--expand-sm-md button button--big',
             },
             cancel: {
                 enable: true,
                 url: data.backUrl,
                 text: 'general.back.button' | trans,
                 icon: '',
-                class: 'form__action--expand-sm-md button button--big button--hollow-icon button--back'
-            }
-        }
+                class: 'form__action--expand-sm-md button button--big button--hollow-icon button--back',
+            },
+        },
     } only %}
-        {% block fields %}
-            {% for name, choices in data.form.idShipmentMethod.vars.choices %}
-                <div class="form__field form__field--shipment col col--sm-12">
-                    <h5 class="grid grid--justify grid--middle title title--second">
-                        <span class="col">{{name}}</span>
-                        {% include atom('icon') with {
-                            class: 'col',
-                            modifiers: ['shipment', name | lower ~ '-logo'],
-                            data: {
-                                name: name | lower ~ '-logo'
-                            }
-                        } only %}
-                    </h5>
+        {% block fieldset %}
+            {% set shipmentGroupCollectionForm = data.form.shipmentGroups | default %}
 
-                    {% include molecule('checkout-list', 'CheckoutPage') with {
-                        data: {
-                            form: data.form.idShipmentMethod,
-                            choices: choices
-                        }
-                    } only %}
-                </div>
-            {% endfor %}
+            <div class="grid">
+                {% for shipmentGroupForm in shipmentGroupCollectionForm %}
+                    {% if shipmentGroupForm.hash is defined %}
+                        {% do shipmentGroupForm.hash.setRendered %}
+                    {% endif %}
+
+                    <article class="col col--sm-12 grid grid--gap spacing-bottom spacing-bottom--big">
+                        <h3 class="col col--sm-12 title title--second spacing-bottom spacing-bottom--small">
+                            {{ 'page.checkout.shipment.shipment_group_heading' | trans({
+                                '%current%': loop.index,
+                                '%total%': loop.length
+                            }) }}
+                        </h3>
+
+                        <div class="col col--sm-12 col--xl-8">
+                            {% for item in shipmentGroupForm.vars.data.items %}
+                                {% set item = item.bundleProduct ?? item %}
+
+                                {% embed molecule('product-item') with {
+                                    modifiers: ['checkout'],
+                                    data: {
+                                        list: shipmentGroupForm.vars.data.items,
+                                        listItem: item,
+                                        quantity: item.quantity,
+                                        priceModifiers: ['medium', 'block', 'margin-bottom-from-tablet'],
+                                    },
+                                } only %}
+                                    {% block image %}
+                                        {% set imageUrl = data.listItem.images is not empty ? data.listItem.images[0].externalUrlLarge : null %}
+
+                                        {% include molecule('product-item-image') with {
+                                            modifiers: ['small'],
+                                            data: {
+                                                name: data.listItem.name,
+                                                image: imageUrl,
+                                            },
+                                        } only %}
+                                    {% endblock %}
+
+                                    {% block title %}
+                                        <h6 class="{{ config.name }}__title spacing spacing--reset">{{ data.listItem.name }}</h6>
+                                    {% endblock %}
+
+                                    {% block note %}
+                                        {% if data.listItem.cartNote is not empty %}
+                                            {% include molecule('cart-item-note', 'CartNoteWidget') ignore missing with {
+                                                data: {
+                                                    isNoteNotEmpty: true,
+                                                    canWrite: false,
+                                                    label: 'cart_note.checkout_page.quote_note',
+                                                    note: data.listItem.cartNote,
+                                                },
+                                            } only %}
+                                        {% endif %}
+                                    {% endblock %}
+
+                                    {% block bundle %}{% endblock %}
+                                {% endembed %}
+                            {% endfor %}
+                        </div>
+
+                        <div class="col col--sm-12 col--xl-4">
+                            {% include molecule('shipment-sidebar', 'CheckoutPage') with {
+                                data: {
+                                    shipment: shipmentGroupForm.shipment,
+                                },
+                            } only %}
+                        </div>
+                    </article>
+                {% endfor %}
+            </div>
         {% endblock %}
     {% endembed %}
 {% endblock %}

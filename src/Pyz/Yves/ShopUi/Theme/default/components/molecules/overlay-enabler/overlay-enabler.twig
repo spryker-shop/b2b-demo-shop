@@ -1,0 +1,11 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'overlay-enabler',
+    tag: 'overlay-enabler',
+} %}
+
+{% define attributes = {
+    'trigger-class-name': required,
+    'overlay-class-name' : 'js-overlay-block',
+} %}

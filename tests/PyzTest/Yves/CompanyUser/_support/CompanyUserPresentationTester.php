@@ -13,6 +13,7 @@ use PyzTest\Yves\CompanyUser\_support\PageObject\CompanyRegistrationPage;
 
 /**
  * Inherited Methods
+ *
  * @method void wantToTest($text)
  * @method void wantTo($text)
  * @method void execute($callable)

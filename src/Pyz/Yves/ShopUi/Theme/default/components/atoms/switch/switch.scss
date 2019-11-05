@@ -1,5 +1,6 @@
 @mixin shop-ui-switch($name: '.switch') {
     #{$name} {
+        @include helper-effect-transition(background-color margin-left, $setting-effect-default-duration);
         display: block;
         position: relative;
         width: rem(34);
@@ -8,9 +9,9 @@
         border-radius: rem(7);
         overflow: visible;
         margin: rem(3) 0 rem(3) rem(10);
-        @include helper-effect-transition(background-color margin-left, $setting-effect-default-duration);
 
         &__handle {
+            @include helper-effect-transition(background-color left, $setting-effect-default-duration);
             display: block;
             position: absolute;
             width: rem(20);
@@ -21,7 +22,6 @@
             box-shadow: 0 rem(2) rem(4) $setting-color-shadow-2;
             left: 0;
             top: 0;
-            @include helper-effect-transition(background-color left, $setting-effect-default-duration);
         }
 
         &--active {

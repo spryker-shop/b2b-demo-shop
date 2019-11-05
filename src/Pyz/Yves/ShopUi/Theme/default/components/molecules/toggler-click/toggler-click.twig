@@ -1,18 +1,5 @@
-{% extends model('component') %}
-
-{% define config = {
-    name: 'toggler-click',
-    tag: 'toggler-click',
-} %}
+{% extends molecule('toggler-click', '@SprykerShop:ShopUi') %}
 
 {% define attributes = {
-    'fix-body': 'false',
     'trigger-class-to-toggle': '',
-    'trigger-class-name': required,
-    'target-class-name': required,
-    'class-to-toggle': required,
-    'toggle-overlay-modifiers': '',
-    'document-click': '',
-    'class-to-fix-body': 'is-locked',
-    'overlay-block-class-name': 'js-overlay-block',
 } %}

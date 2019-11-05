@@ -1,221 +1,302 @@
-@mixin b2b-shop-ui-form($name: '.form') {
-    @include shop-ui-form($name);
+$address-form-width: rem(710);
 
-    #{$name} {
-        &__field {
-            + & {
-                margin-top: 0.5rem;
-            }
+@include shop-ui-form {
+    $name: '.form';
 
-            &--section {
-                margin-top: rem(48);
-                width: 100%;
-            }
+    &__field {
+        + & {
+            margin-top: 0.5rem;
         }
 
-        &__actions {
-            display: flex;
-            flex-flow: row wrap;
-            align-items: center;
-            text-align: center;
-
-            @include helper-breakpoint-media-min($lg) {
-                margin-top: rem(16);
-                flex-wrap: wrap;
-            }
-        }
-
-        &__action {
-            flex: none;
+        &--section {
+            margin-top: rem(48);
             width: 100%;
-            margin: rem(10) 0 0 0;
+        }
+    }
+
+    &__actions {
+        display: flex;
+        flex-flow: row wrap;
+        align-items: center;
+        text-align: center;
+
+        @include helper-breakpoint-media-min($lg) {
+            margin-top: rem(16);
+            flex-wrap: wrap;
+        }
+    }
+
+    &__action {
+        flex: none;
+        width: 100%;
+        margin: rem(10) 0 0 0;
+
+        @include helper-breakpoint-media-min($lg) {
+            width: auto;
+            margin: 0 rem(16) 0 0;
+        }
+
+        &--expand-sm-md {
+            @include helper-breakpoint-media-min($md) {
+                width: auto;
+                margin: rem(10) rem(16) 0 0;
+            }
 
             @include helper-breakpoint-media-min($lg) {
-                width: auto;
-                margin: 0 rem(16) 0 0;
-            }
-
-            &--expand-sm-md {
-                @include helper-breakpoint-media-min($md) {
-                    width: auto;
-                    margin: rem(10) rem(16) 0 0;
-                }
-
-                @include helper-breakpoint-media-min($lg) {
-                    margin-top: 0;
-                }
-            }
-
-            &--primary {
-                order: -1;
-            }
-
-            &--sm-lg-first {
-                order: -1;
-
-                @include helper-breakpoint-media-min($lg) {
-                    order: 0;
-                }
-            }
-
-            &--sm-md-first {
-                order: -1;
-
-                @include helper-breakpoint-media-min($md) {
-                    order: 0;
-                }
-            }
-
-            &--link {
-                width: auto;
-                margin: rem(10) auto 0;
-                font-size: rem(13);
-                text-decoration: underline;
-
-                @include helper-breakpoint-media-min($lg) {
-                    margin: 0 rem(16) 0 0;
-                    font-size: rem(16);
-                    text-decoration: none;
-                }
+                margin-top: 0;
             }
         }
 
-        &__title-description {
-            color: $setting-color-gray-2;
-            margin: rem(-8) 0 rem(16);
+        &--primary {
+            order: -1;
         }
 
-        &--narrow {
-            #{$name}__container {
-                width: 100%;
+        &--sm-lg-first {
+            order: -1;
 
-                @include helper-breakpoint-media-min($md) {
-                    max-width: rem(700);
-                }
-
-                @include helper-breakpoint-media-min($xl) {
-                    max-width: rem(500);
-                }
+            @include helper-breakpoint-media-min($lg) {
+                order: 0;
             }
         }
 
-        &--subscription {
-            padding-bottom: rem(32);
+        &--sm-md-first {
+            order: -1;
 
             @include helper-breakpoint-media-min($md) {
-                padding-bottom: 0;
+                order: 0;
             }
+        }
 
-            .form__container {
-                position: relative;
-            }
+        &--link {
+            width: auto;
+            margin: rem(10) auto 0;
+            font-size: rem(13);
+            text-decoration: underline;
 
-            .form__fields,
-            .form__actions,
-            .form__action {
-                margin: 0;
-            }
-
-            .form__field {
-                padding: 0;
-            }
-
-            .form__actions {
-                position: absolute;
-                right: 0;
-                bottom: 0;
-            }
-
-            .label {
-                display: none;
-            }
-
-            .input {
-                border-radius: 0;
-                border: none;
-                border-bottom: 2px solid $setting-color-gray-4;
-                background-color: $setting-color-transparent;
+            @include helper-breakpoint-media-min($lg) {
+                margin: 0 rem(16) 0 0;
                 font-size: rem(16);
-                line-height: rem(20);
-                letter-spacing: rem(0.2);
-                color: $setting-color-gray-4;
-                padding: rem(10) rem(36) rem(10) 0;
-
-                &::placeholder {
-                    color: $setting-color-gray-4;
-                }
-
-                @include helper-breakpoint-media-min($lg) {
-                    font-size: rem(18);
-                    line-height: rem(23);
-                    letter-spacing: rem(0.27);
-                    padding: rem(13) rem(46) rem(16) 0;
-                }
-            }
-
-            .button {
-                color: $setting-color-gray-4;
-                min-height: rem(42);
-                padding-right: rem(10);
-                padding-bottom: rem(10);
-
-                &:hover,
-                &:focus {
-                    color: $setting-color-gray-3;
-                }
-
-                @include helper-breakpoint-media-min($lg) {
-                    min-height: rem(54);
-                    padding-right: rem(22);
-                    padding-bottom: rem(10);
-                }
-            }
-
-            .icon {
-                width: rem(12);
-                height: rem(12);
-
-                @include helper-breakpoint-media-min($lg) {
-                    width: rem(16);
-                    height: rem(16);
-                }
-            }
-        }
-
-        &--browse-file {
-            #{$name}__field:not(:first-of-type),
-            #{$name}__actions,
-            .input {
-                display: none;
-            }
-        }
-
-        &--text-order {
-            #{$name}__field {
-                padding-top: 0;
-            }
-
-            #{$name}__actions {
-                display: none;
-            }
-
-            .textarea {
-                min-height: rem(119);
-                padding: rem(17) rem(20) rem(18);
-                font-size: rem(13);
-                font-weight: fw(regular);
-                color: $setting-color-gray-3;
-                border-radius: $setting-border-radius;
-                border: none;
-                box-shadow: 0 rem(10) rem(10) 0 $setting-color-shadow-1, 0 rem(3) rem(3) 0 $setting-color-shadow-1;
-
-                @include helper-breakpoint-media-min($lg) {
-                    min-height: rem(86);
-                    padding: rem(15) rem(20);
-                }
+                text-decoration: none;
             }
         }
     }
-}
 
-@include b2b-shop-ui-form();
+    &__title-description {
+        color: $setting-color-gray-2;
+        margin: rem(-8) 0 rem(16);
+    }
+
+    &--narrow {
+        #{$name}__container {
+            width: 100%;
+
+            @include helper-breakpoint-media-min($md) {
+                max-width: rem(700);
+            }
+
+            @include helper-breakpoint-media-min($xl) {
+                max-width: rem(500);
+            }
+        }
+    }
+
+    &--subscription {
+        padding-bottom: rem(32);
+
+        @include helper-breakpoint-media-min($md) {
+            padding-bottom: 0;
+        }
+
+        #{$name}__container {
+            position: relative;
+        }
+
+        #{$name}__fields,
+        #{$name}__actions,
+        #{$name}__action {
+            margin: 0;
+        }
+
+        #{$name}__field {
+            padding: 0;
+        }
+
+        #{$name}__actions {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+        }
+
+        .label {
+            display: none;
+        }
+
+        .input {
+            border-radius: 0;
+            border: none;
+            border-bottom: 2px solid $setting-color-gray-4;
+            background-color: $setting-color-transparent;
+            font-size: rem(16);
+            line-height: rem(20);
+            letter-spacing: rem(0.2);
+            color: $setting-color-gray-4;
+            padding: rem(10) rem(36) rem(10) 0;
+
+            &::placeholder {
+                color: $setting-color-gray-4;
+            }
+
+            @include helper-breakpoint-media-min($lg) {
+                font-size: rem(18);
+                line-height: rem(23);
+                letter-spacing: rem(0.27);
+                padding: rem(13) rem(46) rem(16) 0;
+            }
+        }
+
+        .button {
+            color: $setting-color-gray-4;
+            min-height: rem(42);
+            padding-right: rem(10);
+            padding-bottom: rem(10);
+
+            &:hover,
+            &:focus {
+                color: $setting-color-gray-3;
+            }
+
+            @include helper-breakpoint-media-min($lg) {
+                min-height: rem(54);
+                padding-right: rem(22);
+                padding-bottom: rem(10);
+            }
+        }
+
+        .icon {
+            width: rem(12);
+            height: rem(12);
+
+            @include helper-breakpoint-media-min($lg) {
+                width: rem(16);
+                height: rem(16);
+            }
+        }
+    }
+
+    &--browse-file {
+        #{$name}__field:not(:first-of-type),
+        #{$name}__actions,
+        .input {
+            display: none;
+        }
+    }
+
+    &--text-order {
+        #{$name}__field {
+            padding-top: 0;
+        }
+
+        #{$name}__actions {
+            display: none;
+        }
+
+        .textarea {
+            min-height: rem(119);
+            padding: rem(17) rem(20) rem(18);
+            font-size: rem(13);
+            font-weight: fw(regular);
+            color: $setting-color-gray-3;
+            border-radius: $setting-border-radius;
+            border: none;
+            box-shadow: 0 rem(10) rem(10) 0 $setting-color-shadow-1, 0 rem(3) rem(3) 0 $setting-color-shadow-1;
+
+            @include helper-breakpoint-media-min($lg) {
+                min-height: rem(86);
+                padding: rem(15) rem(20);
+            }
+        }
+    }
+
+    &--checkout-form {
+        padding: 0;
+
+        #{$name}__fields {
+            margin: 0;
+        }
+
+        #{$name}__field {
+            padding: 0 0 rem(16);
+
+            @include helper-breakpoint-media-min($lg) {
+                padding: 0 rem(10) rem(16);
+            }
+        }
+
+        #{$name}__actions {
+            flex-direction: column-reverse;
+
+            @include helper-breakpoint-media-min($md) {
+                flex-direction: row-reverse;
+                justify-content: flex-end;
+            }
+        }
+
+        #{$name}__action {
+            @include helper-breakpoint-media-min($md) {
+                margin: 0 rem(16) 0 0;
+            }
+        }
+
+        .label:not(span) {
+            color: $setting-color-gray-5;
+            font-size: rem(10);
+
+            @include helper-breakpoint-media-min($lg) {
+                font-size: rem(12);
+            }
+        }
+
+        .input {
+            @include helper-effect-transition(box-shadow border-color);
+
+            &::placeholder {
+                color: $setting-color-gray-2;
+            }
+
+            &:focus {
+                border-color: $setting-color-main;
+                box-shadow: 0 0 0 rem(1) $setting-color-main;
+            }
+        }
+    }
+
+    &--checkout-address-content {
+        > #{$name}__container {
+            max-width: $address-form-width;
+            margin: 0 auto;
+        }
+
+        #{$name}__actions {
+            margin: 0;
+        }
+
+        #{$name}__field {
+            .select2-selection__rendered,
+            .custom-select__select {
+                background-color: $setting-color-white;
+            }
+        }
+    }
+
+    &--container-full-width {
+        > #{$name}__container {
+            max-width: 100%;
+        }
+    }
+
+    &--hidden-actions {
+        #{$name}__actions {
+            display: none;
+        }
+    }
+}

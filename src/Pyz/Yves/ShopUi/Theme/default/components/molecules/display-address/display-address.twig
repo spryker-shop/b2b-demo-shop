@@ -6,7 +6,8 @@
 } %}
 
 {% define data = {
-    address: required
+    address: required,
+    isAddressLabelVisible: true,
 } %}
 
 {% block class %}
@@ -15,6 +16,7 @@
 
 {% block body %}
     {% set addressSalutation = 'customer.salutation.' ~ data.address.salutation | lower %}
+    {% set isAddressLabelExists = (data.address.isDefaultBilling or data.address.isDefaultShipping) and data.isAddressLabelVisible %}
 
     <li class="list__item">{{ addressSalutation | trans }} <strong class="{{ component.renderClass(config.name ~ '__name', modifiers) }}">{{ data.address.firstName }} {{ data.address.lastName }}</strong></li>
 
@@ -29,7 +31,7 @@
         <li class="list__item">{{ data.address.phone }}</li>
     {% endif %}
 
-    {% if data.address.isDefaultBilling or data.address.isDefaultShipping %}
+    {% if isAddressLabelExists %}
         <li class="list__item {{ component.renderClass(config.name ~ '__bottom', modifiers) }}">
             {% if data.address.isDefaultBilling %}
                 <span class="badge badge--summary badge--multi-cart spacing-right">{{'customer.order.billing_address' | trans}}</span>

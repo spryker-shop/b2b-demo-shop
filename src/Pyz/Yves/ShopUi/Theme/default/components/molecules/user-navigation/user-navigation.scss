@@ -58,6 +58,7 @@
 
         &__link,
         &__user-name {
+            @include helper-effect-transition(color);
             display: block;
             color: $setting-color-gray-4;
             font-size: rem(10);
@@ -67,7 +68,6 @@
             text-transform: uppercase;
             text-align: left;
             cursor: pointer;
-            @include helper-effect-transition(color);
 
             @include helper-breakpoint-media-min($lg) {
                 text-align: center;
@@ -128,9 +128,9 @@
         }
 
         &__sub-nav {
+            @include helper-effect-transition(opacity);
             display: flex;
             flex-direction: column;
-            @include helper-effect-transition(opacity);
             position: fixed;
             top: 0;
             left: 0;
@@ -230,8 +230,8 @@
         }
 
         &__sub-nav-link {
-            color: $setting-color-gray-3;
             @include helper-effect-transition(color);
+            color: $setting-color-gray-3;
 
             &:hover {
                 color: $setting-color-gray-4;
