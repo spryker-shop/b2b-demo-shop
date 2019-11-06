@@ -6,6 +6,7 @@
 
 {% define data = {
     shipment: required,
+    canEdit: false,
 } %}
 
 {% block body %}
@@ -13,15 +14,17 @@
         <h4 class="{{ config.name }}__title">
             {{ 'checkout.step.summary.delivery_address' | trans }}
 
-            <a class="float-right link link--alt link--action spacing-left" href="{{ url('checkout-address') }}">
-                {% include molecule('icon-tooltip') with {
-                    modifiers: ['big'],
-                    data: {
-                        icon: 'edit',
-                        text: 'general.edit.button' | trans,
-                    },
-                } only %}
-            </a>
+            {% if data.canEdit %}
+                <a class="float-right link link--alt link--action spacing-left" href="{{ url('checkout-address') }}">
+                    {% include molecule('icon-tooltip') with {
+                        modifiers: ['big'],
+                        data: {
+                            icon: 'edit',
+                            text: 'general.edit.button' | trans,
+                        },
+                    } only %}
+                </a>
+            {% endif %}
         </h4>
 
         {% include molecule('display-address') with {
@@ -36,15 +39,17 @@
         <h4 class="{{ config.name }}__title">
             {{ 'checkout.step.summary.delivery_method' | trans }}
 
-            <a class="float-right link link--alt link--action spacing-left" href="{{ url('checkout-shipment') }}">
-                {% include molecule('icon-tooltip') with {
-                    modifiers: ['big'],
-                    data: {
-                        icon: 'edit',
-                        text: 'general.edit.button' | trans,
-                    },
-                } only %}
-            </a>
+            {% if data.canEdit %}
+                <a class="float-right link link--alt link--action spacing-left" href="{{ url('checkout-shipment') }}">
+                    {% include molecule('icon-tooltip') with {
+                        modifiers: ['big'],
+                        data: {
+                            icon: 'edit',
+                            text: 'general.edit.button' | trans,
+                        },
+                    } only %}
+                </a>
+            {% endif %}
         </h4>
 
         {% include molecule('delivery-information', 'CustomerPage') ignore missing with {
@@ -62,15 +67,17 @@
             <h4 class="{{ config.name }}__title">
                 {{ 'checkout.step.summary.requested_delivery_date' | trans }}
 
-                <a class="float-right link link--alt link--action spacing-left" href="{{ url('checkout-shipment') }}">
-                    {% include molecule('icon-tooltip') with {
-                        modifiers: ['big'],
-                        data: {
-                            icon: 'edit',
-                            text: 'general.edit.button' | trans,
-                        },
-                    } only %}
-                </a>
+                {% if data.canEdit %}
+                    <a class="float-right link link--alt link--action spacing-left" href="{{ url('checkout-shipment') }}">
+                        {% include molecule('icon-tooltip') with {
+                            modifiers: ['big'],
+                            data: {
+                                icon: 'edit',
+                                text: 'general.edit.button' | trans,
+                            },
+                        } only %}
+                    </a>
+                {% endif %}
             </h4>
             <span class="{{ config.name }}__content">{{ data.shipment.requestedDeliveryDate }}</span>
         </div>
