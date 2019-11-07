@@ -67,6 +67,7 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
             new RedirectAfterLoginProvider(),
             new EventBehaviorServiceProvider(),
             new SaveSessionServiceProvider(),
+            new FormTypeExtensionServiceProvider(),
         ];
 
         $providers = array_merge($providers, $coreProviders);
