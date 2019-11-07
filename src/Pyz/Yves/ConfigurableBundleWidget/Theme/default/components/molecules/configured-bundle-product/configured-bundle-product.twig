@@ -1,14 +1,26 @@
 {% extends molecule('configured-bundle-product', '@SprykerShop:ConfigurableBundleWidget') %}
 
-{% block imageContainer %}
-    <div class="{{ config.name }}__col col col--sm-12 col--lg-2">
-        {% set imageModifiers =  ['small', 'item'] %}
+{%- block extraClass %} grid{% endblock -%}
 
-        {% block image %}
+{% block content %}
+    <div class="grid col col--sm-12 col--lg-10 col--middle">
+        {% block contentInner %}
             {{ parent() }}
         {% endblock %}
     </div>
 {% endblock %}
+
+{% block imageContainer %}
+    <div class="grid col col--sm-12 col--lg-2">
+        {% block image %}
+            {% set imageModifiers =  ['small', 'item'] %}
+
+            {{ parent() }}
+        {% endblock %}
+    </div>
+{% endblock %}
+
+
 
 {% block generalInformation %}
     <div class="col--sm-12 col--lg-6">
@@ -28,9 +40,9 @@
     <div class="{{ config.name }}__container col col--sm-12 col--lg-6">
         {% block priceInformationInner %}
             {% block priceCol %}
-                <div class="{{ config.name }}__col {{ config.name }}__col--center col col--sm-12 col--lg-4">
+                <div class="{{ config.name }}__col col col--sm-12 col--lg-4">
                     {% block price %}
-                        <strong class="{{ config.name }}__text col">
+                        <strong class="{{ config.name }}__text">
                             {% block priceInner %}
                                 {{ parent() }}
                             {% endblock %}
@@ -42,7 +54,7 @@
             {% endblock %}
 
             {% block quantityCol %}
-                <div class="{{ config.name }}__col {{ config.name }}__col--center {{ config.name }}__col--text-light col col--sm-12 col--lg-5 text-center">
+                <div class="{{ config.name }}__col {{ config.name }}__col--text-light col col--sm-12 col--lg-5 text-center">
                     {% block quantity %}
                         {{ parent() }}
                     {% endblock %}
@@ -50,9 +62,9 @@
             {% endblock %}
 
             {% block totalCol %}
-                <div class="{{ config.name }}__col {{ config.name }}__col--right col col col--sm-12 col--right col--lg-3">
+                <div class="{{ config.name }}__col col col col--sm-12 col--right col--lg-3">
                     {% block total %}
-                        <strong class="{{ config.name }}__text col">
+                        <strong class="{{ config.name }}__text">
                             {% block totalInner %}
                                 {{ parent() }}
                             {% endblock %}

@@ -13,18 +13,13 @@
         }
 
         &__col {
-            display: flex;
-            flex-wrap: wrap;
-
-            &--center {
-                @include helper-breakpoint-media-min($lg) {
-                    justify-content: center;
-                }
+            @include helper-breakpoint-media-min($lg) {
+                text-align: center;
             }
 
-            &--right {
+            &:last-child {
                 @include helper-breakpoint-media-min($lg) {
-                    justify-content: flex-end;
+                    text-align: right;
                 }
             }
 
