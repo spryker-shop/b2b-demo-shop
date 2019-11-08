@@ -5,7 +5,8 @@
     waitingQuoteApproval: _widget.waitingQuoteApproval,
     canQuoteBeApprovedByCurrentCustomer: _widget.canQuoteBeApprovedByCurrentCustomer,
     quoteOwner: _widget.quoteOwner,
-    isVisible: _widget.isVisible
+    isVisible: _widget.isVisible,
+    isQuoteApplicableForApprovalProcess: _widget.isQuoteApplicableForApprovalProcess
 } %}
 
 {% block body %}
@@ -25,7 +26,7 @@
 
             {% if data.waitingQuoteApproval %}
                 <div class="grid grid--right">
-                    {% if data.canQuoteBeApprovedByCurrentCustomer %}
+                    {% if data.canQuoteBeApprovedByCurrentCustomer and data.isQuoteApplicableForApprovalProcess %}
                         <div class="col col--sm-6 spacing-right spacing-right--inner">
                             <form method="POST" action="{{ path('quote-approval-decline', {'idQuoteApproval': data.waitingQuoteApproval.idQuoteApproval}) }}">
                                 <button type="submit" class="button button--alert button--expand button--hollow">{{ 'quote_approval_widget.cart.decline' | trans }}</button>
@@ -37,6 +38,11 @@
                             </form>
                         </div>
                     {% else %}
+                        {% if not data.isQuoteApplicableForApprovalProcess %}
+                            <div class="col">
+                                <b>{{ 'quote_approval_widget.quote_not_applicable_for_approval_process' | trans }}</b>
+                            </div>
+                        {% endif %}
                         <div class="col">
                             <form method="POST" action="{{ path('quote-approval-remove', {'idQuoteApproval': data.waitingQuoteApproval.idQuoteApproval}) }}">
                                 <button type="submit" class="button button--alert button--expand">{{ 'quote_approval_widget.cart.cancel' | trans }}</button>

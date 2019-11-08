@@ -18,6 +18,11 @@
 {% block body %}
     <div class="{{ config.name }}__wrapper">
         <ul class="list">
+            {% set quoteApprovalWidget = findWidget('QuoteApprovalWidget', [data.cart]) %}
+            {% if quoteApprovalWidget and quoteApprovalWidget.isVisible and not canProceedToCheckout %}
+                {% set canProceedToCheckout = true %}
+            {% endif %}
+
             {% block cartSummaryContent %}
                 <li class="list__item">
                     {% include molecule('cart-discount-summary', 'DiscountWidget') ignore missing with {
@@ -57,7 +62,7 @@
         </ul>
     </div>
 
-    {% widget 'QuoteApprovalWidget' args [data.cart] only %}
+    {% widget 'QuoteApprovalWidget' args [data.cart] %}
         {% block container %}
             <div class="{{ config.name }}__approve-request">
                 {{ parent() }}

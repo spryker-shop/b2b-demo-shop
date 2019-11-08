@@ -1,7 +1,10 @@
 {% extends view('summary', '@SprykerShop:CheckoutPage') %}
 
 {% define data = {
+    cart: _view.quoteTransfer,
     stepNumder: 4,
+    isPlaceableOrder: _view.isPlaceableOrder,
+    isPlaceableOrderErrors: _view.isPlaceableOrderErrors,
 } %}
 
 {% block content %}
@@ -146,6 +149,13 @@
                 } only %}
             {% endif %}
 
+            {% set quoteApprovalWidget = findWidget('QuoteApprovalWidget', [data.cart]) %}
+            {% if quoteApprovalWidget and quoteApprovalWidget.isVisible %}
+                <div class="box">
+                    {% widget 'QuoteApprovalWidget' args [data.cart] only %}{% endwidget %}
+                </div>
+            {% endif %}
+
             {% include molecule('summary-voucher-form', 'CheckoutPage') with {
                 data: {
                     transfer: data.transfer,
@@ -157,7 +167,7 @@
                 data: {
                     form: data.forms.summary,
                     submit: {
-                        enable: true,
+                        enable: data.isPlaceableOrder and can('WriteSharedCartPermissionPlugin', data.cart.idQuote),
                         text: 'checkout.step.place.order' | trans,
                         class: 'form__action--expand-sm-md button button--big',
                     },
@@ -171,6 +181,8 @@
                 },
                 embed: {
                     overview: data.overview,
+                    cart: data.cart,
+                    isPlaceableOrderErrors: data.isPlaceableOrderErrors,
                 },
             } only %}
                 {% block body %}
@@ -178,7 +190,27 @@
                         data: embed.overview,
                     } only %}
 
+                    {% set QuoteApproveRequestWidget = findWidget('QuoteApproveRequestWidget', [embed.cart]) %}
+                    {% if QuoteApproveRequestWidget and QuoteApproveRequestWidget.isVisible %}
+                        {% widget 'QuoteApproveRequestWidget' args [embed.cart] %}
+                            {% block body %}
+                                <div class="box">
+                                    {{ parent() }}
+                                </div>
+                            {% endblock %}
+                        {% endwidget %}
+                    {% endif %}
+
                     {{ parent() }}
+
+                    {% if embed.isPlaceableOrderErrors is not empty %}
+                        <hr class="box__separator">
+                        <ul class="list list--alert">
+                            {% for error in embed.isPlaceableOrderErrors %}
+                                <li class="list__item">{{ error.message | trans }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
                 {% endblock %}
             {% endembed %}
         </div>
