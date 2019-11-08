@@ -9,7 +9,7 @@ namespace PyzTest\Zed\ProductRelation\PageObject;
 
 class ProductRelationCreatePage
 {
-    public const URL = 'product-relation/create/index';
+    public const URL = '/product-relation/create/index';
 
     public const PRODUCT_RELATION_PRODUCT_1_NAME = 'Our Conference Room Bundle';
     public const PRODUCT_RELATION_PRODUCT_1_SKU = 'B0002';
