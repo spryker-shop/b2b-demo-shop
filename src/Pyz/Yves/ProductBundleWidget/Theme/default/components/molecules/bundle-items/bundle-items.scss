@@ -1,0 +1,43 @@
+@mixin product-bundle-widget-bundle-items($name: '.bundle-items') {
+    #{$name} {
+        &__title {
+            font-size: rem(14);
+            font-weight: fw(medium);
+            color: $setting-color-gray-5;
+            margin: rem(10) 0 rem(3);
+        }
+
+        &__list {
+            padding: 0 0 0 rem(8);
+            font-size: rem(13);
+            font-weight: fw(regular);
+            color: $setting-color-gray-5;
+
+            @include helper-breakpoint-media-min($lg) {
+                padding-left: rem(20);
+            }
+        }
+
+        &__item {
+            padding: rem(3) 0;
+        }
+
+        &__quantity {
+            font-size: rem(13);
+            font-weight: fw(regular);
+            line-height: normal;
+            color: $setting-color-gray-3;
+            padding-left: rem(15);
+            white-space: nowrap;
+
+            @include helper-breakpoint-media-min($lg) {
+                display: block;
+                padding-left: 0;
+            }
+        }
+
+        @content;
+    }
+}
+
+@include product-bundle-widget-bundle-items;

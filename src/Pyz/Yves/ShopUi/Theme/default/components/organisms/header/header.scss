@@ -18,14 +18,7 @@
         }
 
         &__search-form {
-            @include helper-visibility-invisible;
-            @include helper-effect-transition(transform visibility opacity);
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
             z-index: $setting-zi-header + 1;
-            transform: translateY(-100%);
 
             &--active {
                 @include helper-visibility-visible;
@@ -33,11 +26,11 @@
             }
 
             @include helper-breakpoint-media-min($lg) {
+                @include helper-visibility-visible;
                 display: block;
                 position: relative;
                 transform: none;
                 transition: none;
-                @include helper-visibility-visible;
                 z-index: $setting-zi-element;
             }
 
@@ -198,8 +191,8 @@
             font-weight: fw(medium);
 
             @include helper-breakpoint-media-min($lg) {
-                display: inline-block;
                 @include helper-effect-transition(color border-color);
+                display: inline-block;
                 padding: rem(10) rem(30);
                 border: rem(1) solid $setting-color-gray-2;
                 border-radius: $setting-border-radius;

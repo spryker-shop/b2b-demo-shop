@@ -19,6 +19,8 @@ use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCalculationCli
 use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToCalculationClientInterface;
 use SprykerShop\Yves\CheckoutPage\Dependency\Client\CheckoutPageToPaymentClientInterface;
 use SprykerShop\Yves\CheckoutPage\Process\Steps\PaymentStep;
+use SprykerShop\Yves\CheckoutPageExtension\Dependency\Plugin\CheckoutPaymentStepEnterPreCheckPluginInterface;
+use SprykerShop\Yves\QuoteApprovalWidget\Plugin\CheckoutPage\QuoteApprovalCheckerCheckoutPaymentStepEnterPreCheckPlugin;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -92,7 +94,8 @@ class PaymentStepTest extends Unit
             'payment',
             'escape_route',
             $this->getFlashMessengerMock(),
-            $this->getCalculationClientMock()
+            $this->getCalculationClientMock(),
+            $this->getCheckoutPaymentStepEnterPreCheckPlugins()
         );
     }
 
@@ -143,5 +146,25 @@ class PaymentStepTest extends Unit
             ->willReturn($availablePaymentMethods);
 
         return $paymentClientMock;
+    }
+
+    /**
+     * @return \SprykerShop\Yves\CheckoutPageExtension\Dependency\Plugin\CheckoutPaymentStepEnterPreCheckPluginInterface[]
+     */
+    public function getCheckoutPaymentStepEnterPreCheckPlugins(): array
+    {
+        return [
+            $this->getQuoteApprovalCheckerCheckoutPaymentStepEnterPreCheckPluginMock(),
+        ];
+    }
+
+    /**
+     * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerShop\Yves\CheckoutPageExtension\Dependency\Plugin\CheckoutPaymentStepEnterPreCheckPluginInterface
+     */
+    protected function getQuoteApprovalCheckerCheckoutPaymentStepEnterPreCheckPluginMock(): CheckoutPaymentStepEnterPreCheckPluginInterface
+    {
+        return $this->getMockBuilder(QuoteApprovalCheckerCheckoutPaymentStepEnterPreCheckPlugin::class)
+            ->enableProxyingToOriginalMethods()
+            ->getMock();
     }
 }

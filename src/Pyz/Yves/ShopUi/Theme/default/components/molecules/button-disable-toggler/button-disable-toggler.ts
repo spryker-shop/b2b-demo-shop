@@ -26,7 +26,7 @@ export default class ButtonDisableToggler extends Component {
 
     protected toggleStatus(textarea: TTriggerElement, button: HTMLButtonElement, force: boolean): void {
         textarea.classList.toggle(this.activeClass, force);
-        button.toggleAttribute('disabled', !force);
+        button.disabled = !force;
     }
 
     protected hasEnoughSymbols(textarea: TTriggerElement): boolean {

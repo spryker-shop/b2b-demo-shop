@@ -2,23 +2,20 @@
 
 {% define config = {
     name: 'order-info',
-    tag: 'div'
 } %}
 
 {% define data = {
     id: required,
-    date: required
+    date: required,
 } %}
 
 {% block body %}
-    <div class="box">
-        <div>
-            {{ 'customer.order.order_id' | trans }}:
-            <strong>{{ data.id }}</strong>
-        </div>
-        <div>
-            {{ 'customer.order.date' | trans }}:
-            <strong>{{ data.date }}</strong>
-        </div>
+    <div class="{{ config.name }}__item">
+        <div class="{{ config.name }}__name">{{ 'customer.order.order_id' | trans }}:</div>
+        <span>{{ data.id }}</span>
+    </div>
+    <div class="{{ config.name }}__item">
+        <div class="{{ config.name }}__name">{{ 'customer.order.date' | trans }}:</div>
+        <span>{{ data.date }}</span>
     </div>
 {% endblock %}

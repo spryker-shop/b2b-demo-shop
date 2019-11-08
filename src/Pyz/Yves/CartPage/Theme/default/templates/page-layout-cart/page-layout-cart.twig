@@ -188,7 +188,6 @@
                                                 {{ parent() }}
 
                                                 {% if embed.product.attributes.farbe is defined %}
-                                                    <br>
                                                     <span class="{{ config.name }}__color-preview">
                                                         {{ 'cart.item.color' | trans }}:
                                                         <span class="{{ config.name }}__color-preview-decoration" style="background: {{ embed.product.colorCode  }}" title="{{ embed.product.attributes.farbe  }}"></span>
@@ -214,6 +213,7 @@
                                                                 {% set subtotalPrice = data.listItem.unitSubtotalAggregation is defined ? data.listItem.unitSubtotalAggregation : data.listItem.price %}
 
                                                                 {% include molecule('money-price') with {
+                                                                    modifiers: ['medium', 'block'],
                                                                     data: {
                                                                         amount: subtotalPrice,
                                                                         currencyIsoCode: data.list.currency.code,
