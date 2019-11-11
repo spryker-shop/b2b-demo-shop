@@ -3,7 +3,7 @@
 {% block form %}
     <form method="POST" action="{{ path('cart/configured-bundle/change', {'configuredBundleGroupKey': data.configuredBundle.groupKey }) }}">
         {% include molecule('quantity-counter') with {
-            modifiers: ['cart', 'dark'],
+            modifiers: ['cart', 'secondary'],
             data: {
                 autoUpdate: true,
             },

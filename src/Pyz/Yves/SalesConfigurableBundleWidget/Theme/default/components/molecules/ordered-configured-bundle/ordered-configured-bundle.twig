@@ -1,6 +1,16 @@
 {% extends molecule('ordered-configured-bundle', '@SprykerShop:SalesConfigurableBundleWidget') %}
 
-{%- block extraClass %} js-bundle{% endblock -%}
+{% define config = {
+    name: 'ordered-configured-bundle',
+    tag: 'ordered-configured-bundle',
+} %}
+
+{% define attributes = {
+    'trigger-class-name': 'js-bundle-trigger-checkbox',
+    'target-class-name': 'js-bundle-target-checkbox',
+} %}
+
+{%- block extraClass %}{% endblock -%}
 
 {% block bundleInner %}
     {% block bundleGeneralInformation %}
@@ -11,7 +21,7 @@
                         class: 'js-customer-reorder-form__selection',
                     } only %}
                         {% block inputClass %}
-                            js-bundle-child js-bundle-checkbox
+                            js-bundle-trigger-checkbox
                         {% endblock %}
                     {% endembed %}
                 </div>
