@@ -32,7 +32,7 @@ export default class OrderedConfiguredBundle extends Component {
         });
     }
 
-    protected onTargetChange(event: Event): void {
+    protected onTargetChange(): void {
         const isChecked = this.isChecked();
 
         this.selectTrigger(isChecked);
