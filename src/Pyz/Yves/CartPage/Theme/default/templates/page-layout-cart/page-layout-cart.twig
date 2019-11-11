@@ -1,14 +1,17 @@
 {% extends template('page-layout-cart', '@SprykerShop:CartPage') %}
 
 {% block breadcrumbs %}
-    {% set steps = [{
-        label: 'multi_cart_widget.cart.carts' | trans,
-        url: url('multi-cart'),
-        isActive: false,
-    }, {
-        label: data.cart.name ? data.cart.name : data.title,
-        isActive: true,
-    }]%}
+    {% set steps = [
+        {
+            label: 'multi_cart_widget.cart.carts' | trans,
+            url: url('multi-cart'),
+            isActive: false,
+        },
+        {
+            label: data.cart.name ?: data.title,
+            isActive: true,
+        },
+    ]%}
 
     {% embed molecule('breadcrumb') with {
         data: {

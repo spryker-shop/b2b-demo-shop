@@ -13,7 +13,7 @@
                                 name: product.name,
                                 abstractId: product.idProductAbstract,
                                 url: product.url,
-                                imageUrl: (product.images|length ? product.images.0.externalUrlSmall),
+                                imageUrl: (product.images | length ? product.images.0.externalUrlSmall),
                                 price: product.prices.DEFAULT,
                                 originalPrice: (product.prices.ORIGINAL ?? null),
                             },
