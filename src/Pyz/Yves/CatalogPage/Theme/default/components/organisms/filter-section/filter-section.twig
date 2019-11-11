@@ -65,7 +65,7 @@
                                     filterPath: data.filterPath,
                                     categories: data.categories,
                                     filter: filter,
-                                    parameter: filter.config.parameterName | default(''),
+                                    parameter: filter.config.parameterName | default,
                                     min: filter.min | default(0),
                                     max: filter.max | default(0),
                                     activeMin: filter.activeMin | default(0),
