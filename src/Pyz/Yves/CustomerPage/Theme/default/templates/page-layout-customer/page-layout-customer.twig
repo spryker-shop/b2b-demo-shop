@@ -1,25 +1,11 @@
-{% extends template('page-layout-main') %}
-
-{% define data = {
-    activePage: 'overview'
-} %}
-
-{% block breadcrumbs %}
-    {% include molecule('breadcrumb') with {
-        data: {
-            steps: [{
-                label: 'customer.account' | trans
-            }]
-        }
-    } only %}
-{% endblock %}
+{% extends template('page-layout-customer', '@SprykerShop:CustomerPage') %}
 
 {% block title %}{% endblock %}
 
 {% block content %}
     {% set customerNavigation %}
         {% block customerNavigation %}
-            {%  widget 'CustomerNavigationWidget' args [data.activePage] only %}{% endwidget %}
+            {{ parent() }}
         {% endblock %}
     {% endset %}
     {% set customerContent %}
@@ -27,22 +13,30 @@
     {% endset %}
 
     {% embed organism('section') with {
-        modifiers: ['last']
-    } %}
+        modifiers: ['last'],
+        embed: {
+            customerNavigation: customerNavigation,
+            customerContent: customerContent,
+        },
+    } only %}
         {% block body %}
             <div class="{{ config.name }}__inner {{ data.innerClass }}">
                 {% block inner %}
                     <div class="grid grid--gap">
                         <div class="is-hidden-sm-lg col col--xl-3">
-                            {{ customerNavigation }}
+                            {{ embed.customerNavigation }}
                         </div>
 
                         <div class="col col--sm-12 col--xl-9">
-                            {{ customerContent }}
+                            {{ embed.customerContent }}
                         </div>
                     </div>
                 {% endblock %}
             </div>
         {% endblock %}
     {% endembed %}
+{% endblock %}
+
+{% block footer %}
+    {% include organism('footer') only %}
 {% endblock %}

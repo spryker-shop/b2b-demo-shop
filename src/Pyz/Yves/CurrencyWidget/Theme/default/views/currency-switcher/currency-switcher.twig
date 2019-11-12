@@ -1,16 +1,8 @@
-{% extends template('widget') %}
+{% extends view('currency-switcher', '@SprykerShop:CurrencyWidget') %}
 
 {% define data = {
-    currencies: _widget.currencies,
-    currentCurrency: _widget.currentCurrency,
-    requestUri: app.request.requestUri
+    requestUri: app.request.requestUri,
 } %}
-
-{% block template %}
-    {% if data.currencies is not empty %}
-        {{parent()}}
-    {% endif %}
-{% endblock %}
 
 {% block body %}
     <form method="GET" action="{{ path('currency-switch') }}">
@@ -18,12 +10,12 @@
             modifiers: ['alternative'],
             attributes: {
                 name: 'currency-iso-code',
-                'config-theme': 'alternative'
+                'config-theme': 'alternative',
             },
             embed: {
                 currencies: data.currencies,
-                currentCurrency: data.currentCurrency
-            }
+                currentCurrency: data.currentCurrency,
+            },
         } only %}
             {% block selectClass %}
                 {{ parent() }} js-currency-switcher-select
@@ -37,8 +29,8 @@
 
         {% include molecule('form-handler') with {
             attributes: {
-                'trigger-selector': '.js-currency-switcher-select'
-            }
+                'trigger-selector': '.js-currency-switcher-select',
+            },
         } only %}
 
         <input type="hidden" name="referrer-url" value="{{ data.requestUri }}">

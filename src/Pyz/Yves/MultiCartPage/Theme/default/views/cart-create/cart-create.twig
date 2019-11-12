@@ -1,30 +1,4 @@
-{% extends template('page-layout-multi-cart', 'MultiCartPage') %}
-
-{% define data = {
-    form: _view.quoteForm,
-    formAction: url('multi-cart/create'),
-    title: 'multi_cart.form.create_cart' | trans,
-} %}
-
-{% block breadcrumbs %}
-    {% include molecule('breadcrumb') with {
-        data: {
-            steps: [
-                {
-                    label: 'customer.account' | trans,
-                    url: url('customer/overview'),
-                },
-                {
-                    label: 'page.multi_cart.shopping_cart.list.title' | trans,
-                    url: url('multi-cart'),
-                },
-                {
-                    label: 'page.multi_cart.shopping_cart.create.title' | trans,
-                }
-            ]
-        }
-    } only %}
-{% endblock %}
+{% extends view('cart-create', '@SprykerShop:MultiCartPage') %}
 
 {% block content %}
     <div class="grid cart-update">
@@ -34,20 +8,20 @@
                 data: {
                     form: data.form,
                     options: {
-                        action: data.formAction
+                        action: data.formAction,
                     },
                     submit: {
                         enable: true,
-                        class: 'form__action--expand-sm-md button button--success'
+                        class: 'form__action--expand-sm-md button button--success',
                     },
                     cancel: {
                         enable: true,
                         url: data.backUrl,
                         class: 'form__action--expand-sm-md button button--secondary button--hollow',
                         text: 'general.back.button' | trans,
-                        icon: null
-                    }
-                }
+                        icon: null,
+                    },
+                },
             } only %}
         </div>
     </div>

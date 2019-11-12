@@ -1,18 +1,3 @@
-{% extends template('page-layout-customer', 'CustomerPage') %}
+{% extends template('page-layout-multi-cart', '@SprykerShop:MultiCartPage') %}
 
-{% define data = {
-    title: 'page.multi_cart.shopping_cart.list.title' | trans,
-    backUrl: app.request.headers.get('referer') | default(url('multi-cart')),
-    activePage: 'multiCart'
-} %}
-
-{% block breadcrumbs %}
-    {% include molecule('breadcrumb') with {
-        data: {
-            steps: [{
-                label: 'customer.account' | trans,
-                url: url('customer/overview'),
-            }]
-        }
-    } only %}
-{% endblock %}
+{% block title %}{% endblock %}
