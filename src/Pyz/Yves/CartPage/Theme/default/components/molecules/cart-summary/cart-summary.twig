@@ -70,16 +70,6 @@
         {% endblock %}
     {% endwidget %}
 
-    {% if data.isQuoteValid %}
-        {% widget 'QuoteApproveRequestWidget' args [data.cart] %}
-            {% block container %}
-                <div class="{{ config.name }}__approve-request">
-                    {{ parent() }}
-                </div>
-            {% endblock %}
-        {% endwidget %}
-    {% endif %}
-
     {% if canProceedToCheckout and can('SeeOrderPlaceSubmitPermissionPlugin') %}
         {% widget 'ProceedToCheckoutButtonWidget' args [data.cart] %}
             {% block body %}
