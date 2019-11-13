@@ -19,7 +19,7 @@ export default class OrderedConfiguredBundle extends Component {
         });
 
         this.targets.forEach((trigger: HTMLInputElement) => {
-            trigger.addEventListener('change', (event: Event) => this.onTargetChange(event));
+            trigger.addEventListener('change', () => this.onTargetChange());
         });
     }
 
