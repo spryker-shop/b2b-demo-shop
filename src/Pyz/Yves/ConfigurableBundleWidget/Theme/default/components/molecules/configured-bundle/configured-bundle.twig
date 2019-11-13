@@ -35,12 +35,12 @@
                 {% block bundleTotal %}
                     {{ parent() }}
                 {% endblock %}
-
-                {% block bundleTotalTitle %}{% endblock %}
             </div>
         {% endblock %}
     </div>
 {% endblock %}
+
+{% block bundleTotalTitle %}{% endblock %}
 
 {% block bundleActionsInner %}
     {% set bundleActionClassName = 'link link--icon float-right spacing-x spacing-x--big' %}

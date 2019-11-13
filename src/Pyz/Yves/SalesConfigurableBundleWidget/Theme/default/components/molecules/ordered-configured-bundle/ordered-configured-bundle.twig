@@ -39,19 +39,19 @@
     {% endblock %}
 
     <div class="grid grid--right col col--sm-12 col--md-5">
-        {% block bundleQuantity %}{% endblock %}
-
         {% block bundlePriceInformation %}
             <div class="{{ config.name }}__col col col--sm-12">
                 {% block bundleTotal %}
                     {{ parent() }}
-
-                    {%- block bundleTotalTitle -%}{%- endblock %}
                 {% endblock %}
             </div>
         {% endblock %}
     </div>
 {% endblock %}
+
+{% block bundleQuantity %}{% endblock %}
+
+{%- block bundleTotalTitle -%}{%- endblock %}
 
 {% block bundleProductListInner %}
     {% for item in data.bundle.salesOrderConfiguredBundleItems if data.items[item.IdSalesOrderItem] is defined %}

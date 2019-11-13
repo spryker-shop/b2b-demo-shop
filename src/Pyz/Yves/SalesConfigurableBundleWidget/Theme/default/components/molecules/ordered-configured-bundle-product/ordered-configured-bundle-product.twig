@@ -32,20 +32,12 @@
         {% block contentInner %}
             {{ parent() }}
         {% endblock %}
+    </div>
+{% endblock %}
 
-        {% block generalInformation %}
-            <div class="col col--sm-12 col--lg-5 spacing-x spacing-x--inner">
-                {{ parent() }}
-            </div>
-        {% endblock %}
-
-        {% block priceInformation %}
-            <div class="{{ config.name }}__container col col--sm-12 col--lg-7">
-                {% block priceInformationInner %}
-                    {{ parent() }}
-                {% endblock %}
-            </div>
-        {% endblock %}
+{% block generalInformation %}
+    <div class="col col--sm-12 col--lg-5 spacing-x spacing-x--inner">
+        {{ parent() }}
     </div>
 {% endblock %}
 
@@ -53,22 +45,30 @@
     <h6 class="{{ config.name }}__item-title">{{ data.name }}</h6>
 {%- endblock %}
 
+{% block priceInformation %}
+    <div class="{{ config.name }}__container col col--sm-12 col--lg-7">
+        {% block priceInformationInner %}
+            {{ parent() }}
+        {% endblock %}
+    </div>
+{% endblock %}
+
 {% block priceCol %}
-    <div class="{{ config.name }}__col-secondary col col--sm-12 col--lg-4">
+    <div class="{{ config.name }}__inner-section col col--sm-12 col--lg-4">
         {% block price %}
             <strong class="{{ config.name }}__text">
                 {% block priceInner %}
                     {{ parent() }}
                 {% endblock %}
-
-                {%- block priceTitle -%}{% endblock %}
             </strong>
         {% endblock %}
     </div>
 {% endblock %}
 
+{%- block priceTitle -%}{% endblock %}
+
 {% block quantityCol %}
-    <div class="{{ config.name }}__col-secondary {{ config.name }}__col-secondary--text-light col col--sm-12 col--lg-5">
+    <div class="{{ config.name }}__inner-section {{ config.name }}__inner-section--text-light col col--sm-12 col--lg-5">
         {% block quantity %}
             <span class="{{ config.name }}__text">
                 {{ 'configured_bundle.multiplier' | trans }} {{ data.quantity }}
@@ -78,11 +78,11 @@
 {% endblock %}
 
 {% block totalCol %}
-    <div class="{{ config.name }}__col-secondary col col--sm-12 col--right col--lg-3">
+    <div class="{{ config.name }}__inner-section col col--sm-12 col--right col--lg-3">
         {% block total %}
             {{ parent() }}
         {% endblock %}
-
-        {%- block totalTitle -%}{% endblock %}
     </div>
 {% endblock %}
+
+{%- block totalTitle -%}{% endblock %}

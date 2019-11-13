@@ -24,21 +24,19 @@
     <div class="{{ config.name }}__container col col--sm-12 col--lg-6">
         {% block priceInformationInner %}
             {% block priceCol %}
-                <div class="{{ config.name }}__col-secondary col col--sm-12 col--lg-4">
+                <div class="{{ config.name }}__inner-section col col--sm-12 col--lg-4">
                     {% block price %}
                         <strong class="{{ config.name }}__text">
                             {% block priceInner %}
                                 {{ parent() }}
                             {% endblock %}
-
-                            {%- block priceTitle -%}{% endblock %}
                         </strong>
                     {% endblock %}
                 </div>
             {% endblock %}
 
             {% block quantityCol %}
-                <div class="{{ config.name }}__col-secondary {{ config.name }}__col-secondary--text-light col col--sm-12 col--lg-5">
+                <div class="{{ config.name }}__inner-section {{ config.name }}__inner-section--text-light col col--sm-12 col--lg-4">
                     {% block quantity %}
                         <span class="{{ config.name }}__text">
                             {{ 'configured_bundle.multiplier' | trans }} {{ data.quantity }}
@@ -48,14 +46,16 @@
             {% endblock %}
 
             {% block totalCol %}
-                <div class="{{ config.name }}__col-secondary col col--sm-12 col--lg-3 col--right">
+                <div class="{{ config.name }}__inner-section col col--sm-12 col--lg-4 col--right">
                     {% block total %}
                         {{ parent() }}
-
-                        {%- block totalTitle -%}{% endblock %}
                     {% endblock %}
                 </div>
             {% endblock %}
         {% endblock %}
     </div>
 {% endblock %}
+
+{%- block priceTitle -%}{% endblock %}
+
+{%- block totalTitle -%}{% endblock %}
