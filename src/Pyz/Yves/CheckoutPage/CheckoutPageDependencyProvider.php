@@ -152,6 +152,7 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
             new QuoteApprovalCheckerCheckoutAddressStepEnterPreCheckPlugin(),
         ];
     }
+
     /**
      * @return \SprykerShop\Yves\CheckoutPageExtension\Dependency\Plugin\CheckoutShipmentStepEnterPreCheckPluginInterface[]
      */
@@ -161,6 +162,7 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
             new QuoteApprovalCheckerCheckoutShipmentStepEnterPreCheckPlugin(),
         ];
     }
+
     /**
      * @return \SprykerShop\Yves\CheckoutPageExtension\Dependency\Plugin\CheckoutPaymentStepEnterPreCheckPluginInterface[]
      */
