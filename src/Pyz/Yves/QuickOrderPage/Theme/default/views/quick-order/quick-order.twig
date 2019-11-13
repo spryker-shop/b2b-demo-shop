@@ -1,32 +1,5 @@
-{% extends template('page-layout-main') %}
-
-{% define data = {
-    forms: {
-        quickOrderForm: _view.quickOrderForm,
-        textOrderForm: _view.textOrderForm,
-        uploadOrderForm: _view.uploadOrderForm
-    },
-    additionalColumns: _view.additionalColumns,
-    products: _view.products,
-    prices: _view.prices,
-    fileTemplateExtensions: _view.fileTemplateExtensions,
-    title: 'quick-order.page-title' | trans
-} %}
+{% extends view('quick-order', '@SprykerShop:QuickOrderPage') %}
 
 {% block contentClass %}
     page-layout-main page-layout-main--quick-order-page
-{% endblock %}
-
-{% block content %}
-    {% include molecule('quick-order-form', 'QuickOrderPage') with {
-        data: {
-            form: data.forms.quickOrderForm,
-            products: data.products,
-            prices: data.prices,
-            fileTemplateExtensions: data.fileTemplateExtensions,
-            additionalColumns: data.additionalColumns,
-            textOrderForm: data.forms.textOrderForm,
-            uploadOrderForm: data.forms.uploadOrderForm
-        }
-    } only %}
 {% endblock %}

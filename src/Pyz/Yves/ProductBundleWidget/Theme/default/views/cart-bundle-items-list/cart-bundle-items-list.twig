@@ -1,8 +1,4 @@
-{% extends template('widget') %}
-
-{% define data = {
-    items: _widget.bundleItems,
-} %}
+{% extends view('cart-bundle-items-list', '@SprykerShop:ProductBundleWidget') %}
 
 {% block body %}
     {% include molecule('bundle-items', 'ProductBundleWidget') with {

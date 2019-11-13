@@ -1,12 +1,4 @@
-{% extends template('widget') %}
-
-{% define data = {
-    options: _widget.cartItem.productOptions
-} %}
-
-{% block template %}
-    {% if data.options is not empty %}{{parent()}}{% endif %}
-{% endblock %}
+{% extends view('option-display', '@SprykerShop:ProductOptionWidget') %}
 
 {% block body %}
     <ul class="option-display">
