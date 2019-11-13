@@ -1,6 +1,7 @@
 @mixin configurable-bundle-widget-configured-bundle-product($name: '.configured-bundle-product') {
     #{$name} {
         display: flex;
+        flex-wrap: wrap;
         overflow: hidden;
 
         &__container {
@@ -15,9 +16,10 @@
 
         &__col {
             display: flex;
+            flex-wrap: wrap;
         }
 
-        &__column {
+        &__col-secondary {
             @include helper-breakpoint-media-min($lg) {
                 text-align: center;
             }

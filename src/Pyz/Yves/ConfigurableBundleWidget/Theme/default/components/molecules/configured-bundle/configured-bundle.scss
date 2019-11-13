@@ -7,16 +7,31 @@
 
         &__col {
             @include helper-breakpoint-media-min($lg) {
-                text-align: center;
+                text-align: right;
+            }
+
+            &--spaceless {
+                margin-left: rem(-8);
+
+                @include helper-breakpoint-media-min($lg) {
+                    margin-left: 0;
+                }
             }
         }
 
         &__content {
             display: flex;
+            flex-wrap: wrap;
             padding: rem(18) rem(30);
             overflow: hidden;
             background-color: $setting-color-gray-7;
             align-items: center;
+        }
+
+        &__info {
+            @include helper-breakpoint-media-min($md) {
+                justify-content: flex-end;
+            }
         }
 
         &__title {

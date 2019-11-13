@@ -6,8 +6,8 @@
 } %}
 
 {% define attributes = {
-    'trigger-class-name': 'js-bundle-trigger-checkbox',
-    'target-class-name': 'js-bundle-target-checkbox',
+    'trigger-class-name': 'js-' ~ config.name ~ '-trigger',
+    'target-class-name': 'js-' ~ config.name ~ '-target',
 } %}
 
 {%- block extraClass %}{% endblock -%}
@@ -19,9 +19,12 @@
                 <div class="grid grid--middle">
                     {% embed atom('checkbox') with {
                         class: 'js-customer-reorder-form__selection',
+                        embed: {
+                            triggerClass: config.jsName ~ '-trigger',
+                        },
                     } only %}
                         {% block inputClass %}
-                            js-bundle-trigger-checkbox
+                            {{ embed.triggerClass }}
                         {% endblock %}
                     {% endembed %}
                 </div>
@@ -48,4 +51,17 @@
             </div>
         {% endblock %}
     </div>
+{% endblock %}
+
+{% block bundleProductListInner %}
+    {% for item in data.bundle.salesOrderConfiguredBundleItems if data.items[item.IdSalesOrderItem] is defined %}
+        {% include molecule('ordered-configured-bundle-product', 'SalesConfigurableBundleWidget') with {
+            data: {
+                product: data.items[item.IdSalesOrderItem],
+                currencyIsoCode: data.currencyIsoCode,
+                image: data.items[item.IdSalesOrderItem].metadata.image,
+                targetClass: config.jsName ~ '-target',
+            },
+        } only %}
+    {% endfor %}
 {% endblock %}

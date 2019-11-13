@@ -1,11 +1,15 @@
 {% extends molecule('ordered-configured-bundle-product', '@SprykerShop:SalesConfigurableBundleWidget') %}
 
+{% define data = {
+    targetClass: '',
+} %}
+
 {% block imageContainer %}
     <div class="grid col col--sm-12 col--lg-3">
         <div class="col col--middle">
             {% widget 'CustomerReorderItemCheckboxWidget' args [data.product] with {
                 data: {
-                    checkboxClasses: 'js-customer-reorder-form__selection js-bundle-target-checkbox',
+                    checkboxClasses: 'js-customer-reorder-form__selection ' ~ data.targetClass,
                 },
             } only %}{% endwidget %}
         </div>
@@ -28,12 +32,20 @@
         {% block contentInner %}
             {{ parent() }}
         {% endblock %}
-    </div>
-{% endblock %}
 
-{% block generalInformation %}
-    <div class="col col--sm-12 col--lg-5 spacing-x spacing-x--inner">
-        {{ parent() }}
+        {% block generalInformation %}
+            <div class="col col--sm-12 col--lg-5 spacing-x spacing-x--inner">
+                {{ parent() }}
+            </div>
+        {% endblock %}
+
+        {% block priceInformation %}
+            <div class="{{ config.name }}__container col col--sm-12 col--lg-7">
+                {% block priceInformationInner %}
+                    {{ parent() }}
+                {% endblock %}
+            </div>
+        {% endblock %}
     </div>
 {% endblock %}
 
@@ -41,16 +53,8 @@
     <h6 class="{{ config.name }}__item-title">{{ data.name }}</h6>
 {%- endblock %}
 
-{% block priceInformation %}
-    <div class="{{ config.name }}__container col col--sm-12 col--lg-7">
-        {% block priceInformationInner %}
-            {{ parent() }}
-        {% endblock %}
-    </div>
-{% endblock %}
-
 {% block priceCol %}
-    <div class="{{ config.name }}__column col col--sm-12 col--lg-4">
+    <div class="{{ config.name }}__col-secondary col col--sm-12 col--lg-4">
         {% block price %}
             <strong class="{{ config.name }}__text">
                 {% block priceInner %}
@@ -64,7 +68,7 @@
 {% endblock %}
 
 {% block quantityCol %}
-    <div class="{{ config.name }}__column {{ config.name }}__column--text-light col col--sm-12 col--lg-5">
+    <div class="{{ config.name }}__col-secondary {{ config.name }}__col-secondary--text-light col col--sm-12 col--lg-5">
         {% block quantity %}
             <span class="{{ config.name }}__text">
                 {{ 'configured_bundle.multiplier' | trans }} {{ data.quantity }}
@@ -74,7 +78,7 @@
 {% endblock %}
 
 {% block totalCol %}
-    <div class="{{ config.name }}__column col col col--sm-12 col--right col--lg-3">
+    <div class="{{ config.name }}__col-secondary col col--sm-12 col--right col--lg-3">
         {% block total %}
             {{ parent() }}
         {% endblock %}
