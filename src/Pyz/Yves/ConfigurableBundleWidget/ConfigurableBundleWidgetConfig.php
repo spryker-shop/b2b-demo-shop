@@ -7,7 +7,7 @@
 
 namespace Pyz\Yves\ConfigurableBundleWidget;
 
-use Spryker\Yves\Kernel\AbstractBundleConfig as SprykerConfigurableBundleWidgetConfig;
+use SprykerShop\Yves\ConfigurableBundleWidget\ConfigurableBundleWidgetConfig as SprykerConfigurableBundleWidgetConfig;
 
 class ConfigurableBundleWidgetConfig extends SprykerConfigurableBundleWidgetConfig
 {
