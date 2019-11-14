@@ -1,11 +1,4 @@
-{% extends template('page-layout-company', 'CompanyPage') %}
-
-{% define data = {
-    form: _view.form,
-
-    title: 'company.account.company_role.permissions' | trans,
-    activePage: 'role'
-} %}
+{% extends view('role-permission-configure', '@SprykerShop:CompanyPage') %}
 
 {% block breadcrumbs %}
     {% include molecule('breadcrumb') with {
@@ -13,24 +6,23 @@
             steps: [
                 {
                     label: 'company.account.page-title' | trans,
-                    url: url('company/overview')
+                    url: url('company/overview'),
                 }, {
                     label: 'company.account.company_role' | trans,
-                    url: url('company/company-role')
+                    url: url('company/company-role'),
                 }, {
-                    label: 'company.account.company_role.permission.configure' | trans
-                }
-            ]
-        }
+                    label: 'company.account.company_role.permission.configure' | trans,
+                },
+            ],
+        },
     } only %}
 {% endblock %}
 
-
 {% block companyContent %}
-    {% include molecule('action-bar', 'ShopUi') with {
+    {% include molecule('action-bar') with {
         data: {
-            title: 'company.account.company_role.permission.configure' | trans
-        }
+            title: 'company.account.company_role.permission.configure' | trans,
+        },
     } only %}
 
     {% include molecule('form') with {
@@ -39,19 +31,19 @@
             form: data.form,
             layout: {
                 name: 'col col--sm-12 col--lg-6',
-                is_default: 'col col--sm-12 col--lg-6'
+                is_default: 'col col--sm-12 col--lg-6',
             },
             submit: {
                 enable: true,
-                class: 'form__action--expand-sm-md form__action--sm-md-first button'
+                class: 'form__action--expand-sm-md form__action--sm-md-first button',
             },
             cancel: {
                 enable: true,
                 icon: null,
                 class: 'form__action--expand-sm-md button button--hollow',
                 url: url('company/company-role'),
-                text: 'general.back.button' | trans
-            }
+                text: 'general.back.button' | trans,
+            },
         }
     } only %}
 {% endblock %}

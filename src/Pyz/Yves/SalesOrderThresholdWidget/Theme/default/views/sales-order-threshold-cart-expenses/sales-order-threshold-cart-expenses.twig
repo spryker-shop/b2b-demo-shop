@@ -1,8 +1,4 @@
-{% extends template('widget') %}
-
-{% define data = {
-    expenses: _widget.expenses | default,
-} %}
+{% extends view('sales-order-threshold-cart-expenses', '@SprykerShop:SalesOrderThresholdWidget') %}
 
 {% block body %}
     {% if data.expenses is not empty %}
@@ -12,7 +8,9 @@
                 {% for expense in data.expenses %}
                     {% include molecule('sales-order-threshold-expense', 'SalesOrderThresholdWidget') with {
                         modifiers: ['cart'],
-                        data: {'expense': expense}
+                        data: {
+                            'expense': expense,
+                        },
                     } only %}
                 {% endfor %}
             </ul>

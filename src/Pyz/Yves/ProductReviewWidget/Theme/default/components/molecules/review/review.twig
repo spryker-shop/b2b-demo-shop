@@ -1,18 +1,4 @@
-{% extends model('component') %}
-
-{% define config = {
-    name: 'review',
-    tag: 'article'
-} %}
-
-{% define data = {
-    summary: required,
-    ratingValue: required,
-    ratingMaxValue: required,
-    nickname: required,
-    createdAt: required,
-    description: required
-} %}
+{% extends molecule('review', '@SprykerShop:ProductReviewWidget') %}
 
 {% block body %}
     <div class="{{ config.name }}__summary">
@@ -23,19 +9,17 @@
             data: {
                 value: data.ratingValue,
                 maxValue: data.ratingMaxValue,
-                useHalfSteps: true
+                useHalfSteps: true,
             },
             attributes: {
-                readonly: true
-            }
+                readonly: true,
+            },
         } only %}
     </div>
-
     <div class="{{ config.name }}__author">
         {{ data.nickname | e('html')}} -
         {{ data.createdAt }}
     </div>
-
     <div class="{{ config.name }}__description">
         {{ data.description | e('html')}}
     </div>

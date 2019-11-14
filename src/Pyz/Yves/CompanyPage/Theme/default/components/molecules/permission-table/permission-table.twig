@@ -1,17 +1,4 @@
-{% extends model('component') %}
-
-{% define config = {
-    name: 'permission-table'
-} %}
-
-{% define data = {
-    permissions: required,
-    idCompanyRole: required,
-    actions: {
-        configure: false,
-        switch: false
-    }
-} %}
+{% extends molecule('permission-table', '@SprykerShop:CompanyPage') %}
 
 {% set showActions = data.actions.configure or data.actions.switch %}
 
@@ -45,8 +32,8 @@
                                 modifiers: isAssigned ? ['active'] : [],
                                 attributes: {
                                     href: isAssigned ? linkUnassign : linkAssign,
-                                    title: isAssigned ? titleUnassign : titleAssign
-                                }
+                                    title: isAssigned ? titleUnassign : titleAssign,
+                                },
                             } only %}
                         {% endif %}
                     </td>
@@ -60,13 +47,13 @@
                                         {
                                             url: path('company/company-role-permission/configure', {
                                                         'id-permission': permission.idPermission,
-                                                        'id-company-role': data.idCompanyRole
+                                                        'id-company-role': data.idCompanyRole,
                                                     }),
                                             icon: 'settings',
-                                            title: 'company.account.company_role.permission.configure'
-                                        }
-                                    ]
-                                }
+                                            title: 'company.account.company_role.permission.configure',
+                                        },
+                                    ],
+                                },
                             } only %}
                         {% endif %}
                     </td>
