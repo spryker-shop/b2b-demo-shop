@@ -34,6 +34,7 @@
                                 <div class="grid grid--gap grid--middle spacing-bottom">
                                     <div class="col col--sm-7 col--xl-8 col--xxl-9">
                                         {% include molecule('autocomplete-form') with {
+                                            modifiers: ['overlap'],
                                             attributes: {
                                                 'suggestion-url': path('agent-widget/customer-autocomplete'),
                                                 'selected-value-key': '_switch_user',
