@@ -67,7 +67,6 @@ $config[RabbitMqEnv::RABBITMQ_API_PORT] = '15672';
 $config[RabbitMqEnv::RABBITMQ_API_USERNAME] = 'admin';
 $config[RabbitMqEnv::RABBITMQ_API_PASSWORD] = 'mate20mg';
 
-
 // ---------- Logging
 $config[LogConstants::LOG_FILE_PATH] = APPLICATION_ROOT_DIR . '/data/logs';
 
