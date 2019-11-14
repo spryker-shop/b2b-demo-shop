@@ -13,7 +13,7 @@
 } %}
 
 {% block close %}
-    <button class="{{config.name}}__close {{attributes['trigger-selector']}}">
+    <button class="{{config.name}}__close {{attributes['trigger-class-name']}}">
         {% include atom('icon') with {
             modifiers: ['small'],
             data: {

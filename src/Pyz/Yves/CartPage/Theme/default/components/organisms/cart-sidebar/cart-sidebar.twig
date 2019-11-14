@@ -157,8 +157,8 @@
 
     {% include molecule('toggler-accordion') with {
         attributes: {
-            'wrap-selector': '.' ~ config.jsName,
-            'trigger-selector': '.' ~ config.jsName ~ '-item__title',
+            'wrap-class-name': config.jsName,
+            'trigger-class-name': config.jsName ~ '-item__title',
         },
     } only %}
 {% endblock %}

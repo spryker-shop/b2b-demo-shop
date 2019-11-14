@@ -1,18 +1,17 @@
 import Component from 'ShopUi/models/component';
 
 export default class TogglerAccordion extends Component {
-    readonly wrap: HTMLElement;
-    readonly triggers: HTMLElement[];
-    readonly isTouch: boolean;
+    protected wrap: HTMLElement;
+    protected triggers: HTMLElement[];
+    protected isTouch: boolean;
 
-    constructor() {
-        super();
-        this.wrap = <HTMLElement>document.querySelector(this.wrapSelector);
-        this.triggers = <HTMLElement[]>Array.from(this.wrap.querySelectorAll(this.triggerSelector));
+    protected readyCallback(): void {}
+
+    protected init(): void {
+        this.wrap = <HTMLElement>document.getElementsByClassName(this.wrapClassName)[0];
+        this.triggers = <HTMLElement[]>Array.from(document.getElementsByClassName(this.triggerClassName));
         this.isTouch = 'ontouchstart' in window;
-    }
 
-    protected readyCallback(): void {
         this.mapEvents();
     }
 
@@ -60,27 +59,27 @@ export default class TogglerAccordion extends Component {
         });
     }
 
-    get wrapSelector(): string {
-        return this.getAttribute('wrap-selector');
+    protected get wrapClassName(): string {
+        return this.getAttribute('wrap-class-name');
     }
 
-    get triggerSelector(): string {
-        return this.getAttribute('trigger-selector');
+    protected get triggerClassName(): string {
+        return this.getAttribute('trigger-class-name');
     }
 
-    get classToToggle(): string {
+    protected get classToToggle(): string {
         return this.getAttribute('class-to-toggle');
     }
 
-    get triggerActiveClass(): string {
+    protected get triggerActiveClass(): string {
         return this.getAttribute('active-class');
     }
 
-    get isTouchScreen(): boolean {
+    protected get isTouchScreen(): boolean {
         return this.touchRules === 'true';
     }
 
-    get touchRules(): string {
+    protected get touchRules(): string {
         return this.getAttribute('active-on-touch');
     }
 }

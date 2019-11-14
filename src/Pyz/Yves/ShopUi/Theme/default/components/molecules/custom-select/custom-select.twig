@@ -2,7 +2,7 @@
 
 {% define config = {
     name: 'custom-select',
-    tag: 'custom-select'
+    tag: 'custom-select',
 } %}
 
 {% define attributes = {
@@ -10,6 +10,7 @@
     'config-theme': 'default',
     'config-dropdown-auto-width': '',
     'config-dropdown-right': '',
+    'auto-init': true,
 } %}
 
 {% block selectClass %}{{ config.jsName }}{% endblock %}

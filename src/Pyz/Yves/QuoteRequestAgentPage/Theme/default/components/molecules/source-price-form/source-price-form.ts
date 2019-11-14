@@ -6,8 +6,8 @@ export default class SourcePriceForm extends SourcePriceFormParentClass {
     protected readonly hiddenClass: string = 'is-hidden';
 
     protected readyCallback(): void {
-        this.price = <HTMLElement>this.querySelector(`.${this.jsName}__price`);
-        this.originPrice = <HTMLElement>this.querySelector(`.${this.jsName}__origin-price`);
+        this.price = <HTMLElement>this.getElementsByClassName(`${this.jsName}__price`)[0];
+        this.originPrice = <HTMLElement>this.getElementsByClassName(`${this.jsName}__origin-price`)[0];
         super.readyCallback();
     }
 

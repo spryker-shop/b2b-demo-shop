@@ -36,7 +36,7 @@
                                 }
                             } only %}
                                 {% block selectClass %}
-                                    {{ parent() }} {{ embed.jsName ~ '__per-page-select' }}
+                                    {{ parent() }} {{ embed.jsName ~ '__select' }}
                                 {% endblock %}
 
                                 {% block options %}
@@ -84,7 +84,7 @@
                                 }
                             } only %}
                                 {% block selectClass %}
-                                    {{ parent() }} {{ embed.jsName ~ '__sort-select' }}
+                                    {{ parent() }} {{ embed.jsName ~ '__select' }}
                                 {% endblock %}
 
                                 {% block options %}
@@ -122,7 +122,7 @@
 
     {% include molecule('form-handler') with {
         attributes: {
-            'trigger-selector': '.' ~ config.jsName ~ '__per-page-select' ~ ', .' ~ config.jsName ~ '__sort-select'
-        }
+            'trigger-class-name': config.jsName ~ '__select',
+        },
     } only %}
 {% endblock %}

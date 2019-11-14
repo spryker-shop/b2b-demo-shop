@@ -3,37 +3,29 @@ import AutocompleteForm, {Events as AutocompleteEvents} from 'ShopUi/components/
 import AjaxProvider from 'ShopUi/components/molecules/ajax-provider/ajax-provider';
 import debounce from 'lodash-es/debounce';
 
-const ERROR_MESSAGE_CLASS = 'quick-order-row__error--show';
-const ERROR_PARTIAL_MESSAGE_CLASS = 'quick-order-row-partial__error--show';
-
 export default class QuickOrderRow extends Component {
-    ajaxProvider: AjaxProvider;
-    autocompleteInput: AutocompleteForm;
-    quantityInput: HTMLInputElement;
-    errorMessage: HTMLElement;
-    timer: number;
-    timeout: number = 3000;
-    incrementButton: HTMLButtonElement;
-    decrementButton: HTMLButtonElement;
+    protected ajaxProvider: AjaxProvider;
+    protected autocompleteInput: AutocompleteForm;
+    protected quantityInput: HTMLInputElement;
+    protected incrementButton: HTMLButtonElement;
+    protected decrementButton: HTMLButtonElement;
 
-    protected readyCallback(): void {
-        this.ajaxProvider = <AjaxProvider>this.querySelector(`.${this.jsName}__provider`);
-        this.autocompleteInput = <AutocompleteForm>this.querySelector(this.autocompleteFormSelector);
+    protected readyCallback(): void {}
+
+    protected init(): void {
+        this.ajaxProvider = <AjaxProvider>this.getElementsByClassName(`${this.jsName}__provider`)[0];
+        this.autocompleteInput = <AutocompleteForm>this.getElementsByClassName(this.autocompleteFormClassName)[0];
         this.registerQuantityInput();
         this.mapEvents();
     }
 
     protected registerQuantityInput(): void {
-        this.incrementButton = <HTMLButtonElement>this.querySelector(
-            `.${this.jsName}__button-increment, .${this.jsName}-partial__button-increment`
-        );
-        this.decrementButton = <HTMLButtonElement>this.querySelector(
-            `.${this.jsName}__button-decrement, .${this.jsName}-partial__button-decrement`
-        );
-        this.quantityInput = <HTMLInputElement>this.querySelector(
-            `.${this.jsName}__quantity, .${this.jsName}-partial__quantity`
-        );
-        this.errorMessage = <HTMLElement>this.querySelector(`.${this.name}__error, .${this.name}-partial__error`);
+        this.incrementButton = <HTMLButtonElement>(this.getElementsByClassName(`${this.jsName}__button-increment`)[0] ||
+            this.getElementsByClassName(`${this.jsName}-partial__button-increment`)[0]);
+        this.decrementButton = <HTMLButtonElement>(this.getElementsByClassName(`${this.jsName}__button-decrement`)[0] ||
+            this.getElementsByClassName(`${this.jsName}-partial__button-decrement`)[0]);
+        this.quantityInput = <HTMLInputElement>(this.getElementsByClassName(`${this.jsName}__quantity`)[0] ||
+            this.getElementsByClassName(`${this.jsName}-partial__quantity`)[0]);
     }
 
     protected mapEvents(): void {
@@ -62,14 +54,6 @@ export default class QuickOrderRow extends Component {
         this.reloadField(this.autocompleteInput.inputValue);
     }
 
-    protected hideErrorMessage(): void {
-        if (!this.errorMessage) {
-            return;
-        }
-
-        this.errorMessage.classList.remove(ERROR_MESSAGE_CLASS, ERROR_PARTIAL_MESSAGE_CLASS);
-    }
-
     protected incrementValue(event: Event): void {
         event.preventDefault();
         const value = Number(this.quantityInput.value);
@@ -91,7 +75,6 @@ export default class QuickOrderRow extends Component {
     }
 
     async reloadField(sku: string = '') {
-        clearTimeout(this.timer);
         const quantityInputValue = parseInt(this.quantityValue);
 
         this.ajaxProvider.queryParams.set('sku', sku);
@@ -105,32 +88,30 @@ export default class QuickOrderRow extends Component {
         this.registerQuantityInput();
         this.mapQuantityInputChange();
 
-        this.timer = window.setTimeout(() => this.hideErrorMessage(), this.timeout);
-
         if (!!sku) {
             this.quantityInput.focus();
         }
     }
 
-    get quantityValue(): string {
+    protected get quantityValue(): string {
         return this.quantityInput.value;
     }
 
-    get autocompleteFormSelector(): string {
-        return this.getAttribute('autocomplete-form');
+    protected get autocompleteFormClassName(): string {
+        return this.getAttribute('autocomplete-form-class-name');
     }
 
-    get minQuantity(): number {
+    protected get minQuantity(): number {
         return Number(this.quantityInput.getAttribute('min'));
     }
 
-    get maxQuantity(): number {
+    protected get maxQuantity(): number {
         const max = Number(this.quantityInput.getAttribute('max'));
 
         return max > 0 && max > this.minQuantity ? max : Infinity;
     }
 
-    get step(): number {
+    protected get step(): number {
         const step = Number(this.quantityInput.getAttribute('step'));
 
         return step > 0 ? step : 1;

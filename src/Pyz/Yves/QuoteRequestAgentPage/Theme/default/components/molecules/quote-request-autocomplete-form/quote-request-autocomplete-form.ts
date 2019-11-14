@@ -5,9 +5,9 @@ export default class QuoteRequestAutocompleteForm extends AutocompleteForm {
 
     protected readyCallback(): void {}
 
-    mountCallback(): void {
-        super.readyCallback();
-        this.textInput = <HTMLInputElement>this.querySelector(`.${this.jsName}__input`);
+    protected init(): void {
+        super.init();
+        this.textInput = <HTMLInputElement>this.getElementsByClassName(`${this.jsName}__input`)[0];
 
         if (this.isAutoInitEnabled) {
             this.autoLoadInit();
@@ -19,7 +19,7 @@ export default class QuoteRequestAutocompleteForm extends AutocompleteForm {
         super.loadSuggestions();
     }
 
-    get isAutoInitEnabled(): boolean {
+    protected get isAutoInitEnabled(): boolean {
         return this.hasAttribute('auto-init');
     }
 }

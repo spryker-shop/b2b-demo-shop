@@ -15,7 +15,7 @@
 
 {% block body %}
     <form action="{{data.searchUrl}}">
-        <input name="q" type="text" class="input input--expand suggest-search__input {{ config.jsName }}__input" placeholder="{{ 'global.search' | trans }}" value="{{data.searchValue}}" autocomplete="off">
+        <input name="q" type="text" class="input input--expand suggest-search__input {{ config.jsName }}__input--{{ attributes['data-search-id'] }}" placeholder="{{ 'global.search' | trans }}" value="{{data.searchValue}}" autocomplete="off">
         <button type="submit" class=" button button--expand {{config.name}}__button {{config.name}}__button--submit">
             {% include atom('icon') with {
                 modifiers: ['search'],
@@ -39,9 +39,9 @@
             attributes: {
                 'suggestion-url': path('search/suggestion'),
                 'base-suggest-url': path('search/suggestion'),
-                'input-selector': '[data-search-id="' ~ attributes['data-search-id'] ~ '"] .' ~ config.jsName ~ '__input',
-                'overlay-breakpoint': '768'
-            }
+                'input-class-name': config.jsName ~ '__input--' ~ attributes['data-search-id'],
+                'overlay-breakpoint': '768',
+            },
         } only %}
     </form>
 {% endblock %}
