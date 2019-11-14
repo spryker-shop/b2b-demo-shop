@@ -22,7 +22,7 @@
     <div class="{{ config.name }}__info grid grid--middle col col--sm-12 col--md-5">
         {% block bundleQuantity %}
             {% if data.isQuantityVisible %}
-                <div class="{{ config.name }}__col {{ config.name }}__col--spaceless col col--middle col--md-6">
+                <div class="{{ config.name }}__col {{ config.name }}__col--displaced col col--middle col--md-6">
                     {% block bundleQuantityInner %}
                         {{ parent() }}
                     {% endblock %}
