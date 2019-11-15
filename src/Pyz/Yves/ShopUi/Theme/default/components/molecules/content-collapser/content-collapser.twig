@@ -16,7 +16,7 @@
 
     {% include molecule('toggler-click') with {
         attributes: {
-            'target-class-name': '.' ~ config.jsName,
+            'target-class-name': config.jsName,
             'trigger-class-name': config.jsName ~ '__trigger',
             'class-to-toggle': config.name ~ '--full-visible',
         },

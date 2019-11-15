@@ -105,6 +105,7 @@
                 {% include molecule('summary-sidebar', 'CheckoutPage') ignore missing with {
                     data: {
                         shipment: shipmentGroup.shipment,
+                        canEdit: false,
                     },
                 } only %}
             </div>

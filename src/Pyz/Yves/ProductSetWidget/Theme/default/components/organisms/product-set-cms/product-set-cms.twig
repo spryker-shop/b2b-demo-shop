@@ -70,6 +70,7 @@
         </div>
         <div class="col col--sm-12 col--md-6 col--lg-7">
             {% block productSet %}
+                <form method="GET">
                     {% embed molecule('slick-carousel') with {
                         modifiers: ['equal-height', 'product-set-widget'],
                         data: {
@@ -77,11 +78,11 @@
                         },
                         attributes: {
                             'slider-config': data.sliderConfig,
+                            'custom-select-class-name': 'custom-select',
                         },
                     } only %}
                         {% block slides %}
                             {% for product in data.slides %}
-                                <form method="GET">
                                 {% embed molecule('product-card') with {
                                     class: 'spacing-bottom spacing-bottom--inner spacing-bottom--reset',
                                     modifiers: ['catalog', 'stretch', 'product-set'],
@@ -127,6 +128,7 @@
                                                                 selectModifiers: ['small'],
                                                                 selectTheme: 'small',
                                                                 selectPlaceholder: 'global.select.placeholder.value',
+                                                                autoInitSelect: false,
                                                             },
                                                         } only %}
                                                     {% endif %}
@@ -153,10 +155,10 @@
                                         {% endif %}
                                     {% endblock %}
                                 {% endembed %}
-                                </form>
                             {% endfor %}
                         {% endblock %}
                     {% endembed %}
+                </form>
             {% endblock %}
         </div>
     </div>

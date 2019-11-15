@@ -1,16 +1,14 @@
 import Component from 'ShopUi/models/component';
 
 export default class FormHandler extends Component {
-    readonly event: string;
-    readonly triggers: HTMLElement[];
+    protected event: string;
+    protected triggers: HTMLElement[];
 
-    constructor() {
-        super();
-        this.event = <string>this.getAttribute('event');
-        this.triggers = <HTMLElement[]>Array.from(document.querySelectorAll(this.triggerSelector));
-    }
+    protected readyCallback(): void {}
 
-    protected readyCallback(): void {
+    protected init(): void {
+        this.event = this.getAttribute('event');
+        this.triggers = <HTMLElement[]>Array.from(document.getElementsByClassName(this.triggerClassName));
         this.mapEvents();
     }
 
@@ -33,23 +31,23 @@ export default class FormHandler extends Component {
         }
     }
 
-    get triggerSelector(): string {
-        return this.getAttribute('trigger-selector');
+    protected get triggerClassName(): string {
+        return this.getAttribute('trigger-class-name');
     }
 
-    get shouldSubmitForm(): boolean {
+    protected get shouldSubmitForm(): boolean {
         return this.submitForm === 'true';
     }
 
-    get submitForm(): string  {
+    protected get submitForm(): string  {
         return this.getAttribute('submit-form');
     }
 
-    get shouldChangeAction(): boolean {
+    protected get shouldChangeAction(): boolean {
         return this.changeAction === 'true';
     }
 
-    get changeAction(): string {
+    protected get changeAction(): string {
         return this.getAttribute('change-action');
     }
 

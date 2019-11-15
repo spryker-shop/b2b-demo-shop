@@ -2,7 +2,7 @@
 
 {% define config = {
     name: 'product-search-autocomplete-form',
-    tag: 'product-search-autocomplete-form'
+    tag: 'product-search-autocomplete-form',
 } %}
 
 {% define data = {
@@ -10,20 +10,23 @@
     name: 'query',
     value: '',
     hiddenValue: '',
-    placeholder: ''
+    placeholder: '',
 } %}
 
 {% define attributes = {
-    'item-selector': '',
+    'item-class-name': '',
     'query-param-name': 'query',
     'value-data-attribute': 'data-value',
     'debounce-delay': 500,
     'min-letters': 3,
-
     'suggestion-url': required,
     'selected-value-key': '',
-    'show-clean-button': true
+    'show-clean-button': true,
 } %}
+
+{%- block class -%}
+    {{ parent() }} {{ config.jsName }}
+{%- endblock -%}
 
 {% block body %}
 
@@ -37,8 +40,8 @@
 
     {% include molecule('ajax-loader') with {
         attributes: {
-            'provider-selector': '.' ~ config.jsName ~ '__provider-' ~ data.id
-        }
+            'provider-class-name': config.jsName ~ '__provider-' ~ data.id,
+        },
     } only %}
 
     {% block input %}
@@ -83,10 +86,10 @@
             {% include molecule('ajax-renderer') with {
                 class: config.name ~ '__sugestion',
                 attributes: {
-                    'provider-selector': '.' ~ config.jsName ~ '__provider-' ~ data.id,
-                    'target-selector': '.' ~ config.jsName ~ '__suggestions-' ~ data.id,
+                    'provider-class-name': config.jsName ~ '__provider-' ~ data.id,
+                    'target-class-name': config.jsName ~ '__suggestions-' ~ data.id,
                     'render-if-response-is-empty': true,
-                }
+                },
             } only %}
         </div>
     {% endblock %}

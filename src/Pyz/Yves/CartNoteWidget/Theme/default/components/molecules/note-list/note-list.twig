@@ -1,13 +1,4 @@
-{% extends model('component') %}
-
-{% define config = {
-    name: 'note-list',
-} %}
-
-{% define data = {
-    label: null,
-    note: required
-} %}
+{% extends molecule('note-list', '@SprykerShop:CartNoteWidget') %}
 
 {% block body %}
     <ul>

@@ -1,76 +1,73 @@
-{% extends template('widget') %}
-
-{% define data = {
-    promotionProducts: _widget.promotionProducts,
-} %}
+{% extends view('cart-discount-promotion-products-list', '@SprykerShop:DiscountPromotionWidget') %}
 
 {% block body %}
     {% if data.promotionProducts is not empty %}
         <h2 class="title title--product-slider title--top-margin-small">{{ 'cart.promotion.items' | trans }}</h2>
         <div class="grid grid--gap">
             {% for product in data.promotionProducts %}
-                <div class="col col--md-4">
-                    {% embed molecule('product-card') with {
-                        modifiers: ['catalog', 'stretch'],
-                        data: {
-                            name: product.name,
-                            abstractId: product.idProductAbstract,
-                            url: product.url,
-                            imageUrl: (product.images|length ? product.images.0.externalUrlSmall : ''),
-                            price: product.prices.DEFAULT,
-                            originalPrice: (product.prices.ORIGINAL is defined ? product.prices.ORIGINAL : null)
-                        },
-                        embed: {
-                            superAttributes: product.attributeMap.superAttributes,
-                            selectedAttributes: product.selectedAttributes,
-                            availableAttributes: product.availableAttributes,
-                            sku: product.sku,
-                            idProductAbstract: product.idProductAbstract,
-                            idProductConcrete: product.idProductConcrete,
-                            promotionDiscount: {
-                                id: product.promotionItem.discount.discountPromotion.idDiscountPromotion,
-                                maxQuantity: product.promotionItem.maxQuantity
-                            }
-                        }
-                    } only %}
-                        {% block content %}
-                            <div class="{{ config.name }}__info">
-                                {{parent()}}
-                                {% include molecule('variant-configurator', 'DiscountPromotionWidget') with {
-                                    data: {
-                                        sku: embed.sku,
-                                        superAttributes: embed.superAttributes,
-                                        selectedAttributes: embed.selectedAttributes,
-                                        availableAttributes: embed.availableAttributes
-                                    }
-                                } only %}
+                {% block product %}
+                    <div class="col col--md-4">
+                        {% embed molecule('product-card') with {
+                            modifiers: ['catalog', 'stretch'],
+                            data: {
+                                name: product.name,
+                                abstractId: product.idProductAbstract,
+                                url: product.url,
+                                imageUrl: (product.images | length ? product.images.0.externalUrlSmall),
+                                price: product.prices.DEFAULT,
+                                originalPrice: (product.prices.ORIGINAL ?? null),
+                            },
+                            embed: {
+                                superAttributes: product.attributeMap.superAttributes,
+                                selectedAttributes: product.selectedAttributes,
+                                availableAttributes: product.availableAttributes,
+                                sku: product.sku,
+                                idProductConcrete: product.idProductConcrete,
+                                promotionDiscount: {
+                                    id: product.promotionItem.discount.discountPromotion.idDiscountPromotion,
+                                    maxQuantity: product.promotionItem.maxQuantity,
+                                },
+                            },
+                        } only %}
+                            {% block content %}
+                                <div class="{{ config.name }}__info">
+                                    {{ parent() }}
+                                    {% include molecule('variant-configurator', 'DiscountPromotionWidget') with {
+                                        data: {
+                                            sku: embed.sku,
+                                            superAttributes: embed.superAttributes,
+                                            selectedAttributes: embed.selectedAttributes,
+                                            availableAttributes: embed.availableAttributes,
+                                        },
+                                    } only %}
 
-                                {% set disabled = embed.idProductConcrete is empty %}
+                                    {% set disabled = embed.idProductConcrete is empty %}
 
-                                <div class="{{ component.renderClass(config.name ~ '__actions', modifiers) }}">
-                                    <form method="POST" action="{{ path("cart/add", {"sku": embed.sku}) }}" class="grid grid--bottom grid--justify">
-                                        <div class="col col--sm-12 spacing-bottom spacing-bottom--big">
-                                            {% include molecule('quantity-counter') with {
-                                                attributes: {
-                                                    max: embed.promotionDiscount.maxQuantity
-                                                }
-                                            } only %}
-                                        </div>
+                                    <div class="{{ component.renderClass(config.name ~ '__actions', modifiers) }}">
+                                        <form method="POST" action="{{ path("cart/add", {"sku": embed.sku}) }}" class="grid grid--bottom grid--justify">
+                                            <div class="col col--sm-12 spacing-bottom spacing-bottom--big">
+                                                {% include molecule('quantity-counter') with {
+                                                    attributes: {
+                                                        max: embed.promotionDiscount.maxQuantity,
+                                                    },
+                                                } only %}
+                                            </div>
 
-                                        <div class="col col--sm-12">
-                                            <input type="hidden" value="{{ embed.sku }}" name="groupKey">
-                                            <input type="hidden" value="{{ embed.promotionDiscount.id }}" name="idDiscountPromotion">
+                                            <div class="col col--sm-12">
+                                                <input type="hidden" value="{{ embed.sku }}" name="groupKey">
+                                                <input type="hidden" value="{{ embed.promotionDiscount.id }}" name="idDiscountPromotion">
 
-                                            <button type="submit" class="button button--expand" {{ disabled ? 'disabled' }} onclick="this.form.submit(); this.disabled='disabled'; return false;" data-init-single-click>
-                                                {{ 'page.detail.add-to-cart' | trans }}
-                                            </button>
-                                        </div>
-                                    </form>
+                                                <button type="submit" class="button button--expand" {{ disabled ? 'disabled' }} data-form-submitter data-init-single-click>
+                                                    {{ 'page.detail.add-to-cart' | trans }}
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
-                            </div>
-                        {% endblock %}
-                    {% endembed %}
-                </div>
+                            {% endblock %}
+                        {% endembed %}
+                    </div>
+                {% endblock %}
             {% endfor %}
         </div>
     {% endif %}

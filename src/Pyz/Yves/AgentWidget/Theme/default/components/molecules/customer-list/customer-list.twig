@@ -1,13 +1,4 @@
-{% extends model('component') %}
-
-{% define config = {
-    name: 'customer-list',
-    tag: 'ul',
-} %}
-
-{% define data = {
-    customers: required,
-} %}
+{% extends molecule('customer-list', '@SprykerShop:AgentWidget') %}
 
 {% block body %}
     {% for customer in data.customers %}
@@ -15,5 +6,4 @@
             {{ customer.first_name }} {{ customer.last_name }}: {{ customer.email }}
         </li>
     {% endfor %}
-
 {% endblock %}

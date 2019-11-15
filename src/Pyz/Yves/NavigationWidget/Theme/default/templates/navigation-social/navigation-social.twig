@@ -1,14 +1,10 @@
-{% extends template('widget') %}
-
-{% define data = {  
-    nodes: _widget.navigationTree.nodes
-} %}
+{% extends template('navigation-social', '@SprykerShop:NavigationWidget') %}
 
 {% block body %}
     {% include molecule('navigation-icon-list') with {
         modifiers: ['social'],
         data: {
-            nodes: data.nodes
-        }
+            nodes: data.nodes,
+        },
     } only %}
 {% endblock %}
