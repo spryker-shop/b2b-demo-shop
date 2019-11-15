@@ -11,7 +11,7 @@
             {% set isCompanyBusinessUnitShippingAddressApplicable = companyBusinessUnitShippingAddressWidget and companyBusinessUnitShippingAddressWidget.isApplicable %}
             {% set hasShippingAddressesAndApplicable = isCompanyBusinessUnitShippingAddressApplicable or hasShippingAddresses %}
 
-            {% embed molecule('product-item') with {
+            {% embed molecule('product-card-item') with {
                 modifiers: ['checkout', 'checkout-address'],
                 data: {
                     listItem: item.vars.data,

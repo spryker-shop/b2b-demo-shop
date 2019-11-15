@@ -17,7 +17,7 @@
     <h3 class="spacing-bottom spacing-bottom--reset">{{ 'product_alternative_widget.alternative_for' | trans }}</h3>
     <h4 class="title title--sub">{{ data.item.name }}</h4>
     {% for item in data.products %}
-        {% embed molecule('product-item') with {
+        {% embed molecule('product-card-item') with {
             class: loop.index > data.maxShownItems ? 'js-product-alternative-' ~ idShoppingListItem ~ '__show-all-target is-hidden' : '',
             modifiers: ['shopping-list', 'shopping-list-alternative', 'shopping-list-available'],
             data: {
