@@ -24,8 +24,6 @@ class QuoteApprovalConfig extends SprykerQuoteApprovalConfig
     }
 
     /**
-     * @deprecated Will be removed without replacement. BC-reason only.
-     *
      * @return bool
      */
     public function isShipmentPriceIncludedInQuoteApprovalPermissionCheck(): bool
