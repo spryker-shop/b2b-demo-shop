@@ -1,7 +1,6 @@
 {% extends view('summary', '@SprykerShop:CheckoutPage') %}
 
 {% define data = {
-    cart: _view.quoteTransfer,
     stepNumder: 4,
 } %}
 
@@ -90,7 +89,7 @@
                     {% endembed %}
                 {% endfor %}
 
-                {% widget 'QuoteConfiguredBundleWidget' args [data.cart] with {
+                {% widget 'QuoteConfiguredBundleWidget' args [data.cart, shipmentGroup.items] with {
                     data: {
                         isEditable: false,
                         isQuantityVisible: false,
