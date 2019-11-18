@@ -57,7 +57,7 @@
         <a class="button button--hollow spacing-right" href="{{ data.idCompanyBusinessUnit ? url('company/business-unit/update', {'id': data.idCompanyBusinessUnit }) : url('company/business-unit') }}" title="{{ 'company.company_business_unit.delete.confirmation.back' | trans }}" data-init-single-click>
             {{ 'company.company_business_unit.delete.confirmation.back' | trans }}
         </a>
-        <a class="{{ config.jsName }}__action button button--alert" href="{{ url('company/address/delete', {'id': data.companyUnitAddress.idCompanyUnitAddress, 'idCompanyBusinessUnit': data.idCompanyBusinessUnit }) }}" title="{{ 'company.account.business_unit.delete' | trans }}">
+        <a class="button button--alert" href="{{ url('company/address/delete', {'id': data.companyUnitAddress.idCompanyUnitAddress, 'idCompanyBusinessUnit': data.idCompanyBusinessUnit }) }}" title="{{ 'company.account.business_unit.delete' | trans }}" data-init-single-click>
             {{ 'company.account.business_unit.delete' | trans }}
         </a>
     </div>

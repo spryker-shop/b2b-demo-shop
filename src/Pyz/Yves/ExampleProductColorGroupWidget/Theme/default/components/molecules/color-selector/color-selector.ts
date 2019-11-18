@@ -1,14 +1,17 @@
 import Component from 'ShopUi/models/component';
 
 export default class ColorSelector extends Component {
-    parent: HTMLElement | Document;
-    parentSelector: string = '.product-card';
-    currentColor: HTMLAnchorElement;
-    colors: HTMLAnchorElement[];
-    image: HTMLImageElement;
-    detailsLink: HTMLAnchorElement;
+    protected parent: HTMLElement | Document;
+    protected parentSelector: string = '.product-card';
+    protected currentColor: HTMLAnchorElement;
+    protected colors: HTMLAnchorElement[];
+    protected imageContainer: HTMLElement;
+    protected image: HTMLImageElement;
+    protected detailsLink: HTMLAnchorElement;
 
-    protected readyCallback(): void {
+    protected readyCallback(): void {}
+
+    protected init(): void {
         this.parent = <HTMLElement | Document>this.closest(this.parentSelector) || document;
         this.initializeProperties();
         this.mapEvents();
@@ -16,8 +19,9 @@ export default class ColorSelector extends Component {
 
     protected initializeProperties(colorSelector: Element = this, parent: Element | Document = this.parent): void {
         this.colors = <HTMLAnchorElement[]>Array.from(colorSelector.getElementsByClassName(`${this.jsName}__color`));
-        this.image = <HTMLImageElement>parent.querySelector(this.targetImageSelector);
-        this.detailsLink = <HTMLAnchorElement>parent.querySelector(this.targetDetailsLink);
+        this.imageContainer = <HTMLImageElement>parent.getElementsByClassName(this.targetImageContainerClassName)[0];
+        this.image = <HTMLImageElement>this.imageContainer.getElementsByTagName('img')[0];
+        this.detailsLink = <HTMLAnchorElement>parent.getElementsByClassName(this.targetDetailsLinkClassName)[0];
     }
 
     protected mapEvents(): void {
@@ -59,10 +63,10 @@ export default class ColorSelector extends Component {
 
     setActiveColor(newColor: HTMLAnchorElement): void {
         this.colors.forEach((color: HTMLAnchorElement) => {
-            color.classList.remove(this.colorActiveClass);
+            color.classList.remove(this.colorActiveClassName);
         });
 
-        newColor.classList.add(this.colorActiveClass);
+        newColor.classList.add(this.colorActiveClassName);
         this.currentColor = newColor;
     }
 
@@ -82,15 +86,15 @@ export default class ColorSelector extends Component {
         }
     }
 
-    get targetImageSelector(): string {
-        return this.getAttribute('target-image-selector');
+    protected get targetImageContainerClassName(): string {
+        return this.getAttribute('target-image-container-class-name');
     }
 
-    get targetDetailsLink(): string {
-        return this.getAttribute('target-url-selector');
+    protected get targetDetailsLinkClassName(): string {
+        return this.getAttribute('target-details-link-class-name');
     }
 
-    get colorActiveClass(): string {
-        return this.getAttribute('active-color-class');
+    protected get colorActiveClassName(): string {
+        return this.getAttribute('active-color-class-name');
     }
 }

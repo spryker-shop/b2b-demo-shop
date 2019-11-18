@@ -14,7 +14,8 @@
     isAvailable: true,
     selectModifiers: ['margin-bottom'],
     selectTheme: 'default',
-    selectPlaceholder: 'product.attribute._none'
+    selectPlaceholder: 'product.attribute._none',
+    autoInitSelect: false,
 } %}
 
 {% set selectModifiers = data.selectModifiers | merge(['full-width']) %}
@@ -29,13 +30,20 @@
                 attributes: {
                     name: data.formName,
                     'config-width': '100%',
-                    'config-theme': data.selectTheme
+                    'config-theme': data.selectTheme,
+                    'auto-init': data.autoInitSelect,
                 },
                 embed: {
                     values: data.values,
-                    selectPlaceholder: data.selectPlaceholder
-                }
+                    selectPlaceholder: data.selectPlaceholder,
+                    jsName: config.jsName,
+                    formName: data.formName,
+                },
             } only %}
+                {% block selectClass %}
+                    {{ parent() }} {{ embed.jsName ~ '__select--' ~ embed.formName }}
+                {% endblock %}
+
                 {% block options %}
                     <option>{{ embed.selectPlaceholder | trans }}</option>
                     {% for value in embed.values %}
@@ -46,8 +54,8 @@
 
             {% include molecule('form-handler') with {
                 attributes: {
-                    'trigger-selector': '[name=\"' ~ data.formName ~ '\"]'
-                }
+                    'trigger-class-name': config.jsName ~ '__select--' ~ data.formName,
+                },
             } only %}
         {% else %}
             {{ 'product.attribute.not_available' | trans }}

@@ -72,10 +72,10 @@
 
     {% include molecule('toggler-accordion') with {
         attributes: {
-            'wrap-selector': '.js-pdp-section',
-            'trigger-selector': '.js-pdp-section__trigger',
-            'class-to-toggle': 'is-hidden-sm-md'
-        }
+            'wrap-class-name': 'js-pdp-section',
+            'trigger-class-name': 'js-pdp-section__trigger',
+            'class-to-toggle': 'is-hidden-sm-md',
+        },
     } only %}
 
     {% widget 'ProductReplacementForListWidget' args [data.product.sku] only %}{% endwidget %}

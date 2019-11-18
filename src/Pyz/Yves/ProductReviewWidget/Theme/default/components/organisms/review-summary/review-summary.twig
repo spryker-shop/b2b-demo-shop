@@ -2,7 +2,7 @@
 
 {% define config = {
     name: 'review-summary',
-    tag: 'section'
+    tag: 'section',
 } %}
 
 {% define data = {
@@ -89,8 +89,7 @@
             {% include molecule('toggler-hash') with {
                 attributes: {
                     'trigger-hash': '#review',
-                    'target-selector': '.' ~ config.jsName ~ '__new-review-form',
-                    'class-to-toggle': 'is-hidden',
+                    'target-class-name': config.jsName ~ '__new-review-form',
                     'add-class-when-hash-in-url': false,
                 },
             } only %}
