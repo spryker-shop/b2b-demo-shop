@@ -1,10 +1,7 @@
 {% extends view('summary', '@SprykerShop:CheckoutPage') %}
 
 {% define data = {
-    cart: _view.quoteTransfer,
     stepNumder: 4,
-    isPlaceableOrder: _view.isPlaceableOrder,
-    isPlaceableOrderErrors: _view.isPlaceableOrderErrors,
 } %}
 
 {% block content %}
@@ -204,7 +201,7 @@
                     {{ parent() }}
 
                     {% if embed.isPlaceableOrderErrors is not empty %}
-                        <hr class="box__separator">
+                        <hr>
                         <ul class="list list--alert">
                             {% for error in embed.isPlaceableOrderErrors %}
                                 <li class="list__item">{{ error.message | trans }}</li>

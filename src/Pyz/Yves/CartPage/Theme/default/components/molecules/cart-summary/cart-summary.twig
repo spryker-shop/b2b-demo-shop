@@ -62,9 +62,9 @@
         </ul>
     </div>
 
-    {% widget 'QuoteApprovalWidget' args [data.cart] %}
+    {% widget 'QuoteApprovalWidget' args [data.cart] only %}
         {% block container %}
-            <div class="{{ config.name }}__approve-request">
+            <div class="cart-summary__approve-request">
                 {{ parent() }}
             </div>
         {% endblock %}
