@@ -33,6 +33,6 @@ class ShipmentDataImportConfig extends SprykerShipmentDataImportConfig
      */
     public function getShipmentMethodStoreDataImporterConfiguration(): DataImporterConfigurationTransfer
     {
-        return $this->buildImporterConfiguration(  'shipment_method_store.csv', static::IMPORT_TYPE_SHIPMENT_METHOD_STORE);
+        return $this->buildImporterConfiguration('shipment_method_store.csv', static::IMPORT_TYPE_SHIPMENT_METHOD_STORE);
     }
 }
