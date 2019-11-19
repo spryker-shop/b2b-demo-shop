@@ -19,7 +19,8 @@
     <div class="{{ config.name }}__wrapper">
         <ul class="list">
             {% set quoteApprovalWidget = findWidget('QuoteApprovalWidget', [data.cart]) %}
-            {% if quoteApprovalWidget and quoteApprovalWidget.isVisible and not canProceedToCheckout %}
+            {% set isQuoteApprovalWidgetVisible = quoteApprovalWidget and quoteApprovalWidget.isVisible %}
+            {% if isQuoteApprovalWidgetVisible and not canProceedToCheckout %}
                 {% set canProceedToCheckout = true %}
             {% endif %}
 

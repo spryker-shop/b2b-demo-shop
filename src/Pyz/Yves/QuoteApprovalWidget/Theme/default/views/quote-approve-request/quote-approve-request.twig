@@ -40,12 +40,13 @@
                 {% if not data.isQuoteApplicableForApprovalProcess %}
                     <hr>
                     <p>
-                        <b>{{ 'quote_approval_widget.quote_not_applicable_for_approval_process' | trans }}</b>
+                        <strong>{{ 'quote_approval_widget.quote_not_applicable_for_approval_process' | trans }}</strong>
                     </p>
                 {% endif %}
             {% endif %}
 
-            {% if data.canSendApprovalRequest and data.hasApprovers and data.isQuoteApplicableForApprovalProcess %}
+            {% set isQuoteApprovalWidgetVisible = data.canSendApprovalRequest and data.hasApprovers and data.isQuoteApplicableForApprovalProcess %}
+            {% if isQuoteApprovalWidgetVisible %}
                 {% include molecule('approve-request-form', 'QuoteApprovalWidget') with {
                     data: {
                         quoteApprovalRequestForm: data.quoteApprovalRequestForm,
