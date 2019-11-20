@@ -14,6 +14,14 @@
                 }) }}
             </h3>
             <div class="col col--sm-12 col--xl-8">
+                {% widget 'QuoteConfiguredBundleWidget' args [data.cart, shipmentGroup.items] with {
+                    data: {
+                        isEditable: false,
+                        isQuantityVisible: false,
+                    },
+                } only %}
+                {% endwidget %}
+
                 {% set itemsExceptConfiguredBundles = shipmentGroup.items | filter(item => item.configuredBundleItem is not defined or item.configuredBundleItem is empty) %}
 
                 {% for item in itemsExceptConfiguredBundles %}
@@ -88,14 +96,6 @@
                         {% block bundle %}{% endblock %}
                     {% endembed %}
                 {% endfor %}
-
-                {% widget 'QuoteConfiguredBundleWidget' args [data.cart, shipmentGroup.items] with {
-                    data: {
-                        isEditable: false,
-                        isQuantityVisible: false,
-                    },
-                } only %}
-                {% endwidget %}
             </div>
 
             <div class="col col--sm-12 col--xl-4">
