@@ -146,13 +146,6 @@
                 } only %}
             {% endif %}
 
-            {% set quoteApprovalWidget = findWidget('QuoteApprovalWidget', [data.cart]) %}
-            {% if quoteApprovalWidget and quoteApprovalWidget.isVisible %}
-                <div class="box">
-                    {% widget 'QuoteApprovalWidget' args [data.cart] only %}{% endwidget %}
-                </div>
-            {% endif %}
-
             {% include molecule('summary-voucher-form', 'CheckoutPage') with {
                 data: {
                     transfer: data.transfer,
@@ -196,6 +189,13 @@
                                 </div>
                             {% endblock %}
                         {% endwidget %}
+                    {% endif %}
+
+                    {% set quoteApprovalWidget = findWidget('QuoteApprovalWidget', [embed.cart]) %}
+                    {% if quoteApprovalWidget and quoteApprovalWidget.isVisible %}
+                        <div class="box">
+                            {% widget 'QuoteApprovalWidget' args [embed.cart] only %}{% endwidget %}
+                        </div>
                     {% endif %}
 
                     {{ parent() }}
