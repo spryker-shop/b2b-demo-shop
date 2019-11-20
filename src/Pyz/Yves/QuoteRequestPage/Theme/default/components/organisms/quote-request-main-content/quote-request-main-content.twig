@@ -33,7 +33,15 @@
             {% endif %}
             {% if data.quote %}
                 {% block cartItems %}
-                    {% for cartItem in data.quote.items %}
+                    {% widget 'QuoteConfiguredBundleWidget' args [data.quote] with {
+                        data: {
+                            isEditable: false,
+                        },
+                    } only %}
+                    {% endwidget %}
+
+                    {% set cartItems = data.quote.items | filter(item => item.configuredBundleItem is not defined or item.configuredBundleItem is empty) %}
+                    {% for cartItem in cartItems %}
                         {% include molecule('quote-request-cart-item', 'QuoteRequestPage') ignore missing with {
                             data: {
                                 priceMode: data.quote.priceMode,
