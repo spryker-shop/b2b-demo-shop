@@ -63,14 +63,6 @@
         </ul>
     </div>
 
-    {% widget 'QuoteApprovalWidget' args [data.cart] only %}
-        {% block container %}
-            <div class="cart-summary__approve-request">
-                {{ parent() }}
-            </div>
-        {% endblock %}
-    {% endwidget %}
-
     {% if canProceedToCheckout and can('SeeOrderPlaceSubmitPermissionPlugin') %}
         {% widget 'ProceedToCheckoutButtonWidget' args [data.cart] %}
             {% block body %}
