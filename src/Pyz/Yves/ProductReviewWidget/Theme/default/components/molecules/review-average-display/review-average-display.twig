@@ -31,9 +31,13 @@
     {% if data.summary.totalReview > 0 %}
         <div class="review-average-display__total-review">
             {{- data.summary.totalReview }}
-            {% transchoice data.summary.totalReview %}
-                product_review.summary.review|product_review.summary.reviews
-            {% endtranschoice -%}
+
+            {% set amount = data.summary.totalReview > 1 ? 'multiple' : data.summary.totalReview %}
+
+            {{ amount | trans({
+                '1' : 'product_review.summary.review' | trans,
+                'multiple': 'product_review.summary.reviews' | trans,
+            }) -}}
         </div>
     {% else %}
         <div class="review-average-display__total-review is-hidden-sm-only">
