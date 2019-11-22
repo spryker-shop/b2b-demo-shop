@@ -4,20 +4,22 @@ import debounce from 'lodash-es/debounce';
 import OverlayBlock from '../../atoms/overlay-block/overlay-block';
 
 export default class AutocompleteForm extends Component {
-    ajaxProvider: AjaxProvider;
-    inputElement: HTMLInputElement;
-    hiddenInputElement: HTMLInputElement;
-    suggestionsContainer: HTMLElement;
-    cleanButton: HTMLButtonElement;
-    overlay: OverlayBlock;
+    protected ajaxProvider: AjaxProvider;
+    protected inputElement: HTMLInputElement;
+    protected hiddenInputElement: HTMLInputElement;
+    protected suggestionsContainer: HTMLElement;
+    protected cleanButton: HTMLButtonElement;
+    protected overlay: OverlayBlock;
 
-    protected readyCallback(): void {
-        this.ajaxProvider = <AjaxProvider>this.querySelector(`.${this.jsName}__provider`);
-        this.suggestionsContainer = <HTMLElement>this.querySelector(`.${this.jsName}__container`);
-        this.inputElement = <HTMLInputElement>this.querySelector(`.${this.jsName}__input`);
-        this.hiddenInputElement = <HTMLInputElement>this.querySelector(`.${this.jsName}__input-hidden`);
-        this.cleanButton = <HTMLButtonElement>this.querySelector(`.${this.jsName}__clean-button`);
-        this.overlay = <OverlayBlock>document.querySelector(this.overlaySelector);
+    protected readyCallback(): void {}
+
+    protected init(): void {
+        this.ajaxProvider = <AjaxProvider>this.getElementsByClassName(`${this.jsName}__provider`)[0];
+        this.suggestionsContainer = <HTMLElement>this.getElementsByClassName(`${this.jsName}__container`)[0];
+        this.inputElement = <HTMLInputElement>this.getElementsByClassName(`${this.jsName}__input`)[0];
+        this.hiddenInputElement = <HTMLInputElement>this.getElementsByClassName(`${this.jsName}__input-hidden`)[0];
+        this.cleanButton = <HTMLButtonElement>this.getElementsByClassName(`${this.jsName}__clean-button`)[0];
+        this.overlay = <OverlayBlock>document.getElementsByClassName(this.overlayBlockClassName)[0];
         this.mapEvents();
     }
 
@@ -75,7 +77,7 @@ export default class AutocompleteForm extends Component {
 
     protected mapItemEvents(): void {
         const self = this;
-        const items = Array.from(this.suggestionsContainer.querySelectorAll(this.itemSelector));
+        const items = Array.from(this.suggestionsContainer.getElementsByClassName(this.itemClassName));
         items.forEach((item: HTMLElement) => {
             item.addEventListener('click', (event: Event) => self.onItemClick(event));
         });
@@ -98,33 +100,35 @@ export default class AutocompleteForm extends Component {
         this.setInputs('', '');
     }
 
-    get minLetters(): number {
+    protected get minLetters(): number {
         return Number(this.getAttribute('min-letters'));
     }
 
-    get inputValue(): string {
+    protected get inputValue(): string {
         return this.inputElement.value.trim();
     }
 
-    get queryParamName(): string {
+    protected get queryParamName(): string {
         return this.getAttribute('query-param-name');
     }
 
-    get valueDataAttribute(): string {
+    protected get valueDataAttribute(): string {
         return this.getAttribute('value-data-attribute');
     }
 
-    get itemSelector(): string {
-        return this.getAttribute('item-selector');
+    protected get itemClassName(): string {
+        return this.getAttribute('item-class-name');
     }
 
-    get debounceDelay(): number {
+    protected get debounceDelay(): number {
         return Number(this.getAttribute('debounce-delay'));
     }
-    get showCleanButton(): boolean {
+
+    protected get showCleanButton(): boolean {
         return this.hasAttribute('show-clean-button');
     }
-    get overlaySelector(): string {
-        return '.js-overlay-block';
+
+    protected get overlayBlockClassName(): string {
+        return this.getAttribute('overlay-block-class-name');
     }
 }

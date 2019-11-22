@@ -2,16 +2,16 @@
 
 {% define config = {
     name: 'quick-order-file-upload',
-    tag: 'quick-order-file-upload'
+    tag: 'quick-order-file-upload',
 } %}
 
 {% define data = {
     uploadOrderForm: required,
-    fileTemplateExtensions: null
+    fileTemplateExtensions: null,
 } %}
 
 {% define attributes = {
-    'input-file': '#' ~ data.uploadOrderForm.children.fileUploadOrder.vars.id
+    'input-file-id': data.uploadOrderForm.children.fileUploadOrder.vars.id,
 } %}
 
 {% block body %}

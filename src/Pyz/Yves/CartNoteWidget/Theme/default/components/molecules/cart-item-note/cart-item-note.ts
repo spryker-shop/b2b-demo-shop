@@ -1,20 +1,19 @@
 import Component from 'ShopUi/models/component';
 
 export default class CartItemNote extends Component {
-    readonly editButton: HTMLElement;
-    readonly removeButton: HTMLElement;
-    readonly formTarget: HTMLElement;
-    readonly textTarget: HTMLElement;
+    protected editButton: HTMLButtonElement;
+    protected removeButton: HTMLButtonElement;
+    protected formTarget: HTMLElement;
+    protected textTarget: HTMLElement;
 
-    constructor() {
-        super();
-        this.editButton = <HTMLElement>this.querySelector(this.editButtonSelector);
-        this.removeButton = <HTMLElement>this.querySelector(this.removeButtonSelector);
-        this.formTarget = <HTMLElement>this.querySelector(this.formSelector);
-        this.textTarget = <HTMLElement>this.querySelector(this.textTargetSelector);
-    }
+    protected readyCallback(): void {}
 
-    protected readyCallback(): void {
+    protected init(): void {
+        this.editButton = <HTMLButtonElement>this.getElementsByClassName(`${this.jsName}__edit`)[0];
+        this.removeButton = <HTMLButtonElement>this.getElementsByClassName(`${this.jsName}__remove`)[0];
+        this.formTarget = <HTMLElement>this.getElementsByClassName(`${this.jsName}__form`)[0];
+        this.textTarget = <HTMLElement>this.getElementsByClassName(`${this.jsName}__text-wrap`)[0];
+
         this.mapEvents();
     }
 
@@ -35,8 +34,8 @@ export default class CartItemNote extends Component {
             }
             if (target === this.removeButton) {
                 event.preventDefault();
-                const form = <HTMLFormElement>this.formTarget.querySelector('form');
-                const textarea = <HTMLTextAreaElement>form.querySelector('textarea');
+                const form = <HTMLFormElement>this.formTarget.getElementsByTagName('form')[0];
+                const textarea = <HTMLTextAreaElement>form.getElementsByTagName('textarea')[0];
                 textarea.value = '';
                 form.submit();
 
@@ -51,23 +50,7 @@ export default class CartItemNote extends Component {
         activeTrigger.classList.toggle(this.classToToggle, !isTriggerActive);
     }
 
-    get editButtonSelector(): string {
-        return this.getAttribute('edit-button-selector');
-    }
-
-    get removeButtonSelector(): string {
-        return this.getAttribute('remove-button-selector');
-    }
-
-    get textTargetSelector(): string {
-        return this.getAttribute('read-section-selector');
-    }
-
-    get formSelector(): string {
-        return this.getAttribute('form-selector');
-    }
-
-    get classToToggle(): string {
-        return this.getAttribute('change-class');
+    protected get classToToggle(): string {
+        return this.getAttribute('class-to-toggle');
     }
 }

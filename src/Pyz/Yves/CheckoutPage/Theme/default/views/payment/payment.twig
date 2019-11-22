@@ -74,32 +74,19 @@
                             },
                         } only %}
                             {% block fieldset %}
-                                {% if embed.index == 1 %}
-                                    {{ form_row(embed.toggler, {
-                                        required: false,
-                                        component: molecule('toggler-radio'),
-                                        attributes: {
-                                            'target-selector': '.js-payment-method-' ~ embed.index,
-                                            'class-to-toggle': 'is-hidden',
-                                            checked: true,
-                                        },
-                                        rowAttr: {
-                                            class: 'toggler-radio toggler-radio--checkout',
-                                        },
-                                    }) }}
-                                {% else %}
-                                    {{ form_row(embed.toggler, {
-                                        required: false,
-                                        component: molecule('toggler-radio'),
-                                        attributes: {
-                                            'target-selector': '.js-payment-method-' ~ embed.index,
-                                            'class-to-toggle': 'is-hidden',
-                                        },
-                                        rowAttr: {
-                                            class: 'toggler-radio toggler-radio--checkout toggler-radio--border-top-less',
-                                        },
-                                    }) }}
-                                {% endif %}
+                                {{ form_row(embed.toggler, {
+                                    required: false,
+                                    component: molecule('toggler-radio'),
+                                    attributes: {
+                                        'target-class-name': 'js-payment-method-' ~ embed.index,
+                                        'class-to-toggle': 'is-hidden',
+                                        checked: embed.index == 1,
+                                    },
+                                    rowAttr: {
+                                        class: 'toggler-radio toggler-radio--checkout ' ~ (embed.index != 1 ? 'toggler-radio--border-top-less'),
+                                    },
+                                }) }}
+
                                 <div class="col col--sm-12 is-hidden js-payment-method-{{ embed.index }}">
                                     <div class="col col--sm-12 col--md-6">
                                         {{ parent() }}

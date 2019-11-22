@@ -2,14 +2,14 @@
 
 {% define config = {
     name: 'form-handler',
-    tag: 'form-handler'
+    tag: 'form-handler',
 } %}
 
 {% define attributes = {
-    'trigger-selector': required,
+    'trigger-class-name': required,
     'event': 'change',
     'change-action': 'false',
-    'submit-form': 'true'
+    'submit-form': 'true',
 } %}
 
 {%- block class -%}

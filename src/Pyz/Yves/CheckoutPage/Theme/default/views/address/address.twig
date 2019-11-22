@@ -117,18 +117,16 @@
             </div>
 
             <div class="col col--sm-12 {{ embed.jsAddressClass }}__form-handler-billingSameAsShipping">
-                {{
-                    form_row(data.form.billingSameAsShipping, {
-                        component: molecule('toggler-checkbox'),
-                        label: 'customer.billingSameAsShipping' | trans,
-                        attributes: {
-                            'target-selector': '.' ~ embed.jsAddressClass ~ '__billing-same-as-shipping',
-                            'class-to-toggle': 'is-hidden',
-                            'add-class-when-checked': true,
-                            checked: true,
-                        },
-                    })
-                }}
+                {{ form_row(data.form.billingSameAsShipping, {
+                    component: molecule('toggler-checkbox'),
+                    label: 'customer.billingSameAsShipping' | trans,
+                    attributes: {
+                        'target-class-name': embed.jsAddressClass ~ '__billing-same-as-shipping',
+                        'class-to-toggle': 'is-hidden',
+                        'add-class-when-checked': true,
+                        checked: true,
+                    }
+                }) }}
             </div>
 
             <div class="col col--sm-12 {{ embed.jsAddressClass }}__form-handler-billingAddress">
