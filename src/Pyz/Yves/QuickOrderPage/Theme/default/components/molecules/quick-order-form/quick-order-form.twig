@@ -35,8 +35,8 @@
     {% include molecule('ajax-loader') with {
         modifiers: ['big'],
         attributes: {
-            'provider-selector': '.' ~ config.jsName ~ '__provider'
-        }
+            'provider-class-name': config.jsName ~ '__provider',
+        },
     } only %}
 
     {% embed molecule('form') with {

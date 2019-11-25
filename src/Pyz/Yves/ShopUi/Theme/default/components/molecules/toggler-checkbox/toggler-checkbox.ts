@@ -1,17 +1,16 @@
 import Component from 'ShopUi/models/component';
 
 export default class TogglerCheckbox extends Component {
-    readonly trigger: HTMLInputElement;
-    readonly targets: HTMLElement[];
+    protected trigger: HTMLInputElement;
+    protected targets: HTMLElement[];
     protected event: CustomEvent;
 
-    constructor() {
-        super();
-        this.trigger = <HTMLInputElement>this.querySelector(`.${this.jsName}__trigger`);
-        this.targets = <HTMLElement[]>Array.from(document.querySelectorAll(this.targetSelector));
-    }
+    protected readyCallback(): void {}
 
-    protected readyCallback(): void {
+    protected init(): void {
+        this.trigger = <HTMLInputElement>this.getElementsByClassName(`${this.jsName}__trigger`)[0];
+        this.targets = <HTMLElement[]>Array.from(document.getElementsByClassName(this.targetClassName));
+
         this.toggle();
         this.fireToggleEvent();
         this.mapEvents();
@@ -36,19 +35,19 @@ export default class TogglerCheckbox extends Component {
         this.dispatchEvent(this.event);
     }
 
-    get addClass(): boolean {
+    protected get addClass(): boolean {
         return this.addClassWhenChecked ? this.trigger.checked : !this.trigger.checked;
     }
 
-    get targetSelector(): string {
-        return this.trigger.getAttribute('target-selector');
+    protected get targetClassName(): string {
+        return this.trigger.getAttribute('target-class-name');
     }
 
-    get classToToggle(): string {
+    protected get classToToggle(): string {
         return this.trigger.getAttribute('class-to-toggle');
     }
 
-    get addClassWhenChecked(): boolean {
+    protected get addClassWhenChecked(): boolean {
         return this.trigger.hasAttribute('add-class-when-checked');
     }
 }

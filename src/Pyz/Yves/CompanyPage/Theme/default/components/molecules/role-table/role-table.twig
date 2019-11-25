@@ -1,20 +1,4 @@
-{% extends model('component') %}
-
-{% define config = {
-    name: 'role-table',
-    tag: 'div'
-} %}
-
-{% define data = {
-    roles: required,
-    actions: {
-        view: true,
-        update: false,
-        delete: false
-    }
-} %}
-
-{% set showActions = data.actions.view or data.actions.update or data.actions.delete %}
+{% extends molecule('role-table', '@SprykerShop:CompanyPage') %}
 
 {% block body %}
     <table class="table table--expand table--responsive">
@@ -36,8 +20,8 @@
                         modifiers: ['role'],
                         class: 'spacing-top spacing-top--small',
                         data: {
-                            name: role.isDefault ? 'check' : 'cross'
-                        }
+                            name: role.isDefault ? 'check' : 'cross',
+                        },
                     } only %}
                 </td>
                 {% if showActions %}
@@ -49,22 +33,22 @@
                                         url: path('company/company-role/details', {'id': role.idCompanyRole}),
                                         icon: 'edit',
                                         title: 'company.account.company_role.view',
-                                        available: data.actions.view
+                                        available: data.actions.view,
                                     },
                                     {
                                         url: url('company/company-role/update', {'id': role.idCompanyRole}),
                                         icon: 'edit',
                                         title: 'company.account.business_unit.edit',
-                                        available: data.actions.update
+                                        available: data.actions.update,
                                     },
                                     {
                                         url: url('company/company-role/confirm-delete', {'id': role.idCompanyRole }),
                                         icon: 'delete',
                                         title: 'company.account.business_unit.delete',
-                                        available: data.actions.delete
-                                    }
-                                ]
-                            }
+                                        available: data.actions.delete,
+                                    },
+                                ],
+                            },
                         } only %}
                     </td>
                 {% endif %}

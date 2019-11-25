@@ -1,15 +1,11 @@
-{% extends template('widget') %}
-
-{% define data = {
-    quoteStatus: _widget.quoteStatus
-} %}
+{% extends view('quote-approval-status-widget', '@SprykerShop:QuoteApprovalWidget') %}
 
 {% block body %}
     {% include molecule('quote-status') with {
         class: 'text-center',
         modifiers: [data.quoteStatus | lower],
         data: {
-            quoteStatus: data.quoteStatus
-        }
+            quoteStatus: data.quoteStatus,
+        },
     } only %}
 {% endblock %}

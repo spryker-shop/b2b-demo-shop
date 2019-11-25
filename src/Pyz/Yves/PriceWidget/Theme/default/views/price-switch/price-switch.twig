@@ -18,12 +18,12 @@
             modifiers: ['alternative'],
             attributes: {
                 name: 'price-mode',
-                'config-theme': 'alternative'
+                'config-theme': 'alternative',
             },
             embed: {
                 priceModes: data.priceModes,
-                currentPriceMode: data.currentPriceMode
-            }
+                currentPriceMode: data.currentPriceMode,
+            },
         } only %}
             {% block selectClass %}
                 {{ parent() }} js-price-mode-select
@@ -37,8 +37,8 @@
 
         {% include molecule('form-handler') with {
             attributes: {
-                'trigger-selector': '.js-price-mode-select'
-            }
+                'trigger-class-name': 'js-price-mode-select',
+            },
         } only %}
 
         <input type="hidden" name="referrer-url" value="{{ data.requestUri }}" />

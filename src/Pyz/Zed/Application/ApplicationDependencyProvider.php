@@ -27,6 +27,7 @@ use Spryker\Zed\Auth\Communication\Plugin\Bootstrap\AuthBootstrapProvider;
 use Spryker\Zed\Auth\Communication\Plugin\ServiceProvider\RedirectAfterLoginProvider;
 use Spryker\Zed\EventBehavior\Communication\Plugin\ServiceProvider\EventBehaviorServiceProvider;
 use Spryker\Zed\EventDispatcher\Communication\Plugin\Application\EventDispatcherApplicationPlugin;
+use Spryker\Zed\Gui\Communication\Plugin\ServiceProvider\FormTypeExtensionServiceProvider;
 use Spryker\Zed\Gui\Communication\Plugin\ServiceProvider\GuiTwigExtensionServiceProvider;
 use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\Locale\Communication\Plugin\Application\LocaleApplicationPlugin;
@@ -67,6 +68,7 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
             new RedirectAfterLoginProvider(),
             new EventBehaviorServiceProvider(),
             new SaveSessionServiceProvider(),
+            new FormTypeExtensionServiceProvider(),
         ];
 
         $providers = array_merge($providers, $coreProviders);

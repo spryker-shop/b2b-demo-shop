@@ -1,9 +1,7 @@
-{% extends template('page-layout-customer', 'CustomerPage') %}
+{% extends template('page-layout-shopping-list', '@SprykerShop:ShoppingListPage') %}
 
 {% define data = {
-    title: 'customer.account.shopping_list' | trans,
     backUrl: app.request.headers.get('referer') | default(url('shopping-list')),
-    activePage: 'shoppingList'
 } %}
 
 {% block title %}{% endblock %}
@@ -15,8 +13,8 @@
                 label: 'customer.account' | trans,
             },
             {
-                label: 'customer.account.shopping_list' | trans,
-            }]
-        }
+                label: data.title,
+            }],
+        },
     } only %}
 {% endblock %}

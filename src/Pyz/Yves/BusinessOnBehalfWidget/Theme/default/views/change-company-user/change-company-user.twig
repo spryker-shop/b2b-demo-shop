@@ -1,0 +1,17 @@
+{% extends view('change-company-user', '@SprykerShop:BusinessOnBehalfWidget') %}
+
+{% define data = {
+    isActivePage: app.request.pathInfo == path('company/user/select'),
+} %}
+
+{% block body %}
+    {% include molecule('navigation-sidebar-item') with {
+        data: {
+            url: path('company/user/select'),
+            icon: 'office',
+            label: 'business_on_behalf_widget.change_company_user' | trans,
+            name: 'change-company-user',
+        },
+        modifiers: data.isActivePage ? ['active'] : [],
+    } only %}
+{% endblock %}
