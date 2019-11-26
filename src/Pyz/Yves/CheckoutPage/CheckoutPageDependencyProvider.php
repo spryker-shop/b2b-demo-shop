@@ -21,6 +21,9 @@ use SprykerShop\Yves\CustomerPage\Form\GuestForm;
 use SprykerShop\Yves\CustomerPage\Form\LoginForm;
 use SprykerShop\Yves\CustomerPage\Form\RegisterForm;
 use SprykerShop\Yves\CustomerPage\Plugin\CheckoutPage\CustomerAddressExpanderPlugin;
+use SprykerShop\Yves\QuoteApprovalWidget\Plugin\CheckoutPage\QuoteApprovalCheckerCheckoutAddressStepEnterPreCheckPlugin;
+use SprykerShop\Yves\QuoteApprovalWidget\Plugin\CheckoutPage\QuoteApprovalCheckerCheckoutPaymentStepEnterPreCheckPlugin;
+use SprykerShop\Yves\QuoteApprovalWidget\Plugin\CheckoutPage\QuoteApprovalCheckerCheckoutShipmentStepEnterPreCheckPlugin;
 use SprykerShop\Yves\SalesOrderThresholdWidget\Plugin\CheckoutPage\SalesOrderThresholdWidgetPlugin;
 use Symfony\Component\Form\FormFactory;
 
@@ -137,6 +140,36 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
         return [
             new CustomerAddressExpanderPlugin(),
             new CompanyUnitAddressExpanderPlugin(),
+        ];
+    }
+
+    /**
+     * @return \SprykerShop\Yves\CheckoutPageExtension\Dependency\Plugin\CheckoutAddressStepEnterPreCheckPluginInterface[]
+     */
+    protected function getCheckoutAddressStepEnterPreCheckPlugins(): array
+    {
+        return [
+            new QuoteApprovalCheckerCheckoutAddressStepEnterPreCheckPlugin(),
+        ];
+    }
+
+    /**
+     * @return \SprykerShop\Yves\CheckoutPageExtension\Dependency\Plugin\CheckoutShipmentStepEnterPreCheckPluginInterface[]
+     */
+    protected function getCheckoutShipmentStepEnterPreCheckPlugins(): array
+    {
+        return [
+            new QuoteApprovalCheckerCheckoutShipmentStepEnterPreCheckPlugin(),
+        ];
+    }
+
+    /**
+     * @return \SprykerShop\Yves\CheckoutPageExtension\Dependency\Plugin\CheckoutPaymentStepEnterPreCheckPluginInterface[]
+     */
+    protected function getCheckoutPaymentStepEnterPreCheckPlugins(): array
+    {
+        return [
+            new QuoteApprovalCheckerCheckoutPaymentStepEnterPreCheckPlugin(),
         ];
     }
 }

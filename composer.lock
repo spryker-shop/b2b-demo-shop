@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c5523d8954a1b0208b119b519b0a8e3e",
+    "content-hash": "0afff6ad9d18e94dc756e330f70a4cb1",
     "packages": [
         {
             "name": "codeception/phpunit-wrapper",
@@ -30045,6 +30045,52 @@
             "time": "2019-10-02T15:10:35+00:00"
         },
         {
+            "name": "spryker/quote-approval-shipment-connector",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/quote-approval-shipment-connector.git",
+                "reference": "aa7d775c8f274b0a7edbdd44f4089523ff9631b4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/quote-approval-shipment-connector/zipball/aa7d775c8f274b0a7edbdd44f4089523ff9631b4",
+                "reference": "aa7d775c8f274b0a7edbdd44f4089523ff9631b4",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/kernel": "^3.33.0",
+                "spryker/quote-approval": "^1.2.0",
+                "spryker/quote-approval-extension": "^1.1.0",
+                "spryker/quote-extension": "^1.6.0",
+                "spryker/shipment": "^7.0.0 || ^8.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/price": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "QuoteApprovalShipmentConnector module",
+            "time": "2019-10-29T11:00:04+00:00"
+        },
+        {
             "name": "spryker/quote-extension",
             "version": "1.6.0",
             "source": {
@@ -38938,7 +38984,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "🍸 Nette NEON: encodes and decodes NEON file format.",
+            "description": "? Nette NEON: encodes and decodes NEON file format.",
             "homepage": "http://ne-on.org",
             "keywords": [
                 "export",
