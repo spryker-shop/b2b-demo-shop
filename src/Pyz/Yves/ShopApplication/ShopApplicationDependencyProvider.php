@@ -14,6 +14,7 @@ use Pyz\Yves\ExampleProductColorGroupWidget\Widget\ExampleProductColorSelectorWi
 use Pyz\Yves\ProductSetWidget\Widget\ProductSetIdsWidget;
 use Spryker\Yves\EventDispatcher\Plugin\Application\EventDispatcherApplicationPlugin;
 use Spryker\Yves\Locale\Plugin\Application\LocaleApplicationPlugin;
+use Spryker\Yves\Router\Plugin\Application\RouterApplicationPlugin;
 use Spryker\Yves\Store\Plugin\Application\StoreApplicationPlugin;
 use Spryker\Yves\Twig\Plugin\Application\TwigApplicationPlugin;
 use SprykerShop\Yves\AgentWidget\Widget\AgentControlBarWidget;
@@ -223,7 +224,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
     }
 
     /**
-     * @return array
+     * @return \Spryker\Shared\ApplicationExtension\Dependency\Plugin\ApplicationPluginInterface[]
      */
     protected function getApplicationPlugins(): array
     {
@@ -233,6 +234,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             new ShopApplicationApplicationPlugin(),
             new StoreApplicationPlugin(),
             new LocaleApplicationPlugin(),
+            new RouterApplicationPlugin(),
         ];
     }
 }
