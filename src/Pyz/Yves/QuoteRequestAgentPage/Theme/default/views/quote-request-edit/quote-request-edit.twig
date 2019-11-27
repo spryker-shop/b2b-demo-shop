@@ -59,6 +59,7 @@
                         } only %}
                     {% endfor %}
                 {% endblock %}
+
                 {% block cartItems %}
                     {% widget 'QuoteConfiguredBundleWidget' args [data.quote] with {
                         data: {
@@ -224,12 +225,15 @@
                             {% block sourcePriceForm %}
                                 {% set originUnitPrice = (data.priceMode == priceModeGross) ? data.cartItem.originUnitGrossPrice : data.cartItem.originUnitNetPrice %}
                                 {% set unitSourcePrice = null %}
+
                                 {% if data.itemChild.sourceUnitGrossPrice is defined %}
                                     {% set unitSourcePrice = data.itemChild.sourceUnitGrossPrice.vars.value %}
                                 {% endif %}
+
                                 {% if data.itemChild.sourceUnitNetPrice is defined %}
                                     {% set unitSourcePrice = data.itemChild.sourceUnitNetPrice.vars.value %}
                                 {% endif %}
+
                                 {% include molecule('source-price-form', 'QuoteRequestAgentPage') with {
                                     class: 'spacing-bottom spacing-bottom--big',
                                     data: {
@@ -307,5 +311,4 @@
         </div>
 
     {{ form_end(data.quoteRequestForm) }}
-
 {% endblock %}
