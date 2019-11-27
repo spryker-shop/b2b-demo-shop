@@ -28,7 +28,11 @@
                     {% block price %}
                         <strong class="{{ config.name }}__text">
                             {% block priceInner %}
-                                {{ parent() }}
+                                {%- block priceTitle -%}{% endblock %}
+
+                                {%- block priceValue -%}
+                                    {{ parent() }}
+                                {% endblock %}
                             {% endblock %}
                         </strong>
                     {% endblock %}
@@ -56,6 +60,10 @@
     </div>
 {% endblock %}
 
-{%- block priceTitle -%}{% endblock %}
-
 {%- block totalTitle -%}{% endblock %}
+
+{% block totalInner %}
+    {%- block totalValue -%}
+        {{ parent() }}
+    {% endblock %}
+{% endblock %}
