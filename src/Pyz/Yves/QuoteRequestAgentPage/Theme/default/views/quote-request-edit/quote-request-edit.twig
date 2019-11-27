@@ -78,6 +78,18 @@
                                     itemForms: data.itemForms,
                                 },
                             } only %}
+                                {% block bundleQuantity %}{% endblock %}
+
+                                {% block bundleTotalInner %}
+                                    {%- block bundleTotalTitle -%}
+                                        {{ parent() }}
+                                    {%- endblock %}
+
+                                    {% block bundleTotalValue -%}
+                                        {{ parent() }}
+                                    {%- endblock -%}
+                                {% endblock %}
+
                                 {% block bundleProductItem %}
                                     {% embed molecule('configured-bundle-product', 'ConfigurableBundleWidget') ignore missing with {
                                         data: {
@@ -89,34 +101,104 @@
                                             itemForms: embed.itemForms,
                                         },
                                     } only %}
+                                        {% block generalInformation %}
+                                            <div class="{{ config.name }}__general-information col col--sm-12 col--lg-6">
+                                                {% block name -%}
+                                                    {{ parent() }}
+                                                {%- endblock %}
+
+                                                {% block sku -%}
+                                                    {{ parent() }}
+                                                {%- endblock %}
+                                            </div>
+                                        {% endblock %}
+
+                                        {% block priceInformation %}
+                                            <div class="{{ config.name }}__container col col--sm-12 col--lg-6">
+                                                {% block priceInformationInner %}
+                                                    {{ parent() }}
+                                                {%- endblock %}
+                                        {%- endblock %}
+
+                                        {% block priceCol %}
+                                            <div class="col col--sm-12 col--lg-6">
+                                                {% block price %}
+                                                    {{ parent() }}
+                                                {% endblock %}
+                                            </div>
+                                        {% endblock %}
+
+                                        {%- block priceValue -%}
+                                            {% for itemForm in embed.itemForms if data.product.groupKey == itemForm.vars.value.groupKey %}
+                                                {% set priceModeGross = 'GROSS_MODE' %}
+                                                {% set cartItem = itemForm.vars.value %}
+                                                {% set originUnitPrice = (data.priceMode == priceModeGross) ? cartItem.originUnitGrossPrice : cartItem.originUnitNetPrice %}
+                                                {% set unitSourcePrice = itemForm.sourceUnitGrossPrice is defined ? itemForm.sourceUnitGrossPrice.vars.value : null %}
+                                                {% set unitSourcePrice = itemForm.sourceUnitNetPrice is defined ? itemForm.sourceUnitNetPrice.vars.value : unitSourcePrice %}
+
+                                                {% embed molecule('source-price-form', 'QuoteRequestAgentPage') with {
+                                                    data: {
+                                                        priceField: itemForm,
+                                                        currentItemPrice: cartItem.unitPrice | money(true, data.currencyIsoCode),
+                                                        originItemPrice: originUnitPrice | money(true, data.currencyIsoCode),
+                                                        checkboxName: 'use_default_price',
+                                                        checkboxValue: 1,
+                                                        isChecked: unitSourcePrice == null,
+                                                        checkboxLabel: 'quote_request_page.quote_request.use_default_price' | trans,
+                                                    },
+                                                    attributes: {
+                                                        price: unitSourcePrice,
+                                                    },
+                                                } only %}
+                                                    {% block body %}
+                                                        <div class="grid grid--middle grid--justify spacing-bottom">
+                                                            {% block adjustedPriceColumn %}
+                                                                {{ parent() }}
+                                                            {% endblock %}
+
+                                                            {% block priceColumn %}
+                                                                <div class="col col--sm-6 text-center">
+                                                                    {% block priceColumnInner %}
+                                                                        {{ parent() }}
+                                                                    {% endblock %}
+                                                                </div>
+                                                            {% endblock %}
+                                                        </div>
+                                                        <div class="grid grid--gap">
+                                                            <div class="col col--sm-12">
+                                                                {% include atom('checkbox') with {
+                                                                    class: config.jsName ~ '__checkbox-container',
+                                                                    attributes: {
+                                                                        name: data.checkboxName,
+                                                                        value: data.checkboxValue,
+                                                                        checked: data.isChecked,
+                                                                        disabled: data.priceField.vars.disabled,
+                                                                    },
+                                                                    data: {
+                                                                        label: data.checkboxLabel,
+                                                                    },
+                                                                } only %}
+                                                            </div>
+                                                        </div>
+                                                    {% endblock %}
+
+                                                    {% block adjustedPriceText %}
+                                                        <s class="{{ config.jsName }}__origin-price {{ data.currentItemPrice == data.originItemPrice ? 'is-hidden' }} text-secondary">
+                                                            {{ data.originItemPrice }}
+                                                        </s>
+                                                    {% endblock %}
+
+                                                    {% block priceText %}
+                                                        <strong class="{{ config.jsName }}__price">{{ data.currentItemPrice }}</strong>
+                                                    {% endblock %}
+                                                {% endembed %}
+                                            {% endfor %}
+                                        {%- endblock %}
+
                                         {% block quantityCol %}
-                                            <div class="{{ config.name }}__col col col--sm-4 col--lg-3">
+                                            <div class="{{ config.name }}__inner-section {{ config.name }}__inner-section--text-right {{ config.name }}__inner-section--text-light col col--sm-12 col--lg-2">
                                                 {% block quantity %}
                                                     {{ parent() }}
-
-                                                    {% for itemForm in embed.itemForms if data.product.groupKey == itemForm.vars.value.groupKey %}
-                                                        {% set priceModeGross = 'GROSS_MODE' %}
-                                                        {% set cartItem = itemForm.vars.value %}
-                                                        {% set originUnitPrice = (data.priceMode == priceModeGross) ? cartItem.originUnitGrossPrice : cartItem.originUnitNetPrice %}
-                                                        {% set unitSourcePrice = itemForm.sourceUnitGrossPrice is defined ? itemForm.sourceUnitGrossPrice.vars.value : null %}
-                                                        {% set unitSourcePrice = itemForm.sourceUnitNetPrice is defined ? itemForm.sourceUnitNetPrice.vars.value : unitSourcePrice %}
-
-                                                        {% include molecule('source-price-form', 'QuoteRequestAgentPage') with {
-                                                            data: {
-                                                                priceField: itemForm,
-                                                                currentItemPrice: cartItem.unitPrice | money(true, data.currencyIsoCode),
-                                                                originItemPrice: originUnitPrice | money(true, data.currencyIsoCode),
-                                                                checkboxName: 'use_default_price',
-                                                                checkboxValue: 1,
-                                                                isChecked: unitSourcePrice == null,
-                                                                checkboxLabel: 'quote_request_page.quote_request.use_default_price' | trans,
-                                                            },
-                                                            attributes: {
-                                                                price: unitSourcePrice,
-                                                            },
-                                                        } only %}
-                                                    {% endfor %}
-
                                                 {% endblock %}
                                             </div>
                                         {% endblock %}
