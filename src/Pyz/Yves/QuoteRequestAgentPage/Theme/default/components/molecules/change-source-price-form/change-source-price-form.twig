@@ -29,7 +29,9 @@
 {% endblock %}
 
 {% block adjustedPriceText %}
-    <s class="{{ config.jsName }}__origin-price {{ data.currentItemPrice == data.originItemPrice ? 'is-hidden' }} text-secondary">
+    {% set isSamePrice = data.currentItemPrice == data.originItemPrice %}
+    {% set hiddenClass = isSamePrice ? 'is-hidden' %}
+    <s class="{{ config.jsName }}__origin-price text-secondary {{ hiddenClass }}">
         {{ data.originItemPrice }}
     </s>
 {% endblock %}
