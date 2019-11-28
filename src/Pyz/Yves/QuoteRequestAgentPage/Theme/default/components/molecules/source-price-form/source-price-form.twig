@@ -39,13 +39,10 @@
             <div class="col col--sm-6">
                 {% block priceColumnInner %}
                     {{ form_row(data.priceField, {'attr': {'class': config.jsName ~ '__input-container is-hidden'}}) }}
-                    {% if data.currentItemPrice != data.originItemPrice %}
-                        <strong class="{{ config.jsName }}__price is-hidden text-big">{{ data.originItemPrice }}</strong>
-                    {% else %}
-                        {% block priceText %}
-                            <strong class="{{ config.jsName }}__price text-big">{{ data.currentItemPrice }}</strong>
-                        {% endblock %}
-                    {% endif %}
+                    {% set isSamePrice = data.currentItemPrice != data.originItemPrice %}
+                    {% set hiddenClass = isSamePrice ? 'is-hidden' %}
+                    {% set price = isSamePrice ? data.originItemPrice : data.currentItemPrice %}
+                    <strong class="{{ config.jsName }}__price text-big {{ hiddenClass }}">{{ price }}</strong>
                 {% endblock %}
             </div>
         {% endblock %}

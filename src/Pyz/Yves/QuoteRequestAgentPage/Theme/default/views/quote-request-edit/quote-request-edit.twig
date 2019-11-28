@@ -35,7 +35,6 @@
 {% block contentClass %}page-layout-main--request-for-quote{% endblock %}
 
 {% block content %}
-
     {{ form_start(data.quoteRequestForm) }}
 
         <div class="grid grid--gap">
@@ -47,7 +46,7 @@
                 },
                 embed: {
                     quoteRequestForm: data.quoteRequestForm,
-                }
+                },
             } only %}
                 {% block formContent %}
                     {% for child in data.version.metadata %}
@@ -80,16 +79,6 @@
                                 },
                             } only %}
                                 {% block bundleQuantity %}{% endblock %}
-
-                                {% block bundleTotalInner %}
-                                    {%- block bundleTotalTitle -%}
-                                        {{ parent() }}
-                                    {%- endblock %}
-
-                                    {% block bundleTotalValue -%}
-                                        {{ parent() }}
-                                    {%- endblock -%}
-                                {% endblock %}
 
                                 {% block bundleProductItem %}
                                     {% embed molecule('configured-bundle-product', 'ConfigurableBundleWidget') ignore missing with {
