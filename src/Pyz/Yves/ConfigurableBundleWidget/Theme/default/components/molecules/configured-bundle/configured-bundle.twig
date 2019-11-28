@@ -40,7 +40,11 @@
     </div>
 {% endblock %}
 
-{% block bundleTotalTitle %}{% endblock %}
+{%- block bundleTotalInner -%}
+    {% block bundleTotalValue -%}
+        {{ parent() }}
+    {%- endblock -%}
+{%- endblock -%}
 
 {% block bundleActionsInner %}
     {% set bundleActionClassName = 'link link--icon float-right spacing-x spacing-x--big' %}

@@ -24,7 +24,8 @@
                 text-align: center;
             }
 
-            &:last-child {
+            &:last-child,
+            &--text-right {
                 @include helper-breakpoint-media-min($lg) {
                     text-align: right;
                 }
@@ -38,6 +39,10 @@
             &--text-light {
                 color: $setting-color-gray-3;
             }
+        }
+
+        &__general-information {
+            padding-right: rem(50);
         }
 
         &__text {
