@@ -42,25 +42,29 @@
                     {% set isSamePrice = data.currentItemPrice != data.originItemPrice %}
                     {% set hiddenClass = isSamePrice ? 'is-hidden' %}
                     {% set price = isSamePrice ? data.originItemPrice : data.currentItemPrice %}
-                    <strong class="{{ config.jsName }}__price text-big {{ hiddenClass }}">{{ price }}</strong>
+                    {% block price %}
+                        <strong class="{{ config.jsName }}__price text-big {{ hiddenClass }}">{{ price }}</strong>
+                    {% endblock %}
                 {% endblock %}
             </div>
         {% endblock %}
     </div>
-    <div class="grid grid--gap">
-        <div class="col col--sm-12">
-            {% include atom('checkbox') with {
-                class: config.jsName ~ '__checkbox-container',
-                attributes: {
-                    name: data.checkboxName,
-                    value: data.checkboxValue,
-                    checked: data.isChecked,
-                    disabled: data.priceField.vars.disabled,
-                },
-                data: {
-                    label: data.checkboxLabel,
-                },
-            } only %}
+    {% block form %}
+        <div class="grid grid--gap">
+            <div class="col col--sm-12">
+                {% include atom('checkbox') with {
+                    class: config.jsName ~ '__checkbox-container',
+                    attributes: {
+                        name: data.checkboxName,
+                        value: data.checkboxValue,
+                        checked: data.isChecked,
+                        disabled: data.priceField.vars.disabled,
+                    },
+                    data: {
+                        label: data.checkboxLabel,
+                    },
+                } only %}
+            </div>
         </div>
-    </div>
+    {% endblock %}
 {% endblock %}

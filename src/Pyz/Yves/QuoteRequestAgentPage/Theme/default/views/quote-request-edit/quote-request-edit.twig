@@ -126,7 +126,7 @@
                                                 {% set unitSourcePrice = itemForm.sourceUnitGrossPrice is defined ? itemForm.sourceUnitGrossPrice.vars.value : null %}
                                                 {% set unitSourcePrice = itemForm.sourceUnitNetPrice is defined ? itemForm.sourceUnitNetPrice.vars.value : unitSourcePrice %}
 
-                                                {% embed molecule('source-price-form', 'QuoteRequestAgentPage') with {
+                                                {% include molecule('change-source-price-form', 'QuoteRequestAgentPage') with {
                                                     data: {
                                                         priceField: itemForm,
                                                         currentItemPrice: cartItem.unitPrice | money(true, data.currencyIsoCode),
@@ -140,48 +140,6 @@
                                                         price: unitSourcePrice,
                                                     },
                                                 } only %}
-                                                    {% block body %}
-                                                        <div class="grid grid--middle grid--justify spacing-bottom">
-                                                            {% block adjustedPriceColumn %}
-                                                                {{ parent() }}
-                                                            {% endblock %}
-
-                                                            {% block priceColumn %}
-                                                                <div class="col col--sm-6 text-center">
-                                                                    {% block priceColumnInner %}
-                                                                        {{ parent() }}
-                                                                    {% endblock %}
-                                                                </div>
-                                                            {% endblock %}
-                                                        </div>
-                                                        <div class="grid grid--gap">
-                                                            <div class="col col--sm-12">
-                                                                {% include atom('checkbox') with {
-                                                                    class: config.jsName ~ '__checkbox-container',
-                                                                    attributes: {
-                                                                        name: data.checkboxName,
-                                                                        value: data.checkboxValue,
-                                                                        checked: data.isChecked,
-                                                                        disabled: data.priceField.vars.disabled,
-                                                                    },
-                                                                    data: {
-                                                                        label: data.checkboxLabel,
-                                                                    },
-                                                                } only %}
-                                                            </div>
-                                                        </div>
-                                                    {% endblock %}
-
-                                                    {% block adjustedPriceText %}
-                                                        <s class="{{ config.jsName }}__origin-price {{ data.currentItemPrice == data.originItemPrice ? 'is-hidden' }} text-secondary">
-                                                            {{ data.originItemPrice }}
-                                                        </s>
-                                                    {% endblock %}
-
-                                                    {% block priceText %}
-                                                        <strong class="{{ config.jsName }}__price">{{ data.currentItemPrice }}</strong>
-                                                    {% endblock %}
-                                                {% endembed %}
                                             {% endfor %}
                                         {%- endblock %}
 
