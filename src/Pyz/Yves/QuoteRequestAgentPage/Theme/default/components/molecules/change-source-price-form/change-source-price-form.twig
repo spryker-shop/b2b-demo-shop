@@ -28,6 +28,12 @@
     <strong class="{{ config.jsName }}__price {{ hiddenClass }}">{{ price }}</strong>
 {% endblock %}
 
+{% block adjustedPriceTextInner %}
+    {% set priceClasses = config.jsName ~ '__origin-price text-secondary ' ~ hiddenClass %}
+
+    {{ parent() }}
+{% endblock %}
+
 {% block adjustedPriceText %}
     {% set isSamePrice = data.currentItemPrice == data.originItemPrice %}
     {% set hiddenClass = isSamePrice ? 'is-hidden' %}
