@@ -39,8 +39,7 @@
     </div>
     <div class="grid grid--gap">
         <div class="col col--sm-12">
-            {% include atom('checkbox') with {
-                class: config.jsName ~ '__checkbox-container',
+            {% embed atom('checkbox') with {
                 attributes: {
                     name: data.checkboxName,
                     value: data.checkboxValue,
@@ -50,7 +49,12 @@
                 data: {
                     label: data.checkboxLabel,
                 },
+                embed: {
+                    inputClass: config.jsName ~ '__checkbox-container',
+                },
             } only %}
+                {% block inputClass %}{{ embed.inputClass }}{% endblock %}
+            {% endembed %}
         </div>
     </div>
 {% endblock %}
