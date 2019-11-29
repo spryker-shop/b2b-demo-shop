@@ -75,8 +75,6 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
     protected function getExpanderPlugins(Container $container)
     {
         return [
-            new ProductPackagingUnitItemExpanderPlugin(), #ProductPackagingUnit
-            new CheckAvailabilityPlugin(),
             new ProductCartPlugin(),
             new ProductUrlCartPlugin(),
             new IsQuantitySplittableItemExpanderPlugin(),
@@ -95,6 +93,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new QuantitySalesUnitItemExpanderPlugin(),
             new AmountGroupKeyItemExpanderPlugin(), #ProductPackagingUnit
             new AmountSalesUnitItemExpanderPlugin(), #ProductPackagingUnit
+            new ProductPackagingUnitItemExpanderPlugin(), #ProductPackagingUnit
             new CustomAmountPriceItemExpanderPlugin(), #ProductPackagingUnit
         ];
     }
@@ -132,6 +131,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new ProductDiscontinuedCartPreCheckPlugin(), #ProductDiscontinuedFeature
             new AmountAvailabilityCartPreCheckPlugin(), #ProductPackagingUnit
             new AmountRestrictionCartPreCheckPlugin(), #ProductPackagingUnit
+            new CheckAvailabilityPlugin(),
         ];
     }
 
