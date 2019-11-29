@@ -167,8 +167,6 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
     protected function getDataImporterPlugins(): array
     {
         return [
-            new StockDataImportPlugin(),
-            new StockStoreDataImportPlugin(),
             [new CategoryDataImportPlugin(), DataImportConfig::IMPORT_TYPE_CATEGORY_TEMPLATE],
             new CmsPageDataImportPlugin(),
             new CmsPageStoreDataImportPlugin(),
@@ -221,6 +219,8 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
             new ShipmentDataImportPlugin(),
             new ShipmentMethodPriceDataImportPlugin(),
             new ShipmentMethodStoreDataImportPlugin(),
+            new StockDataImportPlugin(),
+            new StockStoreDataImportPlugin(),
         ];
     }
 
