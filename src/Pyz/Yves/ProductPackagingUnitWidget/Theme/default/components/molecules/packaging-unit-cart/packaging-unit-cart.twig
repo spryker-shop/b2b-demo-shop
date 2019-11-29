@@ -1,25 +1,9 @@
-{% extends model('component') %}
-
-{% define config = {
-    name: 'packaging-unit-cart',
-    tag: 'ul'
-} %}
-
-{% define data = {
-    amount: required,
-    quantity: required,
-    quantitySalesUnit: required,
-    quantityConversion: required,
-    quantityProductMeasurementUnit: required,
-    amountSalesUnit: required,
-    amountConversion: required,
-    amountProductMeasurementUnit: required
-} %}
+{% extends molecule('packaging-unit-cart', '@SprykerShop:ProductPackagingUnitWidget') %}
 
 {% block body %}
-    {% set salesUnitName = data.quantityProductMeasurementUnit.name | default('') %}
-    {% set leadSalesUnitName = data.amountProductMeasurementUnit.name | default('') %}
-    {% set amountPerQuantity = data.amount / data.quantity %}
+    {% set salesUnitName = data.quantityProductMeasurementUnit.name | default %}
+    {% set leadSalesUnitName = data.amountProductMeasurementUnit.name | default %}
+    {% set amountPerQuantity = data.amount.divide(data.quantity, data.countOfDecimalsInAmount).trim %}
 
     <li class="{{ config.name }}__item">
         <div class="grid grid--middle grid--gap">
@@ -28,21 +12,23 @@
                 {% include molecule('quantity-counter') with {
                     modifiers: ['cart'],
                     data: {
-                        isDisabled: true
+                        isDisabled: true,
                     },
                     attributes: {
-                        value: data.quantity
-                    }
+                        value: data.quantity,
+                    },
                 } only %}
             </div>
-            {% include atom('quantity-option') with {
-                class: 'col col--sm-12 col--md-auto',
-                data: {
-                    value: data.quantity,
-                    precision: data.quantityConversion,
-                    optionName: salesUnitName | trans
-                }
-            } only %}
+            {% if data.quantityConversion is not empty %}
+                {% include atom('quantity-option') with {
+                    class: 'col col--sm-12 col--md-auto',
+                    data: {
+                        value: data.quantity,
+                        precision: data.quantityConversion,
+                        optionName: salesUnitName | trans,
+                    },
+                } only %}
+            {% endif %}
         </div>
     </li>
     <li class="{{ config.name }}__item">
@@ -52,21 +38,23 @@
                 {% include molecule('quantity-counter') with {
                     modifiers: ['cart'],
                     data: {
-                        isDisabled: true
+                        isDisabled: true,
                     },
                     attributes: {
-                        value: data.amount
-                    }
+                        value: data.amount,
+                    },
                 } only %}
             </div>
-            {% include atom('quantity-option') with {
-                class: 'col col--sm-12 col--md-auto',
-                data: {
-                    value: amountPerQuantity,
-                    precision: data.amountConversion,
-                    optionName: leadSalesUnitName | trans
-                }
-            } only %}
+            {% if data.amountConversion is not empty %}
+                {% include atom('quantity-option') with {
+                    class: 'col col--sm-12 col--md-auto',
+                    data: {
+                        value: amountPerQuantity,
+                        precision: data.amountConversion,
+                        optionName: leadSalesUnitName | trans,
+                    },
+                } only %}
+            {% endif %}
         </div>
     </li>
 {% endblock body %}
