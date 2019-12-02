@@ -128,8 +128,8 @@
                         },
                     } only %}
 
-                    <input id="default-amount" type="hidden" value="{{ data.productPackagingUnit.defaultAmount }}" data-default-amount="{{ defaultAmount }}">
-                    <input id="amount" type="hidden" value="{{ data.productPackagingUnit.defaultAmount }}" name="amount[{{ data.product.sku }}]">
+                    <input id="default-amount" type="hidden" value="{{ defaultAmount }}" data-default-amount="{{ defaultAmount }}">
+                    <input id="amount" type="hidden" value="{{ defaultAmount }}" name="amount[{{ data.product.sku }}]">
                 </div>
             </div>
 
@@ -167,7 +167,6 @@
             {% endif %}
         </div>
     {% endif %}
-
 
     {% if data.salesUnitCount %}
         {% include molecule('packaging-unit-quantity-selector', 'ProductPackagingUnitWidget') with {
