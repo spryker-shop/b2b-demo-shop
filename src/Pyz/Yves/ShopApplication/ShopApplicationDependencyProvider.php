@@ -13,10 +13,16 @@ use Pyz\Yves\CustomerFullNameWidget\Widget\CustomerFullNameWidget;
 use Pyz\Yves\ExampleProductColorGroupWidget\Widget\ExampleProductColorSelectorWidget;
 use Pyz\Yves\ProductSetWidget\Widget\ProductSetIdsWidget;
 use Spryker\Yves\EventDispatcher\Plugin\Application\EventDispatcherApplicationPlugin;
+use Spryker\Yves\Form\Plugin\Application\FormApplicationPlugin;
+use Spryker\Yves\Http\Plugin\Application\HttpApplicationPlugin;
 use Spryker\Yves\Locale\Plugin\Application\LocaleApplicationPlugin;
+use Spryker\Yves\Messenger\Plugin\Application\FlashMessengerApplicationPlugin;
 use Spryker\Yves\Router\Plugin\Application\RouterApplicationPlugin;
+use Spryker\Yves\Session\Plugin\Application\SessionApplicationPlugin;
 use Spryker\Yves\Store\Plugin\Application\StoreApplicationPlugin;
+use Spryker\Yves\Translator\Plugin\Application\TranslatorApplicationPlugin;
 use Spryker\Yves\Twig\Plugin\Application\TwigApplicationPlugin;
+use Spryker\Yves\Validator\Plugin\Application\ValidatorApplicationPlugin;
 use SprykerShop\Yves\AgentWidget\Widget\AgentControlBarWidget;
 use SprykerShop\Yves\AvailabilityNotificationWidget\Widget\AvailabilityNotificationSubscriptionWidget;
 use SprykerShop\Yves\BusinessOnBehalfWidget\Widget\BusinessOnBehalfStatusWidget;
@@ -108,6 +114,7 @@ use SprykerShop\Yves\ShoppingListWidget\Widget\ShoppingListMenuItemWidget;
 use SprykerShop\Yves\ShoppingListWidget\Widget\ShoppingListNavigationMenuWidget;
 use SprykerShop\Yves\ShoppingListWidget\Widget\ShoppingListSubtotalWidget;
 use SprykerShop\Yves\TabsWidget\Widget\FullTextSearchTabsWidget;
+use SprykerShop\Yves\WebProfilerWidget\Plugin\Application\WebProfilerApplicationPlugin;
 
 class ShopApplicationDependencyProvider extends SprykerShopApplicationDependencyProvider
 {
@@ -234,7 +241,14 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             new ShopApplicationApplicationPlugin(),
             new StoreApplicationPlugin(),
             new LocaleApplicationPlugin(),
+            new TranslatorApplicationPlugin(),
+            new HttpApplicationPlugin(),
             new RouterApplicationPlugin(),
+            new SessionApplicationPlugin(),
+            new WebProfilerApplicationPlugin(),
+            new FlashMessengerApplicationPlugin(),
+            new FormApplicationPlugin(),
+            new ValidatorApplicationPlugin(),
         ];
     }
 }
