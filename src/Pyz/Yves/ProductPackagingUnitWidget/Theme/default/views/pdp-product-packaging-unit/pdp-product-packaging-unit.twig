@@ -13,15 +13,17 @@
             <div class="col measurement-unit">
                 <div class="measurement-unit__label">{{ 'packaging_units.pdp.quantity' | trans }}:</div>
                 <div class="measurement-unit__value">
-                    {% include molecule('quantity-counter') with {
+                    {% embed molecule('quantity-counter') with {
                         modifiers: ['right-space', 'medium-width'],
                         attributes: {
                             id: 'sales-unit-quantity',
                             value: data.minQuantityInSalesUnits,
-                            class: 'js-volume-price__quantity',
                             name: 'sales-unit-quantity',
                         },
                     } only %}
+                        {% block inputClass %}js-volume-price__quantity{% endblock %}
+                    {% endembed %}
+
                     <input id="base-unit-quantity" type="hidden" value="{{ data.minQuantityInBaseUnit }}" name="quantity">
                 </div>
             </div>
@@ -44,7 +46,7 @@
 
                             {% block options %}
                                 {% for salesUnit in embed.salesUnits %}
-                                    <option value="{{ salesUnit.idProductMeasurementSalesUnit }}" {{ (salesUnit.isDefault) ? 'selected' : '' }}>{{ salesUnit.productMeasurementUnit.name | trans }}</option>
+                                    <option value="{{ salesUnit.idProductMeasurementSalesUnit }}" {{ (salesUnit.isDefault) ? 'selected' }}>{{ salesUnit.productMeasurementUnit.name | trans }}</option>
                                 {% endfor %}
                             {% endblock %}
                         {% endembed %}
@@ -64,10 +66,11 @@
     {% if not data.salesUnitCount %}
         <div class="grid grid--stretch grid--justify">
             {% embed molecule('quantity-counter') with {
-                modifiers: ['right-space', 'medium-width'],
+                modifiers: ['right-space'],
             } only %}
                 {% block inputClass %}js-volume-price__quantity{% endblock %}
             {% endembed %}
+
             <div class="col col--expand">
                 <button type="submit" id="add-to-cart-button" class="button button--alternative button--big button--expand button--no-horizontal-padding"
                         data-init-single-click {{ data.isAddToCartDisabled ? 'disabled' }} {{ qa('add-to-cart-button') }}>
@@ -109,9 +112,7 @@
 
         <div class="grid grid--middle {{ (data.salesUnitCount and data.leadProductSalesUnits | length > 1) ? 'grid--justify' }}">
             <div class="col measurement-unit">
-                <div class="measurement-unit__label">
-                    {{ 'packaging_units.pdp.amount' | trans }}:
-                </div>
+                <div class="measurement-unit__label">{{ 'packaging_units.pdp.amount' | trans }}:</div>
                 <div class="measurement-unit__value">
                     {% include molecule('quantity-counter') with {
                         modifiers: ['right-space', 'medium-width'],
@@ -134,7 +135,7 @@
             </div>
 
             {% if data.salesUnitCount and data.leadProductSalesUnits | length > 1 %}
-                <div class="col col--sm-12 col--md-auto col--lg-12 col--xl-auto measurement-unit">
+                <div class="col col--sm-12 col--md-auto col--lg-12 col--xxl-auto measurement-unit">
                     <div class="measurement-unit__label">{{ 'packaging_units.pdp.sales-units' | trans }}:</div>
                     <div class="measurement-unit__value">
                         {% embed molecule('custom-select') with {
@@ -214,5 +215,5 @@
         {% set translations = translations | merge({ (salesUnit.productMeasurementUnit.code) : (salesUnit.productMeasurementUnit.name | trans) }) %}
     {% endfor %}
 
-    <script type="application/json" id="measurement-unit-translation">{{ translations| json_encode | raw }}</script>
+    <script type="application/json" id="measurement-unit-translation">{{ translations | json_encode | raw }}</script>
 {% endblock %}
