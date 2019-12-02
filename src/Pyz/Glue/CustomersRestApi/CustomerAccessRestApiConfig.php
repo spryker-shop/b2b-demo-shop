@@ -11,7 +11,6 @@ use Pyz\Glue\CheckoutRestApi\CheckoutRestApiConfig;
 use Spryker\Glue\CartsRestApi\CartsRestApiConfig;
 use Spryker\Glue\CustomerAccessRestApi\CustomerAccessRestApiConfig as SprykerCustomerAccessRestApiConfig;
 use Spryker\Glue\ProductPricesRestApi\ProductPricesRestApiConfig;
-use Spryker\Glue\WishlistsRestApi\WishlistsRestApiConfig;
 use Spryker\Shared\CustomerAccess\CustomerAccessConfig;
 
 class CustomerAccessRestApiConfig extends SprykerCustomerAccessRestApiConfig
@@ -27,10 +26,6 @@ class CustomerAccessRestApiConfig extends SprykerCustomerAccessRestApiConfig
         ],
         CustomerAccessConfig::CONTENT_TYPE_ADD_TO_CART => [
             CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
-        ],
-        CustomerAccessConfig::CONTENT_TYPE_WISHLIST => [
-            WishlistsRestApiConfig::RESOURCE_WISHLISTS,
-            WishlistsRestApiConfig::RESOURCE_WISHLIST_ITEMS,
         ],
     ];
 }
