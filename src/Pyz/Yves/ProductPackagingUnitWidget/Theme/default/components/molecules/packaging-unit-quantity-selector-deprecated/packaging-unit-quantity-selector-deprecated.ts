@@ -4,7 +4,7 @@
 /* tslint:disable */
 import Component from 'ShopUi/models/component';
 
-export default class PackagingUnitQuantitySelector extends Component {
+export default class PackagingUnitQuantitySelectorDeprecated extends Component {
     protected qtyInSalesUnitInput: HTMLInputElement;
     protected qtyInBaseUnitInput: HTMLInputElement;
     protected measurementUnitInput: HTMLSelectElement;

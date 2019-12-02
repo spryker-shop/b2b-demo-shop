@@ -81,14 +81,14 @@
                                 {% endblock %}
 
                                 {% block packagingUnitCart %}
-                                    {% if quantitySalesUnit is not empty and amountSalesUnit is not empty %}
+                                    {% if amountSalesUnit is not empty %}
                                         {% include molecule('packaging-unit-cart', 'ProductPackagingUnitWidget') with {
                                             data: {
                                                 amount: data.listItem.amount,
                                                 quantity: data.listItem.quantity,
                                                 quantitySalesUnit: data.listItem.quantitySalesUnit,
-                                                quantityConversion: data.listItem.quantitySalesUnit.conversion,
-                                                quantityProductMeasurementUnit: data.listItem.quantitySalesUnit.productMeasurementUnit,
+                                                quantityConversion: data.listItem.quantitySalesUnit.conversion | default(null),
+                                                quantityProductMeasurementUnit: data.listItem.quantitySalesUnit.productMeasurementUnit | default(null),
                                                 amountSalesUnit: data.listItem.amountSalesUnit,
                                                 amountConversion: data.listItem.amountSalesUnit.conversion,
                                                 amountProductMeasurementUnit: data.listItem.amountSalesUnit.productMeasurementUnit,
