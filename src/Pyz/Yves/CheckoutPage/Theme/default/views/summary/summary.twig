@@ -2,6 +2,7 @@
 
 {% define data = {
     stepNumder: 4,
+    countOfDecimalsInAmount: 10,
 } %}
 
 {% block content %}
@@ -25,6 +26,9 @@
                             quantity: item.quantity,
                             priceModifiers: ['medium', 'block', 'margin-bottom-from-tablet'],
                         },
+                        embed: {
+                            countOfDecimalsInAmount: data.countOfDecimalsInAmount,
+                        },
                     } only %}
                         {% block image %}
                             {% set imageUrl = data.listItem.images is not empty ? data.listItem.images[0].externalUrlLarge : null %}
@@ -45,7 +49,7 @@
                         {% block subQuantity %}
                             {% set salesUnitName = data.listItem.quantitySalesUnit.productMeasurementUnit.name | default %}
 
-                            {% if salesUnitName is not empty and data.listItem.amount == 0 %}
+                            {% if salesUnitName is not empty and data.listItem.amount is empty %}
                                 {% include atom('quantity-option') with {
                                     class: 'col col--sm-12 col--md-auto',
                                     data: {
@@ -56,17 +60,24 @@
                                 } only %}
                             {% endif %}
 
-                            {% if data.listItem.amount != 0 %}
+                            {% if data.listItem.amount is not empty %}
                                 {% set amountSalesUnitName = data.listItem.amountSalesUnit.productMeasurementUnit.name | default %}
 
-                                {% include atom('quantity-option') with {
+                                {% embed atom('quantity-option') with {
                                     class: 'col col--sm-12 col--md-auto',
                                     data: {
                                         value: data.listItem.amount,
                                         precision: data.listItem.quantity,
                                         optionName: amountSalesUnitName | trans,
                                     },
+                                    embed: {
+                                        countOfDecimalsInAmount: embed.countOfDecimalsInAmount,
+                                    },
                                 } only %}
+                                    {% block body %}
+                                        {{ data.value.divide(data.precision, embed.countOfDecimalsInAmount).trim }} {{ data.optionName }}
+                                    {% endblock %}
+                                {% endembed %}
                             {% endif %}
                         {% endblock %}
 
