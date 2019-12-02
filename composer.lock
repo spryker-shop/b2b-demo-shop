@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0afff6ad9d18e94dc756e330f70a4cb1",
+    "content-hash": "dde9a3475a4da8b8cd3b8d0b37df984a",
     "packages": [
         {
             "name": "codeception/phpunit-wrapper",
@@ -19014,6 +19014,50 @@
                 "proprietary"
             ],
             "description": "CustomerAccessPermission module",
+            "time": "2019-10-14T10:22:10+00:00"
+        },
+        {
+            "name": "spryker/customer-access-rest-api",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/customer-access-rest-api.git",
+                "reference": "2e868ff396dbb8a649e2eb8d2c232b1bc6bf8797"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/customer-access-rest-api/zipball/2e868ff396dbb8a649e2eb8d2c232b1bc6bf8797",
+                "reference": "2e868ff396dbb8a649e2eb8d2c232b1bc6bf8797",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/customer-access-storage": "^1.0.0",
+                "spryker/glue-application": "^1.9.0",
+                "spryker/glue-application-extension": "^1.1.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/symfony": "^3.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CustomerAccessRestApi module",
             "time": "2019-10-14T10:22:10+00:00"
         },
         {
@@ -38984,7 +39028,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "? Nette NEON: encodes and decodes NEON file format.",
+            "description": "🍸 Nette NEON: encodes and decodes NEON file format.",
             "homepage": "http://ne-on.org",
             "keywords": [
                 "export",
@@ -41403,7 +41447,7 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=7.1",
+        "php": ">=7.2",
         "ext-bcmath": "*",
         "ext-curl": "*",
         "ext-gd": "*",
@@ -41417,6 +41461,6 @@
     },
     "platform-dev": [],
     "platform-overrides": {
-        "php": "7.1.11"
+        "php": "7.2.15"
     }
 }
