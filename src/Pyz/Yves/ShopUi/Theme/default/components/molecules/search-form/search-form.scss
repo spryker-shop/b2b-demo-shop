@@ -8,6 +8,28 @@
         width: 100%;
         transform: translateY(-100%);
 
+        &--main-search {
+            z-index: $setting-zi-header + 1;
+
+            @include helper-breakpoint-media-min($lg) {
+                @include helper-visibility-visible;
+                display: block;
+                position: relative;
+                transform: none;
+                transition: none;
+                z-index: $setting-zi-element;
+            }
+
+            .body-overlay--no-search & {
+                z-index: $setting-zi-search-suggestions;
+            }
+        }
+
+        &--active {
+            @include helper-visibility-visible;
+            transform: translateY(0);
+        }
+
         &__button {
             position: absolute;
             top: 0;
