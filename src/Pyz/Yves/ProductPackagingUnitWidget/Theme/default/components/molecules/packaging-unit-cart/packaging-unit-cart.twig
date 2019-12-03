@@ -9,7 +9,7 @@
 {% block body %}
     {% set amountPerQuantity = data.amount.divide(data.quantity, data.countOfDecimalsInAmount).trim %}
 
-    {% if data.quantity %}
+    {% if data.quantity is not empty %}
         <li class="spacing-top">
             {{ 'packaging_units.cart.quantity' | trans }}: {{ data.quantity }}
 
@@ -50,7 +50,7 @@
         </li>
     {% endif %}
 
-    {% if data.amount %}
+    {% if data.amount is not empty %}
         <li class="spacing-top">
             {{ 'packaging_units.cart.amount' | trans }}: {{ data.hasAmountPerQuantity ? amountPerQuantity : data.amount }}
         </li>
