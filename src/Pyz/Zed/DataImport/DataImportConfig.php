@@ -48,7 +48,6 @@ class DataImportConfig extends SprykerDataImportConfig
     public const IMPORT_TYPE_DISCOUNT_VOUCHER = 'discount-voucher';
     public const IMPORT_TYPE_SHIPMENT = 'shipment';
     public const IMPORT_TYPE_SHIPMENT_PRICE = 'shipment-price';
-    public const IMPORT_TYPE_STOCK = 'stock';
     public const IMPORT_TYPE_TAX = 'tax';
     public const IMPORT_TYPE_CURRENCY = 'currency';
     public const IMPORT_TYPE_STORE = 'store';
@@ -115,14 +114,6 @@ class DataImportConfig extends SprykerDataImportConfig
     public function getProductStockDataImporterConfiguration()
     {
         return $this->buildImporterConfiguration('product_stock.csv', static::IMPORT_TYPE_PRODUCT_STOCK);
-    }
-
-    /**
-     * @return \Generated\Shared\Transfer\DataImporterConfigurationTransfer
-     */
-    public function getStockDataImporterConfiguration()
-    {
-        return $this->buildImporterConfiguration('stock.csv', static::IMPORT_TYPE_STOCK);
     }
 
     /**
