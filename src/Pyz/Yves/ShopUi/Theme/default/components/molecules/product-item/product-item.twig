@@ -17,6 +17,8 @@
     priceModifiers: ['medium'],
     isShoppingList: false,
     currencyIsoCode: null,
+    hasSubQuantity: false,
+    hasAmountPerQuantity: false,
 } %}
 
 {% block body %}
@@ -70,7 +72,7 @@
 
                             {% block productInfo %}
                                 {% block quantityTitle %}
-                                    {% if data.quantity is not empty %}
+                                    {% if data.quantity is not empty and amountSalesUnit is empty %}
                                         <div class="grid grid--middle grid--gap {{ config.name }}__quantity">
                                             <div class="col">
                                                 <span class="{{ config.name }}__quantity-title">{{ 'cart.item_quantity' | trans }}:</span> {{ data.quantity }}
@@ -93,6 +95,8 @@
                                                 amountConversion: data.listItem.amountSalesUnit.conversion,
                                                 amountProductMeasurementUnit: data.listItem.amountSalesUnit.productMeasurementUnit,
                                                 amountValue: data.listItem.amountSalesUnit.value,
+                                                hasSubQuantity: data.hasSubQuantity,
+                                                hasAmountPerQuantity: data.hasAmountPerQuantity,
                                             },
                                         } only %}
                                     {% endif %}
