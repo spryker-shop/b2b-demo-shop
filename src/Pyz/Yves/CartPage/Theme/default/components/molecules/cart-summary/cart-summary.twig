@@ -18,6 +18,12 @@
 {% block body %}
     <div class="{{ config.name }}__wrapper">
         <ul class="list">
+            {% set quoteApprovalWidget = findWidget('QuoteApprovalWidget', [data.cart]) %}
+            {% set isQuoteApprovalWidgetVisible = quoteApprovalWidget and quoteApprovalWidget.isVisible %}
+            {% if isQuoteApprovalWidgetVisible and not canProceedToCheckout %}
+                {% set canProceedToCheckout = true %}
+            {% endif %}
+
             {% block cartSummaryContent %}
                 <li class="list__item">
                     {% include molecule('cart-discount-summary', 'DiscountWidget') ignore missing with {
@@ -56,24 +62,6 @@
             {% endblock %}
         </ul>
     </div>
-
-    {% widget 'QuoteApprovalWidget' args [data.cart] only %}
-        {% block container %}
-            <div class="{{ config.name }}__approve-request">
-                {{ parent() }}
-            </div>
-        {% endblock %}
-    {% endwidget %}
-
-    {% if data.isQuoteValid %}
-        {% widget 'QuoteApproveRequestWidget' args [data.cart] %}
-            {% block container %}
-                <div class="{{ config.name }}__approve-request">
-                    {{ parent() }}
-                </div>
-            {% endblock %}
-        {% endwidget %}
-    {% endif %}
 
     {% if canProceedToCheckout and can('SeeOrderPlaceSubmitPermissionPlugin') %}
         {% widget 'ProceedToCheckoutButtonWidget' args [data.cart] %}

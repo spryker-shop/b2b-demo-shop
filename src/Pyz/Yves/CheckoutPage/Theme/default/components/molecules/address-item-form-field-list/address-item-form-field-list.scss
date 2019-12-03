@@ -1,0 +1,66 @@
+@mixin checkout-page-address-item-form-field-list($name: '.address-item-form-field-list') {
+    #{$name} {
+        &__wrapper {
+            position: relative;
+            margin-bottom: rem(15);
+
+            @include helper-breakpoint-media-min($lg) {
+                margin-bottom: 0;
+            }
+
+            &::after {
+                content: '';
+                position: absolute;
+                left: rem(-20);
+                right: rem(-20);
+                bottom: 0;
+                display: block;
+                height: rem(1);
+                background-color: $setting-color-gray-6;
+
+                @include helper-breakpoint-media-min($lg) {
+                    display: none;
+                }
+            }
+        }
+
+        &__content {
+            margin-bottom: rem(20);
+            padding: rem(10) 0;
+
+            @include helper-breakpoint-media-min($lg) {
+                margin-top: rem(-20);
+                border: rem(2) solid $setting-color-gray-7;
+                border-top: none;
+                border-radius: $setting-border-radius;
+                padding-top: rem(20);
+            }
+
+            &--mobile-background {
+                position: relative;
+
+                &::after {
+                    content: '';
+                    display: block;
+                    position: absolute;
+                    height: 100%;
+                    top: 0;
+                    left: rem(-20);
+                    right: rem(-20);
+                    background-color: $setting-color-alpha-2;
+                    z-index: $setting-zi-substrate;
+                    border-top: rem(1) solid $setting-color-gray-6;
+                    border-bottom: rem(1) solid $setting-color-gray-6;
+
+                    @include helper-breakpoint-media-min($lg) {
+                        display: none;
+                    }
+                }
+            }
+        }
+
+        @content;
+    }
+}
+
+@include checkout-page-address-item-form-field-list();

@@ -14,6 +14,7 @@ use Pyz\Yves\ExampleProductColorGroupWidget\Widget\ExampleProductColorSelectorWi
 use Pyz\Yves\ProductSetWidget\Widget\ProductSetIdsWidget;
 use Spryker\Yves\EventDispatcher\Plugin\Application\EventDispatcherApplicationPlugin;
 use Spryker\Yves\Locale\Plugin\Application\LocaleApplicationPlugin;
+use Spryker\Yves\Router\Plugin\Application\RouterApplicationPlugin;
 use Spryker\Yves\Store\Plugin\Application\StoreApplicationPlugin;
 use Spryker\Yves\Twig\Plugin\Application\TwigApplicationPlugin;
 use SprykerShop\Yves\AgentWidget\Widget\AgentControlBarWidget;
@@ -32,6 +33,7 @@ use SprykerShop\Yves\CompanyWidget\Widget\CompanyBusinessUnitAddressWidget;
 use SprykerShop\Yves\CompanyWidget\Widget\CompanyMenuItemWidget;
 use SprykerShop\Yves\CurrencyWidget\Widget\CurrencyWidget;
 use SprykerShop\Yves\CustomerPage\Widget\CustomerNavigationWidget;
+use SprykerShop\Yves\CustomerReorderWidget\Plugin\CustomerPage\CustomerReorderItemCheckboxWidget;
 use SprykerShop\Yves\DiscountPromotionWidget\Widget\CartDiscountPromotionProductListWidget;
 use SprykerShop\Yves\DiscountWidget\Widget\CheckoutVoucherFormWidget;
 use SprykerShop\Yves\DiscountWidget\Widget\DiscountVoucherFormWidget;
@@ -127,6 +129,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             CartOperationsWidget::class,
             CartProductMeasurementUnitQuantitySelectorWidget::class,
             CatalogPageProductWidget::class,
+            CustomerReorderItemCheckboxWidget::class,
             CheckoutBreadcrumbWidget::class,
             CmsProductGroupWidget::class,
             CmsProductWidget::class,
@@ -221,7 +224,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
     }
 
     /**
-     * @return array
+     * @return \Spryker\Shared\ApplicationExtension\Dependency\Plugin\ApplicationPluginInterface[]
      */
     protected function getApplicationPlugins(): array
     {
@@ -231,6 +234,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             new ShopApplicationApplicationPlugin(),
             new StoreApplicationPlugin(),
             new LocaleApplicationPlugin(),
+            new RouterApplicationPlugin(),
         ];
     }
 }

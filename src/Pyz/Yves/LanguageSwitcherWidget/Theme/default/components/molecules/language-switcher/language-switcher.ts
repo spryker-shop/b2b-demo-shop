@@ -1,14 +1,13 @@
 import Component from 'ShopUi/models/component';
 
 export default class LanguageSwitcher extends Component {
-    readonly selectList: HTMLSelectElement[];
+    protected selectList: HTMLSelectElement[];
 
-    constructor() {
-        super();
-        this.selectList = <HTMLSelectElement[]>Array.from(document.querySelectorAll(`.${this.jsName}`));
-    }
+    protected readyCallback(): void {}
 
-    protected readyCallback(): void {
+    protected init(): void {
+        this.selectList = <HTMLSelectElement[]>Array.from(document.getElementsByClassName(`${this.jsName}`));
+
         this.mapEvents();
     }
 

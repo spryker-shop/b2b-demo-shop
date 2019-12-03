@@ -2,17 +2,17 @@
 
 {% define config = {
     name: 'color-selector',
-    tag: 'color-selector'
+    tag: 'color-selector',
 } %}
 
 {% define data = {
-    items: required
+    items: required,
 } %}
 
 {% define attributes = {
-    'target-image-selector': required,
-    'target-url-selector': '',
-    'active-color-class': config.name ~ '__color--active'
+    'target-image-container-class-name': required,
+    'target-details-link-class-name': '',
+    'active-color-class-name': config.name ~ '__color--active',
 } %}
 
 {% block component %}

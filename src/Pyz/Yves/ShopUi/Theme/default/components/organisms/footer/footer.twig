@@ -28,10 +28,10 @@
             } only %}
             {% include molecule('toggler-accordion') with {
                 attributes: {
-                    'wrap-selector': '.' ~ config.jsName ~ '-' ~ categoryPaymentProviders,
-                    'trigger-selector': '.' ~ config.jsName ~ '-' ~ categoryPaymentProviders ~ '__trigger',
-                    'class-to-toggle': 'is-hidden-sm-only'
-                }
+                    'wrap-class-name': config.jsName ~ '-' ~ categoryPaymentProviders,
+                    'trigger-class-name': config.jsName ~ '-' ~ categoryPaymentProviders ~ '__trigger',
+                    'class-to-toggle': 'is-hidden-sm-only',
+                },
             } only %}
         </div>
     {% endblock %}

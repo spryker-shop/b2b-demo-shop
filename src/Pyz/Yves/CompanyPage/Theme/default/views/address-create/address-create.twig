@@ -1,26 +1,7 @@
-{% extends template('page-layout-company', 'CompanyPage') %}
-
-{% define data = {
-    form: _view.form,
-    idCompanyBusinessUnit: _view.idCompanyBusinessUnit|default(''),
-    title: 'company.account.address' | trans,
-    activePage: 'business-unit',
-} %}
-
-{% block breadcrumbs %}
-    {% include molecule('breadcrumb') with {
-        data: {
-            steps: [{
-                label: 'company.account' | trans,
-            }, {
-                label: 'company.account.business_unit' | trans,
-            }],
-        },
-    } only %}
-{% endblock %}
+{% extends view('address-create', '@SprykerShop:CompanyPage') %}
 
 {% block companyContent %}
-    {% include molecule('action-bar', 'ShopUi') with {
+    {% include molecule('action-bar') with {
         data: {
             title: 'company.account.create_address_information' | trans,
         },

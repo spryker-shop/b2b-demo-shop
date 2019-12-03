@@ -1,0 +1,23 @@
+@mixin checkout-page-shipment-sidebar($name: '.shipment-sidebar') {
+    #{$name} {
+        &__item {
+            background-color: $setting-color-gray-7;
+            margin: 0 rem(-15) rem(15);
+            padding: rem(20) rem(15);
+
+            @include helper-breakpoint-media-min($lg) {
+                margin: 0 0 rem(20);
+                padding: rem(20);
+            }
+        }
+
+        &__title {
+            margin-bottom: rem(10);
+            font-weight: fw(medium);
+        }
+
+        @content;
+    }
+}
+
+@include checkout-page-shipment-sidebar();

@@ -1,16 +1,12 @@
-{% extends template('page-layout-main') %}
-
-{% define data = {
-    activePage: 'overview'
-} %}
+{% extends template('page-layout-company', '@SprykerShop:CompanyPage') %}
 
 {% block breadcrumbs %}
     {% include molecule('breadcrumb') with {
         data: {
             steps: [{
-                label: 'company.account.page-title' | trans
-            }]
-        }
+                label: 'company.account.page-title' | trans,
+            }],
+        },
     } only %}
 {% endblock %}
 
@@ -25,8 +21,8 @@
         modifiers: ['last'],
         data: {
             title: false,
-            activePage: data.activePage
-        }
+            activePage: data.activePage,
+        },
     } %}
         {% block inner %}
             <div class="grid grid--gap">
@@ -39,29 +35,29 @@
                                         name: 'overview',
                                         url: path('company/overview'),
                                         label: 'company.account.overview' | trans,
-                                        icon: 'shopping-list'
+                                        icon: 'shopping-list',
                                     },
                                     {
                                         name: 'users',
                                         url: path('company/user'),
                                         label: 'company.account.company_user' | trans,
-                                        icon: 'users'
+                                        icon: 'users',
                                     },
                                     {
                                         name: 'business-unit',
                                         url: path('company/business-unit'),
                                         label: 'company.account.business_unit' | trans,
-                                        icon: 'office'
+                                        icon: 'office',
                                     },
                                     {
                                         name: 'role',
                                         url: path('company/company-role'),
                                         label: 'company.account.company_role' | trans,
-                                        icon: 'user'
-                                    }
+                                        icon: 'user',
+                                    },
                                 ],
-                                activePage: data.activePage
-                            }
+                                activePage: data.activePage,
+                            },
                         } only %}
                     {% endblock %}
                 </div>

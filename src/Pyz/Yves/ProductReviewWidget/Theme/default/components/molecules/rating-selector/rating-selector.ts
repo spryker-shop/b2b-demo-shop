@@ -1,12 +1,14 @@
 import Component from 'ShopUi/models/component';
 
 export default class RatingSelector extends Component {
-    input: HTMLInputElement;
-    steps: HTMLElement[];
+    protected input: HTMLInputElement;
+    protected steps: HTMLElement[];
 
-    protected readyCallback(): void {
-        this.input = <HTMLInputElement>this.querySelector(`.${this.jsName}__input`);
-        this.steps = <HTMLElement[]>Array.from(this.querySelectorAll(`.${this.jsName}__step`));
+    protected readyCallback(): void {}
+
+    protected init(): void {
+        this.input = <HTMLInputElement>this.getElementsByClassName(`${this.jsName}__input`)[0];
+        this.steps = <HTMLElement[]>Array.from(this.getElementsByClassName(`${this.jsName}__step`));
 
         if (!this.readOnly) {
             this.checkInput(this.value);
@@ -60,15 +62,15 @@ export default class RatingSelector extends Component {
         });
     }
 
-    get value(): number {
+    protected get value(): number {
         return parseFloat(this.input.value);
     }
 
-    get readOnly(): boolean {
+    protected get readOnly(): boolean {
         return this.hasAttribute('readonly');
     }
 
-    get disableIfEmptyValue(): boolean {
+    protected get disableIfEmptyValue(): boolean {
         return this.hasAttribute('disable-if-empty-value');
     }
 }

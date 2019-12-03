@@ -18,6 +18,7 @@ use PyzTest\Yves\Newsletter\PageObject\NewsletterSubscriptionHomePage;
 
 /**
  * Auto-generated group annotations
+ *
  * @group PyzTest
  * @group Yves
  * @group Newsletter

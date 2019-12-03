@@ -2,12 +2,11 @@
 
 {% define config = {
     name: 'range-slider',
-    tag: 'range-slider'
+    tag: 'range-slider',
 } %}
 
 {% define attributes = {
-    'wrap-selector': required,
-    'target-selector': required,
-    'value-selector': '',
-    'slider-config': '{"start":[1,999],"step":1,"connect":true,"margin":1,"range":{"min":1,"max":999}}'
+    'wrap-class-name': required,
+    'inputs-class-name': required,
+    'slider-config': '{"start":[1,999],"step":1,"connect":true,"margin":1,"range":{"min":1,"max":999}}',
 } %}

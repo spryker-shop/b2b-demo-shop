@@ -2,14 +2,14 @@
 
 {% define config = {
     name: 'filter-category',
-    tag: 'filter-category'
+    tag: 'filter-category',
 } %}
 
 {% define data = {
     filter: null,
     filterPath: null,
     categories: [],
-    levelMenu: 1
+    levelMenu: 1,
 } %}
 
 {% define attributes = {
@@ -69,11 +69,11 @@
 
         {% include molecule('form-handler') with {
             attributes: {
-                'trigger-selector': '.' ~ config.jsName ~ '__category-trigger',
+                'trigger-class-name': config.jsName ~ '__category-trigger',
                 'event': 'click',
                 'change-action': 'true',
-                'submit-form': 'false'
-            }
+                'submit-form': 'false',
+            },
         } only %}
     </ul>
 {% endblock %}

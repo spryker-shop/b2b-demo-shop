@@ -2,12 +2,12 @@
 
 {% define config = {
     name: 'review-average-display',
-    tag: 'section'
+    tag: 'section',
 } %}
 
 {% define data = {
     summary: required,
-    ratingMaxValue: required
+    ratingMaxValue: required,
 } %}
 
 {% block body %}
@@ -21,19 +21,18 @@
         data: {
             value: data.summary.averageRating,
             maxValue: data.ratingMaxValue,
-            useHalfSteps: true
+            useHalfSteps: true,
         },
         attributes: {
-            readonly: true
-        }
+            readonly: true,
+        },
     } only %}
 
     {% if data.summary.totalReview > 0 %}
         <div class="review-average-display__total-review">
             {{- data.summary.totalReview }}
-            {% transchoice data.summary.totalReview %}
-                product_review.summary.review|product_review.summary.reviews
-            {% endtranschoice -%}
+
+            {{ (data.summary.totalReview == 1 ? 'product_review.summary.review' : 'product_review.summary.reviews') | trans }}
         </div>
     {% else %}
         <div class="review-average-display__total-review is-hidden-sm-only">

@@ -2,11 +2,10 @@
 
 {% define config = {
     name: 'order-table',
-    tag: 'div'
 } %}
 
 {% define data = {
-    orders: required
+    orders: required,
 } %}
 
 {% block body %}
@@ -37,30 +36,24 @@
                         </td>
 
                         <td class="table__actions grid spacing spacing--inner spacing--reset">
-                            {% embed molecule('table-action-list') with {
+                            {% include molecule('table-action-list') with {
                                 data: {
                                     items: [
                                         {
                                             url: path('customer/order/details', { id: order.idSalesOrder }),
                                             icon: 'eye',
                                             title: 'customer.order.view_order',
-                                            iconModifier: 'big'
-                                        }
-                                    ]
+                                            iconModifier: 'big',
+                                        },
+                                        {
+                                            url: path('customer/order/reorder', { 'idSalesOrder': order.idSalesOrder }),
+                                            icon: 'cart',
+                                            title: 'customer.order.reorder',
+                                            iconModifier: 'big',
+                                        },
+                                    ],
                                 },
-                                embed: {
-                                    order: order
-                                }
                             } only %}
-                                {% block body %}
-                                    {{ parent() }}
-                                    {% if widgetExists('CustomerReorderWidgetPlugin') %}
-                                        <div class="{{ config.name }}__item">
-                                            {{ widgetBlock('CustomerReorderWidgetPlugin', 'reorderAction', embed.order) }}
-                                        </div>
-                                    {% endif %}
-                                {% endblock %}
-                            {% endembed %}
                         </td>
                     </tr>
                 {% endfor %}
