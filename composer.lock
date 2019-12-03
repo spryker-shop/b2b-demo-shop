@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7aa5338b77b05a55e2a1c3691f5c6016",
+    "content-hash": "07cc0e5b218ec79e4665a9b3732faec8",
     "packages": [
         {
             "name": "codeception/phpunit-wrapper",
@@ -127,6 +127,7 @@
             ],
             "description": "Promoting the interoperability of container objects (DIC, SL, etc.)",
             "homepage": "https://github.com/container-interop/container-interop",
+            "abandoned": "psr/container",
             "time": "2017-02-14T19:40:03+00:00"
         },
         {
@@ -14465,16 +14466,16 @@
         },
         {
             "name": "spryker/checkout-rest-api",
-            "version": "2.0.2",
+            "version": "2.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/checkout-rest-api.git",
-                "reference": "af595c0cf165627b9e0921a35371a1b17cecc203"
+                "reference": "5da609d592dad8e37d3d48354cbd2829f72ca6b3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/checkout-rest-api/zipball/af595c0cf165627b9e0921a35371a1b17cecc203",
-                "reference": "af595c0cf165627b9e0921a35371a1b17cecc203",
+                "url": "https://api.github.com/repos/spryker/checkout-rest-api/zipball/5da609d592dad8e37d3d48354cbd2829f72ca6b3",
+                "reference": "5da609d592dad8e37d3d48354cbd2829f72ca6b3",
                 "shasum": ""
             },
             "require": {
@@ -14491,7 +14492,7 @@
                 "spryker/kernel": "^3.30.0",
                 "spryker/payment": "^4.4.0",
                 "spryker/quote": "^2.0.0",
-                "spryker/shipment": "^7.0.0",
+                "spryker/shipment": "^7.0.0 || ^8.0.0",
                 "spryker/symfony": "^3.0.0",
                 "spryker/zed-request": "^3.0.0"
             },
@@ -14518,7 +14519,7 @@
                 "proprietary"
             ],
             "description": "CheckoutRestApi module",
-            "time": "2019-10-14T10:22:10+00:00"
+            "time": "2019-11-06T07:39:31+00:00"
         },
         {
             "name": "spryker/checkout-rest-api-extension",
@@ -19979,20 +19980,20 @@
         },
         {
             "name": "spryker/discount",
-            "version": "9.6.0",
+            "version": "9.6.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/discount.git",
-                "reference": "e4862c3f827049d0bcd5b2d8d1fede8a7805ba9c"
+                "reference": "61caa57ab7c7a7b6feb3786b2ddb800562b20c0d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/discount/zipball/e4862c3f827049d0bcd5b2d8d1fede8a7805ba9c",
-                "reference": "e4862c3f827049d0bcd5b2d8d1fede8a7805ba9c",
+                "url": "https://api.github.com/repos/spryker/discount/zipball/61caa57ab7c7a7b6feb3786b2ddb800562b20c0d",
+                "reference": "61caa57ab7c7a7b6feb3786b2ddb800562b20c0d",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
+                "php": ">=7.2",
                 "spryker/cart-code-extension": "^1.0.1",
                 "spryker/cart-extension": "^1.0.0 || ^2.0.0 || ^4.0.0",
                 "spryker/currency": "^3.1.0",
@@ -20039,7 +20040,7 @@
                 "proprietary"
             ],
             "description": "Discount module",
-            "time": "2019-10-14T10:22:10+00:00"
+            "time": "2019-11-25T09:14:22+00:00"
         },
         {
             "name": "spryker/discount-calculation-connector",
@@ -28238,16 +28239,16 @@
         },
         {
             "name": "spryker/product-option",
-            "version": "8.3.0",
+            "version": "8.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product-option.git",
-                "reference": "526a6bec7c6d6a294c7d0f9e1ea6ad60c4c787b0"
+                "reference": "ffb1c7395a5b9ff8d25beca5f8d2894788a942b9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-option/zipball/526a6bec7c6d6a294c7d0f9e1ea6ad60c4c787b0",
-                "reference": "526a6bec7c6d6a294c7d0f9e1ea6ad60c4c787b0",
+                "url": "https://api.github.com/repos/spryker/product-option/zipball/ffb1c7395a5b9ff8d25beca5f8d2894788a942b9",
+                "reference": "ffb1c7395a5b9ff8d25beca5f8d2894788a942b9",
                 "shasum": ""
             },
             "require": {
@@ -28304,7 +28305,7 @@
                 "proprietary"
             ],
             "description": "ProductOption module",
-            "time": "2019-10-14T10:22:10+00:00"
+            "time": "2019-10-22T08:42:46+00:00"
         },
         {
             "name": "spryker/product-option-cart-connector",
@@ -30357,6 +30358,52 @@
             ],
             "description": "QuoteApprovalExtension module",
             "time": "2019-10-02T15:10:35+00:00"
+        },
+        {
+            "name": "spryker/quote-approval-shipment-connector",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/quote-approval-shipment-connector.git",
+                "reference": "aa7d775c8f274b0a7edbdd44f4089523ff9631b4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/quote-approval-shipment-connector/zipball/aa7d775c8f274b0a7edbdd44f4089523ff9631b4",
+                "reference": "aa7d775c8f274b0a7edbdd44f4089523ff9631b4",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/kernel": "^3.33.0",
+                "spryker/quote-approval": "^1.2.0",
+                "spryker/quote-approval-extension": "^1.1.0",
+                "spryker/quote-extension": "^1.6.0",
+                "spryker/shipment": "^7.0.0 || ^8.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/price": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "QuoteApprovalShipmentConnector module",
+            "time": "2019-10-29T11:00:04+00:00"
         },
         {
             "name": "spryker/quote-extension",
@@ -32522,29 +32569,30 @@
         },
         {
             "name": "spryker/shipment-cart-connector",
-            "version": "2.0.1",
+            "version": "2.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/shipment-cart-connector.git",
-                "reference": "cf3f632ca3e901fda9338ba8ae09e902896a63ea"
+                "reference": "19b5af02edc76c0204f9a04a19588dc70fcfa160"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/shipment-cart-connector/zipball/cf3f632ca3e901fda9338ba8ae09e902896a63ea",
-                "reference": "cf3f632ca3e901fda9338ba8ae09e902896a63ea",
+                "url": "https://api.github.com/repos/spryker/shipment-cart-connector/zipball/19b5af02edc76c0204f9a04a19588dc70fcfa160",
+                "reference": "19b5af02edc76c0204f9a04a19588dc70fcfa160",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
                 "spryker/kernel": "^3.33.0",
                 "spryker/price": "^5.0.0",
-                "spryker/shipment": "^7.0.0"
+                "spryker/shipment": "^7.0.0 || ^8.0.0"
             },
             "require-dev": {
                 "spryker/cart": "*",
                 "spryker/code-sniffer": "*",
                 "spryker/currency": "*",
                 "spryker/propel": "*",
+                "spryker/store": "*",
                 "spryker/testify": "*"
             },
             "suggest": {
@@ -32566,7 +32614,53 @@
                 "proprietary"
             ],
             "description": "ShipmentCartConnector module",
-            "time": "2019-10-14T10:22:10+00:00"
+            "time": "2019-11-05T15:59:46+00:00"
+        },
+        {
+            "name": "spryker/shipment-checkout-connector",
+            "version": "2.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/shipment-checkout-connector.git",
+                "reference": "0e830fb603dbdf1d737cb005f79c1db58419be67"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/shipment-checkout-connector/zipball/0e830fb603dbdf1d737cb005f79c1db58419be67",
+                "reference": "0e830fb603dbdf1d737cb005f79c1db58419be67",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "spryker/kernel": "^3.33.0",
+                "spryker/shipment": "^7.0.0 || ^8.0.0"
+            },
+            "require-dev": {
+                "spryker/checkout": "*",
+                "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/checkout": "If you want to use Checkout plugins."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ShipmentCheckoutConnector module",
+            "time": "2019-11-13T14:09:03+00:00"
         },
         {
             "name": "spryker/shipment-discount-connector",
@@ -41629,7 +41723,7 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=7.1",
+        "php": ">=7.2",
         "ext-bcmath": "*",
         "ext-curl": "*",
         "ext-gd": "*",
@@ -41643,6 +41737,6 @@
     },
     "platform-dev": [],
     "platform-overrides": {
-        "php": "7.1.11"
+        "php": "7.2.15"
     }
 }

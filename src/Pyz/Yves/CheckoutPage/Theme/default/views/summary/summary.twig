@@ -166,7 +166,7 @@
                 data: {
                     form: data.forms.summary,
                     submit: {
-                        enable: true,
+                        enable: data.isPlaceableOrder and can('WriteSharedCartPermissionPlugin', data.cart.idQuote),
                         text: 'checkout.step.place.order' | trans,
                         class: 'form__action--expand-sm-md button button--big',
                     },
@@ -180,6 +180,8 @@
                 },
                 embed: {
                     overview: data.overview,
+                    cart: data.cart,
+                    isPlaceableOrderErrors: data.isPlaceableOrderErrors,
                 },
             } only %}
                 {% block body %}
@@ -187,7 +189,34 @@
                         data: embed.overview,
                     } only %}
 
+                    {% set QuoteApproveRequestWidget = findWidget('QuoteApproveRequestWidget', [embed.cart]) %}
+                    {% if QuoteApproveRequestWidget and QuoteApproveRequestWidget.isVisible %}
+                        {% widget 'QuoteApproveRequestWidget' args [embed.cart] %}
+                            {% block body %}
+                                <div class="box">
+                                    {{ parent() }}
+                                </div>
+                            {% endblock %}
+                        {% endwidget %}
+                    {% endif %}
+
+                    {% set quoteApprovalWidget = findWidget('QuoteApprovalWidget', [embed.cart]) %}
+                    {% if quoteApprovalWidget and quoteApprovalWidget.isVisible %}
+                        <div class="box">
+                            {% widget 'QuoteApprovalWidget' args [embed.cart] only %}{% endwidget %}
+                        </div>
+                    {% endif %}
+
                     {{ parent() }}
+
+                    {% if embed.isPlaceableOrderErrors is not empty %}
+                        <hr>
+                        <ul class="list list--alert">
+                            {% for error in embed.isPlaceableOrderErrors %}
+                                <li class="list__item">{{ error.message | trans }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
                 {% endblock %}
             {% endembed %}
         </div>
