@@ -17,28 +17,6 @@
             z-index: $setting-zi-header + 3;
         }
 
-        &__search-form {
-            z-index: $setting-zi-header + 1;
-
-            &--active {
-                @include helper-visibility-visible;
-                transform: translateY(0);
-            }
-
-            @include helper-breakpoint-media-min($lg) {
-                @include helper-visibility-visible;
-                display: block;
-                position: relative;
-                transform: none;
-                transition: none;
-                z-index: $setting-zi-element;
-            }
-
-            .body-overlay--no-search & {
-                z-index: $setting-zi-search-suggestions;
-            }
-        }
-
         &__navigation-main {
             position: relative;
             z-index: $setting-zi-header + 1;
