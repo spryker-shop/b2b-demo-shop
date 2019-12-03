@@ -53,9 +53,20 @@
 
     {% cms_slot 'slt-3' %}
 
-    <div class="grid grid--left grid--middle">
-        {% cms_slot 'slt-4' %}
-    </div>
+    {% embed organism('section') with {
+        modifiers: ['secondary', 'full-width'],
+        class: 'spacing-top spacing-top--inner spacing-top--big',
+    } only %}
+        {% block inner %}
+            <div class="grid grid--left grid--middle">
+                {% cms_slot 'slt-4' %}
+            </div>
+        {% endblock %}
+    {% endembed %}
+
+{% endblock %}
+
+{% block contentBottom %}
 
     {% cms_slot 'slt-5' %}
 

@@ -6,9 +6,9 @@
     {% embed organism('section') with {
         modifiers: ['secondary'],
         data: {
-            innerClass: 'container',
             blockTitle: spyCmsBlockPlaceholder('title'),
             blockContent: spyCmsBlockPlaceholder('content'),
+            innerClass: 'container',
         },
     } only %}
         {% block inner %}

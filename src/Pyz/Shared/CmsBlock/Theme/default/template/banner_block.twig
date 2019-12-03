@@ -4,20 +4,36 @@
     <!-- CMS_BLOCK_PLACEHOLDER : "link" -->
     <!-- CMS_BLOCK_PLACEHOLDER : "imageUrl" -->
 
-    {{ spyCmsBlockPlaceholder('title') | raw }}
+    {% embed organism('section') with {
+        modifiers: ['secondary', 'full-width'],
+        class: 'spacing-top spacing-top--inner spacing-top--big',
+        data: {
+            blockTitle: spyCmsBlockPlaceholder('title'),
+            blockContent: spyCmsBlockPlaceholder('content'),
+            imageUrl: spyCmsBlockPlaceholder('imageUrl'),
+            link: spyCmsBlockPlaceholder('link'),
+        },
+    } only %}
+        {% block inner %}
 
-    <div class="grid grid--left grid--middle">
-        <div class="col col--sm-12">
-            {% include molecule('banner') with {
-                data: {
-                    imageUrl: spyCmsBlockPlaceholder('imageUrl'),
-                    link: spyCmsBlockPlaceholder('link'),
-                    content: spyCmsBlockPlaceholder('content'),
-                    btnTitle: 'show_more.btn.title'
-                }
-            } only %}
-        </div>
-    </div>
+            {{ data.blockTitle | raw }}
+
+            <div class="grid grid--left grid--middle">
+                <div class="col col--sm-12">
+                    {% include molecule('banner') with {
+                        class: 'spacing-bottom spacing-bottom--reset',
+                        data: {
+                            imageUrl: data.imageUrl,
+                            link: data.link,
+                            content: data.blockContent,
+                            btnTitle: 'show_more.btn.title',
+                        },
+                    } only %}
+                </div>
+            </div>
+
+        {% endblock %}
+    {% endembed %}
 
 {% endblock %}
 

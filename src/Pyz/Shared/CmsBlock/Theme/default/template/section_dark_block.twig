@@ -4,11 +4,11 @@
 {% block content %}
 
     {% embed organism('section') with {
-        modifiers: ['secondary', 'no-mobile-bottom-indent'],
-        class: 'spacing-top spacing-top--inner spacing-top--big',
+        modifiers: ['secondary', 'bg-dark'],
         data: {
             blockTitle: spyCmsBlockPlaceholder('title'),
             blockContent: spyCmsBlockPlaceholder('content'),
+            innerClass: 'container',
         },
     } only %}
         {% block inner %}

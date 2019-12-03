@@ -6,11 +6,12 @@
 
     <div class="col col--sm-12 col--lg-4">
         {% include molecule('banner') with {
+            modifiers: ['small'],
             data: {
                 imageUrl: spyCmsBlockPlaceholder('imageUrl'),
                 link: spyCmsBlockPlaceholder('link'),
                 content: spyCmsBlockPlaceholder('title') ~ spyCmsBlockPlaceholder('content'),
-                btnTitle: 'show_more.btn.title'
+                btnTitle: 'show_more.btn.title',
             }
         } only %}
     </div>
