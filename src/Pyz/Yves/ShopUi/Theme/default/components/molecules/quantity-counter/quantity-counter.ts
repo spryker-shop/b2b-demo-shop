@@ -33,7 +33,9 @@ export default class QuantityCounter extends Component {
         event.preventDefault();
         if (this.isAvailable) {
             const value = Number(this.input.value);
-            const potentialValue = value + this.step;
+            const potentialValue = Number(((value * this.precision) + (this.step * this.precision)) /
+                this.precision).toFixed(this.numbersAfterDot);
+
             if (value < this.maxQuantity) {
                 this.input.value = potentialValue.toString();
                 this.triggerInputEvent();
@@ -45,8 +47,10 @@ export default class QuantityCounter extends Component {
         event.preventDefault();
         if (this.isAvailable) {
             const value = Number(this.input.value);
-            const potentialValue = value - this.step;
-            if (potentialValue >= this.minQuantity) {
+            const potentialValue = Number(((value * this.precision) - (this.step * this.precision)) /
+                this.precision).toFixed(this.numbersAfterDot);
+
+            if (Number(potentialValue) >= this.minQuantity) {
                 this.input.value = potentialValue.toString();
                 this.triggerInputEvent();
             }
@@ -67,6 +71,10 @@ export default class QuantityCounter extends Component {
         if (this.value !== this.getValue) {
             this.input.form.submit();
         }
+    }
+
+    protected getDecimals(value: number): number {
+        return value && value.toString().match(/[,.]/) ? value.toString().split(/[,.]/)[1].length : 0;
     }
 
     protected get minQuantity(): number {
@@ -95,5 +103,17 @@ export default class QuantityCounter extends Component {
 
     protected get isAvailable(): boolean {
         return !this.input.disabled && !this.input.readOnly;
+    }
+
+    protected get numbersAfterDot(): number {
+        return Math.max(this.getDecimals(this.step), this.getDecimals(this.getValue));
+    }
+
+    protected get precision(): number {
+        if (this.numbersAfterDot === 0) {
+            return 1;
+        }
+
+        return Number(`1${'0'.repeat(this.numbersAfterDot)}`);
     }
 }
