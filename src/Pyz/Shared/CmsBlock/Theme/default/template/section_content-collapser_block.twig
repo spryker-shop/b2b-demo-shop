@@ -1,0 +1,29 @@
+<!-- CMS_BLOCK_PLACEHOLDER : "title" -->
+<!-- CMS_BLOCK_PLACEHOLDER : "content" -->
+
+{% block content %}
+
+    {% embed organism('section') with {
+        modifiers: ['secondary'],
+        data: {
+            innerClass: 'container',
+            blockTitle: spyCmsBlockPlaceholder('title'),
+            blockContent: spyCmsBlockPlaceholder('content'),
+        },
+    } only %}
+        {% block inner %}
+            {% embed molecule('content-collapser') with {
+                data: {
+                    blockTitle: data.blockTitle,
+                    blockContent: data.blockContent,
+                },
+            } only %}
+                {% block content %}
+                    {{ data.blockTitle | raw }}
+                    {{ data.blockContent | raw }}
+                {% endblock %}
+            {% endembed %}
+        {% endblock %}
+    {% endembed %}
+
+{% endblock %}

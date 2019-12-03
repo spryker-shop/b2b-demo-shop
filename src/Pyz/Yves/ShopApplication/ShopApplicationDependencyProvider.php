@@ -108,6 +108,7 @@ use SprykerShop\Yves\ShoppingListWidget\Widget\ShoppingListMenuItemWidget;
 use SprykerShop\Yves\ShoppingListWidget\Widget\ShoppingListNavigationMenuWidget;
 use SprykerShop\Yves\ShoppingListWidget\Widget\ShoppingListSubtotalWidget;
 use SprykerShop\Yves\TabsWidget\Widget\FullTextSearchTabsWidget;
+use Spryker\Yves\Translator\Plugin\Application\TranslatorApplicationPlugin;
 
 class ShopApplicationDependencyProvider extends SprykerShopApplicationDependencyProvider
 {
@@ -235,6 +236,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             new StoreApplicationPlugin(),
             new LocaleApplicationPlugin(),
             new RouterApplicationPlugin(),
+            new TranslatorApplicationPlugin(),
         ];
     }
 }

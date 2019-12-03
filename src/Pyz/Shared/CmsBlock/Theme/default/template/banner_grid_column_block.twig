@@ -1,0 +1,18 @@
+{% block content %}
+    <!-- CMS_BLOCK_PLACEHOLDER : "title" -->
+    <!-- CMS_BLOCK_PLACEHOLDER : "content" -->
+    <!-- CMS_BLOCK_PLACEHOLDER : "link" -->
+    <!-- CMS_BLOCK_PLACEHOLDER : "imageUrl" -->
+
+    <div class="col col--sm-12 col--lg-4">
+        {% include molecule('banner') with {
+            data: {
+                imageUrl: spyCmsBlockPlaceholder('imageUrl'),
+                link: spyCmsBlockPlaceholder('link'),
+                content: spyCmsBlockPlaceholder('title') ~ spyCmsBlockPlaceholder('content'),
+                btnTitle: 'show_more.btn.title'
+            }
+        } only %}
+    </div>
+
+{% endblock %}
