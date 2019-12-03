@@ -18,7 +18,7 @@
             {% set isItemAvailable = not productDiscontinuedNoteWidget.isDiscontinued and isItemAvailable %}
         {% endif %}
 
-        {% embed molecule('product-item') with {
+        {% embed molecule('product-card-item') with {
             modifiers: ['shopping-list', isItemAvailable ? 'shopping-list-available' : 'hidden'],
             data: {
                 listItem: item,
