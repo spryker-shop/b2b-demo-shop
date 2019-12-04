@@ -9,6 +9,7 @@ export default class QuantityCounter extends Component {
     protected timeout: number = 0;
     protected eventChange: Event = new Event('change');
     protected eventInput: Event = new Event('input');
+    protected numbersAfterDot: number = 10;
 
     protected readyCallback(): void {}
 
@@ -73,10 +74,6 @@ export default class QuantityCounter extends Component {
         }
     }
 
-    protected getDecimals(value: number): number {
-        return value && value.toString().match(/[,.]/) ? value.toString().split(/[,.]/)[1].length : 0;
-    }
-
     protected get minQuantity(): number {
         return Number(this.input.getAttribute('min'));
     }
@@ -103,10 +100,6 @@ export default class QuantityCounter extends Component {
 
     protected get isAvailable(): boolean {
         return !this.input.disabled && !this.input.readOnly;
-    }
-
-    protected get numbersAfterDot(): number {
-        return Math.max(this.getDecimals(this.step), this.getDecimals(this.getValue));
     }
 
     protected get precision(): number {
