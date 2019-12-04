@@ -20,7 +20,7 @@
     <!-- CMS_PLACEHOLDER : "content" -->
     {{ spyCms('content') | raw }}
 
-    {% cms_slot 'slt-10' with {
+    {% cms_slot 'slt-10' required ['idCmsPage'] with {
         idCmsPage: data.idCmsPage,
     } %}
 {% endblock %}
