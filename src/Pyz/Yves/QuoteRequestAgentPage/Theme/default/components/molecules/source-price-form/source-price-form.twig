@@ -21,36 +21,56 @@
 
 {% block body %}
     <div class="grid grid--middle grid--justify grid--gap spacing-bottom">
-        <div class="col col--sm-6">
-            <strong>
-                <s class="{{ config.jsName }}__origin-price {{ data.currentItemPrice == data.originItemPrice ? 'is-hidden' }} text-big text-secondary">
-                    {{ data.originItemPrice }}
-                </s>
-            </strong>
-        </div>
-        <div class="col col--sm-6">
-            {{ form_row(data.priceField, {'attr': {'class': config.jsName ~ '__input-container is-hidden'}}) }}
-            {% if data.currentItemPrice != data.originItemPrice %}
-                <strong class="{{ config.jsName }}__price is-hidden text-big">{{ data.originItemPrice }}</strong>
-            {% else %}
-                <strong class="{{ config.jsName }}__price text-big">{{ data.currentItemPrice }}</strong>
-            {% endif %}
-        </div>
+        {% block adjustedPriceColumn %}
+            <div class="col col--sm-6">
+                {% block adjustedPriceColumnInner %}
+                    <strong>
+                        {% block adjustedPriceText %}
+                            {% set isSamePrice = data.currentItemPrice == data.originItemPrice %}
+                            {% set hiddenClass = isSamePrice ? 'is-hidden' %}
+                            {% set priceClasses = config.jsName ~ '__origin-price text-big text-secondary ' ~ hiddenClass %}
+
+                            {% block adjustedPriceTextInner %}
+                                <s class="{{ priceClasses }}">
+                                    {{ data.originItemPrice }}
+                                </s>
+                            {% endblock %}
+                        {% endblock %}
+                    </strong>
+                {% endblock %}
+            </div>
+        {% endblock %}
+
+        {% block priceColumn %}
+            <div class="col col--sm-6">
+                {% block priceColumnInner %}
+                    {{ form_row(data.priceField, {'attr': {'class': config.jsName ~ '__input-container is-hidden'}}) }}
+                    {% set isDifferentPrice = data.currentItemPrice != data.originItemPrice %}
+                    {% set hiddenClass = isDifferentPrice ? 'is-hidden' %}
+                    {% set price = isDifferentPrice ? data.originItemPrice : data.currentItemPrice %}
+                    {% block price %}
+                        <strong class="{{ config.jsName }}__price text-big {{ hiddenClass }}">{{ price }}</strong>
+                    {% endblock %}
+                {% endblock %}
+            </div>
+        {% endblock %}
     </div>
-    <div class="grid grid--gap">
-        <div class="col col--sm-12">
-            {% include atom('checkbox') with {
-                class: config.jsName ~ '__checkbox-container',
-                attributes: {
-                    name: data.checkboxName,
-                    value: data.checkboxValue,
-                    checked: data.isChecked,
-                    disabled: data.priceField.vars.disabled,
-                },
-                data: {
-                    label: data.checkboxLabel,
-                },
-            } only %}
+    {% block form %}
+        <div class="grid grid--gap">
+            <div class="col col--sm-12">
+                {% include atom('checkbox') with {
+                    class: config.jsName ~ '__checkbox-container',
+                    attributes: {
+                        name: data.checkboxName,
+                        value: data.checkboxValue,
+                        checked: data.isChecked,
+                        disabled: data.priceField.vars.disabled,
+                    },
+                    data: {
+                        label: data.checkboxLabel,
+                    },
+                } only %}
+            </div>
         </div>
-    </div>
+    {% endblock %}
 {% endblock %}
