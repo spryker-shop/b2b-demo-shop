@@ -20,9 +20,7 @@
     <!-- CMS_PLACEHOLDER : "content" -->
     {{ spyCms('content') | raw }}
 
-    <div class="box">
-        {% cms_slot 'slt-10' with {
-            idCmsPage: data.idCmsPage,
-        } %}
-    </div>
+    {% cms_slot 'slt-10' with {
+        idCmsPage: data.idCmsPage,
+    } %}
 {% endblock %}
