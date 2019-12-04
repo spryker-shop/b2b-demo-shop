@@ -1,28 +1,32 @@
 import Component from 'ShopUi/models/component';
 import $ from 'jquery/dist/jquery';
-import select from 'select2';
+import 'select2';
 
 const DROPDOWN_SELECTOR = 'body > .select2-container--open';
 
 export default class CustomSelect extends Component {
-    select: HTMLSelectElement;
-    $select: $;
-    mobileResolution: number = 768;
-    isInited: boolean = false;
+    protected select: HTMLSelectElement;
+    protected $select: $;
+    protected mobileResolution: number = 768;
+    protected isInited: boolean = false;
     protected timeout: number = 300;
 
-    protected readyCallback(): void {
-        const select2 = select;
-        this.select = <HTMLSelectElement>this.querySelector(`.${this.jsName}`);
+    protected readyCallback(): void {}
+
+    protected init(): void {
+        this.select = <HTMLSelectElement>this.getElementsByClassName(`${this.jsName}`)[0];
         this.$select = $(this.select);
 
         this.mapEvents();
-        this.initSelect();
-        this.removeAttributeTitle();
+
+        if (this.autoInit) {
+            this.initSelect();
+            this.removeAttributeTitle();
+        }
     }
 
     protected mapEvents(): void {
-        this.$select.on('select2:select', () => this.onChangeSelect());
+        this.changeSelectEvent();
         if (this.configDropdownRight) {
             this.$select.on('select2:open', () => {
                 this.changeDropdownPosition();
@@ -58,7 +62,11 @@ export default class CustomSelect extends Component {
         return left;
     }
 
-    protected initSelect(): void {
+    changeSelectEvent(): void {
+        this.$select.on('select2:select', () => this.onChangeSelect());
+    }
+
+    initSelect(): void {
         if (window.innerWidth >= this.mobileResolution && !this.isInited) {
             this.isInited = true;
             this.$select.select2({
@@ -75,7 +83,7 @@ export default class CustomSelect extends Component {
 
     protected removeAttributeTitle(): void {
         if (this.isInited) {
-            this.querySelector('.select2-selection__rendered').removeAttribute('title');
+            this.getElementsByClassName('select2-selection__rendered')[0].removeAttribute('title');
         }
     }
 
@@ -93,5 +101,9 @@ export default class CustomSelect extends Component {
 
     protected get configDropdownRight(): boolean {
         return Boolean(this.select.getAttribute('config-dropdown-right'));
+    }
+
+    protected get autoInit(): boolean {
+        return this.select.hasAttribute('auto-init');
     }
 }

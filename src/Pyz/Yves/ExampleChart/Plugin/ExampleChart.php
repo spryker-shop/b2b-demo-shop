@@ -11,8 +11,9 @@ use Generated\Shared\Transfer\ChartDataTraceTransfer;
 use Generated\Shared\Transfer\ChartDataTransfer;
 use Generated\Shared\Transfer\ChartLayoutTransfer;
 use Spryker\Shared\Chart\Dependency\Plugin\ChartPluginInterface;
+use Spryker\Yves\Kernel\AbstractPlugin;
 
-class ExampleChart implements ChartPluginInterface
+class ExampleChart extends AbstractPlugin implements ChartPluginInterface
 {
     public const NAME = 'testChart';
 

@@ -38,6 +38,7 @@
     }
 
     &--company-user {
+        @include helper-effect-transition(transform);
         position: absolute;
         top: 100%;
         right: 0;
@@ -52,7 +53,6 @@
         transform-origin: top right;
         transform: scale(0);
         z-index: $setting-zi-company-menu;
-        @include helper-effect-transition(transform);
 
         @include helper-breakpoint-media-min($xxxl) {
             transform-origin: top left;

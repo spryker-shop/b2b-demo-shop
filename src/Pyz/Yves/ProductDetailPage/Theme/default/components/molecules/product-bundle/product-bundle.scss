@@ -24,39 +24,12 @@
                 font-size: rem(32);
                 margin-bottom: rem(22);
             }
-
-            &--cart {
-                font-size: rem(14);
-                font-weight: fw(medium);
-                color: $setting-color-gray-5;
-                text-align: left;
-                margin: rem(10) 0 rem(3);
-            }
-        }
-
-        &__list {
-
-            &--cart {
-                padding: 0 0 0 rem(8);
-                font-size: rem(13);
-                font-weight: fw(regular);
-                color: $setting-color-gray-5;
-
-                @include helper-breakpoint-media-min($lg) {
-                    padding-left: rem(20);
-                }
-            }
         }
 
         &__item {
-
             &--configurator {
                 padding-bottom: rem(10);
                 display: flex;
-            }
-
-            &--cart {
-                padding: rem(3) 0;
             }
         }
 
@@ -130,11 +103,6 @@
             @include helper-breakpoint-media-min($lg) {
                 display: block;
                 padding-left: 0;
-            }
-
-            &--cart {
-                font-size: rem(13);
-                line-height: normal;
             }
         }
     }

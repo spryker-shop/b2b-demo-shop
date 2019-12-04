@@ -1,8 +1,6 @@
-{% extends template('page-layout-cart', 'CartPage') %}
+{% extends template('page-layout-cart-preview', '@SprykerShop:CartPage') %}
 
 {% define data = {
-    isQuoteEditable: false,
-    isQuoteValid: false,
     products: '',
 } %}
 
@@ -28,7 +26,7 @@
 {% block pageInfo %}{% endblock %}
 
 {% block cartTitle %}
-    {{- 'persistent_cart_share_page.preview' | trans({'%title%': data.cart.name}) -}}
+    {{- 'persistent_cart_share_page.preview' | trans({ '%title%': data.cart.name }) -}}
 {% endblock %}
 
 {% block emptyCart %}
@@ -40,7 +38,7 @@
 {% endblock %}
 
 {% block cartItem %}
-    {% embed molecule('product-item') with {
+    {% embed molecule('product-card-item') with {
         data: {
             list: data.cart,
             listItem: cartItem,
@@ -69,7 +67,6 @@
             {{ parent() }}
 
             {% if embed.product.attributes.farbe is defined %}
-                <br>
                 <span class="{{ config.name }}__color-preview">{{ 'cart.item.color' | trans }}:  <span class="{{ config.name }}__color-preview-decoration" style="background: {{ embed.product.colorCode  }}" title="{{ embed.product.attributes.farbe  }}"></span></span>
             {% endif %}
         {% endblock %}

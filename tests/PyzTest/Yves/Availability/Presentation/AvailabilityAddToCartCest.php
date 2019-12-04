@@ -13,6 +13,7 @@ use PyzTest\Yves\Cart\PageObject\CartListPage;
 
 /**
  * Auto-generated group annotations
+ *
  * @group PyzTest
  * @group Yves
  * @group Availability

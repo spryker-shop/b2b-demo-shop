@@ -6,6 +6,7 @@
     quote: _widget.quote,
     limit: _widget.limit,
     isVisible: _widget.isVisible,
+    isQuoteApplicableForApprovalProcess: _widget.isQuoteApplicableForApprovalProcess,
     quoteStatus: _widget.quoteStatus,
     canSendApprovalRequest: _widget.canSendApprovalRequest,
     quoteApprovalRequestFormOptions: {
@@ -35,9 +36,17 @@
                         limit: data.limit
                     }
                 } only %}
+
+                {% if not data.isQuoteApplicableForApprovalProcess %}
+                    <hr>
+                    <p>
+                        <strong>{{ 'quote_approval_widget.quote_not_applicable_for_approval_process' | trans }}</strong>
+                    </p>
+                {% endif %}
             {% endif %}
 
-            {% if data.canSendApprovalRequest and data.hasApprovers %}
+            {% set isQuoteApprovalWidgetVisible = data.canSendApprovalRequest and data.hasApprovers and data.isQuoteApplicableForApprovalProcess %}
+            {% if isQuoteApprovalWidgetVisible %}
                 {% include molecule('approve-request-form', 'QuoteApprovalWidget') with {
                     data: {
                         quoteApprovalRequestForm: data.quoteApprovalRequestForm,

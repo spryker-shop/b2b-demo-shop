@@ -8,14 +8,13 @@
     categoryId: null,
     filterPath: null,
     viewMode: null,
-
     pagination: {
         currentPage: required,
         maxPage: required,
         parameters: app.request.query.all(),
         paginationPath: app.request.getPathInfo(),
-        showAlwaysFirstAndLast: true
-    }
+        showAlwaysFirstAndLast: true,
+    },
 } %}
 
 {% macro renderBreadcrumbSteps(categoryNode, isLastLeaf, filterPath) %}
@@ -32,8 +31,8 @@
             {% include molecule('breadcrumb-step') with {
                 data: {
                     url: categoryUrl,
-                    label: categoryLabel
-                }
+                    label: categoryLabel,
+                },
             } only %}
         {% endif %}
     {% endif %}
@@ -44,8 +43,8 @@
 
     {% embed molecule('breadcrumb') with {
         embed: {
-            breadcrumbs: self.renderBreadcrumbSteps(data.category, false, data.filterPath)
-        }
+            breadcrumbs: self.renderBreadcrumbSteps(data.category, false, data.filterPath),
+        },
     } only %}
         {% block breadcrumbs %}
             {{ embed.breadcrumbs }}
@@ -61,8 +60,8 @@
             {% include molecule('form-input-default-value-disabler') with {
                 attributes: {
                     'form-selector': '.js-form-input-default-value-disabler__catalog-form',
-                    'input-selector': '.js-form-input-default-value-disabler__catalog-input'
-                }
+                    'input-selector': '.js-form-input-default-value-disabler__catalog-input',
+                },
             } only %}
 
             <div class="col col--sm-12 col--lg-4 col--xl-3">
@@ -70,8 +69,8 @@
                     {% include molecule('view-mode-switch', 'CatalogPage') with {
                         class: 'is-hidden-sm-md',
                         data: {
-                            viewMode: data.viewMode
-                        }
+                            viewMode: data.viewMode,
+                        },
                     } only %}
 
                     <button class="button button--justify button--additional js-catalog-filters-trigger is-hidden-lg-xxl spacing-bottom spacing-bottom--big">
@@ -79,19 +78,24 @@
                         {% include atom('icon') with {
                             modifiers: ['filter'],
                             data: {
-                                name: 'filter'
-                            }
+                                name: 'filter',
+                            },
                         } only %}
                     </button>
 
                     {% include molecule('toggler-click') with {
                         attributes: {
-                            'trigger-selector': '.js-catalog-filters-trigger',
-                            'target-selector': '.js-filter-section',
+                            'trigger-class-name': 'js-catalog-filters-trigger',
+                            'target-class-name': 'js-filter-section',
                             'class-to-toggle': 'is-hidden-sm-md',
-                            'fix-body': 'true',
-                            'class-to-fix-body': 'is-locked-mobile'
-                        }
+                        },
+                    } only %}
+
+                    {% include molecule('sticky-body-toggler') with {
+                        attributes: {
+                            'trigger-class-name': 'js-catalog-filters-trigger',
+                            'class-to-fix-body': 'is-locked-mobile',
+                        },
                     } only %}
 
                     {% include organism('filter-section', 'CatalogPage') with {
@@ -99,8 +103,8 @@
                         data: {
                             facets: data.facets,
                             filterPath: data.filterPath,
-                            categories: data.categories
-                        }
+                            categories: data.categories,
+                        },
                     } only %}
                 {% endblock %}
             </div>
@@ -116,8 +120,8 @@
                                 {% include molecule('view-mode-switch', 'CatalogPage') with {
                                     class: 'is-hidden-lg-xxl',
                                     data: {
-                                        viewMode: data.viewMode
-                                    }
+                                        viewMode: data.viewMode,
+                                    },
                                 } only %}
                             </div>
                         </div>
@@ -125,8 +129,8 @@
                     <div class="col col--sm-12">
                         {% include organism('active-filter-section', 'CatalogPage') with {
                             data: {
-                                facets: data.facets
-                            }
+                                facets: data.facets,
+                            },
                         } only %}
                     </div>
                 </div>
@@ -135,14 +139,14 @@
                     {% for product in data.products %}
                         {% widget 'CatalogPageProductWidget' args [
                             product,
-                            data.viewMode
+                            data.viewMode,
                         ] only %}
                         {% endwidget %}
                     {% endfor %}
                 </div>
 
                 {% include molecule('pagination') with {
-                    data: data.pagination
+                    data: data.pagination,
                 } only %}
             </div>
         {% endblock %}

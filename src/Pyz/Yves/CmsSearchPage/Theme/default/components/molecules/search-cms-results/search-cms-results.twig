@@ -1,11 +1,7 @@
-{% extends model('component') %}
+{% extends molecule('search-cms-results', '@SprykerShop:CmsSearchPage') %}
 
 {% define config = {
-    name: 'search-cms-results'
-} %}
-
-{% define data = {
-    pages: required
+    tag: 'div',
 } %}
 
 {% block body %}
@@ -16,7 +12,6 @@
                     <div class="{{ config.name }}__name spacing-y spacing-y--inner">
                         {{ page.name }}
                     </div>
-
                     <a href="{{ page.url }}" class="button">
                         {{ 'global.search.results.view' | trans }}
                     </a>

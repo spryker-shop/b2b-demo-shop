@@ -23,6 +23,12 @@
         }
     }
 
+    &--text-right-from-tablet {
+        @include helper-breakpoint-media-min($lg) {
+            text-align: right;
+        }
+    }
+
     &--secondary {
         margin-top: rem(8);
         padding: rem(14) rem(16);
@@ -55,6 +61,10 @@
             line-height: normal;
         }
 
+        &--block {
+            display: block;
+        }
+
         &--gray-color {
             color: $setting-color-gray-5;
         }
@@ -76,7 +86,7 @@
         color: $setting-color-gray-2;
         font-size: rem(12);
         font-weight: fw(regular);
-        line-height: rem(12);
+        line-height: rem(14);
 
         @include helper-breakpoint-media-min($lg) {
             margin-left: rem(5);

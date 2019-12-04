@@ -6,6 +6,7 @@
         $spacing-under-tooltip: rem(10);
 
         &__tooltip {
+            @include helper-effect-transition(transform);
             background: $setting-color-alpha-7;
             color: $setting-color-white;
             text-transform: uppercase;
@@ -18,7 +19,6 @@
             bottom: calc(100% + #{$spacing-under-tooltip});
             transform-origin: bottom center;
             transform: translateX(-50%) scale(0);
-            @include helper-effect-transition(transform);
 
             $border-angle-size: rem(3);
 

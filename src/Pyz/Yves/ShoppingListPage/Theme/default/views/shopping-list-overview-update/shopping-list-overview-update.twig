@@ -75,13 +75,13 @@
                             {% set isProductAvailable = not productDiscontinuedWidget.isDiscontinued and isProductAvailable %}
                         {% endif %}
 
-                        {% embed molecule('product-item') with {
+                        {% embed molecule('product-card-item') with {
                             modifiers: ['shopping-list', isProductAvailable ? '' : 'hidden'],
                             data: {
                                 listItem: product,
                                 form: data.form,
                                 imageModifiers: ['shopping-list'],
-                                canEdit: true
+                                canEdit: true,
                             },
                             embed: {
                                 key: key,

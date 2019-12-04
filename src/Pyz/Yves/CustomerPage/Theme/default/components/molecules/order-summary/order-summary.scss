@@ -1,17 +1,120 @@
 @mixin customer-page-order-summary($name: '.order-summary') {
     #{$name} {
-        margin-bottom: 1rem;
-        padding: 1rem 2rem;
-        background-color: $setting-color-lighter;
+        margin: rem(20) 0;
 
-        &__item {
-            display: flex;
-            justify-content: space-between;
+        @include helper-breakpoint-media-min($lg) {
+            margin: rem(36) 0 rem(30);
+        }
+
+        &__top {
+            padding: rem(13) rem(15);
+            margin: 0 rem(-15);
+            background-color: $setting-color-gray-7;
+            font-size: rem(16);
+            font-weight: fw(medium);
+            color: $setting-color-gray-5;
 
             @include helper-breakpoint-media-min($lg) {
-                justify-content: flex-end;
+                padding: 0;
+                margin: 0 0 rem(15);
+                background-color: $setting-color-transparent;
             }
         }
+
+        &__label {
+            font-size: rem(11);
+            color: $setting-color-gray-3;
+            background-color: $setting-color-alpha-3;
+            border-radius: $setting-border-radius;
+            padding: rem(3) rem(5);
+
+            @include helper-breakpoint-media-min($lg) {
+                font-size: rem(16);
+                font-weight: fw(medium);
+                color: $setting-color-gray-5;
+                background-color: $setting-color-transparent;
+                padding: 0;
+            }
+        }
+
+        &__title {
+            font-weight: fw(medium);
+            color: $setting-color-gray-5;
+            font-size: rem(16);
+
+            &--total {
+                font-size: rem(16);
+                font-weight: fw(bold);
+                color: $setting-color-gray-2;
+                line-height: rem(24);
+
+                @include helper-breakpoint-media-min($lg) {
+                    font-size: rem(20);
+                }
+            }
+
+            &--color-gray {
+                color: $setting-color-gray-5;
+            }
+        }
+
+        &__list {
+            margin: 0 rem(-15);
+            background-color: $setting-color-gray-7;
+            border-radius: $setting-border-radius;
+
+            @include helper-breakpoint-media-min($lg) {
+                margin: 0;
+            }
+        }
+
+        &__item {
+            padding: rem(20) rem(15);
+            font-weight: fw(medium);
+            line-height: normal;
+            color: $setting-color-gray-5;
+
+            @include helper-breakpoint-media-min($lg) {
+                padding: rem(20) rem(30) rem(15);
+            }
+
+            &:not(:first-child) {
+                border-top: rem(1) solid $setting-color-gray-1;
+            }
+
+            &--total {
+                padding: rem(20) rem(15);
+
+                @include helper-breakpoint-media-min($lg) {
+                    padding: rem(28) rem(30);
+                }
+            }
+        }
+
+        &__text-wrap {
+            margin-top: rem(11);
+        }
+
+        &__text {
+            font-size: rem(12);
+            line-height: 1;
+            font-weight: fw(regular);
+
+            @include helper-breakpoint-media-min($lg) {
+                font-size: rem(15);
+            }
+
+            &--bigger {
+                font-size: rem(14);
+                font-weight: fw(medium);
+
+                @include helper-breakpoint-media-min($lg) {
+                    font-size: rem(16);
+                }
+            }
+        }
+
+        @content;
     }
 }
 

@@ -2,7 +2,7 @@
 
 {% define config = {
     name: 'review-summary',
-    tag: 'section'
+    tag: 'section',
 } %}
 
 {% define data = {
@@ -13,15 +13,14 @@
     idProductAbstract: required,
     reviewForm: required,
     action: required,
-
     pagination: {
         parameters: required,
         currentPage: required,
         paginationPath: required,
         maxPage: required,
         showAlwaysFirstAndLast: true,
-        anchor: 'product-reviews'
-    }
+        anchor: 'product-reviews',
+    },
 } %}
 
 {% block body %}
@@ -37,16 +36,16 @@
                         {% include molecule('review-average-display', 'ProductReviewWidget') with {
                             data: {
                                 summary: data.summary,
-                                ratingMaxValue: data.ratingMaxValue
-                            }
+                                ratingMaxValue: data.ratingMaxValue,
+                            },
                         } only %}
                     </div>
 
                     <div class="col col--sm-12 col--md-auto">
                         {% include molecule('review-distribution-display', 'ProductReviewWidget') with {
                             data: {
-                                summary: data.summary
-                            }
+                                summary: data.summary,
+                            },
                         } only %}
                     </div>
                 </div>
@@ -61,21 +60,38 @@
                 {% endif %}
             </div>
 
-            {% include molecule('toggler-click') with {
-                attributes: {
-                    'trigger-selector': '.' ~ config.jsName ~ '__new-review-form-open, ' ~ '.' ~ config.jsName ~ '__new-review-form-close',
-                    'target-selector': '.' ~ config.jsName ~ '__new-review-form, ' ~ '.' ~ config.jsName ~ '__new-review-form-open',
-                    'class-to-toggle': 'is-hidden'
-                }
-            } only %}
+            {% set togglerClickData = [
+                {
+                    triggerClass: config.jsName ~ '__new-review-form-open',
+                    targetClass: config.jsName ~ '__new-review-form',
+                    triggerClassToToggle: 'is-hidden',
+                },
+                {
+                    triggerClass: config.jsName ~ '__new-review-form-close',
+                    targetClass: config.jsName ~ '__new-review-form',
+                },
+                {
+                    triggerClass: config.jsName ~ '__new-review-form-close',
+                    targetClass: config.jsName ~ '__new-review-form-open',
+                },
+            ] %}
+
+            {% for componentData in togglerClickData %}
+                {% include molecule('toggler-click') with {
+                    attributes: {
+                        'trigger-class-name': componentData.triggerClass,
+                        'target-class-name': componentData.targetClass,
+                        'trigger-class-to-toggle': componentData.triggerClassToToggle ?? '',
+                    },
+                } only %}
+            {% endfor %}
 
             {% include molecule('toggler-hash') with {
                 attributes: {
                     'trigger-hash': '#review',
-                    'target-selector': '.' ~ config.jsName ~ '__new-review-form',
-                    'class-to-toggle': 'is-hidden',
-                    'add-class-when-hash-in-url': false
-                }
+                    'target-class-name': config.jsName ~ '__new-review-form',
+                    'add-class-when-hash-in-url': false,
+                },
             } only %}
 
             {% if is_granted('ROLE_USER') %}
@@ -85,8 +101,8 @@
                     {% include molecule('new-review-form', 'ProductReviewWidget') with {
                         data: {
                             form: data.reviewForm,
-                            action: url(data.action, {idProductAbstract: data.idProductAbstract})
-                        }
+                            action: url(data.action, {idProductAbstract: data.idProductAbstract}),
+                        },
                     } only %}
                 </div>
             {% endif %}
@@ -108,13 +124,13 @@
                                 ratingMaxValue: data.ratingMaxValue,
                                 nickname: review.nickname,
                                 createdAt: review.createdAt | formatDateTime,
-                                description: review.description
-                            }
+                                description: review.description,
+                            },
                         } only %}
                     {% endfor %}
 
                     {% include molecule('pagination') with {
-                        data: data.pagination
+                        data: data.pagination,
                     } only %}
                 {% endif %}
             {% endif %}

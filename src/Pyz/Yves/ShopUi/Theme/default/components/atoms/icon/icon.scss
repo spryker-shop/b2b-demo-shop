@@ -2,6 +2,8 @@ $shop-ui-icon-size-big: 1.25rem;
 $shop-ui-icon-size-bigger: 1.5rem;
 
 @include shop-ui-icon {
+    z-index: $setting-zi-icon;
+
     &--logo {
         width: rem(96);
         height: rem(32);
@@ -194,10 +196,7 @@ $shop-ui-icon-size-bigger: 1.5rem;
         margin-right: rem(6);
     }
 
-    &--shipment {
-        width: rem(83);
-    }
-
+    &--hermes-logo,
     &--dhl-logo {
         width: rem(73);
     }

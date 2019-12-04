@@ -4,10 +4,10 @@
 
         &__link,
         &__text {
+            @include helper-effect-transition(color);
             position: relative;
             letter-spacing: rem(0.2);
             z-index: $setting-zi-element;
-            @include helper-effect-transition(color);
 
             @include helper-breakpoint-media-min($xl) {
                 white-space: nowrap;
@@ -22,6 +22,7 @@
             #{$name}__link,
             #{$name}__text {
                 color: $setting-color-alt;
+
                 &:hover {
                     color: helper-color-dark($setting-color-alt, 20);
                 }
@@ -32,6 +33,7 @@
             #{$name}__link,
             #{$name}__text {
                 color: $setting-color-main;
+
                 &:hover {
                     color: helper-color-dark($setting-color-main, 20);
                 }
@@ -236,15 +238,6 @@
                         transform: scale(1);
                     }
                 }
-
-                &--reverse {
-                    #{$name}-wrapper--lvl-1 {
-                        @include helper-breakpoint-media-min($xl) {
-                            left: auto;
-                            right: rem(-10);
-                        }
-                    }
-                }
             }
 
             &:last-of-type {
@@ -266,6 +259,7 @@
                     &::before {
                         display: block;
                     }
+
                     &::after {
                         opacity: 1;
                     }
@@ -283,12 +277,12 @@
             color: $setting-color-gray-5;
 
             @include helper-breakpoint-media-min($xl) {
+                @include helper-effect-transition(color);
                 padding: 0;
                 font-weight: fw(regular);
                 line-height: rem(68);
                 color: $setting-color-gray-3;
                 letter-spacing: 0;
-                @include helper-effect-transition(color);
             }
 
             &:hover {
@@ -305,14 +299,13 @@
         }
 
         // Level 1
-
         &-wrapper--lvl-1 {
             @include helper-breakpoint-media-min($xl) {
+                @include helper-effect-transition(transform);
                 padding-top: rem(15);
                 position: absolute;
                 top: 100%;
                 left: rem(-10);
-                @include helper-effect-transition(transform);
                 transform-origin: top left;
                 transform: scale(0);
             }
@@ -321,6 +314,14 @@
                 left: rem(-28);
             }
         }
+
+        &-wrapper--reverse {
+            @include helper-breakpoint-media-min($xl) {
+                left: auto;
+                right: rem(-10);
+            }
+        }
+
         &--lvl-1 {
             padding-bottom: rem(12);
 
@@ -392,7 +393,6 @@
         }
 
         // Level 2
-
         &--lvl-2 {
             padding-bottom: rem(10);
 
@@ -425,6 +425,7 @@
                 padding: 0;
             }
         }
+
         &__link--lvl-2:hover {
             color: $setting-color-gray-4;
         }

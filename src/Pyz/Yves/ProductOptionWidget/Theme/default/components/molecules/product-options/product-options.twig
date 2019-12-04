@@ -21,7 +21,7 @@
                 {{ option.value | trans }}
 
                 {% if can('SeePricePermissionPlugin') %}
-                    <span class="{{ config.name }}__price">{{ option.unitPrice | money }}</span>
+                    - {{ option.unitPrice | money }}
                 {% endif %}
             </li>
         {% endfor %}

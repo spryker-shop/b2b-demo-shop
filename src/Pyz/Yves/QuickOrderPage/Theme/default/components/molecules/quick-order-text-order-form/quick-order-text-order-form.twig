@@ -1,30 +1,19 @@
-{% extends model('component') %}
-
-{% define config = {
-    name: 'quick-order-text-order-form',
-} %}
-
-{% define data = {
-    textOrderForm: required
-} %}
+{% extends molecule('quick-order-text-order-form', '@SprykerShop:QuickOrderPage') %}
 
 {% block body %}
     <div class="{{ config.name }}__content">
         <h5 class="{{ config.name }}__title spacing-bottom">{{ 'quick-order.paste-order.title' | trans }}</h5>
-
         <p>{{ 'quick-order.paste-order.description' | trans }}</p>
-
         {% include molecule('form') with {
             class: 'spacing-top spacing-top--big spacing-x spacing-x--inner spacing-x--reset',
             modifiers: ['text-order'],
             data: {
                 form: data.textOrderForm,
                 enableStart: false,
-                enableEnd: false
-            }
+                enableEnd: false,
+            },
         } only %}
     </div>
-
     <button type="submit" name="textOrder" class="button button--success spacing-top spacing-top--big">
         {{ 'quick-order.paste-order.button.verify' | trans }}
     </button>

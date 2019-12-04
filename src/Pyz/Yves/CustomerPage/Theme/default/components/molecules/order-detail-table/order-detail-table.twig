@@ -1,101 +1,114 @@
-{% extends model('component') %}
-
-{% define config = {
-    name: 'order-detail-table',
-    tag: 'div'
-} %}
-
-{% define data = {
-    items: required,
-    order: required
-} %}
+{% extends molecule('order-detail-table', '@SprykerShop:CustomerPage') %}
 
 {% block body %}
-    {% set currencyIsoCode = data.order.currencyIsoCode %}
+    {% for shipmentGroup in data.shipmentGroups %}
+        <article class="grid grid--gap spacing-bottom spacing-bottom--big">
+            <h3 class="col col--sm-12 col--xl-8 title title--second spacing-bottom spacing-bottom--small">
+                {{ 'page.checkout.shipment.shipment_group_heading' | trans({
+                    '%current%': loop.index,
+                    '%total%': loop.length
+                }) }}
+            </h3>
+            <div class="col col--sm-12 col--xl-8">
+                {% widget 'OrderConfiguredBundleWidget' args [data.order, shipmentGroup.items] only %}
+                {% endwidget %}
 
-    <table class="table table--responsive">
-        <thead class="{{ config.name }}__head">
-            <tr>
-                {% block headerRow %}
-                    <td></td>
-                    <th class="{{ config.name }}__cell {{ config.name }}__cell--head">{{ 'customer.order.item_sku' | trans }}</th>
-                    <th class="{{ config.name }}__cell {{ config.name }}__cell--head">{{ 'customer.order.product_name' | trans }}</th>
-                    <th class="{{ config.name }}__cell {{ config.name }}__cell--head">{{ 'customer.order.item_price' | trans }}</th>
-                    <th class="{{ config.name }}__cell {{ config.name }}__cell--head">{{ 'customer.order.item_quantity' | trans }}</th>
-                    <th class="{{ config.name }}__cell {{ config.name }}__cell--head">{{ 'customer.order.item_sum' | trans }}</th>
-                {% endblock %}
-            </tr>
-        </thead>
-        <tbody>
-            {% for item in data.items %}
-                {% set isBundle = item.bundleItems is defined %}
-                {% set concreteItem = item.bundleProduct | default(item) %}
+                {% for item in shipmentGroup.items if not item.salesOrderConfiguredBundleItem | default({}) %}
+                    {% set item = item.bundleProduct ?? item %}
 
-                {% block row %}
-                    {% include [
-                        molecule('order-detail-product-packaging-unit', 'ProductPackagingUnitWidget'),
-                        molecule('order-detail-product-packaging-unit-default', 'CustomerPage'),
-                        ] ignore missing with {
-                        class: config.name ~ '__row row row--order-details',
+                    {% embed molecule('product-card-item') with {
+                        modifiers: ['order-detail'],
                         data: {
-                            item: item,
-                            order: data.order
-                        }
+                            listItem: item,
+                            quantity: item.quantity,
+                            priceModifiers: ['medium', 'block', 'margin-bottom-from-tablet'],
+                        },
+                        embed: {
+                            order: data.order,
+                        },
                     } only %}
-                {% endblock %}
-
-                {% if isBundle %}
-                    <tr class="{{ config.name }}__row {{ config.name }}__row--detail is-hidden-sm-md">
-                        {% block bundleDetailRow %}
-                            <td></td>
-                            <td class="{{ config.name }}__cell {{ config.name }}__cell--detail" colspan="5">
-                                {{ "customer.order.bundled_items" | trans }} <br>
-                                {% for bundledItem in item.bundleItems %}
-                                    - {{ bundledItem.quantity }} x {{ bundledItem.name }} <br>
-                                {% endfor %}
-
-                                {% if concreteItem.productOptions is not empty %}
-                                    {{ "customer.order.options" | trans }} <br>
-                                    {% for productOption in concreteItem.productOptions %}
-                                        - {{ productOption.value | trans }} {{ productOption.sumPrice | money(true, currencyIsoCode) }}  <br>
-                                    {% endfor %}
-                                {% endif %}
-                            </td>
-                        {% endblock %}
-                    </tr>
-                {% else %}
-                    {% if concreteItem.productOptions is not empty %}
-                        {% for productOption in concreteItem.productOptions %}
-                            <tr class="{{ config.name }}__row {{ config.name }}__row--detail is-hidden-sm-md">
-                                {% block detailRow %}
-                                    <td></td>
-                                    <td></td>
-                                    <td class="{{ config.name }}__cell {{ config.name }}__cell--detail">
-                                        + <small>{{ productOption.value | trans }}</small>
-                                    </td>
-                                    <td class="{{ config.name }}__cell {{ config.name }}__cell--detail">
-                                        <small>{{ productOption.sumPrice | money(true, currencyIsoCode) }}</small>
-                                    </td>
-                                    <td class="{{ config.name }}__cell {{ config.name }}__cell--detail" colspan="2"></td>
-                                {% endblock %}
-                            </tr>
-                        {% endfor %}
-                    {% endif %}
-                {% endif %}
-                {% if concreteItem.cartNote is not empty %}
-                    <tr class="is-hidden-sm-md">
-                        <td></td>
-                        <td class="{{ config.name }}__cell {{ config.name }}__cell--detail" colspan="5">
-                            {% include molecule('note-list', 'CartNoteWidget') ignore missing with {
+                        {% block image %}
+                            {% embed molecule('product-item-image') with {
+                                modifiers: ['small'],
                                 data: {
-                                    label: 'cart_note.customer_page.item_note',
-                                    note: concreteItem.cartNote
-                                }
+                                    name: data.listItem.name,
+                                    image: data.listItem.metadata.image,
+                                },
+                                embed: {
+                                    order: embed.order,
+                                    listItem: data.listItem,
+                                },
                             } only %}
-                        </td>
-                    </tr>
-                {% endif %}
-            {% endfor %}
-        </tbody>
-    </table>
+                                {% block body %}
+                                    {% if embed.order is not empty %}
+                                        <span class="{{ config.name }}__checkbox">
+                                            {% widget 'CustomerReorderItemCheckboxWidget' args [embed.listItem] only %}{% endwidget %}
+                                        </span>
+                                    {% endif %}
+
+                                    {{ parent() }}
+                                {% endblock %}
+                            {% endembed %}
+                        {% endblock %}
+
+                        {% block title %}
+                            <h6 class="{{ config.name }}__title spacing spacing--reset">{{ data.listItem.name }}</h6>
+                        {% endblock %}
+
+                        {% block subQuantity %}
+                            {% set salesUnitName = data.listItem.quantitySalesUnit.productMeasurementUnit.name | default %}
+
+                            {% if salesUnitName is not empty and data.listItem.amount == 0 %}
+                                {% include atom('quantity-option') with {
+                                    class: 'col col--sm-12 col--md-auto',
+                                    data: {
+                                        value: data.listItem.quantity,
+                                        precision: data.listItem.quantitySalesUnit.conversion,
+                                        optionName: salesUnitName | trans,
+                                    },
+                                } only %}
+                            {% endif %}
+
+                            {% if data.listItem.amount != 0 %}
+                                {% set amountSalesUnitName = data.listItem.amountSalesUnit.productMeasurementUnit.name | default %}
+
+                                {% include atom('quantity-option') with {
+                                    class: 'col col--sm-12 col--md-auto',
+                                    data: {
+                                        value: data.listItem.amount,
+                                        precision: data.listItem.quantity,
+                                        optionName: amountSalesUnitName | trans,
+                                    },
+                                } only %}
+                            {% endif %}
+                        {% endblock %}
+
+                        {% block note %}
+                            {% if data.listItem.cartNote is not empty %}
+                                {% include molecule('cart-item-note', 'CartNoteWidget') ignore missing with {
+                                    data: {
+                                        isNoteNotEmpty: true,
+                                        canWrite: false,
+                                        label: 'cart_note.checkout_page.quote_note',
+                                        note: data.listItem.cartNote,
+                                    },
+                                } only %}
+                            {% endif %}
+                        {% endblock %}
+
+                        {% block bundle %}{% endblock %}
+                    {% endembed %}
+                {% endfor %}
+            </div>
+
+            <div class="col col--sm-12 col--xl-4">
+                {% include molecule('summary-sidebar', 'CheckoutPage') ignore missing with {
+                    data: {
+                        shipment: shipmentGroup.shipment,
+                        canEdit: false,
+                    },
+                } only %}
+            </div>
+        </article>
+    {% endfor %}
 {% endblock %}
