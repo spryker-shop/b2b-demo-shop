@@ -73,7 +73,7 @@
     <div class="container {% block containerClass %}container--checkout{% endblock %}">
         {% if data.title is not empty %}
             <h1 class="title title--checkout">
-                {% if data.stepNumder is defined %}
+                {% if data.stepNumder is defined and data.breadcrumbs | length > 1 %}
                     <span class="title__index">{{ data.stepNumder }}</span>
                 {% endif %}
                 {{ data.title }}
