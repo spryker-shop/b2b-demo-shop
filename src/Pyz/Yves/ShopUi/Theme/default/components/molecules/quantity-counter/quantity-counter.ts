@@ -103,10 +103,6 @@ export default class QuantityCounter extends Component {
     }
 
     protected get precision(): number {
-        if (this.numbersAfterDot === 0) {
-            return 1;
-        }
-
         return Number(`1${'0'.repeat(this.numbersAfterDot)}`);
     }
 }
