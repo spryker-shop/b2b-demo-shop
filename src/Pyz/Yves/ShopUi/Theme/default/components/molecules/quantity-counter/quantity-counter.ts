@@ -9,7 +9,7 @@ export default class QuantityCounter extends Component {
     protected timeout: number = 0;
     protected eventChange: Event = new Event('change');
     protected eventInput: Event = new Event('input');
-    protected numbersAfterDot: number = 10;
+    protected numberOfDecimalPlaces: number = 10;
 
     protected readyCallback(): void {}
 
@@ -35,7 +35,7 @@ export default class QuantityCounter extends Component {
         if (this.isAvailable) {
             const value = Number(this.input.value);
             const potentialValue = Number(((value * this.precision) + (this.step * this.precision)) /
-                this.precision).toFixed(this.numbersAfterDot);
+                this.precision).toFixed(this.numberOfDecimalPlaces);
 
             if (value < this.maxQuantity) {
                 this.input.value = potentialValue.toString();
@@ -49,7 +49,7 @@ export default class QuantityCounter extends Component {
         if (this.isAvailable) {
             const value = Number(this.input.value);
             const potentialValue = Number(((value * this.precision) - (this.step * this.precision)) /
-                this.precision).toFixed(this.numbersAfterDot);
+                this.precision).toFixed(this.numberOfDecimalPlaces);
 
             if (Number(potentialValue) >= this.minQuantity) {
                 this.input.value = potentialValue.toString();
@@ -103,6 +103,6 @@ export default class QuantityCounter extends Component {
     }
 
     protected get precision(): number {
-        return Number(`1${'0'.repeat(this.numbersAfterDot)}`);
+        return Number(`1${'0'.repeat(this.numberOfDecimalPlaces)}`);
     }
 }
