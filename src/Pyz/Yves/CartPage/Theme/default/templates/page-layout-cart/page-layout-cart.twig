@@ -162,9 +162,16 @@
                     } %}
                 {% endif %}
 
-                {% for cartItem in transformedCartItems %}
+                {% widget 'QuoteConfiguredBundleWidget' args [data.cart] with {
+                    data: {
+                        isEditable: data.isQuoteEditable,
+                    },
+                } only %}
+                {% endwidget %}
+
+                {% for cartItem in transformedCartItems if not cartItem.configuredBundleItem %}
                     {% block cartItem %}
-                        {% embed molecule('product-item') with {
+                        {% embed molecule('product-card-item') with {
                             data: {
                                 list: data.cart,
                                 listItem: cartItem,

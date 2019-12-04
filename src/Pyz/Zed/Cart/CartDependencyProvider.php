@@ -13,6 +13,9 @@ use Spryker\Zed\Cart\CartDependencyProvider as SprykerCartDependencyProvider;
 use Spryker\Zed\Cart\Communication\Plugin\CleanUpItemsPreReloadPlugin;
 use Spryker\Zed\Cart\Communication\Plugin\SkuGroupKeyPlugin;
 use Spryker\Zed\CartPermissionConnector\Communication\Plugin\Cart\AlterCartUpToAmountPermissionPlugin;
+use Spryker\Zed\ConfigurableBundleCart\Communication\Plugin\Cart\ConfiguredBundleQuantityCartTerminationPlugin;
+use Spryker\Zed\ConfigurableBundleCart\Communication\Plugin\Cart\ConfiguredBundleQuantityPerSlotPreReloadItemsPlugin;
+use Spryker\Zed\ConfigurableBundleCart\Communication\Plugin\Cart\ConfiguredBundleQuantityPostSavePlugin;
 use Spryker\Zed\Discount\Communication\Plugin\Cart\DiscountQuoteChangeObserverPlugin;
 use Spryker\Zed\DiscountPromotion\Communication\Plugin\Cart\CartGroupPromotionItems;
 use Spryker\Zed\Kernel\Container;
@@ -138,7 +141,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
     /**
      * @param \Spryker\Zed\Kernel\Container $container
      *
-     * @return \Spryker\Zed\Cart\Dependency\PostSavePluginInterface[]
+     * @return \Spryker\Zed\CartExtension\Dependency\Plugin\CartOperationPostSavePluginInterface[]
      */
     protected function getPostSavePlugins(Container $container)
     {
@@ -148,6 +151,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new RemovePaymentCartPostSavePlugin(),
             new QuantitySalesUnitValuePostSavePlugin(),
             new AmountSalesUnitValuePostSavePlugin(), #ProductPackagingUnit
+            new ConfiguredBundleQuantityPostSavePlugin(),
         ];
     }
 
@@ -164,6 +168,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new RemoveRestrictedItemsPreReloadPlugin(),
             new CleanUpItemsPreReloadPlugin(),
             new FilterItemsWithoutPricePlugin(),
+            new ConfiguredBundleQuantityPerSlotPreReloadItemsPlugin(),
         ];
     }
 
@@ -188,6 +193,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
     {
         return [
             new AlterCartUpToAmountPermissionPlugin(),
+            new ConfiguredBundleQuantityCartTerminationPlugin(),
         ];
     }
 
