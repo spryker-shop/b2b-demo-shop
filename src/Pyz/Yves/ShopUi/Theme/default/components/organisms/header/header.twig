@@ -56,6 +56,7 @@
                     {% if data.showSearchForm %}
                         {% embed molecule('search-form') with {
                             class: config.name ~ '__search-form ' ~ config.jsName ~ '__search-form',
+                            modifiers: ['main-search'],
                             attributes: {
                                 'data-search-id': 'desktop',
                             },
@@ -147,7 +148,7 @@
             attributes: {
                 'trigger-class-name': triggerClass,
                 'target-class-name': config.jsName ~ '__search-form',
-                'class-to-toggle': config.name ~ '__search-form--active',
+                'class-to-toggle': 'search-form--active',
             },
         } only %}
     {% endfor %}

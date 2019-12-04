@@ -14,10 +14,20 @@
                 }) }}
             </h3>
             <div class="col col--sm-12 col--xl-8">
-                {% for item in shipmentGroup.items %}
+                {% widget 'QuoteConfiguredBundleWidget' args [data.cart, shipmentGroup.items] with {
+                    data: {
+                        isEditable: false,
+                        isQuantityVisible: false,
+                    },
+                } only %}
+                {% endwidget %}
+
+                {% set itemsExceptConfiguredBundles = shipmentGroup.items | filter(item => item.configuredBundleItem is not defined or item.configuredBundleItem is empty) %}
+
+                {% for item in itemsExceptConfiguredBundles %}
                     {% set item = item.bundleProduct ?? item %}
 
-                    {% embed molecule('product-item') with {
+                    {% embed molecule('product-card-item') with {
                         modifiers: ['checkout'],
                         data: {
                             list: data.cartItems,
@@ -94,23 +104,22 @@
                         shipment: shipmentGroup.shipment,
                     },
                 } only %}
+
+                {% include molecule('summary-item-box', 'CheckoutPage') with {
+                    modifiers: ['mobile-border-top'],
+                    data: {
+                        title: 'checkout.step.summary.payment' | trans,
+                        method: data.paymentMethod,
+                        iconName: data.paymentMethod | lower,
+                        editUrl: 'checkout-payment',
+                        canEdit: true,
+                    },
+                } only %}
             </div>
         </article>
     {% endfor %}
 
     <div class="grid grid--gap">
-        <div class="col col--sm-12 col--lg-6">
-            {% include molecule('summary-item-box', 'CheckoutPage') with {
-                modifiers: ['mobile-border-top'],
-                data: {
-                    title: 'checkout.step.summary.payment' | trans,
-                    method: data.paymentMethod,
-                    iconName: data.paymentMethod | lower,
-                    editUrl: 'checkout-payment',
-                    canEdit: true,
-                },
-            } only %}
-        </div>
         <div class="col col--sm-12 col--lg-6">
             {% include molecule('summary-item-box', 'CheckoutPage') with {
                 data: {
