@@ -5809,16 +5809,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-feature/spryker-core.git",
-                "reference": "5e84b1457c7fb1edd3f9caaed5378687a308a507"
+                "reference": "afe69e504d16873a9808d8e9f7ccff13b40dd087"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-feature/spryker-core/zipball/5e84b1457c7fb1edd3f9caaed5378687a308a507",
-                "reference": "5e84b1457c7fb1edd3f9caaed5378687a308a507",
+                "url": "https://api.github.com/repos/spryker-feature/spryker-core/zipball/afe69e504d16873a9808d8e9f7ccff13b40dd087",
+                "reference": "afe69e504d16873a9808d8e9f7ccff13b40dd087",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
+                "php": ">=7.2",
                 "spryker-shop/error-page": "^1.2.0",
                 "spryker-shop/heartbeat-page": "^1.1.0",
                 "spryker-shop/home-page": "^1.0.1",
@@ -5836,6 +5836,7 @@
                 "spryker/country": "^3.3.0",
                 "spryker/data-import": "^1.6.0",
                 "spryker/event-dispatcher": "^1.0.0",
+                "spryker/form": "^1.0.0",
                 "spryker/glossary": "^3.7.0",
                 "spryker/glossary-storage": "^1.4.0",
                 "spryker/glue-application": "^1.21.0",
@@ -5852,6 +5853,7 @@
                 "spryker/rabbit-mq": "^2.7.0",
                 "spryker/router": "^1.0.0",
                 "spryker/scheduler": "^1.0.0",
+                "spryker/security": "^1.0.0",
                 "spryker/session": "^4.4.0",
                 "spryker/session-file": "^1.0.0",
                 "spryker/session-redis": "^1.0.0",
@@ -5867,13 +5869,14 @@
                 "spryker/url": "^3.5.0",
                 "spryker/url-storage": "^1.5.0",
                 "spryker/uuid-behavior": "^1.1.0",
+                "spryker/validator": "^1.0.0",
                 "spryker/vault": "^1.1.0",
                 "spryker/zed-request": "^3.8.0"
             },
             "type": "metapackage",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "201910.x-dev"
+                    "dev-master": "202001.x-dev"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -5881,7 +5884,7 @@
                 "proprietary"
             ],
             "description": "Spryker Core [feature]",
-            "time": "2019-10-11T08:36:23+00:00"
+            "time": "2019-12-03T13:24:50+00:00"
         },
         {
             "name": "spryker-feature/spryker-core-back-office",
@@ -21133,6 +21136,53 @@
             "time": "2019-10-14T10:22:10+00:00"
         },
         {
+            "name": "spryker/form",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/form.git",
+                "reference": "03c953d39efec1168dc589fcbbf7fdf4b3f5ccde"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/form/zipball/03c953d39efec1168dc589fcbbf7fdf4b3f5ccde",
+                "reference": "03c953d39efec1168dc589fcbbf7fdf4b3f5ccde",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/application-extension": "^1.0.0",
+                "spryker/form-extension": "^1.0.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/symfony": "^3.2.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/container": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/container": "If you want to use the form extension plugins."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "Form module",
+            "time": "2019-11-28T08:38:37+00:00"
+        },
+        {
             "name": "spryker/form-extension",
             "version": "1.0.0",
             "source": {
@@ -32028,6 +32078,54 @@
             "time": "2019-11-05T11:54:34+00:00"
         },
         {
+            "name": "spryker/security",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/security.git",
+                "reference": "63b7b498f927319edc7e13d63ba2a1113f042bb0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/security/zipball/63b7b498f927319edc7e13d63ba2a1113f042bb0",
+                "reference": "63b7b498f927319edc7e13d63ba2a1113f042bb0",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/validator-extension": "^1.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/container": "*",
+                "spryker/kernel": "*",
+                "spryker/symfony": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/container": "If you want to use Validator plugins.",
+                "spryker/kernel": "If you want to use Validator plugins.",
+                "spryker/symfony": "If you want to use Validator plugins."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "Security module",
+            "time": "2019-11-27T10:16:58+00:00"
+        },
+        {
             "name": "spryker/sequence-number",
             "version": "3.1.0",
             "source": {
@@ -35674,6 +35772,96 @@
             ],
             "description": "UuidBehavior module",
             "time": "2019-06-21T14:24:18+00:00"
+        },
+        {
+            "name": "spryker/validator",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/validator.git",
+                "reference": "da9814b4022e63eabc851ef7a2c620335f8035dd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/validator/zipball/da9814b4022e63eabc851ef7a2c620335f8035dd",
+                "reference": "da9814b4022e63eabc851ef7a2c620335f8035dd",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/application-extension": "^1.0.0",
+                "spryker/container": "^1.4.0",
+                "spryker/form-extension": "^1.0.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/symfony": "^3.2.2",
+                "spryker/validator-extension": "^1.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "Validator module",
+            "time": "2019-11-28T08:38:37+00:00"
+        },
+        {
+            "name": "spryker/validator-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/validator-extension.git",
+                "reference": "ce937724ebcb10fa5dd4ab64ca239c1e2545d222"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/validator-extension/zipball/ce937724ebcb10fa5dd4ab64ca239c1e2545d222",
+                "reference": "ce937724ebcb10fa5dd4ab64ca239c1e2545d222",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/container": "*",
+                "spryker/symfony": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/container": "If you want to use the ValidatorPluginInterface.",
+                "spryker/symfony": "If you want to use the ValidatorPluginInterface."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ValidatorExtension module",
+            "time": "2019-09-27T10:47:23+00:00"
         },
         {
             "name": "spryker/vault",
