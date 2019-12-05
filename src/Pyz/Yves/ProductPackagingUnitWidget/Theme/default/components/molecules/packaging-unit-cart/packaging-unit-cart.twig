@@ -3,49 +3,46 @@
 {% define data = {
     hasSubQuantity: false,
     hasAmountPerQuantity: false,
-    countOfDecimalsInAmount: 10,
 } %}
 
 {% block body %}
     {% set amountPerQuantity = data.amount.divide(data.quantity, data.countOfDecimalsInAmount).trim %}
+    {% set salesUnitName = data.quantitySalesUnit.productMeasurementUnit.name | default %}
+    {% set quantitySalesUnit = data.hasSubQuantity and salesUnitName is not empty and data.amount is empty %}
 
     {% if data.quantity is not empty %}
         <li class="spacing-top">
             {{ 'packaging_units.cart.quantity' | trans }}: {{ data.quantity }}
 
-            {% if data.hasSubQuantity %}
-                {% set salesUnitName = data.quantitySalesUnit.productMeasurementUnit.name | default %}
+            {% if quantitySalesUnit %}
+                {% include atom('quantity-option') with {
+                    class: 'spacing-left',
+                    data: {
+                        value: data.quantity,
+                        precision: data.quantitySalesUnit.conversion,
+                        optionName: salesUnitName | trans,
+                    },
+                } only %}
+            {% endif %}
 
-                {% if salesUnitName is not empty and data.amount is empty %}
-                    {% include atom('quantity-option') with {
-                        class: 'spacing-left',
-                        data: {
-                            value: data.quantity,
-                            precision: data.quantitySalesUnit.conversion,
-                            optionName: salesUnitName | trans,
-                        },
-                    } only %}
-                {% endif %}
+            {% if data.hasSubQuantity and data.amount is not empty %}
+                {% set amountSalesUnitName = data.amountSalesUnit.productMeasurementUnit.name | default %}
 
-                {% if data.amount is not empty %}
-                    {% set amountSalesUnitName = data.amountSalesUnit.productMeasurementUnit.name | default %}
-
-                    {% embed atom('quantity-option') with {
-                        class: 'spacing-left',
-                        data: {
-                            value: data.amount,
-                            precision: data.quantity,
-                            optionName: amountSalesUnitName | trans,
-                        },
-                        embed: {
-                            countOfDecimalsInAmount: data.countOfDecimalsInAmount,
-                        },
-                    } only %}
-                        {% block body %}
-                            {{ data.value.divide(data.precision, embed.countOfDecimalsInAmount).trim }} {{ data.optionName }}
-                        {% endblock %}
-                    {% endembed %}
-                {% endif %}
+                {% embed atom('quantity-option') with {
+                    class: 'spacing-left',
+                    data: {
+                        value: data.amount,
+                        precision: data.quantity,
+                        optionName: amountSalesUnitName | trans,
+                    },
+                    embed: {
+                        countOfDecimalsInAmount: data.countOfDecimalsInAmount,
+                    },
+                } only %}
+                    {% block body %}
+                        {{ data.value.divide(data.precision, embed.countOfDecimalsInAmount).trim }} {{ data.optionName }}
+                    {% endblock %}
+                {% endembed %}
             {% endif %}
         </li>
     {% endif %}

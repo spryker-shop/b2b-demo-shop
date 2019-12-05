@@ -34,8 +34,8 @@ export default class QuantityCounter extends Component {
         event.preventDefault();
         if (this.isAvailable) {
             const value = Number(this.input.value);
-            const potentialValue = Number(((value * this.precision) + (this.step * this.precision)) /
-                this.precision).toFixed(this.numberOfDecimalPlaces);
+            const potentialValue = Number((((value * this.precision) + (this.step * this.precision)) /
+                this.precision).toFixed(this.numberOfDecimalPlaces));
 
             if (value < this.maxQuantity) {
                 this.input.value = potentialValue.toString();
@@ -48,10 +48,10 @@ export default class QuantityCounter extends Component {
         event.preventDefault();
         if (this.isAvailable) {
             const value = Number(this.input.value);
-            const potentialValue = Number(((value * this.precision) - (this.step * this.precision)) /
-                this.precision).toFixed(this.numberOfDecimalPlaces);
+            const potentialValue = Number((((value * this.precision) - (this.step * this.precision)) /
+                this.precision).toFixed(this.numberOfDecimalPlaces));
 
-            if (Number(potentialValue) >= this.minQuantity) {
+            if (potentialValue >= this.minQuantity) {
                 this.input.value = potentialValue.toString();
                 this.triggerInputEvent();
             }

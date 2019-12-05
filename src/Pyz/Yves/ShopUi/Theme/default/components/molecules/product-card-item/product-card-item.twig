@@ -17,8 +17,6 @@
     priceModifiers: ['medium'],
     isShoppingList: false,
     currencyIsoCode: null,
-    hasSubQuantity: false,
-    hasAmountPerQuantity: false,
 } %}
 
 {% block body %}
@@ -83,22 +81,27 @@
                                 {% endblock %}
 
                                 {% block packagingUnitCart %}
+                                    {% set hasSubQuantity = false %}
+                                    {% set hasAmountPerQuantity = false %}
+
                                     {% if amountSalesUnit is not empty %}
-                                        {% include molecule('packaging-unit-cart', 'ProductPackagingUnitWidget') with {
-                                            data: {
-                                                amount: data.listItem.amount,
-                                                quantity: data.listItem.quantity,
-                                                quantitySalesUnit: data.listItem.quantitySalesUnit,
-                                                quantityConversion: data.listItem.quantitySalesUnit.conversion | default(null),
-                                                quantityProductMeasurementUnit: data.listItem.quantitySalesUnit.productMeasurementUnit | default(null),
-                                                amountSalesUnit: data.listItem.amountSalesUnit,
-                                                amountConversion: data.listItem.amountSalesUnit.conversion,
-                                                amountProductMeasurementUnit: data.listItem.amountSalesUnit.productMeasurementUnit,
-                                                amountValue: data.listItem.amountSalesUnit.value,
-                                                hasSubQuantity: data.hasSubQuantity,
-                                                hasAmountPerQuantity: data.hasAmountPerQuantity,
-                                            },
-                                        } only %}
+                                        {% block packagingUnitCartContent %}
+                                            {% include molecule('packaging-unit-cart', 'ProductPackagingUnitWidget') with {
+                                                data: {
+                                                    amount: data.listItem.amount,
+                                                    quantity: data.listItem.quantity,
+                                                    quantitySalesUnit: data.listItem.quantitySalesUnit,
+                                                    quantityConversion: data.listItem.quantitySalesUnit.conversion | default(null),
+                                                    quantityProductMeasurementUnit: data.listItem.quantitySalesUnit.productMeasurementUnit | default(null),
+                                                    amountSalesUnit: data.listItem.amountSalesUnit,
+                                                    amountConversion: data.listItem.amountSalesUnit.conversion,
+                                                    amountProductMeasurementUnit: data.listItem.amountSalesUnit.productMeasurementUnit,
+                                                    amountValue: data.listItem.amountSalesUnit.value,
+                                                    hasSubQuantity: hasSubQuantity,
+                                                    hasAmountPerQuantity: hasAmountPerQuantity,
+                                                },
+                                            } only %}
+                                        {% endblock %}
                                     {% endif %}
                                 {% endblock %}
 

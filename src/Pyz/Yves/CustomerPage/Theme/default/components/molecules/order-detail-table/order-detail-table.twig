@@ -22,8 +22,6 @@
                             listItem: item,
                             quantity: item.quantity,
                             priceModifiers: ['medium', 'block', 'margin-bottom-from-tablet'],
-                            hasSubQuantity: true,
-                            hasAmountPerQuantity: true,
                         },
                         embed: {
                             order: data.order,
@@ -55,6 +53,13 @@
 
                         {% block title %}
                             <h6 class="{{ config.name }}__title spacing spacing--reset">{{ data.listItem.name }}</h6>
+                        {% endblock %}
+
+                        {% block packagingUnitCartContent %}
+                            {% set hasSubQuantity = true %}
+                            {% set hasAmountPerQuantity = true %}
+
+                            {{ parent() }}
                         {% endblock %}
 
                         {% block note %}
