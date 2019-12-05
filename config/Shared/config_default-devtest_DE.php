@@ -15,7 +15,6 @@ use Spryker\Shared\Propel\PropelConstants;
 use Spryker\Shared\Queue\QueueConfig;
 use Spryker\Shared\Queue\QueueConstants;
 use Spryker\Shared\RabbitMq\RabbitMqEnv;
-use Spryker\Shared\Search\SearchConstants;
 use Spryker\Shared\Session\SessionConstants;
 use Spryker\Shared\SessionRedis\SessionRedisConstants;
 use Spryker\Shared\ZedRequest\ZedRequestConstants;
@@ -71,8 +70,7 @@ $config[PropelConstants::ZED_DB_PASSWORD] = 'mate20mg';
 $config[PropelConstants::ZED_DB_DATABASE] = 'DE_devtest_zed';
 
 // ---------- Elasticsearch
-$config[SearchConstants::ELASTICA_PARAMETER__INDEX_NAME]
-    = $config[CollectorConstants::ELASTICA_PARAMETER__INDEX_NAME]
+$config[CollectorConstants::ELASTICA_PARAMETER__INDEX_NAME]
     = 'de_search_devtest';
 
 // ---------- RabbitMq
