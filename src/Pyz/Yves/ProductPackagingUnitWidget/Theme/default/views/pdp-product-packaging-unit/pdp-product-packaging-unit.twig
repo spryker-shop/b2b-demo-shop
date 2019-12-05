@@ -1,6 +1,8 @@
 {% extends view('pdp-product-packaging-unit', '@SprykerShop:ProductPackagingUnitWidget') %}
 
 {% block body %}
+    {% set isAddToCartDisabled = data.isAddToCartDisabled ? 'disabled' %}
+
     <div class="product-packaging-new-price price is-hidden" id="product-packaging-new-price-block">
         <div class="spacing-right">{{ 'measurement_units.new-price' | trans }}:</div>
         <div class="price__amount price__amount--pdp" id="product-packaging-new-price-value-block"></div>
@@ -9,7 +11,9 @@
     <input id="item-money-symbol" type="hidden" value="{{  moneySymbol() }}">
 
     {% if data.salesUnitCount %}
-        <div class="grid grid--middle {{ (data.salesUnitCount > 1 and data.packagingUnitIsSelfLead == false) ? 'grid--justify' }}">
+        {% set isQuantityRowJustify = (data.salesUnitCount > 1 and data.packagingUnitIsSelfLead == false) ? 'grid--justify' %}
+
+        <div class="grid grid--middle {{ isQuantityRowJustify }}">
             <div class="col measurement-unit">
                 <div class="measurement-unit__label">{{ 'packaging_units.pdp.quantity' | trans }}:</div>
                 <div class="measurement-unit__value">
@@ -46,7 +50,9 @@
 
                             {% block options %}
                                 {% for salesUnit in embed.salesUnits %}
-                                    <option value="{{ salesUnit.idProductMeasurementSalesUnit }}" {{ (salesUnit.isDefault) ? 'selected' }}>{{ salesUnit.productMeasurementUnit.name | trans }}</option>
+                                    {% set isSalesUnitSelected = salesUnit.isDefault ? 'selected' %}
+
+                                    <option value="{{ salesUnit.idProductMeasurementSalesUnit }}" {{ isSalesUnitSelected }}>{{ salesUnit.productMeasurementUnit.name | trans }}</option>
                                 {% endfor %}
                             {% endblock %}
                         {% endembed %}
@@ -73,7 +79,7 @@
 
             <div class="col col--expand">
                 <button type="submit" id="add-to-cart-button" class="button button--alternative button--big button--expand button--no-horizontal-padding"
-                        data-init-single-click {{ data.isAddToCartDisabled ? 'disabled' }} {{ qa('add-to-cart-button') }}>
+                        data-init-single-click {{ isAddToCartDisabled }} {{ qa('add-to-cart-button') }}>
                     {% include atom('icon') with {
                         modifiers: ['cart-plus'],
                         data: {
@@ -109,8 +115,9 @@
         {% set defaultAmount = (data.productPackagingUnit.amountMin and data.productPackagingUnit.defaultAmount.toFloat() < data.productPackagingUnit.amountMin.toFloat()) ?
             data.productPackagingUnit.amountMin :
             data.productPackagingUnit.defaultAmount %}
+        {% set isAmountRowJustify = (data.salesUnitCount and data.leadProductSalesUnits | length > 1) ? 'grid--justify' %}
 
-        <div class="grid grid--middle {{ (data.salesUnitCount and data.leadProductSalesUnits | length > 1) ? 'grid--justify' }}">
+        <div class="grid grid--middle {{ isAmountRowJustify }}">
             <div class="col measurement-unit">
                 <div class="measurement-unit__label">{{ 'packaging_units.pdp.amount' | trans }}:</div>
                 <div class="measurement-unit__value">
@@ -154,7 +161,9 @@
 
                             {% block options %}
                                 {% for salesUnit in embed.salesUnits %}
-                                    <option value="{{ salesUnit.idProductMeasurementSalesUnit }}" {{ (salesUnit.isDefault) ? 'selected' }}>{{ salesUnit.productMeasurementUnit.name | trans }}</option>
+                                    {% set isSalesUnitSelected = salesUnit.isDefault ? 'selected' %}
+
+                                    <option value="{{ salesUnit.idProductMeasurementSalesUnit }}" {{ isSalesUnitSelected }}>{{ salesUnit.productMeasurementUnit.name | trans }}</option>
                                 {% endfor %}
                             {% endblock %}
                         {% endembed %}
@@ -201,7 +210,7 @@
         </div>
 
         <button type="submit" id="add-to-cart-button" class="button button--alternative button--big button--expand button--no-horizontal-padding"
-                data-init-single-click {{ data.isAddToCartDisabled ? 'disabled' }} {{ qa('add-to-cart-button') }}>
+                data-init-single-click {{ isAddToCartDisabled }} {{ qa('add-to-cart-button') }}>
             {% include atom('icon') with {
                 modifiers: ['cart-plus'],
                 data: {
