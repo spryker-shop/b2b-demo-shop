@@ -26,13 +26,6 @@ export default class SourcePriceForm extends SourcePriceFormParentClass {
 
     protected onCheckboxChange(event: Event): void {
         super.onCheckboxChange(event);
-
-        if (this.checkboxChecked) {
-            this.togglePriceVisibility();
-
-            return;
-        }
-
         this.togglePriceVisibility();
     }
 }
