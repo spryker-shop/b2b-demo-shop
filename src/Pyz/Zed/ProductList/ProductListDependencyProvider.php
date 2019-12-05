@@ -7,6 +7,8 @@
 
 namespace Pyz\Zed\ProductList;
 
+use Spryker\Zed\ConfigurableBundle\Communication\Plugin\ProductList\ConfigurableBundleTemplateSlotProductListDeletePreCheckPlugin;
+use Spryker\Zed\MerchantRelationshipProductList\Communication\Plugin\ProductList\MerchantRelationshipProductListDeletePreCheckPlugin;
 use Spryker\Zed\ProductBundleProductListConnector\Communication\Plugin\ProductList\ProductBundleProductListPreCreatePlugin;
 use Spryker\Zed\ProductBundleProductListConnector\Communication\Plugin\ProductList\ProductBundleProductListPreUpdatePlugin;
 use Spryker\Zed\ProductList\ProductListDependencyProvider as SprykerProductListDependencyProvider;
@@ -30,6 +32,17 @@ class ProductListDependencyProvider extends SprykerProductListDependencyProvider
     {
         return [
             new ProductBundleProductListPreUpdatePlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\ProductListExtension\Dependency\Plugin\ProductListDeletePreCheckPluginInterface[]
+     */
+    protected function getProductListDeletePreCheckPlugins(): array
+    {
+        return [
+            new ConfigurableBundleTemplateSlotProductListDeletePreCheckPlugin(),
+            new MerchantRelationshipProductListDeletePreCheckPlugin(),
         ];
     }
 }

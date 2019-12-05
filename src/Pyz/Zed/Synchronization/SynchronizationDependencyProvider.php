@@ -18,6 +18,7 @@ use Spryker\Zed\CmsSlotBlockStorage\Communication\Plugin\Synchronization\CmsSlot
 use Spryker\Zed\CmsSlotStorage\Communication\Plugin\Synchronization\CmsSlotSynchronizationDataBulkPlugin;
 use Spryker\Zed\CmsStorage\Communication\Plugin\Synchronization\CmsSynchronizationDataPlugin;
 use Spryker\Zed\CompanyUserStorage\Communication\Plugin\Synchronization\CompanyUserSynchronizationDataPlugin;
+use Spryker\Zed\ConfigurableBundleStorage\Communication\Plugin\Synchronization\ConfigurableBundleTemplateImageSynchronizationDataBulkPlugin;
 use Spryker\Zed\ConfigurableBundleStorage\Communication\Plugin\Synchronization\ConfigurableBundleTemplateSynchronizationDataBulkPlugin;
 use Spryker\Zed\ContentStorage\Communication\Plugin\Synchronization\ContentStorageSynchronizationDataPlugin;
 use Spryker\Zed\CustomerAccessStorage\Communication\Plugin\Synchronization\CustomerAccessSynchronizationDataBulkPlugin;
@@ -123,6 +124,7 @@ class SynchronizationDependencyProvider extends SprykerSynchronizationDependency
             new TaxSynchronizationDataPlugin(),
             new CompanyUserSynchronizationDataPlugin(),
             new ConfigurableBundleTemplateSynchronizationDataBulkPlugin(),
+            new ConfigurableBundleTemplateImageSynchronizationDataBulkPlugin(),
             new CmsSlotSynchronizationDataBulkPlugin(),
             new CmsSlotBlockSynchronizationDataBulkPlugin(),
         ];
