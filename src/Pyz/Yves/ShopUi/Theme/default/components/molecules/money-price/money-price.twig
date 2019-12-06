@@ -19,7 +19,9 @@
                 {{ data.originalAmount | money(true, data.currencyIsoCode) }}
             </span>
         {% endblock %}
+    {%- endif -%}
 
+    {% if data.amount is not empty %}
         {% block priceMode %}
             <span class="{{ component.renderClass(config.name ~ '__mode', modifiers) }}">
                 {% if data.priceMode == 'GROSS_MODE' %}
@@ -31,5 +33,5 @@
                 {% endif %}
             </span>
         {% endblock %}
-    {%- endif -%}
+    {% endif %}
 {% endblock %}
