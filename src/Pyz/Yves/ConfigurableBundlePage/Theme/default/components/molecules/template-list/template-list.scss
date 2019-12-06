@@ -10,7 +10,7 @@
             @include helper-effect-transition(box-shadow);
             display: block;
             position: relative;
-            margin-bottom: rem(30);
+            height: 100%;
 
             &::before {
                 @include helper-effect-transition(background-color);
@@ -57,6 +57,10 @@
             @include helper-breakpoint-media-min($lg) {
                 font-size: rem(24);
                 min-height: rem(180);
+            }
+
+            &--secondary {
+                height: 100%;
             }
         }
 
