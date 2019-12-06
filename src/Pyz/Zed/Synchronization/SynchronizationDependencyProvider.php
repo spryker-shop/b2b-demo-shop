@@ -18,6 +18,8 @@ use Spryker\Zed\CmsBlockStorage\Communication\Plugin\Synchronization\CmsBlockSyn
 use Spryker\Zed\CmsPageSearch\Communication\Plugin\Synchronization\CmsPageSynchronizationDataPlugin;
 use Spryker\Zed\CmsStorage\Communication\Plugin\Synchronization\CmsSynchronizationDataPlugin;
 use Spryker\Zed\CompanyUserStorage\Communication\Plugin\Synchronization\CompanyUserSynchronizationDataPlugin;
+use Spryker\Zed\ConfigurableBundleStorage\Communication\Plugin\Synchronization\ConfigurableBundleTemplateImageSynchronizationDataBulkPlugin;
+use Spryker\Zed\ConfigurableBundleStorage\Communication\Plugin\Synchronization\ConfigurableBundleTemplateSynchronizationDataBulkPlugin;
 use Spryker\Zed\ContentStorage\Communication\Plugin\Synchronization\ContentStorageSynchronizationDataPlugin;
 use Spryker\Zed\CustomerAccessStorage\Communication\Plugin\Synchronization\CustomerAccessSynchronizationDataBulkPlugin;
 use Spryker\Zed\FileManagerStorage\Communication\Plugin\Synchronization\FileSynchronizationDataBulkPlugin;
@@ -123,6 +125,8 @@ class SynchronizationDependencyProvider extends SprykerSynchronizationDependency
             new TaxProductSynchronizationDataPlugin(),
             new TaxSynchronizationDataPlugin(),
             new CompanyUserSynchronizationDataPlugin(),
+            new ConfigurableBundleTemplateSynchronizationDataBulkPlugin(),
+            new ConfigurableBundleTemplateImageSynchronizationDataBulkPlugin(),
         ];
     }
 }

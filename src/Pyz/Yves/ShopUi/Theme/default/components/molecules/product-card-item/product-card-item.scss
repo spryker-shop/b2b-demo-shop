@@ -3,7 +3,7 @@ $product-image-left-indent: rem(35);
 $dropdown-width: calc(100% + #{rem(4)});
 $dropdown-top-indent: calc(100% + #{rem(15)});
 
-@mixin shop-ui-product-item($name: '.product-item') {
+@mixin shop-ui-product-card-item($name: '.product-card-item') {
     #{$name} {
         border: rem(2) solid $setting-color-gray-7;
         border-radius: $setting-border-radius;
@@ -496,4 +496,4 @@ $dropdown-top-indent: calc(100% + #{rem(15)});
     }
 }
 
-@include shop-ui-product-item();
+@include shop-ui-product-card-item();

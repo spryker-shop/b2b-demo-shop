@@ -1,0 +1,24 @@
+@import 'src/ConfigurableBundleWidget/components/molecules/configured-bundle/configured-bundle';
+
+@mixin sales-configurable-bundle-widget-ordered-configured-bundle($name: '.ordered-configured-bundle') {
+    @include configurable-bundle-widget-configured-bundle($name) {
+        &__col {
+            text-align: right;
+        }
+
+        &__title,
+        &__text {
+            font-size: rem(16);
+            font-weight: fw(bold);
+        }
+
+        &__products,
+        &__content {
+            padding: rem(20);
+        }
+
+        @content;
+    }
+}
+
+@include sales-configurable-bundle-widget-ordered-configured-bundle();
