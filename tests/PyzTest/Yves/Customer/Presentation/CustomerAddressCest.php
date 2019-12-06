@@ -32,6 +32,8 @@ class CustomerAddressCest
      */
     public function testICanAddNewAddress(CustomerPresentationTester $i, Scenario $scenario): void
     {
+        $scenario->skip('Once we have Chromium + ChromeDriver or Firefox, enable this test case.');
+
         $i->amLoggedInCustomer();
         $i->amOnPage(CustomerAddressPage::URL);
 
