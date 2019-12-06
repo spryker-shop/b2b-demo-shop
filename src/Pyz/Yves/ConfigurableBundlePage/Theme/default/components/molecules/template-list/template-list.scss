@@ -1,19 +1,43 @@
 @mixin configurable-bundle-page-template-list($name: '.template-list') {
     #{$name} {
-        margin: rem(50) 0 rem(200);
+        margin: rem(50) 0;
+
+        @include helper-breakpoint-media-min($lg) {
+            margin: rem(50) 0 rem(200);
+        }
 
         &__item-title {
-            @include helper-effect-transition(background-color);
+            @include helper-effect-transition(box-shadow);
             display: block;
-            background-color: $setting-color-alpha-2;
+            position: relative;
+            margin-bottom: rem(30);
+
+            &::before {
+                @include helper-effect-transition(background-color);
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 100%;
+                width: 100%;
+                background-color: $setting-color-alpha-2;
+                z-index: $setting-zi-substrate;
+            }
 
             &:hover {
-                background-color: $setting-color-white;
+                box-shadow: 0 rem(3) rem(3) 0 $setting-color-shadow-1, 0 rem(18) rem(18) 0 $setting-color-shadow-1;
+
+                &::before {
+                    background-color: $setting-color-white;
+                }
             }
         }
 
         &__image-box {
             height: rem(200);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
 
             @include helper-breakpoint-media-min($lg) {
                 height: rem(240);
@@ -21,7 +45,19 @@
         }
 
         &__item-name {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: rem(25);
+            min-height: rem(120);
+            font-size: rem(18);
+            font-weight: fw(medium);
+            color: $setting-color-gray-5;
 
+            @include helper-breakpoint-media-min($lg) {
+                font-size: rem(24);
+                min-height: rem(180);
+            }
         }
 
         @content;
