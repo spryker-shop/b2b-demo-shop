@@ -26,6 +26,7 @@ class ValidatorDependencyProvider extends SprykerValidatorDependencyProvider
             new TranslatorValidatorPlugin(),
         ];
     }
+
     /**
      * @return \Spryker\Shared\ValidatorExtension\Dependency\Plugin\ConstraintPluginInterface[]
      */
