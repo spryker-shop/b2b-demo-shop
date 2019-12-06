@@ -19,7 +19,9 @@
     <div class="{{ config.name }}__actions">
         <div class="col col--sm-12 col--xl-5">
             {% block configurableBundleNote %}
-                {% widget 'ConfiguredBundleNoteWidget' args [data.bundle, data.quote] only %}{% endwidget %}
+                {% block editableConfigurableBundleNote %}
+                    {{ parent() }}
+                {% endblock %}
             {% endblock %}
         </div>
         <div class="col col--bottom col--sm-12 col--xl-2 spacing-y">

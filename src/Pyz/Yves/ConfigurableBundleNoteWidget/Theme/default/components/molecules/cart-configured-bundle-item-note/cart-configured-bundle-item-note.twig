@@ -18,8 +18,7 @@
 } %}
 
 {% block body %}
-    {% set title = data.label is not empty ? data.label : 'cart_note.form.comment' %}
-    {% set note = data.note is not empty ? data.note : data.form.vars.value.note %}
+    {% set note = data.note ?: data.form.vars.value.note %}
     {% set isNoteNotEmpty = data.isNoteNotEmpty is not null ? data.isNoteNotEmpty : (data.form.vars.value.note is not null and data.form.vars.value.note is not empty) %}
 
     {% block content %}
@@ -31,7 +30,7 @@
                             <div class="{{ config.name }}__text">{{ note | nl2br }}</div>
                             {% if data.canWrite %}
                                 {% block cartItemNoteActions %}
-                                    {% include molecule('cart-item-note-actions', 'CartNoteWidget') with {
+                                    {% include molecule('cart-configured-bundle-item-note-actions', 'ConfigurableBundleNoteWidget') with {
                                         data: {
                                             buttons: [
                                                 {
@@ -54,14 +53,17 @@
                     {% block form %}
                         {% if data.canWrite %}
                             {% set jsModifier = data.form.vars.value.groupKey | replace({"." : ""}) %}
+                            {% set hiddenClass = isNoteNotEmpty ? 'is-hidden' %}
+                            {% set activeClass = isNoteNotEmpty ? 'active' %}
 
-                            <div class="{{ config.name }}__form {{ config.jsName }}__form {{ config.jsName }}__form--{{ jsModifier }} {% if isNoteNotEmpty %}is-hidden{% endif %}">
-                                <h6 class="{{ config.name }}__label toggler-accordion__item {{ config.jsName }}__trigger {% if isNoteNotEmpty %}active{% endif %}" data-toggle-target='.{{ config.jsName }}__content--{{ jsModifier }}'>
+                            <div class="{{ config.name }}__form {{ config.jsName }}__form {{ config.jsName }}__form--{{ jsModifier }} {{ hiddenClass }}">
+                                <h6 class="{{ config.name }}__label toggler-accordion__item {{ config.jsName }}__trigger {{ activeClass }}" data-toggle-target='.{{ config.jsName }}__content--{{ jsModifier }}'>
                                     {{ 'configurable_bundle_note.enter_note' | trans }}
                                     <span class="icon icon--toggler-cross icon--toggler-cross-link toggler-accordion__icon"></span>
                                 </h6>
-                                <div class="{{ config.name }}__content {{ config.jsName }}__content {{ config.jsName }}__content--{{ jsModifier }} {% if not isNoteNotEmpty %}is-hidden{% endif %}">
+                                <div class="{{ config.name }}__content {{ config.jsName }}__content {{ config.jsName }}__content--{{ jsModifier }} {{ hiddenClass }}">
                                     {% include molecule('form') with {
+                                        modifiers: ['note'],
                                         data: {
                                             form: data.form,
                                             options: {
