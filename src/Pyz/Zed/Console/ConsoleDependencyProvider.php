@@ -57,6 +57,7 @@ use Spryker\Zed\MultiCartDataImport\MultiCartDataImportConfig;
 use Spryker\Zed\Oms\Communication\Console\CheckConditionConsole as OmsCheckConditionConsole;
 use Spryker\Zed\Oms\Communication\Console\CheckTimeoutConsole as OmsCheckTimeoutConsole;
 use Spryker\Zed\Oms\Communication\Console\ClearLocksConsole as OmsClearLocksConsole;
+use Spryker\Zed\PaymentDataImport\PaymentDataImportConfig;
 use Spryker\Zed\PriceProduct\Communication\Console\PriceProductStoreOptimizeConsole;
 use Spryker\Zed\PriceProductDataImport\PriceProductDataImportConfig;
 use Spryker\Zed\PriceProductMerchantRelationship\Communication\Console\PriceProductMerchantRelationshipDeleteConsole;
@@ -232,6 +233,8 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . ShoppingListDataImportConfig::IMPORT_TYPE_SHOPPING_LIST_COMPANY_USER),
             new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . ShoppingListDataImportConfig::IMPORT_TYPE_SHOPPING_LIST_COMPANY_BUSINESS_UNIT),
             new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . ProductQuantityDataImportConfig::IMPORT_TYPE_PRODUCT_QUANTITY),
+            new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . PaymentDataImportConfig::IMPORT_TYPE_PAYMENT_METHOD),
+            new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . PaymentDataImportConfig::IMPORT_TYPE_PAYMENT_METHOD_STORE),
 
             // Publish and Synchronization
             new EventBehaviorTriggerTimeoutConsole(),

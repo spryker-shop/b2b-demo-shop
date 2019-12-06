@@ -18,7 +18,6 @@ use Spryker\Zed\Newsletter\Communication\Plugin\NewsletterInstallerPlugin;
 use Spryker\Zed\Oauth\Communication\Plugin\Installer\OauthClientInstallerPlugin;
 use Spryker\Zed\OauthCompanyUser\Communication\Plugin\Installer\OauthCompanyUserInstallerPlugin;
 use Spryker\Zed\OauthCustomerConnector\Communication\Plugin\Installer\OauthCustomerScopeInstallerPlugin;
-use Spryker\Zed\Payment\Communication\Plugin\Installer\SalesPaymentMethodTypeInstallerPlugin;
 use Spryker\Zed\PriceProduct\Communication\Plugin\PriceInstallerPlugin;
 use Spryker\Zed\ProductAlternativeProductLabelConnector\Communication\Plugin\Installer\ProductAlternativeProductLabelConnectorInstallerPlugin;
 use Spryker\Zed\ProductDiscontinuedProductLabelConnector\Communication\Plugin\Installer\ProductDiscontinuedProductLabelConnectorInstallerPlugin;
@@ -57,7 +56,6 @@ class InstallerDependencyProvider extends SprykerInstallerDependencyProvider
             new SalesOrderThresholdTypeInstallerPlugin(), #SalesOrderThresholdFeature
             new OauthClientInstallerPlugin(),
             new OauthCustomerScopeInstallerPlugin(),
-            new SalesPaymentMethodTypeInstallerPlugin(),
             new OauthCompanyUserInstallerPlugin(),
         ];
     }
