@@ -8,7 +8,7 @@
 {% define data = {
     imageUrl: required,
     link: '',
-    cmsBlockName: '',
+    content: '',
     btnTitle: ''
 } %}
 
@@ -17,9 +17,7 @@
 {% block body %}
     <div class="{{config.name}}__container grid grid--left grid--middle" style="{{backgroundImage}}">
         <div class="col col--sm-12">
-            {% if data.cmsBlockName is not empty %}
-                {{ spyCmsBlock({name: data.cmsBlockName}) }}
-            {% endif %}
+            {{ data.content | raw }}
             {% if data.link is not empty %}
                 <a href="{{ data.link | trans }}" class="button button--medium button--tight button--hollow button--hollow-second">
                     {% if data.btnTitle is not empty %}
