@@ -1,0 +1,18 @@
+<!-- CMS_BLOCK_PLACEHOLDER : "title" -->
+<!-- CMS_BLOCK_PLACEHOLDER : "content" -->
+
+{% block content %}
+    {% embed organism('section') with {
+        modifiers: ['secondary', 'bg-dark'],
+        data: {
+            blockTitle: spyCmsBlockPlaceholder('title'),
+            blockContent: spyCmsBlockPlaceholder('content'),
+            innerClass: 'container',
+        },
+    } only %}
+        {% block inner %}
+            {{ data.blockTitle | raw }}
+            {{ data.blockContent | raw }}
+        {% endblock %}
+    {% endembed %}
+{% endblock %}
