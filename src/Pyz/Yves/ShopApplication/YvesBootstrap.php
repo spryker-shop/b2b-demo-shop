@@ -12,7 +12,6 @@ use SprykerShop\Yves\ShopApplication\YvesBootstrap as SprykerYvesBootstrap;
 
 class YvesBootstrap extends SprykerYvesBootstrap
 {
-
     /**
      * @return void
      */
