@@ -1,0 +1,26 @@
+{% extends template('page-layout-main') %}
+
+{% define data = {
+    idCmsPage: _view.idCmsPage,
+    title: _view.pageTitle | default('global.spryker.shop' | trans),
+    metaTitle: _view.pageTitle | default('global.spryker.shop' | trans),
+    metaDescription: _view.pageDescription | default,
+    metaKeywords: _view.pageKeywords | default,
+} %}
+
+{% block breadcrumbs %}{% endblock %}
+{% block title %}
+    <div class="cms-page-title">
+        <!-- CMS_PLACEHOLDER : "title" -->
+        {{ spyCms('title') | raw }}
+    </div>
+{% endblock %}
+{% block contentClass %}page-layout-main page-layout-main--cms-page{% endblock %}
+{% block content %}
+    <!-- CMS_PLACEHOLDER : "content" -->
+    {{ spyCms('content') | raw }}
+
+    {% cms_slot 'slt-10' required ['idCmsPage'] with {
+        idCmsPage: data.idCmsPage,
+    } %}
+{% endblock %}
