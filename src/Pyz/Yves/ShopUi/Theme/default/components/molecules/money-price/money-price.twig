@@ -19,17 +19,17 @@
                 {{ data.originalAmount | money(true, data.currencyIsoCode) }}
             </span>
         {% endblock %}
+
+        {% block priceMode %}
+            <span class="{{ component.renderClass(config.name ~ '__mode', modifiers) }}">
+                {% if data.priceMode == 'GROSS_MODE' %}
+                    {{ 'price.mode.incl_vat' | trans }}
+                {% endif %}
+
+                {% if data.priceMode == 'NET_MODE' %}
+                    {{ 'price.mode.excl_vat' | trans }}
+                {% endif %}
+            </span>
+        {% endblock %}
     {%- endif -%}
-
-    {% block priceMode %}
-        <span class="{{ component.renderClass(config.name ~ '__mode', modifiers) }}">
-            {% if data.priceMode == 'GROSS_MODE' %}
-                {{ 'price.mode.incl_vat' | trans }}
-            {% endif %}
-
-            {% if data.priceMode == 'NET_MODE' %}
-                {{ 'price.mode.excl_vat' | trans }}
-            {% endif %}
-        </span>
-    {% endblock %}
 {% endblock %}

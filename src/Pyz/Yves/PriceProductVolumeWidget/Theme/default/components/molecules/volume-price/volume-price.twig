@@ -18,9 +18,9 @@
         <span class="{{ config.name }}__amount {{ config.name }}__amount--original">
             {{ data.originalAmount | money }}
         </span>
-    {%- endif -%}
 
-    {% block priceMode %}
-        {{ parent() }}
-    {% endblock %}
+        {% block priceMode %}
+            {{ parent() }}
+        {% endblock %}
+    {%- endif -%}
 {% endblock %}
