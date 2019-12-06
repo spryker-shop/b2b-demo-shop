@@ -1,0 +1,18 @@
+<!-- CMS_BLOCK_PLACEHOLDER : "title" -->
+<!-- CMS_BLOCK_PLACEHOLDER : "content" -->
+
+{% block content %}
+    {% embed organism('section') with {
+        modifiers: ['secondary', 'no-mobile-bottom-indent'],
+        class: 'spacing-top spacing-top--inner spacing-top--big',
+        data: {
+            blockTitle: spyCmsBlockPlaceholder('title'),
+            blockContent: spyCmsBlockPlaceholder('content'),
+        },
+    } only %}
+        {% block inner %}
+            {{ data.blockTitle | raw }}
+            {{ data.blockContent | raw }}
+        {% endblock %}
+    {% endembed %}
+{% endblock %}

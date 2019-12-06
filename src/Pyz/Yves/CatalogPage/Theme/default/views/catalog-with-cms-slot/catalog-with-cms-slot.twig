@@ -1,0 +1,69 @@
+{% extends template('page-layout-catalog', 'CatalogPage') %}
+
+{% define data = {
+    products: _view.products,
+    facets: _view.facets,
+    category: _view.category | default,
+    categories: categories | default([]),
+    categoryId: _view.idCategory | default,
+    isEmptyCategoryFilterValueVisible: _view.isEmptyCategoryFilterValueVisible | default,
+    filterPath: _view.filterPath | default,
+    viewMode: _view.viewMode | default,
+    searchString: _view.searchString,
+
+    title: _view.category.name | default,
+    metaTitle: _view.pageTitle | default(_view.category.name | default),
+    metaDescription: _view.pageDescription | default,
+    metaKeywords: _view.pageKeywords | default,
+
+    pagination: {
+        parameters: app.request.query.all(),
+        currentPage: _view.pagination.currentPage,
+        paginationPath: app.request.getPathInfo(),
+        maxPage: _view.pagination.maxPage,
+        showAlwaysFirstAndLast: true
+    }
+} %}
+{% block contentTop %}
+    {% if data.categoryId %}
+        <div class="container">
+            <div class="catalog-cms-block">
+                {% cms_slot 'slt-6' required ['idCategory'] with {
+                    idCategory: data.categoryId,
+                } %}
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block filterBar %}
+    {{ parent() }}
+
+    {% if data.categoryId %}
+        <div class="catalog-cms-block">
+            {% cms_slot 'slt-7' required ['idCategory'] with {
+                idCategory: data.categoryId,
+            } %}
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block contentBottom %}
+    {% if data.categoryId %}
+        <div class="container">
+            <div class="catalog-cms-block">
+                {% cms_slot 'slt-8' required ['idCategory'] with {
+                    idCategory: data.categoryId,
+                } %}
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block form %}
+    {{ parent() }}
+
+    {% if data.searchString %}
+        <input type="hidden" name="q" value="{{ data.searchString }}">
+    {% endif %}
+{% endblock %}
