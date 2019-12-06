@@ -3,29 +3,25 @@
         margin: rem(50) 0 rem(200);
 
         &__item-title {
+            @include helper-effect-transition(background-color);
             display: block;
-            position: relative;
-            min-height: 11rem;
-            color: $setting-color-darkest;
+            background-color: $setting-color-alpha-2;
 
-            &--with-background {
-                background: $setting-color-lighter;
+            &:hover {
+                background-color: $setting-color-white;
+            }
+        }
+
+        &__image-box {
+            height: rem(200);
+
+            @include helper-breakpoint-media-min($lg) {
+                height: rem(240);
             }
         }
 
         &__item-name {
-            position: absolute;
-            max-width: 100%;
-            top: 50%;
-            left: 0;
-            right: 0;
-            transform: translateY(-50%);
-            text-align: center;
-            color: $setting-color-white;
 
-            &--secondary {
-                color: inherit;
-            }
         }
 
         @content;

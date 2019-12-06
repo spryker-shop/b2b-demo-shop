@@ -18,10 +18,14 @@
     {% block templateTitle %}{{ parent() }}{% endblock %}
 {% endblock %}
 
-{% block templateTitleImage %}
-    {% set imageModifiers = ['reset-indents', 'big'] %}
+{% block templateTitleItem %}
+    {% set titleClasses = config.name ~ '__item-title' %}
 
     {{ parent() }}
+{% endblock %}
+
+{% block templateTitleImage %}
+    <div class="{{ config.name }}__image-box" style="background-image: url({{ template.images.0.externalUrlLarge }})"></div>
 {% endblock %}
 
 {% block button %}{% endblock %}
