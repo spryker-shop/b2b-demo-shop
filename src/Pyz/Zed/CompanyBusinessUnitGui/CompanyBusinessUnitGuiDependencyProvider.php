@@ -8,7 +8,7 @@
 namespace Pyz\Zed\CompanyBusinessUnitGui;
 
 use Spryker\Zed\CompanyBusinessUnitGui\CompanyBusinessUnitGuiDependencyProvider as SprykerCompanyBusinessUnitGuiDependencyProvider;
-use Spryker\Zed\CompanyUnitAddressGui\Communication\Plugin\CompanyBusinessUnitAddressFieldPlugin;
+use Spryker\Zed\CompanyUnitAddressGui\Communication\Plugin\CompanyBusinessUnitGui\CompanyBusinessUnitAddressFieldPlugin;
 
 class CompanyBusinessUnitGuiDependencyProvider extends SprykerCompanyBusinessUnitGuiDependencyProvider
 {

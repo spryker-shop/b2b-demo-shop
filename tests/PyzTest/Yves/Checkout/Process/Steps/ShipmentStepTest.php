@@ -130,9 +130,9 @@ class ShipmentStepTest extends Unit
     }
 
     /**
-     * @param \PHPUnit_Framework_MockObject_MockObject|\SprykerShop\Yves\CheckoutPage\Dependency\Service\CheckoutPageToShipmentServiceInterface $giftCardItemsCheckerMock
+     * @param \PHPUnit\Framework\MockObject\MockObject|\SprykerShop\Yves\CheckoutPage\Dependency\Service\CheckoutPageToShipmentServiceInterface $giftCardItemsCheckerMock
      *
-     * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerShop\Yves\CheckoutPage\Process\Steps\PostConditionCheckerInterface
+     * @return \PHPUnit\Framework\MockObject\MockObject|\SprykerShop\Yves\CheckoutPage\Process\Steps\PostConditionCheckerInterface
      */
     protected function createShipmentStepPostConditionCheckerMock($giftCardItemsCheckerMock): PostConditionCheckerInterface
     {
@@ -143,7 +143,7 @@ class ShipmentStepTest extends Unit
     }
 
     /**
-     * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerShop\Yves\CheckoutPage\GiftCard\GiftCardItemsCheckerInterface
+     * @return \PHPUnit\Framework\MockObject\MockObject|\SprykerShop\Yves\CheckoutPage\GiftCard\GiftCardItemsCheckerInterface
      */
     protected function createGiftCardItemsCheckerMock(): GiftCardItemsCheckerInterface
     {
@@ -153,7 +153,7 @@ class ShipmentStepTest extends Unit
     }
 
     /**
-     * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerShop\Yves\CheckoutPage\Dependency\Service\CheckoutPageToShipmentServiceInterface
+     * @return \PHPUnit\Framework\MockObject\MockObject|\SprykerShop\Yves\CheckoutPage\Dependency\Service\CheckoutPageToShipmentServiceInterface
      */
     protected function createShipmentServiceMock(): CheckoutPageToShipmentServiceInterface
     {
@@ -174,7 +174,7 @@ class ShipmentStepTest extends Unit
     }
 
     /**
-     * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerShop\Yves\CheckoutPageExtension\Dependency\Plugin\CheckoutShipmentStepEnterPreCheckPluginInterface
+     * @return \PHPUnit\Framework\MockObject\MockObject|\SprykerShop\Yves\CheckoutPageExtension\Dependency\Plugin\CheckoutShipmentStepEnterPreCheckPluginInterface
      */
     protected function getQuoteApprovalCheckerCheckoutShipmentStepEnterPreCheckPluginMock(): CheckoutShipmentStepEnterPreCheckPluginInterface
     {
