@@ -1,0 +1,70 @@
+@mixin configurable-bundle-widget-configured-bundle-product($name: '.configured-bundle-product') {
+    #{$name} {
+        display: flex;
+        flex-wrap: wrap;
+        overflow: hidden;
+
+        &__container {
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            margin-top: 0;
+
+            @include helper-breakpoint-media-min($lg) {
+                justify-content: space-between;
+            }
+        }
+
+        &__col {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        &__inner-section {
+            @include helper-breakpoint-media-min($lg) {
+                text-align: center;
+            }
+
+            &:last-child,
+            &--text-right {
+                @include helper-breakpoint-media-min($lg) {
+                    text-align: right;
+                }
+            }
+
+            &--image {
+                width: 22%;
+                min-width: 22%;
+            }
+
+            &--text-light {
+                color: $setting-color-gray-3;
+            }
+        }
+
+        &__general-information {
+            padding-right: rem(50);
+        }
+
+        &__text {
+            font-size: rem(14);
+        }
+
+        &__sku {
+            font-size: rem(13);
+        }
+
+        &__item-title {
+            font-size: rem(14);
+            font-weight: fw(bold);
+            margin-bottom: 0;
+
+            @include helper-breakpoint-media-min($lg) {
+                font-size: rem(15);
+            }
+        }
+
+        @content;
+    }
+}
+
+@include configurable-bundle-widget-configured-bundle-product;
