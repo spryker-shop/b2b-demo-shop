@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "81c5a9a0a3e80ec1a35f0801ebf92b12",
+    "content-hash": "b93328bc24c9d510f1d63e159be3dd56",
     "packages": [
         {
             "name": "codeception/phpunit-wrapper",
@@ -3952,39 +3952,52 @@
         },
         {
             "name": "spryker-feature/cms",
-            "version": "201907.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-feature/cms.git",
-                "reference": "8ba2e63f5cc47a97665d0ae76f66b60c73f6592f"
+                "reference": "5db5217e73f81e50b90a04f4d36994c5ee26cf81"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-feature/cms/zipball/8ba2e63f5cc47a97665d0ae76f66b60c73f6592f",
-                "reference": "8ba2e63f5cc47a97665d0ae76f66b60c73f6592f",
+                "url": "https://api.github.com/repos/spryker-feature/cms/zipball/5db5217e73f81e50b90a04f4d36994c5ee26cf81",
+                "reference": "5db5217e73f81e50b90a04f4d36994c5ee26cf81",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
-                "spryker-shop/cms-block-widget": "^1.3.0",
+                "php": ">=7.2",
+                "spryker-shop/cms-block-widget": "^2.0.0",
                 "spryker-shop/cms-page": "^1.1.0",
                 "spryker-shop/cms-search-page": "^1.1.0",
+                "spryker-shop/cms-slot-block-widget": "^1.0.0",
+                "spryker-shop/shop-cms-slot": "^1.0.0",
                 "spryker/cms": "^7.5.0",
-                "spryker/cms-block": "^2.3.0",
+                "spryker/cms-block": "^3.0.0",
                 "spryker/cms-block-category-storage": "^1.3.0",
                 "spryker/cms-block-gui": "^2.3.0",
                 "spryker/cms-block-product-storage": "^1.3.0",
-                "spryker/cms-block-storage": "^1.2.0",
+                "spryker/cms-block-storage": "^2.0.0",
                 "spryker/cms-content-widget": "^1.6.0",
                 "spryker/cms-gui": "^5.4.0",
                 "spryker/cms-page-data-import": "^1.0.0",
                 "spryker/cms-page-search": "^2.1.0",
+                "spryker/cms-slot": "^1.0.0",
+                "spryker/cms-slot-block": "^1.0.0",
+                "spryker/cms-slot-block-category-gui": "^1.0.0",
+                "spryker/cms-slot-block-cms-gui": "^1.0.0",
+                "spryker/cms-slot-block-data-import": "^0.2.0",
+                "spryker/cms-slot-block-gui": "^1.0.0",
+                "spryker/cms-slot-block-product-category-gui": "^1.0.0",
+                "spryker/cms-slot-block-storage": "^1.0.0",
+                "spryker/cms-slot-data-import": "^0.7.0",
+                "spryker/cms-slot-gui": "^1.0.0",
+                "spryker/cms-slot-storage": "^1.0.0",
                 "spryker/cms-storage": "^2.1.0"
             },
             "type": "metapackage",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "201907.x-dev"
+                    "dev-master": "202001.x-dev"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -3992,7 +4005,7 @@
                 "proprietary"
             ],
             "description": "CMS [feature]",
-            "time": "2019-08-01T16:13:21+00:00"
+            "time": "2019-12-03T17:17:25+00:00"
         },
         {
             "name": "spryker-feature/comments",
@@ -4094,16 +4107,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-feature/configurable-bundle.git",
-                "reference": "c39c8a661ae379a444deeaab725d710187b3fa79"
+                "reference": "c0ffe79481b8c80d0d1dc165707050c3502c33bd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-feature/configurable-bundle/zipball/c39c8a661ae379a444deeaab725d710187b3fa79",
-                "reference": "c39c8a661ae379a444deeaab725d710187b3fa79",
+                "url": "https://api.github.com/repos/spryker-feature/configurable-bundle/zipball/c0ffe79481b8c80d0d1dc165707050c3502c33bd",
+                "reference": "c0ffe79481b8c80d0d1dc165707050c3502c33bd",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2",
+                "spryker-shop/configurable-bundle-note-widget": "^1.0.0",
                 "spryker-shop/configurable-bundle-page": "^1.0.0",
                 "spryker-shop/configurable-bundle-widget": "^1.0.0",
                 "spryker-shop/sales-configurable-bundle-widget": "^1.0.0",
@@ -4111,6 +4125,7 @@
                 "spryker/configurable-bundle-cart": "^1.0.0",
                 "spryker/configurable-bundle-data-import": "^0.2.0",
                 "spryker/configurable-bundle-gui": "^1.0.0",
+                "spryker/configurable-bundle-note": "^1.0.0",
                 "spryker/configurable-bundle-page-search": "^1.0.0",
                 "spryker/configurable-bundle-storage": "^2.0.0",
                 "spryker/sales-configurable-bundle": "^1.0.0"
@@ -4126,7 +4141,7 @@
                 "proprietary"
             ],
             "description": "Configurable Bundle [feature]",
-            "time": "2019-12-05T15:42:08+00:00"
+            "time": "2019-12-06T10:34:30+00:00"
         },
         {
             "name": "spryker-feature/content-based-shop-navigation",
@@ -4819,12 +4834,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-feature/order-management.git",
-                "reference": "488885c3c5d2da8054ce546d006e4e1a4e832f98"
+                "reference": "2ae34fdab4b0c10dc00aa4f39d5ebaaf075409d5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-feature/order-management/zipball/488885c3c5d2da8054ce546d006e4e1a4e832f98",
-                "reference": "488885c3c5d2da8054ce546d006e4e1a4e832f98",
+                "url": "https://api.github.com/repos/spryker-feature/order-management/zipball/2ae34fdab4b0c10dc00aa4f39d5ebaaf075409d5",
+                "reference": "2ae34fdab4b0c10dc00aa4f39d5ebaaf075409d5",
                 "shasum": ""
             },
             "require": {
@@ -4845,7 +4860,7 @@
                 "proprietary"
             ],
             "description": "Order Management [feature]",
-            "time": "2019-12-03T13:22:35+00:00"
+            "time": "2019-12-06T10:57:47+00:00"
         },
         {
             "name": "spryker-feature/order-threshold",
@@ -7109,41 +7124,37 @@
         },
         {
             "name": "spryker-shop/cms-block-widget",
-            "version": "1.3.0",
+            "version": "2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/cms-block-widget.git",
-                "reference": "b4b388741e448cf1e6decd81fa87fb27f6ca8b7c"
+                "reference": "2249f753938c37a9532c8fc6cee946232adab90a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/cms-block-widget/zipball/b4b388741e448cf1e6decd81fa87fb27f6ca8b7c",
-                "reference": "b4b388741e448cf1e6decd81fa87fb27f6ca8b7c",
+                "url": "https://api.github.com/repos/spryker-shop/cms-block-widget/zipball/2249f753938c37a9532c8fc6cee946232adab90a",
+                "reference": "2249f753938c37a9532c8fc6cee946232adab90a",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
+                "php": ">=7.2",
                 "spryker-shop/shop-ui": "^1.0.0",
-                "spryker/cms-block-storage": "^1.0.0",
-                "spryker/kernel": "^3.24.0"
+                "spryker/cms-block-storage": "^2.0.0",
+                "spryker/cms-content-widget": "^1.2.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/store": "^1.4.0",
+                "spryker/twig": "^1.0.0 || ^2.0.0 || ^3.0.0"
             },
             "require-dev": {
-                "spryker-shop/catalog-page": "*",
-                "spryker-shop/product-detail-page": "*",
                 "spryker-shop/shop-application": "*",
                 "spryker/code-sniffer": "*",
                 "spryker/container": "*",
-                "spryker/silex": "*",
-                "spryker/testify": "*",
-                "spryker/twig": "*"
+                "spryker/testify": "*"
             },
             "suggest": {
-                "spryker-shop/catalog-page": "Widget plugins are available for this module.",
-                "spryker-shop/product-detail-page": "Widget plugins are available for this module.",
-                "spryker-shop/shop-application": "^0.2.0 ShopApplicationServiceProvider plugin is required by TwigCmsBlock plugin",
-                "spryker/container": "If you want to use Twig Plugin",
-                "spryker/silex": "Use this module when using plugins that need Silex dependencies.",
-                "spryker/twig": "Use this module when using plugins that need Twig dependencies."
+                "spryker-shop/shop-application": "Twig plugins are available for this module.",
+                "spryker/container": "If you want to use ShopApplication plugins through container.",
+                "spryker/translator": "^1.2.0 TranslatorApplicationPlugin is needed for CMS block content translations."
             },
             "type": "library",
             "extra": {
@@ -7161,7 +7172,7 @@
                 "proprietary"
             ],
             "description": "CmsBlockWidget module",
-            "time": "2019-03-26T15:22:58+00:00"
+            "time": "2019-11-14T13:26:28+00:00"
         },
         {
             "name": "spryker-shop/cms-content-widget-chart-connector",
@@ -7416,6 +7427,55 @@
             ],
             "description": "CmsSearchPage module",
             "time": "2019-09-26T05:02:15+00:00"
+        },
+        {
+            "name": "spryker-shop/cms-slot-block-widget",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/cms-slot-block-widget.git",
+                "reference": "6864c310f11e17abdce21d54d9fc88e0bcec65cc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/cms-slot-block-widget/zipball/6864c310f11e17abdce21d54d9fc88e0bcec65cc",
+                "reference": "6864c310f11e17abdce21d54d9fc88e0bcec65cc",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker-shop/shop-cms-slot": "^1.0.0",
+                "spryker-shop/shop-cms-slot-extension": "^1.0.0",
+                "spryker/cms-slot-block": "^1.0.0",
+                "spryker/cms-slot-block-storage": "^1.0.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/transfer": "^3.8.0",
+                "spryker/twig": "^1.0.0 || ^2.0.0 || ^3.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker-shop/cms-block-widget": "If you want to use CmsBlockTwigPlugin. Minimum required version: 2.0.0."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CmsSlotBlockWidget module",
+            "time": "2019-12-03T15:19:22+00:00"
         },
         {
             "name": "spryker-shop/comment-widget",
@@ -7731,6 +7791,56 @@
             ],
             "description": "CompanyWidget module",
             "time": "2019-10-22T09:01:14+00:00"
+        },
+        {
+            "name": "spryker-shop/configurable-bundle-note-widget",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/configurable-bundle-note-widget.git",
+                "reference": "dca5266d518e4e0738966ba38a9c73ae4ce43f97"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/configurable-bundle-note-widget/zipball/dca5266d518e4e0738966ba38a9c73ae4ce43f97",
+                "reference": "dca5266d518e4e0738966ba38a9c73ae4ce43f97",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker-shop/shop-ui": "^1.0.0",
+                "spryker/application": "^3.8.0",
+                "spryker/configurable-bundle-note": "^1.0.0",
+                "spryker/glossary-storage": "^1.0.0",
+                "spryker/kernel": "^3.33.0",
+                "spryker/quote": "^2.0.0",
+                "spryker/symfony": "^3.1.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/router": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/router": "Use this module when using plugins that need Router dependencies."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ConfigurableBundleNoteWidget module",
+            "time": "2019-12-02T12:58:47+00:00"
         },
         {
             "name": "spryker-shop/configurable-bundle-page",
@@ -11250,6 +11360,94 @@
             "time": "2018-06-14T14:39:12+00:00"
         },
         {
+            "name": "spryker-shop/shop-cms-slot",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/shop-cms-slot.git",
+                "reference": "9f9234265cc354ebae8235f250921b622eb4f564"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/shop-cms-slot/zipball/9f9234265cc354ebae8235f250921b622eb4f564",
+                "reference": "9f9234265cc354ebae8235f250921b622eb4f564",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker-shop/shop-cms-slot-extension": "^1.0.0",
+                "spryker/cms-slot": "^1.0.0",
+                "spryker/cms-slot-storage": "^1.0.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/transfer": "^3.8.0",
+                "spryker/twig": "^3.2.3"
+            },
+            "require-dev": {
+                "spryker-shop/shop-application": "*",
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker-shop/shop-application": "If you want to use the CMS slot plugin for Twig."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ShopCmsSlot module",
+            "time": "2019-12-03T14:35:46+00:00"
+        },
+        {
+            "name": "spryker-shop/shop-cms-slot-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/shop-cms-slot-extension.git",
+                "reference": "30a6aa626571ddffd042f7e8d61f04d414394fa0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/shop-cms-slot-extension/zipball/30a6aa626571ddffd042f7e8d61f04d414394fa0",
+                "reference": "30a6aa626571ddffd042f7e8d61f04d414394fa0",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ShopCmsSlotExtension module",
+            "time": "2019-11-13T16:26:47+00:00"
+        },
+        {
             "name": "spryker-shop/shop-permission",
             "version": "1.2.0",
             "source": {
@@ -13647,23 +13845,23 @@
         },
         {
             "name": "spryker/carts-rest-api",
-            "version": "5.5.0",
+            "version": "5.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/carts-rest-api.git",
-                "reference": "85c3f08277ab3217da71fee568aeb8845f9c48cb"
+                "reference": "e330ceff38f795a7e9702d2be922ee8b6590b56a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/carts-rest-api/zipball/85c3f08277ab3217da71fee568aeb8845f9c48cb",
-                "reference": "85c3f08277ab3217da71fee568aeb8845f9c48cb",
+                "url": "https://api.github.com/repos/spryker/carts-rest-api/zipball/e330ceff38f795a7e9702d2be922ee8b6590b56a",
+                "reference": "e330ceff38f795a7e9702d2be922ee8b6590b56a",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2",
                 "spryker/auth-rest-api-extension": "^1.1.0",
                 "spryker/cart": "^7.0.0",
-                "spryker/carts-rest-api-extension": "^1.4.0",
+                "spryker/carts-rest-api-extension": "^1.5.0",
                 "spryker/customers-rest-api-extension": "^1.2.0",
                 "spryker/glue-application": "^1.18.0",
                 "spryker/glue-application-extension": "^1.0.0",
@@ -13703,24 +13901,24 @@
                 "proprietary"
             ],
             "description": "CartsRestApi module",
-            "time": "2019-12-05T10:19:31+00:00"
+            "time": "2019-12-05T16:57:56+00:00"
         },
         {
             "name": "spryker/carts-rest-api-extension",
-            "version": "1.4.1",
+            "version": "1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/carts-rest-api-extension.git",
-                "reference": "0aa07abb26b34031c10cf581ba0a9e80a4a794ea"
+                "reference": "3e22b91fab561e2627ea967f0e3d8c80801b471f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/carts-rest-api-extension/zipball/0aa07abb26b34031c10cf581ba0a9e80a4a794ea",
-                "reference": "0aa07abb26b34031c10cf581ba0a9e80a4a794ea",
+                "url": "https://api.github.com/repos/spryker/carts-rest-api-extension/zipball/3e22b91fab561e2627ea967f0e3d8c80801b471f",
+                "reference": "3e22b91fab561e2627ea967f0e3d8c80801b471f",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1"
+                "php": ">=7.2"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
@@ -13746,7 +13944,7 @@
                 "proprietary"
             ],
             "description": "CartsRestApiExtension module",
-            "time": "2019-07-04T09:25:20+00:00"
+            "time": "2019-12-04T14:10:44+00:00"
         },
         {
             "name": "spryker/catalog",
@@ -14916,27 +15114,26 @@
         },
         {
             "name": "spryker/cms-block",
-            "version": "2.3.0",
+            "version": "3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/cms-block.git",
-                "reference": "ba3e0610993290b465a1cf77f7cf98b3ecb0ddf4"
+                "reference": "85e0a289c6f0008447b3204fe2d871257b7445d5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/cms-block/zipball/ba3e0610993290b465a1cf77f7cf98b3ecb0ddf4",
-                "reference": "ba3e0610993290b465a1cf77f7cf98b3ecb0ddf4",
+                "url": "https://api.github.com/repos/spryker/cms-block/zipball/85e0a289c6f0008447b3204fe2d871257b7445d5",
+                "reference": "85e0a289c6f0008447b3204fe2d871257b7445d5",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1",
+                "spryker/cms-block-extension": "^1.0.0",
                 "spryker/event": "^2.0.0",
                 "spryker/glossary": "^3.1.0",
-                "spryker/kernel": "^3.0.0",
-                "spryker/key-builder": "^1.0.0",
+                "spryker/kernel": "^3.30.0",
                 "spryker/locale": "^3.0.0",
                 "spryker/propel-orm": "^1.0.0",
-                "spryker/storage": "^3.0.0",
                 "spryker/store": "^1.0.0",
                 "spryker/symfony": "^3.0.0",
                 "spryker/touch": "^3.0.0 || ^4.0.0"
@@ -14945,13 +15142,11 @@
                 "spryker/cms-block-product-connector": "*",
                 "spryker/code-sniffer": "*",
                 "spryker/propel": "*",
-                "spryker/silex": "*",
-                "spryker/testify": "*",
-                "spryker/twig": "*"
+                "spryker/testify": "*"
             },
             "suggest": {
-                "spryker/silex": "*",
-                "spryker/twig": "*"
+                "spryker/cms-block-category-connector": "*",
+                "spryker/cms-block-product-connector": "*"
             },
             "type": "library",
             "extra": {
@@ -14970,7 +15165,7 @@
                 "proprietary"
             ],
             "description": "CmsBlock module",
-            "time": "2019-04-01T14:59:22+00:00"
+            "time": "2019-11-01T08:09:34+00:00"
         },
         {
             "name": "spryker/cms-block-category-connector",
@@ -15330,21 +15525,22 @@
         },
         {
             "name": "spryker/cms-block-storage",
-            "version": "1.3.0",
+            "version": "2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/cms-block-storage.git",
-                "reference": "d101ad39d334e3dbadd160c35dc140d86b943aaf"
+                "reference": "ae9323222d88a9055641c3684304f2f6a08a5179"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/cms-block-storage/zipball/d101ad39d334e3dbadd160c35dc140d86b943aaf",
-                "reference": "d101ad39d334e3dbadd160c35dc140d86b943aaf",
+                "url": "https://api.github.com/repos/spryker/cms-block-storage/zipball/ae9323222d88a9055641c3684304f2f6a08a5179",
+                "reference": "ae9323222d88a9055641c3684304f2f6a08a5179",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
-                "spryker/cms-block": "^1.5.0 || ^2.0.0",
+                "php": ">=7.2",
+                "spryker/cms-block": "^3.0.0",
+                "spryker/cms-block-storage-extension": "^1.0.0",
                 "spryker/event-behavior": "^1.1.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/propel-orm": "^1.5.0",
@@ -15352,6 +15548,7 @@
                 "spryker/synchronization": "^0.2.0 || ^1.0.0",
                 "spryker/synchronization-behavior": "^1.0.0",
                 "spryker/synchronization-extension": "^1.0.0",
+                "spryker/util-encoding": "^1.0.0 || ^2.0.0",
                 "spryker/util-sanitize": "^2.1.0"
             },
             "require-dev": {
@@ -15366,7 +15563,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "0.1.x-dev"
+                    "dev-master": "2.0.x-dev"
                 }
             },
             "autoload": {
@@ -15379,7 +15576,7 @@
                 "proprietary"
             ],
             "description": "CmsBlockStorage module",
-            "time": "2019-08-08T13:09:44+00:00"
+            "time": "2019-12-05T12:55:51+00:00"
         },
         {
             "name": "spryker/cms-block-storage-extension",
@@ -15998,6 +16195,882 @@
             ],
             "description": "CmsPageSearch module",
             "time": "2019-12-05T12:55:51+00:00"
+        },
+        {
+            "name": "spryker/cms-slot",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/cms-slot.git",
+                "reference": "5256b1a05213fff904856b143b8965f6908faf23"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/cms-slot/zipball/5256b1a05213fff904856b143b8965f6908faf23",
+                "reference": "5256b1a05213fff904856b143b8965f6908faf23",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/cms-slot-extension": "^1.0.0",
+                "spryker/kernel": "^3.37.0",
+                "spryker/propel-orm": "^1.0.0",
+                "spryker/symfony": "^3.3.0",
+                "spryker/transfer": "^3.8.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/",
+                    "SprykerTest\\Zed\\CmsSlot\\Helper\\": "tests/SprykerTest/Zed/CmsSlot/_support/Helper/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CmsSlot module",
+            "time": "2019-12-03T14:33:53+00:00"
+        },
+        {
+            "name": "spryker/cms-slot-block",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/cms-slot-block.git",
+                "reference": "4c925b61c4887a0c5555424164eefb300887ea2f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/cms-slot-block/zipball/4c925b61c4887a0c5555424164eefb300887ea2f",
+                "reference": "4c925b61c4887a0c5555424164eefb300887ea2f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/cms-block": "^2.0.0 || ^3.0.0",
+                "spryker/cms-slot": "^1.0.0",
+                "spryker/cms-slot-block-extension": "^1.0.0",
+                "spryker/event": "^2.3.0",
+                "spryker/kernel": "^3.33.0",
+                "spryker/propel-orm": "^1.0.0",
+                "spryker/transfer": "^3.8.0",
+                "spryker/util-encoding": "^1.0.0 || ^2.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
+                "spryker/store": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/",
+                    "SprykerTest\\Zed\\CmsSlotBlock\\Helper\\": "tests/SprykerTest/Zed/CmsSlotBlock/_support/Helper/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CmsSlotBlock module",
+            "time": "2019-12-03T14:33:53+00:00"
+        },
+        {
+            "name": "spryker/cms-slot-block-category-connector",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/cms-slot-block-category-connector.git",
+                "reference": "922c60d5e57e60c4080fc3ccf4111eb35c4dee37"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/cms-slot-block-category-connector/zipball/922c60d5e57e60c4080fc3ccf4111eb35c4dee37",
+                "reference": "922c60d5e57e60c4080fc3ccf4111eb35c4dee37",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/category": "^1.0.0 || ^2.0.0 || ^3.0.0 || ^4.0.0",
+                "spryker/cms-slot-block-extension": "^1.0.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/transfer": "^3.8.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CmsSlotBlockCategoryConnector module",
+            "time": "2019-12-03T14:33:53+00:00"
+        },
+        {
+            "name": "spryker/cms-slot-block-category-gui",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/cms-slot-block-category-gui.git",
+                "reference": "23016afdfd134cd7847cb0c5ab247309462b8347"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/cms-slot-block-category-gui/zipball/23016afdfd134cd7847cb0c5ab247309462b8347",
+                "reference": "23016afdfd134cd7847cb0c5ab247309462b8347",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/category": "^4.6.0",
+                "spryker/cms-slot-block-gui-extension": "^1.0.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/locale": "^1.0.0 || ^2.0.0 || ^3.0.0",
+                "spryker/symfony": "^3.0.0",
+                "spryker/transfer": "^3.8.0",
+                "spryker/translator": "^1.0.0",
+                "spryker/util-encoding": "^1.0.0 || ^2.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CmsSlotBlockCategoryGui module",
+            "time": "2019-12-03T14:33:53+00:00"
+        },
+        {
+            "name": "spryker/cms-slot-block-cms-connector",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/cms-slot-block-cms-connector.git",
+                "reference": "8c19171bafc923328d19c7e835fca3334b682126"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/cms-slot-block-cms-connector/zipball/8c19171bafc923328d19c7e835fca3334b682126",
+                "reference": "8c19171bafc923328d19c7e835fca3334b682126",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/cms": "^1.0.0 || ^2.0.0 || ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0",
+                "spryker/cms-slot-block-extension": "^1.0.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/transfer": "^3.8.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CmsSlotBlockCmsConnector module",
+            "time": "2019-12-03T14:33:53+00:00"
+        },
+        {
+            "name": "spryker/cms-slot-block-cms-gui",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/cms-slot-block-cms-gui.git",
+                "reference": "2ce38bafcc9c663f41a1daa7b1c1da0c9c7b0c1a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/cms-slot-block-cms-gui/zipball/2ce38bafcc9c663f41a1daa7b1c1da0c9c7b0c1a",
+                "reference": "2ce38bafcc9c663f41a1daa7b1c1da0c9c7b0c1a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/cms": "^3.2.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0",
+                "spryker/cms-slot-block-gui-extension": "^1.0.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/locale": "^1.0.0 || ^2.0.0 || ^3.0.0",
+                "spryker/propel-orm": "^1.0.0",
+                "spryker/symfony": "^3.0.0",
+                "spryker/transfer": "^3.8.0",
+                "spryker/translator": "^1.0.0",
+                "spryker/util-encoding": "^1.0.0 || ^2.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CmsSlotBlockCmsGui module",
+            "time": "2019-12-03T14:33:53+00:00"
+        },
+        {
+            "name": "spryker/cms-slot-block-data-import",
+            "version": "0.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/cms-slot-block-data-import.git",
+                "reference": "2c2fb1d019661cc8196f18351ddb1041980d65fe"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/cms-slot-block-data-import/zipball/2c2fb1d019661cc8196f18351ddb1041980d65fe",
+                "reference": "2c2fb1d019661cc8196f18351ddb1041980d65fe",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/category": "^1.0.0 || ^2.0.0 || ^3.0.0 || ^4.0.0",
+                "spryker/cms": "^1.0.0 || ^2.0.0 || ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0",
+                "spryker/cms-block": "^3.0.0",
+                "spryker/cms-slot": "^1.0.0",
+                "spryker/cms-slot-block": "^1.0.0",
+                "spryker/data-import": "^1.4.0",
+                "spryker/kernel": "^3.33.0",
+                "spryker/product": "^1.0.0 || ^2.0.0 || ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "CmsSlotBlockDataImport module",
+            "time": "2019-12-03T14:33:53+00:00"
+        },
+        {
+            "name": "spryker/cms-slot-block-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/cms-slot-block-extension.git",
+                "reference": "0716437042b462e468cfb046d54705a9826a6342"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/cms-slot-block-extension/zipball/0716437042b462e468cfb046d54705a9826a6342",
+                "reference": "0716437042b462e468cfb046d54705a9826a6342",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CmsSlotBlockExtension module",
+            "time": "2019-11-27T14:34:46+00:00"
+        },
+        {
+            "name": "spryker/cms-slot-block-gui",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/cms-slot-block-gui.git",
+                "reference": "516a2cee0c65e5bd6675a31be0932d2240541e5e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/cms-slot-block-gui/zipball/516a2cee0c65e5bd6675a31be0932d2240541e5e",
+                "reference": "516a2cee0c65e5bd6675a31be0932d2240541e5e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/cms-block": "^1.0.0 || ^2.0.0 || ^3.0.0",
+                "spryker/cms-slot": "^1.0.0",
+                "spryker/cms-slot-block": "^1.0.0",
+                "spryker/cms-slot-block-gui-extension": "^1.0.0",
+                "spryker/gui": "^3.0.0",
+                "spryker/kernel": "^3.33.0",
+                "spryker/symfony": "^3.0.0",
+                "spryker/transfer": "^3.8.0",
+                "spryker/util-text": "^1.1.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CmsSlotBlockGui module",
+            "time": "2019-12-03T14:33:53+00:00"
+        },
+        {
+            "name": "spryker/cms-slot-block-gui-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/cms-slot-block-gui-extension.git",
+                "reference": "40f0f0e2c4581e45efaaef350571f5493d619826"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/cms-slot-block-gui-extension/zipball/40f0f0e2c4581e45efaaef350571f5493d619826",
+                "reference": "40f0f0e2c4581e45efaaef350571f5493d619826",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/symfony": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/symfony": "If you want to use symfony forms"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CmsSlotBlockGuiExtension module",
+            "time": "2019-11-27T14:34:46+00:00"
+        },
+        {
+            "name": "spryker/cms-slot-block-product-category-connector",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/cms-slot-block-product-category-connector.git",
+                "reference": "bf9518c44be6a6a821b497e99d086d8e8debd472"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/cms-slot-block-product-category-connector/zipball/bf9518c44be6a6a821b497e99d086d8e8debd472",
+                "reference": "bf9518c44be6a6a821b497e99d086d8e8debd472",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/cms-slot-block-extension": "^1.0.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/locale": "^1.0.0 || ^2.0.0 || ^3.0.0",
+                "spryker/product-category-storage": "^1.0.0",
+                "spryker/transfer": "^3.8.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CmsSlotBlockProductCategoryConnector module",
+            "time": "2019-12-03T14:33:53+00:00"
+        },
+        {
+            "name": "spryker/cms-slot-block-product-category-gui",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/cms-slot-block-product-category-gui.git",
+                "reference": "b9a5400a9cb31eb5718514a9e0763ceca67580ef"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/cms-slot-block-product-category-gui/zipball/b9a5400a9cb31eb5718514a9e0763ceca67580ef",
+                "reference": "b9a5400a9cb31eb5718514a9e0763ceca67580ef",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/category": "^4.6.0",
+                "spryker/cms-slot-block-gui-extension": "^1.0.0",
+                "spryker/gui": "^3.24.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/locale": "^1.0.0 || ^2.0.0 || ^3.0.0",
+                "spryker/product": "^6.12.0",
+                "spryker/propel-orm": "^1.0.0",
+                "spryker/symfony": "^3.0.0",
+                "spryker/translator": "^1.0.0",
+                "spryker/util-encoding": "^1.0.0 || ^2.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CmsSlotBlockProductCategoryGui module",
+            "time": "2019-12-03T14:33:53+00:00"
+        },
+        {
+            "name": "spryker/cms-slot-block-storage",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/cms-slot-block-storage.git",
+                "reference": "2ca62f6e13837b5dc35b9a01587b238b042c0491"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/cms-slot-block-storage/zipball/2ca62f6e13837b5dc35b9a01587b238b042c0491",
+                "reference": "2ca62f6e13837b5dc35b9a01587b238b042c0491",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/cms-slot": "^1.0.0",
+                "spryker/cms-slot-block": "^1.0.0",
+                "spryker/event-behavior": "^1.8.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/propel-orm": "^1.3.0",
+                "spryker/storage": "^1.0.0 || ^2.0.0 || ^3.0.0",
+                "spryker/synchronization": "^1.0.0",
+                "spryker/synchronization-behavior": "^1.0.0",
+                "spryker/synchronization-extension": "^1.1.0",
+                "spryker/transfer": "^3.8.0",
+                "spryker/util-encoding": "^1.0.0 || ^2.0.0"
+            },
+            "require-dev": {
+                "spryker/cms-block": "*",
+                "spryker/code-sniffer": "*",
+                "spryker/event": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/event": "If you want to use Event plugins, minimum required version: 2.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/",
+                    "SprykerTest\\Zed\\CmsSlotBlockStorage\\Helper\\": "tests/SprykerTest/Zed/CmsSlotBlockStorage/_support/Helper/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CmsSlotBlockStorage module",
+            "time": "2019-12-03T14:33:53+00:00"
+        },
+        {
+            "name": "spryker/cms-slot-data-import",
+            "version": "0.7.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/cms-slot-data-import.git",
+                "reference": "5e81e16989a0eb71b1faa6d6a606218b42b34025"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/cms-slot-data-import/zipball/5e81e16989a0eb71b1faa6d6a606218b42b34025",
+                "reference": "5e81e16989a0eb71b1faa6d6a606218b42b34025",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/cms-slot": "^1.0.0",
+                "spryker/data-import": "^1.6.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/util-text": "^1.1.0"
+            },
+            "require-dev": {
+                "spryker/cms-slot-block": "*",
+                "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/",
+                    "SprykerTest\\Zed\\CmsSlotDataImport\\Helper\\": "tests/SprykerTest/Zed/CmsSlotDataImport/_support/Helper/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "CmsSlotDataImport module",
+            "time": "2019-12-03T14:33:53+00:00"
+        },
+        {
+            "name": "spryker/cms-slot-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/cms-slot-extension.git",
+                "reference": "30fd06394c7211610dcd6897c4fbc6d0c884ef4a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/cms-slot-extension/zipball/30fd06394c7211610dcd6897c4fbc6d0c884ef4a",
+                "reference": "30fd06394c7211610dcd6897c4fbc6d0c884ef4a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CmsSlotExtension module",
+            "time": "2019-11-13T16:22:43+00:00"
+        },
+        {
+            "name": "spryker/cms-slot-gui",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/cms-slot-gui.git",
+                "reference": "9bab40b3fe1d7392cefc0659587c0ca25676e08b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/cms-slot-gui/zipball/9bab40b3fe1d7392cefc0659587c0ca25676e08b",
+                "reference": "9bab40b3fe1d7392cefc0659587c0ca25676e08b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/cms-slot": "^1.0.0",
+                "spryker/gui": "^3.24.0",
+                "spryker/kernel": "^3.37.0",
+                "spryker/symfony": "^3.3.0",
+                "spryker/translator": "^1.1.0",
+                "spryker/util-text": "^1.2.1"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/cms-slot-block-gui": "If you want to assign CMS Blocks to CMS Slots"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CmsSlotGui module",
+            "time": "2019-12-03T14:33:53+00:00"
+        },
+        {
+            "name": "spryker/cms-slot-locale-connector",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/cms-slot-locale-connector.git",
+                "reference": "8b320c8eaca446e79e6d4e696f4197425da5b592"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/cms-slot-locale-connector/zipball/8b320c8eaca446e79e6d4e696f4197425da5b592",
+                "reference": "8b320c8eaca446e79e6d4e696f4197425da5b592",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/cms-slot-extension": "^1.0.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/locale": "^1.0.0 || ^2.0.0 || ^3.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CmsSlotLocaleConnector module",
+            "time": "2019-12-03T14:33:53+00:00"
+        },
+        {
+            "name": "spryker/cms-slot-storage",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/cms-slot-storage.git",
+                "reference": "4b33d16de6da4372e34bcb4289503b5a07df6301"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/cms-slot-storage/zipball/4b33d16de6da4372e34bcb4289503b5a07df6301",
+                "reference": "4b33d16de6da4372e34bcb4289503b5a07df6301",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/cms-slot": "^1.0.0",
+                "spryker/event-behavior": "^1.8.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/storage": "^3.0.0",
+                "spryker/synchronization": "^1.0.0",
+                "spryker/synchronization-behavior": "^1.0.0",
+                "spryker/synchronization-extension": "^1.1.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/event": "*",
+                "spryker/propel": "*",
+                "spryker/queue": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/event": "If you want to use Event plugins, minimum required version: 2.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CmsSlotStorage module",
+            "time": "2019-12-03T14:33:53+00:00"
+        },
+        {
+            "name": "spryker/cms-slot-store-connector",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/cms-slot-store-connector.git",
+                "reference": "001528af7ca8267e7f1560386769408b4249262a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/cms-slot-store-connector/zipball/001528af7ca8267e7f1560386769408b4249262a",
+                "reference": "001528af7ca8267e7f1560386769408b4249262a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/cms-slot-extension": "^1.0.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/store": "^1.4.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CmsSlotStoreConnector module",
+            "time": "2019-12-03T14:33:53+00:00"
         },
         {
             "name": "spryker/cms-storage",
@@ -18466,6 +19539,51 @@
             ],
             "description": "ConfigurableBundleGuiExtension module",
             "time": "2019-11-28T12:02:34+00:00"
+        },
+        {
+            "name": "spryker/configurable-bundle-note",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/configurable-bundle-note.git",
+                "reference": "4740b0bd9ecfb834a673a07ba86d624d7d1a7331"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/configurable-bundle-note/zipball/4740b0bd9ecfb834a673a07ba86d624d7d1a7331",
+                "reference": "4740b0bd9ecfb834a673a07ba86d624d7d1a7331",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/configurable-bundle": "^1.0.0 || ^2.0.0",
+                "spryker/kernel": "^3.33.0",
+                "spryker/quote": "^2.0.0",
+                "spryker/sales-configurable-bundle": "^1.0.0",
+                "spryker/zed-request": "^3.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ConfigurableBundleNote module",
+            "time": "2019-12-03T10:47:36+00:00"
         },
         {
             "name": "spryker/configurable-bundle-page-search",
@@ -21926,16 +23044,16 @@
         },
         {
             "name": "spryker/glossary-storage",
-            "version": "1.4.3",
+            "version": "1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/glossary-storage.git",
-                "reference": "21153b49e0f9c62f92becbc9c48ec5b624fac5ef"
+                "reference": "d29a1710d6caf7f5f35fe2846f96313a0f066dfc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/glossary-storage/zipball/21153b49e0f9c62f92becbc9c48ec5b624fac5ef",
-                "reference": "21153b49e0f9c62f92becbc9c48ec5b624fac5ef",
+                "url": "https://api.github.com/repos/spryker/glossary-storage/zipball/d29a1710d6caf7f5f35fe2846f96313a0f066dfc",
+                "reference": "d29a1710d6caf7f5f35fe2846f96313a0f066dfc",
                 "shasum": ""
             },
             "require": {
@@ -21947,7 +23065,8 @@
                 "spryker/storage": "^3.4.0",
                 "spryker/synchronization": "^0.2.0 || ^1.0.0",
                 "spryker/synchronization-behavior": "^1.0.0",
-                "spryker/synchronization-extension": "^1.0.0"
+                "spryker/synchronization-extension": "^1.0.0",
+                "spryker/util-encoding": "^1.0.0 || ^2.0.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
@@ -21975,7 +23094,7 @@
                 "proprietary"
             ],
             "description": "GlossaryStorage module",
-            "time": "2019-11-15T11:19:39+00:00"
+            "time": "2019-12-05T16:06:03+00:00"
         },
         {
             "name": "spryker/glue-application",
@@ -24878,23 +25997,24 @@
         },
         {
             "name": "spryker/orders-rest-api",
-            "version": "4.0.2",
+            "version": "4.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/orders-rest-api.git",
-                "reference": "1837e0e6d8eca71ad53446a5598fbbffc786bd96"
+                "reference": "4a82dc37dc6ce49ff2c0883a3229f324665e7b34"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/orders-rest-api/zipball/1837e0e6d8eca71ad53446a5598fbbffc786bd96",
-                "reference": "1837e0e6d8eca71ad53446a5598fbbffc786bd96",
+                "url": "https://api.github.com/repos/spryker/orders-rest-api/zipball/4a82dc37dc6ce49ff2c0883a3229f324665e7b34",
+                "reference": "4a82dc37dc6ce49ff2c0883a3229f324665e7b34",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
+                "php": ">=7.2",
                 "spryker/glue-application": "^1.0.0",
                 "spryker/glue-application-extension": "^1.0.0",
                 "spryker/kernel": "^3.30.0",
+                "spryker/orders-rest-api-extension": "^1.0.0",
                 "spryker/sales": "^11.0.0",
                 "spryker/symfony": "^3.0.0"
             },
@@ -24904,6 +26024,45 @@
             },
             "suggest": {
                 "spryker/auth-rest-api": "If you want to authorize and authenticate customers via access tokens."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "4.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "OrdersRestApi module",
+            "time": "2019-12-05T16:06:03+00:00"
+        },
+        {
+            "name": "spryker/orders-rest-api-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/orders-rest-api-extension.git",
+                "reference": "f98947342121ad103706c2e9b29f9a60909b71f3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/orders-rest-api-extension/zipball/f98947342121ad103706c2e9b29f9a60909b71f3",
+                "reference": "f98947342121ad103706c2e9b29f9a60909b71f3",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
             },
             "type": "library",
             "extra": {
@@ -24920,8 +26079,8 @@
             "license": [
                 "proprietary"
             ],
-            "description": "OrdersRestApi module",
-            "time": "2019-10-24T14:14:15+00:00"
+            "description": "OrdersRestApiExtension module",
+            "time": "2019-11-29T08:06:16+00:00"
         },
         {
             "name": "spryker/payment",
@@ -29282,16 +30441,16 @@
         },
         {
             "name": "spryker/product-option-storage",
-            "version": "1.5.2",
+            "version": "1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product-option-storage.git",
-                "reference": "967cd2c90c35004f668f8efd605a3e1538e8e936"
+                "reference": "96345d68c252f9331c4a1ade6e5859380a20f460"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-option-storage/zipball/967cd2c90c35004f668f8efd605a3e1538e8e936",
-                "reference": "967cd2c90c35004f668f8efd605a3e1538e8e936",
+                "url": "https://api.github.com/repos/spryker/product-option-storage/zipball/96345d68c252f9331c4a1ade6e5859380a20f460",
+                "reference": "96345d68c252f9331c4a1ade6e5859380a20f460",
                 "shasum": ""
             },
             "require": {
@@ -29307,7 +30466,8 @@
                 "spryker/store": "^1.7.0",
                 "spryker/synchronization": "^0.2.0 || ^1.0.0",
                 "spryker/synchronization-behavior": "^1.0.0",
-                "spryker/synchronization-extension": "^1.0.0"
+                "spryker/synchronization-extension": "^1.0.0",
+                "spryker/util-encoding": "^1.0.0 || ^2.0.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
@@ -29335,7 +30495,7 @@
                 "proprietary"
             ],
             "description": "ProductOptionStorage module",
-            "time": "2019-12-02T11:36:22+00:00"
+            "time": "2019-12-05T18:19:41+00:00"
         },
         {
             "name": "spryker/product-packaging-unit",
@@ -30504,16 +31664,16 @@
         },
         {
             "name": "spryker/product-storage",
-            "version": "1.16.1",
+            "version": "1.17.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product-storage.git",
-                "reference": "d0efefecb5a05b7d8517b164758558c050894f02"
+                "reference": "5772a4f8af3b490ad12fceb4a0160d334483a4e2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-storage/zipball/d0efefecb5a05b7d8517b164758558c050894f02",
-                "reference": "d0efefecb5a05b7d8517b164758558c050894f02",
+                "url": "https://api.github.com/repos/spryker/product-storage/zipball/5772a4f8af3b490ad12fceb4a0160d334483a4e2",
+                "reference": "5772a4f8af3b490ad12fceb4a0160d334483a4e2",
                 "shasum": ""
             },
             "require": {
@@ -30562,7 +31722,7 @@
                 "proprietary"
             ],
             "description": "ProductStorage module",
-            "time": "2019-12-03T22:34:18+00:00"
+            "time": "2019-12-05T16:06:03+00:00"
         },
         {
             "name": "spryker/product-storage-extension",
@@ -42090,16 +43250,16 @@
         },
         {
             "name": "spryker/code-sniffer",
-            "version": "0.14.10",
+            "version": "0.14.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/code-sniffer.git",
-                "reference": "0d0bc25ab78a2f519939b1c16d4682307a712ede"
+                "reference": "7480234f9fa64de6ced7892717f642e048036aaa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/0d0bc25ab78a2f519939b1c16d4682307a712ede",
-                "reference": "0d0bc25ab78a2f519939b1c16d4682307a712ede",
+                "url": "https://api.github.com/repos/spryker/code-sniffer/zipball/7480234f9fa64de6ced7892717f642e048036aaa",
+                "reference": "7480234f9fa64de6ced7892717f642e048036aaa",
                 "shasum": ""
             },
             "require": {
@@ -42140,7 +43300,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2019-11-19T17:01:58+00:00"
+            "time": "2019-12-05T14:21:46+00:00"
         },
         {
             "name": "spryker/development",
@@ -43248,6 +44408,12 @@
             "package": "spryker-feature/checkout"
         },
         {
+            "alias": "202001.0",
+            "alias_normalized": "202001.0",
+            "version": "9999999-dev",
+            "package": "spryker-feature/cms"
+        },
+        {
             "alias": "201910.0",
             "alias_normalized": "201910.0",
             "version": "9999999-dev",
@@ -43412,6 +44578,7 @@
         "spryker-feature/cart": 20,
         "spryker-feature/catalog": 20,
         "spryker-feature/checkout": 20,
+        "spryker-feature/cms": 20,
         "spryker-feature/company-account": 20,
         "spryker-feature/configurable-bundle": 20,
         "spryker-feature/customer-account-management": 20,
