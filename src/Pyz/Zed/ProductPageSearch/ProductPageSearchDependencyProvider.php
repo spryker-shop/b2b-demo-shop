@@ -104,7 +104,7 @@ class ProductPageSearchDependencyProvider extends SprykerProductPageSearchDepend
     {
         return [
             new ProductConcreteProductListPageDataExpanderPlugin(),
-            new ProductImageProductConcretePageDataExpanderPlugin()
+            new ProductImageProductConcretePageDataExpanderPlugin(),
         ];
     }
 }
