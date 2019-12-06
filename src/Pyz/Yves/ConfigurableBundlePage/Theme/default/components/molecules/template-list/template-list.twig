@@ -15,8 +15,8 @@
 {% endblock %}
 
 {% block template %}
-
-
+    {% block templateTitle %}{{ parent() }}{% endblock %}
+{% endblock %}
 
 {% block templateTitleImage %}
     {% set imageModifiers = ['reset-indents', 'big'] %}
