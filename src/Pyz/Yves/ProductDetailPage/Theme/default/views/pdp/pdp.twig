@@ -96,9 +96,15 @@
 {% endblock %}
 
 {% block contentBottom %}
-    {% include molecule('product-cms-block', 'CmsBlockWidget') ignore missing with {
+    {% embed molecule('product-cms-block', 'CmsBlockWidget') ignore missing with {
         data: {
-            idProductAbstract: data.product.idProductAbstract
+            idProductAbstract: data.product.idProductAbstract,
         }
     } only %}
+        {% block body %}
+            {% cms_slot 'slt-9' required ['idProductAbstract'] with {
+                idProductAbstract: data.idProductAbstract,
+            } %}
+        {% endblock %}
+    {% endembed %}
 {% endblock %}
