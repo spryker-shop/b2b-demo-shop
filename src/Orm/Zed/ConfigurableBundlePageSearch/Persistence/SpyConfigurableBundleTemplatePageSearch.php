@@ -7,7 +7,7 @@
 
 namespace Orm\Zed\ConfigurableBundlePageSearch\Persistence;
 
-use Spryker\Zed\ConfigurableBundlePageSearch\Persistence\Propel\AbstractSpyConfigurableBundleTemplatePageSearch as BaseSpyConfigurableBundleTemplatePageSearch;
+use Spryker\Zed\ConfigurableBundlePageSearch\Persistence\Propel\AbstractSpyConfigurableBundleTemplatePageSearch;
 
 /**
  * Skeleton subclass for representing a row from the 'spy_configurable_bundle_template_page_search' table.
@@ -18,6 +18,6 @@ use Spryker\Zed\ConfigurableBundlePageSearch\Persistence\Propel\AbstractSpyConfi
  * application requirements. This class will only be generated as
  * long as it does not already exist in the output directory.
  */
-class SpyConfigurableBundleTemplatePageSearch extends BaseSpyConfigurableBundleTemplatePageSearch
+class SpyConfigurableBundleTemplatePageSearch extends AbstractSpyConfigurableBundleTemplatePageSearch
 {
 }
