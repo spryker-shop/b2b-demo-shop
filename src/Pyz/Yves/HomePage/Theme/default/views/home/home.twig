@@ -44,65 +44,26 @@
         },
     } only %}
         {% block slides %}
-            {{ spyCmsBlock({
-                name: 'Homepage Top Banners Carousel'
-            }) }}
+            {% cms_slot 'slt-2' %}
         {% endblock %}
     {% endembed %}
 {% endblock %}
 
 {% block content %}
-    {% embed organism('section') with {
-        modifiers: ['secondary', 'no-mobile-bottom-indent'],
-        class: 'spacing-top spacing-top--inner spacing-top--big',
-    } only %}
-        {% block inner %}
-            {{ spyCmsBlock({
-                name: 'Homepage Featured Products'
-            }) }}
-        {% endblock %}
-    {% endembed %}
+    {% cms_slot 'slt-3' %}
 
     {% embed organism('section') with {
         modifiers: ['secondary', 'full-width'],
         class: 'spacing-top spacing-top--inner spacing-top--big',
     } only %}
         {% block inner %}
-            {{ spyCmsBlock({
-                name: 'Featured Categories'
-            }) }}
+            <div class="grid grid--left grid--middle">
+                {% cms_slot 'slt-4' %}
+            </div>
         {% endblock %}
     {% endembed %}
 {% endblock %}
 
 {% block contentBottom %}
-    {% embed organism('section') with {
-        modifiers: ['secondary', 'bg-dark'],
-        data: {
-            innerClass: 'container',
-        },
-    } only %}
-        {% block inner %}
-            {{ spyCmsBlock({
-                name: 'Homepage Top sellers Products'
-            }) }}
-        {% endblock %}
-    {% endembed %}
-
-    {% embed organism('section') with {
-        modifiers: ['secondary'],
-        data: {
-            innerClass: 'container',
-        },
-    } only %}
-        {% block inner %}
-            {% embed molecule('content-collapser') only %}
-                {% block content %}
-                    {{ spyCmsBlock({
-                        name: 'Teaser for home page'
-                    }) }}
-                {% endblock %}
-            {% endembed %}
-        {% endblock %}
-    {% endembed %}
+    {% cms_slot 'slt-5' %}
 {% endblock %}
