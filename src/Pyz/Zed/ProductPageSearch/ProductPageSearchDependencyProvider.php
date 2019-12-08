@@ -57,21 +57,6 @@ class ProductPageSearchDependencyProvider extends SprykerProductPageSearchDepend
     }
 
     /**
-     * @return \Spryker\Zed\ProductPageSearch\Dependency\Plugin\ProductPageMapExpanderInterface[]
-     */
-    protected function getMapExpanderPlugins()
-    {
-        return [
-            new PricePageMapExpanderPlugin(),
-            new ProductCategoryPageMapExpanderPlugin(),
-            new ProductImagePageMapExpanderPlugin(),
-            new ProductLabelMapExpanderPlugin(),
-            new ProductReviewMapExpanderPlugin(),
-            new ProductListMapExpanderPlugin(),
-        ];
-    }
-
-    /**
      * @return \Spryker\Zed\ProductPageSearchExtension\Dependency\Plugin\ProductPageDataLoaderPluginInterface[]
      */
     protected function getDataLoaderPlugins()
@@ -89,7 +74,7 @@ class ProductPageSearchDependencyProvider extends SprykerProductPageSearchDepend
     /**
      * @return \Spryker\Zed\ProductPageSearchExtension\Dependency\Plugin\ProductConcretePageMapExpanderPluginInterface[]
      */
-    protected function getConcreteProductPageMapExpanderPlugins(): array
+    protected function getConcreteProductMapExpanderPlugins(): array
     {
         return [
             new ProductConcreteProductListPageMapExpanderPlugin(),
