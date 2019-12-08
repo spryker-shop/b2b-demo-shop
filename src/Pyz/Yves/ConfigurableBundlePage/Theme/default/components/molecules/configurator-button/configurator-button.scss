@@ -1,0 +1,30 @@
+@mixin configurable-bundle-page-configurator-button($name: '.configurator-button') {
+    @include shop-ui-button($name) {
+        &--hollow {
+            background: $setting-color-transparent;
+
+            &:hover {
+                background: $setting-color-main;
+                color: $setting-color-white;
+            }
+        }
+
+        &--additional-indention {
+            padding: rem(23);
+            background: $setting-color-transparent;
+            color: $setting-color-gray-3;
+            font-weight: fw(medium);
+            border-bottom: rem(3) solid $setting-color-transparent;
+        }
+
+        &--active {
+            background: $setting-color-alpha-2;
+            color: $setting-color-gray-5;
+            border-bottom-color: $setting-color-main;
+        }
+
+        @content;
+    }
+}
+
+@include configurable-bundle-page-configurator-button();

@@ -1,0 +1,23 @@
+{% extends molecule('configurator-sidebar', '@SprykerShop:ConfigurableBundlePage') %}
+
+{%- block extraClass %} grid{% endblock -%}
+
+{% block slotItem %}
+    {% set submitButtonModifiers = ['expand', 'additional-indention'] %}
+    {% set slotClasses = config.name ~ '__item' %}
+
+    <li class="{{ slotClasses }}">
+        {% block slotItemInner %}
+            {{ parent() }}
+        {% endblock %}
+    </li>
+{% endblock %}
+
+{% block summaryItem %}
+    {% set summaryClasses = config.name ~ '__item' %}
+    <li class="{{ summaryClasses }}">
+        {% block summaryItemInner %}
+            {{ parent() }}
+        {% endblock %}
+    </li>
+{% endblock %}
