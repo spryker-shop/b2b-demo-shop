@@ -20,8 +20,9 @@ use Spryker\Client\CatalogPriceProductConnector\Plugin\ConfigTransferBuilder\Des
 use Spryker\Client\CatalogPriceProductConnector\Plugin\CurrencyAwareCatalogSearchResultFormatterPlugin;
 use Spryker\Client\CatalogPriceProductConnector\Plugin\CurrencyAwareSuggestionByTypeResultFormatter;
 use Spryker\Client\CatalogPriceProductConnector\Plugin\ProductPriceQueryExpanderPlugin;
-use Spryker\Client\CustomerCatalog\Plugin\Search\ProductListQueryExpanderPlugin;
+use Spryker\Client\CustomerCatalog\Plugin\Search\ProductListQueryExpanderPlugin as CustomerCatalogProductListQueryExpanderPlugin;
 use Spryker\Client\ProductLabelStorage\Plugin\ProductLabelFacetConfigTransferBuilderPlugin;
+use Spryker\Client\ProductListSearch\Plugin\Search\ProductListQueryExpanderPlugin as ProductListSearchProductListQueryExpanderPlugin;
 use Spryker\Client\ProductReview\Plugin\RatingFacetConfigTransferBuilderPlugin;
 use Spryker\Client\ProductReview\Plugin\RatingSortConfigTransferBuilderPlugin;
 use Spryker\Client\Search\Plugin\Elasticsearch\QueryExpander\CompletionQueryExpanderPlugin;
@@ -93,7 +94,7 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
             new SpellingSuggestionQueryExpanderPlugin(),
             new IsActiveQueryExpanderPlugin(),
             new IsActiveInDateRangeQueryExpanderPlugin(),
-            new ProductListQueryExpanderPlugin(),
+            new CustomerCatalogProductListQueryExpanderPlugin(),
 
             /**
              * FacetQueryExpanderPlugin needs to be after other query expanders which filters down the results.
@@ -130,7 +131,7 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
             new SuggestionByTypeQueryExpanderPlugin(),
             new IsActiveQueryExpanderPlugin(),
             new IsActiveInDateRangeQueryExpanderPlugin(),
-            new ProductListQueryExpanderPlugin(),
+            new CustomerCatalogProductListQueryExpanderPlugin(),
         ];
     }
 
@@ -158,7 +159,7 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
             new ProductPriceQueryExpanderPlugin(),
             new IsActiveQueryExpanderPlugin(),
             new IsActiveInDateRangeQueryExpanderPlugin(),
-            new ProductListQueryExpanderPlugin(),
+            new CustomerCatalogProductListQueryExpanderPlugin(),
         ];
     }
 
@@ -180,7 +181,8 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
         return [
             new LocalizedQueryExpanderPlugin(),
             new PaginatedProductConcreteCatalogSearchQueryExpanderPlugin(),
-            new ProductListQueryExpanderPlugin(),
+            new CustomerCatalogProductListQueryExpanderPlugin(),
+            new ProductListSearchProductListQueryExpanderPlugin(),
         ];
     }
 }
