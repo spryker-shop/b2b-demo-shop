@@ -15,8 +15,8 @@ use Spryker\Glue\AuthRestApi\Plugin\AccessTokensResourceRoutePlugin;
 use Spryker\Glue\AuthRestApi\Plugin\FormatAuthenticationErrorResponseHeadersPlugin;
 use Spryker\Glue\AuthRestApi\Plugin\RefreshTokensResourceRoutePlugin;
 use Spryker\Glue\AuthRestApi\Plugin\RestUserFinderByAccessTokenPlugin;
-use Spryker\Glue\CartCodesRestApi\Plugin\GlueApplication\CartVouchersResourceRoutePlugin;
 use Spryker\Glue\CartCodesRestApi\Plugin\GlueApplication\CartRuleByQuoteResourceRelationshipPlugin;
+use Spryker\Glue\CartCodesRestApi\Plugin\GlueApplication\CartVouchersResourceRoutePlugin;
 use Spryker\Glue\CartCodesRestApi\Plugin\GlueApplication\GuestCartVouchersResourceRoutePlugin;
 use Spryker\Glue\CartCodesRestApi\Plugin\GlueApplication\VoucherByQuoteResourceRelationshipPlugin;
 use Spryker\Glue\CartPermissionGroupsRestApi\Plugin\GlueApplication\CartPermissionGroupByQuoteResourceRelationshipPlugin;
@@ -180,8 +180,6 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new UrlResolverResourceRoutePlugin(),
             new CustomerAccessResourceRoutePlugin(),
             new AbstractProductsProductReviewsResourceRoutePlugin(),
-            new CartVouchersResourceRoutePlugin(),
-            new GuestCartVouchersResourceRoutePlugin(),
         ];
     }
 
@@ -395,22 +393,6 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
         $resourceRelationshipCollection->addRelationship(
             ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
             new ProductReviewsRelationshipByProductConcreteSkuPlugin()
-        );
-        $resourceRelationshipCollection->addRelationship(
-            CartsRestApiConfig::RESOURCE_CARTS,
-            new VoucherByQuoteResourceRelationshipPlugin()
-        );
-        $resourceRelationshipCollection->addRelationship(
-            CartsRestApiConfig::RESOURCE_GUEST_CARTS,
-            new VoucherByQuoteResourceRelationshipPlugin()
-        );
-        $resourceRelationshipCollection->addRelationship(
-            CartsRestApiConfig::RESOURCE_CARTS,
-            new CartRuleByQuoteResourceRelationshipPlugin()
-        );
-        $resourceRelationshipCollection->addRelationship(
-            CartsRestApiConfig::RESOURCE_GUEST_CARTS,
-            new CartRuleByQuoteResourceRelationshipPlugin()
         );
 
         return $resourceRelationshipCollection;
