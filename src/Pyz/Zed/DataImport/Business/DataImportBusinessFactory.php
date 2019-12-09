@@ -56,7 +56,6 @@ use Pyz\Zed\DataImport\Business\Model\ProductStock\Hook\ProductStockAfterImportP
 use Pyz\Zed\DataImport\Business\Model\ProductStock\ProductStockWriterStep;
 use Pyz\Zed\DataImport\Business\Model\Shipment\ShipmentWriterStep;
 use Pyz\Zed\DataImport\Business\Model\ShipmentPrice\ShipmentPriceWriterStep;
-use Pyz\Zed\DataImport\Business\Model\Stock\StockWriterStep;
 use Pyz\Zed\DataImport\Business\Model\Store\StoreReader;
 use Pyz\Zed\DataImport\Business\Model\Store\StoreWriterStep;
 use Pyz\Zed\DataImport\Business\Model\Tax\TaxSetNameToIdTaxSetStep;
@@ -93,14 +92,12 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
             ->addDataImporter($this->createDiscountImporter())
             ->addDataImporter($this->createDiscountStoreImporter())
             ->addDataImporter($this->createDiscountVoucherImporter())
-            ->addDataImporter($this->createStockImporter())
             ->addDataImporter($this->createProductAttributeKeyImporter())
             ->addDataImporter($this->createProductManagementAttributeImporter())
             ->addDataImporter($this->createProductAbstractImporter())
             ->addDataImporter($this->createProductAbstractStoreImporter())
             ->addDataImporter($this->createProductConcreteImporter())
             ->addDataImporter($this->createProductImageImporter())
-            ->addDataImporter($this->createProductStockImporter())
             ->addDataImporter($this->createProductOptionImporter())
             ->addDataImporter($this->createProductOptionPriceImporter())
             ->addDataImporter($this->createProductGroupImporter())
@@ -118,6 +115,7 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
         $dataImporterCollection->addDataImporterPlugins($this->getDataImporterPlugins());
 
         $dataImporterCollection
+            ->addDataImporter($this->createProductStockImporter())
             ->addDataImporter($this->createNavigationImporter())
             ->addDataImporter($this->createNavigationNodeImporter());
 
@@ -442,22 +440,6 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     protected function createLocaleRepository()
     {
         return new LocaleRepository();
-    }
-
-    /**
-     * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface|\Spryker\Zed\DataImport\Business\Model\DataSet\DataSetStepBrokerAwareInterface
-     */
-    protected function createStockImporter()
-    {
-        $dataImporter = $this->getCsvDataImporterFromConfig($this->getConfig()->getStockDataImporterConfiguration());
-
-        $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker();
-        $dataSetStepBroker
-            ->addStep(new StockWriterStep());
-
-        $dataImporter->addDataSetStepBroker($dataSetStepBroker);
-
-        return $dataImporter;
     }
 
     /**
