@@ -22,7 +22,6 @@ class ProductBundleBusinessFactory extends SprykerProductBundleBusinessFactory
     public function createProductBundleWriter()
     {
         return new ProductBundleWriter(
-            $this->getProductFacade(),
             $this->getQueryContainer(),
             $this->createProductBundleStockWriter(),
             $this->getEventFacade()

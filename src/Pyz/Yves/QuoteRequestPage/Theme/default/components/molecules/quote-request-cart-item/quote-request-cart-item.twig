@@ -45,14 +45,14 @@
                     },
                 } only %}
 
-                {% if data.cartItem.quantitySalesUnit and data.cartItem.amountSalesUnit %}
+                {% if data.cartItem.amountSalesUnit %}
                     {% include molecule('packaging-unit-cart', 'ProductPackagingUnitWidget') ignore missing with {
                         data: {
                             amount: data.cartItem.amount,
                             quantity: data.cartItem.quantity,
                             quantitySalesUnit: data.cartItem.quantitySalesUnit,
-                            quantityConversion: data.cartItem.quantitySalesUnit.conversion,
-                            quantityProductMeasurementUnit: data.cartItem.quantitySalesUnit.productMeasurementUnit,
+                            quantityConversion: data.cartItem.quantitySalesUnit.conversion | default(null),
+                            quantityProductMeasurementUnit: data.cartItem.quantitySalesUnit.productMeasurementUnit | default(null),
                             amountSalesUnit: data.cartItem.amountSalesUnit,
                             amountConversion: data.cartItem.amountSalesUnit.conversion,
                             amountProductMeasurementUnit: data.cartItem.amountSalesUnit.productMeasurementUnit,
