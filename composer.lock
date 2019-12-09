@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7a78042763c20c1c591669a799d43d06",
+    "content-hash": "7c11ae46a00ddae7cecda89ed3b202e5",
     "packages": [
         {
             "name": "codeitnowin/barcode",
@@ -12167,6 +12167,56 @@
             ],
             "description": "CartCodeExtension module",
             "time": "2019-12-04T15:11:36+00:00"
+        },
+        {
+            "name": "spryker/cart-codes-rest-api",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/cart-codes-rest-api.git",
+                "reference": "6e815d91e482f05395fa82e8e2f625325bcf25a6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/cart-codes-rest-api/zipball/6e815d91e482f05395fa82e8e2f625325bcf25a6",
+                "reference": "6e815d91e482f05395fa82e8e2f625325bcf25a6",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/cart-code": "^1.1.0",
+                "spryker/carts-rest-api": "^5.7.0",
+                "spryker/glue-application": "^1.9.0",
+                "spryker/glue-application-extension": "^1.0.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/symfony": "^3.0.0",
+                "spryker/zed-request": "^3.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/customer": "*",
+                "spryker/discount": "*",
+                "spryker/propel": "*",
+                "spryker/quote": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CartCodesRestApi module",
+            "time": "2019-12-07T07:30:46+00:00"
         },
         {
             "name": "spryker/cart-currency-connector",
