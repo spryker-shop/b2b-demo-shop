@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "913e2ae243481e2d1dcfebb4e3b8b0a1",
+    "content-hash": "fe6294cc1bdb5b86ef380c3066107223",
     "packages": [
         {
             "name": "codeitnowin/barcode",
@@ -607,8 +607,8 @@
             "authors": [
                 {
                     "name": "Filipe Dobreira",
-                    "role": "Developer",
-                    "homepage": "https://github.com/filp"
+                    "homepage": "https://github.com/filp",
+                    "role": "Developer"
                 }
             ],
             "description": "php error handling for cool kids",
@@ -673,16 +673,16 @@
         },
         {
             "name": "guzzlehttp/guzzle",
-            "version": "6.4.1",
+            "version": "6.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "0895c932405407fd3a7368b6910c09a24d26db11"
+                "reference": "dbc2bc3a293ed6b1ae08a3651e2bfd213d19b6a5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/0895c932405407fd3a7368b6910c09a24d26db11",
-                "reference": "0895c932405407fd3a7368b6910c09a24d26db11",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/dbc2bc3a293ed6b1ae08a3651e2bfd213d19b6a5",
+                "reference": "dbc2bc3a293ed6b1ae08a3651e2bfd213d19b6a5",
                 "shasum": ""
             },
             "require": {
@@ -697,12 +697,13 @@
                 "psr/log": "^1.1"
             },
             "suggest": {
+                "ext-intl": "Required for Internationalized Domain Name (IDN) support",
                 "psr/log": "Required for using the Log middleware"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "6.3-dev"
+                    "dev-master": "6.5-dev"
                 }
             },
             "autoload": {
@@ -735,7 +736,7 @@
                 "rest",
                 "web service"
             ],
-            "time": "2019-10-23T15:58:00+00:00"
+            "time": "2019-12-07T18:20:45+00:00"
         },
         {
             "name": "guzzlehttp/promises",
@@ -1808,7 +1809,7 @@
             ],
             "authors": [
                 {
-                    "name": "William DURAND",
+                    "name": "William Durand",
                     "email": "william.durand1@gmail.com"
                 }
             ],
@@ -2771,6 +2772,38 @@
             ],
             "description": "Configurable Bundle [feature]",
             "time": "2019-12-06T10:34:30+00:00"
+        },
+        {
+            "name": "spryker-feature/configurable-bundle-note",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-feature/configurable-bundle-note.git",
+                "reference": "0ae256411003011384cfeebbf130fae7e8010e2d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-feature/configurable-bundle-note/zipball/0ae256411003011384cfeebbf130fae7e8010e2d",
+                "reference": "0ae256411003011384cfeebbf130fae7e8010e2d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker-shop/configurable-bundle-note-widget": "^1.0.0",
+                "spryker/configurable-bundle-note": "^1.0.0"
+            },
+            "type": "metapackage",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "202001.x-dev"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "Configurable Bundle Note [feature]",
+            "time": "2019-12-03T14:50:22+00:00"
         },
         {
             "name": "spryker-feature/content-based-shop-navigation",
@@ -4324,22 +4357,22 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-feature/reorder.git",
-                "reference": "c3a8c82284326110defacaabf40f9cb53b32f4c8"
+                "reference": "9693dc2fc537eab9386692518f2bef1630e98767"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-feature/reorder/zipball/c3a8c82284326110defacaabf40f9cb53b32f4c8",
-                "reference": "c3a8c82284326110defacaabf40f9cb53b32f4c8",
+                "url": "https://api.github.com/repos/spryker-feature/reorder/zipball/9693dc2fc537eab9386692518f2bef1630e98767",
+                "reference": "9693dc2fc537eab9386692518f2bef1630e98767",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
+                "php": ">=7.2",
                 "spryker-shop/customer-reorder-widget": "^6.1.0"
             },
             "type": "metapackage",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "201910.x-dev"
+                    "dev-master": "202001.x-dev"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -4347,7 +4380,7 @@
                 "proprietary"
             ],
             "description": "Reorder [feature]",
-            "time": "2019-08-15T09:13:30+00:00"
+            "time": "2019-12-03T13:24:20+00:00"
         },
         {
             "name": "spryker-feature/resource-sharing",
@@ -6958,30 +6991,31 @@
         },
         {
             "name": "spryker-shop/customer-reorder-widget",
-            "version": "6.3.0",
+            "version": "6.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/customer-reorder-widget.git",
-                "reference": "4b3e005fa13e99d084106b5f81295b9ca9c9b2e0"
+                "reference": "73ec5ad14791b8f3d8db20039bab663f09e27f6c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/customer-reorder-widget/zipball/4b3e005fa13e99d084106b5f81295b9ca9c9b2e0",
-                "reference": "4b3e005fa13e99d084106b5f81295b9ca9c9b2e0",
+                "url": "https://api.github.com/repos/spryker-shop/customer-reorder-widget/zipball/73ec5ad14791b8f3d8db20039bab663f09e27f6c",
+                "reference": "73ec5ad14791b8f3d8db20039bab663f09e27f6c",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
+                "php": ">=7.2",
+                "spryker-shop/customer-reorder-widget-extension": "^1.0.0",
                 "spryker-shop/shop-application": "^1.0.0",
                 "spryker-shop/shop-ui": "^1.0.0",
-                "spryker/availability-storage": "^1.0.0",
+                "spryker/availability-storage": "^1.0.0 || ^2.0.0",
                 "spryker/cart": "^4.6.0 || ^5.0.0 || ^7.0.0",
                 "spryker/customer": "^7.4.0",
                 "spryker/glossary-storage": "^1.0.0",
-                "spryker/kernel": "^3.30.0",
+                "spryker/kernel": "^3.33.0",
                 "spryker/locale": "^3.0.0",
                 "spryker/messenger": "^3.1.0",
-                "spryker/product-bundle": "^4.1.0 || ^6.0.0",
+                "spryker/product-bundle": "^4.1.0 || ^6.0.0 || ^7.0.0",
                 "spryker/product-storage": "^1.1.0",
                 "spryker/sales": "^8.5.0 || ^10.0.0 || ^11.0.0",
                 "spryker/symfony": "^3.1.0",
@@ -7016,7 +7050,7 @@
                 "proprietary"
             ],
             "description": "CustomerReorderWidget module",
-            "time": "2019-09-26T05:02:15+00:00"
+            "time": "2019-11-27T11:47:20+00:00"
         },
         {
             "name": "spryker-shop/customer-reorder-widget-extension",
@@ -26001,16 +26035,16 @@
         },
         {
             "name": "spryker/product",
-            "version": "6.14.3",
+            "version": "6.15.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product.git",
-                "reference": "b9b58a0a5f351c2fca49a1192d388918421b5ed8"
+                "reference": "b9b49ed02fff07171f9df1c3856577a60720ed9b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product/zipball/b9b58a0a5f351c2fca49a1192d388918421b5ed8",
-                "reference": "b9b58a0a5f351c2fca49a1192d388918421b5ed8",
+                "url": "https://api.github.com/repos/spryker/product/zipball/b9b49ed02fff07171f9df1c3856577a60720ed9b",
+                "reference": "b9b49ed02fff07171f9df1c3856577a60720ed9b",
                 "shasum": ""
             },
             "require": {
@@ -26036,7 +26070,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "5.0.x-dev"
+                    "dev-master": "6.0.x-dev"
                 }
             },
             "autoload": {
@@ -26050,7 +26084,7 @@
                 "proprietary"
             ],
             "description": "Product module",
-            "time": "2019-11-30T09:37:56+00:00"
+            "time": "2019-12-06T14:32:54+00:00"
         },
         {
             "name": "spryker/product-abstract-data-feed",
@@ -30250,16 +30284,16 @@
         },
         {
             "name": "spryker/product-storage",
-            "version": "1.17.0",
+            "version": "1.18.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product-storage.git",
-                "reference": "5772a4f8af3b490ad12fceb4a0160d334483a4e2"
+                "reference": "1751f1ae8c284c666f2c62fad40365e10ffef6d4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-storage/zipball/5772a4f8af3b490ad12fceb4a0160d334483a4e2",
-                "reference": "5772a4f8af3b490ad12fceb4a0160d334483a4e2",
+                "url": "https://api.github.com/repos/spryker/product-storage/zipball/1751f1ae8c284c666f2c62fad40365e10ffef6d4",
+                "reference": "1751f1ae8c284c666f2c62fad40365e10ffef6d4",
                 "shasum": ""
             },
             "require": {
@@ -30308,7 +30342,7 @@
                 "proprietary"
             ],
             "description": "ProductStorage module",
-            "time": "2019-12-05T16:06:03+00:00"
+            "time": "2019-12-06T18:06:02+00:00"
         },
         {
             "name": "spryker/product-storage-extension",
@@ -40844,7 +40878,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "🍸 Nette NEON: encodes and decodes NEON file format.",
+            "description": "? Nette NEON: encodes and decodes NEON file format.",
             "homepage": "http://ne-on.org",
             "keywords": [
                 "export",
@@ -44621,6 +44655,12 @@
             "package": "spryker-feature/configurable-bundle"
         },
         {
+            "alias": "202001.0",
+            "alias_normalized": "202001.0",
+            "version": "9999999-dev",
+            "package": "spryker-feature/configurable-bundle-note"
+        },
+        {
             "alias": "201910.0",
             "alias_normalized": "201910.0",
             "version": "9999999-dev",
@@ -44717,8 +44757,8 @@
             "package": "spryker-feature/quotation-process"
         },
         {
-            "alias": "201910.0",
-            "alias_normalized": "201910.0",
+            "alias": "202001.0",
+            "alias_normalized": "202001.0",
             "version": "9999999-dev",
             "package": "spryker-feature/reorder"
         },
@@ -44764,6 +44804,7 @@
         "spryker-feature/cms": 20,
         "spryker-feature/company-account": 20,
         "spryker-feature/configurable-bundle": 20,
+        "spryker-feature/configurable-bundle-note": 20,
         "spryker-feature/customer-account-management": 20,
         "spryker-feature/inventory-management": 20,
         "spryker-feature/measurement-units": 20,
