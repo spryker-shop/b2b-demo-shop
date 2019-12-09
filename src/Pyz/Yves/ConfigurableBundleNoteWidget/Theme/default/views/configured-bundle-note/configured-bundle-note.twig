@@ -1,0 +1,10 @@
+{% extends view('configured-bundle-note', '@SprykerShop:ConfigurableBundleNoteWidget') %}
+
+{% block configuredBundleNote %}
+    {% include molecule('cart-configured-bundle-item-note', 'ConfigurableBundleNoteWidget') with {
+        data: {
+            form: data.form,
+            canWrite: canWrite,
+        },
+    } only %}
+{% endblock %}
