@@ -97,6 +97,9 @@ use Spryker\Glue\ProductPricesRestApi\Plugin\GlueApplication\CurrencyParameterVa
 use Spryker\Glue\ProductPricesRestApi\Plugin\GlueApplication\PriceModeParameterValidatorPlugin;
 use Spryker\Glue\ProductPricesRestApi\Plugin\GlueApplication\SetCurrencyBeforeActionPlugin;
 use Spryker\Glue\ProductPricesRestApi\Plugin\GlueApplication\SetPriceModeBeforeActionPlugin;
+use Spryker\Glue\ProductReviewsRestApi\Plugin\GlueApplication\AbstractProductsProductReviewsResourceRoutePlugin;
+use Spryker\Glue\ProductReviewsRestApi\Plugin\GlueApplication\ProductReviewsRelationshipByProductAbstractSkuPlugin;
+use Spryker\Glue\ProductReviewsRestApi\Plugin\GlueApplication\ProductReviewsRelationshipByProductConcreteSkuPlugin;
 use Spryker\Glue\ProductsRestApi\Plugin\AbstractProductsResourceRoutePlugin;
 use Spryker\Glue\ProductsRestApi\Plugin\ConcreteProductsResourceRoutePlugin;
 use Spryker\Glue\ProductsRestApi\Plugin\GlueApplication\ConcreteProductBySkuResourceRelationshipPlugin;
@@ -171,6 +174,7 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new ContentProductAbstractListRoutePlugin(),
             new UrlResolverResourceRoutePlugin(),
             new CustomerAccessResourceRoutePlugin(),
+            new AbstractProductsProductReviewsResourceRoutePlugin(),
         ];
     }
 
@@ -372,6 +376,14 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
         $resourceRelationshipCollection->addRelationship(
             ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
             new ProductOptionsByProductConcreteSkuResourceRelationshipPlugin()
+        );
+        $resourceRelationshipCollection->addRelationship(
+            ProductsRestApiConfig::RESOURCE_ABSTRACT_PRODUCTS,
+            new ProductReviewsRelationshipByProductAbstractSkuPlugin()
+        );
+        $resourceRelationshipCollection->addRelationship(
+            ProductsRestApiConfig::RESOURCE_CONCRETE_PRODUCTS,
+            new ProductReviewsRelationshipByProductConcreteSkuPlugin()
         );
 
         return $resourceRelationshipCollection;
