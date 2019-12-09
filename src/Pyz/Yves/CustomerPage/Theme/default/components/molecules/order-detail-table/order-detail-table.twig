@@ -55,32 +55,11 @@
                             <h6 class="{{ config.name }}__title spacing spacing--reset">{{ data.listItem.name }}</h6>
                         {% endblock %}
 
-                        {% block subQuantity %}
-                            {% set salesUnitName = data.listItem.quantitySalesUnit.productMeasurementUnit.name | default %}
+                        {% block packagingUnitCartContent %}
+                            {% set hasSubQuantity = true %}
+                            {% set hasAmountPerQuantity = true %}
 
-                            {% if salesUnitName is not empty and data.listItem.amount == 0 %}
-                                {% include atom('quantity-option') with {
-                                    class: 'col col--sm-12 col--md-auto',
-                                    data: {
-                                        value: data.listItem.quantity,
-                                        precision: data.listItem.quantitySalesUnit.conversion,
-                                        optionName: salesUnitName | trans,
-                                    },
-                                } only %}
-                            {% endif %}
-
-                            {% if data.listItem.amount != 0 %}
-                                {% set amountSalesUnitName = data.listItem.amountSalesUnit.productMeasurementUnit.name | default %}
-
-                                {% include atom('quantity-option') with {
-                                    class: 'col col--sm-12 col--md-auto',
-                                    data: {
-                                        value: data.listItem.amount,
-                                        precision: data.listItem.quantity,
-                                        optionName: amountSalesUnitName | trans,
-                                    },
-                                } only %}
-                            {% endif %}
+                            {{ parent() }}
                         {% endblock %}
 
                         {% block note %}

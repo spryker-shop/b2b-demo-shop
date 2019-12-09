@@ -8,16 +8,6 @@
             font-size: rem(14);
         }
 
-        &__item {
-            &:not(:first-child) {
-                margin-top: rem(8);
-
-                @include helper-breakpoint-media-min($lg) {
-                    margin-top: rem(12);
-                }
-            }
-        }
-
         @content;
     }
 }
