@@ -5,12 +5,18 @@
         margin: 0 0 rem(40);
 
         &__item {
-            width: calc(100% / #{$configurable-bundle-page-configurator-sidebar-items-row-amount});
-            border-left: 1px solid $setting-color-gray-6;
+            width: 100%;
             border-bottom: 1px solid $setting-color-gray-6;
 
+            @include helper-breakpoint-media-min($xl) {
+                width: calc(100% / #{$configurable-bundle-page-configurator-sidebar-items-row-amount});
+                border-left: 1px solid $setting-color-gray-6;
+            }
+
             &:nth-child(#{$configurable-bundle-page-configurator-sidebar-items-row-amount}n + 1) {
-                border-left: 0;
+                @include helper-breakpoint-media-min($xl) {
+                    border-left: 0;
+                }
             }
         }
 

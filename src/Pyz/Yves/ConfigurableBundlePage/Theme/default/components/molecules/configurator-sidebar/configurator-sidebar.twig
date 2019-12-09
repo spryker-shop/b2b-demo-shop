@@ -1,5 +1,9 @@
 {% extends molecule('configurator-sidebar', '@SprykerShop:ConfigurableBundlePage') %}
 
+{% define data = {
+    isSeparateItemActive: false,
+} %}
+
 {%- block extraClass %} grid{% endblock -%}
 
 {% block slotItem %}
@@ -8,7 +12,22 @@
 
     <li class="{{ slotClasses }}">
         {% block slotItemInner %}
-            {{ parent() }}
+            {% include molecule('slot-page-redirect-form', 'ConfigurableBundlePage') with {
+                data: {
+                    form: data.form.createView,
+                    submitButtonText: configurableBundleTemplateSlotStorage.name | trans,
+                    idConfigurableBundleTemplateSlot: configurableBundleTemplateSlotStorage.idConfigurableBundleTemplateSlot,
+                    selectedSlotId: data.selectedSlotId,
+                    submitButtonModifiers: submitButtonModifiers,
+                    isSelectedStatusAvailable: data.isSeparateItemActive,
+                    action: path(
+                        'configurable-bundle/configurator/slots', {
+                            'idConfigurableBundleTemplate': data.configurableBundleTemplateStorage.idConfigurableBundleTemplate,
+                            'idConfigurableBundleTemplateSlot': configurableBundleTemplateSlotStorage.idConfigurableBundleTemplateSlot,
+                        }
+                    ),
+                },
+            } only %}
         {% endblock %}
     </li>
 {% endblock %}
@@ -20,4 +39,10 @@
             {{ parent() }}
         {% endblock %}
     </li>
+{% endblock %}
+
+{% block summaryItemAction %}
+    {% set buttonModifiers = data.isSeparateItemActive ? buttonModifiers | merge(['active']) : buttonModifiers | merge(['additional-colors']) %}
+
+    {{ parent() }}
 {% endblock %}

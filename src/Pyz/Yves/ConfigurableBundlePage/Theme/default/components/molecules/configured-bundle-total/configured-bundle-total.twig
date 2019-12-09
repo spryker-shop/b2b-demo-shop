@@ -1,0 +1,17 @@
+{% extends molecule('configured-bundle-total', '@SprykerShop:ConfigurableBundlePage') %}
+
+{% block title %}
+    <h4 class="{{ config.name }}__title col col-sm-8 spacing-bottom spacing-bottom--big">{{- 'configurable_bundle_page.configurator.summary_page_total' | trans -}}</h4>
+{% endblock %}
+
+{% block price %}
+    <div class="col col-sm-4">
+        {% include molecule('money-price') with {
+            modifiers: ['medium'],
+            class: 'text-right',
+            data: {
+                amount: data.total,
+            },
+        } only %}
+    </div>
+{% endblock %}

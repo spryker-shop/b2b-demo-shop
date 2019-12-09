@@ -4,7 +4,16 @@
 
 {% block content %}
     {% block configuratorContent %}
-        {{ parent() }}
+        {% include organism('configurator', 'ConfigurableBundlePage') with {
+            data: {
+                form: data.form,
+                configurableBundleTemplateStorage: data.configurableBundleTemplateStorage,
+                selectedSlotId: data.selectedSlotId,
+                productConcreteCriteriaFilter: data.productConcreteCriteriaFilter,
+                selectedProduct: data.selectedProduct,
+                isSummaryPageUnlocked: data.isSummaryPageUnlocked,
+            },
+        } only %}
     {% endblock %}
 {% endblock %}
 

@@ -3,16 +3,25 @@
 
     &__col {
         padding: rem(24) 0;
+
+        &:last-child {
+            margin: 0 rem(30);
+
+            @include helper-breakpoint-media-min($md) {
+                margin: 0;
+            }
+        }
     }
 
     &__container {
         display: flex;
+        flex-wrap: wrap;
         align-items: stretch;
         width: 100%;
-        padding-right: rem(20);
         border-radius: $setting-border-radius;
 
         @include helper-breakpoint-media-min($md) {
+            padding-right: rem(20);
             background-color: $setting-color-gray-7;
         }
 
