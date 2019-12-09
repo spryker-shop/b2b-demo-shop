@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f1116025737a385840cac4585ccc502e",
+    "content-hash": "54e78898c6baf0de717698de9300e18f",
     "packages": [
         {
             "name": "codeitnowin/barcode",
@@ -2774,6 +2774,38 @@
             "time": "2019-12-06T10:34:30+00:00"
         },
         {
+            "name": "spryker-feature/configurable-bundle-note",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-feature/configurable-bundle-note.git",
+                "reference": "0ae256411003011384cfeebbf130fae7e8010e2d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-feature/configurable-bundle-note/zipball/0ae256411003011384cfeebbf130fae7e8010e2d",
+                "reference": "0ae256411003011384cfeebbf130fae7e8010e2d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker-shop/configurable-bundle-note-widget": "^1.0.0",
+                "spryker/configurable-bundle-note": "^1.0.0"
+            },
+            "type": "metapackage",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "202001.x-dev"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "Configurable Bundle Note [feature]",
+            "time": "2019-12-03T14:50:22+00:00"
+        },
+        {
             "name": "spryker-feature/content-based-shop-navigation",
             "version": "201907.0",
             "source": {
@@ -4325,22 +4357,22 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-feature/reorder.git",
-                "reference": "c3a8c82284326110defacaabf40f9cb53b32f4c8"
+                "reference": "9693dc2fc537eab9386692518f2bef1630e98767"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-feature/reorder/zipball/c3a8c82284326110defacaabf40f9cb53b32f4c8",
-                "reference": "c3a8c82284326110defacaabf40f9cb53b32f4c8",
+                "url": "https://api.github.com/repos/spryker-feature/reorder/zipball/9693dc2fc537eab9386692518f2bef1630e98767",
+                "reference": "9693dc2fc537eab9386692518f2bef1630e98767",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
+                "php": ">=7.2",
                 "spryker-shop/customer-reorder-widget": "^6.1.0"
             },
             "type": "metapackage",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "201910.x-dev"
+                    "dev-master": "202001.x-dev"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -4348,7 +4380,7 @@
                 "proprietary"
             ],
             "description": "Reorder [feature]",
-            "time": "2019-08-15T09:13:30+00:00"
+            "time": "2019-12-03T13:24:20+00:00"
         },
         {
             "name": "spryker-feature/resource-sharing",
@@ -6959,30 +6991,31 @@
         },
         {
             "name": "spryker-shop/customer-reorder-widget",
-            "version": "6.3.0",
+            "version": "6.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/customer-reorder-widget.git",
-                "reference": "4b3e005fa13e99d084106b5f81295b9ca9c9b2e0"
+                "reference": "73ec5ad14791b8f3d8db20039bab663f09e27f6c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/customer-reorder-widget/zipball/4b3e005fa13e99d084106b5f81295b9ca9c9b2e0",
-                "reference": "4b3e005fa13e99d084106b5f81295b9ca9c9b2e0",
+                "url": "https://api.github.com/repos/spryker-shop/customer-reorder-widget/zipball/73ec5ad14791b8f3d8db20039bab663f09e27f6c",
+                "reference": "73ec5ad14791b8f3d8db20039bab663f09e27f6c",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
+                "php": ">=7.2",
+                "spryker-shop/customer-reorder-widget-extension": "^1.0.0",
                 "spryker-shop/shop-application": "^1.0.0",
                 "spryker-shop/shop-ui": "^1.0.0",
-                "spryker/availability-storage": "^1.0.0",
+                "spryker/availability-storage": "^1.0.0 || ^2.0.0",
                 "spryker/cart": "^4.6.0 || ^5.0.0 || ^7.0.0",
                 "spryker/customer": "^7.4.0",
                 "spryker/glossary-storage": "^1.0.0",
-                "spryker/kernel": "^3.30.0",
+                "spryker/kernel": "^3.33.0",
                 "spryker/locale": "^3.0.0",
                 "spryker/messenger": "^3.1.0",
-                "spryker/product-bundle": "^4.1.0 || ^6.0.0",
+                "spryker/product-bundle": "^4.1.0 || ^6.0.0 || ^7.0.0",
                 "spryker/product-storage": "^1.1.0",
                 "spryker/sales": "^8.5.0 || ^10.0.0 || ^11.0.0",
                 "spryker/symfony": "^3.1.0",
@@ -7017,7 +7050,7 @@
                 "proprietary"
             ],
             "description": "CustomerReorderWidget module",
-            "time": "2019-09-26T05:02:15+00:00"
+            "time": "2019-11-27T11:47:20+00:00"
         },
         {
             "name": "spryker-shop/customer-reorder-widget-extension",
@@ -44666,6 +44699,12 @@
             "package": "spryker-feature/configurable-bundle"
         },
         {
+            "alias": "202001.0",
+            "alias_normalized": "202001.0",
+            "version": "9999999-dev",
+            "package": "spryker-feature/configurable-bundle-note"
+        },
+        {
             "alias": "201910.0",
             "alias_normalized": "201910.0",
             "version": "9999999-dev",
@@ -44762,8 +44801,8 @@
             "package": "spryker-feature/quotation-process"
         },
         {
-            "alias": "201910.0",
-            "alias_normalized": "201910.0",
+            "alias": "202001.0",
+            "alias_normalized": "202001.0",
             "version": "9999999-dev",
             "package": "spryker-feature/reorder"
         },
@@ -44809,6 +44848,7 @@
         "spryker-feature/cms": 20,
         "spryker-feature/company-account": 20,
         "spryker-feature/configurable-bundle": 20,
+        "spryker-feature/configurable-bundle-note": 20,
         "spryker-feature/customer-account-management": 20,
         "spryker-feature/inventory-management": 20,
         "spryker-feature/measurement-units": 20,
