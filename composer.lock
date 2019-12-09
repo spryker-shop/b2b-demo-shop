@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "95a592cfa9fbe395e588583e16fef0fc",
+    "content-hash": "2b8641aa85fad0799706b672310eb0dc",
     "packages": [
         {
             "name": "codeitnowin/barcode",
@@ -1809,7 +1809,7 @@
             ],
             "authors": [
                 {
-                    "name": "William DURAND",
+                    "name": "William Durand",
                     "email": "william.durand1@gmail.com"
                 }
             ],
@@ -2726,7 +2726,7 @@
             "type": "metapackage",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "202001.x-dev"
+                    "dev-master": "201910.x-dev"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -2734,7 +2734,7 @@
                 "proprietary"
             ],
             "description": "Company Account [feature]",
-            "time": "2019-12-05T10:12:56+00:00"
+            "time": "2019-08-15T09:09:52+00:00"
         },
         {
             "name": "spryker-feature/configurable-bundle",
@@ -3120,7 +3120,7 @@
             "type": "metapackage",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "202001.x-dev"
+                    "dev-master": "201910.x-dev"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -3128,7 +3128,7 @@
                 "proprietary"
             ],
             "description": "Inventory Management [feature]",
-            "time": "2019-12-03T13:21:43+00:00"
+            "time": "2019-08-29T09:00:16+00:00"
         },
         {
             "name": "spryker-feature/invoice",
@@ -12167,6 +12167,56 @@
             ],
             "description": "CartCodeExtension module",
             "time": "2019-12-04T15:11:36+00:00"
+        },
+        {
+            "name": "spryker/cart-codes-rest-api",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/cart-codes-rest-api.git",
+                "reference": "6e815d91e482f05395fa82e8e2f625325bcf25a6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/cart-codes-rest-api/zipball/6e815d91e482f05395fa82e8e2f625325bcf25a6",
+                "reference": "6e815d91e482f05395fa82e8e2f625325bcf25a6",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/cart-code": "^1.1.0",
+                "spryker/carts-rest-api": "^5.7.0",
+                "spryker/glue-application": "^1.9.0",
+                "spryker/glue-application-extension": "^1.0.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/symfony": "^3.0.0",
+                "spryker/zed-request": "^3.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/customer": "*",
+                "spryker/discount": "*",
+                "spryker/propel": "*",
+                "spryker/quote": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CartCodesRestApi module",
+            "time": "2019-12-07T07:30:46+00:00"
         },
         {
             "name": "spryker/cart-currency-connector",
@@ -21695,6 +21745,70 @@
             "time": "2019-11-14T09:42:41+00:00"
         },
         {
+            "name": "spryker/gift-card",
+            "version": "1.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/gift-card.git",
+                "reference": "fa38fa0fea91901af85de2be9fb538656e7e0828"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/gift-card/zipball/fa38fa0fea91901af85de2be9fb538656e7e0828",
+                "reference": "fa38fa0fea91901af85de2be9fb538656e7e0828",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/cart-code-extension": "^1.1.0",
+                "spryker/kernel": "^3.33.0",
+                "spryker/payment": "^4.0.0 || ^5.0.0",
+                "spryker/product": "^1.0.0 || ^2.0.0 || ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0",
+                "spryker/propel-orm": "^1.5.0",
+                "spryker/sales": "^8.0.0 || ^10.0.0 || ^11.0.0",
+                "spryker/shipment-extension": "^1.0.0",
+                "spryker/symfony": "^3.1.0",
+                "spryker/util-encoding": "^2.0.0"
+            },
+            "require-dev": {
+                "spryker/calculation": "*",
+                "spryker/cart": "*",
+                "spryker/checkout": "*",
+                "spryker/code-sniffer": "*",
+                "spryker/discount": "*",
+                "spryker/oms": "*",
+                "spryker/propel": "*",
+                "spryker/shipment": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/calculation": "To correctly calculate gift card payments",
+                "spryker/cart": "To expand information about gift card products",
+                "spryker/checkout": "To save gift card payments using order savers",
+                "spryker/discount": "If you want to make sure GiftCards have no Discount applied",
+                "spryker/oms": "If you want to use OMS plugins",
+                "spryker/shipment": "To filter shipment methods based on gift card rules"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/",
+                    "SprykerTest\\Zed\\GiftCard\\Helper\\": "tests/SprykerTest/Zed/GiftCard/_support/Helper/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "GiftCard module",
+            "time": "2019-12-04T15:39:40+00:00"
+        },
+        {
             "name": "spryker/glossary",
             "version": "3.8.0",
             "source": {
@@ -21808,16 +21922,16 @@
         },
         {
             "name": "spryker/glue-application",
-            "version": "1.25.0",
+            "version": "1.25.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/glue-application.git",
-                "reference": "bf0650714a07bb9d855297ceef795d54a827d438"
+                "reference": "104e698055dd0ea244274956115ed302e5287115"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/glue-application/zipball/bf0650714a07bb9d855297ceef795d54a827d438",
-                "reference": "bf0650714a07bb9d855297ceef795d54a827d438",
+                "url": "https://api.github.com/repos/spryker/glue-application/zipball/104e698055dd0ea244274956115ed302e5287115",
+                "reference": "104e698055dd0ea244274956115ed302e5287115",
                 "shasum": ""
             },
             "require": {
@@ -21864,7 +21978,7 @@
                 "proprietary"
             ],
             "description": "GlueApplication module",
-            "time": "2019-12-06T11:52:09+00:00"
+            "time": "2019-12-09T07:03:57+00:00"
         },
         {
             "name": "spryker/glue-application-extension",
@@ -23537,23 +23651,23 @@
         },
         {
             "name": "spryker/money",
-            "version": "2.7.0",
+            "version": "2.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/money.git",
-                "reference": "10590e448f953f812131e834fa897da3c57c26cf"
+                "reference": "71a4cb708474c33c3e864e2bd52dd82939a5a990"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/money/zipball/10590e448f953f812131e834fa897da3c57c26cf",
-                "reference": "10590e448f953f812131e834fa897da3c57c26cf",
+                "url": "https://api.github.com/repos/spryker/money/zipball/71a4cb708474c33c3e864e2bd52dd82939a5a990",
+                "reference": "71a4cb708474c33c3e864e2bd52dd82939a5a990",
                 "shasum": ""
             },
             "require": {
                 "moneyphp/money": "^3.0.0",
-                "php": ">=7.1",
+                "php": ">=7.2",
                 "spryker/currency": "^2.0.0 || ^3.1.0",
-                "spryker/kernel": "^3.11.0",
+                "spryker/kernel": "^3.30.0",
                 "spryker/store": "^1.1.0",
                 "spryker/symfony": "^3.0.0",
                 "spryker/twig-extension": "^1.0.0"
@@ -23589,7 +23703,7 @@
                 "proprietary"
             ],
             "description": "Money module",
-            "time": "2019-03-26T15:19:37+00:00"
+            "time": "2019-11-28T13:26:31+00:00"
         },
         {
             "name": "spryker/monitoring",
