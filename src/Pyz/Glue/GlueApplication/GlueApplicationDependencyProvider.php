@@ -53,6 +53,8 @@ use Spryker\Glue\CompanyUsersRestApi\Plugin\GlueApplication\CompanyUserByShareDe
 use Spryker\Glue\CompanyUsersRestApi\Plugin\GlueApplication\CompanyUsersResourceRoutePlugin;
 use Spryker\Glue\ContentBannersRestApi\Plugin\ContentBannerResourceRoutePlugin;
 use Spryker\Glue\ContentProductAbstractListsRestApi\Plugin\ContentProductAbstractListRoutePlugin;
+use Spryker\Glue\CustomerAccessRestApi\Plugin\GlueApplication\CustomerAccessFormatRequestPlugin;
+use Spryker\Glue\CustomerAccessRestApi\Plugin\GlueApplication\CustomerAccessResourceRoutePlugin;
 use Spryker\Glue\CustomersRestApi\CustomersRestApiConfig;
 use Spryker\Glue\CustomersRestApi\Plugin\AddressesResourceRoutePlugin;
 use Spryker\Glue\CustomersRestApi\Plugin\CustomerForgottenPasswordResourceRoutePlugin;
@@ -166,6 +168,7 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new ContentBannerResourceRoutePlugin(),
             new ContentProductAbstractListRoutePlugin(),
             new UrlResolverResourceRoutePlugin(),
+            new CustomerAccessResourceRoutePlugin(),
         ];
     }
 
@@ -178,6 +181,18 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
     {
         return [
             new PaginationParametersValidateHttpRequestPlugin(),
+        ];
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @return \Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\FormatRequestPluginInterface[]
+     */
+    protected function getFormatRequestPlugins(): array
+    {
+        return [
+            new CustomerAccessFormatRequestPlugin(),
         ];
     }
 
