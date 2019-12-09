@@ -1,0 +1,18 @@
+{% extends molecule('configurator-button', '@SprykerShop:ConfigurableBundlePage') %}
+
+{% define data = {
+    icon: '',
+} %}
+
+{% block body %}
+    {% if data.icon %}
+        {% include atom('icon') with {
+            modifiers: ['sm-lg-regular'],
+            data: {
+                name: data.icon,
+            },
+        } only %}
+    {% else %}
+        {{ data.text }}
+    {% endif %}
+{% endblock %}

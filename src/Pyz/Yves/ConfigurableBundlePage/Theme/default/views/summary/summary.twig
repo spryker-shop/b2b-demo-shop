@@ -1,0 +1,12 @@
+{% extends view('summary', '@SprykerShop:ConfigurableBundlePage') %}
+
+{% block summaryContentInner %}
+    {% include organism('configurator', 'ConfigurableBundlePage') with {
+        data: {
+            form: data.form,
+            configurableBundleTemplateStorage: data.configurableBundleTemplateStorage,
+            products: data.products,
+            isSummary: true,
+        },
+    } only %}
+{% endblock %}

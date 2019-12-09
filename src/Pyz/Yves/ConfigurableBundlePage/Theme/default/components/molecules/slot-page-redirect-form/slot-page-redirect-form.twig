@@ -1,0 +1,37 @@
+{% extends molecule('slot-page-redirect-form', '@SprykerShop:ConfigurableBundlePage') %}
+
+{% define data = {
+    isSelectedStatusAvailable: false,
+} %}
+
+{% block action %}
+    {% set extraModifier = isActive ? 'active' %}
+    {% set buttonModifiers = data.submitButtonModifiers | merge([extraModifier]) %}
+
+    {% if isSelectedProduct and data.isSelectedStatusAvailable %}
+        {% set extraModifier = 'selected' %}
+        {% set buttonModifiers = data.submitButtonModifiers | merge([extraModifier]) %}
+
+        {% embed molecule('configurator-button', 'ConfigurableBundlePage') with {
+            modifiers: buttonModifiers,
+            attributes: buttonAttributes,
+            data: {
+                text: data.submitButtonText,
+            },
+        } only %}
+            {% block body %}
+                {{ data.text }}
+                <span class="{{ config.name }}__checked">
+                    {% include atom('icon') with {
+                        modifiers: ['progress-check'],
+                        data: {
+                            name: 'check',
+                        },
+                    } only %}
+                </span>
+            {% endblock %}
+        {% endembed %}
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}

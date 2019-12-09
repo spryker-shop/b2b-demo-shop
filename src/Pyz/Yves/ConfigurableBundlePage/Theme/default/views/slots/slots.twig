@@ -1,0 +1,64 @@
+{% extends view('slots', '@SprykerShop:ConfigurableBundlePage') %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+    {% block configuratorContent %}
+        {% include organism('configurator', 'ConfigurableBundlePage') with {
+            data: {
+                form: data.form,
+                configurableBundleTemplateStorage: data.configurableBundleTemplateStorage,
+                selectedSlotId: data.selectedSlotId,
+                productConcreteCriteriaFilter: data.productConcreteCriteriaFilter,
+                selectedProduct: data.selectedProduct,
+                isSummaryPageUnlocked: data.isSummaryPageUnlocked,
+            },
+        } only %}
+    {% endblock %}
+{% endblock %}
+
+{% block configuratorSidebar %}
+    {% block configuratorSidebarInner %}
+        {{ parent() }}
+    {% endblock %}
+{% endblock %}
+
+{% block configuratorProductsInner %}
+    {% set wrapperClasses = 'grid grid--center' %}
+    {{ parent() }}
+{% endblock %}
+
+{% set configuratorProductClass = 'col col--sm-12 col--xl-9' %}
+
+{% block configuratorSelectedItem %}
+    {% include molecule('configurator-product', 'ConfigurableBundlePage') with {
+        class: configuratorProductClass,
+        data: {
+            product: data.selectedProduct,
+            form: data.form.createView,
+            selectedSlotId: data.selectedSlotId,
+            isSelected: true,
+        },
+    } only %}
+{% endblock %}
+
+{% block configuratorUnselectedProducts %}
+    {% widget 'ProductConcreteSearchGridWidget' args [data.productConcreteCriteriaFilter] %}
+        {% block body %}
+            {% for product in data.products %}
+                {% include molecule('configurator-product', 'ConfigurableBundlePage') with {
+                    class: configuratorProductClass,
+                    data: {
+                        product: product,
+                        form: data.form.createView,
+                        selectedSlotId: data.selectedSlotId,
+                    },
+                } only %}
+            {% endfor %}
+
+            {% if data.products is empty %}
+                <p class="spacing-x">{{ 'product_search_widget.search.no_results' | trans }}</p>
+            {% endif %}
+        {% endblock %}
+    {% endwidget %}
+{% endblock %}
