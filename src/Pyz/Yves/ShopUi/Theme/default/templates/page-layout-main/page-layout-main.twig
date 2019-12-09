@@ -176,6 +176,8 @@
         </div>
 
         {% block footer %}
+            {% cms_slot 'slt-1' %}
+
             {% include organism('footer') only %}
         {% endblock %}
     </div>
