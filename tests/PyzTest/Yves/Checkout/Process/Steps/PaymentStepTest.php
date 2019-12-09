@@ -159,7 +159,7 @@ class PaymentStepTest extends Unit
     }
 
     /**
-     * @return \PHPUnit_Framework_MockObject_MockObject|\SprykerShop\Yves\CheckoutPageExtension\Dependency\Plugin\CheckoutPaymentStepEnterPreCheckPluginInterface
+     * @return \PHPUnit\Framework\MockObject\MockObject|\SprykerShop\Yves\CheckoutPageExtension\Dependency\Plugin\CheckoutPaymentStepEnterPreCheckPluginInterface
      */
     protected function getQuoteApprovalCheckerCheckoutPaymentStepEnterPreCheckPluginMock(): CheckoutPaymentStepEnterPreCheckPluginInterface
     {
