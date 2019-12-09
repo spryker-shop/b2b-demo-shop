@@ -37,9 +37,8 @@ class ProductStockAfterImportPublishHook implements DataImporterAfterImportInter
             ->find();
 
         foreach ($availabilities as $availability) {
-            $this->entityEvents[AvailabilityEvents::AVAILABILITY_ABSTRACT_PUBLISH][] = $availability->getIdAvailabilityAbstract();
+            $idAvailabilityAbstract = $availability->getIdAvailabilityAbstract();
+            DataImporterPublisher::addEvent(AvailabilityEvents::AVAILABILITY_ABSTRACT_PUBLISH, $idAvailabilityAbstract);
         }
-
-        DataImporterPublisher::addImportedEntityEvents($this->entityEvents);
     }
 }
