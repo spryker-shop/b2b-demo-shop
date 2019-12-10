@@ -1,10 +1,10 @@
 @mixin configurable-bundle-page-configurator-button($name: '.configurator-button') {
     @include shop-ui-button($name) {
         &--hollow {
-            background: $setting-color-transparent;
+            background-color: $setting-color-transparent;
 
             &:hover {
-                background: $setting-color-main;
+                background-color: $setting-color-main;
                 color: $setting-color-white;
             }
         }
@@ -55,7 +55,7 @@
             }
         }
 
-        &__checked {
+        &__icon {
             display: inline-block;
             vertical-align: middle;
             width: rem(13);
@@ -64,7 +64,7 @@
             background-color: $setting-color-main;
             color: $setting-color-white;
             border-radius: 50%;
-            margin-top: -#{rem(2)};
+            margin-top: rem(-2);
 
             @include helper-breakpoint-media-min($md) {
                 width: rem(18);

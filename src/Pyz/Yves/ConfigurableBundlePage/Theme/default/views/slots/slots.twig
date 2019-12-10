@@ -33,6 +33,7 @@
 {% block configuratorSelectedItem %}
     {% include molecule('configurator-product', 'ConfigurableBundlePage') with {
         class: configuratorProductClass,
+        modifiers: ['selected'],
         data: {
             product: data.selectedProduct,
             form: data.form.createView,

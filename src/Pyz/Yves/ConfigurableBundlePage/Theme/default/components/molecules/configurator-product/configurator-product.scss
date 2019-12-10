@@ -1,5 +1,20 @@
 @include configurable-bundle-page-configurator-product {
     margin: 0 0 rem(10);
+    border-radius: $setting-border-radius;
+
+    @include helper-breakpoint-media-min($md) {
+        padding-right: rem(20);
+        background-color: $setting-color-gray-7;
+    }
+
+    @include helper-breakpoint-media-min($xl) {
+        @include helper-effect-transition(background-color box-shadow);
+
+        &:hover {
+            box-shadow: 0 rem(3) rem(3) $setting-color-shadow-1, 0 rem(18) rem(18) $setting-color-shadow-1;
+            background-color: $setting-color-transparent;
+        }
+    }
 
     &__col {
         padding: rem(24) 0;
@@ -11,56 +26,30 @@
                 margin: 0;
             }
         }
-    }
 
-    &__container {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: stretch;
-        width: 100%;
-        border-radius: $setting-border-radius;
+        &--image-container {
+            position: relative;
+            background-color: $setting-color-white;
 
-        @include helper-breakpoint-media-min($md) {
-            padding-right: rem(20);
-            background-color: $setting-color-gray-7;
-        }
-
-        @include helper-breakpoint-media-min($xl) {
-            @include helper-effect-transition(background-color box-shadow);
-
-            &:hover {
-                box-shadow: 0 rem(3) rem(3) $setting-color-shadow-1, 0 rem(18) rem(18) $setting-color-shadow-1;
-                background-color: $setting-color-transparent;
+            &::before {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                background-color: $setting-color-alpha-2;
+                z-index: $setting-zi-element;
             }
         }
 
-        &--selected {
-            border: rem(2) solid $setting-color-main;
-        }
-    }
+        &--description {
+            padding-left: rem(30);
+            padding-right: rem(30);
 
-    &__image-container {
-        position: relative;
-        background: $setting-color-white;
-
-        &::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            background-color: $setting-color-alpha-2;
-            z-index: $setting-zi-element;
-        }
-    }
-
-    &__description {
-        padding-left: rem(30);
-        padding-right: rem(30);
-
-        @include helper-breakpoint-media-min($xl) {
-            padding-right: rem(150);
+            @include helper-breakpoint-media-min($xl) {
+                padding-right: rem(150);
+            }
         }
     }
 
@@ -70,5 +59,9 @@
         font-size: map_get($setting-font-size, small);
         line-height: rem(18);
         text-transform: uppercase;
+    }
+
+    &--selected {
+        border: rem(2) solid $setting-color-main;
     }
 }

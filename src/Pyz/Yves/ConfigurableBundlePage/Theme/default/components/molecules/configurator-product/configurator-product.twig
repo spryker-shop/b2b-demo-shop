@@ -2,80 +2,63 @@
 
 {% block extraClass %}{% endblock %}
 
-{% block body %}
-    {% set selectedClass = data.isSelected ? config.name ~ '__container--selected' %}
+{% block imageContainer %}
+    {% set extraClass = '' %}
+    {% set modifiers = ['small'] %}
 
-    <div class="{{ config.name }}__container {{ selectedClass }}">
-        {% block imageContainer %}
-            {% set extraClass = '' %}
-            {% set modifiers = ['small'] %}
-
-            <div class="{{ config.name }}__col {{ config.name }}__image-container col col--sm-12 col--md-4 col--xl-2 col--middle">
-                {% block image %}
-                    {{ parent() }}
-                {% endblock %}
-            </div>
-        {% endblock %}
-
-        {% block content %}
-            <div class="{{ config.name }}__col {{ config.name }}__description col col--sm-12 col--md-6 col--xl-8 col--middle">
-                {% block name %}
-                    {{ parent() }}
-                {% endblock %}
-
-                {% block sku %}
-                    {% if data.sku %}
-                        <span class="{{ config.name }}__sku">{{ 'configurable_bundle_page.configurator.sku' | trans }} {{ data.sku }}</span>
-                    {% endif %}
-                {% endblock %}
-            </div>
-        {% endblock %}
-
-        {% block actionsContainerInner %}
-            <div class="{{ config.name }}__col col col--sm-2 grid">
-                {% block price %}
-                    {% widget 'PriceProductWidget' args [data.product] only %}
-                        {% block body %}
-                            {% embed molecule('price', 'PriceProductWidget') with {
-                                class: 'col col--sm-12',
-                                data: {
-                                    price: data.currentProductPrice.sumPrice,
-                                },
-                            } only %}
-                                {% block price %}
-                                    {% include molecule('money-price') with {
-                                        class: 'col col--sm-12',
-                                        modifiers: ['block', 'text-right-from-tablet', 'medium'],
-                                        data: {
-                                            amount: data.price,
-                                        },
-                                    } only %}
-                                {% endblock %}
-
-                                {% block message %}{% endblock %}
-                            {% endembed %}
-                        {% endblock %}
-                    {% endwidget %}
-                {% endblock %}
-
-                {% block action %}
-                    {% if data.isActionActive %}
-                        {% do data.product.setPrice(productPrice) %}
-
-                        {% include molecule('configurator-state-adjustment-form', 'ConfigurableBundlePage') with {
-                            class: 'col col--sm-12 col--bottom',
-                            data: {
-                                product: data.product,
-                                form: data.form,
-                                selectedSlotId: data.selectedSlotId,
-                                isSelected: data.isSelected,
-                            },
-                        } only %}
-                    {% endif %}
-                {% endblock %}
-            </div>
+    <div class="{{ config.name }}__col {{ config.name }}__col--image-container col col--sm-12 col--md-4 col--xl-2 col--middle">
+        {% block image %}
+            {{ parent() }}
         {% endblock %}
     </div>
 {% endblock %}
 
+{% block content %}
+    <div class="{{ config.name }}__col {{ config.name }}__col--description col col--sm-12 col--md-6 col--xl-8 col--middle">
+        {% block name %}
+            {{ parent() }}
+        {% endblock %}
 
+        {% block sku %}
+            {% if data.sku %}
+                <span class="{{ config.name }}__sku">{{ 'configurable_bundle_page.configurator.sku' | trans }} {{ data.sku }}</span>
+            {% endif %}
+        {% endblock %}
+    </div>
+{% endblock %}
+
+{% block actionsContainerInner %}
+    <div class="{{ config.name }}__col col col--md-2 grid">
+        {% block price %}
+            {% if can('SeePricePermissionPlugin') %}
+                {% widget 'PriceProductWidget' args [data.product] only %}
+                    {% block body %}
+                        {% include molecule('money-price') with {
+                            class: 'col col--sm-12',
+                            modifiers: ['block', 'text-right-from-tablet', 'medium'],
+                            data: {
+                                amount: data.currentProductPrice.sumPrice,
+                            },
+                        } only %}
+                    {% endblock %}
+                {% endwidget %}
+            {% endif %}
+        {% endblock %}
+
+        {% block action %}
+            {% if data.isActionActive %}
+                {% do data.product.setPrice(productPrice) %}
+
+                {% include molecule('configurator-state-adjustment-form', 'ConfigurableBundlePage') with {
+                    class: 'col col--sm-12 col--bottom',
+                    data: {
+                        product: data.product,
+                        form: data.form,
+                        selectedSlotId: data.selectedSlotId,
+                        isSelected: data.isSelected,
+                    },
+                } only %}
+            {% endif %}
+        {% endblock %}
+    </div>
+{% endblock %}

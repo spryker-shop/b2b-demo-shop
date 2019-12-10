@@ -25,7 +25,15 @@
 {% endblock %}
 
 {% block templateTitleImage %}
-    <div class="{{ config.name }}__image-box" style="background-image: url({{ template.images.0.externalUrlSmall }})"></div>
+    {% set imageModifiers = imageModifiers | merge(['bundle-list']) %}
+
+    {% include atom('thumbnail') with {
+        modifiers: imageModifiers,
+        attributes: {
+            src: template.images.0.externalUrlSmall,
+            alt: template.name | trans,
+        },
+    } only %}
 {% endblock %}
 
 {% block button %}{% endblock %}

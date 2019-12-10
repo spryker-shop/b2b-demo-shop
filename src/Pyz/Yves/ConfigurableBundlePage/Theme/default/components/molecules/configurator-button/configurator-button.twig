@@ -11,8 +11,13 @@
             data: {
                 name: data.icon,
             },
+            attributes: {
+                title: data.text,
+            },
         } only %}
-    {% else %}
+    {% endif %}
+
+    {% if not data.icon %}
         {{ data.text }}
     {% endif %}
 {% endblock %}
