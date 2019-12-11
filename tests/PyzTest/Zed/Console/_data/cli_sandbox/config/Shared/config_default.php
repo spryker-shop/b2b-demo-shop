@@ -10,6 +10,7 @@ use Spryker\Shared\Customer\CustomerConstants;
 use Spryker\Shared\DummyPayment\DummyPaymentConfig;
 use Spryker\Shared\ErrorHandler\ErrorHandlerConstants;
 use Spryker\Shared\ErrorHandler\ErrorRenderer\WebHtmlErrorRenderer;
+use Spryker\Shared\Kernel\ClassResolver\Cache\Provider\File;
 use Spryker\Shared\Kernel\KernelConstants;
 use Spryker\Shared\Kernel\Store;
 use Spryker\Shared\Log\LogConstants;
@@ -19,6 +20,7 @@ use Spryker\Shared\Propel\PropelConstants;
 use Spryker\Shared\Queue\QueueConstants;
 use Spryker\Shared\Sales\SalesConstants;
 use Spryker\Shared\Search\SearchConstants;
+use Spryker\Shared\SearchElasticsearch\SearchElasticsearchConstants;
 use Spryker\Shared\SequenceNumber\SequenceNumberConstants;
 use Spryker\Shared\Session\SessionConfig;
 use Spryker\Shared\Session\SessionConstants;
@@ -65,31 +67,29 @@ $config[PropelConstants::ZED_DB_SUPPORTED_ENGINES] = [
  * Elasticsearch settings
  */
 $config[ApplicationConstants::ELASTICA_PARAMETER__HOST]
-    = $config[SearchConstants::ELASTICA_PARAMETER__HOST]
+    = $config[SearchElasticsearchConstants::HOST]
     = 'localhost';
 $config[ApplicationConstants::ELASTICA_PARAMETER__TRANSPORT]
-    = $config[SearchConstants::ELASTICA_PARAMETER__TRANSPORT]
+    = $config[SearchElasticsearchConstants::TRANSPORT]
     = 'http';
 $config[ApplicationConstants::ELASTICA_PARAMETER__PORT]
-    = $config[SearchConstants::ELASTICA_PARAMETER__PORT]
+    = $config[SearchElasticsearchConstants::PORT]
     = '10005';
 $config[ApplicationConstants::ELASTICA_PARAMETER__AUTH_HEADER]
-    = $config[SearchConstants::ELASTICA_PARAMETER__AUTH_HEADER]
+    = $config[SearchElasticsearchConstants::AUTH_HEADER]
     = '';
 $config[ApplicationConstants::ELASTICA_PARAMETER__INDEX_NAME]
     = $config[CollectorConstants::ELASTICA_PARAMETER__INDEX_NAME]
-    = $config[SearchConstants::ELASTICA_PARAMETER__INDEX_NAME]
     = null; // Store related config
 $config[ApplicationConstants::ELASTICA_PARAMETER__DOCUMENT_TYPE]
     = $config[CollectorConstants::ELASTICA_PARAMETER__DOCUMENT_TYPE]
-    = $config[SearchConstants::ELASTICA_PARAMETER__DOCUMENT_TYPE]
     = 'page';
 
 /**
  * Page search settings
  */
-$config[SearchConstants::FULL_TEXT_BOOSTED_BOOSTING_VALUE] = 3;
-$config[SearchConstants::SEARCH_INDEX_NAME_SUFFIX] = '';
+$config[SearchConstants::FULL_TEXT_BOOSTED_BOOSTING_VALUE]
+    = $config[SearchElasticsearchConstants::FULL_TEXT_BOOSTED_BOOSTING_VALUE] = 3;
 
 /**
  * Hostname(s) for Yves - Shop frontend
@@ -327,7 +327,7 @@ $config[ErrorHandlerConstants::ERROR_LEVEL] = E_ALL & ~E_DEPRECATED & ~E_USER_DE
 
 $config[KernelConstants::AUTO_LOADER_CACHE_FILE_NO_LOCK] = false;
 $config[KernelConstants::AUTO_LOADER_UNRESOLVABLE_CACHE_ENABLED] = false;
-$config[KernelConstants::AUTO_LOADER_UNRESOLVABLE_CACHE_PROVIDER] = \Spryker\Shared\Kernel\ClassResolver\Cache\Provider\File::class;
+$config[KernelConstants::AUTO_LOADER_UNRESOLVABLE_CACHE_PROVIDER] = File::class;
 $config[ApplicationConstants::ENABLE_WEB_PROFILER] = false;
 
 $config[PropelConstants::ZED_DB_ENGINE_MYSQL] = PropelConfig::DB_ENGINE_MYSQL;
