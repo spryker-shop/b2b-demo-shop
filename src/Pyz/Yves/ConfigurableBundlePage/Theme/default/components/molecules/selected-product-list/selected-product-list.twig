@@ -4,9 +4,7 @@
     <div class="grid grid--middle">
         {% block headerInner %}
             {% block title %}
-                <h4 class="col">
-                    {{- data.configurableBundleTemplateStorage.slots[idSlot].name | trans -}}
-                </h4>
+                <h4 class="col">{{ data.configurableBundleTemplateStorage.slots[idSlot].name | trans }}</h4>
             {% endblock %}
 
             {% block form %}
