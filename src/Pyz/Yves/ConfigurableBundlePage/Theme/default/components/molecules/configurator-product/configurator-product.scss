@@ -1,10 +1,12 @@
 @include configurable-bundle-page-configurator-product {
     margin: 0 0 rem(10);
     border-radius: $setting-border-radius;
+    flex-direction: column;
 
     @include helper-breakpoint-media-min($md) {
         padding-right: rem(20);
         background-color: $setting-color-gray-7;
+        flex-direction: row;
     }
 
     @include helper-breakpoint-media-min($xl) {

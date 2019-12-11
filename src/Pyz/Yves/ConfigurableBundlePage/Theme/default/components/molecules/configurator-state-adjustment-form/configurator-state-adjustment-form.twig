@@ -1,13 +1,9 @@
 {% extends molecule('configurator-state-adjustment-form', '@SprykerShop:ConfigurableBundlePage') %}
 
-{% set selectedButtonModifiers = ['expand', 'success'] %}
-
-{% block selectedButton %}
-    {% set selectedButtonModifiers = ['expand'] %}
-    {{ parent() }}
-{% endblock %}
+{%- block extraClass %} col col--expand{% endblock -%}
 
 {% block unselectedButtonItem %}
     {% set buttonModifiers = ['expand', 'hollow'] %}
+
     {{ parent() }}
 {% endblock %}

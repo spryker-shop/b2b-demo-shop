@@ -7,17 +7,13 @@
     {% set modifiers = ['small'] %}
 
     <div class="{{ config.name }}__col {{ config.name }}__col--image-container col col--sm-12 col--md-4 col--xl-2 col--middle">
-        {% block image %}
-            {{ parent() }}
-        {% endblock %}
+        {% block image %}{{ parent() }}{% endblock %}
     </div>
 {% endblock %}
 
 {% block content %}
     <div class="{{ config.name }}__col {{ config.name }}__col--description col col--sm-12 col--md-6 col--xl-8 col--middle">
-        {% block name %}
-            {{ parent() }}
-        {% endblock %}
+        {% block name %}{{ parent() }}{% endblock %}
 
         {% block sku %}
             {% if data.sku %}
@@ -27,19 +23,27 @@
     </div>
 {% endblock %}
 
-{% block actionsContainerInner %}
+{% block actionsContainer %}
     <div class="{{ config.name }}__col col col--md-2 grid">
         {% block price %}
             {% if can('SeePricePermissionPlugin') %}
-                {% widget 'PriceProductWidget' args [data.product] only %}
+                {% widget 'PriceProductWidget' args [data.product] with {
+                    embed: {
+                        currencyIsoCode: data.currencyIsoCode,
+                    },
+                } only %}
                     {% block body %}
-                        {% include molecule('money-price') with {
-                            class: 'col col--sm-12',
-                            modifiers: ['block', 'text-right-from-tablet', 'medium'],
-                            data: {
-                                amount: data.currentProductPrice.sumPrice,
-                            },
-                        } only %}
+                        {% if data.currentProductPrice.prices %}
+                            {% include molecule('money-price') with {
+                                class: 'col col--expand',
+                                modifiers: ['block', 'text-right-from-tablet', 'medium'],
+                                data: {
+                                    amount: data.currentProductPrice.prices.DEFAULT | default(null),
+                                    originalAmount: data.currentProductPrice.prices.ORIGINAL | default(null),
+                                    currencyIsoCode: embed.currencyIsoCode,
+                                },
+                            } only %}
+                        {% endif %}
                     {% endblock %}
                 {% endwidget %}
             {% endif %}
@@ -47,17 +51,7 @@
 
         {% block action %}
             {% if data.isActionActive %}
-                {% do data.product.setPrice(productPrice) %}
-
-                {% include molecule('configurator-state-adjustment-form', 'ConfigurableBundlePage') with {
-                    class: 'col col--sm-12 col--bottom',
-                    data: {
-                        product: data.product,
-                        form: data.form,
-                        selectedSlotId: data.selectedSlotId,
-                        isSelected: data.isSelected,
-                    },
-                } only %}
+                {{ parent() }}
             {% endif %}
         {% endblock %}
     </div>
