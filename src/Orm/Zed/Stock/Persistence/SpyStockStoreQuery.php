@@ -5,12 +5,12 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Orm\Zed\ProductPackagingUnit\Persistence;
+namespace Orm\Zed\Stock\Persistence;
 
-use Spryker\Zed\ProductPackagingUnit\Persistence\Propel\AbstractSpyProductPackagingUnitAmountQuery;
+use Spryker\Zed\Stock\Persistence\Propel\AbstractSpyStockStoreQuery as BaseSpyStockStoreQuery;
 
 /**
- * Skeleton subclass for performing query and update operations on the 'spy_product_packaging_unit_amount' table.
+ * Skeleton subclass for performing query and update operations on the 'spy_stock_store' table.
  *
  *
  *
@@ -18,6 +18,6 @@ use Spryker\Zed\ProductPackagingUnit\Persistence\Propel\AbstractSpyProductPackag
  * application requirements. This class will only be generated as
  * long as it does not already exist in the output directory.
  */
-class SpyProductPackagingUnitAmountQuery extends AbstractSpyProductPackagingUnitAmountQuery
+class SpyStockStoreQuery extends BaseSpyStockStoreQuery
 {
 }

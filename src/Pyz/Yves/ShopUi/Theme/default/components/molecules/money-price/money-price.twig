@@ -21,15 +21,17 @@
         {% endblock %}
     {%- endif -%}
 
-    {% block priceMode %}
-        <span class="{{ component.renderClass(config.name ~ '__mode', modifiers) }}">
-            {% if data.priceMode == 'GROSS_MODE' %}
-                {{ 'price.mode.incl_vat' | trans }}
-            {% endif %}
+    {% if data.amount is not empty %}
+        {% block priceMode %}
+            <span class="{{ component.renderClass(config.name ~ '__mode', modifiers) }}">
+                {% if data.priceMode == 'GROSS_MODE' %}
+                    {{ 'price.mode.incl_vat' | trans }}
+                {% endif %}
 
-            {% if data.priceMode == 'NET_MODE' %}
-                {{ 'price.mode.excl_vat' | trans }}
-            {% endif %}
-        </span>
-    {% endblock %}
+                {% if data.priceMode == 'NET_MODE' %}
+                    {{ 'price.mode.excl_vat' | trans }}
+                {% endif %}
+            </span>
+        {% endblock %}
+    {% endif %}
 {% endblock %}
