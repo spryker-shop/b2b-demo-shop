@@ -12,7 +12,6 @@ use Spryker\Zed\AvailabilityCartConnector\Communication\Plugin\CheckAvailability
 use Spryker\Zed\Cart\CartDependencyProvider as SprykerCartDependencyProvider;
 use Spryker\Zed\Cart\Communication\Plugin\CleanUpItemsPreReloadPlugin;
 use Spryker\Zed\Cart\Communication\Plugin\SkuGroupKeyPlugin;
-use Spryker\Zed\CartPermissionConnector\Communication\Plugin\Cart\AlterCartUpToAmountPermissionPlugin;
 use Spryker\Zed\ConfigurableBundle\Communication\Plugin\Cart\CartConfigurableBundlePreReloadPlugin;
 use Spryker\Zed\ConfigurableBundleCart\Communication\Plugin\Cart\ConfiguredBundleGroupKeyItemExpanderPlugin;
 use Spryker\Zed\ConfigurableBundleCart\Communication\Plugin\Cart\ConfiguredBundleQuantityCartTerminationPlugin;
@@ -200,7 +199,6 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
     protected function getTerminationPlugins(Container $container)
     {
         return [
-            new AlterCartUpToAmountPermissionPlugin(),
             new ConfiguredBundleQuantityCartTerminationPlugin(),
         ];
     }
