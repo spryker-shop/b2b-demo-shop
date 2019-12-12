@@ -11,9 +11,7 @@
 {% block summaryItem %}
     {% set summaryClasses = config.name ~ '__item' %}
 
-    <li class="{{ summaryClasses }}">
-        {% block summaryItemInner %}{{ parent() }}{% endblock %}
-    </li>
+    {{ parent() }}
 {% endblock %}
 
 {% block summaryItemAction %}
