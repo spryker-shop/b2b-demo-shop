@@ -12,5 +12,5 @@
 } %}
 
 {% block body %}
-    {{ (data.value / data.precision) | round }} {{ data.optionName }}
+    (= {{ (data.value / data.precision) | round }} {{ data.optionName }})
 {% endblock %}

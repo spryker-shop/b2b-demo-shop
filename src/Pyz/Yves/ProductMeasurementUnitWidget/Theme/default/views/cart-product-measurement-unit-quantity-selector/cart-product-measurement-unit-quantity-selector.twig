@@ -11,17 +11,12 @@
 
 {% block body %}
     {% set hasQuantitySalesUnit = data.cartItem.quantitySalesUnit is not empty %}
-    <div class="grid grid--middle grid--gap">
-        <div class="col">
-            {% include molecule('product-item-quantity') with {
-                data: {
-                    productItem: data.cartItem,
-                    isDisabled: hasQuantitySalesUnit
-                }
-            } only %}
-        </div>
+
+    <div class="grid">
+        <div class="col spacing-left spacing-left--small">{{ data.cartItem.quantity }}</div>
+
         {% if hasQuantitySalesUnit %}
-            <div class="col col--sm-12 col--md-auto">
+            <div class="col spacing-left">
                 {% set value = data.cartItem.quantitySalesUnit.value %}
                 {% set precision = data.cartItem.quantitySalesUnit.precision %}
                 {% set salesUnitName = data.cartItem.quantitySalesUnit.productMeasurementUnit.name | default('') %}
