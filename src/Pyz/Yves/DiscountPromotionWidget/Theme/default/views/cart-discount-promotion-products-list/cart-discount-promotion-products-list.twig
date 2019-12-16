@@ -14,7 +14,7 @@
                                 abstractId: product.idProductAbstract,
                                 url: product.url,
                                 imageUrl: (product.images | length ? product.images.0.externalUrlSmall),
-                                price: (product.prices.DEFAULT ?? null),
+                                price: product.prices.DEFAULT ?? null,
                                 originalPrice: (product.prices.ORIGINAL ?? null),
                             },
                             embed: {
