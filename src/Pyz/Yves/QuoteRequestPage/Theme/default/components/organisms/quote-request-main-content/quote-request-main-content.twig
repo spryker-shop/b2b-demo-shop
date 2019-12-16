@@ -38,19 +38,6 @@
                             isEditable: false,
                         },
                     } only %}
-                        {% block bundleItem %}
-                            {% include molecule('configured-bundle', 'ConfigurableBundleWidget') with {
-                                data: {
-                                    bundle: bundle,
-                                    items: data.items,
-                                    currencyIsoCode: data.currencyIsoCode,
-                                    priceMode: data.priceMode,
-                                    isQuantityChangeable: data.isQuantityChangeable,
-                                    isEditable: data.isEditable,
-                                    isQuantityVisible: data.isQuantityVisible,
-                                },
-                            } only %}
-                        {% endblock %}
                     {% endwidget %}
 
                     {% set cartItems = data.quote.items | filter(item => item.configuredBundleItem is not defined or item.configuredBundleItem is empty) %}
