@@ -3,12 +3,10 @@
 {% block body %}
     {% set productTemplate = molecule('product-card') %}
     {% set class = 'col col--sm-6 col--md-4 col--lg-6 col--xl-4' %}
-    {% set labelModifiers = [] %}
 
     {% if data.viewMode == 'list' %}
         {% set productTemplate = molecule('product-list-item') %}
         {% set class = 'col col--sm-12' %}
-        {% set labelModifiers = ['reduced-spaces'] %}
     {% endif %}
 
     {% embed productTemplate with {
