@@ -27,7 +27,7 @@
         {% block labels %}
             {% widget 'ProductConcreteLabelWidget' args [data.id_product_labels] only %}
                 {% block body %}
-                    {% include molecule('label-group', 'ProductLabelWidget') with {
+                    {% include molecule('label-group', 'ProductLabelWidget') ignore missing with {
                         modifiers: ['reduced-spaces'],
                         data: {
                             labels: labels,
