@@ -39,7 +39,7 @@
                         },
                     } only %}
                         {% block bundleItem %}
-                            {% embed molecule('configured-bundle', 'ConfigurableBundleWidget') with {
+                            {% include molecule('configured-bundle', 'ConfigurableBundleWidget') with {
                                 data: {
                                     bundle: bundle,
                                     items: data.items,
@@ -50,7 +50,6 @@
                                     isQuantityVisible: data.isQuantityVisible,
                                 },
                             } only %}
-                            {% endembed %}
                         {% endblock %}
                     {% endwidget %}
 
