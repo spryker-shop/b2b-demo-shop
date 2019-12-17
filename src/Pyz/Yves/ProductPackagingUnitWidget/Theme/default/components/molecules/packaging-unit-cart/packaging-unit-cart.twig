@@ -40,7 +40,10 @@
                     },
                 } only %}
                     {% block body %}
-                        (= {{ data.value.divide(data.precision, embed.countOfDecimalsInAmount).trim }} {{ data.optionName }})
+                        {{ 'quantity_option.amount' | trans({
+                            '%value%': data.value.divide(data.precision, embed.countOfDecimalsInAmount).trim,
+                            '%name%': data.optionName,
+                        }) }}
                     {% endblock %}
                 {% endembed %}
             {% endif %}

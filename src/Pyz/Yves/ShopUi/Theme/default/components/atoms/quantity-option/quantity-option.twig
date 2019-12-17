@@ -12,5 +12,8 @@
 } %}
 
 {% block body %}
-    (= {{ (data.value / data.precision) | round }} {{ data.optionName }})
+    {{ 'quantity_option.amount' | trans({
+        '%value%': (data.value / data.precision) | round,
+        '%name%': data.optionName,
+    }) }}
 {% endblock %}
