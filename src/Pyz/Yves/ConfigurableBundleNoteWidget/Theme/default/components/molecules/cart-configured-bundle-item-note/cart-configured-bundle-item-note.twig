@@ -10,7 +10,6 @@
     canWrite: required,
     label: '',
     note: '',
-    isNoteNotEmpty: null,
 } %}
 
 {% define attributes = {
@@ -20,7 +19,7 @@
 {% block body %}
     {% set formNote = data.form.vars is defined ? data.form.vars.value.note %}
     {% set note = data.note ?: formNote %}
-    {% set isNoteNotEmpty = data.isNoteNotEmpty is not null ? data.isNoteNotEmpty : (formNote is not empty) %}
+    {% set isNoteNotEmpty = note is not empty %}
 
     {% block content %}
         {% if data.canWrite or isNoteNotEmpty %}

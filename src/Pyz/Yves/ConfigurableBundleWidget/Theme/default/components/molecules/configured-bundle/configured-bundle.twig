@@ -31,13 +31,10 @@
 {% endblock %}
 
 {% block notEditableConfigurableBundleNote %}
-    {% set note = data.bundle.note %}
-
     {% include molecule('cart-configured-bundle-item-note', 'ConfigurableBundleNoteWidget') ignore missing with {
         data: {
             canWrite: false,
-            note: note,
-            isNoteNotEmpty: note ? true : false,
+            note: data.bundle.note,
         },
     } only %}
 {% endblock %}
