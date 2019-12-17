@@ -20,7 +20,9 @@
         </span>
     {%- endif -%}
 
-    {% block priceMode %}
-        {{ parent() }}
-    {% endblock %}
+    {% if data.amount is not empty %}
+        {% block priceMode %}
+            {{ parent() }}
+        {% endblock %}
+    {% endif %}
 {% endblock %}
