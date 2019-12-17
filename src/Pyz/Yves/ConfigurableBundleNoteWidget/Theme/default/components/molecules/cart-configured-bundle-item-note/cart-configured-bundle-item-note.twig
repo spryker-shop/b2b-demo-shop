@@ -53,15 +53,15 @@
                     {% block form %}
                         {% if data.canWrite %}
                             {% set jsModifier = data.form.vars.value.groupKey | replace({"." : ""}) %}
-                            {% set hiddenClass = isNoteNotEmpty ? 'is-hidden' %}
-                            {% set activeClass = isNoteNotEmpty ? 'active' %}
+                            {% set hiddenClass = 'is-hidden' %}
+                            {% set activeClass = 'active' %}
 
-                            <div class="{{ config.name }}__form {{ config.jsName }}__form {{ config.jsName }}__form--{{ jsModifier }} {{ hiddenClass }}">
-                                <h6 class="{{ config.name }}__label toggler-accordion__item {{ config.jsName }}__trigger {{ activeClass }}" data-toggle-target='.{{ config.jsName }}__content--{{ jsModifier }}'>
+                            <div class="{{ config.name }}__form {{ config.jsName }}__form {{ config.jsName }}__form--{{ jsModifier }} {{ isNoteNotEmpty ? hiddenClass }}">
+                                <h6 class="{{ config.name }}__label toggler-accordion__item {{ config.jsName }}__trigger {{ isNoteNotEmpty ? activeClass }}" data-toggle-target='.{{ config.jsName }}__content--{{ jsModifier }}'>
                                     {{ 'configurable_bundle_note.enter_note' | trans }}
                                     <span class="icon icon--toggler-cross icon--toggler-cross-link toggler-accordion__icon"></span>
                                 </h6>
-                                <div class="{{ config.name }}__content {{ config.jsName }}__content {{ config.jsName }}__content--{{ jsModifier }} {{ hiddenClass }}">
+                                <div class="{{ config.name }}__content {{ config.jsName }}__content {{ config.jsName }}__content--{{ jsModifier }} {{ not isNoteNotEmpty ? hiddenClass }}">
                                     {% include molecule('form') with {
                                         modifiers: ['note'],
                                         data: {
