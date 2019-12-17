@@ -19,23 +19,7 @@
     <div class="{{ config.name }}__actions">
         <div class="col col--sm-12 col--xl-5">
             {% block configurableBundleNote %}
-                {% if data.isEditable %}
-                    {% block editableConfigurableBundleNote %}
-                        {{ parent() }}
-                    {% endblock %}
-                {% else %}
-                    {% block notEditableConfigurableBundleNote %}
-                        {% set note = data.bundle.note %}
-
-                        {% include molecule('cart-configured-bundle-item-note', 'ConfigurableBundleNoteWidget') ignore missing with {
-                            data: {
-                                canWrite: false,
-                                note: note,
-                                isNoteNotEmpty: note ? true : false,
-                            },
-                        } only %}
-                    {% endblock %}
-                {% endif %}
+                {{ parent() }}
             {% endblock %}
         </div>
         <div class="col col--bottom col--sm-12 col--xl-2 spacing-y">
@@ -44,6 +28,18 @@
             {% endblock %}
         </div>
     </div>
+{% endblock %}
+
+{% block notEditableConfigurableBundleNote %}
+    {% set note = data.bundle.note %}
+
+    {% include molecule('cart-configured-bundle-item-note', 'ConfigurableBundleNoteWidget') ignore missing with {
+        data: {
+            canWrite: false,
+            note: note,
+            isNoteNotEmpty: note ? true : false,
+        },
+    } only %}
 {% endblock %}
 
 {% block bundleInner %}
