@@ -16,7 +16,7 @@
         <div class="col spacing-left spacing-left--small">{{ data.cartItem.quantity }}</div>
 
         {% if hasQuantitySalesUnit %}
-            <div class="col spacing-left">
+            <div class="col spacing-left spacing-left--big">
                 {% set value = data.cartItem.quantitySalesUnit.value %}
                 {% set precision = data.cartItem.quantitySalesUnit.precision %}
                 {% set salesUnitName = data.cartItem.quantitySalesUnit.productMeasurementUnit.name | default('') %}

@@ -40,7 +40,7 @@
                     },
                 } only %}
                     {% block body %}
-                        {{ data.value.divide(data.precision, embed.countOfDecimalsInAmount).trim }} {{ data.optionName }}
+                        (= {{ data.value.divide(data.precision, embed.countOfDecimalsInAmount).trim }} {{ data.optionName }})
                     {% endblock %}
                 {% endembed %}
             {% endif %}
