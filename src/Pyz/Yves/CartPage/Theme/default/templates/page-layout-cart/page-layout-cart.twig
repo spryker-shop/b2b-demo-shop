@@ -71,23 +71,25 @@
                     },
                 } only %}
                     {% block body %}
-                        {% embed molecule('cart-sidebar-item', 'CartPage') with {
-                            data: {
-                                title: 'cart.quick_add_to_cart' | trans,
-                                cart: data.cart,
-                                isAccordionItem: false,
-                            },
-                        } only %}
-                            {% block contentInner %}
-                                {% widget 'ProductConcreteAddWidget' args [
-                                    '',
-                                    'cart.quick_add_to_cart.submit' | trans,
-                                    'cart/quick-add',
-                                    true,
-                                ] only %}
-                                {% endwidget %}
-                            {% endblock %}
-                        {% endembed %}
+                        {% if data.isQuoteEditable %}
+                            {% embed molecule('cart-sidebar-item', 'CartPage') with {
+                                data: {
+                                    title: 'cart.quick_add_to_cart' | trans,
+                                    cart: data.cart,
+                                    isAccordionItem: false,
+                                },
+                            } only %}
+                                {% block contentInner %}
+                                    {% widget 'ProductConcreteAddWidget' args [
+                                        '',
+                                        'cart.quick_add_to_cart.submit' | trans,
+                                        'cart/quick-add',
+                                        true,
+                                    ] only %}
+                                    {% endwidget %}
+                                {% endblock %}
+                            {% endembed %}
+                        {% endif %}
 
                         {% if data.cart.idQuote is not empty %}
                             {% embed molecule('cart-sidebar-item', 'CartPage') with {
