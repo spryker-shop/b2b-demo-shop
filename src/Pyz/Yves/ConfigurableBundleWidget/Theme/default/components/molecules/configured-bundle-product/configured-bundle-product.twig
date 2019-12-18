@@ -1,0 +1,73 @@
+{% extends molecule('configured-bundle-product', '@SprykerShop:ConfigurableBundleWidget') %}
+
+{% block image %}
+    {% set imageModifiers =  ['small', 'item'] %}
+
+    {{ parent() }}
+{% endblock %}
+
+{% block generalInformation %}
+    <div class="col col--sm-12 col--lg-6">
+        {% block name -%}
+            <h6 class="{{ config.name }}__item-title">{{ data.name }}</h6>
+        {%- endblock %}
+
+        {% block sku -%}
+            <small class="text-secondary {{ config.name }}__sku">
+                {{- 'configured_bundle.item_sku' | trans }} {{ data.sku -}}
+            </small>
+        {%- endblock %}
+    </div>
+{% endblock %}
+
+{% block priceInformation %}
+    <div class="{{ config.name }}__container col col--sm-12 col--lg-6">
+        {% block priceInformationInner %}
+            {% block priceCol %}
+                <div class="{{ config.name }}__inner-section col col--sm-12 col--lg-5">
+                    {% block price %}
+                        <strong class="{{ config.name }}__text">
+                            {% block priceInner %}
+                                {%- block priceTitle -%}{% endblock %}
+
+                                {%- block priceValue -%}
+                                    {{ parent() }}
+                                {% endblock %}
+                            {% endblock %}
+                        </strong>
+                    {% endblock %}
+                </div>
+            {% endblock %}
+
+            {% block quantityCol %}
+                <div class="{{ config.name }}__inner-section {{ config.name }}__inner-section--text-light col col--sm-12 col--lg-4">
+                    {% block quantity %}
+                        <span class="{{ config.name }}__text">
+                            {{ 'configured_bundle.multiplier' | trans }} {{ data.quantity }}
+                        </span>
+                    {% endblock %}
+                </div>
+            {% endblock %}
+
+            {% block totalCol %}
+                <div class="{{ config.name }}__inner-section col col--sm-12 col--lg-3 col--right">
+                    {% block total %}
+                        {{ parent() }}
+                    {% endblock %}
+                </div>
+            {% endblock %}
+        {% endblock %}
+    </div>
+{% endblock %}
+
+{%- block oldPriceValue -%}
+    <del class="spacing-right text-secondary">{{ originUnitPrice | money(true, data.currencyIsoCode) }}</del>
+{% endblock %}
+
+{%- block totalTitle -%}{% endblock %}
+
+{% block totalInner %}
+    {%- block totalValue -%}
+        {{ parent() }}
+    {% endblock %}
+{% endblock %}

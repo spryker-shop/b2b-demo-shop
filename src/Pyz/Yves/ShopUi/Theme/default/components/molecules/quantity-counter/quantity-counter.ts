@@ -7,7 +7,9 @@ export default class QuantityCounter extends Component {
     protected value: number;
     protected duration: number = 1000;
     protected timeout: number = 0;
-    protected inputChange: Event = new Event('change');
+    protected eventChange: Event = new Event('change');
+    protected eventInput: Event = new Event('input');
+    protected numberOfDecimalPlaces: number = 10;
 
     protected readyCallback(): void {}
 
@@ -22,7 +24,7 @@ export default class QuantityCounter extends Component {
     protected mapEvents(): void {
         this.decrementButton.addEventListener('click', (event: Event) => this.decrementValue(event));
         this.incrementButton.addEventListener('click', (event: Event) => this.incrementValue(event));
-        this.input.addEventListener('input', (event: Event) => this.triggerInputEvent());
+
         if (this.autoUpdate) {
             this.input.addEventListener('change', () => this.delayToSubmit());
         }
@@ -32,7 +34,9 @@ export default class QuantityCounter extends Component {
         event.preventDefault();
         if (this.isAvailable) {
             const value = Number(this.input.value);
-            const potentialValue = value + this.step;
+            const potentialValue = Number((((value * this.precision) + (this.step * this.precision)) /
+                this.precision).toFixed(this.numberOfDecimalPlaces));
+
             if (value < this.maxQuantity) {
                 this.input.value = potentialValue.toString();
                 this.triggerInputEvent();
@@ -44,7 +48,9 @@ export default class QuantityCounter extends Component {
         event.preventDefault();
         if (this.isAvailable) {
             const value = Number(this.input.value);
-            const potentialValue = value - this.step;
+            const potentialValue = Number((((value * this.precision) - (this.step * this.precision)) /
+                this.precision).toFixed(this.numberOfDecimalPlaces));
+
             if (potentialValue >= this.minQuantity) {
                 this.input.value = potentialValue.toString();
                 this.triggerInputEvent();
@@ -53,7 +59,8 @@ export default class QuantityCounter extends Component {
     }
 
     protected triggerInputEvent(): void {
-        this.input.dispatchEvent(this.inputChange);
+        this.input.dispatchEvent(this.eventChange);
+        this.input.dispatchEvent(this.eventInput);
     }
 
     protected delayToSubmit(): void {
@@ -93,5 +100,9 @@ export default class QuantityCounter extends Component {
 
     protected get isAvailable(): boolean {
         return !this.input.disabled && !this.input.readOnly;
+    }
+
+    protected get precision(): number {
+        return Number(`1${'0'.repeat(this.numberOfDecimalPlaces)}`);
     }
 }

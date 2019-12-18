@@ -14,7 +14,7 @@ class ExampleProductSalePageFactory extends AbstractFactory
     /**
      * @param array $requestParameters
      *
-     * @return \Spryker\Client\Search\Dependency\Plugin\QueryInterface
+     * @return \Spryker\Client\SearchExtension\Dependency\Plugin\QueryInterface
      */
     public function getSaleSearchQueryPlugin(array $requestParameters = [])
     {
@@ -63,7 +63,7 @@ class ExampleProductSalePageFactory extends AbstractFactory
     }
 
     /**
-     * @return \Spryker\Client\Search\Dependency\Plugin\QueryExpanderPluginInterface[]
+     * @return \Spryker\Client\SearchExtension\Dependency\Plugin\QueryExpanderPluginInterface[]
      */
     protected function getSaleSearchQueryExpanderPlugins()
     {

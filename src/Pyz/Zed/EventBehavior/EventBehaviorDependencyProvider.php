@@ -11,11 +11,14 @@ use Spryker\Zed\AvailabilityStorage\Communication\Plugin\Event\AvailabilityEvent
 use Spryker\Zed\CategoryPageSearch\Communication\Plugin\Event\CategoryPageEventResourceQueryContainerPlugin;
 use Spryker\Zed\CategoryStorage\Communication\Plugin\Event\CategoryNodeEventResourceQueryContainerPlugin;
 use Spryker\Zed\CategoryStorage\Communication\Plugin\Event\CategoryTreeEventResourceQueryContainerPlugin;
-use Spryker\Zed\CmsBlockCategoryStorage\Communication\Plugin\Event\CmsBlockCategoryEventResourceQueryContainerPlugin;
-use Spryker\Zed\CmsBlockProductStorage\Communication\Plugin\Event\CmsBlockProductEventResourceQueryContainerPlugin;
 use Spryker\Zed\CmsBlockStorage\Communication\Plugin\Event\CmsBlockEventResourceQueryContainerPlugin;
 use Spryker\Zed\CmsPageSearch\Communication\Plugin\Event\CmsPageEventResourceQueryContainerPlugin;
+use Spryker\Zed\CmsSlotBlockStorage\Communication\Plugin\EventBehavior\CmsSlotBlockEventResourceBulkRepositoryPlugin;
+use Spryker\Zed\CmsSlotStorage\Communication\Plugin\Event\CmsSlotEventResourceBulkRepositoryPlugin;
 use Spryker\Zed\CmsStorage\Communication\Plugin\Event\CmsEventResourceQueryContainerPlugin;
+use Spryker\Zed\ConfigurableBundlePageSearch\Communication\Plugin\Event\ConfigurableBundleTemplatePageSearchEventResourceBulkRepositoryPlugin;
+use Spryker\Zed\ConfigurableBundleStorage\Communication\Plugin\Event\ConfigurableBundleTemplateEventResourceBulkRepositoryPlugin;
+use Spryker\Zed\ConfigurableBundleStorage\Communication\Plugin\Event\ConfigurableBundleTemplateImageEventResourceBulkRepositoryPlugin;
 use Spryker\Zed\ContentStorage\Communication\Plugin\Event\ContentStorageEventResourceRepositoryPlugin;
 use Spryker\Zed\EventBehavior\EventBehaviorDependencyProvider as SprykerEventBehaviorDependencyProvider;
 use Spryker\Zed\GlossaryStorage\Communication\Plugin\Event\GlossaryEventResourceQueryContainerPlugin;
@@ -34,7 +37,7 @@ use Spryker\Zed\ProductLabelStorage\Communication\Plugin\Event\ProductLabelDicti
 use Spryker\Zed\ProductMeasurementUnitStorage\Communication\Plugin\Event\ProductConcreteMeasurementUnitEventResourceBulkRepositoryPlugin;
 use Spryker\Zed\ProductMeasurementUnitStorage\Communication\Plugin\Event\ProductMeasurementUnitEventResourceBulkRepositoryPlugin;
 use Spryker\Zed\ProductOptionStorage\Communication\Plugin\Event\ProductOptionEventResourceQueryContainerPlugin;
-use Spryker\Zed\ProductPackagingUnitStorage\Communication\Plugin\Event\ProductAbstractPackagingEventResourceRepositoryPlugin;
+use Spryker\Zed\ProductPackagingUnitStorage\Communication\Plugin\Event\ProductPackagingUnitEventResourceBulkRepositoryPlugin;
 use Spryker\Zed\ProductPageSearch\Communication\Plugin\Event\ProductConcretePageSearchEventResourceRepositoryPlugin;
 use Spryker\Zed\ProductPageSearch\Communication\Plugin\Event\ProductPageEventResourceQueryContainerPlugin;
 use Spryker\Zed\ProductQuantityStorage\Communication\Plugin\Event\ProductQuantityEventResourceBulkRepositoryPlugin;
@@ -65,8 +68,6 @@ class EventBehaviorDependencyProvider extends SprykerEventBehaviorDependencyProv
             new AvailabilityEventResourceQueryContainerPlugin(),
             new CategoryTreeEventResourceQueryContainerPlugin(),
             new CategoryNodeEventResourceQueryContainerPlugin(),
-            new CmsBlockCategoryEventResourceQueryContainerPlugin(),
-            new CmsBlockProductEventResourceQueryContainerPlugin(),
             new CmsBlockEventResourceQueryContainerPlugin(),
             new CmsEventResourceQueryContainerPlugin(),
             new GlossaryEventResourceQueryContainerPlugin(),
@@ -95,8 +96,13 @@ class EventBehaviorDependencyProvider extends SprykerEventBehaviorDependencyProv
             new ProductConcreteMeasurementUnitEventResourceBulkRepositoryPlugin(),
             new ProductQuantityEventResourceBulkRepositoryPlugin(),
             new ProductConcretePageSearchEventResourceRepositoryPlugin(),
-            new ProductAbstractPackagingEventResourceRepositoryPlugin(),
+            new ProductPackagingUnitEventResourceBulkRepositoryPlugin(),
             new ContentStorageEventResourceRepositoryPlugin(),
+            new ConfigurableBundleTemplateEventResourceBulkRepositoryPlugin(),
+            new ConfigurableBundleTemplateImageEventResourceBulkRepositoryPlugin(),
+            new CmsSlotEventResourceBulkRepositoryPlugin(),
+            new CmsSlotBlockEventResourceBulkRepositoryPlugin(),
+            new ConfigurableBundleTemplatePageSearchEventResourceBulkRepositoryPlugin(),
         ];
     }
 }

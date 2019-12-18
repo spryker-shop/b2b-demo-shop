@@ -34,6 +34,9 @@ use SprykerShop\Yves\CommentWidget\Plugin\Router\CommentWidgetRouteProviderPlugi
 use SprykerShop\Yves\CompanyPage\Plugin\Router\CompanyPageRouteProviderPlugin;
 use SprykerShop\Yves\CompanyUserAgentWidget\Plugin\Router\CompanyUserAgentWidgetRouteProviderPlugin;
 use SprykerShop\Yves\CompanyUserInvitationPage\Plugin\Router\CompanyUserInvitationPageRouteProviderPlugin;
+use SprykerShop\Yves\ConfigurableBundleNoteWidget\Plugin\Router\ConfigurableBundleNoteWidgetRouteProviderPlugin;
+use SprykerShop\Yves\ConfigurableBundlePage\Plugin\Router\ConfigurableBundlePageRouteProviderPlugin;
+use SprykerShop\Yves\ConfigurableBundleWidget\Plugin\Router\ConfigurableBundleWidgetRouteProviderPlugin;
 use SprykerShop\Yves\CurrencyWidget\Plugin\Router\CurrencyWidgetRouteProviderPlugin;
 use SprykerShop\Yves\CustomerPage\Plugin\Router\CustomerPageRouteProviderPlugin;
 use SprykerShop\Yves\CustomerReorderWidget\Plugin\Router\CustomerReorderWidgetRouteProviderPlugin;
@@ -130,6 +133,9 @@ class RouterDependencyProvider extends SprykerRouterDependencyProvider
             new ResourceSharePageRouteProviderPlugin(),
             new CommentWidgetRouteProviderPlugin(),
             new CompanyUserAgentWidgetRouteProviderPlugin(),
+            new ConfigurableBundleWidgetRouteProviderPlugin(),
+            new ConfigurableBundlePageRouteProviderPlugin(),
+            new ConfigurableBundleNoteWidgetRouteProviderPlugin(),
         ];
     }
 

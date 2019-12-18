@@ -6,6 +6,10 @@
         align-items: center;
         background: $setting-color-gray-7;
 
+        &--secondary {
+            background-color: $setting-color-gray-6;
+        }
+
         &__input {
             margin: 0;
             padding: 0;
@@ -19,6 +23,10 @@
 
             &::-webkit-inner-spin-button {
                 appearance: none;
+            }
+
+            &--medium-width {
+                width: rem(75);
             }
         }
 

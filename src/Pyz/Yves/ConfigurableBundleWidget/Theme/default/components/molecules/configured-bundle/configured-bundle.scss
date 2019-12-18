@@ -1,0 +1,64 @@
+@mixin configurable-bundle-widget-configured-bundle($name: '.configured-bundle') {
+    #{$name} {
+        border: rem(1) solid $setting-color-gray-7;
+        margin-bottom: rem(22);
+        padding-bottom: rem(32);
+        overflow: hidden;
+
+        &__col {
+            @include helper-breakpoint-media-min($lg) {
+                text-align: right;
+            }
+
+            &--displaced {
+                margin-left: rem(-8);
+
+                @include helper-breakpoint-media-min($lg) {
+                    margin-left: 0;
+                }
+            }
+        }
+
+        &__content {
+            display: flex;
+            flex-wrap: wrap;
+            padding: rem(18) rem(30);
+            overflow: hidden;
+            background-color: $setting-color-gray-7;
+            align-items: center;
+        }
+
+        &__actions {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 0 rem(30);
+        }
+
+        &__info {
+            @include helper-breakpoint-media-min($md) {
+                justify-content: flex-end;
+            }
+        }
+
+        &__title {
+            margin-bottom: 0;
+
+            @include helper-breakpoint-media-min($lg) {
+                font-size: rem(20);
+            }
+        }
+
+        &__products {
+            padding: rem(18) rem(30);
+        }
+
+        &__text {
+            font-size: rem(18);
+        }
+
+        @content;
+    }
+}
+
+@include configurable-bundle-widget-configured-bundle;
