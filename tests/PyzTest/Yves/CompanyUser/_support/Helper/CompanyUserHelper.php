@@ -38,7 +38,6 @@ class CompanyUserHelper extends Module
         'AddCartItemPermissionPlugin',
         'ChangeCartItemPermissionPlugin',
         'RemoveCartItemPermissionPlugin',
-        'AlterCartUpToAmountPermissionPlugin',
     ];
 
     /**
