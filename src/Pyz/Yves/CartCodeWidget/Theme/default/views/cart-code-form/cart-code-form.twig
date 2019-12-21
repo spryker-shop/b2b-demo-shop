@@ -1,0 +1,25 @@
+{% extends template('widget') %}
+
+{% define data = {
+    form: _widget.cartCodeForm,
+    isQuoteEditable: _widget.isQuoteEditable
+} %}
+
+{% block body %}
+    {% if data.isQuoteEditable %}
+        {% include molecule('form') with {
+            data: {
+                form: data.form,
+                submit: {
+                    enable: true,
+                    text: 'cart.voucher.redeem' | trans,
+                    icon: 'gift',
+                    class: 'button button--hollow-icon'
+                },
+                options: {
+                    action: path('cart-code/code/add')
+                }
+            }
+        } only %}
+    {% endif %}
+{% endblock %}

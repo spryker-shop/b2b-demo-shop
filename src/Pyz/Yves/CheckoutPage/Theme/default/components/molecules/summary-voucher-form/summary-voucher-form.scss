@@ -38,13 +38,42 @@
         &__content {
             margin-top: rem(18);
 
+            .form__container {
+                position: relative;
+            }
+
             .form__field {
-                padding-top: 0;
+                padding: 0 rem(8) rem(8) rem(8);
             }
 
             .form__actions {
                 text-align: left;
                 margin-top: 0;
+                position: absolute;
+                height: rem(48);
+                bottom: rem(8);
+                right: 0;
+            }
+
+            .form__action {
+                @include helper-effect-transition(color);
+                margin: 0;
+                display: flex;
+                height: rem(48);
+                font-size: rem(12);
+                font-weight: fw(bold);
+                color: $setting-color-gray-5;
+
+                @include helper-breakpoint-media-min($lg) {
+                    padding-right: rem(20);
+                    font-size: rem(14);
+                }
+
+                &:hover,
+                &:focus {
+                    color: $setting-color-gray-3;
+                    cursor: pointer;
+                }
             }
         }
     }
