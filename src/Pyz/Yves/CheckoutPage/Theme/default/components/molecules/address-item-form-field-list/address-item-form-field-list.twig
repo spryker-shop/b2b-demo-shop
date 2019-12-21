@@ -95,7 +95,7 @@
                             {{ form_row(embed.item.shippingAddress.id_customer_address, {
                                 label: 'page.checkout.address.delivery.address_select' | trans,
                                 attr: {
-                                    class: embed.jsName ~ '__trigger ' ~ embed.jsName ~ '__trigger--' ~ loop.index,
+                                    class: embed.jsName ~ '__trigger ' ~ embed.jsName ~ '__trigger--' ~ embed.index,
                                 },
                             }) }}
                         {% endif %}
