@@ -8,6 +8,7 @@ use Spryker\Shared\Application\ApplicationConstants;
 use Spryker\Shared\Collector\CollectorConstants;
 use Spryker\Shared\Customer\CustomerConstants;
 use Spryker\Shared\EventBehavior\EventBehaviorConstants;
+use Spryker\Shared\Http\HttpConstants;
 use Spryker\Shared\Kernel\KernelConstants;
 use Spryker\Shared\Kernel\Store;
 use Spryker\Shared\Log\LogConstants;
@@ -19,6 +20,7 @@ use Spryker\Shared\Quote\QuoteConstants;
 use Spryker\Shared\RabbitMq\RabbitMqEnv;
 use Spryker\Shared\Scheduler\SchedulerConstants;
 use Spryker\Shared\Search\SearchConstants;
+use Spryker\Shared\SearchElasticsearch\SearchElasticsearchConstants;
 use Spryker\Shared\Session\SessionConstants;
 use Spryker\Shared\SessionRedis\SessionRedisConstants;
 use Spryker\Shared\StorageRedis\StorageRedisConstants;
@@ -89,9 +91,8 @@ $config[StorageRedisConstants::STORAGE_REDIS_DATABASE] = 3;
 $ELASTICA_INDEX_NAME = 'de_search_devtest';
 $ELASTICA_DOCUMENT_TYPE = 'page';
 $ELASTICA_PORT = '9200';
-$config[SearchConstants::ELASTICA_PARAMETER__INDEX_NAME] = $ELASTICA_INDEX_NAME;
-$config[SearchConstants::ELASTICA_PARAMETER__DOCUMENT_TYPE] = $ELASTICA_DOCUMENT_TYPE;
-$config[SearchConstants::ELASTICA_PARAMETER__PORT] = $ELASTICA_PORT;
+$config[SearchConstants::ELASTICA_PARAMETER__PORT]
+    = $config[SearchElasticsearchConstants::PORT] = $ELASTICA_PORT;
 $config[CollectorConstants::ELASTICA_PARAMETER__INDEX_NAME] = $ELASTICA_INDEX_NAME;
 $config[CollectorConstants::ELASTICA_PARAMETER__DOCUMENT_TYPE] = $ELASTICA_DOCUMENT_TYPE;
 
@@ -155,11 +156,13 @@ $config[LogConstants::LOG_LEVEL] = Logger::CRITICAL;
 $config[EventBehaviorConstants::EVENT_BEHAVIOR_TRIGGERING_ACTIVE] = getenv('TEST_GROUP') === 'acceptance';
 
 // ---------- Trusted hosts
-$config[ApplicationConstants::YVES_TRUSTED_HOSTS] = [
-    $config[ApplicationConstants::HOST_YVES],
-    $config[ApplicationConstants::HOST_ZED],
-    'localhost',
-];
+$config[ApplicationConstants::YVES_TRUSTED_HOSTS]
+    = $config[HttpConstants::YVES_TRUSTED_HOSTS]
+    = [
+        $config[ApplicationConstants::HOST_YVES],
+        $config[ApplicationConstants::HOST_ZED],
+        'localhost',
+    ];
 
 // ---------- Guest cart
 $config[QuoteConstants::GUEST_QUOTE_LIFETIME] = 'P01M';

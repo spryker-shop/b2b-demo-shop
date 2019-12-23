@@ -1,0 +1,17 @@
+@mixin configurable-bundle-note-widget-cart-configured-bundle-item-note-actions($name: '.cart-configured-bundle-item-note-actions') {
+    #{$name} {
+        margin-top: rem(15);
+
+        &__item {
+            margin: 0 rem(27) rem(5) 0;
+
+            @include helper-breakpoint-media-min($lg) {
+                margin-bottom: 0;
+            }
+        }
+
+        @content;
+    }
+}
+
+@include configurable-bundle-note-widget-cart-configured-bundle-item-note-actions;
