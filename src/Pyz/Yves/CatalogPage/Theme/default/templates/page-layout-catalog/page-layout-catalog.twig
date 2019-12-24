@@ -13,7 +13,7 @@
         },
     } only %}
 
-    <form method="GET" class="grid grid--gap js-form-input-default-value-disabler__catalog-form page-layout-main--catalog-page-content {{ catalogJsName }}__form">
+    <form method="GET" class="grid grid--gap page-layout-main__catalog-page-content js-form-input-default-value-disabler__catalog-form {{ catalogJsName }}__form">
         {% block form %}
             {% include molecule('form-input-default-value-disabler') with {
                 attributes: {
