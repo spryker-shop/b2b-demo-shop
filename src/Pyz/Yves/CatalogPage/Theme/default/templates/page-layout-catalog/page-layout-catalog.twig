@@ -1,61 +1,19 @@
-{% extends template('page-layout-main') %}
-
-{% define data = {
-    products: required,
-    facets: required,
-    category: null,
-    categories: [],
-    categoryId: null,
-    filterPath: null,
-    viewMode: null,
-    pagination: {
-        currentPage: required,
-        maxPage: required,
-        parameters: app.request.query.all(),
-        paginationPath: app.request.getPathInfo(),
-        showAlwaysFirstAndLast: true,
-    },
-} %}
-
-{% macro renderBreadcrumbSteps(categoryNode, isLastLeaf, filterPath) %}
-    {% import _self as self %}
-    {% set categoryUrl = categoryNode.url | default %}
-    {% set categoryUrl = filterPath is not empty ? url(filterPath, {categoryPath: categoryUrl}) : categoryUrl %}
-    {% set categoryLabel = categoryNode.name | default %}
-    {% set categoryParentNodes = categoryNode.parents | default %}
-
-    {% if categoryParentNodes is not empty %}
-        {{ self.renderBreadcrumbSteps(categoryParentNodes | first, false, filterPath) }}
-
-        {% if not isLastLeaf %}
-            {% include molecule('breadcrumb-step') with {
-                data: {
-                    url: categoryUrl,
-                    label: categoryLabel,
-                },
-            } only %}
-        {% endif %}
-    {% endif %}
-{% endmacro %}
-
-{% block breadcrumbs %}
-    {% import _self as self %}
-
-    {% embed molecule('breadcrumb') with {
-        embed: {
-            breadcrumbs: self.renderBreadcrumbSteps(data.category, false, data.filterPath),
-        },
-    } only %}
-        {% block breadcrumbs %}
-            {{ embed.breadcrumbs }}
-        {% endblock %}
-    {% endembed %}
-{% endblock %}
+{% extends template('page-layout-catalog', '@SprykerShop:CatalogPage') %}
 
 {% block contentClass %}page-layout-main page-layout-main--catalog-page{% endblock %}
 
 {% block content %}
-    <form method="GET" class="grid grid--gap js-form-input-default-value-disabler__catalog-form page-layout-main--catalog-page-content">
+    {% set catalogJsName = 'js-catalog' %}
+
+    {% include molecule('window-location-applicator', 'CatalogPage') with {
+        attributes: {
+            'form-class-name': catalogJsName ~ '__form',
+            'trigger-class-name': catalogJsName ~ '__trigger',
+            'sort-trigger-class-name': catalogJsName ~ '__sort-trigger',
+        },
+    } only %}
+
+    <form method="GET" class="grid grid--gap js-form-input-default-value-disabler__catalog-form page-layout-main--catalog-page-content {{ catalogJsName }}__form">
         {% block form %}
             {% include molecule('form-input-default-value-disabler') with {
                 attributes: {
@@ -104,6 +62,7 @@
                             facets: data.facets,
                             filterPath: data.filterPath,
                             categories: data.categories,
+                            parentJsName: catalogJsName,
                         },
                     } only %}
                 {% endblock %}
@@ -114,7 +73,11 @@
                     <div class="col col--sm-12">
                         <div class="grid grid--justify grid--nowrap">
                             <div class="col col--lg-12">
-                                {% include molecule('sort', 'CatalogPage') only %}
+                                {% include molecule('sort', 'CatalogPage') with {
+                                    data: {
+                                        parentJsName: catalogJsName,
+                                    },
+                                } only %}
                             </div>
                             <div class="col">
                                 {% include molecule('view-mode-switch', 'CatalogPage') with {
@@ -136,13 +99,17 @@
                 </div>
 
                 <div class="grid grid--stretch grid--gap">
-                    {% for product in data.products %}
-                        {% widget 'CatalogPageProductWidget' args [
-                            product,
-                            data.viewMode,
-                        ] only %}
-                        {% endwidget %}
-                    {% endfor %}
+                    {% if data.products %}
+                        {% for product in data.products %}
+                            {% widget 'CatalogPageProductWidget' args [
+                                product,
+                                data.viewMode,
+                            ] only %}
+                            {% endwidget %}
+                        {% endfor %}
+                    {% else %}
+                        {% block noResults %}{{ parent() }}{% endblock %}
+                    {% endif %}
                 </div>
 
                 {% include molecule('pagination') with {

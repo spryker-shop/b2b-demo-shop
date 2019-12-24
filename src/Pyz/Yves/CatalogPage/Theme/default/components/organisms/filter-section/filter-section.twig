@@ -1,21 +1,8 @@
-{% extends model('component') %}
-
-{% define config = {
-    name: 'filter-section',
-    tag: 'section',
-} %}
-
-{% define data = {
-    facets: [],
-    filterPath: null,
-    categories: [],
-    isEmptyCategoryFilterValueVisible: null,
-} %}
+{% extends organism('filter-section', '@SprykerShop:CatalogPage') %}
 
 {% set isContentPresent = data.facets | length > 0 %}
 
-{% block class %}
-    {{  parent() }}
+{% block extraClass %}
     {{ config.jsName }}
 {% endblock %}
 
@@ -71,6 +58,7 @@
                                     activeMin: filter.activeMin | default(0),
                                     activeMax: filter.activeMax | default(0),
                                     isEmptyCategoryFilterValueVisible: data.isEmptyCategoryFilterValueVisible,
+                                    parentJsName: data.parentJsName,
                                 },
                                 class: togglerClass,
                             } only %}
@@ -89,6 +77,6 @@
             {% endfor %}
         </div>
 
-        <button type="submit" class="button button--expand button--big {{ config.name ~ '__button' }}">{{ 'catalog.filter.button' | trans }}</button>
+        <button type="button" class="button button--expand button--big {{ config.name }}__button {{ data.parentJsName }}__trigger">{{ 'catalog.filter.button' | trans }}</button>
     {% endif %}
 {% endblock %}
