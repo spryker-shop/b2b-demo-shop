@@ -7,6 +7,8 @@
 {% endblock %}
 
 {% block body %}
+    {% set triggerButtonJsName = data.parentJsName ? data.parentJsName ~ '__trigger' %}
+
     {% if isContentPresent %}
         <h3 class="{{ config.name ~ '__title' }} is-hidden-lg-xxl">{{ 'catalog.filter.and.sorting.button' | trans }}</h3>
         <button class="{{ config.name ~ '__close' }} is-hidden-lg-xxl js-catalog-filters-trigger">
@@ -77,6 +79,6 @@
             {% endfor %}
         </div>
 
-        <button type="button" class="button button--expand button--big {{ config.name }}__button {{ data.parentJsName }}__trigger">{{ 'catalog.filter.button' | trans }}</button>
+        <button type="button" class="button button--expand button--big {{ config.name }}__button {{ triggerButtonJsName }}">{{ 'catalog.filter.button' | trans }}</button>
     {% endif %}
 {% endblock %}
