@@ -136,12 +136,8 @@
 
                     {% if isCartCodeFormWidget %}
                         <div class="cart-code-form">
-                            {% widget 'CartCodeFormWidget' args [data.cart] only %}
-                                {% block body %}
-                                    {{ parent() }}
-                                    <hr>
-                                {% endblock %}
-                            {% endwidget %}
+                            {% widget 'CartCodeFormWidget' args [data.cart] only %}{% endwidget %}
+                            <hr>
                         </div>
                     {% endif %}
                 </div>
