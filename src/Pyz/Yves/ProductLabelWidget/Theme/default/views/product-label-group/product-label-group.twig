@@ -1,0 +1,10 @@
+{% extends view('product-label-group', '@SprykerShop:ProductLabelWidget') %}
+
+{% block body %}
+    {% include molecule('label-group', 'ProductLabelWidget') with {
+        modifiers: ['reduced-spaces'],
+        data: {
+            labels: labels,
+        },
+    } only %}
+{% endblock %}

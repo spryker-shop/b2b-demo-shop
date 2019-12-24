@@ -62,6 +62,18 @@
                             {{ parent() }}
                         {% endblock %}
 
+                        {% block subQuantity %}
+                            {% if data.listItem.quantitySalesUnit is not empty %}
+                                {% include atom('quantity-option') with {
+                                    data: {
+                                        value: data.quantity,
+                                        precision: data.listItem.quantitySalesUnit.conversion,
+                                        optionName: data.listItem.quantitySalesUnit.productMeasurementUnit.name | trans,
+                                    },
+                                } only %}
+                            {% endif %}
+                        {% endblock %}
+
                         {% block note %}
                             {% if data.listItem.cartNote is not empty %}
                                 {% include molecule('cart-item-note', 'CartNoteWidget') ignore missing with {

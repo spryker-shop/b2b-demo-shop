@@ -237,18 +237,12 @@
 
                                                             {% if isEmptyProductInfo %}
                                                                 <div class="{{ config.name }}__quantity-holder">
-                                                                    {% set cartProductMeasurementUnitQuantitySelectorWidget = findWidget('CartProductMeasurementUnitQuantitySelectorWidget', [data.listItem]) %}
-
-                                                                    {% if cartProductMeasurementUnitQuantitySelectorWidget and data.canEdit %}
-                                                                        {% widget cartProductMeasurementUnitQuantitySelectorWidget only %}{% endwidget %}
-                                                                    {% else %}
-                                                                        {% include molecule('product-item-quantity') with {
-                                                                            data: {
-                                                                                productItem: data.listItem,
-                                                                                isDisabled: not data.canEdit,
-                                                                            },
-                                                                        } only %}
-                                                                    {% endif %}
+                                                                    {% include molecule('product-item-quantity') with {
+                                                                        data: {
+                                                                            productItem: data.listItem,
+                                                                            isDisabled: not data.canEdit,
+                                                                        },
+                                                                    } only %}
                                                                 </div>
                                                             {% endif %}
                                                         {% endblock %}
