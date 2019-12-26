@@ -362,11 +362,18 @@ $address-form-width: rem(710);
 
         .input {
             padding-left: rem(20);
-            padding-right: rem(65);
+            padding-right: rem(90);
+            border-radius: $setting-border-radius;
+            border: none;
+            box-shadow: 0 rem(10) rem(10) 0 $setting-color-shadow-1, 0 rem(3) rem(3) 0 $setting-color-shadow-1;
 
             @include helper-breakpoint-media-min($lg) {
                 padding-left: rem(12);
             }
+        }
+
+        .label {
+            display: none;
         }
     }
 
