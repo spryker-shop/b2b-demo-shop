@@ -26,13 +26,13 @@
 
             {% block cartSummaryContent %}
                 <li class="list__item">
-                    {% include molecule('cart-discount-summary', 'DiscountWidget') ignore missing with {
-                        modifiers: ['cart'],
+                    {% include molecule('cart-code-summary', 'CartCodeWidget') ignore missing with {
                         data: {
+                            isQuoteEditable: data.isQuoteEditable,
                             voucherDiscounts: data.cart.voucherDiscounts,
                             ruleDiscounts: data.cart.cartRuleDiscounts,
-                            discountTotal: data.cart.totals.discounttotal
-                        }
+                            discountTotal: data.cart.totals.discounttotal,
+                        },
                     } only %}
                 </li>
 

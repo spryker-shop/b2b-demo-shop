@@ -1,4 +1,4 @@
-@mixin discount-widget-cart-discount-summary($name: '.cart-discount-summary') {
+@mixin cart-code-widget-cart-code-summary($name: '.cart-code-summary') {
     #{$name} {
         padding-top: rem(18);
 
@@ -9,18 +9,16 @@
         }
 
         &__description {
-            &--cart {
-                margin: rem(8) rem(-15) 0;
-                padding: 0 rem(15) rem(17);
-                border-bottom: rem(1) solid $setting-color-gray-1;
+            margin: rem(8) rem(-15) 0;
+            padding: 0 rem(15) rem(17);
+            border-bottom: rem(1) solid $setting-color-gray-1;
 
-                @include helper-breakpoint-media-min($lg) {
-                    margin-left: 0;
-                    margin-right: 0;
-                    padding-right: 0;
-                    padding-left: 0;
-                    border-color: $setting-color-gray-3;
-                }
+            @include helper-breakpoint-media-min($lg) {
+                margin-left: 0;
+                margin-right: 0;
+                padding-right: 0;
+                padding-left: 0;
+                border-color: $setting-color-gray-3;
             }
         }
 
@@ -48,4 +46,4 @@
     }
 }
 
-@include discount-widget-cart-discount-summary();
+@include cart-code-widget-cart-code-summary();

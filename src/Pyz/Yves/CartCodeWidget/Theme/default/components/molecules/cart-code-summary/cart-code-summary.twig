@@ -1,63 +1,65 @@
 {% extends model('component') %}
 
 {% define config = {
-    name: 'cart-discount-summary',
-    tag: 'ul'
+    name: 'cart-code-summary',
+    tag: 'ul',
 } %}
 
 {% define data = {
-    isLinkPresent: true,
+    isQuoteEditable: false,
     voucherDiscounts: null,
     ruleDiscounts: null,
     discountTotal: null,
     currencyIsoCode: null,
 } %}
 
+{% set isDiscountsExists = data.discountTotal and (data.voucherDiscounts is not empty or data.ruleDiscounts is not empty) %}
+
 {% block component %}
-    {% if data.discountTotal and (data.voucherDiscounts is not empty or data.ruleDiscounts is not empty) %}
-        {{parent()}}
-    {% endif %}
+    {% if isDiscountsExists %}{{ parent() }}{% endif %}
 {% endblock %}
 
 {% block body %}
     {% if data.voucherDiscounts is not empty %}
         <li class="list__item">
-            {% if data.isLinkPresent %}
-                <a class="float-right text-small" href="{{ url('discount/voucher/clear') }}">
-                    {{ 'cart.vouchers.clear-all' | trans }}
-                </a>
-            {% endif %}
+            {% include molecule('cart-code-clear-link', 'CartCodeWidget') with {
+                class: 'float-right text-small',
+                data: {
+                    isQuoteEditable: data.isQuoteEditable,
+                },
+            } only %}
 
             <strong>{{ 'cart.vouchers' | trans }}</strong>
-
             <ul>
                 {% for voucherDiscount in data.voucherDiscounts %}
                     <li class="grid grid--justify">
                         <span class="col col--sm-7">
                             {{ voucherDiscount.displayName }}
-                            <br>
-                            {% if data.isLinkPresent %}
-                                <a class="text-small" href="{{ url('discount/voucher/remove', {'code': voucherDiscount.voucherCode}) }}">
-                                    {{ 'cart.voucher.remove' | trans }}
-                                </a>
-                            {% endif %}
+
+                            {% include molecule('cart-code-remove-link', 'CartCodeWidget') with {
+                                class: 'text-small',
+                                data: {
+                                    isQuoteEditable: data.isQuoteEditable,
+                                    code: voucherDiscount.voucherCode,
+                                },
+                            } only %}
                         </span>
                         <span class="col col--expand text-right">- {{ voucherDiscount.amount | money(true, data.currencyIsoCode) }}</span>
                     </li>
                 {% endfor %}
             </ul>
-            <hr />
+            <hr>
         </li>
     {% endif %}
 
     {% if data.ruleDiscounts is not empty %}
         <li class="list__item">
             <strong>{{ 'cart.discounts' | trans }}</strong>
-            <ul class="{{ component.renderClass(config.name ~ '__description', modifiers) }}">
+            <ul>
                 {% for ruleDiscount in data.ruleDiscounts %}
                     <li class="grid grid--justify">
-                        <span class="col col--sm-8 {{ config.name }}__text {{ config.name }}__text--desktop-bigger">{{ ruleDiscount.displayName }}</span>
-                        <span class="col col--expand text-right {{ config.name }}__price">- {{ ruleDiscount.amount | money(true, data.currencyIsoCode) }}</span>
+                        <span class="col col--sm-8">{{ ruleDiscount.displayName }}</span>
+                        <span class="col col--expand text-right">- {{ ruleDiscount.amount | money(true, data.currencyIsoCode) }}</span>
                     </li>
                 {% endfor %}
             </ul>
