@@ -6,7 +6,7 @@
 
 {% block body %}
     {% include molecule('form') with {
-        class: 'cart-discount-voucher-form',
+        modifiers: ['discount-voucher'],
         data: {
             form: data.form,
             submit: {

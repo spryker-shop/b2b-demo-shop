@@ -24,12 +24,6 @@
         <li class="list__item">
             {% if data.isLinkPresent %}
                 <a class="float-right text-small" href="{{ url('discount/voucher/clear') }}">
-                    {% include atom('icon') with {
-                        modifiers: ['smaller'],
-                        data: {
-                            name: 'times'
-                        }
-                    } only %}
                     {{ 'cart.vouchers.clear-all' | trans }}
                 </a>
             {% endif %}
@@ -44,12 +38,6 @@
                             <br>
                             {% if data.isLinkPresent %}
                                 <a class="text-small" href="{{ url('discount/voucher/remove', {'code': voucherDiscount.voucherCode}) }}">
-                                    {% include atom('icon') with {
-                                        modifiers: ['smaller'],
-                                        data: {
-                                            name: 'times'
-                                        }
-                                    } only %}
                                     {{ 'cart.voucher.remove' | trans }}
                                 </a>
                             {% endif %}
