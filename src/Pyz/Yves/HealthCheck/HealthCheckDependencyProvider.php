@@ -13,7 +13,6 @@ use Spryker\Yves\Session\Plugin\HealthCheck\SessionHealthCheckPlugin;
 use Spryker\Yves\Storage\Plugin\HealthCheck\KeyValueStoreHealthCheckPlugin;
 use Spryker\Yves\ZedRequest\Plugin\HealthCheck\ZedRequestHealthCheckPlugin;
 
-
 class HealthCheckDependencyProvider extends SprykerHealthCheckDependencyProvider
 {
     /**

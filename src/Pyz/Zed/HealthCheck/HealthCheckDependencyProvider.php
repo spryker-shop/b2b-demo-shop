@@ -13,7 +13,6 @@ use Spryker\Zed\Search\Communication\Plugin\HealthCheck\SearchHealthCheckPlugin;
 use Spryker\Zed\Session\Communication\Plugin\HealthCheck\SessionHealthCheckPlugin;
 use Spryker\Zed\Storage\Communication\Plugin\HealthCheck\KeyValueStoreHealthCheckPlugin;
 
-
 class HealthCheckDependencyProvider extends SprykerHealthCheckDependencyProvider
 {
     /**
