@@ -64,7 +64,7 @@
                 {% include molecule('money-price') with {
                     modifiers: ['medium', 'block', 'margin-bottom-from-tablet', 'gray-color'],
                     data: {
-                        amount: price,
+                        amount: data.listItem.price,
                         originalAmount: data.listItem.prices.ORIGINAL is not defined or data.listItem.prices.ORIGINAL is empty ? null : data.listItem.prices.ORIGINAL,
                     },
                 } only %}

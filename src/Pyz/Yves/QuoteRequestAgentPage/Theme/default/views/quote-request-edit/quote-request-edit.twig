@@ -78,8 +78,6 @@
                                     itemForms: data.itemForms,
                                 },
                             } only %}
-                                {% block bundleQuantity %}{% endblock %}
-
                                 {% block bundleProductItem %}
                                     {% embed molecule('configured-bundle-product', 'ConfigurableBundleWidget') ignore missing with {
                                         data: {
