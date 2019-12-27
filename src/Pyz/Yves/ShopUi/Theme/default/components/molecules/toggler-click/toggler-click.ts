@@ -1,10 +1,9 @@
 import TogglerClickCore from 'ShopUi/components/molecules/toggler-click/toggler-click';
 
 export default class TogglerClick extends TogglerClickCore {
-    toggle(): void {
+    protected onTriggerClick(event: Event): void {
+        super.onTriggerClick(event);
         this.onTriggerToggleClass(event);
-
-        super.toggle();
     }
 
     protected onTriggerToggleClass(event: Event): void {
@@ -13,7 +12,6 @@ export default class TogglerClick extends TogglerClickCore {
         }
 
         const triggerTarget = <HTMLElement>event.currentTarget;
-
         triggerTarget.classList.toggle(this.triggerClassToToggle);
     }
 
