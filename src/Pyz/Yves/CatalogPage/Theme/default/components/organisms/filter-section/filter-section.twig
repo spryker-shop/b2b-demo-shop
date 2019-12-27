@@ -1,25 +1,14 @@
-{% extends model('component') %}
-
-{% define config = {
-    name: 'filter-section',
-    tag: 'section',
-} %}
-
-{% define data = {
-    facets: [],
-    filterPath: null,
-    categories: [],
-    isEmptyCategoryFilterValueVisible: null,
-} %}
+{% extends organism('filter-section', '@SprykerShop:CatalogPage') %}
 
 {% set isContentPresent = data.facets | length > 0 %}
 
-{% block class %}
-    {{  parent() }}
+{% block extraClass %}
     {{ config.jsName }}
 {% endblock %}
 
 {% block body %}
+    {% set triggerButtonJsName = data.parentJsName ? data.parentJsName ~ '__trigger' %}
+
     {% if isContentPresent %}
         <h3 class="{{ config.name ~ '__title' }} is-hidden-lg-xxl">{{ 'catalog.filter.and.sorting.button' | trans }}</h3>
         <button class="{{ config.name ~ '__close' }} is-hidden-lg-xxl js-catalog-filters-trigger">
@@ -71,6 +60,7 @@
                                     activeMin: filter.activeMin | default(0),
                                     activeMax: filter.activeMax | default(0),
                                     isEmptyCategoryFilterValueVisible: data.isEmptyCategoryFilterValueVisible,
+                                    parentJsName: data.parentJsName,
                                 },
                                 class: togglerClass,
                             } only %}
@@ -89,6 +79,6 @@
             {% endfor %}
         </div>
 
-        <button type="submit" class="button button--expand button--big {{ config.name ~ '__button' }}">{{ 'catalog.filter.button' | trans }}</button>
+        <button type="button" class="button button--expand button--big {{ config.name }}__button {{ triggerButtonJsName }}">{{ 'catalog.filter.button' | trans }}</button>
     {% endif %}
 {% endblock %}
