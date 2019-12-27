@@ -34,7 +34,7 @@
                 {% for voucherDiscount in data.voucherDiscounts %}
                     <li class="grid grid--justify">
                         <span class="col col--sm-7 {{ config.name }}__text">{{ voucherDiscount.displayName }}</span>
-                        <span class="col col--expand text-right {{ config.name }}__price">- {{ voucherDiscount.amount | money(true, data.currencyIsoCode) }}</span>
+                        <span class="col col--expand {{ config.name }}__price">- {{ voucherDiscount.amount | money(true, data.currencyIsoCode) }}</span>
 
                         {% include molecule('cart-code-remove-link', 'CartCodeWidget') with {
                             class: 'col col--sm-12 text-small',
@@ -56,7 +56,7 @@
                 {% for ruleDiscount in data.ruleDiscounts %}
                     <li class="grid grid--justify">
                         <span class="col col--sm-8 {{ config.name }}__text">{{ ruleDiscount.displayName }}</span>
-                        <span class="col col--expand text-right {{ config.name }}__price">- {{ ruleDiscount.amount | money(true, data.currencyIsoCode) }}</span>
+                        <span class="col col--expand {{ config.name }}__price">- {{ ruleDiscount.amount | money(true, data.currencyIsoCode) }}</span>
                     </li>
                 {% endfor %}
             </ul>
