@@ -37,7 +37,7 @@
                         <span class="col col--expand text-right {{ config.name }}__price">- {{ voucherDiscount.amount | money(true, data.currencyIsoCode) }}</span>
 
                         {% include molecule('cart-code-remove-link', 'CartCodeWidget') with {
-                            class: 'col col--expand text-small',
+                            class: 'col col--sm-12 text-small',
                             data: {
                                 isQuoteEditable: data.isQuoteEditable,
                                 code: voucherDiscount.voucherCode,
