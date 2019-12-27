@@ -260,6 +260,52 @@ $address-form-width: rem(710);
         }
     }
 
+    &--discount-voucher {
+        #{$name}__container {
+            position: relative;
+        }
+
+        #{$name}__actions {
+            position: absolute;
+            top: rem(8);
+            bottom: rem(8);
+            right: 0;
+            margin-top: 0;
+        }
+
+        #{$name}__action {
+            @include helper-effect-transition(color);
+            margin: 0;
+            display: flex;
+            align-items: center;
+            height: 100%;
+            font-size: rem(12);
+            font-weight: fw(bold);
+            color: $setting-color-gray-5;
+
+            &:hover,
+            &:focus {
+                color: $setting-color-gray-3;
+            }
+        }
+
+        .input {
+            padding-left: rem(20);
+            padding-right: rem(90);
+            border-radius: $setting-border-radius;
+            border: none;
+            box-shadow: 0 rem(10) rem(10) 0 $setting-color-shadow-1, 0 rem(3) rem(3) 0 $setting-color-shadow-1;
+
+            @include helper-breakpoint-media-min($lg) {
+                padding-left: rem(12);
+            }
+        }
+
+        .label {
+            display: none;
+        }
+    }
+
     &--checkout-form {
         padding: 0;
 
@@ -328,52 +374,6 @@ $address-form-width: rem(710);
             .custom-select__select {
                 background-color: $setting-color-white;
             }
-        }
-    }
-
-    &--discount-voucher {
-        #{$name}__container {
-            position: relative;
-        }
-
-        #{$name}__actions {
-            position: absolute;
-            top: rem(8);
-            bottom: rem(8);
-            right: 0;
-            margin-top: 0;
-        }
-
-        #{$name}__action {
-            @include helper-effect-transition(color);
-            margin: 0;
-            display: flex;
-            align-items: center;
-            height: 100%;
-            font-size: rem(12);
-            font-weight: fw(bold);
-            color: $setting-color-gray-5;
-
-            &:hover,
-            &:focus {
-                color: $setting-color-gray-3;
-            }
-        }
-
-        .input {
-            padding-left: rem(20);
-            padding-right: rem(90);
-            border-radius: $setting-border-radius;
-            border: none;
-            box-shadow: 0 rem(10) rem(10) 0 $setting-color-shadow-1, 0 rem(3) rem(3) 0 $setting-color-shadow-1;
-
-            @include helper-breakpoint-media-min($lg) {
-                padding-left: rem(12);
-            }
-        }
-
-        .label {
-            display: none;
         }
     }
 
