@@ -1,0 +1,14 @@
+@mixin configurable-bundle-page-configurator($name: '.configurator') {
+    #{$name} {
+        padding: rem(16) 0 rem(176);
+
+        &__content {
+            padding-bottom: rem(30);
+            border: rem(1) solid $setting-color-gray-6;
+        }
+
+        @content;
+    }
+}
+
+@include configurable-bundle-page-configurator();
