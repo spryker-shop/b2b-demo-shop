@@ -63,3 +63,14 @@
         } only %}
     {% endfor %}
 {% endblock %}
+
+{% block configurableBundleNote %}
+    <div class="col col--sm-8 col--md-6 spacing-x spacing-x--big">
+        {% include molecule('cart-configured-bundle-item-note', 'ConfigurableBundleNoteWidget') ignore missing with {
+            data: {
+                canWrite: false,
+                note: data.bundle.note,
+            },
+        } only %}
+    </div>
+{% endblock %}
