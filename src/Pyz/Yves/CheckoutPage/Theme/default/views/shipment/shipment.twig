@@ -76,6 +76,18 @@
                                         <h6 class="{{ config.name }}__title spacing spacing--reset">{{ data.listItem.name }}</h6>
                                     {% endblock %}
 
+                                    {% block subQuantity %}
+                                        {% if data.listItem.quantitySalesUnit is not empty %}
+                                            {% include atom('quantity-option') with {
+                                                data: {
+                                                    value: data.listItem.quantitySalesUnit.value,
+                                                    precision: data.listItem.quantitySalesUnit.precision,
+                                                    optionName: data.listItem.quantitySalesUnit.productMeasurementUnit.name | trans,
+                                                },
+                                            } only %}
+                                        {% endif %}
+                                    {% endblock %}
+
                                     {% block note %}
                                         {% if data.listItem.cartNote is not empty %}
                                             {% include molecule('cart-item-note', 'CartNoteWidget') ignore missing with {

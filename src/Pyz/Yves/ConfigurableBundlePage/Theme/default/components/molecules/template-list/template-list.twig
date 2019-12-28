@@ -1,101 +1,39 @@
-{% extends model('component') %}
+{% extends molecule('template-list', '@SprykerShop:ConfigurableBundlePage') %}
 
-{% define config = {
-    name: 'template-list',
-} %}
+{% block list %}
+    <h2 class="text-center spacing-bottom spacing-bottom--bigger">{{ 'configurable_bundle_page.choose_bundle_to_configure' | trans }}</h2>
 
-{% define data = {
-    templates: required,
-} %}
-
-{% block body %}
-    {% block title %}
-        {% set titleClasses = 'spacing-bottom--big' %}
-    {% endblock %}
-
-    {% block content %}
-        {% if data.templates | length %}
-            {% block list %}
-                <ul class="grid {{ config.name }}__list">
-                    {% block listInner %}
-                        {% for template in data.templates %}
-                            {% set listItemClasses = 'col col--sm-12 col--md-6 col--xl-3' %}
-
-                            {% block item %}
-                                <li class="{{ listItemClasses }}">
-                                    {% block listItemInner %}
-                                        {% set slotsPageUrl = path('configurable-bundle/configurator/slots', {'idConfigurableBundleTemplate': template.fkConfigurableBundleTemplate }) %}
-
-                                        {% block template %}
-                                            <div class="box box--stretch">
-                                                {% block templateTitle %}
-                                                    {% set isTitleImage = template.images is defined and template.images | length %}
-                                                    {% set titleAdditionalClass = not isTitleImage ? config.name ~ '__item-title--with-background' %}
-                                                    {% set titleClasses = config.name ~ '__item-title ' ~ titleAdditionalClass ~ ' spacing-bottom' %}
-
-                                                    {% block templateTitleItem %}
-                                                        <a href="{{ slotsPageUrl }}" class="{{ titleClasses }}">
-                                                            {% block templateTitleItemInner %}
-                                                                {% set templateItemNameClasses = config.name ~ '__item-name' %}
-                                                                {% set templateName = template.name | trans %}
-
-                                                                {% block templateTitleContent %}
-                                                                    {% macro templateText(classes, text) %}
-                                                                        <span class="{{ classes }}">{{ text }}</span>
-                                                                    {% endmacro %}
-
-                                                                    {% if isTitleImage %}
-                                                                        {% set imageModifiers = ['without-spaces'] %}
-
-                                                                        {% block templateTitleImage %}
-                                                                            {% include atom('thumbnail') with {
-                                                                                modifiers: imageModifiers,
-                                                                                attributes: {
-                                                                                    src: template.images.0.externalUrlSmall,
-                                                                                    alt: template.name | trans,
-                                                                                },
-                                                                            } only %}
-                                                                        {% endblock %}
-
-                                                                        {% block templateItemNameInner %}
-                                                                            {{ _self.templateText(templateItemNameClasses, templateName) }}
-                                                                        {% endblock %}
-                                                                    {% else %}
-                                                                        {% block templateTitleText %}
-                                                                            {% set templateItemNameClasses = component.renderClass(config.name ~ '__item-name', ['secondary']) %}
-                                                                            {{ _self.templateText(templateItemNameClasses, templateName) }}
-                                                                        {% endblock %}
-                                                                    {% endif %}
-                                                                {% endblock %}
-                                                            {% endblock %}
-                                                        </a>
-                                                    {% endblock %}
-                                                {% endblock %}
-
-                                                {% block button %}
-                                                    {% set buttonClasses = 'button button--expand button--success' %}
-
-                                                    {% block buttonItem %}
-                                                        <a href="{{ slotsPageUrl }}" class="{{ buttonClasses }}">
-                                                            {{- 'configurable_bundle_page.select' | trans -}}
-                                                        </a>
-                                                    {% endblock %}
-                                                {% endblock %}
-                                            </div>
-                                        {% endblock %}
-                                    {% endblock %}
-                                </li>
-                            {% endblock %}
-                        {% endfor %}
-                    {% endblock %}
-                </ul>
-            {% endblock %}
-        {% else %}
-            {% block message %}
-                <p>
-                    {{- 'configurable_bundle_page.configurator.templates_not_found' | trans -}}
-                </p>
-            {% endblock %}
-        {% endif %}
-    {% endblock %}
+    <ul class="grid grid--gap grid--stretch">
+        {% block listInner %}{{ parent() }}{% endblock %}
+    </ul>
 {% endblock %}
+
+{% block item %}
+    {% set listItemClasses = 'col col--sm-12 col--md-6 col--xl-4 spacing-bottom spacing-bottom--inner spacing-bottom--biggest' %}
+
+    {{ parent() }}
+{% endblock %}
+
+{% block template %}
+    {% block templateTitle %}{{ parent() }}{% endblock %}
+{% endblock %}
+
+{% block templateTitleItem %}
+    {% set titleClasses = config.name ~ '__item-title' %}
+
+    {{ parent() }}
+{% endblock %}
+
+{% block templateTitleImage %}
+    {% set imageModifiers = imageModifiers | merge(['bundle-list']) %}
+
+    {% include atom('thumbnail') with {
+        modifiers: imageModifiers,
+        attributes: {
+            src: template.images.0.externalUrlSmall,
+            alt: template.name | trans,
+        },
+    } only %}
+{% endblock %}
+
+{% block button %}{% endblock %}

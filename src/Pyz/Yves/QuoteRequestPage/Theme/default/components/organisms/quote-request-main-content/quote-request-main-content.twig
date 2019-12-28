@@ -10,10 +10,10 @@
 } %}
 
 {% block body %}
-    <div class="grid grid--gap box spacing-bottom spacing-bottom--bigger">
+    <div class="{{ config.name }}__inner grid">
         {% block formContent %}
             {% for key, value in data.version.metadata %}
-                <div class="col col--sm-12 col--xl-6 spacing-bottom spacing-bottom--big">
+                <div class="{{ config.name }}__col col col--sm-12 col--xl-6">
                     <label class="label">{{ ('quote_request_page.quote_request.metadata.label.' ~ key) | trans }}</label>
                     <p class="text-break">{{ value }}</p>
                 </div>
@@ -38,26 +38,11 @@
                             isEditable: false,
                         },
                     } only %}
-                        {% block bundleItem %}
-                            {% embed molecule('configured-bundle', 'ConfigurableBundleWidget') with {
-                                data: {
-                                    bundle: bundle,
-                                    items: data.items,
-                                    currencyIsoCode: data.currencyIsoCode,
-                                    priceMode: data.priceMode,
-                                    isQuantityChangeable: data.isQuantityChangeable,
-                                    isEditable: data.isEditable,
-                                    isQuantityVisible: data.isQuantityVisible,
-                                },
-                            } only %}
-                                {% block bundleQuantity %}{% endblock %}
-                            {% endembed %}
-                        {% endblock %}
                     {% endwidget %}
 
                     {% set cartItems = data.quote.items | filter(item => item.configuredBundleItem is not defined or item.configuredBundleItem is empty) %}
                     {% for cartItem in cartItems %}
-                        {% include molecule('quote-request-cart-item', 'QuoteRequestPage') ignore missing with {
+                        {% include molecule('quote-request-cart-item', 'QuoteRequestPage') with {
                             data: {
                                 priceMode: data.quote.priceMode,
                                 cartItem: cartItem,

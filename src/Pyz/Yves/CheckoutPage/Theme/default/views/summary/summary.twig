@@ -17,7 +17,7 @@
                 {% widget 'QuoteConfiguredBundleWidget' args [data.cart, shipmentGroup.items] with {
                     data: {
                         isEditable: false,
-                        isQuantityVisible: false,
+                        isQuantityVisible: true,
                     },
                 } only %}
                 {% endwidget %}
@@ -56,6 +56,18 @@
                             {% set hasSubQuantity = true %}
 
                             {{ parent() }}
+                        {% endblock %}
+
+                        {% block subQuantity %}
+                            {% if data.listItem.quantitySalesUnit is not empty %}
+                                {% include atom('quantity-option') with {
+                                    data: {
+                                        value: data.listItem.quantitySalesUnit.value,
+                                        precision: data.listItem.quantitySalesUnit.precision,
+                                        optionName: data.listItem.quantitySalesUnit.productMeasurementUnit.name | trans,
+                                    },
+                                } only %}
+                            {% endif %}
                         {% endblock %}
 
                         {% block note %}

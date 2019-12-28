@@ -132,10 +132,10 @@
                         <div class="{{ config.name }}__quantity col">{{ data.transformedCartItems | length }} {{ 'checkout.step.summary.items' | trans }}</div>
                     </div>
 
-                    {% set isDiscountVoucherFormWidget = data.isQuoteEditable and can('ChangeCartItemPermissionPlugin') and can('SeePricePermissionPlugin') %}
+                    {% set isCartCodeFormWidget = data.isQuoteEditable and can('ChangeCartItemPermissionPlugin') and can('SeePricePermissionPlugin') %}
 
-                    {% if isDiscountVoucherFormWidget %}
-                        {% widget 'DiscountVoucherFormWidget' only %}{% endwidget %}
+                    {% if isCartCodeFormWidget %}
+                        {% widget 'CartCodeFormWidget' args [data.cart] only %}{% endwidget %}
                     {% endif %}
                 </div>
 

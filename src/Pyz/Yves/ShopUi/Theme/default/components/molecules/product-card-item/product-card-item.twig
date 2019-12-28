@@ -109,9 +109,9 @@
                                     {% set isAmountEmpty = amountSalesUnit is empty and quantitySalesUnit is not empty and data.quantity is empty %}
 
                                     {% if isAmountEmpty %}
-                                        <div class="{{ config.name }}__quantity grid grid--middle grid--gap">
-                                            <div class="col col--sm-12 col--md-2">{{ 'packaging_units.cart.quantity' | trans }}: </div>
-                                            <div class="col">
+                                        <div class="{{ config.name }}__quantity grid grid--middle">
+                                            <div class="col">{{ 'packaging_units.cart.quantity' | trans }}: </div>
+                                            <div class="col col--expand">
                                                 {% set cartProductMeasurementUnitQuantitySelectorWidget = findWidget('CartProductMeasurementUnitQuantitySelectorWidget', [data.listItem]) %}
 
                                                 {% if cartProductMeasurementUnitQuantitySelectorWidget and data.canEdit %}
@@ -195,18 +195,12 @@
 
                                             {% if isAmountSalesUnitEmpty %}
                                                 <div class="{{ config.name }}__quantity-holder">
-                                                    {% set cartProductMeasurementUnitQuantitySelectorWidget = findWidget('CartProductMeasurementUnitQuantitySelectorWidget', [data.listItem]) %}
-
-                                                    {% if cartProductMeasurementUnitQuantitySelectorWidget and data.canEdit %}
-                                                        {% widget cartProductMeasurementUnitQuantitySelectorWidget only %}{% endwidget %}
-                                                    {% else %}
-                                                        {% include molecule('product-item-quantity') with {
-                                                            data: {
-                                                                productItem: data.listItem,
-                                                                isDisabled: not data.canEdit,
-                                                            },
-                                                        } only %}
-                                                    {% endif %}
+                                                    {% include molecule('product-item-quantity') with {
+                                                        data: {
+                                                            productItem: data.listItem,
+                                                            isDisabled: not data.canEdit,
+                                                        },
+                                                    } only %}
                                                 </div>
                                             {% endif %}
                                         {% endblock %}

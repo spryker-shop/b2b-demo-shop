@@ -1,0 +1,23 @@
+@mixin quote-request-page-quote-request-main-content($name: '.quote-request-main-content') {
+    #{$name} {
+        &__inner {
+            width: 100%;
+            padding: rem(32);
+            margin: 0 0 rem(24);
+            background: $setting-color-gray-7;
+        }
+
+        &__col {
+            padding: 0 rem(9) rem(16);
+
+            @include helper-breakpoint-media-min($lg) {
+                padding-left: rem(15);
+                padding-right: rem(15);
+            }
+        }
+
+        @content;
+    }
+}
+
+@include quote-request-page-quote-request-main-content();
