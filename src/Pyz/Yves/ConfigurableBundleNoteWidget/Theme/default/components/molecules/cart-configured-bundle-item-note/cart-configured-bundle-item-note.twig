@@ -53,15 +53,16 @@
                     {% block form %}
                         {% if data.canWrite %}
                             {% set jsModifier = data.form.vars.value.groupKey | replace({"." : ""}) %}
-                            {% set hiddenClass = isNoteNotEmpty ? 'is-hidden' %}
+                            {% set hiddenWrapperClass = isNoteNotEmpty ? 'is-hidden' %}
+                            {% set hiddenContentClass = not isNoteNotEmpty ? 'is-hidden' %}
                             {% set activeClass = isNoteNotEmpty ? 'active' %}
 
-                            <div class="{{ config.name }}__form {{ config.jsName }}__form {{ config.jsName }}__form--{{ jsModifier }} {{ hiddenClass }}">
+                            <div class="{{ config.name }}__form {{ config.jsName }}__form {{ config.jsName }}__form--{{ jsModifier }} {{ hiddenWrapperClass }}">
                                 <h6 class="{{ config.name }}__label toggler-accordion__item {{ config.jsName }}__trigger {{ activeClass }}" data-toggle-target='.{{ config.jsName }}__content--{{ jsModifier }}'>
                                     {{ 'configurable_bundle_note.enter_note' | trans }}
                                     <span class="icon icon--toggler-cross icon--toggler-cross-link toggler-accordion__icon"></span>
                                 </h6>
-                                <div class="{{ config.name }}__content {{ config.jsName }}__content {{ config.jsName }}__content--{{ jsModifier }} {{ hiddenClass }}">
+                                <div class="{{ config.name }}__content {{ config.jsName }}__content {{ config.jsName }}__content--{{ jsModifier }} {{ hiddenContentClass }}">
                                     {% include molecule('form') with {
                                         modifiers: ['note'],
                                         data: {
