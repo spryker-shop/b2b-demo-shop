@@ -1,15 +1,11 @@
 {% extends molecule('ordered-configured-bundle-product', '@SprykerShop:SalesConfigurableBundleWidget') %}
 
-{% define data = {
-    targetClass: '',
-} %}
-
 {% block imageContainer %}
     <div class="grid col col--sm-12 col--lg-3">
         <div class="col col--middle">
             {% widget 'CustomerReorderItemCheckboxWidget' args [data.product] with {
                 data: {
-                    checkboxClasses: 'js-customer-reorder-form__selection ' ~ data.targetClass,
+                    checkboxClasses: 'js-customer-reorder-form__selection',
                 },
             } only %}{% endwidget %}
         </div>
