@@ -1,18 +1,28 @@
-.agent-control-item {
+@mixin agent-widget-agent-control-item($name: '.agent-control-item') {
+    #{$name} {
+        &__info {
+            margin-top: rem(8);
+            margin-bottom: rem(8);
+            font-size: rem(14);
+            line-height: normal;
+        }
 
-    &__info {
-        margin-top: rem(8);
-        margin-bottom: rem(8);
-        font-size: 14px;
-        line-height: normal;
-    }
+        &__button-wrap {
+            margin-top: rem(8);
+            margin-bottom: rem(8);
+        }
 
-    &__button-wrap {
-        margin-top: rem(8);
-        margin-bottom: rem(8);
-    }
+        &__name {
+            font-weight: fw(medium);
+            color: $setting-color-gray-4;
 
-    &__name {
-        font-weight: 500;
+            &:hover {
+                color: $setting-color-gray-3;
+            }
+        }
+
+        @content;
     }
 }
+
+@include agent-widget-agent-control-item();
