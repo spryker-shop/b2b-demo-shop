@@ -15,9 +15,9 @@
     {% set cartProductMeasurementUnitQuantitySelectorWidget = findWidget('CartProductMeasurementUnitQuantitySelectorWidget', [data.productItem]) %}
 
     {% if cartProductMeasurementUnitQuantitySelectorWidget %}
-        {% set hasQuantitySalesUnit = cartProductMeasurementUnitQuantitySelectorWidget.quantitySalesUnit.idProductMeasurementSalesUnit | default(false) %}
+        {% set idProductMeasurementSalesUnit = cartProductMeasurementUnitQuantitySelectorWidget.quantitySalesUnit.idProductMeasurementSalesUnit | default(null) %}
 
-        {% set isItemVariantReplaceAvailable = not hasQuantitySalesUnit and isItemVariantReplaceAvailable %}
+        {% set isItemVariantReplaceAvailable = not idProductMeasurementSalesUnit and isItemVariantReplaceAvailable %}
     {% endif %}
 
     {% if isItemVariantReplaceAvailable %}
