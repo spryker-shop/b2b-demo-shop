@@ -1,31 +1,30 @@
 import Component from 'ShopUi/models/component';
 
 export default class QuantityCounter extends Component {
-    incrementButton: HTMLButtonElement;
-    decrementButton: HTMLButtonElement;
-    input: HTMLInputElement;
-    value: number;
-    readonly duration: number = 1000;
-    timeout: number = 0;
-    inputChange: Event;
+    protected incrementButton: HTMLButtonElement;
+    protected decrementButton: HTMLButtonElement;
+    protected input: HTMLInputElement;
+    protected value: number;
+    protected duration: number = 1000;
+    protected timeout: number = 0;
+    protected eventChange: Event = new Event('change');
+    protected eventInput: Event = new Event('input');
+    protected numberOfDecimalPlaces: number = 10;
 
-    constructor() {
-        super();
-        this.inputChange = new Event('change');
-    }
+    protected readyCallback(): void {}
 
-    protected readyCallback(): void {
-        this.incrementButton = <HTMLButtonElement>this.querySelector(`.${this.jsName}__button-increment`);
-        this.decrementButton = <HTMLButtonElement>this.querySelector(`.${this.jsName}__button-decrement`);
-        this.input = <HTMLInputElement>this.querySelector(`.${this.jsName}__input`);
+    protected init(): void {
+        this.incrementButton = <HTMLButtonElement>this.getElementsByClassName(`${this.jsName}__button-increment`)[0];
+        this.decrementButton = <HTMLButtonElement>this.getElementsByClassName(`${this.jsName}__button-decrement`)[0];
+        this.input = <HTMLInputElement>this.getElementsByClassName(`${this.jsName}__input`)[0];
         this.value = this.getValue;
         this.mapEvents();
     }
 
     protected mapEvents(): void {
-        this.incrementButton.addEventListener('click', (event: Event) => this.incrementValue(event));
         this.decrementButton.addEventListener('click', (event: Event) => this.decrementValue(event));
-        this.input.addEventListener('input', (event: Event) => this.triggerInputEvent());
+        this.incrementButton.addEventListener('click', (event: Event) => this.incrementValue(event));
+
         if (this.autoUpdate) {
             this.input.addEventListener('change', () => this.delayToSubmit());
         }
@@ -35,7 +34,9 @@ export default class QuantityCounter extends Component {
         event.preventDefault();
         if (this.isAvailable) {
             const value = Number(this.input.value);
-            const potentialValue = value + this.step;
+            const potentialValue = Number((((value * this.precision) + (this.step * this.precision)) /
+                this.precision).toFixed(this.numberOfDecimalPlaces));
+
             if (value < this.maxQuantity) {
                 this.input.value = potentialValue.toString();
                 this.triggerInputEvent();
@@ -47,7 +48,9 @@ export default class QuantityCounter extends Component {
         event.preventDefault();
         if (this.isAvailable) {
             const value = Number(this.input.value);
-            const potentialValue = value - this.step;
+            const potentialValue = Number((((value * this.precision) - (this.step * this.precision)) /
+                this.precision).toFixed(this.numberOfDecimalPlaces));
+
             if (potentialValue >= this.minQuantity) {
                 this.input.value = potentialValue.toString();
                 this.triggerInputEvent();
@@ -56,7 +59,8 @@ export default class QuantityCounter extends Component {
     }
 
     protected triggerInputEvent(): void {
-        this.input.dispatchEvent(this.inputChange);
+        this.input.dispatchEvent(this.eventChange);
+        this.input.dispatchEvent(this.eventInput);
     }
 
     protected delayToSubmit(): void {
@@ -70,35 +74,35 @@ export default class QuantityCounter extends Component {
         }
     }
 
-    get minQuantity(): number {
+    protected get minQuantity(): number {
         return Number(this.input.getAttribute('min'));
     }
 
-    get maxQuantity(): number {
+    protected get maxQuantity(): number {
         const max = Number(this.input.getAttribute('max'));
 
         return max > 0 && max > this.minQuantity ? max : Infinity;
     }
 
-    get step(): number {
+    protected get step(): number {
         const step = Number(this.input.getAttribute('step'));
 
         return step > 0 ? step : 1;
     }
 
-    get getValue(): number {
+    protected get getValue(): number {
         return Number(this.input.value);
     }
 
-    get autoUpdate(): boolean {
+    protected get autoUpdate(): boolean {
         return !!this.input.dataset.autoUpdate;
     }
 
-    get isAvailable(): boolean {
-        if (!this.input.disabled && !this.input.readOnly) {
-            return true;
-        }
+    protected get isAvailable(): boolean {
+        return !this.input.disabled && !this.input.readOnly;
+    }
 
-        return false;
+    protected get precision(): number {
+        return Number(`1${'0'.repeat(this.numberOfDecimalPlaces)}`);
     }
 }

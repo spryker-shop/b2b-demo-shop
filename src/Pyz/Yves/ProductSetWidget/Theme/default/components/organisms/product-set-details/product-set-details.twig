@@ -1,7 +1,7 @@
 {% extends model('component') %}
 
 {% define config = {
-    name: 'product-set-details'
+    name: 'product-set-details',
 } %}
 
 {% define data = {
@@ -27,7 +27,7 @@
                 "slidesToShow": 1
             }
         }]
-    }'
+    }',
 } %}
 {% block body %}
     {% block banner %}
@@ -35,8 +35,8 @@
             class: config.name ~ '__banner',
             data: {
                 imageUrl: data.images.0.externalUrlLarge | default(null),
-                title: data.title
-            }
+                title: data.title,
+            },
         } only %}
             {% block body %}
                 <div class="{{config.name}}__container grid grid--column grid--middle grid--center" style="{{backgroundImage}}">
@@ -55,13 +55,13 @@
                 modifiers: ['secondary'],
                 class: 'text-center',
                 data: {
-                    title: 'product.sets.widget.title' | trans
+                    title: 'product.sets.widget.title' | trans,
                 },
                 embed: {
                     description: data.description,
                     addAllSetButton: data.addAllSetButton,
-                    products: data.products
-                }
+                    products: data.products,
+                },
             } only %}
                 {% block inner %}
                     <div class="{{ config.name }}__text">
@@ -92,8 +92,8 @@
                                 class: 'spacing-y spacing-y--reset',
                                 modifiers: ['cart'],
                                 data: {
-                                    name: 'cart'
-                                }
+                                    name: 'cart',
+                                },
                             } only %}
                         </button>
                     {% endif %}
@@ -106,13 +106,14 @@
     {% block productSet %}
         <form method="GET">
             {% embed molecule('slick-carousel') with {
-                modifiers: ['product-set'],
+                modifiers: ['product-set', 'equal-height'],
                 data: {
-                    slides: data.products
+                    slides: data.products,
                 },
                 attributes: {
-                    'slider-config': data.sliderConfig
-                }
+                    'slider-config': data.sliderConfig,
+                    'custom-select-class-name': 'custom-select',
+                },
             } only %}
 
                 {% block slides %}
@@ -125,11 +126,11 @@
                                 url: product.url,
                                 imageUrl: product.images.0.externalUrlSmall | default,
                                 price: product.price,
-                                originalPrice: product.prices['ORIGINAL'] | default
+                                originalPrice: product.prices['ORIGINAL'] | default,
                             },
                             embed: {
-                                product: product
-                            }
+                                product: product,
+                            },
                         } only %}
                             {% block actionsContainer %}
                                 <div class="{{ config.name }}__variant">
@@ -141,9 +142,9 @@
                                             superAttributes: embed.product.attributeMap.superAttributes,
                                             selectedAttributes: embed.product.selectedAttributes,
                                             availableAttributes: embed.product.availableAttributes,
-                                            useExternalForm: true
+                                            useExternalForm: true,
                                         },
-                                        embed: embed
+                                        embed: embed,
                                     } only %}
                                         {% block variant %}
                                             {% if can("SeeAddToCartPermissionPlugin") %}
@@ -158,8 +159,9 @@
                                                         isAvailable: isAvailable,
                                                         selectModifiers: ['small'],
                                                         selectTheme: 'small',
-                                                        selectPlaceholder: 'global.select.placeholder.value'
-                                                    }
+                                                        selectPlaceholder: 'global.select.placeholder.value',
+                                                        autoInitSelect: false,
+                                                    },
                                                 } only %}
                                             {% endif %}
                                         {% endblock %}
@@ -175,11 +177,11 @@
 
                                 </div>
                                 {% if can("SeeAddToCartPermissionPlugin") %}
-                                    <div class="{{ config.name }}__actions">
+                                    <div class="{{ config.name }}__actions {{ config.name }}__actions--sticky-bottom">
                                         {% if isDisabled %}
                                             <span class="button button--expand button--disabled">{{ 'page.detail.add-to-cart' | trans }}</span>
                                         {% else %}
-                                            <a href="{{ path('cart/add', {sku: embed.product.sku}) }}" class="button button--expand ">{{ 'page.detail.add-to-cart' | trans }}</a>
+                                            <a href="{{ path('cart/add', {sku: embed.product.sku}) }}" class="button button--expand " title="{{ 'page.detail.add-to-cart' | trans }}">{{ 'page.detail.add-to-cart' | trans }}</a>
                                         {% endif %}
                                     </div>
                                 {% endif %}

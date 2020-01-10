@@ -1,0 +1,47 @@
+{% extends molecule('source-price-form', 'QuoteRequestAgentPage') %}
+
+{% define config = {
+    name: 'change-source-price-form',
+    tag: 'change-source-price-form',
+} %}
+
+{% block body %}
+    <div class="grid grid--middle grid--justify spacing-bottom spacing-top spacing-top--small">
+        {% block adjustedPriceColumn %}
+            {{ parent() }}
+        {% endblock %}
+
+        {% block priceColumn %}
+            <div class="col col--sm-6 text-center">
+                {% block priceColumnInner %}
+                    {{ parent() }}
+                {% endblock %}
+            </div>
+        {% endblock %}
+    </div>
+    {% block form %}
+        {{ parent() }}
+    {% endblock %}
+{% endblock %}
+
+{% block price %}
+    <strong class="{{ config.jsName }}__price {{ hiddenClass }}">{{ price }}</strong>
+{% endblock %}
+
+{% block adjustedPriceTextInner %}
+    {% set priceClasses = config.jsName ~ '__origin-price text-secondary ' ~ hiddenClass %}
+
+    {{ parent() }}
+{% endblock %}
+
+{% block adjustedPriceText %}
+    {% set isSamePrice = data.currentItemPrice == data.originItemPrice %}
+    {% set hiddenClass = isSamePrice ? 'is-hidden' %}
+    <s class="{{ config.jsName }}__origin-price text-secondary {{ hiddenClass }}">
+        {{ data.originItemPrice }}
+    </s>
+{% endblock %}
+
+{% block priceText %}
+    <strong class="{{ config.jsName }}__price">{{ data.currentItemPrice }}</strong>
+{% endblock %}

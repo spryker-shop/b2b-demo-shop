@@ -5,7 +5,7 @@
     skuFieldName: _widget.skuFieldName,
     skuFieldValue: _widget.skuFieldValue | default,
     searchFieldValue: _widget.searchFieldValue | default,
-    searchResultLimit: _widget.searchResultLimit
+    searchResultLimit: _widget.searchResultLimit,
 } %}
 
 {% block body %}
@@ -15,14 +15,14 @@
             name: data.skuFieldName,
             hiddenValue: data.skuFieldValue,
             value: data.searchFieldValue,
-            placeholder: 'quick-order.input.placeholder'
+            placeholder: 'quick-order.input.placeholder',
         },
         attributes: {
             'suggestion-url': '/product-search/product-concrete-search',
-            'item-selector': '.products-list__item',
+            'item-class-name': 'products-list__item',
             'query-param-name': 'limit=' ~ data.searchResultLimit ~ '&searchString',
             'value-data-attribute': 'data-value',
             'min-letters': 1,
-        }
+        },
     } only %}
 {% endblock %}

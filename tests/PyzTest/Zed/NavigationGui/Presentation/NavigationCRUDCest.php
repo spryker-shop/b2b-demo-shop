@@ -8,6 +8,7 @@
 namespace PyzTest\Zed\NavigationGui\Presentation;
 
 use Codeception\Scenario;
+use Faker\Factory;
 use PyzTest\Zed\NavigationGui\NavigationGuiPresentationTester;
 use PyzTest\Zed\NavigationGui\PageObject\NavigationCreatePage;
 use PyzTest\Zed\NavigationGui\PageObject\NavigationDeletePage;
@@ -17,6 +18,7 @@ use PyzTest\Zed\NavigationGui\PageObject\NavigationUpdatePage;
 
 /**
  * Auto-generated group annotations
+ *
  * @group PyzTest
  * @group Zed
  * @group NavigationGui
@@ -61,7 +63,7 @@ class NavigationCRUDCest
         $i->expect('Navigation is persisted in Zed.');
 
         $i->setNameField('Acceptance navigation (1)');
-        $i->setKeyField('acceptance1');
+        $i->setKeyField(Factory::create()->slug);
         $i->checkIsActiveField(true);
         $i->submitNavigationForm();
         $i->seeCurrentUrlEquals(NavigationPage::URL);

@@ -7,8 +7,8 @@ export default class DateTimePicker extends Component {
 
     protected readyCallback(): void {}
 
-    mountCallback(): void {
-        this.trigger = <HTMLInputElement>this.querySelector('input');
+    protected init(): void {
+        this.trigger = <HTMLInputElement>this.getElementsByTagName('input')[0];
         this.mapEvents();
     }
 
@@ -25,15 +25,15 @@ export default class DateTimePicker extends Component {
         $.datetimepicker.setLocale(language);
     }
 
-    get parent(): string {
+    protected get parent(): string {
         return this.getAttribute('parent-id');
     }
 
-    get language(): string {
+    protected get language(): string {
         return this.getAttribute('language');
     }
 
-    get config(): object {
+    protected get config(): object {
         const config = JSON.parse(this.getAttribute('config'));
         config.parentID = this.parent;
 

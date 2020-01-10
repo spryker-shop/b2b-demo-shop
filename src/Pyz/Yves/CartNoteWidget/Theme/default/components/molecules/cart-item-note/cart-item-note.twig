@@ -2,8 +2,7 @@
 
 {% define config = {
     name: 'cart-item-note',
-    jsName: 'js-cart-item-note',
-    tag: 'cart-item-note'
+    tag: 'cart-item-note',
 } %}
 
 {% define data = {
@@ -11,15 +10,12 @@
     canWrite: required,
     label: '',
     note: '',
-    isNoteNotEmpty: null
+    isNoteNotEmpty: null,
+    isTitleVisible: true,
 } %}
 
 {% define attributes = {
-    'edit-button-selector': '.' ~ config.jsName ~ '__edit',
-    'remove-button-selector': '.' ~ config.jsName ~ '__remove',
-    'read-section-selector': '.' ~ config.jsName ~ '__text-wrap',
-    'form-selector': '.' ~ config.jsName ~ '__form',
-    'change-class': 'is-hidden'
+    'class-to-toggle': 'is-hidden',
 } %}
 
 {% block body %}
@@ -30,7 +26,7 @@
 
     {% if data.canWrite or isNoteNotEmpty %}
 
-        {% if isNoteNotEmpty %}
+        {% if isNoteNotEmpty and data.isTitleVisible %}
             <h6 class="{{ config.name }}__title">{{ title | trans }}:</h6>
         {% endif %}
 
@@ -38,7 +34,7 @@
 
             {% if isNoteNotEmpty %}
                 <div class="{{ config.name }}__text-wrap {{ config.jsName }}__text-wrap">
-                    <div class="{{ config.name }}__text">{{ note }}</div>
+                    <div class="{{ config.name }}__text">{{ note | nl2br }}</div>
 
                     {% if data.canWrite %}
                         {% include molecule('cart-item-note-actions', 'CartNoteWidget') with {
@@ -72,23 +68,22 @@
                             data: {
                                 form: data.form,
                                 options: {
-                                    action: url('cart-note/item')
+                                    action: url('cart-note/item'),
                                 },
                                 submit: {
                                     enable: true,
-                                    text: 'cart_note.form.save' | trans
-                                }
-                            }
+                                    text: 'cart_note.form.save' | trans,
+                                },
+                            },
                         } only %}
                     </div>
                 </div>
 
                 {% include molecule('toggler-accordion') with {
                     attributes: {
-                        'wrap-selector': '.' ~ config.jsName ~ '__form--' ~ jsModifier,
-                        'trigger-selector': '.' ~ config.jsName ~ '__trigger',
-                        'class-to-toggle': 'is-hidden'
-                    }
+                        'wrap-class-name': config.jsName ~ '__form--' ~ jsModifier,
+                        'trigger-class-name': config.jsName ~ '__trigger',
+                    },
                 } only %}
             {% endif %}
         </div>

@@ -27,7 +27,7 @@ export default class OverlayBlock extends Component {
         this.classList.remove(this.classToShow);
     }
 
-    get classToShow(): string {
+    protected get classToShow(): string {
         return `${this.name}--is-shown`;
     }
 

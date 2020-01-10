@@ -1,20 +1,15 @@
-{% extends template('widget') %}
-
-{% define data = {  
-    nodes: _widget.navigationTree.nodes
-} %}
+{% extends template('navigation-main', '@SprykerShop:NavigationWidget') %}
 
 {% block body %}
     {% include molecule('navigation-multilevel') with {
         data: {
             nodes: data.nodes,
             menuInline: true,
-            menuDropdown: true
+            menuDropdown: true,
         },
         attributes: {
-            'target-selector': '.js-overlay-block',
-            'class-to-toggle': 'showed',
-            'available-breakpoint': '1024'
-        }
+            'class-to-toggle': 'is-shown',
+            'available-breakpoint': '1024',
+        },
     } only %}
 {% endblock %}

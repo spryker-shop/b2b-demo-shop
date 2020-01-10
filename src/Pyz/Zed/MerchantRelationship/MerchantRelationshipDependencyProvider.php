@@ -8,7 +8,9 @@
 namespace Pyz\Zed\MerchantRelationship;
 
 use Spryker\Zed\MerchantRelationship\MerchantRelationshipDependencyProvider as SprykerMerchantRelationshipDependencyProvider;
-use Spryker\Zed\MerchantRelationshipProductList\Communication\Plugin\MerchantRelationship\ProductListMerchantRelationshipPreDeletePlugin;
+use Spryker\Zed\MerchantRelationshipProductList\Communication\Plugin\MerchantRelationship\ProductListMerchantRelationshipPostCreatePlugin;
+use Spryker\Zed\MerchantRelationshipProductList\Communication\Plugin\MerchantRelationship\ProductListMerchantRelationshipPostUpdatePlugin;
+use Spryker\Zed\MerchantRelationshipProductList\Communication\Plugin\MerchantRelationship\ProductListRelationshipMerchantRelationshipPreDeletePlugin;
 
 class MerchantRelationshipDependencyProvider extends SprykerMerchantRelationshipDependencyProvider
 {
@@ -18,7 +20,27 @@ class MerchantRelationshipDependencyProvider extends SprykerMerchantRelationship
     protected function getMerchantRelationshipPreDeletePlugins(): array
     {
         return [
-            new ProductListMerchantRelationshipPreDeletePlugin(),
+            new ProductListRelationshipMerchantRelationshipPreDeletePlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\MerchantRelationshipExtension\Dependency\Plugin\MerchantRelationshipPostCreatePluginInterface[]
+     */
+    protected function getMerchantRelationshipPostCreatePlugins(): array
+    {
+        return [
+            new ProductListMerchantRelationshipPostCreatePlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\MerchantRelationshipExtension\Dependency\Plugin\MerchantRelationshipPostUpdatePluginInterface[]
+     */
+    protected function getMerchantRelationshipPostUpdatePlugins(): array
+    {
+        return [
+            new ProductListMerchantRelationshipPostUpdatePlugin(),
         ];
     }
 }

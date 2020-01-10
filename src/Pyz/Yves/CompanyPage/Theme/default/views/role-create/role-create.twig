@@ -1,52 +1,28 @@
-{% extends template('page-layout-company', 'CompanyPage') %}
-
-{% define data = {
-    form: _view.companyRoleForm,
-
-    title: 'company.account.company_role.create' | trans,
-    activePage: 'role'
-} %}
-
-{% block breadcrumbs %}
-    {% include molecule('breadcrumb') with {
-        data: {
-            steps: [
-                {
-                    label: 'company.account.page-title' | trans,
-                    url: url('company/overview')
-                }, {
-                    label: 'company.account.company_role' | trans,
-                    url: url('company/company-role')
-                }, {
-                    label: 'company.account.company_role.create' | trans
-                }
-            ]
-        }
-    } only %}
-{% endblock %}
+{% extends view('role-create', '@SprykerShop:CompanyPage') %}
 
 {% block companyContent %}
-    {% include molecule('action-bar', 'ShopUi') with {
+    {% include molecule('action-bar') with {
         data: {
-            title: 'company.account.company_role.create' | trans
-        }
+            title: 'company.account.company_role.create' | trans,
+        },
     } only %}
 
     {% include molecule('form') with {
         modifiers: ['narrow'],
         data: {
             form: data.form,
+            shouldRequireMessage: true,
             submit: {
                 enable: true,
-                class: 'form__action--expand-sm-md form__action--sm-md-first button'
+                class: 'form__action--expand-sm-md form__action--sm-md-first button',
             },
             cancel: {
                 enable: true,
                 url: url('company/company-role'),
                 text: 'general.back.button' | trans,
                 icon: null,
-                class: 'form__action--expand-sm-md button button--hollow'
-            }
-        }
+                class: 'form__action--expand-sm-md button button--hollow',
+            },
+        },
     } only %}
 {% endblock %}

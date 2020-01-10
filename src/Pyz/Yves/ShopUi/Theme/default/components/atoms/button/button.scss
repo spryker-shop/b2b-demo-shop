@@ -257,6 +257,12 @@
             line-height: rem(13);
         }
 
+        &--md-left-indent {
+            @include helper-breakpoint-media-min($md) {
+                margin-left: rem(132);
+            }
+        }
+
         @each $action, $setting-color-action in $setting-color-actions {
             @include shop-ui-button-action($action, $setting-color-action);
         }

@@ -11,10 +11,10 @@
 } %}
 
 {% block body %}
-    <span class="col col--sm-12 col--md-4">{{ 'quote_request_page.quote_request.labels.history' | trans }}:</span>
-    <span class="col col--sm-12 col--md-8">
+    <span class="col col--sm-4 col--md-2 col--xl-4">{{ 'quote_request_page.quote_request.labels.history' | trans }}:</span>
+    <span class="col col--sm-8 col--md-10 col--xl-8">
         {% embed molecule('custom-select') with {
-            modifiers: ['full-width', 'light'],
+            modifiers: ['light', 'full-width'],
             attributes: {
                 name: 'quote-request-versions',
             },

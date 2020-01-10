@@ -45,6 +45,7 @@
     }
 
     &__button {
+        @include helper-effect-transition(background);
         width: rem(28);
         height: rem(28);
         border-radius: $setting-border-radius;
@@ -54,11 +55,11 @@
         font-size: 0;
         cursor: pointer;
         position: relative;
-        @include helper-effect-transition(background);
 
         &--decrement::before,
         &--increment::before,
         &--increment::after {
+            @include helper-effect-transition(background);
             content: '';
             position: absolute;
             left: 50%;
@@ -67,7 +68,6 @@
             width: rem(9);
             height: rem(2);
             background: $setting-color-gray-3;
-            @include helper-effect-transition(background);
         }
 
         &--increment::after {

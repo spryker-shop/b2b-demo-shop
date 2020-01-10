@@ -1,25 +1,26 @@
-.display-address {
-    &--summary {
+@mixin shop-ui-display-address($name: '.display-address') {
+    #{$name} {
         font-size: rem(14);
         line-height: rem(20);
+        color: $setting-color-gray-3;
 
         @include helper-breakpoint-media-min($lg) {
             font-size: rem(15);
             line-height: rem(22);
         }
-    }
 
-    &__name {
-        font-weight: fw(medium);
-        color: $setting-color-gray-5;
-    }
-
-    &__bottom {
-        margin-top: 0.5rem;
-        margin-bottom: 0.5rem;
-
-        &--summary {
-            margin: rem(14) 0 0;
+        &__name {
+            font-weight: fw(medium);
+            color: $setting-color-gray-5;
         }
+
+        &__bottom {
+            margin-top: rem(14);
+            margin-bottom: rem(5);
+        }
+
+        @content;
     }
 }
+
+@include shop-ui-display-address();

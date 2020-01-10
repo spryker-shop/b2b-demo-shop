@@ -15,15 +15,15 @@
             data: {
                 category: item.category,
                 title: item.title,
-                toggleClass: config.jsName ~ '-' ~ item.category
-            }
+                toggleClass: config.jsName ~ '-' ~ item.category,
+            },
         } only %}
         {% include molecule('toggler-accordion') with {
             attributes: {
-                'wrap-selector': '.' ~ config.jsName ~ '-' ~ item.category,
-                'trigger-selector': '.' ~ config.jsName ~ '-' ~  item.category ~ '__trigger',
-                'class-to-toggle': 'is-hidden-sm-only'
-            }
+                'wrap-class-name': config.jsName ~ '-' ~ item.category,
+                'trigger-class-name': config.jsName ~ '-' ~  item.category ~ '__trigger',
+                'class-to-toggle': 'is-hidden-sm-only',
+            },
         } only %}
     {% endfor %}
 {% endblock %}

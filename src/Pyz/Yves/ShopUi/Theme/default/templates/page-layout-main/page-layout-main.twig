@@ -17,10 +17,10 @@
         {% block sidebar %}
             {% include organism('side-drawer') with {
                 attributes: {
-                    'container-selector': 'js-page-layout-main__side-drawer-container',
-                    'trigger-selector': 'js-page-layout-main__side-drawer-trigger',
-                    'locked-body-selector': 'is-locked-tablet'
-                }
+                    'container-class-name': 'js-page-layout-main__side-drawer-container',
+                    'trigger-class-name': 'js-page-layout-main__side-drawer-trigger',
+                    'locked-body-class-name': 'is-locked-tablet',
+                },
             } only %}
 
             {% if is_granted('ROLE_USER') %}
@@ -29,9 +29,9 @@
 
                 {% include organism('account-navigation') with {
                     attributes: {
-                        'container-selector': 'js-page-layout-main__side-drawer-container',
-                        'trigger-selector': 'js-page-layout-main__user-account-navigation-trigger',
-                        'locked-body-selector': 'is-locked-mobile'
+                        'container-class-name': 'js-page-layout-main__side-drawer-container',
+                        'trigger-class-name': 'js-page-layout-main__user-account-navigation-trigger',
+                        'locked-body-class-name': 'is-locked-mobile',
                     },
                     data: {
                         title: customerFullName,
@@ -89,9 +89,9 @@
                     {% include organism('account-navigation') with {
                         modifiers: ['company'],
                         attributes: {
-                            'container-selector': 'js-page-layout-main__side-drawer-container',
-                            'trigger-selector': 'js-page-layout-main__company-account-navigation-trigger',
-                            'locked-body-selector': 'is-locked-mobile'
+                            'container-class-name': 'js-page-layout-main__side-drawer-container',
+                            'trigger-class-name': 'js-page-layout-main__company-account-navigation-trigger',
+                            'locked-body-class-name': 'is-locked-mobile',
                         },
                         data: {
                             introIcon: 'office',
@@ -176,12 +176,22 @@
         </div>
 
         {% block footer %}
+            {% cms_slot 'slt-1' %}
+
             {% include organism('footer') only %}
         {% endblock %}
     </div>
 
     {% include atom('overlay-block') only %}
     {% include atom('touch-checker') only %}
+
+    {% block globalComponents %}
+        {% include molecule('action-single-click-enforcer') with {
+            attributes: {
+                'target-selector': '[data-init-single-click]',
+            },
+        } only %}
+    {% endblock %}
 
     {% block icons %}
         {% include atom('icon-sprite') only %}

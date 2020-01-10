@@ -6,6 +6,10 @@
         align-items: center;
         background: $setting-color-gray-7;
 
+        &--secondary {
+            background-color: $setting-color-gray-6;
+        }
+
         &__input {
             margin: 0;
             padding: 0;
@@ -16,12 +20,18 @@
             text-align: center;
             border: none;
             background: none;
+
             &::-webkit-inner-spin-button {
                 appearance: none;
+            }
+
+            &--medium-width {
+                width: rem(75);
             }
         }
 
         &__button {
+            @include helper-effect-transition(background);
             width: rem(28);
             height: rem(28);
             border-radius: $setting-border-radius;
@@ -31,11 +41,11 @@
             font-size: 0;
             cursor: pointer;
             position: relative;
-            @include helper-effect-transition(background);
 
             &--decrement::before,
             &--increment::before,
             &--increment::after {
+                @include helper-effect-transition(background);
                 content: '';
                 position: absolute;
                 left: 50%;
@@ -44,8 +54,8 @@
                 width: rem(9);
                 height: rem(2);
                 background: $setting-color-gray-3;
-                @include helper-effect-transition(background);
             }
+
             &--increment::after {
                 width: rem(2);
                 height: rem(9);
@@ -53,6 +63,7 @@
 
             &:hover {
                 background: $setting-color-main;
+
                 &::before,
                 &::after {
                     background: $setting-color-white;
@@ -72,6 +83,7 @@
                 &:hover,
                 &:focus {
                     background: $setting-color-white;
+
                     &::before,
                     &::after {
                         background: $setting-color-gray-6;

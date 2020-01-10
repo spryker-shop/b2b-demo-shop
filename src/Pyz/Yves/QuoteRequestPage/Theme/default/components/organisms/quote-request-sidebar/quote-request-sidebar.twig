@@ -93,14 +93,14 @@
     {% endblock %}
 
     {% block quoteActions %}
-        <a class="spacing-bottom button button--expand {{ data.quoteRequest.quoteRequestReference ? 'button--hollow' : 'button--cancel' }}" href="{{ data.cancelUrl }}" data-init-single-click>
+        <a class="spacing-bottom button button--expand button--hollow {{ data.quoteRequest.quoteRequestReference ? 'button--second' : 'button--alert' }}" href="{{ data.cancelUrl }}" data-init-single-click>
             {{ data.cancelTitle }}
         </a>
 
         {% if data.isLatestVersion %}
             {% if data.isQuoteRequestCancelable %}
                 {% block quoteRequestCancelableAction %}
-                    <a class="spacing-bottom button button--expand button--cancel"
+                    <a class="spacing-bottom button button--expand button--hollow button--alert"
                        href="{{ path('quote-request/cancel', { quoteRequestReference: (data.quoteRequest.quoteRequestReference) }) }}" data-init-single-click>
                         {{ 'quote_request_page.quote_request.actions.cancel' | trans }}
                     </a>
@@ -122,7 +122,7 @@
 
             {% if data.isQuoteRequestEditable %}
                 {% block quoteRequestEditableAction %}
-                    <a class="spacing-bottom button button--expand button--success"
+                    <a class="spacing-bottom button button--expand button--hollow"
                        href="{{ path('quote-request/edit', { quoteRequestReference: (data.quoteRequest.quoteRequestReference) }) }}" data-init-single-click>
                         {{ 'quote_request_page.quote_request.actions.edit' | trans }}
                     </a>

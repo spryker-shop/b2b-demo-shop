@@ -9,15 +9,17 @@ export enum Events {
 }
 
 export default class ProductSearchAutocompleteForm extends AutocompleteForm {
-    widgetSuggestionsContainer: HTMLElement;
-    suggestionItems: HTMLElement[];
-    lastSelectedItem: HTMLElement;
-    quantityInput: HTMLInputElement;
+    protected widgetSuggestionsContainer: HTMLElement;
+    protected suggestionItems: HTMLElement[];
+    protected lastSelectedItem: HTMLElement;
+    protected quantityInput: HTMLInputElement;
 
-    protected readyCallback(): void {
-        this.widgetSuggestionsContainer = <HTMLElement>this.querySelector(`.${this.jsName}__suggestions`);
-        this.quantityInput = <HTMLInputElement>document.querySelector(`.${this.jsName}__quantity-field`);
-        super.readyCallback();
+    protected readyCallback(): void {}
+
+    protected init(): void {
+        this.widgetSuggestionsContainer = <HTMLElement>this.getElementsByClassName(`${this.jsName}__suggestions`)[0];
+        this.quantityInput = <HTMLInputElement>document.getElementsByClassName(`${this.jsName}__quantity-field`)[0];
+        super.init();
         this.plugKeydownEvent();
     }
 
@@ -44,7 +46,9 @@ export default class ProductSearchAutocompleteForm extends AutocompleteForm {
 
     protected mapItemEvents(): void {
         const self = this;
-        const items = <HTMLElement[]>Array.from(this.widgetSuggestionsContainer.querySelectorAll(this.itemSelector));
+        const items = <HTMLElement[]>Array.from(this.widgetSuggestionsContainer.getElementsByClassName(
+            this.itemClassName
+        ));
         items.forEach((item: HTMLElement) => {
             item.addEventListener('click', (event: Event) => self.onItemClick(event));
         });
@@ -96,7 +100,7 @@ export default class ProductSearchAutocompleteForm extends AutocompleteForm {
         this.ajaxProvider.queryParams.set(this.queryParamName, this.inputText);
         await this.ajaxProvider.fetch();
         this.suggestionItems = <HTMLElement[]>Array.from(
-            this.widgetSuggestionsContainer.querySelectorAll(this.itemSelector)
+            this.widgetSuggestionsContainer.getElementsByClassName(this.itemClassName)
         );
         this.lastSelectedItem = this.suggestionItems[0];
         this.mapItemEvents();
@@ -125,23 +129,23 @@ export default class ProductSearchAutocompleteForm extends AutocompleteForm {
         }
     }
 
-    get inputText(): string {
+    protected get inputText(): string {
         return this.inputElement.value.trim();
     }
 
-    set inputText(value: string) {
+    protected set inputText(value: string) {
         this.inputElement.value = value;
     }
 
-    get selectedInputClass(): string {
-        return `${this.itemSelector}--selected`.substr(1);
+    protected get selectedInputClass(): string {
+        return `${this.itemClassName}--selected`.substr(1);
     }
 
-    get inputValue(): string {
+    protected get inputValue(): string {
         return this.hiddenInputElement.value;
     }
 
-    set inputValue(value: string) {
+    protected set inputValue(value: string) {
         this.hiddenInputElement.value = value;
     }
 }

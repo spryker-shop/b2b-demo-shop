@@ -29,6 +29,24 @@
             min-width: 2.5rem;
         }
 
+        &--item {
+            margin: rem(8) rem(16) rem(8) 0;
+            padding: rem(8);
+            flex-grow: 1;
+
+            &::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: $setting-color-alpha-2;
+                border-radius: $setting-border-radius 0 0 $setting-border-radius;
+                z-index: $setting-zi-element;
+            }
+        }
+
         &--reset-indents {
             margin: 0;
         }
@@ -82,6 +100,16 @@
             @include helper-breakpoint-media-min($lg) {
                 height: rem(100);
                 margin: rem(4);
+            }
+        }
+
+        &--bundle-list {
+            height: auto;
+            margin: 0;
+
+            #{$name}__image {
+                position: relative;
+                vertical-align: top;
             }
         }
 

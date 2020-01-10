@@ -1,38 +1,4 @@
-{% extends template('page-layout-shopping-list', 'ShoppingListPage') %}
-
-{% define data = {
-    title: _view.shoppingList.name,
-    backUrl: _view.backUrl,
-    shoppingList: _view.shoppingList,
-    sharedCompanyUsers: _view.sharedCompanyUsers,
-    sharedCompanyBusinessUnits: _view.sharedCompanyBusinessUnits
-} %}
-
-{% block breadcrumbs %}
-    {% include molecule('breadcrumb') with {
-        data: {
-            steps: [
-                {
-                    label: 'customer.account' | trans,
-                    url: url('customer/overview'),
-                },
-                {
-                    label: 'customer.account.shopping_list' | trans,
-                    url: url('shopping-list')
-                },
-                {
-                    label: 'customer.account.shopping_list.overview.warning' | trans,
-                }
-            ]
-        }
-    } only %}
-{% endblock %}
-
-{% block customerNavigation %}
-    {% widget 'CustomerNavigationWidget' args ['shoppingList', data.shoppingList.idShoppingList] only %}
-    {% elsewidget 'CustomerNavigationWidgetPlugin' args ['shoppingList', data.shoppingList.idShoppingList] only %} {# @deprecated Use CustomerNavigationWidget instead. #}
-    {% endwidget %}
-{% endblock %}
+{% extends view('shopping-list-overview-delete', '@SprykerShop:ShoppingListPage') %}
 
 {% block customerContent %}
     {% include molecule('shopping-list-message', 'ShoppingListPage') with {
@@ -41,7 +7,7 @@
             backUrl: data.backUrl,
             idShoppingList: data.shoppingList.idShoppingList,
             sharedCompanyUsers: data.sharedCompanyUsers,
-            sharedCompanyBusinessUnits: data.sharedCompanyBusinessUnits
-        }
+            sharedCompanyBusinessUnits: data.sharedCompanyBusinessUnits,
+        },
     } only %}
 {% endblock %}

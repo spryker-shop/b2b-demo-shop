@@ -5,7 +5,7 @@ $name: '.color-selector';
 @include helper-color-selector($name) {
     @include helper-effect-transition(opacity);
     position: absolute;
-    bottom: -9px;
+    bottom: rem(-9);
     z-index: $setting-zi-element + 1;
     opacity: 0;
 

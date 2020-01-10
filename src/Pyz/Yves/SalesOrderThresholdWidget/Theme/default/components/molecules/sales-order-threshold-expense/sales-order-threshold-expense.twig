@@ -1,12 +1,4 @@
-{% extends model('component') %}
-
-{% define config = {
-    name: 'sales-order-threshold-expense'
-} %}
-
-{% define data = {
-    expense: required
-} %}
+{% extends molecule('sales-order-threshold-expense', '@SprykerShop:SalesOrderThresholdWidget') %}
 
 {% block body %}
     <div class="grid grid--justify">

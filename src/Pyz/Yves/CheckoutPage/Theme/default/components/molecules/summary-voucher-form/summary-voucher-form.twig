@@ -1,0 +1,38 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'summary-voucher-form',
+} %}
+
+{% define data = {
+    transfer: required,
+    accordionItemClass: 'toggler-accordion__item',
+    accordionIconClass: 'toggler-accordion__icon',
+} %}
+
+{% block class %}
+    {{ parent() }} {{ config.jsName }}
+{% endblock %}
+
+{% block body %}
+    {% set cartCodeFormWidget = findWidget('CartCodeFormWidget', [data.transfer]) %}
+
+    {% if cartCodeFormWidget and cartCodeFormWidget.isQuoteEditable %}
+        <div class="{{ config.name }}__item">
+            <h5 class="{{ config.name }}__title {{ config.jsName }}__title {{ data.accordionItemClass }}" data-toggle-target=".{{ config.jsName }}__content">
+                {{ 'page.checkout.finalize.enter-voucher' | trans }}
+                <span class="icon icon--toggler-cross {{ data.accordionIconClass }}"></span>
+            </h5>
+            <div class="{{ config.name }}__content {{ config.jsName }}__content is-hidden">
+                {% widget cartCodeFormWidget %}{% endwidget %}
+            </div>
+        </div>
+    {% endif %}
+
+    {% include molecule('toggler-accordion') with {
+        attributes: {
+            'wrap-class-name': config.jsName,
+            'trigger-class-name': config.jsName ~ '__title',
+        },
+    } only %}
+{% endblock %}

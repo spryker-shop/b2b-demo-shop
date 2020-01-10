@@ -64,13 +64,13 @@
             },
         } only %}
             {% block quoteRequestCancelableAction %}
-                <a class="spacing-bottom button button--expand button--cancel"
+                <a class="spacing-bottom button button--expand button--hollow button--alert"
                    href="{{ path('agent/quote-request/cancel', { quoteRequestReference: (data.quoteRequest.quoteRequestReference) }) }}" data-init-single-click>
                     {{ 'quote_request_page.quote_request.actions.cancel' | trans }}
                 </a>
             {% endblock %}
             {% block quoteRequestEditableAction %}
-                <a class="spacing-bottom button button--expand button--success"
+                <a class="spacing-bottom button button--expand button--hollow"
                    href="{{ path('agent/quote-request/edit', { quoteRequestReference: (data.quoteRequest.quoteRequestReference) }) }}">
                     {{ 'quote_request_page.quote_request.actions.edit' | trans }}
                 </a>
@@ -86,7 +86,7 @@
                 {{ parent() }}
                 {% if data.isLatestVersion %}
                     {% if data.isQuoteRequestRevisable %}
-                        <a class="spacing-bottom button button--expand button--hollow"
+                        <a class="spacing-bottom button button--expand {{ data.quoteRequest.status == 'ready' ? 'button--hollow' : 'button--success' }}"
                            href="{{ path('agent/quote-request/revise', { quoteRequestReference: (data.quoteRequest.quoteRequestReference) }) }}">
                             {{ 'quote_request_page.quote_request.actions.revise' | trans }}
                         </a>

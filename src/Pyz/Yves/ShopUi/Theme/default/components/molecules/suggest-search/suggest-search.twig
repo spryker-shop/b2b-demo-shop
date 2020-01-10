@@ -2,17 +2,18 @@
 
 {% define config = {
     name: 'suggest-search',
-    tag: 'suggest-search'
+    tag: 'suggest-search',
 } %}
 
 {% define attributes = {
     'suggestion-url': required,
     'base-suggest-url': required,
-    'input-selector': required,
+    'input-class-name': required,
     'debounce-delay': 500,
     'throttle-delay': 200,
     'letters-trashold': 2,
-    'overlay-breakpoint': '0'
+    'overlay-class-name': 'js-overlay-block',
+    'overlay-breakpoint': '0',
 } %}
 
 {% block body %}
@@ -22,14 +23,14 @@
         class: config.jsName ~ '__ajax-provider',
         attributes: {
             method: 'post',
-            url: attributes['suggestion-url']
-        }
+            url: attributes['suggestion-url'],
+        },
     } only %}
 
     {% include molecule('ajax-loader') with {
         modifiers: ['big'],
         attributes: {
-            'provider-selector': '.' ~ config.jsName ~ '__ajax-provider'
-        }
+            'provider-class-name': config.jsName ~ '__ajax-provider',
+        },
     } only %}
 {% endblock %}
