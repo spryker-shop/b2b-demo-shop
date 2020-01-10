@@ -42,7 +42,7 @@ class ExampleProductSalePageQueryContainer extends AbstractQueryContainer implem
      */
     public function queryRelationsBecomingInactive($idProductLabel)
     {
-        $productLabelProductAbstractQuery =  $this->getFactory()
+        $productLabelProductAbstractQuery = $this->getFactory()
             ->getProductLabelQueryContainer()
             ->queryProductAbstractRelationsByIdProductLabel($idProductLabel)
             ->distinct()
