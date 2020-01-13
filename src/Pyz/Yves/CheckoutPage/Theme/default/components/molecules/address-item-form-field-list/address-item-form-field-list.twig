@@ -13,6 +13,7 @@
                 {% set companyBusinessUnitShippingAddressWidget = findWidget('CompanyBusinessUnitAddressWidget', ['shippingAddress', item.shippingAddress.vars.data]) %}
                 {% set isCompanyBusinessUnitShippingAddressApplicable = companyBusinessUnitShippingAddressWidget and companyBusinessUnitShippingAddressWidget.isApplicable %}
                 {% set hasShippingAddressesAndApplicable = isCompanyBusinessUnitShippingAddressApplicable or hasShippingAddresses %}
+                {% set cartItem = item.bundleProduct ?? item %}
 
                 {% block multiShippingAddresses %}
                     {% set formFieldUniqueName = 'multiShippingAddresses' %}
@@ -21,9 +22,8 @@
                         {% embed molecule('product-card-item') with {
                             modifiers: ['checkout', 'checkout-address'],
                             data: {
-                                list: data.items,
-                                listItem: item.vars.data,
-                                quantity: item.vars.data.quantity,
+                                listItem: cartItem.vars.data,
+                                quantity: cartItem.vars.data.quantity,
                                 priceModifiers: ['medium', 'block', 'margin-bottom-from-tablet', 'text-right-from-tablet'],
                             },
                             embed: {
@@ -122,6 +122,14 @@
                                         }) }}
                                     {% endif %}
                                 </div>
+                            {% endblock %}
+
+                            {% block bundle %}
+                                {% include molecule('bundle-items', 'ProductBundleWidget') with {
+                                    data: {
+                                        items: embed.item.bundleItems,
+                                    },
+                                } only %}
                             {% endblock %}
 
                             {% block note %}
