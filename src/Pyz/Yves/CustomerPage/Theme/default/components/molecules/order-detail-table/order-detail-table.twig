@@ -20,13 +20,13 @@
                         {% embed molecule('product-card-item') with {
                             modifiers: ['order-detail'],
                             data: {
-                                list: shipmentGroup.cartItems,
                                 listItem: cartItem,
                                 quantity: cartItem.quantity,
                                 priceModifiers: ['medium', 'block', 'margin-bottom-from-tablet'],
                             },
                             embed: {
                                 order: data.order,
+                                bundleItems: item.bundleItems | default([]),
                             },
                         } only %}
                             {% block image %}
@@ -74,6 +74,14 @@
                                         },
                                     } only %}
                                 {% endif %}
+                            {% endblock %}
+
+                            {% block bundle %}
+                                {% include molecule('bundle-items', 'ProductBundleWidget') with {
+                                    data: {
+                                        items: embed.bundleItems,
+                                    },
+                                } only %}
                             {% endblock %}
 
                             {% block note %}

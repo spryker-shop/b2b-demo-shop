@@ -48,10 +48,12 @@
                                 {% embed molecule('product-card-item') with {
                                     modifiers: ['checkout'],
                                     data: {
-                                        list: shipmentGroupForm.vars.data.cartItems,
                                         listItem: cartItem,
                                         quantity: cartItem.quantity,
                                         priceModifiers: ['medium', 'block', 'margin-bottom-from-tablet'],
+                                    },
+                                    embed: {
+                                        bundleItems: item.bundleItems | default([]),
                                     },
                                 } only %}
                                     {% block image %}
@@ -80,6 +82,14 @@
                                                 },
                                             } only %}
                                         {% endif %}
+                                    {% endblock %}
+
+                                    {% block bundle %}
+                                        {% include molecule('bundle-items', 'ProductBundleWidget') with {
+                                            data: {
+                                                items: embed.bundleItems,
+                                            },
+                                        } only %}
                                     {% endblock %}
 
                                     {% block note %}
