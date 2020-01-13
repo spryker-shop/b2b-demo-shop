@@ -21,6 +21,7 @@
                         {% embed molecule('product-card-item') with {
                             modifiers: ['checkout', 'checkout-address'],
                             data: {
+                                list: data.items,
                                 listItem: item.vars.data,
                                 quantity: item.vars.data.quantity,
                                 priceModifiers: ['medium', 'block', 'margin-bottom-from-tablet', 'text-right-from-tablet'],
@@ -135,8 +136,6 @@
                                     } only %}
                                 {% endif %}
                             {% endblock %}
-
-                            {% block bundle %}{% endblock %}
                         {% endembed %}
                     {% endblock %}
                 {% endblock %}
