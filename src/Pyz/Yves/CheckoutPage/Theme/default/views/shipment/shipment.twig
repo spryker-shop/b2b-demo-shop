@@ -10,12 +10,6 @@
         data: {
             form: data.forms.shipment,
             cart: data.forms.shipment.vars.data,
-            attributes: [],
-            options: {
-                attr: {
-                    id: 'payment-form',
-                },
-            },
             submit: {
                 enable: true,
                 text: 'checkout.step.payment' | trans,
@@ -48,15 +42,15 @@
                         </h3>
 
                         <div class="col col--sm-12 col--xl-8">
-                            {% for item in shipmentGroupForm.vars.data.items %}
-                                {% set item = item.bundleProduct ?? item %}
+                            {% for item in shipmentGroupForm.vars.data.cartItems %}
+                                {% set cartItem = item.bundleProduct ?? item %}
 
                                 {% embed molecule('product-card-item') with {
                                     modifiers: ['checkout'],
                                     data: {
-                                        list: shipmentGroupForm.vars.data.items,
-                                        listItem: item,
-                                        quantity: item.quantity,
+                                        list: shipmentGroupForm.vars.data.cartItems,
+                                        listItem: cartItem,
+                                        quantity: cartItem.quantity,
                                         priceModifiers: ['medium', 'block', 'margin-bottom-from-tablet'],
                                     },
                                 } only %}
@@ -100,8 +94,6 @@
                                             } only %}
                                         {% endif %}
                                     {% endblock %}
-
-                                    {% block bundle %}{% endblock %}
                                 {% endembed %}
                             {% endfor %}
                         </div>
