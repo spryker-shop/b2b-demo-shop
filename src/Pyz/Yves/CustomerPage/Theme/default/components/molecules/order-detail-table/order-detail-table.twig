@@ -77,7 +77,7 @@
                             {% endblock %}
 
                             {% block bundle %}
-                                {% include molecule('bundle-items', 'ProductBundleWidget') with {
+                                {% include molecule('bundle-items', 'ProductBundleWidget') ignore missing with {
                                     data: {
                                         items: embed.bundleItems,
                                     },
