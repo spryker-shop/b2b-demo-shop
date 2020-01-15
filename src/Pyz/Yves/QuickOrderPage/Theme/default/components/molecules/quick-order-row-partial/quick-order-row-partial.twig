@@ -21,9 +21,12 @@
                 {% for additionalColumn in data.additionalColumns %}
                     <div class="col col--expand spacing-x spacing-x--inner spacing-x--bigger">
                         {% block additionalColumn %}
-                            {% if data.product and data.product.columns[additionalColumn.dataPath] %}
+                            {% set isProductColumnsData = data.product and data.product.columns %}
+                            {% set additionalColumnsData = isProductColumnsData ? data.product.columns[additionalColumn.dataPath] %}
+
+                            {% if additionalColumnsData %}
                                 <span class="is-hidden-md-xxl">{{ additionalColumn.title | trans }}: </span>
-                                {{ data.product.columns[additionalColumn.dataPath] | trans }}
+                                {{ additionalColumnsData | trans }}
                             {% endif %}
                         {% endblock %}
                     </div>

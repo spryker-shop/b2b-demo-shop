@@ -37,7 +37,7 @@ class MultiCartController extends SprykerShopMultiCartController
             return $this->redirectResponseExternal($this->getRefererUrl($request));
         }
 
-        $multiCartClient->setDefaultQuote($quoteTransfer);
+        $multiCartClient->markQuoteAsDefault($quoteTransfer);
 
         $this->getFactory()->getCartClient()->validateQuote();
 
