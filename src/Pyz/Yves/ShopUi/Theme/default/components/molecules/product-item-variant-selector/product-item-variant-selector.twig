@@ -18,6 +18,8 @@
 
 {% block body %}
     {% set cartProductMeasurementUnitQuantitySelectorWidget = findWidget('CartProductMeasurementUnitQuantitySelectorWidget', [data.productItem]) %}
+    {% set isProductSalesUnit = false %}
+
     {% if cartProductMeasurementUnitQuantitySelectorWidget %}
         {% set isProductSalesUnit = cartProductMeasurementUnitQuantitySelectorWidget.quantitySalesUnit.idProductMeasurementSalesUnit is defined
             or cartProductMeasurementUnitQuantitySelectorWidget.parameters.itemTransfer.amountSalesUnit is not null %}
