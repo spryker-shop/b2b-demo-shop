@@ -2,7 +2,7 @@
 
 {% define config = {
     name: 'autocomplete-form',
-    tag: 'autocomplete-form'
+    tag: 'autocomplete-form',
 } %}
 
 {% define data = {
@@ -17,8 +17,9 @@
     'query-param-name': 'query',
     'selected-value-key': '',
     'value-data-attribute': 'data-value',
-    'item-selector': '',
-    'show-clean-button': false
+    'item-class-name': '',
+    'show-clean-button': false,
+    'overlay-block-class-name': 'js-overlay-block',
 } %}
 
 {% block body %}
@@ -33,8 +34,8 @@
 
     {% include molecule('ajax-loader') with {
         attributes: {
-            'provider-selector': '.' ~ config.jsName ~ '__provider-' ~ data.id
-        }
+            'provider-class-name': config.jsName ~ '__provider-' ~ data.id,
+        },
     } only %}
 
     {% block input %}
@@ -65,10 +66,10 @@
         <div class="is-hidden {{ config.name }}__suggestion {{ config.jsName }}__container">
             {% include molecule('ajax-renderer') with {
                 attributes: {
-                    'provider-selector': '.' ~ config.jsName ~ '__provider-' ~ data.id,
+                    'provider-class-name': config.jsName ~ '__provider-' ~ data.id,
+                    'target-class-name': config.jsName ~ '__suggestions-' ~ data.id,
                     'render-if-response-is-empty': true,
-                    'target-selector': '.' ~ config.jsName ~ '__suggestions-' ~ data.id,
-                }
+                },
             } only %}
         </div>
     {% endblock %}

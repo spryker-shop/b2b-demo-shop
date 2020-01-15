@@ -1,0 +1,43 @@
+$cart-locking-info-padding: rem(52);
+
+@mixin cart-page-cart-locking($name: '.cart-locking') {
+    #{$name} {
+        margin-bottom: rem(20);
+        padding: rem(10) rem(18);
+        background-color: $setting-color-gray-7;
+
+        &__form {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        &__info {
+            width: calc(100% - #{$cart-locking-info-padding});
+        }
+
+        &__message {
+            font-size: rem(13);
+            color: $setting-color-gray-2;
+        }
+
+        &__reset-link {
+            color: $setting-color-alt;
+            font-weight: map_get($setting-font-weight, medium);
+
+            @include helper-breakpoint-media-min($xl) {
+                @include helper-effect-transition(color);
+            }
+
+            &:focus,
+            &:hover {
+                text-decoration: none;
+                color: $setting-color-main;
+            }
+        }
+
+        @content;
+    }
+}
+
+@include cart-page-cart-locking();

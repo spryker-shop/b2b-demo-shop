@@ -14,7 +14,7 @@ use Spryker\Service\PriceProductVolume\Plugin\PriceProductExtension\PriceProduct
 class PriceProductDependencyProvider extends SprykerPriceProductDependencyProvider
 {
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      *
      * @return \Spryker\Service\PriceProductExtension\Dependency\Plugin\PriceProductFilterPluginInterface[]
      */

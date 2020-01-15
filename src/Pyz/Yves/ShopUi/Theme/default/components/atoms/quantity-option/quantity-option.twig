@@ -2,15 +2,18 @@
 
 {% define config = {
     name: 'quantity-option',
-    tag: 'small'
+    tag: 'small',
 } %}
 
 {% define data = {
     value: required,
     precision: required,
-    optionName: ''
+    optionName: '',
 } %}
 
 {% block body %}
-    {{ (data.value / data.precision) | round }} {{ data.optionName }}
+    {{ 'quantity_option.amount' | trans({
+        '%value%': (data.value / data.precision) | round,
+        '%name%': data.optionName,
+    }) }}
 {% endblock %}

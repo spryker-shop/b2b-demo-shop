@@ -1,0 +1,151 @@
+@mixin cart-page-cart-sidebar-item($name: '.cart-sidebar-item') {
+    #{$name} {
+        background-color: $setting-color-gray-7;
+        margin-top: rem(5);
+        padding: rem(17) rem(20);
+        font-size: rem(14);
+        font-weight: fw(medium);
+        border-radius: $setting-border-radius;
+
+        @include helper-breakpoint-media-min($lg) {
+            margin-top: rem(10);
+        }
+
+        &--summary {
+            margin-top: rem(20);
+            border-radius: 0;
+            padding: 0;
+            background: none;
+        }
+
+        &__start {
+            margin: rem(5) rem(-15) 0;
+            padding: rem(17) rem(15) rem(10);
+            background-color: $setting-color-gray-7;
+            border-radius: $setting-border-radius $setting-border-radius 0 0;
+            border-bottom: rem(1) solid $setting-color-gray-1;
+
+            @include helper-breakpoint-media-min($lg) {
+                margin: rem(10) 0 0;
+                padding-left: rem(20);
+                padding-right: rem(20);
+                padding-bottom: rem(17);
+            }
+        }
+
+        &:first-child {
+            margin-top: 0;
+        }
+
+        &:not(&--with-label) .label {
+            display: none;
+        }
+
+        .input,
+        .textarea:not(.textarea--cart-comment) {
+            font-size: rem(13);
+            font-weight: fw(regular);
+            line-height: rem(15);
+            color: $setting-color-gray-3;
+            border: none;
+
+            @include helper-breakpoint-media-min($lg) {
+                padding-top: rem(15);
+                padding-bottom: rem(15);
+            }
+        }
+
+        .textarea:not(.textarea--cart-comment) {
+            min-height: rem(119);
+            line-height: rem(18);
+            max-width: 100%;
+            padding: rem(17) rem(20) rem(18);
+
+            @include helper-breakpoint-media-min($lg) {
+                min-height: rem(86);
+            }
+        }
+
+        &:not(&--shadow-less) {
+            .input,
+            .textarea {
+                box-shadow: 0 rem(10) rem(10) 0 $setting-color-shadow-1, 0 rem(3) rem(3) 0 $setting-color-shadow-1;
+            }
+        }
+
+        .custom-select__select:not(.custom-select__select--smaller),
+        .select2-container--default .select2-selection__rendered {
+            border-radius: $setting-border-radius;
+            border: none;
+            box-shadow: 0 rem(10) rem(10) 0 $setting-color-shadow-1, 0 rem(3) rem(3) 0 $setting-color-shadow-1;
+            line-height: rem(50);
+            background: $setting-color-white;
+
+            @include helper-breakpoint-media-min($lg) {
+                line-height: rem(45);
+            }
+        }
+
+        &__title {
+            font-size: rem(14);
+            line-height: rem(18);
+            font-weight: fw(medium);
+
+            &--space-bottom {
+                margin-bottom: rem(8);
+            }
+        }
+
+        &__text {
+            font-size: rem(14);
+            letter-spacing: rem(-0.1);
+            font-weight: fw(regular);
+
+            @include helper-breakpoint-media-min($lg) {
+                letter-spacing: 0;
+                font-size: rem(13);
+            }
+        }
+
+        &__content {
+            margin-top: rem(18);
+
+            .form__field {
+                padding-top: 0;
+            }
+
+            .form__actions {
+                text-align: left;
+                margin-top: 0;
+            }
+
+            .form__action {
+                margin-top: rem(3);
+                margin-left: 0;
+                width: 100%;
+
+                @include helper-breakpoint-media-min($lg) {
+                    margin-top: rem(12);
+                    width: auto;
+                }
+            }
+        }
+
+        &__order-header {
+            margin-bottom: rem(6);
+        }
+
+        &__quantity {
+            background-color: $setting-color-alpha-3;
+            border-radius: $setting-border-radius;
+            font-size: rem(11);
+            line-height: normal;
+            color: $setting-color-gray-3;
+            padding: rem(5) rem(8);
+        }
+
+        @content;
+    }
+}
+
+@include cart-page-cart-sidebar-item();

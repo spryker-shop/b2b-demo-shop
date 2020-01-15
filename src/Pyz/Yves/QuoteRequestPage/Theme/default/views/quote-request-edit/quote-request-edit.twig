@@ -55,12 +55,13 @@
                 } only %}
                     {% block formContent %}
                         {% for child in data.version.metadata %}
-                            {% include molecule('quote-request-form-field', 'QuoteRequestPage') with {
-                                class: 'col col--sm-12 col--xl-6 spacing-bottom spacing-bottom--big',
-                                data: {
-                                    field: child,
-                                },
-                            } only %}
+                            <div class="{{ config.name }}__col col col--sm-12 col--xl-6">
+                                {% include molecule('quote-request-form-field', 'QuoteRequestPage') with {
+                                    data: {
+                                        field: child,
+                                    },
+                                } only %}
+                            </div>
                         {% endfor %}
                     {% endblock %}
                 {% endembed %}
@@ -74,15 +75,15 @@
                 } only %}
                     {% block latestVersionVisibilityStatus %}{% endblock %}
                     {% block quoteActions %}
-                        <a class="spacing-bottom button button--expand button--hollow"
+                        <a class="spacing-bottom button button--expand button--hollow button--second"
                            href="{{ url('quote-request/details', {quoteRequestReference: data.quoteRequest.quoteRequestReference}) }}">
                             {{ 'quote_request_page.quote_request.actions.back_to_view' | trans }}
                         </a>
-                        <a class="spacing-bottom button button--expand button--edit-items"
+                        <a class="spacing-bottom button button--expand button--hollow"
                            href="{{ url('quote-request/edit-items', { quoteRequestReference: (data.quoteRequest.quoteRequestReference) }) }}">
                             {{ 'quote_request_page.quote_request.actions.edit_items' | trans }}
                         </a>
-                        <button type="submit" name="save" class="spacing-bottom button button--expand button--success">
+                        <button type="submit" name="save" class="spacing-bottom button button--expand button--hollow">
                             {{ 'quote_request_page.quote_request.actions.save' | trans }}
                         </button>
                         <button type="submit" name="sendToUser" class="spacing-bottom button button--expand button--success">

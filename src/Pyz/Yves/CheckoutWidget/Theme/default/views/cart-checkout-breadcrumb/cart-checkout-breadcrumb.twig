@@ -1,26 +1,4 @@
-{% extends template('widget') %}
-
-{% define data = {
-    addCartBreadcrumb: true,
-    isCartPage: true,
-    checkoutBreadcrumbs: _widget.stepBreadcrumbs.breadcrumbs | default([])
-} %}
-
-{% set steps = data.addCartBreadcrumb ? [{
-    label: 'cart.cart' | trans,
-    url: url('cart'),
-    isActive: data.isCartPage,
-    isEnabled: not data.isCartPage
-}] : [] %}
-
-{% for checkoutBreadcrumb in data.checkoutBreadcrumbs %}
-    {% set steps = steps | merge([{
-        label: checkoutBreadcrumb.title | trans,
-        url: url(checkoutBreadcrumb.route),
-        isActive: checkoutBreadcrumb.isActive,
-        isEnabled: checkoutBreadcrumb.isEnabled
-    }]) %}
-{% endfor %}
+{% extends view('cart-checkout-breadcrumb', '@SprykerShop:CheckoutWidget') %}
 
 {% block body %}
     {% embed molecule('breadcrumb') with {
@@ -28,27 +6,27 @@
         modifiers: ['progress'],
         data: {
             steps: steps,
-            startWithHome: false
-        }
+            startWithHome: false,
+        },
     } only %}
         {% block breadcrumbs %}
             {% for key, step in data.steps | slice(1) %}
                 {% set modifiers = step.isActive ? ['active'] : [] %}
                 {% set modifiers = step.isEnabled ? modifiers : modifiers | merge(['disabled']) %}
-                {% set progressStep =  step.isActive or not step.isEnabled ? ['progress-step'] : ['progress-complete']%}
+                {% set isStepActive = step.isActive or not step.isEnabled %}
+                {% set progressStep = isStepActive ? ['progress-step'] : ['progress-complete']%}
 
                 {% embed molecule('breadcrumb-step') with {
                     modifiers: progressStep | merge(modifiers),
                     data: {
                         stepNumber: key + 1,
                         label: step.label,
-                        url: (step.isActive or not step.isEnabled) ? '' : step.url,
-                        withChevron: false
+                        url: not isStepActive ? step.url,
+                        withChevron: false,
                     },
                     embed: {
                         lastItem: loop.last,
-                        progressStep: step.isActive or not step.isEnabled
-                    }
+                    },
                 } only %}
                     {% block body %}
                         {% if isLink and not embed.lastItem %}
@@ -58,8 +36,8 @@
                                     {% include atom('icon') with {
                                         modifiers: ['progress-check'],
                                         data: {
-                                            name: 'check'
-                                        }
+                                            name: 'check',
+                                        },
                                     } only %}
                                 </span>
                             </div>

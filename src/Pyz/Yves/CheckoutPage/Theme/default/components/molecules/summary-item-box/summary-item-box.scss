@@ -1,0 +1,56 @@
+@mixin checkout-page-summary-item-box($name: '.summary-item-box') {
+    #{$name} {
+        background-color: $setting-color-gray-7;
+        margin: 0 rem(-15) rem(15);
+        padding: rem(15);
+
+        @include helper-breakpoint-media-min($lg) {
+            margin: 0 0 rem(30);
+            padding: rem(27) rem(30) rem(30);
+        }
+
+        &__title {
+            margin-bottom: rem(10);
+            font-weight: fw(medium);
+        }
+
+        &__method {
+            font-weight: fw(medium);
+            font-size: rem(14);
+            line-height: rem(20);
+            padding-right: rem(10);
+
+            @include helper-breakpoint-media-min($lg) {
+                font-size: rem(15);
+            }
+        }
+
+        &--mobile-border-top {
+            position: relative;
+            margin-top: rem(25);
+
+            @include helper-breakpoint-media-min($lg) {
+                margin-top: 0;
+            }
+
+            &::before {
+                content: '';
+                position: absolute;
+                left: rem(-15);
+                right: rem(-15);
+                top: rem(-30);
+                height: rem(1);
+                display: block;
+                background-color: $setting-color-gray-6;
+
+                @include helper-breakpoint-media-min($lg) {
+                    display: none;
+                }
+            }
+        }
+
+        @content;
+    }
+}
+
+@include checkout-page-summary-item-box();

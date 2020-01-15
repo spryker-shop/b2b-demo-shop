@@ -1,18 +1,12 @@
-{% extends template('page-layout-main') %}
-
-{% define data = {
-    breadcrumbs: _view.stepBreadcrumbs.breadcrumbs | default([])
-} %}
-
-{% block sidebar %}{% endblock %}
+{% extends template('page-layout-checkout', '@SprykerShop:CheckoutPage') %}
 
 {% block header %}
     {% embed organism('header') with {
         modifiers: ['checkout'],
         data: {
             showSearchForm: false,
-            showNavigation: false
-        }
+            showNavigation: false,
+        },
     } only %}
         {% block headerMainContent %}
             <div class="container">
@@ -23,8 +17,8 @@
                                 class: 'is-hidden-lg-xxl spacing-right spacing-right--small',
                                 modifiers: ['small', 'reverse'],
                                 data: {
-                                    name: 'chevron-right'
-                                }
+                                    name: 'chevron-right',
+                                },
                             } only %}
                             {{ 'checkout.back_button' | trans }}
                         </a>
@@ -32,7 +26,7 @@
 
                     {% include molecule('logo') with {
                         modifiers: ['checkout'],
-                        class: 'col col--sm-4 text-center'
+                        class: 'col col--sm-4 text-center',
                     } only %}
 
                     <div class="col col--sm-4">
@@ -41,8 +35,8 @@
                                 <div class="{{ config.name }}__checkout-secure">
                                     {% include atom('icon') with {
                                         data: {
-                                            name: 'lock'
-                                        }
+                                            name: 'lock',
+                                        },
                                     } only %}
                                     <span class="{{ config.name }}__checkout-secure-text">{{ 'checkout.secure' | trans }}</span>
                                 </div>
@@ -63,8 +57,8 @@
                     modifiers: ['checkout'],
                     data: {
                         isCartPage: false,
-                        checkoutBreadcrumbs: data.breadcrumbs
-                    }
+                        checkoutBreadcrumbs: data.breadcrumbs,
+                    },
                 } only %}
             {% endblock %}
         </div>
@@ -79,10 +73,10 @@
     <div class="container {% block containerClass %}container--checkout{% endblock %}">
         {% if data.title is not empty %}
             <h1 class="title title--checkout">
-                {% if data.stepNumder is defined %}
-                    <span class="title__index">{{data.stepNumder}}</span>
+                {% if data.stepNumder is defined and data.breadcrumbs | length > 1 %}
+                    <span class="title__index">{{ data.stepNumder }}</span>
                 {% endif %}
-                {{data.title}}
+                {{ data.title }}
             </h1>
         {% endif %}
 
@@ -103,8 +97,8 @@
                         class: 'col col--sm-12 text-center spacing-y spacing-y--inner spacing-y--big',
                         data: {
                             category: 'FOOTER_NAVIGATION',
-                            template: 'navigation-footer-checkout'
-                        }
+                            template: 'navigation-footer-checkout',
+                        },
                     } only %}
                 </div>
                 {% block social %}{% endblock %}

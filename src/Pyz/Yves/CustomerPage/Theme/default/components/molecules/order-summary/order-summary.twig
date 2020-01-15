@@ -1,39 +1,79 @@
-{% extends model('component') %}
+{% extends molecule('order-summary', '@SprykerShop:CustomerPage') %}
 
 {% define config = {
-    name: 'order-summary',
-    tag: 'ul'
-} %}
-
-{% define data = {
-    order: required
+    tag: 'div',
 } %}
 
 {% block body %}
-    <li class="{{ config.name }}__item">
-        {{ 'customer.order.subTotal' | trans }}:
-        <span>{{ data.order.totals.subtotal | money(true, data.order.currencyIsoCode) }}</span>
-    </li>
+    <div class="{{ config.name }}__top grid grid--justify grid--middle">
+        <div class="col col--sm-8">
+            <h6 class="{{ config.name }}__title">{{ 'customer.order.overview' | trans }}</h6>
+        </div>
+        <div class="col col--expand text-right">
+            <span class="{{ config.name }}__label">{{ cartQuantity }} {{ 'customer.order.summary.items' | trans }}</span>
+        </div>
+    </div>
 
-    {% for expense in data.order.expenses %}
-        <li class="{{ config.name }}__item">
-            {% if expense.type == 'SHIPMENT_EXPENSE_TYPE' %} {{ 'customer.order.shipment' | trans }} {% endif %} {{ expense.name | trans }}:
-            <span>{{ expense.sumPrice | money(true, data.order.currencyIsoCode) }}</span>
+    <ul class="{{ config.name }}__list">
+        <li class="{{ config.name }}__item is-hidden-sm-md">
+            <span class="{{ config.name }}__text {{ config.name }}__text--bigger float-right">{{ data.order.totals.subtotal | money(true, data.order.currencyIsoCode) }}</span>
+            <span class="{{ config.name }}__text {{ config.name }}__text--bigger">{{ 'customer.order.subTotal' | trans }}</span>
         </li>
-    {% endfor %}
 
-    <li class="{{ config.name }}__item">
-        {{ 'customer.order.discount.total' | trans }}:
-        <strong class="text-alt">- {{ data.order.totals.discountTotal | money(true, data.order.currencyIsoCode) }}</strong>
-    </li>
-    <li class="{{ config.name }}__item">
+        <li class="{{ config.name }}__item">
+            <span class="float-right">{{ data.order.totals.expenseTotal | money(true, data.order.currencyIsoCode) }}</span>
+            <span class="{{ config.name }}__text {{ config.name }}__text--bigger">{{ 'customer.order.expenseTotal' | trans }}</span>
+
+            {% for expense in data.order.expenses if expense.type == 'SHIPMENT_EXPENSE_TYPE' %}
+                <div class="{{ config.name }}__text-wrap grid grid--justify grid--middle">
+                    <span class="{{ config.name }}__text col col--sm-8 col--lg-10 text-secondary">{{ expense.shipment.carrier.name ~ ' - ' ~ (expense.name | trans) }}</span>
+                    <span class="{{ config.name }}__text {{ config.name }}__text--bigger col col--expand text-secondary text-right">{{ expense.sumPrice | money(true, data.order.currencyIsoCode) }}</span>
+                </div>
+            {% endfor %}
+
+
+            {% for expense in data.order.expenses if expense.type == 'THRESHOLD_EXPENSE_TYPE' %}
+                <div class="{{ config.name }}__text-wrap grid grid--justify grid--middle">
+                    <span class="{{ config.name }}__text col col--sm-8 col--lg-10 text-secondary">{{ 'Surcharge' | trans }}</span>
+                    <span class="{{ config.name }}__text {{ config.name }}__text--bigger col col--expand text-secondary text-right">{{ expense.sumPrice | money(true, data.order.currencyIsoCode) }}</span>
+                </div>
+            {% endfor %}
+        </li>
+
+        <li class="{{ config.name }}__item">
+            <span class="{{ config.name }}__text {{ config.name }}__text--bigger">{{ 'customer.order.summary.discounts' | trans }}</span>
+
+            {% for discount in data.order.calculatedDiscounts %}
+                <div class="{{ config.name }}__text-wrap grid grid--justify grid--middle">
+                    <span class="{{ config.name }}__text col col--sm-8 col--lg-10 text-secondary">{{ discount.displayName | trans }}</span>
+                    <span class="{{ config.name }}__text {{ config.name }}__text--bigger col col--expand text-right text-alt">- {{ discount.sumAmount | money(true, data.order.currencyIsoCode) }}</span>
+                </div>
+            {% endfor %}
+        </li>
+
         {% if data.order.totals.canceledTotal %}
-            {{ 'customer.order.canceledTotal' | trans }}:
-            <span>- {{ data.order.totals.canceledTotal | money(true, data.order.currencyIsoCode) }}</span>
+            <li class="{{ config.name }}__item">
+                <span class="float-right">{{ data.order.totals.canceledTotal | money(true, data.order.currencyIsoCode) }}</span>
+                <span class="{{ config.name }}__text {{ config.name }}__text--bigger">{{ 'customer.order.canceledTotal' | trans }}</span>
+            </li>
         {% endif %}
-    </li>
-    <li>
-        <strong class="{{ config.name }}__item">{{ 'customer.order.grandTotal' | trans }}:
-        <span>{{ data.order.totals.grandTotal | money(true, data.order.currencyIsoCode) }}</span></strong>
-    </li>
+
+        <li class="{{ config.name }}__item is-hidden-sm-md">
+            <span class="float-right">{{ data.order.totals.taxTotal.amount | money(true, data.order.currencyIsoCode) }}</span>
+            <span class="{{ config.name }}__text {{ config.name }}__text--bigger">{{ 'customer.order.taxTotal' | trans }}</span>
+        </li>
+
+        <li class="{{ config.name }}__item {{ config.name }}__item--total">
+            <div class="is-hidden-lg-xxl">
+                <strong class="{{ config.name }}__title {{ config.name }}__title--total float-right">{{ data.order.totals.subtotal | money(true, data.order.currencyIsoCode) }}</strong>
+                <h6 class="{{ config.name }}__title {{ config.name }}__title--total">{{ 'customer.order.subTotal' | trans }}</h6>
+            </div>
+            <div class="is-hidden-lg-xxl">
+                <strong class="{{ config.name }}__title {{ config.name }}__title--total float-right">{{ data.order.totals.taxTotal.amount | money(true, data.order.currencyIsoCode) }}</strong>
+                <h6 class="{{ config.name }}__title {{ config.name }}__title--total">{{ 'customer.order.taxTotal' | trans }}</h6>
+            </div>
+            <strong class="{{ config.name }}__title {{ config.name }}__title--total {{ config.name }}__title--color-gray float-right">{{ data.order.totals.grandTotal | money(true, data.order.currencyIsoCode) }}</strong>
+            <h6 class="{{ config.name }}__title {{ config.name }}__title--total {{ config.name }}__title--color-gray">{{ 'customer.order.grandTotal' | trans }}</h6>
+        </li>
+    </ul>
 {% endblock %}

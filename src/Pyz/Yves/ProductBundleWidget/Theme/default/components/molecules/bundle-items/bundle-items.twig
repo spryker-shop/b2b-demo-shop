@@ -1,0 +1,36 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'bundle-items',
+} %}
+
+{% define data = {
+    items: required,
+    title: 'cart.item.bundle.description' | trans,
+} %}
+
+{% block component %}
+    {% if data.items %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+    {% block title %}
+        <h5 class="{{config.name}}__title">{{ data.title }}</h5>
+    {% endblock %}
+    {% block itemsList %}
+        <ul class="{{config.name}}__list">
+            {% block items %}
+                {% for item in data.items %}
+                    {% block item %}
+                        <li class="{{config.name}}__item">
+                            {{ item.name }}
+                            <span class="{{config.name}}__quantity">x {{ item.quantity }}</span>
+                        </li>
+                    {% endblock %}
+                {% endfor %}
+            {% endblock %}
+        </ul>
+    {% endblock %}
+{% endblock %}

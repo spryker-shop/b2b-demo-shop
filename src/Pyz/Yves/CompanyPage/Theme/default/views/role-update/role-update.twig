@@ -4,9 +4,8 @@
     form: _view.companyRoleForm,
     permissions: _view.permissions,
     idCompanyRole: _view.idCompanyRole,
-
     title: 'company.account.company_role' | trans,
-    activePage: 'role'
+    activePage: 'role',
 } %}
 
 {% block breadcrumbs %}
@@ -15,17 +14,17 @@
             steps: [
                 {
                     label: 'company.account.page-title' | trans,
-                    url: url('company/overview')
+                    url: url('company/overview'),
                 }, {
                     label: 'company.account.company_role' | trans,
-                    url: url('company/company-role')
+                    url: url('company/company-role'),
                 }, {
                     label: 'company.account.company_role.edit_information' | trans({
                         '%role_name%' : data.form.vars.value.name,
-                    })
-                }
-            ]
-        }
+                    }),
+                },
+            ],
+        },
     } only %}
 {% endblock %}
 
@@ -34,8 +33,8 @@
         data: {
             title: 'company.account.company_role.edit_information' | trans({
                 '%role_name%' : data.form.vars.value.name,
-            })
-        }
+            }),
+        },
     } only %}
 
     {% include molecule('form') with {
@@ -43,18 +42,19 @@
         class: 'spacing-bottom--biggest',
         data: {
             form: data.form,
+            shouldRequireMessage: true,
             submit: {
                 enable: true,
-                class: 'form__action--expand-sm-md form__action--sm-md-first button'
+                class: 'form__action--expand-sm-md form__action--sm-md-first button',
             },
             cancel: {
                 enable: true,
                 url: url('company/company-role'),
                 text: 'general.back.button' | trans,
                 icon: null,
-                class: 'form__action--expand-sm-md button button--hollow'
-            }
-        }
+                class: 'form__action--expand-sm-md button button--hollow',
+            },
+        },
     } only %}
 
     {% include molecule('permission-table', 'CompanyPage') with {

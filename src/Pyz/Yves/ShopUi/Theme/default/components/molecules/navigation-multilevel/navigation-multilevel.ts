@@ -2,21 +2,19 @@ import Component from 'ShopUi/models/component';
 import OverlayBlock from '../../atoms/overlay-block/overlay-block';
 
 export default class NavigationMultilevel extends Component {
-    readonly overlay: OverlayBlock;
-    readonly triggers: HTMLElement[];
-    readonly touchTriggers: HTMLElement[];
-    readonly targets: HTMLElement[];
+    protected overlay: OverlayBlock;
+    protected triggers: HTMLElement[];
+    protected touchTriggers: HTMLElement[];
 
-    constructor() {
-        super();
-        this.overlay = <OverlayBlock>document.querySelector(this.overlaySelector);
-        this.triggers = <HTMLElement[]>Array.from(this.querySelectorAll(this.trigerSelector));
-        this.touchTriggers = <HTMLElement[]>Array.from(this.querySelectorAll(this.touchSelector));
-        this.targets = <HTMLElement[]>Array.from(document.querySelectorAll(this.targetSelector));
-    }
+    protected readyCallback(): void {}
 
-    protected readyCallback(): void {
+    protected init(): void {
+        this.overlay = <OverlayBlock>document.getElementsByClassName(this.overlayBlockClassName)[0];
+        this.triggers = <HTMLElement[]>Array.from(this.getElementsByClassName(`${this.jsName}__trigger`));
+        this.touchTriggers = <HTMLElement[]>Array.from(this.getElementsByClassName(`${this.jsName}__touch-trigger`));
+
         this.mapEvents();
+        this.addReverseClassToDropDownMenu();
     }
 
     protected mapEvents(): void {
@@ -31,6 +29,20 @@ export default class NavigationMultilevel extends Component {
         });
     }
 
+    protected addReverseClassToDropDownMenu(): void {
+        this.triggers.forEach((trigger: HTMLElement) => {
+            const dropItem = <HTMLElement>trigger.getElementsByClassName(`${this.jsName}__wrapper`)[0];
+
+            if (!dropItem) {
+                return;
+            }
+
+            if (this.isDropMenuReverse(trigger, dropItem)) {
+                dropItem.classList.add(this.reverseClassName);
+            }
+        });
+    }
+
     protected onTriggerOver(event: Event): void {
         if (this.isWidthMoreThanAvailableBreakpoint()) {
             const trigger = <HTMLElement>event.currentTarget;
@@ -40,10 +52,6 @@ export default class NavigationMultilevel extends Component {
         }
     }
 
-    protected addClass(trigger: HTMLElement): void {
-        trigger.classList.add(this.classToToggle);
-    }
-
     protected onTriggerOut(event: Event): void {
         if (this.isWidthMoreThanAvailableBreakpoint()) {
             const trigger = <HTMLElement>event.currentTarget;
@@ -51,6 +59,10 @@ export default class NavigationMultilevel extends Component {
             this.overlay.hideOverlay();
             this.removeClass(trigger);
         }
+    }
+
+    protected addClass(trigger: HTMLElement): void {
+        trigger.classList.add(this.classToToggle);
     }
 
     protected removeClass(trigger: HTMLElement): void {
@@ -70,6 +82,14 @@ export default class NavigationMultilevel extends Component {
         }
     }
 
+    protected isDropMenuReverse(trigger: HTMLElement, dropItem: HTMLElement): boolean {
+        const leftPositionToTheMenuItem = trigger.offsetLeft;
+        const windowWidth = window.innerWidth;
+        const dropItemWidth = dropItem ? dropItem.offsetWidth : 0;
+
+        return windowWidth - leftPositionToTheMenuItem < dropItemWidth;
+    }
+
     protected isWidthMoreThanAvailableBreakpoint(): boolean {
         return window.innerWidth >= this.availableBreakpoint;
     }
@@ -78,27 +98,19 @@ export default class NavigationMultilevel extends Component {
         return block.getAttribute(attr);
     }
 
-    get targetSelector(): string {
-        return this.getAttribute('target-selector');
-    }
-
-    get classToToggle(): string {
+    protected get classToToggle(): string {
         return this.getAttribute('class-to-toggle');
     }
 
-    get availableBreakpoint(): number {
+    protected get availableBreakpoint(): number {
         return Number(this.getAttribute('available-breakpoint'));
     }
 
-    get overlaySelector(): string {
-        return '.js-overlay-block';
+    protected get overlayBlockClassName(): string {
+        return this.getAttribute('overlay-block-class-name');
     }
 
-    get trigerSelector(): string {
-        return `.${this.jsName}__trigger`;
-    }
-
-    get touchSelector(): string {
-        return `.${this.jsName}__touch-trigger`;
+    protected get reverseClassName(): string {
+        return this.getAttribute('reverse-class-name');
     }
 }

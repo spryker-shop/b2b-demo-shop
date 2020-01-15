@@ -1,0 +1,42 @@
+{% extends molecule('selected-product-list', '@SprykerShop:ConfigurableBundlePage') %}
+
+{% block header %}
+    <div class="grid grid--middle">
+        {% block headerInner %}
+            {% block title %}
+                <h4 class="col">{{ data.configurableBundleTemplateStorage.slots[idSlot].name | trans }}</h4>
+            {% endblock %}
+
+            {% block form %}
+                <span class="col">
+                    {% block formInner %}
+                        {% embed molecule('configurator-state-form', 'ConfigurableBundlePage') with {
+                            data: {
+                                form: data.form.createView,
+                                submitButtonText: 'configurable_bundle_page.edit' | trans,
+                                action: path(
+                                    'configurable-bundle/configurator/slots', {
+                                        'idConfigurableBundleTemplate': data.configurableBundleTemplateStorage.idConfigurableBundleTemplate,
+                                        'idConfigurableBundleTemplateSlot': data.configurableBundleTemplateStorage.slots[idSlot].idConfigurableBundleTemplateSlot,
+                                    }
+                                ),
+                            },
+                        } only %}
+                            {% block action %}
+                                {% set buttonModifiers = buttonModifiers | merge(['icon']) %}
+
+                                {% include molecule('configurator-button', 'ConfigurableBundlePage') with {
+                                    modifiers: buttonModifiers,
+                                    attributes: buttonAttributes,
+                                    data: {
+                                        icon: 'edit',
+                                    },
+                                } only %}
+                            {% endblock %}
+                        {% endembed %}
+                    {% endblock %}
+                </span>
+            {% endblock %}
+        {% endblock %}
+    </div>
+{% endblock %}

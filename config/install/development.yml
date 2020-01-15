@@ -196,8 +196,14 @@ sections:
                 - US
                 - DE
 
-        setup-search:
-            command: "vendor/bin/console setup:search"
+        setup-search-create-sources:
+            command: "vendor/bin/console search:setup:sources"
+            stores: true
+            groups:
+                - elastic
+
+        setup-seach-create-source-map:
+            command: "vendor/bin/console search:setup:source-map"
             stores: true
             groups:
                 - elastic

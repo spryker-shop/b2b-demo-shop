@@ -5,7 +5,7 @@
     form: _view.shoppingListForm,
     shoppingList: _view.shoppingList,
     shoppingListItemProducts: _view.productViewTransfers,
-    idShoppingList: _view.shoppingList.idShoppingList | default
+    idShoppingList: _view.shoppingList.idShoppingList | default,
 } %}
 
 {% block breadcrumbs %}
@@ -75,13 +75,13 @@
                             {% set isProductAvailable = not productDiscontinuedWidget.isDiscontinued and isProductAvailable %}
                         {% endif %}
 
-                        {% embed molecule('product-item') with {
+                        {% embed molecule('product-card-item') with {
                             modifiers: ['shopping-list', isProductAvailable ? '' : 'hidden'],
                             data: {
                                 listItem: product,
                                 form: data.form,
                                 imageModifiers: ['shopping-list'],
-                                canEdit: true
+                                canEdit: true,
                             },
                             embed: {
                                 key: key,
@@ -127,7 +127,7 @@
                             {% block price %}
                                 {% if data.listItem.price is not empty %}
                                     {% include molecule('money-price') with {
-                                        modifiers: ['cart', 'available'],
+                                        modifiers: ['medium', 'block', 'margin-bottom-from-tablet', 'gray-color'],
                                         data: {
                                             amount: data.listItem.price,
                                             originalAmount: data.listItem.prices.ORIGINAL is not defined or data.listItem.prices.ORIGINAL is empty ? null : data.listItem.prices.ORIGINAL
@@ -151,9 +151,9 @@
 
                             {% block deleteButton %}
                                 <div class="col col--sm-12 grid grid--right">
-                                    <a class="link link--icon {{ config.name }}__remove-button {{ config.jsName }}-remove-button-{{ data.listItem.sku }}" href="{{ path('shopping-list/remove-item', {
+                                    <a class="link link--icon {{ config.name }}__remove-button" href="{{ path('shopping-list/remove-item', {
                                         idShoppingList: embed.idShoppingList, idShoppingListItem: data.listItem.idShoppingListItem
-                                    }) }}">
+                                    }) }}" data-init-single-click>
                                         {% include atom('icon') with {
                                             modifiers: ['link'],
                                             data: {
@@ -165,12 +165,6 @@
                                         </span>
                                     </a>
                                 </div>
-
-                                {% include molecule('action-single-click-enforcer') with {
-                                    attributes: {
-                                        'target-selector': '.' ~ config.jsName ~ '-remove-button-' ~ data.listItem.sku
-                                    }
-                                } only %}
                             {% endblock %}
                         {% endembed %}
 

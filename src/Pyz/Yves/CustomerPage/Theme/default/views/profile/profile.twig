@@ -3,23 +3,23 @@
 {% define data = {
     forms: {
         profile: _view.profileForm,
-        password: _view.passwordForm
+        password: _view.passwordForm,
     },
 
     activePage: 'profile',
-    title: 'customer.account.profile_data' | trans
+    title: 'customer.account.profile_data' | trans,
 } %}
 
 {% macro profileForm(title, content) %}
     {% embed molecule('action-card') with {
         data: {
             title: title,
-            content: content
-        }
+            content: content,
+        },
     } only %}
         {% block content %}
             {% include molecule('form') with {
-                data: data.content
+                data: data.content,
             } only %}
         {% endblock %}
     {% endembed %}
@@ -30,7 +30,7 @@
         modifiers: ['first'],
         data: {
             title: 'customer.account.profile_data' | trans,
-        }
+        },
     } only %}
 
     {% include molecule('action-card-grid') with {
@@ -40,26 +40,28 @@
                 {
                     content: _self.profileForm('customer.profile.update' | trans, {
                         form: data.forms.profile,
+                        shouldRequireMessage: true,
                         layout: {
                             salutation: 'col col--sm-12 col--lg-4',
                             first_name: 'col col--sm-12 col--lg-4',
-                            last_name: 'col col--sm-12 col--lg-4'
+                            last_name: 'col col--sm-12 col--lg-4',
                         },
                         submit: {
-                            enable: true
-                        }
+                            enable: true,
+                        },
                     })
                 },
                 {
                     content: _self.profileForm('customer.password.update' | trans, {
                         form: data.forms.password,
+                        shouldRequireMessage: true,
                         submit: {
-                            enable: true
-                        }
+                            enable: true,
+                        },
                     })
-                }
-            ]
-        }
+                },
+            ],
+        },
     } only %}
     {% include molecule('delete-account', 'CustomerPage') only %}
 {% endblock %}

@@ -16,17 +16,23 @@
 %}
 
 {% block body %}
-    <div class="order-sidebar__item order-sidebar__item--end">
+    <div class="{{ config.name }}__wrapper">
         <ul class="list">
+            {% set quoteApprovalWidget = findWidget('QuoteApprovalWidget', [data.cart]) %}
+            {% set isQuoteApprovalWidgetVisible = quoteApprovalWidget and quoteApprovalWidget.isVisible %}
+            {% if isQuoteApprovalWidgetVisible and not canProceedToCheckout %}
+                {% set canProceedToCheckout = true %}
+            {% endif %}
+
             {% block cartSummaryContent %}
                 <li class="list__item">
-                    {% include molecule('cart-discount-summary', 'DiscountWidget') ignore missing with {
-                        modifiers: ['cart'],
+                    {% include molecule('cart-code-summary', 'CartCodeWidget') ignore missing with {
                         data: {
+                            isQuoteEditable: data.isQuoteEditable,
                             voucherDiscounts: data.cart.voucherDiscounts,
                             ruleDiscounts: data.cart.cartRuleDiscounts,
-                            discountTotal: data.cart.totals.discounttotal
-                        }
+                            discountTotal: data.cart.totals.discounttotal,
+                        },
                     } only %}
                 </li>
 
@@ -57,33 +63,25 @@
         </ul>
     </div>
 
-    {% widget 'QuoteApprovalWidget' args [data.cart] only %}
-        {% block container %}
-            <div class="order-sidebar__item order-sidebar__item--approve-request">
-                {{ parent() }}
-            </div>
-        {% endblock %}
-    {% endwidget %}
-
-    {% if data.isQuoteValid %}
-        {% widget 'QuoteApproveRequestWidget' args [data.cart] %}
-            {% block container %}
-                <div class="order-sidebar__item order-sidebar__item--approve-request">
+    {% if canProceedToCheckout and can('SeeOrderPlaceSubmitPermissionPlugin') %}
+        {% widget 'ProceedToCheckoutButtonWidget' args [data.cart] %}
+            {% block body %}
+                <div class="spacing-top spacing-top--big">
                     {{ parent() }}
                 </div>
             {% endblock %}
         {% endwidget %}
     {% endif %}
 
-    {% if canProceedToCheckout and can('SeeOrderPlaceSubmitPermissionPlugin') %}
-        {% widget 'ProceedToCheckoutButtonWidget' args [data.cart] %}{% endwidget %}
-    {% endif %}
-
     {% if is_granted('ROLE_USER') %}
         {% widget 'QuoteRequestCreateWidget' args [data.cart] only %}
             {% block body %}
                 <div class="spacing-y">
-                    {{ parent() }}
+                    {% if data.isVisible %}
+                        <a class="button button--expand button--hollow" href="{{ url('quote-request/create') }}">
+                            {{ 'quote_request_widget.request_for_quote' | trans }}
+                        </a>
+                    {% endif %}
                 </div>
             {% endblock %}
         {% endwidget %}

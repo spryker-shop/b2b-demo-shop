@@ -1,0 +1,45 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'cart-locking',
+} %}
+
+{% define data = {
+    quoteApprovals: required,
+    quoteRequestVersionReference: required,
+} %}
+
+{% block body %}
+    {% set hasQuoteApprovalLock = data.quoteApprovals is not empty %}
+    {% set hasQuoteRequestLock = data.quoteRequestVersionReference %}
+
+    <form class="{{ config.name }}__form" method="POST" action="{{ path('cart/reset-lock') }}">
+
+        {% include atom('icon') with {
+            modifiers: ['cart-locked'],
+            data: {
+                name: 'cart-locked',
+            },
+        } only %}
+
+        <div class="{{ config.name }}__info">
+            <strong>{{ 'cart_page.quote.label.locked_cart' | trans }}</strong>
+            <p class="{{ config.name }}__message">
+                {% if hasQuoteApprovalLock and hasQuoteRequestLock %}
+                    {{ 'persistent_cart.quote.label.locked_cart' | trans }}
+                {% elseif hasQuoteApprovalLock %}
+                    {{ 'persistent_cart.quote.label.locked_cart.by_quote_approval' | trans }}
+                {% elseif hasQuoteRequestLock %}
+                    {{ 'persistent_cart.quote.label.locked_cart.by_quote_request' | trans }}
+                {% else %}
+                    {{ 'persistent_cart.quote.label.locked_cart' | trans }}
+                {% endif %}
+
+                <button type="submit" class="link {{ config.name }}__reset-link">
+                    {{ 'persistent_cart.quote.button.reset_lock' | trans }}
+                </button>
+                {{ 'persistent_cart.quote.label.discarded_locked_cart' | trans }}
+            </p>
+        </div>
+    </form>
+{% endblock %}

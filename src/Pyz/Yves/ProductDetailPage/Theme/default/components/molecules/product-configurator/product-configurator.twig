@@ -52,11 +52,11 @@
         {% widget 'ProductPriceVolumeWidget' args [data.product] only %}
         {% nowidget %}
             {% include molecule('money-price') with {
-                modifiers: ['pdp'],
+                modifiers: ['big'],
                 data: {
                     amount: data.product.price,
-                    originalAmount: data.product.prices.ORIGINAL is defined ? data.product.prices.ORIGINAL : null
-                }
+                    originalAmount: data.product.prices.ORIGINAL is defined ? data.product.prices.ORIGINAL : null,
+                },
             } only %}
         {% endwidget %}
     {% endif %}
@@ -82,10 +82,9 @@
         </div>
         {% include molecule('toggler-accordion') with {
             attributes: {
-                'wrap-selector': '.js-product-options-bundle',
-                'trigger-selector': '.js-product-options-bundle__title',
-                'class-to-toggle': 'is-hidden'
-            }
+                'wrap-class-name': 'js-product-options-bundle',
+                'trigger-class-name': 'js-product-options-bundle__title',
+            },
         } only %}
     {% endif %}
 

@@ -1,9 +1,7 @@
-{% extends template('widget') %}
+{% extends view('switcher', '@SprykerShop:LanguageSwitcherWidget') %}
 
 {% define data = {
-    languages: _widget.languages,
-    currentLanguage: _widget.currentLanguage,
-    getSchemeAndHttpHost: app.request.getSchemeAndHttpHost()
+    getSchemeAndHttpHost: app.request.getSchemeAndHttpHost(),
 } %}
 
 {% block body %}
@@ -13,8 +11,8 @@
                 data: {
                     languages: data.languages,
                     currentLanguage: data.currentLanguage,
-                    getSchemeAndHttpHost: data.getSchemeAndHttpHost
-                }
+                    getSchemeAndHttpHost: data.getSchemeAndHttpHost,
+                },
             } only %}
         </form>
     {% endif %}

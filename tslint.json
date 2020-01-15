@@ -5,6 +5,9 @@
             "./vendor/spryker-eco/**/*"
         ]
     },
+    "rulesDirectory": [
+        "node_modules/tslint-lines-between-class-members"
+    ],
     "rules": {
         "ban-ts-ignore": true,
         "ban-types": [
@@ -127,7 +130,6 @@
         "no-unnecessary-class": true,
         "no-unsafe-finally": true,
         "no-unused-expression": true,
-        "no-use-before-declare": true,
         "no-var-keyword": true,
         "no-void-expression": [
             true,
@@ -284,6 +286,10 @@
             "check-branch",
             "check-operator",
             "check-rest-spread"
+        ],
+        "lines-between-class-members": [
+            true,
+            1
         ]
     }
 }
