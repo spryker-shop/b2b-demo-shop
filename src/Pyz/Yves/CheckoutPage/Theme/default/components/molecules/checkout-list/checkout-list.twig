@@ -8,6 +8,7 @@
 {% define data = {
     choices: required,
     form: required,
+    checkedValue: '',
 } %}
 
 {% block body %}
@@ -20,7 +21,7 @@
                     label: '<span class="col">' ~ parts[0] ~ '</span> <span class="col">' ~ parts[1] ~ '</span>',
                     required: false,
                     attributes: {
-                        checked: key == 0,
+                        checked: choice.value == data.checkedValue,
                     },
                     rowAttr: {
                         class: 'radio radio--checkout' ~ (key != 0 ? ' radio--border-top-less'),

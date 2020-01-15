@@ -1,30 +1,30 @@
 {% extends model('component') %}
 
 {% define config = {
-    name: 'product-item-variant-selector'
+    name: 'product-item-variant-selector',
 } %}
 
 {% define data = {
     productItem: required,
     canEdit: required,
-    productItemAttributes: []
+    productItemAttributes: [],
 } %}
 
 {% block component %}
-    {% set isItemVariantReplaceAvailable = data.productItemAttributes is not empty %}
-    {% set cartProductMeasurementUnitQuantitySelectorWidget = findWidget('CartProductMeasurementUnitQuantitySelectorWidget', [data.productItem]) %}
-
-    {% if cartProductMeasurementUnitQuantitySelectorWidget %}
-        {% set isIdProductMeasurementSalesUnit = cartProductMeasurementUnitQuantitySelectorWidget.quantitySalesUnit.idProductMeasurementSalesUnit is defined %}
-        {% set isItemVariantReplaceAvailable = isIdProductMeasurementSalesUnit and isItemVariantReplaceAvailable %}
-    {% endif %}
-
-    {% if isItemVariantReplaceAvailable %}
+    {% if data.productItemAttributes is not empty %}
         {{ parent() }}
     {% endif %}
 {% endblock %}
 
 {% block body %}
+    {% set cartProductMeasurementUnitQuantitySelectorWidget = findWidget('CartProductMeasurementUnitQuantitySelectorWidget', [data.productItem]) %}
+    {% set isProductSalesUnit = false %}
+
+    {% if cartProductMeasurementUnitQuantitySelectorWidget %}
+        {% set isProductSalesUnit = cartProductMeasurementUnitQuantitySelectorWidget.quantitySalesUnit.idProductMeasurementSalesUnit is defined
+            or cartProductMeasurementUnitQuantitySelectorWidget.parameters.itemTransfer.amountSalesUnit is not null %}
+    {% endif %}
+
     <form method="POST" action="{{ path('cart/update', {'sku': data.productItem.sku }) }}">
         <ul class="list spacing-y">
             {% for attributeName, attributeOptions in data.productItemAttributes %}
@@ -53,9 +53,10 @@
                                 },
                                 attributes: {
                                     name: 'preselectedAttributes[' ~ attributeName ~ ']',
-                                    'onchange': 'this.form.submit();',
-                                    'config-theme': 'small'
-                                }
+                                    disabled: not data.canEdit or isProductSalesUnit,
+                                    'data-form-submitter': true,
+                                    'config-theme': 'small',
+                                },
                             } only %}
                         </div>
                     </label>
