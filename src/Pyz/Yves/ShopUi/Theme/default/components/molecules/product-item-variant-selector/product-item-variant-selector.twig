@@ -16,7 +16,7 @@
 
     {% if cartProductMeasurementUnitQuantitySelectorWidget %}
         {% set isIdProductMeasurementSalesUnit = cartProductMeasurementUnitQuantitySelectorWidget.quantitySalesUnit.idProductMeasurementSalesUnit is defined %}
-        {% set isItemVariantReplaceAvailable = isIdProductMeasurementSalesUnit and isItemVariantReplaceAvailable %}
+        {% set isItemVariantReplaceAvailable = not isIdProductMeasurementSalesUnit and isItemVariantReplaceAvailable %}
     {% endif %}
 
     {% if isItemVariantReplaceAvailable %}
