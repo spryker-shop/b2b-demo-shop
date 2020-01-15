@@ -14,7 +14,7 @@
 
                 {% for item in shipmentGroup.cartItems %}
                     {% set cartItem = item.bundleProduct ?? item %}
-                    {% set isConfiguredBundle = concreteItem.salesOrderConfiguredBundleItem is defined and concreteItem.salesOrderConfiguredBundleItem is not empty %}
+                    {% set isConfiguredBundle = cartItem.salesOrderConfiguredBundleItem is defined and cartItem.salesOrderConfiguredBundleItem is not empty %}
 
                     {% if not isConfiguredBundle %}
                         {% embed molecule('product-card-item') with {
