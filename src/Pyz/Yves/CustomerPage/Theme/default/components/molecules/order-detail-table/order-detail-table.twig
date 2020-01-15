@@ -13,7 +13,7 @@
                 {% widget 'OrderConfiguredBundleWidget' args [data.order, shipmentGroup.items] only %}{% endwidget %}
 
                 {% for item in shipmentGroup.cartItems %}
-                    {% set cartItem = item.bundleProduct ?? item %}
+                    {% set concreteItem = item.bundleProduct ?? item %}
                     {% set isConfiguredBundle = concreteItem.salesOrderConfiguredBundleItem is defined and concreteItem.salesOrderConfiguredBundleItem is not empty %}
 
                     {% if not isConfiguredBundle %}
