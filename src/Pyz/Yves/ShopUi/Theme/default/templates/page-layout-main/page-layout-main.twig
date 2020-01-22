@@ -191,6 +191,12 @@
                 'target-selector': '[data-init-single-click]',
             },
         } only %}
+
+        {% include molecule('form-submitter') with {
+            attributes: {
+                'trigger-selector': '[data-form-submitter]',
+            },
+        } only %}
     {% endblock %}
 
     {% block icons %}
