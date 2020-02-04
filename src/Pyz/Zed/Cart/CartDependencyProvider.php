@@ -126,21 +126,21 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
     protected function getCartPreCheckPlugins(Container $container)
     {
         return [
+            new CheckAvailabilityPlugin(),
+            new CartBundlePricesPreCheckPlugin(),
+            new ConfiguredBundleTemplateSlotCombinationPreCheckPlugin(),
+            new CartBundleAvailabilityPreCheckPlugin(),
+            new AmountAvailabilityCartPreCheckPlugin(), #ProductPackagingUnit
             new ProductExistsCartPreCheckPlugin(),
             new CartItemPricePreCheckPlugin(),
-            new CartBundlePricesPreCheckPlugin(),
             new CartItemOptionPreCheckPlugin(),
             new ProductOptionValuePriceExistsCartPreCheckPlugin(),
-            new CartBundleAvailabilityPreCheckPlugin(),
             new CartBundleActivePreCheckPlugin(),
             new CartShipmentPreCheckPlugin(),
             new ProductQuantityRestrictionCartPreCheckPlugin(),
             new ProductListRestrictedItemsPreCheckPlugin(),
             new ProductDiscontinuedCartPreCheckPlugin(), #ProductDiscontinuedFeature
-            new AmountAvailabilityCartPreCheckPlugin(), #ProductPackagingUnit
             new AmountRestrictionCartPreCheckPlugin(), #ProductPackagingUnit
-            new ConfiguredBundleTemplateSlotCombinationPreCheckPlugin(),
-            new CheckAvailabilityPlugin(),
         ];
     }
 
