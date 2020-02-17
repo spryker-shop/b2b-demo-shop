@@ -126,7 +126,7 @@ use Spryker\Zed\StorageRedis\Communication\Console\StorageRedisExportRdbConsole;
 use Spryker\Zed\StorageRedis\Communication\Console\StorageRedisImportRdbConsole;
 use Spryker\Zed\Synchronization\Communication\Console\ExportSynchronizedDataConsole;
 use Spryker\Zed\Transfer\Communication\Console\DataBuilderGeneratorConsole;
-use Spryker\Zed\Transfer\Communication\Console\GeneratorConsole;
+use Spryker\Zed\Transfer\Communication\Console\TransferGeneratorConsole;
 use Spryker\Zed\Transfer\Communication\Console\ValidatorConsole;
 use Spryker\Zed\Translator\Communication\Console\CleanTranslationCacheConsole;
 use Spryker\Zed\Translator\Communication\Console\GenerateTranslationCacheConsole;
@@ -152,9 +152,9 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
         $commands = [
             new CacheWarmerConsole(),
             new BuildNavigationConsole(),
+            new TransferGeneratorConsole(),
             new EntityTransferGeneratorConsole(),
             new EmptyAllCachesConsole(),
-            new GeneratorConsole(),
             new InitializeDatabaseConsole(),
             new SearchConsole(),
             new GenerateSourceMapConsole(),
