@@ -127,6 +127,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
     {
         return [
             new ProductExistsCartPreCheckPlugin(),
+            new CheckAvailabilityPlugin(),
             new CartItemPricePreCheckPlugin(),
             new CartBundlePricesPreCheckPlugin(),
             new CartItemOptionPreCheckPlugin(),
@@ -140,7 +141,6 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new AmountAvailabilityCartPreCheckPlugin(), #ProductPackagingUnit
             new AmountRestrictionCartPreCheckPlugin(), #ProductPackagingUnit
             new ConfiguredBundleTemplateSlotCombinationPreCheckPlugin(),
-            new CheckAvailabilityPlugin(),
         ];
     }
 
