@@ -1,0 +1,12 @@
+{% extends view('product-item-color-selector', '@SprykerShop:ProductGroupWidget') %}
+
+{% block body %}
+    {% if data.items | length > 1 %}
+        {% include molecule('product-item-color-selector', 'ProductGroupWidget') with {
+            data: {
+                items: data.items,
+                parentJsName: data.parentJsName,
+            },
+        } only %}
+    {% endif %}
+{% endblock %}
