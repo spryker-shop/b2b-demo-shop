@@ -1,8 +1,8 @@
-{% extends template('widget') %}
+{% extends view('product-review-display', '@SprykerShop:ProductReviewWidget') %}
 
 {% define data = {
-    value: _widget.rating | default(0),
-    maxValue: _widget.maximumRating
+    parentJsName: '',
+    reviewCount: 0,
 } %}
 
 {% block body %}
@@ -11,11 +11,13 @@
             data: {
                 value: data.value,
                 maxValue: data.maxValue,
-                useHalfSteps: true
+                useHalfSteps: true,
+                parentJsName: data.parentJsName,
+                reviewCount: data.reviewCount,
             },
             attributes: {
-                readonly: true
-            }
+                readonly: true,
+            },
         } only %}
     </div>
 {% endblock %}

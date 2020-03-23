@@ -15,6 +15,29 @@ export default class ProductItem extends ProductItemCore {
         super.init();
     }
 
+    set originalPrice(originalPrice: string) {
+        if (this.productOriginalPrice) {
+            this.productOriginalPrice.innerText = originalPrice;
+        }
+
+        this.setDefaultPriceColor(originalPrice);
+
+    }
+
+    protected setDefaultPriceColor(originalPrice: string): void {
+        if (!this.productDefaultPrice) {
+            return;
+        }
+
+        if (!originalPrice) {
+            this.productDefaultPrice.classList.remove(this.defaultPriceColorClassName);
+
+            return;
+        }
+
+        this.productDefaultPrice.classList.add(this.defaultPriceColorClassName);
+    }
+
     updateProductItemData(data: ProductItemData): void {
         super.updateProductItemData(data);
         this.reviewCount = data.reviewCount;
@@ -22,5 +45,9 @@ export default class ProductItem extends ProductItemCore {
 
     protected set reviewCount(reviewCount: number) {
         this.dispatchCustomEvent(EVENT_UPDATE_REVIEW_COUNT, {reviewCount});
+    }
+
+    protected get defaultPriceColorClassName(): string {
+        return this.getAttribute('default-price-color-class-name');
     }
 }
