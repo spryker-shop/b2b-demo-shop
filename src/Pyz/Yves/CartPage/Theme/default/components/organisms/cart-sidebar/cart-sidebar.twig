@@ -92,9 +92,67 @@
                 {% widget 'ShareCartByLinkWidget' args [data.cart] only %}{% endwidget %}
             {% endblock %}
         {% endembed %}
+
+        {% if data.cart.idQuote is not empty %}
+            {% embed molecule('cart-sidebar-item', 'CartPage') with {
+                data: {
+                    title: 'order_custom_reference.title' | trans,
+                    cart: data.cart,
+                    accordionItemClass: 'toggler-accordion__item',
+                    accordionIconClass: 'toggler-accordion__icon',
+                },
+            } only %}
+                {% block titleAttributes %}
+                    data-toggle-target='.js-cart-sidebar-item__content-custom-order-reference-widget'
+                {% endblock %}
+
+                {% block contentClasses %}
+                    {{ config.jsName }}__content-custom-order-reference-widget {{ parent() }}
+                {% endblock %}
+
+                {% block contentInner %}
+                    {% block orderCustomReference %}
+                        {% widget 'OrderCustomReferenceWidget' args [
+                            data.cart,
+                            '/cart'
+                        ] only %}
+                            {% block body %}
+                                {% embed molecule('order-custom-reference-form', 'OrderCustomReferenceWidget') with {
+                                    data: {
+                                        form: data.orderCustomReferenceForm,
+                                    },
+                                } only %}
+                                    {% block title %}{% endblock %}
+                                {% endembed %}
+                            {% endblock %}
+                        {% endwidget %}
+                    {% endblock %}
+                {% endblock %}
+            {% endembed %}
+        {% endif %}
     {% endif %}
 
     {% if data.cart.idQuote is not empty %}
+        {% if data.cart.orderCustomReference is defined %}
+            {% embed molecule('cart-sidebar-item', 'CartPage') with {
+                data: {
+                    title: 'order_custom_reference.title' | trans,
+                    cart: data.cart,
+                    isAccordionItem: false,
+                },
+            } only %}
+                {% block contentInner %}
+                    {% embed molecule('order-custom-reference', 'OrderCustomReferenceWidget') ignore missing with {
+                        data: {
+                            orderCustomReference: data.cart.orderCustomReference,
+                        },
+                    } only %}
+                        {% block title %}{% endblock %}
+                    {% endembed %}
+                {% endblock %}
+            {% endembed %}
+        {% endif %}
+
         {% embed molecule('cart-sidebar-item', 'CartPage') with {
             data: {
                 title: 'comment_widget.comments_to_cart' | trans,
