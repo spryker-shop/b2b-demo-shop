@@ -20,22 +20,16 @@
             {% set modifiers = ['catalog'] | merge(thumbnailModifier) %}
 
             <div class="{{ component.renderClass(config.name ~ '__image-wrap', modifiers) }}">
-                {% block productThumbnail %}
-                    {{ parent() }}
-                {% endblock %}
+                {{ block('productThumbnail') }}
 
-                {% block colors %}
-                    <div class="{{ config.name }}__colors">
-                        {{ parent() }}
-                    </div>
-                {% endblock %}
+                <div class="{{ config.name }}__colors">
+                    {{ block('colors') }}
+                </div>
             </div>
         {% endblock %}
 
         {% block content %}
-            {% block labels %}
-                {{ parent() }}
-            {% endblock %}
+            {{ block('labels') }}
 
             {% block name %}
                 <a class="{{ component.renderClass(config.name ~ '__overlay', modifiers) }} {{ config.jsName }}__name {{ config.jsName }}__link-detail-page" href="{{ data.url }}">
@@ -49,11 +43,9 @@
                 {% endif %}
             {% endblock %}
 
-            {% block rating %}
-                <div class="{{ config.name }}__rating">
-                    {{ parent() }}
-                </div>
-            {% endblock %}
+            <div class="{{ config.name }}__rating">
+                {{ block('rating') }}
+            </div>
 
             {% block priceContainer %}
                 {% block price %}
@@ -68,9 +60,7 @@
                                 },
                             } only %}
                                 {% block originalPrice %}
-                                    {% block originalPriceInner %}
-                                        {{ parent() }}
-                                    {% endblock %}
+                                    {{ block('originalPriceInner') }}
                                 {% endblock %}
                             {% endembed %}
                         </div>

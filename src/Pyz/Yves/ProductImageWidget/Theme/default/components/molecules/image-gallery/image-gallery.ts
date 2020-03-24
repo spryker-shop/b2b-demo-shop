@@ -5,6 +5,8 @@ import 'slick-carousel';
 export default class ImageGallery extends Component {
     protected galleryItems: HTMLElement[];
     protected thumbnailSlider: $;
+    protected defaultImageUrl: string;
+    protected currentSlideImage: HTMLImageElement;
 
     protected readyCallback(): void {}
 
@@ -26,6 +28,8 @@ export default class ImageGallery extends Component {
             this.thumbnailSlider.slick(
                 this.thumbnailSliderConfig
             );
+            this.getCurrentSlideImage();
+            this.setDefaultImageUrl();
         }
     }
 
@@ -37,6 +41,8 @@ export default class ImageGallery extends Component {
             this.thumbnailSlider.find('.slick-slide').removeClass('slick-current');
             slide.addClass('slick-current');
             this.changeImage(index);
+            this.getCurrentSlideImage();
+            this.setDefaultImageUrl();
         }
     }
 
@@ -54,6 +60,25 @@ export default class ImageGallery extends Component {
                 galleryItem.classList.add(this.activeClass);
             }
         });
+    }
+
+    set slideImageUrl(url: string) {
+        this.currentSlideImage.src = url;
+    }
+
+    restoreDefaultImageUrl(): void {
+        this.currentSlideImage.src = this.defaultImageUrl;
+    }
+
+    protected getCurrentSlideImage(): void {
+        const currentSlide = this.galleryItems.filter((element: HTMLElement) => {
+            return element.classList.contains(this.activeClass);
+        })[0];
+        this.currentSlideImage = currentSlide.getElementsByTagName('img')[0];
+    }
+
+    protected setDefaultImageUrl(): void {
+        this.defaultImageUrl = this.currentSlideImage.src;
     }
 
     protected get activeClass(): string {
