@@ -1,15 +1,8 @@
-{% extends model('component') %}
-
-{% define config = {
-    name: 'product-set-details',
-} %}
+{% extends organism('product-set-details', '@SprykerShop:ProductSetWidget') %}
 
 {% define data = {
-    products: required,
     title: '',
-    description: '',
-    images: [],
-    addAllSetButton: can("SeeAddToCartPermissionPlugin") | default(false),
+    addAllSetButton: can('SeeAddToCartPermissionPlugin') | default(false),
     sliderConfig: '{
         "slidesToShow": 4,
         "slidesToScroll": 1,
@@ -61,6 +54,7 @@
                     description: data.description,
                     addAllSetButton: data.addAllSetButton,
                     products: data.products,
+                    jsName: config.jsName,
                 },
             } only %}
                 {% block inner %}
@@ -78,7 +72,7 @@
                         {% for product in embed.products %}
                             {% if product.idProductConcrete is not empty %}
                                 {% if product.available %}
-                                    <input type="hidden" class="{{ config.jsName }}__product-sku-hidden-input" name="items[{{ loop.index }}][sku]" value="{{ product.sku }}"/>
+                                    <input type="hidden" class="{{ embed.jsName }}__product-sku-hidden-input" name="items[{{ loop.index }}][sku]" value="{{ product.sku }}"/>
                                     <input type="hidden" name="items[{{ loop.index }}][quantity]" value="1"/>
                                 {% endif %}
                             {% else %}
