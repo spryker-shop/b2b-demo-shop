@@ -103,7 +103,7 @@
                 },
             } only %}
                 {% block titleAttributes %}
-                    data-toggle-target='.js-cart-sidebar-item__content-custom-order-reference-widget'
+                    data-toggle-target='.{{ config.jsName }}__content-custom-order-reference-widget'
                 {% endblock %}
 
                 {% block contentClasses %}
@@ -111,22 +111,20 @@
                 {% endblock %}
 
                 {% block contentInner %}
-                    {% block orderCustomReference %}
-                        {% widget 'OrderCustomReferenceWidget' args [
-                            data.cart,
-                            '/cart'
-                        ] only %}
-                            {% block body %}
-                                {% embed molecule('order-custom-reference-form', 'OrderCustomReferenceWidget') with {
-                                    data: {
-                                        form: data.orderCustomReferenceForm,
-                                    },
-                                } only %}
-                                    {% block title %}{% endblock %}
-                                {% endembed %}
-                            {% endblock %}
-                        {% endwidget %}
-                    {% endblock %}
+                    {% widget 'OrderCustomReferenceWidget' args [
+                        data.cart,
+                        '/cart'
+                    ] only %}
+                        {% block body %}
+                            {% embed molecule('order-custom-reference-form', 'OrderCustomReferenceWidget') ignore missing with {
+                                data: {
+                                    form: data.orderCustomReferenceForm,
+                                },
+                            } only %}
+                                {% block title %}{% endblock %}
+                            {% endembed %}
+                        {% endblock %}
+                    {% endwidget %}
                 {% endblock %}
             {% endembed %}
         {% endif %}
