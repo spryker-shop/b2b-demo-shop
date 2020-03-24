@@ -1,7 +1,8 @@
 $color-selector-size: rem(18);
 $color-selector-size-big: rem(24);
+$name: '.product-item-color-selector';
 
-@include helper-color-selector($name: '.product-item-color-selector') {
+@include helper-color-selector($name) {
     @include helper-effect-transition(opacity);
     position: absolute;
     bottom: rem(-9);
@@ -9,27 +10,30 @@ $color-selector-size-big: rem(24);
     display: flex;
     flex-wrap: wrap;
 
-    //.product-list-item__content & {
-    //    opacity: 1;
-    //    position: relative;
-    //    bottom: 0;
-    //    margin: rem(10) 0;
-    //
-    //    @include helper-breakpoint-media-min($lg) {
-    //        position: absolute;
-    //        left: 20px;
-    //        bottom: 45px;
-    //        margin: 0;
-    //    }
-    //
-    //    &__colors-title {
-    //        font-size: rem(13);
-    //        color: $setting-color-gray-3;
-    //        margin-right: rem(9);
-    //        display: inline;
-    //        flex-shrink: 0;
-    //    }
-    //}
+    &--product-list {
+        opacity: 1;
+        position: relative;
+        bottom: 0;
+        margin: rem(10) 0;
+
+        @include helper-breakpoint-media-min($lg) {
+            position: absolute;
+            left: 20px;
+            bottom: 45px;
+            margin: 0;
+        }
+
+        #{$name}__colors-title {
+            font-size: rem(13);
+            color: $setting-color-gray-3;
+            margin-right: rem(9);
+            display: inline;
+        }
+    }
+
+    &__colors-title {
+        display: none;
+    }
 
     &__item {
         width: $color-selector-size;

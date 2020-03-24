@@ -38,7 +38,7 @@
             {% endblock %}
 
             {% block name %}
-                <a class="{{ component.renderClass(config.name ~ '__overlay', modifiers) }} {{ config.jsName }}__name {{ config.jsName }}__link-detail-page" href="{{ path(data.url) }}">
+                <a class="{{ component.renderClass(config.name ~ '__overlay', modifiers) }} {{ config.jsName }}__name {{ config.jsName }}__link-detail-page" href="{{ data.url }}">
                     {{ data.name }}
                 </a>
             {% endblock %}
