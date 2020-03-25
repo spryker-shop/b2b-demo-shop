@@ -8,58 +8,43 @@
     <div class="grid grid--stretch">
         {% for productAbstractView in data.productAbstractViewCollection %}
             <div class="col col--sm-12 col--md-6 col--lg-4 spacing-x spacing-x--big spacing-x--inner">
-                {% embed molecule('product-card') with {
+                {% embed molecule('product-item') with {
                     modifiers: ['catalog'],
                     data: {
-                        name: productAbstractView.name,
-                        abstractId: productAbstractView.idProductAbstract,
-                        url: productAbstractView.url,
-                        imageUrl: productAbstractView.images ? productAbstractView.images.0.externalUrlSmall,
-                        price: productAbstractView.prices.DEFAULT | default(null),
-                        originalPrice: productAbstractView.prices.ORIGINAL ?? null,
+                        product: productAbstractView,
                         category: 'category.office.furniture' | trans,
                     },
                 } only %}
                     {% block body %}
-                        <div class="{% block cardClass %}{{config.name}}__container{% endblock %}">
-                            {% block content %}
-                                {% block name %}
-                                    {{ parent() }}
-                                {% endblock %}
+                        <div class="{{ config.name }}__container">
+                            {{ block('name') }}
+                            {{ block('category') }}
 
-                                {% block sku %}
-                                    {{ parent() }}
-                                {% endblock %}
+                            <div class="{{ config.name }}__rating">
+                                {{ block('rating') }}
+                            </div>
 
-                                {% block category %}
-                                    {{ parent() }}
-                                {% endblock %}
+                            {{ block('price') }}
+                            <br>
 
-                                {% block rating %}
-                                    {{ parent() }}
-                                {% endblock %}
+                            {{ block('image') }}
 
-                                {% block price %}
-                                    {{ parent() }}
-                                    <br>
-                                {% endblock %}
-
-                                {% block image %}
-                                    {{ parent() }}
-                                {% endblock %}
-
-                                {% block labels %}
-                                    {% widget 'ProductAbstractLabelWidget' args [data.abstractId] with {modifiers: modifiers} only %}
-                                        {% block body %}
-                                            {% include molecule('label-group', 'ProductLabelWidget') with {
-                                                modifiers: ['bottom-right'],
-                                                data: {
-                                                    labels: labels,
-                                                },
-                                            } only %}
-                                        {% endblock %}
-                                    {% endwidget %}
-                                {% endblock %}
+                            {% block labels %}
+                                {% widget 'ProductAbstractLabelWidget' args [data.idProductAbstract] with {
+                                    data: {
+                                        parentJsName: config.jsName,
+                                    },
+                                } only %}
+                                    {% block body %}
+                                        {% include molecule('label-group', 'ProductLabelWidget') with {
+                                            modifiers: ['bottom-right'],
+                                            data: {
+                                                labels: labels,
+                                                parentJsName: data.parentJsName,
+                                            },
+                                        } only %}
+                                    {% endblock %}
+                                {% endwidget %}
                             {% endblock %}
                         </div>
                     {% endblock %}

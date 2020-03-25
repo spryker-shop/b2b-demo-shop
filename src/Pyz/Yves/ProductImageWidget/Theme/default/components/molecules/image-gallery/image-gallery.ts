@@ -28,9 +28,10 @@ export default class ImageGallery extends Component {
             this.thumbnailSlider.slick(
                 this.thumbnailSliderConfig
             );
-            this.getCurrentSlideImage();
-            this.setDefaultImageUrl();
         }
+
+        this.getCurrentSlideImage();
+        this.setDefaultImageUrl();
     }
 
     protected onThumbnailHover(event: Event): void {
