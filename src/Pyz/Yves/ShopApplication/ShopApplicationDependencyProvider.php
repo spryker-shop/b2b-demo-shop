@@ -225,7 +225,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             ProductConcreteSearchGridWidget::class,
             PriceProductWidget::class,
             ConfiguredBundleNoteWidget::class,
-            ProductGroupColorWidget::class
+            ProductGroupColorWidget::class,
         ];
     }
 
