@@ -176,7 +176,7 @@ class SaleSearchQueryPlugin extends AbstractPlugin implements QueryInterface, Se
     protected function createStringFacetValueFilter($idProductLabel)
     {
         $termQuery = new Term();
-        $termQuery->setTerm(PageIndexMap::STRING_FACET_FACET_VALUE, $idProductLabel);
+        $termQuery->setTerm(PageIndexMap::STRING_FACET_FACET_VALUE, (string)$idProductLabel);
 
         return $termQuery;
     }
