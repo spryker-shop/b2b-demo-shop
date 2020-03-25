@@ -276,10 +276,12 @@
       "./deploy/heroku/run.sh"
     ],
     "post-install-cmd": [
-      "PhantomInstaller\\Installer::installPhantomJS"
+      "PhantomInstaller\\Installer::installPhantomJS",
+      "GitHook\\Composer\\Scripts\\HookInstaller::installProjectHooks"
     ],
     "post-update-cmd": [
-      "PhantomInstaller\\Installer::installPhantomJS"
+      "PhantomInstaller\\Installer::installPhantomJS",
+      "GitHook\\Composer\\Scripts\\HookInstaller::installProjectHooks"
     ],
     "phpstan": [
       "php -d memory_limit=1024M vendor/bin/phpstan analyze -c phpstan.neon src/ -l 5"
