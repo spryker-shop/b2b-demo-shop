@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fb3daf067b8a1a3a1a8da63e9c494af5",
+    "content-hash": "361286f027cbb8fb56a3f88b3328a60c",
     "packages": [
         {
             "name": "codeitnowin/barcode",
@@ -44969,6 +44969,58 @@
             "time": "2020-03-18T06:08:52+00:00"
         },
         {
+            "name": "spryker/git-hook",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/git-hook.git",
+                "reference": "cdde59d61da2aa3216b5bdd586a8ad5d67753b0f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/git-hook/zipball/cdde59d61da2aa3216b5bdd586a8ad5d67753b0f",
+                "reference": "cdde59d61da2aa3216b5bdd586a8ad5d67753b0f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "symfony/console": "^3.0.0 || ^4.0.0 || ^5.0.0",
+                "symfony/process": "^3.3.0 || ^4.0.0 || ^5.0.0",
+                "symfony/yaml": "^3.0.0 || ^4.0.0 || ^5.0.0",
+                "zendframework/zend-filter": "^2.0.0"
+            },
+            "require-dev": {
+                "phpstan/phpstan": "^0.12.0",
+                "sllh/composer-versions-check": "*",
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "GitHook\\": "src/GitHook/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Spryker",
+                    "homepage": "https://spryker.com"
+                }
+            ],
+            "description": "Spryker Git hooks",
+            "homepage": "https://spryker.com",
+            "keywords": [
+                "architecture",
+                "framework",
+                "sniffer",
+                "standards"
+            ],
+            "time": "2020-01-21T07:59:37+00:00"
+        },
+        {
             "name": "spryker/module-finder",
             "version": "1.0.0",
             "source": {
@@ -46154,7 +46206,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "spryker/git-hook": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
