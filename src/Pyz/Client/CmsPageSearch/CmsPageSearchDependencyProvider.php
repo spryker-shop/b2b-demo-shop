@@ -36,7 +36,7 @@ class CmsPageSearchDependencyProvider extends SprykerCmsPageSearchDependencyProv
     }
 
     /**
-     * @return \Spryker\Client\SearchExtension\Dependency\Plugin\ResultFormatterPluginInterface[]
+     * @return \Spryker\Client\Search\Dependency\Plugin\ResultFormatterPluginInterface[]
      */
     protected function createCmsPageSearchResultFormatterPlugins(): array
     {

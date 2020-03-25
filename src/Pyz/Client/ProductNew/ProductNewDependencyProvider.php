@@ -46,7 +46,7 @@ class ProductNewDependencyProvider extends SprykerProductNewDependencyProvider
     /**
      * @return \Spryker\Client\SearchExtension\Dependency\Plugin\ResultFormatterPluginInterface[]
      */
-    protected function getNewProductsResultFormatterPlugins()
+    protected function getNewProductsResultFormatterPlugins(): array
     {
         return [
             new FacetResultFormatterPlugin(),

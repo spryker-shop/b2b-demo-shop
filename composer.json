@@ -211,7 +211,14 @@
     "swiftmailer/swiftmailer": "^5.4.5"
   },
   "require-dev": {
-    "codeception/codeception": "^3.1.0",
+    "codeception/codeception": "<4.1.2",
+    "codeception/module-asserts": "^1.1",
+    "codeception/module-cli": "^1.0",
+    "codeception/module-filesystem": "^1.0",
+    "codeception/module-phpbrowser": "^1.0",
+    "codeception/module-rest": "^1.0",
+    "codeception/module-webdriver": "^1.0",
+    "dms/phpunit-arraysubset-asserts": "^0.1.0",
     "fzaninotto/faker": "^1.6",
     "jakoch/phantomjs-installer": "^2.1.0",
     "myclabs/deep-copy": "^1.8.1",
@@ -228,7 +235,8 @@
     "spryker-sdk/phpstan-spryker": "^0.2",
     "spryker-sdk/spryk-gui": "^0.1.1",
     "spryker/architecture-sniffer": "^0.4.0",
-    "spryker/code-sniffer": "^0.14.0",
+    "spryker/code-sniffer": "^0.15.0",
+    "spryker/git-hook": "dev-master",
     "spryker/testify": "^3.0.0",
     "stecman/symfony-console-completion": "^0.8.0",
     "symfony/var-dumper": "*",
@@ -269,10 +277,12 @@
       "./deploy/heroku/run.sh"
     ],
     "post-install-cmd": [
-      "PhantomInstaller\\Installer::installPhantomJS"
+      "PhantomInstaller\\Installer::installPhantomJS",
+      "GitHook\\Composer\\Scripts\\HookInstaller::installProjectHooks"
     ],
     "post-update-cmd": [
-      "PhantomInstaller\\Installer::installPhantomJS"
+      "PhantomInstaller\\Installer::installPhantomJS",
+      "GitHook\\Composer\\Scripts\\HookInstaller::installProjectHooks"
     ],
     "phpstan": [
       "php -d memory_limit=1024M vendor/bin/phpstan analyze -c phpstan.neon src/ -l 5"
