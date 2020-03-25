@@ -36,7 +36,7 @@
                                     },
                                 } only %}
                                     {% block body %}
-                                        {% include molecule('label-group', 'ProductLabelWidget') with {
+                                        {% include molecule('label-group', 'ProductLabelWidget') ignore missing with {
                                             modifiers: ['bottom-right'],
                                             data: {
                                                 labels: labels,
