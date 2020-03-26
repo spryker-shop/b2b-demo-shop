@@ -22,7 +22,7 @@ sections:
             command: "vendor/bin/console propel:model:build"
 
         generate-entity-transfer:
-            command: "vendor/bin/console transfer:generate"
+            command: "vendor/bin/console transfer:entity:generate"
 
         generate-page-source-map:
             command: "vendor/bin/console search:setup:source-map"
@@ -31,6 +31,9 @@ sections:
             command: "vendor/bin/console translator:generate-cache"
 
     build-development:
+        generate-transfers:
+            command: "vendor/bin/console transfer:generate"
+
         generate-transfer-databuilders:
             command: "vendor/bin/console transfer:databuilder:generate"
 
