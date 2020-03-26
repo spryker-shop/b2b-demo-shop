@@ -14,7 +14,7 @@ export default class LabelGroup extends LabelGroupCore {
 
     protected updateProductLabels(labelFlags: ProductItemLabelsData[]): void {
         labelFlags.forEach((element: ProductItemLabelsData, index: number) => {
-            if (index >= 1) {
+            if (index) {
                 this.createProductLabelFlagClones();
             }
 

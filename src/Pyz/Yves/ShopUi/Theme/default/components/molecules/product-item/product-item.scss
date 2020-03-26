@@ -1,6 +1,5 @@
 @mixin shop-ui-product-item($name: '.product-item') {
     #{$name} {
-        height: auto;
         padding: 0 0 rem(30);
 
         &--equal-height {
@@ -85,10 +84,8 @@
             margin-bottom: rem(17);
 
             @include helper-breakpoint-media-min($lg) {
-                padding-left: rem(10);
-                padding-right: rem(10);
-                margin-left: rem(-10);
-                margin-right: rem(-10);
+                padding: rem(12) rem(10);
+                margin: 0 rem(-10) rem(17);
             }
 
             @include helper-breakpoint-media-min($xl) {
@@ -141,10 +138,10 @@
         }
 
         &__overlay {
+            @include helper-font-size(small);
             color: $setting-color-gray-4;
             font-weight: fw(medium);
             letter-spacing: rem(0.1);
-            font-size: rem(14);
             line-height: rem(16);
             height: rem(33);
             overflow: hidden;
@@ -172,8 +169,8 @@
             }
 
             @include helper-breakpoint-media-min($lg) {
+                @include helper-font-size(big);
                 height: rem(64);
-                font-size: rem(18);
                 line-height: rem(21);
                 // Styles for multiline truncation with ellipsis Chrome only
                 /* stylelint-disable */
@@ -189,7 +186,6 @@
 
             @include helper-breakpoint-media-min($xl) {
                 height: rem(76);
-                font-size: rem(20);
                 line-height: rem(25);
                 letter-spacing: rem(0.2);
             }
@@ -198,8 +194,8 @@
                 color: $setting-color-gray-5;
 
                 @include helper-breakpoint-media-min($lg) {
+                    @include helper-font-size(default);
                     height: rem(61);
-                    font-size: rem(16);
                     line-height: normal;
                     letter-spacing: rem(0.1);
                 }
@@ -211,8 +207,8 @@
 
             &--product-set {
                 @include helper-breakpoint-media-min($lg) {
+                    @include helper-font-size(default);
                     height: rem(61);
-                    font-size: rem(16);
                     line-height: normal;
                     letter-spacing: rem(0.1);
                 }
@@ -245,8 +241,8 @@
         }
 
         &__category {
+            @include helper-font-size(small);
             display: block;
-            font-size: rem(13);
             line-height: rem(16);
             letter-spacing: rem(0.2);
             font-weight: fw(regular);
@@ -254,7 +250,7 @@
             margin-top: rem(3);
 
             @include helper-breakpoint-media-min($lg) {
-                font-size: rem(16);
+                @include helper-font-size(default);
                 line-height: rem(20);
             }
         }
