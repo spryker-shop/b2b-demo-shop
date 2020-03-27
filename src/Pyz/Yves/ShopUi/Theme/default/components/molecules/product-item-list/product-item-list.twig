@@ -58,9 +58,7 @@
                                     },
                                 } only %}
                                     {% block originalPrice %}
-                                        {% block originalPriceInner %}
-                                            {{ parent() }}
-                                        {% endblock %}
+                                        {{ block('originalPriceInner') }}
                                     {% endblock %}
                                 {% endembed %}
                             {% endif %}
