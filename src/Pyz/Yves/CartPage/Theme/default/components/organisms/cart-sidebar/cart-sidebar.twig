@@ -130,27 +130,27 @@
         {% endif %}
     {% endif %}
 
-    {% if data.cart.idQuote is not empty %}
-        {% if data.cart.orderCustomReference is defined %}
-            {% embed molecule('cart-sidebar-item', 'CartPage') with {
-                data: {
-                    title: 'order_custom_reference.title' | trans,
-                    cart: data.cart,
-                    isAccordionItem: false,
-                },
-            } only %}
-                {% block contentInner %}
-                    {% embed molecule('order-custom-reference', 'OrderCustomReferenceWidget') ignore missing with {
-                        data: {
-                            orderCustomReference: data.cart.orderCustomReference,
-                        },
-                    } only %}
-                        {% block title %}{% endblock %}
-                    {% endembed %}
-                {% endblock %}
-            {% endembed %}
-        {% endif %}
+    {% if data.cart.orderCustomReference is defined and not data.isQuoteEditable %}
+        {% embed molecule('cart-sidebar-item', 'CartPage') with {
+            data: {
+                title: 'order_custom_reference.title' | trans,
+                cart: data.cart,
+                isAccordionItem: false,
+            },
+        } only %}
+            {% block contentInner %}
+                {% embed molecule('order-custom-reference', 'OrderCustomReferenceWidget') ignore missing with {
+                    data: {
+                        orderCustomReference: data.cart.orderCustomReference,
+                    },
+                } only %}
+                    {% block title %}{% endblock %}
+                {% endembed %}
+            {% endblock %}
+        {% endembed %}
+    {% endif %}
 
+    {% if data.cart.idQuote is not empty %}
         {% embed molecule('cart-sidebar-item', 'CartPage') with {
             data: {
                 title: 'comment_widget.comments_to_cart' | trans,
