@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8414f3a6cd8f4d8f84e13e1be2b9ae99",
+    "content-hash": "ab2f46f4727d72358b008ee13f34cd54",
     "packages": [
         {
             "name": "codeitnowin/barcode",
@@ -2842,6 +2842,39 @@
             ],
             "description": "Content Item [feature]",
             "time": "2020-01-15T18:36:46+00:00"
+        },
+        {
+            "name": "spryker-feature/custom-order-reference",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-feature/custom-order-reference.git",
+                "reference": "7b7b79edd088576fb7aad3139fe3707191e44703"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-feature/custom-order-reference/zipball/7b7b79edd088576fb7aad3139fe3707191e44703",
+                "reference": "7b7b79edd088576fb7aad3139fe3707191e44703",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker-shop/order-custom-reference-widget": "^1.0.0",
+                "spryker/order-custom-reference": "^1.0.0",
+                "spryker/order-custom-reference-gui": "^1.0.0"
+            },
+            "type": "metapackage",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "202006.x-dev"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "Custom Order Reference [feature]",
+            "time": "2020-03-19T09:03:58+00:00"
         },
         {
             "name": "spryker-feature/customer-access",
@@ -7592,6 +7625,57 @@
             ],
             "description": "NewsletterWidget module",
             "time": "2019-10-28T09:50:23+00:00"
+        },
+        {
+            "name": "spryker-shop/order-custom-reference-widget",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/order-custom-reference-widget.git",
+                "reference": "87ec679d4ba2803aea81bb783a4cf3cf54f0e725"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/order-custom-reference-widget/zipball/87ec679d4ba2803aea81bb783a4cf3cf54f0e725",
+                "reference": "87ec679d4ba2803aea81bb783a4cf3cf54f0e725",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker-shop/shop-ui": "^1.0.0",
+                "spryker/application": "^3.21.0",
+                "spryker/kernel": "^3.33.0",
+                "spryker/order-custom-reference": "^1.0.0",
+                "spryker/quote": "^2.0.0",
+                "spryker/symfony": "^3.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/router": "*"
+            },
+            "suggest": {
+                "spryker-shop/cart-page": "Widget plugins are available for this module, minimum required version: 3.15.0",
+                "spryker-shop/checkout-page": "Widget plugins are available for this module, minimum required version: 3.11.0",
+                "spryker-shop/customer-page": "Widget plugins are available for this module, minimum required version: 2.12.0",
+                "spryker/router": "Use this module when using plugins that need Router dependencies."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "OrderCustomReferenceWidget module",
+            "time": "2020-03-18T14:04:56+00:00"
         },
         {
             "name": "spryker-shop/persistent-cart-share-page",
@@ -24736,6 +24820,97 @@
             ],
             "description": "OmsExtension module",
             "time": "2019-11-15T10:00:42+00:00"
+        },
+        {
+            "name": "spryker/order-custom-reference",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/order-custom-reference.git",
+                "reference": "3bae478cfff6b14c430a08ee9d9c37e392abadcc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/order-custom-reference/zipball/3bae478cfff6b14c430a08ee9d9c37e392abadcc",
+                "reference": "3bae478cfff6b14c430a08ee9d9c37e392abadcc",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/kernel": "^3.33.0",
+                "spryker/persistent-cart": "^3.0.0",
+                "spryker/quote-extension": "^1.6.0",
+                "spryker/sales": "^11.0.0",
+                "spryker/sales-extension": "^1.3.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/oms": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "OrderCustomReference module",
+            "time": "2020-03-17T08:37:36+00:00"
+        },
+        {
+            "name": "spryker/order-custom-reference-gui",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/order-custom-reference-gui.git",
+                "reference": "5def0cf84ed1197e5293acda226e61cb089c848b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/order-custom-reference-gui/zipball/5def0cf84ed1197e5293acda226e61cb089c848b",
+                "reference": "5def0cf84ed1197e5293acda226e61cb089c848b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/gui": "^3.0.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/order-custom-reference": "^1.0.0",
+                "spryker/symfony": "^3.3.5"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "suggest": {
+                "spryker/sales": "Upgrade to following version to have order custom reference support in Sales, minimum required version: 11.6.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "OrderCustomReferenceGui module",
+            "time": "2020-03-18T13:04:41+00:00"
         },
         {
             "name": "spryker/order-payments-rest-api",
@@ -46210,6 +46385,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
+        "spryker-feature/custom-order-reference": 20,
         "spryker/git-hook": 20
     },
     "prefer-stable": true,
