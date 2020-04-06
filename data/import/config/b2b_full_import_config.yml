@@ -1,4 +1,4 @@
-# Example of demo shop 'full' data import (all categories).
+# Example of B2B demo shop 'full' data import (all categories).
 version: 0
 
 actions:
@@ -146,8 +146,7 @@ actions:
     source: data/import/cms_slot_block.csv
 
 
-### 7. B2B data import
-    ### B2B Company
+### 7. B2B Company data import
   - data_entity: company
   - data_entity: company-business-unit
     source: data/import/company_business_unit.csv
@@ -167,7 +166,8 @@ actions:
   - data_entity: company-business-unit-address
     source: data/import/company_business_unit_address.csv
   - data_entity: company-user-on-behalf
-    ### B2B Merchant
+
+### B2B Merchant data import
   - data_entity: merchant
     source: data/import/merchant.csv
   - data_entity: merchant-relationship
@@ -177,7 +177,11 @@ actions:
     source: data/import/merchant_relation_to_product_list.csv
   - data_entity: product-price-merchant-relationship
     source: data/import/price_product_merchant_relationship.csv
-    ### B2B Shopping List
+
+
+#8. Miscellaneous Setup import
+  - data_entity: mime-type
+      ### B2B Shopping List
   - data_entity: shopping-list
     source: data/import/shopping_list.csv
   - data_entity: shopping-list-item
@@ -186,17 +190,15 @@ actions:
     source: data/import/shopping_list_company_user.csv
   - data_entity: shopping-list-company-business-unit
     source: data/import/shopping_list_company_business_unit.csv
-    ### B2B Miscellaneous
+      ### B2B Cart
   - data_entity: multi-cart
     source: data/import/multi_cart.csv
   - data_entity: shared-cart
     source: data/import/shared_cart.csv
+      ### B2B Quote
   - data_entity: quote-request
     source: data/import/quote_request.csv
   - data_entity: quote-request-version
     source: data/import/quote_request_version.csv
-
-#8. Miscellaneous Setup import
   - data_entity: comment
     source: data/import/comment.csv
-  - data_entity: mime-type
