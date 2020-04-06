@@ -209,8 +209,50 @@ sections:
                 - elastic
 
     demodata:
-        import:
-            command: "vendor/bin/console data:import"
+        import-commerce-setup:
+            command: "vendor/bin/console data:import --config=data/import/config/commerce_setup_import_config.yml"
+            stores:
+                - US
+                - DE
+
+        import-catalog-setup:
+            command: "vendor/bin/console data:import --config=data/import/config/catalog_setup_import_config.yml"
+            stores:
+                - US
+                - DE
+
+        import-special-product-types-setup:
+            command: "vendor/bin/console data:import --config=data/import/config/special_product_types_import_config.yml"
+            stores:
+                - US
+                - DE
+
+        import-merchandising-setup:
+            command: "vendor/bin/console data:import --config=data/import/config/merchandising_import_config.yml"
+            stores:
+                - US
+                - DE
+
+        import-navigation-setup:
+            command: "vendor/bin/console data:import --config=data/import/config/navigation_import_config.yml"
+            stores:
+                - US
+                - DE
+
+        import-content-management-setup:
+            command: "vendor/bin/console data:import --config=data/import/config/content_management_import_config.yml"
+            stores:
+                - US
+                - DE
+
+        import-b2b-setup:
+            command: "vendor/bin/console data:import --config=data/import/config/b2b_setup_import_config.yml"
+            stores:
+                - US
+                - DE
+
+        import-miscellaneous-setup:
+            command: "vendor/bin/console data:import --config=data/import/config/miscellaneous_import_config.yml"
             stores:
                 - US
                 - DE

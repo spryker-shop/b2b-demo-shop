@@ -76,51 +76,78 @@ use Spryker\Zed\Discount\DiscountConfig;
 class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
 {
     /**
-     * @return \Spryker\Zed\DataImport\Business\Model\DataImporterCollectionInterface
+     * @param \Generated\Shared\Transfer\DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer
+     *
+     * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface|null
      */
-    public function getImporter()
+    public function getDataImporterByType(DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer): ?DataImporterInterface
     {
-        $dataImporterCollection = $this->createDataImporterCollection();
-        $dataImporterCollection
-            ->addDataImporter($this->createStoreImporter())
-            ->addDataImporter($this->createCurrencyImporter())
-            ->addDataImporter($this->createCategoryTemplateImporter())
-            ->addDataImporter($this->createCustomerImporter())
-            ->addDataImporter($this->createGlossaryImporter())
-            ->addDataImporter($this->createTaxImporter())
-            ->addDataImporter($this->createShipmentImporter())
-            ->addDataImporter($this->createShipmentPriceImporter())
-            ->addDataImporter($this->createDiscountImporter())
-            ->addDataImporter($this->createDiscountStoreImporter())
-            ->addDataImporter($this->createDiscountVoucherImporter())
-            ->addDataImporter($this->createProductAttributeKeyImporter())
-            ->addDataImporter($this->createProductManagementAttributeImporter())
-            ->addDataImporter($this->createProductAbstractImporter())
-            ->addDataImporter($this->createProductAbstractStoreImporter())
-            ->addDataImporter($this->createProductConcreteImporter())
-            ->addDataImporter($this->createProductImageImporter())
-            ->addDataImporter($this->createProductOptionImporter())
-            ->addDataImporter($this->createProductOptionPriceImporter())
-            ->addDataImporter($this->createProductGroupImporter())
-            ->addDataImporter($this->createProductRelationImporter())
-            ->addDataImporter($this->createProductReviewImporter())
-            ->addDataImporter($this->createProductLabelImporter())
-            ->addDataImporter($this->createProductSetImporter())
-            ->addDataImporter($this->createProductSearchAttributeMapImporter())
-            ->addDataImporter($this->createProductSearchAttributeImporter())
-            ->addDataImporter($this->createCmsTemplateImporter())
-            ->addDataImporter($this->createCmsBlockImporter())
-            ->addDataImporter($this->createCmsBlockStoreImporter())
-            ->addDataImporter($this->createDiscountAmountImporter());
-
-        $dataImporterCollection->addDataImporterPlugins($this->getDataImporterPlugins());
-
-        $dataImporterCollection
-            ->addDataImporter($this->createProductStockImporter())
-            ->addDataImporter($this->createNavigationImporter())
-            ->addDataImporter($this->createNavigationNodeImporter());
-
-        return $dataImporterCollection;
+        switch ($dataImportConfigurationActionTransfer->getDataEntity()) {
+            case DataImportConfig::IMPORT_TYPE_STORE:
+                return $this->createStoreImporter($dataImportConfigurationActionTransfer);
+            case DataImportConfig::IMPORT_TYPE_CURRENCY:
+                return $this->createCurrencyImporter($dataImportConfigurationActionTransfer);
+            case DataImportConfig::IMPORT_TYPE_CATEGORY_TEMPLATE:
+                return $this->createCategoryTemplateImporter($dataImportConfigurationActionTransfer);
+            case DataImportConfig::IMPORT_TYPE_CUSTOMER:
+                return $this->createCustomerImporter($dataImportConfigurationActionTransfer);
+            case DataImportConfig::IMPORT_TYPE_GLOSSARY:
+                return $this->createGlossaryImporter($dataImportConfigurationActionTransfer);
+            case DataImportConfig::IMPORT_TYPE_TAX:
+                return $this->createTaxImporter($dataImportConfigurationActionTransfer);
+            case DataImportConfig::IMPORT_TYPE_DISCOUNT:
+                return $this->createDiscountImporter($dataImportConfigurationActionTransfer);
+            case DataImportConfig::IMPORT_TYPE_DISCOUNT_STORE:
+                return $this->createDiscountStoreImporter($dataImportConfigurationActionTransfer);
+            case DataImportConfig::IMPORT_TYPE_DISCOUNT_VOUCHER:
+                return $this->createDiscountVoucherImporter($dataImportConfigurationActionTransfer);
+            case DataImportConfig::IMPORT_TYPE_PRODUCT_ATTRIBUTE_KEY:
+                return $this->createProductAttributeKeyImporter($dataImportConfigurationActionTransfer);
+            case DataImportConfig::IMPORT_TYPE_PRODUCT_MANAGEMENT_ATTRIBUTE:
+                return $this->createProductManagementAttributeImporter($dataImportConfigurationActionTransfer);
+            case DataImportConfig::IMPORT_TYPE_PRODUCT_ABSTRACT:
+                return $this->createProductAbstractImporter($dataImportConfigurationActionTransfer);
+            case DataImportConfig::IMPORT_TYPE_PRODUCT_ABSTRACT_STORE:
+                return $this->createProductAbstractStoreImporter($dataImportConfigurationActionTransfer);
+            case DataImportConfig::IMPORT_TYPE_PRODUCT_CONCRETE:
+                return $this->createProductConcreteImporter($dataImportConfigurationActionTransfer);
+            case DataImportConfig::IMPORT_TYPE_PRODUCT_IMAGE:
+                return $this->createProductImageImporter($dataImportConfigurationActionTransfer);
+            case DataImportConfig::IMPORT_TYPE_PRODUCT_OPTION:
+                return $this->createProductOptionImporter($dataImportConfigurationActionTransfer);
+            case DataImportConfig::IMPORT_TYPE_PRODUCT_OPTION_PRICE:
+                return $this->createProductOptionPriceImporter($dataImportConfigurationActionTransfer);
+            case DataImportConfig::IMPORT_TYPE_PRODUCT_GROUP:
+                return $this->createProductGroupImporter($dataImportConfigurationActionTransfer);
+            case DataImportConfig::IMPORT_TYPE_PRODUCT_RELATION:
+                return $this->createProductRelationImporter($dataImportConfigurationActionTransfer);
+            case DataImportConfig::IMPORT_TYPE_PRODUCT_REVIEW:
+                return $this->createProductReviewImporter($dataImportConfigurationActionTransfer);
+            case DataImportConfig::IMPORT_TYPE_PRODUCT_LABEL:
+                return $this->createProductLabelImporter($dataImportConfigurationActionTransfer);
+            case DataImportConfig::IMPORT_TYPE_PRODUCT_SET:
+                return $this->createProductSetImporter($dataImportConfigurationActionTransfer);
+            case DataImportConfig::IMPORT_TYPE_PRODUCT_SEARCH_ATTRIBUTE_MAP:
+                return $this->createProductSearchAttributeMapImporter($dataImportConfigurationActionTransfer);
+            case DataImportConfig::IMPORT_TYPE_PRODUCT_SEARCH_ATTRIBUTE:
+                return $this->createProductSearchAttributeImporter($dataImportConfigurationActionTransfer);
+            case DataImportConfig::IMPORT_TYPE_CMS_TEMPLATE:
+                return $this->createCmsTemplateImporter($dataImportConfigurationActionTransfer);
+            case DataImportConfig::IMPORT_TYPE_CMS_BLOCK:
+                return $this->createCmsBlockImporter($dataImportConfigurationActionTransfer);
+            case DataImportConfig::IMPORT_TYPE_CMS_BLOCK_STORE:
+                return $this->createCmsBlockStoreImporter($dataImportConfigurationActionTransfer);
+            case DataImportConfig::IMPORT_TYPE_DISCOUNT_AMOUNT:
+                return $this->createDiscountAmountImporter($dataImportConfigurationActionTransfer);
+            case DataImportConfig::IMPORT_TYPE_PRODUCT_STOCK:
+                return $this->createProductStockImporter($dataImportConfigurationActionTransfer);
+            case DataImportConfig::IMPORT_TYPE_NAVIGATION:
+                return $this->createNavigationImporter($dataImportConfigurationActionTransfer);
+            case DataImportConfig::IMPORT_TYPE_NAVIGATION_NODE:
+                return $this->createNavigationNodeImporter($dataImportConfigurationActionTransfer);
+            default:
+                return null;
+        }
     }
 
     /**
@@ -128,7 +155,9 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
      */
     protected function createCurrencyImporter()
     {
-        $dataImporter = $this->getCsvDataImporterFromConfig($this->getConfig()->getCurrencyDataImporterConfiguration());
+        $dataImporter = $this->getCsvDataImporterFromConfig(
+            $this->getConfig()->buildImporterConfigurationByDataImportConfigAction($dataImportConfigurationActionTransfer)
+        );
 
         $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker();
         $dataSetStepBroker->addStep(new CurrencyWriterStep());
@@ -145,7 +174,7 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
     {
         /** @var \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetStepBrokerAwareInterface|\Spryker\Zed\DataImport\Business\Model\DataImporterInterface $dataImporter */
         $dataImporter = $this->createDataImporter(
-            $this->getConfig()->getStoreDataImporterConfiguration()->getImportType(),
+            $dataImportConfigurationActionTransfer->getDataEntity(),
             new StoreReader(
                 $this->createDataSet(
                     Store::getInstance()->getAllowedStores()
@@ -166,7 +195,9 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
      */
     protected function createGlossaryImporter()
     {
-        $dataImporter = $this->getCsvDataImporterFromConfig($this->getConfig()->getGlossaryDataImporterConfiguration());
+        $dataImporter = $this->getCsvDataImporterFromConfig(
+            $this->getConfig()->buildImporterConfigurationByDataImportConfigAction($dataImportConfigurationActionTransfer)
+        );
 
         $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker(GlossaryWriterStep::BULK_SIZE);
         $dataSetStepBroker
@@ -183,7 +214,9 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
      */
     protected function createCategoryTemplateImporter()
     {
-        $dataImporter = $this->getCsvDataImporterFromConfig($this->getConfig()->getCategoryTemplateDataImporterConfiguration());
+        $dataImporter = $this->getCsvDataImporterFromConfig(
+            $this->getConfig()->buildImporterConfigurationByDataImportConfigAction($dataImportConfigurationActionTransfer)
+        );
 
         $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker();
         $dataSetStepBroker
@@ -200,7 +233,9 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
      */
     protected function createCustomerImporter()
     {
-        $dataImporter = $this->getCsvDataImporterFromConfig($this->getConfig()->getCustomerDataImporterConfiguration());
+        $dataImporter = $this->getCsvDataImporterFromConfig(
+            $this->getConfig()->buildImporterConfigurationByDataImportConfigAction($dataImportConfigurationActionTransfer)
+        );
 
         $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker();
         $dataSetStepBroker->addStep(new CustomerWriterStep());
@@ -215,7 +250,9 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
      */
     protected function createCmsTemplateImporter()
     {
-        $dataImporter = $this->getCsvDataImporterFromConfig($this->getConfig()->getCmsTemplateDataImporterConfiguration());
+        $dataImporter = $this->getCsvDataImporterFromConfig(
+            $this->getConfig()->buildImporterConfigurationByDataImportConfigAction($dataImportConfigurationActionTransfer)
+        );
 
         $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker();
         $dataSetStepBroker
@@ -231,7 +268,9 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
      */
     protected function createCmsBlockImporter()
     {
-        $dataImporter = $this->getCsvDataImporterFromConfig($this->getConfig()->getCmsBlockDataImporterConfiguration());
+        $dataImporter = $this->getCsvDataImporterFromConfig(
+            $this->getConfig()->buildImporterConfigurationByDataImportConfigAction($dataImportConfigurationActionTransfer)
+        );
 
         $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker(CmsBlockWriterStep::BULK_SIZE);
         $dataSetStepBroker
@@ -254,7 +293,9 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
      */
     protected function createCmsBlockStoreImporter()
     {
-        $dataImporter = $this->getCsvDataImporterFromConfig($this->getConfig()->getCmsBlockStoreDataImporterConfiguration());
+        $dataImporter = $this->getCsvDataImporterFromConfig(
+            $this->getConfig()->buildImporterConfigurationByDataImportConfigAction($dataImportConfigurationActionTransfer)
+        );
 
         $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker(CmsBlockStoreWriterStep::BULK_SIZE);
         $dataSetStepBroker->addStep(new CmsBlockStoreWriterStep());
@@ -268,7 +309,9 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
      */
     protected function createDiscountImporter()
     {
-        $dataImporter = $this->getCsvDataImporterFromConfig($this->getConfig()->getDiscountDataImporterConfiguration());
+        $dataImporter = $this->getCsvDataImporterFromConfig(
+            $this->getConfig()->buildImporterConfigurationByDataImportConfigAction($dataImportConfigurationActionTransfer)
+        );
 
         $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker(DiscountWriterStep::BULK_SIZE);
         $dataSetStepBroker
@@ -284,7 +327,9 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
      */
     protected function createDiscountStoreImporter()
     {
-        $dataImporter = $this->getCsvDataImporterFromConfig($this->getConfig()->getDiscountStoreDataImporterConfiguration());
+        $dataImporter = $this->getCsvDataImporterFromConfig(
+            $this->getConfig()->buildImporterConfigurationByDataImportConfigAction($dataImportConfigurationActionTransfer)
+        );
         $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker(DiscountStoreWriterStep::BULK_SIZE);
         $dataSetStepBroker
             ->addStep(new DiscountStoreWriterStep());
@@ -298,7 +343,9 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
      */
     protected function createDiscountAmountImporter()
     {
-        $dataImporter = $this->getCsvDataImporterFromConfig($this->getConfig()->getDiscountAmountDataImporterConfiguration());
+        $dataImporter = $this->getCsvDataImporterFromConfig(
+            $this->getConfig()->buildImporterConfigurationByDataImportConfigAction($dataImportConfigurationActionTransfer)
+        );
 
         $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker(DiscountAmountWriterStep::BULK_SIZE);
         $dataSetStepBroker
@@ -314,7 +361,9 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
      */
     protected function createDiscountVoucherImporter()
     {
-        $dataImporter = $this->getCsvDataImporterFromConfig($this->getConfig()->getDiscountVoucherDataImporterConfiguration());
+        $dataImporter = $this->getCsvDataImporterFromConfig(
+            $this->getConfig()->buildImporterConfigurationByDataImportConfigAction($dataImportConfigurationActionTransfer)
+        );
 
         $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker(DiscountVoucherWriterStep::BULK_SIZE);
         $dataSetStepBroker
@@ -338,7 +387,9 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
      */
     protected function createProductOptionImporter()
     {
-        $dataImporter = $this->getCsvDataImporterFromConfig($this->getConfig()->getProductOptionDataImporterConfiguration());
+        $dataImporter = $this->getCsvDataImporterFromConfig(
+            $this->getConfig()->buildImporterConfigurationByDataImportConfigAction($dataImportConfigurationActionTransfer)
+        );
 
         $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker();
         $dataSetStepBroker
@@ -360,7 +411,9 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
      */
     protected function createProductOptionPriceImporter()
     {
-        $dataImporter = $this->getCsvDataImporterFromConfig($this->getConfig()->getProductOptionPriceDataImporterConfiguration());
+        $dataImporter = $this->getCsvDataImporterFromConfig(
+            $this->getConfig()->buildImporterConfigurationByDataImportConfigAction($dataImportConfigurationActionTransfer)
+        );
 
         $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker();
         $dataSetStepBroker
@@ -376,7 +429,9 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
      */
     protected function createProductStockImporter()
     {
-        $dataImporter = $this->getCsvDataImporterFromConfig($this->getConfig()->getProductStockDataImporterConfiguration());
+        $dataImporter = $this->getCsvDataImporterFromConfig(
+            $this->getConfig()->buildImporterConfigurationByDataImportConfigAction($dataImportConfigurationActionTransfer)
+        );
 
         $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker(ProductStockWriterStep::BULK_SIZE);
         $dataSetStepBroker
@@ -421,7 +476,9 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
      */
     protected function createProductImageImporter()
     {
-        $dataImporter = $this->getCsvDataImporterFromConfig($this->getConfig()->getProductImageDataImporterConfiguration());
+        $dataImporter = $this->getCsvDataImporterFromConfig(
+            $this->getConfig()->buildImporterConfigurationByDataImportConfigAction($dataImportConfigurationActionTransfer)
+        );
 
         $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker(ProductImageWriterStep::BULK_SIZE);
         $dataSetStepBroker
@@ -448,7 +505,9 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
      */
     protected function createShipmentImporter()
     {
-        $dataImporter = $this->getCsvDataImporterFromConfig($this->getConfig()->getShipmentDataImporterConfiguration());
+        $dataImporter = $this->getCsvDataImporterFromConfig(
+            $this->getConfig()->buildImporterConfigurationByDataImportConfigAction($dataImportConfigurationActionTransfer)
+        );
 
         $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker(ShipmentWriterStep::BULK_SIZE);
         $dataSetStepBroker
@@ -465,7 +524,9 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
      */
     protected function createShipmentPriceImporter()
     {
-        $dataImporter = $this->getCsvDataImporterFromConfig($this->getConfig()->getShipmentPriceDataImporterConfiguration());
+        $dataImporter = $this->getCsvDataImporterFromConfig(
+            $this->getConfig()->buildImporterConfigurationByDataImportConfigAction($dataImportConfigurationActionTransfer)
+        );
 
         $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker(ShipmentWriterStep::BULK_SIZE);
         $dataSetStepBroker
@@ -481,7 +542,9 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
      */
     protected function createTaxImporter()
     {
-        $dataImporter = $this->getCsvDataImporterFromConfig($this->getConfig()->getTaxDataImporterConfiguration());
+        $dataImporter = $this->getCsvDataImporterFromConfig(
+            $this->getConfig()->buildImporterConfigurationByDataImportConfigAction($dataImportConfigurationActionTransfer)
+        );
 
         $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker(TaxWriterStep::BULK_SIZE);
         $dataSetStepBroker
@@ -505,7 +568,9 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
      */
     protected function createNavigationImporter()
     {
-        $dataImporter = $this->getCsvDataImporterFromConfig($this->getConfig()->getNavigationDataImporterConfiguration());
+        $dataImporter = $this->getCsvDataImporterFromConfig(
+            $this->getConfig()->buildImporterConfigurationByDataImportConfigAction($dataImportConfigurationActionTransfer)
+        );
 
         $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker(NavigationWriterStep::BULK_SIZE);
         $dataSetStepBroker
@@ -521,7 +586,9 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
      */
     protected function createNavigationNodeImporter()
     {
-        $dataImporter = $this->getCsvDataImporterFromConfig($this->getConfig()->getNavigationNodeDataImporterConfiguration());
+        $dataImporter = $this->getCsvDataImporterFromConfig(
+            $this->getConfig()->buildImporterConfigurationByDataImportConfigAction($dataImportConfigurationActionTransfer)
+        );
 
         $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker(NavigationNodeWriterStep::BULK_SIZE);
         $dataSetStepBroker
@@ -567,7 +634,9 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
      */
     protected function createProductAbstractImporter()
     {
-        $dataImporter = $this->getCsvDataImporterFromConfig($this->getConfig()->getProductAbstractDataImporterConfiguration());
+        $dataImporter = $this->getCsvDataImporterFromConfig(
+            $this->getConfig()->buildImporterConfigurationByDataImportConfigAction($dataImportConfigurationActionTransfer)
+        );
 
         $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker(ProductAbstractWriterStep::BULK_SIZE);
         $dataSetStepBroker
@@ -597,7 +666,9 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
      */
     protected function createProductAbstractStoreImporter()
     {
-        $dataImporter = $this->getCsvDataImporterFromConfig($this->getConfig()->getProductAbstractStoreDataImporterConfiguration());
+        $dataImporter = $this->getCsvDataImporterFromConfig(
+            $this->getConfig()->buildImporterConfigurationByDataImportConfigAction($dataImportConfigurationActionTransfer)
+        );
 
         $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker(ProductAbstractStoreWriterStep::BULK_SIZE);
         $dataSetStepBroker->addStep(new ProductAbstractStoreWriterStep());
@@ -612,7 +683,9 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
      */
     protected function createProductConcreteImporter()
     {
-        $dataImporter = $this->getCsvDataImporterFromConfig($this->getConfig()->getProductConcreteDataImporterConfiguration());
+        $dataImporter = $this->getCsvDataImporterFromConfig(
+            $this->getConfig()->buildImporterConfigurationByDataImportConfigAction($dataImportConfigurationActionTransfer)
+        );
 
         $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker(ProductConcreteWriter::BULK_SIZE);
         $dataSetStepBroker
@@ -657,7 +730,9 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
      */
     protected function createProductAttributeKeyImporter()
     {
-        $dataImporter = $this->getCsvDataImporterFromConfig($this->getConfig()->getProductAttributeKeyDataImporterConfiguration());
+        $dataImporter = $this->getCsvDataImporterFromConfig(
+            $this->getConfig()->buildImporterConfigurationByDataImportConfigAction($dataImportConfigurationActionTransfer)
+        );
 
         $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker();
         $dataSetStepBroker
@@ -673,7 +748,9 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
      */
     protected function createProductManagementAttributeImporter()
     {
-        $dataImporter = $this->getCsvDataImporterFromConfig($this->getConfig()->getProductManagementAttributeDataImporterConfiguration());
+        $dataImporter = $this->getCsvDataImporterFromConfig(
+            $this->getConfig()->buildImporterConfigurationByDataImportConfigAction($dataImportConfigurationActionTransfer)
+        );
 
         $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker();
         $dataSetStepBroker
@@ -700,7 +777,9 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
      */
     protected function createProductGroupImporter()
     {
-        $dataImporter = $this->getCsvDataImporterFromConfig($this->getConfig()->getProductGroupDataImporterConfiguration());
+        $dataImporter = $this->getCsvDataImporterFromConfig(
+            $this->getConfig()->buildImporterConfigurationByDataImportConfigAction($dataImportConfigurationActionTransfer)
+        );
 
         $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker(ProductGroupWriter::BULK_SIZE);
         $dataSetStepBroker
@@ -718,7 +797,9 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
      */
     protected function createProductRelationImporter()
     {
-        $dataImporter = $this->getCsvDataImporterFromConfig($this->getConfig()->getProductRelationDataImporterConfiguration());
+        $dataImporter = $this->getCsvDataImporterFromConfig(
+            $this->getConfig()->buildImporterConfigurationByDataImportConfigAction($dataImportConfigurationActionTransfer)
+        );
 
         $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker();
         $dataSetStepBroker
@@ -736,7 +817,9 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
      */
     protected function createProductReviewImporter()
     {
-        $dataImporter = $this->getCsvDataImporterFromConfig($this->getConfig()->getProductReviewDataImporterConfiguration());
+        $dataImporter = $this->getCsvDataImporterFromConfig(
+            $this->getConfig()->buildImporterConfigurationByDataImportConfigAction($dataImportConfigurationActionTransfer)
+        );
 
         $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker();
         $dataSetStepBroker->addStep(new ProductReviewWriterStep(
@@ -754,7 +837,9 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
      */
     protected function createProductLabelImporter()
     {
-        $dataImporter = $this->getCsvDataImporterFromConfig($this->getConfig()->getProductLabelDataImporterConfiguration());
+        $dataImporter = $this->getCsvDataImporterFromConfig(
+            $this->getConfig()->buildImporterConfigurationByDataImportConfigAction($dataImportConfigurationActionTransfer)
+        );
 
         $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker();
         $dataSetStepBroker
@@ -793,7 +878,9 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
      */
     protected function createProductSetImporter()
     {
-        $dataImporter = $this->getCsvDataImporterFromConfig($this->getConfig()->getProductSetDataImporterConfiguration());
+        $dataImporter = $this->getCsvDataImporterFromConfig(
+            $this->getConfig()->buildImporterConfigurationByDataImportConfigAction($dataImportConfigurationActionTransfer)
+        );
 
         $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker();
         $dataSetStepBroker
@@ -838,7 +925,9 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
      */
     protected function createProductSearchAttributeMapImporter()
     {
-        $dataImporter = $this->getCsvDataImporterFromConfig($this->getConfig()->getProductSearchAttributeMapDataImporterConfiguration());
+        $dataImporter = $this->getCsvDataImporterFromConfig(
+            $this->getConfig()->buildImporterConfigurationByDataImportConfigAction($dataImportConfigurationActionTransfer)
+        );
 
         $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker();
         $dataSetStepBroker
@@ -855,7 +944,9 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
      */
     protected function createProductSearchAttributeImporter()
     {
-        $dataImporter = $this->getCsvDataImporterFromConfig($this->getConfig()->getProductSearchAttributeDataImporterConfiguration());
+        $dataImporter = $this->getCsvDataImporterFromConfig(
+            $this->getConfig()->buildImporterConfigurationByDataImportConfigAction($dataImportConfigurationActionTransfer)
+        );
 
         $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker();
         $dataSetStepBroker
