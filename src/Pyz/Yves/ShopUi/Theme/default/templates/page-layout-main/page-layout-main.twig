@@ -176,6 +176,8 @@
         </div>
 
         {% block footer %}
+            {% cms_slot 'slt-1' %}
+
             {% include organism('footer') only %}
         {% endblock %}
     </div>
@@ -187,6 +189,12 @@
         {% include molecule('action-single-click-enforcer') with {
             attributes: {
                 'target-selector': '[data-init-single-click]',
+            },
+        } only %}
+
+        {% include molecule('form-submitter') with {
+            attributes: {
+                'trigger-selector': '[data-form-submitter]',
             },
         } only %}
     {% endblock %}

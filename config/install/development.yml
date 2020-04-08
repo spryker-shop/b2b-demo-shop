@@ -188,7 +188,7 @@ sections:
             stores: true
 
         generate-entity-transfer:
-            command: "vendor/bin/console transfer:generate"
+            command: "vendor/bin/console transfer:entity:generate"
 
         init-database:
             command: "vendor/bin/console setup:init-db"
@@ -196,21 +196,69 @@ sections:
                 - US
                 - DE
 
-        setup-search-create-indexes:
-            command: "vendor/bin/console search:setup:indexes"
+        setup-search-create-sources:
+            command: "vendor/bin/console search:setup:sources"
             stores: true
             groups:
                 - elastic
 
-        setup-seach-create-index-map:
-            command: "vendor/bin/console search:setup:index-map"
+        setup-seach-create-source-map:
+            command: "vendor/bin/console search:setup:source-map"
             stores: true
             groups:
                 - elastic
 
     demodata:
-        import:
-            command: "vendor/bin/console data:import"
+        import-commerce-setup:
+            command: "vendor/bin/console data:import --config=data/import/config/b2b_commerce_setup_import_config.yml"
+            stores:
+                - US
+                - DE
+
+        import-catalog-setup:
+            command: "vendor/bin/console data:import --config=data/import/config/b2b_catalog_setup_import_config.yml"
+            stores:
+                - US
+                - DE
+
+        import-special-product-types-setup:
+            command: "vendor/bin/console data:import --config=data/import/config/b2b_special_product_types_import_config.yml"
+            stores:
+                - US
+                - DE
+
+        import-merchandising-setup:
+            command: "vendor/bin/console data:import --config=data/import/config/b2b_merchandising_import_config.yml"
+            stores:
+                - US
+                - DE
+
+        import-navigation-setup:
+            command: "vendor/bin/console data:import --config=data/import/config/b2b_navigation_import_config.yml"
+            stores:
+                - US
+                - DE
+
+        import-content-management-setup:
+            command: "vendor/bin/console data:import --config=data/import/config/b2b_content_management_import_config.yml"
+            stores:
+                - US
+                - DE
+
+        import-company-setup:
+            command: "vendor/bin/console data:import --config=data/import/config/b2b_company_import_config.yml"
+            stores:
+                - US
+                - DE
+
+        import-merchant-setup:
+            command: "vendor/bin/console data:import --config=data/import/config/b2b_merchant_import_config.yml"
+            stores:
+                - US
+                - DE
+
+        import-miscellaneous-setup:
+            command: "vendor/bin/console data:import --config=data/import/config/b2b_miscellaneous_import_config.yml"
             stores:
                 - US
                 - DE

@@ -10,104 +10,110 @@
                 }) }}
             </h3>
             <div class="col col--sm-12 col--xl-8">
-                {% widget 'OrderConfiguredBundleWidget' args [data.order, shipmentGroup.items] only %}
-                {% endwidget %}
+                {% widget 'OrderConfiguredBundleWidget' args [data.order, shipmentGroup.items] only %}{% endwidget %}
 
-                {% for item in shipmentGroup.items if not item.salesOrderConfiguredBundleItem | default({}) %}
-                    {% set item = item.bundleProduct ?? item %}
+                {% for item in shipmentGroup.cartItems %}
+                    {% set cartItem = item.bundleProduct ?? item %}
+                    {% set isConfiguredBundle = cartItem.salesOrderConfiguredBundleItem is defined and cartItem.salesOrderConfiguredBundleItem is not empty %}
 
-                    {% embed molecule('product-card-item') with {
-                        modifiers: ['order-detail'],
-                        data: {
-                            listItem: item,
-                            quantity: item.quantity,
-                            priceModifiers: ['medium', 'block', 'margin-bottom-from-tablet'],
-                        },
-                        embed: {
-                            order: data.order,
-                        },
-                    } only %}
-                        {% block image %}
-                            {% embed molecule('product-item-image') with {
-                                modifiers: ['small'],
-                                data: {
-                                    name: data.listItem.name,
-                                    image: data.listItem.metadata.image,
-                                },
-                                embed: {
-                                    order: embed.order,
-                                    listItem: data.listItem,
-                                },
-                            } only %}
-                                {% block body %}
-                                    {% if embed.order is not empty %}
-                                        <span class="{{ config.name }}__checkbox">
+                    {% if not isConfiguredBundle %}
+                        {% embed molecule('product-card-item') with {
+                            modifiers: ['order-detail'],
+                            data: {
+                                listItem: cartItem,
+                                quantity: cartItem.quantity,
+                                priceModifiers: ['medium', 'block', 'margin-bottom-from-tablet'],
+                            },
+                            embed: {
+                                order: data.order,
+                                bundleItems: item.bundleItems | default([]),
+                            },
+                        } only %}
+                            {% block image %}
+                                {% embed molecule('product-item-image') with {
+                                    modifiers: ['small'],
+                                    data: {
+                                        name: data.listItem.name,
+                                        image: data.listItem.metadata.image,
+                                    },
+                                    embed: {
+                                        order: embed.order,
+                                        listItem: data.listItem,
+                                    },
+                                } only %}
+                                    {% block body %}
+                                        {% if embed.order is not empty %}
+                                            <span class="{{ config.name }}__checkbox">
                                             {% widget 'CustomerReorderItemCheckboxWidget' args [embed.listItem] only %}{% endwidget %}
                                         </span>
-                                    {% endif %}
+                                        {% endif %}
 
-                                    {{ parent() }}
-                                {% endblock %}
-                            {% endembed %}
-                        {% endblock %}
+                                        {{ parent() }}
+                                    {% endblock %}
+                                {% endembed %}
+                            {% endblock %}
 
-                        {% block title %}
-                            <h6 class="{{ config.name }}__title spacing spacing--reset">{{ data.listItem.name }}</h6>
-                        {% endblock %}
+                            {% block title %}
+                                <h6 class="{{ config.name }}__title spacing spacing--reset">{{ data.listItem.name }}</h6>
+                            {% endblock %}
 
-                        {% block subQuantity %}
-                            {% set salesUnitName = data.listItem.quantitySalesUnit.productMeasurementUnit.name | default %}
+                            {% block packagingUnitCartContent %}
+                                {% set hasSubQuantity = true %}
+                                {% set hasAmountPerQuantity = true %}
 
-                            {% if salesUnitName is not empty and data.listItem.amount == 0 %}
-                                {% include atom('quantity-option') with {
-                                    class: 'col col--sm-12 col--md-auto',
+                                {{ parent() }}
+                            {% endblock %}
+
+                            {% block subQuantity %}
+                                {% if data.listItem.quantitySalesUnit is not empty %}
+                                    {% include atom('quantity-option') with {
+                                        data: {
+                                            value: data.quantity,
+                                            precision: data.listItem.quantitySalesUnit.conversion,
+                                            optionName: data.listItem.quantitySalesUnit.productMeasurementUnit.name | trans,
+                                        },
+                                    } only %}
+                                {% endif %}
+                            {% endblock %}
+
+                            {% block bundle %}
+                                {% include molecule('bundle-items', 'ProductBundleWidget') ignore missing with {
                                     data: {
-                                        value: data.listItem.quantity,
-                                        precision: data.listItem.quantitySalesUnit.conversion,
-                                        optionName: salesUnitName | trans,
+                                        items: embed.bundleItems,
                                     },
                                 } only %}
-                            {% endif %}
+                            {% endblock %}
 
-                            {% if data.listItem.amount != 0 %}
-                                {% set amountSalesUnitName = data.listItem.amountSalesUnit.productMeasurementUnit.name | default %}
-
-                                {% include atom('quantity-option') with {
-                                    class: 'col col--sm-12 col--md-auto',
-                                    data: {
-                                        value: data.listItem.amount,
-                                        precision: data.listItem.quantity,
-                                        optionName: amountSalesUnitName | trans,
-                                    },
-                                } only %}
-                            {% endif %}
-                        {% endblock %}
-
-                        {% block note %}
-                            {% if data.listItem.cartNote is not empty %}
-                                {% include molecule('cart-item-note', 'CartNoteWidget') ignore missing with {
-                                    data: {
-                                        isNoteNotEmpty: true,
-                                        canWrite: false,
-                                        label: 'cart_note.checkout_page.quote_note',
-                                        note: data.listItem.cartNote,
-                                    },
-                                } only %}
-                            {% endif %}
-                        {% endblock %}
-
-                        {% block bundle %}{% endblock %}
-                    {% endembed %}
+                            {% block note %}
+                                {% if data.listItem.cartNote is not empty %}
+                                    {% include molecule('cart-item-note', 'CartNoteWidget') ignore missing with {
+                                        data: {
+                                            isNoteNotEmpty: true,
+                                            canWrite: false,
+                                            label: 'cart_note.checkout_page.quote_note',
+                                            note: data.listItem.cartNote,
+                                        },
+                                    } only %}
+                                {% endif %}
+                            {% endblock %}
+                        {% endembed %}
+                    {% endif %}
                 {% endfor %}
             </div>
 
             <div class="col col--sm-12 col--xl-4">
-                {% include molecule('summary-sidebar', 'CheckoutPage') ignore missing with {
+                {% embed molecule('summary-sidebar', 'CheckoutPage') ignore missing with {
                     data: {
                         shipment: shipmentGroup.shipment,
                         canEdit: false,
                     },
                 } only %}
+                    {% block deliveryDate %}
+                        {% if data.shipment.requestedDeliveryDate %}
+                            {{ parent() }}
+                        {% endif %}
+                    {% endblock %}
+                {% endembed %}
             </div>
         </article>
     {% endfor %}

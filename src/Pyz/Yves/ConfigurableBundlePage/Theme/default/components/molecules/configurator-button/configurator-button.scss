@@ -1,0 +1,80 @@
+@mixin configurable-bundle-page-configurator-button($name: '.configurator-button') {
+    @include shop-ui-button($name) {
+        &--hollow {
+            background-color: $setting-color-transparent;
+
+            &:hover {
+                background-color: $setting-color-main;
+                color: $setting-color-white;
+            }
+        }
+
+        &--big {
+            padding: rem(15);
+        }
+
+        &--additional-indention {
+            padding: rem(23);
+            font-weight: fw(medium);
+            border-bottom: rem(3) solid;
+
+            @include configurable-bundle-page-configurator-button-state($setting-color-transparent, $setting-color-gray-3, $setting-color-transparent);
+
+            &:hover {
+                @include configurable-bundle-page-configurator-button-state($setting-color-alpha-2, $setting-color-gray-5, $setting-color-main);
+            }
+        }
+
+        &--active {
+            @include configurable-bundle-page-configurator-button-state($setting-color-alpha-2, $setting-color-gray-5, $setting-color-main);
+        }
+
+        &--additional-colors {
+            @include configurable-bundle-page-configurator-button-state($setting-color-main, $setting-color-white, $setting-color-main);
+
+            &:hover {
+                @include configurable-bundle-page-configurator-button-state(helper-color-dark($setting-color-main), $setting-color-white, helper-color-dark($setting-color-main));
+            }
+        }
+
+        &--icon,
+        &--icon:hover {
+            color: $setting-color-gray-2;
+            background: none;
+        }
+
+        &--selected {
+            @include configurable-bundle-page-configurator-button-state(helper-color-light(map-get($setting-color-actions, 'success')), $setting-color-main ,$setting-color-transparent);
+        }
+
+        &[disabled] {
+            @include configurable-bundle-page-configurator-button-state($setting-color-transparent, $setting-color-gray-3, $setting-color-transparent);
+
+            &:hover {
+                @include configurable-bundle-page-configurator-button-state($setting-color-transparent, $setting-color-gray-3, $setting-color-transparent);
+            }
+        }
+
+        &__icon {
+            display: inline-block;
+            vertical-align: middle;
+            width: rem(13);
+            height: rem(13);
+            line-height: rem(11);
+            background-color: $setting-color-main;
+            color: $setting-color-white;
+            border-radius: 50%;
+            margin-top: rem(-2);
+
+            @include helper-breakpoint-media-min($md) {
+                width: rem(18);
+                height: rem(18);
+                line-height: rem(15);
+            }
+        }
+
+        @content;
+    }
+}
+
+@include configurable-bundle-page-configurator-button();

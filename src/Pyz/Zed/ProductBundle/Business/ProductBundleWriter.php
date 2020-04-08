@@ -13,7 +13,6 @@ use Spryker\Zed\Event\Business\EventFacadeInterface;
 use Spryker\Zed\Product\Dependency\ProductEvents;
 use Spryker\Zed\ProductBundle\Business\ProductBundle\ProductBundleWriter as SprykerProductBundleWriter;
 use Spryker\Zed\ProductBundle\Business\ProductBundle\Stock\ProductBundleStockWriterInterface;
-use Spryker\Zed\ProductBundle\Dependency\Facade\ProductBundleToProductInterface;
 use Spryker\Zed\ProductBundle\Persistence\ProductBundleQueryContainerInterface;
 
 class ProductBundleWriter extends SprykerProductBundleWriter
@@ -24,18 +23,16 @@ class ProductBundleWriter extends SprykerProductBundleWriter
     protected $eventFacade;
 
     /**
-     * @param \Spryker\Zed\ProductBundle\Dependency\Facade\ProductBundleToProductInterface $productFacade
      * @param \Spryker\Zed\ProductBundle\Persistence\ProductBundleQueryContainerInterface $productBundleQueryContainer
      * @param \Spryker\Zed\ProductBundle\Business\ProductBundle\Stock\ProductBundleStockWriterInterface $productBundleStockWriter
      * @param \Spryker\Zed\Event\Business\EventFacadeInterface $eventFacade
      */
     public function __construct(
-        ProductBundleToProductInterface $productFacade,
         ProductBundleQueryContainerInterface $productBundleQueryContainer,
         ProductBundleStockWriterInterface $productBundleStockWriter,
         EventFacadeInterface $eventFacade
     ) {
-        parent::__construct($productFacade, $productBundleQueryContainer, $productBundleStockWriter);
+        parent::__construct($productBundleQueryContainer, $productBundleStockWriter);
 
         $this->eventFacade = $eventFacade;
     }

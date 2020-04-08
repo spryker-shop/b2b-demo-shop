@@ -70,7 +70,7 @@
 
                             {% block productInfo %}
                                 {% block quantityTitle %}
-                                    {% if data.quantity is not empty %}
+                                    {% if data.quantity is not empty and amountSalesUnit is empty %}
                                         <div class="grid grid--middle grid--gap {{ config.name }}__quantity">
                                             <div class="col">
                                                 <span class="{{ config.name }}__quantity-title">{{ 'cart.item_quantity' | trans }}:</span> {{ data.quantity }}
@@ -81,20 +81,27 @@
                                 {% endblock %}
 
                                 {% block packagingUnitCart %}
-                                    {% if quantitySalesUnit is not empty and amountSalesUnit is not empty %}
-                                        {% include molecule('packaging-unit-cart', 'ProductPackagingUnitWidget') with {
-                                            data: {
-                                                amount: data.listItem.amount,
-                                                quantity: data.listItem.quantity,
-                                                quantitySalesUnit: data.listItem.quantitySalesUnit,
-                                                quantityConversion: data.listItem.quantitySalesUnit.conversion,
-                                                quantityProductMeasurementUnit: data.listItem.quantitySalesUnit.productMeasurementUnit,
-                                                amountSalesUnit: data.listItem.amountSalesUnit,
-                                                amountConversion: data.listItem.amountSalesUnit.conversion,
-                                                amountProductMeasurementUnit: data.listItem.amountSalesUnit.productMeasurementUnit,
-                                                amountValue: data.listItem.amountSalesUnit.value,
-                                            },
-                                        } only %}
+                                    {% set hasSubQuantity = false %}
+                                    {% set hasAmountPerQuantity = false %}
+
+                                    {% if amountSalesUnit is not empty %}
+                                        {% block packagingUnitCartContent %}
+                                            {% include molecule('packaging-unit-cart', 'ProductPackagingUnitWidget') with {
+                                                data: {
+                                                    amount: data.listItem.amount,
+                                                    quantity: data.listItem.quantity,
+                                                    quantitySalesUnit: data.listItem.quantitySalesUnit,
+                                                    quantityConversion: data.listItem.quantitySalesUnit.conversion | default(null),
+                                                    quantityProductMeasurementUnit: data.listItem.quantitySalesUnit.productMeasurementUnit | default(null),
+                                                    amountSalesUnit: data.listItem.amountSalesUnit,
+                                                    amountConversion: data.listItem.amountSalesUnit.conversion,
+                                                    amountProductMeasurementUnit: data.listItem.amountSalesUnit.productMeasurementUnit,
+                                                    amountValue: data.listItem.amountSalesUnit.value,
+                                                    hasSubQuantity: hasSubQuantity,
+                                                    hasAmountPerQuantity: hasAmountPerQuantity,
+                                                },
+                                            } only %}
+                                        {% endblock %}
                                     {% endif %}
                                 {% endblock %}
 
@@ -102,9 +109,9 @@
                                     {% set isAmountEmpty = amountSalesUnit is empty and quantitySalesUnit is not empty and data.quantity is empty %}
 
                                     {% if isAmountEmpty %}
-                                        <div class="{{ config.name }}__quantity grid grid--middle grid--gap">
-                                            <div class="col col--sm-12 col--md-2">{{ 'packaging_units.cart.quantity' | trans }}: </div>
-                                            <div class="col">
+                                        <div class="{{ config.name }}__quantity grid grid--middle">
+                                            <div class="col">{{ 'packaging_units.cart.quantity' | trans }}: </div>
+                                            <div class="col col--expand">
                                                 {% set cartProductMeasurementUnitQuantitySelectorWidget = findWidget('CartProductMeasurementUnitQuantitySelectorWidget', [data.listItem]) %}
 
                                                 {% if cartProductMeasurementUnitQuantitySelectorWidget and data.canEdit %}
@@ -188,18 +195,12 @@
 
                                             {% if isAmountSalesUnitEmpty %}
                                                 <div class="{{ config.name }}__quantity-holder">
-                                                    {% set cartProductMeasurementUnitQuantitySelectorWidget = findWidget('CartProductMeasurementUnitQuantitySelectorWidget', [data.listItem]) %}
-
-                                                    {% if cartProductMeasurementUnitQuantitySelectorWidget and data.canEdit %}
-                                                        {% widget cartProductMeasurementUnitQuantitySelectorWidget only %}{% endwidget %}
-                                                    {% else %}
-                                                        {% include molecule('product-item-quantity') with {
-                                                            data: {
-                                                                productItem: data.listItem,
-                                                                isDisabled: not data.canEdit,
-                                                            },
-                                                        } only %}
-                                                    {% endif %}
+                                                    {% include molecule('product-item-quantity') with {
+                                                        data: {
+                                                            productItem: data.listItem,
+                                                            isDisabled: not data.canEdit,
+                                                        },
+                                                    } only %}
                                                 </div>
                                             {% endif %}
                                         {% endblock %}

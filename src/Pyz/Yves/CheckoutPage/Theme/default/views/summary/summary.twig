@@ -17,84 +17,83 @@
                 {% widget 'QuoteConfiguredBundleWidget' args [data.cart, shipmentGroup.items] with {
                     data: {
                         isEditable: false,
-                        isQuantityVisible: false,
+                        isQuantityVisible: true,
                     },
                 } only %}
                 {% endwidget %}
 
-                {% set itemsExceptConfiguredBundles = shipmentGroup.items | filter(item => item.configuredBundleItem is not defined or item.configuredBundleItem is empty) %}
+                {% for item in shipmentGroup.cartItems %}
+                    {% set cartItem = item.bundleProduct ?? item %}
+                    {% set isConfiguredBundle = cartItem.configuredBundleItem is defined and cartItem.configuredBundleItem is not empty %}
 
-                {% for item in itemsExceptConfiguredBundles %}
-                    {% set item = item.bundleProduct ?? item %}
+                    {% if not isConfiguredBundle %}
+                        {% embed molecule('product-card-item') with {
+                            modifiers: ['checkout'],
+                            data: {
+                                listItem: cartItem,
+                                quantity: cartItem.quantity,
+                                priceModifiers: ['medium', 'block', 'margin-bottom-from-tablet'],
+                            },
+                            embed: {
+                                bundleItems: item.bundleItems | default([]),
+                            },
+                        } only %}
+                            {% block image %}
+                                {% set imageUrl = data.listItem.images is not empty ? data.listItem.images[0].externalUrlLarge : null %}
 
-                    {% embed molecule('product-card-item') with {
-                        modifiers: ['checkout'],
-                        data: {
-                            list: data.cartItems,
-                            listItem: item,
-                            quantity: item.quantity,
-                            priceModifiers: ['medium', 'block', 'margin-bottom-from-tablet'],
-                        },
-                    } only %}
-                        {% block image %}
-                            {% set imageUrl = data.listItem.images is not empty ? data.listItem.images[0].externalUrlLarge : null %}
-
-                            {% include molecule('product-item-image') with {
-                                modifiers: ['small'],
-                                data: {
-                                    name: data.listItem.name,
-                                    image: imageUrl,
-                                },
-                            } only %}
-                        {% endblock %}
-
-                        {% block title %}
-                            <h6 class="{{ config.name }}__title spacing spacing--reset">{{ data.listItem.name }}</h6>
-                        {% endblock %}
-
-                        {% block subQuantity %}
-                            {% set salesUnitName = data.listItem.quantitySalesUnit.productMeasurementUnit.name | default %}
-
-                            {% if salesUnitName is not empty and data.listItem.amount == 0 %}
-                                {% include atom('quantity-option') with {
-                                    class: 'col col--sm-12 col--md-auto',
+                                {% include molecule('product-item-image') with {
+                                    modifiers: ['small'],
                                     data: {
-                                        value: data.listItem.quantity,
-                                        precision: data.listItem.quantitySalesUnit.conversion,
-                                        optionName: salesUnitName | trans,
+                                        name: data.listItem.name,
+                                        image: imageUrl,
                                     },
                                 } only %}
-                            {% endif %}
+                            {% endblock %}
 
-                            {% if data.listItem.amount != 0 %}
-                                {% set amountSalesUnitName = data.listItem.amountSalesUnit.productMeasurementUnit.name | default %}
+                            {% block title %}
+                                <h6 class="{{ config.name }}__title spacing spacing--reset">{{ data.listItem.name }}</h6>
+                            {% endblock %}
 
-                                {% include atom('quantity-option') with {
-                                    class: 'col col--sm-12 col--md-auto',
+                            {% block packagingUnitCartContent %}
+                                {% set hasSubQuantity = true %}
+
+                                {{ parent() }}
+                            {% endblock %}
+
+                            {% block subQuantity %}
+                                {% if data.listItem.quantitySalesUnit is not empty %}
+                                    {% include atom('quantity-option') with {
+                                        data: {
+                                            value: data.listItem.quantitySalesUnit.value,
+                                            precision: data.listItem.quantitySalesUnit.precision,
+                                            optionName: data.listItem.quantitySalesUnit.productMeasurementUnit.name | trans,
+                                        },
+                                    } only %}
+                                {% endif %}
+                            {% endblock %}
+
+                            {% block bundle %}
+                                {% include molecule('bundle-items', 'ProductBundleWidget') ignore missing with {
                                     data: {
-                                        value: data.listItem.amount,
-                                        precision: data.listItem.quantity,
-                                        optionName: amountSalesUnitName | trans,
+                                        items: embed.bundleItems,
                                     },
                                 } only %}
-                            {% endif %}
-                        {% endblock %}
+                            {% endblock %}
 
-                        {% block note %}
-                            {% if data.listItem.cartNote is not empty %}
-                                {% include molecule('cart-item-note', 'CartNoteWidget') ignore missing with {
-                                    data: {
-                                        isNoteNotEmpty: true,
-                                        canWrite: false,
-                                        label: 'cart_note.checkout_page.quote_note',
-                                        note: data.listItem.cartNote,
-                                    },
-                                } only %}
-                            {% endif %}
-                        {% endblock %}
-
-                        {% block bundle %}{% endblock %}
-                    {% endembed %}
+                            {% block note %}
+                                {% if data.listItem.cartNote is not empty %}
+                                    {% include molecule('cart-item-note', 'CartNoteWidget') ignore missing with {
+                                        data: {
+                                            isNoteNotEmpty: true,
+                                            canWrite: false,
+                                            label: 'cart_note.checkout_page.quote_note',
+                                            note: data.listItem.cartNote,
+                                        },
+                                    } only %}
+                                {% endif %}
+                            {% endblock %}
+                        {% endembed %}
+                    {% endif %}
                 {% endfor %}
             </div>
 
@@ -102,17 +101,7 @@
                 {% include molecule('summary-sidebar', 'CheckoutPage') with {
                     data: {
                         shipment: shipmentGroup.shipment,
-                    },
-                } only %}
-
-                {% include molecule('summary-item-box', 'CheckoutPage') with {
-                    modifiers: ['mobile-border-top'],
-                    data: {
-                        title: 'checkout.step.summary.payment' | trans,
-                        method: data.paymentMethod,
-                        iconName: data.paymentMethod | lower,
-                        editUrl: 'checkout-payment',
-                        canEdit: true,
+                        cart: data.cart,
                     },
                 } only %}
             </div>
@@ -120,6 +109,18 @@
     {% endfor %}
 
     <div class="grid grid--gap">
+        <div class="col col--sm-12 col--lg-6">
+            {% include molecule('summary-item-box', 'CheckoutPage') with {
+                modifiers: ['mobile-border-top'],
+                data: {
+                    title: 'checkout.step.summary.payment' | trans,
+                    method: data.paymentMethod,
+                    iconName: data.paymentMethod | lower,
+                    editUrl: 'checkout-payment',
+                    canEdit: true,
+                },
+            } only %}
+        </div>
         <div class="col col--sm-12 col--lg-6">
             {% include molecule('summary-item-box', 'CheckoutPage') with {
                 data: {

@@ -32,7 +32,7 @@ class ProductSetWidgetDependencyProvider extends SprykerProductSetWidgetDependen
     /**
      * @param \Spryker\Yves\Kernel\Container $container
      *
-     * @return \Spryker\Yves\Kernel\Container $container
+     * @return \Spryker\Yves\Kernel\Container
      */
     protected function addProductStorageClient(Container $container): Container
     {

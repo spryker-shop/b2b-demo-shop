@@ -24,9 +24,17 @@
             <span class="float-right">{{ data.order.totals.expenseTotal | money(true, data.order.currencyIsoCode) }}</span>
             <span class="{{ config.name }}__text {{ config.name }}__text--bigger">{{ 'customer.order.expenseTotal' | trans }}</span>
 
-            {% for expense in data.order.expenses %}
+            {% for expense in data.order.expenses if expense.type == 'SHIPMENT_EXPENSE_TYPE' %}
                 <div class="{{ config.name }}__text-wrap grid grid--justify grid--middle">
                     <span class="{{ config.name }}__text col col--sm-8 col--lg-10 text-secondary">{{ expense.shipment.carrier.name ~ ' - ' ~ (expense.name | trans) }}</span>
+                    <span class="{{ config.name }}__text {{ config.name }}__text--bigger col col--expand text-secondary text-right">{{ expense.sumPrice | money(true, data.order.currencyIsoCode) }}</span>
+                </div>
+            {% endfor %}
+
+
+            {% for expense in data.order.expenses if expense.type == 'THRESHOLD_EXPENSE_TYPE' %}
+                <div class="{{ config.name }}__text-wrap grid grid--justify grid--middle">
+                    <span class="{{ config.name }}__text col col--sm-8 col--lg-10 text-secondary">{{ 'Surcharge' | trans }}</span>
                     <span class="{{ config.name }}__text {{ config.name }}__text--bigger col col--expand text-secondary text-right">{{ expense.sumPrice | money(true, data.order.currencyIsoCode) }}</span>
                 </div>
             {% endfor %}

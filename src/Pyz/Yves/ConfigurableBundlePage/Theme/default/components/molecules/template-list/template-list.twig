@@ -1,0 +1,27 @@
+{% extends molecule('template-list', '@SprykerShop:ConfigurableBundlePage') %}
+
+{% block list %}
+    <h2 class="text-center spacing-bottom spacing-bottom--bigger">{{ 'configurable_bundle_page.choose_bundle_to_configure' | trans }}</h2>
+
+    <ul class="grid grid--gap grid--stretch">
+        {% block listInner %}{{ parent() }}{% endblock %}
+    </ul>
+{% endblock %}
+
+{% block item %}
+    {% set listItemClasses = 'col col--sm-12 col--md-6 col--xl-4 spacing-bottom spacing-bottom--inner spacing-bottom--biggest' %}
+
+    {{ parent() }}
+{% endblock %}
+
+{% block template %}
+    {% block templateTitle %}{{ parent() }}{% endblock %}
+{% endblock %}
+
+{% block templateTitleItem %}
+    {% set titleClasses = config.name ~ '__item-title' %}
+
+    {{ parent() }}
+{% endblock %}
+
+{% block button %}{% endblock %}

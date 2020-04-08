@@ -10,12 +10,6 @@
         data: {
             form: data.forms.shipment,
             cart: data.forms.shipment.vars.data,
-            attributes: [],
-            options: {
-                attr: {
-                    id: 'payment-form',
-                },
-            },
             submit: {
                 enable: true,
                 text: 'checkout.step.payment' | trans,
@@ -48,16 +42,18 @@
                         </h3>
 
                         <div class="col col--sm-12 col--xl-8">
-                            {% for item in shipmentGroupForm.vars.data.items %}
-                                {% set item = item.bundleProduct ?? item %}
+                            {% for item in shipmentGroupForm.vars.data.cartItems %}
+                                {% set cartItem = item.bundleProduct ?? item %}
 
                                 {% embed molecule('product-card-item') with {
                                     modifiers: ['checkout'],
                                     data: {
-                                        list: shipmentGroupForm.vars.data.items,
-                                        listItem: item,
-                                        quantity: item.quantity,
+                                        listItem: cartItem,
+                                        quantity: cartItem.quantity,
                                         priceModifiers: ['medium', 'block', 'margin-bottom-from-tablet'],
+                                    },
+                                    embed: {
+                                        bundleItems: item.bundleItems | default([]),
                                     },
                                 } only %}
                                     {% block image %}
@@ -76,6 +72,26 @@
                                         <h6 class="{{ config.name }}__title spacing spacing--reset">{{ data.listItem.name }}</h6>
                                     {% endblock %}
 
+                                    {% block subQuantity %}
+                                        {% if data.listItem.quantitySalesUnit is not empty %}
+                                            {% include atom('quantity-option') with {
+                                                data: {
+                                                    value: data.listItem.quantitySalesUnit.value,
+                                                    precision: data.listItem.quantitySalesUnit.precision,
+                                                    optionName: data.listItem.quantitySalesUnit.productMeasurementUnit.name | trans,
+                                                },
+                                            } only %}
+                                        {% endif %}
+                                    {% endblock %}
+
+                                    {% block bundle %}
+                                        {% include molecule('bundle-items', 'ProductBundleWidget') ignore missing with {
+                                            data: {
+                                                items: embed.bundleItems,
+                                            },
+                                        } only %}
+                                    {% endblock %}
+
                                     {% block note %}
                                         {% if data.listItem.cartNote is not empty %}
                                             {% include molecule('cart-item-note', 'CartNoteWidget') ignore missing with {
@@ -88,8 +104,6 @@
                                             } only %}
                                         {% endif %}
                                     {% endblock %}
-
-                                    {% block bundle %}{% endblock %}
                                 {% endembed %}
                             {% endfor %}
                         </div>

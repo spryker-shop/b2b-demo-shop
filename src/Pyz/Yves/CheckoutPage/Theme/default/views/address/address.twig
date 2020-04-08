@@ -33,11 +33,13 @@
                 shipping: data.forms.shipping,
                 billing: data.forms.billing,
                 items: data.forms.items,
+                bundleItems: data.forms.bundleItems,
             },
             isMultipleShipmentEnabled: data.isMultipleShipmentEnabled,
             companyBusinessUnitShippingAddressWidget: companyBusinessUnitShippingAddressWidget,
             isCompanyBusinessUnitShippingAddressApplicable: isCompanyBusinessUnitShippingAddressApplicable,
             jsAddressClass: jsAddressClass,
+            isBillingSameAsShippingChecked: data.forms.billing.id_customer_address.vars.choices is empty,
         },
     } only %}
         {% block title %}{% endblock %}
@@ -109,6 +111,7 @@
                         class: 'address-wrapper__content col col--sm-12 is-hidden ' ~ embed.jsAddressClass ~ '__items-target',
                         data: {
                             form: embed.forms.items,
+                            formBundle: embed.forms.bundleItems,
                             shippingForm: embed.forms.shipping,
                             jsAddressClass: embed.jsAddressClass,
                         },
@@ -124,7 +127,7 @@
                         'target-class-name': embed.jsAddressClass ~ '__billing-same-as-shipping',
                         'class-to-toggle': 'is-hidden',
                         'add-class-when-checked': true,
-                        checked: true,
+                        checked: embed.isBillingSameAsShippingChecked,
                     }
                 }) }}
             </div>

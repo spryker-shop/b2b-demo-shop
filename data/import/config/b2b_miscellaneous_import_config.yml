@@ -1,0 +1,26 @@
+# Example of B2B demo shop 'Miscellaneous category' data import.
+version: 0
+
+actions:
+  - data_entity: mime-type
+      ### B2B Shopping List
+  - data_entity: shopping-list
+    source: data/import/shopping_list.csv
+  - data_entity: shopping-list-item
+    source: data/import/shopping_list_item.csv
+  - data_entity: shopping-list-company-user
+    source: data/import/shopping_list_company_user.csv
+  - data_entity: shopping-list-company-business-unit
+    source: data/import/shopping_list_company_business_unit.csv
+      ### B2B Cart
+  - data_entity: multi-cart
+    source: data/import/multi_cart.csv
+  - data_entity: shared-cart
+    source: data/import/shared_cart.csv
+      ### B2B Quote
+  - data_entity: quote-request
+    source: data/import/quote_request.csv
+  - data_entity: quote-request-version
+    source: data/import/quote_request_version.csv
+  - data_entity: comment
+    source: data/import/comment.csv

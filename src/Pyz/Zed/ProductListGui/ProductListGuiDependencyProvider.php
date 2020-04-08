@@ -7,59 +7,33 @@
 
 namespace Pyz\Zed\ProductListGui;
 
-use Spryker\Zed\MerchantRelationshipProductListGui\Communication\Plugin\ProductListGuiExtension\MerchantRelationshipProductListOwnerTypeFormExpanderPlugin;
-use Spryker\Zed\MerchantRelationshipProductListGui\Communication\Plugin\ProductListGuiExtension\MerchantRelationshipTableExpanderPlugin;
+use Spryker\Zed\ConfigurableBundleGui\Communication\Plugin\ProductListGui\ConfigurableBundleTemplateListProductListTopButtonsExpanderPlugin;
+use Spryker\Zed\ConfigurableBundleGui\Communication\Plugin\ProductListGui\ConfigurableBundleTemplateProductListUsedByTableExpanderPlugin;
+use Spryker\Zed\MerchantRelationshipProductListGui\Communication\Plugin\ProductListGui\MerchantRelationListProductListTopButtonsExpanderPlugin;
+use Spryker\Zed\MerchantRelationshipProductListGui\Communication\Plugin\ProductListGui\MerchantRelationshipProductListUsedByTableExpanderPlugin;
 use Spryker\Zed\ProductListGui\ProductListGuiDependencyProvider as SprykerProductListGuiDependencyProvider;
 
 class ProductListGuiDependencyProvider extends SprykerProductListGuiDependencyProvider
 {
     /**
-     * @return \Spryker\Zed\ProductListGuiExtension\Dependency\Plugin\ProductListOwnerTypeFormExpanderPluginInterface[]
+     * @return \Spryker\Zed\ProductListGuiExtension\Dependency\Plugin\ProductListTopButtonsExpanderPluginInterface[]
      */
-    protected function getProductListOwnerTypeFormExpanderPlugins(): array
+    protected function getProductListTopButtonsExpanderPlugins(): array
     {
         return [
-            new MerchantRelationshipProductListOwnerTypeFormExpanderPlugin(),
+            new ConfigurableBundleTemplateListProductListTopButtonsExpanderPlugin(),
+            new MerchantRelationListProductListTopButtonsExpanderPlugin(),
         ];
     }
 
     /**
-     * @return \Spryker\Zed\ProductListGuiExtension\Dependency\Plugin\ProductListTableConfigExpanderPluginInterface[]
+     * @return \Spryker\Zed\ProductListGuiExtension\Dependency\Plugin\ProductListUsedByTableExpanderPluginInterface[]
      */
-    protected function getProductListTableConfigExpanderPlugins(): array
+    protected function getProductListUsedByTableExpanderPlugins(): array
     {
         return [
-            new MerchantRelationshipTableExpanderPlugin(),
-        ];
-    }
-
-    /**
-     * @return \Spryker\Zed\ProductListGuiExtension\Dependency\Plugin\ProductListTableQueryCriteriaExpanderPluginInterface[]
-     */
-    protected function getProductListTableQueryCriteriaExpanderPlugins(): array
-    {
-        return [
-            new MerchantRelationshipTableExpanderPlugin(),
-        ];
-    }
-
-    /**
-     * @return \Spryker\Zed\ProductListGuiExtension\Dependency\Plugin\ProductListTableDataExpanderPluginInterface[]
-     */
-    protected function getProductListTableDataExpanderPlugins(): array
-    {
-        return [
-            new MerchantRelationshipTableExpanderPlugin(),
-        ];
-    }
-
-    /**
-     * @return \Spryker\Zed\ProductListGuiExtension\Dependency\Plugin\ProductListTableDataExpanderPluginInterface[]
-     */
-    protected function getProductListTableHeaderExpanderPlugins(): array
-    {
-        return [
-            new MerchantRelationshipTableExpanderPlugin(),
+            new ConfigurableBundleTemplateProductListUsedByTableExpanderPlugin(),
+            new MerchantRelationshipProductListUsedByTableExpanderPlugin(),
         ];
     }
 }
