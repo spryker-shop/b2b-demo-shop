@@ -54,10 +54,6 @@ class ProductRelationCreateRelationCest
         $i->clickSaveButton();
         $i->see(ProductRelationCreatePage::MESSAGE_SUCCESS_PRODUCT_RELATION_CREATED);
 
-        $i->activateRelation();
-        $i->wait(5);
-        $i->see(ProductRelationCreatePage::MESSAGE_SUCCESS_PRODUCT_RELATION_ACTIVATED);
-
         // TODO re-enable
         //$i->runCollectors();
         //$i->wait(5);
