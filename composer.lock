@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7a11c22165c109bd20f611ab1a5c0337",
+    "content-hash": "1ebd43d7b0f87e4af604a484909da472",
     "packages": [
         {
             "name": "codeitnowin/barcode",
@@ -29096,16 +29096,16 @@
         },
         {
             "name": "spryker/product-measurement-unit",
-            "version": "5.0.0",
+            "version": "5.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product-measurement-unit.git",
-                "reference": "1a6363293594ce59a8bac14a8603503f6d24bca0"
+                "reference": "b50ea45a4e3fda65bf55feec05198a1a4dbf35d2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-measurement-unit/zipball/1a6363293594ce59a8bac14a8603503f6d24bca0",
-                "reference": "1a6363293594ce59a8bac14a8603503f6d24bca0",
+                "url": "https://api.github.com/repos/spryker/product-measurement-unit/zipball/b50ea45a4e3fda65bf55feec05198a1a4dbf35d2",
+                "reference": "b50ea45a4e3fda65bf55feec05198a1a4dbf35d2",
                 "shasum": ""
             },
             "require": {
@@ -29136,7 +29136,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0.x-dev"
+                    "dev-master": "5.0.x-dev"
                 }
             },
             "autoload": {
@@ -29150,7 +29150,7 @@
                 "proprietary"
             ],
             "description": "ProductMeasurementUnit module",
-            "time": "2019-11-21T18:01:16+00:00"
+            "time": "2020-04-09T12:55:28+00:00"
         },
         {
             "name": "spryker/product-measurement-unit-data-import",
@@ -29200,16 +29200,16 @@
         },
         {
             "name": "spryker/product-measurement-unit-storage",
-            "version": "1.5.3",
+            "version": "1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product-measurement-unit-storage.git",
-                "reference": "397d422335bf96eb891b35384e9e5329b867b5ce"
+                "reference": "985fbf1e9e5ea2ffe316c8e69c4a161680ed77bf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-measurement-unit-storage/zipball/397d422335bf96eb891b35384e9e5329b867b5ce",
-                "reference": "397d422335bf96eb891b35384e9e5329b867b5ce",
+                "url": "https://api.github.com/repos/spryker/product-measurement-unit-storage/zipball/985fbf1e9e5ea2ffe316c8e69c4a161680ed77bf",
+                "reference": "985fbf1e9e5ea2ffe316c8e69c4a161680ed77bf",
                 "shasum": ""
             },
             "require": {
@@ -29221,7 +29221,8 @@
                 "spryker/storage": "^3.0.0",
                 "spryker/synchronization": "^0.2.0 || ^1.0.0",
                 "spryker/synchronization-behavior": "^1.0.0",
-                "spryker/synchronization-extension": "^1.1.0"
+                "spryker/synchronization-extension": "^1.1.0",
+                "spryker/util-encoding": "^1.0.0 || ^2.0.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
@@ -29252,7 +29253,59 @@
                 "proprietary"
             ],
             "description": "ProductMeasurementUnitStorage module",
-            "time": "2019-11-26T14:49:00+00:00"
+            "time": "2020-04-09T12:55:28+00:00"
+        },
+        {
+            "name": "spryker/product-measurement-units-rest-api",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/product-measurement-units-rest-api.git",
+                "reference": "80475ce28af041f06bf47f5416dd83836ff7a8f3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/product-measurement-units-rest-api/zipball/80475ce28af041f06bf47f5416dd83836ff7a8f3",
+                "reference": "80475ce28af041f06bf47f5416dd83836ff7a8f3",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/carts-rest-api-extension": "^1.5.0",
+                "spryker/glossary-storage": "^1.0.0",
+                "spryker/glue-application": "^1.15.0",
+                "spryker/glue-application-extension": "^1.0.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/orders-rest-api-extension": "^1.0.0",
+                "spryker/product-measurement-unit-storage": "^1.6.0",
+                "spryker/product-storage": "^1.24.0",
+                "spryker/symfony": "^3.0.0",
+                "spryker/synchronization-behavior": "^1.0.0",
+                "spryker/transfer": "^3.18.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/decimal-object": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ProductMeasurementUnitsRestApi module",
+            "time": "2020-04-09T12:57:24+00:00"
         },
         {
             "name": "spryker/product-new",
@@ -29570,16 +29623,16 @@
         },
         {
             "name": "spryker/product-packaging-unit",
-            "version": "4.0.1",
+            "version": "4.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product-packaging-unit.git",
-                "reference": "f2a85ee78f0ea7f8c06a2ca13fbb5d5a4732ade1"
+                "reference": "17864403795ec04ef45fff073095ae4b4fdb0a74"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-packaging-unit/zipball/f2a85ee78f0ea7f8c06a2ca13fbb5d5a4732ade1",
-                "reference": "f2a85ee78f0ea7f8c06a2ca13fbb5d5a4732ade1",
+                "url": "https://api.github.com/repos/spryker/product-packaging-unit/zipball/17864403795ec04ef45fff073095ae4b4fdb0a74",
+                "reference": "17864403795ec04ef45fff073095ae4b4fdb0a74",
                 "shasum": ""
             },
             "require": {
@@ -29636,7 +29689,7 @@
                 "proprietary"
             ],
             "description": "ProductPackagingUnit module",
-            "time": "2020-01-15T16:13:28+00:00"
+            "time": "2020-04-09T12:55:28+00:00"
         },
         {
             "name": "spryker/product-packaging-unit-data-import",
@@ -30789,16 +30842,16 @@
         },
         {
             "name": "spryker/product-storage",
-            "version": "1.21.1",
+            "version": "1.24.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product-storage.git",
-                "reference": "183041977b1cfa09f17ff4a6a34962ad4ddfd326"
+                "reference": "a4e4e616305a3e20d3b5c020af898803900a5e53"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-storage/zipball/183041977b1cfa09f17ff4a6a34962ad4ddfd326",
-                "reference": "183041977b1cfa09f17ff4a6a34962ad4ddfd326",
+                "url": "https://api.github.com/repos/spryker/product-storage/zipball/a4e4e616305a3e20d3b5c020af898803900a5e53",
+                "reference": "a4e4e616305a3e20d3b5c020af898803900a5e53",
                 "shasum": ""
             },
             "require": {
@@ -30847,7 +30900,7 @@
                 "proprietary"
             ],
             "description": "ProductStorage module",
-            "time": "2020-03-23T13:13:17+00:00"
+            "time": "2020-04-09T12:55:28+00:00"
         },
         {
             "name": "spryker/product-storage-extension",
