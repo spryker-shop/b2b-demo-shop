@@ -33,7 +33,7 @@
                                     } only %}
 
                                     <div class="{{ component.renderClass(config.name ~ '__actions', modifiers) }}">
-                                        <form method="POST" action="{{ path('cart/add', {'sku': data.product.sku}) }}" class="grid grid--bottom grid--justify">
+                                        <form method="POST" action="{{ path('cart/add', {'sku': data.sku}) }}" class="grid grid--bottom grid--justify">
                                             <div class="col col--sm-12 spacing-bottom spacing-bottom--big">
                                                 {% include molecule('quantity-counter') with {
                                                     attributes: {
@@ -45,7 +45,7 @@
                                             <div class="col col--sm-12">
                                                 {% set disabledAttribute = data.product.idProductConcrete is empty ? 'disabled' %}
 
-                                                <input type="hidden" value="{{ data.product.sku }}" name="groupKey">
+                                                <input type="hidden" value="{{ data.sku }}" name="groupKey">
                                                 <input type="hidden" value="{{ embed.promotionDiscount.id }}" name="idDiscountPromotion">
 
                                                 <button class="button button--expand" {{ disabledAttribute }} data-form-submitter data-init-single-click>
