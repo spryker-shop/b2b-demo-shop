@@ -25,7 +25,7 @@
 
                                     {% include molecule('variant-configurator', 'DiscountPromotionWidget') with {
                                         data: {
-                                            sku: data.product.sku,
+                                            sku: data.sku,
                                             superAttributes: data.product.attributeMap.superAttributes,
                                             selectedAttributes: data.product.selectedAttributes,
                                             availableAttributes: data.product.availableAttributes,
@@ -48,7 +48,7 @@
                                                 <input type="hidden" value="{{ data.product.sku }}" name="groupKey">
                                                 <input type="hidden" value="{{ embed.promotionDiscount.id }}" name="idDiscountPromotion">
 
-                                                <button type="submit" class="button button--expand" {{ disabledAttribute }} data-form-submitter data-init-single-click>
+                                                <button class="button button--expand" {{ disabledAttribute }} data-form-submitter data-init-single-click>
                                                     {{ 'page.detail.add-to-cart' | trans }}
                                                 </button>
                                             </div>

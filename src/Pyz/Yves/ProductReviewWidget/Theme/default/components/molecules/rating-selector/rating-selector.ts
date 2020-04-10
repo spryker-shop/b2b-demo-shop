@@ -4,10 +4,10 @@ import { EVENT_UPDATE_REVIEW_COUNT } from 'src/ShopUi/components/molecules/produ
 export default class RatingSelector extends RatingSelectorCore {
     protected reviewCount: HTMLElement;
 
-    protected readyCallback(): void {
+    protected init(): void {
         this.reviewCount = <HTMLElement>this.getElementsByClassName(`${this.jsName}__review-count`)[0];
 
-        super.readyCallback();
+        super.init();
     }
 
     protected mapUpdateRatingEvents(): void {
