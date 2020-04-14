@@ -67,7 +67,7 @@
         {%- endblock -%}
 
         {% block option %}
-            {% set isSelected = embed.defaultAddressKey == address.key %}
+            {% set isSelected = embed.hasPreselectedOption ? false : embed.defaultAddressKey == address.key %}
             {% set fullName = '%s %s %s, %s %s, %s %s' | format(
                 address.salutation,
                 address.firstName,
@@ -78,7 +78,7 @@
                 address.city)
             %}
             {% define option = {
-                selected: not embed.hasPreselectedOption ? isSelected,
+                selected: isSelected,
                 value: address.key,
                 label: fullName
             } %}
