@@ -11,6 +11,7 @@ use Spryker\Zed\CartsRestApi\CartsRestApiDependencyProvider as SprykerCartsRestA
 use Spryker\Zed\CartsRestApiExtension\Dependency\Plugin\QuoteCreatorPluginInterface;
 use Spryker\Zed\DiscountPromotionsRestApi\Communication\Plugin\CartsRestApi\DiscountPromotionCartItemMapperPlugin;
 use Spryker\Zed\PersistentCart\Communication\Plugin\CartsRestApi\QuoteCreatorPlugin;
+use Spryker\Zed\ProductMeasurementUnitsRestApi\Communication\Plugin\CartsRestApi\SalesUnitCartItemMapperPlugin;
 use Spryker\Zed\ProductOptionsRestApi\Communication\Plugin\CartsRestApi\ProductOptionCartItemMapperPlugin;
 use Spryker\Zed\SharedCart\Communication\Plugin\CartsRestApi\SharedCartQuoteCollectionExpanderPlugin;
 use Spryker\Zed\SharedCartsRestApi\Communication\Plugin\CartsRestApi\QuotePermissionGroupQuoteExpanderPlugin;
@@ -53,6 +54,7 @@ class CartsRestApiDependencyProvider extends SprykerCartsRestApiDependencyProvid
         return [
             new ProductOptionCartItemMapperPlugin(),
             new DiscountPromotionCartItemMapperPlugin(),
+            new SalesUnitCartItemMapperPlugin(),
         ];
     }
 }

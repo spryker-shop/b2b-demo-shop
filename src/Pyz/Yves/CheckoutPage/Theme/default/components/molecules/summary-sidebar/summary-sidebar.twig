@@ -7,9 +7,31 @@
 {% define data = {
     shipment: required,
     canEdit: true,
+    cart: {},
 } %}
 
 {% block body %}
+    {% embed molecule('order-custom-reference', 'OrderCustomReferenceWidget') ignore missing with {
+        class: config.name ~ '__item ' ~ config.name ~ '__item--secondary',
+        data: {
+            orderCustomReference: data.cart.orderCustomReference | default,
+        },
+        embed: {
+            parentClass: config.name,
+        },
+    } only %}
+        {% block title %}
+            <h4 class="{{ embed.parentClass }}__title">
+                {{ data.title }}
+            </h4>
+        {% endblock %}
+
+        {% block textWrapper %}
+            {% set classText = 'text-break spacing spacing--reset' %}
+            {{ parent() }}
+        {% endblock %}
+    {% endembed %}
+
     <div class="{{ config.name }}__item">
         <h4 class="{{ config.name }}__title">
             {{ 'checkout.step.summary.delivery_address' | trans }}
