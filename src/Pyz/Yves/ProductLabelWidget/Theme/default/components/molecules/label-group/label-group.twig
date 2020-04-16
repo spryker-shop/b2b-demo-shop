@@ -1,21 +1,23 @@
-{% extends model('component') %}
-
-{% define config = {
-    name: 'label-group'
-} %}
-
-{% define data = {
-    labels: []
-}  %}
-
-{% block component %}
-    {% if data.labels is not empty %}{{parent()}}{% endif %}
-{% endblock %}
+{% extends molecule('label-group', '@SprykerShop:ProductLabelWidget') %}
 
 {% block body %}
+    {% set labelTextClass = component.renderClass(config.name ~ '__text', modifiers) %}
 
-    {% for label in data.labels %}
-        <span class="{{ component.renderClass(config.name ~ '__text', modifiers) }} {{ config.name }}__text--{{ label.type }}">{{ label.text }}</span>
-    {% endfor %}
+    {% macro label(configName, configJsName, textClass, text='', type='') %}
+        {% set labelType = type ? configName ~ '__text--' ~ type %}
 
+        <span class="{{ configJsName }}__label-flag" data-config-name="{{ configName }}__text">
+            <span class="{{ textClass }} {{ labelType }} {{ configJsName }}__label-flag-text">
+                {{ text }}
+            </span>
+        </span>
+    {% endmacro %}
+
+    {% if data.labels %}
+        {% for label in data.labels %}
+            {{ _self.label(config.name, config.jsName, labelTextClass, label.text, label.type) }}
+        {% endfor %}
+    {% else %}
+        {{ _self.label(config.name, config.jsName, labelTextClass) }}
+    {% endif %}
 {% endblock %}

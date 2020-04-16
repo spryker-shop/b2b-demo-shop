@@ -2,12 +2,12 @@
 
 {% define config = {
     name: 'image-gallery',
-    tag: 'image-gallery'
+    tag: 'image-gallery',
 } %}
 
 {% define data = {
     idProductAbstract: required,
-    images: []
+    images: [],
 } %}
 
 {% define attributes = {
@@ -31,43 +31,38 @@
                     "vertical": false
                 }
             }]
-    }'
+    }',
 } %}
 
 {% set imagesQuantity = data.images | length %}
-{% set firstImage = data.images | first %}
+
+{% block extraClass %}
+    {{ config.jsName }}
+{% endblock %}
 
 {% block body %}
-    {% if (imagesQuantity > 1) %}
-        <div class="{{config.name}}__thumbnail {{config.jsName}}__thumbnails">
+    {% if imagesQuantity > 1 %}
+        <div class="{{ config.name }}__thumbnail {{ config.jsName }}__thumbnails">
             {% for image in data.images %}
-                <div class="{{config.name}}__thumbnail-item">
+                <div class="{{ config.name }}__thumbnail-item">
                     {% if image.externalUrlLarge is not empty %}
-                        <img class="{{config.name}}__thumbnail-img" src="{{ image.externalUrlLarge }}" alt="">
+                        <img class="{{ config.name }}__thumbnail-img" src="{{ image.externalUrlLarge }}" alt="">
                     {% endif %}
                 </div>
             {% endfor %}
         </div>
     {% endif %}
 
-    <div class="{{config.jsName}} {{config.name}}__container">
-        {% for i, image in data.images %}
-            <div class="{{config.name}}__item
-                        {{config.jsName}}__item
-                        {% if (imagesQuantity > 1) %}{{config.name}}__item--left-indent{% endif %}
-                        {% if i == 0 %}{{config.name}}__item--active{% endif %}">
+    <div class="{{ config.name }}__container">
+        {% for image in data.images %}
+            {% set leftIndentItemClass = imagesQuantity > 1 ? config.name ~ '__item--left-indent' %}
+            {% set activeItemClass = loop.first ? attributes['active-class'] %}
+
+            <div class="{{ config.name }}__item {{ config.jsName }}__item {{ leftIndentItemClass }} {{ activeItemClass }}">
                 {% if image.externalUrlLarge is not empty %}
-                    <img class="{{config.name}}__image" src="{{ image.externalUrlLarge }}" alt="">
+                    <img class="{{ config.name }}__image" src="{{ image.externalUrlLarge }}" alt="">
                 {% endif %}
             </div>
         {% endfor %}
-
-        <div class="{{config.name}}__item
-                    js-pdp-image-color-group
-                    {% if (imagesQuantity > 1) %}{{config.name}}__item--left-indent{% endif %}">
-            {% if firstImage.externalUrlLarge is defined %}
-                <img class="{{config.name}}__image" src="{{ firstImage.externalUrlLarge }}" alt="">
-            {% endif %}
-        </div>
     </div>
 {% endblock %}

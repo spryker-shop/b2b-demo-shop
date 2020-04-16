@@ -44,11 +44,6 @@ $product-review-rating-selector-icon-size-big: 24px;
                 color: $setting-color-gray-2;
                 width: $product-review-rating-selector-icon-size;
 
-                &--big {
-                    width: $product-review-rating-selector-icon-size-big;
-                    height: $product-review-rating-selector-icon-size-big;
-                }
-
                 &--half-left {
                     left: $product-review-rating-selector-icon-size / 2;
                 }
@@ -66,10 +61,13 @@ $product-review-rating-selector-icon-size-big: 24px;
             &--active > #{$name}__star {
                 color: $setting-color-yellow-1;
                 width: $product-review-rating-selector-icon-size;
+            }
+        }
 
-                &--big {
-                    width: $product-review-rating-selector-icon-size-big;
-                }
+        &--big {
+            #{$name}__star {
+                width: $product-review-rating-selector-icon-size-big;
+                height: $product-review-rating-selector-icon-size-big;
             }
         }
 
