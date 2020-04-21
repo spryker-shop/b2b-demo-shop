@@ -1,15 +1,10 @@
 {% extends view('pdp-product', '@SprykerShop:ProductWidget') %}
 
 {% block body %}
-    {% include molecule('product-card') with {
-        modifiers: ['catalog', 'full-height'],
+    {% include molecule('product-item') with {
+        modifiers: ['catalog', 'category', 'full-height'],
         data: {
-            name: data.product.name,
-            abstractId: data.product.idProductAbstract,
-            url: data.product.url,
-            imageUrl: data.product.images is not empty ? data.product.images.0.externalUrlSmall,
-            price: data.product.prices.DEFAULT | default(null),
-            originalPrice: data.product.prices.ORIGINAL | default(null),
+            product: data.product,
         },
     } only %}
 {% endblock %}

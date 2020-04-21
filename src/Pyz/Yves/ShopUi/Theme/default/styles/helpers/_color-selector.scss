@@ -3,13 +3,13 @@
         cursor: default;
         display: flex;
 
-        &__color {
+        &__item {
             border-radius: 100%;
             vertical-align: middle;
             position: relative;
 
             &:not(:last-child) {
-                margin-right: 4px;
+                margin-right: rem(4);
             }
 
             &:hover #{$name}__tooltip {
@@ -17,10 +17,10 @@
             }
         }
 
-        &__color-inner {
+        &__item-inner {
             display: block;
-            width: 10px;
-            height: 10px;
+            width: rem(10);
+            height: rem(10);
             border-radius: 100%;
             pointer-events: none;
         }
@@ -30,8 +30,8 @@
             transform: scale(0);
             transform-origin: bottom;
             position: absolute;
-            top: -43px;
-            left: -15px;
+            top: rem(-43);
+            left: rem(-15);
             background: $setting-color-gray-5;
             color: $setting-color-white;
             font-size: rem(16);
@@ -42,12 +42,12 @@
             &::before {
                 content: '';
                 position: absolute;
-                left: 17px;
-                bottom: -4px;
+                left: rem(17);
+                bottom: rem(-4);
                 border-radius: $setting-border-radius;
                 background: $setting-color-gray-5;
-                width: 10px;
-                height: 10px;
+                width: rem(10);
+                height: rem(10);
                 transform: rotate(45deg);
             }
         }
