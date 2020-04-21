@@ -1,0 +1,22 @@
+{% extends molecule('quote-request-summary-shipment', '@SprykerShop:QuoteRequestPage') %}
+
+{% block component %}
+    {% if (data.shipmentTotal or data.shipmentTotal is same as(0)) and data.currencyCode %}
+        <hr class="box__separator">
+
+        {{ block('body') }}
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+    {% set shipmentClass = 'grid grid--justify grid--nowrap ' ~ config.name ~ '__row' %}
+    {% set shipmentTitleClass = 'col ' ~ config.name ~ '__key' %}
+    {% set shipmentValueClass = 'col ' ~ config.name ~ '__value' %}
+
+    {% block title %}
+        <div class="grid grid--justify grid--nowrap {{ config.name }}__title">
+            <strong class="col">{{ 'checkout.step.summary.shipment_costs_total' | trans }}</strong>
+            <strong class="col">{{ data.shipmentTotal | money(true, data.currencyCode) }}</strong>
+        </div>
+    {% endblock %}
+{% endblock %}

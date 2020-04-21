@@ -1,20 +1,4 @@
-{% extends template('page-layout-quote-request', 'QuoteRequestAgentPage') %}
-
-{% define data = {
-    quoteRequests: _view.quoteRequests,
-
-    pagination: {
-        parameters: {},
-        currentPage: _view.pagination.page,
-        paginationPath: 'agent/quote-request',
-        maxPage: _view.pagination.lastPage,
-        showAlwaysFirstAndLast: true,
-    },
-
-    title: 'quote_request_widget.request_for_quote.list.title' | trans,
-} %}
-
-{% block title %}{% endblock %}
+{% extends view('quote-request-view', '@SprykerShop:QuoteRequestAgentPage') %}
 
 {% block customerContent %}
     {% if data.title %}
