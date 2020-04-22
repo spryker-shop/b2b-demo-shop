@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "86f6889d757d519c5514d7acbb289b3d",
+    "content-hash": "2a73444f98d9eb96bd9af094d52bde09",
     "packages": [
         {
             "name": "codeitnowin/barcode",
@@ -680,23 +680,24 @@
         },
         {
             "name": "guzzlehttp/guzzle",
-            "version": "6.5.2",
+            "version": "6.5.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "43ece0e75098b7ecd8d13918293029e555a50f82"
+                "reference": "aab4ebd862aa7d04f01a4b51849d657db56d882e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/43ece0e75098b7ecd8d13918293029e555a50f82",
-                "reference": "43ece0e75098b7ecd8d13918293029e555a50f82",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/aab4ebd862aa7d04f01a4b51849d657db56d882e",
+                "reference": "aab4ebd862aa7d04f01a4b51849d657db56d882e",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
                 "guzzlehttp/promises": "^1.0",
                 "guzzlehttp/psr7": "^1.6.1",
-                "php": ">=5.5"
+                "php": ">=5.5",
+                "symfony/polyfill-intl-idn": "^1.11"
             },
             "require-dev": {
                 "ext-curl": "*",
@@ -704,7 +705,6 @@
                 "psr/log": "^1.1"
             },
             "suggest": {
-                "ext-intl": "Required for Internationalized Domain Name (IDN) support",
                 "psr/log": "Required for using the Log middleware"
             },
             "type": "library",
@@ -743,7 +743,7 @@
                 "rest",
                 "web service"
             ],
-            "time": "2019-12-23T11:57:10+00:00"
+            "time": "2020-04-18T10:38:46+00:00"
         },
         {
             "name": "guzzlehttp/promises",
@@ -11151,16 +11151,16 @@
         },
         {
             "name": "spryker/auth-rest-api",
-            "version": "2.8.0",
+            "version": "2.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/auth-rest-api.git",
-                "reference": "f2b133657427ea9b3b6d6039b888401533815dd9"
+                "reference": "b85e10f4fa1e11b0d3dbc6fddac90828076b1d0e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/auth-rest-api/zipball/f2b133657427ea9b3b6d6039b888401533815dd9",
-                "reference": "f2b133657427ea9b3b6d6039b888401533815dd9",
+                "url": "https://api.github.com/repos/spryker/auth-rest-api/zipball/b85e10f4fa1e11b0d3dbc6fddac90828076b1d0e",
+                "reference": "b85e10f4fa1e11b0d3dbc6fddac90828076b1d0e",
                 "shasum": ""
             },
             "require": {
@@ -11169,7 +11169,7 @@
                 "spryker/glue-application": "^1.15.0",
                 "spryker/glue-application-extension": "^1.2.0",
                 "spryker/kernel": "^3.30.0",
-                "spryker/oauth": "^1.4.0",
+                "spryker/oauth": "^1.6.0",
                 "spryker/symfony": "^3.0.0",
                 "spryker/util-encoding": "^2.0.0",
                 "spryker/zed-request": "^3.0.0"
@@ -11202,7 +11202,7 @@
                 "proprietary"
             ],
             "description": "AuthRestApi module",
-            "time": "2020-04-08T10:56:14+00:00"
+            "time": "2020-04-08T12:47:14+00:00"
         },
         {
             "name": "spryker/auth-rest-api-extension",
@@ -19624,16 +19624,16 @@
         },
         {
             "name": "spryker/customer",
-            "version": "7.26.8",
+            "version": "7.27.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/customer.git",
-                "reference": "6b15b4ca3be95c568a53fe29fa19740612f5e3a5"
+                "reference": "09545885350c099bca9a2528ce08acf526a4fd58"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/customer/zipball/6b15b4ca3be95c568a53fe29fa19740612f5e3a5",
-                "reference": "6b15b4ca3be95c568a53fe29fa19740612f5e3a5",
+                "url": "https://api.github.com/repos/spryker/customer/zipball/09545885350c099bca9a2528ce08acf526a4fd58",
+                "reference": "09545885350c099bca9a2528ce08acf526a4fd58",
                 "shasum": ""
             },
             "require": {
@@ -19685,7 +19685,7 @@
                 "proprietary"
             ],
             "description": "Customer module",
-            "time": "2020-03-19T10:06:56+00:00"
+            "time": "2020-04-16T15:27:15+00:00"
         },
         {
             "name": "spryker/customer-access",
@@ -24360,31 +24360,35 @@
         },
         {
             "name": "spryker/oauth",
-            "version": "1.5.1",
+            "version": "1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/oauth.git",
-                "reference": "9f822f404f31da66f7ccba1fca6b7e19dc96156e"
+                "reference": "b668b02d259d67dc90fbde4325203b14975624fc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/oauth/zipball/9f822f404f31da66f7ccba1fca6b7e19dc96156e",
-                "reference": "9f822f404f31da66f7ccba1fca6b7e19dc96156e",
+                "url": "https://api.github.com/repos/spryker/oauth/zipball/b668b02d259d67dc90fbde4325203b14975624fc",
+                "reference": "b668b02d259d67dc90fbde4325203b14975624fc",
                 "shasum": ""
             },
             "require": {
                 "league/oauth2-server": "^7.1",
-                "php": ">=7.1",
+                "php": ">=7.2",
                 "spryker/config": "^3.0.0",
                 "spryker/guzzle": "^2.0.0",
-                "spryker/kernel": "^3.0.0",
-                "spryker/oauth-extension": "^1.2.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/oauth-extension": "^1.3.0",
+                "spryker/symfony": "^3.0.0",
                 "spryker/util-encoding": "^2.0.0",
                 "spryker/zed-request": "^3.0.0"
             },
             "require-dev": {
+                "spryker/auth-rest-api": "*",
                 "spryker/code-sniffer": "*",
+                "spryker/customer": "*",
                 "spryker/installer": "*",
+                "spryker/oauth-revoke": "*",
                 "spryker/propel": "*",
                 "spryker/testify": "*"
             },
@@ -24407,7 +24411,7 @@
                 "proprietary"
             ],
             "description": "Oauth module",
-            "time": "2019-06-26T06:21:59+00:00"
+            "time": "2020-04-09T15:07:25+00:00"
         },
         {
             "name": "spryker/oauth-company-user",
@@ -24595,24 +24599,23 @@
         },
         {
             "name": "spryker/oauth-extension",
-            "version": "1.2.0",
+            "version": "1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/oauth-extension.git",
-                "reference": "447bb927a44a16515de67e80b136ca516d6f390e"
+                "reference": "c2da3df530a599e2c1abc80f8582d3bf41838145"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/oauth-extension/zipball/447bb927a44a16515de67e80b136ca516d6f390e",
-                "reference": "447bb927a44a16515de67e80b136ca516d6f390e",
+                "url": "https://api.github.com/repos/spryker/oauth-extension/zipball/c2da3df530a599e2c1abc80f8582d3bf41838145",
+                "reference": "c2da3df530a599e2c1abc80f8582d3bf41838145",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1"
+                "php": ">=7.2"
             },
             "require-dev": {
-                "spryker/code-sniffer": "*",
-                "spryker/testify": "*"
+                "spryker/code-sniffer": "*"
             },
             "type": "library",
             "extra": {
@@ -24630,20 +24633,20 @@
                 "proprietary"
             ],
             "description": "OauthExtension module",
-            "time": "2019-06-03T13:04:46+00:00"
+            "time": "2020-04-09T15:07:25+00:00"
         },
         {
             "name": "spryker/oauth-permission",
-            "version": "1.1.1",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/oauth-permission.git",
-                "reference": "dbdf686d21912b5cfc8c7c56ebd3a572b007526f"
+                "reference": "2ee548b7614e5436ba4609ce494350c656fc695f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/oauth-permission/zipball/dbdf686d21912b5cfc8c7c56ebd3a572b007526f",
-                "reference": "dbdf686d21912b5cfc8c7c56ebd3a572b007526f",
+                "url": "https://api.github.com/repos/spryker/oauth-permission/zipball/2ee548b7614e5436ba4609ce494350c656fc695f",
+                "reference": "2ee548b7614e5436ba4609ce494350c656fc695f",
                 "shasum": ""
             },
             "require": {
@@ -24654,6 +24657,7 @@
                 "spryker/oauth-company-user-extension": "^1.0.0",
                 "spryker/oauth-customer-connector-extension": "^1.0.0",
                 "spryker/oauth-extension": "^1.2.0",
+                "spryker/oauth-revoke-extension": "^1.0.0",
                 "spryker/permission": "^1.5.0",
                 "spryker/permission-extension": "^1.0.0",
                 "spryker/symfony": "^3.0.0",
@@ -24683,7 +24687,91 @@
                 "proprietary"
             ],
             "description": "OauthPermission module",
-            "time": "2020-01-10T13:41:17+00:00"
+            "time": "2020-04-16T09:52:09+00:00"
+        },
+        {
+            "name": "spryker/oauth-revoke",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/oauth-revoke.git",
+                "reference": "51a1717c0f13dff3537a5a53f540b4f19052731d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/oauth-revoke/zipball/51a1717c0f13dff3537a5a53f540b4f19052731d",
+                "reference": "51a1717c0f13dff3537a5a53f540b4f19052731d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/kernel": "^3.30.0",
+                "spryker/oauth": "^1.6.0",
+                "spryker/oauth-extension": "^1.3.0",
+                "spryker/oauth-revoke-extension": "^1.0.0",
+                "spryker/propel-orm": "^1.0.0",
+                "spryker/util-encoding": "^2.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "OauthRevoke module",
+            "time": "2020-04-17T10:10:21+00:00"
+        },
+        {
+            "name": "spryker/oauth-revoke-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/oauth-revoke-extension.git",
+                "reference": "8231f05221723795bb55de365476ce3bc2cbe3af"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/oauth-revoke-extension/zipball/8231f05221723795bb55de365476ce3bc2cbe3af",
+                "reference": "8231f05221723795bb55de365476ce3bc2cbe3af",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "OauthRevokeExtension module",
+            "time": "2020-04-17T11:17:20+00:00"
         },
         {
             "name": "spryker/oms",
@@ -40726,16 +40814,16 @@
         },
         {
             "name": "webmozart/assert",
-            "version": "1.7.0",
+            "version": "1.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/webmozart/assert.git",
-                "reference": "aed98a490f9a8f78468232db345ab9cf606cf598"
+                "reference": "ab2cb0b3b559010b75981b1bdce728da3ee90ad6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webmozart/assert/zipball/aed98a490f9a8f78468232db345ab9cf606cf598",
-                "reference": "aed98a490f9a8f78468232db345ab9cf606cf598",
+                "url": "https://api.github.com/repos/webmozart/assert/zipball/ab2cb0b3b559010b75981b1bdce728da3ee90ad6",
+                "reference": "ab2cb0b3b559010b75981b1bdce728da3ee90ad6",
                 "shasum": ""
             },
             "require": {
@@ -40743,7 +40831,7 @@
                 "symfony/polyfill-ctype": "^1.8"
             },
             "conflict": {
-                "vimeo/psalm": "<3.6.0"
+                "vimeo/psalm": "<3.9.1"
             },
             "require-dev": {
                 "phpunit/phpunit": "^4.8.36 || ^7.5.13"
@@ -40770,7 +40858,7 @@
                 "check",
                 "validate"
             ],
-            "time": "2020-02-14T12:15:55+00:00"
+            "time": "2020-04-18T12:12:48+00:00"
         },
         {
             "name": "webmozart/glob",
@@ -46670,5 +46758,6 @@
     "platform-dev": [],
     "platform-overrides": {
         "php": "7.2.15"
-    }
+    },
+    "plugin-api-version": "1.1.0"
 }
