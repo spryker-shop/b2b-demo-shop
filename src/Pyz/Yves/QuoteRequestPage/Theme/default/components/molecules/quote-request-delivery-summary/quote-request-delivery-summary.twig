@@ -27,9 +27,67 @@
             <hr class="box__separator">
         {% endblock %}
 
-        {{ block('billingWrapper') }}
+        {% block billingWrapper %}
+            {% if hasBillingAddress %}
+                {% block billingSubtitle %}
+                    <h6>{{ 'quote_request_page.quote_request.title_billing_address' | trans }}</h6>
+                {% endblock %}
 
-        {{ block('deliveryWrapper') }}
+                {% block billingAddress %}
+                    {% include molecule('display-address') with {
+                        class: 'spacing-top',
+                        modifiers: ['small'],
+                        data: {
+                            address: data.quote.billingAddress,
+                            isAddressLabelVisible: false,
+                        },
+                    } only %}
+                {% endblock %}
+
+                {% block billingSeparator %}
+                    <hr class="box__separator">
+                {% endblock %}
+            {% endif %}
+        {% endblock %}
+
+        {% block deliveryWrapper %}
+            {% macro titleDeliveryAddress() %}
+                <h6>{{ 'quote_request_page.quote_request.title_delivery_address' | trans }}</h6>
+            {% endmacro %}
+
+            {% if data.hasMultiShipments %}
+                {% block deliverySubtitle1 %}
+                    {{ _self.titleDeliveryAddress() }}
+                {% endblock %}
+
+                {{ block('textMultipleDelivery') }}
+            {% endif %}
+
+            {% if not data.hasMultiShipments and hasSingleShippingAddress %}
+                {% block deliverySubtitle2 %}
+                    {{ _self.titleDeliveryAddress() }}
+                {% endblock %}
+
+                {% block deliveryAddress %}
+                    {% include molecule('display-address') with {
+                        class: 'spacing-top',
+                        modifiers: ['small'],
+                        data: {
+                            address: shipment.shippingAddress,
+                            isAddressLabelVisible: false,
+                        },
+                    } only %}
+                {% endblock %}
+            {% endif %}
+
+            {% if hasBillingAddress and not hasShipmentAddress %}
+                {% block deliverySubtitle3 %}
+                    {{ _self.titleDeliveryAddress() }}
+                {% endblock %}
+
+                {{ block('textEmptyDeliveryAddress') }}
+            {% endif %}
+        {% endblock %}
 
         {% block addressActions %}
             {% if not hasBillingAddress and not hasShipmentAddress %}

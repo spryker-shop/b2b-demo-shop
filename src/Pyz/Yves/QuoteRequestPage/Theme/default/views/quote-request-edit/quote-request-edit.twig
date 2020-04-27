@@ -4,6 +4,14 @@
 
 {% block separator %}{% endblock %}
 
+{% block orderInformationBoxInner %}
+    {% include molecule('quote-request-form-field', 'QuoteRequestPage') ignore missing with {
+        data: {
+            field: child,
+        },
+    } only %}
+{% endblock %}
+
 {% block actions %}
     {% block actionBack %}
         {% set buttonBackClass = 'spacing-bottom button button--expand button--hollow button--second' %}

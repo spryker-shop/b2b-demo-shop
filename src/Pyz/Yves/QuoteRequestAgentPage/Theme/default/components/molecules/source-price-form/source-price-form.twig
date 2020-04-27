@@ -1,22 +1,8 @@
-{% extends model('component') %}
-
-{% define config = {
-    name: 'source-price-form',
-    tag: 'source-price-form',
-} %}
+{% extends molecule('source-price-form', '@SprykerShop:QuoteRequestAgentPage') %}
 
 {% define data = {
-    priceField: required,
-    checkboxName: required,
-    checkboxValue: required,
-    isChecked: required,
-    checkboxLabel: required,
     currentItemPrice: required,
     originItemPrice: required,
-} %}
-
-{% define attributes = {
-    price: required,
 } %}
 
 {% block body %}
@@ -28,10 +14,11 @@
                         {% block adjustedPriceText %}
                             {% set isSamePrice = data.currentItemPrice == data.originItemPrice %}
                             {% set hiddenClass = isSamePrice ? 'is-hidden' %}
-                            {% set priceClasses = config.jsName ~ '__origin-price text-big text-secondary ' ~ hiddenClass %}
+                            {% set originPriceClass = config.jsName ~ '__origin-price text-secondary ' ~ hiddenClass %}
+                            {% set originPriceClass = component.renderClass(config.name ~ '__price', modifiers, originPriceClass) %}
 
                             {% block adjustedPriceTextInner %}
-                                <s class="{{ priceClasses }}">
+                                <s class="{{ originPriceClass }}">
                                     {{ data.originItemPrice }}
                                 </s>
                             {% endblock %}
@@ -44,13 +31,15 @@
         {% block priceColumn %}
             <div class="col col--sm-6">
                 {% block priceColumnInner %}
-                    {{ form_row(data.priceField, {'attr': {'class': config.jsName ~ '__input-container is-hidden'}}) }}
+                    {{ form_row(data.priceForm, {'attr': {'class': config.jsName ~ '__input-container is-hidden'}}) }}
                     {% set isDifferentPrice = data.currentItemPrice != data.originItemPrice %}
                     {% set hiddenClass = isDifferentPrice ? 'is-hidden' %}
                     {% set price = isDifferentPrice ? data.originItemPrice : data.currentItemPrice %}
+                    {% set priceClass = config.jsName ~ '__price ' ~ hiddenClass %}
+                    {% set priceClass = component.renderClass(config.name ~ '__price', modifiers, priceClass) %}
 
                     {% block price %}
-                        <strong class="{{ config.jsName }}__price text-big {{ hiddenClass }}">{{ price }}</strong>
+                        <strong class="{{ priceClass }}">{{ price }}</strong>
                     {% endblock %}
                 {% endblock %}
             </div>
@@ -64,7 +53,7 @@
                         name: data.checkboxName,
                         value: data.checkboxValue,
                         checked: data.isChecked,
-                        disabled: data.priceField.vars.disabled,
+                        disabled: data.priceForm.vars.disabled,
                     },
                     data: {
                         label: data.checkboxLabel,

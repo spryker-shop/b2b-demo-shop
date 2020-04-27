@@ -40,9 +40,24 @@
 
         {% if hasMultiShipments %}
             {% for shipmentGroup in data.shipmentGroups %}
-                {{ block('titleForMultiShipmentsWrapper') }}
+                {% if loop.index == 1 %}
+                    {{ block('titleForMultiShipmentsWrapper') }}
+                {% endif %}
             {% endfor %}
         {% endif %}
+    </div>
+{% endblock %}
+
+{% block titleForItemsWithoutShipmentWrapper %}
+    {% set numberOfItemsClass = 'col' %}
+    <div class="grid grid--justify grid--bottom">
+        {% block titleForItemsWithoutShipment %}
+            <h4 class="col">
+                {{ 'quote_request_page.quote_request.empty_shipment_data' | trans }}
+            </h4>
+        {% endblock %}
+
+        {{ block('itemsCounterForItemsWithoutShipment') }}
     </div>
 {% endblock %}
 
@@ -50,6 +65,28 @@
     {{ block('productsWithoutShipment') }}
 {% endblock %}
 
+{% block titleForMultiShipmentsWrapper %}
+    {% set titleMultiShipmentWrapperClass = 'grid grid--justify grid--bottom' %}
+    {% set titleMultiShipmentClass = 'col' %}
+    {% set numberOfItemsClass = 'col' %}
+    {{ parent() }}
+{% endblock %}
+
+{% block titleForMultiShipments %}
+    <h3 class="col">
+        {{ 'quote_request_page.quote_request.shipment_counter' | trans({
+            '%index%': loop.index,
+            '%length%': data.shipmentGroups | length,
+        }) }}
+    </h3>
+{% endblock %}
+
 {% block wrapperForMultiShipmentItem %}
+    {% if loop.index != 1 %}
+        <div class="spacing-top spacing-top--biggest spacing-bottom spacing-bottom--big">
+            {{ block('titleForMultiShipmentsWrapper') }}
+        </div>
+    {% endif %}
+
     {{ block('productsForMultiShipments') }}
 {% endblock %}

@@ -9,18 +9,3 @@
         },
     } only %}
 {% endblock %}
-
-{% block shipmentInformation %}
-    {% if data.shipment %}
-        {% block shipmentInformationContent %}
-            {% include molecule('quote-request-shipment-information', 'QuoteRequestPage') with {
-                data: {
-                    shipment: data.shipment,
-                    shipmentExpense: data.shipmentExpense,
-                    hasMultiShipments: data.hasMultiShipments,
-                    priceMode: data.quote.priceMode,
-                },
-            } only %}
-        {% endblock %}
-    {% endif %}
-{% endblock %}
