@@ -6,7 +6,7 @@
 } %}
 
 {% block body %}
-    <div class="grid grid--middle grid--justify grid--gap spacing-bottom">
+    <div class="grid grid--middle grid--justify grid--gap spacing-bottom text-right">
         {% block adjustedPriceColumn %}
             <div class="col col--sm-6">
                 {% block adjustedPriceColumnInner %}
@@ -46,7 +46,7 @@
         {% endblock %}
     </div>
     {% block form %}
-        <div class="grid grid--gap">
+        <div class="grid grid--gap text-right">
             <div class="col col--sm-12">
                 {% embed atom('checkbox') with {
                     attributes: {
