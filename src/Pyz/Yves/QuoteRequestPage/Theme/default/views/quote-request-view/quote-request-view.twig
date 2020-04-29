@@ -1,10 +1,10 @@
 {% extends view('quote-request-view', '@SprykerShop:QuoteRequestPage') %}
 
 {% block customerContent %}
-    {% include molecule('action-bar', 'ShopUi') with {
+    {% include molecule('action-bar') with {
         data: {
             title: data.title,
-        }
+        },
     } only %}
 
     {{ block('quoteRequests') }}

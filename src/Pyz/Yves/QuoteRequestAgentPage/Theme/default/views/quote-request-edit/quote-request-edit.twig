@@ -179,18 +179,16 @@
                 {% endblock %}
 
                 {% block sourcePriceForm %}
-                    {% if data.cartItem.amountSalesUnit is empty %}
-                        {% if data.cartItem.quantitySalesUnit %}
-                            {% set value = data.cartItem.quantitySalesUnit.value %}
-                            {% set precision = data.cartItem.quantitySalesUnit.precision %}
-                            {% set salesUnitName = data.cartItem.quantitySalesUnit.productMeasurementUnit.name | default %}
+                    {% if data.cartItem.amountSalesUnit is empty and data.cartItem.quantitySalesUnit %}
+                        {% set value = data.cartItem.quantitySalesUnit.value %}
+                        {% set precision = data.cartItem.quantitySalesUnit.precision %}
+                        {% set salesUnitName = data.cartItem.quantitySalesUnit.productMeasurementUnit.name | default %}
 
-                            <p>
-                                <small class="text-secondary">
-                                    [= {{ value / precision }} {{ salesUnitName | trans }}]
-                                </small>
-                            </p>
-                        {% endif %}
+                        <p>
+                            <small class="text-secondary">
+                                [= {{ value / precision }} {{ salesUnitName | trans }}]
+                            </small>
+                        </p>
                     {% endif %}
 
                     {% for itemForm in embed.itemForms if data.cartItem.groupKey == itemForm.vars.value.groupKey %}
@@ -370,18 +368,16 @@
                 {% endblock %}
 
                 {% block sourcePriceForm %}
-                    {% if data.cartItem.amountSalesUnit is empty %}
-                        {% if data.cartItem.quantitySalesUnit %}
-                            {% set value = data.cartItem.quantitySalesUnit.value %}
-                            {% set precision = data.cartItem.quantitySalesUnit.precision %}
-                            {% set salesUnitName = data.cartItem.quantitySalesUnit.productMeasurementUnit.name | default %}
+                    {% if data.cartItem.amountSalesUnit is empty and data.cartItem.quantitySalesUnit %}
+                        {% set value = data.cartItem.quantitySalesUnit.value %}
+                        {% set precision = data.cartItem.quantitySalesUnit.precision %}
+                        {% set salesUnitName = data.cartItem.quantitySalesUnit.productMeasurementUnit.name | default %}
 
-                            <p>
-                                <small class="text-secondary">
-                                    [= {{ value / precision }} {{ salesUnitName | trans }}]
-                                </small>
-                            </p>
-                        {% endif %}
+                        <p>
+                            <small class="text-secondary">
+                                [= {{ value / precision }} {{ salesUnitName | trans }}]
+                            </small>
+                        </p>
                     {% endif %}
 
                     {% for itemForm in embed.itemForms if data.cartItem.groupKey == itemForm.vars.value.groupKey %}
@@ -598,11 +594,6 @@
         {% endblock %}
     {% endembed %}
 {% endblock %}
-
-
-
-
-
 
 {% block actions %}
     {% block actionBack %}
