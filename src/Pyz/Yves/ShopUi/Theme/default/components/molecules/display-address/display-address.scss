@@ -4,16 +4,15 @@
         line-height: rem(20);
         color: $setting-color-gray-3;
 
-        &--small {
-            font-size: rem(12);
-        }
-
         @include helper-breakpoint-media-min($lg) {
             font-size: rem(15);
             line-height: rem(22);
-
-            &--small {
-                font-size: rem(12);
+        }
+        
+        &--small {
+            font-size: rem(12);
+            
+            @include helper-breakpoint-media-min($lg) {
                 line-height: rem(20);
             }
         }
