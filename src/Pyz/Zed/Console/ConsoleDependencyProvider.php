@@ -39,6 +39,7 @@ use Spryker\Zed\Development\Communication\Console\GenerateYvesIdeAutoCompletionC
 use Spryker\Zed\Development\Communication\Console\GenerateZedIdeAutoCompletionConsole;
 use Spryker\Zed\Development\Communication\Console\PluginUsageFinderConsole;
 use Spryker\Zed\Development\Communication\Console\RemoveClientIdeAutoCompletionConsole;
+use Spryker\Zed\Development\Communication\Console\RemoveGlueIdeAutoCompletionConsole;
 use Spryker\Zed\Development\Communication\Console\RemoveIdeAutoCompletionConsole;
 use Spryker\Zed\Development\Communication\Console\RemoveServiceIdeAutoCompletionConsole;
 use Spryker\Zed\Development\Communication\Console\RemoveYvesIdeAutoCompletionConsole;
@@ -358,6 +359,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             $commands[] = new PropelSchemaValidatorConsole();
             $commands[] = new PropelSchemaXmlNameValidatorConsole();
             $commands[] = new DataImportDumpConsole();
+            $commands[] = new RemoveGlueIdeAutoCompletionConsole();
             $commands[] = new PluginUsageFinderConsole();
             $commands[] = new PostgresIndexGeneratorConsole();
             $commands[] = new PostgresIndexRemoverConsole();
