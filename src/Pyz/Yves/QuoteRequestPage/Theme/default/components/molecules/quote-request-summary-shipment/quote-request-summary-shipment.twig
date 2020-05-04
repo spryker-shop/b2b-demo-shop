@@ -13,10 +13,11 @@
     {% set shipmentTitleClass = 'col ' ~ config.name ~ '__key' %}
     {% set shipmentValueClass = 'col ' ~ config.name ~ '__value' %}
 
-    {% block title %}
-        <div class="grid grid--justify grid--nowrap {{ config.name }}__title">
-            <strong class="col">{{ 'checkout.step.summary.shipment_costs_total' | trans }}</strong>
-            <strong class="col">{{ data.shipmentTotal | money(true, data.currencyCode) }}</strong>
-        </div>
-    {% endblock %}
+    {{ parent() }}
+{% endblock %}
+
+{% block title %}
+    <div class="grid grid--justify grid--nowrap {{ config.name }}__title">
+        <strong class="col">{{ 'checkout.step.summary.shipment_costs_total' | trans }}</strong>
+    </div>
 {% endblock %}

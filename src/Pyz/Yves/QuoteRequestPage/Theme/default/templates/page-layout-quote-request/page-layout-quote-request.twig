@@ -38,7 +38,7 @@
             {{ block('titleForItemsWithoutShipmentWrapper') }}
         {% endif %}
 
-        {% if hasMultiShipments %}
+        {% if hasMultiShipments and not data.itemsWithoutShipment %}
             {% for shipmentGroup in data.shipmentGroups %}
                 {% if loop.index == 1 %}
                     {{ block('titleForMultiShipmentsWrapper') }}
@@ -82,7 +82,13 @@
 {% endblock %}
 
 {% block wrapperForMultiShipmentItem %}
-    {% if loop.index != 1 %}
+    {% if loop.index == 1 %}
+        {% if data.itemsWithoutShipment %}
+            <div class="spacing-top spacing-top--biggest spacing-bottom spacing-bottom--big">
+                {{ block('titleForMultiShipmentsWrapper') }}
+            </div>
+        {% endif %}
+    {% else %}
         <div class="spacing-top spacing-top--biggest spacing-bottom spacing-bottom--big">
             {{ block('titleForMultiShipmentsWrapper') }}
         </div>

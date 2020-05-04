@@ -10,6 +10,7 @@
         data: {
             form: data.forms.shipment,
             cart: data.forms.shipment.vars.data,
+            backUrl: data.backUrl,
             submit: {
                 enable: true,
                 text: 'checkout.step.payment' | trans,
@@ -118,6 +119,15 @@
                     </article>
                 {% endfor %}
             </div>
+        {% endblock %}
+
+        {% block actions %}
+            {% set QuoteRequestActionsWidget = findWidget('QuoteRequestActionsWidget', [data.cart, data.backUrl]) %}
+            {% if QuoteRequestActionsWidget and QuoteRequestActionsWidget.isVisible %}
+                {% widget QuoteRequestActionsWidget only %}{% endwidget %}
+            {% else %}
+                {{ parent() }}
+            {% endif %}
         {% endblock %}
     {% endembed %}
 {% endblock %}

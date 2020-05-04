@@ -1,0 +1,25 @@
+{% extends view('quote-request-checkout', '@SprykerShop:QuoteRequestWidget') %}
+
+{% define data = {
+    isVisible: _widget.isVisible,
+    backUrl: _widget.backUrl,
+} %}
+
+{% block body %}
+    {% if data.isVisible %}
+        {% block backButton %}
+            {% set buttonBackClass = 'form__action form__action--expand-sm-md button button--big button--hollow-icon button--back' %}
+            {{ parent() }}
+        {% endblock %}
+
+        {% block cancelButton %}
+            {% set buttonCancelClass = 'form__action form__action--expand-sm-md button button--big button--alternative' %}
+            {{ parent() }}
+        {% endblock %}
+
+        {% block saveButton %}
+            {% set buttonSaveClass = 'form__action form__action--expand-sm-md button button--big' %}
+            {{ parent() }}
+        {% endblock %}
+    {% endif %}
+{% endblock %}

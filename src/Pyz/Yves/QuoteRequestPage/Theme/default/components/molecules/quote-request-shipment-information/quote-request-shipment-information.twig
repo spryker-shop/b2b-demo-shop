@@ -37,7 +37,7 @@
                         {% block actions %}
                             <div class="{{ config.name }}__shipment-price">
                                 {% if data.shipmentExpense.shipment.method.storeCurrencyPrice != data.shipmentExpense.sumPrice %}
-                                    <s>{{ data.shipmentExpense.shipment.method.storeCurrencyPrice | money(true, data.shipmentExpense.shipment.method.currencyIsoCode) }}</s>
+                                    <s class="text-secondary">{{ data.shipmentExpense.shipment.method.storeCurrencyPrice | money(true, data.shipmentExpense.shipment.method.currencyIsoCode) }}</s>
                                 {% endif %}
                                 {{ data.shipmentExpense.sumPrice | money(true, data.shipmentExpense.shipment.method.currencyIsoCode) }}
                             </div>

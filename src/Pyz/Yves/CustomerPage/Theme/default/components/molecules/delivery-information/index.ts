@@ -1,1 +1,0 @@
-import './delivery-information.scss';
