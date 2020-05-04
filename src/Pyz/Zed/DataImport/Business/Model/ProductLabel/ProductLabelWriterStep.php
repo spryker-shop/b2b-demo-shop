@@ -107,8 +107,10 @@ class ProductLabelWriterStep extends PublishAwareStep implements DataImportStepI
      *
      * @return void
      */
-    protected function findOrCreateProductLabelLocalizedAttributes(DataSetInterface $dataSet, SpyProductLabel $productLabelEntity)
-    {
+    protected function findOrCreateProductLabelLocalizedAttributes(
+        DataSetInterface $dataSet,
+        SpyProductLabel $productLabelEntity
+    ) {
         foreach ($dataSet[LocalizedAttributesExtractorStep::KEY_LOCALIZED_ATTRIBUTES] as $idLocale => $localizedAttributes) {
             $productLabelLocalizedAttributesEntity = SpyProductLabelLocalizedAttributesQuery::create()
                 ->filterByFkProductLabel($productLabelEntity->getIdProductLabel())
@@ -129,8 +131,10 @@ class ProductLabelWriterStep extends PublishAwareStep implements DataImportStepI
      *
      * @return void
      */
-    protected function findOrCreateProductLabelToProductAbstractRelations(DataSetInterface $dataSet, SpyProductLabel $productLabelEntity)
-    {
+    protected function findOrCreateProductLabelToProductAbstractRelations(
+        DataSetInterface $dataSet,
+        SpyProductLabel $productLabelEntity
+    ) {
         if (!$dataSet[static::KEY_PRODUCT_ABSTRACT_SKUS]) {
             return;
         }
@@ -142,7 +146,7 @@ class ProductLabelWriterStep extends PublishAwareStep implements DataImportStepI
         }
 
         foreach ($productAbstractSkus as $productAbstractSku) {
-            $idProductAbstract = trim($dataSet[AddProductAbstractSkusStep::KEY_PRODUCT_ABSTRACT_SKUS][$productAbstractSku]);
+            $idProductAbstract = (int)trim($dataSet[AddProductAbstractSkusStep::KEY_PRODUCT_ABSTRACT_SKUS][$productAbstractSku]);
             $productLabelAbstractProductEntity = SpyProductLabelProductAbstractQuery::create()
                 ->filterByFkProductLabel($productLabelEntity->getIdProductLabel())
                 ->filterByFkProductAbstract($idProductAbstract)

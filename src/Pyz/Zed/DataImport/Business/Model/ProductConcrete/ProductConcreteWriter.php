@@ -170,7 +170,7 @@ class ProductConcreteWriter extends PublishAwareStep implements DataImportStepIn
                     ->findOneOrCreate();
 
                 $productBundleEntity
-                    ->setQuantity($quantity)
+                    ->setQuantity((int)$quantity)
                     ->save();
             }
         }

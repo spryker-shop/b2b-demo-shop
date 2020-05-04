@@ -7,22 +7,12 @@
             {% for product in data.promotionProducts %}
                 {% block product %}
                     <div class="col col--md-4">
-                        {% embed molecule('product-card') with {
+                        {% embed molecule('product-item') with {
                             modifiers: ['catalog', 'stretch'],
                             data: {
-                                name: product.name,
-                                abstractId: product.idProductAbstract,
-                                url: product.url,
-                                imageUrl: (product.images | length ? product.images.0.externalUrlSmall),
-                                price: product.prices.DEFAULT ?? null,
-                                originalPrice: (product.prices.ORIGINAL ?? null),
+                                product: product,
                             },
                             embed: {
-                                superAttributes: product.attributeMap.superAttributes,
-                                selectedAttributes: product.selectedAttributes,
-                                availableAttributes: product.availableAttributes,
-                                sku: product.sku,
-                                idProductConcrete: product.idProductConcrete,
                                 promotionDiscount: {
                                     id: product.promotionItem.discount.discountPromotion.idDiscountPromotion,
                                     maxQuantity: product.promotionItem.maxQuantity,
@@ -32,19 +22,18 @@
                             {% block content %}
                                 <div class="{{ config.name }}__info">
                                     {{ parent() }}
+
                                     {% include molecule('variant-configurator', 'DiscountPromotionWidget') with {
                                         data: {
-                                            sku: embed.sku,
-                                            superAttributes: embed.superAttributes,
-                                            selectedAttributes: embed.selectedAttributes,
-                                            availableAttributes: embed.availableAttributes,
+                                            sku: data.sku,
+                                            superAttributes: data.product.attributeMap.superAttributes,
+                                            selectedAttributes: data.product.selectedAttributes,
+                                            availableAttributes: data.product.availableAttributes,
                                         },
                                     } only %}
 
-                                    {% set disabled = embed.idProductConcrete is empty %}
-
                                     <div class="{{ component.renderClass(config.name ~ '__actions', modifiers) }}">
-                                        <form method="POST" action="{{ path("cart/add", {"sku": embed.sku}) }}" class="grid grid--bottom grid--justify">
+                                        <form method="POST" action="{{ path('cart/add', {'sku': data.sku}) }}" class="grid grid--bottom grid--justify">
                                             <div class="col col--sm-12 spacing-bottom spacing-bottom--big">
                                                 {% include molecule('quantity-counter') with {
                                                     attributes: {
@@ -54,10 +43,12 @@
                                             </div>
 
                                             <div class="col col--sm-12">
-                                                <input type="hidden" value="{{ embed.sku }}" name="groupKey">
+                                                {% set disabledAttribute = data.product.idProductConcrete is empty ? 'disabled' %}
+
+                                                <input type="hidden" value="{{ data.sku }}" name="groupKey">
                                                 <input type="hidden" value="{{ embed.promotionDiscount.id }}" name="idDiscountPromotion">
 
-                                                <button type="submit" class="button button--expand" {{ disabled ? 'disabled' }} data-form-submitter data-init-single-click>
+                                                <button class="button button--expand" {{ disabledAttribute }} data-form-submitter data-init-single-click>
                                                     {{ 'page.detail.add-to-cart' | trans }}
                                                 </button>
                                             </div>

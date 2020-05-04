@@ -1,0 +1,15 @@
+{% extends view('product-detail-color-selector', '@SprykerShop:ProductGroupWidget') %}
+
+{% block body %}
+    {% if data.items | length > 1 %}
+        {% include molecule('product-detail-color-selector', 'ProductGroupWidget') with {
+            data: {
+                items: data.items,
+                selectionTag: 'a',
+            },
+            attributes: {
+                'image-carousel-class-name': 'js-image-gallery',
+            },
+        } only %}
+    {% endif %}
+{% endblock %}

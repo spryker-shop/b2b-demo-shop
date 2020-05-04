@@ -101,6 +101,7 @@
                 {% include molecule('summary-sidebar', 'CheckoutPage') with {
                     data: {
                         shipment: shipmentGroup.shipment,
+                        cart: data.cart,
                     },
                 } only %}
             </div>

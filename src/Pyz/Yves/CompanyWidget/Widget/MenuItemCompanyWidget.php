@@ -44,7 +44,8 @@ class MenuItemCompanyWidget extends AbstractWidget
     {
         $customer = $this->getFactory()->getCustomerClient()->getCustomer();
 
-        if ($customer !== null
+        if (
+            $customer !== null
             && $customer->getCompanyUserTransfer() !== null
             && $customer->getCompanyUserTransfer()->getCompanyBusinessUnit() !== null
             && $customer->getCompanyUserTransfer()->getCompanyBusinessUnit()->getCompany() !== null
