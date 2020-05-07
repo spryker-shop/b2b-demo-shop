@@ -107,7 +107,7 @@
                     'quote_request_page.quote_request.cta_edit_shipment_method' | trans :
                     'quote_request_page.quote_request.cta_add_shipment_method' | trans %}
 
-                <a href="{{ url(urlEditAddress, {quoteRequestReference: quoteRequestReference}) }}"
+                <a href="{{ url(urlEditShipment, {quoteRequestReference: quoteRequestReference}) }}"
                    class="col link link--alt link--action spacing-left"
                     {{ qa('cart-go-to-shipment') }}>
                     {% include molecule('icon-tooltip') with {
