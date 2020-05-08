@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8739add358294be3476444db55b9411f",
+    "content-hash": "680f83d252d23fec2ebc1325bcf6fd9a",
     "packages": [
         {
             "name": "codeitnowin/barcode",
@@ -1826,7 +1826,7 @@
             ],
             "authors": [
                 {
-                    "name": "William Durand",
+                    "name": "William DURAND",
                     "email": "william.durand1@gmail.com"
                 }
             ],
@@ -3906,16 +3906,16 @@
         },
         {
             "name": "spryker-feature/product-labels",
-            "version": "202001.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-feature/product-labels.git",
-                "reference": "0f9f981a2082c63afdc2c92e82bd7da8c4e23996"
+                "reference": "463dea4ce9ad8c62cb68d253e7cf60675df4c599"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-feature/product-labels/zipball/0f9f981a2082c63afdc2c92e82bd7da8c4e23996",
-                "reference": "0f9f981a2082c63afdc2c92e82bd7da8c4e23996",
+                "url": "https://api.github.com/repos/spryker-feature/product-labels/zipball/463dea4ce9ad8c62cb68d253e7cf60675df4c599",
+                "reference": "463dea4ce9ad8c62cb68d253e7cf60675df4c599",
                 "shasum": ""
             },
             "require": {
@@ -3926,10 +3926,13 @@
                 "spryker/product-label-search": "^1.2.1",
                 "spryker/product-new": "^1.1.4"
             },
+            "suggest": {
+                "spryker-feature/product": "Recommended feature dependency."
+            },
             "type": "metapackage",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "202001.x-dev"
+                    "dev-master": "202006.x-dev"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -3937,7 +3940,7 @@
                 "proprietary"
             ],
             "description": "Product Labels [feature]",
-            "time": "2020-01-15T18:38:22+00:00"
+            "time": "2020-04-06T12:57:01+00:00"
         },
         {
             "name": "spryker-feature/product-lists",
@@ -27915,26 +27918,27 @@
         },
         {
             "name": "spryker/product-discontinued-product-label-connector",
-            "version": "1.0.2",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product-discontinued-product-label-connector.git",
-                "reference": "02516e724567b650077f7701eacaf036d41189d1"
+                "reference": "58ab988da0e8c5523bc8fc9c687d97588f70f238"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-discontinued-product-label-connector/zipball/02516e724567b650077f7701eacaf036d41189d1",
-                "reference": "02516e724567b650077f7701eacaf036d41189d1",
+                "url": "https://api.github.com/repos/spryker/product-discontinued-product-label-connector/zipball/58ab988da0e8c5523bc8fc9c687d97588f70f238",
+                "reference": "58ab988da0e8c5523bc8fc9c687d97588f70f238",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
+                "php": ">=7.2",
                 "spryker/kernel": "^3.30.0",
                 "spryker/locale": "^3.0.0",
                 "spryker/product": "^6.2.0",
                 "spryker/product-discontinued": "^1.0.0",
                 "spryker/product-discontinued-extension": "^1.0.0",
-                "spryker/product-label": "^2.5.0"
+                "spryker/product-label": "^2.5.0",
+                "spryker/propel-orm": "^1.0.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
@@ -27962,7 +27966,7 @@
                 "proprietary"
             ],
             "description": "ProductDiscontinuedProductLabelConnector module",
-            "time": "2019-10-14T10:22:10+00:00"
+            "time": "2020-05-05T12:37:23+00:00"
         },
         {
             "name": "spryker/product-discontinued-rest-api",
@@ -28417,16 +28421,16 @@
         },
         {
             "name": "spryker/product-label",
-            "version": "2.7.0",
+            "version": "2.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/product-label.git",
-                "reference": "92da62f0ea2b593951fda14698a509fae611974c"
+                "reference": "30bd2dd8530059b279417d7639f29fc2cc9ae20e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/product-label/zipball/92da62f0ea2b593951fda14698a509fae611974c",
-                "reference": "92da62f0ea2b593951fda14698a509fae611974c",
+                "url": "https://api.github.com/repos/spryker/product-label/zipball/30bd2dd8530059b279417d7639f29fc2cc9ae20e",
+                "reference": "30bd2dd8530059b279417d7639f29fc2cc9ae20e",
                 "shasum": ""
             },
             "require": {
@@ -28472,7 +28476,7 @@
                 "proprietary"
             ],
             "description": "ProductLabel module",
-            "time": "2020-02-27T14:09:09+00:00"
+            "time": "2020-05-06T14:33:08+00:00"
         },
         {
             "name": "spryker/product-label-discount-connector",
@@ -41926,6 +41930,61 @@
             "time": "2020-02-07T18:42:28+00:00"
         },
         {
+            "name": "composer/package-versions-deprecated",
+            "version": "1.8.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/composer/package-versions-deprecated.git",
+                "reference": "98df7f1b293c0550bd5b1ce6b60b59bdda23aa47"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/composer/package-versions-deprecated/zipball/98df7f1b293c0550bd5b1ce6b60b59bdda23aa47",
+                "reference": "98df7f1b293c0550bd5b1ce6b60b59bdda23aa47",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^1.1.0 || ^2.0",
+                "php": "^7"
+            },
+            "replace": {
+                "ocramius/package-versions": "1.2 - 1.8.99"
+            },
+            "require-dev": {
+                "composer/composer": "^1.9.3 || ^2.0@dev",
+                "ext-zip": "^1.13",
+                "phpunit/phpunit": "^6.5 || ^7"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "class": "PackageVersions\\Installer",
+                "branch-alias": {
+                    "dev-master": "1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "PackageVersions\\": "src/PackageVersions"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Marco Pivetta",
+                    "email": "ocramius@gmail.com"
+                },
+                {
+                    "name": "Jordi Boggiano",
+                    "email": "j.boggiano@seld.be"
+                }
+            ],
+            "description": "Composer plugin that provides efficient querying for installed package versions (no runtime IO)",
+            "time": "2020-04-23T11:49:37+00:00"
+        },
+        {
             "name": "composer/xdebug-handler",
             "version": "1.4.1",
             "source": {
@@ -42987,56 +43046,6 @@
                 "php"
             ],
             "time": "2019-11-08T13:50:10+00:00"
-        },
-        {
-            "name": "ocramius/package-versions",
-            "version": "1.4.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Ocramius/PackageVersions.git",
-                "reference": "44af6f3a2e2e04f2af46bcb302ad9600cba41c7d"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Ocramius/PackageVersions/zipball/44af6f3a2e2e04f2af46bcb302ad9600cba41c7d",
-                "reference": "44af6f3a2e2e04f2af46bcb302ad9600cba41c7d",
-                "shasum": ""
-            },
-            "require": {
-                "composer-plugin-api": "^1.0.0",
-                "php": "^7.1.0"
-            },
-            "require-dev": {
-                "composer/composer": "^1.6.3",
-                "doctrine/coding-standard": "^5.0.1",
-                "ext-zip": "*",
-                "infection/infection": "^0.7.1",
-                "phpunit/phpunit": "^7.5.17"
-            },
-            "type": "composer-plugin",
-            "extra": {
-                "class": "PackageVersions\\Installer",
-                "branch-alias": {
-                    "dev-master": "2.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "PackageVersions\\": "src/PackageVersions"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Marco Pivetta",
-                    "email": "ocramius@gmail.com"
-                }
-            ],
-            "description": "Composer plugin that provides efficient querying for installed package versions (no runtime IO)",
-            "time": "2019-11-15T16:17:10+00:00"
         },
         {
             "name": "pdepend/pdepend",
@@ -46774,7 +46783,19 @@
             "alias": "202006.0",
             "alias_normalized": "202006.0",
             "version": "9999999-dev",
+            "package": "spryker-feature/product-labels"
+        },
+        {
+            "alias": "202006.0",
+            "alias_normalized": "202006.0",
+            "version": "9999999-dev",
             "package": "spryker-feature/product-relations"
+        },
+        {
+            "alias": "202006.0",
+            "alias_normalized": "202006.0",
+            "version": "9999999-dev",
+            "package": "spryker-feature/search"
         },
         {
             "alias": "202006.0",
@@ -46786,7 +46807,9 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "spryker-feature/custom-order-reference": 20,
+        "spryker-feature/product-labels": 20,
         "spryker-feature/product-relations": 20,
+        "spryker-feature/search": 20,
         "spryker-feature/spryker-core": 20,
         "spryker/git-hook": 20
     },
