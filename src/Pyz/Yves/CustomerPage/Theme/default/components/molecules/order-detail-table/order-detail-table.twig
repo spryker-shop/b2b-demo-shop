@@ -106,11 +106,11 @@
                     data: {
                         shipmentGroup: shipmentGroup,
                         canEdit: false,
-                        shipmentExpenses: data.shipmentExpenses,
+                        shipmentExpenses: data.orderShipmentExpenses,
                     },
                 } only %}
                     {% block deliveryDate %}
-                        {% if data.shipment.requestedDeliveryDate %}
+                        {% if data.shipmentGroup.shipment.requestedDeliveryDate %}
                             {{ parent() }}
                         {% endif %}
                     {% endblock %}
