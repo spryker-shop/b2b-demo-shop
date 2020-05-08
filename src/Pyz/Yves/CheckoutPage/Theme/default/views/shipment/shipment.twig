@@ -4,6 +4,11 @@
     stepNumder: 2,
 } %}
 
+{% block header %}
+    {% set cart = data.forms.shipment.vars.data %}
+    {{ parent() }}
+{% endblock %}
+
 {% block content %}
     {% embed molecule('form') with {
         modifiers: ['checkout-form'],
@@ -124,7 +129,9 @@
         {% block actions %}
             {% set QuoteRequestActionsWidget = findWidget('QuoteRequestActionsWidget', [data.cart, data.backUrl]) %}
             {% if QuoteRequestActionsWidget and QuoteRequestActionsWidget.isVisible %}
-                {% widget QuoteRequestActionsWidget only %}{% endwidget %}
+                {% widget QuoteRequestActionsWidget only %}
+                    {% block cancelButton %}{% endblock %}
+                {% endwidget %}
             {% else %}
                 {{ parent() }}
             {% endif %}
