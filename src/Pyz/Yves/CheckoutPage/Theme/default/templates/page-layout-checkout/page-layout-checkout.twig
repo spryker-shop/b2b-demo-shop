@@ -46,7 +46,7 @@
 
                                     {% block saveButton %}{% endblock %}
                                 {% endwidget %}
-                            {% else %}
+                            {% elseif embed.cart.quoteRequestReference is not defined or embed.cart.quoteRequestReference is null %}
                                 {{ _self.backToCart(config.name) }}
                             {% endif %}
                         {% else %}
