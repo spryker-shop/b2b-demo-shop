@@ -1,7 +1,7 @@
 {% extends molecule('quote-request-summary-shipment', '@SprykerShop:QuoteRequestPage') %}
 
 {% block component %}
-    {% if (data.shipmentTotal or data.shipmentTotal is same as(0)) and data.currencyCode %}
+    {% if data.shipmentTotal and data.currencyCode %}
         <hr class="box__separator">
 
         {{ block('body') }}
@@ -18,6 +18,6 @@
 
 {% block title %}
     <div class="grid grid--justify grid--nowrap {{ config.name }}__title">
-        <strong class="col">{{ 'checkout.step.summary.shipment_costs_total' | trans }}</strong>
+        <strong class="col">{{ 'quote_request_page.quote_request.shipments' | trans }}</strong>
     </div>
 {% endblock %}
