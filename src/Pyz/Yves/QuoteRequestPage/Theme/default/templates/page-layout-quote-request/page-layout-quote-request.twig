@@ -1,19 +1,98 @@
 {% extends template('page-layout-quote-request', '@SprykerShop:QuoteRequestPage') %}
 
-{% block title %}{% endblock %}
+{% block sectionInformation %}
+    {% set gridClass = 'grid grid--gap spacing-bottom spacing-bottom--big' %}
+    {% set leftColClass = 'col col--sm-12 col--xl-9' %}
+    {% set rightColClass = 'col col--sm-12 col--xl-3' %}
 
-{% block breadcrumbs %}
-    {% include molecule('breadcrumb') with {
-        data: {
-            steps: [
-                {
-                    label: 'customer.account' | trans,
-                    url: url('customer/overview'),
-                },
-                {
-                    label: 'quote_request_widget.request_for_quote.list.title' | trans,
-                },
-            ],
-        },
-    } only %}
+    <div class="{{ gridClass }}">
+        <div class="{{ leftColClass }}">
+            <div class="box">
+                {% block orderInformation %}{% endblock %}
+            </div>
+        </div>
+
+        <div class="{{ rightColClass }}">
+            <div class="box box--smaller">
+                {% block quoteRequestInformation %}{% endblock %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block sectionContainer %}
+    {% set gridClass = 'grid grid--gap' %}
+    {% set leftColClass = 'col col--sm-12 col--xl-9' %}
+    {% set rightColClass = 'col col--sm-12 col--xl-3' %}
+
+    {{ parent() }}
+{% endblock %}
+
+{% block priceModeInner %}
+    <div class="spacing-bottom spacing-bottom--big">
+        {% set priceModeWrapperClass = 'grid grid--justify spacing-y' %}
+
+        {{ parent() }}
+
+        {% if data.itemsWithoutShipment %}
+            {{ block('titleForItemsWithoutShipmentWrapper') }}
+        {% endif %}
+
+        {% if hasMultiShipments and not data.itemsWithoutShipment %}
+            {% for shipmentGroup in data.shipmentGroups %}
+                {% if loop.index == 1 %}
+                    {{ block('titleForMultiShipmentsWrapper') }}
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    </div>
+{% endblock %}
+
+{% block titleForItemsWithoutShipmentWrapper %}
+    {% set numberOfItemsClass = 'col' %}
+    <div class="grid grid--justify grid--bottom">
+        {% block titleForItemsWithoutShipment %}
+            <h4 class="col">
+                {{ 'quote_request_page.quote_request.empty_shipment_data' | trans }}
+            </h4>
+        {% endblock %}
+
+        {{ block('itemsCounterForItemsWithoutShipment') }}
+    </div>
+{% endblock %}
+
+{% block wrapperForProductsWithoutShipment %}
+    {{ block('productsWithoutShipment') }}
+{% endblock %}
+
+{% block titleForMultiShipmentsWrapper %}
+    {% set titleMultiShipmentWrapperClass = 'grid grid--justify grid--bottom' %}
+    {% set titleMultiShipmentClass = 'col' %}
+    {% set numberOfItemsClass = 'col' %}
+    {{ parent() }}
+{% endblock %}
+
+{% block titleForMultiShipments %}
+    <h3 class="col">
+        {{ 'quote_request_page.quote_request.shipment_counter' | trans({
+            '%index%': loop.index,
+            '%length%': data.shipmentGroups | length,
+        }) }}
+    </h3>
+{% endblock %}
+
+{% block wrapperForMultiShipmentItem %}
+    {% if loop.index == 1 %}
+        {% if data.itemsWithoutShipment %}
+            <div class="spacing-top spacing-top--biggest spacing-bottom spacing-bottom--big">
+                {{ block('titleForMultiShipmentsWrapper') }}
+            </div>
+        {% endif %}
+    {% else %}
+        <div class="spacing-top spacing-top--biggest spacing-bottom spacing-bottom--big">
+            {{ block('titleForMultiShipmentsWrapper') }}
+        </div>
+    {% endif %}
+
+    {{ block('productsForMultiShipments') }}
 {% endblock %}

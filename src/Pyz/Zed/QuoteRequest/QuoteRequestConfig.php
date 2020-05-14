@@ -31,6 +31,9 @@ class QuoteRequestConfig extends SprykerQuoteRequestConfig
             QuoteTransfer::CART_RULE_DISCOUNTS,
             QuoteTransfer::PROMOTION_ITEMS,
             QuoteTransfer::QUOTE_APPROVALS,
+            QuoteTransfer::BILLING_ADDRESS,
+            QuoteTransfer::SHIPMENT,
+            QuoteTransfer::SHIPPING_ADDRESS,
         ]);
     }
 }

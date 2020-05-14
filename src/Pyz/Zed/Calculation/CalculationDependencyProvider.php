@@ -40,6 +40,7 @@ use Spryker\Zed\SalesOrderThreshold\Communication\Plugin\Calculation\AddSalesOrd
 use Spryker\Zed\SalesOrderThreshold\Communication\Plugin\Calculation\RemoveSalesOrderThresholdExpenseCalculatorPlugin;
 use Spryker\Zed\Shipment\Communication\Plugin\Calculation\FilterObsoleteShipmentExpensesCalculatorPlugin;
 use Spryker\Zed\Shipment\Communication\Plugin\Calculation\ShipmentTaxRateCalculatorPlugin;
+use Spryker\Zed\Shipment\Communication\Plugin\Calculation\ShipmentTotalCalculatorPlugin;
 use Spryker\Zed\Tax\Communication\Plugin\Calculator\TaxAmountAfterCancellationCalculatorPlugin;
 use Spryker\Zed\Tax\Communication\Plugin\Calculator\TaxAmountCalculatorPlugin;
 use Spryker\Zed\Tax\Communication\Plugin\Calculator\TaxRateAverageAggregatorPlugin;
@@ -227,6 +228,7 @@ class CalculationDependencyProvider extends SprykerCalculationDependencyProvider
             new NetTotalCalculatorPlugin(),
 
             new PaymentCalculatorPlugin(),
+            new ShipmentTotalCalculatorPlugin(),
         ];
 
         return $plugins;

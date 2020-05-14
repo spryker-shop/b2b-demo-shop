@@ -104,12 +104,13 @@
             <div class="col col--sm-12 col--xl-4">
                 {% embed molecule('summary-sidebar', 'CheckoutPage') ignore missing with {
                     data: {
-                        shipment: shipmentGroup.shipment,
+                        shipmentGroup: shipmentGroup,
                         canEdit: false,
+                        shipmentExpenses: data.orderShipmentExpenses,
                     },
                 } only %}
                     {% block deliveryDate %}
-                        {% if data.shipment.requestedDeliveryDate %}
+                        {% if data.shipmentGroup.shipment.requestedDeliveryDate %}
                             {{ parent() }}
                         {% endif %}
                     {% endblock %}
