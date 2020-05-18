@@ -99,6 +99,7 @@ use Spryker\Zed\RabbitMq\Communication\Console\PurgeAllQueuesConsole;
 use Spryker\Zed\RabbitMq\Communication\Console\SetUserPermissionsConsole;
 use Spryker\Zed\RestRequestValidator\Communication\Console\BuildValidationCacheConsole;
 use Spryker\Zed\RestRequestValidator\Communication\Console\RemoveValidationCacheConsole;
+use Spryker\Zed\Router\Communication\Plugin\Console\RouterCacheWarmUpConsole;
 use Spryker\Zed\Scheduler\Communication\Console\SchedulerCleanConsole;
 use Spryker\Zed\Scheduler\Communication\Console\SchedulerResumeConsole;
 use Spryker\Zed\Scheduler\Communication\Console\SchedulerSetupConsole;
@@ -322,6 +323,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new SchedulerSuspendConsole(),
             new SchedulerResumeConsole(),
 
+            new RouterCacheWarmUpConsole(),
             new ResolvableClassCacheConsole(),
         ];
 
