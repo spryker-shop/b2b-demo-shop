@@ -1,0 +1,13 @@
+@mixin quote-request-agent-page-source-price-form($name: '.source-price-form') {
+    #{$name} {
+        font-size: rem(18);
+
+        &--small {
+            font-size: rem(14);
+        }
+
+        @content;
+    }
+}
+
+@include quote-request-agent-page-source-price-form();

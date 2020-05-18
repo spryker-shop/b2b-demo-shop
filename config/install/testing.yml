@@ -27,6 +27,9 @@ sections:
         navigation-cache-warmup:
             command: "vendor/bin/console navigation:build-cache"
 
+        class-resolver-build:
+            command: "vendor/bin/console cache:class-resolver:build"
+
 
     queue-flush:
         set-permissions:

@@ -4,12 +4,18 @@
     stepNumder: 2,
 } %}
 
+{% block header %}
+    {% set cart = data.forms.shipment.vars.data %}
+    {{ parent() }}
+{% endblock %}
+
 {% block content %}
     {% embed molecule('form') with {
         modifiers: ['checkout-form'],
         data: {
             form: data.forms.shipment,
             cart: data.forms.shipment.vars.data,
+            backUrl: data.backUrl,
             submit: {
                 enable: true,
                 text: 'checkout.step.payment' | trans,
@@ -118,6 +124,17 @@
                     </article>
                 {% endfor %}
             </div>
+        {% endblock %}
+
+        {% block actions %}
+            {% set QuoteRequestActionsWidget = findWidget('QuoteRequestActionsWidget', [data.cart, data.backUrl]) %}
+            {% if QuoteRequestActionsWidget and QuoteRequestActionsWidget.isVisible %}
+                {% widget QuoteRequestActionsWidget only %}
+                    {% block cancelButton %}{% endblock %}
+                {% endwidget %}
+            {% else %}
+                {{ parent() }}
+            {% endif %}
         {% endblock %}
     {% endembed %}
 {% endblock %}

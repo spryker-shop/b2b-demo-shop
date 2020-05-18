@@ -51,6 +51,7 @@ use Spryker\Zed\EventBehavior\Communication\Plugin\Console\EventBehaviorPostHook
 use Spryker\Zed\IndexGenerator\Communication\Console\PostgresIndexGeneratorConsole;
 use Spryker\Zed\IndexGenerator\Communication\Console\PostgresIndexRemoverConsole;
 use Spryker\Zed\Installer\Communication\Console\InitializeDatabaseConsole;
+use Spryker\Zed\Kernel\Communication\Console\ResolvableClassCacheConsole;
 use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\Log\Communication\Console\DeleteLogFilesConsole;
 use Spryker\Zed\Maintenance\Communication\Console\MaintenanceDisableConsole;
@@ -323,6 +324,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new SchedulerResumeConsole(),
 
             new RouterCacheWarmUpConsole(),
+            new ResolvableClassCacheConsole(),
         ];
 
         $propelCommands = $container->getLocator()->propel()->facade()->getConsoleCommands();

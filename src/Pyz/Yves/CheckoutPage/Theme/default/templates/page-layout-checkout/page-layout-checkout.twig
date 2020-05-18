@@ -7,21 +7,51 @@
             showSearchForm: false,
             showNavigation: false,
         },
+        embed: {
+            cart: cart | default,
+            backUrl: data.backUrl,
+        },
     } only %}
         {% block headerMainContent %}
             <div class="container">
                 <div class="grid grid--middle grid--nowrap grid--gap-smaller">
                     <div class="col col--sm-4">
-                        <a href="{{ url('cart') }}" class="{{ config.name }}__back">
-                            {% include atom('icon') with {
-                                class: 'is-hidden-lg-xxl spacing-right spacing-right--small',
-                                modifiers: ['small', 'reverse'],
-                                data: {
-                                    name: 'chevron-right',
-                                },
-                            } only %}
-                            {{ 'checkout.back_button' | trans }}
-                        </a>
+                        {% macro backToCart(className) %}
+                            <a href="{{ url('cart') }}" class="{{ className }}__back">
+                                {% include atom('icon') with {
+                                    class: 'is-hidden-lg-xxl spacing-right spacing-right--small',
+                                    modifiers: ['small', 'reverse'],
+                                    data: {
+                                        name: 'chevron-right',
+                                    },
+                                } only %}
+                                {{ 'checkout.back_button' | trans }}
+                            </a>
+                        {% endmacro %}
+
+                        {% if embed.cart %}
+                            {% set QuoteRequestActionsWidget = findWidget('QuoteRequestActionsWidget', [embed.cart, embed.backUrl]) %}
+                            {% if QuoteRequestActionsWidget and QuoteRequestActionsWidget.isVisible %}
+                                {% widget QuoteRequestActionsWidget with {
+                                    embed: {
+                                        className: config.name,
+                                    },
+                                } only %}
+                                    {% block backButton %}{% endblock %}
+
+                                    {% block cancelButton %}
+                                        {% set buttonCancelClass = embed.className ~ '__back' %}
+                                        {{ parent() }}
+                                    {% endblock %}
+
+                                    {% block saveButton %}{% endblock %}
+                                {% endwidget %}
+                            {% elseif embed.cart.quoteRequestReference is not defined or embed.cart.quoteRequestReference is null %}
+                                {{ _self.backToCart(config.name) }}
+                            {% endif %}
+                        {% else %}
+                            {{ _self.backToCart(config.name) }}
+                        {% endif %}
                     </div>
 
                     {% include molecule('logo') with {

@@ -14,17 +14,19 @@
 
 {% block body %}
     <div class="{{ component.renderClass(config.name ~ '__container', modifiers) }}">
-        {% block image %}
-            {% set extraClass = '' %}
-            {% set modifiers = ['catalog'] | merge(modifiers) %}
+        {% block imageContainer %}
+            {% block image %}
+                {% set extraClass = '' %}
+                {% set modifiers = ['catalog'] | merge(modifiers) %}
 
-            <div class="{{ component.renderClass(config.name ~ '__image-wrap', modifiers) }}">
-                {{ block('productThumbnail') }}
+                <div class="{{ component.renderClass(config.name ~ '__image-wrap', modifiers) }}">
+                    {{ block('productThumbnail') }}
 
-                <div class="{{ component.renderClass(config.name ~ '__colors', modifiers) }}">
-                    {{ block('colors') }}
+                    <div class="{{ component.renderClass(config.name ~ '__colors', modifiers) }}">
+                        {{ block('colors') }}
+                    </div>
                 </div>
-            </div>
+            {% endblock %}
         {% endblock %}
 
         {% block content %}

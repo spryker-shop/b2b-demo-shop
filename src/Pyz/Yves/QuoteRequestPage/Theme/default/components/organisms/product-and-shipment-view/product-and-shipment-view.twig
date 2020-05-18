@@ -1,0 +1,11 @@
+{% extends organism('product-and-shipment-view', '@SprykerShop:QuoteRequestPage') %}
+
+{% block productItem %}
+    {% include molecule('quote-request-cart-item', 'QuoteRequestPage') with {
+        data: {
+            priceMode: data.quote.priceMode,
+            cartItem: cartItem,
+            currency: data.quote.currency,
+        },
+    } only %}
+{% endblock %}

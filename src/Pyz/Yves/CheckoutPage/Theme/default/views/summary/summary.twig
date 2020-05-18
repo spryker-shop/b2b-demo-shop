@@ -100,8 +100,9 @@
             <div class="col col--sm-12 col--xl-4">
                 {% include molecule('summary-sidebar', 'CheckoutPage') with {
                     data: {
-                        shipment: shipmentGroup.shipment,
+                        shipmentGroup: shipmentGroup,
                         cart: data.cart,
+                        shipmentExpenses: data.shipmentExpenses,
                     },
                 } only %}
             </div>
@@ -133,93 +134,89 @@
         </div>
     </div>
 
-    <div class="grid">
-        <div class="col col--sm-12">
-            {% if data.cart.idQuote is not empty %}
-                <div class="box box--medium">
-                    {% widget 'CommentThreadWidget' args [
-                        data.cart.idQuote,
-                        'quote',
-                        app.request.requestUri,
-                        data.cart.commentThread,
-                    ] only %}
-                    {% endwidget %}
+    {% if data.cart.idQuote is not empty %}
+        <div class="box box--medium">
+            {% widget 'CommentThreadWidget' args [
+                data.cart.idQuote,
+                'quote',
+                app.request.requestUri,
+                data.cart.commentThread,
+            ] only %}
+            {% endwidget %}
+        </div>
+    {% endif %}
+
+    {% if data.transfer.cartNote %}
+        {% include molecule('note-list', 'CartNoteWidget') ignore missing with {
+            data: {
+                label: 'cart_note.checkout_page.quote_note',
+                note: data.transfer.cartNote,
+            },
+        } only %}
+    {% endif %}
+
+    {% include molecule('summary-voucher-form', 'CheckoutPage') with {
+        data: {
+            transfer: data.transfer,
+        },
+    } only %}
+
+    {% embed molecule('form') with {
+        modifiers: ['checkout-form'],
+        data: {
+            form: data.forms.summary,
+            submit: {
+                enable: data.isPlaceableOrder and can('WriteSharedCartPermissionPlugin', data.cart.idQuote),
+                text: 'checkout.step.place.order' | trans,
+                class: 'form__action--expand-sm-md button button--big',
+            },
+            cancel: {
+                enable: true,
+                url: data.backUrl,
+                text: 'general.back.button' | trans,
+                icon: '',
+                class: 'form__action--expand-sm-md button button--big button--hollow-icon button--back',
+            },
+        },
+        embed: {
+            overview: data.overview,
+            cart: data.cart,
+            isPlaceableOrderErrors: data.isPlaceableOrderErrors,
+        },
+    } only %}
+        {% block body %}
+            {% include molecule('summary-overview', 'CheckoutPage') with {
+                data: embed.overview,
+            } only %}
+
+            {% set QuoteApproveRequestWidget = findWidget('QuoteApproveRequestWidget', [embed.cart]) %}
+            {% if QuoteApproveRequestWidget and QuoteApproveRequestWidget.isVisible %}
+                {% widget 'QuoteApproveRequestWidget' args [embed.cart] %}
+                    {% block body %}
+                        <div class="box">
+                            {{ parent() }}
+                        </div>
+                    {% endblock %}
+                {% endwidget %}
+            {% endif %}
+
+            {% set quoteApprovalWidget = findWidget('QuoteApprovalWidget', [embed.cart]) %}
+            {% if quoteApprovalWidget and quoteApprovalWidget.isVisible %}
+                <div class="box">
+                    {% widget 'QuoteApprovalWidget' args [embed.cart] only %}{% endwidget %}
                 </div>
             {% endif %}
 
-            {% if data.transfer.cartNote %}
-                {% include molecule('note-list', 'CartNoteWidget') ignore missing with {
-                    data: {
-                        label: 'cart_note.checkout_page.quote_note',
-                        note: data.transfer.cartNote,
-                    },
-                } only %}
+            {{ parent() }}
+
+            {% if embed.isPlaceableOrderErrors is not empty %}
+                <hr>
+                <ul class="list list--alert">
+                    {% for error in embed.isPlaceableOrderErrors %}
+                        <li class="list__item">{{ error.message | trans }}</li>
+                    {% endfor %}
+                </ul>
             {% endif %}
-
-            {% include molecule('summary-voucher-form', 'CheckoutPage') with {
-                data: {
-                    transfer: data.transfer,
-                },
-            } only %}
-
-            {% embed molecule('form') with {
-                modifiers: ['checkout-form'],
-                data: {
-                    form: data.forms.summary,
-                    submit: {
-                        enable: data.isPlaceableOrder and can('WriteSharedCartPermissionPlugin', data.cart.idQuote),
-                        text: 'checkout.step.place.order' | trans,
-                        class: 'form__action--expand-sm-md button button--big',
-                    },
-                    cancel: {
-                        enable: true,
-                        url: data.backUrl,
-                        text: 'general.back.button' | trans,
-                        icon: '',
-                        class: 'form__action--expand-sm-md button button--big button--hollow-icon button--back',
-                    },
-                },
-                embed: {
-                    overview: data.overview,
-                    cart: data.cart,
-                    isPlaceableOrderErrors: data.isPlaceableOrderErrors,
-                },
-            } only %}
-                {% block body %}
-                    {% include molecule('summary-overview', 'CheckoutPage') with {
-                        data: embed.overview,
-                    } only %}
-
-                    {% set QuoteApproveRequestWidget = findWidget('QuoteApproveRequestWidget', [embed.cart]) %}
-                    {% if QuoteApproveRequestWidget and QuoteApproveRequestWidget.isVisible %}
-                        {% widget 'QuoteApproveRequestWidget' args [embed.cart] %}
-                            {% block body %}
-                                <div class="box">
-                                    {{ parent() }}
-                                </div>
-                            {% endblock %}
-                        {% endwidget %}
-                    {% endif %}
-
-                    {% set quoteApprovalWidget = findWidget('QuoteApprovalWidget', [embed.cart]) %}
-                    {% if quoteApprovalWidget and quoteApprovalWidget.isVisible %}
-                        <div class="box">
-                            {% widget 'QuoteApprovalWidget' args [embed.cart] only %}{% endwidget %}
-                        </div>
-                    {% endif %}
-
-                    {{ parent() }}
-
-                    {% if embed.isPlaceableOrderErrors is not empty %}
-                        <hr>
-                        <ul class="list list--alert">
-                            {% for error in embed.isPlaceableOrderErrors %}
-                                <li class="list__item">{{ error.message | trans }}</li>
-                            {% endfor %}
-                        </ul>
-                    {% endif %}
-                {% endblock %}
-            {% endembed %}
-        </div>
-    </div>
+        {% endblock %}
+    {% endembed %}
 {% endblock %}
