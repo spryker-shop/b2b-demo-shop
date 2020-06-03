@@ -38,8 +38,8 @@ use Spryker\Zed\ProductDiscontinuedStorage\Communication\Plugin\Synchronization\
 use Spryker\Zed\ProductGroupStorage\Communication\Plugin\Synchronization\ProductGroupSynchronizationDataPlugin;
 use Spryker\Zed\ProductImageStorage\Communication\Plugin\Synchronization\ProductAbstractImageSynchronizationDataPlugin;
 use Spryker\Zed\ProductImageStorage\Communication\Plugin\Synchronization\ProductConcreteImageSynchronizationDataPlugin;
-use Spryker\Zed\ProductLabelStorage\Communication\Plugin\Synchronization\ProductAbstractLabelSynchronizationDataPlugin;
-use Spryker\Zed\ProductLabelStorage\Communication\Plugin\Synchronization\ProductLabelDictionarySynchronizationDataPlugin;
+use Spryker\Zed\ProductLabelStorage\Communication\Plugin\Synchronization\ProductAbstractLabelSynchronizationDataRepositoryPlugin;
+use Spryker\Zed\ProductLabelStorage\Communication\Plugin\Synchronization\ProductLabelDictionarySynchronizationDataRepositoryPlugin;
 use Spryker\Zed\ProductListStorage\Communication\Plugin\Synchronization\ProductAbstractProductListSynchronizationDataBulkPlugin;
 use Spryker\Zed\ProductListStorage\Communication\Plugin\Synchronization\ProductConcreteProductListSynchronizationDataBulkPlugin;
 use Spryker\Zed\ProductMeasurementUnitStorage\Communication\Plugin\Synchronization\ProductConcreteMeasurementUnitSynchronizationDataBulkPlugin;
@@ -93,8 +93,8 @@ class SynchronizationDependencyProvider extends SprykerSynchronizationDependency
             new ProductAbstractImageSynchronizationDataPlugin(),
             new ProductConcreteImageSynchronizationDataPlugin(),
             new CategoryImageSynchronizationDataBulkPlugin(),
-            new ProductAbstractLabelSynchronizationDataPlugin(),
-            new ProductLabelDictionarySynchronizationDataPlugin(),
+            new ProductAbstractLabelSynchronizationDataRepositoryPlugin(),
+            new ProductLabelDictionarySynchronizationDataRepositoryPlugin(),
             new ProductMeasurementUnitSynchronizationDataBulkPlugin(),
             new ProductConcreteMeasurementUnitSynchronizationDataBulkPlugin(),
             new ProductQuantitySynchronizationDataBulkPlugin(),
