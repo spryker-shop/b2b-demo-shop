@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b79260d50eecb38cae3205724c82d96f",
+    "content-hash": "b7690b0d316090c06df8b28ee125e2ab",
     "packages": [
         {
             "name": "codeitnowin/barcode",
@@ -20435,6 +20435,90 @@
             "time": "2019-01-28T15:17:37+00:00"
         },
         {
+            "name": "spryker/data-export",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/data-export.git",
+                "reference": "612e56b7c7c171d0f85ad88b798bb83521b3dac4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/data-export/zipball/612e56b7c7c171d0f85ad88b798bb83521b3dac4",
+                "reference": "612e56b7c7c171d0f85ad88b798bb83521b3dac4",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/csv": "^3.0.0",
+                "spryker/data-export-extension": "^0.1.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/symfony": "^3.0.0",
+                "spryker/transfer": "^3.8.0",
+                "spryker/util-data-reader": "^1.1.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "DataExport module",
+            "time": "2020-05-15T10:02:44+00:00"
+        },
+        {
+            "name": "spryker/data-export-extension",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/data-export-extension.git",
+                "reference": "3a5992460db1aa67a7eb07a0050c3c9364b736b2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/data-export-extension/zipball/3a5992460db1aa67a7eb07a0050c3c9364b736b2",
+                "reference": "3a5992460db1aa67a7eb07a0050c3c9364b736b2",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "DataExportExtension module",
+            "time": "2020-05-15T10:02:44+00:00"
+        },
+        {
             "name": "spryker/data-import",
             "version": "1.10.0",
             "source": {
@@ -32734,6 +32818,57 @@
             ],
             "description": "SalesConfigurableBundle module",
             "time": "2019-12-02T14:13:45+00:00"
+        },
+        {
+            "name": "spryker/sales-data-export",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/sales-data-export.git",
+                "reference": "f64be25ab014b361be0f430b5f3f6b6c966fdef7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/sales-data-export/zipball/f64be25ab014b361be0f430b5f3f6b6c966fdef7",
+                "reference": "f64be25ab014b361be0f430b5f3f6b6c966fdef7",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/country": "^3.0.0",
+                "spryker/data-export": "^0.1.0",
+                "spryker/data-export-extension": "^0.1.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/locale": "^3.0.0",
+                "spryker/oms": "^1.0.0 || ^2.0.0 || ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0 || ^10.0.0 || ^11.0.0",
+                "spryker/propel-orm": "^1.0.0",
+                "spryker/sales": "^8.0.0 || ^10.0.0 || ^11.0.0",
+                "spryker/shipment": "^7.0.0 || ^8.0.0",
+                "spryker/transfer": "^3.8.0",
+                "spryker/util-encoding": "^1.0.0 || ^2.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "SalesDataExport module",
+            "time": "2020-05-15T11:17:53+00:00"
         },
         {
             "name": "spryker/sales-extension",
