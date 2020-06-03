@@ -13,9 +13,12 @@
 
 {% block content %}
     {% set images = [] %}
-    {% for image in data.set.imageSets.0.images %}
-        {% set images = images | merge([image.externalUrlLarge | default(null)]) %}
-    {% endfor %}
+
+    {% if data.set.imageSets.count %}
+        {% for image in data.set.imageSets.0.images %}
+            {% set images = images | merge([image.externalUrlLarge | default(null)]) %}
+        {% endfor %}
+    {% endif %}
 
     {% embed organism('product-set-details', 'ProductSetWidget') ignore missing with {
         data: {
