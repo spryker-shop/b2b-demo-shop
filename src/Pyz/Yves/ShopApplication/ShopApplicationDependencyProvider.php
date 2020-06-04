@@ -25,6 +25,7 @@ use Spryker\Yves\Twig\Plugin\Application\TwigApplicationPlugin;
 use Spryker\Yves\Validator\Plugin\Application\ValidatorApplicationPlugin;
 use SprykerShop\Yves\AgentWidget\Widget\AgentControlBarWidget;
 use SprykerShop\Yves\AvailabilityNotificationWidget\Widget\AvailabilityNotificationSubscriptionWidget;
+use SprykerShop\Yves\BarcodeWidget\Widget\BarcodeWidget;
 use SprykerShop\Yves\BusinessOnBehalfWidget\Widget\BusinessOnBehalfStatusWidget;
 use SprykerShop\Yves\CartCodeWidget\Widget\CartCodeFormWidget;
 use SprykerShop\Yves\CartNoteWidget\Widget\CartItemNoteFormWidget;
@@ -103,8 +104,9 @@ use SprykerShop\Yves\QuoteRequestWidget\Widget\QuoteRequestCancelWidget;
 use SprykerShop\Yves\QuoteRequestWidget\Widget\QuoteRequestCartWidget;
 use SprykerShop\Yves\QuoteRequestWidget\Widget\QuoteRequestCreateWidget;
 use SprykerShop\Yves\QuoteRequestWidget\Widget\QuoteRequestMenuItemWidget;
-use SprykerShop\Yves\SalesConfigurableBundleWidget\Widget\OrderConfiguredBundleWidget;
+use SprykerShop\Yves\SalesConfigurableBundleWidget\Widget\OrderItemsConfiguredBundleWidget;
 use SprykerShop\Yves\SalesOrderThresholdWidget\Widget\SalesOrderThresholdWidget;
+use SprykerShop\Yves\SalesProductBundleWidget\Widget\OrderItemsProductBundleWidget;
 use SprykerShop\Yves\SharedCartWidget\Widget\CartDeleteSharingCompanyUsersListWidget;
 use SprykerShop\Yves\SharedCartWidget\Widget\CartListPermissionGroupWidget;
 use SprykerShop\Yves\SharedCartWidget\Widget\SharedCartDetailsWidget;
@@ -223,13 +225,15 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             QuoteRequestAgentCancelWidget::class,
             CommentThreadWidget::class,
             QuoteConfiguredBundleWidget::class,
-            OrderConfiguredBundleWidget::class,
             ProductConcreteSearchGridWidget::class,
             PriceProductWidget::class,
             ConfiguredBundleNoteWidget::class,
             ProductGroupColorWidget::class,
             OrderCustomReferenceWidget::class,
             QuoteRequestActionsWidget::class,
+            OrderItemsConfiguredBundleWidget::class,
+            BarcodeWidget::class,
+            OrderItemsProductBundleWidget::class,
         ];
     }
 

@@ -41,6 +41,10 @@
     ]
 } %}
 
+{%- macro isActive(page, activePage) -%}
+    {%- if page == activePage -%}menu__link--active{%- endif -%}
+{%- endmacro -%}
+
 {% block postContent %}
     {% widget 'ShoppingListMenuItemWidget' args [
         data.activePage,
@@ -51,6 +55,22 @@
     {% widget 'MultiCartMenuItemWidget' args [data.activePage] only %}{% endwidget %}
 
     {% widget 'QuoteRequestMenuItemWidget' args [data.activePage] only %}{% endwidget %}
+
+    {% embed molecule('return-list-link', 'SalesReturnPage') ignore missing with {
+        class: _self.isActive('return/list', data.activePage),
+        data: {
+            activePage: data.activePage,
+        },
+        embed: {
+            activeClass: _self.isActive('return/list', data.activePage),
+        },
+    } only %}
+        {% block component %}
+            <li class="menu__item {{ embed.activeClass }}">
+                {{ parent() }}
+            </li>
+        {% endblock %}
+    {% endembed %}
 
     {% widget 'BusinessOnBehalfStatusWidget' use view('change-company-user', 'BusinessOnBehalfWidget') with {
         isActivePage: 'change-company-user' == data.activePage
