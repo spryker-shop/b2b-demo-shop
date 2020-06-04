@@ -6,7 +6,16 @@
 
 {% define data = {
     orders: required,
+    orderSearchForm: null,
+    isOrderSearchEnabled: false,
+    isOrderSearchOrderItemsVisible: true,
+    filterFields: [],
+    jsPrefix: '',
 } %}
+
+{% set isCustomerDataColumnsVisible = data.orderSearchForm.vars.value.filters.companyBusinessUnit is defined
+    and data.orderSearchForm.vars.value.filters.companyBusinessUnit is not empty
+%}
 
 {% block body %}
     {% if data.orders is empty %}
@@ -15,9 +24,29 @@
         <table class="table table--expand table--responsive">
             <thead>
                 <tr>
-                    <th>{{ 'customer.order.order_id' | trans }}</th>
-                    <th>{{ 'customer.order.date' | trans }}</th>
-                    <th colspan="2">{{ 'customer.order.total' | trans }}</th>
+                    <th {{ _self.sortingAttributes('orderReference', data.orderSearchForm, data.jsPrefix) }}>
+                        {{ 'customer.order.reference' | trans }}
+                        {{ _self.sortingIcon('orderReference', data.orderSearchForm) }}
+                    </th>
+                    <th {{ _self.sortingAttributes('date', data.orderSearchForm, data.jsPrefix) }}>
+                        {{ 'customer.order.date' | trans }}
+                        {{ _self.sortingIcon('date', data.orderSearchForm) }}
+                    </th>
+                    {% if data.isOrderSearchEnabled and isCustomerDataColumnsVisible %}
+                        <th {{ _self.sortingAttributes('customerName', data.orderSearchForm, data.jsPrefix) }}>
+                            {{ 'customer.order.company_user' | trans }}
+                            {{ _self.sortingIcon('customerName', data.orderSearchForm) }}
+                        </th>
+                        <th {{ _self.sortingAttributes('customerEmail', data.orderSearchForm, data.jsPrefix) }}>
+                            {{ 'customer.order.email' | trans }}
+                            {{ _self.sortingIcon('customerEmail', data.orderSearchForm) }}
+                        </th>
+                    {% endif %}
+                    {% if data.isOrderSearchEnabled and data.isOrderSearchOrderItemsVisible %}
+                        <th>{{ 'customer.order.number_of_items' | trans }}</th>
+                    {% endif %}
+                    <th>{{ 'customer.order.total' | trans }}</th>
+                    <th>{{ 'customer.table.actions' | trans }}</th>
                 </tr>
             </thead>
             <tbody>
@@ -29,6 +58,13 @@
                         <td class="transform-cell" data-content="{{ 'customer.order.date' | trans }}">
                             {{- date(order.createdAt) | formatDateTime -}}
                         </td>
+                        {% if data.isOrderSearchEnabled and isCustomerDataColumnsVisible %}
+                            <td>{{ order.firstName ~ ' ' ~ order.lastName }}</td>
+                            <td>{{ order.email }}</td>
+                        {% endif %}
+                        {% if data.isOrderSearchEnabled and data.isOrderSearchOrderItemsVisible %}
+                            <td>{{ order.items.count }}</td>
+                        {% endif %}
                         <td class="transform-cell spacing-bottom spacing-bottom--inner spacing-bottom--big" data-content="{{ 'customer.order.total' | trans }}">
                             <strong>
                                 {{- order.totals.grandTotal | default(0) | money(true, order.currencyIsoCode) -}}
@@ -56,8 +92,50 @@
                             } only %}
                         </td>
                     </tr>
+                    {% if data.isOrderSearchEnabled and data.isOrderSearchOrderItemsVisible %}
+                        <tr>
+                            <td colspan="100">
+                                {% include molecule('order-table-products', 'CustomerPage') with {
+                                    data: {
+                                        items: order.items,
+                                        priceMode: order.priceMode,
+                                    },
+                                } only %}
+                            </td>
+                        </tr>
+                    {% endif %}
                 {% endfor %}
             </tbody>
         </table>
     {% endif %}
+
+
+    {%- macro sortingAttributes(orderByValue, orderSearchForm, jsPrefix, class='') -%}
+        {% if orderSearchForm %}
+            {% set orderDirection = orderSearchForm.orderDirection.vars.value %}
+
+            class="{{ class }} {{ jsPrefix }}sort-trigger"
+            sort-by="{{ orderByValue }}"
+            sort-direction="{{ (orderDirection == 'ASC') ? 'DESC' : 'ASC' }}"
+        {% endif %}
+    {%- endmacro -%}
+
+    {%- macro sortingIcon(orderByValue, orderSearchForm) -%}
+        {% if orderSearchForm %}
+            {% set orderDirection = orderSearchForm.orderDirection.vars.value %}
+            {% set orderBy = orderSearchForm.orderBy.vars.value %}
+            {% set iconName = 'sort-none' %}
+
+            {% if orderBy == orderByValue %}
+                {% set iconName = (orderDirection == 'ASC') ? 'sort-asc' : 'sort-desc' %}
+            {% endif %}
+
+            {% include atom('icon') with {
+                modifiers: ['small'],
+                data: {
+                    name: iconName,
+                },
+            } only %}
+        {% endif %}
+    {%- endmacro -%}
 {% endblock %}

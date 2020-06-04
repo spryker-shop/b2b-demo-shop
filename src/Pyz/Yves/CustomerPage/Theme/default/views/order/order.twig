@@ -2,6 +2,10 @@
 
 {% define data = {
     orders: _view.orderList,
+    isOrderSearchEnabled: _view.isOrderSearchEnabled,
+    isOrderSearchOrderItemsVisible: _view.isOrderSearchOrderItemsVisible,
+    orderSearchForm: _view.orderSearchForm | default(null),
+    filterFields: _view.filterFields | default(null),
 
     pagination: {
         parameters: {},
@@ -15,6 +19,8 @@
     title: 'customer.account.order_history' | trans
 } %}
 
+{% set jsPrefix = 'js-order-' %}
+
 {% block customerContent %}
     {% include molecule('action-bar', 'ShopUi') with {
         modifiers: ['first'],
@@ -24,11 +30,66 @@
         }
     } only %}
 
-    {% include molecule('order-table', 'CustomerPage') with {
-        data: {
-            orders: data.orders
-        }
-    } only %}
+    {% block filterSection %}
+        {% set formClass = jsPrefix ~ 'form' %}
+
+        {% if data.orderSearchForm %}
+            {% block formStart %}
+                {{ form_start(data.orderSearchForm, {
+                    attr: {
+                        class: formClass,
+                    },
+                }) }}
+            {% endblock %}
+
+            {% block orderFilters %}
+                {% include molecule('order-filters', 'CustomerPage') with {
+                    data: {
+                        orderSearchForm: data.orderSearchForm,
+                        jsPrefix: jsPrefix,
+                    },
+                } only %}
+            {% endblock %}
+
+            {% block orderActiveFilters %}
+                {% include molecule('order-active-filters', 'CustomerPage') with {
+                    data: {
+                        orderSearchForm: data.orderSearchForm,
+                        jsPrefix: jsPrefix,
+                    },
+                } only %}
+            {% endblock %}
+        {% endif %}
+    {% endblock %}
+
+    {% block orderTable %}
+        {% include molecule('order-table', 'CustomerPage') with {
+            data: {
+                orders: data.orders,
+                orderSearchForm: data.orderSearchForm,
+                filterFields: data.filterFields,
+                isOrderSearchEnabled: data.isOrderSearchEnabled,
+                isOrderSearchOrderItemsVisible: data.isOrderSearchOrderItemsVisible,
+                jsPrefix: jsPrefix,
+            },
+        } only %}
+    {% endblock %}
+
+    {% block separator %}
+        <hr>
+    {% endblock %}
+
+    {% block pagination %}
+        {% include molecule('pagination') with {
+            data: data.pagination,
+        } only %}
+    {% endblock %}
+
+    {% if data.orderSearchForm %}
+        {% block endForm %}
+            {{ form_end(data.orderSearchForm) }}
+        {% endblock %}
+    {% endif %}
 
     {% include molecule('pagination') with {
         data: data.pagination
