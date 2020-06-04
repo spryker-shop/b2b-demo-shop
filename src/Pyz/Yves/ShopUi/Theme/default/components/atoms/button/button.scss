@@ -87,6 +87,17 @@
                     background-color: $setting-color-gray-3;
                 }
             }
+
+            &-active {
+                background-color: helper-color-light($setting-color-main, 45);
+
+                &:hover,
+                &:focus {
+                    border-color: $setting-color-main;
+                    color: $setting-color-main;
+                    background-color: helper-color-light($setting-color-main, 45);
+                }
+            }
         }
 
         &--alternative {
@@ -219,6 +230,13 @@
         &--justify {
             display: flex;
             justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        &--justify-center {
+            display: flex;
+            justify-content: center;
             align-items: center;
             width: 100%;
         }
