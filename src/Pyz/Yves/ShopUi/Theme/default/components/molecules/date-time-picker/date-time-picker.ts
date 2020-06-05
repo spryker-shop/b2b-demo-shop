@@ -18,6 +18,10 @@ export default class DateTimePicker extends Component {
     }
 
     protected datetimepickerInit(): void {
+        if (this.formattedDateTime) {
+            $(this.trigger).val(this.formattedDateTime);
+        }
+
         $(this.trigger).datetimepicker(this.config);
     }
 
@@ -38,5 +42,9 @@ export default class DateTimePicker extends Component {
         config.parentID = this.parent;
 
         return config;
+    }
+
+    protected get formattedDateTime(): string {
+        return this.getAttribute('formatted-date-time');
     }
 }
