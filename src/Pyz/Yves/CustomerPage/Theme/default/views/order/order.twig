@@ -77,10 +77,6 @@
         } only %}
     {% endblock %}
 
-    {% block separator %}
-        <hr>
-    {% endblock %}
-
     {% block pagination %}
         {% include molecule('pagination') with {
             data: data.pagination,
@@ -92,8 +88,4 @@
             {{ form_end(data.orderSearchForm) }}
         {% endblock %}
     {% endif %}
-
-    {% include molecule('pagination') with {
-        data: data.pagination
-    } only %}
 {% endblock %}

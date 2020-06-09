@@ -1,57 +1,46 @@
-{% extends model('component') %}
+{% extends molecule('order-table', '@SprykerShop:CustomerPage') %}
 
-{% define config = {
-    name: 'order-table',
-} %}
-
-{% define data = {
-    orders: required,
-    orderSearchForm: null,
-    isOrderSearchEnabled: false,
-    isOrderSearchOrderItemsVisible: true,
-    filterFields: [],
-    jsPrefix: '',
-} %}
-
-{% set isCustomerDataColumnsVisible = data.orderSearchForm.vars.value.filters.companyBusinessUnit is defined
-    and data.orderSearchForm.vars.value.filters.companyBusinessUnit is not empty
-%}
+{% block extraClass %}{% endblock %}
 
 {% block body %}
+    {% set isSearchItemsVisible = data.isOrderSearchEnabled and data.isOrderSearchOrderItemsVisible %}
+
     {% if data.orders is empty %}
         <p>{{ 'customer.account.no_order' | trans }}</p>
     {% else %}
-        <table class="table table--expand table--responsive">
+        <table class="table table--expand table--responsive table--medium-indent">
             <thead>
                 <tr>
-                    <th {{ _self.sortingAttributes('orderReference', data.orderSearchForm, data.jsPrefix) }}>
+                    <th {{ _self.sortingAttributes('orderReference', data.orderSearchForm, data.jsPrefix, config.name ~ '__sorting-title') }}>
                         {{ 'customer.order.reference' | trans }}
-                        {{ _self.sortingIcon('orderReference', data.orderSearchForm) }}
+                        {{ _self.sortingIcon('orderReference', data.orderSearchForm, config.name ~ '__sorting-icon') }}
                     </th>
-                    <th {{ _self.sortingAttributes('date', data.orderSearchForm, data.jsPrefix) }}>
+                    <th {{ _self.sortingAttributes('date', data.orderSearchForm, data.jsPrefix, config.name ~ '__sorting-title') }}>
                         {{ 'customer.order.date' | trans }}
-                        {{ _self.sortingIcon('date', data.orderSearchForm) }}
+                        {{ _self.sortingIcon('date', data.orderSearchForm, config.name ~ '__sorting-icon') }}
                     </th>
                     {% if data.isOrderSearchEnabled and isCustomerDataColumnsVisible %}
-                        <th {{ _self.sortingAttributes('customerName', data.orderSearchForm, data.jsPrefix) }}>
+                        <th {{ _self.sortingAttributes('customerName', data.orderSearchForm, data.jsPrefix, config.name ~ '__sorting-title') }}>
                             {{ 'customer.order.company_user' | trans }}
-                            {{ _self.sortingIcon('customerName', data.orderSearchForm) }}
+                            {{ _self.sortingIcon('customerName', data.orderSearchForm, config.name ~ '__sorting-icon') }}
                         </th>
-                        <th {{ _self.sortingAttributes('customerEmail', data.orderSearchForm, data.jsPrefix) }}>
+                        <th {{ _self.sortingAttributes('customerEmail', data.orderSearchForm, data.jsPrefix, config.name ~ '__sorting-title') }}>
                             {{ 'customer.order.email' | trans }}
-                            {{ _self.sortingIcon('customerEmail', data.orderSearchForm) }}
+                            {{ _self.sortingIcon('customerEmail', data.orderSearchForm, config.name ~ '__sorting-icon') }}
                         </th>
                     {% endif %}
-                    {% if data.isOrderSearchEnabled and data.isOrderSearchOrderItemsVisible %}
+                    {% if isSearchItemsVisible %}
                         <th>{{ 'customer.order.number_of_items' | trans }}</th>
                     {% endif %}
                     <th>{{ 'customer.order.total' | trans }}</th>
-                    <th>{{ 'customer.table.actions' | trans }}</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
+                {% set searchItemsActiveRowClass = isSearchItemsVisible ? config.name ~ '__row-active' %}
+
                 {% for order in data.orders %}
-                    <tr>
+                    <tr class="{{ searchItemsActiveRowClass }}">
                         <td class="transform-cell spacing-top spacing-top--inner spacing-top--big" data-content="{{ 'customer.order.order_id' | trans }}">
                             {{- order.orderReference -}}
                         </td>
@@ -59,11 +48,13 @@
                             {{- date(order.createdAt) | formatDateTime -}}
                         </td>
                         {% if data.isOrderSearchEnabled and isCustomerDataColumnsVisible %}
-                            <td>{{ order.firstName ~ ' ' ~ order.lastName }}</td>
-                            <td>{{ order.email }}</td>
+                            <td class="transform-cell" data-content="{{ 'customer.order.company_user' | trans }}">{{ order.firstName ~ ' ' ~ order.lastName }}</td>
+                            <td class="transform-cell" data-content="{{ 'customer.order.email' | trans }}">{{ order.email }}</td>
                         {% endif %}
-                        {% if data.isOrderSearchEnabled and data.isOrderSearchOrderItemsVisible %}
-                            <td>{{ order.items.count }}</td>
+                        {% if isSearchItemsVisible %}
+                            <td class="transform-cell" data-content="{{ 'customer.order.number_of_items' | trans }}">
+                                <span class="badge badge--order">{{ order.items.count }}</span>
+                            </td>
                         {% endif %}
                         <td class="transform-cell spacing-bottom spacing-bottom--inner spacing-bottom--big" data-content="{{ 'customer.order.total' | trans }}">
                             <strong>
@@ -71,7 +62,7 @@
                             </strong>
                         </td>
 
-                        <td class="table__actions grid spacing spacing--inner spacing--reset">
+                        <td class="spacing-x spacing-x--inner spacing-x--reset">
                             {% include molecule('table-action-list') with {
                                 data: {
                                     items: [
@@ -92,9 +83,9 @@
                             } only %}
                         </td>
                     </tr>
-                    {% if data.isOrderSearchEnabled and data.isOrderSearchOrderItemsVisible %}
+                    {% if isSearchItemsVisible %}
                         <tr>
-                            <td colspan="100">
+                            <td colspan="100" class="{{ config.name }}__products">
                                 {% include molecule('order-table-products', 'CustomerPage') with {
                                     data: {
                                         items: order.items,
@@ -109,6 +100,28 @@
         </table>
     {% endif %}
 
+    {% if data.orderSearchForm %}
+        {{ form_row(data.orderSearchForm.orderBy, {
+            attr: {
+                class: data.jsPrefix ~ 'orderBy-target',
+            }})
+        }}
+
+        {{ form_row(data.orderSearchForm.orderDirection, {
+            attr: {
+                class: data.jsPrefix ~ 'orderDirection-target',
+            }})
+        }}
+
+        {% include molecule('form-sort-submitter', 'CustomerPage') with {
+            attributes: {
+                'form-class-name': data.jsPrefix ~ 'form',
+                'trigger-class-name': data.jsPrefix ~ 'sort-trigger',
+                'target-sort-by-class-name': data.jsPrefix ~ 'orderBy-target',
+                'target-sort-direction-class-name': data.jsPrefix ~ 'orderDirection-target',
+            },
+        } only %}
+    {% endif %}
 
     {%- macro sortingAttributes(orderByValue, orderSearchForm, jsPrefix, class='') -%}
         {% if orderSearchForm %}
@@ -120,7 +133,7 @@
         {% endif %}
     {%- endmacro -%}
 
-    {%- macro sortingIcon(orderByValue, orderSearchForm) -%}
+    {%- macro sortingIcon(orderByValue, orderSearchForm, class='') -%}
         {% if orderSearchForm %}
             {% set orderDirection = orderSearchForm.orderDirection.vars.value %}
             {% set orderBy = orderSearchForm.orderBy.vars.value %}
@@ -132,6 +145,7 @@
 
             {% include atom('icon') with {
                 modifiers: ['small'],
+                class: class,
                 data: {
                     name: iconName,
                 },

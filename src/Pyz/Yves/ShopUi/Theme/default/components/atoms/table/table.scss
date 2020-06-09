@@ -72,6 +72,13 @@
             }
         }
 
+        &--medium-indent {
+            th,
+            td {
+                padding: rem(16) rem(15);
+            }
+        }
+
         &--responsive {
             @include helper-breakpoint-media-max($lg - 1) {
                 display: block;
@@ -81,7 +88,6 @@
                 th,
                 td {
                     display: block;
-                    text-transform: capitalize;
                 }
 
                 thead tr,

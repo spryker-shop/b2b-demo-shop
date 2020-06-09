@@ -18,7 +18,7 @@ export default class DateTimePicker extends Component {
     }
 
     protected datetimepickerInit(): void {
-        if (this.formattedDateTime) {
+        if (this.formattedDateTime && $(this.trigger).val()) {
             $(this.trigger).val(this.formattedDateTime);
         }
 

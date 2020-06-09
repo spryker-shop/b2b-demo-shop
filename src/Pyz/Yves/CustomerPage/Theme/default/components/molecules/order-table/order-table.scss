@@ -1,6 +1,29 @@
 @mixin customer-page-order-table($name: '.order-table') {
     #{$name} {
         margin-bottom: rem(35);
+
+        &__sorting-title {
+            cursor: pointer;
+        }
+
+        &__sorting-icon {
+            margin-top: rem(-3);
+            margin-left: rem(5);
+        }
+
+        &__products {
+            .table & {
+                padding: 0;
+            }
+        }
+
+        &__row-active {
+            @include helper-breakpoint-media-min($lg) {
+                box-shadow: 0 rem(1) rem(7) 0 $setting-color-shadow-1;
+            }
+        }
+
+        @content;
     }
 }
 
