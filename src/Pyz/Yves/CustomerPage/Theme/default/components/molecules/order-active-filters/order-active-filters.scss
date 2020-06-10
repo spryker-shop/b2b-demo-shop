@@ -3,20 +3,19 @@
         display: flex;
         flex-wrap: wrap;
         align-items: baseline;
-        font-size: rem(14);
+        font-size: map_get($setting-font-size, small);
         margin-bottom: rem(12);
 
         &__title {
-            margin-right: rem(16);
             display: block;
             font-weight: fw(bold);
         }
 
         &__item {
-            @include helper-effect-transition(background-color border-color box-shadow);
+            @include helper-effect-transition(background border-color box-shadow);
             display: flex;
             align-items: center;
-            background-color: $setting-color-gray-7;
+            background: $setting-color-gray-7;
             color: $setting-color-gray-4;
             padding: rem(10);
             border: rem(1) solid $setting-color-gray-1;
@@ -28,7 +27,7 @@
 
             &:hover,
             &:focus {
-                background-color: $setting-color-white;
+                background: $setting-color-white;
                 color: $setting-color-gray-4;
                 border-color: $setting-color-white;
                 box-shadow: 0 rem(18) rem(18) 0 $setting-color-shadow-1, 0 rem(3) rem(3) 0 $setting-color-shadow-1;

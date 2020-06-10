@@ -109,18 +109,18 @@
         &--order {
             #{$name}__container {
                 margin-bottom: 0;
-                font-size: rem(15);
-                background-color: $setting-color-alpha-2;
+                font-size: map_get($setting-font-size, small);
+                background: $setting-color-alpha-2;
                 color: $setting-color-black;
                 padding: rem(15) rem(15) rem(15) 0;
 
                 @include helper-breakpoint-media-min($md) {
-                    font-size: rem(16);
+                    font-size: map_get($setting-font-size, default);
                 }
 
                 &:hover {
                     box-shadow: none;
-                    background-color: $setting-color-alpha-2;
+                    background: $setting-color-alpha-2;
                 }
             }
 
@@ -129,10 +129,10 @@
                 padding: 0;
 
                 &::before {
-                    background-color: $setting-color-transparent;
+                    background: $setting-color-transparent;
 
                     @include helper-breakpoint-media-min($md) {
-                        background-color: $setting-color-alpha-2;
+                        background: $setting-color-alpha-2;
                     }
                 }
             }
@@ -151,7 +151,7 @@
 
             #{$name}__sku {
                 color: $setting-color-gray-3;
-                font-size: rem(13);
+                font-size: map_get($setting-font-size, small);
             }
 
             #{$name}__quantity {

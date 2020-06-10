@@ -85,7 +85,7 @@
                     </tr>
                     {% if isSearchItemsVisible %}
                         <tr>
-                            <td colspan="100" class="{{ config.name }}__products">
+                            <td colspan="10" class="{{ config.name }}__products">
                                 {% include molecule('order-table-products', 'CustomerPage') with {
                                     data: {
                                         items: order.items,
