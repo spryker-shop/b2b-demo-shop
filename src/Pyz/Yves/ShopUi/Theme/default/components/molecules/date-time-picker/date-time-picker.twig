@@ -22,7 +22,7 @@
     <div class="{{ config.name }}__content">
         {{ form_row(data.field, {
             attr: {
-                class: config.name ~ '__field' ~ (data.fieldClass is not empty ? ' ' ~ data.fieldClass),
+                class: config.name ~ '__field' ~ (data.fieldClass ? ' ' ~ data.fieldClass),
             },
         }) }}
 

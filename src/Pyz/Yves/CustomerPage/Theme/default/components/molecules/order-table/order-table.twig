@@ -4,6 +4,7 @@
 
 {% block body %}
     {% set isSearchItemsVisible = data.isOrderSearchEnabled and data.isOrderSearchOrderItemsVisible %}
+    {% set isCustomerColumnsVisible = data.isOrderSearchEnabled and isCustomerDataColumnsVisible %}
 
     {% if data.orders is empty %}
         <p>{{ 'customer.account.no_order' | trans }}</p>
@@ -19,7 +20,7 @@
                         {{ 'customer.order.date' | trans }}
                         {{ _self.sortingIcon('date', data.orderSearchForm, config.name ~ '__sorting-icon') }}
                     </th>
-                    {% if data.isOrderSearchEnabled and isCustomerDataColumnsVisible %}
+                    {% if isCustomerColumnsVisible %}
                         <th {{ _self.sortingAttributes('customerName', data.orderSearchForm, data.jsPrefix, config.name ~ '__sorting-title') }}>
                             {{ 'customer.order.company_user' | trans }}
                             {{ _self.sortingIcon('customerName', data.orderSearchForm, config.name ~ '__sorting-icon') }}
@@ -47,7 +48,7 @@
                         <td class="transform-cell" data-content="{{ 'customer.order.date' | trans }}">
                             {{- date(order.createdAt) | formatDateTime -}}
                         </td>
-                        {% if data.isOrderSearchEnabled and isCustomerDataColumnsVisible %}
+                        {% if isCustomerColumnsVisible %}
                             <td class="transform-cell" data-content="{{ 'customer.order.company_user' | trans }}">{{ order.firstName ~ ' ' ~ order.lastName }}</td>
                             <td class="transform-cell" data-content="{{ 'customer.order.email' | trans }}">{{ order.email }}</td>
                         {% endif %}
