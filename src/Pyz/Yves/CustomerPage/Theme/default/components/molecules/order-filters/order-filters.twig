@@ -9,15 +9,11 @@
 {% block extraClass %}{% endblock %}
 
 {% block searchRow %}
-    {% set searchRowClass = 'grid grid--bottom' %}
-    {% set searchTypeClass = 'col col--sm-12 col--lg-3 spacing-bottom' %}
-    {% set searchTextClass = config.name ~ '__search-wrapper col col--sm-12 col--lg-9 spacing-bottom' %}
-
-    <div class="{{ searchRowClass }}">
-        <div class="{{ searchTypeClass }}">
+    <div class="grid grid--bottom">
+        <div class="col col--sm-12 col--lg-3 spacing-bottom">
             {{ form_row(data.orderSearchForm.searchType) }}
         </div>
-        <div class="{{ searchTextClass }}">
+        <div class="{{ config.name }}__search-wrapper col col--sm-12 col--lg-9 spacing-bottom">
             {% include atom('icon') with {
                 modifiers: ['big'],
                 class: config.name ~ '__search-icon',

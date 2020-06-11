@@ -177,16 +177,14 @@
             }
 
             #{$name}__sum-price {
+                font-weight: fw(bold);
+
                 @include helper-breakpoint-media-min($md) {
                     padding-left: rem(15);
                 }
 
                 @include helper-breakpoint-media-min($lg) {
                     text-align: right;
-                }
-
-                .table & {
-                    font-weight: fw(bold);
                 }
             }
         }

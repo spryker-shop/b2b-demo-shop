@@ -54,12 +54,6 @@
             width: 100%;
         }
 
-        &__row {
-            &--inactive {
-                color: $setting-color-gray-2;
-            }
-        }
-
         &--grid {
 
             thead {
@@ -168,6 +162,19 @@
                     &--no-label::before {
                         display: none;
                     }
+                }
+            }
+        }
+
+        &__row {
+            &--inactive {
+                color: $setting-color-gray-2;
+            }
+
+            &--spaceless {
+                th,
+                td {
+                    padding: 0;
                 }
             }
         }
