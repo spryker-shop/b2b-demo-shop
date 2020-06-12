@@ -106,6 +106,89 @@
             }
         }
 
+        &--order {
+            #{$name}__container {
+                margin-bottom: 0;
+                font-size: map_get($setting-font-size, small);
+                background: $setting-color-alpha-2;
+                color: $setting-color-black;
+                padding: rem(15) rem(15) rem(15) 0;
+
+                @include helper-breakpoint-media-min($md) {
+                    font-size: map_get($setting-font-size, default);
+                }
+
+                &:hover {
+                    box-shadow: none;
+                    background: $setting-color-alpha-2;
+                }
+            }
+
+            #{$name}__overlay {
+                margin: 0;
+                padding: 0;
+
+                &::before {
+                    background: $setting-color-transparent;
+
+                    @include helper-breakpoint-media-min($md) {
+                        background: $setting-color-alpha-2;
+                    }
+                }
+            }
+
+            #{$name}__image {
+                padding: 0 rem(15);
+                align-self: center;
+            }
+
+            #{$name}__name {
+                font-weight: fw(bold);
+                display: block;
+                line-height: rem(20);
+                margin-bottom: rem(5);
+            }
+
+            #{$name}__sku {
+                color: $setting-color-gray-3;
+                font-size: map_get($setting-font-size, small);
+            }
+
+            #{$name}__quantity {
+                color: $setting-color-gray-3;
+
+                @include helper-breakpoint-media-min($md) {
+                    padding-left: rem(15);
+                }
+
+                @include helper-breakpoint-media-min($lg) {
+                    text-align: right;
+                }
+            }
+
+            #{$name}__price {
+                height: auto;
+                font-weight: fw(bold);
+
+                @include helper-breakpoint-media-min($lg) {
+                    padding-left: rem(15);
+                    text-align: right;
+                }
+            }
+
+            #{$name}__sum-price {
+                font-weight: fw(bold);
+
+                @include helper-breakpoint-media-min($md) {
+                    padding-left: rem(15);
+                }
+
+                @include helper-breakpoint-media-min($lg) {
+                    text-align: right;
+                }
+            }
+        }
+
         @content;
     }
 }
