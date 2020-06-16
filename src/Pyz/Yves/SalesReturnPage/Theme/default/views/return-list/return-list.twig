@@ -1,12 +1,12 @@
 {% extends view('return-list', '@SprykerShop:SalesReturnPage') %}
 
 {% block salesReturnContentTitle %}
-    {% include molecule('action-bar', 'ShopUi') with {
+    {% include molecule('action-bar') with {
         modifiers: ['first'],
         data: {
             title: 'return_page.list.title' | trans,
-            actions: []
-        }
+            actions: [],
+        },
     } only %}
 {% endblock %}
 
@@ -40,6 +40,7 @@
         {% block body %}
             {% for item in data.items %}
                 {% set available = item.available is defined ? item.available : true %}
+
                 {% if available %}
                     <div class="{{ config.name }}__item">
                         {% include molecule('table-action-link') with {

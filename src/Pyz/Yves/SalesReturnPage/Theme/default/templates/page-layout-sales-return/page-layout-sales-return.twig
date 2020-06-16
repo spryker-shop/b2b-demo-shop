@@ -1,30 +1,20 @@
-{% extends template('page-layout-customer', 'CustomerPage') %}
+{% extends template('page-layout-sales-return', '@SprykerShop:SalesReturnPage') %}
 
-{% define data = {
-    activePage: 'return/list',
-    title: 'return_page.default_title' | trans,
-} %}
+{% block title %}{% endblock %}
 
-{% set breadcrumbExtension = [] %}
+{% block content %}
+    {% set wrapperClass = 'grid grid--gap' %}
 
-{% block breadcrumbs %}
-    {% set breadcrumbSteps = [
-        {
-            label: 'customer.account' | trans,
-            url: path('customer/overview'),
-        },
-        {
-            label: 'return_page.breadcrumb.returns' | trans,
-            url: path('return/list'),
-        },
-    ] %}
-    {% set breadcrumbSteps = breadcrumbSteps | merge(breadcrumbExtension) %}
-
-    {% include molecule('breadcrumb') with {
-        data: {
-            steps: breadcrumbSteps,
+    {% embed organism('section') with {
+        modifiers: ['last'],
+        embed: {
+            customerContent: parent(),
         },
     } only %}
+        {% block body %}
+            {{ embed.customerContent | raw }}
+        {% endblock %}
+    {% endembed %}
 {% endblock %}
 
 {% block customerContent %}

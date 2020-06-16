@@ -5,12 +5,8 @@
     tag: 'checkbox-select-all',
 } %}
 
-{% define data = {
-    targetClass: required,
-} %}
-
 {% define attributes = {
-    'target-class': data.targetClass,
+    'target-class-name': required,
     'class-to-toggle': config.name ~ '__input--item-selected',
 } %}
 

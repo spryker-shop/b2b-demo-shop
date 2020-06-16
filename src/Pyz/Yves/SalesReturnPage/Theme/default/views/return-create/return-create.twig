@@ -70,28 +70,18 @@
     {% include atom('checkbox-select-all') with {
         class: 'spacing-y spacing-y--inner spacing-y--big',
         modifiers: ['expand', 'bordered'],
-        data: {
-            targetClass: 'checkbox__input--expand',
+        attributes: {
+            'target-class-name': 'js-return-create__trigger-state-toggler',
         },
     } only %}
 
     {{ parent() }}
 {% endblock %}
 
-{% block checkbox %}
-    <div class="{{ checkboxWrapperClass }}">
-        {{ form_row(returnItem.isReturnable, {
-            label: ' ',
-            attr: {'class': 'js-return-create__trigger-state-toggler'},
-            disabled: not orderItem.isReturnable,
-        }) }}
-    </div>
-{% endblock %}
-
 {% block buttonsStateHandler %}
     {% include molecule('order-buttons-disable-toggler', 'SalesReturnPage') with {
         attributes: {
-            'trigger-class-name': 'checkbox__input--expand',
+            'trigger-class-name': 'js-return-create__trigger-state-toggler',
             'target-class-name': 'js-return-create__target-state-toggler',
         },
     } only %}

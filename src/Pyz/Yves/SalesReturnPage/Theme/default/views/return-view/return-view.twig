@@ -38,7 +38,8 @@
                 {% block actions %}
                     {% for action in data.actions %}
                         {% set modifiers = (action.modifiers | default((action.primary | default(false)) ? [] : ['hollow'])) %}
-                        <a class="{{ component.renderClass('button', modifiers) }} {{ config.name }}__action" href="{{ action.url }}" {% if loop.last %}target="_blank"{% endif %}>
+                        {% set targetValue = loop.last ? '_blank' %}
+                        <a class="{{ component.renderClass('button', modifiers) }} {{ config.name }}__action" href="{{ action.url }}" target="{{ targetValue }}">
                             {% if action.icon | default(false) %}
                                 {% include atom('icon') with {
                                     class: config.name ~ '__icon',
@@ -74,7 +75,7 @@
                 } only %}
                     {% block extraClass %} link link--secondary{% endblock %}
                 {% endembed %}
-                {%- if not loop.last -%},&nbsp{%- endif -%}
+                {%- if not loop.last -%},&nbsp;{%- endif -%}
             {% endfor %}
         {% endblock %}
     {% endembed %}

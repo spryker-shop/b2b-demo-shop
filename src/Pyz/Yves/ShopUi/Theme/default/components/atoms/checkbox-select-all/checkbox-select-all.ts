@@ -9,7 +9,7 @@ export default class CheckboxSelectAll extends Component {
 
     protected init(): void {
         this.trigger = <HTMLInputElement>this.getElementsByClassName(`${this.jsName}__input`)[0];
-        this.targets = <HTMLInputElement[]>Array.from(document.getElementsByClassName(this.targetInputClass));
+        this.targets = <HTMLInputElement[]>Array.from(document.getElementsByClassName(this.targetClassName));
 
         this.getActiveTargets();
         this.disableTrigger();
@@ -67,10 +67,8 @@ export default class CheckboxSelectAll extends Component {
         const triggerState = this.trigger.checked;
 
         this.targets.forEach((target: HTMLInputElement) => {
-            if (!target.disabled) {
-                target.checked = triggerState;
-                target.dispatchEvent(this.eventChange);
-            }
+            target.checked = triggerState;
+            target.dispatchEvent(this.eventChange);
         });
 
         this.toggleTriggerState();
@@ -80,8 +78,8 @@ export default class CheckboxSelectAll extends Component {
         this.trigger.disabled = this.targets.every((target: HTMLInputElement) => target.disabled);
     }
 
-    protected get targetInputClass(): string {
-        return this.getAttribute('target-class');
+    protected get targetClassName(): string {
+        return this.getAttribute('target-class-name');
     }
 
     protected get classToToggle(): string {
