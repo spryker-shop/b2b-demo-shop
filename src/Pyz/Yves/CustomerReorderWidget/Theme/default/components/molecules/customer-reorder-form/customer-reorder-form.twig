@@ -1,6 +1,17 @@
 {% extends molecule('customer-reorder-form', '@SprykerShop:CustomerReorderWidget') %}
 
 {% block body %}
+    {% widget 'CustomerReorderFormWidget' args [data.order] only %}
+        {% block body %}
+            {% set formClass = 'text-right' %}
+
+            {{ parent() }}
+        {% endblock %}
+        {% block embeddedData %}
+            <button type="submit" class="button spacing-bottom">{{ 'customer.order.reorder_all' | trans }}</button>
+        {% endblock %}
+    {% endwidget %}
+
     {% widget 'CustomerReorderItemsFormWidget'  args [data.order, config] with {
         embed: {
             formContent: block('formContent'),
@@ -13,9 +24,5 @@
 
             {% block formActions %}{% endblock %}
         {% endblock %}
-    {% endwidget %}
-
-    {% widget 'CustomerReorderFormWidget' args [data.order] only %}
-        {% block embeddedData %}{% endblock %}
     {% endwidget %}
 {% endblock %}

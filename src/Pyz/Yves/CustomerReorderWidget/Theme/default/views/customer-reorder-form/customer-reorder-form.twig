@@ -5,10 +5,12 @@
     order: _widget.order,
 } %}
 
+{% set formClass = '' %}
+
 {% block body %}
     {{ form_start(data.form, {'action': path('customer/order/reorder', {'idSalesOrder': data.order.idSalesOrder}),
         attr: {
-            class: data.form.vars.full_name,
+            class: formClass,
         }
     }) }}
         {% block embeddedData %}{% endblock %}

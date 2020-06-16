@@ -23,7 +23,7 @@
                 {{ parent() }}
 
                 {% embed molecule('return-create-link', 'SalesReturnPage') ignore missing with {
-                    class: embed.jsName ~ '__target-state-toggler spacing-left button',
+                    class: config.name ~ '__action ' ~ embed.jsName ~ '__target-state-toggler button',
                     data: {
                         orderReference: embed.order.orderReference,
                     },
@@ -31,16 +31,9 @@
                     {%- block extraClass %}{% endblock -%}
                 {% endembed %}
 
-                <button class="button spacing-left {{ embed.jsName }}__trigger" disabled>
+                <button class="{{ config.name }}__action button {{ embed.jsName }}__trigger" disabled>
                     {{ 'customer.order.reorder_selected' | trans }}
                 </button>
-
-                {% include molecule('customer-reorder-link', 'CustomerReorderWidget') ignore missing with {
-                    class: 'spacing-left',
-                    data: {
-                        targetFormClass: 'customerReorderWidgetForm',
-                    },
-                } only %}
             {% endblock %}
         {% endembed %}
     {% endblock %}
