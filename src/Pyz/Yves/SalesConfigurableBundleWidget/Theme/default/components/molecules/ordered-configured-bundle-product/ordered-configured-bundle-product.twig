@@ -31,8 +31,10 @@
     </div>
 {% endblock %}
 
+{% set generalInformationClass = 'col col--sm-12 col--lg-5 spacing-x spacing-x--inner' %}
+
 {% block generalInformation %}
-    <div class="col col--sm-12 col--lg-5 spacing-x spacing-x--inner">
+    <div class="{{ generalInformationClass }}">
         {{ parent() }}
     </div>
 {% endblock %}

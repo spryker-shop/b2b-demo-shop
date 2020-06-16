@@ -11,7 +11,7 @@
 
 {% block salesReturnContentHeader %}
     {% block salesReturnPageTitle %}
-        {% set salesReturnSaveActionClass = 'button spacing-left js-return-create__target-state-toggler' %}
+        {% set salesReturnSaveActionClass = 'action-bar__action button js-return-create__target-state-toggler' %}
 
         {% embed molecule('action-bar') with {
             modifiers: ['first'],
@@ -70,6 +70,9 @@
     {% include atom('checkbox-select-all') with {
         class: 'spacing-y spacing-y--inner spacing-y--big',
         modifiers: ['expand', 'bordered'],
+        data: {
+            label: 'checkbox-select-all.title' | trans,
+        },
         attributes: {
             'target-class-name': 'js-return-create__trigger-state-toggler',
         },
