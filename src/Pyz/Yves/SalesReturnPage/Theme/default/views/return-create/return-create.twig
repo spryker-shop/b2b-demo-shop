@@ -77,12 +77,3 @@
 
     {{ parent() }}
 {% endblock %}
-
-{% block buttonsStateHandler %}
-    {% include molecule('order-buttons-disable-toggler', 'SalesReturnPage') with {
-        attributes: {
-            'trigger-class-name': 'js-return-create__trigger-state-toggler',
-            'target-class-name': 'js-return-create__target-state-toggler',
-        },
-    } only %}
-{% endblock %}
