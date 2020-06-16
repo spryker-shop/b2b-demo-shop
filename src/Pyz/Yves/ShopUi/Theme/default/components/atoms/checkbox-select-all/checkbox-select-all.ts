@@ -19,8 +19,8 @@ export default class CheckboxSelectAll extends Component {
     protected mapEvents(): void {
        this.trigger.addEventListener('change', () => this.onTriggerChange());
        this.targets.forEach((target: HTMLInputElement) => {
-           target.addEventListener('change', () => this.onTargetChange())
-       })
+           target.addEventListener('change', () => this.onTargetChange());
+       });
     }
 
     protected onTriggerChange(): void {
@@ -81,10 +81,10 @@ export default class CheckboxSelectAll extends Component {
     }
 
     protected get targetInputClass(): string {
-        return this.getAttribute('target-class')
+        return this.getAttribute('target-class');
     }
 
     protected get classToToggle(): string {
-        return this.getAttribute('class-to-toggle')
+        return this.getAttribute('class-to-toggle');
     }
 }

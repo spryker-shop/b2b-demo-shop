@@ -10,8 +10,6 @@ export default class CustomerReorderLink extends Component {
         this.trigger = <HTMLButtonElement>this.getElementsByClassName(`${this.jsName}__trigger`)[0];
         this.targetForm = <HTMLFormElement>document.getElementsByClassName(this.formTargetClass)[0];
 
-        console.log('targetFormClass: ', this.formTargetClass);
-        console.log('targetForm: ', this.targetForm);
         this.mapEvents();
     }
 
@@ -24,7 +22,7 @@ export default class CustomerReorderLink extends Component {
     }
 
     protected formSubmit(): void {
-        this.targetForm.submit()
+        this.targetForm.submit();
     }
 
     protected get formTargetClass(): string {
