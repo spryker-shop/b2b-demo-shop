@@ -1,0 +1,32 @@
+{% extends template('page-layout-customer', 'CustomerPage') %}
+
+{% define data = {
+    activePage: 'return/list',
+    title: 'return_page.default_title' | trans,
+} %}
+
+{% set breadcrumbExtension = [] %}
+
+{% block breadcrumbs %}
+    {% set breadcrumbSteps = [
+        {
+            label: 'customer.account' | trans,
+            url: path('customer/overview'),
+        },
+        {
+            label: 'return_page.breadcrumb.returns' | trans,
+            url: path('return/list'),
+        },
+    ] %}
+    {% set breadcrumbSteps = breadcrumbSteps | merge(breadcrumbExtension) %}
+
+    {% include molecule('breadcrumb') with {
+        data: {
+            steps: breadcrumbSteps,
+        },
+    } only %}
+{% endblock %}
+
+{% block customerContent %}
+    {% block salesReturnContent %}{% endblock %}
+{% endblock %}

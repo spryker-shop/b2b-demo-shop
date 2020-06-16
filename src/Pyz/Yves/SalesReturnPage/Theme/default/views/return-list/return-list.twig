@@ -1,0 +1,58 @@
+{% extends view('return-list', '@SprykerShop:SalesReturnPage') %}
+
+{% block salesReturnContentTitle %}
+    {% include molecule('action-bar', 'ShopUi') with {
+        modifiers: ['first'],
+        data: {
+            title: 'return_page.list.title' | trans,
+            actions: []
+        }
+    } only %}
+{% endblock %}
+
+{% block salesReturnContent %}
+    {% set contentWrapperClass = '' %}
+
+    {{ parent() }}
+{% endblock %}
+
+{% block salesReturnTableUnderline %}{% endblock %}
+
+{% block returnActionsMenu %}
+    {% embed molecule('table-action-list') with {
+        data: {
+            items: [
+                {
+                    url: path('return/view', { returnReference: (return.returnReference)}),
+                    icon: 'eye',
+                    title: 'return_page.return.view_return',
+                    iconModifier: 'big',
+                },
+                {
+                    url: path('return/slip-print', { returnReference: (return.returnReference)}),
+                    icon: 'print',
+                    title: 'return_page.return.print_return',
+                    iconModifier: 'big',
+                },
+            ],
+        },
+    } only %}
+        {% block body %}
+            {% for item in data.items %}
+                {% set available = item.available is defined ? item.available : true %}
+                {% if available %}
+                    <div class="{{ config.name }}__item">
+                        {% include molecule('table-action-link') with {
+                            class: 'link link--alt link--action',
+                            modifiers: data.linkModifiers,
+                            data: item,
+                            attributes: {
+                                target: loop.last ? '_blank',
+                            },
+                        } only %}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% endblock %}
+    {% endembed %}
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends atom('checkbox') %}
+
+{% define config = {
+    name: 'checkbox-select-all',
+    tag: 'checkbox-select-all',
+} %}
+
+{% define data = {
+    targetClass: required,
+} %}
+
+{% define attributes = {
+    'target-class': data.targetClass,
+    'class-to-toggle': config.name ~ '__input--item-selected',
+} %}
+
+{% block inputClass %}{{ config.jsName }}__input{% endblock %}
+
+{% block icon %}
+    {% include atom('icon') with {
+        class: component.renderClass(config.name ~ '__collapse', modifiers),
+        modifiers: ['small'],
+        data: {
+            name: 'minus',
+        },
+    } only %}
+
+    {{ parent() }}
+{% endblock %}
