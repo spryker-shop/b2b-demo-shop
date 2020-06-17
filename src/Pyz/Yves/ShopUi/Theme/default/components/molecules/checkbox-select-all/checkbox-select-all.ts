@@ -58,8 +58,6 @@ export default class CheckboxSelectAll extends Component {
         if (isTriggerIconChanged && isTriggerChecked) {
             this.trigger.checked = false;
             this.trigger.classList.add(this.classToToggle);
-
-            return;
         }
     }
 
