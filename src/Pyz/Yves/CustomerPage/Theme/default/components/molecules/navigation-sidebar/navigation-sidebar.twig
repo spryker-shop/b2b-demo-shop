@@ -42,7 +42,7 @@
 } %}
 
 {%- macro isActive(page, activePage) -%}
-    {%- if page == activePage -%}menu__link--active{%- endif -%}
+    {%- if page == activePage -%}active{%- endif -%}
 {%- endmacro -%}
 
 {% block postContent %}
@@ -56,21 +56,15 @@
 
     {% widget 'QuoteRequestMenuItemWidget' args [data.activePage] only %}{% endwidget %}
 
-    {% embed molecule('return-list-link', 'SalesReturnPage') ignore missing with {
-        class: _self.isActive('return/list', data.activePage),
+    {% include molecule('navigation-sidebar-item') with {
+        modifiers: [_self.isActive('return/list', data.activePage)],
         data: {
-            activePage: data.activePage,
-        },
-        embed: {
-            activeClass: _self.isActive('return/list', data.activePage),
+            url: path('return/list'),
+            icon: 'return-arrow',
+            label: 'return_page.list.title' | trans,
+            name: 'return',
         },
     } only %}
-        {% block component %}
-            <li class="menu__item {{ embed.activeClass }}">
-                {{ parent() }}
-            </li>
-        {% endblock %}
-    {% endembed %}
 
     {% widget 'BusinessOnBehalfStatusWidget' use view('change-company-user', 'BusinessOnBehalfWidget') with {
         isActivePage: 'change-company-user' == data.activePage
