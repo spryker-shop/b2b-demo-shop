@@ -41,10 +41,6 @@
     ]
 } %}
 
-{%- macro isActive(page, activePage) -%}
-    {%- if page == activePage -%}active{%- endif -%}
-{%- endmacro -%}
-
 {% block postContent %}
     {% widget 'ShoppingListMenuItemWidget' args [
         data.activePage,
@@ -57,7 +53,7 @@
     {% widget 'QuoteRequestMenuItemWidget' args [data.activePage] only %}{% endwidget %}
 
     {% include molecule('navigation-sidebar-item') with {
-        modifiers: [_self.isActive('return/list', data.activePage)],
+        modifiers: data.activePage == 'return/list' ? ['active'] : [],
         data: {
             url: path('return/list'),
             icon: 'return-arrow',

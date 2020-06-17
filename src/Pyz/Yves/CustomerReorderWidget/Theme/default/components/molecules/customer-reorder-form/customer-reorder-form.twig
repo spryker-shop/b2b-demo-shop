@@ -1,5 +1,10 @@
 {% extends molecule('customer-reorder-form', '@SprykerShop:CustomerReorderWidget') %}
 
+{% define data = {
+    order: required,
+    idSalesOrder: '',
+} %}
+
 {% block body %}
     {% widget 'CustomerReorderFormWidget' args [data.order] only %}
         {% block body %}
@@ -7,6 +12,7 @@
 
             {{ parent() }}
         {% endblock %}
+
         {% block embeddedData %}
             <button class="button spacing-bottom">{{ 'customer.order.reorder_all' | trans }}</button>
         {% endblock %}

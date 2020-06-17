@@ -17,7 +17,7 @@
             embed: {
                 order: data.order,
                 jsName: 'js-customer-reorder-form',
-            }
+            },
         } only %}
             {% block actions %}
                 {{ parent() }}
@@ -85,7 +85,7 @@
     {% endblock %}
 
     {% block orderNote %}
-        {% if data.order.cartNote is not empty %}
+        {% if data.order.cartNote %}
             {% include molecule('note-list', 'CartNoteWidget') ignore missing with {
                 data: {
                     label: 'cart_note.customer_page.order_note',

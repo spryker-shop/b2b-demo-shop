@@ -13,13 +13,9 @@
 {% block inputClass %}{{ config.jsName }}__input{% endblock %}
 
 {% block icon %}
-    {% include atom('icon') with {
-        class: component.renderClass(config.name ~ '__collapse', modifiers),
-        modifiers: ['small'],
-        data: {
-            name: 'minus',
-        },
-    } only %}
+    {{ parent() }}
+
+    {% set iconName = 'minus' %}
 
     {{ parent() }}
 {% endblock %}

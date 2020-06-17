@@ -3,20 +3,16 @@
 {% block title %}{% endblock %}
 
 {% block content %}
-    {% set wrapperClass = 'grid grid--gap' %}
+    {% set wrapperClass = wrapperClass ~ ' grid--gap' %}
 
     {% embed organism('section') with {
         modifiers: ['last'],
         embed: {
-            customerContent: parent(),
+            salesReturnContent: parent(),
         },
     } only %}
         {% block body %}
-            {{ embed.customerContent | raw }}
+            {{ embed.salesReturnContent | raw }}
         {% endblock %}
     {% endembed %}
-{% endblock %}
-
-{% block customerContent %}
-    {% block salesReturnContent %}{% endblock %}
 {% endblock %}

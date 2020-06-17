@@ -9,6 +9,12 @@
     {{ parent() }}
 {% endblock %}
 
+{% block salesReturnContent %}
+    {% set contentWrapperClass = '' %}
+
+    {{ parent() }}
+{% endblock %}
+
 {% block salesReturnContentHeader %}
     {% block salesReturnPageTitle %}
         {% set salesReturnSaveActionClass = 'action-bar__action button js-return-create__target-state-toggler' %}
@@ -36,10 +42,6 @@
             {% endblock %}
         {% endembed %}
     {% endblock %}
-
-    {% block backOrderLink %}{% endblock %}
-    {% block salesReturnPageHeaderSeparator %}{% endblock %}
-    {% block salesReturnOrderInfoSeparator %}{% endblock %}
 {% endblock %}
 
 {% block salesReturnOrderInfo %}
@@ -52,14 +54,10 @@
     } only %}
 {% endblock %}
 
+{% block salesReturnOrderInfoSeparator %}{% endblock %}
+
 {% block salesReturnProductItem %}
     {% set salesReturnProductItemClass = 'grid grid--middle grid--justify grid--nowrap' %}
-
-    {{ parent() }}
-{% endblock %}
-
-{% block salesReturnContent %}
-    {% set contentWrapperClass = '' %}
 
     {{ parent() }}
 {% endblock %}

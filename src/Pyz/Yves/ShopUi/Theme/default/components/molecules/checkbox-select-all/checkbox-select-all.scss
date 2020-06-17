@@ -4,7 +4,7 @@
     @include shop-ui-checkbox($name) {
         &__input {
             & ~ #{$name}__box {
-                #{$name}__collapse {
+                #{$name}__minus {
                     @include helper-visibility-invisible;
                     color: $setting-color-white;
                     vertical-align: baseline;
@@ -20,7 +20,7 @@
                         @include helper-visibility-visible;
                     }
 
-                    #{$name}__collapse {
+                    #{$name}__minus {
                         display: none;
                     }
                 }
@@ -31,7 +31,7 @@
                     background-color: $setting-color-main;
                     border-color: $setting-color-main;
 
-                    #{$name}__collapse {
+                    #{$name}__minus {
                         @include helper-visibility-visible;
                     }
 

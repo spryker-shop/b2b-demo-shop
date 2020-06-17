@@ -3,7 +3,6 @@
 {% block customerContent %}
     {% embed molecule('customer-reorder-form', 'CustomerReorderWidget') ignore missing with {
         data: {
-            idSalesOrder: data.order.idSalesOrder,
             order: data.order,
         },
         embed: {
