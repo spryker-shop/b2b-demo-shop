@@ -41,7 +41,7 @@ export default class CheckboxSelectAll extends Component {
     }
 
     protected disableTrigger(): void {
-        this.trigger.disabled = this.targets.some((target: HTMLInputElement) => !target.disabled);
+        this.trigger.disabled = !this.targets.some((target: HTMLInputElement) => !target.disabled);
     }
 
     toggleTrigger(): void {
