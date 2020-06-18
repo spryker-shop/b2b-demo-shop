@@ -8,16 +8,16 @@
 
 {% block separatorTop %}{% endblock %}
 
-{% block separatorMiddle %}{% endblock %}
-
-{% block remunerationTotal %}
-    {% set remunerationTotalClass = returnTotalRowClass %}
+{% block itemsToReturn %}
+    {% set itemsToReturnClass = returnTotalRowClass %}
 
     {{ parent() }}
 {% endblock %}
 
-{% block itemsToReturn %}
-    {% set itemsToReturnClass = returnTotalRowClass %}
+{% block separatorMiddle %}{% endblock %}
+
+{% block remunerationTotal %}
+    {% set remunerationTotalClass = returnTotalRowClass %}
 
     {{ parent() }}
 {% endblock %}

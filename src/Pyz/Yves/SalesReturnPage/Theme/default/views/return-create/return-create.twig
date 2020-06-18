@@ -1,14 +1,5 @@
 {% extends view('return-create', '@SprykerShop:SalesReturnPage') %}
 
-{% block breadcrumbs %}
-    {% set breadcrumbExtension = [
-        {
-            label: 'return_page.breadcrumb.create_return' | trans,
-        },
-    ] %}
-    {{ parent() }}
-{% endblock %}
-
 {% block salesReturnContent %}
     {% set contentWrapperClass = '' %}
 

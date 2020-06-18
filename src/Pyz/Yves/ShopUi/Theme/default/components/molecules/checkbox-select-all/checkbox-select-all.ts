@@ -37,28 +37,18 @@ export default class CheckboxSelectAll extends Component {
 
     protected toggleTriggerState(isTriggerChecked: boolean, isTriggerAdditionalIconVisible: boolean): void {
         this.trigger.checked = isTriggerChecked;
-        this.toggleAdditionalTriggerIcon(isTriggerAdditionalIconVisible);
-    }
-
-    protected toggleAdditionalTriggerIcon(isVisible) {
-        if (isVisible) {
-            this.trigger.classList.add(this.classToToggle);
-
-            return;
-        }
-
-        this.trigger.classList.remove(this.classToToggle);
+        this.trigger.classList.toggle(this.classToToggle, isTriggerAdditionalIconVisible);
     }
 
     protected disableTrigger(): void {
-        this.trigger.disabled = this.targets.every((target: HTMLInputElement) => target.disabled);
+        this.trigger.disabled = this.targets.some((target: HTMLInputElement) => !target.disabled);
     }
 
     toggleTrigger(): void {
         const checkedTargets = this.targets.filter((target: HTMLInputElement) => target.checked);
         const isTriggerChecked = this.trigger.checked;
         const isAllTargetsChecked = this.targets.length === checkedTargets.length;
-        const isAllTargetsUnchecked = checkedTargets.length === 0;
+        const isAllTargetsUnchecked = !checkedTargets.length;
 
         if (isAllTargetsChecked) {
             this.toggleTriggerState(true, false);
