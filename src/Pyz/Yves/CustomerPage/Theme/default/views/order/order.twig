@@ -1,36 +1,91 @@
-{% extends template('page-layout-customer', 'CustomerPage') %}
-
-{% define data = {
-    orders: _view.orderList,
-
-    pagination: {
-        parameters: {},
-        currentPage: _view.pagination.page,
-        paginationPath: 'customer/order',
-        maxPage: _view.pagination.lastPage,
-        showAlwaysFirstAndLast: true
-    },
-
-    activePage: 'order',
-    title: 'customer.account.order_history' | trans
-} %}
+{% extends view('order', '@SprykerShop:CustomerPage') %}
 
 {% block customerContent %}
-    {% include molecule('action-bar', 'ShopUi') with {
+    {% embed molecule('action-bar') with {
         modifiers: ['first'],
         data: {
             title: 'customer.account.order_history' | trans,
-            actions: []
-        }
+        },
+        embed: {
+            jsPrefix: jsPrefix,
+        },
     } only %}
+        {% block actions %}
+            <button class="button button--hollow button--justify-center {{ embed.jsPrefix }}filter-button">
+                {% include atom('icon') with {
+                    modifiers: ['filter'],
+                    class: 'spacing-right',
+                    data: {
+                        name: 'filter',
+                    },
+                } only %}
+                {{ 'customer.account.button.search_filters' | trans }}
+            </button>
 
-    {% include molecule('order-table', 'CustomerPage') with {
-        data: {
-            orders: data.orders
-        }
-    } only %}
+            {% include molecule('toggler-click') with {
+                attributes: {
+                    'trigger-class-name': embed.jsPrefix ~ 'filter-button',
+                    'target-class-name': embed.jsPrefix ~ 'filter-section',
+                    'trigger-class-to-toggle': 'button--hollow-active',
+                },
+            } only %}
+        {% endblock %}
+    {% endembed %}
 
-    {% include molecule('pagination') with {
-        data: data.pagination
-    } only %}
+    {% block filterSection %}
+        {% if data.orderSearchForm %}
+            {% block formStart %}
+                {{ form_start(data.orderSearchForm, {
+                    attr: {
+                        class: jsPrefix ~ 'form',
+                    },
+                }) }}
+            {% endblock %}
+
+            <div class="{{ jsPrefix }}filter-section is-hidden">
+                {% block orderFilters %}
+                    {% include molecule('order-filters', 'CustomerPage') with {
+                        data: {
+                            orderSearchForm: data.orderSearchForm,
+                            jsPrefix: jsPrefix,
+                        },
+                    } only %}
+                {% endblock %}
+
+                {% block orderActiveFilters %}
+                    {% include molecule('order-active-filters', 'CustomerPage') with {
+                        data: {
+                            orderSearchForm: data.orderSearchForm,
+                            jsPrefix: jsPrefix,
+                        },
+                    } only %}
+                {% endblock %}
+            </div>
+        {% endif %}
+    {% endblock %}
+
+    {% block orderTable %}
+        {% include molecule('order-table', 'CustomerPage') with {
+            data: {
+                orders: data.orders,
+                orderSearchForm: data.orderSearchForm,
+                filterFields: data.filterFields,
+                isOrderSearchEnabled: data.isOrderSearchEnabled,
+                isOrderSearchOrderItemsVisible: data.isOrderSearchOrderItemsVisible,
+                jsPrefix: jsPrefix,
+            },
+        } only %}
+    {% endblock %}
+
+    {% block pagination %}
+        {% include molecule('pagination') with {
+            data: data.pagination,
+        } only %}
+    {% endblock %}
+
+    {% if data.orderSearchForm %}
+        {% block endForm %}
+            {{ form_end(data.orderSearchForm) }}
+        {% endblock %}
+    {% endif %}
 {% endblock %}
