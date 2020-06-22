@@ -79,6 +79,12 @@
                                             title: 'customer.order.reorder',
                                             iconModifier: 'big',
                                         },
+                                        {
+                                            url: path('return/create', { orderReference: order.orderReference }),
+                                            icon: 'return-arrow',
+                                            title: 'return_page.button.create_return',
+                                            iconModifier: 'big',
+                                        },
                                     ],
                                 },
                             } only %}
