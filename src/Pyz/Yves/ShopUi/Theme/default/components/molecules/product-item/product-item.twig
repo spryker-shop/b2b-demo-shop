@@ -15,6 +15,9 @@
 {% block body %}
     <div class="{{ component.renderClass(config.name ~ '__container', modifiers) }}">
         {% block imageContainer %}
+            {% set extraClass = '' %}
+            {% set modifiers = ['catalog'] | merge(modifiers) %}
+
             {{ parent() }}
         {% endblock %}
 
@@ -64,9 +67,6 @@
 {% endblock %}
 
 {% block image %}
-    {% set extraClass = '' %}
-    {% set modifiers = ['catalog'] | merge(modifiers) %}
-
     <div class="{{ component.renderClass(config.name ~ '__image-wrap', modifiers) }}">
         {{ block('productThumbnail') }}
 
