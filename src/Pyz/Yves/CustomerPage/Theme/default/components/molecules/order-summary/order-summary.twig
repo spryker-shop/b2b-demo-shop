@@ -51,13 +51,6 @@
             {% endfor %}
         </li>
 
-        {% if data.order.totals.canceledTotal %}
-            <li class="{{ config.name }}__item">
-                <span class="float-right">{{ data.order.totals.canceledTotal | money(true, data.order.currencyIsoCode) }}</span>
-                <span class="{{ config.name }}__text {{ config.name }}__text--bigger">{{ 'customer.order.canceledTotal' | trans }}</span>
-            </li>
-        {% endif %}
-
         <li class="{{ config.name }}__item is-hidden-sm-md">
             <span class="float-right">{{ data.order.totals.taxTotal.amount | money(true, data.order.currencyIsoCode) }}</span>
             <span class="{{ config.name }}__text {{ config.name }}__text--bigger">{{ 'customer.order.taxTotal' | trans }}</span>
@@ -75,5 +68,19 @@
             <strong class="{{ config.name }}__title {{ config.name }}__title--total {{ config.name }}__title--color-gray float-right">{{ data.order.totals.grandTotal | money(true, data.order.currencyIsoCode) }}</strong>
             <h6 class="{{ config.name }}__title {{ config.name }}__title--total {{ config.name }}__title--color-gray">{{ 'customer.order.grandTotal' | trans }}</h6>
         </li>
+
+        {% if data.order.totals and data.order.totals.remunerationTotal %}
+            <li class="{{ config.name }}__item">
+                <span class="float-right">- {{ data.order.totals.remunerationTotal | money(true, data.order.currencyIsoCode) }}</span>
+                <span class="{{ config.name }}__text {{ config.name }}__text--bigger">{{ 'customer.order.remunerationTotal' | trans }}</span>
+            </li>
+        {% endif %}
+
+        {% if data.order.totals and data.order.totals.canceledTotal %}
+            <li class="{{ config.name }}__item">
+                <span class="float-right">- {{ data.order.totals.canceledTotal | money(true, data.order.currencyIsoCode) }}</span>
+                <span class="{{ config.name }}__text {{ config.name }}__text--bigger">{{ 'customer.order.refundTotal' | trans }}</span>
+            </li>
+        {% endif %}
     </ul>
 {% endblock %}
