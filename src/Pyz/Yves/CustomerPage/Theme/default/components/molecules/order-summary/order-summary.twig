@@ -4,6 +4,14 @@
     tag: 'div',
 } %}
 
+{% macro item(name, price, isMinus = false, isStrong = false) %}
+    {% set tag = isStrong ? 'strong' : 'span' %}
+    <li class="grid grid--justify">
+    <{{ tag }} class="col">{{ name }}:</{{ tag }}>
+    <{{ tag }} class="col text-right">{{ isMinus ? '-' }} {{ price }}</{{ tag }}>
+    </li>
+{% endmacro %}
+
 {% block body %}
     <div class="{{ config.name }}__top grid grid--justify grid--middle">
         <div class="col col--sm-8">
@@ -51,13 +59,6 @@
             {% endfor %}
         </li>
 
-        {% if data.order.totals.canceledTotal %}
-            <li class="{{ config.name }}__item">
-                <span class="float-right">{{ data.order.totals.canceledTotal | money(true, data.order.currencyIsoCode) }}</span>
-                <span class="{{ config.name }}__text {{ config.name }}__text--bigger">{{ 'customer.order.canceledTotal' | trans }}</span>
-            </li>
-        {% endif %}
-
         <li class="{{ config.name }}__item is-hidden-sm-md">
             <span class="float-right">{{ data.order.totals.taxTotal.amount | money(true, data.order.currencyIsoCode) }}</span>
             <span class="{{ config.name }}__text {{ config.name }}__text--bigger">{{ 'customer.order.taxTotal' | trans }}</span>
@@ -74,6 +75,34 @@
             </div>
             <strong class="{{ config.name }}__title {{ config.name }}__title--total {{ config.name }}__title--color-gray float-right">{{ data.order.totals.grandTotal | money(true, data.order.currencyIsoCode) }}</strong>
             <h6 class="{{ config.name }}__title {{ config.name }}__title--total {{ config.name }}__title--color-gray">{{ 'customer.order.grandTotal' | trans }}</h6>
+
+            {% if data.order.totals and data.order.totals.remunerationTotal %}
+                <div class="is-hidden-lg-xxl">
+                    <strong class="{{ config.name }}__title {{ config.name }}__title--total float-right">- {{ data.order.totals.remunerationTotal | money(true, data.order.currencyIsoCode) }}</strong>
+                    <h6 class="{{ config.name }}__title {{ config.name }}__title--total">{{ 'customer.order.remunerationTotal' | trans }}</h6>
+                </div>
+            {% endif %}
+
+            {% if data.order.totals and data.order.totals.canceledTotal %}
+                <div class="is-hidden-lg-xxl">
+                    <strong class="{{ config.name }}__title {{ config.name }}__title--total float-right">- {{ data.order.totals.canceledTotal | money(true, data.order.currencyIsoCode) }}</strong>
+                    <h6 class="{{ config.name }}__title {{ config.name }}__title--total">{{ 'customer.order.refundTotal' | trans }}</h6>
+                </div>
+            {% endif %}
         </li>
+
+        {% if data.order.totals and data.order.totals.remunerationTotal %}
+            <li class="{{ config.name }}__item is-hidden-sm-md">
+                <span class="float-right">- {{ data.order.totals.remunerationTotal | money(true, data.order.currencyIsoCode) }}</span>
+                <span class="{{ config.name }}__text {{ config.name }}__text--bigger">{{ 'customer.order.remunerationTotal' | trans }}</span>
+            </li>
+        {% endif %}
+
+        {% if data.order.totals and data.order.totals.canceledTotal %}
+            <li class="{{ config.name }}__item is-hidden-sm-md">
+                <span class="float-right">- {{ data.order.totals.canceledTotal | money(true, data.order.currencyIsoCode) }}</span>
+                <span class="{{ config.name }}__text {{ config.name }}__text--bigger">{{ 'customer.order.refundTotal' | trans }}</span>
+            </li>
+        {% endif %}
     </ul>
 {% endblock %}
