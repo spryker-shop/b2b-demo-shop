@@ -5,3 +5,9 @@
 
     {{ parent()}}
 {% endblock %}
+
+{% block total %}
+    {% set productPriceTotalColumnClass = 'col col--sm-2 text-right' %}
+
+    {{ parent()}}
+{% endblock %}
