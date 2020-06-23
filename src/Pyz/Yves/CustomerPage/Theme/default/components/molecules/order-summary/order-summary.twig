@@ -4,14 +4,6 @@
     tag: 'div',
 } %}
 
-{% macro item(name, price, isMinus = false, isStrong = false) %}
-    {% set tag = isStrong ? 'strong' : 'span' %}
-    <li class="grid grid--justify">
-    <{{ tag }} class="col">{{ name }}:</{{ tag }}>
-    <{{ tag }} class="col text-right">{{ isMinus ? '-' }} {{ price }}</{{ tag }}>
-    </li>
-{% endmacro %}
-
 {% block body %}
     <div class="{{ config.name }}__top grid grid--justify grid--middle">
         <div class="col col--sm-8">
