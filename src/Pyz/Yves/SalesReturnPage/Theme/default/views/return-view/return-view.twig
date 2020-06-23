@@ -56,14 +56,18 @@
                     {% block bundleInfoInner %}
                         {{ parent() }}
 
-                        {% for returnItem in embed.returnItems if returnItem.orderItem.IdSalesOrderItem == data.productBundle.bundleProduct.bundleItemIdentifier %}
-                            {% include molecule('return-reason', 'SalesReturnPage') with {
-                                class: 'spacing-x',
-                                data: {
-                                    returnReason: (returnItem.reason ?: 'return_page.return_reasons.empty') | trans,
-                                },
-                            } only %}
+                        {% set returnReason = '' %}
+
+                        {% for returnItem in embed.returnItems if returnItem.orderItem.productBundle and returnItem.orderItem.productBundle.bundleItemIdentifier == data.productBundle.bundleProduct.bundleItemIdentifier %}
+                            {% set returnReason = returnItem.reason %}
                         {% endfor %}
+
+                        {% include molecule('return-reason', 'SalesReturnPage') with {
+                            class: 'spacing-x',
+                            data: {
+                                returnReason: (returnReason ?: 'return_page.return_reasons.empty') | trans,
+                            },
+                        } only %}
                     {% endblock %}
                 {% endembed %}
             {% endblock %}
