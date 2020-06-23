@@ -81,9 +81,9 @@
             args [orderItems]
             use view('order-returnable-items-configured-bundle-widget', 'SalesConfigurableBundleWidget')
             with {
-            embed: {
-                returnItems: data.returnItems,
-            },
+                embed: {
+                    returnItems: data.returnItems,
+                },
         } only %}
             {% block bundleItem %}
                 {% embed molecule('ordered-configured-bundle', 'SalesConfigurableBundleWidget') ignore missing with {
