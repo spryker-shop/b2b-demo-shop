@@ -1,12 +1,6 @@
 {% extends molecule('navigation-sidebar', 'ShopUi') %}
 
-{% define config = {
-    name: 'navigation-sidebar',
-    tag: 'nav'
-} %}
-
 {% define data = {
-    activePage: required,
     items: [
         {
             name: 'overview',
@@ -33,6 +27,13 @@
             icon: 'history',
         },
         {
+            name: 'return',
+            url: path('return/list'),
+            label: 'return_page.list.title' | trans,
+            icon: 'return-arrow',
+            isActiveItem:  'return/list' == data.activePage | default,
+        },
+        {
             name: 'newsletter',
             url: path('customer/newsletter'),
             label: 'customer.account.newsletter' | trans,
@@ -51,16 +52,6 @@
     {% widget 'MultiCartMenuItemWidget' args [data.activePage] only %}{% endwidget %}
 
     {% widget 'QuoteRequestMenuItemWidget' args [data.activePage] only %}{% endwidget %}
-
-    {% include molecule('navigation-sidebar-item') with {
-        modifiers: data.activePage == 'return/list' ? ['active'] : [],
-        data: {
-            url: path('return/list'),
-            icon: 'return-arrow',
-            label: 'return_page.list.title' | trans,
-            name: 'return',
-        },
-    } only %}
 
     {% widget 'BusinessOnBehalfStatusWidget' use view('change-company-user', 'BusinessOnBehalfWidget') with {
         isActivePage: 'change-company-user' == data.activePage
