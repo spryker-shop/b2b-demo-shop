@@ -10,5 +10,6 @@
 } %}
 
 {% block body %}
-    <p><strong>{{ data.returnReasonTitle }}</strong> {{ data.returnReason }}</p>
+    <span class="{{ config.name }}__title">{{ data.returnReasonTitle }}</span>
+    {{ data.returnReason }}
 {% endblock %}

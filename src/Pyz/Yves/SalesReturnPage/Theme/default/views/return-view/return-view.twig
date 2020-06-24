@@ -45,7 +45,7 @@
         } only %}
             {% block bundle %}
                 {% embed molecule('ordered-product-bundle', 'SalesProductBundleWidget') with {
-                    class: 'grid',
+                    class: 'grid spacing-top spacing-top--big',
                     data: {
                         productBundle: productBundle,
                     },
@@ -53,6 +53,12 @@
                         returnItems: embed.returnItems,
                     },
                 } only %}
+                    {% block bundleItem %}
+                        {% set bundleItemClass = config.name ~ '__content ' ~ bundleItemClass %}
+
+                        {{ parent() }}
+                    {% endblock %}
+
                     {% block bundleInfoInner %}
                         {{ parent() }}
 
@@ -63,12 +69,13 @@
                         {% endfor %}
 
                         {% include molecule('return-reason', 'SalesReturnPage') with {
-                            class: 'spacing-x',
                             data: {
                                 returnReason: (returnReason ?: 'return_page.return_reasons.empty') | trans,
                             },
                         } only %}
                     {% endblock %}
+
+                    {% block separator %}{% endblock %}
                 {% endembed %}
             {% endblock %}
         {% endwidget %}
