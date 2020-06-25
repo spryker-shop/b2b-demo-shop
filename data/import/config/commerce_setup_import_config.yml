@@ -6,8 +6,6 @@ actions:
     # Cannot have a source because we use store.php
   - data_entity: currency
     source: data/import/currency.csv
-  - data_entity: order-source
-    source: data/import/order_source.csv
   - data_entity: customer
     source: data/import/customer.csv
   - data_entity: glossary
@@ -24,8 +22,6 @@ actions:
     source: data/import/warehouse.csv
   - data_entity: payment-method
     source: data/import/payment_method.csv
-  - data_entity: return-reason
-    source: data/import/return_reason.csv
   # Store relation
   - data_entity: shipment-method-store
     source: data/import/shipment_method_store.csv

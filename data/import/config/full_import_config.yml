@@ -7,8 +7,6 @@ actions:
     # Cannot have a source because we use store.php
   - data_entity: currency
     source: data/import/currency.csv
-  - data_entity: order-source
-    source: data/import/order_source.csv
   - data_entity: customer
     source: data/import/customer.csv
   - data_entity: glossary
@@ -135,10 +133,6 @@ actions:
     source: data/import/cms_template.csv
   - data_entity: cms-block
     source: data/import/cms_block.csv
-  - data_entity: cms-block-category-position
-    source: data/import/cms_block_category_position.csv
-  - data_entity: cms-block-category
-    source: data/import/cms_block_category.csv
   - data_entity: content-banner
     source: data/import/content_banner.csv
   - data_entity: content-product-abstract-list
@@ -189,8 +183,6 @@ actions:
     source: data/import/company_user_on_behalf.csv
   - data_entity: merchant
     source : data/import/merchant.csv
-  - data_entity: merchant-user
-    source : data/import/merchant_user.csv
   - data_entity: merchant-relationship
     source : data/import/merchant_relationship.csv
   - data_entity: merchant-relationship-product-list
@@ -215,9 +207,6 @@ actions:
     source: data/import/quote_request.csv
   - data_entity: quote-request-version
     source: data/import/quote_request_version.csv
-  # Store relation
-  - data_entity: merchant-store
-    source: data/import/merchant_store.csv
 
 
 #7. Miscellaneous Setup import

@@ -100,28 +100,22 @@ sections:
 
     demodata:
         import-commerce-setup:
-            command: "vendor/bin/console data:import --config=data/import/config/b2b_commerce_setup_import_config.yml"
+            command: "vendor/bin/console data:import --config=data/import/config/commerce_setup_import_config.yml"
 
         import-catalog-setup:
-            command: "vendor/bin/console data:import --config=data/import/config/b2b_catalog_setup_import_config.yml"
+            command: "vendor/bin/console data:import --config=data/import/config/catalog_setup_import_config.yml"
 
         import-special-product-types-setup:
-            command: "vendor/bin/console data:import --config=data/import/config/b2b_special_product_types_import_config.yml"
+            command: "vendor/bin/console data:import --config=data/import/config/special_product_types_import_config.yml"
 
         import-merchandising-setup:
-            command: "vendor/bin/console data:import --config=data/import/config/b2b_merchandising_import_config.yml"
+            command: "vendor/bin/console data:import --config=data/import/config/merchandising_import_config.yml"
 
         import-content-management-setup:
-            command: "vendor/bin/console data:import --config=data/import/config/b2b_content_management_import_config.yml"
-
-        import-company-setup:
-            command: "vendor/bin/console data:import --config=data/import/config/b2b_company_import_config.yml"
-
-        import-merchant-setup:
-            command: "vendor/bin/console data:import --config=data/import/config/b2b_merchant_import_config.yml"
+            command: "vendor/bin/console data:import --config=data/import/config/content_management_import_config.yml"
 
         import-miscellaneous-setup:
-            command: "vendor/bin/console data:import --config=data/import/config/b2b_miscellaneous_import_config.yml"
+            command: "vendor/bin/console data:import --config=data/import/config/miscellaneous_import_config.yml"
 
         update-product-labels:
             command: "vendor/bin/console product-label:relations:update"
