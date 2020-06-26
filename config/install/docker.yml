@@ -114,6 +114,9 @@ sections:
         import-content-management-setup:
             command: "vendor/bin/console data:import --config=data/import/config/content_management_import_config.yml"
 
+        import-setup-import:
+            command: "vendor/bin/console data:import --config=data/import/config/b2b_setup_import_config.yml"
+
         import-miscellaneous-setup:
             command: "vendor/bin/console data:import --config=data/import/config/miscellaneous_import_config.yml"
 
