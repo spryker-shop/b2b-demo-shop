@@ -15,18 +15,10 @@
 {% block body %}
     <div class="{{ component.renderClass(config.name ~ '__container', modifiers) }}">
         {% block imageContainer %}
-            {% block image %}
-                {% set extraClass = '' %}
-                {% set modifiers = ['catalog'] | merge(modifiers) %}
+            {% set extraClass = '' %}
+            {% set modifiers = ['catalog'] | merge(modifiers) %}
 
-                <div class="{{ component.renderClass(config.name ~ '__image-wrap', modifiers) }}">
-                    {{ block('productThumbnail') }}
-
-                    <div class="{{ component.renderClass(config.name ~ '__colors', modifiers) }}">
-                        {{ block('colors') }}
-                    </div>
-                </div>
-            {% endblock %}
+            {{ parent() }}
         {% endblock %}
 
         {% block content %}
@@ -71,5 +63,15 @@
         {% endblock %}
 
         {% block actionsContainer %}{% endblock %}
+    </div>
+{% endblock %}
+
+{% block image %}
+    <div class="{{ component.renderClass(config.name ~ '__image-wrap', modifiers) }}">
+        {{ block('productThumbnail') }}
+
+        <div class="{{ component.renderClass(config.name ~ '__colors', modifiers) }}">
+            {{ block('colors') }}
+        </div>
     </div>
 {% endblock %}

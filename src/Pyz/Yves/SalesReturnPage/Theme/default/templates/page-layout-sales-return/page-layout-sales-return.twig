@@ -1,0 +1,18 @@
+{% extends template('page-layout-sales-return', '@SprykerShop:SalesReturnPage') %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+    {% set wrapperClass = wrapperClass ~ ' grid--gap' %}
+
+    {% embed organism('section') with {
+        modifiers: ['last'],
+        embed: {
+            salesReturnContent: parent(),
+        },
+    } only %}
+        {% block body %}
+            {{ embed.salesReturnContent | raw }}
+        {% endblock %}
+    {% endembed %}
+{% endblock %}

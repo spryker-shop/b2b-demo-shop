@@ -1,0 +1,67 @@
+{% extends molecule('return-overview', '@SprykerShop:SalesReturnPage') %}
+
+{% block headline %}
+    {% embed molecule('action-bar') with {
+        modifiers: ['first'],
+        data: {
+            title: 'return_page.details.page_title' | trans,
+            actions: [
+                {
+                    title: 'return_page.details.actions.back_to_list' | trans,
+                    url: url('return/list'),
+                    modifiers: ['hollow'],
+                    icon: '',
+                },
+                {
+                    title: 'return_page.details.actions.print_slip' | trans,
+                    url: path('return/slip-print', { returnReference: (data.returnReference) }),
+                    icon: '',
+                    primary: true,
+                },
+            ],
+        },
+    } only %}
+        {% block actions %}
+            {% for action in data.actions %}
+                {% set modifiers = action.modifiers | default((action.primary | default) ? [] : ['hollow']) %}
+                {% set targetValue = loop.last ? '_blank' %}
+
+                <a class="{{ component.renderClass('button', modifiers) }} {{ config.name }}__action" href="{{ action.url }}" target="{{ targetValue }}">
+                    {% if action.icon | default %}
+                        {% include atom('icon') with {
+                            class: config.name ~ '__icon',
+                            data: {
+                                name: action.icon,
+                            },
+                        } only %}
+                    {% endif %}
+
+                    {{ action.title }}
+                </a>
+            {% endfor %}
+        {% endblock %}
+    {% endembed %}
+{% endblock %}
+
+{% block separator %}{% endblock %}
+
+{% block info %}
+    {% set infoClass = config.name ~ '__list' %}
+
+    {{ parent() }}
+{% endblock %}
+
+{% block orderRefInner %}
+    {{ 'return_page.order_reference' | trans }}
+    {% for idSalesOrder, orderReference in data.uniqueOrderReferences %}
+        {% embed molecule('order-detail-link', 'CustomerPage') ignore missing with {
+            data: {
+                idSalesOrder: idSalesOrder,
+                text: orderReference,
+            },
+        } only %}
+            {% block extraClass %} link link--secondary{% endblock %}
+        {% endembed %}
+        {%- if not loop.last -%},&nbsp;{%- endif -%}
+    {% endfor %}
+{% endblock %}
