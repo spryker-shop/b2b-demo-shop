@@ -87,6 +87,17 @@
                     background-color: $setting-color-gray-3;
                 }
             }
+
+            &-active {
+                background: $setting-color-alpha-9;
+
+                &:hover,
+                &:focus {
+                    border-color: $setting-color-main;
+                    color: $setting-color-main;
+                    background: $setting-color-alpha-9;
+                }
+            }
         }
 
         &--alternative {
@@ -219,6 +230,13 @@
         &--justify {
             display: flex;
             justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        &--justify-center {
+            display: flex;
+            justify-content: center;
             align-items: center;
             width: 100%;
         }
