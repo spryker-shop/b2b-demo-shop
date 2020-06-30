@@ -15,6 +15,7 @@
 
 {% define attributes = {
     href: data.url,
+    target: data.target | default,
     'data-init-single-click': data.isSingleClickable,
 } %}
 

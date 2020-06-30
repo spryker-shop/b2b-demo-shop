@@ -10,7 +10,6 @@
                 }) }}
             </h3>
             <div class="col col--sm-12 col--xl-8">
-                {% widget 'OrderConfiguredBundleWidget' args [data.order, shipmentGroup.items] only %}{% endwidget %}
 
                 {% for item in shipmentGroup.cartItems %}
                     {% set cartItem = item.bundleProduct ?? item %}
@@ -99,6 +98,9 @@
                         {% endembed %}
                     {% endif %}
                 {% endfor %}
+
+                {% widget 'OrderItemsConfiguredBundleWidget' args [shipmentGroup.items] only %}
+                {% endwidget %}
             </div>
 
             <div class="col col--sm-12 col--xl-4">

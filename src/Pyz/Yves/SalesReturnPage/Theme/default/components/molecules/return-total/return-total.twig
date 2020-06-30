@@ -1,0 +1,29 @@
+{% extends molecule('return-total', '@SprykerShop:SalesReturnPage') %}
+
+{% block body %}
+    {% set returnTotalRowClass = config.name ~ '__row grid grid--justify' %}
+
+    {{ parent() }}
+{% endblock %}
+
+{% block separatorTop %}{% endblock %}
+
+{% block itemsToReturn %}
+    {% set itemsToReturnClass = returnTotalRowClass %}
+
+    {{ parent() }}
+{% endblock %}
+
+{% block separatorMiddle %}{% endblock %}
+
+{% block remunerationTotal %}
+    {% set remunerationTotalClass = returnTotalRowClass %}
+
+    {{ parent() }}
+{% endblock %}
+
+{% block itemsToReturnInnerValue %}
+    {% set itemsToReturnValueClass = config.name ~ '__counter col' %}
+
+    {{ parent() }}
+{% endblock %}
