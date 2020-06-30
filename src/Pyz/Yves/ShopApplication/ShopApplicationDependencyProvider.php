@@ -25,7 +25,7 @@ use Spryker\Yves\Twig\Plugin\Application\TwigApplicationPlugin;
 use Spryker\Yves\Validator\Plugin\Application\ValidatorApplicationPlugin;
 use SprykerShop\Yves\AgentWidget\Widget\AgentControlBarWidget;
 use SprykerShop\Yves\AvailabilityNotificationWidget\Widget\AvailabilityNotificationSubscriptionWidget;
-use SprykerShop\Yves\BarcodeWidget\Widget\BarcodeWidget;
+//use SprykerShop\Yves\BarcodeWidget\Widget\BarcodeWidget;
 use SprykerShop\Yves\BusinessOnBehalfWidget\Widget\BusinessOnBehalfStatusWidget;
 use SprykerShop\Yves\CartCodeWidget\Widget\CartCodeFormWidget;
 use SprykerShop\Yves\CartNoteWidget\Widget\CartItemNoteFormWidget;
@@ -56,6 +56,7 @@ use SprykerShop\Yves\MultiCartWidget\Widget\MultiCartMenuItemWidget;
 use SprykerShop\Yves\MultiCartWidget\Widget\QuickOrderPageWidget;
 use SprykerShop\Yves\NavigationWidget\Widget\NavigationWidget;
 use SprykerShop\Yves\NewsletterWidget\Widget\NewsletterSubscriptionSummaryWidget;
+use SprykerShop\Yves\OrderCancelWidget\Widget\OrderCancelButtonWidget;
 use SprykerShop\Yves\OrderCustomReferenceWidget\Widget\OrderCustomReferenceWidget;
 use SprykerShop\Yves\PersistentCartShareWidget\Widget\ShareCartByLinkWidget;
 use SprykerShop\Yves\PriceProductVolumeWidget\Widget\ProductPriceVolumeWidget;
@@ -108,7 +109,7 @@ use SprykerShop\Yves\QuoteRequestWidget\Widget\QuoteRequestCreateWidget;
 use SprykerShop\Yves\QuoteRequestWidget\Widget\QuoteRequestMenuItemWidget;
 use SprykerShop\Yves\SalesConfigurableBundleWidget\Widget\OrderItemsConfiguredBundleWidget;
 use SprykerShop\Yves\SalesOrderThresholdWidget\Widget\SalesOrderThresholdWidget;
-use SprykerShop\Yves\SalesProductBundleWidget\Widget\OrderItemsProductBundleWidget;
+//use SprykerShop\Yves\SalesProductBundleWidget\Widget\OrderItemsProductBundleWidget;
 use SprykerShop\Yves\SharedCartWidget\Widget\CartDeleteSharingCompanyUsersListWidget;
 use SprykerShop\Yves\SharedCartWidget\Widget\CartListPermissionGroupWidget;
 use SprykerShop\Yves\SharedCartWidget\Widget\SharedCartDetailsWidget;
@@ -234,10 +235,11 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             OrderCustomReferenceWidget::class,
             QuoteRequestActionsWidget::class,
             OrderItemsConfiguredBundleWidget::class,
-            BarcodeWidget::class,
-            OrderItemsProductBundleWidget::class,
+//            BarcodeWidget::class,
+//            OrderItemsProductBundleWidget::class,
             CustomerReorderItemsFormWidget::class,
             CustomerReorderFormWidget::class,
+            OrderCancelButtonWidget::class,
         ];
     }
 
