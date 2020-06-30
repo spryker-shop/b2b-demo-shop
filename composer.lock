@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5fcf3564defd45f298736dca4b2a614b",
+    "content-hash": "884c4aba5a4a1677b4b893ae07fba50b",
     "packages": [
         {
             "name": "brick/math",
@@ -33710,6 +33710,59 @@
             "time": "2020-06-23T15:49:27+00:00"
         },
         {
+            "name": "spryker/sales-return",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/sales-return.git",
+                "reference": "7e250b86a5599f48f1d982b76ab0cf8bfc84046f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/sales-return/zipball/7e250b86a5599f48f1d982b76ab0cf8bfc84046f",
+                "reference": "7e250b86a5599f48f1d982b76ab0cf8bfc84046f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/customer": "^7.0.0",
+                "spryker/glossary": "^3.0.0",
+                "spryker/kernel": "^3.33.0",
+                "spryker/locale": "^3.0.0",
+                "spryker/oms": "^11.0.0",
+                "spryker/propel-orm": "^1.0.0",
+                "spryker/sales": "^11.7.0",
+                "spryker/sales-extension": "^1.6.0",
+                "spryker/store": "^1.11.0",
+                "spryker/util-date-time": "^1.0.0",
+                "spryker/uuid-behavior": "^1.0.0",
+                "spryker/zed-request": "^3.4.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/",
+                    "SprykerTest\\Shared\\SalesReturn\\Helper\\": "tests/SprykerTest/Shared/SalesReturn/_support/Helper/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "SalesReturn module",
+            "time": "2020-05-29T12:23:46+00:00"
+        },
+        {
             "name": "spryker/sales-return-gui-extension",
             "version": "1.0.0",
             "source": {
@@ -33750,6 +33803,65 @@
             ],
             "description": "SalesReturnGuiExtension module",
             "time": "2020-05-27T09:19:00+00:00"
+        },
+        {
+            "name": "spryker/sales-return-search",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/sales-return-search.git",
+                "reference": "10fa210fc4ba4957e5b0e1e9abd184924056db2b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/sales-return-search/zipball/10fa210fc4ba4957e5b0e1e9abd184924056db2b",
+                "reference": "10fa210fc4ba4957e5b0e1e9abd184924056db2b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/event-behavior": "^1.0.0",
+                "spryker/glossary": "^3.8.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/locale": "^3.0.0",
+                "spryker/propel-orm": "^1.5.0",
+                "spryker/publisher-extension": "^1.0.0",
+                "spryker/sales-return": "^1.0.0",
+                "spryker/search": "^8.0.0",
+                "spryker/search-extension": "^1.0.0",
+                "spryker/synchronization-behavior": "^1.0.0",
+                "spryker/synchronization-extension": "^1.0.0",
+                "spryker/util-encoding": "^2.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/elastica": "*",
+                "spryker/propel": "*",
+                "spryker/queue": "*",
+                "spryker/search-elasticsearch": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/elastica": "If you want to use search functionality from SalesReturnSearchClient.",
+                "spryker/search-elasticsearch": "If you want to use search plugins."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "SalesReturnSearch module",
+            "time": "2020-05-29T09:10:32+00:00"
         },
         {
             "name": "spryker/sales-split",
