@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<database xmlns="spryker:schema-01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="zed" xsi:schemaLocation="spryker:schema-01 https://static.spryker.com/schema-01.xsd" namespace="Orm\Zed\CompanyUnitAddress\Persistence" package="src.Orm.Zed.CompanyUnitAddress.Persistence">
+  <table name="spy_company_unit_address">
+    <index name="index-spy_company_unit_address-fk_country">
+      <index-column name="fk_country"/>
+    </index>
+    <index name="index-spy_company_unit_address-fk_region">
+      <index-column name="fk_region"/>
+    </index>
+    <index name="index-spy_company_unit_address-fk_company">
+      <index-column name="fk_company"/>
+    </index>
+  </table>
+  <table name="spy_company_unit_address_to_company_business_unit">
+    <index name="index-spy_company_unit_address_to_company_business-bbbe287ce824">
+      <index-column name="fk_company_business_unit"/>
+    </index>
+    <index name="index-spy_company_unit_address_to_company_business-67784ebe75fa">
+      <index-column name="fk_company_unit_address"/>
+    </index>
+  </table>
+</database>

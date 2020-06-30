@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<database xmlns="spryker:schema-01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="zed" xsi:schemaLocation="spryker:schema-01 https://static.spryker.com/schema-01.xsd" namespace="Orm\Zed\ProductMeasurementUnit\Persistence" package="src.Orm.Zed.ProductMeasurementUnit.Persistence">
+  <table name="spy_product_measurement_base_unit">
+    <index name="index-spy_product_measurement_base_unit-fk_product_abstract">
+      <index-column name="fk_product_abstract"/>
+    </index>
+    <index name="index-spy_product_measurement_base_unit-fk_product-42bf48cd9c9e">
+      <index-column name="fk_product_measurement_unit"/>
+    </index>
+  </table>
+  <table name="spy_product_measurement_sales_unit">
+    <index name="index-spy_product_measurement_sales_unit-fk_product">
+      <index-column name="fk_product"/>
+    </index>
+    <index name="index-spy_product_measurement_sales_unit-fk_produc-202aa3d87f0a">
+      <index-column name="fk_product_measurement_unit"/>
+    </index>
+    <index name="index-spy_product_measurement_sales_unit-fk_produc-5cc18a291b71">
+      <index-column name="fk_product_measurement_base_unit"/>
+    </index>
+  </table>
+  <table name="spy_product_measurement_sales_unit_store">
+    <index name="index-spy_product_measurement_sales_unit_store-fk_store">
+      <index-column name="fk_store"/>
+    </index>
+    <index name="index-spy_product_measurement_sales_unit_store-fk_-b31f1c565a8f">
+      <index-column name="fk_product_measurement_sales_unit"/>
+    </index>
+  </table>
+</database>

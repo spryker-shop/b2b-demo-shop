@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<database xmlns="spryker:schema-01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="zed" xsi:schemaLocation="spryker:schema-01 https://static.spryker.com/schema-01.xsd" namespace="Orm\Zed\CompanyUserInvitation\Persistence" package="src.Orm.Zed.CompanyUserInvitation.Persistence">
+  <table name="spy_company_user_invitation">
+    <index name="index-spy_company_user_invitation-fk_company_business_unit">
+      <index-column name="fk_company_business_unit"/>
+    </index>
+    <index name="index-spy_company_user_invitation-fk_company_user_-36f628f46148">
+      <index-column name="fk_company_user_invitation_status"/>
+    </index>
+    <index name="index-spy_company_user_invitation-fk_company_user">
+      <index-column name="fk_company_user"/>
+    </index>
+  </table>
+</database>

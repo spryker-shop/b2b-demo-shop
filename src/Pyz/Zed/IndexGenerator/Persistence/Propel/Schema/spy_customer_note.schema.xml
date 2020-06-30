@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<database xmlns="spryker:schema-01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="zed" xsi:schemaLocation="spryker:schema-01 https://static.spryker.com/schema-01.xsd" namespace="Orm\Zed\CustomerNote\Persistence" package="src.Orm.Zed.CustomerNote.Persistence">
+  <table name="spy_customer_note">
+    <index name="index-spy_customer_note-fk_customer">
+      <index-column name="fk_customer"/>
+    </index>
+    <index name="index-spy_customer_note-fk_user">
+      <index-column name="fk_user"/>
+    </index>
+  </table>
+</database>

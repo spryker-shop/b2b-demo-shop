@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<database xmlns="spryker:schema-01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="zed" xsi:schemaLocation="spryker:schema-01 https://static.spryker.com/schema-01.xsd" namespace="Orm\Zed\CompanyBusinessUnit\Persistence" package="src.Orm.Zed.CompanyBusinessUnit.Persistence">
+  <table name="spy_company_business_unit">
+    <index name="index-spy_company_business_unit-fk_company">
+      <index-column name="fk_company"/>
+    </index>
+    <index name="index-spy_company_business_unit-fk_parent_company_business_unit">
+      <index-column name="fk_parent_company_business_unit"/>
+    </index>
+    <index name="index-spy_company_business_unit-default_billing_address">
+      <index-column name="default_billing_address"/>
+    </index>
+  </table>
+</database>
