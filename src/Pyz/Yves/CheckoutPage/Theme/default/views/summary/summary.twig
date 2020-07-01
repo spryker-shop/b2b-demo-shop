@@ -169,7 +169,7 @@
             submit: {
                 enable: data.isPlaceableOrder and can('WriteSharedCartPermissionPlugin', data.cart.idQuote),
                 text: 'checkout.step.place.order' | trans,
-                class: 'form__action--expand-sm-md button button--big js-form__submit-button',
+                class: 'form__action--expand-sm-md button button--big js-summary__submit-button',
             },
             cancel: {
                 enable: true,
@@ -191,10 +191,10 @@
                     component: molecule('accept-terms-checkbox', 'CheckoutPage'),
                     label: field.vars.label,
                     rowAttr: {
-                        class: config.name ~ '__field ' ~ fieldLayoutClass,
+                        class: 'spacing-bottom',
                     },
                     attributes: {
-                        'target-class-name': 'form__action form__action--checkout button button--large button--expand',
+                        'target-class-name': 'js-summary__submit-button',
                     },
                 }) }}
             {% else %}
