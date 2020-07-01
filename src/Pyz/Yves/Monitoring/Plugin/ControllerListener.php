@@ -7,47 +7,14 @@
 
 namespace Pyz\Yves\Monitoring\Plugin;
 
-use Spryker\Service\Monitoring\MonitoringServiceInterface;
-use Spryker\Yves\Kernel\AbstractPlugin;
-use Spryker\Yves\Monitoring\Dependency\Service\MonitoringToUtilNetworkServiceInterface;
-use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use Spryker\Yves\Monitoring\Plugin\ControllerListener as SprykerControllerListener;
 use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
-use Symfony\Component\HttpKernel\KernelEvents;
 
 /**
  * @method \Spryker\Yves\Monitoring\MonitoringFactory getFactory()
  */
-class ControllerListener extends AbstractPlugin implements EventSubscriberInterface
+class ControllerListener extends SprykerControllerListener
 {
-    public const PRIORITY = -255;
-
-    /**
-     * @var \Spryker\Service\Monitoring\MonitoringServiceInterface
-     */
-    protected $monitoringService;
-
-    /**
-     * @var \Spryker\Yves\Monitoring\Dependency\Service\MonitoringToUtilNetworkServiceInterface
-     */
-    protected $utilNetworkService;
-
-    /**
-     * @var array
-     */
-    protected $ignorableTransactions;
-
-    /**
-     * @param \Spryker\Service\Monitoring\MonitoringServiceInterface $monitoringService
-     * @param \Spryker\Yves\Monitoring\Dependency\Service\MonitoringToUtilNetworkServiceInterface $utilNetworkService
-     * @param array $ignorableTransactions
-     */
-    public function __construct(MonitoringServiceInterface $monitoringService, MonitoringToUtilNetworkServiceInterface $utilNetworkService, array $ignorableTransactions = [])
-    {
-        $this->monitoringService = $monitoringService;
-        $this->utilNetworkService = $utilNetworkService;
-        $this->ignorableTransactions = $ignorableTransactions;
-    }
-
     /**
      * @param \Symfony\Component\HttpKernel\Event\FilterControllerEvent $event
      *
@@ -70,31 +37,5 @@ class ControllerListener extends AbstractPlugin implements EventSubscriberInterf
         if ($this->isTransactionIgnorable($transactionName)) {
             $this->monitoringService->markIgnoreTransaction();
         }
-    }
-
-    /**
-     * @param string $transaction
-     *
-     * @return bool
-     */
-    protected function isTransactionIgnorable(string $transaction): bool
-    {
-        foreach ($this->ignorableTransactions as $ignorableTransaction) {
-            if (strpos($transaction, $ignorableTransaction) === 0) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    /**
-     * @return array
-     */
-    public static function getSubscribedEvents(): array
-    {
-        return [
-            KernelEvents::CONTROLLER => ['onKernelController', static::PRIORITY],
-        ];
     }
 }
