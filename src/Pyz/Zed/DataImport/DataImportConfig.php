@@ -53,7 +53,7 @@ class DataImportConfig extends SprykerDataImportConfig
      */
     public function getDefaultYamlConfigPath(): ?string
     {
-        return APPLICATION_ROOT_DIR . DIRECTORY_SEPARATOR . 'data/import/config/b2b_full_import_config.yml';
+        return APPLICATION_ROOT_DIR . DIRECTORY_SEPARATOR . 'data/import/config/full_import_config.yml';
     }
 
     /**

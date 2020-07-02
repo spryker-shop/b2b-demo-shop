@@ -24,6 +24,8 @@ use Spryker\Zed\CompanyDataImport\CompanyDataImportConfig;
 use Spryker\Zed\CompanyUnitAddressDataImport\CompanyUnitAddressDataImportConfig;
 use Spryker\Zed\CompanyUnitAddressLabelDataImport\CompanyUnitAddressLabelDataImportConfig;
 use Spryker\Zed\Console\ConsoleDependencyProvider as SprykerConsoleDependencyProvider;
+use Spryker\Zed\Customer\Communication\Console\CustomerPasswordResetConsole;
+use Spryker\Zed\Customer\Communication\Console\CustomerPasswordSetConsole;
 use Spryker\Zed\DataExport\Communication\Console\DataExportConsole;
 use Spryker\Zed\DataImport\Communication\Console\DataImportConsole;
 use Spryker\Zed\DataImport\Communication\Console\DataImportDumpConsole;
@@ -57,6 +59,7 @@ use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\Log\Communication\Console\DeleteLogFilesConsole;
 use Spryker\Zed\Maintenance\Communication\Console\MaintenanceDisableConsole;
 use Spryker\Zed\Maintenance\Communication\Console\MaintenanceEnableConsole;
+use Spryker\Zed\Monitoring\Communication\Plugin\Console\MonitoringConsolePlugin;
 use Spryker\Zed\MultiCartDataImport\MultiCartDataImportConfig;
 use Spryker\Zed\Oauth\Communication\Console\OauthTokenConsole;
 use Spryker\Zed\Oms\Communication\Console\CheckConditionConsole as OmsCheckConditionConsole;
@@ -150,6 +153,7 @@ use Spryker\Zed\Twig\Communication\Plugin\Application\TwigApplicationPlugin;
 use Spryker\Zed\Uuid\Communication\Console\UuidGeneratorConsole;
 use Spryker\Zed\ZedNavigation\Communication\Console\BuildNavigationConsole;
 use Spryker\Zed\ZedNavigation\Communication\Console\RemoveNavigationCacheConsole;
+use SprykerEco\Zed\NewRelic\Communication\Console\RecordDeploymentConsole;
 use Stecman\Component\Symfony\Console\BashCompletion\CompletionCommand;
 
 /**
@@ -330,6 +334,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new ResolvableClassCacheConsole(),
 
             new DataExportConsole(),
+            new RecordDeploymentConsole(),
         ];
 
         $propelCommands = $container->getLocator()->propel()->facade()->getConsoleCommands();
@@ -376,6 +381,8 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             $commands[] = new QueueDumpConsole();
             $commands[] = new EventTriggerListenerConsole();
             $commands[] = new GenerateRestApiDocumentationConsole();
+            $commands[] = new CustomerPasswordResetConsole();
+            $commands[] = new CustomerPasswordSetConsole();
         }
 
         return $commands;
@@ -405,5 +412,17 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
         $applicationPlugins[] = new TwigApplicationPlugin();
 
         return $applicationPlugins;
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Monitoring\Communication\Plugin\Console\MonitoringConsolePlugin[]
+     */
+    public function getEventSubscriber(Container $container)
+    {
+        return [
+            new MonitoringConsolePlugin(),
+        ];
     }
 }
