@@ -5,11 +5,12 @@
         {% embed molecule('action-bar') with {
             modifiers: ['first'],
             data: {
+                title: 'customer.profile.order_details' | trans,
                 actions: [
                     {
                         title: 'general.back.button' | trans,
                         url: url('customer/order'),
-                        modifiers: ['hollow'],
+                        modifiers: ['hollow', 'small-padding'],
                     },
                 ],
             },
@@ -27,12 +28,50 @@
                         orderReference: embed.order.orderReference,
                     },
                 } only %}
-                    {%- block extraClass %}{% endblock -%}
+                    {%- block extraClass %} button--small-padding{% endblock -%}
                 {% endembed %}
 
-                <button class="{{ config.name }}__action button {{ embed.jsName }}__trigger" disabled>
+                {% widget 'OrderCancelButtonWidget'  args [embed.order, app.request.requestUri] only %}
+                    {% block body %}
+                        {% include molecule('remote-form-submit') with {
+                            class: 'spacing-left',
+                            data: {
+                                label: 'order_cancel_widget.cancel_order' | trans,
+                                buttonClass: 'button button--alternative-hollow button--small-padding',
+                            },
+                            attributes: {
+                                'form-name': 'orderCancelForm_' ~ data.order.idSalesOrder,
+                                'form-action': path('order/cancel', {'id-sales-order': data.order.idSalesOrder, 'return-url': data.returnUrl}),
+                                'field-id': 'orderCancelForm__token' ~ data.order.idSalesOrder,
+                                'field-name': 'orderCancelForm[_token]',
+                                'field-value': csrf_token('orderCancelForm'),
+                            },
+                        } only %}
+                    {% endblock %}
+                {% endwidget %}
+
+                <button class="{{ config.name }}__action button button--small-padding {{ embed.jsName }}__trigger" disabled>
                     {{ 'customer.order.reorder_selected' | trans }}
                 </button>
+
+                {% widget 'CustomerReorderFormWidget' args [embed.order] only %}
+                    {% block body %}
+                        {% include molecule('remote-form-submit') with {
+                            class: 'spacing-left',
+                            data: {
+                                label: 'customer.order.reorder_all' | trans,
+                                buttonClass: 'button button--small-padding',
+                            },
+                            attributes: {
+                                'form-name': 'customerReorderWidgetForm_' ~ data.order.idSalesOrder,
+                                'form-action': path('customer/order/reorder', {'idSalesOrder': data.order.idSalesOrder}),
+                                'field-id': 'customerReorderWidgetForm__token_' ~ data.order.idSalesOrder,
+                                'field-name': 'customerReorderWidgetForm[_token]',
+                                'field-value': csrf_token('customerReorderWidgetForm'),
+                            },
+                        } only %}
+                    {% endblock %}
+                {% endwidget %}
             {% endblock %}
         {% endembed %}
     {% endblock %}

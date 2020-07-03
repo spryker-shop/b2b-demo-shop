@@ -11,22 +11,6 @@
             orderShipmentExpenses: data.orderShipmentExpenses,
         },
     } only %}
-        {% block reorderAllForm %}
-            {% embed molecule('action-bar') with {
-                modifiers: ['spaceless'],
-                data: {
-                    title: 'customer.profile.order_details' | trans,
-                },
-                embed: {
-                    form: parent(),
-                },
-            } only %}
-                {% block actions %}
-                    {{ embed.form | raw }}
-                {% endblock %}
-            {% endembed %}
-        {% endblock %}
-
         {% block formContent %}
             {% include molecule('order-detail', 'CustomerPage') with {
                 data: {

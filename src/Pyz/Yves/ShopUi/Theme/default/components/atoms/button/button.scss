@@ -112,6 +112,23 @@
             }
         }
 
+        &--alternative-hollow {
+            background-color: $setting-color-transparent;
+            border-color: $setting-color-alt;
+            color: $setting-color-alt;
+
+            &:hover,
+            &:focus {
+                background-color: helper-color-dark($setting-color-alt);
+                border-color: helper-color-dark($setting-color-alt);
+            }
+        }
+
+        &--small-padding {
+            padding-left: rem(15);
+            padding-right: rem(15);
+        }
+
         &--small {
             font-size: rem(13);
             padding: rem(6) rem(20);
