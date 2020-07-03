@@ -10,6 +10,7 @@ namespace PyzTest\Yves\Availability\Presentation;
 use Codeception\Scenario;
 use PyzTest\Yves\Availability\AvailabilityPresentationTester;
 use PyzTest\Yves\Cart\PageObject\CartListPage;
+use PyzTest\Yves\Product\PageObject\ProductDetailPage;
 
 /**
  * Auto-generated group annotations
@@ -38,12 +39,12 @@ class AvailabilityAddToCartCest
 
         $i->amLoggedInCustomer();
 
-        $i->amOnPage(AvailabilityPresentationTester::PRODUCT_WITH_LIMITED_AVAILABILITY_ADD_TO_CART_URL);
+        $i->amOnPage(AvailabilityPresentationTester::PRODUCT_WITH_LIMITED_AVAILABILITY_PAGE);
 
-        $i->amOnPage(CartListPage::CART_URL);
+        $i->click(ProductDetailPage::ADD_TO_CART_XPATH);
+
         $i->see(CartListPage::CART_HEADER);
 
-        $i->waitForElement(CartListPage::FIRST_CART_ITEM_QUANTITY_INPUT_XPATH, 30);
         $i->fillField(CartListPage::FIRST_CART_ITEM_QUANTITY_INPUT_XPATH, 50);
         $i->click(CartListPage::FIRST_CART_ITEM_CHANGE_QUANTITY_BUTTON_XPATH);
 
