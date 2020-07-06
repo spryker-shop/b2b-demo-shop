@@ -13,7 +13,7 @@
                 class: 'table-action-list__item',
                 data: {
                     label: 'customer.order.reorder' | trans,
-                    buttonClass: 'link',
+                    buttonClass: 'button--expand-sm-lg link',
                 },
                 attributes: {
                     'form-name': 'customerReorderWidgetForm_' ~ data.order.idSalesOrder,
@@ -24,13 +24,9 @@
                 },
             } only %}
                 {% block innerSubmitActionContent %}
-                    {% include molecule('table-action-link') with {
+                    {% include molecule('table-action-span') with {
                         class: 'link link--alt link--action',
-                        config: {
-                            tag: 'span',
-                        },
                         data: {
-                            url: '',
                             icon: 'cart',
                             title: data.label,
                             iconModifier: 'big',
@@ -46,10 +42,10 @@
     {% widget 'OrderCancelButtonWidget' args [order, data.requestUri] only %}
         {% block body %}
             {% embed molecule('remote-form-submit') with {
-                class: 'table-action-list__item link',
+                class: 'table-action-list__item',
                 data: {
                     label: 'order_cancel_widget.cancel_order' | trans,
-                    buttonClass: 'link',
+                    buttonClass: 'button--expand-sm-lg link',
                 },
                 attributes: {
                     'form-name': 'orderCancelForm_' ~ data.order.idSalesOrder,
@@ -60,13 +56,9 @@
                 },
             } only %}
                 {% block innerSubmitActionContent %}
-                    {% include molecule('table-action-link') with {
+                    {% include molecule('table-action-span') with {
                         class: 'link link--alt link--action',
-                        config: {
-                            tag: 'span',
-                        },
                         data: {
-                            url: '',
                             icon: 'cross',
                             title: data.label,
                         },
