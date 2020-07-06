@@ -1,1 +1,1 @@
-import './table-action-span';
+import './table-action-span.scss';
