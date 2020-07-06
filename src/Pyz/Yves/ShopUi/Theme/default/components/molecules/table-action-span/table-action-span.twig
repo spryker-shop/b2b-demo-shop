@@ -16,9 +16,8 @@
         modifiers: [ data.iconModifier ],
         data: {
             icon: data.icon,
-            text: data.title | trans
-        }
+            text: data.title | trans,
+        },
     } only %}
     <span class="{{ config.name }}__title is-hidden-lg-xxl">{{ data.title | trans }}</span>
 {% endblock %}
-
