@@ -14,7 +14,7 @@
                     {
                         title: 'general.back.button' | trans,
                         url: url('customer/order'),
-                        modifiers: ['hollow', 'small-padding'],
+                        modifiers: ['hollow', 'small-space'],
                     },
                 ],
             },
@@ -33,7 +33,7 @@
                         orderReference: embed.order.orderReference,
                     },
                 } only %}
-                    {%- block extraClass %} button--small-padding{% endblock -%}
+                    {%- block extraClass %} button--small-space{% endblock -%}
                 {% endembed %}
 
                 {% widget 'OrderCancelButtonWidget' args [embed.order, embed.requestUri] with {
@@ -46,7 +46,7 @@
                             class: embed.configName ~ '__action',
                             data: {
                                 label: 'order_cancel_widget.cancel_order' | trans,
-                                buttonClass: 'button button--alternative-hollow button--small-padding button--expand',
+                                buttonClass: 'button button--alert button--hollow button--small-space button--expand',
                             },
                             attributes: {
                                 'form-name': 'orderCancelForm_' ~ data.order.idSalesOrder,
@@ -59,7 +59,7 @@
                     {% endblock %}
                 {% endwidget %}
 
-                <button class="{{ config.name }}__action button button--small-padding {{ embed.jsName }}__trigger" disabled>
+                <button class="{{ config.name }}__action button button--small-space {{ embed.jsName }}__trigger" disabled>
                     {{ 'customer.order.reorder_selected' | trans }}
                 </button>
 
@@ -73,7 +73,7 @@
                             class: embed.configName ~ '__action',
                             data: {
                                 label: 'customer.order.reorder_all' | trans,
-                                buttonClass: 'button button--small-padding button--expand',
+                                buttonClass: 'button button--small-space button--expand',
                             },
                             attributes: {
                                 'form-name': 'customerReorderWidgetForm_' ~ data.order.idSalesOrder,
