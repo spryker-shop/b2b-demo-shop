@@ -1,12 +1,16 @@
 {% extends molecule('order-table', '@SprykerShop:CustomerPage') %}
 
+{% define data = {
+    requestUri: app.request.requestUri,
+} %}
+
 {% block extraClass %}{% endblock %}
 
-{% block CustomReorderAction %}
-    {% widget 'CustomerReorderFormWidget'  args [order] only %}
+{% block customReorderAction %}
+    {% widget 'CustomerReorderFormWidget' args [order] only %}
         {% block body %}
             {% embed molecule('remote-form-submit') with {
-                class: 'table-action-list__item link',
+                class: 'table-action-list__item',
                 data: {
                     label: 'customer.order.reorder' | trans,
                     buttonClass: 'link',
@@ -39,7 +43,7 @@
 {% endblock %}
 
 {% block customOrderCancelAction %}
-    {% widget 'OrderCancelButtonWidget'  args [order, app.request.requestUri] only %}
+    {% widget 'OrderCancelButtonWidget' args [order, data.requestUri] only %}
         {% block body %}
             {% embed molecule('remote-form-submit') with {
                 class: 'table-action-list__item link',
@@ -145,7 +149,7 @@
                                             iconModifier: 'big',
                                         },
                                         {
-                                            customAction: block('CustomReorderAction'),
+                                            customAction: block('customReorderAction'),
                                         },
                                         {
                                             url: path('return/create', { orderReference: order.orderReference }),

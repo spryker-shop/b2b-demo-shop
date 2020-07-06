@@ -1,5 +1,9 @@
 {% extends molecule('order-detail', '@SprykerShop:CustomerPage') %}
 
+{% define data = {
+    requestUri: app.request.requestUri,
+} %}
+
 {% block body %}
     {% block orderActions %}
         {% embed molecule('action-bar') with {
@@ -16,6 +20,7 @@
             },
             embed: {
                 order: data.order,
+                requestUri: data.requestUri,
                 jsName: 'js-customer-reorder-form',
             },
         } only %}
@@ -31,13 +36,17 @@
                     {%- block extraClass %} button--small-padding{% endblock -%}
                 {% endembed %}
 
-                {% widget 'OrderCancelButtonWidget'  args [embed.order, app.request.requestUri] only %}
+                {% widget 'OrderCancelButtonWidget' args [embed.order, embed.requestUri] with {
+                    embed: {
+                        configName: config.name,
+                    },
+                } only %}
                     {% block body %}
                         {% include molecule('remote-form-submit') with {
-                            class: 'spacing-left',
+                            class: embed.configName ~ '__action',
                             data: {
                                 label: 'order_cancel_widget.cancel_order' | trans,
-                                buttonClass: 'button button--alternative-hollow button--small-padding',
+                                buttonClass: 'button button--alternative-hollow button--small-padding button--expand',
                             },
                             attributes: {
                                 'form-name': 'orderCancelForm_' ~ data.order.idSalesOrder,
@@ -54,13 +63,17 @@
                     {{ 'customer.order.reorder_selected' | trans }}
                 </button>
 
-                {% widget 'CustomerReorderFormWidget' args [embed.order] only %}
+                {% widget 'CustomerReorderFormWidget' args [embed.order] with {
+                    embed: {
+                        configName: config.name,
+                    },
+                } only %}
                     {% block body %}
                         {% include molecule('remote-form-submit') with {
-                            class: 'spacing-left',
+                            class: embed.configName ~ '__action',
                             data: {
                                 label: 'customer.order.reorder_all' | trans,
-                                buttonClass: 'button button--small-padding',
+                                buttonClass: 'button button--small-padding button--expand',
                             },
                             attributes: {
                                 'form-name': 'customerReorderWidgetForm_' ~ data.order.idSalesOrder,
