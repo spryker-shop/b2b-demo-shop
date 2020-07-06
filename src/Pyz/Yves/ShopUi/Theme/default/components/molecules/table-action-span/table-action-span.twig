@@ -1,23 +1,14 @@
 {% extends model('component') %}
 
 {% define config = {
-    name: 'table-action-link',
-    tag: 'a'
+    name: 'table-action-span',
+    tag: 'span',
 } %}
 
 {% define data = {
-    url: required,
     icon: required,
     title: required,
     iconModifier: null,
-    isSingleClickable: false,
-    customAction: null,
-} %}
-
-{% define attributes = {
-    href: data.url,
-    target: data.target | default,
-    'data-init-single-click': data.isSingleClickable,
 } %}
 
 {% block body %}
@@ -25,9 +16,8 @@
         modifiers: [ data.iconModifier ],
         data: {
             icon: data.icon,
-            text: data.title | trans
-        }
+            text: data.title | trans,
+        },
     } only %}
     <span class="{{ config.name }}__title is-hidden-lg-xxl">{{ data.title | trans }}</span>
 {% endblock %}
-
