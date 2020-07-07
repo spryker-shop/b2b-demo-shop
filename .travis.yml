@@ -19,6 +19,7 @@ matrix:
       php: "7.3"
       dist: xenial
       install:
+        - google-chrome-stable --version
         - chromedriver --version
         - pip3 install --user pipenv
         - pipenv --python 3 install -r requirements.txt
