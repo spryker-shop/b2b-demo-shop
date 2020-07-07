@@ -51,9 +51,8 @@ matrix:
         - sudo chmod +x chromedriver
         - sudo mv chromedriver /usr/local/bin
         - chromedriver --version
-
         - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
-        - pipenv --python 3 run robot -d Results robotframework-tests/Tests/User_Journeys/Demo_Script.robot
+        - pipenv run robot -d Results robotframework-tests/Tests/User_Journeys/Demo_Script.robot
 
 addons:
   chrome: stable
