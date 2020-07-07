@@ -29,11 +29,15 @@ matrix:
           - zlib1g-dev
           - python3-pip
           - python3-dev
-      before_install:
       install:
         - pip install -r requirements.txt
-      before_script:
+        - chmod -R a+x config/Shared/ci/travis/
+        - composer install --optimize-autoloader --no-interaction
+        - config/Shared/ci/travis/install_elasticsearch.sh
+        - config/Shared/ci/travis/install_mailcatcher.sh
       script:
+        - git clone git@github.com:spryker/robotframework-sandbox.git --branch dev --single-branch robot --depth 1 robotframework-tests
+        - robot -d Results robotframework-tests/Tests/User_Journeys/Demo_Script.robot
 
 addons:
   chrome: stable
