@@ -30,7 +30,7 @@ matrix:
           - python3-pip
           - python3-dev
       install:
-        - pip install -r requirements.txt
+        - pip3 install -r requirements.txt
         - chmod -R a+x config/Shared/ci/travis/
         - composer install --optimize-autoloader --no-interaction
         - config/Shared/ci/travis/install_elasticsearch.sh
