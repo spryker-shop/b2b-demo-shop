@@ -19,6 +19,7 @@ matrix:
       php: "7.3"
       dist: xenial
       install:
+        - chromedriver --version
         - pip3 install --user pipenv
         - pipenv --python 3 install -r requirements.txt
       before_script:
@@ -35,6 +36,7 @@ matrix:
         - composer install --optimize-autoloader --no-interaction
         - config/Shared/ci/travis/install_elasticsearch.sh
         - config/Shared/ci/travis/install_mailcatcher.sh
+        - chromedriver --version
         - pip3 install --user pipenv
         - pipenv --python 3 install -r requirements.txt
       script:
