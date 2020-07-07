@@ -14,16 +14,28 @@ matrix:
   include:
     - php: "7.3"
       dist: trusty
-      env:
-        - TEST_GROUP=without-acceptance
+
+    - name: Robot Framework Tests
+      php: "7.3"
+      dist: trusty
+      apt:
+        packages:
+          - graphviz
+          - build-essential
+          - libpq-dev
+          - libssl-dev
+          - openssl
+          - libffi-dev
+          - zlib1g-dev
+          - python3-pip
+          - python3-dev
 
 addons:
+  chrome: stable
   postgresql: 9.6
-
   apt:
     packages:
       - graphviz
-
   hosts:
     - zed.de.spryker.test
     - www.de.spryker.test
