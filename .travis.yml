@@ -36,14 +36,15 @@ matrix:
           - zed.de.spryker.test
           - www.de.spryker.test
       install:
-        - pip3 install -r requirements.txt
         - chmod -R a+x config/Shared/ci/travis/
         - composer install --optimize-autoloader --no-interaction
         - config/Shared/ci/travis/install_elasticsearch.sh
         - config/Shared/ci/travis/install_mailcatcher.sh
+        - pip3 install --user pipenv
+        - pipenv install -r requirements.txt
       script:
         - git clone git@github.com:spryker/robotframework-sandbox.git --branch dev --single-branch robot --depth 1 robotframework-tests
-        - robot -d Results robotframework-tests/Tests/User_Journeys/Demo_Script.robot
+        - pipenv run robot -d Results robotframework-tests/Tests/User_Journeys/Demo_Script.robot
 
 addons:
   postgresql: 9.6
