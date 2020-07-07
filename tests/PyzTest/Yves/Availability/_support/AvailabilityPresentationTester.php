@@ -35,7 +35,6 @@ class AvailabilityPresentationTester extends Actor
     public const URL_EN_PRODUCT_PAGE = '/en/bic-mehrfarbkugelschreiber-4-colours-831253-0-4mm-bl-sw-r-gn-M21646';
 
     public const PRODUCT_WITH_LIMITED_AVAILABILITY_ADD_TO_CART_URL = '/cart/add/490001';
-    public const PRODUCT_WITH_LIMITED_AVAILABILITY_PAGE = '/en/paletthubwagen-mit-praezisionswaage-mit-standardanzeige-mehrbereichsteilung-M88181';
 
     public const CART_PRE_CHECK_AVAILABILITY_ERROR_MESSAGE = 'Item 490001 only has availability of 20.';
 
