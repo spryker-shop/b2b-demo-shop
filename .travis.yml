@@ -8,31 +8,38 @@ env:
     - APPLICATION_ENV=devtest
     - APPLICATION_STORE=DE
     - PROJECT=suite
-    - ARTIFACTS_KEY=AKIAJD43J5ACVDJKUXLA
-    - ARTIFACTS_SECRET=$AWS_S3_SECRET_ACCESS_KEY
-    - ARTIFACTS_BUCKET=spryker-ci
-    - POSTGRES_PORT="5433"
 
 matrix:
   fast_finish: true
   include:
-    - php: "7.4"
-      dist: bionic
-      env:
-        - TEST_GROUP=acceptance
-        - ON_EVENTS=push,cron
+    - php: "7.3"
+      dist: xenial
 
     - name: Robot Framework Tests
-      php: "7.4"
-      dist: bionic
+      php: "7.3"
+      dist: xenial
+      addons:
+        apt:
+          packages:
+            - graphviz
+            - build-essential
+            - libpq-dev
+            - libssl-dev
+            - openssl
+            - libffi-dev
+            - zlib1g-dev
+            - python3-pip
+            - python3-dev
+        chrome: stable
+        postgresql: 9.6
+        hosts:
+          - zed.de.spryker.test
+          - www.de.spryker.test
       install:
         - chmod -R a+x config/Shared/ci/travis/
         - composer install --optimize-autoloader --no-interaction
         - config/Shared/ci/travis/install_elasticsearch.sh
         - config/Shared/ci/travis/install_mailcatcher.sh
-        - sudo sed -i 's/md5/trust/g' /etc/postgresql/12/main/pg_hba.conf
-        - sudo sed -i 's/peer/trust/g' /etc/postgresql/12/main/pg_hba.conf
-        - sudo pg_ctlcluster --skip-systemctl-redirect 12 main restart
         - pip3 install --user pipenv
         - pipenv --python 3 install -r requirements.txt
       script:
@@ -40,52 +47,24 @@ matrix:
         - pipenv --python 3 run robot -d Results robotframework-tests/Tests/User_Journeys/Demo_Script.robot
 
 addons:
-  apt:
-    update: false
-    sources:
-      - sourceline: ppa:chris-lea/redis-server
-      - sourceline: deb http://dl.bintray.com/rabbitmq-erlang/debian bionic erlang
-        key_url: https://github.com/rabbitmq/signing-keys/releases/download/2.0/rabbitmq-release-signing-key.asc
-      - sourceline: deb https://dl.bintray.com/rabbitmq/debian bionic main
-        key_url: https://github.com/rabbitmq/signing-keys/releases/download/2.0/rabbitmq-release-signing-key.asc
-      - sourceline: ppa:ondrej/php
-    packages:
-      - redis-tools
-      - redis-server
-      - rabbitmq-server=3.8.2-1
-      - graphviz
-      - libzip-dev
-      - postgresql-12
-      - postgresql-client-12
-      - postgresql-server-dev-12
-      - graphviz
-      - build-essential
-      - libpq-dev
-      - libssl-dev
-      - openssl
-      - libffi-dev
-      - zlib1g-dev
-      - python3-pip
-      - python3-dev
-  chrome: stable
   postgresql: 9.6
+  apt:
+    packages:
+      - graphviz
   hosts:
     - zed.de.spryker.test
     - www.de.spryker.test
-    - glue.de.spryker.test
 
 cache:
   directories:
     - $HOME/.composer/cache
     - /home/travis/.rvm/gems # Mailcatcher is a ruby gem, takes 5 minutes to install.
-    - /home/travis/.nvm/.cache
-    - /tmp/pear/cache/
+    - ./node_modules
 
 services:
   - postgresql
-  - mysql
   - redis
-  - rabbitmq-server
+  - rabbitmq
 
 sudo: required
 
@@ -100,9 +79,6 @@ install:
   - composer install --optimize-autoloader --no-interaction
   - config/Shared/ci/travis/install_elasticsearch.sh
   - config/Shared/ci/travis/install_mailcatcher.sh
-  - sudo sed -i 's/md5/trust/g' /etc/postgresql/12/main/pg_hba.conf
-  - sudo sed -i 's/peer/trust/g' /etc/postgresql/12/main/pg_hba.conf
-  - sudo pg_ctlcluster --skip-systemctl-redirect 12 main restart
 
 before_script:
   - nvm install 8
