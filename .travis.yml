@@ -15,6 +15,18 @@ matrix:
     - php: "7.3"
       dist: xenial
 
+    - name: Just pip
+      php: "7.3"
+      dist: xenial
+      install:
+        - pip3 install --user pipenv
+        - pipenv --python 3 install -r requirements.txt
+        - pipenv shell
+      before_script:
+        - nvm install 8
+      script:
+        - pipenv --python 3 run robot -d Results robotframework-tests/Tests/User_Journeys/Demo_Script.robot
+
     - name: Robot Framework Tests
       php: "7.3"
       dist: xenial
