@@ -21,11 +21,10 @@ matrix:
       install:
         - pip3 install --user pipenv
         - pipenv --python 3 install -r requirements.txt
-        - pipenv shell
       before_script:
         - nvm install 8
       script:
-        - pipenv --python 3 run robot -d Results robotframework-tests/Tests/User_Journeys/Demo_Script.robot
+        - pipenv run robot -d Results robotframework-tests/Tests/User_Journeys/Demo_Script.robot
 
     - name: Robot Framework Tests
       php: "7.3"
@@ -37,7 +36,6 @@ matrix:
         - config/Shared/ci/travis/install_mailcatcher.sh
         - pip3 install --user pipenv
         - pipenv --python 3 install -r requirements.txt
-        - pipenv shell
       script:
         #- git clone git@github.com:spryker/robotframework-sandbox.git --branch dev --single-branch --depth 1 robotframework-tests
         - pipenv --python 3 run robot -d Results robotframework-tests/Tests/User_Journeys/Demo_Script.robot
