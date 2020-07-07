@@ -21,15 +21,6 @@ matrix:
       addons:
         apt:
           packages:
-            - graphviz
-            - build-essential
-            - libpq-dev
-            - libssl-dev
-            - openssl
-            - libffi-dev
-            - zlib1g-dev
-            - python3-pip
-            - python3-dev
         chrome: stable
         postgresql: 9.6
         hosts:
@@ -51,6 +42,15 @@ addons:
   apt:
     packages:
       - graphviz
+      - build-essential
+      - libpq-dev
+      - libssl-dev
+      - openssl
+      - libffi-dev
+      - zlib1g-dev
+      - python3-pip
+      - python3-dev
+      - rabbitmq-server
   hosts:
     - zed.de.spryker.test
     - www.de.spryker.test
@@ -64,7 +64,6 @@ cache:
 services:
   - postgresql
   - redis
-  - rabbitmq
 
 sudo: required
 
