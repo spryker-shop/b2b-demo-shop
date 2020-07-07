@@ -8,16 +8,18 @@
 {% define data = {
     icon: required,
     title: required,
-    iconModifier: null,
+    iconModifiers: [],
 } %}
+
+{% set title = data.title %}
 
 {% block body %}
     {% include molecule('icon-tooltip') with {
-        modifiers: [ data.iconModifier ],
+        modifiers: data.iconModifiers,
         data: {
             icon: data.icon,
-            text: data.title | trans,
+            text: title | trans,
         },
     } only %}
-    <span class="{{ config.name }}__title is-hidden-lg-xxl">{{ data.title | trans }}</span>
+    <span class="{{ config.name }}__title is-hidden-lg-xxl">{{ title | trans }}</span>
 {% endblock %}
