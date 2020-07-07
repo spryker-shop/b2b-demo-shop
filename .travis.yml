@@ -37,6 +37,7 @@ matrix:
         - config/Shared/ci/travis/install_mailcatcher.sh
         - pip3 install --user pipenv
         - pipenv --python 3 install -r requirements.txt
+        - pipenv shell
       script:
         #- git clone git@github.com:spryker/robotframework-sandbox.git --branch dev --single-branch --depth 1 robotframework-tests
         - pipenv --python 3 run robot -d Results robotframework-tests/Tests/User_Journeys/Demo_Script.robot
