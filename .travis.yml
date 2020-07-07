@@ -18,14 +18,6 @@ matrix:
     - name: Robot Framework Tests
       php: "7.3"
       dist: xenial
-      addons:
-        apt:
-          packages:
-        chrome: stable
-        postgresql: 9.6
-        hosts:
-          - zed.de.spryker.test
-          - www.de.spryker.test
       install:
         - chmod -R a+x config/Shared/ci/travis/
         - composer install --optimize-autoloader --no-interaction
@@ -38,6 +30,7 @@ matrix:
         - pipenv --python 3 run robot -d Results robotframework-tests/Tests/User_Journeys/Demo_Script.robot
 
 addons:
+  chrome: stable
   postgresql: 9.6
   apt:
     packages:
