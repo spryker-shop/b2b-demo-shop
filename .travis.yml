@@ -112,6 +112,7 @@ matrix:
         after_script: skip
 
     - name: Robot Framework Tests
+      #if: env(TRAVIS_EVENT_TYPE) = cron
       env:
         - TEST_GROUP=acceptance
       php: "7.4"
