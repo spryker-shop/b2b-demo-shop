@@ -125,10 +125,13 @@ matrix:
         - >
           echo "
           # This file is required by python's package manager PIP
+
           # Spryker uses this to run Robot tests in CI
 
           robotframework==3.2.1
+
           robotframework-seleniumlibrary==4.4.0
+
           robotframework-seleniumtestability==1.1.0
           " > requirements.txt
         - cat requirements.txt
