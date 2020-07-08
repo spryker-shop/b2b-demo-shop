@@ -111,6 +111,52 @@ matrix:
         before_script: skip
         after_script: skip
 
+    - name: Robot Framework Tests
+      env:
+        - TEST_GROUP=acceptance
+      php: "7.4"
+      dist: xenial
+      install:
+        - chmod -R a+x config/Shared/ci/travis/
+        - composer install --optimize-autoloader --no-interaction
+        - config/Shared/ci/travis/install_elasticsearch.sh
+        - config/Shared/ci/travis/install_mailcatcher.sh
+        - >
+          echo "
+          # This file is required by python's package manager PIP
+          # Spryker uses this to run Robot tests in CI
+
+          robotframework==3.2.1
+          robotframework-seleniumlibrary==4.4.0
+          robotframework-seleniumtestability==1.1.0
+          " > requirements.txt
+        - cat requirements.txt
+        - pip3 install --user pipenv
+        - pipenv --python 3 install -r requirements.txt
+        - git clone git@github.com:spryker/robotframework-suite-tests.git --branch b2b --single-branch --depth 1 robotframework-tests
+      script:
+        - LATEST_CHROMEDRIVER_VERSION=`curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE"`
+        - curl "https://chromedriver.storage.googleapis.com/${LATEST_CHROMEDRIVER_VERSION}/chromedriver_linux64.zip" -O
+        - unzip chromedriver_linux64.zip -d ~/bin
+        - sudo chmod +x chromedriver
+        - sudo mv chromedriver /usr/local/bin
+        - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
+        - pipenv run robot -d Results robotframework-tests/Tests/User_Journeys/Demo_Script.robot
+      addons:
+        chrome: stable # Sometimes Travis provides different versions of chrome and chromedriver, this causes them to break.
+          apt:
+            packages:
+              - graphviz
+              - build-essential
+              - libpq-dev
+              - libssl-dev
+              - openssl
+              - libffi-dev
+              - zlib1g-dev
+              - python3-pip
+              - python3-dev
+              - rabbitmq-server
+
 addons:
   postgresql: 9.6
   mysql: 5.7
