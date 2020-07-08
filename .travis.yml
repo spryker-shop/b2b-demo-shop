@@ -145,18 +145,22 @@ matrix:
         - pipenv run robot -d Results robotframework-tests/Tests/User_Journeys/Demo_Script.robot
       addons:
         chrome: stable # Sometimes Travis provides different versions of chrome and chromedriver, this causes them to break.
-          apt:
-            packages:
-              - graphviz
-              - build-essential
-              - libpq-dev
-              - libssl-dev
-              - openssl
-              - libffi-dev
-              - zlib1g-dev
-              - python3-pip
-              - python3-dev
-              - rabbitmq-server
+        postgresql: 9.6
+        hosts:
+          - zed.de.spryker.test
+          - www.de.spryker.test
+        apt:
+          packages:
+            - graphviz
+            - build-essential
+            - libpq-dev
+            - libssl-dev
+            - openssl
+            - libffi-dev
+            - zlib1g-dev
+            - python3-pip
+            - python3-dev
+            - rabbitmq-server
 
 addons:
   postgresql: 9.6
