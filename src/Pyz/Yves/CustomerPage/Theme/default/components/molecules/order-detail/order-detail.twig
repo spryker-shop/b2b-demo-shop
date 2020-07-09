@@ -41,7 +41,7 @@
                         configName: config.name,
                     },
                 } only %}
-                    {% block body %}
+                    {% block formContent %}
                         {% include molecule('remote-form-submit') with {
                             class: embed.configName ~ '__action',
                             data: {

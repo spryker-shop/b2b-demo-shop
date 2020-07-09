@@ -45,14 +45,14 @@
 
             <transition>
                 <source>new</source>
-                <target>cancelled</target>
-                <event>cancel</event>
+                <target>invalid</target>
+                <event>authorize</event>
             </transition>
 
             <transition>
                 <source>new</source>
-                <target>invalid</target>
-                <event>authorize</event>
+                <target>cancelled</target>
+                <event>cancel</event>
             </transition>
 
             <transition happy="true" condition="DummyPayment/IsPayed">
@@ -75,24 +75,30 @@
 
             <transition happy="true">
                 <source>paid</source>
-                <target>exported</target>
-                <event>export</event>
+                <target>confirmed</target>
+                <event>confirm</event>
             </transition>
 
             <transition happy="true">
-                <source>exported</source>
+                <source>confirmed</source>
                 <target>waiting</target>
-                <event>skip-timeout</event>
+                <event>skip timeout</event>
             </transition>
 
             <transition>
-                <source>exported</source>
+                <source>confirmed</source>
                 <target>cancelled</target>
                 <event>cancel</event>
             </transition>
 
             <transition happy="true">
                 <source>waiting</source>
+                <target>exported</target>
+                <event>export</event>
+            </transition>
+
+            <transition happy="true">
+                <source>exported</source>
                 <target>shipped</target>
                 <event>ship</event>
             </transition>
@@ -114,9 +120,10 @@
         <events>
             <event name="authorize" onEnter="true"/>
             <event name="pay" manual="true" timeout="1 hour" command="DummyPayment/Pay"/>
-            <event name="skip-timeout" manual="true" timeout="30 minute"/>
+            <event name="confirm" onEnter="true" manual="true" command="Oms/SendOrderConfirmation"/>
+            <event name="skip timeout" manual="true" timeout="30 minute"/>
             <event name="cancel" manual="true"/>
-            <event name="export" onEnter="true" manual="true" command="Oms/SendOrderConfirmation"/>
+            <event name="export" onEnter="true" manual="true" command="Oms/SendOrderShipped"/>
             <event name="ship" manual="true" command="Oms/SendOrderShipped"/>
             <event name="stock-update" manual="true"/>
             <event name="close" manual="true" timeout="1 hour"/>
