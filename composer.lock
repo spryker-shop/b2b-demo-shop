@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "df2a8ebaf0584aeee269777a275c4afd",
+    "content-hash": "a1f3f60ce22e6652e76d5eecad86931e",
     "packages": [
         {
             "name": "codeitnowin/barcode",
@@ -3534,29 +3534,31 @@
         },
         {
             "name": "spryker-feature/order-management",
-            "version": "202001.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-feature/order-management.git",
-                "reference": "2ae34fdab4b0c10dc00aa4f39d5ebaaf075409d5"
+                "reference": "d45ba5311e42d9751cf360c02ee6900f140d3825"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-feature/order-management/zipball/2ae34fdab4b0c10dc00aa4f39d5ebaaf075409d5",
-                "reference": "2ae34fdab4b0c10dc00aa4f39d5ebaaf075409d5",
+                "url": "https://api.github.com/repos/spryker-feature/order-management/zipball/d45ba5311e42d9751cf360c02ee6900f140d3825",
+                "reference": "d45ba5311e42d9751cf360c02ee6900f140d3825",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2",
+                "spryker-shop/order-cancel-widget": "^1.0.0",
                 "spryker/oms": "^11.0.0",
                 "spryker/sales": "^11.0.0",
+                "spryker/sales-data-export": "^0.1.0",
                 "spryker/sales-quantity": "^3.0.0",
                 "spryker/sales-split": "^5.0.0"
             },
             "type": "metapackage",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "202001.x-dev"
+                    "dev-master": "202006.x-dev"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -3564,7 +3566,7 @@
                 "proprietary"
             ],
             "description": "Order Management [feature]",
-            "time": "2019-12-06T10:57:47+00:00"
+            "time": "2020-06-19T09:28:54+00:00"
         },
         {
             "name": "spryker-feature/order-threshold",
@@ -7745,6 +7747,57 @@
             ],
             "description": "NewsletterWidget module",
             "time": "2019-10-28T09:50:23+00:00"
+        },
+        {
+            "name": "spryker-shop/order-cancel-widget",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/order-cancel-widget.git",
+                "reference": "3e1fc18d70f1dc95707b79fa5837c1f684c962a8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/order-cancel-widget/zipball/3e1fc18d70f1dc95707b79fa5837c1f684c962a8",
+                "reference": "3e1fc18d70f1dc95707b79fa5837c1f684c962a8",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker-shop/shop-application": "^1.2.0",
+                "spryker-shop/shop-ui": "^1.0.0",
+                "spryker/application": "^3.8.0",
+                "spryker/customer": "^7.0.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/oms": "^11.8.0",
+                "spryker/sales": "^11.10.0",
+                "spryker/symfony": "^3.1.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/router": "*"
+            },
+            "suggest": {
+                "spryker/router": "Use this module if you want use the RouterProviderPlugin.",
+                "spryker/silex": "Use this module when using plugins that need Silex dependencies."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "OrderCancelWidget module",
+            "time": "2020-06-18T10:19:06+00:00"
         },
         {
             "name": "spryker-shop/order-custom-reference-widget",
@@ -47915,6 +47968,12 @@
             "alias": "202006.0",
             "alias_normalized": "202006.0",
             "version": "9999999-dev",
+            "package": "spryker-feature/order-management"
+        },
+        {
+            "alias": "202006.0",
+            "alias_normalized": "202006.0",
+            "version": "9999999-dev",
             "package": "spryker-feature/product-barcode"
         },
         {
@@ -47965,6 +48024,7 @@
         "spryker-feature/checkout": 20,
         "spryker-feature/custom-order-reference": 20,
         "spryker-feature/customer-account-management": 20,
+        "spryker-feature/order-management": 20,
         "spryker-feature/product-barcode": 20,
         "spryker-feature/product-labels": 20,
         "spryker-feature/product-relations": 20,
@@ -47993,6 +48053,5 @@
     "platform-dev": [],
     "platform-overrides": {
         "php": "7.2.15"
-    },
-    "plugin-api-version": "1.1.0"
+    }
 }

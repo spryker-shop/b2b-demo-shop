@@ -6,20 +6,6 @@
 } %}
 
 {% block body %}
-    {% block reorderAllForm %}
-        {% widget 'CustomerReorderFormWidget' args [data.order] only %}
-            {% block body %}
-                {% set formClass = 'text-right' %}
-
-                {{ parent() }}
-            {% endblock %}
-
-            {% block embeddedData %}
-                <button class="button spacing-bottom">{{ 'customer.order.reorder_all' | trans }}</button>
-            {% endblock %}
-        {% endwidget %}
-    {% endblock %}
-
     {% widget 'CustomerReorderItemsFormWidget'  args [data.order, config] with {
         embed: {
             formContent: block('formContent'),
