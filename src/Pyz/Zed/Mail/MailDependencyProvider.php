@@ -26,6 +26,7 @@ use Spryker\Zed\Newsletter\Communication\Plugin\Mail\NewsletterSubscribedMailTyp
 use Spryker\Zed\Newsletter\Communication\Plugin\Mail\NewsletterUnsubscribedMailTypePlugin;
 use Spryker\Zed\Oms\Communication\Plugin\Mail\OrderConfirmationMailTypePlugin;
 use Spryker\Zed\Oms\Communication\Plugin\Mail\OrderShippedMailTypePlugin;
+use Spryker\Zed\SalesInvoice\Communication\Plugin\Mail\OrderInvoiceMailTypePlugin;
 
 class MailDependencyProvider extends SprykerMailDependencyProvider
 {
@@ -52,7 +53,8 @@ class MailDependencyProvider extends SprykerMailDependencyProvider
                 ->add(new AvailabilityNotificationUnsubscribedMailTypePlugin())
                 ->add(new AvailabilityNotificationSubscriptionMailTypePlugin())
                 ->add(new AvailabilityNotificationMailTypePlugin())
-                ->add(new RestorePasswordMailTypePlugin());
+                ->add(new RestorePasswordMailTypePlugin())
+                ->add(new OrderInvoiceMailTypePlugin());
 
             return $mailCollection;
         });

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "418a70bb3a9e11573637b45119f37325",
+    "content-hash": "4155ac29e467157fa1ef117f24c4f1aa",
     "packages": [
         {
             "name": "codeitnowin/barcode",
@@ -3200,16 +3200,16 @@
         },
         {
             "name": "spryker-feature/mailing-notifications",
-            "version": "202001.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-feature/mailing-notifications.git",
-                "reference": "48fc54c01d845c30fea04ff0695dd616ddcdb36e"
+                "reference": "1e3d1affcfda533f2803092bd9173e1a2fa778f0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-feature/mailing-notifications/zipball/48fc54c01d845c30fea04ff0695dd616ddcdb36e",
-                "reference": "48fc54c01d845c30fea04ff0695dd616ddcdb36e",
+                "url": "https://api.github.com/repos/spryker-feature/mailing-notifications/zipball/1e3d1affcfda533f2803092bd9173e1a2fa778f0",
+                "reference": "1e3d1affcfda533f2803092bd9173e1a2fa778f0",
                 "shasum": ""
             },
             "require": {
@@ -3222,7 +3222,7 @@
             "type": "metapackage",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "202001.x-dev"
+                    "dev-master": "202006.x-dev"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -3230,7 +3230,7 @@
                 "proprietary"
             ],
             "description": "Mailing & Notifications [feature]",
-            "time": "2020-01-15T18:37:20+00:00"
+            "time": "2020-04-06T12:55:46+00:00"
         },
         {
             "name": "spryker-feature/measurement-units",
@@ -3368,16 +3368,16 @@
         },
         {
             "name": "spryker-feature/merchant-order-threshold",
-            "version": "202001.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-feature/merchant-order-threshold.git",
-                "reference": "a9ae008083ffd3e8e45c17aa6f43b81ae90990bb"
+                "reference": "c62965cc4a15933c4e9b3f8a7c1e87279640fe6e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-feature/merchant-order-threshold/zipball/a9ae008083ffd3e8e45c17aa6f43b81ae90990bb",
-                "reference": "a9ae008083ffd3e8e45c17aa6f43b81ae90990bb",
+                "url": "https://api.github.com/repos/spryker-feature/merchant-order-threshold/zipball/c62965cc4a15933c4e9b3f8a7c1e87279640fe6e",
+                "reference": "c62965cc4a15933c4e9b3f8a7c1e87279640fe6e",
                 "shasum": ""
             },
             "require": {
@@ -3386,10 +3386,14 @@
                 "spryker/merchant-relationship-sales-order-threshold-data-import": "^0.1.0",
                 "spryker/merchant-relationship-sales-order-threshold-gui": "^1.4.0"
             },
+            "suggest": {
+                "spryker-feature/merchant": "Recommended feature dependency.",
+                "spryker-feature/order-threshold": "Recommended feature dependency."
+            },
             "type": "metapackage",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "202001.x-dev"
+                    "dev-master": "202006.x-dev"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -3397,7 +3401,7 @@
                 "proprietary"
             ],
             "description": "Merchant Order Threshold [feature]",
-            "time": "2020-01-15T18:37:32+00:00"
+            "time": "2020-04-06T12:56:04+00:00"
         },
         {
             "name": "spryker-feature/merchant-product-restrictions",
@@ -3534,29 +3538,32 @@
         },
         {
             "name": "spryker-feature/order-management",
-            "version": "202001.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-feature/order-management.git",
-                "reference": "2ae34fdab4b0c10dc00aa4f39d5ebaaf075409d5"
+                "reference": "90b743376ba04af04f2fbeb775fa008ee594a68a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-feature/order-management/zipball/2ae34fdab4b0c10dc00aa4f39d5ebaaf075409d5",
-                "reference": "2ae34fdab4b0c10dc00aa4f39d5ebaaf075409d5",
+                "url": "https://api.github.com/repos/spryker-feature/order-management/zipball/90b743376ba04af04f2fbeb775fa008ee594a68a",
+                "reference": "90b743376ba04af04f2fbeb775fa008ee594a68a",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2",
+                "spryker-shop/order-cancel-widget": "^1.0.0",
                 "spryker/oms": "^11.0.0",
                 "spryker/sales": "^11.0.0",
+                "spryker/sales-data-export": "^0.1.0",
+                "spryker/sales-invoice": "^1.0.0",
                 "spryker/sales-quantity": "^3.0.0",
                 "spryker/sales-split": "^5.0.0"
             },
             "type": "metapackage",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "202001.x-dev"
+                    "dev-master": "202006.x-dev"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -3564,20 +3571,20 @@
                 "proprietary"
             ],
             "description": "Order Management [feature]",
-            "time": "2019-12-06T10:57:47+00:00"
+            "time": "2020-07-02T13:53:18+00:00"
         },
         {
             "name": "spryker-feature/order-threshold",
-            "version": "202001.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-feature/order-threshold.git",
-                "reference": "7b93e036f70858e1e705d6a33a3cda99843ba8cc"
+                "reference": "8209c4b2e6d2c72531712276ac4502c30c15a528"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-feature/order-threshold/zipball/7b93e036f70858e1e705d6a33a3cda99843ba8cc",
-                "reference": "7b93e036f70858e1e705d6a33a3cda99843ba8cc",
+                "url": "https://api.github.com/repos/spryker-feature/order-threshold/zipball/8209c4b2e6d2c72531712276ac4502c30c15a528",
+                "reference": "8209c4b2e6d2c72531712276ac4502c30c15a528",
                 "shasum": ""
             },
             "require": {
@@ -3587,10 +3594,17 @@
                 "spryker/sales-order-threshold-data-import": "^0.1.0",
                 "spryker/sales-order-threshold-gui": "^1.4.0"
             },
+            "suggest": {
+                "spryker-feature/cart": "Recommended feature dependency.",
+                "spryker-feature/checkout": "Recommended feature dependency.",
+                "spryker-feature/order-management": "Recommended feature dependency.",
+                "spryker-feature/prices": "Recommended feature dependency.",
+                "spryker-feature/spryker-core-e-commerce": "Recommended feature dependency."
+            },
             "type": "metapackage",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "202001.x-dev"
+                    "dev-master": "202006.x-dev"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -3598,7 +3612,7 @@
                 "proprietary"
             ],
             "description": "Order Threshold [feature]",
-            "time": "2020-01-15T18:37:50+00:00"
+            "time": "2020-04-06T12:56:26+00:00"
         },
         {
             "name": "spryker-feature/packaging-units",
@@ -7641,20 +7655,20 @@
         },
         {
             "name": "spryker-shop/newsletter-page",
-            "version": "1.1.1",
+            "version": "1.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/newsletter-page.git",
-                "reference": "85e1146a82606499bb1be4c6b94a5b8ffea9fe23"
+                "reference": "b53e672cc8ea9821656b39473dd1ce1d6b68128f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/newsletter-page/zipball/85e1146a82606499bb1be4c6b94a5b8ffea9fe23",
-                "reference": "85e1146a82606499bb1be4c6b94a5b8ffea9fe23",
+                "url": "https://api.github.com/repos/spryker-shop/newsletter-page/zipball/b53e672cc8ea9821656b39473dd1ce1d6b68128f",
+                "reference": "b53e672cc8ea9821656b39473dd1ce1d6b68128f",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
+                "php": ">=7.2",
                 "spryker-shop/shop-application": "^1.0.0",
                 "spryker-shop/shop-ui": "^1.0.0",
                 "spryker/application": "^3.8.0",
@@ -7667,8 +7681,7 @@
                 "spryker-shop/customer-page": "*",
                 "spryker/code-sniffer": "*",
                 "spryker/router": "*",
-                "spryker/silex": "*",
-                "spryker/testify": "*"
+                "spryker/silex": "*"
             },
             "suggest": {
                 "spryker-shop/customer-page": "Use this module when you want to use the CustomerPage plugins.",
@@ -7691,24 +7704,24 @@
                 "proprietary"
             ],
             "description": "NewsletterPage module",
-            "time": "2019-11-01T14:13:05+00:00"
+            "time": "2020-05-29T13:03:33+00:00"
         },
         {
             "name": "spryker-shop/newsletter-widget",
-            "version": "1.4.2",
+            "version": "1.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/newsletter-widget.git",
-                "reference": "0497087d581d8a34f329622e9ea1a6488991db74"
+                "reference": "f2a5b442b9779096fbf5f49fefe37c4c27a06109"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/newsletter-widget/zipball/0497087d581d8a34f329622e9ea1a6488991db74",
-                "reference": "0497087d581d8a34f329622e9ea1a6488991db74",
+                "url": "https://api.github.com/repos/spryker-shop/newsletter-widget/zipball/f2a5b442b9779096fbf5f49fefe37c4c27a06109",
+                "reference": "f2a5b442b9779096fbf5f49fefe37c4c27a06109",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
+                "php": ">=7.2",
                 "spryker-shop/shop-application": "^1.0.0",
                 "spryker-shop/shop-ui": "^1.0.0",
                 "spryker/application": "^3.8.0",
@@ -7720,8 +7733,7 @@
                 "spryker-shop/customer-page": "*",
                 "spryker/code-sniffer": "*",
                 "spryker/router": "*",
-                "spryker/silex": "*",
-                "spryker/testify": "*"
+                "spryker/silex": "*"
             },
             "suggest": {
                 "spryker-shop/customer-page": "Widget plugins are available for this module.",
@@ -7744,7 +7756,58 @@
                 "proprietary"
             ],
             "description": "NewsletterWidget module",
-            "time": "2019-10-28T09:50:23+00:00"
+            "time": "2020-06-15T13:37:36+00:00"
+        },
+        {
+            "name": "spryker-shop/order-cancel-widget",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/order-cancel-widget.git",
+                "reference": "3e1fc18d70f1dc95707b79fa5837c1f684c962a8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/order-cancel-widget/zipball/3e1fc18d70f1dc95707b79fa5837c1f684c962a8",
+                "reference": "3e1fc18d70f1dc95707b79fa5837c1f684c962a8",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker-shop/shop-application": "^1.2.0",
+                "spryker-shop/shop-ui": "^1.0.0",
+                "spryker/application": "^3.8.0",
+                "spryker/customer": "^7.0.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/oms": "^11.8.0",
+                "spryker/sales": "^11.10.0",
+                "spryker/symfony": "^3.1.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/router": "*"
+            },
+            "suggest": {
+                "spryker/router": "Use this module if you want use the RouterProviderPlugin.",
+                "spryker/silex": "Use this module when using plugins that need Silex dependencies."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "OrderCancelWidget module",
+            "time": "2020-06-18T10:19:06+00:00"
         },
         {
             "name": "spryker-shop/order-custom-reference-widget",
@@ -10447,16 +10510,16 @@
         },
         {
             "name": "spryker-shop/shop-ui",
-            "version": "1.40.3",
+            "version": "1.41.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/shop-ui.git",
-                "reference": "3c39d49d64ef293e7c9a4e18e9198fa6d6f68eec"
+                "reference": "37900d5e6501f50995419198652d8004ef690d67"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/shop-ui/zipball/3c39d49d64ef293e7c9a4e18e9198fa6d6f68eec",
-                "reference": "3c39d49d64ef293e7c9a4e18e9198fa6d6f68eec",
+                "url": "https://api.github.com/repos/spryker-shop/shop-ui/zipball/37900d5e6501f50995419198652d8004ef690d67",
+                "reference": "37900d5e6501f50995419198652d8004ef690d67",
                 "shasum": ""
             },
             "require": {
@@ -10494,7 +10557,7 @@
                 "proprietary"
             ],
             "description": "ShopUi module",
-            "time": "2020-07-02T09:04:23+00:00"
+            "time": "2020-07-06T07:42:30+00:00"
         },
         {
             "name": "spryker-shop/shopping-list-note-widget",
@@ -11357,6 +11420,44 @@
             ],
             "description": "AuthMailConnector module",
             "time": "2019-02-18T16:20:09+00:00"
+        },
+        {
+            "name": "spryker/auth-mail-connector-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/auth-mail-connector-extension.git",
+                "reference": "90c9d18f8c12a72d036178919ad0c244bad37838"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/auth-mail-connector-extension/zipball/90c9d18f8c12a72d036178919ad0c244bad37838",
+                "reference": "90c9d18f8c12a72d036178919ad0c244bad37838",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "AuthMailConnectorExtension module",
+            "time": "2020-06-24T07:50:38+00:00"
         },
         {
             "name": "spryker/auth-rest-api",
@@ -17819,16 +17920,16 @@
         },
         {
             "name": "spryker/company-user",
-            "version": "2.13.2",
+            "version": "2.14.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/company-user.git",
-                "reference": "f8944ad1dda272b49e329a06d8bd90ede02a09bf"
+                "reference": "49c80fb8fda1001258e50686ecc7a82a0c997b3a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/company-user/zipball/f8944ad1dda272b49e329a06d8bd90ede02a09bf",
-                "reference": "f8944ad1dda272b49e329a06d8bd90ede02a09bf",
+                "url": "https://api.github.com/repos/spryker/company-user/zipball/49c80fb8fda1001258e50686ecc7a82a0c997b3a",
+                "reference": "49c80fb8fda1001258e50686ecc7a82a0c997b3a",
                 "shasum": ""
             },
             "require": {
@@ -17867,7 +17968,7 @@
                 "proprietary"
             ],
             "description": "CompanyUser module",
-            "time": "2020-05-29T13:08:37+00:00"
+            "time": "2020-07-07T10:53:52+00:00"
         },
         {
             "name": "spryker/company-user-agent",
@@ -19947,16 +20048,16 @@
         },
         {
             "name": "spryker/customer",
-            "version": "7.29.1",
+            "version": "7.30.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/customer.git",
-                "reference": "6e23072167cb77c233b4780182bcdfb6286101d8"
+                "reference": "26ef7988beccf57d1897c598d6929ddc6bfbca5c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/customer/zipball/6e23072167cb77c233b4780182bcdfb6286101d8",
-                "reference": "6e23072167cb77c233b4780182bcdfb6286101d8",
+                "url": "https://api.github.com/repos/spryker/customer/zipball/26ef7988beccf57d1897c598d6929ddc6bfbca5c",
+                "reference": "26ef7988beccf57d1897c598d6929ddc6bfbca5c",
                 "shasum": ""
             },
             "require": {
@@ -20008,7 +20109,7 @@
                 "proprietary"
             ],
             "description": "Customer module",
-            "time": "2020-06-23T15:47:40+00:00"
+            "time": "2020-07-07T08:26:25+00:00"
         },
         {
             "name": "spryker/customer-access",
@@ -22262,16 +22363,16 @@
         },
         {
             "name": "spryker/glossary",
-            "version": "3.9.4",
+            "version": "3.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/glossary.git",
-                "reference": "926cd891103bcdebdf97ffa02cfe204f4771cabd"
+                "reference": "767b77012884def71f31cdb33dd0ae39b9b6214d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/glossary/zipball/926cd891103bcdebdf97ffa02cfe204f4771cabd",
-                "reference": "926cd891103bcdebdf97ffa02cfe204f4771cabd",
+                "url": "https://api.github.com/repos/spryker/glossary/zipball/767b77012884def71f31cdb33dd0ae39b9b6214d",
+                "reference": "767b77012884def71f31cdb33dd0ae39b9b6214d",
                 "shasum": ""
             },
             "require": {
@@ -22318,7 +22419,7 @@
                 "proprietary"
             ],
             "description": "Glossary module",
-            "time": "2020-06-22T21:24:21+00:00"
+            "time": "2020-07-03T07:32:24+00:00"
         },
         {
             "name": "spryker/glossary-storage",
@@ -22555,16 +22656,16 @@
         },
         {
             "name": "spryker/gui",
-            "version": "3.32.1",
+            "version": "3.33.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/gui.git",
-                "reference": "84792a32225bf99f570aa6940fcdeb6063386412"
+                "reference": "860d16c7b747643a4eaa9dd3b9a11b66b5517760"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/gui/zipball/84792a32225bf99f570aa6940fcdeb6063386412",
-                "reference": "84792a32225bf99f570aa6940fcdeb6063386412",
+                "url": "https://api.github.com/repos/spryker/gui/zipball/860d16c7b747643a4eaa9dd3b9a11b66b5517760",
+                "reference": "860d16c7b747643a4eaa9dd3b9a11b66b5517760",
                 "shasum": ""
             },
             "require": {
@@ -22608,7 +22709,7 @@
                 "proprietary"
             ],
             "description": "Gui module",
-            "time": "2020-06-15T13:30:47+00:00"
+            "time": "2020-07-08T08:09:21+00:00"
         },
         {
             "name": "spryker/guzzle",
@@ -22994,16 +23095,16 @@
         },
         {
             "name": "spryker/kernel",
-            "version": "3.50.1",
+            "version": "3.50.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/kernel.git",
-                "reference": "6f579aae749d04fcc8e4d4a7dd751df8b6938982"
+                "reference": "cf8cb3f7529561bf5661f83a89377a9734b657ff"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/kernel/zipball/6f579aae749d04fcc8e4d4a7dd751df8b6938982",
-                "reference": "6f579aae749d04fcc8e4d4a7dd751df8b6938982",
+                "url": "https://api.github.com/repos/spryker/kernel/zipball/cf8cb3f7529561bf5661f83a89377a9734b657ff",
+                "reference": "cf8cb3f7529561bf5661f83a89377a9734b657ff",
                 "shasum": ""
             },
             "require": {
@@ -23047,7 +23148,7 @@
                 "proprietary"
             ],
             "description": "Kernel module",
-            "time": "2020-07-01T09:27:12+00:00"
+            "time": "2020-07-08T13:31:30+00:00"
         },
         {
             "name": "spryker/key-builder",
@@ -23243,16 +23344,16 @@
         },
         {
             "name": "spryker/mail",
-            "version": "4.3.0",
+            "version": "4.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/mail.git",
-                "reference": "46f63320ba80157d85ba901aa200654536b438b3"
+                "reference": "60f32d9b8e7c0a4dbf312c32f37e102279419ea3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/mail/zipball/46f63320ba80157d85ba901aa200654536b438b3",
-                "reference": "46f63320ba80157d85ba901aa200654536b438b3",
+                "url": "https://api.github.com/repos/spryker/mail/zipball/60f32d9b8e7c0a4dbf312c32f37e102279419ea3",
+                "reference": "60f32d9b8e7c0a4dbf312c32f37e102279419ea3",
                 "shasum": ""
             },
             "require": {
@@ -23283,7 +23384,7 @@
                 "proprietary"
             ],
             "description": "Mail module",
-            "time": "2020-06-30T08:05:49+00:00"
+            "time": "2020-07-07T08:05:45+00:00"
         },
         {
             "name": "spryker/maintenance",
@@ -23496,16 +23597,16 @@
         },
         {
             "name": "spryker/merchant-relationship",
-            "version": "1.7.0",
+            "version": "1.8.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/merchant-relationship.git",
-                "reference": "7e54f1f968aa0f27e627763195efa15318fadea0"
+                "reference": "43b1b3f601f7589cc74c85252eb6bb46be753de9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/merchant-relationship/zipball/7e54f1f968aa0f27e627763195efa15318fadea0",
-                "reference": "7e54f1f968aa0f27e627763195efa15318fadea0",
+                "url": "https://api.github.com/repos/spryker/merchant-relationship/zipball/43b1b3f601f7589cc74c85252eb6bb46be753de9",
+                "reference": "43b1b3f601f7589cc74c85252eb6bb46be753de9",
                 "shasum": ""
             },
             "require": {
@@ -23513,7 +23614,7 @@
                 "spryker/company-business-unit": "^1.0.0 || ^2.0.0",
                 "spryker/company-user-extension": "^1.0.0",
                 "spryker/kernel": "^3.33.0",
-                "spryker/merchant": "^1.1.0 || ^2.0.0",
+                "spryker/merchant": "^1.1.0 || ^2.0.0 || ^3.0.0",
                 "spryker/merchant-relationship-extension": "^1.1.0",
                 "spryker/propel-orm": "^1.0.0"
             },
@@ -23540,7 +23641,7 @@
                 "proprietary"
             ],
             "description": "MerchantRelationship module",
-            "time": "2019-11-27T16:02:31+00:00"
+            "time": "2020-05-29T13:08:37+00:00"
         },
         {
             "name": "spryker/merchant-relationship-data-import",
@@ -23871,20 +23972,20 @@
         },
         {
             "name": "spryker/merchant-relationship-sales-order-threshold",
-            "version": "1.0.2",
+            "version": "1.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/merchant-relationship-sales-order-threshold.git",
-                "reference": "b60fbc8446a7706f410be10cfae77e4adc913960"
+                "reference": "5971b801234abb1069aa34c60687070916d8f2d2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/merchant-relationship-sales-order-threshold/zipball/b60fbc8446a7706f410be10cfae77e4adc913960",
-                "reference": "b60fbc8446a7706f410be10cfae77e4adc913960",
+                "url": "https://api.github.com/repos/spryker/merchant-relationship-sales-order-threshold/zipball/5971b801234abb1069aa34c60687070916d8f2d2",
+                "reference": "5971b801234abb1069aa34c60687070916d8f2d2",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
+                "php": ">=7.2",
                 "spryker/currency": "^3.0.0",
                 "spryker/glossary": "^3.1.0",
                 "spryker/kernel": "^3.30.0",
@@ -23918,24 +24019,24 @@
                 "proprietary"
             ],
             "description": "MerchantRelationshipSalesOrderThreshold module",
-            "time": "2019-10-14T10:22:10+00:00"
+            "time": "2020-05-29T13:08:37+00:00"
         },
         {
             "name": "spryker/merchant-relationship-sales-order-threshold-data-import",
-            "version": "0.1.1",
+            "version": "0.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/merchant-relationship-sales-order-threshold-data-import.git",
-                "reference": "653139113047762e7a307224614a36c27e69275e"
+                "reference": "6d891f8cd061f31be4e892189c834a449a1e10aa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/merchant-relationship-sales-order-threshold-data-import/zipball/653139113047762e7a307224614a36c27e69275e",
-                "reference": "653139113047762e7a307224614a36c27e69275e",
+                "url": "https://api.github.com/repos/spryker/merchant-relationship-sales-order-threshold-data-import/zipball/6d891f8cd061f31be4e892189c834a449a1e10aa",
+                "reference": "6d891f8cd061f31be4e892189c834a449a1e10aa",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
+                "php": ">=7.2",
                 "spryker/currency": "^3.0.0",
                 "spryker/data-import": "^1.3.0",
                 "spryker/kernel": "^3.30.0",
@@ -23969,20 +24070,20 @@
                 "MIT"
             ],
             "description": "MerchantRelationshipSalesOrderThresholdDataImport module",
-            "time": "2019-10-14T10:22:10+00:00"
+            "time": "2020-05-29T13:08:37+00:00"
         },
         {
             "name": "spryker/merchant-relationship-sales-order-threshold-gui",
-            "version": "1.4.5",
+            "version": "1.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/merchant-relationship-sales-order-threshold-gui.git",
-                "reference": "cac114b9b8524ae4e5267bab29d32ff504663c09"
+                "reference": "9665af09e298343c36b305a439ea21e69c2b55d1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/merchant-relationship-sales-order-threshold-gui/zipball/cac114b9b8524ae4e5267bab29d32ff504663c09",
-                "reference": "cac114b9b8524ae4e5267bab29d32ff504663c09",
+                "url": "https://api.github.com/repos/spryker/merchant-relationship-sales-order-threshold-gui/zipball/9665af09e298343c36b305a439ea21e69c2b55d1",
+                "reference": "9665af09e298343c36b305a439ea21e69c2b55d1",
                 "shasum": ""
             },
             "require": {
@@ -23993,12 +24094,12 @@
                 "spryker/gui": "^3.1.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/locale": "^3.0.0",
-                "spryker/merchant": "^1.0.0 || ^2.0.0",
+                "spryker/merchant": "^1.0.0 || ^2.0.0 || ^3.0.0",
                 "spryker/merchant-relationship": "^1.0.0",
                 "spryker/merchant-relationship-sales-order-threshold": "^1.0.0",
                 "spryker/merchant-relationship-sales-order-threshold-gui-extension": "^1.1.0",
                 "spryker/money": "^2.1.0",
-                "spryker/sales-order-threshold": "^1.0.0",
+                "spryker/sales-order-threshold": "^1.3.0",
                 "spryker/store": "^1.2.0",
                 "spryker/symfony": "^3.1.0",
                 "spryker/util-text": "^1.1.0"
@@ -24022,7 +24123,7 @@
                 "proprietary"
             ],
             "description": "MerchantRelationshipSalesOrderThresholdGui module",
-            "time": "2020-02-17T13:33:51+00:00"
+            "time": "2020-07-03T08:13:47+00:00"
         },
         {
             "name": "spryker/merchant-relationship-sales-order-threshold-gui-extension",
@@ -24211,16 +24312,16 @@
         },
         {
             "name": "spryker/monitoring",
-            "version": "2.2.0",
+            "version": "2.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/monitoring.git",
-                "reference": "e961010ffaa27c79c6d6149574d497f4d6e2d5b4"
+                "reference": "251750479f48fc3ae98136bcf5fa88ea94926b36"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/monitoring/zipball/e961010ffaa27c79c6d6149574d497f4d6e2d5b4",
-                "reference": "e961010ffaa27c79c6d6149574d497f4d6e2d5b4",
+                "url": "https://api.github.com/repos/spryker/monitoring/zipball/251750479f48fc3ae98136bcf5fa88ea94926b36",
+                "reference": "251750479f48fc3ae98136bcf5fa88ea94926b36",
                 "shasum": ""
             },
             "require": {
@@ -24260,7 +24361,7 @@
                 "proprietary"
             ],
             "description": "Monitoring module",
-            "time": "2020-06-18T09:35:03+00:00"
+            "time": "2020-07-03T11:27:21+00:00"
         },
         {
             "name": "spryker/monitoring-extension",
@@ -24716,20 +24817,20 @@
         },
         {
             "name": "spryker/newsletter",
-            "version": "4.5.0",
+            "version": "4.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/newsletter.git",
-                "reference": "e7b3a48a4428ca02c493b10e8d3c5d6a81af6c2d"
+                "reference": "9c20e0ea54196c4628a43805442da4669205e1c0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/newsletter/zipball/e7b3a48a4428ca02c493b10e8d3c5d6a81af6c2d",
-                "reference": "e7b3a48a4428ca02c493b10e8d3c5d6a81af6c2d",
+                "url": "https://api.github.com/repos/spryker/newsletter/zipball/9c20e0ea54196c4628a43805442da4669205e1c0",
+                "reference": "9c20e0ea54196c4628a43805442da4669205e1c0",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
+                "php": ">=7.2",
                 "spryker/customer": "^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0",
                 "spryker/glossary": "^3.0.0",
                 "spryker/kernel": "^3.30.0",
@@ -24740,6 +24841,7 @@
                 "spryker/zed-request": "^3.0.0"
             },
             "require-dev": {
+                "spryker/code-sniffer": "*",
                 "spryker/installer": "*",
                 "spryker/propel": "*",
                 "spryker/testify": "*"
@@ -24763,7 +24865,7 @@
                 "proprietary"
             ],
             "description": "Newsletter module",
-            "time": "2019-10-14T10:22:10+00:00"
+            "time": "2020-05-29T13:08:37+00:00"
         },
         {
             "name": "spryker/oauth",
@@ -25182,16 +25284,16 @@
         },
         {
             "name": "spryker/oms",
-            "version": "11.11.0",
+            "version": "11.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/oms.git",
-                "reference": "c0c8b89c76e9d4a7998942e3b7d27965341c4c4a"
+                "reference": "e83c4769e513430d3cfc03d77485c517df2884df"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/oms/zipball/c0c8b89c76e9d4a7998942e3b7d27965341c4c4a",
-                "reference": "c0c8b89c76e9d4a7998942e3b7d27965341c4c4a",
+                "url": "https://api.github.com/repos/spryker/oms/zipball/e83c4769e513430d3cfc03d77485c517df2884df",
+                "reference": "e83c4769e513430d3cfc03d77485c517df2884df",
                 "shasum": ""
             },
             "require": {
@@ -25203,6 +25305,7 @@
                 "spryker/kernel": "^3.33.0",
                 "spryker/mail": "^4.0.0",
                 "spryker/oms-extension": "^1.3.0",
+                "spryker/propel": "^3.22.0",
                 "spryker/propel-orm": "^1.0.0",
                 "spryker/sales": "^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0 || ^10.0.0 || ^11.0.0",
                 "spryker/sales-extension": "^1.7.0",
@@ -25219,7 +25322,6 @@
                 "spryker/code-sniffer": "*",
                 "spryker/config": "*",
                 "spryker/customer": "*",
-                "spryker/propel": "*",
                 "spryker/testify": "*"
             },
             "suggest": {
@@ -25242,7 +25344,7 @@
                 "proprietary"
             ],
             "description": "Oms module",
-            "time": "2020-07-02T07:13:57+00:00"
+            "time": "2020-07-06T13:07:59+00:00"
         },
         {
             "name": "spryker/oms-discount-connector",
@@ -31794,16 +31896,16 @@
         },
         {
             "name": "spryker/propel",
-            "version": "3.22.0",
+            "version": "3.23.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/propel.git",
-                "reference": "701b62b9feaa9ebcc9ccfd9b4901c91dafed9bd6"
+                "reference": "26b8026a1d1bdfd9c83dc59f47af69099a0dfc9d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/propel/zipball/701b62b9feaa9ebcc9ccfd9b4901c91dafed9bd6",
-                "reference": "701b62b9feaa9ebcc9ccfd9b4901c91dafed9bd6",
+                "url": "https://api.github.com/repos/spryker/propel/zipball/26b8026a1d1bdfd9c83dc59f47af69099a0dfc9d",
+                "reference": "26b8026a1d1bdfd9c83dc59f47af69099a0dfc9d",
                 "shasum": ""
             },
             "require": {
@@ -31848,7 +31950,7 @@
                 "proprietary"
             ],
             "description": "Propel module",
-            "time": "2020-06-18T09:21:00+00:00"
+            "time": "2020-07-08T09:03:48+00:00"
         },
         {
             "name": "spryker/propel-orm",
@@ -33069,16 +33171,16 @@
         },
         {
             "name": "spryker/sales",
-            "version": "11.11.0",
+            "version": "11.13.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/sales.git",
-                "reference": "5a881158ba81c92a05d469aa8d9efc855b5c8a5c"
+                "reference": "a3b59acaad045a7de7f98da0978f8a3a3e8ff97d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/sales/zipball/5a881158ba81c92a05d469aa8d9efc855b5c8a5c",
-                "reference": "5a881158ba81c92a05d469aa8d9efc855b5c8a5c",
+                "url": "https://api.github.com/repos/spryker/sales/zipball/a3b59acaad045a7de7f98da0978f8a3a3e8ff97d",
+                "reference": "a3b59acaad045a7de7f98da0978f8a3a3e8ff97d",
                 "shasum": ""
             },
             "require": {
@@ -33137,7 +33239,7 @@
                 "proprietary"
             ],
             "description": "Sales module",
-            "time": "2020-07-02T07:50:45+00:00"
+            "time": "2020-07-06T13:07:59+00:00"
         },
         {
             "name": "spryker/sales-configurable-bundle",
@@ -33276,21 +33378,114 @@
             "time": "2020-04-23T10:38:06+00:00"
         },
         {
-            "name": "spryker/sales-order-threshold",
-            "version": "1.2.2",
+            "name": "spryker/sales-invoice",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/spryker/sales-order-threshold.git",
-                "reference": "0f830bb8f47c1d91c9701d32b56cb8553106bbaa"
+                "url": "https://github.com/spryker/sales-invoice.git",
+                "reference": "db9bce3bfb3c56615ca0d0f8e8e08860d0e05b57"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/sales-order-threshold/zipball/0f830bb8f47c1d91c9701d32b56cb8553106bbaa",
-                "reference": "0f830bb8f47c1d91c9701d32b56cb8553106bbaa",
+                "url": "https://api.github.com/repos/spryker/sales-invoice/zipball/db9bce3bfb3c56615ca0d0f8e8e08860d0e05b57",
+                "reference": "db9bce3bfb3c56615ca0d0f8e8e08860d0e05b57",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
+                "php": ">=7.2",
+                "spryker/glossary": "^3.0.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/mail": "^4.3.0",
+                "spryker/propel-orm": "^1.0.0",
+                "spryker/sales": "^11.11.0",
+                "spryker/sales-invoice-extension": "^1.0.0",
+                "spryker/sequence-number": "^3.0.0",
+                "spryker/symfony": "^3.0.0",
+                "spryker/twig": "^3.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/customer": "*",
+                "spryker/oms": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/oms": "If you want to use GenerateOrderInvoiceCommandPlugin plugin"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/",
+                    "SprykerTest\\Shared\\SalesInvoice\\Helper\\": "tests/SprykerTest/Shared/SalesInvoice/_support/Helper/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "SalesInvoice module",
+            "time": "2020-07-03T11:39:16+00:00"
+        },
+        {
+            "name": "spryker/sales-invoice-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/sales-invoice-extension.git",
+                "reference": "9472ae6a878a487acf51ae937fcb972ef80c4e1b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/sales-invoice-extension/zipball/9472ae6a878a487acf51ae937fcb972ef80c4e1b",
+                "reference": "9472ae6a878a487acf51ae937fcb972ef80c4e1b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "SalesInvoiceExtension module",
+            "time": "2020-06-29T08:34:25+00:00"
+        },
+        {
+            "name": "spryker/sales-order-threshold",
+            "version": "1.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/sales-order-threshold.git",
+                "reference": "b450cae5180a416884a6ae790939e6fbd8cd52f8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/sales-order-threshold/zipball/b450cae5180a416884a6ae790939e6fbd8cd52f8",
+                "reference": "b450cae5180a416884a6ae790939e6fbd8cd52f8",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
                 "spryker/calculation-extension": "^1.0.0",
                 "spryker/cart-extension": "^1.6.0 || ^2.2.1 || ^4.0.0",
                 "spryker/checkout-extension": "^1.0.0",
@@ -33335,24 +33530,24 @@
                 "proprietary"
             ],
             "description": "SalesOrderThreshold module",
-            "time": "2019-10-14T10:22:10+00:00"
+            "time": "2020-06-30T06:41:06+00:00"
         },
         {
             "name": "spryker/sales-order-threshold-data-import",
-            "version": "0.1.1",
+            "version": "0.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/sales-order-threshold-data-import.git",
-                "reference": "536ae1bdebb27c18e6e5b970c765e5dd4c55ccfa"
+                "reference": "58c54b03104fdf152d295cfcf63c74f73d006cab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/sales-order-threshold-data-import/zipball/536ae1bdebb27c18e6e5b970c765e5dd4c55ccfa",
-                "reference": "536ae1bdebb27c18e6e5b970c765e5dd4c55ccfa",
+                "url": "https://api.github.com/repos/spryker/sales-order-threshold-data-import/zipball/58c54b03104fdf152d295cfcf63c74f73d006cab",
+                "reference": "58c54b03104fdf152d295cfcf63c74f73d006cab",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
+                "php": ">=7.2",
                 "spryker/currency": "^3.0.0",
                 "spryker/data-import": "^1.3.0",
                 "spryker/kernel": "^3.30.0",
@@ -33381,7 +33576,7 @@
                 "MIT"
             ],
             "description": "SalesOrderThresholdDataImport module",
-            "time": "2019-07-08T11:22:22+00:00"
+            "time": "2020-06-30T06:41:06+00:00"
         },
         {
             "name": "spryker/sales-order-threshold-extension",
@@ -33424,34 +33619,33 @@
         },
         {
             "name": "spryker/sales-order-threshold-gui",
-            "version": "1.5.1",
+            "version": "1.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/sales-order-threshold-gui.git",
-                "reference": "2a58c2b723641247264f1fd442ddba2dc36c7404"
+                "reference": "d4486d0732f4e3a2d6db2f82d7f71276749c6390"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/sales-order-threshold-gui/zipball/2a58c2b723641247264f1fd442ddba2dc36c7404",
-                "reference": "2a58c2b723641247264f1fd442ddba2dc36c7404",
+                "url": "https://api.github.com/repos/spryker/sales-order-threshold-gui/zipball/d4486d0732f4e3a2d6db2f82d7f71276749c6390",
+                "reference": "d4486d0732f4e3a2d6db2f82d7f71276749c6390",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
+                "php": ">=7.2",
                 "spryker/currency": "^3.1.0",
                 "spryker/gui": "^3.1.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/locale": "^3.0.0",
                 "spryker/money": "^2.1.0",
-                "spryker/sales-order-threshold": "^1.0.0",
+                "spryker/sales-order-threshold": "^1.3.0",
                 "spryker/sales-order-threshold-gui-extension": "^1.1.0",
                 "spryker/store": "^1.2.0",
                 "spryker/symfony": "^3.1.0",
                 "spryker/tax": "^5.0.0"
             },
             "require-dev": {
-                "spryker/code-sniffer": "*",
-                "spryker/testify": "*"
+                "spryker/code-sniffer": "*"
             },
             "type": "library",
             "extra": {
@@ -33469,7 +33663,7 @@
                 "proprietary"
             ],
             "description": "SalesOrderThresholdGui module",
-            "time": "2019-10-22T08:42:46+00:00"
+            "time": "2020-07-03T08:13:47+00:00"
         },
         {
             "name": "spryker/sales-order-threshold-gui-extension",
@@ -36348,16 +36542,16 @@
         },
         {
             "name": "spryker/storage",
-            "version": "3.15.1",
+            "version": "3.15.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/storage.git",
-                "reference": "f0a8cd9457e6605b827d3aa32ae01027485cd59f"
+                "reference": "129c62950f2fc5305170735a680e5c127edfcb0f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/storage/zipball/f0a8cd9457e6605b827d3aa32ae01027485cd59f",
-                "reference": "f0a8cd9457e6605b827d3aa32ae01027485cd59f",
+                "url": "https://api.github.com/repos/spryker/storage/zipball/129c62950f2fc5305170735a680e5c127edfcb0f",
+                "reference": "129c62950f2fc5305170735a680e5c127edfcb0f",
                 "shasum": ""
             },
             "require": {
@@ -36404,7 +36598,7 @@
                 "proprietary"
             ],
             "description": "Storage module",
-            "time": "2020-05-29T13:08:37+00:00"
+            "time": "2020-07-03T08:13:47+00:00"
         },
         {
             "name": "spryker/storage-database",
@@ -36946,16 +37140,16 @@
         },
         {
             "name": "spryker/tax",
-            "version": "5.8.9",
+            "version": "5.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/tax.git",
-                "reference": "96b1cdfc96206aec6c3183b1ff054738e4e99067"
+                "reference": "124accfef2eee3f71d9a6fec48fe29293545383e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/tax/zipball/96b1cdfc96206aec6c3183b1ff054738e4e99067",
-                "reference": "96b1cdfc96206aec6c3183b1ff054738e4e99067",
+                "url": "https://api.github.com/repos/spryker/tax/zipball/124accfef2eee3f71d9a6fec48fe29293545383e",
+                "reference": "124accfef2eee3f71d9a6fec48fe29293545383e",
                 "shasum": ""
             },
             "require": {
@@ -36993,7 +37187,7 @@
                 "proprietary"
             ],
             "description": "Tax module",
-            "time": "2020-06-23T15:47:40+00:00"
+            "time": "2020-07-08T08:09:21+00:00"
         },
         {
             "name": "spryker/tax-product-connector",
@@ -37695,21 +37889,22 @@
         },
         {
             "name": "spryker/user",
-            "version": "3.9.2",
+            "version": "3.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/user.git",
-                "reference": "c04500054c5cc6d17d22b240ca68b2e25a9ff911"
+                "reference": "ea3830bac6bc9fe08fabf24baf332d94cbaa86f6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/user/zipball/c04500054c5cc6d17d22b240ca68b2e25a9ff911",
-                "reference": "c04500054c5cc6d17d22b240ca68b2e25a9ff911",
+                "url": "https://api.github.com/repos/spryker/user/zipball/ea3830bac6bc9fe08fabf24baf332d94cbaa86f6",
+                "reference": "ea3830bac6bc9fe08fabf24baf332d94cbaa86f6",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2",
-                "spryker/gui": "^3.17.0",
+                "spryker/auth-mail-connector-extension": "^1.0.0",
+                "spryker/gui": "^3.33.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/session": "^3.1.1 || ^4.0.0",
                 "spryker/symfony": "^3.0.0",
@@ -37752,7 +37947,7 @@
                 "proprietary"
             ],
             "description": "User module",
-            "time": "2020-05-29T13:08:37+00:00"
+            "time": "2020-07-08T08:09:21+00:00"
         },
         {
             "name": "spryker/user-extension",
@@ -39234,16 +39429,16 @@
         },
         {
             "name": "symfony/deprecation-contracts",
-            "version": "v2.1.2",
+            "version": "v2.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/deprecation-contracts.git",
-                "reference": "dd99cb3a0aff6cadd2a8d7d7ed72c2161e218337"
+                "reference": "5e20b83385a77593259c9f8beb2c43cd03b2ac14"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/deprecation-contracts/zipball/dd99cb3a0aff6cadd2a8d7d7ed72c2161e218337",
-                "reference": "dd99cb3a0aff6cadd2a8d7d7ed72c2161e218337",
+                "url": "https://api.github.com/repos/symfony/deprecation-contracts/zipball/5e20b83385a77593259c9f8beb2c43cd03b2ac14",
+                "reference": "5e20b83385a77593259c9f8beb2c43cd03b2ac14",
                 "shasum": ""
             },
             "require": {
@@ -39253,6 +39448,10 @@
             "extra": {
                 "branch-alias": {
                     "dev-master": "2.1-dev"
+                },
+                "thanks": {
+                    "name": "symfony/contracts",
+                    "url": "https://github.com/symfony/contracts"
                 }
             },
             "autoload": {
@@ -39276,7 +39475,7 @@
             ],
             "description": "A generic function and convention to trigger deprecation notices",
             "homepage": "https://symfony.com",
-            "time": "2020-05-27T08:34:37+00:00"
+            "time": "2020-06-06T08:49:21+00:00"
         },
         {
             "name": "symfony/error-handler",
@@ -39407,20 +39606,20 @@
         },
         {
             "name": "symfony/event-dispatcher-contracts",
-            "version": "v1.1.7",
+            "version": "v1.1.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/event-dispatcher-contracts.git",
-                "reference": "c43ab685673fb6c8d84220c77897b1d6cdbe1d18"
+                "reference": "84e23fdcd2517bf37aecbd16967e83f0caee25a7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/event-dispatcher-contracts/zipball/c43ab685673fb6c8d84220c77897b1d6cdbe1d18",
-                "reference": "c43ab685673fb6c8d84220c77897b1d6cdbe1d18",
+                "url": "https://api.github.com/repos/symfony/event-dispatcher-contracts/zipball/84e23fdcd2517bf37aecbd16967e83f0caee25a7",
+                "reference": "84e23fdcd2517bf37aecbd16967e83f0caee25a7",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.1.3"
+                "php": ">=7.1.3"
             },
             "suggest": {
                 "psr/event-dispatcher": "",
@@ -39430,6 +39629,10 @@
             "extra": {
                 "branch-alias": {
                     "dev-master": "1.1-dev"
+                },
+                "thanks": {
+                    "name": "symfony/contracts",
+                    "url": "https://github.com/symfony/contracts"
                 }
             },
             "autoload": {
@@ -39461,7 +39664,7 @@
                 "interoperability",
                 "standards"
             ],
-            "time": "2019-09-17T09:54:03+00:00"
+            "time": "2020-07-06T13:19:58+00:00"
         },
         {
             "name": "symfony/filesystem",
@@ -40973,16 +41176,16 @@
         },
         {
             "name": "symfony/service-contracts",
-            "version": "v2.1.2",
+            "version": "v2.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/service-contracts.git",
-                "reference": "66a8f0957a3ca54e4f724e49028ab19d75a8918b"
+                "reference": "58c7475e5457c5492c26cc740cc0ad7464be9442"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/service-contracts/zipball/66a8f0957a3ca54e4f724e49028ab19d75a8918b",
-                "reference": "66a8f0957a3ca54e4f724e49028ab19d75a8918b",
+                "url": "https://api.github.com/repos/symfony/service-contracts/zipball/58c7475e5457c5492c26cc740cc0ad7464be9442",
+                "reference": "58c7475e5457c5492c26cc740cc0ad7464be9442",
                 "shasum": ""
             },
             "require": {
@@ -40996,6 +41199,10 @@
             "extra": {
                 "branch-alias": {
                     "dev-master": "2.1-dev"
+                },
+                "thanks": {
+                    "name": "symfony/contracts",
+                    "url": "https://github.com/symfony/contracts"
                 }
             },
             "autoload": {
@@ -41027,7 +41234,7 @@
                 "interoperability",
                 "standards"
             ],
-            "time": "2020-05-20T17:43:50+00:00"
+            "time": "2020-07-06T13:23:11+00:00"
         },
         {
             "name": "symfony/stopwatch",
@@ -41157,16 +41364,16 @@
         },
         {
             "name": "symfony/translation-contracts",
-            "version": "v2.1.2",
+            "version": "v2.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/translation-contracts.git",
-                "reference": "e5ca07c8f817f865f618aa072c2fe8e0e637340e"
+                "reference": "616a9773c853097607cf9dd6577d5b143ffdcd63"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/translation-contracts/zipball/e5ca07c8f817f865f618aa072c2fe8e0e637340e",
-                "reference": "e5ca07c8f817f865f618aa072c2fe8e0e637340e",
+                "url": "https://api.github.com/repos/symfony/translation-contracts/zipball/616a9773c853097607cf9dd6577d5b143ffdcd63",
+                "reference": "616a9773c853097607cf9dd6577d5b143ffdcd63",
                 "shasum": ""
             },
             "require": {
@@ -41179,6 +41386,10 @@
             "extra": {
                 "branch-alias": {
                     "dev-master": "2.1-dev"
+                },
+                "thanks": {
+                    "name": "symfony/contracts",
+                    "url": "https://github.com/symfony/contracts"
                 }
             },
             "autoload": {
@@ -41210,7 +41421,7 @@
                 "interoperability",
                 "standards"
             ],
-            "time": "2020-05-20T17:43:50+00:00"
+            "time": "2020-07-06T13:23:11+00:00"
         },
         {
             "name": "symfony/twig-bridge",
@@ -41544,30 +41755,30 @@
         },
         {
             "name": "twig/twig",
-            "version": "v1.42.5",
+            "version": "v1.43.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "87b2ea9d8f6fd014d0621ca089bb1b3769ea3f8e"
+                "reference": "597a03e85a60af6feee4f5127f3ef4279a1694c3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/87b2ea9d8f6fd014d0621ca089bb1b3769ea3f8e",
-                "reference": "87b2ea9d8f6fd014d0621ca089bb1b3769ea3f8e",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/597a03e85a60af6feee4f5127f3ef4279a1694c3",
+                "reference": "597a03e85a60af6feee4f5127f3ef4279a1694c3",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.5.0",
+                "php": ">=7.1.3",
                 "symfony/polyfill-ctype": "^1.8"
             },
             "require-dev": {
                 "psr/container": "^1.0",
-                "symfony/phpunit-bridge": "^4.4|^5.0"
+                "symfony/phpunit-bridge": "^4.4.9|^5.0.9"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.42-dev"
+                    "dev-master": "1.43-dev"
                 }
             },
             "autoload": {
@@ -41604,7 +41815,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2020-02-11T05:59:23+00:00"
+            "time": "2020-07-05T13:00:49+00:00"
         },
         {
             "name": "voku/anti-xss",
@@ -47906,6 +48117,30 @@
             "alias": "202006.0",
             "alias_normalized": "202006.0",
             "version": "9999999-dev",
+            "package": "spryker-feature/mailing-notifications"
+        },
+        {
+            "alias": "202006.0",
+            "alias_normalized": "202006.0",
+            "version": "9999999-dev",
+            "package": "spryker-feature/merchant-order-threshold"
+        },
+        {
+            "alias": "202006.0",
+            "alias_normalized": "202006.0",
+            "version": "9999999-dev",
+            "package": "spryker-feature/order-management"
+        },
+        {
+            "alias": "202006.0",
+            "alias_normalized": "202006.0",
+            "version": "9999999-dev",
+            "package": "spryker-feature/order-threshold"
+        },
+        {
+            "alias": "202006.0",
+            "alias_normalized": "202006.0",
+            "version": "9999999-dev",
             "package": "spryker-feature/product-barcode"
         },
         {
@@ -47956,6 +48191,10 @@
         "spryker-feature/checkout": 20,
         "spryker-feature/custom-order-reference": 20,
         "spryker-feature/customer-account-management": 20,
+        "spryker-feature/mailing-notifications": 20,
+        "spryker-feature/merchant-order-threshold": 20,
+        "spryker-feature/order-management": 20,
+        "spryker-feature/order-threshold": 20,
         "spryker-feature/product-barcode": 20,
         "spryker-feature/product-labels": 20,
         "spryker-feature/product-relations": 20,
