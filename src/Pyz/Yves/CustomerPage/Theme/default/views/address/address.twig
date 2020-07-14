@@ -2,11 +2,12 @@
 
 {% define data = {
     addresses: _view.addresses,
+    customerDeleteFormClone: _view.customerDeleteFormCloner,
     activePage: 'address',
-    title: 'customer.account.address' | trans
+    title: 'customer.account.address' | trans,
 } %}
 
-{% macro address(label, address, addressId) %}
+{% macro address(label, address, addressId, customerDeleteForm) %}
     {% if address is not empty %}
         {% embed molecule('action-card') with {
             data: {
@@ -16,21 +17,41 @@
                     {
                         icon: 'edit',
                         url: url('customer/address/update', { id: addressId }),
-                        title: 'customer.profile.address.edit' | trans
+                        title: 'customer.profile.address.edit' | trans,
                     },
-                    {
-                        icon: 'delete',
-                        url: url('customer/address/delete', { id: addressId }),
-                        title: 'customer.profile.address.delete' | trans
-                    }
-                ]
+                ],
+            },
+            embed: {
+                addressId: addressId,
+                customerDeleteForm: customerDeleteForm,
             }
         } only %}
+            {% block actions %}
+                {{ parent() }}
+
+                {{ form_start(embed.customerDeleteForm, {
+                    'action': path('customer/address/delete', {'id': embed.addressId}),
+                    'attr': {
+                        'class': 'col',
+                    },
+                }) }}
+                    <button class="link link--alt link--action spacing-left" data-init-single-click>
+                        {% include molecule('icon-tooltip') with {
+                            modifiers: ['big'],
+                            data: {
+                                icon: 'delete',
+                                text: 'customer.profile.address.delete' | trans,
+                            },
+                        } only %}
+                    </button>
+                {{ form_end(embed.customerDeleteForm) }}
+            {% endblock %}
+
             {% block content %}
                 {% include molecule('display-address') with {
                     data: {
-                        address: data.address
-                    }
+                        address: data.address,
+                    },
                 } only %}
             {% endblock %}
         {% endembed %}
@@ -63,12 +84,12 @@
         {% elseif address.isDefaultBilling %}
             {% set label = 'billing_address' %}
         {% endif %}
-        {% set cards = cards | merge([{ content: _self.address(label, address, address.idCustomerAddress) }]) %}
+        {% set cards = cards | merge([{ content: _self.address(label, address, address.idCustomerAddress, data.customerDeleteFormClone.getForm.createView) }]) %}
     {% endfor %}
 
     {% include molecule('action-card-grid') with {
         data: {
-            cards: cards
-        }
+            cards: cards,
+        },
     } only %}
 {% endblock %}

@@ -64,6 +64,37 @@
                         </td>
 
                         <td class="spacing-x spacing-x--inner spacing-x--reset">
+                            {% set reorderAction %}
+                                {% embed molecule('remote-form-submit') with {
+                                    modifiers: ['full-height'],
+                                    data: {
+                                        label: 'customer.order.reorder' | trans,
+                                        buttonClass: 'link',
+                                    },
+                                    attributes: {
+                                        'form-name': 'customerReorderWidgetForm_' ~ order.idSalesOrder,
+                                        'form-action': path('customer/order/reorder', {'idSalesOrder': order.idSalesOrder}),
+                                        'field-id': 'customerReorderWidgetForm__token_' ~ order.idSalesOrder,
+                                        'field-name': 'customerReorderWidgetForm[_token]',
+                                        'field-value': csrf_token('customerReorderWidgetForm'),
+                                    },
+                                } only %}
+                                    {% block submitAction %}
+                                        {% include molecule('table-action-button') with {
+                                            class: 'link link--alt link--action ' ~ data.buttonClass ~ ' ' ~ config.jsName ~ '__submit',
+                                            data: {
+                                                icon: 'cart',
+                                                title: 'customer.order.reorder',
+                                                iconModifier: 'big',
+                                            },
+                                            attributes: {
+                                                type: 'submit',
+                                            }
+                                        } only %}
+                                    {% endblock %}
+                                {% endembed %}
+                            {% endset %}
+
                             {% include molecule('table-action-list') with {
                                 data: {
                                     items: [
@@ -74,10 +105,7 @@
                                             iconModifier: 'big',
                                         },
                                         {
-                                            url: path('customer/order/reorder', { 'idSalesOrder': order.idSalesOrder }),
-                                            icon: 'cart',
-                                            title: 'customer.order.reorder',
-                                            iconModifier: 'big',
+                                            customContent: reorderAction,
                                         },
                                         {
                                             url: path('return/create', { orderReference: order.orderReference }),

@@ -17,8 +17,8 @@
                 label: 'customer.account.shopping_list' | trans,
             },{
                 label: 'customer.account.shopping_list.overview.edit' | trans,
-            }]
-        }
+            }],
+        },
     } only %}
 {% endblock %}
 
@@ -34,8 +34,8 @@
         {% if can('WriteShoppingListPermissionPlugin', data.shoppingList.idShoppingList) %}
             {% include molecule('shopping-list-product-quick-add', 'ShoppingListPage') with {
                 data: {
-                    activeShoppingListId: data.shoppingList.idShoppingList
-                }
+                    activeShoppingListId: data.shoppingList.idShoppingList,
+                },
             } only %}
         {% endif %}
     </div>
@@ -50,8 +50,8 @@
 
             {{ form_row(data.form.name, {
                 rowAttr: {
-                    class: 'col col--sm-12'
-                }
+                    class: 'col col--sm-12',
+                },
             }) }}
 
             <div class="col col--sm-12">
@@ -86,8 +86,8 @@
                             embed: {
                                 key: key,
                                 isItemAvailable: isProductAvailable,
-                                idShoppingList: data.idShoppingList
-                            }
+                                idShoppingList: data.idShoppingList,
+                            },
                         } only %}
                             {% block title %}
                                 <span class="{{ config.name }}__available">
@@ -108,7 +108,7 @@
                                     class: 'spacing-y spacing-y--big text-small',
                                     data: {
                                         listItem: data.listItem,
-                                    }
+                                    },
                                 } only %}
                             {% endblock %}
 
@@ -130,8 +130,8 @@
                                         modifiers: ['medium', 'block', 'margin-bottom-from-tablet', 'gray-color'],
                                         data: {
                                             amount: data.listItem.price,
-                                            originalAmount: data.listItem.prices.ORIGINAL is not defined or data.listItem.prices.ORIGINAL is empty ? null : data.listItem.prices.ORIGINAL
-                                        }
+                                            originalAmount: data.listItem.prices.ORIGINAL is not defined or data.listItem.prices.ORIGINAL is empty ? null : data.listItem.prices.ORIGINAL,
+                                        },
                                     } only %}
                                 {% else %}
                                     {{ 'product_alternative_widget.not_applicable' | trans }}
@@ -144,26 +144,40 @@
                                     attributes: {
                                         readonly: not embed.isItemAvailable,
                                         name: data.form.items[embed.key].quantity.vars.full_name,
-                                        value: data.listItem.quantity
-                                    }
+                                        value: data.listItem.quantity,
+                                    },
                                 } only %}
                             {% endblock %}
 
                             {% block deleteButton %}
                                 <div class="col col--sm-12 grid grid--right">
-                                    <a class="link link--icon {{ config.name }}__remove-button" href="{{ path('shopping-list/remove-item', {
-                                        idShoppingList: embed.idShoppingList, idShoppingListItem: data.listItem.idShoppingListItem
-                                    }) }}" data-init-single-click>
-                                        {% include atom('icon') with {
-                                            modifiers: ['link'],
-                                            data: {
-                                                name: 'delete'
-                                            }
-                                        } only %}
-                                        <span class="{{ config.name }}__remove-button-text">
-                                            {{'customer.account.shopping_list.remove' | trans}}
-                                        </span>
-                                    </a>
+                                    {% set idShoppingListItem = data.listItem.idShoppingListItem %}
+
+                                    {% embed molecule('remote-form-submit') with {
+                                        data: {
+                                            label: 'customer.account.shopping_list.remove' | trans,
+                                            buttonClass: 'link link--icon ' ~ config.name ~ '__remove-button',
+                                        },
+                                        attributes: {
+                                            'form-name': 'removeItemForm_' ~ idShoppingListItem,
+                                            'form-action': path('shopping-list/remove-item', {'idShoppingList': embed.idShoppingList, 'idShoppingListItem': idShoppingListItem }),
+                                            'field-id': 'shopping_list_remove_item_form__token[removeItemForm_' ~ idShoppingListItem ~ ']',
+                                            'field-name': 'shopping_list_remove_item_form[_token]',
+                                            'field-value': csrf_token('shopping_list_remove_item_form'),
+                                        },
+                                    } only %}
+                                        {% block innerSubmitActionContent %}
+                                            {% include atom('icon') with {
+                                                modifiers: ['link'],
+                                                data: {
+                                                    name: 'delete',
+                                                },
+                                            } only %}
+                                            <span class="{{ config.name }}__remove-button-text">
+                                                {{'customer.account.shopping_list.remove' | trans}}
+                                            </span>
+                                        {% endblock %}
+                                    {% endembed %}
                                 </div>
                             {% endblock %}
                         {% endembed %}
@@ -175,15 +189,30 @@
                     {% endfor %}
 
                     <div class="grid grid--right spacing-bottom spacing-bottom--biggest">
-                        <a class="col link link--icon link--to-button grid grid--center spacing-top spacing-x spacing-x--inner spacing-x--big" href="{{ path('shopping-list/clear', {idShoppingList: data.idShoppingList}) }}">
-                            {% include atom('icon') with {
-                                modifiers: ['link'],
-                                data: {
-                                    name: 'delete'
-                                }
-                            } only %}
-                            {{ 'shopping_list.remove_all_items' | trans }}
-                        </a>
+                        {% embed molecule('remote-form-submit') with {
+                            class: 'col',
+                            data: {
+                                label: 'shopping_list.remove_all_items' | trans,
+                                buttonClass: 'link link--icon link--to-button grid grid--center spacing-top spacing-x spacing-x--inner spacing-x--big',
+                            },
+                            attributes: {
+                                'form-name': 'clearForm',
+                                'form-action': path('shopping-list/clear', { idShoppingList: data.idShoppingList }),
+                                'field-id': 'shopping_list_remove_item_form__token[clearForm]',
+                                'field-name': 'shopping_list_clear_form[_token]',
+                                'field-value': csrf_token('shopping_list_clear_form'),
+                            },
+                        } only %}
+                            {% block innerSubmitActionContent %}
+                                {% include atom('icon') with {
+                                    modifiers: ['link'],
+                                    data: {
+                                        name: 'delete',
+                                    },
+                                } only %}
+                                {{ data.label }}
+                            {% endblock %}
+                        {% endembed %}
                     </div>
                 {% else %}
                     <div class="col col--sm-12 text-center">
