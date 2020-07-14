@@ -1,4 +1,4 @@
-@include shop-ui-thumbnail {
+@include shop-ui-lazy-image {
     &--smaller {
         height: rem(52);
 
@@ -7,33 +7,21 @@
         }
     }
 
-    &--item {
+    &--configured-bundle {
         margin: rem(8) rem(16) rem(8) 0;
         padding: rem(8);
         flex-grow: 1;
 
         &::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: $setting-color-alpha-2;
             border-radius: $setting-border-radius 0 0 $setting-border-radius;
-            z-index: $setting-zi-element;
         }
-    }
-
-    &--reset-indents {
-        margin: 0;
     }
 
     &--category-list {
         height: rem(313);
 
         @include helper-breakpoint-media-min($md) {
-            height: 10rem;
+            height: rem(160);
         }
     }
 
@@ -41,7 +29,7 @@
         height: rem(180);
 
         @include helper-breakpoint-media-min($lg) {
-            height: 15rem;
+            height: rem(240);
         }
     }
 
@@ -49,7 +37,7 @@
         height: rem(124);
 
         @include helper-breakpoint-media-min($lg) {
-            height: 15rem;
+            height: rem(240);
         }
     }
 
@@ -57,7 +45,7 @@
         height: rem(75);
 
         @include helper-breakpoint-media-min($lg) {
-            height: 10rem;
+            height: rem(160);
         }
     }
 
@@ -81,7 +69,8 @@
         }
     }
 
-    &--expand {
-        width: 100%;
+    &__content {
+        position: relative;
+        line-height: 1.5;
     }
 }

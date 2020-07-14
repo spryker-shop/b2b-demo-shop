@@ -56,14 +56,15 @@
         <div class="{{ config.name ~ "__container" }} col col--sm-12 col--md-6 col--lg-5">
             {% block banner %}
                 {% embed molecule('banner') with {
-                    class: 'spacing-bottom spacing-bottom--reset',
-                    modifiers: ['medium'],
+                    modifiers: ['medium', 'spacing-bottom-reset'],
                     data: {
-                        imageUrl: data.images.0.externalUrlLarge | default([]),
+                        imageUrl: data.images.0.externalUrlLarge | default,
                     },
                 } only %}
                     {% block body %}
-                        <div class="{{config.name}}__container spacing-x spacing-x--reset" style="{{backgroundImage}}"></div>
+                        {% set containerClass = config.name ~ '__container ' ~ config.name ~ '__container--spacing-x-reset' %}
+
+                        {{ parent() }}
                     {% endblock %}
                 {% endembed %}
             {% endblock %}
