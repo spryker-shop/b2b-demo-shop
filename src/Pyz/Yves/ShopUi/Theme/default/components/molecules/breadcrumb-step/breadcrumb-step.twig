@@ -27,6 +27,6 @@
     {% if not isLink and not isFormElement %}{{ block('label') }}{% endif %}
 
     {% if data.withChevron %}
-    <span class="{{ config.name ~ '__separator' }}">/</span>
+        <span class="{{ config.name ~ '__separator' }}">/</span>
     {% endif %}
 {% endblock %}

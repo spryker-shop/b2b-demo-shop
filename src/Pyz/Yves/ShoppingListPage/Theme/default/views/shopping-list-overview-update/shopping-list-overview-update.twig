@@ -27,7 +27,6 @@
 {% endblock %}
 
 {% block customerContent %}
-
     {% set hasWritePermission = can('WriteShoppingListPermissionPlugin', data.idShoppingList) %}
 
     <div class="spacing-bottom spacing-bottom--bigger">
@@ -130,7 +129,7 @@
                                         modifiers: ['medium', 'block', 'margin-bottom-from-tablet', 'gray-color'],
                                         data: {
                                             amount: data.listItem.price,
-                                            originalAmount: data.listItem.prices.ORIGINAL is not defined or data.listItem.prices.ORIGINAL is empty ? null : data.listItem.prices.ORIGINAL,
+                                            originalAmount: data.listItem.prices.ORIGINAL ?? null,
                                         },
                                     } only %}
                                 {% else %}
@@ -157,6 +156,7 @@
                                         data: {
                                             label: 'customer.account.shopping_list.remove' | trans,
                                             buttonClass: 'link link--icon ' ~ config.name ~ '__remove-button',
+                                            iconName: 'delete',
                                         },
                                         attributes: {
                                             'form-name': 'removeItemForm_' ~ idShoppingListItem,
@@ -165,16 +165,22 @@
                                             'field-name': 'shopping_list_remove_item_form[_token]',
                                             'field-value': csrf_token('shopping_list_remove_item_form'),
                                         },
+                                        embed: {
+                                            name: config.name,
+                                        },
                                     } only %}
-                                        {% block innerSubmitActionContent %}
+                                        {% block submitActionIcon %}
                                             {% include atom('icon') with {
                                                 modifiers: ['link'],
                                                 data: {
-                                                    name: 'delete',
+                                                    name: data.iconName,
                                                 },
                                             } only %}
-                                            <span class="{{ config.name }}__remove-button-text">
-                                                {{'customer.account.shopping_list.remove' | trans}}
+                                        {% endblock %}
+
+                                        {% block innerSubmitActionContent %}
+                                            <span class="{{ embed.name }}__remove-button-text">
+                                                {{ 'customer.account.shopping_list.remove' | trans }}
                                             </span>
                                         {% endblock %}
                                     {% endembed %}
@@ -194,6 +200,7 @@
                             data: {
                                 label: 'shopping_list.remove_all_items' | trans,
                                 buttonClass: 'link link--icon link--to-button grid grid--center spacing-top spacing-x spacing-x--inner spacing-x--big',
+                                iconName: 'delete',
                             },
                             attributes: {
                                 'form-name': 'clearForm',
@@ -203,14 +210,13 @@
                                 'field-value': csrf_token('shopping_list_clear_form'),
                             },
                         } only %}
-                            {% block innerSubmitActionContent %}
+                            {% block submitActionIcon %}
                                 {% include atom('icon') with {
                                     modifiers: ['link'],
                                     data: {
-                                        name: 'delete',
+                                        name: data.iconName,
                                     },
                                 } only %}
-                                {{ data.label }}
                             {% endblock %}
                         {% endembed %}
                     </div>
