@@ -65,16 +65,7 @@
     {% endblock %}
 
     {% block orderTable %}
-        {% include molecule('order-table', 'CustomerPage') with {
-            data: {
-                orders: data.orders,
-                orderSearchForm: data.orderSearchForm,
-                filterFields: data.filterFields,
-                isOrderSearchEnabled: data.isOrderSearchEnabled,
-                isOrderSearchOrderItemsVisible: data.isOrderSearchOrderItemsVisible,
-                jsPrefix: jsPrefix,
-            },
-        } only %}
+        {{ parent() }}
     {% endblock %}
 
     {% block pagination %}
