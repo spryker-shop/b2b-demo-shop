@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c739721b20401fa2163f764f25bc7304",
+    "content-hash": "9b9f82e5fbd678b2e00e36874efac1c1",
     "packages": [
         {
             "name": "codeitnowin/barcode",
@@ -4786,16 +4786,16 @@
         },
         {
             "name": "spryker-feature/spryker-core-back-office",
-            "version": "202001.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-feature/spryker-core-back-office.git",
-                "reference": "e234fcefd664f241ca3d5ca45bf12be114744808"
+                "reference": "7e195b606704192111f5cda574afcc89db30d93c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-feature/spryker-core-back-office/zipball/e234fcefd664f241ca3d5ca45bf12be114744808",
-                "reference": "e234fcefd664f241ca3d5ca45bf12be114744808",
+                "url": "https://api.github.com/repos/spryker-feature/spryker-core-back-office/zipball/7e195b606704192111f5cda574afcc89db30d93c",
+                "reference": "7e195b606704192111f5cda574afcc89db30d93c",
                 "shasum": ""
             },
             "require": {
@@ -4812,7 +4812,7 @@
             "type": "metapackage",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "202001.x-dev"
+                    "dev-master": "202006.x-dev"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -4820,7 +4820,7 @@
                 "proprietary"
             ],
             "description": "Spryker Core Back Office [feature]",
-            "time": "2020-01-15T18:39:18+00:00"
+            "time": "2020-07-07T09:11:32+00:00"
         },
         {
             "name": "spryker-feature/state-machine",
@@ -11006,16 +11006,16 @@
         },
         {
             "name": "spryker/acl",
-            "version": "3.6.0",
+            "version": "3.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/acl.git",
-                "reference": "b8c9a93ab9ce89fc899540620276796370440c60"
+                "reference": "0ee9aa4d63584430ecdd0e65c25a6da24441c27c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/acl/zipball/b8c9a93ab9ce89fc899540620276796370440c60",
-                "reference": "b8c9a93ab9ce89fc899540620276796370440c60",
+                "url": "https://api.github.com/repos/spryker/acl/zipball/0ee9aa4d63584430ecdd0e65c25a6da24441c27c",
+                "reference": "0ee9aa4d63584430ecdd0e65c25a6da24441c27c",
                 "shasum": ""
             },
             "require": {
@@ -11023,7 +11023,7 @@
                 "spryker/acl-extension": "^1.0.0",
                 "spryker/config": "^3.0.0",
                 "spryker/event-dispatcher-extension": "^1.0.0",
-                "spryker/gui": "^3.0.0",
+                "spryker/gui": "^3.33.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/propel-orm": "^1.0.0",
                 "spryker/symfony": "^3.0.0",
@@ -11067,7 +11067,7 @@
                 "proprietary"
             ],
             "description": "Acl module",
-            "time": "2020-03-23T14:26:56+00:00"
+            "time": "2020-07-08T08:09:21+00:00"
         },
         {
             "name": "spryker/acl-extension",
@@ -11394,16 +11394,16 @@
         },
         {
             "name": "spryker/auth",
-            "version": "3.6.1",
+            "version": "3.7.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/auth.git",
-                "reference": "9243e3ff4326451002d7a3908986adbb99087043"
+                "reference": "a0db85a5040247b66f7d62f276788a8e15694c3f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/auth/zipball/9243e3ff4326451002d7a3908986adbb99087043",
-                "reference": "9243e3ff4326451002d7a3908986adbb99087043",
+                "url": "https://api.github.com/repos/spryker/auth/zipball/a0db85a5040247b66f7d62f276788a8e15694c3f",
+                "reference": "a0db85a5040247b66f7d62f276788a8e15694c3f",
                 "shasum": ""
             },
             "require": {
@@ -11412,12 +11412,15 @@
                 "spryker/gui": "^3.26.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/session": "^3.0.0 || ^4.0.0",
+                "spryker/session-redis-extension": "^1.0.0",
                 "spryker/symfony": "^3.0.0",
+                "spryker/transfer": "^3.8.0",
                 "spryker/user": "^3.0.0",
                 "spryker/util-text": "^1.1.0"
             },
             "require-dev": {
                 "spryker/application": "*",
+                "spryker/code-sniffer": "*",
                 "spryker/config": "*",
                 "spryker/container": "*",
                 "spryker/discount": "*",
@@ -11448,7 +11451,7 @@
                 "proprietary"
             ],
             "description": "Auth module",
-            "time": "2019-11-22T11:03:31+00:00"
+            "time": "2020-07-03T08:13:47+00:00"
         },
         {
             "name": "spryker/auth-mail-connector",
@@ -21038,21 +21041,21 @@
         },
         {
             "name": "spryker/dashboard",
-            "version": "1.1.0",
+            "version": "1.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/dashboard.git",
-                "reference": "50acb8045c5d608c080b78034682d1344b678d7f"
+                "reference": "d7410d16a2fd604620b7a8752df27efa3163687d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/dashboard/zipball/50acb8045c5d608c080b78034682d1344b678d7f",
-                "reference": "50acb8045c5d608c080b78034682d1344b678d7f",
+                "url": "https://api.github.com/repos/spryker/dashboard/zipball/d7410d16a2fd604620b7a8752df27efa3163687d",
+                "reference": "d7410d16a2fd604620b7a8752df27efa3163687d",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
-                "spryker/kernel": "^3.0.0"
+                "php": ">=7.2",
+                "spryker/kernel": "^3.30.0"
             },
             "require-dev": {
                 "spryker/application": "*",
@@ -21077,7 +21080,7 @@
                 "proprietary"
             ],
             "description": "Dashboard module",
-            "time": "2019-01-28T15:17:37+00:00"
+            "time": "2020-05-29T13:08:37+00:00"
         },
         {
             "name": "spryker/data-export",
@@ -38244,22 +38247,22 @@
         },
         {
             "name": "spryker/user-locale",
-            "version": "1.1.0",
+            "version": "1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/user-locale.git",
-                "reference": "93b796e1bfc306ac18a3819ab7c58e53e399ff72"
+                "reference": "9c623d2b1b48789daa6b0d53f38178337e6d34ae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/user-locale/zipball/93b796e1bfc306ac18a3819ab7c58e53e399ff72",
-                "reference": "93b796e1bfc306ac18a3819ab7c58e53e399ff72",
+                "url": "https://api.github.com/repos/spryker/user-locale/zipball/9c623d2b1b48789daa6b0d53f38178337e6d34ae",
+                "reference": "9c623d2b1b48789daa6b0d53f38178337e6d34ae",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
+                "php": ">=7.2",
                 "spryker/application-extension": "^1.0.0",
-                "spryker/kernel": "^3.0.0",
+                "spryker/kernel": "^3.30.0",
                 "spryker/locale": "^3.0.0",
                 "spryker/locale-extension": "^1.0.0",
                 "spryker/user": "^3.7.0",
@@ -38267,8 +38270,7 @@
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
-                "spryker/container": "*",
-                "spryker/testify": "*"
+                "spryker/container": "*"
             },
             "suggest": {
                 "spryker/container": "If you want to use Application plugins. Minimum required version: 1.0.0",
@@ -38290,33 +38292,32 @@
                 "proprietary"
             ],
             "description": "UserLocale module",
-            "time": "2019-03-26T15:19:37+00:00"
+            "time": "2020-05-29T13:08:37+00:00"
         },
         {
             "name": "spryker/user-locale-gui",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/user-locale-gui.git",
-                "reference": "f38a3a0675c271735f5df9ee643055e11ac2d578"
+                "reference": "b7edc1e3d4ac7eb299327acb86fa6d8999361cc9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/user-locale-gui/zipball/f38a3a0675c271735f5df9ee643055e11ac2d578",
-                "reference": "f38a3a0675c271735f5df9ee643055e11ac2d578",
+                "url": "https://api.github.com/repos/spryker/user-locale-gui/zipball/b7edc1e3d4ac7eb299327acb86fa6d8999361cc9",
+                "reference": "b7edc1e3d4ac7eb299327acb86fa6d8999361cc9",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
+                "php": ">=7.2",
                 "spryker/gui": "^3.0.0",
-                "spryker/kernel": "^3.0.0",
+                "spryker/kernel": "^3.30.0",
                 "spryker/locale": "^3.0.0",
                 "spryker/symfony": "^3.0.0",
                 "spryker/user-extension": "^1.1.0"
             },
             "require-dev": {
-                "spryker/code-sniffer": "*",
-                "spryker/testify": "*"
+                "spryker/code-sniffer": "*"
             },
             "type": "library",
             "extra": {
@@ -38334,7 +38335,7 @@
                 "proprietary"
             ],
             "description": "UserLocaleGui module",
-            "time": "2019-02-12T12:41:25+00:00"
+            "time": "2020-05-29T13:08:37+00:00"
         },
         {
             "name": "spryker/util-csv",
@@ -40881,16 +40882,16 @@
         },
         {
             "name": "symfony/polyfill-php72",
-            "version": "v1.17.0",
+            "version": "v1.17.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php72.git",
-                "reference": "f048e612a3905f34931127360bdd2def19a5e582"
+                "reference": "3d9c70ff1b9f6bb618f9954b2f7f760220c2b38a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php72/zipball/f048e612a3905f34931127360bdd2def19a5e582",
-                "reference": "f048e612a3905f34931127360bdd2def19a5e582",
+                "url": "https://api.github.com/repos/symfony/polyfill-php72/zipball/3d9c70ff1b9f6bb618f9954b2f7f760220c2b38a",
+                "reference": "3d9c70ff1b9f6bb618f9954b2f7f760220c2b38a",
                 "shasum": ""
             },
             "require": {
@@ -40900,6 +40901,10 @@
             "extra": {
                 "branch-alias": {
                     "dev-master": "1.17-dev"
+                },
+                "thanks": {
+                    "name": "symfony/polyfill",
+                    "url": "https://github.com/symfony/polyfill"
                 }
             },
             "autoload": {
@@ -40932,7 +40937,7 @@
                 "portable",
                 "shim"
             ],
-            "time": "2020-05-12T16:47:27+00:00"
+            "time": "2020-06-06T08:46:27+00:00"
         },
         {
             "name": "symfony/polyfill-php73",
@@ -48521,6 +48526,12 @@
             "alias": "202006.0",
             "alias_normalized": "202006.0",
             "version": "9999999-dev",
+            "package": "spryker-feature/spryker-core-back-office"
+        },
+        {
+            "alias": "202006.0",
+            "alias_normalized": "202006.0",
+            "version": "9999999-dev",
             "package": "spryker-feature/state-machine"
         },
         {
@@ -48561,6 +48572,7 @@
         "spryker-feature/search": 20,
         "spryker-feature/shipment": 20,
         "spryker-feature/spryker-core": 20,
+        "spryker-feature/spryker-core-back-office": 20,
         "spryker-feature/state-machine": 20,
         "spryker-feature/tax": 20,
         "spryker/git-hook": 20
