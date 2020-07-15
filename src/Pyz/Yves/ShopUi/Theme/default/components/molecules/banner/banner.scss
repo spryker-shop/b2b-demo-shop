@@ -35,10 +35,13 @@
             color: $setting-color-white;
         }
 
+        &--spacing-bottom-reset {
+            margin-bottom: 0;
+        }
+
         &__container {
             min-height: 100%;
-            background-color: $setting-color-main;
-            background-position: center center;
+            background-position: center;
             background-size: cover;
             background-repeat: no-repeat;
             text-align: center;
@@ -66,6 +69,11 @@
                     padding-top: 0;
                     padding-bottom: 0;
                 }
+            }
+
+            &--spacing-x-reset {
+                margin-left: 0;
+                margin-right: 0;
             }
         }
 
@@ -101,6 +109,7 @@
             &--subtitle {
                 font-family: $setting-font-family;
                 font-weight: fw(medium);
+                margin-bottom: 0;
 
                 @include helper-breakpoint-media-min($lg) {
                     font-size: rem(38);

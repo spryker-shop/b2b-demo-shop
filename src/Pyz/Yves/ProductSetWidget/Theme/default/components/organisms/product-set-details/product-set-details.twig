@@ -27,17 +27,22 @@
         {% embed molecule('banner') with {
             class: config.name ~ '__banner',
             data: {
-                imageUrl: data.images.0.externalUrlLarge | default(null),
+                imageUrl: data.images.0.externalUrlLarge | default,
                 title: data.title,
             },
         } only %}
+            {% block content %}
+                <h1 class="title title--light title--product-set-details">{{ data.title }}</h1>
+                <p class="{{ config.name }}__text {{ config.name }}__text--subtitle">
+                    {{- 'product.set' | trans -}}
+                </p>
+            {% endblock %}
+
             {% block body %}
-                <div class="{{config.name}}__container grid grid--column grid--middle grid--center" style="{{backgroundImage}}">
-                    <h1 class="title title--light title--product-set-details">
-                        {{ data.title }}
-                    </h1>
-                    <p class="{{ config.name }}__text {{ config.name }}__text--subtitle spacing-bottom spacing-bottom--reset">{{ 'product.set' | trans }} </p>
-                </div>
+                {% set containerClass = config.name ~ '__container grid grid--column grid--middle grid--center' %}
+                {% set contentClass = contentClass ~ ' text-center' %}
+
+                {{ parent() }}
             {% endblock %}
         {% endembed %}
     {% endblock %}

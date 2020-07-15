@@ -6,19 +6,19 @@
 
 {% define data = {
     name: '',
-    image: null,
+    image: '',
 } %}
 
 {% set modifiers = modifiers | default([]) %}
 
 {% block body %}
-    {% if data.image is not empty %}
-        {% include atom('thumbnail') with {
+    {% if data.image %}
+        {% include molecule('lazy-image') with {
             class: 'col ' ~ config.name ~ '__item',
-            modifiers: modifiers,
-            attributes: {
-                alt: data.name,
-                src: data.image,
+            modifiers: modifiers | merge(['thumbnail']),
+            data: {
+                imageSrc: data.image,
+                imageTitle: data.name,
             },
         } only %}
     {% else %}
