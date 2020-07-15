@@ -140,6 +140,11 @@
                 max-width: none;
             }
 
+            &--center {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
             @include helper-breakpoint-media-min($lg) {
                 font-size: map_get($setting-font-size, big);
             }
