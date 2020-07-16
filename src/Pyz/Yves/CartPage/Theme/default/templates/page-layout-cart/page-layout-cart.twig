@@ -341,15 +341,10 @@
 
                 {% if isQuoteEnadled and can('RemoveCartItemPermissionPlugin') %}
                     <div class="grid grid--right cart-bottom">
-                        <a href="{{ path('multi-cart/clear', {idQuote: data.cart.idQuote}) }}" class="link link--icon cart-bottom__button">
-                            {% include atom('icon') with {
-                                modifiers: ['link'],
-                                data: {
-                                    name: 'delete',
-                                },
-                            } only %}
-                            {{ "multi_cart_page.delete_all" | trans }}
-                        </a>
+                        {% widget 'CartOperationsWidget' args [data.cart] use view('cart-operations-actions', 'MultiCartWidget') only %}
+                        {% nowidget %}
+                            {{ widgetBlock('CartOperationsWidgetPlugin', 'actions', data.cart) }} {# @deprecated Use CartOperationsWidget instead. #}
+                        {% endwidget %}
                     </div>
                 {% endif %}
 

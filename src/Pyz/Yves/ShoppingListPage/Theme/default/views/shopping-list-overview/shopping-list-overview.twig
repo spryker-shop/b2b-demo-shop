@@ -32,19 +32,19 @@
 
                 {% block title %}
                     {% if data.title is not empty %}
-                        <h3>{{data.title}}</h3>
+                        <h3>{{ data.title }}</h3>
                     {% endif %}
                 {% endblock %}
 
                 <div class="grid grid--bottom grid--gap">
-                    <div class="col col--sm-12 col--md-auto col col--expand">
+                    <div class="col col--sm-12 col--md-auto col--expand">
                         {% block fieldset %}
                             {{ parent() }}
                         {% endblock %}
                     </div>
                     <div class="col col--sm-12 col--md-auto spacing-bottom">
                         {% block submit %}
-                            <button type="submit" class="{{config.name}}__action {{data.submit.class}} button--expand button--mobile-tight" {{qa(data.submit.qa)}}>
+                            <button type="submit" class="{{ config.name }}__action {{ data.submit.class }} button--expand button--mobile-tight" {{ qa(data.submit.qa) }}>
                                 {% if data.submit.icon is not empty %}
                                     {% include atom('icon') with {
                                         modifiers: ['plus-small'],
@@ -54,7 +54,7 @@
                                         },
                                     } only %}
                                 {% endif %}
-                                {{data.submit.text}}
+                                {{ data.submit.text }}
                             </button>
                         {% endblock %}
                     </div>
