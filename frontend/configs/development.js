@@ -8,7 +8,7 @@ const { getAssetsConfig } = require('../libs/assets-configurator');
 const { buildVariantSettings } = require('../settings');
 
 let isImagesOptimizationEnabled = false;
-let imagesOptimization = false;
+let imagesOptimization = null;
 try {
     imagesOptimization = require('../libs/images-optimization');
     isImagesOptimizationEnabled = true;
