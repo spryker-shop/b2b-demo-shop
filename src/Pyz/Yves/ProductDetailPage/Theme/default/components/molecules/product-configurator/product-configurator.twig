@@ -55,7 +55,7 @@
                 modifiers: ['big'],
                 data: {
                     amount: data.product.price,
-                    originalAmount: data.product.prices.ORIGINAL is defined ? data.product.prices.ORIGINAL : null,
+                    originalAmount: data.product.prices.ORIGINAL ?? null,
                 },
             } only %}
         {% endwidget %}
@@ -96,8 +96,8 @@
         data: {
             superAttributes: data.product.attributeMap.superAttributes,
             selectedAttributes: data.product.selectedAttributes,
-            availableAttributes: data.product.availableAttributes
-        }
+            availableAttributes: data.product.availableAttributes,
+        },
     } only %}
 
     {% widget 'AddToCartFormWidget'  args [config, data.product, isDisabled, options] only %}
@@ -112,17 +112,17 @@
                             {% include molecule('quantity-counter') with {
                                 modifiers: ['right-space'],
                                 data: {
-                                    isDisabled: data.isDisabled
-                                }
+                                    isDisabled: data.isDisabled,
+                                },
                             } only %}
 
                             <div class="col">
-                                <button type="submit" class="button button--alternative button--big button--expand button--no-horizontal-padding" {{ data.isDisabled ? 'disabled' : '' }} onclick="this.form.submit(); this.disabled='disabled'; return false;" {{qa('add-to-cart-button')}}>
+                                <button class="button button--alternative button--big button--expand button--no-horizontal-padding" {{ data.isDisabled ? 'disabled' }} data-init-single-click {{ qa('add-to-cart-button') }}>
                                     {% include atom('icon') with {
                                         modifiers: ['cart-plus'],
                                         data: {
-                                            name: 'cart-plus'
-                                        }
+                                            name: 'cart-plus',
+                                        },
                                     } only %}
                                     {{ 'page.detail.add-to-cart' | trans }}
                                 </button>
@@ -149,5 +149,4 @@
     {% endif %}
 
     {% widget 'ProductDiscontinuedNoteWidget' args [sku] only %}{% endwidget %}
-
 {% endblock %}
