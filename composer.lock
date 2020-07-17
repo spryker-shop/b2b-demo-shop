@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "60df5fb91b381de3c1b8d66433c3acaa",
+    "content-hash": "7d46c081ca3f2812d248493f7553355e",
     "packages": [
         {
             "name": "codeitnowin/barcode",
@@ -1777,31 +1777,33 @@
         },
         {
             "name": "propel/propel",
-            "version": "2.0.0-alpha8",
+            "version": "2.0.0-alpha10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/propelorm/Propel2.git",
-                "reference": "4c309e3e5adaba077f54c0fab93c34995d7c9b3d"
+                "reference": "776f746747c62962f4b70b3a3ac1de2b249ffd35"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/propelorm/Propel2/zipball/4c309e3e5adaba077f54c0fab93c34995d7c9b3d",
-                "reference": "4c309e3e5adaba077f54c0fab93c34995d7c9b3d",
+                "url": "https://api.github.com/repos/propelorm/Propel2/zipball/776f746747c62962f4b70b3a3ac1de2b249ffd35",
+                "reference": "776f746747c62962f4b70b3a3ac1de2b249ffd35",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.5",
-                "psr/log": "~1.0",
-                "symfony/config": "~2.3||~3.0||~4.0",
-                "symfony/console": "~2.3||~3.0||~4.0",
-                "symfony/filesystem": "~2.3||~3.0||~4.0",
-                "symfony/finder": "~2.3||~3.0||~4.0",
-                "symfony/validator": "~2.3||~3.0.0||~3.1.0||^3.2.4||~4.0",
-                "symfony/yaml": "~2.3||~3.0||~4.0"
+                "php": ">=7.1",
+                "psr/log": "^1.0",
+                "symfony/config": "^2.7.0||^3.0.0||^4.0.0||^5.0.0",
+                "symfony/console": "^2.7.0||^3.0.0||^4.0.0||^5.0.0",
+                "symfony/filesystem": "^2.7.0||^3.0.0||^4.0.0||^5.0.0",
+                "symfony/finder": "^2.7.0||^3.0.0||^4.0.0||^5.0.0",
+                "symfony/translation": "^2.7.0||^3.0.0||^4.0.0||^5.0.0",
+                "symfony/validator": "^2.7.0||^3.3.0||^4.0.0||^5.0.0",
+                "symfony/yaml": "^2.7.0||^3.3.0||^4.0.0||^5.0.0"
             },
             "require-dev": {
-                "monolog/monolog": "~1.3",
-                "phpunit/phpunit": "~4.0||~5.0"
+                "monolog/monolog": "^1.3",
+                "phpstan/phpstan": "^0.12.4",
+                "phpunit/phpunit": "^7.5.15"
             },
             "suggest": {
                 "monolog/monolog": "The recommended logging library to use with Propel."
@@ -1816,8 +1818,8 @@
                 }
             },
             "autoload": {
-                "psr-0": {
-                    "Propel": "src/"
+                "psr-4": {
+                    "Propel\\": "src/Propel/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1830,14 +1832,14 @@
                     "email": "william.durand1@gmail.com"
                 }
             ],
-            "description": "Propel2 is an open-source Object-Relational Mapping (ORM) for PHP 5.5 and up.",
+            "description": "Propel2 is an open-source Object-Relational Mapping (ORM) for PHP.",
             "homepage": "http://www.propelorm.org/",
             "keywords": [
                 "Active Record",
                 "orm",
                 "persistence"
             ],
-            "time": "2018-02-19T12:58:55+00:00"
+            "time": "2020-07-13T12:20:41+00:00"
         },
         {
             "name": "psr/container",
@@ -3200,16 +3202,16 @@
         },
         {
             "name": "spryker-feature/mailing-notifications",
-            "version": "202001.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-feature/mailing-notifications.git",
-                "reference": "48fc54c01d845c30fea04ff0695dd616ddcdb36e"
+                "reference": "1e3d1affcfda533f2803092bd9173e1a2fa778f0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-feature/mailing-notifications/zipball/48fc54c01d845c30fea04ff0695dd616ddcdb36e",
-                "reference": "48fc54c01d845c30fea04ff0695dd616ddcdb36e",
+                "url": "https://api.github.com/repos/spryker-feature/mailing-notifications/zipball/1e3d1affcfda533f2803092bd9173e1a2fa778f0",
+                "reference": "1e3d1affcfda533f2803092bd9173e1a2fa778f0",
                 "shasum": ""
             },
             "require": {
@@ -3222,7 +3224,7 @@
             "type": "metapackage",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "202001.x-dev"
+                    "dev-master": "202006.x-dev"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -3230,7 +3232,7 @@
                 "proprietary"
             ],
             "description": "Mailing & Notifications [feature]",
-            "time": "2020-01-15T18:37:20+00:00"
+            "time": "2020-04-06T12:55:46+00:00"
         },
         {
             "name": "spryker-feature/measurement-units",
@@ -3368,16 +3370,16 @@
         },
         {
             "name": "spryker-feature/merchant-order-threshold",
-            "version": "202001.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-feature/merchant-order-threshold.git",
-                "reference": "a9ae008083ffd3e8e45c17aa6f43b81ae90990bb"
+                "reference": "c62965cc4a15933c4e9b3f8a7c1e87279640fe6e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-feature/merchant-order-threshold/zipball/a9ae008083ffd3e8e45c17aa6f43b81ae90990bb",
-                "reference": "a9ae008083ffd3e8e45c17aa6f43b81ae90990bb",
+                "url": "https://api.github.com/repos/spryker-feature/merchant-order-threshold/zipball/c62965cc4a15933c4e9b3f8a7c1e87279640fe6e",
+                "reference": "c62965cc4a15933c4e9b3f8a7c1e87279640fe6e",
                 "shasum": ""
             },
             "require": {
@@ -3386,10 +3388,14 @@
                 "spryker/merchant-relationship-sales-order-threshold-data-import": "^0.1.0",
                 "spryker/merchant-relationship-sales-order-threshold-gui": "^1.4.0"
             },
+            "suggest": {
+                "spryker-feature/merchant": "Recommended feature dependency.",
+                "spryker-feature/order-threshold": "Recommended feature dependency."
+            },
             "type": "metapackage",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "202001.x-dev"
+                    "dev-master": "202006.x-dev"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -3397,7 +3403,7 @@
                 "proprietary"
             ],
             "description": "Merchant Order Threshold [feature]",
-            "time": "2020-01-15T18:37:32+00:00"
+            "time": "2020-04-06T12:56:04+00:00"
         },
         {
             "name": "spryker-feature/merchant-product-restrictions",
@@ -3570,16 +3576,16 @@
         },
         {
             "name": "spryker-feature/order-threshold",
-            "version": "202001.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-feature/order-threshold.git",
-                "reference": "7b93e036f70858e1e705d6a33a3cda99843ba8cc"
+                "reference": "8209c4b2e6d2c72531712276ac4502c30c15a528"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-feature/order-threshold/zipball/7b93e036f70858e1e705d6a33a3cda99843ba8cc",
-                "reference": "7b93e036f70858e1e705d6a33a3cda99843ba8cc",
+                "url": "https://api.github.com/repos/spryker-feature/order-threshold/zipball/8209c4b2e6d2c72531712276ac4502c30c15a528",
+                "reference": "8209c4b2e6d2c72531712276ac4502c30c15a528",
                 "shasum": ""
             },
             "require": {
@@ -3589,10 +3595,17 @@
                 "spryker/sales-order-threshold-data-import": "^0.1.0",
                 "spryker/sales-order-threshold-gui": "^1.4.0"
             },
+            "suggest": {
+                "spryker-feature/cart": "Recommended feature dependency.",
+                "spryker-feature/checkout": "Recommended feature dependency.",
+                "spryker-feature/order-management": "Recommended feature dependency.",
+                "spryker-feature/prices": "Recommended feature dependency.",
+                "spryker-feature/spryker-core-e-commerce": "Recommended feature dependency."
+            },
             "type": "metapackage",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "202001.x-dev"
+                    "dev-master": "202006.x-dev"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -3600,7 +3613,7 @@
                 "proprietary"
             ],
             "description": "Order Threshold [feature]",
-            "time": "2020-01-15T18:37:50+00:00"
+            "time": "2020-04-06T12:56:26+00:00"
         },
         {
             "name": "spryker-feature/packaging-units",
@@ -7651,20 +7664,20 @@
         },
         {
             "name": "spryker-shop/newsletter-page",
-            "version": "1.1.1",
+            "version": "1.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/newsletter-page.git",
-                "reference": "85e1146a82606499bb1be4c6b94a5b8ffea9fe23"
+                "reference": "b53e672cc8ea9821656b39473dd1ce1d6b68128f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/newsletter-page/zipball/85e1146a82606499bb1be4c6b94a5b8ffea9fe23",
-                "reference": "85e1146a82606499bb1be4c6b94a5b8ffea9fe23",
+                "url": "https://api.github.com/repos/spryker-shop/newsletter-page/zipball/b53e672cc8ea9821656b39473dd1ce1d6b68128f",
+                "reference": "b53e672cc8ea9821656b39473dd1ce1d6b68128f",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
+                "php": ">=7.2",
                 "spryker-shop/shop-application": "^1.0.0",
                 "spryker-shop/shop-ui": "^1.0.0",
                 "spryker/application": "^3.8.0",
@@ -7677,8 +7690,7 @@
                 "spryker-shop/customer-page": "*",
                 "spryker/code-sniffer": "*",
                 "spryker/router": "*",
-                "spryker/silex": "*",
-                "spryker/testify": "*"
+                "spryker/silex": "*"
             },
             "suggest": {
                 "spryker-shop/customer-page": "Use this module when you want to use the CustomerPage plugins.",
@@ -7701,24 +7713,24 @@
                 "proprietary"
             ],
             "description": "NewsletterPage module",
-            "time": "2019-11-01T14:13:05+00:00"
+            "time": "2020-05-29T13:03:33+00:00"
         },
         {
             "name": "spryker-shop/newsletter-widget",
-            "version": "1.4.2",
+            "version": "1.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/newsletter-widget.git",
-                "reference": "0497087d581d8a34f329622e9ea1a6488991db74"
+                "reference": "f2a5b442b9779096fbf5f49fefe37c4c27a06109"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/newsletter-widget/zipball/0497087d581d8a34f329622e9ea1a6488991db74",
-                "reference": "0497087d581d8a34f329622e9ea1a6488991db74",
+                "url": "https://api.github.com/repos/spryker-shop/newsletter-widget/zipball/f2a5b442b9779096fbf5f49fefe37c4c27a06109",
+                "reference": "f2a5b442b9779096fbf5f49fefe37c4c27a06109",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
+                "php": ">=7.2",
                 "spryker-shop/shop-application": "^1.0.0",
                 "spryker-shop/shop-ui": "^1.0.0",
                 "spryker/application": "^3.8.0",
@@ -7730,8 +7742,7 @@
                 "spryker-shop/customer-page": "*",
                 "spryker/code-sniffer": "*",
                 "spryker/router": "*",
-                "spryker/silex": "*",
-                "spryker/testify": "*"
+                "spryker/silex": "*"
             },
             "suggest": {
                 "spryker-shop/customer-page": "Widget plugins are available for this module.",
@@ -7754,7 +7765,7 @@
                 "proprietary"
             ],
             "description": "NewsletterWidget module",
-            "time": "2019-10-28T09:50:23+00:00"
+            "time": "2020-06-15T13:37:36+00:00"
         },
         {
             "name": "spryker-shop/order-cancel-widget",
@@ -10519,16 +10530,16 @@
         },
         {
             "name": "spryker-shop/shop-ui",
-            "version": "1.43.0",
+            "version": "1.43.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/shop-ui.git",
-                "reference": "8a18cb6a2c0e525868f7088b911ffaf1162e45c6"
+                "reference": "23aa3e1c5bd13d707931a35fa72373a8b93cbc90"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/shop-ui/zipball/8a18cb6a2c0e525868f7088b911ffaf1162e45c6",
-                "reference": "8a18cb6a2c0e525868f7088b911ffaf1162e45c6",
+                "url": "https://api.github.com/repos/spryker-shop/shop-ui/zipball/23aa3e1c5bd13d707931a35fa72373a8b93cbc90",
+                "reference": "23aa3e1c5bd13d707931a35fa72373a8b93cbc90",
                 "shasum": ""
             },
             "require": {
@@ -10566,7 +10577,7 @@
                 "proprietary"
             ],
             "description": "ShopUi module",
-            "time": "2020-07-10T14:55:26+00:00"
+            "time": "2020-07-15T06:37:07+00:00"
         },
         {
             "name": "spryker-shop/shopping-list-note-widget",
@@ -11431,6 +11442,44 @@
             ],
             "description": "AuthMailConnector module",
             "time": "2019-02-18T16:20:09+00:00"
+        },
+        {
+            "name": "spryker/auth-mail-connector-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/auth-mail-connector-extension.git",
+                "reference": "90c9d18f8c12a72d036178919ad0c244bad37838"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/auth-mail-connector-extension/zipball/90c9d18f8c12a72d036178919ad0c244bad37838",
+                "reference": "90c9d18f8c12a72d036178919ad0c244bad37838",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "AuthMailConnectorExtension module",
+            "time": "2020-06-24T07:50:38+00:00"
         },
         {
             "name": "spryker/auth-rest-api",
@@ -23566,16 +23615,16 @@
         },
         {
             "name": "spryker/merchant-relationship",
-            "version": "1.7.0",
+            "version": "1.8.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/merchant-relationship.git",
-                "reference": "7e54f1f968aa0f27e627763195efa15318fadea0"
+                "reference": "43b1b3f601f7589cc74c85252eb6bb46be753de9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/merchant-relationship/zipball/7e54f1f968aa0f27e627763195efa15318fadea0",
-                "reference": "7e54f1f968aa0f27e627763195efa15318fadea0",
+                "url": "https://api.github.com/repos/spryker/merchant-relationship/zipball/43b1b3f601f7589cc74c85252eb6bb46be753de9",
+                "reference": "43b1b3f601f7589cc74c85252eb6bb46be753de9",
                 "shasum": ""
             },
             "require": {
@@ -23583,7 +23632,7 @@
                 "spryker/company-business-unit": "^1.0.0 || ^2.0.0",
                 "spryker/company-user-extension": "^1.0.0",
                 "spryker/kernel": "^3.33.0",
-                "spryker/merchant": "^1.1.0 || ^2.0.0",
+                "spryker/merchant": "^1.1.0 || ^2.0.0 || ^3.0.0",
                 "spryker/merchant-relationship-extension": "^1.1.0",
                 "spryker/propel-orm": "^1.0.0"
             },
@@ -23610,7 +23659,7 @@
                 "proprietary"
             ],
             "description": "MerchantRelationship module",
-            "time": "2019-11-27T16:02:31+00:00"
+            "time": "2020-05-29T13:08:37+00:00"
         },
         {
             "name": "spryker/merchant-relationship-data-import",
@@ -23941,20 +23990,20 @@
         },
         {
             "name": "spryker/merchant-relationship-sales-order-threshold",
-            "version": "1.0.2",
+            "version": "1.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/merchant-relationship-sales-order-threshold.git",
-                "reference": "b60fbc8446a7706f410be10cfae77e4adc913960"
+                "reference": "5971b801234abb1069aa34c60687070916d8f2d2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/merchant-relationship-sales-order-threshold/zipball/b60fbc8446a7706f410be10cfae77e4adc913960",
-                "reference": "b60fbc8446a7706f410be10cfae77e4adc913960",
+                "url": "https://api.github.com/repos/spryker/merchant-relationship-sales-order-threshold/zipball/5971b801234abb1069aa34c60687070916d8f2d2",
+                "reference": "5971b801234abb1069aa34c60687070916d8f2d2",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
+                "php": ">=7.2",
                 "spryker/currency": "^3.0.0",
                 "spryker/glossary": "^3.1.0",
                 "spryker/kernel": "^3.30.0",
@@ -23988,24 +24037,24 @@
                 "proprietary"
             ],
             "description": "MerchantRelationshipSalesOrderThreshold module",
-            "time": "2019-10-14T10:22:10+00:00"
+            "time": "2020-05-29T13:08:37+00:00"
         },
         {
             "name": "spryker/merchant-relationship-sales-order-threshold-data-import",
-            "version": "0.1.1",
+            "version": "0.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/merchant-relationship-sales-order-threshold-data-import.git",
-                "reference": "653139113047762e7a307224614a36c27e69275e"
+                "reference": "6d891f8cd061f31be4e892189c834a449a1e10aa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/merchant-relationship-sales-order-threshold-data-import/zipball/653139113047762e7a307224614a36c27e69275e",
-                "reference": "653139113047762e7a307224614a36c27e69275e",
+                "url": "https://api.github.com/repos/spryker/merchant-relationship-sales-order-threshold-data-import/zipball/6d891f8cd061f31be4e892189c834a449a1e10aa",
+                "reference": "6d891f8cd061f31be4e892189c834a449a1e10aa",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
+                "php": ">=7.2",
                 "spryker/currency": "^3.0.0",
                 "spryker/data-import": "^1.3.0",
                 "spryker/kernel": "^3.30.0",
@@ -24039,20 +24088,20 @@
                 "MIT"
             ],
             "description": "MerchantRelationshipSalesOrderThresholdDataImport module",
-            "time": "2019-10-14T10:22:10+00:00"
+            "time": "2020-05-29T13:08:37+00:00"
         },
         {
             "name": "spryker/merchant-relationship-sales-order-threshold-gui",
-            "version": "1.4.5",
+            "version": "1.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/merchant-relationship-sales-order-threshold-gui.git",
-                "reference": "cac114b9b8524ae4e5267bab29d32ff504663c09"
+                "reference": "9665af09e298343c36b305a439ea21e69c2b55d1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/merchant-relationship-sales-order-threshold-gui/zipball/cac114b9b8524ae4e5267bab29d32ff504663c09",
-                "reference": "cac114b9b8524ae4e5267bab29d32ff504663c09",
+                "url": "https://api.github.com/repos/spryker/merchant-relationship-sales-order-threshold-gui/zipball/9665af09e298343c36b305a439ea21e69c2b55d1",
+                "reference": "9665af09e298343c36b305a439ea21e69c2b55d1",
                 "shasum": ""
             },
             "require": {
@@ -24063,12 +24112,12 @@
                 "spryker/gui": "^3.1.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/locale": "^3.0.0",
-                "spryker/merchant": "^1.0.0 || ^2.0.0",
+                "spryker/merchant": "^1.0.0 || ^2.0.0 || ^3.0.0",
                 "spryker/merchant-relationship": "^1.0.0",
                 "spryker/merchant-relationship-sales-order-threshold": "^1.0.0",
                 "spryker/merchant-relationship-sales-order-threshold-gui-extension": "^1.1.0",
                 "spryker/money": "^2.1.0",
-                "spryker/sales-order-threshold": "^1.0.0",
+                "spryker/sales-order-threshold": "^1.3.0",
                 "spryker/store": "^1.2.0",
                 "spryker/symfony": "^3.1.0",
                 "spryker/util-text": "^1.1.0"
@@ -24092,7 +24141,7 @@
                 "proprietary"
             ],
             "description": "MerchantRelationshipSalesOrderThresholdGui module",
-            "time": "2020-02-17T13:33:51+00:00"
+            "time": "2020-07-03T08:13:47+00:00"
         },
         {
             "name": "spryker/merchant-relationship-sales-order-threshold-gui-extension",
@@ -24786,20 +24835,20 @@
         },
         {
             "name": "spryker/newsletter",
-            "version": "4.5.0",
+            "version": "4.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/newsletter.git",
-                "reference": "e7b3a48a4428ca02c493b10e8d3c5d6a81af6c2d"
+                "reference": "9c20e0ea54196c4628a43805442da4669205e1c0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/newsletter/zipball/e7b3a48a4428ca02c493b10e8d3c5d6a81af6c2d",
-                "reference": "e7b3a48a4428ca02c493b10e8d3c5d6a81af6c2d",
+                "url": "https://api.github.com/repos/spryker/newsletter/zipball/9c20e0ea54196c4628a43805442da4669205e1c0",
+                "reference": "9c20e0ea54196c4628a43805442da4669205e1c0",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
+                "php": ">=7.2",
                 "spryker/customer": "^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0",
                 "spryker/glossary": "^3.0.0",
                 "spryker/kernel": "^3.30.0",
@@ -24810,6 +24859,7 @@
                 "spryker/zed-request": "^3.0.0"
             },
             "require-dev": {
+                "spryker/code-sniffer": "*",
                 "spryker/installer": "*",
                 "spryker/propel": "*",
                 "spryker/testify": "*"
@@ -24833,7 +24883,7 @@
                 "proprietary"
             ],
             "description": "Newsletter module",
-            "time": "2019-10-14T10:22:10+00:00"
+            "time": "2020-05-29T13:08:37+00:00"
         },
         {
             "name": "spryker/oauth",
@@ -25252,16 +25302,16 @@
         },
         {
             "name": "spryker/oms",
-            "version": "11.10.0",
+            "version": "11.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/oms.git",
-                "reference": "aec522cb062273b1ef7a6b88fdeb5f44742031a6"
+                "reference": "e83c4769e513430d3cfc03d77485c517df2884df"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/oms/zipball/aec522cb062273b1ef7a6b88fdeb5f44742031a6",
-                "reference": "aec522cb062273b1ef7a6b88fdeb5f44742031a6",
+                "url": "https://api.github.com/repos/spryker/oms/zipball/e83c4769e513430d3cfc03d77485c517df2884df",
+                "reference": "e83c4769e513430d3cfc03d77485c517df2884df",
                 "shasum": ""
             },
             "require": {
@@ -25273,6 +25323,7 @@
                 "spryker/kernel": "^3.33.0",
                 "spryker/mail": "^4.0.0",
                 "spryker/oms-extension": "^1.3.0",
+                "spryker/propel": "^3.22.0",
                 "spryker/propel-orm": "^1.0.0",
                 "spryker/sales": "^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0 || ^10.0.0 || ^11.0.0",
                 "spryker/sales-extension": "^1.7.0",
@@ -25289,7 +25340,6 @@
                 "spryker/code-sniffer": "*",
                 "spryker/config": "*",
                 "spryker/customer": "*",
-                "spryker/propel": "*",
                 "spryker/testify": "*"
             },
             "suggest": {
@@ -25312,7 +25362,7 @@
                 "proprietary"
             ],
             "description": "Oms module",
-            "time": "2020-06-30T07:17:36+00:00"
+            "time": "2020-07-06T13:07:59+00:00"
         },
         {
             "name": "spryker/oms-discount-connector",
@@ -31923,21 +31973,21 @@
         },
         {
             "name": "spryker/propel-orm",
-            "version": "1.10.0",
+            "version": "1.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/propel-orm.git",
-                "reference": "0b14139d2c0934863c7b1079e7256e8aea10bb2f"
+                "reference": "af0b76721674cfbf99d4356be7c5eddbf289e86f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/propel-orm/zipball/0b14139d2c0934863c7b1079e7256e8aea10bb2f",
-                "reference": "0b14139d2c0934863c7b1079e7256e8aea10bb2f",
+                "url": "https://api.github.com/repos/spryker/propel-orm/zipball/af0b76721674cfbf99d4356be7c5eddbf289e86f",
+                "reference": "af0b76721674cfbf99d4356be7c5eddbf289e86f",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2",
-                "propel/propel": "2.0.0-alpha8",
+                "propel/propel": "2.0.0-alpha10",
                 "spryker/config": "^3.0.0",
                 "spryker/error-handler": "^2.0.0",
                 "spryker/kernel": "^3.49.0",
@@ -31964,7 +32014,7 @@
                 "proprietary"
             ],
             "description": "PropelOrm module",
-            "time": "2020-05-20T07:56:57+00:00"
+            "time": "2020-07-13T16:58:06+00:00"
         },
         {
             "name": "spryker/propel-query-builder",
@@ -33140,16 +33190,16 @@
         },
         {
             "name": "spryker/sales",
-            "version": "11.10.0",
+            "version": "11.13.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/sales.git",
-                "reference": "8f335a528c5a5dc792edc8764ce471641ee5165f"
+                "reference": "a3b59acaad045a7de7f98da0978f8a3a3e8ff97d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/sales/zipball/8f335a528c5a5dc792edc8764ce471641ee5165f",
-                "reference": "8f335a528c5a5dc792edc8764ce471641ee5165f",
+                "url": "https://api.github.com/repos/spryker/sales/zipball/a3b59acaad045a7de7f98da0978f8a3a3e8ff97d",
+                "reference": "a3b59acaad045a7de7f98da0978f8a3a3e8ff97d",
                 "shasum": ""
             },
             "require": {
@@ -33208,7 +33258,7 @@
                 "proprietary"
             ],
             "description": "Sales module",
-            "time": "2020-06-18T10:06:30+00:00"
+            "time": "2020-07-06T13:07:59+00:00"
         },
         {
             "name": "spryker/sales-configurable-bundle",
@@ -33348,20 +33398,20 @@
         },
         {
             "name": "spryker/sales-order-threshold",
-            "version": "1.2.2",
+            "version": "1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/sales-order-threshold.git",
-                "reference": "0f830bb8f47c1d91c9701d32b56cb8553106bbaa"
+                "reference": "b450cae5180a416884a6ae790939e6fbd8cd52f8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/sales-order-threshold/zipball/0f830bb8f47c1d91c9701d32b56cb8553106bbaa",
-                "reference": "0f830bb8f47c1d91c9701d32b56cb8553106bbaa",
+                "url": "https://api.github.com/repos/spryker/sales-order-threshold/zipball/b450cae5180a416884a6ae790939e6fbd8cd52f8",
+                "reference": "b450cae5180a416884a6ae790939e6fbd8cd52f8",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
+                "php": ">=7.2",
                 "spryker/calculation-extension": "^1.0.0",
                 "spryker/cart-extension": "^1.6.0 || ^2.2.1 || ^4.0.0",
                 "spryker/checkout-extension": "^1.0.0",
@@ -33406,24 +33456,24 @@
                 "proprietary"
             ],
             "description": "SalesOrderThreshold module",
-            "time": "2019-10-14T10:22:10+00:00"
+            "time": "2020-06-30T06:41:06+00:00"
         },
         {
             "name": "spryker/sales-order-threshold-data-import",
-            "version": "0.1.1",
+            "version": "0.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/sales-order-threshold-data-import.git",
-                "reference": "536ae1bdebb27c18e6e5b970c765e5dd4c55ccfa"
+                "reference": "58c54b03104fdf152d295cfcf63c74f73d006cab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/sales-order-threshold-data-import/zipball/536ae1bdebb27c18e6e5b970c765e5dd4c55ccfa",
-                "reference": "536ae1bdebb27c18e6e5b970c765e5dd4c55ccfa",
+                "url": "https://api.github.com/repos/spryker/sales-order-threshold-data-import/zipball/58c54b03104fdf152d295cfcf63c74f73d006cab",
+                "reference": "58c54b03104fdf152d295cfcf63c74f73d006cab",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
+                "php": ">=7.2",
                 "spryker/currency": "^3.0.0",
                 "spryker/data-import": "^1.3.0",
                 "spryker/kernel": "^3.30.0",
@@ -33452,7 +33502,7 @@
                 "MIT"
             ],
             "description": "SalesOrderThresholdDataImport module",
-            "time": "2019-07-08T11:22:22+00:00"
+            "time": "2020-06-30T06:41:06+00:00"
         },
         {
             "name": "spryker/sales-order-threshold-extension",
@@ -33495,34 +33545,33 @@
         },
         {
             "name": "spryker/sales-order-threshold-gui",
-            "version": "1.5.1",
+            "version": "1.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/sales-order-threshold-gui.git",
-                "reference": "2a58c2b723641247264f1fd442ddba2dc36c7404"
+                "reference": "d4486d0732f4e3a2d6db2f82d7f71276749c6390"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/sales-order-threshold-gui/zipball/2a58c2b723641247264f1fd442ddba2dc36c7404",
-                "reference": "2a58c2b723641247264f1fd442ddba2dc36c7404",
+                "url": "https://api.github.com/repos/spryker/sales-order-threshold-gui/zipball/d4486d0732f4e3a2d6db2f82d7f71276749c6390",
+                "reference": "d4486d0732f4e3a2d6db2f82d7f71276749c6390",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
+                "php": ">=7.2",
                 "spryker/currency": "^3.1.0",
                 "spryker/gui": "^3.1.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/locale": "^3.0.0",
                 "spryker/money": "^2.1.0",
-                "spryker/sales-order-threshold": "^1.0.0",
+                "spryker/sales-order-threshold": "^1.3.0",
                 "spryker/sales-order-threshold-gui-extension": "^1.1.0",
                 "spryker/store": "^1.2.0",
                 "spryker/symfony": "^3.1.0",
                 "spryker/tax": "^5.0.0"
             },
             "require-dev": {
-                "spryker/code-sniffer": "*",
-                "spryker/testify": "*"
+                "spryker/code-sniffer": "*"
             },
             "type": "library",
             "extra": {
@@ -33540,7 +33589,7 @@
                 "proprietary"
             ],
             "description": "SalesOrderThresholdGui module",
-            "time": "2019-10-22T08:42:46+00:00"
+            "time": "2020-07-03T08:13:47+00:00"
         },
         {
             "name": "spryker/sales-order-threshold-gui-extension",
@@ -37017,16 +37066,16 @@
         },
         {
             "name": "spryker/tax",
-            "version": "5.8.9",
+            "version": "5.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/tax.git",
-                "reference": "96b1cdfc96206aec6c3183b1ff054738e4e99067"
+                "reference": "124accfef2eee3f71d9a6fec48fe29293545383e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/tax/zipball/96b1cdfc96206aec6c3183b1ff054738e4e99067",
-                "reference": "96b1cdfc96206aec6c3183b1ff054738e4e99067",
+                "url": "https://api.github.com/repos/spryker/tax/zipball/124accfef2eee3f71d9a6fec48fe29293545383e",
+                "reference": "124accfef2eee3f71d9a6fec48fe29293545383e",
                 "shasum": ""
             },
             "require": {
@@ -37064,7 +37113,7 @@
                 "proprietary"
             ],
             "description": "Tax module",
-            "time": "2020-06-23T15:47:40+00:00"
+            "time": "2020-07-08T08:09:21+00:00"
         },
         {
             "name": "spryker/tax-product-connector",
@@ -37765,21 +37814,22 @@
         },
         {
             "name": "spryker/user",
-            "version": "3.9.2",
+            "version": "3.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/user.git",
-                "reference": "c04500054c5cc6d17d22b240ca68b2e25a9ff911"
+                "reference": "ea3830bac6bc9fe08fabf24baf332d94cbaa86f6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/user/zipball/c04500054c5cc6d17d22b240ca68b2e25a9ff911",
-                "reference": "c04500054c5cc6d17d22b240ca68b2e25a9ff911",
+                "url": "https://api.github.com/repos/spryker/user/zipball/ea3830bac6bc9fe08fabf24baf332d94cbaa86f6",
+                "reference": "ea3830bac6bc9fe08fabf24baf332d94cbaa86f6",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2",
-                "spryker/gui": "^3.17.0",
+                "spryker/auth-mail-connector-extension": "^1.0.0",
+                "spryker/gui": "^3.33.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/session": "^3.1.1 || ^4.0.0",
                 "spryker/symfony": "^3.0.0",
@@ -37822,7 +37872,7 @@
                 "proprietary"
             ],
             "description": "User module",
-            "time": "2020-05-29T13:08:37+00:00"
+            "time": "2020-07-08T08:09:21+00:00"
         },
         {
             "name": "spryker/user-extension",
@@ -40065,16 +40115,16 @@
         },
         {
             "name": "symfony/polyfill-ctype",
-            "version": "v1.17.1",
+            "version": "v1.18.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-ctype.git",
-                "reference": "2edd75b8b35d62fd3eeabba73b26b8f1f60ce13d"
+                "reference": "1c302646f6efc070cd46856e600e5e0684d6b454"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/2edd75b8b35d62fd3eeabba73b26b8f1f60ce13d",
-                "reference": "2edd75b8b35d62fd3eeabba73b26b8f1f60ce13d",
+                "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/1c302646f6efc070cd46856e600e5e0684d6b454",
+                "reference": "1c302646f6efc070cd46856e600e5e0684d6b454",
                 "shasum": ""
             },
             "require": {
@@ -40086,7 +40136,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.17-dev"
+                    "dev-master": "1.18-dev"
                 },
                 "thanks": {
                     "name": "symfony/polyfill",
@@ -40123,20 +40173,20 @@
                 "polyfill",
                 "portable"
             ],
-            "time": "2020-06-06T08:46:27+00:00"
+            "time": "2020-07-14T12:35:20+00:00"
         },
         {
             "name": "symfony/polyfill-iconv",
-            "version": "v1.17.1",
+            "version": "v1.18.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-iconv.git",
-                "reference": "ba6c9c18db36235b859cc29b8372d1c01298c035"
+                "reference": "6c2f78eb8f5ab8eaea98f6d414a5915f2e0fce36"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-iconv/zipball/ba6c9c18db36235b859cc29b8372d1c01298c035",
-                "reference": "ba6c9c18db36235b859cc29b8372d1c01298c035",
+                "url": "https://api.github.com/repos/symfony/polyfill-iconv/zipball/6c2f78eb8f5ab8eaea98f6d414a5915f2e0fce36",
+                "reference": "6c2f78eb8f5ab8eaea98f6d414a5915f2e0fce36",
                 "shasum": ""
             },
             "require": {
@@ -40148,7 +40198,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.17-dev"
+                    "dev-master": "1.18-dev"
                 },
                 "thanks": {
                     "name": "symfony/polyfill",
@@ -40186,20 +40236,20 @@
                 "portable",
                 "shim"
             ],
-            "time": "2020-06-06T08:46:27+00:00"
+            "time": "2020-07-14T12:35:20+00:00"
         },
         {
             "name": "symfony/polyfill-intl-grapheme",
-            "version": "v1.17.1",
+            "version": "v1.18.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-intl-grapheme.git",
-                "reference": "6e4dbcf5e81eba86e36731f94fe56b1726835846"
+                "reference": "b740103edbdcc39602239ee8860f0f45a8eb9aa5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-intl-grapheme/zipball/6e4dbcf5e81eba86e36731f94fe56b1726835846",
-                "reference": "6e4dbcf5e81eba86e36731f94fe56b1726835846",
+                "url": "https://api.github.com/repos/symfony/polyfill-intl-grapheme/zipball/b740103edbdcc39602239ee8860f0f45a8eb9aa5",
+                "reference": "b740103edbdcc39602239ee8860f0f45a8eb9aa5",
                 "shasum": ""
             },
             "require": {
@@ -40211,7 +40261,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.17-dev"
+                    "dev-master": "1.18-dev"
                 },
                 "thanks": {
                     "name": "symfony/polyfill",
@@ -40250,7 +40300,7 @@
                 "portable",
                 "shim"
             ],
-            "time": "2020-06-06T08:46:27+00:00"
+            "time": "2020-07-14T12:35:20+00:00"
         },
         {
             "name": "symfony/polyfill-intl-icu",
@@ -40312,21 +40362,22 @@
         },
         {
             "name": "symfony/polyfill-intl-idn",
-            "version": "v1.17.1",
+            "version": "v1.18.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-intl-idn.git",
-                "reference": "a57f8161502549a742a63c09f0a604997bf47027"
+                "reference": "bc6549d068d0160e0f10f7a5a23c7d1406b95ebe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-intl-idn/zipball/a57f8161502549a742a63c09f0a604997bf47027",
-                "reference": "a57f8161502549a742a63c09f0a604997bf47027",
+                "url": "https://api.github.com/repos/symfony/polyfill-intl-idn/zipball/bc6549d068d0160e0f10f7a5a23c7d1406b95ebe",
+                "reference": "bc6549d068d0160e0f10f7a5a23c7d1406b95ebe",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.3",
-                "symfony/polyfill-mbstring": "^1.3",
+                "symfony/polyfill-intl-normalizer": "^1.10",
+                "symfony/polyfill-php70": "^1.10",
                 "symfony/polyfill-php72": "^1.10"
             },
             "suggest": {
@@ -40335,7 +40386,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.17-dev"
+                    "dev-master": "1.18-dev"
                 },
                 "thanks": {
                     "name": "symfony/polyfill",
@@ -40360,6 +40411,10 @@
                     "email": "laurent@bassin.info"
                 },
                 {
+                    "name": "Trevor Rowbotham",
+                    "email": "trevor.rowbotham@pm.me"
+                },
+                {
                     "name": "Symfony Community",
                     "homepage": "https://symfony.com/contributors"
                 }
@@ -40374,20 +40429,20 @@
                 "portable",
                 "shim"
             ],
-            "time": "2020-06-06T08:46:27+00:00"
+            "time": "2020-07-14T12:35:20+00:00"
         },
         {
             "name": "symfony/polyfill-intl-normalizer",
-            "version": "v1.17.1",
+            "version": "v1.18.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-intl-normalizer.git",
-                "reference": "40309d1700e8f72447bb9e7b54af756eeea35620"
+                "reference": "37078a8dd4a2a1e9ab0231af7c6cb671b2ed5a7e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-intl-normalizer/zipball/40309d1700e8f72447bb9e7b54af756eeea35620",
-                "reference": "40309d1700e8f72447bb9e7b54af756eeea35620",
+                "url": "https://api.github.com/repos/symfony/polyfill-intl-normalizer/zipball/37078a8dd4a2a1e9ab0231af7c6cb671b2ed5a7e",
+                "reference": "37078a8dd4a2a1e9ab0231af7c6cb671b2ed5a7e",
                 "shasum": ""
             },
             "require": {
@@ -40399,7 +40454,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.17-dev"
+                    "dev-master": "1.18-dev"
                 },
                 "thanks": {
                     "name": "symfony/polyfill",
@@ -40441,20 +40496,20 @@
                 "portable",
                 "shim"
             ],
-            "time": "2020-06-14T14:40:37+00:00"
+            "time": "2020-07-14T12:35:20+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "v1.17.1",
+            "version": "v1.18.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
-                "reference": "7110338d81ce1cbc3e273136e4574663627037a7"
+                "reference": "a6977d63bf9a0ad4c65cd352709e230876f9904a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/7110338d81ce1cbc3e273136e4574663627037a7",
-                "reference": "7110338d81ce1cbc3e273136e4574663627037a7",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/a6977d63bf9a0ad4c65cd352709e230876f9904a",
+                "reference": "a6977d63bf9a0ad4c65cd352709e230876f9904a",
                 "shasum": ""
             },
             "require": {
@@ -40466,7 +40521,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.17-dev"
+                    "dev-master": "1.18-dev"
                 },
                 "thanks": {
                     "name": "symfony/polyfill",
@@ -40504,20 +40559,83 @@
                 "portable",
                 "shim"
             ],
-            "time": "2020-06-06T08:46:27+00:00"
+            "time": "2020-07-14T12:35:20+00:00"
         },
         {
-            "name": "symfony/polyfill-php72",
-            "version": "v1.17.0",
+            "name": "symfony/polyfill-php70",
+            "version": "v1.18.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/symfony/polyfill-php72.git",
-                "reference": "f048e612a3905f34931127360bdd2def19a5e582"
+                "url": "https://github.com/symfony/polyfill-php70.git",
+                "reference": "0dd93f2c578bdc9c72697eaa5f1dd25644e618d3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php72/zipball/f048e612a3905f34931127360bdd2def19a5e582",
-                "reference": "f048e612a3905f34931127360bdd2def19a5e582",
+                "url": "https://api.github.com/repos/symfony/polyfill-php70/zipball/0dd93f2c578bdc9c72697eaa5f1dd25644e618d3",
+                "reference": "0dd93f2c578bdc9c72697eaa5f1dd25644e618d3",
+                "shasum": ""
+            },
+            "require": {
+                "paragonie/random_compat": "~1.0|~2.0|~9.99",
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.18-dev"
+                },
+                "thanks": {
+                    "name": "symfony/polyfill",
+                    "url": "https://github.com/symfony/polyfill"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Polyfill\\Php70\\": ""
+                },
+                "files": [
+                    "bootstrap.php"
+                ],
+                "classmap": [
+                    "Resources/stubs"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony polyfill backporting some PHP 7.0+ features to lower PHP versions",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "compatibility",
+                "polyfill",
+                "portable",
+                "shim"
+            ],
+            "time": "2020-07-14T12:35:20+00:00"
+        },
+        {
+            "name": "symfony/polyfill-php72",
+            "version": "v1.18.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-php72.git",
+                "reference": "639447d008615574653fb3bc60d1986d7172eaae"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/polyfill-php72/zipball/639447d008615574653fb3bc60d1986d7172eaae",
+                "reference": "639447d008615574653fb3bc60d1986d7172eaae",
                 "shasum": ""
             },
             "require": {
@@ -40526,7 +40644,11 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.17-dev"
+                    "dev-master": "1.18-dev"
+                },
+                "thanks": {
+                    "name": "symfony/polyfill",
+                    "url": "https://github.com/symfony/polyfill"
                 }
             },
             "autoload": {
@@ -40559,20 +40681,20 @@
                 "portable",
                 "shim"
             ],
-            "time": "2020-05-12T16:47:27+00:00"
+            "time": "2020-07-14T12:35:20+00:00"
         },
         {
             "name": "symfony/polyfill-php73",
-            "version": "v1.17.1",
+            "version": "v1.18.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php73.git",
-                "reference": "fa0837fe02d617d31fbb25f990655861bb27bd1a"
+                "reference": "fffa1a52a023e782cdcc221d781fe1ec8f87fcca"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php73/zipball/fa0837fe02d617d31fbb25f990655861bb27bd1a",
-                "reference": "fa0837fe02d617d31fbb25f990655861bb27bd1a",
+                "url": "https://api.github.com/repos/symfony/polyfill-php73/zipball/fffa1a52a023e782cdcc221d781fe1ec8f87fcca",
+                "reference": "fffa1a52a023e782cdcc221d781fe1ec8f87fcca",
                 "shasum": ""
             },
             "require": {
@@ -40581,7 +40703,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.17-dev"
+                    "dev-master": "1.18-dev"
                 },
                 "thanks": {
                     "name": "symfony/polyfill",
@@ -40621,20 +40743,20 @@
                 "portable",
                 "shim"
             ],
-            "time": "2020-06-06T08:46:27+00:00"
+            "time": "2020-07-14T12:35:20+00:00"
         },
         {
             "name": "symfony/polyfill-php80",
-            "version": "v1.17.1",
+            "version": "v1.18.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php80.git",
-                "reference": "4a5b6bba3259902e386eb80dd1956181ee90b5b2"
+                "reference": "d87d5766cbf48d72388a9f6b85f280c8ad51f981"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php80/zipball/4a5b6bba3259902e386eb80dd1956181ee90b5b2",
-                "reference": "4a5b6bba3259902e386eb80dd1956181ee90b5b2",
+                "url": "https://api.github.com/repos/symfony/polyfill-php80/zipball/d87d5766cbf48d72388a9f6b85f280c8ad51f981",
+                "reference": "d87d5766cbf48d72388a9f6b85f280c8ad51f981",
                 "shasum": ""
             },
             "require": {
@@ -40643,7 +40765,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.17-dev"
+                    "dev-master": "1.18-dev"
                 },
                 "thanks": {
                     "name": "symfony/polyfill",
@@ -40687,7 +40809,7 @@
                 "portable",
                 "shim"
             ],
-            "time": "2020-06-06T08:46:27+00:00"
+            "time": "2020-07-14T12:35:20+00:00"
         },
         {
             "name": "symfony/process",
@@ -46726,6 +46848,99 @@
             "time": "2019-06-05T07:55:43+00:00"
         },
         {
+            "name": "spryker/sales-invoice",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/sales-invoice.git",
+                "reference": "db9bce3bfb3c56615ca0d0f8e8e08860d0e05b57"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/sales-invoice/zipball/db9bce3bfb3c56615ca0d0f8e8e08860d0e05b57",
+                "reference": "db9bce3bfb3c56615ca0d0f8e8e08860d0e05b57",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/glossary": "^3.0.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/mail": "^4.3.0",
+                "spryker/propel-orm": "^1.0.0",
+                "spryker/sales": "^11.11.0",
+                "spryker/sales-invoice-extension": "^1.0.0",
+                "spryker/sequence-number": "^3.0.0",
+                "spryker/symfony": "^3.0.0",
+                "spryker/twig": "^3.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/customer": "*",
+                "spryker/oms": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/oms": "If you want to use GenerateOrderInvoiceCommandPlugin plugin"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/",
+                    "SprykerTest\\Shared\\SalesInvoice\\Helper\\": "tests/SprykerTest/Shared/SalesInvoice/_support/Helper/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "SalesInvoice module",
+            "time": "2020-07-03T11:39:16+00:00"
+        },
+        {
+            "name": "spryker/sales-invoice-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/sales-invoice-extension.git",
+                "reference": "9472ae6a878a487acf51ae937fcb972ef80c4e1b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/sales-invoice-extension/zipball/9472ae6a878a487acf51ae937fcb972ef80c4e1b",
+                "reference": "9472ae6a878a487acf51ae937fcb972ef80c4e1b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "SalesInvoiceExtension module",
+            "time": "2020-06-29T08:34:25+00:00"
+        },
+        {
             "name": "spryker/sales-returns-rest-api",
             "version": "1.0.0",
             "source": {
@@ -47992,7 +48207,25 @@
             "alias": "202006.0",
             "alias_normalized": "202006.0",
             "version": "9999999-dev",
+            "package": "spryker-feature/mailing-notifications"
+        },
+        {
+            "alias": "202006.0",
+            "alias_normalized": "202006.0",
+            "version": "9999999-dev",
+            "package": "spryker-feature/merchant-order-threshold"
+        },
+        {
+            "alias": "202006.0",
+            "alias_normalized": "202006.0",
+            "version": "9999999-dev",
             "package": "spryker-feature/order-management"
+        },
+        {
+            "alias": "202006.0",
+            "alias_normalized": "202006.0",
+            "version": "9999999-dev",
+            "package": "spryker-feature/order-threshold"
         },
         {
             "alias": "202006.0",
@@ -48054,7 +48287,10 @@
         "spryker-feature/checkout": 20,
         "spryker-feature/custom-order-reference": 20,
         "spryker-feature/customer-account-management": 20,
+        "spryker-feature/mailing-notifications": 20,
+        "spryker-feature/merchant-order-threshold": 20,
         "spryker-feature/order-management": 20,
+        "spryker-feature/order-threshold": 20,
         "spryker-feature/product-barcode": 20,
         "spryker-feature/product-labels": 20,
         "spryker-feature/product-relations": 20,
