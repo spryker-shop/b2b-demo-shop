@@ -117,7 +117,7 @@
                             } only %}
 
                             <div class="col">
-                                <button class="button button--alternative button--big button--expand button--no-horizontal-padding" {{ data.isDisabled ? 'disabled' }} data-init-single-click {{ qa('add-to-cart-button') }}>
+                                <button class="button button--alternative button--big button--expand button--no-horizontal-padding" {{ data.isDisabled ? 'disabled' : 'data-init-single-click' }} {{ qa('add-to-cart-button') }}>
                                     {% include atom('icon') with {
                                         modifiers: ['cart-plus'],
                                         data: {

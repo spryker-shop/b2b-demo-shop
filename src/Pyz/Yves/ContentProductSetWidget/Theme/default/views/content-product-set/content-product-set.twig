@@ -21,11 +21,13 @@
                 modifiers: ['secondary'],
                 class: 'spacing-bottom spacing-bottom--reset',
                 data: {
-                    title: data.title
+                    title: data.title,
                 },
                 embed: {
                     products: data.products,
                     description: data.description,
+                    formClass: 'text-center',
+                    parentConfig: config,
                 },
             } only %}
                 {% block inner %}
@@ -35,22 +37,26 @@
                         {% endif %}
                     </div>
                     {% if is_granted('ROLE_USER') %}
-                        <form method="POST" class="text-center" action="{{ path('cart/add-items') }}">
-                            {% set isDisabled = false %}
+                        {% widget 'AddItemsFormWidget' args [embed.parentConfig, embed, embed.products] only %}
+                            {% block embeddedData %}
+                                {% set isDisabled = false %}
 
-                            {% for product in embed.products %}
-                                {% if product.idProductConcrete is not empty and product.available %}
-                                    <input type="hidden" name="items[{{ loop.index }}][sku]" value="{{ product.sku }}">
-                                    <input type="hidden" name="items[{{ loop.index }}][quantity]" value="1">
-                                {% else %}
-                                    {% set isDisabled = true %}
-                                {% endif %}
-                            {% endfor %}
+                                {% for product in data.products %}
+                                    {% if product.idProductConcrete is not empty and product.available %}
+                                        <input type="hidden" name="items[{{ loop.index }}][sku]" value="{{ product.sku }}">
+                                        <input type="hidden" name="items[{{ loop.index }}][quantity]" value="1">
+                                    {% endif %}
 
-                            <button type="submit" class="button" data-init-single-click {{ isDisabled ? 'disabled' }}>
-                                {{ 'product.set.detail.add-all-to-cart' | trans }}
-                            </button>
-                        </form>
+                                    {% if product.idProductConcrete is empty %}
+                                        {% set isDisabled = true %}
+                                    {% endif %}
+                                {% endfor %}
+
+                                <button class="button" {{ isDisabled ? 'disabled' : 'data-init-single-click' }}>
+                                    {{ 'product.set.detail.add-all-to-cart' | trans }}
+                                </button>
+                            {% endblock %}
+                        {% endwidget %}
                     {% endif %}
                 {% endblock %}
             {% endembed %}
