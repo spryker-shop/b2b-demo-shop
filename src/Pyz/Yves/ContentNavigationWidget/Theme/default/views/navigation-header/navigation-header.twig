@@ -1,0 +1,19 @@
+{% extends template('widget') %}
+
+{% define data = {
+    navigation: navigation,
+} %}
+
+{% block body %}
+    {% include molecule('navigation-multilevel') with {
+        data: {
+            nodes: data.navigation.nodes,
+            menuInline: true,
+            menuDropdown: true,
+        },
+        attributes: {
+            'class-to-toggle': 'is-shown',
+            'available-breakpoint': '1024',
+        },
+    } only %}
+{% endblock %}
