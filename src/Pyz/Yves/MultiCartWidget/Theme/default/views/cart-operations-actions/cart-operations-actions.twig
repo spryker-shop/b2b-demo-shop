@@ -1,9 +1,4 @@
-{% extends template('widget') %}
-
-{% define data = {
-    idQuote: _widget.cart.idQuote,
-    multiCartClearForm: _widget.multiCartClearForm,
-} %}
+{% extends view('cart-operations-actions', '@SprykerShop:MultiCartWidget') %}
 
 {% block body %}
     {{ form_start(data.multiCartClearForm, {'action': path('multi-cart/clear', {'idQuote': data.idQuote}) }) }}

@@ -341,10 +341,7 @@
 
                 {% if isQuoteEnadled and can('RemoveCartItemPermissionPlugin') %}
                     <div class="grid grid--right cart-bottom">
-                        {% widget 'CartOperationsWidget' args [data.cart] use view('cart-operations-actions', 'MultiCartWidget') only %}
-                        {% nowidget %}
-                            {{ widgetBlock('CartOperationsWidgetPlugin', 'actions', data.cart) }} {# @deprecated Use CartOperationsWidget instead. #}
-                        {% endwidget %}
+                        {% widget 'CartOperationsWidget' args [data.cart] use view('cart-operations-actions', 'MultiCartWidget') only %}{% endwidget %}
                     </div>
                 {% endif %}
 
