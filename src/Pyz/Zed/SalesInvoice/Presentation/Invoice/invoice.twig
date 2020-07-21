@@ -1,0 +1,215 @@
+{# @var order \Generated\Shared\Transfer\OrderTransfer #}
+{# @var invoice \Generated\Shared\Transfer\OrderInvoiceTransfer #}
+
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+
+    <style type="text/css">
+        body {
+            margin: 0;
+            padding: 0;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        table {
+            max-width: 600px;
+            margin: 0 auto;
+            border-collapse: collapse;
+        }
+        .products-table {
+            border: 1px solid #000;
+        }
+        .products-table td,
+        .products-table th {
+            padding: 5px 10px;
+        }
+        .background-gray {
+            background: #e6e6e6;
+        }
+        .text-small {
+            font-size: 13px;
+        }
+        .spacing-bottom {
+            padding-bottom: 15px;
+        }
+        .spacing-right {
+            padding-right: 15px;
+        }
+        .align-top {
+            vertical-align: top;
+        }
+        .text-left {
+            text-align: left;
+        }
+        .text-center {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <td width="300" class="align-top">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALkAAABzCAYAAADE3qOOAAAACXBIWXMAAAsSAAALEgHS3X78AAAOXklEQVR42u1dXYgb1xk9a+48pJtGm+y+JqvivNgEVn1K8rRyIdjYrFbp1uS3tTYQQm0Sy9CfpHmwTEnTErdWaJI+ejakbSC40WppSWiIZ0ugDaVEC8Em/qEj+3WXamnSFw1sH3RHGV3dO3NHGu3OjL4DgtVqpPm55557vm++e2diZ2cHSUShsJCv19csEAgB2JfgY89R8xHSTvJGobBQpCYkpJrkAIjkhPSSvF5fawHIFQoLU9SMhLQqOQDYpOaEtJO8ASBPzUhIO8lJyQmptyuZQmGB1JyQTpLX62sN/iepOSG1Su6ClJyQapKvA5ijVCIh7UpOak5Qk5wxI5vwc2gQyQlBSp50kreI5IQgkqelmm+OmpOgIrnNmJHkoM12/6B8OUFF8lbC1dym4JMQRPJGiiwLTaQg9JPccdqtFASfLrLUpASZkqcJFHwSlCRPiydHobBAloUgJXmDMSOR5KjX12yyLAQdkqfJl5OSE6Qkt1JEDlJygpTkNtKTYyaSE/pJ7jhtG8A82RVCmpUcADaSGnwKyFCzElQkt9OigoXCAlkWgpTkaVregUhOSD3JCQSlXZlNeNmtC+qshH6SO06bppERUq/kQGfmO5GckGqS2ykhOQWeBCXJGwDmUuDLieQEX5KTLyekl+SO07aSRnJaOYsQVskBoIlkLaBJtSqE0CS30MmXk6+NEIwZecYMkzHDZszYEV42Y0aNMaOY4POrMWZYnldsxIdJ/tcAcIJbFpOCzKEbfwpADf5VnrP8tciYsQ6gyCeYJwmLwvvY2Mh9CpIjQZYl7iOOhXBlzPP8O4RRKbnjtC3GjCQFn7ElOWNGCf0rCGxzEnszWTn0lgjPMWaUHKdtEkVHY1cAYINf6Lwn40IkHz4obgLIiVaEW5oGtyzwkJ9IPkKSW1yBigkYOnMJOjZT5rUdp91izDABnJV1Xh7EuR635dYZ8UDV3UfDcdo1VdDreWvzmWA9v8tH8CnP73W3U8QZOfF4NEc3d5/S3+fH6h5vC4Cl+n2f65L1XL+GiuReX16OK4N4jjzOM4Eagh8vMWZUFUFlVRAU7zafCY27zLfPCP/fBlD22hxOmsveUZoxwwJQ8n6fMeMQJ9dZj61SBY8VAKc97ydC2LeL/G1PnRRjRpn/bkbyvSY/L7ETi9fljOQ3zvkpOcBTiaoeHQPEPW5oSLIoNlftGlfflqvmIUbNi4r/ZwBc5G1WUWwzB72VxjKMGUXF6FAaMD65qPjMRCejp8IsgPcZM5YD4pQLutkVd2JzMwFZlljfCOINsiEh4mmurv/heXKLMaMaYW75rGBRBkVRQshi2NEzgODFAIL3dO5BrpHfWojWoL2WlLzvGDcCtpnnxP8sxI2UVQCH+OucwlL4YZ1/z301ICy5B6AoKdYrSpIUgxDcVBznNoBlfl7L/L0XQfa5KZxXjQUMtSd4lmUqpjcnYr+MBr9uOd7YZQ2rMA/A4pktVUC37jhtL9ksxoyWMFzP+1STvu447bKEkDXB62c4qU0fklcHIPiy47RNHiCK16Pozejxc/Ce1wkf4V13nHZ+ECWPpWUpFBb8jqkVQ7KbjtPOAbibq9QZAK9zRZV5a8uHpDXJ71dD2LmqT4esqZRbYlW2ZcficQBKgvscX5Exo+K+ZKO1jxWT+nXm0ygNHq3LenMcUAwR8Pml1fI+v9GIOuj2BJiiWpXRm0L0u+6q89vQCSoDzqkieORFz0guKmjNZ4SX+exzQuAoI/npIS6vHYrkHsU4IZxoEkguEjrHyZznF3ZW86tNxoyyKv+ssd8yetNwpoxg/LpWeMfzWrBsyF1ORdAJbV4/My+oaw399SnVkD9fZsyohcmrR4EgklueHhkbNedWJaNJNFnjBGEdQHVQcvuktBoqtfF8rhNn5AQ76Y4GsxFdYlM4DlmwtzEAWV0bluUdW/b91zXsph01yb0eKy6WpRjiIoRJOTUBlCIsZViXkEV1V3IqxOhUlqhoSdFpQqfceFDoDUDnJESvhrimsxKi5xUkbwg3s7LCiNYKayGZxtDlHuR8HG4M8bucJ0KQXEfdtgFUFMHbMBBLbOcZM2xOkIbQEcuSY1V1tll+17LKVS8v+HkAWOXlAsOoudcfz2kGnD1BJt/OEr4/x61bUWKNqpzYFu+4Yluvhk2EMM2GOu1R0Cr2FtplBpoTP1a5eo8i3jB5Q80Jne6CzigQMKLMB1ibYdup6hME1jSuVzfI5KptCxZz0RPoXhaU/qyk0w58XjoPxrIChsTdVvFAktfra5ZG4LbN01kjm6DgyUhshPzqBoZL2y4Pa7n4iL06BNEs4Trk0X9jx51XvKx5WCuDnNc+jZP1DktzezytqYxwt5SnfEiU3416bR6c5dG5+9bUIPey47RzAR3vjOK3mgAejfC8zIgCTu91kBHdBPCoz/XZ5iPDQCLLNLdb9QwvJexBZaKuigsXKrfL9sRP0SvopAndQKpbcuq+QsQ7DcdpZ7kN8JbaWgqlnBjw0Fu6Ku447QlNok/5iGmNi6h7fdzrYg26zzAkt/aa5CFU3A4Y7vbUcnEi24igTp83vhXl8Ql3GUWR2B716Mc7QkMzsI3Mk0PYYWa3Z5XzRfV1O5aX5HkhENpTgicEeU9QK4pKJYkntE+zd9lC8LTbZKmE8OK2IhCrEH+HwsoIUqzxIblEzRd3a12WQmEhD/16Y6A//3yGJgQP7MPXAawAOJTkUZCFJPlZQc13Qx2rQzSSmVT1kQTLU5pxx7CeuJi2Xjuxs7MTJiip8YudBTDlOO2RLiBTKCyUoXfjpIt6fW0CBMKASt7TyxkzsqOsTOQpwzAjxUpSAyNCjEguCUZHCd2U4QqASr2+ZlNzEgayKzzAdBWygq8L/q1RBXRcxe0AkhO5CcMrOS/6vyCoawudbMcJni8fxd1DlYpv80DUFMntzvSJy4pf++/fn8eYPczg5o2blUSRXLEWhjtxwiX+IjrriOQjnu1RVpC7Wq+vtSTkrvCAOE6kykNdSZdWJIfk/NauLDftrqjlVfduEXwURBdm/eiQ2y03PZTA5Y4Je0Fy7sFVCrSIr0tH5yREz0ZAtCI6RVYVADUNcgOdJRYsak6CrpJXNEhooj9/nUHnhtGwlsGq19dKks4nI7er9hVqSoIKfbf1Haddcpz2BC9j/Db6a5eLUFeIzfNgdWDU62umQO4Sn+p1GfKZMGWyKYRQJBcI33CcdtVx2llO9m1uWVpQz3apRPEcUE5uG50FalTTvJpUl0IYiuQC4avoFDxtwH95isww9kEgd9Ak5BI1IWEQT+5HdNszG8UtbpehNQC5s+BPntP8ynpags3Ze+/DBx9+qPz8+hfX8PFHH+Gdd/+Iza3Nns8eyX8HR48dw5FjRwO3/eRvn2B6Zjr0PpKOUAVaI+1tnbRlmLzycpytyv7792ufzwMHDuK9S5cCt9va3ELx0WKXhBde+3WX3EHbAsDVK1dD7yMMbt64GcviuH1DEnOKP58yH0F9eahFgNLqxQ8cPND3OnL4MD79+z8wPTONpx9/AgDw3UIRR44dxdbmFl5+8aXutseXlrrbvvziS9J9HF9a0trH2HlyH1R55uPfkoewlkZE8grGCM3bt/C7t94CAHzvsccAAIXFzpTb35w/jz/Vv052fX71Cs6ffw0AcOTYUUzeMTnwPojk6M5CL0KyzMAAgaGuF9ddvSlV+Op/XwFA11M/+PBDAIBr16/1bfv51Svdv7+VnR14H2MZePoEoyUA70s+1lpaLmTKsTaOefHJb0x2A0QAOHL4ML555509hI56H6TkvUSvQb3aUj5iq1IdN4LP3nsffnjyJADAvHixay9UBJ+99z6pqvthZnqmbx+k5HJrYqO/RDbKJZ+bu7229W5DlQFxA0yv/1ah/EJnCcN3f/8H6eeqTE6YfYydknv8uSwgXIzweMfOi4dF+dTz3bSi+fYKXZCIlRyO067y2pVZwXNH9fhyM+0NcuDgAan9OFc5h1d++SruuusumO+83e+n75jEs888g+dOdSzHCydPoXn7lnQfx5eW+mzMzPQMnn78Cd99jL2SB2RU8hH8buqtivLEb9/Cj37yYwDAT3/2Ul9acGZ6Bm++8QaeO3USW5tbeOHkKfzV+jjUPja3NlF987e4/sU16T6I5L1qbqH/iWZRrIRrYYzhvQPpTQs+cOAgau/X8ODDD+H6F9fw1FNPhia4Fzdv3OjbB5FcjkoYJde0MmPtx73K+t8vvwTQuev53qVLmJ6Zxgd//gueePJJpUXRxd333NOzD/LkPqRlzPDOHspEsEbL2Cq565eBTg67efsWyqee7/rvX/3i1aE99OQdkzj8yCPdEWHYzhInjKxAS/I03kN+is0nRqjqxjf4g14Tg1EUaAFA6fs/wKf/+qdWsRXQSSOee+XnAKD9HXcf4a1OCgu0AtTcRPCC+F7YPp+NZcApkvX40tJA5IvTPlJjVzwwPWoWdOvegnr12lST/POrV6SpQz+E3X7Q71DgqUdyXSW3SMkJiSO58ASxKY1tm6pAlpqKEFclB8Kl/mTbblMzEZJC8qzGtlWyKoTEkZznxlehMSmCWxbxbqlNzUSIu5KHtSwVIjkh1SRX1L4QCPEmObcsYYhbIU9OiApsF/cVSs0ZM1bQuTmU1PmcNo1I8UBsFhfq632dyc0NdJ5kYVFTEeLuyQe1OKUEKzmBlJxAGHMl55YlT01ESBTJ+QNus5rbVgBcZszIUTMRkqTkLQAN/mhEP4JXoV+iSyDEh+Q8mKwCMAMUndSbkGhP7hZh+T1byKveNjUTIVEk52qeB1BizDDFxT65lXEnQK8ELRZKIARhz1KInMwm9+kmOjODslzpM+jUkeeI5ITEkpwTfQqdOpUiektx1wEU6dGFhMSTXCB8FkCWbuETosb/AbJQ+0Afz1DYAAAAAElFTkSuQmCC" width="150" alt="Logo">
+            </td>
+            <td width="300">
+                <strong>{{ 'order_invoice.invoice_template.company.name' | trans }}</strong>
+                <div class="spacing-bottom text-small">{{ 'order_invoice.invoice_template.company.group' | trans }}</div>
+                <div class="spacing-bottom text-small">{{ 'order_invoice.invoice_template.company.address' | trans | raw }}</div>
+            </td>
+        </tr>
+        <tr>
+            <td width="300">
+                <div class="spacing-bottom spacing-right">
+                    <strong>{{ 'order_invoice.invoice_template.merchant.name' | trans }}</strong>
+                    <div class="text-small">{{ 'order_invoice.invoice_template.merchant.address' | trans }}</div>
+                </div>
+                <div class="spacing-bottom">
+                    {{ order.billingAddress.firstName }} {{ order.billingAddress.lastName }}<br>
+                    {{ order.billingAddress.address1 }} {{ order.billingAddress.address2 }} {{ order.billingAddress.address3 }}<br>
+                    {{ order.billingAddress.zipcode }} {{ order.billingAddress.city }}<br>
+                    {{ order.billingAddress.region }}
+                </div>
+            </td>
+            <td width="300" class="align-top">
+                <div class="spacing-bottom">{{ invoice.issueDate | date('d. M Y') }}</div>
+            </td>
+        </tr>
+    </table>
+
+    <table>
+        <tr>
+            <td width="600">
+                <div class="spacing-bottom">
+                    <strong>{{ 'order_invoice.invoice_template.reference' | trans }} {{ invoice.reference }}</strong>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td width="600">
+                <div class="spacing-bottom">{{ 'order_invoice.invoice_template.introduction' | trans }}</div>
+            </td>
+        </tr>
+    </table>
+
+    <table class="products-table">
+        <thead>
+            <tr class="background-gray">
+                <th width="75"><strong>{{ 'order_invoice.invoice_template.table.number' | trans }}</strong></th>
+                <th width="75"><strong>{{ 'order_invoice.invoice_template.table.quantity' | trans }}</strong></th>
+                <th width="275" class="text-left"><strong>{{ 'order_invoice.invoice_template.table.name' | trans }}</strong></th>
+                <th width="100"><strong>{{ 'order_invoice.invoice_template.table.tax' | trans }}</strong></th>
+                <th width="75"><strong>{{ 'order_invoice.invoice_template.table.price' | trans | raw }}</strong></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% set linenumber = 0 %}
+            {% set renderedBundles = [] %}
+            {% set taxes = {} %}
+            {% set itemSumByTaxes = {} %}
+
+            {% for item in order.items %}
+                {# @var item \Generated\Shared\Transfer\ItemTransfer #}
+
+                {% set taxRate = item.taxRate %}
+                {% set rateSum = taxes[item.taxRate] | default(0) + item.sumTaxAmountFullAggregation %}
+                {% set taxes = taxes | merge({ (taxRate): rateSum }) %}
+                {% set rateItemSum = itemSumByTaxes[taxRate] | default(0) + item.sumPriceToPayAggregation %}
+                {% set itemSumByTaxes = itemSumByTaxes | merge({ (taxRate): rateItemSum }) %}
+
+                {% if item.productBundle is not defined or item.productBundle is null %}
+                    {% set linenumber = linenumber + 1 %}
+
+                    <tr>
+                        <td class="text-center">{{ linenumber }}</td>
+                        <td class="text-center">{{ item.quantity }}</td>
+                        <td>{{ item.name }}</td>
+                        <td class="text-center">{{ item.taxRate | number_format }}%</td>
+                        <td class="text-center">{{ item.sumPriceToPayAggregation | money(true, order.currencyIsoCode) }}</td>
+                    </tr>
+                {% endif %}
+
+                {% if item.productBundle is defined and item.productBundle is not null and item.relatedBundleItemIdentifier not in renderedBundles %}
+                    {# @var productBundle \Generated\Shared\Transfer\ItemTransfer #}
+
+                    {% set linenumber = linenumber + 1 %}
+                    {% set productBundle = item.productBundle %}
+
+                    <tr>
+                        <td class="text-center">{{ linenumber }}</td>
+                        <td class="text-center">{{ productBundle.quantity }}</td>
+                        <td>{{ productBundle.name }}</td>
+                        <td class="text-center">{{ productBundle.taxRate | number_format }}%</td>
+                        <td class="text-center">{{ productBundle.sumPriceToPayAggregation | money(true, order.currencyIsoCode) }}</td>
+                    </tr>
+
+                    {% for bundleditem in order.items if item.relatedBundleItemIdentifier == bundleditem.relatedBundleItemIdentifier %}
+                        <tr>
+                            <td></td>
+                            <td class="text-center">{{ bundleditem.quantity }}</td>
+                            <td>{{ bundleditem.name }}</td>
+                            <td class="text-center">{{ bundleditem.taxRate | number_format }}%</td>
+                            <td class="text-center">{{ bundleditem.sumPriceToPayAggregation | money(true, order.currencyIsoCode) }}</td>
+                        </tr>
+                    {% endfor %}
+
+                    {% set renderedBundles = renderedBundles | merge([item.relatedBundleItemIdentifier]) %}
+                {% endif %}
+            {% endfor %}
+
+            {% for expense in order.expenses %}
+                {% set linenumber = linenumber + 1 %}
+                {% set taxRate = expense.taxRate %}
+                {% set rateSum = taxes[expense.taxRate] | default(0) + expense.sumTaxAmount %}
+                {% set taxes = taxes | merge({ (taxRate): rateSum }) %}
+                {% set rateItemSum = itemSumByTaxes[taxRate] | default(0) + expense.sumPriceToPayAggregation %}
+                {% set itemSumByTaxes = itemSumByTaxes | merge({ (taxRate): rateItemSum }) %}
+
+                <tr>
+                    <td class="text-center">{{ linenumber }}</td>
+                    <td></td>
+                    <td>{{ expense.name }}</td>
+                    <td class="text-center">{{ expense.taxRate | number_format }}%</td>
+                    <td class="text-center">{{ expense.sumPrice | money(true, order.currencyIsoCode) }}</td>
+                </tr>
+            {% endfor %}
+
+            <tr class="background-gray">
+                <td colspan="3"></td>
+                <td>{{ 'order_invoice.invoice_template.table.subtotal' | trans }}</td>
+                <td class="text-center">{{ order.totals.subtotal | money(true, order.currencyIsoCode) }}</td>
+            </tr>
+            <tr class="background-gray">
+                <td colspan="3"></td>
+                <td>{{ 'order_invoice.invoice_template.table.discount' | trans }}</td>
+                <td class="text-center">{{ order.totals.discountTotal | money(true, order.currencyIsoCode) }}</td>
+            </tr>
+
+            {% for rate, tax in taxes %}
+                <tr>
+                    <td colspan="2">{{ 'order_invoice.invoice_template.table.tax.included' | trans({ '%tax_rate%': rate | number_format }) }}</td>
+                    <td class="text-center">{{ (itemSumByTaxes[rate] - tax) | money(true, order.currencyIsoCode) }}</td>
+                    <td class="text-center">{{ 'order_invoice.invoice_template.table.tax.name' | trans }}</td>
+                    <td class="text-center">{{ tax | money(true, order.currencyIsoCode) }}</td>
+                </tr>
+            {% endfor %}
+
+            <tr>
+                <td colspan="2">{{ 'order_invoice.invoice_template.table.total.net' | trans }}</td>
+                <td class="text-center">{{ (order.totals.grandTotal - order.totals.taxTotal.amount) | money(true, order.currencyIsoCode) }}</td>
+                <td colspan="2"></td>
+            </tr>
+            <tr class="background-gray">
+                <td colspan="3"></td>
+                <td><strong>{{ 'order_invoice.invoice_template.table.grandtotal' | trans }}</strong></td>
+                <td class="text-center">{{ order.totals.grandTotal | money(true, order.currencyIsoCode) }}</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

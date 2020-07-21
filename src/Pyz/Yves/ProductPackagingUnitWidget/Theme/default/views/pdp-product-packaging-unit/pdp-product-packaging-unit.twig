@@ -10,8 +10,10 @@
     <input id="item-base-price" type="hidden" value="{{ data.product.price }}">
     <input id="item-money-symbol" type="hidden" value="{{  moneySymbol() }}">
 
-    {% if data.salesUnitCount %}
-        {% set isQuantityRowJustify = (data.salesUnitCount > 1 and data.packagingUnitIsSelfLead == false) ? 'grid--justify' %}
+    {% set salesUnitCount = data.salesUnits | length %}
+
+    {% if salesUnitCount %}
+        {% set isQuantityRowJustify = (salesUnitCount > 1 and data.packagingUnitIsSelfLead == false) ? 'grid--justify' %}
 
         <div class="grid grid--middle {{ isQuantityRowJustify }}">
             <div class="col measurement-unit">
@@ -32,7 +34,7 @@
                 </div>
             </div>
 
-            {% if data.salesUnitCount > 1 and data.packagingUnitIsSelfLead == false %}
+            {% if salesUnitCount > 1 and data.packagingUnitIsSelfLead == false %}
                 <div class="col col--sm-12 col--md-auto col--lg-12 col--xxl-auto measurement-unit">
                     <div class="measurement-unit__label">{{ 'packaging_units.pdp.sales-units' | trans }}:</div>
                     <div class="measurement-unit__value">
@@ -60,7 +62,7 @@
                 </div>
             {% endif %}
 
-            {% if data.salesUnitCount == 1 and data.packagingUnitIsSelfLead == false %}
+            {% if salesUnitCount == 1 and data.packagingUnitIsSelfLead == false %}
                 <div class="col measurement-unit">
                     <div class="measurement-unit__value">{{ data.salesUnits[0].productMeasurementUnit.name | trans }}</div>
                     <input type="hidden" name="id-product-measurement-sales-unit" value="{{ data.salesUnits[0].idProductMeasurementSalesUnit }}">
@@ -69,7 +71,7 @@
         </div>
     {% endif %}
 
-    {% if not data.salesUnitCount %}
+    {% if not salesUnitCount %}
         <div class="grid grid--stretch grid--justify">
             {% embed molecule('quantity-counter') with {
                 modifiers: ['right-space'],
@@ -111,11 +113,11 @@
         </div>
     </div>
 
-    {% if data.productPackagingUnit and data.salesUnitCount %}
+    {% if data.productPackagingUnit and salesUnitCount %}
         {% set defaultAmount = (data.productPackagingUnit.amountMin and data.productPackagingUnit.defaultAmount.toFloat() < data.productPackagingUnit.amountMin.toFloat()) ?
             data.productPackagingUnit.amountMin :
             data.productPackagingUnit.defaultAmount %}
-        {% set isAmountRowJustify = (data.salesUnitCount and data.leadProductSalesUnits | length > 1) ? 'grid--justify' %}
+        {% set isAmountRowJustify = (salesUnitCount and data.leadProductSalesUnits | length > 1) ? 'grid--justify' %}
 
         <div class="grid grid--middle {{ isAmountRowJustify }}">
             <div class="col measurement-unit">
@@ -143,7 +145,7 @@
                 </div>
             </div>
 
-            {% if data.salesUnitCount and data.leadProductSalesUnits | length > 1 %}
+            {% if salesUnitCount and data.leadProductSalesUnits | length > 1 %}
                 <div class="col col--sm-12 col--md-auto col--lg-12 col--xxl-auto measurement-unit">
                     <div class="measurement-unit__label">{{ 'packaging_units.pdp.sales-units' | trans }}:</div>
                     <div class="measurement-unit__value">
@@ -171,7 +173,7 @@
                 </div>
             {% endif %}
 
-            {% if data.salesUnitCount and data.leadProductSalesUnits | length == 1 %}
+            {% if salesUnitCount and data.leadProductSalesUnits | length == 1 %}
                 <div class="col measurement-unit">
                     <div class="measurement-unit__value">{{ data.leadProductSalesUnits[0].productMeasurementUnit.name | trans }}</div>
                     <input type="hidden" name="amount-id-product-measurement-sales-unit[{{ data.product.sku }}]" value="{{ data.leadProductSalesUnits[0].idProductMeasurementSalesUnit }}">
@@ -180,7 +182,7 @@
         </div>
     {% endif %}
 
-    {% if data.salesUnitCount %}
+    {% if salesUnitCount %}
         {% include molecule('packaging-unit-quantity-selector', 'ProductPackagingUnitWidget') with {
             data: {
                 json: data.jsonScheme,
