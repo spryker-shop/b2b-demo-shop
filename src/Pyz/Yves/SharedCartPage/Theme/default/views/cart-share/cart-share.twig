@@ -5,7 +5,7 @@
     cartName: _view.cart.name | default,
     form: _view.sharedCartForm,
     title: 'shared_cart.form.share_cart' | trans,
-    activePage: 'multiCart'
+    activePage: 'multiCart',
 } %}
 
 {% block breadcrumbs %}
@@ -18,12 +18,15 @@
                 url: url('multi-cart'),
                 label: 'shared_cart.share.breadcrumbs.shopping_carts' | trans,
             },{
-                url: data.cart.isDefault ? url('cart') : url('multi-cart/set-default', {idQuote: data.cart.idQuote}),
+                url: data.cart.isDefault ? url('cart') : url('multi-cart/set-default', { idQuote: data.cart.idQuote }),
                 label: data.cartName,
+                isFormElement: true,
+                formName: 'multi_cart_set_default_form',
+                tokenFieldName: 'multi_cart_set_default_form[_token]',
             },{
                 label: 'shared_cart.share.breadcrumbs.share' | trans,
-            }]
-        }
+            }],
+        },
     } only %}
 {% endblock %}
 
@@ -51,24 +54,24 @@
                     modifiers: ['title'],
                     class: 'col',
                     data: {
-                        name: 'users'
-                    }
+                        name: 'users',
+                    },
                 } only %}
             </div>
 
             {% include molecule('user-share-list', 'SharedCartPage') with {
                 data: {
                     shareDetailsForm: data.form,
-                    shared: shared
-                }
+                    shared: shared,
+                },
             } only %}
 
             <div class="is-hidden-lg-xxl text-fw-medium text-secondary text-small spacing-bottom spacing-bottom--smaller">{{ "customer.account.shopping_list.share.choose_access" | trans }}:</div>
             {% include molecule('user-share-list', 'SharedCartPage') with {
                 data: {
                     shareDetailsForm: data.form,
-                    shared: unShared
-                }
+                    shared: unShared,
+                },
             } only %}
 
             <div class="grid grid--gap grid--justify">
