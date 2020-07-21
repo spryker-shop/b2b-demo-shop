@@ -1,0 +1,30 @@
+{% extends template('widget') %}
+
+{% define data = {
+    navigation: navigation,
+} %}
+
+{% block body %}
+    {% set title = 'global.payment_shipping' | trans %}
+    {% set triggerClass = 'js-footer-partner-logos-' ~ title | lower | replace(' ', '-') ~ '__trigger' %}
+    {% set targetClass = 'js-footer-partner-logos-' ~ title | lower | replace(' ', '-') %}
+
+    {% include molecule('navigation-footer-item', 'ContentNavigationWidget') with {
+        class: 'container ' ~ targetClass,
+        data: {
+            nodes: data.navigation.nodes,
+            title: title,
+            toggleClass: targetClass,
+            template: 'navigation-icon-list',
+            templateModifiers: ['footer'],
+        },
+    } only %}
+
+    {% include molecule('toggler-accordion') with {
+        attributes: {
+            'wrap-class-name': targetClass,
+            'trigger-class-name': triggerClass,
+            'class-to-toggle': 'is-hidden-sm-only',
+        },
+    } only %}
+{% endblock %}

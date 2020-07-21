@@ -15,24 +15,28 @@
 
     {% block logos %}
         <div class="{{ config.name }}__logos">
-            {% set categoryPaymentProviders = 'PAYMENT_PROVIDERS' %}
-            {% include molecule('navigation-footer-item') with {
-                modifiers: ['footer-logo'],
-                class: 'container',
-                data: {
-                    title: 'global.payment_shipping' | trans,
-                    category: categoryPaymentProviders,
-                    template: 'navigation-providers-payment',
-                    toggleClass: config.jsName ~ '-' ~ categoryPaymentProviders
-                }
-            } only %}
-            {% include molecule('toggler-accordion') with {
-                attributes: {
-                    'wrap-class-name': config.jsName ~ '-' ~ categoryPaymentProviders,
-                    'trigger-class-name': config.jsName ~ '-' ~ categoryPaymentProviders ~ '__trigger',
-                    'class-to-toggle': 'is-hidden-sm-only',
-                },
-            } only %}
+            {% block logosInner %}
+                {% set categoryPaymentProviders = 'PAYMENT_PROVIDERS' %}
+
+                {% include molecule('navigation-footer-item') with {
+                    modifiers: ['footer-logo'],
+                    class: 'container',
+                    data: {
+                        title: 'global.payment_shipping' | trans,
+                        category: categoryPaymentProviders,
+                        template: 'navigation-providers-payment',
+                        toggleClass: config.jsName ~ '-' ~ categoryPaymentProviders,
+                    },
+                } only %}
+
+                {% include molecule('toggler-accordion') with {
+                    attributes: {
+                        'wrap-class-name': config.jsName ~ '-' ~ categoryPaymentProviders,
+                        'trigger-class-name': config.jsName ~ '-' ~ categoryPaymentProviders ~ '__trigger',
+                        'class-to-toggle': 'is-hidden-sm-only',
+                    },
+                } only %}
+            {% endblock %}
         </div>
     {% endblock %}
 
@@ -40,25 +44,27 @@
         <div class="container">
             <div class="grid grid--gap {{ config.name }}__navigation">
                 <div class="col col--sm-12 col--lg-9">
-                    {% include molecule('navigation-footer') with {
-                        class: 'grid grid--gap',
-                        data: {
-                            items: [
-                                {
-                                    category: 'FOOTER_NAVIGATION_TOP_CATEGORIES',
-                                    title: 'global.top_categories' | trans
-                                },
-                                {
-                                    category: 'FOOTER_NAVIGATION_POPULAR_BRANDS',
-                                    title: 'global.popular_brands' | trans
-                                },
-                                {
-                                    category: 'FOOTER_NAVIGATION',
-                                    title: 'global.about' | trans
-                                }
-                            ],
-                        }
-                    } only %}
+                    {% block navigationInner %}
+                        {% include molecule('navigation-footer') with {
+                            class: 'grid grid--gap',
+                            data: {
+                                items: [
+                                    {
+                                        category: 'FOOTER_NAVIGATION_TOP_CATEGORIES',
+                                        title: 'global.top_categories' | trans,
+                                    },
+                                    {
+                                        category: 'FOOTER_NAVIGATION_POPULAR_BRANDS',
+                                        title: 'global.popular_brands' | trans,
+                                    },
+                                    {
+                                        category: 'FOOTER_NAVIGATION',
+                                        title: 'global.about' | trans,
+                                    },
+                                ],
+                            },
+                        } only %}
+                    {% endblock %}
                 </div>
 
                 <div class="col col--sm-12 col--lg-3 {{ config.name }}__contact-info">
@@ -94,14 +100,17 @@
                             {{ 'global.thank_certeo' | trans }}
                         </div>
                     </div>
-                    {% include molecule('navigation-footer-item') with {
-                        modifiers: ['social'],
-                        class: 'col col--sm-12 col--md-5 col--lg-3',
-                        data: {
-                            category: 'SOCIAL_LINKS',
-                            template: 'navigation-social'
-                        }
-                    } only %}
+
+                    {% block socialLinks %}
+                        {% include molecule('navigation-footer-item') with {
+                            modifiers: ['social'],
+                            class: 'col col--sm-12 col--md-5 col--lg-3',
+                            data: {
+                                category: 'SOCIAL_LINKS',
+                                template: 'navigation-social'
+                            }
+                        } only %}
+                    {% endblock %}
                 </div>
             {% endblock %}
         </div>
