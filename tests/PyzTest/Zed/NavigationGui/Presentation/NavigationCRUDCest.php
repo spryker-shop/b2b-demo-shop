@@ -107,8 +107,6 @@ class NavigationCRUDCest
      *
      * @return void
      */
-
-
     protected function delete(NavigationGuiPresentationTester $i, int $idNavigation)
     {
         $i->wantTo('Delete navigation.');
