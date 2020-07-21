@@ -43,10 +43,10 @@ class AvailabilityAddToCartCest
         $i->amOnPage(CartListPage::CART_URL);
         $i->see(CartListPage::CART_HEADER);
 
-//        $i->waitForElement(CartListPage::FIRST_CART_ITEM_QUANTITY_INPUT_XPATH, 30);
-//        $i->fillField(CartListPage::FIRST_CART_ITEM_QUANTITY_INPUT_XPATH, 50);
-//        $i->click(CartListPage::FIRST_CART_ITEM_CHANGE_QUANTITY_BUTTON_XPATH);
-//
-//        $i->seeInSource(AvailabilityPresentationTester::CART_PRE_CHECK_AVAILABILITY_ERROR_MESSAGE);
+        $i->waitForElement(CartListPage::FIRST_CART_ITEM_QUANTITY_INPUT_XPATH, 30);
+        $i->fillField(CartListPage::FIRST_CART_ITEM_QUANTITY_INPUT_XPATH, 50);
+        $i->click(CartListPage::FIRST_CART_ITEM_CHANGE_QUANTITY_BUTTON_XPATH);
+
+        $i->seeInSource(AvailabilityPresentationTester::CART_PRE_CHECK_AVAILABILITY_ERROR_MESSAGE);
     }
 }
