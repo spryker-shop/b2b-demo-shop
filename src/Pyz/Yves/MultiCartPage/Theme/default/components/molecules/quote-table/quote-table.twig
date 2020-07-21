@@ -1,7 +1,7 @@
 {% extends molecule('quote-table', '@SprykerShop:MultiCartPage') %}
 
-{% macro duplicateButton() %}
-    <button class="link">
+{% macro duplicateButton(name) %}
+    <button class="link link--alt link--action {{ name }}__duplicate-button">
         {% include molecule('table-action-span') with {
             modifiers: ['tight', 'full-height'],
             class: 'link link--alt link--action',
@@ -123,18 +123,20 @@
                                     {% endif %}
                                     {% if data.actions.duplicate %}
                                         <li class="col col--equal menu__item grid grid--stretch">
+                                            {% set duplicateFormClass = 'col ' ~ config.name ~ '__duplicate-form' %}
+
                                             {% if data.multiCartDuplicateFormClone %}
                                                 {% set multiCartDuplicateForm = data.multiCartDuplicateFormClone.getForm.createView %}
 
-                                                {{ form_start(multiCartDuplicateForm, {'action': path('multi-cart/duplicate', {'idQuote': quote.idQuote}), 'attr': {'class': 'col'} }) }}
-                                                    {{ _self.duplicateButton() }}
+                                                {{ form_start(multiCartDuplicateForm, {'action': path('multi-cart/duplicate', {'idQuote': quote.idQuote}), 'attr': {'class': duplicateFormClass} }) }}
+                                                    {{ _self.duplicateButton(config.name) }}
                                                 {{ form_end(multiCartDuplicateForm) }}
                                             {% else %}
                                                 {% set formName = 'multiCartDuplicateForm_' ~ loop.index %}
 
-                                                <form id="{{ formName }}" class="col" name="{{ formName }}" method="POST" action="{{ path('multi-cart/duplicate', {'idQuote': quote.idQuote}) }}">
+                                                <form id="{{ formName }}" class="{{ duplicateFormClass }}" name="{{ formName }}" method="POST" action="{{ path('multi-cart/duplicate', {'idQuote': quote.idQuote}) }}">
                                                     <input type="hidden" name="multi_cart_duplicate_form[_token]" value="{{ csrf_token('multi_cart_duplicate_form') }}">
-                                                    {{ _self.duplicateButton() }}
+                                                    {{ _self.duplicateButton(config.name) }}
                                                 </form>
                                             {% endif %}
                                         </li>
