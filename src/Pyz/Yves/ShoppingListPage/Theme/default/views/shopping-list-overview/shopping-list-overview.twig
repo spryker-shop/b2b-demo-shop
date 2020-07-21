@@ -31,7 +31,7 @@
                 {% endblock %}
 
                 {% block title %}
-                    {% if data.title is not empty %}
+                    {% if data.title %}
                         <h3>{{ data.title }}</h3>
                     {% endif %}
                 {% endblock %}
@@ -44,8 +44,8 @@
                     </div>
                     <div class="col col--sm-12 col--md-auto spacing-bottom">
                         {% block submit %}
-                            <button type="submit" class="{{ config.name }}__action {{ data.submit.class }} button--expand button--mobile-tight" {{ qa(data.submit.qa) }}>
-                                {% if data.submit.icon is not empty %}
+                            <button class="{{ config.name }}__action {{ data.submit.class }} button--expand button--mobile-tight" {{ qa(data.submit.qa) }}>
+                                {% if data.submit.icon %}
                                     {% include atom('icon') with {
                                         modifiers: ['plus-small'],
                                         class: 'spacing-right spacing-right--small',
