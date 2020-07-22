@@ -25,4 +25,14 @@ class ContentNavigationConfig extends SprykerContentNavigationConfig
      * Content item navigation footer template identifier.
      */
     public const WIDGET_TEMPLATE_IDENTIFIER_LIST_NAVIGATION_FOOTER = 'navigation-footer';
+
+    /**
+     * Content item footer partners template identifier.
+     */
+    public const WIDGET_TEMPLATE_IDENTIFIER_LIST_FOOTER_PARTNERS = 'footer-partners';
+
+    /**
+     * Content item footer social links template identifier.
+     */
+    public const WIDGET_TEMPLATE_IDENTIFIER_LIST_FOOTER_SOCIAL_LINKS = 'footer-social-links';
 }

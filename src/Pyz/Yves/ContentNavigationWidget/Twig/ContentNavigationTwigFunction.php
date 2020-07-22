@@ -27,6 +27,16 @@ class ContentNavigationTwigFunction extends SprykerShopContentNavigationTwigFunc
     protected const WIDGET_TEMPLATE_IDENTIFIER_LIST_NAVIGATION_FOOTER = 'navigation-footer';
 
     /**
+     * @uses \Pyz\Shared\ContentNavigation\ContentNavigationConfig::WIDGET_TEMPLATE_IDENTIFIER_LIST_FOOTER_PARTNERS
+     */
+    protected const WIDGET_TEMPLATE_IDENTIFIER_LIST_FOOTER_PARTNERS = 'footer-partners';
+
+    /**
+     * @uses \Pyz\Shared\ContentNavigation\ContentNavigationConfig::WIDGET_TEMPLATE_IDENTIFIER_LIST_FOOTER_SOCIAL_LINKS
+     */
+    protected const WIDGET_TEMPLATE_IDENTIFIER_LIST_FOOTER_SOCIAL_LINKS = 'footer-social-links';
+
+    /**
      * @param string $templateIdentifier
      *
      * @return string|null
@@ -41,6 +51,8 @@ class ContentNavigationTwigFunction extends SprykerShopContentNavigationTwigFunc
             static::WIDGET_TEMPLATE_IDENTIFIER_LIST_NAVIGATION_HEADER => '@ContentNavigationWidget/views/navigation-header/navigation-header.twig',
             static::WIDGET_TEMPLATE_IDENTIFIER_LIST_NAVIGATION_HEADER_MOBILE => '@ContentNavigationWidget/views/navigation-header/navigation-header.twig',
             static::WIDGET_TEMPLATE_IDENTIFIER_LIST_NAVIGATION_FOOTER => '@ContentNavigationWidget/views/navigation-footer/navigation-footer.twig',
+            static::WIDGET_TEMPLATE_IDENTIFIER_LIST_FOOTER_PARTNERS => '@ContentNavigationWidget/views/footer-partners/footer-partners.twig',
+            static::WIDGET_TEMPLATE_IDENTIFIER_LIST_FOOTER_SOCIAL_LINKS => '@ContentNavigationWidget/views/footer-social-links/footer-social-links.twig',
         ];
 
         return $availableTemplates[$templateIdentifier] ?? null;
