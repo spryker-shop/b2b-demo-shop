@@ -56,6 +56,56 @@
                                 <h6 class="{{ config.name }}__title spacing spacing--reset">{{ data.listItem.name }}</h6>
                             {% endblock %}
 
+                            {% block productInfo %}
+                                {% block quantityTitle %}
+                                    {{ parent() }}
+                                {% endblock %}
+
+                                {% block packagingUnitCart %}
+                                    {{ parent() }}
+                                {% endblock %}
+
+                                {% block salesInfo %}
+                                    {{ parent() }}
+                                {% endblock %}
+
+                                {% block itemAttributes %}
+                                    {{ parent() }}
+                                {% endblock %}
+                            {% endblock %}
+
+                            {% block productDescriptionContent %}
+                                {{ parent() }}
+
+                                {% block bundle %}
+                                    {% include molecule('bundle-items', 'ProductBundleWidget') ignore missing with {
+                                        class: 'col col--sm-12',
+                                        data: {
+                                            items: embed.bundleItems,
+                                        },
+                                    } only %}
+                                {% endblock %}
+
+                                <div class="col col--sm-12">
+                                    {{ block('productOptions') }}
+                                </div>
+                            {% endblock %}
+
+                            {% block additionalInfo %}
+                                {% block note %}
+                                    {% if data.listItem.cartNote is not empty %}
+                                        {% include molecule('cart-item-note', 'CartNoteWidget') ignore missing with {
+                                            data: {
+                                                isNoteNotEmpty: true,
+                                                canWrite: false,
+                                                label: 'cart_note.checkout_page.quote_note',
+                                                note: data.listItem.cartNote,
+                                            },
+                                        } only %}
+                                    {% endif %}
+                                {% endblock %}
+                            {% endblock %}
+
                             {% block packagingUnitCartContent %}
                                 {% set hasSubQuantity = true %}
                                 {% set hasAmountPerQuantity = true %}
@@ -70,27 +120,6 @@
                                             value: data.quantity,
                                             precision: data.listItem.quantitySalesUnit.conversion,
                                             optionName: data.listItem.quantitySalesUnit.productMeasurementUnit.name | trans,
-                                        },
-                                    } only %}
-                                {% endif %}
-                            {% endblock %}
-
-                            {% block bundle %}
-                                {% include molecule('bundle-items', 'ProductBundleWidget') ignore missing with {
-                                    data: {
-                                        items: embed.bundleItems,
-                                    },
-                                } only %}
-                            {% endblock %}
-
-                            {% block note %}
-                                {% if data.listItem.cartNote is not empty %}
-                                    {% include molecule('cart-item-note', 'CartNoteWidget') ignore missing with {
-                                        data: {
-                                            isNoteNotEmpty: true,
-                                            canWrite: false,
-                                            label: 'cart_note.checkout_page.quote_note',
-                                            note: data.listItem.cartNote,
                                         },
                                     } only %}
                                 {% endif %}

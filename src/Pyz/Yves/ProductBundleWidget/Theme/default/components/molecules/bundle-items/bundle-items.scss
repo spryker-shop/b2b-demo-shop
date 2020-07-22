@@ -20,28 +20,6 @@
 
         &__item {
             padding: rem(3) 0;
-            position: relative;
-
-            @include helper-breakpoint-media-min($md) {
-                padding-right: rem(100);
-            }
-
-            @include helper-breakpoint-media-min($lg) {
-                padding-right: 0;
-            }
-        }
-
-        &__state {
-
-            @include helper-breakpoint-media-min($md) {
-                position: absolute;
-                top: 0;
-                right: 0;
-            }
-
-            @include helper-breakpoint-media-min($lg) {
-                right: rem(-100);
-            }
         }
 
         &__quantity {
