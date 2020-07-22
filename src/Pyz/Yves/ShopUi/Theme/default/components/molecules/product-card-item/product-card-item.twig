@@ -204,7 +204,22 @@
                                                 </div>
                                             {% endif %}
                                         {% endblock %}
+
                                         {% block totalPrice %}{% endblock %}
+
+                                        {% block state %}
+                                            {% if data.listItem.state is not empty %}
+                                                {% set state = data.listItem.state.name | replace({' ': '-'}) | lower %}
+
+                                                {% include molecule('status') with {
+                                                    class: 'col col--sm-12',
+                                                    data: {
+                                                        label: data.listItem.state.name | capitalize,
+                                                        status: state,
+                                                    },
+                                                } only %}
+                                            {% endif %}
+                                        {% endblock %}
                                     </div>
                                 </div>
 
