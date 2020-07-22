@@ -62,7 +62,18 @@
             {% endblock %}
         {% endblock %}
 
-        {% block actionsContainer %}{% endblock %}
+        {% block actionsContainer %}
+            {% block ajaxAddToCart %}
+                {% if data.product is iterable and can('SeeAddToCartPermissionPlugin') %}
+                    {% widget 'ProductAbstractAddToCartButtonWidget' args [data.product] with {
+                        data: {
+                            buttonExtraClasses: config.jsName ~ '__ajax-button-add-to-cart',
+                        },
+                    } only %}
+                    {% endwidget %}
+                {% endif %}
+            {% endblock %}
+        {% endblock %}
     </div>
 {% endblock %}
 
