@@ -51,30 +51,6 @@
                             </div>
                         </li>
                     {% endblock %}
-
-                    {#{% block item %}#}
-                        {#<li class="{{ config.name }}__item">#}
-                            {#{{ item.name }}#}
-
-                            {#<div class="grid grid--middle grid--justify spacing-y">#}
-                                {#<span class="{{ config.name }}__quantity col">x {{ item.quantity }}</span>#}
-
-                                {#{% block state %}#}
-                                    {#{% if item.state is not empty %}#}
-                                        {#{% set state = item.state.name | replace({' ': '-'}) | lower %}#}
-
-                                        {#{% include molecule('status') with {#}
-                                            {#class: config.name ~ '__state col',#}
-                                            {#data: {#}
-                                                {#label: item.state.name | capitalize,#}
-                                                {#status: state,#}
-                                            {#},#}
-                                        {#} only %}#}
-                                    {#{% endif %}#}
-                                {#{% endblock %}#}
-                            {#</div>#}
-                        {#</li>#}
-                    {#{% endblock %}#}
                 {% endfor %}
             {% endblock %}
         </ul>
