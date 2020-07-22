@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9acd298ea43e28b197adf49bd88941a3",
+    "content-hash": "90049279b1a6218e5a7d5a075c5db3c4",
     "packages": [
         {
             "name": "codeitnowin/barcode",
@@ -33344,16 +33344,16 @@
         },
         {
             "name": "spryker/sales-data-export",
-            "version": "0.2.0",
+            "version": "0.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/sales-data-export.git",
-                "reference": "9f6a68b15077166b76580dbd7010ae0376a6c180"
+                "reference": "f64be25ab014b361be0f430b5f3f6b6c966fdef7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/sales-data-export/zipball/9f6a68b15077166b76580dbd7010ae0376a6c180",
-                "reference": "9f6a68b15077166b76580dbd7010ae0376a6c180",
+                "url": "https://api.github.com/repos/spryker/sales-data-export/zipball/f64be25ab014b361be0f430b5f3f6b6c966fdef7",
+                "reference": "f64be25ab014b361be0f430b5f3f6b6c966fdef7",
                 "shasum": ""
             },
             "require": {
@@ -33363,10 +33363,9 @@
                 "spryker/data-export-extension": "^0.1.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/locale": "^3.0.0",
-                "spryker/oms": "^11.0.0",
+                "spryker/oms": "^1.0.0 || ^2.0.0 || ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0 || ^10.0.0 || ^11.0.0",
                 "spryker/propel-orm": "^1.0.0",
-                "spryker/sales": "^11.0.0",
-                "spryker/sales-oms": "^0.1.0",
+                "spryker/sales": "^8.0.0 || ^10.0.0 || ^11.0.0",
                 "spryker/shipment": "^7.0.0 || ^8.0.0",
                 "spryker/transfer": "^3.8.0",
                 "spryker/util-encoding": "^1.0.0 || ^2.0.0"
@@ -33392,7 +33391,7 @@
                 "proprietary"
             ],
             "description": "SalesDataExport module",
-            "time": "2020-07-08T08:39:39+00:00"
+            "time": "2020-05-15T11:17:53+00:00"
         },
         {
             "name": "spryker/sales-extension",
@@ -33431,145 +33430,6 @@
             ],
             "description": "SalesExtension module",
             "time": "2020-07-14T12:33:41+00:00"
-        },
-        {
-            "name": "spryker/sales-invoice",
-            "version": "1.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker/sales-invoice.git",
-                "reference": "db9bce3bfb3c56615ca0d0f8e8e08860d0e05b57"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker/sales-invoice/zipball/db9bce3bfb3c56615ca0d0f8e8e08860d0e05b57",
-                "reference": "db9bce3bfb3c56615ca0d0f8e8e08860d0e05b57",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.2",
-                "spryker/glossary": "^3.0.0",
-                "spryker/kernel": "^3.30.0",
-                "spryker/mail": "^4.3.0",
-                "spryker/propel-orm": "^1.0.0",
-                "spryker/sales": "^11.11.0",
-                "spryker/sales-invoice-extension": "^1.0.0",
-                "spryker/sequence-number": "^3.0.0",
-                "spryker/symfony": "^3.0.0",
-                "spryker/twig": "^3.0.0"
-            },
-            "require-dev": {
-                "spryker/code-sniffer": "*",
-                "spryker/customer": "*",
-                "spryker/oms": "*",
-                "spryker/propel": "*",
-                "spryker/testify": "*"
-            },
-            "suggest": {
-                "spryker/oms": "If you want to use GenerateOrderInvoiceCommandPlugin plugin"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Spryker\\": "src/Spryker/",
-                    "SprykerTest\\Shared\\SalesInvoice\\Helper\\": "tests/SprykerTest/Shared/SalesInvoice/_support/Helper/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "SalesInvoice module",
-            "time": "2020-07-03T11:39:16+00:00"
-        },
-        {
-            "name": "spryker/sales-invoice-extension",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker/sales-invoice-extension.git",
-                "reference": "9472ae6a878a487acf51ae937fcb972ef80c4e1b"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker/sales-invoice-extension/zipball/9472ae6a878a487acf51ae937fcb972ef80c4e1b",
-                "reference": "9472ae6a878a487acf51ae937fcb972ef80c4e1b",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.2"
-            },
-            "require-dev": {
-                "spryker/code-sniffer": "*"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Spryker\\": "src/Spryker/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "SalesInvoiceExtension module",
-            "time": "2020-06-29T08:34:25+00:00"
-        },
-        {
-            "name": "spryker/sales-oms",
-            "version": "0.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker/sales-oms.git",
-                "reference": "df4e1eab5ed751205f3b56115748f3a951c18ed9"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker/sales-oms/zipball/df4e1eab5ed751205f3b56115748f3a951c18ed9",
-                "reference": "df4e1eab5ed751205f3b56115748f3a951c18ed9",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.2",
-                "spryker/kernel": "^3.33.0",
-                "spryker/oms": "^11.0.0",
-                "spryker/sales": "^11.0.0",
-                "spryker/sales-extension": "^1.1.0",
-                "spryker/symfony": "^3.0.0",
-                "spryker/util-data-reader": "^1.0.0"
-            },
-            "require-dev": {
-                "spryker/code-sniffer": "*",
-                "spryker/propel": "*",
-                "spryker/testify": "*"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Spryker\\": "src/Spryker/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "SalesOms module",
-            "time": "2020-05-29T12:33:32+00:00"
         },
         {
             "name": "spryker/sales-order-threshold",
@@ -47113,6 +46973,145 @@
             ],
             "description": "ModuleFinder module",
             "time": "2019-06-05T07:55:43+00:00"
+        },
+        {
+            "name": "spryker/sales-invoice",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/sales-invoice.git",
+                "reference": "db9bce3bfb3c56615ca0d0f8e8e08860d0e05b57"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/sales-invoice/zipball/db9bce3bfb3c56615ca0d0f8e8e08860d0e05b57",
+                "reference": "db9bce3bfb3c56615ca0d0f8e8e08860d0e05b57",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/glossary": "^3.0.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/mail": "^4.3.0",
+                "spryker/propel-orm": "^1.0.0",
+                "spryker/sales": "^11.11.0",
+                "spryker/sales-invoice-extension": "^1.0.0",
+                "spryker/sequence-number": "^3.0.0",
+                "spryker/symfony": "^3.0.0",
+                "spryker/twig": "^3.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/customer": "*",
+                "spryker/oms": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/oms": "If you want to use GenerateOrderInvoiceCommandPlugin plugin"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/",
+                    "SprykerTest\\Shared\\SalesInvoice\\Helper\\": "tests/SprykerTest/Shared/SalesInvoice/_support/Helper/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "SalesInvoice module",
+            "time": "2020-07-03T11:39:16+00:00"
+        },
+        {
+            "name": "spryker/sales-invoice-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/sales-invoice-extension.git",
+                "reference": "9472ae6a878a487acf51ae937fcb972ef80c4e1b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/sales-invoice-extension/zipball/9472ae6a878a487acf51ae937fcb972ef80c4e1b",
+                "reference": "9472ae6a878a487acf51ae937fcb972ef80c4e1b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "SalesInvoiceExtension module",
+            "time": "2020-06-29T08:34:25+00:00"
+        },
+        {
+            "name": "spryker/sales-oms",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/sales-oms.git",
+                "reference": "df4e1eab5ed751205f3b56115748f3a951c18ed9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/sales-oms/zipball/df4e1eab5ed751205f3b56115748f3a951c18ed9",
+                "reference": "df4e1eab5ed751205f3b56115748f3a951c18ed9",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/kernel": "^3.33.0",
+                "spryker/oms": "^11.0.0",
+                "spryker/sales": "^11.0.0",
+                "spryker/sales-extension": "^1.1.0",
+                "spryker/symfony": "^3.0.0",
+                "spryker/util-data-reader": "^1.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "SalesOms module",
+            "time": "2020-05-29T12:33:32+00:00"
         },
         {
             "name": "spryker/sales-returns-rest-api",
