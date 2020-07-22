@@ -76,12 +76,6 @@
 
             <transition happy="true">
                 <source>paid</source>
-                <target>waiting</target>
-                <event>skip timeout</event>
-            </transition>
-
-            <transition happy="true">
-                <source>waiting</source>
                 <target>confirmed</target>
                 <event>confirm</event>
             </transition>
