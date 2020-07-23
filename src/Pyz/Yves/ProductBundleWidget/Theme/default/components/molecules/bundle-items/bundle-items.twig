@@ -24,9 +24,31 @@
             {% block items %}
                 {% for item in data.items %}
                     {% block item %}
-                        <li class="{{config.name}}__item">
-                            {{ item.name }}
-                            <span class="{{config.name}}__quantity">x {{ item.quantity }}</span>
+                        <li class="{{ config.name }}__item">
+                            <div class="grid grid--middle grid--justify grid--gap">
+                                <div class="col col--sm-12 col--md-7">
+                                    <p>{{ item.name }}</p>
+                                    <span class="{{ config.name }}__quantity col col--sm-12">x {{ item.quantity }}</span>
+                                </div>
+                                <div class="col col--sm-12 col--md-5">
+                                    {% block state %}
+                                        {% set isStateExist = item.state is defined and item.state is not empty %}
+
+                                        {% if isStateExist %}
+                                            {% set stateName = item.state.name %}
+                                            {% set state = stateName | replace({' ': '-'}) | lower %}
+
+                                            {% include molecule('status') with {
+                                                class: 'spacing-y',
+                                                data: {
+                                                    label: stateName | capitalize,
+                                                    status: state,
+                                                },
+                                            } only %}
+                                        {% endif %}
+                                    {% endblock %}
+                                </div>
+                            </div>
                         </li>
                     {% endblock %}
                 {% endfor %}
