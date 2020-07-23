@@ -184,7 +184,21 @@
         {% block footer %}
             {% cms_slot 'slt-1' %}
 
-            {% include organism('footer') only %}
+            {% embed organism('footer') only %}
+                {% block logosInner %}
+                    {% cms_slot 'slt-footer-partners' %}
+                {% endblock %}
+
+                {% block navigationInner %}
+                    <div class="grid grid--gap">
+                        {% cms_slot 'slt-footer-navigation' %}
+                    </div>
+                {% endblock %}
+
+                {% block socialLinks %}
+                    {% cms_slot 'slt-footer-social-links' %}
+                {% endblock %}
+            {% endembed %}
         {% endblock %}
     </div>
 
