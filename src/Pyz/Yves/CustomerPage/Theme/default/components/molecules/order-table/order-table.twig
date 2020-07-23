@@ -101,7 +101,8 @@
                         <th>{{ 'customer.order.number_of_items' | trans }}</th>
                     {% endif %}
                     <th>{{ 'customer.order.total' | trans }}</th>
-                    <th></th>
+                    <th>{{ 'customer.order.items_state' | trans }}</th>
+                    <th>{{ 'customer.table.actions' | trans }}</th>
                 </tr>
             </thead>
             <tbody>
@@ -129,7 +130,11 @@
                                 {{- order.totals.grandTotal | default(0) | money(true, order.currencyIsoCode) -}}
                             </strong>
                         </td>
-
+                        <td>
+                            {% block stateWrapper %}
+                                {{ parent() }}
+                            {% endblock %}
+                        </td>
                         <td class="spacing-x spacing-x--inner spacing-x--reset">
                             {% include molecule('table-action-list') with {
                                 data: {
