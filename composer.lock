@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9b9f82e5fbd678b2e00e36874efac1c1",
+    "content-hash": "deb968e8fcb97a6a15b922a0a4fb7160",
     "packages": [
         {
             "name": "codeitnowin/barcode",
@@ -2446,16 +2446,16 @@
         },
         {
             "name": "spryker-feature/cart",
-            "version": "202001.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-feature/cart.git",
-                "reference": "e2e8dfefab224be5d4db75cb5531e2070e4b8755"
+                "reference": "bab9f5e248a0bdf6a2f4f84d48afca25a1544ffd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-feature/cart/zipball/e2e8dfefab224be5d4db75cb5531e2070e4b8755",
-                "reference": "e2e8dfefab224be5d4db75cb5531e2070e4b8755",
+                "url": "https://api.github.com/repos/spryker-feature/cart/zipball/bab9f5e248a0bdf6a2f4f84d48afca25a1544ffd",
+                "reference": "bab9f5e248a0bdf6a2f4f84d48afca25a1544ffd",
                 "shasum": ""
             },
             "require": {
@@ -2468,7 +2468,7 @@
             "type": "metapackage",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "202001.x-dev"
+                    "dev-master": "202006.x-dev"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -2476,7 +2476,7 @@
                 "proprietary"
             ],
             "description": "Cart [feature]",
-            "time": "2019-12-30T12:08:49+00:00"
+            "time": "2020-04-14T15:23:43+00:00"
         },
         {
             "name": "spryker-feature/cart-notes",
@@ -4661,16 +4661,16 @@
         },
         {
             "name": "spryker-feature/shopping-lists",
-            "version": "202001.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-feature/shopping-lists.git",
-                "reference": "9d3b530ec7800ec6bf534559fa426fe48103969e"
+                "reference": "3db246e43933240a78ac7b408feb5609f002ae75"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-feature/shopping-lists/zipball/9d3b530ec7800ec6bf534559fa426fe48103969e",
-                "reference": "9d3b530ec7800ec6bf534559fa426fe48103969e",
+                "url": "https://api.github.com/repos/spryker-feature/shopping-lists/zipball/3db246e43933240a78ac7b408feb5609f002ae75",
+                "reference": "3db246e43933240a78ac7b408feb5609f002ae75",
                 "shasum": ""
             },
             "require": {
@@ -4684,10 +4684,18 @@
                 "spryker/shopping-list-session": "^1.1.0",
                 "spryker/shopping-list-storage": "^1.4.0"
             },
+            "suggest": {
+                "spryker-feature/company-account": "Recommended feature dependency.",
+                "spryker-feature/customer-account-management": "Recommended feature dependency.",
+                "spryker-feature/persistent-cart": "Recommended feature dependency.",
+                "spryker-feature/prices": "Recommended feature dependency.",
+                "spryker-feature/product": "Recommended feature dependency.",
+                "spryker-feature/spryker-core": "Recommended feature dependency."
+            },
             "type": "metapackage",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "202001.x-dev"
+                    "dev-master": "202006.x-dev"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -4695,7 +4703,7 @@
                 "proprietary"
             ],
             "description": "Shopping Lists [feature]",
-            "time": "2019-12-28T12:40:10+00:00"
+            "time": "2020-04-15T09:54:06+00:00"
         },
         {
             "name": "spryker-feature/spryker-core",
@@ -48358,6 +48366,12 @@
             "alias": "202006.0",
             "alias_normalized": "202006.0",
             "version": "9999999-dev",
+            "package": "spryker-feature/cart"
+        },
+        {
+            "alias": "202006.0",
+            "alias_normalized": "202006.0",
+            "version": "9999999-dev",
             "package": "spryker-feature/category-management"
         },
         {
@@ -48520,6 +48534,12 @@
             "alias": "202006.0",
             "alias_normalized": "202006.0",
             "version": "9999999-dev",
+            "package": "spryker-feature/shopping-lists"
+        },
+        {
+            "alias": "202006.0",
+            "alias_normalized": "202006.0",
+            "version": "9999999-dev",
             "package": "spryker-feature/spryker-core"
         },
         {
@@ -48543,6 +48563,7 @@
     ],
     "minimum-stability": "dev",
     "stability-flags": {
+        "spryker-feature/cart": 20,
         "spryker-feature/category-management": 20,
         "spryker-feature/checkout": 20,
         "spryker-feature/content-item": 20,
@@ -48571,6 +48592,7 @@
         "spryker-feature/scheduled-prices": 20,
         "spryker-feature/search": 20,
         "spryker-feature/shipment": 20,
+        "spryker-feature/shopping-lists": 20,
         "spryker-feature/spryker-core": 20,
         "spryker-feature/spryker-core-back-office": 20,
         "spryker-feature/state-machine": 20,
