@@ -8,7 +8,7 @@
     {% set triggerClass = 'js-footer-partners__trigger' %}
     {% set targetClass = 'js-footer-partners' %}
 
-    {% include molecule('navigation-footer-item', 'ContentNavigationWidget') with {
+    {% include molecule('navigation-item', 'ContentNavigationWidget') with {
         class: 'container ' ~ targetClass,
         modifiers: ['footer-logo'],
         data: {

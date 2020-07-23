@@ -1,4 +1,4 @@
-@mixin content-navigation-widget-navigation-footer-item($name: '.navigation-footer-item') {
+@mixin content-navigation-widget-navigation-item($name: '.navigation-item') {
     #{$name} {
         border-top: rem(1) solid $setting-color-white;
 
@@ -11,7 +11,7 @@
             padding-bottom: 0;
         }
 
-        &--social {
+        &--reset-border-top {
             border-top: none;
         }
 
@@ -19,4 +19,4 @@
     }
 }
 
-@include content-navigation-widget-navigation-footer-item;
+@include content-navigation-widget-navigation-item();

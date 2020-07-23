@@ -23,10 +23,11 @@
         {% endif %}
     {% endfor %}
 
-    {% set triggerClass = 'js-navigation-footer-' ~ title | lower | replace(' ', '-') ~ '__trigger' %}
-    {% set targetClass = 'js-navigation-footer-' ~ title | lower | replace(' ', '-') %}
+    {% set selectorPart = title | lower | replace(' ', '-') %}
+    {% set triggerClass = 'js-navigation-footer-' ~ selectorPart ~ '__trigger' %}
+    {% set targetClass = 'js-navigation-footer-' ~ selectorPart %}
 
-    {% include molecule('navigation-footer-item', 'ContentNavigationWidget') with {
+    {% include molecule('navigation-item', 'ContentNavigationWidget') with {
         class: 'col col--sm-12 col--md-4 ' ~ targetClass,
         data: {
             nodes: data.navigation.nodes,
