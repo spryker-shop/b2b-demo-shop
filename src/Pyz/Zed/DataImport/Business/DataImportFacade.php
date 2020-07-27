@@ -1,16 +1,110 @@
 <?php
+
 /**
- * This file is part of the Spryker Suite.
+ * This file is part of the Spryker Commerce OS.
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
+
 namespace Pyz\Zed\DataImport\Business;
+
 use Spryker\Zed\DataImport\Business\DataImportFacade as SprykerDataImportFacade;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
+
 /**
  * @method \Pyz\Zed\DataImport\Business\DataImportBusinessFactory getFactory()
  */
 class DataImportFacade extends SprykerDataImportFacade implements DataImportFacadeInterface
 {
+    /**
+     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
+     *
+     * @return void
+     */
+    public function writeProductAbstractDataSet(DataSetInterface $dataSet): void
+    {
+        $this->getFactory()->createProductAbstractPropelWriter()->write($dataSet);
+    }
+
+    /**
+     * @return void
+     */
+    public function flushProductAbstractDataImporter(): void
+    {
+        $this->getFactory()->createProductAbstractPropelWriter()->flush();
+    }
+
+    /**
+     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
+     *
+     * @return void
+     */
+    public function writeProductConcreteDataSet(DataSetInterface $dataSet): void
+    {
+        $this->getFactory()->createProductConcretePropelWriter()->write($dataSet);
+    }
+
+    /**
+     * @return void
+     */
+    public function flushProductConcreteDataImporter(): void
+    {
+        $this->getFactory()->createProductConcretePropelWriter()->flush();
+    }
+
+    /**
+     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
+     *
+     * @return void
+     */
+    public function writeProductImageDataSet(DataSetInterface $dataSet): void
+    {
+        $this->getFactory()->createProductImagePropelWriter()->write($dataSet);
+    }
+
+    /**
+     * @return void
+     */
+    public function flushProductImageDataImporter(): void
+    {
+        $this->getFactory()->createProductImagePropelWriter()->flush();
+    }
+
+    /**
+     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
+     *
+     * @return void
+     */
+    public function writeProductStockDataSet(DataSetInterface $dataSet): void
+    {
+        $this->getFactory()->createProductStockPropelWriter()->write($dataSet);
+    }
+
+    /**
+     * @return void
+     */
+    public function flushProductStockDataImporter(): void
+    {
+        $this->getFactory()->createProductStockPropelWriter()->flush();
+    }
+
+    /**
+     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
+     *
+     * @return void
+     */
+    public function writeProductAbstractStoreDataSet(DataSetInterface $dataSet): void
+    {
+        $this->getFactory()->createProductAbstractStorePropelWriter()->write($dataSet);
+    }
+
+    /**
+     * @return void
+     */
+    public function flushProductAbstractStoreDataImporter(): void
+    {
+        $this->getFactory()->createProductAbstractStorePropelWriter()->flush();
+    }
+
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
      *
@@ -22,29 +116,11 @@ class DataImportFacade extends SprykerDataImportFacade implements DataImportFaca
     }
 
     /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
-     */
-    public function writeCombinedProductPricePdoDataSet(DataSetInterface $dataSet): void
-    {
-        $this->getFactory()->createCombinedProductPriceBulkPdoDataSetWriter()->write($dataSet);
-    }
-
-    /**
      * @return void
      */
     public function flushCombinedProductPriceDataImporter(): void
     {
         $this->getFactory()->createCombinedProductPricePropelDataSetWriter()->flush();
-    }
-
-    /**
-     * @return void
-     */
-    public function flushCombinedProductPricePdoDataImporter(): void
-    {
-        $this->getFactory()->createCombinedProductPriceBulkPdoDataSetWriter()->flush();
     }
 
     /**
@@ -58,29 +134,11 @@ class DataImportFacade extends SprykerDataImportFacade implements DataImportFaca
     }
 
     /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
-     */
-    public function writeCombinedProductImagePdoDataSet(DataSetInterface $dataSet): void
-    {
-        $this->getFactory()->createCombinedProductImageBulkPdoDataSetWriter()->write($dataSet);
-    }
-
-    /**
      * @return void
      */
     public function flushCombinedProductImageDataImporter(): void
     {
         $this->getFactory()->createCombinedProductImagePropelDataSetWriter()->flush();
-    }
-
-    /**
-     * @return void
-     */
-    public function flushCombinedProductImagePdoDataImporter(): void
-    {
-        $this->getFactory()->createCombinedProductImageBulkPdoDataSetWriter()->flush();
     }
 
     /**
@@ -94,29 +152,11 @@ class DataImportFacade extends SprykerDataImportFacade implements DataImportFaca
     }
 
     /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
-     */
-    public function writeCombinedProductStockPdoDataSet(DataSetInterface $dataSet): void
-    {
-        $this->getFactory()->createCombinedProductStockBulkPdoDataSetWriter()->write($dataSet);
-    }
-
-    /**
      * @return void
      */
     public function flushCombinedProductStockDataImporter(): void
     {
         $this->getFactory()->createCombinedProductStockPropelDataSetWriter()->flush();
-    }
-
-    /**
-     * @return void
-     */
-    public function flushCombinedProductStockPdoDataImporter(): void
-    {
-        $this->getFactory()->createCombinedProductStockBulkPdoDataSetWriter()->flush();
     }
 
     /**
@@ -130,29 +170,11 @@ class DataImportFacade extends SprykerDataImportFacade implements DataImportFaca
     }
 
     /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
-     */
-    public function writeCombinedProductAbstractStorePdoDataSet(DataSetInterface $dataSet): void
-    {
-        $this->getFactory()->createCombinedProductAbstractStoreBulkPdoDataSetWriter()->write($dataSet);
-    }
-
-    /**
      * @return void
      */
     public function flushCombinedProductAbstractStoreDataImporter(): void
     {
         $this->getFactory()->createCombinedProductAbstractStorePropelDataSetWriter()->flush();
-    }
-
-    /**
-     * @return void
-     */
-    public function flushCombinedProductAbstractStorePdoDataImporter(): void
-    {
-        $this->getFactory()->createCombinedProductAbstractStoreBulkPdoDataSetWriter()->flush();
     }
 
     /**
@@ -166,29 +188,11 @@ class DataImportFacade extends SprykerDataImportFacade implements DataImportFaca
     }
 
     /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
-     */
-    public function writeCombinedProductAbstractPdoDataSet(DataSetInterface $dataSet): void
-    {
-        $this->getFactory()->createCombinedProductAbstractBulkPdoDataSetWriter()->write($dataSet);
-    }
-
-    /**
      * @return void
      */
     public function flushCombinedProductAbstractDataImporter(): void
     {
         $this->getFactory()->createCombinedProductAbstractPropelDataSetWriter()->flush();
-    }
-
-    /**
-     * @return void
-     */
-    public function flushCombinedProductAbstractPdoDataImporter(): void
-    {
-        $this->getFactory()->createCombinedProductAbstractBulkPdoDataSetWriter()->flush();
     }
 
     /**
@@ -202,28 +206,10 @@ class DataImportFacade extends SprykerDataImportFacade implements DataImportFaca
     }
 
     /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
-     */
-    public function writeCombinedProductConcretePdoDataSet(DataSetInterface $dataSet): void
-    {
-        $this->getFactory()->createCombinedProductConcreteBulkPdoDataSetWriter()->write($dataSet);
-    }
-
-    /**
      * @return void
      */
     public function flushCombinedProductConcreteDataImporter(): void
     {
         $this->getFactory()->createCombinedProductConcretePropelDataSetWriter()->flush();
-    }
-
-    /**
-     * @return void
-     */
-    public function flushCombinedProductConcretePdoDataImporter(): void
-    {
-        $this->getFactory()->createCombinedProductConcreteBulkPdoDataSetWriter()->flush();
     }
 }

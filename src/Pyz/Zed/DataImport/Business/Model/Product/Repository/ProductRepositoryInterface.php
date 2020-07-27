@@ -28,6 +28,16 @@ interface ProductRepositoryInterface
     public function getAbstractSkuByConcreteSku($sku);
 
     /**
+     * @return string[]
+     */
+    public function getSkuProductAbstractList(): array;
+
+    /**
+     * @return string[]
+     */
+    public function getSkuProductConcreteList(): array;
+
+    /**
      * @param string $sku
      *
      * @return int

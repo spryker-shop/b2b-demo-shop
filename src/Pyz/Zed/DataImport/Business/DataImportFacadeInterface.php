@@ -1,15 +1,80 @@
 <?php
+
 /**
- * This file is part of the Spryker Suite.
+ * This file is part of the Spryker Commerce OS.
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
+
 namespace Pyz\Zed\DataImport\Business;
+
+use Spryker\Zed\DataImport\Business\DataImportFacadeInterface as SprykerDataImportFacadeInterface;
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
+
 /**
  * @method \Pyz\Zed\DataImport\Business\DataImportBusinessFactory getFactory()
  */
-interface DataImportFacadeInterface
+interface DataImportFacadeInterface extends SprykerDataImportFacadeInterface
 {
+    /**
+     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
+     *
+     * @return void
+     */
+    public function writeProductAbstractDataSet(DataSetInterface $dataSet): void;
+
+    /**
+     * @return void
+     */
+    public function flushProductAbstractDataImporter(): void;
+
+    /**
+     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
+     *
+     * @return void
+     */
+    public function writeProductConcreteDataSet(DataSetInterface $dataSet): void;
+
+    /**
+     * @return void
+     */
+    public function flushProductConcreteDataImporter(): void;
+
+    /**
+     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
+     *
+     * @return void
+     */
+    public function writeProductImageDataSet(DataSetInterface $dataSet): void;
+
+    /**
+     * @return void
+     */
+    public function flushProductImageDataImporter(): void;
+
+    /**
+     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
+     *
+     * @return void
+     */
+    public function writeProductStockDataSet(DataSetInterface $dataSet): void;
+
+    /**
+     * @return void
+     */
+    public function flushProductStockDataImporter(): void;
+
+    /**
+     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
+     *
+     * @return void
+     */
+    public function writeProductAbstractStoreDataSet(DataSetInterface $dataSet): void;
+
+    /**
+     * @return void
+     */
+    public function flushProductAbstractStoreDataImporter(): void;
+
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
      *
@@ -18,21 +83,9 @@ interface DataImportFacadeInterface
     public function writeCombinedProductPriceDataSet(DataSetInterface $dataSet): void;
 
     /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
-     */
-    public function writeCombinedProductPricePdoDataSet(DataSetInterface $dataSet): void;
-
-    /**
      * @return void
      */
     public function flushCombinedProductPriceDataImporter();
-
-    /**
-     * @return void
-     */
-    public function flushCombinedProductPricePdoDataImporter(): void;
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
@@ -42,21 +95,9 @@ interface DataImportFacadeInterface
     public function writeCombinedProductImageDataSet(DataSetInterface $dataSet): void;
 
     /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
-     */
-    public function writeCombinedProductImagePdoDataSet(DataSetInterface $dataSet): void;
-
-    /**
      * @return void
      */
     public function flushCombinedProductImageDataImporter(): void;
-
-    /**
-     * @return void
-     */
-    public function flushCombinedProductImagePdoDataImporter(): void;
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
@@ -66,21 +107,9 @@ interface DataImportFacadeInterface
     public function writeCombinedProductStockDataSet(DataSetInterface $dataSet): void;
 
     /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
-     */
-    public function writeCombinedProductStockPdoDataSet(DataSetInterface $dataSet): void;
-
-    /**
      * @return void
      */
     public function flushCombinedProductStockDataImporter(): void;
-
-    /**
-     * @return void
-     */
-    public function flushCombinedProductStockPdoDataImporter(): void;
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
@@ -90,21 +119,9 @@ interface DataImportFacadeInterface
     public function writeCombinedProductAbstractStoreDataSet(DataSetInterface $dataSet): void;
 
     /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
-     */
-    public function writeCombinedProductAbstractStorePdoDataSet(DataSetInterface $dataSet): void;
-
-    /**
      * @return void
      */
     public function flushCombinedProductAbstractStoreDataImporter(): void;
-
-    /**
-     * @return void
-     */
-    public function flushCombinedProductAbstractStorePdoDataImporter(): void;
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
@@ -114,21 +131,9 @@ interface DataImportFacadeInterface
     public function writeCombinedProductAbstractDataSet(DataSetInterface $dataSet): void;
 
     /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
-     */
-    public function writeCombinedProductAbstractPdoDataSet(DataSetInterface $dataSet): void;
-
-    /**
      * @return void
      */
     public function flushCombinedProductAbstractDataImporter(): void;
-
-    /**
-     * @return void
-     */
-    public function flushCombinedProductAbstractPdoDataImporter(): void;
 
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
@@ -138,19 +143,7 @@ interface DataImportFacadeInterface
     public function writeCombinedProductConcreteDataSet(DataSetInterface $dataSet): void;
 
     /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
-     */
-    public function writeCombinedProductConcretePdoDataSet(DataSetInterface $dataSet): void;
-
-    /**
      * @return void
      */
     public function flushCombinedProductConcreteDataImporter(): void;
-
-    /**
-     * @return void
-     */
-    public function flushCombinedProductConcretePdoDataImporter(): void;
 }

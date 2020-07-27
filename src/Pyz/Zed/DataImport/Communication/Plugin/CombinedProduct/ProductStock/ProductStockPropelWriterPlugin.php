@@ -5,17 +5,21 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Pyz\Zed\DataImport\Communication\Plugin\CombinedProduct\ProductAbstractStore;
+namespace Pyz\Zed\DataImport\Communication\Plugin\CombinedProduct\ProductStock;
 
 use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 use Spryker\Zed\DataImportExtension\Dependency\Plugin\DataSetWriterPluginInterface;
 use Spryker\Zed\Kernel\Communication\AbstractPlugin;
 
 /**
+ * There is a faster way to import data. You can use it instead of this class if you use PostgreSQL
+ *
+ * @see \Pyz\Zed\DataImport\Communication\Plugin\CombinedProduct\ProductStock\CombinedProductStockBulkPdoWriterPlugin
+ *
  * @method \Pyz\Zed\DataImport\Business\DataImportFacadeInterface getFacade()
  * @method \Pyz\Zed\DataImport\DataImportConfig getConfig()
  */
-class CombinedProductAbstractStoreBulkPdoWriterPlugin extends AbstractPlugin implements DataSetWriterPluginInterface
+class ProductStockPropelWriterPlugin extends AbstractPlugin implements DataSetWriterPluginInterface
 {
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
@@ -24,7 +28,7 @@ class CombinedProductAbstractStoreBulkPdoWriterPlugin extends AbstractPlugin imp
      */
     public function write(DataSetInterface $dataSet): void
     {
-        $this->getFacade()->writeCombinedProductAbstractStorePdoDataSet($dataSet);
+        $this->getFacade()->writeCombinedProductStockDataSet($dataSet);
     }
 
     /**
@@ -32,6 +36,6 @@ class CombinedProductAbstractStoreBulkPdoWriterPlugin extends AbstractPlugin imp
      */
     public function flush(): void
     {
-        $this->getFacade()->flushCombinedProductAbstractStorePdoDataImporter();
+        $this->getFacade()->flushCombinedProductStockDataImporter();
     }
 }
