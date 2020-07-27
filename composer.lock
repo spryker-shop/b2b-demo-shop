@@ -1777,33 +1777,34 @@
         },
         {
             "name": "propel/propel",
-            "version": "2.0.0-alpha10",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/propelorm/Propel2.git",
-                "reference": "776f746747c62962f4b70b3a3ac1de2b249ffd35"
+                "reference": "4e2f32f01781d3d8ad1157035089f2ff42cd0a10"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/propelorm/Propel2/zipball/776f746747c62962f4b70b3a3ac1de2b249ffd35",
-                "reference": "776f746747c62962f4b70b3a3ac1de2b249ffd35",
+                "url": "https://api.github.com/repos/propelorm/Propel2/zipball/4e2f32f01781d3d8ad1157035089f2ff42cd0a10",
+                "reference": "4e2f32f01781d3d8ad1157035089f2ff42cd0a10",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
+                "php": ">=7.2",
                 "psr/log": "^1.0",
-                "symfony/config": "^2.7.0||^3.0.0||^4.0.0||^5.0.0",
-                "symfony/console": "^2.7.0||^3.0.0||^4.0.0||^5.0.0",
-                "symfony/filesystem": "^2.7.0||^3.0.0||^4.0.0||^5.0.0",
-                "symfony/finder": "^2.7.0||^3.0.0||^4.0.0||^5.0.0",
-                "symfony/translation": "^2.7.0||^3.0.0||^4.0.0||^5.0.0",
-                "symfony/validator": "^2.7.0||^3.3.0||^4.0.0||^5.0.0",
-                "symfony/yaml": "^2.7.0||^3.3.0||^4.0.0||^5.0.0"
+                "symfony/config": "^3.4.0||^4.3.0||^5.0.0",
+                "symfony/console": "^3.4.0||^4.3.0||^5.0.0",
+                "symfony/filesystem": "^3.4.0||^4.3.0||^5.0.0",
+                "symfony/finder": "^3.4.0||^4.3.0||^5.0.0",
+                "symfony/translation": "^3.4.0||^4.3.0||^5.0.0",
+                "symfony/validator": "^3.4.0||^4.3.0||^5.0.0",
+                "symfony/yaml": "^3.4.0||^4.3.0||^5.0.0"
             },
             "require-dev": {
                 "monolog/monolog": "^1.3",
                 "phpstan/phpstan": "^0.12.4",
-                "phpunit/phpunit": "^7.5.15"
+                "phpunit/phpunit": "^7.5.15",
+                "spryker/code-sniffer": "^0.15.4"
             },
             "suggest": {
                 "monolog/monolog": "The recommended logging library to use with Propel."
@@ -1839,7 +1840,7 @@
                 "orm",
                 "persistence"
             ],
-            "time": "2020-07-13T12:20:41+00:00"
+            "time": "2020-07-23T15:55:19+00:00"
         },
         {
             "name": "psr/container",
@@ -23752,25 +23753,25 @@
         },
         {
             "name": "spryker/merchant-relationship-gui",
-            "version": "1.4.0",
+            "version": "1.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/merchant-relationship-gui.git",
-                "reference": "044752b472351b1592d5db1b50f3a478068286c3"
+                "reference": "7a20676ceaa01bca59204130f84f77fa8fdd60c7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/merchant-relationship-gui/zipball/044752b472351b1592d5db1b50f3a478068286c3",
-                "reference": "044752b472351b1592d5db1b50f3a478068286c3",
+                "url": "https://api.github.com/repos/spryker/merchant-relationship-gui/zipball/7a20676ceaa01bca59204130f84f77fa8fdd60c7",
+                "reference": "7a20676ceaa01bca59204130f84f77fa8fdd60c7",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2",
                 "spryker/company": "^1.0.0",
                 "spryker/company-business-unit": "^1.0.0 || ^2.0.0",
-                "spryker/gui": "^3.13.0",
+                "spryker/gui": "^3.33.0",
                 "spryker/kernel": "^3.30.0",
-                "spryker/merchant": "^1.1.0 || ^2.0.0",
+                "spryker/merchant": "^1.1.0 || ^2.3.0 || ^3.0.0",
                 "spryker/merchant-relationship": "^1.7.0",
                 "spryker/merchant-relationship-gui-extension": "^1.0.0",
                 "spryker/propel-orm": "^1.0.0",
@@ -23778,8 +23779,7 @@
                 "spryker/util-text": "^1.1.1"
             },
             "require-dev": {
-                "spryker/code-sniffer": "*",
-                "spryker/testify": "*"
+                "spryker/code-sniffer": "*"
             },
             "type": "library",
             "extra": {
@@ -23797,7 +23797,7 @@
                 "proprietary"
             ],
             "description": "MerchantRelationshipGui module",
-            "time": "2019-11-28T16:01:00+00:00"
+            "time": "2020-07-10T07:24:53+00:00"
         },
         {
             "name": "spryker/merchant-relationship-gui-extension",
@@ -31976,21 +31976,21 @@
         },
         {
             "name": "spryker/propel-orm",
-            "version": "1.11.0",
+            "version": "1.11.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/propel-orm.git",
-                "reference": "af0b76721674cfbf99d4356be7c5eddbf289e86f"
+                "reference": "a2f375307aa6608981ced9a3ce30616e2b683f56"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/propel-orm/zipball/af0b76721674cfbf99d4356be7c5eddbf289e86f",
-                "reference": "af0b76721674cfbf99d4356be7c5eddbf289e86f",
+                "url": "https://api.github.com/repos/spryker/propel-orm/zipball/a2f375307aa6608981ced9a3ce30616e2b683f56",
+                "reference": "a2f375307aa6608981ced9a3ce30616e2b683f56",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2",
-                "propel/propel": "2.0.0-alpha10",
+                "propel/propel": "dev-master#421dcba7e31c2e6f2996c1e9ec50e30de6d56703",
                 "spryker/config": "^3.0.0",
                 "spryker/error-handler": "^2.0.0",
                 "spryker/kernel": "^3.49.0",
@@ -32017,7 +32017,7 @@
                 "proprietary"
             ],
             "description": "PropelOrm module",
-            "time": "2020-07-13T16:58:06+00:00"
+            "time": "2020-07-23T15:27:47+00:00"
         },
         {
             "name": "spryker/propel-query-builder",
@@ -32284,16 +32284,16 @@
         },
         {
             "name": "spryker/quote",
-            "version": "2.14.2",
+            "version": "2.14.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/quote.git",
-                "reference": "40e37bc8668aa0ae10a3babd6c4e673c556835b7"
+                "reference": "d39d0213b0aaffb04c7bf94c6c60b03454049b9c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/quote/zipball/40e37bc8668aa0ae10a3babd6c4e673c556835b7",
-                "reference": "40e37bc8668aa0ae10a3babd6c4e673c556835b7",
+                "url": "https://api.github.com/repos/spryker/quote/zipball/d39d0213b0aaffb04c7bf94c6c60b03454049b9c",
+                "reference": "d39d0213b0aaffb04c7bf94c6c60b03454049b9c",
                 "shasum": ""
             },
             "require": {
@@ -32331,7 +32331,7 @@
                 "proprietary"
             ],
             "description": "Quote module",
-            "time": "2020-05-29T13:08:37+00:00"
+            "time": "2020-07-06T12:46:04+00:00"
         },
         {
             "name": "spryker/quote-approval",
@@ -32521,16 +32521,16 @@
         },
         {
             "name": "spryker/quote-request",
-            "version": "2.2.0",
+            "version": "2.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/quote-request.git",
-                "reference": "b9ba277df3be1a58756161ddebb8826314414310"
+                "reference": "9f391ca22ea70572ad8e335de35a924dc94b8674"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/quote-request/zipball/b9ba277df3be1a58756161ddebb8826314414310",
-                "reference": "b9ba277df3be1a58756161ddebb8826314414310",
+                "url": "https://api.github.com/repos/spryker/quote-request/zipball/9f391ca22ea70572ad8e335de35a924dc94b8674",
+                "reference": "9f391ca22ea70572ad8e335de35a924dc94b8674",
                 "shasum": ""
             },
             "require": {
@@ -32586,7 +32586,7 @@
                 "proprietary"
             ],
             "description": "QuoteRequest module",
-            "time": "2020-04-10T12:38:15+00:00"
+            "time": "2020-07-06T12:46:04+00:00"
         },
         {
             "name": "spryker/quote-request-agent",
@@ -36033,6 +36033,7 @@
                 "proprietary"
             ],
             "description": "Silex module",
+            "abandoned": true,
             "time": "2019-09-26T05:13:58+00:00"
         },
         {
@@ -43111,6 +43112,16 @@
                 }
             ],
             "description": "Composer plugin that provides efficient querying for installed package versions (no runtime IO)",
+            "funding": [
+                {
+                    "url": "https://packagist.com",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/composer/composer",
+                    "type": "tidelift"
+                }
+            ],
             "time": "2020-04-23T11:49:37+00:00"
         },
         {
@@ -43154,6 +43165,12 @@
             "keywords": [
                 "Xdebug",
                 "performance"
+            ],
+            "funding": [
+                {
+                    "url": "https://packagist.com",
+                    "type": "custom"
+                }
             ],
             "time": "2020-03-01T12:26:26+00:00"
         },
@@ -47266,6 +47283,20 @@
             ],
             "description": "Symfony BrowserKit Component",
             "homepage": "https://symfony.com",
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
             "time": "2020-03-30T11:42:42+00:00"
         },
         {
@@ -47344,6 +47375,20 @@
             "keywords": [
                 "caching",
                 "psr6"
+            ],
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
             ],
             "time": "2020-03-27T16:56:45+00:00"
         },
@@ -47456,6 +47501,20 @@
             ],
             "description": "Symfony CssSelector Component",
             "homepage": "https://symfony.com",
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
             "time": "2020-03-27T16:56:45+00:00"
         },
         {
@@ -47529,6 +47588,20 @@
             ],
             "description": "Symfony DependencyInjection Component",
             "homepage": "https://symfony.com",
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
             "time": "2020-03-30T10:09:30+00:00"
         },
         {
@@ -47590,6 +47663,20 @@
             ],
             "description": "Symfony DomCrawler Component",
             "homepage": "https://symfony.com",
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
             "time": "2020-03-30T11:42:42+00:00"
         },
         {
@@ -47721,6 +47808,20 @@
             ],
             "description": "Symfony FrameworkBundle",
             "homepage": "https://symfony.com",
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
             "time": "2020-03-30T11:41:10+00:00"
         },
         {
@@ -47789,6 +47890,20 @@
             ],
             "description": "Symfony HttpClient component",
             "homepage": "https://symfony.com",
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
             "time": "2020-03-27T16:56:45+00:00"
         },
         {
@@ -47909,6 +48024,20 @@
                 "mime",
                 "mime-type"
             ],
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
             "time": "2020-05-25T12:33:44+00:00"
         },
         {
@@ -47984,6 +48113,20 @@
             ],
             "description": "Symfony TwigBundle",
             "homepage": "https://symfony.com",
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
             "time": "2020-03-27T16:54:36+00:00"
         },
         {
@@ -48043,6 +48186,20 @@
                 "hydrate",
                 "instantiate",
                 "serialize"
+            ],
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
             ],
             "time": "2020-03-27T16:56:45+00:00"
         },
@@ -48110,6 +48267,20 @@
             ],
             "description": "Symfony WebProfilerBundle",
             "homepage": "https://symfony.com",
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
             "time": "2020-03-27T16:54:36+00:00"
         },
         {
@@ -48330,5 +48501,6 @@
     "platform-dev": [],
     "platform-overrides": {
         "php": "7.2.15"
-    }
+    },
+    "plugin-api-version": "1.1.0"
 }
