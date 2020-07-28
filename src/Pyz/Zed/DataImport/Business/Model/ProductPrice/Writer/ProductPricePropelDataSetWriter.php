@@ -146,6 +146,7 @@ class ProductPricePropelDataSetWriter implements DataSetWriterInterface
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet $dataSet
      * @param \Orm\Zed\PriceProduct\Persistence\SpyPriceProduct $spyPriceProduct
+     *
      * @return \Orm\Zed\PriceProduct\Persistence\SpyPriceProductStore
      */
     protected function findOrCreatePriceProductStore(

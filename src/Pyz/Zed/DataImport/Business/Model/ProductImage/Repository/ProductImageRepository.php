@@ -153,12 +153,12 @@ class ProductImageRepository implements ProductImageRepositoryInterface
         ?string $productImageSetKey = null
     ): string {
         return $productImageSetKey ?? sprintf(
-                '%s:%d:%d:%d',
-                $name,
-                $localeId,
-                $productAbstractId ?? 0,
-                $productConcreteId ?? 0
-            );
+            '%s:%d:%d:%d',
+            $name,
+            $localeId,
+            $productAbstractId ?? 0,
+            $productConcreteId ?? 0
+        );
     }
 
     /**

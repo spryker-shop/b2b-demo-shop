@@ -248,9 +248,9 @@ class ProductPriceHydratorStep implements DataImportStepInterface
     /**
      * @param string $key
      *
-     * @return string
-     *
      * @throws \Spryker\Zed\PriceProductDataImport\Business\Exception\InvalidPriceDataKeyException
+     *
+     * @return string
      */
     protected function getPriceDataKey(string $key): string
     {

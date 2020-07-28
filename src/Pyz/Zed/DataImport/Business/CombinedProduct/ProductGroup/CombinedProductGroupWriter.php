@@ -1,9 +1,9 @@
 <?php
 
 /**
-* This file is part of the Spryker Suite.
-* For full license information, please view the LICENSE file that was distributed with this source code.
-*/
+ * This file is part of the Spryker Commerce OS.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
+ */
 
 namespace Pyz\Zed\DataImport\Business\CombinedProduct\ProductGroup;
 
@@ -17,8 +17,8 @@ class CombinedProductGroupWriter extends ProductGroupWriter
     public const COLUMN_POSITION = 'product_group.position';
 
     /**
-    * @param \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepository $productRepository
-    */
+     * @param \Pyz\Zed\DataImport\Business\Model\Product\Repository\ProductRepository $productRepository
+     */
     public function __construct(ProductRepository $productRepository)
     {
         parent::__construct($productRepository);
