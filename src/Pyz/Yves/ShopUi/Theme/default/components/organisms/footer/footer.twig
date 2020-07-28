@@ -69,23 +69,29 @@
 
                 <div class="col col--sm-12 col--lg-3 {{ config.name }}__contact-info">
                     <h5 class="title title--footer">{{ 'global.contact_us' | trans }}</h5>
-                    <a class="{{ config.name }}__contact-info-item {{ config.name }}__phone" href="tel:{{ 'global.phone.number' | trans }}">
+
+                    {% set phoneNumberTranslation = 'global.phone.number' | trans %}
+
+                    <a class="{{ config.name }}__contact-info-item {{ config.name }}__phone" href="tel:{{ phoneNumberTranslation }}">
                         {% include atom('icon') with {
                             modifiers: ['contact'],
                             data: {
                                 name: 'cell-phone',
                             },
                         } only %}
-                        {{ 'global.phone.number' | trans }}
+                        {{ phoneNumberTranslation }}
                     </a>
-                    <a class="{{ config.name }}__contact-info-item" href="mailto:{{ 'global.email.text' | trans }}">
+
+                    {% set emailTranslation = 'global.email.text' | trans %}
+
+                    <a class="{{ config.name }}__contact-info-item" href="mailto:{{ emailTranslation }}">
                         {% include atom('icon') with {
                             modifiers: ['contact'],
                             data: {
                                 name: 'email',
                             },
                         } only %}
-                        {{ 'global.email.text' | trans }}
+                        {{ emailTranslation }}
                     </a>
                 </div>
             </div>

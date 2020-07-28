@@ -17,11 +17,6 @@ class ContentNavigationConfig extends SprykerContentNavigationConfig
     public const WIDGET_TEMPLATE_IDENTIFIER_LIST_NAVIGATION_HEADER = 'navigation-header';
 
     /**
-     * Content item navigation header mobile template identifier.
-     */
-    public const WIDGET_TEMPLATE_IDENTIFIER_LIST_NAVIGATION_HEADER_MOBILE = 'navigation-header-mobile';
-
-    /**
      * Content item navigation footer template identifier.
      */
     public const WIDGET_TEMPLATE_IDENTIFIER_LIST_NAVIGATION_FOOTER = 'navigation-footer';
