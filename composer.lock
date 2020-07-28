@@ -22019,27 +22019,27 @@
         },
         {
             "name": "spryker/file-manager-gui",
-            "version": "1.1.3",
+            "version": "1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/file-manager-gui.git",
-                "reference": "a8a382a7ff66ac81c44cead56222179f84ded16b"
+                "reference": "6a7ba5ef6d339b6033019e00aca6cd82257f4c7c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/file-manager-gui/zipball/a8a382a7ff66ac81c44cead56222179f84ded16b",
-                "reference": "a8a382a7ff66ac81c44cead56222179f84ded16b",
+                "url": "https://api.github.com/repos/spryker/file-manager-gui/zipball/6a7ba5ef6d339b6033019e00aca6cd82257f4c7c",
+                "reference": "6a7ba5ef6d339b6033019e00aca6cd82257f4c7c",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2",
                 "spryker/file-manager": "^1.0.0",
                 "spryker/file-system": "^1.0.0",
-                "spryker/gui": "^3.0.0",
+                "spryker/gui": "^3.33.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/locale": "^3.0.0",
                 "spryker/propel-orm": "^1.0.0",
-                "spryker/symfony": "^3.0.0",
+                "spryker/symfony": "^3.4.0",
                 "spryker/util-text": "^1.0.0"
             },
             "require-dev": {
@@ -22061,24 +22061,24 @@
                 "proprietary"
             ],
             "description": "FileManagerGui module",
-            "time": "2019-12-20T05:44:20+00:00"
+            "time": "2020-07-27T11:44:21+00:00"
         },
         {
             "name": "spryker/file-manager-storage",
-            "version": "1.3.1",
+            "version": "1.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/file-manager-storage.git",
-                "reference": "67adfa052293eed74dd3185a6d7f1d72e998ed6b"
+                "reference": "c16361d3b8741b311348ca18092497e6a2a71122"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/file-manager-storage/zipball/67adfa052293eed74dd3185a6d7f1d72e998ed6b",
-                "reference": "67adfa052293eed74dd3185a6d7f1d72e998ed6b",
+                "url": "https://api.github.com/repos/spryker/file-manager-storage/zipball/c16361d3b8741b311348ca18092497e6a2a71122",
+                "reference": "c16361d3b8741b311348ca18092497e6a2a71122",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
+                "php": ">=7.2",
                 "spryker/event-behavior": "^1.0.0",
                 "spryker/file-manager": "^1.0.0",
                 "spryker/kernel": "^3.30.0",
@@ -22091,8 +22091,7 @@
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
-                "spryker/event": "*",
-                "spryker/testify": "*"
+                "spryker/event": "*"
             },
             "suggest": {
                 "spryker/event": "If you want to use Event plugins, minimum required version: 2.1.0"
@@ -22113,7 +22112,7 @@
                 "proprietary"
             ],
             "description": "FileManagerStorage module",
-            "time": "2019-10-14T10:22:10+00:00"
+            "time": "2020-07-24T12:33:58+00:00"
         },
         {
             "name": "spryker/file-system",
@@ -36842,16 +36841,16 @@
         },
         {
             "name": "spryker/symfony",
-            "version": "3.3.7",
+            "version": "3.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/symfony.git",
-                "reference": "62d31fb647e09a8c162aebe315e9188714ff8329"
+                "reference": "86f6856bcffbb6215ae0df3ca51f7a251749ff39"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/symfony/zipball/62d31fb647e09a8c162aebe315e9188714ff8329",
-                "reference": "62d31fb647e09a8c162aebe315e9188714ff8329",
+                "url": "https://api.github.com/repos/spryker/symfony/zipball/86f6856bcffbb6215ae0df3ca51f7a251749ff39",
+                "reference": "86f6856bcffbb6215ae0df3ca51f7a251749ff39",
                 "shasum": ""
             },
             "require": {
@@ -36864,11 +36863,12 @@
                 "symfony/form": "^3.0.0 || ^4.0.0",
                 "symfony/http-kernel": "^3.0.0 || ^4.0.0",
                 "symfony/intl": "^3.0.0 || ^4.0.0",
+                "symfony/mime": "^4.0.0 || ^5.0.0",
                 "symfony/options-resolver": "^3.0.0 || ^4.0.0",
                 "symfony/process": "^3.0.0 || ^4.0.0",
                 "symfony/property-access": "^3.0.0 || ^4.0.0",
                 "symfony/routing": "^3.0.0 || ^4.0.0",
-                "symfony/security": "^3.4.26 <4.0.0 || ^4.1.12 <4.2.0 || ^4.2.7",
+                "symfony/security": "^3.4.26 <4.0.0 || ^4.1.12 <4.2.0 || ^4.2.7 < 4.4.0 || ^4.4.7",
                 "symfony/serializer": "^3.0.0 || ^4.0.0",
                 "symfony/stopwatch": "^3.4.0 || ^4.0.0",
                 "symfony/translation": "^3.0.0 || ^4.0.0",
@@ -36897,7 +36897,7 @@
                 "proprietary"
             ],
             "description": "Symfony module",
-            "time": "2020-03-24T12:59:10+00:00"
+            "time": "2020-07-27T10:53:49+00:00"
         },
         {
             "name": "spryker/synchronization",
@@ -40062,6 +40062,83 @@
                 "localization"
             ],
             "time": "2020-03-27T16:54:36+00:00"
+        },
+        {
+            "name": "symfony/mime",
+            "version": "v5.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/mime.git",
+                "reference": "56261f89385f9d13cf843a5101ac72131190bc91"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/mime/zipball/56261f89385f9d13cf843a5101ac72131190bc91",
+                "reference": "56261f89385f9d13cf843a5101ac72131190bc91",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2.5",
+                "symfony/polyfill-intl-idn": "^1.10",
+                "symfony/polyfill-mbstring": "^1.0",
+                "symfony/polyfill-php80": "^1.15"
+            },
+            "conflict": {
+                "symfony/mailer": "<4.4"
+            },
+            "require-dev": {
+                "egulias/email-validator": "^2.1.10",
+                "symfony/dependency-injection": "^4.4|^5.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "5.1-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Mime\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "A library to manipulate MIME messages",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "mime",
+                "mime-type"
+            ],
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2020-05-25T12:33:44+00:00"
         },
         {
             "name": "symfony/options-resolver",
@@ -47962,83 +48039,6 @@
                 "standards"
             ],
             "time": "2019-11-26T23:25:11+00:00"
-        },
-        {
-            "name": "symfony/mime",
-            "version": "v5.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/mime.git",
-                "reference": "56261f89385f9d13cf843a5101ac72131190bc91"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/mime/zipball/56261f89385f9d13cf843a5101ac72131190bc91",
-                "reference": "56261f89385f9d13cf843a5101ac72131190bc91",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.2.5",
-                "symfony/polyfill-intl-idn": "^1.10",
-                "symfony/polyfill-mbstring": "^1.0",
-                "symfony/polyfill-php80": "^1.15"
-            },
-            "conflict": {
-                "symfony/mailer": "<4.4"
-            },
-            "require-dev": {
-                "egulias/email-validator": "^2.1.10",
-                "symfony/dependency-injection": "^4.4|^5.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "5.1-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\Component\\Mime\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "A library to manipulate MIME messages",
-            "homepage": "https://symfony.com",
-            "keywords": [
-                "mime",
-                "mime-type"
-            ],
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2020-05-25T12:33:44+00:00"
         },
         {
             "name": "symfony/twig-bundle",
