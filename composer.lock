@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "dc318f572410a132cf90ce8ec73dbbd6",
+    "content-hash": "9e083e6c58b9abc04c2aede9a20559c9",
     "packages": [
         {
             "name": "codeitnowin/barcode",
@@ -1228,12 +1228,6 @@
                 "sftp",
                 "storage"
             ],
-            "funding": [
-                {
-                    "url": "https://offset.earth/frankdejonge",
-                    "type": "other"
-                }
-            ],
             "time": "2020-05-18T15:13:39+00:00"
         },
         {
@@ -1473,16 +1467,6 @@
                 "log",
                 "logging",
                 "psr-3"
-            ],
-            "funding": [
-                {
-                    "url": "https://github.com/Seldaek",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/monolog/monolog",
-                    "type": "tidelift"
-                }
             ],
             "time": "2020-07-23T08:41:23+00:00"
         },
@@ -1793,33 +1777,36 @@
         },
         {
             "name": "propel/propel",
-            "version": "2.0.0-alpha10",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/propelorm/Propel2.git",
-                "reference": "776f746747c62962f4b70b3a3ac1de2b249ffd35"
+                "reference": "06d0b5654fec9aebbd6b786ccfa0aac8b00521e4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/propelorm/Propel2/zipball/776f746747c62962f4b70b3a3ac1de2b249ffd35",
-                "reference": "776f746747c62962f4b70b3a3ac1de2b249ffd35",
+                "url": "https://api.github.com/repos/propelorm/Propel2/zipball/06d0b5654fec9aebbd6b786ccfa0aac8b00521e4",
+                "reference": "06d0b5654fec9aebbd6b786ccfa0aac8b00521e4",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
+                "php": ">=7.2",
                 "psr/log": "^1.0",
-                "symfony/config": "^2.7.0||^3.0.0||^4.0.0||^5.0.0",
-                "symfony/console": "^2.7.0||^3.0.0||^4.0.0||^5.0.0",
-                "symfony/filesystem": "^2.7.0||^3.0.0||^4.0.0||^5.0.0",
-                "symfony/finder": "^2.7.0||^3.0.0||^4.0.0||^5.0.0",
-                "symfony/translation": "^2.7.0||^3.0.0||^4.0.0||^5.0.0",
-                "symfony/validator": "^2.7.0||^3.3.0||^4.0.0||^5.0.0",
-                "symfony/yaml": "^2.7.0||^3.3.0||^4.0.0||^5.0.0"
+                "symfony/config": "^3.4.0||^4.3.0||^5.0.0",
+                "symfony/console": "^3.4.0||^4.3.0||^5.0.0",
+                "symfony/filesystem": "^3.4.0||^4.3.0||^5.0.0",
+                "symfony/finder": "^3.4.0||^4.3.0||^5.0.0",
+                "symfony/translation": "^3.4.0||^4.3.0||^5.0.0",
+                "symfony/validator": "^3.4.0||^4.3.0||^5.0.0",
+                "symfony/yaml": "^3.4.0||^4.3.0||^5.0.0"
             },
             "require-dev": {
+                "ext-json": "*",
+                "ext-pdo": "*",
                 "monolog/monolog": "^1.3",
                 "phpstan/phpstan": "^0.12.4",
-                "phpunit/phpunit": "^7.5.15"
+                "phpunit/phpunit": "^7.5.15",
+                "spryker/code-sniffer": "^0.15.4"
             },
             "suggest": {
                 "monolog/monolog": "The recommended logging library to use with Propel."
@@ -1855,7 +1842,7 @@
                 "orm",
                 "persistence"
             ],
-            "time": "2020-07-13T12:20:41+00:00"
+            "time": "2020-07-28T13:07:01+00:00"
         },
         {
             "name": "psr/container",
@@ -3292,28 +3279,31 @@
         },
         {
             "name": "spryker-feature/merchant",
-            "version": "202001.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-feature/merchant.git",
-                "reference": "bc49402892fb022b06cebdbe8369a89e84b57feb"
+                "reference": "aec14e536248122338a14e2ebe90f662db6e4578"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-feature/merchant/zipball/bc49402892fb022b06cebdbe8369a89e84b57feb",
-                "reference": "bc49402892fb022b06cebdbe8369a89e84b57feb",
+                "url": "https://api.github.com/repos/spryker-feature/merchant/zipball/aec14e536248122338a14e2ebe90f662db6e4578",
+                "reference": "aec14e536248122338a14e2ebe90f662db6e4578",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2",
-                "spryker/merchant": "^1.1.0",
-                "spryker/merchant-data-import": "^0.1.3",
-                "spryker/merchant-gui": "^1.2.0"
+                "spryker/merchant": "^3.0.0",
+                "spryker/merchant-data-import": "^0.3.0",
+                "spryker/merchant-gui": "^3.0.0",
+                "spryker/merchant-stock": "^0.2.0",
+                "spryker/merchant-stock-data-import": "^0.2.0",
+                "spryker/merchant-stock-gui": "^0.1.0"
             },
             "type": "metapackage",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "202001.x-dev"
+                    "dev-master": "202006.x-dev"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -3321,20 +3311,20 @@
                 "proprietary"
             ],
             "description": "Merchant [feature]",
-            "time": "2020-01-14T14:57:02+00:00"
+            "time": "2020-05-26T08:25:44+00:00"
         },
         {
             "name": "spryker-feature/merchant-contracts",
-            "version": "202001.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-feature/merchant-contracts.git",
-                "reference": "a9eb26f211d08622f854b8991b3be0b5e3aed6fc"
+                "reference": "d33eab7ad0397bbc2c00db7722cd7e78d0eae7b8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-feature/merchant-contracts/zipball/a9eb26f211d08622f854b8991b3be0b5e3aed6fc",
-                "reference": "a9eb26f211d08622f854b8991b3be0b5e3aed6fc",
+                "url": "https://api.github.com/repos/spryker-feature/merchant-contracts/zipball/d33eab7ad0397bbc2c00db7722cd7e78d0eae7b8",
+                "reference": "d33eab7ad0397bbc2c00db7722cd7e78d0eae7b8",
                 "shasum": ""
             },
             "require": {
@@ -3343,10 +3333,13 @@
                 "spryker/merchant-relationship-data-import": "^0.1.5",
                 "spryker/merchant-relationship-gui": "^1.2.1"
             },
+            "suggest": {
+                "spryker-feature/merchant": "Recommended feature dependency."
+            },
             "type": "metapackage",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "202001.x-dev"
+                    "dev-master": "202006.x-dev"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -3354,7 +3347,7 @@
                 "proprietary"
             ],
             "description": "Merchant B2B Contracts [feature]",
-            "time": "2020-01-15T18:37:27+00:00"
+            "time": "2020-04-06T12:55:56+00:00"
         },
         {
             "name": "spryker-feature/merchant-custom-prices",
@@ -12004,6 +11997,44 @@
             ],
             "description": "AvailabilityGui module",
             "time": "2020-03-20T11:05:52+00:00"
+        },
+        {
+            "name": "spryker/availability-gui-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/availability-gui-extension.git",
+                "reference": "955f6bccfe21f7ef992849856588db96099a4b39"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/availability-gui-extension/zipball/955f6bccfe21f7ef992849856588db96099a4b39",
+                "reference": "955f6bccfe21f7ef992849856588db96099a4b39",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "AvailabilityGuiExtension module",
+            "time": "2020-06-17T12:01:35+00:00"
         },
         {
             "name": "spryker/availability-notification",
@@ -23809,21 +23840,28 @@
         },
         {
             "name": "spryker/merchant",
-            "version": "1.1.2",
+            "version": "3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/merchant.git",
-                "reference": "9bc6bbd830e7f11fbd7438e8d65e6893792fa607"
+                "reference": "77e4e625432b6c31e172f5420b4fbb640a55e0e2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/merchant/zipball/9bc6bbd830e7f11fbd7438e8d65e6893792fa607",
-                "reference": "9bc6bbd830e7f11fbd7438e8d65e6893792fa607",
+                "url": "https://api.github.com/repos/spryker/merchant/zipball/77e4e625432b6c31e172f5420b4fbb640a55e0e2",
+                "reference": "77e4e625432b6c31e172f5420b4fbb640a55e0e2",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
-                "spryker/kernel": "^3.30.0",
+                "php": ">=7.2",
+                "spryker/cart-extension": "^4.0.0",
+                "spryker/checkout-extension": "^1.2.0",
+                "spryker/event": "^2.0.0",
+                "spryker/kernel": "^3.33.0",
+                "spryker/merchant-extension": "^1.1.0",
+                "spryker/propel-orm": "^1.0.0",
+                "spryker/store": "^1.1.0",
+                "spryker/url": "^3.0.0",
                 "spryker/util-text": "^1.0.0"
             },
             "require-dev": {
@@ -23834,7 +23872,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0.x-dev"
+                    "dev-master": "3.0.x-dev"
                 }
             },
             "autoload": {
@@ -23848,27 +23886,29 @@
                 "proprietary"
             ],
             "description": "Merchant module",
-            "time": "2019-08-26T15:14:58+00:00"
+            "time": "2020-05-04T07:45:52+00:00"
         },
         {
             "name": "spryker/merchant-data-import",
-            "version": "0.1.3",
+            "version": "0.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/merchant-data-import.git",
-                "reference": "9937c714a116ff5bbc3bab3046240a69f90be9d8"
+                "reference": "4246bc1fa96f3d0323db888b461dcd555b727bad"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/merchant-data-import/zipball/9937c714a116ff5bbc3bab3046240a69f90be9d8",
-                "reference": "9937c714a116ff5bbc3bab3046240a69f90be9d8",
+                "url": "https://api.github.com/repos/spryker/merchant-data-import/zipball/4246bc1fa96f3d0323db888b461dcd555b727bad",
+                "reference": "4246bc1fa96f3d0323db888b461dcd555b727bad",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
+                "php": ">=7.2",
                 "spryker/data-import": "^1.3.0",
-                "spryker/kernel": "^3.0.0",
-                "spryker/merchant": "^1.0.0"
+                "spryker/kernel": "^3.30.0",
+                "spryker/merchant": "^3.0.0",
+                "spryker/store": "^1.0.0",
+                "spryker/url": "^3.0.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
@@ -23892,33 +23932,27 @@
                 "MIT"
             ],
             "description": "MerchantDataImport module",
-            "time": "2018-10-02T07:35:34+00:00"
+            "time": "2020-05-15T13:58:38+00:00"
         },
         {
-            "name": "spryker/merchant-gui",
-            "version": "1.2.0",
+            "name": "spryker/merchant-extension",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/spryker/merchant-gui.git",
-                "reference": "237e487f81b90a958dcaf62c5a7aa080c7e13cf5"
+                "url": "https://github.com/spryker/merchant-extension.git",
+                "reference": "a2e8d29c2fbabdbf6ebc7d33d8eb498223a883bf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/merchant-gui/zipball/237e487f81b90a958dcaf62c5a7aa080c7e13cf5",
-                "reference": "237e487f81b90a958dcaf62c5a7aa080c7e13cf5",
+                "url": "https://api.github.com/repos/spryker/merchant-extension/zipball/a2e8d29c2fbabdbf6ebc7d33d8eb498223a883bf",
+                "reference": "a2e8d29c2fbabdbf6ebc7d33d8eb498223a883bf",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
-                "spryker/gui": "^3.0.0",
-                "spryker/kernel": "^3.0.0",
-                "spryker/merchant": "^1.1.0",
-                "spryker/symfony": "^3.0.0",
-                "spryker/util-text": "^1.1.0"
+                "php": ">=7.2"
             },
             "require-dev": {
-                "spryker/code-sniffer": "*",
-                "spryker/testify": "*"
+                "spryker/code-sniffer": "*"
             },
             "type": "library",
             "extra": {
@@ -23935,8 +23969,102 @@
             "license": [
                 "proprietary"
             ],
+            "description": "MerchantExtension module",
+            "time": "2020-01-29T09:34:23+00:00"
+        },
+        {
+            "name": "spryker/merchant-gui",
+            "version": "3.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/merchant-gui.git",
+                "reference": "685fef8023e41d4e9eaf6e01c233db737e8a880a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/merchant-gui/zipball/685fef8023e41d4e9eaf6e01c233db737e8a880a",
+                "reference": "685fef8023e41d4e9eaf6e01c233db737e8a880a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/availability-gui-extension": "^1.0.0",
+                "spryker/gui": "^3.33.0",
+                "spryker/kernel": "^3.52.0",
+                "spryker/locale": "^3.0.0",
+                "spryker/merchant": "^3.0.0",
+                "spryker/merchant-gui-extension": "^1.1.0",
+                "spryker/product-management-extension": "^1.4.0",
+                "spryker/propel-orm": "^1.0.0",
+                "spryker/store": "^1.1.0",
+                "spryker/symfony": "^3.0.0",
+                "spryker/url": "^3.0.0",
+                "spryker/util-text": "^1.1.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
             "description": "MerchantGui module",
-            "time": "2019-01-21T15:36:52+00:00"
+            "time": "2020-07-24T04:44:34+00:00"
+        },
+        {
+            "name": "spryker/merchant-gui-extension",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/merchant-gui-extension.git",
+                "reference": "820ad3637bce23a7c1fdbcd10b7b66ea5e8924a3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/merchant-gui-extension/zipball/820ad3637bce23a7c1fdbcd10b7b66ea5e8924a3",
+                "reference": "820ad3637bce23a7c1fdbcd10b7b66ea5e8924a3",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/gui": "*",
+                "spryker/symfony": "*"
+            },
+            "suggest": {
+                "spryker/gui": "Required to use gui in plugins.",
+                "spryker/symfony": "Required to use form in plugins."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "MerchantGuiExtension module",
+            "time": "2020-04-08T15:48:06+00:00"
         },
         {
             "name": "spryker/merchant-relationship",
@@ -23988,16 +24116,16 @@
         },
         {
             "name": "spryker/merchant-relationship-data-import",
-            "version": "0.1.6",
+            "version": "0.1.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/merchant-relationship-data-import.git",
-                "reference": "41914f7918e2db2bf9afdce52aff43b63ceed536"
+                "reference": "72442e14557b6291645f624f78c71deb0e4af09c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/merchant-relationship-data-import/zipball/41914f7918e2db2bf9afdce52aff43b63ceed536",
-                "reference": "41914f7918e2db2bf9afdce52aff43b63ceed536",
+                "url": "https://api.github.com/repos/spryker/merchant-relationship-data-import/zipball/72442e14557b6291645f624f78c71deb0e4af09c",
+                "reference": "72442e14557b6291645f624f78c71deb0e4af09c",
                 "shasum": ""
             },
             "require": {
@@ -24005,7 +24133,7 @@
                 "spryker/company-business-unit": "^1.0.0 || ^2.0.0",
                 "spryker/data-import": "^1.3.0",
                 "spryker/kernel": "^3.30.0",
-                "spryker/merchant": "^1.0.0 || ^2.0.0",
+                "spryker/merchant": "^1.0.0 || ^2.0.0 || ^3.0.0",
                 "spryker/merchant-relationship": "^1.0.0"
             },
             "require-dev": {
@@ -24031,7 +24159,7 @@
                 "MIT"
             ],
             "description": "MerchantRelationshipDataImport module",
-            "time": "2019-11-15T10:41:12+00:00"
+            "time": "2020-05-12T15:08:12+00:00"
         },
         {
             "name": "spryker/merchant-relationship-extension",
@@ -24074,25 +24202,25 @@
         },
         {
             "name": "spryker/merchant-relationship-gui",
-            "version": "1.4.0",
+            "version": "1.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/merchant-relationship-gui.git",
-                "reference": "044752b472351b1592d5db1b50f3a478068286c3"
+                "reference": "7a20676ceaa01bca59204130f84f77fa8fdd60c7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/merchant-relationship-gui/zipball/044752b472351b1592d5db1b50f3a478068286c3",
-                "reference": "044752b472351b1592d5db1b50f3a478068286c3",
+                "url": "https://api.github.com/repos/spryker/merchant-relationship-gui/zipball/7a20676ceaa01bca59204130f84f77fa8fdd60c7",
+                "reference": "7a20676ceaa01bca59204130f84f77fa8fdd60c7",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2",
                 "spryker/company": "^1.0.0",
                 "spryker/company-business-unit": "^1.0.0 || ^2.0.0",
-                "spryker/gui": "^3.13.0",
+                "spryker/gui": "^3.33.0",
                 "spryker/kernel": "^3.30.0",
-                "spryker/merchant": "^1.1.0 || ^2.0.0",
+                "spryker/merchant": "^1.1.0 || ^2.3.0 || ^3.0.0",
                 "spryker/merchant-relationship": "^1.7.0",
                 "spryker/merchant-relationship-gui-extension": "^1.0.0",
                 "spryker/propel-orm": "^1.0.0",
@@ -24100,8 +24228,7 @@
                 "spryker/util-text": "^1.1.1"
             },
             "require-dev": {
-                "spryker/code-sniffer": "*",
-                "spryker/testify": "*"
+                "spryker/code-sniffer": "*"
             },
             "type": "library",
             "extra": {
@@ -24119,7 +24246,7 @@
                 "proprietary"
             ],
             "description": "MerchantRelationshipGui module",
-            "time": "2019-11-28T16:01:00+00:00"
+            "time": "2020-07-10T07:24:53+00:00"
         },
         {
             "name": "spryker/merchant-relationship-gui-extension",
@@ -24508,6 +24635,139 @@
             ],
             "description": "MerchantRelationshipSalesOrderThresholdGuiExtension module",
             "time": "2019-02-06T10:10:03+00:00"
+        },
+        {
+            "name": "spryker/merchant-stock",
+            "version": "0.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/merchant-stock.git",
+                "reference": "d0752f60aaacb7aad9fefbbc245e719d3c133683"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/merchant-stock/zipball/d0752f60aaacb7aad9fefbbc245e719d3c133683",
+                "reference": "d0752f60aaacb7aad9fefbbc245e719d3c133683",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/kernel": "^3.33.0",
+                "spryker/merchant": "^3.0.0",
+                "spryker/merchant-extension": "^1.1.0",
+                "spryker/stock": "^8.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/",
+                    "SprykerTest\\Zed\\MerchantStock\\Helper\\": "tests/SprykerTest/Zed/MerchantStock/_support/Helper/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "MerchantStock module",
+            "time": "2020-07-05T19:30:18+00:00"
+        },
+        {
+            "name": "spryker/merchant-stock-data-import",
+            "version": "0.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/merchant-stock-data-import.git",
+                "reference": "efdf413b6e7305d7c9203500d52df84bb2ecb936"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/merchant-stock-data-import/zipball/efdf413b6e7305d7c9203500d52df84bb2ecb936",
+                "reference": "efdf413b6e7305d7c9203500d52df84bb2ecb936",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/data-import": "^1.3.0",
+                "spryker/kernel": "^3.33.0",
+                "spryker/merchant": "^3.0.0",
+                "spryker/merchant-stock": "^0.2.0",
+                "spryker/stock": "^8.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/",
+                    "SprykerTest\\Zed\\MerchantStockDataImport\\Helper\\": "tests/SprykerTest/Zed/MerchantStockDataImport/_support/Helper/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "MerchantStockDataImport module",
+            "time": "2020-05-18T11:59:13+00:00"
+        },
+        {
+            "name": "spryker/merchant-stock-gui",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/merchant-stock-gui.git",
+                "reference": "e062ef23758a7584180c16b4de081292c81a34ad"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/merchant-stock-gui/zipball/e062ef23758a7584180c16b4de081292c81a34ad",
+                "reference": "e062ef23758a7584180c16b4de081292c81a34ad",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/gui": "^3.0.0",
+                "spryker/kernel": "^3.33.0",
+                "spryker/merchant-gui-extension": "^1.0.0",
+                "spryker/symfony": "^3.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "MerchantStockGui module",
+            "time": "2020-03-16T21:07:05+00:00"
         },
         {
             "name": "spryker/messenger",
@@ -32297,21 +32557,21 @@
         },
         {
             "name": "spryker/propel-orm",
-            "version": "1.11.0",
+            "version": "1.11.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/propel-orm.git",
-                "reference": "af0b76721674cfbf99d4356be7c5eddbf289e86f"
+                "reference": "a2f375307aa6608981ced9a3ce30616e2b683f56"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/propel-orm/zipball/af0b76721674cfbf99d4356be7c5eddbf289e86f",
-                "reference": "af0b76721674cfbf99d4356be7c5eddbf289e86f",
+                "url": "https://api.github.com/repos/spryker/propel-orm/zipball/a2f375307aa6608981ced9a3ce30616e2b683f56",
+                "reference": "a2f375307aa6608981ced9a3ce30616e2b683f56",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2",
-                "propel/propel": "2.0.0-alpha10",
+                "propel/propel": "dev-master#421dcba7e31c2e6f2996c1e9ec50e30de6d56703",
                 "spryker/config": "^3.0.0",
                 "spryker/error-handler": "^2.0.0",
                 "spryker/kernel": "^3.49.0",
@@ -32338,7 +32598,7 @@
                 "proprietary"
             ],
             "description": "PropelOrm module",
-            "time": "2020-07-13T16:58:06+00:00"
+            "time": "2020-07-23T15:27:47+00:00"
         },
         {
             "name": "spryker/propel-query-builder",
@@ -39488,20 +39748,6 @@
             ],
             "description": "Symfony Config Component",
             "homepage": "https://symfony.com",
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
-            ],
             "time": "2020-07-15T08:27:46+00:00"
         },
         {
@@ -39579,20 +39825,6 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
-            ],
             "time": "2020-07-06T13:18:39+00:00"
         },
         {
@@ -39650,20 +39882,6 @@
             ],
             "description": "Symfony Debug Component",
             "homepage": "https://symfony.com",
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
-            ],
             "time": "2020-07-23T08:31:43+00:00"
         },
         {
@@ -39771,20 +39989,6 @@
             ],
             "description": "Symfony ErrorHandler Component",
             "homepage": "https://symfony.com",
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
-            ],
             "time": "2020-07-23T08:35:20+00:00"
         },
         {
@@ -39855,20 +40059,6 @@
             ],
             "description": "Symfony EventDispatcher Component",
             "homepage": "https://symfony.com",
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
-            ],
             "time": "2020-06-18T17:59:13+00:00"
         },
         {
@@ -39981,20 +40171,6 @@
             ],
             "description": "Symfony Filesystem Component",
             "homepage": "https://symfony.com",
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
-            ],
             "time": "2020-05-30T18:50:54+00:00"
         },
         {
@@ -40044,20 +40220,6 @@
             ],
             "description": "Symfony Finder Component",
             "homepage": "https://symfony.com",
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
-            ],
             "time": "2020-07-05T09:39:30+00:00"
         },
         {
@@ -40203,20 +40365,6 @@
             ],
             "description": "Symfony HttpFoundation Component",
             "homepage": "https://symfony.com",
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
-            ],
             "time": "2020-07-23T10:04:31+00:00"
         },
         {
@@ -40308,20 +40456,6 @@
             ],
             "description": "Symfony HttpKernel Component",
             "homepage": "https://symfony.com",
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
-            ],
             "time": "2020-07-24T04:10:09+00:00"
         },
         {
@@ -40571,20 +40705,6 @@
                 "polyfill",
                 "portable"
             ],
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
-            ],
             "time": "2020-07-14T12:35:20+00:00"
         },
         {
@@ -40647,20 +40767,6 @@
                 "polyfill",
                 "portable",
                 "shim"
-            ],
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
             ],
             "time": "2020-07-14T12:35:20+00:00"
         },
@@ -40725,20 +40831,6 @@
                 "polyfill",
                 "portable",
                 "shim"
-            ],
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
             ],
             "time": "2020-07-14T12:35:20+00:00"
         },
@@ -40869,20 +40961,6 @@
                 "portable",
                 "shim"
             ],
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
-            ],
             "time": "2020-07-14T12:35:20+00:00"
         },
         {
@@ -40950,20 +41028,6 @@
                 "portable",
                 "shim"
             ],
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
-            ],
             "time": "2020-07-14T12:35:20+00:00"
         },
         {
@@ -41026,20 +41090,6 @@
                 "polyfill",
                 "portable",
                 "shim"
-            ],
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
             ],
             "time": "2020-07-14T12:35:20+00:00"
         },
@@ -41104,20 +41154,6 @@
                 "portable",
                 "shim"
             ],
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
-            ],
             "time": "2020-07-14T12:35:20+00:00"
         },
         {
@@ -41176,20 +41212,6 @@
                 "polyfill",
                 "portable",
                 "shim"
-            ],
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
             ],
             "time": "2020-07-14T12:35:20+00:00"
         },
@@ -41252,20 +41274,6 @@
                 "polyfill",
                 "portable",
                 "shim"
-            ],
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
             ],
             "time": "2020-07-14T12:35:20+00:00"
         },
@@ -41332,20 +41340,6 @@
                 "polyfill",
                 "portable",
                 "shim"
-            ],
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
             ],
             "time": "2020-07-14T12:35:20+00:00"
         },
@@ -41538,20 +41532,6 @@
                 "routing",
                 "uri",
                 "url"
-            ],
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
             ],
             "time": "2020-07-05T09:39:30+00:00"
         },
@@ -41909,20 +41889,6 @@
             ],
             "description": "Symfony Translation Component",
             "homepage": "https://symfony.com",
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
-            ],
             "time": "2020-07-23T08:31:43+00:00"
         },
         {
@@ -42180,20 +42146,6 @@
             ],
             "description": "Symfony Validator Component",
             "homepage": "https://symfony.com",
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
-            ],
             "time": "2020-06-30T17:40:09+00:00"
         },
         {
@@ -42328,20 +42280,6 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
-            ],
             "time": "2020-05-20T08:37:50+00:00"
         },
         {
@@ -42511,42 +42449,20 @@
                 "clean",
                 "php"
             ],
-            "funding": [
-                {
-                    "url": "https://www.paypal.me/moelleken",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/voku",
-                    "type": "github"
-                },
-                {
-                    "url": "https://opencollective.com/portable-ascii",
-                    "type": "open_collective"
-                },
-                {
-                    "url": "https://www.patreon.com/voku",
-                    "type": "patreon"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/voku/portable-ascii",
-                    "type": "tidelift"
-                }
-            ],
             "time": "2020-07-22T23:32:04+00:00"
         },
         {
             "name": "voku/portable-utf8",
-            "version": "5.4.46",
+            "version": "5.4.47",
             "source": {
                 "type": "git",
                 "url": "https://github.com/voku/portable-utf8.git",
-                "reference": "664a710cc07c83c5d023a3ae8be22d69e3622286"
+                "reference": "c92522515a2d5ec9b03fd3c9e231b8b277c65121"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/voku/portable-utf8/zipball/664a710cc07c83c5d023a3ae8be22d69e3622286",
-                "reference": "664a710cc07c83c5d023a3ae8be22d69e3622286",
+                "url": "https://api.github.com/repos/voku/portable-utf8/zipball/c92522515a2d5ec9b03fd3c9e231b8b277c65121",
+                "reference": "c92522515a2d5ec9b03fd3c9e231b8b277c65121",
                 "shasum": ""
             },
             "require": {
@@ -42628,7 +42544,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-07-18T00:16:14+00:00"
+            "time": "2020-07-26T11:17:51+00:00"
         },
         {
             "name": "webmozart/assert",
@@ -48914,6 +48830,18 @@
             "alias": "202006.0",
             "alias_normalized": "202006.0",
             "version": "9999999-dev",
+            "package": "spryker-feature/merchant"
+        },
+        {
+            "alias": "202006.0",
+            "alias_normalized": "202006.0",
+            "version": "9999999-dev",
+            "package": "spryker-feature/merchant-contracts"
+        },
+        {
+            "alias": "202006.0",
+            "alias_normalized": "202006.0",
+            "version": "9999999-dev",
             "package": "spryker-feature/merchant-order-threshold"
         },
         {
@@ -49055,6 +48983,8 @@
         "spryker-feature/customer-account-management": 20,
         "spryker-feature/file-manager": 20,
         "spryker-feature/mailing-notifications": 20,
+        "spryker-feature/merchant": 20,
+        "spryker-feature/merchant-contracts": 20,
         "spryker-feature/merchant-order-threshold": 20,
         "spryker-feature/multiple-carts": 20,
         "spryker-feature/navigation": 20,
