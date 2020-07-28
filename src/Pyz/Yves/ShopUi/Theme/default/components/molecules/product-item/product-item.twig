@@ -63,16 +63,7 @@
         {% endblock %}
 
         {% block actionsContainer %}
-            {% block ajaxAddToCart %}
-                {% if data.product is iterable and can('SeeAddToCartPermissionPlugin') %}
-                    {% widget 'ProductAbstractAddToCartButtonWidget' args [data.product] with {
-                        data: {
-                            buttonExtraClasses: config.jsName ~ '__ajax-button-add-to-cart',
-                        },
-                    } only %}
-                    {% endwidget %}
-                {% endif %}
-            {% endblock %}
+            {{ parent() }}
         {% endblock %}
     </div>
 {% endblock %}
@@ -85,4 +76,10 @@
             {{ block('colors') }}
         </div>
     </div>
+{% endblock %}
+
+{% block action %}
+    <a class="button button--expand button--hollow {{ config.jsName }}__link-detail-page" href="{{ path(data.url) }}">
+        {{ 'product.view' | trans }}
+    </a>
 {% endblock %}

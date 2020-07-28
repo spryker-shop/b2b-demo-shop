@@ -90,25 +90,30 @@
 
                         {% block actions %}
                             <div class="{{ config.name }}__details col">
-                                <a class="{{ config.jsName }}__link-detail-page button button--expand button--hollow" href="{{ data.url }}">
-                                    {{ 'product.view' | trans }}
-                                </a>
+                                {{ parent() }}
                             </div>
-
-                            {% block ajaxAddToCart %}
-                                {% if data.product is iterable and can('SeeAddToCartPermissionPlugin') %}
-                                    {% widget 'ProductAbstractAddToCartButtonWidget' args [data.product] with {
-                                        data: {
-                                            buttonExtraClasses: config.jsName ~ '__ajax-button-add-to-cart',
-                                        },
-                                    } only %}
-                                    {% endwidget %}
-                                {% endif %}
-                            {% endblock %}
                         {% endblock %}
                     </div>
                 </div>
             {% endblock %}
         </div>
     </div>
+{% endblock %}
+
+{% block ajaxAddToCart %}
+    {% if data.product is iterable and can('SeeAddToCartPermissionPlugin') %}
+        {% widget 'ProductAbstractAddToCartButtonWidget' args [data.product] with {
+            data: {
+                buttonExtraClasses: config.jsName ~ '__ajax-button-add-to-cart',
+            },
+            embed: {
+                parentConfigName: config.name,
+            },
+        } only %}
+            {% block body %}
+                {% set extraClasses = embed.parentConfigName ~ '__action' %}
+                {{ parent() }}
+            {% endblock %}
+        {% endwidget %}
+    {% endif %}
 {% endblock %}
