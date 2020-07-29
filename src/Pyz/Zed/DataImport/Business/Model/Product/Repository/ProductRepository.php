@@ -13,7 +13,7 @@ use Orm\Zed\Product\Persistence\SpyProduct;
 use Orm\Zed\Product\Persistence\SpyProductAbstract;
 use Orm\Zed\Product\Persistence\SpyProductAbstractQuery;
 use Orm\Zed\Product\Persistence\SpyProductQuery;
-use Propel\Runtime\Collection\ObjectCollection;
+use Propel\Runtime\Collection\ArrayCollection;
 use Pyz\Zed\DataImport\Business\Exception\EntityNotFoundException;
 
 class ProductRepository implements ProductRepositoryInterface
@@ -70,9 +70,9 @@ class ProductRepository implements ProductRepositoryInterface
     }
 
     /**
-     * @return \Propel\Runtime\Collection\ObjectCollection
+     * @return \Propel\Runtime\Collection\ArrayCollection
      */
-    public function getProductConcreteAttributesCollection(): ObjectCollection
+    public function getProductConcreteAttributesCollection(): ArrayCollection
     {
         return SpyProductQuery::create()
             ->joinWithSpyProductAbstract()

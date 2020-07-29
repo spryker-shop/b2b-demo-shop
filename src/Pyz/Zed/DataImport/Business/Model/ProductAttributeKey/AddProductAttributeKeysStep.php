@@ -30,16 +30,14 @@ class AddProductAttributeKeysStep implements DataImportStepInterface
     public function execute(DataSetInterface $dataSet)
     {
         if (empty($this->productAttributeKeys)) {
-            /** @var array $productAttributeKeys */
-            $productAttributeKeys = SpyProductAttributeKeyQuery::create()
+            $query = SpyProductAttributeKeyQuery::create()
                 ->select([
                     SpyProductAttributeKeyTableMap::COL_ID_PRODUCT_ATTRIBUTE_KEY,
                     SpyProductAttributeKeyTableMap::COL_KEY,
                 ])
-                ->setFormatter(new SimpleArrayFormatter())
-                ->find();
+                ->setFormatter(new SimpleArrayFormatter());
 
-            foreach ($productAttributeKeys as $productAttributeKey) {
+            foreach ($query->find() as $productAttributeKey) {
                 $key = $productAttributeKey[SpyProductAttributeKeyTableMap::COL_KEY];
                 $value = $productAttributeKey[SpyProductAttributeKeyTableMap::COL_ID_PRODUCT_ATTRIBUTE_KEY];
 
