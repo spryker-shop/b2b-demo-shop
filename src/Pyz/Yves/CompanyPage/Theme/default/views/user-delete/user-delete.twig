@@ -3,6 +3,7 @@
 {% define data = {
     idCompanyUser: _view.idCompanyUser,
     companyUserName: _view.customer.firstName ~ ' ' ~ _view.customer.lastName,
+    companyUserDeleteForm: _view.companyUserDeleteForm,
     title: 'company.account.company_user' | trans,
     activePage: 'users'
 } %}
@@ -34,12 +35,18 @@
     } only %}
     {{ "company.account.company_user.delete.confirmation.trying_to_delete" | trans }}: <strong>{{ data.companyUserName }}</strong><br>
     {{ "company.account.company_user.delete.confirmation.deleted_from_everywhere" | trans }}<br><br>
-    <div>
-        <a href="{{ url('company/user') }}" class="button button--hollow">
-            {{ "company.account.company_user.delete.back" | trans }}
-        </a>
-        <a href="{{ url('company/user/delete', { 'id' : data.idCompanyUser }) }}" class="button button--alert">
-            {{ "company.account.company_user.delete" | trans }}
-        </a>
+    <div class="grid">
+        <div class="col">
+            <a href="{{ url('company/user') }}" class="button button--hollow">
+                {{ "company.account.company_user.delete.back" | trans }}
+            </a>
+        </div>
+        <div class="col spacing-left spacing-left--inner">
+            {{ form_start(data.companyUserDeleteForm, {'action': url('company/user/delete')}) }}
+                <button data-init-single-click class="button button--alert">
+                    {{ 'company.account.company_user.delete' | trans }}
+                </button>
+            {{ form_end(data.companyUserDeleteForm) }}
+        </div>
     </div>
 {% endblock %}
