@@ -100,20 +100,7 @@
     </div>
 {% endblock %}
 
-{% block ajaxAddToCart %}
-    {% if data.product is iterable and can('SeeAddToCartPermissionPlugin') %}
-        {% widget 'ProductAbstractAddToCartButtonWidget' args [data.product] with {
-            data: {
-                buttonExtraClasses: config.jsName ~ '__ajax-button-add-to-cart',
-            },
-            embed: {
-                parentConfigName: config.name,
-            },
-        } only %}
-            {% block body %}
-                {% set extraClasses = embed.parentConfigName ~ '__action' %}
-                {{ parent() }}
-            {% endblock %}
-        {% endwidget %}
-    {% endif %}
+{% block ajaxAddToCartInner %}
+    {% set componentExtraClasses = config.name ~ '__action' %}
+    {{ parent() }}
 {% endblock %}

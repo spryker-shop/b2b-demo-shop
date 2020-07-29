@@ -62,10 +62,10 @@
         {% endblock %}
 
     {% if not data.isMultiCartAllowed%}
-        {% include molecule('cart-items-counter') with {
+        {% include molecule('cart-counter') with {
             data: {
-                quantity: data.cartQuantity
-            }
+                quantity: data.cartQuantity,
+            },
         } only %}
     {% endif %}
 {% endblock %}

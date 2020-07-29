@@ -83,3 +83,26 @@
         {{ 'product.view' | trans }}
     </a>
 {% endblock %}
+
+{% block ajaxAddToCart %}
+    {% if data.product is iterable and can('SeeAddToCartPermissionPlugin') %}
+        {% set ajaxButtonExtraClasses = config.jsName ~ '__ajax-button-add-to-cart js-node-animator__trigger' %}
+        {% set componentExtraClasses = '' %}
+
+        {% block ajaxAddToCartInner %}
+            {% widget 'ProductAbstractAddToCartButtonWidget' args [data.product] with {
+                data: {
+                    buttonExtraClasses: ajaxButtonExtraClasses,
+                },
+                embed: {
+                    componentExtraClasses: componentExtraClasses,
+                },
+            } only %}
+                {% block body %}
+                    {% set extraClasses = embed.componentExtraClasses ?: extraClasses %}
+                    {{ parent() }}
+                {% endblock %}
+            {% endwidget %}
+        {% endblock %}
+    {% endif %}
+{% endblock %}
