@@ -149,4 +149,3 @@ $config[PropelConstants::ZED_DB_DATABASE] = sprintf('%s_development_zed', APPLIC
 
 // ---------- MailCatcher
 $config[MailConstants::MAILCATCHER_GUI] = sprintf('http://%s:1080', $config[ApplicationConstants::HOST_ZED]);
-
