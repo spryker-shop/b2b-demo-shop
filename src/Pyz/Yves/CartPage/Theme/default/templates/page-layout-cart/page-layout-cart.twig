@@ -1,4 +1,16 @@
-{% extends template('page-layout-cart', '@SprykerShop:CartPage') %}
+{% extends template('page-layout-main') %}
+
+{% define data = {
+    cart: _view.cart,
+    isQuoteEditable: _view.isQuoteEditable,
+    isQuoteLocked: _view.isQuoteLocked,
+    cartItems: _view.cartItems,
+    isQuoteValid: _view.isQuoteValid,
+    attributes: _view.attributes,
+    request: app.request,
+    title: 'cart.cart' | trans,
+    requestUri: app.request.requestUri,
+} %}
 
 {% block breadcrumbs %}
     {% set steps = [
@@ -378,8 +390,4 @@
             {% widget 'UpSellingProductsWidget' args [data.cart] only %}{% endwidget %}
         {% endif %}
     {% endif %}
-{% endblock %}
-
-{% block footer %}
-    {% include organism('footer') only %}
 {% endblock %}
