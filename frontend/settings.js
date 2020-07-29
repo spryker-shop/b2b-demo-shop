@@ -56,11 +56,11 @@ const getAppSettingsByTheme = (namespaceConfig, theme, pathToConfig) => {
             .replace(/%theme%/gi, theme)
     );
 
-    const getAllModuleSuffixes = () => namespaceJson.namespaces.map(namespace => namespace.moduleSuffix);
+    const getAllCodeBuckets = () => namespaceJson.namespaces.map(namespace => namespace.codeBucket);
 
     const ignoreModulesCollection = () => {
-        return getAllModuleSuffixes()
-                    .filter(suffix => suffix !== namespaceConfig.moduleSuffix)
+        return getAllCodeBuckets()
+                    .filter(suffix => suffix !== namespaceConfig.codeBucket)
                     .map(suffix => `!**/*${suffix}/Theme/**`);
     };
 
