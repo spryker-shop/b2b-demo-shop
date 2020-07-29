@@ -113,7 +113,7 @@ $config[ErrorHandlerConstants::DISPLAY_ERRORS] = true;
 $config[PropelConstants::USE_SUDO_TO_MANAGE_DATABASE] = false;
 
 // ---------- Yves host
-$ENV_PROTOCOL_YVES = getenv('YVES_HOST_PROTOCOL'); //'http://'
+$ENV_PROTOCOL_YVES = getenv('YVES_HOST_PROTOCOL');
 $ENV_HOST_YVES = getenv('YVES_HOST');
 $config[ApplicationConstants::HOST_YVES] = $ENV_HOST_YVES;
 $config[ApplicationConstants::PORT_YVES] = '';
