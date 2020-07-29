@@ -38,6 +38,7 @@ use Spryker\Zed\DataImport\DataImportDependencyProvider as SprykerDataImportDepe
 use Spryker\Zed\FileManagerDataImport\Communication\Plugin\FileManagerDataImportPlugin;
 use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\MerchantDataImport\Communication\Plugin\MerchantDataImportPlugin;
+use Spryker\Zed\MerchantDataImport\Communication\Plugin\MerchantStoreDataImportPlugin;
 use Spryker\Zed\MerchantRelationshipDataImport\Communication\Plugin\MerchantRelationshipDataImportPlugin;
 use Spryker\Zed\MerchantRelationshipProductListDataImport\Communication\Plugin\MerchantRelationshipProductListDataImportPlugin;
 use Spryker\Zed\MerchantRelationshipSalesOrderThresholdDataImport\Communication\Plugin\DataImport\MerchantRelationshipSalesOrderThresholdDataImportPlugin;
@@ -200,6 +201,7 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
             new BusinessOnBehalfCompanyUserDataImportPlugin(),
             new SalesOrderThresholdDataImportPlugin(),
             new MerchantDataImportPlugin(),
+            new MerchantStoreDataImportPlugin(),
             new MerchantRelationshipDataImportPlugin(),
             new MerchantRelationshipSalesOrderThresholdDataImportPlugin(),
             new ProductListDataImportPlugin(),
