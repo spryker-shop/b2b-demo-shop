@@ -210,10 +210,9 @@
                                             {% block totalPrice %}{% endblock %}
 
                                             {% block state %}
-                                                {% set isStateExist = data.listItem.state is defined and data.listItem.state is not empty %}
+                                                {% set stateName = data.productItem.state.name ?? '' %}
 
-                                                {% if isStateExist %}
-                                                    {% set stateName = data.listItem.state.name %}
+                                                {% if stateName %}
                                                     {% set state = stateName | replace({' ': '-'}) | lower %}
 
                                                     {% include molecule('status') with {

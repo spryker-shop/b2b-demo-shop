@@ -32,10 +32,9 @@
                                 </div>
                                 <div class="col col--sm-12 col--md-5">
                                     {% block state %}
-                                        {% set isStateExist = item.state is defined and item.state is not empty %}
+                                        {% set stateName = data.productItem.state.name ?? '' %}
 
-                                        {% if isStateExist %}
-                                            {% set stateName = item.state.name %}
+                                        {% if stateName %}
                                             {% set state = stateName | replace({' ': '-'}) | lower %}
 
                                             {% include molecule('status') with {
