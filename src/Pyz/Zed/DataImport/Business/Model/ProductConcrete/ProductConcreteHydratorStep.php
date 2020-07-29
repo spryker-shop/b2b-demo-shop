@@ -30,17 +30,8 @@ class ProductConcreteHydratorStep implements DataImportStepInterface
     public const COLUMN_IS_QUANTITY_SPLITTABLE = 'is_quantity_splittable';
 
     public const KEY_ATTRIBUTES = 'attributes';
-    public const KEY_DISCOUNT = 'discount';
-    public const KEY_QUANTITY = 'quantity';
-    public const KEY_WAREHOUSES = 'warehouses';
-    public const KEY_SPY_PRODUCT = 'spy_product';
-    public const KEY_ID_PRODUCT = 'id_product';
-    public const KEY_FK_PRODUCT_ABSTRACT = 'fk_product_abstract';
     public const KEY_LOCALIZED_ATTRIBUTES = 'localizedAttributes';
     public const KEY_LOCALES = 'locales';
-    public const KEY_FK_LOCALE = 'fk_locale';
-    public const KEY_FK_PRODUCT = 'fk_product';
-    public const KEY_FK_BUNDLED_PRODUCT = 'fk_bundled_product';
     public const KEY_SKU = 'sku';
     public const KEY_IS_ACTIVE = 'is_active';
     public const KEY_IS_COMPLETE = 'is_complete';

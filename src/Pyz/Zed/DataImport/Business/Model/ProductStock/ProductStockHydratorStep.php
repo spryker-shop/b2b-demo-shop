@@ -22,8 +22,6 @@ class ProductStockHydratorStep implements DataImportStepInterface
     public const COLUMN_IS_NEVER_OUT_OF_STOCK = 'is_never_out_of_stock';
     public const COLUMN_IS_BUNDLE = 'is_bundle';
 
-    public const KEY_FK_PRODUCT = 'fk_product';
-    public const KEY_FK_STOCK = 'fk_stock';
     public const STOCK_ENTITY_TRANSFER = 'STOCK_ENTITY_TRANSFER';
     public const STOCK_PRODUCT_ENTITY_TRANSFER = 'STOCK_PRODUCT_ENTITY_TRANSFER';
 

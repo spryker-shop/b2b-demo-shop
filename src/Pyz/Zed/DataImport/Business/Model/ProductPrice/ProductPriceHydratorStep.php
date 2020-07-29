@@ -36,29 +36,11 @@ class ProductPriceHydratorStep implements DataImportStepInterface
     public const COLUMN_PRICE_TYPE = 'price_type';
 
     public const KEY_ID_PRODUCT_ABSTRACT = 'id_product_abstract';
-    public const KEY_ID_PRODUCT = 'id_product';
-    public const KEY_ID_PRICE_PRODUCT = 'id_price_product';
-    public const KEY_PRICE_TYPE_NAME = 'name';
-    public const KEY_PRICE_MODE_CONFIGURATION = 'price_mode_configuration';
     public const KEY_DEFAULT_PRICE_MODE_CONFIGURATION = 2;
-    public const KEY_PRICE_GROSS_DB = 'gross_price';
-    public const KEY_PRICE_NET_DB = 'net_price';
-    public const KEY_CURRENCY_NAME = 'name';
-    public const KEY_STORE_NAME = 'name';
-    public const KEY_SPY_PRODUCT_ABSTRACT = 'spy_product_abstract';
-    public const KEY_SPY_PRODUCT = 'spy_product';
-    public const KEY_FK_PRODUCT_ABSTRACT = 'fk_product_abstract';
-    public const KEY_FK_PRODUCT = 'fk_product';
-    public const KEY_PRICE_PRODUCT_STORES = 'spy_price_product_stores';
-    public const KEY_PRODUCT = 'product';
     public const KEY_SKU = 'sku';
     public const PRICE_TYPE_TRANSFER = 'PRICE_TYPE_TRANSFER';
     public const PRICE_PRODUCT_TRANSFER = 'PRICE_PRODUCT_TRANSFER';
     public const KEY_PRICE_DATA_PREFIX = 'price_data.';
-    public const KEY_ID_PRICE_TYPE = 'id_price_type';
-    public const KEY_ID_CURRENCY = 'id_currency';
-    public const KEY_ID_STORE = 'id_store';
-    public const KEY_ID_PRICE_PRODUCT_STORE = 'id_price_product_store';
 
     /**
      * @var \Spryker\Zed\DataImport\Dependency\Service\DataImportToUtilEncodingServiceInterface

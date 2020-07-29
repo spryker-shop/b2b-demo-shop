@@ -45,13 +45,8 @@ class ProductAbstractHydratorStep implements DataImportStepInterface
     public const KEY_SKU = 'sku';
     public const KEY_ATTRIBUTES = 'attributes';
     public const KEY_ID_TAX_SET = 'idTaxSet';
-    public const KEY_FK_TAX_SET = 'fk_tax_set';
     public const COLUMN_CATEGORY_KEYS = 'categoryKeys';
-    public const KEY_FK_CATEGORY = 'fk_category';
-    public const KEY_PRODUCT_ORDER = 'product_order';
     public const KEY_LOCALES = 'locales';
-    public const KEY_FK_LOCALE = 'fk_locale';
-    public const KEY_ID_URL = 'id_url';
     public const KEY_ID_PRODUCT_ABSTRACT = 'id_product_abstract';
 
     /**
