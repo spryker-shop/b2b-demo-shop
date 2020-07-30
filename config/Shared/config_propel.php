@@ -1,6 +1,5 @@
 <?php
 
-use Spryker\Shared\Kernel\Store;
 use Spryker\Shared\Propel\PropelConstants;
 use Spryker\Zed\Propel\PropelConfig;
 use Spryker\Zed\PropelOrm\Business\Builder\ExtensionObjectBuilder;

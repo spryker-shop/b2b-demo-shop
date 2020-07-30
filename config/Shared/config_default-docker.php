@@ -127,7 +127,6 @@ if (interface_exists(WebProfilerWidgetConstants::class)) {
     $config[WebProfilerWidgetConstants::IS_WEB_PROFILER_ENABLED] = getenv('SPRYKER_DEBUG_ENABLED') && !getenv('SPRYKER_TESTING_ENABLED');
 }
 
-
 $config[AclConstants::ACL_USER_RULE_WHITELIST][] = [
     'bundle' => 'wdt',
     'controller' => '*',
