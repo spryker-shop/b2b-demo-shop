@@ -24,10 +24,10 @@ const getAssetsConfig = appSettings => [
     ),
 
     new CopyWebpackPlugin(getCopyConfig(appSettings), {
-        context: appSettings.context
+        context: appSettings.context,
     }),
 ];
 
 module.exports = {
-    getAssetsConfig
+    getAssetsConfig,
 };
