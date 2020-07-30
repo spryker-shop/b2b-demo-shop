@@ -39,6 +39,7 @@ use Spryker\Shared\Testify\TestifyConstants;
 use Spryker\Shared\ZedRequest\ZedRequestConstants;
 
 $domain = getenv('VM_PROJECT') ?: 'suite';
+$storeLowerCase = strtolower(APPLICATION_STORE);
 
 // ---------- General
 $config[KernelConstants::SPRYKER_ROOT] = APPLICATION_ROOT_DIR . '/vendor/spryker';
@@ -134,7 +135,7 @@ $config[RouterConstants::YVES_IS_SSL_ENABLED] = false;
 $config[RouterConstants::ZED_IS_SSL_ENABLED] = false;
 
 // ---------- Yves host
-$config[ApplicationConstants::HOST_YVES] = sprintf('www-test.de.%s.local', $domain);
+$config[ApplicationConstants::HOST_YVES] = sprintf('www-test.%s.%s.local', $storeLowerCase, $domain);
 $config[ApplicationConstants::PORT_YVES] = '';
 $config[ApplicationConstants::PORT_SSL_YVES] = '';
 $config[ApplicationConstants::BASE_URL_YVES] = sprintf(
@@ -152,7 +153,7 @@ $config[NewsletterConstants::BASE_URL_YVES] = $config[ApplicationConstants::BASE
 $config[CustomerConstants::BASE_URL_YVES] = $config[ApplicationConstants::BASE_URL_YVES];
 
 // ---------- Zed host
-$config[ApplicationConstants::HOST_ZED] = sprintf('zed-test.de.%s.local', $domain);
+$config[ApplicationConstants::HOST_ZED] = sprintf('zed-test.%s.%s.local', $storeLowerCase, $domain);
 $config[ApplicationConstants::PORT_ZED] = '';
 $config[ApplicationConstants::PORT_SSL_ZED] = '';
 $config[ApplicationConstants::BASE_URL_ZED] = sprintf(
@@ -181,11 +182,10 @@ $config[ApplicationConstants::YVES_TRUSTED_HOSTS]
 // ---------- Propel
 $config[PropelConstants::ZED_DB_USERNAME] = 'devtest';
 $config[PropelConstants::ZED_DB_PASSWORD] = 'mate20mg';
-$config[PropelConstants::ZED_DB_DATABASE] = 'DE_devtest_zed';
+$config[PropelConstants::ZED_DB_DATABASE] = sprintf('%s_devtest_zed', APPLICATION_CODE_BUCKET);
 
 // ---------- Elasticsearch
-$config[CollectorConstants::ELASTICA_PARAMETER__INDEX_NAME]
-    = 'de_search_devtest';
+$config[CollectorConstants::ELASTICA_PARAMETER__INDEX_NAME] = sprintf('%s_search_devtest', $storeLowerCase);
 
 // ---------- Session
 $config[SessionConstants::YVES_SESSION_COOKIE_DOMAIN] = $config[ApplicationConstants::HOST_YVES];
