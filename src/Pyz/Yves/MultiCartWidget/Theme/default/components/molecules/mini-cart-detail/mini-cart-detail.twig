@@ -33,9 +33,23 @@
                             </span>
                         </a>
                     {% else %}
-                        <a class="{{ config.name }}__title" href="{{ path('multi-cart/set-default', {idQuote: data.cart.idQuote}) }}">
-                            <strong class="{{ config.name }}__name">{{ data.cart.name }}</strong>
-                        </a>
+                        {% embed molecule('single-button-form') with {
+                            data: {
+                                formAction: path('multi-cart/set-default', {idQuote: data.cart.idQuote}),
+                                buttonText: data.cart.name,
+                                buttonClass: config.name ~ '__title',
+                                fieldName: 'multi_cart_set_default_form[_token]',
+                                fieldValue: csrf_token('multi_cart_set_default_form'),
+                                iconName: '',
+                            },
+                            embed: {
+                                name: config.name,
+                            },
+                        } only %}
+                            {% block text %}
+                                <strong class="{{ embed.name }}__name">{{ data.buttonText }}</strong>
+                            {% endblock %}
+                        {% endembed %}
                     {% endif %}
                 </div>
                 <div class="col col--sm-4 col--md-3 text-right">

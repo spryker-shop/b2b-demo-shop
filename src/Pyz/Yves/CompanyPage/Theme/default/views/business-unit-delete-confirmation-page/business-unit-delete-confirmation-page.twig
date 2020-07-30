@@ -3,7 +3,8 @@
 {% define data = {
     title: 'company.company_business_unit.delete.confirmation.warning' | trans,
     activePage: 'business-unit',
-    companyBusinessUnit: _view.companyBusinessUnit
+    companyBusinessUnit: _view.companyBusinessUnit,
+    form: _view.companyBusinessUnitDeleteForm,
 } %}
 
 {% block breadcrumbs %}
@@ -21,21 +22,22 @@
                     url: url('company/business-unit/update', {'id': data.companyBusinessUnit.idCompanyBusinessUnit })
                 }, {
                     label: 'company.account.business_unit.delete' | trans,
-                }
-            ]
-        }
+                },
+            ],
+        },
     } only %}
 {% endblock %}
 
 {% block companyContent %}
     {% include molecule('action-bar') with {
         data: {
-            title: data.title
-        }
+            title: data.title,
+        },
     } only %}
     {% include molecule('business-unit-delete-message', 'CompanyPage') with {
         data: {
-            companyBusinessUnit: data.companyBusinessUnit
-        }
+            companyBusinessUnit: data.companyBusinessUnit,
+            form: data.form,
+        },
     } only %}
 {% endblock %}
