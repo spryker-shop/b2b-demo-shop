@@ -10,6 +10,7 @@ import 'core-js/features/map';
 import 'classlist-polyfill';
 import 'string.prototype.startswith';
 import 'string.prototype.repeat';
+import 'intersection-observer';
 import elementClosestPolyfill from 'element-closest';
 elementClosestPolyfill(window);
 

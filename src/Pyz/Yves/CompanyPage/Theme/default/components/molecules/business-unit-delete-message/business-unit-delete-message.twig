@@ -7,10 +7,31 @@
         {{ "company.business_unit.delete.message.text" | trans }}:
         <strong>{{ data.companyBusinessUnit.name }}</strong>
     </div>
-    <a href="{{ url('company/business-unit/update', businessUnitId) }}" class="button button--hollow">
-        {{ "company.company_business_unit.delete.confirmation.back" | trans }}
-    </a>
-    <a href="{{ url('company/business-unit/delete', businessUnitId) }}" class="button button--alert">
-        {{ "company.account.business_unit.delete" | trans }}
-    </a>
+    <div class="grid">
+        <div class="col">
+            <a href="{{ url('company/business-unit/update', businessUnitId) }}" class="button button--hollow">
+                {{ "company.company_business_unit.delete.confirmation.back" | trans }}
+            </a>
+        </div>
+        <div class="col spacing-left">
+            {% set deleteBusinessUnitForm = data.form %}
+
+            {% if deleteBusinessUnitForm %}
+                {{ form_start(deleteBusinessUnitForm, {'action': path('company/business-unit/delete', {'id': businessUnitId}) }) }}
+                    <button data-init-single-click class="button button--alert">{{ "company.account.business_unit.delete" | trans }}</button>
+                {{ form_end(deleteBusinessUnitForm) }}
+            {% else %}
+                {% include molecule('single-button-form') with {
+                    data: {
+                        formAction: path('company/business-unit/delete', {'id': businessUnitId}),
+                        buttonText: "company.account.business_unit.delete" | trans,
+                        buttonClass: 'button button--alert',
+                        fieldName: 'company_business_unit_delete_form[_token]',
+                        fieldValue: csrf_token('company_business_unit_delete_form'),
+                        iconName: '',
+                    },
+                } only %}
+            {% endif %}
+        </div>
+    </div>
 {% endblock %}

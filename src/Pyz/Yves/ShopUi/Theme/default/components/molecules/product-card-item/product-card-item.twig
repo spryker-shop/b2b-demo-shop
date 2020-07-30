@@ -26,9 +26,9 @@
     <div class="grid grid--stretch grid--gap">
         <div class="{{ component.renderClass(config.name ~ '__col', modifiers, config.name ~ '__col--image') }} col">
             {% block image %}
-                {% set imageUrl = data.listItem.images is not empty ? data.listItem.images[0].externalUrlLarge : null %}
+                {% set imageUrl = data.listItem.images[0].externalUrlLarge ?? '' %}
 
-                {% if data.listItem.url is defined and data.listItem.url is not empty %}
+                {% if data.listItem.url ?? false %}
                     <a href="{{ data.listItem.url }}" title="{{ data.listItem.name }}">
                         {% include molecule('product-item-image') with {
                             modifiers: data.imageModifiers,
@@ -153,7 +153,7 @@
                                 {% widget 'CartItemNoteFormWidget' args [data.listItem, data.list] only %}{% endwidget %}
                             {% endblock %}
 
-                            {% if data.listItem.productOptions is defined and data.listItem.productOptions %}
+                            {% if data.listItem.productOptions ?? false %}
                                 {% include molecule('product-item-options') with {
                                     modifiers: modifiers,
                                     data: {
@@ -190,6 +190,7 @@
                                                 },
                                             } only %}
                                         {% endblock %}
+
                                         {% block quantity %}
                                             {% set isAmountSalesUnitEmpty = amountSalesUnit is empty and quantitySalesUnit is empty and data.quantity is empty %}
 
@@ -204,23 +205,32 @@
                                                 </div>
                                             {% endif %}
                                         {% endblock %}
+
                                         {% block totalPrice %}{% endblock %}
                                     </div>
                                 </div>
 
                                 {% block deleteButton %}
                                     {% if data.canRemove %}
-                                        <div class="col {{ config.name }}__delete-cart">
-                                            <a class="link link--icon" href="{{ path('cart/remove', {'sku': data.listItem.sku, 'groupKey': data.listItem.groupKey }) }}" title="{{ 'cart.delete.item' | trans }}" data-init-single-click>
-                                                {% include atom('icon') with {
-                                                    modifiers: ['link'],
-                                                    data: {
-                                                        name: 'delete',
-                                                    },
-                                                } only %}
-                                                <span class="is-hidden-sm-md">{{ 'cart.delete.item' | trans }}</span>
-                                            </a>
-                                        </div>
+                                        {% widget 'RemoveFromCartFormWidget' args [data.listItem] with {
+                                            embed: {
+                                               configName: config.name,
+                                            },
+                                        } only %}
+                                            {% block embeddedData %}
+                                                <div class="col {{ embed.configName }}__delete-cart">
+                                                    <button class="link link--icon" title="{{ 'cart.delete.item' | trans }}" data-init-single-click>
+                                                        {% include atom('icon') with {
+                                                            modifiers: ['link'],
+                                                            data: {
+                                                                name: 'delete',
+                                                            },
+                                                        } only %}
+                                                        <span class="is-hidden-sm-md">{{ 'cart.delete.item' | trans }}</span>
+                                                    </button>
+                                                </div>
+                                            {% endblock %}
+                                        {% endwidget %}
                                     {% endif %}
                                 {% endblock %}
                             {% endblock %}

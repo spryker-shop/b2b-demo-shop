@@ -11,11 +11,11 @@
         </div>
         <div class="col col--expand col--middle">
             {% block image %}
-                {% include atom('thumbnail') with {
-                    modifiers: ['small', 'item'],
-                    attributes: {
-                        src: data.image,
-                        alt: data.name,
+                {% include molecule('lazy-image') with {
+                    modifiers: ['thumbnail', 'small', 'with-overlay', 'configured-bundle'],
+                    data: {
+                        imageSrc: data.image,
+                        imageTitle: data.name,
                     },
                 } only %}
             {% endblock %}
