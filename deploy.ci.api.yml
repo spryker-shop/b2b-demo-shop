@@ -1,22 +1,16 @@
 version: "0.1"
 
-namespace: spryker_b2b
+namespace: spryker_ci
 tag: '1.0'
 
 environment: docker
+pipeline: docker.ci.api
 image:
-    tag: spryker/php:7.3-alpine3.12
+    tag: spryker/php:7.4-alpine3.12
 
 composer:
     mode: --no-dev
     autoload: --classmap-authoritative
-
-assets:
-    mode: production
-    compression:
-        gzip:
-            static: true
-            level: 5
 
 regions:
     EU:
@@ -35,6 +29,8 @@ regions:
                         namespace: 1
                     search:
                         namespace: de_search
+                    session:
+                        namespace: 1
             AT:
                 services:
                     broker:
@@ -43,21 +39,8 @@ regions:
                         namespace: 2
                     search:
                         namespace: at_search
-    US:
-        services:
-            database:
-                database: us-docker
-                username: spryker
-                password: secret
-        stores:
-            US:
-                services:
-                    broker:
-                        namespace: us-docker
-                    key_value_store:
-                        namespace: 3
-                    search:
-                        namespace: us_search
+                    session:
+                        namespace: 1
 groups:
     EU:
         region: EU
@@ -95,79 +78,34 @@ groups:
                         services:
                             session:
                                 namespace: 4
-    US:
-        region: US
-        applications:
-            yves_us:
-                application: yves
-                endpoints:
-                    yves.us.spryker.local:
-                        store: US
-                        services:
-                            session:
-                                namespace: 5
-            glue_us:
-                application: glue
-                endpoints:
-                    glue.us.spryker.local:
-                        store: US
-            zed_us:
-                application: zed
-                endpoints:
-                    zed.us.spryker.local:
-                        store: US
-                        services:
-                            session:
-                                namespace: 6
+
 services:
     database:
         engine: postgres
         root:
             username: "root"
             password: "secret"
-        endpoints:
-            localhost:5432:
-                protocol: tcp
     broker:
         engine: rabbitmq
         api:
             username: "spryker"
             password: "secret"
-        endpoints:
-            queue.spryker.local:
-            localhost:5672:
-                protocol: tcp
     session:
         engine: redis
     key_value_store:
         engine: redis
-        endpoints:
-            localhost:16379:
-                protocol: tcp
     search:
         engine: elastic
         version: 6.8
-        endpoints:
-            localhost:9200:
-                protocol: tcp
     scheduler:
         engine: jenkins
-        endpoints:
-            scheduler.spryker.local:
     mail_catcher:
         engine: mailhog
-        endpoints:
-            mail.spryker.local:
-    swagger:
-        engine: swagger-ui
-        endpoints:
-            swagger.spryker.local:
 
 docker:
 
     ssl:
         enabled: false
-        redirect: true
 
     debug:
         enabled: false
