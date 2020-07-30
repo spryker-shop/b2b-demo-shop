@@ -1,21 +1,17 @@
-{% extends model('component') %}
+{% extends molecule('quote-table', '@SprykerShop:MultiCartPage') %}
 
-{% define config = {
-    name: 'quote-table'
-} %}
-
-{% define data = {
-    quotes: required,
-    actions: {
-        update: false,
-        delete: false,
-        duplicate: false
-    },
-    isQuoteDeletable: required
-} %}
-
-{% set showActions = data.actions.update or data.actions.delete or data.actions.duplicate %}
-{% set isQuoteDeletable = data.isQuoteDeletable %}
+{% macro duplicateButton(name) %}
+    <button class="link link--alt link--action {{ name }}__duplicate-button">
+        {% include molecule('table-action-span') with {
+            modifiers: ['tight', 'full-height'],
+            class: 'link link--alt link--action',
+            data: {
+                icon: 'duplicate',
+                title: 'page.multi_cart.shopping_cart.list.link.duplicate',
+            },
+        } only %}
+    </button>
+{% endmacro %}
 
 {% block body %}
     <table class="table table--grid table--expand table--responsive spacing-bottom spacing-bottom--smaller">
@@ -43,10 +39,28 @@
                 {% set isQuoteEditable = can('WriteSharedCartPermissionPlugin', quote.idQuote) %}
                 <tr>
                     <td class="transform-cell spacing-top spacing-top--inner spacing-top--big" data-content="{{ 'page.multi_cart.shopping_cart.list.label.name' | trans }}">
-                        <a href="{{ url('multi-cart/set-default', {idQuote: quote.idQuote}) }}"
-                            class="{{ config.name }}__cart-name{% if quote.isDefault %} {{ config.name }}__cart-name--active{% endif %}">
-                            {{ quote.name }}
-                        </a>
+                        {% set defaultSubmitButton %}
+                            <button class="{{ config.name }}__cart-name{% if quote.isDefault %} {{ config.name }}__cart-name--active{% endif %}">{{ quote.name }}</button>
+                        {% endset %}
+
+                        {% if quote.isDefault %}
+                            <a href="{{ url('cart') }}">
+                                {{ quote.name }}
+                            </a>
+                        {% elseif data.multiCartSetDefaultFormClone %}
+                            {% set multiCartSetDefaultForm = data.multiCartSetDefaultFormClone.getForm.createView %}
+
+                            {{ form_start(multiCartSetDefaultForm, {'action': path('multi-cart/set-default', {'idQuote': quote.idQuote}) }) }}
+                                {{ defaultSubmitButton }}
+                            {{ form_end(multiCartSetDefaultForm) }}
+                        {% else %}
+                            {% set formName = 'multiCartSetDefaultForm_' ~ loop.index %}
+
+                            <form id="{{ formName }}" name="{{ formName }}" method="POST" action="{{ path('multi-cart/set-default', {'idQuote': quote.idQuote}) }}">
+                                <input type="hidden" name="multi_cart_set_default_form[_token]" value="{{ csrf_token('multi_cart_set_default_form') }}">
+                                {{ defaultSubmitButton }}
+                            </form>
+                        {% endif %}
                     </td>
                     {% widget 'CartListPermissionGroupWidget' args [quote, isQuoteDeletable] only %}
                         {% block body %}
@@ -77,8 +91,8 @@
                                 modifiers: ['secondary'],
                                 data: {
                                     priceMode: quote.priceMode,
-                                    showIcon: false
-                                }
+                                    showIcon: false,
+                                },
                             } only %}
                         {% endif %}
                     </td>
@@ -102,22 +116,30 @@
                                                 data: {
                                                     url: url('multi-cart/update', { idQuote: quote.idQuote }),
                                                     icon: 'edit',
-                                                    title: 'page.multi_cart.shopping_cart.update.title'
-                                                }
+                                                    title: 'page.multi_cart.shopping_cart.update.title',
+                                                },
                                             } only %}
                                         </li>
                                     {% endif %}
                                     {% if data.actions.duplicate %}
-                                        <li class="col col--equal menu__item">
-                                            {% include molecule('table-action-link') with {
-                                                class: 'link link--alt link--action spacing-right spacing-right--reset',
-                                                modifiers: ['tight', 'full-height'],
-                                                data: {
-                                                    url: url('multi-cart/duplicate', {idQuote: quote.idQuote}),
-                                                    icon: 'duplicate',
-                                                    title: 'page.multi_cart.shopping_cart.list.link.duplicate'
-                                                }
-                                            } only %}
+                                        <li class="col col--equal menu__item grid grid--stretch">
+                                            {% set duplicateFormClass = 'col ' ~ config.name ~ '__duplicate-form' %}
+                                            {% import _self as macros %}
+
+                                            {% if data.multiCartDuplicateFormClone %}
+                                                {% set multiCartDuplicateForm = data.multiCartDuplicateFormClone.getForm.createView %}
+
+                                                {{ form_start(multiCartDuplicateForm, {'action': path('multi-cart/duplicate', {'idQuote': quote.idQuote}), 'attr': {'class': duplicateFormClass} }) }}
+                                                    {{ macros.duplicateButton(config.name) }}
+                                                {{ form_end(multiCartDuplicateForm) }}
+                                            {% else %}
+                                                {% set formName = 'multiCartDuplicateForm_' ~ loop.index %}
+
+                                                <form id="{{ formName }}" class="{{ duplicateFormClass }}" name="{{ formName }}" method="POST" action="{{ path('multi-cart/duplicate', {'idQuote': quote.idQuote}) }}">
+                                                    <input type="hidden" name="multi_cart_duplicate_form[_token]" value="{{ csrf_token('multi_cart_duplicate_form') }}">
+                                                    {{ macros.duplicateButton(config.name) }}
+                                                </form>
+                                            {% endif %}
                                         </li>
                                     {% endif %}
                                 {% endif %}
@@ -130,8 +152,8 @@
                                             url: url('shopping-list/create-from-exist-cart', {idQuote: quote.idQuote}),
                                             icon: 'create-list',
                                             title: 'page.multi_cart.shopping_cart.list.link.add_to_list',
-                                            iconModifier: 'create-list'
-                                        }
+                                            iconModifier: 'create-list',
+                                        },
                                     } only %}
                                 </li>
 
@@ -144,8 +166,8 @@
                                             data: {
                                                 url: url('multi-cart/confirm-delete', {idQuote: quote.idQuote}),
                                                 icon: 'delete',
-                                                title: 'page.multi_cart.shopping_cart.list.link.delete'
-                                            }
+                                                title: 'page.multi_cart.shopping_cart.list.link.delete',
+                                            },
                                         } only %}
                                     </li>
                                 {% endwidget %}

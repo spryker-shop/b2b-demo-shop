@@ -52,7 +52,12 @@
                 {% for slide in data.slides %}
                     <div class="{{ data.name }}__item">
                         <a href="{{ slide.url }}" class="{{ data.name }}__img-block">
-                            <img class="{{ data.name }}__img" src="{{ slide.image }}" alt="">
+                            {% include molecule('lazy-image') with {
+                                modifiers: ['full-size'],
+                                data: {
+                                    imageSrc: slide.image,
+                                },
+                            } only %}
                         </a>
                         <div class="{{ data.name }}__info">
                             <div class="{{ data.name }}__name">{{ slide.name }}</div>
