@@ -113,7 +113,7 @@ $config[ErrorHandlerConstants::DISPLAY_ERRORS] = true;
 $config[PropelConstants::USE_SUDO_TO_MANAGE_DATABASE] = false;
 
 // ---------- Yves host
-$ENV_PROTOCOL_YVES = getenv('YVES_HOST_PROTOCOL'); //'http://'
+$ENV_PROTOCOL_YVES = getenv('YVES_HOST_PROTOCOL');
 $ENV_HOST_YVES = getenv('YVES_HOST');
 $config[ApplicationConstants::HOST_YVES] = $ENV_HOST_YVES;
 $config[ApplicationConstants::PORT_YVES] = '';
@@ -134,7 +134,7 @@ $config[NewsletterConstants::BASE_URL_YVES] = $config[ApplicationConstants::BASE
 $config[CustomerConstants::BASE_URL_YVES] = $config[ApplicationConstants::BASE_URL_YVES];
 
 // ---------- Zed host
-$ENV_PROTOCOL_ZED = getenv('ZED_HOST_PROTOCOL'); //'http://'
+$ENV_PROTOCOL_ZED = getenv('ZED_HOST_PROTOCOL');
 $ENV_HOST_ZED = getenv('ZED_HOST');
 $config[ApplicationConstants::HOST_ZED] = $ENV_HOST_ZED;
 $config[ApplicationConstants::PORT_ZED] = '';
