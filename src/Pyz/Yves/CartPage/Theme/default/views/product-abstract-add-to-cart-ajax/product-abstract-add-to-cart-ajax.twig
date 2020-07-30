@@ -2,4 +2,20 @@
 
 {% define data = {
     buttonClasses: 'button button--success button--expand button--icon',
+    buttonExtraAttributes: {},
 } %}
+
+{% block body %}
+    {% set addToCartSku = data.productAbstract['add_to_cart_sku'] ?? '' %}
+
+    {% include molecule('ajax-add-to-cart') with {
+        class: extraClasses,
+        data: {
+            url: addToCartSku ? (path('cart/add-ajax', {'sku': addToCartSku})),
+            csrfToken: csrf_token('add-to-cart-ajax'),
+            buttonClasses: data.buttonClasses,
+            buttonExtraClasses: data.buttonExtraClasses,
+            extraAttributes: data.buttonExtraAttributes | merge(not addToCartSku ? {disabled: true} : {}),
+        },
+    } only %}
+{% endblock %}

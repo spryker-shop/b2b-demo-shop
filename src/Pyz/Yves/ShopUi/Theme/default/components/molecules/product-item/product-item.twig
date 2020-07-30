@@ -87,12 +87,14 @@
 {% block ajaxAddToCart %}
     {% if data.product is iterable and can('SeeAddToCartPermissionPlugin') %}
         {% set ajaxButtonExtraClasses = config.jsName ~ '__ajax-button-add-to-cart js-node-animator__trigger' %}
+        {% set ajaxButtonExtraAttributes = {} %}
         {% set componentExtraClasses = '' %}
 
         {% block ajaxAddToCartInner %}
             {% widget 'ProductAbstractAddToCartButtonWidget' args [data.product] with {
                 data: {
                     buttonExtraClasses: ajaxButtonExtraClasses,
+                    buttonExtraAttributes: ajaxButtonExtraAttributes,
                 },
                 embed: {
                     componentExtraClasses: componentExtraClasses,

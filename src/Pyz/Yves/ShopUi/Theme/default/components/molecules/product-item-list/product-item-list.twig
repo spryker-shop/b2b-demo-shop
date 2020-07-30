@@ -101,6 +101,9 @@
 {% endblock %}
 
 {% block ajaxAddToCartInner %}
+    {% set ajaxButtonExtraAttributes = {
+        'data-node-animator-wrapper-class-name': config.jsName,
+    } %}
     {% set componentExtraClasses = config.name ~ '__action' %}
     {{ parent() }}
 {% endblock %}
