@@ -4,7 +4,13 @@ namespace: spryker_ci
 tag: '1.0'
 
 environment: docker
-image: spryker/php:7.2
+pipeline: docker.ci.functional
+image:
+    tag: spryker/php:7.4-alpine3.12
+
+composer:
+    mode: --no-dev
+    autoload: --classmap-authoritative
 
 regions:
     EU:
@@ -75,8 +81,7 @@ groups:
 
 services:
     database:
-        engine: mysql
-        version: mariadb-10.4
+        engine: postgres
         root:
             username: "root"
             password: "secret"
@@ -101,6 +106,11 @@ docker:
 
     ssl:
         enabled: false
+
+    debug:
+        enabled: false
+        xdebug:
+            enabled: false
 
     testing:
         store: DE

@@ -2,6 +2,14 @@
 
 {# widgets #}
 
+{%- block widget_attributes -%}
+    {%- if id %}id="{{ id }}"{% endif -%}
+    name="{{ full_name }}"
+    {%- if disabled %} disabled{% endif -%}
+    {%- if required %} required{% endif -%}
+    {{ block('attributes') }}
+{%- endblock widget_attributes -%}
+
 {%- block form_widget_simple -%}
     {%- set label = (label | default('')) | trans -%}
 

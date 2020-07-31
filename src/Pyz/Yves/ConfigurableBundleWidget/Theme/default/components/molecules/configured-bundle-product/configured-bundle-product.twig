@@ -1,7 +1,7 @@
 {% extends molecule('configured-bundle-product', '@SprykerShop:ConfigurableBundleWidget') %}
 
 {% block image %}
-    {% set imageModifiers =  ['small', 'item'] %}
+    {% set imageModifiers =  ['small', 'with-overlay', 'configured-bundle'] %}
 
     {{ parent() }}
 {% endblock %}
