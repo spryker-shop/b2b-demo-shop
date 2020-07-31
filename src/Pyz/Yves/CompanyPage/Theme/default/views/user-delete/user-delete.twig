@@ -1,12 +1,4 @@
-{% extends template('page-layout-company', 'CompanyPage') %}
-
-{% define data = {
-    idCompanyUser: _view.idCompanyUser,
-    companyUserName: _view.customer.firstName ~ ' ' ~ _view.customer.lastName,
-    companyUserDeleteForm: _view.companyUserDeleteForm,
-    title: 'company.account.company_user' | trans,
-    activePage: 'users'
-} %}
+{% extends view('user-delete', '@SprykerShop:CompanyPage') %}
 
 {% block breadcrumbs %}
     {% include molecule('breadcrumb') with {

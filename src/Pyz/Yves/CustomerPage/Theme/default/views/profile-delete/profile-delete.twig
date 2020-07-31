@@ -1,10 +1,4 @@
-{% extends template('page-layout-customer', 'CustomerPage') %}
-
-{% define data = {
-    customerDeleteForm: _view.customerDeleteForm,
-    title: 'customer.account.profile_data' | trans,
-    activePage: 'profile',
-} %}
+{% extends view('profile-delete', '@SprykerShop:CustomerPage') %}
 
 {% block customerContent %}
     <div class="box">
