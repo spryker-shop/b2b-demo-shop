@@ -13,7 +13,6 @@ const configurationProdMode = async appSettings => mergeWithStrategy(await getCo
     webpack: {
         mode: 'production',
         devtool: false,
-
         plugins: [
             new CompressionPlugin({
                 filename: '[path].gz[query]',

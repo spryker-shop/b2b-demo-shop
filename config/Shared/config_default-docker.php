@@ -54,26 +54,30 @@ $CURRENT_STORE = Store::getInstance()->getStoreName();
 
 /* ZED */
 $config[ApplicationConstants::HOST_ZED] = getenv('SPRYKER_ZED_HOST');
+$config[ZedRequestConstants::ZED_API_SSL_ENABLED] = (bool)getenv('SPRYKER_ZED_SSL_ENABLED');
 $config[SessionConstants::ZED_SESSION_COOKIE_DOMAIN] = getenv('SPRYKER_BE_HOST');
 $config[ApplicationConstants::ZED_TRUSTED_HOSTS]
     = $config[HttpConstants::ZED_TRUSTED_HOSTS]
     = [];
-$config[ApplicationConstants::PORT_ZED] = getenv('SPRYKER_ZED_PORT') ? ':' . getenv('SPRYKER_ZED_PORT') : '';
+$config[ApplicationConstants::PORT_ZED]
+    = $config[ApplicationConstants::PORT_SSL_ZED]
+    = getenv('SPRYKER_ZED_PORT') ? ':' . getenv('SPRYKER_ZED_PORT') : '';
+$backofficePort = getenv('SPRYKER_BE_PORT') ? ':' . getenv('SPRYKER_BE_PORT') : '';
 $config[ApplicationConstants::PORT_SSL_ZED] = '';
 $config[ApplicationConstants::BASE_URL_ZED] = sprintf(
     'http://%s%s',
     getenv('SPRYKER_BE_HOST'),
-    getenv('SPRYKER_BE_PORT') ? ':' . getenv('SPRYKER_BE_PORT') : ''
+    $backofficePort
 );
 $config[ApplicationConstants::BASE_URL_SSL_ZED] = sprintf(
     'https://%s%s',
     getenv('SPRYKER_BE_HOST'),
-    getenv('SPRYKER_BE_PORT') ? ':' . getenv('SPRYKER_BE_PORT') : ''
+    $backofficePort
 );
 $config[ZedRequestConstants::HOST_ZED_API] = sprintf(
-    '%s:%d',
+    '%s:%s',
     getenv('SPRYKER_ZED_HOST'),
-    getenv('SPRYKER_ZED_PORT')
+    $config[ApplicationConstants::PORT_ZED]
 );
 $config[ZedRequestConstants::BASE_URL_ZED_API] = sprintf(
     'http://%s',
@@ -115,9 +119,13 @@ $config[ApplicationConstants::ENABLE_APPLICATION_DEBUG]
     = $config[ShopApplicationConstants::ENABLE_APPLICATION_DEBUG]
     = (bool)getenv('SPRYKER_DEBUG_ENABLED');
 
-$config[WebProfilerConstants::IS_WEB_PROFILER_ENABLED]
-    = $config[WebProfilerWidgetConstants::IS_WEB_PROFILER_ENABLED]
-    = getenv('SPRYKER_DEBUG_ENABLED') && !getenv('SPRYKER_TESTING_ENABLED');
+if (interface_exists(WebProfilerConstants::class)) {
+    $config[WebProfilerConstants::IS_WEB_PROFILER_ENABLED] = getenv('SPRYKER_DEBUG_ENABLED') && !getenv('SPRYKER_TESTING_ENABLED');
+}
+
+if (interface_exists(WebProfilerWidgetConstants::class)) {
+    $config[WebProfilerWidgetConstants::IS_WEB_PROFILER_ENABLED] = getenv('SPRYKER_DEBUG_ENABLED') && !getenv('SPRYKER_TESTING_ENABLED');
+}
 
 $config[AclConstants::ACL_USER_RULE_WHITELIST][] = [
     'bundle' => 'wdt',
@@ -153,8 +161,9 @@ $config[SessionConstants::YVES_SESSION_COOKIE_DOMAIN] = $config[ApplicationConst
 $config[ApplicationConstants::YVES_TRUSTED_HOSTS]
     = $config[HttpConstants::YVES_TRUSTED_HOSTS]
     = [];
-$config[ApplicationConstants::PORT_YVES] = getenv('SPRYKER_FE_PORT');
-$config[ApplicationConstants::PORT_SSL_YVES] = '';
+$config[ApplicationConstants::PORT_YVES]
+    = $config[ApplicationConstants::PORT_SSL_YVES]
+    = getenv('SPRYKER_FE_PORT');
 $config[ApplicationConstants::BASE_URL_YVES] = sprintf(
     'http://%s%s',
     $config[ApplicationConstants::HOST_YVES],
@@ -211,8 +220,10 @@ $config[GlueApplicationConstants::GLUE_APPLICATION_DOMAIN] = sprintf(
 $config[GlueApplicationConstants::GLUE_APPLICATION_REST_DEBUG] = (bool)getenv('SPRYKER_DEBUG_ENABLED');
 $config[GlueApplicationConstants::GLUE_APPLICATION_CORS_ALLOW_ORIGIN] = getenv('SPRYKER_GLUE_APPLICATION_CORS_ALLOW_ORIGIN') ?: '';
 
-$config[TestifyConstants::GLUE_APPLICATION_DOMAIN] = $config[GlueApplicationConstants::GLUE_APPLICATION_DOMAIN];
-$config[TestifyConstants::GLUE_OPEN_API_SCHEMA] = APPLICATION_SOURCE_DIR . '/Generated/Glue/Specification/spryker_rest_api.schema.yml';
+if (class_exists(TestifyConstants::class)) {
+    $config[TestifyConstants::GLUE_APPLICATION_DOMAIN] = $config[GlueApplicationConstants::GLUE_APPLICATION_DOMAIN];
+    $config[TestifyConstants::GLUE_OPEN_API_SCHEMA] = APPLICATION_SOURCE_DIR . '/Generated/Glue/Specification/spryker_rest_api.schema.yml';
+}
 /* End Glue */
 
 /* Database */
@@ -250,17 +261,25 @@ $config[RabbitMqEnv::RABBITMQ_API_PASSWORD] = getenv('SPRYKER_BROKER_API_PASSWOR
 $config[RabbitMqEnv::RABBITMQ_API_VIRTUAL_HOST] = getenv('SPRYKER_BROKER_NAMESPACE');
 
 $rabbitConnections = json_decode(getenv('SPRYKER_BROKER_CONNECTIONS') ?: '[]', true);
+$defaultConnection = [
+    RabbitMqEnv::RABBITMQ_HOST => getenv('SPRYKER_BROKER_HOST'),
+    RabbitMqEnv::RABBITMQ_PORT => getenv('SPRYKER_BROKER_PORT'),
+    RabbitMqEnv::RABBITMQ_PASSWORD => getenv('SPRYKER_BROKER_PASSWORD'),
+    RabbitMqEnv::RABBITMQ_USERNAME => getenv('SPRYKER_BROKER_USERNAME'),
+];
 
 $config[RabbitMqEnv::RABBITMQ_CONNECTIONS] = [];
 
 foreach ($rabbitConnections as $key => $connection) {
-    $config[RabbitMqEnv::RABBITMQ_CONNECTIONS][$key] = [];
+    $config[RabbitMqEnv::RABBITMQ_CONNECTIONS][$key] = $defaultConnection;
+    $config[RabbitMqEnv::RABBITMQ_CONNECTIONS][$key][RabbitMqEnv::RABBITMQ_CONNECTION_NAME] = $key . '-connection';
+    $config[RabbitMqEnv::RABBITMQ_CONNECTIONS][$key][RabbitMqEnv::RABBITMQ_STORE_NAMES] = [$key];
+
     foreach ($connection as $constant => $value) {
         $config[RabbitMqEnv::RABBITMQ_CONNECTIONS][$key][constant(RabbitMqEnv::class . '::' . $constant)] = $value;
     }
 
-    $config[RabbitMqEnv::RABBITMQ_CONNECTIONS][$key][RabbitMqEnv::RABBITMQ_DEFAULT_CONNECTION] =
-        $config[RabbitMqEnv::RABBITMQ_API_VIRTUAL_HOST] === $config[RabbitMqEnv::RABBITMQ_CONNECTIONS][$key][RabbitMqEnv::RABBITMQ_VIRTUAL_HOST];
+    $config[RabbitMqEnv::RABBITMQ_CONNECTIONS][$key][RabbitMqEnv::RABBITMQ_DEFAULT_CONNECTION] = $key === APPLICATION_STORE;
 }
 /* End Broker */
 
@@ -285,19 +304,19 @@ $config[StorageConstants::STORAGE_KV_SOURCE] = strtolower(getenv('SPRYKER_KEY_VA
 
 $config[StorageRedisConstants::STORAGE_REDIS_HOST] = getenv('SPRYKER_KEY_VALUE_STORE_HOST');
 $config[StorageRedisConstants::STORAGE_REDIS_PORT] = getenv('SPRYKER_KEY_VALUE_STORE_PORT');
-$config[StorageRedisConstants::STORAGE_REDIS_DATABASE] = getenv('SPRYKER_KEY_VALUE_STORE_NAMESPACE');
+$config[StorageRedisConstants::STORAGE_REDIS_DATABASE] = getenv('SPRYKER_KEY_VALUE_STORE_NAMESPACE') ?: 1;
 
 $config[SessionRedisConstants::YVES_SESSION_REDIS_PROTOCOL] = 'tcp';
 $config[SessionRedisConstants::YVES_SESSION_REDIS_HOST] = getenv('SPRYKER_SESSION_FE_HOST');
 $config[SessionRedisConstants::YVES_SESSION_REDIS_PORT] = getenv('SPRYKER_SESSION_FE_PORT');
 $config[SessionRedisConstants::YVES_SESSION_REDIS_PASSWORD] = false;
-$config[SessionRedisConstants::YVES_SESSION_REDIS_DATABASE] = getenv('SPRYKER_SESSION_FE_NAMESPACE');
+$config[SessionRedisConstants::YVES_SESSION_REDIS_DATABASE] = getenv('SPRYKER_SESSION_FE_NAMESPACE') ?: 2;
 
 $config[SessionRedisConstants::ZED_SESSION_REDIS_PROTOCOL] = 'tcp';
 $config[SessionRedisConstants::ZED_SESSION_REDIS_HOST] = getenv('SPRYKER_SESSION_BE_HOST');
 $config[SessionRedisConstants::ZED_SESSION_REDIS_PORT] = getenv('SPRYKER_SESSION_BE_PORT');
 $config[SessionRedisConstants::ZED_SESSION_REDIS_PASSWORD] = false;
-$config[SessionRedisConstants::ZED_SESSION_REDIS_DATABASE] = getenv('SPRYKER_SESSION_BE_NAMESPACE');
+$config[SessionRedisConstants::ZED_SESSION_REDIS_DATABASE] = getenv('SPRYKER_SESSION_BE_NAMESPACE') ?: 2;
 
 /* Mail */
 $config[MailConstants::SMTP_HOST] = getenv('SPRYKER_SMTP_HOST');
@@ -310,6 +329,7 @@ $config[LogConstants::LOG_FILE_PATH] = (getenv('SPRYKER_LOG_DIRECTORY') ?: APPLI
 
 $logDir = (getenv('SPRYKER_LOG_DIRECTORY') ?: APPLICATION_ROOT_DIR . '/data') . '/' . APPLICATION_STORE;
 
+$config[EventConstants::LOG_FILE_PATH] = $logDir . '/ZED/application_events.log';
 $config[QueueConstants::QUEUE_WORKER_OUTPUT_FILE_NAME] = $logDir . '/ZED/queue.log';
 $config[PropelConstants::LOG_FILE_PATH] = $logDir . '/ZED/propel.log';
 
