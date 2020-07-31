@@ -1,13 +1,4 @@
-{% extends template('page-layout-company', 'CompanyPage') %}
-
-{% define data = {
-    idCompanyRole: _view.idCompanyRole,
-    roleName: _view.role.name,
-    assignedUsers: _view.role.companyUserCollection.companyUsers,
-    companyRoleDeleteForm: _view.companyRoleDeleteForm,
-    title: 'company.account.company_role' | trans,
-    activePage: 'role',
-} %}
+{% extends view('role-delete', '@SprykerShop:CompanyPage') %}
 
 {% block breadcrumbs %}
     {% include molecule('breadcrumb') with {
