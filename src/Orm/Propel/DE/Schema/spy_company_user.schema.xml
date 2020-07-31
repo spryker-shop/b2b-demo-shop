@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<database xmlns="spryker:schema-01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="zed" xsi:schemaLocation="spryker:schema-01 https://static.spryker.com/schema-01.xsd" namespace="Orm\Zed\CompanyUser\Persistence" package="src.Orm.Zed.CompanyUser.Persistence">
+    <table name="spy_company_user" phpName="SpyCompanyUser" identifierQuoting="true" idMethod="native" allowPkInsert="true">
+        <column name="id_company_user" required="true" type="INTEGER" autoIncrement="true" primaryKey="true"/>
+        <column name="fk_company" type="INTEGER" required="true"/>
+        <column name="fk_company_business_unit" type="INTEGER"/>
+        <column name="fk_customer" type="INTEGER" required="true"/>
+        <column name="is_active" required="true" type="BOOLEAN" default="true"/>
+        <column name="is_default" type="BOOLEAN" required="true" default="false"/>
+        <column name="key" type="VARCHAR" size="255" description="Key is an identifier for existing entities. This should never be changed."/>
+        <column name="uuid" required="false" type="VARCHAR" size="36"/>
+        <foreign-key name="spy_co_u-fk_company_business_unit" foreignTable="spy_company_business_unit" phpName="CompanyBusinessUnit" refPhpName="CompanyUser" onDelete="SETNULL">
+            <reference local="fk_company_business_unit" foreign="id_company_business_unit"/>
+        </foreign-key>
+        <foreign-key name="spy_company_user-fk_company" foreignTable="spy_company" phpName="Company" refPhpName="CompanyUser">
+            <reference local="fk_company" foreign="id_company"/>
+        </foreign-key>
+        <foreign-key name="spy_company_user-fk_customer" foreignTable="spy_customer" phpName="Customer" refPhpName="CompanyUser">
+            <reference local="fk_customer" foreign="id_customer"/>
+        </foreign-key>
+        <index name="index-spy_company_user-fk_company_business_unit">
+            <index-column name="fk_company_business_unit"/>
+        </index>
+        <index name="index-spy_company_user-fk_company">
+            <index-column name="fk_company"/>
+        </index>
+        <index name="index-spy_company_user-fk_customer">
+            <index-column name="fk_customer"/>
+        </index>
+        <unique name="spy_company_user-unique-uuid">
+            <unique-column name="uuid"/>
+        </unique>
+        <id-method-parameter value="spy_company_user_pk_seq"/>
+        <behavior name="uuid">
+            <parameter name="key_columns" value="id_company_user.fk_customer"/>
+        </behavior>
+        <behavior name="event">
+            <parameter name="spy_company_user_all" column="*"/>
+        </behavior>
+    </table>
+</database>

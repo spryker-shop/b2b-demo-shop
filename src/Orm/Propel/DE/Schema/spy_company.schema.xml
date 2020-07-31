@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<database xmlns="spryker:schema-01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="zed" xsi:schemaLocation="spryker:schema-01 https://static.spryker.com/schema-01.xsd" namespace="Orm\Zed\Company\Persistence" package="src.Orm.Zed.Company.Persistence">
+    <table name="spy_company" phpName="SpyCompany" identifierQuoting="true">
+        <column name="id_company" required="true" type="INTEGER" autoIncrement="true" primaryKey="true"/>
+        <column name="is_active" type="BOOLEAN" default="false"/>
+        <column name="key" type="VARCHAR" size="255" description="Key is used for DataImport as identifier for existing entities. This should never be changed."/>
+        <column name="name" type="VARCHAR" size="255" required="true"/>
+        <column name="status" required="true" size="8" type="ENUM" valueSet="pending,approved,denied" defaultValue="pending"/>
+        <column name="uuid" required="false" type="VARCHAR" size="36"/>
+        <unique name="spy_company-unique-uuid">
+            <unique-column name="uuid"/>
+        </unique>
+        <id-method-parameter value="spy_company_pk_seq"/>
+        <behavior name="uuid">
+            <parameter name="key_columns" value="id_company"/>
+        </behavior>
+        <behavior name="event">
+            <parameter name="spy_company_is_active" column="is_active"/>
+            <parameter name="spy_company_status" column="status"/>
+        </behavior>
+    </table>
+    <table name="spy_company_store">
+        <column name="id_company_store" type="INTEGER" required="true" primaryKey="true" autoIncrement="true"/>
+        <column name="fk_company" type="INTEGER" required="true"/>
+        <column name="fk_store" type="INTEGER" required="true"/>
+        <foreign-key name="spy_company_store-fk_company" foreignTable="spy_company" phpName="Company">
+            <reference local="fk_company" foreign="id_company"/>
+        </foreign-key>
+        <foreign-key name="spy_company_store-fk_store" foreignTable="spy_store" phpName="Store">
+            <reference local="fk_store" foreign="id_store"/>
+        </foreign-key>
+        <index name="index-spy_company_store-fk_store">
+            <index-column name="fk_store"/>
+        </index>
+        <unique name="spy_company_store-unique-company">
+            <unique-column name="fk_company"/>
+            <unique-column name="fk_store"/>
+        </unique>
+        <id-method-parameter value="spy_company_store_pk_seq"/>
+    </table>
+</database>

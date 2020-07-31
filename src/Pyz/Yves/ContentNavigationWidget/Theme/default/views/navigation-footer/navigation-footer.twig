@@ -27,14 +27,16 @@
     {% set triggerClass = 'js-navigation-footer-' ~ selectorPart ~ '__trigger' %}
     {% set targetClass = 'js-navigation-footer-' ~ selectorPart %}
 
-    {% include molecule('navigation-item', 'ContentNavigationWidget') with {
-        class: 'col col--sm-12 col--md-4 ' ~ targetClass,
-        data: {
-            nodes: data.navigation.nodes,
-            title: title,
-            toggleClass: targetClass,
-        },
-    } only %}
+    {% block navigationItem %}
+        {% include molecule('navigation-item', 'ContentNavigationWidget') with {
+            class: 'col col--sm-12 col--md-4 ' ~ targetClass,
+            data: {
+                nodes: data.navigation.nodes,
+                title: title,
+                toggleClass: targetClass,
+            },
+        } only %}
+    {% endblock %}
 
     {% include molecule('toggler-accordion') with {
         attributes: {

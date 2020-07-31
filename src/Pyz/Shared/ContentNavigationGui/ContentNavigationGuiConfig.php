@@ -26,6 +26,13 @@ class ContentNavigationGuiConfig extends SprykerContentNavigationGuiConfig
     protected const WIDGET_TEMPLATE_IDENTIFIER_LIST_NAVIGATION_FOOTER = 'navigation-footer';
 
     /**
+     * @uses \Pyz\Shared\ContentNavigation\ContentNavigationConfig::WIDGET_TEMPLATE_IDENTIFIER_LIST_NAVIGATION_FOOTER_CHECKOUT
+     *
+     * Content item navigation footer checkout template identifier.
+     */
+    protected const WIDGET_TEMPLATE_IDENTIFIER_LIST_NAVIGATION_FOOTER_CHECKOUT = 'navigation-footer-checkout';
+
+    /**
      * @uses \Pyz\Shared\ContentNavigation\ContentNavigationConfig::WIDGET_TEMPLATE_IDENTIFIER_LIST_FOOTER_PARTNERS
      *
      * Content item footer partners template identifier.
@@ -50,6 +57,11 @@ class ContentNavigationGuiConfig extends SprykerContentNavigationGuiConfig
     protected const WIDGET_TEMPLATE_DISPLAY_NAME_LIST_NAVIGATION_FOOTER = 'Navigation Footer';
 
     /**
+     * Content item navigation footer checkout template name.
+     */
+    protected const WIDGET_TEMPLATE_DISPLAY_NAME_LIST_NAVIGATION_FOOTER_CHECKOUT = 'Navigation Footer Checkout';
+
+    /**
      * Content item footer partners template name.
      */
     protected const WIDGET_TEMPLATE_DISPLAY_NAME_LIST_FOOTER_PARTNERS = 'Footer Partners';
@@ -70,6 +82,7 @@ class ContentNavigationGuiConfig extends SprykerContentNavigationGuiConfig
         $contentWidgetTemplates += [
             static::WIDGET_TEMPLATE_IDENTIFIER_LIST_NAVIGATION_HEADER => static::WIDGET_TEMPLATE_DISPLAY_NAME_LIST_NAVIGATION_HEADER,
             static::WIDGET_TEMPLATE_IDENTIFIER_LIST_NAVIGATION_FOOTER => static::WIDGET_TEMPLATE_DISPLAY_NAME_LIST_NAVIGATION_FOOTER,
+            static::WIDGET_TEMPLATE_IDENTIFIER_LIST_NAVIGATION_FOOTER_CHECKOUT => static::WIDGET_TEMPLATE_DISPLAY_NAME_LIST_NAVIGATION_FOOTER_CHECKOUT,
             static::WIDGET_TEMPLATE_IDENTIFIER_LIST_FOOTER_PARTNERS => static::WIDGET_TEMPLATE_DISPLAY_NAME_LIST_FOOTER_PARTNERS,
             static::WIDGET_TEMPLATE_IDENTIFIER_LIST_FOOTER_SOCIAL_LINKS => static::WIDGET_TEMPLATE_DISPLAY_NAME_LIST_FOOTER_SOCIAL_LINKS,
         ];

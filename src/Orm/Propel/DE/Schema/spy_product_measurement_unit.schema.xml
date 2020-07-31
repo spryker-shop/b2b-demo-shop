@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<database xmlns="spryker:schema-01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="zed" xsi:schemaLocation="spryker:schema-01 https://static.spryker.com/schema-01.xsd" namespace="Orm\Zed\ProductMeasurementUnit\Persistence" package="src.Orm.Zed.ProductMeasurementUnit.Persistence">
+    <table name="spy_product_measurement_unit" idMethod="native" allowPkInsert="true">
+        <column name="id_product_measurement_unit" required="true" type="INTEGER" primaryKey="true" autoIncrement="true"/>
+        <column name="code" required="true" type="VARCHAR" size="255"/>
+        <column name="default_precision" required="true" type="INTEGER"/>
+        <column name="name" required="true" type="VARCHAR" size="255"/>
+        <unique name="spy_product_measurement_unit-code">
+            <unique-column name="code"/>
+        </unique>
+        <id-method-parameter value="id_product_measurement_unit_pk_seq"/>
+        <behavior name="timestampable"/>
+        <behavior name="event">
+            <parameter name="spy_product_measurement_unit_all" column="*"/>
+        </behavior>
+    </table>
+    <table name="spy_product_measurement_base_unit" idMethod="native" allowPkInsert="true">
+        <column name="id_product_measurement_base_unit" required="true" type="INTEGER" primaryKey="true" autoIncrement="true"/>
+        <column name="fk_product_abstract" type="INTEGER" required="true"/>
+        <column name="fk_product_measurement_unit" type="INTEGER" required="true"/>
+        <foreign-key name="spy_product_measurement_base_unit-fk_product_abstract" foreignTable="spy_product_abstract" phpName="ProductAbstract">
+            <reference local="fk_product_abstract" foreign="id_product_abstract"/>
+        </foreign-key>
+        <foreign-key name="spy_product_measurement_base_unit-fk_product_measurement_unit" foreignTable="spy_product_measurement_unit" phpName="ProductMeasurementUnit">
+            <reference local="fk_product_measurement_unit" foreign="id_product_measurement_unit"/>
+        </foreign-key>
+        <index name="index-spy_product_measurement_base_unit-fk_product_abstract">
+            <index-column name="fk_product_abstract"/>
+        </index>
+        <index name="index-spy_product_measurement_base_unit-fk_product-42bf48cd9c9e">
+            <index-column name="fk_product_measurement_unit"/>
+        </index>
+        <id-method-parameter value="id_product_measurement_base_unit_pk_seq"/>
+        <behavior name="timestampable"/>
+        <behavior name="event">
+            <parameter name="spy_product_measurement_base_unit_all" column="*"/>
+        </behavior>
+    </table>
+    <table name="spy_product_measurement_sales_unit" idMethod="native" allowPkInsert="true" identifierQuoting="true">
+        <column name="id_product_measurement_sales_unit" required="true" type="INTEGER" primaryKey="true" autoIncrement="true"/>
+        <column name="fk_product" type="INTEGER" required="true"/>
+        <column name="fk_product_measurement_base_unit" type="INTEGER" required="true"/>
+        <column name="fk_product_measurement_unit" type="INTEGER" required="true"/>
+        <column name="conversion" type="FLOAT" required="false"/>
+        <column name="is_default" type="BOOLEAN" required="true"/>
+        <column name="is_displayed" type="BOOLEAN" required="true"/>
+        <column name="key" required="false" type="VARCHAR" size="255"/>
+        <column name="precision" type="INTEGER" required="false"/>
+        <foreign-key name="spy_product_measurement_sales_unit-fk_product" foreignTable="spy_product" phpName="Product">
+            <reference local="fk_product" foreign="id_product"/>
+        </foreign-key>
+        <foreign-key name="spy_product_measurement_sales_unit-fk_measurement_unit" foreignTable="spy_product_measurement_unit" phpName="ProductMeasurementUnit">
+            <reference local="fk_product_measurement_unit" foreign="id_product_measurement_unit"/>
+        </foreign-key>
+        <foreign-key name="spy_product_measurement_sales_unit-fk_base_unit" foreignTable="spy_product_measurement_base_unit" phpName="ProductMeasurementBaseUnit">
+            <reference local="fk_product_measurement_base_unit" foreign="id_product_measurement_base_unit"/>
+        </foreign-key>
+        <index name="index-spy_product_measurement_sales_unit-fk_product">
+            <index-column name="fk_product"/>
+        </index>
+        <index name="index-spy_product_measurement_sales_unit-fk_produc-202aa3d87f0a">
+            <index-column name="fk_product_measurement_unit"/>
+        </index>
+        <index name="index-spy_product_measurement_sales_unit-fk_produc-5cc18a291b71">
+            <index-column name="fk_product_measurement_base_unit"/>
+        </index>
+        <id-method-parameter value="id_product_measurement_sales_unit_pk_seq"/>
+        <behavior name="timestampable"/>
+        <behavior name="event">
+            <parameter name="spy_product_measurement_sales_unit_all" column="*"/>
+        </behavior>
+    </table>
+    <table name="spy_product_measurement_sales_unit_store" idMethod="native" allowPkInsert="true" identifierQuoting="true">
+        <column name="id_product_measurement_sales_unit_store" required="true" type="INTEGER" primaryKey="true" autoIncrement="true"/>
+        <column name="fk_product_measurement_sales_unit" required="true" type="INTEGER"/>
+        <column name="fk_store" required="true" type="INTEGER"/>
+        <foreign-key name="spy_product_measurement_sales_unit_store-fk_store" foreignTable="spy_store">
+            <reference local="fk_store" foreign="id_store"/>
+        </foreign-key>
+        <foreign-key name="spy_product_measurement_sales_unit_store-fk_sales_unit" foreignTable="spy_product_measurement_sales_unit">
+            <reference local="fk_product_measurement_sales_unit" foreign="id_product_measurement_sales_unit"/>
+        </foreign-key>
+        <index name="index-spy_product_measurement_sales_unit_store-fk_store">
+            <index-column name="fk_store"/>
+        </index>
+        <index name="index-spy_product_measurement_sales_unit_store-fk_-b31f1c565a8f">
+            <index-column name="fk_product_measurement_sales_unit"/>
+        </index>
+        <unique name="spy_product_measurement_sales_unit_store-sales_unit-store">
+            <unique-column name="fk_product_measurement_sales_unit"/>
+            <unique-column name="fk_store"/>
+        </unique>
+        <id-method-parameter value="id_product_measurement_sales_unit_store_pk_seq"/>
+        <behavior name="event">
+            <parameter name="spy_product_measurement_sales_unit_store_all" column="*"/>
+        </behavior>
+    </table>
+</database>
