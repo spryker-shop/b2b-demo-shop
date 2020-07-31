@@ -231,9 +231,13 @@ sections:
     demodata:
         import-eu-region-demodata:
             command: "vendor/bin/console data:import --config=data/import/production/full_EU.yml"
+            stores:
+                - DE
 
         import-us-region-demodata:
             command: "vendor/bin/console data:import --config=data/import/local/full_US.yml"
+            stores:
+                - US
 
     jenkins-up:
         jenkins-generate:
