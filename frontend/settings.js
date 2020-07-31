@@ -102,10 +102,8 @@ const getAppSettingsByTheme = (namespaceConfig, theme, pathToConfig) => {
 
     const getPublicStaticUrl = () => namespaceJson.staticPath;
 
-    // get array of available module suffixes
     const getAllCodeBuckets = () => namespaceJson.namespaces.map(namespace => namespace.codeBucket);
 
-    // get array of ignored modules
     const ignoreModulesCollection = () => {
         return getAllCodeBuckets()
             .filter(suffix => suffix !== namespaceConfig.codeBucket)
