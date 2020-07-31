@@ -42,7 +42,6 @@ class NewsletterSubscriptionCest
 
         $customerTransfer = (new CustomerBuilder())->build();
 
-        $i->waitForElementVisible(NewsletterSubscriptionHomePage::FORM_FIELD_EMAIL, 10);
         $i->fillField(NewsletterSubscriptionHomePage::FORM_FIELD_EMAIL, $customerTransfer->getEmail());
         $i->click(NewsletterSubscriptionHomePage::FORM_BUTTON_SUBMIT);
 
@@ -65,7 +64,6 @@ class NewsletterSubscriptionCest
 
         $i->haveAnAlreadySubscribedEmail($customerTransfer->getEmail());
 
-        $i->waitForElementVisible(NewsletterSubscriptionHomePage::FORM_FIELD_EMAIL, 10);
         $i->fillField(NewsletterSubscriptionHomePage::FORM_FIELD_EMAIL, $customerTransfer->getEmail());
         $i->click(NewsletterSubscriptionHomePage::FORM_BUTTON_SUBMIT);
 
@@ -86,7 +84,6 @@ class NewsletterSubscriptionCest
 
         $customerTransfer = (new CustomerBuilder())->build();
 
-        $i->waitForElementVisible(NewsletterSubscriptionHomePage::FORM_FIELD_EMAIL, 10);
         $i->fillField(NewsletterSubscriptionHomePage::FORM_FIELD_EMAIL, $customerTransfer->getEmail());
         $i->click(NewsletterSubscriptionHomePage::FORM_BUTTON_SUBMIT);
         $i->see(CustomerOverviewPage::MESSAGE_SUCCESS_NEWSLETTER_SUBSCRIBED);
@@ -115,7 +112,6 @@ class NewsletterSubscriptionCest
 
         $customerTransfer = (new CustomerBuilder())->build();
 
-        $i->waitForElementVisible(NewsletterSubscriptionHomePage::FORM_FIELD_EMAIL, 10);
         $i->fillField(NewsletterSubscriptionHomePage::FORM_FIELD_EMAIL, $customerTransfer->getEmail());
         $i->click(NewsletterSubscriptionHomePage::FORM_BUTTON_SUBMIT);
         $i->see(CustomerOverviewPage::MESSAGE_SUCCESS_NEWSLETTER_SUBSCRIBED);
