@@ -1,0 +1,57 @@
+# Example of demo shop 'STORE SPECIFIC' data import for 'AT' store.
+version: 0
+
+actions:
+    # Store relation
+    # CMS pages
+    - data_entity: cms-block-store
+      source: data/import/common/DE/cms_block_store.csv
+    - data_entity: cms-page-store
+      source: data/import/common/DE/cms_page_store.csv
+    - data_entity: product-option-price
+      source: data/import/common/DE/product_option_price.csv
+    # Discounts
+    - data_entity: discount-amount
+      source: data/import/common/DE/discount_amount.csv
+    - data_entity: discount-store
+      source: data/import/common/DE/discount_store.csv
+    # Merchants
+    - data_entity: product-price-merchant-relationship
+      source: data/import/common/DE/price_product_merchant_relationship.csv
+    # Payment methods
+    - data_entity: payment-method-store
+      source: data/import/common/DE/payment_method_store.csv
+    # Product
+    - data_entity: product-abstract-store
+      source: data/import/common/DE/product_abstract_store.csv
+    - data_entity: product-price
+      source: data/import/common/DE/product_price.csv
+    - data_entity: product-price-schedule
+      source: data/import/common/DE/product_price_schedule.csv
+    - data_entity: product-label-store
+      source: data/import/common/DE/product_label_store.csv
+    - data_entity: product-measurement-sales-unit-store
+      source: data/import/common/DE/product_measurement_sales_unit_store.csv
+    - data_entity: product-relation-store
+      source: data/import/common/DE/product_relation_store.csv
+    # Shipment methods
+    - data_entity: shipment-method-store
+      source: data/import/common/DE/shipment_method_store.csv
+    - data_entity: shipment-price
+      source: data/import/common/DE/shipment_price.csv
+    # Sales Order Threshold
+    - data_entity: sales-order-threshold
+      source: data/import/common/DE/sales_order_threshold.csv
+    - data_entity: merchant-relationship-sales-order-threshold
+      source: data/import/common/DE/sales_order_threshold_per_merchant_relationship.csv
+    # Stock
+    - data_entity: stock-store
+      source: data/import/common/DE/warehouse_store.csv
+    # Cart
+    - data_entity: multi-cart
+      source: data/import/common/DE/multi_cart.csv
+    - data_entity: shared-cart
+      source: data/import/common/DE/shared_cart.csv
+    # Comment
+    - data_entity: comment
+      source: data/import/common/DE/comment.csv

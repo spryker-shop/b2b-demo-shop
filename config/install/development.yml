@@ -229,53 +229,11 @@ sections:
                 - elastic
 
     demodata:
-        import-commerce-setup:
-            command: "vendor/bin/console data:import --config=data/import/config/commerce_setup_import_config.yml"
-            stores:
-                - US
-                - DE
+        import-eu-region-demodata:
+            command: "vendor/bin/console data:import --config=data/import/production/full_EU.yml"
 
-        import-catalog-setup:
-            command: "vendor/bin/console data:import --config=data/import/config/catalog_setup_import_config.yml"
-            stores:
-                - US
-                - DE
-
-        import-special-product-types-setup:
-            command: "vendor/bin/console data:import --config=data/import/config/special_product_types_import_config.yml"
-            stores:
-                - US
-                - DE
-
-        import-merchandising-setup:
-            command: "vendor/bin/console data:import --config=data/import/config/merchandising_import_config.yml"
-            stores:
-                - US
-                - DE
-
-        import-content-management-setup:
-            command: "vendor/bin/console data:import --config=data/import/config/content_management_import_config.yml"
-            stores:
-                - US
-                - DE
-
-        import-setup-setup:
-            command: "vendor/bin/console data:import --config=data/import/config/b2b_setup_import_config.yml"
-            stores:
-                - US
-                - DE
-
-        import-miscellaneous-setup:
-            command: "vendor/bin/console data:import --config=data/import/config/miscellaneous_import_config.yml"
-            stores:
-                - US
-                - DE
-
-        update-product-labels:
-            command: "vendor/bin/console product-label:relations:update"
-            stores:
-                - US
-                - DE
+        import-us-region-demodata:
+            command: "vendor/bin/console data:import --config=data/import/local/full_US.yml"
 
     jenkins-up:
         jenkins-generate:
