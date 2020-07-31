@@ -10,6 +10,12 @@
             height: 100%;
         }
 
+        &--catalog {
+            @include helper-breakpoint-media-min($lg) {
+                padding-bottom: rem(3);
+            }
+        }
+
         &__colors {
             @include helper-breakpoint-media-min($xl) {
                 @include helper-effect-transition(opacity);
@@ -61,7 +67,7 @@
                 }
 
                 @include helper-breakpoint-media-min($xl) {
-                    padding: 0 rem(14) rem(26);
+                    padding: 0 rem(14) rem(15);
                 }
             }
 
@@ -286,6 +292,12 @@
                     right: rem(14);
                 }
             }
+        }
+
+        &__actions-row {
+            margin-top: rem(10);
+            display: flex;
+            width: 100%;
         }
 
         @content;
