@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<database xmlns="spryker:schema-01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="zed" xsi:schemaLocation="spryker:schema-01 https://static.spryker.com/schema-01.xsd" namespace="Orm\Zed\ProductPackagingUnitStorage\Persistence" package="src.Orm.Zed.ProductPackagingUnitStorage.Persistence">
+    <table name="spy_product_packaging_unit_storage" idMethod="native" identifierQuoting="true">
+        <column name="id_product_packaging_unit_storage" type="BIGINT" autoIncrement="true" primaryKey="true"/>
+        <column name="fk_product" type="INTEGER" required="true"/>
+        <column name="data" type="LONGVARCHAR" required="false"/>
+        <column name="key" type="VARCHAR" required="true"/>
+        <index name="spy_product_packaging_unit_storage-fk_product">
+            <index-column name="fk_product"/>
+        </index>
+        <id-method-parameter value="spy_product_packaging_unit_storage_pk_seq"/>
+        <behavior name="synchronization">
+            <parameter name="resource" value="product_packaging_unit"/>
+            <parameter name="key_suffix_column" value="fk_product"/>
+            <parameter name="queue_group" value="sync.storage.product"/>
+            <parameter name="queue_pool" value="synchronizationPool"/>
+        </behavior>
+        <behavior name="timestampable"/>
+    </table>
+</database>
