@@ -1,0 +1,37 @@
+# Example of B2B demo shop 'Special Product Types category' data import.
+version: 0
+
+actions:
+  - data_entity: product-option
+    source: data/import/common/common/product_option.csv
+  - data_entity: product-option-price
+    source: data/import/common/DE/product_option_price.csv
+  - data_entity: product-option-price
+    source: data/import/common/AT/product_option_price.csv
+  - data_entity: product-measurement-unit
+    source: data/import/common/common/product_measurement_unit.csv
+  - data_entity: product-measurement-base-unit
+    source: data/import/common/common/product_measurement_base_unit.csv
+  - data_entity: product-measurement-sales-unit
+    source: data/import/common/common/product_measurement_sales_unit.csv
+  - data_entity: product-packaging-unit-type
+    source: data/import/common/common/product_packaging_unit_type.csv
+  - data_entity: product-packaging-unit
+    source: data/import/common/common/product_packaging_unit.csv
+  - data_entity: product-list
+    source: data/import/common/common/product_list.csv
+  - data_entity: product-list-category
+    source: data/import/common/common/product_list_to_category.csv
+  - data_entity: product-list-product-concrete
+    source: data/import/common/common/product_list_to_concrete_product.csv
+  - data_entity: configurable-bundle-template
+    source: data/import/common/common/configurable_bundle_template.csv
+  - data_entity: configurable-bundle-template-slot
+    source: data/import/common/common/configurable_bundle_template_slot.csv
+  - data_entity: configurable-bundle-template-image
+    source: data/import/common/common/configurable_bundle_template_image.csv
+  # Store relation
+  - data_entity: product-measurement-sales-unit-store
+    source: data/import/common/DE/product_measurement_sales_unit_store.csv
+  - data_entity: product-measurement-sales-unit-store
+    source: data/import/common/AT/product_measurement_sales_unit_store.csv
