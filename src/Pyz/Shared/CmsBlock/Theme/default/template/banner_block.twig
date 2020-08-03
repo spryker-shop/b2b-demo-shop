@@ -20,10 +20,10 @@
             <div class="grid grid--left grid--middle">
                 <div class="col col--sm-12">
                     {% include molecule('banner') with {
-                        class: 'spacing-bottom spacing-bottom--reset',
+                        modifiers: ['spacing-bottom-reset'],
                         data: {
                             imageUrl: data.imageUrl,
-                            link: data.link,
+                            clickUrl: data.link,
                             content: data.blockContent,
                         },
                     } only %}

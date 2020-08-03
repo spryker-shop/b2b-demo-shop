@@ -69,7 +69,12 @@
                     {% for item in data.bundleItems %}
                         <li class="product-bundle__item product-bundle__item--configurator">
                             <div class="product-bundle__img-block product-bundle__img-block--configurator">
-                                <img src="{{ item.image }}" class="product-bundle__img">
+                                {% include molecule('lazy-image') with {
+                                    modifiers: ['full-size'],
+                                    data: {
+                                        imageSrc: item.image,
+                                    },
+                                } only %}
                             </div>
                             <div class="product-bundle__info product-bundle__info--configurator">
                                 <h4 class="product-bundle__name">{{ item.name }}</h4>
@@ -84,6 +89,7 @@
             attributes: {
                 'wrap-class-name': 'js-product-options-bundle',
                 'trigger-class-name': 'js-product-options-bundle__title',
+                'active-class': 'active',
             },
         } only %}
     {% endif %}
