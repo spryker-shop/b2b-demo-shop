@@ -127,7 +127,7 @@ actions:
       source: data/import/common/US/product_label_store.csv
 
 
-    #6. Content Management Setup import
+    #5. Content Management Setup import
     - data_entity: navigation
       source: data/import/common/common/navigation.csv
     - data_entity: cms-template
@@ -136,6 +136,8 @@ actions:
       source: data/import/common/common/cms_block.csv
     - data_entity: content-banner
       source: data/import/common/common/content_banner.csv
+    - data_entity: content-navigation
+      source: data/import/common/common/content_navigation.csv
     - data_entity: content-product-abstract-list
       source: data/import/common/common/content_product_abstract_list.csv
     - data_entity: content-product-set
@@ -148,13 +150,15 @@ actions:
       source: data/import/common/common/cms_slot.csv
     - data_entity: cms-slot-block
       source: data/import/common/common/cms_slot_block.csv
-    - data_entity: navigation-node
-      source: data/import/common/common/navigation_node.csv
     # Store relation
     - data_entity: cms-page-store
       source: data/import/common/US/cms_page_store.csv
     - data_entity: cms-block-store
       source: data/import/common/US/cms_block_store.csv
+
+    #6. Navigation Setup import
+    - data_entity: navigation-node
+      source: data/import/common/common/navigation_node.csv
 
 
     #6. B2B Setup import
