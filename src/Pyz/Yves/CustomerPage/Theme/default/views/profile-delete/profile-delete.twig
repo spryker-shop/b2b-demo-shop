@@ -1,9 +1,4 @@
-{% extends template('page-layout-customer', 'CustomerPage') %}
-
-{% define data = {
-    title: 'customer.account.profile_data' | trans,
-    activePage: 'profile'
-} %}
+{% extends view('profile-delete', '@SprykerShop:CustomerPage') %}
 
 {% block customerContent %}
     <div class="box">
@@ -14,7 +9,9 @@
                 {{ "customer.profile.delete.confirmation_question" | trans }}
             </div>
             <div class="col col--sm-12 col--lg-auto spacing-y spacing-y--small">
-                <a href="{{url('customer/delete/confirm')}}" class="button button--expand button--alert float-right">{{ "customer.profile.delete" | trans }}</a>
+                {{ form_start(data.customerDeleteForm, {'attr': {'class': 'float-right'}, 'action': url('customer/delete/confirm')}) }}
+                    <button data-init-single-click class="button button--expand button--alert">{{ 'customer.profile.delete' | trans }}</button>
+                {{ form_end(data.customerDeleteForm) }}
             </div>
         </div>
     </div>
