@@ -151,6 +151,28 @@ class ProductRepository implements ProductRepositoryInterface
     }
 
     /**
+     * @return string[]
+     */
+    public function getSkuProductAbstractList(): array
+    {
+        return SpyProductAbstractQuery::create()
+            ->select([SpyProductAbstractTableMap::COL_SKU])
+            ->find()
+            ->toArray();
+    }
+
+    /**
+     * @return string[]
+     */
+    public function getSkuProductConcreteList(): array
+    {
+        return SpyProductQuery::create()
+            ->select([SpyProductTableMap::COL_SKU])
+            ->find()
+            ->toArray();
+    }
+
+    /**
      * @return void
      */
     public function flush(): void

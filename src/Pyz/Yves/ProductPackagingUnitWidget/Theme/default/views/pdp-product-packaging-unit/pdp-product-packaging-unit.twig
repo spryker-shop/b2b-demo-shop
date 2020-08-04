@@ -11,9 +11,10 @@
     <input id="item-money-symbol" type="hidden" value="{{  moneySymbol() }}">
 
     {% set salesUnitCount = data.salesUnits | length %}
+    {% set hasQuantityRow = salesUnitCount > 1 and data.isSelfLead == false %}
 
     {% if salesUnitCount %}
-        {% set isQuantityRowJustify = (salesUnitCount > 1 and data.packagingUnitIsSelfLead == false) ? 'grid--justify' %}
+        {% set isQuantityRowJustify = hasQuantityRow ? 'grid--justify' %}
 
         <div class="grid grid--middle {{ isQuantityRowJustify }}">
             <div class="col measurement-unit">
@@ -34,7 +35,7 @@
                 </div>
             </div>
 
-            {% if salesUnitCount > 1 and data.packagingUnitIsSelfLead == false %}
+            {% if hasQuantityRow %}
                 <div class="col col--sm-12 col--md-auto col--lg-12 col--xxl-auto measurement-unit">
                     <div class="measurement-unit__label">{{ 'packaging_units.pdp.sales-units' | trans }}:</div>
                     <div class="measurement-unit__value">
@@ -62,7 +63,7 @@
                 </div>
             {% endif %}
 
-            {% if salesUnitCount == 1 and data.packagingUnitIsSelfLead == false %}
+            {% if salesUnitCount == 1 and data.isSelfLead == false %}
                 <div class="col measurement-unit">
                     <div class="measurement-unit__value">{{ data.salesUnits[0].productMeasurementUnit.name | trans }}</div>
                     <input type="hidden" name="id-product-measurement-sales-unit" value="{{ data.salesUnits[0].idProductMeasurementSalesUnit }}">
@@ -183,12 +184,6 @@
     {% endif %}
 
     {% if salesUnitCount %}
-        {% include molecule('packaging-unit-quantity-selector', 'ProductPackagingUnitWidget') with {
-            data: {
-                json: data.jsonScheme,
-            },
-        } only %}
-
         <div class="text-small is-hidden packaging-unit-choice">
             <div class="packaging-unit-notifications">
                 <div id="amount-between-units" class="is-hidden">

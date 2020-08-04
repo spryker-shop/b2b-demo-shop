@@ -1,4 +1,9 @@
-{% extends template('page-layout-company', '@SprykerShop:CompanyPage') %}
+{% extends template('page-layout-main') %}
+
+{% define data = {
+    activePage: 'overview',
+    currentBreadcrumb: 'customer.account.overview',
+} %}
 
 {% block breadcrumbs %}
     {% include molecule('breadcrumb') with {
