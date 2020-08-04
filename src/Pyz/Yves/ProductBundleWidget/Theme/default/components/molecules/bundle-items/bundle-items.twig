@@ -28,24 +28,23 @@
                             <div class="grid grid--middle grid--justify grid--gap">
                                 <div class="col col--sm-12 col--md-7">
                                     <p>{{ item.name }}</p>
-                                    <span class="{{ config.name }}__quantity col col--sm-12">x {{ item.quantity }}</span>
-                                </div>
-                                <div class="col col--sm-12 col--md-5">
-                                    {% block state %}
-                                        {% set stateName = data.productItem.state.name ?? '' %}
+                                    <span class="{{ config.name }}__quantity col col--sm-12">
+                                        x {{ item.quantity }}
+                                        {% block state %}
+                                            {% if item.state is not null %}
+                                                {% set state = item.state.name | replace({' ': '-'}) | lower %}
+                                                {% set stateLabel = item.state.displayName ?? ('oms.state.' ~ state) %}
 
-                                        {% if stateName %}
-                                            {% set state = stateName | replace({' ': '-'}) | lower %}
-
-                                            {% include molecule('status') with {
-                                                class: 'spacing-y',
-                                                data: {
-                                                    label: stateName | capitalize,
-                                                    status: state,
-                                                },
-                                            } only %}
-                                        {% endif %}
-                                    {% endblock %}
+                                                {% include molecule('status') with {
+                                                    class: 'spacing-left',
+                                                    data: {
+                                                        label: stateLabel | trans,
+                                                        status: state,
+                                                    },
+                                                } only %}
+                                            {% endif %}
+                                        {% endblock %}
+                                    </span>
                                 </div>
                             </div>
                         </li>
