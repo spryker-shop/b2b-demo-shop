@@ -31,8 +31,10 @@
                                     <span class="{{ config.name }}__quantity col col--sm-12">
                                         x {{ item.quantity }}
                                         {% block state %}
-                                            {% if item.state is not null %}
-                                                {% set state = item.state.name | replace({' ': '-'}) | lower %}
+                                            {% set stateName = item.state.name ?? '' %}
+
+                                            {% if stateName %}
+                                                {% set state = stateName | replace({' ': '-'}) | lower %}
                                                 {% set stateLabel = item.state.displayName ?? ('oms.state.' ~ state) %}
 
                                                 {% include molecule('status') with {
