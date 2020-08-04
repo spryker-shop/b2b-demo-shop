@@ -11,9 +11,10 @@
     <input id="item-money-symbol" type="hidden" value="{{  moneySymbol() }}">
 
     {% set salesUnitCount = data.salesUnits | length %}
+    {% set hasQuantityRow = salesUnitCount > 1 and data.isSelfLead == false %}
 
     {% if salesUnitCount %}
-        {% set isQuantityRowJustify = (salesUnitCount > 1 and data.isSelfLead == false) ? 'grid--justify' %}
+        {% set isQuantityRowJustify = hasQuantityRow ? 'grid--justify' %}
 
         <div class="grid grid--middle {{ isQuantityRowJustify }}">
             <div class="col measurement-unit">
@@ -34,7 +35,7 @@
                 </div>
             </div>
 
-            {% if salesUnitCount > 1 and data.isSelfLead == false %}
+            {% if hasQuantityRow %}
                 <div class="col col--sm-12 col--md-auto col--lg-12 col--xxl-auto measurement-unit">
                     <div class="measurement-unit__label">{{ 'packaging_units.pdp.sales-units' | trans }}:</div>
                     <div class="measurement-unit__value">
