@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c29cc915efbd385d19c0a66d42ae4210",
+    "content-hash": "dcb55fc5f0b1903127a29284dc84a68c",
     "packages": [
         {
             "name": "codeitnowin/barcode",
@@ -1777,33 +1777,36 @@
         },
         {
             "name": "propel/propel",
-            "version": "2.0.0-alpha10",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/propelorm/Propel2.git",
-                "reference": "776f746747c62962f4b70b3a3ac1de2b249ffd35"
+                "reference": "421dcba7e31c2e6f2996c1e9ec50e30de6d56703"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/propelorm/Propel2/zipball/776f746747c62962f4b70b3a3ac1de2b249ffd35",
-                "reference": "776f746747c62962f4b70b3a3ac1de2b249ffd35",
+                "url": "https://api.github.com/repos/propelorm/Propel2/zipball/421dcba7e31c2e6f2996c1e9ec50e30de6d56703",
+                "reference": "421dcba7e31c2e6f2996c1e9ec50e30de6d56703",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
+                "php": ">=7.2",
                 "psr/log": "^1.0",
-                "symfony/config": "^2.7.0||^3.0.0||^4.0.0||^5.0.0",
-                "symfony/console": "^2.7.0||^3.0.0||^4.0.0||^5.0.0",
-                "symfony/filesystem": "^2.7.0||^3.0.0||^4.0.0||^5.0.0",
-                "symfony/finder": "^2.7.0||^3.0.0||^4.0.0||^5.0.0",
-                "symfony/translation": "^2.7.0||^3.0.0||^4.0.0||^5.0.0",
-                "symfony/validator": "^2.7.0||^3.3.0||^4.0.0||^5.0.0",
-                "symfony/yaml": "^2.7.0||^3.3.0||^4.0.0||^5.0.0"
+                "symfony/config": "^3.4.0||^4.3.0||^5.0.0",
+                "symfony/console": "^3.4.0||^4.3.0||^5.0.0",
+                "symfony/filesystem": "^3.4.0||^4.3.0||^5.0.0",
+                "symfony/finder": "^3.4.0||^4.3.0||^5.0.0",
+                "symfony/translation": "^3.4.0||^4.3.0||^5.0.0",
+                "symfony/validator": "^3.4.0||^4.3.0||^5.0.0",
+                "symfony/yaml": "^3.4.0||^4.3.0||^5.0.0"
             },
             "require-dev": {
+                "ext-json": "*",
+                "ext-pdo": "*",
                 "monolog/monolog": "^1.3",
                 "phpstan/phpstan": "^0.12.4",
-                "phpunit/phpunit": "^7.5.15"
+                "phpunit/phpunit": "^7.5.15",
+                "spryker/code-sniffer": "^0.15.4"
             },
             "suggest": {
                 "monolog/monolog": "The recommended logging library to use with Propel."
@@ -1839,7 +1842,7 @@
                 "orm",
                 "persistence"
             ],
-            "time": "2020-07-13T12:20:41+00:00"
+            "time": "2020-07-29T09:37:05+00:00"
         },
         {
             "name": "psr/container",
@@ -22320,16 +22323,16 @@
         },
         {
             "name": "spryker/file-manager-gui",
-            "version": "1.2.0",
+            "version": "1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/file-manager-gui.git",
-                "reference": "a6326463f75fd1885db8d10b17c9c6e30efe1ebc"
+                "reference": "6a7ba5ef6d339b6033019e00aca6cd82257f4c7c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/file-manager-gui/zipball/a6326463f75fd1885db8d10b17c9c6e30efe1ebc",
-                "reference": "a6326463f75fd1885db8d10b17c9c6e30efe1ebc",
+                "url": "https://api.github.com/repos/spryker/file-manager-gui/zipball/6a7ba5ef6d339b6033019e00aca6cd82257f4c7c",
+                "reference": "6a7ba5ef6d339b6033019e00aca6cd82257f4c7c",
                 "shasum": ""
             },
             "require": {
@@ -22340,7 +22343,7 @@
                 "spryker/kernel": "^3.30.0",
                 "spryker/locale": "^3.0.0",
                 "spryker/propel-orm": "^1.0.0",
-                "spryker/symfony": "^3.0.0",
+                "spryker/symfony": "^3.4.0",
                 "spryker/util-text": "^1.0.0"
             },
             "require-dev": {
@@ -22362,20 +22365,20 @@
                 "proprietary"
             ],
             "description": "FileManagerGui module",
-            "time": "2020-07-08T08:09:21+00:00"
+            "time": "2020-07-27T11:44:21+00:00"
         },
         {
             "name": "spryker/file-manager-storage",
-            "version": "1.4.0",
+            "version": "1.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/file-manager-storage.git",
-                "reference": "de908888c394a7f5383a6b3adb1dedb0b3139d83"
+                "reference": "c16361d3b8741b311348ca18092497e6a2a71122"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/file-manager-storage/zipball/de908888c394a7f5383a6b3adb1dedb0b3139d83",
-                "reference": "de908888c394a7f5383a6b3adb1dedb0b3139d83",
+                "url": "https://api.github.com/repos/spryker/file-manager-storage/zipball/c16361d3b8741b311348ca18092497e6a2a71122",
+                "reference": "c16361d3b8741b311348ca18092497e6a2a71122",
                 "shasum": ""
             },
             "require": {
@@ -22413,7 +22416,7 @@
                 "proprietary"
             ],
             "description": "FileManagerStorage module",
-            "time": "2020-07-03T07:32:24+00:00"
+            "time": "2020-07-24T12:33:58+00:00"
         },
         {
             "name": "spryker/file-system",
@@ -32287,21 +32290,21 @@
         },
         {
             "name": "spryker/propel-orm",
-            "version": "1.11.0",
+            "version": "1.11.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/propel-orm.git",
-                "reference": "af0b76721674cfbf99d4356be7c5eddbf289e86f"
+                "reference": "a2f375307aa6608981ced9a3ce30616e2b683f56"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/propel-orm/zipball/af0b76721674cfbf99d4356be7c5eddbf289e86f",
-                "reference": "af0b76721674cfbf99d4356be7c5eddbf289e86f",
+                "url": "https://api.github.com/repos/spryker/propel-orm/zipball/a2f375307aa6608981ced9a3ce30616e2b683f56",
+                "reference": "a2f375307aa6608981ced9a3ce30616e2b683f56",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2",
-                "propel/propel": "2.0.0-alpha10",
+                "propel/propel": "dev-master#421dcba7e31c2e6f2996c1e9ec50e30de6d56703",
                 "spryker/config": "^3.0.0",
                 "spryker/error-handler": "^2.0.0",
                 "spryker/kernel": "^3.49.0",
@@ -32328,7 +32331,7 @@
                 "proprietary"
             ],
             "description": "PropelOrm module",
-            "time": "2020-07-13T16:58:06+00:00"
+            "time": "2020-07-23T15:27:47+00:00"
         },
         {
             "name": "spryker/propel-query-builder",
@@ -32832,16 +32835,16 @@
         },
         {
             "name": "spryker/quote-request",
-            "version": "2.2.0",
+            "version": "2.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/quote-request.git",
-                "reference": "b9ba277df3be1a58756161ddebb8826314414310"
+                "reference": "9f391ca22ea70572ad8e335de35a924dc94b8674"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/quote-request/zipball/b9ba277df3be1a58756161ddebb8826314414310",
-                "reference": "b9ba277df3be1a58756161ddebb8826314414310",
+                "url": "https://api.github.com/repos/spryker/quote-request/zipball/9f391ca22ea70572ad8e335de35a924dc94b8674",
+                "reference": "9f391ca22ea70572ad8e335de35a924dc94b8674",
                 "shasum": ""
             },
             "require": {
@@ -32897,7 +32900,7 @@
                 "proprietary"
             ],
             "description": "QuoteRequest module",
-            "time": "2020-04-10T12:38:15+00:00"
+            "time": "2020-07-06T12:46:04+00:00"
         },
         {
             "name": "spryker/quote-request-agent",
@@ -36534,7 +36537,7 @@
             ],
             "description": "Silex module",
             "abandoned": true,
-            "time": "2020-07-24T04:44:33+00:00"
+            "time": "2019-09-26T05:13:58+00:00"
         },
         {
             "name": "spryker/silexphp",
@@ -37343,16 +37346,16 @@
         },
         {
             "name": "spryker/symfony",
-            "version": "3.3.7",
+            "version": "3.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/symfony.git",
-                "reference": "62d31fb647e09a8c162aebe315e9188714ff8329"
+                "reference": "86f6856bcffbb6215ae0df3ca51f7a251749ff39"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/symfony/zipball/62d31fb647e09a8c162aebe315e9188714ff8329",
-                "reference": "62d31fb647e09a8c162aebe315e9188714ff8329",
+                "url": "https://api.github.com/repos/spryker/symfony/zipball/86f6856bcffbb6215ae0df3ca51f7a251749ff39",
+                "reference": "86f6856bcffbb6215ae0df3ca51f7a251749ff39",
                 "shasum": ""
             },
             "require": {
@@ -37365,11 +37368,12 @@
                 "symfony/form": "^3.0.0 || ^4.0.0",
                 "symfony/http-kernel": "^3.0.0 || ^4.0.0",
                 "symfony/intl": "^3.0.0 || ^4.0.0",
+                "symfony/mime": "^4.0.0 || ^5.0.0",
                 "symfony/options-resolver": "^3.0.0 || ^4.0.0",
                 "symfony/process": "^3.0.0 || ^4.0.0",
                 "symfony/property-access": "^3.0.0 || ^4.0.0",
                 "symfony/routing": "^3.0.0 || ^4.0.0",
-                "symfony/security": "^3.4.26 <4.0.0 || ^4.1.12 <4.2.0 || ^4.2.7",
+                "symfony/security": "^3.4.26 <4.0.0 || ^4.1.12 <4.2.0 || ^4.2.7 < 4.4.0 || ^4.4.7",
                 "symfony/serializer": "^3.0.0 || ^4.0.0",
                 "symfony/stopwatch": "^3.4.0 || ^4.0.0",
                 "symfony/translation": "^3.0.0 || ^4.0.0",
@@ -37398,7 +37402,7 @@
                 "proprietary"
             ],
             "description": "Symfony module",
-            "time": "2020-03-24T12:59:10+00:00"
+            "time": "2020-07-27T10:53:49+00:00"
         },
         {
             "name": "spryker/synchronization",
@@ -39957,6 +39961,20 @@
             ],
             "description": "A generic function and convention to trigger deprecation notices",
             "homepage": "https://symfony.com",
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
             "time": "2020-06-06T08:49:21+00:00"
         },
         {
@@ -40145,6 +40163,20 @@
                 "interfaces",
                 "interoperability",
                 "standards"
+            ],
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
             ],
             "time": "2020-07-06T13:19:58+00:00"
         },
@@ -40617,6 +40649,69 @@
             "time": "2020-03-27T16:54:36+00:00"
         },
         {
+            "name": "symfony/mime",
+            "version": "v5.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/mime.git",
+                "reference": "56261f89385f9d13cf843a5101ac72131190bc91"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/mime/zipball/56261f89385f9d13cf843a5101ac72131190bc91",
+                "reference": "56261f89385f9d13cf843a5101ac72131190bc91",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2.5",
+                "symfony/polyfill-intl-idn": "^1.10",
+                "symfony/polyfill-mbstring": "^1.0",
+                "symfony/polyfill-php80": "^1.15"
+            },
+            "conflict": {
+                "symfony/mailer": "<4.4"
+            },
+            "require-dev": {
+                "egulias/email-validator": "^2.1.10",
+                "symfony/dependency-injection": "^4.4|^5.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "5.1-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Mime\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "A library to manipulate MIME messages",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "mime",
+                "mime-type"
+            ],
+            "time": "2020-05-25T12:33:44+00:00"
+        },
+        {
             "name": "symfony/options-resolver",
             "version": "v4.4.7",
             "source": {
@@ -40730,6 +40825,20 @@
                 "polyfill",
                 "portable"
             ],
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
             "time": "2020-07-14T12:35:20+00:00"
         },
         {
@@ -40792,6 +40901,20 @@
                 "polyfill",
                 "portable",
                 "shim"
+            ],
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
             ],
             "time": "2020-07-14T12:35:20+00:00"
         },
@@ -40856,6 +40979,20 @@
                 "polyfill",
                 "portable",
                 "shim"
+            ],
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
             ],
             "time": "2020-07-14T12:35:20+00:00"
         },
@@ -40986,6 +41123,20 @@
                 "portable",
                 "shim"
             ],
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
             "time": "2020-07-14T12:35:20+00:00"
         },
         {
@@ -41053,6 +41204,20 @@
                 "portable",
                 "shim"
             ],
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
             "time": "2020-07-14T12:35:20+00:00"
         },
         {
@@ -41115,6 +41280,20 @@
                 "polyfill",
                 "portable",
                 "shim"
+            ],
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
             ],
             "time": "2020-07-14T12:35:20+00:00"
         },
@@ -41179,6 +41358,20 @@
                 "portable",
                 "shim"
             ],
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
             "time": "2020-07-14T12:35:20+00:00"
         },
         {
@@ -41237,6 +41430,20 @@
                 "polyfill",
                 "portable",
                 "shim"
+            ],
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
             ],
             "time": "2020-07-14T12:35:20+00:00"
         },
@@ -41299,6 +41506,20 @@
                 "polyfill",
                 "portable",
                 "shim"
+            ],
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
             ],
             "time": "2020-07-14T12:35:20+00:00"
         },
@@ -41365,6 +41586,20 @@
                 "polyfill",
                 "portable",
                 "shim"
+            ],
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
             ],
             "time": "2020-07-14T12:35:20+00:00"
         },
@@ -41788,6 +42023,20 @@
                 "interoperability",
                 "standards"
             ],
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
             "time": "2020-07-06T13:23:11+00:00"
         },
         {
@@ -41974,6 +42223,20 @@
                 "interfaces",
                 "interoperability",
                 "standards"
+            ],
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
             ],
             "time": "2020-07-06T13:23:11+00:00"
         },
@@ -42368,6 +42631,28 @@
             "homepage": "https://twig.symfony.com",
             "keywords": [
                 "templating"
+            ],
+            "funding": [
+                {
+                    "url": "https://certification.symfony.com/",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://live.symfony.com/",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://symfony.com/cloud/",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/twig/twig",
+                    "type": "tidelift"
+                }
             ],
             "time": "2020-07-05T13:00:49+00:00"
         },
@@ -48179,69 +48464,6 @@
             "time": "2019-11-26T23:25:11+00:00"
         },
         {
-            "name": "symfony/mime",
-            "version": "v5.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/mime.git",
-                "reference": "56261f89385f9d13cf843a5101ac72131190bc91"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/mime/zipball/56261f89385f9d13cf843a5101ac72131190bc91",
-                "reference": "56261f89385f9d13cf843a5101ac72131190bc91",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.2.5",
-                "symfony/polyfill-intl-idn": "^1.10",
-                "symfony/polyfill-mbstring": "^1.0",
-                "symfony/polyfill-php80": "^1.15"
-            },
-            "conflict": {
-                "symfony/mailer": "<4.4"
-            },
-            "require-dev": {
-                "egulias/email-validator": "^2.1.10",
-                "symfony/dependency-injection": "^4.4|^5.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "5.1-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\Component\\Mime\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "A library to manipulate MIME messages",
-            "homepage": "https://symfony.com",
-            "keywords": [
-                "mime",
-                "mime-type"
-            ],
-            "time": "2020-05-25T12:33:44+00:00"
-        },
-        {
             "name": "symfony/twig-bundle",
             "version": "v4.4.7",
             "source": {
@@ -48719,6 +48941,7 @@
     ],
     "minimum-stability": "dev",
     "stability-flags": {
+        "propel/propel": 20,
         "spryker-feature/alternative-products": 20,
         "spryker-feature/cart": 20,
         "spryker-feature/checkout": 20,
@@ -48772,5 +48995,6 @@
     "platform-dev": [],
     "platform-overrides": {
         "php": "7.2.15"
-    }
+    },
+    "plugin-api-version": "1.1.0"
 }
