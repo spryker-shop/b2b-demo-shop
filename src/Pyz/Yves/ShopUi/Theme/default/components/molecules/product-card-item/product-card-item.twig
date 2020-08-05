@@ -211,11 +211,11 @@
                                             {% block totalPrice %}{% endblock %}
 
                                             {% block state %}
-                                                {% set stateName = data.listItem.state.name ?? '' %}
+                                                {% set itemState = data.listItem.state %}
 
-                                                {% if stateName %}
-                                                    {% set state = stateName | replace({' ': '-'}) | lower %}
-                                                    {% set stateLabel = data.listItem.state.displayName ?? ('oms.state.' ~ state) %}
+                                                {% if itemState %}
+                                                    {% set state = itemState.name | replace({' ': '-'}) | lower %}
+                                                    {% set stateLabel = itemState.displayName ?? ('oms.state.' ~ state) %}
 
                                                     {% include molecule('status') with {
                                                         data: {
