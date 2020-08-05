@@ -773,4 +773,12 @@ class NavigationGuiPresentationTester extends Actor
 
         return $localeUrls;
     }
+
+    /**
+     * @return void
+     */
+    public function submitDeleteNavigationForm(): void
+    {
+        $this->click('//*[@id="delete_navigation_form_submit"]');
+    }
 }

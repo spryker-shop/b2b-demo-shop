@@ -116,22 +116,14 @@
 
 {% block footer %}
     {% embed organism('footer') only %}
-
         {% block subscribe %}{% endblock %}
         {% block logos %}{% endblock %}
 
         {% block navigation %}
             <div class="container">
-                <div class="grid grid--gap">
-                    {% include molecule('navigation-footer-item') with {
-                        class: 'col col--sm-12 text-center spacing-y spacing-y--inner spacing-y--big',
-                        data: {
-                            category: 'FOOTER_NAVIGATION',
-                            template: 'navigation-footer-checkout',
-                        },
-                    } only %}
+                <div class="grid grid--gap grid--center">
+                    {% cms_slot 'slt-footer-checkout-navigation' %}
                 </div>
-                {% block social %}{% endblock %}
             </div>
         {% endblock %}
     {% endembed %}

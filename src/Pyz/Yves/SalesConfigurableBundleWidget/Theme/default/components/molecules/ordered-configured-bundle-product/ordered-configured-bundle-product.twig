@@ -35,13 +35,15 @@
 
 {% block generalInformation %}
     <div class="{{ generalInformationClass }}">
-        {{ parent() }}
+        {% block name -%}
+            <h6 class="{{ config.name }}__item-title">{{ data.name }}</h6>
+        {%- endblock %}
+
+        {% block sku -%}
+            {{ parent() }}
+        {%- endblock %}
     </div>
 {% endblock %}
-
-{% block name -%}
-    <h6 class="{{ config.name }}__item-title">{{ data.name }}</h6>
-{%- endblock %}
 
 {% block priceInformation %}
     <div class="{{ config.name }}__container col col--sm-12 col--lg-7">
@@ -81,6 +83,14 @@
             {{ parent() }}
         {% endblock %}
     </div>
+
+    {% block stateWrapper %}
+        <div class="grid grid--right">
+            <div class="col spacing-y">
+                {{ parent() }}
+            </div>
+        </div>
+    {% endblock %}
 {% endblock %}
 
 {%- block totalTitle -%}{% endblock %}

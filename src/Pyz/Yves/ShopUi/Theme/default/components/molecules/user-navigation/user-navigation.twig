@@ -140,15 +140,23 @@
                 <span>{{ 'global.my-cart' | trans }}</span>
             </a>
         {% else %}
-            {% include molecule('cart-items-counter') with {
-                class: config.name ~ '__link ' ~ config.jsName ~ '__trigger',
+            {% embed molecule('cart-counter') with {
+                class: config.jsName ~ '__trigger',
                 data: {
                     quantity: cartQuantity,
                 },
                 attributes: {
                     'data-toggle-target': '.' ~ config.jsName ~ '__sub-nav-cart',
                 },
+                embed: {
+                    parentConfigName: config.name,
+                },
             } only %}
+                {% block content %}
+                    {% set linkClass = embed.parentConfigName ~ '__link' %}
+                    {{ parent() }}
+                {% endblock %}
+            {% endembed %}
             <div class="{{ config.name }}__sub-nav {{ config.name }}__sub-nav--pull-left spacing spacing--inner spacing--reset {{ config.jsName }}__sub-nav-cart">
                 {% widget 'MiniCartWidget' args [cartQuantityText] with {config: config} only %}
                     {% block body %}

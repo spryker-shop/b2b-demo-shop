@@ -90,9 +90,7 @@
 
                         {% block actions %}
                             <div class="{{ config.name }}__details col">
-                                <a class="{{ config.jsName }}__link-detail-page button button--expand button--hollow" href="{{ data.url }}">
-                                    {{ 'product.view' | trans }}
-                                </a>
+                                {{ parent() }}
                             </div>
                         {% endblock %}
                     </div>
@@ -100,4 +98,12 @@
             {% endblock %}
         </div>
     </div>
+{% endblock %}
+
+{% block ajaxAddToCartInner %}
+    {% set ajaxButtonExtraAttributes = {
+        'data-node-animator-wrapper-class-name': config.jsName,
+    } %}
+    {% set componentExtraClasses = config.name ~ '__action' %}
+    {{ parent() }}
 {% endblock %}

@@ -1,14 +1,14 @@
 {% extends template('widget') %}
 
-{% define data = {  
-    nodes: _widget.navigationTree.nodes
+{% define data = {
+    nodes: _widget.navigationTree.nodes,
 } %}
 
 {% block body %}
     {% include molecule('navigation-list') with {
         modifiers: ['secondary', 'footer', 'checkout', 'inline'],
         data: {
-            nodes: data.nodes
-        }
+            nodes: data.nodes,
+        },
     } only %}
 {% endblock %}

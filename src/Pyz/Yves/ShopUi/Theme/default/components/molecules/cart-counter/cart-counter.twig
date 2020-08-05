@@ -1,0 +1,31 @@
+{% extends molecule('cart-counter', '@SprykerShop:ShopUi') %}
+
+{% define data = {
+    label: 'global.my-cart' | trans,
+    iconName: 'cart',
+} %}
+
+{% block link %}
+    {% set labelClass = config.name ~ '__label' %}
+    {% set iconModifiers = ['cart'] %}
+
+    {% block generalContent %}
+        {% set labelClass = labelClass ~ ' ' ~ labelClass ~ '--mobile' %}
+
+        <span class="{{ config.name }}__content">
+            {% block icon %}
+                {{ parent() }}
+            {% endblock %}
+
+            {{ block('label') }}
+
+            {% block quantity %}
+                {{ parent() }}
+            {% endblock %}
+        </span>
+    {% endblock %}
+
+    {% block label %}
+        {{ parent() }}
+    {% endblock %}
+{% endblock %}
