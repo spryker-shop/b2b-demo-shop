@@ -68,6 +68,7 @@ sections:
         remove-transfer:
             command: "vendor/bin/console transfer:remove"
 
+
     generate:
         generate-transfers:
             command: "vendor/bin/console transfer:generate"
@@ -84,6 +85,12 @@ sections:
             stores: true
 
     cache:
+        router-cache-warmup-yves:
+            command: "vendor/bin/yves router:cache:warm-up"
+
+        router-cache-warmup-zed:
+            command: "vendor/bin/console router:cache:warm-up"
+
         twig-cache-warmup:
             command: "vendor/bin/console twig:cache:warmer"
 
@@ -238,6 +245,12 @@ sections:
             command: "vendor/bin/console data:import --config=data/import/local/full_US.yml"
             stores:
                 - US
+
+        update-product-labels:
+            command: "vendor/bin/console product-label:relations:update"
+            stores:
+                - US
+                - DE
 
     jenkins-up:
         jenkins-generate:
