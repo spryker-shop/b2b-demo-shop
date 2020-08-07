@@ -12,4 +12,14 @@ use SprykerShop\Yves\CustomerPage\CustomerPageConfig as SprykerCustomerPageConfi
 class CustomerPageConfig extends SprykerCustomerPageConfig
 {
     protected const IS_ORDER_HISTORY_SEARCH_ENABLED = true;
+
+    /**
+     * {@inheritDoc}
+     *
+     * @return bool
+     */
+    public function isDoubleOptInEnabled(): bool
+    {
+        return true;
+    }
 }

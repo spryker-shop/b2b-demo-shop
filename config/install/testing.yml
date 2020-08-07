@@ -2,7 +2,6 @@ env:
     APPLICATION_ENV: devtest
 
 sections:
-
     generate:
         generate-transfers:
             command: "vendor/bin/console transfer:generate"
@@ -13,6 +12,8 @@ sections:
         generate-ide-auto-completion:
             command: "vendor/bin/console dev:ide-auto-completion:generate"
 
+        rest-api-generate-documentation:
+            command: "vendor/bin/console rest-api:generate:documentation"
 
     cache:
         router-cache-warmup-yves:
@@ -27,9 +28,11 @@ sections:
         navigation-cache-warmup:
             command: "vendor/bin/console navigation:build-cache"
 
-        class-resolver-build:
-            command: "vendor/bin/console cache:class-resolver:build"
+        rest-request-validation-cache-warmup:
+            command: "vendor/bin/console rest-api:build-request-validation-cache"
 
+        resolvable-class-cache-warmup:
+            command: "vendor/bin/console cache:class-resolver:build"
 
     queue-flush:
         set-permissions:
@@ -78,7 +81,6 @@ sections:
         generate-entity-transfer:
             command: "vendor/bin/console transfer:entity:generate"
 
-
         init-database:
             command: "vendor/bin/console setup:init-db"
 
@@ -88,7 +90,6 @@ sections:
         setup-seach-create-source-map:
             command: "vendor/bin/console search:setup:source-map"
 
-
     setup-test:
         codeception-build:
             command: "vendor/bin/codecept build --ansi"
@@ -97,26 +98,8 @@ sections:
             command: "vendor/bin/console transfer:databuilder:generate"
 
     demodata:
-        import-commerce-setup:
-            command: "vendor/bin/console data:import --config=data/import/config/commerce_setup_import_config.yml"
-
-        import-catalog-setup:
-            command: "vendor/bin/console data:import --config=data/import/config/catalog_setup_import_config.yml"
-
-        import-special-product-types-setup:
-            command: "vendor/bin/console data:import --config=data/import/config/special_product_types_import_config.yml"
-
-        import-merchandising-setup:
-            command: "vendor/bin/console data:import --config=data/import/config/merchandising_import_config.yml"
-
-        import-content-management-setup:
-            command: "vendor/bin/console data:import --config=data/import/config/content_management_import_config.yml"
-
-        import-setup-import:
-            command: "vendor/bin/console data:import --config=data/import/config/b2b_setup_import_config.yml"
-
-        import-miscellaneous-setup:
-            command: "vendor/bin/console data:import --config=data/import/config/miscellaneous_import_config.yml"
+        import-eu-region-demodata:
+            command: "vendor/bin/console data:import --config=data/import/local/full_EU.yml"
 
         update-product-labels:
             command: "vendor/bin/console product-label:relations:update"
@@ -124,7 +107,6 @@ sections:
     queue:
         run-worker:
             command: "vendor/bin/console queue:worker:start --stop-when-empty"
-
 
     frontend:
         dependencies-install:

@@ -23,4 +23,14 @@ class CustomerConfig extends SprykerCustomerConfig
             'notes' => '/customer-note-gui/index/index',
         ] + parent::getCustomerDetailExternalBlocksUrls();
     }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @return bool
+     */
+    public function isDoubleOptInEnabled(): bool
+    {
+        return true;
+    }
 }

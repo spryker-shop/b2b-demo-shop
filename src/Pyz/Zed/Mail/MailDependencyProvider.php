@@ -13,6 +13,7 @@ use Spryker\Zed\AvailabilityNotification\Communication\Plugin\Mail\AvailabilityN
 use Spryker\Zed\AvailabilityNotification\Communication\Plugin\Mail\AvailabilityNotificationUnsubscribedMailTypePlugin;
 use Spryker\Zed\CompanyMailConnector\Communication\Plugin\Mail\CompanyStatusMailTypePlugin;
 use Spryker\Zed\CompanyUserInvitation\Communication\Plugin\Mail\CompanyUserInvitationMailTypePlugin;
+use Spryker\Zed\Customer\Communication\Plugin\Mail\CustomerRegistrationConfirmationMailTypePlugin;
 use Spryker\Zed\Customer\Communication\Plugin\Mail\CustomerRegistrationMailTypePlugin;
 use Spryker\Zed\Customer\Communication\Plugin\Mail\CustomerRestoredPasswordConfirmationMailTypePlugin;
 use Spryker\Zed\Customer\Communication\Plugin\Mail\CustomerRestorePasswordMailTypePlugin;
@@ -42,6 +43,7 @@ class MailDependencyProvider extends SprykerMailDependencyProvider
         $container->extend(static::MAIL_TYPE_COLLECTION, function (MailTypeCollectionAddInterface $mailCollection) {
             $mailCollection
                 ->add(new CustomerRegistrationMailTypePlugin())
+                ->add(new CustomerRegistrationConfirmationMailTypePlugin())
                 ->add(new CustomerRestorePasswordMailTypePlugin())
                 ->add(new CustomerRestoredPasswordConfirmationMailTypePlugin())
                 ->add(new NewsletterSubscribedMailTypePlugin())

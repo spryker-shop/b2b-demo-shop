@@ -27,6 +27,7 @@ use SprykerShop\Yves\CmsBlockWidget\Plugin\Twig\CmsBlockTwigPlugin;
 use SprykerShop\Yves\CmsPage\Plugin\Twig\CmsTwigPlugin;
 use SprykerShop\Yves\ContentBannerWidget\Plugin\Twig\ContentBannerTwigPlugin;
 use SprykerShop\Yves\ContentFileWidget\Plugin\Twig\ContentFileListTwigPlugin;
+use SprykerShop\Yves\ContentNavigationWidget\Plugin\Twig\ContentNavigationTwigPlugin;
 use SprykerShop\Yves\ContentProductSetWidget\Plugin\Twig\ContentProductSetTwigPlugin;
 use SprykerShop\Yves\ContentProductWidget\Plugin\Twig\ContentProductAbstractListTwigPlugin;
 use SprykerShop\Yves\CustomerPage\Plugin\Twig\CustomerTwigPlugin;
@@ -77,6 +78,7 @@ class TwigDependencyProvider extends SprykerTwigDependencyProvider
             new ContentProductSetTwigPlugin(),
             new ContentFileListTwigPlugin(),
             new ShopCmsSlotTwigPlugin(),
+            new ContentNavigationTwigPlugin(),
         ];
     }
 
@@ -85,11 +87,16 @@ class TwigDependencyProvider extends SprykerTwigDependencyProvider
      */
     protected function getTwigLoaderPlugins(): array
     {
-        return [
+        $plugins = [
             new FilesystemTwigLoaderPlugin(),
             new FormFilesystemTwigLoaderPlugin(),
             new ShopApplicationFormTwigLoaderPlugin(),
-            new WebProfilerTwigLoaderPlugin(),
         ];
+
+        if (class_exists(WebProfilerTwigLoaderPlugin::class)) {
+            $plugins[] = new WebProfilerTwigLoaderPlugin();
+        }
+
+        return $plugins;
     }
 }

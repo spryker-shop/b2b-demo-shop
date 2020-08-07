@@ -1,0 +1,42 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'navigation-item',
+} %}
+
+{% define data = {
+    nodes: required,
+    title: '',
+    toggleClass: '',
+    template: 'navigation-list',
+    templateModifiers: ['secondary', 'footer'],
+} %}
+
+{% block body %}
+    {% set toggleClass = data.toggleClass %}
+    {% set triggerClass = toggleClass ? toggleClass ~ '__trigger' %}
+    {% set targetClass = toggleClass ? toggleClass ~ '__target is-hidden-sm-only' %}
+    {% set targetAttribute = toggleClass ? 'data-toggle-target=.' ~ targetClass %}
+
+    {% if data.title %}
+        <h5 class="{{ component.renderClass('title', modifiers) }} title--footer {{ triggerClass }}" {{ targetAttribute }}>
+            {{ data.title }}
+            <span class="icon icon--toggler-cross icon--toggler-cross-thin toggler-accordion__icon is-hidden-md-xxl"></span>
+        </h5>
+    {% endif %}
+
+    {% if toggleClass %}
+        <div class="{{ targetClass }}">
+            {% block navigationTemplate %}
+                {% include molecule(data.template) with {
+                    modifiers: data.templateModifiers,
+                    data: {
+                        nodes: data.nodes,
+                    },
+                } only %}
+            {% endblock %}
+        </div>
+    {% else %}
+        {{ block('navigationTemplate') }}
+    {% endif %}
+{% endblock %}
