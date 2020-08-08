@@ -410,7 +410,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
      *
      * @return \Spryker\Shared\ApplicationExtension\Dependency\Plugin\ApplicationPluginInterface[]
      */
-    protected function getApplicationPlugins(Container $container): array
+    public function getApplicationPlugins(Container $container): array
     {
         $applicationPlugins = parent::getApplicationPlugins($container);
         $applicationPlugins[] = new PropelApplicationPlugin();
@@ -424,7 +424,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
      *
      * @return \Spryker\Zed\Monitoring\Communication\Plugin\Console\MonitoringConsolePlugin[]
      */
-    public function getEventSubscriber(Container $container)
+    public function getEventSubscriber(Container $container): array
     {
         return [
             new MonitoringConsolePlugin(),

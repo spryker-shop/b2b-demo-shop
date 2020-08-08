@@ -659,8 +659,10 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
      *
      * @return \Pyz\Zed\DataImport\Business\Model\Navigation\NavigationKeyToIdNavigationStep
      */
-    public function createNavigationKeyToIdNavigationStep($source = NavigationKeyToIdNavigationStep::KEY_SOURCE, $target = NavigationKeyToIdNavigationStep::KEY_TARGET)
-    {
+    public function createNavigationKeyToIdNavigationStep(
+        $source = NavigationKeyToIdNavigationStep::KEY_SOURCE,
+        $target = NavigationKeyToIdNavigationStep::KEY_TARGET
+    ) {
         return new NavigationKeyToIdNavigationStep($source, $target);
     }
 
@@ -1101,8 +1103,9 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
      *
      * @return \Pyz\Zed\DataImport\Business\Model\DataImporterDataSetWriterAwareConditional
      */
-    public function getConditionalCsvDataImporterWriterAwareFromConfig(DataImporterConfigurationTransfer $dataImporterConfigurationTransfer): DataImporterDataSetWriterAwareInterface
-    {
+    public function getConditionalCsvDataImporterWriterAwareFromConfig(
+        DataImporterConfigurationTransfer $dataImporterConfigurationTransfer
+    ): DataImporterDataSetWriterAwareInterface {
         $csvReader = $this->createCsvReaderFromConfig($dataImporterConfigurationTransfer->getReaderConfiguration());
 
         return $this->createDataImporterWriterAwareConditional($dataImporterConfigurationTransfer->getImportType(), $csvReader);
@@ -1384,8 +1387,9 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
      *
      * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface
      */
-    public function createCombinedProductAbstractStoreImporter(DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer): DataImporterInterface
-    {
+    public function createCombinedProductAbstractStoreImporter(
+        DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer
+    ): DataImporterInterface {
         $dataImporter = $this->getConditionalCsvDataImporterWriterAwareFromConfig(
             $this->getConfig()->buildImporterConfigurationByDataImportConfigAction($dataImportConfigurationActionTransfer)
         );

@@ -21,7 +21,7 @@ class QueueConfig extends SprykerQueueConfig
     /**
      * @return array
      */
-    protected function getQueueReceiverOptions()
+    protected function getQueueReceiverOptions(): array
     {
         return [
             QueueConstants::QUEUE_DEFAULT_RECEIVER => [
@@ -39,7 +39,7 @@ class QueueConfig extends SprykerQueueConfig
     /**
      * @return array
      */
-    protected function getMessageCheckOptions()
+    protected function getMessageCheckOptions(): array
     {
         return [
             QueueConstants::QUEUE_WORKER_MESSAGE_CHECK_OPTION => [
@@ -51,7 +51,7 @@ class QueueConfig extends SprykerQueueConfig
     /**
      * @return \Generated\Shared\Transfer\RabbitMqConsumerOptionTransfer
      */
-    protected function getRabbitMqQueueMessageCheckOptions()
+    protected function getRabbitMqQueueMessageCheckOptions(): RabbitMqConsumerOptionTransfer
     {
         $queueOptionTransfer = $this->getRabbitMqQueueConsumerOptions();
         $queueOptionTransfer->setRequeueOnReject(true);
@@ -62,7 +62,7 @@ class QueueConfig extends SprykerQueueConfig
     /**
      * @return \Generated\Shared\Transfer\RabbitMqConsumerOptionTransfer
      */
-    protected function getRabbitMqQueueConsumerOptions()
+    protected function getRabbitMqQueueConsumerOptions(): RabbitMqConsumerOptionTransfer
     {
         $queueOptionTransfer = new RabbitMqConsumerOptionTransfer();
         $queueOptionTransfer->setConsumerExclusive(false);

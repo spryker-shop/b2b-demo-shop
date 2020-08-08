@@ -42,7 +42,7 @@ class SalesConfig extends SprykerSalesConfig
      *    'discount' => '/discount/sales/index',
      * ]
      *
-     * @return array
+     * @return string[]
      */
     public function getSalesDetailExternalBlocksUrls()
     {

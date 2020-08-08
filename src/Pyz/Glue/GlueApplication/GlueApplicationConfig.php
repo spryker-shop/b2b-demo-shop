@@ -13,7 +13,7 @@ use Spryker\Glue\GlueApplication\GlueApplicationConfig as SprykerGlueApplication
 class GlueApplicationConfig extends SprykerGlueApplicationConfig
 {
     /**
-     * @return array
+     * @return string[]
      */
     public function getCorsAllowedHeaders(): array
     {
