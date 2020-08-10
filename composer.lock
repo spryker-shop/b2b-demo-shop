@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bf198d498c16b24542581b3ef67cb8ff",
+    "content-hash": "9d7ec2ac110ce7646b4fd79bf54f70b3",
     "packages": [
         {
             "name": "brick/math",
@@ -15282,6 +15282,52 @@
             "time": "2020-07-24T04:44:34+00:00"
         },
         {
+            "name": "spryker/cms-content-widget-content-connector",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/cms-content-widget-content-connector.git",
+                "reference": "98aa1f5dd8498025e51ec0908c42a87930d1396f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/cms-content-widget-content-connector/zipball/98aa1f5dd8498025e51ec0908c42a87930d1396f",
+                "reference": "98aa1f5dd8498025e51ec0908c42a87930d1396f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/content": "^2.2.0",
+                "spryker/kernel": "^3.33.0"
+            },
+            "require-dev": {
+                "spryker/cms-content-widget": "*",
+                "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/cms-content-widget": "Use this module when you want to use the Cms Content Widget."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CmsContentWidgetContentConnector module",
+            "time": "2020-07-02T16:48:14+00:00"
+        },
+        {
             "name": "spryker/cms-content-widget-product-connector",
             "version": "1.1.1",
             "source": {
@@ -15751,6 +15797,142 @@
             ],
             "description": "CmsPageSearch module",
             "time": "2020-08-07T10:31:31+00:00"
+        },
+        {
+            "name": "spryker/cms-pages-content-banners-resource-relationship",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/cms-pages-content-banners-resource-relationship.git",
+                "reference": "d19212f28225bc0642ab6fbe4d45ba7ce617763b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/cms-pages-content-banners-resource-relationship/zipball/d19212f28225bc0642ab6fbe4d45ba7ce617763b",
+                "reference": "d19212f28225bc0642ab6fbe4d45ba7ce617763b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/cms-storage": "^2.4.0",
+                "spryker/content-banners-rest-api": "^2.2.0",
+                "spryker/glue-application": "^1.8.0",
+                "spryker/glue-application-extension": "^1.0.0",
+                "spryker/kernel": "^3.33.0",
+                "spryker/store": "^1.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CmsPagesContentBannersResourceRelationship module",
+            "time": "2020-07-03T12:16:11+00:00"
+        },
+        {
+            "name": "spryker/cms-pages-content-product-abstract-lists-resource-relationship",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/cms-pages-content-product-abstract-lists-resource-relationship.git",
+                "reference": "de7621d4670db91d6e29a5ccf5be8d62e4d4059a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/cms-pages-content-product-abstract-lists-resource-relationship/zipball/de7621d4670db91d6e29a5ccf5be8d62e4d4059a",
+                "reference": "de7621d4670db91d6e29a5ccf5be8d62e4d4059a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/cms-storage": "^2.4.0",
+                "spryker/content-product-abstract-lists-rest-api": "^1.2.0",
+                "spryker/glue-application": "^1.8.0",
+                "spryker/glue-application-extension": "^1.0.0",
+                "spryker/kernel": "^3.33.0",
+                "spryker/store": "^1.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CmsPagesContentProductAbstractListsResourceRelationship module",
+            "time": "2020-07-03T12:16:11+00:00"
+        },
+        {
+            "name": "spryker/cms-pages-rest-api",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/cms-pages-rest-api.git",
+                "reference": "2f14b726ea875754bea6d6ed403713ddea0dde0f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/cms-pages-rest-api/zipball/2f14b726ea875754bea6d6ed403713ddea0dde0f",
+                "reference": "2f14b726ea875754bea6d6ed403713ddea0dde0f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/cms-page-search": "^2.2.0",
+                "spryker/cms-storage": "^2.4.0",
+                "spryker/glue-application": "^1.0.0",
+                "spryker/glue-application-extension": "^1.0.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/store": "^1.0.0",
+                "spryker/symfony": "^3.0.0",
+                "spryker/synchronization-behavior": "^1.0.0",
+                "spryker/urls-rest-api-extension": "^1.0.0",
+                "spryker/uuid-behavior": "^1.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CmsPagesRestApi module",
+            "time": "2020-07-03T12:16:11+00:00"
         },
         {
             "name": "spryker/cms-slot",
@@ -45746,16 +45928,16 @@
         },
         {
             "name": "nikic/php-parser",
-            "version": "v4.7.0",
+            "version": "v4.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "21dce06dfbf0365c6a7cc8fdbdc995926c6a9300"
+                "reference": "8c58eb4cd4f3883f82611abeac2efbc3dbed787e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/21dce06dfbf0365c6a7cc8fdbdc995926c6a9300",
-                "reference": "21dce06dfbf0365c6a7cc8fdbdc995926c6a9300",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/8c58eb4cd4f3883f82611abeac2efbc3dbed787e",
+                "reference": "8c58eb4cd4f3883f82611abeac2efbc3dbed787e",
                 "shasum": ""
             },
             "require": {
@@ -45763,8 +45945,8 @@
                 "php": ">=7.0"
             },
             "require-dev": {
-                "ircmaxell/php-yacc": "0.0.5",
-                "phpunit/phpunit": "^6.5 || ^7.0 || ^8.0"
+                "ircmaxell/php-yacc": "^0.0.6",
+                "phpunit/phpunit": "^6.5 || ^7.0 || ^8.0 || ^9.0"
             },
             "bin": [
                 "bin/php-parse"
@@ -45772,7 +45954,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.7-dev"
+                    "dev-master": "4.8-dev"
                 }
             },
             "autoload": {
@@ -45794,7 +45976,7 @@
                 "parser",
                 "php"
             ],
-            "time": "2020-07-25T13:18:53+00:00"
+            "time": "2020-08-09T10:23:20+00:00"
         },
         {
             "name": "pdepend/pdepend",
@@ -50329,6 +50511,5 @@
     "platform-dev": [],
     "platform-overrides": {
         "php": "7.2.15"
-    },
-    "plugin-api-version": "1.1.0"
+    }
 }
