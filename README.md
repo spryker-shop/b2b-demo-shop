@@ -5,7 +5,7 @@
 
 ## Vagrant installation
 
-To install the B2C Demo Shop in Vagrant on your machine, follow [Developer Getting Started Guide](https://documentation.spryker.com/docs/dev-getting-started).
+To install the B2B Demo Shop in Vagrant on your machine, follow [Developer Getting Started Guide](https://documentation.spryker.com/docs/dev-getting-started).
 
 __NOTE: instead of `vagrant up` run `VM_PROJECT=suite SPRYKER_REPOSITORY="git@github.com:spryker-shop/b2b-demo-shop.git" vagrant up`__.
 
