@@ -35,7 +35,7 @@ Mac users would increase vCPU and RAM dedicated for docker:
 
 ```bash
 mkdir b2b-demo-shop && cd b2b-demo-shop
-git clone https://github.com/spryker/b2b-demo-shop-internal.git ./
+git clone https://github.com/spryker-shop/b2b-demo-shop.git ./
 ```
 
 ```bash
