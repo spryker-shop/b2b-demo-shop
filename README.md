@@ -36,7 +36,7 @@ Recommended system requirements for MacOS:
 Run the commands:
 ```bash
 mkdir spryker-b2b && cd spryker-b2b
-git clone https://github.com/spryker/b2b-demo-shop-internal.git ./
+git clone https://github.com/spryker-shop/b2b-demo-shop.git ./
 git clone git@github.com:spryker/docker-sdk.git docker
 ```
 
@@ -179,4 +179,3 @@ docker rm -f {container_hash}
 `Error response from daemon: OCI runtime create failed: .... \\\"no such file or directory\\\"\"": unknown.`
 
 Repeat the failed command.
-
