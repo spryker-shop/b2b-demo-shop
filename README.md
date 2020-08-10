@@ -4,15 +4,12 @@
 [![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%207.2-8892BF.svg)](https://php.net/)
 
 ## Vagrant installation
-In order to install the B2B Demo Shop on your machine, you can follow the instructions described in the link below:
 
-* [Installation Guide](http://documentation.spryker.com/content/dev-getting-started.htm)
+To install the B2C Demo Shop in Vagrant on your machine, follow [Developer Getting Started Guide](https://documentation.spryker.com/docs/dev-getting-started).
 
 __NOTE: instead of `vagrant up` run `VM_PROJECT=suite SPRYKER_REPOSITORY="git@github.com:spryker-shop/b2b-demo-shop.git" vagrant up`__.
 
-If you encounter any issues during or after installation, you can first check our Troubleshooting article:
-
-* [Troubleshooting](http://documentation.spryker.com/content/installation/troubleshooting.htm)
+For common installation issues, check [Troubleshooting](https://documentation.spryker.com/docs/troubleshooting).
 
 ## Docker installation
 
