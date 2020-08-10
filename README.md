@@ -97,14 +97,12 @@ docker/sdk up --build --assets --data
 
 #### III. Code reload.
 ```bash
-docker/sdk trouble
-rm -rf ./docker && docker/sdk boot -s deploy.dev.yml
+docker/sdk boot -s deploy.dev.yml
 docker/sdk up --build --assets
 ```
 
 #### IV. Full data reload.
 ```bash
-docker/sdk trouble
-rm -rf ./docker && docker/sdk boot -s deploy.dev.yml
+docker/sdk boot -s deploy.dev.yml
 docker/sdk up --build --assets --data
 ```
