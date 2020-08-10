@@ -3,7 +3,7 @@
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/spryker-shop/b2b-demo-shop/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/spryker-shop/b2b-demo-shop/?branch=master)
 [![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%207.2-8892BF.svg)](https://php.net/)
 
-## Installation - Devvm
+## Vagrant installation
 In order to install the B2B Demo Shop on your machine, you can follow the instructions described in the link below:
 
 * [Installation Guide](http://documentation.spryker.com/content/dev-getting-started.htm)
@@ -14,7 +14,7 @@ If you encounter any issues during or after installation, you can first check ou
 
 * [Troubleshooting](http://documentation.spryker.com/content/installation/troubleshooting.htm)
 
-## Installation - Docker
+## Docker installation
 
 For troubleshooting, please, refer to [Troubleshooting](https://documentation.spryker.com/docs/spryker-in-docker-troubleshooting)
 
@@ -39,44 +39,8 @@ git clone https://github.com/spryker/b2b-demo-shop-internal.git ./
 ```
 
 ```bash
-git submodule update --init --force docker
-echo "127.0.0.1 zed.de.spryker.com yves.de.spryker.com glue.de.spryker.com zed.at.spryker.com yves.at.spryker.com glue.at.spryker.com zed.us.spryker.com yves.us.spryker.com glue.us.spryker.com mail.spryker.com scheduler.spryker.com queue.spryker.com" | sudo tee -a /etc/hosts```
-
-### Developer environment
-
-#### I. The very first run (after clone)
-```bash
-docker/sdk boot deploy.dev.yml
-docker/sdk up
-```
-
-#### II. Git checkout
-```bash
-git checkout {your_branch_name}
-git submodule update --init --force docker && docker/sdk boot -s deploy.dev.yml
-
-docker/sdk up --build --assets --data
-```
-! `up` command arguments are optional !
-
-- `--build` To get composer be updated, transfer be generated, etc. Can be skipped if no related changes.
-- `--assets` To get assets be built. Can be skipped.
-- `--data` To get new demo data and infrastructure. Can be skipped.
-
-#### III. Code reload.
-```bash
-docker/sdk trouble
-rm -rf ./docker && git submodule update --init --force docker && docker/sdk boot -s deploy.dev.yml
-
-docker/sdk up --build --assets
-```
-
-#### III. Full data reload.
-```bash
-docker/sdk trouble
-rm -rf ./docker && git submodule update --init --force docker && docker/sdk boot -s deploy.dev.yml
-
-docker/sdk up --build --assets --data
+git clone git@github.com:spryker/docker-sdk.git docker
+echo "127.0.0.1 zed.de.spryker.com yves.de.spryker.com glue.de.spryker.com zed.at.spryker.com yves.at.spryker.com glue.at.spryker.com zed.us.spryker.com yves.us.spryker.com glue.us.spryker.com mail.spryker.com scheduler.spryker.com queue.spryker.com" | sudo tee -a /etc/hosts
 ```
 
 ### Production-like environment
@@ -90,8 +54,7 @@ docker/sdk up
 #### II. Git checkout with assets and data
 ```bash
 git checkout {your_branch_name}
-git submodule update --init --force docker && docker/sdk boot -s
-
+docker/sdk boot -s
 docker/sdk up --assets --data
 ```
 
@@ -103,14 +66,47 @@ docker/sdk up --assets --data
 #### III. Git checkout light
 ```bash
 git checkout {your_branch_name}
-git submodule update --init --force docker && docker/sdk boot -s
-
+docker/sdk boot -s
 docker/sdk up
 ```
 
 #### IV. Full data reload.
 ```bash
 docker/sdk clean-data && docker/sdk up && docker/sdk console q:w:s -v -s
+```
+
+### Developer environment
+
+#### I. The very first run (after clone)
+```bash
+docker/sdk boot deploy.dev.yml
+docker/sdk up
+```
+
+#### II. Git checkout
+```bash
+git checkout {your_branch_name} && docker/sdk boot -s deploy.dev.yml
+
+docker/sdk up --build --assets --data
+```
+! `up` command arguments are optional !
+
+- `--build` To get composer be updated, transfer be generated, etc. Can be skipped if no related changes.
+- `--assets` To get assets be built. Can be skipped.
+- `--data` To get new demo data and infrastructure. Can be skipped.
+
+#### III. Code reload.
+```bash
+docker/sdk trouble
+rm -rf ./docker && docker/sdk boot -s deploy.dev.yml
+docker/sdk up --build --assets
+```
+
+#### IV. Full data reload.
+```bash
+docker/sdk trouble
+rm -rf ./docker && docker/sdk boot -s deploy.dev.yml
+docker/sdk up --build --assets --data
 ```
 
 
