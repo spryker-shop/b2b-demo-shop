@@ -8,6 +8,7 @@
 namespace Pyz\Zed\PriceProductMerchantRelationshipStorage;
 
 use Pyz\Zed\Synchronization\SynchronizationConfig;
+use Spryker\Shared\Publisher\PublisherConfig;
 use Spryker\Zed\PriceProductMerchantRelationshipStorage\PriceProductMerchantRelationshipStorageConfig as SprykerPriceProductMerchantRelationshipStorageConfig;
 
 /**
@@ -29,5 +30,29 @@ class PriceProductMerchantRelationshipStorageConfig extends SprykerPriceProductM
     public function getPriceProductAbstractMerchantRelationSynchronizationPoolName(): ?string
     {
         return SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getMerchantRelationEventQueueName(): ?string
+    {
+        return PublisherConfig::PUBLISH_QUEUE;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getPriceProductConcreteMerchantRelationEventQueueName(): ?string
+    {
+        return PublisherConfig::PUBLISH_QUEUE;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getPriceProductAbstractMerchantRelationEventQueueName(): ?string
+    {
+        return PublisherConfig::PUBLISH_QUEUE;
     }
 }

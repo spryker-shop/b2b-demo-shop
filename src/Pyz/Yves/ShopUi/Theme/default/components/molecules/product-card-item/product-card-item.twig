@@ -211,7 +211,7 @@
                                             {% block totalPrice %}{% endblock %}
 
                                             {% block state %}
-                                                {% set itemState = data.listItem.state %}
+                                                {% set itemState = data.listItem.state is defined ? data.listItem.state %}
 
                                                 {% if itemState %}
                                                     {% set state = itemState.name | replace({' ': '-'}) | lower %}

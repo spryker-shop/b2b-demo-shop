@@ -31,7 +31,7 @@
                                     <span class="{{ config.name }}__quantity col col--sm-12">
                                         x {{ item.quantity }}
                                         {% block state %}
-                                            {% set itemState = item.state %}
+                                            {% set itemState = item.state is defined ? item.state %}
 
                                             {% if itemState %}
                                                 {% set state = itemState.name | replace({' ': '-'}) | lower %}
