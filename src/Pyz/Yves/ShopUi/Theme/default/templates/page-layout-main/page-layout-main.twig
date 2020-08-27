@@ -11,7 +11,7 @@
     {% block notifications %}
         {% include organism('notification-area') only %}
     {% endblock %}
-    <div class="page-layout">
+    <div class="page-layout page-layout--preload">
         {% widget 'AgentControlBarWidget' only %}{% endwidget %}
 
         {% block sidebar %}
@@ -221,6 +221,13 @@
         {% include molecule('viewport-intersection-observer') only %}
 
         {% include molecule('node-animator') only %}
+
+        {% include molecule('window-load-class-remover') with {
+            attributes: {
+                'target-class-name': 'page-layout',
+                'trigger-class-name': 'page-layout--preload',
+            },
+        } only %}
     {% endblock %}
 
     {% block icons %}

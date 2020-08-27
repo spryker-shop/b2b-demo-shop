@@ -1,0 +1,11 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'window-load-class-remover',
+    tag: 'window-load-class-remover',
+} %}
+
+{% define attributes = {
+    'target-class-name': required,
+    'trigger-class-name': required,
+} %}
