@@ -1,32 +1,16 @@
 <?php
 
 /**
- * Copyright © 2016-present Spryker Systems GmbH. All rights reserved.
- * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
+ * This file is part of the Spryker Commerce OS.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
 namespace Pyz\Zed\CheckoutRestApi\Business;
 
-use Pyz\Zed\CheckoutRestApi\Business\Checkout\CheckoutDataWriterInterface;
-use Spryker\Zed\CheckoutRestApi\Business\CheckoutRestApiBusinessFactory as SprykerCheckoutRestApiBusinessFactory;
-use Spryker\Zed\CheckoutRestApi\Business\Checkout\Address\AddressReader;
-use Spryker\Zed\CheckoutRestApi\Business\Checkout\Address\AddressReaderInterface;
 use Pyz\Zed\CheckoutRestApi\Business\Checkout\CheckoutDataWriter;
-use Spryker\Zed\CheckoutRestApi\Business\Checkout\CheckoutDataReaderInterface;
-use Spryker\Zed\CheckoutRestApi\Business\Checkout\PlaceOrderProcessor;
-use Spryker\Zed\CheckoutRestApi\Business\Checkout\PlaceOrderProcessorInterface;
-use Spryker\Zed\CheckoutRestApi\Business\Checkout\Quote\QuoteReader;
-use Spryker\Zed\CheckoutRestApi\Business\Checkout\Quote\QuoteReaderInterface;
+use Pyz\Zed\CheckoutRestApi\Business\Checkout\CheckoutDataWriterInterface;
 use Pyz\Zed\CheckoutRestApi\CheckoutRestApiDependencyProvider;
-use Spryker\Zed\CheckoutRestApi\Dependency\Facade\CheckoutRestApiToCalculationFacadeInterface;
-use Spryker\Zed\CheckoutRestApi\Dependency\Facade\CheckoutRestApiToCartFacadeInterface;
-use Spryker\Zed\CheckoutRestApi\Dependency\Facade\CheckoutRestApiToCartsRestApiFacadeInterface;
-use Spryker\Zed\CheckoutRestApi\Dependency\Facade\CheckoutRestApiToCheckoutFacadeInterface;
-use Spryker\Zed\CheckoutRestApi\Dependency\Facade\CheckoutRestApiToCustomerFacadeInterface;
-use Spryker\Zed\CheckoutRestApi\Dependency\Facade\CheckoutRestApiToPaymentFacadeInterface;
-use Spryker\Zed\CheckoutRestApi\Dependency\Facade\CheckoutRestApiToQuoteFacadeInterface;
-use Spryker\Zed\CheckoutRestApi\Dependency\Facade\CheckoutRestApiToShipmentFacadeInterface;
-use Spryker\Zed\Kernel\Business\AbstractBusinessFactory;
+use Spryker\Zed\CheckoutRestApi\Business\CheckoutRestApiBusinessFactory as SprykerCheckoutRestApiBusinessFactory;
 use Spryker\Zed\Quote\Business\QuoteFacadeInterface;
 
 /**
@@ -54,5 +38,4 @@ class CheckoutRestApiBusinessFactory extends SprykerCheckoutRestApiBusinessFacto
     {
         return $this->getProvidedDependency(CheckoutRestApiDependencyProvider::FACADE_QUOTE_BASE);
     }
-
 }

@@ -1,32 +1,20 @@
 <?php
 
 /**
- * Copyright © 2016-present Spryker Systems GmbH. All rights reserved.
- * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
+ * This file is part of the Spryker Commerce OS.
+ * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
 namespace Pyz\Zed\CheckoutRestApi\Business\Checkout;
 
-use Generated\Shared\Transfer\RestCheckoutUpdateDataTransfer;
-use Generated\Shared\Transfer\RestCheckoutUpdateResponseTransfer;
-use Spryker\Zed\CheckoutRestApi\Business\Checkout\CheckoutDataReader as SprykerCheckoutDataReader;
-use Generated\Shared\Transfer\PaymentMethodsTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
-use Generated\Shared\Transfer\RestCheckoutDataResponseTransfer;
-use Generated\Shared\Transfer\RestCheckoutDataTransfer;
 use Generated\Shared\Transfer\RestCheckoutErrorTransfer;
 use Generated\Shared\Transfer\RestCheckoutRequestAttributesTransfer;
-use Generated\Shared\Transfer\ShipmentMethodsTransfer;
+use Generated\Shared\Transfer\RestCheckoutUpdateResponseTransfer;
 use Generated\Shared\Transfer\ShipmentTransfer;
-use Spryker\Client\PersistentCart\PersistentCartClient;
 use Spryker\Shared\CheckoutRestApi\CheckoutRestApiConfig;
-use Spryker\Zed\CheckoutRestApi\Business\Checkout\Address\AddressReaderInterface;
-use Spryker\Zed\CheckoutRestApi\Business\Checkout\CheckoutDataReaderInterface;
 use Spryker\Zed\CheckoutRestApi\Business\Checkout\Quote\QuoteReaderInterface;
 use Spryker\Zed\CheckoutRestApi\Dependency\Facade\CheckoutRestApiToCalculationFacadeInterface;
-use Spryker\Zed\CheckoutRestApi\Dependency\Facade\CheckoutRestApiToPaymentFacadeInterface;
-use Spryker\Zed\CheckoutRestApi\Dependency\Facade\CheckoutRestApiToShipmentFacadeInterface;
-use Spryker\Zed\Quote\Business\QuoteFacade;
 use Spryker\Zed\Quote\Business\QuoteFacadeInterface;
 
 class CheckoutDataWriter implements CheckoutDataWriterInterface
