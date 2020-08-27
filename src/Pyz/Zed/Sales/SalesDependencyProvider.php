@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\Sales;
 
+use Pyz\Zed\Sales\Communication\Plugin\PointOfContactOrderExpanderPreSavePlugin;
 use Spryker\Zed\CommentSalesConnector\Communication\Plugin\Sales\CommentThreadAttachedCommentOrderPostSavePlugin;
 use Spryker\Zed\CommentSalesConnector\Communication\Plugin\Sales\CommentThreadOrderExpanderPlugin;
 use Spryker\Zed\Customer\Communication\Plugin\Sales\CustomerOrderHydratePlugin;
@@ -126,5 +127,18 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
         return [
             new UniqueOrderBundleItemsExpanderPlugin(),
         ];
+    }
+
+    /**
+     * @return \Spryker\Zed\Sales\Dependency\Plugin\OrderExpanderPreSavePluginInterface[]
+     */
+    protected function getOrderExpanderPreSavePlugins()
+    {
+        return array_merge(
+            parent::getOrderExpanderPreSavePlugins(),
+            [
+                new PointOfContactOrderExpanderPreSavePlugin(),
+            ]
+        );
     }
 }

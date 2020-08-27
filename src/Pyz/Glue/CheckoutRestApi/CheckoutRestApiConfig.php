@@ -11,6 +11,10 @@ use Spryker\Glue\CheckoutRestApi\CheckoutRestApiConfig as SprykerCheckoutRestApi
 
 class CheckoutRestApiConfig extends SprykerCheckoutRestApiConfig
 {
+    public const RESOURCE_CHECKOUT_UPDATE = 'checkout-update';
+    public const CONTROLLER_CHECKOUT_UPDATE = 'checkout-update-resource';
+    public const ACTION_CHECKOUT_UPDATE_POST = 'post';
+
     protected const PAYMENT_METHOD_REQUIRED_FIELDS = [
         'dummyPaymentInvoice' => ['dummyPaymentInvoice.dateOfBirth'],
         'dummyPaymentCreditCard' => [

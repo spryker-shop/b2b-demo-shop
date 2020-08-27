@@ -7,6 +7,7 @@
 
 namespace Pyz\Glue\GlueApplication;
 
+use Pyz\Glue\CheckoutRestApi\Plugin\GlueApplication\CheckoutUpdateResourcePlugin;
 use Pyz\Glue\NavigationsRestApi\NavigationsRestApiConfig;
 use Spryker\Glue\AlternativeProductsRestApi\Plugin\GlueApplication\AbstractAlternativeProductsResourceRoutePlugin;
 use Spryker\Glue\AlternativeProductsRestApi\Plugin\GlueApplication\ConcreteAlternativeProductsResourceRoutePlugin;
@@ -168,6 +169,7 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new ProductLabelsResourceRoutePlugin(),
             new OrdersResourceRoutePlugin(),
             new CheckoutDataResourcePlugin(),
+            new CheckoutUpdateResourcePlugin(),
             new CheckoutResourcePlugin(),
             new NavigationsResourceRoutePlugin(),
             new CompanyBusinessUnitsResourcePlugin(),

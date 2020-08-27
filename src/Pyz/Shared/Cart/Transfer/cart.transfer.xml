@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<transfers xmlns="spryker:transfer-01"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="spryker:transfer-01 http://static.spryker.com/transfer-01.xsd">
+
+    <transfer name="Quote">
+        <property name="pointOfContact" type="PointOfContact"/>
+    </transfer>
+
+    <transfer name="PointOfContact">
+        <property name="pointOfContactId" type="string"/>
+        <property name="department" type="string"/>
+        <property name="firstName" type="string"/>
+        <property name="lastName" type="string"/>
+        <property name="phone" type="string"/>
+        <property name="deliveryTime" type="string"/>
+        <property name="comment" type="string"/>
+    </transfer>
+
+</transfers>
+
