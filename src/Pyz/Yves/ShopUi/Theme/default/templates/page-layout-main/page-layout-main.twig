@@ -65,6 +65,12 @@
                                 icon: 'history'
                             },
                             {
+                                name: 'returns',
+                                url: path('return/list'),
+                                label: 'return_page.default_title' | trans,
+                                icon: 'return-arrow'
+                            },
+                            {
                                 name: 'newsletter',
                                 url: path('customer/newsletter'),
                                 label: 'customer.account.newsletter' | trans,
@@ -81,8 +87,14 @@
                                 url: path('multi-cart'),
                                 label: 'page.multi_cart.shopping_cart.list.title' | trans,
                                 icon: 'cart'
-                            }
-                        ]
+                            },
+                            {
+                                name: 'quote-request',
+                                url: path('quote-request'),
+                                label: 'quote_request_widget.request_for_quote.list.title' | trans,
+                                icon: 'message',
+                            },
+                        ],
                     }
                 } only %}
 
