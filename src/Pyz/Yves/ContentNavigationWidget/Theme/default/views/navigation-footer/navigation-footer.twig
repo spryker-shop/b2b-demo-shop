@@ -36,13 +36,13 @@
                 toggleClass: targetClass,
             },
         } only %}
-    {% endblock %}
 
-    {% include molecule('toggler-accordion') with {
-        attributes: {
-            'wrap-class-name': targetClass,
-            'trigger-class-name': triggerClass,
-            'class-to-toggle': 'is-hidden-sm-only',
-        },
-    } only %}
+        {% include molecule('toggler-accordion') with {
+            attributes: {
+                'wrap-class-name': targetClass,
+                'trigger-class-name': triggerClass,
+                'class-to-toggle': 'is-hidden-sm-only',
+            },
+        } only %}
+    {% endblock %}
 {% endblock %}
