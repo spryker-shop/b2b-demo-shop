@@ -11,6 +11,7 @@
 
     <transfer name="RestCheckoutRequestAttributes">
         <property name="pointOfContact" type="RestPointOfContact" restRequestParameter="yes"/>
+        <property name="approverDetails" type="ApproverDetails" restRequestParameter="yes"/>
     </transfer>
 
     <transfer name="RestCheckoutUpdateResponseAttributes">
@@ -21,16 +22,25 @@
         <property name="payments" type="RestPayment[]" singular="payment"/>
         <property name="shipment" type="RestShipment"/>
         <property name="pointOfContact" type="RestPointOfContact"/>
+        <property name="approverDetails" type="RestApproverDetails"/>
     </transfer>
 
     <transfer name="RestPointOfContact">
-        <property name="pointOfContactId" type="string"/>
         <property name="department" type="string"/>
         <property name="firstName" type="string"/>
         <property name="lastName" type="string"/>
         <property name="phone" type="string"/>
         <property name="deliveryTime" type="string"/>
         <property name="comment" type="string"/>
+    </transfer>
+
+    <transfer name="RestApproverDetails">
+        <property name="uuidQuoteApproval" type="string"/>
+        <property name="approverId" type="string"/>
+        <property name="firstName" type="string"/>
+        <property name="lastName" type="string"/>
+        <property name="comment" type="string"/>
+        <property name="dueDate" type="string"/>
     </transfer>
 
 </transfers>

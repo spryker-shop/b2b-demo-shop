@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\CheckoutRestApi;
 
+use Pyz\Zed\CheckoutRestApi\Communication\Plugin\ApproverDetailsQuoteMapperPlugin;
 use Pyz\Zed\CheckoutRestApi\Communication\Plugin\PointOfContactQuoteMapperPlugin;
 use Spryker\Zed\CheckoutRestApi\CheckoutRestApiDependencyProvider as SprykerCheckoutRestApiDependencyProvider;
 use Spryker\Zed\Country\Communication\Plugin\CheckoutRestApi\CountryCheckoutDataValidatorPlugin;
@@ -59,6 +60,7 @@ class CheckoutRestApiDependencyProvider extends SprykerCheckoutRestApiDependency
             new PaymentsQuoteMapperPlugin(),
             new ShipmentQuoteMapperPlugin(),
             new PointOfContactQuoteMapperPlugin(),
+            new ApproverDetailsQuoteMapperPlugin(),
         ];
     }
 

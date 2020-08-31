@@ -28,6 +28,7 @@ class QuoteConfig extends SprykerQuoteConfig
             QuoteTransfer::QUOTE_REQUEST_VERSION_REFERENCE,
             QuoteTransfer::QUOTE_REQUEST_REFERENCE,
             QuoteTransfer::POINT_OF_CONTACT,
+            QuoteTransfer::QUOTE_APPROVALS,
             QuoteTransfer::CUSTOMER,
             QuoteTransfer::BILLING_ADDRESS,
             QuoteTransfer::SHIPPING_ADDRESS,

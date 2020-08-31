@@ -7,14 +7,25 @@
         <property name="pointOfContact" type="PointOfContact"/>
     </transfer>
 
+    <transfer name="QuoteApproval">
+        <property name="approverDetails" type="ApproverDetails"/>
+    </transfer>
+
     <transfer name="PointOfContact">
-        <property name="pointOfContactId" type="string"/>
         <property name="department" type="string"/>
         <property name="firstName" type="string"/>
         <property name="lastName" type="string"/>
         <property name="phone" type="string"/>
         <property name="deliveryTime" type="string"/>
         <property name="comment" type="string"/>
+    </transfer>
+
+    <transfer name="ApproverDetails">
+        <property name="approverId" type="string"/>
+        <property name="firstName" type="string"/>
+        <property name="lastName" type="string"/>
+        <property name="comment" type="string"/>
+        <property name="dueDate" type="string"/>
     </transfer>
 
 </transfers>
