@@ -7,7 +7,6 @@
 
 namespace Pyz\Zed\CheckoutRestApi;
 
-use Pyz\Zed\CheckoutRestApi\Communication\Plugin\ApproverDetailsQuoteMapperPlugin;
 use Pyz\Zed\CheckoutRestApi\Communication\Plugin\PointOfContactQuoteMapperPlugin;
 use Spryker\Zed\CheckoutRestApi\CheckoutRestApiDependencyProvider as SprykerCheckoutRestApiDependencyProvider;
 use Spryker\Zed\Country\Communication\Plugin\CheckoutRestApi\CountryCheckoutDataValidatorPlugin;
@@ -21,6 +20,8 @@ use Spryker\Zed\ShipmentsRestApi\Communication\Plugin\CheckoutRestApi\ShipmentQu
 class CheckoutRestApiDependencyProvider extends SprykerCheckoutRestApiDependencyProvider
 {
     public const FACADE_QUOTE_BASE = 'FACADE_QUOTE_BASE';
+    public const FACADE_QUOTE_APPROVAL = 'FACADE_QUOTE_APPROVAL';
+    public const FACADE_COMPANY_USER = 'FACADE_COMPANY_USER';
 
     /**
      * @param \Spryker\Zed\Kernel\Container $container
@@ -31,6 +32,8 @@ class CheckoutRestApiDependencyProvider extends SprykerCheckoutRestApiDependency
     {
         $container = parent::provideBusinessLayerDependencies($container);
         $container = $this->addBaseQuoteFacade($container);
+        $container = $this->addQuoteApprovalFacade($container);
+        $container = $this->addCompanyUserFacade($container);
 
         return $container;
     }
@@ -50,6 +53,34 @@ class CheckoutRestApiDependencyProvider extends SprykerCheckoutRestApiDependency
     }
 
     /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    protected function addQuoteApprovalFacade(Container $container): Container
+    {
+        $container->set(static::FACADE_QUOTE_APPROVAL, function (Container $container) {
+            return $container->getLocator()->quoteApproval()->facade();
+        });
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    protected function addCompanyUserFacade(Container $container): Container
+    {
+        $container->set(static::FACADE_COMPANY_USER, function (Container $container) {
+            return $container->getLocator()->companyUser()->facade();
+        });
+
+        return $container;
+    }
+
+    /**
      * @return \Spryker\Zed\CheckoutRestApiExtension\Dependency\Plugin\QuoteMapperPluginInterface[]
      */
     protected function getQuoteMapperPlugins(): array
@@ -60,7 +91,6 @@ class CheckoutRestApiDependencyProvider extends SprykerCheckoutRestApiDependency
             new PaymentsQuoteMapperPlugin(),
             new ShipmentQuoteMapperPlugin(),
             new PointOfContactQuoteMapperPlugin(),
-            new ApproverDetailsQuoteMapperPlugin(),
         ];
     }
 

@@ -10,8 +10,10 @@ namespace Pyz\Zed\CheckoutRestApi\Business;
 use Pyz\Zed\CheckoutRestApi\Business\Checkout\CheckoutDataWriter;
 use Pyz\Zed\CheckoutRestApi\Business\Checkout\CheckoutDataWriterInterface;
 use Pyz\Zed\CheckoutRestApi\CheckoutRestApiDependencyProvider;
+use Pyz\Zed\CompanyUser\Business\CompanyUserFacadeInterface;
 use Spryker\Zed\CheckoutRestApi\Business\CheckoutRestApiBusinessFactory as SprykerCheckoutRestApiBusinessFactory;
 use Spryker\Zed\Quote\Business\QuoteFacadeInterface;
+use Spryker\Zed\QuoteApproval\Business\QuoteApprovalFacadeInterface;
 
 /**
  * @method \Spryker\Zed\CheckoutRestApi\CheckoutRestApiConfig getConfig()
@@ -27,7 +29,9 @@ class CheckoutRestApiBusinessFactory extends SprykerCheckoutRestApiBusinessFacto
             $this->createQuoteReader(),
             $this->getQuoteMapperPlugins(),
             $this->getCalculationFacade(),
-            $this->getBaseQuoteFacade()
+            $this->getBaseQuoteFacade(),
+            $this->getQuoteApprovalFacade(),
+            $this->getCompanyUserFacade()
         );
     }
 
@@ -37,5 +41,21 @@ class CheckoutRestApiBusinessFactory extends SprykerCheckoutRestApiBusinessFacto
     public function getBaseQuoteFacade(): QuoteFacadeInterface
     {
         return $this->getProvidedDependency(CheckoutRestApiDependencyProvider::FACADE_QUOTE_BASE);
+    }
+
+    /**
+     * @return \Spryker\Zed\QuoteApproval\Business\QuoteApprovalFacadeInterface
+     */
+    public function getQuoteApprovalFacade(): QuoteApprovalFacadeInterface
+    {
+        return $this->getProvidedDependency(CheckoutRestApiDependencyProvider::FACADE_QUOTE_APPROVAL);
+    }
+
+    /**
+     * @return \Pyz\Zed\CompanyUser\Business\CompanyUserFacadeInterface
+     */
+    public function getCompanyUserFacade(): CompanyUserFacadeInterface
+    {
+        return $this->getProvidedDependency(CheckoutRestApiDependencyProvider::FACADE_COMPANY_USER);
     }
 }

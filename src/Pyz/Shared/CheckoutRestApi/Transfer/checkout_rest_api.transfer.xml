@@ -14,6 +14,10 @@
         <property name="approverDetails" type="ApproverDetails" restRequestParameter="yes"/>
     </transfer>
 
+    <transfer name="RestCustomer">
+        <property name="uuidCompanyUser" type="string" restRequestParameter="no"/>
+    </transfer>
+
     <transfer name="RestCheckoutUpdateResponseAttributes">
         <property name="customer" type="RestCustomer"/>
         <property name="idCart" type="string"/>
@@ -36,6 +40,7 @@
 
     <transfer name="RestApproverDetails">
         <property name="uuidQuoteApproval" type="string"/>
+        <property name="status" type="string"/>
         <property name="approverId" type="string"/>
         <property name="firstName" type="string"/>
         <property name="lastName" type="string"/>

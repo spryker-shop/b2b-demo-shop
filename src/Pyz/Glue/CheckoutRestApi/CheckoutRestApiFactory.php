@@ -12,6 +12,8 @@ use Pyz\Glue\CheckoutRestApi\Processor\CheckoutUpdate\CheckoutDataUpdaterInterfa
 use Pyz\Glue\CheckoutRestApi\Processor\CheckoutUpdate\CheckoutUpdateMapper;
 use Pyz\Glue\CheckoutRestApi\Processor\CheckoutUpdate\CheckoutUpdateMapperInterface;
 use Spryker\Glue\CheckoutRestApi\CheckoutRestApiFactory as SprykerCheckoutRestApiFactory;
+use Pyz\Glue\CheckoutRestApi\Processor\Customer\CustomerMapper;
+use Spryker\Glue\CheckoutRestApi\Processor\Customer\CustomerMapperInterface;
 
 /**
  * @method \Pyz\Client\CheckoutRestApi\CheckoutRestApiClientInterface getClient()
@@ -40,5 +42,13 @@ class CheckoutRestApiFactory extends SprykerCheckoutRestApiFactory
     public function createCheckoutUpdateMapper(): CheckoutUpdateMapperInterface
     {
         return new CheckoutUpdateMapper();
+    }
+
+    /**
+     * @return \Spryker\Glue\CheckoutRestApi\Processor\Customer\CustomerMapperInterface
+     */
+    public function createCustomerMapper(): CustomerMapperInterface
+    {
+        return new CustomerMapper();
     }
 }

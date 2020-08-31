@@ -14,6 +14,7 @@ use Generated\Shared\Transfer\RestErrorCollectionTransfer;
 use Generated\Shared\Transfer\RestErrorMessageTransfer;
 use Pyz\Client\CheckoutRestApi\CheckoutRestApiClientInterface;
 use Pyz\Glue\CheckoutRestApi\CheckoutRestApiConfig;
+use Spryker\Client\Customer\CustomerClient;
 use Spryker\Glue\CheckoutRestApi\Processor\Error\RestCheckoutErrorMapperInterface;
 use Spryker\Glue\CheckoutRestApi\Processor\RequestAttributesExpander\CheckoutRequestAttributesExpanderInterface;
 use Spryker\Glue\CheckoutRestApi\Processor\Validator\CheckoutRequestValidatorInterface;
