@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "21e335b3e6c59ea44505fcec5447c110",
+    "content-hash": "e8875623d9547982ce9ee7cc6ac23398",
     "packages": [
         {
             "name": "brick/math",
@@ -25514,6 +25514,55 @@
             "time": "2020-08-18T13:03:17+00:00"
         },
         {
+            "name": "spryker/nopayment",
+            "version": "4.0.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/nopayment.git",
+                "reference": "448314b414fac50480fc7177a2cf8969086a38e7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/nopayment/zipball/448314b414fac50480fc7177a2cf8969086a38e7",
+                "reference": "448314b414fac50480fc7177a2cf8969086a38e7",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "spryker/kernel": "^3.30.0",
+                "spryker/sales": "^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0 || ^10.0.0 || ^11.0.0"
+            },
+            "require-dev": {
+                "spryker/oms": "*",
+                "spryker/payment": "*",
+                "spryker/step-engine": "^3.1.0",
+                "spryker/symfony": "*"
+            },
+            "suggest": {
+                "spryker/oms": "If you want to use Oms command plugins.",
+                "spryker/payment": "If you want to use Payment command plugins.",
+                "spryker/step-engine": "If you want to use Step engine command plugins.",
+                "spryker/symfony": "If you want to use Step handler plugin."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "Nopayment module",
+            "time": "2019-12-02T12:50:16+00:00"
+        },
+        {
             "name": "spryker/oauth",
             "version": "2.0.0",
             "source": {
@@ -44353,6 +44402,20 @@
                 }
             ],
             "description": "Composer plugin that provides efficient querying for installed package versions (no runtime IO)",
+            "funding": [
+                {
+                    "url": "https://packagist.com",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/composer",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/composer/composer",
+                    "type": "tidelift"
+                }
+            ],
             "time": "2020-07-15T08:39:18+00:00"
         },
         {
@@ -44458,6 +44521,20 @@
             "keywords": [
                 "Xdebug",
                 "performance"
+            ],
+            "funding": [
+                {
+                    "url": "https://packagist.com",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/composer",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/composer/composer",
+                    "type": "tidelift"
+                }
             ],
             "time": "2020-06-04T11:16:35+00:00"
         },
@@ -46836,6 +46913,7 @@
             "keywords": [
                 "tokenizer"
             ],
+            "abandoned": true,
             "time": "2019-09-17T06:23:10+00:00"
         },
         {
@@ -47396,6 +47474,7 @@
             ],
             "description": "FinderFacade is a convenience wrapper for Symfony's Finder component.",
             "homepage": "https://github.com/sebastianbergmann/finder-facade",
+            "abandoned": true,
             "time": "2020-01-16T08:08:45+00:00"
         },
         {
@@ -47825,6 +47904,16 @@
                 "linter",
                 "parser",
                 "validator"
+            ],
+            "funding": [
+                {
+                    "url": "https://github.com/Seldaek",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/seld/jsonlint",
+                    "type": "tidelift"
+                }
             ],
             "time": "2020-04-30T19:05:18+00:00"
         },
@@ -48339,6 +48428,7 @@
                 "proprietary"
             ],
             "description": "NavigationWidget module",
+            "abandoned": "spryker-shop/content-navigation-widget",
             "time": "2018-10-10T14:15:13+00:00"
         },
         {
