@@ -4,7 +4,9 @@
     quotes: _view.quoteCollection,
     isQuoteDeletable: _view.isQuoteDeletable,
     title: 'page.multi_cart.shopping_cart.list.title' | trans,
-    activePage: 'multiCart'
+    activePage: 'multiCart',
+    multiCartDuplicateFormClone: _view.multiCartDuplicateFormCloner,
+    multiCartSetDefaultFormClone: _view.multiCartSetDefaultFormCloner,
 } %}
 
 {% block breadcrumbs %}
@@ -17,14 +19,13 @@
                 },
                 {
                     label: 'page.multi_cart.shopping_cart.list.title' | trans,
-                }
-            ]
-        }
+                },
+            ],
+        },
     } only %}
 {% endblock %}
 
 {% block customerContent %}
-
     <div class="grid grid--justify">
         <div class="col col--sm-12 col--md-auto spacing-bottom spacing-bottom--big">
             <h3>{{ 'page.multi_cart.shopping_cart.list.title' | trans }}</h3>
@@ -35,8 +36,8 @@
                     class: 'spacing-right spacing-right--small',
                     modifiers: ['plus-small'],
                     data: {
-                        name: 'plus'
-                    }
+                        name: 'plus',
+                    },
                 } only %}
                 {{- 'page.multi_cart.shopping_cart.list.create_link' | trans -}}
             </a>
@@ -52,8 +53,10 @@
                     delete: true,
                     duplicate: true,
                 },
-                isQuoteDeletable: data.isQuoteDeletable
-            }
+                isQuoteDeletable: data.isQuoteDeletable,
+                multiCartSetDefaultFormClone: data.multiCartSetDefaultFormClone,
+                multiCartDuplicateFormClone: data.multiCartDuplicateFormClone,
+            },
         } only %}
     {% endif %}
 {% endblock %}

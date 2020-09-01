@@ -14,7 +14,7 @@ class CustomerConfig extends SprykerCustomerConfig
     /**
      * {@inheritDoc}
      *
-     * @return array
+     * @return string[]
      */
     public function getCustomerDetailExternalBlocksUrls()
     {
@@ -22,5 +22,15 @@ class CustomerConfig extends SprykerCustomerConfig
             'sales' => '/sales/customer/customer-orders',
             'notes' => '/customer-note-gui/index/index',
         ] + parent::getCustomerDetailExternalBlocksUrls();
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @return bool
+     */
+    public function isDoubleOptInEnabled(): bool
+    {
+        return true;
     }
 }

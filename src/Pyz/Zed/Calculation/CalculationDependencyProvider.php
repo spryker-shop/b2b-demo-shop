@@ -34,16 +34,17 @@ use Spryker\Zed\DiscountPromotion\Communication\Plugin\Calculation\RemovePromoti
 use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\Payment\Communication\Plugin\Calculation\PaymentCalculatorPlugin;
 use Spryker\Zed\PersistentCart\Communication\Plugin\Calculation\QuoteSaveQuotePostRecalculateStrategyPlugin;
-use Spryker\Zed\ProductBundle\Communication\Plugin\Calculation\CalculateBundlePricePlugin;
-use Spryker\Zed\ProductOption\Communication\Plugin\ProductOptionTaxRateCalculatorPlugin;
+use Spryker\Zed\ProductBundle\Communication\Plugin\Calculation\CalculateBundlePricesPlugin;
+use Spryker\Zed\ProductOption\Communication\Plugin\Calculation\ProductOptionTaxRateCalculatorPlugin;
 use Spryker\Zed\SalesOrderThreshold\Communication\Plugin\Calculation\AddSalesOrderThresholdExpenseCalculatorPlugin;
 use Spryker\Zed\SalesOrderThreshold\Communication\Plugin\Calculation\RemoveSalesOrderThresholdExpenseCalculatorPlugin;
 use Spryker\Zed\Shipment\Communication\Plugin\Calculation\FilterObsoleteShipmentExpensesCalculatorPlugin;
-use Spryker\Zed\Shipment\Communication\Plugin\ShipmentTaxRateCalculatorPlugin;
+use Spryker\Zed\Shipment\Communication\Plugin\Calculation\ShipmentTaxRateCalculatorPlugin;
+use Spryker\Zed\Shipment\Communication\Plugin\Calculation\ShipmentTotalCalculatorPlugin;
 use Spryker\Zed\Tax\Communication\Plugin\Calculator\TaxAmountAfterCancellationCalculatorPlugin;
 use Spryker\Zed\Tax\Communication\Plugin\Calculator\TaxAmountCalculatorPlugin;
 use Spryker\Zed\Tax\Communication\Plugin\Calculator\TaxRateAverageAggregatorPlugin;
-use Spryker\Zed\TaxProductConnector\Communication\Plugin\ProductItemTaxRateCalculatorPlugin;
+use Spryker\Zed\TaxProductConnector\Communication\Plugin\Calculation\ProductItemTaxRateCalculatorPlugin;
 
 class CalculationDependencyProvider extends SprykerCalculationDependencyProvider
 {
@@ -217,7 +218,7 @@ class CalculationDependencyProvider extends SprykerCalculationDependencyProvider
 
             new RefundableAmountCalculatorPlugin(),
 
-            new CalculateBundlePricePlugin(),
+            new CalculateBundlePricesPlugin(),
 
             new ExpenseTotalCalculatorPlugin(),
             new DiscountTotalCalculatorPlugin(),
@@ -227,6 +228,7 @@ class CalculationDependencyProvider extends SprykerCalculationDependencyProvider
             new NetTotalCalculatorPlugin(),
 
             new PaymentCalculatorPlugin(),
+            new ShipmentTotalCalculatorPlugin(),
         ];
 
         return $plugins;

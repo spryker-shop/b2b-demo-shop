@@ -1,12 +1,4 @@
-{% extends template('page-layout-company', 'CompanyPage') %}
-
-{% define data = {
-    idCompanyRole: _view.idCompanyRole,
-    roleName: _view.role.name,
-    assignedUsers: _view.role.companyUserCollection.companyUsers,
-    title: 'company.account.company_role' | trans,
-    activePage: 'role'
-} %}
+{% extends view('role-delete', '@SprykerShop:CompanyPage') %}
 
 {% block breadcrumbs %}
     {% include molecule('breadcrumb') with {
@@ -19,18 +11,18 @@
                     label: 'company.account.company_role' | trans,
                     url: url('company/company-role')
                 }, {
-                    label: 'company.account.company_role.delete' | trans
-                }
-            ]
-        }
+                    label: 'company.account.company_role.delete' | trans,
+                },
+            ],
+        },
     } only %}
 {% endblock %}
 
 {% block companyContent %}
     {% include molecule('action-bar', 'ShopUi') with {
         data: {
-            title: 'company.account.company_role.delete.confirmation.warning' | trans
-        }
+            title: 'company.account.company_role.delete.confirmation.warning' | trans,
+        },
     } only %}
     {{ "company.account.company_role.delete.confirmation.trying_to_delete" | trans }}: <strong>{{ data.roleName }}</strong><br>
 
@@ -46,14 +38,18 @@
         </ul><br>
     {% endif %}
 
-    <div>
-        <a href="{{ url('company/company-role') }}" class="button button--hollow">
-            {{ "company.account.company_role.delete.back" | trans }}
-        </a>
-        {% if data.assignedUsers is empty %}
-            <a href="{{ url('company/company-role/delete', { 'id' : data.idCompanyRole }) }}" class="button button--alert">
-                {{ "company.account.company_role.delete" | trans }}
+    <div class="grid">
+        <div class="col">
+            <a href="{{ url('company/company-role') }}" class="button button--hollow">
+                {{ "company.account.company_role.delete.back" | trans }}
             </a>
+        </div>
+        {% if data.assignedUsers is empty %}
+            <div class="col spacing-left spacing-left--inner">
+                {{ form_start(data.companyRoleDeleteForm, {'action': url('company/company-role/delete')}) }}
+                    <button data-init-single-click class="button button--alert">{{ 'company.account.company_role.delete' | trans }}</button>
+                {{ form_end(data.companyRoleDeleteForm) }}
+            </div>
         {% endif %}
     </div>
 {% endblock %}

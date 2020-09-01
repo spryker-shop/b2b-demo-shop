@@ -13,6 +13,7 @@ use Spryker\Zed\AvailabilityNotification\Communication\Plugin\Mail\AvailabilityN
 use Spryker\Zed\AvailabilityNotification\Communication\Plugin\Mail\AvailabilityNotificationUnsubscribedMailTypePlugin;
 use Spryker\Zed\CompanyMailConnector\Communication\Plugin\Mail\CompanyStatusMailTypePlugin;
 use Spryker\Zed\CompanyUserInvitation\Communication\Plugin\Mail\CompanyUserInvitationMailTypePlugin;
+use Spryker\Zed\Customer\Communication\Plugin\Mail\CustomerRegistrationConfirmationMailTypePlugin;
 use Spryker\Zed\Customer\Communication\Plugin\Mail\CustomerRegistrationMailTypePlugin;
 use Spryker\Zed\Customer\Communication\Plugin\Mail\CustomerRestoredPasswordConfirmationMailTypePlugin;
 use Spryker\Zed\Customer\Communication\Plugin\Mail\CustomerRestorePasswordMailTypePlugin;
@@ -26,6 +27,7 @@ use Spryker\Zed\Newsletter\Communication\Plugin\Mail\NewsletterSubscribedMailTyp
 use Spryker\Zed\Newsletter\Communication\Plugin\Mail\NewsletterUnsubscribedMailTypePlugin;
 use Spryker\Zed\Oms\Communication\Plugin\Mail\OrderConfirmationMailTypePlugin;
 use Spryker\Zed\Oms\Communication\Plugin\Mail\OrderShippedMailTypePlugin;
+use Spryker\Zed\SalesInvoice\Communication\Plugin\Mail\OrderInvoiceMailTypePlugin;
 
 class MailDependencyProvider extends SprykerMailDependencyProvider
 {
@@ -41,6 +43,7 @@ class MailDependencyProvider extends SprykerMailDependencyProvider
         $container->extend(static::MAIL_TYPE_COLLECTION, function (MailTypeCollectionAddInterface $mailCollection) {
             $mailCollection
                 ->add(new CustomerRegistrationMailTypePlugin())
+                ->add(new CustomerRegistrationConfirmationMailTypePlugin())
                 ->add(new CustomerRestorePasswordMailTypePlugin())
                 ->add(new CustomerRestoredPasswordConfirmationMailTypePlugin())
                 ->add(new NewsletterSubscribedMailTypePlugin())
@@ -52,7 +55,8 @@ class MailDependencyProvider extends SprykerMailDependencyProvider
                 ->add(new AvailabilityNotificationUnsubscribedMailTypePlugin())
                 ->add(new AvailabilityNotificationSubscriptionMailTypePlugin())
                 ->add(new AvailabilityNotificationMailTypePlugin())
-                ->add(new RestorePasswordMailTypePlugin());
+                ->add(new RestorePasswordMailTypePlugin())
+                ->add(new OrderInvoiceMailTypePlugin());
 
             return $mailCollection;
         });

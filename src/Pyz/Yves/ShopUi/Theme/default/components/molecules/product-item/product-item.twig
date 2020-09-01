@@ -1,0 +1,110 @@
+{% extends molecule('product-item', '@SprykerShop:ShopUi') %}
+
+{% define data = {
+    category: '',
+} %}
+
+{% define attributes = {
+    'default-price-color-class-name': 'text-alt',
+} %}
+
+{% block extraClass %}
+    {{ config.jsName }}
+{% endblock %}
+
+{% block body %}
+    <div class="{{ component.renderClass(config.name ~ '__container', modifiers) }}">
+        {% block imageContainer %}
+            {% set extraClass = '' %}
+            {% set modifiers = ['catalog'] | merge(modifiers) %}
+
+            {{ parent() }}
+        {% endblock %}
+
+        {% block content %}
+            {{ block('labels') }}
+
+            {% block name %}
+                <a class="{{ component.renderClass(config.name ~ '__overlay', modifiers) }} {{ config.jsName }}__name {{ config.jsName }}__link-detail-page" href="{{ data.url }}">
+                    {{ data.name }}
+                </a>
+            {% endblock %}
+
+            {% block category %}
+                {% if data.category is not empty %}
+                    <span class="{{ component.renderClass(config.name ~ '__category', modifiers) }}">{{ data.category }}</span>
+                {% endif %}
+            {% endblock %}
+
+            <div class="{{ config.name }}__rating">
+                {{ block('rating') }}
+            </div>
+
+            {% block priceContainer %}
+                {% block price %}
+                    {% if can('SeePricePermissionPlugin') %}
+                        <div class="{{ component.renderClass(config.name ~ '__price', modifiers) }}">
+                            {% embed molecule('money-price') with {
+                                data: {
+                                    amount: data.product.prices.DEFAULT | default(null),
+                                    originalAmount: data.product.prices.ORIGINAL | default(null),
+                                    currencyIsoCode: data.currencyIsoCode,
+                                    parentJsName: config.jsName,
+                                },
+                            } only %}
+                                {% block originalPrice %}
+                                    {{ block('originalPriceInner') }}
+                                {% endblock %}
+                            {% endembed %}
+                        </div>
+                    {% endif %}
+                {% endblock %}
+            {% endblock %}
+        {% endblock %}
+
+        {% block actionsContainer %}
+            {{ parent() }}
+        {% endblock %}
+    </div>
+{% endblock %}
+
+{% block image %}
+    <div class="{{ component.renderClass(config.name ~ '__image-wrap', modifiers) }}">
+        {{ block('productThumbnail') }}
+
+        <div class="{{ component.renderClass(config.name ~ '__colors', modifiers) }}">
+            {{ block('colors') }}
+        </div>
+    </div>
+{% endblock %}
+
+{% block action %}
+    <a class="button button--expand button--hollow {{ config.jsName }}__link-detail-page" href="{{ path(data.url) }}">
+        {{ 'product.view' | trans }}
+    </a>
+{% endblock %}
+
+{% block ajaxAddToCart %}
+    {% if data.product is iterable and can('SeeAddToCartPermissionPlugin') %}
+        {% set ajaxButtonExtraClasses = config.jsName ~ '__ajax-button-add-to-cart js-node-animator__trigger' %}
+        {% set ajaxButtonExtraAttributes = {} %}
+        {% set componentExtraClasses = '' %}
+
+        {% block ajaxAddToCartInner %}
+            {% widget 'ProductAbstractAddToCartButtonWidget' args [data.product] with {
+                data: {
+                    buttonExtraClasses: ajaxButtonExtraClasses,
+                    buttonExtraAttributes: ajaxButtonExtraAttributes,
+                },
+                embed: {
+                    componentExtraClasses: componentExtraClasses,
+                },
+            } only %}
+                {% block body %}
+                    {% set extraClasses = embed.componentExtraClasses ?: extraClasses %}
+                    {{ parent() }}
+                {% endblock %}
+            {% endwidget %}
+        {% endblock %}
+    {% endif %}
+{% endblock %}

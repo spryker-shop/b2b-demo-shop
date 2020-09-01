@@ -1,0 +1,35 @@
+@mixin customer-page-order-filters($name: '.order-filters') {
+    #{$name} {
+        background: $setting-color-gray-7;
+        padding: rem(15);
+        margin-bottom: rem(20);
+        overflow: hidden;
+
+        @include helper-breakpoint-media-min($lg) {
+            padding: rem(20);
+        }
+
+        &__search-wrapper {
+            position: relative;
+        }
+
+        &__search-icon {
+            position: absolute;
+            left: rem(20);
+            top: rem(22);
+        }
+
+        &__search-field {
+            padding-left: rem(40);
+        }
+
+        .select2-selection__rendered,
+        .custom-select__select {
+            background: $setting-color-white;
+        }
+
+        @content;
+    }
+}
+
+@include customer-page-order-filters();

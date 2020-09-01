@@ -20,7 +20,7 @@ class StockDependencyProvider extends SprykerStockDependencyProvider
      *
      * @return \Spryker\Zed\Stock\Dependency\Plugin\StockUpdateHandlerPluginInterface[]
      */
-    protected function getStockUpdateHandlerPlugins(Container $container)
+    protected function getStockUpdateHandlerPlugins(Container $container): array
     {
         return [
             new AvailabilityHandlerPlugin(),

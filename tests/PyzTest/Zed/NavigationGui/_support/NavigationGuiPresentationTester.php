@@ -55,6 +55,7 @@ class NavigationGuiPresentationTester extends Actor
     public const SWEET_ALERT_SELECTOR = '.sweet-alert';
     public const SWEET_ALERT_CONFIRM_SELECTOR = '.sweet-alert button.confirm';
     public const NODE_FORM_SELECTOR = 'form';
+    public const NODE_UPDATE_FORM_SELECTOR = '//form[@name="navigation_node"]';
 
     /**
      * @param \Codeception\Scenario $scenario
@@ -387,6 +388,7 @@ class NavigationGuiPresentationTester extends Actor
          * TODO: once we have Selenium, enable this test case.
          */
         return;
+
 //        $i->wantTo('Remove child node.');
 //        $i->expect('Node should be removed from Zed.');
 //
@@ -621,7 +623,7 @@ class NavigationGuiPresentationTester extends Actor
      */
     public function submitUpdateNodeToCategoryType($categoryUrl_en_US, $categoryUrl_de_DE)
     {
-        $this->submitForm(self::NODE_FORM_SELECTOR, [
+        $this->submitForm(static::NODE_UPDATE_FORM_SELECTOR, [
             'navigation_node[node_type]' => 'category',
             'navigation_node[navigation_node_localized_attributes][0][category_url]' => $categoryUrl_en_US,
             'navigation_node[navigation_node_localized_attributes][1][category_url]' => $categoryUrl_de_DE,
@@ -770,5 +772,13 @@ class NavigationGuiPresentationTester extends Actor
         }
 
         return $localeUrls;
+    }
+
+    /**
+     * @return void
+     */
+    public function submitDeleteNavigationForm(): void
+    {
+        $this->click('//*[@id="delete_navigation_form_submit"]');
     }
 }

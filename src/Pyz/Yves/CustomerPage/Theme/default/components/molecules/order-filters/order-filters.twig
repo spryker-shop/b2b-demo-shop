@@ -1,0 +1,82 @@
+{% extends molecule('order-filters', '@SprykerShop:CustomerPage') %}
+
+{% define data = {
+    pathInfo: app.request.pathInfo,
+    queryString: app.request.queryString,
+    requestUri: app.request.requestUri,
+} %}
+
+{% block extraClass %}{% endblock %}
+
+{% block searchRow %}
+    <div class="{{ searchRowClass }}">
+        <div class="{{ searchTypeClass }} spacing-bottom">
+            {{ form_row(data.orderSearchForm.searchType) }}
+        </div>
+        <div class="{{ config.name }}__search-wrapper {{ searchTextClass }} spacing-bottom">
+            {% include atom('icon') with {
+                modifiers: ['big'],
+                class: config.name ~ '__search-icon',
+                data: {
+                    name: 'search',
+                },
+            } only %}
+
+            {{ form_row(data.orderSearchForm.searchText, {
+                attr: {
+                    class: config.name ~ '__search-field',
+                },
+            }) }}
+        </div>
+    </div>
+{% endblock %}
+
+{% block additionalFiltersRow %}
+    {% set companyBusinessUnit = data.orderSearchForm.filters.children.companyBusinessUnit %}
+
+    <div class="{{ additionalFiltersRowClass }}">
+        {% for filter in data.orderSearchForm.filters.children if filter.vars.name != 'companyBusinessUnit' %}
+            <div class="{{ filter.vars.attr.class }}">
+                {% widget 'LanguageSwitcherWidget' args [data.pathInfo, data.queryString, data.requestUri] with {
+                    data: {
+                        field: filter,
+                    },
+                    embed: {
+                        fieldClass: data.jsPrefix ~ filter.vars.name ~ '-target',
+                    },
+                } only %}
+                    {% block body %}
+                        {% include molecule('date-time-picker') with {
+                            data: {
+                                field: data.field,
+                                fieldClass: embed.fieldClass,
+                                hasIcon: true,
+                            },
+                            attributes: {
+                                language: data.currentLanguage,
+                                config: '{
+                                    "format": "Y-m-d H:i"
+                                }',
+                                'formatted-date-time': data.field.vars.value | date('Y-m-d H:i'),
+                            },
+                        } only %}
+                    {% endblock %}
+                {% endwidget %}
+            </div>
+        {% endfor %}
+
+        <div class="form__field col col--sm-12 col--lg-6">
+            {{ form_row(companyBusinessUnit) }}
+        </div>
+    </div>
+{% endblock %}
+
+{% block filterModeRow %}
+    {% set filterModeRowClass = 'grid grid--middle grid--justify spacing-top spacing-top--big' %}
+    {% set orderItemsVisibleClass = 'col col--sm-7 spacing-right spacing-right--inner' %}
+    {% set actionWrapperClass = 'col col--sm-5 text-right' %}
+
+    {{ parent() }}
+{% endblock %}
+
+{% block separator2 %}{% endblock %}

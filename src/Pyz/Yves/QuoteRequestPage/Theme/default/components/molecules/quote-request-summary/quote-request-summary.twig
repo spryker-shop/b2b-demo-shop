@@ -1,0 +1,54 @@
+{% extends molecule('quote-request-summary', '@SprykerShop:QuoteRequestPage') %}
+
+{% block extraClass %}
+    box box--smaller spacing-bottom spacing-bottom--bigger
+{% endblock %}
+
+{% block titleWrapper %}
+    {% set counterClass = 'col badge badge--counter' %}
+
+    {{ parent() }}
+{% endblock %}
+
+{% block listSeparator %}
+    <hr class="box__separator">
+{% endblock %}
+
+{% block list %}
+    {% set listClass = 'text-secondary' %}
+    {% set itemClass = 'grid grid--justify' %}
+    {% set itemTitleClass = 'col' %}
+    {% set itemValueClass = 'col ' ~ config.name ~ '__value' %}
+
+    {{ parent() }}
+{% endblock %}
+
+{% block salesOrderThreshhold %}
+    {% widget 'SalesOrderThresholdWidget' args [data.cart.expenses] with {
+        embed: {
+            itemClass: itemClass,
+        },
+    } only %}
+        {% block body %}
+            <hr class="box__separator">
+            <div class="{{ embed.itemClass }}">
+                {{ parent() }}
+            </div>
+        {% endblock %}
+    {% endwidget %}
+{% endblock %}
+
+{% block taxSeparator %}
+    <hr class="box__separator">
+{% endblock %}
+
+{% block grandTotalSeparator %}
+    <hr class="box__separator">
+{% endblock %}
+
+{% block grandTotal %}
+    <div class="{{ itemClass }} {{ config.name }}__grand-total">
+        <span class="{{ itemTitleClass }}">{{ 'cart.price.grand.total' | trans }}</span>
+        <strong class="{{ itemValueClass }}">{{ data.cart.totals.grandTotal | money(true, data.cart.currency.code) }}</strong>
+    </div>
+{% endblock %}

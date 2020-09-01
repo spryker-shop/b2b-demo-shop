@@ -39,7 +39,7 @@ class ExampleProductSalePageDependencyProvider extends AbstractDependencyProvide
      *
      * @return \Spryker\Client\Kernel\Container
      */
-    public function provideServiceLayerDependencies(Container $container)
+    public function provideServiceLayerDependencies(Container $container): Container
     {
         $container = $this->addSearchClient($container);
         $container = $this->addProductLabelClient($container);
@@ -56,11 +56,11 @@ class ExampleProductSalePageDependencyProvider extends AbstractDependencyProvide
      *
      * @return \Spryker\Client\Kernel\Container
      */
-    protected function addSearchClient(Container $container)
+    protected function addSearchClient(Container $container): Container
     {
-        $container[self::CLIENT_SEARCH] = function () {
+        $container->set(static::CLIENT_SEARCH, function () {
             return new SearchClient();
-        };
+        });
 
         return $container;
     }
@@ -70,11 +70,11 @@ class ExampleProductSalePageDependencyProvider extends AbstractDependencyProvide
      *
      * @return \Spryker\Client\Kernel\Container
      */
-    protected function addProductLabelClient(Container $container)
+    protected function addProductLabelClient(Container $container): Container
     {
-        $container[self::CLIENT_PRODUCT_LABEL_STORAGE] = function (Container $container) {
+        $container->set(static::CLIENT_PRODUCT_LABEL_STORAGE, function (Container $container) {
             return $container->getLocator()->productLabelStorage()->client();
-        };
+        });
 
         return $container;
     }
@@ -84,11 +84,11 @@ class ExampleProductSalePageDependencyProvider extends AbstractDependencyProvide
      *
      * @return \Spryker\Client\Kernel\Container
      */
-    protected function addSaleSearchQueryPlugin(Container $container)
+    protected function addSaleSearchQueryPlugin(Container $container): Container
     {
-        $container[self::SALE_SEARCH_QUERY_PLUGIN] = function () {
+        $container->set(static::SALE_SEARCH_QUERY_PLUGIN, function () {
             return new SaleSearchQueryPlugin();
-        };
+        });
 
         return $container;
     }
@@ -98,9 +98,9 @@ class ExampleProductSalePageDependencyProvider extends AbstractDependencyProvide
      *
      * @return \Spryker\Client\Kernel\Container
      */
-    protected function addSaleSearchQueryExpanderPlugins(Container $container)
+    protected function addSaleSearchQueryExpanderPlugins(Container $container): Container
     {
-        $container[self::SALE_SEARCH_QUERY_EXPANDER_PLUGINS] = function () {
+        $container->set(static::SALE_SEARCH_QUERY_EXPANDER_PLUGINS, function () {
             return [
                 new StoreQueryExpanderPlugin(),
                 new LocalizedQueryExpanderPlugin(),
@@ -114,7 +114,7 @@ class ExampleProductSalePageDependencyProvider extends AbstractDependencyProvide
                  */
                 new FacetQueryExpanderPlugin(),
             ];
-        };
+        });
 
         return $container;
     }
@@ -124,9 +124,9 @@ class ExampleProductSalePageDependencyProvider extends AbstractDependencyProvide
      *
      * @return \Spryker\Client\Kernel\Container
      */
-    protected function addSaleSearchResultFormatterPlugins(Container $container)
+    protected function addSaleSearchResultFormatterPlugins(Container $container): Container
     {
-        $container[self::SALE_SEARCH_RESULT_FORMATTER_PLUGINS] = function () {
+        $container->set(static::SALE_SEARCH_RESULT_FORMATTER_PLUGINS, function () {
             return [
                 new FacetResultFormatterPlugin(),
                 new SortedResultFormatterPlugin(),
@@ -135,7 +135,7 @@ class ExampleProductSalePageDependencyProvider extends AbstractDependencyProvide
                     new RawCatalogSearchResultFormatterPlugin()
                 ),
             ];
-        };
+        });
 
         return $container;
     }
@@ -145,11 +145,11 @@ class ExampleProductSalePageDependencyProvider extends AbstractDependencyProvide
      *
      * @return \Spryker\Client\Kernel\Container
      */
-    protected function addStore(Container $container)
+    protected function addStore(Container $container): Container
     {
-        $container[self::STORE] = function () {
+        $container->set(static::STORE, function () {
             return Store::getInstance();
-        };
+        });
 
         return $container;
     }

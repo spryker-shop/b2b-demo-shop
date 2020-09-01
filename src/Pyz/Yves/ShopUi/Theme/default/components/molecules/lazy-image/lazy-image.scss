@@ -1,0 +1,84 @@
+@include shop-ui-lazy-image {
+    &--smaller {
+        height: rem(52);
+
+        @include helper-breakpoint-media-min($lg) {
+            height: rem(42);
+        }
+    }
+
+    &--configured-bundle {
+        margin: rem(8) rem(16) rem(8) 0;
+        padding: rem(8);
+        flex-grow: 1;
+
+        &::before {
+            border-radius: $setting-border-radius 0 0 $setting-border-radius;
+        }
+    }
+
+    &--category-list {
+        height: rem(313);
+
+        @include helper-breakpoint-media-min($md) {
+            height: rem(160);
+        }
+    }
+
+    &--catalog {
+        height: rem(180);
+
+        @include helper-breakpoint-media-min($lg) {
+            height: rem(240);
+        }
+    }
+
+    &--category {
+        height: rem(124);
+
+        @include helper-breakpoint-media-min($lg) {
+            height: rem(240);
+        }
+    }
+
+    &--shopping-list {
+        height: rem(75);
+
+        @include helper-breakpoint-media-min($lg) {
+            height: rem(160);
+        }
+    }
+
+    &--cart {
+        height: rem(75);
+        margin: 0;
+
+        @include helper-breakpoint-media-min($lg) {
+            height: rem(160);
+            margin: rem(8);
+        }
+    }
+
+    &--summary {
+        height: rem(75);
+        margin: 0;
+
+        @include helper-breakpoint-media-min($lg) {
+            height: rem(100);
+            margin: rem(4);
+        }
+    }
+
+    &--full-size {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__content {
+        position: relative;
+        line-height: 1.5;
+    }
+}

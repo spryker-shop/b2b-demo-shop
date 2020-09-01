@@ -1,0 +1,48 @@
+{% extends template('widget') %}
+
+{% define data = {
+    navigation: navigation,
+} %}
+
+{% block body %}
+    {% set title = '' %}
+
+    {% for node in data.navigation.nodes %}
+        {% set nodeType = node.nodeType %}
+
+        {% if nodeType == 'category' %}
+            {% set title = 'global.top_categories' | trans %}
+        {% endif %}
+
+        {% if nodeType == 'link' %}
+            {% set title = 'global.popular_brands' | trans %}
+        {% endif %}
+
+        {% if nodeType == 'cms_page' %}
+            {% set title = 'global.about' | trans %}
+        {% endif %}
+    {% endfor %}
+
+    {% set selectorPart = title | lower | replace(' ', '-') %}
+    {% set triggerClass = 'js-navigation-footer-' ~ selectorPart ~ '__trigger' %}
+    {% set targetClass = 'js-navigation-footer-' ~ selectorPart %}
+
+    {% block navigationItem %}
+        {% include molecule('navigation-item', 'ContentNavigationWidget') with {
+            class: 'col col--sm-12 col--md-4 ' ~ targetClass,
+            data: {
+                nodes: data.navigation.nodes,
+                title: title,
+                toggleClass: targetClass,
+            },
+        } only %}
+
+        {% include molecule('toggler-accordion') with {
+            attributes: {
+                'wrap-class-name': targetClass,
+                'trigger-class-name': triggerClass,
+                'class-to-toggle': 'is-hidden-sm-only',
+            },
+        } only %}
+    {% endblock %}
+{% endblock %}

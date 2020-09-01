@@ -1,0 +1,307 @@
+@mixin shop-ui-product-item($name: '.product-item') {
+    #{$name} {
+        padding: 0 0 rem(30);
+
+        &--equal-height {
+            height: auto;
+        }
+
+        &--full-height {
+            height: 100%;
+        }
+
+        &--catalog {
+            @include helper-breakpoint-media-min($lg) {
+                padding-bottom: rem(3);
+            }
+        }
+
+        &__colors {
+            @include helper-breakpoint-media-min($xl) {
+                @include helper-effect-transition(opacity);
+                opacity: 0;
+            }
+
+            &--category {
+                position: relative;
+            }
+        }
+
+        &__container {
+            padding: 0;
+            height: 100%;
+            position: relative;
+
+            @include helper-breakpoint-media-min($lg) {
+                padding: rem(8) rem(10) rem(15);
+            }
+
+            @include helper-breakpoint-media-min($xl) {
+                padding: rem(8) rem(28) rem(40);
+            }
+
+            &:hover {
+                @include helper-breakpoint-media-min($xl) {
+                    #{$name}__image-wrap--catalog::before {
+                        background-color: $setting-color-transparent;
+                    }
+
+                    #{$name}__overlay {
+                        color: $setting-color-gray-4;
+
+                        &::before {
+                            box-shadow: 0 rem(18) rem(18) 0 $setting-color-shadow-1, 0 rem(3) rem(3) 0 $setting-color-shadow-1;
+                            background-color: $setting-color-transparent;
+                        }
+                    }
+
+                    #{$name}__colors {
+                        opacity: 1;
+                    }
+                }
+            }
+
+            &--catalog {
+                @include helper-breakpoint-media-min($lg) {
+                    padding-top: 0;
+                }
+
+                @include helper-breakpoint-media-min($xl) {
+                    padding: 0 rem(14) rem(15);
+                }
+            }
+
+            &--product-set {
+                padding: 0;
+
+                @include helper-breakpoint-media-min($lg) {
+                    padding: 0 rem(14) rem(26);
+                }
+            }
+
+            &--sets {
+                padding-bottom: rem(66);
+            }
+        }
+
+        &__image-wrap {
+            position: relative;
+            padding: rem(12) 0;
+            margin-bottom: rem(17);
+
+            @include helper-breakpoint-media-min($lg) {
+                padding: rem(12) rem(10);
+                margin: 0 rem(-10) rem(17);
+            }
+
+            @include helper-breakpoint-media-min($xl) {
+                margin: 0 rem(-14) rem(15);
+                padding: rem(8) rem(14);
+            }
+
+            &::before {
+                @include helper-effect-transition(background-color box-shadow);
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: $setting-color-alpha-2;
+                z-index: $setting-zi-element;
+
+                @include helper-breakpoint-media-min($lg) {
+                    display: none;
+                }
+            }
+
+            &--product-set {
+                max-height: rem(243);
+            }
+
+            &--catalog {
+                &::before {
+                    @include helper-effect-transition(background-color box-shadow);
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    background-color: $setting-color-alpha-2;
+                    z-index: $setting-zi-element;
+
+                    @include helper-breakpoint-media-min($lg) {
+                        display: block;
+                    }
+                }
+            }
+
+            &--stretch {
+                margin-left: 0;
+                margin-right: 0;
+            }
+        }
+
+        &__overlay {
+            @include helper-font-size(small);
+            color: $setting-color-gray-4;
+            font-weight: fw(medium);
+            letter-spacing: rem(0.1);
+            line-height: rem(16);
+            height: rem(33);
+            overflow: hidden;
+            // Styles for multiline truncation with ellipsis Chrome only
+            /* stylelint-disable */
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            /* stylelint-enable */
+
+            &::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: rem(220);
+                z-index: $setting-zi-element;
+            }
+
+            &--category {
+                &::before {
+                    height: rem(164);
+                }
+            }
+
+            @include helper-breakpoint-media-min($lg) {
+                @include helper-font-size(big);
+                height: rem(64);
+                line-height: rem(21);
+                // Styles for multiline truncation with ellipsis Chrome only
+                /* stylelint-disable */
+                -webkit-line-clamp: 3;
+                /* stylelint-enable */
+
+                &::before {
+                    @include helper-effect-transition(background-color box-shadow);
+                    background-color: $setting-color-alpha-2;
+                    height: 100%;
+                }
+            }
+
+            @include helper-breakpoint-media-min($xl) {
+                height: rem(76);
+                line-height: rem(25);
+                letter-spacing: rem(0.2);
+            }
+
+            &--catalog {
+                color: $setting-color-gray-5;
+
+                @include helper-breakpoint-media-min($lg) {
+                    @include helper-font-size(default);
+                    height: rem(61);
+                    line-height: normal;
+                    letter-spacing: rem(0.1);
+                }
+
+                &::before {
+                    background-color: $setting-color-transparent;
+                }
+            }
+
+            &--product-set {
+                @include helper-breakpoint-media-min($lg) {
+                    @include helper-font-size(default);
+                    height: rem(61);
+                    line-height: normal;
+                    letter-spacing: rem(0.1);
+                }
+            }
+
+            &:hover {
+                @include helper-breakpoint-media-min($xl) {
+                    color: $setting-color-gray-4;
+
+                    &::before {
+                        box-shadow: 0 rem(18) rem(18) 0 $setting-color-shadow-1, 0 rem(3) rem(3) 0 $setting-color-shadow-1;
+                        background-color: $setting-color-transparent;
+                    }
+                }
+            }
+        }
+
+        &__info {
+            max-width: 100%;
+        }
+
+        &__variant {
+            margin: rem(8) 0 rem(10);
+            position: relative;
+            z-index: $setting-zi-element + 2;
+
+            @include helper-breakpoint-media-min($lg) {
+                margin-bottom: rem(24);
+            }
+        }
+
+        &__category {
+            @include helper-font-size(small);
+            display: block;
+            line-height: rem(16);
+            letter-spacing: rem(0.2);
+            font-weight: fw(regular);
+            color: $setting-color-gray-3;
+            margin-top: rem(3);
+
+            @include helper-breakpoint-media-min($lg) {
+                @include helper-font-size(default);
+                line-height: rem(20);
+            }
+        }
+
+        &__rating {
+            margin-top: rem(4);
+
+            @include helper-breakpoint-media-min($lg) {
+                margin-top: rem(11);
+            }
+        }
+
+        &__price {
+            margin-top: rem(15);
+
+            @include helper-breakpoint-media-min($lg) {
+                margin-top: rem(25);
+            }
+        }
+
+        &__actions {
+            position: relative;
+            z-index: $setting-zi-element + 1;
+
+            &--sticky-bottom {
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: rem(26);
+
+                @include helper-breakpoint-media-min($xl) {
+                    left: rem(14);
+                    right: rem(14);
+                }
+            }
+        }
+
+        &__actions-row {
+            margin-top: rem(10);
+            display: flex;
+            width: 100%;
+        }
+
+        @content;
+    }
+}
+
+@include shop-ui-product-item();
