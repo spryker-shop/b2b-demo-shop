@@ -29,7 +29,7 @@ use Spryker\Zed\Calculation\Communication\Plugin\Calculator\RemoveCanceledAmount
 use Spryker\Zed\Calculation\Communication\Plugin\Calculator\RemoveTotalsCalculatorPlugin;
 use Spryker\Zed\Calculation\Communication\Plugin\Calculator\SubtotalCalculatorPlugin;
 use Spryker\Zed\Calculation\Communication\Plugin\Calculator\TaxTotalCalculatorPlugin;
-use Spryker\Zed\DiscountCalculationConnector\Communication\Plugin\DiscountCalculatorPlugin;
+use Spryker\Zed\DiscountCalculationConnector\Communication\Plugin\Calculation\DiscountCalculationPlugin;
 use Spryker\Zed\DiscountPromotion\Communication\Plugin\Calculation\RemovePromotionItemsCalculatorPlugin;
 use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\Payment\Communication\Plugin\Calculation\PaymentCalculatorPlugin;
@@ -90,7 +90,7 @@ class CalculationDependencyProvider extends SprykerCalculationDependencyProvider
      * SubtotalCalculatorPlugin - Sum of item sumAggregation
      *    - Total.subtotal
      *
-     * DiscountCalculatorPlugin - Discount bundle calculator, runs cart rules/applies voucher codes.
+     * DiscountCalculationPlugin - Discount bundle calculator, runs cart/order rules/applies voucher codes.
      *    - Item.calculatedDiscounts[].unitGrossAmount
      *    - Item.productOptions.calculatedDiscounts[].unitGrossAmount
      *    - Expense.calculatedDiscounts[].unitGrossAmount
@@ -205,7 +205,7 @@ class CalculationDependencyProvider extends SprykerCalculationDependencyProvider
             new ShipmentTaxRateCalculatorPlugin(),
 
             new InitialGrandTotalCalculatorPlugin(),
-            new DiscountCalculatorPlugin(),
+            new DiscountCalculationPlugin(),
             new DiscountAmountAggregatorForGenericAmountPlugin(),
             new ItemDiscountAmountFullAggregatorPlugin(),
 
@@ -250,6 +250,8 @@ class CalculationDependencyProvider extends SprykerCalculationDependencyProvider
             new ItemSubtotalAggregatorPlugin(),
 
             new SubtotalCalculatorPlugin(),
+
+            new DiscountCalculationPlugin(),
 
             new DiscountAmountAggregatorForGenericAmountPlugin(),
             new ItemDiscountAmountFullAggregatorPlugin(),
