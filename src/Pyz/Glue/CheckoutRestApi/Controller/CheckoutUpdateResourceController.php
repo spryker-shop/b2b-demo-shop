@@ -8,7 +8,6 @@
 namespace Pyz\Glue\CheckoutRestApi\Controller;
 
 use Generated\Shared\Transfer\RestCheckoutRequestAttributesTransfer;
-use Spryker\Client\Customer\CustomerClient;
 use Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface;
 use Spryker\Glue\GlueApplication\Rest\Request\Data\RestRequestInterface;
 use Spryker\Glue\Kernel\Controller\AbstractController;

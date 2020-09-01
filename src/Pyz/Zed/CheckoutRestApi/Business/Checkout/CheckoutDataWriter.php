@@ -159,7 +159,7 @@ class CheckoutDataWriter implements CheckoutDataWriterInterface
             ->fromArray($restCheckoutRequestAttributesTransfer->getApproverDetails()->toArray(), true);
 
         $companyUserTransfer = $this->companyUserFacade->findActiveCompanyUserByUuid(
-            (new CompanyUserTransfer)
+            (new CompanyUserTransfer())
                 ->setUuid($restCheckoutRequestAttributesTransfer->getApproverDetails()->getApproverId())
         );
         if (!$companyUserTransfer) {
@@ -169,14 +169,14 @@ class CheckoutDataWriter implements CheckoutDataWriterInterface
         $currentQuoteApprovalTransfer = $this->getCurrentQuoteApprovalTransfer($quoteTransfer, $companyUserTransfer, $approverDetailsTransfer);
         if ($currentQuoteApprovalTransfer) {
             $quoteTransfer->setQuoteApprovals(new ArrayObject([
-                $currentQuoteApprovalTransfer
+                $currentQuoteApprovalTransfer,
             ]));
 
             return $quoteTransfer;
         }
 
         $requesterCompanyUserTransfer = $this->companyUserFacade->findActiveCompanyUserByUuid(
-            (new CompanyUserTransfer)
+            (new CompanyUserTransfer())
                 ->setUuid($restCheckoutRequestAttributesTransfer->getCustomer()->getUuidCompanyUser())
         );
         if (!$requesterCompanyUserTransfer) {
@@ -198,9 +198,8 @@ class CheckoutDataWriter implements CheckoutDataWriterInterface
         $currentQuoteApprovalTransfer = $this->getCurrentQuoteApprovalTransfer($quoteTransfer, $companyUserTransfer, $approverDetailsTransfer);
         if ($currentQuoteApprovalTransfer) {
             $quoteTransfer->setQuoteApprovals(new ArrayObject([
-                $currentQuoteApprovalTransfer
+                $currentQuoteApprovalTransfer,
             ]));
-
         }
 
         return $quoteTransfer;
