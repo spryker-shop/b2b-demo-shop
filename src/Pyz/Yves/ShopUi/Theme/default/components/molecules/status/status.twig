@@ -1,23 +1,5 @@
-{% extends model('component') %}
-
-{% define config = {
-    name: 'status',
-    tag: 'span',
-} %}
-
-{% define data = {
-    label: required,
-    status: required,
-} %}
+{% extends molecule('status', '@SprykerShop:ShopUi') %}
 
 {% block class %}
-    {% if data.status %}{{ parent() }} {{ config.name }}--{{ data.status }}{% endif %}
-{% endblock %}
-
-{% block body %}
-    {% if data.status %}
-        {{ data.label }}
-    {% else %}
-        --
-    {% endif %}
+    {% if data.status %}{{ parent() }}{% endif %}
 {% endblock %}
