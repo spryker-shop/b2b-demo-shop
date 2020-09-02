@@ -1,16 +1,22 @@
 {% extends molecule('customer-reorder-form', '@SprykerShop:CustomerReorderWidget') %}
 
-{% block formActions %}
-    <div class="grid grid--middle grid--gap grid--right spacing-y spacing-y--biggest">
-        <div class="col col--sm-12 col--lg-3">
-            <button class="button button--tight button--expand button--hollow spacing-bottom {{ config.jsName }}__trigger" disabled>
-                {{ 'customer.order.reorder_selected' | trans }}
-            </button>
-        </div>
-        <div class="col col--sm-12 col--lg-3">
-            <a href="{{ path('customer/order/reorder', {'idSalesOrder': data.idSalesOrder}) }}" class="button button--tight button--expand spacing-bottom">
-                {{ 'customer.order.reorder_all' | trans }}
-            </a>
-        </div>
-    </div>
+{% define data = {
+    order: required,
+    idSalesOrder: '',
+} %}
+
+{% block body %}
+    {% widget 'CustomerReorderItemsFormWidget' args [data.order, config] with {
+        embed: {
+            formContent: block('formContent'),
+            jsName: config.jsName,
+        },
+    } only %}
+        {% block embeddedData %}
+            <input type="hidden" name="id" value="{{ data.order.idSalesOrder }}">
+            {{ embed.formContent | raw }}
+
+            {% block formActions %}{% endblock %}
+        {% endblock %}
+    {% endwidget %}
 {% endblock %}

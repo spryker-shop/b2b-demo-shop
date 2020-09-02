@@ -30,7 +30,7 @@ $jobs[] = [
 ];
 $jobs[] = [
     'name' => 'update-product-label-relations',
-    'command' => '$PHP_BIN vendor/bin/console product-label:relations:update -vvv',
+    'command' => '$PHP_BIN vendor/bin/console product-label:relations:update -vvv --no-touch',
     'schedule' => '* * * * *',
     'enable' => true,
     'stores' => $allStores,
@@ -143,6 +143,23 @@ $jobs[] = [
     'name' => 'close-outdated-quote-requests',
     'command' => '$PHP_BIN vendor/bin/console quote-request:close-outdated',
     'schedule' => '0 * * * *',
+    'enable' => true,
+    'stores' => $allStores,
+];
+
+/* Oauth */
+$jobs[] = [
+    'name' => 'remove-expired-refresh-tokens',
+    'command' => '$PHP_BIN vendor/bin/console oauth:refresh-token:remove-expired',
+    'schedule' => '*/5 * * * *',
+    'enable' => true,
+    'stores' => $allStores,
+];
+
+$jobs[] = [
+    'name' => 'order-invoice-send',
+    'command' => '$PHP_BIN vendor/bin/console order:invoice:send',
+    'schedule' => '*/5 * * * *',
     'enable' => true,
     'stores' => $allStores,
 ];

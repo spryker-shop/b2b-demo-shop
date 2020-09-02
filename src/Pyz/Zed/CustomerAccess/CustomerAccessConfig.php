@@ -15,7 +15,7 @@ class CustomerAccessConfig extends SprykerCustomerAccessConfig
     /**
      * {@inheritDoc}
      *
-     * @return array
+     * @return string[]
      */
     public function getContentTypes(): array
     {
@@ -53,7 +53,6 @@ class CustomerAccessConfig extends SprykerCustomerAccessConfig
     {
         return [
             SprykerSharedCustomerAccessConfig::CONTENT_TYPE_PRICE,
-            SprykerSharedCustomerAccessConfig::CONTENT_TYPE_ADD_TO_CART,
             SprykerSharedCustomerAccessConfig::CONTENT_TYPE_WISHLIST,
             SprykerSharedCustomerAccessConfig::CONTENT_TYPE_SHOPPING_LIST,
         ];

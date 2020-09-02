@@ -14,9 +14,15 @@
 
             &--active {
                 #{$name}__icon {
+                    transform: rotate(180deg) translateY(50%);
+
                     &::after {
                         display: none;
                     }
+                }
+
+                &::after {
+                    display: none;
                 }
             }
         }

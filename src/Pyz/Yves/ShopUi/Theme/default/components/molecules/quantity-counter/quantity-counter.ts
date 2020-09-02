@@ -24,6 +24,7 @@ export default class QuantityCounter extends Component {
     protected mapEvents(): void {
         this.decrementButton.addEventListener('click', (event: Event) => this.decrementValue(event));
         this.incrementButton.addEventListener('click', (event: Event) => this.incrementValue(event));
+        this.input.addEventListener('keydown', (event: KeyboardEvent) => this.onKeyDown(event));
 
         if (this.autoUpdate) {
             this.input.addEventListener('change', () => this.delayToSubmit());
@@ -71,6 +72,12 @@ export default class QuantityCounter extends Component {
     protected onSubmit(): void {
         if (this.value !== this.getValue) {
             this.input.form.submit();
+        }
+    }
+
+    protected onKeyDown(event: KeyboardEvent): void {
+        if (event.key === 'Enter') {
+            event.preventDefault();
         }
     }
 

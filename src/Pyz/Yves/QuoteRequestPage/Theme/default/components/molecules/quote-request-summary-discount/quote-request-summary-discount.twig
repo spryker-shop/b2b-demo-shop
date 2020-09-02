@@ -1,0 +1,26 @@
+{% extends molecule('quote-request-summary-discount', '@SprykerShop:QuoteRequestPage') %}
+
+{% block component %}
+    {% set hasDiscount = data.discountTotal and (data.voucherDiscounts or data.ruleDiscounts) %}
+    {% if hasDiscount %}
+        <hr class="box__separator">
+
+        {{ block('body') }}
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+    {% set discountClass = 'grid grid--justify grid--nowrap ' ~ config.name ~ '__row' %}
+    {% set discountTitleClass = 'col ' ~ config.name ~ '__key' %}
+    {% set discountValueClass = 'col ' ~ config.name ~ '__value' %}
+
+    {{ parent() }}
+{% endblock %}
+
+{% block voucherDiscountsTitle %}
+    <strong class="{{ config.name }}__title">{{ 'cart.vouchers' | trans }}</strong>
+{% endblock %}
+
+{% block ruleDiscountsTitle %}
+    <strong class="{{ config.name }}__title">{{ 'cart.discounts' | trans }}</strong>
+{% endblock %}

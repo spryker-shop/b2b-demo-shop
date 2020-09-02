@@ -1,0 +1,21 @@
+{% extends molecule('color-selector', '@SprykerShop:ProductGroupWidget') %}
+
+{% block body %}
+    <span class="{{ config.name }}__items-title">{{ 'product.color-selector' | trans }}:</span>
+
+    {{ parent() }}
+{% endblock %}
+
+{% block selection %}
+    {% set borderColor = item[data.colorAttributeName] is defined ? 'border-color: ' ~ item[data.colorAttributeName] ~ ';' %}
+
+    {% block selectionInner %}
+        <{{ data.selectionTag }}
+            class="{{ config.name }}__item {{ activeClassName }} {{ config.jsName }}__item"
+            style="{{ borderColor }}"
+            {{ component.renderAttributes(dataAttributesList) }}>
+            <span class="{{ config.name }}__item-inner" style="{{ backgroundColor }}"></span>
+            <span class="{{ config.name }}__tooltip">{{ item.attributes.farbe | capitalize }}</span>
+        </{{ data.selectionTag }}>
+    {% endblock %}
+{% endblock %}

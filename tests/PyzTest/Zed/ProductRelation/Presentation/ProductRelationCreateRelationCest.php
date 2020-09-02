@@ -37,6 +37,7 @@ class ProductRelationCreateRelationCest
 
         $i->amOnPage(ProductRelationCreatePage::URL);
 
+        $i->fillField('//*[@id="product_relation_productRelationKey"]', uniqid('key-', false));
         $i->filterProductsByName(ProductRelationCreatePage::PRODUCT_RELATION_PRODUCT_1_NAME);
         $i->wait(5);
         $i->selectProduct(ProductRelationCreatePage::PRODUCT_RELATION_PRODUCT_1_SKU);
@@ -52,10 +53,6 @@ class ProductRelationCreateRelationCest
 
         $i->clickSaveButton();
         $i->see(ProductRelationCreatePage::MESSAGE_SUCCESS_PRODUCT_RELATION_CREATED);
-
-        $i->activateRelation();
-        $i->wait(5);
-        $i->see(ProductRelationCreatePage::MESSAGE_SUCCESS_PRODUCT_RELATION_ACTIVATED);
 
         // TODO re-enable
         //$i->runCollectors();

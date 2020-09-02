@@ -1,0 +1,76 @@
+$shop-ui-cart-counter-quantity-size: rem(16);
+
+@mixin shop-ui-cart-counter($name: '.cart-counter') {
+    #{$name} {
+        &__content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: rem(38);
+
+            @include helper-breakpoint-media-min($lg) {
+                align-items: flex-start;
+            }
+        }
+
+        &__label {
+            display: none;
+
+            @include helper-breakpoint-media-min($lg) {
+                display: inline;
+            }
+
+            &--mobile {
+                display: block;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                padding-left: rem(4);
+                padding-right: rem(2);
+
+                @include helper-breakpoint-media-min($lg) {
+                    display: none;
+                }
+            }
+        }
+
+        &__quantity {
+            @include helper-breakpoint-media-min($lg) {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                min-width: $shop-ui-cart-counter-quantity-size;
+                height: $shop-ui-cart-counter-quantity-size;
+                background: $setting-color-main;
+                border-radius: $setting-border-radius;
+                color: $setting-color-white;
+                text-align: center;
+                font-size: rem(11);
+                font-weight: fw(bold);
+                line-height: $shop-ui-cart-counter-quantity-size;
+                margin: rem(10) 0 0 rem(6);
+            }
+
+            &::before {
+                content: '(';
+            }
+
+            &::after {
+                content: ')';
+            }
+
+            &::before,
+            &::after {
+                @include helper-breakpoint-media-min($lg) {
+                    display: none;
+                }
+            }
+
+            &--hidden {
+                display: none;
+            }
+        }
+    }
+}
+
+@include shop-ui-cart-counter();

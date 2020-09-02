@@ -1,0 +1,71 @@
+{% extends view('return-create', '@SprykerShop:SalesReturnPage') %}
+
+{% block salesReturnContent %}
+    {% set contentWrapperClass = '' %}
+
+    {{ parent() }}
+{% endblock %}
+
+{% block salesReturnContentHeader %}
+    {% block salesReturnPageTitle %}
+        {% set salesReturnSaveActionClass = 'action-bar__action button js-return-create__target-state-toggler' %}
+
+        {% embed molecule('action-bar') with {
+            modifiers: ['first'],
+            data: {
+                title: 'return_page.return.title' | trans,
+                actions: [
+                    {
+                        title: 'general.back.button' | trans,
+                        url: path('customer/order/details', {'id': data.order.idSalesOrder}),
+                        modifiers: ['hollow'],
+                        icon: '',
+                    },
+                ],
+            },
+            embed: {
+                submit: block('salesReturnPageActions'),
+            },
+        } only %}
+            {% block actions %}
+                {{ parent() }}
+                {{ embed.submit | raw }}
+            {% endblock %}
+        {% endembed %}
+    {% endblock %}
+{% endblock %}
+
+{% block salesReturnOrderInfo %}
+    {% include molecule('order-info', 'CustomerPage') ignore missing with {
+        data: {
+            id: data.order.orderReference,
+            date: data.order.createdAt | formatDateTime,
+            order: data.order,
+        },
+    } only %}
+{% endblock %}
+
+{% block salesReturnOrderInfoSeparator %}{% endblock %}
+
+{% block salesReturnProductItem %}
+    {% set salesReturnProductItemClass = 'grid grid--middle grid--justify grid--nowrap' %}
+
+    {{ parent() }}
+{% endblock %}
+
+{% block salesReturnProducts %}
+    {% set salesReturnProductsClass = 'spacing-bottom spacing-bottom--big' %}
+
+    {% include molecule('checkbox-select-all') with {
+        class: 'spacing-y spacing-y--inner spacing-y--big',
+        modifiers: ['expand', 'bordered'],
+        data: {
+            label: 'checkbox-select-all.title' | trans,
+        },
+        attributes: {
+            'target-class-name': 'js-return-create__trigger-state-toggler',
+        },
+    } only %}
+
+    {{ parent() }}
+{% endblock %}

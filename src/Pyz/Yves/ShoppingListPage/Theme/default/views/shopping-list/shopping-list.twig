@@ -16,7 +16,8 @@
     title: _view.shoppingListOverview.shoppingList.name,
     shoppingList: _view.shoppingListOverview.shoppingList,
     shoppingListCollection: _view.shoppingListOverview.shoppingLists,
-    shoppingListItems: _view.shoppingListItems
+    shoppingListItems: _view.shoppingListItems,
+    addItemToCartForm: _view.addItemToCartForm,
 } %}
 
 {% block customerNavigation %}
@@ -40,26 +41,26 @@
                             icon: 'edit',
                             title: 'page.multi_cart.shopping_cart.update.title',
                             iconModifier: 'sm-lg-bigger',
-                            available: isListEditable
+                            available: isListEditable,
                         },
                         {
                             url: url('shopping-list/share', { idShoppingList: data.shoppingList.idShoppingList }),
                             icon: 'share',
                             title: 'shared_cart.form.share_button',
                             iconModifier: 'sm-lg-bigger',
-                            available: isListEditable
+                            available: isListEditable,
                         },
                         {
                             url: path('shopping-list/print', {idShoppingList: data.shoppingList.idShoppingList}),
                             icon: 'print',
                             title: 'customer.account.shopping_list.overview.print',
-                            iconModifier: 'sm-lg-bigger'
-                        }
+                            iconModifier: 'sm-lg-bigger',
+                        },
                     ]
                 },
                 embed: {
-                    shoppingList: data.shoppingList
-                }
+                    shoppingList: data.shoppingList,
+                },
             } only %}
                 {% block body %}
                     <div class="{{ config.name }}__inner">
@@ -81,21 +82,21 @@
     {% include molecule('shopping-list-info', 'ShoppingListPage') with {
         modifiers: ['editable'],
         data: {
-            shoppingList: data.shoppingList
-        }
+            shoppingList: data.shoppingList,
+        },
     } only %}
 
     {% if can('WriteShoppingListPermissionPlugin', data.shoppingList.idShoppingList) %}
         {% include molecule('shopping-list-product-quick-add', 'ShoppingListPage') with {
             class: 'spacing-bottom spacing-bottom--bigger',
             data: {
-                activeShoppingListId: data.shoppingList.idShoppingList
-            }
+                activeShoppingListId: data.shoppingList.idShoppingList,
+            },
         } only %}
     {% endif %}
 
     {% if data.shoppingListItems|length %}
-        <form method="POST" action="{{ path('shopping-list/add-to-cart') }}">
+        {{ form_start(data.addItemToCartForm, {'action': path('shopping-list/add-to-cart')}) }}
             <div class="grid grid--justify spacing-bottom spacing-bottom--big">
                 <div class="col col--sm-12 col--lg-auto spacing-bottom">
                     <button type="submit" class="button button--expand-sm-lg button--hollow" {{qa('submit-button')}}>
@@ -104,8 +105,8 @@
                             class: 'spacing-left spacing-left--small',
                             modifiers: ['trolley'],
                             data: {
-                                name: 'cart'
-                            }
+                                name: 'cart',
+                            },
                         } only %}
                     </button>
                 </div>
@@ -116,8 +117,8 @@
                             class: 'spacing-left spacing-left--small',
                             modifiers: ['trolley'],
                             data: {
-                                name: 'cart'
-                            }
+                                name: 'cart',
+                            },
                         } only %}
                     </button>
                 </div>
@@ -129,10 +130,10 @@
                 class: 'table table--expand',
                 data: {
                     shoppingList: data.shoppingList,
-                    shoppingListItems: data.shoppingListItems
-                }
+                    shoppingListItems: data.shoppingListItems,
+                },
             } only %}
-        </form>
+        {{ form(data.addItemToCartForm) }}
     {% else %}
         {{ 'customer.account.shopping_list.empty' | trans }}
     {% endif %}

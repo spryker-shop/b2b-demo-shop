@@ -87,6 +87,17 @@
                     background-color: $setting-color-gray-3;
                 }
             }
+
+            &-active {
+                background: $setting-color-alpha-9;
+
+                &:hover,
+                &:focus {
+                    border-color: $setting-color-main;
+                    color: $setting-color-main;
+                    background: $setting-color-alpha-9;
+                }
+            }
         }
 
         &--alternative {
@@ -99,6 +110,11 @@
                 background-color: helper-color-dark($setting-color-alt);
                 border-color: helper-color-dark($setting-color-alt);
             }
+        }
+
+        &--small-space {
+            padding-left: rem(15);
+            padding-right: rem(15);
         }
 
         &--small {
@@ -202,12 +218,18 @@
             }
         }
 
+        &--icon {
+            padding-left: rem(10);
+            padding-right: rem(10);
+        }
+
         &[disabled],
         &--disabled {
             background-color: $setting-color-gray-2;
             border-color: $setting-color-gray-2;
             color: $setting-color-white;
             cursor: not-allowed;
+            pointer-events: none;
 
             &:hover,
             &:focus {
@@ -219,6 +241,13 @@
         &--justify {
             display: flex;
             justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        &--justify-center {
+            display: flex;
+            justify-content: center;
             align-items: center;
             width: 100%;
         }

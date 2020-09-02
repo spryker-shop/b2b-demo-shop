@@ -1,24 +1,8 @@
-{% extends template('page-layout-checkout', 'CheckoutPage') %}
+{% extends template('page-layout-main') %}
 
 {% define data = {
-    title: required,
-    message: required
+    message: required,
 } %}
-
-{% block header %}
-    {% embed organism('header') only %}
-        {% block mobile %}
-            <a href="#" class="link link--alt js-page-layout-main__side-drawer-trigger">
-                {% include atom('icon') with {
-                    modifiers: ['big'],
-                    data: {
-                        name: 'bars'
-                    }
-                } only %}
-            </a>
-        {% endblock %}
-    {% endembed %}
-{% endblock %}
 
 {% block contentClass %}page-layout-main page-layout-main--success{% endblock %}
 
@@ -32,31 +16,42 @@
                 data: {
                     imageUrl: publicPath('images/img-success.jpg'),
                     title: data.title,
-                    message: data.message
-                }
+                },
+                embed: {
+                    message: data.message,
+                },
             } only %}
-                {% block body %}
-                    <div class="{{config.name}}__container {{config.name}}__container--success grid grid--middle grid--center" style="{{backgroundImage}}">
-                        <div class="grid grid--center text-center">
-                            <div class="col col--md-10 col--lg-8">
-                                {% include atom('icon') with {
-                                    modifiers: ['success'],
-                                    data: {
-                                        name: 'success'
-                                    }
-                                } only %}
-                                {% if data.title is not empty %}
-                                    <h1 class="{{ config.name }}__success-title">{{ data.title }}</h1>
-                                {% endif %}
-                                {% if data.message is not empty %}
-                                    <p class="{{ config.name }}__success-text">{{ data.message }}</p>
-                                {% endif %}
-                            </div>
-                        </div>
+                {% block content %}
+                    {% set title = data.title %}
+                    {% set message = embed.message %}
+
+                    <div class="col col--md-10 col--lg-8">
+                        {% include atom('icon') with {
+                            modifiers: ['success'],
+                            data: {
+                                name: 'success',
+                            },
+                        } only %}
+
+                        {% if title %}
+                            <h1 class="{{ config.name }}__success-title">{{ title }}</h1>
+                        {% endif %}
+
+                        {% if message %}
+                            <p class="{{ config.name }}__success-text">{{ message }}</p>
+                        {% endif %}
                     </div>
+                {% endblock %}
+
+                {% block body %}
+                    {% set containerClass = component.renderClass(config.name ~ '__container', modifiers) ~ ' grid grid--middle grid--center' %}
+                    {% set contentClass = 'grid grid--center text-center' %}
+
+                    {{ parent() }}
                 {% endblock %}
             {% endembed %}
         {% endblock %}
+
         {% block actions %}
             <div class="container container--checkout">
                 <div class="grid grid--gap grid--center">
@@ -70,8 +65,4 @@
             </div>
         {% endblock %}
     </div>
-{% endblock %}
-
-{% block footer %}
-    {% include organism('footer') only %}
 {% endblock %}

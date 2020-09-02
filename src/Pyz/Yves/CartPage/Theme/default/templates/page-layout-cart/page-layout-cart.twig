@@ -1,4 +1,16 @@
-{% extends template('page-layout-cart', '@SprykerShop:CartPage') %}
+{% extends template('page-layout-main') %}
+
+{% define data = {
+    cart: _view.cart,
+    isQuoteEditable: _view.isQuoteEditable,
+    isQuoteLocked: _view.isQuoteLocked,
+    cartItems: _view.cartItems,
+    isQuoteValid: _view.isQuoteValid,
+    attributes: _view.attributes,
+    request: app.request,
+    title: 'cart.cart' | trans,
+    requestUri: app.request.requestUri,
+} %}
 
 {% block breadcrumbs %}
     {% set steps = [
@@ -317,17 +329,25 @@
 
                                                 {% block deleteButton %}
                                                     {% if data.canRemove %}
-                                                        <div class="col {{ config.name }}__delete-cart">
-                                                            <a class="link link--icon" href="{{ path('cart/remove', {'sku': data.listItem.sku, 'groupKey': data.listItem.groupKey }) }}" title="{{ 'cart.delete.item' | trans }}" data-init-single-click>
-                                                                {% include atom('icon') with {
-                                                                    modifiers: ['link'],
-                                                                    data: {
-                                                                        name: 'delete',
-                                                                    },
-                                                                } only %}
-                                                                <span class="is-hidden-sm-md">{{ 'cart.delete.item' | trans }}</span>
-                                                            </a>
-                                                        </div>
+                                                        {% widget 'RemoveFromCartFormWidget' args [data.listItem] with {
+                                                            embed: {
+                                                                configName: config.name,
+                                                            },
+                                                        } only %}
+                                                            {% block embeddedData %}
+                                                                <div class="col {{ embed.configName }}__delete-cart">
+                                                                    <button class="link link--icon" title="{{ 'cart.delete.item' | trans }}" data-init-single-click>
+                                                                        {% include atom('icon') with {
+                                                                            modifiers: ['link'],
+                                                                            data: {
+                                                                                name: 'delete',
+                                                                            },
+                                                                        } only %}
+                                                                        <span class="is-hidden-sm-md">{{ 'cart.delete.item' | trans }}</span>
+                                                                    </button>
+                                                                </div>
+                                                            {% endblock %}
+                                                        {% endwidget %}
                                                     {% endif %}
                                                 {% endblock %}
                                             </div>
@@ -341,15 +361,7 @@
 
                 {% if isQuoteEnadled and can('RemoveCartItemPermissionPlugin') %}
                     <div class="grid grid--right cart-bottom">
-                        <a href="{{ path('multi-cart/clear', {idQuote: data.cart.idQuote}) }}" class="link link--icon cart-bottom__button">
-                            {% include atom('icon') with {
-                                modifiers: ['link'],
-                                data: {
-                                    name: 'delete',
-                                },
-                            } only %}
-                            {{ "multi_cart_page.delete_all" | trans }}
-                        </a>
+                        {% widget 'CartOperationsWidget' args [data.cart] use view('cart-operations-actions', 'MultiCartWidget') only %}{% endwidget %}
                     </div>
                 {% endif %}
 
@@ -378,8 +390,4 @@
             {% widget 'UpSellingProductsWidget' args [data.cart] only %}{% endwidget %}
         {% endif %}
     {% endif %}
-{% endblock %}
-
-{% block footer %}
-    {% include organism('footer') only %}
 {% endblock %}

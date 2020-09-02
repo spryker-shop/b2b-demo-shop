@@ -5,16 +5,26 @@
 } %}
 
 {% block body %}
-    {% include molecule('product-card') with {
-        class: 'col col--sm-12 col--md-6 col--lg-4 product-card--stretch',
+    {% embed molecule('product-item') with {
+        class: 'col col--sm-12 col--md-6 col--lg-4',
+        modifiers: ['stretch'],
         data: {
-            name: data.product.name,
-            abstractId: data.product.idProductAbstract,
-            url: data.product.url,
-            imageUrl: data.product.images is empty ? '' : data.product.images.0.externalUrlSmall,
-            price: data.product.prices.DEFAULT | default(null),
-            originalPrice: data.product.prices.ORIGINAL | default(null),
+            product: data.product,
             category: 'category.office.furniture' | trans,
         },
     } only %}
+        {% block rating %}
+            {% include molecule('rating-selector', 'ProductReviewWidget') ignore missing with {
+                data: {
+                    value: data.product.rating.averageRating | default(0),
+                    reviewCount:  data.product.rating.totalReview | default(0),
+                    useHalfSteps: true,
+                    parentJsName: config.jsName,
+                },
+                attributes: {
+                    readonly: true,
+                },
+            } only %}
+        {% endblock %}
+    {% endembed %}
 {% endblock %}

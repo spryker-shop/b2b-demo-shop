@@ -40,6 +40,7 @@ use Spryker\Zed\Calculation\Business\CalculationFacade;
 use Spryker\Zed\Calculation\Communication\Plugin\Calculator\GrandTotalCalculatorPlugin;
 use Spryker\Zed\Calculation\Communication\Plugin\Calculator\RefundableAmountCalculatorPlugin;
 use Spryker\Zed\Calculation\Communication\Plugin\Calculator\RefundTotalCalculatorPlugin;
+use Spryker\Zed\Calculation\Dependency\Service\CalculationToUtilTextBridge;
 use Spryker\Zed\Kernel\Container;
 
 /**
@@ -162,6 +163,10 @@ class CalculationBusinessTester extends Actor
         $container = new Container();
         $container[CalculationDependencyProvider::QUOTE_CALCULATOR_PLUGIN_STACK] = $calculatorPlugins;
         $container[CalculationDependencyProvider::PLUGINS_QUOTE_POST_RECALCULATE] = [];
+
+        $container->set(CalculationDependencyProvider::SERVICE_UTIL_TEXT, function (Container $container) {
+            return new CalculationToUtilTextBridge($container->getLocator()->utilText()->service());
+        });
 
         $calculationBusinessFactory->setContainer($container);
         $calculationFacade->setFactory($calculationBusinessFactory);
