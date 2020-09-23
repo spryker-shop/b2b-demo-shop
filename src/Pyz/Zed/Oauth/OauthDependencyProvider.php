@@ -8,9 +8,15 @@
 namespace Pyz\Zed\Oauth;
 
 use Spryker\Zed\Oauth\OauthDependencyProvider as SprykerOauthDependencyProvider;
+use Spryker\Zed\OauthAgentConnector\Communication\Plugin\Oauth\AgentCredentialsOauthGrantTypeConfigurationProviderPlugin;
+use Spryker\Zed\OauthAgentConnector\Communication\Plugin\Oauth\AgentOauthScopeProviderPlugin;
+use Spryker\Zed\OauthAgentConnector\Communication\Plugin\Oauth\AgentOauthUserProviderPlugin;
 use Spryker\Zed\OauthCompanyUser\Communication\Plugin\Oauth\CompanyUserOauthScopeProviderPlugin;
 use Spryker\Zed\OauthCompanyUser\Communication\Plugin\Oauth\CompanyUserOauthUserProviderPlugin;
 use Spryker\Zed\OauthCompanyUser\Communication\Plugin\Oauth\IdCompanyUserOauthGrantTypeConfigurationProviderPlugin;
+use Spryker\Zed\OauthCustomerConnector\Communication\Plugin\Oauth\CustomerImpersonationOauthGrantTypeConfigurationProviderPlugin;
+use Spryker\Zed\OauthCustomerConnector\Communication\Plugin\Oauth\CustomerImpersonationOauthScopeProviderPlugin;
+use Spryker\Zed\OauthCustomerConnector\Communication\Plugin\Oauth\CustomerImpersonationOauthUserProviderPlugin;
 use Spryker\Zed\OauthCustomerConnector\Communication\Plugin\Oauth\CustomerOauthScopeProviderPlugin;
 use Spryker\Zed\OauthCustomerConnector\Communication\Plugin\Oauth\CustomerOauthUserProviderPlugin;
 use Spryker\Zed\OauthPermission\Communication\Plugin\Filter\OauthUserIdentifierFilterPermissionPlugin;
@@ -32,6 +38,8 @@ class OauthDependencyProvider extends SprykerOauthDependencyProvider
         return [
             new CustomerOauthUserProviderPlugin(),
             new CompanyUserOauthUserProviderPlugin(),
+            new AgentOauthUserProviderPlugin(),
+            new CustomerImpersonationOauthUserProviderPlugin(),
         ];
     }
 
@@ -43,6 +51,8 @@ class OauthDependencyProvider extends SprykerOauthDependencyProvider
         return [
             new CustomerOauthScopeProviderPlugin(),
             new CompanyUserOauthScopeProviderPlugin(),
+            new AgentOauthScopeProviderPlugin(),
+            new CustomerImpersonationOauthScopeProviderPlugin(),
         ];
     }
 
@@ -53,6 +63,8 @@ class OauthDependencyProvider extends SprykerOauthDependencyProvider
     {
         return array_merge(parent::getGrantTypeConfigurationProviderPlugins(), [
             new IdCompanyUserOauthGrantTypeConfigurationProviderPlugin(),
+            new AgentCredentialsOauthGrantTypeConfigurationProviderPlugin(),
+            new CustomerImpersonationOauthGrantTypeConfigurationProviderPlugin(),
         ]);
     }
 
