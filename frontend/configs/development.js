@@ -78,6 +78,7 @@ const getConfiguration = async appSettings => {
                         test: /\.ts$/,
                         loader: 'babel-loader',
                         options: {
+                            cacheDirectory: true,
                             presets: [
                                 ['@babel/env', {
                                     loose: true,
