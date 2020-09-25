@@ -7,12 +7,12 @@
 
 namespace Pyz\Yves\ContentProductSetWidget\Twig;
 
-use SprykerShop\Yves\ContentProductSetWidget\Twig\ContentProductSetTwigFunction as SprykerShopContentProductSetTwigFunction;
+use SprykerShop\Yves\ContentProductSetWidget\Twig\ContentProductSetTwigFunctionProvider as SprykerShopContentProductSetTwigFunctionProvider;
 
 /**
  * @method \Pyz\Yves\ContentProductSetWidget\ContentProductSetWidgetFactory getFactory()
  */
-class ContentProductSetTwigFunction extends SprykerShopContentProductSetTwigFunction
+class ContentProductSetTwigFunctionProvider extends SprykerShopContentProductSetTwigFunctionProvider
 {
     /**
      * @uses \Pyz\Shared\ContentProductSet\ContentProductSetConfig::WIDGET_TEMPLATE_IDENTIFIER_LANDING_PAGE

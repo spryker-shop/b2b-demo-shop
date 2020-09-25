@@ -7,9 +7,9 @@
 
 namespace Pyz\Yves\ContentBannerWidget\Twig;
 
-use SprykerShop\Yves\ContentBannerWidget\Twig\ContentBannerTwigFunction as SprykerShopContentBannerTwigFunction;
+use SprykerShop\Yves\ContentBannerWidget\Twig\ContentBannerTwigFunctionProvider as SprykerShopContentBannerTwigFunctionProvider;
 
-class ContentBannerTwigFunction extends SprykerShopContentBannerTwigFunction
+class ContentBannerTwigFunctionProvider extends SprykerShopContentBannerTwigFunctionProvider
 {
     /**
      * @uses \Pyz\Shared\ContentBanner\ContentBannerConfig::WIDGET_TEMPLATE_IDENTIFIER_HOME_PAGE
