@@ -7,6 +7,7 @@
 
 namespace Pyz\Yves\Twig;
 
+use Pyz\Yves\PriceWidget\Plugin\Twig\PriceModeTwigPlugin;
 use Spryker\Service\UtilDateTime\Plugin\Twig\DateTimeFormatterTwigPlugin;
 use Spryker\Shared\Twig\Plugin\DebugTwigPlugin;
 use Spryker\Shared\Twig\Plugin\FormTwigPlugin;
@@ -79,6 +80,7 @@ class TwigDependencyProvider extends SprykerTwigDependencyProvider
             new ContentFileListTwigPlugin(),
             new ShopCmsSlotTwigPlugin(),
             new ContentNavigationTwigPlugin(),
+            new PriceModeTwigPlugin(),
         ];
     }
 
