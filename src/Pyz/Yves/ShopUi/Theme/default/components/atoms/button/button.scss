@@ -122,6 +122,20 @@
             padding: rem(6) rem(20);
         }
 
+        &--small-on-mobile {
+            font-size: rem(13);
+            padding: rem(6) rem(20);
+
+            @include helper-breakpoint-media-min($lg) {
+                font-size: rem(14);
+                padding: rem(10) rem(28);
+            }
+
+            @include helper-breakpoint-media-min($xl) {
+                padding: rem(10) rem(30);
+            }
+        }
+
         &--medium {
             font-size: rem(14);
             line-height: normal;
