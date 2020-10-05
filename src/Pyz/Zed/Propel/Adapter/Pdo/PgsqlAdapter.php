@@ -5,10 +5,10 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Pyz\Glue\GlueApplication\Bootstrap;
+namespace Pyz\Zed\Propel\Adapter\Pdo;
 
-use Spryker\Glue\GlueApplication\Bootstrap\AbstractGlueBootstrap;
+use Propel\Runtime\Adapter\Pdo\PgsqlAdapter as PropelPgsqlAdapter;
 
-class GlueBootstrap extends AbstractGlueBootstrap
+class PgsqlAdapter extends PropelPgsqlAdapter
 {
 }

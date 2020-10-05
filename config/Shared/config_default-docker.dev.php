@@ -1,7 +1,6 @@
 <?php
 
 use Monolog\Logger;
-use Pyz\Shared\Console\ConsoleConstants;
 use Spryker\Shared\Application\ApplicationConstants;
 use Spryker\Shared\Customer\CustomerConstants;
 use Spryker\Shared\DocumentationGeneratorRestApi\DocumentationGeneratorRestApiConstants;
@@ -52,11 +51,10 @@ $config[GlueApplicationConstants::GLUE_APPLICATION_REST_DEBUG] = (bool)getenv('S
 if (interface_exists(WebProfilerConstants::class, true)) {
     $config[WebProfilerConstants::IS_WEB_PROFILER_ENABLED]
         = $config[WebProfilerWidgetConstants::IS_WEB_PROFILER_ENABLED]
-        = (getenv('SPRYKER_DEBUG_ENABLED') && !getenv('SPRYKER_TESTING_ENABLED'));
+        = false;
 }
 $config[KernelConstants::ENABLE_CONTAINER_OVERRIDING] = (bool)getenv('SPRYKER_TESTING_ENABLED');
 $config[DocumentationGeneratorRestApiConstants::ENABLE_REST_API_DOCUMENTATION_GENERATION] = true;
-$config[ConsoleConstants::ENABLE_DEVELOPMENT_CONSOLE_COMMANDS] = (bool)getenv('DEVELOPMENT_CONSOLE_COMMANDS');
 
 // >>> Error handler
 

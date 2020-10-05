@@ -8,6 +8,12 @@
 namespace Pyz\Glue\GlueApplication;
 
 use Pyz\Glue\NavigationsRestApi\NavigationsRestApiConfig;
+use Spryker\Glue\AgentAuthRestApi\Plugin\GlueApplication\AgentAccessTokenRestRequestValidatorPlugin;
+use Spryker\Glue\AgentAuthRestApi\Plugin\GlueApplication\AgentAccessTokenRestUserFinderPlugin;
+use Spryker\Glue\AgentAuthRestApi\Plugin\GlueApplication\AgentAccessTokensResourceRoutePlugin;
+use Spryker\Glue\AgentAuthRestApi\Plugin\GlueApplication\AgentCustomerImpersonationAccessTokensResourceRoutePlugin;
+use Spryker\Glue\AgentAuthRestApi\Plugin\GlueApplication\AgentCustomerSearchResourceRoutePlugin;
+use Spryker\Glue\AgentAuthRestApi\Plugin\GlueApplication\AgentRestUserValidatorPlugin;
 use Spryker\Glue\AlternativeProductsRestApi\Plugin\GlueApplication\AbstractAlternativeProductsResourceRoutePlugin;
 use Spryker\Glue\AlternativeProductsRestApi\Plugin\GlueApplication\ConcreteAlternativeProductsResourceRoutePlugin;
 use Spryker\Glue\AuthRestApi\Plugin\AccessTokenRestRequestValidatorPlugin;
@@ -82,6 +88,7 @@ use Spryker\Glue\GlueApplication\Plugin\GlueApplication\PaginationParametersVali
 use Spryker\Glue\GlueApplication\Plugin\Rest\SetStoreCurrentLocaleBeforeActionPlugin;
 use Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\ResourceRelationshipCollectionInterface;
 use Spryker\Glue\HealthCheck\Plugin\HealthCheckResourceRoutePlugin;
+use Spryker\Glue\Http\Plugin\Application\HttpApplicationPlugin;
 use Spryker\Glue\NavigationsCategoryNodesResourceRelationship\Plugin\GlueApplication\CategoryNodeByResourceIdResourceRelationshipPlugin;
 use Spryker\Glue\NavigationsRestApi\Plugin\ResourceRoute\NavigationsResourceRoutePlugin;
 use Spryker\Glue\OrderPaymentsRestApi\Plugin\OrderPaymentsResourceRoutePlugin;
@@ -214,6 +221,9 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new SalesUnitsResourceRoutePlugin(),
             new ReturnReasonsResourceRoutePlugin(),
             new ReturnsResourceRoutePlugin(),
+            new AgentAccessTokensResourceRoutePlugin(),
+            new AgentCustomerImpersonationAccessTokensResourceRoutePlugin(),
+            new AgentCustomerSearchResourceRoutePlugin(),
         ];
     }
 
@@ -226,6 +236,7 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
     {
         return [
             new CompanyUserRestUserValidatorPlugin(),
+            new AgentRestUserValidatorPlugin(),
         ];
     }
 
@@ -260,6 +271,7 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
     {
         return [
             new AccessTokenRestRequestValidatorPlugin(),
+            new AgentAccessTokenRestRequestValidatorPlugin(),
             new SimultaneousAuthenticationRestRequestValidatorPlugin(),
             new CurrencyParameterValidatorPlugin(),
             new PriceModeParameterValidatorPlugin(),
@@ -528,6 +540,7 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
     {
         return [
             new RestUserFinderByAccessTokenPlugin(),
+            new AgentAccessTokenRestUserFinderPlugin(),
         ];
     }
 
@@ -537,6 +550,7 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
     protected function getApplicationPlugins(): array
     {
         return [
+            new HttpApplicationPlugin(),
             new SessionApplicationPlugin(),
             new EventDispatcherApplicationPlugin(),
             new GlueApplicationApplicationPlugin(),

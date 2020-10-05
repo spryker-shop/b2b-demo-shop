@@ -135,11 +135,61 @@
                 <action>index</action>
             </products>
             <category>
-                <label>Category</label>
-                <title>Category</title>
-                <bundle>category</bundle>
-                <controller>root</controller>
+                <label>Categories</label>
+                <title>Categories</title>
+                <bundle>category-gui</bundle>
+                <controller>list</controller>
                 <action>index</action>
+                <pages>
+                    <sort-category>
+                        <label>Re-sort Child Categories</label>
+                        <title>Re-sort Child Categories</title>
+                        <bundle>category</bundle>
+                        <controller>re-sort</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                    </sort-category>
+                    <view-category>
+                        <label>View Category</label>
+                        <title>View Category</title>
+                        <bundle>category</bundle>
+                        <controller>view</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                    </view-category>
+                    <edit-category>
+                        <label>Edit Category</label>
+                        <title>Edit Category</title>
+                        <bundle>category</bundle>
+                        <controller>edit</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                    </edit-category>
+                    <create-category>
+                        <label>Create Category</label>
+                        <title>Create Category</title>
+                        <bundle>category</bundle>
+                        <controller>create</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                    </create-category>
+                    <assing-products-to-category>
+                        <label>Assign Products to Category</label>
+                        <title>Assign Products to Category</title>
+                        <bundle>product-category</bundle>
+                        <controller>assign</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                    </assing-products-to-category>
+                    <delete-category>
+                        <label>Delete Category</label>
+                        <title>Delete Category</title>
+                        <bundle>category</bundle>
+                        <controller>delete</controller>
+                        <action>index</action>
+                        <visible>0</visible>
+                    </delete-category>
+                </pages>
             </category>
             <attributes>
                 <label>Attributes</label>
@@ -460,13 +510,6 @@
                 <action>index</action>
                 <visible>0</visible>
             </sales-order-threshold-merchant-relationship-edit>
-            <product-packaging-unit>
-                <label>Packaging Types</label>
-                <title>Product Packaging Types</title>
-                <bundle>product-packaging-unit-gui</bundle>
-                <controller>index</controller>
-                <action>index</action>
-            </product-packaging-unit>
             <settings>
                 <label>MIME Type Settings</label>
                 <title>MIME Type Settings</title>
@@ -545,14 +588,6 @@
                 <controller>index</controller>
                 <action>index</action>
             </index>
-            <api>
-                <label>Api</label>
-                <title>Api</title>
-                <bundle>api</bundle>
-                <controller>index</controller>
-                <action>index</action>
-                <uri>/api</uri>
-            </api>
             <architecture-sniffer>
                 <label>Architecture Sniffers</label>
                 <title>Architecture Sniffers</title>
@@ -560,27 +595,6 @@
                 <controller>architecture</controller>
                 <action>index</action>
             </architecture-sniffer>
-            <dataset>
-                <label>Dataset</label>
-                <title>Dataset</title>
-                <bundle>dataset</bundle>
-                <controller>index</controller>
-                <action>index</action>
-            </dataset>
-            <collector-storage-connector>
-                <label>Collector: Drop Storage Timestamps</label>
-                <title>Collector: Drop Storage Timestamps</title>
-                <bundle>collector-storage-connector</bundle>
-                <controller>maintenance</controller>
-                <action>drop-timestamps</action>
-            </collector-storage-connector>
-            <collector-search-connector>
-                <label>Collector: Drop Search Timestamps</label>
-                <title>Collector: Drop Search Timestamps</title>
-                <bundle>collector-search-connector</bundle>
-                <controller>maintenance</controller>
-                <action>drop-timestamps</action>
-            </collector-search-connector>
             <elasticsearch>
                 <label>Elastic Search</label>
                 <title>Elastic Search</title>

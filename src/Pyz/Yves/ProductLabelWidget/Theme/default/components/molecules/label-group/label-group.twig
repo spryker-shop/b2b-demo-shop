@@ -1,4 +1,5 @@
 {% extends molecule('label-group', '@SprykerShop:ProductLabelWidget') %}
+{% import _self as component %}
 
 {% block body %}
     {% set labelTextClass = component.renderClass(config.name ~ '__text', modifiers) %}
