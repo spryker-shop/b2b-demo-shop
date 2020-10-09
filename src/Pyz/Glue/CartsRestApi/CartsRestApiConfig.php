@@ -11,5 +11,5 @@ use Spryker\Glue\CartsRestApi\CartsRestApiConfig as SprykerCartsRestApiConfig;
 
 class CartsRestApiConfig extends SprykerCartsRestApiConfig
 {
-    public const ALLOWED_CART_ITEM_EAGER_RELATIONSHIP = false;
+    protected const ALLOWED_CART_ITEM_EAGER_RELATIONSHIP = false;
 }
