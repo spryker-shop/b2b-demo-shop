@@ -79,8 +79,8 @@ class ProductRelationPresentationTester extends Actor
     {
         $buttonElementId = sprintf('//*[@id="select-product-%s"]', $sku);
 
-        $this->waitForElementNotVisible('//*[@id="product-table_processing"]', 5);
-        $this->waitForElement($buttonElementId, 5);
+        $this->waitForProcessingIsDone();
+        $this->waitForElement($buttonElementId);
 
         $this->click($buttonElementId);
 
@@ -123,6 +123,17 @@ class ProductRelationPresentationTester extends Actor
     public function clickSaveButton()
     {
         $this->click('//*[@id="submit-relation"]');
+
+        return $this;
+    }
+
+    /**
+     * @return $this
+     */
+    public function waitForProcessingIsDone()
+    {
+        $this->waitForElementNotVisible('//*[@id="product-table_processing"]');
+        $this->waitForElementNotVisible('//*[@id="rule-query-table_processing"]');
 
         return $this;
     }
