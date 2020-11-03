@@ -1,229 +1,225 @@
-@mixin shop-ui-title($name: '.title') {
-    #{$name} {
-        &--footer {
-            font: fw(bold) rem(16)/rem(50) $setting-font-family;
-            width: 100%;
-            position: relative;
-            text-transform: capitalize;
+@include shop-ui-title {
+    &--footer {
+        font: fw(bold) rem(16)/rem(50) $setting-font-family;
+        width: 100%;
+        position: relative;
+        text-transform: capitalize;
 
-            @include helper-breakpoint-media-min($md) {
-                line-height: rem(34);
-                margin-bottom: rem(10);
-            }
-        }
-
-        &--footer-logo {
-            margin-bottom: 0;
-
-            @include helper-breakpoint-media-min($md) {
-                display: none;
-            }
-        }
-
-        &--subscription {
-            font: fw(bold) rem(16)/rem(50) $setting-font-family;
-            position: relative;
-
-            @include helper-breakpoint-media-min($md) {
-                font-weight: fw(medium);
-                font-size: rem(18);
-                line-height: normal;
-            }
-
-            @include helper-breakpoint-media-min($lg) {
-                font-size: rem(26);
-            }
-
-            @include helper-breakpoint-media-min($xl) {
-                font-size: rem(34);
-                line-height: rem(43);
-                letter-spacing: rem(0.3);
-            }
-        }
-
-        &--checkout {
-            font-size: rem(22);
-            font-weight: fw(bold);
+        @include helper-breakpoint-media-min($md) {
+            line-height: rem(34);
             margin-bottom: rem(10);
-
-            @include helper-breakpoint-media-min($lg) {
-                font-size: rem(28);
-                margin-bottom: rem(25);
-            }
         }
+    }
 
-        &--second {
+    &--footer-logo {
+        margin-bottom: 0;
+
+        @include helper-breakpoint-media-min($md) {
+            display: none;
+        }
+    }
+
+    &--subscription {
+        font: fw(bold) rem(16)/rem(50) $setting-font-family;
+        position: relative;
+
+        @include helper-breakpoint-media-min($md) {
+            font-weight: fw(medium);
             font-size: rem(18);
-            margin-bottom: rem(14);
-
-            @include helper-breakpoint-media-min($lg) {
-                font-size: rem(24);
-            }
+            line-height: normal;
         }
 
-        &__index {
-            color: $setting-color-main;
-            margin-right: rem(4);
-
-            @include helper-breakpoint-media-min($lg) {
-                margin-right: rem(8);
-            }
+        @include helper-breakpoint-media-min($lg) {
+            font-size: rem(26);
         }
 
-        &--sub {
-            color: $setting-color-gray-3;
-            font-weight: fw(regular);
-            margin-bottom: rem(12);
+        @include helper-breakpoint-media-min($xl) {
+            font-size: rem(34);
+            line-height: rem(43);
+            letter-spacing: rem(0.3);
         }
+    }
 
-        &--error-page {
-            font: fw(bold) rem(32)/rem(41) $setting-font-family;
-            margin-bottom: rem(7);
-        }
+    &--checkout {
+        font-size: rem(22);
+        font-weight: fw(bold);
+        margin-bottom: rem(10);
 
-        &--product-review {
-            margin: rem(36) 0 rem(24);
-        }
-
-        &--product-slider {
-            text-align: center;
+        @include helper-breakpoint-media-min($lg) {
             font-size: rem(28);
-            margin-bottom: rem(16);
+            margin-bottom: rem(25);
+        }
+    }
 
-            @include helper-breakpoint-media-min($lg) {
-                margin-bottom: rem(33);
-                font-size: rem(32);
-            }
+    &--second {
+        font-size: rem(18);
+        margin-bottom: rem(14);
+
+        @include helper-breakpoint-media-min($lg) {
+            font-size: rem(24);
+        }
+    }
+
+    &__index {
+        color: $setting-color-main;
+        margin-right: rem(4);
+
+        @include helper-breakpoint-media-min($lg) {
+            margin-right: rem(8);
+        }
+    }
+
+    &--sub {
+        color: $setting-color-gray-3;
+        font-weight: fw(regular);
+        margin-bottom: rem(12);
+    }
+
+    &--error-page {
+        font: fw(bold) rem(32)/rem(41) $setting-font-family;
+        margin-bottom: rem(7);
+    }
+
+    &--product-review {
+        margin: rem(36) 0 rem(24);
+    }
+
+    &--product-slider {
+        text-align: center;
+        font-size: rem(28);
+        margin-bottom: rem(16);
+
+        @include helper-breakpoint-media-min($lg) {
+            margin-bottom: rem(33);
+            font-size: rem(32);
+        }
+    }
+
+    &--top-margin {
+        margin-top: rem(61);
+
+        @include helper-breakpoint-media-min($lg) {
+            margin-top: rem(80);
         }
 
-        &--top-margin {
-            margin-top: rem(61);
-
-            @include helper-breakpoint-media-min($lg) {
-                margin-top: rem(80);
-            }
-
-            @include helper-breakpoint-media-min($xl) {
-                margin-top: rem(110);
-            }
+        @include helper-breakpoint-media-min($xl) {
+            margin-top: rem(110);
         }
+    }
 
-        &--top-margin-small {
-            margin-top: rem(55);
+    &--top-margin-small {
+        margin-top: rem(55);
+    }
+
+    &--light {
+        color: $setting-color-white;
+    }
+
+    &--product-set-details {
+        font-size: rem(22);
+        font-weight: fw(medium);
+
+        @include helper-breakpoint-media-min($lg) {
+            font-size: rem(50);
         }
+    }
 
-        &--light {
-            color: $setting-color-white;
-        }
+    &--mobile-toggler-section {
+        margin-bottom: rem(24);
+        font-weight: fw(medium);
+        line-height: normal;
+        color: $setting-color-gray-5;
 
-        &--product-set-details {
-            font-size: rem(22);
-            font-weight: fw(medium);
-
-            @include helper-breakpoint-media-min($lg) {
-                font-size: rem(50);
-            }
-        }
-
-        &--mobile-toggler-section {
-            margin-bottom: rem(24);
-            font-weight: fw(medium);
-            line-height: normal;
-            color: $setting-color-gray-5;
-
-            @include helper-breakpoint-media-max($lg - 1) {
-                font-size: rem(17);
-                padding-left: rem(29);
-                position: relative;
-
-                &::before,
-                &::after {
-                    content: '';
-                    position: absolute;
-                    left: 0;
-                    top: 50%;
-                    transform: translateY(-50%);
-                    width: rem(10);
-                    height: rem(2);
-                    background: $setting-color-gray-5;
-                }
-
-                &::after {
-                    transform: translateY(-50%) rotate(90deg);
-                }
-
-                &.active::after {
-                    display: none;
-                }
-            }
-        }
-
-        &--link {
-            color: $setting-color-gray-5;
-            font-weight: fw(medium);
-
-            @include helper-breakpoint-media-min($lg) {
-                margin-left: rem(20);
-            }
-        }
-
-        &--warning {
-            color: $setting-color-alt;
-            line-height: rem(52);
-            background-color: $setting-color-alpha-5;
-            margin: 0 rem(-15) rem(8);
-
-            @include helper-breakpoint-media-min($lg) {
-                font-size: rem(16);
-                margin: 0 0 rem(8);
-            }
-        }
-
-        &--review-subtitle {
-            margin-bottom: rem(20);
-            font-size: rem(18);
-            font-weight: fw(medium);
-            line-height: normal;
-            color: $setting-color-gray-5;
-            text-align: center;
-
-            @include helper-breakpoint-media-min($lg) {
-                text-align: left;
-                font-size: rem(24);
-            }
-        }
-
-        &--underline {
-            padding-bottom: rem(10);
-            margin-bottom: rem(10);
+        @include helper-breakpoint-media-max($lg - 1) {
+            font-size: rem(17);
+            padding-left: rem(29);
             position: relative;
 
-            @include helper-breakpoint-media-min($lg) {
-                padding-bottom: rem(20);
-                margin-bottom: rem(20);
+            &::before,
+            &::after {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                width: rem(10);
+                height: rem(2);
+                background: $setting-color-gray-5;
             }
 
             &::after {
-                content: '';
-                display: block;
-                position: absolute;
-                left: rem(-15);
-                right: rem(-15);
-                bottom: 0;
-                width: calc(100% + #{$setting-grid-space * 2});
-                height: rem(1);
-                background-color: $setting-color-gray-6;
-
-                @include helper-breakpoint-media-min($lg) {
-                    left: 0;
-                    right: 0;
-                    width: 100%;
-                }
+                transform: translateY(-50%) rotate(90deg);
             }
+
+            /* stylelint-disable selector-no-qualifying-type  */
+            &.active::after {
+                display: none;
+            }
+            /* stylelint-enable  */
+        }
+    }
+
+    &--link {
+        color: $setting-color-gray-5;
+        font-weight: fw(medium);
+
+        @include helper-breakpoint-media-min($lg) {
+            margin-left: rem(20);
+        }
+    }
+
+    &--warning {
+        color: $setting-color-alt;
+        line-height: rem(52);
+        background-color: $setting-color-alpha-5;
+        margin: 0 rem(-15) rem(8);
+
+        @include helper-breakpoint-media-min($lg) {
+            font-size: rem(16);
+            margin: 0 0 rem(8);
+        }
+    }
+
+    &--review-subtitle {
+        margin-bottom: rem(20);
+        font-size: rem(18);
+        font-weight: fw(medium);
+        line-height: normal;
+        color: $setting-color-gray-5;
+        text-align: center;
+
+        @include helper-breakpoint-media-min($lg) {
+            text-align: left;
+            font-size: rem(24);
+        }
+    }
+
+    &--underline {
+        padding-bottom: rem(10);
+        margin-bottom: rem(10);
+        position: relative;
+
+        @include helper-breakpoint-media-min($lg) {
+            padding-bottom: rem(20);
+            margin-bottom: rem(20);
         }
 
-        @content;
+        &::after {
+            content: '';
+            display: block;
+            position: absolute;
+            left: rem(-15);
+            right: rem(-15);
+            bottom: 0;
+            width: calc(100% + #{$setting-grid-space * 2});
+            height: rem(1);
+            background-color: $setting-color-gray-6;
+
+            @include helper-breakpoint-media-min($lg) {
+                left: 0;
+                right: 0;
+                width: 100%;
+            }
+        }
     }
 }
-
-@include shop-ui-title;

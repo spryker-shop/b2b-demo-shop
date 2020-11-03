@@ -23,8 +23,8 @@
             {% if data.content is not empty %}
                 {{ data.content | raw }}
             {% else %}
-                <h1 class="{{config.name}}__title">{{data.headline}}</h1>
-                <h4 class="{{config.name}}__text">{{data.subHeadline}}</h4>
+                <h1 class="{{ config.name }}__title">{{ data.headline }}</h1>
+                <h2 class="{{ config.name }}__text title title--h4">{{ data.subHeadline }}</h2>
             {% endif %}
             {% if data.btnTitle %}
                 <a href="{{ data.link | trans }}" class="button button--big button--alternative">{{ data.btnTitle | trans }}</a>

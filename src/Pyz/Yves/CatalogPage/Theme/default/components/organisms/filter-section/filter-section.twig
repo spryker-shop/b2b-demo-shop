@@ -32,7 +32,7 @@
                         {% set itemTitleClass = isFilterCategory ? 'is-hidden-lg-xxl' %}
 
                         <div class="{{ config.name ~ '__item' }} {{ itemClass }}">
-                            <h6 class="{{ config.name ~ '__item-title toggler-accordion__item ' ~ config.jsName ~ '__trigger' ~ '-' ~ filter.name }} {{ itemTitleClass }}"
+                            <h2 class="title title--h6 {{ config.name ~ '__item-title toggler-accordion__item ' ~ config.jsName ~ '__trigger' ~ '-' ~ filter.name }} {{ itemTitleClass }}"
                                 data-toggle-target=".{{ config.jsName ~ '__' ~ filter.name }}">
                                 {{ ('product.filter.' ~ filter.name | lower) | trans }}
                                 {% include atom('icon') with {
@@ -42,7 +42,7 @@
                                         name: 'caret-down',
                                     },
                                 } only %}
-                            </h6>
+                            </h2>
                             {% set contentModifier = filter.name == 'category' ? config.name ~ '__item-content--hollow' : '' %}
                             {% set hiddenClassToToggleSections = filter.name == 'category' ? 'is-hidden-sm-md' : 'is-hidden' %}
                             {% set togglerClass = config.name ~ '__item-content ' ~ config.jsName ~ '__' ~ filter.name ~ ' ' ~ hiddenClassToToggleSections ~ ' ' ~ contentModifier %}
