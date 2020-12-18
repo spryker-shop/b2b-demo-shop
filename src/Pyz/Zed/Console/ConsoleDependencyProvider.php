@@ -156,6 +156,8 @@ use Spryker\Zed\Uuid\Communication\Console\UuidGeneratorConsole;
 use Spryker\Zed\ZedNavigation\Communication\Console\BuildNavigationConsole;
 use Spryker\Zed\ZedNavigation\Communication\Console\RemoveNavigationCacheConsole;
 use SprykerEco\Zed\NewRelic\Communication\Console\RecordDeploymentConsole;
+use SprykerSdk\Zed\Integrator\Communication\Console\ManifestGeneratorConsole;
+use SprykerSdk\Zed\Integrator\Communication\Console\ModuleInstallerConsole;
 use Stecman\Component\Symfony\Console\BashCompletion\CompletionCommand;
 
 /**
@@ -388,6 +390,9 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             $commands[] = new GenerateRestApiDocumentationConsole();
             $commands[] = new CustomerPasswordResetConsole();
             $commands[] = new CustomerPasswordSetConsole();
+
+            $commands[] = new ModuleInstallerConsole();
+            $commands[] = new ManifestGeneratorConsole();
         }
 
         return $commands;
