@@ -22,7 +22,7 @@ const globalSettings = {
         // locate the typescript configuration json file
         tsConfig: './tsconfig.json',
 
-        // locate the typescript configuration json file
+        // path to frontend build config json file
         namespaceConfig: './config/Yves/frontend-build-config.json',
 
         // core folders
@@ -102,13 +102,15 @@ const getAppSettingsByTheme = (namespaceConfig, theme, pathToConfig) => {
 
     const getPublicStaticUrl = () => namespaceJson.staticPath;
 
+    // get array of available module suffixes
     const getAllCodeBuckets = () => namespaceJson.namespaces.map(namespace => namespace.codeBucket);
 
-    const ignoreModulesCollection = () => {
-        return getAllCodeBuckets()
+    // get array of ignored modules
+    const ignoreModulesCollection = () => (
+        getAllCodeBuckets()
             .filter(suffix => suffix !== namespaceConfig.codeBucket)
-            .map(suffix => `!**/*${suffix}/Theme/**`);
-    };
+            .map(suffix => `!**/*${suffix}/Theme/**`)
+    );
 
     // define ignore patterns
     const ignoreFiles = [
@@ -191,6 +193,7 @@ const getAppSettingsByTheme = (namespaceConfig, theme, pathToConfig) => {
         return currentMode === globalSettings.modes.prod;
     };
 
+    // array of patterns for the critical components
     const criticalPatterns = [
         '**/ShopUi/**',
         '**/CatalogPage/**',
@@ -214,7 +217,7 @@ const getAppSettingsByTheme = (namespaceConfig, theme, pathToConfig) => {
 
         // define settings for suite-frontend-builder finder
         find: {
-            // webpack entry points (components) finder settings
+            // entry point patterns (components)
             componentEntryPoints: {
                 // absolute dirs in which look for
                 dirs: [
@@ -225,31 +228,6 @@ const getAppSettingsByTheme = (namespaceConfig, theme, pathToConfig) => {
                 // files/dirs patterns
                 patterns: customThemeEntryPointPatterns(),
                 fallbackPatterns: customThemeEntryPointPatterns(true)
-            },
-
-            // style  entry point patterns (components)
-            stylesEntryPoints: {
-                core: {
-                    // absolute dirs in which look for
-                    dirs: [
-                        join(globalSettings.context, paths.core),
-                    ],
-                    // files/dirs patterns
-                    patterns: [`**/Theme/${namespaceConfig.defaultTheme}/**/style.scss`],
-                },
-                nonCore: {
-                    // absolute dirs in which look for
-                    dirs: [
-                        join(globalSettings.context, paths.eco),
-                        join(globalSettings.context, paths.project),
-                    ],
-                    // files/dirs patterns
-                    patterns: [
-                        `**/Theme/${namespaceConfig.defaultTheme}/components/**/*.scss`,
-                        `**/Theme/${namespaceConfig.defaultTheme}/templates/**/*.scss`,
-                        `**/Theme/${namespaceConfig.defaultTheme}/views/**/*.scss`,
-                    ],
-                },
             },
 
             // core component styles finder settings

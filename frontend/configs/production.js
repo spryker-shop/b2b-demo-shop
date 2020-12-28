@@ -1,5 +1,5 @@
 const merge = require('webpack-merge');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const getConfiguration = require('./development');
 const CompressionPlugin = require('compression-webpack-plugin');
@@ -13,7 +13,9 @@ const configurationProdMode = async appSettings => mergeWithStrategy(await getCo
     webpack: {
         mode: 'production',
         devtool: false,
+
         plugins: [
+
             new CompressionPlugin({
                 filename: '[path].gz[query]',
             }),
@@ -24,14 +26,16 @@ const configurationProdMode = async appSettings => mergeWithStrategy(await getCo
                 threshold: 10240,
                 minRatio: 0.8
             })
+
         ],
 
         optimization: {
             minimizer: [
-                new UglifyJsPlugin({
+                new TerserPlugin({
                     cache: true,
                     parallel: true,
-                    uglifyOptions: {
+                    extractComments: false,
+                    terserOptions: {
                         output: {
                             beautify: false
                         }
