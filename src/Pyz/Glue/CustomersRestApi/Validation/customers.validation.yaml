@@ -10,6 +10,19 @@ customers:
           choices: [Male, Female]
 
   patch:
+    password:
+      - Optional:
+          constraints:
+            - Length:
+                min: 8
+                max: 64
+
+    confirmPassword:
+      - Optional:
+          constraints:
+            - Length:
+                min: 8
+                max: 64
     salutation:
       - Optional:
           constraints:
