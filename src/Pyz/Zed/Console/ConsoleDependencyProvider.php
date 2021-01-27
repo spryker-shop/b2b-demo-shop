@@ -11,6 +11,7 @@ use Pyz\Zed\DataImport\DataImportConfig;
 use Pyz\Zed\Development\Communication\Console\AcceptanceCodeTestConsole;
 use Pyz\Zed\Development\Communication\Console\ApiCodeTestConsole;
 use Pyz\Zed\Development\Communication\Console\FunctionalCodeTestConsole;
+use SecurityChecker\Command\SecurityCheckerCommand;
 use Spryker\Zed\BusinessOnBehalfDataImport\BusinessOnBehalfDataImportConfig;
 use Spryker\Zed\Cache\Communication\Console\EmptyAllCachesConsole;
 use Spryker\Zed\CodeGenerator\Communication\Console\BundleClientCodeGeneratorConsole;
@@ -393,6 +394,10 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
 
             $commands[] = new ModuleInstallerConsole();
             $commands[] = new ManifestGeneratorConsole();
+
+            if (class_exists(SecurityCheckerCommand::class)) {
+                $commands[] = new SecurityCheckerCommand();
+            }
         }
 
         return $commands;
