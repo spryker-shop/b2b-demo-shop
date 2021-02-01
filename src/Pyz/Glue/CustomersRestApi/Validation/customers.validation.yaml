@@ -8,6 +8,16 @@ customers:
       - NotBlank
       - Choice:
           choices: [Male, Female]
+    password:
+      - NotBlank
+      - Length:
+          min: 8
+          max: 64
+    confirmPassword:
+      - NotBlank
+      - Length:
+          min: 8
+          max: 64
 
   patch:
     password:
@@ -50,3 +60,31 @@ addresses:
             - NotBlank
             - Choice:
                 choices: [Mr, Mrs, Ms, Dr]
+
+customer-password:
+  patch:
+    password:
+      - NotBlank
+    newPassword:
+      - NotBlank
+      - Length:
+          min: 8
+          max: 64
+    confirmPassword:
+      - NotBlank
+      - Length:
+          min: 8
+          max: 64
+
+customer-restore-password:
+  patch:
+    password:
+      - NotBlank
+      - Length:
+          min: 8
+          max: 64
+    confirmPassword:
+      - NotBlank
+      - Length:
+          min: 8
+          max: 64
