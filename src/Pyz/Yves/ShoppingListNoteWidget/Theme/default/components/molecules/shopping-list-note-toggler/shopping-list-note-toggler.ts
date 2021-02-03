@@ -30,7 +30,7 @@ export default class ShoppingListNoteToggler extends Component {
     }
 
     private toggleClass(elementsToToggle: HTMLElement[]): void {
-        elementsToToggle.forEach(element => {
+        elementsToToggle.forEach((element) => {
             element.classList.toggle(this.hiddenClass);
         });
     }

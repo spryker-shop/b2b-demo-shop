@@ -5,7 +5,7 @@ export enum Events {
     FETCHED = 'fetched',
     CHANGE = 'change',
     SET = 'set',
-    UNSET = 'unset'
+    UNSET = 'unset',
 }
 
 export default class ProductSearchAutocompleteForm extends AutocompleteForm {
@@ -46,9 +46,9 @@ export default class ProductSearchAutocompleteForm extends AutocompleteForm {
 
     protected mapItemEvents(): void {
         const self = this;
-        const items = <HTMLElement[]>Array.from(this.widgetSuggestionsContainer.getElementsByClassName(
-            this.itemClassName
-        ));
+        const items = <HTMLElement[]>(
+            Array.from(this.widgetSuggestionsContainer.getElementsByClassName(this.itemClassName))
+        );
         items.forEach((item: HTMLElement) => {
             item.addEventListener('click', (event: Event) => self.onItemClick(event));
         });
@@ -60,9 +60,15 @@ export default class ProductSearchAutocompleteForm extends AutocompleteForm {
         }
 
         switch (event.key) {
-            case 'ArrowUp': this.onKeyDownArrowUp(); break;
-            case 'ArrowDown': this.onKeyDownArrowDown(); break;
-            case 'Enter': this.onKeyDownEnter(); break;
+            case 'ArrowUp':
+                this.onKeyDownArrowUp();
+                break;
+            case 'ArrowDown':
+                this.onKeyDownArrowDown();
+                break;
+            case 'Enter':
+                this.onKeyDownEnter();
+                break;
         }
     }
 
@@ -99,8 +105,8 @@ export default class ProductSearchAutocompleteForm extends AutocompleteForm {
         this.showSuggestions();
         this.ajaxProvider.queryParams.set(this.queryParamName, this.inputText);
         await this.ajaxProvider.fetch();
-        this.suggestionItems = <HTMLElement[]>Array.from(
-            this.widgetSuggestionsContainer.getElementsByClassName(this.itemClassName)
+        this.suggestionItems = <HTMLElement[]>(
+            Array.from(this.widgetSuggestionsContainer.getElementsByClassName(this.itemClassName))
         );
         this.lastSelectedItem = this.suggestionItems[0];
         this.mapItemEvents();
@@ -110,7 +116,7 @@ export default class ProductSearchAutocompleteForm extends AutocompleteForm {
         this.inputText = text;
         this.inputValue = data;
 
-        this.dispatchCustomEvent(Events.SET, {text: this.inputText, value: this.inputValue});
+        this.dispatchCustomEvent(Events.SET, { text: this.inputText, value: this.inputValue });
 
         if (this.quantityInput) {
             this.quantityInput.focus();
