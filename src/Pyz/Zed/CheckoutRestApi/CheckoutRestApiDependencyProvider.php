@@ -11,6 +11,7 @@ use Spryker\Zed\CheckoutRestApi\CheckoutRestApiDependencyProvider as SprykerChec
 use Spryker\Zed\CompanyBusinessUnitAddressesRestApi\Communication\Plugin\CheckoutRestApi\CompanyBusinessUnitAddressCheckoutDataExpanderPlugin;
 use Spryker\Zed\CompanyBusinessUnitAddressesRestApi\Communication\Plugin\CheckoutRestApi\CompanyBusinessUnitAddressCheckoutDataValidatorPlugin;
 use Spryker\Zed\CompanyBusinessUnitAddressesRestApi\Communication\Plugin\CheckoutRestApi\CompanyBusinessUnitAddressQuoteMapperPlugin;
+use Spryker\Zed\CompanyUsersRestApi\Communication\Plugin\CheckoutRestApi\CompanyUserQuoteMapperPlugin;
 use Spryker\Zed\Country\Communication\Plugin\CheckoutRestApi\CountryCheckoutDataValidatorPlugin;
 use Spryker\Zed\CustomersRestApi\Communication\Plugin\CheckoutRestApi\AddressQuoteMapperPlugin;
 use Spryker\Zed\CustomersRestApi\Communication\Plugin\CheckoutRestApi\CustomerAddressCheckoutDataValidatorPlugin;
@@ -32,6 +33,7 @@ class CheckoutRestApiDependencyProvider extends SprykerCheckoutRestApiDependency
     {
         return [
             new CustomerQuoteMapperPlugin(),
+            new CompanyUserQuoteMapperPlugin(),
             new AddressQuoteMapperPlugin(),
             new PaymentsQuoteMapperPlugin(),
             new ShipmentQuoteMapperPlugin(),
