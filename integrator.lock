@@ -42,5 +42,37 @@
         "source": "\\Spryker\\Yves\\SearchElasticsearch\\Plugin\\WebProfiler\\WebProfilerElasticsearchDataCollectorPlugin"
       }
     }
+  },
+  "SprykerShop.CartNoteWidget": {
+    "wire-plugin": {
+      "e2ca3da2c2fa22d00ef722aa1792f86012043860": {
+        "target": "\\SprykerShop\\Yves\\ShopApplication\\ShopApplicationDependencyProvider::getWidgetCacheKeyGeneratorStrategyPlugins",
+        "source": "\\SprykerShop\\Yves\\CartNoteWidget\\Plugin\\ShopApplication\\CartItemNoteFormWidgetCacheKeyGeneratorStrategyPlugin"
+      }
+    }
+  },
+  "SprykerShop.DiscountPromotionWidget": {
+    "wire-plugin": {
+      "55439a9d1ce6a503b81ecabfd1f382f3bc18d646": {
+        "target": "\\SprykerShop\\Yves\\ShopApplication\\ShopApplicationDependencyProvider::getWidgetCacheKeyGeneratorStrategyPlugins",
+        "source": "\\SprykerShop\\Yves\\DiscountPromotionWidget\\Plugin\\ShopApplication\\CartDiscountPromotionProductListWidgetCacheKeyGeneratorStrategyPlugin"
+      }
+    }
+  },
+  "SprykerShop.QuoteApprovalWidget": {
+    "wire-plugin": {
+      "8afb6a03e4e353c90eeaa44d604ae413af3f1241": {
+        "target": "\\SprykerShop\\Yves\\ShopApplication\\ShopApplicationDependencyProvider::getWidgetCacheKeyGeneratorStrategyPlugins",
+        "source": "\\SprykerShop\\Yves\\QuoteApprovalWidget\\Plugin\\ShopApplication\\QuoteApprovalStatusWidgetCacheKeyGeneratorStrategyPlugin"
+      },
+      "8bd3c2629ef4578df800ec0832ad7c4b7975c1b6": {
+        "target": "\\SprykerShop\\Yves\\ShopApplication\\ShopApplicationDependencyProvider::getWidgetCacheKeyGeneratorStrategyPlugins",
+        "source": "\\SprykerShop\\Yves\\QuoteApprovalWidget\\Plugin\\ShopApplication\\QuoteApproveRequestWidgetCacheKeyGeneratorStrategyPlugin"
+      },
+      "dd8d61efe30b52391d18cd673cfe6754326678d4": {
+        "target": "\\SprykerShop\\Yves\\ShopApplication\\ShopApplicationDependencyProvider::getWidgetCacheKeyGeneratorStrategyPlugins",
+        "source": "\\SprykerShop\\Yves\\QuoteApprovalWidget\\Plugin\\ShopApplication\\QuoteApprovalWidgetCacheKeyGeneratorStrategyPlugin"
+      }
+    }
   }
 }

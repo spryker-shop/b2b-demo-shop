@@ -28,6 +28,7 @@ use SprykerShop\Yves\AvailabilityNotificationWidget\Widget\AvailabilityNotificat
 use SprykerShop\Yves\BarcodeWidget\Widget\BarcodeWidget;
 use SprykerShop\Yves\BusinessOnBehalfWidget\Widget\BusinessOnBehalfStatusWidget;
 use SprykerShop\Yves\CartCodeWidget\Widget\CartCodeFormWidget;
+use SprykerShop\Yves\CartNoteWidget\Plugin\ShopApplication\CartItemNoteFormWidgetCacheKeyGeneratorStrategyPlugin;
 use SprykerShop\Yves\CartNoteWidget\Widget\CartItemNoteFormWidget;
 use SprykerShop\Yves\CartNoteWidget\Widget\CartNoteFormWidget;
 use SprykerShop\Yves\CartPage\Widget\AddItemsFormWidget;
@@ -51,6 +52,7 @@ use SprykerShop\Yves\CustomerPage\Widget\CustomerNavigationWidget;
 use SprykerShop\Yves\CustomerReorderWidget\Plugin\CustomerPage\CustomerReorderFormWidget;
 use SprykerShop\Yves\CustomerReorderWidget\Plugin\CustomerPage\CustomerReorderItemCheckboxWidget;
 use SprykerShop\Yves\CustomerReorderWidget\Plugin\CustomerPage\CustomerReorderItemsFormWidget;
+use SprykerShop\Yves\DiscountPromotionWidget\Plugin\ShopApplication\CartDiscountPromotionProductListWidgetCacheKeyGeneratorStrategyPlugin;
 use SprykerShop\Yves\DiscountPromotionWidget\Widget\CartDiscountPromotionProductListWidget;
 use SprykerShop\Yves\DiscountWidget\Widget\CheckoutVoucherFormWidget;
 use SprykerShop\Yves\LanguageSwitcherWidget\Widget\LanguageSwitcherWidget;
@@ -102,6 +104,9 @@ use SprykerShop\Yves\ProductWidget\Widget\CmsProductWidget;
 use SprykerShop\Yves\ProductWidget\Widget\PdpProductRelationWidget;
 use SprykerShop\Yves\ProductWidget\Widget\PdpProductReplacementForListWidget;
 use SprykerShop\Yves\ProductWidget\Widget\ProductAlternativeWidget;
+use SprykerShop\Yves\QuoteApprovalWidget\Plugin\ShopApplication\QuoteApprovalStatusWidgetCacheKeyGeneratorStrategyPlugin;
+use SprykerShop\Yves\QuoteApprovalWidget\Plugin\ShopApplication\QuoteApprovalWidgetCacheKeyGeneratorStrategyPlugin;
+use SprykerShop\Yves\QuoteApprovalWidget\Plugin\ShopApplication\QuoteApproveRequestWidgetCacheKeyGeneratorStrategyPlugin;
 use SprykerShop\Yves\QuoteApprovalWidget\Widget\QuoteApprovalStatusWidget;
 use SprykerShop\Yves\QuoteApprovalWidget\Widget\QuoteApprovalWidget;
 use SprykerShop\Yves\QuoteApprovalWidget\Widget\QuoteApproveRequestWidget;
@@ -291,5 +296,19 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
         }
 
         return $plugins;
+    }
+
+    /**
+     * @return \SprykerShop\Yves\ShopApplicationExtension\Dependency\Plugin\WidgetCacheKeyGeneratorStrategyPluginInterface[]
+     */
+    protected function getWidgetCacheKeyGeneratorStrategyPlugins(): array
+    {
+        return [
+            new CartItemNoteFormWidgetCacheKeyGeneratorStrategyPlugin(),
+            new CartDiscountPromotionProductListWidgetCacheKeyGeneratorStrategyPlugin(),
+            new QuoteApprovalStatusWidgetCacheKeyGeneratorStrategyPlugin(),
+            new QuoteApproveRequestWidgetCacheKeyGeneratorStrategyPlugin(),
+            new QuoteApprovalWidgetCacheKeyGeneratorStrategyPlugin(),
+        ];
     }
 }
