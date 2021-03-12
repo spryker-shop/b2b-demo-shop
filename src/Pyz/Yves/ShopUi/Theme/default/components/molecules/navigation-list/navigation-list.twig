@@ -1,4 +1,5 @@
 {% extends model('component') %}
+{% import _self as component %}
 
 {% define config = {
     name: 'navigation-list',
@@ -23,6 +24,7 @@
                         node: node
                     }
                 } only %}
+                    {% import _self as component %}
                     {% set additionalClass = data.node.cssClass ?? '' %}
 
                     {% block url %}

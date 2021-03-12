@@ -1,0 +1,31 @@
+@include shop-ui-status {
+    border-radius: rem(16);
+    padding: rem(4) rem(16);
+    font-size: rem(12);
+    text-align: center;
+
+    &--small {
+        padding: 0 rem(16);
+    }
+
+    &--ready,
+    &--paid,
+    &--delivered {
+        background-color: helper-color-light($setting-color-main, 52);
+        color: $setting-color-main;
+    }
+
+    &--cancelled,
+    &--ready-for-return,
+    &--returned,
+    &--waiting-for-return,
+    &--return-canceled {
+        background-color: helper-color-light($setting-color-gray-3);
+        color: $setting-color-gray-3;
+    }
+
+    &--shipped {
+        background-color: helper-color-light($setting-color-blue-1, 54);
+        color: $setting-color-blue-1;
+    }
+}

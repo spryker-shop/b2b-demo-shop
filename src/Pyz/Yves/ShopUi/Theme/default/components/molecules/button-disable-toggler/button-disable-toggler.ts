@@ -1,9 +1,9 @@
 import Component from 'ShopUi/models/component';
 
-type TTriggerElement = HTMLTextAreaElement|HTMLInputElement;
+type TTriggerElement = HTMLTextAreaElement | HTMLInputElement;
 
 export default class ButtonDisableToggler extends Component {
-    protected triggers: (TTriggerElement[]);
+    protected triggers: TTriggerElement[];
 
     protected readyCallback(): void {}
 

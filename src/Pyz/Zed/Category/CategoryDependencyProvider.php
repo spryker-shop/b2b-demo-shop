@@ -25,7 +25,7 @@ class CategoryDependencyProvider extends SprykerDependencyProvider
     /**
      * @return \Spryker\Zed\Category\Dependency\Plugin\CategoryRelationDeletePluginInterface[]
      */
-    protected function getRelationDeletePluginStack()
+    protected function getRelationDeletePluginStack(): array
     {
         /**
          * @var \Spryker\Zed\Category\Dependency\Plugin\CategoryRelationDeletePluginInterface[] $deletePlugins
@@ -41,7 +41,7 @@ class CategoryDependencyProvider extends SprykerDependencyProvider
     /**
      * @return \Spryker\Zed\Category\Dependency\Plugin\CategoryRelationUpdatePluginInterface[]
      */
-    protected function getRelationUpdatePluginStack()
+    protected function getRelationUpdatePluginStack(): array
     {
         return [
             new UpdateProductCategoryRelationPlugin(),
@@ -52,7 +52,7 @@ class CategoryDependencyProvider extends SprykerDependencyProvider
     /**
      * @return \Spryker\Zed\Category\Dependency\Plugin\CategoryRelationReadPluginInterface[]
      */
-    protected function getRelationReadPluginStack()
+    protected function getRelationReadPluginStack(): array
     {
         return [
             new ReadProductCategoryRelationPlugin(),

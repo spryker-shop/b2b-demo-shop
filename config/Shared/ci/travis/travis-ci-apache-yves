@@ -2,7 +2,10 @@
 
   DocumentRoot %TRAVIS_BUILD_DIR%/public/Yves
   ServerName www.de.spryker.test
-  SetEnv APPLICATION_ENV devtest
+  SetEnv APPLICATION_ENV %APPLICATION_ENV%
+  SetEnv SPRYKER_TESTING_ENABLED 1
+
+  ErrorLog /tmp/yves-error.log
 
   <Directory "%TRAVIS_BUILD_DIR%">
       Options Indexes FollowSymLinks MultiViews ExecCGI
@@ -12,4 +15,8 @@
       Require all granted
   </Directory>
 
+  AddHandler php7-fcgi .php
+  Action php7-fcgi /php7-fcgi-yves virtual
+  Alias /php7-fcgi-yves /usr/lib/cgi-bin/php7-fcgi-yves
+  FastCgiExternalServer /usr/lib/cgi-bin/php7-fcgi-yves -host 127.0.0.1:9001 -pass-header Authorization
 </VirtualHost>

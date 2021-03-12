@@ -1,0 +1,30 @@
+@mixin sales-return-page-return-total($name: '.return-total') {
+    #{$name} {
+        background-color: $setting-color-gray-7;
+
+        &__row {
+            padding: rem(20) rem(15);
+            font-weight: fw(medium);
+            line-height: normal;
+            color: $setting-color-gray-5;
+
+            @include helper-breakpoint-media-min($lg) {
+                padding: rem(20) rem(30) rem(15);
+            }
+
+            &:not(:first-child) {
+                border-top: rem(1) solid $setting-color-gray-1;
+            }
+        }
+
+        &__counter {
+            background-color: $setting-color-gray-2;
+            padding: rem(4) rem(24);
+            border-radius: $setting-border-radius;
+        }
+
+        @content;
+    }
+}
+
+@include sales-return-page-return-total();

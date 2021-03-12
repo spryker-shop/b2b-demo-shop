@@ -14,7 +14,9 @@ use Spryker\Zed\MultiCart\Communication\Plugin\AddDefaultNameBeforeQuoteSavePlug
 use Spryker\Zed\MultiCart\Communication\Plugin\AddSuccessMessageAfterQuoteCreatedPlugin;
 use Spryker\Zed\MultiCart\Communication\Plugin\DeactivateQuotesBeforeQuoteSavePlugin;
 use Spryker\Zed\MultiCart\Communication\Plugin\InitDefaultQuoteCustomerQuoteDeleteAfterPlugin;
+use Spryker\Zed\MultiCart\Communication\Plugin\Quote\AddDefaultQuoteChangedMessageQuoteUpdateBeforePlugin;
 use Spryker\Zed\MultiCart\Communication\Plugin\ResolveQuoteNameBeforeQuoteCreatePlugin;
+use Spryker\Zed\OrderCustomReference\Communication\Plugin\Quote\OrderCustomReferenceQuoteFieldsAllowedForSavingProviderPlugin;
 use Spryker\Zed\Price\Communication\Plugin\Quote\QuotePriceModeValidatorPlugin;
 use Spryker\Zed\Quote\QuoteDependencyProvider as SprykerQuoteDependencyProvider;
 use Spryker\Zed\QuoteApproval\Communication\Plugin\Quote\QuoteApprovalExpanderPlugin;
@@ -24,6 +26,7 @@ use Spryker\Zed\QuoteApprovalShipmentConnector\Communication\Plugin\Quote\QuoteA
 use Spryker\Zed\SharedCart\Communication\Plugin\CleanQuoteShareBeforeQuoteCreatePlugin;
 use Spryker\Zed\SharedCart\Communication\Plugin\DeactivateSharedQuotesBeforeQuoteSavePlugin;
 use Spryker\Zed\SharedCart\Communication\Plugin\MarkAsDefaultQuoteAfterSavePlugin;
+use Spryker\Zed\SharedCart\Communication\Plugin\Quote\AddDefaultSharedQuoteChangedMessageQuoteUpdateBeforePlugin;
 use Spryker\Zed\SharedCart\Communication\Plugin\Quote\ShareDetailsQuoteExpanderPlugin;
 use Spryker\Zed\SharedCart\Communication\Plugin\RemoveSharedQuoteBeforeQuoteDeletePlugin;
 use Spryker\Zed\SharedCart\Communication\Plugin\SharedQuoteSetDefaultBeforeQuoteSavePlugin;
@@ -87,7 +90,9 @@ class QuoteDependencyProvider extends SprykerQuoteDependencyProvider
         return [
             new AddDefaultNameBeforeQuoteSavePlugin(), #MultiCartFeature
             new ResolveQuoteNameBeforeQuoteCreatePlugin(), #MultiCartFeature
+            new AddDefaultQuoteChangedMessageQuoteUpdateBeforePlugin(), #MultiCartFeature
             new DeactivateQuotesBeforeQuoteSavePlugin(), #MultiCartFeature
+            new AddDefaultSharedQuoteChangedMessageQuoteUpdateBeforePlugin(), #SharedCartFeature
             new DeactivateSharedQuotesBeforeQuoteSavePlugin(), #SharedCartFeature
             new SharedQuoteSetDefaultBeforeQuoteSavePlugin(), #SharedCartFeature
         ];
@@ -149,6 +154,7 @@ class QuoteDependencyProvider extends SprykerQuoteDependencyProvider
         return [
             new QuoteApprovalQuoteFieldsAllowedForSavingProviderPlugin(),
             new QuoteApprovalShipmentQuoteFieldsAllowedForSavingProviderPlugin(),
+            new OrderCustomReferenceQuoteFieldsAllowedForSavingProviderPlugin(),
         ];
     }
 }

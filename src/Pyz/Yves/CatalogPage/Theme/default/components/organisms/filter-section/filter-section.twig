@@ -20,7 +20,7 @@
         </button>
 
         <div class="{{ config.name ~ '__sorting ' ~ config.jsName ~ '__sorting' }} is-hidden-lg-xxl"></div>
-        <div class="{{ config.name ~ '__holder' }}">
+        <div class="{{ config.name ~ '__holder ' ~ config.jsName ~ '__holder' }}">
             {% for filter in data.facets %}
                 {% set filterHasValues = filter.values is not defined or filter.values | length > 0 %}
                 {% set togglerClass = '' %}
@@ -32,7 +32,8 @@
                         {% set itemTitleClass = isFilterCategory ? 'is-hidden-lg-xxl' %}
 
                         <div class="{{ config.name ~ '__item' }} {{ itemClass }}">
-                            <h6 class="{{ config.name ~ '__item-title toggler-accordion__item ' ~ config.jsName ~ '__trigger' ~ '-' ~ filter.name }} {{ itemTitleClass }}">
+                            <h2 class="title title--h6 {{ config.name ~ '__item-title toggler-accordion__item ' ~ config.jsName ~ '__trigger' ~ '-' ~ filter.name }} {{ itemTitleClass }}"
+                                data-toggle-target=".{{ config.jsName ~ '__' ~ filter.name }}">
                                 {{ ('product.filter.' ~ filter.name | lower) | trans }}
                                 {% include atom('icon') with {
                                     class: 'toggler-accordion__icon',
@@ -41,7 +42,7 @@
                                         name: 'caret-down',
                                     },
                                 } only %}
-                            </h6>
+                            </h2>
                             {% set contentModifier = filter.name == 'category' ? config.name ~ '__item-content--hollow' : '' %}
                             {% set hiddenClassToToggleSections = filter.name == 'category' ? 'is-hidden-sm-md' : 'is-hidden' %}
                             {% set togglerClass = config.name ~ '__item-content ' ~ config.jsName ~ '__' ~ filter.name ~ ' ' ~ hiddenClassToToggleSections ~ ' ' ~ contentModifier %}
@@ -65,12 +66,11 @@
                                 class: togglerClass,
                             } only %}
 
-                            {% include molecule('toggler-click') with {
+                            {% include molecule('toggler-accordion') with {
                                 attributes: {
+                                    'wrap-class-name': config.jsName ~ '__holder',
                                     'trigger-class-name': config.jsName ~ '__trigger-' ~ filter.name,
-                                    'target-class-name': config.jsName ~ '__' ~ filter.name,
                                     'class-to-toggle': hiddenClassToToggleSections,
-                                    'trigger-class-to-toggle': 'active',
                                 },
                             } only %}
                         </div>

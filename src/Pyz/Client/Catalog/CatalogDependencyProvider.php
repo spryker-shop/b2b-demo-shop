@@ -20,6 +20,7 @@ use Spryker\Client\CatalogPriceProductConnector\Plugin\ConfigTransferBuilder\Des
 use Spryker\Client\CatalogPriceProductConnector\Plugin\CurrencyAwareCatalogSearchResultFormatterPlugin;
 use Spryker\Client\CatalogPriceProductConnector\Plugin\CurrencyAwareSuggestionByTypeResultFormatter;
 use Spryker\Client\CatalogPriceProductConnector\Plugin\ProductPriceQueryExpanderPlugin;
+use Spryker\Client\CategoryStorage\Plugin\Elasticsearch\ResultFormatter\CategoryTreeFilterPageSearchResultFormatterPlugin;
 use Spryker\Client\CustomerCatalog\Plugin\Search\ProductListQueryExpanderPlugin as CustomerCatalogProductListQueryExpanderPlugin;
 use Spryker\Client\ProductLabelStorage\Plugin\ProductLabelFacetConfigTransferBuilderPlugin;
 use Spryker\Client\ProductListSearch\Plugin\Search\ProductListQueryExpanderPlugin as ProductListSearchProductListQueryExpanderPlugin;
@@ -48,7 +49,7 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
     /**
      * @return \Spryker\Client\Catalog\Dependency\Plugin\FacetConfigTransferBuilderPluginInterface[]
      */
-    protected function getFacetConfigTransferBuilderPlugins()
+    protected function getFacetConfigTransferBuilderPlugins(): array
     {
         return [
             new CategoryFacetConfigTransferBuilderPlugin(),
@@ -60,7 +61,7 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
     /**
      * @return \Spryker\Client\Catalog\Dependency\Plugin\SortConfigTransferBuilderPluginInterface[]
      */
-    protected function getSortConfigTransferBuilderPlugins()
+    protected function getSortConfigTransferBuilderPlugins(): array
     {
         return [
             new RatingSortConfigTransferBuilderPlugin(),
@@ -72,7 +73,7 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
     }
 
     /**
-     * @return \Spryker\Client\SearchExtension\Dependency\Plugin\QueryInterface
+     * @return \Spryker\Client\Search\Dependency\Plugin\QueryInterface
      */
     protected function createCatalogSearchQueryPlugin()
     {
@@ -80,9 +81,9 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
     }
 
     /**
-     * @return \Spryker\Client\SearchExtension\Dependency\Plugin\QueryExpanderPluginInterface[]
+     * @return \Spryker\Client\Search\Dependency\Plugin\QueryExpanderPluginInterface[]|\Spryker\Client\SearchExtension\Dependency\Plugin\QueryExpanderPluginInterface[]
      */
-    protected function createCatalogSearchQueryExpanderPlugins()
+    protected function createCatalogSearchQueryExpanderPlugins(): array
     {
         return [
             new StoreQueryExpanderPlugin(),
@@ -104,9 +105,9 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
     }
 
     /**
-     * @return \Spryker\Client\SearchExtension\Dependency\Plugin\ResultFormatterPluginInterface[]
+     * @return \Spryker\Client\Search\Dependency\Plugin\ResultFormatterPluginInterface[]
      */
-    protected function createCatalogSearchResultFormatterPlugins()
+    protected function createCatalogSearchResultFormatterPlugins(): array
     {
         return [
             new FacetResultFormatterPlugin(),
@@ -116,13 +117,14 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
                 new RawCatalogSearchResultFormatterPlugin()
             ),
             new SpellingSuggestionResultFormatterPlugin(),
+            new CategoryTreeFilterPageSearchResultFormatterPlugin(),
         ];
     }
 
     /**
-     * @return \Spryker\Client\SearchExtension\Dependency\Plugin\QueryExpanderPluginInterface[]
+     * @return \Spryker\Client\Search\Dependency\Plugin\QueryExpanderPluginInterface[]|\Spryker\Client\SearchExtension\Dependency\Plugin\QueryExpanderPluginInterface[]
      */
-    protected function createSuggestionQueryExpanderPlugins()
+    protected function createSuggestionQueryExpanderPlugins(): array
     {
         return [
             new StoreQueryExpanderPlugin(),
@@ -136,9 +138,9 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
     }
 
     /**
-     * @return \Spryker\Client\SearchExtension\Dependency\Plugin\ResultFormatterPluginInterface[]
+     * @return \Spryker\Client\Search\Dependency\Plugin\ResultFormatterPluginInterface[]
      */
-    protected function createSuggestionResultFormatterPlugins()
+    protected function createSuggestionResultFormatterPlugins(): array
     {
         return [
             new CompletionResultFormatterPlugin(),
@@ -149,7 +151,7 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
     }
 
     /**
-     * @return \Spryker\Client\SearchExtension\Dependency\Plugin\QueryExpanderPluginInterface[]
+     * @return \Spryker\Client\Search\Dependency\Plugin\QueryExpanderPluginInterface[]|\Spryker\Client\SearchExtension\Dependency\Plugin\QueryExpanderPluginInterface[]
      */
     protected function createCatalogSearchCountQueryExpanderPlugins(): array
     {
@@ -164,7 +166,7 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
     }
 
     /**
-     * @return \Spryker\Client\SearchExtension\Dependency\Plugin\ResultFormatterPluginInterface[]
+     * @return \Spryker\Client\Search\Dependency\Plugin\ResultFormatterPluginInterface[]
      */
     protected function getProductConcreteCatalogSearchResultFormatterPlugins(): array
     {
@@ -174,7 +176,7 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
     }
 
     /**
-     * @return \Spryker\Client\SearchExtension\Dependency\Plugin\QueryExpanderPluginInterface[]
+     * @return \Spryker\Client\Search\Dependency\Plugin\QueryExpanderPluginInterface[]|\Spryker\Client\SearchExtension\Dependency\Plugin\QueryExpanderPluginInterface[]
      */
     protected function getProductConcreteCatalogSearchQueryExpanderPlugins(): array
     {

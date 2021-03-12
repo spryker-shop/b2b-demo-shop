@@ -1,0 +1,141 @@
+{% extends molecule('quote-request-delivery-summary', '@SprykerShop:QuoteRequestPage') %}
+
+{% block address %}
+    <div class="box box--smaller spacing-bottom">
+        <div class="grid grid--justify">
+            {{ block('titleAddress') }}
+
+            {% if data.isEditable and data.quoteRequestReference %}
+                {% set textButton = hasBillingAddress and hasShipmentAddress ?
+                    'quote_request_page.quote_request.cta_edit_address' | trans :
+                    'quote_request_page.quote_request.cta_add_address' | trans %}
+
+                <a href="{{ url(urlEditAddress, {quoteRequestReference: quoteRequestReference}) }}"
+                   class="col link link--alt link--action spacing-left"
+                    {{ qa('cart-go-to-address') }}>
+                    {% include molecule('icon-tooltip') with {
+                        data: {
+                            icon: 'edit',
+                            text: textButton,
+                        },
+                    } only %}
+                </a>
+            {% endif %}
+        </div>
+
+        {% block addressSeparator %}
+            <hr class="box__separator">
+        {% endblock %}
+
+        {% block billingWrapper %}
+            {% if hasBillingAddress %}
+                {% block billingSubtitle %}
+                    <h6>{{ 'quote_request_page.quote_request.title_billing_address' | trans }}</h6>
+                {% endblock %}
+
+                {% block billingAddress %}
+                    {% include molecule('display-address') with {
+                        class: 'spacing-top',
+                        modifiers: ['small'],
+                        data: {
+                            address: data.quote.billingAddress,
+                            isAddressLabelVisible: false,
+                        },
+                    } only %}
+                {% endblock %}
+
+                {% block billingSeparator %}
+                    <hr class="box__separator">
+                {% endblock %}
+            {% endif %}
+        {% endblock %}
+
+        {% block deliveryWrapper %}
+            {% macro titleDeliveryAddress() %}
+                <h6>{{ 'quote_request_page.quote_request.title_delivery_address' | trans }}</h6>
+            {% endmacro %}
+
+            {% if data.hasMultiShipments %}
+                {% block deliverySubtitle1 %}
+                    {{ _self.titleDeliveryAddress() }}
+                {% endblock %}
+
+                {{ block('textMultipleDelivery') }}
+            {% endif %}
+
+            {% if not data.hasMultiShipments and hasSingleShippingAddress %}
+                {% block deliverySubtitle2 %}
+                    {{ _self.titleDeliveryAddress() }}
+                {% endblock %}
+
+                {% block deliveryAddress %}
+                    {% include molecule('display-address') with {
+                        class: 'spacing-top',
+                        modifiers: ['small'],
+                        data: {
+                            address: shipment.shippingAddress,
+                            isAddressLabelVisible: false,
+                        },
+                    } only %}
+                {% endblock %}
+            {% endif %}
+
+            {% if hasBillingAddress and not hasShipmentAddress %}
+                {% block deliverySubtitle3 %}
+                    {{ _self.titleDeliveryAddress() }}
+                {% endblock %}
+
+                {{ block('textEmptyDeliveryAddress') }}
+            {% endif %}
+        {% endblock %}
+
+        {% block addressActions %}
+            {% if not hasBillingAddress and not hasShipmentAddress %}
+                {{ block('textEmptyAddresses') }}
+            {% endif %}
+        {% endblock %}
+    </div>
+{% endblock %}
+
+{% block shipmentMethod %}
+    <div class="box box--smaller spacing-bottom">
+        <div class="grid grid--justify">
+            {{ block('titleShipmentMethod') }}
+
+            {% if data.isEditable and data.quoteRequestReference %}
+                {% set textButton = hasShipmentMethod ?
+                    'quote_request_page.quote_request.cta_edit_shipment_method' | trans :
+                    'quote_request_page.quote_request.cta_add_shipment_method' | trans %}
+
+                <a href="{{ url(urlEditShipment, {quoteRequestReference: quoteRequestReference}) }}"
+                   class="col link link--alt link--action spacing-left"
+                    {{ qa('cart-go-to-shipment') }}>
+                    {% include molecule('icon-tooltip') with {
+                        data: {
+                            icon: 'edit',
+                            text: textButton,
+                        },
+                    } only %}
+                </a>
+            {% endif %}
+        </div>
+
+        {% block shipmentMethodSeparator %}
+            <hr class="box__separator">
+        {% endblock %}
+
+        {% if data.hasMultiShipments %}
+            {{ block('textMultipleShipmentMethod') }}
+        {% endif %}
+
+        {% if not data.hasMultiShipments and hasSingleShippingMethod and data.shipmentExpenses | length > 0 %}
+            {{ block('shipmentMethodInformation') }}
+        {% endif %}
+
+        {% block shipmentMethodActions %}
+            {% if not hasShipmentMethod %}
+                {{ block('textEmptyShipmentMethod') }}
+            {% endif %}
+        {% endblock %}
+    </div>
+{% endblock %}

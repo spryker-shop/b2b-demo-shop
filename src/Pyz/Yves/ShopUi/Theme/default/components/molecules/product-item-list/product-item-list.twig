@@ -1,0 +1,109 @@
+{% extends molecule('product-item-list', '@SprykerShop:ShopUi') %}
+
+{% define config = {
+    tag: 'product-item-list',
+} %}
+
+{% block body %}
+    <div class="{{ config.name }}__container">
+        {{ block('labels') }}
+
+        <div class="grid grid--stretch">
+            {% set extraClass = '' %}
+            {% set modifiers = ['category-list'] %}
+
+            {% block imageContainer %}
+                {% macro thumbnail(src, alt='', extraClass='', modifiers=[], jsName='') %}
+                    {% embed molecule('lazy-image') with {
+                        class: extraClass,
+                        modifiers: modifiers | merge(['thumbnail']),
+                        data: {
+                            imageSrc: src,
+                            imageTitle: alt,
+                        },
+                        embed: {
+                            jsName: jsName,
+                        },
+                    } only %}
+                        {% block content %}
+                            {% set imageExtraClasses = embed.jsName ? embed.jsName ~ '__image' %}
+
+                            {{ parent() }}
+                        {% endblock %}
+                    {% endembed %}
+                {% endmacro %}
+
+                {% import _self as macros %}
+
+                {% block image %}
+                    <div class="{{ config.name }}__image col col--sm-12 col--md-4 col--xl-2">
+                        {% block productThumbnail %}
+                            <a class="{{ config.name }}__overlay {{ config.jsName }}__link-detail-page" href="{{ data.url }}">
+                                {{ parent() }}
+                            </a>
+                        {% endblock %}
+                    </div>
+                {% endblock %}
+            {% endblock %}
+
+            {% block content %}
+                <div class="{{ config.name }}__content col col--sm-12 col--md-5 col--xl-8">
+                    {% block name %}
+                        {{ block('title') }}
+                    {% endblock %}
+
+                    {{ block('rating') }}
+
+                    {% block colors %}
+                        {% widget 'ProductGroupColorWidget' args [data.idProductAbstract, data.product.selectedAttributes ?? []] use view('product-item-color-selector', 'ProductGroupWidget') with {
+                            data: {
+                                parentJsName: config.jsName,
+                                modifiers: ['product-list'],
+                            },
+                        } only %}{% endwidget %}
+                    {% endblock %}
+
+                    {% block price %}{% endblock %}
+                </div>
+            {% endblock %}
+
+            {% block actionsContainer %}
+                <div class="{{ config.name }}__total col col--sm-12 col--md-3 col--xl-2">
+                    <div class="{{ config.name }}__price grid grid--column grid--justify-column grid--bottom">
+                        <div class="col">
+                            {% if can('SeePricePermissionPlugin') %}
+                                {% embed molecule('money-price') with {
+                                    modifiers: ['gray-color', 'block', 'margin-left-from-tablet'],
+                                    data: {
+                                        amount: data.product.prices.DEFAULT | default(null),
+                                        originalAmount: data.product.prices.ORIGINAL | default(null),
+                                        currencyIsoCode: data.currencyIsoCode,
+                                        parentJsName: config.jsName,
+                                    },
+                                } only %}
+                                    {% block originalPrice %}
+                                        {{ block('originalPriceInner') }}
+                                    {% endblock %}
+                                {% endembed %}
+                            {% endif %}
+                        </div>
+
+                        {% block actions %}
+                            <div class="{{ config.name }}__details col">
+                                {{ parent() }}
+                            </div>
+                        {% endblock %}
+                    </div>
+                </div>
+            {% endblock %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block ajaxAddToCartInner %}
+    {% set ajaxButtonExtraAttributes = {
+        'data-node-animator-wrapper-class-name': config.jsName,
+    } %}
+    {% set componentExtraClasses = config.name ~ '__action' %}
+    {{ parent() }}
+{% endblock %}

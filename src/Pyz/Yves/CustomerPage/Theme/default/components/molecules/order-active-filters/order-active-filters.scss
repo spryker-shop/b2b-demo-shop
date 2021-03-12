@@ -1,0 +1,72 @@
+@mixin customer-page-order-active-filters($name: '.order-active-filters') {
+    #{$name} {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        font-size: map_get($setting-font-size, small);
+        margin-bottom: rem(12);
+
+        &__title {
+            display: block;
+            font-weight: fw(bold);
+        }
+
+        &__item {
+            @include helper-effect-transition(background border-color box-shadow);
+            display: flex;
+            align-items: center;
+            background: $setting-color-gray-7;
+            color: $setting-color-gray-4;
+            padding: rem(10);
+            border: rem(1) solid $setting-color-gray-1;
+            line-height: rem(18);
+            border-radius: $setting-border-radius;
+            margin-right: rem(16);
+            margin-bottom: rem(8);
+            cursor: pointer;
+
+            &:hover,
+            &:focus {
+                background: $setting-color-white;
+                color: $setting-color-gray-4;
+                border-color: $setting-color-white;
+                box-shadow: 0 rem(18) rem(18) 0 $setting-color-shadow-1, 0 rem(3) rem(3) 0 $setting-color-shadow-1;
+
+                #{$name}__item-icon {
+                    color: $setting-color-gray-5;
+                }
+            }
+        }
+
+        &__item-icon {
+            @include helper-effect-transition(color);
+            margin-left: rem(8);
+            color: $setting-color-gray-3;
+        }
+
+        &__reset {
+            @include helper-effect-transition(color);
+            display: flex;
+            flex-grow: 1;
+            align-items: center;
+            justify-content: flex-end;
+            flex-direction: row-reverse;
+            line-height: rem(30);
+            color: $setting-color-gray-4;
+            font-weight: fw(bold);
+            cursor: pointer;
+
+            &:hover,
+            &:focus {
+                &,
+                #{$name}__reset-icon {
+                    color: $setting-color-gray-3;
+                }
+            }
+        }
+
+        @content;
+    }
+}
+
+@include customer-page-order-active-filters();

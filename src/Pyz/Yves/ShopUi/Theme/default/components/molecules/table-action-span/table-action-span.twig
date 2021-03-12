@@ -1,0 +1,25 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'table-action-span',
+    tag: 'span',
+} %}
+
+{% define data = {
+    icon: required,
+    title: required,
+    iconModifiers: [],
+} %}
+
+{% set title = data.title | trans %}
+
+{% block body %}
+    {% include molecule('icon-tooltip') with {
+        modifiers: data.iconModifiers,
+        data: {
+            icon: data.icon,
+            text: title,
+        },
+    } only %}
+    <span class="{{ config.name }}__title is-hidden-lg-xxl">{{ title }}</span>
+{% endblock %}
