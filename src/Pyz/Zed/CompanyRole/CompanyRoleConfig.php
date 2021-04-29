@@ -9,11 +9,13 @@ namespace Pyz\Zed\CompanyRole;
 
 use Generated\Shared\Transfer\CompanyRoleTransfer;
 use Pyz\Zed\CompanyUser\Communication\Plugin\Permission\SeeCompanyMenuPermissionPlugin;
+use Spryker\Client\QuoteApproval\Plugin\Permission\RequestQuoteApprovalPermissionPlugin;
 use Spryker\Shared\Checkout\Plugin\Permission\PlaceOrderWithAmountUpToPermissionPlugin;
 use Spryker\Shared\CompanyUser\Plugin\AddCompanyUserPermissionPlugin;
 use Spryker\Shared\CompanyUserInvitation\Plugin\ManageCompanyUserInvitationPermissionPlugin;
 use Spryker\Zed\CompanyRole\CompanyRoleConfig as SprykerCompanyRoleConfig;
 use Spryker\Zed\QuoteApproval\Communication\Plugin\Permission\ApproveQuotePermissionPlugin;
+use Spryker\Zed\QuoteApproval\Communication\Plugin\Permission\PlaceOrderPermissionPlugin;
 use SprykerShop\Shared\CartPage\Plugin\AddCartItemPermissionPlugin;
 use SprykerShop\Shared\CartPage\Plugin\ChangeCartItemPermissionPlugin;
 use SprykerShop\Shared\CartPage\Plugin\RemoveCartItemPermissionPlugin;
@@ -23,6 +25,7 @@ class CompanyRoleConfig extends SprykerCompanyRoleConfig
 {
     protected const BUYER_ROLE_NAME = 'Buyer';
     protected const APPROVER_ROLE_NAME = 'Approver';
+    protected const BUYER_WITH_LIMIT_ROLE_NAME = 'Buyer With Limit';
 
     /**
      * @return string[]
@@ -45,6 +48,7 @@ class CompanyRoleConfig extends SprykerCompanyRoleConfig
         $companyRoleTransfers = parent::getPredefinedCompanyRoles();
         $companyRoleTransfers[] = $this->getBuyerRole();
         $companyRoleTransfers[] = $this->getApproverRole();
+        $companyRoleTransfers[] = $this->getBuyerWithLimitRole();
 
         return $companyRoleTransfers;
     }
@@ -95,6 +99,33 @@ class CompanyRoleConfig extends SprykerCompanyRoleConfig
     {
         return [
             ApproveQuotePermissionPlugin::KEY,
+        ];
+    }
+
+    /**
+     * @return \Generated\Shared\Transfer\CompanyRoleTransfer
+     */
+    protected function getBuyerWithLimitRole(): CompanyRoleTransfer
+    {
+        return (new CompanyRoleTransfer())
+            ->setName(static::BUYER_WITH_LIMIT_ROLE_NAME)
+            ->setPermissionCollection($this->createPermissionCollectionFromPermissionKeys(
+                $this->getBuyerWithLimitRolePermissionKeys()
+            ));
+    }
+
+    /**
+     * @return string[]
+     */
+    protected function getBuyerWithLimitRolePermissionKeys(): array
+    {
+        return [
+            AddCartItemPermissionPlugin::KEY,
+            ChangeCartItemPermissionPlugin::KEY,
+            RemoveCartItemPermissionPlugin::KEY,
+            PlaceOrderWithAmountUpToPermissionPlugin::KEY,
+            RequestQuoteApprovalPermissionPlugin::KEY,
+            PlaceOrderPermissionPlugin::KEY,
         ];
     }
 }
