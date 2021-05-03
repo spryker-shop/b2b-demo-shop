@@ -25,7 +25,7 @@ class IsExternalDeliveryPlugin extends AbstractPlugin implements ConditionInterf
      */
     public function check(SpySalesOrderItem $orderItem)
     {
-        file_put_contents(APPLICATION_ROOT_DIR.'/tmp.log',$orderItem->getPriceToPayAggregation().PHP_EOL, FILE_APPEND);
+//        file_put_contents(APPLICATION_ROOT_DIR.'/tmp.log',$orderItem->getPriceToPayAggregation().PHP_EOL, FILE_APPEND);
 
         if (($orderItem->getPriceToPayAggregation() /100) < 100) {
             return true;
