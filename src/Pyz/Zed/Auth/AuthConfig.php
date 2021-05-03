@@ -16,6 +16,7 @@ class AuthConfig extends SprykerAuthConfig
      */
     public function getIgnorable()
     {
+        $this->addIgnorable('oms', 'trigger', 'trigger-event');
         $this->addIgnorable('health-check', 'index', 'index');
         $this->addIgnorable('_profiler', 'wdt', '*');
 

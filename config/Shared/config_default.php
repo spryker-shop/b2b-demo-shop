@@ -90,6 +90,7 @@ $config[RouterConstants::YVES_SSL_EXCLUDED_ROUTE_NAMES] = [
 ];
 $config[RouterConstants::ZED_SSL_EXCLUDED_ROUTE_NAMES] = [
     'healthCheck' => 'health-check/index',
+    'oms' => 'oms/trigger',
 ];
 
 // >>> DEV TOOLS
@@ -241,6 +242,12 @@ $config[AclConstants::ACL_DEFAULT_RULES] = [
         'bundle' => 'health-check',
         'controller' => 'index',
         'action' => 'index',
+        'type' => 'allow',
+    ],
+    [
+        'bundle' => 'oms',
+        'controller' => 'trigger',
+        'action' => 'trigger-event',
         'type' => 'allow',
     ],
 ];

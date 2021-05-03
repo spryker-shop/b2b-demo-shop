@@ -9,6 +9,7 @@ namespace Pyz\Zed\Sales;
 
 use Generated\Shared\Transfer\ItemTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
+use Orm\Zed\Payment\Persistence\SpySalesPaymentMethodTypeQuery;
 use Spryker\Zed\Sales\SalesConfig as SprykerSalesConfig;
 
 class SalesConfig extends SprykerSalesConfig
@@ -23,7 +24,12 @@ class SalesConfig extends SprykerSalesConfig
      */
     public function determineProcessForOrderItem(QuoteTransfer $quoteTransfer, ItemTransfer $itemTransfer)
     {
+        $defaultPaymentMethod = SpySalesPaymentMethodTypeQuery::create()->findByPaymentMethod("invoice")->get(0);
+        $invoiceOmsProcessName = $defaultPaymentMethod->getOmsProcessName();
         $paymentMethodStatemachineMapping = $this->getPaymentMethodStatemachineMapping();
+        if ($invoiceOmsProcessName !== '') {
+            $paymentMethodStatemachineMapping['dummyPaymentInvoice'] = $invoiceOmsProcessName;
+        }
 
         if (!array_key_exists($quoteTransfer->getPayment()->getPaymentSelection(), $paymentMethodStatemachineMapping)) {
             return parent::determineProcessForOrderItem($quoteTransfer, $itemTransfer);
