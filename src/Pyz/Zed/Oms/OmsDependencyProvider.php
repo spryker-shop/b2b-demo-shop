@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\Oms;
 
+use Pyz\Zed\Oms\Communication\Plugin\Command\CallExternalDeliveryPlugin;
 use Pyz\Zed\Oms\Communication\Plugin\Condition\IsExDeliverySuccessfulPlugin;
 use Pyz\Zed\Oms\Communication\Plugin\Condition\IsExternalDeliveryPlugin;
 use Pyz\Zed\Oms\Communication\Plugin\Oms\InitiationTimeoutProcessorPlugin;
@@ -42,6 +43,7 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
             $commandCollection->add(new SendOrderShippedPlugin(), 'Oms/SendOrderShipped');
             $commandCollection->add(new StartReturnCommandPlugin(), 'Return/StartReturn');
             $commandCollection->add(new GenerateOrderInvoiceCommandPlugin(), 'Invoice/Generate');
+            $commandCollection->add(new CallExternalDeliveryPlugin(), 'Oms/CallExternalDelivery');
 
             return $commandCollection;
         });

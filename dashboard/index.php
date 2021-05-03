@@ -4,6 +4,18 @@ $username = "development";
 $password = "mate20mg";
 $dbname = "DE_development_zed";
 
+$actions = [
+  'waiting for delivery' => 'Start delivery',
+  'delivery in progress' => 'Package is delivered',
+  'delivered' => 'Closed',
+];
+
+$statusForUpdate = [
+    'waiting for delivery' => 'delivery in progress',
+    'delivery in progress' => 'delivered',
+    'delivered' => 'closed',
+];
+
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
@@ -11,18 +23,8 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-//$sql = "SELECT id, firstname, lastname FROM MyGuests";
-//$result = $conn->query($sql);
-//
-//if ($result->num_rows > 0) {
-//    // output data of each row
-//    while($row = $result->fetch_assoc()) {
-//        echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";
-//    }
-//} else {
-//    echo "0 results";
-//}
-$conn->close();
+$sql = "SELECT * FROM order_delivery";
+$result = $conn->query($sql);
 ?>
 
 <!doctype html>
@@ -97,27 +99,24 @@ $conn->close();
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>35</td>
-              <td>Ehsan Zanjani</td>
-              <td>Invaliden Str.102 11104 Berlin Germany</td>
-              <td>waiting for delivery</td>
-              <td>Start delivery</td>
-            </tr>
-            <tr>
-                <td>36</td>
-                <td>Ehsan Zanjani</td>
-                <td>Invaliden Str.102 11104 Berlin Germany</td>
-                <td>delivery in progress</td>
-                <td>Package is delivered</td>
-            </tr>
-            <tr>
-                <td>37</td>
-                <td>Ehsan Zanjani</td>
-                <td>Invaliden Str.102 11104 Berlin Germany</td>
-                <td>delivered</td>
-                <td>Close</td>
-            </tr>
+          <?php
+          if ($result->num_rows > 0) {
+              while($row = $result->fetch_assoc()) {
+                  echo "<tr>";
+                  echo "<td>".$row['order_id']."</td><td>".$row['name']."</td><td>".$row['address']."</td><td>".$row['status']."</td><td>";
+                  if ($row['status'] === 'delivered') {
+                      echo "<b>Closed</b>";
+                  } else {
+                      echo  '<a href="/update_order.php?order_id='.$row['order_id'].'&order_status='.$statusForUpdate[$row['status']].'" class="btn btn-primary btn-sm">'.$actions[$row['status']].'</a>';
+                  }
+                  echo "</td></tr>";
+              }
+          } else {
+              echo "0 results";
+          }
+          $conn->close();
+          ?>
+
           </tbody>
         </table>
       </div>

@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\Oms\Communication\Plugin\Condition;
 
+use GuzzleHttp\Client;
 use Orm\Zed\Sales\Persistence\SpySalesOrderItem;
 use Spryker\Zed\Kernel\Communication\AbstractPlugin;
 use Spryker\Zed\Oms\Dependency\Plugin\Condition\ConditionInterface;
@@ -25,6 +26,13 @@ class IsExDeliverySuccessfulPlugin extends AbstractPlugin implements ConditionIn
      */
     public function check(SpySalesOrderItem $orderItem)
     {
-        return true;
+        $client = new Client(['base_uri' => 'http://localhost:8080/']);
+        $response = $client->request('GET', '/check_order_status.php?order_id=' . $orderItem->getFkSalesOrder());
+
+        $stringBody = (string) $response->getBody();
+
+//        file_put_contents(APPLICATION_ROOT_DIR.'/tmp.log',$stringBody.PHP_EOL, FILE_APPEND);
+
+        return $stringBody === 'delivered';
     }
 }

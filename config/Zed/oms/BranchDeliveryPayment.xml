@@ -158,7 +158,7 @@
             <event name="export" onEnter="true" manual="true"/>
             <event name="ship" manual="true" command="Oms/SendOrderShipped"/>
             <event name="skip timeout" manual="true" timeout="30 minute"/>
-            <event name="call-delivery" manual="true" timeout="1 minute"/>
+            <event name="call-delivery" manual="true" timeout="1 minute" command="Oms/CallExternalDelivery"/>
             <event name="delivery-update" manual="true"/>
             <event name="check-delivery-status" manual="true" timeout="5 minutes"/>
             <event name="check-delivery-method" manual="true" onEnter="true"/>
