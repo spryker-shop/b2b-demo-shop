@@ -8,6 +8,7 @@
 namespace Pyz\Zed\PaymentGui\Communication\Controller;
 
 use Generated\Shared\Transfer\PaymentMethodResponseTransfer;
+use Orm\Zed\Payment\Persistence\SpyPaymentMethodQuery;
 use Orm\Zed\Payment\Persistence\SpySalesPaymentMethodTypeQuery;
 use Spryker\Zed\Kernel\Communication\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -50,7 +51,7 @@ class ViewPaymentMethodController extends \Spryker\Zed\PaymentGui\Communication\
             $dataProvider->getOptions()
         );
 
-        $defaultPaymentMethod = SpySalesPaymentMethodTypeQuery::create()->findByPaymentMethod("invoice")->get(0);
+        $defaultPaymentMethod = SpyPaymentMethodQuery::create()->findByPaymentMethodKey("dummyPaymentInvoice")->get(0);
         $defaultProcessName =  $defaultPaymentMethod->getOmsProcessName();
 
         return $this->viewResponse([

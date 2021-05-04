@@ -8,6 +8,7 @@
 namespace Pyz\Zed\PaymentGui\Communication\Controller;
 
 use Generated\Shared\Transfer\PaymentMethodResponseTransfer;
+use Orm\Zed\Payment\Persistence\SpyPaymentMethodQuery;
 use Orm\Zed\Payment\Persistence\SpySalesPaymentMethodTypeQuery;
 use Spryker\Zed\Kernel\Communication\Controller\AbstractController;
 use Symfony\Component\Form\FormInterface;
@@ -58,14 +59,14 @@ class UpdatePaymentMethodController extends \Spryker\Zed\PaymentGui\Communicatio
 
         if ($paymentMethodForm->isSubmitted() && $paymentMethodForm->isValid()) {
             $process = $request->get('process');
-            $defaultPaymentMethod = SpySalesPaymentMethodTypeQuery::create()->findByPaymentMethod("invoice")->get(0);
+            $defaultPaymentMethod = SpyPaymentMethodQuery::create()->findByPaymentMethodKey("dummyPaymentInvoice")->get(0);
             $defaultPaymentMethod->setOmsProcessName($process);
             $defaultPaymentMethod->save();
 
             return $this->handlePaymentMethodForm($paymentMethodForm);
         }
 
-        $defaultPaymentMethod = SpySalesPaymentMethodTypeQuery::create()->findByPaymentMethod("invoice")->get(0);
+        $defaultPaymentMethod = SpyPaymentMethodQuery::create()->findByPaymentMethodKey("dummyPaymentInvoice")->get(0);
         $defaultProcessName =  $defaultPaymentMethod->getOmsProcessName();
         $paymentMethodTransfer->setDefaultProcess($defaultProcessName);
 
