@@ -1,0 +1,44 @@
+{% extends '@Gui/Layout/layout.twig' %}
+
+{% set widget_title = 'View Payment Method: %s'  | trans | format(paymentMethod.name) %}
+
+{% block head_title -%}
+    {{ widget_title }}
+{%- endblock %}
+
+{% block section_title %}{{ widget_title }}{% endblock %}
+
+{% block action %}
+    {{ backActionButton('/payment-gui/payment-method', 'List Payment Methods' | trans) }}
+{% endblock %}
+
+{% block content %}
+    {{ form_start(form) }}
+    {% embed '@Gui/Partials/widget.twig' with { widget_title: 'Configuration'| trans } %}
+        {% block widget_content %}
+            <div class="row">
+                <div class="col-xs-12 col-md-6 col-lg-3">
+                    <dl>
+                        <dt>{{ 'Payment Method Key' | trans }}</dt>
+                        <dd>{{ paymentMethod.methodName }}</dd>
+                        <dt>{{ 'Name' | trans }}</dt>
+                        <dd>{{ paymentMethod.name }}</dd>
+                        <dt>{{ 'Payment Provider' | trans }}</dt>
+                        <dd>{{ paymentMethod.paymentProvider.name }}</dd>
+                        <dt>{{ 'Is the Payment Method active?' | trans }}</dt>
+                        <dd><input type="checkbox" disabled {% if paymentMethod.isActive %}checked="checked"{% endif %}</dd>
+                        <dt>{{ 'OMS Process template' | trans }}</dt>
+                        <dd>{{ process }}</dd>
+                    </dl>
+                </div>
+            </div>
+        {% endblock %}
+    {% endembed %}
+
+    {% embed '@Gui/Partials/widget.twig' with { widget_title: 'Store relation' | trans } %}
+        {% block widget_content %}
+            {{ form_row(form.storeRelation) }}
+        {% endblock %}
+    {% endembed %}
+    {{ form_end(form) }}
+{% endblock %}

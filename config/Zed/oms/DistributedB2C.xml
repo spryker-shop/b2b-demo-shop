@@ -4,7 +4,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="spryker:oms-01 http://static.spryker.com/oms-01.xsd">
 
-    <process name="PartnerDeliveryPayment" main="true">
+    <process name="DistributedB2C" main="true">
         <subprocesses>
             <process>DummyRefund</process>
             <process>DummyReturn</process>
@@ -31,6 +31,8 @@
             <state name="exported" reserved="true" display="oms.state.exported"/>
             <state name="shipped" reserved="true" display="oms.state.shipped"/>
             <state name="external delivery" reserved="true" display="oms.state.external.delivery"/>
+            <state name="internal delivery" reserved="true" display="oms.state.external.delivery"/>
+            <state name="waiting for delivery" reserved="true" display="oms.state.external.delivery"/>
             <state name="waiting" reserved="true" display="oms.state.waiting"/>
             <state name="delivered" display="oms.state.delivered"/>
             <state name="closed" display="oms.state.closed"/>
@@ -103,14 +105,38 @@
                 <event>ship</event>
             </transition>
 
-            <transition happy="true">
+            <transition happy="true" condition="Oms/IsExternalDelivery">
                 <source>shipped</source>
                 <target>external delivery</target>
-                <event>call-delivery</event>
+                <event>check-delivery-method</event>
+            </transition>
+
+            <transition>
+                <source>shipped</source>
+                <target>internal delivery</target>
+                <event>check-delivery-method</event>
             </transition>
 
             <transition happy="true">
                 <source>external delivery</source>
+                <target>waiting for delivery</target>
+                <event>call-delivery</event>
+            </transition>
+
+            <transition happy="true" condition="Oms/IsExDeliverySuccessful">
+                <source>waiting for delivery</source>
+                <target>delivered</target>
+                <event>check-delivery-status</event>
+            </transition>
+
+            <transition happy="true">
+                <source>waiting for delivery</source>
+                <target>waiting for delivery</target>
+                <event>check-delivery-status</event>
+            </transition>
+
+            <transition happy="true">
+                <source>internal delivery</source>
                 <target>delivered</target>
                 <event>delivery-update</event>
             </transition>
@@ -132,8 +158,10 @@
             <event name="export" onEnter="true" manual="true"/>
             <event name="ship" manual="true" command="Oms/SendOrderShipped"/>
             <event name="skip timeout" manual="true" timeout="30 minute"/>
-            <event name="call-delivery" manual="true"/>
+            <event name="call-delivery" manual="true" timeout="1 minute" command="Oms/CallExternalDelivery"/>
             <event name="delivery-update" manual="true"/>
+            <event name="check-delivery-status" manual="true" timeout="5 minutes"/>
+            <event name="check-delivery-method" manual="true" onEnter="true"/>
             <event name="close" manual="true" timeout="1 hour"/>
         </events>
     </process>

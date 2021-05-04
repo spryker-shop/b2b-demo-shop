@@ -1,0 +1,5 @@
+{% if paymentMethodForm.storeRelation is defined %}
+    {{ form_row(paymentMethodForm.storeRelation.id_stores, { 'label': 'Available in the following store(s)' | trans }) }}
+{% endif %}
+
+{{ form_rest(paymentMethodForm.storeRelation) }}

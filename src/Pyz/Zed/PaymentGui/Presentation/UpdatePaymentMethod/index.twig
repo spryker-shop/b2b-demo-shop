@@ -1,0 +1,19 @@
+{% extends '@Gui/Layout/layout.twig' %}
+
+{% set widget_title = 'Edit Payment Method: %s' | format(paymentMethod.name) | trans %}
+
+{% block head_title widget_title %}
+{% block section_title widget_title %}
+
+{% block content %}
+
+    {{ form_start(paymentMethodForm) }}
+
+    {{ tabs(paymentMethodTabs, {
+        paymentMethodForm: paymentMethodForm,
+        paymentMethod: paymentMethod,
+    }) }}
+
+    {{ form_end(paymentMethodForm) }}
+
+{% endblock %}

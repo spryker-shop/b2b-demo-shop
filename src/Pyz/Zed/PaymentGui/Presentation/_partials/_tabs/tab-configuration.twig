@@ -1,0 +1,21 @@
+<div class="row">
+    <div class="col-xs-12 col-md-6 col-lg-3">
+        <dl>
+            <dt>{{ 'Payment Method Key' | trans }}</dt>
+            <dd>{{ paymentMethod.methodName }}</dd>
+            <dt>{{ 'Name' | trans }}</dt>
+            <dd>{{ paymentMethod.name }}</dd>
+            {{ form_row(paymentMethodForm.isActive) }}
+            <dt>{{ 'OMS Process templatess' }}</dt>
+            <dd class="row" style="padding: 10px">
+            <select class="form-control" name="process" id="process">
+                    <option value="DummyPayment01">Basic B2C process</option>
+                    <option value="DummyPayment01" >Basic Unified Commerce process</option>
+                    <option value="DummyPayment01">B2C with Internal Services</option>
+                    <option value="DistributedB2C" {{ paymentMethod.defaultProcess == 'DistributedB2C' ? 'selected' }}>B2C with Distributed Services</option>
+            </select>
+
+            </dd>
+        </dl>
+    </div>
+</div>
