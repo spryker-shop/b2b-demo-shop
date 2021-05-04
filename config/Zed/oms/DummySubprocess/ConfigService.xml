@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<statemachine
+    xmlns="spryker:oms-01"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="spryker:oms-01 http://static.spryker.com/oms-01.xsd">
+    <!-- Used as example XML for OMS implementation -->
+
+    <process name="ConfigService">
+        <states>
+            <state name="waiting for configuration" display="oms.state.configure"/>
+            <state name="configuration found" display="oms.state.configure"/>
+            <state name="configuration applied" display="oms.state.configure"/>
+            <state name="assembly quality standards confirmed" display="oms.state.configure"/>
+        </states>
+
+        <transitions>
+
+            <transition happy="true" condition="Oms/IsExpensiveOrder">
+                <source>waiting</source>
+                <target>waiting for configuration</target>
+                <event>export</event>
+            </transition>
+
+            <transition>
+                <source>waiting for configuration</source>
+                <target>configuration found</target>
+                <event>configure</event>
+            </transition>
+
+            <transition>
+                <source>configuration found</source>
+                <target>configuration applied</target>
+                <event>apply</event>
+            </transition>
+
+            <transition>
+                <source>configuration applied</source>
+                <target>assembly quality standards confirmed</target>
+                <event>confirm</event>
+            </transition>
+
+            <transition>
+                <source>assembly quality standards confirmed</source>
+                <target>ready for delivery</target>
+                <event>export</event>
+            </transition>
+        </transitions>
+
+        <events>
+            <event name="configure" manual="true" />
+            <event name="apply" manual="true" />
+            <event name="confirm" manual="true" />
+        </events>
+    </process>
+
+</statemachine>

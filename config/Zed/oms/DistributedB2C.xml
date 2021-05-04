@@ -9,6 +9,7 @@
             <process>DummyRefund</process>
             <process>DummyReturn</process>
             <process>DummyInvoice</process>
+            <process>ConfigService</process>
         </subprocesses>
 
         <states>
@@ -28,7 +29,7 @@
             <state name="confirmed" reserved="true" display="oms.state.confirmed">
                 <flag>cancellable</flag>
             </state>
-            <state name="exported" reserved="true" display="oms.state.exported"/>
+            <state name="ready for delivery" reserved="true" display="oms.state.exported"/>
             <state name="shipped" reserved="true" display="oms.state.shipped"/>
             <state name="external delivery" reserved="true" display="oms.state.external.delivery"/>
             <state name="internal delivery" reserved="true" display="oms.state.external.delivery"/>
@@ -95,12 +96,12 @@
 
             <transition happy="true">
                 <source>waiting</source>
-                <target>exported</target>
+                <target>ready for delivery</target>
                 <event>export</event>
             </transition>
 
             <transition happy="true">
-                <source>exported</source>
+                <source>ready for delivery</source>
                 <target>shipped</target>
                 <event>ship</event>
             </transition>
@@ -169,5 +170,6 @@
     <process name="DummyRefund" file="DummySubprocess/DummyRefund01.xml"/>
     <process name="DummyReturn" file="DummySubprocess/DummyReturn01.xml"/>
     <process name="DummyInvoice" file="DummySubprocess/DummyInvoice01.xml"/>
+    <process name="ConfigService" file="DummySubprocess/ConfigService.xml"/>
 
 </statemachine>
