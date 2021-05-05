@@ -31,8 +31,6 @@ class IsExDeliverySuccessfulPlugin extends AbstractPlugin implements ConditionIn
 
         $stringBody = (string) $response->getBody();
 
-//        file_put_contents(APPLICATION_ROOT_DIR.'/tmp.log',$stringBody.PHP_EOL, FILE_APPEND);
-
         return $stringBody === 'delivered';
     }
 }

@@ -15,7 +15,7 @@
 
         <transitions>
 
-            <transition happy="true" condition="Oms/IsExpensiveOrder">
+            <transition condition="Oms/IsConfigServiceRequired">
                 <source>waiting</source>
                 <target>waiting for configuration</target>
                 <event>export</event>
@@ -47,9 +47,9 @@
         </transitions>
 
         <events>
-            <event name="configure" manual="true" />
-            <event name="apply" manual="true" />
-            <event name="confirm" manual="true" />
+            <event name="configure" manual="true"/>
+            <event name="apply" manual="true" onEnter="true"/>
+            <event name="confirm" manual="true" onEnter="true"/>
         </events>
     </process>
 

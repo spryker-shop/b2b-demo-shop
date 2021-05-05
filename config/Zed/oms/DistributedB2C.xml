@@ -31,9 +31,10 @@
             </state>
             <state name="ready for delivery" reserved="true" display="oms.state.exported"/>
             <state name="shipped" reserved="true" display="oms.state.shipped"/>
-            <state name="external delivery" reserved="true" display="oms.state.external.delivery"/>
-            <state name="internal delivery" reserved="true" display="oms.state.external.delivery"/>
-            <state name="waiting for delivery" reserved="true" display="oms.state.external.delivery"/>
+            <state name="exported to remote fulfillment center" reserved="true" display="oms.state.remote.delivery"/>
+            <state name="waiting for remote fulfillment center" reserved="true" display="oms.state.remote.delivery"/>
+            <state name="confirmed by remote fulfillment center" reserved="true" display="oms.state.remote.delivery"/>
+            <state name="exported in local fulfilment center" reserved="true" display="oms.state.local.delivery"/>
             <state name="waiting" reserved="true" display="oms.state.waiting"/>
             <state name="delivered" display="oms.state.delivered"/>
             <state name="closed" display="oms.state.closed"/>
@@ -108,36 +109,36 @@
 
             <transition happy="true" condition="Oms/IsExternalDelivery">
                 <source>shipped</source>
-                <target>external delivery</target>
+                <target>exported to remote fulfillment center</target>
                 <event>check-delivery-method</event>
             </transition>
 
             <transition>
                 <source>shipped</source>
-                <target>internal delivery</target>
+                <target>exported in local fulfilment center</target>
                 <event>check-delivery-method</event>
             </transition>
 
             <transition happy="true">
-                <source>external delivery</source>
-                <target>waiting for delivery</target>
+                <source>exported to remote fulfillment center</source>
+                <target>waiting for remote fulfillment center</target>
                 <event>call-delivery</event>
             </transition>
 
-            <transition happy="true" condition="Oms/IsExDeliverySuccessful">
-                <source>waiting for delivery</source>
+            <transition happy="true">
+                <source>waiting for remote fulfillment center</source>
+                <target>confirmed by remote fulfillment center</target>
+                <event>confirm-delivery</event>
+            </transition>
+
+            <transition happy="true">
+                <source>confirmed by remote fulfillment center</source>
                 <target>delivered</target>
-                <event>check-delivery-status</event>
+                <event>delivery-update</event>
             </transition>
 
             <transition happy="true">
-                <source>waiting for delivery</source>
-                <target>waiting for delivery</target>
-                <event>check-delivery-status</event>
-            </transition>
-
-            <transition happy="true">
-                <source>internal delivery</source>
+                <source>exported in local fulfilment center</source>
                 <target>delivered</target>
                 <event>delivery-update</event>
             </transition>
@@ -160,8 +161,8 @@
             <event name="ship" manual="true" command="Oms/SendOrderShipped"/>
             <event name="skip timeout" manual="true" timeout="30 minute"/>
             <event name="call-delivery" manual="true" timeout="1 minute" command="Oms/CallExternalDelivery"/>
+            <event name="confirm-delivery" manual="true"/>
             <event name="delivery-update" manual="true"/>
-            <event name="check-delivery-status" manual="true" timeout="5 minutes"/>
             <event name="check-delivery-method" manual="true" onEnter="true"/>
             <event name="close" manual="true" timeout="1 hour"/>
         </events>

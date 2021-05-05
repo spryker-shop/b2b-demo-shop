@@ -12,25 +12,23 @@ use Spryker\Zed\Kernel\Communication\AbstractPlugin;
 use Spryker\Zed\Oms\Dependency\Plugin\Condition\ConditionInterface;
 
 
-class IsExternalDeliveryPlugin extends AbstractPlugin implements ConditionInterface
+class IsConfigServiceRequiredPlugin extends AbstractPlugin implements ConditionInterface
 {
     /**
      * {@inheritDoc}
      *
+     * @api
+     *
      * @param \Orm\Zed\Sales\Persistence\SpySalesOrderItem $orderItem
      *
      * @return bool
-     * @api
-     *
      */
     public function check(SpySalesOrderItem $orderItem)
     {
-        $requestDate = $orderItem->getSpySalesShipment()->getRequestedDeliveryDate();
-        $nextDeliveryDate = date("Y-m-d", strtotime("+1 week"));
-        if ($requestDate < $nextDeliveryDate) {
-            return false;
+        if (($orderItem->getPriceToPayAggregation() /100) >= 5000) {
+            return true;
         }
 
-        return true;
+        return false;
     }
 }

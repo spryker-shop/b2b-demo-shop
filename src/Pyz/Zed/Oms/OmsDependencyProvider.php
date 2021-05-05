@@ -8,6 +8,7 @@
 namespace Pyz\Zed\Oms;
 
 use Pyz\Zed\Oms\Communication\Plugin\Command\CallExternalDeliveryPlugin;
+use Pyz\Zed\Oms\Communication\Plugin\Condition\IsConfigServiceRequiredPlugin;
 use Pyz\Zed\Oms\Communication\Plugin\Condition\IsExDeliverySuccessfulPlugin;
 use Pyz\Zed\Oms\Communication\Plugin\Condition\IsExternalDeliveryPlugin;
 use Pyz\Zed\Oms\Communication\Plugin\Oms\InitiationTimeoutProcessorPlugin;
@@ -49,6 +50,7 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
         });
 
         $container->extend(self::CONDITION_PLUGINS, function (ConditionCollectionInterface $conditionCollection) {
+            $conditionCollection->add(new IsConfigServiceRequiredPlugin(), 'Oms/IsConfigServiceRequired');
             $conditionCollection->add(new IsExternalDeliveryPlugin(), 'Oms/IsExternalDelivery');
             $conditionCollection->add(new IsExDeliverySuccessfulPlugin(), 'Oms/IsExDeliverySuccessful');
             return $conditionCollection;

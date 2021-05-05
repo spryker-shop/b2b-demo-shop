@@ -23,7 +23,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT * FROM order_delivery";
+$sql = "SELECT * FROM order_delivery order by id desc";
 $result = $conn->query($sql);
 ?>
 
