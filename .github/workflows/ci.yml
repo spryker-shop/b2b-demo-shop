@@ -113,6 +113,8 @@ jobs:
       - name: 'Run phantomjs'
         run: timeout 45m bash -c "vendor/bin/phantomjs --webdriver=4444 --disk-cache=true --load-images=false --webdriver-logfile=/tmp/phantomjs.log --webdriver-loglevel=DEBUG">/dev/null &
       - name: 'Run tests'
+        env:
+          POSTGRES_PASSWORD: ${{ secrets.DB_PASSWORD }}
         run: vendor/bin/codecept run -g EndToEnd -g Presentation -x DockerOnly --ext DotReporter
 
   without-acceptance-7-4:
@@ -159,8 +161,6 @@ jobs:
           stack-version: 6.8.0
       - name: 'Prepare file system'
         run: ./config/Shared/ci/ga/prepare_file_system.sh
-      - name: 'Configure acceptance env'
-        run: config/Shared/ci/ga/acceptance_env.sh
       - name: 'Install project'
         run: vendor/bin/install DE -r ci -x frontend -x fixtures
       - name: 'Run tests'
@@ -214,6 +214,8 @@ jobs:
       - name: 'Run phantomjs'
         run: timeout 45m bash -c "vendor/bin/phantomjs --webdriver=4444 --disk-cache=true --load-images=false --webdriver-logfile=/tmp/phantomjs.log --webdriver-loglevel=DEBUG">/dev/null &
       - name: 'Run tests'
+        env:
+          MYSQL_PASSWORD: ${{ secrets.DB_PASSWORD }}
         run: vendor/bin/codecept run -g EndToEnd -g Presentation -x DockerOnly --ext DotReporter
 
   without-acceptance-7-2-mariadb:
@@ -256,8 +258,6 @@ jobs:
           stack-version: 6.8.0
       - name: 'Prepare file system'
         run: ./config/Shared/ci/ga/prepare_file_system.sh
-      - name: 'Configure acceptance env'
-        run: config/Shared/ci/ga/acceptance_env.sh
       - name: 'Install project'
         run: vendor/bin/install DE -r ci -x frontend -x fixtures
       - name: 'Run tests'
