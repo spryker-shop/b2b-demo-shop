@@ -15,10 +15,10 @@ env:
   APPLICATION_STORE: DE
   PROJECT: suite
   POSTGRES_PORT: 5433
-  POSTGRES_PASSWORD: postgres
+  POSTGRES_PASSWORD: ${{ secrets.DB_PASSWORD }}
   POSTGRES_USER: postgres
   POSTGRES_DB: DE_test_zed
-  MYSQL_PASSWORD: secret
+  MYSQL_PASSWORD: ${{ secrets.DB_PASSWORD }}
   MYSQL_USER: root
   MYSQL_DATABASE: DE_test_zed
 
