@@ -39,6 +39,7 @@ sudo sed -e "s?%APPLICATION_ENV%?$APPLICATION_ENV?g" --in-place /etc/apache2/sit
 sudo sed -e "s?%APPLICATION_ENV%?$APPLICATION_ENV?g" --in-place /etc/apache2/sites-available/zed.conf
 sudo sed -e "s?%APPLICATION_ENV%?$APPLICATION_ENV?g" --in-place /etc/apache2/sites-available/glue.conf
 sudo sed -e "s?%POSTGRES_PORT%?$POSTGRES_PORT?g" --in-place /etc/apache2/sites-available/zed.conf
+sudo sed -e "s?%DB_PASSWORD%?$DB_PASSWORD?g" --in-place /etc/apache2/sites-available/zed.conf
 sudo ln -s /etc/apache2/sites-available/yves.conf /etc/apache2/sites-enabled/yves.conf
 sudo ln -s /etc/apache2/sites-available/zed.conf /etc/apache2/sites-enabled/zed.conf
 sudo ln -s /etc/apache2/sites-available/glue.conf /etc/apache2/sites-enabled/glue.conf

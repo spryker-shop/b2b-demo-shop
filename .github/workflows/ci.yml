@@ -15,10 +15,9 @@ env:
   APPLICATION_STORE: DE
   PROJECT: suite
   POSTGRES_PORT: 5433
-  POSTGRES_PASSWORD: ${{ secrets.DB_PASSWORD }}
   POSTGRES_USER: postgres
   POSTGRES_DB: DE_test_zed
-  MYSQL_PASSWORD: ${{ secrets.DB_PASSWORD }}
+  DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
   MYSQL_USER: root
   MYSQL_DATABASE: DE_test_zed
 
@@ -30,7 +29,7 @@ jobs:
       postgres:
         image: postgres:12
         env:
-          POSTGRES_PASSWORD: ${{ env.POSTGRES_PASSWORD }}
+          POSTGRES_PASSWORD: ${{ secrets.DB_PASSWORD }}
           POSTGRES_USER: ${{ env.POSTGRES_USER }}
           POSTGRES_DB: ${{ env.POSTGRES_DB }}
         ports:
@@ -77,7 +76,7 @@ jobs:
       postgres:
         image: postgres:12
         env:
-          POSTGRES_PASSWORD: ${{ env.POSTGRES_PASSWORD }}
+          POSTGRES_PASSWORD: ${{ secrets.DB_PASSWORD }}
           POSTGRES_USER: ${{ env.POSTGRES_USER }}
           POSTGRES_DB: ${{ env.POSTGRES_DB }}
         ports:
@@ -132,7 +131,7 @@ jobs:
       postgres:
         image: postgres:12
         env:
-          POSTGRES_PASSWORD: ${{ env.POSTGRES_PASSWORD }}
+          POSTGRES_PASSWORD: ${{ secrets.DB_PASSWORD }}
           POSTGRES_USER: ${{ env.POSTGRES_USER }}
           POSTGRES_DB: ${{ env.POSTGRES_DB }}
         ports:
@@ -194,7 +193,7 @@ jobs:
           collation server: 'utf8_general_ci'
           mariadb version: '10.3'
           mysql database: ${{ env.MYSQL_DATABASE }}
-          mysql root password: ${{ env.MYSQL_PASSWORD }}
+          mysql root password: ${{ secrets.DB_PASSWORD }}
       - name: 'Configure sysctl limits'
         run: |
           sudo swapoff -a
@@ -245,7 +244,7 @@ jobs:
           collation server: 'utf8_general_ci'
           mariadb version: '10.3'
           mysql database: ${{ env.MYSQL_DATABASE }}
-          mysql root password: ${{ env.MYSQL_PASSWORD }}
+          mysql root password: ${{ secrets.DB_PASSWORD }}
       - name: 'Configure sysctl limits'
         run: |
           sudo swapoff -a
