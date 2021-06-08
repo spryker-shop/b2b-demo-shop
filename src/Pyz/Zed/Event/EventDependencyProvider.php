@@ -61,14 +61,6 @@ use Spryker\Zed\UrlStorage\Communication\Plugin\Event\Subscriber\UrlStorageEvent
 class EventDependencyProvider extends SprykerEventDependencyProvider
 {
     /**
-     * @return \Spryker\Zed\Event\Dependency\EventCollectionInterface
-     */
-    public function getEventListenerCollection()
-    {
-        return parent::getEventListenerCollection();
-    }
-
-    /**
      * @return \Spryker\Zed\Event\Dependency\EventSubscriberCollectionInterface
      */
     public function getEventSubscriberCollection()
