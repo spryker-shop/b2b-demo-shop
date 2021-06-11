@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\ProductManagement;
 
+use Spryker\Zed\CmsBlockProductConnector\Communication\Plugin\CmsBlockProductAbstractBlockListViewPlugin;
 use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\Money\Communication\Plugin\Form\MoneyFormTypePlugin;
 use Spryker\Zed\PriceProductMerchantRelationshipGui\Communication\Plugin\ProductManagement\MerchantRelationshipProductAbstractFormExpanderPlugin;
@@ -28,6 +29,16 @@ use Spryker\Zed\Store\Communication\Plugin\Form\StoreRelationToggleFormTypePlugi
 
 class ProductManagementDependencyProvider extends SprykerProductManagementDependencyProvider
 {
+    /**
+     * @return \Spryker\Zed\ProductManagement\Communication\Plugin\ProductAbstractViewPluginInterface[]
+     */
+    protected function getProductAbstractViewPlugins()
+    {
+        return [
+            new CmsBlockProductAbstractBlockListViewPlugin(),
+        ];
+    }
+
     /**
      * @return \Spryker\Zed\Kernel\Communication\Form\FormTypeInterface
      */

@@ -19,8 +19,8 @@ class UrlsRestApiDependencyProvider extends SprykerUrlsRestApiDependencyProvider
     protected function getRestUrlResolverAttributesTransferProviderPlugins(): array
     {
         return [
-            new CategoryNodeRestUrlResolverAttributesTransferProviderPlugin(),
             new ProductAbstractRestUrlResolverAttributesTransferProviderPlugin(),
+            new CategoryNodeRestUrlResolverAttributesTransferProviderPlugin(),
         ];
     }
 }

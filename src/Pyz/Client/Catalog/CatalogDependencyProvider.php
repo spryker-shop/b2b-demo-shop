@@ -107,7 +107,7 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
     }
 
     /**
-     * @return \Spryker\Client\Search\Dependency\Plugin\ResultFormatterPluginInterface[]|\Spryker\Client\SearchExtension\Dependency\Plugin\ResultFormatterPluginInterface[]
+     * @return \Spryker\Client\Search\Dependency\Plugin\ResultFormatterPluginInterface[]
      */
     protected function createCatalogSearchResultFormatterPlugins(): array
     {
@@ -140,7 +140,7 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
     }
 
     /**
-     * @return \Spryker\Client\Search\Dependency\Plugin\ResultFormatterPluginInterface[]|\Spryker\Client\SearchExtension\Dependency\Plugin\ResultFormatterPluginInterface[]
+     * @return \Spryker\Client\Search\Dependency\Plugin\ResultFormatterPluginInterface[]
      */
     protected function createSuggestionResultFormatterPlugins(): array
     {
@@ -168,7 +168,7 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
     }
 
     /**
-     * @return \Spryker\Client\Search\Dependency\Plugin\ResultFormatterPluginInterface[]|\Spryker\Client\SearchExtension\Dependency\Plugin\ResultFormatterPluginInterface[]
+     * @return \Spryker\Client\Search\Dependency\Plugin\ResultFormatterPluginInterface[]
      */
     protected function getProductConcreteCatalogSearchResultFormatterPlugins(): array
     {
