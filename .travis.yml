@@ -133,7 +133,8 @@ jobs:
         - docker/sdk up -t -v
         - docker/sdk testing codecept run -c codeception.ci.functional.yml
       before_install: skip
-      before_script: skip
+      before_script:
+          - ./config/Shared/ci/travis/docker-credentials.sh
       after_script: skip
 
     - name: Docker / Alpine / PHP 7.3 / PostgreSQL / Glue
@@ -175,7 +176,8 @@ jobs:
         - docker/sdk testing console queue:worker:start --stop-when-empty
         - docker/sdk testing codecept run -c codeception.api.yml
       before_install: skip
-      before_script: skip
+      before_script:
+          - ./config/Shared/ci/travis/docker-credentials.sh
       after_script: skip
 
     - name: Docker / Alpine / PHP 7.3 / MariaDB / Functional
@@ -214,7 +216,8 @@ jobs:
         - docker/sdk up -t -v
         - docker/sdk testing codecept run -c codeception.ci.functional.yml
       before_install: skip
-      before_script: skip
+      before_script:
+          - ./config/Shared/ci/travis/docker-credentials.sh
       after_script: skip
 
     - name: Docker / Debian / PHP 7.3 / PostgreSQL / Functional
@@ -253,7 +256,8 @@ jobs:
         - docker/sdk up -t -v
         - docker/sdk testing codecept run -c codeception.ci.functional.yml
       before_install: skip
-      before_script: skip
+      before_script:
+          - ./config/Shared/ci/travis/docker-credentials.sh
       after_script: skip
 
     - name: Docker / Alpine / PHP 7.3 / MariaDB / Acceptance
@@ -293,7 +297,8 @@ jobs:
           - docker/sdk testing console queue:worker:start --stop-when-empty
           - docker/sdk testing codecept run -c codeception.acceptance.yml
       before_install: skip
-      before_script: skip
+      before_script:
+          - ./config/Shared/ci/travis/docker-credentials.sh
       after_script: skip
 
     - name: Docker / Alpine / PHP 7.4 / PostgreSQL / Acceptance
@@ -333,7 +338,8 @@ jobs:
           - docker/sdk testing console queue:worker:start --stop-when-empty
           - docker/sdk testing codecept run -c codeception.acceptance.yml
       before_install: skip
-      before_script: skip
+      before_script:
+          - ./config/Shared/ci/travis/docker-credentials.sh
       after_script: skip
 
     - name: Docker / Alpine / PHP 7.4 / Frontend & Assets
@@ -374,7 +380,8 @@ jobs:
         - docker run -it --rm --entrypoint='' spryker_b2b_frontend:1.0-frontend ls -al /data/public/Yves/assets/myhash
         - docker run -it --rm --entrypoint='' spryker_b2b_frontend:1.0-frontend ls -al /data/public/Zed/assets/
       before_install: skip
-      before_script: skip
+      before_script:
+          - ./config/Shared/ci/travis/docker-credentials.sh
       after_script: skip
 
 addons:
@@ -461,6 +468,7 @@ before_script:
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console rest-api:generate:documentation ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console frontend:project:install-dependencies ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console frontend:yves:install-dependencies ; fi
+  - composer dump-autoload -o -a
 
 script:
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console propel:schema:validate ; fi
