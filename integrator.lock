@@ -83,6 +83,38 @@
       }
     }
   },
+  "Spryker.CompanyGui": {
+    "wire-plugin": {
+      "f26e648ae3101b9f26e9bcaf321a679ba1dc67ec": {
+        "target": "\\Spryker\\Zed\\CompanyUserGui\\CompanyUserGuiDependencyProvider::getCompanyUserFormExpanderPlugins",
+        "source": "\\Spryker\\Zed\\CompanyGui\\Communication\\Plugin\\CompanyUserGui\\CompanyToCompanyUserFormExpanderPlugin"
+      }
+    }
+  },
+  "Spryker.PublishAndSynchronizeHealthCheck": {
+    "wire-plugin": {
+      "e9ceb2499ca9e36e07e6f941db5b84e63a9db5ba": {
+        "target": "\\Spryker\\Zed\\HealthCheck\\HealthCheckDependencyProvider::getHealthCheckPlugins",
+        "source": "\\Spryker\\Zed\\PublishAndSynchronizeHealthCheck\\Communication\\Plugin\\HealthCheck\\PublishAndSynchronizeWriteHealthCheckPlugin"
+      }
+    }
+  },
+  "Spryker.PublishAndSynchronizeHealthCheckSearch": {
+    "wire-plugin": {
+      "166c3677c8d02106e261c4cdf3848270bf911f6a": {
+        "target": "\\Spryker\\Zed\\HealthCheck\\HealthCheckDependencyProvider::getHealthCheckPlugins",
+        "source": "\\Spryker\\Zed\\PublishAndSynchronizeHealthCheckSearch\\Communication\\Plugin\\HealthCheck\\PublishAndSynchronizeHealthCheckSearchPlugin"
+      }
+    }
+  },
+  "Spryker.PublishAndSynchronizeHealthCheckStorage": {
+    "wire-plugin": {
+      "f700d7c24e14e077a9fd6c6006f74a08b9f96e01": {
+        "target": "\\Spryker\\Zed\\HealthCheck\\HealthCheckDependencyProvider::getHealthCheckPlugins",
+        "source": "\\Spryker\\Zed\\PublishAndSynchronizeHealthCheckStorage\\Communication\\Plugin\\HealthCheck\\PublishAndSynchronizeHealthCheckStoragePlugin"
+      }
+    }
+  },
   "Spryker.Sales": {
     "wire-plugin": {
       "8acd5b51dbce690ba44335f6e383095acc6e4b9e": {
@@ -127,14 +159,6 @@
       "0c9f39cebc63383a593f7f1bbd02ecc320b28e67": {
         "target": "\\Spryker\\Zed\\Checkout\\CheckoutDependencyProvider::getCheckoutOrderSavers",
         "source": "\\Spryker\\Zed\\Shipment\\Communication\\Plugin\\Checkout\\OrderShipmentSavePlugin"
-      }
-    }
-  },
-  "Spryker.CompanyGui": {
-    "wire-plugin": {
-      "f26e648ae3101b9f26e9bcaf321a679ba1dc67ec": {
-        "target": "\\Spryker\\Zed\\CompanyUserGui\\CompanyUserGuiDependencyProvider::getCompanyUserFormExpanderPlugins",
-        "source": "\\Spryker\\Zed\\CompanyGui\\Communication\\Plugin\\CompanyUserGui\\CompanyToCompanyUserFormExpanderPlugin"
       }
     }
   }
