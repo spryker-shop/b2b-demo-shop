@@ -9,6 +9,9 @@ namespace Pyz\Yves\CustomerPage\Security;
 
 use SprykerShop\Yves\CustomerPage\Security\Customer as SprykerCustomer;
 
+/**
+ * @method string getUserIdentifier()
+ */
 class Customer extends SprykerCustomer
 {
     /**

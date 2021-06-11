@@ -51,6 +51,7 @@ class CompanyUserGuiDependencyProvider extends SprykerCompanyUserGuiDependencyPr
     protected function getCompanyUserFormExpanderPlugins(): array
     {
         return [
+            new CompanyToCompanyUserFormExpanderPlugin(),
             new CompanyBusinessUnitFormExpanderPlugin(),
             new CompanyRoleFormExpanderPlugin(),
             new CompanyToCompanyUserFormExpanderPlugin(),

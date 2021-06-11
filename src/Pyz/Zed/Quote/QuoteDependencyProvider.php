@@ -114,14 +114,9 @@ class QuoteDependencyProvider extends SprykerQuoteDependencyProvider
      */
     protected function getQuoteDeleteAfterPlugins(): array
     {
-        /**
-         * @var \Spryker\Zed\QuoteExtension\Dependency\Plugin\QuoteDeleteAfterPluginInterface[]
-         */
-        $plugins = [
+        return [
             new InitDefaultQuoteCustomerQuoteDeleteAfterPlugin(), #MultiCartFeature
         ];
-
-        return $plugins;
     }
 
     /**
