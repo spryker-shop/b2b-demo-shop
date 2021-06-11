@@ -32,7 +32,7 @@ use Spryker\Shared\CompanyUserInvitation\Plugin\ManageCompanyUserInvitationPermi
 use SprykerShop\Shared\CartPage\Plugin\AddCartItemPermissionPlugin;
 use SprykerShop\Shared\CartPage\Plugin\ChangeCartItemPermissionPlugin;
 use SprykerShop\Shared\CartPage\Plugin\RemoveCartItemPermissionPlugin;
-use SprykerShop\Shared\CompanyPage\Plugin\CompanyUserStatusChangePermissionPlugin;
+use \Spryker\Client\CompanyUser\Plugin\CompanyUserStatusChangePermissionPlugin;
 
 class PermissionDependencyProvider extends SprykerPermissionDependencyProvider
 {
