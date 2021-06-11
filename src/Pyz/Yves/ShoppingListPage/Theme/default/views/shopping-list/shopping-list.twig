@@ -27,7 +27,7 @@
 {% block customerContent %}
     <div class="grid grid--justify">
         <div class="col col--sm-12 col--lg-auto">
-            <h2>{{ data.shoppingList.name }}</h2>
+            <h1 class="title title--h2">{{ data.shoppingList.name }}</h1>
         </div>
         <div class="col col--sm-12 col--lg-auto">
             {% set isListEditable = can('WriteShoppingListPermissionPlugin', data.shoppingList.idShoppingList) %}

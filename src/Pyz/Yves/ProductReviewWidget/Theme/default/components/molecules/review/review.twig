@@ -2,7 +2,7 @@
 
 {% block body %}
     <div class="{{ config.name }}__summary">
-        {{ data.summary | e('html') }}
+        <span itemprop="name">{{ data.summary | e('html') }}</span>
 
         {% include molecule('rating-selector', 'ProductReviewWidget') with {
             class: config.name ~ '__stars',
@@ -17,10 +17,10 @@
         } only %}
     </div>
     <div class="{{ config.name }}__author">
-        {{ data.nickname | e('html')}} -
-        {{ data.createdAt }}
+        <span itemprop="author">{{ data.nickname | e('html')}}</span> -
+        <span itemprop="datePublished">{{ data.createdAt }}</span>
     </div>
-    <div class="{{ config.name }}__description">
+    <div itemprop="reviewBody" class="{{ config.name }}__description">
         {{ data.description | e('html')}}
     </div>
 {% endblock %}

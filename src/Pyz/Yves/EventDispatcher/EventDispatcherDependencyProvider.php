@@ -7,6 +7,7 @@
 
 namespace Pyz\Yves\EventDispatcher;
 
+use Spryker\Shared\Http\Plugin\EventDispatcher\ResponseListenerEventDispatcherPlugin;
 use Spryker\Yves\Application\Communication\Plugin\EventDispatcher\HeadersSecurityEventDispatcherPlugin;
 use Spryker\Yves\EventDispatcher\EventDispatcherDependencyProvider as SprykerEventDispatcherDependencyProvider;
 use Spryker\Yves\Http\Plugin\EventDispatcher\CookieEventDispatcherPlugin;
@@ -23,6 +24,9 @@ use Spryker\Yves\Router\Plugin\EventDispatcher\RouterSslRedirectEventDispatcherP
 use Spryker\Yves\Session\Plugin\EventDispatcher\SessionEventDispatcherPlugin;
 use Spryker\Yves\Storage\Plugin\EventDispatcher\StorageCacheEventDispatcherPlugin;
 use SprykerShop\Yves\ErrorPage\Plugin\EventDispatcher\ErrorPageEventDispatcherPlugin;
+use SprykerShop\Yves\SecurityBlockerPage\Plugin\EventDispatcher\SecurityBlockerAgentEventDispatcherPlugin;
+use SprykerShop\Yves\SecurityBlockerPage\Plugin\EventDispatcher\SecurityBlockerCustomerEventDispatcherPlugin;
+use SprykerShop\Yves\ShopApplication\Plugin\EventDispatcher\LastVisitCookieEventDispatcherPlugin;
 use SprykerShop\Yves\ShopApplication\Plugin\EventDispatcher\ShopApplicationEventDispatcherPlugin;
 use SprykerShop\Yves\ShopApplication\Plugin\EventDispatcher\ShopApplicationExceptionEventDispatcherPlugin;
 use SprykerShop\Yves\ShopApplication\Plugin\EventDispatcher\ShopApplicationFilterControllerEventDispatcherPlugin;
@@ -36,12 +40,13 @@ class EventDispatcherDependencyProvider extends SprykerEventDispatcherDependency
     {
         return [
             new ErrorPageEventDispatcherPlugin(),
+            new HeadersSecurityEventDispatcherPlugin(),
+            new LocaleEventDispatcherPlugin(),
+            new RouterLocaleEventDispatcherPlugin(),
             new ShopApplicationEventDispatcherPlugin(),
             new ShopApplicationFilterControllerEventDispatcherPlugin(),
             new ShopApplicationExceptionEventDispatcherPlugin(),
-            new LocaleEventDispatcherPlugin(),
-            new RouterLocaleEventDispatcherPlugin(),
-            new HeadersSecurityEventDispatcherPlugin(),
+            new LastVisitCookieEventDispatcherPlugin(),
             new RouterListenerEventDispatcherPlugin(),
             new RouterSslRedirectEventDispatcherPlugin(),
             new CookieEventDispatcherPlugin(),
@@ -53,6 +58,9 @@ class EventDispatcherDependencyProvider extends SprykerEventDispatcherDependency
             new AutoloaderCacheEventDispatcherPlugin(),
             new SessionEventDispatcherPlugin(),
             new RedirectUrlValidationEventDispatcherPlugin(),
+            new ResponseListenerEventDispatcherPlugin(),
+            new SecurityBlockerCustomerEventDispatcherPlugin(),
+            new SecurityBlockerAgentEventDispatcherPlugin(),
         ];
     }
 }

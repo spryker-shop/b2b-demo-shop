@@ -127,7 +127,7 @@
                     {% embed molecule('quantity-counter') with {
                         modifiers: ['right-space'],
                         data: {
-                            isDisabled: not data.packagingUnitIsAmountVariable,
+                            isDisabled: not data.isAmountVariable,
                         },
                         attributes: {
                             id: 'user-amount',
@@ -184,6 +184,12 @@
     {% endif %}
 
     {% if salesUnitCount %}
+        {% include molecule('packaging-unit-quantity-selector', 'ProductPackagingUnitWidget') with {
+            attributes: {
+                json: data.jsonScheme,
+            },
+        } only %}
+
         <div class="text-small is-hidden packaging-unit-choice">
             <div class="packaging-unit-notifications">
                 <div id="amount-between-units" class="is-hidden">

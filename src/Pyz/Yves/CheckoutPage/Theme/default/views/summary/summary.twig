@@ -230,7 +230,7 @@
                 <hr>
                 <ul class="list list--alert">
                     {% for error in embed.isPlaceableOrderErrors %}
-                        <li class="list__item">{{ error.message | trans }}</li>
+                        <li class="list__item">{{ error.message | trans(error.parameters) }}</li>
                     {% endfor %}
                 </ul>
             {% endif %}

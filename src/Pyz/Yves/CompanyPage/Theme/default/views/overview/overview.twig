@@ -17,13 +17,4 @@
             }
         } only %}
     {% endif %}
-
-    {# TODO: show actual deafult company address #}
-    {% include molecule('tile', 'CompanyPage') with {
-        data: {
-            icon: 'marker',
-            title: 'company.account.address' | trans,
-            text: 'Julie-Wolfthorn-Straße 1, 10115 Berlin, Germany'
-        }
-    } only %}
 {% endblock %}

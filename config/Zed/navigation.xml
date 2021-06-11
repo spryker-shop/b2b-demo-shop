@@ -135,10 +135,10 @@
                 <action>index</action>
             </products>
             <category>
-                <label>Category</label>
-                <title>Category</title>
-                <bundle>category</bundle>
-                <controller>root</controller>
+                <label>Categories</label>
+                <title>Categories</title>
+                <bundle>category-gui</bundle>
+                <controller>list</controller>
                 <action>index</action>
             </category>
             <attributes>
@@ -460,13 +460,6 @@
                 <action>index</action>
                 <visible>0</visible>
             </sales-order-threshold-merchant-relationship-edit>
-            <product-packaging-unit>
-                <label>Packaging Types</label>
-                <title>Product Packaging Types</title>
-                <bundle>product-packaging-unit-gui</bundle>
-                <controller>index</controller>
-                <action>index</action>
-            </product-packaging-unit>
             <settings>
                 <label>MIME Type Settings</label>
                 <title>MIME Type Settings</title>
@@ -545,14 +538,6 @@
                 <controller>index</controller>
                 <action>index</action>
             </index>
-            <api>
-                <label>Api</label>
-                <title>Api</title>
-                <bundle>api</bundle>
-                <controller>index</controller>
-                <action>index</action>
-                <uri>/api</uri>
-            </api>
             <architecture-sniffer>
                 <label>Architecture Sniffers</label>
                 <title>Architecture Sniffers</title>
@@ -560,27 +545,6 @@
                 <controller>architecture</controller>
                 <action>index</action>
             </architecture-sniffer>
-            <dataset>
-                <label>Dataset</label>
-                <title>Dataset</title>
-                <bundle>dataset</bundle>
-                <controller>index</controller>
-                <action>index</action>
-            </dataset>
-            <collector-storage-connector>
-                <label>Collector: Drop Storage Timestamps</label>
-                <title>Collector: Drop Storage Timestamps</title>
-                <bundle>collector-storage-connector</bundle>
-                <controller>maintenance</controller>
-                <action>drop-timestamps</action>
-            </collector-storage-connector>
-            <collector-search-connector>
-                <label>Collector: Drop Search Timestamps</label>
-                <title>Collector: Drop Search Timestamps</title>
-                <bundle>collector-search-connector</bundle>
-                <controller>maintenance</controller>
-                <action>drop-timestamps</action>
-            </collector-search-connector>
             <elasticsearch>
                 <label>Elastic Search</label>
                 <title>Elastic Search</title>

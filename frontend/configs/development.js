@@ -2,6 +2,7 @@ const { join } = require('path');
 const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const filePathFilter = require('@jsdevtools/file-path-filter');
 const { findComponentEntryPoints, findComponentStyles, findAppEntryPoint } = require('../libs/finder');
 const { getAliasList } = require('../libs/alias');
 const { getAssetsConfig } = require('../libs/assets-configurator');
@@ -30,6 +31,14 @@ const getConfiguration = async appSettings => {
     const utilScss = await findAppEntryPoint(appSettings.find.shopUiEntryPoints, './styles/util.scss');
     const sharedScss = await findAppEntryPoint(appSettings.find.shopUiEntryPoints, './styles/shared.scss');
 
+    const criticalEntryPoints = componentEntryPoints.filter(filePathFilter({
+        include: appSettings.criticalPatterns,
+    }));
+
+    const nonCriticalEntryPoints = componentEntryPoints.filter(filePathFilter({
+        exclude: appSettings.criticalPatterns,
+    }));
+
     return {
         namespace: appSettings.namespaceConfig.namespace,
         theme: appSettings.theme,
@@ -54,10 +63,17 @@ const getConfiguration = async appSettings => {
                 'es6-polyfill': es6PolyfillTs,
                 'app': [
                     appTs,
-                    basicScss,
                     ...componentEntryPoints,
+                ],
+                'critical': [
+                    basicScss,
+                    ...criticalEntryPoints,
+                ],
+                'non-critical': [
+                    ...nonCriticalEntryPoints,
                     utilScss,
-                ]
+                ],
+                'util': utilScss,
             },
 
             output: {
@@ -78,6 +94,7 @@ const getConfiguration = async appSettings => {
                         test: /\.ts$/,
                         loader: 'babel-loader',
                         options: {
+                            cacheDirectory: true,
                             presets: [
                                 ['@babel/env', {
                                     loose: true,
@@ -125,7 +142,7 @@ const getConfiguration = async appSettings => {
                                 options: {
                                     resources: [
                                         sharedScss,
-                                        ...styles
+                                        ...styles,
                                     ]
                                 }
                             }

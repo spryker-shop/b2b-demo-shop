@@ -48,7 +48,7 @@ class NavigationGuiPresentationTester extends Actor
     public const REMOVE_NODE_BUTTON_SELECTOR = '#remove-selected-node-btn';
     public const ADD_CHILD_NODE_BUTTON_SELECTOR = '#add-child-node-btn';
     public const LOCALIZED_FORM_CONTAINER_SELECTOR = '#localized_attributes_container-%s .collapse-link';
-    public const NODE_CHILD_SELECTOR = '#navigation-node-%d #navigation-node-%d';
+    public const NODE_CHILD_SELECTOR = '//*[@id="#navigation-node-%d"]//*[@id="#navigation-node-%d"]';
     public const NODE_NAME_CHILD_SELECTOR = "//*[@id=\"navigation-node-%d\"]//*[text()[contains(.,'%s')]]";
     public const NODE_FORM_IFRAME_NAME = 'navigation-node-form-iframe';
     public const SUCCESS_MESSAGE_SELECTOR = '.flash-messages .alert-success';
