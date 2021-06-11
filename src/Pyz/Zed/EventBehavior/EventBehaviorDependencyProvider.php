@@ -8,9 +8,6 @@
 namespace Pyz\Zed\EventBehavior;
 
 use Spryker\Zed\AvailabilityStorage\Communication\Plugin\Event\AvailabilityEventResourceQueryContainerPlugin;
-use Spryker\Zed\CategoryPageSearch\Communication\Plugin\Event\CategoryPageEventResourceQueryContainerPlugin;
-use Spryker\Zed\CategoryStorage\Communication\Plugin\Event\CategoryNodeEventResourceQueryContainerPlugin;
-use Spryker\Zed\CategoryStorage\Communication\Plugin\Event\CategoryTreeEventResourceQueryContainerPlugin;
 use Spryker\Zed\CmsBlockStorage\Communication\Plugin\Event\CmsBlockEventResourceQueryContainerPlugin;
 use Spryker\Zed\CmsPageSearch\Communication\Plugin\Event\CmsPageEventResourceQueryContainerPlugin;
 use Spryker\Zed\CmsSlotBlockStorage\Communication\Plugin\EventBehavior\CmsSlotBlockEventResourceBulkRepositoryPlugin;
@@ -28,7 +25,6 @@ use Spryker\Zed\PriceProductMerchantRelationshipStorage\Communication\Plugin\Eve
 use Spryker\Zed\PriceProductStorage\Communication\Plugin\Event\PriceProductAbstractEventResourceQueryContainerPlugin;
 use Spryker\Zed\PriceProductStorage\Communication\Plugin\Event\PriceProductConcreteEventResourceQueryContainerPlugin;
 use Spryker\Zed\ProductCategoryFilterStorage\Communication\Plugin\Event\ProductCategoryFilterEventResourceQueryContainerPlugin;
-use Spryker\Zed\ProductCategoryStorage\Communication\Plugin\Event\ProductCategoryEventResourceQueryContainerPlugin;
 use Spryker\Zed\ProductGroupStorage\Communication\Plugin\Event\ProductGroupEventResourceQueryContainerPlugin;
 use Spryker\Zed\ProductImageStorage\Communication\Plugin\Event\ProductAbstractImageEventResourceQueryContainerPlugin;
 use Spryker\Zed\ProductImageStorage\Communication\Plugin\Event\ProductConcreteImageEventResourceQueryContainerPlugin;
@@ -57,13 +53,10 @@ class EventBehaviorDependencyProvider extends SprykerEventBehaviorDependencyProv
     {
         return [
             new CmsPageEventResourceQueryContainerPlugin(),
-            new CategoryPageEventResourceQueryContainerPlugin(),
             new ProductPageEventResourceQueryContainerPlugin(),
             new ProductSetPageSearchEventResourceQueryContainerPlugin(),
             new ProductReviewSearchEventResourceQueryContainerPlugin(),
             new AvailabilityEventResourceQueryContainerPlugin(),
-            new CategoryTreeEventResourceQueryContainerPlugin(),
-            new CategoryNodeEventResourceQueryContainerPlugin(),
             new CmsBlockEventResourceQueryContainerPlugin(),
             new CmsEventResourceQueryContainerPlugin(),
             new NavigationEventResourceQueryContainerPlugin(),
@@ -72,7 +65,6 @@ class EventBehaviorDependencyProvider extends SprykerEventBehaviorDependencyProv
             new PriceProductAbstractMerchantRelationEventResourceBulkRepositoryPlugin(),
             new PriceProductConcreteMerchantRelationEventResourceBulkRepositoryPlugin(),
             new ProductCategoryFilterEventResourceQueryContainerPlugin(),
-            new ProductCategoryEventResourceQueryContainerPlugin(),
             new ProductGroupEventResourceQueryContainerPlugin(),
             new ProductAbstractImageEventResourceQueryContainerPlugin(),
             new ProductConcreteImageEventResourceQueryContainerPlugin(),
