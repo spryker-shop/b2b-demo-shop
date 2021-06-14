@@ -40,13 +40,13 @@ class EventDispatcherDependencyProvider extends SprykerEventDispatcherDependency
     {
         return [
             new ErrorPageEventDispatcherPlugin(),
+            new HeadersSecurityEventDispatcherPlugin(),
+            new LocaleEventDispatcherPlugin(),
+            new RouterLocaleEventDispatcherPlugin(),
             new ShopApplicationEventDispatcherPlugin(),
             new ShopApplicationFilterControllerEventDispatcherPlugin(),
             new ShopApplicationExceptionEventDispatcherPlugin(),
             new LastVisitCookieEventDispatcherPlugin(),
-            new LocaleEventDispatcherPlugin(),
-            new RouterLocaleEventDispatcherPlugin(),
-            new HeadersSecurityEventDispatcherPlugin(),
             new RouterListenerEventDispatcherPlugin(),
             new RouterSslRedirectEventDispatcherPlugin(),
             new CookieEventDispatcherPlugin(),

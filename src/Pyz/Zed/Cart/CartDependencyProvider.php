@@ -7,8 +7,7 @@
 
 namespace Pyz\Zed\Cart;
 
-use Pyz\Zed\ProductUrlCartConnector\Communication\Plugin\ProductUrlCartPlugin;
-use Spryker\Zed\AvailabilityCartConnector\Communication\Plugin\CheckAvailabilityPlugin;
+use Spryker\Zed\AvailabilityCartConnector\Communication\Plugin\Cart\CheckAvailabilityPlugin;
 use Spryker\Zed\Cart\CartDependencyProvider as SprykerCartDependencyProvider;
 use Spryker\Zed\Cart\Communication\Plugin\CleanUpItemsPreReloadPlugin;
 use Spryker\Zed\Cart\Communication\Plugin\SkuGroupKeyPlugin;
@@ -21,6 +20,7 @@ use Spryker\Zed\ConfigurableBundleCart\Communication\Plugin\Cart\ConfiguredBundl
 use Spryker\Zed\ConfigurableBundleCart\Communication\Plugin\Cart\ConfiguredBundleTemplateSlotCombinationPreCheckPlugin;
 use Spryker\Zed\Discount\Communication\Plugin\Cart\DiscountQuoteChangeObserverPlugin;
 use Spryker\Zed\DiscountPromotion\Communication\Plugin\Cart\CartGroupPromotionItems;
+use Spryker\Zed\DiscountPromotion\Communication\Plugin\Cart\DiscountPromotionCartPreCheckPlugin;
 use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\PaymentCartConnector\Communication\Plugin\Cart\RemovePaymentCartPostSavePlugin;
 use Spryker\Zed\PriceCartConnector\Communication\Plugin\Cart\SanitizeSourcePricesQuoteLockPreResetPlugin;
@@ -38,6 +38,7 @@ use Spryker\Zed\ProductBundle\Communication\Plugin\Cart\ExpandBundleItemsPlugin;
 use Spryker\Zed\ProductBundle\Communication\Plugin\Cart\ExpandBundleItemsWithImagesPlugin;
 use Spryker\Zed\ProductCartConnector\Communication\Plugin\ProductCartPlugin;
 use Spryker\Zed\ProductCartConnector\Communication\Plugin\ProductExistsCartPreCheckPlugin;
+use Spryker\Zed\ProductCartConnector\Communication\Plugin\ProductUrlItemExpanderPlugin;
 use Spryker\Zed\ProductCartConnector\Communication\Plugin\RemoveInactiveItemsPreReloadPlugin;
 use Spryker\Zed\ProductDiscontinued\Communication\Plugin\Cart\ProductDiscontinuedCartPreCheckPlugin;
 use Spryker\Zed\ProductImageCartConnector\Communication\Plugin\ProductImageCartPlugin;
@@ -85,7 +86,6 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
     {
         return [
             new ProductCartPlugin(),
-            new ProductUrlCartPlugin(),
             new IsQuantitySplittableItemExpanderPlugin(),
             new CartItemPricePlugin(),
             new CartItemProductOptionPlugin(),
@@ -99,12 +99,13 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new ProductImageCartPlugin(),
             new CartGroupPromotionItems(),
             new QuantitySalesUnitItemExpanderPlugin(),
+            new ProductPackagingUnitItemExpanderPlugin(), #ProductPackagingUnit
             new AmountGroupKeyItemExpanderPlugin(), #ProductPackagingUnit
             new AmountSalesUnitItemExpanderPlugin(), #ProductPackagingUnit
-            new ProductPackagingUnitItemExpanderPlugin(), #ProductPackagingUnit
             new CustomAmountPriceItemExpanderPlugin(), #ProductPackagingUnit
             new ConfiguredBundleQuantityPerSlotItemExpanderPlugin(),
             new ConfiguredBundleGroupKeyItemExpanderPlugin(),
+            new ProductUrlItemExpanderPlugin(),
             new SanitizeCartShipmentItemExpanderPlugin(),
         ];
     }
@@ -146,6 +147,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new AmountRestrictionCartPreCheckPlugin(), #ProductPackagingUnit
             new ConfiguredBundleTemplateSlotCombinationPreCheckPlugin(),
             new ProductMeasurementSalesUnitCartPreCheckPlugin(),
+            new DiscountPromotionCartPreCheckPlugin(),
         ];
     }
 
