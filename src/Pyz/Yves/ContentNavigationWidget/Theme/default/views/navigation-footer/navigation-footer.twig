@@ -23,7 +23,7 @@
         {% endif %}
     {% endfor %}
 
-    {% set selectorPart = title | lower | replace(' ', '-') %}
+    {% set selectorPart = title | lower | replace({' ': '-'}) %}
     {% set triggerClass = 'js-navigation-footer-' ~ selectorPart ~ '__trigger' %}
     {% set targetClass = 'js-navigation-footer-' ~ selectorPart %}
 

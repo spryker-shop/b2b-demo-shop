@@ -7,7 +7,6 @@
 
 namespace Pyz\Zed\Application;
 
-use Pyz\Zed\Propel\Communication\Plugin\Application\PropelApplicationPlugin;
 use Spryker\Zed\Application\ApplicationDependencyProvider as SprykerApplicationDependencyProvider;
 use Spryker\Zed\ErrorHandler\Communication\Plugin\Application\ErrorHandlerApplicationPlugin;
 use Spryker\Zed\EventDispatcher\Communication\Plugin\Application\EventDispatcherApplicationPlugin;
@@ -15,7 +14,9 @@ use Spryker\Zed\Form\Communication\Plugin\Application\FormApplicationPlugin;
 use Spryker\Zed\Http\Communication\Plugin\Application\HttpApplicationPlugin;
 use Spryker\Zed\Locale\Communication\Plugin\Application\LocaleApplicationPlugin;
 use Spryker\Zed\Messenger\Communication\Plugin\Application\MessengerApplicationPlugin;
+use Spryker\Zed\Propel\Communication\Plugin\Application\PropelApplicationPlugin;
 use Spryker\Zed\Router\Communication\Plugin\Application\RouterApplicationPlugin;
+use Spryker\Zed\Security\Communication\Plugin\Application\SecurityApplicationPlugin;
 use Spryker\Zed\Session\Communication\Plugin\Application\SessionApplicationPlugin;
 use Spryker\Zed\Translator\Communication\Plugin\Application\TranslatorApplicationPlugin;
 use Spryker\Zed\Twig\Communication\Plugin\Application\TwigApplicationPlugin;
@@ -27,27 +28,28 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
     /**
      * @return \Spryker\Shared\ApplicationExtension\Dependency\Plugin\ApplicationPluginInterface[]
      */
-    public function getApplicationPlugins(): array
+    protected function getApplicationPlugins(): array
     {
-        $plugins = [
+        $applicationPlugins = [
+            new SessionApplicationPlugin(),
             new TwigApplicationPlugin(),
             new EventDispatcherApplicationPlugin(),
             new LocaleApplicationPlugin(),
             new TranslatorApplicationPlugin(),
-            new PropelApplicationPlugin(),
             new MessengerApplicationPlugin(),
+            new PropelApplicationPlugin(),
             new RouterApplicationPlugin(),
             new HttpApplicationPlugin(),
-            new SessionApplicationPlugin(),
             new ErrorHandlerApplicationPlugin(),
             new FormApplicationPlugin(),
             new ValidatorApplicationPlugin(),
+            new SecurityApplicationPlugin(),
         ];
 
         if (class_exists(WebProfilerApplicationPlugin::class)) {
-            $plugins[] = new WebProfilerApplicationPlugin();
+            $applicationPlugins[] = new WebProfilerApplicationPlugin();
         }
 
-        return $plugins;
+        return $applicationPlugins;
     }
 }

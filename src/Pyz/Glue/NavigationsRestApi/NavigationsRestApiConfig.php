@@ -12,6 +12,8 @@ use Spryker\Glue\NavigationsRestApi\NavigationsRestApiConfig as SprykerNavigatio
 class NavigationsRestApiConfig extends SprykerNavigationsRestApiConfig
 {
     /**
+     * {@inheritDoc}
+     *
      * @return string[]
      */
     public function getNavigationTypeToUrlResourceIdFieldMapping(): array

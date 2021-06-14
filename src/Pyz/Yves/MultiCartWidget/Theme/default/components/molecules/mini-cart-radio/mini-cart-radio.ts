@@ -12,7 +12,7 @@ export default class MiniCartRadio extends Component {
     }
 
     private mapEvents(): void {
-        this.onclick = () => window.location.href = this.locationUrl;
+        this.onclick = () => (window.location.href = this.locationUrl);
     }
 
     protected get locationUrl(): string {

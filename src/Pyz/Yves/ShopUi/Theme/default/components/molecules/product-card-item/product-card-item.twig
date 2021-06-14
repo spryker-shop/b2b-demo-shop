@@ -1,4 +1,5 @@
 {% extends model('component') %}
+{% import _self as component %}
 
 {% define config = {
     name: 'product-card-item',
@@ -19,6 +20,11 @@
     currencyIsoCode: null,
 } %}
 
+{% define attributes = {
+    itemscope: '',
+    itemtype: 'https://schema.org/Product',
+} %}
+
 {% block body %}
     {% set amountSalesUnit = data.listItem.amountSalesUnit is defined ? data.listItem.amountSalesUnit : null %}
     {% set quantitySalesUnit = data.listItem.quantitySalesUnit is defined ? data.listItem.quantitySalesUnit : null %}
@@ -29,7 +35,7 @@
                 {% set imageUrl = data.listItem.images[0].externalUrlLarge ?? '' %}
 
                 {% if data.listItem.url ?? false %}
-                    <a href="{{ data.listItem.url }}" title="{{ data.listItem.name }}">
+                    <a itemprop="url" href="{{ data.listItem.url }}" title="{{ data.listItem.name }}">
                         {% include molecule('product-item-image') with {
                             modifiers: data.imageModifiers,
                             data: {
@@ -58,14 +64,14 @@
                         <div class="{{ component.renderClass(config.name ~ '__col', modifiers, config.name ~ '__col--content') }} col">
                             {% block productCharacteristics %}
                                 {% block title %}
-                                    <h6>
-                                        <a href="{{ data.listItem.url }}" class="{{ component.renderClass(config.name ~ '__title', modifiers) }}" title="{{ data.listItem.name }}">{{ data.listItem.name }}</a>
-                                    </h6>
+                                    <div>
+                                        <a href="{{ data.listItem.url }}" class="{{ component.renderClass(config.name ~ '__title', modifiers) }} title title--h6" title="{{ data.listItem.name }}" itemprop="name">{{ data.listItem.name }}</a>
+                                    </div>
                                 {% endblock %}
 
                                 {% block info %}
                                     <div class="spacing-bottom">
-                                        <small class="text-secondary">{{ 'cart.item.sku' | trans }}: {{ data.listItem.sku }}</small>
+                                        <small class="text-secondary">{{ 'cart.item.sku' | trans }}: <span itemprop="sku">{{ data.listItem.sku }}</span></small>
                                     </div>
                                 {% endblock %}
 

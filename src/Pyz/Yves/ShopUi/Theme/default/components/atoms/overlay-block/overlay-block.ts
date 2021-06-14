@@ -17,18 +17,17 @@ export default class OverlayBlock extends Component {
 
     showOverlay(modifier?: string, bodyModifier?: string): void {
         this.addModifier(modifier, this, this.name);
-        this.addModifier(bodyModifier, document.body,'body-overlay');
+        this.addModifier(bodyModifier, document.body, 'body-overlay');
         this.classList.add(this.classToShow);
     }
 
     hideOverlay(modifier?: string, bodyModifier?: string): void {
         this.removeModifier(modifier, this, this.name);
-        this.removeModifier(bodyModifier, document.body,'body-overlay');
+        this.removeModifier(bodyModifier, document.body, 'body-overlay');
         this.classList.remove(this.classToShow);
     }
 
     protected get classToShow(): string {
         return `${this.name}--is-shown`;
     }
-
 }

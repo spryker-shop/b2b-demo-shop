@@ -10,6 +10,7 @@ namespace Pyz\Glue\CartsRestApi;
 use Spryker\Glue\CartsRestApi\CartsRestApiDependencyProvider as SprykerCartsRestApiDependencyProvider;
 use Spryker\Glue\CompanyUsersRestApi\Plugin\CartsRestApi\CompanyUserCustomerExpanderPlugin;
 use Spryker\Glue\DiscountPromotionsRestApi\Plugin\CartsRestApi\DiscountPromotionCartItemExpanderPlugin;
+use Spryker\Glue\ProductBundleCartsRestApi\Plugin\CartsRestApi\ProductBundleCartItemFilterPlugin;
 use Spryker\Glue\ProductMeasurementUnitsRestApi\Plugin\CartsRestApi\SalesUnitCartItemExpanderPlugin;
 use Spryker\Glue\ProductMeasurementUnitsRestApi\Plugin\CartsRestApi\SalesUnitsRestCartItemsAttributesMapperPlugin;
 use Spryker\Glue\ProductOptionsRestApi\Plugin\CartsRestApi\ProductOptionCartItemExpanderPlugin;
@@ -47,6 +48,16 @@ class CartsRestApiDependencyProvider extends SprykerCartsRestApiDependencyProvid
             new ProductOptionCartItemExpanderPlugin(),
             new DiscountPromotionCartItemExpanderPlugin(),
             new SalesUnitCartItemExpanderPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Glue\CartsRestApiExtension\Dependency\Plugin\CartItemFilterPluginInterface[]
+     */
+    protected function getCartItemFilterPlugins(): array
+    {
+        return [
+            new ProductBundleCartItemFilterPlugin(),
         ];
     }
 }

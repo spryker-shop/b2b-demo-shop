@@ -148,7 +148,7 @@ class CalculationDependencyProvider extends SprykerCalculationDependencyProvider
      *    - Item.refundableAmount
      *    - Expense.refundableAmount
      *
-     * CalculateBundlePricePlugin - Calculate bundle item total, from bundled items
+     * CalculateBundlePricesPlugin - Calculate bundle item total, from bundled items
      *    - BundledItem.unitPrice
      *    - BundledItem.sumPrice
      *    - BundledItem.unitGrossPrice
@@ -184,8 +184,8 @@ class CalculationDependencyProvider extends SprykerCalculationDependencyProvider
      */
     protected function getQuoteCalculatorPluginStack(Container $container)
     {
-        /** @var \Spryker\Zed\CalculationExtension\Dependency\Plugin\CalculationPluginInterface[] $plugins */
-        $plugins = [
+        /** @var \Spryker\Zed\Calculation\Dependency\Plugin\CalculationPluginInterface[] $pluginStack */
+        $pluginStack = [
             new RemoveTotalsCalculatorPlugin(),
             new RemoveAllCalculatedDiscountsCalculatorPlugin(),
             new RemovePromotionItemsCalculatorPlugin(),
@@ -198,7 +198,7 @@ class CalculationDependencyProvider extends SprykerCalculationDependencyProvider
             new ItemSubtotalAggregatorPlugin(),
 
             new SubtotalCalculatorPlugin(),
-            new AddSalesOrderThresholdExpenseCalculatorPlugin(),
+            new AddSalesOrderThresholdExpenseCalculatorPlugin(), #SalesOrderThresholdFeature
 
             new ProductItemTaxRateCalculatorPlugin(),
             new ProductOptionTaxRateCalculatorPlugin(),
@@ -220,6 +220,7 @@ class CalculationDependencyProvider extends SprykerCalculationDependencyProvider
 
             new CalculateBundlePricesPlugin(),
 
+            new ShipmentTotalCalculatorPlugin(),
             new ExpenseTotalCalculatorPlugin(),
             new DiscountTotalCalculatorPlugin(),
             new RefundTotalCalculatorPlugin(),
@@ -228,10 +229,9 @@ class CalculationDependencyProvider extends SprykerCalculationDependencyProvider
             new NetTotalCalculatorPlugin(),
 
             new PaymentCalculatorPlugin(),
-            new ShipmentTotalCalculatorPlugin(),
         ];
 
-        return $plugins;
+        return $pluginStack;
     }
 
     /**

@@ -1,2 +1,5 @@
 import register from 'ShopUi/app/registry';
-export default register('packaging-unit-quantity-selector', () => import(/* webpackMode: "eager" */'./packaging-unit-quantity-selector'));
+export default register(
+    'packaging-unit-quantity-selector',
+    () => import(/* webpackMode: "eager" */ './packaging-unit-quantity-selector'),
+);

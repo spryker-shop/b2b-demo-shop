@@ -1,0 +1,31 @@
+{% extends view('sub-category-image', '@SprykerShop:CategoryImageStorageWidget') %}
+
+{% define data = {
+    modifiers: ['thumbnail'],
+} %}
+
+{% block body %}
+    {% embed molecule('lazy-image') with {
+        modifiers: data.modifiers,
+        data: {
+            imageSrc: data.imageUrl,
+            imageTitle: data.name,
+        },
+    } only %}
+        {% block content %}
+            {% if data.imageSrc is empty %}
+                <div class="{{ config.name ~ '__image' }} {{ config.name }}__image--color-light grid grid--center">
+                    {% include atom('icon') with {
+                        class: 'col col--middle',
+                        modifiers: ['biggest'],
+                        data: {
+                            name: 'default-image',
+                        },
+                    } only %}
+                </div>
+            {% else %}
+                {{ parent() }}
+            {% endif %}
+        {% endblock %}
+    {% endembed %}
+{% endblock %}
