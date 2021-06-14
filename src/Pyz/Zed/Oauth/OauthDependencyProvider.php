@@ -11,6 +11,7 @@ use Spryker\Zed\Oauth\OauthDependencyProvider as SprykerOauthDependencyProvider;
 use Spryker\Zed\OauthAgentConnector\Communication\Plugin\Oauth\AgentCredentialsOauthGrantTypeConfigurationProviderPlugin;
 use Spryker\Zed\OauthAgentConnector\Communication\Plugin\Oauth\AgentOauthScopeProviderPlugin;
 use Spryker\Zed\OauthAgentConnector\Communication\Plugin\Oauth\AgentOauthUserProviderPlugin;
+use Spryker\Zed\OauthCompanyUser\Communication\Plugin\Oauth\CompanyUserAccessTokenOauthGrantTypeConfigurationProviderPlugin;
 use Spryker\Zed\OauthCompanyUser\Communication\Plugin\Oauth\CompanyUserOauthScopeProviderPlugin;
 use Spryker\Zed\OauthCompanyUser\Communication\Plugin\Oauth\CompanyUserOauthUserProviderPlugin;
 use Spryker\Zed\OauthCompanyUser\Communication\Plugin\Oauth\IdCompanyUserOauthGrantTypeConfigurationProviderPlugin;
@@ -63,6 +64,7 @@ class OauthDependencyProvider extends SprykerOauthDependencyProvider
     {
         return array_merge(parent::getGrantTypeConfigurationProviderPlugins(), [
             new IdCompanyUserOauthGrantTypeConfigurationProviderPlugin(),
+            new CompanyUserAccessTokenOauthGrantTypeConfigurationProviderPlugin(),
             new AgentCredentialsOauthGrantTypeConfigurationProviderPlugin(),
             new CustomerImpersonationOauthGrantTypeConfigurationProviderPlugin(),
         ]);

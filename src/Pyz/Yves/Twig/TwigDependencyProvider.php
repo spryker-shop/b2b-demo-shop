@@ -41,6 +41,7 @@ use SprykerShop\Yves\ShopApplication\Plugin\Twig\WidgetTwigPlugin;
 use SprykerShop\Yves\ShopApplication\Plugin\TwigFormRuntimeLoaderPlugin;
 use SprykerShop\Yves\ShopCmsSlot\Plugin\Twig\ShopCmsSlotTwigPlugin;
 use SprykerShop\Yves\ShopPermission\Plugin\Twig\ShopPermissionTwigPlugin;
+use SprykerShop\Yves\ShopUi\Plugin\Twig\FunctionTwigPlugin;
 use SprykerShop\Yves\ShopUi\Plugin\Twig\ShopUiTwigPlugin;
 use SprykerShop\Yves\WebProfilerWidget\Plugin\Twig\WebProfilerTwigLoaderPlugin;
 
@@ -72,6 +73,7 @@ class TwigDependencyProvider extends SprykerTwigDependencyProvider
             new CmsTwigPlugin(),
             new ShopUiTwigPlugin(),
             new CategoryTwigPlugin(),
+            new CategoryFilterTwigPlugin(),
             new DateTimeFormatterTwigPlugin(),
             new CustomerTwigPlugin(),
             new WidgetTagTwigPlugin(),
@@ -79,10 +81,10 @@ class TwigDependencyProvider extends SprykerTwigDependencyProvider
             new ContentProductAbstractListTwigPlugin(),
             new ContentProductSetTwigPlugin(),
             new ContentFileListTwigPlugin(),
+            new FunctionTwigPlugin(),
             new ShopCmsSlotTwigPlugin(),
             new ContentNavigationTwigPlugin(),
             new PriceModeTwigPlugin(),
-            new CategoryFilterTwigPlugin(),
         ];
     }
 
@@ -91,16 +93,16 @@ class TwigDependencyProvider extends SprykerTwigDependencyProvider
      */
     protected function getTwigLoaderPlugins(): array
     {
-        $plugins = [
+        $twigLoaderPlugins = [
             new FilesystemTwigLoaderPlugin(),
             new FormFilesystemTwigLoaderPlugin(),
             new ShopApplicationFormTwigLoaderPlugin(),
         ];
 
         if (class_exists(WebProfilerTwigLoaderPlugin::class)) {
-            $plugins[] = new WebProfilerTwigLoaderPlugin();
+            $twigLoaderPlugins[] = new WebProfilerTwigLoaderPlugin();
         }
 
-        return $plugins;
+        return $twigLoaderPlugins;
     }
 }
