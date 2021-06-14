@@ -11,7 +11,6 @@ use Spryker\Shared\Kernel\Container\GlobalContainer;
 use Spryker\Shared\Nopayment\NopaymentConfig;
 use Spryker\Yves\Kernel\Container;
 use Spryker\Yves\Nopayment\Plugin\NopaymentHandlerPlugin;
-use Spryker\Yves\Payment\Plugin\PaymentFormFilterPlugin;
 use Spryker\Yves\StepEngine\Dependency\Form\StepEngineFormDataProviderInterface;
 use Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginCollection;
 use Spryker\Yves\StepEngine\Dependency\Plugin\Handler\StepHandlerPluginInterface;
@@ -77,12 +76,14 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
     protected function getSummaryPageWidgetPlugins(): array
     {
         return [
-            SalesOrderThresholdWidgetPlugin::class,
+            SalesOrderThresholdWidgetPlugin::class, #SalesOrderThresholdFeature
         ];
     }
 
     /**
-     * @return (\Symfony\Component\Form\FormTypeInterface|string)[]
+     * @phpstan-return array<int, class-string<\Symfony\Component\Form\FormTypeInterface>|\Symfony\Component\Form\FormInterface>
+     *
+     * @return \Symfony\Component\Form\FormTypeInterface[]|string[]
      */
     protected function getCustomerStepSubForms(): array
     {
@@ -97,7 +98,7 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
      * @param string $subForm
      * @param string $blockPrefix
      *
-     * @return \SprykerShop\Yves\CustomerPage\Form\CustomerCheckoutForm|\Symfony\Component\Form\FormInterface
+     * @return \Symfony\Component\Form\FormInterface
      */
     protected function getCustomerCheckoutForm($subForm, $blockPrefix)
     {
@@ -135,16 +136,6 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
     public function getProductBundleClient(Container $container): CheckoutPageToProductBundleClientInterface
     {
         return $container->get(static::CLIENT_PRODUCT_BUNDLE);
-    }
-
-    /**
-     * @return \Spryker\Yves\Checkout\Dependency\Plugin\Form\SubFormFilterPluginInterface[]
-     */
-    protected function getSubFormFilterPlugins(): array
-    {
-        return [
-            new PaymentFormFilterPlugin(),
-        ];
     }
 
     /**

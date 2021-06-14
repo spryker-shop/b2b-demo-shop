@@ -8,7 +8,7 @@
     <process name="Nopayment01" main="true">
 
         <states>
-            <state name="new" reserved="true"/>
+            <state name="new"/>
             <state name="waiting for payment"/>
             <state name="payment done"/>
             <state name="underpaid"/>
@@ -76,7 +76,7 @@
         </transitions>
 
         <events>
-            <event name="authorize" onEnter="true" manual="true"/>
+            <event name="authorize" timeout="1 second" manual="true"/>
             <event name="paid" manual="true" />
             <event name="pick" manual="true" />
             <event name="ship" manual="true" />

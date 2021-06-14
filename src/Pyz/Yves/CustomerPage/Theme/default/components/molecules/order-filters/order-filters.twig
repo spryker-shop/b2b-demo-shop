@@ -67,9 +67,14 @@
             {% endif %}
         {% endfor %}
 
-        <div class="form__field col col--sm-12 col--lg-6">
-            {{ form_row(companyBusinessUnit) }}
-        </div>
+        {{ form_row(companyBusinessUnit, {
+            rowAttr: {
+                class: 'form__field col col--sm-12 col--lg-6',
+            },
+            attr: {
+                class: data.jsPrefix ~ companyBusinessUnit.vars.name ~ '-target',
+            },
+        }) }}
     </div>
 {% endblock %}
 
