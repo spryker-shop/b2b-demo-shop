@@ -1,6 +1,6 @@
 @import '~slick-carousel/slick/slick.scss';
 
-@mixin shop-ui-slick-carousel ($name: '.slick-carousel') {
+@mixin shop-ui-slick-carousel($name: '.slick-carousel') {
     #{$name} {
         &__container {
             @include helper-effect-transition(opacity, 0.5s);
@@ -221,4 +221,4 @@
     @content;
 }
 
-@include shop-ui-slick-carousel
+@include shop-ui-slick-carousel;
