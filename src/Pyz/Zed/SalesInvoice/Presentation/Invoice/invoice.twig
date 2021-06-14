@@ -148,14 +148,16 @@
                         <td class="text-center">{{ productBundle.sumPriceToPayAggregation | money(true, order.currencyIsoCode) }}</td>
                     </tr>
 
-                    {% for bundleditem in order.items if item.relatedBundleItemIdentifier == bundleditem.relatedBundleItemIdentifier %}
-                        <tr>
-                            <td></td>
-                            <td class="text-center">{{ bundleditem.quantity }}</td>
-                            <td>{{ bundleditem.name }}</td>
-                            <td class="text-center">{{ bundleditem.taxRate | number_format }}%</td>
-                            <td class="text-center">{{ bundleditem.sumPriceToPayAggregation | money(true, order.currencyIsoCode) }}</td>
-                        </tr>
+                    {% for bundleditem in order.items %}
+                        {% if item.relatedBundleItemIdentifier == bundleditem.relatedBundleItemIdentifier %}
+                            <tr>
+                                <td></td>
+                                <td class="text-center">{{ bundleditem.quantity }}</td>
+                                <td>{{ bundleditem.name }}</td>
+                                <td class="text-center">{{ bundleditem.taxRate | number_format }}%</td>
+                                <td class="text-center">{{ bundleditem.sumPriceToPayAggregation | money(true, order.currencyIsoCode) }}</td>
+                            </tr>
+                        {% endif %}
                     {% endfor %}
 
                     {% set renderedBundles = renderedBundles | merge([item.relatedBundleItemIdentifier]) %}

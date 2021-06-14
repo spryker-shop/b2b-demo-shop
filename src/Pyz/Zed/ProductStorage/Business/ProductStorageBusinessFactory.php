@@ -41,7 +41,9 @@ class ProductStorageBusinessFactory extends SprykerProductStorageBusinessFactory
     {
         return new AttributeMap(
             $this->getProductFacade(),
-            $this->getQueryContainer()
+            $this->getQueryContainer(),
+            $this->getConfig(),
+            $this->createSingleValueSuperAttributeFilter()
         );
     }
 

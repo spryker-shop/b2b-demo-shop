@@ -35,12 +35,14 @@
             } only %}
 
             {% embed organism('filter-section', 'CatalogPage') with {
+                modifiers: ['sub-categories-grid'],
                 class: 'js-catalog__filters-toggle',
                 data: {
                     facets: data.facets,
                     categories: data.categories,
-                    isEmptyCategoryFilterValueVisible: data.isEmptyCategoryFilterValueVisible
-                }
+                    isEmptyCategoryFilterValueVisible: data.isEmptyCategoryFilterValueVisible,
+                    parentJsName: 'js-catalog',
+                },
             } only %}
                 {% block body %}
                     {% for filter in data.facets %}
@@ -49,7 +51,9 @@
 
                         {% if filterHasValues and filterIsVisible %}
                             {% block filters %}
-                                {{ parent() }}
+                                <div class="{{ config.jsName }}__holder">
+                                    {{ parent() }}
+                                </div>
                             {% endblock %}
                         {% endif %}
                     {% endfor %}

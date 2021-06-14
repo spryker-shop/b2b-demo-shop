@@ -17,10 +17,10 @@ export default class CheckboxSelectAll extends Component {
     }
 
     protected mapEvents(): void {
-       this.trigger.addEventListener('change', () => this.onTriggerChange());
-       this.targets.forEach((target: HTMLInputElement) => {
-           target.addEventListener('change', () => this.onTargetChange());
-       });
+        this.trigger.addEventListener('change', () => this.onTriggerChange());
+        this.targets.forEach((target: HTMLInputElement) => {
+            target.addEventListener('change', () => this.onTargetChange());
+        });
     }
 
     protected onTriggerChange(): void {

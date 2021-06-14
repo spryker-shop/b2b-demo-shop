@@ -82,7 +82,7 @@ const validateParameters = env => {
     }
 
     const originalArgumentsString = env.npm_config_argv;
-    const {original: originalArguments} = JSON.parse(originalArgumentsString);
+    const { original: originalArguments } = JSON.parse(originalArgumentsString);
 
     originalArguments.forEach(argument => {
         if (!argument.indexOf('-') && !originalArguments.includes('--')) {

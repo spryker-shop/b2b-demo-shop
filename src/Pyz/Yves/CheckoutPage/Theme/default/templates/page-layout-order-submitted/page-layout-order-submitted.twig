@@ -21,6 +21,7 @@
                     message: data.message,
                 },
             } only %}
+                {% import _self as component %}
                 {% block content %}
                     {% set title = data.title %}
                     {% set message = embed.message %}

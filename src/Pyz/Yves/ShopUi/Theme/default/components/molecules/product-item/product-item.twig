@@ -1,10 +1,13 @@
 {% extends molecule('product-item', '@SprykerShop:ShopUi') %}
+{% import _self as component %}
 
 {% define data = {
     category: '',
 } %}
 
 {% define attributes = {
+    itemscope: '',
+    itemtype: 'https://schema.org/Product',
     'default-price-color-class-name': 'text-alt',
 } %}
 
@@ -25,7 +28,7 @@
             {{ block('labels') }}
 
             {% block name %}
-                <a class="{{ component.renderClass(config.name ~ '__overlay', modifiers) }} {{ config.jsName }}__name {{ config.jsName }}__link-detail-page" href="{{ data.url }}">
+                <a itemprop="name" class="{{ component.renderClass(config.name ~ '__overlay', modifiers) }} {{ config.jsName }}__name {{ config.jsName }}__link-detail-page" href="{{ data.url }}">
                     {{ data.name }}
                 </a>
             {% endblock %}
@@ -79,7 +82,7 @@
 {% endblock %}
 
 {% block action %}
-    <a class="button button--expand button--hollow {{ config.jsName }}__link-detail-page" href="{{ path(data.url) }}">
+    <a itemprop="url" class="button button--expand button--hollow {{ config.jsName }}__link-detail-page" href="{{ path(data.url) }}">
         {{ 'product.view' | trans }}
     </a>
 {% endblock %}

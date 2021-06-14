@@ -9,7 +9,6 @@ namespace Pyz\Zed\ExampleChart\Plugin;
 
 use Generated\Shared\Transfer\ChartDataTraceTransfer;
 use Generated\Shared\Transfer\ChartDataTransfer;
-use Generated\Shared\Transfer\ChartLayoutTransfer;
 use Spryker\Shared\Chart\Dependency\Plugin\ChartPluginInterface;
 
 class ExampleChart implements ChartPluginInterface
@@ -35,14 +34,6 @@ class ExampleChart implements ChartPluginInterface
         $data->addTrace($this->getTrace());
 
         return $data;
-    }
-
-    /**
-     * @return \Generated\Shared\Transfer\ChartLayoutTransfer
-     */
-    public function getChartLayout(): ChartLayoutTransfer
-    {
-        return new ChartLayoutTransfer();
     }
 
     /**

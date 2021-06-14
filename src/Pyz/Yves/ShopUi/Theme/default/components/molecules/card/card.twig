@@ -1,4 +1,5 @@
 {% extends molecule('card', '@SprykerShop:ShopUi') %}
+{% import _self as component %}
 
 {% block body %}
     <div class="{{ component.renderClass(config.name ~ '__container', modifiers) }}">

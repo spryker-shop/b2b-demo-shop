@@ -33,12 +33,15 @@
                 jsClass: config.jsName ~ '__select',
             },
         } only %}
+            {% import _self as component %}
             {% block selectClass %}{{ config.jsName }} {{ embed.jsClass }} {{ component.renderClass(config.name ~ '__select', modifiers) }}{% endblock %}
             {% block options %}
                 <option value="">{{ 'comment_widget.form.tags' | trans }}</option>
 
-                {% for availableTag in embed.availableTags if not (availableTag in embed.tagNames) %}
-                    <option value="{{ availableTag }}">{{ ('comment_widget.tags.' ~ availableTag) | trans }}</option>
+                {% for availableTag in embed.availableTags %}
+                    {% if not availableTag in embed.tagNames %}
+                        <option value="{{ availableTag }}">{{ ('comment_widget.tags.' ~ availableTag) | trans }}</option>
+                    {% endif %}
                 {% endfor %}
             {% endblock %}
         {% endembed %}

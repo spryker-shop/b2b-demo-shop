@@ -20,4 +20,12 @@ class TransferConfig extends SprykerTransferConfig
             APPLICATION_SOURCE_DIR . '/Orm/Propel/*/Schema/',
         ];
     }
+
+    /**
+     * @return bool
+     */
+    public function isTransferXmlValidationEnabled(): bool
+    {
+        return true;
+    }
 }
