@@ -93,16 +93,6 @@ class OmsDependencyProvider extends SprykerOmsDependencyProvider
     }
 
     /**
-     * @return \Spryker\Zed\OmsExtension\Dependency\Plugin\OmsReservationWriterStrategyPluginInterface[]
-     */
-    protected function getOmsReservationWriterStrategyPlugins(): array
-    {
-        return [
-            new ProductOfferOmsReservationWriterStrategyPlugin(),
-        ];
-    }
-
-    /**
      * @param \Spryker\Zed\Kernel\Container $container
      *
      * @return \Spryker\Zed\Kernel\Container

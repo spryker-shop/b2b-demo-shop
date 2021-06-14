@@ -85,7 +85,6 @@ class TwigDependencyProvider extends SprykerTwigDependencyProvider
             new ShopCmsSlotTwigPlugin(),
             new ContentNavigationTwigPlugin(),
             new PriceModeTwigPlugin(),
-            new CategoryFilterTwigPlugin(),
         ];
     }
 
