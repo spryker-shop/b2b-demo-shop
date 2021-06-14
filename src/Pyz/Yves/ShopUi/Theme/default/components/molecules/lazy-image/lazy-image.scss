@@ -77,6 +77,17 @@
         align-items: center;
     }
 
+    &--category-list-item {
+        height: auto;
+        margin: rem(8);
+
+        @include helper-breakpoint-media-min($lg) {
+            height: rem(100);
+            display: flex;
+            justify-content: center;
+        }
+    }
+
     &__content {
         position: relative;
         line-height: 1.5;

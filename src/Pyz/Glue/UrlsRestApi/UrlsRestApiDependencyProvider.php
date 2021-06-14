@@ -8,6 +8,7 @@
 namespace Pyz\Glue\UrlsRestApi;
 
 use Spryker\Glue\CategoriesRestApi\Plugin\UrlsRestApi\CategoryNodeRestUrlResolverAttributesTransferProviderPlugin;
+use Spryker\Glue\CmsPagesRestApi\Plugin\UrlsRestApi\CmsPageRestUrlResolverAttributesTransferProviderPlugin;
 use Spryker\Glue\ProductsRestApi\Plugin\UrlsRestApi\ProductAbstractRestUrlResolverAttributesTransferProviderPlugin;
 use Spryker\Glue\UrlsRestApi\UrlsRestApiDependencyProvider as SprykerUrlsRestApiDependencyProvider;
 
@@ -19,8 +20,9 @@ class UrlsRestApiDependencyProvider extends SprykerUrlsRestApiDependencyProvider
     protected function getRestUrlResolverAttributesTransferProviderPlugins(): array
     {
         return [
-            new CategoryNodeRestUrlResolverAttributesTransferProviderPlugin(),
             new ProductAbstractRestUrlResolverAttributesTransferProviderPlugin(),
+            new CategoryNodeRestUrlResolverAttributesTransferProviderPlugin(),
+            new CmsPageRestUrlResolverAttributesTransferProviderPlugin(),
         ];
     }
 }

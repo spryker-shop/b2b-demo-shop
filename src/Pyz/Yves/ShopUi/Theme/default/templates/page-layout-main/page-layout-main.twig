@@ -11,7 +11,7 @@
     {% block notifications %}
         {% include organism('notification-area') only %}
     {% endblock %}
-    <div class="page-layout">
+    <div class="page-layout page-layout--preload">
         {% widget 'AgentControlBarWidget' only %}{% endwidget %}
 
         {% block sidebar %}
@@ -65,6 +65,12 @@
                                 icon: 'history'
                             },
                             {
+                                name: 'returns',
+                                url: path('return/list'),
+                                label: 'return_page.default_title' | trans,
+                                icon: 'return-arrow'
+                            },
+                            {
                                 name: 'newsletter',
                                 url: path('customer/newsletter'),
                                 label: 'customer.account.newsletter' | trans,
@@ -81,8 +87,14 @@
                                 url: path('multi-cart'),
                                 label: 'page.multi_cart.shopping_cart.list.title' | trans,
                                 icon: 'cart'
-                            }
-                        ]
+                            },
+                            {
+                                name: 'quote-request',
+                                url: path('quote-request'),
+                                label: 'quote_request_widget.request_for_quote.list.title' | trans,
+                                icon: 'message',
+                            },
+                        ],
                     }
                 } only %}
 
@@ -153,7 +165,7 @@
             {% endembed %}
         {% endblock %}
 
-        <div class="content-wrap">
+        <div itemscope itemtype="https://schema.org/Product" class="content-wrap">
             {% block pageInfo %}
                 <div class="page-info">
                     <div class="container">
@@ -162,7 +174,7 @@
                         {% endblock %}
 
                         {% block title %}
-                            <h3 class="page-info__title">{{ data.title }}</h3>
+                            <h1 class="page-info__title title title--h3 ">{{ data.title }}</h1>
                         {% endblock %}
                     </div>
                 </div>
@@ -221,6 +233,13 @@
         {% include molecule('viewport-intersection-observer') only %}
 
         {% include molecule('node-animator') only %}
+
+        {% include molecule('window-load-class-remover') with {
+            attributes: {
+                'target-class-name': 'page-layout',
+                'trigger-class-name': 'page-layout--preload',
+            },
+        } only %}
     {% endblock %}
 
     {% block icons %}

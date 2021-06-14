@@ -153,11 +153,7 @@ class NavigationNodeWriterStep extends PublishAwareStep implements DataImportSte
             return (bool)$dataSet[static::KEY_IS_ACTIVE];
         }
 
-        if ($navigationNodeEntity->getIsActive() !== null) {
-            return $navigationNodeEntity->getIsActive();
-        }
-
-        return static::DEFAULT_IS_ACTIVE;
+        return $navigationNodeEntity->getIsActive();
     }
 
     /**

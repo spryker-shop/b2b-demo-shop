@@ -35,34 +35,36 @@
     {% set companyBusinessUnit = data.orderSearchForm.filters.children.companyBusinessUnit %}
 
     <div class="{{ additionalFiltersRowClass }}">
-        {% for filter in data.orderSearchForm.filters.children if filter.vars.name != 'companyBusinessUnit' %}
-            <div class="{{ filter.vars.attr.class }}">
-                {% widget 'LanguageSwitcherWidget' args [data.pathInfo, data.queryString, data.requestUri] with {
-                    data: {
-                        field: filter,
-                    },
-                    embed: {
-                        fieldClass: data.jsPrefix ~ filter.vars.name ~ '-target',
-                    },
-                } only %}
-                    {% block body %}
-                        {% include molecule('date-time-picker') with {
-                            data: {
-                                field: data.field,
-                                fieldClass: embed.fieldClass,
-                                hasIcon: true,
-                            },
-                            attributes: {
-                                language: data.currentLanguage,
-                                config: '{
-                                    "format": "Y-m-d H:i"
-                                }',
-                                'formatted-date-time': data.field.vars.value | date('Y-m-d H:i'),
-                            },
-                        } only %}
-                    {% endblock %}
-                {% endwidget %}
-            </div>
+        {% for filter in data.orderSearchForm.filters.children %}
+            {% if filter.vars.name != 'companyBusinessUnit' %}
+                <div class="{{ filter.vars.attr.class }}">
+                    {% widget 'LanguageSwitcherWidget' args [data.pathInfo, data.queryString, data.requestUri] with {
+                        data: {
+                            field: filter,
+                        },
+                        embed: {
+                            fieldClass: data.jsPrefix ~ filter.vars.name ~ '-target',
+                        },
+                    } only %}
+                        {% block body %}
+                            {% include molecule('date-time-picker') with {
+                                data: {
+                                    field: data.field,
+                                    fieldClass: embed.fieldClass,
+                                    hasIcon: true,
+                                },
+                                attributes: {
+                                    language: data.currentLanguage,
+                                    config: '{
+                                        "format": "Y-m-d H:i"
+                                    }',
+                                    'formatted-date-time': data.field.vars.value | date('Y-m-d H:i'),
+                                },
+                            } only %}
+                        {% endblock %}
+                    {% endwidget %}
+                </div>
+            {% endif %}
         {% endfor %}
 
         {{ form_row(companyBusinessUnit, {

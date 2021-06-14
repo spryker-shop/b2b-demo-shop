@@ -7,7 +7,7 @@
 
 namespace Pyz\Yves\MultiCartPage\Controller;
 
-use SprykerShop\Yves\CartPage\Plugin\Provider\CartControllerProvider;
+use SprykerShop\Yves\CartPage\Plugin\Router\CartPageRouteProviderPlugin;
 use SprykerShop\Yves\MultiCartPage\Controller\MultiCartController as SprykerShopMultiCartController;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -55,6 +55,6 @@ class MultiCartController extends SprykerShopMultiCartController
             return $request->headers->get(static::REQUEST_HEADER_REFERER);
         }
 
-        return CartControllerProvider::ROUTE_CART;
+        return CartPageRouteProviderPlugin::ROUTE_NAME_CART;
     }
 }
