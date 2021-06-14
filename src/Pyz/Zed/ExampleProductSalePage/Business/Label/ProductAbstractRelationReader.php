@@ -54,6 +54,7 @@ class ProductAbstractRelationReader implements ProductAbstractRelationReaderInte
         $relationsToAssign = $this->findRelationsBecomingActive($productLabelNewEntity);
 
         $idProductLabels = array_keys($relationsToDeAssign) + array_keys($relationsToAssign);
+
         foreach ($idProductLabels as $idProductLabel) {
             $result[] = $this->mapRelationTransfer($idProductLabel, $relationsToAssign, $relationsToDeAssign);
         }

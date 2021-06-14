@@ -42,6 +42,7 @@ class ExampleProductSalePageQueryContainer extends AbstractQueryContainer implem
      */
     public function queryRelationsBecomingInactive($idProductLabel)
     {
+        /** @var \Orm\Zed\ProductLabel\Persistence\SpyProductLabelProductAbstractQuery $productLabelProductAbstractQuery */
         $productLabelProductAbstractQuery = $this->getFactory()
             ->getProductLabelQueryContainer()
             ->queryProductAbstractRelationsByIdProductLabel($idProductLabel)
@@ -119,7 +120,8 @@ class ExampleProductSalePageQueryContainer extends AbstractQueryContainer implem
      */
     public function queryRelationsBecomingActive($idProductLabel)
     {
-        return $this->getFactory()
+        /** @var \Orm\Zed\Product\Persistence\SpyProductAbstractQuery $productAbstractQuery */
+        $productAbstractQuery = $this->getFactory()
             ->getProductQueryContainer()
             ->queryProductAbstract()
             ->distinct()
@@ -160,5 +162,7 @@ class ExampleProductSalePageQueryContainer extends AbstractQueryContainer implem
             ->addJoinCondition('priceProductStoreDefault', 'priceProductStoreOrigin.fk_currency = priceProductStoreDefault.fk_currency')
             ->addJoinCondition('priceProductStoreDefault', 'priceProductStoreOrigin.gross_price > priceProductStoreDefault.gross_price')
             ->addJoinCondition('priceProductStoreDefault', 'priceProductStoreOrigin.net_price > priceProductStoreDefault.net_price');
+
+        return $productAbstractQuery;
     }
 }

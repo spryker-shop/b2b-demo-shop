@@ -8,11 +8,14 @@
 namespace Pyz\Zed\EventBehavior;
 
 use Spryker\Zed\AvailabilityStorage\Communication\Plugin\Event\AvailabilityEventResourceQueryContainerPlugin;
+use Spryker\Zed\CmsBlockCategoryStorage\Communication\Plugin\Event\CmsBlockCategoryEventResourceQueryContainerPlugin;
+use Spryker\Zed\CmsBlockProductStorage\Communication\Plugin\Event\CmsBlockProductEventResourceQueryContainerPlugin;
 use Spryker\Zed\CmsBlockStorage\Communication\Plugin\Event\CmsBlockEventResourceQueryContainerPlugin;
 use Spryker\Zed\CmsPageSearch\Communication\Plugin\Event\CmsPageEventResourceQueryContainerPlugin;
 use Spryker\Zed\CmsSlotBlockStorage\Communication\Plugin\EventBehavior\CmsSlotBlockEventResourceBulkRepositoryPlugin;
 use Spryker\Zed\CmsSlotStorage\Communication\Plugin\Event\CmsSlotEventResourceBulkRepositoryPlugin;
 use Spryker\Zed\CmsStorage\Communication\Plugin\Event\CmsEventResourceQueryContainerPlugin;
+use Spryker\Zed\CompanyUserStorage\Communication\Plugin\Event\CompanyUserEventResourceBulkRepositoryPlugin;
 use Spryker\Zed\ConfigurableBundlePageSearch\Communication\Plugin\Event\ConfigurableBundleTemplatePageSearchEventResourceBulkRepositoryPlugin;
 use Spryker\Zed\ConfigurableBundleStorage\Communication\Plugin\Event\ConfigurableBundleTemplateEventResourceBulkRepositoryPlugin;
 use Spryker\Zed\ConfigurableBundleStorage\Communication\Plugin\Event\ConfigurableBundleTemplateImageEventResourceBulkRepositoryPlugin;
@@ -57,6 +60,8 @@ class EventBehaviorDependencyProvider extends SprykerEventBehaviorDependencyProv
             new ProductSetPageSearchEventResourceQueryContainerPlugin(),
             new ProductReviewSearchEventResourceQueryContainerPlugin(),
             new AvailabilityEventResourceQueryContainerPlugin(),
+            new CmsBlockCategoryEventResourceQueryContainerPlugin(),
+            new CmsBlockProductEventResourceQueryContainerPlugin(),
             new CmsBlockEventResourceQueryContainerPlugin(),
             new CmsEventResourceQueryContainerPlugin(),
             new NavigationEventResourceQueryContainerPlugin(),
@@ -86,7 +91,7 @@ class EventBehaviorDependencyProvider extends SprykerEventBehaviorDependencyProv
             new CmsSlotEventResourceBulkRepositoryPlugin(),
             new CmsSlotBlockEventResourceBulkRepositoryPlugin(),
             new ConfigurableBundleTemplatePageSearchEventResourceBulkRepositoryPlugin(),
-
+            new CompanyUserEventResourceBulkRepositoryPlugin(),
             new GlossaryPublisherTriggerPlugin(),
         ];
     }
