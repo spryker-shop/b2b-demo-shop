@@ -22,7 +22,7 @@ class SearchDependencyProvider extends SprykerSearchDependencyProvider
     /**
      * @return \Spryker\Zed\Search\Dependency\Plugin\PageMapInterface[]
      */
-    protected function getSearchPageMapPlugins()
+    protected function getSearchPageMapPlugins(): array
     {
         return [
             new ProductPageMapPlugin(),

@@ -1,7 +1,15 @@
+@import '~jquery-datetimepicker/build/jquery.datetimepicker.min.css';
+
 @mixin shop-ui-date-time-picker($name: '.date-time-picker') {
     #{$name} {
         &__content {
             position: relative;
+        }
+
+        &__field {
+            padding-right: rem(40);
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         &__icon {

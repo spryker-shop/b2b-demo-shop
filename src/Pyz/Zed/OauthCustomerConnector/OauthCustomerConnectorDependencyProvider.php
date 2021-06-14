@@ -11,6 +11,9 @@ use Spryker\Zed\CompanyUsersRestApi\Communication\Plugin\OauthCustomerConnector\
 use Spryker\Zed\OauthCustomerConnector\OauthCustomerConnectorDependencyProvider as SprykerOauthCustomerConnectorDependencyProvider;
 use Spryker\Zed\OauthPermission\Communication\Plugin\OauthCustomerConnector\PermissionOauthCustomerIdentifierExpanderPlugin;
 
+/**
+ * @method \Spryker\Zed\OauthCustomerConnector\OauthCustomerConnectorConfig getConfig()
+ */
 class OauthCustomerConnectorDependencyProvider extends SprykerOauthCustomerConnectorDependencyProvider
 {
     /**

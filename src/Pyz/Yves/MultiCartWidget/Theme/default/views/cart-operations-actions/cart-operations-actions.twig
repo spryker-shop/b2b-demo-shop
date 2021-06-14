@@ -1,0 +1,16 @@
+{% extends view('cart-operations-actions', '@SprykerShop:MultiCartWidget') %}
+
+{% block body %}
+    {{ form_start(data.multiCartClearForm, {'action': path('multi-cart/clear', {'idQuote': data.idQuote}) }) }}
+        <button class="link link link--icon" data-init-single-click>
+            {% include atom('icon') with {
+                modifiers: ['link'],
+                data: {
+                    name: 'delete',
+                },
+            } only %}
+
+            {{ "multi_cart_page.delete_all" | trans }}
+        </button>
+    {{ form_end(data.multiCartClearForm) }}
+{% endblock %}

@@ -24,8 +24,14 @@ export default class AutocompleteForm extends Component {
     }
 
     protected mapEvents(): void {
-        this.inputElement.addEventListener('input', debounce(() => this.onInput(), this.debounceDelay));
-        this.inputElement.addEventListener('blur', debounce(() => this.onBlur(), this.debounceDelay));
+        this.inputElement.addEventListener(
+            'input',
+            debounce(() => this.onInput(), this.debounceDelay),
+        );
+        this.inputElement.addEventListener(
+            'blur',
+            debounce(() => this.onBlur(), this.debounceDelay),
+        );
         this.inputElement.addEventListener('focus', () => this.onFocus());
         if (this.showCleanButton) {
             this.cleanButton.addEventListener('click', () => this.onCleanButtonClick());

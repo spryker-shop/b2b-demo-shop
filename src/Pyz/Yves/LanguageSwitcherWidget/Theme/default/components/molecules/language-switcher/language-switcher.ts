@@ -32,5 +32,4 @@ export default class LanguageSwitcher extends Component {
     protected hasUrl(select: HTMLSelectElement): boolean {
         return !!select.value;
     }
-
 }

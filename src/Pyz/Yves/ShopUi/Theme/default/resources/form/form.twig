@@ -2,6 +2,14 @@
 
 {# widgets #}
 
+{%- block widget_attributes -%}
+    {%- if id %}id="{{ id }}"{% endif -%}
+    name="{{ full_name }}"
+    {%- if disabled %} disabled{% endif -%}
+    {%- if required %} required{% endif -%}
+    {{ block('attributes') }}
+{%- endblock widget_attributes -%}
+
 {%- block form_widget_simple -%}
     {%- set label = (label | default('')) | trans -%}
 
@@ -47,12 +55,17 @@
             preferred_choices: preferred_choices,
             choices: choices,
             separator: separator,
-            choice_translation_domain: choice_translation_domain
+            choice_translation_domain: choice_translation_domain,
+            class: attr.class ?? '',
         }
     } only %}
         {% block selectAttributes %}
-            {{parent()}}
-            {{embed.attributes | raw}}
+            {{ parent() }}
+            {{ embed.attributes | raw }}
+        {% endblock %}
+
+        {% block selectClass %}
+            {{ parent() }} {{ embed.class }}
         {% endblock %}
 
         {% block options %}
@@ -112,6 +125,7 @@
     {%- set component = component | default(atom(type)) -%}
     {%- set label = label | default(name | humanize) | trans -%}
     {%- set modifiers = errors is empty ? ['expand'] : ['expand', 'error'] -%}
+    {%- set inputClass = attr.class | default -%}
 
     {% define attributes = {
         id: id,
@@ -125,7 +139,8 @@
     {% include component with {
         modifiers: modifiers,
         data: {
-            label: label
+            label: label,
+            inputClass: inputClass,
         },
         attributes: attributes
     } only %}
@@ -135,6 +150,39 @@
     {% set type = 'radio' %}
     {{block('checkbox_widget')}}
 {%- endblock -%}
+
+{%- block password_widget -%}
+    {%- set attr = attr | merge({
+        id: id | default(false),
+        placeholder: attr.placeholder | default(label) | trans(attr_translation_parameters, translation_domain),
+        name: full_name,
+        disabled: disabled | default(false),
+        required: required | default(false),
+    }) -%}
+
+    {% if attr.title | default %}
+        {%- set attr = attr | merge({
+            title: attr.title | trans(attr_translation_parameters, translation_domain),
+        }) -%}
+    {% endif %}
+
+    {% set inputComplexityJsCLass = 'js-password-complexity-indicator__' ~ attr.name %}
+
+    {% include molecule('password-field') with {
+        data: {
+            inputAttributes: attr,
+            inputExtraClasses: ('input input--expand ' ~ (errors is not empty ? ' input--error ') ~ (attr.class | default) ~ inputComplexityJsCLass) | trim,
+        },
+    } only %}
+
+    {% if attr.password_complexity_indicator | default %}
+        {% include molecule('password-complexity-indicator') with {
+            attributes: {
+                'input-class-name': inputComplexityJsCLass,
+            },
+        } only %}
+    {% endif %}
+{%- endblock password_widget -%}
 
 {# rows #}
 
@@ -198,7 +246,7 @@
 {# errors #}
 
 {% block form_errors %}
-    {% spaceless %}
+    {% apply spaceless %}
         {% if errors | length > 0 %}
             <ul class="list list--bullet list--alert">
                 {% for error in errors %}
@@ -206,7 +254,7 @@
                 {% endfor %}
             </ul>
         {% endif %}
-    {% endspaceless %}
+    {% endapply %}
 {% endblock %}
 
 {%- block datetime_widget -%}

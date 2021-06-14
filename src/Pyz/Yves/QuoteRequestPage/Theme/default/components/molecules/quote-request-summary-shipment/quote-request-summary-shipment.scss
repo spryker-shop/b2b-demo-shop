@@ -1,0 +1,28 @@
+@mixin quote-request-page-quote-request-summary-shipment($name: '.quote-request-summary-shipment') {
+    #{$name} {
+        font-size: rem(12);
+
+        &__title {
+            color: $setting-color-gray-5;
+        }
+
+        &__row {
+            padding-top: rem(8);
+        }
+
+        &__key {
+            font-size: rem(13);
+            line-height: rem(18);
+        }
+
+        &__value {
+            padding-left: rem(10);
+            font-size: rem(15);
+            white-space: nowrap;
+        }
+
+        @content;
+    }
+}
+
+@include quote-request-page-quote-request-summary-shipment();

@@ -1,0 +1,10 @@
+@mixin quote-request-page-quote-request-delivery-summary($name: '.quote-request-delivery-summary') {
+    #{$name} {
+        font-size: rem(12);
+        color: $setting-color-gray-3;
+
+        @content;
+    }
+}
+
+@include quote-request-page-quote-request-delivery-summary();

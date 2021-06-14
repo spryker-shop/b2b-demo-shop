@@ -5,9 +5,10 @@
 } %}
 
 {% define data = {
-    shipment: required,
+    shipmentGroup: required,
     canEdit: true,
     cart: {},
+    shipmentExpenses: {},
 } %}
 
 {% block body %}
@@ -51,7 +52,7 @@
 
         {% include molecule('display-address') with {
             data: {
-                address: data.shipment.shippingAddress,
+                address: data.shipmentGroup.shipment.shippingAddress,
                 isAddressLabelVisible: false,
             },
         } only %}
@@ -74,14 +75,13 @@
             {% endif %}
         </h4>
 
-        {% include molecule('delivery-information', 'CustomerPage') ignore missing with {
-            data: {
-                carrierName: data.shipment.method.carrierName,
-                methodName: data.shipment.method.name,
-                storeCurrencyPrice: data.shipment.method.storeCurrencyPrice,
-                currencyIsoCode: data.shipment.method.currencyIsoCode,
-            },
-        } only %}
+        {% if data.shipmentExpenses[data.shipmentGroup.hash] is defined %}
+            {% include molecule('shipment-information', 'CustomerPage') ignore missing with {
+                data: {
+                    shipmentExpense: data.shipmentExpenses[data.shipmentGroup.hash],
+                },
+            } only %}
+        {% endif %}
     </div>
 
     {% block deliveryDate %}
@@ -101,7 +101,7 @@
                     </a>
                 {% endif %}
             </h4>
-            <span class="{{ config.name }}__content">{{ data.shipment.requestedDeliveryDate }}</span>
+            <span class="{{ config.name }}__content">{{ data.shipmentGroup.shipment.requestedDeliveryDate }}</span>
         </div>
     {% endblock %}
 {% endblock %}

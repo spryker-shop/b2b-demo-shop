@@ -26,8 +26,8 @@
     {% include molecule('ajax-provider') with {
         class: config.jsName ~ '__provider ' ~ config.jsName ~ '__provider-' ~ data.index,
         attributes: {
-            url: '/quick-order/product-additional-data'
-        }
+            url: path('quick-order/product-additional-data'),
+        },
     } only %}
 
     {% include molecule('ajax-renderer') with {

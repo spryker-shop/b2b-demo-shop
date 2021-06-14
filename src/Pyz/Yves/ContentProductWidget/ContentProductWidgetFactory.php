@@ -7,9 +7,9 @@
 
 namespace Pyz\Yves\ContentProductWidget;
 
-use Pyz\Yves\ContentProductWidget\Twig\ContentProductAbstractListTwigFunction;
+use Pyz\Yves\ContentProductWidget\Twig\ContentProductAbstractListTwigFunctionProvider;
+use Spryker\Shared\Twig\TwigFunctionProvider;
 use SprykerShop\Yves\ContentProductWidget\ContentProductWidgetFactory as SprykerShopContentProductWidgetFactory;
-use SprykerShop\Yves\ContentProductWidget\Twig\ContentProductAbstractListTwigFunction as SprykerShopContentProductAbstractListTwigFunction;
 use Twig\Environment;
 
 class ContentProductWidgetFactory extends SprykerShopContentProductWidgetFactory
@@ -18,11 +18,11 @@ class ContentProductWidgetFactory extends SprykerShopContentProductWidgetFactory
      * @param \Twig\Environment $twig
      * @param string $localeName
      *
-     * @return \Pyz\Yves\ContentProductWidget\Twig\ContentProductAbstractListTwigFunction
+     * @return \Spryker\Shared\Twig\TwigFunctionProvider
      */
-    public function createContentProductAbstractListTwigFunction(Environment $twig, string $localeName): SprykerShopContentProductAbstractListTwigFunction
+    public function createContentProductAbstractListTwigFunctionProvider(Environment $twig, string $localeName): TwigFunctionProvider
     {
-        return new ContentProductAbstractListTwigFunction(
+        return new ContentProductAbstractListTwigFunctionProvider(
             $twig,
             $localeName,
             $this->createContentProductAbstractReader()

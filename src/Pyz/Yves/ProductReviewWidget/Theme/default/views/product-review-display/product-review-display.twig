@@ -1,21 +1,28 @@
-{% extends template('widget') %}
+{% extends view('product-review-display', '@SprykerShop:ProductReviewWidget') %}
 
 {% define data = {
-    value: _widget.rating | default(0),
-    maxValue: _widget.maximumRating
+    parentJsName: '',
+    reviewCount: 0,
 } %}
 
 {% block body %}
     <div>
+        <span itemscope itemprop="aggregateRating" itemtype="https://schema.org/AggregateRating">
+            <meta itemprop="ratingValue" content="{{ data.value }}">
+            <meta itemprop="bestRating" content="{{ data.maxValue }}">
+        </span>
+
         {% include molecule('rating-selector', 'ProductReviewWidget') with {
             data: {
                 value: data.value,
                 maxValue: data.maxValue,
-                useHalfSteps: true
+                useHalfSteps: true,
+                parentJsName: data.parentJsName,
+                reviewCount: data.reviewCount,
             },
             attributes: {
-                readonly: true
-            }
+                readonly: true,
+            },
         } only %}
     </div>
 {% endblock %}

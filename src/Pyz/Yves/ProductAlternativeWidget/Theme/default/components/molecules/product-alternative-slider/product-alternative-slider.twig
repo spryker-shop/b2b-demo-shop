@@ -9,9 +9,9 @@
 } %}
 
 {% block body %}
-    <h4 class="{{ config.name }}__title">
+    <h2 class="{{ config.name }}__title title title--h4">
         {{ 'product_alternative_widget.product_alternative' | trans }}
-    </h4>
+    </h2>
 
     {% embed molecule('slick-carousel') with {
         modifiers: ['full-width', 'equal-height', 'products', 'full-height'],

@@ -74,10 +74,13 @@ class ProductRepository implements ProductRepositoryInterface
      */
     public function getProductConcreteAttributesCollection(): ArrayCollection
     {
-        return SpyProductQuery::create()
+        /** @var \Propel\Runtime\Collection\ArrayCollection $productData */
+        $productData = SpyProductQuery::create()
             ->joinWithSpyProductAbstract()
             ->select([SpyProductTableMap::COL_ATTRIBUTES, SpyProductTableMap::COL_SKU, SpyProductAbstractTableMap::COL_SKU])
             ->find();
+
+        return $productData;
     }
 
     /**
@@ -148,6 +151,28 @@ class ProductRepository implements ProductRepositoryInterface
             static::ID_PRODUCT => $productEntity->getIdProduct(),
             static::ABSTRACT_SKU => ($abstractSku) ? $abstractSku : $productEntity->getSpyProductAbstract()->getSku(),
         ];
+    }
+
+    /**
+     * @return string[]
+     */
+    public function getSkuProductAbstractList(): array
+    {
+        return SpyProductAbstractQuery::create()
+            ->select([SpyProductAbstractTableMap::COL_SKU])
+            ->find()
+            ->toArray();
+    }
+
+    /**
+     * @return string[]
+     */
+    public function getSkuProductConcreteList(): array
+    {
+        return SpyProductQuery::create()
+            ->select([SpyProductTableMap::COL_SKU])
+            ->find()
+            ->toArray();
     }
 
     /**

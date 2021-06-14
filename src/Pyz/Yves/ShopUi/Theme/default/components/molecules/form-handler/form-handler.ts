@@ -39,7 +39,7 @@ export default class FormHandler extends Component {
         return this.submitForm === 'true';
     }
 
-    protected get submitForm(): string  {
+    protected get submitForm(): string {
         return this.getAttribute('submit-form');
     }
 

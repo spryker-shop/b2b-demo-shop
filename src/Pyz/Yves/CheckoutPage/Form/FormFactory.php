@@ -13,9 +13,9 @@ use SprykerShop\Yves\CheckoutPage\Form\FormFactory as SprykerFormFactory;
 
 class FormFactory extends SprykerFormFactory
 {
-     /**
-      * @return \Spryker\Yves\StepEngine\Form\FormCollectionHandlerInterface
-      */
+    /**
+     * @return \Spryker\Yves\StepEngine\Form\FormCollectionHandlerInterface
+     */
     public function getPaymentFormCollection(): FormCollectionHandlerInterface
     {
         $createPaymentSubForms = $this->getPaymentMethodSubForms();

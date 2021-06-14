@@ -1,0 +1,24 @@
+{% extends view('quote-request-checkout', '@SprykerShop:QuoteRequestWidget') %}
+
+{% block backButton %}
+    {% set buttonBackClass = 'form__action form__action--expand-sm-md button button--big button--hollow-icon button--back' %}
+    {{ parent() }}
+{% endblock %}
+
+{% block cancelButton %}
+    <a href="{{ path('quote-request/cart/clear') }}" class="{{ buttonCancelClass }}">
+        {% include atom('icon') with {
+            class: 'is-hidden-lg-xxl spacing-right spacing-right--small',
+            modifiers: ['small', 'reverse'],
+            data: {
+                name: 'chevron-right',
+            },
+        } only %}
+        {{ 'quote_request_page.quote_request.actions.cancel' | trans }}
+    </a>
+{% endblock %}
+
+{% block saveButton %}
+    {% set buttonSaveClass = 'form__action form__action--expand-sm-md button button--big' %}
+    {{ parent() }}
+{% endblock %}
