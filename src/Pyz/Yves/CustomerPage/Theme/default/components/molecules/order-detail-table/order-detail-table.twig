@@ -10,7 +10,6 @@
                 }) }}
             </h3>
             <div class="col col--sm-12 col--xl-8">
-                {% widget 'OrderConfiguredBundleWidget' args [data.order, shipmentGroup.items] only %}{% endwidget %}
 
                 {% for item in shipmentGroup.cartItems %}
                     {% set cartItem = item.bundleProduct ?? item %}
@@ -44,8 +43,8 @@
                                     {% block body %}
                                         {% if embed.order is not empty %}
                                             <span class="{{ config.name }}__checkbox">
-                                            {% widget 'CustomerReorderItemCheckboxWidget' args [embed.listItem] only %}{% endwidget %}
-                                        </span>
+                                                {% widget 'CustomerReorderItemCheckboxWidget' args [embed.listItem] only %}{% endwidget %}
+                                            </span>
                                         {% endif %}
 
                                         {{ parent() }}
@@ -55,6 +54,56 @@
 
                             {% block title %}
                                 <h6 class="{{ config.name }}__title spacing spacing--reset">{{ data.listItem.name }}</h6>
+                            {% endblock %}
+
+                            {% block productInfo %}
+                                {% block quantityTitle %}
+                                    {{ parent() }}
+                                {% endblock %}
+
+                                {% block packagingUnitCart %}
+                                    {{ parent() }}
+                                {% endblock %}
+
+                                {% block salesInfo %}
+                                    {{ parent() }}
+                                {% endblock %}
+
+                                {% block itemAttributes %}
+                                    {{ parent() }}
+                                {% endblock %}
+                            {% endblock %}
+
+                            {% block productDescriptionContent %}
+                                {{ parent() }}
+
+                                {% block bundle %}
+                                    {% include molecule('bundle-items', 'ProductBundleWidget') ignore missing with {
+                                        class: 'col col--sm-12',
+                                        data: {
+                                            items: embed.bundleItems,
+                                        },
+                                    } only %}
+                                {% endblock %}
+
+                                <div class="col col--sm-12">
+                                    {{ block('productOptions') }}
+                                </div>
+                            {% endblock %}
+
+                            {% block additionalInfo %}
+                                {% block note %}
+                                    {% if data.listItem.cartNote is not empty %}
+                                        {% include molecule('cart-item-note', 'CartNoteWidget') ignore missing with {
+                                            data: {
+                                                isNoteNotEmpty: true,
+                                                canWrite: false,
+                                                label: 'cart_note.checkout_page.quote_note',
+                                                note: data.listItem.cartNote,
+                                            },
+                                        } only %}
+                                    {% endif %}
+                                {% endblock %}
                             {% endblock %}
 
                             {% block packagingUnitCartContent %}
@@ -75,30 +124,12 @@
                                     } only %}
                                 {% endif %}
                             {% endblock %}
-
-                            {% block bundle %}
-                                {% include molecule('bundle-items', 'ProductBundleWidget') ignore missing with {
-                                    data: {
-                                        items: embed.bundleItems,
-                                    },
-                                } only %}
-                            {% endblock %}
-
-                            {% block note %}
-                                {% if data.listItem.cartNote is not empty %}
-                                    {% include molecule('cart-item-note', 'CartNoteWidget') ignore missing with {
-                                        data: {
-                                            isNoteNotEmpty: true,
-                                            canWrite: false,
-                                            label: 'cart_note.checkout_page.quote_note',
-                                            note: data.listItem.cartNote,
-                                        },
-                                    } only %}
-                                {% endif %}
-                            {% endblock %}
                         {% endembed %}
                     {% endif %}
                 {% endfor %}
+
+                {% widget 'OrderItemsConfiguredBundleWidget' args [shipmentGroup.items] only %}
+                {% endwidget %}
             </div>
 
             <div class="col col--sm-12 col--xl-4">

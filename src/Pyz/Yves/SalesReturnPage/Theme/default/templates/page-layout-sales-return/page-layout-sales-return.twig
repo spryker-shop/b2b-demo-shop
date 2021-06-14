@@ -1,0 +1,68 @@
+{% extends template('page-layout-main') %}
+
+{% define data = {
+    activePage: 'return/list',
+    title: 'return_page.default_title' | trans,
+} %}
+
+{% set breadcrumbExtension = [] %}
+
+{% block breadcrumbs %}
+    {% set breadcrumbSteps = [
+        {
+            label: 'customer.account' | trans,
+            url: path('customer/overview'),
+        },
+        {
+            label: 'return_page.breadcrumb.returns' | trans,
+            url: path('return/list'),
+        },
+    ] %}
+    {% set breadcrumbSteps = breadcrumbSteps | merge(breadcrumbExtension) %}
+
+    {% include molecule('breadcrumb') with {
+        data: {
+            steps: breadcrumbSteps,
+        },
+    } only %}
+{% endblock %}
+
+{% set wrapperClass = 'grid grid--gap' %}
+
+{% block sectionContent %}
+    <div class="{{ wrapperClass }}">
+        {% set sidebarClass = 'col col--sm-12 col--md-3' %}
+        {% set contentClass = 'col col--sm-12 col--md-9' %}
+
+        {% block contentInner %}
+            {% block customerNavigationWrapper %}
+                <div class="{{ sidebarClass }}">
+                    {% block customerNavigation %}
+                        {% widget 'CustomerNavigationWidget' args [data.activePage] only %}{% endwidget %}
+                    {% endblock %}
+                </div>
+            {% endblock %}
+
+            {% block salesReturnContentWrapper %}
+                <div class="{{ contentClass }}">
+                    {% block salesReturnContent %}{% endblock %}
+                </div>
+            {% endblock %}
+        {% endblock %}
+    </div>
+{% endblock %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+    {% embed organism('section') with {
+        modifiers: ['last'],
+        embed: {
+            salesReturnContent: block('sectionContent'),
+        },
+    } only %}
+        {% block body %}
+            {{ embed.salesReturnContent | raw }}
+        {% endblock %}
+    {% endembed %}
+{% endblock %}

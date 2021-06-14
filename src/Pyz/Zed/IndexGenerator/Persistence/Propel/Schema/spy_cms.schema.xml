@@ -5,6 +5,11 @@
       <index-column name="fk_template"/>
     </index>
   </table>
+  <table name="spy_cms_version">
+    <index name="index-spy_cms_version-fk_user">
+      <index-column name="fk_user"/>
+    </index>
+  </table>
   <table name="spy_cms_page_localized_attributes">
     <index name="index-spy_cms_page_localized_attributes-fk_cms_page">
       <index-column name="fk_cms_page"/>
@@ -14,13 +19,11 @@
     </index>
   </table>
   <table name="spy_cms_glossary_key_mapping">
+    <index name="index-spy_cms_glossary_key_mapping-fk_page">
+      <index-column name="fk_page"/>
+    </index>
     <index name="index-spy_cms_glossary_key_mapping-fk_glossary_key">
       <index-column name="fk_glossary_key"/>
-    </index>
-  </table>
-  <table name="spy_cms_version">
-    <index name="index-spy_cms_version-fk_user">
-      <index-column name="fk_user"/>
     </index>
   </table>
   <table name="spy_cms_page_store">

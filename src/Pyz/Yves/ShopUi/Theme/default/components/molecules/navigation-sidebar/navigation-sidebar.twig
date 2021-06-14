@@ -1,4 +1,5 @@
 {% extends model('component') %}
+{% import _self as component %}
 
 {% define config = {
     name: 'navigation-sidebar',
@@ -7,13 +8,15 @@
 
 {% define data = {
     activePage: required,
-    items: []
+    items: [],
 } %}
 
 
 {% block body %}
     <ul class="{{ component.renderClass(config.name ~ '__list', modifiers) }}">
         {% for item in data.items %}
+            {% set isActiveItem = item.isActiveItem ?? item.name == data.activePage %}
+
             {% include molecule('navigation-sidebar-item') with {
                 data: {
                     url: item.url,
@@ -21,7 +24,7 @@
                     label: item.label,
                     name: item.name
                 },
-                modifiers: item.name == data.activePage ? ['active'] | merge(modifiers) : modifiers
+                modifiers: isActiveItem ? ['active'] | merge(modifiers) : modifiers,
             } only %}
         {% endfor %}
 

@@ -1,0 +1,13 @@
+{% extends molecule('ordered-configured-bundle-product-secondary', '@SprykerShop:SalesConfigurableBundleWidget') %}
+
+{% block generalInformation %}
+    {% set generalInformationClass = 'spacing-x spacing-x--inner' %}
+
+    {{ parent()}}
+{% endblock %}
+
+{% block total %}
+    {% set productPriceTotalColumnClass = 'col col--sm-2 text-right' %}
+
+    {{ parent()}}
+{% endblock %}

@@ -42,39 +42,24 @@
                 }) }}
             {% endblock %}
 
-            <div class="{{ jsPrefix }}filter-section is-hidden">
+            {%- set activeFilters -%}
+                {% block orderActiveFilters %}
+                    {{ parent() }}
+                {% endblock %}
+            {%- endset -%}
+
+            <div class="{{ jsPrefix }}filter-section {% if not activeFilters | trim %}is-hidden{% endif %}">
                 {% block orderFilters %}
-                    {% include molecule('order-filters', 'CustomerPage') with {
-                        data: {
-                            orderSearchForm: data.orderSearchForm,
-                            jsPrefix: jsPrefix,
-                        },
-                    } only %}
+                    {{ parent() }}
                 {% endblock %}
 
-                {% block orderActiveFilters %}
-                    {% include molecule('order-active-filters', 'CustomerPage') with {
-                        data: {
-                            orderSearchForm: data.orderSearchForm,
-                            jsPrefix: jsPrefix,
-                        },
-                    } only %}
-                {% endblock %}
+                {{ activeFilters | raw }}
             </div>
         {% endif %}
     {% endblock %}
 
     {% block orderTable %}
-        {% include molecule('order-table', 'CustomerPage') with {
-            data: {
-                orders: data.orders,
-                orderSearchForm: data.orderSearchForm,
-                filterFields: data.filterFields,
-                isOrderSearchEnabled: data.isOrderSearchEnabled,
-                isOrderSearchOrderItemsVisible: data.isOrderSearchOrderItemsVisible,
-                jsPrefix: jsPrefix,
-            },
-        } only %}
+        {{ parent() }}
     {% endblock %}
 
     {% block pagination %}

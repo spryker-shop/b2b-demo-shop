@@ -1,0 +1,17 @@
+{% extends template('widget') %}
+
+{% define data = {
+    navigation: navigation,
+} %}
+
+{% block body %}
+    {% include molecule('navigation-item', 'ContentNavigationWidget') with {
+        class: 'col col--sm-12 col--md-5 col--lg-3',
+        modifiers: ['reset-border-top'],
+        data: {
+            nodes: data.navigation.nodes,
+            template: 'navigation-icon-list',
+            templateModifiers: ['social', ''],
+        },
+    } only %}
+{% endblock %}

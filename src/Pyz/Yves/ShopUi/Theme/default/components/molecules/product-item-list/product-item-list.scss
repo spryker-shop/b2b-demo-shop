@@ -54,7 +54,7 @@
 
             @include helper-breakpoint-media-min($md) {
                 text-align: right;
-                padding: rem(35) rem(30) rem(35) rem(18);
+                padding: rem(35) rem(30) rem(20) rem(18);
             }
         }
 
@@ -103,6 +103,32 @@
 
             @include helper-breakpoint-media-min($md) {
                 display: block;
+            }
+
+            @include helper-breakpoint-media-min($xl) {
+                position: relative;
+                width: 100%;
+            }
+        }
+
+        &__actions-row {
+            display: flex;
+            flex-direction: column;
+
+            @include helper-breakpoint-media-min($xl) {
+                position: absolute;
+                right: 0;
+                bottom: 0;
+                flex-direction: row;
+            }
+        }
+
+        &__action {
+            padding-top: rem(8);
+
+            @include helper-breakpoint-media-min($xl) {
+                padding-top: 0;
+                padding-left: rem(8);
             }
         }
 

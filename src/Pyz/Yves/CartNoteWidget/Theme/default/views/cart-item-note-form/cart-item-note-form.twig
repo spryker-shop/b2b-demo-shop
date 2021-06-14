@@ -6,7 +6,7 @@
     isTitleVisible: true,
 } %}
 
-{% set canWrite = (not is_granted('ROLE_USER') or can('WriteSharedCartPermissionPlugin', data.idQuote)) %}
+{% set canWrite = not is_granted('ROLE_USER') or not data.idQuote or can('WriteSharedCartPermissionPlugin', data.idQuote) %}
 
 {% block body %}
 

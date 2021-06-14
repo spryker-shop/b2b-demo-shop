@@ -9,17 +9,41 @@
         {{ block('labels') }}
 
         <div class="grid grid--stretch">
-            {% block imageContainer %}
-                {% set extraClass = '' %}
-                {% set modifiers = ['category-list'] %}
+            {% set extraClass = '' %}
+            {% set modifiers = ['category-list'] %}
 
-                <div class="{{ config.name }}__image col col--sm-12 col--md-4 col--xl-2">
-                    {% block productThumbnail %}
-                        <a class="{{ config.name }}__overlay {{ config.jsName }}__link-detail-page" href="{{ data.url }}">
+            {% block imageContainer %}
+                {% macro thumbnail(src, alt='', extraClass='', modifiers=[], jsName='') %}
+                    {% embed molecule('lazy-image') with {
+                        class: extraClass,
+                        modifiers: modifiers | merge(['thumbnail']),
+                        data: {
+                            imageSrc: src,
+                            imageTitle: alt,
+                        },
+                        embed: {
+                            jsName: jsName,
+                        },
+                    } only %}
+                        {% block content %}
+                            {% set imageExtraClasses = embed.jsName ? embed.jsName ~ '__image' %}
+
                             {{ parent() }}
-                        </a>
-                    {% endblock %}
-                </div>
+                        {% endblock %}
+                    {% endembed %}
+                {% endmacro %}
+
+                {% import _self as macros %}
+
+                {% block image %}
+                    <div class="{{ config.name }}__image col col--sm-12 col--md-4 col--xl-2">
+                        {% block productThumbnail %}
+                            <a class="{{ config.name }}__overlay {{ config.jsName }}__link-detail-page" href="{{ data.url }}">
+                                {{ parent() }}
+                            </a>
+                        {% endblock %}
+                    </div>
+                {% endblock %}
             {% endblock %}
 
             {% block content %}
@@ -66,9 +90,7 @@
 
                         {% block actions %}
                             <div class="{{ config.name }}__details col">
-                                <a class="{{ config.jsName }}__link-detail-page button button--expand button--hollow" href="{{ data.url }}">
-                                    {{ 'product.view' | trans }}
-                                </a>
+                                {{ parent() }}
                             </div>
                         {% endblock %}
                     </div>
@@ -76,4 +98,12 @@
             {% endblock %}
         </div>
     </div>
+{% endblock %}
+
+{% block ajaxAddToCartInner %}
+    {% set ajaxButtonExtraAttributes = {
+        'data-node-animator-wrapper-class-name': config.jsName,
+    } %}
+    {% set componentExtraClasses = config.name ~ '__action' %}
+    {{ parent() }}
 {% endblock %}

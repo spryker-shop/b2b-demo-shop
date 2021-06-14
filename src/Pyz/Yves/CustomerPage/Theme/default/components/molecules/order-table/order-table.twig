@@ -1,6 +1,73 @@
 {% extends molecule('order-table', '@SprykerShop:CustomerPage') %}
 
+{% define data = {
+    requestUri: app.request.requestUri,
+} %}
+
 {% block extraClass %}{% endblock %}
+
+{% block customReorderAction %}
+    {% widget 'CustomerReorderFormWidget' args [order] only %}
+        {% block body %}
+            {% embed molecule('remote-form-submit') with {
+                class: 'table-action-list__item',
+                data: {
+                    label: 'customer.order.reorder' | trans,
+                    buttonClass: 'button--expand-sm-lg link',
+                },
+                attributes: {
+                    'form-name': 'customerReorderWidgetForm_' ~ data.order.idSalesOrder,
+                    'form-action': path('customer/order/reorder', {'idSalesOrder': data.order.idSalesOrder}),
+                    'field-id': 'customerReorderWidgetForm__token_' ~ data.order.idSalesOrder,
+                    'field-name': 'customerReorderWidgetForm[_token]',
+                    'field-value': csrf_token('customerReorderWidgetForm'),
+                },
+            } only %}
+                {% block innerSubmitActionContent %}
+                    {% include molecule('table-action-span') with {
+                        class: 'link link--alt link--action',
+                        data: {
+                            icon: 'cart',
+                            title: data.label,
+                            iconModifiers: ['big'],
+                        },
+                    } only %}
+                {% endblock %}
+            {% endembed %}
+        {% endblock %}
+    {% endwidget %}
+{% endblock %}
+
+{% block customOrderCancelAction %}
+    {% widget 'OrderCancelButtonWidget' args [order, data.requestUri] only %}
+        {% block formContent %}
+            {% embed molecule('remote-form-submit') with {
+                class: 'table-action-list__item',
+                data: {
+                    label: 'order_cancel_widget.cancel_order' | trans,
+                    buttonClass: 'button--expand-sm-lg link',
+                },
+                attributes: {
+                    'form-name': 'orderCancelForm_' ~ data.order.idSalesOrder,
+                    'form-action': path('order/cancel', {'id-sales-order': data.order.idSalesOrder, 'return-url': data.returnUrl}),
+                    'field-id': 'orderCancelForm__token' ~ data.order.idSalesOrder,
+                    'field-name': 'orderCancelForm[_token]',
+                    'field-value': csrf_token('orderCancelForm'),
+                },
+            } only %}
+                {% block innerSubmitActionContent %}
+                    {% include molecule('table-action-span') with {
+                        class: 'link link--alt link--action',
+                        data: {
+                            icon: 'cross',
+                            title: data.label,
+                        },
+                    } only %}
+                {% endblock %}
+            {% endembed %}
+        {% endblock %}
+    {% endwidget %}
+{% endblock %}
 
 {% block body %}
     {% set isSearchItemsVisible = data.isOrderSearchEnabled and data.isOrderSearchOrderItemsVisible %}
@@ -34,7 +101,8 @@
                         <th>{{ 'customer.order.number_of_items' | trans }}</th>
                     {% endif %}
                     <th>{{ 'customer.order.total' | trans }}</th>
-                    <th></th>
+                    <th>{{ 'customer.order.items_state' | trans }}</th>
+                    <th>{{ 'customer.table.actions' | trans }}</th>
                 </tr>
             </thead>
             <tbody>
@@ -54,7 +122,12 @@
                         {% endif %}
                         {% if isSearchItemsVisible %}
                             <td class="transform-cell" data-content="{{ 'customer.order.number_of_items' | trans }}">
-                                <span class="badge badge--order">{{ order.items.count }}</span>
+                                {% set itemCount = order.items.count %}
+                                {% set label = (itemCount == 1) ? 'customer.order.item' : 'customer.order.items' %}
+
+                                <span class="badge badge--order">
+                                    {{ order.items.count }}&nbsp;{{ label | trans }}
+                                </span>
                             </td>
                         {% endif %}
                         <td class="transform-cell spacing-bottom spacing-bottom--inner spacing-bottom--big" data-content="{{ 'customer.order.total' | trans }}">
@@ -62,7 +135,11 @@
                                 {{- order.totals.grandTotal | default(0) | money(true, order.currencyIsoCode) -}}
                             </strong>
                         </td>
-
+                        <td>
+                            {% block stateWrapper %}
+                                {{ parent() }}
+                            {% endblock %}
+                        </td>
                         <td class="spacing-x spacing-x--inner spacing-x--reset">
                             {% include molecule('table-action-list') with {
                                 data: {
@@ -74,10 +151,16 @@
                                             iconModifier: 'big',
                                         },
                                         {
-                                            url: path('customer/order/reorder', { 'idSalesOrder': order.idSalesOrder }),
-                                            icon: 'cart',
-                                            title: 'customer.order.reorder',
+                                            customAction: block('customReorderAction'),
+                                        },
+                                        {
+                                            url: path('return/create', { orderReference: order.orderReference }),
+                                            icon: 'return-arrow',
+                                            title: 'return_page.button.create_return',
                                             iconModifier: 'big',
+                                        },
+                                        {
+                                            customAction: block('customOrderCancelAction'),
                                         },
                                     ],
                                 },
