@@ -1,4 +1,4 @@
-@mixin shop-ui-table-action ($name: '.table-action-list') {
+@mixin shop-ui-table-action-list($name: '.table-action-list') {
     #{$name} {
         display: flex;
         padding-top: $setting-grid-space;
@@ -9,6 +9,7 @@
         @include helper-breakpoint-media-min($lg) {
             width: 100%;
             margin: 0;
+            padding: 0;
             justify-content: flex-end;
         }
 
@@ -43,4 +44,4 @@
     }
 }
 
-@include shop-ui-table-action();
+@include shop-ui-table-action-list();

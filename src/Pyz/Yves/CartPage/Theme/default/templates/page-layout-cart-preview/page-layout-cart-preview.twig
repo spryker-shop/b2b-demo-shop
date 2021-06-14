@@ -116,10 +116,10 @@
                         <div class="{{ config.name }}__quantity col">{{ data.transformedCartItems | length }} {{ 'checkout.step.summary.items' | trans }}</div>
                     </div>
 
-                    {% set isDiscountVoucherFormWidget = data.isQuoteEditable and can('ChangeCartItemPermissionPlugin') and can('SeePricePermissionPlugin') %}
+                    {% set isCartCodeFormWidget = data.isQuoteEditable and can('ChangeCartItemPermissionPlugin') and can('SeePricePermissionPlugin') %}
 
-                    {% if isDiscountVoucherFormWidget %}
-                        {% widget 'DiscountVoucherFormWidget' only %}{% endwidget %}
+                    {% if isCartCodeFormWidget %}
+                        {% widget 'CartCodeFormWidget' args [data.cart] only %}{% endwidget %}
                     {% endif %}
 
                     {% block cartSummary %}
@@ -135,10 +135,9 @@
                                     <ul class="list">
                                         {% block cartSummaryContent %}
                                             <li class="list__item">
-                                                {% include molecule('cart-discount-summary', 'DiscountWidget') ignore missing with {
-                                                    modifiers: ['cart'],
+                                                {% include molecule('cart-code-summary', 'CartCodeWidget') ignore missing with {
                                                     data: {
-                                                        isLinkPresent: false,
+                                                        isQuoteEditable: data.isQuoteEditable,
                                                         voucherDiscounts: data.cart.voucherDiscounts,
                                                         ruleDiscounts: data.cart.cartRuleDiscounts,
                                                         discountTotal: data.cart.totals.discounttotal,

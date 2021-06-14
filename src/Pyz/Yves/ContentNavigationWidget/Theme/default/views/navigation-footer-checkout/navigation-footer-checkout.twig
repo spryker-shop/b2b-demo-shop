@@ -1,0 +1,13 @@
+{% extends view('navigation-footer', 'ContentNavigationWidget') %}
+
+{% block navigationItem %}
+    <div class="col">
+        {% include molecule('navigation-item', 'ContentNavigationWidget') with {
+            class: 'spacing-y spacing-y--inner spacing-y--big',
+            data: {
+                nodes: data.navigation.nodes,
+                templateModifiers: ['secondary', 'footer', 'checkout', 'inline'],
+            },
+        } only %}
+    </div>
+{% endblock %}

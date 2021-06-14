@@ -12,7 +12,7 @@ use Generated\Shared\Transfer\CustomerTransfer;
 use SprykerShop\Yves\CompanyPage\Controller\AbstractCompanyController;
 use SprykerShop\Yves\CompanyPage\Exception\CustomerAccessDeniedException;
 use SprykerShop\Yves\CompanyPage\Plugin\ShopApplication\CompanyUserRestrictionHandlerPlugin as SprykerCompanyUserRestrictionHandlerPlugin;
-use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
+use Symfony\Component\HttpKernel\Event\ControllerEvent;
 
 class CompanyUserRestrictionHandlerPlugin extends SprykerCompanyUserRestrictionHandlerPlugin
 {
@@ -23,13 +23,13 @@ class CompanyUserRestrictionHandlerPlugin extends SprykerCompanyUserRestrictionH
      *
      * @api
      *
-     * @param \Symfony\Component\HttpKernel\Event\FilterControllerEvent $event
+     * @param \Symfony\Component\HttpKernel\Event\ControllerEvent $event
      *
      * @throws \SprykerShop\Yves\CompanyPage\Exception\CustomerAccessDeniedException
      *
      * @return void
      */
-    public function handle(FilterControllerEvent $event): void
+    public function handle(ControllerEvent $event): void
     {
         $eventController = $event->getController();
 

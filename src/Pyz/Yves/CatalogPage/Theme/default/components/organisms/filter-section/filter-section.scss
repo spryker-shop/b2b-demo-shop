@@ -1,111 +1,141 @@
-.filter-section {
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    padding: rem(14) rem(20) rem(58);
-    background: $setting-color-white;
-    z-index: $setting-zi-header + 1;
-
-    @include helper-breakpoint-media-min($lg) {
-        position: static;
-        padding: 0;
-        background: none;
-        margin-top: rem(35);
-    }
-
-    &__close {
-        position: absolute;
-        right: rem(20);
-        top: rem(17);
-        color: $setting-color-black;
-        background: none;
-    }
-
-    &__title {
-        padding: 0 rem(17) rem(12);
-        font-size: rem(18);
-        line-height: 1.67;
-        text-align: center;
-    }
-
-    &__sorting {
-        padding-bottom: rem(10);
-    }
-
-    &__holder {
-        height: calc(100% - 5.75rem);
-        border-top: 1px solid $setting-color-gray-1;
-        overflow: auto;
-
-        @include helper-breakpoint-media-min($lg) {
-            height: auto;
-            border: none;
-            overflow: visible;
-        }
-    }
-
-    &__item {
-        border: 1px solid $setting-color-gray-1;
-        border-top: none;
-        padding: rem(18) 20px;
-
-        @include helper-breakpoint-media-min($lg) {
-            border-top: 1px solid $setting-color-gray-1;
-            border-bottom: none;
-
-            &:last-of-type {
-                border-bottom: 1px solid $setting-color-gray-1;
-            }
-        }
-
-        &--hollow {
-            @include helper-breakpoint-media-min($lg) {
-                border: none;
-                padding: 0;
-                margin-bottom: rem(40);
-            }
-        }
-    }
-
-    &__item-title {
-        color: $setting-color-gray-5;
-        font: fw(bold) rem(13)/rem(17) $setting-font-family;
-        text-transform: uppercase;
-        letter-spacing: rem(0.37);
-
-        @include helper-breakpoint-media-min($lg) {
-            font-size: rem(12);
-            line-height: rem(15);
-        }
-    }
-
-    &__item-content {
-        margin-top: rem(20);
-
-        &--hollow {
-            @include helper-breakpoint-media-min($lg) {
-                margin-top: 0;
-            }
-        }
-    }
-
-    &__button {
-        position: absolute;
-        bottom: 0;
+@mixin catalog-page-filter-section($name: '.filter-section') {
+    #{$name} {
+        position: fixed;
+        top: 0;
         left: 0;
-        width: 100%;
-        padding-top: rem(18);
-        padding-bottom: rem(18);
-        border-radius: 0;
+        bottom: 0;
+        right: 0;
+        padding: rem(14) rem(20) rem(58);
+        background: $setting-color-white;
+        z-index: $setting-zi-header + 1;
 
         @include helper-breakpoint-media-min($lg) {
             position: static;
-            margin-top: rem(20);
-            padding-top: rem(15);
-            padding-bottom: rem(15);
-            border-radius: rem(2);
+            padding: 0;
+            background: none;
+            margin-top: rem(35);
         }
+
+        &__close {
+            position: absolute;
+            right: rem(20);
+            top: rem(17);
+            color: $setting-color-black;
+            background: none;
+        }
+
+        &__title {
+            padding: 0 rem(17) rem(12);
+            font-size: rem(18);
+            line-height: 1.67;
+            text-align: center;
+        }
+
+        &__sorting {
+            padding-bottom: rem(10);
+        }
+
+        &__holder {
+            height: calc(100% - 5.75rem);
+            border-top: 1px solid $setting-color-gray-1;
+            overflow: auto;
+
+            @include helper-breakpoint-media-min($lg) {
+                height: auto;
+                border: none;
+                overflow: visible;
+            }
+        }
+
+        &__item {
+            border: 1px solid $setting-color-gray-1;
+            border-top: none;
+            padding: rem(18) rem(20);
+
+            @include helper-breakpoint-media-min($lg) {
+                border-top: 1px solid $setting-color-gray-1;
+                border-bottom: none;
+
+                &:last-of-type {
+                    border-bottom: 1px solid $setting-color-gray-1;
+                }
+            }
+
+            &--hollow {
+                @include helper-breakpoint-media-min($lg) {
+                    border: none;
+                    padding: 0;
+                    margin-bottom: rem(40);
+                }
+            }
+        }
+
+        &__item-title {
+            color: $setting-color-gray-5;
+            font: fw(bold) rem(13) / rem(17) $setting-font-family;
+            text-transform: uppercase;
+            letter-spacing: rem(0.37);
+
+            @include helper-breakpoint-media-min($lg) {
+                font-size: rem(12);
+                line-height: rem(15);
+            }
+        }
+
+        &__item-content {
+            margin-top: rem(20);
+
+            &--hollow {
+                @include helper-breakpoint-media-min($lg) {
+                    margin-top: 0;
+                }
+            }
+        }
+
+        &__button {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding-top: rem(18);
+            padding-bottom: rem(18);
+            border-radius: 0;
+
+            @include helper-breakpoint-media-min($lg) {
+                position: static;
+                margin-top: rem(20);
+                padding-top: rem(15);
+                padding-bottom: rem(15);
+                border-radius: rem(2);
+            }
+        }
+
+        &--sub-categories-grid {
+            position: relative;
+            background: none;
+            z-index: $setting-zi-element;
+            padding: rem(20) 0 rem(30) 0;
+
+            @include helper-breakpoint-media-min($lg) {
+                position: static;
+                padding: 0;
+                background: none;
+                margin-top: rem(35);
+            }
+
+            #{$name}__item {
+                border-top: 1px solid $setting-color-gray-1;
+
+                &--hollow {
+                    @include helper-breakpoint-media-min($lg) {
+                        border-top: none;
+                    }
+                }
+            }
+        }
+
+        @content;
     }
 }
+
+@include catalog-page-filter-section();

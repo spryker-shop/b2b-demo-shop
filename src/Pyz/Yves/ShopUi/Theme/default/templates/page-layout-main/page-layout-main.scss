@@ -1,115 +1,123 @@
-.page-layout {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
+@mixin shop-ui-page-layout($name: '.page-layout') {
+    #{$name} {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
 
-    @include helper-media-ie() {
-        display: block;
-    }
+        &--preload * {
+            transition: none !important;
+        }
 
-    .content-wrap {
-        flex: 1;
-    }
-}
+        @include helper-media-ie() {
+            display: block;
+        }
 
-.page-layout-main {
-    &--catalog-page,
-    &--cms-search-page {
-        position: relative;
-        padding-top: rem(16);
-
-        @include helper-breakpoint-media-min($lg) {
-            padding-top: rem(20);
+        .content-wrap {
+            flex: 1;
         }
     }
 
-    &--catalog-page-content {
-        padding-bottom: rem(60);
+    #{$name}-main {
+        &--catalog-page,
+        &--cms-search-page {
+            position: relative;
+            padding-top: rem(16);
 
-        @include helper-breakpoint-media-min($lg) {
+            @include helper-breakpoint-media-min($lg) {
+                padding-top: rem(20);
+            }
+        }
+
+        &__catalog-page-content {
+            padding-bottom: rem(60);
+
+            @include helper-breakpoint-media-min($lg) {
+                padding-bottom: rem(70);
+            }
+        }
+
+        &--pdp {
+            @include helper-breakpoint-media-min($lg) {
+                padding: rem(30) 0 0;
+            }
+        }
+
+        &--quick-order-page {
+            padding: rem(14) 0 rem(60);
+
+            @include helper-breakpoint-media-min($lg) {
+                padding: rem(50) 0 rem(54);
+            }
+        }
+
+        &--cart-page,
+        &--request-for-quote {
+            padding-top: rem(14);
+            padding-bottom: rem(30);
+
+            @include helper-breakpoint-media-min($lg) {
+                padding-top: rem(32);
+                padding-bottom: rem(60);
+            }
+
+            @include helper-breakpoint-media-min($xl) {
+                padding-bottom: rem(120);
+            }
+        }
+
+        &--checkout-page {
+            padding-top: rem(24);
+            padding-bottom: rem(80);
+
+            @include helper-breakpoint-media-min($lg) {
+                padding-top: rem(32);
+            }
+
+            @include helper-breakpoint-media-min($xl) {
+                padding-bottom: rem(120);
+            }
+        }
+
+        &--cms-page {
+            padding-top: rem(32);
             padding-bottom: rem(70);
         }
-    }
 
-    &--pdp {
-        @include helper-breakpoint-media-min($lg) {
-            padding: 30px 0 0;
-        }
-    }
+        &--success {
+            padding-top: 0;
+            padding-bottom: rem(50);
 
-    &--quick-order-page {
-        padding: rem(14) 0 rem(60);
-
-        @include helper-breakpoint-media-min($lg) {
-            padding: rem(50) 0 rem(54);
-        }
-    }
-
-    &--cart-page,
-    &--request-for-quote {
-        padding-top: rem(14);
-        padding-bottom: rem(30);
-
-        @include helper-breakpoint-media-min($lg) {
-            padding-top: rem(32);
-            padding-bottom: rem(60);
+            @include helper-breakpoint-media-min($xl) {
+                padding-bottom: rem(110);
+            }
         }
 
-        @include helper-breakpoint-media-min($xl) {
-            padding-bottom: rem(120);
-        }
-    }
-
-    &--checkout-page {
-        padding-top: rem(24);
-        padding-bottom: rem(80);
-
-        @include helper-breakpoint-media-min($lg) {
-            padding-top: rem(32);
+        &--error-page {
+            background: url('../images/error-page-img.svg') center no-repeat;
+            background-size: cover;
+            min-height: rem(760);
+            padding-top: rem(35);
         }
 
-        @include helper-breakpoint-media-min($xl) {
-            padding-bottom: rem(120);
-        }
-    }
+        $setting-pdp-gallery-max-width: 660;
+        $setting-site-max-width: 1200;
 
-    &--cms-page {
-        padding-top: rem(32);
-        padding-bottom: rem(70);
-    }
+        &__pdp-gallery {
+            background: $setting-color-alpha-2;
+            padding: 0 rem(15) rem(15);
+            margin: 0 rem(-15);
+            width: calc(100% + #{rem(30)});
+            min-width: 100%;
 
-    &--success {
-        padding-top: 0;
-        padding-bottom: rem(50);
-
-        @include helper-breakpoint-media-min($xl) {
-            padding-bottom: rem(110);
-        }
-    }
-
-    &--error-page {
-        background: url('../images/error-page-img.svg') center no-repeat;
-        background-size: cover;
-        min-height: rem(760);
-        padding-top: rem(35);
-    }
-
-    $setting-pdp-gallery-max-width: 660;
-    $setting-site-max-width: 1200;
-
-    &__pdp-gallery {
-        background: $setting-color-alpha-2;
-        padding: 0 rem(15) rem(15);
-        margin: 0 rem(-15);
-        width: calc(100% + 30px);
-        min-width: 100%;
-
-        @include helper-breakpoint-media-min($lg) {
-            background: transparent;
-            width: calc(#{$setting-pdp-gallery-max-width} / #{$setting-site-max-width} * 100%);
-            min-width: calc(#{$setting-pdp-gallery-max-width} / #{$setting-site-max-width} * 100%);
-            margin: 0 rem(15) 0 0;
-            padding-bottom: 0;
+            @include helper-breakpoint-media-min($lg) {
+                background: $setting-color-transparent;
+                width: calc(#{$setting-pdp-gallery-max-width} / #{$setting-site-max-width} * 100%);
+                min-width: calc(#{$setting-pdp-gallery-max-width} / #{$setting-site-max-width} * 100%);
+                margin: 0 rem(15) 0 0;
+                padding-bottom: 0;
+            }
         }
     }
 }
+
+@include shop-ui-page-layout();

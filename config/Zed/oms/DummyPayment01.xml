@@ -1,0 +1,137 @@
+<?xml version="1.0"?>
+<statemachine
+    xmlns="spryker:oms-01"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="spryker:oms-01 http://static.spryker.com/oms-01.xsd">
+
+    <process name="DummyPayment01" main="true">
+        <subprocesses>
+            <process>DummyRefund</process>
+            <process>DummyReturn</process>
+            <process>DummyInvoice</process>
+        </subprocesses>
+
+        <states>
+            <state name="new" reserved="true" display="oms.state.new">
+                <flag>cancellable</flag>
+            </state>
+            <state name="payment pending" reserved="true" display="oms.state.payment-pending">
+                <flag>cancellable</flag>
+            </state>
+            <state name="invalid" display="oms.state.invalid">
+                <flag>exclude from customer</flag>
+            </state>
+            <state name="cancelled" display="oms.state.canceled"/>
+            <state name="paid" reserved="true" display="oms.state.paid">
+                <flag>cancellable</flag>
+            </state>
+            <state name="confirmed" reserved="true" display="oms.state.confirmed">
+                <flag>cancellable</flag>
+            </state>
+            <state name="exported" reserved="true" display="oms.state.exported"/>
+            <state name="shipped" reserved="true" display="oms.state.shipped"/>
+            <state name="waiting" reserved="true" display="oms.state.waiting"/>
+            <state name="delivered" display="oms.state.delivered"/>
+            <state name="closed" display="oms.state.closed"/>
+        </states>
+
+        <transitions>
+            <transition happy="true" condition="DummyPayment/IsAuthorized">
+                <source>new</source>
+                <target>payment pending</target>
+                <event>authorize</event>
+            </transition>
+
+            <transition>
+                <source>new</source>
+                <target>invalid</target>
+                <event>authorize</event>
+            </transition>
+
+            <transition>
+                <source>new</source>
+                <target>cancelled</target>
+                <event>cancel</event>
+            </transition>
+
+            <transition happy="true" condition="DummyPayment/IsPayed">
+                <source>payment pending</source>
+                <target>paid</target>
+                <event>pay</event>
+            </transition>
+
+            <transition>
+                <source>payment pending</source>
+                <target>cancelled</target>
+                <event>pay</event>
+            </transition>
+
+            <transition>
+                <source>payment pending</source>
+                <target>cancelled</target>
+                <event>cancel</event>
+            </transition>
+
+            <transition happy="true">
+                <source>paid</source>
+                <target>confirmed</target>
+                <event>confirm</event>
+            </transition>
+
+            <transition happy="true">
+                <source>confirmed</source>
+                <target>waiting</target>
+                <event>skip timeout</event>
+            </transition>
+
+            <transition>
+                <source>confirmed</source>
+                <target>cancelled</target>
+                <event>cancel</event>
+            </transition>
+
+            <transition happy="true">
+                <source>waiting</source>
+                <target>exported</target>
+                <event>export</event>
+            </transition>
+
+            <transition happy="true">
+                <source>exported</source>
+                <target>shipped</target>
+                <event>ship</event>
+            </transition>
+
+            <transition happy="true">
+                <source>shipped</source>
+                <target>delivered</target>
+                <event>stock-update</event>
+            </transition>
+
+            <transition happy="true">
+                <source>delivered</source>
+                <target>closed</target>
+                <event>close</event>
+            </transition>
+
+        </transitions>
+
+        <events>
+            <event name="authorize" onEnter="true"/>
+            <event name="pay" manual="true" timeout="1 hour" timeoutProcessor="OmsTimeout/Initiation" command="DummyPayment/Pay"/>
+            <event name="confirm" onEnter="true" manual="true" command="Oms/SendOrderConfirmation"/>
+            <event name="skip timeout" manual="true" timeout="30 minute"/>
+            <event name="cancel" manual="true"/>
+            <event name="export" onEnter="true" manual="true"/>
+            <event name="ship" manual="true" command="Oms/SendOrderShipped"/>
+            <event name="skip timeout" manual="true" timeout="30 minute"/>
+            <event name="stock-update" manual="true"/>
+            <event name="close" manual="true" timeout="1 hour"/>
+        </events>
+    </process>
+
+    <process name="DummyRefund" file="DummySubprocess/DummyRefund01.xml"/>
+    <process name="DummyReturn" file="DummySubprocess/DummyReturn01.xml"/>
+    <process name="DummyInvoice" file="DummySubprocess/DummyInvoice01.xml"/>
+
+</statemachine>

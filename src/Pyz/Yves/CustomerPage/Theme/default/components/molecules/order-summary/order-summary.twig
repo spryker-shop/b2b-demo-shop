@@ -5,6 +5,9 @@
 } %}
 
 {% block body %}
+    {% set remunerationTotal = data.order.totals.remunerationTotal ?? null %}
+    {% set canceledTotal = data.order.totals.canceledTotal ?? null %}
+
     <div class="{{ config.name }}__top grid grid--justify grid--middle">
         <div class="col col--sm-8">
             <h6 class="{{ config.name }}__title">{{ 'customer.order.overview' | trans }}</h6>
@@ -25,10 +28,22 @@
             <span class="{{ config.name }}__text {{ config.name }}__text--bigger">{{ 'customer.order.expenseTotal' | trans }}</span>
 
             {% for expense in data.order.expenses %}
-                <div class="{{ config.name }}__text-wrap grid grid--justify grid--middle">
-                    <span class="{{ config.name }}__text col col--sm-8 col--lg-10 text-secondary">{{ expense.shipment.carrier.name ~ ' - ' ~ (expense.name | trans) }}</span>
-                    <span class="{{ config.name }}__text {{ config.name }}__text--bigger col col--expand text-secondary text-right">{{ expense.sumPrice | money(true, data.order.currencyIsoCode) }}</span>
-                </div>
+                {% if expense.type == 'SHIPMENT_EXPENSE_TYPE' %}
+                    <div class="{{ config.name }}__text-wrap grid grid--justify grid--middle">
+                        <span class="{{ config.name }}__text col col--sm-8 col--lg-10 text-secondary">{{ expense.shipment.carrier.name ~ ' - ' ~ (expense.name | trans) }}</span>
+                        <span class="{{ config.name }}__text {{ config.name }}__text--bigger col col--expand text-secondary text-right">{{ expense.sumPrice | money(true, data.order.currencyIsoCode) }}</span>
+                    </div>
+                {% endif %}
+            {% endfor %}
+
+
+            {% for expense in data.order.expenses %}
+                {% if expense.type == 'THRESHOLD_EXPENSE_TYPE' %}
+                    <div class="{{ config.name }}__text-wrap grid grid--justify grid--middle">
+                        <span class="{{ config.name }}__text col col--sm-8 col--lg-10 text-secondary">{{ 'Surcharge' | trans }}</span>
+                        <span class="{{ config.name }}__text {{ config.name }}__text--bigger col col--expand text-secondary text-right">{{ expense.sumPrice | money(true, data.order.currencyIsoCode) }}</span>
+                    </div>
+                {% endif %}
             {% endfor %}
         </li>
 
@@ -42,13 +57,6 @@
                 </div>
             {% endfor %}
         </li>
-
-        {% if data.order.totals.canceledTotal %}
-            <li class="{{ config.name }}__item">
-                <span class="float-right">{{ data.order.totals.canceledTotal | money(true, data.order.currencyIsoCode) }}</span>
-                <span class="{{ config.name }}__text {{ config.name }}__text--bigger">{{ 'customer.order.canceledTotal' | trans }}</span>
-            </li>
-        {% endif %}
 
         <li class="{{ config.name }}__item is-hidden-sm-md">
             <span class="float-right">{{ data.order.totals.taxTotal.amount | money(true, data.order.currencyIsoCode) }}</span>
@@ -66,6 +74,34 @@
             </div>
             <strong class="{{ config.name }}__title {{ config.name }}__title--total {{ config.name }}__title--color-gray float-right">{{ data.order.totals.grandTotal | money(true, data.order.currencyIsoCode) }}</strong>
             <h6 class="{{ config.name }}__title {{ config.name }}__title--total {{ config.name }}__title--color-gray">{{ 'customer.order.grandTotal' | trans }}</h6>
+
+            {% if remunerationTotal %}
+                <div class="is-hidden-lg-xxl">
+                    <strong class="{{ config.name }}__title {{ config.name }}__title--total float-right">- {{ remunerationTotal | money(true, data.order.currencyIsoCode) }}</strong>
+                    <h6 class="{{ config.name }}__title {{ config.name }}__title--total">{{ 'customer.order.remunerationTotal' | trans }}</h6>
+                </div>
+            {% endif %}
+
+            {% if canceledTotal %}
+                <div class="is-hidden-lg-xxl">
+                    <strong class="{{ config.name }}__title {{ config.name }}__title--total float-right">- {{ canceledTotal | money(true, data.order.currencyIsoCode) }}</strong>
+                    <h6 class="{{ config.name }}__title {{ config.name }}__title--total">{{ 'customer.order.refundTotal' | trans }}</h6>
+                </div>
+            {% endif %}
         </li>
+
+        {% if remunerationTotal %}
+            <li class="{{ config.name }}__item is-hidden-sm-md">
+                <span class="float-right">- {{ remunerationTotal | money(true, data.order.currencyIsoCode) }}</span>
+                <span class="{{ config.name }}__text {{ config.name }}__text--bigger">{{ 'customer.order.remunerationTotal' | trans }}</span>
+            </li>
+        {% endif %}
+
+        {% if canceledTotal %}
+            <li class="{{ config.name }}__item is-hidden-sm-md">
+                <span class="float-right">- {{ canceledTotal | money(true, data.order.currencyIsoCode) }}</span>
+                <span class="{{ config.name }}__text {{ config.name }}__text--bigger">{{ 'customer.order.refundTotal' | trans }}</span>
+            </li>
+        {% endif %}
     </ul>
 {% endblock %}

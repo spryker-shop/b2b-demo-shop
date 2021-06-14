@@ -1,0 +1,18 @@
+@mixin quote-request-page-quote-request-summary($name: '.quote-request-summary') {
+    #{$name} {
+        font-size: rem(14);
+
+        &__value {
+            font-size: rem(15);
+        }
+
+        &__grand-total {
+            color: $setting-color-gray-5;
+            font-weight: fw(medium);
+        }
+
+        @content;
+    }
+}
+
+@include quote-request-page-quote-request-summary();

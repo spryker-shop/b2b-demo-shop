@@ -6,25 +6,17 @@
 
         @include helper-breakpoint-media-min($lg) {
             margin-bottom: rem(30);
-            padding: rem(17) rem(20);
+            padding: rem(25) rem(30);
         }
 
         &__item {
-            font-size: rem(12);
-            color: $setting-color-gray-3;
-
-            &:first-child {
-                margin-bottom: rem(10);
-            }
+            font-size: rem(16);
+            font-weight: fw(bold);
+            color: $setting-color-gray-4;
         }
 
         &__name {
-            text-transform: uppercase;
-            font-weight: fw(bold);
-            color: $setting-color-gray-5;
-            max-width: rem(90);
-            width: 100%;
-            display: inline-block;
+            font-weight: fw(regular);
         }
     }
 }

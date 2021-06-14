@@ -34,8 +34,6 @@ class CustomerNewsletterCest
      */
     public function testICanSubscribeNewsletter(CustomerPresentationTester $i, Scenario $scenario): void
     {
-        $scenario->skip('Once we have Chromium + ChromeDriver or Firefox, enable this test case.');
-
         $i->amLoggedInCustomer();
         $i->amOnPage(CustomerNewsletterPage::URL);
 
@@ -54,8 +52,6 @@ class CustomerNewsletterCest
      */
     public function testICanUnSubscribeNewsletter(CustomerPresentationTester $i, Scenario $scenario): void
     {
-        $scenario->skip('Once we have Chromium + ChromeDriver or Firefox, enable this test case.');
-
         $customerTransfer = $i->amLoggedInCustomer();
 
         $i->setDependency(NewsletterDependencyProvider::FACADE_MAIL, Stub::makeEmpty(NewsletterToMailInterface::class));

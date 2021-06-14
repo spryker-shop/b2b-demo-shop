@@ -1,32 +1,49 @@
-{% extends model('component') %}
+{% extends molecule('banner', '@SprykerShop:ShopUi') %}
 
 {% define config = {
     name: 'banner',
-    tag: 'article'
+    tag: 'article',
 } %}
 
 {% define data = {
-    imageUrl: required,
-    link: '',
+    clickUrl: '',
     content: '',
-    btnTitle: ''
+    buttonTitle: '',
 } %}
 
-{% set backgroundImage = data.imageUrl is empty ?: 'background-image: url(' ~ data.imageUrl ~ '); ' %}
+{% set containerClass = config.name ~ '__container grid grid--left grid--middle' %}
+{% set contentClass = 'col col--sm-12' %}
+
+{% block content %}
+    {{ data.content | raw }}
+
+    {% set clickUrl = data.clickUrl %}
+    {% if clickUrl %}
+        <a href="{{ clickUrl | trans }}" class="button button--medium button--tight button--hollow button--hollow-second">
+            {{ (data.buttonTitle ?: 'show_more.btn.title') | trans }}
+        </a>
+    {% endif %}
+{% endblock %}
 
 {% block body %}
-    <div class="{{config.name}}__container grid grid--left grid--middle" style="{{backgroundImage}}">
-        <div class="col col--sm-12">
-            {{ data.content | raw }}
-            {% if data.link is not empty %}
-                <a href="{{ data.link | trans }}" class="button button--medium button--tight button--hollow button--hollow-second">
-                    {% if data.btnTitle is not empty %}
-                        {{ data.btnTitle | trans }}
-                    {% else %}
-                        {{ 'show_more.btn.title' | trans }}
-                    {% endif %}
-                </a>
-            {% endif %}
-        </div>
-    </div>
+    {% embed molecule('lazy-image') with {
+        class: containerClass,
+        modifiers: modifiers,
+        data: {
+            imageSrc: data.imageUrl,
+            isBackground: true,
+        },
+        embed: {
+            contentClass: contentClass,
+            contentBlock: block('content'),
+        },
+    } only %}
+        {% block content %}
+            {{ parent() }}
+
+            <div class="{{ config.name }}__content {{ embed.contentClass }}">
+                {{ embed.contentBlock | raw }}
+            </div>
+        {% endblock %}
+    {% endembed %}
 {% endblock %}

@@ -1,0 +1,37 @@
+@mixin cart-code-widget-cart-code-summary($name: '.cart-code-summary') {
+    #{$name} {
+        &__item {
+            padding-top: rem(18);
+        }
+
+        &__content {
+            margin: rem(8) rem(-20) 0;
+            padding: 0 rem(20) rem(17);
+            border-bottom: rem(1) solid $setting-color-gray-1;
+        }
+
+        &__text {
+            font-weight: fw(regular);
+            font-size: rem(12);
+            line-height: rem(14);
+
+            @include helper-breakpoint-media-min($lg) {
+                font-size: rem(14);
+                line-height: rem(21);
+            }
+        }
+
+        &__price {
+            text-align: right;
+
+            @include helper-breakpoint-media-min($lg) {
+                font-size: rem(14);
+                line-height: rem(21);
+            }
+        }
+
+        @content;
+    }
+}
+
+@include cart-code-widget-cart-code-summary();

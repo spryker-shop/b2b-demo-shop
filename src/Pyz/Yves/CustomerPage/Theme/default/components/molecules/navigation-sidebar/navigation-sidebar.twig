@@ -1,12 +1,6 @@
 {% extends molecule('navigation-sidebar', 'ShopUi') %}
 
-{% define config = {
-    name: 'navigation-sidebar',
-    tag: 'nav'
-} %}
-
 {% define data = {
-    activePage: required,
     items: [
         {
             name: 'overview',
@@ -31,6 +25,13 @@
             url: path('customer/order'),
             label: 'customer.account.order_history' | trans,
             icon: 'history',
+        },
+        {
+            name: 'return',
+            url: path('return/list'),
+            label: 'return_page.list.title' | trans,
+            icon: 'return-arrow',
+            isActiveItem:  'return/list' == data.activePage | default,
         },
         {
             name: 'newsletter',

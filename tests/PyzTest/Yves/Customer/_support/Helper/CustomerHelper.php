@@ -166,6 +166,8 @@ class CustomerHelper extends Module
                 CustomerTransfer::PASSWORD => $password,
             ]);
 
+        $this->getCustomerFacade()->confirmCustomerRegistration($customerTransfer);
+
         return $customerTransfer->setPassword($password);
     }
 

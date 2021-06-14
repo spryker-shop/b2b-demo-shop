@@ -2,8 +2,6 @@
 
 {%- block extraClass %} col col--sm-12 spacing spacing--inner{% endblock -%}
 
-{% block quantityCol %}{% endblock %}
-
 {% block form %}
     <form method="POST" action="{{ path('cart/configured-bundle/change', {'configuredBundleGroupKey': data.configuredBundle.groupKey }) }}">
         {% include molecule('quantity-counter') with {
@@ -15,5 +13,6 @@
                 value: data.configuredBundle.quantity,
             },
         } only %}
+        <input type="hidden" name="change_configured_bundle_quantity_form[_token]" value="{{ csrf_token('change_configured_bundle_quantity_form') }}">
     </form>
 {% endblock %}

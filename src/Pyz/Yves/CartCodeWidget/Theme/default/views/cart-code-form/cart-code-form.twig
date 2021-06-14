@@ -1,0 +1,20 @@
+{% extends view('cart-code-form', '@SprykerShop:CartCodeWidget') %}
+
+{% block body %}
+    {% if data.isQuoteEditable %}
+        {% include molecule('form') with {
+            modifiers: ['discount-voucher'],
+            data: {
+                form: data.form,
+                submit: {
+                    enable: true,
+                    text: 'cart.voucher.redeem' | trans,
+                    class: 'button button--hollow-icon',
+                },
+                options: {
+                    action: path('cart-code/code/add'),
+                },
+            },
+        } only %}
+    {% endif %}
+{% endblock %}

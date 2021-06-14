@@ -12,7 +12,9 @@ use Spryker\Client\Customer\CustomerDependencyProvider as SprykerCustomerDepende
 use Spryker\Client\Customer\Plugin\CustomerAddressSessionUpdatePlugin;
 use Spryker\Client\Customer\Plugin\CustomerTransferSessionRefreshPlugin;
 use Spryker\Client\CustomerAccessPermission\Plugin\Customer\CustomerAccessSecuredPatternRulePlugin;
+use Spryker\Client\CustomerExtension\Dependency\Plugin\AccessTokenAuthenticationHandlerPluginInterface;
 use Spryker\Client\MultiCart\Plugin\GuestCartSaveCustomerSessionSetPlugin;
+use Spryker\Client\OauthCompanyUser\Plugin\Customer\CompanyUserAccessTokenAuthenticationHandlerPlugin;
 use Spryker\Client\PersistentCart\Plugin\GuestCartUpdateCustomerSessionSetPlugin;
 
 class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
@@ -20,7 +22,7 @@ class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
     /**
      * @return \Spryker\Client\Customer\Dependency\Plugin\CustomerSessionGetPluginInterface[]
      */
-    protected function getCustomerSessionGetPlugins(): array
+    protected function getCustomerSessionGetPlugins()
     {
         return [
             new CustomerTransferSessionRefreshPlugin(),
@@ -30,7 +32,7 @@ class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
     /**
      * @return \Spryker\Client\Customer\Dependency\Plugin\CustomerSessionSetPluginInterface[]
      */
-    protected function getCustomerSessionSetPlugins(): array
+    protected function getCustomerSessionSetPlugins()
     {
         return [
             new GuestCartSaveCustomerSessionSetPlugin(), #MultiCartFeature
@@ -42,7 +44,7 @@ class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
     /**
      * @return \Spryker\Client\Customer\Dependency\Plugin\DefaultAddressChangePluginInterface[]
      */
-    protected function getDefaultAddressChangePlugins(): array
+    protected function getDefaultAddressChangePlugins()
     {
         return [
             new CustomerAddressSessionUpdatePlugin(),
@@ -57,5 +59,13 @@ class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
         return [
             new CustomerAccessSecuredPatternRulePlugin(), #CustomerAccessPermissionFeature
         ];
+    }
+
+    /**
+     * @return \Spryker\Client\CustomerExtension\Dependency\Plugin\AccessTokenAuthenticationHandlerPluginInterface
+     */
+    protected function getAccessTokenAuthenticationHandlerPlugin(): AccessTokenAuthenticationHandlerPluginInterface
+    {
+        return new CompanyUserAccessTokenAuthenticationHandlerPlugin();
     }
 }

@@ -16,6 +16,7 @@ use Spryker\Zed\Installer\InstallerDependencyProvider as SprykerInstallerDepende
 use Spryker\Zed\Locale\Communication\Plugin\LocaleInstallerPlugin;
 use Spryker\Zed\Newsletter\Communication\Plugin\NewsletterInstallerPlugin;
 use Spryker\Zed\Oauth\Communication\Plugin\Installer\OauthClientInstallerPlugin;
+use Spryker\Zed\OauthAgentConnector\Communication\Plugin\Installer\AgentOauthScopeInstallerPlugin;
 use Spryker\Zed\OauthCompanyUser\Communication\Plugin\Installer\OauthCompanyUserInstallerPlugin;
 use Spryker\Zed\OauthCustomerConnector\Communication\Plugin\Installer\OauthCustomerScopeInstallerPlugin;
 use Spryker\Zed\PriceProduct\Communication\Plugin\PriceInstallerPlugin;
@@ -57,6 +58,7 @@ class InstallerDependencyProvider extends SprykerInstallerDependencyProvider
             new OauthClientInstallerPlugin(),
             new OauthCustomerScopeInstallerPlugin(),
             new OauthCompanyUserInstallerPlugin(),
+            new AgentOauthScopeInstallerPlugin(),
         ];
     }
 }

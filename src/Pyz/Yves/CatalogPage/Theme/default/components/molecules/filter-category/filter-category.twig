@@ -1,4 +1,4 @@
-{% extends model('component') %}
+{% extends molecule('filter-category', '@SprykerShop:CatalogPage') %}
 
 {% define config = {
     name: 'filter-category',
@@ -6,9 +6,6 @@
 } %}
 
 {% define data = {
-    filter: null,
-    filterPath: null,
-    categories: [],
     levelMenu: 1,
 } %}
 
@@ -17,14 +14,8 @@
     'parent-class-name': config.name ~ '__menu-item--lvl-1',
     'active-category-class-name': 'js-' ~ config.name ~ '__menu-item',
     'visible-category-class': config.name ~ '__menu-item',
-    'class-to-remove': 'is-hidden-lg-xxl'
+    'class-to-remove': 'is-hidden-lg-xxl',
 } %}
-
-{% block component %}
-    {% if data.categories is not empty %}
-        {{parent()}}
-    {% endif %}
-{% endblock %}
 
 {% block body %}
     <ul class="{{ config.name }}__menu {{ config.name }}__menu--lvl-{{ data.levelMenu }}">
@@ -32,25 +23,31 @@
             {% set quantity = 0 %}
             {% set hasChildren = categoryNode.children is defined and categoryNode.children is not empty %}
 
-            {% for filterValue in data.filter.values if (filterValue.value == categoryNode.nodeId) %}
-                {% set quantity = filterValue.docCount %}
+            {% for filterValue in data.filter.values %}
+                {% if filterValue.value == categoryNode.nodeId %}
+                    {% set quantity = filterValue.docCount %}
+                {% endif %}
             {% endfor %}
 
             {% if data.filterPath is not empty %}
-                {% set categoryUrl = url(data.filterPath, {categoryPath: (categoryNode.url)}) %}
                 {% set currentUrl = url(data.filterPath, {categoryPath: (app.request.attributes.get('categoryPath'))}) %}
             {% else %}
-                {% set categoryUrl = categoryNode.url | replace({"'": "\\'", '"':'\\"'}) %}
                 {% set currentUrl = app.request.attributes.get('categoryNode') ? app.request.attributes.get('categoryNode').url : null %}
             {% endif %}
 
+            {% set categoryUrl = data.filterPath is not empty ? url(data.filterPath, {categoryPath: (categoryNode.url | trimLocale)}) : categoryNode.url %}
             {% set isActive = (currentUrl == categoryUrl) %}
-
             {% set isHidden = (data.levelMenu != 1) %}
+            {% set disableAttribute = quantity == 0 ? 'disabled' %}
+            {% set menuItemActiveClass = isActive ? config.name ~ '__menu-item--active ' ~ config.jsName ~ '__menu-item' %}
+            {% set menuItemHiddenClass = isHidden and not isActive ? 'is-hidden-lg-xxl' %}
+            {% set menuLinkActiveClass = isActive ? config.name ~ '__menu-link--active' %}
+            {% set linkTextActiveClass = isActive ? config.name ~ '__link-text--active' %}
+            {% set triggerButtonJsName = data.parentJsName ? data.parentJsName ~ '__trigger' %}
 
-            <li class="{{ config.name }}__menu-item {{ config.name }}__menu-item--lvl-{{ data.levelMenu }} {% if isActive %} {{ config.name }}__menu-item--active {{ config.jsName }}__menu-item{% endif %} {% if isHidden and not isActive %}is-hidden-lg-xxl{% endif %}">
-                <button class="link {{ config.name }}__menu-link {{ config.name }}__menu-link--lvl-{{ data.levelMenu }} {% if isActive %} {{ config.name }}__menu-link--active{% endif %} {{ config.jsName }}__category-trigger" {% if quantity == 0 %}disabled="disabled"{% endif %} data-change-action-to="{{ categoryUrl }}">
-                    <span class="{{ config.name }}__link-text {% if isActive %}{{ config.name }}__link-text--active{% endif %}">{{ categoryNode.name }}</span> <span>{{ quantity }}</span>
+            <li class="{{ config.name }}__menu-item {{ config.name }}__menu-item--lvl-{{ data.levelMenu }} {{ menuItemActiveClass }} {{ menuItemHiddenClass }}">
+                <button class="{{ config.name }}__menu-link {{ config.name }}__menu-link--lvl-{{ data.levelMenu }} {{ menuLinkActiveClass }} {{ triggerButtonJsName }}" type="button" {{ disableAttribute }} data-url={{ categoryUrl }}>
+                    <span class="{{ config.name }}__link-text {{ linkTextActiveClass }}">{{ categoryNode.name }}</span> <span>{{ quantity }}</span>
                 </button>
 
                 {% if hasChildren %}
@@ -59,21 +56,12 @@
                             filter: data.filter,
                             filterPath: data.filterPath,
                             categories: categoryNode.children,
-                            levelMenu: data.levelMenu + 1
-                        }
+                            levelMenu: data.levelMenu + 1,
+                            parentJsName: data.parentJsName,
+                        },
                     } only %}
                 {% endif %}
             </li>
-
         {% endfor %}
-
-        {% include molecule('form-handler') with {
-            attributes: {
-                'trigger-class-name': config.jsName ~ '__category-trigger',
-                'event': 'click',
-                'change-action': 'true',
-                'submit-form': 'false',
-            },
-        } only %}
     </ul>
 {% endblock %}

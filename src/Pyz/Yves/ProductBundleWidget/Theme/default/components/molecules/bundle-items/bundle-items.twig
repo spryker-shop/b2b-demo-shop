@@ -9,7 +9,7 @@
     title: 'cart.item.bundle.description' | trans,
 } %}
 
-{% block template %}
+{% block component %}
     {% if data.items %}
         {{ parent() }}
     {% endif %}
@@ -24,9 +24,31 @@
             {% block items %}
                 {% for item in data.items %}
                     {% block item %}
-                        <li class="{{config.name}}__item">
-                            {{ item.name }}
-                            <span class="{{config.name}}__quantity">x {{ item.quantity }}</span>
+                        <li class="{{ config.name }}__item">
+                            <div class="grid grid--middle grid--justify grid--gap">
+                                <div class="col col--sm-12 col--md-7">
+                                    <p>{{ item.name }}</p>
+                                    <span class="{{ config.name }}__quantity col col--sm-12">
+                                        x {{ item.quantity }}
+                                        {% block state %}
+                                            {% set itemState = item.state is defined ? item.state %}
+
+                                            {% if itemState %}
+                                                {% set state = itemState.name | replace({' ': '-'}) | lower %}
+                                                {% set stateLabel = itemState.displayName ?? ('oms.state.' ~ state) %}
+
+                                                {% include molecule('status') with {
+                                                    class: 'spacing-left',
+                                                    data: {
+                                                        label: stateLabel | trans,
+                                                        status: state,
+                                                    },
+                                                } only %}
+                                            {% endif %}
+                                        {% endblock %}
+                                    </span>
+                                </div>
+                            </div>
                         </li>
                     {% endblock %}
                 {% endfor %}

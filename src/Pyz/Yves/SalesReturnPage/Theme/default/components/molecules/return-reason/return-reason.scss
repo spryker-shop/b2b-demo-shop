@@ -1,0 +1,15 @@
+@mixin sales-return-page-return-reason($name: '.return-reason') {
+    #{$name} {
+        margin: rem(8) 0;
+        font-size: rem(15);
+        color: $setting-color-gray-3;
+
+        &__title {
+            color: $setting-color-gray-5;
+        }
+
+        @content;
+    }
+}
+
+@include sales-return-page-return-reason();

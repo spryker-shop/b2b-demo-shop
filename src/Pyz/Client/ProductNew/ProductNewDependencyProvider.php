@@ -24,7 +24,7 @@ use Spryker\Client\SearchElasticsearch\Plugin\ResultFormatter\SortedResultFormat
 class ProductNewDependencyProvider extends SprykerProductNewDependencyProvider
 {
     /**
-     * @return \Spryker\Client\SearchExtension\Dependency\Plugin\QueryExpanderPluginInterface[]
+     * @return \Spryker\Client\Search\Dependency\Plugin\QueryExpanderPluginInterface[]|\Spryker\Client\SearchExtension\Dependency\Plugin\QueryExpanderPluginInterface[]
      */
     protected function getNewProductsQueryExpanderPlugins()
     {
@@ -44,9 +44,9 @@ class ProductNewDependencyProvider extends SprykerProductNewDependencyProvider
     }
 
     /**
-     * @return \Spryker\Client\SearchExtension\Dependency\Plugin\ResultFormatterPluginInterface[]
+     * @return \Spryker\Client\Search\Dependency\Plugin\ResultFormatterPluginInterface[]|\Spryker\Client\SearchExtension\Dependency\Plugin\ResultFormatterPluginInterface[]
      */
-    protected function getNewProductsResultFormatterPlugins()
+    protected function getNewProductsResultFormatterPlugins(): array
     {
         return [
             new FacetResultFormatterPlugin(),

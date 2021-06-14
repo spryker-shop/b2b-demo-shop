@@ -87,6 +87,17 @@
                     background-color: $setting-color-gray-3;
                 }
             }
+
+            &-active {
+                background: $setting-color-alpha-9;
+
+                &:hover,
+                &:focus {
+                    border-color: $setting-color-main;
+                    color: $setting-color-main;
+                    background: $setting-color-alpha-9;
+                }
+            }
         }
 
         &--alternative {
@@ -101,9 +112,28 @@
             }
         }
 
+        &--small-space {
+            padding-left: rem(15);
+            padding-right: rem(15);
+        }
+
         &--small {
             font-size: rem(13);
             padding: rem(6) rem(20);
+        }
+
+        &--small-on-mobile {
+            font-size: rem(13);
+            padding: rem(6) rem(20);
+
+            @include helper-breakpoint-media-min($lg) {
+                font-size: rem(14);
+                padding: rem(10) rem(28);
+            }
+
+            @include helper-breakpoint-media-min($xl) {
+                padding: rem(10) rem(30);
+            }
         }
 
         &--medium {
@@ -202,12 +232,18 @@
             }
         }
 
+        &--icon {
+            padding-left: rem(10);
+            padding-right: rem(10);
+        }
+
         &[disabled],
         &--disabled {
             background-color: $setting-color-gray-2;
             border-color: $setting-color-gray-2;
             color: $setting-color-white;
             cursor: not-allowed;
+            pointer-events: none;
 
             &:hover,
             &:focus {
@@ -223,12 +259,20 @@
             width: 100%;
         }
 
+        &--justify-center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
         &--additional {
             padding: rem(14) rem(20);
             background: $setting-color-white;
             border-color: $setting-color-gray-6;
             color: $setting-color-gray-5;
-            box-shadow: 0 rem(10) rem(18) 0 rgba($setting-color-black, 0.05), 0 rem(3) rem(3) 0 rgba($setting-color-black, 0.04);
+            box-shadow: 0 rem(10) rem(18) 0 rgba($setting-color-black, 0.05),
+                0 rem(3) rem(3) 0 rgba($setting-color-black, 0.04);
             font-size: rem(15);
         }
 

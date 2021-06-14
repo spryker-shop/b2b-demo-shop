@@ -5,7 +5,8 @@
     cartName: _view.cart.name | default,
     cartIdQuote: _view.cart.idQuote | default,
     cartShareDetails: _view.cart.shareDetails | default,
-    backUrl: app.request.headers.get('referer') | default(url('multi-cart'))
+    backUrl: app.request.headers.get('referer') | default(url('multi-cart')),
+    multiCartDeleteForm: _view.multiCartDeleteForm,
 } %}
 
 {% block breadcrumbs %}
@@ -18,9 +19,9 @@
                 label: 'multi_cart_page.cart_delete_confirmation.breadcrumbs.shopping_carts' | trans,
                 url: url('multi-cart'),
             },{
-                label: 'multi_cart_page.cart_delete_confirmation.warning' | trans
-            }]
-        }
+                label: 'multi_cart_page.cart_delete_confirmation.warning' | trans,
+            }],
+        },
     } only %}
 {% endblock %}
 
@@ -37,9 +38,9 @@
                 <a href="{{ data.backUrl }}" class="col col--sm-12 col--md-auto button button--hollow spacing-right spacing-right--big spacing-top spacing-top">
                     {{ "general.back.button" | trans }}
                 </a>
-                <a href="{{ url('multi-cart/delete', { 'idQuote' : data.cartIdQuote }) }}" class="col col--sm-12 col--md-auto button button--alert spacing-top spacing-top">
-                    {{ "multi_cart_page.cart_delete_confirmation.delete" | trans }}
-                </a>
+                {{ form_start(data.multiCartDeleteForm, {'attr': {'class': 'col col--sm-12 col--md-auto'}, 'action': url('multi-cart/delete', { 'idQuote' : data.cartIdQuote })}) }}
+                    <button data-init-single-click class="button button--alert spacing-top spacing-top">{{ 'multi_cart_page.cart_delete_confirmation.delete' | trans }}</button>
+                {{ form_end(data.multiCartDeleteForm) }}
             </div>
         </div>
     </div>
