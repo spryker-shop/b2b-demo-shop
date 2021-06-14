@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6dc80388e33a817caf43069851e31c16",
+    "content-hash": "5bd9fb257455c13dd73d6cdc358443a2",
     "packages": [
         {
             "name": "brick/math",
@@ -55139,33 +55139,34 @@
         },
         {
             "name": "spryker-feature/development-tools",
-            "version": "202009.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-feature/development-tools.git",
-                "reference": "305df3d994b2980fbd185bd3354ed9d1ec643fb3"
+                "reference": "d28c43f6387f19845ad094989c964bc8ad5810d9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-feature/development-tools/zipball/305df3d994b2980fbd185bd3354ed9d1ec643fb3",
-                "reference": "305df3d994b2980fbd185bd3354ed9d1ec643fb3",
+                "url": "https://api.github.com/repos/spryker-feature/development-tools/zipball/d28c43f6387f19845ad094989c964bc8ad5810d9",
+                "reference": "d28c43f6387f19845ad094989c964bc8ad5810d9",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2",
-                "spryker-sdk/benchmark": "^0.1.0",
+                "php": ">=7.3",
+                "spryker-sdk/benchmark": "^0.2.0",
                 "spryker-sdk/composer-constrainer": "^0.2.0",
                 "spryker-sdk/spryk": "^0.2.5",
-                "spryker-sdk/spryk-gui": "^0.1.5",
+                "spryker-sdk/spryk-gui": "^0.1.6",
                 "spryker-shop/web-profiler-widget": "^1.4.0",
                 "spryker/code-generator": "^0.3.7",
                 "spryker/development": "^3.25.0",
                 "spryker/web-profiler": "^1.6.0"
             },
+            "default-branch": true,
             "type": "metapackage",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "202009.x-dev"
+                    "dev-master": "202107.x-dev"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -55174,29 +55175,28 @@
             ],
             "description": "Development tools [feature]",
             "support": {
-                "source": "https://github.com/spryker-feature/development-tools/tree/202009.0"
+                "source": "https://github.com/spryker-feature/development-tools/tree/master"
             },
-            "time": "2020-09-02T09:34:08+00:00"
+            "time": "2021-04-29T15:05:23+00:00"
         },
         {
             "name": "spryker-sdk/benchmark",
-            "version": "0.1.0",
+            "version": "0.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-sdk/benchmark.git",
-                "reference": "370f85362b11b48ac155e081d6011408df99261e"
+                "reference": "d22b3cda1a4ab8b8e9582636cc9bfa0c49ea33d1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-sdk/benchmark/zipball/370f85362b11b48ac155e081d6011408df99261e",
-                "reference": "370f85362b11b48ac155e081d6011408df99261e",
+                "url": "https://api.github.com/repos/spryker-sdk/benchmark/zipball/d22b3cda1a4ab8b8e9582636cc9bfa0c49ea33d1",
+                "reference": "d22b3cda1a4ab8b8e9582636cc9bfa0c49ea33d1",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2",
                 "phpbench/phpbench": "^0.17.0",
-                "spryker/application": "^3.0.0",
-                "spryker/glue-application": "^1.27.0",
+                "psr/http-message": "^1.0.0",
                 "spryker/guzzle": "^2.1.0",
                 "spryker/kernel": "^3.54.0",
                 "spryker/symfony": "^3.1.0",
@@ -55204,8 +55204,7 @@
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
-                "spryker/config": "*",
-                "spryker/error-handler": "*"
+                "spryker/config": "*"
             },
             "type": "library",
             "extra": {
@@ -55225,9 +55224,9 @@
             "description": "Benchmark module",
             "support": {
                 "issues": "https://github.com/spryker-sdk/benchmark/issues",
-                "source": "https://github.com/spryker-sdk/benchmark/tree/0.1.0"
+                "source": "https://github.com/spryker-sdk/benchmark/tree/0.2.1"
             },
-            "time": "2020-07-31T12:53:37+00:00"
+            "time": "2020-10-09T16:11:57+00:00"
         },
         {
             "name": "spryker-sdk/composer-constrainer",
@@ -56050,42 +56049,6 @@
                 "source": "https://github.com/spryker/web-profiler/tree/1.6.4"
             },
             "time": "2020-10-09T09:26:41+00:00"
-        },
-        {
-            "name": "spryker/zend",
-            "version": "2.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker/Zend.git",
-                "reference": "820b8ecbadc8fb54b9e1e1048a788366f3248183"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker/Zend/zipball/820b8ecbadc8fb54b9e1e1048a788366f3248183",
-                "reference": "820b8ecbadc8fb54b9e1e1048a788366f3248183",
-                "shasum": ""
-            },
-            "require": {
-                "zendframework/zend-config": "^2.5.1 || ^3.1.0",
-                "zendframework/zend-filter": "^2.5.1",
-                "zendframework/zend-servicemanager": "^2.7.4 || ^3.3.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.0.x-dev"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "Zend module",
-            "support": {
-                "source": "https://github.com/spryker/Zend/tree/2.1.0"
-            },
-            "abandoned": true,
-            "time": "2017-08-02T16:31:17+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
@@ -57174,6 +57137,12 @@
             "alias_normalized": "202107.0"
         },
         {
+            "package": "spryker-feature/development-tools",
+            "version": "9999999-dev",
+            "alias": "202107.0",
+            "alias_normalized": "202107.0"
+        },
+        {
             "package": "spryker-feature/file-manager",
             "version": "9999999-dev",
             "alias": "202107.0",
@@ -57795,6 +57764,7 @@
         "spryker-feature/spryker-core-back-office": 20,
         "spryker-feature/state-machine": 20,
         "spryker-feature/tax": 20,
+        "spryker-feature/development-tools": 20,
         "spryker-sdk/integrator": 20,
         "spryker/docker-chromedriver": 20
     },
