@@ -1,0 +1,31 @@
+{% extends molecule('shipment-information', '@SprykerShop:CustomerPage') %}
+
+{% define config = {
+    tag: 'div',
+} %}
+
+{% block class %}{{ parent() }}{% endblock %}
+
+{% block body %}
+    <h4 class="{{ config.name }}__title grid grid--justify grid--middle">
+        <span class="col">{{ data.shipmentExpense.shipment.method.carrierName }}</span>
+
+        {% include atom('icon') with {
+            class: 'col',
+            modifiers: [data.shipmentExpense.shipment.method.carrierName | lower ~ '-logo'],
+            data: {
+                name: data.shipmentExpense.shipment.method.carrierName | lower ~ '-logo',
+            },
+        } only %}
+    </h4>
+
+    <div class="{{ config.name }}__content grid grid--justify">
+        <div class="col">{{ data.shipmentExpense.shipment.method.name }}</div>
+        <div class="col">
+            {% if data.shipmentExpense.shipment.method.storeCurrencyPrice != data.shipmentExpense.sumPrice %}
+                <s class="text-small">{{ data.shipmentExpense.shipment.method.storeCurrencyPrice | money(true, data.shipmentExpense.shipment.method.currencyIsoCode) }}</s>
+            {% endif %}
+            {{ data.shipmentExpense.sumPrice | money(true, data.shipmentExpense.shipment.method.currencyIsoCode) }}
+        </div>
+    </div>
+{% endblock %}

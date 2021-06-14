@@ -7,6 +7,7 @@
 
 {% define data = {
     field: required,
+    fieldClass: '',
     hasIcon: false,
 } %}
 
@@ -14,11 +15,16 @@
     'language': required,
     'parent-id': '.' ~ config.name,
     'config': '{}',
+    'formatted-date-time': '',
 } %}
 
 {% block body %}
     <div class="{{ config.name }}__content">
-        {{ form_row(data.field) }}
+        {{ form_row(data.field, {
+            attr: {
+                class: config.name ~ '__field' ~ (data.fieldClass ? ' ' ~ data.fieldClass),
+            },
+        }) }}
 
         {% if data.hasIcon %}
             {% include atom('icon') with {

@@ -5,9 +5,11 @@
         overflow: hidden;
 
         &__container {
+            display: flex;
             flex-wrap: wrap;
             justify-content: flex-start;
             margin-top: 0;
+            width: 100%;
 
             @include helper-breakpoint-media-min($lg) {
                 justify-content: space-between;
@@ -17,6 +19,10 @@
         &__col {
             display: flex;
             flex-wrap: wrap;
+
+            @include helper-breakpoint-media-min($lg) {
+                flex-wrap: nowrap;
+            }
         }
 
         &__inner-section {

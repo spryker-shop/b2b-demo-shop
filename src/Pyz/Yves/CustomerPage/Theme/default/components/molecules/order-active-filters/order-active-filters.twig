@@ -1,0 +1,42 @@
+{% extends molecule('order-active-filters', '@SprykerShop:CustomerPage') %}
+
+{% block extraClass %}{% endblock %}
+
+{% block title %}
+    {% set titleClass = config.name ~ '__title spacing-right spacing-right--big is-hidden-sm-md' %}
+
+    {{ parent() }}
+{% endblock %}
+
+{% block activeFilter %}
+    {% set activeItemClass = config.name ~ '__item' %}
+    {% set activeItemKeyClass = 'spacing-right spacing-right--small' %}
+
+    {{ parent() }}
+{% endblock %}
+
+{% block activeFilterIcon %}
+    {% include atom('icon') with {
+        class: config.name ~ '__item-icon',
+        modifiers: ['cross'],
+        data: {
+            name: 'cross',
+        },
+    } only %}
+{% endblock %}
+
+{% block resetTrigger %}
+    {% set resetClass = config.name ~ '__reset ' ~ data.jsPrefix ~ 'reset-trigger' %}
+
+    {{ parent() }}
+{% endblock %}
+
+{% block resetIcon %}
+    {% include atom('icon') with {
+        class: config.name ~ '__reset-icon',
+        modifiers: ['cross', 'reset'],
+        data: {
+            name: 'cross',
+        },
+    } only %}
+{% endblock %}

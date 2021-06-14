@@ -6,6 +6,11 @@
 
 {% block containerClass %}container--medium{% endblock %}
 
+{% block header %}
+    {% set cart = data.forms.address.vars.data %}
+    {{ parent() }}
+{% endblock %}
+
 {% block content %}
     {% set companyBusinessUnitShippingAddressWidget = findWidget('CompanyBusinessUnitAddressWidget', ['shippingAddress', data.forms.shipping.vars.data]) %}
     {% set isCompanyBusinessUnitShippingAddressApplicable = companyBusinessUnitShippingAddressWidget and companyBusinessUnitShippingAddressWidget.isApplicable %}
@@ -25,7 +30,7 @@
             submit: {
                 enable: true,
                 text: 'checkout.step.shipment' | trans,
-                class: 'button button--big button--checkout spacing-top spacing-top--big ' ~ jsAddressClass ~ '__form-submit',
+                class: 'button button--big spacing-top spacing-top--big ' ~ jsAddressClass ~ '__form-submit',
             },
         },
         embed: {

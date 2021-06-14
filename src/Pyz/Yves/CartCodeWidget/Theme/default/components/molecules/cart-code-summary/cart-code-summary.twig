@@ -22,10 +22,15 @@
 {% block body %}
     {% if data.voucherDiscounts is not empty %}
         <li class="{{ config.name }}__item">
-            {% include molecule('cart-code-clear-link', 'CartCodeWidget') with {
+            {% include molecule('single-button-form') with {
                 class: 'float-right text-small',
                 data: {
-                    isQuoteEditable: data.isQuoteEditable,
+                    formAction: url('cart-code/code/clear'),
+                    buttonText: 'cart.vouchers.clear-all' | trans,
+                    buttonClass: 'link text-alt',
+                    fieldName: 'cart_code_clear_form[_token]',
+                    fieldValue: csrf_token('cart_code_clear_form'),
+                    iconName: '',
                 },
             } only %}
 
@@ -36,11 +41,15 @@
                         <span class="col col--sm-7 {{ config.name }}__text">{{ voucherDiscount.displayName }}</span>
                         <span class="col col--expand {{ config.name }}__price">- {{ voucherDiscount.amount | money(true, data.currencyIsoCode) }}</span>
 
-                        {% include molecule('cart-code-remove-link', 'CartCodeWidget') with {
+                        {% include molecule('single-button-form') with {
                             class: 'col col--sm-12 text-small',
                             data: {
-                                isQuoteEditable: data.isQuoteEditable,
-                                code: voucherDiscount.voucherCode,
+                                formAction: url('cart-code/code/remove', {'code': voucherDiscount.voucherCode}),
+                                buttonText: 'cart.voucher.remove' | trans,
+                                buttonClass: 'link text-alt',
+                                fieldName: 'cart_code_remove_form[_token]',
+                                fieldValue: csrf_token('cart_code_remove_form'),
+                                iconName: '',
                             },
                         } only %}
                     </li>

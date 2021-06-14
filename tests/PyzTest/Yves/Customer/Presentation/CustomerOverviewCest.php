@@ -35,8 +35,6 @@ class CustomerOverviewCest
      */
     public function testICanOpenOverviewPage(CustomerPresentationTester $i, Scenario $scenario): void
     {
-        $scenario->skip('Once we have Chromium + ChromeDriver or Firefox, enable this test case.');
-
         $i->amLoggedInCustomer();
         $i->amOnPage(CustomerOverviewPage::URL);
         $i->waitForElement('h4', 30);
@@ -54,8 +52,6 @@ class CustomerOverviewCest
      */
     public function testICanGoFromOverviewToProfilePage(CustomerPresentationTester $i, Scenario $scenario): void
     {
-        $scenario->skip('Once we have Chromium + ChromeDriver or Firefox, enable this test case.');
-
         $i->amLoggedInCustomer();
         $i->amOnPage(CustomerOverviewPage::URL);
         $i->waitForElement(CustomerOverviewPage::LINK_TO_PROFILE_PAGE, 30);
@@ -71,8 +67,6 @@ class CustomerOverviewCest
      */
     public function testICanGoFromOverviewToAddressesPage(CustomerPresentationTester $i, Scenario $scenario): void
     {
-        $scenario->skip('Once we have Chromium + ChromeDriver or Firefox, enable this test case.');
-
         $i->amLoggedInCustomer();
         $i->amOnPage(CustomerOverviewPage::URL);
         $i->waitForElement(CustomerOverviewPage::LINK_TO_ADDRESSES_PAGE, 30);
@@ -88,8 +82,6 @@ class CustomerOverviewCest
      */
     public function testICanGoFromOverviewToOrdersPage(CustomerPresentationTester $i, Scenario $scenario): void
     {
-        $scenario->skip('Once we have Chromium + ChromeDriver or Firefox, enable this test case.');
-
         $i->amLoggedInCustomer();
         $i->amOnPage(CustomerOverviewPage::URL);
         $i->click(CustomerOverviewPage::LINK_TO_ORDERS_PAGE);
@@ -104,8 +96,6 @@ class CustomerOverviewCest
      */
     public function testICanGoFromOverviewToNewsletterPage(CustomerPresentationTester $i, Scenario $scenario): void
     {
-        $scenario->skip('Once we have Chromium + ChromeDriver or Firefox, enable this test case.');
-
         $i->amLoggedInCustomer();
         $i->amOnPage(CustomerOverviewPage::URL);
         $i->waitForElement(CustomerOverviewPage::LINK_TO_NEWSLETTER_PAGE, 30);

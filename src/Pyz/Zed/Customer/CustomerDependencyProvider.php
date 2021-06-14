@@ -38,17 +38,17 @@ class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
      *
      * @return \Spryker\Zed\Kernel\Container
      */
-    public function provideCommunicationLayerDependencies(Container $container): Container
+    public function provideCommunicationLayerDependencies(Container $container)
     {
         $container = parent::provideCommunicationLayerDependencies($container);
 
-        $container[self::SALES_FACADE] = function (Container $container) {
+        $container->set(static::SALES_FACADE, function (Container $container) {
             return $container->getLocator()->sales()->facade();
-        };
+        });
 
-        $container[self::NEWSLETTER_FACADE] = function (Container $container) {
+        $container->set(static::NEWSLETTER_FACADE, function (Container $container) {
             return $container->getLocator()->newsletter()->facade();
-        };
+        });
 
         return $container;
     }
@@ -56,7 +56,7 @@ class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
     /**
      * @return \Spryker\Zed\Customer\Dependency\Plugin\CustomerAnonymizerPluginInterface[]
      */
-    protected function getCustomerAnonymizerPlugins(): array
+    protected function getCustomerAnonymizerPlugins()
     {
         return [
             new CustomerUnsubscribePlugin([
@@ -70,7 +70,7 @@ class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
     /**
      * @return \Spryker\Zed\Customer\Dependency\Plugin\CustomerTransferExpanderPluginInterface[]
      */
-    protected function getCustomerTransferExpanderPlugins(): array
+    protected function getCustomerTransferExpanderPlugins()
     {
         return [
             new CustomerTransferUsernameExpanderPlugin(),

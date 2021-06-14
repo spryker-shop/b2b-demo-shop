@@ -11,7 +11,7 @@ use Spryker\Client\Cart\CartDependencyProvider as SprykerCartDependencyProvider;
 use Spryker\Client\DiscountPromotion\Plugin\AddDiscountPromotionCartRequestExpandPlugin;
 use Spryker\Client\PersistentCart\Plugin\DatabaseQuoteStorageStrategy;
 use Spryker\Client\ProductBundle\Plugin\Cart\BundleProductQuoteItemFinderPlugin;
-use Spryker\Client\ProductBundle\Plugin\Cart\ItemCountPlugin;
+use Spryker\Client\ProductBundle\Plugin\Cart\ProductBundleItemCountQuantityPlugin;
 use Spryker\Client\ProductBundle\Plugin\Cart\RemoveBundleChangeRequestExpanderPlugin;
 use Spryker\Client\ProductMeasurementUnit\Plugin\Cart\SingleItemQuantitySalesUnitCartChangeRequestExpanderPlugin;
 use Spryker\Client\ProductPackagingUnit\Plugin\CartExtension\ProductPackagingUnitAmountCartChangeRequestExpanderPlugin;
@@ -23,7 +23,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
      */
     protected function getItemCountPlugin()
     {
-        return new ItemCountPlugin();
+        return new ProductBundleItemCountQuantityPlugin();
     }
 
     /**

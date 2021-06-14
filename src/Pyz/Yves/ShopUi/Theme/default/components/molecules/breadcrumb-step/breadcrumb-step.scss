@@ -1,7 +1,7 @@
 @mixin shop-ui-breadcrumb-step($name: '.breadcrumb-step') {
     #{$name} {
         display: inline-block;
-        font: fw(500) rem(13)/rem(16) $setting-font-family;
+        font: fw(500) rem(13) / rem(16) $setting-font-family;
 
         &--progress-step,
         &--progress-complete {
@@ -89,6 +89,10 @@
             color: $setting-color-gray-4;
         }
 
+        &__link {
+            cursor: pointer;
+        }
+
         &__link,
         &--disabled:not(&--active) {
             @include helper-effect-transition(color);
@@ -139,6 +143,10 @@
             @include helper-breakpoint-media-min($lg) {
                 flex-direction: row;
             }
+        }
+
+        &__form {
+            display: inline-block;
         }
 
         @content;

@@ -1,5 +1,7 @@
 import Component from 'ShopUi/models/component';
-import AutocompleteForm, {Events as AutocompleteEvents} from 'ShopUi/components/molecules/autocomplete-form/autocomplete-form';
+import AutocompleteForm, {
+    Events as AutocompleteEvents,
+} from 'ShopUi/components/molecules/autocomplete-form/autocomplete-form';
 import AjaxProvider from 'ShopUi/components/molecules/ajax-provider/ajax-provider';
 import debounce from 'lodash-es/debounce';
 
@@ -20,12 +22,18 @@ export default class QuickOrderRow extends Component {
     }
 
     protected registerQuantityInput(): void {
-        this.incrementButton = <HTMLButtonElement>(this.getElementsByClassName(`${this.jsName}__button-increment`)[0] ||
-            this.getElementsByClassName(`${this.jsName}-partial__button-increment`)[0]);
-        this.decrementButton = <HTMLButtonElement>(this.getElementsByClassName(`${this.jsName}__button-decrement`)[0] ||
-            this.getElementsByClassName(`${this.jsName}-partial__button-decrement`)[0]);
-        this.quantityInput = <HTMLInputElement>(this.getElementsByClassName(`${this.jsName}__quantity`)[0] ||
-            this.getElementsByClassName(`${this.jsName}-partial__quantity`)[0]);
+        this.incrementButton = <HTMLButtonElement>(
+            (this.getElementsByClassName(`${this.jsName}__button-increment`)[0] ||
+                this.getElementsByClassName(`${this.jsName}-partial__button-increment`)[0])
+        );
+        this.decrementButton = <HTMLButtonElement>(
+            (this.getElementsByClassName(`${this.jsName}__button-decrement`)[0] ||
+                this.getElementsByClassName(`${this.jsName}-partial__button-decrement`)[0])
+        );
+        this.quantityInput = <HTMLInputElement>(
+            (this.getElementsByClassName(`${this.jsName}__quantity`)[0] ||
+                this.getElementsByClassName(`${this.jsName}-partial__quantity`)[0])
+        );
     }
 
     protected mapEvents(): void {
@@ -37,9 +45,12 @@ export default class QuickOrderRow extends Component {
     protected mapQuantityInputChange(): void {
         this.incrementButton.addEventListener('click', (event: Event) => this.incrementValue(event));
         this.decrementButton.addEventListener('click', (event: Event) => this.decrementValue(event));
-        this.quantityInput.addEventListener('input', debounce(() => {
-            this.onQuantityChange();
-        }, this.autocompleteInput.debounceDelay));
+        this.quantityInput.addEventListener(
+            'input',
+            debounce(() => {
+                this.onQuantityChange();
+            }, this.autocompleteInput.debounceDelay),
+        );
     }
 
     protected onAutocompleteSet(): void {

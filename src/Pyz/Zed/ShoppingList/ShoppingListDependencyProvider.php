@@ -9,15 +9,16 @@ namespace Pyz\Zed\ShoppingList;
 
 use Spryker\Zed\ProductBundle\Communication\Plugin\ShoppingList\ReplaceBundledQuoteItemsPreConvertPlugin;
 use Spryker\Zed\ProductDiscontinued\Communication\Plugin\ShoppingList\ProductDiscontinuedAddItemPreCheckPlugin;
+use Spryker\Zed\ShoppingList\Communication\Plugin\ShoppingListItemProductConcreteActiveAddItemPreCheckPlugin;
 use Spryker\Zed\ShoppingList\ShoppingListDependencyProvider as SprykerShoppingListDependencyProvider;
 use Spryker\Zed\ShoppingListNote\Communication\Plugin\ItemCartNoteToShoppingListItemNoteMapperPlugin;
+use Spryker\Zed\ShoppingListNote\Communication\Plugin\ShoppingListItemCollectionNoteExpanderPlugin;
 use Spryker\Zed\ShoppingListNote\Communication\Plugin\ShoppingListItemNoteBeforeDeletePlugin;
-use Spryker\Zed\ShoppingListNote\Communication\Plugin\ShoppingListItemNoteExpanderPlugin;
-use Spryker\Zed\ShoppingListNote\Communication\Plugin\ShoppingListItemNotePostSavePlugin;
+use Spryker\Zed\ShoppingListNote\Communication\Plugin\ShoppingListItemNoteBulkPostSavePlugin;
 use Spryker\Zed\ShoppingListProductOptionConnector\Communication\Plugin\ShoppingList\CartItemProductOptionToShoppingListItemProductOptionMapperPlugin;
+use Spryker\Zed\ShoppingListProductOptionConnector\Communication\Plugin\ShoppingList\ShoppingListItemCollectionProductOptionExpanderPlugin;
 use Spryker\Zed\ShoppingListProductOptionConnector\Communication\Plugin\ShoppingList\ShoppingListItemProductOptionBeforeDeletePlugin;
-use Spryker\Zed\ShoppingListProductOptionConnector\Communication\Plugin\ShoppingList\ShoppingListItemProductOptionExpanderPlugin;
-use Spryker\Zed\ShoppingListProductOptionConnector\Communication\Plugin\ShoppingList\ShoppingListItemProductOptionPostSavePlugin;
+use Spryker\Zed\ShoppingListProductOptionConnector\Communication\Plugin\ShoppingList\ShoppingListItemProductOptionBulkPostSavePlugin;
 
 class ShoppingListDependencyProvider extends SprykerShoppingListDependencyProvider
 {
@@ -28,6 +29,7 @@ class ShoppingListDependencyProvider extends SprykerShoppingListDependencyProvid
     {
         return [
             new ProductDiscontinuedAddItemPreCheckPlugin(), #ProductDiscontinuedFeature
+            new ShoppingListItemProductConcreteActiveAddItemPreCheckPlugin(),
         ];
     }
 
@@ -42,13 +44,13 @@ class ShoppingListDependencyProvider extends SprykerShoppingListDependencyProvid
     }
 
     /**
-     * @return \Spryker\Zed\ShoppingListExtension\Dependency\Plugin\ShoppingListItemPostSavePluginInterface[]
+     * @return \Spryker\Zed\ShoppingListExtension\Dependency\Plugin\ShoppingListItemBulkPostSavePluginInterface[]
      */
-    protected function getShoppingListItemPostSavePlugins(): array
+    protected function getShoppingListItemBulkPostSavePlugins(): array
     {
         return [
-            new ShoppingListItemNotePostSavePlugin(), #ShoppingListNoteFeature
-            new ShoppingListItemProductOptionPostSavePlugin(),
+            new ShoppingListItemNoteBulkPostSavePlugin(), #ShoppingListNoteFeature
+            new ShoppingListItemProductOptionBulkPostSavePlugin(),
         ];
     }
 
@@ -64,13 +66,13 @@ class ShoppingListDependencyProvider extends SprykerShoppingListDependencyProvid
     }
 
     /**
-     * @return \Spryker\Zed\ShoppingListExtension\Dependency\Plugin\ItemExpanderPluginInterface[]
+     * @return \Spryker\Zed\ShoppingListExtension\Dependency\Plugin\ShoppingListItemCollectionExpanderPluginInterface[]
      */
-    protected function getItemExpanderPlugins(): array
+    protected function getItemCollectionExpanderPlugins(): array
     {
         return [
-            new ShoppingListItemNoteExpanderPlugin(), #ShoppingListNoteFeature
-            new ShoppingListItemProductOptionExpanderPlugin(),
+            new ShoppingListItemCollectionNoteExpanderPlugin(),
+            new ShoppingListItemCollectionProductOptionExpanderPlugin(),
         ];
     }
 

@@ -31,7 +31,7 @@ class AvailabilityAddToCartCest
      */
     public function testAddToCartWhenBiggerQuantityIsUsed(AvailabilityPresentationTester $i, Scenario $scenario): void
     {
-        $scenario->skip('Once we have Chromium + ChromeDriver or Firefox, enable this test case.');
+        $scenario->skip('This test needs to be refactored since we can not use add to cart URL directly.');
 
         $i->wantTo('Open product page, and add item to cart with larger quantity than available');
         $i->expectTo('Display error message');
@@ -41,7 +41,7 @@ class AvailabilityAddToCartCest
         $i->amOnPage(AvailabilityPresentationTester::PRODUCT_WITH_LIMITED_AVAILABILITY_ADD_TO_CART_URL);
 
         $i->amOnPage(CartListPage::CART_URL);
-        $i->see(CartListPage::CART_HEADER);
+        $i->seeInTitle(CartListPage::CART_HEADER);
 
         $i->waitForElement(CartListPage::FIRST_CART_ITEM_QUANTITY_INPUT_XPATH, 30);
         $i->fillField(CartListPage::FIRST_CART_ITEM_QUANTITY_INPUT_XPATH, 50);

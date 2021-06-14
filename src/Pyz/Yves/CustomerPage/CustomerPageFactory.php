@@ -11,7 +11,7 @@ use Generated\Shared\Transfer\CustomerTransfer;
 use Pyz\Yves\CustomerPage\Security\Customer;
 use Spryker\Client\Session\SessionClientInterface;
 use SprykerShop\Yves\CustomerPage\CustomerPageFactory as SprykerCustomerPageFactory;
-use SprykerShop\Yves\CustomerPage\Plugin\Provider\CustomerSecurityServiceProvider;
+use SprykerShop\Yves\CustomerPage\Plugin\Security\CustomerPageSecurityPlugin;
 
 class CustomerPageFactory extends SprykerCustomerPageFactory
 {
@@ -26,7 +26,7 @@ class CustomerPageFactory extends SprykerCustomerPageFactory
             $customerTransfer,
             $customerTransfer->getEmail(),
             $customerTransfer->getPassword(),
-            [CustomerSecurityServiceProvider::ROLE_USER]
+            [CustomerPageSecurityPlugin::ROLE_NAME_USER]
         );
     }
 

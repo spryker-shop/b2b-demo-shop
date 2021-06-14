@@ -1,0 +1,41 @@
+{% extends view('return-list', '@SprykerShop:SalesReturnPage') %}
+
+{% block salesReturnContentTitle %}
+    {% include molecule('action-bar') with {
+        modifiers: ['first'],
+        data: {
+            title: 'return_page.list.title' | trans,
+            actions: [],
+        },
+    } only %}
+{% endblock %}
+
+{% block salesReturnContent %}
+    {% set contentWrapperClass = '' %}
+
+    {{ parent() }}
+{% endblock %}
+
+{% block salesReturnTableUnderline %}{% endblock %}
+
+{% block returnActionsMenu %}
+    {% include molecule('table-action-list') with {
+        data: {
+            items: [
+                {
+                    url: path('return/view', { returnReference: (return.returnReference)}),
+                    icon: 'eye',
+                    title: 'return_page.return.view_return',
+                    iconModifier: 'big',
+                },
+                {
+                    url: path('return/slip-print', { returnReference: (return.returnReference)}),
+                    icon: 'print',
+                    title: 'return_page.return.print_return',
+                    iconModifier: 'big',
+                    target: '_blank',
+                },
+            ],
+        },
+    } only %}
+{% endblock %}

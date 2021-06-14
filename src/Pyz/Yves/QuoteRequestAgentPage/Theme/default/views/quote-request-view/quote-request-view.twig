@@ -1,37 +1,19 @@
-{% extends template('page-layout-quote-request', 'QuoteRequestAgentPage') %}
-
-{% define data = {
-    quoteRequests: _view.quoteRequests,
-
-    pagination: {
-        parameters: {},
-        currentPage: _view.pagination.page,
-        paginationPath: 'agent/quote-request',
-        maxPage: _view.pagination.lastPage,
-        showAlwaysFirstAndLast: true,
-    },
-
-    title: 'quote_request_widget.request_for_quote.list.title' | trans,
-} %}
-
-{% block title %}{% endblock %}
+{% extends view('quote-request-view', '@SprykerShop:QuoteRequestAgentPage') %}
 
 {% block customerContent %}
-    {% if data.title %}
-        <h3 class="spacing-bottom spacing-bottom--bigger grid grid--justify">
-            <span class="col">{{ data.title }}</span>
-            <a class="col button button--hollow button--mobile-tight" href="{{ url('agent/quote-request/create') }}">
-                {% include atom('icon') with {
-                    modifiers: ['plus-small'],
-                    class: 'spacing-right spacing-right--small',
-                    data: {
-                        name: 'plus',
-                    },
-                } only %}
-                {{ 'quote_request_agent_widget.create_new_request' | trans }}
-            </a>
-        </h3>
-    {% endif %}
+    {% include molecule('action-bar') with {
+        data: {
+            title: data.title,
+            actions: [
+                {
+                    title: 'quote_request_agent_widget.create_new_request' | trans,
+                    url: url('agent/quote-request/create'),
+                    primary: false,
+                    icon: 'plus',
+                },
+            ],
+        },
+    } only %}
 
     {% if data.quoteRequests %}
         {% include molecule('quote-request-table', 'QuoteRequestAgentPage') with {

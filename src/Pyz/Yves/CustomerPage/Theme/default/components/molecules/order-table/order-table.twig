@@ -1,41 +1,146 @@
-{% extends model('component') %}
-
-{% define config = {
-    name: 'order-table',
-} %}
+{% extends molecule('order-table', '@SprykerShop:CustomerPage') %}
 
 {% define data = {
-    orders: required,
+    requestUri: app.request.requestUri,
 } %}
 
+{% block extraClass %}{% endblock %}
+
+{% block customReorderAction %}
+    {% widget 'CustomerReorderFormWidget' args [order] only %}
+        {% block body %}
+            {% embed molecule('remote-form-submit') with {
+                class: 'table-action-list__item',
+                data: {
+                    label: 'customer.order.reorder' | trans,
+                    buttonClass: 'button--expand-sm-lg link',
+                },
+                attributes: {
+                    'form-name': 'customerReorderWidgetForm_' ~ data.order.idSalesOrder,
+                    'form-action': path('customer/order/reorder', {'idSalesOrder': data.order.idSalesOrder}),
+                    'field-id': 'customerReorderWidgetForm__token_' ~ data.order.idSalesOrder,
+                    'field-name': 'customerReorderWidgetForm[_token]',
+                    'field-value': csrf_token('customerReorderWidgetForm'),
+                },
+            } only %}
+                {% block innerSubmitActionContent %}
+                    {% include molecule('table-action-span') with {
+                        class: 'link link--alt link--action',
+                        data: {
+                            icon: 'cart',
+                            title: data.label,
+                            iconModifiers: ['big'],
+                        },
+                    } only %}
+                {% endblock %}
+            {% endembed %}
+        {% endblock %}
+    {% endwidget %}
+{% endblock %}
+
+{% block customOrderCancelAction %}
+    {% widget 'OrderCancelButtonWidget' args [order, data.requestUri] only %}
+        {% block formContent %}
+            {% embed molecule('remote-form-submit') with {
+                class: 'table-action-list__item',
+                data: {
+                    label: 'order_cancel_widget.cancel_order' | trans,
+                    buttonClass: 'button--expand-sm-lg link',
+                },
+                attributes: {
+                    'form-name': 'orderCancelForm_' ~ data.order.idSalesOrder,
+                    'form-action': path('order/cancel', {'id-sales-order': data.order.idSalesOrder, 'return-url': data.returnUrl}),
+                    'field-id': 'orderCancelForm__token' ~ data.order.idSalesOrder,
+                    'field-name': 'orderCancelForm[_token]',
+                    'field-value': csrf_token('orderCancelForm'),
+                },
+            } only %}
+                {% block innerSubmitActionContent %}
+                    {% include molecule('table-action-span') with {
+                        class: 'link link--alt link--action',
+                        data: {
+                            icon: 'cross',
+                            title: data.label,
+                        },
+                    } only %}
+                {% endblock %}
+            {% endembed %}
+        {% endblock %}
+    {% endwidget %}
+{% endblock %}
+
 {% block body %}
+    {% set isSearchItemsVisible = data.isOrderSearchEnabled and data.isOrderSearchOrderItemsVisible %}
+    {% set isCustomerColumnsVisible = data.isOrderSearchEnabled and isCustomerDataColumnsVisible %}
+
     {% if data.orders is empty %}
         <p>{{ 'customer.account.no_order' | trans }}</p>
     {% else %}
-        <table class="table table--expand table--responsive">
+        <table class="table table--expand table--responsive table--medium-indent">
             <thead>
                 <tr>
-                    <th>{{ 'customer.order.order_id' | trans }}</th>
-                    <th>{{ 'customer.order.date' | trans }}</th>
-                    <th colspan="2">{{ 'customer.order.total' | trans }}</th>
+                    <th {{ _self.sortingAttributes('orderReference', data.orderSearchForm, data.jsPrefix, config.name ~ '__sorting-title') }}>
+                        {{ 'customer.order.reference' | trans }}
+                        {{ _self.sortingIcon('orderReference', data.orderSearchForm, config.name ~ '__sorting-icon') }}
+                    </th>
+                    <th {{ _self.sortingAttributes('date', data.orderSearchForm, data.jsPrefix, config.name ~ '__sorting-title') }}>
+                        {{ 'customer.order.date' | trans }}
+                        {{ _self.sortingIcon('date', data.orderSearchForm, config.name ~ '__sorting-icon') }}
+                    </th>
+                    {% if isCustomerColumnsVisible %}
+                        <th {{ _self.sortingAttributes('customerName', data.orderSearchForm, data.jsPrefix, config.name ~ '__sorting-title') }}>
+                            {{ 'customer.order.company_user' | trans }}
+                            {{ _self.sortingIcon('customerName', data.orderSearchForm, config.name ~ '__sorting-icon') }}
+                        </th>
+                        <th {{ _self.sortingAttributes('customerEmail', data.orderSearchForm, data.jsPrefix, config.name ~ '__sorting-title') }}>
+                            {{ 'customer.order.email' | trans }}
+                            {{ _self.sortingIcon('customerEmail', data.orderSearchForm, config.name ~ '__sorting-icon') }}
+                        </th>
+                    {% endif %}
+                    {% if isSearchItemsVisible %}
+                        <th>{{ 'customer.order.number_of_items' | trans }}</th>
+                    {% endif %}
+                    <th>{{ 'customer.order.total' | trans }}</th>
+                    <th>{{ 'customer.order.items_state' | trans }}</th>
+                    <th>{{ 'customer.table.actions' | trans }}</th>
                 </tr>
             </thead>
             <tbody>
+                {% set searchItemsActiveRowClass = isSearchItemsVisible ? config.name ~ '__row-active' %}
+
                 {% for order in data.orders %}
-                    <tr>
+                    <tr class="{{ searchItemsActiveRowClass }}">
                         <td class="transform-cell spacing-top spacing-top--inner spacing-top--big" data-content="{{ 'customer.order.order_id' | trans }}">
                             {{- order.orderReference -}}
                         </td>
                         <td class="transform-cell" data-content="{{ 'customer.order.date' | trans }}">
                             {{- date(order.createdAt) | formatDateTime -}}
                         </td>
+                        {% if isCustomerColumnsVisible %}
+                            <td class="transform-cell" data-content="{{ 'customer.order.company_user' | trans }}">{{ order.firstName ~ ' ' ~ order.lastName }}</td>
+                            <td class="transform-cell" data-content="{{ 'customer.order.email' | trans }}">{{ order.email }}</td>
+                        {% endif %}
+                        {% if isSearchItemsVisible %}
+                            <td class="transform-cell" data-content="{{ 'customer.order.number_of_items' | trans }}">
+                                {% set itemCount = order.items.count %}
+                                {% set label = (itemCount == 1) ? 'customer.order.item' : 'customer.order.items' %}
+
+                                <span class="badge badge--order">
+                                    {{ order.items.count }}&nbsp;{{ label | trans }}
+                                </span>
+                            </td>
+                        {% endif %}
                         <td class="transform-cell spacing-bottom spacing-bottom--inner spacing-bottom--big" data-content="{{ 'customer.order.total' | trans }}">
                             <strong>
                                 {{- order.totals.grandTotal | default(0) | money(true, order.currencyIsoCode) -}}
                             </strong>
                         </td>
-
-                        <td class="table__actions grid spacing spacing--inner spacing--reset">
+                        <td>
+                            {% block stateWrapper %}
+                                {{ parent() }}
+                            {% endblock %}
+                        </td>
+                        <td class="spacing-x spacing-x--inner spacing-x--reset">
                             {% include molecule('table-action-list') with {
                                 data: {
                                     items: [
@@ -46,18 +151,89 @@
                                             iconModifier: 'big',
                                         },
                                         {
-                                            url: path('customer/order/reorder', { 'idSalesOrder': order.idSalesOrder }),
-                                            icon: 'cart',
-                                            title: 'customer.order.reorder',
+                                            customAction: block('customReorderAction'),
+                                        },
+                                        {
+                                            url: path('return/create', { orderReference: order.orderReference }),
+                                            icon: 'return-arrow',
+                                            title: 'return_page.button.create_return',
                                             iconModifier: 'big',
+                                        },
+                                        {
+                                            customAction: block('customOrderCancelAction'),
                                         },
                                     ],
                                 },
                             } only %}
                         </td>
                     </tr>
+                    {% if isSearchItemsVisible %}
+                        <tr class="table__row table__row--spaceless">
+                            <td colspan="10">
+                                {% include molecule('order-table-products', 'CustomerPage') with {
+                                    data: {
+                                        items: order.items,
+                                        priceMode: order.priceMode,
+                                    },
+                                } only %}
+                            </td>
+                        </tr>
+                    {% endif %}
                 {% endfor %}
             </tbody>
         </table>
     {% endif %}
+
+    {% if data.orderSearchForm %}
+        {{ form_row(data.orderSearchForm.orderBy, {
+            attr: {
+                class: data.jsPrefix ~ 'orderBy-target',
+            }})
+        }}
+
+        {{ form_row(data.orderSearchForm.orderDirection, {
+            attr: {
+                class: data.jsPrefix ~ 'orderDirection-target',
+            }})
+        }}
+
+        {% include molecule('form-sort-submitter', 'CustomerPage') with {
+            attributes: {
+                'form-class-name': data.jsPrefix ~ 'form',
+                'trigger-class-name': data.jsPrefix ~ 'sort-trigger',
+                'target-sort-by-class-name': data.jsPrefix ~ 'orderBy-target',
+                'target-sort-direction-class-name': data.jsPrefix ~ 'orderDirection-target',
+            },
+        } only %}
+    {% endif %}
+
+    {%- macro sortingAttributes(orderByValue, orderSearchForm, jsPrefix, class='') -%}
+        {% if orderSearchForm %}
+            {% set orderDirection = orderSearchForm.orderDirection.vars.value %}
+
+            class="{{ class }} {{ jsPrefix }}sort-trigger"
+            sort-by="{{ orderByValue }}"
+            sort-direction="{{ (orderDirection == 'ASC') ? 'DESC' : 'ASC' }}"
+        {% endif %}
+    {%- endmacro -%}
+
+    {%- macro sortingIcon(orderByValue, orderSearchForm, class='') -%}
+        {% if orderSearchForm %}
+            {% set orderDirection = orderSearchForm.orderDirection.vars.value %}
+            {% set orderBy = orderSearchForm.orderBy.vars.value %}
+            {% set iconName = 'sort-none' %}
+
+            {% if orderBy == orderByValue %}
+                {% set iconName = (orderDirection == 'ASC') ? 'sort-asc' : 'sort-desc' %}
+            {% endif %}
+
+            {% include atom('icon') with {
+                modifiers: ['small'],
+                class: class,
+                data: {
+                    name: iconName,
+                },
+            } only %}
+        {% endif %}
+    {%- endmacro -%}
 {% endblock %}

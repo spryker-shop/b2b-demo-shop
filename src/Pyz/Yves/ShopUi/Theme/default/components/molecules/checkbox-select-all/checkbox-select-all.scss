@@ -1,0 +1,58 @@
+@import '../../atoms/checkbox/checkbox';
+
+@mixin shop-ui-checkbox-select-all($name: '.checkbox-select-all') {
+    @include shop-ui-checkbox($name) {
+        &__input {
+            & ~ #{$name}__box {
+                #{$name}__minus {
+                    @include helper-visibility-invisible;
+                    color: $setting-color-white;
+                    vertical-align: baseline;
+                }
+            }
+
+            &:checked ~ {
+                #{$name}__box {
+                    background-color: $setting-color-main;
+                    border-color: $setting-color-main;
+
+                    #{$name}__check {
+                        @include helper-visibility-visible;
+                    }
+
+                    #{$name}__minus {
+                        display: none;
+                    }
+                }
+            }
+
+            &--item-selected {
+                & ~ #{$name}__box {
+                    background-color: $setting-color-main;
+                    border-color: $setting-color-main;
+
+                    #{$name}__minus {
+                        @include helper-visibility-visible;
+                    }
+
+                    #{$name}__check {
+                        display: none;
+                    }
+                }
+            }
+        }
+
+        &--bordered {
+            border-bottom: rem(1) solid $setting-color-gray-7;
+            border-top: rem(1) solid $setting-color-gray-7;
+        }
+
+        &--expand {
+            width: 100%;
+        }
+    }
+
+    @content;
+}
+
+@include shop-ui-checkbox-select-all();
