@@ -1,72 +1,60 @@
-{% extends model('component') %}
-
-{% define config = {
-    name: 'packaging-unit-cart',
-    tag: 'ul'
-} %}
+{% extends molecule('packaging-unit-cart', '@SprykerShop:ProductPackagingUnitWidget') %}
 
 {% define data = {
-    amount: required,
-    quantity: required,
     quantitySalesUnit: required,
-    quantityConversion: required,
-    quantityProductMeasurementUnit: required,
     amountSalesUnit: required,
-    amountConversion: required,
-    amountProductMeasurementUnit: required
+    hasSubQuantity: false,
+    hasAmountPerQuantity: false,
 } %}
 
 {% block body %}
-    {% set salesUnitName = data.quantityProductMeasurementUnit.name | default('') %}
-    {% set leadSalesUnitName = data.amountProductMeasurementUnit.name | default('') %}
-    {% set amountPerQuantity = data.amount / data.quantity %}
+    {% set amountPerQuantity = data.amount.divide(data.quantity, data.countOfDecimalsInAmount).trim %}
+    {% set salesUnitName = data.quantitySalesUnit.productMeasurementUnit.name | default %}
+    {% set quantitySalesUnit = data.hasSubQuantity and salesUnitName is not empty and data.amount is empty %}
 
-    <li class="{{ config.name }}__item">
-        <div class="grid grid--middle grid--gap">
-            <div class="col col--sm-12 col--md-2">{{ 'packaging_units.cart.quantity' | trans }}: </div>
-            <div class="col">
-                {% include molecule('quantity-counter') with {
-                    modifiers: ['cart'],
+    {% if data.quantity is not empty %}
+        <li class="spacing-top">
+            {{ 'packaging_units.cart.quantity' | trans }}: {{ data.quantity }}
+
+            {% if quantitySalesUnit %}
+                {% include atom('quantity-option') with {
+                    class: 'spacing-left',
                     data: {
-                        isDisabled: true
+                        value: data.quantity,
+                        precision: data.quantitySalesUnit.conversion,
+                        optionName: salesUnitName | trans,
                     },
-                    attributes: {
-                        value: data.quantity
-                    }
                 } only %}
-            </div>
-            {% include atom('quantity-option') with {
-                class: 'col col--sm-12 col--md-auto',
-                data: {
-                    value: data.quantity,
-                    precision: data.quantityConversion,
-                    optionName: salesUnitName | trans
-                }
-            } only %}
-        </div>
-    </li>
-    <li class="{{ config.name }}__item">
-        <div class="grid grid--middle grid--gap">
-            <div class="col col--sm-12 col--md-2">{{ 'packaging_units.cart.amount' | trans }}: </div>
-            <div class="col">
-                {% include molecule('quantity-counter') with {
-                    modifiers: ['cart'],
+            {% endif %}
+
+            {% if data.hasSubQuantity and data.amount is not empty %}
+                {% set amountSalesUnitName = data.amountSalesUnit.productMeasurementUnit.name | default %}
+
+                {% embed atom('quantity-option') with {
+                    class: 'spacing-left',
                     data: {
-                        isDisabled: true
+                        value: data.amount,
+                        precision: data.quantity,
+                        optionName: amountSalesUnitName | trans,
                     },
-                    attributes: {
-                        value: data.amount
-                    }
+                    embed: {
+                        countOfDecimalsInAmount: data.countOfDecimalsInAmount,
+                    },
                 } only %}
-            </div>
-            {% include atom('quantity-option') with {
-                class: 'col col--sm-12 col--md-auto',
-                data: {
-                    value: amountPerQuantity,
-                    precision: data.amountConversion,
-                    optionName: leadSalesUnitName | trans
-                }
-            } only %}
-        </div>
-    </li>
-{% endblock body %}
+                    {% block body %}
+                        {{ 'quantity_option.amount' | trans({
+                            '%value%': data.value.divide(data.precision, embed.countOfDecimalsInAmount).trim,
+                            '%name%': data.optionName,
+                        }) }}
+                    {% endblock %}
+                {% endembed %}
+            {% endif %}
+        </li>
+    {% endif %}
+
+    {% if data.amount is not empty %}
+        <li class="spacing-top">
+            {{ 'packaging_units.cart.amount' | trans }}: {{ data.hasAmountPerQuantity ? amountPerQuantity : data.amount }}
+        </li>
+    {% endif %}
+{% endblock %}

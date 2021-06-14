@@ -1,0 +1,9 @@
+@mixin quote-request-page-quote-request-information($name: '.quote-request-information') {
+    #{$name} {
+        font-size: rem(14);
+        font-weight: fw(medium);
+        @content;
+    }
+}
+
+@include quote-request-page-quote-request-information();

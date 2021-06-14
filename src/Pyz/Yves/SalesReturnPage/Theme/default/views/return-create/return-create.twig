@@ -1,0 +1,43 @@
+{% extends view('return-create', '@SprykerShop:SalesReturnPage') %}
+
+{% block salesReturnContent %}
+    {% set contentWrapperClass = '' %}
+
+    {{ parent() }}
+{% endblock %}
+
+{% block salesReturnContentHeader %}
+    {% block salesReturnPageTitle %}
+        {% embed molecule('action-bar') with {
+            modifiers: ['first'],
+            data: {
+                title: 'return_page.return.title' | trans,
+                actions: [
+                    {
+                        title: 'general.back.button' | trans,
+                        url: path('customer/order/details', {'id': data.order.idSalesOrder}),
+                        modifiers: ['hollow'],
+                        icon: '',
+                    },
+                ],
+            },
+        } only %}
+            {% block actions %}
+                {{ parent() }}
+                <button class="action-bar__action button js-return-create__target-state-toggler" disabled>
+                    {{ 'return_page.button_text' | trans }}
+                </button>
+            {% endblock %}
+        {% endembed %}
+    {% endblock %}
+{% endblock %}
+
+{% block salesReturnOrderInfo %}
+    {% include molecule('order-info', 'CustomerPage') ignore missing with {
+        data: {
+            id: data.order.orderReference,
+            date: data.order.createdAt | formatDateTime,
+            order: data.order,
+        },
+    } only %}
+{% endblock %}

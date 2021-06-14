@@ -1,33 +1,27 @@
-{% extends model('component') %}
+{% extends molecule('quote-request-history-select', '@SprykerShop:QuoteRequestPage') %}
 
-{% define config = {
-    name: 'quote-request-history-select',
-    tag: 'quote-request-history-select',
-} %}
+{% block value %}
+    {% set valueClass = 'col col--expand spacing-left' %}
+    {{ parent() }}
+{% endblock %}
 
-{% define data = {
-    quoteRequestVersionReferences: required,
-    version: required,
-} %}
-
-{% block body %}
-    <span class="col col--sm-4 col--md-2 col--xl-4">{{ 'quote_request_page.quote_request.labels.history' | trans }}:</span>
-    <span class="col col--sm-8 col--md-10 col--xl-8">
-        {% embed molecule('custom-select') with {
-            modifiers: ['light'],
-            attributes: {
-                name: 'quote-request-versions',
-            },
-            embed: {
-                versionReferences: data.quoteRequestVersionReferences,
-                currentVersionReference: data.version ? data.version.versionReference : null,
-            },
-        } only %}
-            {% block options %}
-                {% for versionReference in embed.versionReferences %}
-                    <option value="{{ versionReference }}" {{ (versionReference == embed.currentVersionReference) ? 'selected' }}>{{ versionReference }}</option>
-                {% endfor %}
-            {% endblock %}
-        {% endembed %}
-    </span>
+{% block select %}
+    {% embed molecule('custom-select') with {
+        modifiers: ['light', 'full-width'],
+        attributes: {
+            name: 'quote-request-versions',
+        },
+        embed: {
+            versionReferences: data.quoteRequestVersionReferences,
+            currentVersionReference: data.version ? data.version.versionReference : null,
+            selectJsName: config.jsName ~ '__select',
+        },
+    } only %}
+        {% block selectClass %}{{ parent() }} {{ embed.selectJsName }}{% endblock %}
+        {% block options %}
+            {% for versionReference in embed.versionReferences %}
+                <option value="{{ versionReference }}" {{ (versionReference == embed.currentVersionReference) ? 'selected' }}>{{ versionReference }}</option>
+            {% endfor %}
+        {% endblock %}
+    {% endembed %}
 {% endblock %}

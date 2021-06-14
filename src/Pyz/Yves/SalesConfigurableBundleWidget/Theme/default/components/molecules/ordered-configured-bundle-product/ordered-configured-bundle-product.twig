@@ -1,25 +1,21 @@
 {% extends molecule('ordered-configured-bundle-product', '@SprykerShop:SalesConfigurableBundleWidget') %}
 
-{% define data = {
-    targetClass: '',
-} %}
-
 {% block imageContainer %}
     <div class="grid col col--sm-12 col--lg-3">
         <div class="col col--middle">
             {% widget 'CustomerReorderItemCheckboxWidget' args [data.product] with {
                 data: {
-                    checkboxClasses: 'js-customer-reorder-form__selection ' ~ data.targetClass,
+                    checkboxClasses: 'js-customer-reorder-form__selection',
                 },
             } only %}{% endwidget %}
         </div>
         <div class="col col--expand col--middle">
             {% block image %}
-                {% include atom('thumbnail') with {
-                    modifiers: ['small', 'item'],
-                    attributes: {
-                        src: data.image,
-                        alt: data.name,
+                {% include molecule('lazy-image') with {
+                    modifiers: ['thumbnail', 'small', 'with-overlay', 'configured-bundle'],
+                    data: {
+                        imageSrc: data.image,
+                        imageTitle: data.name,
                     },
                 } only %}
             {% endblock %}
@@ -35,15 +31,19 @@
     </div>
 {% endblock %}
 
+{% set generalInformationClass = 'col col--sm-12 col--lg-5 spacing-x spacing-x--inner' %}
+
 {% block generalInformation %}
-    <div class="col col--sm-12 col--lg-5 spacing-x spacing-x--inner">
-        {{ parent() }}
+    <div class="{{ generalInformationClass }}">
+        {% block name -%}
+            <h6 class="{{ config.name }}__item-title">{{ data.name }}</h6>
+        {%- endblock %}
+
+        {% block sku -%}
+            {{ parent() }}
+        {%- endblock %}
     </div>
 {% endblock %}
-
-{% block name -%}
-    <h6 class="{{ config.name }}__item-title">{{ data.name }}</h6>
-{%- endblock %}
 
 {% block priceInformation %}
     <div class="{{ config.name }}__container col col--sm-12 col--lg-7">
@@ -83,6 +83,14 @@
             {{ parent() }}
         {% endblock %}
     </div>
+
+    {% block stateWrapper %}
+        <div class="grid grid--right">
+            <div class="col spacing-y">
+                {{ parent() }}
+            </div>
+        </div>
+    {% endblock %}
 {% endblock %}
 
 {%- block totalTitle -%}{% endblock %}

@@ -14,8 +14,8 @@
 {% set idShoppingListItem = data.item.idShoppingListItem %}
 
 {% block body %}
-    <h3 class="spacing-bottom spacing-bottom--reset">{{ 'product_alternative_widget.alternative_for' | trans }}</h3>
-    <h4 class="title title--sub">{{ data.item.name }}</h4>
+    <h2 class="title title--h3 spacing-bottom spacing-bottom--reset">{{ 'product_alternative_widget.alternative_for' | trans }}</h2>
+    <h3 class="title title--h4 title--sub">{{ data.item.name }}</h3>
     {% for item in data.products %}
         {% embed molecule('product-card-item') with {
             class: loop.index > data.maxShownItems ? 'js-product-alternative-' ~ idShoppingListItem ~ '__show-all-target is-hidden' : '',
@@ -64,7 +64,7 @@
                 {% include molecule('money-price') with {
                     modifiers: ['medium', 'block', 'margin-bottom-from-tablet', 'gray-color'],
                     data: {
-                        amount: price,
+                        amount: data.listItem.price,
                         originalAmount: data.listItem.prices.ORIGINAL is not defined or data.listItem.prices.ORIGINAL is empty ? null : data.listItem.prices.ORIGINAL,
                     },
                 } only %}

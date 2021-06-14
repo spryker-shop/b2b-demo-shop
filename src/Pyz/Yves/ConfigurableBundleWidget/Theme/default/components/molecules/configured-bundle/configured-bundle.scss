@@ -28,6 +28,13 @@
             align-items: center;
         }
 
+        &__actions {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 0 rem(30);
+        }
+
         &__info {
             @include helper-breakpoint-media-min($md) {
                 justify-content: flex-end;

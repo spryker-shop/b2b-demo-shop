@@ -15,6 +15,12 @@
         {{ data.summary.averageRating }}
     </div>
 
+    <span itemscope itemprop="aggregateRating" itemtype="https://schema.org/AggregateRating">
+        <meta itemprop="ratingValue" content="{{ data.summary.averageRating }}">
+        <meta itemprop="bestRating" content="{{ data.summary.maximumRating }}">
+        <meta itemprop="reviewCount" content="{{ data.summary.totalReview }}">
+    </span>
+
     {% include molecule('rating-selector', 'ProductReviewWidget') with {
         modifiers: ['pdp'],
         class: config.name ~ '__rating-selector',
@@ -32,7 +38,12 @@
         <div class="review-average-display__total-review">
             {{- data.summary.totalReview }}
 
-            {{ (data.summary.totalReview == 1 ? 'product_review.summary.review' : 'product_review.summary.reviews') | trans }}
+            {% set amount = data.summary.totalReview > 1 ? 'multiple' : data.summary.totalReview %}
+
+            {{ amount | trans({
+                '1' : 'product_review.summary.review' | trans,
+                'multiple': 'product_review.summary.reviews' | trans,
+            }) -}}
         </div>
     {% else %}
         <div class="review-average-display__total-review is-hidden-sm-only">

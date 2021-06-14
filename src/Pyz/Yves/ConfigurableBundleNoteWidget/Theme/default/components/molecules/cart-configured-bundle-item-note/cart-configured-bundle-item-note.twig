@@ -1,0 +1,93 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'cart-configured-bundle-item-note',
+    tag: 'cart-configured-bundle-item-note',
+} %}
+
+{% define data = {
+    form: {},
+    canWrite: required,
+    label: '',
+    note: '',
+} %}
+
+{% define attributes = {
+    'class-to-toggle': 'is-hidden',
+} %}
+
+{% block body %}
+    {% set formNote = data.form.vars is defined ? data.form.vars.value.note %}
+    {% set note = data.note ?: formNote %}
+    {% set isNoteNotEmpty = note is not empty %}
+
+    {% block content %}
+        {% if data.canWrite or isNoteNotEmpty %}
+            {% block contentInner %}
+                <div class="{{ config.name }}__container">
+                    {% if isNoteNotEmpty %}
+                        <div class="{{ config.name }}__text-wrap {{ config.jsName }}__text-wrap">
+                            <div class="{{ config.name }}__text">{{ note | nl2br }}</div>
+                            {% if data.canWrite %}
+                                {% block cartItemNoteActions %}
+                                    {% include molecule('cart-configured-bundle-item-note-actions', 'ConfigurableBundleNoteWidget') with {
+                                        data: {
+                                            buttons: [
+                                                {
+                                                    class: 'link link--icon ' ~ config.jsName ~ '__edit',
+                                                    icon: 'edit',
+                                                    text: 'customer.profile.address.edit' | trans,
+                                                },
+                                                {
+                                                    class: 'link link--icon ' ~ config.jsName ~ '__remove',
+                                                    icon: 'delete',
+                                                    text: 'cart.delete.item' | trans,
+                                                },
+                                            ],
+                                        },
+                                    } only %}
+                                {% endblock %}
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                    {% block form %}
+                        {% if data.canWrite %}
+                            {% set jsModifier = data.form.vars.value.groupKey | replace({"." : ""}) %}
+                            {% set hiddenWrapperClass = isNoteNotEmpty ? 'is-hidden' %}
+                            {% set hiddenContentClass = not isNoteNotEmpty ? 'is-hidden' %}
+                            {% set activeClass = isNoteNotEmpty ? 'active' %}
+
+                            <div class="{{ config.name }}__form {{ config.jsName }}__form {{ config.jsName }}__form--{{ jsModifier }} {{ hiddenWrapperClass }}">
+                                <h6 class="{{ config.name }}__label toggler-accordion__item {{ config.jsName }}__trigger {{ activeClass }}" data-toggle-target='.{{ config.jsName }}__content--{{ jsModifier }}'>
+                                    {{ 'configurable_bundle_note.enter_note' | trans }}
+                                    <span class="icon icon--toggler-cross icon--toggler-cross-link toggler-accordion__icon"></span>
+                                </h6>
+                                <div class="{{ config.name }}__content {{ config.jsName }}__content {{ config.jsName }}__content--{{ jsModifier }} {{ hiddenContentClass }}">
+                                    {% include molecule('form') with {
+                                        modifiers: ['note'],
+                                        data: {
+                                            form: data.form,
+                                            options: {
+                                                action: url('configurable-bundle-note/add'),
+                                            },
+                                            submit: {
+                                                enable: true,
+                                                text: 'configurable_bundle_note.form.save' | trans,
+                                            },
+                                        },
+                                    } only %}
+                                </div>
+                            </div>
+                            {% include molecule('toggler-accordion') with {
+                                attributes: {
+                                    'wrap-class-name': config.jsName ~ '__form--' ~ jsModifier,
+                                    'trigger-class-name': config.jsName ~ '__trigger',
+                                },
+                            } only %}
+                        {% endif %}
+                    {% endblock %}
+                </div>
+            {% endblock %}
+        {% endif %}
+    {% endblock %}
+{% endblock %}

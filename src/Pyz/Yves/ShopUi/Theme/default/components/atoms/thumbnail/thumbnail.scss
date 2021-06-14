@@ -1,134 +1,87 @@
-@mixin shop-ui-thumbnail($name: '.thumbnail') {
-    #{$name} {
-        position: relative;
-        display: block;
-        height: rem(160);
-        margin: rem(8);
+@include shop-ui-thumbnail {
+    &--smaller {
+        height: rem(52);
 
-        &--smaller {
-            height: rem(52);
-
-            @include helper-breakpoint-media-min($lg) {
-                height: rem(42);
-            }
+        @include helper-breakpoint-media-min($lg) {
+            height: rem(42);
         }
+    }
 
-        &--small {
-            height: 5rem;
-        }
+    &--item {
+        margin: rem(8) rem(16) rem(8) 0;
+        padding: rem(8);
+        flex-grow: 1;
 
-        &--big {
-            height: 20rem;
-        }
-
-        &--bigger {
-            height: 30rem;
-        }
-
-        &--min-size {
-            min-width: 2.5rem;
-        }
-
-        &--item {
-            margin: rem(8) rem(16) rem(8) 0;
-            padding: rem(8);
-            flex-grow: 1;
-
-            &::before {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                background-color: $setting-color-alpha-2;
-                border-radius: $setting-border-radius 0 0 $setting-border-radius;
-                z-index: $setting-zi-element;
-            }
-        }
-
-        &--reset-indents {
-            margin: 0;
-        }
-
-        &--category-list {
-            height: rem(313);
-
-            @include helper-breakpoint-media-min($md) {
-                height: 10rem;
-            }
-        }
-
-        &--catalog {
-            height: rem(180);
-
-            @include helper-breakpoint-media-min($lg) {
-                height: 15rem;
-            }
-        }
-
-        &--category {
-            height: rem(124);
-
-            @include helper-breakpoint-media-min($lg) {
-                height: 15rem;
-            }
-        }
-
-        &--shopping-list {
-            height: rem(75);
-
-            @include helper-breakpoint-media-min($lg) {
-                height: 10rem;
-            }
-        }
-
-        &--cart {
-            height: rem(75);
-            margin: 0;
-
-            @include helper-breakpoint-media-min($lg) {
-                height: rem(160);
-                margin: rem(8);
-            }
-        }
-
-        &--summary {
-            height: rem(75);
-            margin: 0;
-
-            @include helper-breakpoint-media-min($lg) {
-                height: rem(100);
-                margin: rem(4);
-            }
-        }
-
-        &__image {
+        &::before {
+            content: '';
             position: absolute;
+            top: 0;
             left: 0;
             right: 0;
-            top: 0;
             bottom: 0;
-            margin: auto;
-            max-width: 100%;
-            max-height: 100%;
-
-            &--color-light {
-                color: $setting-color-light;
-            }
+            background-color: $setting-color-alpha-2;
+            border-radius: $setting-border-radius 0 0 $setting-border-radius;
+            z-index: $setting-zi-element;
         }
+    }
 
-        &--has-border {
-            border: 0.25rem solid $setting-color-transparent;
-            box-shadow: 0 0 0 1px $setting-color-lighter;
+    &--reset-indents {
+        margin: 0;
+    }
+
+    &--category-list {
+        height: rem(313);
+
+        @include helper-breakpoint-media-min($md) {
+            height: 10rem;
         }
+    }
 
-        &--expand {
-            width: 100%;
+    &--catalog {
+        height: rem(180);
+
+        @include helper-breakpoint-media-min($lg) {
+            height: 15rem;
         }
+    }
 
-        @content;
+    &--category {
+        height: rem(124);
+
+        @include helper-breakpoint-media-min($lg) {
+            height: 15rem;
+        }
+    }
+
+    &--shopping-list {
+        height: rem(75);
+
+        @include helper-breakpoint-media-min($lg) {
+            height: 10rem;
+        }
+    }
+
+    &--cart {
+        height: rem(75);
+        margin: 0;
+
+        @include helper-breakpoint-media-min($lg) {
+            height: rem(160);
+            margin: rem(8);
+        }
+    }
+
+    &--summary {
+        height: rem(75);
+        margin: 0;
+
+        @include helper-breakpoint-media-min($lg) {
+            height: rem(100);
+            margin: rem(4);
+        }
+    }
+
+    &--expand {
+        width: 100%;
     }
 }
-
-@include shop-ui-thumbnail;

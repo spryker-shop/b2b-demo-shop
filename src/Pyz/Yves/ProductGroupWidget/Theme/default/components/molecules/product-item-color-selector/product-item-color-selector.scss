@@ -1,0 +1,52 @@
+$color-selector-size: rem(18);
+$color-selector-size-big: rem(24);
+$name: '.product-item-color-selector';
+
+@include helper-color-selector($name) {
+    @include helper-effect-transition(opacity);
+    position: absolute;
+    bottom: rem(-9);
+    left: 0;
+    z-index: $setting-zi-element + 1;
+    display: flex;
+    flex-wrap: wrap;
+
+    &--product-list {
+        opacity: 1;
+        position: relative;
+        bottom: 0;
+        margin: rem(10) 0;
+
+        @include helper-breakpoint-media-min($lg) {
+            position: absolute;
+            left: rem(20);
+            bottom: rem(30);
+            margin: 0;
+        }
+
+        #{$name}__items-title {
+            @include helper-font-size(small);
+            color: $setting-color-gray-3;
+            margin-right: rem(9);
+            display: inline;
+        }
+    }
+
+    &__items-title {
+        display: none;
+    }
+
+    &__item {
+        width: $color-selector-size;
+        height: $color-selector-size;
+        margin-right: rem(2);
+        padding: rem(4);
+        display: block;
+
+        &--active {
+            padding: rem(3);
+            border-width: rem(1);
+            border-style: solid;
+        }
+    }
+}

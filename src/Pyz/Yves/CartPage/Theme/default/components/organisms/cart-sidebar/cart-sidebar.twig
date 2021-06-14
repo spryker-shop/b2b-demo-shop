@@ -92,6 +92,62 @@
                 {% widget 'ShareCartByLinkWidget' args [data.cart] only %}{% endwidget %}
             {% endblock %}
         {% endembed %}
+
+        {% if data.cart.idQuote is not empty %}
+            {% embed molecule('cart-sidebar-item', 'CartPage') with {
+                data: {
+                    title: 'order_custom_reference.title' | trans,
+                    cart: data.cart,
+                    accordionItemClass: 'toggler-accordion__item',
+                    accordionIconClass: 'toggler-accordion__icon',
+                },
+            } only %}
+                {% block titleAttributes %}
+                    data-toggle-target='.{{ config.jsName }}__content-custom-order-reference-widget'
+                {% endblock %}
+
+                {% block contentClasses %}
+                    {{ config.jsName }}__content-custom-order-reference-widget {{ parent() }}
+                {% endblock %}
+
+                {% block contentInner %}
+                    {% widget 'OrderCustomReferenceWidget' args [
+                        data.cart,
+                        '/cart'
+                    ] only %}
+                        {% block body %}
+                            {% embed molecule('order-custom-reference-form', 'OrderCustomReferenceWidget') ignore missing with {
+                                data: {
+                                    form: data.orderCustomReferenceForm,
+                                },
+                            } only %}
+                                {% block title %}{% endblock %}
+                            {% endembed %}
+                        {% endblock %}
+                    {% endwidget %}
+                {% endblock %}
+            {% endembed %}
+        {% endif %}
+    {% endif %}
+
+    {% if data.cart.orderCustomReference is defined and not data.isQuoteEditable %}
+        {% embed molecule('cart-sidebar-item', 'CartPage') with {
+            data: {
+                title: 'order_custom_reference.title' | trans,
+                cart: data.cart,
+                isAccordionItem: false,
+            },
+        } only %}
+            {% block contentInner %}
+                {% embed molecule('order-custom-reference', 'OrderCustomReferenceWidget') ignore missing with {
+                    data: {
+                        orderCustomReference: data.cart.orderCustomReference,
+                    },
+                } only %}
+                    {% block title %}{% endblock %}
+                {% endembed %}
+            {% endblock %}
+        {% endembed %}
     {% endif %}
 
     {% if data.cart.idQuote is not empty %}
@@ -132,10 +188,10 @@
                         <div class="{{ config.name }}__quantity col">{{ data.transformedCartItems | length }} {{ 'checkout.step.summary.items' | trans }}</div>
                     </div>
 
-                    {% set isDiscountVoucherFormWidget = data.isQuoteEditable and can('ChangeCartItemPermissionPlugin') and can('SeePricePermissionPlugin') %}
+                    {% set isCartCodeFormWidget = data.isQuoteEditable and can('ChangeCartItemPermissionPlugin') and can('SeePricePermissionPlugin') %}
 
-                    {% if isDiscountVoucherFormWidget %}
-                        {% widget 'DiscountVoucherFormWidget' only %}{% endwidget %}
+                    {% if isCartCodeFormWidget %}
+                        {% widget 'CartCodeFormWidget' args [data.cart] only %}{% endwidget %}
                     {% endif %}
                 </div>
 

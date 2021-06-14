@@ -1,35 +1,44 @@
 {% extends molecule('money-price', '@SprykerShop:ShopUi') %}
+{% import _self as component %}
 
 {% define data = {
-    priceMode: app.priceMode,
+    priceMode: getPriceMode(),
 } %}
 
 {% block body %}
-    {% block amount %}
+    {% block defaultPrice %}
         {% set amountClassName = data.originalAmount is not empty ? 'text-alt' %}
+        {% set defaultPriceJsName = data.parentJsName ? data.parentJsName ~ '__default-price' %}
 
-        <span class="{{ component.renderClass(config.name ~ '__amount', modifiers) }} {{ amountClassName }}">
+        <span itemprop="price" content="{{ data.amount | moneyRaw }}" class="{{ component.renderClass(config.name ~ '__amount', modifiers) }} {{ amountClassName }} {{ defaultPriceJsName }}">
+            <meta itemprop="priceCurrency" content="{{ currencyIsoCode() }}">
             {{ data.amount | money(true, data.currencyIsoCode) }}
         </span>
     {% endblock %}
 
-    {% if data.originalAmount is not empty and data.originalAmount > data.amount -%}
-        {% block originalAmount %}
-            <span class="{{ component.renderClass(config.name ~ '__amount', modifiers) }} {{ config.name }}__amount--original">
-                {{ data.originalAmount | money(true, data.currencyIsoCode) }}
+    {% block originalPrice %}
+        {% if data.originalAmount is not empty and data.originalAmount > data.amount -%}
+            {% block originalPriceInner %}
+                {% set originalPriceJsName = data.parentJsName ? data.parentJsName ~ '__original-price' %}
+
+                <span class="{{ component.renderClass(config.name ~ '__amount', modifiers) }} {{ config.name }}__amount--original {{ originalPriceJsName }}">
+                    {{ data.originalAmount | money(true, data.currencyIsoCode) }}
+                </span>
+            {% endblock %}
+        {%- endif -%}
+    {% endblock %}
+
+    {% if data.amount is not empty %}
+        {% block priceMode %}
+            <span class="{{ component.renderClass(config.name ~ '__mode', modifiers) }}">
+                {% if data.priceMode == 'GROSS_MODE' %}
+                    {{ 'price.mode.incl_vat' | trans }}
+                {% endif %}
+
+                {% if data.priceMode == 'NET_MODE' %}
+                    {{ 'price.mode.excl_vat' | trans }}
+                {% endif %}
             </span>
         {% endblock %}
-    {%- endif -%}
-
-    {% block priceMode %}
-        <span class="{{ component.renderClass(config.name ~ '__mode', modifiers) }}">
-            {% if data.priceMode == 'GROSS_MODE' %}
-                {{ 'price.mode.incl_vat' | trans }}
-            {% endif %}
-
-            {% if data.priceMode == 'NET_MODE' %}
-                {{ 'price.mode.excl_vat' | trans }}
-            {% endif %}
-        </span>
-    {% endblock %}
+    {% endif %}
 {% endblock %}

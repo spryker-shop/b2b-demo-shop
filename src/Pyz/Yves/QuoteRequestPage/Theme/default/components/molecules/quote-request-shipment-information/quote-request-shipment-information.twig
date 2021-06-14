@@ -1,0 +1,69 @@
+{% extends molecule('quote-request-shipment-information', '@SprykerShop:QuoteRequestPage') %}
+
+{% block title %}
+    <h3 class="spacing-top spacing-top--biggest spacing-bottom">
+        {{ 'quote_request_page.quote_request.title_shipment_method' | trans }}
+    </h3>
+{% endblock %}
+
+{% block shipmentInformationWrapper %}
+    {{ block('shipmentInformation') }}
+{% endblock %}
+
+{% block shipmentInformation %}
+    <div class="{{ config.name }}__container">
+        {% if shipmentMethod and data.shipmentExpense %}
+            {% block shipmentMethod %}
+                <div class="{{ config.name }}__shipment grid grid--justify">
+                    <div class="col">
+                        <div class="grid grid--middle spacing-bottom spacing-bottom--big">
+                            <div class="{{ config.name }}__shipment-carrier-name spacing-right">
+                                {{ data.shipmentExpense.shipment.method.carrierName }}
+                            </div>
+
+                            {% include atom('icon') with {
+                                class: 'col',
+                                modifiers: [data.shipmentExpense.shipment.method.carrierName | lower ~ '-logo'],
+                                data: {
+                                    name: data.shipmentExpense.shipment.method.carrierName | lower ~ '-logo',
+                                },
+                            } only %}
+                        </div>
+                        <div class="{{ config.name }}__shipment-name">
+                            {{ data.shipmentExpense.shipment.method.name }}
+                        </div>
+                    </div>
+                    <div class="col">
+                        {% block actions %}
+                            <div class="{{ config.name }}__shipment-price">
+                                {% if data.shipmentExpense.shipment.method.storeCurrencyPrice != data.shipmentExpense.sumPrice %}
+                                    <s class="text-secondary">{{ data.shipmentExpense.shipment.method.storeCurrencyPrice | money(true, data.shipmentExpense.shipment.method.currencyIsoCode) }}</s>
+                                {% endif %}
+                                {{ data.shipmentExpense.sumPrice | money(true, data.shipmentExpense.shipment.method.currencyIsoCode) }}
+                            </div>
+                        {% endblock %}
+                    </div>
+                </div>
+            {% endblock %}
+        {% endif %}
+
+        {% if data.hasMultiShipments and shippingAddress %}
+            {% block shipmentAddress %}
+                <div class="box">
+                    {% block shipmentAddressTitle %}
+                        <h4 class="spacing-bottom">{{ 'checkout.step.summary.delivery_address' | trans }}</h4>
+                    {% endblock %}
+
+                    {% block shipmentAddressInner %}
+                        {% include molecule('display-address') with {
+                            data: {
+                                address: shippingAddress,
+                                isAddressLabelVisible: false,
+                            },
+                        } only %}
+                    {% endblock %}
+                </div>
+            {% endblock %}
+        {% endif %}
+    </div>
+{% endblock %}

@@ -1,7 +1,7 @@
 {% extends molecule('configured-bundle-product', '@SprykerShop:ConfigurableBundleWidget') %}
 
 {% block image %}
-    {% set imageModifiers =  ['small', 'item'] %}
+    {% set imageModifiers =  ['small', 'with-overlay', 'configured-bundle'] %}
 
     {{ parent() }}
 {% endblock %}
@@ -24,7 +24,7 @@
     <div class="{{ config.name }}__container col col--sm-12 col--lg-6">
         {% block priceInformationInner %}
             {% block priceCol %}
-                <div class="{{ config.name }}__inner-section col col--sm-12 col--lg-5 text-right">
+                <div class="{{ config.name }}__inner-section col col--sm-12 col--lg-5">
                     {% block price %}
                         <strong class="{{ config.name }}__text">
                             {% block priceInner %}

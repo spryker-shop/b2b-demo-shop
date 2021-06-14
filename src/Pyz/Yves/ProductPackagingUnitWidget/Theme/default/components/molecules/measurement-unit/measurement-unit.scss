@@ -1,4 +1,5 @@
-@mixin product-packaging-unit-measurement-unit($name: '.measurement-unit, .packaging-unit') { // Must be refactored
+@mixin product-packaging-unit-measurement-unit($name: '.measurement-unit, .packaging-unit') {
+    // Must be refactored
     #{$name} {
         display: flex;
         align-items: center;
@@ -17,11 +18,7 @@
             }
 
             @include helper-breakpoint-media-min($lg) {
-                min-width: rem(92);
-            }
-
-            @include helper-breakpoint-media-min($xxl) {
-                min-width: 0;
+                min-width: rem(75);
             }
         }
 

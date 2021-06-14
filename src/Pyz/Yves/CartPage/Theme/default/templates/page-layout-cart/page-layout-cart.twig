@@ -1,4 +1,16 @@
-{% extends template('page-layout-cart', '@SprykerShop:CartPage') %}
+{% extends template('page-layout-main') %}
+
+{% define data = {
+    cart: _view.cart,
+    isQuoteEditable: _view.isQuoteEditable,
+    isQuoteLocked: _view.isQuoteLocked,
+    cartItems: _view.cartItems,
+    isQuoteValid: _view.isQuoteValid,
+    attributes: _view.attributes,
+    request: app.request,
+    title: 'cart.cart' | trans,
+    requestUri: app.request.requestUri,
+} %}
 
 {% block breadcrumbs %}
     {% set steps = [
@@ -71,23 +83,25 @@
                     },
                 } only %}
                     {% block body %}
-                        {% embed molecule('cart-sidebar-item', 'CartPage') with {
-                            data: {
-                                title: 'cart.quick_add_to_cart' | trans,
-                                cart: data.cart,
-                                isAccordionItem: false,
-                            },
-                        } only %}
-                            {% block contentInner %}
-                                {% widget 'ProductConcreteAddWidget' args [
-                                    '',
-                                    'cart.quick_add_to_cart.submit' | trans,
-                                    'cart/quick-add',
-                                    true,
-                                ] only %}
-                                {% endwidget %}
-                            {% endblock %}
-                        {% endembed %}
+                        {% if data.isQuoteEditable %}
+                            {% embed molecule('cart-sidebar-item', 'CartPage') with {
+                                data: {
+                                    title: 'cart.quick_add_to_cart' | trans,
+                                    cart: data.cart,
+                                    isAccordionItem: false,
+                                },
+                            } only %}
+                                {% block contentInner %}
+                                    {% widget 'ProductConcreteAddWidget' args [
+                                        '',
+                                        'cart.quick_add_to_cart.submit' | trans,
+                                        'cart/quick-add',
+                                        true,
+                                    ] only %}
+                                    {% endwidget %}
+                                {% endblock %}
+                            {% endembed %}
+                        {% endif %}
 
                         {% if data.cart.idQuote is not empty %}
                             {% embed molecule('cart-sidebar-item', 'CartPage') with {
@@ -169,191 +183,187 @@
                 } only %}
                 {% endwidget %}
 
-                {% for cartItem in transformedCartItems if not cartItem.configuredBundleItem %}
+                {% for cartItem in transformedCartItems %}
                     {% block cartItem %}
-                        {% embed molecule('product-card-item') with {
-                            data: {
-                                list: data.cart,
-                                listItem: cartItem,
-                                attributes: data.attributes[cartItem.sku] | default([]),
-                                canEdit: data.isQuoteEditable and can('ChangeCartItemPermissionPlugin', data.cart.idQuote),
-                                canRemove: data.isQuoteEditable and can('RemoveCartItemPermissionPlugin'),
-                                imageModifiers: ['cart'],
-                            },
-                            embed: {
-                                product: data.products[cartItem.sku] | default,
-                                hasAdditionalTitle: cartItem.cartNote,
-                                additionalTitleText: 'cart_note.form.comment' | trans,
-                            },
-                        } only %}
-                            {% block productDescription %}
-                                <div class="{{ config.name }}__col {{ config.name }}__col--description col">
-                                    <div class="{{ config.name }}__inner grid grid--stretch grid--gap">
-                                        <div class="{{ config.name }}__col {{ config.name }}__col--content col">
-                                            {% block title %}
-                                                {{ parent() }}
-                                            {% endblock %}
+                        {% if not cartItem.configuredBundleItem %}
+                            {% embed molecule('product-card-item') with {
+                                data: {
+                                    list: data.cart,
+                                    listItem: cartItem,
+                                    attributes: data.attributes[cartItem.sku] | default([]),
+                                    canEdit: data.isQuoteEditable and can('ChangeCartItemPermissionPlugin', data.cart.idQuote),
+                                    canRemove: data.isQuoteEditable and can('RemoveCartItemPermissionPlugin'),
+                                    imageModifiers: ['cart'],
+                                },
+                                embed: {
+                                    product: data.products[cartItem.sku] | default,
+                                    hasAdditionalTitle: cartItem.cartNote,
+                                    additionalTitleText: 'cart_note.form.comment' | trans,
+                                },
+                            } only %}
+                                {% block productDescription %}
+                                    <div class="{{ config.name }}__col {{ config.name }}__col--description col">
+                                        <div class="{{ config.name }}__inner grid grid--stretch grid--gap">
+                                            <div class="{{ config.name }}__col {{ config.name }}__col--content col">
+                                                {% block title %}
+                                                    {{ parent() }}
+                                                {% endblock %}
 
-                                            {% block info %}
-                                                {{ parent() }}
+                                                {% block info %}
+                                                    {{ parent() }}
 
-                                                {% if embed.product.attributes.farbe is defined %}
-                                                    <span class="{{ config.name }}__color-preview">
-                                                        {{ 'cart.item.color' | trans }}:
-                                                        <span class="{{ config.name }}__color-preview-decoration" style="background: {{ embed.product.colorCode  }}" title="{{ embed.product.attributes.farbe  }}"></span>
-                                                    </span>
+                                                    {% if embed.product.attributes.farbe is defined %}
+                                                        <span class="{{ config.name }}__color-preview">
+                                                            {{ 'cart.item.color' | trans }}:
+                                                            <span class="{{ config.name }}__color-preview-decoration" style="background: {{ embed.product.colorCode  }}" title="{{ embed.product.attributes.farbe  }}"></span>
+                                                        </span>
+                                                    {% endif %}
+                                                {% endblock %}
+
+                                                {% block productInfo %}
+                                                    {{ parent() }}
+                                                {% endblock %}
+
+                                                {% if embed.hasAdditionalTitle %}
+                                                    <h6 class="{{ config.name }}__additional-title">{{ embed.additionalTitleText }}:</h6>
                                                 {% endif %}
-                                            {% endblock %}
+                                            </div>
 
-                                            {% block productInfo %}
-                                                {{ parent() }}
-                                            {% endblock %}
+                                            <div class="{{ config.name }}__col {{ config.name }}__col--total col">
+                                                <div class="{{ config.name }}__inner {{ config.name }}__inner--actions {{ config.name }}__inner--full-height grid grid--column grid--justify-column">
+                                                    <div class="col col--sm-12">
+                                                        <div class="{{ config.name }}__inner {{ config.name }}__inner--total grid grid--column">
+                                                            {% block price %}
+                                                                {% if can('SeePricePermissionPlugin') %}
+                                                                    {% set subtotalPrice = data.listItem.unitSubtotalAggregation is defined ? data.listItem.unitSubtotalAggregation : data.listItem.price %}
 
-                                            {% if embed.hasAdditionalTitle %}
-                                                <h6 class="{{ config.name }}__additional-title">{{ embed.additionalTitleText }}:</h6>
-                                            {% endif %}
-                                        </div>
+                                                                    {% include molecule('money-price') with {
+                                                                        modifiers: ['medium', 'block'],
+                                                                        data: {
+                                                                            amount: subtotalPrice,
+                                                                            currencyIsoCode: data.list.currency.code,
+                                                                        },
+                                                                    } only %}
+                                                                {% endif %}
+                                                            {% endblock %}
 
-                                        <div class="{{ config.name }}__col {{ config.name }}__col--total col">
-                                            <div class="{{ config.name }}__inner {{ config.name }}__inner--actions {{ config.name }}__inner--full-height grid grid--column grid--justify-column">
-                                                <div class="col col--sm-12">
-                                                    <div class="{{ config.name }}__inner {{ config.name }}__inner--total grid grid--column">
-                                                        {% block price %}
-                                                            {% if can('SeePricePermissionPlugin') %}
-                                                                {% set subtotalPrice = data.listItem.unitSubtotalAggregation is defined ? data.listItem.unitSubtotalAggregation : data.listItem.price %}
+                                                            {% block quantity %}
+                                                                {% set isEmptyProductInfo = amountSalesUnit is empty and quantitySalesUnit is empty and data.quantity is empty %}
 
-                                                                {% include molecule('money-price') with {
-                                                                    modifiers: ['medium', 'block'],
-                                                                    data: {
-                                                                        amount: subtotalPrice,
-                                                                        currencyIsoCode: data.list.currency.code,
-                                                                    },
-                                                                } only %}
-                                                            {% endif %}
-                                                        {% endblock %}
-
-                                                        {% block quantity %}
-                                                            {% set isEmptyProductInfo = amountSalesUnit is empty and quantitySalesUnit is empty and data.quantity is empty %}
-
-                                                            {% if isEmptyProductInfo %}
-                                                                <div class="{{ config.name }}__quantity-holder">
-                                                                    {% set cartProductMeasurementUnitQuantitySelectorWidget = findWidget('CartProductMeasurementUnitQuantitySelectorWidget', [data.listItem]) %}
-
-                                                                    {% if cartProductMeasurementUnitQuantitySelectorWidget and data.canEdit %}
-                                                                        {% widget cartProductMeasurementUnitQuantitySelectorWidget only %}{% endwidget %}
-                                                                    {% else %}
+                                                                {% if isEmptyProductInfo %}
+                                                                    <div class="{{ config.name }}__quantity-holder">
                                                                         {% include molecule('product-item-quantity') with {
                                                                             data: {
                                                                                 productItem: data.listItem,
                                                                                 isDisabled: not data.canEdit,
                                                                             },
                                                                         } only %}
-                                                                    {% endif %}
-                                                                </div>
-                                                            {% endif %}
-                                                        {% endblock %}
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="{{ config.name }}__inner grid grid--stretch grid--gap">
-                                        <div class="{{ config.name }}__col {{ config.name }}__col--content col">
-                                            {% block note %}
-                                                {% widget 'CartItemNoteFormWidget' args [data.listItem, data.list] with {
-                                                    data: {
-                                                        isTitleVisible: false,
-                                                    },
-                                                } only %}
-                                                {% endwidget %}
-                                            {% endblock %}
-
-                                            {% if data.listItem.productOptions is defined and data.listItem.productOptions %}
-                                                {% include molecule('product-item-options') with {
-                                                    modifiers: modifiers,
-                                                    data: {
-                                                        productItem: data.listItem,
-                                                    },
-                                                } only %}
-                                            {% endif %}
-
-                                            {% if data.options %}
-                                                {% include molecule('product-item-options') with {
-                                                    data: {
-                                                        options: data.options,
-                                                    },
-                                                } only %}
-                                            {% endif %}
-                                        </div>
-
-                                        <div class="{{ config.name }}__col {{ config.name }}__col--total col">
-                                            <div class="{{ config.name }}__inner {{ config.name }}__inner--actions {{ config.name }}__inner--full-height grid grid--column grid--justify-column">
-                                                <div class="col col--sm-12">
-                                                    <div class="{{ config.name }}__inner {{ config.name }}__inner--total grid grid--column">
-                                                        {% block totalPrice %}
-                                                            {% if can('SeePricePermissionPlugin') %}
-                                                                {% set totalPrice = data.listItem.unitPrice is defined ? data.listItem.sumSubtotalAggregation : data.listItem.price %}
-
-                                                                {% embed molecule('money-price') with {
-                                                                    class: 'grid grid--wide',
-                                                                    modifiers: ['secondary'],
-                                                                    data: {
-                                                                        amount: totalPrice,
-                                                                        currencyIsoCode: data.list.currency.code,
-                                                                    },
-                                                                } only %}
-                                                                    {% block body %}
-                                                                        <strong class="col col--sm-4 col--lg-5 text-left">{{ 'cart.item.item_total' | trans }}</strong>
-
-                                                                        {% if data.amount is empty -%}
-                                                                            {{ data.noPriceText }}
-                                                                        {%- else -%}
-                                                                            <span class="{{config.name}}__amount {{config.name}}__amount--secondary col col--sm-8 col--lg-7">
-                                                                                {{ data.amount | money(true, data.currencyIsoCode) }}
-                                                                            </span>
-                                                                        {%- endif -%}
-                                                                    {% endblock %}
-                                                                {% endembed %}
-                                                            {% endif %}
-                                                        {% endblock %}
-                                                    </div>
-                                                </div>
-
-                                                {% block deleteButton %}
-                                                    {% if data.canRemove %}
-                                                        <div class="col {{ config.name }}__delete-cart">
-                                                            <a class="link link--icon" href="{{ path('cart/remove', {'sku': data.listItem.sku, 'groupKey': data.listItem.groupKey }) }}" title="{{ 'cart.delete.item' | trans }}" data-init-single-click>
-                                                                {% include atom('icon') with {
-                                                                    modifiers: ['link'],
-                                                                    data: {
-                                                                        name: 'delete',
-                                                                    },
-                                                                } only %}
-                                                                <span class="is-hidden-sm-md">{{ 'cart.delete.item' | trans }}</span>
-                                                            </a>
+                                                                    </div>
+                                                                {% endif %}
+                                                            {% endblock %}
                                                         </div>
-                                                    {% endif %}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="{{ config.name }}__inner grid grid--stretch grid--gap">
+                                            <div class="{{ config.name }}__col {{ config.name }}__col--content col">
+                                                {% block note %}
+                                                    {% widget 'CartItemNoteFormWidget' args [data.listItem, data.list] with {
+                                                        data: {
+                                                            isTitleVisible: false,
+                                                        },
+                                                    } only %}
+                                                    {% endwidget %}
                                                 {% endblock %}
+
+                                                {% if data.listItem.productOptions is defined and data.listItem.productOptions %}
+                                                    {% include molecule('product-item-options') with {
+                                                        modifiers: modifiers,
+                                                        data: {
+                                                            productItem: data.listItem,
+                                                        },
+                                                    } only %}
+                                                {% endif %}
+
+                                                {% if data.options %}
+                                                    {% include molecule('product-item-options') with {
+                                                        data: {
+                                                            options: data.options,
+                                                        },
+                                                    } only %}
+                                                {% endif %}
+                                            </div>
+
+                                            <div class="{{ config.name }}__col {{ config.name }}__col--total col">
+                                                <div class="{{ config.name }}__inner {{ config.name }}__inner--actions {{ config.name }}__inner--full-height grid grid--column grid--justify-column">
+                                                    <div class="col col--sm-12">
+                                                        <div class="{{ config.name }}__inner {{ config.name }}__inner--total grid grid--column">
+                                                            {% block totalPrice %}
+                                                                {% if can('SeePricePermissionPlugin') %}
+                                                                    {% set totalPrice = data.listItem.unitPrice is defined ? data.listItem.sumSubtotalAggregation : data.listItem.price %}
+
+                                                                    {% embed molecule('money-price') with {
+                                                                        class: 'grid grid--wide',
+                                                                        modifiers: ['secondary'],
+                                                                        data: {
+                                                                            amount: totalPrice,
+                                                                            currencyIsoCode: data.list.currency.code,
+                                                                        },
+                                                                    } only %}
+                                                                        {% block body %}
+                                                                            <strong class="col col--sm-4 col--lg-5 text-left">{{ 'cart.item.item_total' | trans }}</strong>
+
+                                                                            {% if data.amount is empty -%}
+                                                                                {{ data.noPriceText }}
+                                                                            {%- else -%}
+                                                                                <span class="{{config.name}}__amount {{config.name}}__amount--secondary col col--sm-8 col--lg-7">
+                                                                                    {{ data.amount | money(true, data.currencyIsoCode) }}
+                                                                                </span>
+                                                                            {%- endif -%}
+                                                                        {% endblock %}
+                                                                    {% endembed %}
+                                                                {% endif %}
+                                                            {% endblock %}
+                                                        </div>
+                                                    </div>
+
+                                                    {% block deleteButton %}
+                                                        {% if data.canRemove %}
+                                                            {% widget 'RemoveFromCartFormWidget' args [data.listItem] with {
+                                                                embed: {
+                                                                    configName: config.name,
+                                                                },
+                                                            } only %}
+                                                                {% block embeddedData %}
+                                                                    <div class="col {{ embed.configName }}__delete-cart">
+                                                                        <button class="link link--icon" title="{{ 'cart.delete.item' | trans }}" data-init-single-click>
+                                                                            {% include atom('icon') with {
+                                                                                modifiers: ['link'],
+                                                                                data: {
+                                                                                    name: 'delete',
+                                                                                },
+                                                                            } only %}
+                                                                            <span class="is-hidden-sm-md">{{ 'cart.delete.item' | trans }}</span>
+                                                                        </button>
+                                                                    </div>
+                                                                {% endblock %}
+                                                            {% endwidget %}
+                                                        {% endif %}
+                                                    {% endblock %}
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            {% endblock %}
-                        {% endembed %}
+                                {% endblock %}
+                            {% endembed %}
+                        {% endif %}
                     {% endblock %}
                 {% endfor %}
 
                 {% if isQuoteEnadled and can('RemoveCartItemPermissionPlugin') %}
                     <div class="grid grid--right cart-bottom">
-                        <a href="{{ path('multi-cart/clear', {idQuote: data.cart.idQuote}) }}" class="link link--icon cart-bottom__button">
-                            {% include atom('icon') with {
-                                modifiers: ['link'],
-                                data: {
-                                    name: 'delete',
-                                },
-                            } only %}
-                            {{ "multi_cart_page.delete_all" | trans }}
-                        </a>
+                        {% widget 'CartOperationsWidget' args [data.cart] use view('cart-operations-actions', 'MultiCartWidget') only %}{% endwidget %}
                     </div>
                 {% endif %}
 
@@ -382,8 +392,4 @@
             {% widget 'UpSellingProductsWidget' args [data.cart] only %}{% endwidget %}
         {% endif %}
     {% endif %}
-{% endblock %}
-
-{% block footer %}
-    {% include organism('footer') only %}
 {% endblock %}

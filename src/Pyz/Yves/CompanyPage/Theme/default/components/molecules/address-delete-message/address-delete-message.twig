@@ -1,14 +1,4 @@
-{% extends model('component') %}
-
-{% define config = {
-    name: 'address-delete-message',
-} %}
-
-{% define data = {
-    companyUnitAddress: required,
-    companyBusinessUnits: null,
-    idCompanyBusinessUnit: null,
-} %}
+{% extends molecule('address-delete-message', '@SprykerShop:CompanyPage') %}
 
 {% block body %}
     <h3 class="title title--warning grid grid--left">
@@ -53,12 +43,18 @@
         </strong>
     {% endif %}
 
-    <div class="spacing-y spacing-y--big">
-        <a class="button button--hollow spacing-right" href="{{ data.idCompanyBusinessUnit ? url('company/business-unit/update', {'id': data.idCompanyBusinessUnit }) : url('company/business-unit') }}" title="{{ 'company.company_business_unit.delete.confirmation.back' | trans }}" data-init-single-click>
-            {{ 'company.company_business_unit.delete.confirmation.back' | trans }}
-        </a>
-        <a class="button button--alert" href="{{ url('company/address/delete', {'id': data.companyUnitAddress.idCompanyUnitAddress, 'idCompanyBusinessUnit': data.idCompanyBusinessUnit }) }}" title="{{ 'company.account.business_unit.delete' | trans }}" data-init-single-click>
-            {{ 'company.account.business_unit.delete' | trans }}
-        </a>
+    <div class="grid spacing-y spacing-y--big">
+        <div class="col">
+            <a class="button button--hollow spacing-right" href="{{ data.idCompanyBusinessUnit ? url('company/business-unit/update', {'id': data.idCompanyBusinessUnit }) : url('company/business-unit') }}" title="{{ 'company.company_business_unit.delete.confirmation.back' | trans }}" data-init-single-click>
+                {{ 'company.company_business_unit.delete.confirmation.back' | trans }}
+            </a>
+        </div>
+        <div class="col spacing-left spacing-left--small">
+            {{ form_start(data.companyUnitAddressDeleteForm, {
+                'action': path('company/address/delete', {'id': data.companyUnitAddress.idCompanyUnitAddress, 'idCompanyBusinessUnit': data.idCompanyBusinessUnit }),
+            }) }}
+                <button data-init-single-click class="button button--alert" title="{{ 'company.account.business_unit.delete' | trans }}">{{ 'company.account.business_unit.delete' | trans }} </button>
+            {{ form_end(data.companyUnitAddressDeleteForm) }}
+        </div>
     </div>
 {% endblock %}

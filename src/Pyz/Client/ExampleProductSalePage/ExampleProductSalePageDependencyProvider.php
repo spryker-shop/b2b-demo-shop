@@ -14,15 +14,15 @@ use Spryker\Client\CatalogPriceProductConnector\Plugin\ProductPriceQueryExpander
 use Spryker\Client\CustomerCatalog\Plugin\Search\ProductListQueryExpanderPlugin;
 use Spryker\Client\Kernel\AbstractDependencyProvider;
 use Spryker\Client\Kernel\Container;
-use Spryker\Client\Search\Plugin\Elasticsearch\QueryExpander\FacetQueryExpanderPlugin;
-use Spryker\Client\Search\Plugin\Elasticsearch\QueryExpander\LocalizedQueryExpanderPlugin;
-use Spryker\Client\Search\Plugin\Elasticsearch\QueryExpander\PaginatedQueryExpanderPlugin;
-use Spryker\Client\Search\Plugin\Elasticsearch\QueryExpander\SortedQueryExpanderPlugin;
-use Spryker\Client\Search\Plugin\Elasticsearch\QueryExpander\StoreQueryExpanderPlugin;
-use Spryker\Client\Search\Plugin\Elasticsearch\ResultFormatter\FacetResultFormatterPlugin;
-use Spryker\Client\Search\Plugin\Elasticsearch\ResultFormatter\PaginatedResultFormatterPlugin;
-use Spryker\Client\Search\Plugin\Elasticsearch\ResultFormatter\SortedResultFormatterPlugin;
 use Spryker\Client\Search\SearchClient;
+use Spryker\Client\SearchElasticsearch\Plugin\QueryExpander\FacetQueryExpanderPlugin;
+use Spryker\Client\SearchElasticsearch\Plugin\QueryExpander\LocalizedQueryExpanderPlugin;
+use Spryker\Client\SearchElasticsearch\Plugin\QueryExpander\PaginatedQueryExpanderPlugin;
+use Spryker\Client\SearchElasticsearch\Plugin\QueryExpander\SortedQueryExpanderPlugin;
+use Spryker\Client\SearchElasticsearch\Plugin\QueryExpander\StoreQueryExpanderPlugin;
+use Spryker\Client\SearchElasticsearch\Plugin\ResultFormatter\FacetResultFormatterPlugin;
+use Spryker\Client\SearchElasticsearch\Plugin\ResultFormatter\PaginatedResultFormatterPlugin;
+use Spryker\Client\SearchElasticsearch\Plugin\ResultFormatter\SortedResultFormatterPlugin;
 use Spryker\Shared\Kernel\Store;
 
 class ExampleProductSalePageDependencyProvider extends AbstractDependencyProvider
@@ -58,9 +58,9 @@ class ExampleProductSalePageDependencyProvider extends AbstractDependencyProvide
      */
     protected function addSearchClient(Container $container)
     {
-        $container[self::CLIENT_SEARCH] = function () {
+        $container->set(static::CLIENT_SEARCH, function () {
             return new SearchClient();
-        };
+        });
 
         return $container;
     }
@@ -72,9 +72,9 @@ class ExampleProductSalePageDependencyProvider extends AbstractDependencyProvide
      */
     protected function addProductLabelClient(Container $container)
     {
-        $container[self::CLIENT_PRODUCT_LABEL_STORAGE] = function (Container $container) {
+        $container->set(static::CLIENT_PRODUCT_LABEL_STORAGE, function (Container $container) {
             return $container->getLocator()->productLabelStorage()->client();
-        };
+        });
 
         return $container;
     }
@@ -86,9 +86,9 @@ class ExampleProductSalePageDependencyProvider extends AbstractDependencyProvide
      */
     protected function addSaleSearchQueryPlugin(Container $container)
     {
-        $container[self::SALE_SEARCH_QUERY_PLUGIN] = function () {
+        $container->set(static::SALE_SEARCH_QUERY_PLUGIN, function () {
             return new SaleSearchQueryPlugin();
-        };
+        });
 
         return $container;
     }
@@ -100,7 +100,7 @@ class ExampleProductSalePageDependencyProvider extends AbstractDependencyProvide
      */
     protected function addSaleSearchQueryExpanderPlugins(Container $container)
     {
-        $container[self::SALE_SEARCH_QUERY_EXPANDER_PLUGINS] = function () {
+        $container->set(static::SALE_SEARCH_QUERY_EXPANDER_PLUGINS, function () {
             return [
                 new StoreQueryExpanderPlugin(),
                 new LocalizedQueryExpanderPlugin(),
@@ -114,7 +114,7 @@ class ExampleProductSalePageDependencyProvider extends AbstractDependencyProvide
                  */
                 new FacetQueryExpanderPlugin(),
             ];
-        };
+        });
 
         return $container;
     }
@@ -126,7 +126,7 @@ class ExampleProductSalePageDependencyProvider extends AbstractDependencyProvide
      */
     protected function addSaleSearchResultFormatterPlugins(Container $container)
     {
-        $container[self::SALE_SEARCH_RESULT_FORMATTER_PLUGINS] = function () {
+        $container->set(static::SALE_SEARCH_RESULT_FORMATTER_PLUGINS, function () {
             return [
                 new FacetResultFormatterPlugin(),
                 new SortedResultFormatterPlugin(),
@@ -135,7 +135,7 @@ class ExampleProductSalePageDependencyProvider extends AbstractDependencyProvide
                     new RawCatalogSearchResultFormatterPlugin()
                 ),
             ];
-        };
+        });
 
         return $container;
     }
@@ -147,9 +147,9 @@ class ExampleProductSalePageDependencyProvider extends AbstractDependencyProvide
      */
     protected function addStore(Container $container)
     {
-        $container[self::STORE] = function () {
+        $container->set(static::STORE, function () {
             return Store::getInstance();
-        };
+        });
 
         return $container;
     }

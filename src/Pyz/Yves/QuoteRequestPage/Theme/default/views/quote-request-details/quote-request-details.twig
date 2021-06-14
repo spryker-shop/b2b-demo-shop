@@ -1,66 +1,40 @@
-{% extends template('page-layout-customer', 'CustomerPage') %}
-
-{% define data = {
-    title: 'quote_request_page.quote_request' | trans,
-    quoteRequest: _view.quoteRequest,
-    quoteRequestVersionReferences: _view.quoteRequestVersionReferences,
-    version: _view.version,
-    isQuoteRequestCancelable: _view.isQuoteRequestCancelable,
-    isQuoteRequestReady: _view.isQuoteRequestReady,
-    isQuoteRequestEditable: _view.isQuoteRequestEditable,
-} %}
-
-{% set isLatestVersion = data.version.idQuoteRequestVersion == data.quoteRequest.latestVisibleVersion.idQuoteRequestVersion %}
-{% set quote = data.version.quote %}
-
-{% block breadcrumbs %}
-    {% include molecule('breadcrumb') with {
-        data: {
-            steps: [
-                {
-                    label: 'customer.account' | trans,
-                    url: path('customer/overview'),
-                },
-                {
-                    label: 'quote_request_widget.request_for_quote.list.title' | trans,
-                    url: path('quote-request'),
-                },
-                {
-                    label: '#' ~ data.quoteRequest.quoteRequestReference,
-                },
-            ],
-        },
-    } only %}
-{% endblock %}
+{% extends view('quote-request-details', '@SprykerShop:QuoteRequestPage') %}
 
 {% block contentClass %}page-layout-main--request-for-quote{% endblock %}
 
-{% block content %}
-    <div class="grid grid--gap">
-        {% include organism('quote-request-main-content', 'QuoteRequestPage') ignore missing with {
-            class: 'col col--sm-12 col--xl-9',
-            data: {
-                version: data.version,
-                quote: quote,
-            },
-        } only %}
-
-        {% embed organism('quote-request-sidebar', 'QuoteRequestPage') with {
-            class: 'col col--sm-12 col--xl-3',
-            data: {
-                quoteRequest: data.quoteRequest,
-                quote: quote,
-                quoteRequestVersionReferences: data.quoteRequestVersionReferences,
-                version: data.version,
-                cancelTitle: 'quote_request_page.quote_request.actions.back_to_list' | trans,
-                cancelUrl: url('quote-request'),
-                isQuoteRequestCancelable: data.isQuoteRequestCancelable,
-                isQuoteRequestReady: data.isQuoteRequestReady,
-                isQuoteRequestEditable: data.isQuoteRequestEditable,
-                isLatestVersion: isLatestVersion,
-            },
-        } only %}
-            {% block latestVersionVisibilityStatus %}{% endblock %}
-        {% endembed %}
+{% block orderInformationBoxWrapper %}
+    <div class="col col--sm-12 col--xl-6 spacing-x spacing-x--big spacing-bottom spacing-bottom--big spacing-x--inner">
+        {{ block('orderInformationBoxInner') }}
     </div>
+{% endblock %}
+
+{% block separator %}{% endblock %}
+
+{% block actions %}
+    {% set buttonBackClass = 'spacing-bottom button button--expand button--hollow button--second' %}
+    {% set buttonCancelClass = 'spacing-bottom button button--expand button--hollow button--alert' %}
+    {% set buttonReviseClass = 'spacing-bottom button button--expand button--hollow' %}
+    {% set buttonConvertToCartClass = 'spacing-bottom button button--expand button--success' %}
+    {% set buttonEditClass = 'spacing-bottom button button--expand button--hollow' %}
+    {% set buttonSendToAgentClass = 'spacing-bottom button button--expand button--success' %}
+
+    {{ block('actionBack') }}
+
+    {% if data.version and data.version.idQuoteRequestVersion == data.quoteRequest.latestVisibleVersion.idQuoteRequestVersion %}
+        {% if data.isQuoteRequestCancelable %}
+            {{ block('actionCancel') }}
+        {% endif %}
+
+        {% if data.isQuoteRequestReady %}
+            {{ block('actionRevise') }}
+
+            {{ block('actionConvertToCart') }}
+        {% endif %}
+
+        {% if data.isQuoteRequestEditable %}
+            {{ block('actionEdit') }}
+
+            {{ block('actionSendToAgent') }}
+        {% endif %}
+    {% endif %}
 {% endblock %}

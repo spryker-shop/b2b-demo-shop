@@ -1,0 +1,10 @@
+@mixin sales-return-page-return-product-item($name: '.return-product-item') {
+    #{$name} {
+        border-bottom: rem(1) solid $setting-color-gray-7;
+        padding: rem(20) 0;
+
+        @content;
+    }
+}
+
+@include sales-return-page-return-product-item();

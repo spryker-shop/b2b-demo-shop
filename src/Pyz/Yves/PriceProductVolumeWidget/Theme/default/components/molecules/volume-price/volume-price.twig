@@ -9,7 +9,8 @@
     {% set amountClassName = data.originalAmount is not empty ? 'text-alt' %}
 
     <span class="{{ config.name }}__amount {{ amountClassName }}">
-        <span class="{{ config.jsName }}__price {{ config.name }}__price">
+        <span itemprop="price" content="{{ data.amount | moneyRaw }}" class="{{ config.jsName }}__price {{ config.name }}__price">
+            <meta itemprop="priceCurrency" content="{{ currencyIsoCode() }}">
             {{ data.amount | money }}
         </span>
     </span>
@@ -20,7 +21,9 @@
         </span>
     {%- endif -%}
 
-    {% block priceMode %}
-        {{ parent() }}
-    {% endblock %}
+    {% if data.amount is not empty %}
+        {% block priceMode %}
+            {{ parent() }}
+        {% endblock %}
+    {% endif %}
 {% endblock %}

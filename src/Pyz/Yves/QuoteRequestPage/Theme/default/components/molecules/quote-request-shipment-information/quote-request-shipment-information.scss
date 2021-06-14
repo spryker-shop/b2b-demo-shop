@@ -1,0 +1,31 @@
+@mixin quote-request-page-quote-request-shipment-information($name: '.quote-request-shipment-information') {
+    #{$name} {
+        &__container {
+            border: rem(2) solid $setting-color-gray-7;
+        }
+
+        &__shipment {
+            padding: rem(36) rem(32);
+        }
+
+        &__shipment-carrier-name {
+            display: flex;
+            font-size: rem(18);
+            font-weight: fw(medium);
+        }
+
+        &__shipment-name {
+            font-size: rem(14);
+            color: $setting-color-gray-3;
+        }
+
+        &__shipment-price {
+            font-size: rem(18);
+            font-weight: fw(bold);
+        }
+
+        @content;
+    }
+}
+
+@include quote-request-page-quote-request-shipment-information();
