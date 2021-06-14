@@ -521,6 +521,8 @@ customer.account.add_new_address,Define new address,en_US
 customer.account.add_new_address,Definieren Sie eine neue Adresse,de_DE
 customer.account.deliver_to_multiple_addresses,Deliver to multiple addresses,en_US
 customer.account.deliver_to_multiple_addresses,Deliver to multiple addresses,de_DE
+customer.account.delete.error,Account cannot be removed,en_US
+customer.account.delete.error,Das Konto kann nicht entfernt werden,de_DE
 customer.newsletter.not_subscribed,No newsletter subscription,en_US
 customer.newsletter.not_subscribed,Newsletter nicht abonniert.,de_DE
 customer.profile.order_history,Last Orders,en_US
@@ -1253,8 +1255,8 @@ product-cart.validation.error.abstract-product-exists,"Product ""sku"" not found
 product-cart.validation.error.abstract-product-exists,"Produkt ""sku"" nicht gefunden",de_DE
 product-cart.validation.error.concrete-product-exists,"Product ""sku"" not found",en_US
 product-cart.validation.error.concrete-product-exists,"Produkt ""sku"" nicht gefunden",de_DE
-cart.item.option.pre.check.validation.error.exists,"You can not reorder the product %name% directly, please add it to your cart separately.",en_US
-cart.item.option.pre.check.validation.error.exists,"Sie können das Produkt %name% nicht direkt nachbestellen, fügen Sie es bitte separat in Ihren Warenkorb.",de_DE
+cart.item.option.pre.check.validation.error.exists,"Product option of %name% is not available anymore.",en_US
+cart.item.option.pre.check.validation.error.exists,"Produktoption von %name% ist nicht mehr verfügbar.",de_DE
 product-cart.validation.error.product-option-value-price-exists,"Product option price for product '%sku%' not found.",en_US
 product-cart.validation.error.product-option-value-price-exists,"Produktoptionspreis für Produkt '%sku%' nicht gefunden.",de_DE
 product-cart.validation.error.concrete-product-inactive,"Product ""sku"" is not active.",en_US
@@ -1899,6 +1901,8 @@ multi_cart_widget.cart.updated.success,"Cart updated successfully",en_US
 multi_cart_widget.cart.updated.success,"Warenkorb wurde erfolgreich aktualisiert",de_DE
 multi_cart_widget.cart.remove.confirm,Are you sure that you want to remove this cart?,en_US
 multi_cart_widget.cart.remove.confirm,"Sind Sie sicher, dass Sie diesen Warenkorb entfernen möchten?",de_DE
+multi_cart_widget.cart.delete.error,Cart cannot be removed,en_US
+multi_cart_widget.cart.delete.error,Der Wagen kann nicht entfernt werden,de_DE
 shared_cart_widget.add_product.separate,"Add as separate item",en_US
 shared_cart_widget.add_product.separate,"Als separaten Artikel hinzufügen",de_DE
 shared_cart_widget.cart.share,"Share cart",en_US
@@ -2111,8 +2115,8 @@ customer.account.shopping_list.permissions.READ_ONLY,Read only,en_US
 customer.account.shopping_list.permissions.READ_ONLY,Schreibgeschützt,de_DE
 customer.account.shopping_list.permissions.FULL_ACCESS,Full access,en_US
 customer.account.shopping_list.permissions.FULL_ACCESS,Voller Zugriff,de_DE
-customer.account.shopping_list.item.added_to_cart.failed,Item was not added to cart.,en_US
-customer.account.shopping_list.item.added_to_cart.failed,Produkt konnte nicht in den Warenkorb gelegt werden.,de_DE
+customer.account.shopping_list.item.added_to_cart.failed,Some of selected items were not added to cart.,en_US
+customer.account.shopping_list.item.added_to_cart.failed,Einige der ausgewählten Artikel konnten nicht in den Warenkorb gelegt werden.,de_DE
 customer.account.shopping_list.items.added_to_cart.not_found,There are no products available for adding to cart.,en_US
 customer.account.shopping_list.items.added_to_cart.not_found,Es sind keine Produkte zum Hinzufügen in den Warenkorb verfügbar.,de_DE
 customer.account.shopping_list.item.added_to_cart,Item added to cart successfully.,en_US
@@ -2177,8 +2181,8 @@ product_quick_add_widget.form.error.sku.empty,"SKU should not be empty",en_US
 product_quick_add_widget.form.error.sku.empty,"SKU kann nicht leer sein",de_DE
 customer.account.shopping_list.overview.add_shopping_list_to_cart,Add selected to,en_US
 customer.account.shopping_list.overview.add_shopping_list_to_cart,Hinzufügen zu,de_DE
-customer.account.shopping_list.items.added_to_cart.failed,Items were not added to cart.,en_US
-customer.account.shopping_list.items.added_to_cart.failed,Produkte konnten nicht in den Warenkorb gelegt werden.,de_DE
+customer.account.shopping_list.items.added_to_cart.failed,Some items were not added to cart.,en_US
+customer.account.shopping_list.items.added_to_cart.failed,Einige Artikel konnten nicht in den Warenkorb gelegt werden.,de_DE
 customer.account.shopping_list.items.added_to_cart,Items added to cart successfully.,en_US
 customer.account.shopping_list.items.added_to_cart,Produkte erfolgreich in den Warenkorb gelegen.,de_DE
 customer.account.shopping_list.add_selected_items_to_cart,Add selected items to cart,en_US
@@ -2405,6 +2409,8 @@ company.account.company_role.delete.confirmation.assigned_users,Users assigned t
 company.account.company_role.delete.confirmation.assigned_users,Firmennutzer welche dieser Rolle zugeordnet sind,de_DE
 company.account.company_role.delete.confirmation.assigned_users_message,You cannot delete company role until it has assigned company users,en_US
 company.account.company_role.delete.confirmation.assigned_users_message,Sie können diese Firmennutzer Rollen nicht entfernen bevor sie keine Firmennutzer mehr enthält,de_DE
+company.account.company_role.delete.error.cannot_remove,Company role cannot be removed,en_US
+company.account.company_role.delete.error.cannot_remove,Die Unternehmensrolle kann nicht entfernt werden,de_DE
 permission.name.AddCompanyUserPermissionPlugin,Add company users,en_US
 permission.name.AddCompanyUserPermissionPlugin,Firmennutzer hinzufügen,de_DE
 permission.name.ManageCompanyUserInvitationPermissionPlugin,Invite users,en_US
@@ -2844,20 +2850,20 @@ quote_request_page.quote_request,Quote Request,en_US
 quote_request_page.quote_request,Angebotsanfrage,de_DE
 quote_request_page.quote_request.create,Create,en_US
 quote_request_page.quote_request.create,Erstellen,de_DE
-quote_request_page.quote_request_version.created,Quote Request have got new version,en_US
-quote_request_page.quote_request_version.created,Angebotsanfrage hat neue Version bekommen,de_DE
+quote_request_page.quote_request_version.created,The Quote Request has got a new version.,en_US
+quote_request_page.quote_request_version.created,Die Angebotsanfrage hat neue Version bekommen.,de_DE
 quote_request_page.quote_request.submit,Submit Request,en_US
 quote_request_page.quote_request.submit,Anfrage einreichen,de_DE
 quote_request_page.quote_request.metadata.label.note,Notes,en_US
 quote_request_page.quote_request.metadata.label.note,Anmerkungen,de_DE
 quote_request_page.quote_request.metadata.label.delivery_date,Do not ship later than,en_US
-quote_request_page.quote_request.metadata.label.delivery_date,Versenden Sie nicht später als,de_DE
+quote_request_page.quote_request.metadata.label.delivery_date,Versenden nicht später als,de_DE
 quote_request_page.quote_request.metadata.label.purchase_order_number,Purchase order number,en_US
 quote_request_page.quote_request.metadata.label.purchase_order_number,Bestellnummer,de_DE
-quote_request_page.quote_request.violations.invalid_date,Date should be greater than current date.,en_US
-quote_request_page.quote_request.violations.invalid_date,Datum muss größer sein als das aktuelle Datum.,de_DE
-quote_request_page.quote_request.created,Quote request created successfully.,en_US
-quote_request_page.quote_request.created,Angebotsanfrage erfolgreich erstellt.,de_DE
+quote_request_page.quote_request.violations.invalid_date,This date should be greater than current date.,en_US
+quote_request_page.quote_request.violations.invalid_date,Dieses Datum muss größer als das aktuelle Datum sein.,de_DE
+quote_request_page.quote_request.created,A Quote request was created successfully.,en_US
+quote_request_page.quote_request.created,Eine Angebotsanfrage wurde erfolgreich erstellt.,de_DE
 quote_request_page.quote_request.list.reference,#Reference,en_US
 quote_request_page.quote_request.list.reference,#Referenz,de_DE
 quote_request_page.quote_request.list.company,Company,en_US
@@ -2902,6 +2908,8 @@ quote_request_page.quote_request.actions.view,View,en_US
 quote_request_page.quote_request.actions.view,Ansehen,de_DE
 quote_request_page.quote_request.actions.cancel,Cancel,en_US
 quote_request_page.quote_request.actions.cancel,Stornieren,de_DE
+quote_request_page.quote_request.actions.cancel_changes,Cancel,en_US
+quote_request_page.quote_request.actions.cancel_changes,Abbrechen,de_DE
 quote_request_page.quote_request.actions.save,Save,en_US
 quote_request_page.quote_request.actions.save,Speichern,de_DE
 quote_request_page.quote_request.actions.back_to_list,Back to List,en_US
@@ -2911,7 +2919,7 @@ quote_request_page.quote_request.actions.back_to_view,Zurück zur Ansicht,de_DE
 quote_request_page.quote_request.actions.send_to_customer,Send to Customer,en_US
 quote_request_page.quote_request.actions.send_to_customer,An den Kunden senden,de_DE
 quote_request_page.quote_request.actions.send_to_agent,Send to Agent,en_US
-quote_request_page.quote_request.actions.send_to_agent,An Agenten senden,de_DE
+quote_request_page.quote_request.actions.send_to_agent,An den Agent senden,de_DE
 quote_request_page.quote_request.actions.save_and_back_to_edit,Save and Back to Edit,en_US
 quote_request_page.quote_request.actions.save_and_back_to_edit,Speichern und Zurück,de_DE
 quote_request_page.quote_request.actions.convert_to_cart,Convert to Cart,en_US
@@ -2919,20 +2927,20 @@ quote_request_page.quote_request.actions.convert_to_cart,In den Warenkorb umwand
 quote_request_page.quote_request.actions.revise,Revise,en_US
 quote_request_page.quote_request.actions.revise,Überarbeiten,de_DE
 quote_request_page.quote_request.actions.edit,Edit,en_US
-quote_request_page.quote_request.actions.edit,Ändern,de_DE
+quote_request_page.quote_request.actions.edit,Bearbeiten,de_DE
 quote_request_page.quote_request.actions.edit_items,Edit Items,en_US
 quote_request_page.quote_request.actions.edit_items,Produkte bearbeiten,de_DE
 quote_request_page.quote_request.view.empty,You do not have any quote requests yet.,en_US
 quote_request_page.quote_request.view.empty,Sie haben noch keine Angebotsanfragen.,de_DE
-quote_request_page.quote_request.updated,Quote request updated successfully.,en_US
-quote_request_page.quote_request.updated,Angebotsanfrage erfolgreich aktualisiert.,de_DE
-quote_request_page.quote_request.sent_to_customer,Quote request sent to customer successfully.,en_US
-quote_request_page.quote_request.sent_to_customer,Angebotsanfrage erfolgreich an den Kunden gesendet.,de_DE
-quote_request_page.quote_request.sent_to_user,Quote request was successfully sent to the agent for processing.,en_US
+quote_request_page.quote_request.updated,The Quote request has been updated successfully.,en_US
+quote_request_page.quote_request.updated,Die Angebotsanfrage wurde erfolgreich aktualisiert.,de_DE
+quote_request_page.quote_request.sent_to_customer,The Quote request has been sent to customer successfully.,en_US
+quote_request_page.quote_request.sent_to_customer,Die Angebotsanfrage wurde erfolgreich an den Kunden gesendet.,de_DE
+quote_request_page.quote_request.sent_to_user,The Quote request was successfully sent to the agent for processing.,en_US
 quote_request_page.quote_request.sent_to_user,Die Angebotsanfrage wurde erfolgreich zur Bearbeitung an den Agenten gesendet.,de_DE
 quote_request_page.quote_request.use_default_price,Use default price,en_US
 quote_request_page.quote_request.use_default_price,Standardpreis verwenden,de_DE
-quote_request_page.quote_request.converted_to_cart,Quote request converted to cart successfully.,en_US
+quote_request_page.quote_request.converted_to_cart,The Quote request was converted to cart successfully.,en_US
 quote_request_page.quote_request.converted_to_cart,Die Angebotsanfrage wurde erfolgreich in einen Warenkorb umgewandelt.,de_DE
 quote_request_page.quote_request.edit_items_confirm,"You are editing Quote Request <a href=""%link%"">%reference%</a> if you will leave it, all changes will be dropped.",en_US
 quote_request_page.quote_request.edit_items_confirm,"Sie bearbeiten Angebotsanfrage <a href=""%link%"">%reference%</a> wenn Sie es verlassen, werden alle Änderungen verworfen.",de_DE
@@ -2945,25 +2953,25 @@ quote_request.status.in-progress,In Bearbeitung,de_DE
 quote_request.status.ready,Ready,en_US
 quote_request.status.ready,Bereit,de_DE
 quote_request.status.canceled,Canceled,en_US
-quote_request.status.canceled,Abgebrochen,de_DE
+quote_request.status.canceled,Storniert,de_DE
 quote_request.status.closed,Closed,en_US
-quote_request.status.closed,Geschlossen,de_DE
+quote_request.status.closed,Abgeschlossen,de_DE
 quote_request.status.draft,Draft,en_US
 quote_request.status.draft,Entwurf,de_DE
-quote_request.validation.success.canceled,Quote request canceled successfully.,en_US
-quote_request.validation.success.canceled,Angebotsanfrage erfolgreich abgebrochen.,de_DE
-quote_request.validation.converted_to_cart.success,Quote request converted to cart successfully.,en_US
+quote_request.validation.success.canceled,The Quote request was canceled successfully.,en_US
+quote_request.validation.success.canceled,Die Angebotsanfrage wurde erfolgreich abgebrochen.,de_DE
+quote_request.validation.converted_to_cart.success,The Quote request was converted to cart successfully.,en_US
 quote_request.validation.converted_to_cart.success,Die Angebotsanfrage wurde erfolgreich in einen Warenkorb umgewandelt.,de_DE
-quote_request.validation.error.not_exists,Quote Request not exists.,en_US
-quote_request.validation.error.not_exists,Angebotsanfrage existiert nicht.,de_DE
+quote_request.validation.error.not_exists,This Quote Request does not exist.,en_US
+quote_request.validation.error.not_exists,Die Angebotsanfrage existiert nicht.,de_DE
 quote_request.validation.error.wrong_status,Wrong Quote Request status for this operation.,en_US
 quote_request.validation.error.wrong_status,Falscher Angebotsanfrage-Status für diesen Vorgang.,de_DE
 quote_request.validation.error.company_user_not_found,Company User not found.,en_US
 quote_request.validation.error.company_user_not_found,Firmenbenutzer nicht gefunden.,de_DE
-quote_request.validation.error.empty_cart,Quote request can't be created from empty cart.,en_US
-quote_request.validation.error.empty_cart,Angebotsanfrage kann nicht aus leerem Warenkorb erstellt werden.,de_DE
-quote_request.checkout.validation.error.version_not_found,Quote Request Version not found.,en_US
-quote_request.checkout.validation.error.version_not_found,Angebotsanfrage-Version nicht gefunden.,de_DE
+quote_request.validation.error.empty_cart,A Quote request can't be created from an empty cart.,en_US
+quote_request.validation.error.empty_cart,Eine Angebotsanfrage kann nicht aus einem leeren Einkaufswagen erstellt werden.,de_DE
+quote_request.checkout.validation.error.version_not_found,The Quote Request Version is not found.,en_US
+quote_request.checkout.validation.error.version_not_found,Die Angebotsanforderung Version wurde nicht gefunden.,de_DE
 quote_request.checkout.validation.error.not_found,Quote Request not found.,en_US
 quote_request.checkout.validation.error.not_found,Angebotsanfrage nicht gefunden.,de_DE
 quote_request.checkout.validation.error.wrong_status,The Quote Request is in a wrong status at the moment.,en_US
@@ -2972,11 +2980,11 @@ quote_request.checkout.validation.error.wrong_version,The version of Quote Reque
 quote_request.checkout.validation.error.wrong_version,Die Version der Angebotsanfrage für diesen Warenkorb ist veraltet.,de_DE
 quote_request.checkout.validation.error.wrong_valid_until,Quote Request from which this cart was created is not valid anymore.,en_US
 quote_request.checkout.validation.error.wrong_valid_until,"Angebotsanfrage, aus der dieser Warenkorb erstellt wurde, ist nicht mehr gültig.",de_DE
-quote_request.checkout.convert.error.wrong_valid_until,Quote Request is not valid anymore.,en_US
+quote_request.checkout.convert.error.wrong_valid_until,The Quote Request is not valid anymore.,en_US
 quote_request.checkout.convert.error.wrong_valid_until,Die Angebotsanfrage ist nicht mehr gültig.,de_DE
 quote_request.update.validation.error.wrong_valid_until,The validity date of this Quote Request is already passed. Please change the date to send to the customer.,en_US
 quote_request.update.validation.error.wrong_valid_until,"Das Gültigkeitsdatum dieser Angebotsanfrage ist bereits abgelaufen. Bitte ändern Sie das Datum, um es an den Kunden zu senden.",de_DE
-quote_request.update.validation.concurrent,Quote Request could not be updated due to parallel-customer interaction.,en_US
+quote_request.update.validation.concurrent,The Quote Request could not be updated due to parallel-customer interaction.,en_US
 quote_request.update.validation.concurrent,Die Angebotsanfrage konnte aufgrund der parallelen Kundeninteraktion nicht aktualisiert werden.,de_DE
 agent.account.overview,Overview,en_US
 agent.account.overview,Übersicht,de_DE
@@ -2992,11 +3000,11 @@ quote_request_agent_widget.items,Items,en_US
 quote_request_agent_widget.items,Artikel,de_DE
 quote_request_agent_widget.no_request_created,You do not have any quote requests yet.,en_US
 quote_request_agent_widget.no_request_created,Sie haben noch keine Angebotsanfragen.,de_DE
-quote_request_agent_widget.create_new_request,Create new Quote Request,en_US
+quote_request_agent_widget.create_new_request,New Quote Request,en_US
 quote_request_agent_widget.create_new_request,Neue Angebotsanfrage,de_DE
 quote_request_agent_widget.view_all_requests,View all requests,en_US
 quote_request_agent_widget.view_all_requests,Alle Anfragen anzeigen,de_DE
-quote_request_agent_widget.form.select_customer,Select customer,en_US
+quote_request_agent_widget.form.select_customer,Select a customer,en_US
 quote_request_agent_widget.form.select_customer,"Wählen Sie den Kunden aus",de_DE
 quote_request_agent_page.form.invalid_price,Invalid price.,en_US
 quote_request_agent_page.form.invalid_price,Ungültiger Preis.,de_DE
@@ -3174,57 +3182,59 @@ configured_bundle_cart.error.configured_bundle_cannot_be_removed,Das konfigurier
 configured_bundle_cart.error.configured_bundle_cannot_be_updated,Configured bundle cannot be updated.,en_US
 configured_bundle_cart.error.configured_bundle_cannot_be_updated,Konfiguriertes Bundle kann nicht aktualisiert werden.,de_DE
 configured_bundle_cart.error.configured_bundle_cannot_be_added,Configured bundle cannot be added to cart.,en_US
-configured_bundle_cart.error.configured_bundle_cannot_be_added,Configured bundle cannot be added to cart.,de_DE
+configured_bundle_cart.error.configured_bundle_cannot_be_added,Konfigurierbares Bündel kann nicht dem Warenkorb hinzugefügt werden.,de_DE
 configured_bundle_widget.configured_bundle.removed,Configured bundle removed successfully.,en_US
 configured_bundle_widget.configured_bundle.removed,Konfiguriertes Bundle erfolgreich entfernt.,de_DE
 configured_bundle_widget.configured_bundle.updated,Configured bundle updated successfully.,en_US
 configured_bundle_widget.configured_bundle.updated,Konfiguriertes Bundle wurde erfolgreich aktualisiert.,de_DE
 product_search_widget.search.no_results,Products were not found.,en_US
-product_search_widget.search.no_results,Products were not found.,de_DE
+product_search_widget.search.no_results,Produkte wurden nicht gefunden.,de_DE
 configurable_bundle_page.select,Select,en_US
 configurable_bundle_page.select,Auswählen,de_DE
 configurable_bundle_page.unselect,Unselect,en_US
-configurable_bundle_page.unselect,Unselect,de_DE
+configurable_bundle_page.unselect,Abwählen,de_DE
 configurable_bundle_page.edit,Edit,en_US
-configurable_bundle_page.edit,Edit,de_DE
+configurable_bundle_page.edit,Bearbeiten,de_DE
 configurable_bundle_page.configurator,Configurator,en_US
 configurable_bundle_page.configurator,Konfigurator,de_DE
 configurable_bundle_page.configurable_bundle_list,Configurable Bundle List,en_US
-configurable_bundle_page.configurable_bundle_list,Configurable Bundle List,de_DE
+configurable_bundle_page.configurable_bundle_list,Liste der konfigurierbaren Bündel,de_DE
 configurable_bundle_page.choose_bundle_to_configure,Choose Bundle to configure,en_US
-configurable_bundle_page.choose_bundle_to_configure,Choose Bundle to configure,de_DE
+configurable_bundle_page.choose_bundle_to_configure,Wählen Sie ein Bündel um es zu konfigurieren,de_DE
 configurable_bundle_page.configurator.templates_not_found,There are no templates available.,en_US
-configurable_bundle_page.configurator.templates_not_found,There are no templates available.,de_DE
+configurable_bundle_page.configurator.templates_not_found,Es sind keine Templates verfügbar.,de_DE
 configurable_bundle_page.template_not_found,Configurable bundle template not found.,en_US
-configurable_bundle_page.template_not_found,Configurable bundle template not found.,de_DE
+configurable_bundle_page.template_not_found,Das Template für das konfigurierbare Bündel konnte nicht gefunden werden.,de_DE
 configurable_bundle_page.invalid_template_slot_combination,Invalid template/slot combination.,en_US
-configurable_bundle_page.invalid_template_slot_combination,Invalid template/slot combination.,de_DE
+configurable_bundle_page.invalid_template_slot_combination,Die Template/Slot Kombination ist nicht valide.,de_DE
 configurable_bundle_page.configurator.tip.header,Create your own bundle.,en_US
-configurable_bundle_page.configurator.tip.header,Create your own bundle.,de_DE
+configurable_bundle_page.configurator.tip.header,Eigenes Bündel erstellen.,de_DE
 configurable_bundle_page.configurator.tip.text,"To create the bundle, please select the slot from the left side, and choose the product from the list.",en_US
-configurable_bundle_page.configurator.tip.text,"To create the bundle, please select the slot from the left side, and choose the product from the list.",de_DE
+configurable_bundle_page.configurator.tip.text,"Um ein Bündel zu erstellen, wählen Sie bitte links ein Slot und dann die Produkte von der Liste aus.",de_DE
 configurable_bundle_page.configurator.selected_product,Selected product,en_US
-configurable_bundle_page.configurator.selected_product,Selected product,de_DE
+configurable_bundle_page.configurator.selected_product,Ausgewähltes Produkt,de_DE
 configurable_bundle_page.configurator.summary,Summary,en_US
-configurable_bundle_page.configurator.summary,Summary,de_DE
+configurable_bundle_page.configurator.summary,Übersicht,de_DE
 configurable_bundle_page.configurator.add_to_cart,Add to Cart,en_US
-configurable_bundle_page.configurator.add_to_cart,Add to Cart,de_DE
+configurable_bundle_page.configurator.add_to_cart,In den Warenkorb legen,de_DE
 configurable_bundle_page.configurator.summary_page_locked,Product for at least one slot should be configured to visit Summary page.,en_US
-configurable_bundle_page.configurator.summary_page_locked,Product for at least one slot should be configured to visit Summary page.,de_DE
+configurable_bundle_page.configurator.summary_page_locked,Es muss mindestens ein Produkt einem Slot zugewiesen werden um die Übersichtsseite zu öffnen.,de_DE
 configurable_bundle_page.configurator.summary_page_total,Total,en_US
 configurable_bundle_page.configurator.summary_page_total,Gesamt,de_DE
 configurable_bundle_page.configurator.added_to_cart,Configured bundle successfully added to cart.,en_US
-configurable_bundle_page.configurator.added_to_cart,Configured bundle successfully added to cart.,de_DE
+configurable_bundle_page.configurator.added_to_cart,Konfigurierbares Bündel wurde erfolgreich dem Warenkorb hinzugefügt.,de_DE
 configurable_bundle_page.configurator.slot_became_unavailable,Configured slot with ID '%id%' became unavailable.,en_US
-configurable_bundle_page.configurator.slot_became_unavailable,Configured slot with ID '%id%' became unavailable.,de_DE
+configurable_bundle_page.configurator.slot_became_unavailable,Der konfigurierbare Slot mit der ID '%sku%' ist nicht mehr verfügbar.,de_DE
 configurable_bundle_page.configurator.product_became_unavailable,Product with SKU '%sku%' configured for slot with ID '%id%' became unavailable.,en_US
-configurable_bundle_page.configurator.product_became_unavailable,Product with SKU '%sku%' configured for slot with ID '%id%' became unavailable.,de_DE
+configurable_bundle_page.configurator.product_became_unavailable,Das Produkt mit der SKU '%sku%' für den Slot mit der  '%id%' ID ist nicht mehr verfügbar.,de_DE
 configurable_bundle_page.configurator.sku,Sku:,en_US
 configurable_bundle_page.configurator.sku,Sku:,de_DE
 configurable_bundle_page.configurator.slot_page.title,Create your own bundle quickly and easily using our configurator,en_US
 configurable_bundle_page.configurator.slot_page.title,Erstellen Sie schnell und einfach Ihr eigenes Bundle mit unserem Konfigurator,de_DE
 configurable_bundle_page.configurator.slot_page.back_link,Back to Bundles,en_US
 configurable_bundle_page.configurator.slot_page.back_link,Zurück zu den Bundles,de_DE
+agent_page.error.customer_already_logged_in,"Sie sind bereits als Kunde angemeldet. Bitte loggen Sie sich zuerst aus und fahren Sie dann fort",de_DE
+agent_page.error.customer_already_logged_in,"You are already logged in as customer, please logout first, then proceed",en_US
 configurable_bundle_note.enter_note,Add a note for the configured bundle,en_US
 configurable_bundle_note.enter_note,Fügen Sie eine Notiz für das konfigurierte Bundle hinzu,de_DE
 configurable_bundle_note.note,Configured Bundle Note:,en_US
@@ -3719,3 +3729,6 @@ error.429,Zu viele Anfragen,de_DE
 error.429,Too Many Requests,en_US
 security_blocker_page.error.account_blocked,"Too many log in attempts from your address. Please wait %minutes% minutes before trying again.",en_US
 security_blocker_page.error.account_blocked,"Warten Sie bitte %minutes% Minuten, bevor Sie es erneut versuchen.",de_DE
+agent_page.error.customer_already_logged_in,"Sie sind bereits als Kunde angemeldet. Bitte loggen Sie sich zuerst aus und fahren Sie dann fort",de_DE
+agent_page.error.customer_already_logged_in,"You are already logged in as customer, please logout first, then proceed",en_US
+

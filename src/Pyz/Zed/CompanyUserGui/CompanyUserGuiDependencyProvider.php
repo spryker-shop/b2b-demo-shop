@@ -54,6 +54,7 @@ class CompanyUserGuiDependencyProvider extends SprykerCompanyUserGuiDependencyPr
             new CompanyToCompanyUserFormExpanderPlugin(),
             new CompanyBusinessUnitFormExpanderPlugin(),
             new CompanyRoleFormExpanderPlugin(),
+            new CompanyToCompanyUserFormExpanderPlugin(),
         ];
     }
 
