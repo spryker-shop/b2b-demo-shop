@@ -24,6 +24,7 @@ export default class QuantityCounter extends Component {
     protected mapEvents(): void {
         this.decrementButton.addEventListener('click', (event: Event) => this.decrementValue(event));
         this.incrementButton.addEventListener('click', (event: Event) => this.incrementValue(event));
+        this.input.addEventListener('keydown', (event: KeyboardEvent) => this.onKeyDown(event));
 
         if (this.autoUpdate) {
             this.input.addEventListener('change', () => this.delayToSubmit());
@@ -34,8 +35,11 @@ export default class QuantityCounter extends Component {
         event.preventDefault();
         if (this.isAvailable) {
             const value = Number(this.input.value);
-            const potentialValue = Number((((value * this.precision) + (this.step * this.precision)) /
-                this.precision).toFixed(this.numberOfDecimalPlaces));
+            const potentialValue = Number(
+                ((value * this.precision + this.step * this.precision) / this.precision).toFixed(
+                    this.numberOfDecimalPlaces,
+                ),
+            );
 
             if (value < this.maxQuantity) {
                 this.input.value = potentialValue.toString();
@@ -48,8 +52,11 @@ export default class QuantityCounter extends Component {
         event.preventDefault();
         if (this.isAvailable) {
             const value = Number(this.input.value);
-            const potentialValue = Number((((value * this.precision) - (this.step * this.precision)) /
-                this.precision).toFixed(this.numberOfDecimalPlaces));
+            const potentialValue = Number(
+                ((value * this.precision - this.step * this.precision) / this.precision).toFixed(
+                    this.numberOfDecimalPlaces,
+                ),
+            );
 
             if (potentialValue >= this.minQuantity) {
                 this.input.value = potentialValue.toString();
@@ -71,6 +78,12 @@ export default class QuantityCounter extends Component {
     protected onSubmit(): void {
         if (this.value !== this.getValue) {
             this.input.form.submit();
+        }
+    }
+
+    protected onKeyDown(event: KeyboardEvent): void {
+        if (event.key === 'Enter') {
+            event.preventDefault();
         }
     }
 

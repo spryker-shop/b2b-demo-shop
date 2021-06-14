@@ -1,0 +1,18 @@
+{% extends template('widget') %}
+
+{% define data = {
+    form: _widget.form,
+    order: _widget.order,
+} %}
+
+{% set formClass = '' %}
+
+{% block body %}
+    {{ form_start(data.form, {'action': path('customer/order/reorder', {'idSalesOrder': data.order.idSalesOrder}),
+        attr: {
+            class: formClass,
+        }
+    }) }}
+        {% block embeddedData %}{% endblock %}
+    {{ form_end(data.form) }}
+{% endblock %}

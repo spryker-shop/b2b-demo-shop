@@ -1,119 +1,16 @@
-{% extends model('component') %}
-
-{% define config = {
-    name: 'rating-selector',
-    tag: 'rating-selector'
-} %}
+{% extends molecule('rating-selector', '@SprykerShop:ProductReviewWidget') %}
+{% import _self as component %}
 
 {% define data = {
-    value: 0,
-    minValue: 1,
-    maxValue: 5,
-    steps: 5,
-    useHalfSteps: false,
-    inputId: '',
-    inputName: 'rating',
-    reviewCount: ''
+    reviewCount: '',
 } %}
-
-{% define attributes = {
-    'readonly': false,
-    'disable-if-empty-value': false
-} %}
-
-{% set singleStepValue = (data.maxValue - data.minValue) / (data.steps - 1) %}
-{% set precision = data.useHalfSteps ? 1 : 0 %}
-{% set value = data.value | round(precision, 'floor') %}
-{% set isActive = false %}
-
-{% block class %}
-    {{parent()}}
-    {% if attributes.readonly %}{{config.name}}--readonly{% endif %}
-{% endblock %}
 
 {% block body %}
-    <div class="{{config.name}}__steps">
-        {% spaceless %}
-            {% for step in data.steps..1 %}
-                {% set currentStepValue = step * singleStepValue %}
-                {% if value >= currentStepValue %}
-                    {% set isActive = true %}
-                {% endif %}
-
-                {% if data.useHalfSteps %}
-                    <button
-                        data-step-value="{{currentStepValue}}"
-                        class="
-                            {{config.name}}__step
-                            {{config.name}}__step--half
-                            {{isActive ? config.name ~ '__step--active' : ''}}
-                            {% if not attributes.readonly %}{{config.jsName}}__step{% endif %}">
-
-                        {% include atom('icon') with {
-                            modifiers: ['star'],
-                            class: component.renderClass(config.name ~ '__star', modifiers) ~ ' ' ~ config.name ~ '__star--half-right',
-                            data: {
-                                name: 'star-half'
-                            }
-                        } only %}
-                    </button>
-
-                    {% set currentStepValue = (step - 0.5) * singleStepValue %}
-                    {% if value >= currentStepValue %}
-                        {% set isActive = true %}
-                    {% endif %}
-
-                    <button
-                        data-step-value="{{currentStepValue}}"
-                        class="
-                            {{config.name}}__step
-                            {{config.name}}__step--half
-                            {{isActive ? config.name ~ '__step--active' : ''}}
-                            {% if not attributes.readonly %}{{config.jsName}}__step{% endif %}">
-
-                        {% include atom('icon') with {
-                            modifiers: ['star'],
-                            class: component.renderClass(config.name ~ '__star', modifiers) ~ ' ' ~ config.name ~ '__star--half-left',
-                            data: {
-                                name: 'star-half'
-                            }
-                        } only %}
-                    </button>
-                {% else %}
-                    <button
-                        data-step-value="{{currentStepValue}}"
-                        class="
-                            {{config.name}}__step
-                            {{config.name}}__step--full
-                            {{isActive ? config.name ~ '__step--active' : ''}}
-                            {% if not attributes.readonly %}{{config.jsName}}__step{% endif %}">
-
-                        {% include atom('icon') with {
-                            modifiers: ['star'],
-                            class: component.renderClass(config.name ~ '__star', modifiers),
-                            data: {
-                                name: 'star'
-                            }
-                        } only %}
-                    </button>
-                {% endif %}
-            {% endfor %}
-        {% endspaceless %}
-    </div>
+    {{ parent() }}
 
     {% if data.reviewCount is not empty %}
-        <span class="{{ component.renderClass(config.name ~ '__count', modifiers) }}">({{ data.reviewCount }})</span>
-    {% endif %}
+        {% set reviewCountJsName = data.parentJsName ? data.parentJsName ~ '__review-count' %}
 
-    {% if not attributes.readonly %}
-        {% block input %}
-            <input
-                type="hidden"
-                class="{{config.jsName}}__input"
-                {% if data.inputId is not empty %}id="{{data.inputId}}"{% endif %}
-                name="{{data.inputName}}"
-                value="{{data.value}}"
-                {% if attributes['disable-if-empty-value'] and data.value is empty %}disabled{% endif %} />
-        {% endblock %}
+        <span class="{{ component.renderClass(config.name ~ '__count', modifiers) }} {{ config.jsName }}__review-count {{ reviewCountJsName }}">({{ data.reviewCount | default(0) }})</span>
     {% endif %}
 {% endblock %}

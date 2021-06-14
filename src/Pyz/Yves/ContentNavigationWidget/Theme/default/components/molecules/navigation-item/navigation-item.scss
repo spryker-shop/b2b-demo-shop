@@ -1,0 +1,22 @@
+@mixin content-navigation-widget-navigation-item($name: '.navigation-item') {
+    #{$name} {
+        border-top: rem(1) solid $setting-color-white;
+
+        @include helper-breakpoint-media-min($md) {
+            border-top: 0;
+            padding-bottom: rem(24);
+        }
+
+        @include helper-breakpoint-media-min($lg) {
+            padding-bottom: 0;
+        }
+
+        &--reset-border-top {
+            border-top: none;
+        }
+
+        @content;
+    }
+}
+
+@include content-navigation-widget-navigation-item();

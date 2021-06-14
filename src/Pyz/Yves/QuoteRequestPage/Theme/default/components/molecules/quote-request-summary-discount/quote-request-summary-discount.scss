@@ -1,0 +1,30 @@
+@mixin quote-request-page-quote-request-summary-discount($name: '.quote-request-summary-discount') {
+    #{$name} {
+        font-size: rem(12);
+
+        &__title {
+            color: $setting-color-gray-5;
+        }
+
+        &__row {
+            padding-top: rem(8);
+        }
+
+        &__key {
+            font-size: rem(13);
+            line-height: rem(18);
+        }
+
+        &__value {
+            padding-left: rem(10);
+            color: $setting-color-alt;
+            font-size: rem(15);
+            font-weight: fw(medium);
+            white-space: nowrap;
+        }
+
+        @content;
+    }
+}
+
+@include quote-request-page-quote-request-summary-discount();

@@ -25,12 +25,14 @@
                     'config-width': '100%',
                 },
                 embed: {
+                    jsSelectClassName: jsSelectClassName,
                     values: data.values,
                 },
             } only %}
                 {% block selectClass %}
-                    {{ parent() }} jsSelectClassName
+                    {{ parent() }} {{ embed.jsSelectClassName }}
                 {% endblock %}
+
                 {% block options %}
                     <option>{{ 'product.attribute._none' | trans }}</option>
                     {% for value in embed.values %}

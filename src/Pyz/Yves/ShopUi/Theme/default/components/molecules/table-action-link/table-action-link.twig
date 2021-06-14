@@ -2,7 +2,7 @@
 
 {% define config = {
     name: 'table-action-link',
-    tag: 'a'
+    tag: 'a',
 } %}
 
 {% define data = {
@@ -15,6 +15,7 @@
 
 {% define attributes = {
     href: data.url,
+    target: data.target | default,
     'data-init-single-click': data.isSingleClickable,
 } %}
 
@@ -23,8 +24,8 @@
         modifiers: [ data.iconModifier ],
         data: {
             icon: data.icon,
-            text: data.title | trans
-        }
+            text: data.title | trans,
+        },
     } only %}
     <span class="{{ config.name }}__title is-hidden-lg-xxl">{{ data.title | trans }}</span>
 {% endblock %}

@@ -1,0 +1,222 @@
+@mixin shop-ui-product-item-list($name: '.product-item-list') {
+    #{$name} {
+        position: relative;
+
+        &__container {
+            padding: 0 rem(9);
+            margin-bottom: rem(30);
+            border-radius: $setting-border-radius;
+            position: relative;
+
+            @include helper-breakpoint-media-min($md) {
+                padding: 0;
+                margin-bottom: rem(20);
+                background-color: $setting-color-alpha-2;
+            }
+
+            @include helper-breakpoint-media-min($xl) {
+                @include helper-effect-transition(background-color box-shadow);
+
+                &:hover {
+                    box-shadow: 0 rem(3) rem(3) 0 $setting-color-shadow-1, 0 rem(18) rem(18) 0 $setting-color-shadow-1;
+                    background-color: $setting-color-transparent;
+                }
+            }
+        }
+
+        &__image {
+            position: relative;
+
+            @include helper-breakpoint-media-min($md) {
+                background-color: $setting-color-bg;
+            }
+
+            @include helper-breakpoint-media-min($xl) {
+                padding: rem(8) rem(16);
+            }
+        }
+
+        &__content {
+            position: relative;
+
+            @include helper-breakpoint-media-min($md) {
+                padding: rem(37) rem(10) rem(70);
+            }
+
+            @include helper-breakpoint-media-min($lg) {
+                padding-left: rem(20);
+                padding-right: rem(30);
+            }
+        }
+
+        &__total {
+            padding-top: rem(10);
+
+            @include helper-breakpoint-media-min($md) {
+                text-align: right;
+                padding: rem(35) rem(30) rem(20) rem(18);
+            }
+        }
+
+        &__overlay {
+            position: relative;
+            display: block;
+            padding: rem(8) rem(16);
+            margin: 0 rem(-9) rem(15);
+
+            @include helper-breakpoint-media-min($md) {
+                position: static;
+                padding: 0;
+                margin: 0;
+            }
+
+            &::before {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                background-color: $setting-color-alpha-2;
+                z-index: $setting-zi-element;
+            }
+        }
+
+        &__price {
+            align-items: flex-start;
+
+            @include helper-breakpoint-media-min($md) {
+                align-items: flex-end;
+                height: 100%;
+            }
+        }
+
+        &__name {
+            font-weight: fw(medium);
+            line-height: normal;
+            color: $setting-color-gray-5;
+            letter-spacing: rem(0.1);
+        }
+
+        &__details {
+            display: none;
+
+            @include helper-breakpoint-media-min($md) {
+                display: block;
+            }
+
+            @include helper-breakpoint-media-min($xl) {
+                position: relative;
+                width: 100%;
+            }
+        }
+
+        &__actions-row {
+            display: flex;
+            flex-direction: column;
+
+            @include helper-breakpoint-media-min($xl) {
+                position: absolute;
+                right: 0;
+                bottom: 0;
+                flex-direction: row;
+            }
+        }
+
+        &__action {
+            padding-top: rem(8);
+
+            @include helper-breakpoint-media-min($xl) {
+                padding-top: 0;
+                padding-left: rem(8);
+            }
+        }
+
+        &--order {
+            #{$name}__container {
+                margin-bottom: 0;
+                font-size: map_get($setting-font-size, small);
+                background: $setting-color-alpha-2;
+                color: $setting-color-black;
+                padding: rem(15) rem(15) rem(15) 0;
+
+                @include helper-breakpoint-media-min($md) {
+                    font-size: map_get($setting-font-size, default);
+                }
+
+                &:hover {
+                    box-shadow: none;
+                    background: $setting-color-alpha-2;
+                }
+            }
+
+            #{$name}__overlay {
+                margin: 0;
+                padding: 0;
+
+                &::before {
+                    background: $setting-color-transparent;
+
+                    @include helper-breakpoint-media-min($md) {
+                        background: $setting-color-alpha-2;
+                    }
+                }
+            }
+
+            #{$name}__image {
+                padding: 0 rem(15);
+                align-self: center;
+            }
+
+            #{$name}__name {
+                font-weight: fw(bold);
+                display: block;
+                line-height: rem(20);
+                margin-bottom: rem(5);
+            }
+
+            #{$name}__sku {
+                color: $setting-color-gray-3;
+                font-size: map_get($setting-font-size, small);
+            }
+
+            #{$name}__quantity {
+                color: $setting-color-gray-3;
+
+                @include helper-breakpoint-media-min($md) {
+                    padding-left: rem(15);
+                }
+
+                @include helper-breakpoint-media-min($lg) {
+                    text-align: right;
+                }
+            }
+
+            #{$name}__price {
+                height: auto;
+                font-weight: fw(bold);
+
+                @include helper-breakpoint-media-min($lg) {
+                    padding-left: rem(15);
+                    text-align: right;
+                }
+            }
+
+            #{$name}__sum-price {
+                font-weight: fw(bold);
+
+                @include helper-breakpoint-media-min($md) {
+                    padding-left: rem(15);
+                }
+
+                @include helper-breakpoint-media-min($lg) {
+                    text-align: right;
+                }
+            }
+        }
+
+        @content;
+    }
+}
+
+@include shop-ui-product-item-list();

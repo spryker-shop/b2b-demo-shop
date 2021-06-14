@@ -54,7 +54,8 @@ class CmsGuiPresentationTester extends Actor
      */
     public function setValidFrom($date)
     {
-        $this->fillField("//*[@id=\"cms_page_validFrom\"]", $date);
+        $date = $this->adaptDateInputForBrowser($date);
+        $this->fillField('//*[@id="cms_page_validFrom"]', $date);
 
         return $this;
     }
@@ -76,7 +77,8 @@ class CmsGuiPresentationTester extends Actor
      */
     public function setValidTo($date)
     {
-        $this->fillField("//*[@id=\"cms_page_validTo\"]", $date);
+        $date = $this->adaptDateInputForBrowser($date);
+        $this->fillField('//*[@id="cms_page_validTo"]', $date);
 
         return $this;
     }
@@ -139,7 +141,7 @@ class CmsGuiPresentationTester extends Actor
      */
     public function clickPublishButton()
     {
-        $this->click('//*[@id="page-wrapper"]/div[2]/div[2]/div/a[1]');
+        $this->click('//*[@id="page-wrapper"]/div[2]/div[2]/div/form/button');
 
         return $this;
     }

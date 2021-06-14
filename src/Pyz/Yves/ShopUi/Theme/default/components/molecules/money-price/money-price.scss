@@ -61,10 +61,6 @@
             line-height: normal;
         }
 
-        &--block {
-            display: block;
-        }
-
         &--gray-color {
             color: $setting-color-gray-5;
         }
@@ -79,6 +75,10 @@
             @include helper-breakpoint-media-min($lg) {
                 @include helper-font-size(big);
             }
+        }
+
+        &--block {
+            display: block;
         }
     }
 

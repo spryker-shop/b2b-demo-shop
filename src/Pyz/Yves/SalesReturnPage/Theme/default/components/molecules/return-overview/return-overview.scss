@@ -1,0 +1,18 @@
+@mixin sales-return-page-return-overview($name: '.return-overview') {
+    #{$name} {
+        &__list {
+            background-color: $setting-color-gray-7;
+            margin-bottom: rem(20);
+            padding: rem(15);
+
+            @include helper-breakpoint-media-min($lg) {
+                margin-bottom: rem(30);
+                padding: rem(25) rem(30);
+            }
+        }
+
+        @content;
+    }
+}
+
+@include sales-return-page-return-overview();

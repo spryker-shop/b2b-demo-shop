@@ -57,6 +57,7 @@
             items: data.items,
             shippingAddress: shippingAddress,
             jsAddressClass: data.jsAddressClass,
+            hasPreselectedOption: data.hasPreselectedOption,
         },
     } only %}
         {%- block selectClass -%}
@@ -66,7 +67,7 @@
         {%- endblock -%}
 
         {% block option %}
-            {% set isSelected = embed.defaultAddressKey == address.key %}
+            {% set isSelected = embed.hasPreselectedOption ? false : embed.defaultAddressKey == address.key %}
             {% set fullName = '%s %s %s, %s %s, %s %s' | format(
                 address.salutation,
                 address.firstName,
@@ -85,7 +86,11 @@
         {% endblock %}
 
         {% block optionsGroup %}
-            <option value="">{{ 'company.account.add_new_address' | trans }}</option>
+            {% if embed.hasPreselectedOption %}
+                <option value="" disabled selected>{{ 'checkout.step.address.select_address' | trans }}</option>
+            {% endif %}
+
+            <option value="0">{{ 'company.account.add_new_address' | trans }}</option>
 
             {% if embed.customerAddresses %}
                 <optgroup label="{{ 'page.checkout.address.option_group.customer' | trans | upper }}">

@@ -8,9 +8,12 @@
 namespace Pyz\Zed\Permission;
 
 use Pyz\Zed\CompanyUser\Communication\Plugin\Permission\SeeCompanyMenuPermissionPlugin;
+use Spryker\Client\CompanyUser\Plugin\CompanyUserStatusChangePermissionPlugin;
 use Spryker\Shared\Checkout\Plugin\Permission\PlaceOrderWithAmountUpToPermissionPlugin;
 use Spryker\Shared\CompanyUser\Plugin\AddCompanyUserPermissionPlugin;
+use Spryker\Zed\CompanyBusinessUnitSalesConnector\Communication\Plugin\Permission\SeeBusinessUnitOrdersPermissionPlugin;
 use Spryker\Zed\CompanyRole\Communication\Plugin\PermissionStoragePlugin;
+use Spryker\Zed\CompanySalesConnector\Communication\Plugin\Permission\SeeCompanyOrdersPermissionPlugin;
 use Spryker\Zed\CompanyUserInvitation\Communication\Plugin\Permission\ManageCompanyUserInvitationPermissionPlugin;
 use Spryker\Zed\Permission\PermissionDependencyProvider as SprykerPermissionDependencyProvider;
 use Spryker\Zed\QuoteApproval\Communication\Plugin\Permission\ApproveQuotePermissionPlugin;
@@ -24,7 +27,6 @@ use Spryker\Zed\ShoppingList\Communication\Plugin\WriteShoppingListPermissionPlu
 use SprykerShop\Shared\CartPage\Plugin\AddCartItemPermissionPlugin;
 use SprykerShop\Shared\CartPage\Plugin\ChangeCartItemPermissionPlugin;
 use SprykerShop\Shared\CartPage\Plugin\RemoveCartItemPermissionPlugin;
-use SprykerShop\Shared\CompanyPage\Plugin\CompanyUserStatusChangePermissionPlugin;
 
 class PermissionDependencyProvider extends SprykerPermissionDependencyProvider
 {
@@ -43,7 +45,7 @@ class PermissionDependencyProvider extends SprykerPermissionDependencyProvider
     /**
      * @return \Spryker\Shared\PermissionExtension\Dependency\Plugin\PermissionPluginInterface[]
      */
-    protected function getPermissionPlugins()
+    protected function getPermissionPlugins(): array
     {
         return [
             new ReadSharedCartPermissionPlugin(), #SharedCartFeature
@@ -60,6 +62,8 @@ class PermissionDependencyProvider extends SprykerPermissionDependencyProvider
             new PlaceOrderWithAmountUpToPermissionPlugin(),
             new PlaceOrderPermissionPlugin(), #QuoteApprovalFeature
             new ApproveQuotePermissionPlugin(), #QuoteApprovalFeature
+            new SeeBusinessUnitOrdersPermissionPlugin(),
+            new SeeCompanyOrdersPermissionPlugin(),
         ];
     }
 }
