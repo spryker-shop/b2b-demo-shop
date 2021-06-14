@@ -8,6 +8,7 @@
 namespace Pyz\Zed\FileManagerStorage;
 
 use Pyz\Zed\Synchronization\SynchronizationConfig;
+use Spryker\Shared\Publisher\PublisherConfig;
 use Spryker\Zed\FileManagerStorage\FileManagerStorageConfig as SprykerFileManagerStorageConfig;
 
 class FileManagerStorageConfig extends SprykerFileManagerStorageConfig
@@ -18,5 +19,13 @@ class FileManagerStorageConfig extends SprykerFileManagerStorageConfig
     public function getFileManagerSynchronizationPoolName(): ?string
     {
         return SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getEventQueueName(): ?string
+    {
+        return PublisherConfig::PUBLISH_QUEUE;
     }
 }

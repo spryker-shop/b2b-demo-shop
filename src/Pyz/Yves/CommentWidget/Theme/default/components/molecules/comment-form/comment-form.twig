@@ -83,6 +83,10 @@
                     </button>
                 </div>
             {% endblock %}
+
+            {% block csrfTokenField %}
+                <input type="hidden" name="_token" value="{{ csrf_token('update-comment-form')}}">
+            {% endblock %}
         </form>
     {% endblock %}
 

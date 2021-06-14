@@ -18,7 +18,7 @@ export default class RangeSlider extends Component {
 
     protected mapEvents(): void {
         this.rangeInputs.forEach((input, index) => {
-            input.addEventListener('change',  (event: Event) => {
+            input.addEventListener('change', (event: Event) => {
                 this.setInputValueToSlider(index, (<HTMLInputElement>event.currentTarget).value);
             });
         });
@@ -51,15 +51,18 @@ export default class RangeSlider extends Component {
     }
 
     protected get sliderConfig(): object {
-        return Object.assign(JSON.parse(this.getAttribute('slider-config')), {format: {
-            from: value => value,
-            to: value => {
-                value = (value.toFixed(this.numberDigitsAfterDecimalPoint) % 1) === 0
-                    ? Math.floor(value)
-                    : value.toFixed(this.numberDigitsAfterDecimalPoint);
+        return Object.assign(JSON.parse(this.getAttribute('slider-config')), {
+            format: {
+                from: (value) => value,
+                to: (value) => {
+                    value =
+                        value.toFixed(this.numberDigitsAfterDecimalPoint) % 1 === 0
+                            ? Math.floor(value)
+                            : value.toFixed(this.numberDigitsAfterDecimalPoint);
 
-                return value;
-            }
-        }});
+                    return value;
+                },
+            },
+        });
     }
 }

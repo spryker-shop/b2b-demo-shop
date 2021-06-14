@@ -21,7 +21,7 @@ export default class SlickCarousel extends Component {
     }
 
     protected mapEvents(): void {
-        $(this.slider).on('init', async() => {
+        $(this.slider).on('init', async () => {
             this.showSlider();
             await mount();
         });
@@ -41,9 +41,7 @@ export default class SlickCarousel extends Component {
             }
         });
 
-        $(this.slider).slick(
-            this.sliderConfig
-        );
+        $(this.slider).slick(this.sliderConfig);
     }
 
     protected get sliderConfig(): object {

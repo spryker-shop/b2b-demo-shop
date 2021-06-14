@@ -1,0 +1,23 @@
+@mixin customer-page-shipment-information($name: '.shipment-information') {
+    #{$name} {
+        &__title {
+            margin-bottom: rem(10);
+            font-weight: fw(medium);
+        }
+
+        &__content {
+            font-size: rem(14);
+            line-height: rem(20);
+            color: $setting-color-gray-3;
+
+            @include helper-breakpoint-media-min($lg) {
+                font-size: rem(15);
+                line-height: rem(22);
+            }
+        }
+
+        @content;
+    }
+}
+
+@include customer-page-shipment-information();

@@ -9,7 +9,7 @@
             border: rem(1) solid $setting-color-gray-1;
             color: $setting-color-gray-5;
             background: $setting-color-gray-7;
-            font: fw(regular) rem(15)/rem(46) $setting-font-family;
+            font: fw(regular) rem(15) / rem(46) $setting-font-family;
             font-size: rem(13);
             padding: 0 rem(35) 0 rem(16);
             appearance: none;
@@ -196,7 +196,7 @@
             border: rem(1) solid $setting-color-gray-1;
             color: $setting-color-gray-5;
             background: $setting-color-gray-7;
-            font: fw(regular) rem(15)/rem(46) $setting-font-family;
+            font: fw(regular) rem(15) / rem(46) $setting-font-family;
             padding: 0 rem(45) 0 rem(20);
             white-space: nowrap;
             overflow: hidden;
@@ -255,6 +255,10 @@
                             display: none;
                         }
                     }
+                }
+
+                &#{$name}-container--open {
+                    z-index: $setting-zi-header-switcher;
                 }
             }
 

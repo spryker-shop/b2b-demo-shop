@@ -13,7 +13,7 @@ use Spryker\Zed\QuoteRequest\QuoteRequestConfig as SprykerQuoteRequestConfig;
 class QuoteRequestConfig extends SprykerQuoteRequestConfig
 {
     /**
-     * @return array
+     * @return string[]
      */
     public function getQuoteFieldsAllowedForSaving(): array
     {
@@ -31,6 +31,9 @@ class QuoteRequestConfig extends SprykerQuoteRequestConfig
             QuoteTransfer::CART_RULE_DISCOUNTS,
             QuoteTransfer::PROMOTION_ITEMS,
             QuoteTransfer::QUOTE_APPROVALS,
+            QuoteTransfer::BILLING_ADDRESS,
+            QuoteTransfer::SHIPMENT,
+            QuoteTransfer::SHIPPING_ADDRESS,
         ]);
     }
 }

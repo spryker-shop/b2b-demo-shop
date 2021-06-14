@@ -1,4 +1,4 @@
-@mixin shop-ui-mini-cart-detail ($name: '.mini-cart-detail') {
+@mixin shop-ui-mini-cart-detail($name: '.mini-cart-detail') {
     #{$name} {
         position: relative;
         padding: rem(13) rem(15) rem(15) rem(21);
@@ -25,6 +25,8 @@
             color: $setting-color-gray-4;
             line-height: rem(29);
             letter-spacing: rem(0.2);
+            background: $setting-color-transparent;
+            cursor: pointer;
 
             &:hover {
                 color: $setting-color-gray-4;

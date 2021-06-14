@@ -11,10 +11,67 @@ use Spryker\Zed\Customer\CustomerConfig as SprykerCustomerConfig;
 
 class CustomerConfig extends SprykerCustomerConfig
 {
+    protected const MIN_LENGTH_CUSTOMER_PASSWORD = 8;
+    protected const MAX_LENGTH_CUSTOMER_PASSWORD = 64;
+
     /**
      * {@inheritDoc}
      *
-     * @return array
+     * @return string[]
+     */
+    public function getCustomerPasswordAllowList(): array
+    {
+        return [
+            'change123',
+        ];
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @return string[]
+     */
+    public function getCustomerPasswordDenyList(): array
+    {
+        return [
+            'qwerty',
+        ];
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @return bool
+     */
+    public function isRestorePasswordValidationEnabled(): bool
+    {
+        return true;
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @return string
+     */
+    public function getCustomerPasswordCharacterSet(): string
+    {
+        return "/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[*.!@#$%^&(){}:;\[\]<>,.?\/~_+\-=|])[a-zA-Z0-9*.!@#$%^& (){}:;\[\]<>,.?\/~_+\-=|]*$/";
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @return int|null
+     */
+    public function getCustomerPasswordSequenceLimit(): ?int
+    {
+        return 3;
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @return string[]
      */
     public function getCustomerDetailExternalBlocksUrls()
     {
@@ -22,5 +79,15 @@ class CustomerConfig extends SprykerCustomerConfig
             'sales' => '/sales/customer/customer-orders',
             'notes' => '/customer-note-gui/index/index',
         ] + parent::getCustomerDetailExternalBlocksUrls();
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @return bool
+     */
+    public function isDoubleOptInEnabled(): bool
+    {
+        return true;
     }
 }

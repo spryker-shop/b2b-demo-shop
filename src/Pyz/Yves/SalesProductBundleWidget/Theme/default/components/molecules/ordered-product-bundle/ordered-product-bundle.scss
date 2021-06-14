@@ -1,0 +1,11 @@
+@mixin sales-product-bundle-widget-ordered-product-bundle($name: '.ordered-product-bundle') {
+    #{$name} {
+        &__content {
+            border-bottom: rem(1) solid $setting-color-gray-7;
+        }
+
+        @content;
+    }
+}
+
+@include sales-product-bundle-widget-ordered-product-bundle();

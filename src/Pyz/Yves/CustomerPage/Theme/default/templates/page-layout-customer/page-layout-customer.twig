@@ -1,11 +1,26 @@
-{% extends template('page-layout-customer', '@SprykerShop:CustomerPage') %}
+{% extends template('page-layout-main') %}
+
+{% define data = {
+    activePage: 'overview',
+} %}
+
+{% block breadcrumbs %}
+    {% include molecule('breadcrumb') with {
+        data: {
+            steps: [{
+                label: 'customer.account' | trans,
+            }],
+        },
+    } only %}
+{% endblock %}
 
 {% block title %}{% endblock %}
 
 {% block content %}
     {% set customerNavigation %}
         {% block customerNavigation %}
-            {{ parent() }}
+            {% widget 'CustomerNavigationWidget' args [data.activePage] only %}
+            {% endwidget %}
         {% endblock %}
     {% endset %}
     {% set customerContent %}
@@ -35,8 +50,4 @@
             </div>
         {% endblock %}
     {% endembed %}
-{% endblock %}
-
-{% block footer %}
-    {% include organism('footer') only %}
 {% endblock %}

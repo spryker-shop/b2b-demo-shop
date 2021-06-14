@@ -21,12 +21,13 @@ class QuoteConfig extends SprykerQuoteConfig
             QuoteTransfer::BUNDLE_ITEMS,
             QuoteTransfer::CART_NOTE, #CartNoteFeature,
             QuoteTransfer::EXPENSES, #QuoteApprovalFeature
-            QuoteTransfer::VOUCHER_DISCOUNTS, #QuoteApprovalFeature
-            QuoteTransfer::CART_RULE_DISCOUNTS, #QuoteApprovalFeature
-            QuoteTransfer::PROMOTION_ITEMS, #QuoteApprovalFeature
+            QuoteTransfer::VOUCHER_DISCOUNTS, #QuoteApprovalFeature #PromotionsDiscountsFeature
+            QuoteTransfer::CART_RULE_DISCOUNTS, #QuoteApprovalFeature #PromotionsDiscountsFeature
+            QuoteTransfer::PROMOTION_ITEMS, #QuoteApprovalFeature #PromotionsDiscountsFeature
             QuoteTransfer::IS_LOCKED, #QuoteApprovalFeature
             QuoteTransfer::QUOTE_REQUEST_VERSION_REFERENCE,
             QuoteTransfer::QUOTE_REQUEST_REFERENCE,
+            QuoteTransfer::IS_ORDER_PLACED_SUCCESSFULLY,
         ]);
     }
 }
