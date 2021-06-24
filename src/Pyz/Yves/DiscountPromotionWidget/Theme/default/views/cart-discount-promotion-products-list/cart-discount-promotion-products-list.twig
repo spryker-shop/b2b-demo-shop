@@ -14,6 +14,7 @@
                             },
                         } only %}
                             {% block content %}
+                                {% import _self as component %}
                                 <div class="{{ config.name }}__info">
                                     {{ parent() }}
 
@@ -25,7 +26,6 @@
                                             availableAttributes: data.product.availableAttributes,
                                         },
                                     } only %}
-                                    {% import _self as component %}
 
                                     <div class="{{ component.renderClass(config.name ~ '__actions', modifiers) }}">
                                         {% set isDisabled = not data.product.idProductConcrete or not data.product.available %}
