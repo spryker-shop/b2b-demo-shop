@@ -28,6 +28,7 @@
 
             <div class="col col--expand">
                 <input type="hidden" name="sku" value="{{ data.sku }}" />
+                <input type="hidden" name="_token" value="{{ csrf_token('shopping_list_add_item_form') }}">
 
                 {% include molecule('form-data-injector', 'ShoppingListWidget') with {
                     attributes: {
