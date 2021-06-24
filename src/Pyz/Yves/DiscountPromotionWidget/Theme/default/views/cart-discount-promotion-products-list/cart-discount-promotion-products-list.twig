@@ -1,5 +1,4 @@
 {% extends view('cart-discount-promotion-products-list', '@SprykerShop:DiscountPromotionWidget') %}
-{% import _self as component %}
 
 {% block body %}
     {% if data.promotionProducts is not empty %}
@@ -26,6 +25,7 @@
                                             availableAttributes: data.product.availableAttributes,
                                         },
                                     } only %}
+                                    {% import _self as component %}
 
                                     <div class="{{ component.renderClass(config.name ~ '__actions', modifiers) }}">
                                         {% set isDisabled = not data.product.idProductConcrete or not data.product.available %}
