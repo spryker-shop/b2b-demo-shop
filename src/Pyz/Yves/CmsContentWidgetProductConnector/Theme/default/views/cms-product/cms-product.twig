@@ -11,7 +11,9 @@
     {% embed molecule('slick-carousel') with {
         modifiers: ['full-width', 'equal-height'],
         data: {
-            slides: data.products
+            product: data.product,
+            products: data.products,
+            isUnavailableProductsDisplayed: data.isUnavailableProductsDisplayed,
         },
         attributes: {
             'slider-config': '{
