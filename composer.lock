@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b42b3b33c3c4f357e6bf2f019ff6af64",
+    "content-hash": "b842784832f50950a65794eb47533762",
     "packages": [
         {
             "name": "brick/math",
@@ -20480,20 +20480,20 @@
         },
         {
             "name": "spryker/company-user",
-            "version": "2.14.0",
+            "version": "2.14.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/company-user.git",
-                "reference": "49c80fb8fda1001258e50686ecc7a82a0c997b3a"
+                "reference": "3e4e0fd29c4fd8329b6a3d484036a1f8c2f03e35"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/company-user/zipball/49c80fb8fda1001258e50686ecc7a82a0c997b3a",
-                "reference": "49c80fb8fda1001258e50686ecc7a82a0c997b3a",
+                "url": "https://api.github.com/repos/spryker/company-user/zipball/3e4e0fd29c4fd8329b6a3d484036a1f8c2f03e35",
+                "reference": "3e4e0fd29c4fd8329b6a3d484036a1f8c2f03e35",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2",
+                "php": ">=7.3",
                 "spryker/company": "^1.0.0",
                 "spryker/company-extension": "^1.0.0",
                 "spryker/company-user-extension": "^1.2.0",
@@ -20529,9 +20529,9 @@
             ],
             "description": "CompanyUser module",
             "support": {
-                "source": "https://github.com/spryker/company-user/tree/2.14.0"
+                "source": "https://github.com/spryker/company-user/tree/2.14.1"
             },
-            "time": "2020-07-07T10:53:52+00:00"
+            "time": "2021-06-24T11:15:12+00:00"
         },
         {
             "name": "spryker/company-user-agent",
@@ -28444,65 +28444,6 @@
             "description": "OauthAgentConnector module",
             "support": {
                 "source": "https://github.com/spryker/oauth-agent-connector/tree/1.0.2"
-            },
-            "time": "2020-10-09T11:31:07+00:00"
-        },
-        {
-            "name": "spryker/oauth-company-user",
-            "version": "2.1.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker/oauth-company-user.git",
-                "reference": "f745bbf7f2e7db4e01b73e6dc7b17683a98b59d2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker/oauth-company-user/zipball/f745bbf7f2e7db4e01b73e6dc7b17683a98b59d2",
-                "reference": "f745bbf7f2e7db4e01b73e6dc7b17683a98b59d2",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.2",
-                "psr/http-message": "^1.0.0",
-                "spryker/company-user": "^2.11.0",
-                "spryker/customer": "^7.0.0",
-                "spryker/customer-extension": "^1.3.0",
-                "spryker/kernel": "^3.30.0",
-                "spryker/oauth": "^1.4.0 || ^2.0.0",
-                "spryker/oauth-company-user-extension": "^1.1.0",
-                "spryker/oauth-extension": "^1.1.0",
-                "spryker/util-encoding": "^2.0.0",
-                "spryker/zed-request": "^3.0.0"
-            },
-            "require-dev": {
-                "spryker/code-sniffer": "*",
-                "spryker/company": "*",
-                "spryker/installer": "*",
-                "spryker/oauth-customer-connector": "*",
-                "spryker/propel": "*",
-                "spryker/testify": "*"
-            },
-            "suggest": {
-                "spryker/installer": "If you want to use Installer plugins."
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Spryker\\": "src/Spryker/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "OauthCompanyUser module",
-            "support": {
-                "source": "https://github.com/spryker/oauth-company-user/tree/2.1.2"
             },
             "time": "2020-10-09T11:31:07+00:00"
         },
@@ -55903,6 +55844,65 @@
                 "source": "https://github.com/spryker/module-finder/tree/1.1.0"
             },
             "time": "2020-11-03T09:40:32+00:00"
+        },
+        {
+            "name": "spryker/oauth-company-user",
+            "version": "2.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/oauth-company-user.git",
+                "reference": "2ae01ba280ba1fbe07b02162db3c79a37dfdf837"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/oauth-company-user/zipball/2ae01ba280ba1fbe07b02162db3c79a37dfdf837",
+                "reference": "2ae01ba280ba1fbe07b02162db3c79a37dfdf837",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.3",
+                "psr/http-message": "^1.0.0",
+                "spryker/company-user": "^2.11.0",
+                "spryker/customer": "^7.0.0",
+                "spryker/customer-extension": "^1.3.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/oauth": "^1.4.0 || ^2.0.0",
+                "spryker/oauth-company-user-extension": "^1.1.0",
+                "spryker/oauth-extension": "^1.1.0",
+                "spryker/util-encoding": "^2.0.0",
+                "spryker/zed-request": "^3.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/company": "*",
+                "spryker/installer": "*",
+                "spryker/oauth-customer-connector": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/installer": "If you want to use Installer plugins."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "OauthCompanyUser module",
+            "support": {
+                "source": "https://github.com/spryker/oauth-company-user/tree/2.2.0"
+            },
+            "time": "2021-06-24T11:15:12+00:00"
         },
         {
             "name": "spryker/product-configuration",
