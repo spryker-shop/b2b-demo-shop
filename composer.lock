@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4c7929c3ca22dbed9192b7a33ab83d50",
+    "content-hash": "b336ad2cf65a57b153552d3b74f946f9",
     "packages": [
         {
             "name": "brick/math",
@@ -38212,16 +38212,16 @@
         },
         {
             "name": "spryker/sales",
-            "version": "11.23.0",
+            "version": "11.24.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/sales.git",
-                "reference": "36eb78437f029bca5d2b274de02854bcc6425a92"
+                "reference": "848663499ea67ed65b2bc3952dbed944610d1c2b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/sales/zipball/36eb78437f029bca5d2b274de02854bcc6425a92",
-                "reference": "36eb78437f029bca5d2b274de02854bcc6425a92",
+                "url": "https://api.github.com/repos/spryker/sales/zipball/848663499ea67ed65b2bc3952dbed944610d1c2b",
+                "reference": "848663499ea67ed65b2bc3952dbed944610d1c2b",
                 "shasum": ""
             },
             "require": {
@@ -38237,7 +38237,7 @@
                 "spryker/oms": "^10.3.0 || ^11.0.0",
                 "spryker/propel": "^3.0.0",
                 "spryker/propel-orm": "^1.0.0",
-                "spryker/sales-extension": "^1.8.0",
+                "spryker/sales-extension": "^1.9.0",
                 "spryker/sales-split": "^3.0.0 || ^5.0.0",
                 "spryker/sequence-number": "^3.0.0",
                 "spryker/store": "^1.0.0",
@@ -38283,9 +38283,9 @@
             ],
             "description": "Sales module",
             "support": {
-                "source": "https://github.com/spryker/sales/tree/11.23.0"
+                "source": "https://github.com/spryker/sales/tree/11.24.0"
             },
-            "time": "2021-06-03T15:27:35+00:00"
+            "time": "2021-06-24T13:01:59+00:00"
         },
         {
             "name": "spryker/sales-configurable-bundle",
@@ -38394,20 +38394,20 @@
         },
         {
             "name": "spryker/sales-extension",
-            "version": "1.8.0",
+            "version": "1.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/sales-extension.git",
-                "reference": "03525275e0b9f4cfe156278cca017fcd6c2b6909"
+                "reference": "3e8555b4cb07dbe0543aae039a2f96b3a770fcd4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/sales-extension/zipball/03525275e0b9f4cfe156278cca017fcd6c2b6909",
-                "reference": "03525275e0b9f4cfe156278cca017fcd6c2b6909",
+                "url": "https://api.github.com/repos/spryker/sales-extension/zipball/3e8555b4cb07dbe0543aae039a2f96b3a770fcd4",
+                "reference": "3e8555b4cb07dbe0543aae039a2f96b3a770fcd4",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2"
+                "php": ">=7.3"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*"
@@ -38429,9 +38429,9 @@
             ],
             "description": "SalesExtension module",
             "support": {
-                "source": "https://github.com/spryker/sales-extension/tree/1.8.0"
+                "source": "https://github.com/spryker/sales-extension/tree/1.9.0"
             },
-            "time": "2020-07-14T12:33:41+00:00"
+            "time": "2021-06-24T13:01:59+00:00"
         },
         {
             "name": "spryker/sales-invoice",
@@ -38973,63 +38973,6 @@
                 "source": "https://github.com/spryker/sales-payment-gui/tree/1.0.0"
             },
             "time": "2021-05-16T06:57:28+00:00"
-        },
-        {
-            "name": "spryker/sales-product-connector",
-            "version": "1.4.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker/sales-product-connector.git",
-                "reference": "c580df2e812eae24014c6ac193753e6755f85b04"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker/sales-product-connector/zipball/c580df2e812eae24014c6ac193753e6755f85b04",
-                "reference": "c580df2e812eae24014c6ac193753e6755f85b04",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.2",
-                "spryker/kernel": "^3.30.0",
-                "spryker/product": "^5.0.0 || ^6.0.0",
-                "spryker/propel-orm": "^1.0.0",
-                "spryker/sales": "^7.0.0 || ^8.0.0 || ^10.0.0 || ^11.0.0",
-                "spryker/sales-extension": "^1.7.0",
-                "spryker/util-encoding": "^2.0.0"
-            },
-            "require-dev": {
-                "spryker/checkout": "*",
-                "spryker/code-sniffer": "*",
-                "spryker/customer": "*",
-                "spryker/oms": "*",
-                "spryker/product-image": "*",
-                "spryker/propel": "*",
-                "spryker/store": "*",
-                "spryker/testify": "*"
-            },
-            "suggest": {
-                "spryker/checkout": "If you want to save product specific information during checkout"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Spryker\\": "src/Spryker/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "SalesProductConnector module",
-            "support": {
-                "source": "https://github.com/spryker/sales-product-connector/tree/1.4.0"
-            },
-            "time": "2020-05-27T06:39:44+00:00"
         },
         {
             "name": "spryker/sales-quantity",
@@ -55916,6 +55859,63 @@
                 "source": "https://github.com/spryker/module-finder/tree/1.1.0"
             },
             "time": "2020-11-03T09:40:32+00:00"
+        },
+        {
+            "name": "spryker/sales-product-connector",
+            "version": "1.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/sales-product-connector.git",
+                "reference": "398a7c35eba022385da0cc91585f467ea7442de6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/sales-product-connector/zipball/398a7c35eba022385da0cc91585f467ea7442de6",
+                "reference": "398a7c35eba022385da0cc91585f467ea7442de6",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.3",
+                "spryker/kernel": "^3.30.0",
+                "spryker/product": "^5.0.0 || ^6.0.0",
+                "spryker/propel-orm": "^1.0.0",
+                "spryker/sales": "^7.0.0 || ^8.0.0 || ^10.0.0 || ^11.0.0",
+                "spryker/sales-extension": "^1.9.0",
+                "spryker/util-encoding": "^2.0.0"
+            },
+            "require-dev": {
+                "spryker/checkout": "*",
+                "spryker/code-sniffer": "*",
+                "spryker/customer": "*",
+                "spryker/oms": "*",
+                "spryker/product-image": "*",
+                "spryker/propel": "*",
+                "spryker/store": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/checkout": "If you want to save product specific information during checkout"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "SalesProductConnector module",
+            "support": {
+                "source": "https://github.com/spryker/sales-product-connector/tree/1.5.0"
+            },
+            "time": "2021-06-24T13:01:59+00:00"
         },
         {
             "name": "spryker/testify",
