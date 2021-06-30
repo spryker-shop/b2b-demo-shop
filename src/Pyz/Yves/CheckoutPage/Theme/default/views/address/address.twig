@@ -15,6 +15,7 @@
     {% set companyBusinessUnitShippingAddressWidget = findWidget('CompanyBusinessUnitAddressWidget', ['shippingAddress', data.forms.shipping.vars.data]) %}
     {% set isCompanyBusinessUnitShippingAddressApplicable = companyBusinessUnitShippingAddressWidget and companyBusinessUnitShippingAddressWidget.isApplicable %}
     {% set jsAddressClass = 'js-address' %}
+    {% set billingSameAsShippingData = data.forms.billingSameAsShipping.vars.data %}
 
     <div class="grid grid--justify grid--baseline">
         <h5 class="title title--second col col--sm-6 col--lg-8">{{ 'page.checkout.address.shipping-address' | trans }}</h5>
@@ -44,7 +45,7 @@
             companyBusinessUnitShippingAddressWidget: companyBusinessUnitShippingAddressWidget,
             isCompanyBusinessUnitShippingAddressApplicable: isCompanyBusinessUnitShippingAddressApplicable,
             jsAddressClass: jsAddressClass,
-            isBillingSameAsShippingChecked: data.forms.billing.id_customer_address.vars.choices is empty,
+            isBillingSameAsShippingChecked: billingSameAsShippingData is not defined or billingSameAsShippingData,
         },
     } only %}
         {% block title %}{% endblock %}

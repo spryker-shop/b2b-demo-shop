@@ -8,6 +8,7 @@
 namespace Pyz\Client\Cart;
 
 use Spryker\Client\Cart\CartDependencyProvider as SprykerCartDependencyProvider;
+use Spryker\Client\Cart\Plugin\ProductSeparateCartChangeExpanderPlugin;
 use Spryker\Client\DiscountPromotion\Plugin\AddDiscountPromotionCartRequestExpandPlugin;
 use Spryker\Client\PersistentCart\Plugin\DatabaseQuoteStorageStrategy;
 use Spryker\Client\ProductBundle\Plugin\Cart\BundleProductQuoteItemFinderPlugin;
@@ -54,6 +55,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new AddDiscountPromotionCartRequestExpandPlugin(),
             new SingleItemQuantitySalesUnitCartChangeRequestExpanderPlugin(),
             new ProductPackagingUnitAmountCartChangeRequestExpanderPlugin(), #ProductPackagingUnit
+            new ProductSeparateCartChangeExpanderPlugin(),
         ];
     }
 
