@@ -53,7 +53,6 @@ use Spryker\Zed\SalesConfigurableBundle\Communication\Plugin\Sales\ConfiguredBun
 use Spryker\Zed\SalesOms\Communication\Plugin\OrderItemReferenceExpanderPreSavePlugin;
 use Spryker\Zed\SalesPayment\Communication\Plugin\Sales\SalesPaymentOrderExpanderPlugin;
 use Spryker\Zed\SalesProductConnector\Communication\Plugin\Sales\ItemMetadataOrderItemsPostSavePlugin;
-use Spryker\Zed\SalesProductConfiguration\Communication\Plugin\Sales\ProductConfigurationOrderItemsPostSavePlugin;
 use Spryker\Zed\SalesProductConnector\Communication\Plugin\Sales\ItemMetadataSearchOrderExpanderPlugin;
 use Spryker\Zed\SalesProductConnector\Communication\Plugin\Sales\MetadataOrderItemExpanderPlugin;
 use Spryker\Zed\SalesProductConnector\Communication\Plugin\Sales\ProductIdOrderItemExpanderPlugin;
@@ -235,7 +234,6 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
     {
         return [
             new ConfiguredBundlesOrderItemsPostSavePlugin(),
-            new ProductConfigurationOrderItemsPostSavePlugin(),
             new ItemMetadataOrderItemsPostSavePlugin(),
         ];
     }
