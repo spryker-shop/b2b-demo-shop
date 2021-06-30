@@ -1,5 +1,4 @@
 {% extends view('cart-discount-promotion-products-list', '@SprykerShop:DiscountPromotionWidget') %}
-{% import _self as component %}
 
 {% block body %}
     {% if data.promotionProducts is not empty %}
@@ -15,6 +14,7 @@
                             },
                         } only %}
                             {% block content %}
+                                {% import _self as component %}
                                 <div class="{{ config.name }}__info">
                                     {{ parent() }}
 
