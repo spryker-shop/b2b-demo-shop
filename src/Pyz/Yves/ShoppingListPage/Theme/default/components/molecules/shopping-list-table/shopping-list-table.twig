@@ -11,6 +11,10 @@
 
 {% block body %}
     {% for item in data.shoppingListItems %}
+        <input class="input" type="hidden"
+               name="shoppingListItems[{{ item.idShoppingListItem }}]"
+               value="{{ item.shoppingListItem.toArray | json_encode }}"
+        >
         {% set isItemAvailable = item.available is defined and item.available and item.price is defined and item.price is not null %}
         {% set productDiscontinuedNoteWidget = findWidget('ProductDiscontinuedNoteWidget', [item.sku]) %}
 
