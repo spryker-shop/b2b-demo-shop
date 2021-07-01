@@ -142,6 +142,8 @@
                 </div>
 
                 {% widget 'AddToMultiCartWidget' args [data.isDisabled] only %}{% endwidget %}
+
+                {% widget 'CartAddProductAsSeparateItemWidget' only %}{% endwidget %}
             {% endif %}
 
             {% if not data.product.available %}
