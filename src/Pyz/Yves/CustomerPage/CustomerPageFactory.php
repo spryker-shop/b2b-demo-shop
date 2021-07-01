@@ -7,29 +7,11 @@
 
 namespace Pyz\Yves\CustomerPage;
 
-use Generated\Shared\Transfer\CustomerTransfer;
-use Pyz\Yves\CustomerPage\Security\Customer;
 use Spryker\Client\Session\SessionClientInterface;
 use SprykerShop\Yves\CustomerPage\CustomerPageFactory as SprykerCustomerPageFactory;
-use SprykerShop\Yves\CustomerPage\Plugin\Security\CustomerPageSecurityPlugin;
 
 class CustomerPageFactory extends SprykerCustomerPageFactory
 {
-    /**
-     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
-     *
-     * @return \Symfony\Component\Security\Core\User\UserInterface
-     */
-    public function createSecurityUser(CustomerTransfer $customerTransfer)
-    {
-        return new Customer(
-            $customerTransfer,
-            $customerTransfer->getEmail(),
-            $customerTransfer->getPassword(),
-            [CustomerPageSecurityPlugin::ROLE_NAME_USER]
-        );
-    }
-
     /**
      * @return \Spryker\Client\Session\SessionClientInterface
      */

@@ -7,7 +7,6 @@
 
 namespace Pyz\Zed\CompanyUser\Persistence;
 
-use Orm\Zed\Company\Persistence\Map\SpyCompanyTableMap;
 use Spryker\Zed\CompanyUser\Persistence\CompanyUserRepository as SprykerCompanyUserRepository;
 
 /**
@@ -15,28 +14,6 @@ use Spryker\Zed\CompanyUser\Persistence\CompanyUserRepository as SprykerCompanyU
  */
 class CompanyUserRepository extends SprykerCompanyUserRepository implements CompanyUserRepositoryInterface
 {
-    /**
-     * @uses \Orm\Zed\Company\Persistence\SpyCompanyQuery
-     *
-     * @param int $idCustomer
-     *
-     * @return bool
-     */
-    public function hasEnabledCompanyUsers(int $idCustomer): bool
-    {
-        $query = $this->getFactory()
-            ->createCompanyUserQuery()
-            ->filterByFkCustomer($idCustomer)
-            ->filterByIsActive(true)
-            ->joinCompany()
-            ->useCompanyQuery()
-                ->filterByIsActive(true)
-                ->filterByStatus(SpyCompanyTableMap::COL_STATUS_APPROVED)
-            ->endUse();
-
-        return $query->exists();
-    }
-
     /**
      * @param int $idCustomer
      *
