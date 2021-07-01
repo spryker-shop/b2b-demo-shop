@@ -7,7 +7,9 @@
             {% for expense in data.expenses %}
                 {% include molecule('sales-order-threshold-expense', 'SalesOrderThresholdWidget') with {
                     class: 'spacing-top',
-                    data: {'expense': expense}
+                    data: {
+                        'expense': expense,
+                    },
                 } only %}
             {% endfor %}
         </ul>
