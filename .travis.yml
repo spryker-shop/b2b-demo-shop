@@ -116,9 +116,11 @@ jobs:
         - TRAVIS=1
       addons:
         hosts:
-          - yves.de.spryker.local
-          - zed.de.spryker.local
-          - glue.de.spryker.local
+          - backend-api.de.spryker.test
+          - backend-gateway.de.spryker.test
+          - backoffice.de.spryker.test
+          - glue.de.spryker.test
+          - www.de.spryker.test
         apt:
           packages:
             - apache2-utils
@@ -158,9 +160,11 @@ jobs:
         - TRAVIS=1
       addons:
         hosts:
-          - yves.de.spryker.local
-          - zed.de.spryker.local
-          - glue.de.spryker.local
+          - backend-api.de.spryker.test
+          - backend-gateway.de.spryker.test
+          - backoffice.de.spryker.test
+          - glue.de.spryker.test
+          - www.de.spryker.test
         apt:
           packages:
             - apache2-utils
@@ -201,9 +205,11 @@ jobs:
         - TRAVIS=1
       addons:
         hosts:
-          - yves.de.spryker.local
-          - zed.de.spryker.local
-          - glue.de.spryker.local
+          - backend-api.de.spryker.test
+          - backend-gateway.de.spryker.test
+          - backoffice.de.spryker.test
+          - glue.de.spryker.test
+          - www.de.spryker.test
         apt:
           packages:
             - apache2-utils
@@ -242,9 +248,11 @@ jobs:
         - TRAVIS=1
       addons:
         hosts:
-          - yves.de.spryker.local
-          - zed.de.spryker.local
-          - glue.de.spryker.local
+          - backend-api.de.spryker.test
+          - backend-gateway.de.spryker.test
+          - backoffice.de.spryker.test
+          - glue.de.spryker.test
+          - www.de.spryker.test
         apt:
           packages:
             - apache2-utils
@@ -283,9 +291,11 @@ jobs:
         - TRAVIS=1
       addons:
         hosts:
-          - yves.de.spryker.local
-          - zed.de.spryker.local
-          - glue.de.spryker.local
+          - backend-api.de.spryker.test
+          - backend-gateway.de.spryker.test
+          - backoffice.de.spryker.test
+          - glue.de.spryker.test
+          - www.de.spryker.test
         apt:
           packages:
             - apache2-utils
@@ -325,9 +335,11 @@ jobs:
         - TRAVIS=1
       addons:
         hosts:
-          - yves.de.spryker.local
-          - zed.de.spryker.local
-          - glue.de.spryker.local
+          - backend-api.de.spryker.test
+          - backend-gateway.de.spryker.test
+          - backoffice.de.spryker.test
+          - glue.de.spryker.test
+          - www.de.spryker.test
         apt:
           packages:
             - apache2-utils
@@ -367,9 +379,11 @@ jobs:
         - TRAVIS=1
       addons:
         hosts:
-          - yves.de.spryker.local
-          - zed.de.spryker.local
-          - glue.de.spryker.local
+          - backend-api.de.spryker.test
+          - backend-gateway.de.spryker.test
+          - backoffice.de.spryker.test
+          - glue.de.spryker.test
+          - www.de.spryker.test
         apt:
           packages:
             - apache2-utils
@@ -391,7 +405,7 @@ jobs:
         - git clone https://github.com/spryker/docker-sdk.git --single-branch --branch master ./docker
         - docker/sdk boot deploy.yml
         - SPRYKER_BUILD_HASH=myhash docker/sdk export images
-        - docker run -it --rm -e SPRYKER_NGINX_CGI_HOST_YVES_EU=localhost -e SPRYKER_NGINX_CGI_HOST_ZED_EU=localhost -e SPRYKER_NGINX_CGI_HOST_GLUE_EU=localhost -e SPRYKER_NGINX_CGI_HOST_YVES_US=localhost -e SPRYKER_NGINX_CGI_HOST_GLUE_US=localhost -e SPRYKER_NGINX_CGI_HOST_ZED_US=localhost -e ALLOWED_IP=127.0.0.1 spryker_b2b_frontend:1.0-frontend nginx -t
+        - docker run -it --rm -e SPRYKER_NGINX_CGI_HOST_YVES_EU=localhost -e SPRYKER_NGINX_CGI_HOST_BACKOFFICE_EU=localhost -e SPRYKER_NGINX_CGI_HOST_BACKEND_GATEWAY_EU=localhost -e SPRYKER_NGINX_CGI_HOST_BACKEND_API_EU=localhost -e SPRYKER_NGINX_CGI_HOST_GLUE_EU=localhost -e SPRYKER_NGINX_CGI_HOST_CONFIGURATOR_EU=localhost -e SPRYKER_NGINX_CGI_HOST_YVES_US=localhost -e SPRYKER_NGINX_CGI_HOST_GLUE_US=localhost -e SPRYKER_NGINX_CGI_HOST_BACKOFFICE_US=localhost -e SPRYKER_NGINX_CGI_HOST_BACKEND_GATEWAY_US=localhost -e SPRYKER_NGINX_CGI_HOST_BACKEND_API_US=localhost -e ALLOWED_IP=127.0.0.1 spryker_demo_frontend:1.0-frontend nginx -t
         - docker run -it --rm --entrypoint='' spryker_b2b_frontend:1.0-frontend ls -al /data/public/Yves/assets/myhash
         - docker run -it --rm --entrypoint='' spryker_b2b_frontend:1.0-frontend ls -al /data/public/Zed/assets/
       before_install:
@@ -420,9 +434,11 @@ addons:
   mariadb: "10.3"
 
   hosts:
-    - zed.de.spryker.test
-    - www.de.spryker.test
+    - backend-api.de.spryker.test
+    - backend-gateway.de.spryker.test
+    - backoffice.de.spryker.test
     - glue.de.spryker.test
+    - www.de.spryker.test
 
 cache:
   directories:
