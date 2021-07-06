@@ -81,7 +81,6 @@ class EventDispatcherDependencyProvider extends SprykerEventDispatcherDependency
             new MonitoringRequestTransactionEventDispatcherPlugin(),
             new RouterListenerEventDispatcherPlugin(),
             new ResponseListenerEventDispatcherPlugin(),
-            new ApiControllerEventDispatcherPlugin(),
             new AutoloaderCacheEventDispatcherPlugin(),
         ];
     }

@@ -39,8 +39,6 @@ class RouterDependencyProvider extends SprykerRouterDependencyProvider
      */
     protected function getBackendApiRouterPlugins(): array
     {
-        return [
-            new ApiRouterPlugin(),
-        ];
+        return [];
     }
 }
