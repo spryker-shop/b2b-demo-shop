@@ -12,6 +12,7 @@ use SprykerShop\Yves\AgentPage\Plugin\FixAgentTokenAfterCustomerAuthenticationSu
 use SprykerShop\Yves\CompanyPage\Plugin\CustomerPage\BusinessOnBehalfCompanyUserRedirectAfterLoginStrategyPlugin;
 use SprykerShop\Yves\CompanyPage\Plugin\CustomerPage\CompanyBusinessUnitOrderSearchFormExpanderPlugin;
 use SprykerShop\Yves\CompanyPage\Plugin\CustomerPage\CompanyBusinessUnitOrderSearchFormHandlerPlugin;
+use SprykerShop\Yves\CompanyPage\Plugin\CustomerPage\CompanyUserPreAuthUserCheckPlugin;
 use SprykerShop\Yves\CompanyUserInvitationPage\Plugin\CompanyUserInvitationPreRegistrationCustomerTransferExpanderPlugin;
 use SprykerShop\Yves\CustomerPage\CustomerPageDependencyProvider as SprykerShopCustomerPageDependencyProvider;
 use SprykerShop\Yves\CustomerPage\Plugin\CustomerPage\RedirectUriCustomerRedirectStrategyPlugin;
@@ -127,6 +128,16 @@ class CustomerPageDependencyProvider extends SprykerShopCustomerPageDependencyPr
     {
         return [
             new CompanyBusinessUnitOrderSearchFormHandlerPlugin(),
+        ];
+    }
+
+    /**
+     * @return \SprykerShop\Yves\CustomerPageExtension\Dependency\Plugin\PreAuthUserCheckPluginInterface[]
+     */
+    protected function getPreAuthUserCheckPlugins(): array
+    {
+        return [
+            new CompanyUserPreAuthUserCheckPlugin(),
         ];
     }
 }
