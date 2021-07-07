@@ -49,7 +49,8 @@
     </div>
 
     {% if can('SeePricePermissionPlugin') %}
-        {% widget 'ProductPriceVolumeWidget' args [data.product] only %}
+        {% widget 'CurrentProductPriceVolumeWidget' args [data.product.currentProductPrice] only %}
+        {% elsewidget 'ProductPriceVolumeWidget' args [data.product] only %} {# @deprecated Use CurrentProductPriceVolumeWidget instead. #}
         {% nowidget %}
             {% include molecule('money-price') with {
                 modifiers: ['big'],
