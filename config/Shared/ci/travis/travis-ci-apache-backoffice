@@ -1,7 +1,7 @@
 <VirtualHost *:80>
 
   DocumentRoot %TRAVIS_BUILD_DIR%/public/Backoffice
-  ServerName backoffice.de.spryker.test
+  ServerName backoffice.de.spryker.local
   SetEnv APPLICATION_ENV %APPLICATION_ENV%
   SetEnv POSTGRES_PORT %POSTGRES_PORT%
   SetEnv SPRYKER_TESTING_ENABLED 1
