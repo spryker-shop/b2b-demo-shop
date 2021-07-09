@@ -3,7 +3,9 @@ import FormSubmitterCore from 'ShopUi/components/molecules/form-submitter/form-s
 export default class FormSubmitter extends FormSubmitterCore {
     protected onEvent(event: Event): void {
         const trigger = <HTMLFormElement>event.currentTarget;
-        const form = <HTMLFormElement>(this.formClassName ? document.getElementsByClassName(this.formClassName)[0] : trigger.closest(TAG_NAME));
+        const form = <HTMLFormElement>(
+            (this.formClassName ? document.getElementsByClassName(this.formClassName)[0] : trigger.closest(TAG_NAME))
+        );
 
         if (!form) {
             return;
