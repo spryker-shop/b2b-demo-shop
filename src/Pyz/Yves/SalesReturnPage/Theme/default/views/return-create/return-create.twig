@@ -24,9 +24,16 @@
         } only %}
             {% block actions %}
                 {{ parent() }}
-                <button class="action-bar__action button js-return-create__target-state-toggler" disabled>
+                <button class="action-bar__action button js-return-create__target-state-toggler js-return-create__trigger-submit" disabled>
                     {{ 'return_page.button_text' | trans }}
                 </button>
+                {% include molecule('form-submitter') with {
+                    attributes: {
+                        'trigger-selector': '.js-return-create__trigger-submit',
+                        'event': 'click',
+                        'form-selector': '.js-return-create__target-form',
+                    },
+                } only %}
             {% endblock %}
         {% endembed %}
     {% endblock %}
