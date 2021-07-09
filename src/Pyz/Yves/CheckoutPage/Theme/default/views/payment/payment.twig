@@ -38,6 +38,8 @@
         },
     } only %}
         {% block fieldset %}
+            {{ form_errors(data.form.paymentSelection) }}
+
             {% for choices in data.form.paymentSelection.vars.choices %}
                 {% set paymentProviderIndex = loop.index0 %}
                 {% embed molecule('checkout-list', 'CheckoutPage') with {
