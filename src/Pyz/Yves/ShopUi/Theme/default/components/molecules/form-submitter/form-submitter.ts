@@ -3,7 +3,7 @@ import FormSubmitterCore from 'ShopUi/components/molecules/form-submitter/form-s
 export default class FormSubmitter extends FormSubmitterCore {
     protected onEvent(event: Event): void {
         const trigger = <HTMLFormElement>event.currentTarget;
-        const form = <HTMLFormElement>(!this.formSelector ? trigger.closest(TAG_NAME) : document.querySelector(this.formSelector));
+        const form = <HTMLFormElement>(this.formClassName ? document.getElementsByClassName(this.formClassName)[0] : trigger.closest(TAG_NAME));
 
         if (!form) {
             return;
@@ -11,7 +11,7 @@ export default class FormSubmitter extends FormSubmitterCore {
 
         const submit =
             <HTMLButtonElement | HTMLInputElement>form.querySelector('[type="submit"]') ||
-            <HTMLButtonElement>form.querySelector('button');
+            <HTMLButtonElement>form.querySelector('button:not([type])');
 
         if (submit) {
             submit.click();
@@ -21,7 +21,7 @@ export default class FormSubmitter extends FormSubmitterCore {
         form.submit();
     }
 
-    protected get formSelector(): string {
-        return this.getAttribute('form-selector');
+    protected get formClassName(): string {
+        return this.getAttribute('form-class-name');
     }
 }

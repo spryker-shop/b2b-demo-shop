@@ -24,14 +24,14 @@
         } only %}
             {% block actions %}
                 {{ parent() }}
-                <button class="action-bar__action button js-return-create__target-state-toggler js-return-create__trigger-submit" disabled>
+                <button class="button {{ config.name }}__action {{ config.jsName }}__action js-return-create__target-state-toggler" disabled>
                     {{ 'return_page.button_text' | trans }}
                 </button>
                 {% include molecule('form-submitter') with {
                     attributes: {
-                        'trigger-selector': '.js-return-create__trigger-submit',
+                        'trigger-selector': '.' ~ config.jsName ~ '__action',
                         'event': 'click',
-                        'form-selector': '.js-return-create__target-form',
+                        'form-class-name': 'js-return-create__target-form',
                     },
                 } only %}
             {% endblock %}
