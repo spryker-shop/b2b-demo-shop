@@ -54,7 +54,6 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
     {
         return [
             new CategoryFacetConfigTransferBuilderPlugin(),
-            new PriceFacetConfigTransferBuilderPlugin(),
             new RatingFacetConfigTransferBuilderPlugin(),
             new ProductLabelFacetConfigTransferBuilderPlugin(),
         ];
