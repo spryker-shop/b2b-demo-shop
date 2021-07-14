@@ -39,7 +39,7 @@
                 <option value="">{{ 'comment_widget.form.tags' | trans }}</option>
 
                 {% for availableTag in embed.availableTags %}
-                    {% if not availableTag in embed.tagNames %}
+                    {% if availableTag not in embed.tagNames %}
                         <option value="{{ availableTag }}">{{ ('comment_widget.tags.' ~ availableTag) | trans }}</option>
                     {% endif %}
                 {% endfor %}
