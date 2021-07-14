@@ -9,9 +9,11 @@ namespace Pyz\Zed\Synchronization;
 
 use Spryker\Zed\AvailabilityStorage\Communication\Plugin\Synchronization\AvailabilitySynchronizationDataPlugin;
 use Spryker\Zed\CategoryImageStorage\Communication\Plugin\Synchronization\CategoryImageSynchronizationDataBulkPlugin;
-use Spryker\Zed\CategoryPageSearch\Communication\Plugin\Synchronization\CategoryPageSynchronizationDataPlugin;
-use Spryker\Zed\CategoryStorage\Communication\Plugin\Synchronization\CategoryNodeSynchronizationDataPlugin;
-use Spryker\Zed\CategoryStorage\Communication\Plugin\Synchronization\CategoryTreeSynchronizationDataPlugin;
+use Spryker\Zed\CategoryPageSearch\Communication\Plugin\Synchronization\CategoryPageSynchronizationDataBulkRepositoryPlugin;
+use Spryker\Zed\CategoryStorage\Communication\Plugin\Synchronization\CategoryNodeSynchronizationDataBulkRepositoryPlugin;
+use Spryker\Zed\CategoryStorage\Communication\Plugin\Synchronization\CategoryTreeSynchronizationDataBulkRepositoryPlugin;
+use Spryker\Zed\CmsBlockCategoryStorage\Communication\Plugin\Synchronization\CmsBlockCategorySynchronizationDataPlugin;
+use Spryker\Zed\CmsBlockProductStorage\Communication\Plugin\Synchronization\CmsBlockProductSynchronizationDataPlugin;
 use Spryker\Zed\CmsBlockStorage\Communication\Plugin\Synchronization\CmsBlockSynchronizationDataPlugin;
 use Spryker\Zed\CmsPageSearch\Communication\Plugin\Synchronization\CmsPageSynchronizationDataPlugin;
 use Spryker\Zed\CmsSlotBlockStorage\Communication\Plugin\Synchronization\CmsSlotBlockSynchronizationDataBulkPlugin;
@@ -34,7 +36,7 @@ use Spryker\Zed\ProductAlternativeStorage\Communication\Plugin\Synchronization\P
 use Spryker\Zed\ProductAlternativeStorage\Communication\Plugin\Synchronization\ProductReplacementForSynchronizationDataBulkPlugin;
 use Spryker\Zed\ProductBundleStorage\Communication\Plugin\Synchronization\ProductBundleSynchronizationDataBulkRepositoryPlugin;
 use Spryker\Zed\ProductCategoryFilterStorage\Communication\Plugin\Synchronization\ProductCategoryFilterSynchronizationDataPlugin;
-use Spryker\Zed\ProductCategoryStorage\Communication\Plugin\Synchronization\ProductCategorySynchronizationDataPlugin;
+use Spryker\Zed\ProductCategoryStorage\Communication\Plugin\Synchronization\ProductCategorySynchronizationDataBulkRepositoryPlugin;
 use Spryker\Zed\ProductDiscontinuedStorage\Communication\Plugin\Synchronization\ProductDiscontinuedSynchronizationDataBulkPlugin;
 use Spryker\Zed\ProductGroupStorage\Communication\Plugin\Synchronization\ProductGroupSynchronizationDataPlugin;
 use Spryker\Zed\ProductImageStorage\Communication\Plugin\Synchronization\ProductAbstractImageSynchronizationDataPlugin;
@@ -60,7 +62,9 @@ use Spryker\Zed\ProductStorage\Communication\Plugin\Synchronization\ProductAbstr
 use Spryker\Zed\ProductStorage\Communication\Plugin\Synchronization\ProductConcreteSynchronizationDataPlugin;
 use Spryker\Zed\SalesReturnSearch\Communication\Plugin\Synchronization\ReturnReasonSynchronizationDataBulkRepositoryPlugin;
 use Spryker\Zed\ShoppingListStorage\Communication\Plugin\Synchronization\ShoppingListSynchronizationDataBulkPlugin;
+use Spryker\Zed\Synchronization\Communication\Plugin\Synchronization\SynchronizationDataQueryExpanderWhereBetweenStrategyPlugin;
 use Spryker\Zed\Synchronization\SynchronizationDependencyProvider as SprykerSynchronizationDependencyProvider;
+use Spryker\Zed\SynchronizationExtension\Dependency\Plugin\SynchronizationDataQueryExpanderStrategyPluginInterface;
 use Spryker\Zed\TaxProductStorage\Communication\Plugin\Synchronization\TaxProductSynchronizationDataPlugin;
 use Spryker\Zed\TaxStorage\Communication\Plugin\Synchronization\TaxSynchronizationDataPlugin;
 use Spryker\Zed\UrlStorage\Communication\Plugin\Synchronization\UrlRedirectSynchronizationDataPlugin;
@@ -74,14 +78,11 @@ class SynchronizationDependencyProvider extends SprykerSynchronizationDependency
     protected function getSynchronizationDataPlugins(): array
     {
         return [
-            new CategoryPageSynchronizationDataPlugin(),
             new CmsPageSynchronizationDataPlugin(),
             new ProductPageSynchronizationDataPlugin(),
             new ProductReviewSearchSynchronizationDataPlugin(),
             new ProductSetSearchSynchronizationDataPlugin(),
             new AvailabilitySynchronizationDataPlugin(),
-            new CategoryTreeSynchronizationDataPlugin(),
-            new CategoryNodeSynchronizationDataPlugin(),
             new CmsBlockSynchronizationDataPlugin(),
             new CmsSynchronizationDataPlugin(),
             new FileSynchronizationDataBulkPlugin(),
@@ -90,7 +91,6 @@ class SynchronizationDependencyProvider extends SprykerSynchronizationDependency
             new PriceProductConcreteSynchronizationDataPlugin(),
             new PriceProductAbstractSynchronizationDataPlugin(),
             new ProductCategoryFilterSynchronizationDataPlugin(),
-            new ProductCategorySynchronizationDataPlugin(),
             new ProductGroupSynchronizationDataPlugin(),
             new ProductAbstractImageSynchronizationDataPlugin(),
             new ProductConcreteImageSynchronizationDataPlugin(),
@@ -131,6 +131,21 @@ class SynchronizationDependencyProvider extends SprykerSynchronizationDependency
             new ConfigurableBundleTemplatePageSynchronizationDataBulkPlugin(),
             new ReturnReasonSynchronizationDataBulkRepositoryPlugin(),
             new ProductBundleSynchronizationDataBulkRepositoryPlugin(),
+            new CategoryPageSynchronizationDataBulkRepositoryPlugin(),
+            new CategoryTreeSynchronizationDataBulkRepositoryPlugin(),
+            new CategoryNodeSynchronizationDataBulkRepositoryPlugin(),
+            new ProductCategorySynchronizationDataBulkRepositoryPlugin(),
+            new ProductCategoryFilterSynchronizationDataPlugin(),
+            new CmsBlockCategorySynchronizationDataPlugin(),
+            new CmsBlockProductSynchronizationDataPlugin(),
         ];
+    }
+
+    /**
+     * @return \Spryker\Zed\SynchronizationExtension\Dependency\Plugin\SynchronizationDataQueryExpanderStrategyPluginInterface
+     */
+    protected function getSynchronizationDataQueryExpanderStrategyPlugin(): SynchronizationDataQueryExpanderStrategyPluginInterface
+    {
+        return new SynchronizationDataQueryExpanderWhereBetweenStrategyPlugin();
     }
 }
