@@ -1,21 +1,21 @@
 import Component from 'ShopUi/models/component';
 
 export default class MiniCartRadio extends Component {
-    protected radio: HTMLElement;
+    protected form: HTMLFormElement;
 
     protected readyCallback(): void {}
 
     protected init(): void {
-        this.radio = this.getElementsByTagName('input')[0];
+        this.form = <HTMLFormElement>this.getElementsByClassName(`${this.jsName}__form`)[0];
 
         this.mapEvents();
     }
 
-    private mapEvents(): void {
-        this.onclick = () => (window.location.href = this.locationUrl);
+    protected mapEvents(): void {
+        this.addEventListener('click', () => this.onMiniCartRadioClick());
     }
 
-    protected get locationUrl(): string {
-        return this.radio.dataset.href;
+    protected onMiniCartRadioClick(): void {
+        this.form.submit();
     }
 }
