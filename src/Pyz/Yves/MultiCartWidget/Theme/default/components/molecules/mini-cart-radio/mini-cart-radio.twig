@@ -1,23 +1,11 @@
 {% extends molecule('mini-cart-radio', '@SprykerShop:MultiCartWidget') %}
 
-{% block body %}
-
-    <form method="POST" action="{{ data.formAction }}" class="{{ config.jsName }}__form">
-        <input name="{{ data.inputName }}" type="hidden" value="{{ data.inputValue }}">
-    </form>
-    {% block radioButton %}
-        {% include atom('radio') with {
-            class: config.jsName,
-            modifiers: ['sm-lg-regular'],
-            data: {
-                inputClass: config.jsName ~ '__input',
-            },
-            attributes: {
-                name: 'cart-isDefault',
-                checked: data.isDefault,
-                'data-href': data.formAction,
-            },
-        } only %}
-    {% endblock %}
-
+{% block radioButton %}
+    {% include atom('radio') with {
+        modifiers: ['sm-lg-regular'],
+        attributes: {
+            name: 'cart-isDefault',
+            checked: data.isDefault,
+        },
+    } only %}
 {% endblock %}
