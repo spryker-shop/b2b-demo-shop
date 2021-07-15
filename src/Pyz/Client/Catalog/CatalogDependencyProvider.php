@@ -17,7 +17,6 @@ use Spryker\Client\Catalog\Plugin\Elasticsearch\ResultFormatter\ProductConcreteC
 use Spryker\Client\Catalog\Plugin\Elasticsearch\ResultFormatter\RawCatalogSearchResultFormatterPlugin;
 use Spryker\Client\CatalogPriceProductConnector\Plugin\ConfigTransferBuilder\AscendingPriceSortConfigTransferBuilderPlugin;
 use Spryker\Client\CatalogPriceProductConnector\Plugin\ConfigTransferBuilder\DescendingPriceSortConfigTransferBuilderPlugin;
-use Spryker\Client\CatalogPriceProductConnector\Plugin\ConfigTransferBuilder\PriceFacetConfigTransferBuilderPlugin;
 use Spryker\Client\CatalogPriceProductConnector\Plugin\CurrencyAwareCatalogSearchResultFormatterPlugin;
 use Spryker\Client\CatalogPriceProductConnector\Plugin\CurrencyAwareSuggestionByTypeResultFormatter;
 use Spryker\Client\CatalogPriceProductConnector\Plugin\ProductPriceQueryExpanderPlugin;
@@ -54,7 +53,6 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
     {
         return [
             new CategoryFacetConfigTransferBuilderPlugin(),
-            new PriceFacetConfigTransferBuilderPlugin(),
             new RatingFacetConfigTransferBuilderPlugin(),
             new ProductLabelFacetConfigTransferBuilderPlugin(),
         ];
