@@ -1,5 +1,9 @@
 {% extends molecule('return-create-form', '@SprykerShop:SalesReturnPage') %}
 
+{% block formStart %}
+    {{ form_start(data.form, {'attr': {'class': 'js-return-create__target-form'}}) }}
+{%  endblock %}
+
 {% block salesReturnOrderInfoSeparator %}{% endblock %}
 
 {% block salesReturnProductItem %}

@@ -12,7 +12,7 @@
 {% block body %}
     {% if data.quoteRequestReference %}
 
-        {{ form_start(data.cartForm) }}
+        {{ form_start(data.cartForm, {'action': path('agent/quote-request/cart/save')}) }}
 
             <div class="grid grid--justify">
                 <div class="col col--sm-3">
