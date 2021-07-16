@@ -9,6 +9,7 @@ use Spryker\Client\RabbitMq\Model\RabbitMqAdapter;
 use Spryker\Glue\Log\Plugin\GlueLoggerConfigPlugin;
 use Spryker\Service\FlysystemLocalFileSystem\Plugin\Flysystem\LocalFilesystemBuilderPlugin;
 use Spryker\Shared\Acl\AclConstants;
+use Spryker\Shared\Agent\AgentConstants;
 use Spryker\Shared\Application\ApplicationConstants;
 use Spryker\Shared\Application\Log\Config\SprykerLoggerConfig;
 use Spryker\Shared\Category\CategoryConstants;
@@ -72,6 +73,9 @@ use SprykerShop\Shared\ShopUi\ShopUiConstants;
 // ------------------------------ CODEBASE: TO REMOVE -------------------------
 // ----------------------------------------------------------------------------
 
+$sprykerBackendHost = getenv('SPRYKER_BE_HOST') ?: 'not-configured-host';
+$sprykerFrontendHost = getenv('SPRYKER_FE_HOST') ?: 'not-configured-host';
+
 $config[KernelConstants::SPRYKER_ROOT] = APPLICATION_ROOT_DIR . '/vendor/spryker';
 
 $config[KernelConstants::RESOLVABLE_CLASS_NAMES_CACHE_ENABLED] = true;
@@ -104,7 +108,7 @@ $config[ConsoleConstants::ENABLE_DEVELOPMENT_CONSOLE_COMMANDS] = (bool)getenv('D
 // >>> ERROR HANDLING
 
 $config[ErrorHandlerConstants::YVES_ERROR_PAGE] = APPLICATION_ROOT_DIR . '/public/Yves/errorpage/5xx.html';
-$config[ErrorHandlerConstants::ZED_ERROR_PAGE] = APPLICATION_ROOT_DIR . '/public/Zed/errorpage/5xx.html';
+$config[ErrorHandlerConstants::ZED_ERROR_PAGE] = APPLICATION_ROOT_DIR . '/public/Backoffice/errorpage/5xx.html';
 $config[ErrorHandlerConstants::ERROR_RENDERER] = WebHtmlErrorRenderer::class;
 
 // >>> CMS
@@ -143,6 +147,8 @@ $trustedHosts
     = array_filter(explode(',', getenv('SPRYKER_TRUSTED_HOSTS') ?: ''));
 
 $config[KernelConstants::DOMAIN_WHITELIST] = array_merge($trustedHosts, [
+    $sprykerBackendHost,
+    $sprykerFrontendHost,
     'threedssvc.pay1.de', // trusted Payone domain
     'www.sofort.com', // trusted Payone domain
 ]);
@@ -237,6 +243,12 @@ $config[AclConstants::ACL_DEFAULT_RULES] = [
         'action' => 'index',
         'type' => 'allow',
     ],
+    [
+        'bundle' => 'api',
+        'controller' => 'rest',
+        'action' => '*',
+        'type' => 'allow',
+    ],
 ];
 // ACL: Allow or disallow of urls for Zed Admin GUI
 $config[AclConstants::ACL_USER_RULE_WHITELIST] = [
@@ -298,7 +310,7 @@ $config[SessionRedisConstants::LOCKING_LOCK_TTL_MILLISECONDS] = 0;
 
 $config[SessionConstants::YVES_SESSION_COOKIE_NAME]
     = $config[SessionConstants::YVES_SESSION_COOKIE_DOMAIN]
-    = getenv('SPRYKER_FE_HOST');
+    = $sprykerFrontendHost;
 $config[SessionConstants::YVES_SESSION_SAVE_HANDLER] = SessionRedisConfig::SESSION_HANDLER_REDIS_LOCKING;
 $config[SessionRedisConstants::YVES_SESSION_REDIS_SCHEME] = getenv('SPRYKER_SESSION_FE_PROTOCOL') ?: 'tcp';
 $config[SessionRedisConstants::YVES_SESSION_REDIS_HOST] = getenv('SPRYKER_SESSION_FE_HOST');
@@ -318,7 +330,7 @@ $config[SessionConstants::YVES_SESSION_PERSISTENT_CONNECTION]
 
 $config[SessionConstants::ZED_SESSION_COOKIE_NAME]
     = $config[SessionConstants::ZED_SESSION_COOKIE_DOMAIN]
-    = getenv('SPRYKER_BE_HOST');
+    = $sprykerBackendHost;
 $config[SessionConstants::ZED_SESSION_SAVE_HANDLER] = SessionRedisConfig::SESSION_HANDLER_REDIS;
 $config[SessionRedisConstants::ZED_SESSION_REDIS_SCHEME] = getenv('SPRYKER_SESSION_BE_PROTOCOL') ?: 'tcp';
 $config[SessionRedisConstants::ZED_SESSION_REDIS_HOST] = getenv('SPRYKER_SESSION_BE_HOST');
@@ -466,12 +478,12 @@ $config[FileManagerGuiConstants::DEFAULT_FILE_MAX_SIZE] = '10M';
 // ----------------------------------------------------------------------------
 
 $config[ZedRequestConstants::ZED_API_SSL_ENABLED] = (bool)getenv('SPRYKER_ZED_SSL_ENABLED');
-$zedDefaultPort = $config[ZedRequestConstants::ZED_API_SSL_ENABLED] ? 443 : 80;
-$zedPort = ((int)getenv('SPRYKER_ZED_PORT')) ?: $zedDefaultPort;
+$backofficeDefaultPort = $config[ZedRequestConstants::ZED_API_SSL_ENABLED] ? 443 : 80;
+$zedPort = ((int)getenv('SPRYKER_ZED_PORT')) ?: $backofficeDefaultPort;
 $config[ZedRequestConstants::HOST_ZED_API] = sprintf(
     '%s%s',
     getenv('SPRYKER_ZED_HOST') ?: 'not-configured-host',
-    $zedPort !== $zedDefaultPort ? ':' . $zedPort : ''
+    $zedPort !== $backofficeDefaultPort ? ':' . $zedPort : ''
 );
 $config[ZedRequestConstants::BASE_URL_ZED_API] = sprintf(
     'http://%s',
@@ -489,7 +501,7 @@ $config[ZedRequestConstants::BASE_URL_SSL_ZED_API] = sprintf(
 $backofficePort = (int)(getenv('SPRYKER_BE_PORT')) ?: 443;
 $config[ApplicationConstants::BASE_URL_ZED] = sprintf(
     'https://%s%s',
-    getenv('SPRYKER_BE_HOST') ?: 'not-configured-host',
+    $sprykerBackendHost,
     $backofficePort !== 443 ? $backofficePort : ''
 );
 
@@ -497,7 +509,7 @@ $config[ApplicationConstants::BASE_URL_ZED] = sprintf(
 // ------------------------------ FRONTEND ------------------------------------
 // ----------------------------------------------------------------------------
 
-$yvesHost = $config[ApplicationConstants::HOST_YVES] = getenv('SPRYKER_FE_HOST') ?: 'not-configured-host';
+$yvesHost = $config[ApplicationConstants::HOST_YVES] = $sprykerFrontendHost;
 $yvesPort = (int)(getenv('SPRYKER_FE_PORT')) ?: 443;
 
 $config[ApplicationConstants::BASE_URL_YVES]
@@ -548,6 +560,11 @@ $config[TaxConstants::DEFAULT_TAX_RATE] = 19;
 // >>> Category
 $config[CategoryConstants::CATEGORY_READ_CHUNK] = 10000;
 $config[CategoryConstants::CATEGORY_IS_CLOSURE_TABLE_EVENTS_ENABLED] = false;
+
+// >>> Agent
+$config[AgentConstants::AGENT_ALLOWED_SECURED_PATTERN_LIST] = [
+    '|^(/en|/de)?/cart(?!/add)',
+];
 
 // >>> Product Label
 $config[ProductLabelConstants::PRODUCT_LABEL_TO_DE_ASSIGN_CHUNK_SIZE] = 1000;
