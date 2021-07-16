@@ -6,6 +6,6 @@ export default register(
         import(
             /* webpackMode: "lazy" */
             /* webpackChunkName: "mini-cart-radio" */
-            './mini-cart-radio'
+            'MultiCartWidget/components/molecules/mini-cart-radio/mini-cart-radio'
         ),
 );
