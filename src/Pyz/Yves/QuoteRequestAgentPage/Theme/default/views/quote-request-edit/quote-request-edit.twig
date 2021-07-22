@@ -439,8 +439,8 @@
                                 checkboxValue: 1,
                                 isChecked: unitSourcePrice == null,
                                 checkboxLabel: 'quote_request_page.quote_request.use_default_price' | trans,
-                                currentItemPrice: data.shipmentExpense.shipment.method.storeCurrencyPrice | money(true, data.shipmentExpense.shipment.method.currencyIsoCode),
-                                originItemPrice: data.shipmentExpense.sumPrice | money(true, data.shipmentExpense.shipment.method.currencyIsoCode),
+                                currentItemPrice: data.shipmentExpense.sumPrice | money(true, data.shipmentExpense.shipment.method.currencyIsoCode),
+                                originItemPrice: data.shipmentExpense.shipment.method.storeCurrencyPrice | money(true, data.shipmentExpense.shipment.method.currencyIsoCode),
                             },
                             attributes: {
                                 price: unitSourcePrice,
