@@ -10,6 +10,7 @@ namespace Pyz\Zed\ProductLabelGui\Communication\Table;
 use Orm\Zed\Category\Persistence\Map\SpyCategoryAttributeTableMap;
 use Orm\Zed\Product\Persistence\SpyProductAbstract;
 use Orm\Zed\ProductCategory\Persistence\SpyProductCategoryQuery;
+use Orm\Zed\ProductLabel\Persistence\SpyProductLabelProductAbstractQuery;
 use Spryker\Zed\Locale\Business\LocaleFacade;
 use Spryker\Zed\ProductLabelGui\Communication\Table\RelatedProductOverviewTable as SprykerRelatedProductOverviewTable;
 
@@ -34,6 +35,18 @@ class RelatedProductOverviewTable extends SprykerRelatedProductOverviewTable
         $row[static::COL_ACTIONS] = $this->getActionsColumn($productAbstractEntity);
 
         return $row;
+    }
+
+    /**
+     * @param \Orm\Zed\Product\Persistence\SpyProductAbstract $productAbstractEntity
+     *
+     * @return int
+     */
+    protected function getAdditionalRelationCountColumn(SpyProductAbstract $productAbstractEntity)
+    {
+        return SpyProductLabelProductAbstractQuery::create()
+                ->filterByFkProductAbstract($productAbstractEntity->getIdProductAbstract())
+                ->count() - 1;
     }
 
     /**

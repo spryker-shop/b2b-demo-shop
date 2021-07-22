@@ -19,11 +19,12 @@ class RelatedProductTableQueryBuilder extends SprykerRelatedProductTableQueryBui
      */
     public function buildAvailableProductQuery($idProductLabel = null)
     {
-        $query = $this->productQueryContainer->queryProductAbstract();
-        $localeTransfer = $this->localeFacade->getCurrentLocale();
+        $query = $this->build($idProductLabel);
 
-        $this->addProductName($query, $localeTransfer);
-        $this->addConcreteProductStates($query);
+        $query->where(sprintf(
+            '%s IS NULL',
+            SpyProductLabelProductAbstractTableMap::COL_FK_PRODUCT_LABEL
+        ));
 
         return $query;
     }
@@ -35,18 +36,29 @@ class RelatedProductTableQueryBuilder extends SprykerRelatedProductTableQueryBui
      */
     public function buildAssignedProductQuery($idProductLabel = null)
     {
+        $query = $this->build($idProductLabel);
+
+        $query->where(sprintf(
+            '%s IS NOT NULL',
+            SpyProductLabelProductAbstractTableMap::COL_FK_PRODUCT_LABEL
+        ));
+
+        return $query;
+    }
+
+    /**
+     * @param int|null $idProductLabel
+
+     * @return \Orm\Zed\Product\Persistence\SpyProductAbstractQuery
+     */
+    protected function build($idProductLabel = null)
+    {
         $query = $this->productQueryContainer->queryProductAbstract();
         $localeTransfer = $this->localeFacade->getCurrentLocale();
 
         $this->addProductName($query, $localeTransfer);
         $this->addConcreteProductStates($query);
         $this->addRelation($query, $idProductLabel);
-        $this->addRelationCount($query);
-
-        $query->where(sprintf(
-            '%s IS NOT NULL',
-            SpyProductLabelProductAbstractTableMap::COL_FK_PRODUCT_LABEL
-        ));
 
         return $query;
     }
