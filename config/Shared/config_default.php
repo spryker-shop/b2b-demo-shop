@@ -564,6 +564,7 @@ $config[CategoryConstants::CATEGORY_IS_CLOSURE_TABLE_EVENTS_ENABLED] = false;
 // >>> Agent
 $config[AgentConstants::AGENT_ALLOWED_SECURED_PATTERN_LIST] = [
     '|^(/en|/de)?/cart(?!/add)',
+    '|^(/en|/de)?/checkout($|/)',
 ];
 
 // >>> Product Label
