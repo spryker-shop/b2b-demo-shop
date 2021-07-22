@@ -33,7 +33,7 @@ abstract class AbstractRelatedProductTable extends SprykerAbstractRelatedProduct
             $productAbstractIds[] = $productAbstractEntity->getIdProductAbstract();
         }
 
-        $categoryNames = $this->getCategories($productAbstractIds);
+        $categoryNames = $this->getCategoryNames($productAbstractIds);
         $rows = [];
         foreach ($productAbstractEntities as $productAbstractEntity) {
             $rows[] = [
@@ -55,7 +55,7 @@ abstract class AbstractRelatedProductTable extends SprykerAbstractRelatedProduct
      *
      * @return string[]
      */
-    protected function getCategories(array $productAbstractIds): array
+    protected function getCategoryNames(array $productAbstractIds): array
     {
         //TODO: Should be refactored to avoid instantiating of LocaleFacade
         $localeTransfer = (new LocaleFacade())->getCurrentLocale();

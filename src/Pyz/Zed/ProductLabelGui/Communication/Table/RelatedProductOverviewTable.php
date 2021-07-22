@@ -23,18 +23,15 @@ class RelatedProductOverviewTable extends SprykerRelatedProductOverviewTable
      */
     protected function getRow(SpyProductAbstract $productAbstractEntity)
     {
-        $row = [
+        return [
             static::COL_PRODUCT_ABSTRACT_NAME => $this->getNameColumn($productAbstractEntity),
-            static::COL_PRODUCT_ABSTRACT_CATEGORIES => $this->getCategories($productAbstractEntity->getIdProductAbstract()),
+            static::COL_PRODUCT_ABSTRACT_CATEGORIES => $this->getCategoryName($productAbstractEntity->getIdProductAbstract()),
             static::COL_PRODUCT_ABSTRACT_PRICE => $this->getPriceColumn($productAbstractEntity),
             static::COL_PRODUCT_ABSTRACT_STATUS => $this->getStatusColumn($productAbstractEntity),
+            static::COL_PRODUCT_ABSTRACT_SKU => $productAbstractEntity->getSku(),
+            static::COL_PRODUCT_ABSTRACT_RELATION_COUNT => $this->getAdditionalRelationCountColumn($productAbstractEntity),
+            static::COL_ACTIONS => $this->getActionsColumn($productAbstractEntity),
         ];
-
-        $row[static::COL_PRODUCT_ABSTRACT_SKU] = $productAbstractEntity->getSku();
-        $row[static::COL_PRODUCT_ABSTRACT_RELATION_COUNT] = $this->getAdditionalRelationCountColumn($productAbstractEntity);
-        $row[static::COL_ACTIONS] = $this->getActionsColumn($productAbstractEntity);
-
-        return $row;
     }
 
     /**
@@ -54,7 +51,7 @@ class RelatedProductOverviewTable extends SprykerRelatedProductOverviewTable
      *
      * @return string
      */
-    protected function getCategories(int $idProductAbstract): string
+    protected function getCategoryName(int $idProductAbstract): string
     {
         //TODO: Should be refactored to avoid instantiating of LocaleFacade
         $localeTransfer = (new LocaleFacade())->getCurrentLocale();
