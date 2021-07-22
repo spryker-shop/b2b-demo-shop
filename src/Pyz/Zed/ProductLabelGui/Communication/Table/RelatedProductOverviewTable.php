@@ -39,24 +39,24 @@ class RelatedProductOverviewTable extends SprykerRelatedProductOverviewTable
      *
      * @return int
      */
-    protected function getAdditionalRelationCountColumn(SpyProductAbstract $productAbstractEntity)
+    protected function getAdditionalRelationCountColumn(SpyProductAbstract $productAbstractEntity): int
     {
         return SpyProductLabelProductAbstractQuery::create()
-                ->filterByFkProductAbstract($productAbstractEntity->getIdProductAbstract())
-                ->count() - 1;
+            ->filterByFkProductAbstract($productAbstractEntity->getIdProductAbstract())
+            ->count() - 1;
     }
 
     /**
      * @param int $idProductAbstract
      *
-     * @return string
+     * @return array
      */
     protected function getCategoryName(int $idProductAbstract): string
     {
         //TODO: Should be refactored to avoid instantiating of LocaleFacade
         $localeTransfer = (new LocaleFacade())->getCurrentLocale();
 
-        return SpyProductCategoryQuery::create()
+        $spyProductCategories = SpyProductCategoryQuery::create()
             ->filterByFkProductAbstract($idProductAbstract)
             ->joinSpyCategory()
                 ->useSpyCategoryQuery()
@@ -66,7 +66,13 @@ class RelatedProductOverviewTable extends SprykerRelatedProductOverviewTable
                     ->withColumn(SpyCategoryAttributeTableMap::COL_NAME, 'name')
                     ->endUse()
                 ->endUse()
-            ->findOne()
-            ->getVirtualColumn('name');
+            ->find();
+
+        $categoryNames = [];
+        foreach ($spyProductCategories as $spyProductCategory) {
+            $categoryNames[] = $spyProductCategory->getVirtualColumn('name');
+        }
+
+        return implode(', ', $categoryNames);
     }
 }

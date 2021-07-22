@@ -51,6 +51,17 @@ abstract class AbstractRelatedProductTable extends SprykerAbstractRelatedProduct
     }
 
     /**
+     * @param array $categoryNames
+     * @param int $idProductAbstract
+     *
+     * @return string
+     */
+    protected function getCategoryNameColumn(array $categoryNames, int $idProductAbstract): string
+    {
+        return implode(', ', $categoryNames[$idProductAbstract]);
+    }
+
+    /**
      * @param int[] $productAbstractIds
      *
      * @return string[]
@@ -60,7 +71,7 @@ abstract class AbstractRelatedProductTable extends SprykerAbstractRelatedProduct
         //TODO: Should be refactored to avoid instantiating of LocaleFacade
         $localeTransfer = (new LocaleFacade())->getCurrentLocale();
 
-        return SpyProductCategoryQuery::create()
+        $spyProductCategories = SpyProductCategoryQuery::create()
             ->filterByFkProductAbstract_In($productAbstractIds)
             ->joinSpyCategory()
                 ->useSpyCategoryQuery()
@@ -70,7 +81,13 @@ abstract class AbstractRelatedProductTable extends SprykerAbstractRelatedProduct
                     ->withColumn(SpyCategoryAttributeTableMap::COL_NAME, 'name')
                     ->endUse()
                 ->endUse()
-            ->find()
-            ->toKeyValue('fkProductAbstract', 'name');
+            ->find();
+
+        $categoryNames = [];
+        foreach ($spyProductCategories as $spyProductCategory) {
+            $categoryNames[$spyProductCategory->getFkProductAbstract()][] = $spyProductCategory->getVirtualColumn(static::NAME);
+        }
+
+        return $categoryNames;
     }
 }
