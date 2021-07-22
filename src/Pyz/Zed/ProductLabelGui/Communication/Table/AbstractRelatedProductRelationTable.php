@@ -7,57 +7,130 @@
 
 namespace Pyz\Zed\ProductLabelGui\Communication\Table;
 
-use Orm\Zed\Category\Persistence\Map\SpyCategoryAttributeTableMap;
+use Orm\Zed\Product\Persistence\Map\SpyProductAbstractLocalizedAttributesTableMap;
 use Orm\Zed\Product\Persistence\Map\SpyProductAbstractTableMap;
 use Orm\Zed\Product\Persistence\SpyProductAbstract;
-use Orm\Zed\ProductCategory\Persistence\SpyProductCategoryQuery;
-use Spryker\Zed\Locale\Business\LocaleFacade;
-use Spryker\Zed\ProductLabelGui\Communication\Table\AbstractRelatedProductRelationTable as SprykerAbstractRelatedProductRelationTable;
+use Spryker\Zed\Gui\Communication\Table\TableConfiguration;
+use Spryker\Zed\ProductLabelGui\Communication\Table\RelatedProductTableQueryBuilder;
 
-abstract class AbstractRelatedProductRelationTable extends SprykerAbstractRelatedProductRelationTable
+abstract class AbstractRelatedProductRelationTable extends AbstractRelatedProductTable
 {
+    /**
+     * @param \Spryker\Zed\Gui\Communication\Table\TableConfiguration $config
+     *
+     * @return \Spryker\Zed\Gui\Communication\Table\TableConfiguration
+     */
+    protected function configure(TableConfiguration $config)
+    {
+        $this->configureHeader($config);
+        $this->configureRawColumns($config);
+        $this->configureSorting($config);
+        $this->configureSearching($config);
+        $this->configureUrl($config);
+
+        return $config;
+    }
+
+    /**
+     * @param \Spryker\Zed\Gui\Communication\Table\TableConfiguration $config
+     *
+     * @return void
+     */
+    protected function configureHeader(TableConfiguration $config)
+    {
+        $config->setHeader([
+            static::COL_SELECT_CHECKBOX => 'Select',
+            SpyProductAbstractTableMap::COL_ID_PRODUCT_ABSTRACT => 'ID',
+            SpyProductAbstractTableMap::COL_SKU => 'SKU',
+            SpyProductAbstractLocalizedAttributesTableMap::COL_NAME => 'Name',
+            RelatedProductTableQueryBuilder::RESULT_FIELD_PRODUCT_ABSTRACT_CATEGORY_NAMES_CSV => 'Categories',
+            RelatedProductTableQueryBuilder::RESULT_FIELD_PRODUCT_ABSTRACT_PRICE => 'Price',
+            RelatedProductTableQueryBuilder::RESULT_FIELD_PRODUCT_CONCRETE_STATES_CSV => 'Status',
+        ]);
+    }
+
+    /**
+     * @param \Spryker\Zed\Gui\Communication\Table\TableConfiguration $config
+     *
+     * @return void
+     */
+    protected function configureRawColumns(TableConfiguration $config)
+    {
+        $config->setRawColumns([
+            static::COL_SELECT_CHECKBOX,
+            RelatedProductTableQueryBuilder::RESULT_FIELD_PRODUCT_CONCRETE_STATES_CSV,
+        ]);
+    }
+
+    /**
+     * @param \Spryker\Zed\Gui\Communication\Table\TableConfiguration $config
+     *
+     * @return void
+     */
+    protected function configureSorting(TableConfiguration $config)
+    {
+        $config->setDefaultSortField(
+            SpyProductAbstractTableMap::COL_ID_PRODUCT_ABSTRACT,
+            TableConfiguration::SORT_ASC
+        );
+
+        $config->setSortable([
+            SpyProductAbstractTableMap::COL_ID_PRODUCT_ABSTRACT,
+            SpyProductAbstractTableMap::COL_SKU,
+            SpyProductAbstractLocalizedAttributesTableMap::COL_NAME,
+        ]);
+    }
+
+    /**
+     * @param \Spryker\Zed\Gui\Communication\Table\TableConfiguration $config
+     *
+     * @return void
+     */
+    protected function configureSearching(TableConfiguration $config)
+    {
+        $config->setSearchable([
+            SpyProductAbstractTableMap::COL_SKU,
+            SpyProductAbstractLocalizedAttributesTableMap::COL_NAME,
+        ]);
+    }
+
+    /**
+     * @param \Spryker\Zed\Gui\Communication\Table\TableConfiguration $config
+     *
+     * @return void
+     */
+    protected function configureUrl(TableConfiguration $config)
+    {
+        $config->setUrl(sprintf(
+            '%s?%s=%s',
+            $this->defaultUrl,
+            static::PARAM_ID_PRODUCT_LABEL,
+            (int)$this->idProductLabel
+        ));
+    }
+
     /**
      * @param \Orm\Zed\Product\Persistence\SpyProductAbstract $productAbstractEntity
      *
-     * @return array
+     * @return string
      */
-    protected function getRow(SpyProductAbstract $productAbstractEntity)
+    protected function getSelectCheckboxColumn(SpyProductAbstract $productAbstractEntity)
     {
-        $row = [
-            static::COL_PRODUCT_ABSTRACT_NAME => $this->getNameColumn($productAbstractEntity),
-            static::COL_PRODUCT_ABSTRACT_CATEGORIES => $this->getCategories($productAbstractEntity->getIdProductAbstract()),
-            static::COL_PRODUCT_ABSTRACT_PRICE => $this->getPriceColumn($productAbstractEntity),
-            static::COL_PRODUCT_ABSTRACT_STATUS => $this->getStatusColumn($productAbstractEntity),
-        ];
-
-        $row[static::COL_SELECT_CHECKBOX] = $this->getSelectCheckboxColumn($productAbstractEntity);
-        $row[SpyProductAbstractTableMap::COL_ID_PRODUCT_ABSTRACT] = $productAbstractEntity->getIdProductAbstract();
-        $row[SpyProductAbstractTableMap::COL_SKU] = $productAbstractEntity->getSku();
-
-        return $row;
+        return sprintf(
+            '<input class="%s" type="checkbox" name="abstractProduct[]" value="%s" %s data-info="%s"/>',
+            'js-abstract-product-checkbox',
+            $productAbstractEntity->getIdProductAbstract(),
+            $this->getCheckboxCheckedAttribute(),
+            htmlspecialchars(json_encode([
+                'id' => $productAbstractEntity->getIdProductAbstract(),
+                'sku' => $productAbstractEntity->getSku(),
+                'name' => $this->getNameColumn($productAbstractEntity),
+            ]))
+        );
     }
 
     /**
-     * @param int $idProductAbstract
-     *
      * @return string
      */
-    protected function getCategories(int $idProductAbstract): string
-    {
-        //TODO: Should be refactored to avoid instantiating of LocaleFacade
-        $localeTransfer = (new LocaleFacade())->getCurrentLocale();
-
-        return SpyProductCategoryQuery::create()
-            ->filterByFkProductAbstract($idProductAbstract)
-            ->joinSpyCategory()
-                ->useSpyCategoryQuery()
-                ->joinAttribute()
-                    ->useAttributeQuery()
-                    ->filterByFkLocale($localeTransfer->getIdLocale())
-                    ->withColumn(SpyCategoryAttributeTableMap::COL_NAME, 'name')
-                    ->endUse()
-                ->endUse()
-            ->findOne()
-            ->getVirtualColumn('name');
-    }
+    abstract protected function getCheckboxCheckedAttribute();
 }
