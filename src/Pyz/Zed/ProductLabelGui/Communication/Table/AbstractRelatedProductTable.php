@@ -16,6 +16,8 @@ use Spryker\Zed\ProductLabelGui\Communication\Table\AbstractRelatedProductTable 
 
 abstract class AbstractRelatedProductTable extends SprykerAbstractRelatedProductTable
 {
+    protected const NAME = 'name';
+
     /**
      * @param \Spryker\Zed\Gui\Communication\Table\TableConfiguration $config
      *
@@ -38,7 +40,7 @@ abstract class AbstractRelatedProductTable extends SprykerAbstractRelatedProduct
         foreach ($productAbstractEntities as $productAbstractEntity) {
             $rows[] = [
                 static::COL_PRODUCT_ABSTRACT_NAME => $this->getNameColumn($productAbstractEntity),
-                static::COL_PRODUCT_ABSTRACT_CATEGORIES => $categoryNames[$productAbstractEntity->getIdProductAbstract()],
+                static::COL_PRODUCT_ABSTRACT_CATEGORIES => $this->getCategoryNameColumn($categoryNames, $productAbstractEntity->getIdProductAbstract()),
                 static::COL_PRODUCT_ABSTRACT_PRICE => $this->getPriceColumn($productAbstractEntity),
                 static::COL_PRODUCT_ABSTRACT_STATUS => $this->getStatusColumn($productAbstractEntity),
                 static::COL_SELECT_CHECKBOX => $this->getSelectCheckboxColumn($productAbstractEntity),
@@ -58,6 +60,10 @@ abstract class AbstractRelatedProductTable extends SprykerAbstractRelatedProduct
      */
     protected function getCategoryNameColumn(array $categoryNames, int $idProductAbstract): string
     {
+        if (!isset($categoryNames[$idProductAbstract])) {
+            return '';
+        }
+
         return implode(', ', $categoryNames[$idProductAbstract]);
     }
 
