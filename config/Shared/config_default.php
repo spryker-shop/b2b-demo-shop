@@ -12,6 +12,7 @@ use Spryker\Shared\Acl\AclConstants;
 use Spryker\Shared\Agent\AgentConstants;
 use Spryker\Shared\Application\ApplicationConstants;
 use Spryker\Shared\Application\Log\Config\SprykerLoggerConfig;
+use Spryker\Shared\CartsRestApi\CartsRestApiConstants;
 use Spryker\Shared\Category\CategoryConstants;
 use Spryker\Shared\CmsGui\CmsGuiConstants;
 use Spryker\Shared\Customer\CustomerConstants;
@@ -569,3 +570,9 @@ $config[AgentConstants::AGENT_ALLOWED_SECURED_PATTERN_LIST] = [
 
 // >>> Product Label
 $config[ProductLabelConstants::PRODUCT_LABEL_TO_DE_ASSIGN_CHUNK_SIZE] = 1000;
+
+// ----------------------------------------------------------------------------
+// ------------------------------ CART REST API -------------------------------
+// ----------------------------------------------------------------------------
+
+$config[CartsRestApiConstants::IS_QUOTE_RELOAD_ENABLED] = true;
