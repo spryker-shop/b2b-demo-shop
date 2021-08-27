@@ -16,7 +16,6 @@ use PyzTest\Yves\Application\PageObject\Homepage;
  * @group PyzTest
  * @group Yves
  * @group Application
- * @group Communication
  * @group Controller
  * @group HomepageCest
  * Add your own group annotations below this line
