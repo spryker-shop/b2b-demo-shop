@@ -11,14 +11,13 @@ on:
 
 jobs:
     validation:
-        name: "CS, ArchSniffer, PHPStan, Security"
+        name: "Static analysis / PHP 7.4"
         runs-on: ubuntu-18.04
         strategy:
             fail-fast: false
             matrix:
                 php-version: [
                         '7.4',
-                        '8.0'
                 ]
 
         env:
