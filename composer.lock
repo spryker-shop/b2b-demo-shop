@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "328f79d78b19202eeb268e04d0303545",
+    "content-hash": "6b538451cf0cf6c68963a3452b3e7794",
     "packages": [
         {
             "name": "brick/math",
@@ -12713,6 +12713,47 @@
             "time": "2021-08-23T11:19:52+00:00"
         },
         {
+            "name": "spryker/acl-entity-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/acl-entity-extension.git",
+                "reference": "c2508b4ccd0c29561dcdf0e0da41111feed081dd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/acl-entity-extension/zipball/c2508b4ccd0c29561dcdf0e0da41111feed081dd",
+                "reference": "c2508b4ccd0c29561dcdf0e0da41111feed081dd",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.3"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "AclEntityExtension module",
+            "support": {
+                "source": "https://github.com/spryker/acl-entity-extension/tree/1.0.0"
+            },
+            "time": "2021-08-23T11:19:52+00:00"
+        },
+        {
             "name": "spryker/acl-extension",
             "version": "1.1.0",
             "source": {
@@ -21657,20 +21698,21 @@
         },
         {
             "name": "spryker/console",
-            "version": "4.9.0",
+            "version": "4.10.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/console.git",
-                "reference": "4653d836fbd59ccd995adffdfe8c52ca4e4f6fce"
+                "reference": "66566473325b128880e78e3772877b4351c0f3bd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/console/zipball/4653d836fbd59ccd995adffdfe8c52ca4e4f6fce",
-                "reference": "4653d836fbd59ccd995adffdfe8c52ca4e4f6fce",
+                "url": "https://api.github.com/repos/spryker/console/zipball/66566473325b128880e78e3772877b4351c0f3bd",
+                "reference": "66566473325b128880e78e3772877b4351c0f3bd",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2",
+                "php": ">=7.3",
+                "spryker/acl-entity-extension": "^0.1.0 || ^0.2.0 || ^1.0.0",
                 "spryker/application": "^3.23.0",
                 "spryker/application-extension": "^1.0.0",
                 "spryker/config": "^3.0.0",
@@ -21710,9 +21752,9 @@
             ],
             "description": "Console module",
             "support": {
-                "source": "https://github.com/spryker/console/tree/4.9.0"
+                "source": "https://github.com/spryker/console/tree/4.10.2"
             },
-            "time": "2020-10-13T09:10:37+00:00"
+            "time": "2021-08-23T11:19:52+00:00"
         },
         {
             "name": "spryker/container",
@@ -40423,16 +40465,16 @@
         },
         {
             "name": "spryker/security-oauth-user",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/security-oauth-user.git",
-                "reference": "c1bb77ca1fbd127ae1120910a96f75a640ee03b9"
+                "reference": "fb432f8245ca8d49918be7414f3e313987211e05"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/security-oauth-user/zipball/c1bb77ca1fbd127ae1120910a96f75a640ee03b9",
-                "reference": "c1bb77ca1fbd127ae1120910a96f75a640ee03b9",
+                "url": "https://api.github.com/repos/spryker/security-oauth-user/zipball/fb432f8245ca8d49918be7414f3e313987211e05",
+                "reference": "fb432f8245ca8d49918be7414f3e313987211e05",
                 "shasum": ""
             },
             "require": {
@@ -40478,9 +40520,9 @@
             ],
             "description": "SecurityOauthUser module",
             "support": {
-                "source": "https://github.com/spryker/security-oauth-user/tree/1.0.0"
+                "source": "https://github.com/spryker/security-oauth-user/tree/1.1.0"
             },
-            "time": "2020-12-29T11:30:00+00:00"
+            "time": "2021-08-16T13:49:21+00:00"
         },
         {
             "name": "spryker/security-oauth-user-extension",
@@ -57730,5 +57772,5 @@
     "platform-overrides": {
         "php": "7.3.15"
     },
-    "plugin-api-version": "2.0.0"
+    "plugin-api-version": "2.1.0"
 }
