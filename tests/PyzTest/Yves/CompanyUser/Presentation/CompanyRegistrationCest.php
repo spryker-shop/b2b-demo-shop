@@ -43,7 +43,7 @@ class CompanyRegistrationCest
      */
     public function testICanRegisterWithValidData(CompanyUserPresentationTester $i, Scenario $scenario): void
     {
-        $scenario->skip('Once we have Chromium + ChromeDriver or Firefox, enable this test case.');
+        $scenario->skip('Test is broken due to improper usage of checkbox check/uncheck functions.');
 
         $i->amOnPage(CompanyRegistrationPage::URL);
 

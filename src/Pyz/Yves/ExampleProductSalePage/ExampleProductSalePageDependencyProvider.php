@@ -24,7 +24,7 @@ class ExampleProductSalePageDependencyProvider extends AbstractBundleDependencyP
      *
      * @return \Spryker\Yves\Kernel\Container
      */
-    public function provideDependencies(Container $container): Container
+    public function provideDependencies(Container $container)
     {
         $container = $this->addSearchClient($container);
         $container = $this->addUrlStorageClient($container);
@@ -40,11 +40,11 @@ class ExampleProductSalePageDependencyProvider extends AbstractBundleDependencyP
      *
      * @return \Spryker\Yves\Kernel\Container
      */
-    protected function addSearchClient(Container $container): Container
+    protected function addSearchClient(Container $container)
     {
-        $container[self::CLIENT_SEARCH] = function (Container $container) {
+        $container->set(static::CLIENT_SEARCH, function (Container $container) {
             return $container->getLocator()->search()->client();
-        };
+        });
 
         return $container;
     }
@@ -54,11 +54,11 @@ class ExampleProductSalePageDependencyProvider extends AbstractBundleDependencyP
      *
      * @return \Spryker\Yves\Kernel\Container
      */
-    protected function addUrlStorageClient(Container $container): Container
+    protected function addUrlStorageClient(Container $container)
     {
-        $container[self::CLIENT_URL_STORAGE] = function (Container $container) {
+        $container->set(static::CLIENT_URL_STORAGE, function (Container $container) {
             return $container->getLocator()->urlStorage()->client();
-        };
+        });
 
         return $container;
     }
@@ -68,11 +68,11 @@ class ExampleProductSalePageDependencyProvider extends AbstractBundleDependencyP
      *
      * @return \Spryker\Yves\Kernel\Container
      */
-    protected function addStore($container): Container
+    protected function addStore($container)
     {
-        $container[self::STORE] = function () {
+        $container->set(static::STORE, function () {
             return Store::getInstance();
-        };
+        });
 
         return $container;
     }
@@ -82,11 +82,11 @@ class ExampleProductSalePageDependencyProvider extends AbstractBundleDependencyP
      *
      * @return \Spryker\Yves\Kernel\Container
      */
-    protected function addCatalogClient(Container $container): Container
+    protected function addCatalogClient(Container $container)
     {
-        $container[self::CLIENT_CATALOG] = function (Container $container) {
+        $container->set(static::CLIENT_CATALOG, function (Container $container) {
             return $container->getLocator()->catalog()->client();
-        };
+        });
 
         return $container;
     }
@@ -96,20 +96,12 @@ class ExampleProductSalePageDependencyProvider extends AbstractBundleDependencyP
      *
      * @return \Spryker\Yves\Kernel\Container
      */
-    protected function addProductSalePageWidgetPlugins($container): Container
+    protected function addProductSalePageWidgetPlugins($container)
     {
-        $container[self::PLUGIN_PRODUCT_SALE_PAGE_WIDGETS] = function () {
-            return $this->getProductSalePageWidgetPlugins();
-        };
+        $container->set(static::PLUGIN_PRODUCT_SALE_PAGE_WIDGETS, function () {
+            return [];
+        });
 
         return $container;
-    }
-
-    /**
-     * @return string[]
-     */
-    protected function getProductSalePageWidgetPlugins(): array
-    {
-        return [];
     }
 }

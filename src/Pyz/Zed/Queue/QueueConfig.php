@@ -19,6 +19,19 @@ class QueueConfig extends SprykerQueueConfig
     public const RABBITMQ = 'rabbitmq';
 
     /**
+     * @return int[]
+     */
+    public function getSignalsForGracefulWorkerShutdown(): array
+    {
+        return [
+            static::SIGINT,
+            static::SIGQUIT,
+            static::SIGABRT,
+            static::SIGTERM,
+        ];
+    }
+
+    /**
      * @return array
      */
     protected function getQueueReceiverOptions(): array

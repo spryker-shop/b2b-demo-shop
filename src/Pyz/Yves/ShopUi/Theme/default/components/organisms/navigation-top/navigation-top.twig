@@ -61,7 +61,7 @@
             {% widget menuItemCompanyWidget %}
                 {% block template %}
                     <li class="col {{ config.name }}__action-item">
-                        {% spaceless %}{{ parent() }}{% endspaceless %}
+                        {% apply spaceless %}{{ parent() }}{% endapply %}
                     </li>
                 {% endblock %}
             {% endwidget %}

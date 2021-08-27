@@ -46,15 +46,17 @@ const find = async (globDirs, globPatterns, globFallbackPatterns, globSettings =
 // find entry points
 const findEntryPoints = async settings => {
     const files = await find(settings.dirs, settings.patterns,  settings.fallbackPatterns, settings.globSettings);
-
-    return Object.values(files.reduce((map, file) => {
-        const dir = path.dirname(file);
-        const name = path.basename(dir);
-        const type = path.basename(path.dirname(dir));
-        map[`${type}/${name}`] = file;
-        return map;
-    }, {}));
+    return mergeEntryPoints(files);
 };
+
+// merge entry points
+const mergeEntryPoints = async files => Object.values(files.reduce((map, file) => {
+    const dir = path.dirname(file);
+    const name = path.basename(dir);
+    const type = path.basename(path.dirname(dir));
+    map[`${type}/${name}`] = file;
+    return map;
+}, {}));
 
 // find components entry points
 const findComponentEntryPoints = async settings => await findEntryPoints(settings);
@@ -63,6 +65,7 @@ const findComponentEntryPoints = async settings => await findEntryPoints(setting
 const findComponentStyles = async settings =>
     await find(settings.dirs, settings.patterns, [], settings.globSettings);
 
+// find application entry points
 const findAppEntryPoint = async (settings, file) => {
     const config = Object.assign({}, settings);
     const updatePatterns = patternCollection => patternCollection.map(pattern => path.join(pattern, file));

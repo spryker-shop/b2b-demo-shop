@@ -21,6 +21,7 @@
             ],
         },
     } only %}
+        {% import _self as component %}
         {% block actions %}
             {% for action in data.actions %}
                 {% set modifiers = action.modifiers | default((action.primary | default) ? [] : ['hollow']) %}

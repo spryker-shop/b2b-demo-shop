@@ -14,6 +14,7 @@
                             },
                         } only %}
                             {% block content %}
+                                {% import _self as component %}
                                 <div class="{{ config.name }}__info">
                                     {{ parent() }}
 

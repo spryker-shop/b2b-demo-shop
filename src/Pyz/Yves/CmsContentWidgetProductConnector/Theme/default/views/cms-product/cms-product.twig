@@ -2,7 +2,8 @@
 
 {% define data = {
     product: product | default,
-    products: products | default([])
+    products: products | default([]),
+    isUnavailableProductsDisplayed: isUnavailableProductsDisplayed | default(false),
 } %}
 
 {% block body %}
@@ -10,7 +11,9 @@
     {% embed molecule('slick-carousel') with {
         modifiers: ['full-width', 'equal-height'],
         data: {
-            slides: data.products
+            product: data.product,
+            products: data.products,
+            isUnavailableProductsDisplayed: data.isUnavailableProductsDisplayed,
         },
         attributes: {
             'slider-config': '{
@@ -34,8 +37,10 @@
         }
     } only %}
         {% block slides %}
-            {% for availableProduct in data.slides if availableProduct.available %}
-                {% widget 'CmsProductWidget' args [availableProduct] use '@ProductWidget/views/cms-product-slider/cms-product-slider.twig' only %}{% endwidget %}
+            {% for product in data.products %}
+                {% if data.isUnavailableProductsDisplayed or product.available  %}
+                    {% widget 'CmsProductWidget' args [product] use '@ProductWidget/views/cms-product-slider/cms-product-slider.twig' only %}{% endwidget %}
+                {% endif %}
             {% endfor %}
         {% endblock %}
     {% endembed %}

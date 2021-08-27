@@ -110,6 +110,20 @@
                                             } only %}
                                         {% endif %}
                                     {% endblock %}
+
+                                    {% block price %}
+                                        {% set price = data.listItem.sumSubtotalAggregation is defined ? data.listItem.sumSubtotalAggregation : data.listItem.price %}
+                                        {% set originalAmount = data.listItem.prices.ORIGINAL ?? null %}
+
+                                        {% include molecule('money-price') with {
+                                            modifiers: data.priceModifiers,
+                                            data: {
+                                                amount: price,
+                                                originalAmount: originalAmount,
+                                                currencyIsoCode: data.currencyIsoCode,
+                                            },
+                                        } only %}
+                                    {% endblock %}
                                 {% endembed %}
                             {% endfor %}
                         </div>

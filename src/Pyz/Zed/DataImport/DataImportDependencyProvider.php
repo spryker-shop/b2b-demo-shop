@@ -9,6 +9,7 @@ namespace Pyz\Zed\DataImport;
 
 use Spryker\Zed\BusinessOnBehalfDataImport\Communication\Plugin\DataImport\BusinessOnBehalfCompanyUserDataImportPlugin;
 use Spryker\Zed\CategoryDataImport\Communication\Plugin\CategoryDataImportPlugin;
+use Spryker\Zed\CategoryDataImport\Communication\Plugin\DataImport\CategoryStoreDataImportPlugin;
 use Spryker\Zed\CmsPageDataImport\Communication\Plugin\CmsPageDataImportPlugin;
 use Spryker\Zed\CmsPageDataImport\Communication\Plugin\CmsPageStoreDataImportPlugin;
 use Spryker\Zed\CmsSlotBlockDataImport\Communication\Plugin\CmsSlotBlockDataImportPlugin;
@@ -77,6 +78,7 @@ use Spryker\Zed\ShoppingListDataImport\Communication\Plugin\ShoppingListCompanyB
 use Spryker\Zed\ShoppingListDataImport\Communication\Plugin\ShoppingListCompanyUserDataImportPlugin;
 use Spryker\Zed\ShoppingListDataImport\Communication\Plugin\ShoppingListDataImportPlugin;
 use Spryker\Zed\ShoppingListDataImport\Communication\Plugin\ShoppingListItemDataImportPlugin;
+use Spryker\Zed\StockAddressDataImport\Communication\Plugin\DataImport\StockAddressDataImportPlugin;
 use Spryker\Zed\StockDataImport\Communication\Plugin\StockDataImportPlugin;
 use Spryker\Zed\StockDataImport\Communication\Plugin\StockStoreDataImportPlugin;
 
@@ -246,7 +248,7 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
     protected function getDataImporterPlugins(): array
     {
         return [
-            [new CategoryDataImportPlugin(), DataImportConfig::IMPORT_TYPE_CATEGORY_TEMPLATE],
+            new CategoryDataImportPlugin(),
             new CmsPageDataImportPlugin(),
             new CmsPageStoreDataImportPlugin(),
             new CompanyDataImportPlugin(),
@@ -303,6 +305,7 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
             new ShipmentMethodStoreDataImportPlugin(),
             new StockDataImportPlugin(),
             new StockStoreDataImportPlugin(),
+            new StockAddressDataImportPlugin(),
             new PaymentMethodDataImportPlugin(),
             new PaymentMethodStoreDataImportPlugin(),
             new ProductRelationDataImportPlugin(),
@@ -315,6 +318,7 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
             new CmsSlotDataImportPlugin(),
             new CmsSlotBlockDataImportPlugin(),
             new ContentNavigationDataImportPlugin(),
+            new CategoryStoreDataImportPlugin(),
         ];
     }
 

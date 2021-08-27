@@ -20,6 +20,7 @@ use Spryker\Client\CatalogPriceProductConnector\Plugin\ConfigTransferBuilder\Des
 use Spryker\Client\CatalogPriceProductConnector\Plugin\CurrencyAwareCatalogSearchResultFormatterPlugin;
 use Spryker\Client\CatalogPriceProductConnector\Plugin\CurrencyAwareSuggestionByTypeResultFormatter;
 use Spryker\Client\CatalogPriceProductConnector\Plugin\ProductPriceQueryExpanderPlugin;
+use Spryker\Client\CategoryStorage\Plugin\Elasticsearch\ResultFormatter\CategoryTreeFilterPageSearchResultFormatterPlugin;
 use Spryker\Client\CustomerCatalog\Plugin\Search\ProductListQueryExpanderPlugin as CustomerCatalogProductListQueryExpanderPlugin;
 use Spryker\Client\ProductLabelStorage\Plugin\ProductLabelFacetConfigTransferBuilderPlugin;
 use Spryker\Client\ProductListSearch\Plugin\Search\ProductListQueryExpanderPlugin as ProductListSearchProductListQueryExpanderPlugin;
@@ -116,6 +117,7 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
                 new RawCatalogSearchResultFormatterPlugin()
             ),
             new SpellingSuggestionResultFormatterPlugin(),
+            new CategoryTreeFilterPageSearchResultFormatterPlugin(),
         ];
     }
 

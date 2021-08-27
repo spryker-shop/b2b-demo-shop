@@ -1,0 +1,44 @@
+{% extends molecule('category-list-item', '@SprykerShop:CatalogPage') %}
+
+{% block body %}
+    {% embed molecule('card') with {
+        modifiers: ['category-list-item'],
+        data: {
+            url: data.url,
+            name: data.name,
+        },
+        embed: {
+            id: data.id,
+        },
+    } only %}
+        {% block image %}
+            <div class="col col--sm-3 col--xl-2">
+                <a href="{{ data.url }}">
+                    {% widget 'CategoryImageStorageWidget' args [embed.id, data.name] with {
+                        data: {
+                            modifiers: ['category-list-item'],
+                        },
+                    } only %}{% endwidget %}
+                </a>
+            </div>
+        {% endblock %}
+
+        {% block content %}
+            {% block name %}
+                <div class="col col--sm-6 col--xl-8">
+                    <div class="spacing spacing--inner"><strong>{{ data.name }}</strong></div>
+                </div>
+            {% endblock %}
+        {% endblock %}
+
+        {% block actionsContainer %}
+            <div class="col col--sm-3 col--xl-2 text-right">
+                {% block actions %}
+                    <a class="button button--small-on-mobile" href="{{ data.url }}">
+                        {{ 'product.view' | trans }}
+                    </a>
+                {% endblock %}
+            </div>
+        {% endblock %}
+    {% endembed %}
+{% endblock %}

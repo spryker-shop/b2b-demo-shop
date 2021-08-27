@@ -165,7 +165,7 @@
             {% endembed %}
         {% endblock %}
 
-        <div class="content-wrap">
+        <div itemscope itemtype="https://schema.org/Product" class="content-wrap">
             {% block pageInfo %}
                 <div class="page-info">
                     <div class="container">
@@ -174,7 +174,7 @@
                         {% endblock %}
 
                         {% block title %}
-                            <h3 class="page-info__title">{{ data.title }}</h3>
+                            <h1 class="page-info__title title title--h3 ">{{ data.title }}</h1>
                         {% endblock %}
                     </div>
                 </div>
