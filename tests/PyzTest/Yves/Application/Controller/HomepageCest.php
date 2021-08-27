@@ -5,7 +5,7 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace PyzTest\Yves\Application\Communication\Controller;
+namespace PyzTest\Yves\Application\Controller;
 
 use PyzTest\Yves\Application\ApplicationCommunicationTester;
 use PyzTest\Yves\Application\PageObject\Homepage;
