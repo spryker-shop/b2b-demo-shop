@@ -324,3 +324,22 @@ jobs:
                   docker/sdk boot deploy.ci.functional.yml -v
                   docker/sdk up -t -v
                   docker/sdk testing codecept run -c codeception.functional.yml
+
+    frontend-assets-via-docker-php-7-4:
+        name: "Docker / Alpine / PHP 7.4 / Frontend & Assets"
+        runs-on: ubuntu-18.04
+        env:
+            PROGRESS_TYPE: plain
+            SPRYKER_PLATFORM_IMAGE: spryker/php:7.3-alpine3.12
+        steps:
+            - uses: actions/checkout@v2
+            - run: echo eyAiZXhwZXJpbWVudGFsIiA6IHRydWUsICJmZWF0dXJlcyIgOiB7ICJidWlsZGtpdCI6IHRydWUgfSB9Cg==|base64 -d|sudo tee /etc/docker/daemon.json
+            - run: sudo apt-get install --only-upgrade docker -y
+            - run: sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+            - run: sudo chmod +x /usr/local/bin/docker-compose
+            - run: git clone https://github.com/spryker/docker-sdk.git --single-branch --branch master ./docker
+            - run: docker/sdk boot deploy.yml
+            - run: SPRYKER_BUILD_HASH=myhash docker/sdk export images
+            - run: docker run -t --rm -e SPRYKER_NGINX_CGI_HOST_YVES_EU=localhost -e SPRYKER_NGINX_CGI_HOST_ZED_EU=localhost -e SPRYKER_NGINX_CGI_HOST_GLUE_EU=localhost -e SPRYKER_NGINX_CGI_HOST_YVES_US=localhost -e SPRYKER_NGINX_CGI_HOST_GLUE_US=localhost -e SPRYKER_NGINX_CGI_HOST_ZED_US=localhost -e ALLOWED_IP=127.0.0.1 spryker_b2b_frontend:1.0-frontend nginx -t
+            - run: docker run -t --rm --entrypoint='' spryker_b2b_frontend:1.0-frontend ls -al /data/public/Yves/assets/myhash
+            - run: docker run -t --rm --entrypoint='' spryker_b2b_frontend:1.0-frontend ls -al /data/public/Zed/assets/
