@@ -229,7 +229,6 @@ class CalculationDependencyProvider extends SprykerCalculationDependencyProvider
             new NetTotalCalculatorPlugin(),
 
             new PaymentCalculatorPlugin(),
-            new ShipmentTotalCalculatorPlugin(),
         ];
 
         return $pluginStack;
