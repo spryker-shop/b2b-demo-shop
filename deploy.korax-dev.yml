@@ -139,6 +139,22 @@ groups:
                     backend-api.at.korax-dev.cloud.spryker.toys:
                         store: AT
                         entry-point: BackendApi
+            mportal:
+                application: merchant-portal
+                endpoints:
+                    mp.de.korax-dev.cloud.spryker.toys:
+                        entry-point: MerchantPortal
+                        store: DE
+                        primal: true
+                        services:
+                            session:
+                                namespace: 7
+                    mp.at.korax-dev.cloud.spryker.toys:
+                        entry-point: MerchantPortal
+                        store: AT
+                        services:
+                            session:
+                                namespace: 8
 services:
     database:
         engine: mysql
