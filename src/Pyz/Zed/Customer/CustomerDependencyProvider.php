@@ -7,7 +7,6 @@
 
 namespace Pyz\Zed\Customer;
 
-use Pyz\Zed\CompanyUser\Communication\Plugin\Customer\IsEnabledCustomerCompanyUserPluginTransferExpanderPlugin;
 use Spryker\Shared\Newsletter\NewsletterConstants;
 use Spryker\Zed\AvailabilityNotification\Communication\Plugin\Customer\AvailabilityNotificationSubscriptionCustomerTransferExpanderPlugin;
 use Spryker\Zed\AvailabilityNotification\Communication\Plugin\CustomerAnonymizer\AvailabilityNotificationAnonymizerPlugin;
@@ -17,6 +16,7 @@ use Spryker\Zed\BusinessOnBehalfGui\Communication\Plugin\Customer\BusinessOnBeha
 use Spryker\Zed\CompanyRole\Communication\Plugin\PermissionCustomerExpanderPlugin;
 use Spryker\Zed\CompanyUser\Communication\Plugin\Customer\CompanyUserReloadCustomerTransferExpanderPlugin;
 use Spryker\Zed\CompanyUser\Communication\Plugin\Customer\CustomerTransferCompanyUserExpanderPlugin;
+use Spryker\Zed\CompanyUser\Communication\Plugin\Customer\IsActiveCompanyUserExistsCustomerTransferExpanderPlugin;
 use Spryker\Zed\CompanyUserGui\Communication\Plugin\Customer\CompanyUserCustomerTableActionExpanderPlugin;
 use Spryker\Zed\CompanyUserInvitation\Communication\Plugin\CompanyUserInvitationPostCustomerRegistrationPlugin;
 use Spryker\Zed\Customer\CustomerDependencyProvider as SprykerCustomerDependencyProvider;
@@ -38,7 +38,7 @@ class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
      *
      * @return \Spryker\Zed\Kernel\Container
      */
-    public function provideCommunicationLayerDependencies(Container $container): Container
+    public function provideCommunicationLayerDependencies(Container $container)
     {
         $container = parent::provideCommunicationLayerDependencies($container);
 
@@ -56,7 +56,7 @@ class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
     /**
      * @return \Spryker\Zed\Customer\Dependency\Plugin\CustomerAnonymizerPluginInterface[]
      */
-    protected function getCustomerAnonymizerPlugins(): array
+    protected function getCustomerAnonymizerPlugins()
     {
         return [
             new CustomerUnsubscribePlugin([
@@ -70,13 +70,13 @@ class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
     /**
      * @return \Spryker\Zed\Customer\Dependency\Plugin\CustomerTransferExpanderPluginInterface[]
      */
-    protected function getCustomerTransferExpanderPlugins(): array
+    protected function getCustomerTransferExpanderPlugins()
     {
         return [
             new CustomerTransferUsernameExpanderPlugin(),
             new CompanyUserReloadCustomerTransferExpanderPlugin(),
             new CustomerTransferCompanyUserExpanderPlugin(),
-            new IsEnabledCustomerCompanyUserPluginTransferExpanderPlugin(),
+            new IsActiveCompanyUserExistsCustomerTransferExpanderPlugin(),
             new PermissionCustomerExpanderPlugin(),
             new QuotePermissionCustomerExpanderPlugin(), #SharedCartFeature
             new ShoppingListPermissionCustomerExpanderPlugin(),

@@ -31,7 +31,7 @@ class SearchDependencyProvider extends SprykerSearchDependencyProvider
      *
      * @return \Spryker\Client\SearchExtension\Dependency\Plugin\SearchConfigExpanderPluginInterface[]
      */
-    protected function createSearchConfigExpanderPlugins(Container $container)
+    protected function createSearchConfigExpanderPlugins(Container $container): array
     {
         $searchConfigExpanderPlugins = parent::createSearchConfigExpanderPlugins($container);
 

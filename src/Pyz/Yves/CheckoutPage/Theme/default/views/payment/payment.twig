@@ -1,7 +1,9 @@
 {% extends view('payment', '@SprykerShop:CheckoutPage') %}
 
+{# customForms data property is necessary for Eco payments integrations #}
 {% define data = {
     stepNumder: 3,
+    customForms: {},
 } %}
 
 {% block containerClass %}container--small{% endblock %}
@@ -31,8 +33,13 @@
                 class: 'form__action--expand-sm-md button button--big button--hollow-icon button--back',
             },
         },
+        embed: {
+            customForms: data.customForms,
+        },
     } only %}
         {% block fieldset %}
+            {{ form_errors(data.form.paymentSelection) }}
+
             {% for choices in data.form.paymentSelection.vars.choices %}
                 {% set paymentProviderIndex = loop.index0 %}
                 {% embed molecule('checkout-list', 'CheckoutPage') with {
@@ -44,6 +51,7 @@
                     },
                     embed: {
                         form: data.form,
+                        customForms: embed.customForms,
                         paymentProviderIndex: paymentProviderIndex,
                     },
                 } only %}
@@ -70,6 +78,7 @@
                                 },
                             },
                             embed: {
+                                customForms: embed.customForms,
                                 index: loop.index ~ '-' ~ embed.paymentProviderIndex,
                                 toggler: embed.form.paymentSelection[key],
                             },
@@ -81,7 +90,6 @@
                                     attributes: {
                                         'target-class-name': 'js-payment-method-' ~ embed.index,
                                         'class-to-toggle': 'is-hidden',
-                                        checked: embed.index == 1,
                                     },
                                     rowAttr: {
                                         class: 'toggler-radio toggler-radio--checkout ' ~ (embed.index != 1 ? 'toggler-radio--border-top-less'),
@@ -90,7 +98,15 @@
 
                                 <div class="col col--sm-12 is-hidden js-payment-method-{{ embed.index }}">
                                     <div class="col col--sm-12 col--md-6">
-                                        {{ parent() }}
+                                        {% if embed.customForms[data.form.vars.template_path] is not defined %}
+                                            {{ parent() }}
+                                        {% else %}
+                                            {% set viewName = embed.customForms[data.form.vars.template_path] | first %}
+                                            {% set moduleName = embed.customForms[data.form.vars.template_path] | last %}
+                                            {% include view(viewName, moduleName) ignore missing with {
+                                                form: data.form.parent,
+                                            } only %}
+                                        {% endif %}
                                     </div>
                                 </div>
                             {% endblock %}

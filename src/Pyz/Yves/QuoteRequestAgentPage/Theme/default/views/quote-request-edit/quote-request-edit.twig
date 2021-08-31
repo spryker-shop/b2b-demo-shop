@@ -115,25 +115,27 @@
                                 {% block priceCol %}
                                     <div class="{{ config.name }}__inner-section col col--sm-12 col--lg-7">
                                         {% block price %}
-                                            {% for itemForm in embed.itemForms if data.product.groupKey == itemForm.vars.value.groupKey %}
-                                                {% set unitSourcePrice = itemForm.sourceUnitGrossPrice is defined ? itemForm.sourceUnitGrossPrice.vars.value : null %}
-                                                {% set unitSourcePrice = itemForm.sourceUnitNetPrice is defined ? itemForm.sourceUnitNetPrice.vars.value : unitSourcePrice %}
+                                            {% for itemForm in embed.itemForms %}
+                                                {% if data.product.groupKey == itemForm.vars.value.groupKey %}
+                                                    {% set unitSourcePrice = itemForm.sourceUnitGrossPrice is defined ? itemForm.sourceUnitGrossPrice.vars.value : null %}
+                                                    {% set unitSourcePrice = itemForm.sourceUnitNetPrice is defined ? itemForm.sourceUnitNetPrice.vars.value : unitSourcePrice %}
 
-                                                {% include molecule('source-price-form', 'QuoteRequestAgentPage') with {
-                                                    modifiers: ['small'],
-                                                    data: {
-                                                        priceForm: itemForm,
-                                                        checkboxName: 'use_default_price',
-                                                        checkboxValue: 1,
-                                                        isChecked: unitSourcePrice == null,
-                                                        checkboxLabel: 'quote_request_page.quote_request.use_default_price' | trans,
-                                                        currentItemPrice: data.product.unitPrice | money(true, data.currencyIsoCode),
-                                                        originItemPrice: data.product.unitPrice | money(true, data.currencyIsoCode),
-                                                    },
-                                                    attributes: {
-                                                        price: unitSourcePrice,
-                                                    },
-                                                } only %}
+                                                    {% include molecule('source-price-form', 'QuoteRequestAgentPage') with {
+                                                        modifiers: ['small'],
+                                                        data: {
+                                                            priceForm: itemForm,
+                                                            checkboxName: 'use_default_price',
+                                                            checkboxValue: 1,
+                                                            isChecked: unitSourcePrice == null,
+                                                            checkboxLabel: 'quote_request_page.quote_request.use_default_price' | trans,
+                                                            currentItemPrice: data.product.unitPrice | money(true, data.currencyIsoCode),
+                                                            originItemPrice: data.product.unitPrice | money(true, data.currencyIsoCode),
+                                                        },
+                                                        attributes: {
+                                                            price: unitSourcePrice,
+                                                        },
+                                                    } only %}
+                                                {% endif %}
                                             {% endfor %}
                                         {% endblock %}
                                     </div>
@@ -191,27 +193,29 @@
                         </p>
                     {% endif %}
 
-                    {% for itemForm in embed.itemForms if data.cartItem.groupKey == itemForm.vars.value.groupKey %}
-                        {% set priceModeGross = 'GROSS_MODE' %}
-                        {% set originUnitPrice = (data.priceMode == priceModeGross) ? data.cartItem.originUnitGrossPrice : data.cartItem.originUnitNetPrice %}
-                        {% set unitSourcePrice = itemForm.sourceUnitGrossPrice is defined ? itemForm.sourceUnitGrossPrice.vars.value : null %}
-                        {% set unitSourcePrice = itemForm.sourceUnitNetPrice is defined ? itemForm.sourceUnitNetPrice.vars.value : unitSourcePrice %}
+                    {% for itemForm in embed.itemForms %}
+                        {% if data.cartItem.groupKey == itemForm.vars.value.groupKey %}
+                            {% set priceModeGross = 'GROSS_MODE' %}
+                            {% set originUnitPrice = (data.priceMode == priceModeGross) ? data.cartItem.originUnitGrossPrice : data.cartItem.originUnitNetPrice %}
+                            {% set unitSourcePrice = itemForm.sourceUnitGrossPrice is defined ? itemForm.sourceUnitGrossPrice.vars.value : null %}
+                            {% set unitSourcePrice = itemForm.sourceUnitNetPrice is defined ? itemForm.sourceUnitNetPrice.vars.value : unitSourcePrice %}
 
-                        {% include molecule('source-price-form', 'QuoteRequestAgentPage') with {
-                            class: 'spacing-bottom spacing-bottom--big',
-                            data: {
-                                priceForm: itemForm,
-                                checkboxName: 'use_default_price',
-                                checkboxValue: 1,
-                                isChecked: unitSourcePrice == null,
-                                checkboxLabel: 'quote_request_page.quote_request.use_default_price' | trans,
-                                currentItemPrice: data.cartItem.unitPrice | money(true, data.currency.code),
-                                originItemPrice: originUnitPrice | money(true, data.currency.code),
-                            },
-                            attributes: {
-                                price: unitSourcePrice,
-                            },
-                        } only %}
+                            {% include molecule('source-price-form', 'QuoteRequestAgentPage') with {
+                                class: 'spacing-bottom spacing-bottom--big',
+                                data: {
+                                    priceForm: itemForm,
+                                    checkboxName: 'use_default_price',
+                                    checkboxValue: 1,
+                                    isChecked: unitSourcePrice == null,
+                                    checkboxLabel: 'quote_request_page.quote_request.use_default_price' | trans,
+                                    currentItemPrice: data.cartItem.unitPrice | money(true, data.currency.code),
+                                    originItemPrice: originUnitPrice | money(true, data.currency.code),
+                                },
+                                attributes: {
+                                    price: unitSourcePrice,
+                                },
+                            } only %}
+                        {% endif %}
                     {% endfor %}
                 {% endblock %}
             {% endembed %}
@@ -231,24 +235,26 @@
                 },
             } only %}
                 {% block actions %}
-                    {% for shipmentGroupForm in embed.shipmentGroupForms if embed.shipmentHash == shipmentGroupForm.vars.value.hash %}
-                        {% set unitSourcePrice = shipmentGroupForm.sourcePrice.grossAmount is defined ? shipmentGroupForm.sourcePrice.grossAmount.vars.value : null %}
-                        {% set unitSourcePrice = shipmentGroupForm.sourcePrice.netAmount is defined ? shipmentGroupForm.sourcePrice.netAmount.vars.value : unitSourcePrice %}
+                    {% for shipmentGroupForm in embed.shipmentGroupForms %}
+                        {% if embed.shipmentHash == shipmentGroupForm.vars.value.hash  %}
+                            {% set unitSourcePrice = shipmentGroupForm.sourcePrice.grossAmount is defined ? shipmentGroupForm.sourcePrice.grossAmount.vars.value : null %}
+                            {% set unitSourcePrice = shipmentGroupForm.sourcePrice.netAmount is defined ? shipmentGroupForm.sourcePrice.netAmount.vars.value : unitSourcePrice %}
 
-                        {% include molecule('source-price-form', 'QuoteRequestAgentPage') with {
-                            data: {
-                                priceForm: shipmentGroupForm,
-                                checkboxName: 'use_default_price',
-                                checkboxValue: 1,
-                                isChecked: unitSourcePrice == null,
-                                checkboxLabel: 'quote_request_page.quote_request.use_default_price' | trans,
-                                currentItemPrice: data.shipmentExpense.sumPrice | money(true, data.shipmentExpense.shipment.method.currencyIsoCode),
-                                originItemPrice: data.shipmentExpense.shipment.method.storeCurrencyPrice | money(true, data.shipmentExpense.shipment.method.currencyIsoCode),
-                            },
-                            attributes: {
-                                price: unitSourcePrice,
-                            },
-                        } only %}
+                            {% include molecule('source-price-form', 'QuoteRequestAgentPage') with {
+                                data: {
+                                    priceForm: shipmentGroupForm,
+                                    checkboxName: 'use_default_price',
+                                    checkboxValue: 1,
+                                    isChecked: unitSourcePrice == null,
+                                    checkboxLabel: 'quote_request_page.quote_request.use_default_price' | trans,
+                                    currentItemPrice: data.shipmentExpense.sumPrice | money(true, data.shipmentExpense.shipment.method.currencyIsoCode),
+                                    originItemPrice: data.shipmentExpense.shipment.method.storeCurrencyPrice | money(true, data.shipmentExpense.shipment.method.currencyIsoCode),
+                                },
+                                attributes: {
+                                    price: unitSourcePrice,
+                                },
+                            } only %}
+                        {% endif %}
                     {% endfor %}
                 {% endblock %}
             {% endembed %}
@@ -304,25 +310,27 @@
                                 {% block priceCol %}
                                     <div class="{{ config.name }}__inner-section col col--sm-12 col--lg-7">
                                         {% block price %}
-                                            {% for itemForm in embed.itemForms if data.product.groupKey == itemForm.vars.value.groupKey %}
-                                                {% set unitSourcePrice = itemForm.sourceUnitGrossPrice is defined ? itemForm.sourceUnitGrossPrice.vars.value : null %}
-                                                {% set unitSourcePrice = itemForm.sourceUnitNetPrice is defined ? itemForm.sourceUnitNetPrice.vars.value : unitSourcePrice %}
+                                            {% for itemForm in embed.itemForms %}
+                                                {% if data.product.groupKey == itemForm.vars.value.groupKey %}
+                                                    {% set unitSourcePrice = itemForm.sourceUnitGrossPrice is defined ? itemForm.sourceUnitGrossPrice.vars.value : null %}
+                                                    {% set unitSourcePrice = itemForm.sourceUnitNetPrice is defined ? itemForm.sourceUnitNetPrice.vars.value : unitSourcePrice %}
 
-                                                {% include molecule('source-price-form', 'QuoteRequestAgentPage') with {
-                                                    modifiers: ['small'],
-                                                    data: {
-                                                        priceForm: itemForm,
-                                                        checkboxName: 'use_default_price',
-                                                        checkboxValue: 1,
-                                                        isChecked: unitSourcePrice == null,
-                                                        checkboxLabel: 'quote_request_page.quote_request.use_default_price' | trans,
-                                                        currentItemPrice: data.product.unitPrice | money(true, data.currencyIsoCode),
-                                                        originItemPrice: data.product.unitPrice | money(true, data.currencyIsoCode),
-                                                    },
-                                                    attributes: {
-                                                        price: unitSourcePrice,
-                                                    },
-                                                } only %}
+                                                    {% include molecule('source-price-form', 'QuoteRequestAgentPage') with {
+                                                        modifiers: ['small'],
+                                                        data: {
+                                                            priceForm: itemForm,
+                                                            checkboxName: 'use_default_price',
+                                                            checkboxValue: 1,
+                                                            isChecked: unitSourcePrice == null,
+                                                            checkboxLabel: 'quote_request_page.quote_request.use_default_price' | trans,
+                                                            currentItemPrice: data.product.unitPrice | money(true, data.currencyIsoCode),
+                                                            originItemPrice: data.product.unitPrice | money(true, data.currencyIsoCode),
+                                                        },
+                                                        attributes: {
+                                                            price: unitSourcePrice,
+                                                        },
+                                                    } only %}
+                                                {% endif %}
                                             {% endfor %}
                                         {% endblock %}
                                     </div>
@@ -380,27 +388,29 @@
                         </p>
                     {% endif %}
 
-                    {% for itemForm in embed.itemForms if data.cartItem.groupKey == itemForm.vars.value.groupKey %}
-                        {% set priceModeGross = 'GROSS_MODE' %}
-                        {% set originUnitPrice = (data.priceMode == priceModeGross) ? data.cartItem.originUnitGrossPrice : data.cartItem.originUnitNetPrice %}
-                        {% set unitSourcePrice = itemForm.sourceUnitGrossPrice is defined ? itemForm.sourceUnitGrossPrice.vars.value : null %}
-                        {% set unitSourcePrice = itemForm.sourceUnitNetPrice is defined ? itemForm.sourceUnitNetPrice.vars.value : unitSourcePrice %}
+                    {% for itemForm in embed.itemForms %}
+                        {% if data.cartItem.groupKey == itemForm.vars.value.groupKey %}
+                            {% set priceModeGross = 'GROSS_MODE' %}
+                            {% set originUnitPrice = (data.priceMode == priceModeGross) ? data.cartItem.originUnitGrossPrice : data.cartItem.originUnitNetPrice %}
+                            {% set unitSourcePrice = itemForm.sourceUnitGrossPrice is defined ? itemForm.sourceUnitGrossPrice.vars.value : null %}
+                            {% set unitSourcePrice = itemForm.sourceUnitNetPrice is defined ? itemForm.sourceUnitNetPrice.vars.value : unitSourcePrice %}
 
-                        {% include molecule('source-price-form', 'QuoteRequestAgentPage') with {
-                            class: 'spacing-bottom spacing-bottom--big',
-                            data: {
-                                priceForm: itemForm,
-                                checkboxName: 'use_default_price',
-                                checkboxValue: 1,
-                                isChecked: unitSourcePrice == null,
-                                checkboxLabel: 'quote_request_page.quote_request.use_default_price' | trans,
-                                currentItemPrice: data.cartItem.unitPrice | money(true, data.currency.code),
-                                originItemPrice: originUnitPrice | money(true, data.currency.code),
-                            },
-                            attributes: {
-                                price: unitSourcePrice,
-                            },
-                        } only %}
+                            {% include molecule('source-price-form', 'QuoteRequestAgentPage') with {
+                                class: 'spacing-bottom spacing-bottom--big',
+                                data: {
+                                    priceForm: itemForm,
+                                    checkboxName: 'use_default_price',
+                                    checkboxValue: 1,
+                                    isChecked: unitSourcePrice == null,
+                                    checkboxLabel: 'quote_request_page.quote_request.use_default_price' | trans,
+                                    currentItemPrice: data.cartItem.unitPrice | money(true, data.currency.code),
+                                    originItemPrice: originUnitPrice | money(true, data.currency.code),
+                                },
+                                attributes: {
+                                    price: unitSourcePrice,
+                                },
+                            } only %}
+                        {% endif %}
                     {% endfor %}
                 {% endblock %}
             {% endembed %}
@@ -429,8 +439,8 @@
                                 checkboxValue: 1,
                                 isChecked: unitSourcePrice == null,
                                 checkboxLabel: 'quote_request_page.quote_request.use_default_price' | trans,
-                                currentItemPrice: data.shipmentExpense.shipment.method.storeCurrencyPrice | money(true, data.shipmentExpense.shipment.method.currencyIsoCode),
-                                originItemPrice: data.shipmentExpense.sumPrice | money(true, data.shipmentExpense.shipment.method.currencyIsoCode),
+                                currentItemPrice: data.shipmentExpense.sumPrice | money(true, data.shipmentExpense.shipment.method.currencyIsoCode),
+                                originItemPrice: data.shipmentExpense.shipment.method.storeCurrencyPrice | money(true, data.shipmentExpense.shipment.method.currencyIsoCode),
                             },
                             attributes: {
                                 price: unitSourcePrice,
@@ -489,25 +499,27 @@
                                 {% block priceCol %}
                                     <div class="{{ config.name }}__inner-section col col--sm-12 col--lg-7">
                                         {% block price %}
-                                            {% for itemForm in embed.itemForms if data.product.groupKey == itemForm.vars.value.groupKey %}
-                                                {% set unitSourcePrice = itemForm.sourceUnitGrossPrice is defined ? itemForm.sourceUnitGrossPrice.vars.value : null %}
-                                                {% set unitSourcePrice = itemForm.sourceUnitNetPrice is defined ? itemForm.sourceUnitNetPrice.vars.value : unitSourcePrice %}
+                                            {% for itemForm in embed.itemForms %}
+                                                {% if data.product.groupKey == itemForm.vars.value.groupKey %}
+                                                    {% set unitSourcePrice = itemForm.sourceUnitGrossPrice is defined ? itemForm.sourceUnitGrossPrice.vars.value : null %}
+                                                    {% set unitSourcePrice = itemForm.sourceUnitNetPrice is defined ? itemForm.sourceUnitNetPrice.vars.value : unitSourcePrice %}
 
-                                                {% include molecule('source-price-form', 'QuoteRequestAgentPage') with {
-                                                    modifiers: ['small'],
-                                                    data: {
-                                                        priceForm: itemForm,
-                                                        checkboxName: 'use_default_price',
-                                                        checkboxValue: 1,
-                                                        isChecked: unitSourcePrice == null,
-                                                        checkboxLabel: 'quote_request_page.quote_request.use_default_price' | trans,
-                                                        currentItemPrice: data.product.unitPrice | money(true, data.currencyIsoCode),
-                                                        originItemPrice: data.product.unitPrice | money(true, data.currencyIsoCode),
-                                                    },
-                                                    attributes: {
-                                                        price: unitSourcePrice,
-                                                    },
-                                                } only %}
+                                                    {% include molecule('source-price-form', 'QuoteRequestAgentPage') with {
+                                                        modifiers: ['small'],
+                                                        data: {
+                                                            priceForm: itemForm,
+                                                            checkboxName: 'use_default_price',
+                                                            checkboxValue: 1,
+                                                            isChecked: unitSourcePrice == null,
+                                                            checkboxLabel: 'quote_request_page.quote_request.use_default_price' | trans,
+                                                            currentItemPrice: data.product.unitPrice | money(true, data.currencyIsoCode),
+                                                            originItemPrice: data.product.unitPrice | money(true, data.currencyIsoCode),
+                                                        },
+                                                        attributes: {
+                                                            price: unitSourcePrice,
+                                                        },
+                                                    } only %}
+                                                {% endif %}
                                             {% endfor %}
                                         {% endblock %}
                                     </div>
@@ -567,27 +579,29 @@
                         {% endif %}
                     {% endif %}
 
-                    {% for itemForm in embed.itemForms if data.cartItem.groupKey == itemForm.vars.value.groupKey %}
-                        {% set priceModeGross = 'GROSS_MODE' %}
-                        {% set originUnitPrice = (data.priceMode == priceModeGross) ? data.cartItem.originUnitGrossPrice : data.cartItem.originUnitNetPrice %}
-                        {% set unitSourcePrice = itemForm.sourceUnitGrossPrice is defined ? itemForm.sourceUnitGrossPrice.vars.value : null %}
-                        {% set unitSourcePrice = itemForm.sourceUnitNetPrice is defined ? itemForm.sourceUnitNetPrice.vars.value : unitSourcePrice %}
+                    {% for itemForm in embed.itemForms %}
+                        {% if data.cartItem.groupKey == itemForm.vars.value.groupKey %}
+                            {% set priceModeGross = 'GROSS_MODE' %}
+                            {% set originUnitPrice = (data.priceMode == priceModeGross) ? data.cartItem.originUnitGrossPrice : data.cartItem.originUnitNetPrice %}
+                            {% set unitSourcePrice = itemForm.sourceUnitGrossPrice is defined ? itemForm.sourceUnitGrossPrice.vars.value : null %}
+                            {% set unitSourcePrice = itemForm.sourceUnitNetPrice is defined ? itemForm.sourceUnitNetPrice.vars.value : unitSourcePrice %}
 
-                        {% include molecule('source-price-form', 'QuoteRequestAgentPage') with {
-                            class: 'spacing-bottom spacing-bottom--big',
-                            data: {
-                                priceForm: itemForm,
-                                checkboxName: 'use_default_price',
-                                checkboxValue: 1,
-                                isChecked: unitSourcePrice == null,
-                                checkboxLabel: 'quote_request_page.quote_request.use_default_price' | trans,
-                                currentItemPrice: data.cartItem.unitPrice | money(true, data.currency.code),
-                                originItemPrice: originUnitPrice | money(true, data.currency.code),
-                            },
-                            attributes: {
-                                price: unitSourcePrice,
-                            },
-                        } only %}
+                            {% include molecule('source-price-form', 'QuoteRequestAgentPage') with {
+                                class: 'spacing-bottom spacing-bottom--big',
+                                data: {
+                                    priceForm: itemForm,
+                                    checkboxName: 'use_default_price',
+                                    checkboxValue: 1,
+                                    isChecked: unitSourcePrice == null,
+                                    checkboxLabel: 'quote_request_page.quote_request.use_default_price' | trans,
+                                    currentItemPrice: data.cartItem.unitPrice | money(true, data.currency.code),
+                                    originItemPrice: originUnitPrice | money(true, data.currency.code),
+                                },
+                                attributes: {
+                                    price: unitSourcePrice,
+                                },
+                            } only %}
+                        {% endif %}
                     {% endfor %}
                 {% endblock %}
             {% endembed %}

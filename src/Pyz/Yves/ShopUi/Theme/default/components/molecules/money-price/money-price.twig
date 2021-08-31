@@ -1,7 +1,8 @@
 {% extends molecule('money-price', '@SprykerShop:ShopUi') %}
+{% import _self as component %}
 
 {% define data = {
-    priceMode: app.priceMode,
+    priceMode: getPriceMode(),
 } %}
 
 {% block body %}
@@ -9,7 +10,8 @@
         {% set amountClassName = data.originalAmount is not empty ? 'text-alt' %}
         {% set defaultPriceJsName = data.parentJsName ? data.parentJsName ~ '__default-price' %}
 
-        <span class="{{ component.renderClass(config.name ~ '__amount', modifiers) }} {{ amountClassName }} {{ defaultPriceJsName }}">
+        <span itemprop="price" content="{{ data.amount | moneyRaw }}" class="{{ component.renderClass(config.name ~ '__amount', modifiers) }} {{ amountClassName }} {{ defaultPriceJsName }}">
+            <meta itemprop="priceCurrency" content="{{ currencyIsoCode() }}">
             {{ data.amount | money(true, data.currencyIsoCode) }}
         </span>
     {% endblock %}

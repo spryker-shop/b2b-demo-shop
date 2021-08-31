@@ -222,6 +222,8 @@ class NavigationTreeCest
      */
     public function testChangeNavigationTreeStructure(NavigationGuiPresentationTester $i): void
     {
+        $i->markTestSkipped('Need to fix drag and drop function in this test.');
+
         $i->wantTo('Change tree structure and save.');
         $i->expect('Updated navigation tree structure should have persisted.');
 
@@ -266,8 +268,12 @@ class NavigationTreeCest
             ->getIdNavigationNode();
 
         $i->waitForNavigationTree();
-        $i->moveNavigationNode($idNavigationNode, $idTargetNavigationNode);
-        $i->seeNavigationNodeHierarchy($idTargetNavigationNode, $idNavigationNode);
+
+        $i->repeatUnstableActions(function () use ($i, $idNavigationNode, $idTargetNavigationNode) {
+            $i->moveNavigationNode($idNavigationNode, $idTargetNavigationNode);
+            $i->seeNavigationNodeHierarchy($idTargetNavigationNode, $idNavigationNode);
+        });
+
         $i->saveNavigationTreeOrder();
         $i->seeSuccessfulOrderSaveMessage(NavigationPage::MESSAGE_SUCCESS_NAVIGATION_TREE_UPDATED);
 
@@ -282,8 +288,6 @@ class NavigationTreeCest
      */
     public function testDeleteNavigationNode(NavigationGuiPresentationTester $i, Scenario $scenario): void
     {
-        $scenario->skip('Once we have Chromium + ChromeDriver or Firefox, enable this test case.');
-
         $i->wantTo('Remove child node.');
         $i->expect('Node should be removed from Zed.');
 
@@ -309,7 +313,7 @@ class NavigationTreeCest
         $i->clickNode($idNavigationNode);
         $i->switchToNodeForm();
         $i->clickRemoveNodeButton();
-        $i->canSeeInPopup('Are you sure you remove the selected node and all its children?');
+        $i->canSeeInPopup('Are you sure you want to remove the selected node and all its children?');
         $i->acceptPopup();
 
         $i->seeSuccessMessage(NavigationNodeDeletePage::MESSAGE_SUCCESS);

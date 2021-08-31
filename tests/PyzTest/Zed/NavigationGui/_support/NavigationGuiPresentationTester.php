@@ -9,6 +9,7 @@ namespace PyzTest\Zed\NavigationGui;
 
 use Codeception\Actor;
 use Codeception\Scenario;
+use Exception;
 use Generated\Shared\Transfer\NavigationNodeLocalizedAttributesTransfer;
 use Generated\Shared\Transfer\NavigationNodeTransfer;
 use Generated\Shared\Transfer\NavigationTransfer;
@@ -48,7 +49,7 @@ class NavigationGuiPresentationTester extends Actor
     public const REMOVE_NODE_BUTTON_SELECTOR = '#remove-selected-node-btn';
     public const ADD_CHILD_NODE_BUTTON_SELECTOR = '#add-child-node-btn';
     public const LOCALIZED_FORM_CONTAINER_SELECTOR = '#localized_attributes_container-%s .collapse-link';
-    public const NODE_CHILD_SELECTOR = '#navigation-node-%d #navigation-node-%d';
+    public const NODE_CHILD_SELECTOR = '//*[@id="#navigation-node-%d"]//*[@id="#navigation-node-%d"]';
     public const NODE_NAME_CHILD_SELECTOR = "//*[@id=\"navigation-node-%d\"]//*[text()[contains(.,'%s')]]";
     public const NODE_FORM_IFRAME_NAME = 'navigation-node-form-iframe';
     public const SUCCESS_MESSAGE_SELECTOR = '.flash-messages .alert-success';
@@ -496,7 +497,7 @@ class NavigationGuiPresentationTester extends Actor
             self::NODE_CHILD_SELECTOR,
             $idParentNavigationNode,
             $idChildNavigationNode
-        ));
+        ), 1);
     }
 
     /**
@@ -780,5 +781,30 @@ class NavigationGuiPresentationTester extends Actor
     public function submitDeleteNavigationForm(): void
     {
         $this->click('//*[@id="delete_navigation_form_submit"]');
+    }
+
+    /**
+     * @param callable $callable
+     * @param int $maxCount
+     * @param bool $verbose
+     *
+     * @return void
+     */
+    public function repeatUnstableActions(callable $callable, int $maxCount = 10, bool $verbose = false): void
+    {
+        $count = 0;
+
+        while ($count < $maxCount) {
+            try {
+                $callable();
+
+                break;
+            } catch (Exception $exception) {
+                $count++;
+                if ($verbose) {
+                    echo "Try: {$count}: ";
+                }
+            }
+        }
     }
 }

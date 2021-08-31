@@ -1,0 +1,30 @@
+{% extends molecule('return-create-form', '@SprykerShop:SalesReturnPage') %}
+
+{% block formStart %}
+    {{ form_start(data.form, {'attr': {'class': 'js-return-create__target-form'}}) }}
+{%  endblock %}
+
+{% block salesReturnOrderInfoSeparator %}{% endblock %}
+
+{% block salesReturnProductItem %}
+    {% set salesReturnProductItemClass = 'grid grid--middle grid--justify grid--nowrap' %}
+
+    {{ parent() }}
+{% endblock %}
+
+{% block salesReturnProducts %}
+    {% set salesReturnProductsClass = 'spacing-bottom spacing-bottom--big' %}
+
+    {% include molecule('checkbox-select-all') with {
+        class: 'spacing-y spacing-y--inner spacing-y--big',
+        modifiers: ['expand', 'bordered'],
+        data: {
+            label: 'checkbox-select-all.title' | trans,
+        },
+        attributes: {
+            'target-class-name': 'js-return-create__trigger-state-toggler',
+        },
+    } only %}
+
+    {{ parent() }}
+{% endblock %}

@@ -31,9 +31,7 @@ export default class ImageGallery extends Component {
         }
 
         if (imagesQuantity > 1) {
-            this.thumbnailSlider.slick(
-                this.thumbnailSliderConfig
-            );
+            this.thumbnailSlider.slick(this.thumbnailSliderConfig);
         }
 
         this.getCurrentSlideImage();
@@ -60,7 +58,7 @@ export default class ImageGallery extends Component {
 
     protected changeImage(activeItemIndex: number): void {
         this.galleryItems.forEach((galleryItem, index) => {
-            if (galleryItem.classList.contains(this.activeClass) && activeItemIndex !== index){
+            if (galleryItem.classList.contains(this.activeClass) && activeItemIndex !== index) {
                 galleryItem.classList.remove(this.activeClass);
             }
             if (activeItemIndex === index) {
@@ -78,9 +76,9 @@ export default class ImageGallery extends Component {
     }
 
     protected getCurrentSlideImage(): void {
-        const currentSlide = this.galleryItems.filter((element: HTMLElement) => (
-            element.classList.contains(this.activeClass)
-        ))[0];
+        const currentSlide = this.galleryItems.filter((element: HTMLElement) =>
+            element.classList.contains(this.activeClass),
+        )[0];
         this.currentSlideImage = currentSlide.getElementsByTagName('img')[0];
     }
 

@@ -71,7 +71,6 @@ class TwigDependencyProvider extends SprykerTwigDependencyProvider
             new MoneyTwigPlugin(),
             new CurrencyTwigPlugin(),
             new ZedNavigationTwigPlugin(),
-            new TranslatorTwigPlugin(),
             new DateTimeFormatterTwigPlugin(),
             new SchedulerTwigPlugin(),
             new BarcodeTwigPlugin(),

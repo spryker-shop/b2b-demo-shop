@@ -10,8 +10,9 @@ export default class FilterCategory extends Component {
     protected init(): void {
         this.activeCategory = <HTMLElement>document.getElementsByClassName(this.activeCategoryClassName)[0];
         this.parent = this.activeCategory ? this.activeCategory : this;
-        this.visibleCategories = <HTMLElement[]>Array.from(
-            this.parent.getElementsByClassName(this.visibleCategoryClass));
+        this.visibleCategories = <HTMLElement[]>(
+            Array.from(this.parent.getElementsByClassName(this.visibleCategoryClass))
+        );
 
         this.hideCategory();
     }
@@ -31,9 +32,7 @@ export default class FilterCategory extends Component {
 
         while (!target.classList.contains(this.wrapperClassName)) {
             if (target.classList.contains(this.parentClassName)) {
-                this.removeClass(<HTMLElement[]>Array.from(
-                    target.getElementsByClassName(this.visibleCategoryClass)
-                ));
+                this.removeClass(<HTMLElement[]>Array.from(target.getElementsByClassName(this.visibleCategoryClass)));
 
                 return;
             }

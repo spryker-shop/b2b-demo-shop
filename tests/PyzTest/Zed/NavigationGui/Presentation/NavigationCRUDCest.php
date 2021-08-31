@@ -35,8 +35,6 @@ class NavigationCRUDCest
      */
     public function testICanCreateReadUpdateAndDeleteNavigation(NavigationGuiPresentationTester $i, Scenario $scenario): void
     {
-        $scenario->skip('Once we have Chromium + ChromeDriver or Firefox, enable this test case.');
-
         $i->amLoggedInUser();
         $i->amOnPage(NavigationCreatePage::URL);
 
@@ -45,6 +43,8 @@ class NavigationCRUDCest
         $this->read($i);
 
         $this->update($i, $idNavigation);
+
+        $i->wait(1);
 
         $this->delete($i, $idNavigation);
     }

@@ -8,8 +8,6 @@
 
 {% block salesReturnContentHeader %}
     {% block salesReturnPageTitle %}
-        {% set salesReturnSaveActionClass = 'action-bar__action button js-return-create__target-state-toggler' %}
-
         {% embed molecule('action-bar') with {
             modifiers: ['first'],
             data: {
@@ -23,13 +21,19 @@
                     },
                 ],
             },
-            embed: {
-                submit: block('salesReturnPageActions'),
-            },
         } only %}
             {% block actions %}
                 {{ parent() }}
-                {{ embed.submit | raw }}
+                <button class="button {{ config.name }}__action {{ config.jsName }}__action js-return-create__target-state-toggler" disabled>
+                    {{ 'return_page.button_text' | trans }}
+                </button>
+                {% include molecule('form-submitter') with {
+                    attributes: {
+                        'trigger-selector': '.' ~ config.jsName ~ '__action',
+                        'event': 'click',
+                        'form-class-name': 'js-return-create__target-form',
+                    },
+                } only %}
             {% endblock %}
         {% endembed %}
     {% endblock %}
@@ -43,29 +47,4 @@
             order: data.order,
         },
     } only %}
-{% endblock %}
-
-{% block salesReturnOrderInfoSeparator %}{% endblock %}
-
-{% block salesReturnProductItem %}
-    {% set salesReturnProductItemClass = 'grid grid--middle grid--justify grid--nowrap' %}
-
-    {{ parent() }}
-{% endblock %}
-
-{% block salesReturnProducts %}
-    {% set salesReturnProductsClass = 'spacing-bottom spacing-bottom--big' %}
-
-    {% include molecule('checkbox-select-all') with {
-        class: 'spacing-y spacing-y--inner spacing-y--big',
-        modifiers: ['expand', 'bordered'],
-        data: {
-            label: 'checkbox-select-all.title' | trans,
-        },
-        attributes: {
-            'target-class-name': 'js-return-create__trigger-state-toggler',
-        },
-    } only %}
-
-    {{ parent() }}
 {% endblock %}
