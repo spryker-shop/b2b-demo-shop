@@ -7,6 +7,14 @@
       }
     }
   },
+  "Spryker.Redis": {
+    "wire-plugin": {
+      "699085dbe2f7f93a59ff8a20d4a0f5fad18c302b": {
+        "target": "\\SprykerShop\\Yves\\WebProfilerWidget\\WebProfilerWidgetDependencyProvider::getDataCollectorPlugins",
+        "source": "\\Spryker\\Yves\\Redis\\Plugin\\WebProfiler\\WebProfilerRedisDataCollectorPlugin"
+      }
+    }
+  },
   "Spryker.ZedRequest": {
     "wire-plugin": {
       "79d9d400079eceaf17bbbeb306401bcfa1f9838a": {
@@ -104,14 +112,6 @@
       "f700d7c24e14e077a9fd6c6006f74a08b9f96e01": {
         "target": "\\Spryker\\Zed\\HealthCheck\\HealthCheckDependencyProvider::getHealthCheckPlugins",
         "source": "\\Spryker\\Zed\\PublishAndSynchronizeHealthCheckStorage\\Communication\\Plugin\\HealthCheck\\PublishAndSynchronizeHealthCheckStoragePlugin"
-      }
-    }
-  },
-  "Spryker.Redis": {
-    "wire-plugin": {
-      "699085dbe2f7f93a59ff8a20d4a0f5fad18c302b": {
-        "target": "\\SprykerShop\\Yves\\WebProfilerWidget\\WebProfilerWidgetDependencyProvider::getDataCollectorPlugins",
-        "source": "\\Spryker\\Yves\\Redis\\Plugin\\WebProfiler\\WebProfilerRedisDataCollectorPlugin"
       }
     }
   },
