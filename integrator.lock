@@ -7,14 +7,6 @@
       }
     }
   },
-  "Spryker.Redis": {
-    "wire-plugin": {
-      "699085dbe2f7f93a59ff8a20d4a0f5fad18c302b": {
-        "target": "\\SprykerShop\\Yves\\WebProfilerWidget\\WebProfilerWidgetDependencyProvider::getDataCollectorPlugins",
-        "source": "\\Spryker\\Yves\\Redis\\Plugin\\WebProfiler\\WebProfilerRedisDataCollectorPlugin"
-      }
-    }
-  },
   "Spryker.ZedRequest": {
     "wire-plugin": {
       "79d9d400079eceaf17bbbeb306401bcfa1f9838a": {
@@ -167,20 +159,6 @@
       "0c9f39cebc63383a593f7f1bbd02ecc320b28e67": {
         "target": "\\Spryker\\Zed\\Checkout\\CheckoutDependencyProvider::getCheckoutOrderSavers",
         "source": "\\Spryker\\Zed\\Shipment\\Communication\\Plugin\\Checkout\\OrderShipmentSavePlugin"
-      }
-    }
-  },
-  "Spryker.AvailabilityCartConnector": {
-    "unwire-plugin": {
-      "f27630f5c511087abae38d9817466aa031273390": {
-        "target": "\\Spryker\\Zed\\Cart\\CartDependencyProvider::getCartPreCheckPlugins",
-        "source": "\\Spryker\\Zed\\AvailabilityCartConnector\\Communication\\Plugin\\CheckAvailabilityPlugin"
-      }
-    },
-    "wire-plugin": {
-      "ebd62cf7e537a34930afef20c97cb4b414715744": {
-        "target": "\\Spryker\\Zed\\Cart\\CartDependencyProvider::getCartPreCheckPlugins",
-        "source": "\\Spryker\\Zed\\AvailabilityCartConnector\\Communication\\Plugin\\Cart\\CheckAvailabilityPlugin"
       }
     }
   },
