@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "160d6444202fb36130a148f9876a2ab1",
+    "content-hash": "a727ee4344c7e6e0853ed8db5e1c2d30",
     "packages": [
         {
             "name": "brick/math",
@@ -25789,25 +25789,28 @@
         },
         {
             "name": "spryker/graph",
-            "version": "3.0.0",
+            "version": "3.0.3",
             "source": {
                 "type": "git",
-                "url": "https://github.com/spryker/Graph.git",
-                "reference": "9616836f46e536abcb93970497d25f0313da9547"
+                "url": "https://github.com/spryker/graph.git",
+                "reference": "abe511cad87246885d4d631b28e8d09191389b89"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/Graph/zipball/9616836f46e536abcb93970497d25f0313da9547",
-                "reference": "9616836f46e536abcb93970497d25f0313da9547",
+                "url": "https://api.github.com/repos/spryker/graph/zipball/abe511cad87246885d4d631b28e8d09191389b89",
+                "reference": "abe511cad87246885d4d631b28e8d09191389b89",
                 "shasum": ""
             },
             "require": {
+                "php": ">=7.3",
                 "spryker/graphviz": "^2.0.0",
-                "spryker/kernel": "^3.0.0",
+                "spryker/kernel": "^3.30.0",
                 "spryker/util-text": "^1.1.0"
             },
             "require-dev": {
+                "spryker/application": "*",
                 "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
                 "spryker/testify": "*"
             },
             "type": "library",
@@ -25817,20 +25820,19 @@
                 }
             },
             "autoload": {
-                "psr-0": {
-                    "Spryker": "src/",
-                    "Function": "tests/"
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "proprietary"
             ],
-            "description": "Graph bundle",
+            "description": "Graph module",
             "support": {
-                "source": "https://github.com/spryker/Graph/tree/3.0.0"
+                "source": "https://github.com/spryker/graph/tree/3.0.3"
             },
-            "time": "2017-02-22T12:08:46+00:00"
+            "time": "2021-09-10T12:59:22+00:00"
         },
         {
             "name": "spryker/graphviz",
