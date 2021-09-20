@@ -125,10 +125,10 @@ if (!getenv('SPRYKER_SSL_ENABLE')) {
         = $config[ProductManagementConstants::BASE_URL_YVES]
         = $config[NewsletterConstants::BASE_URL_YVES]
         = sprintf(
-        'http://%s%s',
-        $yvesHost,
-        $yvesPort !== 80 ? ':' . $yvesPort : ''
-    );
+            'http://%s%s',
+            $yvesHost,
+            $yvesPort !== 80 ? ':' . $yvesPort : ''
+        );
 
 // ----------------------------------------------------------------------------
 // ------------------------------ API -----------------------------------------
