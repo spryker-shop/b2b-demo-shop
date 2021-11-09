@@ -78,14 +78,6 @@ jobs:
         - DB_ENGINE=mysql
         - APPLICATION_ENV=ci.mysql
 
-    - php: "7.3"
-      dist: bionic
-      env:
-        - TEST_GROUP=acceptance
-        - ON_EVENTS=push,cron
-        - DB_ENGINE=mysql
-        - PREFER_LOWEST=1
-
     - php: "7.4"
       dist: bionic
       env:
