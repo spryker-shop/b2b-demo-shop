@@ -33,7 +33,7 @@ assets:
       level: 5
 
 regions:
-  DE:
+  EU:
     services:
       database:
         database: spryker_staging
@@ -94,7 +94,7 @@ groups:
             redirect:
               code: 302
               url: www.us.b2b.demo-spryker.com
-      Yves:
+      yves_eu:
         application: yves
         endpoints:
           www.de.b2b.demo-spryker.com:
@@ -103,19 +103,40 @@ groups:
             store: AT
           www.us.b2b.demo-spryker.com:
             store: US
-      Zed:
-        application: zed
+      backoffice_eu:
+        application: backoffice
         endpoints:
-          os.de.b2b.demo-spryker.com:
+          backoffice.de.b2b.demo-spryker.com:
             store: DE
             <<: *frontend-auth
-          os.at.b2b.demo-spryker.com:
+          backoffice.at.b2b.demo-spryker.com:
             store: AT
             <<: *frontend-auth
-          os.us.b2b.demo-spryker.com:
+          backoffice.us.b2b.demo-spryker.com:
             store: US
             <<: *frontend-auth
-      Glue:
+      backend_gateway_eu:
+        application: backend-gateway
+        endpoints:
+          backend-gateway.de.b2b.demo-spryker.com:
+            store: DE
+          backend-gateway.at.b2b.demo-spryker.com:
+            store: AT
+          backend-gateway.us.b2b.demo-spryker.com:
+            store: US
+      backend_api_eu:
+        application: zed
+        endpoints:
+          backend-api.de.b2b.demo-spryker.com:
+            store: DE
+            entry-point: BackendApi
+          backend-api.at.b2b.demo-spryker.com:
+            store: AT
+            entry-point: BackendApi
+          backend-api.us.b2b.demo-spryker.com:
+            store: US
+            entry-point: BackendApi
+      glue_eu:
         application: glue
         endpoints:
           glue.de.b2b.demo-spryker.com:
