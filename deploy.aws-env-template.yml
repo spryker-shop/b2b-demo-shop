@@ -51,7 +51,7 @@ assets:
             static: true
             level: 5
 regions:
-    DE:
+    EU:
         services:
             database:
                 database: CHANGE_ME #Example: customer_staging
@@ -90,10 +90,10 @@ regions:
                         namespace: 2
 
 groups:
-    DE-1:
-        region: DE
+    EU:
+        region: EU
         applications:
-            Yves:
+            yves_eu:
                 application: yves
                 endpoints:
                     www.de.example.cloud.spryker.toys:
@@ -114,16 +114,39 @@ groups:
                     us.example.cloud.spryker.toys:
                         store: US
                         <<: *frontend-auth
-            Zed:
-                application: zed
+            backoffice_eu:
+                application: backoffice
                 endpoints:
                     backoffice.de.example.cloud.spryker.toys:
                         store: DE
+                        primal: true
                     backoffice.at.example.cloud.spryker.toys:
                         store: AT
                     backoffice.us.example.cloud.spryker.toys:
                         store: US
-            Glue:
+            backend_gateway_eu:
+                application: backend-gateway
+                endpoints:
+                    backend-gateway.de.example.cloud.spryker.toys:
+                        store: DE
+                        primal: true
+                    backend-gateway.at.example.cloud.spryker.toys:
+                        store: AT
+                    backend-gateway.us.example.cloud.spryker.toys:
+                        store: US
+            backend_api_eu:
+                application: zed
+                endpoints:
+                    backend-api.de.example.cloud.spryker.toys:
+                        store: DE
+                        entry-point: BackendApi
+                    backend-api.at.example.cloud.spryker.toys:
+                        store: AT
+                        entry-point: BackendApi
+                    backend-api.us.example.cloud.spryker.toys:
+                        store: US
+                        entry-point: BackendApi
+            glue_eu:
                 application: glue
                 endpoints:
                     glue.de.example.cloud.spryker.toys:
