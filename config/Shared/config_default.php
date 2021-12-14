@@ -26,6 +26,7 @@ use Spryker\Shared\GlueApplication\GlueApplicationConstants;
 use Spryker\Shared\Http\HttpConstants;
 use Spryker\Shared\Kernel\KernelConstants;
 use Spryker\Shared\Log\LogConstants;
+use Spryker\Shared\DocumentationGeneratorRestApi\DocumentationGeneratorRestApiConstants;
 use Spryker\Shared\Mail\MailConstants;
 use Spryker\Shared\Monitoring\MonitoringConstants;
 use Spryker\Shared\Newsletter\NewsletterConstants;
@@ -104,6 +105,7 @@ $config[RouterConstants::ZED_SSL_EXCLUDED_ROUTE_NAMES] = [
 // >>> DEV TOOLS
 
 $config[ConsoleConstants::ENABLE_DEVELOPMENT_CONSOLE_COMMANDS] = (bool)getenv('DEVELOPMENT_CONSOLE_COMMANDS');
+$config[DocumentationGeneratorRestApiConstants::ENABLE_REST_API_DOCUMENTATION_GENERATION] = true;
 
 // >>> ERROR HANDLING
 
