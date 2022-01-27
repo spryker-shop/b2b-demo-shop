@@ -13,10 +13,6 @@ use Spryker\Glue\QuoteRequestAgentsRestApi\QuoteRequestAgentsRestApiConfig;
 class AgentAuthRestApiConfig extends SprykerAgentAuthRestApiConfig
 {
     /**
-     * {@inheritDoc}
-     *
-     * @api
-     *
      * @return array<string>
      */
     public function getAgentResources(): array
