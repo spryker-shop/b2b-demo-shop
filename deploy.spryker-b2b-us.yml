@@ -42,7 +42,7 @@ tag: '1.0'
 
 environment: docker.demo
 image:
-    tag: spryker/php:7.3-alpine3.12
+    tag: spryker/php:7.4-alpine3.12
     environment:
         SPRYKER_DEFAULT_STORE: "US"
         SPRYKER_ACTIVE_STORES: "US"
@@ -99,13 +99,24 @@ groups:
                     www.b2b-staging-us.cloud.spryker.toys:
                         store: US
                         <<: *frontend-auth
-            Zed:
+            backoffice_us:
                 application: backoffice
                 endpoints:
                     backoffice.b2b-staging-us.cloud.spryker.toys:
                         store: US
                         <<: *frontend-auth
-            Glue:
+            backend_gateway_us:
+                application: backend-gateway
+                endpoints:
+                    backend-gateway.b2b-staging-us.cloud.spryker.toys:
+                        store: US
+            backend_api_us:
+                application: zed
+                endpoints:
+                    backend-api.b2b-staging-us.cloud.spryker.toys:
+                        store: US
+                        entry-point: BackendApi
+            glue_us:
                 application: glue
                 endpoints:
                     glue.b2b-staging-us.cloud.spryker.toys:
@@ -154,20 +165,20 @@ services:
 
 docker:
 
-  blackfire:
-    enabled: true
+    blackfire:
+        enabled: true
 
-  ssl:
-    enabled: true
-    redirect: true
+    ssl:
+        enabled: true
+        redirect: true
 
-  debug:
-    enabled: false
-    xdebug:
-      enabled: false
+    debug:
+        enabled: false
+        xdebug:
+            enabled: false
 
-  testing:
-    store: US
+    testing:
+        store: US
 
-  mount:
-    baked:
+    mount:
+        baked:

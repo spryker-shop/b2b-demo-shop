@@ -43,7 +43,7 @@ tag: '1.0'
 environment: docker.demo
 
 image:
-    tag: spryker/php:7.3-alpine3.12
+    tag: spryker/php:7.4-alpine3.12
     environment:
         SPRYKER_DEFAULT_STORE: "DE"
         SPRYKER_ACTIVE_STORES: "DE,AT"
@@ -104,7 +104,7 @@ groups:
     EU:
         region: EU
         applications:
-            Yves:
+            yves_eu:
                 application: yves
                 endpoints:
                     www.de.b2b-staging-eu.cloud.spryker.toys:
@@ -113,7 +113,7 @@ groups:
                     www.at.b2b-staging-eu.cloud.spryker.toys:
                         store: AT
                         <<: *frontend-auth
-            Zed:
+            backoffice_eu:
                 application: backoffice
                 endpoints:
                     backoffice.de.b2b-staging-eu.cloud.spryker.toys:
@@ -122,7 +122,23 @@ groups:
                     backoffice.at.b2b-staging-eu.cloud.spryker.toys:
                         store: AT
                         <<: *frontend-auth
-            Glue:
+            backend_gateway_eu:
+                application: backend-gateway
+                endpoints:
+                    backend-gateway.de.b2b-staging-eu.cloud.spryker.toys:
+                        store: DE
+                    backend-gateway.at.b2b-staging-eu.cloud.spryker.toys:
+                        store: AT
+            backend_api_eu:
+                application: zed
+                endpoints:
+                    backend-api.de.b2b-staging-eu.cloud.spryker.toys:
+                        store: DE
+                        entry-point: BackendApi
+                    backend-api.at.b2b-staging-eu.cloud.spryker.toys:
+                        store: AT
+                        entry-point: BackendApi
+            glue_eu:
                 application: glue
                 endpoints:
                     glue.de.b2b-staging-eu.cloud.spryker.toys:
@@ -173,20 +189,20 @@ services:
 
 docker:
 
-  blackfire:
-    enabled: true
+    blackfire:
+        enabled: true
 
-  ssl:
-    enabled: true
-    redirect: true
+    ssl:
+        enabled: true
+        redirect: true
 
-  debug:
-    enabled: false
-    xdebug:
-      enabled: false
+    debug:
+        enabled: false
+        xdebug:
+            enabled: false
 
-  testing:
-    store: DE
+    testing:
+        store: DE
 
-  mount:
-    baked:
+    mount:
+        baked:
