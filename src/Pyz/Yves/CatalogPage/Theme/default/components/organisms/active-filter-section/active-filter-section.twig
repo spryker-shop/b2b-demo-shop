@@ -6,7 +6,8 @@
 } %}
 
 {% define data = {
-    facets: []
+    facets: [],
+    filteredFacets: [],
 } %}
 
 {%- block class -%}
@@ -15,8 +16,9 @@
 
 {% block component %}
     {% set activeFilters = [] %}
+    {% set facets = data.filteredFacets is not empty ? data.filteredFacets : data.facets %}
 
-    {% for filter in data.facets %}
+    {% for filter in facets %}
         {% set activeFilter = include(
             [
                 molecule('active-filter-' ~ filter.config.name, 'CatalogPage'),

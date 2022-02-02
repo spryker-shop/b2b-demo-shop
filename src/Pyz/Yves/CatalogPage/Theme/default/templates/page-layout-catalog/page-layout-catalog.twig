@@ -60,6 +60,7 @@
                         class: 'is-hidden-sm-md',
                         data: {
                             facets: data.facets,
+                            filteredFacets: data.filteredFacets,
                             filterPath: data.filterPath,
                             categories: data.categories,
                             parentJsName: catalogJsName,
@@ -93,6 +94,7 @@
                         {% include organism('active-filter-section', 'CatalogPage') with {
                             data: {
                                 facets: data.facets,
+                                filteredFacets: data.filteredFacets,
                             },
                         } only %}
                     </div>
