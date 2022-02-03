@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8a61685f86719a5c98b206db04f4fd4d",
+    "content-hash": "94c0ab5d30331f46feed81b45426c737",
     "packages": [
         {
             "name": "brick/math",
@@ -26883,27 +26883,30 @@
         },
         {
             "name": "spryker/merchant",
-            "version": "3.3.2",
+            "version": "3.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/merchant.git",
-                "reference": "ff5f317d4ba30644ec9df988e1d7077fb065783d"
+                "reference": "1369863a2e692824114d1c6df4416c0462b86622"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/merchant/zipball/ff5f317d4ba30644ec9df988e1d7077fb065783d",
-                "reference": "ff5f317d4ba30644ec9df988e1d7077fb065783d",
+                "url": "https://api.github.com/repos/spryker/merchant/zipball/1369863a2e692824114d1c6df4416c0462b86622",
+                "reference": "1369863a2e692824114d1c6df4416c0462b86622",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.3",
+                "php": ">=7.4",
                 "spryker/cart-extension": "^4.0.0",
                 "spryker/checkout-extension": "^1.2.0",
                 "spryker/event": "^2.0.0",
                 "spryker/kernel": "^3.33.0",
                 "spryker/merchant-extension": "^1.1.0",
+                "spryker/price-product-merchant-relationship-storage-extension": "^1.0.0",
                 "spryker/propel-orm": "^1.0.0",
+                "spryker/shopping-list-extension": "^1.2.0",
                 "spryker/store": "^1.1.0",
+                "spryker/transfer": "^3.25.0",
                 "spryker/url": "^3.0.0",
                 "spryker/util-text": "^1.0.0"
             },
@@ -26930,9 +26933,9 @@
             ],
             "description": "Merchant module",
             "support": {
-                "source": "https://github.com/spryker/merchant/tree/3.3.2"
+                "source": "https://github.com/spryker/merchant/tree/3.5.0"
             },
-            "time": "2021-08-19T10:54:56+00:00"
+            "time": "2022-01-26T13:14:24+00:00"
         },
         {
             "name": "spryker/merchant-data-import",
@@ -27132,20 +27135,20 @@
         },
         {
             "name": "spryker/merchant-relationship",
-            "version": "1.8.1",
+            "version": "1.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/merchant-relationship.git",
-                "reference": "43b1b3f601f7589cc74c85252eb6bb46be753de9"
+                "reference": "cba4c4d9394ee7f89110f20ac03526033660b0ee"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/merchant-relationship/zipball/43b1b3f601f7589cc74c85252eb6bb46be753de9",
-                "reference": "43b1b3f601f7589cc74c85252eb6bb46be753de9",
+                "url": "https://api.github.com/repos/spryker/merchant-relationship/zipball/cba4c4d9394ee7f89110f20ac03526033660b0ee",
+                "reference": "cba4c4d9394ee7f89110f20ac03526033660b0ee",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2",
+                "php": ">=7.3",
                 "spryker/company-business-unit": "^1.0.0 || ^2.0.0",
                 "spryker/company-user-extension": "^1.0.0",
                 "spryker/kernel": "^3.33.0",
@@ -27177,9 +27180,9 @@
             ],
             "description": "MerchantRelationship module",
             "support": {
-                "source": "https://github.com/spryker/merchant-relationship/tree/1.8.1"
+                "source": "https://github.com/spryker/merchant-relationship/tree/1.9.0"
             },
-            "time": "2020-05-29T13:08:37+00:00"
+            "time": "2021-09-30T13:33:17+00:00"
         },
         {
             "name": "spryker/merchant-relationship-data-import",
@@ -30537,16 +30540,16 @@
         },
         {
             "name": "spryker/price-product-merchant-relationship",
-            "version": "1.7.0",
+            "version": "1.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/price-product-merchant-relationship.git",
-                "reference": "47b827d1374ff5884c73cfb4789d6572971f97a0"
+                "reference": "6287ad6912fed6d35e7a9db63beb1b903a2f37f6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/price-product-merchant-relationship/zipball/47b827d1374ff5884c73cfb4789d6572971f97a0",
-                "reference": "47b827d1374ff5884c73cfb4789d6572971f97a0",
+                "url": "https://api.github.com/repos/spryker/price-product-merchant-relationship/zipball/6287ad6912fed6d35e7a9db63beb1b903a2f37f6",
+                "reference": "6287ad6912fed6d35e7a9db63beb1b903a2f37f6",
                 "shasum": ""
             },
             "require": {
@@ -30558,7 +30561,8 @@
                 "spryker/price-product-extension": "^1.2.0",
                 "spryker/product": "^6.1.0",
                 "spryker/propel-orm": "^1.6.2",
-                "spryker/symfony": "^3.1.5"
+                "spryker/symfony": "^3.1.5",
+                "spryker/transfer": "^3.25.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
@@ -30589,9 +30593,9 @@
             ],
             "description": "PriceProductMerchantRelationship module",
             "support": {
-                "source": "https://github.com/spryker/price-product-merchant-relationship/tree/1.7.0"
+                "source": "https://github.com/spryker/price-product-merchant-relationship/tree/1.8.0"
             },
-            "time": "2021-07-09T08:14:41+00:00"
+            "time": "2021-09-30T13:33:17+00:00"
         },
         {
             "name": "spryker/price-product-merchant-relationship-data-import",
@@ -30696,16 +30700,16 @@
         },
         {
             "name": "spryker/price-product-merchant-relationship-storage",
-            "version": "1.12.0",
+            "version": "1.13.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/price-product-merchant-relationship-storage.git",
-                "reference": "9397aa79b537f243fd1e61855fdceb1591507ccb"
+                "reference": "1ef758ee9411b8148470d289c924f9dd7b179c07"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/price-product-merchant-relationship-storage/zipball/9397aa79b537f243fd1e61855fdceb1591507ccb",
-                "reference": "9397aa79b537f243fd1e61855fdceb1591507ccb",
+                "url": "https://api.github.com/repos/spryker/price-product-merchant-relationship-storage/zipball/1ef758ee9411b8148470d289c924f9dd7b179c07",
+                "reference": "1ef758ee9411b8148470d289c924f9dd7b179c07",
                 "shasum": ""
             },
             "require": {
@@ -30714,16 +30718,19 @@
                 "spryker/customer": "^7.10.0",
                 "spryker/event-behavior": "^1.1.0",
                 "spryker/kernel": "^3.37.0",
-                "spryker/merchant-relationship": "^1.0.0",
+                "spryker/merchant-relationship": "^1.9.0",
                 "spryker/price-product": "^2.11.0 || ^4.0.0",
                 "spryker/price-product-merchant-relationship": "^1.4.1",
+                "spryker/price-product-merchant-relationship-storage-extension": "^1.0.0",
                 "spryker/price-product-storage-extension": "^1.0.0",
                 "spryker/propel-orm": "^1.0.0",
+                "spryker/publisher-extension": "^1.0.0",
                 "spryker/storage": "^3.0.0",
                 "spryker/store": "^1.0.0",
                 "spryker/synchronization": "^0.2.0 || ^1.0.0",
                 "spryker/synchronization-behavior": "^1.0.0",
-                "spryker/synchronization-extension": "^1.1.0"
+                "spryker/synchronization-extension": "^1.1.0",
+                "spryker/transfer": "^3.25.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
@@ -30749,9 +30756,50 @@
             ],
             "description": "PriceProductMerchantRelationshipStorage module",
             "support": {
-                "source": "https://github.com/spryker/price-product-merchant-relationship-storage/tree/1.12.0"
+                "source": "https://github.com/spryker/price-product-merchant-relationship-storage/tree/1.13.1"
             },
-            "time": "2021-06-17T09:35:28+00:00"
+            "time": "2021-10-06T14:42:02+00:00"
+        },
+        {
+            "name": "spryker/price-product-merchant-relationship-storage-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/price-product-merchant-relationship-storage-extension.git",
+                "reference": "45202fa23f108743be13f15dd4866c50c4983864"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/price-product-merchant-relationship-storage-extension/zipball/45202fa23f108743be13f15dd4866c50c4983864",
+                "reference": "45202fa23f108743be13f15dd4866c50c4983864",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.3"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "PriceProductMerchantRelationshipStorageExtension module",
+            "support": {
+                "source": "https://github.com/spryker/price-product-merchant-relationship-storage-extension/tree/1.0.0"
+            },
+            "time": "2021-09-30T13:33:17+00:00"
         },
         {
             "name": "spryker/price-product-schedule",
