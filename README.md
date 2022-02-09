@@ -12,14 +12,14 @@ Spryker B2B Demo Shop is a collection of Spryker B2B-specific features. It suits
 
 This section describes how to get started with the B2B Demo Shop quickly.
 
-For detailed installation instructions, see [Installing Spryker with Docker](https://documentation.spryker.com/docs/installing-spryker-with-docker) or [Installing with Development Virtual Machine](https://documentation.spryker.com/docs/dev-getting-started#installing-spryker-with-development-virtual-machine).
+For detailed installation instructions, see [Installing Spryker with Docker](https://docs.spryker.com/docs/scos/dev/setup/installing-spryker-with-docker/installing-spryker-with-docker.html) or [Installing with Development Virtual Machine](https://docs.spryker.com/docs/scos/dev/developer-getting-started-guide.html#installing-spryker-with-development-virtual-machine).
 
 ### Prerequisites
 
 For full installation prerequisites, see one of the following:
-* [Installing Docker prerequisites on MacOS](https://documentation.spryker.com/docs/installing-docker-prerequisites-on-macos)
-* [Installing Docker prerequisites on Linux](https://documentation.spryker.com/docs/installing-docker-prerequisites-on-linux)
-* [Installing Docker prerequisites on Windows](https://documentation.spryker.com/docs/installing-docker-prerequisites-on-Windows)
+* [Installing Docker prerequisites on MacOS](https://docs.spryker.com/docs/scos/dev/setup/installing-spryker-with-docker/docker-installation-prerequisites/installing-docker-prerequisites-on-macos.html)
+* [Installing Docker prerequisites on Linux](https://docs.spryker.com/docs/scos/dev/setup/installing-spryker-with-docker/docker-installation-prerequisites/installing-docker-prerequisites-on-linux.html)
+* [Installing Docker prerequisites on Windows](https://docs.spryker.com/docs/scos/dev/setup/installing-spryker-with-docker/docker-installation-prerequisites/installing-docker-prerequisites-on-windows-with-wsl2.html)
 
 Recommended system requirements for MacOS:
 
@@ -30,12 +30,20 @@ Recommended system requirements for MacOS:
 
 ### Installing the B2B Demo Shop
 
-To install the B2B Demo Shop:
+To set up the B2B Demo Shop and its environment, do the following:
 
-1. Create a project folder and clone the B2B Demo Shop and the Docker SDK:
+1. Create a project folder and navigate into it:
 ```bash
 mkdir spryker-b2b && cd spryker-b2b
+```
+
+2. Clone the B2B Demo Shop:
+```bash
 git clone https://github.com/spryker-shop/b2b-demo-shop.git ./
+```
+
+3. Clone the Docker SDK:
+```bash
 git clone git@github.com:spryker/docker-sdk.git docker
 ```
 
@@ -44,8 +52,6 @@ git clone git@github.com:spryker/docker-sdk.git docker
   * [Setting up a production-like environment](#setting-up-a-production-like-environment)
 
 #### Setting up a development environment
-
-To set up a development environment:
 
 1. Bootstrap the docker setup:
 
@@ -77,8 +83,6 @@ You've set up your Spryker B2B Demo Shop and can access your applications.
 
 
 ### Setting up a production-like environment
-
-To set up a production-like environment:
 
 1. Bootstrap the docker setup:
 
@@ -170,17 +174,17 @@ docker/sdk up --build --assets --data
 
 ## Installation of B2B Demo Shop with Docker
 
-For detailed installation instructions of Spryker with Docker, see [Installing Spryker with Docker](https://documentation.spryker.com/docs/installing-spryker-with-docker).
+For detailed installation instructions of Spryker with Docker, see [Installing Spryker with Docker](https://docs.spryker.com/docs/scos/dev/setup/installing-spryker-with-docker/installing-spryker-with-docker.html).
 
 ## Installation of B2B Demo Shop with Vagrant
 
-For detailed installation instructions of Spryker with Vagrant, see [Installing with Development Virtual Machine](https://documentation.spryker.com/docs/dev-getting-started#installing-spryker-with-development-virtual-machine).
+For detailed installation instructions of Spryker with DevVM, see [Installing with Development Virtual Machine](https://docs.spryker.com/docs/scos/dev/developer-getting-started-guide.html#installing-spryker-with-development-virtual-machine).
 
 
 ## Glue API reference
 
-See Glue API reference at [REST API reference](https://documentation.spryker.com/docs/rest-api-reference#/rest-api-reference)
+See Glue API reference at [REST API reference](https://docs.spryker.com/docs/scos/dev/glue-api-guides/202108.0/rest-api-reference.html)
 
 ## Contributing to the repository
 
-For contribution guidelines, see [Code contribution guide](https://documentation.spryker.com/docs/code-contribution-guide#code-contribution-guide)
+For contribution guidelines, see [Code contribution guide](https://docs.spryker.com/docs/scos/dev/code-contribution-guide.html#opening-pull-requests)
