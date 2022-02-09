@@ -9,6 +9,7 @@ namespace PyzTest\Zed\NavigationGui;
 
 use Codeception\Actor;
 use Codeception\Scenario;
+use Exception;
 use Generated\Shared\Transfer\NavigationNodeLocalizedAttributesTransfer;
 use Generated\Shared\Transfer\NavigationNodeTransfer;
 use Generated\Shared\Transfer\NavigationTransfer;
@@ -496,7 +497,7 @@ class NavigationGuiPresentationTester extends Actor
             self::NODE_CHILD_SELECTOR,
             $idParentNavigationNode,
             $idChildNavigationNode
-        ));
+        ), 1);
     }
 
     /**
@@ -780,5 +781,27 @@ class NavigationGuiPresentationTester extends Actor
     public function submitDeleteNavigationForm(): void
     {
         $this->click('//*[@id="delete_navigation_form_submit"]');
+    }
+
+    /**
+     * @param callable $callable
+     * @param int $maxCount
+     * @param bool $verbose
+     *
+     * @return void
+     */
+    public function repeatUnstableActions(callable $callable, int $maxCount = 10, bool $verbose = false): void
+    {
+        $count = 0;
+
+        while ($count < $maxCount) {
+            try {
+                $callable();
+
+                break;
+            } catch (Exception $exception) {
+                codecept_debug(sprintf('Unstable action repeat count: %d', ++$count));
+            }
+        }
     }
 }

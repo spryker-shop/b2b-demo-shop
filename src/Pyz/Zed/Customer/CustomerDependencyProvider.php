@@ -7,7 +7,6 @@
 
 namespace Pyz\Zed\Customer;
 
-use Pyz\Zed\CompanyUser\Communication\Plugin\Customer\IsEnabledCustomerCompanyUserPluginTransferExpanderPlugin;
 use Spryker\Shared\Newsletter\NewsletterConstants;
 use Spryker\Zed\AvailabilityNotification\Communication\Plugin\Customer\AvailabilityNotificationSubscriptionCustomerTransferExpanderPlugin;
 use Spryker\Zed\AvailabilityNotification\Communication\Plugin\CustomerAnonymizer\AvailabilityNotificationAnonymizerPlugin;
@@ -17,6 +16,7 @@ use Spryker\Zed\BusinessOnBehalfGui\Communication\Plugin\Customer\BusinessOnBeha
 use Spryker\Zed\CompanyRole\Communication\Plugin\PermissionCustomerExpanderPlugin;
 use Spryker\Zed\CompanyUser\Communication\Plugin\Customer\CompanyUserReloadCustomerTransferExpanderPlugin;
 use Spryker\Zed\CompanyUser\Communication\Plugin\Customer\CustomerTransferCompanyUserExpanderPlugin;
+use Spryker\Zed\CompanyUser\Communication\Plugin\Customer\IsActiveCompanyUserExistsCustomerTransferExpanderPlugin;
 use Spryker\Zed\CompanyUserGui\Communication\Plugin\Customer\CompanyUserCustomerTableActionExpanderPlugin;
 use Spryker\Zed\CompanyUserInvitation\Communication\Plugin\CompanyUserInvitationPostCustomerRegistrationPlugin;
 use Spryker\Zed\Customer\CustomerDependencyProvider as SprykerCustomerDependencyProvider;
@@ -76,7 +76,7 @@ class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
             new CustomerTransferUsernameExpanderPlugin(),
             new CompanyUserReloadCustomerTransferExpanderPlugin(),
             new CustomerTransferCompanyUserExpanderPlugin(),
-            new IsEnabledCustomerCompanyUserPluginTransferExpanderPlugin(),
+            new IsActiveCompanyUserExistsCustomerTransferExpanderPlugin(),
             new PermissionCustomerExpanderPlugin(),
             new QuotePermissionCustomerExpanderPlugin(), #SharedCartFeature
             new ShoppingListPermissionCustomerExpanderPlugin(),

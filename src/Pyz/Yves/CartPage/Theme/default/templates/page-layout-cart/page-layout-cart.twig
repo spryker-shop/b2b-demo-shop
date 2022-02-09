@@ -235,7 +235,7 @@
                                                         <div class="{{ config.name }}__inner {{ config.name }}__inner--total grid grid--column">
                                                             {% block price %}
                                                                 {% if can('SeePricePermissionPlugin') %}
-                                                                    {% set subtotalPrice = data.listItem.unitSubtotalAggregation is defined ? data.listItem.unitSubtotalAggregation : data.listItem.price %}
+                                                                    {% set subtotalPrice = data.listItem.unitPrice is defined ? data.listItem.unitPrice : data.listItem.price %}
 
                                                                     {% include molecule('money-price') with {
                                                                         modifiers: ['medium', 'block'],

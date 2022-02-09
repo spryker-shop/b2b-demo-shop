@@ -38,6 +38,8 @@
         },
     } only %}
         {% block fieldset %}
+            {{ form_errors(data.form.paymentSelection) }}
+
             {% for choices in data.form.paymentSelection.vars.choices %}
                 {% set paymentProviderIndex = loop.index0 %}
                 {% embed molecule('checkout-list', 'CheckoutPage') with {
@@ -88,7 +90,6 @@
                                     attributes: {
                                         'target-class-name': 'js-payment-method-' ~ embed.index,
                                         'class-to-toggle': 'is-hidden',
-                                        checked: embed.index == 1,
                                     },
                                     rowAttr: {
                                         class: 'toggler-radio toggler-radio--checkout ' ~ (embed.index != 1 ? 'toggler-radio--border-top-less'),

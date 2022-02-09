@@ -3,6 +3,7 @@
 {% define data = {
     products: [],
     facets: _view.facets,
+    filteredFacets: _view.filteredFacets | default([]),
     category: _view.category | default,
     categories: categories | default([]),
     isEmptyCategoryFilterValueVisible: _view.isEmptyCategoryFilterValueVisible | default,
