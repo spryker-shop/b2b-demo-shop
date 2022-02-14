@@ -479,6 +479,8 @@ install:
   - if [[ -z $MP_TEST ]] ; then config/Shared/ci/travis/configure_postgres.sh ; fi
   # Exposes ${CHROMEDRIVER_BINARY} and ${CHROMIUM_BINARY}
   - . $HOME/chromium-ecosystem/docker-chromedriver-master/chromium-installer $CHROMEDRIVER_REVISION $HOME/chromium-ecosystem false
+  - git status
+  - git diff
 
 before_script:
   - mkdir -p shared/data/common/jenkins
@@ -493,6 +495,8 @@ before_script:
   - if [[ $TEST_GROUP == 'acceptance' || $TEST_GROUP == 'without-acceptance' ]] ; then config/Shared/ci/travis/acceptance_env.sh ; fi
   - if [[ $TEST_GROUP == 'acceptance' ]] ; then vendor/bin/install DE -r ci ; fi
   - if [[ $TEST_GROUP == 'without-acceptance' ]] ; then vendor/bin/install DE -r ci -x frontend -x fixtures ; fi
+  - git status
+  - git diff
 
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console transfer:generate ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console propel:install ; fi
@@ -505,8 +509,7 @@ before_script:
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console frontend:project:install-dependencies ; fi
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console frontend:yves:install-dependencies ; fi
   - composer dump-autoload -o -a
-  - git status
-  - git diff
+
 
 script:
   - if [[ $VALIDATION == 1 ]] ; then vendor/bin/console propel:schema:validate ; fi
