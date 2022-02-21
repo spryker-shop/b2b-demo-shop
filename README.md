@@ -1,7 +1,7 @@
 # Spryker B2B Demo Shop
 [![Build Status](https://travis-ci.org/spryker-shop/b2b-demo-shop.svg?branch=master)](https://travis-ci.org/spryker-shop/b2b-demo-shop)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/spryker-shop/b2b-demo-shop/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/spryker-shop/b2b-demo-shop/?branch=master)
-[![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%207.2-8892BF.svg)](https://php.net/)
+[![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%207.4-8892BF.svg)](https://php.net/)
 
 
 ## Description
@@ -39,7 +39,7 @@ mkdir spryker-b2b && cd spryker-b2b
 
 2. Clone the B2B Demo Shop:
 ```bash
-git clone https://github.com/spryker-shop/b2b-demo-shop.git ./
+git clone https://github.com/spryker/b2b-demo-shop-internal.git ./
 ```
 
 3. Clone the Docker SDK:
