@@ -1,66 +1,111 @@
 {% extends view('cart-discount-promotion-products-list', '@SprykerShop:DiscountPromotionWidget') %}
 
 {% block body %}
-    {% if data.promotionProducts is not empty %}
-        <h2 class="title title--product-slider title--top-margin-small">{{ 'cart.promotion.items' | trans }}</h2>
-        <div class="grid grid--gap">
-            {% for product in data.promotionProducts %}
-                {% block product %}
-                    <div class="col col--md-4">
-                        {% embed molecule('product-item') with {
-                            modifiers: ['catalog', 'stretch'],
-                            data: {
-                                product: product,
-                            },
-                        } only %}
-                            {% block content %}
-                                {% import _self as component %}
-                                <div class="{{ config.name }}__info">
-                                    {{ parent() }}
+    {% set titleClassName = 'title title--product-slider title--top-margin-small' %}
+    {% set promotionItemClassName = 'spacing-bottom spacing-bottom--biggest' %}
+    {% set promotionItemTitleClassName = 'title--h4 spacing-bottom spacing-bottom--biggest' %}
+    {{ parent() }}
+{% endblock %}
 
-                                    {% include molecule('variant-configurator', 'DiscountPromotionWidget') with {
-                                        data: {
-                                            sku: data.sku,
-                                            superAttributes: data.product.attributeMap.superAttributes,
-                                            selectedAttributes: data.product.selectedAttributes,
-                                            availableAttributes: data.product.availableAttributes,
-                                        },
-                                    } only %}
+{% block promotionProductSlider %}
+    {% embed molecule('slick-carousel') with {
+        modifiers: ['full-width', 'equal-height', 'products', 'full-height'],
+        data: {
+            slides: data.abstractSkusGroupedByIdDiscount[discount.idDiscount],
+        },
+        embed: {
+            promotionProducts: data.promotionProducts,
+            idDiscountPromotion: discount.discountPromotion.idDiscountPromotion,
+        },
+        attributes: {
+            'slider-config': '{
+                "slidesToShow": 3,
+                "slidesToScroll": 1,
+                "dots": false,
+                "infinite": false,
+                "responsive": [{
+                     "breakpoint": 1024,
+                     "settings": {
+                         "slidesToShow": 3
+                     }
+                },
+                {
+                     "breakpoint": 768,
+                     "settings": {
+                         "slidesToShow": 2,
+                         "infinite": true
+                     }
+                },
+                {
+                     "breakpoint": 550,
+                     "settings": {
+                         "slidesToShow": 1,
+                         "infinite": true
+                     }
+                }]
+            }'
+        }
+    } only %}
+        {% block slides %}
+            {% for slide in data.slides %}
+                {% embed molecule('product-item') with {
+                    modifiers: ['catalog', 'stretch'],
+                    data: {
+                        product: embed.promotionProducts[slide ~ "-" ~ embed.idDiscountPromotion],
+                    },
+                } only %}
+                    {% block colors %}{% endblock %}
 
-                                    <div class="{{ component.renderClass(config.name ~ '__actions', modifiers) }}">
-                                        {% set isDisabled = not data.product.idProductConcrete or not data.product.available %}
+                    {% block content %}
+                        {% import _self as component %}
+                        <div class="{{ config.name }}__info">
+                            {{ parent() }}
 
-                                        {% widget 'AddToCartFormWidget' args [config, data.product, isDisabled] only %}
-                                            {% block embeddedData %}
-                                                {% set disabledAttribute = data.isDisabled ? 'disabled' %}
+                            <div class="{{ config.name }}__variant">
+                                {% include molecule('variant-configurator', 'DiscountPromotionWidget') with {
+                                    data: {
+                                        sku: data.sku,
+                                        superAttributes: data.product.attributeMap.superAttributes,
+                                        selectedAttributes: data.product.selectedAttributes,
+                                        availableAttributes: data.product.availableAttributes,
+                                    },
+                                } only %}
+                            </div>
 
-                                                <div class="grid grid--bottom grid--justify">
-                                                    <div class="col col--sm-12 spacing-bottom spacing-bottom--big">
-                                                        {% include molecule('quantity-counter') with {
-                                                            attributes: {
-                                                                max: data.product.promotionItem.maxQuantity,
-                                                            },
-                                                        } only %}
-                                                    </div>
+                            <div class="{{ component.renderClass(config.name ~ '__actions', modifiers) }}">
+                                {% set isDisabled = not data.product.idProductConcrete or not data.product.available %}
 
-                                                    <div class="col col--sm-12">
-                                                        <input type="hidden" value="{{ productSku }}" name="groupKey">
-                                                        <input type="hidden" value="{{ data.product.promotionItem.discount.discountPromotion.idDiscountPromotion }}" name="idDiscountPromotion">
+                                {% widget 'AddToCartFormWidget' args [config, data.product, isDisabled] only %}
+                                    {% block embeddedData %}
+                                        {% set disabledAttribute = data.isDisabled ? 'disabled' %}
 
-                                                        <button class="button button--expand" {{ disabledAttribute }} data-init-single-click>
-                                                            {{ 'page.detail.add-to-cart' | trans }}
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            {% endblock %}
-                                        {% endwidget %}
-                                    </div>
-                                </div>
-                            {% endblock %}
-                        {% endembed %}
-                    </div>
-                {% endblock %}
+                                        <div class="grid grid--bottom grid--justify">
+                                            <div class="col col--sm-12 spacing-bottom spacing-bottom--big">
+                                                {% include molecule('quantity-counter') with {
+                                                    attributes: {
+                                                        max: data.product.promotionItem.maxQuantity,
+                                                    },
+                                                } only %}
+                                            </div>
+
+                                            <div class="col col--sm-12">
+                                                <input type="hidden" value="{{ productSku }}" name="groupKey">
+                                                <input type="hidden" value="{{ data.product.promotionItem.discount.discountPromotion.idDiscountPromotion }}" name="idDiscountPromotion">
+
+                                                <button class="button button--expand" {{ disabledAttribute }} data-init-single-click>
+                                                    {{ 'page.detail.add-to-cart' | trans }}
+                                                </button>
+                                            </div>
+                                        </div>
+                                    {% endblock %}
+                                {% endwidget %}
+                            </div>
+                        </div>
+                    {% endblock %}
+
+                    {% block action %}{% endblock %}
+                {% endembed %}
             {% endfor %}
-        </div>
-    {% endif %}
+        {% endblock %}
+    {% endembed %}
 {% endblock %}
