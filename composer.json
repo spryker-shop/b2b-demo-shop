@@ -213,10 +213,10 @@
         "codeception/module-rest": "^1.0",
         "codeception/module-webdriver": "^1.0",
         "dms/phpunit-arraysubset-asserts": "^0.1.0 || ^0.2.0",
+        "fakerphp/faker": "^1.16.0",
         "filp/whoops": "^2.7",
-        "fzaninotto/faker": "^1.6",
         "myclabs/deep-copy": "^1.8.1",
-        "phpunit/phpunit": "^8.0.0 || ^9.5.2",
+        "phpunit/phpunit": "^9.5.2",
         "psr/cache": "1.0.1",
         "roave/better-reflection": "~4.3.0",
         "roave/signature": "~1.2.0",
@@ -226,13 +226,13 @@
         "sebastian/recursion-context": "^3.0.0 || ^4.0",
         "sllh/composer-versions-check": "^2.0.2",
         "spryker-feature/development-tools": "^202108.0",
-        "spryker-sdk/integrator": "dev-feature/apps-79/dev-plug-and-play",
+        "spryker-sdk/integrator": "dev-master",
         "spryker-sdk/phpstan-spryker": "^0.3",
         "spryker-sdk/security-checker": "^0.1.0",
         "spryker/architecture-sniffer": "^0.4.0",
         "spryker/code-sniffer": "^0.15.0",
         "spryker/docker-chromedriver": "dev-master as 202108.0",
-        "spryker/testify": "^3.0.0",
+        "spryker/testify": "^3.41.0",
         "stecman/symfony-console-completion": "*",
         "symfony/web-profiler-bundle": "5.2.11"
     },
@@ -272,7 +272,12 @@
             "https"
         ],
         "process-timeout": 900,
-        "chromium-revision": 814168
+        "chromium-revision": 814168,
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "sllh/composer-versions-check": true,
+            "spryker-sdk/integrator": true
+        }
     },
     "scripts": {
         "compile": [
