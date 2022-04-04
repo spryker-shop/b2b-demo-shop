@@ -40,12 +40,15 @@ use Spryker\Zed\ProductReviewSearch\Communication\Plugin\ProductPageSearch\Elast
 
 class ProductPageSearchDependencyProvider extends SprykerProductPageSearchDependencyProvider
 {
-    public const PLUGIN_PRODUCT_LABEL_DATA = 'PLUGIN_PRODUCT_LABEL_DATA';
+    /**
+     * @var string
+     */
+    public const PYZ_PLUGIN_PRODUCT_LABEL_DATA = 'PYZ_PLUGIN_PRODUCT_LABEL_DATA';
 
     /**
      * @return \Spryker\Zed\ProductPageSearch\Dependency\Plugin\ProductPageDataExpanderInterface[]
      */
-    protected function getDataExpanderPlugins()
+    protected function getDataExpanderPlugins(): array
     {
         $dataExpanderPlugins = [];
 
@@ -62,7 +65,7 @@ class ProductPageSearchDependencyProvider extends SprykerProductPageSearchDepend
     /**
      * @return \Spryker\Zed\ProductPageSearchExtension\Dependency\Plugin\ProductPageDataLoaderPluginInterface[]
      */
-    protected function getDataLoaderPlugins()
+    protected function getDataLoaderPlugins(): array
     {
         return [
             new ImagePageDataLoaderPlugin(),

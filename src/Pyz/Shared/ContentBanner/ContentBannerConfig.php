@@ -12,7 +12,9 @@ use Spryker\Shared\ContentBanner\ContentBannerConfig as SprykerContentBannerConf
 class ContentBannerConfig extends SprykerContentBannerConfig
 {
     /**
+     * @var string
+     *
      * Content item banner home page template identifier
      */
-    public const WIDGET_TEMPLATE_IDENTIFIER_HOME_PAGE = 'home-page';
+    public const PYZ_WIDGET_TEMPLATE_IDENTIFIER_HOME_PAGE = 'home-page';
 }

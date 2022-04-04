@@ -31,7 +31,6 @@ jobs:
   allow_failures: []
 
   include:
-
     - php: "7.4"
       dist: bionic
       env:
@@ -106,6 +105,16 @@ jobs:
       dist: bionic
       script:
         - vendor/bin/console security:check
+
+    - name: Upgradability check
+      php: "7.4"
+      os: linux
+      dist: bionic
+      env:
+        - VALIDATION=1
+      script:
+        - docker pull spryker/php-sdk:test
+        - docker run -ti -v $PWD:/data/project --entrypoint bash spryker/php-sdk:test -c 'cd /data/project && if [[ ! -d reports ]]; then mkdir -p reports; fi && ../bin/console analyze:php:code-compliance --format=yaml && ../bin/console analyze:php:code-compliance-report && LINES_COUNT_IN_REPORT_FILE=$(cat reports/analyze\:php\:code-compliance.violations.yaml | wc -l) && [ $LINES_COUNT_IN_REPORT_FILE -eq 4 ] && exit 0 || exit 1'
 
     - name: Docker / Alpine / PHP 7.4 / PostgreSQL / Functional
       os: linux

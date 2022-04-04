@@ -68,15 +68,15 @@ class RabbitMqConfig extends SprykerRabbitMqConfig
                 ],
                 $this->get(LogConstants::LOG_QUEUE_NAME),
             ],
-            $this->getPublishQueueConfiguration(),
-            $this->getSynchronizationQueueConfiguration()
+            $this->getPyzPublishQueueConfiguration(),
+            $this->getPyzSynchronizationQueueConfiguration()
         );
     }
 
     /**
      * @return array
      */
-    protected function getPublishQueueConfiguration(): array
+    protected function getPyzPublishQueueConfiguration(): array
     {
         return [
             PublisherConfig::PUBLISH_QUEUE => [
@@ -101,7 +101,7 @@ class RabbitMqConfig extends SprykerRabbitMqConfig
     /**
      * @return array
      */
-    protected function getSynchronizationQueueConfiguration(): array
+    protected function getPyzSynchronizationQueueConfiguration(): array
     {
         return [
             PublishAndSynchronizeHealthCheckSearchConfig::SYNC_SEARCH_PUBLISH_AND_SYNCHRONIZE_HEALTH_CHECK,

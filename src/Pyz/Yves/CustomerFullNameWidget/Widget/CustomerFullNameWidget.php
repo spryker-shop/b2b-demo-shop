@@ -15,6 +15,11 @@ use Spryker\Yves\Kernel\Widget\AbstractWidget;
 class CustomerFullNameWidget extends AbstractWidget
 {
     /**
+     * @var string
+     */
+    protected const PYZ_PARAMETER_CUSTOMER_FULL_NAME_WIDGET = 'CustomerFullNameWidget';
+
+    /**
      * @return string
      */
     public static function getName(): string
@@ -32,16 +37,19 @@ class CustomerFullNameWidget extends AbstractWidget
 
     public function __construct()
     {
-        $this->addParameter('customerFullName', $this->getCustomerFullName());
+        $this->addPyzCustomerFullNameWidgetParameter();
     }
 
     /**
-     * @return string
+     * @return void
      */
-    protected function getCustomerFullName(): string
+    protected function addPyzCustomerFullNameWidgetParameter(): void
     {
-        $customerTransfer = $this->getFactory()->getCustomerClient()->getCustomer();
+        $customerTransfer = $this->getFactory()->getPyzCustomerClient()->getCustomer();
 
-        return $customerTransfer->getFirstName() . ' ' . $customerTransfer->getLastName();
+        $this->addParameter(
+            static::PYZ_PARAMETER_CUSTOMER_FULL_NAME_WIDGET,
+            $customerTransfer->getFirstName() . ' ' . $customerTransfer->getLastName()
+        );
     }
 }

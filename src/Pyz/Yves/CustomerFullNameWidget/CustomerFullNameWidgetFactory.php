@@ -15,8 +15,8 @@ class CustomerFullNameWidgetFactory extends AbstractFactory
     /**
      * @return \Spryker\Client\Customer\CustomerClientInterface
      */
-    public function getCustomerClient(): CustomerClientInterface
+    public function getPyzCustomerClient(): CustomerClientInterface
     {
-        return $this->getProvidedDependency(CustomerFullNameWidgetDependencyProvider::CLIENT_CUSTOMER);
+        return $this->getProvidedDependency(CustomerFullNameWidgetDependencyProvider::PYZ_CLIENT_CUSTOMER);
     }
 }

@@ -27,8 +27,8 @@ class ShoppingListWidgetController extends SprykerShopShoppingListWidgetControll
     {
         $parentResponse = parent::indexAction($request);
 
-        if ($this->getRefererUrl($request) !== null) {
-            return $this->redirectResponseExternal($this->getRefererUrl($request));
+        if ($this->getPyzRefererUrl($request) !== null) {
+            return $this->redirectResponseExternal($this->getPyzRefererUrl($request));
         }
 
         return $parentResponse;
@@ -39,7 +39,7 @@ class ShoppingListWidgetController extends SprykerShopShoppingListWidgetControll
      *
      * @return array|string|null
      */
-    protected function getRefererUrl(Request $request)
+    protected function getPyzRefererUrl(Request $request)
     {
         if ($request->headers->has(static::REQUEST_HEADER_REFERER)) {
             return $request->headers->get(static::REQUEST_HEADER_REFERER);

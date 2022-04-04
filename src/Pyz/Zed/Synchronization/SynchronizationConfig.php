@@ -11,5 +11,8 @@ use Spryker\Zed\Synchronization\SynchronizationConfig as SprykerSynchronizationC
 
 class SynchronizationConfig extends SprykerSynchronizationConfig
 {
-    public const DEFAULT_SYNCHRONIZATION_POOL_NAME = 'synchronizationPool';
+    /**
+     * @var string
+     */
+    public const PYZ_DEFAULT_SYNCHRONIZATION_POOL_NAME = 'synchronizationPool';
 }

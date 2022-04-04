@@ -9,11 +9,9 @@ namespace Pyz\Zed\CustomerAccess\Business\CustomerAccess;
 
 use Generated\Shared\Transfer\CustomerAccessTransfer;
 use Pyz\Zed\CustomerAccess\Persistence\CustomerAccessEntityManagerInterface;
-use Spryker\Zed\CustomerAccess\Business\CustomerAccess\CustomerAccessReaderInterface;
-use Spryker\Zed\CustomerAccess\Business\CustomerAccess\CustomerAccessUpdater as SprykerCustomerAccessUpdater;
 use Spryker\Zed\Kernel\Persistence\EntityManager\TransactionTrait;
 
-class CustomerAccessUpdater extends SprykerCustomerAccessUpdater
+class CustomerAccessUpdater implements CustomerAccessUpdaterInterface
 {
     use TransactionTrait;
 
@@ -23,7 +21,7 @@ class CustomerAccessUpdater extends SprykerCustomerAccessUpdater
     protected $customerAccessEntityManager;
 
     /**
-     * @var \Spryker\Zed\CustomerAccess\Business\CustomerAccess\CustomerAccessReaderInterface
+     * @var \Pyz\Zed\CustomerAccess\Business\CustomerAccess\CustomerAccessReaderInterface
      */
     protected $customerAccessReader;
 
@@ -34,7 +32,7 @@ class CustomerAccessUpdater extends SprykerCustomerAccessUpdater
 
     /**
      * @param \Pyz\Zed\CustomerAccess\Persistence\CustomerAccessEntityManagerInterface $customerAccessEntityManager
-     * @param \Spryker\Zed\CustomerAccess\Business\CustomerAccess\CustomerAccessReaderInterface $customerAccessReader
+     * @param \Pyz\Zed\CustomerAccess\Business\CustomerAccess\CustomerAccessReaderInterface $customerAccessReader
      * @param \Pyz\Zed\CustomerAccess\Business\CustomerAccess\CustomerAccessFilterInterface $customerAccessFilter
      */
     public function __construct(
@@ -42,7 +40,7 @@ class CustomerAccessUpdater extends SprykerCustomerAccessUpdater
         CustomerAccessReaderInterface $customerAccessReader,
         CustomerAccessFilterInterface $customerAccessFilter
     ) {
-        parent::__construct($customerAccessEntityManager);
+        $this->customerAccessEntityManager = $customerAccessEntityManager;
         $this->customerAccessReader = $customerAccessReader;
         $this->customerAccessFilter = $customerAccessFilter;
     }
@@ -57,9 +55,9 @@ class CustomerAccessUpdater extends SprykerCustomerAccessUpdater
         return $this->getTransactionHandler()->handleTransaction(function () use ($customerAccessTransfer) {
             $allContentTypes = $this->customerAccessReader->getAllContentTypes();
             $manageableContentTypes = $this->customerAccessFilter->filterManageableContentTypes($allContentTypes);
-            $this->customerAccessEntityManager->setContentTypesToAccessible($manageableContentTypes);
+            $this->customerAccessEntityManager->setPyzContentTypesToAccessible($manageableContentTypes);
 
-            return $this->customerAccessEntityManager->setContentTypesToInaccessible($customerAccessTransfer);
+            return $this->customerAccessEntityManager->setPyzContentTypesToInaccessible($customerAccessTransfer);
         });
     }
 }
