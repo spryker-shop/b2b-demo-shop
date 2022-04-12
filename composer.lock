@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "79e8b578aaf8de12adaea04b8613d06b",
+    "content-hash": "263320fdc016507c48b025103ea3a97f",
     "packages": [
         {
             "name": "brick/math",
@@ -21429,20 +21429,20 @@
         },
         {
             "name": "spryker/configurable-bundle-cart",
-            "version": "1.3.0",
+            "version": "1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/configurable-bundle-cart.git",
-                "reference": "fc4d24d073a9650e05c64cd34648a1bc07973cb7"
+                "reference": "78bf6968abee7a43fe5cc1309a8fc67e9002a722"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/configurable-bundle-cart/zipball/fc4d24d073a9650e05c64cd34648a1bc07973cb7",
-                "reference": "fc4d24d073a9650e05c64cd34648a1bc07973cb7",
+                "url": "https://api.github.com/repos/spryker/configurable-bundle-cart/zipball/78bf6968abee7a43fe5cc1309a8fc67e9002a722",
+                "reference": "78bf6968abee7a43fe5cc1309a8fc67e9002a722",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2",
+                "php": ">=7.4",
                 "spryker/cart": "^7.3.0",
                 "spryker/cart-extension": "^1.10.0 || ^2.6.0 || ^4.2.0",
                 "spryker/configurable-bundle": "^1.0.0 || ^2.0.0",
@@ -21470,9 +21470,69 @@
             ],
             "description": "ConfigurableBundleCart module",
             "support": {
-                "source": "https://github.com/spryker/configurable-bundle-cart/tree/1.3.0"
+                "source": "https://github.com/spryker/configurable-bundle-cart/tree/1.4.0"
             },
-            "time": "2020-10-07T07:20:47+00:00"
+            "time": "2022-03-22T12:33:17+00:00"
+        },
+        {
+            "name": "spryker/configurable-bundle-carts-rest-api",
+            "version": "0.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/configurable-bundle-carts-rest-api.git",
+                "reference": "afdf85cd0e426e955e12f6221412930acc9152cf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/configurable-bundle-carts-rest-api/zipball/afdf85cd0e426e955e12f6221412930acc9152cf",
+                "reference": "afdf85cd0e426e955e12f6221412930acc9152cf",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.3",
+                "spryker/carts-rest-api": "^5.7.0",
+                "spryker/carts-rest-api-extension": "^1.5.0",
+                "spryker/configurable-bundle-cart": "^1.3.0",
+                "spryker/configurable-bundle-storage": "^2.1.0",
+                "spryker/glossary-storage": "^1.5.0",
+                "spryker/glue-application": "^1.9.0",
+                "spryker/glue-application-extension": "^1.0.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/persistent-cart": "^3.4.0",
+                "spryker/store": "^1.1.0",
+                "spryker/symfony": "^3.0.0",
+                "spryker/zed-request": "^3.0.0"
+            },
+            "require-dev": {
+                "spryker/cart": "*",
+                "spryker/code-sniffer": "*",
+                "spryker/configurable-bundle": "*",
+                "spryker/customer": "*",
+                "spryker/product": "*",
+                "spryker/propel": "*",
+                "spryker/quote": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ConfigurableBundleCartsRestApi module",
+            "support": {
+                "source": "https://github.com/spryker/configurable-bundle-carts-rest-api/tree/0.1.1"
+            },
+            "time": "2021-06-14T11:58:56+00:00"
         },
         {
             "name": "spryker/configurable-bundle-data-import",
@@ -21841,6 +21901,57 @@
                 "source": "https://github.com/spryker/configurable-bundle-storage/tree/2.5.0"
             },
             "time": "2020-09-30T14:57:41+00:00"
+        },
+        {
+            "name": "spryker/configurable-bundles-rest-api",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/configurable-bundles-rest-api.git",
+                "reference": "06875cbb0bd90d7cbde8aba7a9c03ae6403c36b9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/configurable-bundles-rest-api/zipball/06875cbb0bd90d7cbde8aba7a9c03ae6403c36b9",
+                "reference": "06875cbb0bd90d7cbde8aba7a9c03ae6403c36b9",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.3",
+                "spryker/configurable-bundle": "^2.0.0",
+                "spryker/configurable-bundle-page-search": "^1.0.0",
+                "spryker/configurable-bundle-storage": "^2.5.0",
+                "spryker/glossary-storage": "^1.5.0",
+                "spryker/glue-application": "^1.9.0",
+                "spryker/glue-application-extension": "^1.0.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/orders-rest-api-extension": "^1.0.0",
+                "spryker/quote-requests-rest-api-extension": "^1.0.0",
+                "spryker/symfony": "^3.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ConfigurableBundlesRestApi module",
+            "support": {
+                "source": "https://github.com/spryker/configurable-bundles-rest-api/tree/1.1.0"
+            },
+            "time": "2021-07-06T13:27:56+00:00"
         },
         {
             "name": "spryker/console",
