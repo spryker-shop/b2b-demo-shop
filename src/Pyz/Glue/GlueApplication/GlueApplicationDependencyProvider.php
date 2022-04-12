@@ -77,6 +77,11 @@ use Spryker\Glue\CompanyUsersRestApi\CompanyUsersRestApiConfig;
 use Spryker\Glue\CompanyUsersRestApi\Plugin\GlueApplication\CompanyUserByShareDetailResourceRelationshipPlugin;
 use Spryker\Glue\CompanyUsersRestApi\Plugin\GlueApplication\CompanyUserRestUserValidatorPlugin;
 use Spryker\Glue\CompanyUsersRestApi\Plugin\GlueApplication\CompanyUsersResourceRoutePlugin;
+use Spryker\Glue\ConfigurableBundleCartsRestApi\Plugin\GlueApplication\ConfiguredBundlesResourceRoutePlugin;
+use Spryker\Glue\ConfigurableBundlesRestApi\ConfigurableBundlesRestApiConfig;
+use Spryker\Glue\ConfigurableBundlesRestApi\Plugin\GlueApplication\ConfigurableBundleTemplateImageSetByConfigurableBundleTemplateResourceRelationshipPlugin;
+use Spryker\Glue\ConfigurableBundlesRestApi\Plugin\GlueApplication\ConfigurableBundleTemplateSlotByConfigurableBundleTemplateResourceRelationshipPlugin;
+use Spryker\Glue\ConfigurableBundlesRestApi\Plugin\GlueApplication\ConfigurableBundleTemplatesResourceRoutePlugin;
 use Spryker\Glue\ContentBannersRestApi\Plugin\ContentBannerResourceRoutePlugin;
 use Spryker\Glue\ContentProductAbstractListsRestApi\ContentProductAbstractListsRestApiConfig;
 use Spryker\Glue\ContentProductAbstractListsRestApi\Plugin\GlueApplication\AbstractProductsResourceRoutePlugin as ContentProductAbstractListAbstractProductsResourceRoutePlugin;
@@ -277,6 +282,8 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new MyAvailabilityNotificationsResourceRoutePlugin(),
             new CustomerAvailabilityNotificationsResourceRoutePlugin(),
             new MyAvailabilityNotificationsResourceRoutePlugin(),
+            new ConfigurableBundleTemplatesResourceRoutePlugin(),
+            new ConfiguredBundlesResourceRoutePlugin(),
             new CartCodesResourceRoutePlugin(),
         ];
     }
@@ -687,6 +694,16 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
         $resourceRelationshipCollection->addRelationship(
             ProductsRestApiConfig::RESOURCE_ABSTRACT_PRODUCTS,
             new ConcreteProductsByProductConcreteIdsResourceRelationshipPlugin()
+        );
+
+        $resourceRelationshipCollection->addRelationship(
+            ConfigurableBundlesRestApiConfig::RESOURCE_CONFIGURABLE_BUNDLE_TEMPLATES,
+            new ConfigurableBundleTemplateSlotByConfigurableBundleTemplateResourceRelationshipPlugin()
+        );
+
+        $resourceRelationshipCollection->addRelationship(
+            ConfigurableBundlesRestApiConfig::RESOURCE_CONFIGURABLE_BUNDLE_TEMPLATES,
+            new ConfigurableBundleTemplateImageSetByConfigurableBundleTemplateResourceRelationshipPlugin()
         );
 
         return $resourceRelationshipCollection;
