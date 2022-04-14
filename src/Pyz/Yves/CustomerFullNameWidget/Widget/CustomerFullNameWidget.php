@@ -37,13 +37,13 @@ class CustomerFullNameWidget extends AbstractWidget
 
     public function __construct()
     {
-        $this->addPyzCustomerFullNameWidgetParameter();
+        $this->addPyzCustomerFullNameParameter();
     }
 
     /**
      * @return void
      */
-    protected function addPyzCustomerFullNameWidgetParameter(): void
+    protected function addPyzCustomerFullNameParameter(): void
     {
         $customerTransfer = $this->getFactory()->getPyzCustomerClient()->getCustomer();
 
