@@ -14,19 +14,19 @@ image:
         SPRYKER_HOOK_INSTALL: "vendor/bin/install -r production --no-ansi -vvv"
         SPRYKER_HOOK_DESTRUCTIVE_INSTALL: "vendor/bin/install -r destructive --no-ansi -vvv"
 
-# composer:
-#     mode: --no-dev
-#     autoload: --classmap-authoritative
+composer:
+    mode: --no-dev
+    autoload: --classmap-authoritative
 
-# assets:
-#     image: fholzer/nginx-brotli:v1.18.0
-#     mode: production
-#     compression:
-#         brotli:
-#             static: only
-#         gzip:
-#             static: true
-#             level: 5
+assets:
+    image: fholzer/nginx-brotli:v1.18.0
+    mode: production
+    compression:
+        brotli:
+            static: only
+        gzip:
+            static: true
+            level: 5
 
 regions:
     EU:
