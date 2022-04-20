@@ -40,14 +40,15 @@
         {% block fieldset %}
             {{ form_errors(data.form.paymentSelection) }}
 
-            {% for choices in data.form.paymentSelection.vars.choices %}
+            {% for name, choices in data.form.paymentSelection.vars.choices %}
                 {% set paymentProviderIndex = loop.index0 %}
+                <h5>{{ name | trans }}</h5>
                 {% embed molecule('checkout-list', 'CheckoutPage') with {
                     class: 'spacing-bottom spacing-bottom--bigger',
                     data: {
                         form: null,
                         choices: choices,
-                        checkedValue: data.form.paymentSelection.vars.value,
+                        checkedValue: data.form.paymentSelection.vars.name,
                     },
                     embed: {
                         form: data.form,
