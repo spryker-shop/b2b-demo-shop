@@ -12,6 +12,7 @@ use Spryker\Shared\Acl\AclConstants;
 use Spryker\Shared\Agent\AgentConstants;
 use Spryker\Shared\Application\ApplicationConstants;
 use Spryker\Shared\Application\Log\Config\SprykerLoggerConfig;
+use Spryker\Shared\CartsRestApi\CartsRestApiConstants;
 use Spryker\Shared\Category\CategoryConstants;
 use Spryker\Shared\CmsGui\CmsGuiConstants;
 use Spryker\Shared\Customer\CustomerConstants;
@@ -24,6 +25,7 @@ use Spryker\Shared\FileManager\FileManagerConstants;
 use Spryker\Shared\FileManagerGui\FileManagerGuiConstants;
 use Spryker\Shared\FileSystem\FileSystemConstants;
 use Spryker\Shared\GlueApplication\GlueApplicationConstants;
+use Spryker\Shared\GlueStorefrontApiApplication\GlueStorefrontApiApplicationConstants;
 use Spryker\Shared\Http\HttpConstants;
 use Spryker\Shared\Kernel\KernelConstants;
 use Spryker\Shared\Log\LogConstants;
@@ -62,10 +64,13 @@ use Spryker\Shared\User\UserConstants;
 use Spryker\Shared\ZedRequest\ZedRequestConstants;
 use Spryker\Yves\Log\Plugin\YvesLoggerConfigPlugin;
 use Spryker\Zed\Log\Communication\Plugin\ZedLoggerConfigPlugin;
+use Spryker\Zed\Oms\OmsConfig;
 use Spryker\Zed\Propel\PropelConfig;
 use SprykerShop\Shared\CustomerPage\CustomerPageConstants;
 use SprykerShop\Shared\ShopUi\ShopUiConstants;
-
+use Spryker\Zed\Payment\PaymentConfig;
+use Spryker\Shared\StoreReference\StoreReferenceConstants;
+use Spryker\Shared\AppCatalogGui\AppCatalogGuiConstants;
 // ############################################################################
 // ############################## PRODUCTION CONFIGURATION ####################
 // ############################################################################
@@ -158,9 +163,11 @@ $config[KernelConstants::STRICT_DOMAIN_REDIRECT] = true;
 
 $config[HttpConstants::ZED_HTTP_STRICT_TRANSPORT_SECURITY_ENABLED]
     = $config[HttpConstants::YVES_HTTP_STRICT_TRANSPORT_SECURITY_ENABLED]
+    = $config[HttpConstants::GLUE_HTTP_STRICT_TRANSPORT_SECURITY_ENABLED]
     = true;
 $config[HttpConstants::ZED_HTTP_STRICT_TRANSPORT_SECURITY_CONFIG]
     = $config[HttpConstants::YVES_HTTP_STRICT_TRANSPORT_SECURITY_CONFIG]
+    = $config[HttpConstants::GLUE_HTTP_STRICT_TRANSPORT_SECURITY_CONFIG]
     = [
     'max_age' => 31536000,
     'include_sub_domains' => true,
@@ -208,6 +215,10 @@ $config[SecuritySystemUserConstants::AUTH_DEFAULT_CREDENTIALS] = [
         'token' => getenv('SPRYKER_ZED_REQUEST_TOKEN') ?: '',
     ],
 ];
+
+// >> URL Signer
+
+$config[HttpConstants::URI_SIGNER_SECRET_KEY] = getenv('SPRYKER_ZED_REQUEST_TOKEN') ?: null;
 
 // ACL: Special rules for specific users
 $config[AclConstants::ACL_DEFAULT_CREDENTIALS] = [
@@ -438,10 +449,10 @@ foreach ($rabbitConnections as $key => $connection) {
 
 // >>> SCHEDULER
 $config[SchedulerConstants::ENABLED_SCHEDULERS] = [
-    SchedulerConfig::SCHEDULER_JENKINS,
+    SchedulerConfig::PYZ_SCHEDULER_JENKINS,
 ];
 $config[SchedulerJenkinsConstants::JENKINS_CONFIGURATION] = [
-    SchedulerConfig::SCHEDULER_JENKINS => [
+    SchedulerConfig::PYZ_SCHEDULER_JENKINS => [
         SchedulerJenkinsConfig::SCHEDULER_JENKINS_BASE_URL => sprintf(
             '%s://%s:%s/',
             getenv('SPRYKER_SCHEDULER_PROTOCOL') ?: 'http',
@@ -550,7 +561,15 @@ $config[GlueApplicationConstants::GLUE_APPLICATION_CORS_ALLOW_ORIGIN] = getenv('
 // ----------------------------------------------------------------------------
 
 $config[OmsConstants::ACTIVE_PROCESSES] = [];
-$config[SalesConstants::PAYMENT_METHOD_STATEMACHINE_MAPPING] = [];
+$config[SalesConstants::PAYMENT_METHOD_STATEMACHINE_MAPPING] = [
+    PaymentConfig::PAYMENT_FOREIGN_PROVIDER => 'B2CStateMachine01',
+];
+
+$config[OmsConstants::PROCESS_LOCATION] = [
+    OmsConfig::DEFAULT_PROCESS_LOCATION,
+    APPLICATION_ROOT_DIR . '/vendor/spryker/payment/config/Zed/Oms',
+];
+
 
 // ----------------------------------------------------------------------------
 // ------------------------------ PAYMENTS ------------------------------------
@@ -571,3 +590,19 @@ $config[AgentConstants::AGENT_ALLOWED_SECURED_PATTERN_LIST] = [
 
 // >>> Product Label
 $config[ProductLabelConstants::PRODUCT_LABEL_TO_DE_ASSIGN_CHUNK_SIZE] = 1000;
+
+// ----------------------------------------------------------------------------
+// ------------------------------ CART REST API -------------------------------
+// ----------------------------------------------------------------------------
+
+$config[CartsRestApiConstants::IS_QUOTE_RELOAD_ENABLED] = true;
+
+// ----------------------------------------------------------------------------
+// ------------------------------ AOP -----------------------------------------
+// ----------------------------------------------------------------------------
+
+$config[StoreReferenceConstants::STORE_NAME_REFERENCE_MAP] = json_decode(
+    html_entity_decode(getenv('STORE_NAME_REFERENCE_MAP') ?: ''),
+    true,
+);
+$config[AppCatalogGuiConstants::APP_CATALOG_SCRIPT_URL] = (string)getenv('APP_CATALOG_SCRIPT_URL');

@@ -1061,7 +1061,703 @@ class DataImportBusinessFactory extends SprykerDataImportBusinessFactory
      */
     public function createAddLocalesStep(): DataImportStepInterface
     {
-        return new AddLocalesStep($this->getStore());
+        return new AddLocalesStep($this->getDataImportStoreFacade());
+    }
+
+    /**
+     * @param string $importType
+     * @param \Spryker\Zed\DataImport\Business\Model\DataReader\DataReaderInterface $reader
+     *
+     * @return \Pyz\Zed\DataImport\Business\Model\DataImporterConditional
+     */
+    public function createDataImporterConditional($importType, DataReaderInterface $reader)
+    {
+        return new DataImporterConditional($importType, $reader, $this->getGracefulRunnerFacade());
+    }
+
+    /**
+     * @param string $importType
+     * @param \Spryker\Zed\DataImport\Business\Model\DataReader\DataReaderInterface $reader
+     *
+     * @return \Pyz\Zed\DataImport\Business\Model\DataImporterDataSetWriterAwareConditional
+     */
+    public function createDataImporterWriterAwareConditional($importType, DataReaderInterface $reader): DataImporterDataSetWriterAwareInterface
+    {
+        return new DataImporterDataSetWriterAwareConditional($importType, $reader, $this->getGracefulRunnerFacade());
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\DataImporterConfigurationTransfer $dataImporterConfigurationTransfer
+     *
+     * @return \Pyz\Zed\DataImport\Business\Model\DataImporterConditional
+     */
+    public function getConditionalCsvDataImporterFromConfig(DataImporterConfigurationTransfer $dataImporterConfigurationTransfer)
+    {
+        $csvReader = $this->createCsvReaderFromConfig($dataImporterConfigurationTransfer->getReaderConfiguration());
+
+        return $this->createDataImporterConditional($dataImporterConfigurationTransfer->getImportType(), $csvReader);
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\DataImporterConfigurationTransfer $dataImporterConfigurationTransfer
+     *
+     * @return \Pyz\Zed\DataImport\Business\Model\DataImporterDataSetWriterAwareConditional
+     */
+    public function getConditionalCsvDataImporterWriterAwareFromConfig(
+        DataImporterConfigurationTransfer $dataImporterConfigurationTransfer
+    ): DataImporterDataSetWriterAwareInterface {
+        $csvReader = $this->createCsvReaderFromConfig($dataImporterConfigurationTransfer->getReaderConfiguration());
+
+        return $this->createDataImporterWriterAwareConditional($dataImporterConfigurationTransfer->getImportType(), $csvReader);
+    }
+
+    /**
+     * @return \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface
+     */
+    public function createCombinedProductPricePropelDataSetWriter(): DataSetWriterInterface
+    {
+        return new CombinedProductPricePropelDataSetWriter(
+            $this->createProductRepository(),
+            $this->getStoreFacade(),
+            $this->getCurrencyFacade()
+        );
+    }
+
+    /**
+     * @return \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface
+     */
+    public function createCombinedProductImagePropelDataSetWriter(): DataSetWriterInterface
+    {
+        return new CombinedProductImagePropelDataSetWriter(
+            $this->createProductImageRepository()
+        );
+    }
+
+    /**
+     * @return \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface
+     */
+    public function createCombinedProductStockPropelDataSetWriter(): DataSetWriterInterface
+    {
+        return new CombinedProductStockPropelDataSetWriter(
+            $this->getProductBundleFacade(),
+            $this->createProductRepository(),
+            $this->getStoreFacade(),
+            $this->getStockFacade()
+        );
+    }
+
+    /**
+     * @return \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface
+     */
+    public function createCombinedProductAbstractStorePropelDataSetWriter(): DataSetWriterInterface
+    {
+        return new CombinedProductAbstractStorePropelDataSetWriter();
+    }
+
+    /**
+     * @return \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface
+     */
+    public function createCombinedProductAbstractPropelDataSetWriter(): DataSetWriterInterface
+    {
+        return new CombinedProductAbstractPropelDataSetWriter(
+            $this->createProductRepository()
+        );
+    }
+
+    /**
+     * @return \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface
+     */
+    public function createCombinedProductConcretePropelDataSetWriter(): DataSetWriterInterface
+    {
+        return new CombinedProductConcretePropelDataSetWriter(
+            $this->createProductRepository()
+        );
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer
+     *
+     * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface
+     */
+    public function createCombinedProductPriceImporter(DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer): DataImporterInterface
+    {
+        $dataImporter = $this->getConditionalCsvDataImporterWriterAwareFromConfig(
+            $this->getConfig()->buildImporterConfigurationByDataImportConfigAction($dataImportConfigurationActionTransfer)
+        );
+
+        $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker(CombinedProductPriceHydratorStep::BULK_SIZE);
+        $dataSetStepBroker
+            ->addStep(new CombinedProductPriceHydratorStep(
+                $this->getPriceProductFacade(),
+                $this->getUtilEncodingService()
+            ));
+
+        $dataImporter->setDataSetCondition($this->createCombinedProductPriceMandatoryColumnCondition());
+        $dataImporter->addDataSetStepBroker($dataSetStepBroker);
+        $dataImporter->setDataSetWriter($this->createCombinedProductPriceDataSetWriters());
+
+        return $dataImporter;
+    }
+
+    /**
+     * @return \Spryker\Zed\Currency\Business\CurrencyFacadeInterface
+     */
+    public function getCurrencyFacade(): CurrencyFacadeInterface
+    {
+        return $this->getProvidedDependency(DataImportDependencyProvider::FACADE_CURRENCY);
+    }
+
+    /**
+     * @return \Spryker\Zed\PriceProduct\Business\PriceProductFacadeInterface
+     */
+    public function getPriceProductFacade(): PriceProductFacadeInterface
+    {
+        return $this->getProvidedDependency(DataImportDependencyProvider::FACADE_PRICE_PRODUCT);
+    }
+
+    /**
+     * @return \Spryker\Zed\Stock\Business\StockFacadeInterface
+     */
+    public function getStockFacade(): StockFacadeInterface
+    {
+        return $this->getProvidedDependency(DataImportDependencyProvider::FACADE_STOCK);
+    }
+
+    /**
+     * @return \Spryker\Zed\Store\Business\StoreFacadeInterface
+     */
+    public function getStoreFacade(): StoreFacadeInterface
+    {
+        return $this->getProvidedDependency(DataImportDependencyProvider::FACADE_STORE);
+    }
+
+    /**
+     * @return \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface
+     */
+    public function createProductStockDataImportWriters(): DataSetWriterInterface
+    {
+        return new DataSetWriterCollection($this->createProductStockWriterPlugins());
+    }
+
+    /**
+     * @return \Spryker\Zed\DataImportExtension\Dependency\Plugin\DataSetWriterPluginInterface[]
+     */
+    public function createProductStockWriterPlugins(): array
+    {
+        return [
+            new ProductStockPropelWriterPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Pyz\Zed\DataImport\Business\Model\DataSet\DataSetConditionInterface
+     */
+    public function createCombinedProductPriceMandatoryColumnCondition(): DataSetConditionInterface
+    {
+        return new CombinedProductPriceMandatoryColumnCondition();
+    }
+
+    /**
+     * @return \Pyz\Zed\DataImport\Business\Model\ProductImage\Repository\ProductImageRepositoryInterface
+     */
+    public function createProductImageRepository(): ProductImageRepositoryInterface
+    {
+        return new ProductImageRepository();
+    }
+
+    /**
+     * @return \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface
+     */
+    public function createCombinedProductPriceDataSetWriters(): DataSetWriterInterface
+    {
+        return new DataSetWriterCollection($this->createCombinedProductPriceDataSetWriterPlugins());
+    }
+
+    /**
+     * @return \Spryker\Zed\DataImportExtension\Dependency\Plugin\DataSetWriterPluginInterface[]
+     */
+    public function createCombinedProductPriceDataSetWriterPlugins(): array
+    {
+        return [
+            new CombinedProductPricePropelWriterPlugin(),
+        ];
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer
+     *
+     * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface
+     */
+    public function createCombinedProductImageImporter(DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer): DataImporterInterface
+    {
+        $dataImporter = $this->getConditionalCsvDataImporterWriterAwareFromConfig(
+            $this->getConfig()->buildImporterConfigurationByDataImportConfigAction($dataImportConfigurationActionTransfer)
+        );
+
+        $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker(CombinedProductImageHydratorStep::BULK_SIZE);
+        $dataSetStepBroker
+            ->addStep($this->createProductAbstractSkuToIdProductAbstractStep(CombinedProductImageHydratorStep::COLUMN_ABSTRACT_SKU, ProductImageHydratorStep::KEY_IMAGE_SET_FK_PRODUCT_ABSTRACT))
+            ->addStep($this->createProductSkuToIdProductStep(CombinedProductImageHydratorStep::COLUMN_CONCRETE_SKU, ProductImageHydratorStep::KEY_IMAGE_SET_FK_PRODUCT))
+            ->addStep($this->createLocaleNameToIdStep(CombinedProductImageHydratorStep::COLUMN_LOCALE, ProductImageHydratorStep::KEY_IMAGE_SET_FK_LOCALE))
+            ->addStep(new CombinedProductImageHydratorStep());
+
+        $dataImporter->setDataSetCondition($this->createCombinedProductImageMandatoryColumnCondition());
+        $dataImporter->addDataSetStepBroker($dataSetStepBroker);
+        $dataImporter->setDataSetWriter($this->createCombinedProductImageDataSetWriters());
+
+        return $dataImporter;
+    }
+
+    /**
+     * @return \Pyz\Zed\DataImport\Business\Model\DataSet\DataSetConditionInterface
+     */
+    public function createCombinedProductImageMandatoryColumnCondition(): DataSetConditionInterface
+    {
+        return new CombinedProductImageMandatoryColumnCondition();
+    }
+
+    /**
+     * @return \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface
+     */
+    public function createCombinedProductImageDataSetWriters(): DataSetWriterInterface
+    {
+        return new DataSetWriterCollection($this->createCombinedProductImageDataSetWriterPlugins());
+    }
+
+    /**
+     * @return \Spryker\Zed\DataImportExtension\Dependency\Plugin\DataSetWriterPluginInterface[]
+     */
+    public function createCombinedProductImageDataSetWriterPlugins(): array
+    {
+        return [
+            new CombinedProductImagePropelWriterPlugin(),
+        ];
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer
+     *
+     * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface
+     */
+    public function createCombinedProductStockImporter(DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer): DataImporterInterface
+    {
+        $dataImporter = $this->getConditionalCsvDataImporterWriterAwareFromConfig(
+            $this->getConfig()->buildImporterConfigurationByDataImportConfigAction($dataImportConfigurationActionTransfer)
+        );
+
+        $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker(CombinedProductStockHydratorStep::BULK_SIZE);
+        $dataSetStepBroker
+            ->addStep(new CombinedProductStockHydratorStep());
+
+        $dataImporter->setDataSetCondition($this->createCombinedProductStockMandatoryColumnCondition());
+        $dataImporter->addDataSetStepBroker($dataSetStepBroker);
+        $dataImporter->setDataSetWriter($this->createCombinedProductStockDataSetWriters());
+
+        return $dataImporter;
+    }
+
+    /**
+     * @return \Pyz\Zed\DataImport\Business\Model\DataSet\DataSetConditionInterface
+     */
+    public function createCombinedProductStockMandatoryColumnCondition(): DataSetConditionInterface
+    {
+        return new CombinedProductStockMandatoryColumnCondition();
+    }
+
+    /**
+     * @return \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface
+     */
+    public function createCombinedProductStockDataSetWriters(): DataSetWriterInterface
+    {
+        return new DataSetWriterCollection($this->createCombinedProductStockDataSetWriterPlugins());
+    }
+
+    /**
+     * @return \Spryker\Zed\DataImportExtension\Dependency\Plugin\DataSetWriterPluginInterface[]
+     */
+    public function createCombinedProductStockDataSetWriterPlugins(): array
+    {
+        return [
+            new CombinedProductStockPropelWriterPlugin(),
+        ];
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer
+     *
+     * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface
+     */
+    public function createCombinedProductAbstractStoreImporter(
+        DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer
+    ): DataImporterInterface {
+        $dataImporter = $this->getConditionalCsvDataImporterWriterAwareFromConfig(
+            $this->getConfig()->buildImporterConfigurationByDataImportConfigAction($dataImportConfigurationActionTransfer)
+        );
+
+        $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker(CombinedProductAbstractStoreHydratorStep::BULK_SIZE);
+        $dataSetStepBroker->addStep(new CombinedProductAbstractStoreHydratorStep());
+
+        $dataImporter->setDataSetCondition($this->createCombinedProductAbstractStoreMandatoryColumnCondition());
+        $dataImporter->addDataSetStepBroker($dataSetStepBroker);
+        $dataImporter->setDataSetWriter($this->createCombinedProductAbstractStoreDataSetWriters());
+
+        return $dataImporter;
+    }
+
+    /**
+     * @return \Pyz\Zed\DataImport\Business\Model\DataSet\DataSetConditionInterface
+     */
+    public function createCombinedProductAbstractStoreMandatoryColumnCondition(): DataSetConditionInterface
+    {
+        return new CombinedProductAbstractStoreMandatoryColumnCondition();
+    }
+
+    /**
+     * @return \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface
+     */
+    public function createCombinedProductAbstractStoreDataSetWriters(): DataSetWriterInterface
+    {
+        return new DataSetWriterCollection($this->createCombinedProductAbstractStoreDataSetWriterPlugins());
+    }
+
+    /**
+     * @return \Spryker\Zed\DataImportExtension\Dependency\Plugin\DataSetWriterPluginInterface[]
+     */
+    public function createCombinedProductAbstractStoreDataSetWriterPlugins(): array
+    {
+        return [
+            new CombinedProductAbstractStorePropelWriterPlugin(),
+        ];
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer
+     *
+     * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface
+     */
+    public function createCombinedProductAbstractImporter(DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer): DataImporterInterface
+    {
+        $dataImporter = $this->getConditionalCsvDataImporterWriterAwareFromConfig(
+            $this->getConfig()->buildImporterConfigurationByDataImportConfigAction($dataImportConfigurationActionTransfer)
+        );
+
+        $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker(CombinedProductAbstractHydratorStep::BULK_SIZE);
+        $dataSetStepBroker
+            ->addStep($this->createProductAbstractCheckExistenceStep())
+            ->addStep($this->createAddLocalesStep())
+            ->addStep($this->createAddCategoryKeysStep())
+            ->addStep($this->createTaxSetNameToIdTaxSetStep(CombinedProductAbstractHydratorStep::COLUMN_TAX_SET_NAME))
+            ->addStep($this->createCombinedAttributesExtractorStep())
+            ->addStep($this->createCombinedProductLocalizedAttributesExtractorStep([
+                CombinedProductAbstractHydratorStep::COLUMN_NAME,
+                CombinedProductAbstractHydratorStep::COLUMN_URL,
+                CombinedProductAbstractHydratorStep::COLUMN_DESCRIPTION,
+                CombinedProductAbstractHydratorStep::COLUMN_META_TITLE,
+                CombinedProductAbstractHydratorStep::COLUMN_META_DESCRIPTION,
+                CombinedProductAbstractHydratorStep::COLUMN_META_KEYWORDS,
+            ]))
+            ->addStep(new CombinedProductAbstractHydratorStep());
+
+        $dataImporter->setDataSetCondition($this->createCombinedProductAbstractTypeDataSetCondition());
+        $dataImporter->addDataSetStepBroker($dataSetStepBroker);
+        $dataImporter->setDataSetWriter($this->createCombinedProductAbstractDataSetWriters());
+
+        return $dataImporter;
+    }
+
+    /**
+     * @return \Pyz\Zed\DataImport\Business\Model\DataSet\DataSetConditionInterface
+     */
+    public function createCombinedProductAbstractTypeDataSetCondition(): DataSetConditionInterface
+    {
+        return new CombinedProductAbstractTypeDataSetCondition();
+    }
+
+    /**
+     * @return \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface
+     */
+    public function createCombinedProductAbstractDataSetWriters(): DataSetWriterInterface
+    {
+        return new DataSetWriterCollection($this->createCombinedProductAbstractDataSetWriterPlugins());
+    }
+
+    /**
+     * @return \Spryker\Zed\DataImportExtension\Dependency\Plugin\DataSetWriterPluginInterface[]
+     */
+    public function createCombinedProductAbstractDataSetWriterPlugins(): array
+    {
+        return [
+            new CombinedProductAbstractPropelWriterPlugin(),
+        ];
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer
+     *
+     * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface
+     */
+    public function createCombinedProductConcreteImporter(DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer): DataImporterInterface
+    {
+        $dataImporter = $this->getConditionalCsvDataImporterWriterAwareFromConfig(
+            $this->getConfig()->buildImporterConfigurationByDataImportConfigAction($dataImportConfigurationActionTransfer)
+        );
+
+        $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker(CombinedProductConcreteHydratorStep::BULK_SIZE);
+        $dataSetStepBroker
+            ->addStep($this->createProductConcreteCheckExistenceStep())
+            ->addStep($this->createAddLocalesStep())
+            ->addStep($this->createCombinedAttributesExtractorStep())
+            ->addStep($this->createProductConcreteAttributesUniqueCheckStep())
+            ->addStep($this->createCombinedProductLocalizedAttributesExtractorStep([
+                CombinedProductConcreteHydratorStep::COLUMN_NAME,
+                CombinedProductConcreteHydratorStep::COLUMN_DESCRIPTION,
+                CombinedProductConcreteHydratorStep::COLUMN_IS_SEARCHABLE,
+            ]))
+            ->addStep(new CombinedProductConcreteHydratorStep(
+                $this->createProductRepository()
+            ));
+
+        $dataImporter->setDataSetCondition($this->createCombinedProductConcreteTypeDataSetCondition());
+        $dataImporter->addDataSetStepBroker($dataSetStepBroker);
+        $dataImporter->setDataSetWriter($this->createCombinedProductConcreteDataSetWriters());
+
+        return $dataImporter;
+    }
+
+    /**
+     * @return \Pyz\Zed\DataImport\Business\Model\DataSet\DataSetConditionInterface
+     */
+    public function createCombinedProductConcreteTypeDataSetCondition(): DataSetConditionInterface
+    {
+        return new CombinedProductConcreteTypeDataSetCondition();
+    }
+
+    /**
+     * @return \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface
+     */
+    public function createCombinedProductConcreteDataSetWriters(): DataSetWriterInterface
+    {
+        return new DataSetWriterCollection($this->createCombinedProductConcreteDataSetWriterPlugins());
+    }
+
+    /**
+     * @return \Spryker\Zed\DataImportExtension\Dependency\Plugin\DataSetWriterPluginInterface[]
+     */
+    public function createCombinedProductConcreteDataSetWriterPlugins(): array
+    {
+        return [
+            new CombinedProductConcretePropelWriterPlugin(),
+        ];
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer
+     *
+     * @return \Spryker\Zed\DataImport\Business\Model\DataImporterInterface
+     */
+    public function createCombinedProductGroupImporter(DataImportConfigurationActionTransfer $dataImportConfigurationActionTransfer): DataImporterInterface
+    {
+        $dataImporter = $this->getConditionalCsvDataImporterFromConfig(
+            $this->getConfig()->buildImporterConfigurationByDataImportConfigAction($dataImportConfigurationActionTransfer)
+        );
+
+        $dataSetStepBroker = $this->createTransactionAwareDataSetStepBroker(ProductGroupWriter::BULK_SIZE);
+        $dataSetStepBroker
+            ->addStep(new CombinedProductGroupWriter($this->createProductRepository()));
+
+        $dataImporter->setDataSetCondition($this->createCombinedProductGroupMandatoryColumnCondition());
+        $dataImporter->addDataSetStepBroker($dataSetStepBroker);
+
+        return $dataImporter;
+    }
+
+    /**
+     * @return \Pyz\Zed\DataImport\Business\Model\DataSet\DataSetConditionInterface
+     */
+    public function createCombinedProductGroupMandatoryColumnCondition(): DataSetConditionInterface
+    {
+        return new CombinedProductGroupMandatoryColumnCondition();
+    }
+
+    /**
+     * @param string $source
+     * @param string $target
+     *
+     * @return \Pyz\Zed\DataImport\Business\Model\ProductAbstract\ProductAbstractSkuToIdProductAbstractStep
+     */
+    public function createProductAbstractSkuToIdProductAbstractStep(
+        string $source = ProductAbstractSkuToIdProductAbstractStep::KEY_SOURCE,
+        string $target = ProductAbstractSkuToIdProductAbstractStep::KEY_TARGET
+    ): DataImportStepInterface {
+        return new ProductAbstractSkuToIdProductAbstractStep($source, $target);
+    }
+
+    /**
+     * @param string $source
+     * @param string $target
+     *
+     * @return \Pyz\Zed\DataImport\Business\Model\ProductConcrete\ProductSkuToIdProductStep
+     */
+    public function createProductSkuToIdProductStep(
+        string $source = ProductSkuToIdProductStep::KEY_SOURCE,
+        string $target = ProductSkuToIdProductStep::KEY_TARGET
+    ): DataImportStepInterface {
+        return new ProductSkuToIdProductStep($source, $target);
+    }
+
+    /**
+     * @return \Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface
+     */
+    public function createProductAbstractCheckExistenceStep(): DataImportStepInterface
+    {
+        return new ProductAbstractCheckExistenceStep(
+            $this->createProductRepository()
+        );
+    }
+
+    /**
+     * @return \Spryker\Zed\DataImport\Business\Model\DataImportStep\DataImportStepInterface
+     */
+    public function createProductConcreteCheckExistenceStep(): DataImportStepInterface
+    {
+        return new ProductConcreteCheckExistenceStep(
+            $this->createProductRepository()
+        );
+    }
+
+    /**
+     * @return \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface
+     */
+    public function createProductAbstractDataImportWriters(): DataSetWriterInterface
+    {
+        return new DataSetWriterCollection($this->createProductAbstractWriterPlugins());
+    }
+
+    /**
+     * @return \Spryker\Zed\DataImportExtension\Dependency\Plugin\DataSetWriterPluginInterface[]
+     */
+    public function createProductAbstractWriterPlugins(): array
+    {
+        return [
+            new ProductAbstractPropelWriterPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface
+     */
+    public function createProductConcreteDataImportWriters(): DataSetWriterInterface
+    {
+        return new DataSetWriterCollection($this->createProductConcreteWriterPlugins());
+    }
+
+    /**
+     * @return \Spryker\Zed\DataImportExtension\Dependency\Plugin\DataSetWriterPluginInterface[]
+     */
+    public function createProductConcreteWriterPlugins(): array
+    {
+        return [
+            new ProductConcretePropelWriterPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface
+     */
+    public function createProductImageDataWriters(): DataSetWriterInterface
+    {
+        return new DataSetWriterCollection($this->createProductImageWriterPlugins());
+    }
+
+    /**
+     * @return \Spryker\Zed\DataImportExtension\Dependency\Plugin\DataSetWriterPluginInterface[]
+     */
+    public function createProductImageWriterPlugins(): array
+    {
+        return [
+            new ProductImagePropelWriterPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface
+     */
+    public function createProductAbstractStoreDataImportWriters(): DataSetWriterInterface
+    {
+        return new DataSetWriterCollection($this->createProductAbstractStoreWriterPlugins());
+    }
+
+    /**
+     * @return \Spryker\Zed\DataImportExtension\Dependency\Plugin\DataSetWriterPluginInterface[]
+     */
+    public function createProductAbstractStoreWriterPlugins(): array
+    {
+        return [
+            new ProductAbstractStorePropelWriterPlugin(),
+        ];
+    }
+
+    /**
+     * @return \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface
+     */
+    public function createProductAbstractPropelWriter(): DataSetWriterInterface
+    {
+        return new ProductAbstractPropelDataSetWriter($this->createProductRepository());
+    }
+
+    /**
+     * @return \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface
+     */
+    public function createProductConcretePropelWriter(): DataSetWriterInterface
+    {
+        return new ProductConcretePropelDataSetWriter($this->createProductRepository());
+    }
+
+    /**
+     * @return \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface
+     */
+    public function createProductImagePropelWriter(): DataSetWriterInterface
+    {
+        return new ProductImagePropelDataSetWriter($this->createProductImageRepository());
+    }
+
+    /**
+     * @return \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface
+     */
+    public function createProductStockPropelWriter(): DataSetWriterInterface
+    {
+        return new ProductStockPropelDataSetWriter(
+            $this->getProductBundleFacade(),
+            $this->createProductRepository(),
+            $this->getStoreFacade(),
+            $this->getStockFacade()
+        );
+    }
+
+    /**
+     * @return \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetWriterInterface
+     */
+    public function createProductAbstractStorePropelWriter(): DataSetWriterInterface
+    {
+        return new ProductAbstractStorePropelDataSetWriter();
+    }
+
+    /**
+     * @return \Pyz\Zed\DataImport\Business\Model\Product\AttributesExtractorStep
+     */
+    public function createCombinedAttributesExtractorStep(): DataImportStepInterface
+    {
+        return new CombinedAttributesExtractorStep();
+    }
+
+    /**
+     * @param array $defaultAttributes
+     *
+     * @return \Pyz\Zed\DataImport\Business\Model\Product\ProductLocalizedAttributesExtractorStep
+     */
+    public function createCombinedProductLocalizedAttributesExtractorStep(array $defaultAttributes = [])
+    {
+        return new CombinedProductLocalizedAttributesExtractorStep($defaultAttributes);
     }
 
     /**

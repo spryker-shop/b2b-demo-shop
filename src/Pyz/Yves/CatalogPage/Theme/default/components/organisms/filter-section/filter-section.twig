@@ -21,7 +21,8 @@
 
         <div class="{{ config.name ~ '__sorting ' ~ config.jsName ~ '__sorting' }} is-hidden-lg-xxl"></div>
         <div class="{{ config.name ~ '__holder ' ~ config.jsName ~ '__holder' }}">
-            {% for filter in data.facets %}
+            {% set facets = data.filteredFacets is not empty ? data.filteredFacets : data.facets %}
+            {% for filter in facets %}
                 {% set filterHasValues = filter.values is not defined or filter.values | length > 0 %}
                 {% set togglerClass = '' %}
 

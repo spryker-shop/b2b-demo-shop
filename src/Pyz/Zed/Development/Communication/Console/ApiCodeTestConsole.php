@@ -13,5 +13,5 @@ class ApiCodeTestConsole extends CodeTestConsole
 {
     public const COMMAND_NAME = 'code:test:api';
 
-    protected const CODECEPTION_CONFIG_FILE_NAME = 'codeception.api.yml';
+    protected const PYZ_CODECEPTION_CONFIG_FILE_NAME = 'codeception.api.yml';
 }

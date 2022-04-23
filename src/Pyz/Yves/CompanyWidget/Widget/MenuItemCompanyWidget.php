@@ -14,11 +14,26 @@ use Spryker\Yves\Kernel\Widget\AbstractWidget;
  */
 class MenuItemCompanyWidget extends AbstractWidget
 {
+    /**
+     * @var string
+     */
+    protected const PYZ_PARAMETER_IS_VISIBLE = 'isVisible';
+
+    /**
+     * @var string
+     */
+    protected const PYZ_PARAMETER_COMPANY_NAME = 'companyName';
+
+    /**
+     * @var string
+     */
+    protected const PYZ_PARAMETER_HAS_COMPANY_ACCESS = 'hasCompanyAccess';
+
     public function __construct()
     {
-        $this->addParameter('isVisible', $this->isVisible())
-            ->addParameter('companyName', $this->getCompanyName())
-            ->addParameter('hasCompanyAccess', $this->hasCompanyAccess());
+        $this->addPyzIsVisibleParameter();
+        $this->addPyzCompanyNameParameter();
+        $this->addPyzHasCompanyAccessParameter();
     }
 
     /**
@@ -38,9 +53,39 @@ class MenuItemCompanyWidget extends AbstractWidget
     }
 
     /**
+     * @return void
+     */
+    protected function addPyzIsVisibleParameter(): void
+    {
+        $customer = $this->getFactory()->getCustomerClient()->getCustomer();
+        $isVisible = ($customer !== null && $customer->getCompanyUserTransfer() !== null);
+
+        $this->addParameter(static::PYZ_PARAMETER_IS_VISIBLE, $isVisible);
+    }
+
+    /**
+     * @return void
+     */
+    protected function addPyzCompanyNameParameter(): void
+    {
+        $this->addParameter(static::PYZ_PARAMETER_COMPANY_NAME, $this->getPyzCompanyName());
+    }
+
+    /**
+     * @return void
+     */
+    protected function addPyzHasCompanyAccessParameter(): void
+    {
+        $customerTransfer = $this->getFactory()->getCustomerClient()->getCustomer();
+        $hasPyzCompanyAccess = $customerTransfer && ($customerTransfer->getCompanyUserTransfer() || $customerTransfer->getIsOnBehalf());
+
+        $this->addParameter(static::PYZ_PARAMETER_HAS_COMPANY_ACCESS, $hasPyzCompanyAccess);
+    }
+
+    /**
      * @return string
      */
-    protected function getCompanyName(): string
+    protected function getPyzCompanyName(): string
     {
         $customer = $this->getFactory()->getCustomerClient()->getCustomer();
 
@@ -54,29 +99,5 @@ class MenuItemCompanyWidget extends AbstractWidget
         }
 
         return '';
-    }
-
-    /**
-     * @return bool
-     */
-    protected function isVisible(): bool
-    {
-        $customer = $this->getFactory()->getCustomerClient()->getCustomer();
-
-        if ($customer !== null && $customer->getCompanyUserTransfer() !== null) {
-            return true;
-        }
-
-        return false;
-    }
-
-    /**
-     * @return bool
-     */
-    protected function hasCompanyAccess(): bool
-    {
-        $customerTransfer = $this->getFactory()->getCustomerClient()->getCustomer();
-
-        return $customerTransfer && ($customerTransfer->getCompanyUserTransfer() || $customerTransfer->getIsOnBehalf());
     }
 }

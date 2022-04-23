@@ -22,27 +22,27 @@ class ProductUrlCartConnectorBusinessFactory extends AbstractBusinessFactory
     /**
      * @return \Pyz\Zed\ProductUrlCartConnector\Business\Expander\ProductUrlExpanderInterface
      */
-    public function createProductExpander(): ProductUrlExpanderInterface
+    public function createPyzProductExpander(): ProductUrlExpanderInterface
     {
         return new ProductUrlExpander(
-            $this->getProductFacade(),
-            $this->getLocaleFacade()
+            $this->getPyzProductFacade(),
+            $this->getPyzLocaleFacade()
         );
     }
 
     /**
      * @return \Spryker\Zed\Product\Business\ProductFacadeInterface
      */
-    protected function getProductFacade(): ProductFacadeInterface
+    protected function getPyzProductFacade(): ProductFacadeInterface
     {
-        return $this->getProvidedDependency(ProductUrlCartConnectorDependencyProvider::FACADE_PRODUCT);
+        return $this->getProvidedDependency(ProductUrlCartConnectorDependencyProvider::PYZ_FACADE_PRODUCT);
     }
 
     /**
      * @return \Spryker\Zed\Locale\Business\LocaleFacadeInterface
      */
-    protected function getLocaleFacade(): LocaleFacadeInterface
+    protected function getPyzLocaleFacade(): LocaleFacadeInterface
     {
-        return $this->getProvidedDependency(ProductUrlCartConnectorDependencyProvider::FACADE_LOCALE);
+        return $this->getProvidedDependency(ProductUrlCartConnectorDependencyProvider::PYZ_FACADE_LOCALE);
     }
 }

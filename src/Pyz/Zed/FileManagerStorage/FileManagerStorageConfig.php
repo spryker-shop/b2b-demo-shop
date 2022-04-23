@@ -18,7 +18,15 @@ class FileManagerStorageConfig extends SprykerFileManagerStorageConfig
      */
     public function getFileManagerSynchronizationPoolName(): ?string
     {
-        return SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME;
+        return SynchronizationConfig::PYZ_DEFAULT_SYNCHRONIZATION_POOL_NAME;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getEventQueueName(): ?string
+    {
+        return PublisherConfig::PUBLISH_QUEUE;
     }
 
     /**

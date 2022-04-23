@@ -15,13 +15,16 @@ use Spryker\Shared\PermissionExtension\Dependency\Plugin\PermissionPluginInterfa
  */
 class SeeCompanyMenuPermissionPlugin extends AbstractPlugin implements PermissionPluginInterface
 {
-    public const KEY = 'SeeCompanyMenuPermissionPlugin';
+    /**
+     * @var string
+     */
+    public const PYZ_KEY = 'SeeCompanyMenuPermissionPlugin';
 
     /**
      * @return string
      */
     public function getKey(): string
     {
-        return static::KEY;
+        return static::PYZ_KEY;
     }
 }

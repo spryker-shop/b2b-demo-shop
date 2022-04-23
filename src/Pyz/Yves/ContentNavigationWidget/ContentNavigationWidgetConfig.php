@@ -12,29 +12,34 @@ use SprykerShop\Yves\ContentNavigationWidget\ContentNavigationWidgetConfig as Sp
 class ContentNavigationWidgetConfig extends SprykerShopContentNavigationWidgetConfig
 {
     /**
-     * @uses \Pyz\Shared\ContentNavigation\ContentNavigationConfig::WIDGET_TEMPLATE_IDENTIFIER_LIST_NAVIGATION_HEADER
+     * @var string
+     * @uses \Pyz\Shared\ContentNavigation\ContentNavigationConfig::PYZ_WIDGET_TEMPLATE_IDENTIFIER_LIST_NAVIGATION_HEADER
      */
-    protected const WIDGET_TEMPLATE_IDENTIFIER_LIST_NAVIGATION_HEADER = 'navigation-header';
+    protected const PYZ_WIDGET_TEMPLATE_IDENTIFIER_LIST_NAVIGATION_HEADER = 'navigation-header';
 
     /**
-     * @uses \Pyz\Shared\ContentNavigation\ContentNavigationConfig::WIDGET_TEMPLATE_IDENTIFIER_LIST_NAVIGATION_FOOTER
+     * @var string
+     * @uses \Pyz\Shared\ContentNavigation\ContentNavigationConfig::PYZ_WIDGET_TEMPLATE_IDENTIFIER_LIST_NAVIGATION_FOOTER
      */
-    protected const WIDGET_TEMPLATE_IDENTIFIER_LIST_NAVIGATION_FOOTER = 'navigation-footer';
+    protected const PYZ_WIDGET_TEMPLATE_IDENTIFIER_LIST_NAVIGATION_FOOTER = 'navigation-footer';
 
     /**
-     * @uses \Pyz\Shared\ContentNavigation\ContentNavigationConfig::WIDGET_TEMPLATE_IDENTIFIER_LIST_NAVIGATION_FOOTER_CHECKOUT
+     * @var string
+     * @uses \Pyz\Shared\ContentNavigation\ContentNavigationConfig::PYZ_WIDGET_TEMPLATE_IDENTIFIER_LIST_NAVIGATION_FOOTER_CHECKOUT
      */
-    protected const WIDGET_TEMPLATE_IDENTIFIER_LIST_NAVIGATION_FOOTER_CHECKOUT = 'navigation-footer-checkout';
+    protected const PYZ_WIDGET_TEMPLATE_IDENTIFIER_LIST_NAVIGATION_FOOTER_CHECKOUT = 'navigation-footer-checkout';
 
     /**
-     * @uses \Pyz\Shared\ContentNavigation\ContentNavigationConfig::WIDGET_TEMPLATE_IDENTIFIER_LIST_FOOTER_PARTNERS
+     * @var string
+     * @uses \Pyz\Shared\ContentNavigation\ContentNavigationConfig::PYZ_WIDGET_TEMPLATE_IDENTIFIER_LIST_FOOTER_PARTNERS
      */
-    protected const WIDGET_TEMPLATE_IDENTIFIER_LIST_FOOTER_PARTNERS = 'footer-partners';
+    protected const PYZ_WIDGET_TEMPLATE_IDENTIFIER_LIST_FOOTER_PARTNERS = 'footer-partners';
 
     /**
-     * @uses \Pyz\Shared\ContentNavigation\ContentNavigationConfig::WIDGET_TEMPLATE_IDENTIFIER_LIST_FOOTER_SOCIAL_LINKS
+     * @var string
+     * @uses \Pyz\Shared\ContentNavigation\ContentNavigationConfig::PYZ_WIDGET_TEMPLATE_IDENTIFIER_LIST_FOOTER_SOCIAL_LINKS
      */
-    protected const WIDGET_TEMPLATE_IDENTIFIER_LIST_FOOTER_SOCIAL_LINKS = 'footer-social-links';
+    protected const PYZ_WIDGET_TEMPLATE_IDENTIFIER_LIST_FOOTER_SOCIAL_LINKS = 'footer-social-links';
 
     /**
      * @api
@@ -45,11 +50,11 @@ class ContentNavigationWidgetConfig extends SprykerShopContentNavigationWidgetCo
     {
         $availableTemplates = parent::getAvailableTemplateList();
         $availableTemplates += [
-            static::WIDGET_TEMPLATE_IDENTIFIER_LIST_NAVIGATION_HEADER => '@ContentNavigationWidget/views/navigation-header/navigation-header.twig',
-            static::WIDGET_TEMPLATE_IDENTIFIER_LIST_NAVIGATION_FOOTER => '@ContentNavigationWidget/views/navigation-footer/navigation-footer.twig',
-            static::WIDGET_TEMPLATE_IDENTIFIER_LIST_NAVIGATION_FOOTER_CHECKOUT => '@ContentNavigationWidget/views/navigation-footer-checkout/navigation-footer-checkout.twig',
-            static::WIDGET_TEMPLATE_IDENTIFIER_LIST_FOOTER_PARTNERS => '@ContentNavigationWidget/views/footer-partners/footer-partners.twig',
-            static::WIDGET_TEMPLATE_IDENTIFIER_LIST_FOOTER_SOCIAL_LINKS => '@ContentNavigationWidget/views/footer-social-links/footer-social-links.twig',
+            static::PYZ_WIDGET_TEMPLATE_IDENTIFIER_LIST_NAVIGATION_HEADER => '@ContentNavigationWidget/views/navigation-header/navigation-header.twig',
+            static::PYZ_WIDGET_TEMPLATE_IDENTIFIER_LIST_NAVIGATION_FOOTER => '@ContentNavigationWidget/views/navigation-footer/navigation-footer.twig',
+            static::PYZ_WIDGET_TEMPLATE_IDENTIFIER_LIST_NAVIGATION_FOOTER_CHECKOUT => '@ContentNavigationWidget/views/navigation-footer-checkout/navigation-footer-checkout.twig',
+            static::PYZ_WIDGET_TEMPLATE_IDENTIFIER_LIST_FOOTER_PARTNERS => '@ContentNavigationWidget/views/footer-partners/footer-partners.twig',
+            static::PYZ_WIDGET_TEMPLATE_IDENTIFIER_LIST_FOOTER_SOCIAL_LINKS => '@ContentNavigationWidget/views/footer-social-links/footer-social-links.twig',
         ];
 
         return $availableTemplates;

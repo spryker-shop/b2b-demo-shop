@@ -18,7 +18,10 @@ use Twig\TwigFunction;
  */
 class PriceModeTwigPlugin extends AbstractPlugin implements TwigPluginInterface
 {
-    protected const FUNCTION_NAME_GET_PRICE_MODE = 'getPriceMode';
+    /**
+     * @var string
+     */
+    protected const PYZ_FUNCTION_NAME_GET_PRICE_MODE = 'getPriceMode';
 
     /**
      * {@inheritDoc}
@@ -44,7 +47,7 @@ class PriceModeTwigPlugin extends AbstractPlugin implements TwigPluginInterface
      */
     protected function addPriceModeFunction(Environment $twig): Environment
     {
-        $priceModeFunction = new TwigFunction(static::FUNCTION_NAME_GET_PRICE_MODE, function () {
+        $priceModeFunction = new TwigFunction(static::PYZ_FUNCTION_NAME_GET_PRICE_MODE, function () {
             return $this->getFactory()->getPriceClient()->getCurrentPriceMode();
         });
 

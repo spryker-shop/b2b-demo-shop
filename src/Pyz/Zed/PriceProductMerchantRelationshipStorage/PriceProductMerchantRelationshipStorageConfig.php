@@ -21,7 +21,7 @@ class PriceProductMerchantRelationshipStorageConfig extends SprykerPriceProductM
      */
     public function getPriceProductConcreteMerchantRelationSynchronizationPoolName(): ?string
     {
-        return SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME;
+        return SynchronizationConfig::PYZ_DEFAULT_SYNCHRONIZATION_POOL_NAME;
     }
 
     /**
@@ -29,7 +29,31 @@ class PriceProductMerchantRelationshipStorageConfig extends SprykerPriceProductM
      */
     public function getPriceProductAbstractMerchantRelationSynchronizationPoolName(): ?string
     {
-        return SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME;
+        return SynchronizationConfig::PYZ_DEFAULT_SYNCHRONIZATION_POOL_NAME;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getMerchantRelationEventQueueName(): ?string
+    {
+        return PublisherConfig::PUBLISH_QUEUE;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getPriceProductConcreteMerchantRelationEventQueueName(): ?string
+    {
+        return PublisherConfig::PUBLISH_QUEUE;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getPriceProductAbstractMerchantRelationEventQueueName(): ?string
+    {
+        return PublisherConfig::PUBLISH_QUEUE;
     }
 
     /**

@@ -18,7 +18,23 @@ class ProductMeasurementUnitStorageConfig extends SprykerProductMeasurementUnitS
      */
     public function getProductMeasurementUnitSynchronizationPoolName(): ?string
     {
-        return SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME;
+        return SynchronizationConfig::PYZ_DEFAULT_SYNCHRONIZATION_POOL_NAME;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getProductMeasurementUnitEventQueueName(): ?string
+    {
+        return PublisherConfig::PUBLISH_QUEUE;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getProductConcreteMeasurementUnitEventQueueName(): ?string
+    {
+        return PublisherConfig::PUBLISH_QUEUE;
     }
 
     /**

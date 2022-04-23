@@ -17,14 +17,18 @@ use SprykerShop\Yves\ProductSetWidget\Plugin\CmsContentWidgetProductSetConnector
 class ProductSetIdsWidget extends AbstractWidget
 {
     /**
+     * @var string
+     */
+    protected const PYZ_PARAMETER_PRODUCT_SET_LIST = 'productSetList';
+
+    /**
      * @param array $productSetIds
      */
     public function __construct(array $productSetIds)
     {
         $this->addWidget(ProductSetWidgetPlugin::class);
 
-        $productSetList = $this->getProductSetList($productSetIds);
-        $this->addParameter('productSetList', $productSetList);
+        $this->addPyzProductSetListParameter($productSetIds);
     }
 
     /**
@@ -44,15 +48,27 @@ class ProductSetIdsWidget extends AbstractWidget
     }
 
     /**
+     * @param array $productSetIds
+     *
+     * @return void
+     */
+    protected function addPyzProductSetListParameter(array $productSetIds): void
+    {
+        $productSetList = $this->getPyzProductSetList($productSetIds);
+
+        $this->addParameter(static::PYZ_PARAMETER_PRODUCT_SET_LIST, $productSetList);
+    }
+
+    /**
      * @param int[] $productSetIds
      *
      * @return array
      */
-    protected function getProductSetList(array $productSetIds): array
+    protected function getPyzProductSetList(array $productSetIds): array
     {
         $productSets = [];
         foreach ($productSetIds as $productSetId) {
-            $productSet = $this->getSingleProductSet($productSetId);
+            $productSet = $this->getPyzSingleProductSet($productSetId);
             if (!isset($productSet['productSet'])) {
                 continue;
             }
@@ -67,16 +83,16 @@ class ProductSetIdsWidget extends AbstractWidget
      *
      * @return array
      */
-    protected function getSingleProductSet($productSetId): array
+    protected function getPyzSingleProductSet($productSetId): array
     {
-        $productSet = $this->getProductSetStorageTransfer($productSetId);
+        $productSet = $this->getPyzProductSetStorageTransfer($productSetId);
         if (!$productSet || !$productSet->getIsActive()) {
             return [];
         }
 
         return [
             'productSet' => $productSet,
-            'productViews' => $this->mapProductSetDataStorageTransfers($productSet),
+            'productViews' => $this->mapPyzProductSetDataStorageTransfers($productSet),
         ];
     }
 
@@ -85,9 +101,9 @@ class ProductSetIdsWidget extends AbstractWidget
      *
      * @return \Generated\Shared\Transfer\ProductSetDataStorageTransfer|null
      */
-    protected function getProductSetStorageTransfer($idProductSet): ?ProductSetDataStorageTransfer
+    protected function getPyzProductSetStorageTransfer($idProductSet): ?ProductSetDataStorageTransfer
     {
-        return $this->getFactory()->getProductSetStorageClient()->getProductSetByIdProductSet($idProductSet, $this->getLocale());
+        return $this->getFactory()->getPyzProductSetStorageClient()->getProductSetByIdProductSet($idProductSet, $this->getLocale());
     }
 
     /**
@@ -95,15 +111,15 @@ class ProductSetIdsWidget extends AbstractWidget
      *
      * @return \Generated\Shared\Transfer\ProductViewTransfer[]
      */
-    protected function mapProductSetDataStorageTransfers(ProductSetDataStorageTransfer $productSetDataStorageTransfer): array
+    protected function mapPyzProductSetDataStorageTransfers(ProductSetDataStorageTransfer $productSetDataStorageTransfer): array
     {
         $productViewTransfers = [];
         foreach ($productSetDataStorageTransfer->getProductAbstractIds() as $idProductAbstract) {
-            $productAbstractData = $this->getFactory()->getProductStorageClient()->findProductAbstractStorageData($idProductAbstract, $this->getLocale());
+            $productAbstractData = $this->getFactory()->getPyzProductStorageClient()->findProductAbstractStorageData($idProductAbstract, $this->getLocale());
             if ($productAbstractData === null) {
                 continue;
             }
-            $productViewTransfers[] = $this->getFactory()->getProductStorageClient()->mapProductStorageData(
+            $productViewTransfers[] = $this->getFactory()->getPyzProductStorageClient()->mapProductStorageData(
                 $productAbstractData,
                 $this->getLocale()
             );

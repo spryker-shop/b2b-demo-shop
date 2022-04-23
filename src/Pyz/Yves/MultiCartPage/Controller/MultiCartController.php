@@ -9,6 +9,7 @@ namespace Pyz\Yves\MultiCartPage\Controller;
 
 use SprykerShop\Yves\CartPage\Plugin\Router\CartPageRouteProviderPlugin;
 use SprykerShop\Yves\MultiCartPage\Controller\MultiCartController as SprykerShopMultiCartController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -16,7 +17,10 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class MultiCartController extends SprykerShopMultiCartController
 {
-    public const REQUEST_HEADER_REFERER = 'referer';
+    /**
+     * @var string
+     */
+    public const PYZ_REQUEST_HEADER_REFERER = 'referer';
 
     /**
      * @param int $idQuote
@@ -24,7 +28,7 @@ class MultiCartController extends SprykerShopMultiCartController
      *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
-    public function setDefaultBackAction(int $idQuote, Request $request)
+    public function setPyzDefaultBackAction(int $idQuote, Request $request): RedirectResponse
     {
         $multiCartClient = $this->getFactory()
             ->getMultiCartClient();
@@ -34,14 +38,14 @@ class MultiCartController extends SprykerShopMultiCartController
         if (!$quoteTransfer) {
             $this->addInfoMessage(static::GLOSSARY_KEY_PERMISSION_FAILED);
 
-            return $this->redirectResponseExternal($this->getRefererUrl($request));
+            return $this->redirectResponseExternal($this->getPyzRefererUrl($request));
         }
 
         $multiCartClient->markQuoteAsDefault($quoteTransfer);
 
         $this->getFactory()->getCartClient()->validateQuote();
 
-        return $this->redirectResponseExternal($this->getRefererUrl($request));
+        return $this->redirectResponseExternal($this->getPyzRefererUrl($request));
     }
 
     /**
@@ -49,10 +53,10 @@ class MultiCartController extends SprykerShopMultiCartController
      *
      * @return string
      */
-    protected function getRefererUrl(Request $request): string
+    protected function getPyzRefererUrl(Request $request): string
     {
-        if ($request->headers->has(static::REQUEST_HEADER_REFERER)) {
-            return $request->headers->get(static::REQUEST_HEADER_REFERER);
+        if ($request->headers->has(static::PYZ_REQUEST_HEADER_REFERER)) {
+            return $request->headers->get(static::PYZ_REQUEST_HEADER_REFERER);
         }
 
         return CartPageRouteProviderPlugin::ROUTE_NAME_CART;

@@ -31,7 +31,7 @@ class ExampleChart implements ChartPluginInterface
         $data = new ChartDataTransfer();
         $data->setTitle('test');
         $data->setKey('test');
-        $data->addTrace($this->getTrace());
+        $data->addTrace($this->getPyzTrace());
 
         return $data;
     }
@@ -39,7 +39,7 @@ class ExampleChart implements ChartPluginInterface
     /**
      * @return \Generated\Shared\Transfer\ChartDataTraceTransfer
      */
-    protected function getTrace(): ChartDataTraceTransfer
+    protected function getPyzTrace(): ChartDataTraceTransfer
     {
         $trace = new ChartDataTraceTransfer();
         $trace->setValues([11, 23, 31]);
