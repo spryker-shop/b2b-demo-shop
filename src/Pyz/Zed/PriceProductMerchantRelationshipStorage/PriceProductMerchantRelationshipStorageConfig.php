@@ -55,28 +55,4 @@ class PriceProductMerchantRelationshipStorageConfig extends SprykerPriceProductM
     {
         return PublisherConfig::PUBLISH_QUEUE;
     }
-
-    /**
-     * @return string|null
-     */
-    public function getMerchantRelationEventQueueName(): ?string
-    {
-        return PublisherConfig::PUBLISH_QUEUE;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getPriceProductConcreteMerchantRelationEventQueueName(): ?string
-    {
-        return PublisherConfig::PUBLISH_QUEUE;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getPriceProductAbstractMerchantRelationEventQueueName(): ?string
-    {
-        return PublisherConfig::PUBLISH_QUEUE;
-    }
 }

@@ -44,20 +44,4 @@ class ProductListStorageConfig extends SprykerProductListStorageConfig
     {
         return PublisherConfig::PUBLISH_QUEUE;
     }
-
-    /**
-     * @return string|null
-     */
-    public function getProductAbstractProductListEventQueueName(): ?string
-    {
-        return PublisherConfig::PUBLISH_QUEUE;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getProductConcreteProductListEventQueueName(): ?string
-    {
-        return PublisherConfig::PUBLISH_QUEUE;
-    }
 }

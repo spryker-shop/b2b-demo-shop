@@ -44,20 +44,4 @@ class UrlStorageConfig extends SprykerUrlStorageConfig
     {
         return PublisherConfig::PUBLISH_QUEUE;
     }
-
-    /**
-     * @return string|null
-     */
-    public function getUrlEventQueueName(): ?string
-    {
-        return PublisherConfig::PUBLISH_QUEUE;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getUrlRedirectEventQueueName(): ?string
-    {
-        return PublisherConfig::PUBLISH_QUEUE;
-    }
 }

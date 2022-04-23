@@ -36,20 +36,4 @@ class ConfigurableBundleStorageConfig extends SprykerConfigurableBundleStorageCo
     {
         return PublisherConfig::PUBLISH_QUEUE;
     }
-
-    /**
-     * @return string|null
-     */
-    public function getConfigurableBundleTemplateEventQueueName(): ?string
-    {
-        return PublisherConfig::PUBLISH_QUEUE;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getConfigurableBundleTemplateImageEventQueueName(): ?string
-    {
-        return PublisherConfig::PUBLISH_QUEUE;
-    }
 }

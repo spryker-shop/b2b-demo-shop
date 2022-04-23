@@ -36,20 +36,4 @@ class ConfigurableBundlePageSearchConfig extends SprykerConfigurableBundlePageSe
     {
         return PublisherConfig::PUBLISH_QUEUE;
     }
-
-    /**
-     * @return string|null
-     */
-    public function getConfigurableBundlePageEventQueueName(): ?string
-    {
-        return PublisherConfig::PUBLISH_QUEUE;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getConfigurableBundleTemplateImageEventQueueName(): ?string
-    {
-        return PublisherConfig::PUBLISH_QUEUE;
-    }
 }

@@ -36,20 +36,4 @@ class ProductMeasurementUnitStorageConfig extends SprykerProductMeasurementUnitS
     {
         return PublisherConfig::PUBLISH_QUEUE;
     }
-
-    /**
-     * @return string|null
-     */
-    public function getProductMeasurementUnitEventQueueName(): ?string
-    {
-        return PublisherConfig::PUBLISH_QUEUE;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getProductConcreteMeasurementUnitEventQueueName(): ?string
-    {
-        return PublisherConfig::PUBLISH_QUEUE;
-    }
 }
