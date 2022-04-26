@@ -57,15 +57,21 @@ sections:
             command: "vendor/bin/console setup:init-db -vvv --no-ansi"
 
     demodata:
-        import-eu-region-demodata:
-            command: "vendor/bin/console data:import --config=data/import/production/full_EU.yml"
+        import:
+            command: "vendor/bin/console data:import -vvv"
 
         update-product-labels:
-            command: "vendor/bin/console product-label:relations:update -vvv --no-ansi"
-
-        check-product-validity:
-            command: "vendor/bin/console product:check-validity"
-            stores: true
+            command: "vendor/bin/console product-label:relations:update -vvv"
+#    demodata:
+#        import-eu-region-demodata:
+#            command: "vendor/bin/console data:import --config=data/import/production/full_EU.yml"
+#
+#        update-product-labels:
+#            command: "vendor/bin/console product-label:relations:update -vvv --no-ansi"
+#
+#        check-product-validity:
+#            command: "vendor/bin/console product:check-validity"
+#            stores: true
 
     scheduler-start:
         scheduler-setup:

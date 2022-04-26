@@ -8,11 +8,11 @@ image:
     tag: spryker/php:7.2-alpine3.9
     environment:
         SPRYKER_DEFAULT_STORE: "DE"
-        SPRYKER_ACTIVE_STORES: "DE,AT,US"
-        SPRYKER_HOOK_BEFORE_DEPLOY: "vendor/bin/install -r EU/pre-deploy -vvv "
+        SPRYKER_ACTIVE_STORES: "DE,AT"
+        SPRYKER_HOOK_BEFORE_DEPLOY: "vendor/bin/install -r EU_US/pre-deploy -vvv "
         SPRYKER_HOOK_AFTER_DEPLOY: "true"
-        SPRYKER_HOOK_INSTALL: "vendor/bin/install -r EU/production --no-ansi -vvv"
-        SPRYKER_HOOK_DESTRUCTIVE_INSTALL: "vendor/bin/install -r EU/destructive --no-ansi -vvv"
+        SPRYKER_HOOK_INSTALL: "vendor/bin/install -r EU_US/production --no-ansi -vvv"
+        SPRYKER_HOOK_DESTRUCTIVE_INSTALL: "vendor/bin/install -r EU_US/destructive --no-ansi -vvv"
 
 composer:
     mode: # --no-dev
