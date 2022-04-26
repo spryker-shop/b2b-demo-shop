@@ -4,7 +4,21 @@ namespace: spryker_b2b
 tag: '1.0'
 
 environment: docker
-image: spryker/php:7.2
+image: spryker/php:7.2-alpine3.9
+
+composer:
+    mode: ##--no-dev
+    autoload: ##--classmap-authoritative
+
+assets:
+    image: fholzer/nginx-brotli:v1.18.0
+    mode: production
+    compression:
+        brotli:
+            static: only
+        gzip:
+            static: true
+            level: 5
 
 regions:
     EU:
