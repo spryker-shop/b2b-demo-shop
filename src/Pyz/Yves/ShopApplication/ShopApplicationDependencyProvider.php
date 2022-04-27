@@ -61,7 +61,6 @@ use SprykerShop\Yves\PriceWidget\Widget\PriceModeSwitcherWidget;
 use SprykerShop\Yves\ProductAlternativeWidget\Widget\ProductAlternativeListWidget;
 use SprykerShop\Yves\ProductAlternativeWidget\Widget\ShoppingListProductAlternativeWidget;
 use SprykerShop\Yves\ProductAlternativeWidget\Widget\WishlistProductAlternativeWidget;
-use SprykerShop\Yves\ProductBarcodeWidget\Widget\ProductBarcodeWidget;
 use SprykerShop\Yves\ProductBundleWidget\Widget\ProductBundleCartItemsListWidget;
 use SprykerShop\Yves\ProductBundleWidget\Widget\ProductBundleItemCounterWidget;
 use SprykerShop\Yves\ProductBundleWidget\Widget\ProductBundleItemsMultiCartItemsListWidget;
@@ -167,7 +166,6 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             QuoteRequestMenuItemWidget::class,
             ProductAlternativeListWidget::class,
             ProductAlternativeWidget::class,
-            ProductBarcodeWidget::class,
             ProductBreadcrumbsWithCategoriesWidget::class,
             ProductBundleCartItemsListWidget::class,
             ProductBundleItemCounterWidget::class,
