@@ -7,17 +7,26 @@
 
 namespace Pyz\Yves\DummyPayment;
 
+use Pyz\Yves\DummyPayment\Form\DataProvider\DummyPaymentInvoiceFormDataProvider;
 use Pyz\Yves\DummyPayment\Form\InvoiceSubForm;
 use Spryker\Yves\DummyPayment\DummyPaymentFactory as SprykerDummyPaymentFactory;
-use Spryker\Yves\StepEngine\Dependency\Form\SubFormInterface;
+use Symfony\Component\Form\FormTypeInterface;
 
 class DummyPaymentFactory extends SprykerDummyPaymentFactory
 {
     /**
-     * @return \Spryker\Yves\StepEngine\Dependency\Form\SubFormInterface
+     * @return \Symfony\Component\Form\FormTypeInterface
      */
-    public function createInvoiceForm(): SubFormInterface
+    public function createPyzInvoiceForm(): FormTypeInterface
     {
         return new InvoiceSubForm();
+    }
+
+    /**
+     * @return \Pyz\Yves\DummyPayment\Form\DataProvider\DummyPaymentInvoiceFormDataProvider
+     */
+    public function createPyzInvoiceFormDataProvider(): DummyPaymentInvoiceFormDataProvider
+    {
+        return new DummyPaymentInvoiceFormDataProvider();
     }
 }

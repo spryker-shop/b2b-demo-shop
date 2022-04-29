@@ -17,7 +17,10 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class CartController extends SprykerCartController
 {
-    protected const PARAM_REFERER = 'referer';
+    /**
+     * @var string
+     */
+    protected const PYZ_PARAM_REFERER = 'referer';
 
     /**
      * @param array $selectedAttributes
@@ -30,7 +33,7 @@ class CartController extends SprykerCartController
         $cartItems = $viewData['cartItems'];
 
         $viewData['products'] = $this->getFactory()
-            ->createCartItemsProductsProvider()
+            ->createPyzCartItemsProductsProvider()
             ->getItemsProducts($cartItems, $this->getLocale());
 
         return $viewData;
@@ -46,7 +49,7 @@ class CartController extends SprykerCartController
     {
         parent::addAction($request, $sku);
 
-        return $this->redirectToReferer($request);
+        return $this->redirectPyzToReferer($request);
     }
 
     /**
@@ -54,10 +57,10 @@ class CartController extends SprykerCartController
      *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
-    protected function redirectToReferer(Request $request): RedirectResponse
+    protected function redirectPyzToReferer(Request $request): RedirectResponse
     {
-        return $request->headers->has(static::PARAM_REFERER) ?
-            $this->redirectResponseExternal($request->headers->get(static::PARAM_REFERER))
+        return $request->headers->has(static::PYZ_PARAM_REFERER) ?
+            $this->redirectResponseExternal($request->headers->get(static::PYZ_PARAM_REFERER))
             : $this->redirectResponseInternal(CartPageRouteProviderPlugin::ROUTE_NAME_CART);
     }
 }

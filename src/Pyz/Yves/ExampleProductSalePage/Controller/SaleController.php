@@ -9,6 +9,7 @@ namespace Pyz\Yves\ExampleProductSalePage\Controller;
 
 use Pyz\Yves\ExampleProductSalePage\Plugin\Router\ExampleProductSaleRouteProviderPlugin;
 use Spryker\Yves\Kernel\Controller\AbstractController;
+use Spryker\Yves\Kernel\View\View;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
@@ -24,25 +25,25 @@ class SaleController extends AbstractController
      *
      * @return \Spryker\Yves\Kernel\View\View
      */
-    public function indexAction($categoryPath, Request $request)
+    public function indexPyzAction($categoryPath, Request $request): View
     {
         $parameters = $request->query->all();
 
         $categoryNode = [];
         if ($categoryPath) {
-            $categoryNode = $this->getCategoryNode($categoryPath);
+            $categoryNode = $this->getPyzCategoryNode($categoryPath);
 
             $parameters['category'] = $categoryNode['node_id'];
         }
 
         $searchResults = $this
             ->getClient()
-            ->saleSearch($parameters);
+            ->salePyzSearch($parameters);
 
         $searchResults['category'] = $categoryNode;
-        $searchResults['filterPath'] = ExampleProductSaleRouteProviderPlugin::ROUTE_NAME_SALE;
+        $searchResults['filterPath'] = ExampleProductSaleRouteProviderPlugin::PYZ_ROUTE_NAME_SALE;
         $searchResults['viewMode'] = $this->getFactory()
-            ->getCatalogClient()
+            ->getPyzCatalogClient()
             ->getCatalogViewMode($request);
 
         return $this->view(
@@ -59,13 +60,13 @@ class SaleController extends AbstractController
      *
      * @return array
      */
-    protected function getCategoryNode($categoryPath): array
+    protected function getPyzCategoryNode($categoryPath): array
     {
-        $categoryPathPrefix = '/' . $this->getFactory()->getStore()->getCurrentLanguage();
+        $categoryPathPrefix = '/' . $this->getFactory()->getPyzStore()->getCurrentLanguage();
         $fullCategoryPath = $categoryPathPrefix . '/' . ltrim($categoryPath, '/');
 
         $categoryNode = $this->getFactory()
-            ->getUrlStorageClient()
+            ->getPyzUrlStorageClient()
             ->matchUrl($fullCategoryPath, $this->getLocale());
 
         if (!$categoryNode || empty($categoryNode['data'])) {

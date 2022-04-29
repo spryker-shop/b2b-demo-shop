@@ -25,10 +25,10 @@ class CustomerAccessFacade extends SprykerCustomerAccessFacade implements Custom
      *
      * @return \Generated\Shared\Transfer\CustomerAccessTransfer
      */
-    public function filterManageableContentTypes(CustomerAccessTransfer $customerAccessTransfer): CustomerAccessTransfer
+    public function filterPyzManageableContentTypes(CustomerAccessTransfer $customerAccessTransfer): CustomerAccessTransfer
     {
         return $this->getFactory()
-            ->createCustomerAccessFilter()
+            ->createPyzCustomerAccessFilter()
             ->filterManageableContentTypes($customerAccessTransfer);
     }
 
@@ -41,10 +41,24 @@ class CustomerAccessFacade extends SprykerCustomerAccessFacade implements Custom
      *
      * @return \Generated\Shared\Transfer\CustomerAccessTransfer
      */
-    public function filterNonManageableContentTypes(CustomerAccessTransfer $customerAccessTransfer): CustomerAccessTransfer
+    public function filterPyzNonManageableContentTypes(CustomerAccessTransfer $customerAccessTransfer): CustomerAccessTransfer
     {
         return $this->getFactory()
-            ->createCustomerAccessFilter()
+            ->createPyzCustomerAccessFilter()
             ->filterNonManageableContentTypes($customerAccessTransfer);
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @api
+     *
+     * @param \Generated\Shared\Transfer\CustomerAccessTransfer $customerAccessTransfer
+     *
+     * @return \Generated\Shared\Transfer\CustomerAccessTransfer
+     */
+    public function updatePyzUnauthenticatedCustomerAccess(CustomerAccessTransfer $customerAccessTransfer): CustomerAccessTransfer
+    {
+        return $this->getFactory()->createPyzCustomerAccessUpdater()->updateUnauthenticatedCustomerAccess($customerAccessTransfer);
     }
 }

@@ -12,14 +12,17 @@ use Spryker\Shared\ContentProductGui\ContentProductGuiConfig as SprykerContentPr
 class ContentProductGuiConfig extends SprykerContentProductGuiConfig
 {
     /**
-     * @uses \Pyz\Shared\ContentProduct\ContentProductConfig::WIDGET_TEMPLATE_IDENTIFIER_SLIDER
+     * @var string
+     * @uses \Pyz\Shared\ContentProduct\ContentProductConfig::PYZ_WIDGET_TEMPLATE_IDENTIFIER_SLIDER
      */
-    protected const WIDGET_TEMPLATE_IDENTIFIER_SLIDER = 'slider';
+    protected const PYZ_WIDGET_TEMPLATE_IDENTIFIER_SLIDER = 'slider';
 
     /**
+     * @var string
+     *
      * Content item abstract product list slider template name
      */
-    protected const WIDGET_TEMPLATE_DISPLAY_NAME_SLIDER = 'content_product_abstract_list.template.slider';
+    protected const PYZ_WIDGET_TEMPLATE_DISPLAY_NAME_SLIDER = 'content_product_abstract_list.template.slider';
 
     /**
      * @return array
@@ -29,7 +32,7 @@ class ContentProductGuiConfig extends SprykerContentProductGuiConfig
         $contentWidgetTemplates = parent::getContentWidgetTemplates();
 
         return [
-            static::WIDGET_TEMPLATE_IDENTIFIER_SLIDER => static::WIDGET_TEMPLATE_DISPLAY_NAME_SLIDER,
+            static::PYZ_WIDGET_TEMPLATE_IDENTIFIER_SLIDER => static::PYZ_WIDGET_TEMPLATE_DISPLAY_NAME_SLIDER,
         ] + $contentWidgetTemplates;
     }
 }

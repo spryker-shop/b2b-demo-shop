@@ -44,9 +44,10 @@
                     </li>
 
                     {% if data.cart.shipment is not empty and data.cart.shipment.method is not empty %}
+                        {% set shipmentTotalPrice = data.cart.totals.shipmentTotal is defined ? data.cart.totals.shipmentTotal : data.cart.shipment.method.storeCurrencyPrice %}
                         <li class="list__item {{ config.name }}__item">
                             <span>{{ 'cart.shipping' | trans }} {{ data.cart.shipment.method.name }}</span>
-                            <span class="float-right">{{ data.cart.shipment.method.storeCurrencyPrice | money(true, data.cart.currency.code) }}</span>
+                            <span class="float-right">{{ shipmentTotalPrice | money(true, data.cart.currency.code) }}</span>
                         </li>
                     {% endif %}
 
