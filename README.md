@@ -134,7 +134,7 @@ You've set up your Spryker B2B Demo Shop and can access your applications.
 
 This section describes the most common issues related to the installation of the B2B Demo Shop.
 
-For a complete troubleshooting, see [Troubleshooting Spryker in Docker issues](https://documentation.spryker.com/docs/troubleshooting-spryker-in-docker-issues) or [Troubleshooting Spryker in Vagrant installation issues](https://documentation.spryker.com/docs/troubleshooting-spryker-in-vagrant-installation-issues).
+For a complete troubleshooting, see [Troubleshooting Spryker in Docker issues](https://docs.spryker.com/docs/troubleshooting-spryker-in-docker-issues) or [Troubleshooting Spryker in Vagrant installation issues](https://docs.spryker.com/docs/troubleshooting-spryker-in-vagrant-installation-issues).
 
 **when**
 
