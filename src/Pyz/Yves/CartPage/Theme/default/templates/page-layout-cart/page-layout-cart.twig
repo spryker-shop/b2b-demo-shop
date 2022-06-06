@@ -12,6 +12,13 @@
     requestUri: app.request.requestUri,
 } %}
 
+{% block headScripts %}
+    {{ parent() }}
+
+    {% widget 'AssetWidget' args ['cart-header'] only %}
+    {% endwidget %}
+{% endblock %}
+
 {% block breadcrumbs %}
     {% set steps = [
         {
