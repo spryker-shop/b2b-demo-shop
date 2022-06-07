@@ -59,6 +59,11 @@ class NavigationGuiPresentationTester extends Actor
     public const NODE_UPDATE_FORM_SELECTOR = '//form[@name="navigation_node"]';
 
     /**
+     * @var string
+     */
+    protected const FLASH_MESSAGE_SELECTOR = '//div[@class="flash-messages"]/div';
+
+    /**
      * @param \Codeception\Scenario $scenario
      */
     public function __construct(Scenario $scenario)
@@ -137,7 +142,10 @@ class NavigationGuiPresentationTester extends Actor
      */
     public function seeSuccessMessage($expectedMessagePattern)
     {
-        $successMessage = $this->grabTextFrom('//div[@class="flash-messages"]/div');
+        $this->waitForElement(static::FLASH_MESSAGE_SELECTOR);
+        $this->wait(5);
+
+        $successMessage = $this->grabTextFrom(static::FLASH_MESSAGE_SELECTOR);
         $this->seeMatches($expectedMessagePattern, $successMessage);
 
         preg_match($expectedMessagePattern, $successMessage, $matches);

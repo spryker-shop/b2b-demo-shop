@@ -16,7 +16,7 @@ class FormFactory extends SprykerFormFactory
     /**
      * @return \Spryker\Yves\StepEngine\Form\FormCollectionHandlerInterface
      */
-    public function getPaymentFormCollection(): FormCollectionHandlerInterface
+    public function getPyzPaymentFormCollection(): FormCollectionHandlerInterface
     {
         $createPaymentSubForms = $this->getPaymentMethodSubForms();
         $subFormDataProvider = $this->createSubFormDataProvider($createPaymentSubForms);

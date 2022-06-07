@@ -12,14 +12,17 @@ use Spryker\Shared\ContentProductSetGui\ContentProductSetGuiConfig as SprykerCon
 class ContentProductSetGuiConfig extends SprykerContentProductSetGuiConfig
 {
     /**
-     * @uses \Pyz\Shared\ContentProductSet\ContentProductSetConfig::WIDGET_TEMPLATE_IDENTIFIER_LANDING_PAGE
+     * @var string
+     * @uses \Pyz\Shared\ContentProductSet\ContentProductSetConfig::PYZ_WIDGET_TEMPLATE_IDENTIFIER_LANDING_PAGE
      */
-    protected const WIDGET_TEMPLATE_IDENTIFIER_LANDING_PAGE = 'landing-page';
+    protected const PYZ_WIDGET_TEMPLATE_IDENTIFIER_LANDING_PAGE = 'landing-page';
 
     /**
+     * @var string
+     *
      * Content item product set landing page template name
      */
-    protected const WIDGET_TEMPLATE_DISPLAY_NAME_LANDING_PAGE = 'content_product_set_gui.template.landing-page';
+    protected const PYZ_WIDGET_TEMPLATE_DISPLAY_NAME_LANDING_PAGE = 'content_product_set_gui.template.landing-page';
 
     /**
      * @return array
@@ -29,7 +32,7 @@ class ContentProductSetGuiConfig extends SprykerContentProductSetGuiConfig
         $contentWidgetTemplates = parent::getContentWidgetTemplates();
 
         return [
-            static::WIDGET_TEMPLATE_IDENTIFIER_LANDING_PAGE => static::WIDGET_TEMPLATE_DISPLAY_NAME_LANDING_PAGE,
+            static::PYZ_WIDGET_TEMPLATE_IDENTIFIER_LANDING_PAGE => static::PYZ_WIDGET_TEMPLATE_DISPLAY_NAME_LANDING_PAGE,
         ] + $contentWidgetTemplates;
     }
 }

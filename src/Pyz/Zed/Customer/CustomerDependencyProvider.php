@@ -30,8 +30,15 @@ use Spryker\Zed\ShoppingList\Communication\Plugin\ShoppingListPermissionCustomer
 
 class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
 {
-    public const SALES_FACADE = 'sales facade';
-    public const NEWSLETTER_FACADE = 'newsletter facade';
+    /**
+     * @var string
+     */
+    public const PYZ_FACADE_SALES = 'sales facade';
+
+    /**
+     * @var string
+     */
+    public const PYZ_FACADE_NEWSLETTER = 'newsletter facade';
 
     /**
      * @param \Spryker\Zed\Kernel\Container $container
@@ -41,12 +48,34 @@ class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
     public function provideCommunicationLayerDependencies(Container $container)
     {
         $container = parent::provideCommunicationLayerDependencies($container);
+        $container = $this->addPyzFacadeSales($container);
+        $container = $this->addPyzFacadeNewsletter($container);
 
-        $container->set(static::SALES_FACADE, function (Container $container) {
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    protected function addPyzFacadeSales(Container $container): Container
+    {
+        $container->set(static::PYZ_FACADE_SALES, function (Container $container) {
             return $container->getLocator()->sales()->facade();
         });
 
-        $container->set(static::NEWSLETTER_FACADE, function (Container $container) {
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    protected function addPyzFacadeNewsletter(Container $container): Container
+    {
+        $container->set(static::PYZ_FACADE_NEWSLETTER, function (Container $container) {
             return $container->getLocator()->newsletter()->facade();
         });
 
@@ -56,7 +85,7 @@ class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
     /**
      * @return \Spryker\Zed\Customer\Dependency\Plugin\CustomerAnonymizerPluginInterface[]
      */
-    protected function getCustomerAnonymizerPlugins()
+    protected function getCustomerAnonymizerPlugins(): array
     {
         return [
             new CustomerUnsubscribePlugin([
@@ -70,7 +99,7 @@ class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
     /**
      * @return \Spryker\Zed\Customer\Dependency\Plugin\CustomerTransferExpanderPluginInterface[]
      */
-    protected function getCustomerTransferExpanderPlugins()
+    protected function getCustomerTransferExpanderPlugins(): array
     {
         return [
             new CustomerTransferUsernameExpanderPlugin(),

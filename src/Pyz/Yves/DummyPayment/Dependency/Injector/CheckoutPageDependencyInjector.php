@@ -7,9 +7,9 @@
 
 namespace Pyz\Yves\DummyPayment\Dependency\Injector;
 
+use Pyz\Yves\DummyPayment\Plugin\DummyPaymentInvoiceSubFormPlugin;
 use Spryker\Yves\Checkout\CheckoutDependencyProvider;
 use Spryker\Yves\DummyPayment\Dependency\Injector\CheckoutPageDependencyInjector as SprykerCheckoutPageDependencyInjector;
-use Spryker\Yves\DummyPayment\Plugin\DummyPaymentInvoiceSubFormPlugin;
 use Spryker\Yves\Kernel\Container;
 use Spryker\Yves\StepEngine\Dependency\Plugin\Form\SubFormPluginCollection;
 

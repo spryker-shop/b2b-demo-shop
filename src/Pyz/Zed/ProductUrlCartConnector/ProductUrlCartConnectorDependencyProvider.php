@@ -12,20 +12,52 @@ use Spryker\Zed\Kernel\Container;
 
 class ProductUrlCartConnectorDependencyProvider extends AbstractBundleDependencyProvider
 {
-    public const FACADE_PRODUCT = 'FACADE_PRODUCT';
-    public const FACADE_LOCALE = 'FACADE_LOCALE';
+    /**
+     * @var string
+     */
+    public const PYZ_FACADE_PRODUCT = 'PYZ_FACADE_PRODUCT';
+
+    /**
+     * @var string
+     */
+    public const PYZ_FACADE_LOCALE = 'PYZ_FACADE_LOCALE';
 
     /**
      * @param \Spryker\Zed\Kernel\Container $container
      *
      * @return \Spryker\Zed\Kernel\Container
      */
-    public function provideBusinessLayerDependencies(Container $container)
+    public function provideBusinessLayerDependencies(Container $container): Container
     {
-        $container->set(static::FACADE_PRODUCT, function (Container $container) {
+        $container = parent::provideBusinessLayerDependencies($container);
+        $container = $this->addPyzFacadeProduct($container);
+        $container = $this->addPyzFacadeLocale($container);
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    protected function addPyzFacadeProduct(Container $container): Container
+    {
+        $container->set(static::PYZ_FACADE_PRODUCT, function (Container $container) {
             return $container->getLocator()->product()->facade();
         });
-        $container->set(static::FACADE_LOCALE, function (Container $container) {
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    protected function addPyzFacadeLocale(Container $container): Container
+    {
+        $container->set(static::PYZ_FACADE_PRODUCT, function (Container $container) {
             return $container->getLocator()->locale()->facade();
         });
 

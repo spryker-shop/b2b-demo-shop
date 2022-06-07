@@ -48,7 +48,7 @@ class ShipmentDependencyProvider extends SprykerShipmentDependencyProvider
      *
      * @return \Spryker\Zed\Kernel\Communication\Form\FormTypeInterface
      */
-    protected function createMoneyCollectionFormTypePlugin(Container $container)
+    protected function createPyzMoneyCollectionFormTypePlugin(Container $container)
     {
         return new MoneyCollectionFormTypePlugin();
     }
