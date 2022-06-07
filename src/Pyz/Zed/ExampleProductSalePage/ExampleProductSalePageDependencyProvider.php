@@ -12,8 +12,15 @@ use Spryker\Zed\Kernel\Container;
 
 class ExampleProductSalePageDependencyProvider extends AbstractBundleDependencyProvider
 {
-    public const QUERY_CONTAINER_PRODUCT_LABEL = 'QUERY_CONTAINER_PRODUCT_LABEL';
-    public const QUERY_CONTAINER_PRODUCT = 'QUERY_CONTAINER_PRODUCT';
+    /**
+     * @var string
+     */
+    public const PYZ_QUERY_CONTAINER_PRODUCT_LABEL = 'PYZ_QUERY_CONTAINER_PRODUCT_LABEL';
+
+    /**
+     * @var string
+     */
+    public const PYZ_QUERY_CONTAINER_PRODUCT = 'PYZ_QUERY_CONTAINER_PRODUCT';
 
     /**
      * @param \Spryker\Zed\Kernel\Container $container
@@ -22,8 +29,9 @@ class ExampleProductSalePageDependencyProvider extends AbstractBundleDependencyP
      */
     public function providePersistenceLayerDependencies(Container $container)
     {
-        $container = $this->addProductLabelQueryContainer($container);
-        $container = $this->addProductQueryContainer($container);
+        $container = parent::providePersistenceLayerDependencies($container);
+        $container = $this->addPyzProductLabelQueryContainer($container);
+        $container = $this->addPyzProductQueryContainer($container);
 
         return $container;
     }
@@ -33,9 +41,9 @@ class ExampleProductSalePageDependencyProvider extends AbstractBundleDependencyP
      *
      * @return \Spryker\Zed\Kernel\Container
      */
-    protected function addProductLabelQueryContainer(Container $container)
+    protected function addPyzProductLabelQueryContainer(Container $container): Container
     {
-        $container->set(static::QUERY_CONTAINER_PRODUCT_LABEL, function (Container $container) {
+        $container->set(static::PYZ_QUERY_CONTAINER_PRODUCT_LABEL, function (Container $container) {
             return $container->getLocator()->productLabel()->queryContainer();
         });
 
@@ -47,9 +55,9 @@ class ExampleProductSalePageDependencyProvider extends AbstractBundleDependencyP
      *
      * @return \Spryker\Zed\Kernel\Container
      */
-    protected function addProductQueryContainer(Container $container)
+    protected function addPyzProductQueryContainer(Container $container): Container
     {
-        $container->set(static::QUERY_CONTAINER_PRODUCT, function (Container $container) {
+        $container->set(static::PYZ_QUERY_CONTAINER_PRODUCT, function (Container $container) {
             return $container->getLocator()->product()->queryContainer();
         });
 

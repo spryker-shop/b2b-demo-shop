@@ -112,7 +112,9 @@ const getConfiguration = async appSettings => {
                             ],
                             plugins: [
                                 ...(!isES6Module ? ['@babel/plugin-transform-runtime'] : []),
-                                ['@babel/plugin-proposal-class-properties'],
+                                ['@babel/plugin-proposal-class-properties', {
+                                    loose: true,
+                                }],
                             ]
                         }
                     },
@@ -136,7 +138,10 @@ const getConfiguration = async appSettings => {
                                     ]
                                 }
                             }, {
-                                loader: 'sass-loader'
+                                loader: 'sass-loader',
+                                options: {
+                                    implementation: require('sass'),
+                                }
                             }, {
                                 loader: '@spryker/sass-resources-loader',
                                 options: {
@@ -183,7 +188,9 @@ const getConfiguration = async appSettings => {
                 }),
 
                 compiler => compiler.hooks.done.tap('webpack', compilationParams => {
-                    if (process.env.npm_lifecycle_event === 'yves:watch') {
+                    const watchLifecycleEventNames = ['yves:watch:esm', 'yves:watch:legacy'];
+
+                    if (watchLifecycleEventNames.includes(process.env.npm_lifecycle_event)) {
                         return;
                     }
 

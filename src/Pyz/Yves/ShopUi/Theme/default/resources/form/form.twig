@@ -266,7 +266,7 @@
             class: ('input input--expand ' ~ (errors is not empty ? 'input--error ') ~ (attr.class | default(''))) | trim,
             type: 'text',
             autocomplete: 'off',
-            placeholder: 'yyyy-mm-dd HH:mm',
+            placeholder: attr.placeholder | default('yyyy-mm-dd HH:mm'),
         }) -%}
         <input {{ block('widget_attributes') }} {% if value %}value="{{ value }}" {% endif %}>
     {%- else -%}
@@ -286,7 +286,7 @@
             class: ('input input--expand ' ~ (errors is not empty ? 'input--error ') ~ (attr.class | default(''))) | trim,
             type: 'text',
             autocomplete: 'off',
-            placeholder: 'yyyy-mm-dd',
+            placeholder: attr.placeholder | default('yyyy-mm-dd'),
         }) -%}
         <input {{ block('widget_attributes') }} {% if value %}value="{{ value }}" {% endif %}>
     {%- else -%}

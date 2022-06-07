@@ -18,4 +18,14 @@ class PriceConfig extends SprykerPriceConfig
     {
         return static::PRICE_MODE_NET;
     }
+
+    /**
+     * @return array<string, string>
+     */
+    public function getPriceModes(): array
+    {
+        return [
+            static::PRICE_MODE_NET => static::PRICE_MODE_NET,
+        ];
+    }
 }
