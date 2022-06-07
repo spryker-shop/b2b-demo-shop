@@ -29,7 +29,6 @@ use Spryker\Glue\AvailabilityNotificationsRestApi\Plugin\GlueApplication\MyAvail
 use Spryker\Glue\CartCodesRestApi\Plugin\GlueApplication\CartCodesResourceRoutePlugin;
 use Spryker\Glue\CartCodesRestApi\Plugin\GlueApplication\CartRuleByQuoteResourceRelationshipPlugin;
 use Spryker\Glue\CartCodesRestApi\Plugin\GlueApplication\CartVouchersResourceRoutePlugin;
-use Spryker\Glue\CartCodesRestApi\Plugin\GlueApplication\GuestCartVouchersResourceRoutePlugin;
 use Spryker\Glue\CartCodesRestApi\Plugin\GlueApplication\VoucherByQuoteResourceRelationshipPlugin;
 use Spryker\Glue\CartPermissionGroupsRestApi\Plugin\GlueApplication\CartPermissionGroupByQuoteResourceRelationshipPlugin;
 use Spryker\Glue\CartPermissionGroupsRestApi\Plugin\GlueApplication\CartPermissionGroupByShareDetailResourceRelationshipPlugin;
@@ -37,12 +36,9 @@ use Spryker\Glue\CartPermissionGroupsRestApi\Plugin\GlueApplication\CartPermissi
 use Spryker\Glue\CartsRestApi\CartsRestApiConfig;
 use Spryker\Glue\CartsRestApi\Plugin\ControllerBeforeAction\SetAnonymousCustomerIdControllerBeforeActionPlugin;
 use Spryker\Glue\CartsRestApi\Plugin\GlueApplication\CartItemsByQuoteResourceRelationshipPlugin;
-use Spryker\Glue\CartsRestApi\Plugin\GlueApplication\GuestCartItemsByQuoteResourceRelationshipPlugin;
 use Spryker\Glue\CartsRestApi\Plugin\ResourceRoute\CartItemsResourceRoutePlugin;
 use Spryker\Glue\CartsRestApi\Plugin\ResourceRoute\CartsResourceRoutePlugin;
 use Spryker\Glue\CartsRestApi\Plugin\ResourceRoute\CustomerCartsResourceRoutePlugin;
-use Spryker\Glue\CartsRestApi\Plugin\ResourceRoute\GuestCartItemsResourceRoutePlugin;
-use Spryker\Glue\CartsRestApi\Plugin\ResourceRoute\GuestCartsResourceRoutePlugin;
 use Spryker\Glue\CartsRestApi\Plugin\Validator\AnonymousCustomerUniqueIdValidatorPlugin;
 use Spryker\Glue\CatalogSearchProductsResourceRelationship\Plugin\CatalogSearchAbstractProductsResourceRelationshipPlugin;
 use Spryker\Glue\CatalogSearchProductsResourceRelationship\Plugin\CatalogSearchSuggestionsAbstractProductsResourceRelationshipPlugin;
@@ -131,7 +127,6 @@ use Spryker\Glue\ProductAvailabilitiesRestApi\Plugin\GlueApplication\AbstractPro
 use Spryker\Glue\ProductAvailabilitiesRestApi\Plugin\GlueApplication\ConcreteProductAvailabilitiesByResourceIdResourceRelationshipPlugin;
 use Spryker\Glue\ProductBundleCartsRestApi\Plugin\GlueApplication\BundledItemByQuoteResourceRelationshipPlugin;
 use Spryker\Glue\ProductBundleCartsRestApi\Plugin\GlueApplication\BundleItemByQuoteResourceRelationshipPlugin;
-use Spryker\Glue\ProductBundleCartsRestApi\Plugin\GlueApplication\GuestBundleItemByQuoteResourceRelationshipPlugin;
 use Spryker\Glue\ProductBundleCartsRestApi\ProductBundleCartsRestApiConfig;
 use Spryker\Glue\ProductBundlesRestApi\Plugin\GlueApplication\BundledProductByProductConcreteSkuResourceRelationshipPlugin;
 use Spryker\Glue\ProductBundlesRestApi\Plugin\GlueApplication\ConcreteProductsBundledProductsResourceRoutePlugin;
@@ -198,7 +193,6 @@ use Spryker\Glue\ShoppingListsRestApi\Plugin\GlueApplication\ShoppingListsResour
 use Spryker\Glue\ShoppingListsRestApi\ShoppingListsRestApiConfig;
 use Spryker\Glue\StoresRestApi\Plugin\StoresResourceRoutePlugin;
 use Spryker\Glue\UpSellingProductsRestApi\Plugin\GlueApplication\CartUpSellingProductsResourceRoutePlugin;
-use Spryker\Glue\UpSellingProductsRestApi\Plugin\GlueApplication\GuestCartUpSellingProductsResourceRoutePlugin;
 use Spryker\Glue\UrlsRestApi\Plugin\GlueApplication\UrlResolverResourceRoutePlugin;
 
 class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependencyProvider
@@ -227,13 +221,10 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new ConcreteProductAvailabilitiesRoutePlugin(),
             new RelatedProductsResourceRoutePlugin(),
             new CartUpSellingProductsResourceRoutePlugin(),
-            new GuestCartUpSellingProductsResourceRoutePlugin(),
             new CartsResourceRoutePlugin(),
             new AbstractProductImageSetsRoutePlugin(),
             new ConcreteProductImageSetsRoutePlugin(),
             new CartItemsResourceRoutePlugin(),
-            new GuestCartsResourceRoutePlugin(),
-            new GuestCartItemsResourceRoutePlugin(),
             new CatalogSearchResourceRoutePlugin(),
             new CatalogSearchSuggestionsResourceRoutePlugin(),
             new AbstractAlternativeProductsResourceRoutePlugin(),
@@ -257,7 +248,6 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new ContentBannerResourceRoutePlugin(),
             new UrlResolverResourceRoutePlugin(),
             new CartVouchersResourceRoutePlugin(),
-            new GuestCartVouchersResourceRoutePlugin(),
             new CustomerAccessResourceRoutePlugin(),
             new AbstractProductsProductReviewsResourceRoutePlugin(),
             new HealthCheckResourceRoutePlugin(),
@@ -471,10 +461,6 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new ConcreteProductBySkuResourceRelationshipPlugin()
         );
         $resourceRelationshipCollection->addRelationship(
-            CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
-            new ConcreteProductBySkuResourceRelationshipPlugin()
-        );
-        $resourceRelationshipCollection->addRelationship(
             CatalogSearchRestApiConfig::RESOURCE_CATALOG_SEARCH,
             new CatalogSearchAbstractProductsResourceRelationshipPlugin()
         );
@@ -551,15 +537,7 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new VoucherByQuoteResourceRelationshipPlugin()
         );
         $resourceRelationshipCollection->addRelationship(
-            CartsRestApiConfig::RESOURCE_GUEST_CARTS,
-            new VoucherByQuoteResourceRelationshipPlugin()
-        );
-        $resourceRelationshipCollection->addRelationship(
             CartsRestApiConfig::RESOURCE_CARTS,
-            new CartRuleByQuoteResourceRelationshipPlugin()
-        );
-        $resourceRelationshipCollection->addRelationship(
-            CartsRestApiConfig::RESOURCE_GUEST_CARTS,
             new CartRuleByQuoteResourceRelationshipPlugin()
         );
         $resourceRelationshipCollection->addRelationship(
@@ -599,10 +577,6 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new AddressByCheckoutDataResourceRelationshipPlugin()
         );
         $resourceRelationshipCollection->addRelationship(
-            CartsRestApiConfig::RESOURCE_GUEST_CARTS,
-            new PromotionItemByQuoteTransferResourceRelationshipPlugin()
-        );
-        $resourceRelationshipCollection->addRelationship(
             OrdersRestApiConfig::RESOURCE_ORDERS,
             new OrderShipmentByOrderResourceRelationshipPlugin()
         );
@@ -624,10 +598,6 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
         );
         $resourceRelationshipCollection->addRelationship(
             CartsRestApiConfig::RESOURCE_CART_ITEMS,
-            new SalesUnitsByCartItemResourceRelationshipPlugin()
-        );
-        $resourceRelationshipCollection->addRelationship(
-            CartsRestApiConfig::RESOURCE_GUEST_CARTS_ITEMS,
             new SalesUnitsByCartItemResourceRelationshipPlugin()
         );
         $resourceRelationshipCollection->addRelationship(
@@ -667,10 +637,6 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
             new BundleItemByQuoteResourceRelationshipPlugin()
         );
         $resourceRelationshipCollection->addRelationship(
-            CartsRestApiConfig::RESOURCE_GUEST_CARTS,
-            new GuestBundleItemByQuoteResourceRelationshipPlugin()
-        );
-        $resourceRelationshipCollection->addRelationship(
             ProductBundleCartsRestApiConfig::RESOURCE_BUNDLE_ITEMS,
             new BundledItemByQuoteResourceRelationshipPlugin()
         );
@@ -681,10 +647,6 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
         $resourceRelationshipCollection->addRelationship(
             ProductBundleCartsRestApiConfig::RESOURCE_BUNDLED_ITEMS,
             new ConcreteProductBySkuResourceRelationshipPlugin()
-        );
-        $resourceRelationshipCollection->addRelationship(
-            CartsRestApiConfig::RESOURCE_GUEST_CARTS,
-            new GuestCartItemsByQuoteResourceRelationshipPlugin()
         );
         $resourceRelationshipCollection->addRelationship(
             ProductsRestApiConfig::RESOURCE_ABSTRACT_PRODUCTS,
