@@ -9,6 +9,8 @@ namespace Pyz\Zed\ExampleProductSalePage\Persistence;
 
 use Pyz\Zed\ExampleProductSalePage\ExampleProductSalePageDependencyProvider;
 use Spryker\Zed\Kernel\Persistence\AbstractPersistenceFactory;
+use Spryker\Zed\Product\Persistence\ProductQueryContainerInterface;
+use Spryker\Zed\ProductLabel\Persistence\ProductLabelQueryContainerInterface;
 
 /**
  * @method \Spryker\Zed\ProductNew\ProductNewConfig getConfig()
@@ -19,16 +21,16 @@ class ExampleProductSalePagePersistenceFactory extends AbstractPersistenceFactor
     /**
      * @return \Spryker\Zed\ProductLabel\Persistence\ProductLabelQueryContainerInterface
      */
-    public function getProductLabelQueryContainer()
+    public function getPyzProductLabelQueryContainer(): ProductLabelQueryContainerInterface
     {
-        return $this->getProvidedDependency(ExampleProductSalePageDependencyProvider::QUERY_CONTAINER_PRODUCT_LABEL);
+        return $this->getProvidedDependency(ExampleProductSalePageDependencyProvider::PYZ_QUERY_CONTAINER_PRODUCT_LABEL);
     }
 
     /**
      * @return \Spryker\Zed\Product\Persistence\ProductQueryContainerInterface
      */
-    public function getProductQueryContainer()
+    public function getPyzProductQueryContainer(): ProductQueryContainerInterface
     {
-        return $this->getProvidedDependency(ExampleProductSalePageDependencyProvider::QUERY_CONTAINER_PRODUCT);
+        return $this->getProvidedDependency(ExampleProductSalePageDependencyProvider::PYZ_QUERY_CONTAINER_PRODUCT);
     }
 }

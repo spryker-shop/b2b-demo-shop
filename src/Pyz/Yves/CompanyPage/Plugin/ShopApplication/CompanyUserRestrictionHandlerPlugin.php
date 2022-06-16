@@ -16,7 +16,10 @@ use Symfony\Component\HttpKernel\Event\ControllerEvent;
 
 class CompanyUserRestrictionHandlerPlugin extends SprykerCompanyUserRestrictionHandlerPlugin
 {
-    protected const PERMISSION_KEY = 'SeeCompanyMenuPermissionPlugin';
+    /**
+     * @var string
+     */
+    protected const PYZ_PERMISSION_KEY = 'SeeCompanyMenuPermissionPlugin';
 
     /**
      * {@inheritDoc}
@@ -77,7 +80,7 @@ class CompanyUserRestrictionHandlerPlugin extends SprykerCompanyUserRestrictionH
 
         foreach ($companyRoleTransfers as $companyRoleTransfer) {
             foreach ($companyRoleTransfer->getPermissionCollection()->getPermissions() as $permissionTransfer) {
-                if ($permissionTransfer->getKey() === static::PERMISSION_KEY) {
+                if ($permissionTransfer->getKey() === static::PYZ_PERMISSION_KEY) {
                     return true;
                 }
             }

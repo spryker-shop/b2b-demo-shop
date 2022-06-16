@@ -18,55 +18,43 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class TestController extends AbstractController
 {
-    public const STATE_MACHINE_NAME = 'Test';
+    /**
+     * @var string
+     */
+    public const PYZ_STATE_MACHINE_NAME = 'Test';
 
     /**
      * @return array
      */
-    public function listAction()
+    public function listPyzAction(): array
     {
         $stateMachineItems = $this->getFacade()
-            ->getStateMachineItems();
+            ->getPyzStateMachineItems();
 
-        $stateMachineItems = $this->getStateMachineFacade()
+        $stateMachineItems = $this->getFactory()->getPyzStateMachineFacade()
             ->getProcessedStateMachineItems($stateMachineItems);
 
-        $manualEvents = $this->getStateMachineFacade()
+        $manualEvents = $this->getFactory()->getPyzStateMachineFacade()
             ->getManualEventsForStateMachineItems($stateMachineItems);
 
         $exampleStateMachineItems = $this->getQueryContainer()
-            ->queryAllStateMachineItems();
+            ->queryPyzAllStateMachineItems();
 
         return [
             'exampleStateMachineItems' => $exampleStateMachineItems,
             'manualEvents' => $manualEvents,
-            'stateMachineItems' => $this->createStateMachineLookupTable($stateMachineItems),
+            'stateMachineItems' => $this->createPyzStateMachineLookupTable($stateMachineItems),
         ];
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\StateMachineItemTransfer[] $stateMachineItems
-     *
-     * @return \Generated\Shared\Transfer\StateMachineItemTransfer[]
-     */
-    protected function createStateMachineLookupTable(array $stateMachineItems)
-    {
-        $lookupIndex = [];
-        foreach ($stateMachineItems as $stateMachineItemTransfer) {
-            $lookupIndex[$stateMachineItemTransfer->getIdentifier()] = $stateMachineItemTransfer;
-        }
-
-        return $lookupIndex;
     }
 
     /**
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
-    public function addItemAction()
+    public function addPyzItemAction(): RedirectResponse
     {
-        $this->getFacade()->createExampleItem();
+        $this->getFacade()->createPyzExampleItem();
 
-        return new RedirectResponse('/example-state-machine/test/list');
+        return new RedirectResponse('/example-state-machine/test/list-pyz');
     }
 
     /**
@@ -74,22 +62,29 @@ class TestController extends AbstractController
      *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
-    public function deleteItemAction(Request $request)
+    public function deletePyzItemAction(Request $request): RedirectResponse
     {
         $idStateMachineItem = $this->castId($request->query->get('id'));
 
         $this->getQueryContainer()
-            ->queryExampleStateMachineItemByIdStateMachineItem($idStateMachineItem)
+            ->queryPyzExampleStateMachineItemByIdStateMachineItem($idStateMachineItem)
             ->delete();
 
-        return new RedirectResponse('/example-state-machine/test/list');
+        return new RedirectResponse('/example-state-machine/test/list-pyz');
     }
 
     /**
-     * @return \Spryker\Zed\StateMachine\Business\StateMachineFacade
+     * @param \Generated\Shared\Transfer\StateMachineItemTransfer[] $stateMachineItems
+     *
+     * @return \Generated\Shared\Transfer\StateMachineItemTransfer[]
      */
-    protected function getStateMachineFacade()
+    protected function createPyzStateMachineLookupTable(array $stateMachineItems): array
     {
-        return $this->getFactory()->getStateMachineFacade();
+        $lookupIndex = [];
+        foreach ($stateMachineItems as $stateMachineItemTransfer) {
+            $lookupIndex[$stateMachineItemTransfer->getIdentifier()] = $stateMachineItemTransfer;
+        }
+
+        return $lookupIndex;
     }
 }

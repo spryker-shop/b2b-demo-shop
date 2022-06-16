@@ -36,6 +36,7 @@
                 <div class="grid">
 
                     {% block fields %}
+                        {% set fieldsAlignment = not data.verticalLayout ? 'col--md-10' %}
                         {{ parent() }}
                     {% endblock %}
 

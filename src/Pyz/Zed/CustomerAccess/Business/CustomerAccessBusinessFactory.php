@@ -9,13 +9,15 @@ namespace Pyz\Zed\CustomerAccess\Business;
 
 use Pyz\Zed\CustomerAccess\Business\CustomerAccess\CustomerAccessFilter;
 use Pyz\Zed\CustomerAccess\Business\CustomerAccess\CustomerAccessFilterInterface;
+use Pyz\Zed\CustomerAccess\Business\CustomerAccess\CustomerAccessReader;
+use Pyz\Zed\CustomerAccess\Business\CustomerAccess\CustomerAccessReaderInterface;
 use Pyz\Zed\CustomerAccess\Business\CustomerAccess\CustomerAccessUpdater;
-use Spryker\Zed\CustomerAccess\Business\CustomerAccess\CustomerAccessUpdaterInterface;
+use Pyz\Zed\CustomerAccess\Business\CustomerAccess\CustomerAccessUpdaterInterface;
 use Spryker\Zed\CustomerAccess\Business\CustomerAccessBusinessFactory as SprykerCustomerAccessBusinessFactory;
 
 /**
  * @method \Pyz\Zed\CustomerAccess\CustomerAccessConfig getConfig()
- * @method \Spryker\Zed\CustomerAccess\Persistence\CustomerAccessRepositoryInterface getRepository()
+ * @method \Pyz\Zed\CustomerAccess\Persistence\CustomerAccessRepositoryInterface getRepository()
  * @method \Pyz\Zed\CustomerAccess\Persistence\CustomerAccessEntityManagerInterface getEntityManager()
  */
 class CustomerAccessBusinessFactory extends SprykerCustomerAccessBusinessFactory
@@ -23,7 +25,7 @@ class CustomerAccessBusinessFactory extends SprykerCustomerAccessBusinessFactory
     /**
      * @return \Pyz\Zed\CustomerAccess\Business\CustomerAccess\CustomerAccessFilterInterface
      */
-    public function createCustomerAccessFilter(): CustomerAccessFilterInterface
+    public function createPyzCustomerAccessFilter(): CustomerAccessFilterInterface
     {
         return new CustomerAccessFilter(
             $this->getConfig()
@@ -31,14 +33,22 @@ class CustomerAccessBusinessFactory extends SprykerCustomerAccessBusinessFactory
     }
 
     /**
-     * @return \Spryker\Zed\CustomerAccess\Business\CustomerAccess\CustomerAccessUpdaterInterface
+     * @return \Pyz\Zed\CustomerAccess\Business\CustomerAccess\CustomerAccessUpdaterInterface
      */
-    public function createCustomerAccessUpdater(): CustomerAccessUpdaterInterface
+    public function createPyzCustomerAccessUpdater(): CustomerAccessUpdaterInterface
     {
         return new CustomerAccessUpdater(
             $this->getEntityManager(),
-            $this->createCustomerAccessReader(),
-            $this->createCustomerAccessFilter()
+            $this->createPyzCustomerAccessReader(),
+            $this->createPyzCustomerAccessFilter()
         );
+    }
+
+    /**
+     * @return \Pyz\Zed\CustomerAccess\Business\CustomerAccess\CustomerAccessReaderInterface
+     */
+    public function createPyzCustomerAccessReader(): CustomerAccessReaderInterface
+    {
+        return new CustomerAccessReader($this->getRepository());
     }
 }

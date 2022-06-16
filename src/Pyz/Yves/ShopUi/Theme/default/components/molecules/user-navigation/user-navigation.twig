@@ -7,9 +7,10 @@
 
 {% define data = {
     user: required,
+    cartQuantity: 0,
 } %}
 
-{% set cartQuantityText = cartQuantity > 0 ? cartQuantity ~ ' ' %}
+{% set cartQuantityText = data.cartQuantity > 0 ? data.cartQuantity ~ ' ' %}
 {% set shouldShowMiniCart = findWidget('MiniCartWidget', [cartQuantityText]).isMultiCartAllowed %}
 
 {%- block class -%}
@@ -147,7 +148,7 @@
             {% embed molecule('cart-counter') with {
                 class: config.jsName ~ '__trigger',
                 data: {
-                    quantity: cartQuantity,
+                    quantity: data.cartQuantity,
                 },
                 attributes: {
                     'data-toggle-target': '.' ~ config.jsName ~ '__sub-nav-cart',

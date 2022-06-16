@@ -23,9 +23,9 @@ use SprykerShop\Shared\CartPage\Plugin\RemoveCartItemPermissionPlugin;
 
 class CompanyRoleConfig extends SprykerCompanyRoleConfig
 {
-    protected const BUYER_ROLE_NAME = 'Buyer';
-    protected const APPROVER_ROLE_NAME = 'Approver';
-    protected const BUYER_WITH_LIMIT_ROLE_NAME = 'Buyer With Limit';
+    protected const PYZ_BUYER_ROLE_NAME = 'Buyer';
+    protected const PYZ_APPROVER_ROLE_NAME = 'Approver';
+    protected const PYZ_BUYER_WITH_LIMIT_ROLE_NAME = 'Buyer With Limit';
 
     /**
      * @return string[]
@@ -36,14 +36,14 @@ class CompanyRoleConfig extends SprykerCompanyRoleConfig
             AddCompanyUserPermissionPlugin::KEY,
             ManageCompanyUserInvitationPermissionPlugin::KEY,
             CompanyUserStatusChangePermissionPlugin::KEY,
-            SeeCompanyMenuPermissionPlugin::KEY,
+            SeeCompanyMenuPermissionPlugin::PYZ_KEY,
         ];
     }
 
     /**
      * @return string[]
      */
-    protected function getBuyerRolePermissionKeys(): array
+    protected function getPyzBuyerRolePermissionKeys(): array
     {
         return [
             AddCartItemPermissionPlugin::KEY,
@@ -56,7 +56,7 @@ class CompanyRoleConfig extends SprykerCompanyRoleConfig
     /**
      * @return string[]
      */
-    protected function getApproverRolePermissionKeys(): array
+    protected function getPyzApproverRolePermissionKeys(): array
     {
         return [
             ApproveQuotePermissionPlugin::KEY,
@@ -69,9 +69,9 @@ class CompanyRoleConfig extends SprykerCompanyRoleConfig
     public function getPredefinedCompanyRoles(): array
     {
         $companyRoleTransfers = parent::getPredefinedCompanyRoles();
-        $companyRoleTransfers[] = $this->getBuyerRole();
-        $companyRoleTransfers[] = $this->getApproverRole();
-        $companyRoleTransfers[] = $this->getBuyerWithLimitRole();
+        $companyRoleTransfers[] = $this->getPyzBuyerRole();
+        $companyRoleTransfers[] = $this->getPyzApproverRole();
+        $companyRoleTransfers[] = $this->getPyzBuyerWithLimitRole();
 
         return $companyRoleTransfers;
     }
@@ -79,43 +79,43 @@ class CompanyRoleConfig extends SprykerCompanyRoleConfig
     /**
      * @return \Generated\Shared\Transfer\CompanyRoleTransfer
      */
-    protected function getBuyerRole(): CompanyRoleTransfer
+    protected function getPyzBuyerRole(): CompanyRoleTransfer
     {
         return (new CompanyRoleTransfer())
-            ->setName(static::BUYER_ROLE_NAME)
+            ->setName(static::PYZ_BUYER_ROLE_NAME)
             ->setPermissionCollection($this->createPermissionCollectionFromPermissionKeys(
-                $this->getBuyerRolePermissionKeys()
+                $this->getPyzBuyerRolePermissionKeys()
             ));
     }
 
     /**
      * @return \Generated\Shared\Transfer\CompanyRoleTransfer
      */
-    protected function getApproverRole(): CompanyRoleTransfer
+    protected function getPyzApproverRole(): CompanyRoleTransfer
     {
         return (new CompanyRoleTransfer())
-            ->setName(static::APPROVER_ROLE_NAME)
+            ->setName(static::PYZ_APPROVER_ROLE_NAME)
             ->setPermissionCollection($this->createPermissionCollectionFromPermissionKeys(
-                $this->getApproverRolePermissionKeys()
+                $this->getPyzApproverRolePermissionKeys()
             ));
     }
 
     /**
      * @return \Generated\Shared\Transfer\CompanyRoleTransfer
      */
-    protected function getBuyerWithLimitRole(): CompanyRoleTransfer
+    protected function getPyzBuyerWithLimitRole(): CompanyRoleTransfer
     {
         return (new CompanyRoleTransfer())
-            ->setName(static::BUYER_WITH_LIMIT_ROLE_NAME)
+            ->setName(static::PYZ_BUYER_WITH_LIMIT_ROLE_NAME)
             ->setPermissionCollection($this->createPermissionCollectionFromPermissionKeys(
-                $this->getBuyerWithLimitRolePermissionKeys()
+                $this->getPyzBuyerWithLimitRolePermissionKeys()
             ));
     }
 
     /**
      * @return string[]
      */
-    protected function getBuyerWithLimitRolePermissionKeys(): array
+    protected function getPyzBuyerWithLimitRolePermissionKeys(): array
     {
         return [
             AddCartItemPermissionPlugin::KEY,

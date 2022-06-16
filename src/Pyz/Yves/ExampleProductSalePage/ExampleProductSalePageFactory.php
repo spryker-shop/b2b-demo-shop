@@ -20,38 +20,38 @@ class ExampleProductSalePageFactory extends AbstractFactory
      */
     public function getExampleProductSalePageWidgetPlugins(): array
     {
-        return $this->getProvidedDependency(ExampleProductSalePageDependencyProvider::PLUGIN_PRODUCT_SALE_PAGE_WIDGETS);
+        return $this->getProvidedDependency(ExampleProductSalePageDependencyProvider::PYZ_PLUGIN_PRODUCT_SALE_PAGE_WIDGETS);
     }
 
     /**
      * @return \Spryker\Client\Search\SearchClientInterface
      */
-    protected function getSearchClient(): SearchClientInterface
+    protected function getPyzSearchClient(): SearchClientInterface
     {
-        return $this->getProvidedDependency(ExampleProductSalePageDependencyProvider::CLIENT_SEARCH);
+        return $this->getProvidedDependency(ExampleProductSalePageDependencyProvider::PYZ_CLIENT_SEARCH);
     }
 
     /**
      * @return \Spryker\Client\UrlStorage\UrlStorageClientInterface
      */
-    public function getUrlStorageClient(): UrlStorageClientInterface
+    public function getPyzUrlStorageClient(): UrlStorageClientInterface
     {
-        return $this->getProvidedDependency(ExampleProductSalePageDependencyProvider::CLIENT_URL_STORAGE);
+        return $this->getProvidedDependency(ExampleProductSalePageDependencyProvider::PYZ_CLIENT_URL_STORAGE);
     }
 
     /**
      * @return \Spryker\Shared\Kernel\Store
      */
-    public function getStore(): Store
+    public function getPyzStore(): Store
     {
-        return $this->getProvidedDependency(ExampleProductSalePageDependencyProvider::STORE);
+        return $this->getProvidedDependency(ExampleProductSalePageDependencyProvider::PYZ_STORE);
     }
 
     /**
      * @return \Spryker\Client\Catalog\CatalogClientInterface
      */
-    public function getCatalogClient(): CatalogClientInterface
+    public function getPyzCatalogClient(): CatalogClientInterface
     {
-        return $this->getProvidedDependency(ExampleProductSalePageDependencyProvider::CLIENT_CATALOG);
+        return $this->getProvidedDependency(ExampleProductSalePageDependencyProvider::PYZ_CLIENT_CATALOG);
     }
 }

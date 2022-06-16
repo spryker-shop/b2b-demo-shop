@@ -20,7 +20,10 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
  */
 class ProductController extends SprykerShopProductController
 {
-    protected const KEY_ID_PRODUCT_ABSTRACT = 'id_product_abstract';
+    /**
+     * @var string
+     */
+    protected const PYZ_KEY_ID_PRODUCT_ABSTRACT = 'id_product_abstract';
 
     /**
      * @param array $productData
@@ -48,7 +51,7 @@ class ProductController extends SprykerShopProductController
         );
 
         $bundledProducts = [];
-        foreach ($productViewTransfer->getBundledProductIds() as $productId => $quantity) {
+        foreach ($productViewTransfer->getPyzBundledProductIds() as $productId => $quantity) {
             $bundledProduct = $this->getFactory()->getProductStoragePyzClient()->findProductConcreteStorageData($productId, $this->getLocale());
             $bundledProduct['idProductAbstract'] = $bundledProduct['id_product_abstract'];
             $bundledProduct['productUrl'] = $bundledProduct['url'];

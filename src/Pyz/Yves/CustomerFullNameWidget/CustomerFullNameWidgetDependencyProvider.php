@@ -12,7 +12,10 @@ use Spryker\Yves\Kernel\Container;
 
 class CustomerFullNameWidgetDependencyProvider extends AbstractBundleDependencyProvider
 {
-    public const CLIENT_CUSTOMER = 'CLIENT_CUSTOMER';
+    /**
+     * @var string
+     */
+    public const PYZ_CLIENT_CUSTOMER = 'PYZ_CLIENT_CUSTOMER';
 
     /**
      * @param \Spryker\Yves\Kernel\Container $container
@@ -21,7 +24,8 @@ class CustomerFullNameWidgetDependencyProvider extends AbstractBundleDependencyP
      */
     public function provideDependencies(Container $container): Container
     {
-        $container = $this->addCustomerClient($container);
+        $container = parent::provideDependencies($container);
+        $container = $this->addPyzCustomerClient($container);
 
         return $container;
     }
@@ -31,11 +35,11 @@ class CustomerFullNameWidgetDependencyProvider extends AbstractBundleDependencyP
      *
      * @return \Spryker\Yves\Kernel\Container
      */
-    protected function addCustomerClient(Container $container): Container
+    protected function addPyzCustomerClient(Container $container): Container
     {
-        $container[static::CLIENT_CUSTOMER] = function (Container $container) {
+        $container->set(static::PYZ_CLIENT_CUSTOMER, function (Container $container) {
             return $container->getLocator()->customer()->client();
-        };
+        });
 
         return $container;
     }

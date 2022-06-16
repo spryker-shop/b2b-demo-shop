@@ -12,5 +12,5 @@ interface ProductAbstractRelationReaderInterface
     /**
      * @return \Generated\Shared\Transfer\ProductLabelProductAbstractRelationsTransfer[]
      */
-    public function findProductLabelProductAbstractRelationChanges();
+    public function findProductLabelProductAbstractRelationChanges(): array;
 }

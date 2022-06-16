@@ -40,7 +40,7 @@
 
 {% block customOrderCancelAction %}
     {% widget 'OrderCancelButtonWidget' args [order, data.requestUri] only %}
-        {% block formContent %}
+        {% block body %}
             {% embed molecule('remote-form-submit') with {
                 class: 'table-action-list__item',
                 data: {
