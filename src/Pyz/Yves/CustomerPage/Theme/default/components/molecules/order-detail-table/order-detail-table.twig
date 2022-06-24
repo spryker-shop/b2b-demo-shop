@@ -44,7 +44,11 @@
                                     {% block body %}
                                         {% if embed.order is not empty %}
                                             <span class="{{ config.name }}__checkbox">
-                                                {% widget 'CustomerReorderItemCheckboxWidget' args [embed.listItem] only %}{% endwidget %}
+                                                {% if embed.listItem.bundleItemIdentifier ?? false %}
+                                                    {% widget 'CustomerReorderBundleItemCheckboxWidget' args [embed.listItem] only %}{% endwidget %}
+                                                {% else %}
+                                                    {% widget 'CustomerReorderItemCheckboxWidget' args [embed.listItem] only %}{% endwidget %}
+                                                {% endif %}
                                             </span>
                                         {% endif %}
 
