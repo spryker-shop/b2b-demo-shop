@@ -1,0 +1,44 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'navigation-top-desktop',
+    tag: 'nav'
+} %}
+
+{% block body %}
+
+    <ul class="grid grid--middle grid--right">
+        
+        <li class="{{ config.name }}__item">
+            <a href="{{ url('login') }}">
+                {% include atom('icon') with {
+                    modifiers: ['big'],
+                    data: {
+                        name: 'wishlist'
+                    }
+                } only %}
+            </a>
+        </li>
+        <li class="{{ config.name }}__item">
+            <a href="{{ url('login') }}">
+                {% include atom('icon') with {
+                    modifiers: ['big'],
+                    data: {
+                        name: 'user-account'
+                    }
+                } only %}
+            </a>
+        </li>
+
+        <li class="{{ config.name }}__item">
+            <a href="{{ url('cart') }}">
+                {% include atom('icon') with {
+                    modifiers: ['big'],
+                    data: {
+                        name: 'cart'
+                    }
+                } only %}
+            </a>
+        </li>
+    </ul>
+{% endblock %}

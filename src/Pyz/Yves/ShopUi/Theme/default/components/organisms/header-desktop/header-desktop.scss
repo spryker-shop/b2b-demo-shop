@@ -1,0 +1,81 @@
+@mixin shop-ui-header-desktop($name: '.header-desktop') {
+    #{$name} {
+        position: relative;
+        background-color: $setting-color-white;
+        z-index: $setting-zi-header;
+        padding-top: rem(4);
+        border-bottom: rem(1) solid $setting-color-gray-1;
+
+        &--border-less-bottom {
+            border-bottom: none;
+        }
+
+        &__row {
+            padding: 0 rem(16);
+        }
+
+        &__search-form {
+            position: relative;
+            z-index: $setting-zi-header + 2;
+        }
+
+        &__navigation-main {
+            position: relative;
+            padding: 1rem 0;
+            z-index: $setting-zi-header + 1;
+        }
+
+        &__search-open {
+            cursor: pointer;
+
+            &::before {
+                content: '';
+                display: block;
+                width: rem(85);
+                height: rem(25);
+                float: left;
+                border-bottom: rem(1) solid $setting-color-gray-4;
+            }
+        }
+
+        &__search-open-icon {
+            margin-left: rem(10);
+            vertical-align: bottom;
+        }
+
+        .menu {
+            &__link,
+            &__text,
+            &__trigger {
+                line-height: inherit;
+            }
+
+            &__item {
+                margin: 0 0.5625rem;
+
+                a,
+                span {
+                    color: $setting-color-black;
+                    text-transform: uppercase;
+                    font: 500 0.8125rem Circular, sans-serif;
+                    letter-spacing: 0.125rem;
+                    white-space: nowrap;
+                    cursor: pointer;
+                }
+            }
+        }
+
+        .sale-color,
+        .new-color {
+            .menu {
+                &__link {
+                    color: $setting-color-black;
+                }
+            }
+        }
+
+        @content;
+    }
+}
+
+@include shop-ui-header-desktop();

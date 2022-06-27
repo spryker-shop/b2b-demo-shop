@@ -1,0 +1,52 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'header-desktop',
+    tag: 'header-desktop',
+} %}
+
+{% define data = {
+    showSearchForm: true,
+    showNavigation: true
+} %}
+
+{% block body %}
+
+    <div class="container">
+
+        <div class="{{ config.name }}__row {{ config.name }}__navigation-top grid grid--middle grid--justify">
+            <div class="col col--sm-12 col--lg-4 is-hidden-sm-md">
+                {% if data.showSearchForm %}
+                    <div class="{{ config.name }}__search-open js-suggest-search__show">
+                        {% include atom('icon') with {
+                            class: config.name ~ '__search-open-icon',
+                            data: {
+                                name: 'search'
+                            }
+                        } only %}
+                    </div>
+                {% endif %}
+            </div>
+
+            <div class="col col--sm-12 col--lg-4">
+                {% include molecule('logo') with {
+                    modifiers: ['main'],
+                    class: 'grid grid--center'
+                } only %}
+            </div>
+
+            <div class="col col--lg-4 is-hidden-sm-md">
+                {% if data.showNavigation %}
+                    {% include organism('navigation-top-desktop') only %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% if data.showNavigation %}
+        <div class="{{ config.name }}__row {{ config.name }}__navigation-main grid grid--middle grid--center">
+            {% block navigation %}
+                {% widget 'NavigationWidget' args ['MAIN_NAVIGATION', 'navigation-header'] only %}{% endwidget %}
+            {% endblock %}
+        </div>
+    {% endif %}
+{% endblock %}

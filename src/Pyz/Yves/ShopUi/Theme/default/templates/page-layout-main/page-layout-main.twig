@@ -146,6 +146,14 @@
 
         {% block outside %}{% endblock %}
 
+        {% block headerdesktop %}
+            {% embed organism('header-desktop') only %}
+                {% block navigation %}
+                    {% cms_slot 'slt-desktop-header' %}
+                {% endblock %}
+            {% endembed %}
+        {% endblock %}
+
         {% block header %}
             {% embed organism('header') only %}
                 {% block navigation %}
