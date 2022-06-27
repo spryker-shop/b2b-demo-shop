@@ -1,37 +1,32 @@
 {% extends template('page-blank') %}
 
 {% block meta %}
-    {{ parent() }}
-    <meta name="format-detection" content="telephone=no">
+	{{ parent() }}
+	<meta name="format-detection" content="telephone=no">
 {% endblock %}
 
-{%- block class -%}js-page-layout-main__side-drawer-container{%- endblock -%}
+{%- block class -%}js-page-layout-main__side-drawer-container{%- endblock -%}{% block body %}{% block notifications %}
+{% include organism('notification-area') only %}{% endblock %}<div class="page-layout page-layout--preload">
+{% widget 'AgentControlBarWidget' only %}{% endwidget %}
 
-{% block body %}
-    {% block notifications %}
-        {% include organism('notification-area') only %}
-    {% endblock %}
-    <div class="page-layout page-layout--preload">
-        {% widget 'AgentControlBarWidget' only %}{% endwidget %}
-
-        {% block sidebar %}
-            {% embed organism('side-drawer') with {
+{% block sidebar %}
+	{% embed organism('side-drawer') with {
                 attributes: {
                     'container-class-name': 'js-page-layout-main__side-drawer-container',
                     'trigger-class-name': 'js-page-layout-main__side-drawer-trigger',
                     'locked-body-class-name': 'is-locked-tablet',
                 },
             } only %}
-                {% block navigation %}
-                    {% cms_slot 'slt-mobile-header' %}
-                {% endblock %}
-            {% endembed %}
+		{% block navigation %}
+			{% cms_slot 'slt-mobile-header' %}
+		{% endblock %}
+	{% endembed %}
 
-            {% if is_granted('ROLE_USER') %}
-                {% set customerFullNameWidget = findWidget('CustomerFullNameWidget') %}
-                {% set customerFullName = customerFullNameWidget.customerFullName %}
+	{% if is_granted('ROLE_USER') %}
+		{% set customerFullNameWidget = findWidget('CustomerFullNameWidget') %}
+		{% set customerFullName = customerFullNameWidget.customerFullName %}
 
-                {% include organism('account-navigation') with {
+		{% include organism('account-navigation') with {
                     attributes: {
                         'container-class-name': 'js-page-layout-main__side-drawer-container',
                         'trigger-class-name': 'js-page-layout-main__user-account-navigation-trigger',
@@ -98,11 +93,11 @@
                     }
                 } only %}
 
-                {% if can('SeeCompanyMenuPermissionPlugin') %}
-                    {% set menuItemCompanyWidget = findWidget('MenuItemCompanyWidget') %}
-                    {% set companyName = menuItemCompanyWidget.companyName %}
+		{% if can('SeeCompanyMenuPermissionPlugin') %}
+			{% set menuItemCompanyWidget = findWidget('MenuItemCompanyWidget') %}
+			{% set companyName = menuItemCompanyWidget.companyName %}
 
-                    {% include organism('account-navigation') with {
+			{% include organism('account-navigation') with {
                         modifiers: ['company'],
                         attributes: {
                             'container-class-name': 'js-page-layout-main__side-drawer-container',
@@ -140,109 +135,117 @@
                             ]
                         }
                     } only %}
-                {% endif %}
-            {% endif %}
-        {% endblock %}
+		{% endif %}
+	{% endif %}
+{% endblock %}
 
-        {% block outside %}{% endblock %}
+{% block outside %}{% endblock %}
 
-        {% block header %}
-            {% embed organism('header') only %}
-                {% block navigation %}
-                    {% cms_slot 'slt-desktop-header' %}
-                {% endblock %}
+{% block header %}
+	{% embed organism('new-header') only %}
+		{% block navigation %}
+			{% cms_slot 'slt-desktop-header' %}
+		{% endblock %}
+	{% endembed %}
 
-                {% block mobile %}
-                    <a href="#" class="link link--alt js-page-layout-main__side-drawer-trigger">
-                        {% include atom('icon') with {
+	{% embed organism('header') only %}
+		{% block navigation %}
+			{% cms_slot 'slt-desktop-header' %}
+		{% endblock %}
+
+		{% block mobile %}
+			<a href="#" class="link link--alt js-page-layout-main__side-drawer-trigger">
+				{% include atom('icon') with {
                             modifiers: ['big'],
                             data: {
                                 name: 'bars',
                             },
                         } only %}
-                    </a>
-                {% endblock %}
-            {% endembed %}
-        {% endblock %}
+			</a>
+		{% endblock %}
+	{% endembed %}
 
-        <div itemscope itemtype="https://schema.org/Product" class="content-wrap">
-            {% block pageInfo %}
-                <div class="page-info">
-                    <div class="container">
-                        {% block breadcrumbs %}
-                            {% include molecule('breadcrumb') only %}
-                        {% endblock %}
 
-                        {% block title %}
-                            <h1 class="page-info__title title title--h3 ">{{ data.title }}</h1>
-                        {% endblock %}
-                    </div>
-                </div>
-            {% endblock %}
+{% endblock %}
 
-            <main class="{% block contentClass %}{% endblock %}">
-                {% block contentTop %}{% endblock %}
+<div itemscope itemtype="https://schema.org/Product" class="content-wrap">
+	{% block pageInfo %}
+		<div class="page-info">
+			<div class="container">
+				{% block breadcrumbs %}
+					{% include molecule('breadcrumb') only %}
+				{% endblock %}
 
-                {% block contentWrap %}
-                    <div class="container">
-                        {% block content %}{% endblock %}
-                    </div>
-                {% endblock %}
+				{% block title %}
+					<h1 class="page-info__title title title--h3 ">{{ data.title }}</h1>
+				{% endblock %}
+			</div>
+		</div>
+	{% endblock %}
 
-                {% block contentBottom %}{% endblock %}
-            </main>
-        </div>
+	<main>
+		{% block contentClass %}{% endblock %}
+			{% block contentTop %}{% endblock %}
 
-        {% block footer %}
-            {% cms_slot 'slt-1' %}
+			{% block contentWrap %}
+				<div class="container">
+					{% block content %}{% endblock %}
+				</div>
+			{% endblock %}
 
-            {% embed organism('footer') only %}
-                {% block logosInner %}
-                    {% cms_slot 'slt-footer-partners' %}
-                {% endblock %}
+			{% block contentBottom %}{% endblock %}
+		</main>
+	</div>
 
-                {% block navigationInner %}
-                    <div class="grid grid--gap">
-                        {% cms_slot 'slt-footer-navigation' %}
-                    </div>
-                {% endblock %}
+	{% block footer %}
+		{% cms_slot 'slt-1' %}
 
-                {% block socialLinks %}
-                    {% cms_slot 'slt-footer-social-links' %}
-                {% endblock %}
-            {% endembed %}
-        {% endblock %}
-    </div>
+		{% embed organism('footer') only %}
+			{% block logosInner %}
+				{% cms_slot 'slt-footer-partners' %}
+			{% endblock %}
 
-    {% include atom('overlay-block') only %}
-    {% include atom('touch-checker') only %}
+			{% block navigationInner %}
+				<div class="grid grid--gap">
+					{% cms_slot 'slt-footer-navigation' %}
+				</div>
+			{% endblock %}
 
-    {% block globalComponents %}
-        {% include molecule('action-single-click-enforcer') with {
+			{% block socialLinks %}
+				{% cms_slot 'slt-footer-social-links' %}
+			{% endblock %}
+		{% endembed %}
+	{% endblock %}
+</div>
+
+{% include atom('overlay-block') only %}
+{% include atom('touch-checker') only %}
+
+{% block globalComponents %}
+	{% include molecule('action-single-click-enforcer') with {
             attributes: {
                 'target-selector': '[data-init-single-click]',
             },
         } only %}
 
-        {% include molecule('form-submitter') with {
+	{% include molecule('form-submitter') with {
             attributes: {
                 'trigger-selector': '[data-form-submitter]',
             },
         } only %}
 
-        {% include molecule('viewport-intersection-observer') only %}
+	{% include molecule('viewport-intersection-observer') only %}
 
-        {% include molecule('node-animator') only %}
+	{% include molecule('node-animator') only %}
 
-        {% include molecule('window-load-class-remover') with {
+	{% include molecule('window-load-class-remover') with {
             attributes: {
                 'target-class-name': 'page-layout',
                 'trigger-class-name': 'page-layout--preload',
             },
         } only %}
-    {% endblock %}
-
-    {% block icons %}
-        {% include atom('icon-sprite') only %}
-    {% endblock %}
 {% endblock %}
+
+{% block icons %}
+	{% include atom('icon-sprite') only %}
+{% endblock %}{% endblock %}
