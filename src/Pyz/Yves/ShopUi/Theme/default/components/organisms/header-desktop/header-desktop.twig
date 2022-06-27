@@ -12,8 +12,11 @@
 
 {% block body %}
 
-    <div class="container">
+    <div class="{{ config.name }}__top">
+        {% include organism('navigation-top-desktop-bar') only %}
+    </div>
 
+    <div class="container">
         <div class="{{ config.name }}__row {{ config.name }}__navigation-top grid grid--middle grid--justify">
             <div class="col col--sm-12 col--lg-4 is-hidden-sm-md">
                 {% if data.showSearchForm %}

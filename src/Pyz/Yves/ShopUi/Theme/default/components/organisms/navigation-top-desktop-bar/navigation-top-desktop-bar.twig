@@ -1,0 +1,58 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'navigation-top-desktop-bar',
+    tag: 'div'
+} %}
+
+{% set benefits = [
+    'global.benefit.free_returns',
+    'global.benefit.warranty',
+    'global.benefit.competitive_prices'
+] %}
+
+{% block benefit %}
+	{% include molecule('panel-info-item') with {
+        class: 'grid grid--justify',
+        data: {
+            info: text
+        }
+    } only %}
+{% endblock %}
+
+{% block body %}
+
+	<div class="container grid grid--justify">
+		{% for text in benefits %}
+			{% if not loop.last %}
+				{{ block('benefit') }}
+			{% elseif not is_granted('ROLE_USER') %}
+				{{ block('benefit') }}
+			{% endif %}
+		{% endfor %}
+
+		<div class="col {{ config.name }}__currency-lang">
+			<div class="{{ config.name }}__select">
+				{% widget 'LanguageSwitcherWidget' args [
+					app.request.pathInfo,
+					app.request.queryString,
+					app.request.requestUri
+				] with {
+					data: {
+						additionalClassName: config.name,
+					},
+				} only %}{% endwidget %}
+			</div>
+
+			<div class="{{ config.name }}__select">
+				{%- widget 'CurrencyWidget' with {
+					data: {
+						additionalClassName: config.name,
+					},
+				} only -%}{%- endwidget -%}
+			</div>
+		</div>
+
+	</div>
+
+{% endblock %}
