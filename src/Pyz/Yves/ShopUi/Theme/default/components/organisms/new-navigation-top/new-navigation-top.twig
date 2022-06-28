@@ -1,0 +1,63 @@
+{% extends model('component') %}
+
+{% define config = {
+    name: 'new-navigation-top',
+    tag: 'div'
+} %}
+
+{% set benefits = [
+    'global.benefit.free_returns',
+    'global.benefit.warranty',
+    'global.benefit.competitive_prices'
+] %}
+
+{% block benefit %}
+    {% include molecule('new-panel-info-item') with {
+        class: '',
+        data: {
+            info: text
+        }
+    } only %}
+{% endblock %}
+
+{% block body %}
+
+    {% for text in benefits %}
+        {% if not loop.last %}
+            {{ block('benefit') }}
+        {% elseif not is_granted('ROLE_USER') %}
+            {{ block('benefit') }}
+        {% endif %}
+    {% endfor %}
+
+    <ul class="col grid grid--nowrap grid--stretch navigation-top__actions">
+        
+
+        {% if can('SeePricePermissionPlugin') %}
+            <li class="col {{ config.name }}__action-item">
+                {% widget 'PriceModeSwitcherWidget' only %}{% endwidget %}
+            </li>
+            
+        {% endif %}
+
+        
+       
+            {% widget 'LanguageSwitcherWidget' args [app.request.pathInfo, app.request.queryString, app.request.requestUri] only %}{% endwidget %}
+        
+       
+                {% widget 'CurrencyWidget' only %}{% endwidget %}
+            
+        {% set menuItemCompanyWidget = findWidget('MenuItemCompanyWidget') %}
+        {% set hasCompanyAccess = menuItemCompanyWidget.hasCompanyAccess %}
+
+        {% if is_granted('ROLE_USER') and hasCompanyAccess %}
+            {% widget menuItemCompanyWidget %}
+                {% block template %}
+                    <li class="col {{ config.name }}__action-item">
+                        {% apply spaceless %}{{ parent() }}{% endapply %}
+                    </li>
+                {% endblock %}
+            {% endwidget %}
+        {% endif %}
+    </ul>
+{% endblock %}

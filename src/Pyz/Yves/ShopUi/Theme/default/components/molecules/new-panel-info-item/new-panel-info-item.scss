@@ -1,0 +1,19 @@
+@mixin shop-ui-new-panel-info-item($name: '.new-panel-info-item') {
+    #{$name} {
+        display: none;
+        padding: 0 3.5rem;
+
+        @include helper-breakpoint-media-min($xl) {
+            display: block;
+            font-size: rem(11);
+            font-weight: fw(medium);
+            line-height: rem(40);
+            opacity: 1;
+            text-transform: uppercase;
+        }
+
+        @content;
+    }
+}
+
+@include shop-ui-new-panel-info-item;

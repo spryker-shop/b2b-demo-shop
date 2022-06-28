@@ -1,0 +1,220 @@
+{% extends model('component') %}
+{% import _self as component %}
+
+{% define config = {
+    name: 'new-header',
+    tag: 'new-header',
+} %}
+
+{% define data = {
+    showSearchForm: true,
+    showNavigation: true,
+    user: app['user'],
+    showUserMenu: not (hideUserMenu | default(false)),
+} %}
+
+{% block body %}
+    <div class="{{ component.renderClass(config.name ~ '__top', modifiers) }}">
+        {% include organism('new-navigation-top','ShopUi') with {
+            class: 'grid grid--justify grid--stretch container',
+        } only %}
+    </div>
+
+    <div class="{{ component.renderClass(config.name ~ '__main', modifiers) }}">
+        {% block headerMainContent %}
+            <div class="grid grid--middle container">
+                <div class="col {{ config.name }}__actions">
+                    <div class="grid">
+                        <div class="col {{ config.name }}__actions-item">
+                            <button class="link link--alternative js-page-layout-main__side-drawer-trigger">
+                                {% include atom('icon') with {
+                                    data: {
+                                        name: 'bars',
+                                    },
+                                } only %}
+                            </button>
+                        </div>
+                        <div class="col {{ config.name }}__actions-item header__actions-item--search">
+                            <button class="link link--alternative {{ config.jsName }}__actions-search-trigger">
+                                {% include atom('icon') with {
+                                    modifiers: ['big'],
+                                    data: {
+                                        name: 'search',
+                                    },
+                                } only %}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                
+
+                <div class="col {{ config.name }}__search">
+                     {% include atom('icon') with {
+                            class: config.name ~ '__search-open-icon',
+                            data: {
+                                name: 'search'
+                            }
+                        } only %}
+                </div>
+                {% include molecule('logo') with {
+                    class: 'col ' ~  config.name ~ '__logo',
+                    modifiers: ['main'],
+                } only %}
+
+                {% if is_granted('ROLE_USER') %}
+                    {% set businessOnBehalfStatusWidget = findWidget('BusinessOnBehalfStatusWidget', ['']) %}
+                    {% set isUserOnBehalf = businessOnBehalfStatusWidget.isOnBehalf %}
+
+                    <div class="col col--right {{ config.name }}__user">
+                        <div class="grid grid--gap">
+                            {% if can('SeeCompanyMenuPermissionPlugin') %}
+                                <div class="col">
+                                    <button
+                                        class="link link--alternative js-page-layout-main__company-account-navigation-trigger">
+                                        {% include atom('icon') with {
+                                            modifiers: ['big'],
+                                            data: {
+                                                name: 'office',
+                                            },
+                                        } only %}
+                                    </button>
+                                </div>
+                            {% else %}
+                                {% if isUserOnBehalf %}
+                                    <div class="col">
+                                        <a href="{{ path('company/user/select') }}" class="link link--alternative">
+                                            {% include atom('icon') with {
+                                                modifiers: ['big'],
+                                                data: {
+                                                    name: 'office',
+                                                },
+                                            } only %}
+                                        </a>
+                                    </div>
+                                {% endif %}
+                            {% endif %}
+                            <div class="col">
+                                <button
+                                    class="link link--alternative js-page-layout-main__user-account-navigation-trigger">
+                                    {% include atom('icon') with {
+                                        modifiers: ['big'],
+                                        data: {
+                                            name: 'user',
+                                        },
+                                    } only %}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+
+                <div
+                    class="col col--right {% if is_granted('ROLE_USER') %} {{ config.name }}__user-nav {% else %} {{ config.name }}__login-wrap {% endif %}">
+                    {% if data.showUserMenu %}
+                        {% if is_granted('ROLE_USER') %}
+                            {% include molecule('user-navigation') with {
+                                data: {
+                                    user: data.user,
+                                    cartQuantity: cartQuantity,
+                                },
+                            } only %}
+                        {% else %}
+                            {% block rightIcons %}
+    <ul class="grid grid--middle grid--right">
+        {% if data.showUserMenu %}
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                <li class="{{ config.name }}__item">
+                    <a href="{{ url('wishlist/overview') }}" class="{{ config.name }}__link">
+                        {% include atom('icon') with {
+                            modifiers: ['big'],
+                            data: {
+                                name: 'wishlist'
+                            }
+                        } only %}
+                    </a>
+                </li>
+                <li class="{{ config.name }}__item">
+                    <a href="{{ url('customer/overview') }}" class="{{ config.name }}__link {{ config.jsName }}__trigger">
+                        {% include atom('icon') with {
+                            modifiers: ['big'],
+                            data: {
+                                name: 'user-account'
+                            }
+                        } only %}
+                    </a>
+                </li>
+            {% else %}
+                <li class="{{ config.name }}__item">
+                    <a href="{{ url('login') }}" class="{{ config.name }}__link">
+                        {% include atom('icon') with {
+                            modifiers: ['big'],
+                            data: {
+                                name: 'wishlist'
+                            }
+                        } only %}
+                    </a>
+                </li>
+                <li class="{{ config.name }}__item">
+                    <a href="{{ url('login') }}" class="{{ config.name }}__link {{ config.jsName }}__trigger">
+                        {% include atom('icon') with {
+                            modifiers: ['big'],
+                            data: {
+                                name: 'user-account'
+                            }
+                        } only %}
+                    </a>
+                </li>
+                 <li class="{{ config.name }}__item">
+                    <a href="{{ url('login') }}" class="{{ config.name }}__link {{ config.jsName }}__trigger">
+                        {% include atom('icon') with {
+                            modifiers: ['big'],
+                            data: {
+                                name: 'cart'
+                            }
+                        } only %}
+                    </a>
+                </li>
+            {% endif %}
+        {% endif %}
+
+        
+
+        
+    </ul>
+{% endblock %}
+                        {% endif %}
+                    {% endif %}
+                </div>
+            </div>
+        {% endblock %}
+    </div>
+
+    {% if data.showNavigation %}
+        <div class="{{ config.name }}__navigation">
+            <div class="container  grid grid--middle grid--center">
+                {% block navigation %}
+                    {% widget 'NavigationWidget' args ['MAIN_NAVIGATION', 'navigation-main'] only %}{% endwidget %}
+                {% endblock %}
+            </div>
+        </div>
+    {% endif %}
+
+    {% set triggerClassList = [config.jsName ~ '__actions-search-trigger', 'js-overlay-block'] %}
+
+    {% for triggerClass in triggerClassList %}
+        {% include molecule('toggler-click') with {
+            attributes: {
+                'trigger-class-name': triggerClass,
+                'target-class-name': config.jsName ~ '__search-form',
+                'class-to-toggle': 'search-form--active',
+            },
+        } only %}
+    {% endfor %}
+
+    {% include molecule('overlay-enabler') with {
+        attributes: {
+            'trigger-class-name': config.jsName ~ '__actions-search-trigger',
+        },
+    } only %}
+{% endblock %}

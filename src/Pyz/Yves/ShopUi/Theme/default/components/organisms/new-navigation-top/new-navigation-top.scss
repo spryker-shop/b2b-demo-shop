@@ -1,0 +1,78 @@
+@mixin shop-ui-new-navigation-top($name: '.new-navigation-top') {
+    #{$name} {
+        white-space: nowrap;
+
+        &__actions {
+            @include helper-breakpoint-media-min($xl) {
+                max-width: calc(100% - 350px);
+            }
+        }
+
+        &__action-item {
+            border-right: solid rem(1) $setting-color-gray-2;
+            position: relative;
+            z-index: $setting-zi-element + 4;
+
+            &:hover .list--company-user {
+                transform: scale(1);
+            }
+
+            &--tel {
+                font-size: rem(12);
+                font-weight: fw(bold);
+                line-height: rem(40);
+                padding-right: rem(31);
+            }
+        }
+
+        &__company {
+            @include helper-effect-transition(color);
+            font-size: rem(11);
+            font-weight: fw(bold);
+            letter-spacing: rem(0.6);
+            line-height: rem(40);
+            color: $setting-color-gray-4;
+            padding: 0 rem(30) 0 rem(18);
+            height: 100%;
+            text-transform: uppercase;
+            white-space: nowrap;
+            max-width: rem(150);
+            overflow: hidden;
+            text-overflow: ellipsis;
+            position: relative;
+
+            @include helper-breakpoint-media-min($xl) {
+                max-width: rem(365);
+            }
+
+            &:hover {
+                color: helper-color-light($setting-color-gray-4, 25);
+            }
+
+            .is-touch & {
+                pointer-events: none;
+            }
+
+            &--no-menu {
+                cursor: default;
+
+                &:hover {
+                    color: $setting-color-gray-4;
+                }
+            }
+        }
+
+        &__company-icon {
+            width: rem(7);
+            height: rem(4);
+            margin: 0 rem(-5) 0 rem(5);
+            position: absolute;
+            top: calc(50% - #{rem(2)});
+            right: rem(17);
+        }
+
+        @content;
+    }
+}
+
+@include shop-ui-new-navigation-top();
