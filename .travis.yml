@@ -104,6 +104,7 @@ jobs:
       os: linux
       dist: bionic
       script:
+        - vendor/bin/console transfer:generate
         - vendor/bin/console security:check
 
     - name: Upgradability check
