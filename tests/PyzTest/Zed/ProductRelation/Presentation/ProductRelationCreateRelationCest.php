@@ -24,9 +24,6 @@ use Spryker\Shared\ProductRelation\ProductRelationTypes;
 class ProductRelationCreateRelationCest
 {
     /**
-     * @skip
-     *
-     * @TODO Fix failing test for prefer-mid
      *
      * @param \PyzTest\Zed\ProductRelation\ProductRelationPresentationTester $i
      *
@@ -58,16 +55,7 @@ class ProductRelationCreateRelationCest
         );
 
         $i->clickSaveButton();
-        $i->waitForProcessingIsDone();
+        $i->waitForText(ProductRelationCreatePage::MESSAGE_SUCCESS_PRODUCT_RELATION_CREATED);
         $i->see(ProductRelationCreatePage::MESSAGE_SUCCESS_PRODUCT_RELATION_CREATED);
-
-        // TODO re-enable
-        //$i->runCollectors();
-        //$i->wait(5);
-
-        //$i->amYves();
-        //$i->amOnPage('/en/samsung-bundle-214');
-        //$i->canSee('Similar products');
-        //$i->canSee('HP EliteDesk 800 G2');
     }
 }
