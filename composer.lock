@@ -20051,24 +20051,26 @@
         },
         {
             "name": "spryker/comment",
-            "version": "1.1.0",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/comment.git",
-                "reference": "14619c2b6a1c3bfb8143c4847bf897ebee9d5016"
+                "reference": "b23de95a9defe8caf11698f601877aabce38ce69"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/comment/zipball/14619c2b6a1c3bfb8143c4847bf897ebee9d5016",
-                "reference": "14619c2b6a1c3bfb8143c4847bf897ebee9d5016",
+                "url": "https://api.github.com/repos/spryker/comment/zipball/b23de95a9defe8caf11698f601877aabce38ce69",
+                "reference": "b23de95a9defe8caf11698f601877aabce38ce69",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.3",
+                "php": ">=7.4",
+                "spryker/comment-extension": "^1.0.0",
                 "spryker/customer": "^7.0.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/propel-orm": "^1.0.0",
                 "spryker/quote-extension": "^1.7.0",
+                "spryker/transfer": "^3.25.0",
                 "spryker/uuid-behavior": "^1.0.0",
                 "spryker/zed-request": "^3.0.0"
             },
@@ -20096,9 +20098,9 @@
             ],
             "description": "Comment module",
             "support": {
-                "source": "https://github.com/spryker/comment/tree/1.1.0"
+                "source": "https://github.com/spryker/comment/tree/1.2.0"
             },
-            "time": "2021-03-31T09:39:33+00:00"
+            "time": "2022-06-21T09:05:42+00:00"
         },
         {
             "name": "spryker/comment-data-import",
@@ -20149,6 +20151,47 @@
                 "source": "https://github.com/spryker/comment-data-import/tree/master"
             },
             "time": "2019-07-05T11:07:22+00:00"
+        },
+        {
+            "name": "spryker/comment-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/comment-extension.git",
+                "reference": "7fd05b251c3e4c87d5f033b37a41c0c47df72a81"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/comment-extension/zipball/7fd05b251c3e4c87d5f033b37a41c0c47df72a81",
+                "reference": "7fd05b251c3e4c87d5f033b37a41c0c47df72a81",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.4"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "CommentExtension module",
+            "support": {
+                "source": "https://github.com/spryker/comment-extension/tree/1.0.0"
+            },
+            "time": "2022-06-21T09:05:42+00:00"
         },
         {
             "name": "spryker/comment-sales-connector",
@@ -39486,21 +39529,22 @@
         },
         {
             "name": "spryker/quote",
-            "version": "2.15.1",
+            "version": "2.16.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/quote.git",
-                "reference": "802ad41f8c51ad6ed7376c674b09e286178120a0"
+                "reference": "12ae29173f8f9496e20ad612389468c0e720206d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/quote/zipball/802ad41f8c51ad6ed7376c674b09e286178120a0",
-                "reference": "802ad41f8c51ad6ed7376c674b09e286178120a0",
+                "url": "https://api.github.com/repos/spryker/quote/zipball/12ae29173f8f9496e20ad612389468c0e720206d",
+                "reference": "12ae29173f8f9496e20ad612389468c0e720206d",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.3",
+                "php": ">=7.4",
                 "spryker/agent-extension": "^1.0.0",
+                "spryker/comment-extension": "^1.0.0",
                 "spryker/currency": "^3.4.0",
                 "spryker/customer": "^6.0.0 || ^7.0.0",
                 "spryker/kernel": "^3.30.0",
@@ -39509,6 +39553,7 @@
                 "spryker/session": "^3.0.0 || ^4.0.0",
                 "spryker/store": "^1.11.0",
                 "spryker/symfony": "^3.0.0",
+                "spryker/transfer": "^3.25.0",
                 "spryker/util-encoding": "^2.0.0",
                 "spryker/zed-request": "^3.0.0"
             },
@@ -39535,9 +39580,9 @@
             ],
             "description": "Quote module",
             "support": {
-                "source": "https://github.com/spryker/quote/tree/2.15.1"
+                "source": "https://github.com/spryker/quote/tree/2.16.0"
             },
-            "time": "2021-03-30T12:43:41+00:00"
+            "time": "2022-06-21T09:05:42+00:00"
         },
         {
             "name": "spryker/quote-approval",
@@ -43564,22 +43609,23 @@
         },
         {
             "name": "spryker/shared-cart",
-            "version": "1.18.1",
+            "version": "1.19.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/shared-cart.git",
-                "reference": "666f767fe8d7532b09df31e9a5a27b4cad8da922"
+                "reference": "0eea4dc08d49c07729b8e6248828523e0ddb6486"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/shared-cart/zipball/666f767fe8d7532b09df31e9a5a27b4cad8da922",
-                "reference": "666f767fe8d7532b09df31e9a5a27b4cad8da922",
+                "url": "https://api.github.com/repos/spryker/shared-cart/zipball/0eea4dc08d49c07729b8e6248828523e0ddb6486",
+                "reference": "0eea4dc08d49c07729b8e6248828523e0ddb6486",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.3",
+                "php": ">=7.4",
                 "spryker/cart": "^5.1.0 || ^7.0.0",
                 "spryker/carts-rest-api-extension": "^1.3.0",
+                "spryker/comment-extension": "^1.0.0",
                 "spryker/company-user": "^1.0.0 || ^2.0.0",
                 "spryker/company-user-extension": "^1.1.0",
                 "spryker/customer": "^7.0.0",
@@ -43596,6 +43642,7 @@
                 "spryker/quote-extension": "^1.7.0",
                 "spryker/resource-share-extension": "^1.0.0",
                 "spryker/store": "^1.0.0",
+                "spryker/transfer": "^3.25.0",
                 "spryker/zed-request": "^3.0.0"
             },
             "require-dev": {
@@ -43628,9 +43675,9 @@
             ],
             "description": "SharedCart module",
             "support": {
-                "source": "https://github.com/spryker/shared-cart/tree/1.18.1"
+                "source": "https://github.com/spryker/shared-cart/tree/1.19.0"
             },
-            "time": "2021-04-06T09:44:43+00:00"
+            "time": "2022-06-21T09:05:42+00:00"
         },
         {
             "name": "spryker/shared-cart-data-import",
