@@ -49,7 +49,7 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
     /**
      * @return \Spryker\Client\Catalog\Dependency\Plugin\FacetConfigTransferBuilderPluginInterface[]
      */
-    protected function getFacetConfigTransferBuilderPlugins()
+    protected function getFacetConfigTransferBuilderPlugins(): array
     {
         return [
             new CategoryFacetConfigTransferBuilderPlugin(),
@@ -61,7 +61,7 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
     /**
      * @return \Spryker\Client\Catalog\Dependency\Plugin\SortConfigTransferBuilderPluginInterface[]
      */
-    protected function getSortConfigTransferBuilderPlugins()
+    protected function getSortConfigTransferBuilderPlugins(): array
     {
         return [
             new RatingSortConfigTransferBuilderPlugin(),
@@ -83,7 +83,7 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
     /**
      * @return \Spryker\Client\Search\Dependency\Plugin\QueryExpanderPluginInterface[]|\Spryker\Client\SearchExtension\Dependency\Plugin\QueryExpanderPluginInterface[]
      */
-    protected function createCatalogSearchQueryExpanderPlugins()
+    protected function createCatalogSearchQueryExpanderPlugins(): array
     {
         return [
             new StoreQueryExpanderPlugin(),
@@ -124,7 +124,7 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
     /**
      * @return \Spryker\Client\Search\Dependency\Plugin\QueryExpanderPluginInterface[]|\Spryker\Client\SearchExtension\Dependency\Plugin\QueryExpanderPluginInterface[]
      */
-    protected function createSuggestionQueryExpanderPlugins()
+    protected function createSuggestionQueryExpanderPlugins(): array
     {
         return [
             new StoreQueryExpanderPlugin(),
