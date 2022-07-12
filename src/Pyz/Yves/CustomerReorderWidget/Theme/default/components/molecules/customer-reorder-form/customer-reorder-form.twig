@@ -1,3 +1,22 @@
 {% extends molecule('customer-reorder-form', '@SprykerShop:CustomerReorderWidget') %}
 
-{% block formActions %}{% endblock %}
+{% define data = {
+    order: required,
+    idSalesOrder: '',
+} %}
+
+{% block body %}
+    {% widget 'CustomerReorderItemsFormWidget' args [data.order, config] with {
+        embed: {
+            formContent: block('formContent'),
+            jsName: config.jsName,
+        },
+    } only %}
+        {% block embeddedData %}
+            <input type="hidden" name="id" value="{{ data.order.idSalesOrder }}">
+            {{ embed.formContent | raw }}
+
+            {% block formActions %}{% endblock %}
+        {% endblock %}
+    {% endwidget %}
+{% endblock %}
