@@ -13,6 +13,78 @@ const configurationProdMode = async appSettings => mergeWithStrategy(await getCo
     webpack: {
         mode: 'production',
         devtool: false,
+        plugins: [
+            new CompressionPlugin({
+                filename: '[path].gz[query]',
+            }),
+
+            new BrotliPlugin({
+                asset: '[path].br[query]',
+                test: /\.js$|\.css$|\.svg$|\.html$/,
+                threshold: 10240,
+                minRatio: 0.8
+            })
+        ],
+
+        plugins: [
+
+            new CompressionPlugin({
+                filename: '[path].gz[query]',
+            }),
+
+            new BrotliPlugin({
+                asset: '[path].br[query]',
+                test: /\.js$|\.css$|\.svg$|\.html$/,
+                threshold: 10240,
+                minRatio: 0.8
+            })
+
+        ],
+
+        plugins: [
+
+            new CompressionPlugin({
+                filename: '[path].gz[query]',
+            }),
+
+            new BrotliPlugin({
+                asset: '[path].br[query]',
+                test: /\.js$|\.css$|\.svg$|\.html$/,
+                threshold: 10240,
+                minRatio: 0.8
+            })
+
+        ],
+
+        plugins: [
+
+            new CompressionPlugin({
+                filename: '[path].gz[query]',
+            }),
+
+            new BrotliPlugin({
+                asset: '[path].br[query]',
+                test: /\.js$|\.css$|\.svg$|\.html$/,
+                threshold: 10240,
+                minRatio: 0.8
+            })
+
+        ],
+
+        plugins: [
+
+            new CompressionPlugin({
+                filename: '[path].gz[query]',
+            }),
+
+            new BrotliPlugin({
+                asset: '[path].br[query]',
+                test: /\.js$|\.css$|\.svg$|\.html$/,
+                threshold: 10240,
+                minRatio: 0.8
+            })
+
+        ],
 
         plugins: [
 
