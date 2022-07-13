@@ -19,6 +19,7 @@ class ProductRelationCreatePage
 
     public const PRODUCT_RELATION_PRODUCT_2_SKU = 'B0001';
 
-    public const MESSAGE_SUCCESS_PRODUCT_RELATION_CREATED = 'Product relation successfully created';
     public const MESSAGE_SUCCESS_PRODUCT_RELATION_ACTIVATED = 'Relation successfully activated.';
+
+    public const EDIT_PRODUCT_RELATION_TEXT = 'Edit Product Relation:';
 }
