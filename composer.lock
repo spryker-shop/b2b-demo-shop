@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e707737a6fb9af6b802497953fa5da2b",
+    "content-hash": "6cd92590b4f2e50857c29ea7959d71f0",
     "packages": [
         {
             "name": "async-aws/core",
@@ -6085,16 +6085,16 @@
         },
         {
             "name": "spryker-feature/promotions-discounts",
-            "version": "202204.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-feature/promotions-discounts.git",
-                "reference": "3624b8e227240463b3db4d89d8f4968e497390fa"
+                "reference": "39dee06a9a75e896a429b1c0165bdc71277e149a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-feature/promotions-discounts/zipball/3624b8e227240463b3db4d89d8f4968e497390fa",
-                "reference": "3624b8e227240463b3db4d89d8f4968e497390fa",
+                "url": "https://api.github.com/repos/spryker-feature/promotions-discounts/zipball/39dee06a9a75e896a429b1c0165bdc71277e149a",
+                "reference": "39dee06a9a75e896a429b1c0165bdc71277e149a",
                 "shasum": ""
             },
             "require": {
@@ -6106,6 +6106,7 @@
                 "spryker/discount": "^9.25.0",
                 "spryker/discount-promotion": "^4.6.0"
             },
+            "default-branch": true,
             "type": "metapackage",
             "extra": {
                 "branch-alias": {
@@ -6118,9 +6119,9 @@
             ],
             "description": "Promotions & Discounts [feature]",
             "support": {
-                "source": "https://github.com/spryker-feature/promotions-discounts/tree/202204.0"
+                "source": "https://github.com/spryker-feature/promotions-discounts/tree/master"
             },
-            "time": "2022-04-29T14:07:59+00:00"
+            "time": "2022-06-24T15:30:02+00:00"
         },
         {
             "name": "spryker-feature/quick-add-to-cart",
@@ -25760,16 +25761,16 @@
         },
         {
             "name": "spryker/discount-promotion",
-            "version": "4.6.0",
+            "version": "4.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/discount-promotion.git",
-                "reference": "d9db387a1d33d8b5a27a7e3fbcc2457a02e17c11"
+                "reference": "d0bc8ec30cd75a72e0d44e7fb814bee152871a37"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/discount-promotion/zipball/d9db387a1d33d8b5a27a7e3fbcc2457a02e17c11",
-                "reference": "d9db387a1d33d8b5a27a7e3fbcc2457a02e17c11",
+                "url": "https://api.github.com/repos/spryker/discount-promotion/zipball/d0bc8ec30cd75a72e0d44e7fb814bee152871a37",
+                "reference": "d0bc8ec30cd75a72e0d44e7fb814bee152871a37",
                 "shasum": ""
             },
             "require": {
@@ -25777,7 +25778,7 @@
                 "spryker/availability": "^9.0.0",
                 "spryker/cart-extension": "^1.5.0 || ^2.1.0 || ^4.0.0",
                 "spryker/discount": "^7.2.4 || ^9.0.0",
-                "spryker/discount-extension": "^1.1.0",
+                "spryker/discount-extension": "^1.3.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/persistent-cart-extension": "^1.0.0",
                 "spryker/product": "^5.10.0 || ^6.19.0",
@@ -25818,9 +25819,9 @@
             ],
             "description": "DiscountPromotion module",
             "support": {
-                "source": "https://github.com/spryker/discount-promotion/tree/4.6.0"
+                "source": "https://github.com/spryker/discount-promotion/tree/4.8.0"
             },
-            "time": "2022-02-16T14:53:18+00:00"
+            "time": "2022-07-07T09:54:53+00:00"
         },
         {
             "name": "spryker/discount-promotions-rest-api",
@@ -60860,11 +60861,18 @@
             "version": "9999999-dev",
             "alias": "202210.0",
             "alias_normalized": "202210.0"
+        },
+        {
+            "package": "spryker-feature/promotions-discounts",
+            "version": "9999999-dev",
+            "alias": "202210.0",
+            "alias_normalized": "202210.0"
         }
     ],
     "minimum-stability": "dev",
     "stability-flags": {
         "spryker-feature/customer-account-management": 20,
+        "spryker-feature/promotions-discounts": 20,
         "spryker-sdk/integrator": 20,
         "spryker/docker-chromedriver": 20
     },
