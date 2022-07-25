@@ -33,6 +33,10 @@
                 </a>
             {% endblock %}
 
+            {% block sku %}
+                <meta class="{{ config.jsName }}__sku" itemprop="sku" content="{{ data.metaSku }}">
+            {% endblock %}
+
             {% block category %}
                 {% if data.category is not empty %}
                     <span class="{{ component.renderClass(config.name ~ '__category', modifiers) }}">{{ data.category }}</span>

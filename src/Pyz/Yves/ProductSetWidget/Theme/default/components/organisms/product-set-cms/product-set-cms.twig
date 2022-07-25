@@ -13,8 +13,7 @@
         "slidesToShow": 2,
         "slidesToScroll": 1,
         "dots": false,
-        "infinite": true,
-        "loop": true,
+        "infinite": false,
         "variableWidth": true,
         "responsive": [{
             "breakpoint": 768,
@@ -105,6 +104,7 @@
                                                     },
                                                     embed: {
                                                         idProductAbstract: data.idProductAbstract,
+                                                        isAvailable: data.product.available,
                                                     },
                                                 } only %}
                                                     {% block variant %}
@@ -115,9 +115,9 @@
                                                                     name: name,
                                                                     formName: 'attributes[' ~ embed.idProductAbstract ~ '][' ~ name ~ ']',
                                                                     values: values,
-                                                                    selectedValue: selectedValue,
+                                                                    selectedValue: data.selectedAttributes[name] ?? selectedValue,
                                                                     label: ('product.attribute.' ~ name) | trans,
-                                                                    isAvailable: isAvailable,
+                                                                    isAvailable: embed.isAvailable ?? isAvailable,
                                                                     selectModifiers: ['small'],
                                                                     selectTheme: 'small',
                                                                     selectPlaceholder: 'global.select.placeholder.value',
