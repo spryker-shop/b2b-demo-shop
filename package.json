@@ -8,6 +8,10 @@
         "email": "info@spryker.com",
         "url": "https://spryker.com/"
     },
+    "workspaces": [
+        "vendor/spryker/*",
+        "vendor/spryker/*/assets/Zed"
+    ],
     "scripts": {
         "yves": "run-s \"yves:development:* -- {@}\" --",
         "yves:development:esm": "node ./frontend/build development -m module:esm",
