@@ -33,7 +33,7 @@ $product-review-rating-selector-icon-size-big: 24px;
                 &:nth-child(odd):not(:first-child) {
                     margin-right: 1px;
                 }
-                width: $product-review-rating-selector-icon-size / 2;
+                width: calc(#{$product-review-rating-selector-icon-size} / 2);
             }
 
             #{$name}__star {
@@ -45,7 +45,7 @@ $product-review-rating-selector-icon-size-big: 24px;
                 width: $product-review-rating-selector-icon-size;
 
                 &--half-left {
-                    left: $product-review-rating-selector-icon-size / 2;
+                    left: calc(#{$product-review-rating-selector-icon-size} / 2);
                 }
 
                 &--half-right {
@@ -99,13 +99,13 @@ $product-review-rating-selector-icon-size-big: 24px;
                 height: $product-review-rating-selector-icon-size-pdp;
 
                 &--half-left {
-                    left: $product-review-rating-selector-icon-size-pdp / 2;
+                    left: calc(#{$product-review-rating-selector-icon-size-pdp} / 2);
                 }
             }
 
             #{$name}__step {
                 &--half {
-                    width: $product-review-rating-selector-icon-size-pdp / 2;
+                    width: calc(#{$product-review-rating-selector-icon-size-pdp} / 2);
                 }
 
                 > #{$name}__star {
