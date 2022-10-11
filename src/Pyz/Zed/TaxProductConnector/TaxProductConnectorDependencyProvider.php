@@ -18,7 +18,7 @@ class TaxProductConnectorDependencyProvider extends SprykerTaxProductConnectorDe
      *
      * @return array<\Spryker\Zed\TaxProductConnectorExtension\Communication\Dependency\Plugin\ShippingAddressValidatorPluginInterface>
      */
-    protected function getShippingAddressValidatorPlugins() : array
+    protected function getShippingAddressValidatorPlugins(): array
     {
         return [
             new CustomerAddressShippingAddressValidatorPlugin(),
