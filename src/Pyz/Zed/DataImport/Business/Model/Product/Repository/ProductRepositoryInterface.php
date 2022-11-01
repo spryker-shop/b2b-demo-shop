@@ -18,14 +18,14 @@ interface ProductRepositoryInterface
      *
      * @return int
      */
-    public function getIdProductByConcreteSku($sku);
+    public function getIdProductByConcreteSku($sku): int;
 
     /**
      * @param string $sku
      *
      * @return string
      */
-    public function getAbstractSkuByConcreteSku($sku);
+    public function getAbstractSkuByConcreteSku($sku): string;
 
     /**
      * @return string[]
@@ -42,7 +42,7 @@ interface ProductRepositoryInterface
      *
      * @return int
      */
-    public function getIdProductAbstractByAbstractSku($sku);
+    public function getIdProductAbstractByAbstractSku($sku): int;
 
     /**
      * @return \Propel\Runtime\Collection\ArrayCollection
@@ -54,7 +54,7 @@ interface ProductRepositoryInterface
      *
      * @return void
      */
-    public function addProductAbstract(SpyProductAbstract $productAbstractEntity);
+    public function addProductAbstract(SpyProductAbstract $productAbstractEntity): void;
 
     /**
      * @param \Orm\Zed\Product\Persistence\SpyProduct $productEntity
@@ -62,7 +62,7 @@ interface ProductRepositoryInterface
      *
      * @return void
      */
-    public function addProductConcrete(SpyProduct $productEntity, $abstractSku = null);
+    public function addProductConcrete(SpyProduct $productEntity, $abstractSku = null): void;
 
     /**
      * @return void
