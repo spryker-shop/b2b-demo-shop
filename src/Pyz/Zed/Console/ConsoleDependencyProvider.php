@@ -64,6 +64,9 @@ use Spryker\Zed\Maintenance\Communication\Console\MaintenanceDisableConsole;
 use Spryker\Zed\Maintenance\Communication\Console\MaintenanceEnableConsole;
 use Spryker\Zed\MessageBroker\Communication\Plugin\Console\MessageBrokerDebugConsole;
 use Spryker\Zed\MessageBroker\Communication\Plugin\Console\MessageBrokerWorkerConsole;
+use Spryker\Zed\MessageBrokerAws\Communication\Console\MessageBrokerAwsSnsTopicsCreatorConsole;
+use Spryker\Zed\MessageBrokerAws\Communication\Console\MessageBrokerAwsSqsQueuesCreatorConsole;
+use Spryker\Zed\MessageBrokerAws\Communication\Console\MessageBrokerSqsToSnsSubscriberConsole;
 use Spryker\Zed\Monitoring\Communication\Plugin\Console\MonitoringConsolePlugin;
 use Spryker\Zed\MultiCartDataImport\MultiCartDataImportConfig;
 use Spryker\Zed\Oauth\Communication\Console\OauthTokenConsole;
@@ -415,6 +418,9 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             }
 
             $commands[] = new MessageBrokerDebugConsole();
+            $commands[] = new MessageBrokerAwsSqsQueuesCreatorConsole();
+            $commands[] = new MessageBrokerAwsSnsTopicsCreatorConsole();
+            $commands[] = new MessageBrokerSqsToSnsSubscriberConsole();
         }
 
         return $commands;
