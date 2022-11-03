@@ -37,6 +37,9 @@ use Spryker\Zed\ProductPageSearch\ProductPageSearchDependencyProvider as Spryker
 use Spryker\Zed\ProductReviewSearch\Communication\Plugin\PageDataExpander\ProductReviewDataLoaderExpanderPlugin;
 use Spryker\Zed\ProductReviewSearch\Communication\Plugin\PageDataLoader\ProductReviewPageDataLoaderPlugin;
 use Spryker\Zed\ProductReviewSearch\Communication\Plugin\ProductPageSearch\Elasticsearch\ProductReviewMapExpanderPlugin;
+use Spryker\Zed\SalesProductConnector\Communication\Plugin\ProductPageSearch\ProductListWasBoughtByIntervalPlugin;
+use Spryker\Zed\SalesProductConnector\Communication\Plugin\ProductPageSearch\ProductPopularityMapExpanderPlugin;
+use Spryker\Zed\SalesProductConnector\Communication\Plugin\ProductPageSearch\ProductPopularityPageDataLoaderPlugin;
 
 class ProductPageSearchDependencyProvider extends SprykerProductPageSearchDependencyProvider
 {
@@ -74,6 +77,7 @@ class ProductPageSearchDependencyProvider extends SprykerProductPageSearchDepend
             new ProductLabelDataLoaderPlugin(),
             new ProductReviewPageDataLoaderPlugin(),
             new ProductListDataLoaderPlugin(),
+            new ProductPopularityPageDataLoaderPlugin(),
         ];
     }
 
@@ -111,6 +115,7 @@ class ProductPageSearchDependencyProvider extends SprykerProductPageSearchDepend
             new ProductLabelMapExpanderPlugin(),
             new ProductReviewMapExpanderPlugin(),
             new ProductListMapExpanderPlugin(),
+            new ProductPopularityMapExpanderPlugin(),
         ];
     }
 
@@ -123,6 +128,15 @@ class ProductPageSearchDependencyProvider extends SprykerProductPageSearchDepend
             new ProductMeasurementUnitProductAbstractAddToCartPlugin(),
             new ProductPackagingUnitProductAbstractAddToCartPlugin(),
             new AvailabilityProductAbstractAddToCartPlugin(),
+        ];
+    }
+    /**
+     * @return array<\Spryker\Zed\ProductPageSearchExtension\Dependency\Plugin\ProductAbstractCollectionRefreshPluginInterface>
+     */
+    protected function getProductPageRefreshPlugins() : array
+    {
+        return [
+            new ProductListWasBoughtByIntervalPlugin(),
         ];
     }
 }
