@@ -9,6 +9,7 @@ namespace Pyz\Zed\Cart;
 
 use Spryker\Zed\AvailabilityCartConnector\Communication\Plugin\Cart\CheckAvailabilityPlugin;
 use Spryker\Zed\Cart\CartDependencyProvider as SprykerCartDependencyProvider;
+use Spryker\Zed\Cart\Communication\Plugin\Cart\GroupKeyWithCartIdentifierItemExpanderPlugin;
 use Spryker\Zed\Cart\Communication\Plugin\CleanUpItemsPreReloadPlugin;
 use Spryker\Zed\Cart\Communication\Plugin\SkuGroupKeyPlugin;
 use Spryker\Zed\ConfigurableBundle\Communication\Plugin\Cart\CartConfigurableBundlePreReloadPlugin;
@@ -22,6 +23,7 @@ use Spryker\Zed\Discount\Communication\Plugin\Cart\DiscountQuoteChangeObserverPl
 use Spryker\Zed\DiscountPromotion\Communication\Plugin\Cart\CartGroupPromotionItems;
 use Spryker\Zed\DiscountPromotion\Communication\Plugin\Cart\DiscountPromotionCartPreCheckPlugin;
 use Spryker\Zed\Kernel\Container;
+use Spryker\Zed\Merchant\Communication\Plugin\Cart\MerchantCartPreCheckPlugin;
 use Spryker\Zed\PaymentCartConnector\Communication\Plugin\Cart\RemovePaymentCartPostSavePlugin;
 use Spryker\Zed\PriceCartConnector\Communication\Plugin\Cart\SanitizeSourcePricesQuoteLockPreResetPlugin;
 use Spryker\Zed\PriceCartConnector\Communication\Plugin\CartItemPricePlugin;
@@ -108,6 +110,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new ConfiguredBundleGroupKeyItemExpanderPlugin(),
             new ProductUrlItemExpanderPlugin(),
             new SanitizeCartShipmentItemExpanderPlugin(),
+            new GroupKeyWithCartIdentifierItemExpanderPlugin(),
         ];
     }
 
@@ -149,6 +152,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new ConfiguredBundleTemplateSlotCombinationPreCheckPlugin(),
             new ProductMeasurementSalesUnitCartPreCheckPlugin(),
             new DiscountPromotionCartPreCheckPlugin(),
+            new MerchantCartPreCheckPlugin(),
         ];
     }
 
