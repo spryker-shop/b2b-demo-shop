@@ -146,7 +146,7 @@ class SynchronizationDependencyProvider extends SprykerSynchronizationDependency
     /**
      * @return \Spryker\Zed\SynchronizationExtension\Dependency\Plugin\SynchronizationDataQueryExpanderStrategyPluginInterface
      */
-    protected function getSynchronizationDataQueryExpanderStrategyPlugin(): SynchronizationDataQueryExpanderStrategyPluginInterface
+    protected function getSynchronizationDataQueryExpanderStrategyPlugin(): SynchronizationDataQueryExpanderWhereBetweenStrategyPlugin
     {
         return new SynchronizationDataQueryExpanderWhereBetweenStrategyPlugin();
     }
