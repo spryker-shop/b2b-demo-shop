@@ -23,7 +23,7 @@ use Spryker\Shared\Queue\QueueConfig;
 use Spryker\Shared\Queue\QueueConstants;
 use Spryker\Shared\Router\RouterConstants;
 use Spryker\Shared\Session\SessionConstants;
-use Spryker\Shared\StoreReference\StoreReferenceConstants;
+use Spryker\Shared\Store\StoreConstants;
 use Spryker\Shared\Testify\TestifyConstants;
 use Spryker\Shared\WebProfiler\WebProfilerConstants;
 use Spryker\Shared\ZedRequest\ZedRequestConstants;
@@ -162,7 +162,7 @@ $config[AppCatalogGuiConstants::OAUTH_PROVIDER_NAME] = OauthDummyConfig::PROVIDE
 // ----------------------------------------------------------------------------
 // ------------------------------ AOP -----------------------------------------
 // ----------------------------------------------------------------------------
-$config[StoreReferenceConstants::STORE_NAME_REFERENCE_MAP] = [
+$config[StoreConstants::STORE_NAME_REFERENCE_MAP] = [
     'DE' => 'dev-DE',
     'AT' => 'dev-AT',
     'US' => 'dev-US',
