@@ -86,6 +86,21 @@ const configurationProdMode = async appSettings => mergeWithStrategy(await getCo
 
         ],
 
+        plugins: [
+
+            new CompressionPlugin({
+                filename: '[path].gz[query]',
+            }),
+
+            new BrotliPlugin({
+                asset: '[path].br[query]',
+                test: /\.js$|\.css$|\.svg$|\.html$/,
+                threshold: 10240,
+                minRatio: 0.8
+            })
+
+        ],
+
         optimization: {
             minimizer: [
                 new TerserPlugin({

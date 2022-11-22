@@ -2,10 +2,6 @@
 
 @mixin shop-ui-toggler-radio($name: '.toggler-radio') {
     @include shop-ui-radio($name) {
-        @include helper-media-ie() {
-            display: block;
-        }
-
         &__label {
             color: $setting-color-gray-2;
 

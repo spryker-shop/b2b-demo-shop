@@ -7,7 +7,6 @@
 
 namespace PyzTest\Zed\NavigationGui\Presentation;
 
-use Codeception\Scenario;
 use Faker\Factory;
 use PyzTest\Zed\NavigationGui\NavigationGuiPresentationTester;
 use PyzTest\Zed\NavigationGui\PageObject\NavigationCreatePage;
@@ -28,14 +27,17 @@ use PyzTest\Zed\NavigationGui\PageObject\NavigationUpdatePage;
 class NavigationCRUDCest
 {
     /**
+     * @var int
+     */
+    public const ELEMENT_TIMEOUT = 5;
+
+    /**
      * @param \PyzTest\Zed\NavigationGui\NavigationGuiPresentationTester $i
-     * @param \Codeception\Scenario $scenario
      *
      * @return void
      */
-    public function testICanCreateReadUpdateAndDeleteNavigation(NavigationGuiPresentationTester $i, Scenario $scenario): void
+    public function testICanCreateReadUpdateAndDeleteNavigation(NavigationGuiPresentationTester $i): void
     {
-        $i->amLoggedInUser();
         $i->amOnPage(NavigationCreatePage::URL);
 
         $idNavigation = $this->create($i);
@@ -44,7 +46,8 @@ class NavigationCRUDCest
 
         $this->update($i, $idNavigation);
 
-        $i->wait(1);
+        # Somehow $this->update() influences on this $this->delete() so the test becomes flickery.
+        $i->wait(5);
 
         $this->delete($i, $idNavigation);
     }
@@ -79,7 +82,7 @@ class NavigationCRUDCest
         $i->wantTo('See navigation list.');
         $i->expect('Navigation table is shown and not empty');
 
-        $i->waitForElementVisible(NavigationPage::PAGE_LIST_TABLE_XPATH, 5);
+        $i->waitForElementVisible(NavigationPage::PAGE_LIST_TABLE_XPATH, static::ELEMENT_TIMEOUT);
     }
 
     /**
@@ -107,7 +110,7 @@ class NavigationCRUDCest
      *
      * @return void
      */
-    protected function delete(NavigationGuiPresentationTester $i, int $idNavigation)
+    protected function delete(NavigationGuiPresentationTester $i, int $idNavigation): void
     {
         $i->wantTo('Delete navigation.');
         $i->expect('Navigation is removed from Zed.');
