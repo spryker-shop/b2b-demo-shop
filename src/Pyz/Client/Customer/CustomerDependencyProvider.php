@@ -66,7 +66,7 @@ class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
     /**
      * @return \Spryker\Client\CustomerExtension\Dependency\Plugin\AccessTokenAuthenticationHandlerPluginInterface
      */
-    protected function getAccessTokenAuthenticationHandlerPlugin(): AccessTokenAuthenticationHandlerPluginInterface
+    protected function getAccessTokenAuthenticationHandlerPlugin(): CompanyUserAccessTokenAuthenticationHandlerPlugin
     {
         return new CompanyUserAccessTokenAuthenticationHandlerPlugin();
     }
