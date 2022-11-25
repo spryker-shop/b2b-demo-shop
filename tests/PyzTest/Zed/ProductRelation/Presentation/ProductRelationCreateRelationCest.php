@@ -26,7 +26,7 @@ class ProductRelationCreateRelationCest
     /**
      * @skip
      *
-     * @TODO Fix failing test for prefer-mid
+     * @TODO Fix failing test for MariaDB/PostgreSQL Acceptance jobs (#18,19)
      *
      * @param \PyzTest\Zed\ProductRelation\ProductRelationPresentationTester $i
      *
@@ -37,11 +37,11 @@ class ProductRelationCreateRelationCest
         $i->wantTo('I want to create up selling relation');
         $i->expect('relation is persisted, exported to yves and carousel component is visible');
 
-        $i->amLoggedInUser();
-
         $i->amOnPage(ProductRelationCreatePage::URL);
 
-        $i->fillField('//*[@id="product_relation_productRelationKey"]', uniqid('key-', false));
+        $i->waitForElement('//*[@id="product_relation_productRelationKey"]');
+        $key = uniqid('key-', false);
+        $i->fillField('//*[@id="product_relation_productRelationKey"]', $key);
         $i->filterProductsByName(ProductRelationCreatePage::PRODUCT_RELATION_PRODUCT_1_NAME);
 
         $i->waitForProcessingIsDone();
@@ -59,15 +59,6 @@ class ProductRelationCreateRelationCest
 
         $i->clickSaveButton();
         $i->waitForProcessingIsDone();
-        $i->see(ProductRelationCreatePage::MESSAGE_SUCCESS_PRODUCT_RELATION_CREATED);
-
-        // TODO re-enable
-        //$i->runCollectors();
-        //$i->wait(5);
-
-        //$i->amYves();
-        //$i->amOnPage('/en/samsung-bundle-214');
-        //$i->canSee('Similar products');
-        //$i->canSee('HP EliteDesk 800 G2');
+        $i->seeInPageSource(sprintf('%s %s', ProductRelationCreatePage::EDIT_PRODUCT_RELATION_TEXT, $key));
     }
 }

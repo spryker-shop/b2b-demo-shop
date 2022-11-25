@@ -1,43 +1,41 @@
-@mixin product-bundle-widget-bundle-items($name: '.bundle-items') {
-    #{$name} {
-        &__title {
-            font-size: rem(14);
-            font-weight: fw(medium);
-            color: $setting-color-gray-5;
-            margin: rem(10) 0 rem(3);
+@include product-bundle-widget-bundle-items() {
+    font-size: rem(15);
+    margin-bottom: rem(21);
+
+    @include helper-breakpoint-media-min($lg) {
+        border-top: solid rem(1) $setting-color-gray-6;
+    }
+
+    &__item {
+        display: flex;
+        margin-bottom: rem(10);
+
+        &:last-child {
+            margin-bottom: 0;
         }
+    }
 
-        &__list {
-            padding: 0 0 0 rem(8);
-            font-size: rem(13);
-            font-weight: fw(regular);
-            color: $setting-color-gray-5;
+    &__title {
+        line-height: rem(54);
+        color: $setting-color-gray-5;
 
-            @include helper-breakpoint-media-min($lg) {
-                padding-left: rem(20);
-            }
+        @include helper-breakpoint-media-min($lg) {
+            font-size: rem(16);
         }
+    }
 
-        &__item {
-            padding: rem(3) 0;
-        }
+    &__details {
+        padding-left: rem(18);
+        font-weight: fw(regular);
+    }
 
-        &__quantity {
-            font-size: rem(13);
-            font-weight: fw(regular);
-            line-height: normal;
-            color: $setting-color-gray-3;
-            padding-left: rem(15);
-            white-space: nowrap;
+    &__name {
+        @include helper-effect-transition(color);
+        color: $setting-color-gray-5;
+        line-height: rem(18);
+    }
 
-            @include helper-breakpoint-media-min($lg) {
-                display: block;
-                padding-left: 0;
-            }
-        }
-
-        @content;
+    &__quantity {
+        color: $setting-color-gray-3;
     }
 }
-
-@include product-bundle-widget-bundle-items;
