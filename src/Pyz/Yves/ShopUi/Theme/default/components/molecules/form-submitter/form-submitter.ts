@@ -4,7 +4,7 @@ export default class FormSubmitter extends FormSubmitterCore {
     protected onEvent(event: Event): void {
         const trigger = <HTMLFormElement>event.currentTarget;
         const form = <HTMLFormElement>(
-            this.formClassName ? document.getElementsByClassName(this.formClassName)[0] : trigger.closest(TAG_NAME)
+            (this.formClassName ? document.getElementsByClassName(this.formClassName)[0] : trigger.closest(TAG_NAME))
         );
 
         if (!form) {
