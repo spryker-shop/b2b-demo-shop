@@ -30,6 +30,9 @@ class ProductRelationPresentationTester extends Actor
 {
     use _generated\ProductRelationPresentationTesterActions;
 
+    public const PRODUCT_TABLE_BODY_XPATH = '//*[@class="dataTables_scrollBody"]/table/tbody/tr[1]/td[1]';
+    public const ELEMENT_TIMEOUT = 45;
+
     /**
      * @var int
      */
@@ -65,6 +68,7 @@ class ProductRelationPresentationTester extends Actor
      */
     public function filterProductsByName($name)
     {
+        $this->waitForElement(static::PRODUCT_TABLE_BODY_XPATH, static::ELEMENT_TIMEOUT);
         $this->fillField('//*[@id="product-table_filter"]/label/input', $name);
 
         return $this;
@@ -77,6 +81,7 @@ class ProductRelationPresentationTester extends Actor
      */
     public function selectProduct($sku)
     {
+        $this->waitForElement(static::PRODUCT_TABLE_BODY_XPATH, static::ELEMENT_TIMEOUT);
         $buttonElementId = sprintf('//*[@id="select-product-%s"]', $sku);
 
         $this->waitForProcessingIsDone();
