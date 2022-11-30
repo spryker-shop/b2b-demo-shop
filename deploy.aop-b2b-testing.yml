@@ -79,6 +79,8 @@ image:
         }'
 
     php:
+        ini:
+            opcache.enable: 0
         enabled-extensions:
             - blackfire
             - newrelic
@@ -154,6 +156,8 @@ groups:
                             url: www.at.aop-b2b-testing.demo-spryker.com
             yves:
                 application: yves
+                limits:
+                    workers: 1
                 endpoints:
                     www.de.aop-b2b-testing.demo-spryker.com:
                         store: DE
@@ -163,6 +167,8 @@ groups:
                         <<: *frontend-auth
             boffice:
                 application: backoffice
+                limits:
+                    workers: 1
                 endpoints:
                     backoffice.de.aop-b2b-testing.demo-spryker.com:
                         store: DE
@@ -172,6 +178,8 @@ groups:
                         <<: *frontend-auth
             backgw:
                 application: backend-gateway
+                limits:
+                    workers: 1
                 endpoints:
                     backend-gateway.de.aop-b2b-testing.demo-spryker.com:
                         store: DE
@@ -179,6 +187,8 @@ groups:
                         store: AT
             backapi:
                 application: zed
+                limits:
+                    workers: 1
                 endpoints:
                     backend-api.de.aop-b2b-testing.demo-spryker.com:
                         store: DE
@@ -188,6 +198,8 @@ groups:
                         entry-point: BackendApi
             Glue:
                 application: glue
+                limits:
+                    workers: 1
                 endpoints:
                     glue.de.aop-b2b-testing.demo-spryker.com:
                         store: DE
