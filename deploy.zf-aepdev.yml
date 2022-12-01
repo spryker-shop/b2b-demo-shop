@@ -92,7 +92,7 @@ groups:
             mportal:
                 application: merchant-portal
                 endpoints:
-                    mp.aep-dev.mmm.azure.zf.com:
+                    mp.zf-aepdev.cloud.spryker.toys:
                         entry-point: MerchantPortal
                         store: GLOBAL
                         primal: true
@@ -102,7 +102,7 @@ groups:
             Yves:
                 application: yves
                 endpoints:
-                    www.aep-dev.mmm.azure.zf.com:
+                    www.zf-aepdev.cloud.spryker.toys:
                         store: GLOBAL
                         <<: *frontend-auth
                         services:
@@ -111,12 +111,12 @@ groups:
             Glue:
                 application: glue
                 endpoints:
-                    glue.aep-dev.mmm.azure.zf.com:
+                    glue.zf-aepdev.cloud.spryker.toys:
                         store: GLOBAL
             boffice:
                 application: backoffice
                 endpoints:
-                    backoffice.aep-dev.mmm.azure.zf.com:
+                    backoffice.zf-aepdev.cloud.spryker.toys:
                         store: GLOBAL
                         services:
                             session:
@@ -124,19 +124,19 @@ groups:
             backgw:
                 application: backend-gateway
                 endpoints:
-                    backend-gateway.aep-dev.mmm.azure.zf.com:
+                    backend-gateway.zf-aepdev.cloud.spryker.toys:
                         store: GLOBAL
                         primal: true
             backapi:
                 application: zed
                 endpoints:
-                    backend-api.aep-dev.mmm.azure.zf.com:
+                    backend-api.zf-aepdev.cloud.spryker.toys:
                         store: GLOBAL
                         entry-point: BackendApi
 services:
     database:
         engine: mysql
-        version: mariadb-10.4
+        version: mariadb-10.5
         root:
             username: "root"
             password: "secret"
@@ -150,7 +150,7 @@ services:
             username: "spryker"
             password: "secret"
         endpoints:
-            queue.aep-dev.mmm.azure.zf.com:
+            queue.zf-aepdev.cloud.spryker.toys:
             localhost:5672:
                 protocol: tcp
     session:
@@ -171,11 +171,11 @@ services:
         version: '2.324'
         csrf-protection-enabled: false
         endpoints:
-            scheduler.aep-dev.mmm.azure.zf.com:
+            scheduler.zf-aepdev.cloud.spryker.toys:
     mail_catcher:
         engine: mailhog
         endpoints:
-            mail.aep-dev.mmm.azure.zf.com:
+            mail.zf-aepdev.cloud.spryker.toys:
 
 docker:
 
