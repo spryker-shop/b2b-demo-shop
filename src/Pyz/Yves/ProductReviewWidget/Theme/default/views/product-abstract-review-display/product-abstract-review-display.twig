@@ -6,17 +6,22 @@
 } %}
 
 {% block body %}
-    {% include molecule('rating-selector', 'ProductReviewWidget') with {
-        modifiers: ['expand'],
-        data: {
-            value: data.value,
-            maxValue: data.maxValue,
-            useHalfSteps: true,
-            reviewCount: data.reviewCount,
-            parentJsName: data.parentJsName,
-        },
-        attributes: {
-            readonly: true,
-        },
-    } only %}
+    <section itemscope itemprop="aggregateRating" itemtype="https://schema.org/AggregateRating">
+        <meta itemprop="ratingValue" content="{{ data.value }}">
+        <meta itemprop="bestRating" content="{{ data.maxValue }}">
+
+        {% include molecule('rating-selector', 'ProductReviewWidget') with {
+            modifiers: ['expand'],
+            data: {
+                value: data.value,
+                maxValue: data.maxValue,
+                useHalfSteps: true,
+                reviewCount: data.reviewCount,
+                parentJsName: data.parentJsName,
+            },
+            attributes: {
+                readonly: true,
+            },
+        } only %}
+    </section>
 {% endblock %}
