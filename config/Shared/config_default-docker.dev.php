@@ -163,7 +163,5 @@ $config[AppCatalogGuiConstants::OAUTH_PROVIDER_NAME] = OauthDummyConfig::PROVIDE
 // ------------------------------ AOP -----------------------------------------
 // ----------------------------------------------------------------------------
 $config[StoreReferenceConstants::STORE_NAME_REFERENCE_MAP] = [
-    'DE' => 'dev-DE',
-    'AT' => 'dev-AT',
-    'US' => 'dev-US',
+    'GLOBAL' => 'dev-GLOBAL',
 ];
