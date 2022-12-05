@@ -43,7 +43,7 @@
                 <div class="{{ config.name }}__inner-section {{ config.name }}__inner-section--text-light col col--sm-12 col--lg-4">
                     {% block quantity %}
                         <span class="{{ config.name }}__text">
-                            {{ 'configured_bundle.multiplier' | trans }} {{ data.quantity }}
+                            {{ 'configured_bundle.multiplier' | trans }} {{ data.quantity | executeFilterIfExists('formatInt', app.locale) }}
                         </span>
                     {% endblock %}
                 </div>

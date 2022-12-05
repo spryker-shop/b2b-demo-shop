@@ -1,7 +1,7 @@
 {% extends model('component') %}
 
 {% define config = {
-    name: 'filter-enumeration' 
+    name: 'filter-enumeration'
 } %}
 
 {% define data = {
@@ -25,7 +25,7 @@
                         checked: (filterValue.value in activeValues)
                     },
                     data: {
-                        label: filterValue.value ~ ' <span class="' ~ inputComponent ~ '__counter">' ~ filterValue.docCount ~ '</span>'
+                        label: filterValue.value ~ ' <span class="' ~ inputComponent ~ '__counter">' ~ filterValue.docCount | executeFilterIfExists('formatInt', app.locale) ~ '</span>'
                     }
                 } only %}
             </li>
