@@ -80,7 +80,7 @@
                                         {% if data.quantity is not empty and amountSalesUnit is empty %}
                                             <div class="grid grid--middle grid--gap {{ config.name }}__quantity">
                                                 <div class="col">
-                                                    <span class="{{ config.name }}__quantity-title">{{ 'cart.item_quantity' | trans }}:</span> {{ data.quantity }}
+                                                    <span class="{{ config.name }}__quantity-title">{{ 'cart.item_quantity' | trans }}:</span> {{ data.quantity | executeFilterIfExists('formatInt', app.locale) }}
                                                 </div>
                                                 {% block subQuantity %}{% endblock %}
                                             </div>

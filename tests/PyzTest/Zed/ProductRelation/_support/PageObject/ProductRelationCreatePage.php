@@ -11,15 +11,13 @@ class ProductRelationCreatePage
 {
     public const URL = '/product-relation-gui/create/index';
 
-    public const PRODUCT_RELATION_PRODUCT_1_NAME = 'Our Conference Room Bundle';
-    public const PRODUCT_RELATION_PRODUCT_1_SKU = 'B0002';
+    public const PRODUCT_RELATION_PRODUCT_1_NAME = 'Mauser sliding door';
+    public const PRODUCT_RELATION_PRODUCT_1_SKU = 'M90802';
 
     public const PRODUCT_RULE_NAME = 'sku';
     public const PRODUCT_RULE_OPERATOR = 'equal';
 
-    public const PRODUCT_RELATION_PRODUCT_2_SKU = 'B0001';
-
-    public const MESSAGE_SUCCESS_PRODUCT_RELATION_ACTIVATED = 'Relation successfully activated.';
+    public const PRODUCT_RELATION_PRODUCT_2_SKU = 'M1000785';
 
     public const EDIT_PRODUCT_RELATION_TEXT = 'Edit Product Relation:';
 }

@@ -10,16 +10,11 @@ namespace PyzTest\Zed\NavigationGui;
 use Codeception\Actor;
 use Codeception\Scenario;
 use Exception;
-use Generated\Shared\Transfer\NavigationNodeLocalizedAttributesTransfer;
-use Generated\Shared\Transfer\NavigationNodeTransfer;
 use Generated\Shared\Transfer\NavigationTransfer;
 use Generated\Shared\Transfer\NavigationTreeNodeTransfer;
 use Generated\Shared\Transfer\NavigationTreeTransfer;
 use Orm\Zed\Navigation\Persistence\SpyNavigation;
 use Orm\Zed\Navigation\Persistence\SpyNavigationQuery;
-use PyzTest\Zed\NavigationGui\PageObject\NavigationNodeCreatePage;
-use PyzTest\Zed\NavigationGui\PageObject\NavigationNodeUpdatePage;
-use PyzTest\Zed\NavigationGui\PageObject\NavigationPage;
 
 /**
  * Inherited Methods
@@ -41,27 +36,100 @@ class NavigationGuiPresentationTester extends Actor
 {
     use _generated\NavigationGuiPresentationTesterActions;
 
+    /**
+     * @var string
+     */
     public const ROOT_NODE_ANCHOR_SELECTOR = '#navigation-node-0_anchor';
+
+    /**
+     * @var string
+     */
     public const CHILD_NODE_ANCHOR_SELECTOR = '#navigation-node-%d_anchor';
+
+    /**
+     * @var string
+     */
     public const NAVIGATION_NODE_SELECTOR = '.jstree-node';
+
+    /**
+     * @var string
+     */
     public const NAVIGATION_TREE_SELECTOR = '#navigation-tree';
+
+    /**
+     * @var string
+     */
     public const NAVIGATION_TREE_SAVE_BUTTON_SELECTOR = '#navigation-tree-save-btn';
+
+    /**
+     * @var string
+     */
     public const REMOVE_NODE_BUTTON_SELECTOR = '#remove-selected-node-btn';
+
+    /**
+     * @var string
+     */
     public const ADD_CHILD_NODE_BUTTON_SELECTOR = '#add-child-node-btn';
+
+    /**
+     * @var string
+     */
     public const LOCALIZED_FORM_CONTAINER_SELECTOR = '#localized_attributes_container-%s .collapse-link';
-    public const NODE_CHILD_SELECTOR = '//*[@id="#navigation-node-%d"]//*[@id="#navigation-node-%d"]';
+
+    /**
+     * @var string
+     */
+    public const NODE_CHILD_SELECTOR = '#navigation-node-%d #navigation-node-%d';
+
+    /**
+     * @var string
+     */
     public const NODE_NAME_CHILD_SELECTOR = "//*[@id=\"navigation-node-%d\"]//*[text()[contains(.,'%s')]]";
+
+    /**
+     * @var string
+     */
     public const NODE_FORM_IFRAME_NAME = 'navigation-node-form-iframe';
+
+    /**
+     * @var string
+     */
     public const SUCCESS_MESSAGE_SELECTOR = '.flash-messages .alert-success';
+
+    /**
+     * @var string
+     */
     public const SWEET_ALERT_SELECTOR = '.sweet-alert';
+
+    /**
+     * @var string
+     */
     public const SWEET_ALERT_CONFIRM_SELECTOR = '.sweet-alert button.confirm';
+
+    /**
+     * @var string
+     */
     public const NODE_FORM_SELECTOR = 'form';
+
+    /**
+     * @var string
+     */
     public const NODE_UPDATE_FORM_SELECTOR = '//form[@name="navigation_node"]';
 
     /**
      * @var string
      */
-    protected const FLASH_MESSAGE_SELECTOR = '//div[@class="flash-messages"]/div';
+    public const FLASH_MESSAGE_TEXT_SELECTOR = '//div[@class="flash-messages"]/div';
+
+    /**
+     * @var string
+     */
+    public const NAVIGATION_DELETE_FORM_SELECTOR = '//*[@id="navigation-table"]/tbody/tr/td[5]/form[1]';
+
+    /**
+     * @var string
+     */
+    public const NAVIGATION_ROW_ACTIVE_LINK_SELECTOR = '//*[@id="navigation-table"]/tbody/tr[1]/td[5]/a[2]';
 
     /**
      * @param \Codeception\Scenario $scenario
@@ -79,7 +147,7 @@ class NavigationGuiPresentationTester extends Actor
      *
      * @return void
      */
-    public function setNameField($value)
+    public function setNameField($value): void
     {
         $this->fillField('//*[@id="navigation_name"]', $value);
     }
@@ -89,7 +157,7 @@ class NavigationGuiPresentationTester extends Actor
      *
      * @return void
      */
-    public function setKeyField($value)
+    public function setKeyField($value): void
     {
         $this->fillField('//*[@id="navigation_key"]', $value);
     }
@@ -99,7 +167,7 @@ class NavigationGuiPresentationTester extends Actor
      *
      * @return void
      */
-    public function checkIsActiveField($checked)
+    public function checkIsActiveField($checked): void
     {
         if ($checked) {
             $this->checkOption('//*[@id="navigation_is_active"]');
@@ -111,9 +179,17 @@ class NavigationGuiPresentationTester extends Actor
     /**
      * @return void
      */
-    public function submitNavigationForm()
+    public function submitNavigationForm(): void
     {
         $this->click('//*[@id="navigation-save-btn"]');
+    }
+
+    /**
+     * @return void
+     */
+    public function submitDeleteNavigationForm(): void
+    {
+        $this->click('//*[@id="delete_navigation_form_submit"]');
     }
 
     /**
@@ -122,7 +198,7 @@ class NavigationGuiPresentationTester extends Actor
      *
      * @return void
      */
-    public function seeMatches($pattern, $value)
+    public function seeMatches($pattern, $value): void
     {
         $this->assertRegExp($pattern, $value);
     }
@@ -130,7 +206,7 @@ class NavigationGuiPresentationTester extends Actor
     /**
      * @return void
      */
-    public function clickEditFirstRowInList()
+    public function clickEditFirstRowInList(): void
     {
         $this->click('//*[@id="navigation-table"]/tbody/tr[1]/td[5]/a');
     }
@@ -138,14 +214,12 @@ class NavigationGuiPresentationTester extends Actor
     /**
      * @param string $expectedMessagePattern
      *
-     * @return int
+     * @return string
      */
-    public function seeSuccessMessage($expectedMessagePattern)
+    public function seeSuccessMessage($expectedMessagePattern): string
     {
-        $this->waitForElement(static::FLASH_MESSAGE_SELECTOR);
-        $this->wait(5);
-
-        $successMessage = $this->grabTextFrom(static::FLASH_MESSAGE_SELECTOR);
+        $this->waitForElementVisible(static::FLASH_MESSAGE_TEXT_SELECTOR, 90);
+        $successMessage = $this->grabTextFrom(static::FLASH_MESSAGE_TEXT_SELECTOR);
         $this->seeMatches($expectedMessagePattern, $successMessage);
 
         preg_match($expectedMessagePattern, $successMessage, $matches);
@@ -156,285 +230,23 @@ class NavigationGuiPresentationTester extends Actor
     /**
      * @return void
      */
-    public function activateFirstNavigationRow()
+    public function activateFirstNavigationRow(): void
     {
-        $this->click('//*[@id="navigation-table"]/tbody/tr[1]/td[5]/a[2]');
+        $this->click(static::NAVIGATION_ROW_ACTIVE_LINK_SELECTOR);
     }
 
     /**
      * @return void
      */
-    public function deleteFirstNavigationRow()
+    public function deleteFirstNavigationRow(): void
     {
-        $this->submitForm('//*[@id="navigation-table"]/tbody/tr/td[5]/form[1]', []);
-    }
-
-    /**
-     * @return void
-     */
-    public function testSeeEmptyNavigationTree()
-    {
-        $i = $this;
-        $i->wantTo('See navigation tree.');
-        $i->expect('Empty navigation tree displayed.');
-
-        $i->amLoggedInUser();
-        $i->prepareTestNavigationTreeEntities((new NavigationTreeTransfer())
-            ->setNavigation((new NavigationTransfer())
-                ->setName('Create child node without type test')
-                ->setKey('Create child node without type test')
-                ->setIsActive(true)));
-        $i->amOnPage(NavigationPage::URL);
-
-        $i->waitForNavigationTree();
-        $i->seeNumberOfNavigationNodes(1);
-    }
-
-    /**
-     * @return void
-     */
-    public function testCreateChildNodeWithoutType()
-    {
-        $i = $this;
-        $i->wantTo('Create child node without type.');
-        $i->expect('Navigation should have a root node persisted.');
-
-        $i->amLoggedInUser();
-        $i->prepareTestNavigationTreeEntities((new NavigationTreeTransfer())
-            ->setNavigation((new NavigationTransfer())
-                ->setName('Create child node without type test')
-                ->setKey('Create child node without type test')
-                ->setIsActive(true)));
-        $i->amOnPage(NavigationPage::URL);
-
-        $i->waitForNavigationTree();
-        $i->switchToNodeForm();
-        $i->see('Create child node');
-        $i->submitCreateNodeFormWithoutType('Child 1');
-
-        $i->seeSuccessMessage(NavigationNodeCreatePage::MESSAGE_SUCCESS);
-
-        $i->switchToNavigationTree();
-        $i->seeNumberOfNavigationNodes(2);
-    }
-
-    /**
-     * @return void
-     */
-    public function testCreateChildNodeWithExternalUrlType()
-    {
-        $i = $this;
-        $i->wantTo('Create external URL child node.');
-        $i->expect('Navigation should have a root node persisted.');
-
-        $i->amLoggedInUser();
-        $i->prepareTestNavigationTreeEntities((new NavigationTreeTransfer())
-            ->setNavigation((new NavigationTransfer())
-                ->setName('Create child node with external URL type test')
-                ->setKey('Create child node with external URL type test')
-                ->setIsActive(true))
-            ->addNode((new NavigationTreeNodeTransfer())
-                ->setNavigationNode((new NavigationNodeTransfer())
-                    ->addNavigationNodeLocalizedAttribute((new NavigationNodeLocalizedAttributesTransfer())
-                        ->setFkLocale($i->getIdLocale('en_US'))
-                        ->setTitle('foo')))));
-        $i->amOnPage(NavigationPage::URL);
-
-        $i->waitForNavigationTree();
-        $i->switchToNodeForm();
-        $i->see('Create child node');
-        $i->submitCreateNodeFormWithExternalUrlType('Child 2', 'http://google.com');
-
-        $i->seeSuccessMessage(NavigationNodeCreatePage::MESSAGE_SUCCESS);
-
-        $i->switchToNavigationTree();
-        $i->seeNumberOfNavigationNodes(3);
-    }
-
-    /**
-     * @return void
-     */
-    public function testUpdateNodeToCategoryType()
-    {
-        $i = $this;
-        $i->wantTo('Update child node to category type.');
-        $i->expect('Node changes should persist in Zed.');
-
-        $i->amLoggedInUser();
-        $navigationTreeTransfer = $i->prepareTestNavigationTreeEntities((new NavigationTreeTransfer())
-            ->setNavigation((new NavigationTransfer())
-                ->setName('Update child node to category type test')
-                ->setKey('Update child node to category type test')
-                ->setIsActive(true))
-            ->addNode((new NavigationTreeNodeTransfer())
-                ->setNavigationNode((new NavigationNodeTransfer())
-                    ->addNavigationNodeLocalizedAttribute((new NavigationNodeLocalizedAttributesTransfer())
-                        ->setFkLocale($i->getIdLocale('en_US'))
-                        ->setTitle('foo'))
-                    ->addNavigationNodeLocalizedAttribute((new NavigationNodeLocalizedAttributesTransfer())
-                        ->setFkLocale($i->getIdLocale('de_DE'))
-                        ->setTitle('foo')))));
-        $i->amOnPage(NavigationPage::URL);
-
-        $idNavigationNode = $navigationTreeTransfer->getNodes()[0]->getNavigationNode()->getIdNavigationNode();
-
-        $i->waitForNavigationTree();
-        $i->clickNode($idNavigationNode);
-        $i->switchToNodeForm();
-        $i->see('Update node');
-        $i->submitUpdateNodeToCategoryType('/en/computer', '/de/computer');
-
-        $i->seeSuccessMessage(NavigationNodeUpdatePage::MESSAGE_SUCCESS);
-        $i->switchToNavigationTree();
-        $i->seeNumberOfNavigationNodes(2);
-    }
-
-    /**
-     * @return void
-     */
-    public function testCreateChildNodeWithCmsPageType()
-    {
-        $i = $this;
-        $i->wantTo('Create CMS page child node.');
-        $i->expect('Navigation should have a new child node persisted.');
-
-        $i->amLoggedInUser();
-        $navigationTreeTransfer = $i->prepareTestNavigationTreeEntities((new NavigationTreeTransfer())
-            ->setNavigation((new NavigationTransfer())
-                ->setName('Create child node with CMS page type test')
-                ->setKey('Create child node with CMS page type test')
-                ->setIsActive(true))
-            ->addNode((new NavigationTreeNodeTransfer())
-                ->setNavigationNode((new NavigationNodeTransfer())
-                    ->addNavigationNodeLocalizedAttribute((new NavigationNodeLocalizedAttributesTransfer())
-                        ->setFkLocale($i->getIdLocale('en_US'))
-                        ->setTitle('foo'))
-                    ->addNavigationNodeLocalizedAttribute((new NavigationNodeLocalizedAttributesTransfer())
-                        ->setFkLocale($i->getIdLocale('de_DE'))
-                        ->setTitle('foo')))));
-        $i->amOnPage(NavigationPage::URL);
-
-        $idNavigationNode = $navigationTreeTransfer->getNodes()[0]->getNavigationNode()->getIdNavigationNode();
-
-        $i->waitForNavigationTree();
-        $i->clickNode($idNavigationNode);
-        $i->switchToNodeForm();
-        $i->clickAddChildNodeButton();
-        $i->see('Create child node');
-        $i->submitCreateNodeFormWithCmsPageType('Child 1.1', '/en/imprint', '/de/impressum');
-
-        $idChildNavigationNode = $i->seeSuccessMessage(NavigationNodeCreatePage::MESSAGE_SUCCESS);
-        $i->switchToNavigationTree();
-        $i->seeNumberOfNavigationNodes(3);
-        $i->seeNavigationNodeHierarchy($idNavigationNode, $idChildNavigationNode);
-    }
-
-    /**
-     * @return void
-     */
-    public function testChangeNavigationTreeStructure()
-    {
-        $i = $this;
-        $i->wantTo('Change tree structure and save.');
-        $i->expect('Updated navigation tree structure should have persisted.');
-
-        $i->amLoggedInUser();
-        $navigationTreeTransfer = $i->prepareTestNavigationTreeEntities((new NavigationTreeTransfer())
-            ->setNavigation((new NavigationTransfer())
-                ->setName('Create child node with CMS page type test')
-                ->setKey('Create child node with CMS page type test')
-                ->setIsActive(true))
-            ->addNode((new NavigationTreeNodeTransfer())
-                ->setNavigationNode((new NavigationNodeTransfer())
-                    ->addNavigationNodeLocalizedAttribute((new NavigationNodeLocalizedAttributesTransfer())
-                        ->setFkLocale($i->getIdLocale('en_US'))
-                        ->setTitle('node_1'))
-                    ->addNavigationNodeLocalizedAttribute((new NavigationNodeLocalizedAttributesTransfer())
-                        ->setFkLocale($i->getIdLocale('de_DE'))
-                        ->setTitle('node_1')))
-                ->addChild((new NavigationTreeNodeTransfer())
-                    ->setNavigationNode((new NavigationNodeTransfer())
-                        ->addNavigationNodeLocalizedAttribute((new NavigationNodeLocalizedAttributesTransfer())
-                            ->setFkLocale($i->getIdLocale('en_US'))
-                            ->setTitle('node_1.1'))
-                        ->addNavigationNodeLocalizedAttribute((new NavigationNodeLocalizedAttributesTransfer())
-                            ->setFkLocale($i->getIdLocale('de_DE'))
-                            ->setTitle('node_1.1')))))
-            ->addNode((new NavigationTreeNodeTransfer())
-                ->setNavigationNode((new NavigationNodeTransfer())
-                    ->addNavigationNodeLocalizedAttribute((new NavigationNodeLocalizedAttributesTransfer())
-                        ->setFkLocale($i->getIdLocale('en_US'))
-                        ->setTitle('node_2'))
-                    ->addNavigationNodeLocalizedAttribute((new NavigationNodeLocalizedAttributesTransfer())
-                        ->setFkLocale($i->getIdLocale('de_DE'))
-                        ->setTitle('node_2')))));
-        $i->amOnPage(NavigationPage::URL);
-
-        $idNavigationNode = $navigationTreeTransfer->getNodes()[0]
-            ->getChildren()[0]
-            ->getNavigationNode()
-            ->getIdNavigationNode();
-        $idTargetNavigationNode = $navigationTreeTransfer->getNodes()[1]
-            ->getNavigationNode()
-            ->getIdNavigationNode();
-
-        $i->waitForNavigationTree();
-        $i->moveNavigationNode($idNavigationNode, $idTargetNavigationNode);
-        $i->seeNavigationNodeHierarchy($idTargetNavigationNode, $idNavigationNode);
-        $i->saveNavigationTreeOrder();
-        $i->seeSuccessfulOrderSaveMessage(NavigationPage::MESSAGE_SUCCESS_NAVIGATION_TREE_UPDATED);
-    }
-
-    /**
-     * @return void
-     */
-    public function testDeleteNavigationNode()
-    {
-        $i = $this;
-
-        /**
-         * Test skipped because popup confirmation is not working as expected under phantomjs.
-         * TODO: once we have Selenium, enable this test case.
-         */
-        return;
-
-//        $i->wantTo('Remove child node.');
-//        $i->expect('Node should be removed from Zed.');
-//
-//        $i->amLoggedInUser();
-//        $navigationTreeTransfer = $i->prepareTestNavigationTreeEntities((new NavigationTreeTransfer())
-//            ->setNavigation((new NavigationTransfer())
-//                ->setName('Delete navigation node')
-//                ->setKey('Delete navigation node')
-//                ->setIsActive(true))
-//            ->addNode((new NavigationTreeNodeTransfer())
-//                ->setNavigationNode((new NavigationNodeTransfer())
-//                    ->addNavigationNodeLocalizedAttribute((new NavigationNodeLocalizedAttributesTransfer())
-//                        ->setFkLocale($i->getIdLocale('en_US'))
-//                        ->setTitle('foo'))
-//                    ->addNavigationNodeLocalizedAttribute((new NavigationNodeLocalizedAttributesTransfer())
-//                        ->setFkLocale($i->getIdLocale('de_DE'))
-//                        ->setTitle('foo')))));
-//        $i->amOnPage(NavigationPage::URL);
-//
-//        $idNavigationNode = $navigationTreeTransfer->getNodes()[0]->getNavigationNode()->getIdNavigationNode();
-//
-//        $i->waitForNavigationTree();
-//        $i->clickNode($idNavigationNode);
-//        $i->switchToNodeForm();
-//        $i->clickRemoveNodeButton();
-//        $i->canSeeInPopup('Are you sure you remove the selected node and all its children?');
-//        $i->acceptPopup();
-//
-//        $i->seeSuccessMessage(NavigationNodeDeletePage::MESSAGE_SUCCESS);
-//        $i->switchToNavigationTree();
-//        $i->seeNumberOfNavigationNodes(1);
+        $this->submitForm(static::NAVIGATION_DELETE_FORM_SELECTOR, []);
     }
 
     /**
      * @return int
      */
-    public function prepareTestNavigationEntity()
+    public function prepareTestNavigationEntity(): int
     {
         $navigationEntity = new SpyNavigation();
         $navigationEntity
@@ -451,7 +263,7 @@ class NavigationGuiPresentationTester extends Actor
      *
      * @return void
      */
-    public function expandLocalizedForm($localeName)
+    public function expandLocalizedForm($localeName): void
     {
         $this->click(sprintf(self::LOCALIZED_FORM_CONTAINER_SELECTOR, $localeName));
     }
@@ -459,7 +271,7 @@ class NavigationGuiPresentationTester extends Actor
     /**
      * @return void
      */
-    public function clickRootNode()
+    public function clickRootNode(): void
     {
         $this->click(self::ROOT_NODE_ANCHOR_SELECTOR);
     }
@@ -469,7 +281,7 @@ class NavigationGuiPresentationTester extends Actor
      *
      * @return void
      */
-    public function clickNode($idNavigationNode)
+    public function clickNode($idNavigationNode): void
     {
         $this->click(sprintf(self::CHILD_NODE_ANCHOR_SELECTOR, $idNavigationNode));
     }
@@ -477,7 +289,7 @@ class NavigationGuiPresentationTester extends Actor
     /**
      * @return void
      */
-    public function waitForNavigationTree()
+    public function waitForNavigationTree(): void
     {
         $this->waitForElement(self::NAVIGATION_TREE_SELECTOR);
         $this->wait(5);
@@ -514,12 +326,12 @@ class NavigationGuiPresentationTester extends Actor
      *
      * @return void
      */
-    public function seeNavigationNodeHierarchyByChildNodeName($idParentNavigationNode, $childNavigationNodeName)
+    public function seeNavigationNodeHierarchyByChildNodeName($idParentNavigationNode, $childNavigationNodeName): void
     {
         $this->seeElement(sprintf(
             self::NODE_NAME_CHILD_SELECTOR,
             $idParentNavigationNode,
-            $childNavigationNodeName
+            $childNavigationNodeName,
         ));
     }
 
@@ -529,18 +341,18 @@ class NavigationGuiPresentationTester extends Actor
      *
      * @return void
      */
-    public function moveNavigationNode($idNavigationNode, $idTargetNavigationNode)
+    public function moveNavigationNode($idNavigationNode, $idTargetNavigationNode): void
     {
         $this->dragAndDrop(
             sprintf(self::CHILD_NODE_ANCHOR_SELECTOR, $idNavigationNode),
-            sprintf(self::CHILD_NODE_ANCHOR_SELECTOR, $idTargetNavigationNode)
+            sprintf(self::CHILD_NODE_ANCHOR_SELECTOR, $idTargetNavigationNode),
         );
     }
 
     /**
      * @return void
      */
-    public function saveNavigationTreeOrder()
+    public function saveNavigationTreeOrder(): void
     {
         $this->click(self::NAVIGATION_TREE_SAVE_BUTTON_SELECTOR);
     }
@@ -550,7 +362,7 @@ class NavigationGuiPresentationTester extends Actor
      *
      * @return void
      */
-    public function seeSuccessfulOrderSaveMessage($message)
+    public function seeSuccessfulOrderSaveMessage($message): void
     {
         $this->waitForElement(self::SWEET_ALERT_SELECTOR, 5);
         $this->wait(1);
@@ -561,7 +373,7 @@ class NavigationGuiPresentationTester extends Actor
     /**
      * @return void
      */
-    public function switchToNodeForm()
+    public function switchToNodeForm(): void
     {
         $this->switchToIFrame(self::NODE_FORM_IFRAME_NAME);
         $this->waitForElement(self::NODE_FORM_SELECTOR, 5);
@@ -570,7 +382,7 @@ class NavigationGuiPresentationTester extends Actor
     /**
      * @return void
      */
-    public function switchToNavigationTree()
+    public function switchToNavigationTree(): void
     {
         $this->switchToIFrame();
         $this->waitForNavigationTree();
@@ -579,7 +391,7 @@ class NavigationGuiPresentationTester extends Actor
     /**
      * @return void
      */
-    public function clickRemoveNodeButton()
+    public function clickRemoveNodeButton(): void
     {
         $this->click(self::REMOVE_NODE_BUTTON_SELECTOR);
     }
@@ -587,7 +399,7 @@ class NavigationGuiPresentationTester extends Actor
     /**
      * @return void
      */
-    public function clickAddChildNodeButton()
+    public function clickAddChildNodeButton(): void
     {
         $this->click(self::ADD_CHILD_NODE_BUTTON_SELECTOR);
     }
@@ -597,7 +409,7 @@ class NavigationGuiPresentationTester extends Actor
      *
      * @return void
      */
-    public function submitCreateNodeFormWithoutType($title)
+    public function submitCreateNodeFormWithoutType($title): void
     {
         $this->submitForm(self::NODE_FORM_SELECTOR, [
             'navigation_node[navigation_node_localized_attributes][0][title]' => $title,
@@ -612,7 +424,7 @@ class NavigationGuiPresentationTester extends Actor
      *
      * @return void
      */
-    public function submitCreateNodeFormWithExternalUrlType($title, $externalUrl)
+    public function submitCreateNodeFormWithExternalUrlType($title, $externalUrl): void
     {
         $this->submitForm(self::NODE_FORM_SELECTOR, [
             'navigation_node[node_type]' => 'external_url',
@@ -630,13 +442,14 @@ class NavigationGuiPresentationTester extends Actor
      *
      * @return void
      */
-    public function submitUpdateNodeToCategoryType($categoryUrl_en_US, $categoryUrl_de_DE)
+    public function submitUpdateNodeToCategoryType($categoryUrl_en_US, $categoryUrl_de_DE): void
     {
-        $this->submitForm(static::NODE_UPDATE_FORM_SELECTOR, [
-            'navigation_node[node_type]' => 'category',
-            'navigation_node[navigation_node_localized_attributes][0][category_url]' => $categoryUrl_en_US,
-            'navigation_node[navigation_node_localized_attributes][1][category_url]' => $categoryUrl_de_DE,
-        ]);
+        $this->selectOption('#navigation_node_node_type', 'Category');
+
+        $this->fillField('//form[@name=\'navigation_node\']//input[@name=\'navigation_node[navigation_node_localized_attributes][0][category_url]\']', $categoryUrl_en_US);
+        $this->fillField('//form[@name=\'navigation_node\']//input[@name=\'navigation_node[navigation_node_localized_attributes][1][category_url]\']', $categoryUrl_de_DE);
+
+        $this->click('//*[@id="navigation-node-form-submit"]');
     }
 
     /**
@@ -646,7 +459,7 @@ class NavigationGuiPresentationTester extends Actor
      *
      * @return void
      */
-    public function submitCreateNodeFormWithCmsPageType($title, $cmsPageUrl_en_US, $cmsPageUrl_de_DE)
+    public function submitCreateNodeFormWithCmsPageType($title, $cmsPageUrl_en_US, $cmsPageUrl_de_DE): void
     {
         $this->submitForm(self::NODE_FORM_SELECTOR, [
             'navigation_node[node_type]' => 'cms_page',
@@ -656,6 +469,98 @@ class NavigationGuiPresentationTester extends Actor
             'navigation_node[navigation_node_localized_attributes][1][cms_page_url]' => $cmsPageUrl_de_DE,
             'navigation_node[is_active]' => true,
         ]);
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\NavigationTreeTransfer $navigationTreeTransfer
+     *
+     * @return \Generated\Shared\Transfer\NavigationTreeTransfer
+     */
+    public function prepareTestNavigationTreeEntities(NavigationTreeTransfer $navigationTreeTransfer): NavigationTreeTransfer
+    {
+        $navigationTransfer = $this->getLocator()->navigation()->facade()->createNavigation($navigationTreeTransfer->getNavigation());
+
+        foreach ($navigationTreeTransfer->getNodes() as $navigationTreeNodeTransfer) {
+            $this->createNavigationNodesRecursively($navigationTreeNodeTransfer, $navigationTransfer->getIdNavigation());
+        }
+
+        return $navigationTreeTransfer;
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\NavigationTreeNodeTransfer $navigationTreeNodeTransfer
+     * @param int $idNavigation
+     * @param int|null $idParentNavigationNode
+     *
+     * @return void
+     */
+    protected function createNavigationNodesRecursively(
+        NavigationTreeNodeTransfer $navigationTreeNodeTransfer,
+        $idNavigation,
+        $idParentNavigationNode = null
+    ): void {
+        $navigationNodeTransfer = $navigationTreeNodeTransfer->getNavigationNode();
+        $navigationNodeTransfer
+            ->setFkNavigation($idNavigation)
+            ->setFkParentNavigationNode($idParentNavigationNode);
+
+        $navigationNodeTransfer = $this->getLocator()->navigation()->facade()->createNavigationNode($navigationNodeTransfer);
+
+        foreach ($navigationTreeNodeTransfer->getChildren() as $childNavigationTreeNodeTransfer) {
+            $this->createNavigationNodesRecursively($childNavigationTreeNodeTransfer, $idNavigation, $navigationNodeTransfer->getIdNavigationNode());
+        }
+    }
+
+    /**
+     * @param string $locale
+     *
+     * @return int
+     */
+    public function getIdLocale($locale): int
+    {
+        return $this->getLocator()->locale()->facade()->getLocale($locale)->getIdLocale();
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\NavigationTreeTransfer $navigationTreeTransfer
+     *
+     * @return void
+     */
+    public function cleanUpNavigationTree(NavigationTreeTransfer $navigationTreeTransfer): void
+    {
+        $navigationEntity = $this->findNavigationByName($navigationTreeTransfer->getNavigation());
+
+        if (!$navigationEntity) {
+            return;
+        }
+
+        $navigationNodeEntities = $navigationEntity->getSpyNavigationNodes();
+
+        foreach ($navigationNodeEntities as $navigationNodeEntity) {
+            $navigationNodeEntity->getSpyNavigationNodeLocalizedAttributess()->delete();
+        }
+
+        $navigationNodeEntities->delete();
+        $navigationEntity->delete();
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\NavigationTransfer $navigationTransfer
+     *
+     * @return \Orm\Zed\Navigation\Persistence\SpyNavigation|null
+     */
+    protected function findNavigationByName(NavigationTransfer $navigationTransfer): ?SpyNavigation
+    {
+        $navigationEntity = (new SpyNavigationQuery())
+            ->joinWithSpyNavigationNode()
+            ->useSpyNavigationNodeQuery()
+            ->joinWithSpyNavigationNodeLocalizedAttributes()
+            ->endUse()
+            ->findByName(
+                $navigationTransfer->getName(),
+            )->getFirst();
+
+        return $navigationEntity;
     }
 
     /**
@@ -675,93 +580,7 @@ class NavigationGuiPresentationTester extends Actor
             $formData[$titleKey] = $localizedData['title'];
             $formData[$urlKey] = $localizedData['url'];
         }
-
         $this->submitForm(static::NODE_FORM_SELECTOR, $formData);
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\NavigationTreeTransfer $navigationTreeTransfer
-     *
-     * @return \Generated\Shared\Transfer\NavigationTreeTransfer
-     */
-    public function prepareTestNavigationTreeEntities(NavigationTreeTransfer $navigationTreeTransfer)
-    {
-        $navigationTransfer = $this->getLocator()->navigation()->facade()->createNavigation($navigationTreeTransfer->getNavigation());
-
-        foreach ($navigationTreeTransfer->getNodes() as $navigationTreeNodeTransfer) {
-            $this->createNavigationNodesRecursively($navigationTreeNodeTransfer, $navigationTransfer->getIdNavigation());
-        }
-
-        return $navigationTreeTransfer;
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\NavigationTreeNodeTransfer $navigationTreeNodeTransfer
-     * @param int $idNavigation
-     * @param int|null $idParentNavigationNode
-     *
-     * @return void
-     */
-    protected function createNavigationNodesRecursively(NavigationTreeNodeTransfer $navigationTreeNodeTransfer, $idNavigation, $idParentNavigationNode = null)
-    {
-        $navigationNodeTransfer = $navigationTreeNodeTransfer->getNavigationNode();
-        $navigationNodeTransfer
-            ->setFkNavigation($idNavigation)
-            ->setFkParentNavigationNode($idParentNavigationNode);
-
-        $navigationNodeTransfer = $this->getLocator()->navigation()->facade()->createNavigationNode($navigationNodeTransfer);
-
-        foreach ($navigationTreeNodeTransfer->getChildren() as $childNavigationTreeNodeTransfer) {
-            $this->createNavigationNodesRecursively($childNavigationTreeNodeTransfer, $idNavigation, $navigationNodeTransfer->getIdNavigationNode());
-        }
-    }
-
-    /**
-     * @param string $locale
-     *
-     * @return int
-     */
-    public function getIdLocale($locale)
-    {
-        return $this->getLocator()->locale()->facade()->getLocale($locale)->getIdLocale();
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\NavigationTreeTransfer $navigationTreeTransfer
-     *
-     * @return void
-     */
-    public function cleanUpNavigationTree(NavigationTreeTransfer $navigationTreeTransfer): void
-    {
-        $navigationEntity = $this->findNavigationByName($navigationTreeTransfer->getNavigation());
-        if (!$navigationEntity) {
-            return;
-        }
-        $navigationNodeEntities = $navigationEntity->getSpyNavigationNodes();
-        foreach ($navigationNodeEntities as $navigationNodeEntity) {
-            $navigationNodeEntity->getSpyNavigationNodeLocalizedAttributess()->delete();
-        }
-        $navigationNodeEntities->delete();
-        $navigationEntity->delete();
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\NavigationTransfer $navigationTransfer
-     *
-     * @return \Orm\Zed\Navigation\Persistence\SpyNavigation|null
-     */
-    protected function findNavigationByName(NavigationTransfer $navigationTransfer): ?SpyNavigation
-    {
-        $navigationEntity = (new SpyNavigationQuery())
-            ->joinWithSpyNavigationNode()
-            ->useSpyNavigationNodeQuery()
-            ->joinWithSpyNavigationNodeLocalizedAttributes()
-            ->endUse()
-            ->findByName(
-                $navigationTransfer->getName()
-            )->getFirst();
-
-        return $navigationEntity;
     }
 
     /**
@@ -784,14 +603,6 @@ class NavigationGuiPresentationTester extends Actor
     }
 
     /**
-     * @return void
-     */
-    public function submitDeleteNavigationForm(): void
-    {
-        $this->click('//*[@id="delete_navigation_form_submit"]');
-    }
-
-    /**
      * @param callable $callable
      * @param int $maxCount
      * @param bool $verbose
@@ -808,7 +619,10 @@ class NavigationGuiPresentationTester extends Actor
 
                 break;
             } catch (Exception $exception) {
-                codecept_debug(sprintf('Unstable action repeat count: %d', ++$count));
+                $count++;
+                if ($verbose) {
+                    echo "Try: {$count}: ";
+                }
             }
         }
     }

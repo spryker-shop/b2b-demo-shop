@@ -8,7 +8,7 @@
 namespace PyzTest\Yves\CompanyUser\Helper;
 
 use Codeception\Module;
-use Codeception\Util\Stub;
+use Codeception\Stub;
 use Generated\Shared\Transfer\CompanyBusinessUnitTransfer;
 use Generated\Shared\Transfer\CompanyRoleCollectionTransfer;
 use Generated\Shared\Transfer\CompanyRoleTransfer;

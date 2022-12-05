@@ -82,7 +82,7 @@
 
         {% block quantity %}
             <div class="{{ config.name }}__quantity">
-                <span class="{{ config.name }}__quantity-title">{{ 'cart.item_quantity' | trans }}:</span> {{ data.listItem.quantity }}
+                <span class="{{ config.name }}__quantity-title">{{ 'cart.item_quantity' | trans }}:</span> {{ data.listItem.quantity | executeFilterIfExists('formatInt', app.locale) }}
             </div>
         {% endblock %}
     {% endembed %}
@@ -113,7 +113,7 @@
                 {% block body %}
                     <div class="{{ config.name }}__start grid grid--justify grid--middle">
                         <h6 class="{{ config.name }}__title col">{{ 'cart.your-order' | trans }}</h6>
-                        <div class="{{ config.name }}__quantity col">{{ data.transformedCartItems | length }} {{ 'checkout.step.summary.items' | trans }}</div>
+                        <div class="{{ config.name }}__quantity col">{{ data.transformedCartItems | length | executeFilterIfExists('formatInt', app.locale) }} {{ 'checkout.step.summary.items' | trans }}</div>
                     </div>
 
                     {% set isCartCodeFormWidget = data.isQuoteEditable and can('ChangeCartItemPermissionPlugin') and can('SeePricePermissionPlugin') %}

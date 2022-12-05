@@ -37,15 +37,14 @@ class ProductRelationCreateRelationCest
 
         $i->amOnPage(ProductRelationCreatePage::URL);
 
+        $i->waitForElement(ProductRelationPresentationTester::PRODUCT_RELATION_KEY_FIELD_SELECTOR);
         $key = uniqid('key-', false);
-        $i->fillField('//*[@id="product_relation_productRelationKey"]', $key);
-        $i->filterProductsByName(ProductRelationCreatePage::PRODUCT_RELATION_PRODUCT_1_NAME);
-
-        $i->waitForProcessingIsDone();
-
-        $i->selectProduct(ProductRelationCreatePage::PRODUCT_RELATION_PRODUCT_1_SKU);
+        $i->fillField(ProductRelationPresentationTester::PRODUCT_RELATION_KEY_FIELD_SELECTOR, $key);
 
         $i->selectRelationType(ProductRelationTypes::TYPE_RELATED_PRODUCTS);
+        $i->filterProductsByName(ProductRelationCreatePage::PRODUCT_RELATION_PRODUCT_1_NAME);
+        $i->selectProduct(ProductRelationCreatePage::PRODUCT_RELATION_PRODUCT_1_SKU);
+
         $i->switchToAssignProductsTab();
 
         $i->selectProductRule(
@@ -55,6 +54,8 @@ class ProductRelationCreateRelationCest
         );
 
         $i->clickSaveButton();
+
+        $i->waitForText(sprintf('%s %s', ProductRelationCreatePage::EDIT_PRODUCT_RELATION_TEXT, $key), 20);
         $i->seeInPageSource(sprintf('%s %s', ProductRelationCreatePage::EDIT_PRODUCT_RELATION_TEXT, $key));
     }
 }

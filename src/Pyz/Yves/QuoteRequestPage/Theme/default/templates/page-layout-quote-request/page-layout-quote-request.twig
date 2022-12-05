@@ -75,8 +75,8 @@
 {% block titleForMultiShipments %}
     <h3 class="col">
         {{ 'quote_request_page.quote_request.shipment_counter' | trans({
-            '%index%': loop.index,
-            '%length%': data.shipmentGroups | length,
+            '%index%': loop.index | executeFilterIfExists('formatInt', app.locale),
+            '%length%': data.shipmentGroups | length | executeFilterIfExists('formatInt', app.locale),
         }) }}
     </h3>
 {% endblock %}

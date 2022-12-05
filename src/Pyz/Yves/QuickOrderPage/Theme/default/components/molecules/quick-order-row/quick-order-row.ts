@@ -30,6 +30,7 @@ export default class QuickOrderRow extends Component {
             (this.getElementsByClassName(`${this.jsName}__button-decrement`)[0] ||
                 this.getElementsByClassName(`${this.jsName}-partial__button-decrement`)[0])
         );
+
         this.quantityInput = <HTMLInputElement>(
             (this.getElementsByClassName(`${this.jsName}__quantity`)[0] ||
                 this.getElementsByClassName(`${this.jsName}-partial__quantity`)[0])

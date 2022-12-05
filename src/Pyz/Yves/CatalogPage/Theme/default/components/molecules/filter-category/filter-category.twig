@@ -47,7 +47,7 @@
 
             <li class="{{ config.name }}__menu-item {{ config.name }}__menu-item--lvl-{{ data.levelMenu }} {{ menuItemActiveClass }} {{ menuItemHiddenClass }}">
                 <button class="{{ config.name }}__menu-link {{ config.name }}__menu-link--lvl-{{ data.levelMenu }} {{ menuLinkActiveClass }} {{ triggerButtonJsName }}" type="button" {{ disableAttribute }} data-url={{ categoryUrl }}>
-                    <span class="{{ config.name }}__link-text {{ linkTextActiveClass }}">{{ categoryNode.name }}</span> <span>{{ quantity }}</span>
+                    <span class="{{ config.name }}__link-text {{ linkTextActiveClass }}">{{ categoryNode.name }}</span> <span>{{ quantity | executeFilterIfExists('formatInt', app.locale) }}</span>
                 </button>
 
                 {% if hasChildren %}
