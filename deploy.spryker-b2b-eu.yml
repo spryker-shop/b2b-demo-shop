@@ -51,6 +51,8 @@ image:
         SPRYKER_HOOK_AFTER_DEPLOY: "true"
         SPRYKER_HOOK_INSTALL: "vendor/bin/install -r EU/production --no-ansi -vvv"
         SPRYKER_HOOK_DESTRUCTIVE_INSTALL: "vendor/bin/install -r EU/destructive --no-ansi -vvv"
+        SPRYKER_PRODUCT_CONFIGURATOR_HOST: date-time-configurator-example.cloud.spryker.toys
+        SPRYKER_PRODUCT_CONFIGURATOR_PORT: 443
     php:
         enabled-extensions:
             - blackfire
@@ -108,6 +110,8 @@ groups:
             yves_eu:
                 application: yves
                 endpoints:
+                    date-time-configurator-example.cloud.spryker.toys:
+                        entry-point: Configurator
                     www.de.b2b-staging-eu.cloud.spryker.toys:
                         store: DE
                         <<: *frontend-auth

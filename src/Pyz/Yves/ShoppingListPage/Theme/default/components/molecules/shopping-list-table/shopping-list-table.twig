@@ -67,6 +67,11 @@
                 {{ parent() }}
             {% endblock %}
 
+            {% block productConfiguration %}
+                {% widget 'ProductConfigurationShoppingListItemDisplayWidget' args [data.listItem.shoppingListItem] only %}{% endwidget %}
+                {% widget 'ProductConfigurationShoppingListPageButtonWidget' args [data.listItem.shoppingListItem] only %}{% endwidget %}
+            {% endblock %}
+
             {% block itemAttributes %}
                 {% if data.attributes is not empty %}
                     {% include molecule('product-item-attributes') with {

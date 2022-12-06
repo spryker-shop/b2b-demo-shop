@@ -227,6 +227,10 @@
                                                     {% endif %}
                                                 {% endblock %}
 
+                                                {% block productConfiguration %}
+                                                    {{ parent() }}
+                                                {% endblock %}
+
                                                 {% block productInfo %}
                                                     {{ parent() }}
                                                 {% endblock %}

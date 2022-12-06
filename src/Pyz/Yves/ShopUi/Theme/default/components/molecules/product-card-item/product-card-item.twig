@@ -75,6 +75,14 @@
                                     </div>
                                 {% endblock %}
 
+                                {% block productConfiguration %}
+                                    {% widget 'ProductConfigurationCartItemDisplayWidget' args [data.listItem] only %}{% endwidget %}
+
+                                    {% if data.canEdit %}
+                                        {% widget 'ProductConfigurationCartPageButtonWidget' args [data.listItem] only %}{% endwidget %}
+                                    {% endif %}
+                                {% endblock %}
+
                                 {% block productInfo %}
                                     {% block quantityTitle %}
                                         {% if data.quantity is not empty and amountSalesUnit is empty %}

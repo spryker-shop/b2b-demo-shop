@@ -1,0 +1,16 @@
+{% extends view('shopping-list-item-configuration', '@SprykerShop:ProductConfigurationShoppingListWidget') %}
+
+{% block status %}
+    {% set statusClass = 'spacing-bottom spacing-bottom--big status--borderless' %}
+
+    {{ parent() }}
+{% endblock %}
+
+{% block optionsTemplate %}
+    {% include molecule('collapsible-list') with {
+        modifiers: ['small'],
+        data: {
+            listItems: productConfigurationTemplate.data,
+        },
+    } only %}
+{% endblock %}

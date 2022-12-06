@@ -8,6 +8,10 @@
 namespace Pyz\Zed\ShoppingList;
 
 use Spryker\Zed\ProductBundle\Communication\Plugin\ShoppingList\ReplaceBundledQuoteItemsPreConvertPlugin;
+use Spryker\Zed\ProductConfigurationShoppingList\Communication\Plugin\ShoppingList\ItemProductConfigurationItemToShoppingListItemMapperPlugin;
+use Spryker\Zed\ProductConfigurationShoppingList\Communication\Plugin\ShoppingList\ProductConfigurationShoppingListAddItemPreCheckPlugin;
+use Spryker\Zed\ProductConfigurationShoppingList\Communication\Plugin\ShoppingList\ProductConfigurationShoppingListItemBulkPostSavePlugin;
+use Spryker\Zed\ProductConfigurationShoppingList\Communication\Plugin\ShoppingList\ProductConfigurationShoppingListItemCollectionExpanderPlugin;
 use Spryker\Zed\ProductDiscontinued\Communication\Plugin\ShoppingList\ProductDiscontinuedAddItemPreCheckPlugin;
 use Spryker\Zed\ShoppingList\Communication\Plugin\ShoppingListItemProductConcreteActiveAddItemPreCheckPlugin;
 use Spryker\Zed\ShoppingList\ShoppingListDependencyProvider as SprykerShoppingListDependencyProvider;
@@ -30,6 +34,7 @@ class ShoppingListDependencyProvider extends SprykerShoppingListDependencyProvid
         return [
             new ProductDiscontinuedAddItemPreCheckPlugin(), #ProductDiscontinuedFeature
             new ShoppingListItemProductConcreteActiveAddItemPreCheckPlugin(),
+            new ProductConfigurationShoppingListAddItemPreCheckPlugin(),
         ];
     }
 
@@ -51,6 +56,7 @@ class ShoppingListDependencyProvider extends SprykerShoppingListDependencyProvid
         return [
             new ShoppingListItemNoteBulkPostSavePlugin(), #ShoppingListNoteFeature
             new ShoppingListItemProductOptionBulkPostSavePlugin(),
+            new ProductConfigurationShoppingListItemBulkPostSavePlugin(),
         ];
     }
 
@@ -73,6 +79,7 @@ class ShoppingListDependencyProvider extends SprykerShoppingListDependencyProvid
         return [
             new ShoppingListItemCollectionNoteExpanderPlugin(),
             new ShoppingListItemCollectionProductOptionExpanderPlugin(),
+            new ProductConfigurationShoppingListItemCollectionExpanderPlugin(),
         ];
     }
 
@@ -84,6 +91,7 @@ class ShoppingListDependencyProvider extends SprykerShoppingListDependencyProvid
         return [
             new ItemCartNoteToShoppingListItemNoteMapperPlugin(),
             new CartItemProductOptionToShoppingListItemProductOptionMapperPlugin(),
+            new ItemProductConfigurationItemToShoppingListItemMapperPlugin(),
         ];
     }
 }

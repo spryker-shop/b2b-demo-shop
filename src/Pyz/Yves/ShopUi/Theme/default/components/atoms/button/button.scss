@@ -239,17 +239,11 @@
 
         &[disabled],
         &--disabled {
-            background-color: $setting-color-gray-2;
-            border-color: $setting-color-gray-2;
+            background-color: $setting-color-gray-2 !important;
+            border-color: $setting-color-gray-2 !important;
             color: $setting-color-white;
             cursor: not-allowed;
             pointer-events: none;
-
-            &:hover,
-            &:focus {
-                background-color: $setting-color-gray-2;
-                border-color: $setting-color-gray-2;
-            }
         }
 
         &--justify {

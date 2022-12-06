@@ -1,0 +1,8 @@
+{% extends view('shopping-list-item-configuration-button', '@SprykerShop:ProductConfigurationShoppingListWidget') %}
+
+{% block body %}
+    {% set buttonClass = 'button button--hollow button--bigger spacing-bottom spacing-bottom' %}
+    {% set buttonIcon = 'configure' %}
+
+    {{ parent() }}
+{% endblock %}

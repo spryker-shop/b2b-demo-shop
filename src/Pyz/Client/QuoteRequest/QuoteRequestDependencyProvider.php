@@ -7,6 +7,7 @@
 
 namespace Pyz\Client\QuoteRequest;
 
+use Spryker\Client\ProductConfigurationCart\Plugin\QuoteRequest\ProductConfigurationQuoteRequestQuoteCheckPlugin;
 use Spryker\Client\QuoteApproval\Plugin\QuoteRequest\QuoteApprovalQuoteRequestQuoteCheckPlugin;
 use Spryker\Client\QuoteRequest\QuoteRequestDependencyProvider as SprykerQuoteRequestDependencyProvider;
 
@@ -19,6 +20,7 @@ class QuoteRequestDependencyProvider extends SprykerQuoteRequestDependencyProvid
     {
         return [
             new QuoteApprovalQuoteRequestQuoteCheckPlugin(),
+            new ProductConfigurationQuoteRequestQuoteCheckPlugin(),
         ];
     }
 }

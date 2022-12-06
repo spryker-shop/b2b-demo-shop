@@ -17,6 +17,11 @@ image:
         enabled-extensions:
             - blackfire
             - newrelic
+
+    environment:
+        SPRYKER_PRODUCT_CONFIGURATOR_HOST: date-time-configurator-example.demo-spryker.com
+        SPRYKER_PRODUCT_CONFIGURATOR_PORT: 443
+
     node:
         version: 16
         npm: 8
@@ -98,6 +103,8 @@ groups:
             Yves:
                 application: yves
                 endpoints:
+                    date-time-configurator-example.demo-spryker.com:
+                        entry-point: Configurator
                     www.de.b2b.demo-spryker.com:
                         store: DE
                     www.at.b2b.demo-spryker.com:

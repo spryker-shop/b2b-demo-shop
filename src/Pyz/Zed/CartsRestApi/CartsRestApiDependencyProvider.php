@@ -13,6 +13,7 @@ use Spryker\Zed\CompanyUsersRestApi\Communication\Plugin\CartsRestApi\CustomerCo
 use Spryker\Zed\DiscountPromotionsRestApi\Communication\Plugin\CartsRestApi\DiscountPromotionCartItemMapperPlugin;
 use Spryker\Zed\PersistentCart\Communication\Plugin\CartsRestApi\QuoteCreatorPlugin;
 use Spryker\Zed\ProductBundleCartsRestApi\Communication\Plugin\BundleItemQuoteItemReadValidatorPlugin;
+use Spryker\Zed\ProductConfigurationsRestApi\Communication\Plugin\CartsRestApi\ProductConfigurationCartItemMapperPlugin;
 use Spryker\Zed\ProductMeasurementUnitsRestApi\Communication\Plugin\CartsRestApi\SalesUnitCartItemMapperPlugin;
 use Spryker\Zed\ProductOptionsRestApi\Communication\Plugin\CartsRestApi\ProductOptionCartItemMapperPlugin;
 use Spryker\Zed\SalesOrderThresholdsRestApi\Communication\Plugin\CartsRestApi\SalesOrderThresholdQuoteExpanderPlugin;
@@ -60,6 +61,7 @@ class CartsRestApiDependencyProvider extends SprykerCartsRestApiDependencyProvid
             new ProductOptionCartItemMapperPlugin(),
             new DiscountPromotionCartItemMapperPlugin(),
             new SalesUnitCartItemMapperPlugin(),
+            new ProductConfigurationCartItemMapperPlugin(),
         ];
     }
 
