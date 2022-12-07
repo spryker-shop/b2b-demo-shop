@@ -93,7 +93,7 @@ if (!empty(getenv('SPRYKER_ACTIVE_STORES'))) {
     return $stores;
 }
 
-$stores['GLOBAL'] = [
+$stores['DE'] = [
     // different contexts
     'contexts' => [
         // shared settings for all contexts
@@ -131,7 +131,7 @@ $stores['GLOBAL'] = [
     'queuePools' => [
         'synchronizationPool' => [
             // 'AT-connection',
-            'GLOBAL-connection',
+            'DE-connection',
         ],
     ],
     'storesWithSharedPersistence' => [],

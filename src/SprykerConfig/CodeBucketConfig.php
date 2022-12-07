@@ -17,7 +17,9 @@ class CodeBucketConfig extends AbstractCodeBucketConfig
     public function getCodeBuckets(): array
     {
         return [
-            'GLOBAL'
+            'DE',
+            'AT',
+            'US',
         ];
     }
 

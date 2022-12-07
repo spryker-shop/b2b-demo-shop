@@ -47,8 +47,8 @@ image:
             - blackfire
             - newrelic
     environment:
-        SPRYKER_DEFAULT_STORE: "GLOBAL"
-        SPRYKER_ACTIVE_STORES: "GLOBAL"
+        SPRYKER_DEFAULT_STORE: "DE"
+        SPRYKER_ACTIVE_STORES: "DE"
         SPRYKER_HOOK_BEFORE_DEPLOY: "vendor/bin/install -r EU/pre-deploy -vvv"
         SPRYKER_HOOK_AFTER_DEPLOY: "true"
         SPRYKER_HOOK_INSTALL: "vendor/bin/install -r EU/production --no-ansi -vvv"
@@ -80,14 +80,14 @@ regions:
                 password: secret
 
         stores:
-            GLOBAL:
+            DE:
                 services:
                     broker:
-                        namespace: global-docker
+                        namespace: de-docker
                     key_value_store:
                         namespace: 1
                     search:
-                        namespace: global_search
+                        namespace: de_search
 groups:
     EU:
         region: EU
@@ -96,7 +96,7 @@ groups:
                 application: yves
                 endpoints:
                     www.aep-dev.mmm.azure.zf.com:
-                        store: GLOBAL
+                        store: DE
                         <<: *frontend-auth
                         services:
                             session:
@@ -105,12 +105,12 @@ groups:
                 application: glue
                 endpoints:
                     glue.aep-dev.mmm.azure.zf.com:
-                        store: GLOBAL
+                        store: DE
             boffice:
                 application: backoffice
                 endpoints:
                     backoffice.aep-dev.mmm.azure.zf.com:
-                        store: GLOBAL
+                        store: DE
                         services:
                             session:
                                 namespace: 3
@@ -118,13 +118,13 @@ groups:
                 application: backend-gateway
                 endpoints:
                     backend-gateway.aep-dev.mmm.azure.zf.com:
-                        store: GLOBAL
+                        store: DE
                         primal: true
             backapi:
                 application: zed
                 endpoints:
                     backend-api.aep-dev.mmm.azure.zf.com:
-                        store: GLOBAL
+                        store: DE
                         entry-point: BackendApi
 services:
     database:
@@ -182,7 +182,7 @@ docker:
             enabled: false
 
     testing:
-        store: GLOBAL        
+        store: DE        
 
     mount:
         baked:
