@@ -82,6 +82,8 @@ image:
         }'
 
     php:
+        ini:
+            opcache.interned_strings_buffer: 32
         enabled-extensions:
             - blackfire
             - newrelic
@@ -200,7 +202,7 @@ groups:
 services:
     database:
         engine: mysql
-        version: mariadb-10.4
+        version: mariadb-10.5
         root:
             username: "root"
             password: "secret"
