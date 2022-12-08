@@ -11,5 +11,8 @@ use SprykerShop\Yves\CompanyPage\CompanyPageConfig as SprykerCompanyPageConfig;
 
 class CompanyPageConfig extends SprykerCompanyPageConfig
 {
+    /**
+     * @var string
+     */
     protected const ZIP_CODE_CONSTRAINT_PATTERN = '/^\d+$/';
 }

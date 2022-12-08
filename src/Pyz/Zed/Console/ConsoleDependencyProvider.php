@@ -171,6 +171,9 @@ use Stecman\Component\Symfony\Console\BashCompletion\CompletionCommand;
  */
 class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
 {
+    /**
+     * @var string
+     */
     protected const PYZ_COMMAND_SEPARATOR = ':';
 
     /**
