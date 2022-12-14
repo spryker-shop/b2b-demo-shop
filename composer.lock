@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "dddfd6e8617f9c49c4495cadfc2d5d42",
+    "content-hash": "d1bc4bbef5ead3982bd5372d4f4b5edc",
     "packages": [
         {
             "name": "async-aws/core",
@@ -4560,12 +4560,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-feature/agent-assist.git",
-                "reference": "ca7679ec7506d0a03f27132b5f9d200c9a9635b9"
+                "reference": "998489e66c13fd92caf9514a3852a196632de995"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-feature/agent-assist/zipball/ca7679ec7506d0a03f27132b5f9d200c9a9635b9",
-                "reference": "ca7679ec7506d0a03f27132b5f9d200c9a9635b9",
+                "url": "https://api.github.com/repos/spryker-feature/agent-assist/zipball/998489e66c13fd92caf9514a3852a196632de995",
+                "reference": "998489e66c13fd92caf9514a3852a196632de995",
                 "shasum": ""
             },
             "require": {
@@ -4580,7 +4580,7 @@
             "type": "metapackage",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "202211.x-dev"
+                    "dev-master": "202212.x-dev"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -4589,9 +4589,9 @@
             ],
             "description": "Agent Assist [feature]",
             "support": {
-                "source": "https://github.com/spryker-feature/agent-assist/tree/202211.0"
+                "source": "https://github.com/spryker-feature/agent-assist/tree/master"
             },
-            "time": "2022-11-23T20:29:45+00:00"
+            "time": "2022-12-14T09:12:25+00:00"
         },
         {
             "name": "spryker-feature/alternative-products",
@@ -5253,25 +5253,25 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-feature/customer-account-management.git",
-                "reference": "ca79147eec6fae092cf8643a0bb0b549f7ee9064"
+                "reference": "b6641250c0baee56afd1593a4055e5a8e50e1ec2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-feature/customer-account-management/zipball/ca79147eec6fae092cf8643a0bb0b549f7ee9064",
-                "reference": "ca79147eec6fae092cf8643a0bb0b549f7ee9064",
+                "url": "https://api.github.com/repos/spryker-feature/customer-account-management/zipball/b6641250c0baee56afd1593a4055e5a8e50e1ec2",
+                "reference": "b6641250c0baee56afd1593a4055e5a8e50e1ec2",
                 "shasum": ""
             },
             "require": {
                 "php": ">=8.0",
                 "spryker-shop/customer-page": "^2.39.0",
+                "spryker-shop/session-customer-validation-page": "^1.0.0",
                 "spryker/customer": "^7.47.0",
                 "spryker/customer-group": "^2.6.0",
                 "spryker/customer-note": "^1.1.0",
                 "spryker/customer-note-gui": "^1.2.0",
                 "spryker/oauth": "^2.6.0",
                 "spryker/oauth-cryptography": "^1.0.0",
-                "spryker/oauth-revoke": "^1.3.0",
-                "spryker/session-customer-validation": "^1.0.0"
+                "spryker/oauth-revoke": "^1.3.0"
             },
             "default-branch": true,
             "type": "metapackage",
@@ -5288,7 +5288,7 @@
             "support": {
                 "source": "https://github.com/spryker-feature/customer-account-management/tree/master"
             },
-            "time": "2022-11-30T13:27:24+00:00"
+            "time": "2022-12-14T09:15:13+00:00"
         },
         {
             "name": "spryker-feature/deployment-tools",
@@ -7290,20 +7290,21 @@
         },
         {
             "name": "spryker-shop/agent-page",
-            "version": "1.10.0",
+            "version": "1.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/agent-page.git",
-                "reference": "f389093547124a495ecb44e0c17ca9038c0598cb"
+                "reference": "b5f00e76553adfb465cafb2888ec1a38a7bdc105"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/agent-page/zipball/f389093547124a495ecb44e0c17ca9038c0598cb",
-                "reference": "f389093547124a495ecb44e0c17ca9038c0598cb",
+                "url": "https://api.github.com/repos/spryker-shop/agent-page/zipball/b5f00e76553adfb465cafb2888ec1a38a7bdc105",
+                "reference": "b5f00e76553adfb465cafb2888ec1a38a7bdc105",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.3",
+                "php": ">=8.0",
+                "spryker-shop/agent-page-extension": "^1.0.0",
                 "spryker-shop/customer-page": "^1.4.0 || ^2.0.0",
                 "spryker-shop/customer-page-extension": "^1.2.0",
                 "spryker-shop/shop-application": "^1.1.0",
@@ -7352,9 +7353,50 @@
             ],
             "description": "AgentPage module",
             "support": {
-                "source": "https://github.com/spryker-shop/agent-page/tree/1.10.0"
+                "source": "https://github.com/spryker-shop/agent-page/tree/1.11.0"
             },
-            "time": "2020-12-29T11:53:13+00:00"
+            "time": "2022-12-13T15:22:32+00:00"
+        },
+        {
+            "name": "spryker-shop/agent-page-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/agent-page-extension.git",
+                "reference": "d33a31ff55d67d6e86ce8e745ebc38921c17406f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/agent-page-extension/zipball/d33a31ff55d67d6e86ce8e745ebc38921c17406f",
+                "reference": "d33a31ff55d67d6e86ce8e745ebc38921c17406f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "AgentPageExtension module",
+            "support": {
+                "source": "https://github.com/spryker-shop/agent-page-extension/tree/1.0.0"
+            },
+            "time": "2022-12-13T15:22:32+00:00"
         },
         {
             "name": "spryker-shop/agent-widget",
@@ -13812,6 +13854,103 @@
                 "source": "https://github.com/spryker-shop/session-agent-validation-extension/tree/1.0.0"
             },
             "time": "2022-11-08T12:42:29+00:00"
+        },
+        {
+            "name": "spryker-shop/session-customer-validation-page",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/session-customer-validation-page.git",
+                "reference": "066745370d710540b6759998c368d2a5e9d5888f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/session-customer-validation-page/zipball/066745370d710540b6759998c368d2a5e9d5888f",
+                "reference": "066745370d710540b6759998c368d2a5e9d5888f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0",
+                "spryker-shop/agent-page-extension": "^1.0.0",
+                "spryker-shop/session-customer-validation-page-extension": "^1.0.0",
+                "spryker/customer": "^7.0.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/security-extension": "^1.0.0",
+                "spryker/session": "^4.0.0",
+                "spryker/symfony": "^3.8.0",
+                "spryker/transfer": "^3.25.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/container": "*",
+                "spryker/propel": "*",
+                "spryker/security": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/event-dispatcher": "Add this module if you want to use security plugins."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "SessionCustomerValidationPage module",
+            "support": {
+                "source": "https://github.com/spryker-shop/session-customer-validation-page/tree/1.0.0"
+            },
+            "time": "2022-12-13T15:22:32+00:00"
+        },
+        {
+            "name": "spryker-shop/session-customer-validation-page-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker-shop/session-customer-validation-page-extension.git",
+                "reference": "ba04cc096ea8bf10dbbdd6ec9902778f9167232d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker-shop/session-customer-validation-page-extension/zipball/ba04cc096ea8bf10dbbdd6ec9902778f9167232d",
+                "reference": "ba04cc096ea8bf10dbbdd6ec9902778f9167232d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SprykerShop\\": "src/SprykerShop/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "SessionCustomerValidationPageExtension module",
+            "support": {
+                "source": "https://github.com/spryker-shop/session-customer-validation-page-extension/tree/1.0.0"
+            },
+            "time": "2022-12-13T15:22:32+00:00"
         },
         {
             "name": "spryker-shop/shared-cart-page",
@@ -45960,75 +46099,21 @@
             "time": "2022-05-25T15:18:35+00:00"
         },
         {
-            "name": "spryker/session-customer-validation",
-            "version": "1.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker/session-customer-validation.git",
-                "reference": "09bad6fd4141834f5d64e15054b25ec631846675"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker/session-customer-validation/zipball/09bad6fd4141834f5d64e15054b25ec631846675",
-                "reference": "09bad6fd4141834f5d64e15054b25ec631846675",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=8.0",
-                "spryker/customer": "^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0",
-                "spryker/kernel": "^3.30.0",
-                "spryker/security-extension": "^1.0.0",
-                "spryker/session-customer-validation-extension": "^1.0.0",
-                "spryker/symfony": "^3.8.0",
-                "spryker/transfer": "^3.25.0"
-            },
-            "require-dev": {
-                "spryker/code-sniffer": "*",
-                "spryker/container": "*",
-                "spryker/propel": "*",
-                "spryker/testify": "*"
-            },
-            "suggest": {
-                "spryker/container": "Add this module if you want to use security plugins.",
-                "spryker/event-dispatcher": "Add this module if you want to use security plugins."
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Spryker\\": "src/Spryker/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "SessionCustomerValidation module",
-            "support": {
-                "source": "https://github.com/spryker/session-customer-validation/tree/1.0.1"
-            },
-            "time": "2022-11-08T12:42:27+00:00"
-        },
-        {
             "name": "spryker/session-customer-validation-extension",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/session-customer-validation-extension.git",
-                "reference": "3f1744a6b39bc8af10b26dbeeaa904d90dfa506f"
+                "reference": "f3274fff96880a2e0f0ce2fc562950ca6c529627"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/session-customer-validation-extension/zipball/3f1744a6b39bc8af10b26dbeeaa904d90dfa506f",
-                "reference": "3f1744a6b39bc8af10b26dbeeaa904d90dfa506f",
+                "url": "https://api.github.com/repos/spryker/session-customer-validation-extension/zipball/f3274fff96880a2e0f0ce2fc562950ca6c529627",
+                "reference": "f3274fff96880a2e0f0ce2fc562950ca6c529627",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.4"
+                "php": ">=8.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*"
@@ -46050,9 +46135,9 @@
             ],
             "description": "SessionCustomerValidationExtension module",
             "support": {
-                "source": "https://github.com/spryker/session-customer-validation-extension/tree/1.0.0"
+                "source": "https://github.com/spryker/session-customer-validation-extension/tree/1.1.0"
             },
-            "time": "2022-03-16T14:26:53+00:00"
+            "time": "2022-12-13T15:22:29+00:00"
         },
         {
             "name": "spryker/session-extension",
@@ -46098,21 +46183,22 @@
         },
         {
             "name": "spryker/session-file",
-            "version": "1.4.0",
+            "version": "1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/session-file.git",
-                "reference": "db08f9bd3eeb3c7df6d3fea5e7c4860c70eb41e1"
+                "reference": "481c607d1dd6c263500c2e83c4e4a9397c89efbf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/session-file/zipball/db08f9bd3eeb3c7df6d3fea5e7c4860c70eb41e1",
-                "reference": "db08f9bd3eeb3c7df6d3fea5e7c4860c70eb41e1",
+                "url": "https://api.github.com/repos/spryker/session-file/zipball/481c607d1dd6c263500c2e83c4e4a9397c89efbf",
+                "reference": "481c607d1dd6c263500c2e83c4e4a9397c89efbf",
                 "shasum": ""
             },
             "require": {
                 "php": ">=8.0",
                 "spryker-shop/session-agent-validation-extension": "^1.0.0",
+                "spryker-shop/session-customer-validation-page-extension": "^1.0.0",
                 "spryker/kernel": "^3.33.0",
                 "spryker/monitoring": "^1.0.0 || ^2.0.0",
                 "spryker/session-customer-validation-extension": "^1.0.0",
@@ -46142,27 +46228,28 @@
             ],
             "description": "SessionFile module",
             "support": {
-                "source": "https://github.com/spryker/session-file/tree/1.4.0"
+                "source": "https://github.com/spryker/session-file/tree/1.5.0"
             },
-            "time": "2022-12-01T11:40:47+00:00"
+            "time": "2022-12-13T15:22:29+00:00"
         },
         {
             "name": "spryker/session-redis",
-            "version": "1.7.0",
+            "version": "1.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/session-redis.git",
-                "reference": "6fcb673aadd15980d50326ed86f09e631a58c48f"
+                "reference": "06a3b696300dc75c3fb564c43b19317b9c39a4ec"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/session-redis/zipball/6fcb673aadd15980d50326ed86f09e631a58c48f",
-                "reference": "6fcb673aadd15980d50326ed86f09e631a58c48f",
+                "url": "https://api.github.com/repos/spryker/session-redis/zipball/06a3b696300dc75c3fb564c43b19317b9c39a4ec",
+                "reference": "06a3b696300dc75c3fb564c43b19317b9c39a4ec",
                 "shasum": ""
             },
             "require": {
                 "php": ">=8.0",
                 "spryker-shop/session-agent-validation-extension": "^1.0.0",
+                "spryker-shop/session-customer-validation-page-extension": "^1.0.0",
                 "spryker/kernel": "^3.52.0",
                 "spryker/monitoring": "^1.0.0 || ^2.0.0",
                 "spryker/redis": "^2.1.0",
@@ -46194,9 +46281,9 @@
             ],
             "description": "SessionRedis module",
             "support": {
-                "source": "https://github.com/spryker/session-redis/tree/1.7.0"
+                "source": "https://github.com/spryker/session-redis/tree/1.8.0"
             },
-            "time": "2022-11-08T12:42:27+00:00"
+            "time": "2022-12-13T15:22:29+00:00"
         },
         {
             "name": "spryker/session-redis-extension",
@@ -63323,5 +63410,5 @@
     "platform-overrides": {
         "php": "8.0.9"
     },
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.2.0"
 }
