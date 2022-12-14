@@ -35,8 +35,6 @@
     value: false,
     name: false,
     class: false,
-    min: false,
-    max: false,
 } %}
 
 {% set filteredInputAttributes = inputAttributes | filter((value, key) => inputAttributeFilters[key] ?? true) %}
