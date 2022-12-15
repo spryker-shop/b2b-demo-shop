@@ -25,7 +25,7 @@
             <h6 class="{{ config.name }}__title">{{ 'page.checkout.summary.complete_checkout' | trans }}</h6>
         </div>
         <div class="col col--expand text-right">
-            <span class="{{ config.name }}__label">{{ cartQuantity }} {{ 'checkout.step.summary.items' | trans }}</span>
+            <span class="{{ config.name }}__label">{{ cartQuantity | executeFilterIfExists('formatInt', app.locale) }} {{ 'checkout.step.summary.items' | trans }}</span>
         </div>
     </div>
 

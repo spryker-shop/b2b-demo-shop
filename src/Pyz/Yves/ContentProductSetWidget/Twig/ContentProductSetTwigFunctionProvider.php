@@ -46,6 +46,7 @@ class ContentProductSetTwigFunctionProvider extends TwigFunctionProvider
 
     /**
      * @var string
+     *
      * @deprecated Use {@link \SprykerShop\Yves\ContentProductSetWidget\Twig\ContentProductSetTwigFunctionProvider::PYZ_WIDGET_TEMPLATE_IDENTIFIER_CART_BUTTON_TOP} instead.
      */
     protected const PYZ_WIDGET_TEMPLATE_IDENTIFIER_DEFAULT = 'default';

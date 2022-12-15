@@ -12,7 +12,7 @@
     <h6 class="{{ config.name }}__quantity text-secondary float-right">
         {% widget 'ProductBundleItemCounterWidget' args [data.cart] only %}
         {% nowidget %}
-            {{ data.cart.items | length }} {{ 'item' | trans }}
+            {{ data.cart.items | length | executeFilterIfExists('formatInt', app.locale) }} {{ 'item' | trans }}
         {% endwidget %}
     </h6>
     <h6 class="spacing-bottom spacing-bottom--inner">{{ 'cart.your-order' | trans }}</h6>

@@ -10,7 +10,7 @@
                     <dt>{{ 'Email' | trans }}</dt>
                     <dd>{{ order.email }}</dd>
                     <dt>{{ 'Previous orders count' | trans }}</dt>
-                    <dd>{{ order.totalOrderCount }}</dd>
+                    <dd>{{ order.totalOrderCount | executeFilterIfExists('formatInt', app.locale) }}</dd>
                     <dt>{{ 'Billing address' | trans }}</dt>
                     <dd>{{ order.billingAddress.firstName ~ ' '
                         ~ order.billingAddress.lastName ~ ', '

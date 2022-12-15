@@ -15,6 +15,9 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class IndexController extends SprykerIndexController
 {
+    /**
+     * @var string
+     */
     protected const PYZ_MESSAGE_UPDATE_SUCCESS = 'Not logged in customer accessible content has been successfully updated.';
 
     /**

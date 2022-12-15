@@ -1,0 +1,43 @@
+@include shop-ui-collapsible-list {
+    $name: '.collapsible-list';
+    margin-bottom: rem(20);
+
+    &__item {
+        margin-bottom: rem(10);
+
+        &:last-of-type {
+            margin-bottom: 0;
+        }
+    }
+
+    &__name {
+        font-weight: fw(bold);
+        color: $setting-color-gray-5;
+        padding-right: rem(10);
+    }
+
+    &__value {
+        color: $setting-color-gray-3;
+    }
+
+    &__button--shown {
+        margin-top: rem(14);
+    }
+
+    &--small {
+        font-size: map_get($setting-font-size, small);
+        margin-bottom: rem(12);
+
+        #{$name}__item {
+            margin-bottom: rem(8);
+
+            &:last-of-type {
+                margin-bottom: 0;
+            }
+        }
+
+        #{$name}__button--shown {
+            margin-top: rem(10);
+        }
+    }
+}

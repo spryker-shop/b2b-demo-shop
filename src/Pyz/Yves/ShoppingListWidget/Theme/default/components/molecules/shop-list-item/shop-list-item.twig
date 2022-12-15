@@ -16,7 +16,7 @@
         <span class="col {{ config.name }}__owner">({{ data.shoppingList.owner }})</span>
     </a>
     <span class="{{ config.name }}__items-count">
-        {{ data.shoppingList.numberOfItems }}
+        {{ data.shoppingList.numberOfItems | default(0) | executeFilterIfExists('formatInt', app.locale) }}
         {{ 'shopping_list_widget.items' | trans }}
     </span>
     <span class="{{ config.name }}__access {% if hasWriteAccess %}{{ config.name }}__access--full{% endif %}" >

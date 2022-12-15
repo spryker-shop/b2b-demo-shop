@@ -47,7 +47,7 @@
             {% for i in range(1, data.extremePagesLimit) %}
                 {% if i < data.currentPage - data.nearbyPagesLimit  %}
                     <li class="{{config.name}}__item">
-                        <a class="{{config.name}}__step {{config.name}}__step--button" href="{{ path(data.paginationPath, data.parameters|merge({page: i})) }}{{ data.anchor }}">{{ i }}</a>
+                        <a class="{{config.name}}__step {{config.name}}__step--button" href="{{ path(data.paginationPath, data.parameters|merge({page: i})) }}{{ data.anchor }}">{{ i | executeFilterIfExists('formatInt', app.locale) }}</a>
                     </li>
                 {% endif %}
             {% endfor %}
@@ -65,7 +65,7 @@
                     {% endif %}
 
                     <li class="{{config.name}}__item {{ pageAfterEllipsisIndex is defined ? config.name ~ '__item--pages-after-ellipsis-index-' ~ pageAfterEllipsisIndex : '' }}">
-                        <a class="{{config.name}}__step {{config.name}}__step--button" href="{{ path(data.paginationPath, data.parameters|merge({page: i})) }}{{ data.anchor }}">{{ i }}</a>
+                        <a class="{{config.name}}__step {{config.name}}__step--button" href="{{ path(data.paginationPath, data.parameters|merge({page: i})) }}{{ data.anchor }}">{{ i | executeFilterIfExists('formatInt', app.locale) }}</a>
                     </li>
                 {% endif %}
             {% endfor %}
@@ -84,7 +84,7 @@
         {% endif %}
 
         <li class="{{config.name}}__item">
-            <a class="{{config.name}}__step {{config.name}}__step--button {{config.name}}__step--current" href="{{ path(data.paginationPath, data.parameters|merge({ page: data.currentPage })) }}{{ data.anchor }}">{{ data.currentPage }}</a>
+            <a class="{{config.name}}__step {{config.name}}__step--button {{config.name}}__step--current" href="{{ path(data.paginationPath, data.parameters|merge({ page: data.currentPage })) }}{{ data.anchor }}">{{ data.currentPage | executeFilterIfExists('formatInt', app.locale) }}</a>
         </li>
 
         {% if data.currentPage < data.maxPage %}
@@ -95,7 +95,7 @@
                     {% endif %}
 
                     <li class="{{config.name}}__item {{ pagesBeforeEllipsisIndex is defined ? config.name ~ '__item--pages-before-ellipsis-index-' ~ pagesBeforeEllipsisIndex : '' }}">
-                        <a class="{{config.name}}__step {{config.name}}__step--button" href="{{ path(data.paginationPath, data.parameters|merge({page: i})) }}{{ data.anchor }}">{{ i }}</a>
+                        <a class="{{config.name}}__step {{config.name}}__step--button" href="{{ path(data.paginationPath, data.parameters|merge({page: i})) }}{{ data.anchor }}">{{ i | executeFilterIfExists('formatInt', app.locale) }}</a>
                     </li>
                 {% endif %}
             {% endfor %}
@@ -109,7 +109,7 @@
             {% for i in range(data.maxPage - data.extremePagesLimit + 1, data.maxPage) %}
                 {% if i > data.currentPage + data.nearbyPagesLimit %}
                     <li class="{{config.name}}__item">
-                        <a class="{{config.name}}__step {{config.name}}__step--button" href="{{ path(data.paginationPath, data.parameters|merge({page: i})) }}{{ data.anchor }}">{{ i }}</a>
+                        <a class="{{config.name}}__step {{config.name}}__step--button" href="{{ path(data.paginationPath, data.parameters|merge({page: i})) }}{{ data.anchor }}">{{ i | executeFilterIfExists('formatInt', app.locale) }}</a>
                     </li>
                 {% endif %}
             {% endfor %}

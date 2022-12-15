@@ -3,7 +3,7 @@ import AutocompleteForm, {
     Events as AutocompleteEvents,
 } from 'ShopUi/components/molecules/autocomplete-form/autocomplete-form';
 import AjaxProvider from 'ShopUi/components/molecules/ajax-provider/ajax-provider';
-import debounce from 'lodash-es/debounce';
+import FormattedNumberInput from 'ShopUi/components/molecules/formatted-number-input/formatted-number-input';
 
 export default class QuickOrderRow extends Component {
     protected ajaxProvider: AjaxProvider;
@@ -11,6 +11,8 @@ export default class QuickOrderRow extends Component {
     protected quantityInput: HTMLInputElement;
     protected incrementButton: HTMLButtonElement;
     protected decrementButton: HTMLButtonElement;
+    protected eventInput: Event = new Event('input');
+    protected formattedNumberInput: FormattedNumberInput;
 
     protected readyCallback(): void {}
 
@@ -30,9 +32,15 @@ export default class QuickOrderRow extends Component {
             (this.getElementsByClassName(`${this.jsName}__button-decrement`)[0] ||
                 this.getElementsByClassName(`${this.jsName}-partial__button-decrement`)[0])
         );
+
         this.quantityInput = <HTMLInputElement>(
             (this.getElementsByClassName(`${this.jsName}__quantity`)[0] ||
                 this.getElementsByClassName(`${this.jsName}-partial__quantity`)[0])
+        );
+
+        this.formattedNumberInput = <FormattedNumberInput>(
+            (this.getElementsByClassName(`${this.jsName}__formatted`)[0] ||
+                this.getElementsByClassName(`${this.jsName}-partial__formatted`)[0])
         );
     }
 
@@ -45,12 +53,7 @@ export default class QuickOrderRow extends Component {
     protected mapQuantityInputChange(): void {
         this.incrementButton.addEventListener('click', (event: Event) => this.incrementValue(event));
         this.decrementButton.addEventListener('click', (event: Event) => this.decrementValue(event));
-        this.quantityInput.addEventListener(
-            'input',
-            debounce(() => {
-                this.onQuantityChange();
-            }, this.autocompleteInput.debounceDelay),
-        );
+        this.quantityInput.addEventListener('change', () => this.onQuantityChange());
     }
 
     protected onAutocompleteSet(): void {
@@ -67,26 +70,36 @@ export default class QuickOrderRow extends Component {
 
     protected incrementValue(event: Event): void {
         event.preventDefault();
-        const value = Number(this.quantityInput.value);
-        const potentialValue = value + this.step;
+        const value = this.formattedNumberInput.unformattedValue;
+        const potentialValue = Number(value) + this.step;
         if (value < this.maxQuantity) {
             this.quantityInput.value = potentialValue.toString();
+            this.triggerInputEvent(this.quantityInput);
             this.onQuantityChange();
         }
     }
 
     protected decrementValue(event: Event): void {
         event.preventDefault();
-        const value = Number(this.quantityInput.value);
+        const value = this.formattedNumberInput.unformattedValue;
         const potentialValue = value - this.step;
         if (potentialValue >= this.minQuantity) {
             this.quantityInput.value = potentialValue.toString();
+            this.triggerInputEvent(this.quantityInput);
             this.onQuantityChange();
         }
     }
 
     async reloadField(sku: string = '') {
-        const quantityInputValue = parseInt(this.quantityValue);
+        let quantityInputValue = Math.floor(Number(this.formattedNumberInput.unformattedValue));
+
+        if (quantityInputValue < this.minQuantity) {
+            quantityInputValue = this.minQuantity;
+        }
+
+        if (quantityInputValue > this.maxQuantity) {
+            quantityInputValue = this.maxQuantity;
+        }
 
         this.ajaxProvider.queryParams.set('sku', sku);
         this.ajaxProvider.queryParams.set('index', this.ajaxProvider.getAttribute('class').split('-').pop().trim());
@@ -104,8 +117,8 @@ export default class QuickOrderRow extends Component {
         }
     }
 
-    protected get quantityValue(): string {
-        return this.quantityInput.value;
+    protected triggerInputEvent(input: HTMLInputElement): void {
+        input.dispatchEvent(this.eventInput);
     }
 
     protected get autocompleteFormClassName(): string {
@@ -113,11 +126,11 @@ export default class QuickOrderRow extends Component {
     }
 
     protected get minQuantity(): number {
-        return Number(this.quantityInput.getAttribute('min'));
+        return Number(this.formattedNumberInput.getAttribute('min'));
     }
 
     protected get maxQuantity(): number {
-        const max = Number(this.quantityInput.getAttribute('max'));
+        const max = Number(this.formattedNumberInput.getAttribute('max'));
 
         return max > 0 && max > this.minQuantity ? max : Infinity;
     }

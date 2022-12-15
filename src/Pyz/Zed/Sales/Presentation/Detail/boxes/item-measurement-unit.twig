@@ -1,5 +1,5 @@
 {% if orderItem.quantitySalesUnit.productMeasurementUnit.name is defined and orderItem.quantitySalesUnit.productMeasurementUnit.name and orderItem.quantitySalesUnit.conversion %}
     <div>
-        ( = {{ (orderItem.quantity / orderItem.quantitySalesUnit.conversion) | round }} {{ orderItem.quantitySalesUnit.productMeasurementUnit.name | trans }})
+        ( = {{ (orderItem.quantity / orderItem.quantitySalesUnit.conversion) | round | executeFilterIfExists('formatFloat', app.locale) }} {{ orderItem.quantitySalesUnit.productMeasurementUnit.name | trans }})
     </div>
 {% endif %}
