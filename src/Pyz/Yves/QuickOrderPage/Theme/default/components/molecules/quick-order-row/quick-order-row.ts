@@ -91,15 +91,7 @@ export default class QuickOrderRow extends Component {
     }
 
     async reloadField(sku: string = '') {
-        let quantityInputValue = Math.floor(Number(this.formattedNumberInput.unformattedValue));
-
-        if (quantityInputValue < this.minQuantity) {
-            quantityInputValue = this.minQuantity;
-        }
-
-        if (quantityInputValue > this.maxQuantity) {
-            quantityInputValue = this.maxQuantity;
-        }
+        const quantityInputValue = Math.floor(Number(this.formattedNumberInput.unformattedValue));
 
         this.ajaxProvider.queryParams.set('sku', sku);
         this.ajaxProvider.queryParams.set('index', this.ajaxProvider.getAttribute('class').split('-').pop().trim());
