@@ -95,7 +95,7 @@ groups:
             Yves:
                 application: yves
                 endpoints:
-                    www.zf-aepstaging.cloud.spryker.toys:
+                    www.aep.mmm.azure.zf.com:
                         store: DE
                         <<: *frontend-auth
                         services:
@@ -104,12 +104,12 @@ groups:
             Glue:
                 application: glue
                 endpoints:
-                    glue.zf-aepstaging.cloud.spryker.toys:
+                    glue.aep.mmm.azure.zf.com:
                         store: DE
             boffice:
                 application: backoffice
                 endpoints:
-                    backoffice.zf-aepstaging.cloud.spryker.toys:
+                    backoffice.aep.mmm.azure.zf.com:
                         store: DE
                         services:
                             session:
@@ -117,13 +117,13 @@ groups:
             backgw:
                 application: backend-gateway
                 endpoints:
-                    backend-gateway.zf-aepstaging.cloud.spryker.toys:
+                    backend-gateway.aep.mmm.azure.zf.com:
                         store: DE
                         primal: true
             backapi:
                 application: zed
                 endpoints:
-                    backend-api.zf-aepstaging.cloud.spryker.toys:
+                    backend-api.aep.mmm.azure.zf.com:
                         store: DE
                         entry-point: BackendApi
 services:
@@ -143,7 +143,7 @@ services:
             username: "spryker"
             password: "secret"
         endpoints:
-            rabbitmq.zf-aepstaging.cloud.spryker.toys:
+            rabbitmq.aep.mmm.azure.zf.com:
             localhost:5672:
                 protocol: tcp
     session:
@@ -164,11 +164,11 @@ services:
         version: '2.324'
         csrf-protection-enabled: false
         endpoints:
-            jenkins.zf-aepstaging.cloud.spryker.toys:
+            jenkins.aep.mmm.azure.zf.com:
     mail_catcher:
         engine: mailhog
         endpoints:
-            mail.zf-aepstaging.cloud.spryker.toys:
+            mail.aep.mmm.azure.zf.com:
 
 docker:
 
