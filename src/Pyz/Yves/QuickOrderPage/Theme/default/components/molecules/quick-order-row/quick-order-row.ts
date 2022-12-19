@@ -70,8 +70,8 @@ export default class QuickOrderRow extends Component {
 
     protected incrementValue(event: Event): void {
         event.preventDefault();
-        const value = this.formattedNumberInput.unformattedValue;
-        const potentialValue = Number(value) + this.step;
+        const value: number = this.formattedNumberInput.unformattedValue;
+        const potentialValue = value + this.step;
         if (value < this.maxQuantity) {
             this.quantityInput.value = potentialValue.toString();
             this.triggerInputEvent(this.quantityInput);
@@ -91,7 +91,7 @@ export default class QuickOrderRow extends Component {
     }
 
     async reloadField(sku: string = '') {
-        const quantityInputValue = Math.floor(Number(this.formattedNumberInput.unformattedValue));
+        const quantityInputValue = Math.floor(this.formattedNumberInput.unformattedValue);
 
         this.ajaxProvider.queryParams.set('sku', sku);
         this.ajaxProvider.queryParams.set('index', this.ajaxProvider.getAttribute('class').split('-').pop().trim());
