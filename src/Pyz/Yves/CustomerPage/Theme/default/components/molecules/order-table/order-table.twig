@@ -126,7 +126,7 @@
                                 {% set label = (itemCount == 1) ? 'customer.order.item' : 'customer.order.items' %}
 
                                 <span class="badge badge--order">
-                                    {{ order.items.count }}&nbsp;{{ label | trans }}
+                                    {{ order.items.count | executeFilterIfExists('formatInt', app.locale) }}&nbsp;{{ label | trans }}
                                 </span>
                             </td>
                         {% endif %}

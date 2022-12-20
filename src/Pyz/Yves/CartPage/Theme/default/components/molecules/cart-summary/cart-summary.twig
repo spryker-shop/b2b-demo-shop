@@ -64,8 +64,23 @@
         </ul>
     </div>
 
+    {% set productConfigurationWidget = findWidget('ProductConfigurationQuoteValidatorWidget', [data.cart]) %}
+    {% set canProceedQuoteCheckout = productConfigurationWidget.isQuoteProductConfigurationValid %}
+
+    {% widget 'ProductConfigurationQuoteValidatorWidget' args [data.cart] only %}
+        {% block body %}
+            <div class="spacing-top">
+                {{ parent() }}
+            </div>
+        {% endblock %}
+    {% endwidget %}
+
     {% if canProceedToCheckout and can('SeeOrderPlaceSubmitPermissionPlugin') %}
-        {% widget 'ProceedToCheckoutButtonWidget' args [data.cart] %}
+        {% widget 'ProceedToCheckoutButtonWidget' args [data.cart] with {
+            data: {
+                canProceedCheckout: canProceedQuoteCheckout,
+            },
+        } only %}
             {% block body %}
                 <div class="spacing-top spacing-top--big">
                     {{ parent() }}
@@ -75,14 +90,14 @@
     {% endif %}
 
     {% if is_granted('ROLE_USER') %}
-        {% widget 'QuoteRequestCreateWidget' args [data.cart] only %}
+        {% widget 'QuoteRequestCreateWidget' args [data.cart] with {
+            data: {
+                canProceedCheckout: canProceedQuoteCheckout,
+            },
+        } only %}
             {% block body %}
                 <div class="spacing-y">
-                    {% if data.isVisible %}
-                        <a class="button button--expand button--hollow" href="{{ url('quote-request/create') }}">
-                            {{ 'quote_request_widget.request_for_quote' | trans }}
-                        </a>
-                    {% endif %}
+                    {{ parent() }}
                 </div>
             {% endblock %}
         {% endwidget %}

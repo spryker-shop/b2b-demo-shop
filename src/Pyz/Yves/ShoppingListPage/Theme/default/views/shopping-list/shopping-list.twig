@@ -18,7 +18,13 @@
     shoppingListCollection: _view.shoppingListOverview.shoppingLists,
     shoppingListItems: _view.shoppingListItems,
     addItemToCartForm: _view.addItemToCartForm,
+    numberFormatConfig: _view.numberFormatConfig,
 } %}
+
+{% set numberFormatConfig = {} %}
+{% for key, value in data.numberFormatConfig %}
+    {% set numberFormatConfig = numberFormatConfig | merge ({ (key | replace({'_symbol': '', '_': '-'})): value }) %}
+{% endfor %}
 
 {% block customerNavigation %}
     {% widget 'CustomerNavigationWidget' args ['shoppingList', data.shoppingList.idShoppingList] only %}{% endwidget %}
@@ -131,6 +137,7 @@
                 data: {
                     shoppingList: data.shoppingList,
                     shoppingListItems: data.shoppingListItems,
+                    numberFormatConfig: numberFormatConfig,
                 },
             } only %}
         {{ form(data.addItemToCartForm) }}

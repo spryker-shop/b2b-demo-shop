@@ -13,7 +13,7 @@
             <h6 class="{{ config.name }}__title">{{ 'customer.order.overview' | trans }}</h6>
         </div>
         <div class="col col--expand text-right">
-            <span class="{{ config.name }}__label">{{ cartQuantity }} {{ 'customer.order.summary.items' | trans }}</span>
+            <span class="{{ config.name }}__label">{{ cartQuantity | executeFilterIfExists('formatInt', app.locale) }} {{ 'customer.order.summary.items' | trans }}</span>
         </div>
     </div>
 

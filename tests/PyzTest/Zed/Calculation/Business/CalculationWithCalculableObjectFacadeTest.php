@@ -8,7 +8,7 @@
 namespace PyzTest\Zed\Calculation\Business;
 
 use ArrayObject;
-use Codeception\TestCase\Test;
+use Codeception\Test\Unit;
 use Generated\Shared\Transfer\AddressTransfer;
 use Generated\Shared\Transfer\CurrencyTransfer;
 use Generated\Shared\Transfer\DiscountTransfer;
@@ -30,7 +30,7 @@ use Spryker\Zed\Discount\DiscountDependencyProvider;
  * @group CalculationWithCalculableObjectFacadeTest
  * Add your own group annotations below this line
  */
-class CalculationWithCalculableObjectFacadeTest extends Test
+class CalculationWithCalculableObjectFacadeTest extends Unit
 {
     /**
      * @var \PyzTest\Zed\Calculation\CalculationBusinessTester

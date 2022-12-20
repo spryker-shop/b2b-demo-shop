@@ -4,6 +4,10 @@
     font-size: rem(12);
     text-align: center;
 
+    &--borderless {
+        border-radius: 0;
+    }
+
     &--small {
         padding: 0 rem(16);
     }
@@ -27,5 +31,10 @@
     &--shipped {
         background-color: helper-color-light($setting-color-blue-1, 54);
         color: $setting-color-blue-1;
+    }
+
+    &--not-configured {
+        background-color: helper-color-light($setting-color-alt);
+        color: $setting-color-alt;
     }
 }

@@ -19,6 +19,8 @@
 {% block class %}{{ parent() }} list{% endblock %}
 
 {% block body %}
+    {% widget 'ProductConfigurationCartItemDisplayWidget' args [data.cartItem] only %}{% endwidget %}
+
     {% if data.cartItem.productOptions | length %}
         <li class="list__item text-small">
             {% include molecule('product-options', 'ProductOptionWidget') ignore missing with {

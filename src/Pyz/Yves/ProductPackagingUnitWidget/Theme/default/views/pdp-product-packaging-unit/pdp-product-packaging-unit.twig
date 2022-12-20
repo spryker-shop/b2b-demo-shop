@@ -27,6 +27,10 @@
                             value: data.minQuantityInSalesUnits,
                             name: 'sales-unit-quantity',
                         },
+                        data: {
+                            formattedClass: 'js-formatted-sales-unit-quantity',
+                            numberFormatConfig: numberFormatConfig,
+                        },
                     } only %}
                         {% block inputClass %}js-volume-price__quantity {{ config.name }}__input--medium-width{% endblock %}
                     {% endembed %}
@@ -76,6 +80,9 @@
         <div class="grid grid--stretch grid--justify">
             {% embed molecule('quantity-counter') with {
                 modifiers: ['right-space'],
+                data: {
+                    numberFormatConfig: numberFormatConfig,
+                },
             } only %}
                 {% block inputClass %}js-volume-price__quantity{% endblock %}
             {% endembed %}
@@ -128,6 +135,8 @@
                         modifiers: ['right-space'],
                         data: {
                             isDisabled: not data.isAmountVariable,
+                            formattedClass: 'js-formatted-user-amount',
+                            numberFormatConfig: numberFormatConfig,
                         },
                         attributes: {
                             id: 'user-amount',

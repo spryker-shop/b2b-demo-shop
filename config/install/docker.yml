@@ -69,6 +69,8 @@ sections:
         zed-build-frontend:
             command: 'vendor/bin/console frontend:zed:build -e production'
 
+        date-time-product-configurator:
+            command: 'vendor/bin/console frontend:date-time-product-configurator:build'
 
     build-static-development:
         yves-build-frontend:
@@ -77,7 +79,8 @@ sections:
         zed-build-frontend:
             command: 'vendor/bin/console frontend:zed:build'
 
-
+        date-time-product-configurator:
+            command: 'vendor/bin/console frontend:date-time-product-configurator:build'
 
     scheduler-setup:
         jenkins-setup:

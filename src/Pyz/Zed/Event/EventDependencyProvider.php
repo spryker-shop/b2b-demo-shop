@@ -66,7 +66,7 @@ class EventDependencyProvider extends SprykerEventDependencyProvider
     {
         $eventSubscriberCollection = parent::getEventSubscriberCollection();
 
-        /**
+        /*
          * Storage Events
          */
         $eventSubscriberCollection->add(new UrlStorageEventSubscriber());
@@ -109,7 +109,7 @@ class EventDependencyProvider extends SprykerEventDependencyProvider
         $eventSubscriberCollection->add(new ConfigurableBundleTemplatePageSearchEventSubscriber());
         $eventSubscriberCollection->add(new ConfigurableBundleTemplateImagePageSearchEventSubscriber());
 
-        /**
+        /*
          * Search Events
          */
         $eventSubscriberCollection->add(new CmsPageSearchEventSubscriber());

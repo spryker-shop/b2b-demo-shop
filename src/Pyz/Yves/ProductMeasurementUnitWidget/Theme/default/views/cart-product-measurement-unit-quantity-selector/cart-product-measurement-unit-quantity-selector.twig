@@ -13,7 +13,7 @@
     {% set hasQuantitySalesUnit = data.cartItem.quantitySalesUnit is not empty %}
 
     <div class="grid">
-        <div class="col spacing-left spacing-left--small">{{ data.cartItem.quantity }}</div>
+        <div class="col spacing-left spacing-left--small">{{ data.cartItem.quantity | executeFilterIfExists('formatInt', app.locale) }}</div>
 
         {% if hasQuantitySalesUnit %}
             <div class="col spacing-left spacing-left--big">

@@ -42,8 +42,8 @@
                     <article class="col col--sm-12 grid grid--gap spacing-bottom spacing-bottom--big">
                         <h3 class="col col--sm-12 title title--second spacing-bottom spacing-bottom--small">
                             {{ 'page.checkout.shipment.shipment_group_heading' | trans({
-                                '%current%': loop.index,
-                                '%total%': loop.length
+                                '%current%': loop.index | executeFilterIfExists('formatInt', app.locale),
+                                '%total%': loop.length | executeFilterIfExists('formatInt', app.locale)
                             }) }}
                         </h3>
 
@@ -76,6 +76,12 @@
 
                                     {% block title %}
                                         <h6 class="{{ config.name }}__title spacing spacing--reset">{{ data.listItem.name }}</h6>
+                                    {% endblock %}
+
+                                    {% block productConfiguration %}
+                                        {% widget 'ProductConfigurationCartItemDisplayWidget' args [data.listItem] only %}
+                                            {% block status %}{% endblock %}
+                                        {% endwidget %}
                                     {% endblock %}
 
                                     {% block subQuantity %}
