@@ -40,13 +40,15 @@
                     {% set options = {
                         required: true,
                         label: false,
+                        watchExternalChanges: true,
+                        componentClass: config.jsName ~ '__formatted',
                         attr: {
-                            class: config.name ~ '__quantity ' ~ config.jsName ~ '__quantity ' ~ (data.product is empty ? 'input--transparent' : ''),
+                            class: config.name ~ '__quantity ' ~ config.jsName ~ '__quantity input input--expand ' ~ (data.product is empty ? 'input--transparent' : ''),
                             min: 1,
                             max: null,
                             step: 1,
                             disabled: data.product is empty,
-                            value: data.product is empty ? null : data.quantityField.vars.value
+                            value: data.product is empty ? null : data.quantityField.vars.value,
                         }
                     } %}
 

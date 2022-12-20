@@ -99,7 +99,7 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
             new IsActiveInDateRangeQueryExpanderPlugin(),
             new CustomerCatalogProductListQueryExpanderPlugin(),
 
-            /**
+            /*
              * FacetQueryExpanderPlugin needs to be after other query expanders which filters down the results.
              */
             new FacetQueryExpanderPlugin(),
@@ -151,10 +151,13 @@ class CatalogDependencyProvider extends SprykerCatalogDependencyProvider
      */
     protected function createSuggestionResultFormatterPlugins(): array
     {
+        /** @phpstan-var \Spryker\Client\SearchExtension\Dependency\Plugin\ResultFormatterPluginInterface $rawCatalogSearchResultFormatterPlugin */
+        $rawCatalogSearchResultFormatterPlugin = new SuggestionByTypeResultFormatterPlugin();
+
         return [
             new CompletionResultFormatterPlugin(),
             new CurrencyAwareSuggestionByTypeResultFormatter(
-                new SuggestionByTypeResultFormatterPlugin()
+                $rawCatalogSearchResultFormatterPlugin,
             ),
         ];
     }

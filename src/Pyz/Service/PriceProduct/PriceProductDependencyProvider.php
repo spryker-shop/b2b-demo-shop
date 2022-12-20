@@ -23,7 +23,7 @@ class PriceProductDependencyProvider extends SprykerPriceProductDependencyProvid
     protected function getPriceProductDecisionPlugins(): array
     {
         return array_merge([
-            /**
+            /*
              * MerchantRelationshipPriceProductFilterPlugin should be at the beginning to filter non-active merchant prices
              * and define right minimum price in next filter plugins like in `PriceProductVolumeFilterPlugin`.
              */

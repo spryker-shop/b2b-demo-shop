@@ -20,7 +20,7 @@ class AvailabilityDependencyProvider extends SprykerAvailabilityDependencyProvid
     protected function getBatchAvailabilityStrategyPlugins(): array
     {
         return [
-            /**
+            /*
              * ProductConcreteBatchAvailabilityStrategyPlugin needs to be after all other implementations.
              */
             new ProductConcreteBatchAvailabilityStrategyPlugin(),
