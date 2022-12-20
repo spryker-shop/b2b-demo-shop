@@ -1,20 +1,4 @@
-{% extends template('page-layout-main') %}
-
-{% define data = {
-    product: _view.product,
-    productUrl: _view.productUrl,
-    isBundle: _view.product.attributes.bundled_product | default(null),
-    bundleItems: _view.bundledProducts,
-
-    title: product.metaTitle | default(_view.product.name),
-    metaTitle: product.metaTitle | default(_view.product.name),
-    metaDescription: _view.product.metaDescription | default,
-    metaKeywords: _view.product.metaKeywords | default
-} %}
-
-{% block breadcrumbs %}
-    {% widget 'ProductBreadcrumbsWithCategoriesWidget' args [data.product] only %}{% endwidget %}
-{% endblock %}
+{% extends view('pdp', '@SprykerShop:ProductDetailPage') %}
 
 {% block title %}
     <h1 itemprop="name" class="page-info__title title title--h3">
@@ -36,63 +20,79 @@
 {% block contentClass %}page-layout-main page-layout-main--pdp{% endblock %}
 
 {% block content %}
-    <div class="grid grid--gap grid--justify">
-        <div class="page-layout-main__pdp-gallery">
-            {% include molecule('image-gallery', 'ProductImageWidget') ignore missing with {
-                data: {
-                    idProductAbstract: data.product.idProductAbstract,
-                    images: data.product.images
-                }
-            } only %}
+    <section itemscope itemtype="https://schema.org/Product">
+        <meta itemprop="name" content="{{ data.product.name }}">
+        <meta itemprop="url" content="{{ data.hostName }}{{ data.productUrl }}">
+        <meta itemprop="sku" content="{{ data.product.sku }}">
+        <meta itemprop="productId" content="{{ data.product.sku }}">
+        <meta itemprop="description" content="{{ data.product.metaDescription }}">
+
+        {% if data.product.images.0.externalUrlLarge is defined %}
+            <meta itemprop="image" content="{{ data.product.images.0.externalUrlLarge }}">
+        {% endif %}
+
+        {% if data.product.attributes.brand is defined %}
+            <div itemprop="brand" itemscope itemtype="https://schema.org/Brand">
+                <meta itemprop="name" content="{{ data.product.attributes.brand }}">
+            </div>
+        {% endif %}
+
+        {% widget 'ProductSchemaOrgCategoryWidget' args [data.product] only %}{% endwidget %}
+
+        {% if data.product.attributes.upcs is defined %}
+            <meta itemprop="gtin12" content="{{ data.product.attributes.upcs }}">
+        {% endif %}
+
+        <meta itemprop="inProductGroupWithID" content="{{ data.product.idProductAbstract }}">
+
+        <div class="grid grid--gap grid--justify">
+            <div class="page-layout-main__pdp-gallery">
+                {% include molecule('image-gallery', 'ProductImageWidget') ignore missing with {
+                    data: {
+                        idProductAbstract: data.product.idProductAbstract,
+                        images: data.product.images
+                    }
+                } only %}
+            </div>
+
+            <div class="col col--sm-12 col--lg-5">
+                {% include molecule('product-configurator', 'ProductDetailPage') with {
+                    data: {
+                        product: data.product,
+                    },
+                } only %}
+            </div>
         </div>
 
-        <div class="col col--sm-12 col--lg-5">
-            {% include molecule('product-configurator', 'ProductDetailPage') with {
+        {% widget 'ProductAlternativeListWidget' args [data.product] only %}{% endwidget %}
+
+        <div class="js-pdp-section">
+            {% include molecule('product-detail', 'ProductDetailPage') with {
                 data: {
-                    product: data.product,
-                    isBundle: data.bundleItems,
-                    bundleItems: data.bundleItems
+                    description: data.product.description,
+                    attributes: data.product.attributes
                 }
             } only %}
+
+            {% widget 'ProductDetailPageReviewWidget' args [data.product.idProductAbstract] only %}{% endwidget %}
         </div>
-    </div>
 
-    {% widget 'ProductAlternativeListWidget' args [data.product] only %}{% endwidget %}
-
-    <div class="js-pdp-section">
-        {% include molecule('product-detail', 'ProductDetailPage') with {
-            data: {
-                description: data.product.description,
-                attributes: data.product.attributes
-            }
+        {% include molecule('toggler-accordion') with {
+            attributes: {
+                'wrap-class-name': 'js-pdp-section',
+                'trigger-class-name': 'js-pdp-section__trigger',
+                'class-to-toggle': 'is-hidden-sm-md',
+            },
         } only %}
 
-        {% widget 'ProductDetailPageReviewWidget' args [data.product.idProductAbstract] only %}{% endwidget %}
-    </div>
+        {% widget 'ProductReplacementForListWidget' args [data.product.sku] only %}{% endwidget %}
 
-    {% include molecule('toggler-accordion') with {
-        attributes: {
-            'wrap-class-name': 'js-pdp-section',
-            'trigger-class-name': 'js-pdp-section__trigger',
-            'class-to-toggle': 'is-hidden-sm-md',
-        },
-    } only %}
+        {% widget 'SimilarProductsWidget' args [data.product] only %}{% endwidget %}
 
-    {% widget 'ProductReplacementForListWidget' args [data.product.sku] only %}{% endwidget %}
-
-    {% if data.bundleItems != null %}
-        {% include molecule('product-bundle', 'ProductDetailPage') with {
-            data: {
-                bundleItems: data.bundleItems
-            }
-        } only %}
-    {% endif %}
-
-    {% widget 'SimilarProductsWidget' args [data.product] only %}{% endwidget %}
-
-    {% if data.product.pyzProductSetIds is not empty %}
-        {% widget 'ProductSetIdsWidget' args [data.product.pyzProductSetIds] only %}{% endwidget %}
-    {% endif %}
+        {% if data.product.pyzProductSetIds is not empty %}
+            {% widget 'ProductSetIdsWidget' args [data.product.pyzProductSetIds, data.request] only %}{% endwidget %}
+        {% endif %}
+    </section>
 {% endblock %}
 
 {% block contentBottom %}

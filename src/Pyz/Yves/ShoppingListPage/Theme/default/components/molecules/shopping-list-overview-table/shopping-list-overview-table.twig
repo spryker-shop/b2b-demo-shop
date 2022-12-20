@@ -52,7 +52,7 @@
                 </td>
                 <td class="transform-cell spacing-bottom spacing-bottom--inner spacing-bottom--big" data-content="{{ 'customer.account.shopping_list.overview.item_count' | trans }}">
                     <span class="badge badge--shopping-list">
-                        {{ shoppingList.numberOfItems }}
+                        {{ shoppingList.numberOfItems | default(0) | executeFilterIfExists('formatInt', app.locale) }}
                         {{ 'checkout.step.summary.items' | trans }}
                     </span>
                 </td>

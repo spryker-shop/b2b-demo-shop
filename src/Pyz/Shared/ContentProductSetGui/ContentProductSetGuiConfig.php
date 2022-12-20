@@ -13,6 +13,7 @@ class ContentProductSetGuiConfig extends SprykerContentProductSetGuiConfig
 {
     /**
      * @var string
+     *
      * @uses \Pyz\Shared\ContentProductSet\ContentProductSetConfig::PYZ_WIDGET_TEMPLATE_IDENTIFIER_LANDING_PAGE
      */
     protected const PYZ_WIDGET_TEMPLATE_IDENTIFIER_LANDING_PAGE = 'landing-page';

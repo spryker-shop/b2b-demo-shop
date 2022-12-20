@@ -12,6 +12,13 @@
     requestUri: app.request.requestUri,
 } %}
 
+{% block headScripts %}
+    {{ parent() }}
+
+    {% widget 'AssetWidget' args ['cart-header'] only %}
+    {% endwidget %}
+{% endblock %}
+
 {% block breadcrumbs %}
     {% set steps = [
         {
@@ -162,7 +169,7 @@
                                 } only %}
                             {% endif %}
                         </div>
-                        <div class="col col--sm-2 text-right cart-title__quantity">{{ transformedCartItems | length }} {{ 'checkout.step.summary.items' | trans }}</div>
+                        <div class="col col--sm-2 text-right cart-title__quantity">{{ transformedCartItems | length | executeFilterIfExists('formatInt', app.locale) }} {{ 'checkout.step.summary.items' | trans }}</div>
                     </div>
                 </div>
             </div>
@@ -218,6 +225,10 @@
                                                             <span class="{{ config.name }}__color-preview-decoration" style="background: {{ embed.product.colorCode  }}" title="{{ embed.product.attributes.farbe  }}"></span>
                                                         </span>
                                                     {% endif %}
+                                                {% endblock %}
+
+                                                {% block productConfiguration %}
+                                                    {{ parent() }}
                                                 {% endblock %}
 
                                                 {% block productInfo %}

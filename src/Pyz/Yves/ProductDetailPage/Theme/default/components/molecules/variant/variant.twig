@@ -16,7 +16,6 @@
     selectModifiers: ['margin-bottom'],
     selectTheme: 'default',
     selectPlaceholder: 'product.attribute._none',
-    autoInitSelect: false,
 } %}
 
 {% set selectModifiers = data.selectModifiers | merge(['full-width']) %}
@@ -32,7 +31,6 @@
                     name: data.formName,
                     'config-width': '100%',
                     'config-theme': data.selectTheme,
-                    'auto-init': data.autoInitSelect,
                 },
                 embed: {
                     values: data.values,

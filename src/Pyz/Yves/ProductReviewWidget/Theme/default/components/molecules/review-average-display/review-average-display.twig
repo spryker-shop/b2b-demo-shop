@@ -10,16 +10,20 @@
     ratingMaxValue: required,
 } %}
 
+{% define attributes = {
+    itemscope: '',
+    itemtype: 'http://schema.org/AggregateRating',
+    itemprop: 'aggregateRating',
+} %}
+
 {% block body %}
     <div class="review-average-display__average-rating">
-        {{ data.summary.averageRating }}
+        {{ data.summary.averageRating | executeFilterIfExists('formatFloat', app.locale) }}
     </div>
 
-    <span itemscope itemprop="aggregateRating" itemtype="https://schema.org/AggregateRating">
-        <meta itemprop="ratingValue" content="{{ data.summary.averageRating }}">
-        <meta itemprop="bestRating" content="{{ data.summary.maximumRating }}">
-        <meta itemprop="reviewCount" content="{{ data.summary.totalReview }}">
-    </span>
+    <meta itemprop="ratingValue" content="{{ data.summary.averageRating | executeFilterIfExists('formatFloat', app.locale) }}">
+    <meta itemprop="bestRating" content="{{ data.summary.maximumRating | executeFilterIfExists('formatFloat', app.locale) }}">
+    <meta itemprop="reviewCount" content="{{ data.summary.totalReview | executeFilterIfExists('formatInt', app.locale) }}">
 
     {% include molecule('rating-selector', 'ProductReviewWidget') with {
         modifiers: ['pdp'],
@@ -36,7 +40,7 @@
 
     {% if data.summary.totalReview > 0 %}
         <div class="review-average-display__total-review">
-            {{- data.summary.totalReview }}
+            {{- data.summary.totalReview | executeFilterIfExists('formatInt', app.locale) }}
 
             {% set amount = data.summary.totalReview > 1 ? 'multiple' : data.summary.totalReview %}
 

@@ -1,0 +1,10 @@
+{% extends view('order-detail-configuration', '@SprykerShop:SalesProductConfigurationWidget') %}
+
+{% block optionsTemplate %}
+    {% include molecule('collapsible-list') with {
+        modifiers: ['small'],
+        data: {
+            listItems: productConfigurationTemplate.data,
+        },
+    } only %}
+{% endblock %}

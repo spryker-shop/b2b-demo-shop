@@ -17,6 +17,7 @@ class RegisterController extends SprykerRegisterController
 {
     /**
      * @var string
+     *
      * @uses \SprykerShop\Yves\CompanyUserInvitationPage\CompanyUserInvitationPageConfig::INVITATION_SESSION_ID
      */
     protected const PYZ_INVITATION_SESSION_ID = 'COMPANY_USER_INVITATION';

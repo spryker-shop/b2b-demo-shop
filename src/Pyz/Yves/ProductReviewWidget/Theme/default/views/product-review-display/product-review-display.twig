@@ -6,11 +6,9 @@
 } %}
 
 {% block body %}
-    <div>
-        <span itemscope itemprop="aggregateRating" itemtype="https://schema.org/AggregateRating">
-            <meta itemprop="ratingValue" content="{{ data.value }}">
-            <meta itemprop="bestRating" content="{{ data.maxValue }}">
-        </span>
+    <div itemscope itemprop="aggregateRating" itemtype="https://schema.org/AggregateRating">
+        <meta itemprop="ratingValue" content="{{ data.value }}">
+        <meta itemprop="bestRating" content="{{ data.maxValue }}">
 
         {% include molecule('rating-selector', 'ProductReviewWidget') with {
             data: {

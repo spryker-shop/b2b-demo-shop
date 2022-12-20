@@ -32,7 +32,7 @@
                     {{ data.cartItem.sku }}
                 </small>
 
-                <p class="text-small"><strong>{{ 'cart.item_quantity' | trans }}:</strong><span class="text-secondary spacing-x spacing-x--inner spacing-x--small">{{ data.cartItem.quantity }}</span></p>
+                <p class="text-small"><strong>{{ 'cart.item_quantity' | trans }}:</strong><span class="text-secondary spacing-x spacing-x--inner spacing-x--small">{{ data.cartItem.quantity | executeFilterIfExists('formatInt', app.locale) }}</span></p>
 
                 {% include molecule('quote-request-item-summary', 'QuoteRequestPage') with {
                     class: 'text-small',
@@ -65,7 +65,8 @@
                     {% set value = data.cartItem.quantitySalesUnit.value %}
                     {% set precision = data.cartItem.quantitySalesUnit.precision %}
                     {% set salesUnitName = data.cartItem.quantitySalesUnit.productMeasurementUnit.name | default('') %}
-                    <p><small class="text-secondary">[= {{ value / precision }} {{ salesUnitName | trans }}]</small></p>
+                    {% set salesUnitValue = value / precision %}
+                    <p><small class="text-secondary">[= {{ salesUnitValue | executeFilterIfExists('formatFloat', app.locale) }} {{ salesUnitName | trans }}]</small></p>
                 {% endif %}
             </div>
             <div class="{{ config.name }}__column {{ config.name }}__column--total col">

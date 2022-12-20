@@ -1,0 +1,29 @@
+{% embed '@Gui/Partials/widget.twig' with { widget_title: 'Customer' | trans } %}
+    {% block widget_content %}
+        <div class="row">
+            <div class="col-xs-12 col-md-6">
+                <dl>
+                    <dt>{{ 'Reference' | trans }}</dt>
+                    <dd><a href="{{ url('/customer/view', {'id-customer': order.fkCustomer}) }}" target="_blank">{{ order.customerReference }}</a></dd>
+                    <dt>{{ 'Name' | trans }}</dt>
+                    <dd>{{ order.firstName ~ ' ' ~ order.lastName }}</dd>
+                    <dt>{{ 'Email' | trans }}</dt>
+                    <dd>{{ order.email }}</dd>
+                    <dt>{{ 'Previous orders count' | trans }}</dt>
+                    <dd>{{ order.totalOrderCount | executeFilterIfExists('formatInt', app.locale) }}</dd>
+                    <dt>{{ 'Billing address' | trans }}</dt>
+                    <dd>{{ order.billingAddress.firstName ~ ' '
+                        ~ order.billingAddress.lastName ~ ', '
+                        ~ order.billingAddress.address1 ~ ' '
+                        ~ order.billingAddress.address2 ~ ', '
+                        ~ order.billingAddress.address3 ~ ', '
+                        ~ order.billingAddress.zipCode ~ ' '
+                        ~ order.billingAddress.city ~ ', '
+                        ~ order.billingAddress.country.name ~ ' '
+                        ~ order.billingAddress.phone }}<a href="{{ url('/sales/edit/address', {'id-sales-order': order.idSalesOrder, 'id-address': order.billingAddress.idSalesOrderAddress}) }}" class="btn btn-default edit_billing_address">{{ 'Edit' | trans }}</a>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    {% endblock %}
+{% endembed %}

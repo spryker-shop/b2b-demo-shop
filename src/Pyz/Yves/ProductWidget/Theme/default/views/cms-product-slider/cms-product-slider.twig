@@ -13,18 +13,23 @@
             category: 'category.office.furniture' | trans,
         },
     } only %}
+
         {% block rating %}
-            {% include molecule('rating-selector', 'ProductReviewWidget') ignore missing with {
-                data: {
-                    value: data.product.rating.averageRating | default(0),
-                    reviewCount:  data.product.rating.totalReview | default(0),
-                    useHalfSteps: true,
-                    parentJsName: config.jsName,
-                },
-                attributes: {
-                    readonly: true,
-                },
-            } only %}
+            <section itemscope itemprop="aggregateRating" itemtype="https://schema.org/AggregateRating">
+                <meta itemprop="ratingValue" content="{{ data.product.rating.averageRating | default(0) }}">
+
+                {% include molecule('rating-selector', 'ProductReviewWidget') ignore missing with {
+                    data: {
+                        value: data.product.rating.averageRating | default(0),
+                        reviewCount:  data.product.rating.totalReview | default(0),
+                        useHalfSteps: true,
+                        parentJsName: config.jsName,
+                    },
+                    attributes: {
+                        readonly: true,
+                    },
+                } only %}
+            </section>
         {% endblock %}
     {% endembed %}
 {% endblock %}

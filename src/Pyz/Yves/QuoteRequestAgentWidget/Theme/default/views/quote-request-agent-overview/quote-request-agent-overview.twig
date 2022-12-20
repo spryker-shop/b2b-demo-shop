@@ -88,7 +88,7 @@
                                 </div>
                                 <div class="col">
                                     <span class="{{ config.name }}__counter">
-                                        {{ quote ? (quote.items | length) : 0 }}
+                                        {{ quote ? (quote.items | length) | executeFilterIfExists('formatInt', app.locale) : 0 }}
                                         {{ 'quote_request_agent_widget.items' | trans }}
                                     </span>
                                 </div>

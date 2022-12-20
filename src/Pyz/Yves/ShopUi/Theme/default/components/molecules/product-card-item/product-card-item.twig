@@ -75,12 +75,20 @@
                                     </div>
                                 {% endblock %}
 
+                                {% block productConfiguration %}
+                                    {% widget 'ProductConfigurationCartItemDisplayWidget' args [data.listItem] only %}{% endwidget %}
+
+                                    {% if data.canEdit %}
+                                        {% widget 'ProductConfigurationCartPageButtonWidget' args [data.listItem] only %}{% endwidget %}
+                                    {% endif %}
+                                {% endblock %}
+
                                 {% block productInfo %}
                                     {% block quantityTitle %}
                                         {% if data.quantity is not empty and amountSalesUnit is empty %}
                                             <div class="grid grid--middle grid--gap {{ config.name }}__quantity">
                                                 <div class="col">
-                                                    <span class="{{ config.name }}__quantity-title">{{ 'cart.item_quantity' | trans }}:</span> {{ data.quantity }}
+                                                    <span class="{{ config.name }}__quantity-title">{{ 'cart.item_quantity' | trans }}:</span> {{ data.quantity | executeFilterIfExists('formatInt', app.locale) }}
                                                 </div>
                                                 {% block subQuantity %}{% endblock %}
                                             </div>

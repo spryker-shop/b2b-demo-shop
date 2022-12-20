@@ -41,6 +41,7 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
 {
     /**
      * @var string
+     *
      * @uses \Spryker\Yves\Form\Plugin\Application\FormApplicationPlugin::SERVICE_FORM_FACTORY
      */
     protected const PYZ_SERVICE_FORM_FACTORY = 'form.factory';

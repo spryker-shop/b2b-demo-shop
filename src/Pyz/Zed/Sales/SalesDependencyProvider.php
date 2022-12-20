@@ -52,6 +52,8 @@ use Spryker\Zed\SalesConfigurableBundle\Communication\Plugin\Sales\ConfiguredBun
 use Spryker\Zed\SalesConfigurableBundle\Communication\Plugin\Sales\ConfiguredBundlesOrderItemsPostSavePlugin;
 use Spryker\Zed\SalesOms\Communication\Plugin\OrderItemReferenceExpanderPreSavePlugin;
 use Spryker\Zed\SalesPayment\Communication\Plugin\Sales\SalesPaymentOrderExpanderPlugin;
+use Spryker\Zed\SalesProductConfiguration\Communication\Plugin\Sales\ProductConfigurationOrderItemExpanderPlugin;
+use Spryker\Zed\SalesProductConfiguration\Communication\Plugin\Sales\ProductConfigurationOrderItemsPostSavePlugin;
 use Spryker\Zed\SalesProductConnector\Communication\Plugin\Sales\ItemMetadataOrderItemsPostSavePlugin;
 use Spryker\Zed\SalesProductConnector\Communication\Plugin\Sales\ItemMetadataSearchOrderExpanderPlugin;
 use Spryker\Zed\SalesProductConnector\Communication\Plugin\Sales\MetadataOrderItemExpanderPlugin;
@@ -186,6 +188,7 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
             new AmountLeadProductOrderItemExpanderPlugin(),
             new AmountSalesUnitOrderItemExpanderPlugin(),
             new ItemStateOrderItemExpanderPlugin(),
+            new ProductConfigurationOrderItemExpanderPlugin(),
         ];
     }
 
@@ -235,6 +238,7 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
         return [
             new ConfiguredBundlesOrderItemsPostSavePlugin(),
             new ItemMetadataOrderItemsPostSavePlugin(),
+            new ProductConfigurationOrderItemsPostSavePlugin(),
         ];
     }
 }

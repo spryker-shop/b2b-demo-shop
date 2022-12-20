@@ -1,4 +1,5 @@
 import Component from 'ShopUi/models/component';
+import FormattedNumberInput from 'ShopUi/components/molecules/formatted-number-input/formatted-number-input';
 
 export default class QuantityCounter extends Component {
     protected incrementButton: HTMLButtonElement;
@@ -10,6 +11,7 @@ export default class QuantityCounter extends Component {
     protected eventChange: Event = new Event('change');
     protected eventInput: Event = new Event('input');
     protected numberOfDecimalPlaces: number = 10;
+    protected formattedNumberInput: FormattedNumberInput;
 
     protected readyCallback(): void {}
 
@@ -17,6 +19,9 @@ export default class QuantityCounter extends Component {
         this.incrementButton = <HTMLButtonElement>this.getElementsByClassName(`${this.jsName}__button-increment`)[0];
         this.decrementButton = <HTMLButtonElement>this.getElementsByClassName(`${this.jsName}__button-decrement`)[0];
         this.input = <HTMLInputElement>this.getElementsByClassName(`${this.jsName}__input`)[0];
+        this.formattedNumberInput = <FormattedNumberInput>(
+            this.getElementsByClassName(`${this.jsName}__formatted-input`)[0]
+        );
         this.value = this.getValue;
         this.mapEvents();
     }
@@ -34,7 +39,8 @@ export default class QuantityCounter extends Component {
     protected incrementValue(event: Event): void {
         event.preventDefault();
         if (this.isAvailable) {
-            const value = Number(this.input.value);
+            const value = this.formattedNumberInput.unformattedValue;
+
             const potentialValue = Number(
                 ((value * this.precision + this.step * this.precision) / this.precision).toFixed(
                     this.numberOfDecimalPlaces,
@@ -51,7 +57,7 @@ export default class QuantityCounter extends Component {
     protected decrementValue(event: Event): void {
         event.preventDefault();
         if (this.isAvailable) {
-            const value = Number(this.input.value);
+            const value = this.formattedNumberInput.unformattedValue;
             const potentialValue = Number(
                 ((value * this.precision - this.step * this.precision) / this.precision).toFixed(
                     this.numberOfDecimalPlaces,
@@ -104,11 +110,11 @@ export default class QuantityCounter extends Component {
     }
 
     protected get getValue(): number {
-        return Number(this.input.value);
+        return this.formattedNumberInput.unformattedValue;
     }
 
     protected get autoUpdate(): boolean {
-        return !!this.input.dataset.autoUpdate;
+        return this.input.hasAttribute('data-auto-update');
     }
 
     protected get isAvailable(): boolean {

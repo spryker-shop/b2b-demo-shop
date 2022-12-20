@@ -26,6 +26,11 @@
     {% endif %}
 
     <li class="list__item">{{ data.address.address1 }} {{ data.address.address2 }}</li>
+
+    {% if data.address.address3 is not empty %}
+        <li class="{{ config.name }}__item">{{ data.address.address3 }}</li>
+    {% endif %}
+
     <li class="list__item">{{ data.address.zipCode }} {{ data.address.city }}, {{ ('countries.iso.' ~ data.address.iso2code) | trans }}</li>
 
     {% if data.address.phone is not empty %}

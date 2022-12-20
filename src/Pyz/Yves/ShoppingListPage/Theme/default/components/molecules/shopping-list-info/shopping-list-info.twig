@@ -33,13 +33,13 @@
                 <strong class="{{ config.name }}__title">{{ 'customer.account.shopping_list.overview.shared_with' | trans }}:</strong>
                 {% if can('WriteShoppingListPermissionPlugin', data.shoppingList.idShoppingList) %}
                     <a href="{{ url('shopping-list/share', { idShoppingList: data.shoppingList.idShoppingList }) }}">
-                        {{ data.shoppingList.sharedCompanyUsers.count ~ ' ' ~ 'company.account.company_user' | trans }},
-                        {{ data.shoppingList.sharedCompanyBusinessUnits.count ~ ' ' ~ 'company.account.business_unit' | trans }}
+                        {{ data.shoppingList.sharedCompanyUsers.count | executeFilterIfExists('formatInt', app.locale) ~ ' ' ~ 'company.account.company_user' | trans }},
+                        {{ data.shoppingList.sharedCompanyBusinessUnits.count | executeFilterIfExists('formatInt', app.locale) ~ ' ' ~ 'company.account.business_unit' | trans }}
                     </a>
                 {% else %}
                     <span>
-                        {{ data.shoppingList.sharedCompanyUsers.count ~ ' ' ~ 'company.account.company_user' | trans }},
-                        {{ data.shoppingList.sharedCompanyBusinessUnits.count ~ ' ' ~ 'company.account.business_unit' | trans }}
+                        {{ data.shoppingList.sharedCompanyUsers.count | executeFilterIfExists('formatInt', app.locale) ~ ' ' ~ 'company.account.company_user' | trans }},
+                        {{ data.shoppingList.sharedCompanyBusinessUnits.count | executeFilterIfExists('formatInt', app.locale) ~ ' ' ~ 'company.account.business_unit' | trans }}
                     </span>
                 {% endif %}
             </div>
