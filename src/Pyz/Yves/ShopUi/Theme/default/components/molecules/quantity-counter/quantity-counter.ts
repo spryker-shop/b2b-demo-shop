@@ -114,7 +114,7 @@ export default class QuantityCounter extends Component {
     }
 
     protected get autoUpdate(): boolean {
-        return !!this.input.dataset.autoUpdate;
+        return this.input.hasAttribute('data-auto-update');
     }
 
     protected get isAvailable(): boolean {
