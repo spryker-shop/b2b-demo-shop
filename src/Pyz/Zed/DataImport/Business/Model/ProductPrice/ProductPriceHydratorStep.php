@@ -90,7 +90,6 @@ class ProductPriceHydratorStep implements DataImportStepInterface
      * @var string
      */
     public const KEY_PRICE_DATA_PREFIX = 'price_data.';
-    
 
     /**
      * @var \Spryker\Zed\DataImport\Dependency\Service\DataImportToUtilEncodingServiceInterface
