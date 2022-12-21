@@ -1,28 +1,4 @@
-{% extends template('page-layout-main') %}
-
-{% define data = {
-    product: _view.product,
-    productUrl: _view.productUrl,
-    isBundle: _view.product.attributes.bundled_product | default(null),
-    bundleItems: _view.bundledProducts,
-    hostName: app.request.getSchemeAndHttpHost(),
-
-    title: product.metaTitle | default(_view.product.name),
-    metaTitle: product.metaTitle | default(_view.product.name),
-    metaDescription: _view.product.metaDescription | default,
-    metaKeywords: _view.product.metaKeywords | default
-} %}
-
-{% block headScripts %}
-    {{ parent() }}
-
-    {% widget 'AssetWidget' args ['pdp-header'] only %}
-    {% endwidget %}
-{% endblock %}
-
-{% block breadcrumbs %}
-    {% widget 'ProductBreadcrumbsWithCategoriesWidget' args [data.product] only %}{% endwidget %}
-{% endblock %}
+{% extends view('pdp', '@SprykerShop:ProductDetailPage') %}
 
 {% block title %}
     <h1 itemprop="name" class="page-info__title title title--h3">
@@ -83,9 +59,7 @@
                 {% include molecule('product-configurator', 'ProductDetailPage') with {
                     data: {
                         product: data.product,
-                        isBundle: data.bundleItems,
-                        bundleItems: data.bundleItems
-                    }
+                    },
                 } only %}
             </div>
         </div>
@@ -113,18 +87,10 @@
 
         {% widget 'ProductReplacementForListWidget' args [data.product.sku] only %}{% endwidget %}
 
-        {% if data.bundleItems != null %}
-            {% include molecule('product-bundle', 'ProductDetailPage') with {
-                data: {
-                    bundleItems: data.bundleItems
-                }
-            } only %}
-        {% endif %}
-
         {% widget 'SimilarProductsWidget' args [data.product] only %}{% endwidget %}
 
         {% if data.product.pyzProductSetIds is not empty %}
-            {% widget 'ProductSetIdsWidget' args [data.product.pyzProductSetIds] only %}{% endwidget %}
+            {% widget 'ProductSetIdsWidget' args [data.product.pyzProductSetIds, data.request] only %}{% endwidget %}
         {% endif %}
     </section>
 {% endblock %}
@@ -141,11 +107,4 @@
             } %}
         {% endblock %}
     {% endembed %}
-{% endblock %}
-
-{% block footerScripts %}
-    {% widget 'AssetWidget' args ['pdp-footer'] only %}
-    {% endwidget %}
-
-    {{ parent() }}
 {% endblock %}

@@ -11,6 +11,7 @@
     showNavigation: true,
     user: app['user'],
     showUserMenu: not (hideUserMenu | default(false)),
+    cartQuantity: functionExists('getCartQuantity') ? getCartQuantity() : (cartQuantity is defined ? cartQuantity : app['cart.quantity'] | default),
 } %}
 
 {% block body %}
@@ -125,7 +126,7 @@
                             {% include molecule('user-navigation') with {
                                 data: {
                                     user: data.user,
-                                    cartQuantity: cartQuantity,
+                                    cartQuantity: data.cartQuantity,
                                 },
                             } only %}
                         {% else %}

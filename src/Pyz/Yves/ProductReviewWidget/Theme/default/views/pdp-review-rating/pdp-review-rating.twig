@@ -1,15 +1,25 @@
 {% extends view('pdp-review-rating', '@SprykerShop:ProductReviewWidget') %}
 
+{% define data = {
+    value: _widget.productReviewStorageTransfer.averageRating | default(0),
+    maxValue: _widget.maximumRating,
+} %}
+
 {% block body %}
-    {% include molecule('rating-selector', 'ProductReviewWidget') with {
-        modifiers: ['pdp'],
-        data: {
-            value: _widget.productReviewStorageTransfer.averageRating | default(0),
-            maxValue: _widget.maximumRating,
-            reviewCount: _widget.productReviewStorageTransfer.reviewCount | default,
-        },
-        attributes: {
-            readonly: true,
-        },
-    } only %}
+    <section itemscope itemtype="http://schema.org/AggregateRating" itemprop="aggregateRating">
+        <meta itemprop="ratingValue" content="{{ data.value }}">
+        <meta itemprop="bestRating" content="{{ data.maxValue }}">
+
+        {% include molecule('rating-selector', 'ProductReviewWidget') with {
+            modifiers: ['pdp'],
+            data: {
+                value: data.value,
+                maxValue: data.maxValue,
+                reviewCount: _widget.productReviewStorageTransfer.reviewCount | default,
+            },
+            attributes: {
+                readonly: true,
+            },
+        } only %}
+    </section>
 {% endblock %}

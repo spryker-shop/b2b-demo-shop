@@ -70,7 +70,7 @@
                             class: 'spacing-x spacing-x--inner spacing-x--reset',
                             modifiers: ['checkout-form', 'hidden-actions'],
                             data: {
-                                form: embed.form[embed.form.paymentSelection[key].vars.value],
+                                form: embed.form[embed.form.paymentSelection[key].vars.name],
                                 enableStart: false,
                                 enableEnd: false,
                                 layout: {
@@ -93,11 +93,11 @@
                                         'class-to-toggle': 'is-hidden',
                                     },
                                     rowAttr: {
-                                        class: 'toggler-radio toggler-radio--checkout ' ~ (embed.index != 1 ? 'toggler-radio--border-top-less'),
+                                        class: 'toggler-radio toggler-radio--checkout ' ~ (embed.index != '1-0' ? 'toggler-radio--border-top-less'),
                                     },
                                 }) }}
 
-                                <div class="col col--sm-12 is-hidden js-payment-method-{{ embed.index }}">
+                                <div class="grid box box--smaller spacing-top spacing-top--bigger spacing-top--inner is-hidden js-payment-method-{{ embed.index }}">
                                     <div class="col col--sm-12 col--md-6">
                                         {% if embed.customForms[data.form.vars.template_path] is not defined %}
                                             {{ parent() }}

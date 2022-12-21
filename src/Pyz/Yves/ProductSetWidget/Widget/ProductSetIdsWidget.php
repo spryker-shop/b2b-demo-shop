@@ -10,6 +10,7 @@ namespace Pyz\Yves\ProductSetWidget\Widget;
 use Generated\Shared\Transfer\ProductSetDataStorageTransfer;
 use Spryker\Yves\Kernel\Widget\AbstractWidget;
 use SprykerShop\Yves\ProductSetWidget\Plugin\CmsContentWidgetProductSetConnector\ProductSetWidgetPlugin;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * @method \Pyz\Yves\ProductSetWidget\ProductSetWidgetFactory getFactory()
@@ -19,7 +20,17 @@ class ProductSetIdsWidget extends AbstractWidget
     /**
      * @var string
      */
+    protected const PYZ_REQUEST = 'request';
+
+    /**
+     * @var string
+     */
     protected const PYZ_PARAMETER_PRODUCT_SET_LIST = 'productSetList';
+
+    /**
+     * @var string
+     */
+    protected const PYZ_PARAMETER_ATTRIBUTES = 'attributes';
 
     /**
      * @param array $productSetIds
@@ -119,12 +130,33 @@ class ProductSetIdsWidget extends AbstractWidget
             if ($productAbstractData === null) {
                 continue;
             }
-            $productViewTransfers[] = $this->getFactory()->getPyzProductStorageClient()->mapProductStorageData(
-                $productAbstractData,
-                $this->getLocale()
-            );
+            $productViewTransfers[] = $this->getFactory()
+                ->getPyzProductStorageClient()
+                ->mapProductStorageData($productAbstractData, $this->getLocale())
+                ->setSelectedAttributes($this->getPyzSelectedAttributes($idProductAbstract));
         }
 
         return $productViewTransfers;
+    }
+
+    /**
+     * @param int $idProductAbstract
+     *
+     * @return array<int, mixed>
+     */
+    protected function getPyzSelectedAttributes(int $idProductAbstract): array
+    {
+        /** @var array $attributes */
+        $attributes = $this->getPyzRequest()->query->get(static::PYZ_PARAMETER_ATTRIBUTES) ?: [];
+
+        return isset($attributes[$idProductAbstract]) ? array_reverse(array_filter($attributes[$idProductAbstract])) : [];
+    }
+
+    /**
+     * @return \Symfony\Component\HttpFoundation\Request
+     */
+    protected function getPyzRequest(): Request
+    {
+        return $this->getGlobalContainer()->get(static::PYZ_REQUEST);
     }
 }

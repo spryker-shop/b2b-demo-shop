@@ -16,6 +16,9 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class ShoppingListWidgetController extends SprykerShopShoppingListWidgetController
 {
+    /**
+     * @var string
+     */
     public const REQUEST_HEADER_REFERER = 'referer';
 
     /**

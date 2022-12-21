@@ -10,7 +10,6 @@
                 }) }}
             </h3>
             <div class="col col--sm-12 col--xl-8">
-
                 {% for item in shipmentGroup.cartItems %}
                     {% set cartItem = item.bundleProduct ?? item %}
                     {% set isConfiguredBundle = cartItem.salesOrderConfiguredBundleItem is defined and cartItem.salesOrderConfiguredBundleItem is not empty %}
@@ -27,6 +26,7 @@
                             embed: {
                                 order: data.order,
                                 bundleItems: item.bundleItems | default([]),
+                                reorderSelectionClassName: data.reorderSelectionClassName,
                             },
                         } only %}
                             {% block image %}
@@ -39,12 +39,27 @@
                                     embed: {
                                         order: embed.order,
                                         listItem: data.listItem,
+                                        reorderSelectionClassName: embed.reorderSelectionClassName,
                                     },
                                 } only %}
                                     {% block body %}
                                         {% if embed.order is not empty %}
                                             <span class="{{ config.name }}__checkbox">
-                                                {% widget 'CustomerReorderItemCheckboxWidget' args [embed.listItem] only %}{% endwidget %}
+                                                {% if embed.listItem.bundleItemIdentifier ?? false %}
+                                                    {% widget 'CustomerReorderBundleItemCheckboxWidget' args [embed.listItem] with {
+                                                        data: {
+                                                            checkboxClasses: embed.reorderSelectionClassName,
+                                                        },
+                                                    } only %}
+                                                    {% endwidget %}
+                                                {% else %}
+                                                    {% widget 'CustomerReorderItemCheckboxWidget' args [embed.listItem] with {
+                                                        data: {
+                                                            checkboxClasses: embed.reorderSelectionClassName,
+                                                        },
+                                                    } only %}
+                                                    {% endwidget %}
+                                                {% endif %}
                                             </span>
                                         {% endif %}
 
@@ -55,6 +70,11 @@
 
                             {% block title %}
                                 <h6 class="{{ config.name }}__title spacing spacing--reset">{{ data.listItem.name }}</h6>
+                            {% endblock %}
+
+                            {% block productConfiguration %}
+                                {% widget 'ProductConfigurationOrderItemDisplayWidget' args [data.listItem] only %}
+                                {% endwidget %}
                             {% endblock %}
 
                             {% block productInfo %}

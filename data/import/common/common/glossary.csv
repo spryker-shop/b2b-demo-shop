@@ -309,6 +309,10 @@ customer.salutation.ms,Frau,de_DE
 customer.salutation.ms,Ms.,en_US
 customer.salutation.dr,Dr.,en_US
 customer.salutation.dr,Dr.,de_DE
+customer.billing_address.salutation.invalid,Salutation is invalid,en_US
+customer.billing_address.salutation.invalid,Anrede ist ungültig,de_DE
+customer.shipping_address.salutation.invalid,Salutation is invalid,en_US
+customer.shipping_address.salutation.invalid,Anrede ist ungültig,de_DE
 customer.birth_date,Geburtsdatum (TT.MM.YYYY),de_DE
 customer.birth_date,Date of birth (DD.MM.YYYY),en_US
 customer.email,E-Mail Adresse,de_DE
@@ -459,6 +463,10 @@ global.email.text,info@spryker.com,en_US
 global.email.text,info@spryker.com,de_DE
 global.select.placeholder.value,Select a value,en_US
 global.select.placeholder.value,Wähle einen wert,de_DE
+global.show,Show,en_US
+global.show,Show,de_DE
+global.hide,Hide,en_US
+global.hide,Ausblenden,de_DE
 error.404,Error 404,de_DE
 error.404,Error 404,en_US
 homepage.carousel.previous,Zurück,de_DE
@@ -577,8 +585,8 @@ customer.error.confirm_email_link.invalid_or_used,This email verification link i
 customer.error.confirm_email_link.invalid_or_used,Dieser E-Mail-Verifizierungslink ist ungültig oder wurde bereits verwendet.,de_DE
 customer.authorization.validate_email_address,"Almost there! We send you an email to validate your email address. Please confirm it to be able to log in.",en_US
 customer.authorization.validate_email_address,"Fast dort! Wir senden Ihnen eine E-Mail, um Ihre E-Mail-Adresse zu bestätigen. Bitte bestätigen Sie dies, um sich anmelden zu können.",de_DE
-customer.authorization.invalid_account,"You must first validate your email address before being able to log in",en_US
-customer.authorization.invalid_account,"Sie müssen zuerst Ihre E-Mail-Adresse überprüfen, bevor Sie sich anmelden können",de_DE
+customer.authorization.invalid_account,"If this E-mail address is already in use, you will receive a password reset link. Otherwise, you must first validate your E-mail address to finish registration. Please check your E-mail.",en_US
+customer.authorization.invalid_account,"Wenn die E-Mail bereits genutzt wird, werden Sie einen Passwortresetlink erhalten. Wenn nicht dann müssen Sie erst Ihre Emailadresse verifizieren. Bitte prüfen Sie ihre Email.",de_DE
 customer.profile.change.success,Profile was successfully saved,en_US
 customer.profile.change.success,Profil wurde erfolgreich gespeichert,de_DE
 customer.password.invalid_password,Current password is wrong,en_US
@@ -753,8 +761,8 @@ mail.trans.customerRegistration.confirmationLink,"Validate your email address",e
 mail.trans.customerRegistration.confirmationLink,"Bestätigen Sie Ihre E-Mail-Adresse",de_DE
 customer.login.failed,Login failed,en_US
 customer.login.failed,Login fehlgeschlagen,de_DE
-customer.email.already.used,Email already used,en_US
-customer.email.already.used,E-Mail bereits vergeben,de_DE
+customer.email.already.used,"If this E-mail address is already in use, you will receive a password reset link. Otherwise, you must first validate your E-mail address to finish registration. Please check your E-mail.",en_US
+customer.email.already.used,"Wenn die E-Mail bereits genutzt wird, werden Sie einen Passwortresetlink erhalten. Wenn nicht dann müssen Sie erst Ihre Emailadresse verifizieren. Bitte prüfen Sie ihre Email.",de_DE
 general.back.button,Back,en_US
 general.back.button,Zurück,de_DE
 general.cancel.button,Cancel,en_US
@@ -1017,6 +1025,12 @@ mail.sender.name,Spryker No-Reply,en_US
 mail.sender.name,Spryker No-Reply,de_DE
 mail.sender.email,noreply@demo-spryker.com,en_US
 mail.sender.email,noreply@demo-spryker.com,de_DE
+mail.auth.restore_password.subject,New password for your Spryker Backoffice account,en_US
+mail.auth.restore_password.subject,Neues Passwort für Ihren Spryker Backoffice Account,de_DE
+mail.auth.restore_password.text,"""Somebody has requested a new password for your Spryker Backoffice account. If it's not you, just ignore this email. If it's you, please follow the link below:""",en_US
+mail.auth.restore_password.text,"""Es wurde ein neues Passwort für Ihren Spryker Backoffice Account angefordert. Wenn Sie nicht um um eine Neueinrichtung des Passworts gebeten haben, ignorieren Sie bitte diese Email. Klicken Sie auf den folgedenen Link, um Ihr Passwort zu ändern:""",de_DE
+mail.auth.restore_password.label,Change Password,en_US
+mail.auth.restore_password.label,Passwort ändern,de_DE
 mail.company.status.subject,"Your company has changed status",en_US
 mail.company.status.subject,"Ihre Firma hat den Status geändert",de_DE
 mail.company.status.text,"Your company has changed status to: ",en_US
@@ -3084,16 +3098,22 @@ category.office.furniture,Office Furniture,en_US
 category.office.furniture,Büromöbel,de_DE
 comment.validation.error.comment_not_found,Comment not found.,en_US
 comment.validation.error.comment_not_found,Kommentar nicht gefunden.,de_DE
+comment.validation.error.access_denied,Access denied.,en_US
+comment.validation.error.access_denied,Zugriff verweigert.,de_DE
 comment.validation.error.comment_thread_not_found,Comment Thread not found.,en_US
 comment.validation.error.comment_thread_not_found,Kommentar Thread nicht gefunden.,de_DE
-comment.validation.error.access_denied,Access denied.,en_US
-comment.validation.error.access_denied,Zugriff verweigert.,en_US
-comment.validation.error.comment_thread_already_exists,Comment Thread already exists.,de_DE
+comment.validation.error.comment_thread_already_exists,Comment Thread already exists.,en_US
 comment.validation.error.comment_thread_already_exists,Kommentar Thread existiert bereits.,de_DE
 comment.validation.error.invalid_message_length,Invalid message length.,en_US
 comment.validation.error.invalid_message_length,Ungültige Nachrichtenlänge.,de_DE
 comment.validation.error.comment_tag_not_available,Comment tag not available.,en_US
 comment.validation.error.comment_tag_not_available,Kommentar-Tag nicht verfügbar.,de_DE
+comment.validation.error.customer_not_set,The comment cannot be created without a valid customer,en_US
+comment.validation.error.customer_not_set,Der Kommentar kann ohne gültigen Kunden nicht erstellt werden,de_DE
+comment.validation.error.company_user_not_set,The comment cannot be created without a valid company user,en_US
+comment.validation.error.company_user_not_set,Der Kommentar kann ohne gültigen Benutzer nicht erstellt werden,de_DE
+comment.validation.error.owner_not_set,The comment cannot be created on an unknown %owner%,en_US
+comment.validation.error.owner_not_set,Der Kommentar kann nicht für eine(n) unbekannte(n) %owner% erstellt werden,de_DE
 comment_widget.comments_to_cart,Comments to Cart,en_US
 comment_widget.comments_to_cart,Kommentare zum Warenkorb,de_DE
 comment_widget.form.add_comment,Add,en_US
@@ -3755,3 +3775,51 @@ sales-order-threshold.hard-minimum-threshold.us.usd.message,You should add items
 sales-order-threshold.hard-maximum-threshold.us.usd.message,The cart value cannot be higher than {{threshold}}. Please remove some items to proceed with the order,en_US
 sales-order-threshold.soft-minimum-threshold.us.usd.message,"You need to add items for {{threshold}} to pass a recommended threshold, but if you want can proceed to checkout.",en_US
 countries.iso.US,United States of America,en_US
+product_bundle_product_detail_page_items_list_widget.title.bundle_includes,Bundle includes,en_US
+product_bundle_product_detail_page_items_list_widget.title.bundle_includes,Bündel beinhaltet,de_DE
+product_configuration.checkout.validation.error.is_not_complete,"Product configuration is not completed.",en_US
+product_configuration.checkout.validation.error.is_not_complete,"Die Produktkonfiguration ist nicht abgeschlossen.",de_DE
+product_configuration_widget.configure,Configure,en_US
+product_configuration_widget.configure,Konfigurieren,de_DE
+product_configuration_widget.complete,"Configuration complete!",en_US
+product_configuration_widget.complete,"Konfiguration abgeschlossen!",de_DE
+product_configuration_widget.not_complete,"Configuration is not complete.",en_US
+product_configuration_widget.not_complete,"Die Konfiguration ist nicht abgeschlossen.",de_DE
+product_configuration_widget.quote_not_valid,"This cart can't be processed. Please configure items inside the cart.",en_US
+product_configuration_widget.quote_not_valid,"Dieser Warenkorb kann nicht bearbeitet werden. Bitte konfigurieren Sie Artikel im Warenkorb.",de_DE
+product_configurator_gateway_page.source_type_not_blank,"Source is required parameter",en_US
+product_configurator_gateway_page.source_type_not_blank,"Source ist erforderlicher Parameter",de_DE
+product_configurator_gateway_page.sku_not_blank,"Product SKU is required parameter",en_US
+product_configurator_gateway_page.sku_not_blank,"Produkt-SKU ist ein erforderlicher Parameter",de_DE
+product_configurator_gateway_page.quantity_required,"Quantity is required parameter",en_US
+product_configurator_gateway_page.quantity_required,"Menge ist Parameter erforderlich",de_DE
+product_configuration.validation.error.not_valid_response_checksum,"Not valid response checksum provided",en_US
+product_configuration.validation.error.not_valid_response_checksum,"Keine gültige Antwortprüfsumme angegeben",de_DE
+product_configuration.validation.error.expired_timestamp,"Expired timestamp was provided",en_US
+product_configuration.validation.error.expired_timestamp,"Der abgelaufene Zeitstempel wurde bereitgestellt",de_DE
+product_configuration_storage.validation.error.group_key_is_not_provided,"Group key must be provided",en_US
+product_configuration_storage.validation.error.group_key_is_not_provided,"Gruppenschlüssel muss angegeben werden",de_DE
+demo_date_time_configurator_page.checkout.validation.error.price_is_not_valid,"Product configuration price is not valid",en_US
+demo_date_time_configurator_page.checkout.validation.error.price_is_not_valid,"Der Produktkonfigurationspreis ist ungültig",de_DE
+product_configuration.access_token.request.error.can_not_obtain_access_token,"Can not obtain access token",en_US
+product_configuration.access_token.request.error.can_not_obtain_access_token,"Zugriffstoken kann nicht abgerufen werden",de_DE
+product_configuration.error.configured_item_not_found_in_cart,Configured product '%sku%' was not found.,en_US
+product_configuration.error.configured_item_not_found_in_cart,'%sku%' des kofigurierbaren Produkts wurde nicht gefunden.,de_DE
+product_configuration.error.availability.failed,The product has an availability of %availability%.,en_US
+product_configuration.error.availability.failed,Das Produkt hat eine Verfügbarkeit von %availability%.,de_DE
+product_configuration.quote_request.validation.error.incomplete,You must finish the configuration of the products to validate the quote.,en_US
+product_configuration.quote_request.validation.error.incomplete,"Sie müssen die Konfiguration der Produkte abschließen, um das Angebot zu validieren.",de_DE
+product_configurator_gateway_page.shopping_list_item_uuid_required,"Shopping List item ID is required parameter.",en_US
+product_configurator_gateway_page.shopping_list_item_uuid_required,"Die Artikel-ID der Einkaufsliste ist ein erforderlicher Parameter.",de_DE
+product_configurator_gateway_page.configurator_key_not_blank,"Configurator key is required parameter",en_US
+product_configurator_gateway_page.configurator_key_not_blank,"Konfiguratorschlüssel ist ein erforderlicher Parameter",de_DE
+product_configurator_gateway_page.item_group_key_required,"Group Key is required parameter",en_US
+product_configurator_gateway_page.item_group_key_required,"Gruppenschlüssel ist erforderlicher Parameter",de_DE
+product_configuration_shopping_list.error.configuration_not_found,"Product configuration was not found for shopping list item '%uuid%'.",en_US
+product_configuration_shopping_list.error.configuration_not_found,"Für den Einkaufslistenartikel '%uuid%' wurde keine Produktkonfiguration gefunden.",de_DE
+product_configuration_shopping_list.error.item_not_found,"Shopping list item not found.",en_US
+product_configuration_shopping_list.error.item_not_found,"Artikel auf der Einkaufsliste nicht gefunden.",de_DE
+product_configuration.response.validation.error,Failed to validate product configurator response.,en_US
+product_configuration.response.validation.error,Die Antwort vom Produktkonfigurator konnte nicht validiret werden.,de_DE
+product_configuration.error.configuration_not_found,Product configuration was not found for product '%sku%'.,en_US
+product_configuration.error.configuration_not_found,Produktkonfiguration wurde nicht für Produkt '%sku%' gefunden.,de_DE

@@ -13,19 +13,19 @@
     <table class="table {{config.name}}__table">
         <tr>
             <th class="{{config.name}}__title">
-                {{ 'page.detail.volume_price.quantity'|trans }}
+                {{ 'page.detail.volume_price.quantity' | trans }}
             </th>
             <th class="{{config.name}}__title">
-                {{ 'page.detail.volume_price.price'|trans }}
+                {{ 'page.detail.volume_price.price' | trans }}
             </th>
         </tr>
         {% for volumePrice in data.volumePrices %}
             <tr>
                 <td class="{{config.name}}__cell">
-                    {{ volumePrice.quantity }}
+                    {{ volumePrice.quantity | executeFilterIfExists('formatInt', app.locale) }}
                 </td>
                 <td class="{{config.name}}__cell">
-                    {{ volumePrice.price|money }}
+                    {{ volumePrice.price | money }}
                 </td>
             </tr>
         {% endfor %}

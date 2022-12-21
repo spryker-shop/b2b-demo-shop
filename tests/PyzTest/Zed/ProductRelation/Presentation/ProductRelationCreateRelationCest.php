@@ -24,10 +24,6 @@ use Spryker\Shared\ProductRelation\ProductRelationTypes;
 class ProductRelationCreateRelationCest
 {
     /**
-     * @skip
-     *
-     * @TODO Fix failing test for prefer-mid
-     *
      * @param \PyzTest\Zed\ProductRelation\ProductRelationPresentationTester $i
      *
      * @return void
@@ -41,14 +37,14 @@ class ProductRelationCreateRelationCest
 
         $i->amOnPage(ProductRelationCreatePage::URL);
 
-        $i->fillField('//*[@id="product_relation_productRelationKey"]', uniqid('key-', false));
-        $i->filterProductsByName(ProductRelationCreatePage::PRODUCT_RELATION_PRODUCT_1_NAME);
-
-        $i->waitForProcessingIsDone();
-
-        $i->selectProduct(ProductRelationCreatePage::PRODUCT_RELATION_PRODUCT_1_SKU);
+        $i->waitForElement(ProductRelationPresentationTester::PRODUCT_RELATION_KEY_FIELD_SELECTOR);
+        $key = uniqid('key-', false);
+        $i->fillField(ProductRelationPresentationTester::PRODUCT_RELATION_KEY_FIELD_SELECTOR, $key);
 
         $i->selectRelationType(ProductRelationTypes::TYPE_RELATED_PRODUCTS);
+        $i->filterProductsByName(ProductRelationCreatePage::PRODUCT_RELATION_PRODUCT_1_NAME);
+        $i->selectProduct(ProductRelationCreatePage::PRODUCT_RELATION_PRODUCT_1_SKU);
+
         $i->switchToAssignProductsTab();
 
         $i->selectProductRule(
@@ -58,16 +54,8 @@ class ProductRelationCreateRelationCest
         );
 
         $i->clickSaveButton();
-        $i->waitForProcessingIsDone();
-        $i->see(ProductRelationCreatePage::MESSAGE_SUCCESS_PRODUCT_RELATION_CREATED);
 
-        // TODO re-enable
-        //$i->runCollectors();
-        //$i->wait(5);
-
-        //$i->amYves();
-        //$i->amOnPage('/en/samsung-bundle-214');
-        //$i->canSee('Similar products');
-        //$i->canSee('HP EliteDesk 800 G2');
+        $i->waitForText(sprintf('%s %s', ProductRelationCreatePage::EDIT_PRODUCT_RELATION_TEXT, $key), 20);
+        $i->seeInPageSource(sprintf('%s %s', ProductRelationCreatePage::EDIT_PRODUCT_RELATION_TEXT, $key));
     }
 }

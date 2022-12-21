@@ -1,43 +1,8 @@
-{% extends model('component') %}
+{% extends molecule('product-configurator', '@SprykerShop:ProductDetailPage') %}
 
-{% define config = {
-    name: 'product-configurator',
-    tag: 'section'
-} %}
-
-{% define data = {
-    product: required,
-    maxQuantity: 10,
-    isBundle: null,
-    bundleItems: []
-} %}
-
-{% set options = [] %}
-{% set brand = data.product.attributes.brand | default %}
-{% set sku = data.product.sku %}
-{% set availabilityWidget = '' %}
 {% set isProductConcrete = data.product.idProductConcrete is not empty %}
-{% set isDisabled = data.product.idProductConcrete is empty or data.product.price is empty %}
-{% set isProductAvailable = true %}
-
-{% for index in 1..data.maxQuantity %}
-    {% set options = options | merge([{
-        label: index,
-        value: index
-    }]) %}
-{% endfor %}
-
-{% set isAvailable = data.product.idProductConcrete and data.product.available %}
-{% set isDisabled = not isAvailable or isDisabled %}
-
-{% set productDiscontinuedNoteWidget = findWidget('ProductDiscontinuedNoteWidget', [sku]) %}
-{% if productDiscontinuedNoteWidget.isDiscontinued is not null %}
-    {% set isDisabled = productDiscontinuedNoteWidget.isDiscontinued or isDisabled %}
-    {% set isProductAvailable = not productDiscontinuedNoteWidget.isDiscontinued %}
-{% endif %}
 
 {% block body %}
-
     <div class="{{ config.name }}__top-block">
         {% widget 'ProductDetailPageReviewWidget' args [data.product.idProductAbstract] use view('pdp-review-rating', 'ProductReviewWidget') only %}{% endwidget %}
         <div class="{{ config.name }}__brand-sku-wrapper">
@@ -62,38 +27,9 @@
         {% endwidget %}
     {% endif %}
 
-    {% if data.isBundle != null %}
-        <div class="{{ config.name }}__bundle product-options__item js-product-options-bundle">
-            <div class="product-options__title js-product-options-bundle__title active" data-toggle-target=".js-product-options-bundle__target">{{ 'bundle.title' | trans }}</div>
-            <div class="js-product-options-bundle__target">
-                <ul class="product-bundle product-bundle--configurator">
-                    {% for item in data.bundleItems %}
-                        <li class="product-bundle__item product-bundle__item--configurator">
-                            <div class="product-bundle__img-block product-bundle__img-block--configurator">
-                                {% include molecule('lazy-image') with {
-                                    modifiers: ['full-size'],
-                                    data: {
-                                        imageSrc: item.image,
-                                    },
-                                } only %}
-                            </div>
-                            <div class="product-bundle__info product-bundle__info--configurator">
-                                <h2 class="product-bundle__name title title--h2">{{ item.name }}</h2>
-                                <span class="product-bundle__quantity">x {{ item.quantity }}</span>
-                            </div>
-                        </li>
-                    {% endfor %}
-                </ul>
-            </div>
-        </div>
-        {% include molecule('toggler-accordion') with {
-            attributes: {
-                'wrap-class-name': 'js-product-options-bundle',
-                'trigger-class-name': 'js-product-options-bundle__title',
-                'active-class': 'active',
-            },
-        } only %}
-    {% endif %}
+    {% block bundleProducts %}
+        {% widget 'ProductBundleProductDetailPageItemsListWidget' args [data.product] only %}{% endwidget %}
+    {% endblock %}
 
     {% block colors %}
         {% widget 'ProductGroupColorWidget' args [data.product.idProductAbstract, data.product.selectedAttributes ?? []] use view('product-detail-color-selector', 'ProductGroupWidget') only %}{% endwidget %}
@@ -106,6 +42,9 @@
             availableAttributes: data.product.availableAttributes,
         },
     } only %}
+
+    {% widget 'ProductConfigurationProductViewDisplayWidget' args [data.product] only %}{% endwidget %}
+    {% widget 'ProductConfigurationProductDetailPageButtonWidget' args [data.product] only %}{% endwidget %}
 
     {% widget 'AddToCartFormWidget' args [config, data.product, isDisabled, options] only %}
         {% block embeddedData %}

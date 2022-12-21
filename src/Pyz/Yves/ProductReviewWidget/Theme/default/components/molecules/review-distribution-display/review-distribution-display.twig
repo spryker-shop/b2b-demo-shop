@@ -20,7 +20,7 @@
 
         <tr>
             <td class="{{ config.name }}__summary-stars">
-                {{ rating }}
+                {{ rating | executeFilterIfExists('formatInt', app.locale) }}
 
                 {% set amount = rating > 1 ? 'multiple' : rating %}
 
@@ -35,7 +35,7 @@
                 </div>
             </td>
             <td class="{{ config.name }}__rating-review">
-                {{ ratingReview }}
+                {{ ratingReview | executeFilterIfExists('formatInt', app.locale) }}
             </td>
         </tr>
     {% endfor %}

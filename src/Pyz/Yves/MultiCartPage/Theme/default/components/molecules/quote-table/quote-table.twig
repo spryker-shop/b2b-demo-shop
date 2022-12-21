@@ -82,7 +82,7 @@
                                 : 'page.multi_cart.shopping_cart.list.label.items'
                             %}
 
-                            <span class="badge cart-items-quantity">{{ totals }} {{ label | trans }}</span>
+                            <span class="badge cart-items-quantity">{{ totals | executeFilterIfExists('formatInt', app.locale) }} {{ label | trans }}</span>
                         {% endwidget %}
                     </td>
                     <td class="transform-cell" data-content="{{ 'page.multi_cart.shopping_cart.list.label.prices' | trans }}">

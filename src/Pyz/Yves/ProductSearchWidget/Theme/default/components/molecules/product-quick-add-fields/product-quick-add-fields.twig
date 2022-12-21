@@ -23,7 +23,7 @@
     <div class="col col--sm-12 spacing-bottom spacing-bottom--big {{ data.verticalLayout ? '' : 'col--md-4 spacing-right spacing-right--inner' }}">
         {{ form_widget(data.form.children.quantity, {
             attr: {
-                class: config.jsName ~ '__quantity ' ~ 'product-search-autocomplete-form__input product-search-autocomplete-form__input--no-icon js-product-search-autocomplete-form__quantity-field',
+                class: config.jsName ~ '__quantity ' ~ 'product-search-autocomplete-form__input product-search-autocomplete-form__input--no-icon js-product-search-autocomplete-form__quantity-field input input--expand',
                 min: 1,
                 step: 1,
                 placeholder: 'product_quick_add_widget.form.quantity' | trans

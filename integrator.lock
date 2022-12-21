@@ -227,5 +227,21 @@
         "source": "\\SprykerShop\\Yves\\ProductReviewWidget\\Plugin\\ProductGroupWidget\\ProductReviewSummaryProductViewExpanderPlugin"
       }
     }
+  },
+  "Spryker.Customer": {
+    "wire-plugin": {
+      "7312de66a8237a9de3c86c4dc68fb7f136a39e96": {
+        "target": "\\Spryker\\Zed\\TaxProductConnector\\TaxProductConnectorDependencyProvider::getShippingAddressValidatorPlugins",
+        "source": "\\Spryker\\Zed\\Customer\\Communication\\Plugin\\TaxProductConnector\\CustomerAddressShippingAddressValidatorPlugin"
+      }
+    }
+  },
+  "Spryker.CompanyUnitAddress": {
+    "wire-plugin": {
+      "7c7411e2f1447b5a8448cea033cfa75f6640275b": {
+        "target": "\\Spryker\\Zed\\TaxProductConnector\\TaxProductConnectorDependencyProvider::getShippingAddressValidatorPlugins",
+        "source": "\\Spryker\\Zed\\CompanyUnitAddress\\Communication\\Plugin\\TaxProductConnector\\CompanyUnitAddressShippingAddressValidatorPlugin"
+      }
+    }
   }
 }
