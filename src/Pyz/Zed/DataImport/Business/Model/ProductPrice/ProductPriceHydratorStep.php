@@ -120,7 +120,7 @@ class ProductPriceHydratorStep implements DataImportStepInterface
      */
     public function __construct(
         PriceProductFacadeInterface $priceProductFacade,
-        DataImportToUtilEncodingServiceInterface $utilEncodingService
+        DataImportToUtilEncodingServiceInterface $utilEncodingService,
     ) {
         $this->priceProductFacade = $priceProductFacade;
         $this->utilEncodingService = $utilEncodingService;

@@ -182,7 +182,7 @@ class CalculationDependencyProvider extends SprykerCalculationDependencyProvider
      *
      * @return array<\Spryker\Zed\CalculationExtension\Dependency\Plugin\CalculationPluginInterface>
      */
-    protected function getQuoteCalculatorPluginStack(Container $container)
+    protected function getQuoteCalculatorPluginStack(Container $container): array
     {
         /** @var array<\Spryker\Zed\Calculation\Dependency\Plugin\CalculationPluginInterface> $pluginStack */
         $pluginStack = [
@@ -241,7 +241,7 @@ class CalculationDependencyProvider extends SprykerCalculationDependencyProvider
      *
      * @return array<\Spryker\Zed\CalculationExtension\Dependency\Plugin\CalculationPluginInterface>
      */
-    protected function getOrderCalculatorPluginStack(Container $container)
+    protected function getOrderCalculatorPluginStack(Container $container): array
     {
         return [
 

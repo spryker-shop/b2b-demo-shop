@@ -27,7 +27,7 @@ class ContentProductSetWidgetFactory extends SprykerShopContentProductSetWidgetF
      */
     public function createPyzContentProductSetTwigFunctionProvider(
         Environment $twig,
-        string $localeName
+        string $localeName,
     ): TwigFunctionProvider {
         return new ContentProductSetTwigFunctionProvider(
             $twig,
@@ -45,7 +45,7 @@ class ContentProductSetWidgetFactory extends SprykerShopContentProductSetWidgetF
      */
     public function createPyzContentProductSetTwigFunction(
         Environment $twig,
-        string $localeName
+        string $localeName,
     ): TwigFunction {
         $functionProvider = $this->createPyzContentProductSetTwigFunctionProvider($twig, $localeName);
 

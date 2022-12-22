@@ -15,7 +15,7 @@ class QuoteConfig extends SprykerQuoteConfig
     /**
      * @return array
      */
-    public function getQuoteFieldsAllowedForSaving()
+    public function getQuoteFieldsAllowedForSaving(): array
     {
         return array_merge(parent::getQuoteFieldsAllowedForSaving(), [
             QuoteTransfer::BUNDLE_ITEMS,

@@ -24,7 +24,7 @@ class CustomerAccessDataProvider
      * @param \Pyz\Zed\CustomerAccess\Business\CustomerAccessFacadeInterface $customerAccessFacade
      */
     public function __construct(
-        CustomerAccessFacadeInterface $customerAccessFacade
+        CustomerAccessFacadeInterface $customerAccessFacade,
     ) {
         $this->customerAccessFacade = $customerAccessFacade;
     }

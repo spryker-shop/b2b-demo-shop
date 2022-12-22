@@ -44,7 +44,7 @@ class ShipmentWriterStep implements DataImportStepInterface
      *
      * @return void
      */
-    public function execute(DataSetInterface $dataSet)
+    public function execute(DataSetInterface $dataSet): void
     {
         $shipmentCarrier = SpyShipmentCarrierQuery::create()
             ->filterByName($dataSet[static::COL_CARRIER])

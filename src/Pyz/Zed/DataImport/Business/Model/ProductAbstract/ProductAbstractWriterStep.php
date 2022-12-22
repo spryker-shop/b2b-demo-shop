@@ -133,7 +133,7 @@ class ProductAbstractWriterStep extends PublishAwareStep implements DataImportSt
      *
      * @return void
      */
-    public function execute(DataSetInterface $dataSet)
+    public function execute(DataSetInterface $dataSet): void
     {
         $productAbstractEntity = $this->importProductAbstract($dataSet);
 
@@ -151,7 +151,7 @@ class ProductAbstractWriterStep extends PublishAwareStep implements DataImportSt
      *
      * @return \Orm\Zed\Product\Persistence\SpyProductAbstract
      */
-    protected function importProductAbstract(DataSetInterface $dataSet)
+    protected function importProductAbstract(DataSetInterface $dataSet): SpyProductAbstract
     {
         $productAbstractEntity = SpyProductAbstractQuery::create()
             ->filterBySku($dataSet[static::KEY_ABSTRACT_SKU])
@@ -177,7 +177,7 @@ class ProductAbstractWriterStep extends PublishAwareStep implements DataImportSt
      *
      * @return void
      */
-    protected function importProductAbstractLocalizedAttributes(DataSetInterface $dataSet, SpyProductAbstract $productAbstractEntity)
+    protected function importProductAbstractLocalizedAttributes(DataSetInterface $dataSet, SpyProductAbstract $productAbstractEntity): void
     {
         foreach ($dataSet[ProductLocalizedAttributesExtractorStep::KEY_LOCALIZED_ATTRIBUTES] as $idLocale => $localizedAttributes) {
             $productAbstractLocalizedAttributesEntity = SpyProductAbstractLocalizedAttributesQuery::create()
@@ -207,7 +207,7 @@ class ProductAbstractWriterStep extends PublishAwareStep implements DataImportSt
      *
      * @return void
      */
-    protected function importProductCategories(DataSetInterface $dataSet, SpyProductAbstract $productAbstractEntity)
+    protected function importProductCategories(DataSetInterface $dataSet, SpyProductAbstract $productAbstractEntity): void
     {
         $categoryKeys = $this->getCategoryKeys($dataSet[static::KEY_CATEGORY_KEY]);
         $categoryProductOrder = $this->getCategoryProductOrder($dataSet[static::KEY_CATEGORY_PRODUCT_ORDER]);
@@ -247,7 +247,7 @@ class ProductAbstractWriterStep extends PublishAwareStep implements DataImportSt
      *
      * @return array
      */
-    protected function getCategoryKeys($categoryKeys)
+    protected function getCategoryKeys($categoryKeys): array
     {
         $categoryKeys = explode(',', $categoryKeys);
 
@@ -259,7 +259,7 @@ class ProductAbstractWriterStep extends PublishAwareStep implements DataImportSt
      *
      * @return array
      */
-    protected function getCategoryProductOrder($categoryProductOrder)
+    protected function getCategoryProductOrder($categoryProductOrder): array
     {
         $categoryProductOrder = explode(',', $categoryProductOrder);
 
@@ -272,7 +272,7 @@ class ProductAbstractWriterStep extends PublishAwareStep implements DataImportSt
      *
      * @return void
      */
-    protected function importProductUrls(DataSetInterface $dataSet, SpyProductAbstract $productAbstractEntity)
+    protected function importProductUrls(DataSetInterface $dataSet, SpyProductAbstract $productAbstractEntity): void
     {
         foreach ($dataSet[ProductLocalizedAttributesExtractorStep::KEY_LOCALIZED_ATTRIBUTES] as $idLocale => $localizedAttributes) {
             $abstractProductUrl = $localizedAttributes[static::KEY_URL];
@@ -299,7 +299,7 @@ class ProductAbstractWriterStep extends PublishAwareStep implements DataImportSt
      *
      * @return void
      */
-    protected function cleanupRedirectUrls($abstractProductUrl)
+    protected function cleanupRedirectUrls($abstractProductUrl): void
     {
         SpyUrlQuery::create()
             ->filterByUrl($abstractProductUrl)

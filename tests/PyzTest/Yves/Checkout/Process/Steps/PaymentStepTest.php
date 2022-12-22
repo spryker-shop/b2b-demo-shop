@@ -87,7 +87,7 @@ class PaymentStepTest extends Unit
      *
      * @return \SprykerShop\Yves\CheckoutPage\Process\Steps\PaymentStep
      */
-    protected function createPaymentStep(StepHandlerPluginCollection $paymentPlugins)
+    protected function createPaymentStep(StepHandlerPluginCollection $paymentPlugins): PaymentStep
     {
         return new PaymentStep(
             $this->getPaymentClientMock(),

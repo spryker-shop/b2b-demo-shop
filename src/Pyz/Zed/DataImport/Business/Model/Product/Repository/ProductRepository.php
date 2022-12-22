@@ -101,7 +101,7 @@ class ProductRepository implements ProductRepositoryInterface
      *
      * @return void
      */
-    private function resolveProductByConcreteSku($sku)
+    private function resolveProductByConcreteSku($sku): void
     {
         $productEntity = SpyProductQuery::create()
             ->joinWithSpyProductAbstract()
@@ -124,7 +124,7 @@ class ProductRepository implements ProductRepositoryInterface
      *
      * @return void
      */
-    private function resolveProductByAbstractSku($sku)
+    private function resolveProductByAbstractSku($sku): void
     {
         $productAbstractEntity = SpyProductAbstractQuery::create()
             ->findOneBySku($sku);

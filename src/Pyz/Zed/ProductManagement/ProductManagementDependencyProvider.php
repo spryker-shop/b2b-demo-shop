@@ -34,7 +34,7 @@ class ProductManagementDependencyProvider extends SprykerProductManagementDepend
     /**
      * @return array<\Spryker\Zed\ProductManagement\Communication\Plugin\ProductAbstractViewPluginInterface>
      */
-    protected function getProductAbstractViewPlugins()
+    protected function getProductAbstractViewPlugins(): array
     {
         return [
             new CmsBlockProductAbstractBlockListViewPlugin(),
@@ -44,7 +44,7 @@ class ProductManagementDependencyProvider extends SprykerProductManagementDepend
     /**
      * @return \Spryker\Zed\Kernel\Communication\Form\FormTypeInterface
      */
-    protected function getStoreRelationFormTypePlugin()
+    protected function getStoreRelationFormTypePlugin(): FormTypeInterface
     {
         return new StoreRelationToggleFormTypePlugin();
     }

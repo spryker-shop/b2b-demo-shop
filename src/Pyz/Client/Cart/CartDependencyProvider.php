@@ -8,7 +8,9 @@
 namespace Pyz\Client\Cart;
 
 use Spryker\Client\Cart\CartDependencyProvider as SprykerCartDependencyProvider;
+use Spryker\Client\Cart\Dependency\Plugin\ItemCountPluginInterface;
 use Spryker\Client\Cart\Plugin\ProductSeparateCartChangeExpanderPlugin;
+use Spryker\Client\CartExtension\Dependency\Plugin\QuoteItemFinderPluginInterface;
 use Spryker\Client\DiscountPromotion\Plugin\AddDiscountPromotionCartRequestExpandPlugin;
 use Spryker\Client\PersistentCart\Plugin\DatabaseQuoteStorageStrategy;
 use Spryker\Client\ProductBundle\Plugin\Cart\BundleProductQuoteItemFinderPlugin;
@@ -23,7 +25,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
     /**
      * @return \Spryker\Client\Cart\Dependency\Plugin\ItemCountPluginInterface
      */
-    protected function getItemCountPlugin()
+    protected function getItemCountPlugin(): ItemCountPluginInterface
     {
         return new ProductBundleItemCountQuantityPlugin();
     }
@@ -31,7 +33,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
     /**
      * @return array<\Spryker\Client\CartExtension\Dependency\Plugin\QuoteStorageStrategyPluginInterface>
      */
-    protected function getQuoteStorageStrategyPlugins()
+    protected function getQuoteStorageStrategyPlugins(): array
     {
         $quoteStorageStrategyPlugins = parent::getQuoteStorageStrategyPlugins();
         $quoteStorageStrategyPlugins[] = new DatabaseQuoteStorageStrategy(); #PersistentCartFeature
@@ -42,7 +44,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
     /**
      * @return \Spryker\Client\CartExtension\Dependency\Plugin\QuoteItemFinderPluginInterface
      */
-    protected function getQuoteItemFinderPlugin()
+    protected function getQuoteItemFinderPlugin(): QuoteItemFinderPluginInterface
     {
         return new BundleProductQuoteItemFinderPlugin();
     }
@@ -50,7 +52,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
     /**
      * @return array<\Spryker\Client\CartExtension\Dependency\Plugin\CartChangeRequestExpanderPluginInterface>
      */
-    protected function getAddItemsRequestExpanderPlugins()
+    protected function getAddItemsRequestExpanderPlugins(): array
     {
         return [
             new AddDiscountPromotionCartRequestExpandPlugin(),
@@ -64,7 +66,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
     /**
      * @return array<\Spryker\Client\CartExtension\Dependency\Plugin\CartChangeRequestExpanderPluginInterface>
      */
-    protected function getRemoveItemsRequestExpanderPlugins()
+    protected function getRemoveItemsRequestExpanderPlugins(): array
     {
         return [
             new RemoveBundleChangeRequestExpanderPlugin(),

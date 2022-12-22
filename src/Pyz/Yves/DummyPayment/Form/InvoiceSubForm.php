@@ -97,7 +97,7 @@ class InvoiceSubForm extends AbstractType implements SubFormProviderNameInterfac
      *
      * @return void
      */
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $this->addPyzDateOfBirthField($builder);
     }
@@ -154,7 +154,7 @@ class InvoiceSubForm extends AbstractType implements SubFormProviderNameInterfac
     protected function createPyzBirthdayConstraint(): Callback
     {
         return new Callback([
-            'callback' => function ($date, ExecutionContextInterface $context) {
+            'callback' => function ($date, ExecutionContextInterface $context): void {
                 if (strtotime($date) > strtotime(static::PYZ_MIN_BIRTHDAY_DATE_STRING)) {
                     $context->addViolation('checkout.step.payment.must_be_older_than_18_years');
                 }
