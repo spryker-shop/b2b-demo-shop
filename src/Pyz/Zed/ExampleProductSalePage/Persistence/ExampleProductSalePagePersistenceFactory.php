@@ -13,8 +13,8 @@ use Spryker\Zed\Product\Persistence\ProductQueryContainerInterface;
 use Spryker\Zed\ProductLabel\Persistence\ProductLabelQueryContainerInterface;
 
 /**
- * @method \Spryker\Zed\ProductNew\ProductNewConfig getConfig()
- * @method \Spryker\Zed\ProductNew\Persistence\ProductNewQueryContainer getQueryContainer()
+ * @method \Pyz\Zed\ExampleProductSalePage\ExampleProductSalePageConfig getConfig()
+ * @method \Pyz\Zed\ExampleProductSalePage\Persistence\ExampleProductSalePageQueryContainerInterface getQueryContainer()
  */
 class ExampleProductSalePagePersistenceFactory extends AbstractPersistenceFactory
 {

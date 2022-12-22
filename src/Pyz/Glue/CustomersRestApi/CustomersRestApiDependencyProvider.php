@@ -15,7 +15,7 @@ use Spryker\Glue\CustomersRestApi\CustomersRestApiDependencyProvider as SprykerC
 class CustomersRestApiDependencyProvider extends SprykerCustomersRestApiDependencyProvider
 {
     /**
-     * @return \Spryker\Glue\CustomersRestApiExtension\Dependency\Plugin\CustomerPostCreatePluginInterface[]
+     * @return array<\Spryker\Glue\CustomersRestApiExtension\Dependency\Plugin\CustomerPostCreatePluginInterface>
      */
     protected function getCustomerPostCreatePlugins(): array
     {
@@ -25,7 +25,7 @@ class CustomersRestApiDependencyProvider extends SprykerCustomersRestApiDependen
     }
 
     /**
-     * @return \Spryker\Glue\CustomersRestApiExtension\Dependency\Plugin\CustomerExpanderPluginInterface[]
+     * @return array<\Spryker\Glue\CustomersRestApiExtension\Dependency\Plugin\CustomerExpanderPluginInterface>
      */
     protected function getCustomerExpanderPlugins(): array
     {

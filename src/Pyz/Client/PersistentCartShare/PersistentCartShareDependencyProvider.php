@@ -15,7 +15,7 @@ use Spryker\Client\SharedCart\Plugin\PersistentCartShare\ReadOnlyCartShareOption
 class PersistentCartShareDependencyProvider extends SprykerPersistentCartShareDependencyProvider
 {
     /**
-     * @return \Spryker\Client\PersistentCartShareExtension\Dependency\Plugin\CartShareOptionPluginInterface[]
+     * @return array<\Spryker\Client\PersistentCartShareExtension\Dependency\Plugin\CartShareOptionPluginInterface>
      */
     protected function getCartShareOptionPlugins(): array
     {

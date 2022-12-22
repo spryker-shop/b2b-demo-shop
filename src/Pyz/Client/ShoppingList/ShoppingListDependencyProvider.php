@@ -19,7 +19,7 @@ use Spryker\Client\ShoppingListProductOptionConnector\ShoppingList\ShoppingListI
 class ShoppingListDependencyProvider extends SprykerShoppingListDependencyProvider
 {
     /**
-     * @return \Spryker\Client\ShoppingListExtension\Dependency\Plugin\ShoppingListItemMapperPluginInterface[]
+     * @return array<\Spryker\Client\ShoppingListExtension\Dependency\Plugin\ShoppingListItemMapperPluginInterface>
      */
     protected function getAddItemShoppingListItemMapperPlugins(): array
     {
@@ -30,7 +30,7 @@ class ShoppingListDependencyProvider extends SprykerShoppingListDependencyProvid
     }
 
     /**
-     * @return \Spryker\Client\ShoppingListExtension\Dependency\Plugin\ShoppingListItemToItemMapperPluginInterface[]
+     * @return array<\Spryker\Client\ShoppingListExtension\Dependency\Plugin\ShoppingListItemToItemMapperPluginInterface>
      */
     protected function getShoppingListItemToItemMapperPlugins(): array
     {
@@ -42,7 +42,7 @@ class ShoppingListDependencyProvider extends SprykerShoppingListDependencyProvid
     }
 
     /**
-     * @return \Spryker\Client\ShoppingListExtension\Dependency\Plugin\QuoteItemToItemMapperPluginInterface[]
+     * @return array<\Spryker\Client\ShoppingListExtension\Dependency\Plugin\QuoteItemToItemMapperPluginInterface>
      */
     protected function getQuoteItemToItemMapperPlugins(): array
     {

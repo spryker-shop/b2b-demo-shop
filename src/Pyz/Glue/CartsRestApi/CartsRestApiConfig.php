@@ -15,6 +15,7 @@ class CartsRestApiConfig extends SprykerCartsRestApiConfig
      * @var bool
      */
     protected const ALLOWED_CART_ITEM_EAGER_RELATIONSHIP = false;
+
     /**
      * @var bool
      */

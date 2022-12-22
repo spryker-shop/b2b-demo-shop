@@ -63,7 +63,7 @@ class ExampleProductSalePageQueryContainer extends AbstractQueryContainer implem
                     ->addJoinCondition(
                         'priceTypeOrigin',
                         'priceTypeOrigin.name = ?',
-                        static::PYZ_PRICE_TYPE_ORIGINAL
+                        static::PYZ_PRICE_TYPE_ORIGINAL,
                     )
                     ->usePriceProductStoreQuery('priceProductStoreOrigin', Criteria::LEFT_JOIN)
                         ->usePriceProductDefaultQuery('priceProductDefaultOriginal', Criteria::LEFT_JOIN)
@@ -75,7 +75,7 @@ class ExampleProductSalePageQueryContainer extends AbstractQueryContainer implem
                     ->addJoinCondition(
                         'priceTypeDefault',
                         'priceTypeDefault.name = ?',
-                        static::PYZ_PRICE_TYPE_DEFAULT
+                        static::PYZ_PRICE_TYPE_DEFAULT,
                     )
                     ->usePriceProductStoreQuery('priceProductStoreDefault', Criteria::LEFT_JOIN)
                         ->usePriceProductDefaultQuery('priceProductDefaultDefault', Criteria::LEFT_JOIN)
@@ -91,7 +91,7 @@ class ExampleProductSalePageQueryContainer extends AbstractQueryContainer implem
         $orCriterion = $this->getPyzBasicModelCriterion(
             $productLabelProductAbstractQuery,
             'priceProductStoreOrigin.gross_price < priceProductStoreDefault.gross_price',
-            'priceProductStoreOrigin.gross_price'
+            'priceProductStoreOrigin.gross_price',
         );
         $orCriterion->addOr($productLabelProductAbstractQuery->getNewCriterion('priceProductStoreOrigin.gross_price', null, Criteria::ISNULL));
         $orCriterion->addOr($productLabelProductAbstractQuery->getNewCriterion('priceProductStoreOrigin.net_price', null, Criteria::ISNULL));
@@ -99,8 +99,8 @@ class ExampleProductSalePageQueryContainer extends AbstractQueryContainer implem
             $this->getPyzBasicModelCriterion(
                 $productLabelProductAbstractQuery,
                 'priceProductStoreOrigin.net_price < priceProductStoreDefault.net_price',
-                'priceProductStoreOrigin.net_price'
-            )
+                'priceProductStoreOrigin.net_price',
+            ),
         );
         $orCriterion->addOr($productLabelProductAbstractQuery->getNewCriterion('priceProductStoreDefault.gross_price', null, Criteria::ISNULL));
         $orCriterion->addOr($productLabelProductAbstractQuery->getNewCriterion('priceProductStoreDefault.net_price', null, Criteria::ISNULL));
@@ -128,7 +128,7 @@ class ExampleProductSalePageQueryContainer extends AbstractQueryContainer implem
                 ->addJoinCondition(
                     'priceTypeOrigin',
                     'priceTypeOrigin.name = ?',
-                    static::PYZ_PRICE_TYPE_ORIGINAL
+                    static::PYZ_PRICE_TYPE_ORIGINAL,
                 )
                 ->usePriceProductStoreQuery('priceProductStoreOrigin', Criteria::LEFT_JOIN)
                     ->usePriceProductDefaultQuery('priceProductDefaultOriginal', Criteria::LEFT_JOIN)
@@ -140,7 +140,7 @@ class ExampleProductSalePageQueryContainer extends AbstractQueryContainer implem
                 ->addJoinCondition(
                     'priceTypeDefault',
                     'priceTypeDefault.name = ?',
-                    static::PYZ_PRICE_TYPE_DEFAULT
+                    static::PYZ_PRICE_TYPE_DEFAULT,
                 )
                 ->usePriceProductStoreQuery('priceProductStoreDefault', Criteria::LEFT_JOIN)
                     ->usePriceProductDefaultQuery('priceProductDefaultDefault', Criteria::LEFT_JOIN)

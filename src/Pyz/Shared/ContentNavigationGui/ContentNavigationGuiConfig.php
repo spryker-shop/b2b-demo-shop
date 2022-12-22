@@ -94,7 +94,7 @@ class ContentNavigationGuiConfig extends SprykerContentNavigationGuiConfig
     /**
      * @api
      *
-     * @return string[]
+     * @return array<string>
      */
     public function getContentWidgetTemplates(): array
     {

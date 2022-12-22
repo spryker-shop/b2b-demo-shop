@@ -39,7 +39,7 @@ class CustomerAccessMapper
     ): CustomerAccessTransfer {
         foreach ($customerAccessEntities as $customerAccessEntity) {
             $customerAccessTransfer->addContentTypeAccess(
-                $this->mapCustomerAccessEntityToContentTypeAccessTransfer($customerAccessEntity, new ContentTypeAccessTransfer())
+                $this->mapCustomerAccessEntityToContentTypeAccessTransfer($customerAccessEntity, new ContentTypeAccessTransfer()),
             );
         }
 
@@ -57,7 +57,7 @@ class CustomerAccessMapper
         CustomerAccessTransfer $customerAccessTransfer
     ): CustomerAccessTransfer {
         return $customerAccessTransfer->addContentTypeAccess(
-            (new ContentTypeAccessTransfer())->fromArray($customerAccessEntity->toArray(), true)
+            (new ContentTypeAccessTransfer())->fromArray($customerAccessEntity->toArray(), true),
         );
     }
 }

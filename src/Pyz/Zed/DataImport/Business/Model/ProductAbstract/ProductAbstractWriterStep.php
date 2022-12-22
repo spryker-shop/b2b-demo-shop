@@ -34,66 +34,82 @@ class ProductAbstractWriterStep extends PublishAwareStep implements DataImportSt
      * @var string
      */
     public const KEY_ABSTRACT_SKU = 'abstract_sku';
+
     /**
      * @var string
      */
     public const KEY_COLOR_CODE = 'color_code';
+
     /**
      * @var string
      */
     public const KEY_ID_TAX_SET = 'idTaxSet';
+
     /**
      * @var string
      */
     public const KEY_ATTRIBUTES = 'attributes';
+
     /**
      * @var string
      */
     public const KEY_NAME = 'name';
+
     /**
      * @var string
      */
     public const KEY_URL = 'url';
+
     /**
      * @var string
      */
     public const KEY_DESCRIPTION = 'description';
+
     /**
      * @var string
      */
     public const KEY_META_TITLE = 'meta_title';
+
     /**
      * @var string
      */
     public const KEY_META_DESCRIPTION = 'meta_description';
+
     /**
      * @var string
      */
     public const KEY_META_KEYWORDS = 'meta_keywords';
+
     /**
      * @var string
      */
     public const KEY_TAX_SET_NAME = 'tax_set_name';
+
     /**
      * @var string
      */
     public const KEY_CATEGORY_KEY = 'category_key';
+
     /**
      * @var string
      */
     public const KEY_CATEGORY_KEYS = 'categoryKeys';
+
     /**
      * @var string
      */
     public const KEY_CATEGORY_PRODUCT_ORDER = 'category_product_order';
+
     /**
      * @var string
      */
     public const KEY_LOCALES = 'locales';
+
     /**
      * @var string
      */
     public const KEY_NEW_FROM = 'new_from';
+
     /**
      * @var string
      */
@@ -201,7 +217,7 @@ class ProductAbstractWriterStep extends PublishAwareStep implements DataImportSt
                 throw new DataKeyNotFoundInDataSetException(sprintf(
                     'The category with key "%s" was not found in categoryKeys. Maybe there is a typo. Given Categories: "%s"',
                     $categoryKey,
-                    implode('', array_values($dataSet[static::KEY_CATEGORY_KEYS]))
+                    implode('', array_values($dataSet[static::KEY_CATEGORY_KEYS])),
                 ));
             }
             $productOrder = null;

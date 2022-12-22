@@ -7,7 +7,7 @@
 
 namespace PyzTest\Yves\Application\Presentation\Controller;
 
-use PyzTest\Yves\Application\ApplicationPresentationTester;
+use PyzTest\Yves\Application\ApplicationControllerTester;
 use PyzTest\Yves\Application\PageObject\Homepage;
 
 /**
@@ -24,11 +24,11 @@ use PyzTest\Yves\Application\PageObject\Homepage;
 class HomepageCest
 {
     /**
-     * @param \PyzTest\Yves\Application\ApplicationPresentationTester $i
+     * @param \PyzTest\Yves\Application\ApplicationControllerTester $i
      *
      * @return void
      */
-    public function testICanOpenHomepage(ApplicationPresentationTester $i)
+    public function testICanOpenHomepage(ApplicationControllerTester $i)
     {
         $i->wantTo('See that i can open the homepage');
         $i->amOnPage(Homepage::URL);

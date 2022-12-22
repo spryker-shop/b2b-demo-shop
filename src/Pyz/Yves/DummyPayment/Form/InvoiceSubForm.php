@@ -134,7 +134,7 @@ class InvoiceSubForm extends AbstractType implements SubFormProviderNameInterfac
                     $this->createPyzNotBlankConstraint(),
                     $this->createPyzBirthdayConstraint(),
                 ],
-            ]
+            ],
         );
 
         return $this;

@@ -12,7 +12,7 @@ use Pyz\Zed\ExampleProductSalePage\Business\Label\ProductAbstractRelationReaderI
 use Spryker\Zed\Kernel\Business\AbstractBusinessFactory;
 
 /**
- * @method \Pyz\Zed\ExampleProductSalePage\Persistence\ExampleProductSalePageQueryContainer getQueryContainer()
+ * @method \Pyz\Zed\ExampleProductSalePage\Persistence\ExampleProductSalePageQueryContainerInterface getQueryContainer()
  * @method \Pyz\Zed\ExampleProductSalePage\ExampleProductSalePageConfig getConfig()
  */
 class ExampleProductSalePageBusinessFactory extends AbstractBusinessFactory

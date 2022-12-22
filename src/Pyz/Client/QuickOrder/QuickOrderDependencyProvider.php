@@ -16,7 +16,7 @@ use Spryker\Client\QuickOrder\QuickOrderDependencyProvider as SprykerQuickOrderD
 class QuickOrderDependencyProvider extends SprykerQuickOrderDependencyProvider
 {
     /**
-     * @return \Spryker\Client\QuickOrderExtension\Dependency\Plugin\ProductConcreteExpanderPluginInterface[]
+     * @return array<\Spryker\Client\QuickOrderExtension\Dependency\Plugin\ProductConcreteExpanderPluginInterface>
      */
     protected function getProductConcreteExpanderPlugins(): array
     {
@@ -26,7 +26,7 @@ class QuickOrderDependencyProvider extends SprykerQuickOrderDependencyProvider
     }
 
     /**
-     * @return \Spryker\Client\QuickOrderExtension\Dependency\Plugin\ItemValidatorPluginInterface[]
+     * @return array<\Spryker\Client\QuickOrderExtension\Dependency\Plugin\ItemValidatorPluginInterface>
      */
     protected function getQuickOrderBuildItemValidatorPlugins(): array
     {

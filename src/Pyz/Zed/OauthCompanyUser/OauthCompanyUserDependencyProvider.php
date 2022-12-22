@@ -13,7 +13,7 @@ use Spryker\Zed\OauthPermission\Communication\Plugin\OauthCompanyUser\Permission
 class OauthCompanyUserDependencyProvider extends SprykerOauthCompanyUserDependencyProvider
 {
     /**
-     * @return \Spryker\Zed\OauthCompanyUserExtension\Dependency\Plugin\OauthCompanyUserIdentifierExpanderPluginInterface[]
+     * @return array<\Spryker\Zed\OauthCompanyUserExtension\Dependency\Plugin\OauthCompanyUserIdentifierExpanderPluginInterface>
      */
     protected function getOauthCompanyUserIdentifierExpanderPlugins(): array
     {

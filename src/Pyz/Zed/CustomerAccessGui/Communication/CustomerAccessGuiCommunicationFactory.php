@@ -47,7 +47,7 @@ class CustomerAccessGuiCommunicationFactory extends SprykerCustomerAccessGuiComm
         return $this->getFormFactory()->create(
             CustomerAccessForm::class,
             $customerAccessTransfer,
-            $options
+            $options,
         );
     }
 }

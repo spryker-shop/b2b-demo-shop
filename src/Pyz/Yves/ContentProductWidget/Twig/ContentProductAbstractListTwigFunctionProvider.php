@@ -100,7 +100,7 @@ class ContentProductAbstractListTwigFunctionProvider extends TwigFunctionProvide
                 $this->getPyzAvailableTemplates()[$templateIdentifier],
                 [
                     'productAbstractViewCollection' => $productAbstractViewCollection,
-                ]
+                ],
             );
         };
     }
@@ -146,7 +146,7 @@ class ContentProductAbstractListTwigFunctionProvider extends TwigFunctionProvide
     {
         return sprintf(
             '<strong>Content product abstract list widget could not be rendered because the content item with key "%s" is not an abstract product list.</strong>',
-            $contentKey
+            $contentKey,
         );
     }
 }

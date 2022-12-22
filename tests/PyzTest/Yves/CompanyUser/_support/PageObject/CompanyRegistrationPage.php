@@ -23,10 +23,12 @@ class CompanyRegistrationPage
      * @var string
      */
     public const FORM_FIELD_SALUTATION = '//form[@name=\'company_register_form\']//select[@name=\'company_register_form[salutation]\']';
+
     /**
      * @var string
      */
     public const FORM_FIELD_FIRST_NAME = '//form[@name=\'company_register_form\']//input[@name=\'company_register_form[first_name]\']';
+
     /**
      * @var string
      */
@@ -36,6 +38,7 @@ class CompanyRegistrationPage
      * @var string
      */
     public const FORM_FIELD_COMPANY_NAME = '//form[@name=\'company_register_form\']//input[@name=\'company_register_form[company_name]\']';
+
     /**
      * @var string
      */
@@ -45,6 +48,7 @@ class CompanyRegistrationPage
      * @var string
      */
     public const FORM_FIELD_PASSWORD = '//form[@name=\'company_register_form\']//input[@id = \'company_register_form_password_pass\']';
+
     /**
      * @var string
      */
@@ -54,6 +58,7 @@ class CompanyRegistrationPage
      * @var string
      */
     public const FORM_FIELD_ACCEPT_TERMS = '//form[@name=\'company_register_form\']//input[@name=\'company_register_form[accept_terms]\']';
+
     /**
      * @var string
      */

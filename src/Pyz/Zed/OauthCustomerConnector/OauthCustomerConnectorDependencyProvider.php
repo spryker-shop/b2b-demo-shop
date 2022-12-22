@@ -17,7 +17,7 @@ use Spryker\Zed\OauthPermission\Communication\Plugin\OauthCustomerConnector\Perm
 class OauthCustomerConnectorDependencyProvider extends SprykerOauthCustomerConnectorDependencyProvider
 {
     /**
-     * @return \Spryker\Zed\OauthCustomerConnectorExtension\Dependency\Plugin\OauthCustomerIdentifierExpanderPluginInterface[]
+     * @return array<\Spryker\Zed\OauthCustomerConnectorExtension\Dependency\Plugin\OauthCustomerIdentifierExpanderPluginInterface>
      */
     protected function getOauthCustomerIdentifierExpanderPlugins(): array
     {

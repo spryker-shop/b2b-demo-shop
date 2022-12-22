@@ -93,7 +93,7 @@ class ContentBannerTwigFunctionProvider extends TwigFunctionProvider
 
             return (string)$this->twig->render(
                 $this->getPyzAvailableTemplates()[$templateIdentifier],
-                ['banner' => $contentBannerTypeTransfer]
+                ['banner' => $contentBannerTypeTransfer],
             );
         };
     }
@@ -139,7 +139,7 @@ class ContentBannerTwigFunctionProvider extends TwigFunctionProvider
     {
         return sprintf(
             '<b>Content Banner could not be rendered because the content item with key %s is not an banner.</b>',
-            $contentKey
+            $contentKey,
         );
     }
 }
