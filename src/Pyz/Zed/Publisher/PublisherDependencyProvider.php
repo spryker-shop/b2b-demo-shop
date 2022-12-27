@@ -100,6 +100,12 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
             $this->getProductCategoryStoragePlugins(),
             $this->getPriceProductMerchantRelationshipStoragePlugins(),
             $this->getAssetStoragePlugins(),
+            [
+                new AssetWritePublisherPlugin(),
+            ],
+            [
+                new AssetDeletePublisherPlugin(),
+            ],
         );
     }
 
