@@ -24,7 +24,7 @@ class CartsRestApiDependencyProvider extends SprykerCartsRestApiDependencyProvid
     /**
      * @return \Spryker\Zed\CartsRestApiExtension\Dependency\Plugin\QuoteCreatorPluginInterface
      */
-    protected function getQuoteCreatorPlugin(): QuoteCreatorPluginInterface
+    protected function getQuoteCreatorPlugin(): QuoteCreatorPlugin
     {
         return new QuoteCreatorPlugin();
     }
