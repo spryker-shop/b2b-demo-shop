@@ -17,12 +17,12 @@ actions:
     source: data/import/common/common/shipment.csv
   - data_entity: shipment-price
     source: data/import/common/DE/shipment_price.csv
-  - data_entity: shipment-price
-    source: data/import/common/AT/shipment_price.csv
+  # - data_entity: shipment-price
+  #   source: data/import/common/AT/shipment_price.csv
   - data_entity: sales-order-threshold
     source: data/import/common/DE/sales_order_threshold.csv
-  - data_entity: sales-order-threshold
-    source: data/import/common/AT/sales_order_threshold.csv
+  # - data_entity: sales-order-threshold
+  #   source: data/import/common/AT/sales_order_threshold.csv
   - data_entity: stock
     source: data/import/common/common/warehouse.csv
   - data_entity: stock-address
@@ -32,16 +32,16 @@ actions:
   # Store relation
   - data_entity: shipment-method-store
     source: data/import/common/DE/shipment_method_store.csv
-  - data_entity: shipment-method-store
-    source: data/import/common/AT/shipment_method_store.csv
+  # - data_entity: shipment-method-store
+  #   source: data/import/common/AT/shipment_method_store.csv
   - data_entity: stock-store
     source: data/import/common/DE/warehouse_store.csv
-  - data_entity: stock-store
-    source: data/import/common/AT/warehouse_store.csv
+  # - data_entity: stock-store
+  #   source: data/import/common/AT/warehouse_store.csv
   - data_entity: payment-method-store
     source: data/import/common/DE/payment_method_store.csv
-  - data_entity: payment-method-store
-    source: data/import/common/AT/payment_method_store.csv
+  # - data_entity: payment-method-store
+  #   source: data/import/common/AT/payment_method_store.csv
   - data_entity: return-reason
 
 
@@ -62,23 +62,23 @@ actions:
     source: data/import/common/common/product_image.csv
   - data_entity: product-price
     source: data/import/common/DE/product_price.csv
-  - data_entity: product-price
-    source: data/import/common/AT/product_price.csv
+  # - data_entity: product-price
+  #   source: data/import/common/AT/product_price.csv
   - data_entity: product-price-schedule
     source: data/import/common/DE/product_price_schedule.csv
-  - data_entity: product-price-schedule
-    source: data/import/common/AT/product_price_schedule.csv
+  # - data_entity: product-price-schedule
+  #   source: data/import/common/AT/product_price_schedule.csv
   - data_entity: product-stock
     source: data/import/common/common/product_stock.csv
   # Store relation
   - data_entity: product-abstract-store
     source: data/import/common/DE/product_abstract_store.csv
-  - data_entity: product-abstract-store
-    source: data/import/common/AT/product_abstract_store.csv
+  # - data_entity: product-abstract-store
+  #   source: data/import/common/AT/product_abstract_store.csv
   - data_entity: category-store
     source: data/import/common/DE/category_store.csv
-  - data_entity: category-store
-    source: data/import/common/AT/category_store.csv
+  # - data_entity: category-store
+  #   source: data/import/common/AT/category_store.csv
 
 
 #3. Special Product Types Setup import - Special Product Types category includes sub-categories: Product Options, Measurements, Product Bundles, Gift Cards
@@ -86,8 +86,8 @@ actions:
     source: data/import/common/common/product_option.csv
   - data_entity: product-option-price
     source: data/import/common/DE/product_option_price.csv
-  - data_entity: product-option-price
-    source: data/import/common/AT/product_option_price.csv
+  # - data_entity: product-option-price
+  #   source: data/import/common/AT/product_option_price.csv
   - data_entity: product-measurement-unit
     source: data/import/common/common/product_measurement_unit.csv
   - data_entity: product-measurement-base-unit
@@ -113,8 +113,8 @@ actions:
   # Store relation
   - data_entity: product-measurement-sales-unit-store
     source: data/import/common/DE/product_measurement_sales_unit_store.csv
-  - data_entity: product-measurement-sales-unit-store
-    source: data/import/common/AT/product_measurement_sales_unit_store.csv
+  # - data_entity: product-measurement-sales-unit-store
+  #   source: data/import/common/AT/product_measurement_sales_unit_store.csv
 
 
 #4. Merchandising Setup import
@@ -138,8 +138,8 @@ actions:
     source: data/import/common/common/product_search_attribute.csv
   - data_entity: discount-amount
     source: data/import/common/DE/discount_amount.csv
-  - data_entity: discount-amount
-    source: data/import/common/AT/discount_amount.csv
+  # - data_entity: discount-amount
+  #   source: data/import/common/AT/discount_amount.csv
   - data_entity: product-discontinued
     source: data/import/common/common/product_discontinued.csv
   - data_entity: product-alternative
@@ -149,16 +149,16 @@ actions:
   # Store relation
   - data_entity: discount-store
     source: data/import/common/DE/discount_store.csv
-  - data_entity: discount-store
-    source: data/import/common/AT/discount_store.csv
+  # - data_entity: discount-store
+  #   source: data/import/common/AT/discount_store.csv
   - data_entity: product-relation-store
     source: data/import/common/DE/product_relation_store.csv
-  - data_entity: product-relation-store
-    source: data/import/common/AT/product_relation_store.csv
+  # - data_entity: product-relation-store
+  #   source: data/import/common/AT/product_relation_store.csv
   - data_entity: product-label-store
     source: data/import/common/DE/product_label_store.csv
-  - data_entity: product-label-store
-    source: data/import/common/AT/product_label_store.csv
+  # - data_entity: product-label-store
+  #   source: data/import/common/AT/product_label_store.csv
 
 
 #5. Content Management Setup import
@@ -187,12 +187,12 @@ actions:
   # Store relation
   - data_entity: cms-page-store
     source: data/import/common/DE/cms_page_store.csv
-  - data_entity: cms-page-store
-    source: data/import/common/AT/cms_page_store.csv
+  # - data_entity: cms-page-store
+  #   source: data/import/common/AT/cms_page_store.csv
   - data_entity: cms-block-store
     source: data/import/common/DE/cms_block_store.csv
-  - data_entity: cms-block-store
-    source: data/import/common/AT/cms_block_store.csv
+  # - data_entity: cms-block-store
+  #   source: data/import/common/AT/cms_block_store.csv
 
 #6. Navigation Setup import
   - data_entity: navigation-node
@@ -226,8 +226,8 @@ actions:
     source: data/import/common/common/company_user_on_behalf.csv
   - data_entity: merchant
     source : data/import/common/common/merchant.csv
-  - data_entity: merchant-store
-    source: data/import/common/AT/merchant_store.csv
+  # - data_entity: merchant-store
+  #   source: data/import/common/AT/merchant_store.csv
   - data_entity: merchant-store
     source: data/import/common/DE/merchant_store.csv
   - data_entity: merchant-relationship
@@ -236,12 +236,12 @@ actions:
     source : data/import/common/common/merchant_relation_to_product_list.csv
   - data_entity: merchant-relationship-sales-order-threshold
     source: data/import/common/DE/sales_order_threshold_per_merchant_relationship.csv
-  - data_entity: merchant-relationship-sales-order-threshold
-    source: data/import/common/AT/sales_order_threshold_per_merchant_relationship.csv
+  # - data_entity: merchant-relationship-sales-order-threshold
+  #   source: data/import/common/AT/sales_order_threshold_per_merchant_relationship.csv
   - data_entity: product-price-merchant-relationship
     source: data/import/common/DE/price_product_merchant_relationship.csv
-  - data_entity: product-price-merchant-relationship
-    source: data/import/common/AT/price_product_merchant_relationship.csv
+  # - data_entity: product-price-merchant-relationship
+  #   source: data/import/common/AT/price_product_merchant_relationship.csv
   - data_entity: shopping-list
     source: data/import/common/common/shopping_list.csv
   - data_entity: shopping-list-item
@@ -252,12 +252,12 @@ actions:
     source: data/import/common/common/shopping_list_company_business_unit.csv
   - data_entity: multi-cart
     source: data/import/common/DE/multi_cart.csv
-  - data_entity: multi-cart
-    source: data/import/common/AT/multi_cart.csv
+  # - data_entity: multi-cart
+  #   source: data/import/common/AT/multi_cart.csv
   - data_entity: shared-cart
     source: data/import/common/DE/shared_cart.csv
-  - data_entity: shared-cart
-    source: data/import/common/AT/shared_cart.csv
+  # - data_entity: shared-cart
+  #   source: data/import/common/AT/shared_cart.csv
   - data_entity: quote-request
     source: data/import/common/common/quote_request.csv
   - data_entity: quote-request-version
@@ -267,7 +267,7 @@ actions:
 #7. Miscellaneous Setup import
   - data_entity: comment
     source: data/import/common/DE/comment.csv
-  - data_entity: comment
-    source: data/import/common/AT/comment.csv
+  # - data_entity: comment
+  #   source: data/import/common/AT/comment.csv
   - data_entity: mime-type
     source: data/import/common/common/mime_type.csv
