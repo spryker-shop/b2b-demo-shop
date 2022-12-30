@@ -40,7 +40,7 @@ use Symfony\Component\Form\FormInterface;
 class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyProvider
 {
     /**
-     * @var string
+     * @var  string
      * @uses \Spryker\Yves\Form\Plugin\Application\FormApplicationPlugin::SERVICE_FORM_FACTORY
      */
     protected const PYZ_SERVICE_FORM_FACTORY = 'form.factory';
@@ -65,12 +65,14 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
      */
     protected function extendPyzPaymentMethodHandler(Container $container): Container
     {
-        $container->extend(static::PAYMENT_METHOD_HANDLER, function (StepHandlerPluginCollection $paymentMethodHandler) {
-            $paymentMethodHandler->add(new NopaymentHandlerPlugin(), NopaymentConfig::PAYMENT_PROVIDER_NAME);
-            $paymentMethodHandler->add(new PaymentForeignHandlerPlugin(), PaymentTransfer::FOREIGN_PAYMENTS);
+        $container->extend(
+            static::PAYMENT_METHOD_HANDLER, function (StepHandlerPluginCollection $paymentMethodHandler) {
+                $paymentMethodHandler->add(new NopaymentHandlerPlugin(), NopaymentConfig::PAYMENT_PROVIDER_NAME);
+                $paymentMethodHandler->add(new PaymentForeignHandlerPlugin(), PaymentTransfer::FOREIGN_PAYMENTS);
 
-            return $paymentMethodHandler;
-        });
+                return $paymentMethodHandler;
+            }
+        );
 
         return $container;
     }
@@ -81,7 +83,7 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
     protected function getSummaryPageWidgetPlugins(): array
     {
         return [
-            SalesOrderThresholdWidgetPlugin::class, #SalesOrderThresholdFeature
+            SalesOrderThresholdWidgetPlugin::class, // SalesOrderThresholdFeature
         ];
     }
 
