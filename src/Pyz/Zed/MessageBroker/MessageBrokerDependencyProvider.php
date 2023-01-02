@@ -29,6 +29,8 @@ use Spryker\Zed\Payment\Communication\Plugin\MessageBroker\PaymentPreauthorizedM
 use Spryker\Zed\Payment\Communication\Plugin\MessageBroker\PaymentRefundedMessageHandlerPlugin;
 use Spryker\Zed\Payment\Communication\Plugin\MessageBroker\PaymentRefundFailedMessageHandlerPlugin;
 use Spryker\Zed\Payment\Communication\Plugin\MessageBroker\PaymentReservationCanceledMessageHandlerPlugin;
+use Spryker\Zed\Product\Communication\Plugin\MessageBroker\InitializeProductExportMessageHandlerPlugin;
+use Spryker\Zed\Store\Communication\Plugin\MessageBroker\CurrentStoreReferenceMessageAttributeProviderPlugin;
 use Spryker\Zed\StoreReference\Communication\Plugin\MessageBroker\StoreReferenceMessageAttributeProviderPlugin;
 use Spryker\Zed\StoreReference\Communication\Plugin\MessageBroker\StoreReferenceMessageValidatorPlugin;
 
@@ -75,6 +77,7 @@ class MessageBrokerDependencyProvider extends SprykerMessageBrokerDependencyProv
             new AssetAddedMessageHandlerPlugin(),
             new AssetUpdatedMessageHandlerPlugin(),
             new AssetDeletedMessageHandlerPlugin(),
+            new InitializeProductExportMessageHandlerPlugin(),
         ];
     }
 
@@ -88,6 +91,7 @@ class MessageBrokerDependencyProvider extends SprykerMessageBrokerDependencyProv
             new TimestampMessageAttributeProviderPlugin(),
             new StoreReferenceMessageAttributeProviderPlugin(),
             new AccessTokenMessageAttributeProviderPlugin(),
+            new CurrentStoreReferenceMessageAttributeProviderPlugin(),
         ];
     }
 
@@ -107,7 +111,7 @@ class MessageBrokerDependencyProvider extends SprykerMessageBrokerDependencyProv
     public function getExternalValidatorPlugins(): array
     {
         return [
-            new StoreReferenceMessageValidatorPlugin(),
+            new StoreReferenceMessageValidatorPlugin(), new StoreReferenceMessageValidatorPlugin(),
         ];
     }
 }
