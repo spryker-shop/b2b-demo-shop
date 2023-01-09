@@ -36,8 +36,8 @@ class PermissionDependencyProvider extends SprykerPermissionDependencyProvider
     protected function getPermissionStoragePlugins(): array
     {
         return [
-            new QuotePermissionStoragePlugin(), #SharedCartFeature
-            new ShoppingListPermissionStoragePlugin(), #ShoppingListFeature
+            new QuotePermissionStoragePlugin(), // SharedCartFeature
+            new ShoppingListPermissionStoragePlugin(), // ShoppingListFeature
             new PermissionStoragePlugin(),
         ];
     }
@@ -48,10 +48,10 @@ class PermissionDependencyProvider extends SprykerPermissionDependencyProvider
     protected function getPermissionPlugins(): array
     {
         return [
-            new ReadSharedCartPermissionPlugin(), #SharedCartFeature
-            new WriteSharedCartPermissionPlugin(), #SharedCartFeature
-            new ReadShoppingListPermissionPlugin(), #ShoppingListFeature
-            new WriteShoppingListPermissionPlugin(), #ShoppingListFeature
+            new ReadSharedCartPermissionPlugin(), // SharedCartFeature
+            new WriteSharedCartPermissionPlugin(), // SharedCartFeature
+            new ReadShoppingListPermissionPlugin(), // ShoppingListFeature
+            new WriteShoppingListPermissionPlugin(), // ShoppingListFeature
             new AddCompanyUserPermissionPlugin(),
             new ManageCompanyUserInvitationPermissionPlugin(),
             new CompanyUserStatusChangePermissionPlugin(),
@@ -60,8 +60,8 @@ class PermissionDependencyProvider extends SprykerPermissionDependencyProvider
             new ChangeCartItemPermissionPlugin(),
             new RemoveCartItemPermissionPlugin(),
             new PlaceOrderWithAmountUpToPermissionPlugin(),
-            new PlaceOrderPermissionPlugin(), #QuoteApprovalFeature
-            new ApproveQuotePermissionPlugin(), #QuoteApprovalFeature
+            new PlaceOrderPermissionPlugin(), // QuoteApprovalFeature
+            new ApproveQuotePermissionPlugin(), // QuoteApprovalFeature
             new SeeBusinessUnitOrdersPermissionPlugin(),
             new SeeCompanyOrdersPermissionPlugin(),
         ];

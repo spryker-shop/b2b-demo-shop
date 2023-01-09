@@ -33,7 +33,7 @@ class QuickOrderPageDependencyProvider extends SprykerQuickOrderPageDependencyPr
     protected function getQuickOrderFormHandlerStrategyPlugins(): array
     {
         return [
-            new ShoppingListQuickOrderFormHandlerStrategyPlugin(), #ShoppingListFeature
+            new ShoppingListQuickOrderFormHandlerStrategyPlugin(), // ShoppingListFeature
         ];
     }
 

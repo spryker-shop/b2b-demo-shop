@@ -8,6 +8,7 @@
 namespace Pyz\Service\PriceProduct;
 
 use Spryker\Service\PriceProduct\PriceProductDependencyProvider as SprykerPriceProductDependencyProvider;
+use Spryker\Service\PriceProductMerchantRelationship\Plugin\PriceProduct\MerchantRelationshipPreBuildPriceProductGroupKeyPlugin;
 use Spryker\Service\PriceProductMerchantRelationship\Plugin\PriceProduct\MerchantRelationshipPriceProductFilterPlugin;
 use Spryker\Service\PriceProductVolume\Plugin\PriceProductExtension\PriceProductVolumeFilterPlugin;
 
@@ -20,13 +21,24 @@ class PriceProductDependencyProvider extends SprykerPriceProductDependencyProvid
      */
     protected function getPriceProductDecisionPlugins(): array
     {
-        return array_merge([
+        return array_merge(
+            [
             /**
              * MerchantRelationshipPriceProductFilterPlugin should be at the beginning to filter non-active merchant prices
              * and define right minimum price in next filter plugins like in `PriceProductVolumeFilterPlugin`.
              */
             new MerchantRelationshipPriceProductFilterPlugin(),
             new PriceProductVolumeFilterPlugin(),
-        ], parent::getPriceProductDecisionPlugins());
+            ], parent::getPriceProductDecisionPlugins()
+        );
+    }
+    /**
+     * @return array<int, \Spryker\Service\PriceProductExtension\Dependency\Plugin\PreBuildPriceProductGroupKeyPluginInterface>
+     */
+    protected function getPreBuildPriceProductGroupKeyPlugins() : array
+    {
+        return [
+            new MerchantRelationshipPreBuildPriceProductGroupKeyPlugin(),
+        ];
     }
 }

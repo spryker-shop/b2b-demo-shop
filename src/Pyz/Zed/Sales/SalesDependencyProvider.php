@@ -118,7 +118,7 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
     public function getItemTransformerStrategyPlugins(): array
     {
         return [
-            new PackagingUnitSplittableItemTransformerStrategyPlugin(), #ProductPackagingUnit
+            new PackagingUnitSplittableItemTransformerStrategyPlugin(), // ProductPackagingUnit
             new NonSplittableItemTransformerStrategyPlugin(),
         ];
     }

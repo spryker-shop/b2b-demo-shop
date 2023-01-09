@@ -43,7 +43,8 @@ class DiscountDependencyProvider extends SprykerDiscountDependencyProvider
      */
     protected function getDecisionRulePlugins(): array
     {
-        return array_merge(parent::getDecisionRulePlugins(), [
+        return array_merge(
+            parent::getDecisionRulePlugins(), [
             new ShipmentCarrierDecisionRulePlugin(),
             new ShipmentMethodDecisionRulePlugin(),
             new ShipmentPriceDecisionRulePlugin(),
@@ -51,7 +52,8 @@ class DiscountDependencyProvider extends SprykerDiscountDependencyProvider
             new ProductLabelDecisionRulePlugin(),
             new ProductAttributeDecisionRulePlugin(),
             new CategoryDecisionRulePlugin(),
-        ]);
+            ]
+        );
     }
 
     /**
@@ -59,14 +61,16 @@ class DiscountDependencyProvider extends SprykerDiscountDependencyProvider
      */
     protected function getCollectorPlugins(): array
     {
-        return array_merge(parent::getCollectorPlugins(), [
+        return array_merge(
+            parent::getCollectorPlugins(), [
             new ProductLabelCollectorPlugin(),
             new ItemByShipmentCarrierPlugin(),
             new ItemByShipmentMethodPlugin(),
             new ItemByShipmentPricePlugin(),
             new ProductAttributeCollectorPlugin(),
             new CategoryDiscountableItemCollectorPlugin(),
-        ]);
+            ]
+        );
     }
 
     /**

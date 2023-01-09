@@ -123,9 +123,11 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
      */
     protected function addCurrencyFacade(Container $container): Container
     {
-        $container->set(static::FACADE_CURRENCY, function (Container $container) {
-            return $container->getLocator()->currency()->facade();
-        });
+        $container->set(
+            static::FACADE_CURRENCY, function (Container $container) {
+                return $container->getLocator()->currency()->facade();
+            }
+        );
 
         return $container;
     }
@@ -137,9 +139,11 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
      */
     protected function addPriceProductFacade(Container $container): Container
     {
-        $container->set(static::FACADE_PRICE_PRODUCT, function (Container $container) {
-            return $container->getLocator()->priceProduct()->facade();
-        });
+        $container->set(
+            static::FACADE_PRICE_PRODUCT, function (Container $container) {
+                return $container->getLocator()->priceProduct()->facade();
+            }
+        );
 
         return $container;
     }
@@ -151,9 +155,11 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
      */
     protected function addStockFacade(Container $container): Container
     {
-        $container->set(static::FACADE_STOCK, function (Container $container) {
-            return $container->getLocator()->stock()->facade();
-        });
+        $container->set(
+            static::FACADE_STOCK, function (Container $container) {
+                return $container->getLocator()->stock()->facade();
+            }
+        );
 
         return $container;
     }
@@ -165,9 +171,11 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
      */
     protected function addStoreFacade(Container $container): Container
     {
-        $container->set(static::FACADE_STORE, function (Container $container) {
-            return $container->getLocator()->store()->facade();
-        });
+        $container->set(
+            static::FACADE_STORE, function (Container $container) {
+                return $container->getLocator()->store()->facade();
+            }
+        );
 
         return $container;
     }
@@ -256,13 +264,13 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
             new CompanyUnitAddressDataImportPlugin(),
             new CompanyUnitAddressLabelDataImportPlugin(),
             new CompanyUnitAddressLabelRelationDataImportPlugin(),
-            new ProductDiscontinuedDataImportPlugin(), #ProductDiscontinuedFeature
+            new ProductDiscontinuedDataImportPlugin(), // ProductDiscontinuedFeature
             new ProductMeasurementUnitDataImportPlugin(),
             new ProductMeasurementBaseUnitDataImportPlugin(),
             new ProductMeasurementSalesUnitDataImportPlugin(),
             new ProductMeasurementSalesUnitStoreDataImportPlugin(),
             new ProductQuantityDataImportPlugin(),
-            new ProductAlternativeDataImportPlugin(), #ProductAlternativeFeature
+            new ProductAlternativeDataImportPlugin(), // ProductAlternativeFeature
             new ProductPackagingUnitTypeDataImportPlugin(),
             new ProductPackagingUnitDataImportPlugin(),
             new BusinessOnBehalfCompanyUserDataImportPlugin(),

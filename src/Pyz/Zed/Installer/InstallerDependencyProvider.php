@@ -48,13 +48,13 @@ class InstallerDependencyProvider extends SprykerInstallerDependencyProvider
             new CustomerAccessInstallerPlugin(),
             new TranslatorInstallerPlugin(),
             new ShoppingListPermissionsInstallerPlugin(),
-            new SharedCartPermissionInstallerPlugin(), #SharedCartFeature
+            new SharedCartPermissionInstallerPlugin(), // SharedCartFeature
             new ProductMeasurementUnitInstallerPlugin(),
-            new ProductAlternativeProductLabelConnectorInstallerPlugin(), #ProductAlternativeFeature
-            new ProductDiscontinuedProductLabelConnectorInstallerPlugin(), #ProductDiscontinuedFeature
-            new CompanyUserInvitationStatusInstallerPlugin(), #BulkImportCompanyUserInvitationsFeature
+            new ProductAlternativeProductLabelConnectorInstallerPlugin(), // ProductAlternativeFeature
+            new ProductDiscontinuedProductLabelConnectorInstallerPlugin(), // ProductDiscontinuedFeature
+            new CompanyUserInvitationStatusInstallerPlugin(), // BulkImportCompanyUserInvitationsFeature
             new ProductPackagingUnitTypeInstallerPlugin(),
-            new SalesOrderThresholdTypeInstallerPlugin(), #SalesOrderThresholdFeature
+            new SalesOrderThresholdTypeInstallerPlugin(), // SalesOrderThresholdFeature
             new OauthClientInstallerPlugin(),
             new OauthCustomerScopeInstallerPlugin(),
             new OauthCompanyUserInstallerPlugin(),

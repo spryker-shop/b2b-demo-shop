@@ -36,8 +36,8 @@ class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
     protected function getCustomerSessionSetPlugins()
     {
         return [
-            new GuestCartSaveCustomerSessionSetPlugin(), #MultiCartFeature
-            new GuestCartUpdateCustomerSessionSetPlugin(), #PersistentCartFeature
+            new GuestCartSaveCustomerSessionSetPlugin(), // MultiCartFeature
+            new GuestCartUpdateCustomerSessionSetPlugin(), // PersistentCartFeature
             new CustomerChangeCartUpdatePlugin(),
         ];
     }
@@ -58,7 +58,7 @@ class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
     protected function getCustomerSecuredPatternRulePlugins(): array
     {
         return [
-            new CustomerAccessSecuredPatternRulePlugin(), #CustomerAccessPermissionFeature
+            new CustomerAccessSecuredPatternRulePlugin(), // CustomerAccessPermissionFeature
             new AgentAccessCustomerSecuredPatternRulePlugin(),
         ];
     }
@@ -66,7 +66,7 @@ class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
     /**
      * @return \Spryker\Client\CustomerExtension\Dependency\Plugin\AccessTokenAuthenticationHandlerPluginInterface
      */
-    protected function getAccessTokenAuthenticationHandlerPlugin(): AccessTokenAuthenticationHandlerPluginInterface
+    protected function getAccessTokenAuthenticationHandlerPlugin(): CompanyUserAccessTokenAuthenticationHandlerPlugin
     {
         return new CompanyUserAccessTokenAuthenticationHandlerPlugin();
     }

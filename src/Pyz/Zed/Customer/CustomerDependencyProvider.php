@@ -61,9 +61,11 @@ class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
      */
     protected function addPyzFacadeSales(Container $container): Container
     {
-        $container->set(static::PYZ_FACADE_SALES, function (Container $container) {
-            return $container->getLocator()->sales()->facade();
-        });
+        $container->set(
+            static::PYZ_FACADE_SALES, function (Container $container) {
+                return $container->getLocator()->sales()->facade();
+            }
+        );
 
         return $container;
     }
@@ -75,9 +77,11 @@ class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
      */
     protected function addPyzFacadeNewsletter(Container $container): Container
     {
-        $container->set(static::PYZ_FACADE_NEWSLETTER, function (Container $container) {
-            return $container->getLocator()->newsletter()->facade();
-        });
+        $container->set(
+            static::PYZ_FACADE_NEWSLETTER, function (Container $container) {
+                return $container->getLocator()->newsletter()->facade();
+            }
+        );
 
         return $container;
     }
@@ -88,9 +92,11 @@ class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
     protected function getCustomerAnonymizerPlugins(): array
     {
         return [
-            new CustomerUnsubscribePlugin([
+            new CustomerUnsubscribePlugin(
+                [
                 NewsletterConstants::DEFAULT_NEWSLETTER_TYPE,
-            ]),
+                ]
+            ),
             new RemoveCustomerFromGroupPlugin(),
             new AvailabilityNotificationAnonymizerPlugin(),
         ];
@@ -107,10 +113,10 @@ class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
             new CustomerTransferCompanyUserExpanderPlugin(),
             new IsActiveCompanyUserExistsCustomerTransferExpanderPlugin(),
             new PermissionCustomerExpanderPlugin(),
-            new QuotePermissionCustomerExpanderPlugin(), #SharedCartFeature
+            new QuotePermissionCustomerExpanderPlugin(), // SharedCartFeature
             new ShoppingListPermissionCustomerExpanderPlugin(),
-            new IsOnBehalfCustomerTransferExpanderPlugin(), #BusinessOnBefalfFeature
-            new DefaultCompanyUserCustomerTransferExpanderPlugin(), #BusinessOnBefalfFeature
+            new IsOnBehalfCustomerTransferExpanderPlugin(), // BusinessOnBefalfFeature
+            new DefaultCompanyUserCustomerTransferExpanderPlugin(), // BusinessOnBefalfFeature
             new ProductListCustomerTransferExpanderPlugin(),
             new AvailabilityNotificationSubscriptionCustomerTransferExpanderPlugin(),
         ];

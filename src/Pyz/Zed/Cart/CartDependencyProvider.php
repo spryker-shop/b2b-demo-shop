@@ -9,6 +9,7 @@ namespace Pyz\Zed\Cart;
 
 use Spryker\Zed\AvailabilityCartConnector\Communication\Plugin\Cart\CheckAvailabilityPlugin;
 use Spryker\Zed\Cart\CartDependencyProvider as SprykerCartDependencyProvider;
+use Spryker\Zed\Cart\Communication\Plugin\Cart\GroupKeyWithCartIdentifierItemExpanderPlugin;
 use Spryker\Zed\Cart\Communication\Plugin\CleanUpItemsPreReloadPlugin;
 use Spryker\Zed\Cart\Communication\Plugin\SkuGroupKeyPlugin;
 use Spryker\Zed\ConfigurableBundle\Communication\Plugin\Cart\CartConfigurableBundlePreReloadPlugin;
@@ -22,6 +23,7 @@ use Spryker\Zed\Discount\Communication\Plugin\Cart\DiscountQuoteChangeObserverPl
 use Spryker\Zed\DiscountPromotion\Communication\Plugin\Cart\CartGroupPromotionItems;
 use Spryker\Zed\DiscountPromotion\Communication\Plugin\Cart\DiscountPromotionCartPreCheckPlugin;
 use Spryker\Zed\Kernel\Container;
+use Spryker\Zed\Merchant\Communication\Plugin\Cart\MerchantCartPreCheckPlugin;
 use Spryker\Zed\PaymentCartConnector\Communication\Plugin\Cart\RemovePaymentCartPostSavePlugin;
 use Spryker\Zed\PriceCartConnector\Communication\Plugin\Cart\SanitizeSourcePricesQuoteLockPreResetPlugin;
 use Spryker\Zed\PriceCartConnector\Communication\Plugin\CartItemPricePlugin;
@@ -100,14 +102,15 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new ProductImageCartPlugin(),
             new CartGroupPromotionItems(),
             new QuantitySalesUnitItemExpanderPlugin(),
-            new ProductPackagingUnitItemExpanderPlugin(), #ProductPackagingUnit
-            new AmountGroupKeyItemExpanderPlugin(), #ProductPackagingUnit
-            new AmountSalesUnitItemExpanderPlugin(), #ProductPackagingUnit
-            new CustomAmountPriceItemExpanderPlugin(), #ProductPackagingUnit
+            new ProductPackagingUnitItemExpanderPlugin(), // ProductPackagingUnit
+            new AmountGroupKeyItemExpanderPlugin(), // ProductPackagingUnit
+            new AmountSalesUnitItemExpanderPlugin(), // ProductPackagingUnit
+            new CustomAmountPriceItemExpanderPlugin(), // ProductPackagingUnit
             new ConfiguredBundleQuantityPerSlotItemExpanderPlugin(),
             new ConfiguredBundleGroupKeyItemExpanderPlugin(),
             new ProductUrlItemExpanderPlugin(),
             new SanitizeCartShipmentItemExpanderPlugin(),
+            new GroupKeyWithCartIdentifierItemExpanderPlugin(),
         ];
     }
 
@@ -142,13 +145,14 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new CartShipmentPreCheckPlugin(),
             new ProductQuantityRestrictionCartPreCheckPlugin(),
             new ProductListRestrictedItemsPreCheckPlugin(),
-            new ProductDiscontinuedCartPreCheckPlugin(), #ProductDiscontinuedFeature
+            new ProductDiscontinuedCartPreCheckPlugin(), // ProductDiscontinuedFeature
             new ProductPackagingUnitCartPreCheckPlugin(),
-            new AmountAvailabilityCartPreCheckPlugin(), #ProductPackagingUnit
-            new AmountRestrictionCartPreCheckPlugin(), #ProductPackagingUnit
+            new AmountAvailabilityCartPreCheckPlugin(), // ProductPackagingUnit
+            new AmountRestrictionCartPreCheckPlugin(), // ProductPackagingUnit
             new ConfiguredBundleTemplateSlotCombinationPreCheckPlugin(),
             new ProductMeasurementSalesUnitCartPreCheckPlugin(),
             new DiscountPromotionCartPreCheckPlugin(),
+            new MerchantCartPreCheckPlugin(),
         ];
     }
 
@@ -164,7 +168,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
             new CartPostSaveUpdateBundlesPlugin(),
             new RemovePaymentCartPostSavePlugin(),
             new QuantitySalesUnitValuePostSavePlugin(),
-            new AmountSalesUnitValuePostSavePlugin(), #ProductPackagingUnit
+            new AmountSalesUnitValuePostSavePlugin(), // ProductPackagingUnit
             new ConfiguredBundleQuantityPostSavePlugin(),
             new CartShipmentCartOperationPostSavePlugin(),
         ];
@@ -196,7 +200,7 @@ class CartDependencyProvider extends SprykerCartDependencyProvider
     protected function getPostReloadItemsPlugins(Container $container): array
     {
         return [
-            new AddThresholdMessagesCartPostReloadItemsPlugin(), #SalesOrderThresholdFeature
+            new AddThresholdMessagesCartPostReloadItemsPlugin(), // SalesOrderThresholdFeature
         ];
     }
 
