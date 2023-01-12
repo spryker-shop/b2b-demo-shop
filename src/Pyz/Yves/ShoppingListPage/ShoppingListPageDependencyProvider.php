@@ -35,7 +35,7 @@ class ShoppingListPageDependencyProvider extends SprykerShoppingListPageDependen
     protected function getShoppingListItemFormExpanderPlugins(): array
     {
         return [
-            new ShoppingListItemNoteFormExpanderPlugin(), #ShoppingListNoteFeature
+            new ShoppingListItemNoteFormExpanderPlugin(), // ShoppingListNoteFeature
             new ShoppingListItemProductOptionFormExpanderPlugin(),
         ];
     }

@@ -12,6 +12,7 @@ use Spryker\Zed\OauthAgentConnector\Communication\Plugin\Oauth\AgentCredentialsO
 use Spryker\Zed\OauthAgentConnector\Communication\Plugin\Oauth\AgentOauthScopeProviderPlugin;
 use Spryker\Zed\OauthAgentConnector\Communication\Plugin\Oauth\AgentOauthUserProviderPlugin;
 use Spryker\Zed\OauthCompanyUser\Communication\Plugin\Oauth\CompanyUserAccessTokenOauthGrantTypeConfigurationProviderPlugin;
+use Spryker\Zed\OauthCompanyUser\Communication\Plugin\Oauth\CompanyUserAccessTokenOauthUserProviderPlugin;
 use Spryker\Zed\OauthCompanyUser\Communication\Plugin\Oauth\CompanyUserOauthScopeProviderPlugin;
 use Spryker\Zed\OauthCompanyUser\Communication\Plugin\Oauth\CompanyUserOauthUserProviderPlugin;
 use Spryker\Zed\OauthCompanyUser\Communication\Plugin\Oauth\IdCompanyUserOauthGrantTypeConfigurationProviderPlugin;
@@ -41,6 +42,7 @@ class OauthDependencyProvider extends SprykerOauthDependencyProvider
             new CompanyUserOauthUserProviderPlugin(),
             new AgentOauthUserProviderPlugin(),
             new CustomerImpersonationOauthUserProviderPlugin(),
+            new CompanyUserAccessTokenOauthUserProviderPlugin(),
         ];
     }
 
@@ -62,12 +64,14 @@ class OauthDependencyProvider extends SprykerOauthDependencyProvider
      */
     protected function getGrantTypeConfigurationProviderPlugins(): array
     {
-        return array_merge(parent::getGrantTypeConfigurationProviderPlugins(), [
+        return array_merge(
+            parent::getGrantTypeConfigurationProviderPlugins(), [
             new IdCompanyUserOauthGrantTypeConfigurationProviderPlugin(),
             new CompanyUserAccessTokenOauthGrantTypeConfigurationProviderPlugin(),
             new AgentCredentialsOauthGrantTypeConfigurationProviderPlugin(),
             new CustomerImpersonationOauthGrantTypeConfigurationProviderPlugin(),
-        ]);
+            ]
+        );
     }
 
     /**

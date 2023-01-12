@@ -88,13 +88,13 @@ class EventDependencyProvider extends SprykerEventDependencyProvider
         $eventSubscriberCollection->add(new ProductSetStorageEventSubscriber());
         $eventSubscriberCollection->add(new ProductSearchConfigStorageEventSubscriber());
         $eventSubscriberCollection->add(new ProductListStorageEventSubscriber());
-        $eventSubscriberCollection->add(new ProductDiscontinuedStorageEventSubscriber()); #ProductDiscontinuedFeature
-        $eventSubscriberCollection->add(new ProductAlternativeStorageEventSubscriber()); #ProductAlternativeFeature
+        $eventSubscriberCollection->add(new ProductDiscontinuedStorageEventSubscriber()); // ProductDiscontinuedFeature
+        $eventSubscriberCollection->add(new ProductAlternativeStorageEventSubscriber()); // ProductAlternativeFeature
         $eventSubscriberCollection->add(new ProductPackagingUnitStorageEventSubscriber());
         $eventSubscriberCollection->add(new PriceProductMerchantRelationshipStorageEventSubscriber());
         $eventSubscriberCollection->add(new FileManagerStorageSubscriber());
         $eventSubscriberCollection->add(new CustomerAccessStorageEventSubscriber());
-        $eventSubscriberCollection->add(new ShoppingListStorageEventSubscriber()); #ShoppingListWidget feature
+        $eventSubscriberCollection->add(new ShoppingListStorageEventSubscriber()); // ShoppingListWidget feature
         $eventSubscriberCollection->add(new CategoryImageStorageEventSubscriber());
         $eventSubscriberCollection->add(new AvailabilityNotificationSubscriber());
         $eventSubscriberCollection->add(new ContentStorageEventSubscriber());
