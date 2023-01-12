@@ -51,6 +51,7 @@ class GlueBackendApiApplicationDependencyProvider extends SprykerGlueBackendApiA
     {
         return [
             new AccessTokenValidatorPlugin(),
+            new UserRequestValidatorPlugin()
         ];
     }
 

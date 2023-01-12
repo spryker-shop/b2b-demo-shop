@@ -40,6 +40,7 @@ class GlueStorefrontApiApplicationDependencyProvider extends SprykerGlueStorefro
     {
         return [
             new AccessTokenValidatorPlugin(),
+            new CustomerRequestValidatorPlugin(),
         ];
     }
 
