@@ -768,18 +768,6 @@ class GlueApplicationDependencyProvider extends SprykerGlueApplicationDependency
         ];
     }
 
-
-    /**
-     * @deprecated Will be removed without replacement.
-     *
-     * @return array<\Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\RouterParameterExpanderPluginInterface>
-     */
-    protected function getRouterParameterExpanderPlugins(): array
-    {
-        return [
-        ];
-    }
-
     /**
      * @return array<\Spryker\Glue\GlueApplicationExtension\Dependency\Plugin\GlueApplicationBootstrapPluginInterface>
      */

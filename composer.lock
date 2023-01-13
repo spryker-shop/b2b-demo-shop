@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bdf9d16c1eed5446cf1d8a5973d338f9",
+    "content-hash": "75c29b2c5f2afe4eba7b599c7b7817d2",
     "packages": [
         {
             "name": "async-aws/core",
@@ -4597,212 +4597,6 @@
                 "source": "https://github.com/spryker-eco/new-relic/tree/master"
             },
             "time": "2020-06-19T09:30:20+00:00"
-        },
-        {
-            "name": "spryker-eco/unzer",
-            "version": "1.3.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker-eco/unzer.git",
-                "reference": "2f05cbcc77acba48413bcb8eb486c0f2f32124b9"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker-eco/unzer/zipball/2f05cbcc77acba48413bcb8eb486c0f2f32124b9",
-                "reference": "2f05cbcc77acba48413bcb8eb486c0f2f32124b9",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=8.0",
-                "spryker-eco/unzer-api": "^1.1.0",
-                "spryker-shop/shop-ui": "^1.56.0",
-                "spryker/calculation": "^4.0.0",
-                "spryker/cart-extension": "^4.1.0",
-                "spryker/checkout-extension": "^1.4.0",
-                "spryker/kernel": "^3.30.0",
-                "spryker/locale": "^3.8.1",
-                "spryker/merchant": "^3.1.0",
-                "spryker/oms": "^11.0.0",
-                "spryker/payment": "^5.8.0",
-                "spryker/payment-extension": "^1.0.0",
-                "spryker/propel-orm": "^1.6.0",
-                "spryker/quote": "^2.0.0",
-                "spryker/refund": "^5.4.0",
-                "spryker/sales": "^11.27.0",
-                "spryker/shipment": "^8.4.0",
-                "spryker/step-engine": "^3.1.0",
-                "spryker/store": "^1.0.0",
-                "spryker/symfony": "^3.7.0",
-                "spryker/transfer": "^3.27.0",
-                "spryker/util-encoding": "^2.0.0",
-                "spryker/util-text": "^1.5.0",
-                "spryker/vault": "^1.2.0",
-                "spryker/zed-request": "^3.0.0"
-            },
-            "require-dev": {
-                "codeception/module-asserts": "^1.3.0",
-                "phpstan/phpstan": "^1.2.0",
-                "spryker/application": "*",
-                "spryker/code-sniffer": "*",
-                "spryker/customer": "*",
-                "spryker/error-handler": "*",
-                "spryker/event": "*",
-                "spryker/log": "*",
-                "spryker/monolog": "*",
-                "spryker/propel": "*",
-                "spryker/queue": "*",
-                "spryker/router": "*",
-                "spryker/state-machine": "*",
-                "spryker/testify": "^3.43.0"
-            },
-            "suggest": {
-                "spryker/checkout": "Use this module if you want to use Checkout plugins.",
-                "spryker/router": "Use this module if you want use the RouterProviderPlugin."
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "SprykerEco\\": "src/SprykerEco/",
-                    "SprykerEcoTest\\Zed\\Unzer\\Helper\\": "tests/SprykerEcoTest/Zed/Unzer/_support/Helper/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "Unzer module",
-            "support": {
-                "issues": "https://github.com/spryker-eco/unzer/issues",
-                "source": "https://github.com/spryker-eco/unzer/tree/1.3.0"
-            },
-            "time": "2022-10-28T07:41:47+00:00"
-        },
-        {
-            "name": "spryker-eco/unzer-api",
-            "version": "1.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker-eco/unzer-api.git",
-                "reference": "ecce904f1e6354a17d1bd7565fde124f5cf648dc"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker-eco/unzer-api/zipball/ecce904f1e6354a17d1bd7565fde124f5cf648dc",
-                "reference": "ecce904f1e6354a17d1bd7565fde124f5cf648dc",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.4",
-                "psr/http-message": "^1.0.1",
-                "spryker/guzzle": "^2.2.0",
-                "spryker/kernel": "^3.30.0",
-                "spryker/symfony": "^3.0.0",
-                "spryker/transfer": "^3.25.0",
-                "spryker/util-encoding": "^2.0.0"
-            },
-            "require-dev": {
-                "codeception/module-asserts": "^1.3.0",
-                "phpstan/phpstan": "^1.2.0",
-                "spryker/application": "^3.0.0",
-                "spryker/code-sniffer": "*",
-                "spryker/error-handler": "*",
-                "spryker/log": "*",
-                "spryker/monolog": "*",
-                "spryker/propel": "*",
-                "spryker/propel-orm": "*",
-                "spryker/queue": "*",
-                "spryker/testify": "*"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "SprykerEco\\": "src/SprykerEco/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "UnzerApi module",
-            "support": {
-                "issues": "https://github.com/spryker-eco/unzer-api/issues",
-                "source": "https://github.com/spryker-eco/unzer-api/tree/1.1.0"
-            },
-            "time": "2022-08-08T13:22:02+00:00"
-        },
-        {
-            "name": "spryker-eco/unzer-rest-api",
-            "version": "0.1.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spryker-eco/unzer-rest-api.git",
-                "reference": "15777489dac07629dad6a7dea19f3c73ece1eeb1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spryker-eco/unzer-rest-api/zipball/15777489dac07629dad6a7dea19f3c73ece1eeb1",
-                "reference": "15777489dac07629dad6a7dea19f3c73ece1eeb1",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.4",
-                "spryker-eco/unzer": "^1.1.0",
-                "spryker/checkout-rest-api-extension": "^1.5.0",
-                "spryker/glue-json-api-convention-extension": "^0.1.0 || ^0.2.0 || ^1.0.0",
-                "spryker/kernel": "^3.30.0",
-                "spryker/symfony": "^3.0.0",
-                "spryker/transfer": "^3.25.0"
-            },
-            "require-dev": {
-                "codeception/module-asserts": "^1.3.0",
-                "phpstan/phpstan": "^1.2.0",
-                "spryker/application": "*",
-                "spryker/code-sniffer": "*",
-                "spryker/error-handler": "*",
-                "spryker/event": "*",
-                "spryker/glue-application": "^1.0.0",
-                "spryker/log": "*",
-                "spryker/monolog": "*",
-                "spryker/propel": "*",
-                "spryker/propel-orm": "*",
-                "spryker/queue": "*",
-                "spryker/quote": "*",
-                "spryker/testify": "^3.43.0"
-            },
-            "suggest": {
-                "spryker/glue-application": "If you want to use plugins with glue application."
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "SprykerEco\\": "src/SprykerEco/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "UnzerRestApi module",
-            "support": {
-                "issues": "https://github.com/spryker-eco/unzer-rest-api/issues",
-                "source": "https://github.com/spryker-eco/unzer-rest-api/tree/0.1.3"
-            },
-            "time": "2022-09-28T14:47:05+00:00"
         },
         {
             "name": "spryker-feature/agent-assist",
@@ -29317,6 +29111,52 @@
                 "source": "https://github.com/spryker/glue-backend-api-application-authorization-connector/tree/1.1.0"
             },
             "time": "2022-11-22T13:42:03+00:00"
+        },
+        {
+            "name": "spryker/glue-backend-api-application-glue-json-api-convention-connector",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/glue-backend-api-application-glue-json-api-convention-connector.git",
+                "reference": "2e74511822bafb0714c2a3e099c32b5011553857"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/glue-backend-api-application-glue-json-api-convention-connector/zipball/2e74511822bafb0714c2a3e099c32b5011553857",
+                "reference": "2e74511822bafb0714c2a3e099c32b5011553857",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0",
+                "spryker/documentation-generator-api-extension": "^1.0.0",
+                "spryker/glue-json-api-convention-extension": "^1.0.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/transfer": "^3.25.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "GlueBackendApiApplicationGlueJsonApiConventionConnector module",
+            "support": {
+                "source": "https://github.com/spryker/glue-backend-api-application-glue-json-api-convention-connector/tree/1.0.0"
+            },
+            "time": "2022-12-16T13:21:09+00:00"
         },
         {
             "name": "spryker/glue-json-api-convention",
