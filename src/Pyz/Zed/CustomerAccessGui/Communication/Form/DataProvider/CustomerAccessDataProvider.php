@@ -24,7 +24,7 @@ class CustomerAccessDataProvider
      * @param \Pyz\Zed\CustomerAccess\Business\CustomerAccessFacadeInterface $customerAccessFacade
      */
     public function __construct(
-        CustomerAccessFacadeInterface $customerAccessFacade
+        CustomerAccessFacadeInterface $customerAccessFacade,
     ) {
         $this->customerAccessFacade = $customerAccessFacade;
     }
@@ -57,9 +57,9 @@ class CustomerAccessDataProvider
     }
 
     /**
-     * @param \ArrayObject|\Generated\Shared\Transfer\ContentTypeAccessTransfer[] $contentTypes
+     * @param \ArrayObject<\Generated\Shared\Transfer\ContentTypeAccessTransfer> $contentTypes
      *
-     * @return \Generated\Shared\Transfer\ContentTypeAccessTransfer[]
+     * @return array<\Generated\Shared\Transfer\ContentTypeAccessTransfer>
      */
     protected function filterPyzContentTypesData(ArrayObject $contentTypes): array
     {
@@ -67,7 +67,7 @@ class CustomerAccessDataProvider
             $contentTypes->getArrayCopy(),
             function (ContentTypeAccessTransfer $entity) {
                 return $entity->getIsRestricted();
-            }
+            },
         );
     }
 }

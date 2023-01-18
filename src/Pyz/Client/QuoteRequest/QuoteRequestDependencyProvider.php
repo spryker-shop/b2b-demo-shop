@@ -14,7 +14,7 @@ use Spryker\Client\QuoteRequest\QuoteRequestDependencyProvider as SprykerQuoteRe
 class QuoteRequestDependencyProvider extends SprykerQuoteRequestDependencyProvider
 {
     /**
-     * @return \Spryker\Client\QuoteRequestExtension\Dependency\Plugin\QuoteRequestQuoteCheckPluginInterface[]
+     * @return array<\Spryker\Client\QuoteRequestExtension\Dependency\Plugin\QuoteRequestQuoteCheckPluginInterface>
      */
     protected function getQuoteRequestQuoteCheckPlugins(): array
     {

@@ -13,6 +13,7 @@ class NewsletterSubscriptionHomePage
      * @var string
      */
     public const NEW_EMAIL = 'foo@bar.com';
+
     /**
      * @var string
      */
@@ -22,6 +23,7 @@ class NewsletterSubscriptionHomePage
      * @var string
      */
     public const FORM_FIELD_EMAIL = '//form[@name=\'newsletterSubscriptionWidgetForm\']//input[@type=\'email\']';
+
     /**
      * @var string
      */
@@ -31,6 +33,7 @@ class NewsletterSubscriptionHomePage
      * @var string
      */
     public const ERROR_MESSAGE = 'You are already subscribed to the newsletter';
+
     /**
      * @var string
      */

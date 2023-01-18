@@ -27,6 +27,7 @@ class ProductConcreteHydratorStep implements DataImportStepInterface
      * @var string
      */
     public const COLUMN_ABSTRACT_SKU = 'abstract_sku';
+
     /**
      * @var string
      */
@@ -36,18 +37,22 @@ class ProductConcreteHydratorStep implements DataImportStepInterface
      * @var string
      */
     public const COLUMN_NAME = 'name';
+
     /**
      * @var string
      */
     public const COLUMN_DESCRIPTION = 'description';
+
     /**
      * @var string
      */
     public const COLUMN_IS_SEARCHABLE = 'is_searchable';
+
     /**
      * @var string
      */
     public const COLUMN_BUNDLES = 'bundled';
+
     /**
      * @var string
      */
@@ -57,50 +62,62 @@ class ProductConcreteHydratorStep implements DataImportStepInterface
      * @var string
      */
     public const KEY_ATTRIBUTES = 'attributes';
+
     /**
      * @var string
      */
     public const KEY_LOCALIZED_ATTRIBUTES = 'localizedAttributes';
+
     /**
      * @var string
      */
     public const KEY_LOCALES = 'locales';
+
     /**
      * @var string
      */
     public const KEY_SKU = 'sku';
+
     /**
      * @var string
      */
     public const KEY_IS_ACTIVE = 'is_active';
+
     /**
      * @var string
      */
     public const KEY_IS_COMPLETE = 'is_complete';
+
     /**
      * @var string
      */
     public const KEY_PRODUCT_BUNDLE_TRANSFER = 'productBundleEntityTransfer';
+
     /**
      * @var string
      */
     public const KEY_PRODUCT_CONCRETE_LOCALIZED_TRANSFER = 'localizedAttributeTransfer';
+
     /**
      * @var string
      */
     public const KEY_PRODUCT_SEARCH_TRANSFER = 'productSearchEntityTransfer';
+
     /**
      * @var string
      */
     public const KEY_PRODUCT_BUNDLE_SKU = 'bundledProductSku';
+
     /**
      * @var string
      */
     public const DATA_PRODUCT_CONCRETE_TRANSFER = 'DATA_PRODUCT_CONCRETE_TRANSFER';
+
     /**
      * @var string
      */
     public const DATA_PRODUCT_CONCRETE_LOCALIZED_TRANSFER = 'DATA_PRODUCT_CONCRETE_LOCALIZED_TRANSFER';
+
     /**
      * @var string
      */
@@ -112,7 +129,7 @@ class ProductConcreteHydratorStep implements DataImportStepInterface
     protected $productRepository;
 
     /**
-     * @var bool[] Keys are product column names
+     * @var array<bool> Keys are product column names
      */
     protected static $isProductColumnBuffer = [];
 

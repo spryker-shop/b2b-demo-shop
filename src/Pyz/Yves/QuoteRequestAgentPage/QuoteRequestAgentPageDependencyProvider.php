@@ -15,7 +15,7 @@ use SprykerShop\Yves\QuoteRequestAgentPage\QuoteRequestAgentPageDependencyProvid
 class QuoteRequestAgentPageDependencyProvider extends SprykerQuoteRequestAgentPageDependencyProvider
 {
     /**
-     * @return \SprykerShop\Yves\QuoteRequestAgentPageExtension\Dependency\Plugin\QuoteRequestAgentFormMetadataFieldPluginInterface[]
+     * @return array<\SprykerShop\Yves\QuoteRequestAgentPageExtension\Dependency\Plugin\QuoteRequestAgentFormMetadataFieldPluginInterface>
      */
     protected function getQuoteRequestAgentFormMetadataFieldPlugins(): array
     {

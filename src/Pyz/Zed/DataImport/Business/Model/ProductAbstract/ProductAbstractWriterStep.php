@@ -34,66 +34,82 @@ class ProductAbstractWriterStep extends PublishAwareStep implements DataImportSt
      * @var string
      */
     public const KEY_ABSTRACT_SKU = 'abstract_sku';
+
     /**
      * @var string
      */
     public const KEY_COLOR_CODE = 'color_code';
+
     /**
      * @var string
      */
     public const KEY_ID_TAX_SET = 'idTaxSet';
+
     /**
      * @var string
      */
     public const KEY_ATTRIBUTES = 'attributes';
+
     /**
      * @var string
      */
     public const KEY_NAME = 'name';
+
     /**
      * @var string
      */
     public const KEY_URL = 'url';
+
     /**
      * @var string
      */
     public const KEY_DESCRIPTION = 'description';
+
     /**
      * @var string
      */
     public const KEY_META_TITLE = 'meta_title';
+
     /**
      * @var string
      */
     public const KEY_META_DESCRIPTION = 'meta_description';
+
     /**
      * @var string
      */
     public const KEY_META_KEYWORDS = 'meta_keywords';
+
     /**
      * @var string
      */
     public const KEY_TAX_SET_NAME = 'tax_set_name';
+
     /**
      * @var string
      */
     public const KEY_CATEGORY_KEY = 'category_key';
+
     /**
      * @var string
      */
     public const KEY_CATEGORY_KEYS = 'categoryKeys';
+
     /**
      * @var string
      */
     public const KEY_CATEGORY_PRODUCT_ORDER = 'category_product_order';
+
     /**
      * @var string
      */
     public const KEY_LOCALES = 'locales';
+
     /**
      * @var string
      */
     public const KEY_NEW_FROM = 'new_from';
+
     /**
      * @var string
      */
@@ -117,7 +133,7 @@ class ProductAbstractWriterStep extends PublishAwareStep implements DataImportSt
      *
      * @return void
      */
-    public function execute(DataSetInterface $dataSet)
+    public function execute(DataSetInterface $dataSet): void
     {
         $productAbstractEntity = $this->importProductAbstract($dataSet);
 
@@ -135,7 +151,7 @@ class ProductAbstractWriterStep extends PublishAwareStep implements DataImportSt
      *
      * @return \Orm\Zed\Product\Persistence\SpyProductAbstract
      */
-    protected function importProductAbstract(DataSetInterface $dataSet)
+    protected function importProductAbstract(DataSetInterface $dataSet): SpyProductAbstract
     {
         $productAbstractEntity = SpyProductAbstractQuery::create()
             ->filterBySku($dataSet[static::KEY_ABSTRACT_SKU])
@@ -161,7 +177,7 @@ class ProductAbstractWriterStep extends PublishAwareStep implements DataImportSt
      *
      * @return void
      */
-    protected function importProductAbstractLocalizedAttributes(DataSetInterface $dataSet, SpyProductAbstract $productAbstractEntity)
+    protected function importProductAbstractLocalizedAttributes(DataSetInterface $dataSet, SpyProductAbstract $productAbstractEntity): void
     {
         foreach ($dataSet[ProductLocalizedAttributesExtractorStep::KEY_LOCALIZED_ATTRIBUTES] as $idLocale => $localizedAttributes) {
             $productAbstractLocalizedAttributesEntity = SpyProductAbstractLocalizedAttributesQuery::create()
@@ -191,7 +207,7 @@ class ProductAbstractWriterStep extends PublishAwareStep implements DataImportSt
      *
      * @return void
      */
-    protected function importProductCategories(DataSetInterface $dataSet, SpyProductAbstract $productAbstractEntity)
+    protected function importProductCategories(DataSetInterface $dataSet, SpyProductAbstract $productAbstractEntity): void
     {
         $categoryKeys = $this->getCategoryKeys($dataSet[static::KEY_CATEGORY_KEY]);
         $categoryProductOrder = $this->getCategoryProductOrder($dataSet[static::KEY_CATEGORY_PRODUCT_ORDER]);
@@ -201,7 +217,7 @@ class ProductAbstractWriterStep extends PublishAwareStep implements DataImportSt
                 throw new DataKeyNotFoundInDataSetException(sprintf(
                     'The category with key "%s" was not found in categoryKeys. Maybe there is a typo. Given Categories: "%s"',
                     $categoryKey,
-                    implode('', array_values($dataSet[static::KEY_CATEGORY_KEYS]))
+                    implode('', array_values($dataSet[static::KEY_CATEGORY_KEYS])),
                 ));
             }
             $productOrder = null;
@@ -231,7 +247,7 @@ class ProductAbstractWriterStep extends PublishAwareStep implements DataImportSt
      *
      * @return array
      */
-    protected function getCategoryKeys($categoryKeys)
+    protected function getCategoryKeys($categoryKeys): array
     {
         $categoryKeys = explode(',', $categoryKeys);
 
@@ -243,7 +259,7 @@ class ProductAbstractWriterStep extends PublishAwareStep implements DataImportSt
      *
      * @return array
      */
-    protected function getCategoryProductOrder($categoryProductOrder)
+    protected function getCategoryProductOrder($categoryProductOrder): array
     {
         $categoryProductOrder = explode(',', $categoryProductOrder);
 
@@ -256,7 +272,7 @@ class ProductAbstractWriterStep extends PublishAwareStep implements DataImportSt
      *
      * @return void
      */
-    protected function importProductUrls(DataSetInterface $dataSet, SpyProductAbstract $productAbstractEntity)
+    protected function importProductUrls(DataSetInterface $dataSet, SpyProductAbstract $productAbstractEntity): void
     {
         foreach ($dataSet[ProductLocalizedAttributesExtractorStep::KEY_LOCALIZED_ATTRIBUTES] as $idLocale => $localizedAttributes) {
             $abstractProductUrl = $localizedAttributes[static::KEY_URL];
@@ -283,7 +299,7 @@ class ProductAbstractWriterStep extends PublishAwareStep implements DataImportSt
      *
      * @return void
      */
-    protected function cleanupRedirectUrls($abstractProductUrl)
+    protected function cleanupRedirectUrls($abstractProductUrl): void
     {
         SpyUrlQuery::create()
             ->filterByUrl($abstractProductUrl)

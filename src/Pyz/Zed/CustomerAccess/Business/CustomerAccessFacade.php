@@ -13,6 +13,8 @@ use Spryker\Zed\CustomerAccessGui\Dependency\Facade\CustomerAccessGuiToCustomerA
 
 /**
  * @method \Pyz\Zed\CustomerAccess\Business\CustomerAccessBusinessFactory getFactory()
+ * @method \Pyz\Zed\CustomerAccess\Persistence\CustomerAccessEntityManagerInterface getEntityManager()
+ * @method \Pyz\Zed\CustomerAccess\Persistence\CustomerAccessRepositoryInterface getRepository()
  */
 class CustomerAccessFacade extends SprykerCustomerAccessFacade implements CustomerAccessFacadeInterface, CustomerAccessGuiToCustomerAccessFacadeInterface
 {

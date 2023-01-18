@@ -16,7 +16,7 @@ use Spryker\Zed\ProductListGui\ProductListGuiDependencyProvider as SprykerProduc
 class ProductListGuiDependencyProvider extends SprykerProductListGuiDependencyProvider
 {
     /**
-     * @return \Spryker\Zed\ProductListGuiExtension\Dependency\Plugin\ProductListTopButtonsExpanderPluginInterface[]
+     * @return array<\Spryker\Zed\ProductListGuiExtension\Dependency\Plugin\ProductListTopButtonsExpanderPluginInterface>
      */
     protected function getProductListTopButtonsExpanderPlugins(): array
     {
@@ -27,7 +27,7 @@ class ProductListGuiDependencyProvider extends SprykerProductListGuiDependencyPr
     }
 
     /**
-     * @return \Spryker\Zed\ProductListGuiExtension\Dependency\Plugin\ProductListUsedByTableExpanderPluginInterface[]
+     * @return array<\Spryker\Zed\ProductListGuiExtension\Dependency\Plugin\ProductListUsedByTableExpanderPluginInterface>
      */
     protected function getProductListUsedByTableExpanderPlugins(): array
     {

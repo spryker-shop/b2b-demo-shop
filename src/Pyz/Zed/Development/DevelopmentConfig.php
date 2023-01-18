@@ -14,7 +14,7 @@ class DevelopmentConfig extends SprykerDevelopmentConfig
     /**
      * @return string
      */
-    public function getCodingStandard()
+    public function getCodingStandard(): string
     {
         $rootDir = APPLICATION_ROOT_DIR . DIRECTORY_SEPARATOR;
 

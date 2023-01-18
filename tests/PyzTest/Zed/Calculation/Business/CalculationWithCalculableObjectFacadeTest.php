@@ -609,7 +609,7 @@ class CalculationWithCalculableObjectFacadeTest extends Unit
             $quoteTransfer->addItem($itemTransfer);
         }
 
-        if (!empty($expense)) {
+        if ($expense) {
             $quoteTransfer->addExpense($this->tester->createExpenseTransfer($expense[0], $priceMode, $expense[2], $expense[1]));
         }
 
