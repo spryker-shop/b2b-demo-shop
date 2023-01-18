@@ -290,7 +290,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
     {
         return [
             new CompanyUserRestrictionHandlerPlugin(),
-            new CheckBusinessOnBehalfCompanyUserHandlerPlugin(), #BusinessOnBehalfFeature
+            new CheckBusinessOnBehalfCompanyUserHandlerPlugin(), // BusinessOnBehalfFeature
             new CompanyBusinessUnitControllerRestrictionPlugin(),
         ];
     }

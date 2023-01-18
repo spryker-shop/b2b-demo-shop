@@ -41,7 +41,7 @@ class QuoteDependencyProvider extends SprykerQuoteDependencyProvider
     protected function getQuoteCreateAfterPlugins(): array
     {
         return [
-            new AddSuccessMessageAfterQuoteCreatedPlugin(), #MultiCartFeature
+            new AddSuccessMessageAfterQuoteCreatedPlugin(), // MultiCartFeature
         ];
     }
 
@@ -51,11 +51,11 @@ class QuoteDependencyProvider extends SprykerQuoteDependencyProvider
     protected function getQuoteCreateBeforePlugins(): array
     {
         return [
-            new AddDefaultNameBeforeQuoteSavePlugin(), #MultiCartFeature
-            new ResolveQuoteNameBeforeQuoteCreatePlugin(), #MultiCartFeature
-            new DeactivateQuotesBeforeQuoteSavePlugin(), #MultiCartFeature
-            new CleanQuoteShareBeforeQuoteCreatePlugin(), #SharedCartFeature
-            new DeactivateSharedQuotesBeforeQuoteSavePlugin(), #SharedCartFeature
+            new AddDefaultNameBeforeQuoteSavePlugin(), // MultiCartFeature
+            new ResolveQuoteNameBeforeQuoteCreatePlugin(), // MultiCartFeature
+            new DeactivateQuotesBeforeQuoteSavePlugin(), // MultiCartFeature
+            new CleanQuoteShareBeforeQuoteCreatePlugin(), // SharedCartFeature
+            new DeactivateSharedQuotesBeforeQuoteSavePlugin(), // SharedCartFeature
         ];
     }
 
@@ -65,8 +65,8 @@ class QuoteDependencyProvider extends SprykerQuoteDependencyProvider
     protected function getQuoteUpdateAfterPlugins(): array
     {
         return [
-            new UpdateShareDetailsQuoteAfterSavePlugin(), #SharedCartFeature
-            new MarkAsDefaultQuoteAfterSavePlugin(), #SharedCartFeature
+            new UpdateShareDetailsQuoteAfterSavePlugin(), // SharedCartFeature
+            new MarkAsDefaultQuoteAfterSavePlugin(), // SharedCartFeature
         ];
     }
 
@@ -76,7 +76,7 @@ class QuoteDependencyProvider extends SprykerQuoteDependencyProvider
     protected function getQuoteExpanderPlugins(): array
     {
         return [
-            new QuoteApprovalExpanderPlugin(), #QuoteApprovalFeature
+            new QuoteApprovalExpanderPlugin(), // QuoteApprovalFeature
             new CommentThreadQuoteExpanderPlugin(),
             new ShareDetailsQuoteExpanderPlugin(),
         ];
@@ -88,13 +88,13 @@ class QuoteDependencyProvider extends SprykerQuoteDependencyProvider
     protected function getQuoteUpdateBeforePlugins(): array
     {
         return [
-            new AddDefaultNameBeforeQuoteSavePlugin(), #MultiCartFeature
-            new ResolveQuoteNameBeforeQuoteCreatePlugin(), #MultiCartFeature
-            new AddDefaultQuoteChangedMessageQuoteUpdateBeforePlugin(), #MultiCartFeature
-            new DeactivateQuotesBeforeQuoteSavePlugin(), #MultiCartFeature
-            new AddDefaultSharedQuoteChangedMessageQuoteUpdateBeforePlugin(), #SharedCartFeature
-            new DeactivateSharedQuotesBeforeQuoteSavePlugin(), #SharedCartFeature
-            new SharedQuoteSetDefaultBeforeQuoteSavePlugin(), #SharedCartFeature
+            new AddDefaultNameBeforeQuoteSavePlugin(), // MultiCartFeature
+            new ResolveQuoteNameBeforeQuoteCreatePlugin(), // MultiCartFeature
+            new AddDefaultQuoteChangedMessageQuoteUpdateBeforePlugin(), // MultiCartFeature
+            new DeactivateQuotesBeforeQuoteSavePlugin(), // MultiCartFeature
+            new AddDefaultSharedQuoteChangedMessageQuoteUpdateBeforePlugin(), // SharedCartFeature
+            new DeactivateSharedQuotesBeforeQuoteSavePlugin(), // SharedCartFeature
+            new SharedQuoteSetDefaultBeforeQuoteSavePlugin(), // SharedCartFeature
         ];
     }
 
@@ -104,8 +104,8 @@ class QuoteDependencyProvider extends SprykerQuoteDependencyProvider
     protected function getQuoteDeleteBeforePlugins(): array
     {
         return [
-            new RemoveSharedQuoteBeforeQuoteDeletePlugin(), #SharedCartFeature
-            new RemoveQuoteApprovalsBeforeQuoteDeletePlugin(), #QuoteApproval
+            new RemoveSharedQuoteBeforeQuoteDeletePlugin(), // SharedCartFeature
+            new RemoveQuoteApprovalsBeforeQuoteDeletePlugin(), // QuoteApproval
         ];
     }
 
@@ -115,7 +115,7 @@ class QuoteDependencyProvider extends SprykerQuoteDependencyProvider
     protected function getQuoteDeleteAfterPlugins(): array
     {
         return [
-            new InitDefaultQuoteCustomerQuoteDeleteAfterPlugin(), #MultiCartFeature
+            new InitDefaultQuoteCustomerQuoteDeleteAfterPlugin(), // MultiCartFeature
         ];
     }
 

@@ -110,22 +110,22 @@ class RouterDependencyProvider extends SprykerRouterDependencyProvider
             new DiscountWidgetRouteProviderPlugin(),
             new PriceWidgetRouteProviderPlugin(),
             new CartCodeWidgetRouteProviderPlugin(),
-            new CartNoteWidgetRouteProviderPlugin(), #CartNoteFeature
+            new CartNoteWidgetRouteProviderPlugin(), // CartNoteFeature
             new QuickOrderPageRouteProviderPlugin(),
             new CompanyPageRouteProviderPlugin(),
-            new MultiCartPageRouteProviderPlugin(), #MultiCartFeature
-            new SharedCartPageRouteProviderPlugin(), #SharedCartFeature
-            new ShoppingListPageRouteProviderPlugin(), #ShoppingListFeature
-            new ShoppingListWidgetRouteProviderPlugin(), #ShoppingListFeature
-            new CompanyUserInvitationPageRouteProviderPlugin(), #BulkImportCompanyUserInvitationsFeature
-            new AgentPageRouteProviderPlugin(), #AgentFeature
-            new AgentWidgetRouteProviderPlugin(), #AgentFeature
+            new MultiCartPageRouteProviderPlugin(), // MultiCartFeature
+            new SharedCartPageRouteProviderPlugin(), // SharedCartFeature
+            new ShoppingListPageRouteProviderPlugin(), // ShoppingListFeature
+            new ShoppingListWidgetRouteProviderPlugin(), // ShoppingListFeature
+            new CompanyUserInvitationPageRouteProviderPlugin(), // BulkImportCompanyUserInvitationsFeature
+            new AgentPageRouteProviderPlugin(), // AgentFeature
+            new AgentWidgetRouteProviderPlugin(), // AgentFeature
             new FileManagerWidgetRouteProviderPlugin(),
-            new CmsSearchPageRouteProviderPlugin(), #CmsSearchPageFeature
+            new CmsSearchPageRouteProviderPlugin(), // CmsSearchPageFeature
             new ProductSearchWidgetRouteProviderPlugin(),
             new AvailabilityNotificationWidgetRouteProviderPlugin(),
             new AvailabilityNotificationPageRouteProviderPlugin(),
-            new QuoteApprovalWidgetRouteProviderPlugin(), #QuoteApprovalFeature
+            new QuoteApprovalWidgetRouteProviderPlugin(), // QuoteApprovalFeature
             new QuoteRequestAgentPageRouteProviderPlugin(),
             new QuoteRequestAgentWidgetRouteProviderPlugin(),
             new QuoteRequestPageRouteProviderPlugin(),

@@ -42,8 +42,8 @@ class PermissionDependencyProvider extends SprykerPermissionDependencyProvider
     protected function getPermissionStoragePlugins(): array
     {
         return [
-            new PermissionStoragePlugin(), #SharedCartFeature #ShoppingListFeature
-            new CustomerAccessPermissionStoragePlugin(), #CustomerAccessFeature
+            new PermissionStoragePlugin(), // SharedCartFeature #ShoppingListFeature
+            new CustomerAccessPermissionStoragePlugin(), // CustomerAccessFeature
             new OauthPermissionStoragePlugin(),
         ];
     }
@@ -54,10 +54,10 @@ class PermissionDependencyProvider extends SprykerPermissionDependencyProvider
     protected function getPermissionPlugins(): array
     {
         return [
-            new ReadSharedCartPermissionPlugin(), #SharedCartFeature
-            new WriteSharedCartPermissionPlugin(), #SharedCartFeature
-            new ReadShoppingListPermissionPlugin(), #ShoppingListFeature
-            new WriteShoppingListPermissionPlugin(), #ShoppingListFeature
+            new ReadSharedCartPermissionPlugin(), // SharedCartFeature
+            new WriteSharedCartPermissionPlugin(), // SharedCartFeature
+            new ReadShoppingListPermissionPlugin(), // ShoppingListFeature
+            new WriteShoppingListPermissionPlugin(), // ShoppingListFeature
             new SeeCompanyMenuPermissionPlugin(),
             new AddCartItemPermissionPlugin(),
             new ChangeCartItemPermissionPlugin(),
@@ -66,14 +66,14 @@ class PermissionDependencyProvider extends SprykerPermissionDependencyProvider
             new ManageCompanyUserInvitationPermissionPlugin(),
             new AddCompanyUserPermissionPlugin(),
             new CompanyUserStatusChangePermissionPlugin(),
-            new SeePricePermissionPlugin(), #CustomerAccessFeature
-            new SeeOrderPlaceSubmitPermissionPlugin(), #CustomerAccessFeature
-            new SeeAddToCartPermissionPlugin(), #CustomerAccessFeature
-            new SeeWishlistPermissionPlugin(), #CustomerAccessFeature
-            new SeeShoppingListPermissionPlugin(), #CustomerAccessFeature
-            new RequestQuoteApprovalPermissionPlugin(), #QuoteApprovalFeature
-            new PlaceOrderPermissionPlugin(), #QuoteApprovalFeature
-            new ApproveQuotePermissionPlugin(), #QuoteApprovalFeature
+            new SeePricePermissionPlugin(), // CustomerAccessFeature
+            new SeeOrderPlaceSubmitPermissionPlugin(), // CustomerAccessFeature
+            new SeeAddToCartPermissionPlugin(), // CustomerAccessFeature
+            new SeeWishlistPermissionPlugin(), // CustomerAccessFeature
+            new SeeShoppingListPermissionPlugin(), // CustomerAccessFeature
+            new RequestQuoteApprovalPermissionPlugin(), // QuoteApprovalFeature
+            new PlaceOrderPermissionPlugin(), // QuoteApprovalFeature
+            new ApproveQuotePermissionPlugin(), // QuoteApprovalFeature
             new SeeCompanyOrdersPermissionPlugin(),
             new SeeBusinessUnitOrdersPermissionPlugin(),
         ];

@@ -14,13 +14,18 @@ use Spryker\Zed\Customer\Communication\Plugin\Checkout\CustomerOrderSavePlugin;
 use Spryker\Zed\Customer\Communication\Plugin\CustomerPreConditionCheckerPlugin;
 use Spryker\Zed\Discount\Communication\Plugin\Checkout\DiscountOrderSavePlugin;
 use Spryker\Zed\Discount\Communication\Plugin\Checkout\VoucherDiscountMaxUsageCheckoutPreConditionPlugin;
+use Spryker\Zed\DummyPayment\Communication\Plugin\Checkout\DummyPaymentCheckoutPostSavePlugin;
+use Spryker\Zed\DummyPayment\Communication\Plugin\Checkout\DummyPaymentCheckoutPreConditionPlugin;
 use Spryker\Zed\Kernel\Container;
+use Spryker\Zed\Merchant\Communication\Plugin\Checkout\MerchantCheckoutPreConditionPlugin;
+use Spryker\Zed\Nopayment\Communication\Plugin\Checkout\NopaymentCheckoutPreConditionPlugin;
 use Spryker\Zed\Payment\Communication\Plugin\Checkout\PaymentAuthorizationCheckoutPostSavePlugin;
 use Spryker\Zed\Payment\Communication\Plugin\Checkout\PaymentMethodValidityCheckoutPreConditionPlugin;
 use Spryker\Zed\ProductBundle\Communication\Plugin\Checkout\ProductBundleAvailabilityCheckoutPreConditionPlugin;
 use Spryker\Zed\ProductBundle\Communication\Plugin\Checkout\ProductBundleOrderSaverPlugin;
 use Spryker\Zed\ProductCartConnector\Communication\Plugin\Checkout\ProductExistsCheckoutPreConditionPlugin;
 use Spryker\Zed\ProductDiscontinued\Communication\Plugin\Checkout\ProductDiscontinuedCheckoutPreConditionPlugin;
+use Spryker\Zed\ProductOffer\Communication\Plugin\Checkout\ProductOfferCheckoutPreConditionPlugin;
 use Spryker\Zed\ProductOption\Communication\Plugin\Checkout\ProductOptionOrderSaverPlugin;
 use Spryker\Zed\ProductPackagingUnit\Communication\Plugin\Checkout\AmountAvailabilityCheckoutPreConditionPlugin;
 use Spryker\Zed\QuoteApproval\Communication\Plugin\Checkout\QuoteApprovalCheckoutPreConditionPlugin;
@@ -51,15 +56,19 @@ class CheckoutDependencyProvider extends SprykerCheckoutDependencyProvider
             new ProductsAvailableCheckoutPreConditionPlugin(),
             new ProductBundleAvailabilityCheckoutPreConditionPlugin(),
             new ShipmentCheckoutPreCheckPlugin(),
-            new ProductDiscontinuedCheckoutPreConditionPlugin(), #ProductDiscontinuedFeature
+            new ProductDiscontinuedCheckoutPreConditionPlugin(), // ProductDiscontinuedFeature
             new AmountAvailabilityCheckoutPreConditionPlugin(),
-            new SalesOrderThresholdCheckoutPreConditionPlugin(), #SalesOrderThresholdFeature
+            new SalesOrderThresholdCheckoutPreConditionPlugin(), // SalesOrderThresholdFeature
             new VoucherDiscountMaxUsageCheckoutPreConditionPlugin(),
             new QuoteRequestPreCheckPlugin(),
             new QuoteApprovalCheckoutPreConditionPlugin(),
             new PaymentMethodValidityCheckoutPreConditionPlugin(),
             new DuplicateOrderCheckoutPreConditionPlugin(),
             new ProductExistsCheckoutPreConditionPlugin(),
+            new DummyPaymentCheckoutPreConditionPlugin(),
+            new MerchantCheckoutPreConditionPlugin(),
+            new NopaymentCheckoutPreConditionPlugin(),
+            new ProductOfferCheckoutPreConditionPlugin(),
         ];
     }
 
@@ -85,12 +94,12 @@ class CheckoutDependencyProvider extends SprykerCheckoutDependencyProvider
             new OrderTotalsSaverPlugin(),
             new SalesOrderShipmentSavePlugin(),
             new OrderItemsSaverPlugin(),
-            new CartNoteSaverPlugin(), #CartNoteFeature
+            new CartNoteSaverPlugin(), // CartNoteFeature
             new ProductOptionOrderSaverPlugin(),
             new DiscountOrderSavePlugin(),
             new ProductBundleOrderSaverPlugin(),
             new SalesPaymentCheckoutDoSaveOrderPlugin(),
-            new SalesOrderThresholdExpenseSavePlugin(), #SalesOrderThresholdFeature
+            new SalesOrderThresholdExpenseSavePlugin(), // SalesOrderThresholdFeature
         ];
     }
 
@@ -104,6 +113,7 @@ class CheckoutDependencyProvider extends SprykerCheckoutDependencyProvider
         return [
             new CloseQuoteRequestCheckoutPostSaveHookPlugin(),
             new PaymentAuthorizationCheckoutPostSavePlugin(),
+            new DummyPaymentCheckoutPostSavePlugin(),
         ];
     }
 

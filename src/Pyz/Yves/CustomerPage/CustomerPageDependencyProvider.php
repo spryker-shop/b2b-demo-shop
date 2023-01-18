@@ -75,7 +75,7 @@ class CustomerPageDependencyProvider extends SprykerShopCustomerPageDependencyPr
     protected function getPreRegistrationCustomerTransferExpanderPlugins(): array
     {
         return [
-            new CompanyUserInvitationPreRegistrationCustomerTransferExpanderPlugin(), #BulkImportCompanyUserInvitationsFeature
+            new CompanyUserInvitationPreRegistrationCustomerTransferExpanderPlugin(), // BulkImportCompanyUserInvitationsFeature
         ];
     }
 
@@ -85,7 +85,7 @@ class CustomerPageDependencyProvider extends SprykerShopCustomerPageDependencyPr
     protected function getAfterLoginCustomerRedirectPlugins(): array
     {
         return [
-            new BusinessOnBehalfCompanyUserRedirectAfterLoginStrategyPlugin(), #BusinessOnBehalfFeature
+            new BusinessOnBehalfCompanyUserRedirectAfterLoginStrategyPlugin(), // BusinessOnBehalfFeature
             new RedirectUriCustomerRedirectStrategyPlugin(),
         ];
     }
@@ -107,9 +107,11 @@ class CustomerPageDependencyProvider extends SprykerShopCustomerPageDependencyPr
      */
     protected function addPyzSessionClient(Container $container): Container
     {
-        $container->set(static::PYZ_CLIENT_SESSION, function (Container $container) {
-            return $container->getLocator()->session()->client();
-        });
+        $container->set(
+            static::PYZ_CLIENT_SESSION, function (Container $container) {
+                return $container->getLocator()->session()->client();
+            }
+        );
 
         return $container;
     }
