@@ -13,7 +13,7 @@ use Spryker\Zed\OauthRevoke\OauthRevokeDependencyProvider as SprykerRevokeOauthD
 class OauthRevokeDependencyProvider extends SprykerRevokeOauthDependencyProvider
 {
     /**
-     * @return \Spryker\Zed\OauthRevokeExtension\Dependency\Plugin\OauthUserIdentifierFilterPluginInterface[]
+     * @return array<\Spryker\Zed\OauthRevokeExtension\Dependency\Plugin\OauthUserIdentifierFilterPluginInterface>
      */
     protected function getOauthUserIdentifierFilterPlugins(): array
     {

@@ -14,7 +14,7 @@ use Spryker\Client\ShoppingListSession\Plugin\Agent\SanitizeCustomerShoppingList
 class AgentDependencyProvider extends SprykerAgentDependencyProvider
 {
     /**
-     * @return \Spryker\Client\AgentExtension\Dependency\Plugin\ImpersonationSessionFinisherPluginInterface[]
+     * @return array<\Spryker\Client\AgentExtension\Dependency\Plugin\ImpersonationSessionFinisherPluginInterface>
      */
     protected function getImpersonationSessionFinisherPlugins(): array
     {

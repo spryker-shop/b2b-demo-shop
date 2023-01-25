@@ -38,7 +38,7 @@ class CustomerAccessUpdater implements CustomerAccessUpdaterInterface
     public function __construct(
         CustomerAccessEntityManagerInterface $customerAccessEntityManager,
         CustomerAccessReaderInterface $customerAccessReader,
-        CustomerAccessFilterInterface $customerAccessFilter
+        CustomerAccessFilterInterface $customerAccessFilter,
     ) {
         $this->customerAccessEntityManager = $customerAccessEntityManager;
         $this->customerAccessReader = $customerAccessReader;

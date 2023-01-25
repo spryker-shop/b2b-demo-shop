@@ -14,7 +14,7 @@ use Spryker\Client\SharedCart\Plugin\ResourceShare\SwitchDefaultCartResourceShar
 class ResourceShareDependencyProvider extends SprykerResourceShareDependencyProvider
 {
     /**
-     * @return \Spryker\Client\ResourceShareExtension\Dependency\Plugin\ResourceShareClientActivatorStrategyPluginInterface[]
+     * @return array<\Spryker\Client\ResourceShareExtension\Dependency\Plugin\ResourceShareClientActivatorStrategyPluginInterface>
      */
     protected function getBeforeZedResourceShareActivatorStrategyPlugins(): array
     {
@@ -24,7 +24,7 @@ class ResourceShareDependencyProvider extends SprykerResourceShareDependencyProv
     }
 
     /**
-     * @return \Spryker\Client\ResourceShareExtension\Dependency\Plugin\ResourceShareClientActivatorStrategyPluginInterface[]
+     * @return array<\Spryker\Client\ResourceShareExtension\Dependency\Plugin\ResourceShareClientActivatorStrategyPluginInterface>
      */
     protected function getAfterZedResourceShareActivatorStrategyPlugins(): array
     {

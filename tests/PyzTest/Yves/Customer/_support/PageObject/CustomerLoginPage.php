@@ -23,6 +23,7 @@ class CustomerLoginPage
      * @var string
      */
     public const TITLE_LOGIN = 'Please Login';
+
     /**
      * @var string
      */
@@ -32,6 +33,7 @@ class CustomerLoginPage
      * @var string
      */
     public const FORM_FIELD_SELECTOR_EMAIL = 'loginForm[email]';
+
     /**
      * @var string
      */

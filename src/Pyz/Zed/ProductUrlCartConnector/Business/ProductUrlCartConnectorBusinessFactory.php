@@ -26,7 +26,7 @@ class ProductUrlCartConnectorBusinessFactory extends AbstractBusinessFactory
     {
         return new ProductUrlExpander(
             $this->getPyzProductFacade(),
-            $this->getPyzLocaleFacade()
+            $this->getPyzLocaleFacade(),
         );
     }
 

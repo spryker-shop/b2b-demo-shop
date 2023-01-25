@@ -49,7 +49,7 @@ class ContentNavigationWidgetConfig extends SprykerShopContentNavigationWidgetCo
     /**
      * @api
      *
-     * @return string[]
+     * @return array<string>
      */
     public function getAvailableTemplateList(): array
     {

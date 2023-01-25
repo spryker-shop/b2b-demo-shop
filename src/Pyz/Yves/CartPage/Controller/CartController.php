@@ -45,7 +45,7 @@ class CartController extends SprykerCartController
      *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
-    public function addAction(Request $request, $sku)
+    public function addAction(Request $request, $sku): RedirectResponse
     {
         parent::addAction($request, $sku);
 

@@ -13,7 +13,7 @@ use SprykerShop\Yves\CommentWidget\CommentWidgetDependencyProvider as SprykerSho
 class CommentWidgetDependencyProvider extends SprykerShopCommentDependencyProvider
 {
     /**
-     * @return \SprykerShop\Yves\CommentWidgetExtension\Dependency\Plugin\CommentThreadAfterOperationStrategyPluginInterface[]
+     * @return array<\SprykerShop\Yves\CommentWidgetExtension\Dependency\Plugin\CommentThreadAfterOperationStrategyPluginInterface>
      */
     protected function getCommentThreadAfterOperationStrategyPlugins(): array
     {

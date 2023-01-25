@@ -22,7 +22,7 @@ class CustomerAccessMapper
      */
     public function mapCustomerAccessEntityToContentTypeAccessTransfer(
         SpyUnauthenticatedCustomerAccess $customerAccessEntity,
-        ContentTypeAccessTransfer $contentTypeAccessTransfer
+        ContentTypeAccessTransfer $contentTypeAccessTransfer,
     ): ContentTypeAccessTransfer {
         return $contentTypeAccessTransfer->fromArray($customerAccessEntity->toArray(), true);
     }
@@ -35,11 +35,11 @@ class CustomerAccessMapper
      */
     public function mapEntitiesToCustomerAccessTransfer(
         ObjectCollection $customerAccessEntities,
-        CustomerAccessTransfer $customerAccessTransfer
+        CustomerAccessTransfer $customerAccessTransfer,
     ): CustomerAccessTransfer {
         foreach ($customerAccessEntities as $customerAccessEntity) {
             $customerAccessTransfer->addContentTypeAccess(
-                $this->mapCustomerAccessEntityToContentTypeAccessTransfer($customerAccessEntity, new ContentTypeAccessTransfer())
+                $this->mapCustomerAccessEntityToContentTypeAccessTransfer($customerAccessEntity, new ContentTypeAccessTransfer()),
             );
         }
 
@@ -54,10 +54,10 @@ class CustomerAccessMapper
      */
     public function mapEntityToCustomerAccessTransfer(
         SpyUnauthenticatedCustomerAccess $customerAccessEntity,
-        CustomerAccessTransfer $customerAccessTransfer
+        CustomerAccessTransfer $customerAccessTransfer,
     ): CustomerAccessTransfer {
         return $customerAccessTransfer->addContentTypeAccess(
-            (new ContentTypeAccessTransfer())->fromArray($customerAccessEntity->toArray(), true)
+            (new ContentTypeAccessTransfer())->fromArray($customerAccessEntity->toArray(), true),
         );
     }
 }

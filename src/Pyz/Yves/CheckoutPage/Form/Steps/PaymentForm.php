@@ -250,7 +250,7 @@ class PaymentForm extends AbstractType
      */
     protected function extendPyzPaymentCollection(
         SubFormPluginCollection $paymentSubFormPluginCollection,
-        PaymentMethodsTransfer $paymentMethodsTransfer
+        PaymentMethodsTransfer $paymentMethodsTransfer,
     ): SubFormPluginCollection {
         $paymentCollectionExtenderPlugins = $this->getFactory()->getPaymentCollectionExtenderPlugins();
 
@@ -272,7 +272,7 @@ class PaymentForm extends AbstractType
      */
     protected function filterPyzOutNotAvailableForms(
         SubFormPluginCollection $paymentMethodSubFormPlugins,
-        PaymentMethodsTransfer $availablePaymentMethodsTransfer
+        PaymentMethodsTransfer $availablePaymentMethodsTransfer,
     ): SubFormPluginCollection {
         $paymentMethodNames = $this->getPyzAvailablePaymentMethodNames($availablePaymentMethodsTransfer);
         $paymentMethodNames = array_combine($paymentMethodNames, $paymentMethodNames);
