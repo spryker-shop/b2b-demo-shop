@@ -47,7 +47,7 @@ class ProductController extends SprykerShopProductController
 
         $quoteTransfer = new QuoteTransfer();
         $quoteTransfer->addItem(
-            (new ItemTransfer())->setIdProductAbstract($productViewTransfer->getIdProductAbstract())
+            (new ItemTransfer())->setIdProductAbstract($productViewTransfer->getIdProductAbstract()),
         );
 
         $bundledProducts = [];
@@ -65,7 +65,7 @@ class ProductController extends SprykerShopProductController
                     'sku' => $bundledProduct['sku'],
                     'idProductConcrete' => $bundledProduct['id_product_concrete'],
                 ],
-                $this->getLocale()
+                $this->getLocale(),
             );
             $bundledProduct['image'] = $bundledProductView->getImages()->offsetGet(0)->getExternalUrlSmall();
             $bundledProducts[] = $bundledProduct;

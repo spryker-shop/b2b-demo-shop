@@ -22,7 +22,7 @@ class ProductStorageQueryContainer extends SprykerProductStorageQueryContainer
     /**
      * @api
      *
-     * @param int[] $productAbstractIds
+     * @param array<int> $productAbstractIds
      *
      * @return \Orm\Zed\Product\Persistence\SpyProductAbstractLocalizedAttributesQuery
      */

@@ -14,7 +14,7 @@ use Spryker\Zed\MerchantRelationshipProductListGui\Communication\Plugin\Merchant
 class MerchantRelationshipGuiDependencyProvider extends SprykerMerchantRelationshipGuiDependencyProvider
 {
     /**
-     * @return \Spryker\Zed\MerchantRelationshipGuiExtension\Dependency\Plugin\MerchantRelationshipCreateFormExpanderPluginInterface[]
+     * @return array<\Spryker\Zed\MerchantRelationshipGuiExtension\Dependency\Plugin\MerchantRelationshipCreateFormExpanderPluginInterface>
      */
     protected function getMerchantRelationshipCreateFormExpanderPlugins(): array
     {
@@ -24,7 +24,7 @@ class MerchantRelationshipGuiDependencyProvider extends SprykerMerchantRelations
     }
 
     /**
-     * @return \Spryker\Zed\MerchantRelationshipGuiExtension\Dependency\Plugin\MerchantRelationshipEditFormExpanderPluginInterface[]
+     * @return array<\Spryker\Zed\MerchantRelationshipGuiExtension\Dependency\Plugin\MerchantRelationshipEditFormExpanderPluginInterface>
      */
     protected function getMerchantRelationshipEditFormExpanderPlugins(): array
     {

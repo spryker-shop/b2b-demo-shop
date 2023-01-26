@@ -31,14 +31,14 @@ class ProductAbstractRelationReader implements ProductAbstractRelationReaderInte
      */
     public function __construct(
         ExampleProductSalePageQueryContainerInterface $productSaleQueryContainer,
-        ExampleProductSalePageConfig $productSaleConfig
+        ExampleProductSalePageConfig $productSaleConfig,
     ) {
         $this->productSaleQueryContainer = $productSaleQueryContainer;
         $this->productSaleConfig = $productSaleConfig;
     }
 
     /**
-     * @return \Generated\Shared\Transfer\ProductLabelProductAbstractRelationsTransfer[]
+     * @return array<\Generated\Shared\Transfer\ProductLabelProductAbstractRelationsTransfer>
      */
     public function findProductLabelProductAbstractRelationChanges(): array
     {
@@ -67,7 +67,7 @@ class ProductAbstractRelationReader implements ProductAbstractRelationReaderInte
      *
      * @return \Orm\Zed\ProductLabel\Persistence\SpyProductLabel
      */
-    protected function getProductLabelNewEntity()
+    protected function getProductLabelNewEntity(): SpyProductLabel
     {
         $labelNewName = $this->productSaleConfig->getPyzLabelSaleName();
         $productLabelNewEntity = $this->productSaleQueryContainer
@@ -77,7 +77,7 @@ class ProductAbstractRelationReader implements ProductAbstractRelationReaderInte
         if (!$productLabelNewEntity) {
             throw new ProductLabelSaleNotFoundException(sprintf(
                 'Product Label "%1$s" doesn\'t exists. You can fix this problem by persisting a new Product Label entity into your database with "%1$s" name.',
-                $labelNewName
+                $labelNewName,
             ));
         }
 
@@ -89,7 +89,7 @@ class ProductAbstractRelationReader implements ProductAbstractRelationReaderInte
      *
      * @return array
      */
-    protected function findRelationsBecomingInactive(SpyProductLabel $productLabelEntity)
+    protected function findRelationsBecomingInactive(SpyProductLabel $productLabelEntity): array
     {
         $relations = [];
 
@@ -109,7 +109,7 @@ class ProductAbstractRelationReader implements ProductAbstractRelationReaderInte
      *
      * @return array
      */
-    protected function findRelationsBecomingActive(SpyProductLabel $productLabelEntity)
+    protected function findRelationsBecomingActive(SpyProductLabel $productLabelEntity): array
     {
         $relations = [];
 
@@ -131,8 +131,11 @@ class ProductAbstractRelationReader implements ProductAbstractRelationReaderInte
      *
      * @return \Generated\Shared\Transfer\ProductLabelProductAbstractRelationsTransfer
      */
-    protected function mapRelationTransfer($idProductLabel, array $relationsToAssign, array $relationsToDeAssign)
-    {
+    protected function mapRelationTransfer(
+        $idProductLabel,
+        array $relationsToAssign,
+        array $relationsToDeAssign,
+    ): ProductLabelProductAbstractRelationsTransfer {
         $productLabelProductAbstractRelationsTransfer = new ProductLabelProductAbstractRelationsTransfer();
         $productLabelProductAbstractRelationsTransfer->setIdProductLabel($idProductLabel);
 

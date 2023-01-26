@@ -13,7 +13,7 @@ use Spryker\Zed\QuoteRequest\Communication\Plugin\QuoteApproval\QuoteRequestQuot
 class QuoteApprovalDependencyProvider extends SprykerQuoteApprovalDependencyProvider
 {
     /**
-     * @return \Spryker\Zed\QuoteApprovalExtension\Dependency\Plugin\QuoteApprovalUnlockPreCheckPluginInterface[]
+     * @return array<\Spryker\Zed\QuoteApprovalExtension\Dependency\Plugin\QuoteApprovalUnlockPreCheckPluginInterface>
      */
     protected function getQuoteApprovalUnlockPreCheckPlugins(): array
     {
