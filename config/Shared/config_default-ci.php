@@ -37,6 +37,8 @@ use Spryker\Shared\Testify\TestifyConstants;
 use Spryker\Shared\ZedRequest\ZedRequestConstants;
 use Spryker\Zed\OauthDummy\OauthDummyConfig;
 use SprykerShop\Shared\ErrorPage\ErrorPageConstants;
+use Spryker\Shared\GlueBackendApiApplication\GlueBackendApiApplicationConstants;
+use Spryker\Shared\GlueStorefrontApiApplication\GlueStorefrontApiApplicationConstants;
 
 // ############################################################################
 // ############################## TESTING IN CI ###############################
@@ -45,6 +47,8 @@ use SprykerShop\Shared\ErrorPage\ErrorPageConstants;
 $stores = array_combine(Store::getInstance()->getAllowedStores(), Store::getInstance()->getAllowedStores());
 $yvesHost = 'www.de.spryker.test';
 $glueHost = 'glue.de.spryker.test';
+$glueBackendHost = 'gluebackend.de.spryker.test';
+$glueStorefrontHost = 'gluestorefront.de.spryker.test';
 $backofficeHost = 'backoffice.de.spryker.test';
 $backendGatewayHost = 'backend-gateway.de.spryker.test';
 $backendApiHost = 'backend-api.de.spryker.test';
@@ -270,6 +274,19 @@ require 'common/config_oms-development.php';
 $config[OauthClientConstants::OAUTH_PROVIDER_NAME_FOR_MESSAGE_BROKER] = OauthDummyConfig::PROVIDER_NAME;
 $config[OauthClientConstants::OAUTH_PROVIDER_NAME_FOR_PAYMENT_AUTHORIZE] = OauthDummyConfig::PROVIDER_NAME;
 $config[AppCatalogGuiConstants::OAUTH_PROVIDER_NAME] = OauthDummyConfig::PROVIDER_NAME;
+
+// ----------------------------------------------------------------------------
+// ------------------------------ Glue Backend API -------------------------------
+// ----------------------------------------------------------------------------
+$config[GlueBackendApiApplicationConstants::GLUE_BACKEND_API_HOST] = $glueBackendHost;
+$config[GlueBackendApiApplicationConstants::PROJECT_NAMESPACES] = [
+    'Pyz',
+];
+
+// ----------------------------------------------------------------------------
+// ------------------------------ Glue Storefront API -------------------------------
+// ----------------------------------------------------------------------------
+$config[GlueStorefrontApiApplicationConstants::GLUE_STOREFRONT_API_HOST] = $glueStorefrontHost;
 
 // ----------------------------------------------------------------------------
 // ------------------------------ MessageBroker -----------------------------------------
