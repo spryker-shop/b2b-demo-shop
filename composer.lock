@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0c664cd1c5d79d138490e94182fcab93",
+    "content-hash": "d1f9f72fcfbf2aa8a3775ab8f11cc749",
     "packages": [
         {
             "name": "async-aws/core",
@@ -28733,6 +28733,130 @@
                 "source": "https://github.com/spryker/form-extension/tree/1.0.0"
             },
             "time": "2019-11-14T09:42:41+00:00"
+        },
+        {
+            "name": "spryker/gift-card",
+            "version": "1.7.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/gift-card.git",
+                "reference": "fe785de8a97470f740c70bba00256b7c40ae323e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/gift-card/zipball/fe785de8a97470f740c70bba00256b7c40ae323e",
+                "reference": "fe785de8a97470f740c70bba00256b7c40ae323e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0",
+                "spryker/cart-code-extension": "^1.1.0",
+                "spryker/checkout-extension": "^1.2.0",
+                "spryker/kernel": "^3.33.0",
+                "spryker/payment": "^4.0.0 || ^5.0.0",
+                "spryker/payment-extension": "^1.0.0",
+                "spryker/product": "^1.0.0 || ^2.0.0 || ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0",
+                "spryker/propel-orm": "^1.5.0",
+                "spryker/sales": "^8.0.0 || ^10.0.0 || ^11.0.0",
+                "spryker/shipment-extension": "^1.0.0",
+                "spryker/symfony": "^3.1.0",
+                "spryker/util-encoding": "^2.0.0"
+            },
+            "require-dev": {
+                "spryker/calculation": "*",
+                "spryker/cart": "*",
+                "spryker/checkout": "*",
+                "spryker/code-sniffer": "*",
+                "spryker/discount": "*",
+                "spryker/oms": "*",
+                "spryker/propel": "*",
+                "spryker/sales-payment": "*",
+                "spryker/shipment": "*",
+                "spryker/testify": "*"
+            },
+            "suggest": {
+                "spryker/calculation": "To correctly calculate gift card payments",
+                "spryker/cart": "To expand information about gift card products",
+                "spryker/checkout": "To save gift card payments using order savers",
+                "spryker/discount": "If you want to make sure GiftCards have no Discount applied",
+                "spryker/oms": "If you want to use OMS plugins",
+                "spryker/shipment": "To filter shipment methods based on gift card rules"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/",
+                    "SprykerTest\\Zed\\GiftCard\\Helper\\": "tests/SprykerTest/Zed/GiftCard/_support/Helper/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "GiftCard module",
+            "support": {
+                "source": "https://github.com/spryker/gift-card/tree/1.7.0"
+            },
+            "time": "2023-01-24T16:01:46+00:00"
+        },
+        {
+            "name": "spryker/gift-card-mail-connector",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/gift-card-mail-connector.git",
+                "reference": "7592d996bdf2a30be5481e0810cececa25c3b9c6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/gift-card-mail-connector/zipball/7592d996bdf2a30be5481e0810cececa25c3b9c6",
+                "reference": "7592d996bdf2a30be5481e0810cececa25c3b9c6",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0",
+                "spryker/customer": "^6.2.0 || ^7.0.0",
+                "spryker/gift-card": "^1.0.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/mail": "^4.6.0",
+                "spryker/mail-extension": "^1.0.0",
+                "spryker/sales": "^8.6.0 || ^10.0.0 || ^11.0.0",
+                "spryker/transfer": "^3.25.0"
+            },
+            "require-dev": {
+                "spryker/checkout": "*",
+                "spryker/code-sniffer": "*",
+                "spryker/oms": "*"
+            },
+            "suggest": {
+                "spryker/checkout": "If you want to use Checkout plugins (SendEmailToGiftCardUser)",
+                "spryker/oms": "In case you will use commands (ShipGiftCardByEmailCommandPlugin)"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "GiftCardMailConnector module",
+            "support": {
+                "source": "https://github.com/spryker/gift-card-mail-connector/tree/1.1.0"
+            },
+            "time": "2022-11-11T13:29:11+00:00"
         },
         {
             "name": "spryker/glossary",
