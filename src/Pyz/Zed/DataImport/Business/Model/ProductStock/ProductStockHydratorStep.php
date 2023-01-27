@@ -23,18 +23,22 @@ class ProductStockHydratorStep implements DataImportStepInterface
      * @var string
      */
     public const COLUMN_CONCRETE_SKU = 'concrete_sku';
+
     /**
      * @var string
      */
     public const COLUMN_NAME = 'name';
+
     /**
      * @var string
      */
     public const COLUMN_QUANTITY = 'quantity';
+
     /**
      * @var string
      */
     public const COLUMN_IS_NEVER_OUT_OF_STOCK = 'is_never_out_of_stock';
+
     /**
      * @var string
      */
@@ -44,6 +48,7 @@ class ProductStockHydratorStep implements DataImportStepInterface
      * @var string
      */
     public const STOCK_ENTITY_TRANSFER = 'STOCK_ENTITY_TRANSFER';
+
     /**
      * @var string
      */

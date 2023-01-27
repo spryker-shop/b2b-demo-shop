@@ -17,7 +17,7 @@ use Spryker\Glue\CompanyUserAuthRestApi\Plugin\AuthRestApi\CompanyUserRestUserMa
 class AuthRestApiDependencyProvider extends SprykerAuthRestApiDependencyProvider
 {
     /**
-     * @return \Spryker\Glue\AuthRestApiExtension\Dependency\Plugin\RestUserMapperPluginInterface[]
+     * @return array<\Spryker\Glue\AuthRestApiExtension\Dependency\Plugin\RestUserMapperPluginInterface>
      */
     protected function getRestUserExpanderPlugins(): array
     {

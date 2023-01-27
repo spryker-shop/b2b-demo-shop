@@ -20,7 +20,7 @@ use Spryker\Zed\SearchElasticsearch\Communication\Plugin\Search\ElasticsearchInd
 class SearchDependencyProvider extends SprykerSearchDependencyProvider
 {
     /**
-     * @return \Spryker\Zed\Search\Dependency\Plugin\PageMapInterface[]
+     * @return array<\Spryker\Zed\Search\Dependency\Plugin\PageMapInterface>
      */
     protected function getSearchPageMapPlugins(): array
     {
@@ -35,7 +35,7 @@ class SearchDependencyProvider extends SprykerSearchDependencyProvider
     }
 
     /**
-     * @return \Spryker\Zed\SearchExtension\Dependency\Plugin\InstallPluginInterface[]
+     * @return array<\Spryker\Zed\SearchExtension\Dependency\Plugin\InstallPluginInterface>
      */
     protected function getSearchSourceInstallerPlugins(): array
     {
@@ -45,7 +45,7 @@ class SearchDependencyProvider extends SprykerSearchDependencyProvider
     }
 
     /**
-     * @return \Spryker\Zed\SearchExtension\Dependency\Plugin\InstallPluginInterface[]
+     * @return array<\Spryker\Zed\SearchExtension\Dependency\Plugin\InstallPluginInterface>
      */
     protected function getSearchMapInstallerPlugins(): array
     {

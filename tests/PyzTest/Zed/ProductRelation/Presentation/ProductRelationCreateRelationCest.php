@@ -50,7 +50,7 @@ class ProductRelationCreateRelationCest
         $i->selectProductRule(
             ProductRelationCreatePage::PRODUCT_RULE_NAME,
             ProductRelationCreatePage::PRODUCT_RULE_OPERATOR,
-            ProductRelationCreatePage::PRODUCT_RELATION_PRODUCT_2_SKU
+            ProductRelationCreatePage::PRODUCT_RELATION_PRODUCT_2_SKU,
         );
 
         $i->clickSaveButton();

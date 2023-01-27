@@ -19,7 +19,7 @@ use Spryker\Zed\SalesOrderThreshold\SalesOrderThresholdDependencyProvider as Spr
 class SalesOrderThresholdDependencyProvider extends SprykerSalesOrderThresholdDependencyProvider
 {
     /**
-     * @return \Spryker\Zed\SalesOrderThresholdExtension\Dependency\Plugin\SalesOrderThresholdDataSourceStrategyPluginInterface[]
+     * @return array<\Spryker\Zed\SalesOrderThresholdExtension\Dependency\Plugin\SalesOrderThresholdDataSourceStrategyPluginInterface>
      */
     protected function getSalesOrderThresholdDataSourceStrategies(): array
     {
@@ -30,7 +30,7 @@ class SalesOrderThresholdDependencyProvider extends SprykerSalesOrderThresholdDe
     }
 
     /**
-     * @return \Spryker\Zed\SalesOrderThresholdExtension\Dependency\Plugin\SalesOrderThresholdStrategyPluginInterface[]
+     * @return array<\Spryker\Zed\SalesOrderThresholdExtension\Dependency\Plugin\SalesOrderThresholdStrategyPluginInterface>
      */
     protected function getSalesOrderThresholdStrategyPlugins(): array
     {

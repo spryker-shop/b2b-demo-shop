@@ -13,7 +13,7 @@ use Spryker\Client\QuoteApprovalShipmentConnector\Plugin\QuoteApproval\ShipmentA
 class QuoteApprovalDependencyProvider extends SprykerQuoteApprovalDependencyProvider
 {
     /**
-     * @return \Spryker\Client\QuoteApprovalExtension\Dependency\Plugin\QuoteApplicableForApprovalCheckPluginInterface[]
+     * @return array<\Spryker\Client\QuoteApprovalExtension\Dependency\Plugin\QuoteApplicableForApprovalCheckPluginInterface>
      */
     protected function getQuoteApplicableForApprovalCheckPlugins(): array
     {

@@ -23,7 +23,7 @@ use Spryker\Zed\ShoppingList\Communication\Plugin\CompanyUserExtension\ShoppingL
 class CompanyUserDependencyProvider extends SprykerCompanyUserDependencyProvider
 {
     /**
-     * @return \Spryker\Zed\CompanyUserExtension\Dependency\Plugin\CompanyUserHydrationPluginInterface[]
+     * @return array<\Spryker\Zed\CompanyUserExtension\Dependency\Plugin\CompanyUserHydrationPluginInterface>
      */
     protected function getCompanyUserHydrationPlugins(): array
     {
@@ -35,7 +35,7 @@ class CompanyUserDependencyProvider extends SprykerCompanyUserDependencyProvider
     }
 
     /**
-     * @return \Spryker\Zed\CompanyUserExtension\Dependency\Plugin\CompanyUserPostCreatePluginInterface[]
+     * @return array<\Spryker\Zed\CompanyUserExtension\Dependency\Plugin\CompanyUserPostCreatePluginInterface>
      */
     protected function getCompanyUserPostCreatePlugins(): array
     {
@@ -46,7 +46,7 @@ class CompanyUserDependencyProvider extends SprykerCompanyUserDependencyProvider
     }
 
     /**
-     * @return \Spryker\Zed\CompanyUserExtension\Dependency\Plugin\CompanyUserPreSavePluginInterface[]
+     * @return array<\Spryker\Zed\CompanyUserExtension\Dependency\Plugin\CompanyUserPreSavePluginInterface>
      */
     protected function getCompanyUserPreSavePlugins(): array
     {
@@ -56,7 +56,7 @@ class CompanyUserDependencyProvider extends SprykerCompanyUserDependencyProvider
     }
 
     /**
-     * @return \Spryker\Zed\CompanyUserExtension\Dependency\Plugin\CompanyUserPostSavePluginInterface[]
+     * @return array<\Spryker\Zed\CompanyUserExtension\Dependency\Plugin\CompanyUserPostSavePluginInterface>
      */
     protected function getCompanyUserPostSavePlugins(): array
     {
@@ -66,7 +66,7 @@ class CompanyUserDependencyProvider extends SprykerCompanyUserDependencyProvider
     }
 
     /**
-     * @return \Spryker\Zed\CompanyUserExtension\Dependency\Plugin\CompanyUserPreDeletePluginInterface[]
+     * @return array<\Spryker\Zed\CompanyUserExtension\Dependency\Plugin\CompanyUserPreDeletePluginInterface>
      */
     protected function getCompanyUserPreDeletePlugins(): array
     {
@@ -78,7 +78,7 @@ class CompanyUserDependencyProvider extends SprykerCompanyUserDependencyProvider
     }
 
     /**
-     * @return \Spryker\Zed\CompanyUserExtension\Dependency\Plugin\CompanyUserSavePreCheckPluginInterface[]
+     * @return array<\Spryker\Zed\CompanyUserExtension\Dependency\Plugin\CompanyUserSavePreCheckPluginInterface>
      */
     protected function getCompanyUserSavePreCheckPlugins(): array
     {

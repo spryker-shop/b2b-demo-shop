@@ -13,7 +13,7 @@ use Spryker\Client\MultiCart\MultiCartConfig as SprykerMultiCartConfig;
 class MultiCartConfig extends SprykerMultiCartConfig
 {
     /**
-     * @return string[]
+     * @return array<string>
      */
     public function getQuoteFieldsAllowedForQuoteDuplicate(): array
     {

@@ -11,6 +11,11 @@ use Orm\Zed\CustomerAccess\Persistence\SpyUnauthenticatedCustomerAccessQuery;
 use Pyz\Zed\CustomerAccess\Persistence\Propel\Mapper\CustomerAccessMapper;
 use Spryker\Zed\CustomerAccess\Persistence\CustomerAccessPersistenceFactory as SprykerCustomerAccessPersistenceFactory;
 
+/**
+ * @method \Pyz\Zed\CustomerAccess\Persistence\CustomerAccessEntityManagerInterface getEntityManager()
+ * @method \Pyz\Zed\CustomerAccess\CustomerAccessConfig getConfig()
+ * @method \Pyz\Zed\CustomerAccess\Persistence\CustomerAccessRepositoryInterface getRepository()
+ */
 class CustomerAccessPersistenceFactory extends SprykerCustomerAccessPersistenceFactory
 {
     /**

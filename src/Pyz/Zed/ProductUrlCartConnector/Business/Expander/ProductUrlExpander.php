@@ -31,7 +31,7 @@ class ProductUrlExpander implements ProductUrlExpanderInterface
      */
     public function __construct(
         ProductFacadeInterface $productFacade,
-        LocaleFacadeInterface $localeFacade
+        LocaleFacadeInterface $localeFacade,
     ) {
         $this->productFacade = $productFacade;
         $this->localeFacade = $localeFacade;
