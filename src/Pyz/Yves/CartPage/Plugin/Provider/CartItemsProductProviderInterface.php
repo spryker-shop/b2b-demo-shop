@@ -10,10 +10,10 @@ namespace Pyz\Yves\CartPage\Plugin\Provider;
 interface CartItemsProductProviderInterface
 {
     /**
-     * @param \Generated\Shared\Transfer\ItemTransfer[] $cartItems
+     * @param array<\Generated\Shared\Transfer\ItemTransfer> $cartItems
      * @param string $locale
      *
-     * @return \Generated\Shared\Transfer\ProductViewTransfer[]
+     * @return array<\Generated\Shared\Transfer\ProductViewTransfer>
      */
     public function getItemsProducts(array $cartItems, string $locale): array;
 }

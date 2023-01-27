@@ -87,7 +87,7 @@ class PaymentStepTest extends Unit
      *
      * @return \SprykerShop\Yves\CheckoutPage\Process\Steps\PaymentStep
      */
-    protected function createPaymentStep(StepHandlerPluginCollection $paymentPlugins)
+    protected function createPaymentStep(StepHandlerPluginCollection $paymentPlugins): PaymentStep
     {
         return new PaymentStep(
             $this->getPaymentClientMock(),
@@ -97,7 +97,7 @@ class PaymentStepTest extends Unit
             $this->getFlashMessengerMock(),
             $this->getCalculationClientMock(),
             $this->getCheckoutPaymentStepEnterPreCheckPlugins(),
-            new PaymentMethodKeyExtractor()
+            new PaymentMethodKeyExtractor(),
         );
     }
 
@@ -140,7 +140,7 @@ class PaymentStepTest extends Unit
     {
         $availablePaymentMethods = (new PaymentMethodsTransfer())
             ->addMethod(
-                (new PaymentMethodTransfer())->setMethodName('test')
+                (new PaymentMethodTransfer())->setMethodName('test'),
             );
 
         $paymentClientMock = $this->createMock(CheckoutPageToPaymentClientInterface::class);
@@ -151,7 +151,7 @@ class PaymentStepTest extends Unit
     }
 
     /**
-     * @return \SprykerShop\Yves\CheckoutPageExtension\Dependency\Plugin\CheckoutPaymentStepEnterPreCheckPluginInterface[]
+     * @return array<\SprykerShop\Yves\CheckoutPageExtension\Dependency\Plugin\CheckoutPaymentStepEnterPreCheckPluginInterface>
      */
     public function getCheckoutPaymentStepEnterPreCheckPlugins(): array
     {

@@ -28,7 +28,7 @@ class CustomerAccessBusinessFactory extends SprykerCustomerAccessBusinessFactory
     public function createPyzCustomerAccessFilter(): CustomerAccessFilterInterface
     {
         return new CustomerAccessFilter(
-            $this->getConfig()
+            $this->getConfig(),
         );
     }
 
@@ -40,7 +40,7 @@ class CustomerAccessBusinessFactory extends SprykerCustomerAccessBusinessFactory
         return new CustomerAccessUpdater(
             $this->getEntityManager(),
             $this->createPyzCustomerAccessReader(),
-            $this->createPyzCustomerAccessFilter()
+            $this->createPyzCustomerAccessFilter(),
         );
     }
 

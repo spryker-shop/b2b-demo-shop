@@ -15,7 +15,7 @@ use SprykerShop\Zed\DateTimeConfiguratorPageExample\Communication\Plugin\Availab
 class AvailabilityDependencyProvider extends SprykerAvailabilityDependencyProvider
 {
     /**
-     * @return \Spryker\Zed\AvailabilityExtension\Dependency\Plugin\BatchAvailabilityStrategyPluginInterface[]
+     * @return array<\Spryker\Zed\AvailabilityExtension\Dependency\Plugin\BatchAvailabilityStrategyPluginInterface>
      */
     protected function getBatchAvailabilityStrategyPlugins(): array
     {

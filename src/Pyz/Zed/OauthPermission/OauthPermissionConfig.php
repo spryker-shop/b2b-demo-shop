@@ -13,7 +13,7 @@ use Spryker\Zed\OauthPermission\OauthPermissionConfig as SprykerOauthPermissionC
 class OauthPermissionConfig extends SprykerOauthPermissionConfig
 {
     /**
-     * @return string[]
+     * @return array<string>
      */
     public function getOauthUserIdentifierFilterKeys(): array
     {

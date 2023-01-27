@@ -13,7 +13,7 @@ use SprykerShop\Yves\ProductConfigurationWidget\ProductConfigurationWidgetDepend
 class ProductConfigurationWidgetDependencyProvider extends SprykerProductConfigurationWidgetDependencyProvider
 {
     /**
-     * @return \SprykerShop\Yves\ProductConfigurationWidgetExtension\Dependency\Plugin\ProductConfigurationRenderStrategyPluginInterface[]
+     * @return array<\SprykerShop\Yves\ProductConfigurationWidgetExtension\Dependency\Plugin\ProductConfigurationRenderStrategyPluginInterface>
      */
     protected function getProductConfigurationRenderStrategyPlugins(): array
     {

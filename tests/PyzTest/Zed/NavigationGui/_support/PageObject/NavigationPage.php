@@ -13,6 +13,7 @@ class NavigationPage
      * @var string
      */
     public const URL = '/navigation-gui';
+
     /**
      * @var string
      */
@@ -22,6 +23,7 @@ class NavigationPage
      * @var string
      */
     public const URL_EN_CREATE_NAVIGATION_CATEGORY = '/en/stationery/paper';
+
     /**
      * @var string
      */

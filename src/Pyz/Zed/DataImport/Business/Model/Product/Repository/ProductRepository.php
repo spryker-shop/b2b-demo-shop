@@ -22,10 +22,12 @@ class ProductRepository implements ProductRepositoryInterface
      * @var string
      */
     public const ID_PRODUCT = 'idProduct';
+
     /**
      * @var string
      */
     public const ID_PRODUCT_ABSTRACT = 'idProductAbstract';
+
     /**
      * @var string
      */
@@ -99,7 +101,7 @@ class ProductRepository implements ProductRepositoryInterface
      *
      * @return void
      */
-    private function resolveProductByConcreteSku($sku)
+    private function resolveProductByConcreteSku($sku): void
     {
         $productEntity = SpyProductQuery::create()
             ->joinWithSpyProductAbstract()
@@ -122,7 +124,7 @@ class ProductRepository implements ProductRepositoryInterface
      *
      * @return void
      */
-    private function resolveProductByAbstractSku($sku)
+    private function resolveProductByAbstractSku($sku): void
     {
         $productAbstractEntity = SpyProductAbstractQuery::create()
             ->findOneBySku($sku);
@@ -163,7 +165,7 @@ class ProductRepository implements ProductRepositoryInterface
     }
 
     /**
-     * @return string[]
+     * @return array<string>
      */
     public function getSkuProductAbstractList(): array
     {
@@ -174,7 +176,7 @@ class ProductRepository implements ProductRepositoryInterface
     }
 
     /**
-     * @return string[]
+     * @return array<string>
      */
     public function getSkuProductConcreteList(): array
     {

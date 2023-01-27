@@ -26,7 +26,7 @@ use Spryker\Client\SharedCart\Plugin\SharedCartsUpdateQuoteUpdatePlugin;
 class PersistentCartDependencyProvider extends SprykerPersistentCartDependencyProvider
 {
     /**
-     * @return \Spryker\Client\PersistentCartExtension\Dependency\Plugin\QuoteUpdatePluginInterface[]
+     * @return array<\Spryker\Client\PersistentCartExtension\Dependency\Plugin\QuoteUpdatePluginInterface>
      */
     protected function getQuoteUpdatePlugins(): array
     {
@@ -39,7 +39,7 @@ class PersistentCartDependencyProvider extends SprykerPersistentCartDependencyPr
     }
 
     /**
-     * @return \Spryker\Client\PersistentCartExtension\Dependency\Plugin\PersistentCartChangeExpanderPluginInterface[]
+     * @return array<\Spryker\Client\PersistentCartExtension\Dependency\Plugin\PersistentCartChangeExpanderPluginInterface>
      */
     protected function getChangeRequestExtendPlugins(): array
     {

@@ -18,6 +18,7 @@ class ProductRelationCreatePage
      * @var string
      */
     public const PRODUCT_RELATION_PRODUCT_1_NAME = 'Mauser sliding door';
+
     /**
      * @var string
      */
@@ -27,6 +28,7 @@ class ProductRelationCreatePage
      * @var string
      */
     public const PRODUCT_RULE_NAME = 'sku';
+
     /**
      * @var string
      */

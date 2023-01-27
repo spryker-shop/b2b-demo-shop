@@ -25,10 +25,10 @@ class CartItemsProductProvider implements CartItemsProductProviderInterface
     }
 
     /**
-     * @param \Generated\Shared\Transfer\ItemTransfer[] $cartItems
+     * @param array<\Generated\Shared\Transfer\ItemTransfer> $cartItems
      * @param string $locale
      *
-     * @return \Generated\Shared\Transfer\ProductViewTransfer[]
+     * @return array<\Generated\Shared\Transfer\ProductViewTransfer>
      */
     public function getItemsProducts(array $cartItems, string $locale): array
     {
@@ -37,7 +37,7 @@ class CartItemsProductProvider implements CartItemsProductProviderInterface
         foreach ($cartItems as $item) {
             $productBySku[$item->getSku()] = $this->productStorageClient->findProductAbstractViewTransfer(
                 $item->getIdProductAbstract(),
-                $locale
+                $locale,
             );
         }
 

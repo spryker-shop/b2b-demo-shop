@@ -15,7 +15,7 @@ use SprykerShop\Yves\QuoteRequestPage\QuoteRequestPageDependencyProvider as Spry
 class QuoteRequestPageDependencyProvider extends SprykerQuoteRequestPageDependencyProvider
 {
     /**
-     * @return \SprykerShop\Yves\QuoteRequestPageExtension\Dependency\Plugin\QuoteRequestFormMetadataFieldPluginInterface[]
+     * @return array<\SprykerShop\Yves\QuoteRequestPageExtension\Dependency\Plugin\QuoteRequestFormMetadataFieldPluginInterface>
      */
     protected function getQuoteRequestFormMetadataFieldPlugins(): array
     {

@@ -21,9 +21,9 @@ use Spryker\Client\PersistentCart\Plugin\GuestCartUpdateCustomerSessionSetPlugin
 class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
 {
     /**
-     * @return \Spryker\Client\Customer\Dependency\Plugin\CustomerSessionGetPluginInterface[]
+     * @return array<\Spryker\Client\Customer\Dependency\Plugin\CustomerSessionGetPluginInterface>
      */
-    protected function getCustomerSessionGetPlugins()
+    protected function getCustomerSessionGetPlugins(): array
     {
         return [
             new CustomerTransferSessionRefreshPlugin(),
@@ -31,9 +31,9 @@ class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
     }
 
     /**
-     * @return \Spryker\Client\Customer\Dependency\Plugin\CustomerSessionSetPluginInterface[]
+     * @return array<\Spryker\Client\Customer\Dependency\Plugin\CustomerSessionSetPluginInterface>
      */
-    protected function getCustomerSessionSetPlugins()
+    protected function getCustomerSessionSetPlugins(): array
     {
         return [
             new GuestCartSaveCustomerSessionSetPlugin(), #MultiCartFeature
@@ -43,9 +43,9 @@ class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
     }
 
     /**
-     * @return \Spryker\Client\Customer\Dependency\Plugin\DefaultAddressChangePluginInterface[]
+     * @return array<\Spryker\Client\Customer\Dependency\Plugin\DefaultAddressChangePluginInterface>
      */
-    protected function getDefaultAddressChangePlugins()
+    protected function getDefaultAddressChangePlugins(): array
     {
         return [
             new CustomerAddressSessionUpdatePlugin(),
@@ -53,7 +53,7 @@ class CustomerDependencyProvider extends SprykerCustomerDependencyProvider
     }
 
     /**
-     * @return \Spryker\Client\CustomerExtension\Dependency\Plugin\CustomerSecuredPatternRulePluginInterface[]
+     * @return array<\Spryker\Client\CustomerExtension\Dependency\Plugin\CustomerSecuredPatternRulePluginInterface>
      */
     protected function getCustomerSecuredPatternRulePlugins(): array
     {

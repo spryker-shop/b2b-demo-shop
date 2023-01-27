@@ -12,7 +12,7 @@ use Spryker\Zed\Cart\Dependency\ItemExpanderPluginInterface;
 use Spryker\Zed\Kernel\Communication\AbstractPlugin;
 
 /**
- * @method \Pyz\Zed\ProductUrlCartConnector\Business\ProductUrlCartConnectorFacade getFacade()
+ * @method \Pyz\Zed\ProductUrlCartConnector\Business\ProductUrlCartConnectorFacadeInterface getFacade()
  * @method \Pyz\Zed\ProductUrlCartConnector\Communication\ProductUrlCartConnectorCommunicationFactory getFactory()
  * @method \Pyz\Zed\ProductUrlCartConnector\ProductUrlCartConnectorConfig getConfig()
  */
@@ -23,7 +23,7 @@ class ProductUrlCartPlugin extends AbstractPlugin implements ItemExpanderPluginI
      *
      * @return \Generated\Shared\Transfer\CartChangeTransfer
      */
-    public function expandItems(CartChangeTransfer $cartChangeTransfer)
+    public function expandItems(CartChangeTransfer $cartChangeTransfer): CartChangeTransfer
     {
         $this->getFacade()->expandPyzItems($cartChangeTransfer);
 
