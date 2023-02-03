@@ -102,6 +102,11 @@
                                 {{ parent() }}
                             {% endblock %}
 
+                            {% block productConfiguration %}
+                                {% widget 'ProductConfigurationShoppingListItemDisplayWidget' args [data.listItem.shoppingListItem] only %}{% endwidget %}
+                                {% widget 'ProductConfigurationShoppingListPageButtonWidget' args [data.listItem.shoppingListItem] only %}{% endwidget %}
+                            {% endblock %}
+
                             {% block itemAttributes %}
                                 {% include molecule('product-item-attributes') with {
                                     class: 'spacing-y spacing-y--big text-small',

@@ -12,10 +12,24 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 
 class ProductSetImageExtractorStep implements DataImportStepInterface
 {
+    /**
+     * @var string
+     */
     public const KEY_TARGET = 'productImageSets';
 
+    /**
+     * @var string
+     */
     public const IMAGE_SET_KEY_PREFIX = 'image_set.';
+
+    /**
+     * @var string
+     */
     public const IMAGE_SMALL_KEY_PREFIX = 'image_small.';
+
+    /**
+     * @var string
+     */
     public const IMAGE_LARGE_KEY_PREFIX = 'image_large.';
 
     /**
@@ -23,7 +37,7 @@ class ProductSetImageExtractorStep implements DataImportStepInterface
      *
      * @return void
      */
-    public function execute(DataSetInterface $dataSet)
+    public function execute(DataSetInterface $dataSet): void
     {
         $imageSets = [];
         foreach ($dataSet as $key => $value) {

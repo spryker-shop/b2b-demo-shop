@@ -9,6 +9,9 @@ namespace PyzTest\Zed\CmsGui\PageObject;
 
 class CmsCreateGlossaryPage
 {
+    /**
+     * @var string
+     */
     public const URL = 'cms-gui/create-glossary/index?id-cms-page=%d';
 
     /**
@@ -31,7 +34,7 @@ class CmsCreateGlossaryPage
      *
      * @return string
      */
-    public static function getLocalizedPlaceholderData($placeholder, $locale)
+    public static function getLocalizedPlaceholderData($placeholder, $locale): string
     {
         return static::$localizedPlaceholders[$placeholder][$locale];
     }

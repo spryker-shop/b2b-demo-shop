@@ -13,7 +13,14 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 
 class CategoryTemplateWriterStep implements DataImportStepInterface
 {
+    /**
+     * @var string
+     */
     public const KEY_NAME = 'template_name';
+
+    /**
+     * @var string
+     */
     public const KEY_PATH = 'template_path';
 
     /**
@@ -21,7 +28,7 @@ class CategoryTemplateWriterStep implements DataImportStepInterface
      *
      * @return void
      */
-    public function execute(DataSetInterface $dataSet)
+    public function execute(DataSetInterface $dataSet): void
     {
         $categoryTemplateEntity = SpyCategoryTemplateQuery::create()
             ->filterByName($dataSet[static::KEY_NAME])

@@ -14,7 +14,14 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 
 class TaxSetNameToIdTaxSetStep implements DataImportStepInterface
 {
+    /**
+     * @var string
+     */
     public const KEY_SOURCE = 'taxSetName';
+
+    /**
+     * @var string
+     */
     public const KEY_TARGET = 'idTaxSet';
 
     /**
@@ -55,7 +62,7 @@ class TaxSetNameToIdTaxSetStep implements DataImportStepInterface
             throw new DataKeyNotFoundInDataSetException(sprintf(
                 'Expected a key "%s" in current data set. Available keys: "%s"',
                 $this->source,
-                implode(', ', array_keys($dataSet->getArrayCopy()))
+                implode(', ', array_keys($dataSet->getArrayCopy())),
             ));
         }
 

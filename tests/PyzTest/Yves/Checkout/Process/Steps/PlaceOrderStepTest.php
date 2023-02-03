@@ -32,13 +32,20 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class PlaceOrderStepTest extends Unit
 {
+    /**
+     * @var string
+     */
     protected const LOCALE_NAME_PLACE_ORDER_STEP = 'en_US';
+
+    /**
+     * @var string
+     */
     protected const MESSAGE_CHECKOUT_ERROR_TRANSFER = 'MESSAGE_CHECKOUT_ERROR_TRANSFER';
 
     /**
      * @return void
      */
-    public function testPlaceOrderExecuteWhenExternalRedirectProvidedShouldSetIt()
+    public function testPlaceOrderExecuteWhenExternalRedirectProvidedShouldSetIt(): void
     {
         $checkoutClientMock = $this->createCheckoutClientMock();
         $redirectUrl = 'http://www.ten-kur-toli.lt';
@@ -57,7 +64,7 @@ class PlaceOrderStepTest extends Unit
     /**
      * @return void
      */
-    public function testPlaceOrderExecuteWhenOrderSuccessfullyPlacedShouldHaveStoreOrderData()
+    public function testPlaceOrderExecuteWhenOrderSuccessfullyPlacedShouldHaveStoreOrderData(): void
     {
         $checkoutClientMock = $this->createCheckoutClientMock();
 
@@ -80,16 +87,16 @@ class PlaceOrderStepTest extends Unit
     /**
      * @return void
      */
-    public function testPlaceOrderExecuteWhenOrderHaveErrorsShouldLogToFlashMessenger()
+    public function testPlaceOrderExecuteWhenOrderHaveErrorsShouldLogToFlashMessenger(): void
     {
         $checkoutClientMock = $this->createCheckoutClientMock();
 
         $checkoutResponseTransfer = new CheckoutResponseTransfer();
         $checkoutResponseTransfer->addError(
-            (new CheckoutErrorTransfer())->setMessage(static::MESSAGE_CHECKOUT_ERROR_TRANSFER)
+            (new CheckoutErrorTransfer())->setMessage(static::MESSAGE_CHECKOUT_ERROR_TRANSFER),
         );
         $checkoutResponseTransfer->addError(
-            (new CheckoutErrorTransfer())->setMessage(static::MESSAGE_CHECKOUT_ERROR_TRANSFER)
+            (new CheckoutErrorTransfer())->setMessage(static::MESSAGE_CHECKOUT_ERROR_TRANSFER),
         );
 
         $checkoutClientMock->expects($this->once())->method('placeOrder')->willReturn($checkoutResponseTransfer);
@@ -106,7 +113,7 @@ class PlaceOrderStepTest extends Unit
     /**
      * @return void
      */
-    public function testPostConditionsShouldReturnTrueWhenOrderPlaceIsReady()
+    public function testPostConditionsShouldReturnTrueWhenOrderPlaceIsReady(): void
     {
         $checkoutResponseTransfer = new CheckoutResponseTransfer();
         $checkoutResponseTransfer->setIsSuccess(true);
@@ -123,7 +130,7 @@ class PlaceOrderStepTest extends Unit
     /**
      * @return void
      */
-    public function testRequireInputShouldBeFalse()
+    public function testRequireInputShouldBeFalse(): void
     {
         $checkoutClientMock = $this->createCheckoutClientMock();
         $placeOrderStep = $this->createPlaceOrderStep($checkoutClientMock);
@@ -138,8 +145,10 @@ class PlaceOrderStepTest extends Unit
      *
      * @return \SprykerShop\Yves\CheckoutPage\Process\Steps\PlaceOrderStep
      */
-    protected function createPlaceOrderStep(CheckoutPageToCheckoutClientInterface $checkoutClientMock, $flashMessengerMock = null)
-    {
+    protected function createPlaceOrderStep(
+        CheckoutPageToCheckoutClientInterface $checkoutClientMock,
+        $flashMessengerMock = null,
+    ): PlaceOrderStep {
         if ($flashMessengerMock === null) {
             $flashMessengerMock = $this->createFlashMessengerMock();
         }
@@ -150,7 +159,7 @@ class PlaceOrderStepTest extends Unit
             static::LOCALE_NAME_PLACE_ORDER_STEP,
             $this->createGlossaryStorageClientMock(),
             'place_order',
-            'escape_route'
+            'escape_route',
         );
     }
 
@@ -165,7 +174,7 @@ class PlaceOrderStepTest extends Unit
     /**
      * @return \Symfony\Component\HttpFoundation\Request
      */
-    protected function createRequest()
+    protected function createRequest(): Request
     {
         return Request::createFromGlobals();
     }
@@ -197,7 +206,7 @@ class PlaceOrderStepTest extends Unit
     /**
      * @return \Generated\Shared\Transfer\QuoteTransfer
      */
-    protected function createQuoteTransfer()
+    protected function createQuoteTransfer(): QuoteTransfer
     {
         $quoteTransfer = new QuoteTransfer();
         $quoteTransfer->setCheckoutConfirmed(true);

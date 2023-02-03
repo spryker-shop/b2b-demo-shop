@@ -14,6 +14,9 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 
 class ProductAbstractCheckExistenceStep implements DataImportStepInterface
 {
+    /**
+     * @var string
+     */
     public const KEY_ABSTRACT_SKU = 'abstract_sku';
 
     /**
@@ -22,12 +25,12 @@ class ProductAbstractCheckExistenceStep implements DataImportStepInterface
     protected $productRepository;
 
     /**
-     * @var string[] Keys are concrete product sku values.
+     * @var array<string> Keys are concrete product sku values.
      */
     protected $skuProductConcreteList = [];
 
     /**
-     * @var bool[] Keys are abstract product sku values. Values are set to "true" when abstract product added.
+     * @var array<bool> Keys are abstract product sku values. Values are set to "true" when abstract product added.
      */
     protected $resolved = [];
 

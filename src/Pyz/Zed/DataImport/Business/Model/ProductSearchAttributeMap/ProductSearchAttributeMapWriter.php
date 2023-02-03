@@ -16,8 +16,19 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 
 class ProductSearchAttributeMapWriter implements DataImportStepInterface
 {
+    /**
+     * @var string
+     */
     public const KEY_TARGET_FIELD = 'target_field';
+
+    /**
+     * @var string
+     */
     public const KEY_ATTRIBUTE_KEY = 'attribute_key';
+
+    /**
+     * @var string
+     */
     public const KEY_SYNCED = 'synced';
 
     /**
@@ -27,7 +38,7 @@ class ProductSearchAttributeMapWriter implements DataImportStepInterface
      *
      * @return void
      */
-    public function execute(DataSetInterface $dataSet)
+    public function execute(DataSetInterface $dataSet): void
     {
         $pageIndexMap = new PageIndexMap();
 
@@ -36,7 +47,7 @@ class ProductSearchAttributeMapWriter implements DataImportStepInterface
             throw new InvalidArgumentException(sprintf(
                 'Invalid target field "%s" for attribute "%s"',
                 $dataSet[static::KEY_TARGET_FIELD],
-                $dataSet[static::KEY_ATTRIBUTE_KEY]
+                $dataSet[static::KEY_ATTRIBUTE_KEY],
             ));
         }
 

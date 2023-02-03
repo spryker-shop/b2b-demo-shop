@@ -10,6 +10,7 @@ namespace Pyz\Glue\OrdersRestApi;
 use Spryker\Glue\ConfigurableBundlesRestApi\Plugin\OrdersRestApi\SalesConfiguredBundleRestOrderItemsAttributesMapperPlugin;
 use Spryker\Glue\OrdersRestApi\OrdersRestApiDependencyProvider as SprykerOrdersRestApiDependencyProvider;
 use Spryker\Glue\ProductBundlesRestApi\Plugin\OrdersRestApi\BundleItemRestOrderDetailsAttributesMapperPlugin;
+use Spryker\Glue\ProductConfigurationsRestApi\Plugin\OrdersRestApi\ProductConfigurationRestOrderItemsAttributesMapperPlugin;
 use Spryker\Glue\ProductMeasurementUnitsRestApi\Plugin\OrdersRestApi\SalesUnitRestOrderItemsAttributesMapperPlugin;
 use Spryker\Glue\ProductOptionsRestApi\Plugin\OrdersRestApi\ProductOptionRestOrderItemsAttributesMapperPlugin;
 use Spryker\Glue\ShipmentsRestApi\Plugin\OrdersRestApi\ShipmentRestOrderDetailsAttributesMapperPlugin;
@@ -17,7 +18,7 @@ use Spryker\Glue\ShipmentsRestApi\Plugin\OrdersRestApi\ShipmentRestOrderDetailsA
 class OrdersRestApiDependencyProvider extends SprykerOrdersRestApiDependencyProvider
 {
     /**
-     * @return \Spryker\Glue\OrdersRestApiExtension\Dependency\Plugin\RestOrderItemsAttributesMapperPluginInterface[]
+     * @return array<\Spryker\Glue\OrdersRestApiExtension\Dependency\Plugin\RestOrderItemsAttributesMapperPluginInterface>
      */
     protected function getRestOrderItemsAttributesMapperPlugins(): array
     {
@@ -25,11 +26,12 @@ class OrdersRestApiDependencyProvider extends SprykerOrdersRestApiDependencyProv
             new ProductOptionRestOrderItemsAttributesMapperPlugin(),
             new SalesUnitRestOrderItemsAttributesMapperPlugin(),
             new SalesConfiguredBundleRestOrderItemsAttributesMapperPlugin(),
+            new ProductConfigurationRestOrderItemsAttributesMapperPlugin(),
         ];
     }
 
     /**
-     * @return \Spryker\Glue\OrdersRestApiExtension\Dependency\Plugin\RestOrderDetailsAttributesMapperPluginInterface[]
+     * @return array<\Spryker\Glue\OrdersRestApiExtension\Dependency\Plugin\RestOrderDetailsAttributesMapperPluginInterface>
      */
     protected function getRestOrderDetailsAttributesMapperPlugins(): array
     {

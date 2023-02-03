@@ -18,14 +18,44 @@ use Spryker\Zed\Discount\DiscountConfig;
 
 class DiscountVoucherWriterStep implements DataImportStepInterface
 {
+    /**
+     * @var int
+     */
     public const BULK_SIZE = 100;
 
+    /**
+     * @var string
+     */
     public const KEY_DISCOUNT_KEY = 'discount_key';
+
+    /**
+     * @var string
+     */
     public const KEY_RANDOM_GENERATED_CODE_LENGTH = 'random_generated_code_length';
+
+    /**
+     * @var string
+     */
     public const KEY_QUANTITY = 'quantity';
+
+    /**
+     * @var string
+     */
     public const KEY_CUSTOM_CODE = 'custom_code';
+
+    /**
+     * @var string
+     */
     public const KEY_VOUCHER_BATCH = 'voucher_batch';
+
+    /**
+     * @var string
+     */
     public const KEY_IS_ACTIVE = 'is_active';
+
+    /**
+     * @var string
+     */
     public const KEY_MAX_NUMBER_OF_USES = 'max_number_of_uses';
 
     /**
@@ -46,7 +76,7 @@ class DiscountVoucherWriterStep implements DataImportStepInterface
      *
      * @return void
      */
-    public function execute(DataSetInterface $dataSet)
+    public function execute(DataSetInterface $dataSet): void
     {
         $discountEntity = SpyDiscountQuery::create()
             ->findOneByDiscountKey($dataSet[static::KEY_DISCOUNT_KEY]);
@@ -83,7 +113,7 @@ class DiscountVoucherWriterStep implements DataImportStepInterface
      *
      * @return bool
      */
-    protected function voucherBatchExists(SpyDiscount $discountEntity, $voucherBatch)
+    protected function voucherBatchExists(SpyDiscount $discountEntity, $voucherBatch): bool
     {
         $query = SpyDiscountVoucherQuery::create()
             ->filterByFkDiscountVoucherPool($discountEntity->getFkDiscountVoucherPool())
@@ -99,7 +129,7 @@ class DiscountVoucherWriterStep implements DataImportStepInterface
      *
      * @return array
      */
-    protected function generateCodes($length, $quantity, $customCode = null)
+    protected function generateCodes($length, $quantity, $customCode = null): array
     {
         $codesToGenerate = [];
 
@@ -126,7 +156,7 @@ class DiscountVoucherWriterStep implements DataImportStepInterface
      *
      * @return string
      */
-    protected function addCustomCodeToGenerated($customCode, $code)
+    protected function addCustomCodeToGenerated($customCode, $code): string
     {
         $replacementString = $this->discountConfig->getVoucherPoolTemplateReplacementString();
 
@@ -146,7 +176,7 @@ class DiscountVoucherWriterStep implements DataImportStepInterface
      *
      * @return bool
      */
-    protected function voucherCodeExists($code)
+    protected function voucherCodeExists($code): bool
     {
         return (SpyDiscountVoucherQuery::create()->filterByCode($code)->count() > 0);
     }
@@ -156,7 +186,7 @@ class DiscountVoucherWriterStep implements DataImportStepInterface
      *
      * @return string
      */
-    protected function getRandomVoucherCode($length)
+    protected function getRandomVoucherCode($length): string
     {
         $allowedCharacters = $this->discountConfig->getVoucherCodeCharacters();
 

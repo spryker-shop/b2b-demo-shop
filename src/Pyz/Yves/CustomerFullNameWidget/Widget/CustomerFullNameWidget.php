@@ -49,7 +49,7 @@ class CustomerFullNameWidget extends AbstractWidget
 
         $this->addParameter(
             static::PYZ_PARAMETER_CUSTOMER_FULL_NAME,
-            $customerTransfer->getFirstName() . ' ' . $customerTransfer->getLastName()
+            $customerTransfer->getFirstName() . ' ' . $customerTransfer->getLastName(),
         );
     }
 }

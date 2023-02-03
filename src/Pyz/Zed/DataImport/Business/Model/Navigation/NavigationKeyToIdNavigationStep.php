@@ -15,7 +15,14 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 
 class NavigationKeyToIdNavigationStep implements DataImportStepInterface
 {
+    /**
+     * @var string
+     */
     public const KEY_SOURCE = 'navigationKey';
+
+    /**
+     * @var string
+     */
     public const KEY_TARGET = 'idNavigation';
 
     /**
@@ -50,13 +57,13 @@ class NavigationKeyToIdNavigationStep implements DataImportStepInterface
      *
      * @return void
      */
-    public function execute(DataSetInterface $dataSet)
+    public function execute(DataSetInterface $dataSet): void
     {
         if (!isset($dataSet[$this->source])) {
             throw new DataKeyNotFoundInDataSetException(sprintf(
                 'Expected a key "%s" in current data set. Available keys: "%s"',
                 $this->source,
-                implode(', ', array_keys($dataSet->getArrayCopy()))
+                implode(', ', array_keys($dataSet->getArrayCopy())),
             ));
         }
 
@@ -74,7 +81,7 @@ class NavigationKeyToIdNavigationStep implements DataImportStepInterface
      *
      * @return int
      */
-    protected function resolveIdNavigation($navigationKey)
+    protected function resolveIdNavigation($navigationKey): int
     {
         $navigationEntity = SpyNavigationQuery::create()
             ->findOneByKey($navigationKey);

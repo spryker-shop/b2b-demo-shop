@@ -13,6 +13,9 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 
 class ProductManagementLocalizedAttributesExtractorStep implements DataImportStepInterface
 {
+    /**
+     * @var string
+     */
     public const KEY_LOCALIZED_ATTRIBUTES = 'localizedAttributes';
 
     /**
@@ -20,7 +23,7 @@ class ProductManagementLocalizedAttributesExtractorStep implements DataImportSte
      *
      * @return void
      */
-    public function execute(DataSetInterface $dataSet)
+    public function execute(DataSetInterface $dataSet): void
     {
         $localizedAttributes = [];
         foreach ($dataSet[AddLocalesStep::KEY_LOCALES] as $localeName => $idLocale) {
@@ -48,7 +51,7 @@ class ProductManagementLocalizedAttributesExtractorStep implements DataImportSte
      *
      * @return array
      */
-    private function toArray($data)
+    private function toArray($data): array
     {
         return array_map('trim', explode(',', $data));
     }

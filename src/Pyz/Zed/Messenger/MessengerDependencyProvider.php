@@ -14,14 +14,14 @@ use Spryker\Zed\Translator\Communication\Plugin\Messenger\TranslationPlugin;
 class MessengerDependencyProvider extends SprykerMessengerDependencyProvider
 {
     /**
-     * @return \Spryker\Zed\MessengerExtension\Dependency\Plugin\TranslationPluginInterface[]
+     * @return array<\Spryker\Zed\MessengerExtension\Dependency\Plugin\TranslationPluginInterface>
      */
     protected function getTranslationPlugins(): array
     {
         return [
             new GlossaryTranslationPlugin(),
 
-            /**
+            /*
              * TranslationPlugin needs to be after other translator plugins.
              */
             new TranslationPlugin(),

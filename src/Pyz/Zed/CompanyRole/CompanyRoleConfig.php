@@ -23,12 +23,23 @@ use SprykerShop\Shared\CartPage\Plugin\RemoveCartItemPermissionPlugin;
 
 class CompanyRoleConfig extends SprykerCompanyRoleConfig
 {
+    /**
+     * @var string
+     */
     protected const PYZ_BUYER_ROLE_NAME = 'Buyer';
+
+    /**
+     * @var string
+     */
     protected const PYZ_APPROVER_ROLE_NAME = 'Approver';
+
+    /**
+     * @var string
+     */
     protected const PYZ_BUYER_WITH_LIMIT_ROLE_NAME = 'Buyer With Limit';
 
     /**
-     * @return string[]
+     * @return array<string>
      */
     public function getAdminRolePermissionKeys(): array
     {
@@ -41,7 +52,7 @@ class CompanyRoleConfig extends SprykerCompanyRoleConfig
     }
 
     /**
-     * @return string[]
+     * @return array<string>
      */
     protected function getPyzBuyerRolePermissionKeys(): array
     {
@@ -54,7 +65,7 @@ class CompanyRoleConfig extends SprykerCompanyRoleConfig
     }
 
     /**
-     * @return string[]
+     * @return array<string>
      */
     protected function getPyzApproverRolePermissionKeys(): array
     {
@@ -64,7 +75,7 @@ class CompanyRoleConfig extends SprykerCompanyRoleConfig
     }
 
     /**
-     * @return \Generated\Shared\Transfer\CompanyRoleTransfer[]
+     * @return array<\Generated\Shared\Transfer\CompanyRoleTransfer>
      */
     public function getPredefinedCompanyRoles(): array
     {
@@ -84,7 +95,7 @@ class CompanyRoleConfig extends SprykerCompanyRoleConfig
         return (new CompanyRoleTransfer())
             ->setName(static::PYZ_BUYER_ROLE_NAME)
             ->setPermissionCollection($this->createPermissionCollectionFromPermissionKeys(
-                $this->getPyzBuyerRolePermissionKeys()
+                $this->getPyzBuyerRolePermissionKeys(),
             ));
     }
 
@@ -96,7 +107,7 @@ class CompanyRoleConfig extends SprykerCompanyRoleConfig
         return (new CompanyRoleTransfer())
             ->setName(static::PYZ_APPROVER_ROLE_NAME)
             ->setPermissionCollection($this->createPermissionCollectionFromPermissionKeys(
-                $this->getPyzApproverRolePermissionKeys()
+                $this->getPyzApproverRolePermissionKeys(),
             ));
     }
 
@@ -108,12 +119,12 @@ class CompanyRoleConfig extends SprykerCompanyRoleConfig
         return (new CompanyRoleTransfer())
             ->setName(static::PYZ_BUYER_WITH_LIMIT_ROLE_NAME)
             ->setPermissionCollection($this->createPermissionCollectionFromPermissionKeys(
-                $this->getPyzBuyerWithLimitRolePermissionKeys()
+                $this->getPyzBuyerWithLimitRolePermissionKeys(),
             ));
     }
 
     /**
-     * @return string[]
+     * @return array<string>
      */
     protected function getPyzBuyerWithLimitRolePermissionKeys(): array
     {

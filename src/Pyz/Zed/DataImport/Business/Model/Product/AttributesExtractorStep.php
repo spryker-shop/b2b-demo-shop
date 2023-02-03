@@ -12,6 +12,9 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 
 class AttributesExtractorStep implements DataImportStepInterface
 {
+    /**
+     * @var string
+     */
     public const KEY_ATTRIBUTES = 'attributes';
 
     /**
@@ -19,7 +22,7 @@ class AttributesExtractorStep implements DataImportStepInterface
      *
      * @return void
      */
-    public function execute(DataSetInterface $dataSet)
+    public function execute(DataSetInterface $dataSet): void
     {
         $keysToUnset = [];
         $attributes = [];

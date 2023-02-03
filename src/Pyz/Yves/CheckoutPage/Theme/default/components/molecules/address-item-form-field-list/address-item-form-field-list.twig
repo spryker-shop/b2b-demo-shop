@@ -51,6 +51,12 @@
                             <h6 class="{{ config.name }}__title spacing spacing--reset">{{ data.listItem.name }}</h6>
                         {% endblock %}
 
+                        {% block productConfiguration %}
+                            {% widget 'ProductConfigurationCartItemDisplayWidget' args [data.listItem] only %}
+                                {% block status %}{% endblock %}
+                            {% endwidget %}
+                        {% endblock %}
+
                         {% block subQuantity %}
                             {% if data.listItem.quantitySalesUnit is not empty %}
                                 {% include atom('quantity-option') with {

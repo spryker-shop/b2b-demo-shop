@@ -14,7 +14,7 @@ use SprykerShop\Yves\SharedCartPage\Plugin\ResourceShare\SharedCartRouterStrateg
 class ResourceSharePageDependencyProvider extends SprykerResourceSharePageDependencyProvider
 {
     /**
-     * @return \SprykerShop\Yves\ResourceSharePageExtension\Dependency\Plugin\ResourceShareRouterStrategyPluginInterface[]
+     * @return array<\SprykerShop\Yves\ResourceSharePageExtension\Dependency\Plugin\ResourceShareRouterStrategyPluginInterface>
      */
     protected function getResourceShareRouterStrategyPlugins(): array
     {

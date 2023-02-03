@@ -16,7 +16,7 @@ use Spryker\Zed\CompanyUser\Communication\Plugin\Company\CompanyUserCreatePlugin
 class CompanyDependencyProvider extends SprykerCompanyDependencyProvider
 {
     /**
-     * @return \Spryker\Zed\CompanyExtension\Dependency\Plugin\CompanyPostCreatePluginInterface[]
+     * @return array<\Spryker\Zed\CompanyExtension\Dependency\Plugin\CompanyPostCreatePluginInterface>
      */
     protected function getCompanyPostCreatePlugins(): array
     {
@@ -28,7 +28,7 @@ class CompanyDependencyProvider extends SprykerCompanyDependencyProvider
     }
 
     /**
-     * @return \Spryker\Zed\CompanyExtension\Dependency\Plugin\CompanyPostSavePluginInterface[]
+     * @return array<\Spryker\Zed\CompanyExtension\Dependency\Plugin\CompanyPostSavePluginInterface>
      */
     protected function getCompanyPostSavePlugins(): array
     {

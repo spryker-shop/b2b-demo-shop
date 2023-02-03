@@ -38,6 +38,7 @@ use Spryker\Zed\ProductAlternativeStorage\Communication\Plugin\Synchronization\P
 use Spryker\Zed\ProductBundleStorage\Communication\Plugin\Synchronization\ProductBundleSynchronizationDataBulkRepositoryPlugin;
 use Spryker\Zed\ProductCategoryFilterStorage\Communication\Plugin\Synchronization\ProductCategoryFilterSynchronizationDataPlugin;
 use Spryker\Zed\ProductCategoryStorage\Communication\Plugin\Synchronization\ProductCategorySynchronizationDataBulkRepositoryPlugin;
+use Spryker\Zed\ProductConfigurationStorage\Communication\Plugin\Synchronization\ProductConfigurationSynchronizationDataRepositoryPlugin;
 use Spryker\Zed\ProductDiscontinuedStorage\Communication\Plugin\Synchronization\ProductDiscontinuedSynchronizationDataBulkPlugin;
 use Spryker\Zed\ProductGroupStorage\Communication\Plugin\Synchronization\ProductGroupSynchronizationDataPlugin;
 use Spryker\Zed\ProductImageStorage\Communication\Plugin\Synchronization\ProductAbstractImageSynchronizationDataPlugin;
@@ -74,7 +75,7 @@ use Spryker\Zed\UrlStorage\Communication\Plugin\Synchronization\UrlSynchronizati
 class SynchronizationDependencyProvider extends SprykerSynchronizationDependencyProvider
 {
     /**
-     * @return \Spryker\Zed\SynchronizationExtension\Dependency\Plugin\SynchronizationDataPluginInterface[]
+     * @return array<\Spryker\Zed\SynchronizationExtension\Dependency\Plugin\SynchronizationDataPluginInterface>
      */
     protected function getSynchronizationDataPlugins(): array
     {
@@ -140,6 +141,7 @@ class SynchronizationDependencyProvider extends SprykerSynchronizationDependency
             new CmsBlockCategorySynchronizationDataPlugin(),
             new CmsBlockProductSynchronizationDataPlugin(),
             new AssetStorageSynchronizationDataPlugin(),
+            new ProductConfigurationSynchronizationDataRepositoryPlugin(),
         ];
     }
 

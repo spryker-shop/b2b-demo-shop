@@ -37,7 +37,7 @@ class CheckoutController extends SprykerCheckoutController
             $request,
             $this->getFactory()
                 ->createPyzCheckoutFormFactory()
-                ->createCustomerFormCollection()
+                ->createCustomerFormCollection(),
         );
 
         if (!is_array($response)) {
@@ -47,7 +47,7 @@ class CheckoutController extends SprykerCheckoutController
         return $this->view(
             $response,
             $this->getFactory()->getCustomerPageWidgetPlugins(),
-            '@CheckoutPage/views/login/login.twig'
+            '@CheckoutPage/views/login/login.twig',
         );
     }
 
@@ -70,7 +70,7 @@ class CheckoutController extends SprykerCheckoutController
             $request,
             $this->getFactory()
                 ->createPyzCheckoutFormFactory()
-                ->createAddressFormCollection()
+                ->createAddressFormCollection(),
         );
 
         if (!is_array($response)) {
@@ -80,7 +80,7 @@ class CheckoutController extends SprykerCheckoutController
         return $this->view(
             $response,
             $this->getFactory()->getCustomerPageWidgetPlugins(),
-            '@CheckoutPage/views/address/address.twig'
+            '@CheckoutPage/views/address/address.twig',
         );
     }
 
@@ -103,7 +103,7 @@ class CheckoutController extends SprykerCheckoutController
             $request,
             $this->getFactory()
                 ->createPyzCheckoutFormFactory()
-                ->createShipmentFormCollection()
+                ->createShipmentFormCollection(),
         );
 
         if (!is_array($response)) {
@@ -113,7 +113,7 @@ class CheckoutController extends SprykerCheckoutController
         return $this->view(
             $response,
             $this->getFactory()->getCustomerPageWidgetPlugins(),
-            '@CheckoutPage/views/shipment/shipment.twig'
+            '@CheckoutPage/views/shipment/shipment.twig',
         );
     }
 
@@ -136,7 +136,7 @@ class CheckoutController extends SprykerCheckoutController
             $request,
             $this->getFactory()
                 ->createPyzCheckoutFormFactory()
-                ->getPyzPaymentFormCollection()
+                ->getPyzPaymentFormCollection(),
         );
 
         if (!is_array($response)) {
@@ -146,7 +146,7 @@ class CheckoutController extends SprykerCheckoutController
         return $this->view(
             $response,
             $this->getFactory()->getCustomerPageWidgetPlugins(),
-            '@CheckoutPage/views/payment/payment.twig'
+            '@CheckoutPage/views/payment/payment.twig',
         );
     }
 
@@ -169,7 +169,7 @@ class CheckoutController extends SprykerCheckoutController
             $request,
             $this->getFactory()
                 ->createPyzCheckoutFormFactory()
-                ->createSummaryFormCollection()
+                ->createSummaryFormCollection(),
         );
 
         if (!is_array($viewData)) {
@@ -179,7 +179,7 @@ class CheckoutController extends SprykerCheckoutController
         return $this->view(
             $viewData,
             $this->getFactory()->getSummaryPageWidgetPlugins(),
-            '@CheckoutPage/views/summary/summary.twig'
+            '@CheckoutPage/views/summary/summary.twig',
         );
     }
 
@@ -198,7 +198,7 @@ class CheckoutController extends SprykerCheckoutController
     }
 
     /**
-     * @param \Generated\Shared\Transfer\MessageTransfer[]|\ArrayObject $messageTransfers
+     * @param \ArrayObject<\Generated\Shared\Transfer\MessageTransfer> $messageTransfers
      *
      * @return void
      */

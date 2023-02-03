@@ -13,7 +13,7 @@ use Spryker\Client\ShoppingListStorage\Dependency\Plugin\ShoppingListSession\Sho
 class ShoppingListSessionDependencyProvider extends SprykerShoppingListSessionDependencyProvider
 {
     /**
-     * @return \Spryker\Client\ShoppingListSessionExtension\Dependency\Plugin\ShoppingListCollectionOutdatedPluginInterface[]
+     * @return array<\Spryker\Client\ShoppingListSessionExtension\Dependency\Plugin\ShoppingListCollectionOutdatedPluginInterface>
      */
     protected function getShoppingListCollectionOutdatedPlugins(): array
     {

@@ -30,12 +30,24 @@ class AvailabilityPresentationTester extends Actor
 {
     use _generated\AvailabilityPresentationTesterActions;
 
+    /**
+     * @var int
+     */
     public const FUJITSU_PRODUCT_ID = 118;
 
+    /**
+     * @var string
+     */
     public const URL_EN_PRODUCT_PAGE = '/en/bic-mehrfarbkugelschreiber-4-colours-831253-0-4mm-bl-sw-r-gn-M21646';
 
+    /**
+     * @var string
+     */
     public const PRODUCT_WITH_LIMITED_AVAILABILITY_ADD_TO_CART_URL = '/cart/add/490001';
 
+    /**
+     * @var string
+     */
     public const CART_PRE_CHECK_AVAILABILITY_ERROR_MESSAGE = 'Item 490001 only has availability of 20.';
 
     /**
@@ -51,7 +63,7 @@ class AvailabilityPresentationTester extends Actor
     /**
      * @return void
      */
-    public function processCheckout()
+    public function processCheckout(): void
     {
         $this->processAllCheckoutSteps();
     }

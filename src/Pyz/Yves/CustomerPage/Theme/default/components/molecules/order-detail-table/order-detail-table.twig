@@ -72,6 +72,11 @@
                                 <h6 class="{{ config.name }}__title spacing spacing--reset">{{ data.listItem.name }}</h6>
                             {% endblock %}
 
+                            {% block productConfiguration %}
+                                {% widget 'ProductConfigurationOrderItemDisplayWidget' args [data.listItem] only %}
+                                {% endwidget %}
+                            {% endblock %}
+
                             {% block productInfo %}
                                 {% block quantityTitle %}
                                     {{ parent() }}

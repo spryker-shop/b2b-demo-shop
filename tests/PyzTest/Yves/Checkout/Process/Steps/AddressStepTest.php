@@ -54,7 +54,7 @@ class AddressStepTest extends Unit
     /**
      * @return void
      */
-    public function testExecuteAddressStepWhenGuestIsSubmittedShouldUseDataFromAddressFromForm()
+    public function testExecuteAddressStepWhenGuestIsSubmittedShouldUseDataFromAddressFromForm(): void
     {
         $customerClientMock = $this->createCustomerClientMock();
         $addressStep = $this->createAddressStep($customerClientMock);
@@ -74,7 +74,7 @@ class AddressStepTest extends Unit
     /**
      * @return void
      */
-    public function testExecuteAddressStepWhenGuestIsSubmittedShouldUseDataFromAddressFromFormWithItemLevelShippingAddresses()
+    public function testExecuteAddressStepWhenGuestIsSubmittedShouldUseDataFromAddressFromFormWithItemLevelShippingAddresses(): void
     {
         $addressStep = $this->createAddressStep();
 
@@ -96,7 +96,7 @@ class AddressStepTest extends Unit
     /**
      * @return void
      */
-    public function testExecuteAddressStepWhenLoggedInUserCreatesNewAddress()
+    public function testExecuteAddressStepWhenLoggedInUserCreatesNewAddress(): void
     {
         $addressTransfer = new AddressTransfer();
         $addressTransfer->setIdCustomerAddress(1);
@@ -136,7 +136,7 @@ class AddressStepTest extends Unit
     /**
      * @return void
      */
-    public function testExecuteAddressStepWhenLoggedInUserCreatesNewAddressWithItemLevelShippingAddresses()
+    public function testExecuteAddressStepWhenLoggedInUserCreatesNewAddressWithItemLevelShippingAddresses(): void
     {
         $addressTransfer = new AddressTransfer();
         $addressTransfer->setIdCustomerAddress(1);
@@ -175,7 +175,7 @@ class AddressStepTest extends Unit
     /**
      * @return void
      */
-    public function testExecuteWhenBillingAddressSameAsShippingSelectedShouldCopyShipmentIntoBilling()
+    public function testExecuteWhenBillingAddressSameAsShippingSelectedShouldCopyShipmentIntoBilling(): void
     {
         $addressTransfer = new AddressTransfer();
         $addressTransfer->setIdCustomerAddress(1);
@@ -207,7 +207,7 @@ class AddressStepTest extends Unit
     /**
      * @return void
      */
-    public function testExecuteWhenBillingAddressSameAsShippingSelectedShouldCopyShipmentIntoBillingWithItemLevelShippingAddresses()
+    public function testExecuteWhenBillingAddressSameAsShippingSelectedShouldCopyShipmentIntoBillingWithItemLevelShippingAddresses(): void
     {
         $addressTransfer = (new AddressBuilder([
             AddressTransfer::ID_CUSTOMER_ADDRESS => 1,
@@ -242,7 +242,7 @@ class AddressStepTest extends Unit
     /**
      * @return void
      */
-    public function testPostConditionWhenNoAddressesSetShouldReturnFalse()
+    public function testPostConditionWhenNoAddressesSetShouldReturnFalse(): void
     {
         $addressStep = $this->createAddressStep();
         $this->assertFalse($addressStep->postCondition(new QuoteTransfer()));
@@ -251,7 +251,7 @@ class AddressStepTest extends Unit
     /**
      * @return void
      */
-    public function testPostConditionIfShippingIsEmptyShouldReturnFalse()
+    public function testPostConditionIfShippingIsEmptyShouldReturnFalse(): void
     {
         $addressStep = $this->createAddressStep();
         $quoteTransfer = new QuoteTransfer();
@@ -263,7 +263,7 @@ class AddressStepTest extends Unit
     /**
      * @return void
      */
-    public function testPostConditionIfBillingIsEmptyShouldReturnFalse()
+    public function testPostConditionIfBillingIsEmptyShouldReturnFalse(): void
     {
         $addressStep = $this->createAddressStep();
         $quoteTransfer = new QuoteTransfer();
@@ -275,7 +275,7 @@ class AddressStepTest extends Unit
     /**
      * @return void
      */
-    public function testPostConditionIfBillingIsEmptyShouldReturnFalseWithItemLevelShippingAddresses()
+    public function testPostConditionIfBillingIsEmptyShouldReturnFalseWithItemLevelShippingAddresses(): void
     {
         $addressStep = $this->createAddressStep();
 
@@ -293,7 +293,7 @@ class AddressStepTest extends Unit
     /**
      * @return void
      */
-    public function testPostConditionIfEmptyAddressesIsSetShouldReturnFalse()
+    public function testPostConditionIfEmptyAddressesIsSetShouldReturnFalse(): void
     {
         // Arrange
         $addressStep = $this->createAddressStep();
@@ -311,7 +311,7 @@ class AddressStepTest extends Unit
     /**
      * @return void
      */
-    public function testPostConditionIfNotEmptyAddressesIsSetShouldReturnTrue()
+    public function testPostConditionIfNotEmptyAddressesIsSetShouldReturnTrue(): void
     {
         // Arrange
         $addressStep = $this->createAddressStep();
@@ -331,7 +331,7 @@ class AddressStepTest extends Unit
     /**
      * @return void
      */
-    public function testPostConditionIfAddressesIsSetShouldReturnTrueWithItemLevelShippingAddresses()
+    public function testPostConditionIfAddressesIsSetShouldReturnTrueWithItemLevelShippingAddresses(): void
     {
         // Arrange
         $addressStep = $this->createAddressStep();
@@ -355,7 +355,7 @@ class AddressStepTest extends Unit
     /**
      * @return void
      */
-    public function testRequireInputShouldReturnTrue()
+    public function testRequireInputShouldReturnTrue(): void
     {
         $addressStep = $this->createAddressStep();
         $this->assertTrue($addressStep->requireInput(new QuoteTransfer()));
@@ -439,7 +439,7 @@ class AddressStepTest extends Unit
     /**
      * @return \Symfony\Component\HttpFoundation\Request
      */
-    protected function createRequest()
+    protected function createRequest(): Request
     {
         return Request::createFromGlobals();
     }
@@ -484,7 +484,7 @@ class AddressStepTest extends Unit
     }
 
     /**
-     * @return \SprykerShop\Yves\CheckoutPageExtension\Dependency\Plugin\AddressTransferExpanderPluginInterface[]
+     * @return array<\SprykerShop\Yves\CheckoutPageExtension\Dependency\Plugin\AddressTransferExpanderPluginInterface>
      */
     public function getShoppingListItemExpanderPlugins(): array
     {
@@ -495,7 +495,7 @@ class AddressStepTest extends Unit
     }
 
     /**
-     * @return \SprykerShop\Yves\CheckoutPageExtension\Dependency\Plugin\CheckoutAddressStepEnterPreCheckPluginInterface[]
+     * @return array<\SprykerShop\Yves\CheckoutPageExtension\Dependency\Plugin\CheckoutAddressStepEnterPreCheckPluginInterface>
      */
     public function getCheckoutAddressStepEnterPreCheckPlugins(): array
     {

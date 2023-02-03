@@ -11,13 +11,20 @@ use Spryker\Zed\Customer\CustomerConfig as SprykerCustomerConfig;
 
 class CustomerConfig extends SprykerCustomerConfig
 {
+    /**
+     * @var int
+     */
     protected const MIN_LENGTH_CUSTOMER_PASSWORD = 8;
+
+    /**
+     * @var int
+     */
     protected const MAX_LENGTH_CUSTOMER_PASSWORD = 64;
 
     /**
      * {@inheritDoc}
      *
-     * @return string[]
+     * @return array<string>
      */
     public function getCustomerPasswordAllowList(): array
     {
@@ -29,7 +36,7 @@ class CustomerConfig extends SprykerCustomerConfig
     /**
      * {@inheritDoc}
      *
-     * @return string[]
+     * @return array<string>
      */
     public function getCustomerPasswordDenyList(): array
     {
@@ -71,7 +78,7 @@ class CustomerConfig extends SprykerCustomerConfig
     /**
      * {@inheritDoc}
      *
-     * @return string[]
+     * @return array<string>
      */
     public function getCustomerDetailExternalBlocksUrls()
     {

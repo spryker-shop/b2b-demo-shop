@@ -27,18 +27,64 @@ use Spryker\Zed\Glossary\Dependency\GlossaryEvents;
  */
 class CmsBlockWriterStep extends PublishAwareStep implements DataImportStepInterface
 {
+    /**
+     * @var int
+     */
     public const BULK_SIZE = 100;
 
+    /**
+     * @var string
+     */
     public const KEY_BLOCK_NAME = 'block_name';
+
+    /**
+     * @var string
+     */
     public const KEY_BLOCK_KEY = 'block_key';
+
+    /**
+     * @var string
+     */
     public const KEY_TEMPLATE_NAME = 'template_name';
+
+    /**
+     * @var string
+     */
     public const KEY_TEMPLATE_PATH = 'template_path';
+
+    /**
+     * @var string
+     */
     public const KEY_CATEGORIES = 'categories';
+
+    /**
+     * @var string
+     */
     public const KEY_PRODUCTS = 'products';
+
+    /**
+     * @var string
+     */
     public const KEY_ACTIVE = 'active';
+
+    /**
+     * @var string
+     */
     public const KEY_PLACEHOLDER_TITLE = 'placeholder.title';
+
+    /**
+     * @var string
+     */
     public const KEY_PLACEHOLDER_CONTENT = 'placeholder.content';
+
+    /**
+     * @var string
+     */
     public const KEY_PLACEHOLDER_LINK = 'placeholder.link';
+
+    /**
+     * @var string
+     */
     public const KEY_PLACEHOLDER_IMAGE_URL = 'placeholder.imageUrl';
 
     /**
@@ -104,7 +150,7 @@ class CmsBlockWriterStep extends PublishAwareStep implements DataImportStepInter
      *
      * @return void
      */
-    protected function findOrCreateCmsBlockPlaceholderTranslation(DataSetInterface $dataSet, SpyCmsBlock $cmsBlockEntity)
+    protected function findOrCreateCmsBlockPlaceholderTranslation(DataSetInterface $dataSet, SpyCmsBlock $cmsBlockEntity): void
     {
         foreach ($dataSet[LocalizedAttributesExtractorStep::KEY_LOCALIZED_ATTRIBUTES] as $idLocale => $placeholder) {
             foreach ($placeholder as $key => $value) {

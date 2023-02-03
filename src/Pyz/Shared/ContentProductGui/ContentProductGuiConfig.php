@@ -13,6 +13,7 @@ class ContentProductGuiConfig extends SprykerContentProductGuiConfig
 {
     /**
      * @var string
+     *
      * @uses \Pyz\Shared\ContentProduct\ContentProductConfig::PYZ_WIDGET_TEMPLATE_IDENTIFIER_SLIDER
      */
     protected const PYZ_WIDGET_TEMPLATE_IDENTIFIER_SLIDER = 'slider';

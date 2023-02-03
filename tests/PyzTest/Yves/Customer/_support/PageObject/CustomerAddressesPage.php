@@ -11,11 +11,24 @@ use Generated\Shared\Transfer\AddressTransfer;
 
 class CustomerAddressesPage
 {
+    /**
+     * @var string
+     */
     public const URL = '/en/customer/address';
 
+    /**
+     * @var string
+     */
     public const BUTTON_ADD_NEW_ADDRESS = '//nav//a[contains(@class, \'button\') and contains(text(), \'Add new address\')]';
 
+    /**
+     * @var string
+     */
     public const ADDRESS_A = 'address a';
+
+    /**
+     * @var string
+     */
     public const ADDRESS_B = 'address b';
 
     /**

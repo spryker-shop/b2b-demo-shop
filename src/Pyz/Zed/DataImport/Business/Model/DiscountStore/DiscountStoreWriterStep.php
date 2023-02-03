@@ -15,17 +15,28 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 
 class DiscountStoreWriterStep implements DataImportStepInterface
 {
+    /**
+     * @var int
+     */
     public const BULK_SIZE = 100;
+
+    /**
+     * @var string
+     */
     public const KEY_DISCOUNT_KEY = 'discount_key';
+
+    /**
+     * @var string
+     */
     public const KEY_STORE_NAME = 'store_name';
 
     /**
-     * @var int[] Keys are discount keys, values are discount IDs.
+     * @var array<int> Keys are discount keys, values are discount IDs.
      */
     protected static $idDiscountBuffer = [];
 
     /**
-     * @var int[] Keys are store names, values are store ids.
+     * @var array<int> Keys are store names, values are store ids.
      */
     protected static $idStoreBuffer = [];
 
@@ -34,7 +45,7 @@ class DiscountStoreWriterStep implements DataImportStepInterface
      *
      * @return void
      */
-    public function execute(DataSetInterface $dataSet)
+    public function execute(DataSetInterface $dataSet): void
     {
         (new SpyDiscountStoreQuery())
             ->filterByFkDiscount($this->getIdDiscountByKey($dataSet[static::KEY_DISCOUNT_KEY]))
@@ -48,7 +59,7 @@ class DiscountStoreWriterStep implements DataImportStepInterface
      *
      * @return int
      */
-    protected function getIdDiscountByKey($discountKey)
+    protected function getIdDiscountByKey($discountKey): int
     {
         if (!isset(static::$idDiscountBuffer[$discountKey])) {
             static::$idDiscountBuffer[$discountKey] =
@@ -63,7 +74,7 @@ class DiscountStoreWriterStep implements DataImportStepInterface
      *
      * @return int
      */
-    protected function getIdStoreByName($storeName)
+    protected function getIdStoreByName($storeName): int
     {
         if (!isset(static::$idStoreBuffer[$storeName])) {
             static::$idStoreBuffer[$storeName] =

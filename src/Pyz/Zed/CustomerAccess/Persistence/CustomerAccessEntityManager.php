@@ -49,7 +49,7 @@ class CustomerAccessEntityManager extends SprykerCustomerAccessEntityManager imp
             $updatedContentTypeAccessCollection->append(
                 $this->getFactory()
                     ->createPyzCustomerAccessMapper()
-                    ->mapCustomerAccessEntityToContentTypeAccessTransfer($customerAccessEntity, new ContentTypeAccessTransfer())
+                    ->mapCustomerAccessEntityToContentTypeAccessTransfer($customerAccessEntity, new ContentTypeAccessTransfer()),
             );
         }
         $customerAccessTransfer->setContentTypeAccess($updatedContentTypeAccessCollection);

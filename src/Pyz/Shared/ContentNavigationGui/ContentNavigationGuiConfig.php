@@ -13,6 +13,7 @@ class ContentNavigationGuiConfig extends SprykerContentNavigationGuiConfig
 {
     /**
      * @var string
+     *
      * @uses \Pyz\Shared\ContentNavigation\ContentNavigationConfig::PYZ_WIDGET_TEMPLATE_IDENTIFIER_LIST_NAVIGATION_HEADER
      *
      * Content item navigation header template identifier.
@@ -21,6 +22,7 @@ class ContentNavigationGuiConfig extends SprykerContentNavigationGuiConfig
 
     /**
      * @var string
+     *
      * @uses \Pyz\Shared\ContentNavigation\ContentNavigationConfig::PYZ_WIDGET_TEMPLATE_IDENTIFIER_LIST_NAVIGATION_FOOTER
      *
      * Content item navigation footer template identifier.
@@ -29,6 +31,7 @@ class ContentNavigationGuiConfig extends SprykerContentNavigationGuiConfig
 
     /**
      * @var string
+     *
      * @uses \Pyz\Shared\ContentNavigation\ContentNavigationConfig::PYZ_WIDGET_TEMPLATE_IDENTIFIER_LIST_NAVIGATION_FOOTER_CHECKOUT
      *
      * Content item navigation footer checkout template identifier.
@@ -37,6 +40,7 @@ class ContentNavigationGuiConfig extends SprykerContentNavigationGuiConfig
 
     /**
      * @var string
+     *
      * @uses \Pyz\Shared\ContentNavigation\ContentNavigationConfig::PYZ_WIDGET_TEMPLATE_IDENTIFIER_LIST_FOOTER_PARTNERS
      *
      * Content item footer partners template identifier.
@@ -45,6 +49,7 @@ class ContentNavigationGuiConfig extends SprykerContentNavigationGuiConfig
 
     /**
      * @var string
+     *
      * @uses \Pyz\Shared\ContentNavigation\ContentNavigationConfig::PYZ_WIDGET_TEMPLATE_IDENTIFIER_LIST_FOOTER_SOCIAL_LINKS
      *
      * Content item footer social links template identifier.
@@ -89,7 +94,7 @@ class ContentNavigationGuiConfig extends SprykerContentNavigationGuiConfig
     /**
      * @api
      *
-     * @return string[]
+     * @return array<string>
      */
     public function getContentWidgetTemplates(): array
     {

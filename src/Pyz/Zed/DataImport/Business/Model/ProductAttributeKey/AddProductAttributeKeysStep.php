@@ -15,6 +15,9 @@ use Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface;
 
 class AddProductAttributeKeysStep implements DataImportStepInterface
 {
+    /**
+     * @var string
+     */
     public const KEY_TARGET = 'attributeKeys';
 
     /**
@@ -27,9 +30,9 @@ class AddProductAttributeKeysStep implements DataImportStepInterface
      *
      * @return void
      */
-    public function execute(DataSetInterface $dataSet)
+    public function execute(DataSetInterface $dataSet): void
     {
-        if (empty($this->productAttributeKeys)) {
+        if (!$this->productAttributeKeys) {
             $query = SpyProductAttributeKeyQuery::create()
                 ->select([
                     SpyProductAttributeKeyTableMap::COL_ID_PRODUCT_ATTRIBUTE_KEY,

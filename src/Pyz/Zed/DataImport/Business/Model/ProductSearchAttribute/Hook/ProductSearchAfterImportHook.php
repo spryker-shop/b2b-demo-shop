@@ -13,12 +13,15 @@ use Spryker\Zed\ProductSearch\Dependency\ProductSearchEvents;
 
 class ProductSearchAfterImportHook implements DataImporterAfterImportInterface
 {
+    /**
+     * @var int
+     */
     public const ID_DEFAULT = 0;
 
     /**
      * @return void
      */
-    public function afterImport()
+    public function afterImport(): void
     {
         DataImporterPublisher::addEvent(ProductSearchEvents::PRODUCT_SEARCH_CONFIG_PUBLISH, static::ID_DEFAULT);
     }

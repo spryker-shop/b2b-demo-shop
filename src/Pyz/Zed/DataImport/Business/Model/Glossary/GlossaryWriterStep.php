@@ -16,11 +16,29 @@ use Spryker\Zed\Glossary\Dependency\GlossaryEvents;
 
 class GlossaryWriterStep extends PublishAwareStep implements DataImportStepInterface
 {
+    /**
+     * @var int
+     */
     public const BULK_SIZE = 100;
 
+    /**
+     * @var string
+     */
     public const KEY_KEY = 'key';
+
+    /**
+     * @var string
+     */
     public const KEY_TRANSLATION = 'translation';
+
+    /**
+     * @var string
+     */
     public const KEY_ID_LOCALE = 'idLocale';
+
+    /**
+     * @var string
+     */
     public const KEY_LOCALE = 'locale';
 
     /**
@@ -28,7 +46,7 @@ class GlossaryWriterStep extends PublishAwareStep implements DataImportStepInter
      *
      * @return void
      */
-    public function execute(DataSetInterface $dataSet)
+    public function execute(DataSetInterface $dataSet): void
     {
         $glossaryKeyEntity = SpyGlossaryKeyQuery::create()
             ->filterByKey($dataSet[static::KEY_KEY])

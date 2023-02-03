@@ -20,8 +20,14 @@ use Spryker\Zed\Glossary\Dependency\GlossaryEvents;
 
 class ProductSearchAttributeWriter extends PublishAwareStep implements DataImportStepInterface
 {
+    /**
+     * @var int
+     */
     public const BULK_SIZE = 100;
 
+    /**
+     * @var string
+     */
     public const KEY = 'key';
 
     /**
@@ -42,7 +48,7 @@ class ProductSearchAttributeWriter extends PublishAwareStep implements DataImpor
      *
      * @return void
      */
-    public function execute(DataSetInterface $dataSet)
+    public function execute(DataSetInterface $dataSet): void
     {
         $productSearchAttributeEntity = SpyProductSearchAttributeQuery::create()
             ->filterByFkProductAttributeKey($dataSet[AddProductAttributeKeysStep::KEY_TARGET][$dataSet['key']])

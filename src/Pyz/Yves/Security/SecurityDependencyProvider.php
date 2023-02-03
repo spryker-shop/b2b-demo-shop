@@ -9,18 +9,18 @@ namespace Pyz\Yves\Security;
 
 use Spryker\Yves\Security\Plugin\Security\RememberMeSecurityPlugin;
 use Spryker\Yves\Security\SecurityDependencyProvider as SprykerSecurityDependencyProvider;
-use Spryker\Yves\SessionCustomerValidation\Plugin\Security\SaveSessionCustomerSecurityPlugin;
-use Spryker\Yves\SessionCustomerValidation\Plugin\Security\ValidateSessionCustomerSecurityPlugin;
 use SprykerShop\Yves\AgentPage\Plugin\Security\AgentPageSecurityPlugin;
 use SprykerShop\Yves\CustomerPage\Plugin\Security\CustomerPageSecurityPlugin;
 use SprykerShop\Yves\SessionAgentValidation\Plugin\Security\SaveAgentSessionSecurityPlugin;
 use SprykerShop\Yves\SessionAgentValidation\Plugin\Security\SessionAgentValidationSecurityAuthenticationListenerFactoryTypeExpanderPlugin;
 use SprykerShop\Yves\SessionAgentValidation\Plugin\Security\ValidateAgentSessionSecurityPlugin;
+use SprykerShop\Yves\SessionCustomerValidationPage\Plugin\Security\SaveCustomerSessionSecurityPlugin;
+use SprykerShop\Yves\SessionCustomerValidationPage\Plugin\Security\ValidateCustomerSessionSecurityPlugin;
 
 class SecurityDependencyProvider extends SprykerSecurityDependencyProvider
 {
     /**
-     * @return \Spryker\Shared\SecurityExtension\Dependency\Plugin\SecurityPluginInterface[]
+     * @return array<\Spryker\Shared\SecurityExtension\Dependency\Plugin\SecurityPluginInterface>
      */
     protected function getSecurityPlugins(): array
     {
@@ -28,8 +28,8 @@ class SecurityDependencyProvider extends SprykerSecurityDependencyProvider
             new RememberMeSecurityPlugin(),
             new AgentPageSecurityPlugin(),
             new CustomerPageSecurityPlugin(),
-            new ValidateSessionCustomerSecurityPlugin(),
-            new SaveSessionCustomerSecurityPlugin(),
+            new ValidateCustomerSessionSecurityPlugin(),
+            new SaveCustomerSessionSecurityPlugin(),
             new ValidateAgentSessionSecurityPlugin(),
             new SaveAgentSessionSecurityPlugin(),
         ];

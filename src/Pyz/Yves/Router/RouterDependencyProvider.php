@@ -52,6 +52,7 @@ use SprykerShop\Yves\PaymentPage\Plugin\Router\PaymentPageRouteProviderPlugin;
 use SprykerShop\Yves\PersistentCartSharePage\Plugin\Router\PersistentCartSharePageRouteProviderPlugin;
 use SprykerShop\Yves\PersistentCartShareWidget\Plugin\Router\PersistentCartShareWidgetRouteProviderPlugin;
 use SprykerShop\Yves\PriceWidget\Plugin\Router\PriceWidgetRouteProviderPlugin;
+use SprykerShop\Yves\ProductConfiguratorGatewayPage\Plugin\Router\ProductConfiguratorGatewayPageRouteProviderPlugin;
 use SprykerShop\Yves\ProductNewPage\Plugin\Router\ProductNewPageRouteProviderPlugin;
 use SprykerShop\Yves\ProductReviewWidget\Plugin\Router\ProductReviewWidgetRouteProviderPlugin;
 use SprykerShop\Yves\ProductSearchWidget\Plugin\Router\ProductSearchWidgetRouteProviderPlugin;
@@ -72,7 +73,7 @@ use SprykerShop\Yves\StorageRouter\Plugin\Router\StorageRouterPlugin;
 class RouterDependencyProvider extends SprykerRouterDependencyProvider
 {
     /**
-     * @return \Spryker\Yves\RouterExtension\Dependency\Plugin\RouterPluginInterface[]
+     * @return array<\Spryker\Yves\RouterExtension\Dependency\Plugin\RouterPluginInterface>
      */
     protected function getRouterPlugins(): array
     {
@@ -85,7 +86,7 @@ class RouterDependencyProvider extends SprykerRouterDependencyProvider
     }
 
     /**
-     * @return \Spryker\Yves\RouterExtension\Dependency\Plugin\RouteProviderPluginInterface[]
+     * @return array<\Spryker\Yves\RouterExtension\Dependency\Plugin\RouteProviderPluginInterface>
      */
     protected function getRouteProvider(): array
     {
@@ -142,11 +143,12 @@ class RouterDependencyProvider extends SprykerRouterDependencyProvider
             new SalesReturnPageRouteProviderPlugin(),
             new OrderCancelWidgetRouteProviderPlugin(),
             new PaymentPageRouteProviderPlugin(),
+            new ProductConfiguratorGatewayPageRouteProviderPlugin(),
         ];
     }
 
     /**
-     * @return \Spryker\Yves\RouterExtension\Dependency\Plugin\PostAddRouteManipulatorPluginInterface[]
+     * @return array<\Spryker\Yves\RouterExtension\Dependency\Plugin\PostAddRouteManipulatorPluginInterface>
      */
     protected function getPostAddRouteManipulator(): array
     {
@@ -158,7 +160,7 @@ class RouterDependencyProvider extends SprykerRouterDependencyProvider
     }
 
     /**
-     * @return \Spryker\Yves\RouterExtension\Dependency\Plugin\RouterEnhancerPluginInterface[]
+     * @return array<\Spryker\Yves\RouterExtension\Dependency\Plugin\RouterEnhancerPluginInterface>
      */
     protected function getRouterEnhancerPlugins(): array
     {

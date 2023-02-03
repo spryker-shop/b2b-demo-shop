@@ -11,6 +11,9 @@ use Spryker\Glue\CheckoutRestApi\CheckoutRestApiConfig as SprykerCheckoutRestApi
 
 class CheckoutRestApiConfig extends SprykerCheckoutRestApiConfig
 {
+    /**
+     * @var array<string, array<string>>
+     */
     protected const PAYMENT_METHOD_REQUIRED_FIELDS = [
         'dummyPaymentInvoice' => ['dummyPaymentInvoice.dateOfBirth'],
         'dummyPaymentCreditCard' => [
@@ -64,7 +67,7 @@ class CheckoutRestApiConfig extends SprykerCheckoutRestApiConfig
     protected const IS_PAYMENT_PROVIDER_METHOD_TO_STATE_MACHINE_MAPPING_ENABLED = false;
 
     /**
-     * @return string[][]
+     * @return array<array<string>>
      */
     public function getPaymentProviderMethodToStateMachineMapping(): array
     {

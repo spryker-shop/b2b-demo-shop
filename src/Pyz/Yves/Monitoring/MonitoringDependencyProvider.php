@@ -13,7 +13,7 @@ use SprykerEco\Service\NewRelic\Plugin\NewRelicMonitoringExtensionPlugin;
 class MonitoringDependencyProvider extends SprykerMonitoringDependencyProvider
 {
     /**
-     * @return \Spryker\Service\MonitoringExtension\Dependency\Plugin\MonitoringExtensionPluginInterface[]
+     * @return array<\Spryker\Service\MonitoringExtension\Dependency\Plugin\MonitoringExtensionPluginInterface>
      */
     protected function getMonitoringExtensions(): array
     {
