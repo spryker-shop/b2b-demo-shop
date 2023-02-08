@@ -11,8 +11,8 @@ export default class DateTimePicker extends Component {
 
     protected init(): void {
         this.trigger = <HTMLInputElement>this.getElementsByTagName('input')[0];
-        this.dateFrom = <HTMLInputElement>document.getElementById(this.dateFromSelector);
-        this.dateTo = <HTMLInputElement>document.getElementById(this.dateToSelector);
+        this.dateFrom = <HTMLInputElement>document.getElementById(this.dateFromId);
+        this.dateTo = <HTMLInputElement>document.getElementById(this.dateToId);
 
         this.mapEvents();
     }
@@ -20,8 +20,13 @@ export default class DateTimePicker extends Component {
     protected mapEvents(): void {
         this.datetimepickerInit();
         this.setLanguage(this.language);
-        this.setMaxDate();
-        this.setMinDate();
+
+        if (this.dateTo) {
+            this.setMaxDate();
+        }
+        if (this.dateFrom) {
+            this.setMinDate();
+        }
     }
 
     protected datetimepickerInit(): void {
@@ -37,33 +42,55 @@ export default class DateTimePicker extends Component {
     }
 
     protected setMaxDate(): void {
-        const self = this;
+        const $dateFrom = $(this.trigger);
+        const $dateTo = $(this.dateTo);
 
-        if (!this.dateFrom) {
-            return;
-        }
-
-        $(this.dateFrom).datetimepicker({
+        $dateFrom.datetimepicker({
             onShow() {
-                this.setOptions({
-                    maxDate: $(self.dateTo).val() ?? false,
-                });
+                if (!$dateTo.val()) {
+                    return;
+                }
+
+                this.setOptions({ maxDate: $dateTo.datetimepicker('getValue') });
+            },
+            onClose() {
+                if (!$dateTo.val()) {
+                    return;
+                }
+
+                const dateFromValue = $dateFrom.datetimepicker('getValue');
+                const dateToValue = $dateTo.datetimepicker('getValue');
+
+                if (dateFromValue > dateToValue) {
+                    $dateTo.datetimepicker({ value: dateFromValue });
+                }
             },
         });
     }
 
     protected setMinDate(): void {
-        const self = this;
+        const $dateFrom = $(this.dateFrom);
+        const $dateTo = $(this.trigger);
 
-        if (!this.dateTo) {
-            return;
-        }
-
-        $(this.dateTo).datetimepicker({
+        $dateTo.datetimepicker({
             onShow() {
-                this.setOptions({
-                    minDate: $(self.dateFrom).val() ?? false,
-                });
+                if (!$dateFrom.val()) {
+                    return;
+                }
+
+                this.setOptions({ minDate: $dateFrom.datetimepicker('getValue') });
+            },
+            onClose() {
+                if (!$dateFrom.val()) {
+                    return;
+                }
+
+                const dateFromValue = $dateFrom.datetimepicker('getValue');
+                const dateToValue = $dateTo.datetimepicker('getValue');
+
+                if (dateFromValue > dateToValue) {
+                    $dateFrom.datetimepicker({ value: dateToValue });
+                }
             },
         });
     }
@@ -87,11 +114,11 @@ export default class DateTimePicker extends Component {
         return this.getAttribute('formatted-date-time');
     }
 
-    protected get dateFromSelector(): string {
-        return this.getAttribute('date-from-selector');
+    protected get dateFromId(): string {
+        return this.getAttribute('date-from-id');
     }
 
-    protected get dateToSelector(): string {
-        return this.getAttribute('date-to-selector');
+    protected get dateToId(): string {
+        return this.getAttribute('date-to-id');
     }
 }
