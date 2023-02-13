@@ -8,6 +8,7 @@
 namespace Pyz\Service\PriceProduct;
 
 use Spryker\Service\PriceProduct\PriceProductDependencyProvider as SprykerPriceProductDependencyProvider;
+use Spryker\Service\PriceProductMerchantRelationship\Plugin\PriceProduct\MerchantRelationshipPreBuildPriceProductGroupKeyPlugin;
 use Spryker\Service\PriceProductMerchantRelationship\Plugin\PriceProduct\MerchantRelationshipPriceProductFilterPlugin;
 use Spryker\Service\PriceProductVolume\Plugin\PriceProductExtension\PriceProductVolumeFilterPlugin;
 
@@ -28,5 +29,14 @@ class PriceProductDependencyProvider extends SprykerPriceProductDependencyProvid
             new MerchantRelationshipPriceProductFilterPlugin(),
             new PriceProductVolumeFilterPlugin(),
         ], parent::getPriceProductDecisionPlugins());
+    }
+    /**
+     * @return array<int, \Spryker\Service\PriceProductExtension\Dependency\Plugin\PreBuildPriceProductGroupKeyPluginInterface>
+     */
+    protected function getPreBuildPriceProductGroupKeyPlugins() : array
+    {
+        return [
+            new MerchantRelationshipPreBuildPriceProductGroupKeyPlugin(),
+        ];
     }
 }
