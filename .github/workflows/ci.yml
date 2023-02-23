@@ -387,9 +387,9 @@ jobs:
                   cd robotframework-tests
                   robot -v env:api_b2b --exclude skip-due-to-issueORskip-due-to-refactoring -d results -s tests.api.b2b.glue .
 
-
             - name: Upload artifacts
               run: |
+                  ls
                   cd robotframework-tests
                   AWS_DEFAULT_REGION=$ROBOT_TESTS_ARTIFACTS_BUCKET_REGION AWS_ACCESS_KEY_ID=$ROBOT_TESTS_ARTIFACTS_KEY AWS_SECRET_ACCESS_KEY=$ROBOT_TESTS_ARTIFACTS_SECRET aws s3 cp $TRAVIS_BUILD_DIR/robotframework-tests/results s3://${{env.ROBOT_TESTS_ARTIFACTS_BUCKET}}/b2b-robot-api-ci/robot-test-artifacts/${{env.GITHUB_RUN_ID}}/PHP8.0MariaDBRobot/ \
                     --recursive \
@@ -442,6 +442,7 @@ jobs:
 
             - name: Upload artifacts
               run: |
+                  ls
                   cd robotframework-tests
                   AWS_DEFAULT_REGION=$ROBOT_TESTS_ARTIFACTS_BUCKET_REGION AWS_ACCESS_KEY_ID=$ROBOT_TESTS_ARTIFACTS_KEY AWS_SECRET_ACCESS_KEY=$ROBOT_TESTS_ARTIFACTS_SECRET aws s3 cp $TRAVIS_BUILD_DIR/robotframework-tests/results s3://${{env.ROBOT_TESTS_ARTIFACTS_BUCKET}}/b2b-robot-api-ci/robot-test-artifacts/${{env.GITHUB_RUN_ID}}/PHP8.1MariaDBRobot/ \
                     --recursive \
