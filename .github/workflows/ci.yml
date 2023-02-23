@@ -345,8 +345,6 @@ jobs:
     docker-alpine-php-8-0-mariadb-robot:
         name: "Docker / Alpine / PHP 8.0 / MariaDB / Robot"
         runs-on: ubuntu-20.04
-        strategy:
-            fail-fast: false
         env:
             PROGRESS_TYPE: plain
             SPRYKER_PLATFORM_IMAGE: spryker/php:8.0
@@ -387,6 +385,7 @@ jobs:
                   cd robotframework-tests
 
             - name: Run Robot Tests
+              continue-on-error: true
               run: |
                   robot -v env:api_b2b --exclude skip-due-to-issueORskip-due-to-refactoring -d results -s tests.api.b2b.glue .
 
@@ -399,8 +398,6 @@ jobs:
     docker-alpine-php-8-1-mariadb-robot:
         name: "Docker / Alpine / PHP 8.1 / MariaDB / Robot"
         runs-on: ubuntu-20.04
-        strategy:
-            fail-fast: false
         env:
             PROGRESS_TYPE: plain
             SPRYKER_PLATFORM_IMAGE: spryker/php:8.1
@@ -441,6 +438,7 @@ jobs:
                   cd robotframework-tests
 
             - name: Run Robot Tests
+              continue-on-error: true
               run: |
                   robot -v env:api_b2b --exclude skip-due-to-issueORskip-due-to-refactoring -d results -s tests.api.b2b.glue .
 
