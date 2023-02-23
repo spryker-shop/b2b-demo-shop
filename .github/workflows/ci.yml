@@ -436,6 +436,7 @@ jobs:
                   docker/sdk boot deploy.ci.functional.mariadb.yml -v
                   docker/sdk up -t -v
                   cd robotframework-tests
+                  curl glue.de.spryker.local
                   robot -v env:api_b2b --exclude skip-due-to-issueORskip-due-to-refactoring -d results -s tests.api.b2b.glue .
 
             - name: Upload artifacts
