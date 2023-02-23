@@ -383,11 +383,11 @@ jobs:
             - name: Install Robot tests
               run: |
                   git clone https://github.com/spryker/robotframework-suite-tests.git --single-branch --branch master robotframework-tests
-                  cd robotframework-tests
 
             - name: Run Robot Tests
               continue-on-error: true
               run: |
+                  cd robotframework-tests
                   robot -v env:api_b2b --exclude skip-due-to-issueORskip-due-to-refactoring -d results -s tests.api.b2b.glue .
 
             - name: Upload artifacts
@@ -437,11 +437,11 @@ jobs:
             - name: Install Robot tests
               run: |
                   git clone https://github.com/spryker/robotframework-suite-tests.git --single-branch --branch master robotframework-tests
-                  cd robotframework-tests
 
             - name: Run Robot Tests
               continue-on-error: true
               run: |
+                  cd robotframework-tests
                   robot -v env:api_b2b --exclude skip-due-to-issueORskip-due-to-refactoring -d results -s tests.api.b2b.glue .
 
             - name: Upload artifacts
