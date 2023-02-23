@@ -348,6 +348,7 @@ jobs:
         env:
             PROGRESS_TYPE: plain
             SPRYKER_PLATFORM_IMAGE: spryker/php:8.0
+            TRAVIS: 1
             ROBOT_TESTS_ARTIFACTS_BUCKET: suite-nonsplit-robot-api-ci
         steps:
             - uses: actions/setup-python@v4
