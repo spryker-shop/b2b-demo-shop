@@ -382,8 +382,10 @@ jobs:
               continue-on-error: true
               run: |
                   git clone https://github.com/spryker/docker-sdk.git ./docker
-                  docker/sdk boot deploy.ci.functional.mariadb.yml -v
+                  docker/sdk boot -v deploy.ci.acceptance.mariadb.yml
                   docker/sdk up -t -v
+                  docker/sdk testing console queue:worker:start --stop-when-empty
+                  docker/sdk testing console queue:worker:start --stop-when-empty
                   cd robotframework-tests
                   robot -v env:api_b2b --exclude skip-due-to-issueORskip-due-to-refactoring -d results -s tests.api.b2b.glue .
 
@@ -433,8 +435,10 @@ jobs:
               continue-on-error: true
               run: |
                   git clone https://github.com/spryker/docker-sdk.git ./docker
-                  docker/sdk boot deploy.ci.functional.mariadb.yml -v
+                  docker/sdk boot -v deploy.ci.acceptance.mariadb.yml
                   docker/sdk up -t -v
+                  docker/sdk testing console queue:worker:start --stop-when-empty
+                  docker/sdk testing console queue:worker:start --stop-when-empty
                   cd robotframework-tests
                   curl glue.de.spryker.local
                   robot -v env:api_b2b --exclude skip-due-to-issueORskip-due-to-refactoring -d results -s tests.api.b2b.glue .
