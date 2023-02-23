@@ -385,7 +385,6 @@ jobs:
                   docker/sdk boot -v deploy.ci.acceptance.mariadb.yml
                   docker/sdk up -t -v
                   docker/sdk testing console queue:worker:start --stop-when-empty
-                  docker/sdk testing console queue:worker:start --stop-when-empty
                   sudo bash -c "echo '127.0.0.1 backend-api.at.spryker.local backend-api.de.spryker.local backend-gateway.at.spryker.local backend-gateway.de.spryker.local backoffice.at.spryker.local backoffice.de.spryker.local date-time-configurator-example.spryker.local glue.at.spryker.local glue.de.spryker.local yves.at.spryker.local yves.de.spryker.local' >> /etc/hosts"
 
             - name: Run Tests
@@ -442,7 +441,6 @@ jobs:
                   git clone https://github.com/spryker/docker-sdk.git ./docker
                   docker/sdk boot -v deploy.ci.acceptance.mariadb.yml
                   docker/sdk up -t -v
-                  docker/sdk testing console queue:worker:start --stop-when-empty
                   docker/sdk testing console queue:worker:start --stop-when-empty
                   sudo bash -c "echo '127.0.0.1 backend-api.at.spryker.local backend-api.de.spryker.local backend-gateway.at.spryker.local backend-gateway.de.spryker.local backoffice.at.spryker.local backoffice.de.spryker.local date-time-configurator-example.spryker.local glue.at.spryker.local glue.de.spryker.local yves.at.spryker.local yves.de.spryker.local' >> /etc/hosts"
 
