@@ -16,8 +16,6 @@ use Spryker\Shared\GlueBackendApiApplication\GlueBackendApiApplicationConstants;
 use Spryker\Shared\GlueStorefrontApiApplication\GlueStorefrontApiApplicationConstants;
 use Spryker\Shared\Kernel\KernelConstants;
 use Spryker\Shared\Log\LogConstants;
-use Spryker\Shared\MessageBroker\MessageBrokerConstants;
-use Spryker\Shared\MessageBrokerAws\MessageBrokerAwsConstants;
 use Spryker\Shared\Newsletter\NewsletterConstants;
 use Spryker\Shared\OauthClient\OauthClientConstants;
 use Spryker\Shared\ProductManagement\ProductManagementConstants;
@@ -30,7 +28,6 @@ use Spryker\Shared\Session\SessionConstants;
 use Spryker\Shared\Testify\TestifyConstants;
 use Spryker\Shared\WebProfiler\WebProfilerConstants;
 use Spryker\Shared\ZedRequest\ZedRequestConstants;
-use Spryker\Zed\MessageBrokerAws\MessageBrokerAwsConfig;
 use Spryker\Zed\OauthDummy\OauthDummyConfig;
 use SprykerShop\Shared\CalculationPage\CalculationPageConstants;
 use SprykerShop\Shared\ErrorPage\ErrorPageConstants;
@@ -177,15 +174,3 @@ $config[GlueBackendApiApplicationConstants::PROJECT_NAMESPACES] = [
 // ----------------------------------------------------------------------------
 $sprykerGlueStorefrontHost = getenv('SPRYKER_GLUE_STOREFRONT_HOST');
 $config[GlueStorefrontApiApplicationConstants::GLUE_STOREFRONT_API_HOST] = $sprykerGlueStorefrontHost;
-
-// ----------------------------------------------------------------------------
-// ------------------------------ MessageBroker -----------------------------------------
-// ----------------------------------------------------------------------------
-$messageBrokerTransport = getenv('SPRYKER_TESTING_ENABLED') ? 'in-memory' : MessageBrokerAwsConfig::SQS_TRANSPORT;
-
-$config[MessageBrokerConstants::CHANNEL_TO_TRANSPORT_MAP] =
-$config[MessageBrokerAwsConstants::CHANNEL_TO_RECEIVER_TRANSPORT_MAP] = [
-    'payment' => $messageBrokerTransport,
-    'assets' => $messageBrokerTransport,
-    'product' => $messageBrokerTransport,
-];
