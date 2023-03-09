@@ -10,7 +10,8 @@
     isDisabled: false,
     isReadOnly: false,
     autoUpdate: false,
-    formattedClass: '',
+    formattedNumberExtraClasses: '',
+    inputExtraClasses: '',
     numberFormatConfig: {},
 } %}
 
@@ -47,8 +48,6 @@
 
 {% set numberFormatConfig = {'watch-external-changes': true} | merge(data.numberFormatConfig) %}
 
-{% block inputClass %}{% endblock %}
-
 {% block body %}
     <button class="{{ config.name }}__button
                    {% if data.isDisabled or data.isReadOnly %}
@@ -59,12 +58,12 @@
 
     {% block quantityField %}
         {% include molecule('formatted-number-input') with {
-            class: data.formattedClass ~ ' ' ~ config.jsName ~ '__formatted-input',
+            class: config.jsName ~ '__formatted-input ' ~ data.formattedNumberExtraClasses,
             data: {
                 inputName: attributes.name,
                 inputValue: attributes.value,
                 inputAttributes: filteredInputAttributes,
-                inputExtraClasses: config.name ~ '__input ' ~ config.jsName ~ '__input ' ~ block('inputClass'),
+                inputExtraClasses: config.name ~ '__input ' ~ config.jsName ~ '__input ' ~ data.inputExtraClasses,
                 hiddenInputAttributes: {
                     'data-qa': 'quantity-input',
                     disabled: data.isDisabled,
