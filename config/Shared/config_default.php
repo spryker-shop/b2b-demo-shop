@@ -99,6 +99,8 @@ use Spryker\Zed\Payment\PaymentConfig;
 use Spryker\Zed\Propel\PropelConfig;
 use SprykerShop\Shared\CustomerPage\CustomerPageConstants;
 use SprykerShop\Shared\ShopUi\ShopUiConstants;
+use Generated\Shared\Transfer\AddReviewsTransfer;
+use Generated\Shared\Transfer\OrderStatusChangedTransfer;
 
 // ############################################################################
 // ############################## PRODUCTION CONFIGURATION ####################
@@ -187,6 +189,7 @@ $config[KernelConstants::DOMAIN_WHITELIST] = array_merge($trustedHosts, [
     $sprykerFrontendHost,
     'threedssvc.pay1.de', // trusted Payone domain
     'www.sofort.com', // trusted Payone domain
+    '*.bazaarvoice.com',
 ]);
 $config[KernelConstants::STRICT_DOMAIN_REDIRECT] = true;
 
@@ -675,6 +678,8 @@ $config[MessageBrokerConstants::MESSAGE_TO_CHANNEL_MAP] = [
     ProductUpdatedTransfer::class => 'product',
     ProductDeletedTransfer::class => 'product',
     InitializeProductExportTransfer::class => 'product',
+    AddReviewsTransfer::class => 'reviews',
+    OrderStatusChangedTransfer::class => 'orders'
 ];
 
 $config[MessageBrokerConstants::CHANNEL_TO_TRANSPORT_MAP] =
@@ -682,6 +687,8 @@ $config[MessageBrokerAwsConstants::CHANNEL_TO_RECEIVER_TRANSPORT_MAP] = [
     'payment' => MessageBrokerAwsConfig::SQS_TRANSPORT,
     'assets' => MessageBrokerAwsConfig::SQS_TRANSPORT,
     'product' => MessageBrokerAwsConfig::SQS_TRANSPORT,
+    'reviews' => MessageBrokerAwsConfig::SQS_TRANSPORT,
+    'orders' => MessageBrokerAwsConfig::SQS_TRANSPORT,
 ];
 
 $config[CartsRestApiConstants::IS_QUOTE_RELOAD_ENABLED] = true;
@@ -689,6 +696,8 @@ $config[MessageBrokerAwsConstants::CHANNEL_TO_SENDER_TRANSPORT_MAP] = [
     'payment' => 'http',
     'assets' => 'http',
     'product' => 'http',
+    'reviews' => 'http',
+    'orders' => 'http',
 ];
 
 $aopInfrastructureConfiguration = json_decode(html_entity_decode((string)getenv('SPRYKER_AOP_INFRASTRUCTURE')), true);
