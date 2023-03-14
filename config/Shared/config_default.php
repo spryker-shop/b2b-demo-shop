@@ -1,9 +1,11 @@
 <?php
 
+use Generated\Shared\Transfer\AddReviewsTransfer;
 use Generated\Shared\Transfer\AssetAddedTransfer;
 use Generated\Shared\Transfer\AssetDeletedTransfer;
 use Generated\Shared\Transfer\AssetUpdatedTransfer;
 use Generated\Shared\Transfer\InitializeProductExportTransfer;
+use Generated\Shared\Transfer\OrderStatusChangedTransfer;
 use Generated\Shared\Transfer\PaymentCancelReservationFailedTransfer;
 use Generated\Shared\Transfer\PaymentCancelReservationRequestedTransfer;
 use Generated\Shared\Transfer\PaymentConfirmationFailedTransfer;
@@ -99,8 +101,6 @@ use Spryker\Zed\Payment\PaymentConfig;
 use Spryker\Zed\Propel\PropelConfig;
 use SprykerShop\Shared\CustomerPage\CustomerPageConstants;
 use SprykerShop\Shared\ShopUi\ShopUiConstants;
-use Generated\Shared\Transfer\AddReviewsTransfer;
-use Generated\Shared\Transfer\OrderStatusChangedTransfer;
 
 // ############################################################################
 // ############################## PRODUCTION CONFIGURATION ####################
@@ -679,7 +679,7 @@ $config[MessageBrokerConstants::MESSAGE_TO_CHANNEL_MAP] = [
     ProductDeletedTransfer::class => 'product',
     InitializeProductExportTransfer::class => 'product',
     AddReviewsTransfer::class => 'reviews',
-    OrderStatusChangedTransfer::class => 'orders'
+    OrderStatusChangedTransfer::class => 'orders',
 ];
 
 $config[MessageBrokerConstants::CHANNEL_TO_TRANSPORT_MAP] =

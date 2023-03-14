@@ -12,6 +12,7 @@ use Spryker\Zed\Availability\Communication\Plugin\Oms\AvailabilityReservationPos
 use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\Oms\Communication\Plugin\Oms\Command\SendOrderConfirmationPlugin;
 use Spryker\Zed\Oms\Communication\Plugin\Oms\Command\SendOrderShippedPlugin;
+use Spryker\Zed\Oms\Communication\Plugin\Oms\Command\SendOrderStatusChangedMessagePlugin;
 use Spryker\Zed\Oms\Dependency\Plugin\Command\CommandCollectionInterface;
 use Spryker\Zed\Oms\OmsDependencyProvider as SprykerOmsDependencyProvider;
 use Spryker\Zed\ProductBundle\Communication\Plugin\Oms\ProductBundleReservationPostSaveTerminationAwareStrategyPlugin;
@@ -24,7 +25,6 @@ use Spryker\Zed\SalesPayment\Communication\Plugin\Oms\SendEventPaymentRefundPend
 use Spryker\Zed\SalesReturn\Communication\Plugin\Oms\Command\StartReturnCommandPlugin;
 use Spryker\Zed\Shipment\Dependency\Plugin\Oms\ShipmentManualEventGrouperPlugin;
 use Spryker\Zed\Shipment\Dependency\Plugin\Oms\ShipmentOrderMailExpanderPlugin;
-use Spryker\Zed\Oms\Communication\Plugin\Oms\Command\SendOrderStatusChangedMessagePlugin;
 
 class OmsDependencyProvider extends SprykerOmsDependencyProvider
 {
