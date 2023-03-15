@@ -688,7 +688,6 @@ $config[MessageBrokerAwsConstants::CHANNEL_TO_RECEIVER_TRANSPORT_MAP] = [
     'assets' => MessageBrokerAwsConfig::SQS_TRANSPORT,
     'product' => MessageBrokerAwsConfig::SQS_TRANSPORT,
     'reviews' => MessageBrokerAwsConfig::SQS_TRANSPORT,
-    'orders' => MessageBrokerAwsConfig::SQS_TRANSPORT,
 ];
 
 $config[CartsRestApiConstants::IS_QUOTE_RELOAD_ENABLED] = true;
@@ -696,7 +695,6 @@ $config[MessageBrokerAwsConstants::CHANNEL_TO_SENDER_TRANSPORT_MAP] = [
     'payment' => 'http',
     'assets' => 'http',
     'product' => 'http',
-    'reviews' => 'http',
     'orders' => 'http',
 ];
 
