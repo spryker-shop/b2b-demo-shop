@@ -24,6 +24,8 @@ use Generated\Shared\Transfer\ProductCreatedTransfer;
 use Generated\Shared\Transfer\ProductDeletedTransfer;
 use Generated\Shared\Transfer\ProductExportedTransfer;
 use Generated\Shared\Transfer\ProductUpdatedTransfer;
+use Generated\Shared\Transfer\SearchEndpointAvailableTransfer;
+use Generated\Shared\Transfer\SearchEndpointRemovedTransfer;
 use Monolog\Logger;
 use Pyz\Shared\Console\ConsoleConstants;
 use Pyz\Shared\Scheduler\SchedulerConfig;
@@ -50,6 +52,9 @@ use Spryker\Shared\FileManager\FileManagerConstants;
 use Spryker\Shared\FileManagerGui\FileManagerGuiConstants;
 use Spryker\Shared\FileSystem\FileSystemConstants;
 use Spryker\Shared\GlueApplication\GlueApplicationConstants;
+use Spryker\Shared\GlueBackendApiApplication\GlueBackendApiApplicationConstants;
+use Spryker\Shared\GlueJsonApiConvention\GlueJsonApiConventionConstants;
+use Spryker\Shared\GlueStorefrontApiApplication\GlueStorefrontApiApplicationConstants;
 use Spryker\Shared\Http\HttpConstants;
 use Spryker\Shared\Kernel\KernelConstants;
 use Spryker\Shared\Log\LogConstants;
@@ -87,6 +92,7 @@ use Spryker\Shared\SessionRedis\SessionRedisConstants;
 use Spryker\Shared\Storage\StorageConstants;
 use Spryker\Shared\StorageRedis\StorageRedisConstants;
 use Spryker\Shared\Store\StoreConstants;
+use Spryker\Shared\SymfonyMailer\SymfonyMailerConstants;
 use Spryker\Shared\Tax\TaxConstants;
 use Spryker\Shared\Testify\TestifyConstants;
 use Spryker\Shared\Translator\TranslatorConstants;
@@ -503,15 +509,16 @@ $config[SchedulerJenkinsConstants::JENKINS_CONFIGURATION] = [
 $config[SchedulerJenkinsConstants::JENKINS_TEMPLATE_PATH] = getenv('SPRYKER_JENKINS_TEMPLATE_PATH') ?: null;
 
 // >>> MAIL
-$config[MailConstants::SMTP_HOST] = getenv('SPRYKER_SMTP_HOST') ?: null;
-$config[MailConstants::SMTP_PORT] = getenv('SPRYKER_SMTP_PORT') ?: null;
-$config[MailConstants::SMTP_ENCRYPTION] = getenv('SPRYKER_SMTP_ENCRYPTION') ?: null;
-$config[MailConstants::SMTP_AUTH_MODE] = getenv('SPRYKER_SMTP_AUTH_MODE') ?: null;
-$config[MailConstants::SMTP_USERNAME] = getenv('SPRYKER_SMTP_USERNAME') ?: null;
-$config[MailConstants::SMTP_PASSWORD] = getenv('SPRYKER_SMTP_PASSWORD') ?: null;
-
 $config[MailConstants::SENDER_EMAIL] = getenv('SPRYKER_MAIL_SENDER_EMAIL') ?: null;
 $config[MailConstants::SENDER_NAME] = getenv('SPRYKER_MAIL_SENDER_NAME') ?: null;
+
+// >>> SYMFONY_MAILER
+$config[SymfonyMailerConstants::SMTP_HOST] = getenv('SPRYKER_SMTP_HOST') ?: null;
+$config[SymfonyMailerConstants::SMTP_PORT] = getenv('SPRYKER_SMTP_PORT') ?: null;
+$config[SymfonyMailerConstants::SMTP_ENCRYPTION] = getenv('SPRYKER_SMTP_ENCRYPTION') ?: null;
+$config[SymfonyMailerConstants::SMTP_AUTH_MODE] = getenv('SPRYKER_SMTP_AUTH_MODE') ?: null;
+$config[SymfonyMailerConstants::SMTP_USERNAME] = getenv('SPRYKER_SMTP_USERNAME') ?: null;
+$config[SymfonyMailerConstants::SMTP_PASSWORD] = getenv('SPRYKER_SMTP_PASSWORD') ?: null;
 
 // >>> FILESYSTEM
 $config[FileSystemConstants::FILESYSTEM_SERVICE] = [
@@ -636,6 +643,26 @@ $config[ProductLabelConstants::PRODUCT_LABEL_TO_DE_ASSIGN_CHUNK_SIZE] = 1000;
 
 $config[CartsRestApiConstants::IS_QUOTE_RELOAD_ENABLED] = true;
 
+// ----------------------------------------------------------------------------
+// ------------------------------ Glue Backend API -------------------------------
+// ----------------------------------------------------------------------------
+$sprykerGlueBackendHost = getenv('SPRYKER_GLUE_BACKEND_HOST');
+$config[GlueBackendApiApplicationConstants::GLUE_BACKEND_API_HOST] = $sprykerGlueBackendHost;
+$config[GlueBackendApiApplicationConstants::PROJECT_NAMESPACES] = [
+    'Pyz',
+];
+
+// ----------------------------------------------------------------------------
+// ------------------------------ Glue Storefront API -------------------------------
+// ----------------------------------------------------------------------------
+$sprykerGlueStorefrontHost = getenv('SPRYKER_GLUE_STOREFRONT_HOST');
+$config[GlueStorefrontApiApplicationConstants::GLUE_STOREFRONT_API_HOST] = $sprykerGlueStorefrontHost;
+
+$config[GlueJsonApiConventionConstants::GLUE_DOMAIN] = sprintf(
+    'https://%s',
+    $sprykerGlueStorefrontHost ?: $sprykerGlueBackendHost ?: 'localhost',
+);
+
 // >>> Product Label
 $config[ProductLabelConstants::PRODUCT_LABEL_TO_DE_ASSIGN_CHUNK_SIZE] = 1000;
 
@@ -678,6 +705,8 @@ $config[MessageBrokerConstants::MESSAGE_TO_CHANNEL_MAP] = [
     ProductUpdatedTransfer::class => 'product',
     ProductDeletedTransfer::class => 'product',
     InitializeProductExportTransfer::class => 'product',
+    SearchEndpointAvailableTransfer::class => 'search',
+    SearchEndpointRemovedTransfer::class => 'search',
     AddReviewsTransfer::class => 'reviews',
     OrderStatusChangedTransfer::class => 'orders',
 ];
@@ -687,6 +716,7 @@ $config[MessageBrokerAwsConstants::CHANNEL_TO_RECEIVER_TRANSPORT_MAP] = [
     'payment' => MessageBrokerAwsConfig::SQS_TRANSPORT,
     'assets' => MessageBrokerAwsConfig::SQS_TRANSPORT,
     'product' => MessageBrokerAwsConfig::SQS_TRANSPORT,
+    'search' => MessageBrokerAwsConfig::SQS_TRANSPORT,
     'reviews' => MessageBrokerAwsConfig::SQS_TRANSPORT,
 ];
 
@@ -695,6 +725,7 @@ $config[MessageBrokerAwsConstants::CHANNEL_TO_SENDER_TRANSPORT_MAP] = [
     'payment' => 'http',
     'assets' => 'http',
     'product' => 'http',
+    'search' => 'http',
     'orders' => 'http',
 ];
 

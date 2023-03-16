@@ -1,7 +1,7 @@
 @mixin shop-ui-formatted-number-input($name: '.formatted-number-input') {
     #{$name} {
+        @include shop-ui-input(&__input);
+
         @content;
     }
-
-    @include shop-ui-input(#{$name}__input);
 }

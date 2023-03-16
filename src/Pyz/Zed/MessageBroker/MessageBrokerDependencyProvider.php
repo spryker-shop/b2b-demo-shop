@@ -12,6 +12,7 @@ use Spryker\Zed\Asset\Communication\Plugin\MessageBroker\AssetDeletedMessageHand
 use Spryker\Zed\Asset\Communication\Plugin\MessageBroker\AssetUpdatedMessageHandlerPlugin;
 use Spryker\Zed\MessageBroker\Communication\Plugin\MessageBroker\CorrelationIdMessageAttributeProviderPlugin;
 use Spryker\Zed\MessageBroker\Communication\Plugin\MessageBroker\TimestampMessageAttributeProviderPlugin;
+use Spryker\Zed\MessageBroker\Communication\Plugin\MessageBroker\TransactionIdMessageAttributeProviderPlugin;
 use Spryker\Zed\MessageBroker\Communication\Plugin\MessageBroker\ValidationMiddlewarePlugin;
 use Spryker\Zed\MessageBroker\MessageBrokerDependencyProvider as SprykerMessageBrokerDependencyProvider;
 use Spryker\Zed\MessageBrokerAws\Communication\Plugin\MessageBroker\Receiver\AwsSqsMessageReceiverPlugin;
@@ -31,6 +32,9 @@ use Spryker\Zed\Payment\Communication\Plugin\MessageBroker\PaymentRefundFailedMe
 use Spryker\Zed\Payment\Communication\Plugin\MessageBroker\PaymentReservationCanceledMessageHandlerPlugin;
 use Spryker\Zed\Product\Communication\Plugin\MessageBroker\InitializeProductExportMessageHandlerPlugin;
 use Spryker\Zed\ProductReview\Communication\Plugin\MessageBroker\ProductReviewAddReviewsMessageHandlerPlugin;
+use Spryker\Zed\SearchHttp\Communication\Plugin\MessageBroker\SearchEndpointAvailableMessageHandlerPlugin;
+use Spryker\Zed\SearchHttp\Communication\Plugin\MessageBroker\SearchEndpointRemovedMessageHandlerPlugin;
+use Spryker\Zed\Session\Communication\Plugin\MessageBroker\SessionTrackingIdMessageAttributeProviderPlugin;
 use Spryker\Zed\Store\Communication\Plugin\MessageBroker\CurrentStoreReferenceMessageAttributeProviderPlugin;
 use Spryker\Zed\Store\Communication\Plugin\MessageBroker\StoreReferenceMessageValidatorPlugin;
 
@@ -78,6 +82,8 @@ class MessageBrokerDependencyProvider extends SprykerMessageBrokerDependencyProv
             new AssetUpdatedMessageHandlerPlugin(),
             new AssetDeletedMessageHandlerPlugin(),
             new InitializeProductExportMessageHandlerPlugin(),
+            new SearchEndpointAvailableMessageHandlerPlugin(),
+            new SearchEndpointRemovedMessageHandlerPlugin(),
             new ProductReviewAddReviewsMessageHandlerPlugin(),
         ];
     }
@@ -92,6 +98,8 @@ class MessageBrokerDependencyProvider extends SprykerMessageBrokerDependencyProv
             new TimestampMessageAttributeProviderPlugin(),
             new CurrentStoreReferenceMessageAttributeProviderPlugin(),
             new AccessTokenMessageAttributeProviderPlugin(),
+            new TransactionIdMessageAttributeProviderPlugin(),
+            new SessionTrackingIdMessageAttributeProviderPlugin(),
         ];
     }
 

@@ -20,7 +20,7 @@
             <div class="col measurement-unit">
                 <div class="measurement-unit__label">{{ 'packaging_units.pdp.quantity' | trans }}:</div>
                 <div class="measurement-unit__value">
-                    {% embed molecule('quantity-counter') with {
+                    {% include molecule('quantity-counter') with {
                         modifiers: ['right-space'],
                         attributes: {
                             id: 'sales-unit-quantity',
@@ -28,12 +28,11 @@
                             name: 'sales-unit-quantity',
                         },
                         data: {
-                            formattedClass: 'js-formatted-sales-unit-quantity',
+                            formattedNumberExtraClasses: 'js-formatted-sales-unit-quantity',
                             numberFormatConfig: numberFormatConfig,
+                            inputExtraClasses: 'js-volume-price__quantity quantity-counter__input--medium-width',
                         },
                     } only %}
-                        {% block inputClass %}js-volume-price__quantity {{ config.name }}__input--medium-width{% endblock %}
-                    {% endembed %}
 
                     <input id="base-unit-quantity" type="hidden" value="{{ data.minQuantityInBaseUnit }}" name="quantity">
                 </div>
@@ -78,14 +77,13 @@
 
     {% if not salesUnitCount %}
         <div class="grid grid--stretch grid--justify">
-            {% embed molecule('quantity-counter') with {
+            {% include molecule('quantity-counter') with {
                 modifiers: ['right-space'],
                 data: {
                     numberFormatConfig: numberFormatConfig,
+                    inputExtraClasses: 'js-volume-price__quantity',
                 },
             } only %}
-                {% block inputClass %}js-volume-price__quantity{% endblock %}
-            {% endembed %}
 
             <div class="col col--expand">
                 <button type="submit" id="add-to-cart-button" class="button button--alternative button--big button--expand button--no-horizontal-padding"
@@ -131,12 +129,13 @@
             <div class="col measurement-unit">
                 <div class="measurement-unit__label">{{ 'packaging_units.pdp.amount' | trans }}:</div>
                 <div class="measurement-unit__value">
-                    {% embed molecule('quantity-counter') with {
+                    {% include molecule('quantity-counter') with {
                         modifiers: ['right-space'],
                         data: {
                             isDisabled: not data.isAmountVariable,
-                            formattedClass: 'js-formatted-user-amount',
+                            formattedNumberExtraClasses: 'js-formatted-user-amount',
                             numberFormatConfig: numberFormatConfig,
+                            inputExtraClasses: 'quantity-counter__input--medium-width',
                         },
                         attributes: {
                             id: 'user-amount',
@@ -147,8 +146,6 @@
                             name: 'amount-sales-unit[' ~ data.product.sku ~ ']',
                         },
                     } only %}
-                        {% block inputClass %}{{ config.name }}__input--medium-width{% endblock %}
-                    {% endembed %}
 
                     <input id="default-amount" type="hidden" value="{{ defaultAmount }}">
                     <input id="amount" type="hidden" value="{{ defaultAmount }}" name="amount[{{ data.product.sku }}]">
