@@ -5,6 +5,7 @@ use Generated\Shared\Transfer\AssetAddedTransfer;
 use Generated\Shared\Transfer\AssetDeletedTransfer;
 use Generated\Shared\Transfer\AssetUpdatedTransfer;
 use Generated\Shared\Transfer\InitializeProductExportTransfer;
+use Generated\Shared\Transfer\OrderStatusChangedTransfer;
 use Generated\Shared\Transfer\PaymentCancelReservationFailedTransfer;
 use Generated\Shared\Transfer\PaymentCancelReservationRequestedTransfer;
 use Generated\Shared\Transfer\PaymentConfirmationFailedTransfer;
@@ -194,6 +195,7 @@ $config[KernelConstants::DOMAIN_WHITELIST] = array_merge($trustedHosts, [
     $sprykerFrontendHost,
     'threedssvc.pay1.de', // trusted Payone domain
     'www.sofort.com', // trusted Payone domain
+    '*.bazaarvoice.com',
 ]);
 $config[KernelConstants::STRICT_DOMAIN_REDIRECT] = true;
 
@@ -706,6 +708,7 @@ $config[MessageBrokerConstants::MESSAGE_TO_CHANNEL_MAP] = [
     SearchEndpointAvailableTransfer::class => 'search',
     SearchEndpointRemovedTransfer::class => 'search',
     AddReviewsTransfer::class => 'reviews',
+    OrderStatusChangedTransfer::class => 'orders',
 ];
 
 $config[MessageBrokerConstants::CHANNEL_TO_TRANSPORT_MAP] =
@@ -723,7 +726,7 @@ $config[MessageBrokerAwsConstants::CHANNEL_TO_SENDER_TRANSPORT_MAP] = [
     'assets' => 'http',
     'product' => 'http',
     'search' => 'http',
-    'reviews' => 'http',
+    'orders' => 'http',
 ];
 
 $aopInfrastructureConfiguration = json_decode(html_entity_decode((string)getenv('SPRYKER_AOP_INFRASTRUCTURE')), true);
