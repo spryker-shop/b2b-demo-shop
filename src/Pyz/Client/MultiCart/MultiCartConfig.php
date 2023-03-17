@@ -22,4 +22,23 @@ class MultiCartConfig extends SprykerMultiCartConfig
             QuoteTransfer::CART_NOTE, #CartNoteFeature
         ]);
     }
+
+    /**
+     * @return array<string|array<string>>
+     */
+    public function getQuoteFieldsAllowedForCustomerQuoteCollectionInSession(): array
+    {
+        return array_merge(parent::getQuoteFieldsAllowedForCustomerQuoteCollectionInSession(), [
+            QuoteTransfer::ID_QUOTE,
+            QuoteTransfer::ITEMS,
+            QuoteTransfer::BUNDLE_ITEMS,
+            QuoteTransfer::TOTALS,
+            QuoteTransfer::CURRENCY,
+            QuoteTransfer::PRICE_MODE,
+            QuoteTransfer::NAME,
+            QuoteTransfer::IS_DEFAULT,
+            QuoteTransfer::CUSTOMER_REFERENCE,
+            QuoteTransfer::IS_LOCKED,
+        ]);
+    }
 }
