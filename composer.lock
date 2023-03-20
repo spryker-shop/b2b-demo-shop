@@ -7912,16 +7912,16 @@
         },
         {
             "name": "spryker-shop/cart-page",
-            "version": "3.35.0",
+            "version": "3.35.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/cart-page.git",
-                "reference": "32071ee56359f70a4f0461081235def05c21b6ad"
+                "reference": "73b043a6b4ace7fcea42054db56c0594208915ff"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/cart-page/zipball/32071ee56359f70a4f0461081235def05c21b6ad",
-                "reference": "32071ee56359f70a4f0461081235def05c21b6ad",
+                "url": "https://api.github.com/repos/spryker-shop/cart-page/zipball/73b043a6b4ace7fcea42054db56c0594208915ff",
+                "reference": "73b043a6b4ace7fcea42054db56c0594208915ff",
                 "shasum": ""
             },
             "require": {
@@ -7998,9 +7998,9 @@
             ],
             "description": "CartPage module",
             "support": {
-                "source": "https://github.com/spryker-shop/cart-page/tree/3.35.0"
+                "source": "https://github.com/spryker-shop/cart-page/tree/3.35.3"
             },
-            "time": "2022-11-24T12:58:31+00:00"
+            "time": "2023-03-10T12:46:37+00:00"
         },
         {
             "name": "spryker-shop/cart-page-extension",
@@ -8269,16 +8269,16 @@
         },
         {
             "name": "spryker-shop/checkout-page",
-            "version": "3.22.0",
+            "version": "3.23.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/checkout-page.git",
-                "reference": "d0c83bf79aef0f2c0aaac1fac2521b2cd4d86c77"
+                "reference": "a8ceb8798a476a52bf4f563ec7906e006a4ff2ff"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/checkout-page/zipball/d0c83bf79aef0f2c0aaac1fac2521b2cd4d86c77",
-                "reference": "d0c83bf79aef0f2c0aaac1fac2521b2cd4d86c77",
+                "url": "https://api.github.com/repos/spryker-shop/checkout-page/zipball/a8ceb8798a476a52bf4f563ec7906e006a4ff2ff",
+                "reference": "a8ceb8798a476a52bf4f563ec7906e006a4ff2ff",
                 "shasum": ""
             },
             "require": {
@@ -8329,6 +8329,7 @@
                 "spryker-shop/company-widget": "Add the module if you want to use company widget",
                 "spryker-shop/configurable-bundle-widget": "Add the module if you want to use QuoteConfiguredBundleWidget.",
                 "spryker-shop/gift-card-widget": "Add the module if you want to use gift card widget",
+                "spryker-shop/merchant-widget": "If you want to use MerchantMetaSchemaWidget use the version >= 1.3.0",
                 "spryker-shop/order-custom-reference-widget": "Add the module if you want to use order custom reference functionality",
                 "spryker-shop/product-packaging-unit-widget": "If you want to use components from module ProductPackagingUnitWidget or SummaryProductPackagingUnitWidgetPlugin: ^0.5.2",
                 "spryker-shop/quote-request-widget": "If you want to use QuoteRequestActionsWidget: ^2.2.0",
@@ -8353,9 +8354,9 @@
             ],
             "description": "CheckoutPage module",
             "support": {
-                "source": "https://github.com/spryker-shop/checkout-page/tree/3.22.0"
+                "source": "https://github.com/spryker-shop/checkout-page/tree/3.23.0"
             },
-            "time": "2022-11-24T12:58:31+00:00"
+            "time": "2023-01-31T08:51:30+00:00"
         },
         {
             "name": "spryker-shop/checkout-page-extension",
@@ -10727,20 +10728,20 @@
         },
         {
             "name": "spryker-shop/payment-page",
-            "version": "1.2.0",
+            "version": "1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/payment-page.git",
-                "reference": "a4c1398516a2b924377f778619908754c88004c3"
+                "reference": "be448aee35dbc35981e17a9219706a43e0b919dc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/payment-page/zipball/a4c1398516a2b924377f778619908754c88004c3",
-                "reference": "a4c1398516a2b924377f778619908754c88004c3",
+                "url": "https://api.github.com/repos/spryker-shop/payment-page/zipball/be448aee35dbc35981e17a9219706a43e0b919dc",
+                "reference": "be448aee35dbc35981e17a9219706a43e0b919dc",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.4",
+                "php": ">=8.0",
                 "spryker-shop/checkout-page": "^3.20.0",
                 "spryker-shop/checkout-page-extension": "^1.4.0",
                 "spryker/cart": "^4.3.0 || ^5.0.0 || ^7.0.0",
@@ -10756,6 +10757,7 @@
                 "spryker/testify": "*"
             },
             "suggest": {
+                "spryker-shop/merchant-widget": "If you want to use MerchantMetaSchemaWidget use the version >= 1.3.0",
                 "spryker/router": "If you want to use RouteProviderPlugins to be added to the Route Module."
             },
             "type": "library",
@@ -10775,9 +10777,9 @@
             ],
             "description": "PaymentPage module",
             "support": {
-                "source": "https://github.com/spryker-shop/payment-page/tree/1.2.0"
+                "source": "https://github.com/spryker-shop/payment-page/tree/1.3.0"
             },
-            "time": "2022-06-17T15:20:46+00:00"
+            "time": "2023-01-31T08:51:30+00:00"
         },
         {
             "name": "spryker-shop/persistent-cart-share-page",
@@ -11666,20 +11668,20 @@
         },
         {
             "name": "spryker-shop/product-detail-page",
-            "version": "3.18.0",
+            "version": "3.19.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/product-detail-page.git",
-                "reference": "486042285c3b13f3eb1dcff6814c7e3b5c168402"
+                "reference": "bff4ca6413174757617f2d34b94e4fbe867dde90"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/product-detail-page/zipball/486042285c3b13f3eb1dcff6814c7e3b5c168402",
-                "reference": "486042285c3b13f3eb1dcff6814c7e3b5c168402",
+                "url": "https://api.github.com/repos/spryker-shop/product-detail-page/zipball/bff4ca6413174757617f2d34b94e4fbe867dde90",
+                "reference": "bff4ca6413174757617f2d34b94e4fbe867dde90",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.4",
+                "php": ">=8.0",
                 "spryker-shop/shop-application": "^1.0.0",
                 "spryker-shop/shop-router-extension": "^1.0.0",
                 "spryker-shop/shop-ui": "^1.44.0",
@@ -11725,9 +11727,9 @@
             ],
             "description": "ProductDetailPage module",
             "support": {
-                "source": "https://github.com/spryker-shop/product-detail-page/tree/3.18.0"
+                "source": "https://github.com/spryker-shop/product-detail-page/tree/3.19.0"
             },
-            "time": "2022-09-21T14:05:42+00:00"
+            "time": "2023-03-14T10:53:22+00:00"
         },
         {
             "name": "spryker-shop/product-discontinued-widget",
@@ -14469,16 +14471,16 @@
         },
         {
             "name": "spryker-shop/shop-ui",
-            "version": "1.66.0",
+            "version": "1.67.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/shop-ui.git",
-                "reference": "e37b55a2734441bc38c6cb23ac9cf9c9dc8d60df"
+                "reference": "91837e0ce06eb46a7d4c799923443b77336df0ad"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/shop-ui/zipball/e37b55a2734441bc38c6cb23ac9cf9c9dc8d60df",
-                "reference": "e37b55a2734441bc38c6cb23ac9cf9c9dc8d60df",
+                "url": "https://api.github.com/repos/spryker-shop/shop-ui/zipball/91837e0ce06eb46a7d4c799923443b77336df0ad",
+                "reference": "91837e0ce06eb46a7d4c799923443b77336df0ad",
                 "shasum": ""
             },
             "require": {
@@ -14524,9 +14526,9 @@
             ],
             "description": "ShopUi module",
             "support": {
-                "source": "https://github.com/spryker-shop/shop-ui/tree/1.66.0"
+                "source": "https://github.com/spryker-shop/shop-ui/tree/1.67.0"
             },
-            "time": "2022-12-12T09:07:04+00:00"
+            "time": "2023-03-14T10:43:38+00:00"
         },
         {
             "name": "spryker-shop/shopping-list-note-widget",
@@ -15081,6 +15083,47 @@
                 "source": "https://github.com/spryker/acl-extension/tree/1.1.0"
             },
             "time": "2021-07-30T05:04:54+00:00"
+        },
+        {
+            "name": "spryker/acl-merchant-portal-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/acl-merchant-portal-extension.git",
+                "reference": "d850f2b7a8d94e696f037b62b7e0da0b64e1db62"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/acl-merchant-portal-extension/zipball/d850f2b7a8d94e696f037b62b7e0da0b64e1db62",
+                "reference": "d850f2b7a8d94e696f037b62b7e0da0b64e1db62",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "AclMerchantPortalExtension module",
+            "support": {
+                "source": "https://github.com/spryker/acl-merchant-portal-extension/tree/1.0.0"
+            },
+            "time": "2023-03-10T14:11:16+00:00"
         },
         {
             "name": "spryker/agent",
@@ -29598,16 +29641,16 @@
         },
         {
             "name": "spryker/gui",
-            "version": "3.47.0",
+            "version": "3.47.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/gui.git",
-                "reference": "65e5cd0d4f776291727f60017f695e741b2aa3db"
+                "reference": "e49ee2a564766123e54e91392ab5c007f4df8b3c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/gui/zipball/65e5cd0d4f776291727f60017f695e741b2aa3db",
-                "reference": "65e5cd0d4f776291727f60017f695e741b2aa3db",
+                "url": "https://api.github.com/repos/spryker/gui/zipball/e49ee2a564766123e54e91392ab5c007f4df8b3c",
+                "reference": "e49ee2a564766123e54e91392ab5c007f4df8b3c",
                 "shasum": ""
             },
             "require": {
@@ -29655,9 +29698,9 @@
             ],
             "description": "Gui module",
             "support": {
-                "source": "https://github.com/spryker/gui/tree/3.47.0"
+                "source": "https://github.com/spryker/gui/tree/3.47.1"
             },
-            "time": "2023-01-23T14:02:29+00:00"
+            "time": "2023-01-27T13:51:52+00:00"
         },
         {
             "name": "spryker/guzzle",
@@ -31488,16 +31531,16 @@
         },
         {
             "name": "spryker/message-broker-aws",
-            "version": "1.4.0",
+            "version": "1.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/message-broker-aws.git",
-                "reference": "611eb382482e95ba53cd0905008a6561639613fa"
+                "reference": "b4c4de089b516fa22624bf256525f5fb6c2669f5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/message-broker-aws/zipball/611eb382482e95ba53cd0905008a6561639613fa",
-                "reference": "611eb382482e95ba53cd0905008a6561639613fa",
+                "url": "https://api.github.com/repos/spryker/message-broker-aws/zipball/b4c4de089b516fa22624bf256525f5fb6c2669f5",
+                "reference": "b4c4de089b516fa22624bf256525f5fb6c2669f5",
                 "shasum": ""
             },
             "require": {
@@ -31542,9 +31585,9 @@
             ],
             "description": "MessageBrokerAws module",
             "support": {
-                "source": "https://github.com/spryker/message-broker-aws/tree/1.4.0"
+                "source": "https://github.com/spryker/message-broker-aws/tree/1.4.1"
             },
-            "time": "2023-02-07T16:11:30+00:00"
+            "time": "2023-03-14T08:26:09+00:00"
         },
         {
             "name": "spryker/message-broker-extension",
@@ -33350,20 +33393,21 @@
         },
         {
             "name": "spryker/oms",
-            "version": "11.22.1",
+            "version": "11.24.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/oms.git",
-                "reference": "1057d5a00875fa9f2d6d6c485f49d49a71a57450"
+                "reference": "358d67da8665fca44d445fbb4d4a26a71f814d4b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/oms/zipball/1057d5a00875fa9f2d6d6c485f49d49a71a57450",
-                "reference": "1057d5a00875fa9f2d6d6c485f49d49a71a57450",
+                "url": "https://api.github.com/repos/spryker/oms/zipball/358d67da8665fca44d445fbb4d4a26a71f814d4b",
+                "reference": "358d67da8665fca44d445fbb4d4a26a71f814d4b",
                 "shasum": ""
             },
             "require": {
                 "php": ">=8.0",
+                "spryker/acl-merchant-portal-extension": "^1.0.0",
                 "spryker/decimal-object": "^1.0.0",
                 "spryker/error-handler": "^2.1.0",
                 "spryker/graph": "^3.0.0",
@@ -33371,6 +33415,7 @@
                 "spryker/kernel": "^3.33.0",
                 "spryker/mail": "^4.6.0",
                 "spryker/mail-extension": "^1.0.0",
+                "spryker/message-broker": "^1.2.1",
                 "spryker/oms-extension": "^1.3.0",
                 "spryker/propel": "^3.28.0",
                 "spryker/propel-orm": "^1.16.0",
@@ -33378,7 +33423,7 @@
                 "spryker/sales-extension": "^1.7.0",
                 "spryker/store": "^1.5.0",
                 "spryker/symfony": "^3.0.0",
-                "spryker/transfer": "^3.25.0",
+                "spryker/transfer": "^3.27.0",
                 "spryker/util-network": "^1.1.0",
                 "spryker/util-sanitize": "^2.0.0",
                 "spryker/util-text": "^1.1.0"
@@ -33388,6 +33433,7 @@
                 "spryker/checkout": "*",
                 "spryker/code-sniffer": "*",
                 "spryker/customer": "*",
+                "spryker/sales-payment": "*",
                 "spryker/testify": "*"
             },
             "suggest": {
@@ -33411,9 +33457,9 @@
             ],
             "description": "Oms module",
             "support": {
-                "source": "https://github.com/spryker/oms/tree/11.22.1"
+                "source": "https://github.com/spryker/oms/tree/11.24.0"
             },
-            "time": "2022-11-23T14:02:25+00:00"
+            "time": "2023-03-10T14:11:16+00:00"
         },
         {
             "name": "spryker/oms-discount-connector",
@@ -33835,21 +33881,22 @@
         },
         {
             "name": "spryker/payment",
-            "version": "5.10.1",
+            "version": "5.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/payment.git",
-                "reference": "2a953acf91af258f26ef52bc845557968c754cc3"
+                "reference": "56b240620b4bec3c5f3703b5f981ad4450e91b79"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/payment/zipball/2a953acf91af258f26ef52bc845557968c754cc3",
-                "reference": "2a953acf91af258f26ef52bc845557968c754cc3",
+                "url": "https://api.github.com/repos/spryker/payment/zipball/56b240620b4bec3c5f3703b5f981ad4450e91b79",
+                "reference": "56b240620b4bec3c5f3703b5f981ad4450e91b79",
                 "shasum": ""
             },
             "require": {
                 "php": ">=8.0",
                 "psr/http-message": "^1.0.0",
+                "spryker/acl-merchant-portal-extension": "^1.0.0",
                 "spryker/checkout-extension": "^1.2.0",
                 "spryker/guzzle": "^2.2.0",
                 "spryker/kernel": "^3.30.0",
@@ -33897,9 +33944,9 @@
             ],
             "description": "Payment module",
             "support": {
-                "source": "https://github.com/spryker/payment/tree/5.10.1"
+                "source": "https://github.com/spryker/payment/tree/5.11.0"
             },
-            "time": "2022-12-29T12:04:01+00:00"
+            "time": "2023-03-10T14:11:16+00:00"
         },
         {
             "name": "spryker/payment-cart-connector",
@@ -49033,20 +49080,21 @@
         },
         {
             "name": "spryker/store",
-            "version": "1.17.0",
+            "version": "1.18.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/store.git",
-                "reference": "4f874bead7fc0ee605bf089b69d100e3704b716a"
+                "reference": "370f6b23a6ea54d3198408b9d22075f36c6ffc4f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/store/zipball/4f874bead7fc0ee605bf089b69d100e3704b716a",
-                "reference": "4f874bead7fc0ee605bf089b69d100e3704b716a",
+                "url": "https://api.github.com/repos/spryker/store/zipball/370f6b23a6ea54d3198408b9d22075f36c6ffc4f",
+                "reference": "370f6b23a6ea54d3198408b9d22075f36c6ffc4f",
                 "shasum": ""
             },
             "require": {
                 "php": ">=8.0",
+                "spryker/acl-merchant-portal-extension": "^1.0.0",
                 "spryker/application-extension": "^1.0.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/log": "^1.0.0 || ^2.0.0 || ^3.0.0",
@@ -49087,9 +49135,9 @@
             ],
             "description": "Store module",
             "support": {
-                "source": "https://github.com/spryker/store/tree/1.17.0"
+                "source": "https://github.com/spryker/store/tree/1.18.1"
             },
-            "time": "2023-02-20T10:18:53+00:00"
+            "time": "2023-03-14T08:26:09+00:00"
         },
         {
             "name": "spryker/store-gui",
@@ -49188,50 +49236,50 @@
         },
         {
             "name": "spryker/symfony",
-            "version": "3.10.0",
+            "version": "3.11.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/symfony.git",
-                "reference": "21895c5a298987f75efd624d5ef8a13126e0805d"
+                "reference": "637504de61601f39ffac01bd47b6200e8fe30822"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/symfony/zipball/21895c5a298987f75efd624d5ef8a13126e0805d",
-                "reference": "21895c5a298987f75efd624d5ef8a13126e0805d",
+                "url": "https://api.github.com/repos/spryker/symfony/zipball/637504de61601f39ffac01bd47b6200e8fe30822",
+                "reference": "637504de61601f39ffac01bd47b6200e8fe30822",
                 "shasum": ""
             },
             "require": {
                 "php": ">=8.0",
-                "symfony-cmf/routing": "^2.3.3",
-                "symfony/config": "^5.0.9",
-                "symfony/console": "^5.3.0",
+                "symfony-cmf/routing": "^2.3.3 || ^3.0.0",
+                "symfony/config": "^5.0.9 || ^6.0.0",
+                "symfony/console": "^5.3.0 || ^6.0.0",
                 "symfony/debug": "^4.4.9",
-                "symfony/error-handler": "^5.0.9",
-                "symfony/event-dispatcher": "^5.1.0",
-                "symfony/filesystem": "^5.2.1",
-                "symfony/finder": "^5.3.0",
-                "symfony/form": "^5.2.0",
-                "symfony/http-client": "^5.0.9",
-                "symfony/http-foundation": "^5.2.0",
-                "symfony/http-kernel": "^5.2.0",
-                "symfony/intl": "^5.0.9",
+                "symfony/error-handler": "^5.0.9 || ^6.0.0",
+                "symfony/event-dispatcher": "^5.1.0 || ^6.0.0",
+                "symfony/filesystem": "^5.2.1 || ^6.0.0",
+                "symfony/finder": "^5.3.0 || ^6.0.0",
+                "symfony/form": "^5.2.0 || ^6.0.0",
+                "symfony/http-client": "^5.0.9 || ^6.0.0",
+                "symfony/http-foundation": "^5.2.0 || ^6.0.0",
+                "symfony/http-kernel": "^5.2.0 || ^6.0.0",
+                "symfony/intl": "^5.0.9 || ^6.0.0",
                 "symfony/messenger": "^5.0.0 || ^6.0.0",
-                "symfony/mime": "^5.0.9",
-                "symfony/options-resolver": "^5.0.9",
-                "symfony/process": "^5.4.0",
-                "symfony/property-access": "^5.4.0",
-                "symfony/routing": "^5.1.0",
+                "symfony/mime": "^5.0.9 || ^6.0.0",
+                "symfony/options-resolver": "^5.0.9 || ^6.0.0",
+                "symfony/process": "^5.4.0 || ^6.0.0",
+                "symfony/property-access": "^5.4.0 || ^6.0.0",
+                "symfony/routing": "^5.1.0 || ^6.0.0",
                 "symfony/security-core": "^5.2.8",
-                "symfony/security-csrf": "^5.0.9",
+                "symfony/security-csrf": "^5.3.0 || ^6.0.0",
                 "symfony/security-guard": "^5.2.8",
                 "symfony/security-http": "^5.2.8",
-                "symfony/serializer": "^5.0.9",
-                "symfony/stopwatch": "^5.0.9",
-                "symfony/translation": "^5.0.9",
-                "symfony/translation-contracts": "^2.1.2",
-                "symfony/twig-bridge": "^5.0.9",
-                "symfony/validator": "^5.2.0",
-                "symfony/yaml": "^5.1.10"
+                "symfony/serializer": "^5.0.9 || ^6.0.0",
+                "symfony/stopwatch": "^5.0.9 || ^6.0.0",
+                "symfony/translation": "^5.0.9 || ^6.0.0",
+                "symfony/translation-contracts": "^2.1.2 || ^3.0.0",
+                "symfony/twig-bridge": "^5.0.9 || ^6.0.0",
+                "symfony/validator": "^5.2.0 || ^6.0.0",
+                "symfony/yaml": "^5.1.10  || ^6.0.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
@@ -49255,9 +49303,9 @@
             ],
             "description": "Symfony module",
             "support": {
-                "source": "https://github.com/spryker/symfony/tree/3.10.0"
+                "source": "https://github.com/spryker/symfony/tree/3.11.1"
             },
-            "time": "2022-12-23T11:50:03+00:00"
+            "time": "2023-01-27T13:52:43+00:00"
         },
         {
             "name": "spryker/symfony-mailer",
