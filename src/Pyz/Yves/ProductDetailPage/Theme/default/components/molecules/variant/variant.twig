@@ -61,7 +61,7 @@
         {% endif %}
     {% else %}
         <div class="{{ config.name }}__selected-value">
-            {{data.selectedValue}} <a href="?">{{ 'Reset' | trans }}</a>
+            {{data.selectedValue}} <a href="?{{data.optionResetUrl}}">{{ 'Reset' | trans }}</a>
             <input type="hidden" name="{{data.formName}}" value="{{data.selectedValue}}" />
         </div>
     {% endif %}
