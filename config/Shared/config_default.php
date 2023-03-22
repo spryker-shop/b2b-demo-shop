@@ -725,7 +725,6 @@ $config[MessageBrokerAwsConstants::CHANNEL_TO_SENDER_TRANSPORT_MAP] = [
     'payment' => 'http',
     'assets' => 'http',
     'product' => 'http',
-    'search' => 'http',
     'orders' => 'http',
 ];
 
