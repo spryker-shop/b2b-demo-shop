@@ -27,9 +27,9 @@
         {% set isAvailable = true %}
         {% set optionResetUrl = '' %}
 
-        {% for selectedAttributeName, selectedAttributeValue in data.selectedAttributes | filter((v, k) => k != name) %}
-            {% set selectedUrlParameter = [('attribute[' ~ selectedAttributeName ~ ']')| url_encode, selectedAttributeValue]|join('=') %}
-            {% set optionResetUrl = [optionResetUrl, selectedUrlParameter]|join('&') %}
+        {% for selectedAttributeName, selectedAttributeValue in data.selectedAttributes | filter((value, key) => key != name) %}
+            {% set selectedUrlParameter = [('attribute[' ~ selectedAttributeName ~ ']')| url_encode, selectedAttributeValue] | join('=') %}
+            {% set optionResetUrl = [optionResetUrl, selectedUrlParameter] | join('&') %}
         {% endfor %}
 
         {% if name in data.availableAttributes | keys %}
@@ -49,8 +49,8 @@
                             selectedValue: selectedValue,
                             label: ('product.attribute.' ~ name) | trans,
                             isAvailable: isAvailable,
-                            optionResetUrl: optionResetUrl
-                        }
+                            optionResetUrl: optionResetUrl,
+                        },
                     } only %}
                 </div>
             {% endblock %}
