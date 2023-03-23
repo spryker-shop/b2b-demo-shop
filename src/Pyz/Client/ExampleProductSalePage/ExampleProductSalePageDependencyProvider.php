@@ -8,8 +8,6 @@
 namespace Pyz\Client\ExampleProductSalePage;
 
 use Pyz\Client\ExampleProductSalePage\Plugin\Elasticsearch\Query\SaleSearchQueryPlugin;
-use Spryker\Client\Catalog\Plugin\Elasticsearch\ResultFormatter\RawCatalogSearchResultFormatterPlugin;
-use Spryker\Client\CatalogPriceProductConnector\Plugin\CurrencyAwareCatalogSearchResultFormatterPlugin;
 use Spryker\Client\CatalogPriceProductConnector\Plugin\ProductPriceQueryExpanderPlugin;
 use Spryker\Client\CustomerCatalog\Plugin\Search\ProductListQueryExpanderPlugin;
 use Spryker\Client\Kernel\AbstractDependencyProvider;
@@ -170,16 +168,10 @@ class ExampleProductSalePageDependencyProvider extends AbstractDependencyProvide
      */
     protected function getSaleSearchResultFormatterPlugins(): array
     {
-        /** @phpstan-var \Spryker\Client\SearchExtension\Dependency\Plugin\ResultFormatterPluginInterface $rawCatalogSearchResultFormatterPlugin */
-        $rawCatalogSearchResultFormatterPlugin = new RawCatalogSearchResultFormatterPlugin();
-
         return [
             new FacetResultFormatterPlugin(),
             new SortedResultFormatterPlugin(),
             new PaginatedResultFormatterPlugin(),
-            new CurrencyAwareCatalogSearchResultFormatterPlugin(
-                $rawCatalogSearchResultFormatterPlugin,
-            ),
         ];
     }
 
