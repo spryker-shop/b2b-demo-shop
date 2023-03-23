@@ -28,7 +28,7 @@
         {% set optionResetUrl = '' %}
 
         {% for selectedAttributeName, selectedAttributeValue in data.selectedAttributes | filter((value, key) => key != name) %}
-            {% set selectedUrlParameter = ('attribute[' ~ selectedAttributeName ~ ']')| url_encode ~ '=' ~ selectedAttributeValue %}
+            {% set selectedUrlParameter = ('attribute[' ~ selectedAttributeName ~ ']') | url_encode ~ '=' ~ selectedAttributeValue %}
             {% set optionResetUrl = optionResetUrl ~ '&' ~ selectedUrlParameter %}
         {% endfor %}
 
