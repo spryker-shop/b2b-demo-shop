@@ -37,6 +37,9 @@
     <div class="{{ additionalFiltersRowClass }}">
         {% for filter in data.orderSearchForm.filters.children %}
             {% if filter.vars.name != 'companyBusinessUnit' %}
+                {% set dateFromId = 'dateTo' in filter.vars.id ? 'orderSearchForm_filters_dateFrom' : false %}
+                {% set dateToId = 'dateFrom' in filter.vars.id ? 'orderSearchForm_filters_dateTo' : false %}
+
                 <div class="{{ filter.vars.attr.class }}">
                     {% widget 'LanguageSwitcherWidget' args [data.pathInfo, data.queryString, data.requestUri] with {
                         data: {
@@ -44,6 +47,8 @@
                         },
                         embed: {
                             fieldClass: data.jsPrefix ~ filter.vars.name ~ '-target',
+                            dateFromId: dateFromId,
+                            dateToId: dateToId,
                         },
                     } only %}
                         {% block body %}
@@ -59,6 +64,8 @@
                                         "format": "Y-m-d H:i"
                                     }',
                                     'formatted-date-time': data.field.vars.value | date('Y-m-d H:i'),
+                                    'date-from-id': embed.dateFromId,
+                                    'date-to-id': embed.dateToId,
                                 },
                             } only %}
                         {% endblock %}
