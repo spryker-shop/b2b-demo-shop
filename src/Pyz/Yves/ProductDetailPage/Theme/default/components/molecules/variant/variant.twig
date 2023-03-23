@@ -12,6 +12,7 @@
     values: required,
     selectedValue: null,
     label: '',
+    optionResetUrl: '',
     isAvailable: true,
     selectModifiers: ['margin-bottom'],
     selectTheme: 'default',
@@ -61,8 +62,8 @@
         {% endif %}
     {% else %}
         <div class="{{ config.name }}__selected-value">
-            {{data.selectedValue}} <a href="?{{data.optionResetUrl}}">{{ 'Reset' | trans }}</a>
-            <input type="hidden" name="{{data.formName}}" value="{{data.selectedValue}}" />
+            {{ data.selectedValue }} <a href="?{{ data.optionResetUrl }}">{{ 'Reset' | trans }}</a>
+            <input type="hidden" name="{{ data.formName }}" value="{{ data.selectedValue }}" />
         </div>
     {% endif %}
 {% endblock %}
