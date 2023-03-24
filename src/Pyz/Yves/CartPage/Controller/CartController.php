@@ -24,6 +24,7 @@ class CartController extends SprykerCartController
 
     /**
      * @param array $selectedAttributes
+     * @param bool $withItems
      *
      * @return array
      */
