@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "da51b53f13f4bdf0e13236c71d7a9c85",
+    "content-hash": "704d3fef2cb62c1800d9659d84820141",
     "packages": [
         {
             "name": "async-aws/core",
@@ -5939,7 +5939,7 @@
         },
         {
             "name": "spryker-feature/packaging-units",
-            "version": "202212.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-feature/packaging-units.git",
@@ -5961,6 +5961,7 @@
             "suggest": {
                 "spryker-feature/product": "Recommended feature dependency."
             },
+            "default-branch": true,
             "type": "metapackage",
             "extra": {
                 "branch-alias": {
@@ -7075,16 +7076,16 @@
         },
         {
             "name": "spryker-feature/spryker-core",
-            "version": "202212.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-feature/spryker-core.git",
-                "reference": "653acc570c8177cdb08a761e7604f2fcaf40f26a"
+                "reference": "09ee0581a1b6bfc13f967abb8b7e2e66fbcd9dfd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-feature/spryker-core/zipball/653acc570c8177cdb08a761e7604f2fcaf40f26a",
-                "reference": "653acc570c8177cdb08a761e7604f2fcaf40f26a",
+                "url": "https://api.github.com/repos/spryker-feature/spryker-core/zipball/09ee0581a1b6bfc13f967abb8b7e2e66fbcd9dfd",
+                "reference": "09ee0581a1b6bfc13f967abb8b7e2e66fbcd9dfd",
                 "shasum": ""
             },
             "require": {
@@ -7158,6 +7159,7 @@
                 "spryker/vault": "^1.2.0",
                 "spryker/zed-request": "^3.18.0"
             },
+            "default-branch": true,
             "type": "metapackage",
             "extra": {
                 "branch-alias": {
@@ -7170,9 +7172,9 @@
             ],
             "description": "Spryker Core [feature]",
             "support": {
-                "source": "https://github.com/spryker-feature/spryker-core/tree/202212.0"
+                "source": "https://github.com/spryker-feature/spryker-core/tree/master"
             },
-            "time": "2022-12-16T09:39:49+00:00"
+            "time": "2023-03-17T07:32:02+00:00"
         },
         {
             "name": "spryker-feature/spryker-core-back-office",
@@ -12139,22 +12141,22 @@
         },
         {
             "name": "spryker-shop/product-packaging-unit-widget",
-            "version": "1.4.0",
+            "version": "1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/product-packaging-unit-widget.git",
-                "reference": "a72e4bcf5ffac356162b80b4ebdb2779902177e6"
+                "reference": "f9b78f1858324f084134ab0fca94fd5e27f29cdd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/product-packaging-unit-widget/zipball/a72e4bcf5ffac356162b80b4ebdb2779902177e6",
-                "reference": "a72e4bcf5ffac356162b80b4ebdb2779902177e6",
+                "url": "https://api.github.com/repos/spryker-shop/product-packaging-unit-widget/zipball/f9b78f1858324f084134ab0fca94fd5e27f29cdd",
+                "reference": "f9b78f1858324f084134ab0fca94fd5e27f29cdd",
                 "shasum": ""
             },
             "require": {
                 "php": ">=8.0",
                 "spryker-shop/quick-order-page-extension": "^1.0.0",
-                "spryker-shop/shop-ui": "^1.66.0",
+                "spryker-shop/shop-ui": "^1.67.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/locale": "^3.0.0",
                 "spryker/product-measurement-unit-storage": "^1.1.0",
@@ -12194,9 +12196,9 @@
             ],
             "description": "ProductPackagingUnitWidget module",
             "support": {
-                "source": "https://github.com/spryker-shop/product-packaging-unit-widget/tree/1.4.0"
+                "source": "https://github.com/spryker-shop/product-packaging-unit-widget/tree/1.5.0"
             },
-            "time": "2022-12-12T09:07:04+00:00"
+            "time": "2023-03-14T10:43:38+00:00"
         },
         {
             "name": "spryker-shop/product-relation-widget",
@@ -63428,6 +63430,12 @@
             "alias_normalized": "202304.0"
         },
         {
+            "package": "spryker-feature/packaging-units",
+            "version": "9999999-dev",
+            "alias": "202304.0",
+            "alias_normalized": "202304.0"
+        },
+        {
             "package": "spryker-feature/product",
             "version": "9999999-dev",
             "alias": "202304.0",
@@ -63441,6 +63449,12 @@
         },
         {
             "package": "spryker-feature/product-lists",
+            "version": "9999999-dev",
+            "alias": "202304.0",
+            "alias_normalized": "202304.0"
+        },
+        {
+            "package": "spryker-feature/spryker-core",
             "version": "9999999-dev",
             "alias": "202304.0",
             "alias_normalized": "202304.0"
@@ -63460,9 +63474,11 @@
         "spryker-feature/company-account": 20,
         "spryker-feature/deployment-tools": 20,
         "spryker-feature/file-manager": 20,
+        "spryker-feature/packaging-units": 20,
         "spryker-feature/product": 20,
         "spryker-feature/product-labels": 20,
         "spryker-feature/product-lists": 20,
+        "spryker-feature/spryker-core": 20,
         "spryker-feature/tax": 20,
         "spryker-feature/development-tools": 20,
         "spryker-sdk/integrator": 20,
