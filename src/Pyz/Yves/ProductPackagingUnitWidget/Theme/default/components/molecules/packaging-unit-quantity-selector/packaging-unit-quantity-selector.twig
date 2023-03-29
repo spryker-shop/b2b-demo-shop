@@ -1,10 +1,235 @@
-{% extends model('component') %}
+{% extends molecule('packaging-unit-quantity-selector', '@SprykerShop:ProductPackagingUnitWidget') %}
 
-{% define config = {
-    name: 'packaging-unit-quantity-selector',
-    tag: 'packaging-unit-quantity-selector',
-} %}
+{% block body %}
+    {% set isAddToCartDisabled = data.isAddToCartDisabled ? 'disabled' %}
 
-{% define attributes = {
-    json: required,
-} %}
+    {% block newPrice %}
+        <div class="{{ config.name }}__new-price is-hidden {{ config.jsName }}__product-packaging-new-price-block">
+            <div class="{{ config.name }}__new-price-label">{{ 'measurement_units.new-price' | trans }}:</div>
+            <div class="{{ config.name }}__new-price-value {{ config.jsName }}__product-packaging-new-price-value-block"></div>
+        </div>
+        <input class="{{ config.jsName }}__item-base-price" type="hidden" value="{{ data.product.price }}">
+        <input class="{{ config.jsName }}__item-money-symbol" type="hidden" value="{{ moneySymbol() }}">
+    {% endblock %}
+
+    {% if not salesUnitCount %}
+        <div class="grid grid--stretch grid--justify">
+            {% include molecule('quantity-counter') with {
+                modifiers: ['right-space'],
+                data: {
+                    numberFormatConfig: data.numberFormatConfig,
+                    inputExtraClasses: 'js-volume-price__quantity',
+                },
+            } only %}
+
+            <div class="col col--expand">
+                {% block addToCartButton %}
+                    <button type="submit" class="{{ config.jsName }}__add-to-cart-button button button--alternative button--big button--expand button--no-horizontal-padding"
+                            data-init-single-click {{ isAddToCartDisabled }} {{ qa('add-to-cart-button') }}>
+                        {% include atom('icon') with {
+                            modifiers: ['cart-plus'],
+                            data: {
+                                name: 'cart-plus',
+                            },
+                        } only %}
+                        {{ 'page.detail.add-to-cart' | trans }}
+                    </button>
+                {% endblock %}
+            </div>
+        </div>
+    {% endif %}
+
+    {% if salesUnitCount %}
+        {% set isMultipleMeasurementUnits = salesUnitCount > 1 and data.packagingUnitIsSelfLead == false %}
+        {% set isSingleMeasurementUnit = salesUnitCount == 1 and data.packagingUnitIsSelfLead == false %}
+
+        {% block measurementUnitSelector %}
+            <div class="grid grid--middle {{ isMultipleMeasurementUnits ? 'grid--justify' }}">
+                <div class="col {{ config.name }}__unit-field">
+                    <div class="{{ config.name }}__unit-field-label">{{ 'packaging_units.pdp.quantity' | trans }}:</div>
+                    <div class="{{ config.name }}__unit-field-value">
+                        {% include molecule('quantity-counter') with {
+                            modifiers: ['right-space'],
+                            attributes: {
+                                value: data.minQuantityInSalesUnits,
+                                name: 'sales-unit-quantity',
+                            },
+                            data: {
+                                formattedNumberExtraClass: config.jsName ~ '__formatted-sales-unit-quantity',
+                                numberFormatConfig: data.numberFormatConfig,
+                                inputExtraClasses: config.jsName ~ '__sales-unit-quantity js-volume-price__quantity quantity-counter__input--medium-width',
+                            },
+                        } only %}
+                        <input class="{{ config.jsName }}__base-unit-quantity" type="hidden"
+                               value="{{ data.minQuantityInBaseUnit }}" name="quantity">
+                    </div>
+                </div>
+
+                {% if isMultipleMeasurementUnits %}
+                    <div class="col col--sm-12 col--md-auto col--lg-12 col--xxl-auto {{ config.name }}__unit-field">
+                        <div class="{{ config.name }}__unit-field-label">{{ 'packaging_units.pdp.sales-units' | trans }}:</div>
+                        <div class="{{ config.name }}__unit-field-value">
+                            {% embed molecule('custom-select') with {
+                                modifiers: ['small'],
+                                attributes: {
+                                    name: 'id-product-measurement-sales-unit',
+                                    'config-theme': 'small',
+                                },
+                                embed: {
+                                    salesUnits: data.salesUnits,
+                                    jsName: config.jsName,
+                                },
+                            } only %}
+                                {% block selectClass %}{{ parent() }} {{ embed.jsName }}__select-measurement-unit{% endblock %}
+
+                                {% block options %}
+                                    {% for salesUnit in embed.salesUnits %}
+                                        <option value="{{ salesUnit.idProductMeasurementSalesUnit }}" {{ salesUnit.isDefault ? 'selected' }}>{{ salesUnit.productMeasurementUnit.name | trans }}</option>
+                                    {% endfor %}
+                                {% endblock %}
+                            {% endembed %}
+                        </div>
+                    </div>
+                {% endif %}
+
+                {% if isSingleMeasurementUnit %}
+                    <div class="col {{ config.name }}__unit-field">
+                        <div class="{{ config.name }}__unit-field-value">{{ data.salesUnits[0].productMeasurementUnit.name | trans }}</div>
+                        <input type="hidden" name="id-product-measurement-sales-unit" value="{{ data.salesUnits[0].idProductMeasurementSalesUnit }}">
+                    </div>
+                {% endif %}
+            </div>
+        {% endblock %}
+
+        {% block measurementUnitChoice %}
+            <div class="{{ config.name }}__unit-choice {{ config.jsName }}__measurement-unit-choice is-hidden">
+                <div class="{{ config.name }}__unit-notifications">
+                    <div class="{{ config.jsName }}__quantity-between-units is-hidden">
+                        <span>{{ 'measurement_units.recommendation.between-units-info' | trans }}
+                            (<span class="{{ config.jsName }}__current-choice"></span>)
+                        </span>
+                    </div>
+                    <div class="{{ config.jsName }}__minimum-quantity is-hidden">
+                        <span>{{ 'measurement_units.recommendation.min-violation' | trans }}</span>
+                    </div>
+                    <div class="{{ config.jsName }}__maximum-quantity is-hidden">
+                        <span>{{ 'measurement_units.recommendation.max-violation' | trans }}</span>
+                    </div>
+                </div>
+
+                <div class="{{ config.jsName }}__measurement-unit-choices">
+                    <span>{{ 'measurement_units.recommendation.suggestion' | trans }}:</span>
+                    <div class="{{ config.name }}__unit-choice-list {{ config.jsName }}__list"></div>
+                </div>
+            </div>
+        {% endblock %}
+
+        {% block packagingUnitSelector %}
+            {% if data.productPackagingUnit %}
+                {% set defaultAmount = (data.productPackagingUnit.amountMin and data.productPackagingUnit.defaultAmount.toFloat() < data.productPackagingUnit.amountMin.toFloat()) ?
+                    data.productPackagingUnit.amountMin :
+                    data.productPackagingUnit.defaultAmount %}
+                {% set isAmountRowJustify = data.leadProductSalesUnits | length > 1 ? 'grid--justify' %}
+
+                <div class="grid grid--middle {{ isAmountRowJustify }}">
+                    <div class="col {{ config.name }}__unit-field">
+                        <div class="{{ config.name }}__unit-field-label">{{ 'packaging_units.pdp.amount' | trans }}:</div>
+                        <div class="{{ config.name }}__unit-field-value">
+                            {% include molecule('quantity-counter') with {
+                                modifiers: ['right-space'],
+                                data: {
+                                    isDisabled: not data.packagingUnitIsAmountVariable,
+                                    formattedNumberExtraClass: config.jsName ~ '__formatted-user-amount',
+                                    inputExtraClasses: config.jsName ~ '__user-amount quantity-counter__input--medium-width',
+                                    numberFormatConfig: data.numberFormatConfig,
+                                },
+                                attributes: {
+                                    value: defaultAmount,
+                                    min: data.productPackagingUnit.amountMin,
+                                    max: data.productPackagingUnit.amountMax,
+                                    step: data.productPackagingUnit.amountInterval,
+                                    name: 'amount-sales-unit[' ~ data.product.sku ~ ']',
+                                },
+                            } only %}
+
+                            <input class="{{ config.jsName }}__default-amount" type="hidden" value="{{ defaultAmount }}">
+                            <input class="{{ config.jsName }}__amount" type="hidden" value="{{ defaultAmount }}"
+                                   name="amount[{{ data.product.sku }}]">
+                        </div>
+                    </div>
+
+                    {% if data.leadProductSalesUnits | length > 1 %}
+                        <div class="col col--sm-12 col--md-auto col--lg-12 col--xxl-auto {{ config.name }}__unit-field">
+                            <div class="{{ config.name }}__unit-field-label">{{ 'packaging_units.pdp.sales-units' | trans }}:</div>
+                            <div class="{{ config.name }}__unit-field-value">
+                                {% embed molecule('custom-select') with {
+                                    modifiers: ['small'],
+                                    attributes: {
+                                        name: 'amount-id-product-measurement-sales-unit[' ~ data.product.sku ~ ']',
+                                        'config-theme': 'small',
+                                    },
+                                    embed: {
+                                        jsName: config.jsName,
+                                        salesUnits: data.leadProductSalesUnits,
+                                    },
+                                } only %}
+                                    {% block selectClass %}{{ parent() }} {{ embed.jsName }}__select-lead-measurement-unit{% endblock %}
+
+                                    {% block options %}
+                                        {% for salesUnit in embed.salesUnits %}
+                                            {% set isSalesUnitSelected = salesUnit.isDefault ? 'selected' %}
+
+                                            <option value="{{ salesUnit.idProductMeasurementSalesUnit }}" {{ isSalesUnitSelected }}>{{ salesUnit.productMeasurementUnit.name | trans }}</option>
+                                        {% endfor %}
+                                    {% endblock %}
+                                {% endembed %}
+                            </div>
+                        </div>
+                    {% endif %}
+
+                    {% if data.leadProductSalesUnits | length == 1 %}
+                        <div class="col {{ config.name }}__unit-field">
+                            <div class="{{ config.name }}__unit-field-value">{{ data.leadProductSalesUnits[0].productMeasurementUnit.name | trans }}</div>
+                            <input type="hidden" name="amount-id-product-measurement-sales-unit[{{ data.product.sku }}]" value="{{ data.leadProductSalesUnits[0].idProductMeasurementSalesUnit }}">
+                        </div>
+                    {% endif %}
+                </div>
+            {% endif %}
+        {% endblock %}
+
+        {% block packagingUnitChoice %}
+            <div class="{{ config.name }}__unit-choice {{ config.jsName }}__packaging-unit-choice is-hidden">
+                <div class="{{ config.name }}__unit-notifications">
+                    <div class="{{ config.jsName }}__amount-between-units is-hidden">
+                        <span>{{ 'packaging_units.recommendation.between-units-info' | trans }}
+                            (<span class="{{ config.jsName }}__amount-current-choice"></span>)
+                        </span>
+                    </div>
+                    <div class="{{ config.jsName }}__packaging-amount-min is-hidden">
+                        <span>{{ 'packaging-units.recommendation.amount-min-violation' | trans }}</span>
+                    </div>
+                    <div class="{{ config.jsName }}__packaging-amount-max is-hidden">
+                        <span>{{ 'packaging-units.recommendation.amount-max-violation' | trans }}</span>
+                    </div>
+                    <div class="{{ config.jsName }}__packaging-amount-interval is-hidden">
+                        <span>{{ 'packaging-units.recommendation.amount-interval-violation' | trans }}</span>
+                    </div>
+                </div>
+
+                <div class="{{ config.jsName }}__packaging-unit-choices">
+                    <span>{{ 'packaging_units.recommendation.suggestion' | trans }}</span>
+                    <div class="{{ config.name }}__unit-choice-list {{ config.jsName }}__list"></div>
+                </div>
+            </div>
+        {% endblock %}
+
+        {{ block('addToCartButton') }}
+
+        {% set translations = [] %}
+        {% for key, salesUnit in data.salesUnits %}
+            {% set translations = translations | merge({ (salesUnit.productMeasurementUnit.code) : (salesUnit.productMeasurementUnit.name | trans) }) %}
+        {% endfor %}
+
+        <script type="application/json" class="{{ config.jsName }}__measurement-unit-translation">{{ translations | json_encode | raw }}</script>
+    {% endif %}
+{% endblock %}

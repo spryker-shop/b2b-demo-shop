@@ -1,0 +1,86 @@
+@mixin product-packaging-unit-widget-packaging-unit-quantity-selector($name: '.packaging-unit-quantity-selector') {
+    #{$name} {
+        &__new-price {
+            display: flex;
+            align-items: center;
+            margin-bottom: map-get($setting-spacing, big);
+        }
+
+        &__new-price-label {
+            margin-right: map-get($setting-spacing, default);
+        }
+
+        &__new-price-value {
+            @include helper-font-size(big);
+        }
+
+        &__unit-field {
+            display: flex;
+            align-items: center;
+            margin-bottom: map-get($setting-spacing, big);
+        }
+
+        &__unit-field-label {
+            @include helper-font-size(small);
+            @include helper-font-weight(regular);
+            min-width: rem(92);
+            padding-right: map-get($setting-spacing, big);
+            color: $setting-color-gray-4;
+
+            @include helper-breakpoint-media-min($md) {
+                min-width: 0;
+            }
+
+            @include helper-breakpoint-media-min($lg) {
+                min-width: rem(75);
+            }
+        }
+
+        &__unit-choice {
+            @include helper-font-size(small);
+            @include helper-font-weight(regular);
+            border-radius: $setting-border-radius;
+            background: $setting-color-gray-7;
+            padding: map-get($setting-spacing, big) map-get($setting-spacing, big) rem(21);
+            margin-bottom: map-get($setting-spacing, big);
+            color: $setting-color-gray-3;
+
+            @include helper-breakpoint-media-min($lg) {
+                background-color: $setting-color-white;
+                box-shadow: 0 rem(18) rem(18) 0 $setting-color-alpha-2, 0 rem(3) rem(3) 0 $setting-color-alpha-2;
+            }
+        }
+
+        &__unit-choice-list {
+            display: flex;
+            flex-wrap: wrap;
+            padding-top: map-get($setting-spacing, default);
+
+            .link {
+                border-radius: $setting-border-radius;
+                background: $setting-color-white;
+                color: $setting-color-gray-4;
+                padding: rem(3) rem(13);
+                margin-top: map-get($setting-spacing, default);
+                margin-right: rem(10);
+                display: inline-block;
+                box-shadow: 0 rem(18) rem(18) 0 $setting-color-alpha-2, 0 rem(3) rem(3) 0 $setting-color-alpha-2;
+
+                @include helper-breakpoint-media-min($lg) {
+                    background: $setting-color-alpha-5;
+                    color: $setting-color-alt;
+                }
+
+                &:hover {
+                    background: $setting-color-alt;
+                    color: $setting-color-white;
+                    text-decoration: none;
+                }
+            }
+        }
+
+        @content;
+    }
+}
+
+@include product-packaging-unit-widget-packaging-unit-quantity-selector;
