@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1e1760d671ab14b7a5fd349c7dc2e93b",
+    "content-hash": "419f9abe5f3a4632ce809d25dae10a1b",
     "packages": [
         {
             "name": "async-aws/core",
@@ -5939,7 +5939,7 @@
         },
         {
             "name": "spryker-feature/packaging-units",
-            "version": "202212.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-feature/packaging-units.git",
@@ -5961,6 +5961,7 @@
             "suggest": {
                 "spryker-feature/product": "Recommended feature dependency."
             },
+            "default-branch": true,
             "type": "metapackage",
             "extra": {
                 "branch-alias": {
@@ -7076,16 +7077,16 @@
         },
         {
             "name": "spryker-feature/spryker-core",
-            "version": "202212.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-feature/spryker-core.git",
-                "reference": "653acc570c8177cdb08a761e7604f2fcaf40f26a"
+                "reference": "c9d417e02f2ab7c2ed424d2bc747c23315a28791"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-feature/spryker-core/zipball/653acc570c8177cdb08a761e7604f2fcaf40f26a",
-                "reference": "653acc570c8177cdb08a761e7604f2fcaf40f26a",
+                "url": "https://api.github.com/repos/spryker-feature/spryker-core/zipball/c9d417e02f2ab7c2ed424d2bc747c23315a28791",
+                "reference": "c9d417e02f2ab7c2ed424d2bc747c23315a28791",
                 "shasum": ""
             },
             "require": {
@@ -7138,6 +7139,7 @@
                 "spryker/scheduler": "^1.2.0",
                 "spryker/security": "^1.7.0",
                 "spryker/security-blocker": "^1.1.0",
+                "spryker/security-blocker-storefront-customer": "^1.0.0",
                 "spryker/security-system-user": "^1.0.0",
                 "spryker/session": "^4.13.0",
                 "spryker/session-file": "^1.5.0",
@@ -7159,6 +7161,7 @@
                 "spryker/vault": "^1.2.0",
                 "spryker/zed-request": "^3.18.0"
             },
+            "default-branch": true,
             "type": "metapackage",
             "extra": {
                 "branch-alias": {
@@ -7171,9 +7174,9 @@
             ],
             "description": "Spryker Core [feature]",
             "support": {
-                "source": "https://github.com/spryker-feature/spryker-core/tree/202212.0"
+                "source": "https://github.com/spryker-feature/spryker-core/tree/master"
             },
-            "time": "2022-12-16T09:39:49+00:00"
+            "time": "2023-03-28T13:56:15+00:00"
         },
         {
             "name": "spryker-feature/spryker-core-back-office",
@@ -12140,22 +12143,22 @@
         },
         {
             "name": "spryker-shop/product-packaging-unit-widget",
-            "version": "1.4.0",
+            "version": "1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-shop/product-packaging-unit-widget.git",
-                "reference": "a72e4bcf5ffac356162b80b4ebdb2779902177e6"
+                "reference": "f9b78f1858324f084134ab0fca94fd5e27f29cdd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-shop/product-packaging-unit-widget/zipball/a72e4bcf5ffac356162b80b4ebdb2779902177e6",
-                "reference": "a72e4bcf5ffac356162b80b4ebdb2779902177e6",
+                "url": "https://api.github.com/repos/spryker-shop/product-packaging-unit-widget/zipball/f9b78f1858324f084134ab0fca94fd5e27f29cdd",
+                "reference": "f9b78f1858324f084134ab0fca94fd5e27f29cdd",
                 "shasum": ""
             },
             "require": {
                 "php": ">=8.0",
                 "spryker-shop/quick-order-page-extension": "^1.0.0",
-                "spryker-shop/shop-ui": "^1.66.0",
+                "spryker-shop/shop-ui": "^1.67.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/locale": "^3.0.0",
                 "spryker/product-measurement-unit-storage": "^1.1.0",
@@ -12195,9 +12198,9 @@
             ],
             "description": "ProductPackagingUnitWidget module",
             "support": {
-                "source": "https://github.com/spryker-shop/product-packaging-unit-widget/tree/1.4.0"
+                "source": "https://github.com/spryker-shop/product-packaging-unit-widget/tree/1.5.0"
             },
-            "time": "2022-12-12T09:07:04+00:00"
+            "time": "2023-03-14T10:43:38+00:00"
         },
         {
             "name": "spryker-shop/product-relation-widget",
@@ -46185,6 +46188,47 @@
             "time": "2022-12-29T12:04:01+00:00"
         },
         {
+            "name": "spryker/security-blocker-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/security-blocker-extension.git",
+                "reference": "3420e65e94ca1da656a79d60beca93325d8b8601"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/security-blocker-extension/zipball/3420e65e94ca1da656a79d60beca93325d8b8601",
+                "reference": "3420e65e94ca1da656a79d60beca93325d8b8601",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "SecurityBlockerExtension module",
+            "support": {
+                "source": "https://github.com/spryker/security-blocker-extension/tree/1.0.0"
+            },
+            "time": "2023-03-28T12:28:15+00:00"
+        },
+        {
             "name": "spryker/security-blocker-rest-api",
             "version": "1.0.0",
             "source": {
@@ -46231,6 +46275,51 @@
                 "source": "https://github.com/spryker/security-blocker-rest-api/tree/1.0.0"
             },
             "time": "2020-12-28T18:08:55+00:00"
+        },
+        {
+            "name": "spryker/security-blocker-storefront-customer",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/security-blocker-storefront-customer.git",
+                "reference": "874adad23e90aa55f124aa8938342b8cf5a22137"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/security-blocker-storefront-customer/zipball/874adad23e90aa55f124aa8938342b8cf5a22137",
+                "reference": "874adad23e90aa55f124aa8938342b8cf5a22137",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/security-blocker-extension": "^1.0.0",
+                "spryker/transfer": "^3.25.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "SecurityBlockerStorefrontCustomer module",
+            "support": {
+                "source": "https://github.com/spryker/security-blocker-storefront-customer/tree/1.0.0"
+            },
+            "time": "2023-03-28T12:28:15+00:00"
         },
         {
             "name": "spryker/security-extension",
@@ -63432,6 +63521,12 @@
             "alias_normalized": "202304.0"
         },
         {
+            "package": "spryker-feature/packaging-units",
+            "version": "9999999-dev",
+            "alias": "202304.0",
+            "alias_normalized": "202304.0"
+        },
+        {
             "package": "spryker-feature/product",
             "version": "9999999-dev",
             "alias": "202304.0",
@@ -63456,6 +63551,12 @@
             "alias_normalized": "202304.0"
         },
         {
+            "package": "spryker-feature/spryker-core",
+            "version": "9999999-dev",
+            "alias": "202304.0",
+            "alias_normalized": "202304.0"
+        },
+        {
             "package": "spryker-feature/tax",
             "version": "9999999-dev",
             "alias": "202304.0",
@@ -63470,10 +63571,12 @@
         "spryker-feature/company-account": 20,
         "spryker-feature/deployment-tools": 20,
         "spryker-feature/file-manager": 20,
+        "spryker-feature/packaging-units": 20,
         "spryker-feature/product": 20,
         "spryker-feature/product-labels": 20,
         "spryker-feature/product-lists": 20,
         "spryker-feature/promotions-discounts": 20,
+        "spryker-feature/spryker-core": 20,
         "spryker-feature/tax": 20,
         "spryker-feature/development-tools": 20,
         "spryker-sdk/integrator": 20,
