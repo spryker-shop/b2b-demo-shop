@@ -14,10 +14,48 @@
             @include helper-font-size(big);
         }
 
+        &__unit-field-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+
+            &--justify {
+                justify-content: space-between;
+            }
+
+            &--stretch {
+                align-items: stretch;
+            }
+        }
+
+        &__button-wrapper {
+            flex-grow: 1;
+        }
+
         &__unit-field {
             display: flex;
             align-items: center;
             margin-bottom: map-get($setting-spacing, big);
+
+            &--selector {
+                width: 100%;
+                min-width: 100%;
+
+                @include helper-breakpoint-media-min($md) {
+                    width: auto;
+                    min-width: 0;
+                }
+
+                @include helper-breakpoint-media-min($lg) {
+                    width: 100%;
+                    min-width: 100%;
+                }
+
+                @include helper-breakpoint-media-min($xxl) {
+                    width: auto;
+                    min-width: 0;
+                }
+            }
         }
 
         &__unit-field-label {
@@ -83,4 +121,4 @@
     }
 }
 
-@include product-packaging-unit-widget-packaging-unit-quantity-selector;
+@include product-packaging-unit-widget-packaging-unit-quantity-selector();

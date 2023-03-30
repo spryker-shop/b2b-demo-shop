@@ -2,29 +2,31 @@
 
 {% block body %}
     {% set isAddToCartDisabled = data.isAddToCartDisabled ? 'disabled' %}
+    {% set numberFormatConfig = data.numberFormatConfig %}
+    {% set product = data.product %}
 
     {% block newPrice %}
         <div class="{{ config.name }}__new-price is-hidden {{ config.jsName }}__product-packaging-new-price-block">
             <div class="{{ config.name }}__new-price-label">{{ 'measurement_units.new-price' | trans }}:</div>
             <div class="{{ config.name }}__new-price-value {{ config.jsName }}__product-packaging-new-price-value-block"></div>
         </div>
-        <input class="{{ config.jsName }}__item-base-price" type="hidden" value="{{ data.product.price }}">
+        <input class="{{ config.jsName }}__item-base-price" type="hidden" value="{{ product.price }}">
         <input class="{{ config.jsName }}__item-money-symbol" type="hidden" value="{{ moneySymbol() }}">
     {% endblock %}
 
     {% if not salesUnitCount %}
-        <div class="grid grid--stretch grid--justify">
+        <div class="{{ config.name }}__unit-field-wrapper {{ config.name }}__unit-field-wrapper--stretch {{ config.name }}__unit-field-wrapper--justify">
             {% include molecule('quantity-counter') with {
                 modifiers: ['right-space'],
                 data: {
-                    numberFormatConfig: data.numberFormatConfig,
+                    numberFormatConfig: numberFormatConfig,
                     inputExtraClasses: 'js-volume-price__quantity',
                 },
             } only %}
 
-            <div class="col col--expand">
+            <div class="{{ config.name }}__button-wrapper">
                 {% block addToCartButton %}
-                    <button type="submit" class="{{ config.jsName }}__add-to-cart-button button button--alternative button--big button--expand button--no-horizontal-padding"
+                    <button class="{{ config.jsName }}__add-to-cart-button button button--alternative button--big button--expand button--no-horizontal-padding"
                             data-init-single-click {{ isAddToCartDisabled }} {{ qa('add-to-cart-button') }}>
                         {% include atom('icon') with {
                             modifiers: ['cart-plus'],
@@ -40,12 +42,16 @@
     {% endif %}
 
     {% if salesUnitCount %}
-        {% set isMultipleMeasurementUnits = salesUnitCount > 1 and data.packagingUnitIsSelfLead == false %}
-        {% set isSingleMeasurementUnit = salesUnitCount == 1 and data.packagingUnitIsSelfLead == false %}
+        {% set productPackagingUnit = data.productPackagingUnit %}
+        {% set leadProductSalesUnits = data.leadProductSalesUnits %}
+        {% set packagingUnitIsSelfLead = data.packagingUnitIsSelfLead %}
+        {% set salesUnits = data.salesUnits %}
+        {% set isMultipleMeasurementUnits = salesUnitCount > 1 and packagingUnitIsSelfLead == false %}
+        {% set isSingleMeasurementUnit = salesUnitCount == 1 and packagingUnitIsSelfLead == false %}
 
         {% block measurementUnitSelector %}
-            <div class="grid grid--middle {{ isMultipleMeasurementUnits ? 'grid--justify' }}">
-                <div class="col {{ config.name }}__unit-field">
+            <div class="{{ config.name }}__unit-field-wrapper {{ isMultipleMeasurementUnits ? config.name ~ '__unit-field-wrapper--justify' }}">
+                <div class="{{ config.name }}__unit-field">
                     <div class="{{ config.name }}__unit-field-label">{{ 'packaging_units.pdp.quantity' | trans }}:</div>
                     <div class="{{ config.name }}__unit-field-value">
                         {% include molecule('quantity-counter') with {
@@ -55,8 +61,8 @@
                                 name: 'sales-unit-quantity',
                             },
                             data: {
-                                formattedNumberExtraClass: config.jsName ~ '__formatted-sales-unit-quantity',
-                                numberFormatConfig: data.numberFormatConfig,
+                                formattedNumberExtraClasses: config.jsName ~ '__formatted-sales-unit-quantity',
+                                numberFormatConfig: numberFormatConfig,
                                 inputExtraClasses: config.jsName ~ '__sales-unit-quantity js-volume-price__quantity quantity-counter__input--medium-width',
                             },
                         } only %}
@@ -66,7 +72,7 @@
                 </div>
 
                 {% if isMultipleMeasurementUnits %}
-                    <div class="col col--sm-12 col--md-auto col--lg-12 col--xxl-auto {{ config.name }}__unit-field">
+                    <div class="{{ config.name }}__unit-field {{ config.name }}__unit-field--selector">
                         <div class="{{ config.name }}__unit-field-label">{{ 'packaging_units.pdp.sales-units' | trans }}:</div>
                         <div class="{{ config.name }}__unit-field-value">
                             {% embed molecule('custom-select') with {
@@ -76,7 +82,7 @@
                                     'config-theme': 'small',
                                 },
                                 embed: {
-                                    salesUnits: data.salesUnits,
+                                    salesUnits: salesUnits,
                                     jsName: config.jsName,
                                 },
                             } only %}
@@ -93,9 +99,9 @@
                 {% endif %}
 
                 {% if isSingleMeasurementUnit %}
-                    <div class="col {{ config.name }}__unit-field">
-                        <div class="{{ config.name }}__unit-field-value">{{ data.salesUnits[0].productMeasurementUnit.name | trans }}</div>
-                        <input type="hidden" name="id-product-measurement-sales-unit" value="{{ data.salesUnits[0].idProductMeasurementSalesUnit }}">
+                    <div class="{{ config.name }}__unit-field">
+                        <div class="{{ config.name }}__unit-field-value">{{ salesUnits[0].productMeasurementUnit.name | trans }}</div>
+                        <input type="hidden" name="id-product-measurement-sales-unit" value="{{ salesUnits[0].idProductMeasurementSalesUnit }}">
                     </div>
                 {% endif %}
             </div>
@@ -125,52 +131,53 @@
         {% endblock %}
 
         {% block packagingUnitSelector %}
-            {% if data.productPackagingUnit %}
-                {% set defaultAmount = (data.productPackagingUnit.amountMin and data.productPackagingUnit.defaultAmount.toFloat() < data.productPackagingUnit.amountMin.toFloat()) ?
-                    data.productPackagingUnit.amountMin :
-                    data.productPackagingUnit.defaultAmount %}
-                {% set isAmountRowJustify = data.leadProductSalesUnits | length > 1 ? 'grid--justify' %}
+            {% if productPackagingUnit %}
+                {% set defaultAmount = (productPackagingUnit.amountMin and productPackagingUnit.defaultAmount.toFloat() < productPackagingUnit.amountMin.toFloat()) ?
+                    productPackagingUnit.amountMin :
+                    productPackagingUnit.defaultAmount %}
+                {% set isMultiplePackagingUnits = leadProductSalesUnits | length > 1 %}
+                {% set isSinglePackagingUnits = leadProductSalesUnits | length == 1 %}
 
-                <div class="grid grid--middle {{ isAmountRowJustify }}">
-                    <div class="col {{ config.name }}__unit-field">
+                <div class="{{ config.name }}__unit-field-wrapper {{ isMultiplePackagingUnits ? config.name ~ '__unit-field-wrapper--justify' }}">
+                    <div class="{{ config.name }}__unit-field">
                         <div class="{{ config.name }}__unit-field-label">{{ 'packaging_units.pdp.amount' | trans }}:</div>
                         <div class="{{ config.name }}__unit-field-value">
                             {% include molecule('quantity-counter') with {
                                 modifiers: ['right-space'],
                                 data: {
                                     isDisabled: not data.packagingUnitIsAmountVariable,
-                                    formattedNumberExtraClass: config.jsName ~ '__formatted-user-amount',
+                                    formattedNumberExtraClasses: config.jsName ~ '__formatted-user-amount',
                                     inputExtraClasses: config.jsName ~ '__user-amount quantity-counter__input--medium-width',
-                                    numberFormatConfig: data.numberFormatConfig,
+                                    numberFormatConfig: numberFormatConfig,
                                 },
                                 attributes: {
                                     value: defaultAmount,
-                                    min: data.productPackagingUnit.amountMin,
-                                    max: data.productPackagingUnit.amountMax,
-                                    step: data.productPackagingUnit.amountInterval,
-                                    name: 'amount-sales-unit[' ~ data.product.sku ~ ']',
+                                    min: productPackagingUnit.amountMin,
+                                    max: productPackagingUnit.amountMax,
+                                    step: productPackagingUnit.amountInterval,
+                                    name: 'amount-sales-unit[' ~ product.sku ~ ']',
                                 },
                             } only %}
 
                             <input class="{{ config.jsName }}__default-amount" type="hidden" value="{{ defaultAmount }}">
                             <input class="{{ config.jsName }}__amount" type="hidden" value="{{ defaultAmount }}"
-                                   name="amount[{{ data.product.sku }}]">
+                                   name="amount[{{ product.sku }}]">
                         </div>
                     </div>
 
-                    {% if data.leadProductSalesUnits | length > 1 %}
-                        <div class="col col--sm-12 col--md-auto col--lg-12 col--xxl-auto {{ config.name }}__unit-field">
+                    {% if isMultiplePackagingUnits %}
+                        <div class="{{ config.name }}__unit-field {{ config.name }}__unit-field--selector">
                             <div class="{{ config.name }}__unit-field-label">{{ 'packaging_units.pdp.sales-units' | trans }}:</div>
                             <div class="{{ config.name }}__unit-field-value">
                                 {% embed molecule('custom-select') with {
                                     modifiers: ['small'],
                                     attributes: {
-                                        name: 'amount-id-product-measurement-sales-unit[' ~ data.product.sku ~ ']',
+                                        name: 'amount-id-product-measurement-sales-unit[' ~ product.sku ~ ']',
                                         'config-theme': 'small',
                                     },
                                     embed: {
                                         jsName: config.jsName,
-                                        salesUnits: data.leadProductSalesUnits,
+                                        salesUnits: leadProductSalesUnits,
                                     },
                                 } only %}
                                     {% block selectClass %}{{ parent() }} {{ embed.jsName }}__select-lead-measurement-unit{% endblock %}
@@ -187,10 +194,10 @@
                         </div>
                     {% endif %}
 
-                    {% if data.leadProductSalesUnits | length == 1 %}
-                        <div class="col {{ config.name }}__unit-field">
-                            <div class="{{ config.name }}__unit-field-value">{{ data.leadProductSalesUnits[0].productMeasurementUnit.name | trans }}</div>
-                            <input type="hidden" name="amount-id-product-measurement-sales-unit[{{ data.product.sku }}]" value="{{ data.leadProductSalesUnits[0].idProductMeasurementSalesUnit }}">
+                    {% if isSinglePackagingUnits %}
+                        <div class="{{ config.name }}__unit-field">
+                            <div class="{{ config.name }}__unit-field-value">{{ leadProductSalesUnits[0].productMeasurementUnit.name | trans }}</div>
+                            <input type="hidden" name="amount-id-product-measurement-sales-unit[{{ product.sku }}]" value="{{ leadProductSalesUnits[0].idProductMeasurementSalesUnit }}">
                         </div>
                     {% endif %}
                 </div>
@@ -226,7 +233,7 @@
         {{ block('addToCartButton') }}
 
         {% set translations = [] %}
-        {% for key, salesUnit in data.salesUnits %}
+        {% for key, salesUnit in salesUnits %}
             {% set translations = translations | merge({ (salesUnit.productMeasurementUnit.code) : (salesUnit.productMeasurementUnit.name | trans) }) %}
         {% endfor %}
 
