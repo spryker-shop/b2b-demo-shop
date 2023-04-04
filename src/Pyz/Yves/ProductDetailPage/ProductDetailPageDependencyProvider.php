@@ -37,9 +37,9 @@ class ProductDetailPageDependencyProvider extends SprykerShopProductDetailPageDe
      */
     protected function addProductStoragePyzClient(Container $container): Container
     {
-        $container[static::PYZ_CLIENT_PRODUCT_STORAGE_PYZ] = function (Container $container) {
+        $container->set(static::PYZ_CLIENT_PRODUCT_STORAGE_PYZ, function (Container $container) {
             return $container->getLocator()->productStorage()->client();
-        };
+        });
 
         return $container;
     }
