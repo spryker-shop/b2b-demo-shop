@@ -7,9 +7,9 @@ const DROPDOWN_SELECTOR = 'body > .select2-container--open';
 export default class CustomSelect extends Component {
     protected select: HTMLSelectElement;
     protected $select: $;
-    protected mobileResolution: number = 768;
-    protected isInited: boolean = false;
-    protected timeout: number = 300;
+    protected mobileResolution = 768;
+    protected isInited = false;
+    protected timeout = 300;
 
     protected readyCallback(): void {}
 

@@ -4,7 +4,7 @@ import noUiSlider from 'nouislider';
 export default class RangeSlider extends Component {
     protected sliderContainer: HTMLElement;
     protected rangeInputs: HTMLInputElement[];
-    protected numberDigitsAfterDecimalPoint: number = 2;
+    protected numberDigitsAfterDecimalPoint = 2;
 
     protected readyCallback(): void {}
 

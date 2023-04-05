@@ -4,7 +4,7 @@ import OverlayBlock from '../../atoms/overlay-block/overlay-block';
 export default class SuggestSearchExtended extends SuggestSearch {
     protected overlay: OverlayBlock;
 
-    protected readyCallback(): void {
+    protected init(): void {
         this.overlay = <OverlayBlock>document.getElementsByClassName(this.overlayClassName)[0];
         super.readyCallback();
     }
