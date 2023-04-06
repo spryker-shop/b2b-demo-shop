@@ -39,6 +39,8 @@ use Spryker\Zed\CategoryStorage\Communication\Plugin\Publisher\CategoryTree\Cate
 use Spryker\Zed\CategoryStorage\Communication\Plugin\Publisher\CategoryTree\CategoryTreeWriteForPublishingPublisherPlugin;
 use Spryker\Zed\CategoryStorage\Communication\Plugin\Publisher\CategoryTreePublisherTriggerPlugin;
 use Spryker\Zed\CategoryStorage\Communication\Plugin\Publisher\ParentWritePublisherPlugin;
+use Spryker\Zed\CustomerAccessStorage\Communication\Plugin\Publisher\CustomerAccessPublisherTriggerPlugin;
+use Spryker\Zed\CustomerStorage\Communication\Plugin\Publisher\Customer\CustomerInvalidatedWritePublisherPlugin;
 use Spryker\Zed\FileManagerStorage\Communication\Plugin\Publisher\FileManagerPublisherTriggerPlugin;
 use Spryker\Zed\GlossaryStorage\Communication\Plugin\Publisher\GlossaryKey\GlossaryDeletePublisherPlugin as GlossaryKeyDeletePublisherPlugin;
 use Spryker\Zed\GlossaryStorage\Communication\Plugin\Publisher\GlossaryKey\GlossaryWritePublisherPlugin as GlossaryKeyWriterPublisherPlugin;
@@ -123,6 +125,7 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
             $this->getProductCategoryStoragePlugins(),
             $this->getPriceProductMerchantRelationshipStoragePlugins(),
             $this->getAssetStoragePlugins(),
+            $this->getCustomerStoragePlugins(),
             $this->getProductBundleStoragePlugins(),
             $this->getProductConfigurationStoragePlugins(),
             $this->getProductExportPlugins(),
@@ -172,6 +175,7 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
             new CategoryImagePublisherTriggerPlugin(),
             new FileManagerPublisherTriggerPlugin(),
             new AssetPublisherTriggerPlugin(),
+            new CustomerAccessPublisherTriggerPlugin(),
         ];
     }
 
@@ -351,6 +355,16 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
         return [
             new ProductConfigurationWritePublisherPlugin(),
             new ProductConfigurationDeletePublisherPlugin(),
+        ];
+    }
+
+    /**
+     * @return array<int, \Spryker\Zed\PublisherExtension\Dependency\Plugin\PublisherPluginInterface>
+     */
+    protected function getCustomerStoragePlugins(): array
+    {
+        return [
+            new CustomerInvalidatedWritePublisherPlugin(),
         ];
     }
 

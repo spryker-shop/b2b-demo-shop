@@ -23,6 +23,7 @@ use Spryker\Zed\Console\ConsoleDependencyProvider as SprykerConsoleDependencyPro
 use Spryker\Zed\ContentNavigationDataImport\ContentNavigationDataImportConfig;
 use Spryker\Zed\Customer\Communication\Console\CustomerPasswordResetConsole;
 use Spryker\Zed\Customer\Communication\Console\CustomerPasswordSetConsole;
+use Spryker\Zed\CustomerStorage\Communication\Console\DeleteExpiredCustomerInvalidatedRecordsConsole;
 use Spryker\Zed\DataExport\Communication\Console\DataExportConsole;
 use Spryker\Zed\DataImport\Communication\Console\DataImportConsole;
 use Spryker\Zed\DataImport\Communication\Console\DataImportDumpConsole;
@@ -338,6 +339,7 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new PriceProductMerchantRelationshipDeleteConsole(),
 
             new DeleteExpiredGuestQuoteConsole(),
+            new DeleteExpiredCustomerInvalidatedRecordsConsole(),
 
             new CleanTranslationCacheConsole(),
             new GenerateTranslationCacheConsole(),

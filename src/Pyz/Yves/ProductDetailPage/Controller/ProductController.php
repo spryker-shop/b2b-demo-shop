@@ -35,9 +35,11 @@ class ProductController extends SprykerShopProductController
      */
     protected function executeDetailAction(array $productData, Request $request): array
     {
+        $selectedAttributes = $this->getSelectedAttributesWithoutPostfix($productData, $request);
+
         $productViewTransfer = $this->getFactory()
             ->getProductStorageClient()
-            ->mapProductStorageData($productData, $this->getLocale(), $this->getSelectedAttributes($request));
+            ->mapProductStorageData($productData, $this->getLocale(), $selectedAttributes);
 
         try {
             $this->assertProductRestrictions($productViewTransfer);

@@ -20,6 +20,7 @@ use Spryker\Shared\ConfigurableBundlePageSearch\ConfigurableBundlePageSearchConf
 use Spryker\Shared\ConfigurableBundleStorage\ConfigurableBundleStorageConfig;
 use Spryker\Shared\ContentStorage\ContentStorageConfig;
 use Spryker\Shared\CustomerAccessStorage\CustomerAccessStorageConstants;
+use Spryker\Shared\CustomerStorage\CustomerStorageConfig;
 use Spryker\Shared\Event\EventConstants;
 use Spryker\Shared\FileManagerStorage\FileManagerStorageConstants;
 use Spryker\Shared\GlossaryStorage\GlossaryStorageConfig;
@@ -72,6 +73,8 @@ class QueueDependencyProvider extends SprykerDependencyProvider
             AvailabilityStorageConfig::PUBLISH_AVAILABILITY => new EventQueueMessageProcessorPlugin(),
             AvailabilityStorageConstants::AVAILABILITY_SYNC_STORAGE_QUEUE => new SynchronizationStorageQueueMessageProcessorPlugin(),
             CustomerAccessStorageConstants::CUSTOMER_ACCESS_SYNC_STORAGE_QUEUE => new SynchronizationStorageQueueMessageProcessorPlugin(),
+            CustomerStorageConfig::PUBLISH_CUSTOMER_INVALIDATED => new EventQueueMessageProcessorPlugin(),
+            CustomerStorageConfig::CUSTOMER_INVALIDATED_SYNC_STORAGE_QUEUE => new SynchronizationStorageQueueMessageProcessorPlugin(),
             PublishAndSynchronizeHealthCheckConfig::PUBLISH_PUBLISH_AND_SYNCHRONIZE_HEALTH_CHECK => new EventQueueMessageProcessorPlugin(),
             PublishAndSynchronizeHealthCheckStorageConfig::SYNC_STORAGE_PUBLISH_AND_SYNCHRONIZE_HEALTH_CHECK => new SynchronizationStorageQueueMessageProcessorPlugin(),
             PublishAndSynchronizeHealthCheckSearchConfig::SYNC_SEARCH_PUBLISH_AND_SYNCHRONIZE_HEALTH_CHECK => new SynchronizationSearchQueueMessageProcessorPlugin(),
