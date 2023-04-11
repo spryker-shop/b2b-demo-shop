@@ -1,4 +1,4 @@
-/* tslint:disable */
+/* eslint-disable */
 import Component from 'ShopUi/models/component';
 import { mount } from 'ShopUi/app';
 import FormattedNumberInput from 'ShopUi/components/molecules/formatted-number-input/formatted-number-input';
