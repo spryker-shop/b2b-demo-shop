@@ -29,7 +29,7 @@
                         <div class="{{ config.name }}__inner {{ config.name }}__inner--total grid grid--column">
                             {% block price %}
                                 {% if can('SeePricePermissionPlugin') %}
-                                    {% set subtotalPrice = data.listItem.unitPrice is defined ? data.listItem.unitPrice : data.listItem.price %}
+                                    {% set subtotalPrice = listItem.unitPrice is defined ? listItem.unitPrice : listItem.price %}
 
                                     {% include molecule('money-price') with {
                                         modifiers: ['medium', 'block'],
@@ -48,7 +48,7 @@
                                     <div class="{{ config.name }}__quantity-holder">
                                         {% include molecule('product-item-quantity') with {
                                             data: {
-                                                productItem: data.listItem,
+                                                productItem: listItem,
                                                 isDisabled: not data.canEdit,
                                             },
                                         } only %}
@@ -63,7 +63,7 @@
         <div class="{{ config.name }}__inner grid grid--stretch grid--gap">
             <div class="{{ config.name }}__col {{ config.name }}__col--content col">
                 {% block note %}
-                    {% widget 'CartItemNoteFormWidget' args [data.listItem, data.list] with {
+                    {% widget 'CartItemNoteFormWidget' args [listItem, data.list] with {
                         data: {
                             isTitleVisible: false,
                         },
@@ -71,11 +71,11 @@
                     {% endwidget %}
                 {% endblock %}
 
-                {% if data.listItem.productOptions is defined and data.listItem.productOptions %}
+                {% if listItem.productOptions is defined and listItem.productOptions %}
                     {% include molecule('product-item-options') with {
                         modifiers: modifiers,
                         data: {
-                            productItem: data.listItem,
+                            productItem: listItem,
                         },
                     } only %}
                 {% endif %}
@@ -95,7 +95,7 @@
                         <div class="{{ config.name }}__inner {{ config.name }}__inner--total grid grid--column">
                             {% block totalPrice %}
                                 {% if can('SeePricePermissionPlugin') %}
-                                    {% set totalPrice = data.listItem.unitPrice is defined ? data.listItem.sumSubtotalAggregation : data.listItem.price %}
+                                    {% set totalPrice = listItem.unitPrice is defined ? listItem.sumSubtotalAggregation : listItem.price %}
 
                                     {% embed molecule('money-price') with {
                                         class: 'grid grid--wide',
@@ -111,7 +111,7 @@
                                             {% if data.amount is empty -%}
                                                 {{ data.noPriceText }}
                                             {%- else -%}
-                                                <span class="{{config.name}}__amount {{config.name}}__amount--secondary col col--sm-8 col--lg-7">
+                                                <span class="{{ config.name }}__amount {{ config.name }}__amount--secondary col col--sm-8 col--lg-7">
                                                     {{ data.amount | money(true, data.currencyIsoCode) }}
                                                 </span>
                                             {%- endif -%}
@@ -124,7 +124,7 @@
 
                     {% block deleteButton %}
                         {% if data.canRemove %}
-                            {% widget 'RemoveFromCartFormWidget' args [data.listItem] with {
+                            {% widget 'RemoveFromCartFormWidget' args [listItem] with {
                                 embed: {
                                     configName: config.name,
                                 },

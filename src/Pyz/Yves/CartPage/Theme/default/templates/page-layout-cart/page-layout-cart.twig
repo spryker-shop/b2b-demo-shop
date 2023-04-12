@@ -231,7 +231,7 @@
         </div>
 
         {% if data.isQuoteEditable %}
-            {% include molecule('cart-upselling', 'CartPage') ignore missing with {
+            {% include molecule('cart-upselling', 'CartPage') with {
                 data: {
                     cart: data.cart,
                     isUpsellingProductsViaAjaxEnabled: data.isUpsellingProductsViaAjaxEnabled,
