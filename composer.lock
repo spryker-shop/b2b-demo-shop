@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "46845de70d866275c82d9857d0247e84",
+    "content-hash": "752e85ed1012bb58e6385e709d4c9a15",
     "packages": [
         {
             "name": "async-aws/core",
@@ -32087,20 +32087,20 @@
         },
         {
             "name": "spryker/multi-cart",
-            "version": "1.8.0",
+            "version": "1.10.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/multi-cart.git",
-                "reference": "e744755fc4c7b01a978bd2cf0b6035c8548aa23f"
+                "reference": "988bda96298ec5219aa870068a2de9f947c15827"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/multi-cart/zipball/e744755fc4c7b01a978bd2cf0b6035c8548aa23f",
-                "reference": "e744755fc4c7b01a978bd2cf0b6035c8548aa23f",
+                "url": "https://api.github.com/repos/spryker/multi-cart/zipball/988bda96298ec5219aa870068a2de9f947c15827",
+                "reference": "988bda96298ec5219aa870068a2de9f947c15827",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.4",
+                "php": ">=8.0",
                 "spryker/customer": "^7.0.0",
                 "spryker/kernel": "^3.33.0",
                 "spryker/messenger": "^3.0.0",
@@ -32110,13 +32110,14 @@
                 "spryker/quote": "^2.7.0",
                 "spryker/quote-extension": "^1.1.0",
                 "spryker/session": "^3.0.0 || ^4.0.0",
-                "spryker/store": "^1.0.0",
+                "spryker/store": "^1.19.0",
                 "spryker/transfer": "^3.25.0",
                 "spryker/util-date-time": "^1.0.0",
                 "spryker/zed-request": "^3.6.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
+                "spryker/container": "*",
                 "spryker/propel": "*",
                 "spryker/testify": "*"
             },
@@ -32137,9 +32138,9 @@
             ],
             "description": "MultiCart module",
             "support": {
-                "source": "https://github.com/spryker/multi-cart/tree/1.8.0"
+                "source": "https://github.com/spryker/multi-cart/tree/1.10.1"
             },
-            "time": "2022-07-19T14:00:02+00:00"
+            "time": "2023-04-12T06:35:33+00:00"
         },
         {
             "name": "spryker/multi-cart-data-import",
@@ -49248,16 +49249,16 @@
         },
         {
             "name": "spryker/store",
-            "version": "1.18.1",
+            "version": "1.19.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/store.git",
-                "reference": "370f6b23a6ea54d3198408b9d22075f36c6ffc4f"
+                "reference": "f9d1fd87ca47e89b1ea19106094c711a0339acc8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/store/zipball/370f6b23a6ea54d3198408b9d22075f36c6ffc4f",
-                "reference": "370f6b23a6ea54d3198408b9d22075f36c6ffc4f",
+                "url": "https://api.github.com/repos/spryker/store/zipball/f9d1fd87ca47e89b1ea19106094c711a0339acc8",
+                "reference": "f9d1fd87ca47e89b1ea19106094c711a0339acc8",
                 "shasum": ""
             },
             "require": {
@@ -49270,12 +49271,15 @@
                 "spryker/oauth-client-extension": "^1.0.0",
                 "spryker/propel-orm": "^1.0.0",
                 "spryker/quote-extension": "^1.4.0",
+                "spryker/store-extension": "^1.0.0",
                 "spryker/symfony": "^3.0.0",
-                "spryker/transfer": "^3.25.0"
+                "spryker/transfer": "^3.25.0",
+                "spryker/zed-request-extension": "^1.1.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
                 "spryker/container": "*",
+                "spryker/locale": "*",
                 "spryker/propel": "*",
                 "spryker/quote": "*",
                 "spryker/testify": "*"
@@ -49303,9 +49307,51 @@
             ],
             "description": "Store module",
             "support": {
-                "source": "https://github.com/spryker/store/tree/1.18.1"
+                "source": "https://github.com/spryker/store/tree/1.19.0"
             },
-            "time": "2023-03-14T08:26:09+00:00"
+            "time": "2023-03-31T19:36:11+00:00"
+        },
+        {
+            "name": "spryker/store-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/store-extension.git",
+                "reference": "b95dbb1e7a72d455f961891a27645cf1b3ea4672"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/store-extension/zipball/b95dbb1e7a72d455f961891a27645cf1b3ea4672",
+                "reference": "b95dbb1e7a72d455f961891a27645cf1b3ea4672",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0",
+                "spryker/transfer": "^3.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "StoreExtension module",
+            "support": {
+                "source": "https://github.com/spryker/store-extension/tree/1.0.0"
+            },
+            "time": "2023-03-31T19:36:11+00:00"
         },
         {
             "name": "spryker/store-gui",
@@ -52113,23 +52159,27 @@
         },
         {
             "name": "spryker/zed-request-extension",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/zed-request-extension.git",
-                "reference": "4607cea5e438b72b452aae5f405859e2a6f4be43"
+                "reference": "318e6673af03bab7f52fdddc74af9cbab0638eb8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/zed-request-extension/zipball/4607cea5e438b72b452aae5f405859e2a6f4be43",
-                "reference": "4607cea5e438b72b452aae5f405859e2a6f4be43",
+                "url": "https://api.github.com/repos/spryker/zed-request-extension/zipball/318e6673af03bab7f52fdddc74af9cbab0638eb8",
+                "reference": "318e6673af03bab7f52fdddc74af9cbab0638eb8",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.3"
+                "php": ">=8.0"
             },
             "require-dev": {
-                "spryker/code-sniffer": "*"
+                "spryker/code-sniffer": "*",
+                "spryker/kernel": "*"
+            },
+            "suggest": {
+                "spryker/kernel": "If you want to use kernel functionality with certain plugins"
             },
             "type": "library",
             "extra": {
@@ -52148,9 +52198,9 @@
             ],
             "description": "ZedRequestExtension module",
             "support": {
-                "source": "https://github.com/spryker/zed-request-extension/tree/1.0.0"
+                "source": "https://github.com/spryker/zed-request-extension/tree/1.1.0"
             },
-            "time": "2020-11-11T13:55:08+00:00"
+            "time": "2023-03-31T19:36:11+00:00"
         },
         {
             "name": "stella-maris/clock",
