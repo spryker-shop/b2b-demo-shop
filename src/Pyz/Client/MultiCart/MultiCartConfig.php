@@ -7,7 +7,9 @@
 
 namespace Pyz\Client\MultiCart;
 
+use Generated\Shared\Transfer\CustomerTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
+use Generated\Shared\Transfer\StoreTransfer;
 use Spryker\Client\MultiCart\MultiCartConfig as SprykerMultiCartConfig;
 
 class MultiCartConfig extends SprykerMultiCartConfig
@@ -38,7 +40,14 @@ class MultiCartConfig extends SprykerMultiCartConfig
             QuoteTransfer::NAME,
             QuoteTransfer::IS_DEFAULT,
             QuoteTransfer::CUSTOMER_REFERENCE,
+            QuoteTransfer::CUSTOMER => [
+                CustomerTransfer::CUSTOMER_REFERENCE,
+            ],
             QuoteTransfer::IS_LOCKED,
+            QuoteTransfer::STORE => [
+                StoreTransfer::ID_STORE,
+                StoreTransfer::NAME,
+            ],
         ]);
     }
 }
