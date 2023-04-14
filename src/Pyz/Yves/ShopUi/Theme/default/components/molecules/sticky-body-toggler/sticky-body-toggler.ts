@@ -31,7 +31,7 @@ export default class StickyBodyToggler extends Component {
             return;
         }
 
-        const offset = window.pageYOffset;
+        const offset = window.scrollY;
 
         this.body.style.top = `${-offset}px`;
         this.body.classList.add(this.classToFixBody);
