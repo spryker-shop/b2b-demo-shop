@@ -1,25 +1,4 @@
-{% extends template('page-layout-main') %}
-
-{% define data = {
-    cart: _view.cart,
-    isQuoteEditable: _view.isQuoteEditable,
-    isQuoteLocked: _view.isQuoteLocked,
-    cartItems: _view.cartItems,
-    isQuoteValid: _view.isQuoteValid,
-    attributes: _view.attributes,
-    request: app.request,
-    title: 'cart.cart' | trans,
-    requestUri: app.request.requestUri,
-    isCartItemsViaAjaxLoadEnabled: _view.isCartItemsViaAjaxLoadEnabled,
-    isUpsellingProductsViaAjaxEnabled: _view.isUpsellingProductsViaAjaxEnabled,
-} %}
-
-{% block headScripts %}
-    {{ parent() }}
-
-    {% widget 'AssetWidget' args ['cart-header'] only %}
-    {% endwidget %}
-{% endblock %}
+{% extends template('page-layout-cart', 'SprykerShop:CartPage') %}
 
 {% block breadcrumbs %}
     {% set steps = [
@@ -239,4 +218,24 @@
             } only %}
         {% endif %}
     {% endif %}
+{% endblock %}
+
+{% block footer %}
+    {% cms_slot 'slt-1' %}
+
+    {% embed organism('footer') only %}
+        {% block logosInner %}
+            {% cms_slot 'slt-footer-partners' %}
+        {% endblock %}
+
+        {% block navigationInner %}
+            <div class="grid grid--gap">
+                {% cms_slot 'slt-footer-navigation' %}
+            </div>
+        {% endblock %}
+
+        {% block socialLinks %}
+            {% cms_slot 'slt-footer-social-links' %}
+        {% endblock %}
+    {% endembed %}
 {% endblock %}

@@ -10,6 +10,7 @@
                 canEdit: data.isQuoteEditable and can('ChangeCartItemPermissionPlugin', data.cart.idQuote),
                 canRemove: data.isQuoteEditable and can('RemoveCartItemPermissionPlugin'),
                 hasAdditionalTitle: cartItem.cartNote | default(false),
+                currencyIsoCode: data.cart.currency.code | default(null),
             },
         } only %}
     {% endif %}

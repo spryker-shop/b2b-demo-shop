@@ -5,6 +5,7 @@
 } %}
 
 {% define data = {
+    priceModifiers: ['medium', 'block'],
     imageModifiers: ['cart'],
     hasAdditionalTitle: false,
 } %}
@@ -27,34 +28,11 @@
                 <div class="{{ config.name }}__inner {{ config.name }}__inner--actions {{ config.name }}__inner--full-height grid grid--column grid--justify-column">
                     <div class="col col--sm-12">
                         <div class="{{ config.name }}__inner {{ config.name }}__inner--total grid grid--column">
-                            {% block price %}
-                                {% if can('SeePricePermissionPlugin') %}
-                                    {% set subtotalPrice = listItem.unitPrice is defined ? listItem.unitPrice : listItem.price %}
+                            {% if can('SeePricePermissionPlugin') %}
+                                {{ block('price') }}
+                            {% endif %}
 
-                                    {% include molecule('money-price') with {
-                                        modifiers: ['medium', 'block'],
-                                        data: {
-                                            amount: subtotalPrice,
-                                            currencyIsoCode: data.list.currency.code,
-                                        },
-                                    } only %}
-                                {% endif %}
-                            {% endblock %}
-
-                            {% block quantity %}
-                                {% set isEmptyProductInfo = amountSalesUnit is empty and quantitySalesUnit is empty and data.quantity is empty %}
-
-                                {% if isEmptyProductInfo %}
-                                    <div class="{{ config.name }}__quantity-holder">
-                                        {% include molecule('product-item-quantity') with {
-                                            data: {
-                                                productItem: listItem,
-                                                isDisabled: not data.canEdit,
-                                            },
-                                        } only %}
-                                    </div>
-                                {% endif %}
-                            {% endblock %}
+                            {{ block('quantity') }}
                         </div>
                     </div>
                 </div>
@@ -71,22 +49,7 @@
                     {% endwidget %}
                 {% endblock %}
 
-                {% if listItem.productOptions is defined and listItem.productOptions %}
-                    {% include molecule('product-item-options') with {
-                        modifiers: modifiers,
-                        data: {
-                            productItem: listItem,
-                        },
-                    } only %}
-                {% endif %}
-
-                {% if data.options %}
-                    {% include molecule('product-item-options') with {
-                        data: {
-                            options: data.options,
-                        },
-                    } only %}
-                {% endif %}
+                {{ block('productOptions') }}
             </div>
 
             <div class="{{ config.name }}__col {{ config.name }}__col--total col">
@@ -102,49 +65,25 @@
                                         modifiers: ['secondary'],
                                         data: {
                                             amount: totalPrice,
-                                            currencyIsoCode: data.list.currency.code,
+                                            currencyIsoCode: data.currencyIsoCode,
                                         },
                                     } only %}
                                         {% block body %}
                                             <strong class="col col--sm-4 col--lg-5 text-left">{{ 'cart.item.item_total' | trans }}</strong>
 
-                                            {% if data.amount is empty -%}
-                                                {{ data.noPriceText }}
-                                            {%- else -%}
-                                                <span class="{{ config.name }}__amount {{ config.name }}__amount--secondary col col--sm-8 col--lg-7">
-                                                    {{ data.amount | money(true, data.currencyIsoCode) }}
-                                                </span>
-                                            {%- endif -%}
+                                            <div class="col col--sm-8 col--lg-7">
+                                                {{ parent() }}
+                                            </div>
                                         {% endblock %}
+
+                                        {% block priceMode %}{% endblock %}
                                     {% endembed %}
                                 {% endif %}
                             {% endblock %}
                         </div>
                     </div>
 
-                    {% block deleteButton %}
-                        {% if data.canRemove %}
-                            {% widget 'RemoveFromCartFormWidget' args [listItem] with {
-                                embed: {
-                                    configName: config.name,
-                                },
-                            } only %}
-                                {% block embeddedData %}
-                                    <div class="col {{ embed.configName }}__delete-cart">
-                                        <button class="link link--icon" title="{{ 'cart.delete.item' | trans }}" data-init-single-click>
-                                            {% include atom('icon') with {
-                                                modifiers: ['link'],
-                                                data: {
-                                                    name: 'delete',
-                                                },
-                                            } only %}
-                                            <span class="is-hidden-sm-md">{{ 'cart.delete.item' | trans }}</span>
-                                        </button>
-                                    </div>
-                                {% endblock %}
-                            {% endwidget %}
-                        {% endif %}
-                    {% endblock %}
+                    {{ block('deleteButton') }}
                 </div>
             </div>
         </div>
