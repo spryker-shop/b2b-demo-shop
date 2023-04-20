@@ -131,7 +131,7 @@ class ExampleProductSalePageDependencyProvider extends AbstractBundleDependencyP
     protected function addProductSalePageWidgetPlugins($container): Container
     {
         $container->set(static::PYZ_PLUGIN_PRODUCT_SALE_PAGE_WIDGETS, function () {
-            return [];
+            return $this->getProductSalePageWidgetPlugins();
         });
 
         return $container;
@@ -163,5 +163,13 @@ class ExampleProductSalePageDependencyProvider extends AbstractBundleDependencyP
         });
 
         return $container;
+    }
+
+    /**
+     * @return array<string>
+     */
+    protected function getProductSalePageWidgetPlugins(): array
+    {
+        return [];
     }
 }
