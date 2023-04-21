@@ -25,7 +25,6 @@ class PriceCartConnectorConfig extends SprykerPriceCartConnectorConfig
         return array_merge(parent::getItemFieldsForIdentifier(), [
             ItemTransfer::SKU,
             ItemTransfer::QUANTITY,
-            ItemTransfer::MERCHANT_REFERENCE,
         ]);
     }
 }
