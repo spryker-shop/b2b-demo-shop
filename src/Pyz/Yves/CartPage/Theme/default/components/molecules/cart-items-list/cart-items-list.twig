@@ -1,0 +1,41 @@
+{% extends molecule('cart-items-list', 'SprykerShop:CartPage') %}
+
+{% block body %}
+    {% if data.isUpsellingProductsViaAjaxEnabled is not empty %}
+        {% include molecule('ajax-provider') with {
+            class: attributes['provider-class-name'],
+            attributes: {
+                'fetch-on-load': true,
+                url: path('cart/get-cart-items'),
+            },
+        } only %}
+
+        {% include molecule('ajax-loader') with {
+            modifiers: ['big'],
+            attributes: {
+                'provider-class-name': attributes['provider-class-name'],
+            },
+        } only %}
+
+        {% include molecule('ajax-renderer') with {
+            attributes: {
+                'provider-class-name': attributes['provider-class-name'],
+                'target-class-name': config.jsName ~ '__container',
+                'mount-after-render': true,
+            },
+        } only %}
+
+        <div class="{{ config.jsName }}__container"></div>
+    {% endif %}
+
+    {% if data.isUpsellingProductsViaAjaxEnabled is empty %}
+        {% include molecule('product-cart-items-list', 'CartPage') with {
+            data: {
+                cart: data.cart,
+                cartItems: data.cartItems,
+                isQuoteEditable: data.isQuoteEditable,
+                attributes: data.attributes,
+            },
+        } only %}
+    {% endif %}
+{% endblock %}
