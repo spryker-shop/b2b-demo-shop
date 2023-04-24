@@ -1,8 +1,10 @@
 {% extends molecule('collapsible-list', '@SprykerShop:ShopUi') %}
 
 {% macro listItem(label, value, configName) %}
-    <div class="{{ configName }}__name col col--sm-6">{{ label }}</div>
-    <div class="{{ configName }}__value col col--sm-6">{{ value }}</div>
+    <div class="col col--sm-12">
+        <strong class="{{ configName }}__name">{{ label }}: </strong>
+        <span class="{{ configName }}__value">{{ value }}</span>
+    </div>
 {% endmacro %}
 
 {% import _self as macros %}
