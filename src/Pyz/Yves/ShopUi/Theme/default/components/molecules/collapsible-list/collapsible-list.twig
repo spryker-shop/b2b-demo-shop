@@ -1,28 +1,16 @@
 {% extends molecule('collapsible-list', '@SprykerShop:ShopUi') %}
 
 {% macro listItem(label, value, configName) %}
-    <div class="col col--sm-12">
+    <div class="{{ configName }}__item col col--sm-12">
         <strong class="{{ configName }}__name">{{ label }}: </strong>
         <span class="{{ configName }}__value">{{ value }}</span>
     </div>
 {% endmacro %}
 
-{% import _self as macros %}
-
-{% block body %}
-    {% set wrapperClass = 'grid' %}
-
-    {{ parent() }}
-{% endblock %}
-
 {% block shownListItems %}
-    <div class="{{ config.name }}__item grid col col--sm-12">
-        {{ macros.listItem(key, value, config.name) }}
-    </div>
+    {{ macros.listItem(key, value, config.name) }}
 {% endblock %}
 
 {% block hiddenListItems %}
-    <div class="{{ config.name }}__item grid col col--sm-12">
-        {{ macros.listItem(key, value, config.name) }}
-    </div>
+    {{ macros.listItem(key, value, config.name) }}
 {% endblock %}
