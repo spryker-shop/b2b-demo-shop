@@ -8,9 +8,9 @@
 {% endmacro %}
 
 {% block shownListItems %}
-    {{ macros.listItem(key, value, config.name) }}
+    {{ _self.listItem(key, value, config.name) }}
 {% endblock %}
 
 {% block hiddenListItems %}
-    {{ macros.listItem(key, value, config.name) }}
+    {{ _self.listItem(key, value, config.name) }}
 {% endblock %}
