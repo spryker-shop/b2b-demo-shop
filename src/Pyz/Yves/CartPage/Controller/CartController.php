@@ -24,12 +24,13 @@ class CartController extends SprykerCartController
 
     /**
      * @param array $selectedAttributes
+     * @param bool $withItems
      *
      * @return array
      */
-    protected function executeIndexAction(array $selectedAttributes = []): array
+    protected function executeIndexAction(array $selectedAttributes = [], bool $withItems = true): array
     {
-        $viewData = parent::executeIndexAction($selectedAttributes);
+        $viewData = parent::executeIndexAction($selectedAttributes, $withItems);
         $cartItems = $viewData['cartItems'];
 
         $viewData['products'] = $this->getFactory()
