@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\EventDispatcher;
 
+use Spryker\Glue\Http\Plugin\EventDispatcher\CacheControlHeaderEventDispatcherPlugin;
 use Spryker\Shared\Http\Plugin\EventDispatcher\ResponseListenerEventDispatcherPlugin;
 use Spryker\Zed\Acl\Communication\Plugin\EventDispatcher\AccessControlEventDispatcherPlugin;
 use Spryker\Zed\Application\Communication\Plugin\EventDispatcher\HeadersSecurityEventDispatcherPlugin;
@@ -14,8 +15,8 @@ use Spryker\Zed\ErrorHandler\Communication\Plugin\EventDispatcher\ErrorPageEvent
 use Spryker\Zed\EventBehavior\Communication\Plugin\EventDispatcher\EventBehaviorEventDispatcherPlugin;
 use Spryker\Zed\EventDispatcher\EventDispatcherDependencyProvider as SprykerEventDispatcherDependencyProvider;
 use Spryker\Zed\Http\Communication\Plugin\EventDispatcher\CookieEventDispatcherPlugin;
+use Spryker\Zed\Http\Communication\Plugin\EventDispatcher\EnvironmentInfoHeaderEventDispatcherPlugin;
 use Spryker\Zed\Http\Communication\Plugin\EventDispatcher\FragmentEventDispatcherPlugin;
-use Spryker\Zed\Http\Communication\Plugin\EventDispatcher\HeaderEventDispatcherPlugin;
 use Spryker\Zed\Http\Communication\Plugin\EventDispatcher\HstsHeaderEventDispatcher;
 use Spryker\Zed\Kernel\Communication\Plugin\AutoloaderCacheEventDispatcherPlugin;
 use Spryker\Zed\Locale\Communication\Plugin\EventDispatcher\LocaleEventDispatcherPlugin;
@@ -50,6 +51,7 @@ class EventDispatcherDependencyProvider extends SprykerEventDispatcherDependency
             new FragmentEventDispatcherPlugin(),
             new HeaderEventDispatcherPlugin(),
             new HstsHeaderEventDispatcher(),
+            new CacheControlHeaderEventDispatcherPlugin(),
             new TwigEventDispatcherPlugin(),
             new SessionEventDispatcherPlugin(),
             new SaveSessionEventDispatcherPlugin(),
@@ -57,6 +59,7 @@ class EventDispatcherDependencyProvider extends SprykerEventDispatcherDependency
             new RequestAttributesEventDispatcherPlugin(),
             new ResponseListenerEventDispatcherPlugin(),
             new ErrorPageEventDispatcherPlugin(),
+            new EnvironmentInfoHeaderEventDispatcherPlugin(),
         ];
     }
 
