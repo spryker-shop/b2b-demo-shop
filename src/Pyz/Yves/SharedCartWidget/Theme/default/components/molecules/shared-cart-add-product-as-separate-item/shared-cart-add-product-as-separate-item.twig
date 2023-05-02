@@ -1,19 +1,20 @@
 {% extends model('component') %}
 
 {% define config = {
-    name: 'shared-cart-add-product-as-separate-item'
+    name: 'shared-cart-add-product-as-separate-item',
 } %}
 
 {% block body %}
     {% include atom('checkbox') with {
+        class: 'spacing-bottom',
         modifiers: ['pdp', 'expand'],
         attributes: {
             name: 'separate_product',
             value: 1,
-            checked: true
+            checked: true,
         },
         data: {
-            label: 'shared_cart_widget.add_product.separate' | trans
-        }
+            label: 'shared_cart_widget.add_product.separate' | trans,
+        },
     } only %}
 {% endblock %}
