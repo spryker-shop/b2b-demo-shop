@@ -12,7 +12,7 @@ use Spryker\Yves\Application\Communication\Plugin\EventDispatcher\HeadersSecurit
 use Spryker\Yves\EventDispatcher\EventDispatcherDependencyProvider as SprykerEventDispatcherDependencyProvider;
 use Spryker\Yves\Http\Plugin\EventDispatcher\CacheControlHeaderEventDispatcherPlugin;
 use Spryker\Yves\Http\Plugin\EventDispatcher\CookieEventDispatcherPlugin;
-use Spryker\Yves\Http\Plugin\EventDispatcher\EnvironmentInfoHeaderEventDispatcherPlugin
+use Spryker\Yves\Http\Plugin\EventDispatcher\EnvironmentInfoHeaderEventDispatcherPlugin;
 use Spryker\Yves\Http\Plugin\EventDispatcher\FragmentEventDispatcherPlugin;
 use Spryker\Yves\Http\Plugin\EventDispatcher\HstsHeaderEventDispatcher;
 use Spryker\Yves\Kernel\Plugin\EventDispatcher\AutoloaderCacheEventDispatcherPlugin;
