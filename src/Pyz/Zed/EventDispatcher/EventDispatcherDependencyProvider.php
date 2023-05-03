@@ -49,7 +49,6 @@ class EventDispatcherDependencyProvider extends SprykerEventDispatcherDependency
             new RouterSslRedirectEventDispatcherPlugin(),
             new CookieEventDispatcherPlugin(),
             new FragmentEventDispatcherPlugin(),
-            new HeaderEventDispatcherPlugin(),
             new HstsHeaderEventDispatcher(),
             new CacheControlHeaderEventDispatcherPlugin(),
             new TwigEventDispatcherPlugin(),
