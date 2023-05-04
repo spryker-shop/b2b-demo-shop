@@ -8,6 +8,7 @@
 namespace SprykerConfig;
 
 use Spryker\Shared\Kernel\CodeBucket\Config\AbstractCodeBucketConfig;
+use Spryker\Shared\Kernel\Store;
 
 class CodeBucketConfig extends AbstractCodeBucketConfig
 {
@@ -16,10 +17,13 @@ class CodeBucketConfig extends AbstractCodeBucketConfig
      */
     public function getCodeBuckets(): array
     {
+        if ($this->isAcpDevOn()) {
+            return Store::getInstance()->getAllowedStores();
+        }
+
         return [
-            'DE',
-            'AT',
-            'US',
+            'EU',
+            'US'
         ];
     }
 
@@ -30,6 +34,20 @@ class CodeBucketConfig extends AbstractCodeBucketConfig
      */
     public function getDefaultCodeBucket(): string
     {
-        return APPLICATION_STORE;
+        if ($this->isAcpDevOn()) {
+            return APPLICATION_STORE;
+        }
+
+        $codeBuckets = $this->getCodeBuckets();
+
+        return defined('APPLICATION_REGION') ? APPLICATION_REGION : reset($codeBuckets);
+    }
+
+    /**
+     * @return bool
+     */
+    protected function isAcpDevOn(): bool
+    {
+        return APPLICATION_ENV === 'docker.acp.dev';
     }
 }

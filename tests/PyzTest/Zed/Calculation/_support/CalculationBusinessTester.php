@@ -9,6 +9,7 @@ namespace PyzTest\Zed\Calculation;
 
 use Codeception\Actor;
 use DateTime;
+use Generated\Shared\Transfer\AddressTransfer;
 use Generated\Shared\Transfer\CurrencyTransfer;
 use Generated\Shared\Transfer\DiscountTransfer;
 use Generated\Shared\Transfer\ExpenseTransfer;
@@ -67,6 +68,11 @@ class CalculationBusinessTester extends Actor
      * @var int
      */
     protected $incrementNumber = 0;
+
+    /**
+     * @var string
+     */
+    protected const COUNTRY_DE = 'DE';
 
     /**
      * @param int $discountAmount
@@ -237,7 +243,15 @@ class CalculationBusinessTester extends Actor
     {
         return (new StoreTransfer())
             ->setIdStore(1)
-            ->setName('DE');
+            ->setName(static::COUNTRY_DE);
+    }
+
+    /**
+     * @return \Generated\Shared\Transfer\AddressTransfer
+     */
+    public function getCurrentShippingAddress(): AddressTransfer
+    {
+        return (new AddressTransfer())->setIso2Code(static::COUNTRY_DE);
     }
 
     /**
@@ -314,7 +328,7 @@ class CalculationBusinessTester extends Actor
      */
     public function createAbstractProductWithTaxSet(float $taxRate): SpyProductAbstract
     {
-        $countryEntity = SpyCountryQuery::create()->findOneByIso2Code('DE');
+        $countryEntity = SpyCountryQuery::create()->findOneByIso2Code(static::COUNTRY_DE);
 
         $taxRateEntity = new SpyTaxRate();
         $taxRateEntity->setRate($taxRate);
