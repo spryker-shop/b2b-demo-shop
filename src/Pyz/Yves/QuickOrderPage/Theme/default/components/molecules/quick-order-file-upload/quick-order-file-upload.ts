@@ -42,7 +42,7 @@ export default class QuickOrderFileUpload extends Component {
         this.inputFile.value = '';
         this.fileUploadMessage.innerText = this.uploadMessage;
         this.toggleClassForIconExtensionMessage();
-        this.browseFileLabel.setAttribute('for', this.inputFileId.substring(1));
+        this.browseFileLabel.setAttribute('for', this.inputFileId);
     }
 
     protected toggleClassForIconExtensionMessage(): void {
