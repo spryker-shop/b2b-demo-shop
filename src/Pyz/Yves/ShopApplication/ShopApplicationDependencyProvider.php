@@ -7,6 +7,7 @@
 
 namespace Pyz\Yves\ShopApplication;
 
+use Spryker\Yves\Store\Plugin\Application\StoreApplicationPlugin;
 use Pyz\Yves\CompanyPage\Plugin\ShopApplication\CompanyUserRestrictionHandlerPlugin;
 use Pyz\Yves\CompanyWidget\Widget\MenuItemCompanyWidget;
 use Pyz\Yves\CustomerFullNameWidget\Widget\CustomerFullNameWidget;
@@ -328,6 +329,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             new TwigApplicationPlugin(),
             new EventDispatcherApplicationPlugin(),
             new ShopApplicationApplicationPlugin(),
+            new StoreApplicationPlugin(),
             new LocaleApplicationPlugin(),
             new TranslatorApplicationPlugin(),
             new RouterApplicationPlugin(),
