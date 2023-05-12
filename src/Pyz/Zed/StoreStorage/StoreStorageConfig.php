@@ -11,8 +11,6 @@ use Pyz\Zed\Synchronization\SynchronizationConfig;
 use Spryker\Shared\CompanyUserStorage\CompanyUserStorageConfig;
 use Spryker\Shared\CustomerAccessStorage\CustomerAccessStorageConstants;
 use Spryker\Shared\GlossaryStorage\GlossaryStorageConfig;
-use Spryker\Shared\MerchantSearch\MerchantSearchConfig;
-use Spryker\Shared\MerchantStorage\MerchantStorageConfig;
 use Spryker\Shared\NavigationStorage\NavigationStorageConstants;
 use Spryker\Shared\ProductMeasurementUnitStorage\ProductMeasurementUnitStorageConfig;
 use Spryker\Shared\ProductPackagingUnitStorage\ProductPackagingUnitStorageConfig;
@@ -27,7 +25,7 @@ class StoreStorageConfig extends SprykerStoreStorageConfig
      */
     public function getStoreSynchronizationPoolName(): ?string
     {
-        return SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME;
+        return SynchronizationConfig::PYZ_DEFAULT_SYNCHRONIZATION_POOL_NAME;
     }
 
     /**
@@ -43,9 +41,7 @@ class StoreStorageConfig extends SprykerStoreStorageConfig
             ProductPackagingUnitStorageConfig::PRODUCT_PACKAGING_UNIT_RESOURCE_NAME,
             CustomerAccessStorageConstants::CUSTOMER_ACCESS_RESOURCE_NAME,
             CompanyUserStorageConfig::COMPANY_USER_RESOURCE_NAME,
-            MerchantStorageConfig::MERCHANT_RESOURCE_NAME,
             SalesReturnSearchConfig::RETURN_REASON_RESOURCE_NAME,
-            MerchantSearchConfig::MERCHANT_RESOURCE_NAME,
         ];
     }
 }
