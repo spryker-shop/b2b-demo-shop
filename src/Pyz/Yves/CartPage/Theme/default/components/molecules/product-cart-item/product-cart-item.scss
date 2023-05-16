@@ -1,0 +1,7 @@
+@import '~src/ShopUi/components/molecules/product-card-item/product-card-item';
+
+@mixin cart-page-product-cart-item($name: '.product-cart-item') {
+    @include shop-ui-product-card-item($name);
+}
+
+@include cart-page-product-cart-item();
