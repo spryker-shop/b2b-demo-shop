@@ -13,13 +13,15 @@ use Spryker\Zed\Application\Communication\Plugin\EventDispatcher\HeadersSecurity
 use Spryker\Zed\ErrorHandler\Communication\Plugin\EventDispatcher\ErrorPageEventDispatcherPlugin;
 use Spryker\Zed\EventBehavior\Communication\Plugin\EventDispatcher\EventBehaviorEventDispatcherPlugin;
 use Spryker\Zed\EventDispatcher\EventDispatcherDependencyProvider as SprykerEventDispatcherDependencyProvider;
+use Spryker\Zed\Http\Communication\Plugin\EventDispatcher\CacheControlHeaderEventDispatcherPlugin;
 use Spryker\Zed\Http\Communication\Plugin\EventDispatcher\CookieEventDispatcherPlugin;
+use Spryker\Zed\Http\Communication\Plugin\EventDispatcher\EnvironmentInfoHeaderEventDispatcherPlugin;
 use Spryker\Zed\Http\Communication\Plugin\EventDispatcher\FragmentEventDispatcherPlugin;
-use Spryker\Zed\Http\Communication\Plugin\EventDispatcher\HeaderEventDispatcherPlugin;
 use Spryker\Zed\Http\Communication\Plugin\EventDispatcher\HstsHeaderEventDispatcher;
 use Spryker\Zed\Kernel\Communication\Plugin\AutoloaderCacheEventDispatcherPlugin;
 use Spryker\Zed\Kernel\Communication\Plugin\EventDispatcher\RedirectUrlValidationEventDispatcherPlugin;
 use Spryker\Zed\Locale\Communication\Plugin\EventDispatcher\LocaleEventDispatcherPlugin;
+use Spryker\Zed\MerchantPortalApplication\Communication\Plugin\EventDispatcher\HeadersSecurityEventDispatcherPlugin as MerchantPortalHeadersSecurityEventDispatcherPlugin;
 use Spryker\Zed\Monitoring\Communication\Plugin\EventDispatcher\GatewayMonitoringRequestTransactionEventDispatcherPlugin;
 use Spryker\Zed\Monitoring\Communication\Plugin\EventDispatcher\MonitoringRequestTransactionEventDispatcherPlugin;
 use Spryker\Zed\Router\Communication\Plugin\EventDispatcher\RequestAttributesEventDispatcherPlugin;
@@ -49,8 +51,8 @@ class EventDispatcherDependencyProvider extends SprykerEventDispatcherDependency
             new RouterSslRedirectEventDispatcherPlugin(),
             new CookieEventDispatcherPlugin(),
             new FragmentEventDispatcherPlugin(),
-            new HeaderEventDispatcherPlugin(),
             new HstsHeaderEventDispatcher(),
+            new CacheControlHeaderEventDispatcherPlugin(),
             new TwigEventDispatcherPlugin(),
             new SessionEventDispatcherPlugin(),
             new SaveSessionEventDispatcherPlugin(),
@@ -59,6 +61,7 @@ class EventDispatcherDependencyProvider extends SprykerEventDispatcherDependency
             new ResponseListenerEventDispatcherPlugin(),
             new ErrorPageEventDispatcherPlugin(),
             new RedirectUrlValidationEventDispatcherPlugin(),
+            new EnvironmentInfoHeaderEventDispatcherPlugin(),
         ];
     }
 
@@ -87,6 +90,16 @@ class EventDispatcherDependencyProvider extends SprykerEventDispatcherDependency
             new RouterListenerEventDispatcherPlugin(),
             new ResponseListenerEventDispatcherPlugin(),
             new AutoloaderCacheEventDispatcherPlugin(),
+        ];
+    }
+
+    /**
+     * @return array<\Spryker\Shared\EventDispatcherExtension\Dependency\Plugin\EventDispatcherPluginInterface>
+     */
+    protected function getMerchantPortalEventDispatcherPlugins(): array
+    {
+        return [
+            new MerchantPortalHeadersSecurityEventDispatcherPlugin(),
         ];
     }
 }
