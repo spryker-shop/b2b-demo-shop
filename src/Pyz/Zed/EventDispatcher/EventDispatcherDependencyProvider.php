@@ -21,7 +21,6 @@ use Spryker\Zed\Http\Communication\Plugin\EventDispatcher\HstsHeaderEventDispatc
 use Spryker\Zed\Kernel\Communication\Plugin\AutoloaderCacheEventDispatcherPlugin;
 use Spryker\Zed\Kernel\Communication\Plugin\EventDispatcher\RedirectUrlValidationEventDispatcherPlugin;
 use Spryker\Zed\Locale\Communication\Plugin\EventDispatcher\LocaleEventDispatcherPlugin;
-use Spryker\Zed\MerchantPortalApplication\Communication\Plugin\EventDispatcher\HeadersSecurityEventDispatcherPlugin as MerchantPortalHeadersSecurityEventDispatcherPlugin;
 use Spryker\Zed\Monitoring\Communication\Plugin\EventDispatcher\GatewayMonitoringRequestTransactionEventDispatcherPlugin;
 use Spryker\Zed\Monitoring\Communication\Plugin\EventDispatcher\MonitoringRequestTransactionEventDispatcherPlugin;
 use Spryker\Zed\Router\Communication\Plugin\EventDispatcher\RequestAttributesEventDispatcherPlugin;
@@ -90,16 +89,6 @@ class EventDispatcherDependencyProvider extends SprykerEventDispatcherDependency
             new RouterListenerEventDispatcherPlugin(),
             new ResponseListenerEventDispatcherPlugin(),
             new AutoloaderCacheEventDispatcherPlugin(),
-        ];
-    }
-
-    /**
-     * @return array<\Spryker\Shared\EventDispatcherExtension\Dependency\Plugin\EventDispatcherPluginInterface>
-     */
-    protected function getMerchantPortalEventDispatcherPlugins(): array
-    {
-        return [
-            new MerchantPortalHeadersSecurityEventDispatcherPlugin(),
         ];
     }
 }
