@@ -11,7 +11,7 @@ use Spryker\Shared\RabbitMq\RabbitMqEnv;
 use Spryker\Shared\Session\SessionConstants;
 use Spryker\Shared\ZedRequest\ZedRequestConstants;
 use Spryker\Zed\Propel\PropelConfig;
-  
+   
 $config[PropelConstants::ZED_DB_USERNAME] = 'development';
 $config[PropelConstants::ZED_DB_PASSWORD] = 'mate20mg';
 $config[PropelConstants::ZED_DB_DATABASE] = 'DE_development_zed';
