@@ -13,7 +13,6 @@ use Spryker\Client\Locale\LocaleClientInterface;
 use Spryker\Client\Search\SearchClientInterface;
 use Spryker\Client\UrlStorage\UrlStorageClientInterface;
 use Spryker\Service\UtilNumber\UtilNumberServiceInterface;
-use Spryker\Shared\Kernel\Store;
 use Spryker\Yves\Kernel\AbstractFactory;
 
 class ExampleProductSalePageFactory extends AbstractFactory

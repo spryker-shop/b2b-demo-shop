@@ -92,6 +92,8 @@ class SaleController extends AbstractController
     /**
      * @param string $locale
      *
+     * @throws \InvalidArgumentException
+     *
      * @return string
      */
     protected function getLanguageFromLocale(string $locale): string

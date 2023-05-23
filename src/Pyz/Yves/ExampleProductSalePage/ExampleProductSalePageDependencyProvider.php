@@ -8,7 +8,6 @@
 namespace Pyz\Yves\ExampleProductSalePage;
 
 use Pyz\Yves\ExampleProductSalePage\Dependency\Client\ExampleProductSalePageToStoreClientBridge;
-use Spryker\Shared\Kernel\Store;
 use Spryker\Yves\Kernel\AbstractBundleDependencyProvider;
 use Spryker\Yves\Kernel\Container;
 
