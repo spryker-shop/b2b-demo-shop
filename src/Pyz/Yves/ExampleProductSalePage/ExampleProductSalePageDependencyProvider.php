@@ -7,6 +7,7 @@
 
 namespace Pyz\Yves\ExampleProductSalePage;
 
+use Pyz\Yves\ExampleProductSalePage\Dependency\Client\ExampleProductSalePageToStoreClientBridge;
 use Spryker\Shared\Kernel\Store;
 use Spryker\Yves\Kernel\AbstractBundleDependencyProvider;
 use Spryker\Yves\Kernel\Container;
@@ -26,7 +27,7 @@ class ExampleProductSalePageDependencyProvider extends AbstractBundleDependencyP
     /**
      * @var string
      */
-    public const PYZ_STORE = 'PYZ_STORE';
+    public const PYZ_CLIENT_STORE = 'PYZ_CLIENT_STORE';
 
     /**
      * @var string
@@ -58,7 +59,7 @@ class ExampleProductSalePageDependencyProvider extends AbstractBundleDependencyP
         $container = parent::provideDependencies($container);
         $container = $this->addPyzSearchClient($container);
         $container = $this->addPyzUrlStorageClient($container);
-        $container = $this->addPyzStore($container);
+        $container = $this->addPyzClientStore($container);
         $container = $this->addProductSalePageWidgetPlugins($container);
         $container = $this->addPyzCatalogClient($container);
         $container = $this->addPyzLocaleClient($container);
@@ -100,10 +101,12 @@ class ExampleProductSalePageDependencyProvider extends AbstractBundleDependencyP
      *
      * @return \Spryker\Yves\Kernel\Container
      */
-    protected function addPyzStore($container): Container
+    protected function addPyzClientStore($container): Container
     {
-        $container->set(static::PYZ_STORE, function () {
-            return Store::getInstance();
+        $container->set(static::PYZ_CLIENT_STORE, function (Container $container) {
+            return new ExampleProductSalePageToStoreClientBridge(
+                $container->getLocator()->store()->client(),
+            );
         });
 
         return $container;

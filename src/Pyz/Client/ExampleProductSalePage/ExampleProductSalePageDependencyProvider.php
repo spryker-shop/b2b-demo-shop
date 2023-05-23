@@ -191,6 +191,7 @@ class ExampleProductSalePageDependencyProvider extends AbstractDependencyProvide
     protected function addPyzStore(Container $container): Container
     {
         $container->set(static::PYZ_STORE, function () {
+
             return Store::getInstance();
         });
 
