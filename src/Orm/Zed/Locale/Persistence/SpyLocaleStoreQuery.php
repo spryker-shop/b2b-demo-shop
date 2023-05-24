@@ -7,10 +7,10 @@
 
 namespace Orm\Zed\Locale\Persistence;
 
-use Spryker\Zed\Locale\Persistence\Propel\AbstractSpyLocaleStore as BaseSpyLocaleStore;
+use Spryker\Zed\Locale\Persistence\Propel\AbstractSpyLocaleStoreQuery as BaseSpyLocaleStoreQuery;
 
 /**
- * Skeleton subclass for representing a row from the 'spy_locale_store' table.
+ * Skeleton subclass for performing query and update operations on the 'spy_locale_store' table.
  *
  *
  *
@@ -18,6 +18,6 @@ use Spryker\Zed\Locale\Persistence\Propel\AbstractSpyLocaleStore as BaseSpyLocal
  * application requirements. This class will only be generated as
  * long as it does not already exist in the output directory.
  */
-class SpyLocaleStoreQuery extends BaseSpyLocaleStore
+class SpyLocaleStoreQuery extends BaseSpyLocaleStoreQuery
 {
 }
