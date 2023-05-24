@@ -51,8 +51,6 @@ export default class AutocompleteForm extends Component {
         this.overlay.showOverlay('no-agent-user', 'no-agent-user');
         if (this.inputValue.length >= this.minLetters) {
             this.showSuggestions();
-
-            return;
         }
     }
 
@@ -82,10 +80,9 @@ export default class AutocompleteForm extends Component {
     }
 
     protected mapItemEvents(): void {
-        const self = this;
         const items = Array.from(this.suggestionsContainer.getElementsByClassName(this.itemClassName));
         items.forEach((item: HTMLElement) => {
-            item.addEventListener('click', (event: Event) => self.onItemClick(event));
+            item.addEventListener('click', (event: Event) => this.onItemClick(event));
         });
     }
 

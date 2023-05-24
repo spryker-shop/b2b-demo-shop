@@ -1,0 +1,91 @@
+{% extends molecule('product-card-item') %}
+
+{% define config = {
+    name: 'product-cart-item',
+} %}
+
+{% define data = {
+    priceModifiers: ['medium', 'block'],
+    imageModifiers: ['cart'],
+    hasAdditionalTitle: false,
+} %}
+
+{% block productDescription %}
+    <div class="{{ config.name }}__col {{ config.name }}__col--description col">
+        <div class="{{ config.name }}__inner grid grid--stretch grid--gap">
+            <div class="{{ config.name }}__col {{ config.name }}__col--content col">
+                {{ block('title') }}
+                {{ block('info') }}
+                {{ block('productConfiguration') }}
+                {{ block('productInfo') }}
+
+                {% if data.hasAdditionalTitle %}
+                    <h6 class="{{ config.name }}__additional-title">{{ 'cart_note.form.comment' | trans }}:</h6>
+                {% endif %}
+            </div>
+
+            <div class="{{ config.name }}__col {{ config.name }}__col--total col">
+                <div class="{{ config.name }}__inner {{ config.name }}__inner--actions {{ config.name }}__inner--full-height grid grid--column grid--justify-column">
+                    <div class="col col--sm-12">
+                        <div class="{{ config.name }}__inner {{ config.name }}__inner--total grid grid--column">
+                            {% if can('SeePricePermissionPlugin') %}
+                                {{ block('price') }}
+                            {% endif %}
+
+                            {{ block('quantity') }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="{{ config.name }}__inner grid grid--stretch grid--gap">
+            <div class="{{ config.name }}__col {{ config.name }}__col--content col">
+                {% block note %}
+                    {% widget 'CartItemNoteFormWidget' args [listItem, data.list] with {
+                        data: {
+                            isTitleVisible: false,
+                        },
+                    } only %}
+                    {% endwidget %}
+                {% endblock %}
+
+                {{ block('productOptions') }}
+            </div>
+
+            <div class="{{ config.name }}__col {{ config.name }}__col--total col">
+                <div class="{{ config.name }}__inner {{ config.name }}__inner--actions {{ config.name }}__inner--full-height grid grid--column grid--justify-column">
+                    <div class="col col--sm-12">
+                        <div class="{{ config.name }}__inner {{ config.name }}__inner--total grid grid--column">
+                            {% block totalPrice %}
+                                {% if can('SeePricePermissionPlugin') %}
+                                    {% set totalPrice = listItem.unitPrice is defined ? listItem.sumSubtotalAggregation : listItem.price %}
+
+                                    {% embed molecule('money-price') with {
+                                        class: 'grid grid--wide',
+                                        modifiers: ['secondary'],
+                                        data: {
+                                            amount: totalPrice,
+                                            currencyIsoCode: data.currencyIsoCode,
+                                        },
+                                    } only %}
+                                        {% block body %}
+                                            <strong class="col col--sm-4 col--lg-5 text-left">{{ 'cart.item.item_total' | trans }}</strong>
+
+                                            <div class="col col--sm-8 col--lg-7">
+                                                {{ parent() }}
+                                            </div>
+                                        {% endblock %}
+
+                                        {% block priceMode %}{% endblock %}
+                                    {% endembed %}
+                                {% endif %}
+                            {% endblock %}
+                        </div>
+                    </div>
+
+                    {{ block('deleteButton') }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
