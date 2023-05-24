@@ -7,10 +7,10 @@
 
 namespace Orm\Zed\Country\Persistence;
 
-use Spryker\Zed\Country\Persistence\Propel\AbstractSpyCountryStore as BaseSpyCountryStore;
+use Spryker\Zed\Country\Persistence\Propel\AbstractSpyCountryStoreQuery as BaseSpyCountryStoreQuery;
 
 /**
- * Skeleton subclass for representing a row from the 'spy_country_store' table.
+ * Skeleton subclass for performing query and update operations on the 'spy_country_store' table.
  *
  *
  *
@@ -18,6 +18,6 @@ use Spryker\Zed\Country\Persistence\Propel\AbstractSpyCountryStore as BaseSpyCou
  * application requirements. This class will only be generated as
  * long as it does not already exist in the output directory.
  */
-class SpyCountryStoreQuery extends BaseSpyCountryStore
+class SpyCountryStoreQuery extends BaseSpyCountryStoreQuery
 {
 }
