@@ -1,14 +1,14 @@
-{% extends view('currency-switcher', '@SprykerShop:CurrencyWidget') %}
+{% extends view('switcher', '@SprykerShop:StoreWidget') %}
 
 {% block body %}
-    <form method="GET" action="{{ path('currency-switch') }}">
+    <form method="GET" action="/">
         {% set options = [] %}
 
-        {% for currency in data.currencies %}
+        {% for storeName in data.storeNames %}
             {% set options = options | merge([{
-                label: currency.code | trans,
-                value: currency.code,
-                selected: currency.code == data.currentCurrency,
+                label: 'store_widget.switcher.store' | trans ~ ' ' ~ storeName,
+                value: storeName,
+                selected: storeName == data.currentStoreName,
             }]) %}
         {% endfor %}
 
@@ -18,12 +18,10 @@
                 options: options,
             },
             attributes: {
-                name: 'currency-iso-code',
+                name: '_store',
                 'data-form-submitter': true,
                 'config-theme': 'alternative',
             },
         } only %}
-
-        <input type="hidden" name="referrer-url" value="{{ data.requestUri }}">
     </form>
 {% endblock %}
