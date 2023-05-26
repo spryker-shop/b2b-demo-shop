@@ -23,7 +23,6 @@ use Spryker\Client\SearchElasticsearch\Plugin\QueryExpander\StoreQueryExpanderPl
 use Spryker\Client\SearchElasticsearch\Plugin\ResultFormatter\FacetResultFormatterPlugin;
 use Spryker\Client\SearchElasticsearch\Plugin\ResultFormatter\PaginatedResultFormatterPlugin;
 use Spryker\Client\SearchElasticsearch\Plugin\ResultFormatter\SortedResultFormatterPlugin;
-use Spryker\Shared\Kernel\Store;
 
 class ExampleProductSalePageDependencyProvider extends AbstractDependencyProvider
 {
@@ -55,7 +54,7 @@ class ExampleProductSalePageDependencyProvider extends AbstractDependencyProvide
     /**
      * @var string
      */
-    public const PYZ_STORE = 'PYZ_STORE';
+    public const PYZ_CLIENT_STORE = 'PYZ_CLIENT_STORE';
 
     /**
      * @param \Spryker\Client\Kernel\Container $container
@@ -70,7 +69,7 @@ class ExampleProductSalePageDependencyProvider extends AbstractDependencyProvide
         $container = $this->addPyzSaleSearchQueryPlugin($container);
         $container = $this->addSaleSearchQueryExpanderPlugins($container);
         $container = $this->addSaleSearchResultFormatterPlugins($container);
-        $container = $this->addPyzStore($container);
+        $container = $this->addPyzClientStore($container);
 
         return $container;
     }
@@ -188,10 +187,10 @@ class ExampleProductSalePageDependencyProvider extends AbstractDependencyProvide
      *
      * @return \Spryker\Client\Kernel\Container
      */
-    protected function addPyzStore(Container $container): Container
+    protected function addPyzClientStore(Container $container): Container
     {
-        $container->set(static::PYZ_STORE, function () {
-            return Store::getInstance();
+        $container->set(static::PYZ_CLIENT_STORE, function (Container $container) {
+            return $container->getLocator()->store()->client();
         });
 
         return $container;
