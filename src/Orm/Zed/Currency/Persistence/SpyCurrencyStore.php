@@ -7,10 +7,10 @@
 
 namespace Orm\Zed\Currency\Persistence;
 
-use Spryker\Zed\Currency\Persistence\Propel\AbstractSpyCurrencyStoreQuery as BaseSpyCurrencyStoreQuery;
+use Spryker\Zed\Currency\Persistence\Propel\AbstractSpyCurrencyStore as BaseSpyCurrencyStore;
 
 /**
- * Skeleton subclass for performing query and update operations on the 'spy_currency_store' table.
+ * Skeleton subclass for representing a row from the 'spy_currency_store' table.
  *
  *
  *
@@ -18,6 +18,6 @@ use Spryker\Zed\Currency\Persistence\Propel\AbstractSpyCurrencyStoreQuery as Bas
  * application requirements. This class will only be generated as
  * long as it does not already exist in the output directory.
  */
-class SpyCurrencyStore extends BaseSpyCurrencyStoreQuery
+class SpyCurrencyStore extends BaseSpyCurrencyStore
 {
 }

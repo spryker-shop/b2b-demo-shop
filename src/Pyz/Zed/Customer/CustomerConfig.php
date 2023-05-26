@@ -97,4 +97,14 @@ class CustomerConfig extends SprykerCustomerConfig
     {
         return true;
     }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @return string|null
+     */
+    public function getCustomerSequenceNumberPrefix(): ?string
+    {
+        return 'customer';
+    }
 }
