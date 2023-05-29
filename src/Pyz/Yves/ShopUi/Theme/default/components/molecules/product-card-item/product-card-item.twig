@@ -25,21 +25,23 @@
     itemtype: 'https://schema.org/Product',
 } %}
 
+{% set listItem = data.listItem %}
+
 {% block body %}
-    {% set amountSalesUnit = data.listItem.amountSalesUnit is defined ? data.listItem.amountSalesUnit : null %}
-    {% set quantitySalesUnit = data.listItem.quantitySalesUnit is defined ? data.listItem.quantitySalesUnit : null %}
+    {% set amountSalesUnit = listItem.amountSalesUnit ?? null %}
+    {% set quantitySalesUnit = listItem.quantitySalesUnit ?? null %}
 
     <div class="grid grid--stretch grid--gap">
         <div class="{{ component.renderClass(config.name ~ '__col', modifiers, config.name ~ '__col--image') }} col">
             {% block image %}
-                {% set imageUrl = data.listItem.images[0].externalUrlLarge ?? '' %}
+                {% set imageUrl = listItem.images[0].externalUrlLarge ?? '' %}
 
-                {% if data.listItem.url ?? false %}
-                    <a itemprop="url" href="{{ data.listItem.url }}" title="{{ data.listItem.name }}">
+                {% if listItem.url ?? false %}
+                    <a itemprop="url" href="{{ listItem.url }}" title="{{ listItem.name }}">
                         {% include molecule('product-item-image') with {
                             modifiers: data.imageModifiers,
                             data: {
-                                name: data.listItem.name | default,
+                                name: listItem.name | default,
                                 image: imageUrl,
                             },
                         } only %}
@@ -49,7 +51,7 @@
                         class: 'spacing-y spacing-y--inner spacing-y--reset',
                         modifiers: data.imageModifiers,
                         data: {
-                            name: data.listItem.name | default,
+                            name: listItem.name | default,
                             image: imageUrl,
                         },
                     } only %}
@@ -65,21 +67,21 @@
                             {% block productCharacteristics %}
                                 {% block title %}
                                     <div>
-                                        <a href="{{ data.listItem.url }}" class="{{ component.renderClass(config.name ~ '__title', modifiers) }} title title--h6" title="{{ data.listItem.name }}" itemprop="name">{{ data.listItem.name }}</a>
+                                        <a href="{{ listItem.url }}" class="{{ component.renderClass(config.name ~ '__title', modifiers) }} title title--h6" title="{{ listItem.name }}" itemprop="name">{{ listItem.name }}</a>
                                     </div>
                                 {% endblock %}
 
                                 {% block info %}
                                     <div class="spacing-bottom">
-                                        <small class="text-secondary">{{ 'cart.item.sku' | trans }}: <span itemprop="sku">{{ data.listItem.sku }}</span></small>
+                                        <small class="text-secondary">{{ 'cart.item.sku' | trans }}: <span itemprop="sku">{{ listItem.sku }}</span></small>
                                     </div>
                                 {% endblock %}
 
                                 {% block productConfiguration %}
-                                    {% widget 'ProductConfigurationCartItemDisplayWidget' args [data.listItem] only %}{% endwidget %}
+                                    {% widget 'ProductConfigurationCartItemDisplayWidget' args [listItem] only %}{% endwidget %}
 
                                     {% if data.canEdit %}
-                                        {% widget 'ProductConfigurationCartPageButtonWidget' args [data.listItem] only %}{% endwidget %}
+                                        {% widget 'ProductConfigurationCartPageButtonWidget' args [listItem] only %}{% endwidget %}
                                     {% endif %}
                                 {% endblock %}
 
@@ -103,15 +105,15 @@
                                             {% block packagingUnitCartContent %}
                                                 {% include molecule('packaging-unit-cart', 'ProductPackagingUnitWidget') with {
                                                     data: {
-                                                        amount: data.listItem.amount,
-                                                        quantity: data.listItem.quantity,
-                                                        quantitySalesUnit: data.listItem.quantitySalesUnit,
-                                                        quantityConversion: data.listItem.quantitySalesUnit.conversion | default(null),
-                                                        quantityProductMeasurementUnit: data.listItem.quantitySalesUnit.productMeasurementUnit | default(null),
-                                                        amountSalesUnit: data.listItem.amountSalesUnit,
-                                                        amountConversion: data.listItem.amountSalesUnit.conversion,
-                                                        amountProductMeasurementUnit: data.listItem.amountSalesUnit.productMeasurementUnit,
-                                                        amountValue: data.listItem.amountSalesUnit.value,
+                                                        amount: listItem.amount,
+                                                        quantity: listItem.quantity,
+                                                        quantitySalesUnit: listItem.quantitySalesUnit,
+                                                        quantityConversion: listItem.quantitySalesUnit.conversion | default(null),
+                                                        quantityProductMeasurementUnit: listItem.quantitySalesUnit.productMeasurementUnit | default(null),
+                                                        amountSalesUnit: listItem.amountSalesUnit,
+                                                        amountConversion: listItem.amountSalesUnit.conversion,
+                                                        amountProductMeasurementUnit: listItem.amountSalesUnit.productMeasurementUnit,
+                                                        amountValue: listItem.amountSalesUnit.value,
                                                         hasSubQuantity: hasSubQuantity,
                                                         hasAmountPerQuantity: hasAmountPerQuantity,
                                                     },
@@ -127,14 +129,14 @@
                                             <div class="{{ config.name }}__quantity grid grid--middle">
                                                 <div class="col">{{ 'packaging_units.cart.quantity' | trans }}: </div>
                                                 <div class="col col--expand">
-                                                    {% set cartProductMeasurementUnitQuantitySelectorWidget = findWidget('CartProductMeasurementUnitQuantitySelectorWidget', [data.listItem]) %}
+                                                    {% set cartProductMeasurementUnitQuantitySelectorWidget = findWidget('CartProductMeasurementUnitQuantitySelectorWidget', [listItem]) %}
 
                                                     {% if cartProductMeasurementUnitQuantitySelectorWidget and data.canEdit %}
                                                         {% widget cartProductMeasurementUnitQuantitySelectorWidget only %}{% endwidget %}
                                                     {% else %}
                                                         {% include molecule('product-item-quantity') with {
                                                             data: {
-                                                                productItem: data.listItem,
+                                                                productItem: listItem,
                                                                 isDisabled: not data.canEdit,
                                                             },
                                                         } only %}
@@ -148,7 +150,7 @@
                                         {% if data.attributes is not empty %}
                                             {% include molecule('product-item-variant-selector') with {
                                                 data: {
-                                                    productItem: data.listItem,
+                                                    productItem: listItem,
                                                     productItemAttributes: data.attributes,
                                                     canEdit: data.canEdit,
                                                 },
@@ -157,7 +159,7 @@
                                     {% endblock %}
 
                                     {% block bundle %}
-                                        {% widget 'ProductBundleCartItemsListWidget' args [data.listItem, data.list] only %}
+                                        {% widget 'ProductBundleCartItemsListWidget' args [listItem, data.list] only %}
                                         {% endwidget %}
                                     {% endblock %}
                                 {% endblock %}
@@ -165,15 +167,15 @@
 
                             {% block additionalInfo %}
                                 {% block note %}
-                                    {% widget 'CartItemNoteFormWidget' args [data.listItem, data.list] only %}{% endwidget %}
+                                    {% widget 'CartItemNoteFormWidget' args [listItem, data.list] only %}{% endwidget %}
                                 {% endblock %}
 
                                 {% block productOptions %}
-                                    {% if data.listItem.productOptions ?? false %}
+                                    {% if listItem.productOptions ?? false %}
                                         {% include molecule('product-item-options') with {
                                             modifiers: modifiers,
                                             data: {
-                                                productItem: data.listItem,
+                                                productItem: listItem,
                                             },
                                         } only %}
                                     {% endif %}
@@ -194,8 +196,8 @@
                                     <div class="col col--sm-12">
                                         <div class="{{ config.name }}__inner {{ config.name }}__inner--total grid grid--column">
                                             {% block price %}
-                                                {% set price = data.listItem.unitPrice is defined ? data.listItem.unitPrice : data.listItem.price %}
-                                                {% set originalAmount = data.listItem.prices.ORIGINAL ?? null %}
+                                                {% set price = listItem.unitPrice is defined ? listItem.unitPrice : listItem.price %}
+                                                {% set originalAmount = listItem.prices.ORIGINAL ?? null %}
 
                                                 {% include molecule('money-price') with {
                                                     modifiers: data.priceModifiers,
@@ -214,7 +216,7 @@
                                                     <div class="{{ config.name }}__quantity-holder">
                                                         {% include molecule('product-item-quantity') with {
                                                             data: {
-                                                                productItem: data.listItem,
+                                                                productItem: listItem,
                                                                 isDisabled: not data.canEdit,
                                                             },
                                                         } only %}
@@ -225,7 +227,7 @@
                                             {% block totalPrice %}{% endblock %}
 
                                             {% block state %}
-                                                {% set itemState = data.listItem.state is defined ? data.listItem.state %}
+                                                {% set itemState = listItem.state is defined ? listItem.state %}
 
                                                 {% if itemState %}
                                                     {% set state = itemState.name | replace({' ': '-'}) | lower %}
@@ -244,7 +246,7 @@
 
                                     {% block deleteButton %}
                                         {% if data.canRemove %}
-                                            {% widget 'RemoveFromCartFormWidget' args [data.listItem] with {
+                                            {% widget 'RemoveFromCartFormWidget' args [listItem] with {
                                                 embed: {
                                                    configName: config.name,
                                                 },
