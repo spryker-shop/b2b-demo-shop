@@ -39,9 +39,9 @@
                     </div>
 
                     {% widget 'StoreSwitcher' with {
-                        embed:{
+                        embed: {
                             configName: config.name,
-                        }
+                        },
                     } only %}
                         {% block body %}
                             <div class="col {{ embed.configName }}__navigation-top-actions">
