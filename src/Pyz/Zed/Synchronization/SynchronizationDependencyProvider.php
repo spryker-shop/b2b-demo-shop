@@ -66,6 +66,7 @@ use Spryker\Zed\ProductStorage\Communication\Plugin\Synchronization\ProductConcr
 use Spryker\Zed\SalesReturnSearch\Communication\Plugin\Synchronization\ReturnReasonSynchronizationDataBulkRepositoryPlugin;
 use Spryker\Zed\SearchHttp\Communication\Plugin\Synchronization\SearchHttpSynchronizationDataPlugin;
 use Spryker\Zed\ShoppingListStorage\Communication\Plugin\Synchronization\ShoppingListSynchronizationDataBulkPlugin;
+use Spryker\Zed\StoreStorage\Communication\Plugin\Synchronization\StoreSynchronizationDataPlugin;
 use Spryker\Zed\Synchronization\Communication\Plugin\Synchronization\SynchronizationDataQueryExpanderWhereBetweenStrategyPlugin;
 use Spryker\Zed\Synchronization\SynchronizationDependencyProvider as SprykerSynchronizationDependencyProvider;
 use Spryker\Zed\SynchronizationExtension\Dependency\Plugin\SynchronizationDataQueryExpanderStrategyPluginInterface;
@@ -143,6 +144,7 @@ class SynchronizationDependencyProvider extends SprykerSynchronizationDependency
             new ProductCategoryFilterSynchronizationDataPlugin(),
             new CmsBlockCategorySynchronizationDataPlugin(),
             new CmsBlockProductSynchronizationDataPlugin(),
+            new StoreSynchronizationDataPlugin(),
             new AssetStorageSynchronizationDataPlugin(),
             new ProductConfigurationSynchronizationDataRepositoryPlugin(),
             new SearchHttpSynchronizationDataPlugin(),

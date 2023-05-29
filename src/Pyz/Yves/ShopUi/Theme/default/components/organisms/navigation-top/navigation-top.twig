@@ -54,6 +54,10 @@
             {% widget 'LanguageSwitcherWidget' args [app.request.pathInfo, app.request.queryString, app.request.requestUri] only %}{% endwidget %}
         </li>
 
+        <li class="col {{ config.name }}__action-item">
+            {% widget 'StoreSwitcher' only %}{% endwidget %}
+        </li>
+
         {% set menuItemCompanyWidget = findWidget('MenuItemCompanyWidget') %}
         {% set hasCompanyAccess = menuItemCompanyWidget.hasCompanyAccess %}
 
