@@ -133,15 +133,16 @@ class SaleSearchQueryPlugin extends AbstractPlugin implements QueryInterface, Se
      */
     protected function createSaleProductsQuery(): BoolQuery
     {
-        $store = $this->getFactory()->getPyzStore();
+        $storeTransfer = $this->getFactory()->getPyzStore();
 
         $labelName = $this->getFactory()
             ->getConfig()
             ->getPyzLabelSaleName();
 
+        $defaultLocale = current($storeTransfer->getAvailableLocaleIsoCodes());
         $storageProductLabelTransfer = $this->getFactory()
             ->getPyzProductLabelStorageClient()
-            ->findLabelByName($labelName, $store->getCurrentLocale(), $store->getStoreName());
+            ->findLabelByName($labelName, $defaultLocale, $storeTransfer->getName());
 
         $labelId = $storageProductLabelTransfer ? $storageProductLabelTransfer->getIdProductLabel() : 0;
 

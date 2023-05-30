@@ -17,7 +17,7 @@
 } %}
 
 {% block body %}
-    <div class="review-average-display__average-rating">
+    <div class="{{ config.name }}__average-rating">
         {{ data.summary.averageRating | executeFilterIfExists('formatFloat', app.locale) }}
     </div>
 
@@ -39,7 +39,7 @@
     } only %}
 
     {% if data.summary.totalReview > 0 %}
-        <div class="review-average-display__total-review">
+        <div class="{{ config.name }}__total-review">
             {{- data.summary.totalReview | executeFilterIfExists('formatInt', app.locale) }}
 
             {% set amount = data.summary.totalReview > 1 ? 'multiple' : data.summary.totalReview %}
@@ -50,7 +50,7 @@
             }) -}}
         </div>
     {% else %}
-        <div class="review-average-display__total-review is-hidden-sm-only">
+        <div class="{{ config.name }}__total-review is-hidden-sm-only">
             {{ 'product_review.no_reviews' | trans }}
         </div>
     {% endif %}

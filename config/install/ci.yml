@@ -33,6 +33,9 @@ sections:
         rest-request-validation-cache-warmup:
             command: 'vendor/bin/console rest-api:build-request-validation-cache'
 
+        controller-cache-warmup:
+            command: 'vendor/bin/glue glue-api:controller:cache:warm-up'
+
         generate-page-source-map:
             command: 'vendor/bin/console search:setup:source-map'
 
@@ -90,6 +93,11 @@ sections:
         update-product-labels:
             command: 'vendor/bin/console product-label:relations:update'
 
+    queue-demodata:
+        run-worker:
+            command: 'vendor/bin/console queue:worker:start --stop-when-empty'
+            timeout: 2000
+
     fixtures:
         fixtures:
             command: 'vendor/bin/console code:fixtures'
@@ -97,6 +105,7 @@ sections:
     queue:
         run-worker:
             command: 'vendor/bin/console queue:worker:start --stop-when-empty'
+            timeout: 2000
 
     frontend:
         dependencies-install:
