@@ -90,7 +90,7 @@ export default class QuickOrderRow extends Component {
         }
     }
 
-    async reloadField(sku: string = '') {
+    async reloadField(sku = '') {
         const quantityInputValue = Math.floor(this.formattedNumberInput.unformattedValue);
 
         this.ajaxProvider.queryParams.set('sku', sku);

@@ -11,7 +11,7 @@ export default class VolumePrice extends Component {
     protected quantityElement: HTMLFormElement;
     protected highLightedClass: string;
     protected currentQuantityValue: number;
-    protected timeout: number = 400;
+    protected timeout = 400;
 
     protected readyCallback(): void {}
 

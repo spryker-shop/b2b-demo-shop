@@ -120,6 +120,9 @@ class ProductOptionWriterStep extends PublishAwareStep implements DataImportStep
         }
 
         foreach ($dataSet[ProductLocalizedAttributesExtractorStep::KEY_LOCALIZED_ATTRIBUTES] as $idLocale => $attributes) {
+            if (!isset($attributes[static::KEY_OPTION_NAME])) {
+                continue;
+            }
             $this->findOrCreateTranslation($dataSet[static::KEY_OPTION_NAME_TRANSLATION_KEY], $attributes[static::KEY_OPTION_NAME], $idLocale);
             $this->findOrCreateTranslation($dataSet[static::KEY_GROUP_NAME_TRANSLATION_KEY], $attributes[static::KEY_GROUP_NAME], $idLocale);
         }

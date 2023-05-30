@@ -75,6 +75,7 @@ use Spryker\Shared\ProductManagement\ProductManagementConstants;
 use Spryker\Shared\ProductRelation\ProductRelationConstants;
 use Spryker\Shared\Propel\PropelConstants;
 use Spryker\Shared\PropelQueryBuilder\PropelQueryBuilderConstants;
+use Spryker\Shared\PropelReplicationCache\PropelReplicationCacheConstants;
 use Spryker\Shared\Queue\QueueConfig;
 use Spryker\Shared\Queue\QueueConstants;
 use Spryker\Shared\RabbitMq\RabbitMqEnv;
@@ -333,6 +334,9 @@ $config[PropelConstants::ZED_DB_DATABASE] = getenv('SPRYKER_DB_DATABASE');
 $config[PropelConstants::ZED_DB_REPLICAS] = json_decode(getenv('SPRYKER_DB_REPLICAS') ?: '[]', true);
 $config[PropelConstants::USE_SUDO_TO_MANAGE_DATABASE] = false;
 
+// >>> DATABASE REPLICA CACHE
+$config[PropelReplicationCacheConstants::CACHE_TTL] = 2;
+
 // >>> SEARCH
 
 $config[SearchElasticsearchConstants::HOST] = getenv('SPRYKER_SEARCH_HOST');
@@ -497,6 +501,14 @@ $defaultConnection = [
 ];
 
 $config[RabbitMqEnv::RABBITMQ_CONNECTIONS] = [];
+$connectionKeys = array_keys($rabbitConnections);
+$defaultKey = reset($connectionKeys);
+if (getenv('SPRYKER_CURRENT_REGION')) {
+    $defaultKey = getenv('SPRYKER_CURRENT_REGION');
+}
+if (getenv('APPLICATION_STORE') && (bool)getenv('SPRYKER_DYNAMIC_STORE_MODE') === false) {
+    $defaultKey = getenv('APPLICATION_STORE');
+}
 foreach ($rabbitConnections as $key => $connection) {
     $config[RabbitMqEnv::RABBITMQ_CONNECTIONS][$key] = $defaultConnection;
     $config[RabbitMqEnv::RABBITMQ_CONNECTIONS][$key][RabbitMqEnv::RABBITMQ_CONNECTION_NAME] = $key . '-connection';
@@ -504,7 +516,7 @@ foreach ($rabbitConnections as $key => $connection) {
     foreach ($connection as $constant => $value) {
         $config[RabbitMqEnv::RABBITMQ_CONNECTIONS][$key][constant(RabbitMqEnv::class . '::' . $constant)] = $value;
     }
-    $config[RabbitMqEnv::RABBITMQ_CONNECTIONS][$key][RabbitMqEnv::RABBITMQ_DEFAULT_CONNECTION] = $key === APPLICATION_STORE;
+    $config[RabbitMqEnv::RABBITMQ_CONNECTIONS][$key][RabbitMqEnv::RABBITMQ_DEFAULT_CONNECTION] = $key === $defaultKey;
 }
 
 // >>> SYNCHRONIZATION
@@ -607,6 +619,10 @@ $config[AvailabilityNotificationConstants::BASE_URL_YVES_PORT] = $yvesPort;
 $config[AvailabilityNotificationConstants::STORE_TO_YVES_HOST_MAPPING] = [
     'DE' => getenv('SPRYKER_YVES_HOST_DE'),
     'AT' => getenv('SPRYKER_YVES_HOST_AT'),
+    'US' => getenv('SPRYKER_YVES_HOST_US'),
+];
+$config[AvailabilityNotificationConstants::REGION_TO_YVES_HOST_MAPPING] = [
+    'EU' => getenv('SPRYKER_YVES_HOST_EU'),
     'US' => getenv('SPRYKER_YVES_HOST_US'),
 ];
 
@@ -753,7 +769,6 @@ $config[MessageBrokerAwsConstants::CHANNEL_TO_SENDER_TRANSPORT_MAP] = [
     'payment' => 'http',
     'assets' => 'http',
     'product' => 'http',
-    'search' => 'http',
     'orders' => 'http',
 ];
 
