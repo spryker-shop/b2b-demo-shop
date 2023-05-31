@@ -3,7 +3,8 @@ import PackagingUnitQuantitySelectorCore from 'ProductPackagingUnitWidget/compon
 export default class PackagingUnitQuantitySelector extends PackagingUnitQuantitySelectorCore {
     protected multiply(a: number, b: number): number {
         const result = a * b;
+        const precision = 1000;
 
-        return Math.round(result * 1000) / 1000;
+        return Math.round(result * precision) / precision;
     }
 }
