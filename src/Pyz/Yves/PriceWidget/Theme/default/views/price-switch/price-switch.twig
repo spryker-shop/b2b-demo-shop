@@ -1,43 +1,30 @@
-{% extends template('widget') %}
+{% extends view('price-switch', '@SprykerShop:PriceWidget') %}
 
 {% define data = {
-    priceModes: _widget.priceModes | default([]),
-    currentPriceMode: _widget.currentPriceMode | default,
-    requestUri: app.request.requestUri
+    isVisible: _widget.priceModes | default(false),
 } %}
-
-{% block template %}
-    {% if data.priceModes is not empty %}
-        {{parent()}}
-    {% endif %}
-{% endblock %}
 
 {% block body %}
     <form method="GET" action="{{ path('price-mode-switch') }}">
-        {% embed molecule('custom-select') with {
+        {% set options = [] %}
+
+        {% for priceMode in data.priceModes %}
+            {% set options = options | merge([{
+                label: ('price.mode.' ~ priceMode | lower) | trans,
+                value: priceMode,
+                selected: priceMode == data.currentPriceMode,
+            }]) %}
+        {% endfor %}
+
+        {% include molecule('custom-select') with {
             modifiers: ['alternative'],
+            data: {
+                options: options,
+            },
             attributes: {
                 name: 'price-mode',
+                'data-form-submitter': true,
                 'config-theme': 'alternative',
-            },
-            embed: {
-                priceModes: data.priceModes,
-                currentPriceMode: data.currentPriceMode,
-            },
-        } only %}
-            {% block selectClass %}
-                {{ parent() }} js-price-mode-select
-            {% endblock %}
-            {% block options %}
-                {% for priceMode in embed.priceModes %}
-                    <option value="{{ priceMode }}" {{ (priceMode == embed.currentPriceMode) ? 'selected' : ''}}>{{ ('price.mode.' ~ priceMode | lower) | trans }}</option>
-                {% endfor %}
-            {% endblock %}
-        {% endembed %}
-
-        {% include molecule('form-handler') with {
-            attributes: {
-                'trigger-class-name': 'js-price-mode-select',
             },
         } only %}
 

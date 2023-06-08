@@ -54,9 +54,17 @@
             {% widget 'LanguageSwitcherWidget' args [app.request.pathInfo, app.request.queryString, app.request.requestUri] only %}{% endwidget %}
         </li>
 
-        <li class="col {{ config.name }}__action-item">
-            {% widget 'StoreSwitcher' only %}{% endwidget %}
-        </li>
+        {% widget 'StoreSwitcher' with {
+            embed: {
+                configName: config.name,
+            },
+        } only %}
+            {% block body %}
+                <li class="col {{ embed.configName }}__action-item">
+                    {{ parent() }}
+                </li>
+            {% endblock %}
+        {% endwidget %}
 
         {% set menuItemCompanyWidget = findWidget('MenuItemCompanyWidget') %}
         {% set hasCompanyAccess = menuItemCompanyWidget.hasCompanyAccess %}
