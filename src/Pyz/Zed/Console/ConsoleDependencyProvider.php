@@ -170,7 +170,6 @@ use Spryker\Zed\Uuid\Communication\Console\UuidGeneratorConsole;
 use Spryker\Zed\ZedNavigation\Communication\Console\BuildNavigationConsole;
 use Spryker\Zed\ZedNavigation\Communication\Console\RemoveNavigationCacheConsole;
 use SprykerEco\Zed\NewRelic\Communication\Console\RecordDeploymentConsole;
-use SprykerSdk\Integrator\Console\ModuleInstallerConsole;
 use SprykerShop\Zed\DateTimeConfiguratorPageExample\Communication\Console\DateTimeProductConfiguratorBuildFrontendConsole;
 use Stecman\Component\Symfony\Console\BashCompletion\CompletionCommand;
 
@@ -425,8 +424,6 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             $commands[] = new GenerateRestApiDocumentationConsole();
             $commands[] = new CustomerPasswordResetConsole();
             $commands[] = new CustomerPasswordSetConsole();
-
-            $commands[] = new ModuleInstallerConsole();
 
             if (class_exists(SecurityCheckerCommand::class)) {
                 $commands[] = new SecurityCheckerCommand();

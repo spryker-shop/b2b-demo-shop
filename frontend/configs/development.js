@@ -124,8 +124,9 @@ const getConfiguration = async (appSettings) => {
                             {
                                 loader: 'postcss-loader',
                                 options: {
-                                    ident: 'postcss',
-                                    plugins: [require('autoprefixer')],
+                                    postcssOptions: {
+                                        plugins: [require('autoprefixer')],
+                                    },
                                 },
                             },
                             {
@@ -135,7 +136,7 @@ const getConfiguration = async (appSettings) => {
                                 },
                             },
                             {
-                                loader: '@spryker/sass-resources-loader',
+                                loader: 'sass-resources-loader',
                                 options: {
                                     resources: [sharedScss, ...styles],
                                 },
