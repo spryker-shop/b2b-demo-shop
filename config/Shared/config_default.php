@@ -746,10 +746,10 @@ $config[MessageBrokerConstants::MESSAGE_TO_CHANNEL_MAP] = [
     ProductUpdatedTransfer::class => 'product-events',
     ProductDeletedTransfer::class => 'product-events',
     InitializeProductExportTransfer::class => 'product-commands',
-    SearchEndpointAvailableTransfer::class => 'search-commands',
-    SearchEndpointRemovedTransfer::class => 'search-commands',
     AddReviewsTransfer::class => 'product-review-commands',
     OrderStatusChangedTransfer::class => 'order-events',
+    SearchEndpointAvailableTransfer::class => 'search-commands',
+    SearchEndpointRemovedTransfer::class => 'search-commands',
 ];
 
 $config[MessageBrokerConstants::CHANNEL_TO_TRANSPORT_MAP] = [
@@ -775,7 +775,6 @@ $config[MessageBrokerAwsConstants::CHANNEL_TO_RECEIVER_TRANSPORT_MAP] = [
     'order-events' => MessageBrokerAwsConfig::SQS_TRANSPORT,
 ];
 
-$config[CartsRestApiConstants::IS_QUOTE_RELOAD_ENABLED] = true;
 $config[MessageBrokerAwsConstants::CHANNEL_TO_SENDER_TRANSPORT_MAP] = [
     'payment-commands' => 'http',
     'product-events' => 'http',
