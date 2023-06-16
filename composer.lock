@@ -15019,6 +15019,47 @@
             "time": "2021-07-30T05:04:54+00:00"
         },
         {
+            "name": "spryker/acl-merchant-portal-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/acl-merchant-portal-extension.git",
+                "reference": "d850f2b7a8d94e696f037b62b7e0da0b64e1db62"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/acl-merchant-portal-extension/zipball/d850f2b7a8d94e696f037b62b7e0da0b64e1db62",
+                "reference": "d850f2b7a8d94e696f037b62b7e0da0b64e1db62",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "AclMerchantPortalExtension module",
+            "support": {
+                "source": "https://github.com/spryker/acl-merchant-portal-extension/tree/1.0.0"
+            },
+            "time": "2023-03-10T14:11:16+00:00"
+        },
+        {
             "name": "spryker/agent",
             "version": "1.5.1",
             "source": {
@@ -48472,20 +48513,21 @@
         },
         {
             "name": "spryker/store",
-            "version": "1.16.0",
+            "version": "1.20.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/store.git",
-                "reference": "f19670bb1dab9c6eb10bfc7473b31c56597947c3"
+                "reference": "a9996e7c6f5c6ee5b63382bbe5d26de91a6ccb8c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/store/zipball/f19670bb1dab9c6eb10bfc7473b31c56597947c3",
-                "reference": "f19670bb1dab9c6eb10bfc7473b31c56597947c3",
+                "url": "https://api.github.com/repos/spryker/store/zipball/a9996e7c6f5c6ee5b63382bbe5d26de91a6ccb8c",
+                "reference": "a9996e7c6f5c6ee5b63382bbe5d26de91a6ccb8c",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.4",
+                "php": ">=8.0",
+                "spryker/acl-merchant-portal-extension": "^1.0.0",
                 "spryker/application-extension": "^1.0.0",
                 "spryker/kernel": "^3.30.0",
                 "spryker/log": "^1.0.0 || ^2.0.0 || ^3.0.0",
@@ -48493,12 +48535,15 @@
                 "spryker/oauth-client-extension": "^1.0.0",
                 "spryker/propel-orm": "^1.0.0",
                 "spryker/quote-extension": "^1.4.0",
+                "spryker/store-extension": "^1.0.0",
                 "spryker/symfony": "^3.0.0",
-                "spryker/transfer": "^3.25.0"
+                "spryker/transfer": "^3.25.0",
+                "spryker/zed-request-extension": "^1.1.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*",
                 "spryker/container": "*",
+                "spryker/locale": "*",
                 "spryker/propel": "*",
                 "spryker/quote": "*",
                 "spryker/testify": "*"
@@ -48526,9 +48571,51 @@
             ],
             "description": "Store module",
             "support": {
-                "source": "https://github.com/spryker/store/tree/1.16.0"
+                "source": "https://github.com/spryker/store/tree/1.20.0"
             },
-            "time": "2022-10-11T14:40:32+00:00"
+            "time": "2023-05-22T19:10:17+00:00"
+        },
+        {
+            "name": "spryker/store-extension",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/store-extension.git",
+                "reference": "b95dbb1e7a72d455f961891a27645cf1b3ea4672"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/store-extension/zipball/b95dbb1e7a72d455f961891a27645cf1b3ea4672",
+                "reference": "b95dbb1e7a72d455f961891a27645cf1b3ea4672",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0",
+                "spryker/transfer": "^3.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "StoreExtension module",
+            "support": {
+                "source": "https://github.com/spryker/store-extension/tree/1.0.0"
+            },
+            "time": "2023-03-31T19:36:11+00:00"
         },
         {
             "name": "spryker/store-gui",
@@ -48579,22 +48666,23 @@
         },
         {
             "name": "spryker/stores-rest-api",
-            "version": "1.0.4",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/stores-rest-api.git",
-                "reference": "f946abed97e42e919f2641c74a3503f0affb1f3f"
+                "reference": "0f410b1d07cce2c444b85a3c4e2217b963c65a86"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/stores-rest-api/zipball/f946abed97e42e919f2641c74a3503f0affb1f3f",
-                "reference": "f946abed97e42e919f2641c74a3503f0affb1f3f",
+                "url": "https://api.github.com/repos/spryker/stores-rest-api/zipball/0f410b1d07cce2c444b85a3c4e2217b963c65a86",
+                "reference": "0f410b1d07cce2c444b85a3c4e2217b963c65a86",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2",
-                "spryker/country": "^3.2.0",
-                "spryker/currency": "^3.0.0",
+                "php": ">=8.0",
+                "spryker/application-extension": "^1.1.0",
+                "spryker/country": "^3.2.0 || ^4.0.0",
+                "spryker/currency": "^3.2.0 || ^4.0.0",
                 "spryker/glue-application": "^1.0.0",
                 "spryker/glue-application-extension": "^1.0.0",
                 "spryker/kernel": "^3.30.0",
@@ -48602,7 +48690,11 @@
                 "spryker/symfony": "^3.0.0"
             },
             "require-dev": {
-                "spryker/code-sniffer": "*"
+                "spryker/code-sniffer": "*",
+                "spryker/container": "*"
+            },
+            "suggest": {
+                "spryker/container": "Add this module when you want to use the Container."
             },
             "type": "library",
             "extra": {
@@ -48621,9 +48713,9 @@
             ],
             "description": "StoresRestApi module",
             "support": {
-                "source": "https://github.com/spryker/stores-rest-api/tree/1.0.4"
+                "source": "https://github.com/spryker/stores-rest-api/tree/1.1.0"
             },
-            "time": "2020-05-29T13:08:37+00:00"
+            "time": "2023-03-31T19:36:11+00:00"
         },
         {
             "name": "spryker/symfony",
@@ -51330,23 +51422,27 @@
         },
         {
             "name": "spryker/zed-request-extension",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/zed-request-extension.git",
-                "reference": "4607cea5e438b72b452aae5f405859e2a6f4be43"
+                "reference": "318e6673af03bab7f52fdddc74af9cbab0638eb8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/zed-request-extension/zipball/4607cea5e438b72b452aae5f405859e2a6f4be43",
-                "reference": "4607cea5e438b72b452aae5f405859e2a6f4be43",
+                "url": "https://api.github.com/repos/spryker/zed-request-extension/zipball/318e6673af03bab7f52fdddc74af9cbab0638eb8",
+                "reference": "318e6673af03bab7f52fdddc74af9cbab0638eb8",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.3"
+                "php": ">=8.0"
             },
             "require-dev": {
-                "spryker/code-sniffer": "*"
+                "spryker/code-sniffer": "*",
+                "spryker/kernel": "*"
+            },
+            "suggest": {
+                "spryker/kernel": "If you want to use kernel functionality with certain plugins"
             },
             "type": "library",
             "extra": {
@@ -51365,9 +51461,9 @@
             ],
             "description": "ZedRequestExtension module",
             "support": {
-                "source": "https://github.com/spryker/zed-request-extension/tree/1.0.0"
+                "source": "https://github.com/spryker/zed-request-extension/tree/1.1.0"
             },
-            "time": "2020-11-11T13:55:08+00:00"
+            "time": "2023-03-31T19:36:11+00:00"
         },
         {
             "name": "stella-maris/clock",
