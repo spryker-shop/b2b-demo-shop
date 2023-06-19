@@ -6,9 +6,6 @@ use Generated\Shared\Transfer\AssetDeletedTransfer;
 use Generated\Shared\Transfer\AssetUpdatedTransfer;
 use Generated\Shared\Transfer\ExportMerchantsTransfer;
 use Generated\Shared\Transfer\InitializeProductExportTransfer;
-use Generated\Shared\Transfer\MerchantCreatedTransfer;
-use Generated\Shared\Transfer\MerchantExportedTransfer;
-use Generated\Shared\Transfer\MerchantUpdatedTransfer;
 use Generated\Shared\Transfer\OrderStatusChangedTransfer;
 use Generated\Shared\Transfer\PaymentCancelReservationFailedTransfer;
 use Generated\Shared\Transfer\PaymentCancelReservationRequestedTransfer;
@@ -17,7 +14,6 @@ use Generated\Shared\Transfer\PaymentConfirmationRequestedTransfer;
 use Generated\Shared\Transfer\PaymentConfirmedTransfer;
 use Generated\Shared\Transfer\PaymentMethodAddedTransfer;
 use Generated\Shared\Transfer\PaymentMethodDeletedTransfer;
-use Generated\Shared\Transfer\PaymentMethodTransfer;
 use Generated\Shared\Transfer\PaymentPreauthorizationFailedTransfer;
 use Generated\Shared\Transfer\PaymentPreauthorizedTransfer;
 use Generated\Shared\Transfer\PaymentRefundedTransfer;
@@ -730,32 +726,31 @@ $config[OauthAuth0Constants::AUTH0_CLIENT_ID] = $aopAuthenticationConfiguration[
 $config[OauthAuth0Constants::AUTH0_CLIENT_SECRET] = $aopAuthenticationConfiguration['AUTH0_CLIENT_SECRET'] ?? '';
 
 $config[MessageBrokerConstants::MESSAGE_TO_CHANNEL_MAP] = [
-    PaymentMethodTransfer::class => 'payment',
-    PaymentMethodAddedTransfer::class => 'payment',
-    PaymentCancelReservationRequestedTransfer::class => 'payment',
-    PaymentConfirmationRequestedTransfer::class => 'payment',
-    PaymentRefundRequestedTransfer::class => 'payment',
-    PaymentMethodDeletedTransfer::class => 'payment',
-    PaymentPreauthorizedTransfer::class => 'payment',
-    PaymentPreauthorizationFailedTransfer::class => 'payment',
-    PaymentConfirmedTransfer::class => 'payment',
-    PaymentConfirmationFailedTransfer::class => 'payment',
-    PaymentRefundedTransfer::class => 'payment',
-    PaymentRefundFailedTransfer::class => 'payment',
-    PaymentReservationCanceledTransfer::class => 'payment',
-    PaymentCancelReservationFailedTransfer::class => 'payment',
-    AssetAddedTransfer::class => 'assets',
-    AssetUpdatedTransfer::class => 'assets',
-    AssetDeletedTransfer::class => 'assets',
-    ProductExportedTransfer::class => 'product',
-    ProductCreatedTransfer::class => 'product',
-    ProductUpdatedTransfer::class => 'product',
-    ProductDeletedTransfer::class => 'product',
-    InitializeProductExportTransfer::class => 'product',
-    SearchEndpointAvailableTransfer::class => 'search',
-    SearchEndpointRemovedTransfer::class => 'search',
-    AddReviewsTransfer::class => 'reviews',
-    OrderStatusChangedTransfer::class => 'orders',
+    PaymentMethodAddedTransfer::class => 'payment-method-commands',
+    PaymentMethodDeletedTransfer::class => 'payment-method-commands',
+    PaymentCancelReservationRequestedTransfer::class => 'payment-commands',
+    PaymentConfirmationRequestedTransfer::class => 'payment-commands',
+    PaymentRefundRequestedTransfer::class => 'payment-commands',
+    PaymentPreauthorizedTransfer::class => 'payment-events',
+    PaymentPreauthorizationFailedTransfer::class => 'payment-events',
+    PaymentConfirmedTransfer::class => 'payment-events',
+    PaymentConfirmationFailedTransfer::class => 'payment-events',
+    PaymentRefundedTransfer::class => 'payment-events',
+    PaymentRefundFailedTransfer::class => 'payment-events',
+    PaymentReservationCanceledTransfer::class => 'payment-events',
+    PaymentCancelReservationFailedTransfer::class => 'payment-events',
+    AssetAddedTransfer::class => 'asset-commands',
+    AssetUpdatedTransfer::class => 'asset-commands',
+    AssetDeletedTransfer::class => 'asset-commands',
+    ProductExportedTransfer::class => 'product-events',
+    ProductCreatedTransfer::class => 'product-events',
+    ProductUpdatedTransfer::class => 'product-events',
+    ProductDeletedTransfer::class => 'product-events',
+    InitializeProductExportTransfer::class => 'product-commands',
+    AddReviewsTransfer::class => 'product-review-commands',
+    OrderStatusChangedTransfer::class => 'order-events',
+    SearchEndpointAvailableTransfer::class => 'search-commands',
+    SearchEndpointRemovedTransfer::class => 'search-commands',
     ExportMerchantsTransfer::class => 'merchant-commands',
     MerchantExportedTransfer::class => 'merchant-events',
     MerchantCreatedTransfer::class => 'merchant-events',
@@ -763,31 +758,35 @@ $config[MessageBrokerConstants::MESSAGE_TO_CHANNEL_MAP] = [
 ];
 
 $config[MessageBrokerConstants::CHANNEL_TO_TRANSPORT_MAP] = [
-    'payment' => MessageBrokerAwsConfig::SQS_TRANSPORT,
-    'assets' => MessageBrokerAwsConfig::SQS_TRANSPORT,
-    'product' => MessageBrokerAwsConfig::SQS_TRANSPORT,
-    'reviews' => MessageBrokerAwsConfig::SQS_TRANSPORT,
-    'search' => MessageBrokerAwsConfig::SQS_TRANSPORT,
+    'product-review-commands' => MessageBrokerAwsConfig::SQS_TRANSPORT,
+    'payment-method-commands' => MessageBrokerAwsConfig::SQS_TRANSPORT,
+    'payment-commands' => MessageBrokerAwsConfig::SQS_TRANSPORT,
+    'payment-events' => MessageBrokerAwsConfig::SQS_TRANSPORT,
+    'asset-commands' => MessageBrokerAwsConfig::SQS_TRANSPORT,
+    'product-commands' => MessageBrokerAwsConfig::SQS_TRANSPORT,
+    'search-commands' => MessageBrokerAwsConfig::SQS_TRANSPORT,
+    'order-events' => 'http',
+    'product-events' => 'http',
     'merchant-commands' => MessageBrokerAwsConfig::SQS_TRANSPORT,
     'merchant-events' => 'http',
 ];
 
 $config[MessageBrokerAwsConstants::CHANNEL_TO_RECEIVER_TRANSPORT_MAP] = [
-    'payment' => MessageBrokerAwsConfig::SQS_TRANSPORT,
-    'assets' => MessageBrokerAwsConfig::SQS_TRANSPORT,
-    'product' => MessageBrokerAwsConfig::SQS_TRANSPORT,
-    'search' => MessageBrokerAwsConfig::SQS_TRANSPORT,
-    'reviews' => MessageBrokerAwsConfig::SQS_TRANSPORT,
+    'product-review-commands' => MessageBrokerAwsConfig::SQS_TRANSPORT,
+    'payment-method-commands' => MessageBrokerAwsConfig::SQS_TRANSPORT,
+    'payment-commands' => MessageBrokerAwsConfig::SQS_TRANSPORT,
+    'payment-events' => MessageBrokerAwsConfig::SQS_TRANSPORT,
+    'asset-commands' => MessageBrokerAwsConfig::SQS_TRANSPORT,
+    'product-commands' => MessageBrokerAwsConfig::SQS_TRANSPORT,
+    'search-commands' => MessageBrokerAwsConfig::SQS_TRANSPORT,
+    'order-events' => MessageBrokerAwsConfig::SQS_TRANSPORT,
     'merchant-commands' => MessageBrokerAwsConfig::SQS_TRANSPORT,
 ];
 
-$config[CartsRestApiConstants::IS_QUOTE_RELOAD_ENABLED] = true;
 $config[MessageBrokerAwsConstants::CHANNEL_TO_SENDER_TRANSPORT_MAP] = [
-    'payment' => 'http',
-    'assets' => 'http',
-    'product' => 'http',
-    'orders' => 'http',
-    'merchant-events' => 'http',
+    'payment-commands' => 'http',
+    'product-events' => 'http',
+    'order-events' => 'http',
 ];
 
 $aopInfrastructureConfiguration = json_decode(html_entity_decode((string)getenv('SPRYKER_AOP_INFRASTRUCTURE')), true);
