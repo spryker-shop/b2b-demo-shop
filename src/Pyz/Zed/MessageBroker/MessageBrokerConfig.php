@@ -25,6 +25,7 @@ class MessageBrokerConfig extends SprykerMessageBrokerConfig
             'asset-commands',
             'product-commands',
             'search-commands',
+            'merchant-commands',
         ];
     }
 

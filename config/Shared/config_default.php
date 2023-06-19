@@ -765,9 +765,9 @@ $config[MessageBrokerConstants::CHANNEL_TO_TRANSPORT_MAP] = [
     'asset-commands' => MessageBrokerAwsConfig::SQS_TRANSPORT,
     'product-commands' => MessageBrokerAwsConfig::SQS_TRANSPORT,
     'search-commands' => MessageBrokerAwsConfig::SQS_TRANSPORT,
+    'merchant-commands' => MessageBrokerAwsConfig::SQS_TRANSPORT,
     'order-events' => 'http',
     'product-events' => 'http',
-    'merchant-commands' => MessageBrokerAwsConfig::SQS_TRANSPORT,
     'merchant-events' => 'http',
 ];
 
@@ -787,6 +787,7 @@ $config[MessageBrokerAwsConstants::CHANNEL_TO_SENDER_TRANSPORT_MAP] = [
     'payment-commands' => 'http',
     'product-events' => 'http',
     'order-events' => 'http',
+    'merchant-events' => 'http',
 ];
 
 $aopInfrastructureConfiguration = json_decode(html_entity_decode((string)getenv('SPRYKER_AOP_INFRASTRUCTURE')), true);
