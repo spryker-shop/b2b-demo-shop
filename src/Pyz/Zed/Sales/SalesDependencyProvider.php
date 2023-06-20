@@ -22,6 +22,7 @@ use Spryker\Zed\CompanySalesConnector\Communication\Plugin\Sales\SaveCompanyUuid
 use Spryker\Zed\Currency\Communication\Plugin\Sales\CurrencyOrderExpanderPlugin;
 use Spryker\Zed\Customer\Communication\Plugin\Sales\CustomerOrderHydratePlugin;
 use Spryker\Zed\Discount\Communication\Plugin\Sales\DiscountOrderHydratePlugin;
+use Spryker\Zed\MerchantProfile\Communication\Plugin\Sales\MerchantDataOrderHydratePlugin;
 use Spryker\Zed\Oms\Communication\Plugin\Sales\IsCancellableOrderExpanderPlugin;
 use Spryker\Zed\Oms\Communication\Plugin\Sales\IsCancellableSearchOrderExpanderPlugin;
 use Spryker\Zed\Oms\Communication\Plugin\Sales\ItemStateOrderItemExpanderPlugin;
@@ -97,6 +98,7 @@ class SalesDependencyProvider extends SprykerSalesDependencyProvider
             new OmsStatesOrderExpanderPlugin(),
             new IsCancellableOrderExpanderPlugin(),
             new CurrencyOrderExpanderPlugin(),
+            new MerchantDataOrderHydratePlugin(),
         ];
     }
 
