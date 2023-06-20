@@ -765,9 +765,9 @@ $config[MessageBrokerConstants::CHANNEL_TO_TRANSPORT_MAP] = [
     'asset-commands' => MessageBrokerAwsConfig::SQS_TRANSPORT,
     'product-commands' => MessageBrokerAwsConfig::SQS_TRANSPORT,
     'search-commands' => MessageBrokerAwsConfig::SQS_TRANSPORT,
-    'merchant-commands' => MessageBrokerAwsConfig::SQS_TRANSPORT,
     'order-events' => 'http',
     'product-events' => 'http',
+    'merchant-commands' => MessageBrokerAwsConfig::SQS_TRANSPORT,
     'merchant-events' => 'http',
 ];
 
