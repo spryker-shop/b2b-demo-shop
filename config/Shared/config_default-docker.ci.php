@@ -7,6 +7,7 @@
 use Monolog\Logger;
 use Spryker\Shared\Event\EventConstants;
 use Spryker\Shared\Log\LogConstants;
+use Spryker\Shared\MessageBroker\MessageBrokerConstants;
 use Spryker\Shared\Product\ProductConstants;
 use Spryker\Shared\Propel\PropelConstants;
 use Spryker\Shared\Queue\QueueConstants;
