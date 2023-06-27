@@ -1,0 +1,27 @@
+{% extends view('switcher', '@SprykerShop:StoreWidget') %}
+
+{% block body %}
+    <form method="GET" action="/">
+        {% set options = [] %}
+
+        {% for storeName in data.storeNames %}
+            {% set options = options | merge([{
+                label: 'store_widget.switcher.store' | trans ~ ' ' ~ storeName,
+                value: storeName,
+                selected: storeName == data.currentStoreName,
+            }]) %}
+        {% endfor %}
+
+        {% include molecule('custom-select') with {
+            modifiers: ['alternative'],
+            data: {
+                options: options,
+            },
+            attributes: {
+                name: '_store',
+                'data-form-submitter': true,
+                'config-theme': 'alternative',
+            },
+        } only %}
+    </form>
+{% endblock %}

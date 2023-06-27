@@ -297,6 +297,7 @@ $config[GlueStorefrontApiApplicationConstants::GLUE_STOREFRONT_API_HOST] = $glue
 // ------------------------------ MessageBroker -----------------------------------------
 // ----------------------------------------------------------------------------
 $config[MessageBrokerConstants::CHANNEL_TO_TRANSPORT_MAP] =
+$config[MessageBrokerAwsConstants::CHANNEL_TO_SENDER_TRANSPORT_MAP] =
 $config[MessageBrokerAwsConstants::CHANNEL_TO_RECEIVER_TRANSPORT_MAP] = [
     'payment' => 'in-memory',
     'assets' => 'in-memory',
@@ -304,6 +305,9 @@ $config[MessageBrokerAwsConstants::CHANNEL_TO_RECEIVER_TRANSPORT_MAP] = [
     'search' => 'in-memory',
     'reviews' => 'in-memory',
 ];
+
+$config[MessageBrokerConstants::IS_ENABLED] = true;
+
 //-----------------------------------------------------------------------------
 //----------------------------------- ACP -------------------------------------
 //-----------------------------------------------------------------------------

@@ -28,22 +28,43 @@
         {% block topBlock %}
             <div class="grid grid--gap-smaller {{ config.name }}__navigation-top">
                 {% if is_granted('ROLE_USER') %}
-                    <div class="col col--sm-5 {{ config.name }}__navigation-top-actions">
+                    <div class="col {{ config.name }}__navigation-top-actions">
                         {% widget 'PriceModeSwitcherWidget' only %}{% endwidget %}
                     </div>
-                    <div class="col col--sm-4 {{ config.name }}__navigation-top-actions">
+                    <div class="col {{ config.name }}__navigation-top-actions">
                         {% widget 'CurrencyWidget' only %}{% endwidget %}
                     </div>
-                    <div class="col col--sm-3 {{ config.name }}__navigation-top-actions">
+                    <div class="col {{ config.name }}__navigation-top-actions">
                         {% widget 'LanguageSwitcherWidget' args [app.request.pathInfo, app.request.queryString, app.request.requestUri] only %}{% endwidget %}
                     </div>
+
+                    {% widget 'StoreSwitcher' with {
+                        embed: {
+                            configName: config.name,
+                        },
+                    } only %}
+                        {% block body %}
+                            <div class="col {{ embed.configName }}__navigation-top-actions">
+                                {{ parent() }}
+                            </div>
+                        {% endblock %}
+                    {% endwidget %}
                 {% else %}
                     <div class="col col--sm-4 {{ config.name }}__navigation-top-actions">
                         {% widget 'LanguageSwitcherWidget' args [app.request.pathInfo, app.request.queryString, app.request.requestUri] only %}{% endwidget %}
                     </div>
-                    <div class="col col--expand">
-                        <a href="{{ url('login') }}" class="button button--tight button--expand {{ config.name }}__login">{{ 'customer.please_login' | trans }}</a>
-                    </div>
+
+                    {% widget 'StoreSwitcher' with {
+                        embed: {
+                            configName: config.name,
+                        },
+                    } only %}
+                        {% block body %}
+                            <div class="col col--sm-4 {{ embed.configName }}__navigation-top-actions">
+                                {{ parent() }}
+                            </div>
+                        {% endblock %}
+                    {% endwidget %}
                 {% endif %}
             </div>
         {% endblock %}

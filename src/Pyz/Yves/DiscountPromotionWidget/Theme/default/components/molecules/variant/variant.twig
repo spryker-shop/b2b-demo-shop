@@ -1,48 +1,30 @@
-{% extends model('component') %}
-
-{% define config = {
-    name: 'variant',
-} %}
-
-{% define data = {
-    name: required,
-    formName: required,
-    values: required,
-    selectedValue: null,
-    label: '',
-    isAvailable: true
-} %}
+{% extends molecule('variant', '@SprykerShop:DiscountPromotionWidget') %}
 
 {% block body %}
-    <div class="{{ config.name }}__title">{{data.label}}</div>
+    <div class="{{ config.name }}__title">{{ data.label }}</div>
     {% if data.selectedValue is null %}
         {% if data.isAvailable %}
-            {% set jsSelectClassName = 'js-' ~ data.name ~ '-select' %}
-            {% embed molecule('custom-select') with {
+            {% set options = [{
+                label: 'product.attribute._none' | trans,
+                value: '',
+            }] %}
+
+            {% for value in data.values %}
+                {% set options = options | merge([{
+                    label: value,
+                    value: value,
+                }]) %}
+            {% endfor %}
+
+            {% include molecule('custom-select') with {
                 modifiers: ['full-width', 'margin-bottom'],
+                data: {
+                    options: options,
+                },
                 attributes: {
                     name: data.formName,
+                    'data-form-submitter': true,
                     'config-width': '100%',
-                },
-                embed: {
-                    jsSelectClassName: jsSelectClassName,
-                    values: data.values,
-                },
-            } only %}
-                {% block selectClass %}
-                    {{ parent() }} {{ embed.jsSelectClassName }}
-                {% endblock %}
-
-                {% block options %}
-                    <option>{{ 'product.attribute._none' | trans }}</option>
-                    {% for value in embed.values %}
-                        <option value="{{value}}">{{value}}</option>
-                    {% endfor %}
-                {% endblock %}
-            {% endembed %}
-            {% include molecule('form-handler') with {
-                attributes: {
-                    'trigger-class-name': jsSelectClassName,
                 },
             } only %}
         {% else %}
@@ -50,8 +32,8 @@
         {% endif %}
     {% else %}
         <div class="{{ config.name }}__selected-value">
-            {{data.selectedValue}} <a class="spacing-left" href="?">{{ 'Reset' | trans }}</a>
-            <input type="hidden" name="{{data.formName}}" value="{{data.selectedValue}}" />
+            {{ data.selectedValue }} <a class="spacing-left" href="?">{{ 'Reset' | trans }}</a>
+            <input type="hidden" name="{{ data.formName }}" value="{{ data.selectedValue }}" />
         </div>
     {% endif %}
 {% endblock %}
