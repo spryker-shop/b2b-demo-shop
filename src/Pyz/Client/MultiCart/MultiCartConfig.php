@@ -40,6 +40,7 @@ class MultiCartConfig extends SprykerMultiCartConfig
             QuoteTransfer::NAME,
             QuoteTransfer::IS_DEFAULT,
             QuoteTransfer::CUSTOMER_REFERENCE,
+            QuoteTransfer::QUOTE_APPROVALS,
             QuoteTransfer::CUSTOMER => [
                 CustomerTransfer::CUSTOMER_REFERENCE,
             ],
