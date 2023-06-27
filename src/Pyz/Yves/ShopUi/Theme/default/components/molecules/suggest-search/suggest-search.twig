@@ -1,17 +1,7 @@
-{% extends model('component') %}
-
-{% define config = {
-    name: 'suggest-search',
-    tag: 'suggest-search',
-} %}
+{% extends molecule('suggest-search', '@SprykerShop:ShopUi') %}
 
 {% define attributes = {
-    'suggestion-url': required,
     'base-suggest-url': required,
-    'input-class-name': required,
-    'debounce-delay': 500,
-    'throttle-delay': 200,
-    'letters-trashold': 2,
     'overlay-class-name': 'js-overlay-block',
     'overlay-breakpoint': '0',
 } %}
