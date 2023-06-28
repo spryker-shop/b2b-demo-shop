@@ -23,6 +23,7 @@ use Spryker\Zed\Kernel\Communication\Plugin\EventDispatcher\RedirectUrlValidatio
 use Spryker\Zed\Locale\Communication\Plugin\EventDispatcher\LocaleEventDispatcherPlugin;
 use Spryker\Zed\Monitoring\Communication\Plugin\EventDispatcher\GatewayMonitoringRequestTransactionEventDispatcherPlugin;
 use Spryker\Zed\Monitoring\Communication\Plugin\EventDispatcher\MonitoringRequestTransactionEventDispatcherPlugin;
+use Spryker\Zed\Profiler\Communication\Plugin\EventDispatcher\ProfilerRequestEventDispatcherPlugin;
 use Spryker\Zed\Router\Communication\Plugin\EventDispatcher\RequestAttributesEventDispatcherPlugin;
 use Spryker\Zed\Router\Communication\Plugin\EventDispatcher\RouterListenerEventDispatcherPlugin;
 use Spryker\Zed\Router\Communication\Plugin\EventDispatcher\RouterLocaleEventDispatcherPlugin;
@@ -63,6 +64,7 @@ class EventDispatcherDependencyProvider extends SprykerEventDispatcherDependency
             new RedirectUrlValidationEventDispatcherPlugin(),
             new EnvironmentInfoHeaderEventDispatcherPlugin(),
             new SecurityBlockerBackofficeUserEventDispatcherPlugin(),
+            new ProfilerRequestEventDispatcherPlugin(),
         ];
     }
 
