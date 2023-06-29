@@ -245,8 +245,7 @@ $config[OauthConstants::PUBLIC_KEY_PATH]
         getenv('SPRYKER_OAUTH_KEY_PUBLIC') ?: '',
     ) ?: null;
 $config[OauthConstants::ENCRYPTION_KEY] = getenv('SPRYKER_OAUTH_ENCRYPTION_KEY') ?: null;
-$config[OauthConstants::OAUTH_CLIENT_IDENTIFIER] = getenv('SPRYKER_OAUTH_CLIENT_IDENTIFIER') ?: null;
-$config[OauthConstants::OAUTH_CLIENT_SECRET] = getenv('SPRYKER_OAUTH_CLIENT_SECRET') ?: null;
+$config[OauthConstants::OAUTH_CLIENT_CONFIGURATION] = json_decode(getenv('SPRYKER_OAUTH_CLIENT_CONFIGURATION'), true) ?: [];
 
 // >> ZED REQUEST
 
@@ -694,6 +693,7 @@ $config[GlueBackendApiApplicationConstants::GLUE_BACKEND_API_HOST] = $sprykerGlu
 $config[GlueBackendApiApplicationConstants::PROJECT_NAMESPACES] = [
     'Pyz',
 ];
+$config[GlueBackendApiApplicationConstants::GLUE_BACKEND_CORS_ALLOW_ORIGIN] = getenv('SPRYKER_GLUE_APPLICATION_CORS_ALLOW_ORIGIN') ?: '*';
 
 // ----------------------------------------------------------------------------
 // ------------------------------ Glue Storefront API -------------------------------
@@ -705,6 +705,7 @@ $config[GlueJsonApiConventionConstants::GLUE_DOMAIN] = sprintf(
     'https://%s',
     $sprykerGlueStorefrontHost ?: $sprykerGlueBackendHost ?: 'localhost',
 );
+$config[GlueStorefrontApiApplicationConstants::GLUE_STOREFRONT_CORS_ALLOW_ORIGIN] = getenv('SPRYKER_GLUE_APPLICATION_CORS_ALLOW_ORIGIN') ?: '*';
 
 // >>> Product Label
 $config[ProductLabelConstants::PRODUCT_LABEL_TO_DE_ASSIGN_CHUNK_SIZE] = 1000;
@@ -726,54 +727,71 @@ $config[OauthAuth0Constants::AUTH0_CLIENT_ID] = $aopAuthenticationConfiguration[
 $config[OauthAuth0Constants::AUTH0_CLIENT_SECRET] = $aopAuthenticationConfiguration['AUTH0_CLIENT_SECRET'] ?? '';
 
 $config[MessageBrokerConstants::MESSAGE_TO_CHANNEL_MAP] = [
-    PaymentMethodAddedTransfer::class => 'payment',
-    PaymentCancelReservationRequestedTransfer::class => 'payment',
-    PaymentConfirmationRequestedTransfer::class => 'payment',
-    PaymentRefundRequestedTransfer::class => 'payment',
-    PaymentMethodDeletedTransfer::class => 'payment',
-    PaymentPreauthorizedTransfer::class => 'payment',
-    PaymentPreauthorizationFailedTransfer::class => 'payment',
-    PaymentConfirmedTransfer::class => 'payment',
-    PaymentConfirmationFailedTransfer::class => 'payment',
-    PaymentRefundedTransfer::class => 'payment',
-    PaymentRefundFailedTransfer::class => 'payment',
-    PaymentReservationCanceledTransfer::class => 'payment',
-    PaymentCancelReservationFailedTransfer::class => 'payment',
-    AssetAddedTransfer::class => 'assets',
-    AssetUpdatedTransfer::class => 'assets',
-    AssetDeletedTransfer::class => 'assets',
-    ProductExportedTransfer::class => 'product',
-    ProductCreatedTransfer::class => 'product',
-    ProductUpdatedTransfer::class => 'product',
-    ProductDeletedTransfer::class => 'product',
-    InitializeProductExportTransfer::class => 'product',
-    SearchEndpointAvailableTransfer::class => 'search',
-    SearchEndpointRemovedTransfer::class => 'search',
-    AddReviewsTransfer::class => 'reviews',
-    OrderStatusChangedTransfer::class => 'orders',
+    PaymentMethodAddedTransfer::class => 'payment-method-commands',
+    PaymentMethodDeletedTransfer::class => 'payment-method-commands',
+    PaymentCancelReservationRequestedTransfer::class => 'payment-commands',
+    PaymentConfirmationRequestedTransfer::class => 'payment-commands',
+    PaymentRefundRequestedTransfer::class => 'payment-commands',
+    PaymentPreauthorizedTransfer::class => 'payment-events',
+    PaymentPreauthorizationFailedTransfer::class => 'payment-events',
+    PaymentConfirmedTransfer::class => 'payment-events',
+    PaymentConfirmationFailedTransfer::class => 'payment-events',
+    PaymentRefundedTransfer::class => 'payment-events',
+    PaymentRefundFailedTransfer::class => 'payment-events',
+    PaymentReservationCanceledTransfer::class => 'payment-events',
+    PaymentCancelReservationFailedTransfer::class => 'payment-events',
+    AssetAddedTransfer::class => 'asset-commands',
+    AssetUpdatedTransfer::class => 'asset-commands',
+    AssetDeletedTransfer::class => 'asset-commands',
+    ProductExportedTransfer::class => 'product-events',
+    ProductCreatedTransfer::class => 'product-events',
+    ProductUpdatedTransfer::class => 'product-events',
+    ProductDeletedTransfer::class => 'product-events',
+    InitializeProductExportTransfer::class => 'product-commands',
+    AddReviewsTransfer::class => 'product-review-commands',
+    OrderStatusChangedTransfer::class => 'order-events',
+    SearchEndpointAvailableTransfer::class => 'search-commands',
+    SearchEndpointRemovedTransfer::class => 'search-commands',
 ];
 
-$config[MessageBrokerConstants::CHANNEL_TO_TRANSPORT_MAP] =
+$config[MessageBrokerConstants::CHANNEL_TO_TRANSPORT_MAP] = [
+    'product-review-commands' => MessageBrokerAwsConfig::SQS_TRANSPORT,
+    'payment-method-commands' => MessageBrokerAwsConfig::SQS_TRANSPORT,
+    'payment-commands' => MessageBrokerAwsConfig::SQS_TRANSPORT,
+    'payment-events' => MessageBrokerAwsConfig::SQS_TRANSPORT,
+    'asset-commands' => MessageBrokerAwsConfig::SQS_TRANSPORT,
+    'product-commands' => MessageBrokerAwsConfig::SQS_TRANSPORT,
+    'search-commands' => MessageBrokerAwsConfig::SQS_TRANSPORT,
+    'order-events' => 'http',
+    'product-events' => 'http',
+];
+
 $config[MessageBrokerAwsConstants::CHANNEL_TO_RECEIVER_TRANSPORT_MAP] = [
-    'payment' => MessageBrokerAwsConfig::SQS_TRANSPORT,
-    'assets' => MessageBrokerAwsConfig::SQS_TRANSPORT,
-    'product' => MessageBrokerAwsConfig::SQS_TRANSPORT,
-    'search' => MessageBrokerAwsConfig::SQS_TRANSPORT,
-    'reviews' => MessageBrokerAwsConfig::SQS_TRANSPORT,
+    'product-review-commands' => MessageBrokerAwsConfig::SQS_TRANSPORT,
+    'payment-method-commands' => MessageBrokerAwsConfig::SQS_TRANSPORT,
+    'payment-commands' => MessageBrokerAwsConfig::SQS_TRANSPORT,
+    'payment-events' => MessageBrokerAwsConfig::SQS_TRANSPORT,
+    'asset-commands' => MessageBrokerAwsConfig::SQS_TRANSPORT,
+    'product-commands' => MessageBrokerAwsConfig::SQS_TRANSPORT,
+    'search-commands' => MessageBrokerAwsConfig::SQS_TRANSPORT,
+    'order-events' => MessageBrokerAwsConfig::SQS_TRANSPORT,
 ];
 
-$config[CartsRestApiConstants::IS_QUOTE_RELOAD_ENABLED] = true;
 $config[MessageBrokerAwsConstants::CHANNEL_TO_SENDER_TRANSPORT_MAP] = [
-    'payment' => 'http',
-    'assets' => 'http',
-    'product' => 'http',
-    'orders' => 'http',
+    'payment-commands' => 'http',
+    'product-events' => 'http',
+    'order-events' => 'http',
 ];
 
 $aopInfrastructureConfiguration = json_decode(html_entity_decode((string)getenv('SPRYKER_AOP_INFRASTRUCTURE')), true);
 
 $config[MessageBrokerAwsConstants::SQS_RECEIVER_CONFIG] = json_encode($aopInfrastructureConfiguration['SPRYKER_MESSAGE_BROKER_SQS_RECEIVER_CONFIG'] ?? []);
 $config[MessageBrokerAwsConstants::HTTP_SENDER_CONFIG] = $aopInfrastructureConfiguration['SPRYKER_MESSAGE_BROKER_HTTP_SENDER_CONFIG'] ?? [];
+
+$config[MessageBrokerConstants::IS_ENABLED] = (
+    !empty($aopInfrastructureConfiguration['SPRYKER_MESSAGE_BROKER_SQS_RECEIVER_CONFIG'])
+    && !empty($aopInfrastructureConfiguration['SPRYKER_MESSAGE_BROKER_HTTP_SENDER_CONFIG'])
+);
 
 // ----------------------------------------------------------------------------
 // ------------------------------ OAUTH ---------------------------------------
