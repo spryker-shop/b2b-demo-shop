@@ -34,7 +34,6 @@
         {% include molecule('suggest-search') with {
             attributes: {
                 'suggestion-url': path('search/suggestion'),
-                'base-suggest-url': path('search/suggestion'),
                 'input-class-name': config.jsName ~ '__input--' ~ attributes['data-search-id'],
                 'overlay-breakpoint': '768',
             },
