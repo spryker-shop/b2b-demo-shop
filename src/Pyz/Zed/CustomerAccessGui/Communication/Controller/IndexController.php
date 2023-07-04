@@ -23,7 +23,7 @@ class IndexController extends SprykerIndexController
     /**
      * @param \Symfony\Component\HttpFoundation\Request $request
      *
-     * @return array
+     * @return array<string, mixed>
      */
     public function indexAction(Request $request): array
     {
