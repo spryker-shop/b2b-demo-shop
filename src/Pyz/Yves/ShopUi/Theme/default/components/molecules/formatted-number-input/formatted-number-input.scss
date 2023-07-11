@@ -1,11 +1,8 @@
+@import '../../atoms/input/input';
+
 @mixin shop-ui-formatted-number-input($name: '.formatted-number-input') {
     #{$name} {
-        @include shop-ui-input(#{$name}__input) {
-            border-radius: $setting-border-radius;
-            color: $setting-color-gray-5;
-            font: fw(regular) rem(15) / rem(19) $setting-font-family;
-            padding: rem(14) rem(20) rem(13);
-        }
+        @include shop-ui-input-extended(#{$name}__input);
 
         @content;
     }
