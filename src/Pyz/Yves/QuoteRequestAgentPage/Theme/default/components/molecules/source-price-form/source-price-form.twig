@@ -32,7 +32,13 @@
         {% block priceColumn %}
             <div class="col col--sm-6">
                 {% block priceColumnInner %}
-                    {{ form_row(data.priceForm, {'attr': {'class': config.jsName ~ '__input-container is-hidden'}}) }}
+                    {{ form_row(data.priceForm, {
+                        attr: {
+                            class: config.jsName ~ '__input-container is-hidden',
+                        },
+                        hiddenInputClass: config.jsName ~ '__hidden-input',
+                    }) }}
+
                     {% set isDifferentPrice = data.currentItemPrice != data.originItemPrice %}
                     {% set hiddenClass = isDifferentPrice ? 'is-hidden' %}
                     {% set price = isDifferentPrice ? data.originItemPrice : data.currentItemPrice %}

@@ -1,7 +1,14 @@
 @mixin shop-ui-formatted-number-input($name: '.formatted-number-input') {
     #{$name} {
-        @include shop-ui-input(&__input);
+        @include shop-ui-input(#{$name}__input) {
+            border-radius: $setting-border-radius;
+            color: $setting-color-gray-5;
+            font: fw(regular) rem(15) / rem(19) $setting-font-family;
+            padding: rem(14) rem(20) rem(13);
+        }
 
         @content;
     }
 }
+
+@include shop-ui-formatted-number-input();
