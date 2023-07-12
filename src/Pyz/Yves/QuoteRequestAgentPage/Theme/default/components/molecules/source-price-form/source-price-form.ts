@@ -8,7 +8,7 @@ export default class SourcePriceForm extends SourcePriceFormParentClass {
     protected init(): void {
         this.price = <HTMLElement>this.getElementsByClassName(`${this.jsName}__price`)[0];
         this.originPrice = <HTMLElement>this.getElementsByClassName(`${this.jsName}__origin-price`)[0];
-        super.readyCallback();
+        super.init();
     }
 
     protected togglePriceVisibility(): void {
