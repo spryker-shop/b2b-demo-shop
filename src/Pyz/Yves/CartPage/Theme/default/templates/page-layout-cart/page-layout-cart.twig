@@ -41,6 +41,7 @@
 
 {% block content %}
     {% set isQuoteEnadled = data.cart.idQuote and data.isQuoteEditable %}
+    {% set productBundleItemCounterWidget = findWidget('ProductBundleItemCounterWidget', [data.cart]) %}
     {% set transformedCartItems = productBundleItemCounterWidget.items | default(data.cartItems) %}
 
     {% if data.cart.items is empty %}
@@ -117,8 +118,6 @@
         {% endblock %}
     {% endif %}
     {% if data.cart.items is not empty %}
-        {% set productBundleItemCounterWidget = findWidget('ProductBundleItemCounterWidget', [data.cart]) %}
-
         <div class="grid grid--gap">
             <div class="col col--sm-12 col--xl-9">
                 <div class="cart-title">
@@ -150,7 +149,11 @@
                                 } only %}
                             {% endif %}
                         </div>
-                        <div class="col col--sm-2 text-right cart-title__quantity">{{ transformedCartItems | length | executeFilterIfExists('formatInt', app.locale) }} {{ 'checkout.step.summary.items' | trans }}</div>
+                        {% set cartItemsCount = 0 %}
+                        {% for cartItem in transformedCartItems %}
+                            {% set cartItemsCount = cartItemsCount + cartItem.quantity %}
+                        {% endfor %}
+                        <div class="col col--sm-2 text-right cart-title__quantity">{{ cartItemsCount | executeFilterIfExists('formatInt', app.locale) }} {{ 'checkout.step.summary.items' | trans }}</div>
                     </div>
                 </div>
             </div>
