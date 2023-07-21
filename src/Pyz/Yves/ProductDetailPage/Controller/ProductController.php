@@ -26,12 +26,12 @@ class ProductController extends SprykerShopProductController
     protected const PYZ_KEY_ID_PRODUCT_ABSTRACT = 'id_product_abstract';
 
     /**
-     * @param array $productData
+     * @param array<mixed> $productData
      * @param \Symfony\Component\HttpFoundation\Request $request
      *
      * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      *
-     * @return array
+     * @return array<string, mixed>
      */
     protected function executeDetailAction(array $productData, Request $request): array
     {

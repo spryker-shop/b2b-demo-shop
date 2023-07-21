@@ -30,6 +30,7 @@ class ProductManagementLocalizedAttributesExtractorStep implements DataImportSte
             if (!isset($dataSet['key_translation.' . $localeName])) {
                 continue;
             }
+
             $valueTranslations = '';
             $values = $this->toArray($dataSet['values']);
             if (!empty($dataSet['value_translations.' . $localeName])) {
@@ -52,7 +53,7 @@ class ProductManagementLocalizedAttributesExtractorStep implements DataImportSte
     /**
      * @param string $data
      *
-     * @return array
+     * @return array<string>
      */
     private function toArray($data): array
     {
