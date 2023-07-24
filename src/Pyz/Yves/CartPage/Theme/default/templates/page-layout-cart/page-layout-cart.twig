@@ -66,7 +66,6 @@
                     data: {
                         cart: data.cart,
                         cartItems: data.cartItems,
-                        transformedCartItems: transformedCartItems,
                         isQuoteEditable: data.isQuoteEditable,
                         isQuoteValid: data.isQuoteValid,
                     },
@@ -118,6 +117,10 @@
         {% endblock %}
     {% endif %}
     {% if data.cart.items is not empty %}
+        {% set cartItemsCount = 0 %}
+        {% for cartItem in transformedCartItems %}
+            {% set cartItemsCount = cartItemsCount + cartItem.quantity %}
+        {% endfor %}
         <div class="grid grid--gap">
             <div class="col col--sm-12 col--xl-9">
                 <div class="cart-title">
@@ -149,10 +152,6 @@
                                 } only %}
                             {% endif %}
                         </div>
-                        {% set cartItemsCount = 0 %}
-                        {% for cartItem in transformedCartItems %}
-                            {% set cartItemsCount = cartItemsCount + cartItem.quantity %}
-                        {% endfor %}
                         <div class="col col--sm-2 text-right cart-title__quantity">{{ cartItemsCount | executeFilterIfExists('formatInt', app.locale) }} {{ 'checkout.step.summary.items' | trans }}</div>
                     </div>
                 </div>
@@ -204,7 +203,7 @@
                     data: {
                         cart: data.cart,
                         cartItems: data.cartItems,
-                        transformedCartItems: transformedCartItems,
+                        cartItemsCount: cartItemsCount,
                         isQuoteEditable: data.isQuoteEditable,
                         isQuoteValid: data.isQuoteValid,
                     },
