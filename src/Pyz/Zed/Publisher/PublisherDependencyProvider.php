@@ -86,6 +86,7 @@ use Spryker\Zed\ProductLabelStorage\Communication\Plugin\Publisher\ProductLabelD
 use Spryker\Zed\ProductLabelStorage\Communication\Plugin\Publisher\ProductLabelProductAbstract\ProductLabelProductAbstractWritePublisherPlugin as ProductLabelProductAbstractStorageWritePublisherPlugin;
 use Spryker\Zed\ProductListSearch\Communication\Plugin\Publisher\ProductListSearchPublisherTriggerPlugin;
 use Spryker\Zed\ProductListStorage\Communication\Plugin\Publisher\ProductListPublisherTriggerPlugin;
+use Spryker\Zed\ProductOfferAvailabilityStorage\Communication\Plugin\Publisher\ProductOfferAvailability\ProductOfferAvailabilityProductOfferStoreStoragePublisherPlugin;
 use Spryker\Zed\ProductPageSearch\Communication\Plugin\Publisher\Product\ProductConcretePageSearchWritePublisherPlugin;
 use Spryker\Zed\ProductPageSearch\Communication\Plugin\Publisher\ProductConcretePublisherTriggerPlugin;
 use Spryker\Zed\ProductRelationStorage\Communication\Plugin\Publisher\ProductRelation\ProductRelationWriteForPublishingPublisherPlugin;
@@ -135,6 +136,7 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
             $this->getProductBundleStoragePlugins(),
             $this->getProductConfigurationStoragePlugins(),
             $this->getProductExportPlugins(),
+            $this->getProductOfferAvailabilityStoragePlugins(),
         );
     }
 
@@ -399,6 +401,16 @@ class PublisherDependencyProvider extends SprykerPublisherDependencyProvider
             new ProductConcreteUpdatedMessageBrokerPublisherPlugin(),
             new ProductConcreteDeletedMessageBrokerPublisherPlugin(),
             new ProductAbstractUpdatedMessageBrokerPublisherPlugin(),
+        ];
+    }
+
+    /**
+     * @return array
+     */
+    public function getProductOfferAvailabilityStoragePlugins(): array
+    {
+        return [
+            new ProductOfferAvailabilityProductOfferStoreStoragePublisherPlugin(),
         ];
     }
 }
