@@ -97,15 +97,6 @@ groups:
                         store: DE
                     backend-gateway.at.spryker-perfb2b.cloud.spryker.toys:
                         store: AT
-            backapi:
-                application: zed
-                endpoints:
-                    backend-api.de.spryker-perfb2b.cloud.spryker.toys:
-                        store: DE
-                        entry-point: BackendApi
-                    backend-api.at.spryker-perfb2b.cloud.spryker.toys:
-                        store: AT
-                        entry-point: BackendApi
             glue:
                 application: glue
                 endpoints:
@@ -113,24 +104,6 @@ groups:
                         store: DE
                         cors-allow-origin: '*'
                     glue.at.spryker-perfb2b.cloud.spryker.toys:
-                        store: AT
-                        cors-allow-origin: '*'
-            gluestorefront:
-                application: glue-storefront
-                endpoints:
-                    glue-storefront.de.spryker-perfb2b.cloud.spryker.toys:
-                        store: DE
-                        cors-allow-origin: '*'
-                    glue-storefront.at.spryker-perfb2b.cloud.spryker.toys:
-                        store: AT
-                        cors-allow-origin: '*'
-            gluebackend:
-                application: glue-backend
-                endpoints:
-                    glue-backend.de.spryker-perfb2b.cloud.spryker.toys:
-                        store: DE
-                        cors-allow-origin: '*'
-                    glue-backend.at.spryker-perfb2b.cloud.spryker.toys:
                         store: AT
                         cors-allow-origin: '*'
 services:
