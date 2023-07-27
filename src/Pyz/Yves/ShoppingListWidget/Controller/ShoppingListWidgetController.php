@@ -40,7 +40,7 @@ class ShoppingListWidgetController extends SprykerShopShoppingListWidgetControll
     /**
      * @param \Symfony\Component\HttpFoundation\Request $request
      *
-     * @return array|string|null
+     * @return array<mixed>|string|null
      */
     protected function getPyzRefererUrl(Request $request)
     {
