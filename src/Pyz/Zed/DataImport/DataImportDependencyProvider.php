@@ -34,11 +34,15 @@ use Spryker\Zed\ContentBannerDataImport\Communication\Plugin\ContentBannerDataIm
 use Spryker\Zed\ContentNavigationDataImport\Communication\Plugin\DataImport\ContentNavigationDataImportPlugin;
 use Spryker\Zed\ContentProductDataImport\Communication\Plugin\ContentProductAbstractListDataImportPlugin;
 use Spryker\Zed\ContentProductSetDataImport\Communication\Plugin\ContentProductSetDataImportPlugin;
+use Spryker\Zed\CountryDataImport\Communication\Plugin\DataImport\CountryStoreDataImportPlugin;
+use Spryker\Zed\CurrencyDataImport\Communication\Plugin\DataImport\CurrencyStoreDataImportPlugin;
 use Spryker\Zed\DataImport\Communication\Plugin\DataImportEventBehaviorPlugin;
 use Spryker\Zed\DataImport\Communication\Plugin\DataImportPublisherPlugin;
 use Spryker\Zed\DataImport\DataImportDependencyProvider as SprykerDataImportDependencyProvider;
 use Spryker\Zed\FileManagerDataImport\Communication\Plugin\FileManagerDataImportPlugin;
 use Spryker\Zed\Kernel\Container;
+use Spryker\Zed\LocaleDataImport\Communication\Plugin\DataImport\DefaultLocaleStoreDataImportPlugin;
+use Spryker\Zed\LocaleDataImport\Communication\Plugin\DataImport\LocaleStoreDataImportPlugin;
 use Spryker\Zed\MerchantDataImport\Communication\Plugin\MerchantDataImportPlugin;
 use Spryker\Zed\MerchantDataImport\Communication\Plugin\MerchantStoreDataImportPlugin;
 use Spryker\Zed\MerchantRelationshipDataImport\Communication\Plugin\MerchantRelationshipDataImportPlugin;
@@ -82,6 +86,7 @@ use Spryker\Zed\ShoppingListDataImport\Communication\Plugin\ShoppingListItemData
 use Spryker\Zed\StockAddressDataImport\Communication\Plugin\DataImport\StockAddressDataImportPlugin;
 use Spryker\Zed\StockDataImport\Communication\Plugin\StockDataImportPlugin;
 use Spryker\Zed\StockDataImport\Communication\Plugin\StockStoreDataImportPlugin;
+use Spryker\Zed\StoreDataImport\Communication\Plugin\DataImport\StoreDataImportPlugin;
 
 class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
 {
@@ -215,9 +220,9 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
      */
     protected function addAvailabilityFacade(Container $container): Container
     {
-        $container[static::FACADE_AVAILABILITY] = function (Container $container) {
+        $container->set(static::FACADE_AVAILABILITY, function (Container $container) {
             return $container->getLocator()->availability()->facade();
-        };
+        });
 
         return $container;
     }
@@ -229,9 +234,9 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
      */
     protected function addCategoryFacade(Container $container): Container
     {
-        $container[static::FACADE_CATEGORY] = function (Container $container) {
+        $container->set(static::FACADE_CATEGORY, function (Container $container) {
             return $container->getLocator()->category()->facade();
-        };
+        });
 
         return $container;
     }
@@ -243,9 +248,9 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
      */
     protected function addProductBundleFacade(Container $container): Container
     {
-        $container[static::FACADE_PRODUCT_BUNDLE] = function (Container $container) {
+        $container->set(static::FACADE_PRODUCT_BUNDLE, function (Container $container) {
             return $container->getLocator()->productBundle()->facade();
-        };
+        });
 
         return $container;
     }
@@ -257,9 +262,9 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
      */
     protected function addProductSearchFacade(Container $container): Container
     {
-        $container[static::FACADE_PRODUCT_SEARCH] = function (Container $container) {
+        $container->set(static::FACADE_PRODUCT_SEARCH, function (Container $container) {
             return $container->getLocator()->productSearch()->facade();
-        };
+        });
 
         return $container;
     }
@@ -271,19 +276,24 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
      */
     protected function addProductRelationFacade(Container $container): Container
     {
-        $container[static::FACADE_PRODUCT_RELATION] = function (Container $container) {
+        $container->set(static::FACADE_PRODUCT_RELATION, function (Container $container) {
             return $container->getLocator()->productRelation()->facade();
-        };
+        });
 
         return $container;
     }
 
     /**
-     * @return array
+     * @return array<\Spryker\Zed\DataImport\Dependency\Plugin\DataImportPluginInterface>
      */
     protected function getDataImporterPlugins(): array
     {
         return [
+            new StoreDataImportPlugin(),
+            new CountryStoreDataImportPlugin(),
+            new CurrencyStoreDataImportPlugin(),
+            new LocaleStoreDataImportPlugin(),
+            new DefaultLocaleStoreDataImportPlugin(),
             new CategoryDataImportPlugin(),
             new CmsPageDataImportPlugin(),
             new CmsPageStoreDataImportPlugin(),
@@ -360,7 +370,7 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
     }
 
     /**
-     * @return array
+     * @return array<\Spryker\Zed\DataImport\Business\Model\DataImporterPluginCollectionInterface|\Spryker\Zed\DataImport\Business\Model\DataImporterCollectionInterface|\Spryker\Zed\DataImport\Dependency\Plugin\DataImportBeforeImportHookInterface|\Spryker\Zed\DataImport\Dependency\Plugin\DataImportAfterImportHookInterface>
      */
     protected function getDataImportBeforeImportHookPlugins(): array
     {
@@ -370,7 +380,7 @@ class DataImportDependencyProvider extends SprykerDataImportDependencyProvider
     }
 
     /**
-     * @return array
+     * @return array<\Spryker\Zed\DataImport\Business\Model\DataImporterPluginCollectionInterface|\Spryker\Zed\DataImport\Business\Model\DataImporterCollectionInterface|\Spryker\Zed\DataImport\Dependency\Plugin\DataImportBeforeImportHookInterface|\Spryker\Zed\DataImport\Dependency\Plugin\DataImportAfterImportHookInterface>
      */
     protected function getDataImportAfterImportHookPlugins(): array
     {

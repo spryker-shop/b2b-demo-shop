@@ -4,36 +4,31 @@
             position: absolute;
             top: 100%;
             left: 0;
-            margin: rem(-3) 0 0 0;
-            padding: rem(1) rem(25) rem(29);
+            width: 100%;
+            padding: rem(1) rem(25) rem(30);
             border-radius: 0 0 $setting-border-radius $setting-border-radius;
             background: $setting-color-white;
             box-shadow: 0 18px 18px 0 $setting-color-shadow-1, 0 3px 3px 0 $setting-color-shadow-1;
-            width: 100%;
             max-height: rem(300);
             overflow-x: hidden;
             z-index: $setting-zi-search-suggestions + 3;
 
             @include helper-breakpoint-media-min($lg) {
                 max-height: 30rem;
-                padding-left: rem(19);
-                padding-right: rem(21);
+                padding-left: rem(20);
+                padding-right: rem(20);
             }
         }
 
-        &__input {
-            padding: rem(19) rem(46) rem(20) rem(43);
+        &__input,
+        &__hint {
+            padding: rem(20) rem(45);
             border: none;
-            font-size: rem(18);
-            font-weight: fw(bold);
-            line-height: rem(20);
-            border-radius: $setting-border-radius;
-            box-shadow: 0 18px 18px 0 $setting-color-shadow-1, 0 3px 3px 0 $setting-color-shadow-1;
-            position: relative;
-            z-index: $setting-zi-search-suggestions + 2;
+            font: fw(bold) rem(18) / rem(20) $setting-font-family;
+            width: 100%;
 
             @include helper-breakpoint-media-min($lg) {
-                padding: rem(15) rem(10) rem(15) rem(56);
+                padding: rem(15) rem(10) rem(15) rem(55);
                 font-size: rem(15);
                 font-weight: fw(regular);
             }
@@ -41,9 +36,31 @@
             &--active {
                 border-radius: $setting-border-radius $setting-border-radius 0 0;
             }
+        }
+
+        &__input {
+            position: relative;
+            border-radius: $setting-border-radius;
+            box-shadow: 0 18px 18px 0 $setting-color-shadow-1, 0 3px 3px 0 $setting-color-shadow-1;
+            z-index: $setting-zi-search-suggestions + 2;
 
             &--transparent {
                 background-color: $setting-color-transparent;
+            }
+        }
+
+        &__hint {
+            position: absolute;
+            top: 0;
+            color: $setting-color-gray-2;
+            z-index: $setting-zi-search-suggestions + 1;
+
+            @include helper-breakpoint-media-min($lg) {
+                padding-right: rem(15);
+            }
+
+            &--active {
+                background-color: $setting-color-gray-7;
             }
         }
 
@@ -53,30 +70,6 @@
 
         &__product-action {
             padding-top: rem(23);
-        }
-
-        &__hint {
-            padding: rem(19) rem(46) rem(20) rem(43);
-            border: none;
-            font-size: rem(18);
-            font-weight: fw(bold);
-            line-height: rem(20);
-            position: absolute;
-            width: 100%;
-            color: $setting-color-gray-2;
-            top: 0;
-            z-index: $setting-zi-search-suggestions + 1;
-
-            @include helper-breakpoint-media-min($lg) {
-                padding: rem(15) rem(15) rem(15) rem(56);
-                font-size: rem(15);
-                font-weight: fw(regular);
-            }
-
-            &--active {
-                background-color: $setting-color-gray-7;
-                border-radius: $setting-border-radius $setting-border-radius 0 0;
-            }
         }
 
         &__item {

@@ -18,7 +18,7 @@ export default class SlickCarousel extends Component {
     protected mapEvents(): void {
         $(this.slider).on('init', async () => {
             this.showSlider();
-            mount();
+            await mount();
         });
     }
 

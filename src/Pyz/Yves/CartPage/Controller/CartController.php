@@ -23,13 +23,14 @@ class CartController extends SprykerCartController
     protected const PYZ_PARAM_REFERER = 'referer';
 
     /**
-     * @param array $selectedAttributes
+     * @param array<mixed> $selectedAttributes
+     * @param bool $withItems
      *
-     * @return array
+     * @return array<string, mixed>
      */
-    protected function executeIndexAction(array $selectedAttributes = []): array
+    protected function executeIndexAction(array $selectedAttributes = [], bool $withItems = true): array
     {
-        $viewData = parent::executeIndexAction($selectedAttributes);
+        $viewData = parent::executeIndexAction($selectedAttributes, $withItems);
         $cartItems = $viewData['cartItems'];
 
         $viewData['products'] = $this->getFactory()

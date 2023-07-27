@@ -46,9 +46,12 @@ image:
     environment:
         SPRYKER_PRODUCT_CONFIGURATOR_HOST: date-time-configurator-example.cloud.spryker.toys
         SPRYKER_PRODUCT_CONFIGURATOR_PORT: 443
+        SPRYKER_YVES_HOST_DE: de.example.cloud.spryker.toys
+        SPRYKER_YVES_HOST_AT: at.example.cloud.spryker.toys
+        SPRYKER_YVES_HOST_US: us.example.cloud.spryker.toys
     node:
-        version: 16
-        npm: 8
+        version: 18
+        npm: 9
 composer:
     mode: --no-dev
     autoload: --classmap-authoritative

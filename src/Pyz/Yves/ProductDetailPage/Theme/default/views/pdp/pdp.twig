@@ -1,5 +1,9 @@
 {% extends view('pdp', '@SprykerShop:ProductDetailPage') %}
 
+{% define data = {
+    request: app.request,
+} %}
+
 {% block title %}
     <h1 itemprop="name" class="page-info__title title title--h3">
         {% widget 'ProductAbstractLabelWidget' args [data.product.idProductAbstract] only %}

@@ -139,6 +139,9 @@ class NavigationNodeWriterStep extends PublishAwareStep implements DataImportSte
         }
 
         foreach ($dataSet[ProductLocalizedAttributesExtractorStep::KEY_LOCALIZED_ATTRIBUTES] as $idLocale => $localizedAttributes) {
+            if ($localizedAttributes === []) {
+                continue;
+            }
             $navigationNodeLocalizedAttributesEntity = SpyNavigationNodeLocalizedAttributesQuery::create()
                 ->filterByFkNavigationNode($navigationNodeEntity->getIdNavigationNode())
                 ->filterByFkLocale($idLocale)
@@ -217,7 +220,13 @@ class NavigationNodeWriterStep extends PublishAwareStep implements DataImportSte
             return (bool)$dataSet[static::KEY_IS_ACTIVE];
         }
 
-        return $navigationNodeEntity->getIsActive();
+        /** @var bool|null $isActive */
+        $isActive = $navigationNodeEntity->getIsActive();
+        if ($isActive !== null) {
+            return $navigationNodeEntity->getIsActive();
+        }
+
+        return static::DEFAULT_IS_ACTIVE;
     }
 
     /**
@@ -237,12 +246,14 @@ class NavigationNodeWriterStep extends PublishAwareStep implements DataImportSte
 
     /**
      * @param \Orm\Zed\Navigation\Persistence\SpyNavigationNodeLocalizedAttributes $navigationNodeLocalizedAttributes
-     * @param array $localizedAttributes
+     * @param array<string, mixed> $localizedAttributes
      *
      * @return string
      */
-    protected function getTitle(SpyNavigationNodeLocalizedAttributes $navigationNodeLocalizedAttributes, array $localizedAttributes): string
-    {
+    protected function getTitle(
+        SpyNavigationNodeLocalizedAttributes $navigationNodeLocalizedAttributes,
+        array $localizedAttributes,
+    ): string {
         if (isset($localizedAttributes[static::KEY_TITLE]) && !empty($localizedAttributes[static::KEY_TITLE])) {
             return $localizedAttributes[static::KEY_TITLE];
         }
@@ -252,12 +263,14 @@ class NavigationNodeWriterStep extends PublishAwareStep implements DataImportSte
 
     /**
      * @param \Orm\Zed\Navigation\Persistence\SpyNavigationNodeLocalizedAttributes $navigationNodeLocalizedAttributes
-     * @param array $localizedAttributes
+     * @param array<string, mixed> $localizedAttributes
      *
      * @return string|null
      */
-    protected function getLink(SpyNavigationNodeLocalizedAttributes $navigationNodeLocalizedAttributes, array $localizedAttributes): ?string
-    {
+    protected function getLink(
+        SpyNavigationNodeLocalizedAttributes $navigationNodeLocalizedAttributes,
+        array $localizedAttributes,
+    ): ?string {
         if (isset($localizedAttributes[static::KEY_URL]) && !empty($localizedAttributes[static::KEY_URL])) {
             return $localizedAttributes[static::KEY_URL];
         }
@@ -267,12 +280,14 @@ class NavigationNodeWriterStep extends PublishAwareStep implements DataImportSte
 
     /**
      * @param \Orm\Zed\Navigation\Persistence\SpyNavigationNodeLocalizedAttributes $navigationNodeLocalizedAttributes
-     * @param array $localizedAttributes
+     * @param array<string, mixed> $localizedAttributes
      *
      * @return string|null
      */
-    protected function getExternalUrl(SpyNavigationNodeLocalizedAttributes $navigationNodeLocalizedAttributes, array $localizedAttributes): ?string
-    {
+    protected function getExternalUrl(
+        SpyNavigationNodeLocalizedAttributes $navigationNodeLocalizedAttributes,
+        array $localizedAttributes,
+    ): ?string {
         if (isset($localizedAttributes[static::KEY_URL]) && !empty($localizedAttributes[static::KEY_URL])) {
             return $localizedAttributes[static::KEY_URL];
         }
@@ -282,13 +297,16 @@ class NavigationNodeWriterStep extends PublishAwareStep implements DataImportSte
 
     /**
      * @param \Orm\Zed\Navigation\Persistence\SpyNavigationNodeLocalizedAttributes $navigationNodeLocalizedAttributes
-     * @param array $localizedAttributes
+     * @param array<string, mixed> $localizedAttributes
      * @param int $idLocale
      *
      * @return int|null
      */
-    protected function getFkUrl(SpyNavigationNodeLocalizedAttributes $navigationNodeLocalizedAttributes, array $localizedAttributes, $idLocale): ?int
-    {
+    protected function getFkUrl(
+        SpyNavigationNodeLocalizedAttributes $navigationNodeLocalizedAttributes,
+        array $localizedAttributes,
+        $idLocale,
+    ): ?int {
         if (isset($localizedAttributes[static::KEY_URL]) && !empty($localizedAttributes[static::KEY_URL])) {
             $urlEntity = SpyUrlQuery::create()
                 ->filterByFkLocale($idLocale)
@@ -305,12 +323,14 @@ class NavigationNodeWriterStep extends PublishAwareStep implements DataImportSte
 
     /**
      * @param \Orm\Zed\Navigation\Persistence\SpyNavigationNodeLocalizedAttributes $navigationNodeLocalizedAttributes
-     * @param array $localizedAttributes
+     * @param array<string, mixed> $localizedAttributes
      *
      * @return string|null
      */
-    protected function getCssClass(SpyNavigationNodeLocalizedAttributes $navigationNodeLocalizedAttributes, array $localizedAttributes): ?string
-    {
+    protected function getCssClass(
+        SpyNavigationNodeLocalizedAttributes $navigationNodeLocalizedAttributes,
+        array $localizedAttributes,
+    ): ?string {
         if (isset($localizedAttributes[static::KEY_CSS_CLASS]) && !empty($localizedAttributes[static::KEY_CSS_CLASS])) {
             return $localizedAttributes[static::KEY_CSS_CLASS];
         }

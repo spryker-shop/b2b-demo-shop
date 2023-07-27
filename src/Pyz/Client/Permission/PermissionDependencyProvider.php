@@ -12,6 +12,7 @@ use Spryker\Client\CompanyBusinessUnitSalesConnector\Plugin\Permission\SeeBusine
 use Spryker\Client\CompanyRole\Plugin\PermissionStoragePlugin;
 use Spryker\Client\CompanySalesConnector\Plugin\Permission\SeeCompanyOrdersPermissionPlugin;
 use Spryker\Client\CompanyUser\Plugin\CompanyUserStatusChangePermissionPlugin;
+use Spryker\Client\CompanyUser\Plugin\Permission\SeeCompanyUsersPermissionPlugin;
 use Spryker\Client\CustomerAccessPermission\Plugin\CustomerAccessPermissionStoragePlugin;
 use Spryker\Client\CustomerAccessPermission\Plugin\SeeAddToCartPermissionPlugin;
 use Spryker\Client\CustomerAccessPermission\Plugin\SeeOrderPlaceSubmitPermissionPlugin;
@@ -76,6 +77,7 @@ class PermissionDependencyProvider extends SprykerPermissionDependencyProvider
             new ApproveQuotePermissionPlugin(), #QuoteApprovalFeature
             new SeeCompanyOrdersPermissionPlugin(),
             new SeeBusinessUnitOrdersPermissionPlugin(),
+            new SeeCompanyUsersPermissionPlugin(),
         ];
     }
 }

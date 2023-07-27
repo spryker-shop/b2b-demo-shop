@@ -10,7 +10,7 @@
         "importHelpers": true,
         "skipLibCheck": true,
         "skipDefaultLibCheck": true,
-        "target": "es2015",
+        "target": "es2020",
         "module": "esnext",
         "typeRoots": ["node_modules/@types"],
         "lib": ["dom", "esnext"],
@@ -41,6 +41,9 @@
             "ProductGroupWidget/*": [
                 "./vendor/spryker-shop/product-group-widget/src/SprykerShop/Yves/ProductGroupWidget/Theme/default/*"
             ],
+            "ProductPackagingUnitWidget/*": [
+                "./vendor/spryker-shop/product-packaging-unit-widget/src/SprykerShop/Yves/ProductPackagingUnitWidget/Theme/default/*"
+            ],
             "ProductReviewWidget/*": [
                 "./vendor/spryker-shop/product-review-widget/src/SprykerShop/Yves/ProductReviewWidget/Theme/default/*"
             ],
@@ -58,5 +61,5 @@
     },
     "files": ["./src/Pyz/Yves/ShopUi/Theme/default/app.ts", "./src/Pyz/Yves/ShopUi/Theme/default/vendor.ts"],
     "include": ["./vendor/spryker-shop/**/*", "./vendor/spryker-eco/**/*", "./src/Pyz/Yves/**/*"],
-    "exclude": ["node_modules", "**/*.spec.ts"]
+    "exclude": ["node_modules", "public"]
 }

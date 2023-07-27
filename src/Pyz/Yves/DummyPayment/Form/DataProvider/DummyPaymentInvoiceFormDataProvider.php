@@ -36,7 +36,7 @@ class DummyPaymentInvoiceFormDataProvider implements StepEngineFormDataProviderI
     /**
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
      *
-     * @return array
+     * @return array<mixed>
      */
     public function getOptions(AbstractTransfer $quoteTransfer): array
     {

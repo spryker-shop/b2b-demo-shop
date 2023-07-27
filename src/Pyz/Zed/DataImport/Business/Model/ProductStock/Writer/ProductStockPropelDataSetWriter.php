@@ -230,12 +230,10 @@ class ProductStockPropelDataSetWriter implements DataSetWriterInterface
      */
     protected function getStoreIds(): array
     {
-        $storeTransfer = $this->storeFacade->getCurrentStore();
-        $storeIds = [$storeTransfer->getIdStore()];
+        $storeIds = [];
 
-        foreach ($storeTransfer->getStoresWithSharedPersistence() as $storeName) {
-            $storeTransfer = $this->storeFacade->getStoreByName($storeName);
-            $storeIds[] = $storeTransfer->getIdStore();
+        foreach ($this->storeFacade->getAllStores() as $storeTransfer) {
+            $storeIds[] = $storeTransfer->getIdStoreOrFail();
         }
 
         return $storeIds;
@@ -248,12 +246,7 @@ class ProductStockPropelDataSetWriter implements DataSetWriterInterface
      */
     protected function updateAvailability(DataSetInterface $dataSet): void
     {
-        $storeTransfer = $this->storeFacade->getCurrentStore();
-
-        $this->updateAvailabilityForStore($dataSet, $storeTransfer);
-
-        foreach ($storeTransfer->getStoresWithSharedPersistence() as $storeName) {
-            $storeTransfer = $this->storeFacade->getStoreByName($storeName);
+        foreach ($this->storeFacade->getAllStores() as $storeTransfer) {
             $this->updateAvailabilityForStore($dataSet, $storeTransfer);
         }
     }
@@ -315,7 +308,7 @@ class ProductStockPropelDataSetWriter implements DataSetWriterInterface
     /**
      * @param string $storeName
      *
-     * @return array
+     * @return array<string>
      */
     protected function getStoreWarehouses(string $storeName): array
     {
@@ -335,7 +328,7 @@ class ProductStockPropelDataSetWriter implements DataSetWriterInterface
         $stockProductTotalQuantity = SpyStockProductQuery::create()
             ->filterByFkProduct($idProductConcrete)
             ->useStockQuery()
-            ->filterByName($stockNames, Criteria::IN)
+                ->filterByName($stockNames, Criteria::IN)
             ->endUse()
             ->withColumn(sprintf('SUM(%s)', SpyStockProductTableMap::COL_QUANTITY), static::COL_STOCK_PRODUCT_TOTAL_QUANTITY)
             ->select([static::COL_STOCK_PRODUCT_TOTAL_QUANTITY])
@@ -416,7 +409,7 @@ class ProductStockPropelDataSetWriter implements DataSetWriterInterface
     }
 
     /**
-     * @param array $availabilityData
+     * @param array<string, mixed> $availabilityData
      *
      * @return void
      */

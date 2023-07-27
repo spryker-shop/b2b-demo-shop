@@ -26,7 +26,7 @@ class ContentProductSetGuiConfig extends SprykerContentProductSetGuiConfig
     protected const PYZ_WIDGET_TEMPLATE_DISPLAY_NAME_LANDING_PAGE = 'content_product_set_gui.template.landing-page';
 
     /**
-     * @return array
+     * @return array<string, string>
      */
     public function getContentWidgetTemplates(): array
     {
