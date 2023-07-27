@@ -26,7 +26,7 @@ class ContentProductGuiConfig extends SprykerContentProductGuiConfig
     protected const PYZ_WIDGET_TEMPLATE_DISPLAY_NAME_SLIDER = 'content_product_abstract_list.template.slider';
 
     /**
-     * @return array
+     * @return array<string, string>
      */
     public function getContentWidgetTemplates(): array
     {

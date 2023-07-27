@@ -58,7 +58,7 @@ use Spryker\Zed\Kernel\Container;
  * @method void comment($description)
  * @method \Codeception\Lib\Friend haveFriend($name, $actorClass = NULL)
  *
- * @SuppressWarnings(PHPMD)
+ * @SuppressWarnings(\PyzTest\Zed\Calculation\PHPMD)
  */
 class CalculationBusinessTester extends Actor
 {

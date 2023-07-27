@@ -33,16 +33,17 @@
         &__button {
             position: absolute;
             top: 0;
-            width: rem(43);
+            width: rem(45);
             height: 100%;
             padding: 0;
             border: none;
             background: $setting-color-transparent;
             color: $setting-color-gray-4;
             z-index: $setting-zi-search-suggestions + 3;
+            cursor: pointer;
 
             @include helper-breakpoint-media-min($lg) {
-                width: rem(56);
+                width: rem(55);
             }
 
             &--submit {
@@ -58,10 +59,9 @@
             }
 
             &:hover {
-                background: $setting-color-transparent;
-
-                .icon {
+                #{$name}__icon {
                     color: $setting-color-gray-3;
+                    fill: $setting-color-gray-3;
                 }
             }
         }
