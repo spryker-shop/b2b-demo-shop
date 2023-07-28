@@ -26,7 +26,7 @@ class ContentBannerGuiConfig extends SprykerContentBannerGuiConfig
     protected const PYZ_WIDGET_TEMPLATE_DISPLAY_NAME_HOME_PAGE = 'content_banner.template.home-page';
 
     /**
-     * @return array
+     * @return array<string, string>
      */
     public function getContentWidgetTemplates(): array
     {

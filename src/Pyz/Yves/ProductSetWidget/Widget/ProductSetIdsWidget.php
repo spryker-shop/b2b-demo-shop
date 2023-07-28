@@ -33,7 +33,7 @@ class ProductSetIdsWidget extends AbstractWidget
     protected const PYZ_PARAMETER_ATTRIBUTES = 'attributes';
 
     /**
-     * @param array $productSetIds
+     * @param list<int> $productSetIds
      */
     public function __construct(array $productSetIds)
     {
@@ -59,7 +59,7 @@ class ProductSetIdsWidget extends AbstractWidget
     }
 
     /**
-     * @param array $productSetIds
+     * @param list<int> $productSetIds
      *
      * @return void
      */
@@ -71,9 +71,9 @@ class ProductSetIdsWidget extends AbstractWidget
     }
 
     /**
-     * @param array<int> $productSetIds
+     * @param list<int> $productSetIds
      *
-     * @return array
+     * @return array<int, array<string, mixed>>
      */
     protected function getPyzProductSetList(array $productSetIds): array
     {
@@ -92,7 +92,7 @@ class ProductSetIdsWidget extends AbstractWidget
     /**
      * @param int $productSetId
      *
-     * @return array
+     * @return array<string, mixed>
      */
     protected function getPyzSingleProductSet($productSetId): array
     {
@@ -146,7 +146,7 @@ class ProductSetIdsWidget extends AbstractWidget
      */
     protected function getPyzSelectedAttributes(int $idProductAbstract): array
     {
-        /** @var array $attributes */
+        /** @var array<mixed> $attributes */
         $attributes = $this->getPyzRequest()->query->get(static::PYZ_PARAMETER_ATTRIBUTES) ?: [];
 
         return isset($attributes[$idProductAbstract]) ? array_reverse(array_filter($attributes[$idProductAbstract])) : [];

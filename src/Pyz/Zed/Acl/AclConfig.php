@@ -13,7 +13,7 @@ use Spryker\Zed\Acl\AclConfig as SprykerAclConfig;
 class AclConfig extends SprykerAclConfig
 {
     /**
-     * @return array
+     * @return array<string, array<string, mixed>>
      */
     public function getInstallerUsers(): array
     {
