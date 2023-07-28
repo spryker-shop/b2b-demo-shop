@@ -80,9 +80,9 @@ regions:
             mail:
                 sender:
                     name: Spryker No-Reply
-                    email: no-reply@optimus-test04.cloud.spryker.toys
+                    email: no-reply@optimus-test05.cloud.spryker.toys
             database:
-                database: optimus_test04
+                database: optimus_test05
                 username: spryker
                 password: secret
 
@@ -115,26 +115,26 @@ groups:
             Yves:
                 application: yves
                 endpoints:
-                    www.de.optimus-test04.cloud.spryker.toys:
+                    www.de.optimus-test05.cloud.spryker.toys:
                         store: DE
                         <<: *frontend-auth
-                    www.at.optimus-test04.cloud.spryker.toys:
+                    www.at.optimus-test05.cloud.spryker.toys:
                         store: AT
                         <<: *frontend-auth
             Zed:
                 application: zed
                 endpoints:
-                    backoffice.de.optimus-test04.cloud.spryker.toys:
+                    backoffice.de.optimus-test05.cloud.spryker.toys:
                         store: DE
                         primal: true
-                    backoffice.at.optimus-test04.cloud.spryker.toys:
+                    backoffice.at.optimus-test05.cloud.spryker.toys:
                         store: AT
             Glue:
                 application: glue
                 endpoints:
-                    glue.de.optimus-test04.cloud.spryker.toys:
+                    glue.de.optimus-test05.cloud.spryker.toys:
                         store: DE
-                    glue.at.optimus-test04.cloud.spryker.toys:
+                    glue.at.optimus-test05.cloud.spryker.toys:
                         store: AT
 services:
     database:
@@ -153,7 +153,7 @@ services:
             username: "spryker"
             password: "secret"
         endpoints:
-            queue.optimus-test04.cloud.spryker.toys:
+            queue.optimus-test05.cloud.spryker.toys:
             localhost:5672:
                 protocol: tcp
     session:
@@ -173,11 +173,11 @@ services:
         engine: jenkins
         version: '2.324'
         endpoints:
-            jenkins2.optimus-test04.cloud.spryker.toys:
+            jenkins2.optimus-test05.cloud.spryker.toys:
     mail_catcher:
         engine: mailhog
         endpoints:
-            mail.optimus-test04.cloud.spryker.toys:
+            mail.optimus-test05.cloud.spryker.toys:
 
 docker:
 
