@@ -30,7 +30,7 @@ class CustomerAccessDataProvider
     }
 
     /**
-     * @return array
+     * @return array<mixed>
      */
     public function getOptions(): array
     {
@@ -57,7 +57,7 @@ class CustomerAccessDataProvider
     }
 
     /**
-     * @param \ArrayObject<\Generated\Shared\Transfer\ContentTypeAccessTransfer> $contentTypes
+     * @param \ArrayObject<array-key, \Generated\Shared\Transfer\ContentTypeAccessTransfer> $contentTypes
      *
      * @return array<\Generated\Shared\Transfer\ContentTypeAccessTransfer>
      */

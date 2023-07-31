@@ -99,7 +99,7 @@ class ContentBannerTwigFunctionProvider extends TwigFunctionProvider
     }
 
     /**
-     * @return array
+     * @return array<string, string>
      */
     protected function getPyzAvailableTemplates(): array
     {

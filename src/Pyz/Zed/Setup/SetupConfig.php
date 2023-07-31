@@ -23,7 +23,7 @@ class SetupConfig extends SprykerSetupConfig
      *
      * For a first initial migration you must use OPTION_NO_DIFF false.
      *
-     * @return array
+     * @return array<string>
      */
     public function getSetupInstallCommandNames(): array
     {

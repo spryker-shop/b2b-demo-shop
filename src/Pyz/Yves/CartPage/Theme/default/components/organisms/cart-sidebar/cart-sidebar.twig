@@ -7,7 +7,7 @@
 {% define data = {
     cart: required,
     cartItems: required,
-    transformedCartItems: required,
+    cartItemsCount: 0,
     isQuoteEditable: required,
     isQuoteValid: required,
 } %}
@@ -174,18 +174,20 @@
         {% embed molecule('cart-sidebar-item', 'CartPage') with {
             data: {
                 cart: data.cart,
-                transformedCartItems: data.transformedCartItems,
                 isQuoteValid: data.isQuoteValid,
                 isQuoteEditable: data.isQuoteEditable,
                 isAccordionItem: false,
             },
             modifiers: ['summary'],
+            embed: {
+                cartItemsCount: data.cartItemsCount,
+            }
         } only %}
             {% block body %}
                 <div class="{{ config.name }}__start">
                     <div class="{{ config.name }}__order-header grid grid--justify grid--middle">
                         <h6 class="{{ config.name }}__title col">{{ 'cart.your-order' | trans }}</h6>
-                        <div class="{{ config.name }}__quantity col">{{ data.transformedCartItems | length | executeFilterIfExists('formatInt', app.locale) }} {{ 'checkout.step.summary.items' | trans }}</div>
+                        <div class="{{ config.name }}__quantity col">{{ embed.cartItemsCount | executeFilterIfExists('formatInt', app.locale) }} {{ 'checkout.step.summary.items' | trans }}</div>
                     </div>
 
                     {% set isCartCodeFormWidget = data.isQuoteEditable and can('ChangeCartItemPermissionPlugin') and can('SeePricePermissionPlugin') %}

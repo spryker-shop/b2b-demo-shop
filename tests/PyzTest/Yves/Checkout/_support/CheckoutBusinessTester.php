@@ -25,7 +25,7 @@ use Spryker\Service\Shipment\ShipmentServiceInterface;
  * @method void comment($description)
  * @method \Codeception\Lib\Friend haveFriend($name, $actorClass = NULL)
  *
- * @SuppressWarnings(PHPMD)
+ * @SuppressWarnings(\PyzTest\Yves\Checkout\PHPMD)
  */
 class CheckoutBusinessTester extends Actor
 {
