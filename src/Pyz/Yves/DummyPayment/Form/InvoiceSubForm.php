@@ -93,7 +93,7 @@ class InvoiceSubForm extends AbstractType implements SubFormProviderNameInterfac
 
     /**
      * @param \Symfony\Component\Form\FormBuilderInterface $builder
-     * @param array $options
+     * @param array<mixed> $options
      *
      * @return void
      */
@@ -166,7 +166,7 @@ class InvoiceSubForm extends AbstractType implements SubFormProviderNameInterfac
     /**
      * @param \Symfony\Component\Form\FormView $view The view
      * @param \Symfony\Component\Form\FormInterface $form The form
-     * @param array $options The options
+     * @param array<mixed> $options The options
      *
      * @return void
      */

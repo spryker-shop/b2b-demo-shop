@@ -1,44 +1,39 @@
-{% extends model('component') %}
-
-{% define config = {
-    name: 'search-form'
-} %}
-
-{% define data = {
-    searchUrl: path('search'),
-    searchValue: app.request.get('q')
-} %}
-
-{% define attributes = {
-    'data-search-id': required
-} %}
+{% extends molecule('search-form', '@SprykerShop:ShopUi') %}
 
 {% block body %}
-    <form action="{{data.searchUrl}}">
-        <input name="q" type="text" class="input input--expand suggest-search__input {{ config.jsName }}__input--{{ attributes['data-search-id'] }}" placeholder="{{ 'global.search' | trans }}" value="{{data.searchValue}}" autocomplete="off">
-        <button type="submit" class=" button button--expand {{config.name}}__button {{config.name}}__button--submit">
+    <form action="{{ data.searchUrl }}">
+        <input
+            class="suggest-search__input {{ config.jsName }}__input--{{ attributes['data-search-id'] }}"
+            name="q"
+            type="text"
+            placeholder="{{ 'global.search' | trans }}"
+            value="{{ data.searchValue }}"
+            autocomplete="off"
+        >
+
+        <button class="{{ config.name }}__button {{ config.name }}__button--submit">
             {% include atom('icon') with {
+                class: config.name ~ '__icon',
                 modifiers: ['search'],
                 data: {
-                    name: 'search'
-                }
+                    name: 'search',
+                },
             } only %}
         </button>
 
-
-        <button class="button button--expand {{config.name}}__button {{config.name}}__button--close {% block close %}{% endblock %}">
+        <button type="button" class="{{ config.name }}__button {{ config.name }}__button--close {% block close %}{% endblock %}">
             {% include atom('icon') with {
+                class: config.name ~ '__icon',
                 modifiers: ['small'],
                 data: {
-                    name: 'cross'
-                }
+                    name: 'cross',
+                },
             } only %}
         </button>
 
         {% include molecule('suggest-search') with {
             attributes: {
                 'suggestion-url': path('search/suggestion'),
-                'base-suggest-url': path('search/suggestion'),
                 'input-class-name': config.jsName ~ '__input--' ~ attributes['data-search-id'],
                 'overlay-breakpoint': '768',
             },

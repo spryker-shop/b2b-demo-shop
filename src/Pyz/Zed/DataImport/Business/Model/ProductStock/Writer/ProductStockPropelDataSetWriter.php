@@ -308,7 +308,7 @@ class ProductStockPropelDataSetWriter implements DataSetWriterInterface
     /**
      * @param string $storeName
      *
-     * @return array
+     * @return array<string>
      */
     protected function getStoreWarehouses(string $storeName): array
     {
@@ -328,7 +328,7 @@ class ProductStockPropelDataSetWriter implements DataSetWriterInterface
         $stockProductTotalQuantity = SpyStockProductQuery::create()
             ->filterByFkProduct($idProductConcrete)
             ->useStockQuery()
-            ->filterByName($stockNames, Criteria::IN)
+                ->filterByName($stockNames, Criteria::IN)
             ->endUse()
             ->withColumn(sprintf('SUM(%s)', SpyStockProductTableMap::COL_QUANTITY), static::COL_STOCK_PRODUCT_TOTAL_QUANTITY)
             ->select([static::COL_STOCK_PRODUCT_TOTAL_QUANTITY])
@@ -409,7 +409,7 @@ class ProductStockPropelDataSetWriter implements DataSetWriterInterface
     }
 
     /**
-     * @param array $availabilityData
+     * @param array<string, mixed> $availabilityData
      *
      * @return void
      */

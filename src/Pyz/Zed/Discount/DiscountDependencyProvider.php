@@ -72,7 +72,7 @@ class DiscountDependencyProvider extends SprykerDiscountDependencyProvider
     }
 
     /**
-     * @return array
+     * @return array<\Spryker\Zed\Discount\Dependency\Plugin\DiscountableItemFilterPluginInterface>
      */
     protected function getDiscountableItemFilterPlugins(): array
     {

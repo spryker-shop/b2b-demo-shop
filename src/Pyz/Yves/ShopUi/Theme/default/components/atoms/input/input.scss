@@ -1,46 +1,51 @@
-@include shop-ui-input {
-    $name: '.input';
-    border-radius: $setting-border-radius;
-    color: $setting-color-gray-5;
-    font: fw(regular) rem(15) / rem(19) $setting-font-family;
-    padding: rem(14) rem(20) rem(13);
+@mixin shop-ui-input-extended($name: '.input') {
+    @include shop-ui-input($name) {
+        border-radius: $setting-border-radius;
+        color: $setting-color-gray-5;
+        font: fw(regular) rem(15) / rem(19) $setting-font-family;
+        padding: rem(14) rem(20) rem(13);
 
-    &--small {
-        font-size: rem(14);
-        line-height: rem(18);
-        padding: rem(10) rem(16);
-    }
+        &--small {
+            font-size: rem(14);
+            line-height: rem(18);
+            padding: rem(10) rem(16);
+        }
 
-    &--measurement-unit {
-        max-width: rem(90);
-        appearance: none;
-
-        &::-webkit-inner-spin-button,
-        &::-webkit-outer-spin-button {
+        &--measurement-unit {
+            max-width: rem(90);
             appearance: none;
-            margin: 0;
+
+            &::-webkit-inner-spin-button,
+            &::-webkit-outer-spin-button {
+                appearance: none;
+                margin: 0;
+            }
         }
-    }
 
-    &--filter-range {
-        font-weight: fw(medium);
-        color: $setting-color-gray-4;
-        padding-right: rem(24);
-        padding-left: rem(8);
+        &--filter-range {
+            font-weight: fw(medium);
+            color: $setting-color-gray-4;
+            padding-right: rem(24);
+            padding-left: rem(8);
 
-        @include helper-breakpoint-media-min($md) {
-            padding-left: rem(12);
+            @include helper-breakpoint-media-min($md) {
+                padding-left: rem(12);
+            }
         }
-    }
 
-    &--transparent[disabled] {
-        background-color: $setting-color-transparent;
-    }
+        &--transparent[disabled] {
+            background-color: $setting-color-transparent;
+        }
 
-    &--inline {
-        border-top-right-radius: 0;
-        border-bottom-right-radius: 0;
-        padding-left: rem(10);
-        padding-right: rem(10);
+        &--inline {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+            padding-left: rem(10);
+            padding-right: rem(10);
+        }
+
+        @content;
     }
 }
+
+@include shop-ui-input-extended();

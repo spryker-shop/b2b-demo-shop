@@ -30,7 +30,7 @@ class ProductAbstractCheckExistenceStep implements DataImportStepInterface
     protected $skuProductConcreteList = [];
 
     /**
-     * @var array<bool> Keys are abstract product sku values. Values are set to "true" when abstract product added.
+     * @var array<string, true> Keys are abstract product sku values. Values are set to "true" when abstract product added.
      */
     protected $resolved = [];
 
@@ -63,6 +63,7 @@ class ProductAbstractCheckExistenceStep implements DataImportStepInterface
      */
     protected function checkSkuProductAlreadyExists(DataSetInterface $dataSet): void
     {
+        /** @var string $sku */
         $sku = $dataSet[static::KEY_ABSTRACT_SKU];
 
         if (isset($this->skuProductConcreteList[$sku])) {
