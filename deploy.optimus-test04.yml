@@ -119,14 +119,30 @@ groups:
                         store: DE
                     www.at.optimus-test04.cloud.spryker.toys:
                         store: AT
-            Zed:
-                application: zed
+            boffice:
+                application: backoffice
                 endpoints:
                     backoffice.de.optimus-test04.cloud.spryker.toys:
                         store: DE
                         primal: true
                     backoffice.at.optimus-test04.cloud.spryker.toys:
                         store: AT
+            backgw:
+                application: backend-gateway
+                endpoints:
+                    backend-gateway.de.optimus-test04.cloud.spryker.toys:
+                        store: DE
+                    backend-gateway.at.optimus-test04.cloud.spryker.toys:
+                        store: AT
+            backapi:
+                application: zed
+                endpoints:
+                    backend-api.de.optimus-test04.cloud.spryker.toys:
+                        store: DE
+                        entry-point: BackendApi
+                    backend-api.at.optimus-test04.cloud.spryker.toys:
+                        store: AT
+                        entry-point: BackendApi
             Glue:
                 application: glue
                 endpoints:
