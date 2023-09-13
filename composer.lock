@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3835288a314501b4b093b08106f9741f",
+    "content-hash": "b4e572b37d89e337b464a06d8672fbf5",
     "packages": [
         {
             "name": "async-aws/core",
@@ -5811,16 +5811,16 @@
         },
         {
             "name": "spryker-feature/merchant-product-restrictions",
-            "version": "202307.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker-feature/merchant-product-restrictions.git",
-                "reference": "f3975489c1cd330ed16e8765cd33f4661acc00d5"
+                "reference": "c5c9acbfacc2589bb60be2105e7bc4d06834d341"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker-feature/merchant-product-restrictions/zipball/f3975489c1cd330ed16e8765cd33f4661acc00d5",
-                "reference": "f3975489c1cd330ed16e8765cd33f4661acc00d5",
+                "url": "https://api.github.com/repos/spryker-feature/merchant-product-restrictions/zipball/c5c9acbfacc2589bb60be2105e7bc4d06834d341",
+                "reference": "c5c9acbfacc2589bb60be2105e7bc4d06834d341",
                 "shasum": ""
             },
             "require": {
@@ -5833,6 +5833,7 @@
                 "spryker-feature/merchant": "Recommended feature dependency.",
                 "spryker-feature/product": "Recommended feature dependency."
             },
+            "default-branch": true,
             "type": "metapackage",
             "extra": {
                 "branch-alias": {
@@ -5845,9 +5846,9 @@
             ],
             "description": "Merchant Product restrictions [feature]",
             "support": {
-                "source": "https://github.com/spryker-feature/merchant-product-restrictions/tree/202307.0"
+                "source": "https://github.com/spryker-feature/merchant-product-restrictions/tree/master"
             },
-            "time": "2023-07-26T15:07:05+00:00"
+            "time": "2023-09-12T16:25:23+00:00"
         },
         {
             "name": "spryker-feature/multiple-carts",
@@ -32288,6 +32289,53 @@
                 "source": "https://github.com/spryker/merchant-relationship-product-list-gui/tree/2.1.0"
             },
             "time": "2022-01-28T07:52:09+00:00"
+        },
+        {
+            "name": "spryker/merchant-relationship-product-lists-rest-api",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/merchant-relationship-product-lists-rest-api.git",
+                "reference": "41c63ba4ba5cfa1aa8bad85fd6889cf05d119206"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/merchant-relationship-product-lists-rest-api/zipball/41c63ba4ba5cfa1aa8bad85fd6889cf05d119206",
+                "reference": "41c63ba4ba5cfa1aa8bad85fd6889cf05d119206",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0",
+                "spryker/customers-rest-api-extension": "^1.2.0",
+                "spryker/glue-application": "^1.18.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/oauth-customer-connector-extension": "^1.0.0",
+                "spryker/transfer": "^3.27.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "MerchantRelationshipProductListsRestApi module",
+            "support": {
+                "source": "https://github.com/spryker/merchant-relationship-product-lists-rest-api/tree/0.1.0"
+            },
+            "time": "2023-09-08T07:13:38+00:00"
         },
         {
             "name": "spryker/merchant-relationship-sales-order-threshold",
@@ -65667,6 +65715,12 @@
             "alias_normalized": "202311.0"
         },
         {
+            "package": "spryker-feature/merchant-product-restrictions",
+            "version": "9999999-dev",
+            "alias": "202311.0",
+            "alias_normalized": "202311.0"
+        },
+        {
             "package": "spryker-feature/product",
             "version": "9999999-dev",
             "alias": "202311.0",
@@ -65695,6 +65749,7 @@
     "stability-flags": {
         "spryker-feature/file-manager": 20,
         "spryker-feature/inventory-management": 20,
+        "spryker-feature/merchant-product-restrictions": 20,
         "spryker-feature/product": 20,
         "spryker-feature/product-lists": 20,
         "spryker-feature/scheduled-prices": 20,
