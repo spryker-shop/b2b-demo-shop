@@ -76,7 +76,7 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
         $applicationPlugins = [
             new SessionApplicationPlugin(),
             new TwigApplicationPlugin(),
-            new EventDispatcherApplicationPlugin(),
+            new BackofficeEventDispatcherApplicationPlugin(),
             new LocaleApplicationPlugin(),
             new TranslatorApplicationPlugin(),
             new MessengerApplicationPlugin(),
@@ -89,7 +89,6 @@ class ApplicationDependencyProvider extends SprykerApplicationDependencyProvider
             new SecurityApplicationPlugin(),
             new NumberFormatterApplicationPlugin(),
             new BackofficeStoreApplicationPlugin(),
-            new BackofficeEventDispatcherApplicationPlugin(),
         ];
 
         if (class_exists(WebProfilerApplicationPlugin::class)) {
