@@ -24,7 +24,7 @@ class ExampleProductSaleRouteProviderPlugin extends AbstractRouteProviderPlugin
      */
     public function addRoutes(RouteCollection $routeCollection): RouteCollection
     {
-        $route = $this->buildRoute('/outlet{categoryPath}', 'ExampleProductSalePage', 'Sale', 'indexPyzAction');
+        $route = $this->buildRoute('/outlet{categoryPath}', 'ExampleProductSalePage', 'Sale', 'indexAction');
         $route = $route->setRequirement('categoryPath', '\/.+');
         $route = $route->setDefault('categoryPath', null);
 

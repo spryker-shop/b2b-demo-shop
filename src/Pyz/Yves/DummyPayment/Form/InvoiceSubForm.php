@@ -46,7 +46,7 @@ class InvoiceSubForm extends AbstractType implements SubFormProviderNameInterfac
     /**
      * @return string
      */
-    public function getPyzName(): string
+    public function getName(): string
     {
         return DummyPaymentConfig::PAYMENT_METHOD_INVOICE;
     }
@@ -54,7 +54,7 @@ class InvoiceSubForm extends AbstractType implements SubFormProviderNameInterfac
     /**
      * @return string
      */
-    public function getPyzPropertyPath(): string
+    public function getPropertyPath(): string
     {
         return DummyPaymentConfig::PAYMENT_METHOD_INVOICE;
     }
@@ -62,7 +62,7 @@ class InvoiceSubForm extends AbstractType implements SubFormProviderNameInterfac
     /**
      * @return string
      */
-    public function getPyzTemplatePath(): string
+    public function getTemplatePath(): string
     {
         return DummyPaymentConfig::PROVIDER_NAME . '/' . static::PAYMENT_METHOD;
     }
@@ -86,7 +86,7 @@ class InvoiceSubForm extends AbstractType implements SubFormProviderNameInterfac
      *
      * @return void
      */
-    public function setPyzDefaultOptions(OptionsResolver $resolver): void
+    public function setDefaultOptions(OptionsResolver $resolver): void
     {
         $this->configureOptions($resolver);
     }
@@ -99,13 +99,13 @@ class InvoiceSubForm extends AbstractType implements SubFormProviderNameInterfac
      */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        $this->addPyzDateOfBirthField($builder);
+        $this->addDateOfBirthField($builder);
     }
 
     /**
      * @return string
      */
-    public function getPyzProviderName(): string
+    public function getProviderName(): string
     {
         return DummyPaymentConstants::PROVIDER_NAME;
     }
@@ -115,7 +115,7 @@ class InvoiceSubForm extends AbstractType implements SubFormProviderNameInterfac
      *
      * @return $this
      */
-    protected function addPyzDateOfBirthField(FormBuilderInterface $builder)
+    protected function addDateOfBirthField(FormBuilderInterface $builder)
     {
         $builder->add(
             static::FIELD_DATE_OF_BIRTH,
@@ -131,8 +131,8 @@ class InvoiceSubForm extends AbstractType implements SubFormProviderNameInterfac
                     'placeholder' => 'customer.birth_date',
                 ],
                 'constraints' => [
-                    $this->createPyzNotBlankConstraint(),
-                    $this->createPyzBirthdayConstraint(),
+                    $this->createNotBlankConstraint(),
+                    $this->createBirthdayConstraint(),
                 ],
             ],
         );
@@ -143,15 +143,15 @@ class InvoiceSubForm extends AbstractType implements SubFormProviderNameInterfac
     /**
      * @return \Symfony\Component\Validator\Constraints\NotBlank
      */
-    protected function createPyzNotBlankConstraint(): NotBlank
+    protected function createNotBlankConstraint(): NotBlank
     {
-        return new NotBlank(['groups' => $this->getPyzPropertyPath()]);
+        return new NotBlank(['groups' => $this->getPropertyPath()]);
     }
 
     /**
      * @return \Symfony\Component\Validator\Constraints\Callback
      */
-    protected function createPyzBirthdayConstraint(): Callback
+    protected function createBirthdayConstraint(): Callback
     {
         return new Callback([
             'callback' => function ($date, ExecutionContextInterface $context): void {
@@ -159,7 +159,7 @@ class InvoiceSubForm extends AbstractType implements SubFormProviderNameInterfac
                     $context->addViolation('checkout.step.payment.must_be_older_than_18_years');
                 }
             },
-            'groups' => $this->getPyzPropertyPath(),
+            'groups' => $this->getPropertyPath(),
         ]);
     }
 
@@ -174,6 +174,6 @@ class InvoiceSubForm extends AbstractType implements SubFormProviderNameInterfac
     {
         parent::buildView($view, $form, $options);
 
-        $view->vars[static::TEMPLATE_PATH] = $this->getPyzTemplatePath();
+        $view->vars[static::TEMPLATE_PATH] = $this->getTemplatePath();
     }
 }

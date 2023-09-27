@@ -24,7 +24,7 @@ class ProductPackagingUnitStorageConfig extends SprykerProductPackagingUnitStora
     /**
      * @return string|null
      */
-    public function getPyzProductAbstractPackagingSynchronizationPoolName(): ?string
+    public function getProductAbstractPackagingSynchronizationPoolName(): ?string
     {
         return SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME;
     }

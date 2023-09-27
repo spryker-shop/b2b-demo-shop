@@ -25,7 +25,7 @@ class CustomerAccessGuiDependencyProvider extends SprykerCustomerAccessGuiDepend
     public function provideCommunicationLayerDependencies(Container $container): Container
     {
         $container = parent::provideCommunicationLayerDependencies($container);
-        $container = $this->addPyzCustomerAccessFacade($container);
+        $container = $this->addCustomerAccessFacade($container);
 
         return $container;
     }
@@ -35,7 +35,7 @@ class CustomerAccessGuiDependencyProvider extends SprykerCustomerAccessGuiDepend
      *
      * @return \Spryker\Zed\Kernel\Container
      */
-    protected function addPyzCustomerAccessFacade(Container $container): Container
+    protected function addCustomerAccessFacade(Container $container): Container
     {
         $container->set(static::FACADE_CUSTOMER_ACCESS, function (Container $container) {
             return $container->getLocator()->customerAccess()->facade();

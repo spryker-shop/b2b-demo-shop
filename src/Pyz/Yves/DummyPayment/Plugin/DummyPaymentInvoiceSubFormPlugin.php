@@ -22,7 +22,7 @@ class DummyPaymentInvoiceSubFormPlugin extends AbstractPlugin implements SubForm
      */
     public function createSubForm(): FormTypeInterface
     {
-        return $this->getFactory()->createPyzInvoiceForm();
+        return $this->getFactory()->createInvoiceForm();
     }
 
     /**
@@ -30,6 +30,6 @@ class DummyPaymentInvoiceSubFormPlugin extends AbstractPlugin implements SubForm
      */
     public function createSubFormDataProvider(): StepEngineFormDataProviderInterface
     {
-        return $this->getFactory()->createPyzInvoiceFormDataProvider();
+        return $this->getFactory()->createInvoiceFormDataProvider();
     }
 }

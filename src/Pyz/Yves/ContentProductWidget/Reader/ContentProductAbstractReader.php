@@ -40,7 +40,7 @@ class ContentProductAbstractReader implements ContentProductAbstractReaderInterf
      *
      * @return array<\Generated\Shared\Transfer\ProductViewTransfer>
      */
-    public function getPyzProductAbstractCollection(string $contentKey, string $localeName): array
+    public function getProductAbstractCollection(string $contentKey, string $localeName): array
     {
         $contentProductAbstractListTypeTransfer = $this->contentProductClient->executeProductAbstractListTypeByKey($contentKey, $localeName);
 

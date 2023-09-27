@@ -17,7 +17,7 @@ class DummyPaymentFactory extends SprykerDummyPaymentFactory
     /**
      * @return \Symfony\Component\Form\FormTypeInterface
      */
-    public function createPyzInvoiceForm(): FormTypeInterface
+    public function createInvoiceForm(): FormTypeInterface
     {
         return new InvoiceSubForm();
     }
@@ -25,7 +25,7 @@ class DummyPaymentFactory extends SprykerDummyPaymentFactory
     /**
      * @return \Pyz\Yves\DummyPayment\Form\DataProvider\DummyPaymentInvoiceFormDataProvider
      */
-    public function createPyzInvoiceFormDataProvider(): DummyPaymentInvoiceFormDataProvider
+    public function createInvoiceFormDataProvider(): DummyPaymentInvoiceFormDataProvider
     {
         return new DummyPaymentInvoiceFormDataProvider();
     }

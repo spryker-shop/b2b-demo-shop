@@ -25,10 +25,10 @@ class CheckoutController extends SprykerCheckoutController
      */
     public function customerAction(Request $request)
     {
-        $quoteValidationResponseTransfer = $this->canPyzProceedCheckout();
+        $quoteValidationResponseTransfer = $this->canProceedCheckout();
 
         if (!$quoteValidationResponseTransfer->getIsSuccessful()) {
-            $this->processPyzErrorMessages($quoteValidationResponseTransfer->getMessages());
+            $this->processErrorMessages($quoteValidationResponseTransfer->getMessages());
 
             return $this->redirectResponseInternal(static::ROUTE_CART);
         }
@@ -36,7 +36,7 @@ class CheckoutController extends SprykerCheckoutController
         $response = $this->getFactory()->createCheckoutProcess()->process(
             $request,
             $this->getFactory()
-                ->createPyzCheckoutFormFactory()
+                ->createCheckoutFormFactory()
                 ->createCustomerFormCollection(),
         );
 
@@ -58,10 +58,10 @@ class CheckoutController extends SprykerCheckoutController
      */
     public function addressAction(Request $request)
     {
-        $quoteValidationResponseTransfer = $this->canPyzProceedCheckout();
+        $quoteValidationResponseTransfer = $this->canProceedCheckout();
 
         if (!$quoteValidationResponseTransfer->getIsSuccessful()) {
-            $this->processPyzErrorMessages($quoteValidationResponseTransfer->getMessages());
+            $this->processErrorMessages($quoteValidationResponseTransfer->getMessages());
 
             return $this->redirectResponseInternal(static::ROUTE_CART);
         }
@@ -69,7 +69,7 @@ class CheckoutController extends SprykerCheckoutController
         $response = $this->getFactory()->createCheckoutProcess()->process(
             $request,
             $this->getFactory()
-                ->createPyzCheckoutFormFactory()
+                ->createCheckoutFormFactory()
                 ->createAddressFormCollection(),
         );
 
@@ -91,10 +91,10 @@ class CheckoutController extends SprykerCheckoutController
      */
     public function shipmentAction(Request $request)
     {
-        $quoteValidationResponseTransfer = $this->canPyzProceedCheckout();
+        $quoteValidationResponseTransfer = $this->canProceedCheckout();
 
         if (!$quoteValidationResponseTransfer->getIsSuccessful()) {
-            $this->processPyzErrorMessages($quoteValidationResponseTransfer->getMessages());
+            $this->processErrorMessages($quoteValidationResponseTransfer->getMessages());
 
             return $this->redirectResponseInternal(static::ROUTE_CART);
         }
@@ -102,7 +102,7 @@ class CheckoutController extends SprykerCheckoutController
         $response = $this->getFactory()->createCheckoutProcess()->process(
             $request,
             $this->getFactory()
-                ->createPyzCheckoutFormFactory()
+                ->createCheckoutFormFactory()
                 ->createShipmentFormCollection(),
         );
 
@@ -124,10 +124,10 @@ class CheckoutController extends SprykerCheckoutController
      */
     public function paymentAction(Request $request)
     {
-        $quoteValidationResponseTransfer = $this->canPyzProceedCheckout();
+        $quoteValidationResponseTransfer = $this->canProceedCheckout();
 
         if (!$quoteValidationResponseTransfer->getIsSuccessful()) {
-            $this->processPyzErrorMessages($quoteValidationResponseTransfer->getMessages());
+            $this->processErrorMessages($quoteValidationResponseTransfer->getMessages());
 
             return $this->redirectResponseInternal(static::ROUTE_CART);
         }
@@ -135,8 +135,8 @@ class CheckoutController extends SprykerCheckoutController
         $response = $this->getFactory()->createCheckoutProcess()->process(
             $request,
             $this->getFactory()
-                ->createPyzCheckoutFormFactory()
-                ->getPyzPaymentFormCollection(),
+                ->createCheckoutFormFactory()
+                ->getPaymentFormCollection(),
         );
 
         if (!is_array($response)) {
@@ -157,10 +157,10 @@ class CheckoutController extends SprykerCheckoutController
      */
     public function summaryAction(Request $request)
     {
-        $quoteValidationResponseTransfer = $this->canPyzProceedCheckout();
+        $quoteValidationResponseTransfer = $this->canProceedCheckout();
 
         if (!$quoteValidationResponseTransfer->getIsSuccessful()) {
-            $this->processPyzErrorMessages($quoteValidationResponseTransfer->getMessages());
+            $this->processErrorMessages($quoteValidationResponseTransfer->getMessages());
 
             return $this->redirectResponseInternal(static::ROUTE_CART);
         }
@@ -168,7 +168,7 @@ class CheckoutController extends SprykerCheckoutController
         $viewData = $this->getFactory()->createCheckoutProcess()->process(
             $request,
             $this->getFactory()
-                ->createPyzCheckoutFormFactory()
+                ->createCheckoutFormFactory()
                 ->createSummaryFormCollection(),
         );
 
@@ -186,7 +186,7 @@ class CheckoutController extends SprykerCheckoutController
     /**
      * @return \Generated\Shared\Transfer\QuoteValidationResponseTransfer
      */
-    protected function canPyzProceedCheckout(): QuoteValidationResponseTransfer
+    protected function canProceedCheckout(): QuoteValidationResponseTransfer
     {
         $quoteTransfer = $this->getFactory()
             ->getQuoteClient()
@@ -202,7 +202,7 @@ class CheckoutController extends SprykerCheckoutController
      *
      * @return void
      */
-    protected function processPyzErrorMessages(ArrayObject $messageTransfers): void
+    protected function processErrorMessages(ArrayObject $messageTransfers): void
     {
         foreach ($messageTransfers as $messageTransfer) {
             $this->addErrorMessage($messageTransfer->getValue());

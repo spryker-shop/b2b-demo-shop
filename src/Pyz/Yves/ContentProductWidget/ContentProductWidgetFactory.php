@@ -25,9 +25,9 @@ class ContentProductWidgetFactory extends SprykerShopContentProductWidgetFactory
      *
      * @return \Twig\TwigFunction
      */
-    public function createPyzContentProductAbstractListTwigFunction(Environment $twig, string $localeName): TwigFunction
+    public function createContentProductAbstractListTwigFunction(Environment $twig, string $localeName): TwigFunction
     {
-        $functionProvider = $this->createPyzContentProductAbstractListTwigFunctionProvider($twig, $localeName);
+        $functionProvider = $this->createContentProductAbstractListTwigFunctionProvider($twig, $localeName);
 
         return new TwigFunction(
             $functionProvider->getFunctionName(),
@@ -42,30 +42,30 @@ class ContentProductWidgetFactory extends SprykerShopContentProductWidgetFactory
      *
      * @return \Spryker\Shared\Twig\TwigFunctionProvider
      */
-    public function createPyzContentProductAbstractListTwigFunctionProvider(Environment $twig, string $localeName): TwigFunctionProvider
+    public function createContentProductAbstractListTwigFunctionProvider(Environment $twig, string $localeName): TwigFunctionProvider
     {
         return new ContentProductAbstractListTwigFunctionProvider(
             $twig,
             $localeName,
-            $this->createPyzContentProductAbstractReader(),
+            $this->createContentProductAbstractReader(),
         );
     }
 
     /**
      * @return \Pyz\Yves\ContentProductWidget\Reader\ContentProductAbstractReaderInterface
      */
-    public function createPyzContentProductAbstractReader(): ContentProductAbstractReaderInterface
+    public function createContentProductAbstractReader(): ContentProductAbstractReaderInterface
     {
         return new ContentProductAbstractReader(
-            $this->getPyzContentProductClient(),
-            $this->getPyzProductStorageClient(),
+            $this->getContentProductClient(),
+            $this->getProductStorageClient(),
         );
     }
 
     /**
      * @return \Spryker\Client\ContentProduct\ContentProductClientInterface
      */
-    public function getPyzContentProductClient(): ContentProductClientInterface
+    public function getContentProductClient(): ContentProductClientInterface
     {
         return $this->getProvidedDependency(ContentProductWidgetDependencyProvider::CLIENT_CONTENT_PRODUCT);
     }
@@ -73,7 +73,7 @@ class ContentProductWidgetFactory extends SprykerShopContentProductWidgetFactory
     /**
      * @return \Spryker\Client\ProductStorage\ProductStorageClientInterface
      */
-    public function getPyzProductStorageClient(): ProductStorageClientInterface
+    public function getProductStorageClient(): ProductStorageClientInterface
     {
         return $this->getProvidedDependency(ContentProductWidgetDependencyProvider::CLIENT_PRODUCT_STORAGE);
     }

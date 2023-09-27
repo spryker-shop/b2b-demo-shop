@@ -29,21 +29,21 @@ class TestController extends AbstractController
     public function listAction(): array
     {
         $stateMachineItems = $this->getFacade()
-            ->getPyzStateMachineItems();
+            ->getStateMachineItems();
 
-        $stateMachineItems = $this->getFactory()->getPyzStateMachineFacade()
+        $stateMachineItems = $this->getFactory()->getStateMachineFacade()
             ->getProcessedStateMachineItems($stateMachineItems);
 
-        $manualEvents = $this->getFactory()->getPyzStateMachineFacade()
+        $manualEvents = $this->getFactory()->getStateMachineFacade()
             ->getManualEventsForStateMachineItems($stateMachineItems);
 
         $exampleStateMachineItems = $this->getQueryContainer()
-            ->queryPyzAllStateMachineItems();
+            ->queryAllStateMachineItems();
 
         return [
             'exampleStateMachineItems' => $exampleStateMachineItems,
             'manualEvents' => $manualEvents,
-            'stateMachineItems' => $this->createPyzStateMachineLookupTable($stateMachineItems),
+            'stateMachineItems' => $this->createStateMachineLookupTable($stateMachineItems),
         ];
     }
 
@@ -67,7 +67,7 @@ class TestController extends AbstractController
         $idStateMachineItem = $this->castId($request->query->get('id'));
 
         $this->getQueryContainer()
-            ->queryPyzExampleStateMachineItemByIdStateMachineItem($idStateMachineItem)
+            ->queryExampleStateMachineItemByIdStateMachineItem($idStateMachineItem)
             ->delete();
 
         return new RedirectResponse('/example-state-machine/test/list');
@@ -78,7 +78,7 @@ class TestController extends AbstractController
      *
      * @return array<\Generated\Shared\Transfer\StateMachineItemTransfer>
      */
-    protected function createPyzStateMachineLookupTable(array $stateMachineItems): array
+    protected function createStateMachineLookupTable(array $stateMachineItems): array
     {
         $lookupIndex = [];
         foreach ($stateMachineItems as $stateMachineItemTransfer) {

@@ -26,8 +26,8 @@ class CustomerAccessEntityManager extends SprykerCustomerAccessEntityManager imp
     public function setContentTypesToAccessible(CustomerAccessTransfer $customerAccessTransfer): void
     {
         foreach ($customerAccessTransfer->getContentTypeAccess() as $contentTypeAccess) {
-            $customerAccessEntity = $this->findPyzCustomerAccessEntityByContentType($contentTypeAccess);
-            $customerAccessEntity = $customerAccessEntity ?: $this->createPyzCustomerAccessEntity($contentTypeAccess);
+            $customerAccessEntity = $this->findCustomerAccessEntityByContentType($contentTypeAccess);
+            $customerAccessEntity = $customerAccessEntity ?: $this->createCustomerAccessEntity($contentTypeAccess);
             $customerAccessEntity->setIsRestricted(false);
             $customerAccessEntity->save();
         }
@@ -42,8 +42,8 @@ class CustomerAccessEntityManager extends SprykerCustomerAccessEntityManager imp
     {
         $updatedContentTypeAccessCollection = new ArrayObject();
         foreach ($customerAccessTransfer->getContentTypeAccess() as $contentTypeAccess) {
-            $customerAccessEntity = $this->findPyzCustomerAccessEntityByContentType($contentTypeAccess);
-            $customerAccessEntity = $customerAccessEntity ?: $this->createPyzCustomerAccessEntity($contentTypeAccess);
+            $customerAccessEntity = $this->findCustomerAccessEntityByContentType($contentTypeAccess);
+            $customerAccessEntity = $customerAccessEntity ?: $this->createCustomerAccessEntity($contentTypeAccess);
             $customerAccessEntity->setIsRestricted(true);
             $customerAccessEntity->save();
             $updatedContentTypeAccessCollection->append(
@@ -62,7 +62,7 @@ class CustomerAccessEntityManager extends SprykerCustomerAccessEntityManager imp
      *
      * @return \Orm\Zed\CustomerAccess\Persistence\SpyUnauthenticatedCustomerAccess|null
      */
-    protected function findPyzCustomerAccessEntityByContentType(ContentTypeAccessTransfer $contentTypeAccessTransfer): ?SpyUnauthenticatedCustomerAccess
+    protected function findCustomerAccessEntityByContentType(ContentTypeAccessTransfer $contentTypeAccessTransfer): ?SpyUnauthenticatedCustomerAccess
     {
         return $this->getFactory()
             ->getUnauthenticatedCustomerAccessQuery()
@@ -75,7 +75,7 @@ class CustomerAccessEntityManager extends SprykerCustomerAccessEntityManager imp
      *
      * @return \Orm\Zed\CustomerAccess\Persistence\SpyUnauthenticatedCustomerAccess
      */
-    protected function createPyzCustomerAccessEntity(ContentTypeAccessTransfer $contentTypeAccessTransfer): SpyUnauthenticatedCustomerAccess
+    protected function createCustomerAccessEntity(ContentTypeAccessTransfer $contentTypeAccessTransfer): SpyUnauthenticatedCustomerAccess
     {
         $unauthenticatedCustomerAccessEntity = new SpyUnauthenticatedCustomerAccess();
         $unauthenticatedCustomerAccessEntity->setContentType($contentTypeAccessTransfer->getContentType());

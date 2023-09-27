@@ -17,10 +17,10 @@ interface SubFormInterface
     /**
      * @return string
      */
-    public function getPyzPropertyPath(): string;
+    public function getPropertyPath(): string;
 
     /**
      * @return string
      */
-    public function getPyzName(): string;
+    public function getName(): string;
 }

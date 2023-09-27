@@ -30,8 +30,8 @@ class ExampleProductSalePageDependencyProvider extends AbstractBundleDependencyP
     public function providePersistenceLayerDependencies(Container $container): Container
     {
         $container = parent::providePersistenceLayerDependencies($container);
-        $container = $this->addPyzProductLabelQueryContainer($container);
-        $container = $this->addPyzProductQueryContainer($container);
+        $container = $this->addProductLabelQueryContainer($container);
+        $container = $this->addProductQueryContainer($container);
 
         return $container;
     }
@@ -41,7 +41,7 @@ class ExampleProductSalePageDependencyProvider extends AbstractBundleDependencyP
      *
      * @return \Spryker\Zed\Kernel\Container
      */
-    protected function addPyzProductLabelQueryContainer(Container $container): Container
+    protected function addProductLabelQueryContainer(Container $container): Container
     {
         $container->set(static::QUERY_CONTAINER_PRODUCT_LABEL, function (Container $container) {
             return $container->getLocator()->productLabel()->queryContainer();
@@ -55,7 +55,7 @@ class ExampleProductSalePageDependencyProvider extends AbstractBundleDependencyP
      *
      * @return \Spryker\Zed\Kernel\Container
      */
-    protected function addPyzProductQueryContainer(Container $container): Container
+    protected function addProductQueryContainer(Container $container): Container
     {
         $container->set(static::QUERY_CONTAINER_PRODUCT, function (Container $container) {
             return $container->getLocator()->product()->queryContainer();

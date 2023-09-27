@@ -31,9 +31,9 @@ class MenuItemCompanyWidget extends AbstractWidget
 
     public function __construct()
     {
-        $this->addPyzIsVisibleParameter();
-        $this->addPyzCompanyNameParameter();
-        $this->addPyzHasCompanyAccessParameter();
+        $this->addIsVisibleParameter();
+        $this->addCompanyNameParameter();
+        $this->addHasCompanyAccessParameter();
     }
 
     /**
@@ -55,7 +55,7 @@ class MenuItemCompanyWidget extends AbstractWidget
     /**
      * @return void
      */
-    protected function addPyzIsVisibleParameter(): void
+    protected function addIsVisibleParameter(): void
     {
         $customer = $this->getFactory()->getCustomerClient()->getCustomer();
         $isVisible = ($customer !== null && $customer->getCompanyUserTransfer() !== null);
@@ -66,26 +66,26 @@ class MenuItemCompanyWidget extends AbstractWidget
     /**
      * @return void
      */
-    protected function addPyzCompanyNameParameter(): void
+    protected function addCompanyNameParameter(): void
     {
-        $this->addParameter(static::PARAMETER_COMPANY_NAME, $this->getPyzCompanyName());
+        $this->addParameter(static::PARAMETER_COMPANY_NAME, $this->getCompanyName());
     }
 
     /**
      * @return void
      */
-    protected function addPyzHasCompanyAccessParameter(): void
+    protected function addHasCompanyAccessParameter(): void
     {
         $customerTransfer = $this->getFactory()->getCustomerClient()->getCustomer();
-        $hasPyzCompanyAccess = $customerTransfer && ($customerTransfer->getCompanyUserTransfer() || $customerTransfer->getIsOnBehalf());
+        $hasCompanyAccess = $customerTransfer && ($customerTransfer->getCompanyUserTransfer() || $customerTransfer->getIsOnBehalf());
 
-        $this->addParameter(static::PARAMETER_HAS_COMPANY_ACCESS, $hasPyzCompanyAccess);
+        $this->addParameter(static::PARAMETER_HAS_COMPANY_ACCESS, $hasCompanyAccess);
     }
 
     /**
      * @return string
      */
-    protected function getPyzCompanyName(): string
+    protected function getCompanyName(): string
     {
         $customer = $this->getFactory()->getCustomerClient()->getCustomer();
 

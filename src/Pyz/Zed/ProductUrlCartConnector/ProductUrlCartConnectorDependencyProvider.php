@@ -30,8 +30,8 @@ class ProductUrlCartConnectorDependencyProvider extends AbstractBundleDependency
     public function provideBusinessLayerDependencies(Container $container): Container
     {
         $container = parent::provideBusinessLayerDependencies($container);
-        $container = $this->addPyzFacadeProduct($container);
-        $container = $this->addPyzFacadeLocale($container);
+        $container = $this->addFacadeProduct($container);
+        $container = $this->addFacadeLocale($container);
 
         return $container;
     }
@@ -41,7 +41,7 @@ class ProductUrlCartConnectorDependencyProvider extends AbstractBundleDependency
      *
      * @return \Spryker\Zed\Kernel\Container
      */
-    protected function addPyzFacadeProduct(Container $container): Container
+    protected function addFacadeProduct(Container $container): Container
     {
         $container->set(static::FACADE_PRODUCT, function (Container $container) {
             return $container->getLocator()->product()->facade();
@@ -55,7 +55,7 @@ class ProductUrlCartConnectorDependencyProvider extends AbstractBundleDependency
      *
      * @return \Spryker\Zed\Kernel\Container
      */
-    protected function addPyzFacadeLocale(Container $container): Container
+    protected function addFacadeLocale(Container $container): Container
     {
         $container->set(static::FACADE_PRODUCT, function (Container $container) {
             return $container->getLocator()->locale()->facade();

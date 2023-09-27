@@ -15,7 +15,7 @@ class ProductDetailPageFactory extends SprykerProductDetailPageFactory
     /**
      * @return \Spryker\Client\ProductStorage\ProductStorageClientInterface
      */
-    public function getProductStoragePyzClient(): ProductStorageClientInterface
+    public function getProductStorageClient(): ProductStorageClientInterface
     {
         return $this->getProvidedDependency(ProductDetailPageDependencyProvider::CLIENT_PRODUCT_STORAGE_PYZ);
     }

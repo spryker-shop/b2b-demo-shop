@@ -67,7 +67,7 @@ class PaymentForm extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        $this->addPyzPaymentMethods($builder, $options);
+        $this->addPaymentMethods($builder, $options);
     }
 
     /**
@@ -103,13 +103,13 @@ class PaymentForm extends AbstractType
      *
      * @return $this
      */
-    protected function addPyzPaymentMethodSubForms(FormBuilderInterface $builder, array $paymentMethodSubForms, array $options)
+    protected function addPaymentMethodSubForms(FormBuilderInterface $builder, array $paymentMethodSubForms, array $options)
     {
         foreach ($paymentMethodSubForms as $paymentMethodSubForm) {
-            $paymentMethodSubFormOptions = $this->getPyzPaymentMethodSubFormOptions($paymentMethodSubForm);
+            $paymentMethodSubFormOptions = $this->getPaymentMethodSubFormOptions($paymentMethodSubForm);
 
             $builder->add(
-                $this->getPyzSubFormName($paymentMethodSubForm),
+                $this->getSubFormName($paymentMethodSubForm),
                 get_class($paymentMethodSubForm),
                 ['select_options' => $options['select_options']] + $paymentMethodSubFormOptions,
             );
@@ -123,10 +123,10 @@ class PaymentForm extends AbstractType
      *
      * @return array<mixed>
      */
-    protected function getPyzPaymentMethodSubFormOptions($paymentMethodSubForm): array
+    protected function getPaymentMethodSubFormOptions($paymentMethodSubForm): array
     {
         $defaultOptions = [
-            'property_path' => static::PAYMENT_PROPERTY_PATH . '.' . $this->getPyzSubFormPropertyPath($paymentMethodSubForm),
+            'property_path' => static::PAYMENT_PROPERTY_PATH . '.' . $this->getSubFormPropertyPath($paymentMethodSubForm),
             'error_bubbling' => true,
             'label' => false,
         ];
@@ -144,12 +144,12 @@ class PaymentForm extends AbstractType
      *
      * @return $this
      */
-    protected function addPyzPaymentMethods(FormBuilderInterface $builder, array $options)
+    protected function addPaymentMethods(FormBuilderInterface $builder, array $options)
     {
-        $paymentMethodSubForms = $this->getPyzPaymentMethodSubForms();
+        $paymentMethodSubForms = $this->getPaymentMethodSubForms();
 
-        $this->addPyzPaymentMethodChoices($builder, $paymentMethodSubForms)
-            ->addPyzPaymentMethodSubForms($builder, $paymentMethodSubForms, $options);
+        $this->addPaymentMethodChoices($builder, $paymentMethodSubForms)
+            ->addPaymentMethodSubForms($builder, $paymentMethodSubForms, $options);
 
         return $this;
     }
@@ -160,17 +160,17 @@ class PaymentForm extends AbstractType
      *
      * @return $this
      */
-    protected function addPyzPaymentMethodChoices(FormBuilderInterface $builder, array $paymentMethodSubForms)
+    protected function addPaymentMethodChoices(FormBuilderInterface $builder, array $paymentMethodSubForms)
     {
         $builder->add(
             static::PAYMENT_SELECTION,
             ChoiceType::class,
             [
-                'choices' => $this->getPyzPaymentMethodChoices($paymentMethodSubForms),
+                'choices' => $this->getPaymentMethodChoices($paymentMethodSubForms),
                 'choice_name' => function ($choice, $key) use ($paymentMethodSubForms) {
                     $paymentMethodSubForm = $paymentMethodSubForms[$key];
 
-                    return $this->getPyzSubFormName($paymentMethodSubForm);
+                    return $this->getSubFormName($paymentMethodSubForm);
                 },
                 'choice_label' => function ($choice, $key) use ($paymentMethodSubForms) {
                     $paymentMethodSubForm = $paymentMethodSubForms[$key];
@@ -179,7 +179,7 @@ class PaymentForm extends AbstractType
                         return $paymentMethodSubForm->getLabelName();
                     }
 
-                    return $this->getPyzSubFormName($paymentMethodSubForm);
+                    return $this->getSubFormName($paymentMethodSubForm);
                 },
                 'group_by' => function ($choice, $key) use ($paymentMethodSubForms) {
                     $paymentMethodSubForm = $paymentMethodSubForms[$key];
@@ -193,7 +193,7 @@ class PaymentForm extends AbstractType
                     }
 
                     if ($paymentMethodSubForm instanceof PyzSubFormProviderNameInterface) {
-                        return sprintf('checkout.payment.provider.%s', $paymentMethodSubForm->getPyzProviderName());
+                        return sprintf('checkout.payment.provider.%s', $paymentMethodSubForm->getProviderName());
                     }
 
                     return '';
@@ -205,7 +205,7 @@ class PaymentForm extends AbstractType
                 'placeholder' => false,
                 'property_path' => static::PAYMENT_SELECTION_PROPERTY_PATH,
                 'constraints' => [
-                    $this->createPyzNotBlankConstraint(),
+                    $this->createNotBlankConstraint(),
                 ],
             ],
         );
@@ -216,7 +216,7 @@ class PaymentForm extends AbstractType
     /**
      * @return array<\Spryker\Yves\StepEngine\Dependency\Form\SubFormInterface|\Pyz\Yves\StepEngine\Dependency\Form\SubFormInterface>
      */
-    protected function getPyzPaymentMethodSubForms(): array
+    protected function getPaymentMethodSubForms(): array
     {
         $paymentMethodSubForms = [];
 
@@ -224,19 +224,19 @@ class PaymentForm extends AbstractType
             ->getAvailablePaymentMethods();
 
         $availablePaymentMethodSubFormPlugins = $this->getFactory()->getPaymentMethodSubForms();
-        $availablePaymentMethodSubFormPlugins = $this->filterPyzOutNotAvailableForms(
+        $availablePaymentMethodSubFormPlugins = $this->filterOutNotAvailableForms(
             $availablePaymentMethodSubFormPlugins,
             $availablePaymentMethodsTransfer,
         );
-        $availablePaymentMethodSubFormPlugins = $this->extendPyzPaymentCollection(
+        $availablePaymentMethodSubFormPlugins = $this->extendPaymentCollection(
             $availablePaymentMethodSubFormPlugins,
             $availablePaymentMethodsTransfer,
         );
-        $filteredPaymentMethodSubFormPlugins = $this->filterPyzPaymentMethodSubFormPlugins($availablePaymentMethodSubFormPlugins);
+        $filteredPaymentMethodSubFormPlugins = $this->filterPaymentMethodSubFormPlugins($availablePaymentMethodSubFormPlugins);
 
         foreach ($filteredPaymentMethodSubFormPlugins as $paymentMethodSubFormPlugin) {
-            $paymentMethodSubForm = $this->createPyzSubForm($paymentMethodSubFormPlugin);
-            $paymentMethodSubForms[$this->getPyzSubFormName($paymentMethodSubForm)] = $paymentMethodSubForm;
+            $paymentMethodSubForm = $this->createSubForm($paymentMethodSubFormPlugin);
+            $paymentMethodSubForms[$this->getSubFormName($paymentMethodSubForm)] = $paymentMethodSubForm;
         }
 
         return $paymentMethodSubForms;
@@ -248,7 +248,7 @@ class PaymentForm extends AbstractType
      *
      * @return \Spryker\Yves\StepEngine\Dependency\Plugin\Form\SubFormPluginCollection
      */
-    protected function extendPyzPaymentCollection(
+    protected function extendPaymentCollection(
         SubFormPluginCollection $paymentSubFormPluginCollection,
         PaymentMethodsTransfer $paymentMethodsTransfer,
     ): SubFormPluginCollection {
@@ -270,15 +270,15 @@ class PaymentForm extends AbstractType
      *
      * @return \Spryker\Yves\StepEngine\Dependency\Plugin\Form\SubFormPluginCollection
      */
-    protected function filterPyzOutNotAvailableForms(
+    protected function filterOutNotAvailableForms(
         SubFormPluginCollection $paymentMethodSubFormPlugins,
         PaymentMethodsTransfer $availablePaymentMethodsTransfer,
     ): SubFormPluginCollection {
-        $paymentMethodNames = $this->getPyzAvailablePaymentMethodNames($availablePaymentMethodsTransfer);
+        $paymentMethodNames = $this->getAvailablePaymentMethodNames($availablePaymentMethodsTransfer);
         $paymentMethodNames = array_combine($paymentMethodNames, $paymentMethodNames);
 
         foreach ($paymentMethodSubFormPlugins as $key => $subFormPlugin) {
-            $subFormName = $this->getPyzSubFormName($subFormPlugin->createSubForm());
+            $subFormName = $this->getSubFormName($subFormPlugin->createSubForm());
 
             if (!isset($paymentMethodNames[$subFormName])) {
                 unset($paymentMethodSubFormPlugins[$key]);
@@ -295,7 +295,7 @@ class PaymentForm extends AbstractType
      *
      * @return array<string>
      */
-    protected function getPyzAvailablePaymentMethodNames(PaymentMethodsTransfer $availablePaymentMethodsTransfer): array
+    protected function getAvailablePaymentMethodNames(PaymentMethodsTransfer $availablePaymentMethodsTransfer): array
     {
         $paymentMethodNames = [];
         foreach ($availablePaymentMethodsTransfer->getMethods() as $paymentMethodTransfer) {
@@ -310,12 +310,12 @@ class PaymentForm extends AbstractType
      *
      * @return array<string, string>
      */
-    protected function getPyzPaymentMethodChoices(array $paymentMethodSubForms): array
+    protected function getPaymentMethodChoices(array $paymentMethodSubForms): array
     {
         $choices = [];
 
         foreach ($paymentMethodSubForms as $paymentMethodSubForm) {
-            $choices[$this->getPyzSubFormName($paymentMethodSubForm)] = $this->getPyzSubFormPropertyPath($paymentMethodSubForm);
+            $choices[$this->getSubFormName($paymentMethodSubForm)] = $this->getSubFormPropertyPath($paymentMethodSubForm);
         }
 
         return $choices;
@@ -326,7 +326,7 @@ class PaymentForm extends AbstractType
      *
      * @return \Spryker\Yves\StepEngine\Dependency\Plugin\Form\SubFormPluginCollection
      */
-    protected function filterPyzPaymentMethodSubFormPlugins(SubFormPluginCollection $availablePaymentMethodSubFormPlugins): SubFormPluginCollection
+    protected function filterPaymentMethodSubFormPlugins(SubFormPluginCollection $availablePaymentMethodSubFormPlugins): SubFormPluginCollection
     {
         return $this->getFactory()
             ->createSubFormFilter()
@@ -336,7 +336,7 @@ class PaymentForm extends AbstractType
     /**
      * @return \Symfony\Component\Validator\Constraints\NotBlank
      */
-    protected function createPyzNotBlankConstraint(): NotBlank
+    protected function createNotBlankConstraint(): NotBlank
     {
         return new NotBlank(['message' => static::VALIDATION_NOT_BLANK_MESSAGE]);
     }
@@ -346,7 +346,7 @@ class PaymentForm extends AbstractType
      *
      * @return \Spryker\Yves\StepEngine\Dependency\Form\SubFormInterface|\Pyz\Yves\StepEngine\Dependency\Form\SubFormInterface
      */
-    protected function createPyzSubForm(SubFormPluginInterface $paymentMethodSubForm)
+    protected function createSubForm(SubFormPluginInterface $paymentMethodSubForm)
     {
         /** @var \Spryker\Yves\StepEngine\Dependency\Form\SubFormInterface|\Pyz\Yves\StepEngine\Dependency\Form\SubFormInterface $paymentSubForm */
         $paymentSubForm = $paymentMethodSubForm->createSubForm();
@@ -359,10 +359,10 @@ class PaymentForm extends AbstractType
      *
      * @return string
      */
-    protected function getPyzSubFormName($paymentSubForm): string
+    protected function getSubFormName($paymentSubForm): string
     {
         if ($paymentSubForm instanceof PyzSubFormInterface) {
-            return $paymentSubForm->getPyzName();
+            return $paymentSubForm->getName();
         }
 
         return $paymentSubForm->getName();
@@ -373,10 +373,10 @@ class PaymentForm extends AbstractType
      *
      * @return string
      */
-    protected function getPyzSubFormPropertyPath($paymentSubForm): string
+    protected function getSubFormPropertyPath($paymentSubForm): string
     {
         if ($paymentSubForm instanceof PyzSubFormInterface) {
-            return $paymentSubForm->getPyzPropertyPath();
+            return $paymentSubForm->getPropertyPath();
         }
 
         return $paymentSubForm->getPropertyPath();

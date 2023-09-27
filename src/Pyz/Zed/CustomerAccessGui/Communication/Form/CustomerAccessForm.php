@@ -70,8 +70,8 @@ class CustomerAccessForm extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        $this->addPyzContentTypeAccessManageable($builder, $options);
-        $this->addPyzContentTypeAccessNonManageable($builder, $options);
+        $this->addContentTypeAccessManageable($builder, $options);
+        $this->addContentTypeAccessNonManageable($builder, $options);
     }
 
     /**
@@ -80,7 +80,7 @@ class CustomerAccessForm extends AbstractType
      *
      * @return $this
      */
-    protected function addPyzContentTypeAccessManageable(FormBuilderInterface $builder, array $options)
+    protected function addContentTypeAccessManageable(FormBuilderInterface $builder, array $options)
     {
         $builder->add(static::FIELD_CONTENT_TYPE_ACCESS, ChoiceType::class, [
             'expanded' => true,
@@ -113,7 +113,7 @@ class CustomerAccessForm extends AbstractType
      *
      * @return $this
      */
-    protected function addPyzContentTypeAccessNonManageable(FormBuilderInterface $builder, array $options)
+    protected function addContentTypeAccessNonManageable(FormBuilderInterface $builder, array $options)
     {
         $builder->add(static::FIELD_CONTENT_TYPE_ACCESS_NON_MANAGEABLE, ChoiceType::class, [
             'mapped' => false,

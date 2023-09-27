@@ -12,5 +12,5 @@ interface SubFormProviderNameInterface extends SubFormInterface
     /**
      * @return string
      */
-    public function getPyzProviderName(): string;
+    public function getProviderName(): string;
 }

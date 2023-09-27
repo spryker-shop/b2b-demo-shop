@@ -37,7 +37,7 @@ class MultiCartPageRouteProviderPlugin extends SprykerMultiCartPageRouteProvider
      */
     protected function addMultiCartSetDefaultBackRoute(RouteCollection $routeCollection): RouteCollection
     {
-        $route = $this->buildRoute('/set-default-back/{idQuote}', 'MultiCartPage', 'MultiCart', 'setPyzDefaultBack');
+        $route = $this->buildRoute('/set-default-back/{idQuote}', 'MultiCartPage', 'MultiCart', 'setDefaultBack');
         $route = $route->setRequirement(static::PARAM_ID_QUOTE, '\d+');
         $routeCollection->add(static::ROUTE_MULTI_CART_SET_DEFAULT_BACK, $route);
 

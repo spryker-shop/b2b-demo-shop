@@ -28,7 +28,7 @@ class ExampleProductSalePageFactory extends AbstractFactory
     /**
      * @return \Spryker\Client\Search\SearchClientInterface
      */
-    protected function getPyzSearchClient(): SearchClientInterface
+    protected function getSearchClient(): SearchClientInterface
     {
         return $this->getProvidedDependency(ExampleProductSalePageDependencyProvider::CLIENT_SEARCH);
     }
@@ -36,7 +36,7 @@ class ExampleProductSalePageFactory extends AbstractFactory
     /**
      * @return \Spryker\Client\UrlStorage\UrlStorageClientInterface
      */
-    public function getPyzUrlStorageClient(): UrlStorageClientInterface
+    public function getUrlStorageClient(): UrlStorageClientInterface
     {
         return $this->getProvidedDependency(ExampleProductSalePageDependencyProvider::CLIENT_URL_STORAGE);
     }
@@ -44,7 +44,7 @@ class ExampleProductSalePageFactory extends AbstractFactory
     /**
      * @return \Generated\Shared\Transfer\StoreTransfer
      */
-    public function getPyzStore(): StoreTransfer
+    public function getStore(): StoreTransfer
     {
         $storeClient = $this->getProvidedDependency(ExampleProductSalePageDependencyProvider::CLIENT_STORE);
 
@@ -54,7 +54,7 @@ class ExampleProductSalePageFactory extends AbstractFactory
     /**
      * @return \Spryker\Client\Catalog\CatalogClientInterface
      */
-    public function getPyzCatalogClient(): CatalogClientInterface
+    public function getCatalogClient(): CatalogClientInterface
     {
         return $this->getProvidedDependency(ExampleProductSalePageDependencyProvider::CLIENT_CATALOG);
     }
@@ -62,7 +62,7 @@ class ExampleProductSalePageFactory extends AbstractFactory
     /**
      * @return \Spryker\Client\Locale\LocaleClientInterface
      */
-    public function getPyzLocaleClient(): LocaleClientInterface
+    public function getLocaleClient(): LocaleClientInterface
     {
         return $this->getProvidedDependency(ExampleProductSalePageDependencyProvider::CLIENT_LOCALE);
     }

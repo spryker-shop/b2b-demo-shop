@@ -23,7 +23,7 @@ interface ExampleProductSalePageQueryContainerInterface
      *
      * @return \Orm\Zed\ProductLabel\Persistence\SpyProductLabelQuery
      */
-    public function queryPyzProductLabelByName($labelName): SpyProductLabelQuery;
+    public function queryProductLabelByName($labelName): SpyProductLabelQuery;
 
     /**
      * @api
@@ -32,7 +32,7 @@ interface ExampleProductSalePageQueryContainerInterface
      *
      * @return \Orm\Zed\ProductLabel\Persistence\SpyProductLabelProductAbstractQuery
      */
-    public function queryPyzRelationsBecomingInactive($idProductLabel): SpyProductLabelProductAbstractQuery;
+    public function queryRelationsBecomingInactive($idProductLabel): SpyProductLabelProductAbstractQuery;
 
     /**
      * @api
@@ -41,5 +41,5 @@ interface ExampleProductSalePageQueryContainerInterface
      *
      * @return \Orm\Zed\Product\Persistence\SpyProductAbstractQuery
      */
-    public function queryPyzRelationsBecomingActive($idProductLabel): SpyProductAbstractQuery;
+    public function queryRelationsBecomingActive($idProductLabel): SpyProductAbstractQuery;
 }

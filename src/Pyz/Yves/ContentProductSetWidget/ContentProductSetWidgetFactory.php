@@ -25,15 +25,15 @@ class ContentProductSetWidgetFactory extends SprykerShopContentProductSetWidgetF
      *
      * @return \Spryker\Shared\Twig\TwigFunctionProvider
      */
-    public function createPyzContentProductSetTwigFunctionProvider(
+    public function createContentProductSetTwigFunctionProvider(
         Environment $twig,
         string $localeName,
     ): TwigFunctionProvider {
         return new ContentProductSetTwigFunctionProvider(
             $twig,
             $localeName,
-            $this->createPyzContentProductSetReader(),
-            $this->createPyzContentProductAbstractReader(),
+            $this->createContentProductSetReader(),
+            $this->createContentProductAbstractReader(),
         );
     }
 
@@ -43,11 +43,11 @@ class ContentProductSetWidgetFactory extends SprykerShopContentProductSetWidgetF
      *
      * @return \Twig\TwigFunction
      */
-    public function createPyzContentProductSetTwigFunction(
+    public function createContentProductSetTwigFunction(
         Environment $twig,
         string $localeName,
     ): TwigFunction {
-        $functionProvider = $this->createPyzContentProductSetTwigFunctionProvider($twig, $localeName);
+        $functionProvider = $this->createContentProductSetTwigFunctionProvider($twig, $localeName);
 
         return new TwigFunction(
             $functionProvider->getFunctionName(),
@@ -59,7 +59,7 @@ class ContentProductSetWidgetFactory extends SprykerShopContentProductSetWidgetF
     /**
      * @return \Pyz\Yves\ContentProductSetWidget\Reader\ContentProductSetReaderInterface
      */
-    public function createPyzContentProductSetReader(): ContentProductSetReaderInterface
+    public function createContentProductSetReader(): ContentProductSetReaderInterface
     {
         return new ContentProductSetReader(
             $this->getContentProductSetClient(),
@@ -70,7 +70,7 @@ class ContentProductSetWidgetFactory extends SprykerShopContentProductSetWidgetF
     /**
      * @return \Pyz\Yves\ContentProductSetWidget\Reader\ContentProductAbstractReaderInterface
      */
-    public function createPyzContentProductAbstractReader(): ContentProductAbstractReaderInterface
+    public function createContentProductAbstractReader(): ContentProductAbstractReaderInterface
     {
         return new ContentProductAbstractReader(
             $this->getProductStorageClient(),

@@ -23,15 +23,15 @@ class CustomerAccessGuiCommunicationFactory extends SprykerCustomerAccessGuiComm
     /**
      * @return \Pyz\Zed\CustomerAccessGui\Communication\Form\DataProvider\CustomerAccessDataProvider
      */
-    public function createPyzCustomerAccessDataProvider(): CustomerAccessDataProvider
+    public function createCustomerAccessDataProvider(): CustomerAccessDataProvider
     {
-        return new CustomerAccessDataProvider($this->getPyzCustomerAccessFacade());
+        return new CustomerAccessDataProvider($this->getCustomerAccessFacade());
     }
 
     /**
      * @return \Pyz\Zed\CustomerAccess\Business\CustomerAccessFacadeInterface
      */
-    public function getPyzCustomerAccessFacade(): CustomerAccessFacadeInterface
+    public function getCustomerAccessFacade(): CustomerAccessFacadeInterface
     {
         return $this->getProvidedDependency(CustomerAccessGuiDependencyProvider::FACADE_CUSTOMER_ACCESS);
     }
@@ -42,7 +42,7 @@ class CustomerAccessGuiCommunicationFactory extends SprykerCustomerAccessGuiComm
      *
      * @return \Symfony\Component\Form\FormInterface
      */
-    public function getPyzCustomerAccessForm(CustomerAccessTransfer $customerAccessTransfer, array $options): FormInterface
+    public function getCustomerAccessForm(CustomerAccessTransfer $customerAccessTransfer, array $options): FormInterface
     {
         return $this->getFormFactory()->create(
             CustomerAccessForm::class,

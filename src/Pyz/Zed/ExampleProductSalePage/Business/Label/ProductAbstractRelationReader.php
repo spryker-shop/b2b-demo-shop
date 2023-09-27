@@ -69,9 +69,9 @@ class ProductAbstractRelationReader implements ProductAbstractRelationReaderInte
      */
     protected function getProductLabelNewEntity(): SpyProductLabel
     {
-        $labelNewName = $this->productSaleConfig->getPyzLabelSaleName();
+        $labelNewName = $this->productSaleConfig->getLabelSaleName();
         $productLabelNewEntity = $this->productSaleQueryContainer
-            ->queryPyzProductLabelByName($labelNewName)
+            ->queryProductLabelByName($labelNewName)
             ->findOne();
 
         if (!$productLabelNewEntity) {
@@ -94,7 +94,7 @@ class ProductAbstractRelationReader implements ProductAbstractRelationReaderInte
         $relations = [];
 
         $productLabelProductAbstractEntities = $this->productSaleQueryContainer
-            ->queryPyzRelationsBecomingInactive($productLabelEntity->getIdProductLabel())
+            ->queryRelationsBecomingInactive($productLabelEntity->getIdProductLabel())
             ->find();
 
         foreach ($productLabelProductAbstractEntities as $productLabelProductAbstractEntity) {
@@ -114,7 +114,7 @@ class ProductAbstractRelationReader implements ProductAbstractRelationReaderInte
         $relations = [];
 
         $productAbstractEntities = $this->productSaleQueryContainer
-            ->queryPyzRelationsBecomingActive($productLabelEntity->getIdProductLabel())
+            ->queryRelationsBecomingActive($productLabelEntity->getIdProductLabel())
             ->find();
 
         foreach ($productAbstractEntities as $productAbstractEntity) {

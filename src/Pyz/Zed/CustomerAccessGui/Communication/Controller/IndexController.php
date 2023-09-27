@@ -27,15 +27,15 @@ class IndexController extends SprykerIndexController
      */
     public function indexAction(Request $request): array
     {
-        $customerAccessDataProvider = $this->getFactory()->createPyzCustomerAccessDataProvider();
+        $customerAccessDataProvider = $this->getFactory()->createCustomerAccessDataProvider();
 
-        $customerAccessForm = $this->getFactory()->getPyzCustomerAccessForm($customerAccessDataProvider->getData(), $customerAccessDataProvider->getOptions());
+        $customerAccessForm = $this->getFactory()->getCustomerAccessForm($customerAccessDataProvider->getData(), $customerAccessDataProvider->getOptions());
 
         $customerAccessForm->handleRequest($request);
 
         if ($customerAccessForm->isSubmitted() && $customerAccessForm->isValid()) {
             $this->getFactory()
-                ->getPyzCustomerAccessFacade()
+                ->getCustomerAccessFacade()
                 ->updateUnauthenticatedCustomerAccess($customerAccessForm->getData());
             $this->addSuccessMessage(static::MESSAGE_UPDATE_SUCCESS);
         }

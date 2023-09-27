@@ -15,7 +15,7 @@ class CheckoutPageFactory extends SprykerCheckoutPageFactory
     /**
      * @return \Pyz\Yves\CheckoutPage\Form\FormFactory
      */
-    public function createPyzCheckoutFormFactory(): FormFactory
+    public function createCheckoutFormFactory(): FormFactory
     {
         return new FormFactory();
     }

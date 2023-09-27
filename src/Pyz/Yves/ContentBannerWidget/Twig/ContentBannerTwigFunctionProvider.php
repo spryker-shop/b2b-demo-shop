@@ -78,21 +78,21 @@ class ContentBannerTwigFunctionProvider extends TwigFunctionProvider
     public function getFunction(): callable
     {
         return function (string $contentKey, string $templateIdentifier): string {
-            if (!isset($this->getPyzAvailableTemplates()[$templateIdentifier])) {
-                return $this->getPyzMessageBannerWrongTemplate($templateIdentifier);
+            if (!isset($this->getAvailableTemplates()[$templateIdentifier])) {
+                return $this->getMessageBannerWrongTemplate($templateIdentifier);
             }
             try {
                 $contentBannerTypeTransfer = $this->contentBannerClient->executeBannerTypeByKey($contentKey, $this->localeName);
 
                 if (!$contentBannerTypeTransfer) {
-                    return $this->getPyzMessageBannerNotFound($contentKey);
+                    return $this->getMessageBannerNotFound($contentKey);
                 }
             } catch (MissingBannerTermException $e) {
-                return $this->getPyzMessageBannerWrongType($contentKey);
+                return $this->getMessageBannerWrongType($contentKey);
             }
 
             return (string)$this->twig->render(
-                $this->getPyzAvailableTemplates()[$templateIdentifier],
+                $this->getAvailableTemplates()[$templateIdentifier],
                 ['banner' => $contentBannerTypeTransfer],
             );
         };
@@ -101,7 +101,7 @@ class ContentBannerTwigFunctionProvider extends TwigFunctionProvider
     /**
      * @return array<string, string>
      */
-    protected function getPyzAvailableTemplates(): array
+    protected function getAvailableTemplates(): array
     {
         return [
             static::WIDGET_TEMPLATE_IDENTIFIER_BOTTOM_TITLE => '@ContentBannerWidget/views/banner/banner.twig',
@@ -115,7 +115,7 @@ class ContentBannerTwigFunctionProvider extends TwigFunctionProvider
      *
      * @return string
      */
-    protected function getPyzMessageBannerNotFound(string $contentKey): string
+    protected function getMessageBannerNotFound(string $contentKey): string
     {
         return sprintf('<b>Content Banner with key %s not found.</b>', $contentKey);
     }
@@ -125,7 +125,7 @@ class ContentBannerTwigFunctionProvider extends TwigFunctionProvider
      *
      * @return string
      */
-    protected function getPyzMessageBannerWrongTemplate(string $templateIdentifier): string
+    protected function getMessageBannerWrongTemplate(string $templateIdentifier): string
     {
         return sprintf('<b>"%s" is not supported name of template.</b>', $templateIdentifier);
     }
@@ -135,7 +135,7 @@ class ContentBannerTwigFunctionProvider extends TwigFunctionProvider
      *
      * @return string
      */
-    protected function getPyzMessageBannerWrongType(string $contentKey): string
+    protected function getMessageBannerWrongType(string $contentKey): string
     {
         return sprintf(
             '<b>Content Banner could not be rendered because the content item with key %s is not an banner.</b>',

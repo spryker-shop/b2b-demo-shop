@@ -44,7 +44,7 @@ class CustomerAccessDataProvider
             CustomerAccessForm::OPTION_CONTENT_TYPE_ACCESS_NON_MANAGEABLE
                 => $nonManageableContentTypes,
             CustomerAccessForm::OPTION_CONTENT_TYPE_ACCESS_NON_MANAGEABLE_DATA
-                => $this->filterPyzContentTypesData($nonManageableContentTypes),
+                => $this->filterContentTypesData($nonManageableContentTypes),
         ];
     }
 
@@ -61,7 +61,7 @@ class CustomerAccessDataProvider
      *
      * @return array<\Generated\Shared\Transfer\ContentTypeAccessTransfer>
      */
-    protected function filterPyzContentTypesData(ArrayObject $contentTypes): array
+    protected function filterContentTypesData(ArrayObject $contentTypes): array
     {
         return array_filter(
             $contentTypes->getArrayCopy(),

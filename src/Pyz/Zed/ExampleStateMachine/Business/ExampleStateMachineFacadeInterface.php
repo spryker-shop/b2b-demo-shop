@@ -19,19 +19,19 @@ interface ExampleStateMachineFacadeInterface
      *
      * @return bool
      */
-    public function updatePyzItemPyzState(StateMachineItemTransfer $stateMachineItemTransfer): bool;
+    public function updateItemState(StateMachineItemTransfer $stateMachineItemTransfer): bool;
 
     /**
      * @param array<int> $stateIds
      *
      * @return array<\Generated\Shared\Transfer\StateMachineItemTransfer>
      */
-    public function getPyzExampleStateMachineItemsByStateIds(array $stateIds = []): array;
+    public function getExampleStateMachineItemsByStateIds(array $stateIds = []): array;
 
     /**
      * @return array<\Generated\Shared\Transfer\StateMachineItemTransfer>
      */
-    public function getPyzStateMachineItems(): array;
+    public function getStateMachineItems(): array;
 
     /**
      * @return bool

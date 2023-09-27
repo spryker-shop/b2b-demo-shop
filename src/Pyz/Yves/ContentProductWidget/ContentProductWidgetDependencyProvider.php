@@ -32,8 +32,8 @@ class ContentProductWidgetDependencyProvider extends SprykerContentProductWidget
     public function provideDependencies(Container $container): Container
     {
         $container = parent::provideDependencies($container);
-        $container = $this->addPyzContentProductClient($container);
-        $container = $this->addPyzProductStorageClient($container);
+        $container = $this->addContentProductClient($container);
+        $container = $this->addProductStorageClient($container);
 
         return $container;
     }
@@ -43,7 +43,7 @@ class ContentProductWidgetDependencyProvider extends SprykerContentProductWidget
      *
      * @return \Spryker\Yves\Kernel\Container
      */
-    protected function addPyzContentProductClient(Container $container): Container
+    protected function addContentProductClient(Container $container): Container
     {
         $container->set(static::CLIENT_CONTENT_PRODUCT, function () {
             return new ContentProductClient();
@@ -57,7 +57,7 @@ class ContentProductWidgetDependencyProvider extends SprykerContentProductWidget
      *
      * @return \Spryker\Yves\Kernel\Container
      */
-    protected function addPyzProductStorageClient(Container $container): Container
+    protected function addProductStorageClient(Container $container): Container
     {
         $container->set(static::CLIENT_PRODUCT_STORAGE, function () {
             return new ProductStorageClient();
