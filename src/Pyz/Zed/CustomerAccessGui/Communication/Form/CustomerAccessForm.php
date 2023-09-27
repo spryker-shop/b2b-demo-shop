@@ -8,7 +8,7 @@
 namespace Pyz\Zed\CustomerAccessGui\Communication\Form;
 
 use ArrayObject;
-use Spryker\Zed\Kernel\Communication\Form\AbstractType;
+use Spryker\Zed\CustomerAccessGui\Communication\Form\CustomerAccessForm as SprykerCustomerAccessForm;
 use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -18,7 +18,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  * @method \Pyz\Zed\CustomerAccessGui\Communication\CustomerAccessGuiCommunicationFactory getFactory()
  * @method \Spryker\Zed\CustomerAccessGui\CustomerAccessGuiConfig getConfig()
  */
-class CustomerAccessForm extends AbstractType
+class CustomerAccessForm extends SprykerCustomerAccessForm
 {
     /**
      * @var string
@@ -41,16 +41,6 @@ class CustomerAccessForm extends AbstractType
     protected const FIELD_CONTENT_TYPE_ACCESS_NON_MANAGEABLE = 'contentTypeAccessNonManageable';
 
     /**
-     * @var string
-     */
-    public const OPTION_CONTENT_TYPE_ACCESS = 'OPTION_CONTENT_TYPE_ACCESS';
-
-    /**
-     * @var string
-     */
-    public const FIELD_CONTENT_TYPE_ACCESS = 'contentTypeAccess';
-
-    /**
      * @param \Symfony\Component\OptionsResolver\OptionsResolver $resolver
      *
      * @return void
@@ -64,7 +54,7 @@ class CustomerAccessForm extends AbstractType
 
     /**
      * @param \Symfony\Component\Form\FormBuilderInterface $builder
-     * @param array<string> $options
+     * @param string[] $options
      *
      * @return void
      */
@@ -76,7 +66,7 @@ class CustomerAccessForm extends AbstractType
 
     /**
      * @param \Symfony\Component\Form\FormBuilderInterface $builder
-     * @param array<mixed> $options
+     * @param array $options
      *
      * @return $this
      */
@@ -109,7 +99,7 @@ class CustomerAccessForm extends AbstractType
 
     /**
      * @param \Symfony\Component\Form\FormBuilderInterface $builder
-     * @param array<mixed> $options
+     * @param array $options
      *
      * @return $this
      */

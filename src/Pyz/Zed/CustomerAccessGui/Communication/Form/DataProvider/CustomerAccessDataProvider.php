@@ -10,10 +10,10 @@ namespace Pyz\Zed\CustomerAccessGui\Communication\Form\DataProvider;
 use ArrayObject;
 use Generated\Shared\Transfer\ContentTypeAccessTransfer;
 use Generated\Shared\Transfer\CustomerAccessTransfer;
-use Pyz\Zed\CustomerAccess\Business\CustomerAccessFacadeInterface;
 use Pyz\Zed\CustomerAccessGui\Communication\Form\CustomerAccessForm;
+use Spryker\Zed\CustomerAccessGui\Communication\Form\DataProvider\CustomerAccessDataProvider as SprykerCustomerAccessDataProvider;
 
-class CustomerAccessDataProvider
+class CustomerAccessDataProvider extends SprykerCustomerAccessDataProvider
 {
     /**
      * @var \Pyz\Zed\CustomerAccess\Business\CustomerAccessFacadeInterface
@@ -21,16 +21,7 @@ class CustomerAccessDataProvider
     protected $customerAccessFacade;
 
     /**
-     * @param \Pyz\Zed\CustomerAccess\Business\CustomerAccessFacadeInterface $customerAccessFacade
-     */
-    public function __construct(
-        CustomerAccessFacadeInterface $customerAccessFacade,
-    ) {
-        $this->customerAccessFacade = $customerAccessFacade;
-    }
-
-    /**
-     * @return array<mixed>
+     * @return array
      */
     public function getOptions(): array
     {
@@ -40,26 +31,18 @@ class CustomerAccessDataProvider
         return [
             'data_class' => CustomerAccessTransfer::class,
             CustomerAccessForm::OPTION_CONTENT_TYPE_ACCESS_MANAGEABLE
-                => $this->customerAccessFacade->filterManageableContentTypes($allContentTypes)->getContentTypeAccess(),
+            => $this->customerAccessFacade->filterManageableContentTypes($allContentTypes)->getContentTypeAccess(),
             CustomerAccessForm::OPTION_CONTENT_TYPE_ACCESS_NON_MANAGEABLE
-                => $nonManageableContentTypes,
+            => $nonManageableContentTypes,
             CustomerAccessForm::OPTION_CONTENT_TYPE_ACCESS_NON_MANAGEABLE_DATA
-                => $this->filterContentTypesData($nonManageableContentTypes),
+            => $this->filterContentTypesData($nonManageableContentTypes),
         ];
     }
 
     /**
-     * @return \Generated\Shared\Transfer\CustomerAccessTransfer
-     */
-    public function getData(): CustomerAccessTransfer
-    {
-        return $this->customerAccessFacade->getRestrictedContentTypes();
-    }
-
-    /**
-     * @param \ArrayObject<array-key, \Generated\Shared\Transfer\ContentTypeAccessTransfer> $contentTypes
+     * @param \ArrayObject|\Generated\Shared\Transfer\ContentTypeAccessTransfer[] $contentTypes
      *
-     * @return array<\Generated\Shared\Transfer\ContentTypeAccessTransfer>
+     * @return \Generated\Shared\Transfer\ContentTypeAccessTransfer[]
      */
     protected function filterContentTypesData(ArrayObject $contentTypes): array
     {

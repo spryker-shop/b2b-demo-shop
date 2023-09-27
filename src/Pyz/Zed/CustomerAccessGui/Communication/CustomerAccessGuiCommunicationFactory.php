@@ -8,10 +8,8 @@
 namespace Pyz\Zed\CustomerAccessGui\Communication;
 
 use Generated\Shared\Transfer\CustomerAccessTransfer;
-use Pyz\Zed\CustomerAccess\Business\CustomerAccessFacadeInterface;
 use Pyz\Zed\CustomerAccessGui\Communication\Form\CustomerAccessForm;
 use Pyz\Zed\CustomerAccessGui\Communication\Form\DataProvider\CustomerAccessDataProvider;
-use Pyz\Zed\CustomerAccessGui\CustomerAccessGuiDependencyProvider;
 use Spryker\Zed\CustomerAccessGui\Communication\CustomerAccessGuiCommunicationFactory as SprykerCustomerAccessGuiCommunicationFactory;
 use Symfony\Component\Form\FormInterface;
 
@@ -26,14 +24,6 @@ class CustomerAccessGuiCommunicationFactory extends SprykerCustomerAccessGuiComm
     public function createCustomerAccessDataProvider(): CustomerAccessDataProvider
     {
         return new CustomerAccessDataProvider($this->getCustomerAccessFacade());
-    }
-
-    /**
-     * @return \Pyz\Zed\CustomerAccess\Business\CustomerAccessFacadeInterface
-     */
-    public function getCustomerAccessFacade(): CustomerAccessFacadeInterface
-    {
-        return $this->getProvidedDependency(CustomerAccessGuiDependencyProvider::FACADE_CUSTOMER_ACCESS);
     }
 
     /**

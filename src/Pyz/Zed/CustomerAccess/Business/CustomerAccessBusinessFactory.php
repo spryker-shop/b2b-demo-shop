@@ -9,15 +9,13 @@ namespace Pyz\Zed\CustomerAccess\Business;
 
 use Pyz\Zed\CustomerAccess\Business\CustomerAccess\CustomerAccessFilter;
 use Pyz\Zed\CustomerAccess\Business\CustomerAccess\CustomerAccessFilterInterface;
-use Pyz\Zed\CustomerAccess\Business\CustomerAccess\CustomerAccessReader;
-use Pyz\Zed\CustomerAccess\Business\CustomerAccess\CustomerAccessReaderInterface;
 use Pyz\Zed\CustomerAccess\Business\CustomerAccess\CustomerAccessUpdater;
-use Pyz\Zed\CustomerAccess\Business\CustomerAccess\CustomerAccessUpdaterInterface;
+use Spryker\Zed\CustomerAccess\Business\CustomerAccess\CustomerAccessUpdaterInterface;
 use Spryker\Zed\CustomerAccess\Business\CustomerAccessBusinessFactory as SprykerCustomerAccessBusinessFactory;
 
 /**
  * @method \Pyz\Zed\CustomerAccess\CustomerAccessConfig getConfig()
- * @method \Pyz\Zed\CustomerAccess\Persistence\CustomerAccessRepositoryInterface getRepository()
+ * @method \Spryker\Zed\CustomerAccess\Persistence\CustomerAccessRepositoryInterface getRepository()
  * @method \Pyz\Zed\CustomerAccess\Persistence\CustomerAccessEntityManagerInterface getEntityManager()
  */
 class CustomerAccessBusinessFactory extends SprykerCustomerAccessBusinessFactory
@@ -33,7 +31,7 @@ class CustomerAccessBusinessFactory extends SprykerCustomerAccessBusinessFactory
     }
 
     /**
-     * @return \Pyz\Zed\CustomerAccess\Business\CustomerAccess\CustomerAccessUpdaterInterface
+     * @return \Spryker\Zed\CustomerAccess\Business\CustomerAccess\CustomerAccessUpdaterInterface
      */
     public function createCustomerAccessUpdater(): CustomerAccessUpdaterInterface
     {
@@ -42,13 +40,5 @@ class CustomerAccessBusinessFactory extends SprykerCustomerAccessBusinessFactory
             $this->createCustomerAccessReader(),
             $this->createCustomerAccessFilter(),
         );
-    }
-
-    /**
-     * @return \Pyz\Zed\CustomerAccess\Business\CustomerAccess\CustomerAccessReaderInterface
-     */
-    public function createCustomerAccessReader(): CustomerAccessReaderInterface
-    {
-        return new CustomerAccessReader($this->getRepository());
     }
 }

@@ -7,7 +7,7 @@
 
 namespace Pyz\Yves\ProductDetailPage;
 
-use Spryker\Client\ProductStorage\ProductStorageClientInterface;
+use SprykerShop\Yves\ProductDetailPage\Dependency\Client\ProductDetailPageToProductStorageClientInterface;
 use SprykerShop\Yves\ProductDetailPage\ProductDetailPageFactory as SprykerProductDetailPageFactory;
 
 class ProductDetailPageFactory extends SprykerProductDetailPageFactory
@@ -15,7 +15,7 @@ class ProductDetailPageFactory extends SprykerProductDetailPageFactory
     /**
      * @return \Spryker\Client\ProductStorage\ProductStorageClientInterface
      */
-    public function getProductStorageClient(): ProductStorageClientInterface
+    public function getProductStorageClient(): ProductDetailPageToProductStorageClientInterface
     {
         return $this->getProvidedDependency(ProductDetailPageDependencyProvider::CLIENT_PRODUCT_STORAGE_PYZ);
     }

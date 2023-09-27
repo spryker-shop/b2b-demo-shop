@@ -13,24 +13,6 @@ use Spryker\Zed\Kernel\Container;
 class CustomerAccessGuiDependencyProvider extends SprykerCustomerAccessGuiDependencyProvider
 {
     /**
-     * @var string
-     */
-    public const FACADE_CUSTOMER_ACCESS = 'FACADE_CUSTOMER_ACCESS';
-
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
-    public function provideCommunicationLayerDependencies(Container $container): Container
-    {
-        $container = parent::provideCommunicationLayerDependencies($container);
-        $container = $this->addCustomerAccessFacade($container);
-
-        return $container;
-    }
-
-    /**
      * @param \Spryker\Zed\Kernel\Container $container
      *
      * @return \Spryker\Zed\Kernel\Container

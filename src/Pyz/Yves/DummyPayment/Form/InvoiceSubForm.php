@@ -7,173 +7,18 @@
 
 namespace Pyz\Yves\DummyPayment\Form;
 
-use Generated\Shared\Transfer\DummyPaymentTransfer;
-use Pyz\Yves\StepEngine\Dependency\Form\SubFormProviderNameInterface;
-use Spryker\Shared\DummyPayment\DummyPaymentConfig;
-use Spryker\Shared\DummyPayment\DummyPaymentConstants;
-use Spryker\Yves\Kernel\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
+use Spryker\Yves\DummyPayment\Form\InvoiceSubForm as SprykerInvoiceSubForm;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Form\FormInterface;
-use Symfony\Component\Form\FormView;
-use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Validator\Constraints\Callback;
-use Symfony\Component\Validator\Constraints\NotBlank;
-use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
-class InvoiceSubForm extends AbstractType implements SubFormProviderNameInterface
+class InvoiceSubForm extends SprykerInvoiceSubForm
 {
     /**
-     * @var string
-     */
-    public const PAYMENT_METHOD = 'invoice';
-
-    /**
-     * @var string
-     */
-    public const TEMPLATE_PATH = 'template_path';
-
-    /**
-     * @var string
-     */
-    public const FIELD_DATE_OF_BIRTH = 'date_of_birth';
-
-    /**
-     * @var string
-     */
-    public const MIN_BIRTHDAY_DATE_STRING = '-18 years';
-
-    /**
-     * @return string
-     */
-    public function getName(): string
-    {
-        return DummyPaymentConfig::PAYMENT_METHOD_INVOICE;
-    }
-
-    /**
-     * @return string
-     */
-    public function getPropertyPath(): string
-    {
-        return DummyPaymentConfig::PAYMENT_METHOD_INVOICE;
-    }
-
-    /**
-     * @return string
-     */
-    public function getTemplatePath(): string
-    {
-        return DummyPaymentConfig::PROVIDER_NAME . '/' . static::PAYMENT_METHOD;
-    }
-
-    /**
-     * @param \Symfony\Component\OptionsResolver\OptionsResolver $resolver
-     *
-     * @return void
-     */
-    public function configureOptions(OptionsResolver $resolver): void
-    {
-        $resolver->setDefaults([
-            'data_class' => DummyPaymentTransfer::class,
-        ])->setRequired(static::OPTIONS_FIELD_NAME);
-    }
-
-    /**
-     * @deprecated Use {@link configureOptions()} instead.
-     *
-     * @param \Symfony\Component\OptionsResolver\OptionsResolver $resolver
-     *
-     * @return void
-     */
-    public function setDefaultOptions(OptionsResolver $resolver): void
-    {
-        $this->configureOptions($resolver);
-    }
-
-    /**
      * @param \Symfony\Component\Form\FormBuilderInterface $builder
-     * @param array<mixed> $options
+     * @param array $options
      *
      * @return void
      */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        $this->addDateOfBirthField($builder);
-    }
-
-    /**
-     * @return string
-     */
-    public function getProviderName(): string
-    {
-        return DummyPaymentConstants::PROVIDER_NAME;
-    }
-
-    /**
-     * @param \Symfony\Component\Form\FormBuilderInterface $builder
-     *
-     * @return $this
-     */
-    protected function addDateOfBirthField(FormBuilderInterface $builder)
-    {
-        $builder->add(
-            static::FIELD_DATE_OF_BIRTH,
-            BirthdayType::class,
-            [
-                'label' => 'dummyPaymentInvoice.date_of_birth',
-                'required' => true,
-                'widget' => 'single_text',
-                'format' => 'dd.MM.yyyy',
-                'html5' => false,
-                'input' => 'string',
-                'attr' => [
-                    'placeholder' => 'customer.birth_date',
-                ],
-                'constraints' => [
-                    $this->createNotBlankConstraint(),
-                    $this->createBirthdayConstraint(),
-                ],
-            ],
-        );
-
-        return $this;
-    }
-
-    /**
-     * @return \Symfony\Component\Validator\Constraints\NotBlank
-     */
-    protected function createNotBlankConstraint(): NotBlank
-    {
-        return new NotBlank(['groups' => $this->getPropertyPath()]);
-    }
-
-    /**
-     * @return \Symfony\Component\Validator\Constraints\Callback
-     */
-    protected function createBirthdayConstraint(): Callback
-    {
-        return new Callback([
-            'callback' => function ($date, ExecutionContextInterface $context): void {
-                if (strtotime($date) > strtotime(static::MIN_BIRTHDAY_DATE_STRING)) {
-                    $context->addViolation('checkout.step.payment.must_be_older_than_18_years');
-                }
-            },
-            'groups' => $this->getPropertyPath(),
-        ]);
-    }
-
-    /**
-     * @param \Symfony\Component\Form\FormView $view The view
-     * @param \Symfony\Component\Form\FormInterface $form The form
-     * @param array<mixed> $options The options
-     *
-     * @return void
-     */
-    public function buildView(FormView $view, FormInterface $form, array $options): void
-    {
-        parent::buildView($view, $form, $options);
-
-        $view->vars[static::TEMPLATE_PATH] = $this->getTemplatePath();
     }
 }

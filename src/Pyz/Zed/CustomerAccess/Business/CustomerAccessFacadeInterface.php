@@ -35,18 +35,4 @@ interface CustomerAccessFacadeInterface extends SprykerCustomerAccessFacadeInter
      * @return \Generated\Shared\Transfer\CustomerAccessTransfer
      */
     public function filterNonManageableContentTypes(CustomerAccessTransfer $customerAccessTransfer): CustomerAccessTransfer;
-
-    /**
-     * Specification:
-     * - Updates unauthenticated customer access entities
-     * - Marks all content types as has no access
-     * - Marks listed in CustomerAccessTransfer content types as has access
-     *
-     * @api
-     *
-     * @param \Generated\Shared\Transfer\CustomerAccessTransfer $customerAccessTransfer
-     *
-     * @return \Generated\Shared\Transfer\CustomerAccessTransfer
-     */
-    public function updateUnauthenticatedCustomerAccess(CustomerAccessTransfer $customerAccessTransfer): CustomerAccessTransfer;
 }

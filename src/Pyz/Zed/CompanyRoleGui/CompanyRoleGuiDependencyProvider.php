@@ -7,6 +7,7 @@
 
 namespace Pyz\Zed\CompanyRoleGui;
 
+use Spryker\Zed\CompanyGui\Communication\Plugin\CompanyRoleGui\CompanyToCompanyRoleCreateFormExpanderPlugin;
 use Spryker\Zed\CompanyRoleGui\CompanyRoleGuiDependencyProvider as SprykerCompanyRoleGuiDependencyProvider;
 
 class CompanyRoleGuiDependencyProvider extends SprykerCompanyRoleGuiDependencyProvider
@@ -14,10 +15,10 @@ class CompanyRoleGuiDependencyProvider extends SprykerCompanyRoleGuiDependencyPr
     /**
      * @return array<\Spryker\Zed\CompanyRoleGuiExtension\Communication\Plugin\CompanyRoleCreateFormExpanderPluginInterface>
      */
-    protected function getCompanyRoleCreateFormExpanderPlugins() : array
+    protected function getCompanyRoleCreateFormExpanderPlugins(): array
     {
         return [
-            new Spryker\Zed\CompanyGui\Communication\Plugin\CompanyRoleGui\CompanyToCompanyRoleCreateFormExpanderPlugin(), new Spryker\Zed\CompanyGui\Communication\Plugin\CompanyRoleGui\CompanyToCompanyRoleCreateFormExpanderPlugin(),
+            new CompanyToCompanyRoleCreateFormExpanderPlugin(), new CompanyToCompanyRoleCreateFormExpanderPlugin(),
         ];
     }
 }
