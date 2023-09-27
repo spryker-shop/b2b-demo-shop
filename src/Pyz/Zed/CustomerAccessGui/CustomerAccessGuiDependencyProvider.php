@@ -15,7 +15,7 @@ class CustomerAccessGuiDependencyProvider extends SprykerCustomerAccessGuiDepend
     /**
      * @var string
      */
-    public const PYZ_FACADE_CUSTOMER_ACCESS = 'PYZ_FACADE_CUSTOMER_ACCESS';
+    public const FACADE_CUSTOMER_ACCESS = 'FACADE_CUSTOMER_ACCESS';
 
     /**
      * @param \Spryker\Zed\Kernel\Container $container
@@ -37,7 +37,7 @@ class CustomerAccessGuiDependencyProvider extends SprykerCustomerAccessGuiDepend
      */
     protected function addPyzCustomerAccessFacade(Container $container): Container
     {
-        $container->set(static::PYZ_FACADE_CUSTOMER_ACCESS, function (Container $container) {
+        $container->set(static::FACADE_CUSTOMER_ACCESS, function (Container $container) {
             return $container->getLocator()->customerAccess()->facade();
         });
 

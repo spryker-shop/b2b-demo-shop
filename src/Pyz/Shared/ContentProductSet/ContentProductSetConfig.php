@@ -16,5 +16,5 @@ class ContentProductSetConfig extends SprykerContentProductSetConfig
      *
      * Content item product set landing page template identifier
      */
-    public const PYZ_WIDGET_TEMPLATE_IDENTIFIER_LANDING_PAGE = 'landing-page';
+    public const WIDGET_TEMPLATE_IDENTIFIER_LANDING_PAGE = 'landing-page';
 }

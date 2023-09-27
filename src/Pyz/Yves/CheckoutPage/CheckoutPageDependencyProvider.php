@@ -44,7 +44,7 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
      *
      * @uses \Spryker\Yves\Form\Plugin\Application\FormApplicationPlugin::SERVICE_FORM_FACTORY
      */
-    protected const PYZ_SERVICE_FORM_FACTORY = 'form.factory';
+    protected const SERVICE_FORM_FACTORY = 'form.factory';
 
     /**
      * @param \Spryker\Yves\Kernel\Container $container
@@ -121,7 +121,7 @@ class CheckoutPageDependencyProvider extends SprykerShopCheckoutPageDependencyPr
      */
     protected function getPyzFormFactory(): FormFactory
     {
-        return (new GlobalContainer())->get(static::PYZ_SERVICE_FORM_FACTORY);
+        return (new GlobalContainer())->get(static::SERVICE_FORM_FACTORY);
     }
 
     /**

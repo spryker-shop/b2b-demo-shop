@@ -20,17 +20,17 @@ class ProductSetIdsWidget extends AbstractWidget
     /**
      * @var string
      */
-    protected const PYZ_REQUEST = 'request';
+    protected const REQUEST = 'request';
 
     /**
      * @var string
      */
-    protected const PYZ_PARAMETER_PRODUCT_SET_LIST = 'productSetList';
+    protected const PARAMETER_PRODUCT_SET_LIST = 'productSetList';
 
     /**
      * @var string
      */
-    protected const PYZ_PARAMETER_ATTRIBUTES = 'attributes';
+    protected const PARAMETER_ATTRIBUTES = 'attributes';
 
     /**
      * @param list<int> $productSetIds
@@ -67,7 +67,7 @@ class ProductSetIdsWidget extends AbstractWidget
     {
         $productSetList = $this->getPyzProductSetList($productSetIds);
 
-        $this->addParameter(static::PYZ_PARAMETER_PRODUCT_SET_LIST, $productSetList);
+        $this->addParameter(static::PARAMETER_PRODUCT_SET_LIST, $productSetList);
     }
 
     /**
@@ -147,7 +147,7 @@ class ProductSetIdsWidget extends AbstractWidget
     protected function getPyzSelectedAttributes(int $idProductAbstract): array
     {
         /** @var array<mixed> $attributes */
-        $attributes = $this->getPyzRequest()->query->get(static::PYZ_PARAMETER_ATTRIBUTES) ?: [];
+        $attributes = $this->getPyzRequest()->query->get(static::PARAMETER_ATTRIBUTES) ?: [];
 
         return isset($attributes[$idProductAbstract]) ? array_reverse(array_filter($attributes[$idProductAbstract])) : [];
     }
@@ -157,6 +157,6 @@ class ProductSetIdsWidget extends AbstractWidget
      */
     protected function getPyzRequest(): Request
     {
-        return $this->getGlobalContainer()->get(static::PYZ_REQUEST);
+        return $this->getGlobalContainer()->get(static::REQUEST);
     }
 }

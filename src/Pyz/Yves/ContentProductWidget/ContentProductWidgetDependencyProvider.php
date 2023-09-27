@@ -17,12 +17,12 @@ class ContentProductWidgetDependencyProvider extends SprykerContentProductWidget
     /**
      * @var string
      */
-    public const PYZ_CLIENT_PRODUCT_STORAGE = 'PYZ_CLIENT_PRODUCT_STORAGE';
+    public const CLIENT_PRODUCT_STORAGE = 'CLIENT_PRODUCT_STORAGE';
 
     /**
      * @var string
      */
-    public const PYZ_CLIENT_CONTENT_PRODUCT = 'PYZ_CLIENT_CONTENT_PRODUCT';
+    public const CLIENT_CONTENT_PRODUCT = 'CLIENT_CONTENT_PRODUCT';
 
     /**
      * @param \Spryker\Yves\Kernel\Container $container
@@ -45,7 +45,7 @@ class ContentProductWidgetDependencyProvider extends SprykerContentProductWidget
      */
     protected function addPyzContentProductClient(Container $container): Container
     {
-        $container->set(static::PYZ_CLIENT_CONTENT_PRODUCT, function () {
+        $container->set(static::CLIENT_CONTENT_PRODUCT, function () {
             return new ContentProductClient();
         });
 
@@ -59,7 +59,7 @@ class ContentProductWidgetDependencyProvider extends SprykerContentProductWidget
      */
     protected function addPyzProductStorageClient(Container $container): Container
     {
-        $container->set(static::PYZ_CLIENT_PRODUCT_STORAGE, function () {
+        $container->set(static::CLIENT_PRODUCT_STORAGE, function () {
             return new ProductStorageClient();
         });
 

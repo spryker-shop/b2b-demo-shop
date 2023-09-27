@@ -15,7 +15,7 @@ class ExampleProductSaleRouteProviderPlugin extends AbstractRouteProviderPlugin
     /**
      * @var string
      */
-    public const PYZ_ROUTE_NAME_SALE = 'sale';
+    public const ROUTE_NAME_SALE = 'sale';
 
     /**
      * @param \Spryker\Yves\Router\Route\RouteCollection $routeCollection
@@ -28,7 +28,7 @@ class ExampleProductSaleRouteProviderPlugin extends AbstractRouteProviderPlugin
         $route = $route->setRequirement('categoryPath', '\/.+');
         $route = $route->setDefault('categoryPath', null);
 
-        $routeCollection->add(static::PYZ_ROUTE_NAME_SALE, $route);
+        $routeCollection->add(static::ROUTE_NAME_SALE, $route);
 
         return $routeCollection;
     }

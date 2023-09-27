@@ -25,7 +25,7 @@ class CustomerAccessBusinessFactory extends SprykerCustomerAccessBusinessFactory
     /**
      * @return \Pyz\Zed\CustomerAccess\Business\CustomerAccess\CustomerAccessFilterInterface
      */
-    public function createPyzCustomerAccessFilter(): CustomerAccessFilterInterface
+    public function createCustomerAccessFilter(): CustomerAccessFilterInterface
     {
         return new CustomerAccessFilter(
             $this->getConfig(),
@@ -35,19 +35,19 @@ class CustomerAccessBusinessFactory extends SprykerCustomerAccessBusinessFactory
     /**
      * @return \Pyz\Zed\CustomerAccess\Business\CustomerAccess\CustomerAccessUpdaterInterface
      */
-    public function createPyzCustomerAccessUpdater(): CustomerAccessUpdaterInterface
+    public function createCustomerAccessUpdater(): CustomerAccessUpdaterInterface
     {
         return new CustomerAccessUpdater(
             $this->getEntityManager(),
-            $this->createPyzCustomerAccessReader(),
-            $this->createPyzCustomerAccessFilter(),
+            $this->createCustomerAccessReader(),
+            $this->createCustomerAccessFilter(),
         );
     }
 
     /**
      * @return \Pyz\Zed\CustomerAccess\Business\CustomerAccess\CustomerAccessReaderInterface
      */
-    public function createPyzCustomerAccessReader(): CustomerAccessReaderInterface
+    public function createCustomerAccessReader(): CustomerAccessReaderInterface
     {
         return new CustomerAccessReader($this->getRepository());
     }

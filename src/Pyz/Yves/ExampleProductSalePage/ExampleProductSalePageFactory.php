@@ -22,7 +22,7 @@ class ExampleProductSalePageFactory extends AbstractFactory
      */
     public function getExampleProductSalePageWidgetPlugins(): array
     {
-        return $this->getProvidedDependency(ExampleProductSalePageDependencyProvider::PYZ_PLUGIN_PRODUCT_SALE_PAGE_WIDGETS);
+        return $this->getProvidedDependency(ExampleProductSalePageDependencyProvider::PLUGIN_PRODUCT_SALE_PAGE_WIDGETS);
     }
 
     /**
@@ -30,7 +30,7 @@ class ExampleProductSalePageFactory extends AbstractFactory
      */
     protected function getPyzSearchClient(): SearchClientInterface
     {
-        return $this->getProvidedDependency(ExampleProductSalePageDependencyProvider::PYZ_CLIENT_SEARCH);
+        return $this->getProvidedDependency(ExampleProductSalePageDependencyProvider::CLIENT_SEARCH);
     }
 
     /**
@@ -38,7 +38,7 @@ class ExampleProductSalePageFactory extends AbstractFactory
      */
     public function getPyzUrlStorageClient(): UrlStorageClientInterface
     {
-        return $this->getProvidedDependency(ExampleProductSalePageDependencyProvider::PYZ_CLIENT_URL_STORAGE);
+        return $this->getProvidedDependency(ExampleProductSalePageDependencyProvider::CLIENT_URL_STORAGE);
     }
 
     /**
@@ -46,7 +46,7 @@ class ExampleProductSalePageFactory extends AbstractFactory
      */
     public function getPyzStore(): StoreTransfer
     {
-        $storeClient = $this->getProvidedDependency(ExampleProductSalePageDependencyProvider::PYZ_CLIENT_STORE);
+        $storeClient = $this->getProvidedDependency(ExampleProductSalePageDependencyProvider::CLIENT_STORE);
 
         return $storeClient->getCurrentStore();
     }
@@ -56,7 +56,7 @@ class ExampleProductSalePageFactory extends AbstractFactory
      */
     public function getPyzCatalogClient(): CatalogClientInterface
     {
-        return $this->getProvidedDependency(ExampleProductSalePageDependencyProvider::PYZ_CLIENT_CATALOG);
+        return $this->getProvidedDependency(ExampleProductSalePageDependencyProvider::CLIENT_CATALOG);
     }
 
     /**
@@ -64,7 +64,7 @@ class ExampleProductSalePageFactory extends AbstractFactory
      */
     public function getPyzLocaleClient(): LocaleClientInterface
     {
-        return $this->getProvidedDependency(ExampleProductSalePageDependencyProvider::PYZ_CLIENT_LOCALE);
+        return $this->getProvidedDependency(ExampleProductSalePageDependencyProvider::CLIENT_LOCALE);
     }
 
     /**
@@ -72,6 +72,6 @@ class ExampleProductSalePageFactory extends AbstractFactory
      */
     public function getUtilNumberService(): UtilNumberServiceInterface
     {
-        return $this->getProvidedDependency(ExampleProductSalePageDependencyProvider::PYZ_SERVICE_UTIL_NUMBER);
+        return $this->getProvidedDependency(ExampleProductSalePageDependencyProvider::SERVICE_UTIL_NUMBER);
     }
 }

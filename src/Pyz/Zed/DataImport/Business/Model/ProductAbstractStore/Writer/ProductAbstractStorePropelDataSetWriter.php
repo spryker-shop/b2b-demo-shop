@@ -7,7 +7,7 @@
 
 namespace Pyz\Zed\DataImport\Business\Model\ProductAbstractStore\Writer;
 
-use Generated\Shared\Transfer\PyzProductAbstractStoreTransfer;
+use Generated\Shared\Transfer\ProductAbstractStoreTransfer;
 use Orm\Zed\Product\Persistence\SpyProductAbstractQuery;
 use Orm\Zed\Product\Persistence\SpyProductAbstractStoreQuery;
 use Orm\Zed\Store\Persistence\SpyStoreQuery;
@@ -45,10 +45,10 @@ class ProductAbstractStorePropelDataSetWriter implements DataSetWriterInterface
      */
     protected function createOrUpdateProductAbstractStore(DataSetInterface $dataSet): void
     {
-        $pyzProductAbstractStoreTransfer = $this->getPyzProductAbstractStoreTransfers($dataSet);
+        $productAbstractStoreTransfer = $this->getProductAbstractStoreTransfers($dataSet);
 
-        $productAbstractEntity = $this->getIdProductAbstractBySku($pyzProductAbstractStoreTransfer->getProductAbstractSku());
-        $storeEntity = $this->getIdStoreByName($pyzProductAbstractStoreTransfer->getStoreName());
+        $productAbstractEntity = $this->getIdProductAbstractBySku($productAbstractStoreTransfer->getProductAbstractSku());
+        $storeEntity = $this->getIdStoreByName($productAbstractStoreTransfer->getStoreName());
 
         (new SpyProductAbstractStoreQuery())
             ->filterByFkProductAbstract($productAbstractEntity)
@@ -98,9 +98,9 @@ class ProductAbstractStorePropelDataSetWriter implements DataSetWriterInterface
     /**
      * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
      *
-     * @return \Generated\Shared\Transfer\PyzProductAbstractStoreTransfer
+     * @return \Generated\Shared\Transfer\ProductAbstractStoreTransfer
      */
-    protected function getPyzProductAbstractStoreTransfers(DataSetInterface $dataSet): PyzProductAbstractStoreTransfer
+    protected function getProductAbstractStoreTransfers(DataSetInterface $dataSet): ProductAbstractStoreTransfer
     {
         return $dataSet[ProductAbstractStoreHydratorStep::DATA_PRODUCT_ABSTRACT_STORE_ENTITY_TRANSFER];
     }

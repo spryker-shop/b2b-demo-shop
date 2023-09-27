@@ -18,14 +18,14 @@ class ExampleChartPlugin extends AbstractPlugin implements ChartPluginInterface
     /**
      * @var string
      */
-    public const PYZ_NAME = 'testChart';
+    public const NAME = 'testChart';
 
     /**
      * @return string
      */
     public function getName(): string
     {
-        return static::PYZ_NAME;
+        return static::NAME;
     }
 
     /**

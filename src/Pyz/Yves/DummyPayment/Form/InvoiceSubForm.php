@@ -26,22 +26,22 @@ class InvoiceSubForm extends AbstractType implements SubFormProviderNameInterfac
     /**
      * @var string
      */
-    public const PYZ_PAYMENT_METHOD = 'invoice';
+    public const PAYMENT_METHOD = 'invoice';
 
     /**
      * @var string
      */
-    public const PYZ_TEMPLATE_PATH = 'template_path';
+    public const TEMPLATE_PATH = 'template_path';
 
     /**
      * @var string
      */
-    public const PYZ_FIELD_DATE_OF_BIRTH = 'date_of_birth';
+    public const FIELD_DATE_OF_BIRTH = 'date_of_birth';
 
     /**
      * @var string
      */
-    public const PYZ_MIN_BIRTHDAY_DATE_STRING = '-18 years';
+    public const MIN_BIRTHDAY_DATE_STRING = '-18 years';
 
     /**
      * @return string
@@ -64,7 +64,7 @@ class InvoiceSubForm extends AbstractType implements SubFormProviderNameInterfac
      */
     public function getPyzTemplatePath(): string
     {
-        return DummyPaymentConfig::PROVIDER_NAME . '/' . static::PYZ_PAYMENT_METHOD;
+        return DummyPaymentConfig::PROVIDER_NAME . '/' . static::PAYMENT_METHOD;
     }
 
     /**
@@ -76,7 +76,7 @@ class InvoiceSubForm extends AbstractType implements SubFormProviderNameInterfac
     {
         $resolver->setDefaults([
             'data_class' => DummyPaymentTransfer::class,
-        ])->setRequired(static::PYZ_OPTIONS_FIELD_NAME);
+        ])->setRequired(static::OPTIONS_FIELD_NAME);
     }
 
     /**
@@ -118,7 +118,7 @@ class InvoiceSubForm extends AbstractType implements SubFormProviderNameInterfac
     protected function addPyzDateOfBirthField(FormBuilderInterface $builder)
     {
         $builder->add(
-            static::PYZ_FIELD_DATE_OF_BIRTH,
+            static::FIELD_DATE_OF_BIRTH,
             BirthdayType::class,
             [
                 'label' => 'dummyPaymentInvoice.date_of_birth',
@@ -155,7 +155,7 @@ class InvoiceSubForm extends AbstractType implements SubFormProviderNameInterfac
     {
         return new Callback([
             'callback' => function ($date, ExecutionContextInterface $context): void {
-                if (strtotime($date) > strtotime(static::PYZ_MIN_BIRTHDAY_DATE_STRING)) {
+                if (strtotime($date) > strtotime(static::MIN_BIRTHDAY_DATE_STRING)) {
                     $context->addViolation('checkout.step.payment.must_be_older_than_18_years');
                 }
             },
@@ -174,6 +174,6 @@ class InvoiceSubForm extends AbstractType implements SubFormProviderNameInterfac
     {
         parent::buildView($view, $form, $options);
 
-        $view->vars[static::PYZ_TEMPLATE_PATH] = $this->getPyzTemplatePath();
+        $view->vars[static::TEMPLATE_PATH] = $this->getPyzTemplatePath();
     }
 }

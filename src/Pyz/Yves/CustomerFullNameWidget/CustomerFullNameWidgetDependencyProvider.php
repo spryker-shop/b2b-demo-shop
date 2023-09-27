@@ -15,7 +15,7 @@ class CustomerFullNameWidgetDependencyProvider extends AbstractBundleDependencyP
     /**
      * @var string
      */
-    public const PYZ_CLIENT_CUSTOMER = 'PYZ_CLIENT_CUSTOMER';
+    public const CLIENT_CUSTOMER = 'CLIENT_CUSTOMER';
 
     /**
      * @param \Spryker\Yves\Kernel\Container $container
@@ -37,7 +37,7 @@ class CustomerFullNameWidgetDependencyProvider extends AbstractBundleDependencyP
      */
     protected function addPyzCustomerClient(Container $container): Container
     {
-        $container->set(static::PYZ_CLIENT_CUSTOMER, function (Container $container) {
+        $container->set(static::CLIENT_CUSTOMER, function (Container $container) {
             return $container->getLocator()->customer()->client();
         });
 

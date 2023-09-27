@@ -34,22 +34,22 @@ class PaymentForm extends AbstractType
     /**
      * @var string
      */
-    public const PYZ_PAYMENT_PROPERTY_PATH = QuoteTransfer::PAYMENT;
+    public const PAYMENT_PROPERTY_PATH = QuoteTransfer::PAYMENT;
 
     /**
      * @var string
      */
-    public const PYZ_PAYMENT_SELECTION = PaymentTransfer::PAYMENT_SELECTION;
+    public const PAYMENT_SELECTION = PaymentTransfer::PAYMENT_SELECTION;
 
     /**
      * @var string
      */
-    public const PYZ_PAYMENT_SELECTION_PROPERTY_PATH = self::PYZ_PAYMENT_PROPERTY_PATH . '.' . self::PYZ_PAYMENT_SELECTION;
+    public const PAYMENT_SELECTION_PROPERTY_PATH = self::PAYMENT_PROPERTY_PATH . '.' . self::PAYMENT_SELECTION;
 
     /**
      * @var string
      */
-    protected const PYZ_VALIDATION_NOT_BLANK_MESSAGE = 'validation.not_blank';
+    protected const VALIDATION_NOT_BLANK_MESSAGE = 'validation.not_blank';
 
     /**
      * @return string
@@ -81,7 +81,7 @@ class PaymentForm extends AbstractType
             'validation_groups' => function (FormInterface $form) {
                 $validationGroups = [Constraint::DEFAULT_GROUP];
 
-                $paymentSelectionFormData = $form->get(self::PYZ_PAYMENT_SELECTION)->getData();
+                $paymentSelectionFormData = $form->get(self::PAYMENT_SELECTION)->getData();
                 if (is_string($paymentSelectionFormData)) {
                     $validationGroups[] = $paymentSelectionFormData;
                 }
@@ -93,7 +93,7 @@ class PaymentForm extends AbstractType
             ],
         ]);
 
-        $resolver->setRequired(PyzSubFormInterface::PYZ_OPTIONS_FIELD_NAME);
+        $resolver->setRequired(PyzSubFormInterface::OPTIONS_FIELD_NAME);
     }
 
     /**
@@ -126,7 +126,7 @@ class PaymentForm extends AbstractType
     protected function getPyzPaymentMethodSubFormOptions($paymentMethodSubForm): array
     {
         $defaultOptions = [
-            'property_path' => static::PYZ_PAYMENT_PROPERTY_PATH . '.' . $this->getPyzSubFormPropertyPath($paymentMethodSubForm),
+            'property_path' => static::PAYMENT_PROPERTY_PATH . '.' . $this->getPyzSubFormPropertyPath($paymentMethodSubForm),
             'error_bubbling' => true,
             'label' => false,
         ];
@@ -163,7 +163,7 @@ class PaymentForm extends AbstractType
     protected function addPyzPaymentMethodChoices(FormBuilderInterface $builder, array $paymentMethodSubForms)
     {
         $builder->add(
-            static::PYZ_PAYMENT_SELECTION,
+            static::PAYMENT_SELECTION,
             ChoiceType::class,
             [
                 'choices' => $this->getPyzPaymentMethodChoices($paymentMethodSubForms),
@@ -203,7 +203,7 @@ class PaymentForm extends AbstractType
                 'expanded' => true,
                 'multiple' => false,
                 'placeholder' => false,
-                'property_path' => static::PYZ_PAYMENT_SELECTION_PROPERTY_PATH,
+                'property_path' => static::PAYMENT_SELECTION_PROPERTY_PATH,
                 'constraints' => [
                     $this->createPyzNotBlankConstraint(),
                 ],
@@ -338,7 +338,7 @@ class PaymentForm extends AbstractType
      */
     protected function createPyzNotBlankConstraint(): NotBlank
     {
-        return new NotBlank(['message' => static::PYZ_VALIDATION_NOT_BLANK_MESSAGE]);
+        return new NotBlank(['message' => static::VALIDATION_NOT_BLANK_MESSAGE]);
     }
 
     /**

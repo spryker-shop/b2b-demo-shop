@@ -23,32 +23,32 @@ class CustomerAccessForm extends AbstractType
     /**
      * @var string
      */
-    public const PYZ_OPTION_CONTENT_TYPE_ACCESS_MANAGEABLE = 'OPTION_CONTENT_TYPE_ACCESS_MANAGEABLE';
+    public const OPTION_CONTENT_TYPE_ACCESS_MANAGEABLE = 'OPTION_CONTENT_TYPE_ACCESS_MANAGEABLE';
 
     /**
      * @var string
      */
-    public const PYZ_OPTION_CONTENT_TYPE_ACCESS_NON_MANAGEABLE = 'OPTION_CONTENT_TYPE_ACCESS_NON_MANAGEABLE';
+    public const OPTION_CONTENT_TYPE_ACCESS_NON_MANAGEABLE = 'OPTION_CONTENT_TYPE_ACCESS_NON_MANAGEABLE';
 
     /**
      * @var string
      */
-    public const PYZ_OPTION_CONTENT_TYPE_ACCESS_NON_MANAGEABLE_DATA = 'OPTION_CONTENT_TYPE_ACCESS_NON_MANAGEABLE_DATA';
+    public const OPTION_CONTENT_TYPE_ACCESS_NON_MANAGEABLE_DATA = 'OPTION_CONTENT_TYPE_ACCESS_NON_MANAGEABLE_DATA';
 
     /**
      * @var string
      */
-    protected const PYZ_FIELD_CONTENT_TYPE_ACCESS_NON_MANAGEABLE = 'contentTypeAccessNonManageable';
+    protected const FIELD_CONTENT_TYPE_ACCESS_NON_MANAGEABLE = 'contentTypeAccessNonManageable';
 
     /**
      * @var string
      */
-    public const PYZ_OPTION_CONTENT_TYPE_ACCESS = 'OPTION_CONTENT_TYPE_ACCESS';
+    public const OPTION_CONTENT_TYPE_ACCESS = 'OPTION_CONTENT_TYPE_ACCESS';
 
     /**
      * @var string
      */
-    public const PYZ_FIELD_CONTENT_TYPE_ACCESS = 'contentTypeAccess';
+    public const FIELD_CONTENT_TYPE_ACCESS = 'contentTypeAccess';
 
     /**
      * @param \Symfony\Component\OptionsResolver\OptionsResolver $resolver
@@ -57,9 +57,9 @@ class CustomerAccessForm extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver): void
     {
-        $resolver->setRequired(static::PYZ_OPTION_CONTENT_TYPE_ACCESS_MANAGEABLE);
-        $resolver->setRequired(static::PYZ_OPTION_CONTENT_TYPE_ACCESS_NON_MANAGEABLE);
-        $resolver->setRequired(static::PYZ_OPTION_CONTENT_TYPE_ACCESS_NON_MANAGEABLE_DATA);
+        $resolver->setRequired(static::OPTION_CONTENT_TYPE_ACCESS_MANAGEABLE);
+        $resolver->setRequired(static::OPTION_CONTENT_TYPE_ACCESS_NON_MANAGEABLE);
+        $resolver->setRequired(static::OPTION_CONTENT_TYPE_ACCESS_NON_MANAGEABLE_DATA);
     }
 
     /**
@@ -82,18 +82,18 @@ class CustomerAccessForm extends AbstractType
      */
     protected function addPyzContentTypeAccessManageable(FormBuilderInterface $builder, array $options)
     {
-        $builder->add(static::PYZ_FIELD_CONTENT_TYPE_ACCESS, ChoiceType::class, [
+        $builder->add(static::FIELD_CONTENT_TYPE_ACCESS, ChoiceType::class, [
             'expanded' => true,
             'multiple' => true,
             'required' => false,
             'label' => 'Content Types',
             'choice_label' => 'contentType',
             'choice_value' => 'contentType',
-            'choices' => $options[static::PYZ_OPTION_CONTENT_TYPE_ACCESS_MANAGEABLE],
+            'choices' => $options[static::OPTION_CONTENT_TYPE_ACCESS_MANAGEABLE],
         ]);
 
         $builder
-            ->get(static::PYZ_FIELD_CONTENT_TYPE_ACCESS)
+            ->get(static::FIELD_CONTENT_TYPE_ACCESS)
             ->addModelTransformer(new CallbackTransformer(function ($customerAccess): array {
                 if ($customerAccess) {
                     return (array)$customerAccess;
@@ -115,7 +115,7 @@ class CustomerAccessForm extends AbstractType
      */
     protected function addPyzContentTypeAccessNonManageable(FormBuilderInterface $builder, array $options)
     {
-        $builder->add(static::PYZ_FIELD_CONTENT_TYPE_ACCESS_NON_MANAGEABLE, ChoiceType::class, [
+        $builder->add(static::FIELD_CONTENT_TYPE_ACCESS_NON_MANAGEABLE, ChoiceType::class, [
             'mapped' => false,
             'expanded' => true,
             'multiple' => true,
@@ -123,8 +123,8 @@ class CustomerAccessForm extends AbstractType
             'disabled' => true,
             'choice_label' => 'contentType',
             'choice_value' => 'contentType',
-            'data' => $options[static::PYZ_OPTION_CONTENT_TYPE_ACCESS_NON_MANAGEABLE_DATA],
-            'choices' => $options[static::PYZ_OPTION_CONTENT_TYPE_ACCESS_NON_MANAGEABLE],
+            'data' => $options[static::OPTION_CONTENT_TYPE_ACCESS_NON_MANAGEABLE_DATA],
+            'choices' => $options[static::OPTION_CONTENT_TYPE_ACCESS_NON_MANAGEABLE],
         ]);
 
         return $this;

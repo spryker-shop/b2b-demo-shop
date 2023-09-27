@@ -17,6 +17,6 @@ class CustomerFullNameWidgetFactory extends AbstractFactory
      */
     public function getPyzCustomerClient(): CustomerClientInterface
     {
-        return $this->getProvidedDependency(CustomerFullNameWidgetDependencyProvider::PYZ_CLIENT_CUSTOMER);
+        return $this->getProvidedDependency(CustomerFullNameWidgetDependencyProvider::CLIENT_CUSTOMER);
     }
 }

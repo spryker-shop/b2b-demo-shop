@@ -46,7 +46,7 @@ class ExampleStateMachineFacade extends AbstractFacade implements ExampleStateMa
     /**
      * @return bool
      */
-    public function createPyzExampleItem(): bool
+    public function createExampleItem(): bool
     {
         return $this->getFactory()->createPyzStateMachineSaver()->createExampleItem();
     }

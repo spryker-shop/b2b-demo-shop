@@ -36,5 +36,5 @@ interface ExampleStateMachineFacadeInterface
     /**
      * @return bool
      */
-    public function createPyzExampleItem(): bool;
+    public function createExampleItem(): bool;
 }

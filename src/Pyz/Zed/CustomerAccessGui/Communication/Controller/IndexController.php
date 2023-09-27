@@ -18,7 +18,7 @@ class IndexController extends SprykerIndexController
     /**
      * @var string
      */
-    protected const PYZ_MESSAGE_UPDATE_SUCCESS = 'Not logged in customer accessible content has been successfully updated.';
+    protected const MESSAGE_UPDATE_SUCCESS = 'Not logged in customer accessible content has been successfully updated.';
 
     /**
      * @param \Symfony\Component\HttpFoundation\Request $request
@@ -36,8 +36,8 @@ class IndexController extends SprykerIndexController
         if ($customerAccessForm->isSubmitted() && $customerAccessForm->isValid()) {
             $this->getFactory()
                 ->getPyzCustomerAccessFacade()
-                ->updatePyzUnauthenticatedCustomerAccess($customerAccessForm->getData());
-            $this->addSuccessMessage(static::PYZ_MESSAGE_UPDATE_SUCCESS);
+                ->updateUnauthenticatedCustomerAccess($customerAccessForm->getData());
+            $this->addSuccessMessage(static::MESSAGE_UPDATE_SUCCESS);
         }
 
         return [

@@ -23,7 +23,7 @@ class CustomerAccessEntityManager extends SprykerCustomerAccessEntityManager imp
      *
      * @return void
      */
-    public function setPyzContentTypesToAccessible(CustomerAccessTransfer $customerAccessTransfer): void
+    public function setContentTypesToAccessible(CustomerAccessTransfer $customerAccessTransfer): void
     {
         foreach ($customerAccessTransfer->getContentTypeAccess() as $contentTypeAccess) {
             $customerAccessEntity = $this->findPyzCustomerAccessEntityByContentType($contentTypeAccess);
@@ -38,7 +38,7 @@ class CustomerAccessEntityManager extends SprykerCustomerAccessEntityManager imp
      *
      * @return \Generated\Shared\Transfer\CustomerAccessTransfer
      */
-    public function setPyzContentTypesToInaccessible(CustomerAccessTransfer $customerAccessTransfer): CustomerAccessTransfer
+    public function setContentTypesToInaccessible(CustomerAccessTransfer $customerAccessTransfer): CustomerAccessTransfer
     {
         $updatedContentTypeAccessCollection = new ArrayObject();
         foreach ($customerAccessTransfer->getContentTypeAccess() as $contentTypeAccess) {
@@ -48,7 +48,7 @@ class CustomerAccessEntityManager extends SprykerCustomerAccessEntityManager imp
             $customerAccessEntity->save();
             $updatedContentTypeAccessCollection->append(
                 $this->getFactory()
-                    ->createPyzCustomerAccessMapper()
+                    ->createCustomerAccessMapper()
                     ->mapCustomerAccessEntityToContentTypeAccessTransfer($customerAccessEntity, new ContentTypeAccessTransfer()),
             );
         }
@@ -65,7 +65,7 @@ class CustomerAccessEntityManager extends SprykerCustomerAccessEntityManager imp
     protected function findPyzCustomerAccessEntityByContentType(ContentTypeAccessTransfer $contentTypeAccessTransfer): ?SpyUnauthenticatedCustomerAccess
     {
         return $this->getFactory()
-            ->getPyzUnauthenticatedCustomerAccessQuery()
+            ->getUnauthenticatedCustomerAccessQuery()
             ->filterByContentType($contentTypeAccessTransfer->getContentType())
             ->findOne();
     }

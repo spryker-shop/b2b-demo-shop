@@ -20,7 +20,7 @@ class MultiCartController extends SprykerShopMultiCartController
     /**
      * @var string
      */
-    public const PYZ_REQUEST_HEADER_REFERER = 'referer';
+    public const REQUEST_HEADER_REFERER = 'referer';
 
     /**
      * @param int $idQuote
@@ -55,8 +55,8 @@ class MultiCartController extends SprykerShopMultiCartController
      */
     protected function getPyzRefererUrl(Request $request): string
     {
-        if ($request->headers->has(static::PYZ_REQUEST_HEADER_REFERER)) {
-            return $request->headers->get(static::PYZ_REQUEST_HEADER_REFERER);
+        if ($request->headers->has(static::REQUEST_HEADER_REFERER)) {
+            return $request->headers->get(static::REQUEST_HEADER_REFERER);
         }
 
         return CartPageRouteProviderPlugin::ROUTE_NAME_CART;

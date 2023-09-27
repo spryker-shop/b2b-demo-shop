@@ -17,22 +17,22 @@ class ContentBannerTwigFunctionProvider extends TwigFunctionProvider
     /**
      * @var string
      */
-    protected const PYZ_WIDGET_TEMPLATE_IDENTIFIER_HOME_PAGE = 'home-page';
+    protected const WIDGET_TEMPLATE_IDENTIFIER_HOME_PAGE = 'home-page';
 
     /**
      * @var string
      */
-    protected const PYZ_TWIG_FUNCTION_NAME_CONTENT_BANNER = 'content_banner';
+    protected const TWIG_FUNCTION_NAME_CONTENT_BANNER = 'content_banner';
 
     /**
      * @var string
      */
-    protected const PYZ_WIDGET_TEMPLATE_IDENTIFIER_BOTTOM_TITLE = 'bottom-title';
+    protected const WIDGET_TEMPLATE_IDENTIFIER_BOTTOM_TITLE = 'bottom-title';
 
     /**
      * @var string
      */
-    protected const PYZ_WIDGET_TEMPLATE_IDENTIFIER_TOP_TITLE = 'top-title';
+    protected const WIDGET_TEMPLATE_IDENTIFIER_TOP_TITLE = 'top-title';
 
     /**
      * @var \Twig\Environment
@@ -69,7 +69,7 @@ class ContentBannerTwigFunctionProvider extends TwigFunctionProvider
      */
     public function getFunctionName(): string
     {
-        return static::PYZ_TWIG_FUNCTION_NAME_CONTENT_BANNER;
+        return static::TWIG_FUNCTION_NAME_CONTENT_BANNER;
     }
 
     /**
@@ -104,9 +104,9 @@ class ContentBannerTwigFunctionProvider extends TwigFunctionProvider
     protected function getPyzAvailableTemplates(): array
     {
         return [
-            static::PYZ_WIDGET_TEMPLATE_IDENTIFIER_BOTTOM_TITLE => '@ContentBannerWidget/views/banner/banner.twig',
-            static::PYZ_WIDGET_TEMPLATE_IDENTIFIER_TOP_TITLE => '@ContentBannerWidget/views/banner-alternative/banner-alternative.twig',
-            static::PYZ_WIDGET_TEMPLATE_IDENTIFIER_HOME_PAGE => '@ContentBannerWidget/views/banner-home-page/banner-home-page.twig',
+            static::WIDGET_TEMPLATE_IDENTIFIER_BOTTOM_TITLE => '@ContentBannerWidget/views/banner/banner.twig',
+            static::WIDGET_TEMPLATE_IDENTIFIER_TOP_TITLE => '@ContentBannerWidget/views/banner-alternative/banner-alternative.twig',
+            static::WIDGET_TEMPLATE_IDENTIFIER_HOME_PAGE => '@ContentBannerWidget/views/banner-home-page/banner-home-page.twig',
         ];
     }
 

@@ -12,7 +12,7 @@ interface SubFormInterface
     /**
      * @var string
      */
-    public const PYZ_OPTIONS_FIELD_NAME = 'select_options';
+    public const OPTIONS_FIELD_NAME = 'select_options';
 
     /**
      * @return string

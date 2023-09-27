@@ -33,7 +33,7 @@ class CustomerAccessGuiCommunicationFactory extends SprykerCustomerAccessGuiComm
      */
     public function getPyzCustomerAccessFacade(): CustomerAccessFacadeInterface
     {
-        return $this->getProvidedDependency(CustomerAccessGuiDependencyProvider::PYZ_FACADE_CUSTOMER_ACCESS);
+        return $this->getProvidedDependency(CustomerAccessGuiDependencyProvider::FACADE_CUSTOMER_ACCESS);
     }
 
     /**

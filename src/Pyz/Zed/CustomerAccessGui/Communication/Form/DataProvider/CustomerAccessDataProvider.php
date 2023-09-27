@@ -35,15 +35,15 @@ class CustomerAccessDataProvider
     public function getOptions(): array
     {
         $allContentTypes = $this->customerAccessFacade->getAllContentTypes();
-        $nonManageableContentTypes = $this->customerAccessFacade->filterPyzNonManageableContentTypes($allContentTypes)->getContentTypeAccess();
+        $nonManageableContentTypes = $this->customerAccessFacade->filterNonManageableContentTypes($allContentTypes)->getContentTypeAccess();
 
         return [
             'data_class' => CustomerAccessTransfer::class,
-            CustomerAccessForm::PYZ_OPTION_CONTENT_TYPE_ACCESS_MANAGEABLE
-                => $this->customerAccessFacade->filterPyzManageableContentTypes($allContentTypes)->getContentTypeAccess(),
-            CustomerAccessForm::PYZ_OPTION_CONTENT_TYPE_ACCESS_NON_MANAGEABLE
+            CustomerAccessForm::OPTION_CONTENT_TYPE_ACCESS_MANAGEABLE
+                => $this->customerAccessFacade->filterManageableContentTypes($allContentTypes)->getContentTypeAccess(),
+            CustomerAccessForm::OPTION_CONTENT_TYPE_ACCESS_NON_MANAGEABLE
                 => $nonManageableContentTypes,
-            CustomerAccessForm::PYZ_OPTION_CONTENT_TYPE_ACCESS_NON_MANAGEABLE_DATA
+            CustomerAccessForm::OPTION_CONTENT_TYPE_ACCESS_NON_MANAGEABLE_DATA
                 => $this->filterPyzContentTypesData($nonManageableContentTypes),
         ];
     }

@@ -55,9 +55,9 @@ class CustomerAccessUpdater implements CustomerAccessUpdaterInterface
         return $this->getTransactionHandler()->handleTransaction(function () use ($customerAccessTransfer) {
             $allContentTypes = $this->customerAccessReader->getAllContentTypes();
             $manageableContentTypes = $this->customerAccessFilter->filterManageableContentTypes($allContentTypes);
-            $this->customerAccessEntityManager->setPyzContentTypesToAccessible($manageableContentTypes);
+            $this->customerAccessEntityManager->setContentTypesToAccessible($manageableContentTypes);
 
-            return $this->customerAccessEntityManager->setPyzContentTypesToInaccessible($customerAccessTransfer);
+            return $this->customerAccessEntityManager->setContentTypesToInaccessible($customerAccessTransfer);
         });
     }
 }

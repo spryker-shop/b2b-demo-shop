@@ -16,7 +16,7 @@ class CartPageFactory extends SprykerCartPageFactory
     /**
      * @return \Pyz\Yves\CartPage\Plugin\Provider\CartItemsProductProviderInterface
      */
-    public function createPyzCartItemsProductsProvider(): CartItemsProductProviderInterface
+    public function foundCartItemsProductsProvider(): CartItemsProductProviderInterface
     {
         return new CartItemsProductProvider(
             $this->getProductStorageClient(),

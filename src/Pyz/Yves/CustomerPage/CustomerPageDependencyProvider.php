@@ -24,7 +24,7 @@ class CustomerPageDependencyProvider extends SprykerShopCustomerPageDependencyPr
     /**
      * @var string
      */
-    public const PYZ_CLIENT_SESSION = 'PYZ_CLIENT_SESSION';
+    public const CLIENT_SESSION = 'CLIENT_SESSION';
 
     /**
      * @param \Spryker\Yves\Kernel\Container $container
@@ -109,7 +109,7 @@ class CustomerPageDependencyProvider extends SprykerShopCustomerPageDependencyPr
      */
     protected function addPyzSessionClient(Container $container): Container
     {
-        $container->set(static::PYZ_CLIENT_SESSION, function (Container $container) {
+        $container->set(static::CLIENT_SESSION, function (Container $container) {
             return $container->getLocator()->session()->client();
         });
 

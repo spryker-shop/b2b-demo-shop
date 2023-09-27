@@ -35,7 +35,7 @@ class ProductUrlCartConnectorBusinessFactory extends AbstractBusinessFactory
      */
     protected function getPyzProductFacade(): ProductFacadeInterface
     {
-        return $this->getProvidedDependency(ProductUrlCartConnectorDependencyProvider::PYZ_FACADE_PRODUCT);
+        return $this->getProvidedDependency(ProductUrlCartConnectorDependencyProvider::FACADE_PRODUCT);
     }
 
     /**
@@ -43,6 +43,6 @@ class ProductUrlCartConnectorBusinessFactory extends AbstractBusinessFactory
      */
     protected function getPyzLocaleFacade(): LocaleFacadeInterface
     {
-        return $this->getProvidedDependency(ProductUrlCartConnectorDependencyProvider::PYZ_FACADE_LOCALE);
+        return $this->getProvidedDependency(ProductUrlCartConnectorDependencyProvider::FACADE_LOCALE);
     }
 }

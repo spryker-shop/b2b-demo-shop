@@ -22,7 +22,7 @@ interface CustomerAccessFacadeInterface extends SprykerCustomerAccessFacadeInter
      *
      * @return \Generated\Shared\Transfer\CustomerAccessTransfer
      */
-    public function filterPyzManageableContentTypes(CustomerAccessTransfer $customerAccessTransfer): CustomerAccessTransfer;
+    public function filterManageableContentTypes(CustomerAccessTransfer $customerAccessTransfer): CustomerAccessTransfer;
 
     /**
      * Specification:
@@ -34,7 +34,7 @@ interface CustomerAccessFacadeInterface extends SprykerCustomerAccessFacadeInter
      *
      * @return \Generated\Shared\Transfer\CustomerAccessTransfer
      */
-    public function filterPyzNonManageableContentTypes(CustomerAccessTransfer $customerAccessTransfer): CustomerAccessTransfer;
+    public function filterNonManageableContentTypes(CustomerAccessTransfer $customerAccessTransfer): CustomerAccessTransfer;
 
     /**
      * Specification:
@@ -48,5 +48,5 @@ interface CustomerAccessFacadeInterface extends SprykerCustomerAccessFacadeInter
      *
      * @return \Generated\Shared\Transfer\CustomerAccessTransfer
      */
-    public function updatePyzUnauthenticatedCustomerAccess(CustomerAccessTransfer $customerAccessTransfer): CustomerAccessTransfer;
+    public function updateUnauthenticatedCustomerAccess(CustomerAccessTransfer $customerAccessTransfer): CustomerAccessTransfer;
 }

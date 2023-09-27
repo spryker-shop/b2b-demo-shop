@@ -21,7 +21,7 @@ class CustomerAccessPersistenceFactory extends SprykerCustomerAccessPersistenceF
     /**
      * @return \Orm\Zed\CustomerAccess\Persistence\SpyUnauthenticatedCustomerAccessQuery
      */
-    public function getPyzUnauthenticatedCustomerAccessQuery(): SpyUnauthenticatedCustomerAccessQuery
+    public function getUnauthenticatedCustomerAccessQuery(): SpyUnauthenticatedCustomerAccessQuery
     {
         return SpyUnauthenticatedCustomerAccessQuery::create();
     }
@@ -29,7 +29,7 @@ class CustomerAccessPersistenceFactory extends SprykerCustomerAccessPersistenceF
     /**
      * @return \Pyz\Zed\CustomerAccess\Persistence\Propel\Mapper\CustomerAccessMapper
      */
-    public function createPyzCustomerAccessMapper(): CustomerAccessMapper
+    public function createCustomerAccessMapper(): CustomerAccessMapper
     {
         return new CustomerAccessMapper();
     }

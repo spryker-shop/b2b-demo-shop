@@ -17,17 +17,17 @@ class MenuItemCompanyWidget extends AbstractWidget
     /**
      * @var string
      */
-    protected const PYZ_PARAMETER_IS_VISIBLE = 'isVisible';
+    protected const PARAMETER_IS_VISIBLE = 'isVisible';
 
     /**
      * @var string
      */
-    protected const PYZ_PARAMETER_COMPANY_NAME = 'companyName';
+    protected const PARAMETER_COMPANY_NAME = 'companyName';
 
     /**
      * @var string
      */
-    protected const PYZ_PARAMETER_HAS_COMPANY_ACCESS = 'hasCompanyAccess';
+    protected const PARAMETER_HAS_COMPANY_ACCESS = 'hasCompanyAccess';
 
     public function __construct()
     {
@@ -60,7 +60,7 @@ class MenuItemCompanyWidget extends AbstractWidget
         $customer = $this->getFactory()->getCustomerClient()->getCustomer();
         $isVisible = ($customer !== null && $customer->getCompanyUserTransfer() !== null);
 
-        $this->addParameter(static::PYZ_PARAMETER_IS_VISIBLE, $isVisible);
+        $this->addParameter(static::PARAMETER_IS_VISIBLE, $isVisible);
     }
 
     /**
@@ -68,7 +68,7 @@ class MenuItemCompanyWidget extends AbstractWidget
      */
     protected function addPyzCompanyNameParameter(): void
     {
-        $this->addParameter(static::PYZ_PARAMETER_COMPANY_NAME, $this->getPyzCompanyName());
+        $this->addParameter(static::PARAMETER_COMPANY_NAME, $this->getPyzCompanyName());
     }
 
     /**
@@ -79,7 +79,7 @@ class MenuItemCompanyWidget extends AbstractWidget
         $customerTransfer = $this->getFactory()->getCustomerClient()->getCustomer();
         $hasPyzCompanyAccess = $customerTransfer && ($customerTransfer->getCompanyUserTransfer() || $customerTransfer->getIsOnBehalf());
 
-        $this->addParameter(static::PYZ_PARAMETER_HAS_COMPANY_ACCESS, $hasPyzCompanyAccess);
+        $this->addParameter(static::PARAMETER_HAS_COMPANY_ACCESS, $hasPyzCompanyAccess);
     }
 
     /**

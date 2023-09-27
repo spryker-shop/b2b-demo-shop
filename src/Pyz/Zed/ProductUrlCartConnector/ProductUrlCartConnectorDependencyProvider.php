@@ -15,12 +15,12 @@ class ProductUrlCartConnectorDependencyProvider extends AbstractBundleDependency
     /**
      * @var string
      */
-    public const PYZ_FACADE_PRODUCT = 'PYZ_FACADE_PRODUCT';
+    public const FACADE_PRODUCT = 'FACADE_PRODUCT';
 
     /**
      * @var string
      */
-    public const PYZ_FACADE_LOCALE = 'PYZ_FACADE_LOCALE';
+    public const FACADE_LOCALE = 'FACADE_LOCALE';
 
     /**
      * @param \Spryker\Zed\Kernel\Container $container
@@ -43,7 +43,7 @@ class ProductUrlCartConnectorDependencyProvider extends AbstractBundleDependency
      */
     protected function addPyzFacadeProduct(Container $container): Container
     {
-        $container->set(static::PYZ_FACADE_PRODUCT, function (Container $container) {
+        $container->set(static::FACADE_PRODUCT, function (Container $container) {
             return $container->getLocator()->product()->facade();
         });
 
@@ -57,7 +57,7 @@ class ProductUrlCartConnectorDependencyProvider extends AbstractBundleDependency
      */
     protected function addPyzFacadeLocale(Container $container): Container
     {
-        $container->set(static::PYZ_FACADE_PRODUCT, function (Container $container) {
+        $container->set(static::FACADE_PRODUCT, function (Container $container) {
             return $container->getLocator()->locale()->facade();
         });
 

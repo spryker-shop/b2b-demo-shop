@@ -18,7 +18,7 @@ class ProductPackagingUnitStorageConfig extends SprykerProductPackagingUnitStora
      */
     public function getProductPackagingUnitSynchronizationPoolName(): ?string
     {
-        return SynchronizationConfig::PYZ_DEFAULT_SYNCHRONIZATION_POOL_NAME;
+        return SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME;
     }
 
     /**
@@ -26,7 +26,7 @@ class ProductPackagingUnitStorageConfig extends SprykerProductPackagingUnitStora
      */
     public function getPyzProductAbstractPackagingSynchronizationPoolName(): ?string
     {
-        return SynchronizationConfig::PYZ_DEFAULT_SYNCHRONIZATION_POOL_NAME;
+        return SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME;
     }
 
     /**

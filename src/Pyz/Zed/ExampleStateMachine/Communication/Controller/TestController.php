@@ -21,12 +21,12 @@ class TestController extends AbstractController
     /**
      * @var string
      */
-    public const PYZ_STATE_MACHINE_NAME = 'Test';
+    public const STATE_MACHINE_NAME = 'Test';
 
     /**
      * @return array<string, mixed>
      */
-    public function listPyzAction(): array
+    public function listAction(): array
     {
         $stateMachineItems = $this->getFacade()
             ->getPyzStateMachineItems();
@@ -50,11 +50,11 @@ class TestController extends AbstractController
     /**
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
-    public function addPyzItemAction(): RedirectResponse
+    public function addItemAction(): RedirectResponse
     {
-        $this->getFacade()->createPyzExampleItem();
+        $this->getFacade()->createExampleItem();
 
-        return new RedirectResponse('/example-state-machine/test/list-pyz');
+        return new RedirectResponse('/example-state-machine/test/list');
     }
 
     /**
@@ -62,7 +62,7 @@ class TestController extends AbstractController
      *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
-    public function deletePyzItemAction(Request $request): RedirectResponse
+    public function deleteItemAction(Request $request): RedirectResponse
     {
         $idStateMachineItem = $this->castId($request->query->get('id'));
 
@@ -70,7 +70,7 @@ class TestController extends AbstractController
             ->queryPyzExampleStateMachineItemByIdStateMachineItem($idStateMachineItem)
             ->delete();
 
-        return new RedirectResponse('/example-state-machine/test/list-pyz');
+        return new RedirectResponse('/example-state-machine/test/list');
     }
 
     /**
