@@ -34,7 +34,7 @@ class CartController extends SprykerCartController
         $cartItems = $viewData['cartItems'];
 
         $viewData['products'] = $this->getFactory()
-            ->foundCartItemsProductsProvider()
+            ->createCartItemsProductsProvider()
             ->getItemsProducts($cartItems, $this->getLocale());
 
         return $viewData;
@@ -50,7 +50,7 @@ class CartController extends SprykerCartController
     {
         parent::addAction($request, $sku);
 
-        return $this->foundToReferer($request);
+        return $this->redirectToReferer($request);
     }
 
     /**
@@ -58,7 +58,7 @@ class CartController extends SprykerCartController
      *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
-    protected function foundToReferer(Request $request): RedirectResponse
+    protected function redirectToReferer(Request $request): RedirectResponse
     {
         return $request->headers->has(static::PARAM_REFERER) ?
             $this->redirectResponseExternal($request->headers->get(static::PARAM_REFERER))
