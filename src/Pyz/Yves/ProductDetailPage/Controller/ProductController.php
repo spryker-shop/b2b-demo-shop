@@ -23,7 +23,7 @@ class ProductController extends SprykerShopProductController
     /**
      * @var string
      */
-    protected const PYZ_KEY_ID_PRODUCT_ABSTRACT = 'id_product_abstract';
+    protected const KEY_ID_PRODUCT_ABSTRACT = 'id_product_abstract';
 
     /**
      * @param array<mixed> $productData
@@ -38,7 +38,7 @@ class ProductController extends SprykerShopProductController
         $selectedAttributes = $this->getSelectedAttributesWithoutPostfix($productData, $request);
 
         $productViewTransfer = $this->getFactory()
-            ->getProductStorageClient()
+            ->getProductStoragePyzClient()
             ->mapProductStorageData($productData, $this->getLocale(), $selectedAttributes);
 
         try {
@@ -53,7 +53,7 @@ class ProductController extends SprykerShopProductController
         );
 
         $bundledProducts = [];
-        foreach ($productViewTransfer->getPyzBundledProductIds() as $productId => $quantity) {
+        foreach ($productViewTransfer->getBundledProductIds() as $productId => $quantity) {
             $bundledProduct = $this->getFactory()->getProductStoragePyzClient()->findProductConcreteStorageData($productId, $this->getLocale());
             $bundledProduct['idProductAbstract'] = $bundledProduct['id_product_abstract'];
             $bundledProduct['productUrl'] = $bundledProduct['url'];

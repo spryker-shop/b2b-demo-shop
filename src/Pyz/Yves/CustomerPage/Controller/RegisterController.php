@@ -20,7 +20,7 @@ class RegisterController extends SprykerRegisterController
      *
      * @uses \SprykerShop\Yves\CompanyUserInvitationPage\CompanyUserInvitationPageConfig::INVITATION_SESSION_ID
      */
-    protected const PYZ_INVITATION_SESSION_ID = 'COMPANY_USER_INVITATION';
+    protected const INVITATION_SESSION_ID = 'COMPANY_USER_INVITATION';
 
     /**
      * @param \Symfony\Component\HttpFoundation\Request $request
@@ -35,7 +35,7 @@ class RegisterController extends SprykerRegisterController
             return $response;
         }
 
-        if ($this->getFactory()->getPyzSessionClient()->get(static::PYZ_INVITATION_SESSION_ID)) {
+        if ($this->getFactory()->getSessionClient()->get(static::INVITATION_SESSION_ID)) {
             return $this->view($response, [], '@CustomerPage/views/register/register.twig');
         }
 

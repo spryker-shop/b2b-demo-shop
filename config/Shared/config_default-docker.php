@@ -215,10 +215,10 @@ $config[PropelConstants::ZED_DB_DATABASE] = getenv('SPRYKER_DB_DATABASE');
 /* Job runner */
 // ---------- Scheduler
 $config[SchedulerConstants::ENABLED_SCHEDULERS] = [
-    SchedulerConfig::PYZ_SCHEDULER_JENKINS,
+    SchedulerConfig::SCHEDULER_JENKINS,
 ];
 $config[SchedulerJenkinsConstants::JENKINS_CONFIGURATION] = [
-    SchedulerConfig::PYZ_SCHEDULER_JENKINS => [
+    SchedulerConfig::SCHEDULER_JENKINS => [
         SchedulerJenkinsConfig::SCHEDULER_JENKINS_BASE_URL => 'http://' . getenv('SPRYKER_SCHEDULER_HOST') . ':' . getenv('SPRYKER_SCHEDULER_PORT') . '/',
     ],
 ];

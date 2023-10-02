@@ -17,7 +17,7 @@ class CustomerFullNameWidget extends AbstractWidget
     /**
      * @var string
      */
-    protected const PYZ_PARAMETER_CUSTOMER_FULL_NAME = 'customerFullName';
+    protected const PARAMETER_CUSTOMER_FULL_NAME = 'customerFullName';
 
     /**
      * @return string
@@ -37,18 +37,18 @@ class CustomerFullNameWidget extends AbstractWidget
 
     public function __construct()
     {
-        $this->addPyzCustomerFullNameParameter();
+        $this->addCustomerFullNameParameter();
     }
 
     /**
      * @return void
      */
-    protected function addPyzCustomerFullNameParameter(): void
+    protected function addCustomerFullNameParameter(): void
     {
-        $customerTransfer = $this->getFactory()->getPyzCustomerClient()->getCustomer();
+        $customerTransfer = $this->getFactory()->getCustomerClient()->getCustomer();
 
         $this->addParameter(
-            static::PYZ_PARAMETER_CUSTOMER_FULL_NAME,
+            static::PARAMETER_CUSTOMER_FULL_NAME,
             $customerTransfer->getFirstName() . ' ' . $customerTransfer->getLastName(),
         );
     }

@@ -14,82 +14,82 @@ class ContentNavigationGuiConfig extends SprykerContentNavigationGuiConfig
     /**
      * @var string
      *
-     * @uses \Pyz\Shared\ContentNavigation\ContentNavigationConfig::PYZ_WIDGET_TEMPLATE_IDENTIFIER_LIST_NAVIGATION_HEADER
+     * @uses \Pyz\Shared\ContentNavigation\ContentNavigationConfig::WIDGET_TEMPLATE_IDENTIFIER_LIST_NAVIGATION_HEADER
      *
      * Content item navigation header template identifier.
      */
-    protected const PYZ_WIDGET_TEMPLATE_IDENTIFIER_LIST_NAVIGATION_HEADER = 'navigation-header';
+    protected const WIDGET_TEMPLATE_IDENTIFIER_LIST_NAVIGATION_HEADER = 'navigation-header';
 
     /**
      * @var string
      *
-     * @uses \Pyz\Shared\ContentNavigation\ContentNavigationConfig::PYZ_WIDGET_TEMPLATE_IDENTIFIER_LIST_NAVIGATION_FOOTER
+     * @uses \Pyz\Shared\ContentNavigation\ContentNavigationConfig::WIDGET_TEMPLATE_IDENTIFIER_LIST_NAVIGATION_FOOTER
      *
      * Content item navigation footer template identifier.
      */
-    protected const PYZ_WIDGET_TEMPLATE_IDENTIFIER_LIST_NAVIGATION_FOOTER = 'navigation-footer';
+    protected const WIDGET_TEMPLATE_IDENTIFIER_LIST_NAVIGATION_FOOTER = 'navigation-footer';
 
     /**
      * @var string
      *
-     * @uses \Pyz\Shared\ContentNavigation\ContentNavigationConfig::PYZ_WIDGET_TEMPLATE_IDENTIFIER_LIST_NAVIGATION_FOOTER_CHECKOUT
+     * @uses \Pyz\Shared\ContentNavigation\ContentNavigationConfig::WIDGET_TEMPLATE_IDENTIFIER_LIST_NAVIGATION_FOOTER_CHECKOUT
      *
      * Content item navigation footer checkout template identifier.
      */
-    protected const PYZ_WIDGET_TEMPLATE_IDENTIFIER_LIST_NAVIGATION_FOOTER_CHECKOUT = 'navigation-footer-checkout';
+    protected const WIDGET_TEMPLATE_IDENTIFIER_LIST_NAVIGATION_FOOTER_CHECKOUT = 'navigation-footer-checkout';
 
     /**
      * @var string
      *
-     * @uses \Pyz\Shared\ContentNavigation\ContentNavigationConfig::PYZ_WIDGET_TEMPLATE_IDENTIFIER_LIST_FOOTER_PARTNERS
+     * @uses \Pyz\Shared\ContentNavigation\ContentNavigationConfig::WIDGET_TEMPLATE_IDENTIFIER_LIST_FOOTER_PARTNERS
      *
      * Content item footer partners template identifier.
      */
-    protected const PYZ_WIDGET_TEMPLATE_IDENTIFIER_LIST_FOOTER_PARTNERS = 'footer-partners';
+    protected const WIDGET_TEMPLATE_IDENTIFIER_LIST_FOOTER_PARTNERS = 'footer-partners';
 
     /**
      * @var string
      *
-     * @uses \Pyz\Shared\ContentNavigation\ContentNavigationConfig::PYZ_WIDGET_TEMPLATE_IDENTIFIER_LIST_FOOTER_SOCIAL_LINKS
+     * @uses \Pyz\Shared\ContentNavigation\ContentNavigationConfig::WIDGET_TEMPLATE_IDENTIFIER_LIST_FOOTER_SOCIAL_LINKS
      *
      * Content item footer social links template identifier.
      */
-    protected const PYZ_WIDGET_TEMPLATE_IDENTIFIER_LIST_FOOTER_SOCIAL_LINKS = 'footer-social-links';
+    protected const WIDGET_TEMPLATE_IDENTIFIER_LIST_FOOTER_SOCIAL_LINKS = 'footer-social-links';
 
     /**
      * @var string
      *
      * Content item navigation header template name.
      */
-    protected const PYZ_WIDGET_TEMPLATE_DISPLAY_NAME_LIST_NAVIGATION_HEADER = 'Navigation Header';
+    protected const WIDGET_TEMPLATE_DISPLAY_NAME_LIST_NAVIGATION_HEADER = 'Navigation Header';
 
     /**
      * @var string
      *
      * Content item navigation footer template name.
      */
-    protected const PYZ_WIDGET_TEMPLATE_DISPLAY_NAME_LIST_NAVIGATION_FOOTER = 'Navigation Footer';
+    protected const WIDGET_TEMPLATE_DISPLAY_NAME_LIST_NAVIGATION_FOOTER = 'Navigation Footer';
 
     /**
      * @var string
      *
      * Content item navigation footer checkout template name.
      */
-    protected const PYZ_WIDGET_TEMPLATE_DISPLAY_NAME_LIST_NAVIGATION_FOOTER_CHECKOUT = 'Navigation Footer Checkout';
+    protected const WIDGET_TEMPLATE_DISPLAY_NAME_LIST_NAVIGATION_FOOTER_CHECKOUT = 'Navigation Footer Checkout';
 
     /**
      * @var string
      *
      * Content item footer partners template name.
      */
-    protected const PYZ_WIDGET_TEMPLATE_DISPLAY_NAME_LIST_FOOTER_PARTNERS = 'Footer Partners';
+    protected const WIDGET_TEMPLATE_DISPLAY_NAME_LIST_FOOTER_PARTNERS = 'Footer Partners';
 
     /**
      * @var string
      *
      * Content item footer social links template name.
      */
-    protected const PYZ_WIDGET_TEMPLATE_DISPLAY_NAME_LIST_FOOTER_SOCIAL_LINKS = 'Footer Social Links';
+    protected const WIDGET_TEMPLATE_DISPLAY_NAME_LIST_FOOTER_SOCIAL_LINKS = 'Footer Social Links';
 
     /**
      * @api
@@ -100,11 +100,11 @@ class ContentNavigationGuiConfig extends SprykerContentNavigationGuiConfig
     {
         $contentWidgetTemplates = parent::getContentWidgetTemplates();
         $contentWidgetTemplates += [
-            static::PYZ_WIDGET_TEMPLATE_IDENTIFIER_LIST_NAVIGATION_HEADER => static::PYZ_WIDGET_TEMPLATE_DISPLAY_NAME_LIST_NAVIGATION_HEADER,
-            static::PYZ_WIDGET_TEMPLATE_IDENTIFIER_LIST_NAVIGATION_FOOTER => static::PYZ_WIDGET_TEMPLATE_DISPLAY_NAME_LIST_NAVIGATION_FOOTER,
-            static::PYZ_WIDGET_TEMPLATE_IDENTIFIER_LIST_NAVIGATION_FOOTER_CHECKOUT => static::PYZ_WIDGET_TEMPLATE_DISPLAY_NAME_LIST_NAVIGATION_FOOTER_CHECKOUT,
-            static::PYZ_WIDGET_TEMPLATE_IDENTIFIER_LIST_FOOTER_PARTNERS => static::PYZ_WIDGET_TEMPLATE_DISPLAY_NAME_LIST_FOOTER_PARTNERS,
-            static::PYZ_WIDGET_TEMPLATE_IDENTIFIER_LIST_FOOTER_SOCIAL_LINKS => static::PYZ_WIDGET_TEMPLATE_DISPLAY_NAME_LIST_FOOTER_SOCIAL_LINKS,
+            static::WIDGET_TEMPLATE_IDENTIFIER_LIST_NAVIGATION_HEADER => static::WIDGET_TEMPLATE_DISPLAY_NAME_LIST_NAVIGATION_HEADER,
+            static::WIDGET_TEMPLATE_IDENTIFIER_LIST_NAVIGATION_FOOTER => static::WIDGET_TEMPLATE_DISPLAY_NAME_LIST_NAVIGATION_FOOTER,
+            static::WIDGET_TEMPLATE_IDENTIFIER_LIST_NAVIGATION_FOOTER_CHECKOUT => static::WIDGET_TEMPLATE_DISPLAY_NAME_LIST_NAVIGATION_FOOTER_CHECKOUT,
+            static::WIDGET_TEMPLATE_IDENTIFIER_LIST_FOOTER_PARTNERS => static::WIDGET_TEMPLATE_DISPLAY_NAME_LIST_FOOTER_PARTNERS,
+            static::WIDGET_TEMPLATE_IDENTIFIER_LIST_FOOTER_SOCIAL_LINKS => static::WIDGET_TEMPLATE_DISPLAY_NAME_LIST_FOOTER_SOCIAL_LINKS,
         ];
 
         return $contentWidgetTemplates;
