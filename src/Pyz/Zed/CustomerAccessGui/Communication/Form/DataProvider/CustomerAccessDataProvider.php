@@ -14,23 +14,12 @@ use Pyz\Zed\CustomerAccess\Business\CustomerAccessFacadeInterface;
 use Pyz\Zed\CustomerAccessGui\Communication\Form\CustomerAccessForm;
 use Spryker\Zed\CustomerAccessGui\Communication\Form\DataProvider\CustomerAccessDataProvider as SprykerCustomerAccessDataProvider;
 
+/**
+ * @property \Pyz\Zed\CustomerAccess\Business\CustomerAccessFacadeInterface $customerAccessFacade
+ */
 class CustomerAccessDataProvider extends SprykerCustomerAccessDataProvider
 {
-    /**
-     * @var \Pyz\Zed\CustomerAccess\Business\CustomerAccessFacadeInterface
-     */
-    protected $customerAccessFacade;
-
-    /**
-     * @param \Pyz\Zed\CustomerAccess\Business\CustomerAccessFacadeInterface $customerAccessFacade
-     */
-    public function __construct(
-        CustomerAccessFacadeInterface $customerAccessFacade,
-    ) {
-        $this->customerAccessFacade = $customerAccessFacade;
-    }
-
-    /**
+   /**
      * @return array<string, mixed>
      */
     public function getOptions(): array
