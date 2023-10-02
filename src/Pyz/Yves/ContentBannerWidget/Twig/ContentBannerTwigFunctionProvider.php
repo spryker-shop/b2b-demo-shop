@@ -19,7 +19,7 @@ class ContentBannerTwigFunctionProvider extends SprykerShopContentBannerTwigFunc
     protected const WIDGET_TEMPLATE_IDENTIFIER_HOME_PAGE = 'home-page';
 
     /**
-     * @return array
+     * @return array<string, string>
      */
     protected function getAvailableTemplates(): array
     {

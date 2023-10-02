@@ -22,7 +22,7 @@ class ContentProductAbstractListTwigFunctionProvider extends SprykerShopContentP
     protected const WIDGET_TEMPLATE_IDENTIFIER_SLIDER = 'slider';
 
     /**
-     * @return array
+     * @return array<string, string>
      */
     protected function getAvailableTemplates(): array
     {

@@ -16,12 +16,7 @@ use Spryker\Zed\CustomerAccessGui\Communication\Form\DataProvider\CustomerAccess
 class CustomerAccessDataProvider extends SprykerCustomerAccessDataProvider
 {
     /**
-     * @var \Pyz\Zed\CustomerAccess\Business\CustomerAccessFacadeInterface
-     */
-    protected $customerAccessFacade;
-
-    /**
-     * @return array
+     * @return array<string, mixed>
      */
     public function getOptions(): array
     {
@@ -40,7 +35,7 @@ class CustomerAccessDataProvider extends SprykerCustomerAccessDataProvider
     }
 
     /**
-     * @param \ArrayObject|\Generated\Shared\Transfer\ContentTypeAccessTransfer[] $contentTypes
+     * @param \ArrayObject<array-key, \Generated\Shared\Transfer\ContentTypeAccessTransfer> $contentTypes
      *
      * @return \Generated\Shared\Transfer\ContentTypeAccessTransfer[]
      */
