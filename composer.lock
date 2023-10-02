@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d5bee3abdb5f07b13813b55907ffa4bd",
+    "content-hash": "6ecfd812d60d0e58a54dfff3f619cde2",
     "packages": [
         {
             "name": "async-aws/core",
@@ -15751,6 +15751,60 @@
             "time": "2023-09-27T16:08:39+00:00"
         },
         {
+            "name": "spryker/api-key-authorization-connector",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/api-key-authorization-connector.git",
+                "reference": "8a1e3241c8736c518a7c7fb2b3d8bf7ea37d2e9f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/api-key-authorization-connector/zipball/8a1e3241c8736c518a7c7fb2b3d8bf7ea37d2e9f",
+                "reference": "8a1e3241c8736c518a7c7fb2b3d8bf7ea37d2e9f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0",
+                "spryker/api-key": "^2.0.0",
+                "spryker/authorization-extension": "^1.0.0",
+                "spryker/glue-backend-api-application-authorization-connector-extension": "^1.0.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/log": "^3.7.0",
+                "spryker/monolog": "^2.0.0",
+                "spryker/transfer": "^3.27.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/propel": "*",
+                "spryker/testify": "*",
+                "spryker/user": "*"
+            },
+            "suggest": {
+                "spryker/container": "Add this module when you want to use the Container."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "ApiKeyAuthorizationConnector module",
+            "support": {
+                "source": "https://github.com/spryker/api-key-authorization-connector/tree/1.0.0"
+            },
+            "time": "2023-09-27T16:08:39+00:00"
+        },
+        {
             "name": "spryker/api-key-gui",
             "version": "2.0.0",
             "source": {
@@ -28656,6 +28710,117 @@
             "time": "2022-05-16T14:55:23+00:00"
         },
         {
+            "name": "spryker/dynamic-entity",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/dynamic-entity.git",
+                "reference": "0b14850078bf427a5731179ed15bb9befc876949"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/dynamic-entity/zipball/0b14850078bf427a5731179ed15bb9befc876949",
+                "reference": "0b14850078bf427a5731179ed15bb9befc876949",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0",
+                "spryker/dynamic-entity-extension": "^1.0.0",
+                "spryker/installer-extension": "^1.0.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/propel-orm": "^1.6.0",
+                "spryker/transfer": "^3.27.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/container": "*",
+                "spryker/propel": "*",
+                "spryker/store": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "DynamicEntity module",
+            "support": {
+                "source": "https://github.com/spryker/dynamic-entity/tree/1.0.0"
+            },
+            "time": "2023-10-02T08:42:29+00:00"
+        },
+        {
+            "name": "spryker/dynamic-entity-backend-api",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/dynamic-entity-backend-api.git",
+                "reference": "ee251ffdb36f116e7bb043f69823e84f2b647e3f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/dynamic-entity-backend-api/zipball/ee251ffdb36f116e7bb043f69823e84f2b647e3f",
+                "reference": "ee251ffdb36f116e7bb043f69823e84f2b647e3f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0",
+                "spryker/documentation-generator-api-extension": "^1.1.0",
+                "spryker/documentation-generator-open-api-extension": "^1.0.0",
+                "spryker/dynamic-entity": "^1.0.0",
+                "spryker/glossary-storage": "^1.0.0",
+                "spryker/glue-application-extension": "^1.10.0",
+                "spryker/glue-backend-api-application-authorization-connector-extension": "^1.1.0",
+                "spryker/kernel": "^3.30.0",
+                "spryker/locale": "^3.0.0 || ^4.0.0",
+                "spryker/log": "^3.7.0",
+                "spryker/monolog": "^2.0.0",
+                "spryker/symfony": "^3.0.0",
+                "spryker/transfer": "^3.27.0",
+                "spryker/util-encoding": "^2.0.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*",
+                "spryker/config": "*",
+                "spryker/container": "*",
+                "spryker/glue-application": "*",
+                "spryker/propel": "*",
+                "spryker/storage": "*",
+                "spryker/store": "*",
+                "spryker/testify": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "DynamicEntityBackendApi module",
+            "support": {
+                "source": "https://github.com/spryker/dynamic-entity-backend-api/tree/1.0.0"
+            },
+            "time": "2023-10-02T08:42:29+00:00"
+        },
+        {
             "name": "spryker/dynamic-entity-extension",
             "version": "1.0.0",
             "source": {
@@ -28696,6 +28861,55 @@
                 "source": "https://github.com/spryker/dynamic-entity-extension/tree/1.0.0"
             },
             "time": "2023-09-19T09:44:37+00:00"
+        },
+        {
+            "name": "spryker/dynamic-entity-gui",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spryker/dynamic-entity-gui.git",
+                "reference": "f2199df26695565c6d1ae13c396a77f6ba9354e8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spryker/dynamic-entity-gui/zipball/f2199df26695565c6d1ae13c396a77f6ba9354e8",
+                "reference": "f2199df26695565c6d1ae13c396a77f6ba9354e8",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0",
+                "spryker/doctrine-inflector": "^1.0.0",
+                "spryker/dynamic-entity": "^1.0.0",
+                "spryker/gui": "^3.38.0",
+                "spryker/kernel": "^3.33.0",
+                "spryker/propel-orm": "^1.0.0",
+                "spryker/symfony": "^3.0.0",
+                "spryker/transfer": "^3.27.0",
+                "spryker/util-text": "^1.1.0"
+            },
+            "require-dev": {
+                "spryker/code-sniffer": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spryker\\": "src/Spryker/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "description": "DynamicEntityGui module",
+            "support": {
+                "source": "https://github.com/spryker/dynamic-entity-gui/tree/1.0.0"
+            },
+            "time": "2023-10-02T08:42:29+00:00"
         },
         {
             "name": "spryker/egulias",
