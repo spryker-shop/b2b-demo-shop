@@ -10,7 +10,6 @@ namespace Pyz\Zed\CustomerAccessGui\Communication\Form\DataProvider;
 use ArrayObject;
 use Generated\Shared\Transfer\ContentTypeAccessTransfer;
 use Generated\Shared\Transfer\CustomerAccessTransfer;
-use Pyz\Zed\CustomerAccess\Business\CustomerAccessFacadeInterface;
 use Pyz\Zed\CustomerAccessGui\Communication\Form\CustomerAccessForm;
 use Spryker\Zed\CustomerAccessGui\Communication\Form\DataProvider\CustomerAccessDataProvider as SprykerCustomerAccessDataProvider;
 
@@ -20,8 +19,8 @@ use Spryker\Zed\CustomerAccessGui\Communication\Form\DataProvider\CustomerAccess
 class CustomerAccessDataProvider extends SprykerCustomerAccessDataProvider
 {
    /**
-     * @return array<string, mixed>
-     */
+    * @return array<string, mixed>
+    */
     public function getOptions(): array
     {
         $allContentTypes = $this->customerAccessFacade->getAllContentTypes();
