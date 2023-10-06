@@ -5,7 +5,7 @@ export default class ShoppingListNoteToggler extends Component {
     protected trigger: HTMLElement;
     protected noteTextFieldWrapper: HTMLElement;
     protected noteTextarea: HTMLFormElement;
-    protected hiddenClass: string = 'is-hidden';
+    protected hiddenClass = 'is-hidden';
 
     protected readyCallback(): void {}
 

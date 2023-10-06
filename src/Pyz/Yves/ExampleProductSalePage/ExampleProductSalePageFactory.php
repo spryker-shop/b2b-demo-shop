@@ -7,16 +7,18 @@
 
 namespace Pyz\Yves\ExampleProductSalePage;
 
+use Generated\Shared\Transfer\StoreTransfer;
 use Spryker\Client\Catalog\CatalogClientInterface;
+use Spryker\Client\Locale\LocaleClientInterface;
 use Spryker\Client\Search\SearchClientInterface;
 use Spryker\Client\UrlStorage\UrlStorageClientInterface;
-use Spryker\Shared\Kernel\Store;
+use Spryker\Service\UtilNumber\UtilNumberServiceInterface;
 use Spryker\Yves\Kernel\AbstractFactory;
 
 class ExampleProductSalePageFactory extends AbstractFactory
 {
     /**
-     * @return string[]
+     * @return array<string>
      */
     public function getExampleProductSalePageWidgetPlugins(): array
     {
@@ -40,11 +42,13 @@ class ExampleProductSalePageFactory extends AbstractFactory
     }
 
     /**
-     * @return \Spryker\Shared\Kernel\Store
+     * @return \Generated\Shared\Transfer\StoreTransfer
      */
-    public function getPyzStore(): Store
+    public function getPyzStore(): StoreTransfer
     {
-        return $this->getProvidedDependency(ExampleProductSalePageDependencyProvider::PYZ_STORE);
+        $storeClient = $this->getProvidedDependency(ExampleProductSalePageDependencyProvider::PYZ_CLIENT_STORE);
+
+        return $storeClient->getCurrentStore();
     }
 
     /**
@@ -53,5 +57,21 @@ class ExampleProductSalePageFactory extends AbstractFactory
     public function getPyzCatalogClient(): CatalogClientInterface
     {
         return $this->getProvidedDependency(ExampleProductSalePageDependencyProvider::PYZ_CLIENT_CATALOG);
+    }
+
+    /**
+     * @return \Spryker\Client\Locale\LocaleClientInterface
+     */
+    public function getPyzLocaleClient(): LocaleClientInterface
+    {
+        return $this->getProvidedDependency(ExampleProductSalePageDependencyProvider::PYZ_CLIENT_LOCALE);
+    }
+
+    /**
+     * @return \Spryker\Service\UtilNumber\UtilNumberServiceInterface
+     */
+    public function getUtilNumberService(): UtilNumberServiceInterface
+    {
+        return $this->getProvidedDependency(ExampleProductSalePageDependencyProvider::PYZ_SERVICE_UTIL_NUMBER);
     }
 }

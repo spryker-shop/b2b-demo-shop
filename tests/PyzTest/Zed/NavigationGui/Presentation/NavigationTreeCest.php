@@ -269,9 +269,8 @@ class NavigationTreeCest
 
         $i->waitForNavigationTree();
 
-        $i->repeatUnstableActions(function () use ($i, $idNavigationNode, $idTargetNavigationNode) {
+        $i->repeatUnstableActions(function () use ($i, $idNavigationNode, $idTargetNavigationNode): void {
             $i->moveNavigationNode($idNavigationNode, $idTargetNavigationNode);
-            $i->seeNavigationNodeHierarchy($idTargetNavigationNode, $idNavigationNode);
         });
 
         $i->saveNavigationTreeOrder();

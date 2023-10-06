@@ -12,6 +12,7 @@ use Spryker\Client\CompanyBusinessUnitSalesConnector\Plugin\Permission\SeeBusine
 use Spryker\Client\CompanyRole\Plugin\PermissionStoragePlugin;
 use Spryker\Client\CompanySalesConnector\Plugin\Permission\SeeCompanyOrdersPermissionPlugin;
 use Spryker\Client\CompanyUser\Plugin\CompanyUserStatusChangePermissionPlugin;
+use Spryker\Client\CompanyUser\Plugin\Permission\SeeCompanyUsersPermissionPlugin;
 use Spryker\Client\CustomerAccessPermission\Plugin\CustomerAccessPermissionStoragePlugin;
 use Spryker\Client\CustomerAccessPermission\Plugin\SeeAddToCartPermissionPlugin;
 use Spryker\Client\CustomerAccessPermission\Plugin\SeeOrderPlaceSubmitPermissionPlugin;
@@ -37,7 +38,7 @@ use SprykerShop\Shared\CartPage\Plugin\RemoveCartItemPermissionPlugin;
 class PermissionDependencyProvider extends SprykerPermissionDependencyProvider
 {
     /**
-     * @return \Spryker\Client\PermissionExtension\Dependency\Plugin\PermissionStoragePluginInterface[]
+     * @return array<\Spryker\Client\PermissionExtension\Dependency\Plugin\PermissionStoragePluginInterface>
      */
     protected function getPermissionStoragePlugins(): array
     {
@@ -49,7 +50,7 @@ class PermissionDependencyProvider extends SprykerPermissionDependencyProvider
     }
 
     /**
-     * @return \Spryker\Shared\PermissionExtension\Dependency\Plugin\PermissionPluginInterface[]
+     * @return array<\Spryker\Shared\PermissionExtension\Dependency\Plugin\PermissionPluginInterface>
      */
     protected function getPermissionPlugins(): array
     {
@@ -76,6 +77,7 @@ class PermissionDependencyProvider extends SprykerPermissionDependencyProvider
             new ApproveQuotePermissionPlugin(), #QuoteApprovalFeature
             new SeeCompanyOrdersPermissionPlugin(),
             new SeeBusinessUnitOrdersPermissionPlugin(),
+            new SeeCompanyUsersPermissionPlugin(),
         ];
     }
 }

@@ -26,18 +26,20 @@ class ProductController extends SprykerShopProductController
     protected const PYZ_KEY_ID_PRODUCT_ABSTRACT = 'id_product_abstract';
 
     /**
-     * @param array $productData
+     * @param array<mixed> $productData
      * @param \Symfony\Component\HttpFoundation\Request $request
      *
      * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      *
-     * @return array
+     * @return array<string, mixed>
      */
     protected function executeDetailAction(array $productData, Request $request): array
     {
+        $selectedAttributes = $this->getSelectedAttributesWithoutPostfix($productData, $request);
+
         $productViewTransfer = $this->getFactory()
             ->getProductStorageClient()
-            ->mapProductStorageData($productData, $this->getLocale(), $this->getSelectedAttributes($request));
+            ->mapProductStorageData($productData, $this->getLocale(), $selectedAttributes);
 
         try {
             $this->assertProductRestrictions($productViewTransfer);
@@ -47,7 +49,7 @@ class ProductController extends SprykerShopProductController
 
         $quoteTransfer = new QuoteTransfer();
         $quoteTransfer->addItem(
-            (new ItemTransfer())->setIdProductAbstract($productViewTransfer->getIdProductAbstract())
+            (new ItemTransfer())->setIdProductAbstract($productViewTransfer->getIdProductAbstract()),
         );
 
         $bundledProducts = [];
@@ -65,7 +67,7 @@ class ProductController extends SprykerShopProductController
                     'sku' => $bundledProduct['sku'],
                     'idProductConcrete' => $bundledProduct['id_product_concrete'],
                 ],
-                $this->getLocale()
+                $this->getLocale(),
             );
             $bundledProduct['image'] = $bundledProductView->getImages()->offsetGet(0)->getExternalUrlSmall();
             $bundledProducts[] = $bundledProduct;

@@ -25,7 +25,7 @@ use PyzTest\Yves\CompanyUser\_support\PageObject\CompanyRegistrationPage;
  * @method void comment($description)
  * @method \Codeception\Lib\Friend haveFriend($name, $actorClass = NULL)
  *
- * @SuppressWarnings(PHPMD)
+ * @SuppressWarnings(\PyzTest\Yves\CompanyUser\PHPMD)
  */
 class CompanyUserPresentationTester extends Actor
 {

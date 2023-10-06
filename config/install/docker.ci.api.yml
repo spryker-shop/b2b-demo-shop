@@ -16,6 +16,9 @@ sections:
         rest-request-validation-cache-warmup:
             command: 'vendor/bin/console rest-api:build-request-validation-cache'
 
+        controller-cache-warmup:
+            command: 'vendor/bin/glue glue-api:controller:cache:warm-up'
+
         propel-copy-schema:
             command: 'vendor/bin/console propel:schema:copy'
 
@@ -34,6 +37,9 @@ sections:
         cache-class-resolver-build:
             command: 'vendor/bin/console cache:class-resolver:build'
 
+        generate-scope-collection-file:
+            command: 'vendor/bin/console oauth:scope-collection-file:generate'
+
     build-development:
         generate-transfers:
             command: 'vendor/bin/console transfer:generate'
@@ -43,12 +49,6 @@ sections:
 
         rest-api-generate-documentation:
             command: 'vendor/bin/console rest-api:generate:documentation'
-
-    init-storages-per-store:
-        queue-setup:
-            command: 'vendor/bin/console queue:setup'
-        setup-search-create-sources:
-            command: 'vendor/bin/console search:setup:sources'
 
     init-storages-per-region:
         propel-copy-schema:
@@ -73,5 +73,11 @@ sections:
             command: 'vendor/bin/console setup:init-db'
 
     demodata:
+        queue-setup:
+            command: 'vendor/bin/console queue:setup'
+
         import-demodata:
             command: 'vendor/bin/console data:import --config=data/import/common/minimal.yml'
+
+        setup-search-create-sources:
+            command: 'vendor/bin/console search:setup:sources'

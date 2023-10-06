@@ -29,7 +29,7 @@ class CustomerLoginCest
      *
      * @return void
      */
-    public function testICanOpenLoginPage(CustomerPresentationTester $i)
+    public function testICanOpenLoginPage(CustomerPresentationTester $i): void
     {
         $i->amOnPage(CustomerLoginPage::URL);
         $i->see(CustomerLoginPage::TITLE_LOGIN);
@@ -40,7 +40,7 @@ class CustomerLoginCest
      *
      * @return void
      */
-    public function testICanOpenForgotPasswordPage(CustomerPresentationTester $i)
+    public function testICanOpenForgotPasswordPage(CustomerPresentationTester $i): void
     {
         $i->amOnPage(CustomerLoginPage::URL);
         $i->click(CustomerLoginPage::FORGOT_PASSWORD_LINK);
@@ -52,7 +52,7 @@ class CustomerLoginCest
      *
      * @return void
      */
-    public function testICanLoginWithValidData(CustomerPresentationTester $i)
+    public function testICanLoginWithValidData(CustomerPresentationTester $i): void
     {
         $i->amOnPage(CustomerLoginPage::URL);
         $customerTransfer = $i->haveRegisteredCustomer();

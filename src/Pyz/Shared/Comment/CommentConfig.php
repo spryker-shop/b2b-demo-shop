@@ -12,7 +12,7 @@ use Spryker\Shared\Comment\CommentConfig as SprykerCommentConfig;
 class CommentConfig extends SprykerCommentConfig
 {
     /**
-     * @return string[]
+     * @return array<string>
      */
     public function getAvailableCommentTags(): array
     {

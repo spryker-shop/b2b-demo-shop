@@ -7,11 +7,11 @@
 
 namespace Pyz\Client\ExampleProductSalePage;
 
+use Generated\Shared\Transfer\StoreTransfer;
 use Spryker\Client\Kernel\AbstractFactory;
 use Spryker\Client\ProductLabelStorage\ProductLabelStorageClientInterface;
 use Spryker\Client\Search\SearchClientInterface;
 use Spryker\Client\SearchExtension\Dependency\Plugin\QueryInterface;
-use Spryker\Shared\Kernel\Store;
 
 /**
  * @method \Pyz\Client\ExampleProductSalePage\ExampleProductSalePageConfig getConfig()
@@ -19,7 +19,7 @@ use Spryker\Shared\Kernel\Store;
 class ExampleProductSalePageFactory extends AbstractFactory
 {
     /**
-     * @param array $requestParameters
+     * @param array<string, mixed> $requestParameters
      *
      * @return \Spryker\Client\SearchExtension\Dependency\Plugin\QueryInterface
      */
@@ -30,7 +30,7 @@ class ExampleProductSalePageFactory extends AbstractFactory
         return $this->getPyzSearchClient()->expandQuery(
             $saleQueryPlugin,
             $this->getSaleSearchQueryExpanderPlugins(),
-            $requestParameters
+            $requestParameters,
         );
     }
 
@@ -43,11 +43,13 @@ class ExampleProductSalePageFactory extends AbstractFactory
     }
 
     /**
-     * @return \Spryker\Shared\Kernel\Store
+     * @return \Generated\Shared\Transfer\StoreTransfer
      */
-    public function getPyzStore(): Store
+    public function getPyzStore(): StoreTransfer
     {
-        return $this->getProvidedDependency(ExampleProductSalePageDependencyProvider::PYZ_STORE);
+        $storeClient = $this->getProvidedDependency(ExampleProductSalePageDependencyProvider::PYZ_CLIENT_STORE);
+
+        return $storeClient->getCurrentStore();
     }
 
     /**
@@ -59,7 +61,7 @@ class ExampleProductSalePageFactory extends AbstractFactory
     }
 
     /**
-     * @return \Spryker\Client\SearchExtension\Dependency\Plugin\QueryExpanderPluginInterface[]
+     * @return array<\Spryker\Client\SearchExtension\Dependency\Plugin\QueryExpanderPluginInterface>
      */
     protected function getSaleSearchQueryExpanderPlugins(): array
     {
@@ -67,7 +69,7 @@ class ExampleProductSalePageFactory extends AbstractFactory
     }
 
     /**
-     * @return \Spryker\Client\SearchExtension\Dependency\Plugin\ResultFormatterPluginInterface[]
+     * @return array<\Spryker\Client\SearchExtension\Dependency\Plugin\ResultFormatterPluginInterface>
      */
     public function getSaleSearchResultFormatterPlugins(): array
     {

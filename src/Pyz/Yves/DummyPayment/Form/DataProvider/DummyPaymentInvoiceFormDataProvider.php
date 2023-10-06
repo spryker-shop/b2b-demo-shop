@@ -9,6 +9,7 @@ namespace Pyz\Yves\DummyPayment\Form\DataProvider;
 
 use Generated\Shared\Transfer\DummyPaymentTransfer;
 use Generated\Shared\Transfer\PaymentTransfer;
+use Generated\Shared\Transfer\QuoteTransfer;
 use Spryker\Shared\Kernel\Transfer\AbstractTransfer;
 use Spryker\Yves\StepEngine\Dependency\Form\StepEngineFormDataProviderInterface;
 
@@ -19,7 +20,7 @@ class DummyPaymentInvoiceFormDataProvider implements StepEngineFormDataProviderI
      *
      * @return \Generated\Shared\Transfer\QuoteTransfer
      */
-    public function getData(AbstractTransfer $quoteTransfer)
+    public function getData(AbstractTransfer $quoteTransfer): QuoteTransfer
     {
         if ($quoteTransfer->getPayment() === null) {
             $paymentTransfer = new PaymentTransfer();
@@ -35,9 +36,9 @@ class DummyPaymentInvoiceFormDataProvider implements StepEngineFormDataProviderI
     /**
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
      *
-     * @return array
+     * @return array<mixed>
      */
-    public function getOptions(AbstractTransfer $quoteTransfer)
+    public function getOptions(AbstractTransfer $quoteTransfer): array
     {
         return [];
     }

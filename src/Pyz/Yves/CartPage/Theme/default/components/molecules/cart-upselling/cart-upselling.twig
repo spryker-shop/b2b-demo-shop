@@ -1,0 +1,34 @@
+{% extends molecule('cart-upselling', 'SprykerShop:CartPage') %}
+
+{% block body %}
+    {% if data.isUpsellingProductsViaAjaxEnabled is not empty %}
+        {% include molecule('ajax-provider') with {
+            class: config.jsName ~ '__ajax-provider',
+            attributes: {
+                'fetch-on-load': true,
+                url: path('cart/get-upselling-widget'),
+            },
+        } only %}
+
+        {% include molecule('ajax-loader') with {
+            modifiers: ['big'],
+            attributes: {
+                'provider-class-name': config.jsName ~ '__ajax-provider',
+            },
+        } only %}
+
+        {% include molecule('ajax-renderer') with {
+            attributes: {
+                'provider-class-name': config.jsName ~ '__ajax-provider',
+                'target-class-name': config.jsName ~ '__container',
+                'mount-after-render': true,
+            },
+        } only %}
+    {% endif %}
+
+    <div class="{{ config.jsName }}__container">
+        {% if data.isUpsellingProductsViaAjaxEnabled is empty %}
+            {% widget 'UpSellingProductsWidget' args [data.cart] only %}{% endwidget %}
+        {% endif %}
+    </div>
+{% endblock %}

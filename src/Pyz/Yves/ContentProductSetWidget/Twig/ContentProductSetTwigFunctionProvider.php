@@ -86,7 +86,7 @@ class ContentProductSetTwigFunctionProvider extends TwigFunctionProvider
         Environment $twig,
         string $localeName,
         ContentProductSetReaderInterface $contentProductSetReader,
-        ContentProductAbstractReaderInterface $contentProductAbstractReader
+        ContentProductAbstractReaderInterface $contentProductAbstractReader,
     ) {
         $this->twig = $twig;
         $this->localeName = $localeName;
@@ -123,7 +123,7 @@ class ContentProductSetTwigFunctionProvider extends TwigFunctionProvider
                 return $this->getPyzMessageProductSetNotFound($contentKey);
             }
 
-            /** @var array $selectedAttributes */
+            /** @var array<mixed> $selectedAttributes */
             $selectedAttributes = $this->getPyzRequest($context)->query->get(static::PYZ_PARAM_ATTRIBUTE) ?: [];
             $productAbstractViewCollection = $this->contentProductAbstractReader
                 ->getProductAbstractCollection($productSetDataStorageTransfer, $selectedAttributes, $this->localeName);
@@ -133,13 +133,13 @@ class ContentProductSetTwigFunctionProvider extends TwigFunctionProvider
                 [
                     'productSet' => $productSetDataStorageTransfer,
                     'productViews' => $productAbstractViewCollection,
-                ]
+                ],
             );
         };
     }
 
     /**
-     * @return array
+     * @return array<string, mixed>
      */
     public function getOptions(): array
     {
@@ -150,7 +150,7 @@ class ContentProductSetTwigFunctionProvider extends TwigFunctionProvider
     }
 
     /**
-     * @return string[]
+     * @return array<string>
      */
     protected function getPyzAvailableTemplates(): array
     {
@@ -191,12 +191,12 @@ class ContentProductSetTwigFunctionProvider extends TwigFunctionProvider
     {
         return sprintf(
             '<strong>Content product set widget could not be rendered because the content item with key "%s" is not a product set.</strong>',
-            $contentKey
+            $contentKey,
         );
     }
 
     /**
-     * @param array $context
+     * @param array<mixed> $context
      *
      * @return \Symfony\Component\HttpFoundation\Request
      */

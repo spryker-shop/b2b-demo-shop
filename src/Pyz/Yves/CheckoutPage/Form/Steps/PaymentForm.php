@@ -61,7 +61,7 @@ class PaymentForm extends AbstractType
 
     /**
      * @param \Symfony\Component\Form\FormBuilderInterface $builder
-     * @param array $options
+     * @param array<mixed> $options
      *
      * @return void
      */
@@ -99,7 +99,7 @@ class PaymentForm extends AbstractType
     /**
      * @param \Symfony\Component\Form\FormBuilderInterface $builder
      * @param array<\Spryker\Yves\StepEngine\Dependency\Form\SubFormInterface|\Pyz\Yves\StepEngine\Dependency\Form\SubFormInterface> $paymentMethodSubForms
-     * @param array $options
+     * @param array<mixed> $options
      *
      * @return $this
      */
@@ -140,7 +140,7 @@ class PaymentForm extends AbstractType
 
     /**
      * @param \Symfony\Component\Form\FormBuilderInterface $builder
-     * @param array $options
+     * @param array<mixed> $options
      *
      * @return $this
      */
@@ -250,7 +250,7 @@ class PaymentForm extends AbstractType
      */
     protected function extendPyzPaymentCollection(
         SubFormPluginCollection $paymentSubFormPluginCollection,
-        PaymentMethodsTransfer $paymentMethodsTransfer
+        PaymentMethodsTransfer $paymentMethodsTransfer,
     ): SubFormPluginCollection {
         $paymentCollectionExtenderPlugins = $this->getFactory()->getPaymentCollectionExtenderPlugins();
 
@@ -272,7 +272,7 @@ class PaymentForm extends AbstractType
      */
     protected function filterPyzOutNotAvailableForms(
         SubFormPluginCollection $paymentMethodSubFormPlugins,
-        PaymentMethodsTransfer $availablePaymentMethodsTransfer
+        PaymentMethodsTransfer $availablePaymentMethodsTransfer,
     ): SubFormPluginCollection {
         $paymentMethodNames = $this->getPyzAvailablePaymentMethodNames($availablePaymentMethodsTransfer);
         $paymentMethodNames = array_combine($paymentMethodNames, $paymentMethodNames);

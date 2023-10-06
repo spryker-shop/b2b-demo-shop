@@ -13,7 +13,7 @@ use Spryker\Zed\CompanyUserStorage\CompanyUserStorageDependencyProvider as Spryk
 class CompanyUserStorageDependencyProvider extends SprykerCompanyUserStorageDependencyProvider
 {
     /**
-     * @return \Spryker\Zed\CompanyUserStorageExtension\Dependency\Plugin\CompanyUserStorageExpanderPluginInterface[]
+     * @return array<\Spryker\Zed\CompanyUserStorageExtension\Dependency\Plugin\CompanyUserStorageExpanderPluginInterface>
      */
     protected function getCompanyUserStorageExpanderPlugins(): array
     {

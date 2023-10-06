@@ -25,6 +25,7 @@ class CustomerAddressesPage
      * @var string
      */
     public const ADDRESS_A = 'address a';
+
     /**
      * @var string
      */

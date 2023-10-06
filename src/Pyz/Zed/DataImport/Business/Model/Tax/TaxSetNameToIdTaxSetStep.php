@@ -18,6 +18,7 @@ class TaxSetNameToIdTaxSetStep implements DataImportStepInterface
      * @var string
      */
     public const KEY_SOURCE = 'taxSetName';
+
     /**
      * @var string
      */
@@ -34,7 +35,7 @@ class TaxSetNameToIdTaxSetStep implements DataImportStepInterface
     protected $target;
 
     /**
-     * @var array
+     * @var array<string, int>
      */
     protected $resolved = [];
 
@@ -61,15 +62,17 @@ class TaxSetNameToIdTaxSetStep implements DataImportStepInterface
             throw new DataKeyNotFoundInDataSetException(sprintf(
                 'Expected a key "%s" in current data set. Available keys: "%s"',
                 $this->source,
-                implode(', ', array_keys($dataSet->getArrayCopy()))
+                implode(', ', array_keys($dataSet->getArrayCopy())),
             ));
         }
 
-        if (!isset($this->resolved[$dataSet[$this->source]])) {
-            $this->resolved[$dataSet[$this->source]] = $this->resolveIdStock($dataSet[$this->source]);
+        /** @var string $taxSetName */
+        $taxSetName = $dataSet[$this->source];
+        if (!isset($this->resolved[$taxSetName])) {
+            $this->resolved[$taxSetName] = $this->resolveIdStock($taxSetName);
         }
 
-        $dataSet[$this->target] = $this->resolved[$dataSet[$this->source]];
+        $dataSet[$this->target] = $this->resolved[$taxSetName];
     }
 
     /**

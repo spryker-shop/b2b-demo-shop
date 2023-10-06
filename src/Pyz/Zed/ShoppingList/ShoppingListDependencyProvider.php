@@ -27,7 +27,7 @@ use Spryker\Zed\ShoppingListProductOptionConnector\Communication\Plugin\Shopping
 class ShoppingListDependencyProvider extends SprykerShoppingListDependencyProvider
 {
     /**
-     * @return \Spryker\Zed\ShoppingListExtension\Dependency\Plugin\AddItemPreCheckPluginInterface[]
+     * @return array<\Spryker\Zed\ShoppingListExtension\Dependency\Plugin\AddItemPreCheckPluginInterface>
      */
     protected function getAddItemPreCheckPlugins(): array
     {
@@ -39,7 +39,7 @@ class ShoppingListDependencyProvider extends SprykerShoppingListDependencyProvid
     }
 
     /**
-     * @return \Spryker\Zed\ShoppingListExtension\Dependency\Plugin\QuoteItemsPreConvertPluginInterface[]
+     * @return array<\Spryker\Zed\ShoppingListExtension\Dependency\Plugin\QuoteItemsPreConvertPluginInterface>
      */
     protected function getQuoteItemExpanderPlugins(): array
     {
@@ -49,7 +49,7 @@ class ShoppingListDependencyProvider extends SprykerShoppingListDependencyProvid
     }
 
     /**
-     * @return \Spryker\Zed\ShoppingListExtension\Dependency\Plugin\ShoppingListItemBulkPostSavePluginInterface[]
+     * @return array<\Spryker\Zed\ShoppingListExtension\Dependency\Plugin\ShoppingListItemBulkPostSavePluginInterface>
      */
     protected function getShoppingListItemBulkPostSavePlugins(): array
     {
@@ -61,7 +61,7 @@ class ShoppingListDependencyProvider extends SprykerShoppingListDependencyProvid
     }
 
     /**
-     * @return \Spryker\Zed\ShoppingListExtension\Dependency\Plugin\ShoppingListItemBeforeDeletePluginInterface[]
+     * @return array<\Spryker\Zed\ShoppingListExtension\Dependency\Plugin\ShoppingListItemBeforeDeletePluginInterface>
      */
     protected function getBeforeDeleteShoppingListItemPlugins(): array
     {
@@ -72,7 +72,7 @@ class ShoppingListDependencyProvider extends SprykerShoppingListDependencyProvid
     }
 
     /**
-     * @return \Spryker\Zed\ShoppingListExtension\Dependency\Plugin\ShoppingListItemCollectionExpanderPluginInterface[]
+     * @return array<\Spryker\Zed\ShoppingListExtension\Dependency\Plugin\ShoppingListItemCollectionExpanderPluginInterface>
      */
     protected function getItemCollectionExpanderPlugins(): array
     {
@@ -84,7 +84,7 @@ class ShoppingListDependencyProvider extends SprykerShoppingListDependencyProvid
     }
 
     /**
-     * @return \Spryker\Zed\ShoppingListExtension\Dependency\Plugin\ItemToShoppingListItemMapperPluginInterface[]
+     * @return array<\Spryker\Zed\ShoppingListExtension\Dependency\Plugin\ItemToShoppingListItemMapperPluginInterface>
      */
     protected function getItemToShoppingListItemMapperPlugins(): array
     {

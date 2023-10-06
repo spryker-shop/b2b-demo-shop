@@ -9,6 +9,7 @@ namespace PyzTest\Zed\Calculation;
 
 use Codeception\Actor;
 use DateTime;
+use Generated\Shared\Transfer\AddressTransfer;
 use Generated\Shared\Transfer\CurrencyTransfer;
 use Generated\Shared\Transfer\DiscountTransfer;
 use Generated\Shared\Transfer\ExpenseTransfer;
@@ -57,7 +58,7 @@ use Spryker\Zed\Kernel\Container;
  * @method void comment($description)
  * @method \Codeception\Lib\Friend haveFriend($name, $actorClass = NULL)
  *
- * @SuppressWarnings(PHPMD)
+ * @SuppressWarnings(\PyzTest\Zed\Calculation\PHPMD)
  */
 class CalculationBusinessTester extends Actor
 {
@@ -67,6 +68,11 @@ class CalculationBusinessTester extends Actor
      * @var int
      */
     protected $incrementNumber = 0;
+
+    /**
+     * @var string
+     */
+    protected const COUNTRY_DE = 'DE';
 
     /**
      * @param int $discountAmount
@@ -93,7 +99,7 @@ class CalculationBusinessTester extends Actor
         $discountEntity->setDisplayName('test1' . $this->getIncrementNumber());
         $discountEntity->setIsActive(1);
         $discountEntity->setValidFrom(new DateTime('1985-07-01'));
-        $discountEntity->setValidTo(new DateTime('2037-07-01'));
+        $discountEntity->setValidTo(new DateTime('2030-07-01'));
         $discountEntity->setCalculatorPlugin($calculatorType);
         $discountEntity->setCollectorQueryString('sku = "' . $sku . '"');
 
@@ -152,7 +158,7 @@ class CalculationBusinessTester extends Actor
      */
     public function createCalculationFacade(array $calculatorPlugins = []): CalculationFacade
     {
-        if (empty($calculatorPlugins)) {
+        if (!$calculatorPlugins) {
             return new CalculationFacade();
         }
 
@@ -189,7 +195,7 @@ class CalculationBusinessTester extends Actor
     }
 
     /**
-     * @param \Generated\Shared\Transfer\ItemTransfer[] $items
+     * @param array<\Generated\Shared\Transfer\ItemTransfer> $items
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
      *
      * @return \Generated\Shared\Transfer\QuoteTransfer
@@ -210,7 +216,7 @@ class CalculationBusinessTester extends Actor
                 new RefundableAmountCalculatorPlugin(),
                 new RefundTotalCalculatorPlugin(),
                 new GrandTotalCalculatorPlugin(),
-            ]
+            ],
         );
 
         return $calculationFacade->recalculateQuote($quoteTransfer);
@@ -237,7 +243,15 @@ class CalculationBusinessTester extends Actor
     {
         return (new StoreTransfer())
             ->setIdStore(1)
-            ->setName('DE');
+            ->setName(static::COUNTRY_DE);
+    }
+
+    /**
+     * @return \Generated\Shared\Transfer\AddressTransfer
+     */
+    public function getCurrentShippingAddress(): AddressTransfer
+    {
+        return (new AddressTransfer())->setIso2Code(static::COUNTRY_DE);
     }
 
     /**
@@ -314,7 +328,7 @@ class CalculationBusinessTester extends Actor
      */
     public function createAbstractProductWithTaxSet(float $taxRate): SpyProductAbstract
     {
-        $countryEntity = SpyCountryQuery::create()->findOneByIso2Code('DE');
+        $countryEntity = SpyCountryQuery::create()->findOneByIso2Code(static::COUNTRY_DE);
 
         $taxRateEntity = new SpyTaxRate();
         $taxRateEntity->setRate($taxRate);
