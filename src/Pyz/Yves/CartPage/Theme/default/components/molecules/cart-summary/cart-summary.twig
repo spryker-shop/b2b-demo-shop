@@ -53,7 +53,10 @@
 
                     <li class="list__item {{ config.name }}__item">
                         {{ 'cart.total.tax_total' | trans }}
-                        <span class="float-right">{{ data.cart.totals.taxTotal.amount | money(true, data.cart.currency.code) }}</span>
+                        {% widget 'CartSummaryHideTaxAmountWidget' args [data.cart] only %}
+                        {% nowidget %}
+                            <span class="float-right">{{ data.cart.totals.taxTotal.amount | money(true, data.cart.currency.code) }}</span>
+                        {% endwidget %}
                     </li>
                     <li class="list__item {{ config.name }}__item {{ config.name }}__total">
                         <strong>{{ 'cart.price.grand.total' | trans }}</strong>
