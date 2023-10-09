@@ -15,7 +15,7 @@ class MultiCartPageRouteProviderPlugin extends SprykerMultiCartPageRouteProvider
     /**
      * @var string
      */
-    public const PYZ_ROUTE_MULTI_CART_SET_DEFAULT_BACK = 'multi-cart/set-default-back';
+    public const ROUTE_MULTI_CART_SET_DEFAULT_BACK = 'multi-cart/set-default-back';
 
     /**
      * @param \Spryker\Yves\Router\Route\RouteCollection $routeCollection
@@ -37,9 +37,9 @@ class MultiCartPageRouteProviderPlugin extends SprykerMultiCartPageRouteProvider
      */
     protected function addMultiCartSetDefaultBackRoute(RouteCollection $routeCollection): RouteCollection
     {
-        $route = $this->buildRoute('/set-default-back/{idQuote}', 'MultiCartPage', 'MultiCart', 'setPyzDefaultBack');
+        $route = $this->buildRoute('/set-default-back/{idQuote}', 'MultiCartPage', 'MultiCart', 'setDefaultBack');
         $route = $route->setRequirement(static::PARAM_ID_QUOTE, '\d+');
-        $routeCollection->add(static::PYZ_ROUTE_MULTI_CART_SET_DEFAULT_BACK, $route);
+        $routeCollection->add(static::ROUTE_MULTI_CART_SET_DEFAULT_BACK, $route);
 
         return $routeCollection;
     }

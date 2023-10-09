@@ -14,16 +14,16 @@ class ContentProductSetGuiConfig extends SprykerContentProductSetGuiConfig
     /**
      * @var string
      *
-     * @uses \Pyz\Shared\ContentProductSet\ContentProductSetConfig::PYZ_WIDGET_TEMPLATE_IDENTIFIER_LANDING_PAGE
+     * @uses \Pyz\Shared\ContentProductSet\ContentProductSetConfig::WIDGET_TEMPLATE_IDENTIFIER_LANDING_PAGE
      */
-    protected const PYZ_WIDGET_TEMPLATE_IDENTIFIER_LANDING_PAGE = 'landing-page';
+    protected const WIDGET_TEMPLATE_IDENTIFIER_LANDING_PAGE = 'landing-page';
 
     /**
      * @var string
      *
      * Content item product set landing page template name
      */
-    protected const PYZ_WIDGET_TEMPLATE_DISPLAY_NAME_LANDING_PAGE = 'content_product_set_gui.template.landing-page';
+    protected const WIDGET_TEMPLATE_DISPLAY_NAME_LANDING_PAGE = 'content_product_set_gui.template.landing-page';
 
     /**
      * @return array<string, string>
@@ -33,7 +33,7 @@ class ContentProductSetGuiConfig extends SprykerContentProductSetGuiConfig
         $contentWidgetTemplates = parent::getContentWidgetTemplates();
 
         return [
-            static::PYZ_WIDGET_TEMPLATE_IDENTIFIER_LANDING_PAGE => static::PYZ_WIDGET_TEMPLATE_DISPLAY_NAME_LANDING_PAGE,
+            static::WIDGET_TEMPLATE_IDENTIFIER_LANDING_PAGE => static::WIDGET_TEMPLATE_DISPLAY_NAME_LANDING_PAGE,
         ] + $contentWidgetTemplates;
     }
 }

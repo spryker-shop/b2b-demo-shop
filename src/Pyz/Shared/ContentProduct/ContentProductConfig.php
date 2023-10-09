@@ -16,5 +16,5 @@ class ContentProductConfig extends SprykerContentProductConfig
      *
      * Content item abstract product list slider template identifier
      */
-    public const PYZ_WIDGET_TEMPLATE_IDENTIFIER_SLIDER = 'slider';
+    public const WIDGET_TEMPLATE_IDENTIFIER_SLIDER = 'slider';
 }

@@ -34,7 +34,7 @@ class ExampleStateMachineItemSaver
     public function itemStateUpdate(StateMachineItemTransfer $stateMachineItemTransfer): bool
     {
         $exampleStateMachineItemEntity = $this->exampleStateMachineQueryContainer
-            ->queryPyzExampleStateMachineItemByIdStateMachineItem($stateMachineItemTransfer->getIdentifier())
+            ->queryExampleStateMachineItemByIdStateMachineItem($stateMachineItemTransfer->getIdentifier())
             ->findOne();
 
         $exampleStateMachineItemEntity->setFkStateMachineItemState($stateMachineItemTransfer->getIdItemState());

@@ -20,7 +20,7 @@ class ExampleProductSalePageBusinessFactory extends AbstractBusinessFactory
     /**
      * @return \Pyz\Zed\ExampleProductSalePage\Business\Label\ProductAbstractRelationReaderInterface
      */
-    public function createPyzProductAbstractRelationReader(): ProductAbstractRelationReaderInterface
+    public function createProductAbstractRelationReader(): ProductAbstractRelationReaderInterface
     {
         return new ProductAbstractRelationReader($this->getQueryContainer(), $this->getConfig());
     }
