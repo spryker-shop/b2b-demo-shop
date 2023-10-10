@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "249f75ae322b7d8f2612a231df767beb",
+    "content-hash": "05506100a6ab65ea15b72d14144ab914",
     "packages": [
         {
             "name": "async-aws/core",
@@ -19402,16 +19402,16 @@
         },
         {
             "name": "spryker/chart",
-            "version": "1.5.0",
+            "version": "1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/chart.git",
-                "reference": "d5c0f89fd8467a8217c44505a6082b24f9e1d26b"
+                "reference": "095eb5c356c8513f5def6199a25e7ac487b7e111"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/chart/zipball/d5c0f89fd8467a8217c44505a6082b24f9e1d26b",
-                "reference": "d5c0f89fd8467a8217c44505a6082b24f9e1d26b",
+                "url": "https://api.github.com/repos/spryker/chart/zipball/095eb5c356c8513f5def6199a25e7ac487b7e111",
+                "reference": "095eb5c356c8513f5def6199a25e7ac487b7e111",
                 "shasum": ""
             },
             "require": {
@@ -19448,9 +19448,9 @@
             ],
             "description": "Chart module",
             "support": {
-                "source": "https://github.com/spryker/chart/tree/1.5.0"
+                "source": "https://github.com/spryker/chart/tree/1.4.0"
             },
-            "time": "2023-10-09T14:30:57+00:00"
+            "time": "2023-04-06T11:39:54+00:00"
         },
         {
             "name": "spryker/chart-gui",
@@ -31966,16 +31966,16 @@
         },
         {
             "name": "spryker/merchant",
-            "version": "3.7.1",
+            "version": "3.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/merchant.git",
-                "reference": "fc9043993bae8300d51667b6fc3480ea4959f13f"
+                "reference": "20a87db02ca3b188c94bb0a934cfe2dc1f676659"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/merchant/zipball/fc9043993bae8300d51667b6fc3480ea4959f13f",
-                "reference": "fc9043993bae8300d51667b6fc3480ea4959f13f",
+                "url": "https://api.github.com/repos/spryker/merchant/zipball/20a87db02ca3b188c94bb0a934cfe2dc1f676659",
+                "reference": "20a87db02ca3b188c94bb0a934cfe2dc1f676659",
                 "shasum": ""
             },
             "require": {
@@ -31986,7 +31986,7 @@
                 "spryker/event": "^2.3.0",
                 "spryker/kernel": "^3.33.0",
                 "spryker/log": "^3.0.0",
-                "spryker/merchant-extension": "^1.1.0",
+                "spryker/merchant-extension": "^1.2.0",
                 "spryker/message-broker": "^1.5.0",
                 "spryker/message-broker-extension": "^1.0.0",
                 "spryker/price-product-merchant-relationship-storage-extension": "^1.0.0",
@@ -32002,6 +32002,7 @@
                 "spryker/code-sniffer": "*",
                 "spryker/container": "*",
                 "spryker/propel": "*",
+                "spryker/ramsey-uuid": "*",
                 "spryker/testify": "*"
             },
             "type": "library",
@@ -32013,7 +32014,8 @@
             "autoload": {
                 "psr-4": {
                     "Spryker\\": "src/Spryker/",
-                    "SprykerTest\\Zed\\Merchant\\Helper\\": "tests/SprykerTest/Zed/Merchant/_support/Helper/"
+                    "SprykerTest\\Zed\\Merchant\\Helper\\": "tests/SprykerTest/Zed/Merchant/_support/Helper/",
+                    "SprykerTest\\AsyncApi\\Merchant\\Helper\\": "tests/SprykerTest/AsyncApi/Merchant/_support/Helper/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -32022,9 +32024,9 @@
             ],
             "description": "Merchant module",
             "support": {
-                "source": "https://github.com/spryker/merchant/tree/3.7.1"
+                "source": "https://github.com/spryker/merchant/tree/3.9.0"
             },
-            "time": "2023-06-16T09:24:47+00:00"
+            "time": "2023-08-21T15:35:01+00:00"
         },
         {
             "name": "spryker/merchant-data-import",
@@ -32079,20 +32081,20 @@
         },
         {
             "name": "spryker/merchant-extension",
-            "version": "1.1.0",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spryker/merchant-extension.git",
-                "reference": "a2e8d29c2fbabdbf6ebc7d33d8eb498223a883bf"
+                "reference": "30c2b54e176698d7b70da27061f5f94e4ba77470"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spryker/merchant-extension/zipball/a2e8d29c2fbabdbf6ebc7d33d8eb498223a883bf",
-                "reference": "a2e8d29c2fbabdbf6ebc7d33d8eb498223a883bf",
+                "url": "https://api.github.com/repos/spryker/merchant-extension/zipball/30c2b54e176698d7b70da27061f5f94e4ba77470",
+                "reference": "30c2b54e176698d7b70da27061f5f94e4ba77470",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2"
+                "php": ">=8.0"
             },
             "require-dev": {
                 "spryker/code-sniffer": "*"
@@ -32114,9 +32116,9 @@
             ],
             "description": "MerchantExtension module",
             "support": {
-                "source": "https://github.com/spryker/merchant-extension/tree/1.1.0"
+                "source": "https://github.com/spryker/merchant-extension/tree/1.2.0"
             },
-            "time": "2020-01-29T09:34:23+00:00"
+            "time": "2023-08-11T12:28:44+00:00"
         },
         {
             "name": "spryker/merchant-gui",
