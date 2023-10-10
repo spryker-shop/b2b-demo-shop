@@ -14,16 +14,16 @@ class ContentBannerGuiConfig extends SprykerContentBannerGuiConfig
     /**
      * @var string
      *
-     * @uses \Pyz\Shared\ContentBanner\ContentBannerConfig::PYZ_WIDGET_TEMPLATE_IDENTIFIER_HOME_PAGE
+     * @uses \Pyz\Shared\ContentBanner\ContentBannerConfig::WIDGET_TEMPLATE_IDENTIFIER_HOME_PAGE
      */
-    protected const PYZ_WIDGET_TEMPLATE_IDENTIFIER_HOME_PAGE = 'home-page';
+    protected const WIDGET_TEMPLATE_IDENTIFIER_HOME_PAGE = 'home-page';
 
     /**
      * @var string
      *
      * Content item banner home page template name
      */
-    protected const PYZ_WIDGET_TEMPLATE_DISPLAY_NAME_HOME_PAGE = 'content_banner.template.home-page';
+    protected const WIDGET_TEMPLATE_DISPLAY_NAME_HOME_PAGE = 'content_banner.template.home-page';
 
     /**
      * @return array<string, string>
@@ -33,7 +33,7 @@ class ContentBannerGuiConfig extends SprykerContentBannerGuiConfig
         $contentWidgetTemplates = parent::getContentWidgetTemplates();
 
         return [
-            static::PYZ_WIDGET_TEMPLATE_IDENTIFIER_HOME_PAGE => static::PYZ_WIDGET_TEMPLATE_DISPLAY_NAME_HOME_PAGE,
+            static::WIDGET_TEMPLATE_IDENTIFIER_HOME_PAGE => static::WIDGET_TEMPLATE_DISPLAY_NAME_HOME_PAGE,
         ] + $contentWidgetTemplates;
     }
 }

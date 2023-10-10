@@ -19,13 +19,13 @@ class SeeCompanyMenuPermissionPlugin extends AbstractPlugin implements Permissio
     /**
      * @var string
      */
-    public const PYZ_KEY = 'SeeCompanyMenuPermissionPlugin';
+    public const KEY = 'SeeCompanyMenuPermissionPlugin';
 
     /**
      * @return string
      */
     public function getKey(): string
     {
-        return static::PYZ_KEY;
+        return static::KEY;
     }
 }

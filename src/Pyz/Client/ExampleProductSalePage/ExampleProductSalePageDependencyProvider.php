@@ -29,32 +29,32 @@ class ExampleProductSalePageDependencyProvider extends AbstractDependencyProvide
     /**
      * @var string
      */
-    public const PYZ_CLIENT_SEARCH = 'PYZ_CLIENT_SEARCH';
+    public const CLIENT_SEARCH = 'CLIENT_SEARCH';
 
     /**
      * @var string
      */
-    public const PYZ_CLIENT_PRODUCT_LABEL_STORAGE = 'PYZ_CLIENT_PRODUCT_LABEL_STORAGE';
+    public const CLIENT_PRODUCT_LABEL_STORAGE = 'CLIENT_PRODUCT_LABEL_STORAGE';
 
     /**
      * @var string
      */
-    public const PYZ_SALE_SEARCH_QUERY_PLUGIN = 'PYZ_SALE_SEARCH_QUERY_PLUGIN';
+    public const SALE_SEARCH_QUERY_PLUGIN = 'SALE_SEARCH_QUERY_PLUGIN';
 
     /**
      * @var string
      */
-    public const PYZ_SALE_SEARCH_QUERY_EXPANDER_PLUGINS = 'PYZ_SALE_SEARCH_QUERY_EXPANDER_PLUGINS';
+    public const SALE_SEARCH_QUERY_EXPANDER_PLUGINS = 'SALE_SEARCH_QUERY_EXPANDER_PLUGINS';
 
     /**
      * @var string
      */
-    public const PYZ_SALE_SEARCH_RESULT_FORMATTER_PLUGINS = 'PYZ_SALE_SEARCH_RESULT_FORMATTER_PLUGINS';
+    public const SALE_SEARCH_RESULT_FORMATTER_PLUGINS = 'SALE_SEARCH_RESULT_FORMATTER_PLUGINS';
 
     /**
      * @var string
      */
-    public const PYZ_CLIENT_STORE = 'PYZ_CLIENT_STORE';
+    public const CLIENT_STORE = 'CLIENT_STORE';
 
     /**
      * @param \Spryker\Client\Kernel\Container $container
@@ -64,12 +64,12 @@ class ExampleProductSalePageDependencyProvider extends AbstractDependencyProvide
     public function provideServiceLayerDependencies(Container $container): Container
     {
         $container = parent::provideServiceLayerDependencies($container);
-        $container = $this->addPyzSearchClient($container);
-        $container = $this->addPyzProductLabelClient($container);
-        $container = $this->addPyzSaleSearchQueryPlugin($container);
+        $container = $this->addSearchClient($container);
+        $container = $this->addProductLabelClient($container);
+        $container = $this->addSaleSearchQueryPlugin($container);
         $container = $this->addSaleSearchQueryExpanderPlugins($container);
         $container = $this->addSaleSearchResultFormatterPlugins($container);
-        $container = $this->addPyzClientStore($container);
+        $container = $this->addClientStore($container);
 
         return $container;
     }
@@ -79,9 +79,9 @@ class ExampleProductSalePageDependencyProvider extends AbstractDependencyProvide
      *
      * @return \Spryker\Client\Kernel\Container
      */
-    protected function addPyzSearchClient(Container $container): Container
+    protected function addSearchClient(Container $container): Container
     {
-        $container->set(static::PYZ_CLIENT_SEARCH, function () {
+        $container->set(static::CLIENT_SEARCH, function () {
             return new SearchClient();
         });
 
@@ -93,9 +93,9 @@ class ExampleProductSalePageDependencyProvider extends AbstractDependencyProvide
      *
      * @return \Spryker\Client\Kernel\Container
      */
-    protected function addPyzProductLabelClient(Container $container): Container
+    protected function addProductLabelClient(Container $container): Container
     {
-        $container->set(static::PYZ_CLIENT_PRODUCT_LABEL_STORAGE, function (Container $container) {
+        $container->set(static::CLIENT_PRODUCT_LABEL_STORAGE, function (Container $container) {
             return $container->getLocator()->productLabelStorage()->client();
         });
 
@@ -107,9 +107,9 @@ class ExampleProductSalePageDependencyProvider extends AbstractDependencyProvide
      *
      * @return \Spryker\Client\Kernel\Container
      */
-    protected function addPyzSaleSearchQueryPlugin(Container $container): Container
+    protected function addSaleSearchQueryPlugin(Container $container): Container
     {
-        $container->set(static::PYZ_SALE_SEARCH_QUERY_PLUGIN, function () {
+        $container->set(static::SALE_SEARCH_QUERY_PLUGIN, function () {
             return new SaleSearchQueryPlugin();
         });
 
@@ -123,7 +123,7 @@ class ExampleProductSalePageDependencyProvider extends AbstractDependencyProvide
      */
     protected function addSaleSearchQueryExpanderPlugins(Container $container): Container
     {
-        $container->set(static::PYZ_SALE_SEARCH_QUERY_EXPANDER_PLUGINS, function () {
+        $container->set(static::SALE_SEARCH_QUERY_EXPANDER_PLUGINS, function () {
             return $this->getSaleSearchQueryExpanderPlugins();
         });
 
@@ -157,7 +157,7 @@ class ExampleProductSalePageDependencyProvider extends AbstractDependencyProvide
      */
     protected function addSaleSearchResultFormatterPlugins(Container $container): Container
     {
-        $container->set(static::PYZ_SALE_SEARCH_RESULT_FORMATTER_PLUGINS, function () {
+        $container->set(static::SALE_SEARCH_RESULT_FORMATTER_PLUGINS, function () {
             return $this->getSaleSearchResultFormatterPlugins();
         });
 
@@ -187,9 +187,9 @@ class ExampleProductSalePageDependencyProvider extends AbstractDependencyProvide
      *
      * @return \Spryker\Client\Kernel\Container
      */
-    protected function addPyzClientStore(Container $container): Container
+    protected function addClientStore(Container $container): Container
     {
-        $container->set(static::PYZ_CLIENT_STORE, function (Container $container) {
+        $container->set(static::CLIENT_STORE, function (Container $container) {
             return $container->getLocator()->store()->client();
         });
 

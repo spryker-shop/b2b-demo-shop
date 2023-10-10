@@ -22,20 +22,20 @@ class ExampleStateMachineQueryContainer extends AbstractQueryContainer implement
      *
      * @return \Orm\Zed\ExampleStateMachine\Persistence\PyzExampleStateMachineItemQuery
      */
-    public function queryPyzStateMachineItemsByStateIds(array $stateIds = []): PyzExampleStateMachineItemQuery
+    public function queryStateMachineItemsByStateIds(array $stateIds = []): PyzExampleStateMachineItemQuery
     {
           return $this->getFactory()
-              ->createPyzExampleStateMachineQuery()
+              ->createExampleStateMachineQuery()
               ->filterByFkStateMachineItemState($stateIds, Criteria::IN);
     }
 
     /**
      * @return \Propel\Runtime\Collection\ObjectCollection<\Orm\Zed\ExampleStateMachine\Persistence\PyzExampleStateMachineItem>
      */
-    public function queryPyzAllStateMachineItems(): ObjectCollection
+    public function queryAllStateMachineItems(): ObjectCollection
     {
          return $this->getFactory()
-             ->createPyzExampleStateMachineQuery()
+             ->createExampleStateMachineQuery()
              ->find();
     }
 
@@ -44,10 +44,10 @@ class ExampleStateMachineQueryContainer extends AbstractQueryContainer implement
      *
      * @return \Orm\Zed\ExampleStateMachine\Persistence\PyzExampleStateMachineItemQuery
      */
-    public function queryPyzExampleStateMachineItemByIdStateMachineItem($idStateMachineItem): PyzExampleStateMachineItemQuery
+    public function queryExampleStateMachineItemByIdStateMachineItem($idStateMachineItem): PyzExampleStateMachineItemQuery
     {
         return $this->getFactory()
-            ->createPyzExampleStateMachineQuery()
+            ->createExampleStateMachineQuery()
             ->filterByIdExampleStateMachineItem($idStateMachineItem);
     }
 }
