@@ -36,6 +36,7 @@ use SprykerShop\Yves\CartPage\Widget\AddItemsFormWidget;
 use SprykerShop\Yves\CartPage\Widget\AddToCartFormWidget;
 use SprykerShop\Yves\CartPage\Widget\CartAddProductAsSeparateItemWidget;
 use SprykerShop\Yves\CartPage\Widget\CartChangeQuantityFormWidget;
+use SprykerShop\Yves\CartPage\Widget\CartSummaryHideTaxAmountWidget;
 use SprykerShop\Yves\CartPage\Widget\ProductAbstractAddToCartButtonWidget;
 use SprykerShop\Yves\CartPage\Widget\RemoveFromCartFormWidget;
 use SprykerShop\Yves\CategoryImageStorageWidget\Widget\CategoryImageStorageWidget;
@@ -289,6 +290,7 @@ class ShopApplicationDependencyProvider extends SprykerShopApplicationDependency
             ProductConfigurationShoppingListItemDisplayWidget::class,
             ProductConfigurationShoppingListPageButtonWidget::class,
             StoreSwitcherWidget::class,
+            CartSummaryHideTaxAmountWidget::class,
         ];
     }
 
