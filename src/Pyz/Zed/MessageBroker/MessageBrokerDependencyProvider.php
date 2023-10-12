@@ -30,6 +30,7 @@ use Spryker\Zed\Product\Communication\Plugin\MessageBroker\ProductExportMessageH
 use Spryker\Zed\ProductReview\Communication\Plugin\MessageBroker\ProductReviewAddReviewsMessageHandlerPlugin;
 use Spryker\Zed\SearchHttp\Communication\Plugin\MessageBroker\SearchEndpointMessageHandlerPlugin;
 use Spryker\Zed\Session\Communication\Plugin\MessageBroker\SessionTrackingIdMessageAttributeProviderPlugin;
+use Spryker\Zed\TaxApp\Communication\Plugin\MessageBroker\TaxAppMessageHandlerPlugin;
 
 class MessageBrokerDependencyProvider extends SprykerMessageBrokerDependencyProvider
 {
@@ -72,6 +73,7 @@ class MessageBrokerDependencyProvider extends SprykerMessageBrokerDependencyProv
             new ProductExportMessageHandlerPlugin(),
             new SearchEndpointMessageHandlerPlugin(),
             new ProductReviewAddReviewsMessageHandlerPlugin(),
+            new TaxAppMessageHandlerPlugin(),
         ];
     }
 
