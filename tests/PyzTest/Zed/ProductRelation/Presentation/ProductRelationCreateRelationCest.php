@@ -57,5 +57,7 @@ class ProductRelationCreateRelationCest
 
         $i->waitForText(sprintf('%s %s', ProductRelationCreatePage::EDIT_PRODUCT_RELATION_TEXT, $key), 20);
         $i->seeInPageSource(sprintf('%s %s', ProductRelationCreatePage::EDIT_PRODUCT_RELATION_TEXT, $key));
+
+        $i->cleanUpProductRelation($key);
     }
 }

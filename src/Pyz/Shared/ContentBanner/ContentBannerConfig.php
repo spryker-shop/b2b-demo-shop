@@ -16,5 +16,5 @@ class ContentBannerConfig extends SprykerContentBannerConfig
      *
      * Content item banner home page template identifier
      */
-    public const PYZ_WIDGET_TEMPLATE_IDENTIFIER_HOME_PAGE = 'home-page';
+    public const WIDGET_TEMPLATE_IDENTIFIER_HOME_PAGE = 'home-page';
 }

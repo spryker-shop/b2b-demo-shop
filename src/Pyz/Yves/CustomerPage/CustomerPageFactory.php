@@ -15,8 +15,8 @@ class CustomerPageFactory extends SprykerCustomerPageFactory
     /**
      * @return \Spryker\Client\Session\SessionClientInterface
      */
-    public function getPyzSessionClient(): SessionClientInterface
+    public function getSessionClient(): SessionClientInterface
     {
-        return $this->getProvidedDependency(CustomerPageDependencyProvider::PYZ_CLIENT_SESSION);
+        return $this->getProvidedDependency(CustomerPageDependencyProvider::CLIENT_SESSION);
     }
 }

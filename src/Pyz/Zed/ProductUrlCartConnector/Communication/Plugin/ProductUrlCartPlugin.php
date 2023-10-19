@@ -25,7 +25,7 @@ class ProductUrlCartPlugin extends AbstractPlugin implements ItemExpanderPluginI
      */
     public function expandItems(CartChangeTransfer $cartChangeTransfer): CartChangeTransfer
     {
-        $this->getFacade()->expandPyzItems($cartChangeTransfer);
+        $this->getFacade()->expandItems($cartChangeTransfer);
 
         return $cartChangeTransfer;
     }

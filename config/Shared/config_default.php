@@ -4,6 +4,8 @@ use Generated\Shared\Transfer\AddReviewsTransfer;
 use Generated\Shared\Transfer\AssetAddedTransfer;
 use Generated\Shared\Transfer\AssetDeletedTransfer;
 use Generated\Shared\Transfer\AssetUpdatedTransfer;
+use Generated\Shared\Transfer\ConfigureTaxAppTransfer;
+use Generated\Shared\Transfer\DeleteTaxAppTransfer;
 use Generated\Shared\Transfer\InitializeProductExportTransfer;
 use Generated\Shared\Transfer\OrderStatusChangedTransfer;
 use Generated\Shared\Transfer\PaymentCancelReservationFailedTransfer;
@@ -25,6 +27,7 @@ use Generated\Shared\Transfer\ProductExportedTransfer;
 use Generated\Shared\Transfer\ProductUpdatedTransfer;
 use Generated\Shared\Transfer\SearchEndpointAvailableTransfer;
 use Generated\Shared\Transfer\SearchEndpointRemovedTransfer;
+use Generated\Shared\Transfer\SubmitPaymentTaxInvoiceTransfer;
 use Monolog\Logger;
 use Pyz\Shared\Console\ConsoleConstants;
 use Pyz\Shared\Scheduler\SchedulerConfig;
@@ -99,6 +102,7 @@ use Spryker\Shared\Store\StoreConstants;
 use Spryker\Shared\SymfonyMailer\SymfonyMailerConstants;
 use Spryker\Shared\Synchronization\SynchronizationConstants;
 use Spryker\Shared\Tax\TaxConstants;
+use Spryker\Shared\TaxApp\TaxAppConstants;
 use Spryker\Shared\Testify\TestifyConstants;
 use Spryker\Shared\Translator\TranslatorConstants;
 use Spryker\Shared\User\UserConstants;
@@ -522,10 +526,10 @@ $config[SynchronizationConstants::DEFAULT_SYNC_SEARCH_QUEUE_MESSAGE_CHUNK_SIZE] 
 
 // >>> SCHEDULER
 $config[SchedulerConstants::ENABLED_SCHEDULERS] = [
-    SchedulerConfig::PYZ_SCHEDULER_JENKINS,
+    SchedulerConfig::SCHEDULER_JENKINS,
 ];
 $config[SchedulerJenkinsConstants::JENKINS_CONFIGURATION] = [
-    SchedulerConfig::PYZ_SCHEDULER_JENKINS => [
+    SchedulerConfig::SCHEDULER_JENKINS => [
         SchedulerJenkinsConfig::SCHEDULER_JENKINS_BASE_URL => sprintf(
             '%s://%s:%s/',
             getenv('SPRYKER_SCHEDULER_PROTOCOL') ?: 'http',
@@ -700,9 +704,12 @@ $config[GlueBackendApiApplicationConstants::GLUE_BACKEND_CORS_ALLOW_ORIGIN] = ge
 // ----------------------------------------------------------------------------
 $sprykerGlueStorefrontHost = getenv('SPRYKER_GLUE_STOREFRONT_HOST');
 $config[GlueStorefrontApiApplicationConstants::GLUE_STOREFRONT_API_HOST] = $sprykerGlueStorefrontHost;
+$gluePort = (int)(getenv('SPRYKER_API_PORT')) ?: 443;
+$protocol = $gluePort === 443 ? 'https' : 'http';
 
 $config[GlueJsonApiConventionConstants::GLUE_DOMAIN] = sprintf(
-    'https://%s',
+    '%s://%s',
+    $protocol,
     $sprykerGlueStorefrontHost ?: $sprykerGlueBackendHost ?: 'localhost',
 );
 $config[GlueStorefrontApiApplicationConstants::GLUE_STOREFRONT_CORS_ALLOW_ORIGIN] = getenv('SPRYKER_GLUE_APPLICATION_CORS_ALLOW_ORIGIN') ?: '*';
@@ -752,6 +759,9 @@ $config[MessageBrokerConstants::MESSAGE_TO_CHANNEL_MAP] = [
     OrderStatusChangedTransfer::class => 'order-events',
     SearchEndpointAvailableTransfer::class => 'search-commands',
     SearchEndpointRemovedTransfer::class => 'search-commands',
+    ConfigureTaxAppTransfer::class => 'tax-commands',
+    DeleteTaxAppTransfer::class => 'tax-commands',
+    SubmitPaymentTaxInvoiceTransfer::class => 'payment-tax-invoice-commands',
 ];
 
 $config[MessageBrokerConstants::CHANNEL_TO_TRANSPORT_MAP] = [
@@ -762,6 +772,7 @@ $config[MessageBrokerConstants::CHANNEL_TO_TRANSPORT_MAP] = [
     'asset-commands' => MessageBrokerAwsConfig::SQS_TRANSPORT,
     'product-commands' => MessageBrokerAwsConfig::SQS_TRANSPORT,
     'search-commands' => MessageBrokerAwsConfig::SQS_TRANSPORT,
+    'payment-tax-invoice-commands' => MessageBrokerAwsConfig::SQS_TRANSPORT,
     'order-events' => 'http',
     'product-events' => 'http',
 ];
@@ -775,12 +786,14 @@ $config[MessageBrokerAwsConstants::CHANNEL_TO_RECEIVER_TRANSPORT_MAP] = [
     'product-commands' => MessageBrokerAwsConfig::SQS_TRANSPORT,
     'search-commands' => MessageBrokerAwsConfig::SQS_TRANSPORT,
     'order-events' => MessageBrokerAwsConfig::SQS_TRANSPORT,
+    'tax-commands' => MessageBrokerAwsConfig::SQS_TRANSPORT,
 ];
 
 $config[MessageBrokerAwsConstants::CHANNEL_TO_SENDER_TRANSPORT_MAP] = [
     'payment-commands' => 'http',
     'product-events' => 'http',
     'order-events' => 'http',
+    'payment-tax-invoice-commands' => 'http',
 ];
 
 $aopInfrastructureConfiguration = json_decode(html_entity_decode((string)getenv('SPRYKER_AOP_INFRASTRUCTURE')), true);
@@ -807,3 +820,7 @@ $config[AppCatalogGuiConstants::OAUTH_OPTION_AUDIENCE] = 'aop-atrs';
 $config[OauthClientConstants::OAUTH_PROVIDER_NAME_FOR_PAYMENT_AUTHORIZE] = OauthAuth0Config::PROVIDER_NAME;
 $config[OauthClientConstants::OAUTH_GRANT_TYPE_FOR_PAYMENT_AUTHORIZE] = OauthAuth0Config::GRANT_TYPE_CLIENT_CREDENTIALS;
 $config[OauthClientConstants::OAUTH_OPTION_AUDIENCE_FOR_PAYMENT_AUTHORIZE] = 'aop-app';
+
+$config[TaxAppConstants::OAUTH_PROVIDER_NAME] = OauthAuth0Config::PROVIDER_NAME;
+$config[TaxAppConstants::OAUTH_GRANT_TYPE] = OauthAuth0Config::GRANT_TYPE_CLIENT_CREDENTIALS;
+$config[TaxAppConstants::OAUTH_OPTION_AUDIENCE] = 'aop-app';

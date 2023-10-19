@@ -21,7 +21,7 @@ class PriceProductMerchantRelationshipStorageConfig extends SprykerPriceProductM
      */
     public function getPriceProductConcreteMerchantRelationSynchronizationPoolName(): ?string
     {
-        return SynchronizationConfig::PYZ_DEFAULT_SYNCHRONIZATION_POOL_NAME;
+        return SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME;
     }
 
     /**
@@ -29,7 +29,7 @@ class PriceProductMerchantRelationshipStorageConfig extends SprykerPriceProductM
      */
     public function getPriceProductAbstractMerchantRelationSynchronizationPoolName(): ?string
     {
-        return SynchronizationConfig::PYZ_DEFAULT_SYNCHRONIZATION_POOL_NAME;
+        return SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME;
     }
 
     /**
