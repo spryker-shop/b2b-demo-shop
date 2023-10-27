@@ -18,7 +18,6 @@ use Spryker\Shared\Kernel\KernelConstants;
 use Spryker\Shared\Kernel\Store;
 use Spryker\Shared\Log\LogConstants;
 use Spryker\Shared\MessageBroker\MessageBrokerConstants;
-use Spryker\Shared\MessageBrokerAws\MessageBrokerAwsConstants;
 use Spryker\Shared\Newsletter\NewsletterConstants;
 use Spryker\Shared\OauthClient\OauthClientConstants;
 use Spryker\Shared\Product\ProductConstants;
@@ -296,19 +295,6 @@ $config[GlueStorefrontApiApplicationConstants::GLUE_STOREFRONT_API_HOST] = $glue
 // ----------------------------------------------------------------------------
 // ------------------------------ MessageBroker -----------------------------------------
 // ----------------------------------------------------------------------------
-$config[MessageBrokerConstants::CHANNEL_TO_TRANSPORT_MAP] =
-$config[MessageBrokerAwsConstants::CHANNEL_TO_SENDER_TRANSPORT_MAP] =
-$config[MessageBrokerAwsConstants::CHANNEL_TO_RECEIVER_TRANSPORT_MAP] = [
-    'payment-events' => 'in-memory',
-    'payment-method-commands' => 'in-memory',
-    'asset-commands' => 'in-memory',
-    'product-review-commands' => 'in-memory',
-    'search-commands' => 'in-memory',
-    'product-commands' => 'in-memory',
-    'merchant-commands' => 'in-memory',
-    'tax-commands' => 'in-memory',
-];
-
 $config[MessageBrokerConstants::IS_ENABLED] = true;
 
 //-----------------------------------------------------------------------------
