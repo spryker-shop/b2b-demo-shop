@@ -11,6 +11,8 @@ use Spryker\Zed\Kernel\Communication\Form\FormTypeInterface;
 use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\Money\Communication\Plugin\Form\MoneyCollectionFormTypePlugin;
 use Spryker\Zed\Shipment\ShipmentDependencyProvider as SprykerShipmentDependencyProvider;
+use Spryker\Zed\ShipmentType\Communication\Plugin\Shipment\ShipmentTypeShipmentMethodCollectionExpanderPlugin;
+use Spryker\Zed\ShipmentType\Communication\Plugin\Shipment\ShipmentTypeShipmentMethodFilterPlugin;
 
 class ShipmentDependencyProvider extends SprykerShipmentDependencyProvider
 {
@@ -52,5 +54,27 @@ class ShipmentDependencyProvider extends SprykerShipmentDependencyProvider
     protected function createMoneyCollectionFormTypePlugin(Container $container): FormTypeInterface
     {
         return new MoneyCollectionFormTypePlugin();
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return array<\Spryker\Zed\ShipmentExtension\Dependency\Plugin\ShipmentMethodFilterPluginInterface>
+     */
+    protected function getMethodFilterPlugins(Container $container): array
+    {
+        return [
+            new ShipmentTypeShipmentMethodFilterPlugin(),
+        ];
+    }
+
+    /**
+     * @return list<\Spryker\Zed\ShipmentExtension\Dependency\Plugin\ShipmentMethodCollectionExpanderPluginInterface>
+     */
+    protected function getShipmentMethodCollectionExpanderPlugins(): array
+    {
+        return [
+            new ShipmentTypeShipmentMethodCollectionExpanderPlugin(),
+        ];
     }
 }
