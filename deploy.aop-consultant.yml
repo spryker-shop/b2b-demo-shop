@@ -51,20 +51,18 @@ image:
         SPRYKER_HOOK_AFTER_DEPLOY: "true"
         SPRYKER_HOOK_INSTALL: "vendor/bin/install -r EU/production --no-ansi -vvv"
         SPRYKER_HOOK_DESTRUCTIVE_INSTALL: "vendor/bin/install -r EU/destructive --no-ansi -vvv"
-        SPRYKER_YVES_HOST_DE: www.de.aop-b2b-testing.demo-spryker.com
-        SPRYKER_YVES_HOST_AT: www.at.aop-b2b-testing.demo-spryker.com
 
         #AOP
-        SPRYKER_TENANT_IDENTIFIER: "AOP_B2B_Testing-DE"
-        SPRYKER_MESSAGE_BROKER_HTTP_CHANNEL_SENDER_BASE_URL: "https://sam-publish.mb-testing.acp.demo-spryker.com/"
-        SPRYKER_MESSAGE_BROKER_HTTP_CHANNEL_RECEIVER_BASE_URL: "https://sam-consume.mb-testing.acp.demo-spryker.com/"
+        SPRYKER_TENANT_IDENTIFIER: "AOP_Production_Consultant_b2b-DE"
+        SPRYKER_MESSAGE_BROKER_HTTP_CHANNEL_SENDER_BASE_URL: ""
+        SPRYKER_MESSAGE_BROKER_HTTP_CHANNEL_RECEIVER_BASE_URL: ""
 
         SPRYKER_AOP_APPLICATION: '{
             "APP_DOMAINS": [
-                "os.apps-testing.aop.demo-spryker.com",
+                "os.apps.aop.spryker.com",
                 "*.bazaarvoice.com"
             ],
-            "APP_CATALOG_SCRIPT_URL": "https://app-catalog.atrs-testing.demo-spryker.com/loader"
+            "APP_CATALOG_SCRIPT_URL": "https://app-catalog.atrs.spryker.com/loader"
         }'
 
     php:
@@ -95,7 +93,7 @@ regions:
     EU:
         services:
             database:
-                database: aop_b2b_testing
+                database: aop_consultant
                 username: spryker
                 password: secret
 
@@ -128,61 +126,61 @@ groups:
             Redirects:
                 application: static
                 endpoints:
-                    aop-b2b-testing.demo-spryker.com:
+                    consultant.demo-spryker.com:
                         store: DE
                         redirect:
                             type: 302
-                            url: www.de.aop-b2b-testing.demo-spryker.com
-                    de.aop-b2b-testing.demo-spryker.com:
+                            url: www.de.consultant.demo-spryker.com
+                    de.consultant.demo-spryker.com:
                         store: DE
                         redirect:
                             code: 302
-                            url: www.de.aop-b2b-testing.demo-spryker.com
-                    at.aop-b2b-testing.demo-spryker.com:
+                            url: www.de.consultant.demo-spryker.com
+                    at.consultant.demo-spryker.com:
                         store: AT
                         redirect:
                             code: 302
-                            url: www.at.aop-b2b-testing.demo-spryker.com
+                            url: www.at.consultant.demo-spryker.com
             yves:
                 application: yves
                 endpoints:
-                    www.de.aop-b2b-testing.demo-spryker.com:
+                    www.de.consultant.demo-spryker.com:
                         store: DE
                         <<: *frontend-auth
-                    www.at.aop-b2b-testing.demo-spryker.com:
+                    www.at.consultant.demo-spryker.com:
                         store: AT
                         <<: *frontend-auth
             boffice:
                 application: backoffice
                 endpoints:
-                    backoffice.de.aop-b2b-testing.demo-spryker.com:
+                    backoffice.de.consultant.demo-spryker.com:
                         store: DE
                         <<: *frontend-auth
-                    backoffice.at.aop-b2b-testing.demo-spryker.com:
+                    backoffice.at.consultant.demo-spryker.com:
                         store: AT
                         <<: *frontend-auth
             backgw:
                 application: backend-gateway
                 endpoints:
-                    backend-gateway.de.aop-b2b-testing.demo-spryker.com:
+                    backend-gateway.de.consultant.demo-spryker.com:
                         store: DE
-                    backend-gateway.at.aop-b2b-testing.demo-spryker.com:
+                    backend-gateway.at.consultant.demo-spryker.com:
                         store: AT
             backapi:
                 application: zed
                 endpoints:
-                    backend-api.de.aop-b2b-testing.demo-spryker.com:
+                    backend-api.de.consultant.demo-spryker.com:
                         store: DE
                         entry-point: BackendApi
-                    backend-api.at.aop-b2b-testing.demo-spryker.com:
+                    backend-api.at.consultant.demo-spryker.com:
                         store: AT
                         entry-point: BackendApi
             Glue:
                 application: glue
                 endpoints:
-                    glue.de.aop-b2b-testing.demo-spryker.com:
+                    glue.de.consultant.demo-spryker.com:
                         store: DE
-                    glue.at.aop-b2b-testing.demo-spryker.com:
+                    glue.at.consultant.demo-spryker.com:
                         store: AT
 
 services:
@@ -202,7 +200,7 @@ services:
             username: "spryker"
             password: "secret"
         endpoints:
-            queue.aop-b2b-testing.demo-spryker.com:
+            queue.consultant.demo-spryker.com:
             localhost:5672:
                 protocol: tcp
     session:
@@ -220,13 +218,14 @@ services:
                 protocol: tcp
     scheduler:
         engine: jenkins
+        version: '2.324'
         csrf-protection-enabled: true
         endpoints:
-            jenkins.aop-b2b-testing.demo-spryker.com:
+            scheduler.consultant.demo-spryker.com:
     mail_catcher:
         engine: mailhog
         endpoints:
-            mail.aop-b2b-testing.demo-spryker.com:
+            mail.consultant.demo-spryker.com:
 
 docker:
 
