@@ -88,30 +88,6 @@ class CartsApiTester extends ApiEndToEndTester
     }
 
     /**
-     * @param array<\Generated\Shared\Transfer\ProductConcreteTransfer> $productConcreteTransfers
-     *
-     * @return array
-     */
-    protected function mapProductConcreteTransfersToQuoteTransferItems(array $productConcreteTransfers): array
-    {
-        $quoteTransferItems = [];
-
-        foreach ($productConcreteTransfers as $productConcreteTransfer) {
-            $quoteTransferItems[] = [
-                ItemTransfer::SKU => $productConcreteTransfer->getSku(),
-                ItemTransfer::GROUP_KEY => $productConcreteTransfer->getSku(),
-                ItemTransfer::ABSTRACT_SKU => $productConcreteTransfer->getAbstractSku(),
-                ItemTransfer::ID_PRODUCT_ABSTRACT => $productConcreteTransfer->getFkProductAbstract(),
-                ItemTransfer::UNIT_PRICE => random_int(100, 1000),
-                ItemTransfer::UNIT_GROSS_PRICE => random_int(100, 1000),
-                ItemTransfer::QUANTITY => 1,
-            ];
-        }
-
-        return $quoteTransferItems;
-    }
-
-    /**
      * @param \PyzTest\Glue\Carts\CartsApiTester $I
      * @param string $cartUuid
      * @param array $attributes
@@ -247,5 +223,29 @@ class CartsApiTester extends ApiEndToEndTester
                 'cartItemGroupKey' => $cartItemGroupKey,
             ],
         );
+    }
+
+    /**
+     * @param array<\Generated\Shared\Transfer\ProductConcreteTransfer> $productConcreteTransfers
+     *
+     * @return array
+     */
+    protected function mapProductConcreteTransfersToQuoteTransferItems(array $productConcreteTransfers): array
+    {
+        $quoteTransferItems = [];
+
+        foreach ($productConcreteTransfers as $productConcreteTransfer) {
+            $quoteTransferItems[] = [
+                ItemTransfer::SKU => $productConcreteTransfer->getSku(),
+                ItemTransfer::GROUP_KEY => $productConcreteTransfer->getSku(),
+                ItemTransfer::ABSTRACT_SKU => $productConcreteTransfer->getAbstractSku(),
+                ItemTransfer::ID_PRODUCT_ABSTRACT => $productConcreteTransfer->getFkProductAbstract(),
+                ItemTransfer::UNIT_PRICE => random_int(100, 1000),
+                ItemTransfer::UNIT_GROSS_PRICE => random_int(100, 1000),
+                ItemTransfer::QUANTITY => 1,
+            ];
+        }
+
+        return $quoteTransferItems;
     }
 }

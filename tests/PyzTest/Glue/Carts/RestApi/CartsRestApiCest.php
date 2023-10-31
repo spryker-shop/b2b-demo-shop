@@ -1228,18 +1228,6 @@ class CartsRestApiCest
     }
 
     /**
-     * @param \PyzTest\Glue\Carts\CartsApiTester $I
-     *
-     * @return void
-     */
-    protected function authorizeCustomer(CartsApiTester $I): void
-    {
-        $token = $I->haveAuthorizationToGlue($this->fixtures->getCustomerTransfer())->getAccessToken();
-
-        $I->amBearerAuthenticated($token);
-    }
-
-    /**
      * @depends loadFixtures
      *
      * @param \PyzTest\Glue\Carts\CartsApiTester $I
@@ -1295,5 +1283,17 @@ class CartsRestApiCest
         // Assert
         $I->seeResponseCodeIs(HttpCode::FORBIDDEN);
         $I->seeResponseMatchesOpenApiSchema();
+    }
+
+    /**
+     * @param \PyzTest\Glue\Carts\CartsApiTester $I
+     *
+     * @return void
+     */
+    protected function authorizeCustomer(CartsApiTester $I): void
+    {
+        $token = $I->haveAuthorizationToGlue($this->fixtures->getCustomerTransfer())->getAccessToken();
+
+        $I->amBearerAuthenticated($token);
     }
 }

@@ -45,6 +45,17 @@ class PriceProductVolumesApiTester extends ApiEndToEndTester
     }
 
     /**
+     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
+     *
+     * @return void
+     */
+    public function authorizeCustomerToGlue(CustomerTransfer $customerTransfer): void
+    {
+        $oauthResponseTransfer = $this->haveAuthorizationToGlue($customerTransfer);
+        $this->amBearerAuthenticated($oauthResponseTransfer->getAccessToken());
+    }
+
+    /**
      * @return array
      */
     protected function grabPriceProductVolumesData(): array
@@ -66,16 +77,5 @@ class PriceProductVolumesApiTester extends ApiEndToEndTester
                 ->setGrossAmount($volumePrice[PriceProductVolumeConfig::VOLUME_PRICE_GROSS_PRICE])
                 ->toArray();
         }, $volumePrices);
-    }
-
-    /**
-     * @param \Generated\Shared\Transfer\CustomerTransfer $customerTransfer
-     *
-     * @return void
-     */
-    public function authorizeCustomerToGlue(CustomerTransfer $customerTransfer): void
-    {
-        $oauthResponseTransfer = $this->haveAuthorizationToGlue($customerTransfer);
-        $this->amBearerAuthenticated($oauthResponseTransfer->getAccessToken());
     }
 }
