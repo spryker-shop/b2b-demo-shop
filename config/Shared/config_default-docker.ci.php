@@ -36,7 +36,7 @@ $config[PropelConstants::LOG_FILE_PATH]
 //-----------------------------------------------------------------------------
 $config[ProductConstants::PUBLISHING_TO_MESSAGE_BROKER_ENABLED] = false;
 
-$config[MessageBrokerConstants::IS_ENABLED] = true;
+$config[MessageBrokerConstants::IS_ENABLED] = false;
 
 $sprykerGlueStorefrontHost = getenv('SPRYKER_GLUE_STOREFRONT_HOST');
 $config[GlueStorefrontApiApplicationConstants::GLUE_STOREFRONT_API_HOST] = $sprykerGlueStorefrontHost;
