@@ -306,7 +306,7 @@ $config[MessageBrokerAwsConstants::CHANNEL_TO_RECEIVER_TRANSPORT_MAP] = [
     'reviews' => 'in-memory',
 ];
 
-$config[MessageBrokerConstants::IS_ENABLED] = true;
+$config[MessageBrokerConstants::IS_ENABLED] = false;
 
 //-----------------------------------------------------------------------------
 //----------------------------------- ACP -------------------------------------
