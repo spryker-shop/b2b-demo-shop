@@ -22,7 +22,7 @@ class ContentProductSetTwigFunctionProvider extends SprykerShopContentProductSet
     protected const WIDGET_TEMPLATE_IDENTIFIER_LANDING_PAGE = 'landing-page';
 
     /**
-     * @return string[]
+     * @return array<string, string>
      */
     protected function getAvailableTemplates(): array
     {
