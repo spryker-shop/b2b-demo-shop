@@ -40,7 +40,7 @@ class CustomerAccessDataProvider extends SprykerCustomerAccessDataProvider
     /**
      * @param \ArrayObject<array-key, \Generated\Shared\Transfer\ContentTypeAccessTransfer> $contentTypes
      *
-     * @return \Generated\Shared\Transfer\ContentTypeAccessTransfer[]
+     * @return array<\Generated\Shared\Transfer\ContentTypeAccessTransfer>
      */
     protected function filterContentTypesData(ArrayObject $contentTypes): array
     {
