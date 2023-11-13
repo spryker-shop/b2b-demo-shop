@@ -8,12 +8,17 @@
 
         {% if not isItemRelatedToBundle %}
             <div class="{{ config.name }}__wrapper grid grid--middle {{ config.jsName }}__item-shipping-{{ loop.index }}">
-                {% set hasShippingAddresses = item.shippingAddress.id_customer_address is defined %}
-                {% set hasCompanyUnitAddresses = item.shippingAddress.id_company_unit_address is defined %}
+                {% set shippingAddress = item.shippingAddress %}
+                {% set hasShippingAddresses = shippingAddress.id_customer_address is defined %}
+                {% set hasCompanyUnitAddresses = shippingAddress.id_company_unit_address is defined %}
+                {% set shippingAddressValue = shippingAddress.id_customer_address.vars.value | default %}
+                {% set companyUnitAddressValue = shippingAddress.id_company_unit_address.vars.value | default %}
                 {% set companyBusinessUnitShippingAddressWidget = findWidget('CompanyBusinessUnitAddressWidget', ['shippingAddress', item.shippingAddress.vars.data]) %}
                 {% set isCompanyBusinessUnitShippingAddressApplicable = companyBusinessUnitShippingAddressWidget and companyBusinessUnitShippingAddressWidget.isApplicable %}
                 {% set hasShippingAddressesAndApplicable = isCompanyBusinessUnitShippingAddressApplicable or hasShippingAddresses %}
                 {% set formFieldUniqueName = 'multiShippingAddresses' %}
+                {% set isNewAddressSelected = shippingAddressValue == 0 or companyUnitAddressValue == 0 or (isCompanyBusinessUnitShippingAddressApplicable and companyUnitAddressValue is empty) %}
+                {% set newAddressHiddenClassName = not isNewAddressSelected and hasShippingAddressesAndApplicable ? ' is-hidden' %}
 
                 {% block multiShippingAddressesInner %}
                     {% embed molecule('product-card-item') with {
@@ -142,8 +147,7 @@
                 {% endblock %}
 
                 <div class="col col--sm-12">
-                    {% set itemClass = config.name ~ '__content ' ~ config.name ~ '__content--mobile-background ' ~ config.jsName ~ '__item-shipping '
-                        ~ config.jsName ~ '__item-shipping--' ~ loop.index ~ (hasShippingAddressesAndApplicable ? ' is-hidden ') ~ ' spacing-x spacing-x--inner spacing-x--reset' %}
+                    {% set itemClass = config.name ~ '__content ' ~ config.name ~ '__content--mobile-background ' ~ config.jsName ~ '__item-shipping ' ~ config.jsName ~ '__item-shipping--' ~ loop.index ~ ' spacing-x spacing-x--inner spacing-x--reset' ~ newAddressHiddenClassName %}
 
                     {% include molecule('form') with {
                         class: itemClass,
