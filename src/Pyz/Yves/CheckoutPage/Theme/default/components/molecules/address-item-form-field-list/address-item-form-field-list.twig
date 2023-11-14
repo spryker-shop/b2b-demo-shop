@@ -12,13 +12,15 @@
                 {% set hasShippingAddresses = shippingAddress.id_customer_address is defined %}
                 {% set hasCompanyUnitAddresses = shippingAddress.id_company_unit_address is defined %}
                 {% set shippingAddressValue = shippingAddress.id_customer_address.vars.value | default %}
-                {% set companyUnitAddressValue = shippingAddress.id_company_unit_address.vars.value | default %}
+                {% set shippingCompanyAddressValue = shippingAddress.id_company_unit_address.vars.value | default %}
                 {% set companyBusinessUnitShippingAddressWidget = findWidget('CompanyBusinessUnitAddressWidget', ['shippingAddress', item.shippingAddress.vars.data]) %}
                 {% set isCompanyBusinessUnitShippingAddressApplicable = companyBusinessUnitShippingAddressWidget and companyBusinessUnitShippingAddressWidget.isApplicable %}
                 {% set hasShippingAddressesAndApplicable = isCompanyBusinessUnitShippingAddressApplicable or hasShippingAddresses %}
                 {% set formFieldUniqueName = 'multiShippingAddresses' %}
-                {% set isNewAddressSelected = shippingAddressValue == 0 or companyUnitAddressValue == 0 or (isCompanyBusinessUnitShippingAddressApplicable and companyUnitAddressValue is empty) %}
-                {% set newAddressHiddenClassName = not isNewAddressSelected and hasShippingAddressesAndApplicable ? ' is-hidden' %}
+                {% set isNewCompanyAddressSelected = isCompanyBusinessUnitShippingAddressApplicable and shippingCompanyAddressValue is empty and shippingAddressValue is empty %}
+                {% set isNewAddressSelected = shippingAddressValue == 0 or shippingCompanyAddressValue == 0 or isNewCompanyAddressSelected %}
+                {% set isSavedAddressSelected = (shippingAddressValue is not empty or shippingCompanyAddressValue is not empty) and not isNewAddressSelected %}
+                {% set newAddressHiddenClassName = (isSavedAddressSelected or not isNewAddressSelected) and hasShippingAddressesAndApplicable ? ' is-hidden' %}
 
                 {% block multiShippingAddressesInner %}
                     {% embed molecule('product-card-item') with {
@@ -38,6 +40,8 @@
                             hasShippingAddresses: hasShippingAddresses,
                             hasCompanyUnitAddresses: hasCompanyUnitAddresses,
                             formFieldUniqueName: formFieldUniqueName,
+                            isNewAddressSelected: isNewAddressSelected,
+                            isSavedAddressSelected: isSavedAddressSelected,
                         },
                     } only %}
                         {% block image %}
@@ -82,6 +86,7 @@
                                     {% widget embed.companyBusinessUnitShippingAddressWidget with {
                                         data: {
                                             itemShippingTriggerJsClass: embed.jsName ~ '__trigger ' ~ embed.jsName ~ '__trigger--' ~ embed.index,
+                                            hasPreselectedOption: not embed.isSavedAddressSelected and not embed.isNewAddressSelected,
                                         },
                                         embed: {
                                             index: embed.index,
