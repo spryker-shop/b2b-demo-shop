@@ -1,7 +1,11 @@
 import Component from 'ShopUi/models/component';
 import AjaxProvider from 'ShopUi/components/molecules/ajax-provider/ajax-provider';
+import {
+    EVENT_HIDE_OVERLAY,
+    EVENT_SHOW_OVERLAY,
+    OverlayEventDetail,
+} from 'ShopUi/components/molecules/main-overlay/main-overlay';
 import debounce from 'lodash-es/debounce';
-import OverlayBlock from '../../atoms/overlay-block/overlay-block';
 
 export default class AutocompleteForm extends Component {
     protected ajaxProvider: AjaxProvider;
@@ -9,7 +13,10 @@ export default class AutocompleteForm extends Component {
     protected hiddenInputElement: HTMLInputElement;
     protected suggestionsContainer: HTMLElement;
     protected cleanButton: HTMLButtonElement;
-    protected overlay: OverlayBlock;
+    protected overlay: HTMLElement;
+    protected body: HTMLElement;
+    protected eventShowOverlay: CustomEvent<OverlayEventDetail>;
+    protected eventHideOverlay: CustomEvent<OverlayEventDetail>;
 
     protected readyCallback(): void {}
 
@@ -19,7 +26,9 @@ export default class AutocompleteForm extends Component {
         this.inputElement = <HTMLInputElement>this.getElementsByClassName(`${this.jsName}__input`)[0];
         this.hiddenInputElement = <HTMLInputElement>this.getElementsByClassName(`${this.jsName}__input-hidden`)[0];
         this.cleanButton = <HTMLButtonElement>this.getElementsByClassName(`${this.jsName}__clean-button`)[0];
-        this.overlay = <OverlayBlock>document.getElementsByClassName(this.overlayBlockClassName)[0];
+        this.overlay = <HTMLElement>document.getElementsByClassName(this.overlayBlockClassName)[0];
+        this.body = <HTMLElement>document.getElementsByTagName('body')[0];
+        
         this.mapEvents();
     }
 
@@ -36,6 +45,7 @@ export default class AutocompleteForm extends Component {
         if (this.showCleanButton) {
             this.cleanButton.addEventListener('click', () => this.onCleanButtonClick());
         }
+        this.mapOverlayEvents();
     }
 
     protected onCleanButtonClick(): void {
@@ -43,12 +53,13 @@ export default class AutocompleteForm extends Component {
     }
 
     protected onBlur(): void {
-        this.overlay.hideOverlay('no-agent-user', 'no-agent-user');
+        this.toggleOverlay(false);
         this.hideSuggestions();
     }
 
     protected onFocus(): void {
-        this.overlay.showOverlay('no-agent-user', 'no-agent-user');
+        this.toggleOverlay(true);
+        
         if (this.inputValue.length >= this.minLetters) {
             this.showSuggestions();
         }
@@ -61,6 +72,24 @@ export default class AutocompleteForm extends Component {
             return;
         }
         this.hideSuggestions();
+    }
+
+    protected mapOverlayEvents(): void {
+        const overlayConfig: CustomEventInit<OverlayEventDetail> = {
+            bubbles: true,
+            detail: {
+                id: this.name,
+                zIndex: Number(getComputedStyle(this).zIndex) - 1,
+            },
+        };
+
+        this.eventShowOverlay = new CustomEvent(EVENT_SHOW_OVERLAY, overlayConfig);
+        this.eventHideOverlay = new CustomEvent(EVENT_HIDE_OVERLAY, overlayConfig);
+    }
+
+    protected toggleOverlay(isShown: boolean): void {
+        this.dispatchEvent(isShown ? this.eventShowOverlay : this.eventHideOverlay);
+        this.body.classList.toggle('has-overlay', isShown);
     }
 
     protected showSuggestions(): void {

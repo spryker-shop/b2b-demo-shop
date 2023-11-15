@@ -1,8 +1,12 @@
 {% extends molecule('suggest-search', '@SprykerShop:ShopUi') %}
 
 {% define attributes = {
-    'overlay-class-name': 'js-overlay-block',
-    'overlay-breakpoint': '0',
+    'overlay-class-name': 'main-overlay',
+    'wrapper-class-name': required,
+    'wrapper-toggle-class-name': 'is-active',
+    'open-class-name': required,
+    'close-class-name': required,
+    'should-close-by-overlay-click': true,
 } %}
 
 {% block body %}
