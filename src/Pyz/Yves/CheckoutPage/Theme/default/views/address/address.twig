@@ -51,9 +51,18 @@
         {% block title %}{% endblock %}
 
         {% block fields %}
-            {% set hasShippingAddresses = data.form.shippingAddress.id_customer_address is defined %}
-            {% set hasCompanyUnitAddresses = data.form.shippingAddress.id_company_unit_address is defined %}
+            {% set hiddenClassName = 'is-hidden' %}
+            {% set shippingAddress = data.form.shippingAddress %}
+            {% set hasShippingAddresses = shippingAddress.id_customer_address is defined %}
+            {% set hasCompanyUnitAddresses = shippingAddress.id_company_unit_address is defined %}
             {% set hasShippingAddressesAndApplicable = embed.isCompanyBusinessUnitShippingAddressApplicable or hasShippingAddresses %}
+            {% set shippingAddressValue = shippingAddress.id_customer_address.vars.value | default %}
+            {% set companyUnitAddressValue = shippingAddress.id_company_unit_address.vars.value | default %}
+            {% set isNewAddressSelected = shippingAddressValue == 0 or companyUnitAddressValue == 0 or (shippingAddressValue is empty and companyUnitAddressValue is empty) %}
+            {% set newAddressHiddenClassName = hasShippingAddressesAndApplicable and not isNewAddressSelected ? ' ' ~ hiddenClassName %}
+            {% set isMultipleShipmentSelected = shippingAddressValue == -1 or companyUnitAddressValue == -1 %}
+            {% set multipleShipmentHiddenClassName = not isMultipleShipmentSelected ? ' ' ~ hiddenClassName %}
+            {% set billingSameAsShippingHiddenClassName = isMultipleShipmentSelected ? hiddenClassName %}
 
             <div class="address-wrapper grid grid--bottom spacing-bottom spacing-bottom--big col col--sm-12 {{ embed.jsAddressClass }}__form-handler-shippingAddress">
                 {% if hasShippingAddressesAndApplicable %}
@@ -69,11 +78,11 @@
                             {% endwidget %}
 
                             {% if hasShippingAddresses %}
-                                {% do data.form.shippingAddress.id_customer_address.setRendered %}
+                                {% do shippingAddress.id_customer_address.setRendered %}
                             {% endif %}
 
                             {% if hasCompanyUnitAddresses %}
-                                {% do data.form.shippingAddress.id_company_unit_address.setRendered %}
+                                {% do shippingAddress.id_company_unit_address.setRendered %}
                             {% endif %}
                         {% endif %}
 
@@ -93,7 +102,7 @@
                 {% endif %}
 
                 {% include molecule('form') with {
-                    class: 'address-wrapper__content address-wrapper__content--mobile-background ' ~ embed.jsAddressClass ~ '__shipping' ~ (hasShippingAddressesAndApplicable ? ' is-hidden'),
+                    class: 'address-wrapper__content address-wrapper__content--mobile-background ' ~ embed.jsAddressClass ~ '__shipping' ~ newAddressHiddenClassName,
                     modifiers: ['checkout-address-content'],
                     data: {
                         form: embed.forms.shipping,
@@ -114,7 +123,7 @@
 
                 {% if embed.isMultipleShipmentEnabled %}
                     {% include molecule('address-item-form', 'CheckoutPage') with {
-                        class: 'address-wrapper__content col col--sm-12 is-hidden ' ~ embed.jsAddressClass ~ '__items-target',
+                        class: 'address-wrapper__content col col--sm-12 ' ~ embed.jsAddressClass ~ '__items-target' ~ multipleShipmentHiddenClassName,
                         data: {
                             form: embed.forms.items,
                             formBundle: embed.forms.bundleItems,
@@ -125,22 +134,22 @@
                 {% endif %}
             </div>
 
-            <div class="col col--sm-12 {{ embed.jsAddressClass }}__form-handler-billingSameAsShipping">
+            <div class="col col--sm-12 {{ embed.jsAddressClass }}__form-handler-billingSameAsShipping {{ billingSameAsShippingHiddenClassName }}">
                 {{ form_row(data.form.billingSameAsShipping, {
                     component: molecule('toggler-checkbox'),
                     label: 'customer.billingSameAsShipping' | trans,
                     attributes: {
                         'target-class-name': embed.jsAddressClass ~ '__billing-same-as-shipping',
-                        'class-to-toggle': 'is-hidden',
+                        'class-to-toggle': hiddenClassName,
                         'add-class-when-checked': true,
-                        checked: embed.isBillingSameAsShippingChecked,
+                        checked: not isMultipleShipmentSelected ? embed.isBillingSameAsShippingChecked : false,
                     }
                 }) }}
             </div>
 
             <div class="col col--sm-12 {{ embed.jsAddressClass }}__form-handler-billingAddress">
                 {% embed molecule('form') with {
-                    class: 'spacing-top spacing-top--big spacing-x spacing-x--inner spacing-x--reset ' ~ embed.jsAddressClass ~ '__billing-same-as-shipping is-hidden',
+                    class: 'spacing-top spacing-top--big spacing-x spacing-x--inner spacing-x--reset ' ~ embed.jsAddressClass ~ '__billing-same-as-shipping ' ~ hiddenClassName,
                     modifiers: ['checkout-form', 'hidden-actions'],
                     data: {
                         form: embed.forms.billing,
@@ -159,6 +168,7 @@
                     },
                     embed: {
                         jsAddressClass: embed.jsAddressClass,
+                        hiddenClassName: hiddenClassName,
                     },
                 } only %}
                     {% block title %}
@@ -172,6 +182,10 @@
                             {% set hasBillingAddresses = data.form.id_customer_address is defined %}
                             {% set hasCompanyUnitBillingAddresses = data.form.id_company_unit_address is defined %}
                             {% set hasBillingAddressesAndApplicable = isCompanyBusinessUnitBillingAddressApplicable or hasBillingAddresses %}
+                            {% set billingAddressValue = data.form.id_customer_address.vars.value | default %}
+                            {% set companyUnitBillingAddressValue = data.form.id_company_unit_address.vars.value | default %}
+                            {% set isNewAddressSelected = billingAddressValue == 0 or companyUnitBillingAddressValue == 0 or (billingAddressValue is empty and companyUnitBillingAddressValue is empty) %}
+                            {% set newAddressHiddenClassName = hasBillingAddressesAndApplicable and not isNewAddressSelected ? ' ' ~ embed.hiddenClassName %}
 
                             {% if hasBillingAddressesAndApplicable %}
                                 <div class="address-wrapper__header">
@@ -207,7 +221,7 @@
                                 </div>
                             {% endif %}
 
-                            <div class="address-wrapper__content address-wrapper__content--mobile-background {{ embed.jsAddressClass }}__billing {{ hasBillingAddressesAndApplicable ? 'is-hidden' }} grid grid--bottom grid--wide">
+                            <div class="address-wrapper__content address-wrapper__content--mobile-background {{ embed.jsAddressClass }}__billing grid grid--bottom grid--wide {{ newAddressHiddenClassName }}">
                                 <div class="address-wrapper__inner-content">
                                     {{ parent() }}
                                 </div>
