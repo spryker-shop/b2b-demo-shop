@@ -47,7 +47,9 @@ export default class SideDrawer extends SideDrawerCore {
         const isShown = isShownFromOutside ?? !this.classList.contains(`${this.name}--show`);
 
         this.classList.toggle(`${this.name}--show`, isShown);
-        this.containers.forEach((conatiner: HTMLElement) => conatiner.classList.toggle(this.lockedBodyClassName, isShown));
+        this.containers.forEach((conatiner: HTMLElement) =>
+            conatiner.classList.toggle(this.lockedBodyClassName, isShown),
+        );
         this.toggleOverlay(isShown);
     }
 

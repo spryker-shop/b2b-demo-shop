@@ -28,7 +28,7 @@ export default class AutocompleteForm extends Component {
         this.cleanButton = <HTMLButtonElement>this.getElementsByClassName(`${this.jsName}__clean-button`)[0];
         this.overlay = <HTMLElement>document.getElementsByClassName(this.overlayBlockClassName)[0];
         this.body = <HTMLElement>document.getElementsByTagName('body')[0];
-        
+
         this.mapEvents();
     }
 
@@ -59,7 +59,7 @@ export default class AutocompleteForm extends Component {
 
     protected onFocus(): void {
         this.toggleOverlay(true);
-        
+
         if (this.inputValue.length >= this.minLetters) {
             this.showSuggestions();
         }
