@@ -33,7 +33,41 @@ class EventDispatcherDependencyProvider extends SprykerEventDispatcherDependency
             new ResponseListenerEventDispatcherPlugin(),
             new ResponseSecurityHeadersEventDispatcherPlugin(),
             new StrictTransportSecurityHeaderEventDispatcherPlugin(),
+            new CacheControlHeaderEventDispatcherPlugin(),
+        ];
+    }
+
+    /**
+     * @return array<\Spryker\Shared\EventDispatcherExtension\Dependency\Plugin\EventDispatcherPluginInterface>
+     */
+    protected function getBackendEventDispatcherPlugins(): array
+    {
+        return [
+            new GlueRestControllerListenerEventDispatcherPlugin(),
+            new StorageKeyCacheEventDispatcherPlugin(),
+            new AutoloaderCacheEventDispatcherPlugin(),
+            new RouterListenerEventDispatcherPlugin(),
+            new ResponseListenerEventDispatcherPlugin(),
+            new ResponseSecurityHeadersEventDispatcherPlugin(),
+            new StrictTransportSecurityHeaderEventDispatcherPlugin(),
             new EventBehaviorEventDispatcherPlugin(),
+            new CacheControlHeaderEventDispatcherPlugin(),
+        ];
+    }
+
+    /**
+     * @return array<\Spryker\Shared\EventDispatcherExtension\Dependency\Plugin\EventDispatcherPluginInterface>
+     */
+    protected function getStorefrontEventDispatcherPlugins(): array
+    {
+        return [
+            new GlueRestControllerListenerEventDispatcherPlugin(),
+            new StorageKeyCacheEventDispatcherPlugin(),
+            new AutoloaderCacheEventDispatcherPlugin(),
+            new RouterListenerEventDispatcherPlugin(),
+            new ResponseListenerEventDispatcherPlugin(),
+            new ResponseSecurityHeadersEventDispatcherPlugin(),
+            new StrictTransportSecurityHeaderEventDispatcherPlugin(),
             new CacheControlHeaderEventDispatcherPlugin(),
         ];
     }
