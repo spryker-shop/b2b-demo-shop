@@ -7,6 +7,7 @@
 
 namespace Pyz\Glue\EventDispatcher;
 
+use Spryker\Glue\EventBehavior\Plugin\EventDispatcher\EventBehaviorEventDispatcherPlugin;
 use Spryker\Glue\EventDispatcher\EventDispatcherDependencyProvider as SprykerEventDispatcherDependencyProvider;
 use Spryker\Glue\GlueApplication\Plugin\EventDispatcher\GlueRestControllerListenerEventDispatcherPlugin;
 use Spryker\Glue\GlueApplication\Plugin\EventDispatcher\ResponseSecurityHeadersEventDispatcherPlugin;
@@ -16,7 +17,6 @@ use Spryker\Glue\Kernel\Plugin\EventDispatcher\AutoloaderCacheEventDispatcherPlu
 use Spryker\Glue\Router\Plugin\EventDispatcher\RouterListenerEventDispatcherPlugin;
 use Spryker\Glue\Storage\Plugin\EventDispatcher\StorageKeyCacheEventDispatcherPlugin;
 use Spryker\Shared\Http\Plugin\EventDispatcher\ResponseListenerEventDispatcherPlugin;
-use Spryker\Zed\EventBehavior\Communication\Plugin\EventDispatcher\EventBehaviorEventDispatcherPlugin;
 
 class EventDispatcherDependencyProvider extends SprykerEventDispatcherDependencyProvider
 {
