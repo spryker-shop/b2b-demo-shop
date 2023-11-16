@@ -14,7 +14,6 @@ export default class AutocompleteForm extends Component {
     protected suggestionsContainer: HTMLElement;
     protected cleanButton: HTMLButtonElement;
     protected overlay: HTMLElement;
-    protected body: HTMLElement;
     protected eventShowOverlay: CustomEvent<OverlayEventDetail>;
     protected eventHideOverlay: CustomEvent<OverlayEventDetail>;
 
@@ -27,7 +26,6 @@ export default class AutocompleteForm extends Component {
         this.hiddenInputElement = <HTMLInputElement>this.getElementsByClassName(`${this.jsName}__input-hidden`)[0];
         this.cleanButton = <HTMLButtonElement>this.getElementsByClassName(`${this.jsName}__clean-button`)[0];
         this.overlay = <HTMLElement>document.getElementsByClassName(this.overlayBlockClassName)[0];
-        this.body = <HTMLElement>document.getElementsByTagName('body')[0];
 
         this.mapEvents();
     }
@@ -42,9 +40,11 @@ export default class AutocompleteForm extends Component {
             debounce(() => this.onBlur(), this.debounceDelay),
         );
         this.inputElement.addEventListener('focus', () => this.onFocus());
+
         if (this.showCleanButton) {
             this.cleanButton.addEventListener('click', () => this.onCleanButtonClick());
         }
+
         this.mapOverlayEvents();
     }
 
@@ -89,7 +89,7 @@ export default class AutocompleteForm extends Component {
 
     protected toggleOverlay(isShown: boolean): void {
         this.dispatchEvent(isShown ? this.eventShowOverlay : this.eventHideOverlay);
-        this.body.classList.toggle('has-overlay', isShown);
+        document.body.classList.toggle(this.bodyOverlayClassName, isShown);
     }
 
     protected showSuggestions(): void {
@@ -162,5 +162,9 @@ export default class AutocompleteForm extends Component {
 
     protected get overlayBlockClassName(): string {
         return this.getAttribute('overlay-block-class-name');
+    }
+
+    protected get bodyOverlayClassName(): string {
+        return this.getAttribute('body-overlay-class-name');
     }
 }

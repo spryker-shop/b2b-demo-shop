@@ -46,14 +46,7 @@
         }
 
         &--overlap {
-            z-index: $setting-zi-custom-select;
-        }
-
-        .hide-visible-block & {
-            #{$name}__field,
-            &#{$name}--overlap {
-                z-index: auto;
-            }
+            z-index: $setting-zi-header-overlay - 1;
         }
 
         @content;

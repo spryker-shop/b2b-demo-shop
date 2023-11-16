@@ -6,7 +6,6 @@ import {
 } from 'ShopUi/components/molecules/main-overlay/main-overlay';
 
 export default class SuggestSearch extends SuggestSearchCore {
-    protected body: HTMLElement;
     protected overlay: HTMLElement;
     protected wrapper: HTMLElement;
     protected openTrigger: HTMLElement;
@@ -15,7 +14,6 @@ export default class SuggestSearch extends SuggestSearchCore {
     protected eventHideOverlay: CustomEvent<OverlayEventDetail>;
 
     protected init(): void {
-        this.body = <HTMLElement>document.getElementsByTagName('body')[0];
         this.overlay = <HTMLElement>document.getElementsByClassName(this.overlayClassName)[0];
         this.wrapper = <HTMLElement>document.getElementsByClassName(this.wrapperClassName)[0];
         this.openTrigger = <HTMLElement>document.getElementsByClassName(this.openClassName)[0];
@@ -36,7 +34,8 @@ export default class SuggestSearch extends SuggestSearchCore {
     }
 
     showSugestions(): void {
-        this.suggestionsContainer.classList.remove('is-hidden');
+        super.showSugestions();
+
         this.searchInput.classList.add(`${this.name}__input--active`);
         this.hintInput.classList.add(`${this.name}__hint--active`);
         this.toggleOverlay(true);
@@ -49,6 +48,14 @@ export default class SuggestSearch extends SuggestSearchCore {
     }
 
     protected mapOverlayEvents(): void {
+        this.setupOverlayConfig();
+
+        if (this.shouldCloseByOverlayClick) {
+            this.mapOverlayClickEvent();
+        }
+    }
+
+    protected setupOverlayConfig(): void {
         const overlayConfig: CustomEventInit<OverlayEventDetail> = {
             bubbles: true,
             detail: {
@@ -59,10 +66,6 @@ export default class SuggestSearch extends SuggestSearchCore {
 
         this.eventShowOverlay = new CustomEvent(EVENT_SHOW_OVERLAY, overlayConfig);
         this.eventHideOverlay = new CustomEvent(EVENT_HIDE_OVERLAY, overlayConfig);
-
-        if (this.shouldCloseByOverlayClick) {
-            this.mapOverlayClickEvent();
-        }
     }
 
     protected mapOverlayClickEvent(): void {
@@ -74,13 +77,19 @@ export default class SuggestSearch extends SuggestSearchCore {
 
     protected toggleOverlay(isShown: boolean): void {
         this.wrapper.classList.toggle(this.wrapperToggleClassName, isShown);
+        this.classList.toggle(`${this.name}--with-overlay`, isShown);
+        document.body.classList.toggle(this.bodyOverlayClassName, isShown);
+        this.setupOverlayConfig();
+
         this.dispatchEvent(isShown ? this.eventShowOverlay : this.eventHideOverlay);
-        this.body.classList.toggle('has-overlay', isShown);
-        this.body.classList.toggle('hide-visible-block', isShown);
     }
 
     protected get overlayClassName(): string {
         return this.getAttribute('overlay-class-name');
+    }
+
+    protected get bodyOverlayClassName(): string {
+        return this.getAttribute('body-overlay-class-name');
     }
 
     protected get wrapperClassName(): string {

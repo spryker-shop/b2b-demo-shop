@@ -6,7 +6,6 @@ import {
 } from 'ShopUi/components/molecules/main-overlay/main-overlay';
 
 export default class NavigationMultilevel extends Component {
-    protected body: HTMLElement;
     protected overlay: HTMLElement;
     protected triggers: HTMLElement[];
     protected touchTriggers: HTMLElement[];
@@ -16,7 +15,6 @@ export default class NavigationMultilevel extends Component {
     protected readyCallback(): void {}
 
     protected init(): void {
-        this.body = <HTMLElement>document.getElementsByTagName('body')[0];
         this.overlay = <HTMLElement>document.getElementsByClassName(this.overlayBlockClassName)[0];
         this.triggers = <HTMLElement[]>Array.from(this.getElementsByClassName(`${this.jsName}__trigger`));
         this.touchTriggers = <HTMLElement[]>Array.from(this.getElementsByClassName(`${this.jsName}__touch-trigger`));
@@ -57,7 +55,7 @@ export default class NavigationMultilevel extends Component {
             const trigger = <HTMLElement>event.currentTarget;
             event.preventDefault();
             this.toggleOverlay(true);
-            this.addClass(trigger);
+            trigger.classList.add(this.classToToggle);
         }
     }
 
@@ -66,7 +64,7 @@ export default class NavigationMultilevel extends Component {
             const trigger = <HTMLElement>event.currentTarget;
             event.preventDefault();
             this.toggleOverlay(false);
-            this.removeClass(trigger);
+            trigger.classList.remove(this.classToToggle);
         }
     }
 
@@ -98,15 +96,6 @@ export default class NavigationMultilevel extends Component {
 
     protected toggleOverlay(isShown: boolean): void {
         this.dispatchEvent(isShown ? this.eventShowOverlay : this.eventHideOverlay);
-        this.body.classList.toggle('hide-visible-block', isShown);
-    }
-
-    protected addClass(trigger: HTMLElement): void {
-        trigger.classList.add(this.classToToggle);
-    }
-
-    protected removeClass(trigger: HTMLElement): void {
-        trigger.classList.remove(this.classToToggle);
     }
 
     protected isDropMenuReverse(trigger: HTMLElement, dropItem: HTMLElement): boolean {

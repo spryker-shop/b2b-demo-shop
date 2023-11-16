@@ -78,6 +78,11 @@
             }
         }
 
+        &--with-overlay {
+            position: relative;
+            z-index: $setting-zi-header-overlay;
+        }
+
         @content;
     }
 }

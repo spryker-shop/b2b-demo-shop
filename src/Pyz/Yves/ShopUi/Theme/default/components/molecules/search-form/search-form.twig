@@ -1,8 +1,12 @@
 {% extends molecule('search-form', '@SprykerShop:ShopUi') %}
 
+{% define config = {
+    name: 'search-form',
+} %}
+
 {% define attributes = {
-    'wrapper-class-name': 'js-search-form',
-    'wrapper-toggle-class-name': 'search-form--active',
+    'wrapper-class-name': 'js-' ~ config.name,
+    'wrapper-toggle-class-name': config.name ~ '--active',
     'open-class-name': required,
     'close-class-name': required,
 } %}
