@@ -22,21 +22,15 @@ export default class SideDrawer extends SideDrawerCore {
                 return;
             }
 
-            if (window.innerWidth >= this.overlayBreakpoint) {
-                if (!this.isOverlayShown) {
-                    return;
-                }
-
+            if (window.innerWidth >= this.overlayBreakpoint && this.isOverlayShown) {
                 this.toggleOverlay(false);
 
                 return;
             }
 
-            if (this.isOverlayShown) {
-                return;
+            if (window.innerWidth < this.overlayBreakpoint && !this.isOverlayShown) {
+                this.toggleOverlay(true);
             }
-
-            this.toggleOverlay(true);
         });
     }
 

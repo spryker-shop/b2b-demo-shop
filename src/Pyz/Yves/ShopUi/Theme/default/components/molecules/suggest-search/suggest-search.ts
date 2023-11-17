@@ -30,7 +30,10 @@ export default class SuggestSearch extends SuggestSearchCore {
             this.hideSugestions();
             this.toggleOverlay(false);
         });
-        this.mapOverlayEvents();
+
+        if (this.shouldCloseByOverlayClick) {
+            this.mapOverlayClickEvent();
+        }
     }
 
     showSugestions(): void {
@@ -46,14 +49,6 @@ export default class SuggestSearch extends SuggestSearchCore {
 
         this.searchInput.classList.remove(`${this.name}__input--active`);
         this.hintInput.classList.remove(`${this.name}__hint--active`);
-    }
-
-    protected mapOverlayEvents(): void {
-        this.setupOverlayConfig();
-
-        if (this.shouldCloseByOverlayClick) {
-            this.mapOverlayClickEvent();
-        }
     }
 
     protected setupOverlayConfig(): void {
