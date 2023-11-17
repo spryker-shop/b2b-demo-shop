@@ -8,7 +8,7 @@
 } %}
 
 {% block body %}
-    <aside class="{{ config.name }}__drawer {% if is_granted('ROLE_USER') %} {{ config.name }}__drawer--logged{% endif %}">
+    <aside class="{{ config.name }}__drawer">
         {% block close %}
             <button class="{{ config.name }}__close {{ attributes['trigger-selector'] }}">
                 {% include atom('icon') with {

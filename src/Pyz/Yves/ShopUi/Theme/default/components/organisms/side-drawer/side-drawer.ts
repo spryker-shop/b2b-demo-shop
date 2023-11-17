@@ -66,6 +66,6 @@ export default class SideDrawer extends SideDrawerCore {
     }
 
     protected get overlayBreakpoint(): number {
-        return Number(this.getAttribute('breakpoint-to-hide-overlay'));
+        return Number(this.getAttribute('overlay-breakpoint'));
     }
 }
